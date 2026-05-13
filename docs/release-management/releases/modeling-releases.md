@@ -230,6 +230,7 @@ This enables flexibility without requiring users to provide every input every ti
 - **Boolean**: True/false flags (enableMonitoring, skipTests)
 - **List**: Arrays of values (list of services, list of environments)
 - **Object**: Structured data (configuration objects, JSON payloads)
+- **Entity Types**: Harness entity references (service, multiService, environment, multiEnvironment, infrastructure, multiInfrastructure, connector)
 
 For detailed information on inputs and variables, refer to [Inputs and Variables Overview](../inputs-and-variables/overview.md).
 

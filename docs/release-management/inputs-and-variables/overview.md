@@ -43,7 +43,7 @@ This separation enables:
 
 ## Inputs, Input Store, and Variables
 
-When you execute a release, you provide a set of **inputs**—the concrete values that control how the process executes. These inputs are stored in the **Input Store**, enabling the same process to be executed multiple times with different input sets.
+When you execute a release, you provide a set of **inputs**, the concrete values that control how the process executes. These inputs are stored in the **Input Store**, enabling the same process to be executed multiple times with different input sets.
 
 ### The Input Store
 
@@ -69,7 +69,7 @@ Release Orchestration uses three hierarchical variable scopes to keep input coll
 
 #### 1. Global Variables (Process-Level)
 The key inputs users provide when executing a release:
-- **Scope**: Available across the entire release—all phases and activities
+- **Scope**: Available across the entire release (all phases and activities)
 - **Examples**: `releaseVersion`, `targetEnvironment`, `deploymentStrategy`, `changeRequestID`
 - **User-Facing**: These are the 3-5 essential inputs users must understand and provide
 - **Highest Priority**: Override defaults at all lower levels
@@ -210,6 +210,95 @@ deploymentConfig:
     path: "/health"
     interval: 10
 ```
+
+### Entity Types
+
+Entity types let you reference Harness entities directly in your release variables. Instead of hardcoding service names or environment identifiers, you select them dynamically from your Harness account hierarchy. This makes your release processes flexible; the same process can deploy different services or target different environments just by changing the input set.
+
+There are seven entity types, grouped by what they reference and whether they handle single or multiple entities.
+
+#### Services
+
+Reference a single service using the `service` type when your release deploys one application. The system requires a deployment type (such as Kubernetes or ECS) so it knows how the service is configured and can validate your release inputs correctly.
+
+When you need to deploy multiple services together (common in microservices architectures), use the `multiService` type instead. Each service still needs a deployment type. The values are stored as a YAML array and resolved when the release executes, letting pipeline activities receive the correct service references for each deployment.
+
+**Example**: 
+```yaml
+services:
+  default:
+    - serviceRef: "account.payment-service"
+  metadata:
+    deploymentType: Kubernetes
+```
+
+#### Environments
+
+Use the `environment` type to target a single environment like staging or production. You must specify a deployment type that matches how the environment is configured in Harness. You select environments from across your Account > Organization > Project hierarchy.
+
+For progressive rollouts (deploying to staging first, then production), use the `multiEnvironment` type. This approach coordinates releases across multiple environments without hardcoding environment names in your process definition.
+
+**Example**: 
+```yaml
+environments:
+  default:
+    - environmentRef: "account.staging"
+    - environmentRef: "account.production"
+  metadata:
+    deploymentType: Kubernetes
+```
+
+#### Infrastructure
+
+The `infrastructure` type references specific infrastructure definitions like clusters, namespaces, or regions. Infrastructure references require an environment context, since infrastructure definitions exist within environments. The metadata includes the environment reference and optionally a deployment type.
+
+Multi-region or multi-cluster deployments use the `multiInfrastructure` type. The metadata specifies the environment context and deployment type for all infrastructure definitions in the list.
+
+**Example**: 
+```yaml
+infrastructures:
+  default:
+    - identifier: "InfraKub99"
+  metadata:
+    environmentRef: "account.production"
+    deploymentType: Kubernetes
+```
+
+#### Connectors
+
+Reference a Harness connector using the `connector` type when your activities need specific integrations (Git repositories, artifact registries, cloud providers, or other external systems). Metadata is optional. You can include a connector type specification if your activities need it, but referencing by name alone works for most cases.
+
+**Example**: 
+```yaml
+gitConnector:
+  default:
+    - ref: "github-main"
+```
+
+#### Deployment Types
+
+Service and environment entity types require a deployment type that matches how the entity is configured in Harness. Infrastructure types can optionally include a deployment type. The supported deployment types are:
+
+- **Kubernetes**, **NativeHelm**, **ECS**, **Ssh**, **WinRm**
+- **ServerlessAwsLambda**, **AwsLambda**, **AWS_SAM**
+- **AzureWebApp**, **AzureFunction**
+- **GoogleCloudFunctions**, **GoogleCloudRun**, **GoogleManagedInstanceGroup**
+- **CustomDeployment**, **TAS**, **Asg**, **Elastigroup**, **Salesforce**
+
+#### How it works
+
+In the Process Input editor, entity types render as multi-select pickers with hierarchy browsing. You choose the deployment type first (for service and environment types), then browse available entities filtered by that type. Infrastructure and connector types don't require metadata; you can add deployment type or other details when you need additional filtering or context.
+
+Selected values are stored as structured YAML. During release execution, the system resolves these references and passes the correct service names, environment targets, infrastructure definitions, or connector configurations to your pipeline activities. This dynamic resolution means you can run the same process with different configurations by simply selecting a different input set; no need to modify the process definition itself.
+
+The metadata requirements vary by entity type:
+
+| Entity Type | Metadata Required |
+|-------------|-------------------|
+| Service / Multi-Service | `deploymentType` (required) |
+| Environment / Multi-Environment | `deploymentType` (required) |
+| Infrastructure / Multi-Infrastructure | `environmentRef` (required), `deploymentType` (optional) |
+| Connector | Optional (can include connector type) |
 
 ### Expression Support
 

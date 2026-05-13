@@ -95,18 +95,18 @@ To select the recommended version of the dependency:
 2. Click the `SBOM` tab to view the list of dependencies.
 3. Click `Dependency Type`, then select the checkbox next to `Direct` to filter the list to show direct dependencies related to your project.
 
-<DocImage path={require('./static/sbom_dependency_tab.png')} width="80%" height="80%" title="Click to view full size image" />
+<DocImage path={require('./static/sbom-dependency-tab.png')} width="80%" height="80%" title="Click to view full size image" />
 
 4. Click on any dependency exposed to OSS risks from the dependency list to open the dependency side panel.
 
 5. The **Overview tab** of the dependency side panel opens by default. It has the following sections:
   * **Details** - Review the dependency’s current and latest available versions, license, package manager, and associated PURL.
 
-    <DocImage path={require('./static/dependency_overview.png')} width="80%" height="80%" title="Click to view full size image" />
+    <DocImage path={require('./static/dependency-overview.png')} width="80%" height="80%" title="Click to view full size image" />
 
   * **Vulnerabilities** - Displays the number of vulnerabilities by severity (Critical, High, Medium, and Low) and their source.
 
-    <DocImage path={require('./static/vulnerabilities_dependency_overview.png')} width="80%" height="80%" title="Click to view full size image" />
+    <DocImage path={require('./static/vulnerabilities-dependency-overview.png')} width="80%" height="80%" title="Click to view full size image" />
 
     * Click View to see detailed vulnerability information in a table under the **Vulnerabilities tab** of the side panel. Each entry includes severity with a vulnerability severity score, upgrade version, and reference identifiers (CVE, GHSA, CWE, and many more).
 
@@ -139,7 +139,7 @@ A target version is recommended based on comparison within the same version line
 
 Selecting a target version automatically displays a visualization of existing vulnerabilities by severity for the selected version, or a `No vulnerabilities detected in this version` message if none are found.
 
-<DocImage path={require('./static/vulnerability_severity_remediation.png')} width="80%" height="80%" title="Click to view full size image" />
+<DocImage path={require('./static/vulnerability-severity-remediation.png')} width="80%" height="80%" title="Click to view full size image" />
 :::
 
 8. Click on the expandable **Top Dependencies Impacted** to open a list of the affected transitive dependencies because of the upgrade. These are direct dependencies of the primary dependency and the list shows which of them are modified and whether any new dependencies are added.
@@ -150,7 +150,7 @@ Selecting a target version automatically displays a visualization of existing vu
 
 Selecting a target version shows you the preview changes in the auto-detected manifest file for the dependency version change. To make that change in your repository, you need to raise a pull request.
 
-<DocImage path={require('./static/pr_preview_remediation.png')} width="80%" height="80%" title="Click to view full size image" />
+<DocImage path={require('./static/pr-preview-remediation.png')} width="80%" height="80%" title="Click to view full size image" />
 
 To raise a Pull Request manually:
 
