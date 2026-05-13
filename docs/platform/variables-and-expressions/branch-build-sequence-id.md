@@ -4,17 +4,42 @@ description: Track incremental build numbers per branch using the branchSeqId ex
 sidebar_position: 25
 ---
 
+Harness provides branch-scoped build numbers that increment independently for each branch in your repository. Use the `<+pipeline.branchSeqId>` expression to version artifacts and track builds per branch, instead of relying on the global pipeline sequence counter, `<+pipeline.sequenceId>`, that increments across all branches.
+
+
 :::info
 This feature is behind the feature flag `CI_ENABLE_BRANCH_SEQUENCE_ID`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-The `<+pipeline.branchSeqId>` expression provides a branch-scoped incremental build counter. Unlike `<+pipeline.sequenceId>` which increments globally across all pipeline executions, the branch sequence ID increments independently for each unique combination of branch and repository.
+---
+
+## What will you learn in this topic?
+
+By the end of this topic, you will be able to:
+
+- Use the `<+pipeline.branchSeqId>` expression to track incremental build numbers per branch.
+- Understand when the branch sequence ID is available and when it returns null.
+- Apply branch-scoped build numbers to version artifacts and Docker images.
+- Manage branch sequence counters using the Harness API.
+
+---
+
+## Before you begin
+
+Before you use branch-scoped build numbers, ensure you have the following:
+
+- The `CI_ENABLE_BRANCH_SEQUENCE_ID` feature flag enabled for your account. Contact <a href="mailto:support@harness.io">Harness Support</a> to enable it.
+- Pipeline builds triggered with branch context (webhook triggers or manual branch builds).
+- A <a href="/docs/platform/automation/api/add-and-manage-api-keys" target="_blank">Harness API key</a> if you plan to manage branch sequences via API.
+
+---
 
 ## Overview
 
-When you run pipelines triggered by webhooks or with branch context, the global `<+pipeline.sequenceId>` increments with every execution regardless of which branch triggered the build. This makes it difficult to track branch-specific build numbers.
+The global `<+pipeline.sequenceId>` increments with every execution across all branches, making it difficult to identify which build number corresponds to a specific branch. 
 
-The branch sequence ID solves this by maintaining separate counters for each branch-repository combination:
+The branch sequence ID (`<+pipeline.branchSeqId>`) solves this by maintaining separate counters for each branch-repository combination:
+
 
 | Branch | Repository | Execution | `sequenceId` | `branchSeqId` |
 |--------|------------|-----------|--------------|---------------|
@@ -23,19 +48,12 @@ The branch sequence ID solves this by maintaining separate counters for each bra
 | main | github.com/org/repo | 3rd | 3 | 2 |
 | feature-x | github.com/org/repo | 4th | 4 | 2 |
 
-## Requirements
-
-This feature requires:
-
-- The `CI_ENABLE_BRANCH_SEQUENCE_ID` feature flag is enabled for your account. Contact [Harness Support](mailto:support@harness.io) to enable it.
-- Builds triggered with branch context (webhook triggers or manual branch builds).
-
 ## How it works
 
 The branch sequence ID is:
 
 1. **Scoped to pipeline + branch + repository**: Each unique combination of pipeline identifier, normalized branch name, and normalized repository URL maintains its own counter.
-2. **Incremented at execution start**: The counter increments when the pipeline execution begins, before any steps run. If a build is queued due to concurrency limits, the sequence is assigned when the build is first triggered (not when it starts executing from the queue).
+2. **Incremented at execution start**: The counter increments when the pipeline execution begins, before any steps run. If a build is queued due to concurrency limits, the sequence is assigned when the build is first triggered, not when it starts executing from the queue.
 3. **Normalized for consistency**: Repository URLs are normalized (e.g., `https://github.com/org/repo.git` and `git@github.com:org/repo` resolve to the same identifier). Branch names have `refs/heads/` prefixes stripped.
 4. **Persisted in database**: Counters persist across pipeline executions and survive service restarts.
 5. **Cleaned up on pipeline deletion**: When a pipeline is deleted, all associated branch sequence records are removed.
@@ -57,7 +75,7 @@ The expression returns `null` when:
 
 ### Pipelines with codebase disabled
 
-The branch sequence ID works even when **Clone Codebase** is disabled in your pipeline's codebase configuration. When a webhook trigger fires, Harness extracts the branch and repository information directly from the trigger event payload, so the sequence counter increments correctly regardless of whether the pipeline clones the repository.
+The branch sequence ID works even when **Clone Codebase** is disabled in your pipeline's codebase configuration. Harness extracts branch and repository information directly from the webhook trigger payload. This way, the sequence counter increments correctly regardless of whether the pipeline clones the repository.
 
 This is useful for pipelines that:
 
@@ -100,7 +118,7 @@ Branch Build #: 5
 
 ### Version artifacts by branch
 
-Create Docker image tags that include the branch-specific build number:
+This example creates Docker image tags that include the branch-specific build number:
 
 ```yaml
 - step:
@@ -152,7 +170,7 @@ Combine with other expressions for semantic versioning:
 
 ### Conditional logic for non-branch builds
 
-Handle cases where the expression returns `null` (tag builds, etc.):
+This example describes how to handle cases where the expression returns `null`, such as tag builds or commit-only builds:
 
 ```yaml
 - step:
@@ -176,7 +194,7 @@ Handle cases where the expression returns `null` (tag builds, etc.):
         echo "Using version: $VERSION"
 ```
 
-## Managing branch sequences
+## Manage branch sequences
 
 :::note
 These API endpoints require the `CI_ENABLE_BRANCH_SEQUENCE_ID` feature flag. If the flag is not enabled, the API returns a message prompting you to enable it.
@@ -231,7 +249,7 @@ You can set the sequence to a specific value (useful for migrations):
 
 ```bash
 curl -X PUT \
-  'https://app.harness.io/pipeline/api/pipelines/<PIPELINE_ID>/branch-sequences?accountIdentifier=<ACCOUNT_ID>&orgIdentifier=<ORG_ID>&projectIdentifier=<PROJECT_ID>&repoUrl=<REPO_URL>&branch=<BRANCH>&sequenceId=100' \
+  'https://app.harness.io/pipeline/api/pipelines/<PIPELINE_ID>/branch-sequences/set?accountIdentifier=<ACCOUNT_ID>&orgIdentifier=<ORG_ID>&projectIdentifier=<PROJECT_ID>&repoUrl=<REPO_URL>&branch=<BRANCH>&sequenceId=100' \
   -H 'x-api-key: <API_KEY>'
 ```
 
@@ -266,8 +284,8 @@ Branch sequences are scoped by normalized repository URL. If you're seeing unexp
 2. **Verify database connectivity**: The sequence counter is stored in the database.
 3. **Check pipeline identity**: Different pipelines have completely independent counters.
 
-## See also
+## Related articles
 
-- [Use Harness expressions](./harness-variables.md)
-- [Harness expressions reference](./harness-expressions-reference.md)
-- [Pipeline triggers](/docs/platform/triggers/triggering-pipelines)
+- <a href="/docs/platform/variables-and-expressions/harness-variables" target="_blank">Use Harness expressions</a>: Learn how to reference variables, expressions, and built-in pipeline data in your workflows.
+- <a href="/docs/platform/variables-and-expressions/harness-expressions-reference" target="_blank">Harness expressions reference</a>: Browse the complete list of available expressions including pipeline, stage, and environment variables.
+- <a href="/docs/platform/triggers/triggering-pipelines" target="_blank">Pipeline triggers</a>: Configure webhook triggers for push events, pull requests, and manual branch builds that provide branch context.
