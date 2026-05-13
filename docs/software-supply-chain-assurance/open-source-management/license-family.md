@@ -33,12 +33,6 @@ By the end of this topic, you will be able to understand:
 
 ***
 
-## Before you begin
-
-Make a note of the following before you proceed with license family configuration:
-
-* Make sure you have the SBOM generated for your artifacts or repositories. For more information, see [Generate SBOM for Artifacts](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-artifacts/) and [Generate SBOM for Repositories](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories/).
-
 ## Understand License Families
 
 License families group individual open source licenses based on their obligations and usage restrictions. Instead of interpreting each license separately, this classification helps you quickly understand how a license might impact your application.
@@ -49,6 +43,14 @@ For classifying licenses based on their impact and risk, SCS supports the follow
 * **Copyleft** - Copyleft licenses come with strong obligations. If you modify or distribute software under a copyleft license, you may be required to release your source code under the same terms. This can limit use in proprietary applications and is typically considered high risk. For example, *GPL-2.0, GPL-3.0, and AGPL-3.0*.
 * **Weak Copyleft** - Weak Copyleft licenses impose limited obligations. You are required to share changes made to the licensed component itself, but not your entire application. This allows them to be used in proprietary software in many cases, though they still require careful review. For example, *LGPL, MPL-2.0, and EPL*.
 * **Unknown/Proprietary** - Unknown or Proprietary licenses include licenses that are not part of standard databases, as well as custom or commercial licenses. Since their terms may be unclear or restrictive, they can introduce risk and usually need closer inspection before use. For example, *custom licenses, commercial licenses, or unlicensed code*.
+
+***
+
+## Before you begin
+
+Make a note of the following before you proceed with license family configuration:
+
+* Generate SBOMs for your artifacts or repositories. For more information, see [Generate SBOM for Artifacts](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-artifacts/) and [Generate SBOM for Repositories](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories/).
 
 ***
 
