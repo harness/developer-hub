@@ -1,17 +1,17 @@
 ---
 title: Install a Local Delegate on Windows
-description: Learn how to install and configure the Harness Delegate on a Windows machine
+description: Learn how to install and configure Delegate 3.x on a Windows machine
 sidebar_position: 3
 ---
 
 :::warning Closed Beta
-The new Harness Delegate is currently in closed beta and available only to select users. Access is determined by the product team. See [Feature Parity](/docs/platform/delegates-v2/feature-parity) for current supported use cases.
+Delegate 3.x is currently in closed beta and available only to select users. Access is determined by the product team. See [Feature Parity](/docs/platform/delegates-v2/feature-parity) for current supported use cases.
 :::
 
 This guide walks you through installing the Harness Delegate on a Windows machine. The delegate runs under the LocalSystem account. Skip to the [End-to-End Demo](#end-to-end-demo) to watch video instructions instead. For supported connectors, CI steps, secret managers, and module support by deployment type, see the [Feature Parity](/docs/platform/delegates-v2/feature-parity) page — that's the single source of truth, kept up to date as support expands.
 
 :::info
-To learn more about the new delegate, including architecture and how it compares to the legacy delegate, see the [New Delegate Overview](../delegate-overview).
+To learn more about Delegate 3.x, including architecture and how it compares to the legacy delegate, see the [Delegate 3.x Overview](../delegate-overview).
 :::
 
 ## Quick Reference
@@ -44,7 +44,7 @@ import TabItem from '@theme/TabItem';
 <Tabs>
 <TabItem value="Interactive Guide">
 
-<DocVideo src="https://app.tango.us/app/embed/Get-Delegate-2-0-Credentials-41d069778e3e421d8791dd4dcc8ab793" title="Get credentials for the new delegate" />
+<DocVideo src="https://app.tango.us/app/embed/Get-Delegate-2-0-Credentials-41d069778e3e421d8791dd4dcc8ab793" title="Get credentials for Delegate 3.x" />
 
 </TabItem>
 <TabItem value="Step-by-Step" default>
@@ -292,7 +292,7 @@ Some CI steps can run directly on the host. Harness automatically downloads requ
 
 ## Configure Pipeline Delegate
 
-For the CI stages that you want to use the new delegate with, [define the stage variable](/docs/platform/variables-and-expressions/add-a-variable/#define-variables) `HARNESS_CI_INTERNAL_ROUTE_TO_RUNNER` and set it to `true`.
+For the CI stages that you want to use Delegate 3.x with, [define the stage variable](/docs/platform/variables-and-expressions/add-a-variable/#define-variables) `HARNESS_CI_INTERNAL_ROUTE_TO_RUNNER` and set it to `true`.
 
 Then, [set your pipeline's build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure#set-the-pipelines-build-infrastructure) as usual. Ensure that you have set **Local** as the **Infrastructure** and that the **Operating System** and **Architecture** match the delegate you installed.
 
@@ -345,7 +345,7 @@ Get-Content -Path "C:\HarnessDelegate\logs\delegate.log" -Tail 20 -Wait
 
 ## Upgrading the Delegate
 
-There is currently no automated upgrade mechanism for the new delegate. The upgrade process involves stopping the delegate, downloading the latest binary, and starting it again.
+There is currently no automated upgrade mechanism for Delegate 3.x. The upgrade process involves stopping the delegate, downloading the latest binary, and starting it again.
 
 1. **Stop the delegate:** `.\delegate stop`
 2. **Download the latest binary** from the [installation step](#step-1-download-the-binary), replacing the existing `delegate` file.

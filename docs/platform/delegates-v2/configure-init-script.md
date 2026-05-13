@@ -1,6 +1,6 @@
 ---
 title: Run Initialization Scripts Before Delegate Startup
-description: Learn how to run custom initialization scripts before the Delegate 2.0 registers with Harness
+description: Learn how to run custom initialization scripts before Delegate 3.x registers with Harness
 sidebar_position: 3
 ---
 

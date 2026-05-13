@@ -1,6 +1,6 @@
 ---
 title: Overview
-description: Learn about the new Harness Delegate
+description: Learn about Delegate 3.x
 sidebar_position: 0
 sidebar_label: Overview
 redirect_from:
@@ -9,17 +9,17 @@ redirect_from:
 
 :::warning Closed Beta
 
-The new Harness Delegate is currently in closed beta and available only to select users. The product team determines access based on current supported use cases. See [Feature Parity](/docs/platform/delegates-v2/feature-parity) for the latest details.
+Delegate 3.x is currently in closed beta and available only to select users. The product team determines access based on current supported use cases. See [Feature Parity](/docs/platform/delegates-v2/feature-parity) for the latest details.
 
 :::
 
-The new Harness Delegate is a lightweight service that runs in your infrastructure to execute pipeline work. Unlike the legacy delegate, which is deployed as a container application in Kubernetes or Docker environments, the new delegate uses a transaction-based execution model, with stages executed as a sequence of initialization, execution, and cleanup tasks. This model provides consistent stage execution across different infrastructure types and ensures reliable cleanup of resources created during stage execution.
+Delegate 3.x is a lightweight service that runs in your infrastructure to execute pipeline work. Unlike the legacy delegate, which is deployed as a container application in Kubernetes or Docker environments, Delegate 3.x uses a transaction-based execution model, with stages executed as a sequence of initialization, execution, and cleanup tasks. This model provides consistent stage execution across different infrastructure types and ensures reliable cleanup of resources created during stage execution.
 
-The new delegate operates alongside the legacy delegate. The legacy delegate continues to support the full range of Harness modules and capabilities. In contrast, the new delegate provides full parity across all modules on Harness Cloud (hosted) and focuses on CI pipelines when self-hosted on a local machine or Kubernetes cluster, using a unified task framework optimized for those workloads.
+Delegate 3.x operates alongside the legacy delegate. The legacy delegate continues to support the full range of Harness modules and capabilities. In contrast, Delegate 3.x provides full parity across all modules on Harness Cloud (hosted) and focuses on CI pipelines when self-hosted on a local machine or Kubernetes cluster, using a unified task framework optimized for those workloads.
 
 ## Architecture overview
 
-The new delegate implements a multi-layered task execution framework that separates concerns between routing, infrastructure management, and step execution.
+Delegate 3.x implements a multi-layered task execution framework that separates concerns between routing, infrastructure management, and step execution.
 
 ### Task execution layers
 
@@ -33,7 +33,7 @@ This separation ensures each component is responsible for a focused set of conce
 
 ### Transactional execution model
 
-The core concept in the new delegate is that each CI stage is modeled as a **transaction**. A transaction provides a shared state boundary for all tasks within a stage and guarantees the cleanup of resources created during execution.
+The core concept in Delegate 3.x is that each CI stage is modeled as a **transaction**. A transaction provides a shared state boundary for all tasks within a stage and guarantees the cleanup of resources created during execution.
 
 Transactional execution is implemented through three task types:
 
@@ -45,7 +45,7 @@ All tasks belonging to the same transaction are assigned the same transaction ID
 
 ### Infrastructure drivers
 
-The new delegate supports multiple infrastructure drivers for executing transactional workloads:
+Delegate 3.x supports multiple infrastructure drivers for executing transactional workloads:
 
 - **Local driver**: Executes transactions directly on the host machine where the delegate runs. The init phase creates Docker networks and volumes, the execute phase can run commands directly on the host or within containers (including support for containerless execution), and the cleanup phase removes all Docker resources and terminates subprocesses.
 
@@ -57,17 +57,17 @@ The driver abstraction allows the same pipeline logic to run across different in
 
 ## Task routing and selection
 
-Tasks are routed to delegates based on routing policies and delegate selectors specified in the task request. The new delegate does not support the capability check framework used by the legacy delegate. When tasks must be routed to delegates with specific configurations or network access, selectors must be explicitly configured to target those delegates.
+Tasks are routed to delegates based on routing policies and delegate selectors specified in the task request. Delegate 3.x does not support the capability check framework used by the legacy delegate. When tasks must be routed to delegates with specific configurations or network access, selectors must be explicitly configured to target those delegates.
 
 For more information about selector-based routing, go to [Use delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors).
 
 ## Secrets management
 
-The new delegate integrates with your secret engines to fetch and inject secrets into the task execution process. Secret identifiers are provided as part of the task request, and secret expressions in the task payload are automatically replaced with decrypted values at runtime. Secrets are never persisted to disk or written to logs in plain text. The delegate automatically masks sensitive strings in all log output to prevent accidental disclosure.
+Delegate 3.x integrates with your secret engines to fetch and inject secrets into the task execution process. Secret identifiers are provided as part of the task request, and secret expressions in the task payload are automatically replaced with decrypted values at runtime. Secrets are never persisted to disk or written to logs in plain text. The delegate automatically masks sensitive strings in all log output to prevent accidental disclosure.
 
 ## Capacity management and queuing
 
-The new delegate introduces stage-level capacity management through the `MAX_STAGES` configuration setting. This setting limits the number of concurrent stages a delegate can execute. When a delegate reaches its capacity limit, additional stage requests are queued on the server side until capacity becomes available.
+Delegate 3.x introduces stage-level capacity management through the `MAX_STAGES` configuration setting. This setting limits the number of concurrent stages a delegate can execute. When a delegate reaches its capacity limit, additional stage requests are queued on the server side until capacity becomes available.
 
 This approach prevents resource exhaustion on the host machine and provides consistent performance. The queuing mechanism ensures work is not lost and is processed as soon as delegate capacity becomes available.
 
@@ -79,23 +79,23 @@ For details on configuring capacity limits, use cases, and how stages are distri
 
 ## Standalone tasks
 
-Not all delegate tasks fit the transactional model. The new delegate supports standalone tasks through the CGI (Common Gateway Interface) driver. CGI is a protocol for executing binaries through an HTTP interface, suitable for lightweight synchronous operations that don't require the full transaction lifecycle.
+Not all delegate tasks fit the transactional model. Delegate 3.x supports standalone tasks through the CGI (Common Gateway Interface) driver. CGI is a protocol for executing binaries through an HTTP interface, suitable for lightweight synchronous operations that don't require the full transaction lifecycle.
 
 Examples of standalone tasks include connector validation tests and Git repository status checks. These operations complete quickly and don't create persistent resources that require cleanup.
 
 ## Logging and observability
 
-The new delegate implements structured logging where each request creates a log client that is passed to task handlers. Logs include label context such as task identifiers, transaction IDs, and step names, making it easier to trace execution across distributed systems.
+Delegate 3.x implements structured logging where each request creates a log client that is passed to task handlers. Logs include label context such as task identifiers, transaction IDs, and step names, making it easier to trace execution across distributed systems.
 
 Remote logging to centralized services can be enabled through configuration. All sensitive strings are automatically masked before logs are written. The delegate publishes metrics about task execution, capacity utilization, and system health.
 
 ## Legacy task support
 
-When integration with legacy delegate functionality is required, the new delegate can use a delegate-sidecar mechanism. The sidecar runs alongside the new delegate and handles execution of specific tasks that require legacy delegate implementations. This bridge mechanism enables gradual migration and ensures compatibility during the transition period.
+When integration with legacy delegate functionality is required, Delegate 3.x can use a delegate-sidecar mechanism. The sidecar runs alongside Delegate 3.x and handles execution of specific tasks that require legacy delegate implementations. This bridge mechanism enables gradual migration and ensures compatibility during the transition period.
 
 ## System requirements
 
-The new delegate runs on infrastructure managed by you. It requires outbound network access to Harness Manager and to any external systems referenced in pipelines, including source code repositories, artifact registries, secret managers, and deployment targets.
+Delegate 3.x runs on infrastructure managed by you. It requires outbound network access to Harness Manager and to any external systems referenced in pipelines, including source code repositories, artifact registries, secret managers, and deployment targets.
 
 Because the delegate runs directly on the host machine rather than in a container with resource limits, capacity planning should account for the expected workload. Resource consumption depends on the number of concurrent stages configured through `MAX_STAGES` and the resource requirements of the steps being executed.
 
@@ -109,7 +109,7 @@ For more information about proxy configuration, go to [Configure delegate proxy 
 
 Several capabilities are planned for future releases:
 
-- **Perpetual tasks**: A framework for long-running background tasks such as artifact polling for triggers. This capability is not yet implemented in the new delegate.
+- **Perpetual tasks**: A framework for long-running background tasks such as artifact polling for triggers. This capability is not yet implemented in Delegate 3.x.
 - **Enhanced connector support**: Expanded support for additional source code management systems, artifact repositories, and cloud providers.
 - **Mutual TLS**: Support for mutual TLS authentication for enhanced security in zero-trust environments.
 

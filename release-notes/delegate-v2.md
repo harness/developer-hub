@@ -1,6 +1,6 @@
 ---
-title: Delegate (Closed Beta) release notes
-sidebar_label: Delegate (Closed Beta)
+title: Delegate 3.x (Closed Beta) release notes
+sidebar_label: Delegate 3.x (Closed Beta)
 tags: [NextGen, "Delegate"]
 date: 2026-02-27T10:00
 sidebar_position: 5
@@ -10,13 +10,13 @@ import ReleaseNotesSearch from '@site/src/components/ReleaseNotesSearch';
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/delegate-v2/rss.xml" />
 
-These release notes describe changes to the new Harness Delegate, currently in closed beta. The new delegate is a lightweight, binary-based runner optimized for CI workloads on local machines (macOS, Linux, and Windows).
+These release notes describe changes to Delegate 3.x, currently in closed beta. Delegate 3.x is a lightweight, binary-based runner optimized for CI workloads on local machines (macOS, Linux, and Windows).
 
 For installation and configuration details, go to [Install Harness Delegate on a Local Machine](/docs/platform/delegates-v2/install-a-delegate/install-delegate-macos). For feature comparison with the legacy delegate, go to [Feature Parity](/docs/platform/delegates-v2/feature-parity).
 
-:::info About the new delegate
+:::info About Delegate 3.x
 
-The new Harness Delegate is currently in closed beta and available only to select customers. It supports CI pipelines with local (Docker), Kubernetes, and containerless infrastructure types. For release notes about the legacy delegate, go to [Delegate release notes](/release-notes/delegate).
+Delegate 3.x is currently in closed beta and available only to select customers. It supports CI pipelines with local (Docker), Kubernetes, and containerless infrastructure types. For release notes about the legacy delegate, go to [Delegate release notes](/release-notes/delegate).
 
 :::
 
@@ -26,7 +26,7 @@ The new Harness Delegate is currently in closed beta and available only to selec
 
 ### Latest binary versions
 
-The new delegate ships as a per-platform binary. Each platform may be updated independently.
+Delegate 3.x ships as a per-platform binary. Each platform may be updated independently.
 
 | Platform | Version | Download |
 |----------|---------|----------|

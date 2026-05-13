@@ -684,11 +684,11 @@ const sidebars: SidebarsConfig = {
             },
             {
               type: 'category',
-              label: 'Delegate (Closed Beta)',
+              label: 'Delegate 3.x (Closed Beta)',
               link: {
                 type: 'generated-index',
-                title: 'Delegate (Closed Beta)',
-                description: 'Learn about the new Harness Delegate - our next-generation delegate for local development',
+                title: 'Delegate 3.x (Closed Beta)',
+                description: 'Learn about Delegate 3.x - our next-generation delegate for local development',
               },
               collapsed: true,
               className: 'sidebar-item-new-green',

@@ -1,10 +1,10 @@
 ---
 title: Delegate Configuration Reference
-description: Common configuration options for the new Harness Delegate across all platforms
+description: Common configuration options for Delegate 3.x across all platforms
 sidebar_position: 5
 ---
 
-This page covers the configuration options that apply to the new Harness Delegate regardless of which operating system it runs on. For OS-specific installation and setup instructions, see the individual guides:
+This page covers the configuration options that apply to Delegate 3.x regardless of which operating system it runs on. For OS-specific installation and setup instructions, see the individual guides:
 
 - [Install Delegate on macOS](./install-delegate-macos)
 - [Install Delegate on Linux](./install-delegate-linux)
@@ -13,7 +13,7 @@ This page covers the configuration options that apply to the new Harness Delegat
 
 ## Configure Pipeline Delegate
 
-For the CI stages that you want to use the new delegate with, [define the stage variable](/docs/platform/variables-and-expressions/add-a-variable/#define-variables) `HARNESS_CI_INTERNAL_ROUTE_TO_RUNNER` and set it to `true`.
+For the CI stages that you want to use Delegate 3.x with, [define the stage variable](/docs/platform/variables-and-expressions/add-a-variable/#define-variables) `HARNESS_CI_INTERNAL_ROUTE_TO_RUNNER` and set it to `true`.
 
 Then, [set your pipeline's build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure#set-the-pipelines-build-infrastructure) as usual. Ensure that you have set **Local** as the **Infrastructure** and that the **Operating System** and **Architecture** match the delegate you installed.
 

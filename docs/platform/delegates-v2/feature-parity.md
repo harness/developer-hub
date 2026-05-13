@@ -1,13 +1,13 @@
 ---
 title: Feature Parity
-description: Detailed comparison of features between the new delegate and the legacy delegate
+description: Detailed comparison of features between Delegate 3.x and the legacy delegate
 sidebar_position: 1
 sidebar_label: Feature Parity
 ---
 
 :::warning Closed Beta
 
-The new Harness Delegate is currently in closed beta. Features and capabilities are actively being developed and expanded. This page reflects the current state and will be updated as new features become available.
+Delegate 3.x is currently in closed beta. Features and capabilities are actively being developed and expanded. This page reflects the current state and will be updated as new features become available.
 
 :::
 
@@ -15,37 +15,37 @@ This page compares the new and legacy delegates, including details on supported 
 
 ## Architectural differences
 
-The new delegate and legacy delegates are built on different architectural foundations, reflecting various design goals and execution models.
+Delegate 3.x and legacy delegates are built on different architectural foundations, reflecting various design goals and execution models.
 
 ### Execution models
 
 The legacy delegate uses a task-based execution model where each operation is an independent task. Tasks are assigned to delegates based on capability checks, during which they verify they can access the required external systems before accepting work. This model has been effective for supporting the broad range of Harness modules and integrations.
 
-The new delegate uses a transaction-based execution model, treating each stage as an atomic unit of work. A transaction consists of initialization, execution, and cleanup phases that are guaranteed to execute on the same delegate. This model provides stronger guarantees about resource cleanup and state consistency within a stage.
+Delegate 3.x uses a transaction-based execution model, treating each stage as an atomic unit of work. A transaction consists of initialization, execution, and cleanup phases that are guaranteed to execute on the same delegate. This model provides stronger guarantees about resource cleanup and state consistency within a stage.
 
 ### Task routing
 
 The legacy delegate implements capability-based routing. When a task is created, Harness Manager queries available delegates to determine which ones have connectivity to the required external systems. Tasks are automatically routed to delegates that pass capability checks.
 
-The new delegate implements selector-based routing exclusively. Delegates are tagged with selectors during installation, and tasks specify which selectors are required. There are no automatic capability checks; routing is purely based on matching selectors. This simplified routing model reduces coordination overhead but requires explicit configuration.
+Delegate 3.x implements selector-based routing exclusively. Delegates are tagged with selectors during installation, and tasks specify which selectors are required. There are no automatic capability checks; routing is purely based on matching selectors. This simplified routing model reduces coordination overhead but requires explicit configuration.
 
 For more information about configuring selectors, go to [Use delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors).
 
 ### Capacity management
 
-Both delegates support capacity limits, but at different levels of granularity. The legacy delegate uses `DELEGATE_TASK_CAPACITY` to limit the total number of concurrent tasks across all types. The new delegate uses `MAX_STAGES` to limit concurrent CI stage executions. When capacity limits are reached, additional work is queued until capacity becomes available.
+Both delegates support capacity limits, but at different levels of granularity. The legacy delegate uses `DELEGATE_TASK_CAPACITY` to limit the total number of concurrent tasks across all types. Delegate 3.x uses `MAX_STAGES` to limit concurrent CI stage executions. When capacity limits are reached, additional work is queued until capacity becomes available.
 
 ## Module support
 
-Module support depends on how you deploy the new delegate — hosted (Harness Cloud) or self-hosted (local machine or Kubernetes).
+Module support depends on how you deploy Delegate 3.x — hosted (Harness Cloud) or self-hosted (local machine or Kubernetes).
 
 ### Hosted cloud (Harness Cloud)
 
-When running on Harness Cloud, the new delegate has full parity across all Harness modules. This includes Continuous Delivery (CD), Cloud Cost Management (CCM), Security Testing Orchestration (STO), Chaos Engineering, Feature Management and Experimentation (FME), Service Reliability Management (SRM), Infrastructure as Code Management (IaCM), and Continuous Integration (CI).
+When running on Harness Cloud, Delegate 3.x has full parity across all Harness modules. This includes Continuous Delivery (CD), Cloud Cost Management (CCM), Security Testing Orchestration (STO), Chaos Engineering, Feature Management and Experimentation (FME), Service Reliability Management (SRM), Infrastructure as Code Management (IaCM), and Continuous Integration (CI).
 
 ### Self-hosted (local or Kubernetes)
 
-When self-hosted on a local machine or Kubernetes cluster, the new delegate currently supports Continuous Integration (CI) pipelines only, with full CI step parity as described in the [CI step compatibility](#ci-step-compatibility) section below.
+When self-hosted on a local machine or Kubernetes cluster, Delegate 3.x currently supports Continuous Integration (CI) pipelines only, with full CI step parity as described in the [CI step compatibility](#ci-step-compatibility) section below.
 
 The following modules require the legacy delegate when running self-hosted:
 
@@ -57,32 +57,32 @@ The following modules require the legacy delegate when running self-hosted:
 - Service Reliability Management (SRM)
 - Infrastructure as Code Management (IaCM)
 
-The self-hosted new delegate is optimized for CI workloads that benefit from direct access to local hardware or licensed software on a specific machine, such as iOS builds requiring Xcode or Android builds requiring Android SDK.
+The self-hosted Delegate 3.x is optimized for CI workloads that benefit from direct access to local hardware or licensed software on a specific machine, such as iOS builds requiring Xcode or Android builds requiring Android SDK.
 
 ## CI stage routing
 
-To route a CI stage to the new delegate, the stage must be explicitly configured to do so. Two routing mechanisms are available:
+To route a CI stage to Delegate 3.x, the stage must be explicitly configured to do so. Two routing mechanisms are available:
 
-- **Per-stage routing**: Set the stage variable `HARNESS_CI_INTERNAL_ROUTE_TO_RUNNER` to `true` for each stage that should use the new delegate.
-- **Feature flag routing**: Enable account-level feature flags to route all CI stages for specific infrastructure types. For example, `CI_V0_LOCAL_BUILDS_USE_RUNNER` routes all local (Docker) CI stages to the new delegate when enabled.
+- **Per-stage routing**: Set the stage variable `HARNESS_CI_INTERNAL_ROUTE_TO_RUNNER` to `true` for each stage that should use Delegate 3.x.
+- **Feature flag routing**: Enable account-level feature flags to route all CI stages for specific infrastructure types. For example, `CI_V0_LOCAL_BUILDS_USE_RUNNER` routes all local (Docker) CI stages to Delegate 3.x when enabled.
 
 Without explicit configuration, all stages are routed to legacy delegates by default.
 
 ### Feature flags controlling delegate routing
 
-The transition from legacy delegates to the new delegate is controlled through a series of feature flags that manage task submission and execution workflows. These flags enable the gradual rollout and testing of the new delegate functionality. The following feature flags are available:
+The transition from legacy delegates to Delegate 3.x is controlled through a series of feature flags that manage task submission and execution workflows. These flags enable the gradual rollout and testing of Delegate 3.x functionality. The following feature flags are available:
 
 **Core routing flags:**
 
-- **`PL_USE_RUNNER`**: When enabled, routes connector validation and connection tests to the new delegate. This flag is waiting on Git-sync tests and automations to pass before general availability.
+- **`PL_USE_RUNNER`**: When enabled, routes connector validation and connection tests to Delegate 3.x. This flag is waiting on Git-sync tests and automations to pass before general availability.
 
 **CI infrastructure routing flags:**
 
-- **`CI_V0_LOCAL_BUILDS_USE_RUNNER`**: When enabled, routes v0 local build pipeline operations (Docker infrastructure) to the new delegate. This flag enables the primary use case for the new delegate: local machine execution.
+- **`CI_V0_LOCAL_BUILDS_USE_RUNNER`**: When enabled, routes v0 local build pipeline operations (Docker infrastructure) to Delegate 3.x. This flag enables the primary use case for Delegate 3.x: local machine execution.
 
-- **`CI_V0_HOSTED_BUILDS_USE_RUNNER`**: When enabled, routes v0 hosted build pipeline operations to the new delegate.
+- **`CI_V0_HOSTED_BUILDS_USE_RUNNER`**: When enabled, routes v0 hosted build pipeline operations to Delegate 3.x.
 
-- **`CI_V0_FREE_HOSTED_BUILDS_USE_RUNNER`**: When enabled, routes hosted builds for non-credit users to the new delegate.
+- **`CI_V0_FREE_HOSTED_BUILDS_USE_RUNNER`**: When enabled, routes hosted builds for non-credit users to Delegate 3.x.
 
 **Optional behavior flags:**
 
@@ -90,7 +90,7 @@ The transition from legacy delegates to the new delegate is controlled through a
 
 - **`CI_INVALID_SECRET_ERROR`**: When enabled, fails execution if a referenced secret is invalid. This ensures consistent behavior across infrastructure types, matching Kubernetes behavior where invalid secrets always fail the execution. This flag is protected by `CI_RUNNER_FRAMEWORK_SECRET_EVAL` for rollback.
 
-- **`CI_RUNNER_FRAMEWORK_SECRET_EVAL`**: When enabled, controls secret evaluation in the new delegate's execution framework. This flag serves as a rollback protection mechanism for `CI_INVALID_SECRET_ERROR`.
+- **`CI_RUNNER_FRAMEWORK_SECRET_EVAL`**: When enabled, controls secret evaluation in Delegate 3.x's execution framework. This flag serves as a rollback protection mechanism for `CI_INVALID_SECRET_ERROR`.
 
 - **`CI_UNIFIED_RUNNER_REPLACE_STEP_ID_BY_TASK_ID_IN_V0_PIPELINES`**: When enabled, populates the ExecuteRequest with task IDs instead of step IDs for v0 pipelines. v1 pipelines always use task IDs regardless of this flag. When disabled, v0 pipelines use step IDs (legacy behavior).
 
@@ -98,7 +98,7 @@ Feature flags are managed at the account level by Harness and are enabled as par
 
 ## CI step compatibility
 
-All CI steps are fully supported on the new delegate with full parity to the legacy delegate. This includes Git Clone, Run, Run Tests, Test Intelligence, Build Intelligence, Cache Intelligence, Docker Layer Caching, Background, Plugin, Upload to JFrog, and all Build and Push steps (Docker, GAR, GCS, ECR, S3).
+All CI steps are fully supported on Delegate 3.x with full parity to the legacy delegate. This includes Git Clone, Run, Run Tests, Test Intelligence, Build Intelligence, Cache Intelligence, Docker Layer Caching, Background, Plugin, Upload to JFrog, and all Build and Push steps (Docker, GAR, GCS, ECR, S3).
 
 ## Source code management
 
@@ -114,20 +114,20 @@ HashiCorp Vault support for all authentication methods requires the feature flag
 
 ## Connector support
 
-The following connectors have been validated for use with the new delegate:
+The following connectors have been validated for use with Delegate 3.x:
 
 - **Docker Registry (DockerHub)**: Supported for pulling images.
 - **JFrog Artifactory**: Supported for artifact uploads.
 - **Other registries** (ECR, GCR, ACR, GAR): Planned for future releases.
 
-Connectors for cloud providers (AWS, Azure, GCP), Kubernetes clusters, CI/CD tools (Jenkins), and ticketing systems (Jira, ServiceNow) are not yet supported for connector validation through the new delegate. Support for these connector types is planned for future releases.
+Connectors for cloud providers (AWS, Azure, GCP), Kubernetes clusters, CI/CD tools (Jenkins), and ticketing systems (Jira, ServiceNow) are not yet supported for connector validation through Delegate 3.x. Support for these connector types is planned for future releases.
 
 ## Infrastructure support
 
-The new delegate supports the following infrastructure types for executing CI stages:
+Delegate 3.x supports the following infrastructure types for executing CI stages:
 
 - **Harness Cloud (hosted)**: Fully supported across all modules. No local delegate installation required.
-- **Local (Docker)**: Executes work on the machine where the delegate runs, using Docker for containerized steps. This is the primary use case for the self-hosted new delegate.
+- **Local (Docker)**: Executes work on the machine where the delegate runs, using Docker for containerized steps. This is the primary use case for the self-hosted Delegate 3.x.
 - **Kubernetes**: Executes work in a Kubernetes cluster. Support is more limited than for local infrastructure.
 - **VM pools**: Planned for future releases.
 
@@ -141,7 +141,7 @@ The development roadmap includes enhancements across several areas. Items are ca
 
 These items are currently in active development or scheduled for upcoming releases:
 
-- **Custom secret managers**: The only secret manager integration not yet supported on the new delegate.
+- **Custom secret managers**: The only secret manager integration not yet supported on Delegate 3.x.
 - **Platform features**: Complete proxy and custom certificate support. Perpetual task framework for artifact triggers and polling. Delegate sidecar integration for legacy task compatibility.
 - **Installation and deployment**: Improved installation experience and packaging for different operating systems.
 
@@ -167,9 +167,9 @@ The roadmap is subject to change based on user feedback and evolving requirement
 
 When deciding which delegate to use, consider the following factors.
 
-**Use the new delegate when:**
+**Use Delegate 3.x when:**
 
-- Running workloads on Harness Cloud, where the new delegate provides full parity across all modules.
+- Running workloads on Harness Cloud, where Delegate 3.x provides full parity across all modules.
 - Running CI pipelines that benefit from local machine execution, such as iOS builds requiring Xcode or Android builds requiring Android SDK.
 - Direct access to specialized hardware or licensed software on specific machines is required.
 - The CI steps and connectors needed are supported according to the compatibility sections above.
@@ -177,11 +177,11 @@ When deciding which delegate to use, consider the following factors.
 **Use the legacy delegate when:**
 
 - Running self-hosted deployments that use any Harness module other than CI.
-- CI steps or connectors not yet supported by the new delegate are required (self-hosted only).
+- CI steps or connectors not yet supported by Delegate 3.x are required (self-hosted only).
 - Capability-based routing is needed to ensure tasks are automatically sent to delegates with appropriate connectivity.
 - Deploying delegates in Kubernetes with standard orchestration and management tools.
 
-Both delegates can coexist in the same account. Different pipelines can be configured to use different delegate types based on their specific requirements. This allows gradual adoption and testing of the new delegate without disrupting existing workflows.
+Both delegates can coexist in the same account. Different pipelines can be configured to use different delegate types based on their specific requirements. This allows gradual adoption and testing of Delegate 3.x without disrupting existing workflows.
 
 ## Comparison with legacy delegate
 

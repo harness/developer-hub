@@ -1,6 +1,6 @@
 ---
 title: Install a Delegate on Kubernetes
-description: Learn how to install the new Delegate in a Kubernetes cluster
+description: Learn how to install Delegate 3.x in a Kubernetes cluster
 sidebar_position: 4
 redirect_from:
   - /docs/platform/delegates/delegate-v2/install-kubernetes-delegate-2-0
@@ -9,24 +9,24 @@ redirect_from:
 
 :::warning Closed Beta
 
-The new Harness Delegate is currently in closed beta and available only to select users. Access is determined by the product team. See [Feature Parity](/docs/platform/delegates-v2/feature-parity) for current supported use cases.
+Delegate 3.x is currently in closed beta and available only to select users. Access is determined by the product team. See [Feature Parity](/docs/platform/delegates-v2/feature-parity) for current supported use cases.
 
 :::
 
-This guide describes how to install the new Harness Delegate in a Kubernetes cluster. The Kubernetes delegate runs as a deployment in your cluster and can execute CI builds and other Harness tasks. For supported connectors, CI steps, secret managers, and module support by deployment type, see the [Feature Parity](/docs/platform/delegates-v2/feature-parity) page — that's the single source of truth, kept up to date as support expands.
+This guide describes how to install Delegate 3.x in a Kubernetes cluster. The Kubernetes delegate runs as a deployment in your cluster and can execute CI builds and other Harness tasks. For supported connectors, CI steps, secret managers, and module support by deployment type, see the [Feature Parity](/docs/platform/delegates-v2/feature-parity) page — that's the single source of truth, kept up to date as support expands.
 
 :::info
-To learn more about the new delegate, including architecture and how it compares to the legacy delegate, see the [New Delegate Overview](../delegate-overview).
+To learn more about Delegate 3.x, including architecture and how it compares to the legacy delegate, see the [Delegate 3.x Overview](../delegate-overview).
 :::
 
 ## Feature Flags
 
-To use the new delegate for different operations, you need to enable the appropriate feature flags in your Harness account:
+To use Delegate 3.x for different operations, you need to enable the appropriate feature flags in your Harness account:
 
 | Feature Flag | Purpose | When to Enable |
 |--------------|---------|----------------|
-| `CI_V0_K8S_BUILDS_USE_RUNNER` | Routes CI stages with Kubernetes infrastructure to the new delegate | Enable this if you want all CI stages with Kubernetes infrastructure to use the new delegate account-wide. Alternatively, you can use a stage variable `HARNESS_CI_INTERNAL_ROUTE_TO_RUNNER` set to `true` for individual stages. |
-| `PL_USE_RUNNER` | Enables the new delegate for connector tests and secret manager operations | Enable this to use the new delegate for connector connectivity tests and secret manager operations (create, update, rename, delete secrets). |
+| `CI_V0_K8S_BUILDS_USE_RUNNER` | Routes CI stages with Kubernetes infrastructure to Delegate 3.x | Enable this if you want all CI stages with Kubernetes infrastructure to use Delegate 3.x account-wide. Alternatively, you can use a stage variable `HARNESS_CI_INTERNAL_ROUTE_TO_RUNNER` set to `true` for individual stages. |
+| `PL_USE_RUNNER` | Enables Delegate 3.x for connector tests and secret manager operations | Enable this to use Delegate 3.x for connector connectivity tests and secret manager operations (create, update, rename, delete secrets). |
 
 **Note:** Feature flags are account-level settings. Contact your Harness administrator to enable these flags if you don't have the necessary permissions.
 
@@ -253,7 +253,7 @@ Once your delegate is installed and connected, you can use it for CI stages with
 
 ### CI Stage with Kubernetes Infrastructure
 
-To use the new delegate for CI builds, configure your pipeline stage to use Kubernetes infrastructure and route tasks to it.
+To use Delegate 3.x for CI builds, configure your pipeline stage to use Kubernetes infrastructure and route tasks to it.
 
 #### Create a Kubernetes Cluster Connector
 
@@ -284,7 +284,7 @@ To use the new delegate for CI builds, configure your pipeline stage to use Kube
   <DocImage path={require('../static/k8s-4.png')} width="60%" height="60%" title="Click to view full size image" />
 </div>
 
-5. Save the connector. You may see a connector test error—this is expected, as connector tests are not yet fully supported for the new delegate. The connector will work correctly even if the test connection is not successful.
+5. Save the connector. You may see a connector test error—this is expected, as connector tests are not yet fully supported for Delegate 3.x. The connector will work correctly even if the test connection is not successful.
 
 #### Configure CI Stage Infrastructure
 
@@ -300,16 +300,16 @@ To use the new delegate for CI builds, configure your pipeline stage to use Kube
   <DocImage path={require('../static/k8s-5.png')} width="60%" height="60%" title="Click to view full size image" />
 </div>
 
-#### Enable New Delegate Routing
+#### Enable Delegate 3.x Routing
 
-To route CI tasks to the new delegate, you can either:
+To route CI tasks to Delegate 3.x, you can either:
 
-- **Use a stage variable** (recommended for testing): Go to your pipeline stage's **Advanced** tab, add a variable named `HARNESS_CI_INTERNAL_ROUTE_TO_RUNNER`, and set its value to `true`. This enables new delegate routing for that specific stage only.
-- **Enable the feature flag** (account-wide): Enable `CI_V0_K8S_BUILDS_USE_RUNNER` in your Harness account (see [Feature Flags](#feature-flags) for details). This routes all CI stages with Kubernetes infrastructure to the new delegate, while still respecting the delegate selectors configured in your Kubernetes connectors.
+- **Use a stage variable** (recommended for testing): Go to your pipeline stage's **Advanced** tab, add a variable named `HARNESS_CI_INTERNAL_ROUTE_TO_RUNNER`, and set its value to `true`. This enables Delegate 3.x routing for that specific stage only.
+- **Enable the feature flag** (account-wide): Enable `CI_V0_K8S_BUILDS_USE_RUNNER` in your Harness account (see [Feature Flags](#feature-flags) for details). This routes all CI stages with Kubernetes infrastructure to Delegate 3.x, while still respecting the delegate selectors configured in your Kubernetes connectors.
 
 ### Connector Tests and Secret Manager Operations
 
-To use the new delegate for connector connectivity tests and secret manager operations (create, update, rename, and delete secrets):
+To use Delegate 3.x for connector connectivity tests and secret manager operations (create, update, rename, and delete secrets):
 
 1. Enable the feature flag `PL_USE_RUNNER` in your Harness account (see [Feature Flags](#feature-flags) for details).
 
@@ -318,7 +318,7 @@ To use the new delegate for connector connectivity tests and secret manager oper
 3. The delegate will automatically be used for connector tests and secret manager operations when the tags match.
 
 :::info
-For the full list of connectors supported by the new delegate, see [Connector support](/docs/platform/delegates-v2/feature-parity#connector-support) on the Feature Parity page.
+For the full list of connectors supported by Delegate 3.x, see [Connector support](/docs/platform/delegates-v2/feature-parity#connector-support) on the Feature Parity page.
 :::
 
 
