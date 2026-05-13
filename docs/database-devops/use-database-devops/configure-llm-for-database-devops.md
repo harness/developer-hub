@@ -56,21 +56,20 @@ set -e
 # All configuration is read from step environment variables — no edits needed below.
 
 cd dbops/DBTestAndPreview_1
-
 git config --global user.email "$USER_EMAIL"
 git config --global user.name  "$USER_NAME"
 
-# ── Set remote URL based on repo type ────────────────────────────────────────
+# ── Set remote URL ────────────────────────────────────────────────────────────
 case "$REPO_TYPE" in
   github)
     ENCODED_EMAIL="${USER_EMAIL//@/%40}"
     REMOTE_URL="https://${ENCODED_EMAIL}:<+secrets.getValue("github")>@github.com/${USERNAME}/${REPO}.git"
     ;;
   bitbucket)
-    REMOTE_URL="https://${USERNAME}:<+secrets.getValue("account.bitbucket")>@bitbucket.org/${WORKSPACE}/${REPO}.git"
+    REMOTE_URL="https://${USERNAME}:<+secrets.getValue("bitbucket")>@bitbucket.org/${WORKSPACE}/${REPO}.git"
     ;;
   harness)
-    REMOTE_URL="https://git:<+secrets.getValue("harness_api_token")>@app.harness.io/git/${ORG_ID}/${PROJECT_ID}/${REPO}.git"
+    REMOTE_URL="https://${HARNESS_CODE_NAME}:<+secrets.getValue("harness_api_token")>@git.harness.io/${ACCOUNT_ID}/${ORG_ID}/${PROJECT_ID}/${REPO}.git"
     ;;
   *)
     echo "ERROR: Unsupported REPO_TYPE '${REPO_TYPE}'. Must be github, bitbucket, or harness."
@@ -78,18 +77,16 @@ case "$REPO_TYPE" in
     ;;
 esac
 
-# ── Push to a new branch ─────────────────────────────────────────────────────
+# ── Push to a new branch ──────────────────────────────────────────────────────
 git remote remove origin 2>/dev/null || true
 git remote add origin "$REMOTE_URL"
 git fetch origin
-
 DEFAULT_BRANCH=$(git remote show origin | grep 'HEAD branch' | awk '{print $NF}')
 DEFAULT_BRANCH="${DEFAULT_BRANCH:-main}"
 echo "Default branch: $DEFAULT_BRANCH"
 
-git add db/changelog.yml # Adjust path and filenameas needed
+git add .
 git commit -m "Updating changeset in changelog file"
-
 NEW_BRANCH="changelog-update-$(date +%Y%m%d%H%M%S)"
 git checkout -b "$NEW_BRANCH"
 git push -u origin "$NEW_BRANCH"
@@ -106,19 +103,26 @@ case "$REPO_TYPE" in
     ;;
   bitbucket)
     PR_RESPONSE=$(curl -s -X POST \
-      -u "${USERNAME}:<+secrets.getValue("account.bitbucket")>" \
+      -u "${USERNAME}:<+secrets.getValue("bitbucket")>" \
       -H "Content-Type: application/json" \
       "https://api.bitbucket.org/2.0/repositories/${WORKSPACE}/${REPO}/pullrequests" \
       -d "{\"title\":\"Automated changelog update\",\"source\":{\"branch\":{\"name\":\"${NEW_BRANCH}\"}},\"destination\":{\"branch\":{\"name\":\"${DEFAULT_BRANCH}\"}},\"close_source_branch\":true}")
     PR_URL=$(echo "$PR_RESPONSE" | grep -o '"html":{"href":"[^"]*"' | sed 's/"html":{"href":"//;s/"$//')
     ;;
   harness)
-    PR_RESPONSE=$(curl -s -X POST \
+    PR_RESPONSE=$(curl -s -w "\n__HTTP_STATUS__%{http_code}" -X POST \
       "https://app.harness.io/code/api/v1/repos/${REPO}/pullreq?accountIdentifier=${ACCOUNT_ID}&orgIdentifier=${ORG_ID}&projectIdentifier=${PROJECT_ID}" \
       -H "Content-Type: application/json" \
       -H "x-api-key: <+secrets.getValue("harness_api_token")>" \
       -d "{\"title\":\"Automated changelog update\",\"source_branch\":\"${NEW_BRANCH}\",\"target_branch\":\"${DEFAULT_BRANCH}\",\"is_draft\":false}")
-    PR_NUMBER=$(echo "$PR_RESPONSE" | grep -o '"number":[0-9]*' | head -1 | sed 's/"number"://')
+    HTTP_STATUS=$(echo "$PR_RESPONSE" | grep "__HTTP_STATUS__" | sed 's/__HTTP_STATUS__//')
+    BODY=$(echo "$PR_RESPONSE" | grep -v "__HTTP_STATUS__")
+    if [ "$HTTP_STATUS" -lt 200 ] || [ "$HTTP_STATUS" -ge 300 ]; then
+      echo "❌ Failed to create PR (HTTP $HTTP_STATUS)"
+      echo "$BODY"
+      exit 1
+    fi
+    PR_NUMBER=$(echo "$BODY" | grep -o '"number":[0-9]*' | head -1 | sed 's/"number"://')
     PR_URL="https://app.harness.io/ng/account/${ACCOUNT_ID}/module/code/orgs/${ORG_ID}/projects/${PROJECT_ID}/repos/${REPO}/pull-requests/${PR_NUMBER}"
     ;;
 esac
@@ -135,11 +139,12 @@ Setup the following environment variables in the Run step configuration, ensurin
 | USER_EMAIL    | String | Git commit author email                                                      | [jane.doe@example.com](mailto:jane.doe@example.com) |
 | USER_NAME     | String | Git commit author name                                                       | Jane Doe                                            |
 | USERNAME      | String | Git provider username (GitHub/Bitbucket only)                                | janedoe                                             |
-| REPO          | String | Repository name (GitHub/Bitbucket only)                                      | my-database-repo                                    |
+| REPO          | String | Repository name                                                              | my-database-repo                                    |
 | WORKSPACE     | String | Workspace slug (Bitbucket only)                                              | mycompany                                           |
 | ORG_ID        | String | Organization identifier (Harness Code only)                                  | default                                             |
 | PROJECT_ID    | String | Project identifier (Harness Code only)                                       | my_project                                          |
 | ACCOUNT_ID    | String | Account identifier (Harness Code only)                                       | abc123                                              |
+| HARNESS_CODE_NAME | String | Harness Code username (Harness Code only)                                | code_token_toewv                                    |
 
 ![Database DevOps LLM Authoring Environment Variables](./static/dbops-llm-authoring-env.png)
 
@@ -176,58 +181,51 @@ You can also set USER_NAME and USER_EMAIL to the user who started the pipeline v
 
 ```yaml
 pipeline:
-  name: dbops_llm_test_preview
-  identifier: dbops_llm_test_preview
-  projectIdentifier: default_project
+  name: LLM Authoring
+  identifier: LLM_Authoring
+  projectIdentifier: DBMarlin
   orgIdentifier: default
   tags: {}
   stages:
     - stage:
-        name: db
-        identifier: DBTestAndPreview12
-        description: "This stage is used for testing the LLM generated changeset and creating a PR with the changeset file in the git repository"
+        name: LLm Authoring
+        identifier: LLm_Authoring
+        description: "This stage is used for testing the LLM generated changeset and creating a PR with the changeset file in the git repository."
         type: Custom
         spec:
           execution:
             steps:
               - stepGroup:
-                  name: cs
-                  identifier: cs
+                  name: LLM
+                  identifier: LLM
                   steps:
                     - step:
                         type: DBTestAndPreview
                         name: DBTestAndPreview_1
                         identifier: DBTestAndPreview_1
-                        resources:
-                          limits:
-                            memory: 0.5Gi
-                            cpu: "1"
                         spec:
-                          connectorRef: dockerHarness
+                          connectorRef: docker
                           dbSchema: <+input>
                           dbInstance: <+input>
                           changeset: <+input>
-                        timeout: 20m
+                        timeout: 10m
                     - step:
                         type: Run
-                        name: Generate the PR - LLM Authoring
-                        identifier: Script_Verification
+                        name: Git Merge
+                        identifier: Git_Merge
                         spec:
-                          connectorRef: testDefault
-                          image: prontotools/alpine-git-curl:latest
+                          connectorRef: docker
+                          image: prontotools/alpine-git-curl
                           shell: Sh
                           command: |-
                             #!/bin/bash
                             set -e
 
-                            # All configuration is read from step environment variables — no edits needed below.
-
                             cd dbops/DBTestAndPreview_1
-
                             git config --global user.email "$USER_EMAIL"
                             git config --global user.name  "$USER_NAME"
 
-                            # ── Set remote URL based on repo type ────────────────────────────────────────
+                            # ── Set remote URL ────────────────────────────────────────────────────────────
                             case "$REPO_TYPE" in
                               github)
                                 ENCODED_EMAIL="${USER_EMAIL//@/%40}"
@@ -237,7 +235,8 @@ pipeline:
                                 REMOTE_URL="https://${USERNAME}:<+secrets.getValue("account.bitbucket")>@bitbucket.org/${WORKSPACE}/${REPO}.git"
                                 ;;
                               harness)
-                                REMOTE_URL="https://git:<+secrets.getValue("harness_api_token")>@app.harness.io/git/${ORG_ID}/${PROJECT_ID}/${REPO}.git"
+                                # Fix 1: hardcoded username, Fix 2: correct host and path format
+                                REMOTE_URL="https://${HARNESS_CODE_NAME}:<+secrets.getValue("harness_api_token")>@git.harness.io/${ACCOUNT_ID}/${ORG_ID}/${PROJECT_ID}/${REPO}.git"
                                 ;;
                               *)
                                 echo "ERROR: Unsupported REPO_TYPE '${REPO_TYPE}'. Must be github, bitbucket, or harness."
@@ -245,18 +244,22 @@ pipeline:
                                 ;;
                             esac
 
-                            # ── Push to a new branch ─────────────────────────────────────────────────────
+                            # ── Push to a new branch ──────────────────────────────────────────────────────
                             git remote remove origin 2>/dev/null || true
                             git remote add origin "$REMOTE_URL"
                             git fetch origin
-
                             DEFAULT_BRANCH=$(git remote show origin | grep 'HEAD branch' | awk '{print $NF}')
                             DEFAULT_BRANCH="${DEFAULT_BRANCH:-main}"
                             echo "Default branch: $DEFAULT_BRANCH"
+                            echo "── Current directory ──"
+                            pwd
+                            echo "── Git status ──"
+                            git status
+                            echo "── All files ──"
+                            find . -type f | grep -v ".git" | sort
 
-                            git add db/changelog.yml
+                            git add .
                             git commit -m "Updating changeset in changelog file"
-
                             NEW_BRANCH="changelog-update-$(date +%Y%m%d%H%M%S)"
                             git checkout -b "$NEW_BRANCH"
                             git push -u origin "$NEW_BRANCH"
@@ -280,12 +283,19 @@ pipeline:
                                 PR_URL=$(echo "$PR_RESPONSE" | grep -o '"html":{"href":"[^"]*"' | sed 's/"html":{"href":"//;s/"$//')
                                 ;;
                               harness)
-                                PR_RESPONSE=$(curl -s -X POST \
+                                PR_RESPONSE=$(curl -s -w "\n__HTTP_STATUS__%{http_code}" -X POST \
                                   "https://app.harness.io/code/api/v1/repos/${REPO}/pullreq?accountIdentifier=${ACCOUNT_ID}&orgIdentifier=${ORG_ID}&projectIdentifier=${PROJECT_ID}" \
                                   -H "Content-Type: application/json" \
                                   -H "x-api-key: <+secrets.getValue("harness_api_token")>" \
                                   -d "{\"title\":\"Automated changelog update\",\"source_branch\":\"${NEW_BRANCH}\",\"target_branch\":\"${DEFAULT_BRANCH}\",\"is_draft\":false}")
-                                PR_NUMBER=$(echo "$PR_RESPONSE" | grep -o '"number":[0-9]*' | head -1 | sed 's/"number"://')
+                                HTTP_STATUS=$(echo "$PR_RESPONSE" | grep "__HTTP_STATUS__" | sed 's/__HTTP_STATUS__//')
+                                BODY=$(echo "$PR_RESPONSE" | grep -v "__HTTP_STATUS__")
+                                if [ "$HTTP_STATUS" -lt 200 ] || [ "$HTTP_STATUS" -ge 300 ]; then
+                                  echo "❌ Failed to create PR (HTTP $HTTP_STATUS)"
+                                  echo "$BODY"
+                                  exit 1
+                                fi
+                                PR_NUMBER=$(echo "$BODY" | grep -o '"number":[0-9]*' | head -1 | sed 's/"number"://')
                                 PR_URL="https://app.harness.io/ng/account/${ACCOUNT_ID}/module/code/orgs/${ORG_ID}/projects/${PROJECT_ID}/repos/${REPO}/pull-requests/${PR_NUMBER}"
                                 ;;
                             esac
@@ -293,46 +303,22 @@ pipeline:
                             echo "Pull request created: $PR_URL"
                             export CHANGESET_PR_LINK="$PR_URL"
                           envVariables:
+                            REPO_TYPE: harness
+                            USER_EMAIL: <+pipeline.triggeredBy.email>
+                            USER_NAME: <+pipeline.triggeredBy.name>
                             REPO_TYPE: <+input>
-                            USER_EMAIL: <+input>
-                            USER_NAME: <+input>
-                            USERNAME: <+input>
-                            REPO: <+input>
-                            WORKSPACE: <+input>
+                            USER_EMAIL: <+pipeline.triggeredBy.email>
+                            USER_NAME: <+pipeline.triggeredBy.name>
+                            ACCOUNT_ID: <+input>
                             ORG_ID: <+input>
                             PROJECT_ID: <+input>
-                            ACCOUNT_ID: <+input>
-                        failureStrategies:
-                          - onFailure:
-                              errors:
-                                - AllErrors
-                              action:
-                                type: Ignore
-                      contextType: Pipeline
+                            HARNESS_CODE_NAME: <+input>
+                            REPO: <+input>
                   stepGroupInfra:
                     type: KubernetesDirect
                     spec:
-                      connectorRef: db
-                      namespace: harness-delegate-ng
-                      containerSecurityContext:
-                        runAsUser: "0"
-        failureStrategies:
-          - onFailure:
-              errors:
-                - AllErrors
-              action:
-                type: MarkAsFailure
-  variables:
-    - name: dbInstance
-      type: String
-      description: ""
-      required: false
-      value: <+input>
-    - name: dbSchema
-      type: String
-      description: ""
-      required: false
-      value: <+input>
+                      connectorRef: gke
+        tags: {}
 ```
 </TabItem>
 </Tabs>

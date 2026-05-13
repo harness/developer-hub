@@ -79,7 +79,7 @@ pipeline:
                   name: Approval
                   identifier: Approval
                   spec:
-                    approvalMessage: Please review the following information and approve the pipeline progression
+                    approvalMessage: Please review the following information and approve the pipeline progression <+execution.steps.Preview.steps.DBSchemaUpdateSQL_1.output.sqlCommands>
                     includePipelineExecutionHistory: true
                     isAutoRejectEnabled: false
                     approvers:
@@ -146,6 +146,22 @@ CREATE TABLE products
     CONSTRAINT products_pkey PRIMARY KEY (id)
 );
 ```
+
+## Referencing SQL Output in Approval Messages
+
+To display the generated SQL in your approval message, use the Preview SQL step's output variable:
+
+```sh
+<+execution.steps.[StepGroup_ID].steps.[PreviewSQL_Step_ID].output.sqlCommands>
+```
+
+For example, if your step group identifier is `Preview_SQL` and the Preview SQL step identifier is `Test_Policies`, use:
+
+```sh
+<+execution.steps.Preview_SQL.steps.Test_Policies.output.sqlCommands>
+```
+![sql-approval-message](./static/sql-approval-message.png)
+
 ## Manual Approval Step
 The Approval step acts as a gate in the pipeline. When the pipeline reaches this stage:
 - A notification is sent to the designated approvers.

@@ -16,6 +16,9 @@ This guide explains how to deploy the Harness Database DevOps runner on Amazon E
 - Active Harness account with Database DevOps module enabled.
 - Permissions to create AWS connectors, delegates, and Database DevOps pipelines. Go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) to configure roles.
 - Obtain a delegate token from Harness to authenticate the runner. Go to [Create a delegate token](https://developer.harness.io/docs/platform/delegates/secure-delegates/secure-delegates-with-tokens/) for instructions.
+- Enable following Features Flags by contacting [Harness Support](mailto:support@harness.io): 
+  - `CDS_INIT_CONTAINER_V2_ASYNC_STEP` for using AsyncExecutable flow in initialise. 
+  - `CDS_ENABLE_ECS_CONTAINER_STEP_GROUP_INFRA` for enabling ECS Container Step Group infrastructure in UI.
 
 ## Architecture overview
 

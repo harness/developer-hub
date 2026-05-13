@@ -39,7 +39,7 @@ Harness DB DevOps provides a way to:
 ## Harness DB DevOps Architecture
 
 :::info
-Before you can access Harness Database DevOps, you must have Harness enable the following feature flag, `DBOPS_ENABLED`. To enable the feature flag, please contact [Harness Support](mailto:support@harness.io).
+Before you can access Harness Database DevOps, you must have Database DevOps module enabled. To access the module, please contact [Harness Support](mailto:support@harness.io).
 :::
 
  ![Harness DB DevOps architecture diagram](./concepts/static/database-devops-architecture.png)
@@ -83,7 +83,7 @@ Retrieve the latest default Harness DB Devops image versions:
 
 ```sh
 curl -i -X GET \
-  https://app.harness.io/v1/dbops/execution-config \
+  https://app.harness.io/v1/dbops/execution-config/get-default-config \
   -H 'Harness-Account: $YOUR_HARNESS_ACCOUNT_ID' \
   -H 'X-API-KEY: $API_KEY'
 ```
@@ -106,7 +106,7 @@ Send a get-customer-config request to get the build images that your DB DevOps p
 
 ```sh
 curl -i -X GET \
-'https://app.harness.io/v1/dbops/execution-config/get-customer-config?overridesOnly=true' \
+https://app.harness.io/v1/dbops/execution-config/get-customer-config \
 -H "Harness-Account: $YOUR_HARNESS_ACCOUNT_ID" \
 -H "X-API-KEY: $API_KEY"
 ```
