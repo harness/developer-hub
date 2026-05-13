@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2026-04-30T10:00:00
+date: 2026-05-13T10:00:00
 sidebar_position: 8
 ---
 
@@ -73,6 +73,33 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 - Fixed an issue in the Continuous Verification (CV) AI Verify feature by removing the unnecessary requests field from the data collection infrastructure and wiring up backend APIs for Health Sources V2 and Config Agent flow for Datadog metrics and log health sources. This feature requires the feature flag `CDS_CV_HEALTH_SOURCES_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable. (**CDS-122674**)
 - Improved performance for the Azure Container Apps managed environments API by optimizing it to be called only when its dependencies (resource group or subscription ID) change. The API now triggers on input focus during edit flows. (**CDS-122787**)
 
+
+## May 2026
+
+### GitOps Service 1.57.0, GitOps Agent 0.117.0
+
+#### New features and enhancements
+
+- GitOps licensing now uses service-based licensing when GitOps applications are linked to Harness services, instead of application-based licensing. (**CDS-122212**)
+
+#### Fixed issues
+
+- Fixed an issue where integer fields in GitOps ApplicationSet definitions were converted to strings during editing and validation, causing validation errors on the ApplicationSet details page. (**CDS-121781**, **ZD-101656**, **ZD-109107**)
+- Fixed an issue where the GitOps applications list unexpectedly toggled between list and tile view when applying filters. (**CDS-122964**, **ZD-112484**)
+- Fixed an issue where deleting a GitOps agent did not automatically remove the cluster-to-environment links for clusters belonging to that agent. Clusters are now automatically unlinked from environments when their agent is deleted. (**CDS-119831**)
+- Fixed an issue where duplicate ArgoCD project mappings could be created when multiple Harness projects used the same account-level or org-level GitOps agent. The system now validates that an ArgoCD project name is not already mapped to a different Harness project before creating a new mapping. (**CDS-121055**)
+- Fixed an issue where GitOps application repository linking became permanently broken after an application was deleted and recreated, preventing re-linking even after correcting the repository URL. (**CDS-122270**)
+- Fixed an issue where repositories with empty or whitespace-only `repoUrl` values were ingested into the system, causing problems with multi-source GitOps applications. A validation check in `ReconcileRepositories` now skips repositories with empty `repoUrl` and logs a warning. (**CDS-120193**)
+- Fixed an issue where the GitOps application manifest view displayed truncated YAML on page refresh. The full manifest appeared only intermittently, while most refreshes showed incomplete YAML content. (**CDS-122688**)
+
+### GitOps Service 1.56.1, GitOps Agent 0.116.1
+
+#### Fixed issues
+
+- Fixed an issue where repositories with empty or whitespace-only `repoUrl` values were ingested into the system, causing problems with multi-source GitOps applications. A validation check in `ReconcileRepositories` now skips repositories with empty `repoUrl` and logs a warning. (**CDS-120193**)
+- Fixed an issue where a GitOps application repository connector binding was lost, causing authentication failures and preventing users from selecting repositories in the UI. (**CDS-121077**, **ZD-110634**)
+- Fixed an issue where the App Details page displayed a `Failed loading charts` error for GitOps applications using OCI Helm repositories. The UI attempted to fetch `index.yaml` via HTTP, which OCI registries do not serve. The chart loading logic now correctly identifies OCI repositories using `helm.IsHelmOciRepo` and skips the index fetch. (**CDS-122214**, **ZD-111562**)
+- Fixed an issue where authenticating a GitOps cluster via IRSA in the Harness UI failed when Certificate Authority Data was not provided. The UI payload did not include `"insecure": true`, causing the connection to fail. The payload now correctly sets `"insecure": true` when no CA data is provided. (**CDS-122266**, **ZD-111657**)
 
 ## April 2026
 
