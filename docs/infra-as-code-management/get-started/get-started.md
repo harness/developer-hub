@@ -31,6 +31,11 @@ Go to [What's Supported in IaCM](/docs/infra-as-code-management/whats-supported)
 
 <DynamicMarkdownSelector
   options={{
+    "AWS CDK": {
+      path: "/infra-as-code-management/content/get-started/cdk-quickstart.md",
+      logo: "cloud-services/cdk-logo.svg",
+      logoSize: 24
+    },
     OpenTofu: {
       path: "/infra-as-code-management/content/get-started/opentofu-quickstart.md",
       logo: "opentofu-logo.svg",

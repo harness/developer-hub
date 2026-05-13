@@ -1667,6 +1667,19 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'category',
+          label: 'AWS CDK',
+          link: {
+            type: 'doc',
+            id: 'infra-as-code-management/aws-cdk/overview',
+          },
+          collapsed: true,
+          items: [
+            'infra-as-code-management/aws-cdk/overview',
+            'infra-as-code-management/aws-cdk/cdk-pipeline-steps',
+          ],
+        },
+        {
+          type: 'category',
           label: 'Configuration Management',
           link: {
             type: 'doc',

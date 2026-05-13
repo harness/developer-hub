@@ -1,0 +1,14 @@
+{
+  "label": "AWS CDK",
+  "position": 52,
+  "collapsible": true,
+  "collapsed": true,
+  "className": "default",
+  "link": {
+    "type": "doc",
+    "id": "infra-as-code-management/aws-cdk/overview"
+  },
+  "customProps": {
+    "helpdocs_category_id": ""
+  }
+}
