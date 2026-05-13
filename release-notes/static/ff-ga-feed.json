@@ -1,5 +1,11 @@
 [
   {
+    "flagKey": "PL_ROLE_REUSABILITY_ACROSS_CHILD_SCOPES",
+    "description": "Allows roles created at a higher scope (account/org) to be reused in lower scopes.",
+    "gaStartDate": "2026-05-21",
+    "module": "Platform"
+  },
+  {
     "flagKey": "CDS_ADD_DEPLOYMENT_FREEZE_BYPASS_AUDIT",
     "description": "Enables audit logging for deployment freeze bypass actions.",
     "gaStartDate": "2025-09-15",
