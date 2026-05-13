@@ -152,6 +152,17 @@ export const FmeData: Horizon = {
           "Introduce dimensional analysis for Warehouse Native Experimentation (WHN) to uncover deeper trends and segment-level impact.",
       },
       {
+        tag: [{value: "Experimentation"}],
+        title: "CUPED for Cloud and WHN Experimentation",
+        description:
+          "Introduce CUPED to leverage pre-experiment data and reduce variance across cloud and warehouse-native experiments.",
+      },
+      {
+        tag: [{ "value": "API" }],
+        title: "Programmatically manage experiments and metrics",
+        description: "Enable CRUD capabilities for experiments and metrics using APIs and MCP, allowing for automated configuration and external integration.",
+      },
+      {
         tag: [{ "value": "AI" }],
         title: "Experimentation Agents",
         description: "A suite of intelligent agents to automate the full experiment lifecycle, from hypothesis design and prioritization to results analysis and value realization.",
@@ -160,17 +171,6 @@ export const FmeData: Horizon = {
         tag: [{ "value": "SDK" }],
         title: "Additional OpenFeature Provider support",
         description: "Expand multi-language support for vendor-agnostic feature management, including Ruby and Go.",
-      },
-      {
-        tag: [{ "value": "API" }],
-        title: "Programmatically manage experiments and metrics",
-        description: "Enable CRUD capabilities for experiments and metrics using APIs and MCP, allowing for automated configuration and external integration.",
-      },
-      {
-        tag: [{value: "Experimentation"}],
-        title: "CUPED for Cloud and WHN Experimentation",
-        description:
-          "Introduce CUPED to leverage pre-experiment data and reduce variance across cloud and warehouse-native experiments.",
       },
     ],
   },
