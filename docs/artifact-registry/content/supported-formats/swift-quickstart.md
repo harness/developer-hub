@@ -138,8 +138,8 @@ swift package-registry publish <ARTIFACT_NAME> <VERSION> --metadata-path metadat
 ```bash
 swift package-registry publish <ARTIFACT_NAME> <VERSION> \
   --metadata-path metadata.json \
-  --private-key-path private.key \
-  --cert-chain-paths certificate.pem
+  --private-key-path private-key.der \
+  --cert-chain-paths cert-chain.der
 ```
 
 Replace `<ARTIFACT_NAME>` and `<VERSION>` with your package identity and semantic version. Prepare `metadata.json` and signing paths as required by your signing policy.
