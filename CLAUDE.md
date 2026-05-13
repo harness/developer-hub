@@ -328,3 +328,40 @@ The most common pattern: a `<span>` with an `onClick` handler that duplicates wh
 // ❌ Bare index
 {value.map((v, i) => <div key={i}>...</div>)}
 ```
+
+---
+
+## LLM Documentation Files (`llms.txt` and `llms-full.txt`)
+
+**Purpose:** Make documentation discoverable and consumable by Large Language Models (LLMs). These files act as a "sitemap for AI" — similar to how `robots.txt` helps search engines, these help LLMs understand your documentation structure.
+
+**Files:**
+- `llms.txt` — Concise overview (~200 lines) with priority modules, key pages, and metadata
+- `llms-full.txt` — Comprehensive index (~4500+ lines) with all modules and all documentation pages
+
+**Generation:**
+```bash
+npm run generate-llms-txt
+```
+
+**Auto-generation:** Both files are automatically regenerated during:
+- `npm run build` (prebuild hook)
+- `npm start` (development mode)
+
+**Script:** `/scripts/generate-llms-txt.mjs`
+
+**What it does:**
+1. Scans all `.md` and `.mdx` files in `docs/`
+2. Extracts frontmatter (`title`, `description`, `sidebar_label`, `slug`)
+3. Groups by module (top-level directory)
+4. Generates structured output with:
+   - Metadata (maintainer, citation, attribution policy)
+   - Allow patterns for all modules
+   - Detailed page listings with descriptions and URLs
+
+**Customization:**
+- **Priority modules** (appear in `llms.txt`): Edit `PRIORITY_MODULES` array in script
+- **Module names**: Edit `getModuleName()` function for human-friendly names
+- **Metadata**: Edit `METADATA` object at top of script
+
+**Format follows the emerging `llms.txt` standard** for AI-friendly documentation indexing.

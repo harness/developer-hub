@@ -37,6 +37,12 @@ yarn.lock
 
 # Local Netlify folder
 .netlify
+
+# Generated at build time — never commit
+static/llms.txt
+static/llms-full.txt
+llms.txt
+llms-full.txt
 yarn.lock
 .claude/skills/doc-section-audit/audits/
 .claude/skills/doc-audit/audits/
