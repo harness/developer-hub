@@ -62,7 +62,59 @@ If you do not use an existing Argo CD instance, then Harness will install the fo
 * Application controller
 * ApplicationSet controller
 
-See [Harness GitOps Basics](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics.md).
+Go to [Harness GitOps Basics](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics) to learn more about GitOps concepts.
+
+### Configure custom Argo CD component names (BYOA)
+
+When you install the Harness GitOps Agent as an overlay on an existing Argo CD instance (Bring Your Own Argo CD), the agent health check looks for Argo CD components using the default Helm chart names (for example, `argocd-redis`, `argocd-repo-server`). If your existing Argo CD uses different service names, which is common with HA Redis (Sentinel/HAProxy) setups or custom Helm release names, the health check cannot find the expected workloads and the agent shows a **DEGRADED** status even though it is functionally healthy.
+
+To resolve this, pass the correct service names for your existing Argo CD components when you install the agent with Helm. The flags differ depending on whether your Argo CD is a standard or HA install.
+
+#### Non-HA setup
+
+For a standard (non-HA) Argo CD install, use `redisSvc` and `repoServerSvc`:
+
+```bash
+helm install argocd gitops-agent-byoa/gitops-helm-byoa --values override.yaml --namespace argocd \
+  --set harness.configMap.argocd.redisSvc=<redis-service-name> \
+  --set harness.configMap.argocd.repoServerSvc=<repo-server-service-name>
+```
+
+For example, with a Helm release named `argocd`:
+
+```bash
+helm install argocd gitops-agent-byoa/gitops-helm-byoa --values override.yaml --namespace argocd \
+  --set harness.configMap.argocd.redisSvc=argocd-redis \
+  --set harness.configMap.argocd.repoServerSvc=argocd-repo-server
+```
+
+#### HA setup
+
+For an HA Argo CD install (Redis HA with HAProxy/Sentinel), use `redisHaProxySvc` instead of `redisSvc`:
+
+```bash
+helm install argocd gitops-agent-byoa/gitops-helm-byoa --values override.yaml --namespace argocd \
+  --set harness.configMap.argocd.redisHaProxySvc=<redis-ha-haproxy-service-name> \
+  --set harness.configMap.argocd.repoServerSvc=<repo-server-service-name>
+```
+
+For example, with a Helm release named `argocd`:
+
+```bash
+helm install argocd gitops-agent-byoa/gitops-helm-byoa --values override.yaml --namespace argocd \
+  --set harness.configMap.argocd.redisHaProxySvc=argocd-redis-ha-haproxy \
+  --set harness.configMap.argocd.repoServerSvc=argocd-repo-server
+```
+
+You can find the correct service names by listing services in your Argo CD namespace:
+
+```bash
+kubectl get svc -n <argocd-namespace> | grep -E 'redis|repo-server'
+```
+
+:::warning Agent shows DEGRADED with HA Redis
+If you installed the agent without these flags and the overview page shows **DEGRADED** with a "Redis Cache Installed" warning, you can fix it by running `helm upgrade` with the same `--set` flags shown above. The agent remains functionally healthy during this time; only the status panel is affected.
+:::
 
 ## Create a GitOps Agent
 

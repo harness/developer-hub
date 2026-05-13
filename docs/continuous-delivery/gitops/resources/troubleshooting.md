@@ -30,6 +30,22 @@ The following table lists the `NetworkPolicy` objects for HA and non-HA Agents, 
 | `argocd-redis-network-policy` | ![](./static/argocd-redis-network-policy.png)  |
 | `argocd-repo-server-network-policy` | ![](./static/argocd-repo-server-network-policy-nonha.png)  |
 
+### Agent shows DEGRADED with "Redis Cache Installed" warning (BYOA with HA Redis)
+
+When you install the Harness GitOps Agent as an overlay on an existing Argo CD instance, the agent overview page may show the agent as **DEGRADED** with a red "Redis Cache Installed" warning, even though the agent is functionally healthy (heartbeats are normal, applications are reconciling, and no Redis errors appear in the logs).
+
+This happens because the agent health check looks for the default chart workload name `argocd-redis`. In HA installs, the Redis service is the HAProxy frontend (for example, `argocd-redis-ha-haproxy`), not `argocd-redis`, so the check cannot find it and reports DEGRADED.
+
+To fix this, run `helm upgrade` with the correct HA flags:
+
+```bash
+helm upgrade argocd gitops-agent-byoa/gitops-helm-byoa --values override.yaml --namespace argocd \
+  --set harness.configMap.argocd.redisHaProxySvc=<redis-ha-haproxy-service-name> \
+  --set harness.configMap.argocd.repoServerSvc=<repo-server-service-name>
+```
+
+For a non-HA install, use `redisSvc` instead of `redisHaProxySvc`. Go to [Configure custom Argo CD component names](/docs/continuous-delivery/gitops/gitops-entities/agents/install-a-harness-git-ops-agent#configure-custom-argo-cd-component-names-byoa) for full details and examples for both setup types.
+
 ### Error: "Forbidden: seccomp may not be set provider"
 
 If you see the error `Forbidden: seccomp may not be set provider`, remove the following block from all Argo CD configuration files that have a `kind: deployment` key-value pair.
