@@ -1,76 +1,171 @@
 ---
-title: Store and access OCI Helm repository in private Amazon ECR
-description: This topic describes how to store OCI Helm repository in private Amazon ECR, and access them by rotating tokens.
+title: Access OCI Helm charts in private Amazon ECR
+description: Configure Harness GitOps to pull OCI Helm charts from a private Amazon ECR registry using IRSA or External Secrets Operator.
 sidebar_position: 800
 redirect_from:
   - /docs/continuous-delivery/gitops/helm-oci-repository-aws-ecr
 ---
 
-This topic assumes that you have already created an [OCI Helm repository](/docs/continuous-delivery/gitops/gitops-entities/repositories/add-a-harness-git-ops-repository#add-a-repository).
+This topic assumes you have already created an [OCI Helm repository](/docs/continuous-delivery/gitops/gitops-entities/repositories/add-a-harness-git-ops-repository#add-a-repository).
 
-When storing an OCI Helm repository in Amazon Elastic Container Registry (ECR), you must obtain a token. The Amazon ECR tokens are short-lived, hence need rotation. 
+Amazon ECR issues short-lived authentication tokens that expire after 12 hours. To pull OCI Helm charts from a private ECR registry, the Argo CD repo server must authenticate to ECR continuously. There are two approaches:
 
-GitOps repository credentials are stored in Kubernetes secrets. For GitOps to be able to pull these repositories from Amazon ECR, you have to rotate the credentials stored in the secret. You can use [External Secrets Operator](https://external-secrets.io) and [Argo CD ECR Updater](https://artifacthub.io/packages/helm/argocd-aws-ecr-updater/argocd-ecr-updater) to achieve this.
+- **IRSA (recommended):** Attach an IAM role with ECR permissions directly to the `argocd-repo-server` service account using IAM Roles for Service Accounts. The repo server uses AWS IAM APIs to authenticate natively, with no stored credentials or token rotation required.
+- **External Secrets Operator (ESO):** Install ESO in the cluster and configure it to rotate the ECR token in the Kubernetes secret that stores the repository credentials.
 
-In this topic, we will walk you through how to use the External Secrets Operator.
+Use IRSA when your GitOps Agent runs on Amazon EKS. Use ESO when IRSA is not available (for example, self-managed Kubernetes clusters outside of EKS).
 
-1. [Install external secrets in the cluster where Argo CD is installed](#install-external-secrets-in-the-cluster-where-argo-cd-is-installed).
-2. [Create AWS credentials in Kubernetes secret](#create-aws-credentials-in-kubernetes-secret).
-3. [Create generator YAML](#create-generator-yaml).
-4. [Apply generator YAML](#apply-generator-yaml).
-5. [Create external secrets](#create-external-secrets).
+---
 
-## Install external secrets in the cluster where Argo CD is installed
+## Option 1: Use IRSA (recommended)
+
+With IRSA, the `argocd-repo-server` pod assumes an IAM role through the EKS OIDC provider. The repo server authenticates to ECR using the AWS SDK, so you do not need to store or rotate any credentials.
+
+### Prerequisites
+
+- **Amazon EKS cluster:** The GitOps Agent must run on an EKS cluster with an [OIDC provider enabled](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html).
+- **OCI Helm repository:** An OCI Helm repository already added in Harness GitOps. Go to [Add a Harness GitOps repository](/docs/continuous-delivery/gitops/gitops-entities/repositories/add-a-harness-git-ops-repository#add-a-repository) to set one up.
+
+### Create an IAM role with ECR permissions
+
+1. Create an IAM policy that grants read access to your ECR repositories:
+
+   ```json
+   {
+     "Version": "2012-10-17",
+     "Statement": [
+       {
+         "Effect": "Allow",
+         "Action": [
+           "ecr:GetAuthorizationToken"
+         ],
+         "Resource": "*"
+       },
+       {
+         "Effect": "Allow",
+         "Action": [
+           "ecr:BatchGetImage",
+           "ecr:GetDownloadUrlForLayer",
+           "ecr:BatchCheckLayerAvailability"
+         ],
+         "Resource": "arn:aws:ecr:<REGION>:<ACCOUNT_ID>:repository/<REPOSITORY_NAME>"
+       }
+     ]
+   }
+   ```
+
+   Replace `<REGION>`, `<ACCOUNT_ID>`, and `<REPOSITORY_NAME>` with your values. To grant access to all repositories in the account, use `arn:aws:ecr:<REGION>:<ACCOUNT_ID>:repository/*`.
+
+2. Create an IAM role and attach the policy from the previous step. Configure the trust policy to allow the `argocd-repo-server` service account to assume the role:
+
+   ```json
+   {
+     "Version": "2012-10-17",
+     "Statement": [
+       {
+         "Effect": "Allow",
+         "Principal": {
+           "Federated": "arn:aws:iam::<ACCOUNT_ID>:oidc-provider/oidc.eks.<REGION>.amazonaws.com/id/<OIDC_ID>"
+         },
+         "Action": "sts:AssumeRoleWithWebIdentity",
+         "Condition": {
+           "StringEquals": {
+             "oidc.eks.<REGION>.amazonaws.com/id/<OIDC_ID>:sub": "system:serviceaccount:<AGENT_NAMESPACE>:argocd-repo-server",
+             "oidc.eks.<REGION>.amazonaws.com/id/<OIDC_ID>:aud": "sts.amazonaws.com"
+           }
+         }
+       }
+     ]
+   }
+   ```
+
+   Replace `<ACCOUNT_ID>`, `<REGION>`, `<OIDC_ID>`, and `<AGENT_NAMESPACE>` with your values.
+
+### Annotate the repo server service account
+
+Annotate the `argocd-repo-server` service account with the IAM role ARN:
+
+```bash
+kubectl annotate serviceaccount argocd-repo-server \
+  -n <AGENT_NAMESPACE> \
+  eks.amazonaws.com/role-arn=arn:aws:iam::<ACCOUNT_ID>:role/<ROLE_NAME>
+```
+
+### Enable service account token mounting
+
+Ensure `automountServiceAccountToken` is set to `true` on the repo server deployment so the projected service account token is available to the AWS SDK:
+
+```bash
+kubectl patch deployment argocd-repo-server -n <AGENT_NAMESPACE> \
+  --patch '{"spec":{"template":{"spec":{"automountServiceAccountToken": true}}}}'
+```
+
+### Restart the repo server
+
+Restart the repo server deployment to pick up the new service account annotation and token:
+
+```bash
+kubectl rollout restart deployment argocd-repo-server -n <AGENT_NAMESPACE>
+```
+
+After the pods restart, the repo server authenticates to ECR automatically using the assumed IAM role. You do not need to provide a username, password, or token when you add the ECR repository in Harness.
+
+:::tip Verify the setup
+Run the following command from inside the repo server pod to confirm that the IAM role is assumed correctly:
+
+```bash
+kubectl exec -it deployment/argocd-repo-server -n <AGENT_NAMESPACE> -- \
+  aws sts get-caller-identity
+```
+
+The output should display the ARN of the IAM role you created.
+:::
+
+---
+
+## Option 2: Use External Secrets Operator
+
+If IRSA is not available, use the [External Secrets Operator](https://external-secrets.io) to rotate ECR tokens automatically. ESO fetches a fresh token from ECR at a configured interval and updates the Kubernetes secret that stores the repository credentials.
+
+### Install External Secrets Operator
+
+Install ESO in the cluster where Argo CD is running:
 
 ```bash
 helm repo add external-secrets https://charts.external-secrets.io
 helm install external-secrets \
-external-secrets/external-secrets \
--n external-secrets \
---create-namespace \
---set installCRDs=true
+  external-secrets/external-secrets \
+  -n external-secrets \
+  --create-namespace \
+  --set installCRDs=true
 ```
 
-The above commands install the external secret operator with necessary Custom Resource Definitions (CRDs). 
-   
-The external secret operator has `ClusterSecretStore` and `ExternalSecret` CRDs that are used to manage the secrets update. `ClusterSecretStore` defines secret storage, whereas `ExternalSecret` connects the Kubernetes secret's storage and destination.
-   
-There is an additional CRD, `ECRAuthorizationToken` that generates the token. We will use this CRD instead of `ClusterSecretStore` in this setup.
+This installs ESO with the `ClusterSecretStore`, `ExternalSecret`, and `ECRAuthorizationToken` CRDs. The `ECRAuthorizationToken` generator produces a fresh ECR token on demand.
 
-## Create AWS credentials in Kubernetes secret
-   
-Use the following commands to create AWS credentials in Kubernetes secret.
+### Create AWS credentials in a Kubernetes secret
 
-The credentials used below are samples only. Use your actual credentials.
+Create a Kubernetes secret that contains AWS access credentials. ESO uses these credentials to call the ECR `GetAuthorizationToken` API.
 
 ```bash
-export AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
-export AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
-
-echo -n AWS_SECRET_ACCESS_KEY > ./secret-access-key
-echo -n AWS_ACCESS_KEY_ID  > ./access-key  
-kubectl create secret generic awssm-secret --from-file=./access-key  --from-file=./secret-access-key
+kubectl create secret generic awssm-secret \
+  --from-literal=access-key=<AWS_ACCESS_KEY_ID> \
+  --from-literal=secret-access-key=<AWS_SECRET_ACCESS_KEY>
 ```
 
-## Create generator YAML
+Replace `<AWS_ACCESS_KEY_ID>` and `<AWS_SECRET_ACCESS_KEY>` with your actual credentials.
 
-The secret created in the previous step, `awssm-secret`, is referenced below.
-   
+### Create the ECR token generator
+
+Create a file named `generator.yaml` with the following content:
+
 ```yaml
 apiVersion: generators.external-secrets.io/v1alpha1
 kind: ECRAuthorizationToken
 metadata:
   name: ecr-gen
 spec:
-
-  # specify aws region (mandatory)
-  region: us-west-1
-
+  region: <REGION>
   auth:
-
-    # 1: static credentials
-    # point to a secret that contains static credentials
-    # like AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY
     secretRef:
       accessKeyIDSecretRef:
         name: "awssm-secret"
@@ -80,93 +175,65 @@ spec:
         key: "secret-access-key"
 ```
 
-## Apply generator YAML
+Replace `<REGION>` with the AWS region of your ECR registry (for example, `us-west-1`).
 
-Apply `generator.yaml` using the following command: 
+Apply the generator:
 
 ```bash
 kubectl apply -f generator.yaml
 ```
 
-## Create external secrets
+### Create the ExternalSecret
 
-The repository created in your Argo CD namespace looks something like this: 
-
-```bash
-kubectl get secret -n <namespace>
-repo-1281561554                   Opaque   4      27d
-repo-157514928                    Opaque   6      14d
-repo-2529854065                   Opaque   4      84m
-repo-2728511394                   Opaque   5      14d
-repo-2937759919                   Opaque   4      27d
-repo-2968584119                   Opaque   5      27d
-repo-3429865765                   Opaque   3      19h
-```
-
-Obtain the secret name that contains the OCI Helm repository data. For example, to obtain the secret name of `repo-2529854065`, use the following command: 
+Identify the Kubernetes secret that stores your OCI Helm repository credentials. List the repo secrets in the Argo CD namespace:
 
 ```bash
-kubectl get secret repo-2529854065 -n <namespace> -o yaml
+kubectl get secret -n <AGENT_NAMESPACE> -l argocd.argoproj.io/secret-type=repository
 ```
 
-The output of the command looks something like this: 
+Inspect the target secret to confirm it corresponds to your ECR repository:
 
-```yaml
-apiVersion: v1
-data:
-  enableOCI: dHJ1ZQ==
-  name: b2NpcHVibGlj
-  type: aGVsbQ==
-  url: cmVnaXN0cnktMS5kb2NrZXIuaW8vbXRlb2Rvcg==
-kind: Secret
-metadata:
-  annotations:
-    managed-by: argocd.argoproj.io
-  creationTimestamp: "2023-06-20T10:06:26Z"
-  labels:
-    argocd.argoproj.io/secret-type: repository
-  name: repo-2529854065
-  namespace: <namespace>
-  resourceVersion: "298587647"
-  uid: c2a58d23-6952-4c95-b8b2-b152786d7368
-type: Opaque```
+```bash
+kubectl get secret <REPO_SECRET_NAME> -n <AGENT_NAMESPACE> -o yaml
 ```
 
-Create `ExternalSecret` that will update the secret using the previously configured `generator.yaml`: 
+Create a file named `external-secret.yaml`. Replace the placeholder values before applying:
+
+- `REPO_SECRET_NAME`: the Kubernetes secret name for your repository (for example, `repo-2529854065`).
+
+In the `template.data.password` field, use the Go template expression `"&#123;&#123; .password &#125;&#125;"` to inject the rotated password into the secret.
 
 ```yaml
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
-  name: "repo-2529854065"
+  name: REPO_SECRET_NAME
 spec:
   refreshInterval: "12h"
   target:
-    name: repo-2529854065
+    name: REPO_SECRET_NAME
     creationPolicy: Merge
     template:
       data:
-        password: "{{ .password  }}"
+        password: TEMPLATE_EXPRESSION
   dataFrom:
-  - sourceRef:
-      generatorRef:
-        apiVersion: generators.external-secrets.io/v1alpha1
-        kind: ECRAuthorizationToken
-        name: "ecr-gen"
+    - sourceRef:
+        generatorRef:
+          apiVersion: generators.external-secrets.io/v1alpha1
+          kind: ECRAuthorizationToken
+          name: "ecr-gen"
 ```
-In the above YAML: 
 
-* `ecr-gen` references the previously configured `generator.yaml`.
-* `name` must match the secret name that represents the OCI Helm repository.
-* `creationPolicy: Merge` means that the External Secrets Operator expects that the secret is already created, and will only add the data specified in the template.
-  
-  ```
-  template:
-    data:
-      password: "{{ .password  }}"
-  ```     
-* `template` enables a way to change, parse output of generator, and then inject it into the secret. Here, we use it just to inject the unchanged password.
+Set the `password` value under `template.data` to the Go template expression shown above. This injects the ECR token fetched by the generator into the repository secret.
 
+Apply the ExternalSecret:
 
+```bash
+kubectl apply -f external-secret.yaml
+```
 
- 
+Key fields in the ExternalSecret:
+
+- **`refreshInterval`:** How often ESO fetches a new ECR token. ECR tokens expire after 12 hours, so `12h` or shorter is recommended.
+- **`creationPolicy: Merge`:** ESO merges the new `password` field into the existing secret rather than recreating it. This preserves the other fields (URL, type, enableOCI) that Argo CD requires.
+- **`generatorRef`:** Points to the `ECRAuthorizationToken` generator created in the previous step.
