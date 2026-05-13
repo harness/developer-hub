@@ -1,43 +1,53 @@
 ---
-title: Remove Infra with the Terraform Destroy step
+title: Remove Infrastructure with the Terraform Destroy step
 description: Remove any Terraform provisioned infrastructure.
+sidebar_label: Destroy Step
 sidebar_position: 6
 helpdocs_topic_id: j75xc704c8
 helpdocs_category_id: jcu7twh2t6
 helpdocs_is_private: false
 helpdocs_is_published: true
+keywords:
+  - terraform destroy
+  - remove infrastructure
+  - terraform provisioning
+  - destroy step
+tags:
+  - terraform
+  - infrastructure
 redirect_from:
   - /docs/first-gen/continuous-delivery/terraform-category/terraform-destroy/
 ---
 
-This topic describes how to add a Terraform Destroy step to remove any provisioned infrastructure, just like running the `terraform destroy` command. See [destroy](https://www.terraform.io/docs/commands/destroy.html) from Terraform.
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-The **Terraform Destroy** step is independent of any other Terraform provisioning steps. It's not restricted to removing the infrastructure deployed in its stage. It can remove any infrastructure you've provisioned using Harness.
+This topic describes how to add a Terraform Destroy step to remove any provisioned infrastructure, just like running the `terraform destroy` command. Go to [destroy](https://www.terraform.io/docs/commands/destroy.html) from Terraform to learn about the Terraform destroy command.
 
-## Before You Begin
+The **Terraform Destroy** step is independent of any other Terraform provisioning steps. It is not restricted to removing the infrastructure deployed in its stage. It can remove any infrastructure you have provisioned using Harness.
 
-* [Terraform Provisioning with Harness](terraform-provisioning-with-harness)
-* [Provision Target Deployment Infra Dynamically with Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/provision-infra-dynamically-with-terraform)
-* [Provision with the Terraform Apply Step](run-a-terraform-plan-with-the-terraform-apply-step)
+---
 
-## Important: Install Terraform on Delegates
+## What will you learn?
 
-Terraform must be installed on the Delegate to use a Harness Terraform Provisioner. You can install Terraform manually or use the `INIT_SCRIPT` environment variable in the Delegate YAML.
+- **Add Terraform Destroy steps:** Configure destroy steps in pipeline execution, dynamic provisioning, or rollback sections.
+- **Reference Provisioner Identifiers:** Link destroy steps to the infrastructure provisioned by Plan and Apply steps.
+- **Preview destroy plans:** Use Terraform Plan with destroy command to review what will be removed before execution.
 
-See [Build custom delegate images with third-party tools](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
+---
 
+## Before you begin
 
-```bash
-# Install TF  
-curl -O -L  https://releases.hashicorp.com/terraform/0.12.25/terraform_0.12.25_linux_amd64.zip  
-unzip terraform_0.12.25_linux_amd64.zip  
-mv ./terraform /usr/bin/  
-# Check TF install  
-terraform --version
-```
-## Review: What Gets Destroyed?
+Before using the Terraform Destroy step, ensure you have the following:
 
-When you add Terraform Plan and Apply steps, you specify the Terraform script that Harness will use for provisioning. You add a **Provisioner Identifier** to each step to identify the provisioning.
+- **Terraform provisioning knowledge:** Familiarity with how Harness provisions infrastructure using Terraform. Go to [Terraform provisioning overview](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness) to understand the provisioning workflow.
+- **Provisioner Identifier:** The same Provisioner Identifier used in your Terraform Apply step. Go to [Provision with the Terraform Apply step](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step) to learn how to set up provisioning.
+- **Terraform installation:** Terraform must be installed on your delegates. Go to [Build custom delegate images with third-party tools](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools) to install Terraform on delegates.
+
+---
+
+## What gets destroyed?
+
+When you add Terraform Plan and Apply steps, you specify the Terraform script that Harness will use for provisioning. You add a **Provisioner Identifier** to each step to identify the provisioning. The Provisioner Identifier is a unique label that links Terraform Plan, Apply, and Destroy steps to the same configuration.
 
 ![](./static/remove-provisioned-infra-with-terraform-destroy-00.png)
 
@@ -45,7 +55,7 @@ When you destroy the provisioned infrastructure, you specify the same **Provisio
 
 ![](./static/remove-provisioned-infra-with-terraform-destroy-01.png)
 
-### Viewing Destroy Plan Logs Without Export
+### View destroy plan logs before execution
 
 To review what will be destroyed before executing a Terraform Destroy step, you can configure your pipeline with the following steps:
 
@@ -62,33 +72,41 @@ To review what will be destroyed before executing a Terraform Destroy step, you 
    - Use the same commit or branch configuration as the Terraform Plan step.
    - Execute the destroy step once the plan has been reviewed and approved.
 
-The destroy step behaves similarly to the apply step but is specifically designed for removing provisioned infrastructure.
+The destroy step behaves similarly to the apply step but is specifically designed for removing provisioned infrastructure. After running a destroy step, view execution logs in the Harness pipeline execution details page to confirm resources were destroyed.
 
-## Step 1: Add the Terraform Destroy Step
+---
+
+## Add the Terraform Destroy step
 
 You can add the Terraform Destroy step in the following places:
 
-* The **Execution** steps of a stage.
-* The steps of an **Infrastructure**'s **Dynamic Provisioning** section.
-* The **Rollback** steps of a stage's **Execution** or **Infrastructure** using **Dynamic Provisioning**.
+* Go to **Pipelines** > select a pipeline > **Execution** steps of a stage.
+* Go to **Pipelines** > select a pipeline > select a stage > **Infrastructure** > **Dynamic Provisioning** section.
+* Go to **Pipelines** > select a pipeline > **Rollback** steps of a stage's **Execution** or **Infrastructure** using **Dynamic Provisioning**.
 
 In **Name**, enter a name for the step. You can use the name to reference the Terraform Destroy settings.
 
-## Step 2: Configuration Type
+---
 
-There are three options:
+## Select a configuration type
+
+Select how the Terraform Destroy step determines which resources to remove:
 
 * **Inline:** Removes the provisioned resources you identify using **Provisioner Identifier** and other settings.
 * **Inherit from Plan:** Removes the resources defined in the Harness **Terraform Plan** step that you identify using **Provisioner Identifier**. Similar to `terraform plan -destroy`.
 * **Inherit from Apply:** Removes the resources defined in the Harness Terraform Apply step that you identify using **Provisioner Identifier**. Similar to `terraform destroy`.
 
-## Step 3: Reference the Provisioner Identifier
+---
+
+## Reference the Provisioner Identifier
 
 In **Provisioner Identifier**, enter the same Provisioner Identifier you used in the Terraform Apply step that provisioning the resources you want to destroy.
 
 Click **Apply Changes**.
 
 The Terraform Destroy step is added.
+
+---
 
 ## Command line options
 
@@ -102,9 +120,13 @@ This setting allows you to set the Terraform CLI options for Terraform commands 
 
 ![](./static/run-a-terraform-plan-with-the-terraform-apply-step-18.png)
 
-## Skip Terraform Refresh
+---
 
-Terraform refresh command won't be running when this setting is selected.
+## Skip Terraform refresh
+
+Terraform refresh command will not run when this setting is selected.
+
+---
 
 ## Create remote workspace with prefix
 
@@ -116,7 +138,7 @@ This option is available only on delegate version `86400` or later.
 
 Enable this option to automatically create or select a remote workspace when using a workspace **prefix** in your backend configuration.
 
-When using a [Terraform remote backend](https://developer.hashicorp.com/terraform/language/backend/remote) with a prefix, Terraform does **not** create the workspace automatically if it doesn’t exist. This can lead to pipeline failures with errors like:
+When using a [Terraform remote backend](https://developer.hashicorp.com/terraform/language/backend/remote) with a prefix, Terraform does **not** create the workspace automatically if it does not exist. This can lead to pipeline failures with errors like:
 
 `Error: Currently selected workspace "my-app-dev" does not exist`
 
@@ -150,7 +172,10 @@ If you prefer not to use this flag, you can manually configure the workspace usi
 ```
 </details>
 
+---
+
 ## Working directory cleanup
+
 Each Terraform step runs in a specific working directory on the delegate.
 
 The Terraform working directory is located at `/opt/harness-delegate/./terraform-working-dir/`.
@@ -163,11 +188,44 @@ Once the Terraform step execution is complete, Harness cleans up the main workin
 
 If you generate any local resources on the delegate in the directory where Terraform configurations are located, those resources are also removed. If you need those resources, make sure to generate them outside the Terraform working directory.
 
-#### Terraform variable files
+### Terraform variable files
 
-You can specify Terraform variables inline and fetch remote variable files during run time. For more information, go to [Specify Terraform variables](/docs/continuous-delivery/cd-infrastructure/terraform-infra/optional-tf-var-files).
+You can specify Terraform variables inline and fetch remote variable files during run time. Go to [Specify Terraform variables](/docs/continuous-delivery/cd-infrastructure/terraform-infra/optional-tf-var-files) to configure variable files.
 
-## See Also
+---
 
-* [Rollback Provisioned Infra with the Terraform Rollback Step](rollback-provisioned-infra-with-the-terraform-rollback-step)
+## Troubleshooting
 
+<Troubleshoot
+  issue="Terraform destroy fails with state lock error in Harness CD pipeline"
+  mode="docs"
+  fallback="Ensure no other process is holding a state lock. Terraform automatically retries lock acquisition. Check backend configuration for lock timeout settings."
+/>
+
+<Troubleshoot
+  issue="Permission denied when destroying infrastructure with Terraform Destroy step"
+  mode="docs"
+  fallback="Verify the connector used in the destroy step has permissions to delete the target resources. Check cloud provider IAM roles and policies."
+/>
+
+<Troubleshoot
+  issue="Terraform destroy step reports resources still exist after completion"
+  mode="docs"
+  fallback="Check execution logs for partial destroy errors. Some resources may have dependencies preventing deletion. Review Terraform state file for remaining resources."
+/>
+
+<Troubleshoot
+  issue="Destroy plan shows different resources than expected"
+  mode="docs"
+  fallback="Verify the Provisioner Identifier matches the Apply step that created the infrastructure. Check the Terraform configuration files are the same version used during provisioning."
+/>
+
+---
+
+## Next steps
+
+You have configured a Terraform Destroy step to remove provisioned infrastructure. You can now add destroy steps to rollback sections or execution workflows.
+
+- Go to [Provision with the Terraform Apply step](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step) to understand the Apply workflow.
+- Go to [Plan Terraform provisioning with the Terraform Plan step](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step) to preview changes before destroying.
+- Go to [Rollback infrastructure with the Terraform Rollback step](/docs/continuous-delivery/cd-infrastructure/terraform-infra/rollback-provisioned-infra-with-the-terraform-rollback-step) to rollback failed provisioning.

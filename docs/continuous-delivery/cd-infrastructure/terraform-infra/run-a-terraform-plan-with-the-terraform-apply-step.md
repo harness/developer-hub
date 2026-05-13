@@ -2,82 +2,83 @@
 title: Provision with the Terraform Apply step
 description: Apply a Terraform plan or script using the Terraform Apply step.
 sidebar_position: 5
-helpdocs_topic_id: hdclyshiho
-helpdocs_category_id: jcu7twh2t6
-helpdocs_is_private: false
-helpdocs_is_published: true
-canonical_url: https://www.harness.io/blog/cloudformation-and-terraform-support
+sidebar_label: Apply Step
+keywords:
+  - terraform
+  - terraform apply
+  - infrastructure provisioning
+  - CD pipeline
+  - terraform plan
+  - remote backend
+tags:
+  - Terraform
+  - Continuous Delivery
+  - Infrastructure Provisioning
 ---
 
-This topic describes how to apply a Terraform plan or script using the Terraform Apply step.
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-The Terraform Apply step can apply a Terraform script with or without the Terraform Plan step.
+The Terraform Apply step applies a Terraform plan or script to provision infrastructure in your CD pipeline. You can use it with a Terraform Plan step (Inherit from Plan configuration) to apply a previously generated plan, or standalone (Inline configuration) to configure and apply Terraform scripts directly. This page explains how to configure the Terraform Apply step in your CD pipeline.
 
-Typically the Terraform Apply step is used with the Terraform Plan step to apply a plan. For steps on using the Terraform Plan step, see [Plan Terraform Provisioning with the Terraform Plan Step](run-a-terraform-plan-with-the-terraform-plan-step).
-
-The Terraform Apply step can provision any resource, including the target infrastructure for a CD deployment. For steps on provisioning the target infrastructure for a CD deployment, see [Provision Target Deployment Infra Dynamically with Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/provision-infra-dynamically-with-terraform).
+---
 
 ## Before you begin
 
-* [Terraform Provisioning with Harness](terraform-provisioning-with-harness)
-* [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
+- **Harness account with Continuous Delivery module enabled:** You need access to **Continuous Delivery** in Harness. For how to access or create a Harness account, go to [Getting started with Harness Platform](/docs/platform/get-started/onboarding-guide).
 
-## Install Terraform on delegates
+    :::info Contact Harness support:
 
-Terraform must be installed on the Delegate to use a Harness Terraform Provisioner. You can install Terraform manually or use the `INIT_SCRIPT` environment variable in the Delegate YAML.
+    If the Continuous Delivery module does not appear, contact your account administrator or [Harness Support](mailto:support@harness.io).
 
-See [Build custom delegate images with third-party tools](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
+    :::
 
+- **Pipeline and environment permissions:** You need **View**, **Create/Edit**, and **Execute** for [Pipelines](/docs/platform/role-based-access-control/permissions-reference#pipelines), and **View** and **Create/Edit** for [Environments](/docs/platform/role-based-access-control/permissions-reference#environments). To get these permissions, an administrator must assign you a role that includes them. Go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) and [Manage roles](/docs/platform/role-based-access-control/add-manage-roles) to understand how permissions are assigned.
 
-```bash
-# Install TF  
-microdnf install unzip
-curl -O -L https://releases.hashicorp.com/terraform/1.3.5/terraform_1.3.5_darwin_amd64.zip
-unzip terraform_1.3.5_darwin_amd64.zip
-mv ./terraform /usr/bin/
-# Check TF install
-terraform --version
-```
+- **Terraform or OpenTofu installed on Harness Delegate:** Terraform must be installed on the delegate to use a Harness Terraform provisioner. You can install Terraform manually or use the `INIT_SCRIPT` environment variable in the delegate YAML.
 
-## Terraform Plan and Apply steps
+    <details>
+    <summary>Install Terraform on delegates</summary>
 
-Typically the Terraform Plan step is used with the Terraform Apply step.
+    Go to [Build custom delegate images with third-party tools](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools) to learn how to install Terraform on delegates.
 
-First, you add the Terraform Plan step and define the Terraform script for it to use.
+    Here is an example installation script:
 
-Next, you add the Terraform Apply step, select **Inherit from Plan** in **Configuration Type**, and reference the Terraform Plan step using the same **Provisioner Identifier.**
+    ```bash
+    # Install Terraform
+    microdnf install unzip
+    curl -O -L https://releases.hashicorp.com/terraform/<VERSION>/terraform_<VERSION>_linux_amd64.zip
+    unzip terraform_<VERSION>_linux_amd64.zip
+    unzip terraform_1.9.8_linux_amd64.zip
+    mv ./terraform /usr/bin/
+    # Check Terraform install
+    terraform --version
+    ```
 
-![](./static/run-a-terraform-plan-with-the-terraform-apply-step-02.png)
+    </details>
 
-:::warning
-Currently, **Configuration Type** cannot be set to **Inherit from Plan** if the **Run on Remote Workspace** checkbox is checked. 
-:::
+- **Terraform configuration files in a Git repository or cloud storage:** Your Terraform scripts must be accessible via a Harness connector. Go to [Connect to a Git Repo](/docs/platform/connectors/code-repositories/connect-to-code-repo), [Artifactory Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference), or [AWS Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference) to create connectors.
 
-For steps on using the Terraform Plan with the Apply step, see:
+- **Understanding of Terraform concepts:** This guide assumes familiarity with Terraform workspaces, backends, modules, and state files. Go to [Terraform documentation](https://developer.hashicorp.com/terraform/docs) to learn more.
 
-* [Provision Target Deployment Infra Dynamically with Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/provision-infra-dynamically-with-terraform)
+- **Terraform Plan step (optional):** If you want to apply a plan generated by a Terraform Plan step, go to [Plan Terraform Provisioning with the Terraform Plan Step](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step) to configure the Plan step first.
 
-You can also simply run the Terraform Apply step without applying the plan from the Terraform Plan step.
+---
 
-In that case, you simply add the Terraform Apply step and select the **Inline** option in **Configuration Type**. Next, you add the Terraform script and settings in Terraform Apply. This scenario is described below.
+## Configure the Terraform Apply step
 
-## Add the Terraform Apply step
+You can add the Terraform Apply step in two locations: in the stage's **Infrastructure** > **Dynamic Provisioning** section (when provisioning target infrastructure for deployment), or anywhere in the **Execution** steps (for ad-hoc provisioning).
 
-When you are provisioning the target infrastructure for a deployment, you add the Terraform Plan step in the stage's Infrastructure in **Dynamic Provisioning**. Dynamic Provisioning is used to provision the target infrastructure for the stage's deployment. Consequently, if you add Terraform Plan there, you must use a Terraform Apply step to apply the plan.
+When you use the Terraform Apply step without a Terraform Plan step, you configure the Terraform Apply step to connect Harness to your repo and add Terraform scripts directly. When you use it with a Terraform Plan step, you set **Configuration Type** to **Inherit from Plan** and reference the Plan step using the same **Provisioner Identifier**.
 
-See [Provision Target Deployment Infra Dynamically with Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/provision-infra-dynamically-with-terraform).
+Go to [Provision Target Deployment Infra Dynamically with Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/provision-infra-dynamically-with-terraform) to learn how to provision target infrastructure for deployments.
 
-You can also add a Terraform Apply step anywhere in the **Execution** steps for the stage. In that case, you can use a Terraform Plan step but it's not required.
+---
 
-When you use the Terraform Apply step without using the Terraform Plan step, you set up the Terraform Apply step to connect Harness to your repo and add Terraform scripts.
-
-The Terraform Apply step has the following settings.
-
-### Name
+### Set the step name
 
 In **Name**, enter a name for the step, for example, **apply**.
 
-The name is very important. You can use the name in [expressions](/docs/platform/variables-and-expressions/harness-variables) to refer to settings in this step.
+The name is important because you can use it in [expressions](/docs/platform/variables-and-expressions/harness-variables) to refer to settings in this step.
 
 For example, if the name of the stage is **Terraform** and the name of the step is **apply**, and you want to echo its timeout setting, you would use:
 
@@ -85,17 +86,21 @@ For example, if the name of the stage is **Terraform** and the name of the step 
 
 or simply `<+execution.steps.apply.timeout>`.
 
-### Timeout
+---
+
+### Set the timeout
 
 In **Timeout**, enter how long Harness should wait to complete the Terraform Apply step before failing the step.
 
-### Run on remote workspace
+---
+
+### Enable remote workspace
 
 Enable this option to identify whether the Terraform configuration uses a Terraform remote backend.
 
 When enabled, you cannot provide the workspace input in Harness. The workspace will be outlined in your configuration for the remote backend.
 
-Also, the remote backend is supported only when the **Configuration Type** is **Inline**.
+The remote backend is supported only when the **Configuration Type** is **Inline**.
 
 ```
 terraform {
@@ -109,43 +114,55 @@ terraform {
 }
 ```
 
-### Configuration type
+:::warning
+**Configuration Type** cannot be set to **Inherit from Plan** if the **Run on Remote Workspace** checkbox is checked.
+:::
+
+---
+
+### Select the configuration type
+
+**Configuration Type** determines whether this step uses its own Terraform configuration (**Inline**) or inherits settings from a previous Terraform Plan step (**Inherit from Plan**).
 
 In **Configuration Type**, select **Inline** or **Inherit from Plan**.
 
-If you select **Inherit from Plan**, you'll enter the unique Id used by a [Terraform Plan](run-a-terraform-plan-with-the-terraform-plan-step) step in **Provisioner Identifier**.
+- **Inherit from Plan:** Use this option when you have a Terraform Plan step earlier in the pipeline and want to apply that plan. You will enter the unique Id used by a [Terraform Plan](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step) step in **Provisioner Identifier**.
 
-If you select **Inline**, you'll configure this Terraform Apply step to use a Terraform script without any Terraform Plan step.
+- **Inline:** Use this option to configure and run Terraform Apply without a separate Plan step. You will configure this Terraform Apply step to use a Terraform script without any Terraform Plan step.
 
-We'll cover the **Inline** settings below.
+The sections below cover the **Inline** settings.
 
-### Provisioner identifier
+---
+
+### Set the Provisioner Identifier
+
+The **Provisioner Identifier** is a unique label that links this Terraform Apply step to a Terraform Plan step (when using Inherit from Plan) or to other Terraform steps like Rollback and Destroy.
 
 Enter a unique value in **Provisioner Identifier**.
-
-The Provisioner Identifier identifies the provisioning done in this step. You use the Provisioner Identifier in additional steps to refer to the provisioning done in this step.
 
 The most common use of Provisioner Identifier is between the Terraform Plan and Terraform Apply steps. For the Terraform Apply step, to apply the provisioning from the Terraform Plan step, you use the same Provisioner Identifier.
 
 ![](./static/run-a-terraform-plan-with-the-terraform-apply-step-03.png)
 
-You also use the same Provisioner Identifier with the [Terraform Destroy](remove-provisioned-infra-with-terraform-destroy) step to remove the provisioned resources.
+You also use the same Provisioner Identifier with the [Terraform Destroy](/docs/continuous-delivery/cd-infrastructure/terraform-infra/remove-provisioned-infra-with-terraform-destroy) step to remove the provisioned resources.
 
 ![](./static/run-a-terraform-plan-with-the-terraform-apply-step-04.png)
 
-You also use the same Provisioner Identifier with the [Terraform Rollback](rollback-provisioned-infra-with-the-terraform-rollback-step) step to rollback the provisioned resources.
+You also use the same Provisioner Identifier with the [Terraform Rollback](/docs/continuous-delivery/cd-infrastructure/terraform-infra/rollback-provisioned-infra-with-the-terraform-rollback-step) step to rollback the provisioned resources.
 
 #### Provisioner identifier scope
 
 The Provisioner Identifier is a Project-wide setting. You can reference it across Pipelines in the same Project.
 
-For this reason, it's important that all your Project members know the Provisioner Identifiers. This will prevent one member building a Pipeline from accidentally impacting the provisioning of another member's Pipeline.
+For this reason, it is important that all your Project members know the Provisioner Identifiers. This will prevent one member building a Pipeline from accidentally impacting the provisioning of another member's Pipeline.
 
-### Configuration file repository
+---
+
+### Connect to your Terraform script repository
 
 **Configuration File Repository** is where the Terraform script and files you want to use are located.
 
-Here, you'll add a connection to the Terraform script repo.
+Here, you will add a connection to the Terraform script repo.
 
 Click **Specify Config File** or edit icon.
 
@@ -155,9 +172,11 @@ Click the provider where your files are hosted.
 
 ![](./static/provision-infra-dynamically-with-terraform-02.png)
 
-Select or create a Connector for your repo. For steps, see [Connect to a Git Repo](/docs/platform/connectors/code-repositories/connect-to-code-repo), [Artifactory Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) or [AWS Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
+Select or create a Connector for your repo. Go to [Connect to a Git Repo](/docs/platform/connectors/code-repositories/connect-to-code-repo) to create a Git connector. Go to [Artifactory Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) to configure Artifactory. Go to [AWS Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference) to configure AWS S3.
 
-### Git
+---
+
+#### For Git providers
 
 In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit ID**. When you run the Pipeline, Harness will fetch the script from the repo.
 
@@ -167,21 +186,25 @@ In **Branch**, enter the name of the branch to use.
 
 In **Folder Path**, enter the path from the root of the repo to the folder containing the script.
 
-For example, here's a Terraform script repo, the Harness Connector to the repo, and the **Config Files** settings for the branch and folder path:
+For example, here is a Terraform script repo, the Harness Connector to the repo, and the **Config Files** settings for the branch and folder path:
 
 ![](./static/run-a-terraform-plan-with-the-terraform-apply-step-06.png)
 
 Click **Submit**.
 
-Your Terraform Apply step is now ready. You can now configure a Terraform Destory or Rollback step that can use the Terraform script from this Terraform Apply step.
+Your Terraform Apply step is now ready. You can now configure a Terraform Destroy or Rollback step that can use the Terraform script from this Terraform Apply step.
 
 The following sections cover common Terraform Apply step options.
 
-### Artifactory
+---
 
-See [Artifactory Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference).
+#### For Artifactory
 
-### AWS S3
+Go to [Artifactory Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) to configure Artifactory connectors.
+
+---
+
+#### For AWS S3
 
 1. In **Region**, select the region where your bucket is stored.
 2. In **Bucket**, select the bucket where your Terraform files are stored (all buckets from the selected region that are available to the connector will be fetched).
@@ -191,7 +214,9 @@ See [Artifactory Connector Settings Reference](/docs/platform/connectors/cloud-p
 
 Harness will fetch all files from specified folder.
 
-### Source module
+---
+
+### Configure module source credentials
 
 When you set up the file repo in **Configuration File Repository**, you use a Harness Connector to connect to the repo where the Terraform scripts are located.
 
@@ -225,17 +250,19 @@ The ability to authenticate with HTTPS is new! The Minimum required delegate ver
 
 :::
 
+---
 
-## Workspace
+### Configure workspace settings
+
+A Terraform workspace is a separate instance of state data, allowing you to manage multiple environments (Dev, QA, Production) from the same Terraform configuration.
 
 Harness supports Terraform [workspaces](https://www.terraform.io/docs/state/workspaces.html). A Terraform workspace is a logical representation of one your infrastructures, such as Dev, QA, Stage, Production.
 
 Workspaces are useful when testing changes before moving to a production infrastructure. To test the changes, you create separate workspaces for Dev and Production.
 
-A workspace is really a different state file. Each workspace isolates its state from other workspaces. For more information, see [When to use Multiple Workspaces](https://www.terraform.io/docs/state/workspaces.html#when-to-use-multiple-workspaces) from Hashicorp.
+A workspace is really a different state file. Each workspace isolates its state from other workspaces. For more information, go to [When to use Multiple Workspaces](https://www.terraform.io/docs/state/workspaces.html#when-to-use-multiple-workspaces) from Hashicorp.
 
-Here's an example script where a local value names two workspaces, **default** and **production**, and associates different instance counts with each:
-
+Here is an example script where a local value names two workspaces, **default** and **production**, and associates different instance counts with each:
 
 ```json
 locals {  
@@ -257,11 +284,11 @@ resource "aws_instance" "my_service" {
 
 In the workspace interpolation sequence, you can see the count is assigned by applying it to the Terraform workspace variable (`terraform.workspace`) and that the tag is applied using the variable also.
 
-Harness will pass the workspace name you provide to the `terraform.workspace` variable, thus determining the count. If you provide the name **production**, the count will be **3**.
+Harness will pass the workspace name you provide to the `terraform.workspace` variable, thus determining the count. If you provide the name **production**, the count will be **3**.
 
-In the **Workspace** setting, you can simply select the name of the workspace to use.
+In the **Workspace** setting, you can simply select the name of the workspace to use.
 
-You can also use a [stage variable](/docs/platform/variables-and-expressions/harness-variables) in **Workspace**.
+You can also use a [stage variable](/docs/platform/variables-and-expressions/harness-variables) in **Workspace**.
 
 Later, when the Pipeline is deployed, you specify the value for the stage variable and it is used in **Workspace**.
 
@@ -269,23 +296,29 @@ This allows you to specify a different workspace name each time the Pipeline is 
 
 You can even set a Harness Trigger where you can set the workspace name used in **Workspace**.
 
-## Connector Credentials
+---
+
+### Configure connector credentials
 
 You can use a connector to authenticate with the target cloud provider. This is an optional configuration that takes the connector reference. The Terraform step uses this connector to authenticate with the cloud provider targeted for infrastructure provisioning.
 
 This connector configuration is available in the **Terraform Apply** step when the **Configuration Type** is set to **Inline**.
 
-### AWS Connector 
+---
+
+#### AWS Connector
+
+Use an AWS connector to authenticate with AWS and provision infrastructure using an assumed IAM role.
 
 :::note
 This feature requires Harness Delegate version 81202. This feature is available only to paid customers. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-You can use an AWS connector to have the Terraform Plan and Apply step assume a role to perform infrastructure provisioning. It's an optional configuration that takes the AWS connector, a region and Role ARN. The Terraform step uses these parameters to authenticate the AWS account targeted for infrastructure provisioning.
+You can use an AWS connector to have the Terraform Plan and Apply step assume a role to perform infrastructure provisioning. It is an optional configuration that takes the AWS connector, a region and Role ARN. The Terraform step uses these parameters to authenticate the AWS account targeted for infrastructure provisioning.
 
 By default, AWS assumes the role session duration as 900 seconds. To increase the AWS role session duration, a  built-in environment variable, `HARNESS_AWS_ASSUME_ROLE_DURATION` is introduced, which can be used to override the assume role session duration. `HARNESS_AWS_ASSUME_ROLE_DURATION` is designed for use in Terraform steps in the environment variable section. The value must be set in seconds. This new environment variable requires Harness Delegate version 82700.
 
-When configured the optional configuration for AWS Connector these fields can be passed as a fixed value, runtime input, or an expression
+When configured the optional configuration for AWS Connector these fields can be passed as a fixed value, runtime input, or an expression.
 
 <details>
 <summary>Sample YAML</summary>
@@ -312,11 +345,11 @@ When configured the optional configuration for AWS Connector these fields can be
 ```
 </details>
 
-#### Terraform variable files
+##### Terraform variable files
 
 You can specify Terraform variables inline and fetch remote variable files during run time. For more information, go to [Specify Terraform variables](/docs/continuous-delivery/cd-infrastructure/terraform-infra/optional-tf-var-files).
 
-##### Git providers
+###### Git providers
 
 ![](./static/run-a-terraform-plan-with-the-terraform-apply-step-07.png)
 
@@ -330,11 +363,11 @@ In **File Paths**, add one or more file paths from the root of the repo to the v
 
 Click **Submit**. The remote file(s) are added.
 
-##### Artifactory
+###### Artifactory
 
-See [Artifactory Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference).
+Go to [Artifactory Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) to configure Artifactory connectors.
 
-##### S3 provider
+###### S3 provider
 
 In **Identifier**, enter an identifier, so you can refer to variables using expressions if needed.
 
@@ -348,11 +381,15 @@ In **File Paths**, add one or more file paths from the root of the bucket to the
 
 Click **Submit**. The remote file(s) are added.
 
-### Azure Connector
+---
+
+#### Azure Connector
+
+Use an Azure connector to authenticate with Azure for target infrastructure provisioning.
 
 Harness Terraform steps now support authenticating with Azure using Azure connectors for target provisioning. This enables seamless integration with Azure infrastructure when running Terraform Plan, Apply, and Destroy steps with inline Terraform configuration.
 
-#### Key Features
+##### Key Features
 
 - **Azure Connector support:** Authenticate Terraform operations using Azure connectors configured in Harness.
 - **Authentication methods:** Manual credentials, Delegate-based credentials, OIDC token-based authentication and Certificate-based authentication are supported.
@@ -360,7 +397,7 @@ Harness Terraform steps now support authenticating with Azure using Azure connec
 
 For more information on how to setup an Azure connector, go to [Azure Connector Settings Reference](/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector).
 
-#### YAML Configuration Example
+##### YAML Configuration Example
 
 <details>
 <summary>Sample YAML</summary>
@@ -391,7 +428,11 @@ For more information on how to setup an Azure connector, go to [Azure Connector 
 ```
 </details>
 
-### GCP Connector
+---
+
+#### GCP Connector
+
+Use a GCP connector to authenticate with Google Cloud Platform for infrastructure provisioning.
 
 :::note
 This feature requires Harness Delegate version 88303 or later.
@@ -401,7 +442,7 @@ Harness Terraform steps support authenticating with Google Cloud Platform (GCP) 
 
 For information on setting up a GCP connector, go to [Connect to Google Cloud Platform (GCP)](/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp).
 
-#### Authentication Methods
+##### Authentication Methods
 
 GCP connectors support three authentication methods for Terraform steps:
 
@@ -417,7 +458,7 @@ This method uses credentials from the delegate's IAM role, such as a GCE instanc
 
 This method enables federated authentication using OpenID Connect for workload identity federation. It requires configuring a GCP Workload Identity Pool, an OIDC Provider, and a service account for impersonation. This is the recommended approach for production environments as it eliminates the need to manage long-lived credentials.
 
-#### YAML Configuration Example
+##### YAML Configuration Example
 
 <details>
 <summary>Sample YAML</summary>
@@ -450,7 +491,7 @@ This method enables federated authentication using OpenID Connect for workload i
 ```
 </details>
 
-#### GCP Connector Configuration Examples
+##### GCP Connector Configuration Examples
 
 The following examples show how to configure GCP connectors for different authentication methods:
 
@@ -502,20 +543,24 @@ connector:
 ```
 </details>
 
-## Backend configuration
+---
+
+### Configure the backend
 
 The **Backend Configuration** section contains the [remote state](https://www.terraform.io/docs/language/state/remote.html) values.
 
 You can use an inline or remote state file.
 
-### Using a remote state file with Terraform Apply
+---
+
+#### Using a remote state file with Terraform Apply
 
 1. In Backend Configuration, select **Remote**.
 2. Click **Specify Backend Config File**
 3. Select your provider (GitHub, Artifactory, S3, etc.) and then select or create a Connector to the repo where the files are located. Typically, this is the same repo where your Terraform script is located, so you can use the same Connector.
    ![](./static/run-a-terraform-plan-with-the-terraform-apply-step-16.png)
 
-#### Git providers
+##### Git providers
 
 1. In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit ID**.
 2. In **Branch**, enter the name of the branch.
@@ -526,9 +571,9 @@ You can use an inline or remote state file.
 
 ##### Artifactory
 
-See [Artifactory Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference).
+Go to [Artifactory Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) to configure Artifactory connectors.
 
-#### AWS S3
+##### AWS S3
 
 1. In **Region**, select the region where your bucket is stored.
 2. In **Bucket**, select the bucket where your backend config file is stored (all buckets from the selected region that are available to the connector will be fetched).
@@ -540,12 +585,11 @@ You can also use files in the [Harness File Store](/docs/continuous-delivery/x-p
 
 To use the same remote state file set in the Terraform Plan step, Terraform Apply steps must use the same Provisioner Identifier.
 
-For an example of how the config file should look, please see [Backend Configuration](https://developer.hashicorp.com/terraform/language/settings/backends/configuration#file) from HashiCorp.
+For an example of how the config file should look, go to [Backend Configuration](https://developer.hashicorp.com/terraform/language/settings/backends/configuration#file) from HashiCorp.
 
-Here's an example.
+Here is an example.
 
 main.tf (note the empty backend S3 block):
-
 
 ```json
 variable "global_access_key" {type="string"}  
@@ -582,12 +626,13 @@ key    = "remotedemo.tfstate"
 region = "us-east-1"
 ```
 
-### Using inline state with Terraform Apply
+---
+
+#### Using inline state with Terraform Apply
 
 Enter values for each backend config (remote state variable).
 
 For example, if your config.tf file has the following backend:
-
 
 ```json
 terraform {
@@ -616,32 +661,36 @@ terraform {
 }
 ```
 
+Go to **Configuration variables** in Terraform's [gcs Standard Backend doc](https://www.terraform.io/docs/language/settings/backends/gcs.html#configuration-variables) to understand backend configuration variables.
 
-See **Configuration variables** in Terraform's [gcs Standard Backend doc](https://www.terraform.io/docs/language/settings/backends/gcs.html#configuration-variables).
+---
 
-## Targets
+### Specify Terraform targets
 
-You can use the **Targets** setting to target one or more specific modules in your Terraform script, just like using the `terraform plan -target` command. See [Resource Targeting](https://www.terraform.io/docs/commands/plan.html#resource-targeting) from Terraform.
+You can use the **Targets** setting to target one or more specific modules in your Terraform script, just like using the `terraform plan -target` command. Go to [Resource Targeting](https://www.terraform.io/docs/commands/plan.html#resource-targeting) from Terraform to understand resource targeting.
 
 You simply identify the module using the standard format `module.name`, like you would using `terraform plan -target="module.s3_bucket"`.
 
-If you have multiple modules in your script and you don't select one in **Targets**, all modules are used.
+If you have multiple modules in your script and you do not select one in **Targets**, all modules are used.
 
+---
 
-## Environment variables
+### Add environment variables
 
 If your Terraform script uses [environment variables](https://www.terraform.io/docs/cli/config/environment-variables.html), you can provide values for those variables here.
 
 For example:
 
-
 ```bash
 TF_LOG_PATH=./terraform.log  
 TF_VAR_alist='[1,2,3]'
 ```
-You can use Harness encrypted text for values. See [Add Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
-## Terraform Apply step output
+You can use Harness encrypted text for values. Go to [Add Text Secrets](/docs/platform/secrets/add-use-text-secrets) to learn how to create encrypted text secrets.
+
+---
+
+### Access step outputs
 
 Terraform Apply step output is available after the Terraform Apply step has completed. The output can be exposed to other steps or resources in Harness.
 
@@ -653,7 +702,9 @@ The expression is of the form `<+pipeline.stages.stage-provisioning.spec.executi
 
 When you use this expression in another step, the expression resolves to its value.
 
-## Encrypt the Terraform Apply JSON outputs
+---
+
+### Encrypt JSON outputs
 
 The **Encrypt json output** setting encrypts the Terraform JSON output as a Harness secret. Only Harness Secret Manager is supported.
 
@@ -686,7 +737,7 @@ EOF
 
 Above example will pass the content of Terraform apply outputs as-is into the file including quotes, etc.
 
-Here's an example of decrypted Terraform JSON output:
+Here is an example of decrypted Terraform JSON output:
 
 ```json
 {
@@ -714,7 +765,9 @@ For example, use the following command to extract the value for `test-output-nam
 jq '.["test-output-name1"].value' file.json
 ```
 
-## Mask sensitive Terraform outputs
+---
+
+### Mask sensitive outputs
 
 :::note
 This feature is behind the feature flag `CDS_TERRAFORM_HIDE_SENSITIVE_OUTPUTS`. Contact [Harness Support](mailto:support@harness.io) to enable it.
@@ -740,7 +793,9 @@ When Harness resolves the expression in a downstream step, the value is decrypte
 This feature applies when the **Encrypt json output** secret manager is **not** configured. If a secret manager is set, Harness encrypts the entire JSON output using that path instead.
 :::
 
-## Skip state storage
+---
+
+### Skip state storage
 
 The following feature requires a minimum Harness Delegate version of 812xx.
 
@@ -758,10 +813,20 @@ With the **Skip state storage** option enabled, Harness allows you to skip the l
 
 This option makes is useful only if you do not have a Terraform backed configured in your Terraform config files. If you have a Terraform backed configured, then the Terraform CLI will not create any local state files.
 
+**Implications of enabling Skip state storage:**
+
+If you enable this option and there is no backend configured in your Terraform files, Harness will not maintain state between executions. This means:
+
+- You cannot roll back changes (no state history exists)
+- You should not add a Terraform Rollback step (rollback is impossible without state)
+- Each execution will not know about previous infrastructure changes
+- This setup is only suitable for testing, not production
+
 If the Terraform Apply step is configured to skip state storage, and there is no backend configured in your Terraform files, you should not add a rollback step, as this is an invalid setup. Rollback is impossible if there is no state file.
 
+---
 
-## Create remote workspace with prefix
+### Create remote workspace with prefix
 
 :::note
 This setting is only available when the Configuration Type is **Inline**.
@@ -769,7 +834,7 @@ This setting is only available when the Configuration Type is **Inline**.
 This option is available only on delegate version `86400` or later.
 :::
 
-When using a [remote backend](https://developer.hashicorp.com/terraform/language/backend/remote) with a workspace **prefix**, Terraform does not automatically create the workspace if it doesn’t already exist. This can cause pipeline failures with errors like:
+When using a [remote backend](https://developer.hashicorp.com/terraform/language/backend/remote) with a workspace **prefix**, Terraform does not automatically create the workspace if it does not already exist. This can cause pipeline failures with errors like:
 
 `Error: Currently selected workspace "my-app-dev" does not exist`
 
@@ -791,7 +856,6 @@ If you prefer not to use this flag, you can manually configure the workspace usi
 <details>
 <summary>This is how the YAML would look like</summary>
 
-
 ```yaml
 - step:
     type: TerraformApply
@@ -808,19 +872,24 @@ If you prefer not to use this flag, you can manually configure the workspace usi
 ```
 </details>
 
-## Command line options
+---
+
+### Add command line options
 
 This setting allows you to set the Terraform CLI options for Terraform commands depending on the Terraform step type. For example: `-lock=false`, `-lock-timeout=0s`.
 
-
-
 ![](./static/run-a-terraform-plan-with-the-terraform-apply-step-18.png)
 
-## Skip Terraform refresh
+---
 
-Terraform refresh command won't be running when this setting is selected.
+### Skip Terraform refresh
 
-## Working directory cleanup
+Terraform refresh command will not be running when this setting is selected.
+
+---
+
+### Understand working directory cleanup
+
 Each Terraform step runs in a specific working directory on the delegate.
 
 The Terraform working directory is located at `/opt/harness-delegate/./terraform-working-dir/`.
@@ -829,11 +898,13 @@ To that directory path, Harness adds additional directories that are named after
 
 In this final working directory, Harness stores the Terraform configuration and all fetched files such as var-files and backend-config.
 
-Once the Terraform step execution is complete, Harness cleans up the main working directory `/opt/harness-delegate/./terraform-working-dir/`.
+Once the Terraform step execution is complete, Harness cleans up the main working directory `/opt/harness-delegate/./terraform-working-dir/`. This cleanup happens immediately after the step completes successfully or fails.
 
 If you generate any local resources on the delegate in the directory where Terraform configurations are located, those resources are also removed. If you need those resources, make sure to generate them outside the Terraform working directory.
 
-## Advanced settings
+---
+
+### Configure advanced settings
 
 In **Advanced**, you can use the following options:
 
@@ -843,7 +914,41 @@ In **Advanced**, you can use the following options:
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
-## See also
+---
 
-* [Plan Terraform Provisioning with the Terraform Plan Step](run-a-terraform-plan-with-the-terraform-plan-step)
+## Troubleshooting
 
+<Troubleshoot
+  issue="Terraform Apply step fails with 'Provisioner Identifier not found' error in Harness CD"
+  mode="docs"
+  fallback="Ensure the Provisioner Identifier in the Terraform Apply step exactly matches the identifier in the Terraform Plan step. Provisioner Identifiers are case-sensitive."
+/>
+
+<Troubleshoot
+  issue="Configuration Type set to Inherit from Plan but Terraform Apply cannot find the plan"
+  mode="docs"
+  fallback="Verify that the Terraform Plan step completed successfully and used the same Provisioner Identifier. Check that both steps are in the same pipeline stage."
+/>
+
+<Troubleshoot
+  issue="Remote workspace does not exist error when using Terraform Apply with remote backend"
+  mode="docs"
+  fallback="Enable 'Create remote workspace with prefix' in the Terraform Apply step settings, or manually create the workspace in your Terraform Cloud/Enterprise instance before running the pipeline."
+/>
+
+<Troubleshoot
+  issue="Terraform Apply state lock timeout in Harness CD pipeline"
+  mode="docs"
+  fallback="Another process or pipeline may be holding the state lock. Wait for the lock to be released, or use Terraform CLI to manually unlock the state if the lock is stale."
+/>
+
+---
+
+## Next steps
+
+You have configured the Terraform Apply step to provision infrastructure in your CD pipeline. Harness will now execute your Terraform script and apply the planned changes to your target environment.
+
+- [Plan Terraform Provisioning with the Terraform Plan Step](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step)
+- [Rollback Provisioned Infra with the Terraform Rollback Step](/docs/continuous-delivery/cd-infrastructure/terraform-infra/rollback-provisioned-infra-with-the-terraform-rollback-step)
+- [Remove Provisioned Infra with Terraform Destroy](/docs/continuous-delivery/cd-infrastructure/terraform-infra/remove-provisioned-infra-with-terraform-destroy)
+- [Provision Target Deployment Infra Dynamically with Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/provision-infra-dynamically-with-terraform)

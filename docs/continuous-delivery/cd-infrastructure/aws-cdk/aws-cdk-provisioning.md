@@ -32,7 +32,7 @@ The following video demonstrates AWS CDK provisioning in Harness:
 
 ---
 
-## Prerequisites
+## Before you begin
 
 - **Harness account with Continuous Delivery module enabled:** You need access to Harness with the CD module entitled on your account. Go to [Getting started with Harness Platform](/docs/platform/get-started/onboarding-guide) to create an account or access an existing account.
 

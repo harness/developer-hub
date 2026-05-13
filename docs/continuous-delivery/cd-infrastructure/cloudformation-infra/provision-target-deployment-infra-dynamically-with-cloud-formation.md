@@ -30,7 +30,7 @@ Dynamic provisioning is limited to what is available in the target environment. 
 
 ---
 
-## Prerequisites
+## Before you begin
 
 - **Harness account with Continuous Delivery enabled:** You need **Continuous Delivery** under **Deployments** in Harness. Go to [Getting started with Harness Platform](/docs/platform/get-started/onboarding-guide) to access or create a Harness account.
 

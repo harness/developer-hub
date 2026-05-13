@@ -1,6 +1,7 @@
 ---
-title: Terraform Cloud provisioning
+title: Terraform Cloud Provisioning
 description: Connect to a Terraform Cloud/Enterprise instance and run your workspaces.
+sidebar_label: Cloud Provisioning
 sidebar_position: 9
 canonical_url: https://www.harness.io/blog/cloudformation-and-terraform-support
 ---
