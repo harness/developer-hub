@@ -47,6 +47,17 @@ export const spt: IltCardItem[] = [
     cardType: cardType.SPT,
   },
   {
+    title: "Introduction to Test Intelligence",
+    module: MODULES.ci,
+    type: type.user,
+    description:
+      "Self-paced tidbit introducing Test Intelligence.",
+    version: "Harness CI Paid Plans",
+    link: "https://university-registration.harness.io/self-paced-training-tidbit-introduction-to-test-intelligence",
+    tileType: tileType.normal,
+    cardType: cardType.SPT,
+  },
+  {
     title: "Internal Developer Portal",
     module: MODULES.idp,
     type: type.user,
