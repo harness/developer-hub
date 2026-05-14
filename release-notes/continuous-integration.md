@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2026-05-04T10:00
+date: 2026-05-11T10:00
 sidebar_position: 10
 ---
 
@@ -61,6 +61,24 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 :::
 
 ## May 2026
+
+### Version 1.139.0
+
+<!-- May 2026 -->
+
+#### New Features and Enhancements
+
+- Connector validation tasks for proxy-enabled platform connectors are now routed through Harness Cloud, ensuring validation works correctly for [PrivateLink](/docs/platform/references/private-network-connectivity/private-link-connect) setups. This feature is behind the feature flag `CI_ENABLE_PRIVATE_CONNECT`. (CI-22597)
+
+- Codebase SCM tasks for proxy-enabled platform connectors are now routed through Harness Cloud delegates, enabling source code operations over private network paths. This feature is behind the feature flag `CI_ENABLE_PRIVATE_CONNECT`. (CI-22560)
+
+#### Fixed Issues
+
+- Fixed an issue where the Build and Push to GAR step intermittently added provenance and SBOM attestations when Docker Layer Caching (DLC) was enabled, causing images to become OCI format unexpectedly. (CI-22576)
+
+- Fixed an issue where logs from Containerized Step Group steps timed out during upload, causing incomplete log visibility in pipeline executions. (CI-22272)
+
+- Fixed an issue where public ECR image pulls hit rate limits even when an AWS connector was configured, by ensuring authenticated pulls are used when a connector is available. (CI-20752)
 
 ### Version 1.138.0
 
