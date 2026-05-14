@@ -25,6 +25,22 @@ We've migrated to LabelsV2, which preserves your original label keys while drama
 
 [Instructions to Update](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts/#how-to-migrate)
 
+## May 2026 - Version 
+#### Deployment Date: May 14th, 2026 (Prod-1)
+
+### New Features and Enhancements
+
+- **Cost Settings for Recommendations:** Cost Settings for Recommendations now provides a concise, tabbed configuration experience for AWS and Azure recommendation cost preferences. AWS supports Passthrough Cost setup for both uniform and mixed account configurations, including per-account cost-type visibility and contextual guidance. Azure adds selectable Passthrough Cost options for Amortized and List Price views of recommendation costs. [CCM-31882]
+  <DocImage path={require('./static/ccm/globl-cos.png')} width="100%" title="Cost Settings for Recommendations" />
+
+- **Add to Ignore list dialog refreshed:** We refreshed the Add to Ignore list dialog for governance recommendations: scope is clearer via stacked cards (resource / account or project or subscription / global), and the global option is easier to spot with a stronger warning in the summary. [CCM-31808]
+
+- **“Ignored until” column renamed to “Scope & Duration”:** The “Ignored until” column has been renamed to “Scope & Duration”, now showing both where an ignore rule applies and how long it remains active. In addition, all tabs now display the count of recommendations, making it easier to quickly identify and monitor items without needing to open each tab. [CCM-31613]
+  <DocImage path={require('./static/ccm/renaming.png')} width="100%" title="Cost Settings for Recommendations" />
+
+- **Cost types supported on the Anomaly Details page:** We have added support for cost types on the Anomaly Details page so users can immediately see which cloud cost types are being used, with resource anomalies showing only the relevant provider. We also enhanced the anomaly details to display associated cost category and cost bucket information, providing better business context when reviewing an anomaly. [CCM-31486]
+
+
 ## April 2026 - Version 1.86.15
 #### Deployment Date: April 17, 2026 (Prod-1)
 
