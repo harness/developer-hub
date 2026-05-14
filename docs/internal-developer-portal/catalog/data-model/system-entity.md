@@ -54,7 +54,7 @@ They can exist at **Project**, **Organization**, or **Account** scope, based on 
 
 To create a System from the IDP UI:
 
-1. In the **Internal Developer Portal → Software Catalog**, click **Create**.
+1. Go to **Catalog**, click **Create**.
 2. Select **System** as the entity kind
 ![Create System](../static/create-system.png)
 3. Provide:
@@ -101,7 +101,7 @@ After defining a **System Entity** in Harness IDP, you can configure how its det
 For newly created accounts, the **default System layout** is automatically applied. This layout includes tabs such as **Overview**, **Entities**, **Scorecard**, and **Diagram**, along with a structured arrangement of key catalog components.
 
 
-We can edit the **System Layout** under `Admin → Layout → Catalog Entities → System`. The layout determines the tabs, cards, and views shown when viewing a System in the UI.
+We can edit the **System Layout** under **Configure** → **Layout** → **Catalog Entities** → **System**. The layout determines the tabs, cards, and views shown when viewing a System in the UI.
 
 ![System Layout](../static/system-layout.png)
 

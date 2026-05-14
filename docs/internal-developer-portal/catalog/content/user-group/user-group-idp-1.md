@@ -50,6 +50,6 @@ In case there's a user-group already present with the same `metadata.name` while
 
 #### When to ingest groups directly into the Catalog rather than creating a Harness Platform User Group at the account level?
 
-- If you need to represent a Group of Groups kind of hierarchy e.g. Org -> Department -> Team
+- If you need to represent a Group of Groups kind of hierarchy e.g. Org → Department → Team
 - If you would like the Groups definition to support annotations and tags to be consumed by plugins on the Groups page in Catalog.
 - If you already have a YAML representation of Groups and maintain it in a repository today somewhere.

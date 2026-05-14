@@ -28,7 +28,7 @@ redirects:
 
 - To solve this we would recommend you to use the following scripts which would register separate locations for all the matching `catalog-info.yaml` files and hence would be synchronized separately.
 
-### Pre-Requisites to Use the Script
+### Before you begin
 
 - Harness API Key - [Docs](https://developer.harness.io/docs/platform/automation/api/api-quickstart/#create-a-harness-api-key-and-token)
 - Bitbucket Username and Password - Follow these [docs](https://community.atlassian.com/t5/Bitbucket-questions/HOW-TO-FIND-MY-BIT-BUCKET-USERNAME/qaq-p/1081960) to find your username

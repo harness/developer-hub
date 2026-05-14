@@ -24,7 +24,7 @@ The following configurations are needed in Harness and GCP to get the integratio
 ### Relevant GCP Configurations
  
 * **IAM role**: Grant `roles/cloudasset.viewer` to your service account at the **organization or folder level** (not project level) via [IAM & Admin](https://console.cloud.google.com/iam-admin/iam). For resource-specific access (e.g., Compute, BigQuery), also grant the relevant viewer roles such as `roles/compute.viewer` or `roles/bigquery.metadataViewer` at the same scope.
-* **Service account key**: [Generate a JSON key](https://cloud.google.com/iam/docs/keys-create-delete) for your service account (**Keys** tab → **Add key → Create new key → JSON**) and upload it when creating the GCP connector in Harness.
+* **Service account key**: [Generate a JSON key](https://cloud.google.com/iam/docs/keys-create-delete) for your service account (**Keys** tab → **Add key** → **Create new key** → **JSON**) and upload it when creating the GCP connector in Harness.
 * **Cloud Asset API**: [Enable `cloudasset.googleapis.com`](https://console.cloud.google.com/apis/library/cloudasset.googleapis.com) on the GCP project associated with the service account.
 
 :::info Proxy Configuration

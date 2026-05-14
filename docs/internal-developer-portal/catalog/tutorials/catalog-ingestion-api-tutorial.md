@@ -17,7 +17,7 @@ In this tutorial we will be using the catalog metadata ingestion APIs to add add
 
 <DocVideo src="https://www.youtube.com/embed/MB-IWGoYjOo?si=y87PPJlPdVYeqd99" />
 
-## Pre-requisites
+## Before you begin
 
 1. You must have components registered in your software catalog. If you don't have any components registered, follow this [tutorial](/docs/internal-developer-portal/catalog/manage-catalog) to register one. We recommend you to register [this software component](https://github.com/harness-community/idp-samples/blob/main/example-catalog-info/tutorial-catalog-ingestion.yaml) for this tutorial.
 
@@ -164,7 +164,7 @@ import TabItem from '@theme/TabItem';
 
 In case you want to track the information you have ingested using Scorecards, follow the steps below.
 
-1. Go to the **Scorecards** and under **Admin** and select **Checks** from the top nav.
+1. Go to the **Scorecards** and under **Configure** and select **Checks** from the top nav.
 
 2. Now select **Create Custom Check** and add a New Custom Check to check the code coverage score, select the data source as **Catalog Info YAML** and data point as **Evaluate Expression(JEXL)**.
 
@@ -187,7 +187,7 @@ In case you want to track the information you have ingested using Scorecards, fo
 
 In case you want to display the same information you have ingested on your Overview page as an additional card, follow the steps below.
 
-1. Go to the **Layout Page** and under **Admin** and select **Catalog Entities**.
+1. Go to the **Layout Page** and under **Configure** and select **Catalog Entities**.
 
 ![](../integrate-tools/catalog-ingestion/static/navigate-catalog-entities.png)
 

@@ -34,7 +34,7 @@ Harness IDP supports the following API specification formats:
 To fetch API specifications from external sources, you must configure the URL Allow List.
 
 **Steps:**
-1. Navigate to **Admin** > **URL Allow List** in your IDP portal
+1. Navigate to **Configure** → **URL Allow List** in your IDP portal
 2. Add the domains or URLs where your API specifications are hosted
 3. Use wildcards (e.g., `*.github.com`) to allow multiple subdomains
 
@@ -44,7 +44,7 @@ To fetch API specifications from external sources, you must configure the URL Al
 By default, Harness IDP restricts backend fetching and only allows requests to explicitly allowed domains.
 
 **To enable access:**
-- Go to **Configuration** > **URL Allow List**
+- Go to **Configure** → **URL Allow List**
 - Add full domains or use wildcards (e.g., `*.apis.com`) for subdomains
 - List specific paths with trailing slashes (e.g., `/exampledir/` allows `/exampledir/example`)
 
@@ -81,7 +81,7 @@ In the above example we import all the API specs in `json` format as a `$text` e
 By default, Backstage restricts backend fetching and only allows requests to public APIs defined in `catalog-info.yaml` files if the domains are explicitly allowed.
 
 To enable access:
-- Go to your IDP portal and navigate to `Configuration` > `URL Allow List`.
+- Go to your IDP portal and navigate to **Configure** → **URL Allow List**.
 - Add full domains or use wildcards (e.g., `*.apis.com`) to allow subdomains.
 - You can also list specific paths. Subdirectories are supported using a trailing slash (e.g., `/exampledir/` allows `/exampledir/example`).
 
@@ -93,7 +93,7 @@ Make sure the host or path for your OpenAPI spec is included in this list to all
 In IDP 2.0, API entity creation now supports OpenAPI specifications referenced via both **absolute URLs** (e.g., `https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml`) and **relative paths** (e.g., `./openapi.yaml`) in the `spec.definition.$text` field. 
 These paths are interpreted relative to the location specified by the `backstage.io/managed-by-location` annotation. This typically aligns with the path of your entity YAML file. When not explicitly set, `managed-by-location` is automatically derived from the `backstage.io/source-location` annotation, ensuring correct resolution even for inline or centrally managed entities.
 
-For external URLs, ensure the domain is included in the **Backend URL Allow List** under *Configure > URL Allow List* to enable proper API documentation rendering.
+For external URLs, ensure the domain is included in the **Backend URL Allow List** under **Configure** → **URL Allow List** to enable proper API documentation rendering.
 
 :::
 
@@ -275,7 +275,7 @@ metadata:
 
 ## gRPC Docs
 
-You can render gRPC documentation by using the [protoc-gen-doc plugin](https://github.com/backstage/backstage/tree/master/plugins/api-docs-module-protoc-gen-doc), which contains `ApiDefinitionWidgets` for [grpc-docs](https://github.com/gendocu-com/grpc-docs)to enable Swagger UI for gRPC APIs. 
+You can render gRPC documentation by using the [protoc-gen-doc plugin](https://github.com/backstage/backstage/tree/master/plugins/api-docs-module-protoc-gen-doc), which contains `ApiDefinitionWidgets` for [grpc-docs](https://github.com/gendocu-com/grpc-docs) to enable Swagger UI for gRPC APIs. 
 
 
 ### JSON Format

@@ -60,7 +60,7 @@ After enabling the integration, configure what to sync:
   - Once the link is established, the IDP entity will reflect the CD service's **name**, **description**, and **tags**. 
   - If an IDP entity already has description or tags before linking, the **CD service values take precedence** and overwrite them. 
   - To update these fields, make changes in Harness CD; they will automatically sync to IDP. 
-  - **IDP-CD Service Sync:** Sync is **uni-directional** from **CD service → IDP entity**. Changes made to the IDP entity are **not** propagated back to the CD service.
+  - **IDP-CD Service Sync:** Sync is **uni-directional** from **CD service** → **IDP entity**. Changes made to the IDP entity are **not** propagated back to the CD service.
   - **RBAC:** You can view and sync services from the same projects and organizations you have access to in Harness CD.
 
 

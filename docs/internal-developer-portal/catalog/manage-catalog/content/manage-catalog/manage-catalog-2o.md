@@ -172,7 +172,7 @@ For example:
 <DocVideo src="https://app.tango.us/app/embed/f0f1e522-bc37-430c-b5f5-ab82d8afb649" title="Accessing the Layout Editor" />
 </TabItem>
 <TabItem value="Step-by-step">
-1. In Harness IDP, go to **Configure > Layout**.
+1. In Harness IDP, go to **Configure** → **Layout**.
 2. Select **Catalog Entities**.
 3. Choose the **Entity Kind** you want to modify.
 4. Layouts are organized by:

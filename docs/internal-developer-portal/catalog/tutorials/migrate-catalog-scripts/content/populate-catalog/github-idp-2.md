@@ -17,7 +17,7 @@ This script provides a scalable and GitOps-friendly solution by automating the e
 curl -o idp-catalog-population-multirepo-github.py https://raw.githubusercontent.com/harness-community/idp-samples/main/IDP-2.0-Samples/catalog-scripts/idp-catalog-population-multirepo-github.py
 ```
 
-### Pre-Requisites
+### Before you begin
 
 * [Python 3](https://www.python.org/downloads/) with [`requests`](https://pypi.org/project/requests/) and [`python-dotenv`](https://pypi.org/project/python-dotenv/) libraries installed.
 * A `.env` file configured with the following:

@@ -14,7 +14,7 @@ This script is for IDP 1.0. For IDP 2.0, please refer to the IDP 2.0 tab.
 
 These scripts allow you to automatically create catalog YAML files for all repositories in your GitHub organization or user account and register them with your Harness IDP instance.
 
-### Pre-Requisites
+### Before you begin
 
 - Harness API Key - [Docs](https://developer.harness.io/docs/platform/automation/api/api-quickstart/#create-a-harness-api-key-and-token)
 - GitHub Token - [Docs](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)

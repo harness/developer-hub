@@ -301,7 +301,7 @@ This approach makes important information about the group immediately visible wi
 By default, you won't see any layout for the  Custom Group entities, but you can duplicate the layout of the Group entities, IDP provides a standard view for all **Group entities**, showing the profile, members, and graph. However, administrators can customize the layout to highlight the metadata that matters most to their organization.
 
 You can configure layouts from:
-`Admin → Layout → Group Entities`
+`Configure → Layout → Group Entities`
 
 Then duplicate an existing layout of kind `Group` and you will be asked to provide the type for it. Make sure to provide the type same as for the user group entity you want the layout for. 
 

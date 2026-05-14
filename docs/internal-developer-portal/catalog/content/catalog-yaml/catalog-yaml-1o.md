@@ -391,7 +391,7 @@ If you're referencing external URLs in your `IDP.yaml` file, such as Swagger doc
 
 To allow external URLs:
 
-- Navigate to **Admin** in the Harness Internal Developer Portal.
+- Navigate to **Configure** in the Harness Internal Developer Portal.
 - Go to **URL Allow List**.
 - Click on **+Add Host**.
 - In the provided field, enter the URL pattern you wish to allow. For example, to allow all URLs from Swagger, you'd enter `*.swagger.com`.

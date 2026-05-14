@@ -55,7 +55,7 @@ This section connects Harness IDP to your PagerDuty account.
 2. Click the **Choose PagerDuty connector** dropdown and select the PagerDuty connector you want to use to pull data into the IDP.
 
    :::info Don't have a PagerDuty connector yet?
-   If no connectors appear in the dropdown, you need to first create a PagerDuty connector in Harness. Navigate to **Account Settings → Connectors** and create a new PagerDuty connector by providing your PagerDuty API key. Once saved, it will appear in the dropdown here.
+   If no connectors appear in the dropdown, you need to first create a PagerDuty connector in Harness. Navigate to **Account Settings** → **Connectors** and create a new PagerDuty connector by providing your PagerDuty API key. Once saved, it will appear in the dropdown here.
 
    <DocVideo src="https://www.youtube.com/embed/QE8dFDeK8Vs" />
    :::

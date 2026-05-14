@@ -44,7 +44,7 @@ By automatically analyzing Deployments, Services, and their interdependencies, t
 curl -o kubernetes-harness-idp-catalog-sync.py https://raw.githubusercontent.com/harness-community/idp-samples/refs/heads/main/IDP-2.0-Samples/catalog-scripts/kubernetes-harness-idp-catalog-sync.py
 ```
 
-### Pre-Requisites
+### Before you begin
 
 #### Local Environment
 

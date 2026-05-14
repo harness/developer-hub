@@ -1,6 +1,5 @@
 ---
 title: Import Entities from Git
-description: Learn how to import catalog entities from Git repositories into Harness IDP.
 sidebar_label: Import from Git
 ---
 
@@ -14,7 +13,7 @@ This feature allows teams to reuse pre-defined configurations, onboard services 
 
 ---
 
-## Pre-requisites
+## Before you begin
 
 - **Enable API Access**: For connection types and authentication methods where API access is not already enabled by default, you'll have to enable it from the Git connector settings. API Access is required for using Harness Git Experience. Refer to these docs to [enable API access](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#enable-api-access).
   ![](../../git-experience/static/enable-api-access.png)
@@ -30,7 +29,7 @@ You can create a new entity or workflow in Harness IDP directly from your Git YA
 </TabItem>
 <TabItem value="Step-by-Step">
 
-1. Go to Harness IDP -> Create. In the bottom, you'll find an option to create a new entity by importing YAML from Git. Click on **Import from Git**.
+1. Go to Harness IDP → **Create**. In the bottom, you'll find an option to create a new entity by importing YAML from Git. Click on **Import from Git**.
 2. Select the **Entity Scope** (scope at which you want your entity to be created). The scope (Account, Org, or Project) of the entity is determined by the scope you select here. Make sure your imported YAML includes the appropriate scope identifiers i.e. `projectIdentifier` and `orgIdentifier` – otherwise, it will result in an error.
 3. Select the **Git Provider**. You can either choose **Harness Code Repository** or **Third-Party Provider**. For your selected option, enter the required details.
 4. In case of **Harness Code Repository**, you'll have to provide the following details:
