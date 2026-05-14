@@ -1,11 +1,20 @@
 ---
 title: Slack
 sidebar_label: Slack
-description: ""
+description: Configure either the Slack app integration (in beta) or the legacy Slack webhook integration for Harness FME notifications.
 ---
 
-:::info[Note]
-The following Slack integration is in beta. If you'd like to be included in this, contact [support@split.io](mailto:support@split.io).
+Harness FME supports two Slack integrations for sending notifications to your workspace:
+
+* **[Slack app integration (beta)](#slack-app-integration-beta)**: A newer integration that supports OAuth authentication, Slack commands, configurable subscriptions, and interactive notifications.
+* **[Slack webhook integration (legacy)](#harness-fmeslack-webhook-integration-legacy)**: An older incoming webhook-based integration that sends notifications to a Slack channel using a Slack Incoming Webhook URL.
+
+Choose the integration that best fits your organization’s needs.
+
+## Slack app integration (beta)
+
+:::tip[Slack app integration]
+The Slack app integration is in beta. To request access, contact [Harness Support](/docs/feature-management-experimentation/fme-support).
 :::
 
 The Slack integration allows teams to stay up to date on changes they care about in Harness FME. By combining FME's rollout capabilities with Slack, you can:
@@ -14,10 +23,6 @@ The Slack integration allows teams to stay up to date on changes they care about
 * Subscribe to the changes you care about by filtering notifications by Harness FME project, environment, type (e.g. feature flag and segment), and action (e.g. create, update, delete)
 
 With this integration, as a Slack user, you can subscribe channels to notifications based on filters that they set. Once these filters are set up by that user, any Slack user in that channel can see any event that exists that meets the filter criteria in that channel. In addition, you can see notifications relevant to you, specifically in the Split Slack App on the messages tab.
-
-:::tip
-If you are having trouble completing the integration, contact [support@split.io](mailto:support@split.io).
-:::
 
 ## Setting up in Harness FME
 
@@ -58,19 +63,19 @@ To set up in Slack, do the following:
 
 You can interact with the Slack app to initiate initial configuration, subscription management, and help documentation using the following commands:
 
-* /split configure
-* /split subscribe
-* /split subscriptions
-* /split help
+* `/split configure`
+* `/split subscribe`
+* `/split subscriptions`
+* `/split help`
 
 
 ### Using the configure command
 
-**Note: Only admins have access to the Harness authentication token that is needed to enter in the configure modal.**
+Use the `/split configure` command to display the Configure Split app modal. 
 
-Use the `/split configure` command to display the Configure Split app modal. When you enter your Harness authentication token and submit it here, this links the Slack app with your Harness account. Note that you only need to use this command if you didn’t previously click the Configure button in the welcome message.
+Entering your Harness authentication token here links the Slack app with your Harness account. You only need to use this command if you did not previously click **Configure** in the welcome message.
 
-**Note: If there is a problem with the token validation, an error message displays when you click the Submit button.**
+Only admins have access to the required Harness authentication token. If token validation fails, an error message displays when you click **Submit**.
 
 ### Create a channel subscription
 
@@ -95,15 +100,18 @@ To make a change to a subscription, click the **Edit** button next to the desire
 
 Delete a subscription by clicking the **Delete** button next to a given subscription. You’re prompted with a confirmation message indicating that notification matching the subscription will be removed. Click the **Confirm** button to finish deleting the subscription.
 
-## Harness FME/Slack webhook integration
+## Harness FME/Slack webhook integration (Legacy)
 
-:::warning[About this webhook integration]
-The following content describes how to set up the older Slack integration. The updated version above is currently in beta. If you'd like to be a part of the beta, contact <a href="mailto:earlyaccess@split.io">earlyaccess@split.io</a>.
+:::warning[Legacy integration]
+This section describes the older Slack webhook integration that uses Slack Incoming Webhooks.
+
+For the newer Slack app experience with subscriptions and Slack commands, use the [Slack app integration above](#slack-app-integration-beta).
 :::
 
-Slack makes it easy to communicate with your team and keep your colleagues up to date on changes in Harness FME. By combining FME's rollout capabilities with Slack, you can keep your team notified as new feature flags are enabled, as well as which rollouts are modified and by which of your teammates. If you are having trouble completing the integration, contact [support@split.io](mailto:support@split.io).
+<details>
+<summary>Expand for the Slack webhook integration</summary>
 
-## Setting up in Slack
+#### Setting up in Slack
  
 1. Go to the Incoming Webhooks page in the Slack App Directory [here](https://slack.com/apps/A0F7XDUAZ-incoming-webhooks). Make sure you're signed into Slack.
 
@@ -123,7 +131,7 @@ Slack makes it easy to communicate with your team and keep your colleagues up to
 
    ![](./static/slack-step4.png)
 
-## Setting up in Harness FME
+#### Setting up in Harness FME
 
 1. Go to Admin Settings and click **Integrations**.
 
@@ -134,3 +142,5 @@ Slack makes it easy to communicate with your team and keep your colleagues up to
 3. Paste the **Webhook URL** you copied in step 4 and click **Save**.
 
 Harness FME notifications should now be flowing into Slack. If you have any issues with this integration, contact [support@split.io](mailto:support@split.io).
+
+</details>
