@@ -1,18 +1,20 @@
 ---
-title: Configure OIDC authentication for Cloud Spanner and CloudSQL
+title: Configure OIDC authentication for GCP databases
 sidebar_label: OIDC Authentication
-description: Set up keyless authentication for GCP Cloud Spanner and CloudSQL databases using OpenID Connect (OIDC) with Workload Identity Federation in Harness Database DevOps.
+description: Set up keyless authentication for GCP Cloud Spanner, CloudSQL, and BigQuery databases using OpenID Connect (OIDC) with Workload Identity Federation in Harness Database DevOps.
 slug: /database-devops/features/oidc-authentication
 keywords:
   - oidc authentication
   - cloud spanner oidc
   - cloudsql oidc
+  - bigquery oidc
   - gcp workload identity federation
   - keyless authentication
   - jdbc oidc
   - gcp database authentication
   - cloudsql postgres oidc
   - cloudsql mysql oidc
+  - bigquery authentication
   - harness database devops oidc
 tags:
   - database-devops
@@ -35,10 +37,11 @@ This topic assumes you have experience with [GCP workload identity providers](ht
 
 - **GCP Workload Identity Federation:** A configured Workload Identity Pool and OIDC provider in your GCP project. Go to [Workload Identity Federation](https://cloud.google.com/iam/docs/workload-identity-federation) to set up federation.
 - **OIDC provider configuration:** The provider must be configured with the correct issuer URL for your Harness account cluster. Go to [Set up the GCP workload identity provider](#set-up-the-gcp-workload-identity-provider) for configuration details.
-- **Service account:** A GCP service account with appropriate database permissions (Cloud Spanner Database User role or CloudSQL IAM user permissions). Go to [Service accounts](https://cloud.google.com/iam/docs/service-account-overview) to create and configure service accounts.
+- **Service account:** A GCP service account with appropriate database permissions (Cloud Spanner Database User role, CloudSQL IAM user permissions, or BigQuery Data Viewer/Admin role). Go to [Service accounts](https://cloud.google.com/iam/docs/service-account-overview) to create and configure service accounts.
 - **Service account access grant:** The service account must grant access to your Harness account ID via workload identity pool attribute conditions. Go to [Grant access to the service account](#grant-access-to-the-service-account) for configuration steps.
-- **Database instance:** A Cloud Spanner instance or CloudSQL PostgreSQL/MySQL instance with IAM authentication enabled.
+- **Database instance:** A Cloud Spanner instance, CloudSQL PostgreSQL/MySQL instance with IAM authentication enabled, or BigQuery project with datasets configured.
 - **Harness project access:** Connector creation permissions in your Harness project. Go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) to configure roles.
+- **Required GCP APIs:** The following APIs must be enabled in your GCP project. Go to [Enable required GCP APIs](#enable-required-gcp-apis) for instructions.
 
 
 ## How OIDC authentication works
@@ -61,8 +64,55 @@ OIDC authentication is available for the following GCP database types:
 - **Cloud Spanner:** Uses OAuth2 access token authentication via the `oauthToken` JDBC connection property.
 - **CloudSQL PostgreSQL:** Uses the CloudSQL Socket Factory with IAM authentication and credentials file.
 - **CloudSQL MySQL:** Uses the CloudSQL Socket Factory with IAM authentication and credentials file.
+- **BigQuery:** Uses OAuth2 access token authentication via the Simba BigQuery JDBC driver.
 
 Generic PostgreSQL or MySQL databases without CloudSQL Socket Factory are not supported.
+
+### BigQuery prerequisites
+
+In addition to the common OIDC prerequisites, BigQuery requires:
+
+**Required GCP APIs:**
+```bash
+# BigQuery API for data access
+gcloud services enable bigquery.googleapis.com --project=YOUR_PROJECT_ID
+
+# IAM and STS APIs (required for OIDC token exchange)
+gcloud services enable iamcredentials.googleapis.com \
+  sts.googleapis.com \
+  --project=YOUR_PROJECT_ID
+```
+
+**Required IAM roles for the service account:**
+```bash
+SA_EMAIL="your-sa@PROJECT_ID.iam.gserviceaccount.com"
+PROJECT_ID="your-project-id"
+
+# BigQuery data access (choose based on requirements)
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+  --member="serviceAccount:$SA_EMAIL" \
+  --role="roles/bigquery.dataViewer"  # For read-only access
+
+# Or use admin for full access
+# --role="roles/bigquery.admin"
+
+# Job execution (required for running queries)
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+  --member="serviceAccount:$SA_EMAIL" \
+  --role="roles/bigquery.jobUser"
+
+# Service Account Token Creator (for OIDC token exchange)
+gcloud iam service-accounts add-iam-policy-binding $SA_EMAIL \
+  --project=$PROJECT_ID \
+  --role="roles/iam.serviceAccountTokenCreator" \
+  --member="serviceAccount:$SA_EMAIL"
+```
+
+**Role descriptions:**
+- `roles/bigquery.dataViewer`: Read-only access to BigQuery datasets and tables.
+- `roles/bigquery.admin`: Full access to BigQuery resources.
+- `roles/bigquery.jobUser`: Required to run BigQuery jobs (queries and schema operations).
+- `roles/iam.serviceAccountTokenCreator`: Allows generating access tokens during OIDC exchange.
 
 ## JDBC URL formats
 
@@ -112,6 +162,26 @@ jdbc:mysql:///mydb?cloudSqlInstance=my-project:us-central1:my-instance&socketFac
 - `enableIamAuth`: Must be `true`.
 
 If any required parameter is missing, the connection test will fail with a validation error before attempting to connect.
+
+### BigQuery URL format
+
+```
+jdbc:bigquery://https://www.googleapis.com/bigquery/v2:443;ProjectId=PROJECT_ID;DefaultDataset=DATASET_NAME;Location=REGION;
+```
+
+**Example:**
+```
+jdbc:bigquery://https://www.googleapis.com/bigquery/v2:443;ProjectId=cd-play;DefaultDataset=Step_execution_data;Location=asia-south1;
+```
+
+**Required parameters:**
+- `ProjectId`: Your GCP project ID where BigQuery datasets reside.
+- `DefaultDataset`: The default BigQuery dataset for schema operations.
+- `Location`: The BigQuery dataset location (for example, `us-central1`, `asia-south1`).
+
+:::info important
+When using OIDC authentication, the OAuth access token is injected automatically during the connection. Do not include `OAuthType` or `OAuthAccessToken` parameters in the URL. The Simba BigQuery JDBC driver is included in the Harness Database DevOps plugin images.
+:::
 
 ## Set up the GCP workload identity provider
 
@@ -178,8 +248,6 @@ Go to [Manage access to service accounts](https://cloud.google.com/iam/docs/mana
 
    ![JDBC connector test for Cloud Spanner with OIDC authentication](./static/oidc-spanner-connector-test.png)
 
----
-
 ## Configure OIDC authentication for CloudSQL
 
 1. In your Harness project, go to **Connectors** and select **New Connector**. Choose **JDBC**.
@@ -223,6 +291,39 @@ Go to [Manage access to service accounts](https://cloud.google.com/iam/docs/mana
 
 Ensure that a database user with this username exists in your CloudSQL instance and is granted appropriate permissions. Go to [CloudSQL IAM authentication](https://cloud.google.com/sql/docs/postgres/authentication) to create IAM database users.
 
+## Configure OIDC authentication for BigQuery
+
+1. In your Harness project, go to **Connectors** and select **New Connector**. Choose **JDBC**.
+2. In the **Connection URL** field, enter your BigQuery JDBC URL:
+   ```
+   jdbc:bigquery://https://www.googleapis.com/bigquery/v2:443;ProjectId=YOUR_PROJECT_ID;DefaultDataset=YOUR_DATASET;Location=YOUR_REGION;
+   ```
+   
+   Replace the placeholders with your BigQuery resource identifiers:
+   - `YOUR_PROJECT_ID`: Your GCP project ID where BigQuery datasets reside.
+   - `YOUR_DATASET`: The default BigQuery dataset for schema operations.
+   - `YOUR_REGION`: *Optional*. The BigQuery dataset location (for example, `us-central1`, `asia-south1`).
+3. In the **Authentication** section, select **OIDC** as the auth type.
+4. Configure GCP OIDC details:
+   - **Provider Type:** Select **GCP**.
+   - **Project Number:** Enter your GCP project number (numeric identifier, not project ID). Go to the [GCP Console dashboard](https://console.cloud.google.com/home/dashboard) to find the project number.
+   - **Workload Pool ID:** Enter the Workload Identity Pool ID you created in [Set up the GCP workload identity provider](#set-up-the-gcp-workload-identity-provider). This is the `Pool ID` value shown in the GCP Console under **IAM & Admin** > **Workload Identity Federation**.
+   - **Provider ID:** Enter the OIDC provider ID within the pool. This is the `Provider ID` value shown when you select the provider in the GCP Console.
+   - **Service Account Email:** Enter the email of the service account that has BigQuery permissions (for example, `bigquery-sa@project.iam.gserviceaccount.com`).
+
+5. Select **Test Connection** to verify that the delegate can authenticate and connect to BigQuery.
+
+   The connection test runs on the delegate and exchanges the Harness OIDC token for a GCP access token before connecting to BigQuery using the Simba BigQuery JDBC driver.
+
+:::info important
+The service account must have the following IAM roles:
+- `roles/bigquery.dataViewer` or `roles/bigquery.admin` (for dataset access)
+- `roles/bigquery.jobUser` (for running queries)
+- `roles/iam.serviceAccountTokenCreator` (for OIDC token exchange)
+
+The BigQuery JDBC driver (Simba) is included in the Harness Database DevOps plugin images. No additional driver configuration is required.
+:::
+
 ## Use OIDC connectors in pipelines
 
 When you reference a JDBC connector with OIDC authentication in a Database DevOps step (Liquibase or Flyway), Harness automatically handles the token exchange and authentication flow.
@@ -250,7 +351,6 @@ The following screenshot shows a successful Database DevOps Apply step execution
 
 ![Database DevOps Apply step execution with OIDC authentication](./static/oidc-dbops-apply-step.png)
 
----
 
 ## Connector JSON structure
 

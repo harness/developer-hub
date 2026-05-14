@@ -60,6 +60,7 @@ The JDBC connector is used for connecting to your database instance.
 | **ORACLE SSL**     | `jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCPS)(HOST={host})(PORT={port}))(CONNECT_DATA=(SERVICE_NAME={servicename})))` |
 | **COCKROACHDB SSL**| `jdbc:postgresql://{host}:{port}/{dbName}?sslmode=require`                                                                       |
 | **DocumentDB**     | `mongodb://{host}:{port}/{dbName}?tls=true&tlsAllowInvalidHostnames=true&directConnection=true&retryWrites=false&authSource=admin` |
+| **BIGQUERY**       | `jdbc:bigquery://https://www.googleapis.com/bigquery/v2:443;ProjectId={project-id};DefaultDataset={dataset-name};Location={region};` |
 
 ---
 
@@ -178,6 +179,54 @@ Replace `YOUR-DOCDB-CLUSTER-ENDPOINT` with your cluster endpoint and `YOUR_EC2_P
 
 :::info note
 Add the Amazon RDS CA certificate to your trust store to enable SSL connections to DocumentDB. This is required for secure connectivity. Learn on how to add the Amazon RDS CA certificate to your delegate environment [here](https://developer.harness.io/docs/database-devops/use-database-devops/ssl/#5-enable-jdbc-ssl-truststore-support).
+:::
+
+---
+
+## Setting Up BigQuery
+
+BigQuery connections in Harness DB DevOps support OIDC authentication using Workload Identity Federation for keyless authentication.
+
+### Prerequisites for BigQuery
+
+**Required GCP APIs:**
+- **BigQuery API** (`bigquery.googleapis.com`): Core BigQuery data access
+- **IAM Service Account Credentials API** (`iamcredentials.googleapis.com`): Generates service account access tokens from workload tokens
+- **Security Token Service API** (`sts.googleapis.com`): Exchanges Harness JWT for GCP workload access token
+
+Enable the APIs:
+```bash
+gcloud services enable bigquery.googleapis.com \
+  iamcredentials.googleapis.com \
+  sts.googleapis.com \
+  --project=YOUR_PROJECT_ID
+```
+
+**Required IAM roles for the service account:**
+- `roles/bigquery.dataViewer` (read-only) or `roles/bigquery.admin` (full access)
+- `roles/bigquery.jobUser` (required to run queries and schema operations)
+- `roles/iam.serviceAccountTokenCreator` (for OIDC token exchange)
+- `roles/iam.workloadIdentityUser` (for Workload Identity Pool binding)
+
+**BigQuery JDBC URL format:**
+```
+jdbc:bigquery://https://www.googleapis.com/bigquery/v2:443;ProjectId=PROJECT_ID;DefaultDataset=DATASET_NAME;Location=REGION;
+```
+
+**Example:**
+```
+jdbc:bigquery://https://www.googleapis.com/bigquery/v2:443;ProjectId=cd-play;DefaultDataset=Step_execution_data;Location=asia-south1;
+```
+
+**Required parameters:**
+- `ProjectId`: Your GCP project ID where BigQuery datasets reside
+- `DefaultDataset`: The default BigQuery dataset for schema operations
+- `Location`: The BigQuery dataset location (for example, `us-central1`, `asia-south1`)
+
+:::info important
+BigQuery uses OIDC authentication with Workload Identity Federation. Do not include `OAuthType` or `OAuthAccessToken` parameters in the URL when using OIDC. The Simba BigQuery JDBC driver is included in Harness Database DevOps plugin images.
+
+Go to [Configure OIDC authentication for GCP databases](/docs/database-devops/features/oidc-authentication) to set up keyless authentication for BigQuery.
 :::
 
 ---

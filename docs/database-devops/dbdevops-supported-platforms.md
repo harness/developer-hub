@@ -38,11 +38,12 @@ Harness Database DevOps currently supports several database platforms, including
 | Microsoft SQL Server | Liquibase Community          | Basic Auth, Kerberos, SSL                  |
 | Microsoft SQL Server | Flyway Community             | Basic Auth,SSL                             |  
 | MongoDB              | Native Executor,  Liquibase Community, Flyway Community    | Username/Password (SCRAM), SSL   |
-| Google Cloud Spanner | Liquibase Community          | Keyless Auth (Service Account), JSON Key Auth |
+| Google Cloud Spanner | Liquibase Community          | Keyless Auth (Service Account), JSON Key Auth, OIDC |
 | CockroachDB          | Liquibase Community          | Basic Auth, SSL                            |
 | Google AlloyDB       | Liquibase Community          | Basic Auth, SSL                            |
 | Snowflake            | Liquibase Community          | PKI (Key Pair Authentication)              |
 | Amazon DocumentDB    | Liquibase Community          | Username/Password (SCRAM), SSL             |
+| Google BigQuery      | Liquibase Community          | OIDC (Workload Identity Federation)        |
 
 :::info note
 Harness Database DevOps supports all database providers for Postgres and MySQL such as AWS RDS, Aurora DB, Azure Database for PostgreSQL, Azure Database for MySQL, and more. 

@@ -302,3 +302,110 @@ The connection will fail if Workload Identity not enabled or missing KSA annotat
 
 ## 24. Why am I getting permission errors?
 Either there's missing `roles/iam.workloadIdentityUser` or Incorrect database IAM roles
+
+---
+
+## 25. Why is my BigQuery connection failing with "Access denied: BigQuery BigQuery: Permission denied" when using OIDC?
+
+This error indicates that the service account used for OIDC authentication does not have the required BigQuery IAM roles.
+
+**How to Solve**:
+- Verify that the service account has `roles/bigquery.dataViewer` or `roles/bigquery.admin` for dataset access.
+- Ensure the service account has `roles/bigquery.jobUser` to run queries and schema operations.
+- Confirm the service account has `roles/iam.serviceAccountTokenCreator` for OIDC token exchange.
+- Check that the Workload Identity Pool binding includes the service account with `roles/iam.workloadIdentityUser`.
+
+**Verify roles:**
+```bash
+gcloud projects get-iam-policy PROJECT_ID \
+  --flatten="bindings[].members" \
+  --filter="bindings.members:serviceAccount:SA_EMAIL"
+```
+
+## 26. Why is my BigQuery OIDC token exchange failing?
+
+The OIDC token exchange follows a two-step process. Failures can occur at either step.
+
+**How to Solve**:
+
+**Step 1 failure (Harness JWT to GCP Workload Access Token):**
+- Ensure `sts.googleapis.com` (Security Token Service API) is enabled in your GCP project.
+- Verify the Workload Identity Pool and Provider are configured with the correct Harness issuer URL.
+- Check that the attribute mapping includes `google.subject = assertion.sub`.
+- Confirm the pool conditions filter by `account_id` only (not pipeline-specific attributes).
+
+**Step 2 failure (Workload Token to Service Account Access Token):**
+- Ensure `iamcredentials.googleapis.com` (IAM Service Account Credentials API) is enabled.
+- Verify the service account has `roles/iam.serviceAccountTokenCreator` bound to itself:
+  ```bash
+  gcloud iam service-accounts add-iam-policy-binding SA_EMAIL \
+    --project=PROJECT_ID \
+    --role="roles/iam.serviceAccountTokenCreator" \
+    --member="serviceAccount:SA_EMAIL"
+  ```
+
+## 27. Why is my BigQuery connection failing with "Dataset not found" when using OIDC?
+
+This error occurs when the BigQuery dataset specified in the JDBC URL does not exist or the service account does not have access to it.
+
+**How to Solve**:
+- Verify the `DefaultDataset` parameter in your JDBC URL matches an existing BigQuery dataset in your project.
+- Ensure the `Location` parameter matches the dataset region (for example, `us-central1`, `asia-south1`).
+- Check that the service account has access to the specified dataset:
+  ```bash
+  bq show --format=prettyjson PROJECT_ID:DATASET_NAME
+  ```
+- For dataset-level permissions, grant access explicitly:
+  ```bash
+  bq update --dataset \
+    --add_iam_binding_member="serviceAccount:SA_EMAIL" \
+    --add_iam_binding_role="roles/bigquery.dataViewer" \
+    PROJECT_ID:DATASET_NAME
+  ```
+
+## 28. Why does my BigQuery pipeline fail with "Invalid JDBC URL" error?
+
+This error occurs when the BigQuery JDBC URL format is incorrect or contains invalid parameters for OIDC authentication.
+
+**How to Solve**:
+- Ensure your JDBC URL follows the correct format:
+  ```
+  jdbc:bigquery://https://www.googleapis.com/bigquery/v2:443;ProjectId=PROJECT_ID;DefaultDataset=DATASET;Location=REGION;
+  ```
+- Do not include `OAuthType` or `OAuthAccessToken` parameters when using OIDC authentication. The access token is injected automatically by Harness.
+- Verify all required parameters are present:
+  - `ProjectId`: Your GCP project ID
+  - `DefaultDataset`: Target BigQuery dataset
+  - `Location`: Dataset region
+- Check for syntax errors (missing semicolons, incorrect parameter names).
+
+## 29. Why does BigQuery connection test succeed but pipeline execution fails?
+
+Connection tests and pipeline executions generate OIDC tokens with different custom attributes. This can cause authentication to work in one context but fail in the other.
+
+**How to Solve**:
+- Ensure your Workload Identity Pool attribute conditions accept both connector validation and pipeline execution contexts.
+- The pool conditions should filter by `account_id` only, not by pipeline-specific attributes like `org_id`, `project_id`, or `pipeline_id`.
+- Update the attribute condition in the service account's IAM policy:
+  ```
+  attribute.account_id = "YOUR_HARNESS_ACCOUNT_ID"
+  ```
+- Avoid overly restrictive conditions that might block pipeline execution tokens.
+
+## 30. Why am I getting "BigQuery API has not been enabled" error?
+
+This error occurs when the BigQuery API is not enabled in your GCP project.
+
+**How to Solve**:
+Enable the required GCP APIs for BigQuery with OIDC authentication:
+```bash
+gcloud services enable bigquery.googleapis.com \
+  iamcredentials.googleapis.com \
+  sts.googleapis.com \
+  --project=YOUR_PROJECT_ID
+```
+
+Verify the APIs are enabled:
+```bash
+gcloud services list --enabled --project=YOUR_PROJECT_ID | grep -E 'bigquery|iamcredentials|sts'
+```
