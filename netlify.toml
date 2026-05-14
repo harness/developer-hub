@@ -8,6 +8,18 @@
 
 [[redirects]]
   force = true
+  from = "/llms.txt"
+  status = 200
+  to = "/.netlify/functions/llms_txt"
+
+[[redirects]]
+  force = true
+  from = "/llms-full.txt"
+  status = 200
+  to = "/.netlify/functions/llms_txt"
+
+[[redirects]]
+  force = true
   from = "/api/*"
   status = 200
   to = "/.netlify/functions/:splat"

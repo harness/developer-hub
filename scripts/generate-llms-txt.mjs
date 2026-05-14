@@ -43,6 +43,8 @@ const PRIORITY_MODULES = [
   'chaos-engineering',
   'platform',
   'get-started',
+  'infra-as-code-management',
+  'artifact-registry',
 ];
 
 /**
@@ -319,9 +321,26 @@ function generateFull(modules) {
 }
 
 /**
+ * Write generated content to Netlify Deploy Blobs when running in CI.
+ * This allows the llms_txt Netlify function to serve the content at runtime
+ * without needing to regenerate it from source files.
+ */
+async function writeToNetlifyBlobs(conciseContent, fullContent) {
+  try {
+    const { getDeployStore } = await import('@netlify/blobs');
+    const store = getDeployStore('llms_txt');
+    await store.set('llms.txt', conciseContent);
+    await store.set('llms-full.txt', fullContent);
+    console.log('[generate-llms-txt] ✓ Written to Netlify Deploy Blobs (llms_txt store)');
+  } catch (err) {
+    console.warn('[generate-llms-txt] Warning: Could not write to Netlify Blobs:', err instanceof Error ? err.message : String(err));
+  }
+}
+
+/**
  * Main execution
  */
-function main() {
+async function main() {
   console.log('[generate-llms-txt] Starting generation...');
 
   // Get all doc files
@@ -332,15 +351,9 @@ function main() {
   const modules = groupByModule(files);
   console.log(`[generate-llms-txt] Organized into ${Object.keys(modules).length} modules`);
 
-  // Generate concise version
+  // Generate content
   const conciseContent = generateConcise(modules);
-  fs.writeFileSync(OUTPUT_CONCISE, conciseContent, 'utf-8');
-  console.log(`[generate-llms-txt] ✓ Generated ${OUTPUT_CONCISE}`);
-
-  // Generate full version
   const fullContent = generateFull(modules);
-  fs.writeFileSync(OUTPUT_FULL, fullContent, 'utf-8');
-  console.log(`[generate-llms-txt] ✓ Generated ${OUTPUT_FULL}`);
 
   // Stats
   const conciseLines = conciseContent.split('\n').length;
@@ -348,7 +361,23 @@ function main() {
   console.log(`[generate-llms-txt] Stats:`);
   console.log(`  - llms.txt: ${conciseLines} lines`);
   console.log(`  - llms-full.txt: ${fullLines} lines`);
+
+  if (process.env.NETLIFY === 'true') {
+    // On Netlify: write to Deploy Blobs only — the llms_txt function serves from
+    // there at runtime. Static files are unreachable anyway due to force redirects.
+    await writeToNetlifyBlobs(conciseContent, fullContent);
+  } else {
+    // Local dev: write to static/ so the netlify dev fallback can serve them.
+    fs.writeFileSync(OUTPUT_CONCISE, conciseContent, 'utf-8');
+    console.log(`[generate-llms-txt] ✓ Written to ${OUTPUT_CONCISE}`);
+    fs.writeFileSync(OUTPUT_FULL, fullContent, 'utf-8');
+    console.log(`[generate-llms-txt] ✓ Written to ${OUTPUT_FULL}`);
+  }
+
   console.log('[generate-llms-txt] ✅ Done!');
 }
 
-main();
+main().catch((err) => {
+  console.error('[generate-llms-txt] Error:', err);
+  process.exit(1);
+});
