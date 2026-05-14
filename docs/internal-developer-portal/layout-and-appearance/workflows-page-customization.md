@@ -14,15 +14,15 @@ This will help you surface out the most useful Workflows for your developers, wh
 
 ## Available Customizations
 
-**Platform Engineers** (users assigned with the role of [IDP Admin](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles#1-idp-admin) or having [Layout edit permission](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles#4-layouts)) can customize the **Workflows homepage** under **IDP Admin -> Layouts -> Workflows** section by creating **groups** and adding Workflows to each group. These groups can be further customized using a **name**, **icon**, and **description** and they can be arranged in a specific order to determine how they appear on the Workflows homepage.
+**Platform Engineers** (users assigned with the role of [IDP Admin](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles#1-idp-admin) or having [Layout edit permission](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles#4-layouts)) can customize the **Workflows homepage** under **Configure**  → **Layouts** → **Workflows** section by creating **groups** and adding Workflows to each group. These groups can be further customized using a **name**, **icon**, and **description** and they can be arranged in a specific order to determine how they appear on the Workflows homepage.
 
-The option to create new groups is also available under the Workflows homepage which will take you to the **Layout -> Workflows** under **Admin**. 
+The option to create new groups is also available under the Workflows homepage which will take you to the **Layout** → **Workflows** under **Configure**. 
 
 ![](./static/new-group-workflows-page.png)
 
 ### Grouping Workflows
 
-We can add a new **Group** by navigating to **IDP Admin -> Layout -> Workflows**.
+We can add a new **Group** by navigating to **Configure** → **Layout** → **Workflows**.
 
 - Start by clicking on the **+New Group** icon. 
 - Now add a Name for the group based on the use-cases. Such as
@@ -65,7 +65,7 @@ You can Remove a Group by clicking on the **three dots** on the Groups tabs and 
 
 You can now add an **icon** and change the **action** button **name** and **color** according to the use case. 
 
-- **Icons:** Under the `metadata` add `icon` and [mention a name](https://github.com/harness-community/idp-samples/blob/678537d76978267dcf1b137c17634b0e381afab3/icons-actions-buttons.yaml#L7) from the [list of icons](/docs/internal-developer-portal/layout-and-appearance/workflows-page-customization#icons-supported-in-harness-idp) under **IDP-Admin -> Layout -> Workflow**. 
+- **Icons:** Under the `metadata` add `icon` and [mention a name](https://github.com/harness-community/idp-samples/blob/678537d76978267dcf1b137c17634b0e381afab3/icons-actions-buttons.yaml#L7) from the [list of icons](/docs/internal-developer-portal/layout-and-appearance/workflows-page-customization#icons-supported-in-harness-idp) under **Configure** → **Layout** → **Workflow**. 
 
 ```YAML {6}
 ...
@@ -126,7 +126,7 @@ spec:
 
 ### Icons Supported in Harness IDP
 
-- Go to Icons under **IDP-Admin -> Layout**, and highlight the icon name you want to add, it will be copied, and now you can add it under the `metadata.icon` in the Workflow definition YAML. 
+- Go to Icons under **Configure** → **Layout**, and highlight the icon name you want to add, it will be copied, and now you can add it under the `metadata.icon` in the Workflow definition YAML. 
 
 ![](./static/layout-icons.png)
 ![](./static/icons.png)

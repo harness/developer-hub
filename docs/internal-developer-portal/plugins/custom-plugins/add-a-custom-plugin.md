@@ -18,7 +18,7 @@ This feature is in **BETA** and is available behind the feature flag `IDP_ENABLE
 
 In IDP we allow addition of, backstage frontend plugins, created by you as a custom plugin. Following are the step-by-step instructions to add your custom plugins in IDP.
 
-1. Go to **Plugins** under **Admin** section.
+1. Go to **Plugins** under **Configure** section.
 2. Now you could find the **Custom Plugins** tab on the **Plugins** page.
 3. Start by creating a **New Custom Plugin**
 
@@ -253,7 +253,7 @@ Once you enable the Plugin it will approximately take around 30 minutes for the 
 
 :::
 
-14. Once the plugin is Enabled, to add it in your Sidenav as shown in the image go to the **Layout** under **Admin**.
+14. Once the plugin is Enabled, to add it in your Sidenav as shown in the image go to the **Layout** under **Configure**.
 
 ![](./static/to-do-plugin.png)
 

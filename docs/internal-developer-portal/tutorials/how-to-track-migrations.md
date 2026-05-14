@@ -28,7 +28,7 @@ Before starting, ensure you have:
 
 ### How to check `backstage.io/source-location`
 
-Catalog -> Software Component -> Inspect Entity -> Raw YAML
+**Catalog** → **Software Component** → **Inspect Entity** → **Raw YAML**
 
 ![](./static/source-loc.png)
 
@@ -44,7 +44,7 @@ We have added data points for git based datasources (GitHub, GitLab, etc.), to b
 
 ## Setting up a Custom Check
 
-1. Under **Admin** section select **Scorecards**, now go to **Checks** tab and select **Create Custom Check**
+1. Under **Configure** section select **Scorecards**, now go to **Checks** tab and select **Create Custom Check**
 
 ![](./static/checks-tab.png)
 
@@ -97,7 +97,7 @@ Also we suggest you to use [chatgpt](https://chat.openai.com/) for generating an
 
 Once the Checks are created, now we need to add them to a new Scorecard.
 
-7. Go to Scorecards on the left nav in Admin and select **Create New Scorecard**
+7. Go to Scorecards on the left nav and select **Create New Scorecard**
 
 8. Add Name, Description, Owner (same as that of the software component you want to add this scorecard to) and select the Checks you created above to track the migration and publish the Scorecard.
 

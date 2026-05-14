@@ -26,7 +26,7 @@ Begin by creating a pipeline for onboarding the service.
 
 To create a **Developer Portal** stage, perform the following steps:
 
-1. Go to **Admin** section under IDP, select **Projects**, and then select a project.
+1. Go to **Configure** section under IDP, select **Projects**, and then select a project.
 
 You can also create a new project for the service onboarding pipelines. Eventually, all the users in your account should have permissions to execute the pipelines in this project. For information about creating a project, go to [Create organizations and projects](/docs/platform/organizations-and-projects/create-an-organization/).
 

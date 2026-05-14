@@ -13,7 +13,7 @@ Some plugins and other parts of IDP do not use a fixed API key to communicate wi
 
 To facilitate OAuth login support for GitHub or Google-based plugins, you, as a platform engineer, can create GitHub or Google OAuth applications and configure them in IDP.
 
-To create a GitHub or Google OAuth application, go to **Admin** > **OAuth Configurations**, and them follow the instructions on the page.
+To create a GitHub or Google OAuth application, go to **Configure** → **OAuth Configurations**, and them follow the instructions on the page.
 
 After you create the application, plugins that depend on OAuth (for example, [GitHub Actions](./available-plugins/github-actions.md)) display a **Login to GitHub** dialog for users who visit the catalog page with the plugin enabled.
 

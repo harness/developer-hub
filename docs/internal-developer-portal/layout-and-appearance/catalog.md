@@ -27,7 +27,7 @@ The `kind` of entities are fixed to those available out of the box (Component, A
 
 ## Layout Editor
 
-You can access the layout of the Catalog Pages by going to the **Admin** section of IDP and navigating to the **Layout** section.
+You can access the layout of the Catalog Pages by going to the **Configure** section of IDP and navigating to the **Layout** section.
 
 ![](./static/catalog%20entity.png)
 
@@ -224,7 +224,7 @@ Example -
 
 In case you want to display the same information you have ingested on your Overview page as an additional card, follow the steps below.
 
-1. Go to the **Layout Page** and under **Admin** and select **Catalog Entities**.
+1. Go to the **Layout Page** and under **Configure** and select **Catalog Entities**.
 
 ![](./static/navigate-catalog-entities.png)
 

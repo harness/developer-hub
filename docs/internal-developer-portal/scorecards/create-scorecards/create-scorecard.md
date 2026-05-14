@@ -33,7 +33,7 @@ If Scorecard UI components are already visible on your Catalog component pages, 
 Follow these steps to add Scorecards to your catalog entities:
 
 1. **Navigate to Layout Settings**
-   - Go to the **Configure** -> **Layout** in Harness IDP. 
+   - Go to the **Configure** → **Layout** in Harness IDP. 
    - Go to **Catalog Entities**.
    - Select the catalog entity type where you want to add Scorecards. 
 

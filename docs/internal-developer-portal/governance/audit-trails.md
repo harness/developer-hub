@@ -12,7 +12,7 @@ The audit data retention period is 2 years. Harness reserves the right to delete
 
 ## IDP Events in Audit Trail
 
-To access the Audit Trail, in your Harness project, navigate to **Account Settings > Audit Trail**. Follow the steps mentioned in [platform docs](https://developer.harness.io/docs/platform/governance/audit-trail/#step-view-an-audit-trail) for more details.
+To access the Audit Trail, in your Harness project, navigate to **Account Settings** → **Audit Trail**. Follow the steps mentioned in [platform docs](https://developer.harness.io/docs/platform/governance/audit-trail/#step-view-an-audit-trail) for more details.
 
 The Account Audit Trail includes the following IDP events:
 

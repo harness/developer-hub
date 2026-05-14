@@ -51,7 +51,7 @@ There are two steps to adding a dynamic workflow picker in Harness IDP.
 
 The first step is to declare a new Backend Proxy so that the Workflow forms UI can make authenticated requests to our third party provider. Let's assume you are trying to make requests to GitHub.
 
-Go to IDP Admin -> Plugins. Find the plugin called "Configure Backend Proxies".
+In IDP, go to **Configure** → **Plugins**. Find the plugin called "Configure Backend Proxies".
 
 ![](../static/config-backend-proxies-plugin.png)
 

@@ -639,7 +639,7 @@ Use the Catalog Ingestion API to programmatically update your catalog entities w
 
 #### Steps
 1. **Create a Custom Check using the Catalog Expressions Data Point**
-   - Navigate to Configure → Scorecards → Checks
+   - Navigate to **Configure** → **Scorecards** → **Checks**
    - Create a new check and select Catalog as the data source
    - Use catalog expressions to reference your custom data
 

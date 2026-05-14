@@ -182,7 +182,7 @@ These variables are used across stages and steps to:
 - Define repository naming and structure
 - Enable registration in the IDP catalog with appropriate metadata
 
-You’ll configure these under **Pipeline → Variables**.
+You’ll configure these under **Pipeline** → **Variables**.
 
 #### Variable value Types
 
@@ -790,7 +790,6 @@ Once your workflow YAML is saved and configured, it becomes instantly available 
 Developers can search for the published workflow by name (e.g., `Java-Onv`) from the **Workflows** tab.
 Once found, simply click **Execute** to launch the workflow form.
 ![Search Workflow in IDP](./static/java-onb/workflow.png)
-<!-- ![Search Workflow in IDP](./static/java-onb/workflow-search.png) -->
 
 
 - Fill Inputs and Trigger Pipeline: 

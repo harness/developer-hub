@@ -28,7 +28,7 @@ import TabItem from '@theme/TabItem';
 
 ### Using RUN Step
 
-1. Go to **Admin** in your IDP
+1. Go to **Configure** in your IDP
 2. Now select the **project** where you want to **create the pipeline** for the Workflows. 
 3. Begin by selecting the **Create a Pipeline** button followed by adding a name for the pipeline and set up your pipeline as **inline**.
 4. Now select the **Developer Portal Stage** and give it a name. 
@@ -175,7 +175,7 @@ HTTP Step is available under custom stage and it's part of CD License
 
 :::
 
-1. Go to **Admin** in your IDP
+1. Go to **Configure** in your IDP
 2. Now select the **project** where you want to **create the pipeline** for the Workflows. 
 3. Begin by selecting the **Create a Pipeline** button followed by adding a name for the pipeline and set up your pipeline as **inline**.
 4. Now select the **Custom Stage** and give it a name. 
@@ -426,7 +426,7 @@ Also for **Jira token** input the input should be the [personal access token](ht
 
 In case you want to display the same information you have ingested on your Overview page as an additional card, follow the steps below. 
 
-1. Go to the **Layout Page** and under **Admin** and add the following for **Services** and **Save** it. 
+1. Go to the **Layout Page** and under **Configure** and add the following for **Services** and **Save** it. 
 
 ```YAML
 - component: EntityAdditionalInfoCard
@@ -458,7 +458,7 @@ In case you want to display the same information you have ingested on your Overv
 
 ### Using RUN Step
 
-1. Go to **Admin** in your IDP
+1. Go to **Configure** in your IDP
 2. Now select the **project** where you want to **create the pipeline** for the Workflows. 
 3. Begin by selecting the **Create a Pipeline** button followed by adding a name for the pipeline and set up your pipeline as **inline**.
 4. Now select the **Developer Portal Stage** and give it a name. 
@@ -571,7 +571,7 @@ In the above body the openTicket which got created in JIRA will be added, to kin
 </TabItem>
 <TabItem value="using-http-step" label="Using HTTP Step">
 
-1. Go to **Admin** in your IDP
+1. Go to **Configure** in your IDP
 2. Now select the **project** where you want to **create the pipeline** for the Workflows. 
 3. Begin by selecting the **Create a Pipeline** button followed by adding a name for the pipeline and set up your pipeline as **inline**.
 4. Now select the **Custom Stage** and give it a name. 
@@ -783,7 +783,7 @@ In the above YAML just replace the `url` with the pipeline URL we created above,
 
 In case you want to display the same information you have ingested on your Overview page as an additional card, follow the steps below. 
 
-1. Go to the **Layout Page** and under **Admin** and add the following for **Services** and **Save** it. 
+1. Go to the **Layout Page** and under **Configure** and add the following for **Services** and **Save** it. 
 
 ```YAML
 - component: EntityAdditionalInfoCard

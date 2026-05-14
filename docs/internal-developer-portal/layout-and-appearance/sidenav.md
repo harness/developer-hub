@@ -11,7 +11,7 @@ In Harness IDP, you as a platform admin can customize the sidebar navigation to 
 
 ## The Layout Editor
 
-You can access the Sidenav Layout editor by navigating to Harness IDP and choosing Admin from the sidebar.
+You can access the Sidenav Layout editor by navigating to Harness IDP and choosing **Configure** from the sidebar.
 
 ![](./static/click-on-admin.png)
 

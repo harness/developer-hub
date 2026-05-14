@@ -69,7 +69,7 @@ But here's the thing — Workflows cannot directly call external APIs from the U
 
 To safely expose this API to your Workflow UI, you need to define a backend proxy. Here’s how you can do it:
 
-1. Go to **IDP > Plugins > Configure Backend Proxies**.
+1. Go to **IDP** → **Plugins** → **Configure Backend Proxies**.
 2. Add a new proxy configuration.
 3. Use the following YAML definition to register the proxy:
 
@@ -96,7 +96,7 @@ Once saved, this proxy will become accessible from your Workflow form logic. It 
 
 ## Create the Workflow and Add the Dynamic Picker
 
-With the backend proxy in place, you can now build a Workflow that uses it to fetch user groups dynamically. Start by going to **IDP > Workflows** and clicking **Create Workflow**. In the UI, fill in basic information like the name, identifier, type (`harness_project`), and owner. Once saved, switch to **YAML View** to define the form parameters and logic.
+With the backend proxy in place, you can now build a Workflow that uses it to fetch user groups dynamically. Start by going to **IDP** → **Workflows** and clicking **Create Workflow**. In the UI, fill in basic information like the name, identifier, type (`harness_project`), and owner. Once saved, switch to **YAML View** to define the form parameters and logic.
 
 This Workflow form is designed to collect a few key inputs:
 

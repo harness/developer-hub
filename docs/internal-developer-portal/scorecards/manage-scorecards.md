@@ -89,7 +89,7 @@ If you need to temporarily or permanently disable scorecards, follow these steps
 
 #### Remove Scorecard Components from Catalog Pages
 
-1. Navigate to the **Layout** section in IDP **Admin**
+1. Navigate to the **Layout** section in IDP **Configure**
 2. Comment out the Scorecard-related lines you added under **Layout** pages to remove the Scorecard components from the Catalog pages
 
 #### Change Scorecard Status to Draft
@@ -106,7 +106,7 @@ Additionally, you can change the status of all your Scorecards to "draft". This 
 
 To delete a Scorecard, follow these steps:
 
-1. Navigate to the **Scorecards** section in IDP **Admin** view. 
+1. Navigate to the **Scorecards** section in IDP **Configure** view. 
 2. Select the Scorecard you want to delete. 
 3. Click **Delete**. 
 

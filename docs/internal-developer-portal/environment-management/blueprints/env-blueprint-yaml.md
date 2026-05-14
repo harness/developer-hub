@@ -408,8 +408,8 @@ For a complete overview of all IDP resources and their permissions across differ
 To configure access control for environment management:
 
 1. **For Environment Blueprints (Account, Org, or Project Level)**:
-   - Navigate to the settings for the relevant scope (Account Settings, Org Settings, or Project Settings) > **Access Control** > **Roles**
-   - Navigate to **Account Settings** > **Access Control** > **Roles**
+   - Navigate to the settings for the relevant scope (Account Settings, Org Settings, or Project Settings) → **Access Control** → **Roles**
+   - Navigate to **Account Settings** → **Access Control** → **Roles**
    - Create or edit a role and assign Environment Blueprint permissions (VIEW, CREATE/EDIT, DELETE)
    - Create a **Resource Group** and select either:
      - **All Environment Blueprints** - Grants access to all blueprints in the account
@@ -417,7 +417,7 @@ To configure access control for environment management:
    - Assign the role and resource group to users or user groups
 
 2. **For Environments (Project Level)**:
-   - Navigate to **Project Settings** > **Access Control** > **Roles**
+   - Navigate to **Project Settings** → **Access Control** → **Roles**
    - Create or edit a role and assign Environment permissions (VIEW, CREATE/EDIT, DELETE)
    - Create a **Resource Group** and select either:
      - **All Environments** - Grants access to all environments in the project

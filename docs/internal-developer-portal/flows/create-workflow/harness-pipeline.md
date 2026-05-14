@@ -40,7 +40,7 @@ Currently, Harness-specific workflow actions support:
 
 ## Creating a Harness Pipeline from Harness IDP
 To create a Harness Pipeline using the IDP Stage, follow these steps:
-1. In your Harness IDP, go to **Admin -> Select Project**.
+1. In your Harness IDP, go to **Configure** → **Select Project**.
 2. Now start with **Create a Pipeline**.
 ![](../static/navigate-pipeline.gif)
 

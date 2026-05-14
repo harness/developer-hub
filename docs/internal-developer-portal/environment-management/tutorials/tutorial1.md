@@ -309,7 +309,7 @@ Now we'll create two CD services for our sample application with the help of 2 t
 
 #### Frontend Service
 
-1. Navigate to **Continuous Delivery > Services**
+1. Navigate to **Continuous Delivery** → **Services**
 
 2. Click **+ New Service**
 
@@ -362,7 +362,7 @@ The CD environment defines where your services will be deployed. We'll create an
 
 #### Create the Environment:
 
-1. Navigate to **Continuous Delivery > Environments**
+1. Navigate to **Continuous Delivery** → **Environments**
 2. Click **+ New Environment**
 3. Configure the environment:
    - **Name:** `ephemeral-env`
@@ -511,7 +511,7 @@ CD Auto-discovery will automatically discover and import CD services as Catalog 
 
 Catalog entities should have the necessary deployment pipelines in the Catalog Info YAML.
 
-1. Navigate to **Internal Developer Portal > Catalog**
+1. Navigate to **Internal Developer Portal** → **Catalog**
 2. Search for the entities `ephemeral-frontend` and `ephemeral-backend`
 3. Click to **Edit**, switch to YAML and paste the following under `spec`:
 
@@ -527,8 +527,8 @@ deploymentPipelines:
 
 Now we'll assemble all components into an environment blueprint that developers can use.
 
-1. Navigate to **Internal Developer Portal > Environments**
-2. Click **Create > Environment Blueprint**
+1. Navigate to **Internal Developer Portal** → **Environments**
+2. Click **Create** → **Environment Blueprint**
 3. **Name:** `ephemeral-testing-blueprint`, **Version:** `1.0.0`, **Owner:** `<Your team>`
 4. Click **Configure Environment Blueprint** and paste YAML:
 
@@ -627,9 +627,9 @@ spec:
 
 Now let's create an environment instance from the blueprint.
 
-1. Navigate to **Internal Developer Portal > Environments**
+1. Navigate to **Internal Developer Portal** → **Environments**
 
-2. Click **Create > Environment**
+2. Click **Create** → **Environment**
 
 3. Select **Ephemeral Testing Environment** blueprint
 

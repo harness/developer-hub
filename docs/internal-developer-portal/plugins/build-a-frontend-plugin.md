@@ -11,7 +11,7 @@ sidebar_position: 40
 
 A Backstage Plugin adds functionality to Backstage. In this tutorial we will be using the backstage monorepo to build out frontend plugins. 
 
-## Pre-Requisites
+## Before you begin
 
 1. Fork and Clone this [repository](https://github.com/harness/backstage-plugins), we will be using this repo to build our backstage-frontend plugins. 
 

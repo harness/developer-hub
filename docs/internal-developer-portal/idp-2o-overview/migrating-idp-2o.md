@@ -324,13 +324,3 @@ Here's how you can get hands-on with the new IDP 2.0 functionality:
 7. Set up **[Workflow RBAC](/docs/internal-developer-portal/rbac/workflow-rbac.md)**
 8. Use the **[Harness IDP Git Experience](/docs/internal-developer-portal/git-experience/gitx-journey.md)** feature to store entity YAMLs in Git.
 
-<!-- ## FAQs -->
-
-<!-- ## Resources
-
-WIP
-
-- API Docs
-- Videos
-- Learn the impact of IDP 2.0 on the future of harness IDP (Marketing blog)
-- Entity Schema JSON -->

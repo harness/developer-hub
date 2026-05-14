@@ -24,7 +24,7 @@ When you create a new blueprint version, environments running on older versions 
 
 To create a new version:
 
-1. Navigate to **Environments > Environment Blueprints**
+1. Navigate to **Environments** → **Environment Blueprints**
 2. Select the existing blueprint you wish to version
 
     <DocVideo src="https://app.tango.us/app/embed/bf57cad5-882c-4b2e-855d-93091fe02ef5? 
@@ -85,7 +85,7 @@ When creating a new environment, you can select any active (non-deprecated) vers
 
 To create an environment with a specific blueprint version:
 
-1. Navigate to the **Environments** section and select **Create > Environment**
+1. Navigate to the **Environments** section and select **Create** → **Environment**
 2. Browse the available blueprints
 
    <DocImage path={require("./static/env-from-blueprints.png")} alt="Environment from Blueprints" caption="Environment from Blueprints"/>
