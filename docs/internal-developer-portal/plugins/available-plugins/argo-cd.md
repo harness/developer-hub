@@ -18,7 +18,7 @@ description: View Argo CD status for your projects in Harness IDP.
 
 This plugin requires a backend proxy configuration to make calls to your argo-cd instance with authentication.
 
-- Under the **Plugins** tab in **Admin**, go to `app-config.yaml` and **Edit YAML** to configure your `username` along with the `url` to your argo instance in the format as shown below.
+- Under the **Plugins** tab in **Configure**, go to `app-config.yaml` and **Edit YAML** to configure your `username` along with the `url` to your argo instance in the format as shown below.
 
 ```YAML
 # app-config.yaml

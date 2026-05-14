@@ -48,7 +48,7 @@ When adding the host, include only the host name. Remove the protocol (HTTP/HTTP
 
 _No Action Required_
 
-This plugin exports an overview page card, UI tab that you can use as a new CI/CD tab for a service or for any other layout page and a Git Tags page. Go to **Admin** > **Layout**, select **Service** in the dropdown menu, and you can view this YAML code in the **CI/CD** section:
+This plugin exports an overview page card, UI tab that you can use as a new CI/CD tab for a service or for any other layout page and a Git Tags page. Go to **Configure** → **Layout**, select **Service** in the dropdown menu, and you can view this YAML code in the **CI/CD** section:
 
 ```yaml
 - name: EntityAzurePipelinesContent

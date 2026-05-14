@@ -68,12 +68,12 @@ Update the `host`, `enterprise`, and `organization` values to match your GitHub 
 :::
 
 :::note 
-The plugin pulls data using GitHub REST APIs and requires **authorization via a token** which depends on the [Git Integration](https://developer.harness.io/docs/internal-developer-portal/get-started/setup-git-integration#connector-setup) setup done at IDP under "Configure" -> "Git Integrations" page, make sure to use the same host as one that's configured in the Git integration
+The plugin pulls data using GitHub REST APIs and requires **authorization via a token** which depends on the [Git Integration](https://developer.harness.io/docs/internal-developer-portal/get-started/setup-git-integration#connector-setup) setup done at IDP under **Configure** → **Git Integrations** page, make sure to use the same host as one that's configured in the Git integration
 
 :::
 
 :::note 
-If you are using `copilot.enterprise` in GitHub Copilot plugin config, note that the Enterprise API for Copilot only works with a "classic PAT" (personal access token). This means you will need to configure a Git connector in IDP, under "Configure" -> "Git Integrations" in your Harness account, with authorization using a [username and token](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference/#authentication).
+If you are using `copilot.enterprise` in GitHub Copilot plugin config, note that the Enterprise API for Copilot only works with a "classic PAT" (personal access token). This means you will need to configure a Git connector in IDP, under **Configure** → **Git Integrations** in your Harness account, with authorization using a [username and token](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference/#authentication).
 :::
 
 ### Delegate Proxy (Optional)
@@ -102,7 +102,7 @@ This plugin exports:
 
 #### To add the page to the portal layout:
 
-Since its not added by default, you need to update your layout config in the Admin Panel under `Layout > Sidenav Layout` manually, like so:
+Since its not added by default, you need to update your layout config in **Configure** → **Layout** → **Sidenav Layout** manually, like so:
 
 ```yaml
 - name: SidebarItem

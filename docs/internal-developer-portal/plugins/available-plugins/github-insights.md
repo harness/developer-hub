@@ -30,7 +30,7 @@ This plugin does not require a delegate proxy to be set up because GitHub is pub
 
 ## Layout
 
-This plugin exports a UI tab that you can use as a new tab for a service or for any other layout page. It also exports several cards that can be added to the **Overview** section of a catalog layout. Go to **Admin** > **Layout**, select **Service** in the dropdown menu, and then add the following YAML code in a new section:
+This plugin exports a UI tab that you can use as a new tab for a service or for any other layout page. It also exports several cards that can be added to the **Overview** section of a catalog layout. Go to **Configure** → **Layout**, select **Service** in the dropdown menu, and then add the following YAML code in a new section:
 
 ```yaml
 - name: code-insights

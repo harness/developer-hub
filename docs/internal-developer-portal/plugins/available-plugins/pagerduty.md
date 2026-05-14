@@ -42,7 +42,7 @@ This plugin does not require a delegate proxy to be set up because PagerDuty is 
 
 ## Layout
 
-This plugin exports a UI card that you can show on the **Overview** tab of a service or any other layout page. Go to **Admin** > **Layout**, select **Service** in the dropdown menu, and then add the following in the **Overview** section:
+This plugin exports a UI card that you can show on the **Overview** tab of a service or any other layout page. Go to **Configure** → **Layout**, select **Service** in the dropdown menu, and then add the following in the **Overview** section:
 
 ```yaml
 - component: EntityPagerDutyCard

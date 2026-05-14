@@ -89,7 +89,7 @@ If your Jenkins instance is available on the public internet, this plugin does n
 
 ## Layout
 
-This plugin exports a UI tab that you can use as a new CI/CD tab for a service or for any other layout page. Go to **Admin** > **Layout**, select **Service** in the dropdown menu, and then add the following YAML code in the **CI/CD** section:
+This plugin exports a UI tab that you can use as a new CI/CD tab for a service or for any other layout page. Go to **Configure** → **Layout**, select **Service** in the dropdown menu, and then add the following YAML code in the **CI/CD** section:
 
 ```yaml
 - name: ci-cd

@@ -15,7 +15,7 @@ description: Components to display code quality metrics from SonarCloud and Sona
 
 ### Application configuration YAML
 
-- Under the **Plugins** tab in **Admin**, go to `app-config.yaml` and **Edit YAML** to configure your SonarQube instance in the **target** field.
+- Under the **Plugins** tab in **Configure**, go to `app-config.yaml` and **Edit YAML** to configure your SonarQube instance in the **target** field.
 
 ![](./static/app-config-sq.png)
 
@@ -44,7 +44,7 @@ Ensure that the user creating the token has the necessary permissions to access 
 
 ## Layout
 
-This plugin exports a UI card that you can show on the **Overview** tab of a service or any other layout page.  The following configuration is set by default in **Layout** under **Admin** for **Service** and you do not need to change anything:
+This plugin exports a UI card that you can show on the **Overview** tab of a service or any other layout page.  The following configuration is set by default in **Layout** under **Configure** for **Service** and you do not need to change anything:
 
 ```yaml
 - component: EntitySonarQubeCard

@@ -36,14 +36,14 @@ splunkOnCall:
 
 ### Secrets
 
-Since the `SPLUNK_ON_CALL_API_ID` and `SPLUNK_ON_CALL_API_KEY` variable is used in the application configuration, you must generate a Splunk API key and add the secrets. For instructions on how to create an API ID and an API Key, [read the instructions](https://help.victorops.com/knowledge-base/api/). You also need to provide a REST Endpoint as `SPLUNK_ON_CALL_REST_ENDPOINT`, to enable the REST Endpoint integration, go on https://portal.victorops.com/ inside Integrations > 3rd Party Integrations > REST – Generic. You can now copy the URL to notify: `<SPLUNK_ON_CALL_REST_ENDPOINT>/$routing_key`
+Since the `SPLUNK_ON_CALL_API_ID` and `SPLUNK_ON_CALL_API_KEY` variable is used in the application configuration, you must generate a Splunk API key and add the secrets. For instructions on how to create an API ID and an API Key, [read the instructions](https://help.victorops.com/knowledge-base/api/). You also need to provide a REST Endpoint as `SPLUNK_ON_CALL_REST_ENDPOINT`, to enable the REST Endpoint integration, go on https://portal.victorops.com/ inside Integrations → 3rd Party Integrations → REST – Generic. You can now copy the URL to notify: `<SPLUNK_ON_CALL_REST_ENDPOINT>/$routing_key`
 
 ![](./static/splunk-secrets.png)
 
 
 - To be able to use the REST Endpoint seen above, you must have created a routing key with the same name as the provided team.
 
-- You can create a new routing key on https://portal.victorops.com/ by going to Settings > Routing Keys.
+- You can create a new routing key on https://portal.victorops.com/ by going to Settings → Routing Keys.
 
 - You can read [Create & Manage Alert Routing Keys](https://help.victorops.com/knowledge-base/routing-keys/#routing-key-tips-tricks) for further information.
 
@@ -57,7 +57,7 @@ This plugin does not require a delegate proxy to be set up because Splunk On-cal
 
 _No action required_
 
-This plugin exports a UI card that you can show on the **Overview** tab of a service or any other layout page. Go to **Admin** > **Layout**, select **Service** in the dropdown menu, and you'll find following in the **Overview** section:
+This plugin exports a UI card that you can show on the **Overview** tab of a service or any other layout page. Go to **Configure** → **Layout**, select **Service** in the dropdown menu, and you'll find following in the **Overview** section:
 
 ```yaml
 - component: EntitySplunkOnCallCard

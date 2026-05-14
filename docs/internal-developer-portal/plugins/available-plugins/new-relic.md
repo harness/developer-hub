@@ -17,7 +17,7 @@ description: Easily view your New Relic Dashboards in Backstage, via real-time s
 
 This plugin requires a backend proxy configuration to make calls to Opsgenie with authentication.
 
-- Under the **Plugins** tab in **Admin**, go to `app-config.yaml` and **Edit YAML** to configure your NewRelic instance in the **target** field and add your **domain** in the format as shown below.
+- Under the **Plugins** tab in **Configure**, go to `app-config.yaml` and **Edit YAML** to configure your NewRelic instance in the **target** field and add your **domain** in the format as shown below.
 
 ```yaml
 # app-config.yaml

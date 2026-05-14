@@ -49,7 +49,7 @@ This plugin does not require a delegate proxy to be set up.
 
 _No action required_
 
-This plugin exports a UI tab that you can use as a new IACM tab for workspaces or for any other layout page. The following configuration is set by default in **Layout** under **Admin** for **Service** and you do not need to change anything:
+This plugin exports a UI tab that you can use as a new IACM tab for workspaces or for any other layout page. The following configuration is set by default in **Layout** under **Configure** for **Service** and you do not need to change anything:
 
 ```YAML
 - name: iacm

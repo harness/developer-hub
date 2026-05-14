@@ -41,7 +41,7 @@ This plugin does not require a delegate proxy to be set up because FireHydrant i
 
 ## Layout
 
-This plugin exports a UI card that you can show on the **Overview** tab of a service or on any other layout page. Go to **Admin** > **Layout**, choose **Service** in the dropdown menu, and then add the following YAML code in the **Overview** section:
+This plugin exports a UI card that you can show on the **Overview** tab of a service or on any other layout page. Go to **Configure** → **Layout**, choose **Service** in the dropdown menu, and then add the following YAML code in the **Overview** section:
 
 ```yaml
 - component: FirehydrantCard

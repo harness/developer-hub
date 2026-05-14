@@ -15,7 +15,7 @@ description: Generate security reports using Sysdig Secure
 
 ### Application configuration YAML
 
-- Under the **Plugins** tab in **Admin**, go to `app-config.yaml` and **Edit YAML** to configure your [Sysdig Secure Endpoint (region for SaaS)](https://docs.sysdig.com/en/docs/administration/saas-regions-and-ip-ranges/) in the **target** field.
+- Under the **Plugins** tab in **Configure**, go to `app-config.yaml` and **Edit YAML** to configure your [Sysdig Secure Endpoint (region for SaaS)](https://docs.sysdig.com/en/docs/administration/saas-regions-and-ip-ranges/) in the **target** field.
 
 ![](./static/sysdig-configuration.png)
 
@@ -33,7 +33,7 @@ description: Generate security reports using Sysdig Secure
 
 ## Layout
 
-This plugin exports a tab that you can show under the **Sysdig** tab for a service. The following configuration is set by default in **Layout** under **Admin** for **Catalog Entities -> Service** and you do not need to change anything:
+This plugin exports a tab that you can show under the **Sysdig** tab for a service. The following configuration is set by default in **Configure** → **Layout** → **Catalog Entities** → **Service** and you do not need to change anything:
 
 ```YAML
 - name: Sysdig

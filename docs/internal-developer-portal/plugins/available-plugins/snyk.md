@@ -47,7 +47,7 @@ proxy:
 
 _No action required_
 
-This plugin exports a UI card that you can show on the **Overview** tab of a service or any other layout page as well as a tab.  The following configuration is set by default in **Layout** under **Admin** for **Service** and you do not need to change anything:
+This plugin exports a UI card that you can show on the **Overview** tab of a service or any other layout page as well as a tab.  The following configuration is set by default in **Layout** under **Configure** for **Service** and you do not need to change anything:
 
 ```yaml
 ...

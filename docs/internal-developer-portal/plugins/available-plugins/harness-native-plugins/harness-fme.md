@@ -66,7 +66,7 @@ This plugin does not require a delegate proxy to be set up because Split.io API 
 
 ## Layout
 
-To add the FME tab to your service component pages, go to **Admin** > **Layout**, select **Service** in the dropdown menu, and add the following YAML code:
+To add the FME tab to your service component pages, go to **Configure** → **Layout**, select **Service** in the dropdown menu, and add the following YAML code:
 
 ```yaml
 - name: EntityHarnessFMEFeatureFlagContent

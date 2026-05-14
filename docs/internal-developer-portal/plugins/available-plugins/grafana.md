@@ -55,7 +55,7 @@ When adding the host, include only the host name. Remove the protocol (HTTP/HTTP
 
 ## Layout
 
-This plugin exports three UI cards that you can show on the **Overview** tab of a service or any other layout page. Go to **Admin** > **Layout**, select **Service** in the dropdown menu, and then add the following in the **Overview** section:
+This plugin exports three UI cards that you can show on the **Overview** tab of a service or any other layout page. Go to **Configure** → **Layout**, select **Service** in the dropdown menu, and then add the following in the **Overview** section:
 
 ```yaml
 - component: EntityGrafanaDashboardsCard

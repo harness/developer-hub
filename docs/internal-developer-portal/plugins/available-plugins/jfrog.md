@@ -18,7 +18,7 @@ description: A frontend plugin provides a simple way to display generated artifa
 
 This plugin requires a backend proxy configuration to make calls to JFrog with authentication.
 
-- Under the **Plugins** tab in **Admin**, go to `app-config.yaml` and **Edit YAML** to configure your JFrog endpoint in the **target** field and add your **artifactory URL (used for UI browse links)** in the format as shown below.
+- Under the **Plugins** tab in **Configure**, go to `app-config.yaml` and **Edit YAML** to configure your JFrog endpoint in the **target** field and add your **artifactory URL (used for UI browse links)** in the format as shown below.
 
 ```yaml
 # app-config.yaml

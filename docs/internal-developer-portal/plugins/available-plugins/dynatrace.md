@@ -46,7 +46,7 @@ For detailed instructions on generating these tokens, please refer to the offici
 
 _No action required_
 
-This plugin exports a UI tab that you can use as a new **Dynatrace** tab for a service or for any other layout page. The following configuration is set by default in **Layout** under **Admin** for **Service** and you do not need to change anything:
+This plugin exports a UI tab that you can use as a new **Dynatrace** tab for a service or for any other layout page. The following configuration is set by default in **Layout** under **Configure** for **Service** and you do not need to change anything:
 
 ```YAML
 - name: DynatraceTab

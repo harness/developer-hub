@@ -28,7 +28,7 @@ _No action required_
 
 _No action required_
 
-This plugin exports a UI tab that you can use as a new **Datadog** tab for a service or for any other layout page. The following configuration is set by default in **Layout** under **Admin** for **Service** and you do not need to change anything:
+This plugin exports a UI tab that you can use as a new **Datadog** tab for a service or for any other layout page. The following configuration is set by default in **Layout** under **Configure** for **Service** and you do not need to change anything:
 
 ```YAML
     - name: EntityDatadogContent
@@ -38,7 +38,7 @@ This plugin exports a UI tab that you can use as a new **Datadog** tab for a ser
         - component: EntityDatadogContent
 ```
 
-This plugin exports the `EntityDatadogGraphCard` that you can show on the **Overview** tab of a service or any other layout page.  The following configuration is set by default in **Layout** under **Admin** for **Service** and you do not need to change anything:
+This plugin exports the `EntityDatadogGraphCard` that you can show on the **Overview** tab of a service or any other layout page.  The following configuration is set by default in **Layout** under **Configure** for **Service** and you do not need to change anything:
 
 ```YAML
 - component: EntityDatadogGraphCard

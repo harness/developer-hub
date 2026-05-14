@@ -15,7 +15,7 @@ description: Create incidents in Rootly and browse their respective incident his
 
 ### Application configuration YAML
 
-- Under the **Plugins** tab in **Admin**, go to `app-config.yaml` and **Edit YAML** to configure the proxy endpoint and allow the frontend to authenticate with Rootly without exposing your API key to users.
+- Under the **Plugins** tab in **Configure**, go to `app-config.yaml` and **Edit YAML** to configure the proxy endpoint and allow the frontend to authenticate with Rootly without exposing your API key to users.
 
 ![](./static/rootly.png)
 
@@ -28,7 +28,7 @@ Because of the features provided by the plugin, an API key with full access to y
 - Read access on services is needed to list services, write access to link entities to services.
 - Read access on incidents needed to list incidents.
 
-1. Go to **Profile** -> **Manage API Keys**.
+1. Go to **Profile** → **Manage API Keys**.
 
 2. Click on **Generate New API Key** button.
 
@@ -39,7 +39,7 @@ Because of the features provided by the plugin, an API key with full access to y
 
 ## Layout
 
-This plugin exports a page, a tab and a UI card that you can show on the **Overview** tab of a service or any other layout page.  The following configuration is set by default in **Layout** under **Admin** for **Service** and you do not need to change anything:
+This plugin exports a page, a tab and a UI card that you can show on the **Overview** tab of a service or any other layout page.  The following configuration is set by default in **Layout** under **Configure** for **Service** and you do not need to change anything:
 
 ```yaml
 - component: RootlyOverviewCard

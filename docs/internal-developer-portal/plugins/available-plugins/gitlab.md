@@ -38,7 +38,7 @@ gitlab:
 
 You'll need to set up a GitLab connector in Harness to authenticate with your GitLab instance. This connector allows secure communication between Harness IDP and your GitLab repositories. You can configure it with a Personal Access Token (recommended), basic authentication, or OAuth. 
 
-Go to **Harness IDP** -> **Configure** -> **Git Integrations** and add a new GitLab connector integration. 
+Go to **Harness IDP** → **Configure** → **Git Integrations** and add a new GitLab connector integration. 
 
 For detailed setup instructions, see the [GitLab connector documentation](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo/#connect-to-gitlab).
 
@@ -73,7 +73,7 @@ The UI components are:
 
 #### Layout Options
 This plugin exposes a default tab layout structure for the GitLab plugin using the ``EntityGitlabContent`` component. This adds a default GitLab tab to the plugin layout. 
-You can also customise the plugin layout for your Catalog entities using the **Layout Editor**. Go to **Configure** -> **Layout** -> **Catalog Entities**. Select the entity type for which you want to customise the layout structure and add the plugin components in the layout editor. 
+You can also customise the plugin layout for your Catalog entities using the **Layout Editor**. Go to **Configure** → **Layout** → **Catalog Entities**. Select the entity type for which you want to customise the layout structure and add the plugin components in the layout editor. 
 
 :::info
 It's recommended to have the ``EntityGitlabPipelinesTable`` component as the default top component in your plugin layout. To learn more about these components, go to [GitLab Plugin Documentation](https://github.com/immobiliare/backstage-plugin-gitlab). 

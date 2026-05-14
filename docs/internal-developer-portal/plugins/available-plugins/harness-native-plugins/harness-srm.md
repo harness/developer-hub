@@ -45,7 +45,7 @@ This plugin does not require a delegate proxy to be set up.
 
 ## Layout
 
-This plugin exports a UI tab that you can use as a new SLOs tab for a service or for any other layout page. Go to **Admin** > **Layout**, select **Service** in the dropdown menu, and then add the following YAML code in the new Tab section:
+This plugin exports a UI tab that you can use as a new SLOs tab for a service or for any other layout page. Go to **Configure** → **Layout**, select **Service** in the dropdown menu, and then add the following YAML code in the new Tab section:
 
 ```yaml
 - name: SLOs

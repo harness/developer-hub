@@ -306,7 +306,7 @@ This view bridges the gap between high-level visibility and actionable insight.
 
 #### How to Add or Remove the STO Vulnerabilities Card
 
-You can customize whether the STO Vulnerabilities card appears on the entity overview page by modifying the layout configuration in the IDP admin UI.
+You can customize whether the STO Vulnerabilities card appears on the entity overview page by modifying the layout configuration in the **Configure** section of IDP.
 
 Navigate to **Layout**, then select the appropriate entity kind (e.g., `component`) and entity type (e.g., `service`). Here, you can add or remove the STO Vulnerabilities card component for the overview tab.
 
@@ -343,7 +343,7 @@ This is where developers get exact, actionable details, and security teams can v
 
 #### How to Add or Remove the STO Vulnerabilities Tab
 
-You can customize whether the STO Vulnerabilities tab appears for your catalog entities by modifying the layout configuration in the IDP admin UI.
+You can customize whether the STO Vulnerabilities tab appears for your catalog entities by modifying the layout configuration in the IDP's **Configure** section.
 
 Navigate to **Layout**, then select the appropriate entity kind (e.g., `component`) and entity type (e.g., `service`). Here, you can add or remove tabs for all services.
 
