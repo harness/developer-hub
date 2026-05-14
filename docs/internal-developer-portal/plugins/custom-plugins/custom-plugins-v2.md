@@ -90,28 +90,58 @@ The ['custom-plugins-v2'](https://github.com/harness/custom-plugins-v2) GitHub r
 
 ### Step 4: Add the plugin to a layout
 
-1. In IDP, go to **Configure** and select **Layout** from the left sidebar.
+:::info
+A Custom Plugin V2 can be placed in your layout [as a **Tab**](#as-a-tab) or [as a **SideNav**](#as-a-sidenav-item) item. Placing it as a card is currently not supported.
+:::
 
-2. Select the layout you want to add the plugin to for the intended entity kind and entity type.
+#### As a Tab
 
-3. In the YAML editor, add the following block under the `tabs` list at the position where you want the plugin tab to appear.
+1. In IDP, go to **Configure** and select **Layout**.
+2. Select **Catalog Entities**.
+3. Select the layout for your intended entity kind and type (for example, `component/service`).
+4. In the YAML editor, add the following block under the `tabs` list at the position where you want the plugin tab to appear.
 
     ```yaml
-    - name: Custom Plugin
-      path: /custom-plugin
-      title: Custom Plugin
-      contents:
-        - component: CustomPlugin
-          specs:
-            props:
-              pluginId: <your-plugin-id>
+        - name: Custom Plugin
+          path: /custom-plugin
+          title: Custom Plugin
+          contents:
+            - component: CustomPlugin
+              specs:
+                props:
+                  pluginId: <your-plugin-id>
     ```
 
-   Replace `<your-plugin-id>` with the plugin ID assigned when you created the plugin.
+    Replace `<your-plugin-id>` with the plugin ID assigned when you created the plugin.
 
-   <DocImage path={require('./static/plugins-v2-layout.png')} />
+    <DocImage path={require('./static/plugins-v2-layout.png')} />
 
-4. Select **Save** to apply the layout changes.
+5. Click **Save**.
+
+#### As a SideNav item
+
+1. In IDP, go to **Configure** and select **Layout**.
+2. Select **Side Navigation Bar Layout**.
+3. In the YAML editor, add the following block under the `children` list at the position where you want the custom plugin nav to appear.
+
+    ```yaml
+        - name: SidebarItem
+          type: CustomPlugin
+          props:
+            to: custom-plugin/mydemo
+            text: My Custom Plugin
+            id: <your-plugin-id>
+    ```
+
+   | Field | Description |
+   |-------|-------------|
+   | `to` | The endpoint for this nav item. Starts with `custom-plugin/` followed by a unique string of your choice, for example `custom-plugin/mydemo`. |
+   | `text` | The label to be shown for your plugin in the side navigation. |
+   | `id` | The plugin ID assigned when you created the plugin. |
+
+   <DocImage path={require('./static/plugins-v2-layout-sidenav.png')} />
+
+4. Click **Save**.
 
 ---
 
