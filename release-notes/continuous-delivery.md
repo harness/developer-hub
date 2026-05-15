@@ -55,6 +55,22 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## May 2026
 
+### Version 1.148.3
+
+#### New features and enhancements
+
+- OIDC Delegate Selectors for AWS Connectors enables customers to pass delegate selector information as AWS session tags in OIDC tokens, allowing them to enforce IAM policies based on which Harness delegates execute tasks. This provides environment-level secret isolation without relying on environment naming conventions, working across all scenarios including connector validation, deployment stages, and custom stages.
+
+#### Fixed issues
+
+- Fixed an issue where artifact fetching from JFrog Artifactory Edge nodes would fail to retrieve artifacts that exist in upstream repositories. The system now automatically falls back to transitive search queries when standard queries return no results, ensuring reliable artifact resolution across distributed Artifactory deployments with geo-replicated Edge nodes. This fix requires the feature flag `CDS_USE_CACHED_REPOSITORY_SUFFIX`. Contact [Harness Support](mailto:support@harness.io) to enable. (**CDS-121537**, **ZD-111212**)
+- Fixed an issue with the child pipeline service selector in the run pipeline form. (**CDS-122298**, **ZD-111817**)
+- Fixed an issue where account-level templates displayed duplicate cards in the template listing and incorrectly marked multiple versions as Stable on the deletion page. The API response was sending duplicate items for the same template, preventing users from deleting any version through the UI. This fix requires the feature flag `PIPE_DISABLE_TEMPLATE_STABLE_VERSION_RACE_CONDITION_FIX`. Contact [Harness Support](mailto:support@harness.io) to enable. (**PIPE-32979**, **ZD-104816**, **ZD-109677**, **ZD-112187**)
+- Fixed an issue where input set overlays did not update when variable values in referenced input sets were changed. (**PIPE-32995**, **ZD-110073**)
+- Fixed an issue where when using parent level connector to create a remote pipeline, the reference is not showing up in connector references. Added the scope of connector correctly instead of defaulting it to project scope. (**PIPE-33441**, **ZD-110735**)
+- Fixed an issue where users were unable to create overlay input sets. This fix requires the feature flag `PIPE_DISABLE_DEFAULT_STORE_TYPE_TO_INLINE_FOR_INPUT_SET_CREATE_CHECK`. Contact [Harness Support](mailto:support@harness.io) to enable. (**PIPE-33489**, **ZD-112054**)
+- Fixed an issue where pipeline executions were noticeably slower (not in step details), possibly due to redis lock issues. (**PIPE-33703**, **ZD-112720**)
+
 ### Version 1.144.0
 
 #### New features and enhancements
