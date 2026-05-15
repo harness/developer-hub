@@ -1,85 +1,123 @@
 ---
 title: Upgrade to service and environment v2
-description: Learn about the v2 enhanced experience
+description: Historical reference for the v1 to v2 migration that completed in 2023
 sidebar_position: 4
+sidebar_label: Service and Environment V2 Migration (Archived)
+keywords:
+  - service v2
+  - environment v2
+  - migration
+  - eol
+  - v1 to v2
+tags:
+  - continuous-delivery
+  - archived
 redirect_from:
   - /docs/continuous-delivery/cd-onboarding/upgrading/upgrade-cd-v2
   - /docs/continuous-delivery/get-started/upgrading/upgrade-cd-v2
+---
+
+:::warning This migration completed in 2023
+
+Service and environment v2 became the default experience on January 31, 2023. All Harness accounts now use v2. This page is retained for historical reference only.
+
+For current v2 documentation:
+- Go to [Services overview](/docs/continuous-delivery/x-platform-cd-features/services/services-overview) to learn about v2 services.
+- Go to [Environments overview](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview) to learn about v2 environments.
+
+:::
+
+To provide the best software delivery experience for our customers, Harness introduced an enhanced experience for service and environment entities in the CD NextGen platform. We named this enhanced experience **service and environment v2**.
+
+**The v2 experience went into effect as the default experience on January 31, 2023.**
+
+The v1 experience was removed from all accounts on that date.
 
 ---
 
-:::info
+## What you will learn
 
-This is an End of Life (EOL) notice for the CD NextGen service and environment v1 experience.
+This page describes the service and environment v1 to v2 migration that occurred in 2023. It is retained for historical reference only.
 
-:::
+- **What changed:** The architectural changes from v1 to v2 services, environments, and infrastructure definitions.
+- **Why the change was made:** The benefits of the v2 experience (service variables, independent infrastructure definitions, environment groups).
+- **How migration worked:** The migration APIs that were used to upgrade accounts from v1 to v2.
+- **YAML changes:** Examples of v1 to v2 YAML structure changes for services, environments, infrastructure definitions, stages, pipelines, and templates.
 
-To provide the best software delivery experience for our customers, Harness has introduced an enhanced experience for service and environment entities in the CD NextGen platform. We have named this enhanced experience **service and environment v2**.
-
-**The v2 experience goes into effect as the default experience on Jan 31, 2023.**
-
-Except for specific Harness accounts, the current v1 experience will be removed from all accounts on that date.
+---
 
 ## Why make the change?
 
-The v2 experience has more robust service and environment entities. V2 has service variables, independent infrastructure definitions, environment groups, and file and variable overrides. 
+The v2 experience has more robust service and environment entities. V2 has service variables, independent infrastructure definitions, environment groups, and file and variable overrides.
 
-With v2, you'll notice a major reduction in the configuration included in pipelines. These changes are also reflected in the Harness APIs.
+With v2, you will notice a major reduction in the configuration included in pipelines. These changes are also reflected in the Harness APIs.
 
-All new deployment types (ECS, Deployment Template, SSH, WinRM, etc.) are available in v2 only. New innovations such as Enterprise GitOps, multi-services and multi-environments, and environment groups, are in v2 only. 
+All new deployment types (ECS, Deployment Template, SSH, WinRM, etc.) are available in v2 only. New innovations such as [Enterprise GitOps](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics), multi-services and multi-environments, and [environment groups](/docs/continuous-delivery/x-platform-cd-features/environments/create-environment-groups) are in v2 only.
 
-The new v2 experience has been designed to provided users and organizations with simpler configurations and an improved ability to scale.
+The new v2 experience was designed to provide users and organizations with simpler configurations and an improved ability to scale.
+
+---
 
 ## Customer impact
 
-Here's a summary of the impact to Harness accounts:
+Here is a summary of the impact to Harness accounts:
 
-- The changes only impact your CD module. No other modules are impacted.
-- No impact on any existing pipelines using v1 services and environments. 
-- Post 1/31/2023, when you create a new CD stage in an existing pipeline, the v2 experience will be the default.
+- The changes only impacted the CD module. No other modules were impacted.
+- No impact on any existing pipelines using v1 services and environments during the transition period.
+- After January 31, 2023, when you create a new CD stage in an existing pipeline, the v2 experience became the default.
 
 :::note
 
-Please note that any new services and environments created in Harness after 1/31/2023 will use the new v2 experience.
+Any new services and environments created in Harness after January 31, 2023 use the v2 experience.
 
 :::
 
+---
+
 ## Important dates
 
-Please review these important dates before upgrading.
+Review these important historical dates:
 
-- Service and environment v1 APIs are being deprecated in March 2023.
-- On the official EOL date (Jan 31, 2023), v1 services and environments will continue to work as before. After March 2023, pipelines with v1 services and environments might experience issues or even failures because Harness will not update v1 with fixes or enhancements after that date.
-- Harness will globally enable service and environments v2 APIs for all customers at the end of January 2023.
-- The forced change will reduce the migration effort needed for users.
-- Harness has an automated tool to help migrate your services and environments from v1 to v2.
+- Service and environment v1 APIs were deprecated in March 2023.
+- On the official EOL date (January 31, 2023), v1 services and environments continued to work as before. After March 2023, pipelines with v1 services and environments might have experienced issues or failures because Harness did not update v1 with fixes or enhancements after that date.
+- Harness globally enabled service and environments v2 APIs for all customers at the end of January 2023.
+- The forced change reduced the migration effort needed for users.
+- Harness provided an automated tool to help migrate services and environments from v1 to v2.
 
-We are happy to assist you in your migration to the new v2 experience. For any questions or comments, please contact `support@harness.io` or your CSM. Together we can work through discovery, migration planning, and assist with the process.
+For questions or comments about this migration, contact `support@harness.io` or your CSM.
+
+---
 
 ## API changes
 
-Harness has introduced the following new APIs to support the v2 experience:
+Harness introduced the following new APIs to support the v2 experience:
 
 - [Environments](https://apidocs.harness.io/tag/Environments#operation/createEnvironmentV2)
 - [Services](https://apidocs.harness.io/tag/Services#operation/createServiceV2)
 
-For steps on using these APIs, go to [Migrating from v1 services and environments to v2](#migrating-from-v1-services-and-environments-to-v2). 
+Go to [Migrating from v1 services and environments to v2](#migrating-from-v1-services-and-environments-to-v2) to learn how these APIs were used for migration. 
 
+
+---
 
 ## Terraform Provider automation
 
-Customers using the Harness Terraform Provider will need to update their service and environment automation to use the v2 plugin resources:
+Customers using the Harness Terraform Provider needed to update their service and environment automation to use the v2 plugin resources:
 
 - [harness_platform_service (Resource)](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service)
 - [harness_platform_environment (Resource)](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_environment)
 - [harness_platform_infrastructure (Resource)](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_infrastructure)
 
-Examples are provided in [Changelog since service and environment v1 release](#changelog-since-service-and-environment-v1-release) below.
+Go to [Changelog since service and environment v1 release](#changelog-since-service-and-environment-v1-release) to see Terraform Provider examples.
 
+
+---
 
 ## Changelog since service and environment v1 release
 
 This section contains all the v1 to v2 changes for each of the impacted entity types.
+
+---
 
 ### Services
 
@@ -230,14 +268,16 @@ When creating a service via the Harness REST API, there is a new [service endpoi
 }
 ```
 
+---
+
 #### Terraform Provider
 
-Please review the changes to the Harness Terraform Provider service resource.
+Review the changes to the Harness Terraform Provider service resource.
 
-- The Harness Terraform Provider [service resource endpoint](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service) has not changed.
-- The service resource payload has a new field added for service creation: `yaml`.
+- The Harness Terraform Provider [service resource endpoint](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service) did not change.
+- The service resource payload had a new field added for service creation: `yaml`.
 - `yaml` is not mandatory for service object creation.
-- When creating a service without `yaml` defined, the Terraform Provider will create a skeleton service that cannot be used for immediate deployment.
+- When creating a service without `yaml` defined, the Terraform Provider creates a skeleton service that cannot be used for immediate deployment.
 - The `yaml` field defines the actual definition of the service so it can be used in a pipeline for deployment.
 
 ```yaml
@@ -295,6 +335,8 @@ resource "harness_platform_service" "example" {
               EOT
 }
 ```
+
+---
 
 ### Environments
 
@@ -394,9 +436,11 @@ Here are a few important details:
 }
 ```
 
+---
+
 #### Terraform Provider
 
-Please review the changes to the Harness Terraform Provider environment resource.
+Review the changes to the Harness Terraform Provider environment resource.
 
 - The Harness Terraform Provider [environment resource endpoint](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_environment) has not changed.
 - The environment resource payload has a new field added for environment creation: `yaml`.
@@ -467,9 +511,11 @@ resource "harness_platform_environment" "example" {
 }
 ```
 
+---
+
 ### Infrastructure definition
 
-Harness has taken the infrastructure definition that was originally defined in the pipeline and moved it to the environment. For more information, go to [Environments overview](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview).
+Harness took the infrastructure definition that was originally defined in the pipeline and moved it to the environment. Go to [Environments overview](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview) to learn about infrastructure definitions in v2.
 
 Here are the changes to infrastructure definition:
  
@@ -547,9 +593,11 @@ resource "harness_platform_infrastructure" "example" {
 }
 ```
 
+---
+
 ### Stages
 
-The stage definition changes when the service and environment v2 update is enabled.
+The stage definition changed when the service and environment v2 update was enabled.
 
 Stages now have a deployment type, a service reference, an environment reference, and an infrastructure definition. These settings must be defined along with the **Execution** steps of the stage.
 
@@ -653,9 +701,11 @@ Stages now have a deployment type, a service reference, an environment reference
                 type: StageRollback
 ```
 
+---
+
 ### Pipelines
 
-The following changes apply to pipelines:
+The following changes applied to pipelines:
 
 - The pipeline entity changes with the service and environment v2 update.
 - The combination of service, environment, and infrastructure definitions are no longer defined in the pipeline. These entities are now managed outside of the pipeline.
@@ -766,9 +816,11 @@ pipeline:
                 type: StageRollback
 ```
 
+---
+
 ### Templates
 
-The following changes apply to v2 templates:
+The following changes applied to v2 templates:
 
 - Templates are impacted by the service and environments v2 update.
 - Your existing templates in the service and environments v1 experience will run until v1 EOL (see [Important dates](#important-dates)).
@@ -863,15 +915,17 @@ template:
 
 ```
 
+---
+
 ## Migrating from v1 services and environments to v2
 
 :::note
 
-The user(s) running the APIs for migration must have standard Harness RBAC permissions to update pipelines, services,  environments, and templates (if used).
+The user(s) running the APIs for migration must have had standard Harness RBAC permissions to update pipelines, services, environments, and templates (if used).
 
 :::
 
-To support automated migration of services and environments, we have created two APIs.
+To support automated migration of services and environments, Harness created two APIs.
 
 The APIs copy over the v1 `serviceDefinition` from a pipeline stage and update the existing service with this `serviceDefinition`. 
 
@@ -921,7 +975,7 @@ curl --location --request POST 'https://<base_url>/gateway/ng/api/service-env-mi
                 "projectIdentifier": "project_identifier",
                 "pipelineIdentifier": "pipeline_identifier",
                 "stageIdentifier": "stage_identifier",
-                "failureReason": "service of type v1 doesn't exist in stage yaml"
+                "failureReason": "service of type v1 does not exist in stage yaml"
             }
         ],
         "pipelineYaml": "yaml",
@@ -994,7 +1048,7 @@ curl --location --request POST 'https://<base_url>/gateway/ng/api/service-env-mi
                 "projectIdentifier": "project_identifier",
                 "pipelineIdentifier": "pipeline_identifier",
                 "stageIdentifier": "stage_identifier",
-                "failureReason": "service of type v1 doesn't exist in stage yaml"
+                "failureReason": "service of type v1 does not exist in stage yaml"
             }
         ],
         "migratedPipelines": ["def"]
@@ -1012,5 +1066,16 @@ curl --location --request POST 'https://<base_url>/gateway/ng/api/service-env-mi
 
 - `failures`. List of causes for migration failure.
 - `migrated`. This is `true` if the pipeline was updated. Otherwise it is `false`.
+
+---
+
+## Related concepts
+
+This migration completed in 2023. All Harness accounts now use service and environment v2.
+
+- Go to [Services overview](/docs/continuous-delivery/x-platform-cd-features/services/services-overview) to learn about v2 services.
+- Go to [Environments overview](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview) to learn about v2 environments.
+- Go to [Create environment groups](/docs/continuous-delivery/x-platform-cd-features/environments/create-environment-groups) to group environments.
+- Go to [Infrastructure definitions](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview#infrastructure-definitions) to define deployment targets.
 
 

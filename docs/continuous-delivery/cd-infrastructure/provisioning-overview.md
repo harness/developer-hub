@@ -2,6 +2,8 @@
 title: Provisioning overview
 description: Learn the basics of how provisioning works in Harness CD.
 sidebar_position: 1
+redirect_from:
+  - /docs/continuous-delivery/cd-infrastructure/dynamic-infrastructure-provisioning
 ---
 
 Harness provisioning is categorized into the following use cases:

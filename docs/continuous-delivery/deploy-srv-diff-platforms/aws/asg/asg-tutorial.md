@@ -1,12 +1,48 @@
 ---
-title: AWS ASG
+title: Deploy AWS Auto Scaling Groups
 description: Deploy an ASG using Harness CD.
 redirect_from:
   - /docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial
 sidebar_position: 1
+sidebar_label: AWS ASG Tutorial
+keywords:
+  - auto scaling group
+  - asg
+  - aws
+  - ec2
+  - rolling deployment
+  - blue green deployment
+  - canary deployment
 ---
 
-This topic explains how to deploy Amazon EC2 workloads by orchestrating Auto Scaling Group (ASG) deployments using Harness. Harness manages the creation and rollout of new ASGs based on existing AMIs, while AWS handles the instance provisioning.
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
+
+This guide shows you how to deploy Amazon EC2 workloads by orchestrating Auto Scaling Group (ASG) deployments using Harness CD. You will create a Harness service with ASG configuration files, define a target AWS region, and execute a rolling deployment that creates a new ASG based on your Amazon Machine Image (AMI).
+
+---
+
+## What will you learn?
+
+- **ASG service configuration:** How to define launch templates, ASG configuration files, and AMI artifacts in Harness
+- **Infrastructure targeting:** How to connect Harness to your AWS account and specify the target region for ASG deployments
+- **Deployment strategies:** When to use rolling, canary, or blue-green deployment patterns for ASGs
+- **Rollback behavior:** How Harness stores ASG configurations and performs automatic rollback on failure
+
+---
+
+## Before you begin
+
+- **Harness account with CD module enabled:** You need access to Harness Continuous Delivery. Go to [Getting started with Harness Platform](/docs/platform/get-started/onboarding-guide) to create or access a Harness account.
+- **Permissions to create services, environments, and pipelines:** You need View, Create/Edit permissions for Services, Environments, and Pipelines, and Execute permission for Pipelines. An administrator must assign a role that includes these permissions. Go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) to configure roles and [Permissions reference](/docs/platform/role-based-access-control/permissions-reference#pipelines) to review required permissions.
+- **AWS IAM role with ASG permissions:** The AWS IAM role associated with your Harness AWS connector must have permissions to create and manage Auto Scaling Groups. Go to [Review AWS policy requirements](#review-aws-policy-requirements) below to review required IAM policies.
+- **Private AMI in target AWS region:** ASG deployments require a private Amazon Machine Image (AMI). Public AMIs from the AMI Catalog are not supported. Go to [Creating an AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html) from AWS to create a private AMI.
+- **Basic understanding of AWS Auto Scaling Groups:** Familiarity with ASG concepts (launch templates, desired capacity, scaling policies). Go to [What is Amazon EC2 Auto Scaling?](https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html) from AWS to learn ASG fundamentals.
+
+---
+
+## Understand ASG deployment flow
+
+Before creating your first ASG deployment, review how Harness orchestrates ASG creation and updates.
 
 ## Deployment summary
 
@@ -53,7 +89,9 @@ Notes:
 
 </details>
 
-## AWS policy requirements
+---
+
+## Review AWS policy requirements
 
 Your AWS IAM role associated with your Harness AWS connector must have the following required policies: 
 
@@ -183,7 +221,9 @@ Create a [Customer Managed Policy](https://docs.aws.amazon.com/IAM/latest/UserGu
 
 </details>
 
-## Harness ASG services
+---
+
+## Create a Harness ASG service
 
 The Harness ASG service contains the following:
 
@@ -628,7 +668,9 @@ Next, in your ASG configuration file, you could reference the variable like this
 
 Now, when you add that service to a pipeline, you will be prompted to enter a value for this variable in the pipeline **Services** tab. The value you provide is then used as the `desiredCapacity` in your ASG configuration.
 
-## Harness ASG environments
+---
+
+## Create a Harness ASG environment
 
 The Harness ASG environment is where you specify production and non-production environment settings. 
 
@@ -746,6 +788,8 @@ Pipelines require that an environment have an infrastructure definition. We'll c
   </TabItem3>
 </Tabs3>
 
+
+---
 
 ## Define the infrastructure
 
@@ -956,7 +1000,9 @@ In the Harness Infrastructure Definition, in **Base ASG**, select the ASG to use
 <DocImage path={require('../static/8705496ace1f6b040eccc5b1fe4d6dae3b21cedb37ab383680b39ad41510c417.png')} width="60%" height="60%" title="Click to view full size image" />  
 
 
-## Harness ASG pipelines
+---
+
+## Create a Harness ASG pipeline
 
 Once you have the service and environment created, you can create the pipeline.
 
@@ -1189,9 +1235,16 @@ To create an ASG pipeline, do the following:
 </Tabs2>
 
 
-## ASG pipeline execution strategies
+---
+
+## Choose an execution strategy
 
 Harness ASG deployments support the following [deployment strategies](/docs/continuous-delivery/manage-deployments/deployment-concepts):
+
+Choose based on your risk tolerance and rollback requirements:
+- **Rolling:** Incremental instance replacement within a single ASG (lowest downtime, gradual rollout)
+- **Canary:** Deploy to a temporary canary ASG, validate, then deploy to production ASG (safe testing before full rollout)
+- **Blue Green:** Deploy to a new ASG, swap load balancer traffic, keep old ASG for instant rollback (zero downtime, instant rollback)
 
 - Rolling
 - Canary
@@ -1906,6 +1959,47 @@ In scenarios with multiple delegate selectors, the delegate for the rollback ste
 
 Ensure that the appropriate delegate selectors are configured at the relevant level to avoid unexpected delegate selection during rollback.
 
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="Pipeline fails with 'Unable to fetch AMI' error during ASG Rolling Deploy step"
+  mode="docs"
+  fallback="Verify the AMI ID exists in the target AWS region. Private AMIs are region-specific — if you created the AMI in us-east-1, you cannot deploy to us-west-2 without copying the AMI. Go to Copy an AMI from AWS to copy AMIs across regions."
+/>
+
+<Troubleshoot
+  issue="Instance refresh stuck at 0% complete for more than 5 minutes"
+  mode="docs"
+  fallback="Check the ASG health check configuration in your ASG configuration file. If health check grace period is too short, new instances may fail health checks before fully initializing. Increase healthCheckGracePeriod to 300 seconds or more."
+/>
+
+<Troubleshoot
+  issue="Blue Green deployment fails with 'Listener rule not found' error"
+  mode="docs"
+  fallback="Verify the listener rule Amazon Resource Name (ARN) is correct and the listener rule exists in your AWS Application Load Balancer. Listener rules must be created in AWS before running the pipeline. Go to AWS requirements above to review blue-green prerequisites."
+/>
+
+<Troubleshoot
+  issue="Rollback step fails with 'Previous ASG configuration not found'"
+  mode="docs"
+  fallback="Harness stores ASG configurations at the start of each deployment for rollback. If this is the first deployment and it fails before completing the ASG creation, there is no previous state to rollback to. Harness will delete the failed ASG instead."
+/>
+
+---
+
+## Next steps
+
+Now that you have deployed your first ASG, explore advanced deployment patterns and monitoring capabilities:
+
+- [ASG Blue-Green Traffic Shifting](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg/asg-traffic-shift): Configure incremental traffic shifting for gradual blue-green deployments
+- [AWS deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-deployment-faqs): Troubleshoot common AWS deployment issues
+- [Continuous Verification](/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step/): Monitor ASG health metrics and automatically rollback on anomalies
+- [Deployment freeze](/docs/continuous-delivery/manage-deployments/deployment-freeze): Prevent deployments during maintenance windows
+
+---
+
 ## Advanced settings
 
 In the **Advanced** settings of all step, you can use the following options:
@@ -1916,6 +2010,8 @@ In the **Advanced** settings of all step, you can use the following options:
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
+---
+
 ## Notes
 
 AWS has the following limitations to keep in mind:
@@ -1923,6 +2019,8 @@ AWS has the following limitations to keep in mind:
 - You are limited to creating 5000 launch templates per region and 10000 versions per launch template. For more information, go to [Launch an instance from a launch template](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html) from AWS. 
 - ASGs per region: 500.
 - Launch configurations per region: 200.
+
+---
 
 ## FAQs
 
