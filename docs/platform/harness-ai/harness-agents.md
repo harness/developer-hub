@@ -332,12 +332,16 @@ MCP (Model Context Protocol) connectors give the Worker Agent real-time access t
 
 ### Harness Hosted MCP endpoints
 
-| Cluster | Endpoint |
+| Cluster | MCP URL |
 |---|---|
-| Prod0 | `https://unifiedpipeline.harness.io/mcp-server-external/mcp` |
-| Prod0 | `https://prod0.harness.io/mcp-server-external/mcp` |
-| Prod0 (DevDays) | `https://devdays.harness.io/mcp-server-external/mcp` |
-| Prod1 and Prod2 | `https://mcp.harness.io/mcp` |
+| prod0 | `https://unifiedpipeline.harness.io/mcp-server-external/mcp` |
+| prod0 (devday) | `https://devday.harness.io/mcp-server-external/mcp` |
+| prod1 | `https://app.harness.io/prod1/mcp-server-external/mcp` |
+| prod2 | `https://app.harness.io/gratis/mcp-server-external/mcp` |
+| prod3 | `https://app3.harness.io/mcp-server-external/mcp` |
+| harness0 | `https://harness0.harness.io/mcp-server-external/mcp` |
+| eu1 | `https://accounts.eu.harness.io/mcp-server-external/mcp` |
+| qa | `https://qa.harness.io/mcp-server-external/mcp` |
 
 ### Set up an MCP Server Connector
 
