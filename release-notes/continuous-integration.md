@@ -74,8 +74,6 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 
 #### Fixed Issues
 
-- Fixed an issue where the Build and Push to GAR step intermittently added provenance and SBOM attestations when Docker Layer Caching (DLC) was enabled, causing images to become OCI format unexpectedly. (CI-22576)
-
 - Fixed an issue where logs from Containerized Step Group steps timed out during upload, causing incomplete log visibility in pipeline executions. (CI-22272)
 
 - Fixed an issue where public ECR image pulls hit rate limits even when an AWS connector was configured, by ensuring authenticated pulls are used when a connector is available. (CI-20752)
