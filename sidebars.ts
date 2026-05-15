@@ -1699,6 +1699,7 @@ const sidebars: SidebarsConfig = {
                 'infra-as-code-management/configuration-management/ansible/overview',
                 'infra-as-code-management/configuration-management/ansible/get-started',
                 'infra-as-code-management/configuration-management/ansible/example-use-cases',
+                'infra-as-code-management/configuration-management/ansible/variable-files',
                 'infra-as-code-management/configuration-management/ansible/output-variables-for-ansible',
                 'infra-as-code-management/configuration-management/ansible/managing-large-outputs',
               ],

@@ -1,6 +1,7 @@
 ---
 title: Get Started with Ansible
 description: Create inventories and playbooks, then run Ansible from an IaCM pipeline using the IACMAnsiblePlugin step.
+sidebar_label: Get Started
 keywords:
   - playbook
   - IaCM

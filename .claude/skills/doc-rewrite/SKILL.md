@@ -102,7 +102,7 @@ Rewrite the page to address all issues identified in the audit. Follow the struc
 - Answers: Every `<details>` body must contain at least one full sentence of content.
 - Components: Use static `<details>`/`<summary>` for all entries. Only use `<FAQ>` component if the page has fewer than 10 questions total. Never use `<Troubleshoot>`.
 - Banned sections: No `## Before you begin`, `## Next steps`, `## Troubleshooting`, `## What will you learn?`, or `## Introduction`.
-- Frontmatter: `sidebar_label: FAQ`, `title: FAQ — [Feature Name]`, `faq` tag required.
+- Frontmatter: `sidebar_label: FAQ`, `title: FAQ — [Feature Name]`, `faq` tag required, `sidebar_position` (multiple of 10).
 
 **For Instructional pages:**
 - Structure: Frontmatter → Introduction (2-3 paragraphs) → Before you begin → Step-by-step instructions → Troubleshooting (with Troubleshoot component) → Next steps
@@ -121,6 +121,7 @@ Rewrite the page to address all issues identified in the audit. Follow the struc
 1. **Frontmatter fixes:**
    - Add missing `keywords` and `tags`
    - Add `sidebar_label` if needed (Title Case)
+   - Add `sidebar_position` if missing (must be a multiple of 10, requires checking sibling pages in section to determine appropriate positioning)
    - Add `redirect_from` if URLs are being superseded
    - Ensure `slug` doesn't include `/docs/` prefix
 
@@ -131,7 +132,7 @@ Rewrite the page to address all issues identified in the audit. Follow the struc
 3. **Section additions (Instructional and Overview pages only — do NOT apply to FAQ pages):**
    - Add "What you will learn" (Overview pages only)
    - Add Before you begin (Instructional) or lightweight knowledge prerequisites (Overview, optional)
-   - Add Troubleshooting with `<Troubleshoot>` component (Instructional)
+   - Add Troubleshooting with `<Troubleshoot>` component (Instructional, at least 3 entries)
    - Add FAQs with `<FAQ>` component (Overview, optional)
    - Add Next steps or Related concepts
 
@@ -228,12 +229,17 @@ After applying changes:
    - `sidebar_label: FAQ` present in frontmatter
    - `title` follows `FAQ — [Feature Name]` format
    - `faq` tag is first in tags list
+   - `sidebar_position` present (multiple of 10)
    - Every `<summary>` ends with `?`
    - Every `<details>` body has at least one full sentence (not just a link)
    - No `###` or deeper headings anywhere in the body
    - No `## Before you begin`, `## Next steps`, `## Troubleshooting`, or `## What will you learn?` sections
    - `<FAQ>` component only used if total question count is fewer than 10
    - No `<Troubleshoot>` component used
+   
+   **Additional checks for Instructional/Overview pages:**
+   - `sidebar_position` present in frontmatter (multiple of 10)
+   - Troubleshooting section (Instructional only) has at least 3 `<Troubleshoot>` component entries
 
 4. **Calculate expected score improvement:**
    Based on the issues fixed, estimate the new audit score (should be ≥ 80)

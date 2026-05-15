@@ -1,6 +1,6 @@
 ---
 title: Output variables for Ansible
-sidebar_label: Output Variables for Ansible
+sidebar_label: Output Variables
 description: Configure output variables to export data from Ansible playbooks to other pipeline steps.
 keywords:
   - ansible

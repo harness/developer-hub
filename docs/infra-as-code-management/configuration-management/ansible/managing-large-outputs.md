@@ -1,6 +1,6 @@
 ---
-title: Managing large Ansible outputs
-sidebar_label: Managing Large Outputs
+title: Managing Large Ansible Outputs
+sidebar_label: Manage Large Outputs
 description: Understand how the Ansible plugin manages large playbook outputs through truncation and file export.
 keywords:
   - ansible

@@ -232,7 +232,12 @@ FAIL if the YAML frontmatter block (between `---` delimiters) does not contain a
 FAIL if the frontmatter block does not contain a `description:` field with a non-empty value.
 **Exempt:** DMS content files (path contains `/content/`).
 
-**FM-3 — No H1 in body**
+**FM-3 — `sidebar_position` present and multiple of 10**
+WARN if the frontmatter block does not contain a `sidebar_position:` field.
+FAIL if `sidebar_position` is present but not a multiple of 10 (e.g., 15, 23 are wrong; 10, 20, 30 are correct).
+**Exempt:** DMS content files (path contains `/content/`) and index pages that don't appear in sidebar navigation.
+
+**FM-4 — No H1 in body**
 FAIL if any line in the file body (after the closing `---`) matches `^# ` (a single-hash heading).
 The page title is set via frontmatter; a `# Heading` in the body is always wrong.
 **Exempt:** DMS content files (path contains `/content/`) — H1 is expected and valid as the section title within a tab.
@@ -345,7 +350,7 @@ After scanning all files, compute a **compliance score** per file using a two-ca
    - T-1: Troubleshoot component not used (-5)
 
 2. **Editorial score** (starts at 100):
-   - FM-1, FM-3: Frontmatter issues (-15 each, cap at 5 violations for FM-3)
+   - FM-1, FM-2, FM-3, FM-4: Frontmatter issues (-15 for FM-1, -15 for FM-2, -5 for FM-3 WARN/-15 for FM-3 FAIL, -15 for FM-4; cap at 5 violations for FM-4)
    - H-1, H-2, H-3: Heading issues (-5 for H-1, -15 for H-2, -5 for H-3, cap at 5 violations each)
    - S-1 through S-7: Style violations (-15 for FAIL rules, -5 for WARN rules, cap at 5 violations each)
    - T-2, T-3: Template compliance (-15 for T-2, variable for T-3 including -50 for old FAQ structure)
@@ -433,7 +438,8 @@ The report file is saved with today's date. The audits directory is created if i
 |---|---|---|---|
 | FM-1 | Missing title | N | — |
 | FM-2 | Missing description | N | — |
-| FM-3 | H1 in body | N | — |
+| FM-3 | Missing/invalid sidebar_position | N (not multiple of 10) | N (missing) |
+| FM-4 | H1 in body | N | — |
 | H-1 | Heading case violations | — | N |
 | H-2 | Gerund headings | N | — |
 | H-3 | Body content at ## level | — | N |

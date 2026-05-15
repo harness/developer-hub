@@ -186,7 +186,7 @@ Score across three dimensions (each starts at 100). **Adjust criteria based on p
 
 **Completion (30%):** –15 `<details>` body is empty or contains only a link with no context sentence, –10 a category heading has no `<details>` entries, –10 `<FAQ>` component used on a page with 10 or more questions, –5 answer is a verbatim copy of an existing doc section that Ask AI would already surface (should be shortened + linked)
 
-**Editorial (30%):** –15 page does not follow faq-template skeleton (H2 categories + `<details>`/`<summary>`), –10 missing/incorrect frontmatter (must include `sidebar_label: FAQ`, `title: FAQ — X`, `faq` tag, description), –10 non-site-relative links, –10 missing `redirect_from` on a moved page, –10 em dashes / bare link text (S-1, S-3), –5 `<summary>` text does not end with `?`, –5 `###` or deeper heading found in page body, –5 `## Before you begin`, `## Next steps`, or `## Troubleshooting` section present, –5 link phrasing — see [link], refer to, to learn more (S-2), –5 contractions (S-7), –5 "please" in body (S-5), –5 spelling/grammar
+**Editorial (30%):** –15 page does not follow faq-template skeleton (H2 categories + `<details>`/`<summary>`), –10 missing/incorrect frontmatter (must include `sidebar_label: FAQ`, `title: FAQ — X`, `faq` tag, description, `sidebar_position` as multiple of 10), –10 non-site-relative links, –10 missing `redirect_from` on a moved page, –10 em dashes / bare link text (S-1, S-3), –5 `<summary>` text does not end with `?`, –5 `###` or deeper heading found in page body, –5 `## Before you begin`, `## Next steps`, or `## Troubleshooting` section present, –5 link phrasing — see [link], refer to, to learn more (S-2), –5 contractions (S-7), –5 "please" in body (S-5), –5 spelling/grammar
 
 **Key differences for FAQ pages:**
 - No Before you begin, Next steps, or "What will you learn?" sections required — their absence is not penalised
@@ -203,7 +203,7 @@ Score across three dimensions (each starts at 100). **Adjust criteria based on p
 
 **Completion (30%):** –15 undocumented capabilities, –10 missing prerequisites (account/RBAC), –10 missing troubleshooting, –10 missing config options, –10 no code examples, –10 missing cross-module refs (esp. Platform), –10 no RBAC guidance, –10 missing limitations, –10 incomplete API params, –5 no Next Steps
 
-**Editorial (30%):** –15 wrong structure (vs template), –10 missing/incorrect frontmatter, –10 wrong heading case (must be sentence case + imperative; gerund headings such as “Configuring X” are wrong), –10 non-site-relative links, –10 missing redirect_from, –10 em dashes / bare link text — here, click here (S-1, S-3), –5 link phrasing — see [link], refer to, to learn more (S-2), –10 walls of text, –5 inconsistent UI bolding, –5 no intro before lists (S-6), –5 “please” in body (S-5), –5 contractions — don’t, won’t, can’t etc. (S-7), –5 missing Troubleshoot component (T-1) / ## Introduction heading in body (T-2), –5 spelling/grammar, –5 missing callouts, –5 slug /docs/docs/ bug
+**Editorial (30%):** –15 wrong structure (vs template), –10 missing/incorrect frontmatter (must include title, sidebar_label, description, keywords, tags, sidebar_position as multiple of 10), –10 wrong heading case (must be sentence case + imperative; gerund headings such as “Configuring X” are wrong), –10 non-site-relative links, –10 missing redirect_from, –10 em dashes / bare link text — here, click here (S-1, S-3), –5 link phrasing — see [link], refer to, to learn more (S-2), –10 walls of text, –5 inconsistent UI bolding, –5 no intro before lists (S-6), –5 “please” in body (S-5), –5 contractions — don’t, won’t, can’t etc. (S-7), –5 missing Troubleshoot component (T-1) / ## Introduction heading in body (T-2), –5 spelling/grammar, –5 missing callouts, –5 slug /docs/docs/ bug
 
 ### Scoring for Overview pages
 
@@ -211,7 +211,7 @@ Score across three dimensions (each starts at 100). **Adjust criteria based on p
 
 **Completion (30%):** –15 missing "What you will learn", –10 incomplete concept explanations, –10 missing reference material (attributes/params), –10 no code examples, –10 missing cross-module refs (esp. Platform), –10 missing architectural context, –10 missing limitations/caveats, –5 no Related concepts/Next steps, –5 light/no prerequisites for knowledge context
 
-**Editorial (30%):** –15 wrong structure (vs overview template), –10 missing/incorrect frontmatter, –10 wrong heading case (must be sentence case + descriptive/noun phrases, NOT imperative), –10 non-site-relative links, –10 missing redirect_from, –10 em dashes / bare link text — here, click here (S-1, S-3), –5 link phrasing — see [link], refer to, to learn more (S-2), –10 walls of text, –5 inconsistent bolding, –5 no intro before lists (S-6), –5 “please” in body (S-5), –5 contractions — don’t, won’t, can’t etc. (S-7), –5 missing Troubleshoot component (T-1) / ## Introduction heading in body (T-2), –5 spelling/grammar, –5 missing callouts, –5 slug /docs/docs/ bug
+**Editorial (30%):** –15 wrong structure (vs overview template), –10 missing/incorrect frontmatter (must include title, sidebar_label, description, keywords, tags, sidebar_position as multiple of 10), –10 wrong heading case (must be sentence case + descriptive/noun phrases, NOT imperative), –10 non-site-relative links, –10 missing redirect_from, –10 em dashes / bare link text — here, click here (S-1, S-3), –5 link phrasing — see [link], refer to, to learn more (S-2), –10 walls of text, –5 inconsistent bolding, –5 no intro before lists (S-6), –5 “please” in body (S-5), –5 contractions — don’t, won’t, can’t etc. (S-7), –5 missing Troubleshoot component (T-1) / ## Introduction heading in body (T-2), –5 spelling/grammar, –5 missing callouts, –5 slug /docs/docs/ bug
 
 **Key differences for overview pages:**
 - Before you begin is optional/lightweight (knowledge context only, NOT account/RBAC)
@@ -544,7 +544,7 @@ The rewritten page must satisfy all of the following before you consider it done
 
 **For FAQ pages:**
 - Follows faq-template.mdc skeleton exactly (frontmatter → 1–2 sentence intro → `---` + `##` categories → `<details>`/`<summary>` Q&A)
-- `sidebar_label: FAQ`, title `FAQ — [Feature Name]`, `faq` tag present in frontmatter
+- `sidebar_label: FAQ`, title `FAQ — [Feature Name]`, `faq` tag present in frontmatter, `sidebar_position` (multiple of 10)
 - Every `<summary>` ends with `?`
 - Every `<details>` body contains at least one full sentence (not just a link)
 - No `## Before you begin`, `## Next steps`, `## Troubleshooting`, or `###` headings anywhere on the page
@@ -556,7 +556,7 @@ The rewritten page must satisfy all of the following before you consider it done
   step-by-step instructions → Troubleshoot component → Next steps)
 - Before you begin include account access, RBAC permissions with specific permission names and links
 - All ## and ### headings use sentence case with imperative form ("Create X", "Configure Y")
-- <Troubleshoot> component for common task errors
+- <Troubleshoot> component with at least 3 entries for common task errors
 
 **For Overview pages:**
 - Follows doc-structure-overview-template.mdc skeleton exactly (frontmatter → intro → What you will learn →
@@ -567,7 +567,7 @@ The rewritten page must satisfy all of the following before you consider it done
 - Optional <FAQ> component for conceptual questions
 
 **For both page types:**
-- Frontmatter is complete: title, sidebar_label (Title Case), description, keywords, tags;
+- Frontmatter is complete: title, sidebar_label (Title Case), description, keywords, tags, sidebar_position (multiple of 10);
   slug does not include a /docs/ prefix
 - All internal links use site-relative paths (/docs/...), never full production URLs
 - redirect_from added to frontmatter for any URL being superseded

@@ -1,6 +1,7 @@
 ---
-title: Overview
+title: Overview of Ansible in IaCM
 description: Understand how Ansible fits into Harness IaCM, core concepts for newcomers, and how inventories, playbooks, and pipelines work together.
+sidebar_label: Overview
 keywords:
   - ansible
   - configuration management
