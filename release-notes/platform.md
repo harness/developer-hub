@@ -222,6 +222,17 @@ The following deprecated API endpoints are longer supported:
 
 ## May 2026
 
+### Version 1.145.x <!--May 14, 2026-->
+
+#### Fixed issues
+
+- Fixed an issue on the ResourceGroupDetails page where deleting a selected project or organization scope caused the Resource Scope dropdown to display an incorrect scope value. The UI now correctly shows no scope selected when the associated project or organization has been deleted. [PL-71285]
+
+#### New features and enhancements
+
+- Introduced [**Platform Alerts**](/docs/platform/notifications/platform-alerts), an in-app notification framework that automatically surfaces important account-level events such as approaching resource limits and new system release announcements directly within the Harness UI, with no external configuration required. [PL-68329]
+- Improved the reliability of the Purchase Credits API by making database operations atomic. Also enhanced logging to capture overage details during credit reset operations. [PL-70442]
+
 ### Version 1.144.x <!--May 06, 2026-->
 
 #### Fixed issues
@@ -229,10 +240,6 @@ The following deprecated API endpoints are longer supported:
 - Fixed a race condition introduced in recent updates to improve system stability and ensure consistent behavior. [PL-71042]
 - Restored missing Redis configuration required for proper RHS functionality. [PL-71001]
 - Fixed an issue where users with partial view permissions on users or user groups received incorrect responses from the delete API. [PL-68628] 
-
-#### New features and enhancements
-
-- New users are now prompted to complete their profile right after signup, including details like company name, full name, job title, and phone number. [PL-70488]
 
 ## April 2026
 
