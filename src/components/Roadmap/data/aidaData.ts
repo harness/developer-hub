@@ -8,19 +8,29 @@ export const aidaData: Horizon = {
     description: "Q2 2026, Apr-Jun 2026",
     feature: [
       {
-        tag: [],
-        title: "Slack Bot",
-        description: "Allows users to interact with the Unified Agent in Slack.",
-      },
-      {
-        tag: [],
-        title: "MS Teams Bot",
-        description: "Allows users to interact with the Unified Agent via an MS Teams Bot.",
+        tag: [{value: "AI Platform"}],
+        title: "Worker Agents",
+        description: "Autonomous AI agents that execute DevOps tasks inside Harness pipelines as a native step type. Supported across CI, CD, Custom, STO, SCS, IaCM, and IDP stages. Features include 9 Harness Managed Agents, an Agent Builder GUI, three-layer governance, and a full audit trail.",
       },
       {
         tag: [{value: "AI Platform"}],
-        title: "AI Usage Insights",
-        description: "Enables users to get an analysis of their AI Usage, number of prompts, tokens consumed, and actions."
+        title: "Skills",
+        description: "Structured instruction files that teach AI coding assistants how to work with Harness. Compatible with Claude Code, Cursor, GitHub Copilot, and OpenAI Codex.",
+      },
+      {
+        tag: [{value: "AI Platform"}],
+        title: "Prompts",
+        description: "Curated, ready-to-use prompt library for Harness AI organized by module and use case. Usable in AI Chat, via MCP, or as base instructions for Worker Agents.",
+      },
+      {
+        tag: [{value: "AI Platform"}],
+        title: "Bring Your Own Model Keys",
+        description: "Connect your preferred LLM provider to Worker Agents and Harness AI through existing Harness connectors. Supports Anthropic, OpenAI, Azure OpenAI, Google Gemini, Vertex AI, and AWS Bedrock.",
+      },
+      {
+        tag: [{value: "AI Platform"}],
+        title: "Expert Agent",
+        description: "Conversational AI agent grounded in the Harness Knowledge Graph. Powers AI Chat and the MCP Server. Answers questions about delivery data, generates pipeline YAML, and troubleshoots failures through natural language.",
       },
     ],
   },
@@ -30,52 +40,72 @@ export const aidaData: Horizon = {
       {
         tag: [],
         title: "Knowledge Graph",
-        description: "Provide additional intelligence for Harness AI to execute various remediation and automated actions, and personalize the user's UI."
+        description: "Extends the intelligence layer underlying Harness AI with a richer, pipeline-centric knowledge graph connecting all delivery entities. Includes entity modeling, inter-module relationships, and coverage confidence scoring.",
+      },
+      {
+        tag: [{value: "AI Platform"}],
+        title: "AI Usage Insights",
+        description: "Provides account admins with visibility into how Harness AI is used across their organization. Includes prompts, tokens, actions, cost attribution per team, and exportable reports for FinOps and compliance.",
       },
     ],
   },
   Later: {
     description: "Q4 2026+, Oct 2026 & beyond",
     feature: [
+      {
+        tag: ["AI Platform"],
+        title: "Slack Bot",
+        description: "Allows users to interact with the Harness Unified Agent directly from Slack. Natural language queries, pipeline failure and deployment status alerts, governed by the same RBAC and audit trail as AI Chat.",
+      },
+      {
+        tag: ["AI Platform"],
+        title: "MS Teams Bot",
+        description: "Allows users to interact with the Harness Unified Agent via a Microsoft Teams Bot. Natural language pipeline queries, alert routing, channel and DM support with enterprise SSO and RBAC.",
+      },
     ],
   },
   Released: {
     description: "What has been released",
     feature: [
       {
+        tag: [{value: "AI Platform"}],
+        title: "AI Chat 3.0",
+        description: "Next-generation conversational AI experience across NGUI and UI 3.0. Includes Rules support, Memories, OPA policy enforcement, and NGUI backport. Powered by Claude 4.",
+      },
+      {
         tag: [{value: "AI DevOps"}],
         title: "AI DevOps Architect Mode",
-        description: "Deep research capabilities for building robust pipelines.",
+        description: "Deep research mode for the DevOps Agent powered by Opus 4.5. Consolidated 5 sub-agents into a single unified DevOps Agent with improved context retention.",
+      },
+      {
+        tag: [{value: "AI DevOps"}],
+        title: "DevOps Agent — Opus 4.5",
+        description: "Major upgrade to the DevOps Agent powered by Opus 4.5. Faster response time, higher-quality pipeline generation, single unified agent replacing 5 sub-agents.",
       },
       {
         tag: [{value: "AI Platform"}],
         title: "Attachment Support",
-        description: "Allow users to migrate their pipelines into Harness by adding a file attachment. Also, enables building a pipeline based off of design documents.",
+        description: "Upload files directly into AI Chat to power pipeline migration and generation workflows. Supports PDF, Markdown, YAML, and JSON attachments.",
       },
       {
         tag: [{value: "AI Platform"}, {value: "MCP"}],
         title: "Hosted MCP",
-        description: "Harness MCP server hosted with OAuth access.",
+        description: "Harness MCP Server hosted and managed by Harness with OAuth-based access. 10 unified tools with registry-based dispatch, CRUD + Execute on 119+ resource types.",
       },
       {
         tag: [],
         title: "Pipeline Error Analyzer 2.0",
-        description: "More intelligent error analysis and remediation for pipelines including drift detection, documentation support, and fix suggestions.",
-      },
-      {
-        tag: [{value: "MCP"}],
-        title: "MCP - Default Tools",
-        description: "Default set of tools for users to get started with the Harness MCP server.",
+        description: "Upgraded failure diagnosis in AI Chat. Reads step-level logs, correlates failures with recent commits via Knowledge Graph, and surfaces actionable fix suggestions.",
       },
       {
         tag: [{value: "AI Platform"}],
-        title: "AI Platform - Memory Support",
-        description: "Working memory for the AI chat agent with context about chat history, account configurations, and account actions.",
+        title: "Rules Support",
+        description: "Create, update, and manage Harness Rules directly through AI Chat with natural language rule creation, confirmation before write, and OPA policies applied on creation.",
       },
       {
         tag: [{value: "AI Platform"}],
-        title: "AI Governance",
-        description: "Natural language governance for the AI DevOps Agent and Unified Agent.",
+        title: "Memories",
+        description: "AI Chat retains context within and across sessions. Session-scoped memory for in-flight workflows and persistent memory for future chats.",
       },
       {
         tag: [{value: "AI DevOps"}],
