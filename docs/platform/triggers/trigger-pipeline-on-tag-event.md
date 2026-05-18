@@ -6,13 +6,14 @@ description: Trigger pipelines on pushing new tag in your repository.
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-You can set up your pipeline to automatically trigger whenever a new tag is pushed to your repository. This guide walks you through the steps to achieve this using a webhook trigger.
+You can set up your pipeline to automatically trigger whenever a new tag is pushed to your repository. This guide walks you through the steps to achieve this using a webhook trigger. Additionally, you can configure the trigger to load both the pipeline YAML and input sets from the same Git tag that triggered the execution, enabling version-controlled pipeline executions.
 
 ### Pre-Requisite
 
 1. [Code repo connector](/docs/category/code-repo-connectors) that connects to your Git provider account. 
 2. Required [Code repo connector permissions for webhook triggers](/docs/platform/triggers/triggers-reference#code-repo-connector-permissions-for-webhook-triggers).
 3. Harness CI/CD Pipeline
+4. Delegate version **26.04.89002** or later (required for Git tag-based pipeline and input set loading)
 
 ### Steps to Trigger a Pipeline on a New Tag
 
@@ -93,6 +94,95 @@ You can verify the payload received by the trigger in the Activity History secti
 }
 ```
 The `ref` field indicates the new tag, in this case, refs/tags/v1.
+
+---
+
+## Load pipeline and input sets from Git tags
+
+:::note
+This feature requires delegate version **26.04.89002** or later and supports all Git providers including GitHub, GitLab, and Bitbucket.
+:::
+
+When using Git tag-based triggers, you can configure Harness to load both the pipeline YAML and input sets from the same Git tag that triggered the execution. This enables you to execute specific versions of your pipeline and input sets that are tagged in your repository, making it easier to maintain stable configurations alongside your release workflow and enabling reliable rollbacks to previous versions.
+
+### Using `pipelineBranchName` and `inputSetBranchName` with Git tags
+
+You can add the `pipelineBranchName` and `inputSetBranchName` properties to your trigger YAML to specify the exact Git tag from which Harness should fetch the pipeline YAML and input sets when the trigger is activated.
+
+To reference a Git tag, use the `$tag:` format:
+
+- **`$tag:<tag-name>`** - References a specific Git tag (for example, `$tag:v1.0.0` or `$tag:release-2024.01`)
+- **`$tag:<expression>`** - References a Git tag using an expression that resolves at runtime to the tag name (for example, `$tag:(<+trigger.tag>)` resolves to the Git tag from the trigger payload)
+
+<details>
+<summary>Example: Execute pipeline from pushed Git tag</summary>
+
+Here's an example trigger configuration that loads both the pipeline YAML and input set from the same Git tag that triggered the execution:
+
+```yaml
+trigger:
+  name: Tag-based Release Trigger
+  identifier: tag_release_trigger
+  enabled: true
+  description: "Execute pipeline from Git tag for releases"
+  tags: {}
+  orgIdentifier: default
+  projectIdentifier: myProject
+  pipelineIdentifier: myPipeline
+  source:
+    type: Webhook
+    spec:
+      type: Github
+      spec:
+        type: Push
+        spec:
+          connectorRef: myGithubConnector
+          autoAbortPreviousExecutions: false
+          repoName: myRepo
+          payloadConditions:
+            - key: <+trigger.payload.ref>
+              operator: StartsWith
+              value: refs/tags/
+            - key: <+trigger.payload.created>
+              operator: Equals
+              value: "true"
+  pipelineBranchName: $tag:(<+trigger.tag>)
+  inputSetBranchName: $tag:(<+trigger.tag>)
+  inputSetRefs:
+    - production-input-set
+  inputYaml: |
+    pipeline:
+      identifier: myPipeline
+      properties:
+        ci:
+          codebase:
+            build:
+              type: branch
+              spec:
+                branch: <+trigger.tag>
+```
+
+In this example:
+1. The trigger is configured with `type: Push` to listen for push events
+2. **Important:** The `payloadConditions` filter ensures the trigger **only** fires for tag push events (not regular branch pushes):
+   - `<+trigger.payload.ref>` starts with `refs/tags/` (filters for tags only)
+   - `<+trigger.payload.created>` equals `true` (filters for tag creation, not deletion)
+3. The `pipelineBranchName: $tag:(<+trigger.tag>)` loads the pipeline YAML from the pushed Git tag
+4. The `inputSetBranchName: $tag:(<+trigger.tag>)` loads the input set from the same Git tag
+5. When you push tag `v1.0.0`, both the pipeline and input set are fetched from that tag
+
+Without the payload conditions, the trigger would fire on ALL push events (branches AND tags), causing `<+trigger.tag>` to be empty for branch pushes and resulting in an error. The payload conditions ensure this trigger only activates for tag push events.
+
+This ensures that your pipeline executions use versioned configurations that match your Git tags, enabling reliable rollbacks and release management.
+
+</details>
+
+### Additional use cases
+
+- **Load pipeline from a specific stable tag:** Use `pipelineBranchName: $tag:v1.0.0` to always execute a specific stable version of your pipeline
+- **Load pipeline from tag, input set from branch:** Mix tag and branch references to use a stable pipeline version with the latest input set configurations
+
+For more information on using Git tags with pipelines and input sets, go to [Git tag support for pipeline and input set source](/docs/platform/pipelines/input-sets#git-tag-support-for-pipeline-and-input-set-source).
 
 
 

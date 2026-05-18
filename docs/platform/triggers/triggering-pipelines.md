@@ -188,6 +188,27 @@ When configuring pipeline inputs for a trigger, you can use either an **input se
 
 The trigger is added to the triggers page. The last step in trigger set up is [webhook registration](#register-the-webhook-in-the-git-provider).
 
+### Load pipeline and input sets from Git tags (Optional)
+
+:::note
+This feature requires delegate version **26.04.89002** or later and supports all Git providers including GitHub, GitLab, and Bitbucket.
+:::
+
+When your pipeline and input sets are stored in Git, you can configure the trigger to load them from specific Git tags instead of branches. This is especially useful for tag-based release workflows where you want to execute versioned configurations.
+
+You can add the `pipelineBranchName` and `inputSetBranchName` properties to your trigger YAML to specify Git tags:
+
+- **`pipelineBranchName`** - Specifies the branch or tag from which to load the pipeline YAML
+- **`inputSetBranchName`** - Specifies the branch or tag from which to load input sets
+
+To reference a Git tag, use the `$tag:` format (for example, `$tag:v1.0.0` or `$tag:(<+trigger.tag>)`).
+
+**Example use case:** When a new tag (for example, `v1.0.0`) is pushed to your repository, you can configure the trigger to load both the pipeline YAML and input sets from that same tag, ensuring that your pipeline executions use versioned configurations that match your Git tags.
+
+For detailed information and examples, go to:
+- [Load pipeline and input sets from Git tags](/docs/platform/triggers/trigger-pipeline-on-tag-event#load-pipeline-and-input-sets-from-git-tags)
+- [Git tag support for pipeline and input set source](/docs/platform/pipelines/input-sets#git-tag-support-for-pipeline-and-input-set-source)
+
 ### Register the webhook in the Git provider
 
 For all Git providers supported by Harness, non-custom webhooks are automatically created in the repo. For details about automatically-registered Git events, go to the [Triggers reference](./triggers-reference.md).
