@@ -3,6 +3,10 @@ import TabItem from '@theme/TabItem';
 
 Use a Raw File registry to store and retrieve arbitrary files by path (for example, archives, reports, or configuration files). You upload, download, inspect, and delete files with HTTP requests and `curl`.
 
+:::info Feature Flag
+This feature is behind the feature flag `HAR_RAW_PACKAGE`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+:::
+
 ## Prerequisites
 
 - Access to a Harness account with appropriate permissions to create registries and connectors.
