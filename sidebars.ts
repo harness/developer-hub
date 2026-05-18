@@ -743,7 +743,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'category',
-          label: 'Notifications, Alerts & Banners',
+          label: 'Notifications, Alerts, & Banners',
           link: {
             type: 'generated-index',
           },
