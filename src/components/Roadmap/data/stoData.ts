@@ -15,19 +15,13 @@ export const StoData: Horizon = {
     
       {
         tag: [{ value: "AST" }],
-        title: "App & Target Vuln View for Code Repository",
+        title: "App & Target Vuln View for Code Repository & Artifacts",
         description: "Target view grouped by apps and teams.",
       },
-       {
+      {
         tag: [{ value: "Data Handling" }],
         title: "Target Deletion",
         description: "Allows deletion of unwanted targets/artifacts vulnerability data to reduce noise.",
-      },
-      
-       {
-        tag: [{ value: "AST" }],
-        title: "App & Target Vuln View for Artifacts",
-        description: "Target view grouped by apps and teams.",
       },
 
       {
@@ -39,6 +33,26 @@ export const StoData: Horizon = {
         tag: [{ value: "Integration" }, { value: "Jenkins"}, { value: "GitHub Actions"}],
         title: "Non Harness CI (Jenkins & GHA Support)",
         description: "Native onboarding for Non Harness CI - Jenkins and GitHub Actions.",
+      },
+      {
+        tag: [{ value: "Analytics" }],
+        title: "Product Usage Analytics",
+        description: "A centralized analytics dashboard showing STO usage trends, adoption, and engagement across all security scans.",
+      },
+      {
+        tag: [{ value: "Exemption" }],
+        title: "Exemption Workflow Revamp",
+        description: "Revamp the exemption workflow with configurable rules based on severity, customizable exemption periods per severity level.",
+      },
+      {
+        tag: [{ value: "AI" }, { value: "Triage" }],
+        title: "Triage Agent",
+        description: "AI-powered agent that determines if a finding is a likely false positive or likely true positive by leveraging LLMs to understand real-world risk beyond CVSS scores.",
+      },
+      {
+        tag: [{ value: "AI SKills" }],
+        title: "AI Skills for AI-powered IDEs",
+        description: "Expose STO capabilities as AI-powered skills via the Harness MCP Server, enabling security workflow automation directly from AI-powered IDEs.",
       },
     ],
   },
