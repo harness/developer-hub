@@ -51,7 +51,7 @@ In **Project Settings**, select **Environments**. To learn more about creating e
 2. Select **New Infrastructure Definition**. 
 3. In **Name** enter name for the infrastructure definition.
 4. In **How do you want to set up your infrastructure**, select **Remote**.
-5. Harness will automatically populate the connector, repository, branch, and YAML path. The auto-population of the connector, branch, and repository is based on the environment configuration, specifically extracted from the Git repository where you've stored your environment details. You can change the connector as well as the branch.
+5. Harness will automatically populate the connector, repository, branch, and YAML path. The auto-population of the connector, branch, and repository is based on the environment configuration, specifically extracted from the Git repository where you've stored your environment details. You can change the connector, but the branch is inherited from the environment and cannot be changed independently.
 6. Select the **Deployment Type**, **Infrastructure Type**, and then provide infra details. For more information, go to [Create environments](/docs/continuous-delivery/x-platform-cd-features/environments/create-environments).
 7. Select **Save**.
 8. For the new infrastructure definition, select **More Options** (&vellip;) and then select **Edit**.
