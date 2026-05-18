@@ -83,23 +83,52 @@ def derive_url(file_path: str, module_config: dict) -> str:
     base_url = module_config["base_url"]
     module_folder = module_config["folder"]
 
+    # Ensure module_folder doesn't have trailing slash
+    module_folder = module_folder.rstrip("/")
+
     # Check if it's a DMS content file
     if "/content/" in file_path:
-        # Find parent file
+        # DMS content files are accessed via parent page URL + fragment
+        # Example: docs/infra-as-code-management/content/get-started/cdk-quickstart.md
+        # Parent: docs/infra-as-code-management/get-started/get-started.md
+        # URL: /docs/infrastructure-as-code-management/get-started#cdk-quickstart
+
         parts = file_path.split("/content/")
-        parent_dir = parts[0]
-        content_file = parts[1].replace(".md", "")
+        parent_dir = parts[0]  # e.g., "docs/infra-as-code-management"
+        content_path = parts[1].replace(".md", "")  # e.g., "get-started/cdk-quickstart"
 
-        # Parent page URL (module_folder already includes "docs/" prefix)
-        page_path = parent_dir.replace(f"{module_folder}/", "")
-        parent_url = f"https://developer.harness.io{base_url}/{page_path}"
+        # Extract the subfolder name from content path (e.g., "get-started")
+        content_parts = content_path.split("/")
+        if len(content_parts) >= 2:
+            subfolder = content_parts[0]  # e.g., "get-started"
+            filename = content_parts[-1]  # e.g., "cdk-quickstart"
 
-        # Fragment from filename (lowercase, replace spaces with hyphens)
-        fragment = content_file.split("/")[-1].lower().replace(" ", "-")
-        return f"{parent_url}#{fragment}"
+            # Parent page is at parent_dir/subfolder/subfolder.md
+            # URL is base_url/subfolder#filename
+            parent_url = f"https://developer.harness.io{base_url}/{subfolder}"
+            fragment = filename.lower().replace(" ", "-")
+            return f"{parent_url}#{fragment}"
+        else:
+            # Fallback if structure is unexpected
+            filename = content_parts[-1]
+            fragment = filename.lower().replace(" ", "-")
+            return f"https://developer.harness.io{base_url}#{fragment}"
 
-    # Regular file (module_folder already includes "docs/" prefix)
-    page_path = file_path.replace(f"{module_folder}/", "").replace(".md", "")
+    # Regular file - strip module folder prefix
+    if file_path.startswith(module_folder + "/"):
+        page_path = file_path[len(module_folder) + 1:].replace(".md", "")
+    else:
+        # Fallback: strip docs/ prefix and module folder name
+        page_path = file_path
+        if page_path.startswith("docs/"):
+            page_path = page_path[5:]  # Remove "docs/" prefix
+        # Now strip module folder name
+        folder_name = module_folder.split("/")[-1]
+        if page_path.startswith(folder_name + "/"):
+            page_path = page_path[len(folder_name) + 1:]
+
+    # Remove .md extension if still present
+    page_path = page_path.replace(".md", "")
 
     # Apply duplicate segment rule
     parts = page_path.split("/")
