@@ -9,6 +9,42 @@ helpdocs_is_published: true
 redirect_from:
   - /docs/platform/authentication/multiple-identity-providers
   - /docs/platform/authentication/authentication-overview
+keywords:
+  - authentication
+  - Harness authentication
+  - SSO
+  - single sign-on
+  - SAML
+  - SAML SSO
+  - LDAP
+  - OAuth
+  - identity provider
+  - password policy
+  - password strength
+  - password expiration
+  - two-factor authentication
+  - 2FA
+  - session timeout
+  - account lockout
+  - failed login
+  - login security
+  - access control
+  - authentication methods
+  - multiple identity providers
+  - vanity URL
+  - domain whitelist
+  - email domain restrictions
+  - audit logs
+  - authentication audit
+  - login attempts
+  - SAML provider
+  - OAuth providers
+tags:
+  - Authentication
+  - Security
+  - SSO
+  - Access Control
+  - Account Settings
 ---
 
 Authentication in Harness controls who can access your account and how. The first layer of Harness access control includes:

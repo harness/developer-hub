@@ -6,6 +6,34 @@ helpdocs_topic_id: mlpksc7s6c
 helpdocs_category_id: fe0577j8ie
 helpdocs_is_private: false
 helpdocs_is_published: true
+keywords:
+  - OIDC
+  - OpenID Connect
+  - OIDC SSO
+  - OIDC authentication
+  - OIDC single sign-on
+  - OpenID Connect provider
+  - OIDC configuration
+  - authorization code flow
+  - OIDC vanity URL
+  - OIDC user provisioning
+  - OIDC group provisioning
+  - OIDC authorization
+  - group claim
+  - ID token
+  - OIDC discovery
+  - OIDC callback
+  - redirect URI
+  - OIDC endpoints
+  - token endpoint
+  - authorization endpoint
+  - userinfo endpoint
+tags:
+  - Authentication
+  - SSO
+  - OIDC
+  - OpenID Connect
+  - Identity Provider
 ---
 
 import Tabs from '@theme/Tabs';

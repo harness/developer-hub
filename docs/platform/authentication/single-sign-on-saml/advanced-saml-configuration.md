@@ -2,6 +2,23 @@
 title: Advanced SAML configuration
 description: This document explains advanced SAML configuration.
 sidebar_position: 6
+keywords:
+  - SAML
+  - SSO
+  - single sign-on
+  - SAML configuration
+  - encrypted SAML assertions
+  - SAML encryption
+  - Harness local login
+  - identity provider
+  - SAML authentication
+  - default landing page
+  - SAML fallback
+tags:
+  - Authentication
+  - SAML
+  - SSO
+  - Security
 ---
 
 import SCIMurl from '/docs/platform/shared/scimurl.md'

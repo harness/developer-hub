@@ -2,6 +2,24 @@
 title: Keycloak
 description: Connect Keycloak to Harness with SAML to sign in with existing credentials, and optionally sync groups for access control.
 sidebar_position: 5
+keywords:
+  - Keycloak
+  - SAML
+  - SSO
+  - single sign-on
+  - Keycloak SAML
+  - Keycloak authentication
+  - identity provider
+  - SAML client
+  - Keycloak SSO
+  - JIT provisioning
+  - just-in-time provisioning
+  - SAML metadata
+tags:
+  - Authentication
+  - SAML
+  - SSO
+  - Keycloak
 ---
 
 import SCIMurl from '/docs/platform/shared/scimurl.md'

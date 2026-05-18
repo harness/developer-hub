@@ -6,6 +6,33 @@ helpdocs_topic_id: rb33l4x893
 helpdocs_category_id: fe0577j8ie
 helpdocs_is_private: false
 helpdocs_is_published: true
+keywords:
+  - OAuth
+  - OAuth 2.0
+  - OAuth SSO
+  - OAuth authentication
+  - OAuth single sign-on
+  - public OAuth providers
+  - GitHub OAuth
+  - Google OAuth
+  - Bitbucket OAuth
+  - GitLab OAuth
+  - LinkedIn OAuth
+  - Microsoft Entra ID OAuth
+  - Azure OAuth
+  - OAuth login
+  - third-party authentication
+  - OAuth domain restriction
+  - local login
+  - OAuth lockout prevention
+  - identity provider
+  - OAuth configuration
+tags:
+  - Authentication
+  - SSO
+  - OAuth
+  - OAuth 2.0
+  - Public OAuth Providers
 ---
 
 Harness supports Single Sign-On (SSO) with OAuth 2.0 identity providers, such as GitHub, Bitbucket, GitLab, LinkedIn, Google, and Microsoft Entra ID. This integration allows you to use an OAuth 2.0 provider to authenticate your Harness Users.

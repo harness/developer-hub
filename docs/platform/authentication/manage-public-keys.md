@@ -2,6 +2,32 @@
 title: Manage public keys
 description: Generate, add, and delete GPG and SSH public keys in your Harness user profile to verify commit authenticity.
 sidebar_position: 16
+keywords:
+  - GPG key
+  - SSH key
+  - public key management
+  - commit verification
+  - commit signing
+  - verified commits
+  - GPG key generation
+  - SSH key generation
+  - RSA key
+  - GPG keygen
+  - ssh-keygen
+  - git commit signing
+  - authenticated commits
+  - GNU Privacy Guard
+  - PGP key
+  - SSH authentication
+  - Harness user profile
+  - manage keys
+  - delete GPG key
+  - delete SSH key
+tags:
+  - Authentication
+  - Security
+  - GPG
+  - SSH
 ---
 
 When you add a GNU Privacy Guard (GPG) or Secure Shell (SSH) public key to your Harness user profile, Harness uses it to verify that actions like <a href="/docs/code-repository/work-in-repos/signing-commits" target="_blank">signing commits</a> actually come from you. This gives your team confidence that commits are authentic and untampered.

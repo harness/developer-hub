@@ -2,6 +2,30 @@
 title: Microsoft Entra ID
 description: Configure Microsoft Entra ID as a SAML SSO provider in Harness.
 sidebar_position: 3
+keywords:
+  - Microsoft Entra ID
+  - Azure AD
+  - Azure Active Directory
+  - SAML
+  - SSO
+  - single sign-on
+  - Microsoft Entra SAML
+  - Azure SAML
+  - Azure SSO
+  - identity provider
+  - IdP
+  - SAML authorization
+  - group claims
+  - user attributes
+  - federation metadata
+  - Azure enterprise application
+  - Microsoft authentication
+tags:
+  - Authentication
+  - SAML
+  - SSO
+  - Microsoft Entra ID
+  - Azure
 ---
 
 You can use Microsoft Entra ID as a SAML identity provider for Harness, allowing users to log in with their existing Microsoft credentials and optionally sync Entra ID groups to Harness user groups for automatic access control.

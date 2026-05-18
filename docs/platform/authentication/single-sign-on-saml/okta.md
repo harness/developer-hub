@@ -2,6 +2,28 @@
 title: Okta
 description: Use Okta as an SAML SSO provider to let your users log into Harness with their Okta credentials.
 sidebar_position: 2
+keywords:
+  - Okta
+  - SAML
+  - SSO
+  - single sign-on
+  - Okta SAML
+  - Okta SSO
+  - identity provider
+  - IdP
+  - Okta authentication
+  - SAML authorization
+  - group attribute statements
+  - Okta app integration
+  - SAML metadata
+  - Okta groups
+  - JIT provisioning
+  - just-in-time provisioning
+tags:
+  - Authentication
+  - SAML
+  - SSO
+  - Okta
 ---
 
 import SCIMurl from '/docs/platform/shared/scimurl.md'

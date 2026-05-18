@@ -6,6 +6,34 @@ helpdocs_topic_id: ipsux8n7gm
 helpdocs_category_id: fe0577j8ie
 helpdocs_is_private: false
 helpdocs_is_published: true
+keywords:
+  - 2FA
+  - two factor authentication
+  - 2FA setup
+  - enable 2FA
+  - enforce 2FA
+  - multi-factor authentication
+  - MFA
+  - authenticator app
+  - 2FA QR code
+  - 2FA secret key
+  - TOTP
+  - time-based one-time password
+  - 2FA reset
+  - reset 2FA
+  - 2FA recovery
+  - account security
+  - two-step verification
+  - 2FA enforcement
+  - 2FA configuration
+  - user 2FA
+  - account-wide 2FA
+tags:
+  - Authentication
+  - Security
+  - 2FA
+  - Multi-Factor Authentication
+  - Account Security
 ---
 
 Two-factor authentication (2FA) adds a second verification step when you log in to Harness. After you enter your password, Harness prompts you for a time-based code from an authenticator app on your phone. This protects your account even if your password is compromised.

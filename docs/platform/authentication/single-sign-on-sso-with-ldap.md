@@ -6,6 +6,35 @@ helpdocs_topic_id: 142gh64nux
 helpdocs_category_id: fe0577j8ie
 helpdocs_is_private: false
 helpdocs_is_published: true
+keywords:
+  - LDAP
+  - LDAP SSO
+  - LDAP authentication
+  - LDAP single sign-on
+  - Active Directory SSO
+  - LDAP configuration
+  - LDAP directory
+  - Bind DN
+  - LDAP user sync
+  - directory service
+  - LDAP server
+  - secure LDAP
+  - LDAP ports
+  - ldapsearch
+  - LDAP query
+  - Base DN
+  - search filter
+  - user attributes
+  - group membership
+  - LDAP authorization
+  - Windows Active Directory
+  - LDAP bind operation
+tags:
+  - Authentication
+  - SSO
+  - LDAP
+  - Active Directory
+  - Directory Services
 ---
 
 Harness supports Single Sign-On (SSO) with LDAP implementations, including Active Directory and OpenLDAP. Integrating Harness with your LDAP directory enables you to log your LDAP users into Harness as part of Harness' SSO infrastructure.

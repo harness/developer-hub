@@ -2,6 +2,29 @@
 title: OneLogin
 description: This document explains how you can use OneLogin as a SAML identity provider for Harness.
 sidebar_position: 4
+keywords:
+  - OneLogin SAML
+  - OneLogin SSO
+  - OneLogin single sign-on
+  - SAML
+  - SSO
+  - single sign-on
+  - identity provider
+  - OneLogin authentication
+  - OneLogin authorization
+  - SAML integration
+  - OneLogin Harness integration
+  - OneLogin roles
+  - SAML metadata
+  - OneLogin configuration
+  - OneLogin setup
+  - OneLogin IdP
+  - SAML assertion
+tags:
+  - Authentication
+  - SAML
+  - SSO
+  - OneLogin
 ---
 
 import SCIMurl from '/docs/platform/shared/scimurl.md'

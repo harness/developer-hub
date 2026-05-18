@@ -7,6 +7,25 @@ helpdocs_category_id: fe0577j8ie
 helpdocs_is_private: false
 helpdocs_is_published: true
 canonical_url: https://www.harness.io/blog/general-availability-harness-developer-hub-hdh
+keywords:
+  - switch account
+  - switch Harness account
+  - multiple accounts
+  - account switching
+  - switch between accounts
+  - default account
+  - re-authentication
+  - switch account authentication
+  - multiple Harness accounts
+  - change Harness account
+  - switch workspace
+  - user profile
+  - account settings
+tags:
+  - Authentication
+  - Account Management
+  - User Profile
+  - Multi-Account
 ---
 
 If you belong to more than one Harness account, you may need to switch between accounts to manage resources or configure settings in a different account. Instead of signing out and back in, you can 
