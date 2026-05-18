@@ -21,7 +21,7 @@ import TabItem from '@theme/TabItem';
 
 This tutorial walks you through creating a fully functional Docker registry in Harness Artifact Registry using [Terraform](https://www.terraform.io/), an open-source infrastructure-as-code tool that lets you define cloud resources in configuration files instead of clicking through a UI.
 
-Instead of creating registries by hand in the Harness console, you write a few short configuration files and run a single command. The result is the same (a working Docker registry) but the setup is now version-controlled, repeatable, and auditable.
+Instead of creating registries by hand in the Harness console, you write a few short configuration files and run a single command. The result is the same (a working Docker registry), but the setup is now version-controlled, repeatable, and auditable.
 
 **What you will build**
 
@@ -702,7 +702,7 @@ All three steps are complete. Verify the end-to-end flow by pulling a Docker ima
    The pull path is `pkg.harness.io/<account_id>/<registry_identifier>/<image>:<tag>`. It does **not** include the org or project segments, even though they appear in `space_ref`. This matches the `virtual_registry_url` printed in the Terraform outputs. If you also want to copy the exact command Harness recommends, open the registry in the UI and select **Setup Client**.
    :::
 
-   On the first pull, the request flows through the chain: virtual registry, upstream proxy, Docker Hub. The image is cached in Harness. Subsequent pulls are served directly from the cache.
+   On the first pull, the request flows through the chain: virtual registry, then upstream proxy, then Docker Hub. The image is cached in Harness. Subsequent pulls are served directly from the cache.
 
 3. **Verify in the Harness UI**: navigate to **Artifact Registry** in your project. You should see:
    - **my-docker** listed as a **Virtual** registry with **dockerhub-proxy** shown as its upstream.
@@ -759,7 +759,7 @@ Destroying a registry permanently deletes all cached artifacts in it. Make sure 
 
 You now have a Terraform-managed Docker registry with a Docker Hub upstream proxy. From here, attach more upstream proxies to the same virtual registry, or replicate this pattern for other package types such as Helm, Maven, npm, or PyPI.
 
-- [Harness Terraform Provider: `harness_platform_har_registry`](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_har_registry): Full resource reference and additional configuration options.
+- [Harness Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_har_registry): Full reference for `harness_platform_har_registry` and additional configuration options.
 - [Create an Artifact Registry (UI)](/docs/artifact-registry/manage-registries/create-registry): Create registries through the Harness console instead of Terraform.
 - [Create an upstream proxy (UI)](/docs/artifact-registry/manage-registries/upstream-proxy): Configure upstream proxies through the Harness console.
 - [Artifact Registry overview](/docs/artifact-registry/get-started/overview): Understand the full capabilities of Harness Artifact Registry.
