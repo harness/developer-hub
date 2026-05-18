@@ -1,44 +1,53 @@
 ---
-title: Migrate Artifacts to Harness Artifact Registry
+title: Migrate artifacts to Harness Artifact Registry
 description: Learn how to migrate artifacts to Harness Artifact Registry using the Harness CLI.
 sidebar_label: Migrate Artifacts
-sidebar_position: 2
+sidebar_position: 1
 keywords:
   - artifact migration
   - artifact registry migration
   - artifact registry cli
 tags:
-  - artifact registry cli
-  - artifact registry migration
+  - artifact-registry
+  - artifact-registry-cli
+  - artifact-registry-migration
 ---
 
-In this guide, we will learn how to migrate artifacts to Harness Artifact Registry from other artifact registries/servers.
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-## Prerequisites
+This guide walks you through migrating artifacts to Harness Artifact Registry from other artifact registries and servers using the Harness CLI.
 
-Before starting the migration, ensure you have:
+---
 
-1. **Harness CLI installed**: Install the [Harness CLI v1 (hc)](/docs/platform/automation/cli/install#v1.0.0-hc--installation) and authenticate to your Harness account. Ensure you're using the latest version.
-2. **Source registry access**: Valid credentials (username and API token) for your source artifact registry (e.g., Nexus)
-3. **Destination registries created**: Create the target registries in Harness Artifact Registry before migration. Review [Artifact Registry Best Practices](/docs/artifact-registry/ar-best-practices/) for guidance on registry setup and configuration.
-4. **Permissions**: Ensure you have the necessary permissions to create and manage artifact registries in your Harness account. See [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) for more information on configuring access control.
+## Before you begin
 
-## Step 1: Create Target Registries in Harness
+Make sure you have the following:
+
+- **Harness CLI installed:** Install the [Harness CLI v1 (hc)](/docs/platform/automation/cli/install#v1.0.0-hc--installation) and authenticate to your Harness account. Use the latest version.
+- **Source registry access:** Valid credentials (username and API token) for your source artifact registry (for example, Nexus).
+- **Destination registries created:** Create the target registries in Harness Artifact Registry before migration. Go to [Artifact Registry best practices](/docs/artifact-registry/ar-best-practices/) to review guidance on registry setup and configuration.
+- **Permissions:** Permissions to create and manage artifact registries in your Harness account. Go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) to configure access control.
+
+---
+
+## Step 1: Create target registries in Harness
 
 Before migrating, create the destination registries in Harness Artifact Registry:
 
-1. Navigate to **Artifact Registry** in your Harness project
-2. Click **New Registry** for each registry you want to migrate to
-3. Configure the registry type, name, and settings
-4. Note the registry identifier for use in the migration configuration
+1. Navigate to **Artifact Registry** in your Harness project.
+2. Select **New Registry** for each registry you want to migrate to.
+3. Configure the registry type, name, and settings.
+4. Note the registry identifier for use in the migration configuration.
 
-## Step 2: Prepare the Migration Configuration File
+---
 
-### Supported Artifact Types
+## Step 2: Prepare the migration configuration file
+
+### Supported artifact types
 
 The migration tool supports the following artifact types:
 
-| Artifact Type | Description |
+| Artifact type | Description |
 |---------------|-------------|
 | `DOCKER` | Docker container images |
 | `HELM` | OCI-compliant Helm charts |
@@ -52,17 +61,17 @@ The migration tool supports the following artifact types:
 | `GO` | Go modules |
 | `CONDA` | Conda packages |
 
-### Configuration Structure
+### Configuration structure
 
-Create a YAML configuration file (e.g., `migration-config.yaml`) that defines your migration settings.
+Create a YAML configuration file (for example, `migration-config.yaml`) that defines your migration settings.
 
-:::info Important Configuration Requirements
-- Both source and destination endpoints **must use HTTPS** (`https://`)
-- The destination endpoint must always be `https://pkg.harness.io`
+:::info Important configuration requirements
+- Both source and destination endpoints **must use HTTPS** (`https://`).
+- The destination endpoint must always be `https://pkg.harness.io`.
 - Use **API tokens** (not passwords) for authentication credentials.
 :::
 
-Here's the configuration structure:
+The following example shows the configuration structure:
 
 ```yaml
 version: 1.0.0
@@ -91,42 +100,47 @@ mappings:
   - artifactType: HELM
     sourceRegistry: helm-local
     destinationRegistry: harness-helm-reg
-    // highlight-next-line
-    sourcePackageHostname: https://registry.example.com  # Optional: override source hostname which is available for docker and helm artifacts.
+    # highlight-next-line
+    sourcePackageHostname: https://registry.example.com  # Optional: override source hostname for Docker and Helm artifacts
   - artifactType: MAVEN
     sourceRegistry: maven-releases
     destinationRegistry: harness-maven-reg
 ```
 
-### Configuration Parameters
+### Configuration parameters
 
-#### Source Configuration
+#### Source configuration
 
-- **endpoint**: Full HTTPS URL of your source registry
-- **type**: Source registry type (e.g., `NEXUS` - refer to your source registry documentation for the correct type value)
-- **credentials.username**: Username for source registry authentication
-- **credentials.password**: API token for source registry (**important**: use API token, not user password). You can reference environment variables using `${VARIABLE_NAME}` syntax (e.g., `${SOURCE_PASSWORD}`)
-- **insecure**: Set to `true` to skip SSL certificate verification (use with caution)
+The source block configures the connection to your existing registry:
 
-#### Destination Configuration
+- **endpoint:** Full HTTPS URL of your source registry.
+- **type:** Source registry type (for example, `NEXUS`). Refer to your source registry documentation for the correct type value.
+- **credentials.username:** Username for source registry authentication.
+- **credentials.password:** API token for source registry (**important**: use API token, not user password). You can reference environment variables using `${VARIABLE_NAME}` syntax (for example, `${SOURCE_PASSWORD}`).
+- **insecure:** Set to `true` to skip SSL certificate verification (use with caution).
 
-- **endpoint**: Always `https://pkg.harness.io` for Harness Artifact Registry
-- **type**: Always `HAR` for Harness
-- **credentials.username**: Your Harness username
-- **credentials.password**: Harness authentication token. You can reference environment variables using `${VARIABLE_NAME}` syntax (e.g., `${HARNESS_TOKEN}`)
+#### Destination configuration
+
+The destination block points to Harness Artifact Registry:
+
+- **endpoint:** Always `https://pkg.harness.io` for Harness Artifact Registry.
+- **type:** Always `HAR` for Harness.
+- **credentials.username:** Your Harness username.
+- **credentials.password:** Harness authentication token. You can reference environment variables using `${VARIABLE_NAME}` syntax (for example, `${HARNESS_TOKEN}`).
 
 #### Mappings
 
 Each mapping defines how artifacts are migrated from source to destination:
 
-- **artifactType**: Type of artifact (see supported types above)
-- **sourceRegistry**: Repository name/ID in your source registry
-- **destinationRegistry**: Registry identifier in Harness (must be created beforehand)
-- **sourcePackageHostname** (optional): Override the source hostname for Docker and Helm artifacts
+- **artifactType:** Type of artifact (see supported types table above).
+- **sourceRegistry:** Repository name or ID in your source registry.
+- **destinationRegistry:** Registry identifier in Harness (must be created beforehand).
+- **sourcePackageHostname** (optional): Override the source hostname for Docker and Helm artifacts.
 
-### Configuration Best Practices
+### Configuration best practices
 
 1. **Use environment variables** for sensitive credentials:
+
    ```yaml
    source:
      credentials:
@@ -138,15 +152,17 @@ Each mapping defines how artifacts are migrated from source to destination:
        password: ${HARNESS_TOKEN}
    ```
 
-2. **Use API tokens**, not passwords, for authentication
+2. **Use API tokens**, not passwords, for authentication.
 
-3. **Always use HTTPS** (`https://`) for both source and destination endpoints
+3. **Always use HTTPS** (`https://`) for both source and destination endpoints.
 
-4. **Start with low concurrency** (1-2) for initial testing, then increase for production migrations
+4. **Start with low concurrency** (1-2) for initial testing, then increase for production migrations.
 
-5. **Test with a small registry** before migrating large repositories
+5. **Test with a small registry** before migrating large repositories.
 
-## Step 3: Run the Migration
+---
+
+## Step 3: Run the migration
 
 Execute the migration using the Harness CLI:
 
@@ -154,7 +170,7 @@ Execute the migration using the Harness CLI:
 hc registry migrate --config migration-config.yaml --verbose
 ```
 
-### Available Flags
+### Available flags
 
 | Flag | Description | Default |
 |------|-------------|---------|
@@ -164,48 +180,66 @@ hc registry migrate --config migration-config.yaml --verbose
 | `--pkg-url` | Base URL for the package API (overrides config) | - |
 | `-v, --verbose` | Enable verbose logging | `false` |
 
-### Example Commands
+### Example commands
 
-**Basic migration:**
+Basic migration:
+
 ```bash
 hc registry migrate --config migration-config.yaml
 ```
 
-**Migration with custom concurrency:**
+Migration with custom concurrency:
+
 ```bash
 hc registry migrate --config migration-config.yaml --concurrency 10
 ```
 
-**Migration with overwrite enabled:**
+Migration with overwrite enabled:
+
 ```bash
 hc registry migrate --config migration-config.yaml --overwrite
 ```
 
-**Migration with verbose logging:**
+Migration with verbose logging:
+
 ```bash
 hc registry migrate --config migration-config.yaml --verbose
 ```
-
-## Troubleshooting
-
-If you encounter issues during migration:
-
-- **Authentication errors**: Verify you're using API tokens (not passwords) and that credentials have appropriate permissions
-- **Connection failures**: Ensure the source endpoint URL is correct, uses HTTPS, and is accessible from your network
-- **Missing artifacts**: Check verbose logs for errors and verify that destination registries exist before starting migration
-
-
-For additional help, run `hc registry migrate --help` or contact Harness Support.
 
 :::note
 The migration command executes immediately upon running. Features like dry-run preview and failure recovery modes are planned for future releases.
 :::
 
+---
 
+## Troubleshooting
 
-## Next Steps
+<Troubleshoot
+  issue="Authentication errors during artifact migration to Harness Artifact Registry"
+  mode="docs"
+  fallback="Verify you are using API tokens (not passwords) and that credentials have appropriate permissions to access both source and destination registries."
+/>
+
+<Troubleshoot
+  issue="Connection failures when migrating artifacts with the Harness CLI"
+  mode="docs"
+  fallback="Ensure the source endpoint URL is correct, uses HTTPS, and is accessible from your network. If using a self-signed certificate, set insecure: true in the configuration (not recommended for production)."
+/>
+
+<Troubleshoot
+  issue="Missing artifacts after migration to Harness Artifact Registry"
+  mode="docs"
+  fallback="Run the migration with --verbose to check logs for errors. Verify that all destination registries exist before starting migration and that the artifact type mappings are correct."
+/>
+
+For additional help, run `hc registry migrate --help` or contact Harness Support.
+
+---
+
+## Next steps
 
 After successful migration:
-- Update your CI/CD pipelines to use Harness Artifact Registry
-- Configure [upstream proxies](/docs/artifact-registry/manage-registries/configure-registry#set-proxy-for-registry) if needed
-- Set up [webhooks](/docs/artifact-registry/manage-registries/ar-webhooks) for automation
+
+- Update your CI/CD pipelines to use Harness Artifact Registry. Go to [Artifact Registry and CD](/docs/artifact-registry/platform-integrations/cd-ar-integrations) to configure pipeline integrations.
+- Go to [Configure registries](/docs/artifact-registry/manage-registries/configure-registry) to set up upstream proxies if needed.
+- Go to [Webhooks](/docs/artifact-registry/manage-registries/ar-webhooks) to configure automation for your registries.
