@@ -171,7 +171,7 @@ In the **Password** field, provide one of the following authentication credentia
 **For Bitbucket Cloud:**
 
 * **API Token** (recommended): Use an [API token](https://support.atlassian.com/bitbucket-cloud/docs/access-tokens/) with your username. API tokens are the recommended authentication method for Bitbucket Cloud. See [Create an API token](#create-an-api-token) for instructions.
-* **Access Token**: Use an [access token](https://support.atlassian.com/bitbucket-cloud/docs/access-tokens/) with your username. If you use an access token, the **Username** must be `x-token-auth`.
+* **Access Token**: Use an [access token](https://support.atlassian.com/bitbucket-cloud/docs/access-tokens/) with your username. If you use an access token, the **Username** must be `x-bitbucket-api-token-auth`.
 * **App Password** (deprecated): App Passwords are deprecated and will stop working after June 9, 2026. Migrate to API tokens. See [Migrate from App Passwords to API tokens](#migrate-from-app-passwords-to-api-tokens).
 
 **For Bitbucket Data Center (On-Prem):**
