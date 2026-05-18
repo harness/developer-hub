@@ -1,8 +1,8 @@
 ---
-title: Create Docker Registries Using Terraform
-description: Provision a Harness Artifact Registry virtual registry, an upstream proxy to Docker Hub, and link them — all as infrastructure as code with the Harness Terraform provider.
+title: Create Docker registries using Terraform
+description: Provision a Harness Artifact Registry virtual registry, an upstream proxy to Docker Hub, and link them as infrastructure as code with the Harness Terraform provider.
 sidebar_label: Create Docker Registries with Terraform
-sidebar_position: 2
+sidebar_position: 1
 keywords:
   - terraform
   - infrastructure as code
@@ -19,14 +19,14 @@ tags:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This tutorial walks you through creating a fully functional Docker registry in Harness Artifact Registry using [Terraform](https://www.terraform.io/) — an open-source infrastructure-as-code tool that lets you define cloud resources in configuration files instead of clicking through a UI.
+This tutorial walks you through creating a fully functional Docker registry in Harness Artifact Registry using [Terraform](https://www.terraform.io/), an open-source infrastructure-as-code tool that lets you define cloud resources in configuration files instead of clicking through a UI.
 
-Instead of creating registries by hand in the Harness console, you write a few short configuration files and run a single command. The result is the same — a working Docker registry — but the setup is now version-controlled, repeatable, and auditable.
+Instead of creating registries by hand in the Harness console, you write a few short configuration files and run a single command. The result is the same (a working Docker registry) but the setup is now version-controlled, repeatable, and auditable.
 
-**What you'll build**
+**What you will build**
 
-- A **virtual registry** — the URL your team uses to pull and push Docker images.
-- An **upstream proxy** — a caching layer that connects to Docker Hub, so the first time someone pulls a public image (like `nginx` or `alpine`), it is fetched from Docker Hub and cached in Harness. Every pull after that is served from the cache.
+- A **virtual registry**, the URL your team uses to pull and push Docker images.
+- An **upstream proxy**, a caching layer that connects to Docker Hub, so the first time someone pulls a public image (like `nginx` or `alpine`), it is fetched from Docker Hub and cached in Harness. Every pull after that is served from the cache.
 - A **link** between them, so pulls from your virtual registry automatically resolve through Docker Hub when needed.
 
 ```text
@@ -47,18 +47,22 @@ Instead of creating registries by hand in the Harness console, you write a few s
   └─────────────────────────┘
 ```
 
-## Prerequisites
+---
 
-Before you begin, make sure you have the following:
+## Before you begin
 
-- **A Harness account** with Artifact Registry enabled. [Sign up](https://app.harness.io/auth/#/signup) if you don't have one.
-- **Terraform v1.5.0 or later** installed on your machine. See [Install Terraform](https://developer.hashicorp.com/terraform/install).
-- **Docker** installed on your machine (used to verify the registry at the end). See [Install Docker](https://docs.docker.com/get-docker/).
-- **A Harness API key** — a Personal Access Token (PAT) or Service Account Token. Generate one in the Harness UI under **My Profile → + API Key → + Token**. This is how Terraform authenticates with Harness.
-- **Your project identifiers** — three values:
-  - **Account ID** — visible in your Harness URL or under **Account Settings → Overview**.
-  - **Organization ID** — the identifier of your Harness organization (for example, `default`).
-  - **Project ID** — the identifier of the project where you want to create the registries.
+Make sure you have the following:
+
+- **A Harness account** with Artifact Registry enabled. [Sign up](https://app.harness.io/auth/#/signup) if you do not have one.
+- **Terraform v1.5.0 or later** installed on your machine. Go to [Install Terraform](https://developer.hashicorp.com/terraform/install) to download it.
+- **Docker** installed on your machine (used to verify the registry at the end). Go to [Install Docker](https://docs.docker.com/get-docker/) to set it up.
+- **A Harness API key:** a Personal Access Token (PAT) or Service Account Token. Generate one in the Harness UI under **My Profile > + API Key > + Token**. This is how Terraform authenticates with Harness.
+- **Your project identifiers**, three values:
+  - **Account ID:** visible in your Harness URL or under **Account Settings > Overview**.
+  - **Organization ID:** the identifier of your Harness organization (for example, `default`).
+  - **Project ID:** the identifier of the project where you want to create the registries.
+
+---
 
 ## Overview
 
@@ -79,18 +83,20 @@ Each directory contains these files:
 | `versions.tf` | Declares the Terraform version and the Harness provider dependency. |
 | `providers.tf` | Configures how Terraform authenticates with Harness. |
 | `variables.tf` | Defines the input parameters (account ID, API key, registry name, and so on). |
-| `main.tf` | The core resource definition — where the registry is actually created. |
+| `main.tf` | The core resource definition, where the registry is actually created. |
 | `outputs.tf` | Values exported after creation (registry URL, identifier, and so on) for use in later steps. |
 
-You don't need to memorize this — each file is shown in full below.
+You do not need to memorize this. Each file is shown in full below.
 
-## Step 1: Create the Virtual Registry
+---
+
+## Step 1: Create the virtual registry
 
 The virtual registry is the entry point for your team's Docker operations. In this first step, you create it without any upstream proxy attached. The proxy connection is made in Step 3.
 
 Create a directory called `01-virtual-registry` and add the following five files.
 
-**`versions.tf`** — declares which provider to download. The [Harness provider](https://registry.terraform.io/providers/harness/harness/latest) is a plugin that knows how to talk to the Harness API.
+**`versions.tf`** declares which provider to download. The [Harness provider](https://registry.terraform.io/providers/harness/harness/latest) is a plugin that knows how to talk to the Harness API.
 
 ```hcl
 terraform {
@@ -105,7 +111,7 @@ terraform {
 }
 ```
 
-**`providers.tf`** — configures the Harness provider with your credentials. The values come from the variables in the next file.
+**`providers.tf`** configures the Harness provider with your credentials. The values come from the variables in the next file.
 
 ```hcl
 provider "harness" {
@@ -119,7 +125,7 @@ provider "harness" {
 Artifact Registry is a Harness Next Gen feature. Always use `platform_api_key` (not the legacy `api_key`) when configuring the provider.
 :::
 
-**`variables.tf`** — the inputs Terraform needs. You provide the values when you run `terraform apply`.
+**`variables.tf`** defines the inputs Terraform needs. You provide the values when you run `terraform apply`.
 
 <details>
 <summary>Show <code>variables.tf</code></summary>
@@ -167,7 +173,7 @@ variable "virtual_upstream_proxies" {
 
 </details>
 
-**`main.tf`** — the core of Step 1; it defines the virtual registry resource.
+**`main.tf`** is the core of Step 1; it defines the virtual registry resource.
 
 ```hcl
 resource "harness_platform_har_registry" "virtual" {
@@ -193,9 +199,9 @@ What each attribute does:
 | `space_ref` | Tells Harness which project to create the registry in. Format: `account_id/org_id/project_id`. |
 | `package_type` | The type of artifacts this registry holds. `DOCKER` for Docker images. Other options include `HELM`, `MAVEN`, `NPM`, `PYPI`, `GO`, `NUGET`, and `CARGO`. |
 | `config.type` | `VIRTUAL` means this is a client-facing registry (as opposed to `UPSTREAM`, which is a proxy). |
-| `config.upstream_proxies` | A list of upstream proxy identifiers to route through. Empty for now — populated in Step 3. |
+| `config.upstream_proxies` | A list of upstream proxy identifiers to route through. Empty for now; populated in Step 3. |
 
-**`outputs.tf`** — values printed after Terraform finishes; later steps can reference them.
+**`outputs.tf`** prints values after Terraform finishes; later steps can reference them.
 
 ```hcl
 output "virtual_registry_identifier" {
@@ -211,7 +217,7 @@ output "import_command_for_step3" {
 }
 ```
 
-The `import_command_for_step3` output generates a command you need in Step 3. Terraform prints it for you — save it for later.
+The `import_command_for_step3` output generates a command you need in Step 3. Terraform prints it for you; save it for later.
 
 Now run Terraform. First, set your credentials as environment variables in your terminal.
 
@@ -277,15 +283,17 @@ import_command_for_step3    = "terraform import harness_platform_har_registry.vi
 
 **Save the `import_command_for_step3` value.** You need it in Step 3.
 
-At this point, the virtual registry exists in Harness but can't resolve external images yet — it has no upstream proxy. That comes next.
+At this point, the virtual registry exists in Harness but cannot resolve external images yet because it has no upstream proxy. That comes next.
 
-## Step 2: Create the Upstream Proxy
+---
 
-The upstream proxy connects to Docker Hub and caches images locally in Harness. This is an independent resource — it does not depend on the virtual registry you created in Step 1.
+## Step 2: Create the upstream proxy
+
+The upstream proxy connects to Docker Hub and caches images locally in Harness. This is an independent resource that does not depend on the virtual registry you created in Step 1.
 
 Create a directory called `02-upstream-proxy` and add the following five files.
 
-**`versions.tf`** — same as Step 1:
+**`versions.tf`** is the same as Step 1:
 
 ```hcl
 terraform {
@@ -300,7 +308,7 @@ terraform {
 }
 ```
 
-**`providers.tf`** — same as Step 1:
+**`providers.tf`** is the same as Step 1:
 
 ```hcl
 provider "harness" {
@@ -310,7 +318,7 @@ provider "harness" {
 }
 ```
 
-**`variables.tf`** — adds variables for Docker Hub authentication. By default the proxy uses anonymous access (no Docker Hub account needed). You can optionally enable authenticated access for higher rate limits.
+**`variables.tf`** adds variables for Docker Hub authentication. By default the proxy uses anonymous access (no Docker Hub account needed). You can optionally enable authenticated access for higher rate limits.
 
 <details>
 <summary>Show <code>variables.tf</code></summary>
@@ -382,9 +390,9 @@ variable "dockerhub_secret_space_path" {
 
 </details>
 
-The `validation` blocks are guardrails — if you enable authenticated mode but forget to provide a username or secret, Terraform stops and tells you what is missing instead of creating a broken proxy.
+The `validation` blocks are guardrails. If you enable authenticated mode but forget to provide a username or secret, Terraform stops and tells you what is missing instead of creating a broken proxy.
 
-**`main.tf`** — defines the upstream proxy resource:
+**`main.tf`** defines the upstream proxy resource:
 
 ```hcl
 resource "harness_platform_har_registry" "upstream_proxy" {
@@ -412,9 +420,9 @@ resource "harness_platform_har_registry" "upstream_proxy" {
 }
 ```
 
-**What is the `dynamic "auth"` block?** This is a Terraform pattern for conditional configuration. It says: if anonymous mode is on, skip the `auth` block entirely; if it is off, include it with the Docker Hub credentials. The same configuration file works for both anonymous and authenticated setups — you just flip a variable.
+**What is the `dynamic "auth"` block?** This is a Terraform pattern for conditional configuration. If anonymous mode is on, the `auth` block is skipped entirely; if it is off, the block includes the Docker Hub credentials. The same configuration file works for both anonymous and authenticated setups. You just flip a variable.
 
-**`outputs.tf`** — exposes the proxy identifier and URL for later steps:
+**`outputs.tf`** exposes the proxy identifier and URL for later steps:
 
 ```hcl
 output "upstream_registry_identifier" {
@@ -461,8 +469,8 @@ $env:TF_VAR_dockerhub_secret_identifier="your-harness-secret-id"
 </Tabs>
 
 :::note How to set up Docker Hub credentials in Harness
-1. In **Docker Hub**: go to **Account Settings → Security → New Access Token**. A read-only token is sufficient.
-2. In **Harness**: go to your project, then **Project Settings → Secrets → + New Secret → Text**. Paste the Docker Hub token as the value. Note the secret's **identifier** — that is the value for `dockerhub_secret_identifier`.
+1. In **Docker Hub**: go to **Account Settings > Security > New Access Token**. A read-only token is sufficient.
+2. In **Harness**: go to your project, then **Project Settings > Secrets > + New Secret > Text**. Paste the Docker Hub token as the value. Note the secret identifier, which is the value for `dockerhub_secret_identifier`.
 :::
 
 Type `yes` when prompted. You should see:
@@ -476,15 +484,17 @@ upstream_registry_identifier = "dockerhub-proxy"
 upstream_registry_url        = "https://pkg.harness.io/abc123xyz/dockerhub-proxy"
 ```
 
-## Step 3: Link the Upstream Proxy to the Virtual Registry
+---
+
+## Step 3: Link the upstream proxy to the virtual registry
 
 Now connect the two pieces. This step updates the virtual registry from Step 1 to route requests through the upstream proxy from Step 2.
 
-**Why is this a separate step?** The virtual registry already exists (you created it in Step 1). Step 3 needs to take ownership of that existing resource. In Terraform, this is done with `terraform import` — a command that tells Terraform "this resource already exists in Harness, start managing it from here."
+**Why is this a separate step?** The virtual registry already exists (you created it in Step 1). Step 3 needs to take ownership of that existing resource. In Terraform, this is done with `terraform import`, a command that tells Terraform "this resource already exists in Harness, start managing it from here."
 
 Create a directory called `03-link-virtual` and add the following six files.
 
-**`versions.tf`** — same as previous steps:
+**`versions.tf`** is the same as previous steps:
 
 ```hcl
 terraform {
@@ -499,7 +509,7 @@ terraform {
 }
 ```
 
-**`providers.tf`** — same as previous steps:
+**`providers.tf`** is the same as previous steps:
 
 ```hcl
 provider "harness" {
@@ -509,7 +519,7 @@ provider "harness" {
 }
 ```
 
-**`data.tf`** — reads the output from Step 2's Terraform state, so this step knows the upstream proxy's identifier without you having to type it again.
+**`data.tf`** reads the output from Step 2's Terraform state, so this step knows the upstream proxy identifier without you having to type it again.
 
 ```hcl
 data "terraform_remote_state" "upstream" {
@@ -529,7 +539,7 @@ The path `../02-upstream-proxy/terraform.tfstate` assumes you kept the directory
 Reading a peer step's local `terraform.tfstate` only works on a single workstation. For shared use or CI, configure a remote backend (S3, Terraform Cloud, GCS, etc.) on Step 2, then point this `terraform_remote_state` data source at the same backend instead of a local path. Never commit `*.tfstate` files to source control.
 :::
 
-**`variables.tf`** — same shape as before; `virtual_registry_identifier` must match Step 1.
+**`variables.tf`** has the same shape as before; `virtual_registry_identifier` must match Step 1.
 
 <details>
 <summary>Show <code>variables.tf</code></summary>
@@ -570,7 +580,7 @@ variable "virtual_registry_description" {
 
 </details>
 
-**`main.tf`** — redefines the virtual registry, now with the upstream proxy attached:
+**`main.tf`** redefines the virtual registry, now with the upstream proxy attached:
 
 ```hcl
 resource "harness_platform_har_registry" "virtual" {
@@ -587,9 +597,9 @@ resource "harness_platform_har_registry" "virtual" {
 }
 ```
 
-The only change from Step 1 is the `upstream_proxies` line — instead of an empty list, it now references the proxy identifier from Step 2.
+The only change from Step 1 is the `upstream_proxies` line. Instead of an empty list, it now references the proxy identifier from Step 2.
 
-**`outputs.tf`** — also surfaces the proxies that ended up wired in:
+**`outputs.tf`** also surfaces the proxies that ended up wired in:
 
 ```hcl
 output "virtual_registry_identifier" {
@@ -607,7 +617,7 @@ output "upstream_proxies_configured" {
 
 This step requires one extra command compared to the previous steps. Since the virtual registry already exists (created in Step 1), you need to **import** it so Terraform updates it instead of trying to create a duplicate.
 
-1. Make sure Step 2 is complete — its state file must exist:
+1. Make sure Step 2 is complete. Its state file must exist:
 
    ```bash
    ls ../02-upstream-proxy/terraform.tfstate
@@ -664,9 +674,11 @@ This step requires one extra command compared to the previous steps. Since the v
    upstream_proxies_configured  = "dockerhub-proxy"
    ```
 
-   `0 added, 1 changed` means Terraform recognized the existing registry and updated it to include the upstream proxy — exactly what we wanted.
+   `0 added, 1 changed` means Terraform recognized the existing registry and updated it to include the upstream proxy.
 
-## Verify the Setup
+---
+
+## Verify the setup
 
 All three steps are complete. Verify the end-to-end flow by pulling a Docker image through your new registry.
 
@@ -687,10 +699,10 @@ All three steps are complete. Verify the end-to-end flow by pulling a Docker ima
    ```
 
    :::tip Pull path format
-   The pull path is `pkg.harness.io/<account_id>/<registry_identifier>/<image>:<tag>` — it does **not** include the org or project segments, even though they appear in `space_ref`. This matches the `virtual_registry_url` printed in the Terraform outputs. If you also want to copy the exact command Harness recommends, open the registry in the UI and click **Setup Client**.
+   The pull path is `pkg.harness.io/<account_id>/<registry_identifier>/<image>:<tag>`. It does **not** include the org or project segments, even though they appear in `space_ref`. This matches the `virtual_registry_url` printed in the Terraform outputs. If you also want to copy the exact command Harness recommends, open the registry in the UI and select **Setup Client**.
    :::
 
-   On the first pull, the request flows through the chain: virtual registry → upstream proxy → Docker Hub. The image is cached in Harness. Subsequent pulls are served directly from the cache.
+   On the first pull, the request flows through the chain: virtual registry, upstream proxy, Docker Hub. The image is cached in Harness. Subsequent pulls are served directly from the cache.
 
 3. **Verify in the Harness UI**: navigate to **Artifact Registry** in your project. You should see:
    - **my-docker** listed as a **Virtual** registry with **dockerhub-proxy** shown as its upstream.
@@ -699,7 +711,9 @@ All three steps are complete. Verify the end-to-end flow by pulling a Docker ima
 
 If you see all three, your Terraform-provisioned registry is fully operational.
 
-## Troubleshoot
+---
+
+## Troubleshooting
 
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
@@ -712,7 +726,7 @@ import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 <Troubleshoot
   issue="`terraform import` for a Harness Artifact Registry fails with 'not found'"
   mode="docs"
-  fallback="The import path must be exactly `account_id/org_id/project_id/registry_identifier` — no leading or trailing slashes and no `https://` prefix. Re-run with the corrected path."
+  fallback="The import path must be exactly `account_id/org_id/project_id/registry_identifier` with no leading or trailing slashes and no `https://` prefix. Re-run with the corrected path."
 />
 
 <Troubleshoot
@@ -721,7 +735,9 @@ import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
   fallback="Use a Next Gen API key with `platform_api_key` (not the legacy `api_key`), confirm the token has permission to manage registries in the target project, and verify `space_ref` matches `account_id/org_id/project_id` exactly."
 />
 
-## Clean Up
+---
+
+## Clean up
 
 To remove everything, destroy the resources in reverse order:
 
@@ -737,11 +753,13 @@ Type `yes` at each prompt.
 Destroying a registry permanently deletes all cached artifacts in it. Make sure you have alternative sources for any images before proceeding.
 :::
 
-## Next Steps
+---
+
+## Next steps
 
 You now have a Terraform-managed Docker registry with a Docker Hub upstream proxy. From here, attach more upstream proxies to the same virtual registry, or replicate this pattern for other package types such as Helm, Maven, npm, or PyPI.
 
-- [Harness Terraform Provider — `harness_platform_har_registry`](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_har_registry)
-- [Create an Artifact Registry (UI)](/docs/artifact-registry/manage-registries/create-registry)
-- [Create an Upstream Proxy (UI)](/docs/artifact-registry/manage-registries/upstream-proxy)
-- [Artifact Registry Overview](/docs/artifact-registry/get-started/overview)
+- [Harness Terraform Provider: `harness_platform_har_registry`](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_har_registry): Full resource reference and additional configuration options.
+- [Create an Artifact Registry (UI)](/docs/artifact-registry/manage-registries/create-registry): Create registries through the Harness console instead of Terraform.
+- [Create an upstream proxy (UI)](/docs/artifact-registry/manage-registries/upstream-proxy): Configure upstream proxies through the Harness console.
+- [Artifact Registry overview](/docs/artifact-registry/get-started/overview): Understand the full capabilities of Harness Artifact Registry.
