@@ -28,7 +28,8 @@ def load_module_config(module_code: str) -> dict:
 
 def get_file_list(module_folder: str, exclude_folders: List[str]) -> List[str]:
     """Get all .md files in the module folder, excluding specified folders"""
-    docs_path = Path("docs") / module_folder
+    # module_folder already includes "docs/" prefix (e.g., "docs/continuous-delivery")
+    docs_path = Path(module_folder)
     if not docs_path.exists():
         raise FileNotFoundError(f"Module folder not found: {docs_path}")
 
@@ -89,16 +90,16 @@ def derive_url(file_path: str, module_config: dict) -> str:
         parent_dir = parts[0]
         content_file = parts[1].replace(".md", "")
 
-        # Parent page URL
-        page_path = parent_dir.replace(f"docs/{module_folder}/", "")
+        # Parent page URL (module_folder already includes "docs/" prefix)
+        page_path = parent_dir.replace(f"{module_folder}/", "")
         parent_url = f"https://developer.harness.io{base_url}/{page_path}"
 
         # Fragment from filename (lowercase, replace spaces with hyphens)
         fragment = content_file.split("/")[-1].lower().replace(" ", "-")
         return f"{parent_url}#{fragment}"
 
-    # Regular file
-    page_path = file_path.replace(f"docs/{module_folder}/", "").replace(".md", "")
+    # Regular file (module_folder already includes "docs/" prefix)
+    page_path = file_path.replace(f"{module_folder}/", "").replace(".md", "")
 
     # Apply duplicate segment rule
     parts = page_path.split("/")
@@ -293,42 +294,61 @@ def calculate_score(violations: List[Dict]) -> int:
     completion_score = 100
     editorial_score = 100
 
-    # Completion penalties
+    # Count violations by rule for capping
+    violation_counts = {}
     for v in violations:
         rule = v["rule"]
-        if rule == "FM-2":
-            completion_score -= 15
-        elif rule == "C-1":
-            completion_score -= 5
-        elif rule == "C-2":
-            completion_score = max(0, completion_score - 5)  # Cap at 5 violations
-        elif rule == "T-1":
-            completion_score -= 5
+        violation_counts[rule] = violation_counts.get(rule, 0) + 1
 
-    # Editorial penalties
-    for v in violations:
-        rule = v["rule"]
-        severity = v.get("severity", None)
+    # Completion penalties (with caps at 5 violations per rule)
+    if "FM-2" in violation_counts:
+        completion_score -= 15  # Single violation penalty
+    if "C-1" in violation_counts:
+        completion_score -= 5  # Single violation penalty
+    if "C-2" in violation_counts:
+        # -5 per violation, cap at 5 violations
+        completion_score -= min(violation_counts["C-2"], 5) * 5
+    if "T-1" in violation_counts:
+        completion_score -= 5  # Single violation penalty
 
-        if rule in ["FM-1", "FM-3"]:
-            editorial_score = max(0, editorial_score - 15)
-        elif rule in ["H-1", "H-3"]:
-            editorial_score = max(0, editorial_score - 5)
-        elif rule == "H-2":
-            editorial_score = max(0, editorial_score - 15)
-        elif rule in ["S-1", "S-2", "S-4"]:
-            editorial_score = max(0, editorial_score - 15)
-        elif rule in ["S-3", "S-5", "S-6", "S-7"]:
-            editorial_score = max(0, editorial_score - 5)
-        elif rule == "T-2":
-            editorial_score -= 15
-        elif rule == "T-3":
-            if severity:
+    # Editorial penalties (with caps at 5 violations per rule)
+    if "FM-1" in violation_counts:
+        editorial_score -= min(violation_counts["FM-1"], 5) * 15
+    if "FM-3" in violation_counts:
+        editorial_score -= min(violation_counts["FM-3"], 5) * 15
+    if "FM-4" in violation_counts:
+        editorial_score -= min(violation_counts["FM-4"], 5) * 15
+    if "H-1" in violation_counts:
+        editorial_score -= min(violation_counts["H-1"], 5) * 5
+    if "H-2" in violation_counts:
+        editorial_score -= min(violation_counts["H-2"], 5) * 15
+    if "H-3" in violation_counts:
+        editorial_score -= min(violation_counts["H-3"], 5) * 5
+    if "S-1" in violation_counts:
+        editorial_score -= min(violation_counts["S-1"], 5) * 15
+    if "S-2" in violation_counts:
+        editorial_score -= min(violation_counts["S-2"], 5) * 15
+    if "S-3" in violation_counts:
+        editorial_score -= min(violation_counts["S-3"], 5) * 5
+    if "S-4" in violation_counts:
+        editorial_score -= min(violation_counts["S-4"], 5) * 15
+    if "S-5" in violation_counts:
+        editorial_score -= min(violation_counts["S-5"], 5) * 5
+    if "S-6" in violation_counts:
+        editorial_score -= min(violation_counts["S-6"], 5) * 5
+    if "S-7" in violation_counts:
+        editorial_score -= min(violation_counts["S-7"], 5) * 5
+    if "T-2" in violation_counts:
+        editorial_score -= 15  # Single violation penalty
+    if "ST-1" in violation_counts:
+        editorial_score -= 5  # Single violation penalty
+
+    # T-3 with custom severity (applied per violation, not counted)
+    if "T-3" in violation_counts:
+        for v in violations:
+            if v["rule"] == "T-3":
+                severity = v.get("severity", -15)
                 editorial_score += severity  # severity is already negative
-            else:
-                editorial_score = max(0, editorial_score - 15)
-        elif rule == "ST-1":
-            editorial_score -= 5
 
     # Floor at 0
     completion_score = max(0, completion_score)
