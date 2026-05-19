@@ -6,7 +6,7 @@ export const codeModuleTheme = { ...DEFAULT_MODULE_THEME, moduleKey: "code", mod
 export const codeData: Horizon = {
   
   Now: {
-    description: "Q4 2025, November 2025-January 2026",
+    description: "Q2 2026, May 2026 - July 2026",
     feature: [
       {
         tag: [{ value: "Code Quality" }],
@@ -14,12 +14,7 @@ export const codeData: Horizon = {
         description: "Display a coverage overlay in the code view and show a PR status summary for overall and changed code coverage—helping teams track gaps, enforce thresholds, and improve test completeness.",
       },
       {
-        tag: [{value: "AI"}, { value: "Developer Experience" }],
-        title: "AI Code Assist",
-        description: "AI Code Assist adds Claude-powered support directly to Harness Code pull requests. Developers can request code reviews, summaries, and inline explanations through simple commands to accelerate and improve the review process."
-      },
-      {
-        tag: [{ value: "AI" }, { value: "Developer Experience" }],
+        tag: [{ value: "AI" }, { value: "Developer Experience" }, { value: "beta" }],
         title: "Automated Code Review",
         description: "AI-powered code review suggestions to improve developer efficiency.",
       },
@@ -30,43 +25,53 @@ export const codeData: Horizon = {
       },
       {
         tag: [{ value: "Developer Experience" }],
-        title: "Language Breakdown",
-        description: "Developers will now be able to see a list of all the languages within the selected repository.",
+        title: "Support Harness Code Repo for Config Files",
+        description: "Enable Harness Code repositories to natively store and manage configuration files used across the Harness platform, improving integration and workflow efficiency.",
       },
       {
-        tag: [{ value: "Developer Experience" }],
-        title: "Linked Repositories",
-        description: "Interact directly with your external Git repositories from within the Harness platform — enabling native experiences like code coverage overlays, autonomous code maintenance, and in-context insights across builds and pull requests." 
+        tag: [{ value: "Reliability" }, { value: "Platform" }],
+        title: "Disaster Recovery for Harness Code",
+        description: "Implement disaster recovery capabilities for Harness Code repositories, ensuring business continuity and data resilience.",
+      }
+    ],
+  },
+  Next: {
+    description: "Q3 2026, August 2026 - October 2026",
+    feature: [
+      {
+        tag: [{ value: "Code Quality" }, { value: "Insights" }],
+        title: "Unified Coverage Dashboard for Cross-Pipeline Insights",
+        description: "Visualize code coverage metrics aggregated across multiple pipelines and repositories, providing comprehensive insights into test coverage trends and gaps.",
       },
+      {
+        tag: [{ value: "Code Quality" }, { value: "Developer Experience" }],
+        title: "Surface Flaky Tests and Coverage in PR Comments and Status Checks",
+        description: "Automatically display flaky test detection results and code coverage metrics directly in pull request comments and status checks, giving developers immediate visibility into test reliability and coverage impact before merging.",
+      },
+      {
+        tag: [{ value: "AI" }, { value: "Code Quality" }],
+        title: "AI-Generated Tests",
+        description: "Generate unit tests from repository code using AI, guided by coverage results to target untested areas and help improve overall code coverage.",
+      },
+    ],
+  },
+  Later: {
+    description: "November 2026 & beyond",
+    feature: [
       {
         tag: [{ value: "Developer Experience" }],
         title: "Compare Tags Page",
         description: "Compare two release tags to see the delta in commits, PRs, artifacts, and deployments—helping validate changes and support audit traceability.",
       },
       {
-        tag: [{ value: "Developer Experience" }],
-        title: "Support for Forked Repositories",
-        description: "Harness Code Repository will support repository forking, allowing developers to create isolated copies of repositories for experimentation, collaboration, or contributing back via pull requests — without impacting the main repository."
-      },
-      {
         tag: [{ value: "Integrations" }],
         title: "AutoLink References for External Issue Trackers",
         description: "Support for AutoLink references will allow Harness Code to automatically hyperlink commit messages and PR titles to external issue trackers like Jira, improving traceability across tools."
-      }
-    ],
-  },
-  Next: {
-    description: "Q1 2026, February 2026 - May 2026",
-    feature: [
-      {
-        tag: [{value: "AI"}, { value: "Developer Experience" }],
-        title: "AI Code Assist",
-        description: "Support Google Gemini in Harness AI Code Assist."
       },
       {
-        tag: [{ value: "AI" }, { value: "Code Quality" }],
-        title: "AI-Generated Tests",
-        description: "Generate unit tests from repository code using AI, guided by coverage results to target untested areas and help improve overall code coverage.",
+        tag: [{value: "AI"}, { value: "Developer Experience" }],
+        title: "AI Code Assist - Google Gemini Support",
+        description: "Support Google Gemini in Harness AI Code Assist."
       },
       {
         tag: [{ value: "Developer Experience" }, { value: "Reliability" }],
@@ -77,12 +82,7 @@ export const codeData: Horizon = {
         tag: [{ value: "Developer Experience" }],
         title: "Code Templates",
         description: "Create templates of repositories to quickly generate a collection of repositories in a project.",
-      }
-    ],
-  },
-  Later: {
-    description: "Q2 2026, May 2026 & beyond",
-    feature: [
+      },
       {
         tag: [{ value: "Developer Experience" }],
         title: "Repo Insights",
@@ -118,6 +118,21 @@ export const codeData: Horizon = {
   Released: {
     description: "What has been released",
     feature: [
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "Language Breakdown",
+        description: "View a list of all programming languages used within a repository, helping teams understand technology stack composition.",
+      },
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "Linked Repositories",
+        description: "Interact directly with external Git repositories from within the Harness platform, enabling native experiences like code coverage overlays, autonomous code maintenance, and in-context insights across builds and pull requests."
+      },
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "Support for Forked Repositories",
+        description: "Fork repositories to create isolated copies for experimentation, collaboration, or contributing back via pull requests without impacting the main repository."
+      },
       {
         tag: [{ value: "Developer Experience" }],
         title: "User Group Support",
