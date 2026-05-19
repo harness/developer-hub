@@ -903,6 +903,98 @@ You can match only the aud or sub. To map to a particular organization and proje
 </details>
 
 </TabItem>
+<TabItem value="broker" label="Custom (Credential Broker)">
+
+:::info
+
+This feature is controlled by the feature flag `CDS_AWS_CUSTOM_CREDENTIAL_BROKER_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable it on your account.
+
+:::
+
+Select **Custom (Credential Broker)** to fetch AWS credentials dynamically from a third-party credential management solution. This allows you to integrate with external credential brokers that provide temporary AWS credentials on demand.
+
+With this option, Harness calls a configured endpoint to retrieve AWS credentials (access key, secret key, session token, and expiration) at runtime. The credentials are cached until they expire, reducing the frequency of broker calls.
+
+#### Configure credential broker settings
+
+To use the credential broker, you must configure the following fields:
+
+- **Broker URL**: The HTTP/HTTPS endpoint of your credential broker service that returns AWS credentials. This endpoint must be accessible from the Harness Delegate.
+
+- **Signed Secret**: A Harness secret used to sign the broker payload and generate the JWT token. The generated JWT token is sent as a Bearer token in the Authorization header when calling the broker endpoint.
+
+- **Broker Payload (JSON)**: Optional JSON payload used to generate the JWT token for broker authentication. Supports Harness expressions such as `<+pipeline.identifier>` and `<+pipeline.sequenceId>`.
+
+#### Field mapping
+
+The **Field Mapping** section defines how to extract AWS credential fields from the broker's JSON response using JSONPath expressions. The broker can return credentials in any JSON structure, and you map the response fields to the expected AWS credential fields.
+
+Configure the following JSONPath expressions:
+
+- **Access Key Path**: JSONPath expression to extract the AWS access key ID (e.g., `$.result.creds.access_key_id`)
+- **Secret Key Path**: JSONPath expression to extract the AWS secret access key (e.g., `$.result.creds.secret_access_key`)
+- **Session Token Path**: JSONPath expression to extract the session token (e.g., `$.result.creds.session_token`)
+- **Expiration Path**: JSONPath expression to extract the credential expiration time in UTC (e.g., `$.result.creds.expiration`)
+
+All JSONPath expressions must start with `$` and use dot notation (e.g., `$.field.nested_field`).
+
+The **Access Key Path** and **Secret Key Path** are required. **Session Token Path** and **Expiration Path** are optional.
+
+If the broker response includes an expiration time, Harness automatically caches the credentials and refreshes them 5 minutes before expiration. If no expiration is provided, Harness fetches new credentials for every request.
+
+<details>
+<summary>Example: Broker response and field mapping</summary>
+
+Here is an example of a broker response and the corresponding field mapping configuration:
+
+**Broker response:**
+
+```json
+{
+  "status": "ok",
+  "result": {
+    "cloud": "aws",
+    "creds": {
+      "access_key_id": "AKIAIOSFODNN7EXAMPLE",
+      "secret_access_key": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+      "session_token": "AQoDYXdzEJr...",
+      "expiration": "2026-05-11T18:08:10Z"
+    }
+  }
+}
+```
+
+**Field mapping configuration:**
+
+- Access Key Path: `$.result.creds.access_key_id`
+- Secret Key Path: `$.result.creds.secret_access_key`
+- Session Token Path: `$.result.creds.session_token`
+- Expiration Path: `$.result.creds.expiration`
+
+</details>
+
+#### Additional settings
+
+- **Timeout (seconds)**: The maximum time (in seconds) to wait for a response from the broker endpoint. If the broker doesn't respond within this time, the connection fails. Default: 30 seconds.
+
+- **Skip TLS Verification**: When enabled, Harness skips TLS certificate verification when calling the broker endpoint. Use this option only if your broker uses self-signed or internal certificates. Default: Disabled.
+
+#### Network requirements
+
+The credential broker endpoint must be accessible from the Harness Delegate. If your broker is behind a firewall or in a private network, configure your network to allow outbound HTTPS connections from the delegate to the broker endpoint.
+
+#### Supported expressions
+
+The **Broker Payload** field supports the following Harness expressions:
+
+- Pipeline-level expressions (e.g., `<+pipeline.identifier>`, `<+pipeline.sequenceId>`)
+- Account and organization identifiers
+
+#### Test connection behavior
+
+When you test the connector connection, Harness validates that the broker endpoint is reachable. However, expression resolution only occurs during pipeline execution. If your broker payload includes expressions, they are resolved only when the pipeline runs, not during the connector test.
+
+</TabItem>
 </Tabs>
 
 :::warning
