@@ -246,28 +246,28 @@ You can now reference Git tags when specifying both the pipeline YAML and input 
 To reference a Git tag for input sets, use the `$tag:` format in the **Input Set Source** field (or `inputSetBranchName` property in trigger YAML):
 
 - **`$tag:<tag-name>`** - References a specific Git tag. For example, `$tag:v1.0.0` or `$tag:release-2024.01`
-- **`$tag:<expression>`** - References a Git tag using an expression that resolves at runtime to the tag name. For example, `$tag:(<+trigger.tag>)` resolves to the Git tag from the trigger payload
+- **`$tag:<expression>`** - References a Git tag using an expression that resolves at runtime to the tag name. For example, `$tag:<+trigger.tag>` resolves to the Git tag from the trigger payload
 
 **Example use cases:**
 
 - Use `$tag:v1.0.0` to always fetch an input set from a specific release tag
-- Use `$tag:(<+trigger.tag>)` in a webhook trigger to fetch input sets from the same tag that triggered the pipeline
+- Use `$tag:<+trigger.tag>` in a webhook trigger to fetch input sets from the same tag that triggered the pipeline
 
 #### Using Git tags for pipeline YAML
 
 Similarly, you can reference Git tags when specifying the pipeline source location. Use the `$tag:` format in the **Pipeline Reference Branch** field (or `pipelineBranchName` property in trigger YAML):
 
 - **`$tag:<tag-name>`** - References a specific Git tag. For example, `$tag:v1.0.0` or `$tag:release-2024.01`
-- **`$tag:<expression>`** - References a Git tag using an expression that resolves at runtime to the tag name. For example, `$tag:(<+trigger.tag>)` resolves to the Git tag from the trigger payload
+- **`$tag:<expression>`** - References a Git tag using an expression that resolves at runtime to the tag name. For example, `$tag:<+trigger.tag>` resolves to the Git tag from the trigger payload
 
 **Example use cases:**
 
 - Use `$tag:v1.0.0` to execute a pipeline from a specific release tag
-- Use `$tag:(<+trigger.tag>)` in a webhook trigger to load both the pipeline and input sets from the same tag that triggered the execution
+- Use `$tag:<+trigger.tag>` in a webhook trigger to load both the pipeline and input sets from the same tag that triggered the execution
 
 :::tip
 
-When using Git tag-based triggers, you can load both the pipeline YAML and input sets from the same tag by using `$tag:(<+trigger.tag>)` for both `pipelineBranchName` and `inputSetBranchName`. This ensures that your pipeline executions use versioned configurations that match your Git tags, enabling reliable rollbacks and release management.
+When using Git tag-based triggers, you can load both the pipeline YAML and input sets from the same tag by using `$tag:<+trigger.tag>` for both `pipelineBranchName` and `inputSetBranchName`. This ensures that your pipeline executions use versioned configurations that match your Git tags, enabling reliable rollbacks and release management.
 
 :::
 
@@ -290,7 +290,7 @@ The `pipelineBranchName` property specifies the branch or tag from which to load
 
 **Supported values:**
 - Branch name: `main`, `develop`, `feature-branch`
-- Git tag (using `$tag:` prefix): `$tag:v1.0.0`, `$tag:(<+trigger.tag>)`
+- Git tag (using `$tag:` prefix): `$tag:v1.0.0`, `$tag:<+trigger.tag>`
 - Expression: `<+trigger.sourceBranch>`
 
 #### Using `inputSetBranchName` for input set source
@@ -299,7 +299,7 @@ The `inputSetBranchName` property specifies the branch or tag from which to load
 
 **Supported values:**
 - Branch name: `main`, `develop`, `feature-branch`
-- Git tag (using `$tag:` prefix): `$tag:v1.0.0`, `$tag:(<+trigger.tag>)`
+- Git tag (using `$tag:` prefix): `$tag:v1.0.0`, `$tag:<+trigger.tag>`
 - Expression: `<+trigger.sourceBranch>`
 
 #### Example trigger YAML configurations
@@ -364,8 +364,8 @@ trigger:
           connectorRef: myGithubConnector
           autoAbortPreviousExecutions: false
           repoName: myRepo
-  pipelineBranchName: $tag:(<+trigger.tag>)
-  inputSetBranchName: $tag:(<+trigger.tag>)
+  pipelineBranchName: $tag:<+trigger.tag>
+  inputSetBranchName: $tag:<+trigger.tag>
   inputSetRefs:
     - production-input-set
 ```
@@ -421,7 +421,7 @@ The following rules apply when using these properties in your trigger YAML:
    - **Correct pipeline and branch/tag:** The pipeline YAML is loaded successfully.
    - **Pipeline exists, but not in the specified branch/tag:** An error is thrown.
    - **Invalid branch/tag name or expression:** An error is thrown.
-4. **Tag format:** When using tags, you must use the `$tag:` prefix (for example, `$tag:v1.0.0` or `$tag:(<+trigger.tag>)`).
+4. **Tag format:** When using tags, you must use the `$tag:` prefix (for example, `$tag:v1.0.0` or `$tag:<+trigger.tag>`).
 
 #### `inputSetBranchName` behavior
 
@@ -433,13 +433,13 @@ The following rules apply when using these properties in your trigger YAML:
    - **Input set does not exist:** An error is thrown.
    - **Invalid branch/tag name or expression:** An error is thrown.
 4. **Multiple input sets:** When multiple input sets are referenced in `inputSetRefs`, all input sets are fetched from the branch or tag specified in `inputSetBranchName`.
-5. **Tag format:** When using tags, you must use the `$tag:` prefix (for example, `$tag:v1.0.0` or `$tag:(<+trigger.tag>)`).
+5. **Tag format:** When using tags, you must use the `$tag:` prefix (for example, `$tag:v1.0.0` or `$tag:<+trigger.tag>`).
 
 :::tip
 
 **For PR-based triggers:** Use the expression `<+trigger.sourceBranch>` to automatically fetch the input set from the source branch of the pull request.
 
-**For tag-based triggers:** Use `$tag:(<+trigger.tag>)` for both `pipelineBranchName` and `inputSetBranchName` to load versioned pipeline configurations from Git tags, enabling reliable rollbacks and release management.
+**For tag-based triggers:** Use `$tag:<+trigger.tag>` for both `pipelineBranchName` and `inputSetBranchName` to load versioned pipeline configurations from Git tags, enabling reliable rollbacks and release management.
 
 :::
 
