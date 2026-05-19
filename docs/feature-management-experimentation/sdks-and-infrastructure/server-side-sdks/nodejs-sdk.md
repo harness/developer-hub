@@ -773,6 +773,26 @@ const treatment = await client.getTreatment('user_id', 'my-feature-flag-coming-f
 
 The SDK in consumer mode connects to Redis to function, using URL `redis://localhost:6379/0` by default. You can override this URL and other Redis connection parameters with the SDK `storage.options` configuration object. The available parameters are shown below.
 
+:::warning[Environment variable overrides]
+The Node.js SDK reads the following environment variables and uses them to override the corresponding `storage.options` settings of the internal ioredis client instance:
+
+- `REDIS_HOST` overrides `host`
+- `REDIS_PORT` overrides `port`
+- `REDIS_DB` overrides `db`
+- `REDIS_PASS` overrides `pass`
+- `REDIS_URL` overrides `url`
+
+If your application uses these environment variables for other purposes (for example, connecting a separate Redis client to a different instance), the SDK may connect to an unintended Redis server. To avoid conflicts, ensure these variables are not set in the SDK process environment.
+:::
+
+:::tip[Troubleshooting Redis connectivity]
+The SDK's `debug` option does not include logs from the underlying ioredis client. To troubleshoot Redis connection issues, enable ioredis debug logging by setting the `DEBUG` environment variable:
+
+```bash
+DEBUG=ioredis:* node app.js
+```
+:::
+
 | **Configuration** | **Description** | **Default value** |
 | --- | --- | --- |
 | host | Hostname where the Redis instance is. | `localhost` |
