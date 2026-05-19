@@ -106,6 +106,85 @@ Dynamically executing pipelines support usage of following features:-
 4. Secrets and connectors
 5. OPA policy enforcement
 
+## Dynamic Stage Generation/Execution
+
+If you wish to generate pipeline stages/steps on the fly (when the pipeline is running) and append them to the executing pipeline, you can use a Dynamic Stage like the pipeline shown below.
+
+![](./static/dynamic-stage-exec-ex.png)
+
+You will notice that this stage has a "Source Location" option as shown above. This source location should point to the dynamically generated YAML that is being generated as the pipeline runs. In the example below, the stage before the dynamic stage is generating pipeline YAML and then outputting it to the variable that the dynamic stage is consuming to run the new pipeline.
+
+### Example Pipeline with Dynamic Stage
+
+This example demonstrates how to transform and execute dynamically generated YAML within a running pipeline:
+
+```yaml
+pipeline:
+  name: Dynamic Stage Example
+  identifier: Dynamic_Stage_Example
+  projectIdentifier: <PROJECT_ID>
+  orgIdentifier: <ORG_ID>
+  stages:
+    - stage:
+        name: generate_yaml
+        identifier: generate_yaml
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: true
+            override: true
+            paths: []
+          buildIntelligence:
+            enabled: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: <K8S_CONNECTOR>
+              namespace: default
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: Plugin
+                  name: Generate_Pipeline_YAML
+                  identifier: Generate_Pipeline_YAML
+                  spec:
+                    connectorRef: <DOCKER_CONNECTOR>
+                    image: <PLUGIN_IMAGE>:<IMAGE_TAG>
+                    settings:
+                      source_yaml: <SOURCE_YAML_PATH>
+                      options: "--repo-connector <REPO_CONNECTOR> --docker-connector <DOCKER_CONNECTOR> --build-branch <BUILD_BRANCH>"
+    - stage:
+        name: execute_generated_yaml
+        identifier: execute_generated_yaml
+        description: ""
+        type: Dynamic
+        spec:
+          source: <+pipeline.stages.generate_yaml.spec.execution.steps.Generate_Pipeline_YAML.output.outputVariables.PLUGIN_HARNESS_YAML>
+        tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: <REPO_CONNECTOR>
+        build: <+input>
+        sparseCheckout: []
+        resources:
+          limits:
+            cpu: 1600m
+            memory: 2000Mi
+  tags: {}
+```
+
+In this example:
+- The `generate_yaml` stage uses a plugin to generate Harness pipeline YAML dynamically
+- The plugin outputs the generated YAML to the variable `PLUGIN_HARNESS_YAML`
+- The `execute_generated_yaml` dynamic stage consumes this output variable via the `source` field
+- When the pipeline executes, the dynamic stage appends and runs the newly generated stages/steps
+
 ## Limitations
 
 Dynamically executing pipelines doesn't support following features:-
