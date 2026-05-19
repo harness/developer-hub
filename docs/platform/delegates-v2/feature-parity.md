@@ -94,6 +94,14 @@ The transition from legacy delegates to Delegate 3.x is controlled through a ser
 
 - **`CI_UNIFIED_RUNNER_REPLACE_STEP_ID_BY_TASK_ID_IN_V0_PIPELINES`**: When enabled, populates the ExecuteRequest with task IDs instead of step IDs for v0 pipelines. v1 pipelines always use task IDs regardless of this flag. When disabled, v0 pipelines use step IDs (legacy behavior).
 
+**Platform management flags:**
+
+- **`PL_ONE_CLICK_UPGRADE_DELEGATE`**: When enabled, provides one-click upgrade functionality for delegates. This feature is supported only for Kubernetes and Helm delegates. Docker delegates are not supported because upgrading would require the container to have Docker socket permissions to create a new container, and delegates do not ship with those permissions enabled by default. For Kubernetes deployments, the following requirements must be met:
+  - ClusterRoleBinding with the admin role (or at minimum, permissions to create a Job)
+  - Permission to execute shell scripts
+
+- **`PL_SHOW_DELEGATE_STATUS_CARDS`**: When enabled, controls the visibility of scoped delegate status cards in the Harness application.
+
 Feature flags are managed at the account level by Harness and are enabled as part of the closed beta program. Contact your Harness representative to discuss which flags are appropriate for your use case and testing requirements.
 
 ## CI step compatibility
