@@ -6,7 +6,7 @@ sidebar_position: 1
 
 # Test Management
 
-CI pipelines generate large volumes of test data, but most teams lack visibility and control over test health. Unstable tests block releases, failing pipelines slow delivery, and limited insight into coverage makes it hard to understand real risk.
+CI pipelines generate large volumes of test data, but most teams lack visibility and control over test health. Unstable tests block releases, resulting in failing pipelines, slow delivery and limited insights into coverage making it hard to understand real risk.
 
 Harness Test Management turns test results into a **complete test health system**. After you upload test results, Harness continuously analyzes execution history to detect flaky tests, enforce automated policies, enable safe quarantine, and provide coverage insights across builds and pull requests.
 
@@ -77,16 +77,23 @@ For **local usage**, download the binary:
 
 ```bash
 # macOS (Apple Silicon)
-curl -fsSL -o hcli "https://storage.googleapis.com/harness-ti/hcli/v0.7/hcli-darwin-arm64"
+curl -fsSL -o hcli "https://storage.googleapis.com/harness-ti/hcli/latest/hcli-darwin-arm64"
 chmod +x hcli
 
 # macOS (Intel)
-curl -fsSL -o hcli "https://storage.googleapis.com/harness-ti/hcli/v0.7/hcli-darwin-amd64"
+curl -fsSL -o hcli "https://storage.googleapis.com/harness-ti/hcli/latest/hcli-darwin-amd64"
 chmod +x hcli
 
 # Linux (amd64)
-curl -fsSL -o hcli "https://storage.googleapis.com/harness-ti/hcli/v0.7/hcli-linux-amd64"
+curl -fsSL -o hcli "https://storage.googleapis.com/harness-ti/hcli/latest/hcli-linux-amd64"
 chmod +x hcli
+
+# Linux (arm64)
+curl -fsSL -o hcli "https://storage.googleapis.com/harness-ti/hcli/latest/hcli-linux-arm64"
+chmod +x hcli
+
+# Windows (amd64)
+curl -fsSL -o hcli.exe "https://storage.googleapis.com/harness-ti/hcli/latest/hcli-windows-amd64.exe"
 ```
 
 Move to your PATH or use directly: `./hcli --help`
