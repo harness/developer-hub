@@ -5,32 +5,17 @@ export const ceModuleTheme = { ...DEFAULT_MODULE_THEME, moduleKey: "ce", moduleT
 
 export const CeData: Horizon = {
   Now: {
-    description: "Q1 2026, Feb 2026 - Apr 2026",
+    description: "Q2 2026, May 2026 - Jul 2026",
     feature: [
       {
         tag: [{ value: "Resilience Testing Platform" }],
-        title: "FIPS Compliance",
-        description: "Make the Resilience Testing module FIPS compliant.",
-      },
-      {
-        tag: [{ value: "Chaos" }],
-        title: "Support for More Azure Chaos Faults",
-        description: "Add support for Azure CosmosDB Failover and Redis Cache Reboot.",
-      },
-      {
-        tag: [{ value: "Load Testing" }],
-        title: "AI Extensions for Load Testing",
-        description: "Add MCP Server support and Ask AI support for load testing.",
-      },
-      {
-        tag: [{ value: "DR Testing" }],
-        title: "AI Extensions for DR Testing",
-        description: "Add MCP Server support and Ask AI support for DR testing.",
+        title: "Resilience Risks",
+        description: "Identify presence or absence of risks when any test is run.",
       },
       {
         tag: [{ value: "Resilience Testing Platform" }],
-        title: "Resilience Risks",
-        description: "Introduce the Risks feature for Load and DR tests.",
+        title: "Passive Risk Detection for Harness CD",
+        description: "Detect resilience risks without running either chaos or load tests using Harness CD metadata.",
       },
       {
         tag: [{ value: "Resilience Testing Platform" }],
@@ -39,18 +24,18 @@ export const CeData: Horizon = {
       },
       {
         tag: [{ value: "Resilience Testing Platform" }],
-        title: "External Secret Manager",
+        title: "External Secrets Manager",
         description: "Extend support for external secret managers like Vault for all components of the Resilience Testing module.",
       },
-    ],
-  },
-  Next: {
-    description: "Q2 2026, May 2026 - Jul 2026",
-    feature: [
       {
         tag: [{ value: "Resilience Testing Platform" }],
-        title: "Passive Risk Detection",
-        description: "Add extended support for risk detection.",
+        title: "Service Unification",
+        description: "Every resource that goes under a resilience test or a probe that runs is associated with a service. Provide Customer Service support.",
+      },
+      {
+        tag: [{ value: "Load Testing" }],
+        title: "K6 Support",
+        description: "Add native support for the K6 load testing tool.",
       },
       {
         tag: [{ value: "Resilience Testing Platform" }],
@@ -59,8 +44,43 @@ export const CeData: Horizon = {
       },
       {
         tag: [{ value: "Resilience Testing Platform" }],
-        title: "Integrated Risks Management",
-        description: "Perform all tests and measure resilience score on behalf of a service, and identify risks on behalf of a service.",
+        title: "FIPS Compliance",
+        description: "Make the Resilience Testing module FIPS compliant.",
+      },
+      {
+        tag: [{ value: "Resilience Testing Platform" }],
+        title: "OPA Support for Risks",
+        description: "Add OPA policies to mandate risk detection and assertion in CD pipelines.",
+      },
+      {
+        tag: [{ value: "Resilience Testing Platform" }],
+        title: "Auto Probe Creation",
+        description: "Create resilience probes automatically using AI for the onboarded services.",
+      },
+    ],
+  },
+  Next: {
+    description: "Q3 2026, Aug 2026 - Oct 2026",
+    feature: [
+      {
+        tag: [{ value: "Resilience Testing Platform" }],
+        title: "Passive Risk Detection for Incidents",
+        description: "Detect resilience risks without running either chaos or load tests using Incidents metadata.",
+      },
+      {
+        tag: [{ value: "Load Testing" }],
+        title: "JMeter Support",
+        description: "Add native support for the JMeter load testing tool.",
+      },
+      {
+        tag: [{ value: "DR Testing" }],
+        title: "DR Templates",
+        description: "Add out-of-the-box DR templates for achieving end-to-end DR and DR test automation.",
+      },
+      {
+        tag: [{ value: "Chaos" }],
+        title: "Extend Azure Chaos Faults",
+        description: "Add more chaos faults related to Azure PaaS.",
       },
       {
         tag: [{ value: "Resilience Testing Platform" }],
@@ -72,25 +92,20 @@ export const CeData: Horizon = {
         title: "Resilience Testing Policies",
         description: "Add support for notifications based on policies for Chaos, Load, and DR testing.",
       },
+      {
+        tag: [{ value: "DR Testing" }],
+        title: "Compliance Reporting",
+        description: "Provide reports related to DR compliance to the industry standards.",
+      },
     ],
   },
   Later: {
-    description: "H2 2026, Q3 2026 and beyond",
+    description: "H2 2026, Q4 2026 and beyond",
     feature: [
       {
         tag: [{ value: "AI" }],
-        title: "Incident Management Extensions",
-        description: "Provide AI recommendations based on incidents reported in incident management systems.",
-      },
-      {
-        tag: [{ value: "Load Testing" }],
-        title: "JMeter and Grafana K6 Support",
-        description: "Add JMeter and Grafana K6 as supported load testing frameworks.",
-      },
-      {
-        tag: [{ value: "DR Testing" }],
-        title: "DR Templates",
-        description: "Add out-of-the-box DR templates for achieving end-to-end DR and DR test automation.",
+        title: "Extended Resilience Insights",
+        description: "Provide AI recommendations based on data and events reported on the Harness Knowledge Graph.",
       },
       {
         tag: [{ value: "AI" }],
@@ -99,8 +114,23 @@ export const CeData: Horizon = {
       },
       {
         tag: [{ value: "AI" }],
-        title: "Extended Resilience Insights",
-        description: "Provide AI recommendations based on data and events reported on the Harness Knowledge Graph.",
+        title: "AI Editors Plugin Support",
+        description: "Add Resilience Test plugin support through Harness Plugin.",
+      },
+      {
+        tag: [{ value: "Resilience Testing Platform" }],
+        title: "Comprehensive Risk Profiling",
+        description: "Risk profiling and compliance reporting along with AI recommendations.",
+      },
+      {
+        tag: [{ value: "AI" }],
+        title: "Chaos Tests for Code",
+        description: "Recommend chaos tests in the code with help from code copilots.",
+      },
+      {
+        tag: [{ value: "AI" }],
+        title: "JIRA Recommendations",
+        description: "Recommend experiments based on JIRA or wiki content.",
       },
     ],
   },
@@ -109,43 +139,48 @@ export const CeData: Horizon = {
     feature: [
       {
         tag: [{ value: "Resilience Testing Platform" }],
-        title: "Resilience Testing",
-        description: "Upgraded Chaos Engineering module and renamed it as Resilience Testing.",
+        title: "Chaos NG Experience GA",
+        description: "Chaos NG experience features are now generally available, completing the transition to the new Chaos Studio. Legacy Git-based Chaos Hubs, the legacy Visual Builder, Kubernetes V1 dedicated chaos infrastructure creation, and the SLO probe type for new Kubernetes probes have been retired.",
+      },
+      {
+        tag: [{ value: "Resilience Testing Platform" }],
+        title: "Experiment Run Reports",
+        description: "Added experiment run reports in the UI, backed by a unified data extraction pipeline and a JSON API for downstream consumption.",
+      },
+      {
+        tag: [{ value: "Resilience Testing Platform" }],
+        title: "Live Logs View in Timeline",
+        description: "Integrated Harness Delegate logs and DDCI logs directly into the timeline view for in-context observability during experiment runs.",
       },
       {
         tag: [{ value: "Load Testing" }],
-        title: "Load Testing Intro - Locust",
-        description: "Introduced native load testing capability using Locust.",
+        title: "Load Testing on Linux and Machine Infrastructure",
+        description: "Extended native load testing beyond Kubernetes to Linux and machine chaos infrastructure, with load-enabled enforcement from installation to execution and live logging for load executions.",
       },
       {
         tag: [{ value: "DR Testing" }],
-        title: "DR Testing Intro",
-        description: "Introduce native DR testing capability using the constructs of pipeline steps: Chaos Fault step and Resilience Probe step.",
+        title: "Disaster Recovery Component Model",
+        description: "Added first-class DR component support with new entity, APIs (DR Test run, getVariables, DR component nodes CRUD), and DDCR execution enhancements for end-to-end DR test orchestration.",
       },
       {
         tag: [{ value: "Resilience Testing Platform" }],
-        title: "New Chaos Studio",
-        description: "Enhanced and streamlined approach to chaos experiment design with an improved end-to-end experiment creation experience, available to new customers via the CHAOS_NG_EXPERIENCE feature flag.",
+        title: "Variables and Inputs in Chaos Studio",
+        description: "Introduced user-defined variables and utility functions with CRUD support across faults, templates, probes, and actions, and migrated probe and action variables to the unified Inputs model.",
+      },
+      {
+        tag: [{ value: "Chaos" }],
+        title: "Native Chaos Faults on Linux and Windows Machine Infrastructure",
+        description: "Expanded native fault coverage beyond Kubernetes with Linux machine faults (network, API, JVM, process, service, DNS, disk fill) and native Windows network chaos faults, along with their hub templates.",
       },
       {
         tag: [{ value: "Resilience Testing Platform" }],
-        title: "Experiment-Level Probes and Actions",
-        description: "Advanced probing and action capabilities scoped at the experiment level, enabling validation and custom operations that span across all faults in an experiment.",
+        title: "Experiment Templates for Windows and Linux",
+        description: "Extended Experiment Templates beyond Kubernetes to Windows and Linux infrastructure, enabling reusable, standardized experiments across all supported infra types.",
       },
       {
         tag: [{ value: "Resilience Testing Platform" }],
-        title: "Templates for Faults, Probes, Actions, and Experiments",
-        description: "Reusable templates for faults, probes, actions, and full experiments to standardize chaos engineering practices and scale adoption across teams and applications.",
-      },
-      {
-        tag: [{ value: "Chaos integrations" }],
-        title: "APM Probes",
-        description: "Application Performance Monitoring probes to validate system health during chaos experiments, with support for Datadog, Dynatrace, New Relic, Prometheus, Splunk, AppDynamics, and GCP Monitoring.",
-      },
-      {
-        tag: [{ value: "Resilience Testing Platform" }],
-        title: "Out-of-the-Box Probe Templates",
-        description: "Pre-built command probe templates for Kubernetes, AWS, and GCP resource validation during chaos experiments, covering pod status, node health, replica counts, EC2 instance status, ECS service checks, GCP VM status, and more.",
+        title: "Resilience Risks",
+        description: "Introduced the Risks feature with risk identification UI at project, org, and account scopes, backed by a new resilience risk data model.",
       },
     ],
   },
