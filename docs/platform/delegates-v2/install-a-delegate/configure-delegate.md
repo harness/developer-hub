@@ -112,6 +112,12 @@ The INIT_SCRIPT feature allows you to execute a pre-startup script before the de
 
 For complete documentation on configuring and using init scripts, including command-line flags, environment variables, and Kubernetes deployment examples, see [Run Initialization Scripts Before Delegate Startup](../configure-init-script).
 
+## Configure Custom Certificates and mTLS
+
+Delegate 3.x supports custom certificate authorities (CAs) and mutual TLS (mTLS) authentication for secure communication in enterprise environments with self-signed certificates or strict security requirements. This capability is available starting with Delegate 3.x version 1.40.2.
+
+Go to [Configure Custom Certificates and mTLS](../custom-certs-and-mtls) to find detailed configuration instructions, including environment variables and Kubernetes deployment examples.
+
 ## Log File Configuration
 
 The delegate supports automatic log rotation and sanitization. Configure these using environment variables in your `config.env`:
