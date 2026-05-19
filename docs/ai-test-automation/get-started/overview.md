@@ -1,126 +1,133 @@
 ---
-title: Overview
+title: AI Test Automation overview
+sidebar_label: Overview
+description: Learn what Harness AI Test Automation is, how it works, and what capabilities it provides for no-code, intent-driven end-to-end testing.
 sidebar_position: 1
 pagination_prev: null
+keywords:
+  - AI test automation
+  - no-code testing
+  - intent-driven testing
+  - self-healing tests
+  - end-to-end testing
+tags:
+  - ai-test-automation
+  - overview
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-:::info 
-To enable Harness AI Test Automation in your account, contact your sales representative or reach out to the team at [ait-interest@harness.io](mailto:ait-interest@harness.io).
+:::info
+To enable Harness AI Test Automation in your account, contact your sales representative or reach out to the team at [ait-interest@harness.io](mailto:support@harness.io).
 :::
 
-**Harness AI Test Automation** is the future of software quality assurance—a generative AI-powered platform that transforms how teams create, maintain, and execute automated tests. By combining cutting-edge natural language processing, user behavior analytics, and proprietary multi-agent orchestration, Harness delivers a no-code, intent-driven testing experience that accelerates release cycles, improves test resilience, and reduces manual effort.
+Harness AI Test Automation is a generative AI-powered platform that transforms how teams create, maintain, and execute automated tests. It combines natural language processing, user behavior analytics, and multi-agent orchestration to deliver a no-code, intent-driven testing experience.
 
-## What is Harness AI Test Automation?
-Harness AI Test Automation empowers you to write automated tests in plain English using simple prompts like “add the most expensive item to the cart”. The AI foundation model interprets your intent alongside the application’s dynamic UI, making it easy for technical and non-technical users alike to author robust, end-to-end test cases—without writing any code.
-
-
-#### Key capabilities:
-
-- **No-Code Test Creation:** Capture steps automatically through the cloud or author tests with natural language AI prompts.
-- **Self-Healing Tests:** AI dynamically adjusts to UI or workflow changes, maintaining stable tests without manual patching.
-- **Environment Agnostic:** Define tests once and run across QA, staging, or production by simply switching environment parameters.
-- **Seamless Pipeline Integration:** Automate tests within your continuous integration and delivery workflows for faster, reliable feedback.
-
-
-#### Core Features
-
-- **Comprehensive Test Suites:** Organize and manage tests grouped logically for batch runs, scheduling, and notifications.
-- **Extensive Analytics:** Dashboards identify flaky tests, track failure trends, and provide insights into test execution efficiency.
-- **Reusable Tasks:** Modular components streamline complex workflows like authentication or setup sequences.
-- **Secure Execution:** Tests run isolated in Kubernetes pods with strict privacy controls, including no persistent user data.
-- **Bulk Test Creation & Roadmap Integration:** Generate tests en masse from user stories or CSV files; integration with tools like TestRail is forthcoming.
+You write automated tests in plain English using prompts like "add the most expensive item to the cart." The AI foundation model interprets your intent alongside the application dynamic UI, making it possible for both technical and non-technical users to author robust, end-to-end test cases without writing code.
 
 ---
 
-## UI Walkthrough
+## What you will learn
+
+- **Platform capabilities:** The core features that enable no-code test creation, self-healing tests, and environment-agnostic execution.
+- **How the AI works:** The stages from intent-based authoring through multi-agent execution and real-time self-healing.
+- **UI navigation areas:** What each section of the AI Test Automation interface provides.
+- **Integration model:** How AI Test Automation fits into your CI/CD pipelines.
+
+---
+
+## Core capabilities
+
+AI Test Automation provides the following capabilities:
+
+- **No-code test creation:** Capture steps automatically through the cloud or author tests with natural language AI prompts.
+- **Self-healing tests:** AI dynamically adjusts to UI or workflow changes, maintaining stable tests without manual patching.
+- **Environment agnostic:** Define tests once and run across QA, staging, or production by switching environment parameters. Go to [Application environments](/docs/ai-test-automation/test-environments/adding-application-environments) to configure environments.
+- **Pipeline integration:** Automate tests within your CI/CD workflows for faster, reliable feedback. Go to [Harness pipeline integration](/docs/ai-test-automation/integrations/harness-cd) to set up pipeline triggers.
+- **Comprehensive test suites:** Organize and manage tests grouped logically for batch runs, scheduling, and notifications. Go to [Test suites](/docs/ai-test-automation/test-suite) to configure suites.
+- **Reusable tasks:** Modular components streamline complex workflows like authentication or setup sequences. Go to [Tasks](/docs/ai-test-automation/test-authoring/creating-tests/tasks) to create and manage tasks.
+- **Secure execution:** Tests run isolated in Kubernetes pods with strict privacy controls, including no persistent user data.
+
+---
+
+## How it works
+
+Harness breaks testing into AI-powered stages:
+
+1. **Intent-based authoring:** You define tests with natural language, requiring no special coding skills.
+2. **AI interpretation:** The core AI evaluates sanitized HTML wireframes and UI screenshots, understanding context and visual structure.
+3. **Multi-agent execution:** Specialized agents (such as navigation and date handlers) orchestrate specific test tasks for precise workflows.
+4. **Real-time self-healing:** On every run, tests self-correct UI locators based on the latest page layout and element changes.
+5. **Caching and parallel runs:** Initial executions reason through intents, but subsequent runs leverage cached copilot memory to accelerate. The platform supports parallel execution of up to 100 tests.
+
+Go to [AI-powered intent testing](/docs/ai-test-automation/get-started/intent-driven) to understand the AI workflow in depth.
+
+---
+
+## UI walkthrough
+
+The following video provides a walkthrough of the AI Test Automation interface:
 
 <iframe src="https://www.loom.com/embed/fb9f3cb6346b4f708e91a529edcc1613?sid=0c2007dc-2521-48bd-80f0-456300aef1ab" width="800" height="450" frameborder="0" allowfullscreen></iframe>
 
-
-![ait overview](./static/ait.png)
-
-### Glossary
-
-**Overview**
-The Overview section provides information about the tests being performed, recent test runs, and the status of the project being opened. It provides a comprehensive view of the test automation process.
-
-**Tests**
-The Tests section enables you to create tests, view a list of tests, and see detailed information about the tests being executed, including the number of times they have passed or failed. It also offers options to edit, validate, add to test suites, and more.
-
-**Test Suites**
-The Test Suites section allows you to group tests together and run them together. You can view the summary of the suite, including the last run. This section plays a crucial role in organizing and managing tests.
-
-**Test Runs**
-The Test Runs section provides information about previous test runs, including duration and associated test suites. It allows you to view individual test runs and also view the test runs associated with test suites.
-
-**Tasks**
-The Tasks section groups steps to be executed and generates tasks. It includes options to create login tasks and general tasks.
-
-**Settings (Environment and Configuration)**
-The Settings section allows you to define environments for different test suites and test execution. It also handles configuration for more detailed execution of your AI Test Automation, enabling you to customize the test execution process.
-
-These sections of Harness AI Test Automation provide a comprehensive and organized framework for managing and executing tests.
-
-**Tunnels** 
-describes secure tunnels that connect cloud-based test runners to private or firewalled internal resources. Tunnels ensure that tests can be executed against protected environments. By establishing secure channels, users can test applications that are not accessible from the public internet.
-
-**CI-CD Integration** 
-explains how Harness AI Test Automation integrates seamlessly into continuous integration and deployment (CI-CD) pipelines. It enables automatic test triggers, flexible execution, and integrations with test management and analytics tools. The platform supports integration with popular CI-CD tools, allowing users to automate tests as part of their CI-CD workflows.
-
+![AI Test Automation interface overview](./static/ait.png)
 
 ---
 
+## Interface sections
 
-## How Does It Work?
-Harness breaks testing down into clear AI-powered stages:
+The AI Test Automation interface is organized into the following areas:
 
-- Intent-Based Authoring: Tests are defined with natural language, requiring no special coding skills.
-- AI Interpretation: The core AI evaluates sanitized HTML “wireframes” and UI screenshots, understanding context and visual structure.
-- Multi-Agent Execution: Specialized agents (like navigation and date handlers) orchestrate specific test tasks for precise workflows.
-- Real-Time Self-Healing: On every run, tests self-correct UI locators based on the latest page layout and element changes.
-- Caching and Parallel Runs: Initial executions reason through intents, but subsequent runs leverage cached “copilot memory” to accelerate, alongside parallel execution of up to 100 tests.
+- **Overview:** Displays information about tests being performed, recent test runs, and project status.
+- **Tests:** Create tests, view test lists, and see detailed execution information including pass/fail counts. Provides options to edit, validate, and add to test suites.
+- **Test Suites:** Group tests together for batch execution. View suite summaries including last run results.
+- **Test Runs:** View information about previous test runs, including duration and associated test suites.
+- **Tasks:** Group steps into reusable functions. Includes options to create login tasks and general tasks.
+- **Settings:** Define environments for different test suites and configure detailed execution parameters.
+- **Tunnels:** Establish secure connections between cloud-based test runners and private or firewalled internal resources. Go to [Testing firewall-protected apps](/docs/ai-test-automation/test-environments/testing-firewall-protected-apps) to configure tunnels.
+- **CI/CD integration:** Automate test triggers within your continuous integration and deployment pipelines. Go to [Harness pipeline integration](/docs/ai-test-automation/integrations/harness-cd) to configure pipeline integration.
 
+---
 
+## Benefits
 
-### Benefits
+| Area | What you get |
+|------|-------------|
+| **Test creation** | Empower non-technical team members to author high-quality tests with AI-assisted guidance. Reduce the time and expertise required to design and build test suites. |
+| **Test maintenance** | Cut maintenance time with AI-driven self-healing that adapts to UI and application changes. Eliminate brittle scripts by automatically updating selectors and flows when apps evolve. |
+| **Testing efficiency** | Accelerate releases with faster, more reliable execution powered by AI semantic validation and visual regression. Expand coverage through intelligent assertions and risk-based prioritization. |
+| **Pipeline integration** | Ensure continuous, automated quality checks with environment-agnostic tests and CI/CD triggers. Streamline collaboration across dev and QA with standardized workflows. |
+| **Security and scale** | Enterprise-grade security with tests running in isolated Kubernetes pods. No persistent user data. Cloud-ready architecture that scales with your needs. |
 
-1. Test Creation Benefits
-Empower non-technical team members to author high‑quality tests with AI-assisted guidance.
-Dramatically reduce the time and expertise required to design and build test suites.
-2. Test Maintenance Benefits
-Cut maintenance time with AI-driven self-healing that adapts to UI and application changes.
-Eliminate brittle scripts by automatically updating selectors and flows when apps evolve.
-3. Testing Efficiency Benefits
-Accelerate releases with faster, more reliable execution powered by AI semantic validation and visual regression.
-Expand coverage and improve accuracy through intelligent assertions and risk-based prioritization.
-4. Pipeline Integration Benefits
-Ensure continuous, automated quality checks with environment-agnostic tests and CI/CD triggers.
-Streamline collaboration across dev and QA with standardized workflows and actionable feedback.
-5. Security and Scale
-Enterprise-grade security and a robust, cloud-ready architecture that scales with your needs.
+---
 
+## Future capabilities
 
-### Future Potential
-Harness is innovating continuously with exciting upcoming capabilities:
+Harness is innovating continuously with upcoming capabilities:
 
-- Autonomous Test Generation: Automatically generate tests from real user flows and requirements.
-- Advanced AI Validation: Implement confidence scoring for nuanced assertion controls.
-- Expanded Integrations: Sync effortlessly with test management tools and external systems for full lifecycle coverage.
-- Performance Enhancements: Ongoing improvements in AI models and architecture will drive faster test execution and broader scalability.
+- **Autonomous test generation:** Automatically generate tests from real user flows and requirements.
+- **Advanced AI validation:** Implement confidence scoring for nuanced assertion controls.
+- **Expanded integrations:** Sync with test management tools and external systems for full lifecycle coverage.
+- **Performance enhancements:** Ongoing improvements in AI models and architecture to drive faster test execution and broader scalability.
 
-## Why Choose Harness AI Test Automation?
+---
+
+## Why choose Harness AI Test Automation
+
 Harness AI Test Automation transcends traditional scripted testing by dynamically reasoning across UI changes and intent, rather than relying on fragile static locators. This approach ensures:
 
-- Greater test resilience and lower failure rates
-- Faster onboarding and broader team participation
-- Improved release velocity with trustworthy automation coverage
+- Greater test resilience and lower failure rates.
+- Faster onboarding and broader team participation.
+- Improved release velocity with trustworthy automation coverage.
 
-Harness's unique balance of AI-powered adaptability and deep pipeline integration makes it the premier choice for organizations seeking smarter, scalable software testing.
+The combination of AI-powered adaptability and deep pipeline integration makes it a strong choice for organizations seeking smarter, scalable software testing.
 
-Harness AI Test Automation is more than just a testing tool—it’s an intelligent platform designed to future-proof your quality engineering, enhance team productivity, and fuel continuous innovation.
+---
 
+## Next steps
 
-
+- [Get started with AI Test Automation](/docs/ai-test-automation/get-started/quickstart): Create your first test and login task.
+- [AI-powered intent testing](/docs/ai-test-automation/get-started/intent-driven): Understand how the AI interprets natural language test instructions.
+- [Best practices for creating and maintaining tests](/docs/ai-test-automation/best-practices/creating-and-maintaining-tests-best-practices): Proven strategies for reliable test automation.
+- [Running tests](/docs/ai-test-automation/test-execution/running-tests): Configure execution modes and schedules.
