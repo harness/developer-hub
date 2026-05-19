@@ -171,6 +171,11 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## May 2026
 
+### Version 26.05.89102 <!-- May 19, 2026 -->
+
+#### Fixed issues
+- Fixed an issue where S3-based Terraform config file fetching, serverless artifact fetching, and S3 fetch file tasks were creating a new S3 client for every API call instead of reusing a single client. This caused excessive client creation and potential resource exhaustion. The S3 V2 client is now created once and reused across list, get, and versioning operations within the same task execution. [CDS-123533]
+
 ### Version 26.05.89101 <!-- May 06, 2026 -->
 
 #### Fixed issues
