@@ -22,6 +22,34 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 ## May 2026
 
+### Version 1.87.0
+
+#### Images required
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
+
+- harness/chaos-ddcr:1.87.0
+- harness/chaos-ddcr-faults:1.87.0
+- harness/chaos-log-watcher:1.87.0
+- harness/service-discovery-collector:0.67.0
+
+#### New Features and Enhancements
+
+- Added NOT_EQUAL_TO operator support for namespace label selectors in ChaosGuard
+- Added tag-based filters to the list DR Tests screen
+- Added a resources section inside the Kubernetes infrastructure view
+- Added search bar for input sets in modal and input sets screens under chaos experiments
+- Added stage type filter to the list pipeline API
+- Added support for both file and text in secret selection for the secret field
+- Added probe chain logic in probes
+- Moved image registry to the settings/chaos/image-registry route
+- Synced table layouts across all listing screens
+
+#### Fixed Issues
+
+- Fixed line re-rendering caused by line clamping when commands are long
+- Fixed Base64 encoding failure for non-Latin1 characters in Locust file upload
+- Fixed unverified probe allowed case in ChaosGuard
+
 ### Version 1.86.0
 
 #### Images required
