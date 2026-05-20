@@ -72,5 +72,11 @@
     "code": "ar",
     "base_url": "/docs/artifact-registry",
     "folder": "docs/artifact-registry"
+  },
+  {
+    "code": "ait",
+    "base_url": "/docs/ai-test-automation",
+    "folder": "docs/ai-test-automation",
+    "aliases": ["ai-test-automation"]
   }
 ]
