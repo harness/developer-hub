@@ -82,6 +82,7 @@ The cache retention window is 15 days, which resets whenever a cache is updated.
 
   - When using a Build Intelligence with self-hosted infrastructure, an S3-compatible bucket is required for cache storage. Please visit [configure default S3-compatible object storage](/docs/platform/settings/default-settings.md#continuous-integration) for more information.
   - By default, the Build Intelligence step configures a proxy on port 8082. However, for self-hosted setups, you can configure the port by setting the stage variable `CACHE_SERVICE_HTTPS_BIND`, or in [CI default settings](/docs/platform/settings/default-settings.md#continuous-integration).
+  - You can also override the storage connector, region, bucket name, and sidecar container settings at the stage level. Go to [Override storage and sidecar settings](#override-storage-and-sidecar-settings) to configure per-stage overrides.
 
 Example Pipeline YAML:
 
@@ -233,6 +234,116 @@ This is currently supported with Gradle build tool only .
 ![Build Intelligence Savings](./static/build-intelligence-savings.png)
 
 Visit [Intelligence Savings](/docs/continuous-integration/use-ci/harness-ci-intelligence#intelligence-savings) for more information.
+
+---
+
+## Override storage and sidecar settings
+
+When running Build Intelligence on self-managed Kubernetes infrastructure, the Build Intelligence sidecar uses storage connector and container settings from your account-level Default Settings by default. You can override any of these individually per stage under `stage.spec.buildIntelligence` to use different connectors, bucket configurations, or resource allocations for specific stages.
+
+:::info Fallback behavior
+Each field falls back independently. You only need to specify the fields you want to override. For example, if you specify `connectorRef` but omit `region` and `bucket_name`, the stage uses the stage-level connector with the account-level region and bucket name. Any field not specified at the stage level uses the value from [CI default settings](/docs/platform/settings/default-settings.md#continuous-integration).
+:::
+
+:::note
+These settings apply only to Kubernetes build infrastructure.
+:::
+
+### Override the storage connector and bucket
+
+Use `connectorRef`, `region`, and `bucket_name` to override the storage settings configured in your account-level Default Settings.
+
+- `connectorRef` specifies the connector ID for cloud storage. This overrides the Cloud Storage Connector from Default Settings. Supported connector types include AWS S3, GCP Cloud Storage, and S3-compatible storage.
+- `region` specifies the bucket region. This overrides the account-level Region setting.
+- `bucket_name` specifies the bucket name. This overrides the account-level Bucket Name setting.
+
+```yaml
+- stage:
+    name: build
+    identifier: build
+    type: CI
+    spec:
+      buildIntelligence:
+        enabled: true
+        connectorRef: aws_connector
+        region: us-east-1
+        bucket_name: my-build-cache-bucket
+      cloneCodebase: true
+```
+
+### Configure run-as-user
+
+Use `runAsUser` to set the user ID (UID) for the Build Intelligence sidecar container. This corresponds to the Kubernetes `securityContext.runAsUser` property.
+
+This is useful when your cluster enforces non-root security policies or when you need root access (UID 0) for the sidecar container.
+
+```yaml
+- stage:
+    name: build
+    identifier: build
+    type: CI
+    spec:
+      buildIntelligence:
+        enabled: true
+        runAsUser: 0
+      cloneCodebase: true
+```
+
+### Configure sidecar container resources
+
+Use `resources` to define Kubernetes resource requests and limits for the Build Intelligence sidecar container. This controls memory and CPU allocation to prevent the sidecar from being OOMKilled or starving other containers in the pod.
+
+```yaml
+- stage:
+    name: build
+    identifier: build
+    type: CI
+    spec:
+      buildIntelligence:
+        enabled: true
+        resources:
+          requests:
+            memory: 512Mi
+            cpu: 400m
+          limits:
+            memory: 2Gi
+            cpu: 1000m
+      cloneCodebase: true
+```
+
+### Full YAML reference
+
+The following example shows all available `buildIntelligence` properties:
+
+```yaml
+- stage:
+    name: build
+    identifier: build
+    type: CI
+    spec:
+      buildIntelligence:
+        enabled: true
+        connectorRef: my_connector
+        region: us-east-1
+        bucket_name: my-build-cache-bucket
+        runAsUser: 0
+        resources:
+          requests:
+            memory: 512Mi
+            cpu: 400m
+          limits:
+            memory: 2Gi
+            cpu: 1000m
+      cloneCodebase: true
+      infrastructure:
+        type: KubernetesDirect
+        spec:
+          connectorRef: k8
+          namespace: harness-delegate-ng
+          os: Linux
+```
+
+---
 
 ## Troubleshooting
 

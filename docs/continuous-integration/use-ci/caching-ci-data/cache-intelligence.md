@@ -79,7 +79,9 @@ When running builds in self-managed infrastructures, [configure default object s
 Azure Blob Storage is currently supported only for Cache Intelligence. Docker Layer Caching (DLC) and Build Intelligence require AWS S3, GCP Cloud Storage, or S3-compatible storage.
 :::
 
-We suggest that you consider setting bucket level retention policy for efficient cache management. 
+We suggest that you consider setting bucket level retention policy for efficient cache management.
+
+You can also override the storage connector and configure sidecar container settings at the stage level. Go to [Override storage and sidecar settings](#override-storage-and-sidecar-settings) to configure per-stage overrides.
 
 </TabItem>
 </Tabs>
@@ -109,6 +111,7 @@ We suggest that you consider setting bucket level retention policy for efficient
    * [Add custom cache keys.](#customize-cache-keys)
    * [Define the cache policy.](#define-cache-policy)
    * [Enable cache override.](#enable-cache-override)
+   * [Override storage and sidecar settings.](#override-storage-and-sidecar-settings)
 
 ## Customize cache paths
 
@@ -336,6 +339,115 @@ For example:
         override: false # Define cache override.
       cloneCodebase: true
 ```
+
+---
+
+## Override storage and sidecar settings
+
+When running Cache Intelligence on self-managed Kubernetes infrastructure, the cache sidecar uses storage connector and container settings from your account-level Default Settings by default. You can override any of these individually per stage under `stage.spec.caching` to use different connectors or resource allocations for specific stages.
+
+:::info Fallback behavior
+Each field falls back independently. You only need to specify the fields you want to override. For example, if you specify `connectorRef` but omit `region`, the stage uses the stage-level connector with the account-level region. Any field not specified at the stage level uses the value from [CI default settings](/docs/platform/settings/default-settings.md#continuous-integration).
+:::
+
+:::note
+These settings apply only to Kubernetes build infrastructure.
+:::
+
+### Override the storage connector and bucket
+
+Use `connectorRef`, `region`, and `bucket_name` to override the storage settings configured in your account-level Default Settings.
+
+- `connectorRef` specifies the connector ID for cloud storage. This overrides the Cloud Storage Connector from Default Settings. Supported connector types include AWS S3, GCP Cloud Storage, Azure Blob Storage, and S3-compatible storage.
+- `region` specifies the bucket region. This overrides the account-level Region setting.
+- `bucket_name` specifies the bucket name. This overrides the account-level Bucket Name setting.
+
+```yaml
+- stage:
+    name: Build
+    identifier: Build
+    type: CI
+    spec:
+      caching:
+        enabled: true
+        connectorRef: azure_connector
+        region: eastus
+        bucket_name: my-cache-bucket
+      cloneCodebase: true
+```
+
+### Configure run-as-user
+
+Use `runAsUser` to set the user ID (UID) for the cache sidecar container. This corresponds to the Kubernetes `securityContext.runAsUser` property.
+
+This is useful when your cluster enforces non-root security policies or when you need root access (UID 0) for the sidecar container.
+
+```yaml
+- stage:
+    name: Build
+    identifier: Build
+    type: CI
+    spec:
+      caching:
+        enabled: true
+        runAsUser: 0
+      cloneCodebase: true
+```
+
+### Configure sidecar container resources
+
+Use `resources` to define Kubernetes resource requests and limits for the cache sidecar container. This controls memory and CPU allocation to prevent the sidecar from being OOMKilled or starving other containers in the pod.
+
+```yaml
+- stage:
+    name: Build
+    identifier: Build
+    type: CI
+    spec:
+      caching:
+        enabled: true
+        resources:
+          requests:
+            memory: 512Mi
+            cpu: 400m
+          limits:
+            memory: 2Gi
+            cpu: 1000m
+      cloneCodebase: true
+```
+
+### Full YAML reference
+
+The following example shows all available `caching` properties:
+
+```yaml
+- stage:
+    name: Build
+    identifier: Build
+    type: CI
+    spec:
+      caching:
+        enabled: true
+        override: true
+        paths:
+          - /harness/node_modules
+        key: cache-{{ checksum "package-lock.json" }}
+        policy: pull-push
+        connectorRef: my_connector
+        region: us-west-2
+        bucket_name: my-cache-bucket
+        runAsUser: 0
+        resources:
+          requests:
+            memory: 512Mi
+            cpu: 400m
+          limits:
+            memory: 2Gi
+            cpu: 1000m
+      cloneCodebase: true
+```
+
+---
 
 ## Cache Intelligence API
 
