@@ -46,8 +46,8 @@ export const supportedAdminchanges = [
 ];
 
 export const supportedCommunity = [
-  { name: "Bugsnag", img: "/provider-logos/fme-integrations/bugsnag-logo.png", link: "/docs/feature-management-experimentation/integrations/appdynamics" },
-  { name: "Dynatrace", img: "/provider-logos/fme-integrations/dynatrace-logo.png", link: "/docs/feature-management-experimentation/integrations/azure-devops" },
+  { name: "Bugsnag", img: "/provider-logos/fme-integrations/bugsnag-logo.png", link: "/docs/feature-management-experimentation/integrations/bugsnag" },
+  { name: "Dynatrace", img: "/provider-logos/fme-integrations/dynatrace-logo.png", link: "/docs/feature-management-experimentation/integrations/dynatrace" },
   { name: "FullStory", img: "/provider-logos/fme-integrations/fullstory-logo.png", link: "/docs/feature-management-experimentation/integrations/fullstory" },
   { name: "Grafana", img: "/provider-logos/fme-integrations/grafana-logo.png", link: "/docs/feature-management-experimentation/integrations/grafana" },
   { name: "Heap", img: "/provider-logos/fme-integrations/heap-logo.png", link: "/docs/feature-management-experimentation/integrations/heap" },
