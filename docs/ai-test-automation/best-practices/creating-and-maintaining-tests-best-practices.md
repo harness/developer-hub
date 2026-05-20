@@ -1,307 +1,274 @@
 ---
-title: Best Practices for Creating and Maintaining tests
-description: How to create and maintain tests
+title: Best practices for creating and maintaining tests
+sidebar_label: Create and Maintain Tests
+description: Proven strategies for designing, editing, and executing reliable end-to-end tests in Harness AI Test Automation.
 sidebar_position: 10
+keywords:
+  - test design
+  - best practices
+  - test maintenance
+  - resilient mode
+  - AI commands
+tags:
+  - ai-test-automation
+  - best-practices
 ---
 
-## Introduction
+Harness AI Test Automation combines traditional automation approaches with AI capabilities to help you create, manage, and execute end-to-end tests. Following proven strategies for test design, editing, and execution reduces flakiness, lowers maintenance costs, and builds reliable automation that supports your development workflows.
 
-Harness AI Test Automation offers a powerful platform for creating, managing, and executing end-to-end tests, combining traditional automation approaches with cutting-edge AI capabilities.
+---
 
-This guide outlines proven strategies and best practices for maximizing the effectiveness of your testing efforts with Harness AI Test Automation. By following these recommendations, you'll create more maintainable test suites, reduce flakiness, and build reliable automation that supports your development workflows.
+## What you will learn
 
-## 1\. Designing Tests
+- **Test design principles:** How to structure small, focused tests that are easy to maintain and debug.
+- **Task reuse patterns:** How to avoid duplication by extracting common steps into reusable tasks.
+- **AI command effectiveness:** Strategies for writing clear, reliable AI-powered commands.
+- **Editing mode selection:** When to use Quick Edit versus Live Edit for test maintenance.
+- **Execution mode selection:** How to choose between Resilient Mode and Non-resilient Mode based on your environment.
+
+---
+
+## Test design principles
 
 The foundation of effective test automation begins with thoughtful test design. Well-structured tests are easier to maintain, provide clearer feedback, and create less technical debt over time.
 
-### Write Small Tests That Reflect a Workflow
+### Write small, focused tests
 
-Large, monolithic tests that attempt to validate too many features at once often become maintenance nightmares. Instead:
+Large, monolithic tests that attempt to validate too many features at once often become maintenance problems. Follow these guidelines:
 
-- **Focus on specific user journeys**: Design each test to validate a single, coherent user workflow (e.g., "User can log in and view their profile" or "Admin can create a new product category").  
-- **Limit test scope**: A good rule of thumb is that a test should validate a single feature or functionality. If a test is validating multiple unrelated features, consider breaking it into separate tests.  
-- **Consider test independence**: Each test should be capable of running independently without relying on the state created by other tests. This prevents cascading failures where one failed test causes many others to fail.  
-- **Prioritize readability**: Name your tests descriptively so that their purpose is immediately clear. A test named "userCanSubmitOrderWithValidCreditCard" is much more informative than "testOrder001".  
-- **Size of tests** \- Tests exceeding 50 steps present significant maintenance challenges, resulting in increased troubleshooting difficulty and reduced debugging efficiency
+- **Focus on specific user journeys:** Design each test to validate a single, coherent user workflow (for example, "User can log in and view their profile" or "Admin can create a new product category").
+- **Limit test scope:** A test should validate a single feature or functionality. If a test validates multiple unrelated features, break it into separate tests.
+- **Ensure test independence:** Each test should be capable of running independently without relying on state created by other tests. This prevents cascading failures where one failed test causes many others to fail.
+- **Prioritize readability:** Name your tests descriptively so that their purpose is immediately clear. A test named "userCanSubmitOrderWithValidCreditCard" is more informative than "testOrder001".
+- **Keep tests under 50 steps:** Tests exceeding 50 steps present significant maintenance challenges, resulting in increased troubleshooting difficulty and reduced debugging efficiency.
 
 When tests are small and focused, several benefits emerge:
 
-- Faster identification of issues when tests fail  
-- Easier maintenance as the application evolves  
-- More reliable test execution since there are fewer potential points of failure  
-- Clearer documentation of application functionality through the test suite
+- Faster identification of issues when tests fail.
+- Easier maintenance as the application evolves.
+- More reliable test execution since there are fewer potential points of failure.
+- Clearer documentation of application functionality through the test suite.
 
-### Leverage Tasks to Avoid Repetition
+### Leverage tasks to avoid repetition
 
 Duplication within a test suite can quickly lead to maintenance challenges. When the same sequence of steps appears in multiple tests, any change to that sequence requires updates in multiple places.
 
-Tasks in Harness AI Test Automation solve this problem by allowing you to encapsulate and reuse common sequences of steps:
+Tasks solve this problem by allowing you to encapsulate and reuse common sequences of steps:
 
-- **Identify common workflows**: Look for sequences of steps that appear in multiple tests, such as login procedures, navigation to specific areas of the application, or data setup routines.  
-- **Create reusable tasks**: Extract these common sequences into tasks with descriptive names like "Login as Administrator" or "Navigate to User Profile".  
-- **Parameterize where needed**: Make tasks flexible by adding parameters. For example, a "Login" task could accept username and password parameters, making it usable for different user types.  
-- **Maintain a task library**: Document available tasks and their purposes to encourage reuse across the testing team.
+- **Identify common workflows:** Look for sequences of steps that appear in multiple tests, such as login procedures, navigation to specific areas, or data setup routines.
+- **Create reusable tasks:** Extract these common sequences into tasks with descriptive names like "Login as Administrator" or "Navigate to User Profile".
+- **Parameterize where needed:** Make tasks flexible by adding parameters. For example, a "Login" task could accept username and password parameters, making it usable for different user types.
+- **Maintain a task library:** Document available tasks and their purposes to encourage reuse across the testing team.
 
 Benefits of effectively using tasks include:
 
-- **Single point of maintenance**: When application changes require updating a sequence of steps, you only need to update the task definition once.  
-- **Consistency across tests**: Using the same task ensures that all tests interact with the application in a consistent manner.  
-- **Reduced test authoring time**: New tests can be created more quickly by assembling existing tasks.  
-- **Improved readability**: Tests become more declarative and easier to understand when they use well-named tasks.
+- **Single point of maintenance:** When application changes require updating a sequence of steps, you only need to update the task definition once.
+- **Consistency across tests:** Using the same task ensures that all tests interact with the application in a consistent manner.
+- **Reduced test authoring time:** New tests can be created more quickly by assembling existing tasks.
+- **Improved readability:** Tests become more declarative and easier to understand when they use well-named tasks.
 
-Current limitations in task lifecycle management 
+:::note
+Task versioning affects all tests that reference a task. Go to [Tasks](/docs/ai-test-automation/test-authoring/creating-tests/tasks#task-versioning) to understand how versioning works before modifying shared tasks. Nested task execution (tasks calling other tasks) is currently unsupported.
+:::
 
-- **Task versioning** — See [Task versioning](/docs/ai-test-automation/test-authoring/creating-tests/tasks#task-versioning) when changing tasks that many tests depend on.  
-- **Nested task execution (tasks calling other tasks)** — is currently unsupported but planned for future implementation
+### Add assertions liberally
 
-### Add Assertions Liberally
+Assertions are the validation points in your tests. They verify that the application behaves as expected. Without sufficient assertions, a test might run through all steps successfully but fail to detect incorrect results.
 
-Assertions are the validation points in your tests—they verify that the application is behaving as expected. Without sufficient assertions, a test might run through all its steps successfully but fail to detect that the application is producing incorrect results.
+- **Assert early and often:** Do not wait until the end of a test to verify results. Add assertions throughout the test to validate intermediate states.
+- **Validate both UI elements and data:** Assertions should check not only that elements are present but also that they contain the expected data.
+- **Assert negative conditions where appropriate:** Sometimes it is important to verify that something does NOT happen or is NOT visible. For example, you can write an assertion: "Make sure the login screen is not visible."
+- **Use specific assertions:** Instead of generic existence checks, use more specific assertions like verifying text content, attribute values, or element states.
 
-- **Assert early and often**: Don't wait until the end of a test to verify results. Add assertions throughout the test to validate intermediate states.  
-- **Validate both UI elements and data**: Assertions should check not only that elements are present but also that they contain the expected data.  
-- **Assert negative conditions where appropriate**: Sometimes it's important to verify that something does NOT happen or is NOT visible. For e.g. You can write an assertion \- can you make sure the login screen is not visible ?   
-- **Use specific assertions**: Instead of generic existence checks, use more specific assertions like verifying text content, attribute values, or element states.
+Go to [Assertions](/docs/ai-test-automation/test-authoring/creating-tests/assertions) to view all available assertion types.
 
-## 2\. Working with Dynamic Data
+---
 
-Modern web applications present significant challenges for traditional test automation. Dynamic content, asynchronous loading, and complex interactive elements can make tests brittle and unreliable. Harness AI Test Automation is specifically designed to address these challenges.
+## Handle dynamic data
 
-### Maximize Harness AI for Dynamic Applications
+Modern web applications present significant challenges for traditional test automation. Dynamic content, asynchronous loading, and complex interactive elements can make tests brittle and unreliable. AI Test Automation is specifically designed to address these challenges.
 
-The AI capabilities in Harness test automation provide sophisticated solutions to common testing challenges:
+### AI capabilities for dynamic applications
 
-- **Handling dynamic IDs and selectors**: Traditional selectors often break when developers make changes or when elements have dynamically generated IDs. Harness AI recognizes elements based on (Smart Selectors) their visual appearance, position, surrounding context, and other attributes that remain more stable.  
-- **Adapting to visual changes**: Minor UI updates that would break traditional selectors are often handled automatically by the AI, reducing maintenance overhead.  
-- **Managing timing issues**: The AI can intelligently wait for elements to become interactive, even when loading times vary or when complex animations are present.  
-- **Understanding application context**: The AI can interpret the current state of the application to make more reliable decisions about how to interact with elements.
+The AI capabilities provide sophisticated solutions to common testing challenges:
+
+- **Handling dynamic IDs and selectors:** Traditional selectors often break when developers make changes or when elements have dynamically generated IDs. The AI recognizes elements based on their visual appearance, position, surrounding context, and other attributes that remain more stable (Smart Selectors).
+- **Adapting to visual changes:** Minor UI updates that would break traditional selectors are often handled automatically by the AI, reducing maintenance overhead.
+- **Managing timing issues:** The AI can intelligently wait for elements to become interactive, even when loading times vary or when complex animations are present.
+- **Understanding application context:** The AI can interpret the current state of the application to make more reliable decisions about how to interact with elements.
 
 To get the most from these capabilities:
 
-- **Use AI-based commands for dynamic situations**: When possible, use AI-powered commands over traditional selector-based approaches when the test criteria is dynamic. For e.g. You want to select an available room in the booking system or select the cheapest flight   
-  .  
-- **Provide clear context**: When instructing the AI to interact with elements, provide descriptive information about what you're trying to achieve.  
-- **Trust the intelligence**: AI often requires less explicit instruction than traditional automation. For example, rather than adding explicit waits, let the AI determine when elements are ready for interaction.  
-- **Test in varied conditions**: Verify that your AI-powered tests work consistently across different data states, screen sizes, and application conditions.
+- **Use AI-based commands for dynamic situations:** When possible, use AI-powered commands over traditional selector-based approaches when the test criteria are dynamic. For example, you might want to select an available room in a booking system or select the cheapest flight.
+- **Provide clear context:** When instructing the AI to interact with elements, provide descriptive information about what you are trying to achieve.
+- **Trust the intelligence:** AI often requires less explicit instruction than traditional automation. Rather than adding explicit waits, let the AI determine when elements are ready for interaction.
+- **Test in varied conditions:** Verify that your AI-powered tests work consistently across different data states, screen sizes, and application conditions.
 
-### Follow AI-Based Command Best Practices
+### AI-based command best practices
 
-For detailed guidance on maximizing the effectiveness of AI-based commands, refer to our comprehensive documentation at [https://docs.relicx.ai/best-practices-ai-based-commands.](https://docs.google.com/document/d/1DOet8UOg2JDdfTdWyVLLpkhG_X1TykIpUv5szuTnK5Q/edit?usp=sharing)
+When creating AI commands, follow these recommendations:
 
-Key recommendations from this guide include:
+- **Use descriptive natural language:** Describe the target element in natural language that a human would understand. For example, "Click the Submit button at the bottom of the form" is more effective than "Click button with text Submit".
+- **Provide sufficient context:** Include information about where the element can be found on the page. For example, "Click the Edit button in the User Profile section" provides more context than "Click the Edit button".
+- **Leverage visual characteristics:** Describe visual attributes like color, size, or position when they help identify the target element.
+- **Test with variations:** Verify that your AI commands work with different application states, data, and layouts.
+- **Refine based on performance:** If an AI command is not consistently performing as expected, refine your description to provide more specific guidance.
+- **Combine with traditional approaches when necessary:** For highly complex scenarios, consider using a combination of AI-based and traditional selector-based approaches.
 
-- **Use descriptive natural language**: When creating AI commands, describe the target element in natural language that a human would understand. For example, "Click the Submit button at the bottom of the form" is more effective than "Click button with text 'Submit'".  
-- **Provide sufficient context**: Include information about where the element can be found on the page. For example, "Click the Edit button in the User Profile section" provides more context than simply "Click the Edit button".  
-- **Leverage visual characteristics**: Describe visual attributes like color, size, or position when they help identify the target element.  
-- **Test with variations**: Verify that your AI commands work with different application states, data, and layouts.  
-- **Refine based on performance**: If an AI command is not consistently performing as expected, refine your description to provide more specific guidance.  
-- **Combine with traditional approaches when necessary**: For highly complex scenarios, consider using a combination of AI-based and traditional selector-based approaches.
+Go to [Best practices for AI commands](/docs/ai-test-automation/best-practices/best-practices-for-ai-commands) to view detailed guidance on each AI command type.
 
-## 3\. Editing Tests
+---
 
-As your application evolves, you'll need to update your tests to reflect new features, changed workflows, or improved testing strategies. Harness AI Test Automation offers two distinct approaches to test editing, each optimized for different scenarios.
+## Test editing strategies
 
-### Choose the Right Editing Mode
+As your application evolves, you need to update tests to reflect new features, changed workflows, or improved testing strategies. AI Test Automation offers two distinct approaches to test editing, each optimized for different scenarios.
 
-#### Quick Edit
+### Quick edit mode
 
-Quick Edit is designed for rapid, straightforward modifications that don't significantly alter the test's navigation flow. It provides a streamlined interface for making targeted changes without re-executing the entire test.
+Quick Edit is designed for rapid, straightforward modifications that do not significantly alter the test navigation flow. It provides a streamlined interface for making targeted changes without re-executing the entire test.
 
 **When to use Quick Edit:**
 
-- **Making minor modifications**: When you need to adjust element selectors, update expected values, or modify simple actions  
-- **Adding non-interactive steps**: Inserting wait conditions, log statements, or comments  
-- **Working with assertions and conditionals**: Adding or modifying verification points and conditional logic  
-- **Removing steps that don't affect navigation**: Deleting actions that don't cause page transitions or major state changes
+- Making minor modifications (adjusting element selectors, updating expected values, modifying simple actions).
+- Adding non-interactive steps (wait conditions, log statements, comments).
+- Working with assertions and conditionals.
+- Removing steps that do not affect navigation.
 
-**Advantages of Quick Edit:**
+**Advantages:**
 
-- **Speed**: Changes can be made rapidly without waiting for the browser to execute each step  
-- **Efficiency**: Simple modifications can be completed in seconds rather than minutes  
-- **Low overhead**: No need to spin up additional resources for browser execution
+- Changes can be made rapidly without waiting for browser execution.
+- Simple modifications can be completed in seconds rather than minutes.
+- No need to spin up additional resources for browser execution.
 
-**Limitations of Quick Edit:**
+**Limitations:**
 
-- **Limited validation**: Changes aren't immediately verified against the application  
-- **Risk of errors**: Without execution validation, there's a higher chance of introducing broken steps  
-- **Not suitable for complex changes**: Significant modifications to test flow are better handled through Live Edit
+- Changes are not immediately verified against the application.
+- Without execution validation, there is a higher chance of introducing broken steps.
+- Not suitable for complex changes to test flow.
 
-**How to use Quick Edit effectively:**
+Access Quick Edit through the test details page:
 
-- Access Quick Edit through the test details page
+![Test details page showing Quick Edit access](./static/test-details-page.png)
 
-![](./static/test-details-page.png)
+### Live edit mode
 
-- Make targeted changes to specific steps  
-- Consider running the modified test after editing to verify your changes  
-- Use the test details page to access additional options like cloning tests or reviewing version history
-
-#### Live Edit
-
-Live Edit provides a more comprehensive editing experience where each step is executed as you modify the test. This approach gives immediate feedback on whether your changes are working correctly.
+Live Edit provides a comprehensive editing experience where each step is executed as you modify the test. This approach gives immediate feedback on whether your changes are working correctly.
 
 **When to use Live Edit:**
 
-- **Adding steps that cause navigation**: When inserting actions that will open new pages or modals  
-- **Removing navigation-triggering steps**: When deleting steps that affect the application's navigation flow  
-- **Creating new scenarios**: When building entirely new paths through the application  
-- **Making complex modifications**: When changes might affect the test's ability to complete subsequent steps
+- Adding steps that cause navigation (opening new pages or modals).
+- Removing navigation-triggering steps.
+- Creating entirely new paths through the application.
+- Making complex modifications that might affect subsequent steps.
 
-**Advantages of Live Edit:**
+**Advantages:**
 
-- **Immediate validation**: Each change is verified against the actual application behavior  
-- **Greater reliability**: Less chance of creating broken tests since each step is executed  
-- **Visual confirmation**: You can see exactly how the application responds to each action  
-- **Better for complex changes**: Provides the necessary context for more significant modifications
+- Each change is verified against actual application behavior.
+- Less chance of creating broken tests since each step is executed.
+- Visual confirmation of how the application responds to each action.
 
-**Limitations of Live Edit:**
+**Limitations:**
 
-- **Slower process**: Executing each step takes time, especially for longer tests  
-- **Resource intensive**: Requires a browser instance and potentially more computing resources  
-- **May require complete test execution**: Sometimes you need to work through the entire test to make late-stage changes
+- Slower process since executing each step takes time.
+- Requires a browser instance and potentially more computing resources.
+- Sometimes requires working through the entire test to make late-stage changes.
 
-**How to use Live Edit effectively:**
+### General editing guidelines
 
-- Click the Live Edit button to launch the editing session  
-- Be patient as steps execute in sequence  
-- Use the opportunity to verify that existing steps still work correctly  
-- Consider whether your changes might affect subsequent steps
+Regardless of which editing mode you choose, follow these principles:
 
-### Best Practices for Test Editing
+- **Test after editing:** Always run the modified test end-to-end to verify that it still works correctly.
+- **Consider impact on shared tasks:** If you modify shared components, consider how changes might affect other tests. Go to [Tasks](/docs/ai-test-automation/test-authoring/creating-tests/tasks) to understand task versioning implications.
+- **Preserve test intent:** Ensure that modifications do not alter the fundamental purpose of the test.
+- **Review version history:** Before making significant changes, review the test version history to understand its evolution.
+- **Consider creating a new test:** If changes are substantial, it might be better to create a new test rather than heavily modifying an existing one.
 
-Regardless of which editing mode you choose, follow these general principles for effective test maintenance:
+Go to [Editing tests](/docs/ai-test-automation/test-authoring/editing-tests) to view detailed editing workflows.
 
-- **Document your changes**: Add comments explaining why changes were made, especially for workarounds or complex solutions  
-- **Test after editing**: Always run the modified test end-to-end to verify that it still works correctly  
-- **Consider impact on other tests**: If you're modifying shared components like tasks, consider how changes might affect other tests  
-- **Preserve test intent**: Ensure that your modifications don't alter the fundamental purpose of the test  
-- **Review version history**: Before making significant changes, review the test's version history to understand its evolution  
-- **Consider creating a new test**: If changes are substantial, it might be better to create a new test rather than heavily modifying an existing one
+---
 
-Effective test editing requires balancing speed and reliability. By choosing the right editing mode for each situation, you can maintain your test suite efficiently while ensuring it remains robust and dependable.
+## Execution mode selection
 
-## 4\. Running Tests
+How you execute your tests can significantly impact their reliability, speed, and usefulness in your development process.
 
-How you execute your tests can significantly impact their reliability, speed, and usefulness in your development process. Harness AI Test Automation offers several options for test execution, each with different characteristics and advantages.
+### Resilient mode (recommended)
 
-### Choose the Appropriate Execution Mode
-
-#### Resilient Mode (Recommended) 
-
-![](./static/resilient-mode.png)
+![Resilient mode execution interface](./static/resilient-mode.png)
 
 Resilient Mode is designed to maximize the reliability of test execution, particularly in environments with variable performance or when testing complex applications.
 
-**Key characteristics of Resilient Mode:**
+**Key characteristics:**
 
-- **Intelligent waiting**: Automatically waits for elements to be ready for interaction before proceeding  
-- **Dynamic timing adjustments**: Adapts wait times based on application responsiveness  
-- **Retry logic**: Attempts to recover from intermittent failures when possible  
-- **Stability detection**: Waits for the page to stabilize before proceeding to the next step  
-- **Comprehensive failure information**: Provides detailed diagnostics when issues occur
+- **Intelligent waiting:** Automatically waits for elements to be ready for interaction before proceeding.
+- **Dynamic timing adjustments:** Adapts wait times based on application responsiveness.
+- **Retry logic:** Attempts to recover from intermittent failures when possible.
+- **Stability detection:** Waits for the page to stabilize before proceeding to the next step.
+- **Comprehensive failure information:** Provides detailed diagnostics when issues occur.
 
-**Best practices for Resilient Mode:**
+**When to use Resilient Mode:**
 
-- **Use as your default execution mode**: Especially for CI/CD pipelines and scheduled test runs  
-- **Minimize explicit waits**: The built-in intelligence usually handles timing issues automatically  
-- **Set appropriate timeouts**: Configure maximum wait times based on your application's typical performance  
-- **Monitor execution times**: Watch for trends that might indicate performance degradation  
-- **Review failure details**: When tests fail in Resilient Mode, carefully examine the provided diagnostics
+- CI/CD pipelines.
+- Overnight or scheduled runs.
+- Tests running in cloud or variable environments.
+- Complex applications with asynchronous behavior.
 
-#### Non-resilient Mode
+### Non-resilient mode
 
-Non-resilient Mode prioritizes speed over automatic recovery mechanisms. It's suitable for well-controlled environments or when execution speed is critical.
+Non-resilient Mode prioritizes speed over automatic recovery mechanisms. It is suitable for well-controlled environments or when execution speed is critical.
 
-**Key characteristics of Non-resilient Mode:**
+**Key characteristics:**
 
-- **Faster execution**: Completes tests more quickly by eliminating some automatic waiting  
-- **Less overhead**: Reduces the computational resources required for test execution  
-- **More predictable timing**: Execution speed is more consistent across runs  
-- **Requires explicit waits**: You must add wait conditions where needed  
-- **Less fault tolerance**: More likely to fail when encountering timing issues
+- **Faster execution:** Completes tests more quickly by eliminating some automatic waiting.
+- **Less overhead:** Reduces the computational resources required for test execution.
+- **More predictable timing:** Execution speed is more consistent across runs.
+- **Requires explicit waits:** You must add wait conditions where needed.
+- **Less fault tolerance:** More likely to fail when encountering timing issues.
 
-**Best practices for Non-resilient Mode:**
+**When to use Non-resilient Mode:**
 
-- **Use for speed-critical scenarios**: When test execution time is a primary concern  
-- **Add strategic waits**: Insert explicit wait conditions before interactions with elements that might not be immediately ready  
-- **Test in stable environments**: Ideally, use in environments with consistent performance  
-- **Implement error handling**: Consider adding additional error recovery logic in your tests  
-- **Monitor failure patterns**: Watch for failures that may indicate missing wait conditions
+- Developer local testing.
+- Simple applications with predictable performance.
+- Scenarios where immediate results are important.
+- Performance testing or benchmarking.
 
-**Selecting the right mode for your needs:**
+Go to [Running modes](/docs/ai-test-automation/test-execution/resilient-mode) to configure execution modes for your tests.
 
-- Consider using Resilient Mode for:  
-    
-  - CI/CD pipelines  
-  - Overnight or scheduled runs  
-  - Tests running in cloud or variable environments  
-  - Complex applications with asynchronous behavior
+---
 
-
-- Consider using Non-resilient Mode for:  
-    
-  - Developer local testing  
-  - Simple applications with predictable performance  
-  - Scenarios where immediate results are important  
-  - Performance testing or benchmarking
-
-### Analyzing Test Results
+## Test result analysis
 
 Effective test analysis is crucial for maintaining a healthy test suite and quickly identifying application issues.
 
-#### Leveraging Test Replay Videos
+### Test replay videos
 
-One of the most valuable features of Harness AI Test Automation is the ability to watch video recordings of test executions:
+One of the most valuable features is the ability to watch video recordings of test executions:
 
-![](./static/test-replay.png)
+![Test replay video interface](./static/test-replay.png)
 
-- **Always review videos for failed tests**: The visual record often makes it immediately obvious what went wrong  
-- **Look for timing issues**: Videos can reveal race conditions or premature actions  
-- **Identify visual discrepancies**: Sometimes tests fail because elements have moved or changed appearance  
-- **Validate user experience**: Even when tests pass, videos can reveal slow performance or unexpected behaviors  
-- **Share with stakeholders**: Videos provide accessible evidence of issues for non-technical team members
+- **Always review videos for failed tests:** The visual record often makes it immediately obvious what went wrong.
+- **Look for timing issues:** Videos can reveal race conditions or premature actions.
+- **Identify visual discrepancies:** Sometimes tests fail because elements have moved or changed appearance.
+- **Validate user experience:** Even when tests pass, videos can reveal slow performance or unexpected behaviors.
+- **Share with stakeholders:** Videos provide accessible evidence of issues for non-technical team members.
 
-**Best practices for test replay analysis:**
+### Diagnostic information
 
-- **Set up automatic recording**: Configure your system to always record test executions  
-- **Establish retention policies**: Determine how long to keep videos based on your needs and storage constraints  
-- **Consider selective recording**: For very large test suites, you might record only failures or critical workflows  
-- **Add screenshots at key points**: Supplement videos with targeted screenshots at critical validation points  
-- **Tag and categorize issues**: Use a consistent system to classify the types of failures you observe
+Beyond video replays, AI Test Automation provides rich diagnostic information:
 
-#### Comprehensive Test Analysis
+- **Review execution logs:** Detailed logs provide insights into what happened during test execution.
+- **Analyze error messages:** System-generated errors often point directly to the root cause.
+- **Examine element states:** Information about element properties at the time of failure can be invaluable.
+- **Look for patterns:** Recurring issues often indicate systemic problems in either the application or the tests.
+- **Compare across environments:** Different results in different environments can help isolate infrastructure issues.
 
-Beyond video replays, Harness AI Test Automation provides rich diagnostic information to help you understand test results:
+Go to [Test errors and severities](/docs/ai-test-automation/test-execution/test-errors-and-severities) to understand how test failures are categorized.
 
-- **Review execution logs**: Detailed logs provide insights into what happened during test execution  
-- **Analyze error messages**: System-generated errors often point directly to the root cause  
-- **Examine element states**: Information about element properties at the time of failure can be invaluable  
-- **Look for patterns**: Recurring issues often indicate systemic problems in either the application or the tests  
-- **Compare across environments**: Different results in different environments can help isolate infrastructure issues
+---
 
-**Best practices for thorough analysis:**
+## Next steps
 
-- **Establish a systematic approach**: Create a consistent process for investigating failures  
-- **Document common issues**: Maintain a knowledge base of frequently encountered problems and their solutions  
-- **Track flakiness**: Monitor tests that fail intermittently, as these often indicate timing or state management issues  
-- **Correlate with application changes**: Link test failures to recent code or configuration changes  
-- **Prioritize by impact**: Focus first on failures in critical workflows or high-risk areas
-
-## Additional Resources
-
-For comprehensive documentation on all aspects of Harness AI Test Automation, please go over our documentation. Our documentation covers:
-
-- Detailed setup instructions for different environments  
-- Advanced configuration options for specialized scenarios  
-- Integrations with CI/CD systems and other development tools  
-- Troubleshooting guides for common issues  
-- Details of all commands
-
-The Harness support slack is also an excellent resource for sharing best practices, asking questions, and learning from other users' experiences. Consider joining our community slack and participating in discussions to enhance your knowledge and contribute your insights.
-
-## Conclusion
-
-Creating effective end-to-end UI tests with Harness AI Test Automation requires thoughtful design, strategic use of AI capabilities, appropriate editing techniques, and smart execution strategies. By following the best practices outlined in this guide, you can build a test suite that provides reliable validation of your application while remaining maintainable and efficient.
-
-Remember that test automation is an iterative process. Continuously evaluate and refine your approach based on your team's experiences and the evolving needs of your application. With the right practices in place, Harness AI Test Automation can significantly enhance your quality assurance efforts and contribute to delivering a superior user experience.
-
+- [Get started with AI Test Automation](/docs/ai-test-automation/get-started/quickstart): Create your first test and login task.
+- [Tasks](/docs/ai-test-automation/test-authoring/creating-tests/tasks): Understand task types, versioning, and parameter overrides.
+- [Running tests](/docs/ai-test-automation/test-execution/running-tests): Configure test execution settings and schedules.
+- [Data-driven tests](/docs/ai-test-automation/test-execution/data-driven-tests): Run the same test with multiple data sets.
+- [Harness pipeline integration](/docs/ai-test-automation/integrations/harness-cd): Add tests to your CI/CD pipeline.
