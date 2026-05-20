@@ -955,10 +955,10 @@ Here is an example of a broker response and the corresponding field mapping conf
   "result": {
     "cloud": "aws",
     "creds": {
-      "access_key_id": "AKIAIOSFODNN7EXAMPLE",
-      "secret_access_key": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
-      "session_token": "AQoDYXdzEJr...",
-      "expiration": "2026-05-11T18:08:10Z"
+      "access_key_id": "ASIA****************",
+      "secret_access_key": "****************************************",
+      "session_token": "IQoJb3JpZ2luX2***************************"
+      "expiration": "2099-12-31T23:59:59Z"
     }
   }
 }
