@@ -20,7 +20,9 @@ import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
 This guide walks you through registering an inventory, attaching a Git-backed playbook, and running both from a Harness IaCM pipeline using the **`IACMAnsiblePlugin`** step. For concepts and how Ansible fits next to Terraform or OpenTofu, read the [Ansible in IaCM overview](/docs/infra-as-code-management/configuration-management/ansible/overview) first.
 
-### What will you learn?
+---
+
+## What will you learn?
 
 - **Inventories:** Create and configure static, dynamic, or plugin-based inventories and use the Hosts, Variables, and Activity History tabs.
 - **Playbooks:** Register a playbook from Git so Harness can fetch it at pipeline run time.
@@ -30,7 +32,7 @@ For step-by-step patterns such as web fleet configuration or rolling patches, co
 
 ---
 
-## Prerequisites
+## Before you begin
 
 Before you begin, make sure the following are in place:
 
@@ -50,7 +52,11 @@ Before you begin, make sure the following are in place:
 
 ---
 
-## Step 1: Create an Inventory
+## Set up Ansible in IaCM
+
+The following steps walk you through creating inventories and playbooks, then running them from a pipeline.
+
+### Step 1: Create an inventory
 
 An inventory defines the machines and groups that your playbooks will target. Harness IaCM supports three inventory types: **Static** (manually specified hosts), **Dynamic** (hosts derived from various sources including Terraform/OpenTofu workspaces), and **Plugin** (hosts populated via native Ansible inventory plugins).
 
@@ -74,22 +80,22 @@ Choose **Dynamic** when your infrastructure is provisioned by Terraform or OpenT
 
 ---
 
-## Step 2: Configure an Inventory
+### Step 2: Configure an inventory
 
 Once created, you configure your inventory using three tabs: **Hosts**, **Variables**, and **Activity History**.
 
-### Add Groups and Hosts
+#### Add groups and hosts
 
 The **Hosts** tab uses a two-column layout: groups appear in the left panel, and the hosts belonging to the selected group appear on the right. You can add groups and hosts in any order.
 
-To add a group, do the following:
+Groups let you target multiple hosts with a single playbook directive. To add a group, do the following:
 
 1. In the **Hosts** tab, click **+ New Group**. A **Group Configuration** panel slides in from the right.
 2. Enter a **Group name**.
 3. Optionally, select any existing hosts that belong to this group using the **Select hosts that belong to this group** search.
 4. Click **Apply Changes**.
 
-To add a host, do the following:
+Hosts are the individual machines your playbooks will configure. To add a host, do the following:
 
 1. Click **+ New Host**. A **Host Configuration** panel slides in from the right.
 2. Enter the **Host Address** (for example, `web1.example.com` or `10.0.1.25`).
@@ -122,7 +128,7 @@ When a dynamic inventory is linked to a Terraform or OpenTofu workspace, each pr
 
 These are immediately usable in your playbook tasks without any manual configuration.
 
-### Filter Hosts in Dynamic Inventories
+#### Filter hosts in dynamic inventories
 
 When using a dynamic inventory, you can filter which hosts are included based on attribute values. This is useful when you only want to target a subset of provisioned infrastructure — for example, only production web servers in a specific region.
 
@@ -137,7 +143,7 @@ Some common filter examples are:
 - **Role filter:** Exclude hosts where the `tags` field does not contain `webserver`.
 - **Region filter:** Only include hosts where `availability_zone` contains `us-east-1`.
 
-### Add Variables
+#### Add variables
 
 Variables let you pass configuration values into your playbooks at runtime. In the **Variables** tab, variables are added as inline rows. Do the following:
 
@@ -153,13 +159,13 @@ Use **secret** type for anything sensitive — API keys, database passwords, pri
 
 Variables defined here are available directly in your playbook tasks. For example, if you define `db_port: 5432`, you can reference it in a playbook as `{{ db_port }}`.
 
-### View Activity History
+#### View activity history
 
 The **Activity History** tab shows a log of all past executions against this inventory — including which playbook ran, when it ran, and whether it succeeded or failed. Use this for auditing and debugging.
 
 ---
 
-## Step 3: Create a Playbook
+### Step 3: Create a playbook
 
 A playbook describes the automation tasks to apply to your inventory. Playbooks are stored in a Git repository and referenced by Harness at runtime.
 
@@ -246,7 +252,7 @@ web1.example.com : ok=5    changed=3    unreachable=0    failed=0
 
 ---
 
-## Step 4: Integrate Ansible with a Pipeline
+### Step 4: Integrate Ansible with a pipeline
 
 Harness pipelines connect inventories and playbooks so you can run Ansible automation as part of your CI/CD workflows. The `IACMAnsiblePlugin` step handles execution — it runs your Ansible container, resolves the inventory, fetches the playbook from Git, and streams output to the pipeline logs.
 
@@ -348,6 +354,14 @@ To run Ansible configuration immediately after a Terraform/OpenTofu apply, chain
   mode="docs"
   fallback="Increase the step timeout value (for example, from 30m to 1h or 2h) in the step configuration. For very large inventories, consider using Ansible's serial keyword to batch execution."
 />
+
+---
+
+:::info Limitations
+- Dynamic inventories support Terraform and OpenTofu workspaces. Other inventory plugin types (AWS EC2, Azure, GCP) require the Plugin inventory type.
+- Pipeline step timeout defaults to 30 minutes. Long-running playbooks may require a custom timeout value.
+- The delegate must have network connectivity to all target hosts on the ports your playbooks require (typically SSH port 22).
+:::
 
 ---
 

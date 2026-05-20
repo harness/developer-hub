@@ -288,10 +288,13 @@ exact matches — look for semantic equivalence. These are synced tabs candidate
 | Signal | Best fit |
 |---|---|
 | 2–5 pages, short (≤150 lines each), same concept with provider/format/environment variants, 3+ shared heading groups | **Synced tabs** |
+| 2 pages, each 100+ lines, same user question but mutually exclusive full approaches (not just provider variants) | **DMS** |
 | 3+ pages, medium–long (100+ lines each), distinct self-contained topics, few shared headings | **DMS** |
 | 2–5 pages, short–medium (≤100 lines each), related but independent concepts, not provider variants | **Unsynced tabs** |
 | Single long page (800+ lines) that can be broken into self-contained subtopics | **DMS parent + children** |
 | Most siblings manage or configure sub-features of one parent concept | **DMS with "Manage [X]" parent** |
+
+**Full approach alternatives vs. provider variants:** If two pages answer the same user question with two **complete, mutually exclusive approaches** (e.g., "runtime installation via requirements.txt" vs "pre-built custom images"), use DMS even if there are only 2 options. This differs from provider variants (AWS vs Azure vs GCP) where the conceptual steps are identical and only commands/values differ. With full approach alternatives, users need to **choose one path and follow it through** — they are not comparing syntax side-by-side. Grid tiles make this choice clearer than tabs.
 
 Note: "Manage [X]" is a valid grouping label even when [X] matches the folder name — the
 grouping describes management intent, not navigation duplication.
