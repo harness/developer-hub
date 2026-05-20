@@ -162,7 +162,7 @@ The AI Assets Entity mapping discovers and imports AI/ML assets found in your Gi
 ![](./static/ai-assets-entity.png)
 <center>Figure 7: Enable AI Assets Entity</center>
 
-You can discover two classes of assets:
+You can discover the following class of asset:
 
 * **`ai_asset`** - Claude Code ecosystem components defined in `.claude-plugin/` manifests or standalone `.claude/` directories. Includes the following types:
 
@@ -173,22 +173,13 @@ You can discover two classes of assets:
    | `agent` | An autonomous agent definition | `python-explorer`, `doc-generator` |
    | `command` | A CLI-style command | `run`, `suggest-workflows`, `add-fme-step` |
 
-* **`dependency`** - AI/ML tooling and infrastructure detected in package files, config files, and infrastructure manifests. Includes the following types:
-
-   | Type | Description | Example |
-   |---|---|---|
-   | `library` | Package manager dependency | `openai`, `langchain`, `anthropic` |
-   | `model` | LLM/ML model reference | `gpt-4o`, `claude-3.5-sonnet` |
-   | `endpoint` | API endpoint or key reference | `OPENAI_API_KEY`, `ANTHROPIC_API_KEY` |
-   | `mcp_server` | MCP server configuration | Declared in `.mcp.json` or `claude_desktop_config.json` |
-
 
 :::info Monorepo Support
 The current implementation scans for plugin manifests and `.claude/` directories at the repository root only. Subdirectory scanning of AI assets in a monorepo might be planned in a future release.
 :::
 
 :::tip Find your imported entities in the Catalog
-Both asset classes are registered in the IDP Catalog under `AIAsset` kind with their respective types, and are browsable under the **AI Assets** and **AI Dependencies** tabs in the [Catalog](../../../catalog/overview)
+This asset class is registered in the IDP Catalog under `AIAsset` kind with its respective types, and is browsable under the **AI Assets** tab in the [Catalog](../../../catalog/overview)
 :::
 
 #### View AI Asset Instructions
