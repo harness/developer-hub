@@ -12,7 +12,7 @@ tags:
   - ait-tutorials
   - parameters
   - test-data
-sidebar_position: 4
+sidebar_position: 1
 ---
 
 Parameters are essential for creating flexible, reusable tests in Harness AI Test Automation. Whilst declaring parameters is straightforward, understanding how to set their values during test execution is equally important. This guide walks you through different methods for setting parameter values, from adding static constants upfront to using AI-powered extraction during test execution.
