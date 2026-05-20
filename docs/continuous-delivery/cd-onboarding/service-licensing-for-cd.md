@@ -175,10 +175,35 @@ The following video demonstrates how to navigate the subscription page and inter
 
 ---
 
-## When license limits are exceeded
+| Component                    | Service Tracking (Past State)                                    | Service Tracking (New State)                                    | Change Details                                                                                                                       |
+|------------------------------|-------------------------------------------------|-------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
+| **CD Service**               | 1 Service = 20 SI                               | 1 Service = 20 SI                               | No change in licensing rules.                                                                                                        |
+| **GitOps Service**           | Not measurable by customer, not calculated in product | 1 GitOps Service = 20 SI (1 Service)            | New service tracking introduced for GitOps Services. With the `CDS_GITOPS_SERVICE_BASED_LICENSING` feature flag, Applications linked to a Harness Service use the Service for license calculation. Go to [GitOps service-based licensing](#gitops-service-based-licensing) to learn how this affects license calculation. |
+| **Pipeline Execution (Deployments w/o Service)** | Not measurable by customer, not calculated in product | 2000 Executions = 1 Service                     | New service tracking introduced for Deployments without service. Specifically, per Stage Execution. If a Pipeline has 5 Stages with no service being deployed, we bill 5 Executions. |
+| **Serverless Services**      | 1 Function = 1 Service                          | 1 Function = 0.2 Service For SI based - No Charge | Adjusted valuation to 0.2 Service per function.                                                                                       |
 
 Harness does not block deployments when you exceed your licensed service count. If your active service count grows beyond your purchased license capacity, your account continues to function normally, and all pipelines and deployments execute without interruption.
 
+## GitOps service-based licensing
+
+By default, Harness calculates CD license usage based on **Services**, but calculates GitOps license usage based on **Applications**. This can cause a usage discrepancy when the same service deploys to multiple environments through separate GitOps Applications, because each Application counts independently toward license consumption even though they share the same underlying service and manifests.
+
+To address this, Harness offers service-based licensing for GitOps behind the `CDS_GITOPS_SERVICE_BASED_LICENSING` feature flag. When this feature flag is enabled, Harness uses the following logic to calculate GitOps license usage:
+
+- **Application linked to a Harness Service:** Harness uses the linked Service for license calculation, consistent with how CD licensing works. Multiple Applications that share the same Service count as a single Service for licensing purposes.
+- **Independent Application (no service linkage):** Harness continues to use the existing Application-based model. Each independent Application counts separately toward license consumption.
+
+This ensures that customers who link their GitOps Applications to Harness Services are not penalized for deploying the same service across multiple environments or clusters.
+
+:::info Enable service-based licensing for GitOps
+To enable service-based licensing, contact [Harness Support](mailto:support@harness.io) and request the `CDS_GITOPS_SERVICE_BASED_LICENSING` feature flag. After activation, any GitOps Application linked to a Harness Service uses that Service for license calculation instead of counting the Application separately.
+
+To link GitOps Applications to a Harness Service, go to [Linking Applications to a Service](/docs/continuous-delivery/gitops/gitops-entities/service/#linking-applications-to-a-service).
+:::
+
+---
+
+## Customer FAQs for the improved Service Tracking
 **Visibility and alerts:**
 The subscription page displays an over-limit indicator when your consumption exceeds your licensed capacity. Account administrators receive notifications through the Harness Platform to alert them of the overage.
 
