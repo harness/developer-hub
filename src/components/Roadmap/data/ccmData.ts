@@ -14,6 +14,24 @@ export const CcmData: Horizon = {
   Released: {
     description: "What has been released",
     feature: [
+      {
+        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
+        title: "Auto-Inference of Savings",
+        description: "Auto-inference of savings (partially realized) in Recommendations.",
+        backgroundColor: "var(--green-100)",
+      },
+      {
+        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
+        title: "Budget perspective decouple",
+        description: "Decoupling budget perspectives with cost category support.",
+        backgroundColor: "var(--green-100)",
+      },
+      {
+        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
+        title: "AWS Passthrough recommendations support with Cost Optimization Hub (EC2, EBS, RDS)",
+        description: "Increases the scope of Recommendations across all major AWS resource types, giving you a complete view of savings opportunities in your cloud environment. ",
+        backgroundColor: "var(--green-100)",
+      },
       // January 2025 Releases
       {
         tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
@@ -177,15 +195,8 @@ export const CcmData: Horizon = {
     ],
   },
  Now:{
-  description: "Q1 CY'26, Feb 2026 - Apr 2026",
+  description: "Q2 CY'26, May 2026 - July 2026",
     feature: [
-      // BAR (Budgets, Anomalies, Recommendations) Section
-      {
-        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
-        title: "Auto-Inference of Savings",
-        description: "Auto-inference of savings (partially realized) in Recommendations.",
-        backgroundColor: "var(--green-100)",
-      },
       {
         tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
         title: "Anomaly FinOps AI Assistant ",
@@ -196,24 +207,6 @@ export const CcmData: Horizon = {
         tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
         title: "Variance breakdown by service, team, and cost category",
         description: "Variance breakdown by service, team, and cost category with clear linkage from alert to investigation view.",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
-        title: "Budget perspective decouple",
-        description: "Decoupling budget perspectives with cost category support.",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
-        title: "Recommendation 2.0",
-        description: "Complete UX revamp for Recommendations 2.0 with improved user experience.",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
-        title: "AWS Passthrough recommendations support with Cost Optimization Hub (EC2, EBS, RDS)",
-        description: "Increases the scope of Recommendations across all major AWS resource types, giving you a complete view of savings opportunities in your cloud environment. ",
         backgroundColor: "var(--yellow-50)",
       },
       {
@@ -276,8 +269,6 @@ export const CcmData: Horizon = {
         description: "Capture recommendations savings in Jira and ServiceNow for tracking and reporting.",
         backgroundColor: "var(--yellow-50)",
       },
-
-      // AutoStopping Section
       {
         tag: [{value: "AutoStopping"}],
         title: "Smart Advisor for Kubernetes Cluster",
@@ -290,8 +281,6 @@ export const CcmData: Horizon = {
         description: "Support for Azure and AWS Spot instances in AutoStopping to optimize cost savings.",
         backgroundColor: "var(--yellow-50)",
       },
-
-      // Cluster Orchestrator Section
       {
         tag: [{value: "Cluster Orchestrator"}],
         title: "RBAC for Cluster Orchestrator",
@@ -322,8 +311,18 @@ export const CcmData: Horizon = {
         description: "Enhanced observability and monitoring capabilities for Cluster Orchestrator.",
         backgroundColor: "var(--yellow-50)",
       },
-
-      // Commitment Orchestrator Section
+      {
+        tag: [{value: "Cost visibility"}],
+        title: "K8S Data Ingestion for AWS (SCAD)",
+        description: "Addresses data correctness issues in the K8S Data Ingestion process, including lost events, node status discrepancies, and customer concerns about delegate-less K8S cluster costs.",
+        backgroundColor: "var(--yellow-50)",
+      },
+      {
+        tag: [{value: "Cost visibility"}],
+        title: "CCM Overview Page Revamp",
+        description: "Revamp of the CCM Overview page.",
+        backgroundColor: "var(--yellow-50)",
+      },
       {
         tag: [{value: "Commitment Orchestrator"}],
         title: "Commitment Orchestrator for RDS GA ",
@@ -360,18 +359,34 @@ export const CcmData: Horizon = {
         description: "Commitment Orchestrator will be able to purchase RI's for your Elasticache usage",
         backgroundColor: "var(--yellow-50)",
       },
-
-      // Cost Categories Section
+      {
+        tag: [{value: "Commitment Orchestrator"}],
+        title: "Support RIs for OpenSearch",
+        description: "Support RIs for OpenSearch in Commitment Orchestrator.",
+        backgroundColor: "var(--yellow-50)",
+      },
       {
         tag: [{value: "Cost Categories"}],
         title: "AI in Cost Categories",
         description: "AI-powered insights to help users analyze their commitments and notify the right stakeholders.",
         backgroundColor: "var(--yellow-50)",
       },
+      {
+        tag: [{value: "Cost visibility"}],
+        title: "Unit Cost Final Finishes",
+        description: "Final finishes for Unit Cost.",
+        backgroundColor: "var(--yellow-50)",
+      },
+      {
+        tag: [{value: "Cost visibility"}],
+        title: "Data Ingestion Status Update",
+        description: "Introduces a centralized Data Jobs Status section and real-time notifications for active data jobs, third-party outages, and widget-specific alerts across ingestion, Cost Category backfills, PDT updates, and external issues impacting Harness CCM.",
+        backgroundColor: "var(--yellow-50)",
+      },
     ],
  },
 Later:{
-    description: "Q2 2026 and beyond",
+    description: "Q3 2026 and beyond",
     feature: [
       {
         tag: [{value: "AutoStopping"}],
