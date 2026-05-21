@@ -816,6 +816,175 @@ Here are the custom parameters for the Harness AWS OIDC JWT:
   - `PIPELINE_EXECUTION` - This context is sent when a pipeline configuration is being executed.
   - `PERPETUAL_TASK` - This context is sent when a perpetual task is executing.
 
+### OIDC delegate selectors for AWS
+
+:::info Feature flag
+
+This behavior is controlled by the feature flag `CDS_OIDC_AWS_SESSION_TAG_DELEGATE_SELECTORS`. Contact [Harness Support](mailto:support@harness.io) to enable it on your account.
+
+:::
+
+You can configure AWS Cloud Provider connectors with OIDC authentication to include delegate selectors as AWS session tags in OIDC tokens. This enables you to enforce AWS IAM policies based on which Harness delegates execute tasks.
+
+When you configure an AWS connector with OIDC, Harness includes delegate selector information in the OIDC token with the `https://aws.amazon.com/tags/principal_tags/delegate_selectors` claim. AWS converts this into a session tag when assuming the IAM role, and you can reference it in IAM policies using `aws:PrincipalTag/delegate_selectors` conditions.
+
+Harness resolves delegate selectors following the precedence: Step > StepGroup > Stage > Pipeline (first match wins). Connector-level delegate selectors are always combined with the resolved selector. Multiple selectors are encoded using the `+` delimiter (for example, `+selector1+selector2+`).
+
+#### IAM trust policy configuration
+
+To use delegate selectors with OIDC, add the `sts:TagSession` permission to your IAM role's trust policy:
+
+<details>
+<summary>Trust policy with sts:TagSession permission</summary>
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Federated": "arn:aws:iam::123456789012:oidc-provider/app.harness.io/ng/api/oidc/account/YOUR_ACCOUNT_ID"
+      },
+      "Action": [
+        "sts:AssumeRoleWithWebIdentity",
+        "sts:TagSession"
+      ],
+      "Condition": {
+        "StringEquals": {
+          "app.harness.io/ng/api/oidc/account/YOUR_ACCOUNT_ID:aud": "sts.amazonaws.com"
+        }
+      }
+    }
+  ]
+}
+```
+
+</details>
+
+#### IAM policy conditions
+
+You can enforce delegate selector requirements using IAM policy conditions.
+
+**Allow specific delegate selector (OR condition):**
+
+<details>
+<summary>IAM policy with OR condition for delegate selectors</summary>
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowS3Access",
+      "Effect": "Allow",
+      "Action": ["s3:*"],
+      "Resource": "*",
+      "Condition": {
+        "StringLike": {
+          "aws:PrincipalTag/delegate_selectors": [
+            "*+delegate-selector-1+*",
+            "*+delegate-selector-2+*"
+          ]
+        }
+      }
+    }
+  ]
+}
+```
+
+</details>
+
+This policy allows S3 access only if the delegate selector matches either of the specified selectors.
+
+**Require multiple delegate selectors (AND condition):**
+
+To enforce that multiple delegate selectors must be present, use DENY rules with DeMorgan's Law (`NOT(NOT A OR NOT B) = A AND B`):
+
+<details>
+<summary>IAM policy with AND condition using DENY rules</summary>
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowS3",
+      "Effect": "Allow",
+      "Action": ["s3:*"],
+      "Resource": "*"
+    },
+    {
+      "Sid": "DenyUnlessDelegateSelector1Present",
+      "Effect": "Deny",
+      "Action": ["s3:*"],
+      "Resource": "*",
+      "Condition": {
+        "StringNotLike": {
+          "aws:PrincipalTag/delegate_selectors": "*+delegate-selector-1+*"
+        }
+      }
+    },
+    {
+      "Sid": "DenyUnlessDelegateSelector2Present",
+      "Effect": "Deny",
+      "Action": ["s3:*"],
+      "Resource": "*",
+      "Condition": {
+        "StringNotLike": {
+          "aws:PrincipalTag/delegate_selectors": "*+delegate-selector-2+*"
+        }
+      }
+    }
+  ]
+}
+```
+
+</details>
+
+This policy allows S3 access by default, but denies access if either delegate selector is NOT present, resulting in access only when BOTH selectors are present.
+
+#### Two-tier policy approach
+
+You can separate connector validation permissions from service operation permissions:
+
+**Tier 1: Allow connector validation**
+
+```json
+{
+  "Sid": "EC2Permissions",
+  "Effect": "Allow",
+  "Action": ["ec2:DescribeRegions"],
+  "Resource": "*"
+}
+```
+
+**Tier 2: Restrict service operations**
+
+```json
+{
+  "Sid": "CloudFormationWithDelegateRestriction",
+  "Effect": "Allow",
+  "Action": ["cloudformation:*"],
+  "Resource": "*",
+  "Condition": {
+    "StringLike": {
+      "aws:PrincipalTag/delegate_selectors": "*+your-delegate-selector+*"
+    }
+  }
+}
+```
+
+This approach allows connector validation to succeed while restricting actual service operations to specific delegates.
+
+:::info Future enhancement
+
+Support for delegate selectors in OIDC tokens is planned for AWS Secret Manager and AWS KMS connectors. For these connectors, only the connector-level delegate selectors will be included (not pipeline or step-level selectors).
+
+:::
+
+For more information about delegate selectors, go to [Select delegates with selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors).
+
 
 #### Examples
 

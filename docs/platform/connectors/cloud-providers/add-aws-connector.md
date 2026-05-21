@@ -51,8 +51,9 @@ Review the following information carefully to ensure you select the correct cred
 
 1. Select one of the four primary [Credentials options](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md#credentials).
 2. To use cross-account ARN, select **Enable cross-account access (STS Role)**. This option is available for all authentication methods, but it may not be supported by all pipeline steps. For more information about cross-account access in AWS connectors, go to the [AWS connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md).
-3. By default, Harness uses the `us-east-1` region to test the credentials for AWS connectors. If you want to use a different region or an AWS GovCloud account, select it in the **Test Region** field. For more information about AWS GovCloud support, go to the [AWS connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#test-region-and-aws-govcloud-support).
-4. Select **Continue** to proceed to **Select Connectivity Mode**.
+3. If you select **OIDC** as the credential type, you can use delegate selectors in OIDC tokens to enforce AWS IAM policies based on which delegates execute tasks. For details, go to [OIDC delegate selectors for AWS](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference#oidc-delegate-selectors-for-aws).
+4. By default, Harness uses the `us-east-1` region to test the credentials for AWS connectors. If you want to use a different region or an AWS GovCloud account, select it in the **Test Region** field. For more information about AWS GovCloud support, go to the [AWS connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#test-region-and-aws-govcloud-support).
+5. Select **Continue** to proceed to **Select Connectivity Mode**.
 
 ### Use IRSA
 

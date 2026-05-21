@@ -114,6 +114,8 @@ This option uses the [AWS Security Token Service](https://docs.aws.amazon.com/IA
 
     - **Region and IAM Role**: Once your configuration is complete, set the IAM role and region below to proceed with the setup, as shown in the image above.
 
+    - **Delegate Selectors for Access Control** (optional): You can use delegate selectors in OIDC tokens to restrict access to secrets based on which delegates execute tasks. This is useful for enforcing environment-level boundaries. For more information, go to [OIDC delegate selectors for AWS](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference#oidc-delegate-selectors-for-aws).
+
 <details>
     <summary>An additional step before proceeding.</summary>
 
