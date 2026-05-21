@@ -37,6 +37,21 @@ export const IdpData: Horizon = {
     feature: [
       {
         tag: [{ value: "Catalog" }, { value: "AI & Automation" }],
+        title: "Enhanced Entity Overview and pages",
+        description: "An updated overview and individual pages for different entity types that is focused on bubbling up most important functional data",
+      },
+      {
+        tag: [{ value: "Scorecards" }],
+        title: "Scorecard Alerts",
+        description: "Notify developers via Slack and email when scorecard checks pass or fail",
+      },
+      {
+        tag: [{ value: "Workflows" }, { value: "Developer Experience" }],
+        title: "Visual Workflow Creation",
+        description: "UI-first workflow authoring with visual composition, no YAML required",
+      },
+      {
+        tag: [{ value: "Workflows" }, { value: "AI & Automation" }],
         title: "Workflow Authoring Agent",
         description: "AI-powered agent that drafts and refines workflow templates from natural language intent",
       },
