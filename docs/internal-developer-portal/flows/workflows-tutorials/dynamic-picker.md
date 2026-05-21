@@ -1092,4 +1092,6 @@ properties:
 
 For a complete example, refer to the [sample Workflows YAML](https://github.com/harness-community/idp-samples/blob/main/tutorial-dynamic-picker-examples.yaml).
 
-
+:::info Harness APIs without a backend proxy
+If you are calling a Harness-internal API (NG APIs, platform APIs) and want the dropdown to show only what the **logged-in user has access to**, use [`HarnessEntitySelector`](/docs/internal-developer-portal/flows/workflows-tutorials/harness-entity-selector) instead of `SelectFieldFromApi`. It uses the user's token and requires no backend proxy setup.
+:::
