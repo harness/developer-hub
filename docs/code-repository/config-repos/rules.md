@@ -61,9 +61,31 @@ The following rules are available when adding branch rules. Some rules require a
 | **Require approval of new changes** | This rule requires that you *also* enable **Require a minimum number of reviewers** or **Require review from code owners** (or both). Without at least one of those additional rules, this rule has no effect. |
 | **Require resolution of change requests** | None. 
 | **Require comment resolution** | None. |
-| **Require status checks to pass** | You must specify the checks that must pass. |
+| **Require status checks to pass** | You must specify the checks that must pass. Go to [Status checks from Harness pipelines](#status-checks-from-harness-pipelines) to learn how to make a pipeline appear in the dropdown. |
 | **Limit merge strategies** | You must select the allowed merge strategies. |
 | **Auto delete branch on merge** | None. |
+
+### Status checks from Harness pipelines
+
+When you enable **Require status checks to pass**, the status check dropdown only lists checks that have already been emitted for the repository at least once.
+
+For Harness pipelines, this means the pipeline must run from a **pull request event** before it appears as an available status check in the branch rule configuration.
+
+If a pipeline does not appear in the status check dropdown, check the following:
+
+- **Default codebase:** The pipeline has a CI/Build stage configured with the Harness Code repository as the default codebase.
+- **PR webhook trigger:** The pipeline has a webhook trigger configured for pull request events, such as open, reopen, or update.
+- **At least one run:** The pipeline has been triggered at least once by opening or updating a pull request.
+- **Status check published:** The pipeline execution publishes a status check back to the repository.
+
+Manual executions, custom triggers, branch triggers, and tag triggers do not create the pull request status check entry required for branch rules.
+
+To make a Harness pipeline appear in the dropdown:
+1. Configure the pipeline with the Harness Code repository as the default codebase.
+2. Add or update the pipeline trigger to listen for pull request events.
+3. Open or update a test pull request to trigger the pipeline.
+4. Wait for the pipeline execution to complete and publish its status check to the repository.
+5. Return to **Manage Repository** > **Rules** > **Require status checks to pass** and select the emitted status check.
 
 ### Default Reviewer
 
