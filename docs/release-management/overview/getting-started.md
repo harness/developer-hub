@@ -49,6 +49,7 @@ Release Orchestration solves this by providing:
 - **Structured process modeling:** Define reusable release blueprints ([Processes](/docs/release-orchestration/processes/overview)) composed of [Phases](/docs/release-orchestration/phases/phases-overview) and [Activities](/docs/release-orchestration/activities/activities-overview) instead of ad-hoc checklists.
 - **Automated and manual execution:** Automate pipeline-backed steps while retaining manual sign-offs and approvals where governance requires them.
 - **End-to-end visibility:** Track activity-level status, phase-level progress, and overall release health in real time.
+- **Proactive notifications:** Configure [notifications](/docs/release-orchestration/notifications) for key release events like starts, completions, failures, and input requirements, ensuring teams stay informed through Slack.
 - **Built-in governance and auditability:** Enforce approvals, capture sign-offs, and maintain a full audit trail linking code to deployment.
 - **Scheduled releases:** Use [Release Groups](/docs/release-orchestration/releases/modeling-releases) and the Release Calendar to run releases on a cadence (daily, weekly, monthly, or custom).
 
@@ -76,7 +77,9 @@ Before you begin, ensure the following:
 
 - **Pipelines (for automated activities):** If you plan to use [Automated Activities](/docs/release-orchestration/activities/activity-types/automated-activities), have at least one Harness pipeline configured. Automated activities encapsulate pipelines, so the pipeline must exist before you can reference it.
 
-- **Phase owners identified:** Identify the owners responsible for each phase of your release (for example, Development, QA, DevOps). Owners are assigned per phase and receive notifications when their input is needed.
+- **Phase owners identified:** Identify the owners responsible for each phase of your release (for example, Development, QA, DevOps). Owners are assigned per phase and can receive notifications when their input is needed.
+
+- **Slack notification channels (optional):** Configure Slack notification channels in your account settings if you want to receive real-time alerts for release events. Go to [Notifications](/docs/release-orchestration/notifications) to configure channels and events.
 
 ## Key concepts
 
@@ -157,7 +160,23 @@ Dependencies can model both sequential and parallel execution. For details, see 
 
 For more on variables and input configuration, see [Inputs and Variables](/docs/release-orchestration/inputs-and-variables/overview).
 
-## Step 6: Monitor and remediate
+## Step 6: Configure notifications (optional)
+
+Set up [notifications](/docs/release-orchestration/notifications) to receive real-time Slack alerts for key release events:
+
+1. Navigate to **Account Settings** or **Project Settings** > **Notifications**
+2. Select **New Notification Setup**
+3. Choose **Release Orchestration** as the resource type
+4. Configure conditions based on events you want to monitor:
+   - **Release Start/End/Burned:** Track release lifecycle
+   - **Release Input Waiting:** Get notified when manual input is needed
+   - **Phase Start/End:** Monitor phase-level progress
+   - **Activity On Hold/Task Output Waiting:** Track blocked activities
+5. Select Slack channels to receive notifications
+
+Notifications help teams stay informed without constantly checking the Release Calendar, and enable quick response to failures or approval requests.
+
+## Step 7: Monitor and remediate
 
 During execution, track progress at every level:
 
@@ -173,6 +192,7 @@ If execution is waiting for a sign-off, complete the [Manual Activity](/docs/rel
 
 - **[Key Concepts](/docs/release-orchestration/overview/key-concepts):** Full glossary of Release Orchestration entities and terminology.
 - **[Process Modeling](/docs/release-orchestration/processes/process-modeling):** Deep dive into building processes manually.
+- **[Notifications](/docs/release-orchestration/notifications):** Configure real-time Slack alerts for release events.
 - **[Executing a Release](/docs/release-orchestration/execution/executing-a-release):** Detailed guide on running and monitoring releases.
 - **[Multi-Service Release Example](/docs/release-orchestration/examples-and-walkthroughs/multi-service-release-example):** End-to-end walkthrough of a real-world release.
 - **[Common Use Cases](/docs/release-orchestration/overview/use-cases):** Patterns for microservice releases, compliance workflows, emergency releases, and more.

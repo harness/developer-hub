@@ -5452,6 +5452,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'release-management/releases/overview',
             'release-management/releases/modeling-releases',
+            'release-management/releases/release-calendar',
             'release-management/releases/adhoc-releases',
             'release-management/releases/release-reports',            
           ],
@@ -5512,6 +5513,7 @@ const sidebars: SidebarsConfig = {
           // Keep only "Capturing Sign-off" in this section
           items: ['release-management/collaboration-and-approvals/manual-approvals'],
         },
+        'release-management/notifications',
         {
           type: 'html',
           value: 'Examples and Walkthroughs',

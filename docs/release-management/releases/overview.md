@@ -267,11 +267,17 @@ Ensure complete traceability by capturing all approvals with timestamps and appr
 
 This comprehensive audit trail supports compliance requirements and helps teams learn from past releases.
 
+## Staying informed
+
+Release Orchestration supports notifications for key release events. You can configure notifications to receive alerts when releases start, complete, fail, or require input. This helps teams stay informed about release progress and respond quickly to issues.
+
+[Learn how to set up release notifications](../notifications.md) to monitor your releases through Slack.
+
 ## Related Topics
 
 - [Modeling Releases](./modeling-releases.md)
 - [Inputs and Variables Overview](../inputs-and-variables/overview.md)
 - [Executing a release](../execution/executing-a-release.md)
 - [Release Calendar](../release-calendar/overview.md)
-- [Executing a release](../execution/executing-a-release.md)
+- [Release Notifications](../notifications.md)
 
