@@ -9,4 +9,4 @@ import Local from '/docs/platform/shared/local-login-note.md'
 For example, for the Harness production cluster `prod-3`, the local login URL is `https://app3.harness.io/auth/#/local-login`. Once you login, you can change the settings to enable users to log in.
 
 ### Disable local login
-To disable Local login, use the `DISABLE_LOCAL_LOGIN` feature flag . Contact [Harness Support](mailto:support@harness.io) to enable the feature flag.
+To disable Local login, use the `DISABLE_LOCAL_LOGIN` feature flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature flag.

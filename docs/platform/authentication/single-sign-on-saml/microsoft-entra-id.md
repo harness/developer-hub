@@ -28,13 +28,19 @@ tags:
   - Azure
 ---
 
+import SCIMurl from '/docs/platform/shared/scimurl.md'
+
 You can use Microsoft Entra ID as a SAML identity provider for Harness, allowing users to log in with their existing Microsoft credentials and optionally sync Entra ID groups to Harness user groups for automatic access control.
 
 Users are not created as part of the SAML SSO integration. They are invited to Harness using their email addresses, and once they log in, Harness registers their email addresses. For more information, go to <a href="/docs/platform/authentication/single-sign-on-saml/overview#saml-sso-with-harness" target="_blank">Overview of SAML SSO with Harness</a>.
 
 For detailed steps on adding SAML SSO with Microsoft Entra ID, follow Microsoft's tutorial on [Microsoft Entra single sign-on (SSO) integration with Harness](https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/harness-tutorial).
 
-import SCIMurl from '/docs/platform/shared/scimurl.md'
+:::info note
+If you use <a href="/docs/self-managed-enterprise-edition/smp-overview" target="_blank">Harness Self-Managed Enterprise Edition</a>, your instance must be accessed via an HTTPS load balancer, otherwise SAML authentication will fail over HTTP.
+:::
+
+---
 
 ## What will you learn in this topic?
 
@@ -55,9 +61,7 @@ Before you configure Microsoft Entra ID app to be the SAML identity provider for
 
 ---
 
-:::info note
-If you use <a href="/docs/self-managed-enterprise-edition/smp-overview" target="_blank">Harness Self-Managed Enterprise Edition</a>, your instance must be accessed via an HTTPS load balancer, otherwise SAML authentication will fail over HTTP.
-:::
+## Interaction between Harness and Microsoft Entra ID 
 
 The following diagram shows how Harness and Microsoft Entra ID exchange information during SAML SSO setup:
 
@@ -79,7 +83,7 @@ The following image shows a Harness User Group with two users and their correspo
 
 ## Endpoint URL for Azure
 
-Use two browser windows or tabs for this process. Open Azure app in one tab and Harness in the other.
+Use two browser windows or tabs for this process. Open Azure app in one tab and Harness in the other. Follow the steps below to add the entity ID in Harness.
 
 ### Step 1. Add entity ID in Harness
 
@@ -125,6 +129,7 @@ Next, use the **SAML SSO Provider** settings in Harness to set up your Azure app
    </div>
 
 ### Step 3. Add endpoint URL in Azure
+
 8. Copy the **Harness SAML Endpoint URL** from the **Add SAML Provider** dialog, and paste it in the **Reply URL** in your Azure app.
 
    <div style={{textAlign: 'center'}}>
@@ -312,41 +317,53 @@ The Harness User is now added and the RBAC settings for the Harness User Group a
 
 ---
 
-## Users in over 150 groups
+## Configure group claims for users with 150+ groups
 
-When a user logs in via SAML SSO, Microsoft Entra ID sends Harness a token. A token is a packet of information about who the user is and what groups they belong to. That token has a size limit.
+Microsoft Entra ID limits the number of groups included in SAML tokens to 150. When a user belongs to more than 150 groups, Entra ID omits the group list from the token and instead provides a link to the Microsoft Graph API endpoint to retrieve group information.
 
-When a user has more than 150 group memberships, the number of groups listed in the token can grow the token size. Microsoft Entra ID limits the number of groups it will emit in a token to 150 for SAML assertions.
 
-Instead of sending the group list, Microsoft Entra ID just sends a link to fetch the group information from this API endpoint.
+### Configure API credentials
 
-Harness uses those groups to map the user to the right Harness User Groups (for RBAC). If the group list is missing from the token, Harness cannot map a user to the Harness User Group. Harness invokes Microsoft's API directly to get the full list.
+To enable Harness to query the Graph API for group memberships, you must configure **Client ID** and **Client Secret** credentials, as described below:
 
-To configure Harness to handle users in more than 150 groups, do the following:
-
-1. In your Azure account, go to **App registrations**.
-2. Select your app. Copy the **Application (client) ID** and paste it in the **Client ID** field in your Harness account.
-3. Select **Certificates & secrets** > **New Client Secret**, add a description, and select **Add**.
-4. Copy the secret value immediately as Azure only shows it once. Save it as an encrypted text secret in Harness. For details, go to <a href="/docs/platform/secrets/add-use-text-secrets" target="_blank">Use encrypted text secrets</a>.
-5. Select the secret reference in the **Client Secret** field in your Harness account.
+1. In your Azure account, go to **App registrations** and select your app.
+2. Copy the **Application (client) ID** and paste it into the **Client ID** field in your Harness SAML configuration.
+3. In your app, go to **Certificates and Secrets** → **New Client Secret**.
+4. Add a description and select **Add**.
+5. Copy the generated secret value.
+6. In Harness, create an encrypted text secret with this value. For detailed steps, go to [Use encrypted text secrets](/docs/platform/secrets/add-use-text-secrets).
+7. In your Harness SAML configuration, select this secret reference in the **Client Secret** field.
 
    <div style={{textAlign: 'center'}}>
       <DocImage path={require('../static/single-sign-on-saml-100.png')} width="80%" height="40%" title="Click to view full size image" />
    </div>
 
-6. In your Azure app, go to **Manage** > **API Permissions**.
-7. Select **Add a permission** > **Microsoft Graph** > **Application permissions**.
-8. Add the following permissions. You must enable each for both **Delegated permissions** and **Application permissions**:
-   - `Directory.Read.All`
-   - `Group.Read.All`
-   - `GroupMember.Read.All`
-   - `User.Read.All`
+### Configure API permissions
 
-For more information on Azure application permissions, go to <a href="https://learn.microsoft.com/en-us/graph/permissions-reference#application-permissions-93" target="_blank">Application permissions</a> in the Azure documentation.
+The registered Azure app requires the following Microsoft Graph API permissions (set for both **Delegated** and **Application** permission types):
 
-## Next steps
+- `Directory.Read.All`
+- `Group.Read.All`
+- `GroupMember.Read.All`
+- `User.Read.All`
 
-- <a href="/docs/platform/authentication/single-sign-on-saml/okta"target="_blank" >SAML SSO with Okta</a>: Set up Harness with Okta as a SAML SSO provider
-- <a href="/docs/platform/authentication/single-sign-on-saml/saml-sso-with-onelogin"target="_blank" >SAML SSO with OneLogin</a>: Set up Harness with OneLogin as a SAML SSO provider
-- <a href="/docs/platform/authentication/single-sign-on-saml/keycloak"target="_blank" >SAML SSO with Keycloak</a>: Set up Harness with Keycloak as a SAML SSO provider
-- <a href="/docs/platform/authentication/single-sign-on-saml/advanced-saml-configuration"target="_blank" >Advanced SAML configuration</a>: Use local login and encrypted SAML with Harness
+To add these permissions:
+
+1. In your Azure app, go to **Manage** → **API Permissions** → **Add a permission**.
+2. Under **Microsoft APIs**, select **Microsoft Graph**.
+3. Select **Application permissions** and add all four permissions listed above.
+4. Click **Add permissions**.
+5. Add the four permissions mentioned earlier for **Delegated permissions**.
+6. Click **Add permissions**.
+7. Select **Grant admin consent** to activate the permissions.
+
+For more information on Azure application permissions, go to [Application permissions](https://learn.microsoft.com/en-us/graph/permissions-reference#application-permissions-93) in the Microsoft documentation.
+
+---
+
+## Related articles
+
+- <a href="/docs/platform/authentication/single-sign-on-saml/okta" target="_blank" >SAML SSO with Okta</a> - Create an SAML integration in Okta for Harness.
+- <a href="/docs/platform/authentication/single-sign-on-saml/saml-sso-with-onelogin" target="_blank" >SAML SSO with OneLogin</a> - Configure OneLogin as a SAML SSO provider in Harness.
+- <a href="/docs/platform/authentication/single-sign-on-saml/keycloak" target="_blank" >SAML SSO with Keycloak</a> - Configure Harness to use Keycloak SAML client as an SSO provider.
+- <a href="/docs/platform/authentication/single-sign-on-saml/advanced-saml-configuration" target="_blank" > Advanced SAML configuration</a> - Configure advanced SAML options in Harness.

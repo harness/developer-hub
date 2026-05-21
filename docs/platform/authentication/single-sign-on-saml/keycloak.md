@@ -42,6 +42,7 @@ By the end of this topic, you will be able to:
 ---
 
 ## Before you begin
+
 Before you configure Keycloak as the SAML identity provider for Harness, check that you have:
 - A Harness account with Account Admin permissions.
 - An existing Keycloak instance with admin access to create and configure SAML clients.
@@ -86,6 +87,7 @@ If your Harness account uses a vanity URL, replace `https://app.harness.io` with
 :::
 
 ### Configure client settings
+
 Apply the following settings on the client you just created.
 
 5. Under **Settings** tab, navigate to **Signature and Encryption** section, and enter the following values:
@@ -163,6 +165,8 @@ You should see the new provider under **Login via SAML**; you might need to expa
 
 ## Enable and test SSO
 
+Enable your SSO configuration and verify users can authenticate successfully by following the steps below:
+
 1. Under **Account Settings** in Harness, select **Authentication**, and then open **Login via SAML** for the Keycloak provider.
 2. In the **Enable SAML provider** dialog, select **Test** so Harness validates the exchange.
 3. When the test passes, Harness shows **SAML test successful** banner at the top.
@@ -170,9 +174,9 @@ You should see the new provider under **Login via SAML**; you might need to expa
 
 ---
 
-## Next steps
+## Related articles
 
-- <a href="/docs/platform/authentication/single-sign-on-saml/okta" target="_blank">SAML SSO with Okta</a>
-- <a href="/docs/platform/authentication/single-sign-on-saml/microsoft-entra-id" target="_blank">SAML SSO with Microsoft Entra ID</a>
-- <a href="/docs/platform/authentication/single-sign-on-saml/onelogin" target="_blank">SAML SSO with OneLogin</a>
-- <a href="/docs/platform/authentication/single-sign-on-saml/advanced-saml-configuration" target="_blank">Advanced SAML configuration</a>
+- <a href="/docs/platform/authentication/single-sign-on-saml/okta" target="_blank" >SAML SSO with Okta</a> - Create an SAML integration in Okta for Harness.
+- <a href="/docs/platform/authentication/single-sign-on-saml/ms-entra-id" target="_blank" >SAML SSO with Microsoft Entra ID</a> - Configure Microsoft Entra ID as a SAML SSO provider in Harness.
+- <a href="/docs/platform/authentication/single-sign-on-saml/saml-sso-with-onelogin" target="_blank" >SAML SSO with OneLogin</a> - Configure OneLogin as a SAML SSO provider in Harness.
+- <a href="/docs/platform/authentication/single-sign-on-saml/advanced-saml-configuration" target="_blank" > Advanced SAML configuration</a> - Configure advanced SAML options in Harness.

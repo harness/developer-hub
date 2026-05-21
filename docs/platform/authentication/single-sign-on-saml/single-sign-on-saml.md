@@ -9,7 +9,6 @@ helpdocs_is_published: true
 canonical_url: https://www.harness.io/blog/general-availability-harness-developer-hub-hdh
 redirect_from:
     - /docs/platform/authentication/single-sign-on-saml/overview
-
 ---
 
 import SCIMurl from '/docs/platform/shared/scimurl.md'
@@ -102,7 +101,7 @@ Ensure that you have at least two corresponding user accounts when setting up an
 
 ## Next steps
 
-- <a href="/docs/platform/authentication/single-sign-on-saml/okta"target="_blank" >SAML SSO with Okta</a>
-- <a href="/docs/platform/authentication/single-sign-on-saml/ms-entra-id"target="_blank" >SAML SSO with Microsoft Entra ID</a>
-- <a href="/docs/platform/authentication/single-sign-on-saml/onelogin"target="_blank" >SAML SSO with OneLogin</a>
-- <a href="/docs/platform/authentication/single-sign-on-saml/keycloak"target="_blank" >SAML SSO with Keycloak</a>
+- <a href="/docs/platform/authentication/single-sign-on-saml/ms-entra-id"target="_blank" >SAML SSO with Microsoft Entra ID</a> - Configure Microsoft Entra ID as a SAML SSO provider in Harness.
+- <a href="/docs/platform/authentication/single-sign-on-saml/okta"target="_blank" >SAML SSO with Okta</a> - Create an SAML integration in Okta for Harness.
+- <a href="/docs/platform/authentication/single-sign-on-saml/keycloak"target="_blank" >SAML SSO with Keycloak</a> - Configure Harness to use Keycloak SAML client as an SSO provider.
+- <a href="/docs/platform/authentication/single-sign-on-saml/saml-sso-with-onelogin"target="_blank" >SAML SSO with OneLogin</a> - Configure OneLogin as a SAML SSO provider in Harness.
