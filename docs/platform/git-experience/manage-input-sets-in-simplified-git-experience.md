@@ -128,7 +128,7 @@ For more details, go to [Manage a Harness Pipeline Repo Using Git Experience](ma
 
 #### Define the input set branch or tag in trigger YAML
 
-If your pipeline is on a static branch (such as `main`) but your input sets reside on branches or tags that change with each PR or trigger event, you can use the `inputSetBranchName` property in your trigger YAML to specify the branch or tag from which input sets are fetched. This property supports Harness expressions like `<+trigger.sourceBranch>` and Git tag references using `$tag:<tag-name>` or `$tag:<expression>` formats.
+If your pipeline is on a static branch (such as `main`) but your input sets reside on branches or tags that change with each PR or trigger event, you can use the `inputSetBranchName` property in your trigger YAML to specify the branch or tag from which input sets are fetched. This property supports Harness expressions like `<+trigger.sourceBranch>` and Git tag references using `$tag:<tag-name>` or `<+"$tag:"+<expression>>` formats.
 
 For details and behavior rules, go to [Define the input set branch for trigger-based executions](/docs/platform/pipelines/input-sets#define-the-input-set-branch-for-trigger-based-executions).
 

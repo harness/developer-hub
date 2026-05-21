@@ -112,7 +112,7 @@ You can add the `pipelineBranchName` and `inputSetBranchName` properties to your
 To reference a Git tag, use the `$tag:` format:
 
 - **`$tag:<tag-name>`** - References a specific Git tag (for example, `$tag:v1.0.0` or `$tag:release-2024.01`)
-- **`$tag:<expression>`** - References a Git tag using an expression that resolves at runtime to the tag name (for example, `$tag:<+trigger.tag>` resolves to the Git tag from the trigger payload)
+- **`<+"$tag:"+<expression>>`** - References a Git tag using an expression that resolves at runtime to the tag name (for example, `<+"$tag:"+<+trigger.tag>>` resolves to the Git tag from the trigger payload)
 
 <details>
 <summary>Example: Execute pipeline from pushed Git tag</summary>
@@ -146,8 +146,8 @@ trigger:
             - key: <+trigger.payload.created>
               operator: Equals
               value: "true"
-  pipelineBranchName: $tag:<+trigger.tag>
-  inputSetBranchName: $tag:<+trigger.tag>
+  pipelineBranchName: <+"$tag:"+<+trigger.tag>>
+  inputSetBranchName: <+"$tag:"+<+trigger.tag>>
   inputSetRefs:
     - production-input-set
   inputYaml: |
@@ -167,8 +167,8 @@ In this example:
 2. **Important:** The `payloadConditions` filter ensures the trigger **only** fires for tag push events (not regular branch pushes):
    - `<+trigger.payload.ref>` starts with `refs/tags/` (filters for tags only)
    - `<+trigger.payload.created>` equals `true` (filters for tag creation, not deletion)
-3. The `pipelineBranchName: $tag:<+trigger.tag>` loads the pipeline YAML from the pushed Git tag
-4. The `inputSetBranchName: $tag:<+trigger.tag>` loads the input set from the same Git tag
+3. The `pipelineBranchName: <+"$tag:"+<+trigger.tag>>` loads the pipeline YAML from the pushed Git tag
+4. The `inputSetBranchName: <+"$tag:"+<+trigger.tag>>` loads the input set from the same Git tag
 5. When you push tag `v1.0.0`, both the pipeline and input set are fetched from that tag
 
 Without the payload conditions, the trigger would fire on ALL push events (branches AND tags), causing `<+trigger.tag>` to be empty for branch pushes and resulting in an error. The payload conditions ensure this trigger only activates for tag push events.

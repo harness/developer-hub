@@ -201,7 +201,7 @@ You can add the `pipelineBranchName` and `inputSetBranchName` properties to your
 - **`pipelineBranchName`** - Specifies the branch or tag from which to load the pipeline YAML
 - **`inputSetBranchName`** - Specifies the branch or tag from which to load input sets
 
-To reference a Git tag, use the `$tag:` format (for example, `$tag:v1.0.0` or `$tag:<+trigger.tag>`).
+To reference a Git tag, use the `$tag:` format (for example, `$tag:v1.0.0` or `<+"$tag:"+<+trigger.tag>>`).
 
 **Example use case:** When a new tag (for example, `v1.0.0`) is pushed to your repository, you can configure the trigger to load both the pipeline YAML and input sets from that same tag, ensuring that your pipeline executions use versioned configurations that match your Git tags.
 
