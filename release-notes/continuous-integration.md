@@ -1,20 +1,20 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2026-05-11T10:00
+date: 2026-05-18T10:00
 sidebar_position: 10
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/continuous-integration/rss.xml" />
+- Improved [PrivateLink](/docs/platform/references/private-network-connectivity/private-link-connect) reliability. For private-connect connectors that have no delegate selectors configured, Harness now automatically injects the `harness-cloud` delegate selector. This feature is behind the feature flag `CI_ENABLE_PRIVATE_CONNECT`. (CI-22672)
 
 These release notes describe recent changes to Harness Continuous Integration.
 
-:::info About Harness Release Notes
+- Fixed an issue where `executionTags.addTag` added `null` values to pipeline execution tags when referencing unresolved environment variables. (CI-22595)
 
-- Addressed a security vulnerability in the cache-service image by updating the crypto/x509 package. (CI-20463)
+- Fixed an issue where a false "CI image version outdated" warning appeared when using SHA-256 digest references for `ci-addon` or `lite-engine` images instead of tags. (CI-22628)
 - **Security advisories:** Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
 - **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
@@ -61,6 +61,31 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 :::
 
 ## May 2026
+
+### Version 1.140.0
+
+<!-- May 2026 -->
+
+#### New Features and Enhancements
+
+- Added in-product egress allowlisting for Harness Cloud builds. You can now configure network egress restrictions for Linux and Windows cloud build VMs directly from the Harness UI. (CI-21525)
+
+- Improved [PrivateLink](/docs/platform/references/private-network-connectivity/private-link-connect) reliability by automatically injecting the `harness-cloud` delegate selector for private-connect connectors that have no selectors configured. This feature is behind the feature flag `CI_ENABLE_PRIVATE_CONNECT`. (CI-22672)
+
+#### Fixed Issues
+
+- Fixed an issue where `executionTags.addTag` added null values to pipeline execution tags when referencing unresolved environment variables. (CI-22595)
+
+- Fixed an issue where a false "CI image version outdated" warning appeared when using SHA256 digest references for ci-addon or lite-engine images instead of tags. (CI-22628)
+
+- Fixed an additional scenario where the Build and Push to GAR step added provenance and SBOM attestations when Docker Layer Caching (DLC) was enabled. (CI-22576)
+
+#### Harness Images Updates
+
+| Image | Change | Previous Version | New Version |
+|-------|--------|------------------|-------------|
+| `harness/ci-addon` | Version update | 1.18.22 | 1.18.23 |
+| `harness/ci-lite-engine` | Version update | 1.18.22 | 1.18.23 |
 
 ### Version 1.139.0
 
