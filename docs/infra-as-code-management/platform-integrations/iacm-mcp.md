@@ -1,6 +1,8 @@
 ---
 title: Harness MCP Server
+sidebar_label: Platform
 description: Use the Harness MCP Server to query IaCM workspaces, resources, and module registry from AI-powered tools via three exposed API endpoints.
+sidebar_position: 10
 tags: [mcp, ai, cli, infrastructure as code]
 ---
 

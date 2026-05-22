@@ -93,7 +93,7 @@ Or when the entry is only a one-liner:
 Always prefer linking to an existing doc page over explaining a concept inline. Use the short internal path format:
 
 ```markdown
-[Docs](/docs/infra-as-code-management/platform-integrations/platform/iacm-mcp)
+[Docs](/docs/infra-as-code-management/platform-integrations/iacm-mcp)
 ```
 
 - Link to the most specific relevant page (a specific feature page, not the product root)
@@ -191,7 +191,7 @@ Always include:
 
 ### New Features & Enhancements
 
-- **MCP Server [Docs](/docs/infra-as-code-management/platform-integrations/platform/iacm-mcp):** Introduced an MCP Server integration that allows AI assistants to interact with IACM resources directly, enabling natural language queries against infrastructure state.
+- **MCP Server [Docs](/docs/infra-as-code-management/platform-integrations/iacm-mcp):** Introduced an MCP Server integration that allows AI assistants to interact with IACM resources directly, enabling natural language queries against infrastructure state.
 
 - **Drift Detection for Terraform modules (Beta) [Docs](/docs/infra-as-code-management/iac-stages/drift-detection):** Drift detection now supports nested Terraform modules, surfacing configuration drift at the module level rather than only at the root.
 

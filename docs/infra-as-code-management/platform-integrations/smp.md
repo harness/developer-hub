@@ -1,7 +1,18 @@
 ---
 title: Self-Managed Platform (SMP)
+sidebar_label: Self-Managed Platform (SMP)
 description: Enable and configure Infrastructure as Code Management (IaCM) in a self-hosted Harness deployment.
+keywords:
+  - smp
+  - self-managed
+  - on-premise
+  - airgapped
+tags:
+  - iacm
+  - smp
 sidebar_position: 40
+redirect_from:
+  - /docs/infra-as-code-management/manage-projects/iacm-smp
 ---
 
 :::info beta status

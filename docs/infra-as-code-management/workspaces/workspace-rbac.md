@@ -1,7 +1,19 @@
 ---
-title: Role-Based Access Control (RBAC)
-description:  Learn how to apply permissions and access control on Workspace 
-sidebar_position: 20
+title: Workspace Permissions
+sidebar_label: Permissions (RBAC)
+description: Configure role-based access control for IaCM workspaces and variables.
+keywords:
+  - rbac
+  - permissions
+  - workspace access
+  - resource groups
+tags:
+  - iacm
+  - workspaces
+  - rbac
+sidebar_position: 60
+redirect_from:
+  - /docs/infra-as-code-management/manage-projects/workspace-rbac
 ---
 
 You can control who has different types of access to the Workspace in a project. Create/edit a Role, and select the "Infrastructure as Code Management" section

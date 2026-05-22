@@ -1,7 +1,7 @@
 ---
 title: Remove and Import Resources
 description: Learn how to remove and import resources.
-sidebar_position: 10
+sidebar_position: 30
 ---
 
 Sometimes, scenarios arise where infrastructure resources, like an AWS EC2 instance, need to be "forgotten" by OpenTofu or Terraform. Perhaps a new team is taking over management, or the resource no longer fits within your current OpenTofu workflows. In these cases, you want to remove the resource from your state file without destroying it. The resource should remain live and active, but OpenTofu should no longer manage it.

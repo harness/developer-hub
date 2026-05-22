@@ -1,8 +1,21 @@
 ---
-title: Connector Authentication
-description: Learn about IaCM connector authentication.
+title: AWS Connector Authentication
+sidebar_label: AWS Connector Authentication
+description: Configure AWS connector authentication for IaCM workspaces using access keys, OIDC, node roles, or IRSA.
+keywords:
+  - aws connector
+  - oidc
+  - irsa
+  - node role
+  - sts assume role
+tags:
+  - iacm
+  - aws
+  - connectors
+sidebar_position: 30
 redirect_from:
   - /kb/reference-architectures/iacm/iacm-aws-connectors
+  - /docs/infra-as-code-management/manage-projects/iacm-aws-connectors
 ---
 
 When defining authentication to AWS for Harness Infrastructure as Code there are several methods for doing so. Harness connectors act as a way to centrally define an authentication pattern which can then be utilized across many workspaces. Depending on the build infrastructure type you are using for your executions there are different methods that are supported.

@@ -1,8 +1,8 @@
 ---
 title: IaCM Plugin for Internal Developer Portal
 description: Connect IaCM workspaces to your IDP service catalog for unified infrastructure visibility
-sidebar_label: IDP Plugin
-sidebar_position: 10
+sidebar_label: Internal Developer Portal (IDP)
+sidebar_position: 30
 ---
 
 import Tabs from '@theme/Tabs';
@@ -166,4 +166,4 @@ You've successfully connected your IaCM workspaces to the IDP service catalog. E
 - [IDP scorecards](/docs/internal-developer-portal/scorecards/scorecard) - Track infrastructure compliance and standards
 - [IDP workflows](/docs/internal-developer-portal/flows/overview) - Automate workspace provisioning with self-service actions
 - [Module registry](/docs/infra-as-code-management/registry/module-registry) - Share reusable infrastructure modules across services
-- [IaCM pipeline operations](/docs/category/operations) - Automate infrastructure provisioning and updates
+- [IaCM pipeline operations](/docs/infra-as-code-management/pipelines/operations-overview) - Automate infrastructure provisioning and updates

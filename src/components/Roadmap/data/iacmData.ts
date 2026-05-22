@@ -123,7 +123,7 @@ export const IacmData: Horizon = {
         tag: [{ value: "Platform" }],
         title: "IDP plugin enhancements",
         description: "Enhanced IaCM plugin for IDP with rich context on resources, drill downs and High level overview.",
-        link: "/docs/infra-as-code-management/platform-integrations/idp/idp-plugin",
+        link: "/docs/infra-as-code-management/platform-integrations/idp-plugin",
       },
       {
         tag: [{ value: "Integrations" }],
@@ -135,7 +135,7 @@ export const IacmData: Horizon = {
         tag: [{ value: "Integrations" }],
         title: "MCP Server support",
         description: "Native support for MCP Server",
-        link: "/docs/infra-as-code-management/platform-integrations/platform/iacm-mcp",
+        link: "/docs/infra-as-code-management/platform-integrations/iacm-mcp",
       },
       {
         tag: [{ value: "Integrations" }],
