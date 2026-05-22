@@ -188,12 +188,12 @@ const config: Config = {
         'How do I update Harness delegate?,Can I save my filter settings?',
     },
     /* Relyance consent / traffic tracking — production only (401s on localhost) */
-    ...(process.env.NODE_ENV === 'production' ? [{
-      src: 'https://consent.app.relyance.ai/relyance-agent.js',
-      async: true,
-      'data-relyance-consent-appId': 'app-25c77d8f-9b0d-5534-a04c-e3565a4c3512',
-      'data-relyance-zero-fire-mode': 'true',
-    }] : []),
+    // ...(process.env.NODE_ENV === 'production' ? [{
+    //  src: 'https://consent.app.relyance.ai/relyance-agent.js',
+    //  async: true,
+    //  'data-relyance-consent-appId': 'app-25c77d8f-9b0d-5534-a04c-e3565a4c3512',
+    //  'data-relyance-zero-fire-mode': 'true',
+    //}] : []),
   ],
   markdown: {
     //Mermaid Diagram Functionality
