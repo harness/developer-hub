@@ -180,12 +180,20 @@ In **Advanced**, you can use the following options:
 
 You can send emails using your own SMTP Server. For more information, go to [add SMTP configuration](/docs/platform/notifications/add-smtp-configuration).
 
-## Limitations
+## Important notes
 
-The Email step supports up to **2100 recipients** per execution. Exceeding this limit may cause the step to time out or fail. To notify larger audiences, use a distribution list (DL) instead of individual addresses.
+### Recipient limits
 
-Because the Email step processes emails asynchronously, the pipeline may report a failure even when the SMTP server is still delivering the emails. Check your SMTP server logs before re-running the pipeline to avoid sending duplicate messages.
+The Email step supports up to **2100 recipients** per execution (combined across the **To** and **CC** fields). Exceeding this limit may cause the step to time out or fail.
 
-:::note
+To notify larger audiences, use a distribution list (DL) or group email address instead of individual addresses.
+
+### Asynchronous processing
+
+The Email step sends emails asynchronously through the notification service. Because of this, the step may report a timeout or connection failure even when the SMTP server has already delivered the emails.
+
+Before you re-run a failed email step, check your SMTP server logs to verify whether the emails were delivered. This prevents duplicate messages.
+
+### SMTP server limits
+
 Harness does not control or document the limits imposed by your SMTP server. Consult your email provider's documentation for rate limits and bulk-sending policies. If you are using a custom email provider (as described in [Add SMTP configuration](/docs/platform/notifications/add-smtp-configuration/)), check your provider's logs directly to verify delivery.
-:::
