@@ -1,5 +1,11 @@
 [
   {
+    "flagKey": "PIPE_DYNAMIC_STAGE_EXECUTION",
+    "description": "Enables a Dynamic Stage in pipelines, allowing stages to be dynamically injected and executed at runtime using inline YAML or Git-stored definitions.",
+    "gaStartDate": "2026-05-22",
+    "module": "Pipeline"
+  },
+  {
     "flagKey": "PL_ROLE_REUSABILITY_ACROSS_CHILD_SCOPES",
     "description": "Allows roles created at a higher scope (account/org) to be reused in lower scopes.",
     "gaStartDate": "2026-05-21",
