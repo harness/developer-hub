@@ -5,7 +5,6 @@ description: Comprehensive security controls and best practices for chaos engine
 redirect_from:
 - /docs/chaos-engineering/technical-reference/security/introduction
 - /docs/chaos-engineering/architecture-and-security/security/introduction
-- /docs/category/security-1
 ---
 
 Harness provides several controls to ensure the safe execution of chaos experiments on your infrastructure. This section explains security considerations and associated features across administrative and runtime environments, including:

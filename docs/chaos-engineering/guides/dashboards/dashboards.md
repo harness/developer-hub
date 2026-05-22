@@ -4,7 +4,6 @@ title: Overview
 redirect_from:
 - /docs/chaos-engineering/configure-chaos-experiments/chaos-dashboard/overview
 - /docs/chaos-engineering/features/chaos-dashboard/overview
-- /docs/category/chaos-dashboard
 - /docs/chaos-engineering/use-harness-ce/dashboards
 ---
 

@@ -187,10 +187,22 @@ const config: Config = {
       'data-modal-example-questions':
         'How do I update Harness delegate?,Can I save my filter settings?',
     },
+    /* Relyance consent / traffic tracking — production only (401s on localhost) */
+    ...(process.env.NODE_ENV === 'production' ? [{
+      src: 'https://consent.app.relyance.ai/relyance-agent.js',
+      async: true,
+      'data-relyance-consent-appId': 'app-25c77d8f-9b0d-5534-a04c-e3565a4c3512',
+      'data-relyance-zero-fire-mode': 'true',
+    }] : []),
   ],
   markdown: {
     //Mermaid Diagram Functionality
     mermaid: true,
+    mdx1Compat: {
+      comments: true,
+      headingIds: true,
+      admonitions: true,
+    },
     hooks: {
       onBrokenMarkdownLinks: 'warn',
       onBrokenMarkdownImages: 'warn',
@@ -213,7 +225,7 @@ const config: Config = {
 
   future: {
     v4: true,
-    experimental_faster: true,
+    faster: true,
   },
 
   presets: [
@@ -608,6 +620,7 @@ const config: Config = {
       },
     ],
 
+    path.join(__dirname, '/plugins/suppress-coveo-bundler-warnings'),
     path.join(__dirname, '/plugins/utmcookie-plugin'),
     path.join(__dirname, '/plugins/focusOnAnchor-plugin'),
     path.join(__dirname, '/plugins/feedback-plugin'),
@@ -634,6 +647,9 @@ const config: Config = {
     { tagName: 'link', attributes: { rel: 'preconnect', href: 'https://api.kapa.ai' } },
     { tagName: 'link', attributes: { rel: 'dns-prefetch', href: 'https://widget.kapa.ai' } },
     { tagName: 'link', attributes: { rel: 'dns-prefetch', href: 'https://api.kapa.ai' } },
+    // Pre-establish connection to Relyance consent endpoint.
+    { tagName: 'link', attributes: { rel: 'preconnect', href: 'https://consent.app.relyance.ai' } },
+    { tagName: 'link', attributes: { rel: 'dns-prefetch', href: 'https://consent.app.relyance.ai' } },
   ],
   stylesheets: [
     {
