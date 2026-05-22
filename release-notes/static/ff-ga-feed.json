@@ -1516,5 +1516,11 @@
     "description": "Enables the GitHub Enterprise provider configuration flow in UI, allowing users to configure their GitHub Enterprise Server instance with OAuth credentials for Git sync and repository access.",
     "gaStartDate": "2026-05-12",
     "module": "Pipeline"
+  },
+  {
+    "flagKey": "CI_CPU_MEMORY_INSIGHTS",
+    "description": "Enables support in UI to view cpu and memory metrics for pipeline running in Harness cloud",
+    "gaStartDate": "2026-05-22",
+    "module": "Continuous Integration"
   }
 ]
