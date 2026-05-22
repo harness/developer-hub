@@ -171,6 +171,11 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## May 2026
 
+### Version 26.05.89205 <!-- May 22, 2026 -->
+
+#### Fixed issues
+- Fixed issue related to `HARNESS_MANAGER_AND_PORT` env variable not appearing in the container pod. [DBOPS-2483]
+
 ### Version 26.05.89204 <!-- May 21, 2026 -->
 
 #### Fixed issues
