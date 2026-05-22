@@ -171,6 +171,22 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## May 2026
 
+### Version 26.05.89204 <!-- May 21, 2026 -->
+
+#### Fixed issues
+- Fixed Amazon S3 artifact triggers failing with `INVALID_ARTIFACT_SERVER` errors after delegate upgrade from 26.01.88303 to 26.05.89101. The issue was resolved by completing the AWS S3 SDK v1 to v2 migration. S3 clients are now properly reused across operations instead of being recreated for each API call. [CDS-123533]
+
+- Fixed artifact image SHA256 validation failures that occurred after moving projects to new organizations. Pipelines would fail with a digest mismatch error because the system was treating invalid or empty digest values as valid digests. The validation logic now verifies the digest format before comparison, preventing incorrect mismatch errors. [CDS-122990]
+
+- Fixed artifact fetching from JFrog Artifactory Edge nodes. The delegate now uses an AQL query with `.transitive()` fallback when standard queries return no results, ensuring artifacts are successfully retrieved from Edge node configurations. [CDS-121537]
+
+#### Breaking changes
+:::note
+The following change is behind a feature flag and will be enforced for all accounts 14 days after this release.
+:::
+
+- **Pull request triggers now require API access enabled on Git connectors.** Previously, PR triggers with connectors lacking API Access would execute successfully but fail silently when fetching commit data. Now, the pipeline execution will fail early with a clear error message indicating the permission issue. This change is behind the feature flag `PIPE_TRIGGER_SCM_FETCH_THROW_EXCEPTION` at release and will be enabled for all accounts 14 days after this release date. [PIPE-30746]
+
 ### Version 26.05.89102 <!-- May 19, 2026 -->
 
 #### Fixed issues
