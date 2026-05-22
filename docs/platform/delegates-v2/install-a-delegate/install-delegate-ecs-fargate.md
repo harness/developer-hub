@@ -20,9 +20,11 @@ To learn more about Delegate 3.x, including architecture and how it compares to 
 
 Before deploying the delegate on ECS or Fargate, review the following information:
 
+- **Feature parity with Kubernetes:** Delegate 3.x on ECS targets the same capabilities as Kubernetes delegates, including CI builds, CD deployments, and Database DevOps tasks. Go to the [Feature Parity](/docs/platform/delegates-v2/feature-parity) page to verify support for your specific connectors and pipeline steps.
 - **Manual updates required:** Delegates deployed on ECS do not auto-update. You must manually update the delegate by deploying a new task definition with the latest image. Harness recommends updating every 3 to 6 months to balance security and feature updates.
 - **Infrastructure limits on Fargate:** When using AWS Fargate, tasks that exceed the specified CPU or memory limits will be terminated by AWS. This is a limitation of Fargate infrastructure. If you need more flexibility with resource limits, consider using ECS on EC2 instances or a Kubernetes-based deployment.
 - **Docker image compatibility:** Delegate 3.x uses a different Docker image than legacy delegates. Ensure you use the correct image format for Delegate 3.x deployments.
+- **Network requirements:** The delegate requires outbound HTTPS (443), HTTP (80 for package managers), SSH (22 for Git), and Git protocol (9418) connectivity. The security group must allow these outbound connections.
 
 ## Get Harness credentials
 
@@ -54,6 +56,26 @@ Keep these values ready — you'll use them in the task definition.
 
 </TabItem>
 </Tabs>
+
+---
+
+## Choose your deployment type
+
+Delegate 3.x supports two ECS deployment types: **Fargate (serverless)** and **EC2 (container instances)**. Choose based on your requirements:
+
+| Feature | Fargate | ECS on EC2 |
+|:--------|:--------|:-----------|
+| **Infrastructure management** | Fully managed (serverless) | Requires managing EC2 instances |
+| **Docker-in-Docker** | ❌ Not supported | ✅ Supported via Docker socket |
+| **Privileged containers** | ❌ Not supported | ✅ Supported |
+| **Ephemeral storage** | Up to 200 GiB | Unlimited (depends on instance) |
+| **Task startup time** | 30-60 seconds | Faster (10-20 seconds) |
+| **Use cases** | CD deployments, DB DevOps, CI builds without Docker | CI builds with Docker, advanced container workflows |
+| **Cost** | Pay per task (vCPU + memory) | Pay for EC2 instances (even when idle) |
+
+**Recommendation:**
+- Use **Fargate** for most deployments (simpler, no instance management)
+- Use **EC2** if you need Docker-in-Docker for building container images in CI pipelines
 
 ---
 
@@ -220,7 +242,8 @@ Use these steps to deploy a delegate to AWS Fargate. Fargate is a serverless com
 
 - An active AWS account with permissions to create ECS and IAM resources
 - AWS CLI installed and configured
-- An existing VPC with subnets and security groups
+- **VPC with subnets**: Minimum of 2 subnets in different Availability Zones, each with outbound internet access (public subnets via Internet Gateway, or private subnets via NAT Gateway)
+- **Security group**: Must allow outbound traffic on ports 443, 80, 22, and 9418
 
 ### Step 1: Create an ECS cluster
 
@@ -277,6 +300,13 @@ Fargate requires an IAM execution role that grants ECS permission to pull contai
      --role-name ecsTaskExecutionRole \
      --policy-arn arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy
    ```
+
+   :::info IAM permissions required
+   The `ecsTaskExecutionRole` needs the following permissions:
+   - **ECR**: Pull container images (`ecr:GetAuthorizationToken`, `ecr:BatchGetImage`, `ecr:GetDownloadUrlForLayer`)
+   - **CloudWatch Logs**: Create log groups and streams (`logs:CreateLogGroup`, `logs:CreateLogStream`, `logs:PutLogEvents`)
+   - **Secrets Manager** (if using secrets): Retrieve secrets (`secretsmanager:GetSecretValue`)
+   :::
 
 ### Step 3: Create the task definition
 
@@ -452,6 +482,86 @@ For more configuration options, go to [Configure a Delegate](./configure-delegat
 
 ---
 
+## Configure advanced settings
+
+### Security contexts
+
+When the delegate executes CI/CD tasks, you can configure security contexts for task containers. These settings control container privileges and security options.
+
+:::info
+Security contexts are configured through the Harness platform when defining pipeline steps, not in the delegate's task definition itself.
+:::
+
+| **Field** | **Description** | **Fargate** | **EC2** |
+|:----------|:----------------|:------------|:--------|
+| `privileged` | Run container in privileged mode with extended permissions | ❌ Not supported | ✅ Supported |
+| `read_only_root_filesystem` | Mount the container's root filesystem as read-only | ✅ Supported | ✅ Supported |
+| `run_as_user` | UID to run the container process as | ✅ Supported | ✅ Supported |
+| `run_as_group` | GID to run the container process as | ✅ Supported | ✅ Supported |
+| `add_capability` | Linux capabilities to add (e.g., `NET_ADMIN`, `SYS_ADMIN`) | ✅ Supported | ✅ Supported |
+| `drop_capability` | Linux capabilities to drop (e.g., `ALL`) | ✅ Supported | ✅ Supported |
+
+**Example security context configuration:**
+
+When configuring a pipeline step in Harness, you can specify security settings that will be applied to the task containers:
+
+- **Privileged containers**: Required for Docker-in-Docker workflows (EC2 only)
+- **Read-only root filesystem**: Enhances security by preventing writes to the root filesystem
+- **User/Group IDs**: Run processes as non-root users for better security
+- **Capabilities**: Fine-grained control over Linux capabilities (e.g., add `NET_ADMIN` for network configuration)
+
+### Volume types
+
+Delegate tasks can use different volume types for storing data and sharing files between containers.
+
+#### EmptyDir volumes
+
+Ephemeral storage that exists for the lifetime of the task. Useful for sharing data between containers in the same task.
+
+| **Field** | **Description** | **Fargate** | **EC2** |
+|:----------|:----------------|:------------|:--------|
+| `empty_dir` | Ephemeral storage volume | Up to 200 GiB | Unlimited (depends on instance) |
+| `size_mib` | Optional size in MiB | Minimum 21 GiB (21,504 MiB) if specified | N/A |
+
+**Example use case:** Sharing workspace files between build steps.
+
+#### HostPath volumes
+
+Bind mount from the host filesystem (EC2 only). Useful for accessing Docker socket or host directories.
+
+| **Field** | **Description** | **Fargate** | **EC2** |
+|:----------|:----------------|:------------|:--------|
+| `host_path` | Path on the host to mount | ❌ Not supported | ✅ Supported |
+| `read_only` | Mount as read-only | ❌ Not supported | ✅ Supported |
+
+**Example use case:** Mounting Docker socket (`/var/run/docker.sock`) for Docker-in-Docker builds.
+
+#### EFS volumes
+
+Amazon Elastic File System volumes for persistent, shared storage across multiple tasks.
+
+| **Field** | **Description** |
+|:----------|:----------------|
+| `filesystem_id` | EFS filesystem ID (e.g., `fs-12345678`) |
+| `root_directory` | Root directory within EFS (e.g., `/cache`) |
+| `transit_encryption` | Enable TLS encryption for data in transit |
+| `access_point_id` | EFS access point ID for IAM-based access control |
+| `iam` | Use IAM authorization for EFS access |
+
+**Example use cases:**
+- Persistent build caches shared across pipeline executions
+- Shared artifacts between different stages
+- Long-term storage for test results and reports
+
+**EFS volume configuration:**
+
+To use EFS volumes, ensure:
+1. The EFS filesystem is in the same VPC as your ECS tasks
+2. The security group allows NFS traffic (port 2049) from ECS tasks to EFS
+3. The task role has permissions: `elasticfilesystem:ClientMount`, `elasticfilesystem:ClientWrite` (if IAM authorization is enabled)
+
+---
+
 ## Update the delegate
 
 To update the delegate to a new version:
@@ -550,5 +660,39 @@ aws ecs describe-tasks \
 
 - Ensure the task has sufficient CPU and memory resources.
 - Check for network connectivity issues between the ECS task and Harness.
+
+### CloudWatch Logs rate limit errors
+
+If you're running many concurrent tasks and see `ThrottlingException` or `ResourceAlreadyExistsException` errors related to log groups:
+
+**Problem:** AWS CloudWatch Logs has API rate limits:
+- `CreateLogGroup`: 5 requests per second
+- `CreateLogStream`: 50 requests per second  
+- `PutLogEvents`: 800 requests per second per log group
+
+**Solution:** Use a shared log group instead of creating individual log groups per task. Update your task definition:
+
+```json
+{
+  "logConfiguration": {
+    "logDriver": "awslogs",
+    "options": {
+      "awslogs-group": "/ecs/harness-delegates",
+      "awslogs-region": "YOUR_AWS_REGION",
+      "awslogs-stream-prefix": "delegate"
+    }
+  }
+}
+```
+
+Then create the shared log group once:
+
+```bash
+aws logs create-log-group --log-group-name /ecs/harness-delegates --region YOUR_AWS_REGION
+```
+
+This allows multiple delegate tasks to write to the same log group, avoiding rate limit issues.
+
+---
 
 For additional help, contact [Harness Support](https://support.harness.io).
