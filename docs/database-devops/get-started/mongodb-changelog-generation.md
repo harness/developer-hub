@@ -37,6 +37,10 @@ By automating this process in a Harness pipeline, you can:
 - Standardize schema tracking using Liquibase-compatible formats (JSON or YAML)
 - Keep your database changes version-controlled with peer review
 
+:::info
+For the SQL version of changelog generation, refer to our [Get Started with Changelogs](https://developer.harness.io/docs/database-devops/get-started/get-started-with-changelogs) guide which includes examples for SQL changelogs.
+:::
+
 ## Prerequisites
 
 If you're unfamiliar with generating or structuring a changelog file, you may want to explore our general [build a changelog](https://developer.harness.io/docs/database-devops/use-database-devops/get-started/build-a-changelog) guide first, it covers generating SQL changelog, schema migration fundamentals, best practices, and format patterns. Before implementing the pipeline, ensure the following:
@@ -53,10 +57,10 @@ If you're unfamiliar with generating or structuring a changelog file, you may wa
 2. Click on "**Create a Pipeline**"
 3. In the Stage, select "Custom" and then create a "Step Group".
 4. Add the **GitClone** step.
-5. Then a new add step, **Run**
+5. Then add a new step, **Run**
 ![MongoDB Changelog Generation](./static/dbops-mongo-changelog.png)
 - **Container Registry**: used to pull images from private or public registries.
-- **Image**: "`python:3.11-alpine`"
+- **Image**: "`python:latest`"
 - **Shell**: "`Python`"
 - **Command**: Add the following script under the command palette:
 
@@ -64,85 +68,158 @@ If you're unfamiliar with generating or structuring a changelog file, you may wa
 # ====== Install Dependencies ========
 import subprocess
 import sys
+
 subprocess.check_call([sys.executable, "-m", "pip", "install", "pymongo", "pyyaml"])
 
 # ====== Import Libraries ===========
 import os
-from pymongo import MongoClient
 import yaml
-import json
+from bson import json_util
+from pymongo import MongoClient
+from pymongo.errors import OperationFailure
 
 # === CONFIG ===
-MONGO_URI = "mongodb://<username>:<password>@<host>:27017"
-DATABASE_NAME = "test"
-OUTPUT_FILE = "generated.yml"
-AUTHOR = "Animesh"  # Change as needed
+MONGO_URI = "<+pipeline.variables.URL>"
+DATABASE_NAME = "<+pipeline.variables.DB_NAME>"
+MONGO_USER = "<+pipeline.variables.USERNAME>"
+MONGO_PASSWORD = "<+pipeline.variables.PASSWORD>"
+OUTPUT_FILE = "/harness/dbops/chart/dbchangelog/<+pipeline.variables.DB_NAME>/baseline/generated.yml"
+AUTHOR = "Harness"
 CHANGESET_ID = "baseline-collections"
 
-# === SETUP ===
-client = MongoClient(MONGO_URI)
-db = client[DATABASE_NAME]
-collections = db.list_collection_names()
+SKIP_COLLECTIONS = {"DATABASECHANGELOGLOCK", "DATABASECHANGELOG"}
+SKIP_PREFIXES = ("system.",)
+INDEX_OPTION_EXCLUDE_FIELDS = {"key", "v", "ns"}
 
-# === BUILD YAML STRUCTURE ===
-changesets = []
+def to_json_string(value):
+    if value is None:
+        value = {}
+    return json_util.dumps(value)
 
-for name in collections:
-    if(name=="DATABASECHANGELOGLOCK" or name=="DATABASECHANGELOG"):
-        continue
-    changes = []
-    # Add createCollection
-    collection_options = db[name].options()
-    changes.append({'createCollection': {'collectionName': name,'options':json.dumps(collection_options)}})
-    
-    # Add createIndex for all non-_id indexes
-    indexes = db[name].index_information()
+def build_index_options(index_name, index_data):
+    options = {"name": index_name}
 
-    print("processing indexes for collection: "+name+"\r\n" + json.dumps(indexes))
-    for index_name, index_data in indexes.items():
-        if index_name == "_id_":
+    for field, value in index_data.items():
+        if field in INDEX_OPTION_EXCLUDE_FIELDS or field == "name":
             continue
-        index_fields = index_data['key']
-        index_for_changelog = {}
-        unique = index_data.get('unique',False)
-       
-        for currentIndex in index_fields:
-            index_for_changelog.update({currentIndex[0]:currentIndex[1]})
-        change = {
-            'createIndex': {
-                'collectionName': name,
-                #'indexName': index_name, TODO: move to options
-                'keys': json.dumps(index_for_changelog) ,
-                'options': json.dumps({"name":index_name,"unique":index_data.get('unique',unique)})
-            }
-        }
-        if index_data.get('unique', False):
-            change['createIndex']['unique'] = True
-        changes.append(change)
-    changesets.append(
-            {'changeSet': {
-                'id': CHANGESET_ID+"-"+name,
-                'author': AUTHOR,
-                'changes': changes
-            }})
+        options[field] = value
 
-# Final YAML structure
-changeset = {
-    'databaseChangeLog': changesets
-}
+    return options
 
-# === WRITE TO FILE ===
-with open(OUTPUT_FILE, "w") as f:
-    yaml.dump(changeset, f, sort_keys=False)
+# === SETUP ===
+client = MongoClient(
+    MONGO_URI,
+    username=MONGO_USER or None,
+    password=MONGO_PASSWORD or None,
+)
 
-print(f"✅ YAML baseline changelog with indexes written to: {OUTPUT_FILE}")
+try:
+    db = client[DATABASE_NAME]
+
+    # === BUILD YAML STRUCTURE ===
+    changesets = []
+
+    for obj in db.list_collections():
+        name = obj["name"]
+        obj_type = obj.get("type", "collection")
+
+        if name in SKIP_COLLECTIONS:
+            print(f"skipping Liquibase collection: {name}")
+            continue
+
+        if name.startswith(SKIP_PREFIXES):
+            print(f"skipping internal MongoDB collection: {name}")
+            continue
+
+        if obj_type != "collection":
+            print(f"skipping non-collection object: {name} ({obj_type})")
+            continue
+
+        try:
+            changes = []
+
+            # Reuse collection options from list_collections output
+            collection_options = obj.get("options", {})
+            changes.append(
+                {
+                    "createCollection": {
+                        "collectionName": name,
+                        "options": to_json_string(collection_options or {}),
+                    }
+                }
+            )
+
+            indexes = db[name].index_information()
+            print(f"processing indexes for collection: {name}\n{to_json_string(indexes)}")
+
+            for index_name, index_data in indexes.items():
+                if index_name == "_id_":
+                    continue
+
+                index_fields = index_data["key"]
+                index_for_changelog = {}
+
+                for field_name, direction in index_fields:
+                    index_for_changelog[field_name] = direction
+
+                index_options = build_index_options(index_name, index_data)
+
+                change = {
+                    "createIndex": {
+                        "collectionName": name,
+                        "keys": to_json_string(index_for_changelog),
+                        "options": to_json_string(index_options),
+                    }
+                }
+
+                if index_options.get("unique") is True:
+                    change["createIndex"]["unique"] = True
+
+                changes.append(change)
+
+            changesets.append(
+                {
+                    "changeSet": {
+                        "id": f"{CHANGESET_ID}-{name}",
+                        "author": AUTHOR,
+                        "changes": changes,
+                    }
+                }
+            )
+
+        except OperationFailure as exc:
+            print(f"skipping collection {name} due to authorization/metadata error: {exc}")
+            continue
+
+    # Final YAML structure
+    changeset = {
+        "databaseChangeLog": changesets
+    }
+
+    # === WRITE TO FILE ===
+    output_dir = os.path.dirname(OUTPUT_FILE)
+    if output_dir:
+        os.makedirs(output_dir, exist_ok=True)
+
+    yaml_output = yaml.safe_dump(changeset, sort_keys=False)
+
+    with open(OUTPUT_FILE, "w") as f:
+        f.write(yaml_output)
+
+    print(f"YAML baseline changelog with indexes written to: {OUTPUT_FILE}")
+    print("\nGenerated YAML:\n")
+    print(yaml_output)
+
+finally:
+    client.close()
 ```
 
 In the above script:
-- Update the `MONGO_URI` to your MongoDB connection string.
-- Set the `DATABASE_NAME` to the name of your database.
-- Specify the `OUTPUT_FILE` name as needed.
-- Change the `AUTHOR` and `CHANGESET_ID` variables to reflect your changes.
+- Set the pipeline variables `URL`, `DB_NAME`, `USERNAME`, and `PASSWORD` to your MongoDB connection values.
+- Set `OUTPUT_FILE` to the changelog path you want generated in your repo.
+- Change `AUTHOR` and `CHANGESET_ID` to match your changelog naming convention.
+
+![MongoDB Changelog Generation Input](./static/dbops-mongodb-generation-input.png)
 
 <CommitToGit />
 
@@ -156,7 +233,7 @@ In the above script:
 
 ```yml
 pipeline:
-  name: mongo
+  name: mongo_changelog
   identifier: mongo
   projectIdentifier: default_project
   orgIdentifier: default
@@ -165,7 +242,7 @@ pipeline:
     - stage:
         name: mongo
         identifier: mongo
-        description: "Generate MongoDB Changelog"
+        description: "Generate MongoDB Changelog and commit to Git Repo"
         type: Custom
         spec:
           execution:
@@ -176,102 +253,174 @@ pipeline:
                   steps:
                     - step:
                         type: GitClone
-                        name: GitClone_1
+                        name: Clone Repository
                         identifier: GitClone_1
                         spec:
                           connectorRef: multienv
-                          repoName: economy-discord.js
+                          repoName: dbops
                           build:
                             type: branch
                             spec:
                               branch: main
                     - step:
                         type: Run
-                        name: Run_1
+                        name: Generate Changelog
                         identifier: Run_1
                         spec:
                           connectorRef: dockerHarness
-                          image: python:3.11-alpine
+                          image: python:latest
                           shell: Python
                           command: |-
                             # ====== Install Dependencies ========
                             import subprocess
                             import sys
+
                             subprocess.check_call([sys.executable, "-m", "pip", "install", "pymongo", "pyyaml"])
 
                             # ====== Import Libraries ===========
                             import os
-                            from pymongo import MongoClient
                             import yaml
-                            import json
+                            from bson import json_util
+                            from pymongo import MongoClient
+                            from pymongo.errors import OperationFailure
 
                             # === CONFIG ===
-                            MONGO_URI = "mongodb://dbusername:password@10.106.172.253:27017"
-                            DATABASE_NAME = "test"
-                            OUTPUT_FILE = "generated.yml"
-                            AUTHOR = "Animesh"  # Change as needed
+                            MONGO_URI = "<+pipeline.variables.URL>"
+                            DATABASE_NAME = "<+pipeline.variables.DB_NAME>"
+                            MONGO_USER = "<+pipeline.variables.USERNAME>"
+                            MONGO_PASSWORD = "<+pipeline.variables.PASSWORD>"
+                            OUTPUT_FILE = "/harness/dbops/chart/dbchangelog/<+pipeline.variables.DB_NAME>/baseline/baseline-changelog.yml"
+                            AUTHOR = "Harness"
                             CHANGESET_ID = "baseline-collections"
 
-                            # === SETUP ===
-                            client = MongoClient(MONGO_URI)
-                            db = client[DATABASE_NAME]
-                            collections = db.list_collection_names()
+                            SKIP_COLLECTIONS = {"DATABASECHANGELOGLOCK", "DATABASECHANGELOG"}
+                            SKIP_PREFIXES = ("system.",)
+                            INDEX_OPTION_EXCLUDE_FIELDS = {"key", "v", "ns"}
 
-                            # === BUILD YAML STRUCTURE ===
-                            changesets = []
+                            def to_json_string(value):
+                                if value is None:
+                                    value = {}
+                                return json_util.dumps(value)
 
-                            for name in collections:
-                                if(name=="DATABASECHANGELOGLOCK" or name=="DATABASECHANGELOG"):
-                                    continue
-                                changes = []
-                                # Add createCollection
-                                collection_options = db[name].options()
-                                changes.append({'createCollection': {'collectionName': name,'options':json.dumps(collection_options)}})
-                                
-                                # Add createIndex for all non-_id indexes
-                                indexes = db[name].index_information()
+                            def build_index_options(index_name, index_data):
+                                options = {"name": index_name}
 
-                                print("processing indexes for collection: "+name+"\r\n" + json.dumps(indexes))
-                                for index_name, index_data in indexes.items():
-                                    if index_name == "_id_":
+                                for field, value in index_data.items():
+                                    if field in INDEX_OPTION_EXCLUDE_FIELDS or field == "name":
                                         continue
-                                    index_fields = index_data['key']
-                                    index_for_changelog = {}
-                                    unique = index_data.get('unique',False)
-                                   
-                                    for currentIndex in index_fields:
-                                        index_for_changelog.update({currentIndex[0]:currentIndex[1]})
-                                    change = {
-                                        'createIndex': {
-                                            'collectionName': name,
-                                            #'indexName': index_name, TODO: move to options
-                                            'keys': json.dumps(index_for_changelog) ,
-                                            'options': json.dumps({"name":index_name,"unique":index_data.get('unique',unique)})
-                                        }
-                                    }
-                                    if index_data.get('unique', False):
-                                        change['createIndex']['unique'] = True
-                                    changes.append(change)
-                                changesets.append(
-                                        {'changeSet': {
-                                            'id': CHANGESET_ID+"-"+name,
-                                            'author': AUTHOR,
-                                            'changes': changes
-                                        }})
+                                    options[field] = value
 
-                            # Final YAML structure
-                            changeset = {
-                                'databaseChangeLog': changesets
-                            }
+                                return options
 
-                            # === WRITE TO FILE ===
-                            with open(OUTPUT_FILE, "w") as f:
-                                yaml.dump(changeset, f, sort_keys=False)
+                            # === SETUP ===
+                            client = MongoClient(
+                                MONGO_URI,
+                                username=MONGO_USER or None,
+                                password=MONGO_PASSWORD or None,
+                            )
 
-                            print(f"✅ YAML baseline changelog with indexes written to: {OUTPUT_FILE}")
+                            try:
+                                db = client[DATABASE_NAME]
+
+                                # === BUILD YAML STRUCTURE ===
+                                changesets = []
+
+                                for obj in db.list_collections():
+                                    name = obj["name"]
+                                    obj_type = obj.get("type", "collection")
+
+                                    if name in SKIP_COLLECTIONS:
+                                        print(f"skipping Liquibase collection: {name}")
+                                        continue
+
+                                    if name.startswith(SKIP_PREFIXES):
+                                        print(f"skipping internal MongoDB collection: {name}")
+                                        continue
+
+                                    if obj_type != "collection":
+                                        print(f"skipping non-collection object: {name} ({obj_type})")
+                                        continue
+
+                                    try:
+                                        changes = []
+
+                                        # Reuse collection options from list_collections output
+                                        collection_options = obj.get("options", {})
+                                        changes.append(
+                                            {
+                                                "createCollection": {
+                                                    "collectionName": name,
+                                                    "options": to_json_string(collection_options or {}),
+                                                }
+                                            }
+                                        )
+
+                                        indexes = db[name].index_information()
+                                        print(f"processing indexes for collection: {name}\n{to_json_string(indexes)}")
+
+                                        for index_name, index_data in indexes.items():
+                                            if index_name == "_id_":
+                                                continue
+
+                                            index_fields = index_data["key"]
+                                            index_for_changelog = {}
+
+                                            for field_name, direction in index_fields:
+                                                index_for_changelog[field_name] = direction
+
+                                            index_options = build_index_options(index_name, index_data)
+
+                                            change = {
+                                                "createIndex": {
+                                                    "collectionName": name,
+                                                    "keys": to_json_string(index_for_changelog),
+                                                    "options": to_json_string(index_options),
+                                                }
+                                            }
+
+                                            if index_options.get("unique") is True:
+                                                change["createIndex"]["unique"] = True
+
+                                            changes.append(change)
+
+                                        changesets.append(
+                                            {
+                                                "changeSet": {
+                                                    "id": f"{CHANGESET_ID}-{name}",
+                                                    "author": AUTHOR,
+                                                    "changes": changes,
+                                                }
+                                            }
+                                        )
+
+                                    except OperationFailure as exc:
+                                        print(f"skipping collection {name} due to authorization/metadata error: {exc}")
+                                        continue
+
+                                # Final YAML structure
+                                changeset = {
+                                    "databaseChangeLog": changesets
+                                }
+
+                                # === WRITE TO FILE ===
+                                output_dir = os.path.dirname(OUTPUT_FILE)
+                                if output_dir:
+                                    os.makedirs(output_dir, exist_ok=True)
+
+                                yaml_output = yaml.safe_dump(changeset, sort_keys=False)
+
+                                with open(OUTPUT_FILE, "w") as f:
+                                    f.write(yaml_output)
+
+                                print(f"YAML baseline changelog with indexes written to: {OUTPUT_FILE}")
+                                print("\nGenerated YAML:\n")
+                                print(yaml_output)
+
+                            finally:
+                                client.close()
                     - step:
                         type: Run
-                        name: commit to git
+                        name: Commit to Git Repo
                         identifier: Run_2
                         spec:
                           connectorRef: dockerHarness
@@ -282,12 +431,12 @@ pipeline:
                             git init
 
                             # Configure Git user
-                            git config --global user.email "kurosakiichigo.sonichigo@gmail.com"
-                            git config --global user.name "Animesh Pathak"
+                            git config --global user.email "John.Doe@xyz.com"
+                            git config --global user.name "John Doe"
                             git config --global user.password "<+secrets.getValue("github")>"
 
                             echo "adding"
-                            git add generated.yml
+                            git add .
                             echo "added"
                             git commit -m "generated changelog from running instance"
                             echo "committed"
@@ -311,7 +460,28 @@ pipeline:
           serviceDependencies: []
         tags: {}
         delegateSelectors:
-          - cockroachdb-delegate
+          - animesh-delegate
+  variables:
+    - name: URL
+      type: String
+      description: MongoDB URL
+      required: true
+      value: <+input>
+    - name: DB_NAME
+      type: String
+      description: Mongo Database Name
+      required: true
+      value: <+input>
+    - name: USERNAME
+      type: String
+      description: Mongo Database Username
+      required: true
+      value: <+input>
+    - name: PASSWORD
+      type: Secret
+      description: Mongo Database Password
+      required: true
+      value: <+input>
 ```
 </TabItem>
 </Tabs>

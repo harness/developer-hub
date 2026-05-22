@@ -1,6 +1,6 @@
 ---
 title: Secure Database Connectivity with SSL
-sidebar_label: SSL Support
+sidebar_label: Database SSL Support
 description: Learn more about how to set up databases with SSL connection using Harness Database DevOps.
 sidebar_position: 11
 keywords: [database ssl, secure connection, ssl configuration, db ssl, database security, harness dbdevops, ssl setup, ssl certificate, encrypted db connection, database encryption]
@@ -8,39 +8,133 @@ tags: [ssl-support, secure-db-connection, database-security, harness-db-devops, 
 slug: /database-devops/use-database-devops/ssl
 ---
 
-This document provides a comprehensive guide to configuring databases with SSL, including secret and delegate configurations, setting up for JDBC test connections, and pipeline permissions. It covers the necessary steps to set up and manage certificates for secure communication between database and other services.
+This document explains how to configure SSL certificates for Harness Database DevOps. There are two distinct SSL scenarios you may need to configure, depending on your infrastructure.
 
-## 1. SSL Support by Integration Type
+## Which SSL Configuration Do You Need?
+Database DevOps uses two independent SSL layers. Most customers need only one, but you may need both:
 
-SSL handling differs based on how Database DevOps interacts with external systems. Use the table below to confirm support and configuration scope.
+| Your Situation | What You Need | Go To |
+|----------------|---------------|-------|
+| Default Harness URL (`app.harness.io`) + public certificates everywhere | No SSL configuration needed | You are all set |
+| Custom vanity URL (for example, `yourcompany.harness.io`) | **Scenario 1:** mTLS configuration | [Configure mTLS](#configure-mtls-certificates-for-database-devops-scenario-1) |
+| Git or database uses self-signed certificates | **Scenario 2:** Third-party SSL | [Configure Third-Party SSL](#configure-ssl-for-third-party-services-git-and-databases---scenario-2) |
+| Vanity URL AND self-signed certificates | **Both scenarios** | Configure both sections in order |
 
-| Functionality Type | SSL Support | Transport Layer | Cert Management | Notes |
+## SSL Architecture Overview
+**Scenario 1 - mTLS (Harness SaaS Connectivity):**
+- Only required when using a custom vanity URL instead of `app.harness.io`
+- Authenticates your delegate and build pods to Harness SaaS using client certificates
+- Certificates mounted at `/etc/mtls/client.crt` and `/etc/mtls/client.key`
+- Requires `MANAGER_HOST_AND_PORT` environment variable
+
+**Scenario 2 - Third-Party SSL (Git and Database Connectivity):**
+- Only required when Git repositories or databases use self-signed certificates
+- Makes build pods trust your self-signed CAs
+- Certificates mounted at `/etc/ssl/certs/dbops/`
+- Requires `CI_MOUNT_VOLUMES` to copy certificates from delegate to build pods
+
+:::warning Common Mistake
+Many customers configure the wrong scenario. The two scenarios are independent:
+- Vanity URL issues → Configure Scenario 1 (mTLS)
+- Git or database certificate errors → Configure Scenario 2 (third-party SSL)
+- Connection works from delegate but not in pipeline → Likely missing `CI_MOUNT_VOLUMES` in either scenario
+:::
+
+## Configure mTLS Certificates for Database DevOps (Scenario 1)
+
+**When to use:** You have a custom vanity URL (for example, `yourcompany.harness.io`) instead of `app.harness.io`.
+
+### Before You Begin
+
+Complete delegate mTLS setup. Go to [mTLS Support via Delegates](/docs/platform/delegates/secure-delegates/delegate-mtls-support) and configure:
+- CA and client certificates
+- Certificates mounted at `/etc/mtls/` on the delegate  
+- `MANAGER_HOST_AND_PORT` environment variable
+
+Verify the delegate connects to your vanity URL before proceeding.
+
+### Add Database DevOps Configuration
+
+Database DevOps runs in ephemeral build pods that do not inherit the delegate's mTLS certificates. Add these environment variables to the delegate:
+
+```yaml
+- name: MANAGER_HOST_AND_PORT
+  value: "https://<your-subdomain>.agent.harness.io"
+
+- name: ADDITIONAL_CERTS_PATH
+  value: "/etc/mtls/ca.crt"
+
+- name: CI_MOUNT_VOLUMES
+  value: "/etc/mtls/client.crt:/etc/mtls/client.crt,/etc/mtls/client.key:/etc/mtls/client.key"
+```
+
+| Variable | What It Does |
+|----------|--------------|
+| `MANAGER_HOST_AND_PORT` | Directs build pods to your vanity URL |
+| `ADDITIONAL_CERTS_PATH` | Makes delegate trust the mTLS CA |
+| `CI_MOUNT_VOLUMES` | Copies `client.crt` and `client.key` from delegate to build pods at `/etc/mtls/` |
+
+:::warning Why CI_MOUNT_VOLUMES is Critical
+Without `CI_MOUNT_VOLUMES`, build pods cannot authenticate to your vanity URL. You will see "Connection Reset" errors even though the delegate works fine.
+
+Cannot use `DESTINATION_CA_PATH`: That variable only mounts CA bundles. mTLS requires both certificate and key files at `/etc/mtls/`, which requires `CI_MOUNT_VOLUMES`.
+:::
+
+**Verify the configuration:**
+
+```bash
+kubectl exec -it <build-pod> -n <namespace> -- ls -l /etc/mtls/
+```
+
+You should see `client.crt` and `client.key`. If missing, check that `CI_MOUNT_VOLUMES` is set on the delegate.
+
+Go to [Certificate issues when using vanity URLs](/docs/platform/delegates/troubleshooting/certificate-issues/#certificate-issues-when-using-vanity-urls) for additional troubleshooting guidance.
+
+
+## Configure SSL for Third-Party Services (Git and Databases - Scenario 2)
+
+**When to use:** Your Git repositories or databases use self-signed certificates.
+
+This section covers mounting third-party SSL certificates into Database DevOps build pods. If you also use a vanity URL, combine this with [Scenario 1](#configure-mtls-certificates-for-database-devops-scenario-1) by merging both `CI_MOUNT_VOLUMES` values with commas.
+
+---
+
+## 1. SSL Support by Third-Party Integration Type
+
+The following table shows which third-party services support SSL when using self-signed certificates with Database DevOps:
+
+| Service Type | SSL Support | Transport Layer | Certificate Mounting | Notes |
 | ------------ | ----------- | --------------- | ------------------ | ------------ |
-| Git (Schema Cloning)         | ✅ Yes       | HTTPS           | Mounted certs (`/etc/ssl/certs/ca-bundle.crt`) | [More Info](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/) |
+| Git (Schema Cloning)         | ✅ Yes       | HTTPS           | `/etc/ssl/certs/ca-bundle.crt` in build pod | Requires `CI_MOUNT_VOLUMES` configuration |
 | Artifactory (Schema Cloning) | ❌ No        | HTTP            | N/A                                            | SSL not supported for Artifactory-based schema cloning |
-| Database Connections (JDBC)  | ✅ Yes       | JDBC over SSL   | Requires importing DB certs into truststore    | See [Connector Setup Guide](https://developer.harness.io/docs/database-devops/use-database-devops/set-up-connectors/) |
+| Database Connections (JDBC)  | ✅ Yes       | JDBC over SSL   | Certificates imported into Java truststore    | Requires `INIT_SCRIPT` configuration. Go to [Connector Setup Guide](/docs/database-devops/use-database-devops/set-up-connectors) |
 
-:::info Reference Architecture
-Harness Database DevOps reuses the same Kubernetes build infrastructure mechanisms as Harness CI for certificate handling.
+:::info How Database DevOps Handles Certificates
+Harness Database DevOps reuses the same Kubernetes build infrastructure mechanisms as Harness CI for certificate handling. Certificates must be mounted from the delegate into ephemeral build pods.
 
-If you are unfamiliar with certificate mounting in Kubernetes build pods, review: 👉 Configure a Kubernetes build farm to [use self-signed certificates](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/)
+If you are unfamiliar with certificate mounting in Kubernetes build pods, go to [Configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates) to understand the underlying architecture.
 :::
 
 ## 2. Prepare Required Certificates
 
-Ensure you have the following files available locally:
+Before configuring SSL, ensure you have the following certificate files for your third-party services (Git and databases):
 
-* CA Bundle - `ca.crt` (commonly contains `ca.crt`, used by both client and server)
-    - Generate [CA certificate](https://developer.harness.io/docs/platform/delegates/secure-delegates/delegate-mtls-support/#create-a-ca-certificate)
-    - Manage [CA bundles and secrets](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/#enable-self-signed-certificates)
+**Required Certificates:**
 
-    :::info Important Notes
-    - In most environments, a single CA signs both client and server.
-    - If separate CAs are used, both must be included in the CA bundle.
-    - For databases such as Microsoft SQL Server, make sure you are using the correct **CA/root/intermediate certificate chain** needed to trust the server certificate. A server/leaf certificate by itself may not be sufficient and can still result in PKIX path building failures.
-    :::
+- **CA Bundle** (`ca.bundle` or `ca.crt`): Root and intermediate CA certificates that sign your Git server or database server certificates
+  - In most environments, a single CA signs both client and server certificates
+  - If separate CAs are used, concatenate both into a single bundle file
+  - For databases such as Microsoft SQL Server, ensure you include the complete certificate chain (root + intermediate). A server/leaf certificate alone will result in PKIX path building failures.
 
-* Client Certificate - `client.crt` and `client.key` needs to be manually created by the user. Learn how to Generate [client certificates](https://developer.harness.io/docs/platform/delegates/secure-delegates/delegate-mtls-support/#create-a-client-certificate). Certificates are mounted once on the delegate and selectively injected into build pods using `CI_MOUNT_VOLUMES`.
+- **Client Certificate** (`client.crt`): Your client authentication certificate (required only if your Git or database server requires client certificate authentication)
+
+- **Client Key** (`client.key`): The private key corresponding to the client certificate
+
+:::info Certificate Source
+These certificates come from your Git server or database administrator, **not from Harness**. If you need help generating certificates, contact your infrastructure team or go to [Generate client certificates](/docs/platform/delegates/secure-delegates/delegate-mtls-support/#create-a-client-certificate) for OpenSSL examples.
+
+Do not confuse these with mTLS certificates used to connect to Harness SaaS. Those are separate and documented at [mTLS Support via Delegates](/docs/platform/delegates/secure-delegates/delegate-mtls-support).
+:::
 
 :::info note
 **Minimum versions**
@@ -143,13 +237,17 @@ Avoid mounting additional certificate secrets as nested directories under `/opt/
 Prefer exposing certificate files directly under `/opt/harness-delegate/ca-bundle/`, or add the required certificate into the existing secret already mounted there.
 :::
 
-**Why this matters ?**
+**Why this matters:**
 
   - `ADDITIONAL_CERTS_PATH` ensures the delegate trusts the database CA
   - `CI_MOUNT_VOLUMES` injects certs into ephemeral build pods
   - **`DESTINATION_CA_PATH` is not used because multiple certs must be mounted independently**
 
-Restart the delegate after applying changes.
+Restart the delegate after applying all changes.
+
+:::info If Using a Vanity URL
+If you also use a custom vanity URL (Scenario 1), combine these third-party SSL certificates with your mTLS configuration. Go to [Configure mTLS Certificates for Database DevOps](#configure-mtls-certificates-for-database-devops-scenario-1) for instructions on combining both scenarios.
+:::
 
 ## 5. Enable JDBC SSL Truststore Support
 
@@ -192,11 +290,17 @@ kubectl exec -it <delegate-pod> -n <namespace> -- ls -l /opt/harness-delegate/ca
 | Issue | Likely Cause | Resolution |
 | ---- | ---- | ---- |
 | SSL handshake failure | CA not trusted | Verify `ADDITIONAL_CERTS_PATH` points to the correct CA bundle |
-| JDBC test fails | Client cert not imported | Check `INIT_SCRIPT` |
+| JDBC test fails | Client cert not imported | Check `INIT_SCRIPT` configuration |
+| JDBC test fails | Client cert not imported | Check `INIT_SCRIPT` configuration |
 | Works locally, fails in pipeline | Certs not mounted in build pod | Verify `CI_MOUNT_VOLUMES` and confirm the files exist at `/etc/ssl/certs/dbops/...` |
+| Connection reset error with vanity URL | `MANAGER_HOST_AND_PORT` not set or mTLS certs not copied to build pods | Verify `MANAGER_HOST_AND_PORT` is set to `https://<your-subdomain>.agent.harness.io` AND verify `CI_MOUNT_VOLUMES` copies mTLS certificates to `/etc/mtls/` in build pods |
+| Build pod connects to wrong Harness endpoint | Missing or incorrect `MANAGER_HOST_AND_PORT` | Ensure `MANAGER_HOST_AND_PORT` is set on the delegate and copies to build pods via environment propagation |
 | `keytool` reports `Is a directory` | Mounted path resolves to a directory instead of a file | Check the secret mount layout and avoid nested directory mounts under `/opt/harness-delegate/ca-bundle/` |
 | PKIX error persists after mounting certs | Wrong certificate type or incomplete certificate chain | Confirm you are using the correct CA/root/intermediate certificate chain, not only the server certificate |
-| Changes not applied | Delegate not restarted | Restart delegate |
+| Confused which SSL scenario applies | Misunderstanding of mTLS vs third-party SSL | Review the decision guide at the top of this document to identify which scenario applies to your setup |
+| Changes not applied | Delegate not restarted | Restart delegate after any configuration changes |
+| Confused which SSL scenario applies | Misunderstanding of mTLS vs third-party SSL | Review the decision guide at the top of this document to identify which scenario applies to your setup |
+| Changes not applied | Delegate not restarted | Restart delegate after any configuration changes |
 
 ## PostgreSQL SSL configuration
 

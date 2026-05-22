@@ -3,7 +3,7 @@ title: Database DevOps Onboarding Guide
 description: A self-service onboarding guide for Harness DB DevOps.
 slug: /database-devops/use-database-devops/get-started/onboarding-guide/
 sidebar_position: 1
-sidebar_label: Onboarding guide
+sidebar_label: Database DevOps Onboarding Guide
 keywords:
   - database devops
   - db devops
