@@ -157,20 +157,35 @@ If the step is within a step group, include the step group identifier in the exp
 
 #### Output secrets
 
-Plugin step can export output secrets, which can be used in subsequent steps or stages. These behave exactly like output variables but are stored and referenced securely.
+Plugin step can export output secrets, which can be used in subsequent steps or stages. Output secrets behave like output variables but are automatically masked in logs and handled securely.
+
+**Important:** To ensure proper secret masking, you must export secrets from within your plugin code using the `$HARNESS_OUTPUT_SECRET_FILE` environment variable. The `outputVariables` field in the step YAML does not mask secrets; plugins ignore it entirely. Secret masking only works when secrets are written to `$HARNESS_OUTPUT_SECRET_FILE` inside the plugin.
 
 To export an output secret from your plugin, write to the `$HARNESS_OUTPUT_SECRET_FILE` environment variable:
-```
+```bash
 echo "SECRET_KEY=supersecretvalue" >> $HARNESS_OUTPUT_SECRET_FILE
 ```
 
-Referencing output secrets works the same way as output variables. Harness masks their values in logs and ensures secure handling.
+For example, the [Harness OIDC plugin](https://github.com/harness-community/drone-aws-oidc/blob/main/plugin/plugin.go#L64) exports output secrets using this approach in Go:
+
+```go
+secretOutput := fmt.Sprintf("AWS_ACCESS_KEY_ID=%s\n", credentials.AccessKeyID)
+f.WriteString(secretOutput)
+```
+
+Output secrets use the same expressions as output variables:
+- **Same stage:** `<+steps.STEP_ID.output.outputVariables.SECRET_KEY>`
+- **Cross-stage:** `<+stages.STAGE_ID.spec.execution.steps.STEP_ID.output.outputVariables.SECRET_KEY>`
+
+Harness automatically masks secret values in logs and ensures secure handling.
 
 :::info Feature flags
-Make sure the following feature flags are enabled to use output secrets:
+To use output secrets, the following feature flags must be enabled for your account:
 
-- `CI_ENABLE_OUTPUT_SECRETS`
-- `CI_ENABLE_PLUGIN_OUTPUT_SECRETS` (required for Docker Runner only)
+- **`CI_SKIP_NON_EXPRESSION_EVALUATION`:** Required for proper expression evaluation
+- **`CI_ENABLE_OUTPUT_SECRETS`:** Enables output secret support
+- **`CI_ENABLE_PLUGIN_OUTPUT_SECRETS`:** Required for Docker Runner only
+
 To enable these flags, [contact Harness Support](mailto:support@harness.io).
 :::
 
