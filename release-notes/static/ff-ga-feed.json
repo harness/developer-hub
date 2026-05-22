@@ -6,6 +6,12 @@
     "module": "Pipeline"
   },
   {
+    "flagKey": "SEI_2_ENABLE_ITSM",
+    "description": "Enables ServiceNow integration as a data source for change requests and incidents on the Incident Management tab in Team Settings.",
+    "gaStartDate": "2026-05-21",
+    "module": "Software Engineering Insights"
+  },
+  {
     "flagKey": "PL_ROLE_REUSABILITY_ACROSS_CHILD_SCOPES",
     "description": "Allows roles created at a higher scope (account/org) to be reused in lower scopes.",
     "gaStartDate": "2026-05-21",
