@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management Release Notes
 sidebar_label: Cloud Cost Management
-date: 2026-03-10T18:00
+date: 2026-05-22T18:00
 sidebar_position: 6
 ---
 
@@ -25,8 +25,24 @@ We've migrated to LabelsV2, which preserves your original label keys while drama
 
 [Instructions to Update](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts/#how-to-migrate)
 
+## May 2026 - Version 1.89.6
+#### Deployment Date: May 22, 2026 (Prod-1)
+
+### [New Feature] Data Job Status Dashboard
+Monitor the health and progress of your cloud data ingestion jobs with the new Data Job Status page. The dashboard provides real-time visibility into active, completed, and failed jobs across all your connected cloud accounts (AWS, Azure, GCP), with detailed logs and historical run tracking.
+
+
+### [New Feature]  Cost Explorer 
+Introducing Cost Explorer, a redesigned cost analysis interface that provides a streamlined, view-centric experience for exploring your multi-cloud spending. The new Advanced Filter Rule Builder enables complex AND/OR filter logic with operators like IN, CONTAINS, and STARTS WITH, while the Views Explorer drawer offers quick access to saved views, reports, and folder navigation. This feature is being the `CCM_PERSPECTIVES_V2` feature flag and users can easily switch between Cost Explorer and classic Perspectives at any time.
+
+
+### Enhancements
+
+- The presets for Cost Optimization Hub based AWS passthrough recommendations now display account details in the list view. (CCM-32418)
+
+- Fixed an issue where the Perspective filter link on the External Cost Data Sources page returned incorrect results. The filter now uses the provider name field instead of the provider type. (CCM-31894)
+
 ## May 2026 - Version 
-#### Deployment Date: May 14th, 2026 (Prod-1)
 
 ### New Features and Enhancements
 
