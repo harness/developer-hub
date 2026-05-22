@@ -55,6 +55,25 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## May 2026
 
+### Version 1.149.7
+
+#### Breaking Changes
+
+- Git triggers now throw explicit exceptions when SCM fetch operations fail, instead of returning generic error messages. Triggers that previously showed "No matching trigger for filepath conditions" for permission or connectivity issues will now surface the underlying SCM error. This may affect error handling logic or automation that relied on the previous error format. This change requires the feature flag `PIPE_TRIGGER_SCM_FETCH_THROW_EXCEPTION`. Contact [Harness Support](mailto:support@harness.io) to enable. (**PIPE-30746**)
+
+#### Fixed issues
+
+- Fixed an issue where the saved value in YAML was not shown correctly for the **Disable Artifact Validation** setting in multi-service pipelines. (**CDS-122779**, **ZD-112051**)
+- Fixed an issue where artifact image SHA256 validation failed after moving a project to a different organization or account. The validation now checks if the digest is valid before performing mismatch operations. This fix requires the feature flag `CDS_SKIP_INVALID_SHA_DIGEST_CHECK`. Contact [Harness Support](mailto:support@harness.io) to enable. (**CDS-122990**)
+- Fixed an issue where the dashboard loaded slowly for some accounts. (**CDS-122817**, **ZD-111610**)
+- Fixed an issue where ASG rolling deploy defaulted to launch template version 1 on empty ASGs when instance refresh desired configuration was enabled. (**CDS-122831**, **ZD-112737**)
+- Fixed an issue where Cloud Run resource configuration was not honored when only a memory limit was set, and a null pointer error occurred when resource strings were blank. (**CDS-122882**, **ZD-112702**)
+- Fixed an issue where Amazon S3 artifact triggers failed with `invalid_artifact_server` after a delegate upgrade. (**CDS-123533**, **ZD-114070**)
+- Fixed an issue where a `waiting_for_user_action` event was not sent on retries due to a deduplication check that incorrectly bypassed retry handling. (**PIPE-32878**)
+- Fixed an issue where triggers with a `pipelineBranchName` set on inline pipelines could cause remote templates to resolve from the trigger branch instead of the default branch. Validation now runs at trigger creation and at trigger execution time. (**PIPE-33744**, **ZD-112780**)
+- Fixed an issue where duplicate Bitbucket webhook registrations were created during high-throughput trigger updates. (**PIPE-33758**, **ZD-112635**, **ZD-113174**)
+- Fixed an issue where container steps would get stuck when ZTS denial occurred. This fix requires the feature flag `PIE_CONTAINER_STEP_ABORT_USE_UPSERT`. Contact [Harness Support](mailto:support@harness.io) to enable. (**PIPE-33814**, **ZD-113380**)
+
 ### Version 1.148.3
 
 #### New features and enhancements
@@ -70,6 +89,10 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 - Fixed an issue where when using parent level connector to create a remote pipeline, the reference is not showing up in connector references. Added the scope of connector correctly instead of defaulting it to project scope. (**PIPE-33441**, **ZD-110735**)
 - Fixed an issue where users were unable to create overlay input sets. This fix requires the feature flag `PIPE_DISABLE_DEFAULT_STORE_TYPE_TO_INLINE_FOR_INPUT_SET_CREATE_CHECK`. Contact [Harness Support](mailto:support@harness.io) to enable. (**PIPE-33489**, **ZD-112054**)
 - Fixed an issue where pipeline executions were noticeably slower (not in step details), possibly due to redis lock issues. (**PIPE-33703**, **ZD-112720**)
+
+:::info
+Wondering where versions 1.145.xx, 1.146.xx, and 1.147.xx are? Those releases were rolled into 1.148.xx and upgrades will skip directly from 1.144.xx to 1.148.xx. Don't worry, you're not missing a thing!
+:::
 
 ### Version 1.144.0
 
