@@ -2658,6 +2658,7 @@ const sidebars: SidebarsConfig = {
           className: 'horizontal-bar',
         },
         'cloud-cost-management/get-started/key-concepts',
+        'cloud-cost-management/get-started/data-job-status',
         {
           type: 'html',
           value: 'Cost Reporting',
