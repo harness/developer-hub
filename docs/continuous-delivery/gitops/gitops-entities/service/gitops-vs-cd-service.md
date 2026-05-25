@@ -108,8 +108,8 @@ manifests:
 **Steps:**
 1. Run the PR pipeline.
 2. Provide the new image tag `v2.0.0` as a variable.
-3. The **Update Release Repo** step changes `config.json` to `"imageTag": "v2.0.0"`.
-4. **Merge PR** combines the update in Git.
+3. The **Update Release Repo** step changes `config.json` to `"imageTag": "v2.0.0"` and raises a PR.
+4. The PR is merged, either by a **Merge PR** step in the pipeline, or by authorized reviewers in your Git provider when you enable **Wait for PR merge** on the Update Release Repo step. With this option, the Harness step pauses and waits until an authorized user merges the PR in the Git system.
 5. The Agent detects the change and syncs your application to match Git.
 
 **After update:**
@@ -165,8 +165,8 @@ GitOps pipelines manage changes via Git and rely on the agent to apply those upd
 
 | Step                   | Purpose                                              |
 |------------------------|------------------------------------------------------|
-| **Update Release Repo**| Update config files in Git and create pull request   |
-| **Merge PR**           | Merge the pull request automatically                |
+| **Update Release Repo**| Update config files in Git and create a pull request. Optionally wait for authorized users to merge the PR in the Git system.   |
+| **Merge PR**           | Merge the pull request from within the pipeline (not needed when using Wait for PR merge)                |
 | **Fetch Linked Apps**  | Get the relevant GitOps applications                |
 | **GitOps Sync**        | Manually trigger agent sync (if needed)             |
 | **Update GitOps App**  | Change app config like Helm overrides               |

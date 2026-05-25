@@ -16,6 +16,9 @@ keywords:
   - update release repo
   - merge pr
   - gitops sync
+  - wait for pr merge
+  - promotion workflow
+  - gitops promotion
 ---
 
 import DocImage from '@site/src/components/DocImage';
@@ -24,7 +27,9 @@ A Harness GitOps PR pipeline automates the full lifecycle of a Git-based deploym
 
 ## What is a PR pipeline?
 
-A PR pipeline connects your CI/CD workflow to GitOps by turning every deployment into a traceable Git change. The end-to-end flow looks like this:
+A PR pipeline connects your CI/CD workflow to GitOps by turning every deployment into a traceable Git change. You can choose between two flow patterns depending on how you want PR reviews and approvals to work.
+
+**Standard flow (separate Merge PR step):**
 
 ```
 Pipeline Trigger
@@ -51,6 +56,35 @@ GitOps Sync ────────── forces an immediate sync (optional)
 Application Updated in Cluster
 ```
 
+**PR-based promotion flow (wait for PR merge):**
+
+```
+Pipeline Trigger
+      │
+      ▼
+Update Release Repo ── commits config changes, raises a PR,
+      │                  and waits for external merge
+      ▼
+PR Created in Git ──── reviewers notified via Git provider
+      │
+      ▼
+PR Reviewed & Merged ─ via Git provider (GitHub, GitLab, etc.)
+      │
+      ▼
+Pipeline Resumes
+      │
+      ▼
+ArgoCD Detects Change
+      │
+      ▼
+GitOps Sync ────────── forces an immediate sync (optional)
+      │
+      ▼
+Application Updated in Cluster
+```
+
+In the PR-based promotion flow, the pipeline pauses at the Update Release Repo step until the PR is merged through your Git provider's native review process. This removes the need for both a separate Merge PR step and an Approval step in the pipeline, because the PR review itself acts as the approval gate.
+
 Each box in the flow maps to a concrete pipeline step you can configure in the Harness UI.
 
 ## Prerequisites
@@ -68,7 +102,7 @@ Harness provides purpose-built steps for GitOps pipelines. The table below summa
 
 | Pipeline step | Purpose | Manifest required |
 |---|---|---|
-| [Update Release Repo](#update-release-repo) | Commits config changes (e.g. image tag, Helm values) to the release repo and raises a PR | Release Repo manifest |
+| [Update Release Repo](#update-release-repo) | Commits config changes (image tag, Helm values, etc.) to the release repo and raises a PR. Optionally waits for the PR to be merged externally. | Release Repo manifest |
 | [Merge PR](#merge-pr) | Merges the PR created by Update Release Repo into the target branch | None |
 | [Fetch Linked Apps](#fetch-linked-apps) | Discovers GitOps applications linked to the service and environment (ApplicationSet workflows only) | Deployment Repo manifest or ApplicationSet references |
 | [GitOps Sync](#gitops-sync) | Triggers a hard sync of an ArgoCD application to apply the latest Git state | None |
@@ -95,13 +129,19 @@ This step fetches your YAML config files (Kubernetes manifests, `kustomization.y
 - **List value updates:** Target a specific list index, e.g. `spec.template.spec.containers[0].image`. You can update existing list values but cannot add or remove items.
 - **Variable precedence:** If a variable name in this step matches one defined on the service or environment, the step-level value wins.
 - **Automatic service and environment overrides:** In addition to the variables you define in this step, the Update Release Repo step automatically applies service-level and environment-level variable overrides. These overrides come from the GitOps Cluster step output and are merged into the config file. This means keys you did not explicitly add in the step (such as `deploy_file` or `repo_env_path`) may appear in the committed file.
-- **Empty values:** A blank variable value is ignored — no update is written for that key.
+- **Empty values:** A blank variable value is ignored. No update is written for that key.
 
 :::tip Suppressing unwanted overrides
 To prevent a specific service or environment override from being written to your config file, add it as a variable in the Update Release Repo step with a **blank value**. Variables with empty values are ignored and no update is written for that key, effectively suppressing the automatic override.
 :::
 
 **Optional configuration:**
+
+- **Wait for PR merge:** When enabled, the step blocks pipeline execution after raising the PR and waits until the PR is merged through your Git provider's native review process (for example, GitHub, GitLab, or Bitbucket). The pipeline resumes automatically once the PR is merged. This eliminates the need for a separate Merge PR step and allows you to use your Git provider's built-in review, approval, and merge workflows as the approval gate. Reviewers are notified through your Git provider's native notification system. Go to [PR-based promotion workflows](#pr-based-promotion-workflows) to learn how to use this option for multi-environment promotions.
+
+  :::info Minimum versions
+  This option requires ng-manager v1.146.0, next-gen-ui v1.134.0, and Harness Delegate version 891xx or later.
+  :::
 
 - **Allow Empty Commit:** When `true`, the step commits even if no file changes are detected instead of failing. Requires Harness Delegate version 84600 or later.
 - **Disable Git Restraint:** When `true`, removes the Git locking mechanism so multiple pipelines can modify the same repository concurrently through a single connector.
@@ -309,11 +349,11 @@ Controls Argo Rollouts progressive delivery within your pipeline. Use this step 
 
 ## Pipeline examples
 
-Below are two common pipeline patterns showing which steps to use and in what order.
+Below are common pipeline patterns showing which steps to use and in what order.
 
 ### Basic: image promotion with approval
 
-A common PR pipeline updates a config value (e.g. an image tag), gets approval, and deploys:
+A common PR pipeline updates a config value (for example, an image tag), gets approval, and deploys:
 
 ```
 Update Release Repo → Merge PR → Approval → GitOps Sync
@@ -321,7 +361,7 @@ Update Release Repo → Merge PR → Approval → GitOps Sync
 
 1. **Update Release Repo** changes the image tag in `values.yaml` and raises a PR.
 2. **Merge PR** merges the approved PR into the target branch.
-3. **Approval** pauses the pipeline for a manual or automated approval gate before the deployment is applied. This is one of the key advantages of using a pipeline — you get a controlled checkpoint between the Git change and the cluster update.
+3. **Approval** pauses the pipeline for a manual or automated approval gate before the deployment is applied. This is one of the key advantages of using a pipeline: you get a controlled checkpoint between the Git change and the cluster update.
 4. **GitOps Sync** forces an immediate reconciliation so ArgoCD applies the change without waiting for the polling interval.
 
 ### Advanced: progressive delivery with verification
@@ -338,15 +378,58 @@ Update Release Repo → Merge PR → GitOps Sync → GitOps Get App Details → 
 4. **GitOps Get App Details** fetches live application status so you can gate progression.
 5. **GitOps Rollout** controls the rollout (promote to next step, pause, or abort based on verification results).
 
-For a complete walkthrough of this pattern with Continuous Verification at each canary stage, see [Argo Rollouts with Continuous Verification](/docs/continuous-delivery/gitops/argo-rollouts/argo-rollouts-with-cv).
+For a complete walkthrough of this pattern with Continuous Verification at each canary stage, go to [Argo Rollouts with Continuous Verification](/docs/continuous-delivery/gitops/argo-rollouts/argo-rollouts-with-cv).
+
+## PR-based promotion workflows
+
+The **Wait for PR merge** option on the Update Release Repo step transforms a standard PR pipeline into a promotion workflow. Instead of the pipeline controlling the merge, the PR review and approval in your Git provider acts as the deployment gate. This approach aligns with the GitOps philosophy of using Git as the single source of truth for both configuration and approvals.
+
+### How it works
+
+1. The Update Release Repo step creates a branch, commits the config changes, and opens a PR in your Git provider.
+2. The pipeline pauses and waits for the PR to be merged. Harness polls the Git provider to detect the merge.
+3. Reviewers are notified through your Git provider's native notification system (for example, GitHub PR notifications, GitLab merge request emails).
+4. Reviewers review, approve, and merge the PR through the Git provider's UI or CLI.
+5. Once the PR is merged, the pipeline resumes and moves to the next step (typically GitOps Sync).
+
+### When to use this pattern
+
+Use PR-based promotion workflows when:
+
+- **Your team already reviews and approves changes through PRs.** This avoids duplicate approval gates in both Git and the Harness pipeline.
+- **You want multi-environment promotions gated by PR reviews.** For example, a pipeline that promotes to staging, waits for staging PR approval, then promotes to production with a separate PR review.
+- **You want to align with Argo CD promotion patterns.** This approach mirrors the promotion workflow model used by tools like [gitops-promoter](https://github.com/argoproj-labs/gitops-promoter), where PR merges drive environment promotions.
+
+### Multi-environment promotion example
+
+A typical multi-environment promotion pipeline uses the **Wait for PR merge** option at each stage boundary:
+
+```
+┌─────────────────────────────────┐
+│  Stage 1: Staging               │
+│  Update Release Repo (wait)     │──── PR created for staging
+│  GitOps Sync                    │     Reviewers merge staging PR
+└──────────────┬──────────────────┘     Pipeline resumes
+               │
+               ▼
+┌─────────────────────────────────┐
+│  Stage 2: Production            │
+│  Update Release Repo (wait)     │──── PR created for production
+│  GitOps Sync                    │     Reviewers merge production PR
+└─────────────────────────────────┘     Pipeline resumes
+```
+
+Each stage raises a PR for its target environment, and the pipeline advances only when that PR is merged. This gives reviewers full control over promotion timing while maintaining the audit trail and orchestration benefits of a pipeline.
+
+---
 
 ## Build your first PR pipeline
 
 Follow these steps to create a basic image-promotion pipeline:
 
-1. **Create a pipeline:** In your Harness project, go to **Pipelines** > **Create Pipeline**. Name it and click **Start**.
+1. **Create a pipeline:** In your Harness project, go to **Pipelines** > **Create Pipeline**. Name it and select **Start**.
 
-2. **Add a Deploy stage:** Click **Add Stage**, select **Deploy**, and choose **Kubernetes** as the deployment type.
+2. **Add a Deploy stage:** Select **Add Stage**, select **Deploy**, and choose **Kubernetes** as the deployment type.
 
    ![Add Deploy stage](./static/harness-git-ops-application-set-tutorial-51.png)
 
@@ -354,19 +437,19 @@ Follow these steps to create a basic image-promotion pipeline:
 
    ![Select service](./static/harness-git-ops-application-set-tutorial-54.png)
 
-4. **Configure the environment:** Select your target environment (or set it as a runtime input so you can choose at execution time). Click **Continue**.
+4. **Configure the environment:** Select your target environment (or set it as a runtime input so you can choose at execution time). Select **Continue**.
 
    ![Configure environment](./static/harness-git-ops-application-set-tutorial-55.png)
 
-5. **Configure the Update Release Repo step:** In the **Execution** tab, Harness adds the default steps automatically. Open the **Update Release Repo** step and add variables for the values you want to change (e.g. `image.tag` = `v2.0.0`).
+5. **Configure the Update Release Repo step:** In the **Execution** tab, Harness adds the default steps automatically. Open the **Update Release Repo** step and add variables for the values you want to change (for example, `image.tag` = `v2.0.0`).
 
-6. **Add the Merge PR step** after Update Release Repo (added by default).
+6. **Choose your merge strategy:** You have two options:
+   - **Use a separate Merge PR step (default):** Leave the Update Release Repo step as-is and keep the Merge PR step that Harness adds by default. Add an Approval step between them if you need a pipeline-level approval gate.
+   - **Use Wait for PR merge:** Enable **Wait for PR merge** on the Update Release Repo step and remove the Merge PR step. The PR is reviewed and merged through your Git provider, and the pipeline resumes automatically.
 
 7. **(Optional) Add a GitOps Sync step** to force an immediate sync instead of waiting for ArgoCD's polling interval.
 
-8. **Save and run:** Click **Save**, then **Run**. Select your environment and cluster when prompted, and observe the pipeline execution.
-
-   ![Pipeline execution](./static/harness-git-ops-application-set-tutorial-58.png)
+8. **Save and run:** Select **Save**, then **Run**. Select your environment and cluster when prompted and observe the pipeline execution.
 
 ## Failure strategy and rollback
 

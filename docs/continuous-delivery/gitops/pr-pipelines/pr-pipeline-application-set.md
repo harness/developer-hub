@@ -54,10 +54,8 @@ To help you get started with creating applications using ApplicationSet through 
 We have multiple environments, and we want to deploy an application with a unique configuration for each new environment. Using a PR pipeline, we will:
 
 - **Create a new configuration file** for the target environment using **Update Release Repo**, specifying any necessary application-specific changes.
-- **Approve the changes** using **Harness Approval Step**.
-- **Merge the PR** using **Merge PR step** to merge this configuration into the repository.
-- **Approve the deployment** of AppSet.
-- **Sync the ApplicationSet** using **GitOpsSync step**, which detects the new configuration and dynamically generates a new Harness GitOps application for the environment.
+- **Merge the PR:** The pipeline pauses until the PR is reviewed and merged through your Git provider. Enable **Wait for PR merge** on the Update Release Repo step to use this flow. The PR approval in your Git provider acts as the deployment gate, so no separate Approval or Merge PR step is needed. Go to [PR-based promotion workflows](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines-basics#pr-based-promotion-workflows) to learn more.
+- **Sync the ApplicationSet** using **GitOps Sync step**, which detects the new configuration and dynamically generates a new Harness GitOps application for the environment.
 - **Fetch the Linked Application** using **Fetch Linked Apps step** to check the new application created.
 
 ---
