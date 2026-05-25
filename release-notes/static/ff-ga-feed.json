@@ -1,5 +1,11 @@
 [
   {
+    "flagKey": "PIPE_CENTRALISED_NOTIFICATION",
+    "description": "Routes pipeline events to the platform Centralised Notification Service (CNS), allowing users to manage pipeline notification rules from a unified notification center instead of only per-pipeline notification rules.",
+    "gaStartDate": "2026-05-25",
+    "module": "Pipeline"
+  },
+  {
     "flagKey": "PIPE_DYNAMIC_STAGE_EXECUTION",
     "description": "Enables a Dynamic Stage in pipelines, allowing stages to be dynamically injected and executed at runtime using inline YAML or Git-stored definitions.",
     "gaStartDate": "2026-05-22",
