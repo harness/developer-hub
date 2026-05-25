@@ -109,9 +109,7 @@ Here are the steps to get the `entityRef`:
 
 Go to **Inspect Entity** on the component page and under **Identity** in Overview you can find the `entityRef`
 
-![](./static/inspectentityidp.png)
-
-![](./static/entitiyrefidp.png)
+![](./static/inspectentityidp.gif)
 
 
 #### Response:

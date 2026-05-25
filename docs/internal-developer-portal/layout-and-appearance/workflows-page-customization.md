@@ -18,7 +18,7 @@ This will help you surface out the most useful Workflows for your developers, wh
 
 The option to create new groups is also available under the Workflows homepage which will take you to the **Layout** → **Workflows** under **Configure**. 
 
-![](./static/new-group-workflows-page.png)
+![](./static/new-group-workflows-page.gif)
 
 ### Grouping Workflows
 
@@ -128,6 +128,6 @@ spec:
 
 - Go to Icons under **Configure** → **Layout**, and highlight the icon name you want to add, it will be copied, and now you can add it under the `metadata.icon` in the Workflow definition YAML. 
 
-![](./static/layout-icons.png)
-![](./static/icons.png)
+![](./static/layout-icons.gif)
+
 

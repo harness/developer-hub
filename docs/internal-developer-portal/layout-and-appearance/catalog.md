@@ -29,7 +29,7 @@ The `kind` of entities are fixed to those available out of the box (Component, A
 
 You can access the layout of the Catalog Pages by going to the **Configure** section of IDP and navigating to the **Layout** section.
 
-![](./static/catalog%20entity.png)
+![](./static/catalog-entity.png)
 
 ![](./static/catalog-layouts-home.png)
 

@@ -407,7 +407,7 @@ Here's how you can access the playground:
 1. Go to your **Workflows** page. Click on the **three dots** in the top right corner and select **Open Playground**.
 ![](./static/template-editor-1.png)
 2. Select **Edit Template Form**.
-![](./static/template-editoer-2.png)
+![](./static/template-editor-2.png)
 3. Choose an existing workflow or begin creating a new one.
 ![](./static/template-editor-3.png)
 

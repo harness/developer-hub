@@ -13,13 +13,9 @@ In Harness IDP, you as a platform admin can customize the sidebar navigation to 
 
 You can access the Sidenav Layout editor by navigating to Harness IDP and choosing **Configure** from the sidebar.
 
-![](./static/click-on-admin.png)
-
 You can then choose Layout from the Sidenav and choose the Sidebar Navigation Layout.
 
-![](./static/click-on-layout.png)
-
-![](./static/sidenav-layout-editor.png)
+![](./static/sidenav-layout-editor.gif)
 
 <details>
 <summary>Example Sidenav Layout YAML</summary>
@@ -27,13 +23,6 @@ You can then choose Layout from the Sidenav and choose the Sidebar Navigation La
 ```yaml
 page:
   children:
-    - name: SidebarGroup
-      props:
-        label: Search
-        to: /search
-      children:
-        - name: SidebarSearchModal
-    - name: SidebarDivider
     - name: SidebarItem
       props:
         to: overview
