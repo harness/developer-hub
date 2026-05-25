@@ -1,7 +1,7 @@
 ---
 title: AI Test Automation Release Notes
 sidebar_label: AI Test Automation
-date: 2026-04-30T12:00
+date: 2026-05-21T12:00
 sidebar_position: 1
 ---
 
@@ -24,6 +24,40 @@ The release notes describe recent changes to Harness AI Test Automation.
 :::
 
 ## May 2026
+
+### 2026.05.v3
+
+#### New Features
+
+- **Playwright execution engine**  
+  You can now select Playwright as the execution engine for your tests. It provides faster execution and native browser automation support.
+
+- **Drag-and-drop support for Playwright**  
+  The Playwright execution engine now supports drag-and-drop interactions. Automate slider components and sortable lists that require drag-based input.
+
+- **Clipboard support for Playwright**  
+  Copy, paste, and log clipboard operations are now available on the Playwright execution path. Automate workflows that rely on clipboard interactions.
+
+#### Enhancements & Bug Fixes
+
+- **Duplicate test suites prevented**  
+  Resolved an issue where duplicate test suites could be created due to non-deduplicated user IDs during suite creation.
+
+- **"Create Task from test steps" correctly enables nested tasks**  
+  Fixed an issue where creating a task from selected test steps did not properly support nested task structures.
+
+### 2026.05.v2
+
+#### Enhancements & Bug Fixes
+
+- **Session expiry warning and timeout handling**  
+  Interactive authoring sessions now display a warning before session expiry and handle timeouts gracefully. You have time to save work before the session ends.
+
+- **Click commands blocked during auto-execution**  
+  Adding click commands while auto-execution is in progress is now disabled. This prevents unintended interference with running test steps.
+
+- **Prettier formatting applied to session components**  
+  Applied consistent code formatting to the SavingTestMessage and SessionExpiryWarning components for improved maintainability.
 
 ### 2026.05.v1
 
