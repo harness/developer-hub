@@ -1,133 +1,87 @@
 ---
 title: Common node fault tunables
+sidebar_label: Common Node Fault Tunables
+description: Environment variables shared by node-level chaos faults for selecting target nodes by name, by label, or by percentage.
+keywords:
+  - chaos engineering
+  - node fault tunables
+  - target node
+  - node label
+  - nodes affected percentage
+tags:
+  - chaos-engineering
+  - node-faults
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/common-tunables-for-node-faults
-- /docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults
+  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/common-tunables-for-node-faults
+  - /docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults
 ---
-Fault tunables which are common to all the node faults are described here. These tunables can be provided at `.spec.experiment[*].spec.components.env` in the chaosengine.
 
-### Target single node
+These tunables apply to every node-level chaos fault in Harness Chaos Engineering. Set them on the fault in Chaos Studio to choose which nodes the experiment targets.
 
-Name of the target node. Tune it by using the `TARGET_NODE` environment variable. It contains a single node name.
+---
 
-:::info note
-It supports node drain, node taint, node restart, kubelet service kill, and docker service kill faults.
-:::
+## Target single node
 
-The following YAML snippet illustrates the use of this environment variable:
+Use the `TARGET_NODE` environment variable to name the single node the fault should run against.
 
-[embedmd]:# (./static/manifests/common/target-node.yaml yaml)
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `TARGET_NODE` | Name of the node to target. | `""` |
+
+Supported by: [Node drain](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/node-drain), [Node taint](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/node-taint), [Node restart](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/node-restart), [Kubelet service kill](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/kubelet-service-kill).
+
 ```yaml
-## provide the target node name
-## it is applicable for the [node-drain, node-taint, node-restart, kubelet-service-kill, docker-service-kill]
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: node-drain
-    spec:
-      components:
-        env:
-        # name of the target node
-        - name: TARGET_NODE
-          value: 'node01'
+- name: TARGET_NODE
+  value: "node01"
 ```
 
-### Target multiple nodes
+---
 
-Comma-separated names of the target nodes. Tune it by using the `TARGET_NODES` environment variable.
+## Target multiple nodes
 
-:::info note
-It supports node CPU hog, node memory hog, and node I/O stress faults.
-:::
+Use the `TARGET_NODES` environment variable to target a comma-separated list of nodes.
 
-The following YAML snippet illustrates the use of this environment variable:
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `TARGET_NODES` | Comma-separated list of node names to target. | `""` |
 
-[embedmd]:# (./static/manifests/common/target-nodes.yaml yaml)
+Supported by: [Node CPU hog](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/node-cpu-hog), [Node memory hog](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/node-memory-hog), [Node I/O stress](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/node-io-stress), [Node network loss](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/node-network-loss), [Node network latency](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/node-network-latency).
+
 ```yaml
-## provide the comma separated target node names
-## it is applicable for the [node-cpu-hog, node-memory-hog, node-io-stress]
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: node-cpu-hog
-    spec:
-      components:
-        env:
-        # comma separated target node names
-        - name: TARGET_NODES
-          value: 'node01,node02'
+- name: TARGET_NODES
+  value: "node01,node02"
 ```
 
-### Target nodes with labels
+---
 
-Labels of the target nodes. Tune it by using the `NODE_LABEL` environment variable.
-This variable is mutually exclusive with the `TARGET_NODE` environment variable. If `TARGET_NODE` environment variable is set, the nodes provided will be used. Otherwise, it derives the node name(s) by matching it with the node labels.
+## Target nodes with labels
 
-The following YAML snippet illustrates the use of this environment variable:
+Use the `NODE_LABEL` environment variable to select target nodes by label. This is mutually exclusive with `TARGET_NODE` and `TARGET_NODES`. If both are set, the explicit node list wins.
 
-[embedmd]:# (./static/manifests/common/target-label.yaml yaml)
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `NODE_LABEL` | Label selector in `key=value` form. The fault targets nodes whose labels match. | `""` |
+
 ```yaml
-## provide the labels of the targeted nodes
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: node-cpu-hog
-    spec:
-      components:
-        env:
-        # labels of the targeted node
-        # it will derive the target nodes if TARGET_NODE(S) ENV is not set
-        - name: NODE_LABEL
-          value: 'key=value'
+- name: NODE_LABEL
+  value: "kubernetes.io/role=worker"
 ```
 
-### Node affected percentage
+---
 
-Percentage of target nodes that match the node labels. Tune it by using the `NODES_AFFECTED_PERC` environment variable. If `NODES_AFFECTED_PERC` environment variable is set to `empty` or `0`, it targets a minimum of one node.
-It supports node CPU hog, node memory hog, and node I/O stress faults.
+## Node affected percentage
 
-The following YAML snippet illustrates the use of this environment variable:
+Use the `NODES_AFFECTED_PERCENTAGE` environment variable to target a percentage of nodes that match the label selector. A value of `0` (the default) means one node.
 
-[embedmd]:# (./static/manifests/common/node-affected-percentage.yaml yaml)
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `NODES_AFFECTED_PERCENTAGE` | Percentage of nodes (matching the selector) to target. `0` means one node. | `0` |
+
+Supported by: [Node CPU hog](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/node-cpu-hog), [Node memory hog](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/node-memory-hog), [Node I/O stress](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/node-io-stress).
+
 ```yaml
-## provide the percentage of nodes to be targeted with matching labels
-## it is applicable for the [node-cpu-hog, node-memory-hog, node-io-stress]
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: node-cpu-hog
-    spec:
-      components:
-        env:
-        # percentage of nodes to be targeted with matching node labels
-        - name: NODES_AFFECTED_PERC
-          value: '100'
-        # labels of the targeted node
-        # it will derive the target nodes if TARGET_NODE(S) ENV is not set
-        - name: NODE_LABEL
-          value: 'key=value'
+- name: NODES_AFFECTED_PERCENTAGE
+  value: "100"
+- name: NODE_LABEL
+  value: "kubernetes.io/role=worker"
 ```

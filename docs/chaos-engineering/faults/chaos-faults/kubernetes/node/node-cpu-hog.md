@@ -1,217 +1,252 @@
 ---
 id: node-cpu-hog
 title: Node CPU hog
+sidebar_label: Node CPU Hog
+description: Exhaust CPU on a Kubernetes node to test scheduler behavior, pod eviction under pressure, HPA reactions, and noisy-neighbor isolation.
+keywords:
+  - chaos engineering
+  - node cpu hog
+  - cpu stress
+  - resource exhaustion
+  - kubernetes node fault
+tags:
+  - chaos-engineering
+  - node-faults
+  - resource-chaos
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-cpu-hog
-- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node-cpu-hog
-- /docs/chaos-engineering/chaos-faults/kubernetes/node-cpu-hog
+  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-cpu-hog
+  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node-cpu-hog
+  - /docs/chaos-engineering/chaos-faults/kubernetes/node-cpu-hog
 ---
 
-Node CPU hog exhausts the CPU resources on a Kubernetes node.
-- The CPU chaos is injected using a helper pod running the Linux stress tool.
-- The chaos affects the application for a specific duration.
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-![Node CPU Hog](./static/images/node-cpu-hog.png)
+Node CPU hog is a Kubernetes node-level chaos fault that drives sustained CPU pressure on a target node. Harness Chaos Engineering schedules a privileged helper pod (`harness/chaos-ddcr-faults`) on the node, which runs Linux `stress` workers tied to the node's CPU resources. Every workload that shares the node competes for the remaining cycles: application pods, DaemonSets, kube-proxy, and the kubelet itself.
 
+Use this fault to simulate a CPU-starved neighbor: a runaway batch job, a misconfigured workload that ignores its CPU limit, an autoscaler that has not caught up with traffic, or a node that has lost a CPU socket to a hardware fault.
 
-### Use cases
-Node CPU hog fault:
-- Verifies the resilience of applications whose replicas get evicted on the account of the nodes turning unschedulable (in **NotReady** state) or new replicas unable to be scheduled due to a lack of CPU resources.
-- Causes CPU stress on the target node(s).
-- Simulates the situation of lack of CPU for processes running on the application, which degrades their performance.
-- Verifies metrics-based horizontal pod autoscaling as well as vertical autoscale, that is, demand based CPU addition.
-- Helps the scalability of nodes based on growth beyond budgeted pods.
-- Verifies the autopilot functionality of cloud managed clusters.
-- Verifies multi-tenant load issues; that is, when the load increases on one container, it does not cause downtime in other containers.
+:::info Run your first experiment
+If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
+:::
 
-### Permissions required
+---
 
-Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+## Use cases
 
-```
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  namespace: hce
-  name: node-cpu-hog
-spec:
-  definition:
-    scope: Cluster
-permissions:
-  - apiGroups: [""]
-    resources: ["pods"]
-    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
-  - apiGroups: [""]
-    resources: ["events"]
-    verbs: ["create", "get", "list", "patch", "update"]
-  - apiGroups: [""]
-    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
-    verbs: ["create", "delete", "get", "list", "patch", "update"]
-  - apiGroups: [""]
-    resources: ["pods/log"]
-    verbs: ["get", "list", "watch"]
-  - apiGroups: [""]
-    resources: ["pods/exec"]
-    verbs: ["get", "list", "create"]
-  - apiGroups: ["batch"]
-    resources: ["jobs"]
-    verbs: ["create", "delete", "get", "list", "deletecollection"]
-  - apiGroups: [""]
-    resources: ["nodes"]
-    verbs: ["get", "list"]
-```
+Run this fault when you want to answer concrete questions like:
 
-### Prerequisites
-- Kubernetes > 1.16 is required to execute this fault.
-- The target nodes should be in the ready state before and after injecting chaos.
+- **CPU isolation between pods:** Do `Guaranteed` and `Burstable` pods with CPU requests stay protected when a `BestEffort` workload monopolises the node, or does the CFS fail to enforce isolation?
+- **Horizontal Pod Autoscaler reaction:** Does the HPA scale the workload out fast enough when CPU on its target pods spikes, or does the lag cause SLO breaches?
+- **Vertical scaling and VPA:** When a single pod's CPU usage climbs because the node is busy, does VPA bump the request, and does the scheduler find a healthier node?
+- **Cluster autoscaler reaction:** When scheduling stalls because available CPU is exhausted, does the cluster autoscaler add a node within the expected window?
+- **Application performance under CPU starvation:** Do request handlers, garbage collectors, and background workers degrade gracefully, or does throughput collapse non-linearly?
+- **Kubelet stability under pressure:** Does the kubelet keep renewing the node lease and serving readiness checks when the node is saturated, or does the node flip to `NotReady` because critical control loops missed their cadence?
 
-### Supported environments
+---
 
-<table>
-  <tr>
-    <th> Platform </th>
-    <th> Support Status </th>
-  </tr>
-  <tr>
-    <td> GKE (Google Kubernetes Engine) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> EKS (Amazon Elastic Kubernetes Service) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> AKS (Azure Kubernetes Service) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> GKE Autopilot </td>
-    <td> ❌ Not supported </td>
-  </tr>
-  <tr>
-    <td> Self-managed Kubernetes </td>
-    <td> ✅ Supported </td>
-  </tr>
-</table>
+## Prerequisites
 
-### Mandatory tunables
+- **Kubernetes version:** 1.21 or later. Go to [What's supported](/docs/chaos-engineering/whats-supported) to confirm distribution support.
+- **Privileged pods allowed:** The cluster lets you schedule privileged pods in the chaos namespace. The helper pod runs the stress workers against the host's CPU resources.
+- **Container runtime socket:** The chaos infrastructure has access to the container runtime socket on the target nodes. The default `containerd` socket path is mounted automatically.
+- **Node readiness:** Target nodes are in `Ready` state before the fault is launched. The fault reports a precheck failure otherwise.
+- **Workload protections in place:** The workloads under test have CPU requests and (ideally) limits configured. Without requests, the scheduler cannot reason about CPU pressure and the experiment observes generic slowness rather than meaningful eviction or throttling signals.
+- **Chaos infrastructure isolation:** The target nodes are not single points of failure for the chaos infrastructure itself. If chaos control-plane pods are scheduled on the saturated node, the experiment loses observability and may fail to roll back.
 
-   <table>
-      <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> TARGET_NODES </td>
-        <td> Comma-separated list of nodes subject to node CPU hog. </td>
-        <td> For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-multiple-nodes">target nodes.</a></td>
-      </tr>
-      <tr>
-        <td> NODE_LABEL </td>
-        <td> It contains the node label used to filter the target nodes.</td>
-        <td>It is mutually exclusive with the <code>TARGET_NODES</code> environment variable. If both are provided, <code>TARGET_NODES</code> takes precedence. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
-      </tr>
-    </table>
+---
 
-### Optional tunables
+## Supported environments
 
-   <table>
-      <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> TOTAL_CHAOS_DURATION </td>
-        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Default: 60 s. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos.</a></td>
-      </tr>
-        <tr>
-        <td> LIB_IMAGE </td>
-        <td> Image used to inject stress. </td>
-        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
-      </tr>
-      <tr>
-        <td> RAMP_TIME </td>
-        <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30 s. For more information, go to <a href = "/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
-        <td> </td>
-      </tr>
-      <tr>
-        <td> NODE_CPU_CORE </td>
-        <td> Number of cores of the CPU to be consumed. </td>
-        <td> Default: <code>2</code>. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/node-cpu-hog#node-cpu-cores">node CPU cores.</a></td>
-      </tr>
-        <tr>
-            <td> NODES_AFFECTED_PERC </td>
-            <td> Percentage of total nodes to target, that takes numeric values only. </td>
-            <td> Default: 0 (corresponds to 1 node). For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/common-tunables-for-node-faults#node-affected-percentage">node affected percentage.</a></td>
-        </tr>
-        <tr>
-            <td> SEQUENCE </td>
-            <td> Sequence of chaos execution for multiple target pods. </td>
-            <td> Default: parallel. Supports serial sequence as well. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
-        </tr>
-    </table>
+| Platform | Support status |
+| --- | --- |
+| Amazon EKS | Supported |
+| Azure AKS | Supported |
+| Google GKE | Supported |
+| Red Hat OpenShift | Supported |
+| Rancher | Supported |
+| VMware Tanzu | Supported |
+| Self-managed Kubernetes (CNCF-certified) | Supported |
 
-### Node CPU cores
-Number of cores of CPU that will be consumed. Tune it by using the `NODE_CPU_CORE` environment variable.
+---
 
-The following YAML snippet illustrates the use of this environment variable:
+## Permissions required
 
-[embedmd]:# (./static/manifests/node-cpu-hog/node-cpu-core.yaml yaml)
-```yaml
-# stress the CPU of the targeted nodes
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: node-cpu-hog
-    spec:
-      components:
-        env:
-        # number of CPU cores to be stressed
-        - name: NODE_CPU_CORE
-          value: '2'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
-```
+The fault runs under the chaos infrastructure's service account. The account must be able to perform the following operations against the target cluster.
 
-### Node CPU load
+| Resource (`apiGroup`) | Verbs | Why it is needed |
+| --- | --- | --- |
+| `pods` (`""`) | `get`, `list`, `create`, `delete`, `deletecollection`, `patch`, `update` | Create the helper pod that runs the stress workers on the target node |
+| `pods/log` (`""`) | `get`, `list`, `watch` | Stream logs from the helper pod for status and debugging |
+| `events` (`""`) | `get`, `list`, `create`, `patch`, `update` | Record fault progress as Kubernetes events |
+| `nodes` (`""`) | `get`, `list` | Discover target nodes and validate selectors |
+| `jobs` (`batch`) | `get`, `list`, `create`, `delete`, `deletecollection` | Run the chaos job that drives the fault |
 
-Percentage of CPU that will be consumed. Tune it by using the `CPU_LOAD` environment variable.
+The default Harness chaos infrastructure service account already includes these permissions. You only need to extend it if you are running with a restricted scope.
 
-The following YAML snippet illustrates the use of this environment variable:
+---
 
-[embedmd]:# (./static/manifests/node-cpu-hog/node-cpu-load.yaml yaml)
-```yaml
-# stress the CPU of the targeted nodes by load percentage
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: node-cpu-hog
-    spec:
-      components:
-        env:
-        # percentage of CPU to be stressed
-        - name: CPU_LOAD
-          value: "100"
-        # node CPU core should be provided as 0 for CPU load
-        # to work otherwise it will take CPU core as priority
-        - name: NODE_CPU_CORE
-          value: '0'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
-```
+## Fault tunables
+
+Configure the following fault parameters when you add Node CPU hog to an experiment in Chaos Studio. Defaults are shown for reference.
+
+**Chaos parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `NODE_CPU_CORE` | Number of CPU cores to fully consume on the target node. Set to `0` to use `CPU_LOAD` instead. | `1` |
+| `CPU_LOAD` | Percentage of total node CPU to consume. Honored only when `NODE_CPU_CORE` is `0`. | `100` |
+| `TOTAL_CHAOS_DURATION` | Duration of the fault in seconds. | `30` |
+
+**Targeting**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `TARGET_NODES` | Comma-separated list of node names to target. Go to [target multiple nodes](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-multiple-nodes) to read more. | `""` |
+| `NODE_LABEL` | Label selector for choosing target nodes. Go to [target nodes with labels](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels) to read more. | `""` |
+| `NODES_AFFECTED_PERCENTAGE` | Percentage of nodes (matching the selector) to target. `0` means one node. | `0` |
+| `SEQUENCE` | When multiple nodes are targeted, inject `parallel` (all at once) or `serial` (one after another). | `parallel` |
+
+**Runtime and helper**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `RAMP_TIME` | Wait period in seconds before and after the fault. Go to [ramp time](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time) to read how it is applied. | `0` |
+
+Tunables that apply to every chaos fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
+
+:::warning Pick cores or load, not both
+`NODE_CPU_CORE` and `CPU_LOAD` are mutually exclusive. If both are non-zero, `NODE_CPU_CORE` wins. To use `CPU_LOAD`, set `NODE_CPU_CORE: '0'` explicitly.
+:::
+
+---
+
+## Fault execution in brief
+
+CPU pressure does not have a single failure mode. What you observe depends on how the node is sized, how pods are configured, and how long the pressure lasts:
+
+| Layer | What happens under CPU pressure |
+| --- | --- |
+| Kernel CFS scheduler | `Guaranteed` pods (CPU requests = limits) keep their slice. `Burstable` pods get proportional shares above their request. `BestEffort` pods are starved first. |
+| Kubelet | Heartbeats, lease renewals, and probe execution slow. At sustained 100% saturation, kubelet itself can miss its `node-monitor-grace-period`. |
+| Application pods | Latency rises, queue depth grows, and SLOs degrade. CPU throttling shows up in cgroup metrics (`container_cpu_cfs_throttled_seconds_total`). |
+| Autoscalers | HPA reacts on CPU metrics; cluster autoscaler reacts on unschedulable pods. Both have minute-scale reaction times. |
+
+---
+
+## Expected behavior during fault execution
+
+- The stress workers consume the cores listed in `NODE_CPU_CORE`. If you set `NODE_CPU_CORE` higher than the node has, stress still saturates whatever is available; the extra workers just compete with each other.
+- Pods with CPU requests keep their guaranteed slice via the CFS scheduler. Pods without requests (`BestEffort`) are the first to degrade.
+- Application latency rises before throughput drops. Watch p99 latency, not just average CPU usage.
+- If `TOTAL_CHAOS_DURATION` is short (under 30 seconds), most clusters absorb the spike without any pod eviction or `NotReady` transition. Longer durations at 100% load can trigger eviction policies tuned in the kubelet.
+- HPA and cluster autoscaler reactions have a built-in delay (default scrape interval plus the reaction window, usually 1 to 5 minutes). Experiments shorter than the reaction window are not testing autoscaling — they are testing burst absorption.
+
+:::info Hog and reschedule are different signals
+This fault tests how the cluster handles a CPU-saturated node that is still reachable. To test eviction and rescheduling specifically, use [Node drain](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/node-drain) or [Node restart](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/node-restart). To test pod-level isolation, use [Pod CPU hog](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-cpu-hog).
+:::
+
+### Signals to watch
+
+A useful experiment captures signals from three layers. Attach [resilience probes](/docs/resilience-testing/chaos-testing/probes) to assert each layer automatically:
+
+- **Cluster state:** Run `kubectl top node <name>` to see CPU saturation in real time and `kubectl get pods --field-selector spec.nodeName=<name> -o wide -w` to track any eviction. Use a [Kubernetes probe](/docs/resilience-testing/chaos-testing/probes/k8s-probe) to validate that no critical pods leave `Running` state.
+- **Application service-level indicators:** Watch error rate, p99 latency, and queue depth for workloads on the affected node. The signal that matters is whether the affected pods degrade gracefully or amplify the failure. Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) for direct endpoint latency.
+- **Autoscaler and throttling metrics:** Track `container_cpu_cfs_throttled_seconds_total`, HPA replica counts, and cluster autoscaler scale-up events. Use a [Prometheus probe](/docs/resilience-testing/chaos-testing/probes/apm-probes) or an [APM probe](/docs/resilience-testing/chaos-testing/probes/apm-probes) to fail the experiment when throttling exceeds your safe ceiling or autoscaling does not kick in within its expected window.
+
+---
+
+## Verify the fault execution effect
+
+While the experiment is running, confirm that CPU pressure is actually being applied. From a workstation with `kubectl` access:
+
+1. **Confirm the helper pod is on the target node.**
+
+   ```bash
+   kubectl get pods -n <chaos-namespace> -o wide | grep node-cpu-hog-helper
+   ```
+
+   The pod's `NODE` column must match the target node and its status must be `Running`.
+
+2. **Check CPU usage on the node.**
+
+   ```bash
+   kubectl top node <target-node>
+   ```
+
+   Total CPU usage should jump close to the number of cores you allocated (or the percentage if you used `CPU_LOAD`). If it stays flat, the stress workers did not start; check the helper pod logs.
+
+3. **Look for throttling in the affected workloads.**
+
+   ```bash
+   kubectl exec -n <namespace> <pod-name> -- \
+     cat /sys/fs/cgroup/cpu.stat 2>/dev/null | grep -E 'nr_throttled|throttled_usec'
+   ```
+
+   `nr_throttled` should be non-zero and increasing for pods with CPU limits on the affected node.
+
+4. **Watch application latency.** Open your dashboard for any service with pods on the affected node and confirm p99 has stepped up. If you do not see the step, either the pod has plenty of headroom in its CPU request, or it is scheduled on a different node.
+
+---
+
+## Recovery and cleanup
+
+- **End of duration:** When `TOTAL_CHAOS_DURATION` elapses, the helper pod terminates and the stress workers exit. CPU usage returns to baseline within seconds. There is no state to clean up.
+- **No pod eviction in the common case:** Short experiments at default settings do not normally evict pods. If your `TOTAL_CHAOS_DURATION` is long (several minutes at 100%) and your kubelet has CPU-pressure-based eviction enabled, pods may have been evicted. Verify with `kubectl get events --field-selector reason=Evicted`.
+- **Autoscaled replicas stay scaled:** If HPA scaled the workload up during the fault, the extra replicas remain until HPA's scale-down policy reclaims them (default 5 minutes of stabilization).
+- **If the helper pod is killed mid-experiment:** The stress workers run in the helper's namespace and exit when the helper exits. No node-level cleanup is required.
+- **Abort the experiment early:** Stop the experiment from Harness Chaos Studio. The helper pod terminates and the stress workers exit.
+
+---
+
+## Limitations
+
+This fault is not appropriate in the following scenarios:
+
+- **Serverless Kubernetes (EKS Fargate, ACI virtual nodes, GKE Autopilot):** Fargate and ACI virtual nodes do not expose real nodes or the ability to schedule privileged pods that can apply CPU pressure to the host. GKE Autopilot blocks the privileged security context this fault requires.
+- **Windows nodes:** The `stress` utility this fault relies on is Linux-only. Use a Windows-equivalent CPU stress fault on Windows-only workloads.
+- **Single-node clusters or co-located chaos infrastructure:** If the chaos infrastructure pods (ddci and fault-specific pods) live on the node you are about to saturate, the experiment loses observability and the chaos infrastructure may itself be throttled out. Schedule chaos infrastructure on a node outside the blast radius.
+- **Workloads without CPU requests or limits:** Without resource requests, the scheduler treats every pod as `BestEffort` and the experiment observes only generic slowness, with no meaningful isolation or eviction signal.
+- **Very short durations:** Experiments shorter than the HPA reaction window (typically 1 to 5 minutes) test burst absorption, not autoscaling. Use a `TOTAL_CHAOS_DURATION` of at least one full HPA reaction cycle to test scale-out behavior.
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="Node CPU hog helper pod stays Pending or never schedules on the target node in Harness Chaos Engineering"
+  mode="docs"
+  fallback="Check the helper pod with kubectl describe pod -n <chaos-namespace>. The most common causes are taints on the target node that the helper does not tolerate, insufficient CPU available to schedule the helper itself, or a PodSecurity admission policy blocking privileged pods. Add the required tolerations, free resources on the node, or run the experiment in a namespace with privileged Pod Security level."
+/>
+
+<Troubleshoot
+  issue="Node CPU hog runs but kubectl top shows CPU usage unchanged on the target node"
+  mode="docs"
+  fallback="Either the stress workers failed to start or the helper pod is constrained by its own CPU limit. Check the helper pod logs with kubectl logs -n <chaos-namespace> <helper-pod-name>. If the helper has a small CPU limit configured, its stress workers cannot exceed that limit even with NODE_CPU_CORE set high. Remove the helper's CPU limit or raise it. Also verify with kubectl top pod that the helper pod itself is hot."
+/>
+
+<Troubleshoot
+  issue="Node flips to NotReady during node-cpu-hog and does not recover after the experiment ends"
+  mode="docs"
+  fallback="At sustained 100% CPU, kubelet may miss lease renewals long enough for the controller-manager to taint the node. When CPU returns to baseline, the node usually recovers automatically within a minute or two. If it does not, check kubelet logs on the node (journalctl -u kubelet) for crashes or panics, and verify with kubectl describe node <node-name> that no NoExecute taint remains."
+/>
+
+<Troubleshoot
+  issue="HorizontalPodAutoscaler does not scale up during node-cpu-hog even though CPU usage is high"
+  mode="docs"
+  fallback="HPA reacts on the metric you configured, usually average CPU utilization across the deployment. If only one pod (on the affected node) is hot and the others are idle, the average may stay below the scale-up threshold. Configure the HPA against a per-pod metric or use a longer chaos duration so the cluster autoscaler has time to spread the workload. Verify with kubectl describe hpa <name> what the current metric value is during the fault."
+/>
+
+<Troubleshoot
+  issue="Pods on the target node get evicted during node-cpu-hog and stay Pending after recovery"
+  mode="docs"
+  fallback="If the kubelet has CPU-pressure eviction enabled and the chaos duration crosses the eviction threshold, BestEffort pods are evicted first. After the fault, the scheduler tries to reschedule them. If they stay Pending, check kubectl describe pod for scheduler hints; common causes are insufficient capacity on other nodes or taints/affinities that pin them to the affected node."
+/>
+
+---
+
+## Related faults
+
+- [Node memory hog](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/node-memory-hog): Same blast-radius shape but applies memory pressure instead of CPU. Use it to test eviction by `memory.available` instead of throttling.
+- [Node I/O stress](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/node-io-stress): Stresses disk I/O on the node rather than CPU. Use it to test disk-bound workloads.
+- [Pod CPU hog](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-cpu-hog) and [Pod CPU hog exec](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-cpu-hog-exec): Scope CPU pressure to a single pod rather than the whole node. Use them to test pod-level CPU limits and throttling.
+- [Common node fault tunables](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/common-tunables-for-node-faults): Shared environment variables for selecting target nodes across node faults.
