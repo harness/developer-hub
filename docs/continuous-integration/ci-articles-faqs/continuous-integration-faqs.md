@@ -798,6 +798,15 @@ Yes, we need to have one stage running on ARM and another stage running on AMD t
 
 Yes
 
+### etcdserver: request is too large
+If you are experiencing the following error in your CI pipeline
+```
+etcdserver: request is too large
+```
+This means that the Build Pod YAML is too large and is your Kubernetes Cluster's `etcdserver` is not able to handle the request. This can be caused by having too many steps or variables in your CI pipeline.
+
+To Resolve this issue, you can either reduce the number of steps in your CI stage or you can add the Stage Variable `CI_COMMON_ENV_POD=true`. This setting will remove all common environment variables from the step/container's YAML spec and add them to a `configMap`. This `configMap` will then be mounted onto each container to help reduce the size of the pod YAML being generated. Please note that if using the `CI_COMMON_ENV_POD` variable, you will need additional permissions to create and reference `configMap` resources in your target build cluster and namespace.
+
 ## Self-signed certificates
 
 ### Can I mount internal CA certs on the CI build pod?
