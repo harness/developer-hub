@@ -29,7 +29,7 @@ tags:
 
 import SCIMurl from '/docs/platform/shared/scimurl.md'
 
-You can use OneLogin as a SAML identity provider for Harness, allowing OneLogin users to log in to Harness with their existing credentials. Once configured, Harness delegates authentication to OneLogin and can optionally sync OneLogin roles to Harness user groups for automatic access control.
+OneLogin acts as a SAML identity provider for Harness, enabling users to authenticate with their existing OneLogin credentials. When a user attempts to log in to Harness, they are redirected to OneLogin for authentication. After successful authentication, OneLogin sends a signed SAML assertion back to Harness, which validates it and grants access. Optionally, OneLogin can include role information in the SAML assertion through custom parameters, allowing Harness to automatically assign users to corresponding Harness user groups based on their OneLogin roles for role-based access control.
 
 :::info note
 If you use <a href="/docs/self-managed-enterprise-edition/smp-overview" target="_blank">Harness Self-Managed Enterprise Edition</a>, your instance must be accessed via an HTTPS load balancer, otherwise SAML authentication will fail over HTTP.
@@ -41,13 +41,15 @@ If you use <a href="/docs/self-managed-enterprise-edition/smp-overview" target="
 
 By the end of this topic, you will be able to:
 
-- Configure OneLogin as a SAML SSO provider in Harness.
-- Assign users, and test OneLogin authorization.
-- Login to Harness using OneLogin credentials.
+- [Set up the Harness application in OneLogin with SAML configuration](#onelogin-authentication-on-harness).
+- [Enable SSO authentication](#enable-onelogin-as-a-harness-sso-provider).
+- [Configure OneLogin roles and parameters to sync user permissions with Harness user groups](#assign-roles-to-users).
+- [Test and verify OneLogin authentication and authorization](#test-the-integration).
 
 ---
 
 ## Before you begin
+
 Before you configure OneLogin as the SAML identity provider for Harness, ensure you have the following:
 - A Harness account with Account Admin permissions.
 - An existing OneLogin account with admin access to create and configure applications.
@@ -63,7 +65,7 @@ Enabling OneLogin authentication on Harness requires configuration on both Harne
 Use two browser windows or tabs for this process. Open OneLogin in one tab and Harness in the other.
 
 
-### Obtain SAML endpoint URL
+### Step 1: Obtain SAML endpoint URL
 
 To get the SAML Endpoint URL from Harness to configure OneLogin:
 
@@ -96,7 +98,7 @@ To get the SAML Endpoint URL from Harness to configure OneLogin:
     
     After copying the URL in step 5, keep the tab open, and [Add Harness app to OneLogin](#add-harness-app-to-onelogin).
 
-### Add Harness app to OneLogin
+### Step 2: Add Harness app to OneLogin
 
 Add the **Harness** app (for SaaS setup) (or **Harness (On Prem)** app for Harness Self-Managed Enterprise Edition setup) and configure it inside OneLogin so OneLogin knows where to send SAML metadata.
 
@@ -130,7 +132,7 @@ Add the **Harness** app (for SaaS setup) (or **Harness (On Prem)** app for Harne
 	<DocImage path={require('../static/single-sign-on-saml-103.png')} width="80%" height="40%" title="Click to view full size image" />
 	</div>
 
-### Assign users to roles
+### Step 3: Assign users to roles
 
 To provide a OneLogin user access to the Harness application to authenticate via SSO:
 
@@ -160,7 +162,7 @@ To provide a OneLogin user access to the Harness application to authenticate via
 
 5. Repeat this section for other users (or groups) that you want to add to Harness.
 
-### Assign users to groups
+### Step 4: Assign users to groups
 
 If you have multiple users requiring OneLogin access, you can (optionally) create a group and add multiple users into it.
 To create a group:
@@ -178,7 +180,7 @@ To create a group:
   </div>
 
 
-### Enable OneLogin as a Harness SSO provider
+### Step 5: Enable OneLogin as a Harness SSO provider
 
 To upload the OneLogin metadata into Harness and activate the SAML connection to complete the authentication setup:
 
@@ -210,7 +212,7 @@ Return to the Harness browser tab you left open in step 5 of [Obtain SAML endpoi
 
 Once you've enabled [OneLogin authentication](#onelogin-authentication-on-harness) on Harness, refer to the below sections to enable authorization between the two platforms to control what users can do inside Harness.
 
-### Assign roles to users
+### Step 1: Assign roles to users
 
 Harness' SAML authorization replicates [**OneLogin Roles**](https://onelogin.service-now.com/support?id=kb_article&sys_id=cc2e602a973b2150c90c3b0e6253af3c&kb_category=566ffd6887332910695f0f66cebb3556) as **Harness User Groups**.
 
@@ -229,7 +231,7 @@ Follow the steps below to map these entities:
 Repeat this section for other users to whom you want to assign Roles.
 
 
-### Define parameters
+### Step 2: Define parameters
 
 Before defining parameters, enable provisioning in your OneLogin application. Go to **Applications** → your application → **Provisioning**, and under **Workflows**, select the **Enable provisioning** checkbox.
 
@@ -263,7 +265,7 @@ Your application page appears in OneLogin.
 
 7. Click **Save** again at the **Parameters** page's upper right.
 
-### Sync users in Harness
+### Step 3: Sync users in Harness
 
 Configure Harness to recognize the OneLogin group and link it to a Harness user group so permissions are inherited on login.
 
@@ -299,7 +301,7 @@ Configure Harness to recognize the OneLogin group and link it to a Harness user 
   </div>
 
 
-### Test the integration
+### Step 4: Test the integration
 
 After you've synced Users between OneLogin and Harness, users will be assigned to the designated Harness User Group upon your next login to Harness. To test whether OneLogin authentication and authorization on Harness are fully functional do the following:
 
