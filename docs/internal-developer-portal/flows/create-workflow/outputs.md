@@ -52,16 +52,16 @@ steps:
       name: Creating your react app
       action: trigger:harness-custom-pipeline
       input:
-      url: "https://app.harness.io/ng/account/vpCkHKsDSxK9_KYfjCTMKA/home/orgs/default/projects/communityeng/pipelines/IDP_New_NextJS_app/pipeline-studio/?storeType=INLINE"
-      inputset:
-          project_name: ${{ parameters.project_name }}
-          github_repo: ${{ parameters.github_repo }}
-          cloud_provider: ${{ parameters.provider }}
-          db: ${{ parameters.db }}
-          cache: ${{ parameters.cache }}
-      apikey: ${{ parameters.token }}
-      // highlight-next-line
-      showOutputVariables: true
+        url: "https://app.harness.io/ng/account/vpCkHKsDSxK9_KYfjCTMKA/home/orgs/default/projects/communityeng/pipelines/IDP_New_NextJS_app/pipeline-studio/?storeType=INLINE"
+        inputset:
+            project_name: ${{ parameters.project_name }}
+            github_repo: ${{ parameters.github_repo }}
+            cloud_provider: ${{ parameters.provider }}
+            db: ${{ parameters.db }}
+            cache: ${{ parameters.cache }}
+        apikey: ${{ parameters.token }}
+        // highlight-next-line
+        showOutputVariables: true
 output:
   text:
    // highlight-start 
