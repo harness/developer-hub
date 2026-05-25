@@ -59,7 +59,7 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 #### Breaking Changes
 
-- Git triggers now throw explicit exceptions when SCM fetch operations fail, instead of returning generic error messages. Triggers that previously showed "No matching trigger for filepath conditions" for permission or connectivity issues will now surface the underlying SCM error. This may affect error handling logic or automation that relied on the previous error format. This change requires the feature flag `PIPE_TRIGGER_SCM_FETCH_THROW_EXCEPTION`. Contact [Harness Support](mailto:support@harness.io) to enable. (**PIPE-30746**)
+- PR triggers now require the linked Git connector to have API access enabled. Previously, PR triggers created with a connector without API access could successfully execute pipelines. Pipeline executions fail with an error if the connector does not have API access enabled. This change is currently behind the feature flag `PIPE_TRIGGER_SCM_FETCH_THROW_EXCEPTION` and will be automatically enabled for all accounts after a 14-day rollout period. Contact [Harness Support](mailto:support@harness.io) to enable it before the automatic rollout. (**PIPE-30746**)
 
 #### Fixed issues
 
