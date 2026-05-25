@@ -5,6 +5,8 @@ sidebar_label: Platform FAQs
 sidebar_position: 2
 redirect_from:
   - /kb/platform/harness-platform-faqs
+  - /kb/platform/articles/delegate-details-api
+  - /docs/platform/knowledgebase/articles/delegate-details-api
 ---
 
 <!--
@@ -396,7 +398,7 @@ When you create a token in Harness under Service Account, the validity of the to
 ### How do I fetch delegate disconnected status via the API?
 
 ```
-{delegateList(filters: [{accountId: "xxxxx"}], limit: 10) {
+{delegateList(filters: [{accountId: "<YOUR_ACCOUNT_ID>"}], limit: 10) {
 
     nodes {
       delegateName
@@ -2222,6 +2224,40 @@ These approaches offer flexibility and reliability in ensuring that Harness dele
 ### Upgrader job is up and running but not identified as Upgrade is Turned ON also upgrade is not working
 
 The name of the upgrader job workload needs to follow the delegate naming convention, so can you check and confirm if you have changed that manually or using the default name as you get while downloading the manifest.
+
+
+### How to identify if the delegate is disconnected with the help of an API?
+
+Delegate status can be seen in the UI however it always helps if there is a programmatic way of get the status of the delegates along with some other delegate details.
+
+We have a graphql api function that helps us provide such details. We can parse the response to get name , ip of the delegate version and connection status information.
+
+Below is an example graphql api for the same:
+
+```{delegateList(filters: [{accountId: "<YOUR_ACCOUNT_ID>"}], limit: 10) {
+
+    nodes {
+
+      delegateName
+
+      ip
+
+      status
+      
+      disconnected
+
+      version
+
+      hostName
+
+      lastHeartBeat
+
+    }
+
+  }
+
+}
+```
 
 ## Dashboards
 

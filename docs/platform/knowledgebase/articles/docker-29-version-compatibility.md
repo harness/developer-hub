@@ -5,7 +5,7 @@ redirect_from:
   - /kb/platform/articles/docker-29-version-compatibility
 ---
 
-# Docker Engine v29 — Compatibility Notice for Harness
+## Docker Engine v29 — Compatibility Notice for Harness
 
 Docker Engine **v29** introduces significant API changes that are **not backward-compatible** with older Docker clients or tooling. These changes can impact pipelines that:
 

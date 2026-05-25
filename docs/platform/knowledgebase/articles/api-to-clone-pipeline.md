@@ -6,7 +6,7 @@ redirect_from:
   - /kb/platform/articles/api-to-clone-pipeline
 ---
 
-# Clone Pipeline through API
+## Clone Pipeline through API
 
 This knowledge base article walks you through how you can clone the pipeline through API also.
 

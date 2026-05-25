@@ -5,7 +5,7 @@ redirect_from:
   - /kb/platform/articles/snow-connector-oidc-refresh-token
 ---
 
-# ServiceNow Connector - OIDC Refresh Token
+## ServiceNow Connector - OIDC Refresh Token
 
 You can connect Harness to ServiceNow using a Harness ServiceNow connector. This connector enables you to approve and reject pipeline steps directly within Harness.
 

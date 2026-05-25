@@ -3,6 +3,7 @@ title: Build and set up a delegate with a minimal image type
 description: This tutorial shows you how to build and set up a delegate with a minimal image type.
 sidebar_label: Configure Delegate (Minimal Image)
 sidebar_position: 2
+slug: /platform/tutorials/configure-delegate
 keywords: [delegate, delegate minimal image]
 ---
 

@@ -6,7 +6,7 @@ redirect_from:
   - /kb/platform/articles/api-to-run-a-pipeline-with-runtime-inputs
 ---
 
-# API to run a pipeline with runtime inputs
+## API to run a pipeline with runtime inputs
 
 This knowledge base article walks you through how you can run a pipeline with runtime inputs through API.
 

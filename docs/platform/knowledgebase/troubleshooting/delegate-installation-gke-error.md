@@ -2,13 +2,11 @@
 title: Delegate installation error in GKE
 redirect_from:
     - /kb/platform/articles/delegate-installation-gke-error
+description: Resolve Delegate installation error with readiness probe failure in GKE
 ---
 
-# How Can I Fix The Delegate Installation Error with Readiness Probe Failure in GKE?
+This section resolves the Delegate installation error with Readiness Probe Failure in GKE.
 
-### Module
-
-- Harness Platform
 
 ### Environment
 
@@ -17,7 +15,7 @@ redirect_from:
 
 ### Issue
 
-After configuration of the proxy alongside testing the connection using the command
+After configuration of the proxy alongside testing the connection using the command:
 
 ```
 wget -p https://app.harness.io/ -O /dev/null

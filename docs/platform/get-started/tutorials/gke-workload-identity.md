@@ -4,6 +4,7 @@ description: This tutorial shows you how to deploy a Harness Delegate that uses 
 sidebar_label: Delegate on GKE (Workload Identity)
 keywords: [Google, delegate, Terraform, GKE, workload identity]
 sidebar_position: 3
+slug: /platform/tutorials/gke-workload-identity
 redirect_from:
   - /tutorials/platform/gke-workload-identity
   - /docs/platform/delegates/install-delegates/gke-workload-identity

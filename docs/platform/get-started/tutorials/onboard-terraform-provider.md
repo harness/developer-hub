@@ -3,8 +3,10 @@ title: Onboarding with Terraform Provider
 description: Learn how to onboard your Terraform provider and configure it for smooth integration with Harness.
 sidebar_label: Terraform Setup
 sidebar_position: 5
+slug: /platform/tutorials/onboard-terraform-provider
 redirect_from:
   - /tutorials/platform/onboard-terraform-provider
+  - /docs/platform/get-started/tutorials/onboard-terraform-provider/
 ---
 
 The [Harness Terraform Provider](https://registry.terraform.io/providers/harness/harness/) enables automated lifecycle management of the Harness Platform using Terraform. You can onboard onto Harness on day 1 and also make day 2 changes using this Provider. Currently the following Harness resources can be managed via the Provider.

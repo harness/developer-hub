@@ -24,7 +24,7 @@ Nav 2.0 introduces several enhancements, including:
 
 ### Will training be provided for the new navigation experience?
 
-Yes, Harness will provide training resources, such as documentation, in-product video walkthroughs, and live webinars, to ensure a smooth transition. Harness Support is available to assist with any questions.
+Yes, Harness will provide training resources, such as documentation, in-product video walkthroughs, and live webinars, to ensure a smooth transition. [Harness Support](mailto:support@harness.io) is available to assist with any questions.
 
 ### How will Harness ensure a smooth transition for users?
 
@@ -48,4 +48,4 @@ You can use the feedback form in the Help section or reach out to Harness Suppor
 
 ### What if I encounter issues after the rollout?
 
-Harness Support is ready to assist you. Please contact Harness Support through our support channels, and Harness will work promptly to address any issues or concerns you have.
+Contact [Harness Support](mailto:support@harness.io) through our support channels, and Harness will work to address any issues or concerns you have.

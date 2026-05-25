@@ -6,7 +6,7 @@ redirect_from:
   - /kb/platform/articles/mount-custom-cert-with-delegate
 ---
 
-# Mount custom cert in Delegate through ConfigMap
+## Mount custom cert in Delegate through ConfigMap
 
 This knowledge base article walks you through how you can mount the custom cert with delegate through ConfigMap.
 

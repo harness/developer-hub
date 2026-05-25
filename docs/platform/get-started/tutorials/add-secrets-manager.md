@@ -6,9 +6,11 @@ helpdocs_topic_id: bo4qbrcggv
 helpdocs_category_id: 48wnu4u0tj
 helpdocs_is_private: false
 helpdocs_is_published: true
+slug: /platform/tutorials/add-secrets-manager
 redirect_from:
   - /tutorials/platform/secrets-management
   - /docs/platform/Secrets/Secrets-Management/add-secrets-manager
+  - /docs/platform/get-started/tutorials/add-secrets-manager
 ---
 
 import Tabs from '@theme/Tabs';
