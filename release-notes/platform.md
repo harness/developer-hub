@@ -222,7 +222,11 @@ The following deprecated API endpoints are longer supported:
 
 ## May 2026
 
-### Version 1.145.x <!--May 14, 2026-->
+### Version 1.149.x <!--May 22, 2026-->
+
+No enhancements or fixes were released in this cycle.
+
+### Version 1.148.x <!--May 14, 2026-->
 
 #### Fixed issues
 
@@ -232,6 +236,18 @@ The following deprecated API endpoints are longer supported:
 
 - Introduced [**Platform Alerts**](/docs/platform/notifications/platform-alerts), an in-app notification framework that automatically surfaces important account-level events such as approaching resource limits and new system release announcements directly within the Harness UI, with no external configuration required. [PL-68329]
 - Improved the reliability of the Purchase Credits API by making database operations atomic. Also enhanced logging to capture overage details during credit reset operations. [PL-70442]
+
+### Version 1.147.x <!--May 10, 2026-->
+
+No enhancements or fixes were released in this cycle.
+
+### Version 1.146.x <!--May 06, 2026-->
+
+No enhancements or fixes were released in this cycle.
+
+### Version 1.145.x <!--May 06, 2026-->
+
+No enhancements or fixes were released in this cycle.
 
 ### Version 1.144.x <!--May 06, 2026-->
 
