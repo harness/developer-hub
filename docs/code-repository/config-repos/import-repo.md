@@ -50,6 +50,19 @@ Harness provides a CLI tool to fully migrate git repositories as well as all met
    * To import a GitLab repository, your [GitLab personal access token](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#create-a-personal-access-token) must have `read_api` and `read_repository` [scopes](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#personal-access-token-scopes).
    * To import an Azure DevOps repository, your [Azure DevOps personal access token](https://learn.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate) must have `Code (read)` scope.
 
+:::note Rate limits during import
+
+Before the repository contents are fetched, Harness calls the source provider's API to resolve repository metadata (a single lookup, or paginated lists for **Import Repositories**). Every provider applies its own API rate limits.
+
+* **Without authorization:** Requests are unauthenticated. On SaaS providers such as GitHub, GitLab, and Bitbucket Cloud, unauthenticated limits are typically tied to the **outbound IP address** and tend to be low, so this quota can be exhausted quickly when you import at scale. Self-hosted providers may not enforce a rate limit by default, or may apply different rules; check with your provider administrator or their documentation.
+* **With authorization:** Requests use **your credential's rate limit**, which is usually much higher and independent of the unauthenticated IP quota.
+
+If you see a rate limit error during import, repeat the import with **Requires Authorization** selected and provide a valid token for the source provider.
+
+Harness recommends selecting **Requires Authorization** for any provider when you import many repositories, retry imports often, or import from large organizations, groups, projects, or workspaces. Use it for **private** repositories (required) and for **public** repositories when you want reliable imports that do not compete for the shared unauthenticated IP quota.
+
+:::
+
 7. Select your preference for visibility (**Public** or **Private**).
 8. Select **Import Repository** or **Import Repositories**.
 
