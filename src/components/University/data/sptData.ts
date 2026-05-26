@@ -57,6 +57,17 @@ export const spt: IltCardItem[] = [
     tileType: tileType.normal,
     cardType: cardType.SPT,
   },
+    {
+    title: "Introduction to Parallel Steps",
+    module: MODULES.ci,
+    type: type.user,
+    description:
+      "Self-paced tidbit introducing Parallel Steps as part of Test Intelligence Steps.",
+    version: "Harness CI Paid Plans",
+    link: "https://university-registration.harness.io/self-paced-training-tidbit-introduction-to-parallel-steps",
+    tileType: tileType.normal,
+    cardType: cardType.SPT,
+  },
   {
     title: "Internal Developer Portal",
     module: MODULES.idp,
