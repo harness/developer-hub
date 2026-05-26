@@ -16,6 +16,10 @@ Open source software plays a critical role in the software landscape, with studi
 
 After completing the SBOM Orchestration step for your [artifacts](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-artifacts) or [repositories](/docs/software-supply-chain-assurance/open-source-management/generate-sbom-for-repositories), the [SBOM tab](/docs/software-supply-chain-assurance/artifact-security/overview#sbom-tab) will display the below components marked with specific icons that indicate their current status.
 
+- [Malicious Packages](/docs/software-supply-chain-assurance/manage-risk-and-compliance/opensource-security-risk-management#malicious-packages)
+
+- [Typosquatting](/docs/software-supply-chain-assurance/manage-risk-and-compliance/opensource-security-risk-management#typosquatting)
+
 - [Vulnerabilities in SBOM Components](/docs/software-supply-chain-assurance/manage-risk-and-compliance/opensource-security-risk-management#vulnerabilities-in-sbom-components-oss-risk---1) 
 
 - [Outdated Components](/docs/software-supply-chain-assurance/manage-risk-and-compliance/opensource-security-risk-management#outdated-components-oss-risk---5) 
@@ -32,6 +36,22 @@ After completing the SBOM Orchestration step for your [artifacts](/docs/software
 
 - Detection of EOL and Close to EOL components is currently supported for npm, Maven, and PyPI. Support for additional package managers will be added in the future.
 :::
+
+### Malicious Packages
+
+A dependency is considered to have a malicious package OSS risk when it has been identified as containing harmful or intentionally deceptive code that may compromise your software supply chain.
+
+In the SBOM tab, you can filter dependencies by `Malicious Package` OSS risk to identify high-risk packages. Click the flagged dependency to open the side panel. Review the detailed summary in the OSS Risks section. The summary explains why the dependency was flagged and its potential security impact. Review these dependencies immediately and replace them with verified trusted alternatives.
+
+<DocImage path={require('./static/malicious-package-oss-risks.png')} width="80%" height="80%" title="Click to view full size image" />
+
+### Typosquatting
+
+A dependency is considered to have a typosquatted OSS risk when its package name closely resembles a legitimate and commonly used package but contains minor spelling variations, added characters, or substitutions intended to deceive users into installing an unintended dependency.
+
+In the SBOM tab, you can filter dependencies by `Typosquatting` OSS risk to identify potentially deceptive packages introduced through naming errors or malicious impersonation. Click the flagged dependency to open the side panel. Review the detailed summary in the OSS Risks section. The summary explains why the dependency was flagged and its potential impact. Verify the package name against the intended trusted dependency and replace it if necessary.
+
+<DocImage path={require('./static/typosquatting-oss-risk.png')} width="80%" height="80%" title="Click to view full size image" />
 
 ### Vulnerabilities in SBOM Components (OSS Risk - 1)
 
