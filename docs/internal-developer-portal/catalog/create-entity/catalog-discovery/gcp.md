@@ -161,7 +161,67 @@ Once imported, GCP entities are available in the **Catalog** section of IDP as s
 ![Entity Inspector Page showing Ingested Properties](./static/ingested-gcp-property.gif)
 <center>Figure 8: Entity Inspector Page showing Ingested Properties</center>
 
-Open any entity to view its Overview, Relations, and other tabs configured for your entity layout. The entity status (e.g., `READY`) is sourced directly from GCP.
+Open any entity to view GCP-sourced data such as asset type, location, project, and state directly on the entity details page. This data is displayed through two dedicated UI components: a card on the **Overview** tab and a **GCP Integration** tab. Both require a one-time layout configuration, described in the [next section](#layout-for-gcp-components).
+
+### Layout for GCP Components
+
+To display GCP data on the [entity details](/docs/internal-developer-portal/catalog/create-entity/entity-details) page, you need to add the two GCP components to the relevant entity layout. This is a one-time configuration per entity kind and type.
+
+1. From the left sidebar of IDP, go to **Configure** → **Layout** → **Catalog Entities**.
+2. Edit the existing layout for your entity or create a new one.
+3. Select the **Entity Kind** (e.g., `resource`) and the **Entity Type** (e.g., `compute_instance`) that matches your imported GCP entities.
+4. In the YAML editor, add the `IntegrationsContent` component inside the **Overview** tab's `contents` block, and add a new **GCP Integration** tab using the `GCPIntegrationTab` component.
+
+   ![Entity Layout configuration for GCP components](./static/gcp-layout-config.png)
+   <center>Figure 9: Layout configuration for GCP Cloud Card and GCP Integration tab</center>
+
+   The relevant YAML additions are:
+
+   ```yaml title="Inside the Overview tab's contents block"
+           - component: IntegrationsContent
+             specs:
+               props:
+                 variant: gridItem
+               gridProps:
+                 md: 12
+   ```
+   ```yaml title="A new top-level tab entry"
+       - name: GCP
+         path: /gcp
+         title: GCP Integration
+         contents:
+           - component: GCPIntegrationTab
+   ```
+
+5. Click **Save** to apply the layout changes. The GCP components will now appear on all entity detail pages of the selected kind and type that have GCP data.
+
+
+### GCP Card in Overview Tab
+
+After the layout is configured, a card appears in the **Overview** tab of any entity that has GCP data linked to it. The card displays the key GCP metadata ingested for that entity, sourced from the entity's [ingested properties](#ingested-properties).
+
+![GCP Cloud Card on the Overview tab](./static/gcp-cloud-card-overview.png)
+<center>Figure 10: GCP Cloud Card on the Overview tab</center>
+
+If the GCP integration has not been configured for the entity, the card shows a **Not configured** state with a link to the Integrations page. If multiple GCP integrations are active on your account, a dropdown appears at the top of the card to switch between integrations.
+
+### GCP Integration Tab
+
+The **GCP Integration** tab provides a more complete view of the GCP data for the entity. This tab fetches latest possible data using the integration ID and entity UUID.
+
+![GCP Integration tab showing full resource details](./static/gcp-integration-tab.png)
+<center>Figure 11: GCP Integration tab showing full GCP resource details</center>
+
+:::tip Feature Highlights
+* The tab shows all available fields for the resource type, including fields not present in the **Overview**.
+* All the fields are dynamic.
+* If a value is not available for the resource, a dash (`-`) is shown.
+* The top-right corner shows when the data was last synced from GCP, based on your configured [update frequency](#4-configure-advanced-settings).
+* If multiple GCP integrations are linked to the entity, a dropdown appears above the details to switch between integrations.
+:::
+
+---
+
 
 ### Ingested Properties
 
