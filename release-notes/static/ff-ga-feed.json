@@ -1534,5 +1534,17 @@
     "description": "Enables support in UI to view cpu and memory metrics for pipeline running in Harness cloud",
     "gaStartDate": "2026-05-22",
     "module": "Continuous Integration"
+  },
+  {
+    "flagKey": "SCS_MALICIOUS_PACKAGES_SUPPORT",
+    "description": "Enables detection of malicious packages as OSS risks within SBOMs",
+    "gaStartDate": "2026-05-26",
+    "module": "Supply Chain Security"
+  },
+  {
+    "flagKey": "SCS_BITBUCKET_RSPM",
+    "description": "Enables support for onboarding Bitbucket repositories in Repository Security Posture Management (RSPM)",
+    "gaStartDate": "2026-05-26",
+    "module": "Supply Chain Security"
   }
 ]
