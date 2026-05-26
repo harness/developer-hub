@@ -62,6 +62,16 @@ To create a text secret:
 
    Inline secrets of text types deleted in Harness are also deleted from the external secrets manager. Harness recommends that you always back up these secrets.
    :::
+
+### Create secrets via YAML
+
+:::important YAML limitations for secrets
+You cannot create a complete secret via YAML because that would require typing your secret value in plain text.
+
+- You can create a skeleton of the secret via YAML with metadata like name, description, and tags.
+- You must edit the secret in Visual mode to enter the actual secret value.
+- Secrets created via YAML without values appear as **Incomplete Secret** in the Secret List page.
+:::
    
 ### Secret scope
 

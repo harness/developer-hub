@@ -43,6 +43,14 @@ You can add an encrypted file secrets at the project, organization, and account 
 
    :::
 
+### Create file secrets via YAML
+
+:::important File secrets cannot be created via YAML
+You cannot create file secrets via YAML because YAML does not support file uploads.
+
+File secrets must be created through the Harness UI. If you attempt to define a file secret structure via YAML, it will appear as **Incomplete Secret** in the Secret List page because the file content cannot be uploaded through YAML.
+:::
+
 ## Reference an encrypted file secret
 
 You can reference a encrypted file secret in any resource that allows files, such as SSH key files for SSH credentials, authentication keys for connectors, and steps in pipelines that ingest files.
