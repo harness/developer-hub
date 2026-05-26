@@ -22,6 +22,37 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 ## May 2026
 
+### Version 1.88.0
+
+#### Images required
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
+
+- harness/chaos-ddcr:1.88.0
+- harness/chaos-ddcr-faults:1.88.0
+- harness/chaos-log-watcher:1.88.0
+- harness/service-discovery-collector:0.68.0
+
+#### New Features and Enhancements
+
+- Added filtering support for chaos experiment list in REST API
+- Added support for editing step names in Chaos Studio
+- Added UI support for runtime input for connector
+- Updated icon for Windows infrastructure under ChaosGuard condition to Windows
+- Updated Chaos Hub filter to use pagination under the Chaos Experiment template selector modal
+- Removed expanded details and dropdown icon from the runs page
+- Deprecated Chaos GameDays
+- Optimized timeline view to better support backend's estimatedTime
+- Patched CVEs across chaos images, including source-probe, smp-chaos-web, smp-chaos-manager, smp-chaos-linux-infra-server, smp-chaos-linux-infra-controller, smp-chaos-k8s-ifs, chaos-machine-ifs, chaos-machine-ifc, chaos-log-watcher, and chaos-ddcr-faults
+
+#### Fixed Issues
+
+- Fixed experiment status filter not working on the V3 list experiment API
+- Fixed Chaos Experiment YAML unexpected character issue
+- Fixed Composite load test date error in pipelines
+- Fixed chaos experiment getting stuck in running state when the pod could not come up in the target infrastructure
+- Fixed pod-autoscaler fault to validate that the provided target exists
+- Fixed issue where some users were unable to access the subscriptions page
+
 ### Version 1.87.0
 
 #### Images required
