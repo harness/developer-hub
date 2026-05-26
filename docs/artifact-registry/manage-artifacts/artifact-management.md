@@ -46,10 +46,6 @@ Now, you should see the artifact appear in your registry as well as the **Artifa
 ## Quarantine an artifact
 
 
-:::note
-This feature is currently behind the feature flag `HAR_ARTIFACT_QUARANTINE_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
-:::
-
 You can quarantine an artifact to prevent it from being used in your pipelines and block it from being pulled or downloaded by other users.
 
 To quarantine an artifact:

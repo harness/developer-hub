@@ -15,9 +15,6 @@ tags:
 
 Metadata in Harness Artifact Registry enables you to attach custom key-value pairs to your artifacts, enhancing searchability, governance, and compliance capabilities. This feature allows you to categorize, tag, and manage artifacts according to your organization's specific workflows and requirements.
 
-:::note Feature Flag Requirement
-To use this feature, you must have the `HAR_CUSTOM_METADATA_ENABLED` feature flag enabled. Contact [Harness Support](mailto:support@harness.io) to activate it. 
-:::
 
 ## Overview
 

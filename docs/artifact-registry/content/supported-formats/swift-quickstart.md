@@ -3,6 +3,10 @@ import TabItem from '@theme/TabItem';
 
 Use a **Swift** registry to publish and consume Swift packages with **Swift Package Manager (SwiftPM)**. Harness exposes a registry URL compatible with `swift package-registry` commands for authentication, publishing, and dependency resolution.
 
+:::info Feature flag
+This feature is behind the feature flag `HAR_SWIFT_PACKAGE`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+:::
+
 ## Prerequisites
 
 - **Swift 5.9 or later** with Swift Package Registry support (`swift package-registry --help`).
