@@ -68,6 +68,7 @@ The exact steps that execute during each action are defined in the blueprint as 
 * [Stop Environment](#stop-environments)
 * [Start Environment](#start-environments)
 * [Apply Updates](#apply-updates)
+* [Dependency Change Notifications](#dependency-change-notifications)
 * [Delete Environment](#delete-environments)
 
 
@@ -143,6 +144,55 @@ When updates are available for a running environment, a banner appears on the en
 :::note
 You can also trigger updates for an individual component or resource. Updating an entity will automatically update any downstream entities connected to it. For example, updating a namespace will also update the backend and frontend components deployed within it.
 :::
+
+### Dependency Change Notifications
+
+Your environment may depend on external entities such as IaCM workspace templates, CD services, pipelines, and other environments. If any of these change or become unavailable, a notification banner appears at the top of the environment detail page.
+
+<DocImage path={require('./static/dependency-notification-banner.png')} />
+
+Click **View Details** to open the **Dependency Changes** panel, which shows what changed and what action to take.
+
+<DocImage path={require('./static/dependency-changes-panel.png')} />
+
+:::info
+This is different from the [Apply Updates](#apply-updates) banner. Apply Updates notifies you when the environment's blueprint itself has changed. Dependency change notifications alert you when an external entity that the blueprint references has changed or been removed.
+:::
+
+#### When a notification appears
+
+A notification is raised when any of the following changes are detected:
+
+**IaCM (Infrastructure)**
+- The IaCM workspace used by this environment no longer exists.
+- The workspace template referenced in the blueprint has been deleted.
+- The workspace template has changed and requires reconciliation (for example, due to Terraform module updates or input/output changes).
+
+**CD (Services)**
+- A CD service referenced in the blueprint has been deleted from Harness.
+- A Harness CD environment referenced in the blueprint has been updated or deleted.
+- An infrastructure definition referenced in the blueprint has been updated or deleted.
+
+**Pipelines**
+- A pipeline referenced in the blueprint has been deleted.
+- An InputSet referenced in the blueprint has been deleted.
+
+**Cross-environment dependencies**
+- This environment references an output from another environment, and that environment has been stopped, deleted, or its output variable has been removed or changed.
+
+:::tip How to resolve a notification?
+Each entry in the Dependency Changes panel includes a description of what changed and a **Recommendation** for what to do. If multiple dependencies have changed, all notifications are grouped together in the same panel.
+
+The recommended action depends on what changed:
+
+- **Referenced environment is offline**: Start the referenced environment. Once it is back online and its outputs are available, the notification clears automatically.
+- **Template, service, pipeline, or InputSet deleted**: Restore the deleted entity in the respective Harness module, or contact your platform engineer to update the blueprint to remove the dependency.
+- **Template requires reconciliation**: Contact your platform engineer to review and reconcile the workspace template in IaCM.
+- **CD environment or infra definition changed**: Verify the deployment targets are still valid. Contact your platform engineer if the blueprint needs to be updated.
+:::
+
+For all cases except a referenced environment coming back online, the notification persists until the underlying issue is resolved. Dismissing the banner does not clear it permanently; it reappears on the next page load as long as the dependency issue remains.
+
 
 ### Delete Environments
 
