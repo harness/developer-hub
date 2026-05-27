@@ -129,6 +129,11 @@ jdbc:cloudspanner:/projects/PROJECT_ID/instances/INSTANCE_NAME/databases/DATABAS
 jdbc:cloudspanner:/projects/my-project/instances/spanner-test/databases/cymbal
 ```
 
+:::warning PostgreSQL not supported for Spanner
+The PostgreSQL dialect for Spanner is not currently supported and will cause pipeline failures with an image pull error.
+Use the standard Cloud Spanner GQL.
+:::
+
 ### CloudSQL PostgreSQL URL format
 
 ```

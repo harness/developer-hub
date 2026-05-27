@@ -117,6 +117,11 @@ Harness DB DevOps supports two authentication methods for Google Spanner:
 **Why use keyless authentication?** This approach improves security by eliminating long-lived credentials and reducing operational overhead.
 :::
 
+:::warning PostgreSQL not supported for Spanner
+The PostgreSQL dialect for Spanner is not currently supported and will cause pipeline failures with an image pull error.
+Use the standard Cloud Spanner GQL.
+:::
+
 ---
 ## Setting Up AlloyDB
 
