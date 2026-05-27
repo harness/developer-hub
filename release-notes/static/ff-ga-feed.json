@@ -1,5 +1,11 @@
 [
   {
+    "flagKey": "PL_ENABLE_USER_IMPERSONATION",
+    "description": "Account administrators can temporarily act as another user (30-minute session, fully audit-logged, with restricted-action blocklist) to troubleshoot permissions and validate configurations on behalf of users in their account.",
+    "gaStartDate": "2026-06-03",
+    "module": "Platform"
+  },
+  {
     "flagKey": "PIPE_CENTRALISED_NOTIFICATION",
     "description": "Routes pipeline events to the platform Centralised Notification Service (CNS), allowing users to manage pipeline notification rules from a unified notification center instead of only per-pipeline notification rules.",
     "gaStartDate": "2026-05-25",
