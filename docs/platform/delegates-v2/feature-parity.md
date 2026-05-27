@@ -59,6 +59,18 @@ The following modules require the legacy delegate when running self-hosted:
 
 The self-hosted Delegate 3.x is optimized for CI workloads that benefit from direct access to local hardware or licensed software on a specific machine, such as iOS builds requiring Xcode or Android builds requiring Android SDK.
 
+### Harness Database DevOps
+
+Database DevOps provides schema management and change automation for relational databases. When using Delegate 3.x, Database DevOps functionality depends on features that currently require the legacy delegate (DEL 3.0).
+
+The following Database DevOps features require the legacy delegate:
+
+- **ECS Fargate Implementation**: Database DevOps tasks running on Amazon ECS Fargate infrastructure require task execution capabilities that are only available in the legacy delegate.
+- **RDS/Aurora IAM Authentication**: Database connections using IAM authentication for Amazon RDS or Aurora databases require credential management capabilities that are only available in the legacy delegate.
+
+For Database DevOps workflows that use these features, continue using the legacy delegate until Delegate 3.x adds support for these capabilities. Standard database connections using username and password authentication are supported on both delegate types.
+
+
 ## CI stage routing
 
 To route a CI stage to Delegate 3.x, the stage must be explicitly configured to do so. Two routing mechanisms are available:

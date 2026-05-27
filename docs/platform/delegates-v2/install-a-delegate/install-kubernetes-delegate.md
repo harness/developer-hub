@@ -163,7 +163,7 @@ spec:
         env:
         - name: HARNESS_ACCOUNT_ID
           value: "PUT_YOUR_ACCOUNT_ID"
-        - name: HARNESS_MANAGER_HOST_AND_PORT
+        - name: MANAGER_HOST_AND_PORT
           value: "PUT_YOUR_MANAGER_ENDPOINT"
         - name: HARNESS_DELEGATE_NAME
           value: "PUT_YOUR_DELEGATE_NAME"
