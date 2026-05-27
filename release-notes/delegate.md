@@ -171,6 +171,11 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## May 2026
 
+### Version 26.05.89206 <!-- May 27, 2026 -->
+
+#### Security fixes
+- Fixed security vulnerability in the `org.apache.neethi` library by upgrading from version 3.2.1 to 3.2.2. This addresses CVE-2026-42402 and CVE-2026-42403 affecting 20 Harness images. The patch version upgrade resolves these CVEs with no breaking changes. [CDS-124883]
+
 ### Version 26.05.89205 <!-- May 22, 2026 -->
 
 #### Fixed issues
