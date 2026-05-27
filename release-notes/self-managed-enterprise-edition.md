@@ -786,6 +786,12 @@ For a comprehensive guide on installing Harness Self-Managed Enterprise Edition 
 
 ### New features and enhancements
 
+#### Harness Platform
+
+- Introduced notifications for service account tokens, allowing you to configure alerts for events such as creation, rotation, updates, expiration, deletion, and upcoming expiration across your selected channels. [PL-41008] 
+- Introduced [**project movement across organizations**](/docs/platform/organizations-and-projects/move-projects) (Closed Beta): Move projects between organizations seamlessly while preserving audit and execution history. [PL-41870]
+
+
 #### Continuous Delivery
 
 - The pipeline execution listing page now displays an improved card-based layout. The **Service** and **Environment** columns have been replaced by an **Update Summary** column that shows service-to-environment mappings for CD stages and schema-to-instance mappings for Database DevOps stages. You can hover over entries to view artifact details and infrastructure information, and expand execution cards for stage-level breakdowns. This feature was previously behind the feature flag `CDS_EXECUTION_LIST_CARD_VIEW` and is now generally available. For more information, go to [Pipeline execution history](/docs/continuous-delivery/x-platform-cd-features/executions/execution-history/#execution-reference).
