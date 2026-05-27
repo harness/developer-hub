@@ -55,6 +55,16 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## May 2026
 
+### Version 1.150.3
+
+#### Fixed issues
+
+- Fixed an issue where downloading configuration files from Amazon S3 intermittently took more than 30 minutes. (**CDS-123003**, **ZD-112705**)
+- Fixed an issue where OCI Helm chart validation for pulling Helm charts from Amazon ECR did not work until a dummy chart with base path '/' was created. The chart version listing in the service YAML and Helm deployment of OCI Helm ECR manifest used to fail until a dummy repository was created. OCI Helm ECR in Native Helm Deployment now works as expected without the dummy repository workaround. (**CDS-123082**, **ZD-113172**)
+- Fixed an issue where Amazon S3 artifact triggers failed with `invalid_artifact_server` after a delegate upgrade from version 26.01.88303 to 26.05.89101. The AwsS3 migration from v1 to v2 has been fixed. (**CDS-123533**, **ZD-114070**)
+- Fixed an issue where a blank image (`""`) in Cloud Run deployments produced an `InvalidImageName` error and caused an infinite retry loop. (**CDS-124717**, **ZD-112702**)
+- Fixed an issue where a null pointer exception occurred in Cloud Run deployments when no manifests were configured. (**CDS-124718**, **ZD-112702**)
+
 ### Version 1.149.7
 
 #### Breaking Changes
