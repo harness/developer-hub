@@ -511,3 +511,34 @@ spec:
 ```
 
 </details>
+
+<Troubleshoot
+  issue="Destinations with same host but different subsets are collapsed into a single destination"
+  mode="docs"
+  fallback="Use type: inherit instead of type: config to preserve existing VirtualService destinations when subset-based splitting is required; alternatively, split each subset into its own named route with a single destination. Tracked in CDS-124991."
+/>
+
+The following example shows a Harness route configuration that triggers this deduplication.
+
+<details>
+<summary>Example of affected configuration</summary>
+
+```yaml
+routes:
+  - route:
+      type: http
+      name: my-route
+      destinations:
+        - destination:
+            host: my-service
+            subset: canary
+            weight: 25
+        - destination:
+            host: my-service
+            subset: stable
+            weight: 75
+```
+
+In this example, both destinations share the same host (`my-service`). The step collapses them into a single destination with `weight: 100` and no subset field.
+
+</details>
