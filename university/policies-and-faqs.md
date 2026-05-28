@@ -196,6 +196,8 @@ For the Admin and Architect level exams, we allow for up to two retakes on paid 
 
 - If you have purchased an exam [not via coupon code] and need to retake,  please e-mail [certifications@harness.io](mailto:certifications@harness.io) so we can provide a retake coupon code.
 - If you redeemed a coupon code, please re-apply the coupon code when retaking.
+- Paid attempts are allowed up to two retakes. If two retakes have been applied, there is a cool off period of 30 days before any additional attempts. 
+  - Each subsequent retake after 30 days will be treated as a cool off period of 30 days per attempt. 
 
 ---
 
