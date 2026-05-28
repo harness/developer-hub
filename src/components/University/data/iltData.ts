@@ -126,12 +126,12 @@ export const ilt: IltCardItem[] = [
   },
 
   {
-    title: "Cloud Cost Management",
+    title: "Cloud & AI Cost Management",
     module: MODULES.ccm,
     type: type.user,
     description:
-      "Deep dive into advanced Cloud Cost Management concepts supporting FinOps.",
-    version: "Harness CCM Paid Plans",
+      "Deep dive into advanced Cloud and AI Cost Management concepts supporting FinOps.",
+    version: "Harness CACM Paid Plans",
     link: "https://university-registration.harness.io/ilt-cloud-cost-management",
     tileType: tileType.normal,
     cardType: cardType.ILT,

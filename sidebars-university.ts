@@ -86,7 +86,7 @@ const sidebars: SidebarsConfig = {
         //ccm
         {
           type: "doc",
-          label: "Cloud Cost Management",
+          label: "Cloud & AI Cost Management",
           id: "cloud-cost-management",
           className: "sidebar-ccm"
         },

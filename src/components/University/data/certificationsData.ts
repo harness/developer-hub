@@ -165,22 +165,22 @@ export const university: CardItem[] = [
   },
 
   {
-    title: "Cloud Cost Management - Developer",
+    title: "Cloud & AI Cost Management - Developer",
     module: MODULES.ccm,
     type: certType.developer,
     description:
-      "CCM Developer focuses on the fundamental skills to detect and stop cloud cost anomalies as they occur.",
-    version: "Harness CCM Free Plans",
+      "CACM Developer focuses on the fundamental skills to detect and stop cloud and AI cost anomalies as they occur.",
+    version: "Harness CACM Free Plans",
     link: "/university/cloud-cost-management?lvl=developer",
     // numberOfCerts: 1,
   },
   {
-    title: "Cloud Cost Management  - Administrator",
+    title: "Cloud & AI Cost Management  - Administrator",
     module: MODULES.ccm,
     type: certType.administrator,
     description:
       "CCM Administrator focuses on the advanced skills in design, implementation, and management of cloud cost savings.",
-    version: "Harness CCM Paid Plans",
+    version: "Harness CACM Paid Plans",
     link: "/university/cloud-cost-management?lvl=administrator",
     // numberOfCerts: 1,
   },

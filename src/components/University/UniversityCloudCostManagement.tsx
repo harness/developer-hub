@@ -102,10 +102,10 @@ export default function CloudCostManagement() {
               <i className="fa-solid fa-arrow-left"></i> Back to University Home
             </Link>
           </div>
-          <h1>Cloud Cost Management</h1>
+          <h1>Cloud & AI Cost Management</h1>
           <div>
             Save time, reduce effort, and save on your cloud bill with
-            intelligent cloud cost automation. Detect and stop cloud cost
+            intelligent cloud cost automation. Detect and stop cloud and AI cost
             anomalies as they occur, to avoid unpleasant billing surprises with
             a FinOps approach.
           </div>
@@ -276,7 +276,7 @@ export default function CloudCostManagement() {
                 </div>
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
-                    <h2>Cloud Cost Management - Developer</h2>
+                    <h2>Cloud & AI Cost Management - Developer</h2>
                     <img
                       src={`${baseUrl}img/cert_dev_ccm_badge.svg`}
                       alt="Harness Certified Expert - CCM Developer"
@@ -343,7 +343,7 @@ export default function CloudCostManagement() {
                 </div>
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
-                    <h2>Cloud Cost Management - Administrator</h2>
+                    <h2>Cloud & AI Cost Management - Administrator</h2>
                     <img
                       src={`${baseUrl}img/cert_adm_ccm_badge.svg`}
                       alt="Harness Certified Expert - CCM Administrator"
@@ -411,7 +411,7 @@ export default function CloudCostManagement() {
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
                     <h2>
-                      Cloud Cost Management - Architect (BETA COMING SOON)
+                      Cloud & AI Cost Management - Architect (BETA COMING SOON)
                     </h2>
                     <img
                       src={`${baseUrl}img/cert_arc_ccm_badge.svg`}

@@ -148,12 +148,12 @@ export const spt: IltCardItem[] = [
   },
 
   {
-    title: "Cloud Cost Management",
+    title: "Cloud & AI Cost Management ",
     module: MODULES.ccm,
     type: type.user,
     description:
-      "Self-paced video course introducing Harness Cloud Cost Management.",
-    version: "Harness CCM Free Plans",
+      "Self-paced video course introducing Harness Cloud & AI Cost Management.",
+    version: "Harness CACM Free Plans",
     link: "https://university-registration.harness.io/self-paced-training-harness-cloud-cost-management",
     tileType: tileType.normal,
     cardType: cardType.SPT,
