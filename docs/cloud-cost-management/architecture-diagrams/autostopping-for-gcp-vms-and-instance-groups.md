@@ -23,7 +23,7 @@ This diagram illustrates how various computer services collaborate to implement 
 
 - **Interception of Proxy Traffic:** The installed proxy components intercept traffic flowing between end-users and the designated GCP VMs/Instance Groups. This interception point serves as a crucial juncture for implementing AutoStopping actions.
 
-- **Rule Definition within CCM:** CCM is responsible for defining rules that govern AutoStopping via the proxy. These rules regulate the proxy's behavior, dictating when and how the AutoStopping mechanism should be activated.
+- **Rule Definition within CCM:** CACM is responsible for defining rules that govern AutoStopping via the proxy. These rules regulate the proxy's behavior, dictating when and how the AutoStopping mechanism should be activated.
 
 **Execution of AutoStopping:**
 

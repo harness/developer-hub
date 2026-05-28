@@ -1,12 +1,12 @@
 {
-    "label": "Access control for CCM",
+    "label": "Access control for CACM",
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "position": "5",
     "link": {
         "type": "generated-index",
-        "title": "Access control for CCM"
+        "title": "Access control for CACM"
     },
     "customProps": {
         "helpdocs_category_id": "ak4v1iorl3"

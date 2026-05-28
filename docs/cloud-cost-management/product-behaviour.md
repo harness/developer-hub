@@ -1,6 +1,6 @@
 ---
-title: "Harness CCM: Subscription Plans"
-description: "A comprehensive guide to Harness Cloud Cost Management (CCM) subscription plans, features, and licensing options."
+title: "Harness CACM: Subscription Plans"
+description: "A comprehensive guide to Harness Cloud & AI Cost Management (CACM) subscription plans, features, and licensing options."
 sidebar_position: 7
 helpdocs_is_private: false
 helpdocs_is_published: true
@@ -8,18 +8,18 @@ helpdocs_is_published: true
 
 
 
-Harness offers two primary licensing tiers for Cloud Cost Management: **Free Forever** and **Enterprise**. 
+Harness offers two primary licensing tiers for Cloud & AI Cost Management: **Free Forever** and **Enterprise**. 
 
 :::info
 - **If Your Cloud Spend Exceeds $250K/year**: You must upgrade to an Enterprise plan. The Free Forever plan is limited to organizations with less than USD250K/month in cloud spend.
 
-- **If Your Cloud Spend is Under $250K/year**: CCM remains accessible on the Free Forever plan, but with certain limitations and adjustments. 
+- **If Your Cloud Spend is Under $250K/year**: CACM remains accessible on the Free Forever plan, but with certain limitations and adjustments. 
 
 :::
 
 ## Free Forever
 
-The Free Forever plan is a no-commitment, no-contract plan that provides you with the essential features of CCM for free. It is ideal for small and medium-sized organizations with less than USD250K/month in cloud spend.
+The Free Forever plan is a no-commitment, no-contract plan that provides you with the essential features of CACM for free. It is ideal for small and medium-sized organizations with less than USD250K/month in cloud spend.
 
 | Feature | Free Forever | 
 |---------|-------------|
@@ -40,7 +40,7 @@ The Free Forever plan is a no-commitment, no-contract plan that provides you wit
 
 ## Enterprise Plan
 
-Harness has introduced a new pricing model for Cloud Cost Management that gives you the flexibility to choose exactly what you need. Our CCM suite is now available as four separate SKUs that can be purchased individually or bundled together.
+Harness has introduced a new pricing model for Cloud & AI Cost Management that gives you the flexibility to choose exactly what you need. Our CACM suite is now available as four separate SKUs that can be purchased individually or bundled together.
 
 You can buy SKUs individually or buy the entire CCM bundle.
 
@@ -109,7 +109,7 @@ Navigate to the **Account Settings** -> **Subscriptions**. Your subscription det
 - **Subscription Details**
     - **Account Name**: Your Harness account identifier
     - **Plan**: Your current subscription tier (Free, Team, or Enterprise)
-    - **Subscription Type**: Shows which CCM SKUs you've purchased. The tooltip will show the number of SKUs purchased alongwith which ones.
+    - **Subscription Type**: Shows which CACM SKUs you've purchased. The tooltip will show the number of SKUs purchased alongwith which ones.
     - **Subscribed Limits**: Maximum usage thresholds for your plan per each SKU purchased
     - **Start Date**: When your current subscription period began
     - **Expiry Date**: When your subscription will need renewal

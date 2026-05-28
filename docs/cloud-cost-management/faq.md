@@ -1,6 +1,6 @@
 ---
-title: CCM FAQs
-description: Frequently asked questions about CCM
+title: CACM FAQs
+description: Frequently asked questions about CACM
 sidebar_position: 100
 sidebar_label: FAQs
 ---
@@ -14,9 +14,9 @@ If your CFO is managing your cost, you’re being reactive to cloud changes. You
 </details>
 
 <details>
-<summary><strong>After I reduce my costs, I won't need Cloud Cost Management</strong></summary>
+<summary><strong>After I reduce my costs, I won't need Cloud & AI Cost Management</strong></summary>
 
-Reducing cost isn’t a one-time event. Engineering and finance need constant feedback to innovate and change. Hence **Cloud Cost Management**.
+Reducing cost isn’t a one-time event. Engineering and finance need constant feedback to innovate and change. Hence **Cloud & AI Cost Management**.
 </details>
 
 ---
@@ -40,7 +40,7 @@ CE uses the same cost and usage report as your cloud platform.
 ## Feature Capabilities and Automation
 
 <details>
-<summary><strong>I have already tagged everything, why would I need Cloud Cost Management?</strong></summary>
+<summary><strong>I have already tagged everything, why would I need Cloud & AI Cost Management?</strong></summary>
 
 You will have to re-tag everything if you:
 - Create a new application  
@@ -89,7 +89,7 @@ In order to avoid sharing the entire billing-export table for GCP, customer can 
 </details>
 
 <details>
-<summary><strong>Customer's Azure Storage bucket only allows specific IPs, will CCM's Azure connector require any whitelisting to be able to sync data into Harness?</strong></summary>
+<summary><strong>Customer's Azure Storage bucket only allows specific IPs, will CACM's Azure connector require any whitelisting to be able to sync data into Harness?</strong></summary>
 
 Yes, in that case, customer will need to whitelist Harness's Cloud-NAT IPs. Customer success team may assist the customer with the required Cloud-NAT IPs to whitelist and raise a ticket to Engineering if needed.
 </details>
@@ -102,9 +102,9 @@ If only the K8S connector is used without a Cloud connector, billing data will b
 </details>
 
 <details>
-<summary><strong>Will First Gen kubernetes connectors will not work as-is for Next Gen ? In other words, new k8 connectors (and delegates) need installed and configured for NextGen CCM?</strong></summary>
+<summary><strong>Will First Gen kubernetes connectors will not work as-is for Next Gen ? In other words, new k8 connectors (and delegates) need installed and configured for NextGen CACM?</strong></summary>
 
-First Gen K8S connector will also work in NG CCM. But, we recommend creating NG connectors.
+First Gen K8S connector will also work in NG CACM. But, we recommend creating NG connectors.
 
 </details>
 
@@ -123,7 +123,7 @@ Yes, you need to add a Kubernetes cloud provider for each Kubernetes cluster. On
 </details>
 
 <details>
-<summary><strong>If a CCM license expires, will that ever impact the health indicators of the cloud integrations? (Reporting and auto-stopping icons)</strong></summary>
+<summary><strong>If a CACM license expires, will that ever impact the health indicators of the cloud integrations? (Reporting and auto-stopping icons)</strong></summary>
 
 For K8S connectors, the reporting icon would be success as long as we are receiving events from delegate. auto-stopping will be always be marked as success.
 For cloud connectors, one of the validations we do as part of conn health indicator is availability of data on our side in past 24 hours.
@@ -141,7 +141,7 @@ To include all the datasets, we should set up an individual connector for each d
 <details>
 <summary><strong>How can historical data be ingested beyond 180 days in the case of a GCP connector?</strong></summary>
 
-If you require historical data to be ingested, please raise a support ticket with Harness. The CCM development team can ingest the data for you.
+If you require historical data to be ingested, please raise a support ticket with Harness. The CACM development team can ingest the data for you.
 
 </details>
 
@@ -162,7 +162,7 @@ Yes, it does. However, if there are multiple source datasets which are located i
 <details>
 <summary><strong>In the case of AWS, what should we do if historical cost data is missing from the CUR export (source bucket)?</strong></summary>
 
-In this scenario, we can raise an AWS support request to backfill the same source bucket. Once the data is available, CCM will automatically retrieve and make it accessible.
+In this scenario, we can raise an AWS support request to backfill the same source bucket. Once the data is available, CACM will automatically retrieve and make it accessible.
 
 </details>
 
@@ -181,9 +181,9 @@ Sometimes Azure takes time to propagate/refresh the access settings on the stora
 </details>
 
 <details>
-<summary><strong>What is the data retention policy in CCM for connectors?</strong></summary>
+<summary><strong>What is the data retention policy in CACM for connectors?</strong></summary>
 
-There is no data retention present for CCM. However, all data that is older than 5 years old is deleted.
+There is no data retention present for CACM. However, all data that is older than 5 years old is deleted.
 
 </details>
 
@@ -221,7 +221,7 @@ Perspectives supports Net amortized, Unblended, Amortized and Effective Cost.
 </details>
 
 <details>
-<summary><strong>Do I need to keep the AWS Cost and Usage Report files from their source S3 bucket once it is ingested in CCM?</strong></summary>
+<summary><strong>Do I need to keep the AWS Cost and Usage Report files from their source S3 bucket once it is ingested in CACM?</strong></summary>
 
 No, you can delete the CUR file in order to save on S3 storage costs.
 
@@ -230,16 +230,16 @@ No, you can delete the CUR file in order to save on S3 storage costs.
 <details>
 <summary><strong>Do I need to setup AWS Cost and Usage Reports for each linked account in AWS?</strong></summary>
 
-No, you can set up CUR in master account in AWS. That will have data for all linked accounts too. In CCM, you can setup just one connector having CUR for this master account.
+No, you can set up CUR in master account in AWS. That will have data for all linked accounts too. In CACM, you can setup just one connector having CUR for this master account.
 
-For linked accounts connectors in CCM, you can choose one or both of Optimization/Visibility features.
+For linked accounts connectors in CACM, you can choose one or both of Optimization/Visibility features.
 
 </details>
 
 <details>
 <summary><strong>Does Harness provide currency standardization?</strong></summary>
 
-Yes, Harness CCM offers the flexibility to view your cloud spending data in the currency of your preference. For further information, please refer this [document](/docs/cloud-cost-management/currency-preferences).
+Yes, Harness CACM offers the flexibility to view your cloud spending data in the currency of your preference. For further information, please refer this [document](/docs/cloud-cost-management/currency-preferences).
 
 </details>
 
@@ -253,7 +253,7 @@ You can create as many as 10,000 Perspectives in a single account.
 <details>
 <summary><strong>How are costs presented in perspectives when there are expenses that are not linked to the chosen grouping criteria?</strong></summary>
 
-CCM displays `No` followed by the selected `<group by>` for costs that do not have any correlation with the specified `<group by>` criterion.
+CACM displays `No` followed by the selected `<group by>` for costs that do not have any correlation with the specified `<group by>` criterion.
 For instance, if a perspective encompasses rules for both AWS and GCP, and the grouping is based on GCP > SKU, any expenses unrelated to GCP SKUs will be displayed as "No SKUs."
 For more information, go to [Create Perspectives](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-cost-perspectives#review-no-accountprojectetc).
 
@@ -262,14 +262,14 @@ For more information, go to [Create Perspectives](https://developer.harness.io/d
 <details>
 <summary><strong>How can I retrieve details about the compute generating the cost within a perspective that is managed by a cost category rule? Additionally, how can I obtain information about its uptime, memory utilization, and CPU usage?</strong></summary>
 
-In the context of cost categories, CCM currently provides information in two columns: `Total cost` and `Cost trend`. However, users have the option to delve deeper into workload details, allowing them to access information such as the start and stop times of individual pods.
+In the context of cost categories, CACM currently provides information in two columns: `Total cost` and `Cost trend`. However, users have the option to delve deeper into workload details, allowing them to access information such as the start and stop times of individual pods.
 
 </details>
 
 <details>
 <summary><strong>How are costs calculated, and is there a specific formula for it?</strong></summary>
 
-Indeed, CCM offers a formula to illustrate the calculation process. For a detailed explanation, go to [documentation](https://developer.harness.io/docs/cloud-cost-management/get-started/key-concepts/).
+Indeed, CACM offers a formula to illustrate the calculation process. For a detailed explanation, go to [documentation](https://developer.harness.io/docs/cloud-cost-management/get-started/key-concepts/).
 
 </details>
 
@@ -392,7 +392,7 @@ Yes, when you group resources by the Cost Category, the resource is assigned to 
 <details>
 <summary><strong>Is there an automated method offered by Harness to ingest hierarchical data and generate cost categories?</strong></summary>
 
-No, currently, there isn't an automated solution available. As a temporary measure, you can create a script to fetch hierarchical data through APIs and convert it into cost categories within CCM.
+No, currently, there isn't an automated solution available. As a temporary measure, you can create a script to fetch hierarchical data through APIs and convert it into cost categories within CACM.
 
 </details>
 
@@ -407,11 +407,11 @@ Currently, Looker doesn't support filtering on custom fields at a global level. 
 </details>
 
 <details>
-<summary><strong>Can CCM operate independently from the Harness Platform? Or do we need to install CCM as a module on the harness platform and run it?</strong></summary>
+<summary><strong>Can CACM operate independently from the Harness Platform? Or do we need to install CACM as a module on the harness platform and run it?</strong></summary>
 
-CCM (Cloud Cost Management) is a standalone product offered by Harness that can operate independently in the Harness Platform. It does not require installation as a module on the Harness Platform or any specific dependencies on the platform itself.
+CACM (Cloud & AI Cost Management) is a standalone product offered by Harness that can operate independently in the Harness Platform. It does not require installation as a module on the Harness Platform or any specific dependencies on the platform itself.
 
-CCM provides organizations with the ability to monitor, optimize, and manage cloud costs across different cloud providers (such as AWS, Azure, GCP) in a centralized manner. It offers several advantages compared to other competing products.
+CACM provides organizations with the ability to monitor, optimize, and manage cloud costs across different cloud providers (such as AWS, Azure, GCP) in a centralized manner. It offers several advantages compared to other competing products.
 </details>
 
 <details>
@@ -423,7 +423,7 @@ No, hourly granularity is not maintained in the Unified Table. It supported at a
 <details>
 <summary><strong>How long does it take for cluster utilization data to appear on the dashboards?</strong></summary>
 
-The data on cluster utilization is collected every 20 minutes and processed hourly on the CCM side. We compute billing charges with hourly and daily granularity based on utilization data. If you choose the perspective, billing data based on hourly granularity is displayed for the previous seven days' filter. However, if you choose a different period, a daily calculation is used to display the billing data.
+The data on cluster utilization is collected every 20 minutes and processed hourly on the CACM side. We compute billing charges with hourly and daily granularity based on utilization data. If you choose the perspective, billing data based on hourly granularity is displayed for the previous seven days' filter. However, if you choose a different period, a daily calculation is used to display the billing data.
 </details>
 
 <details>
@@ -517,9 +517,9 @@ This can mean that there is an issue with either the batch job, which syncs data
 </details>
 
 <details>
-<summary><strong>How long does it take to show AWS Billing data in CCM ?</strong></summary>
+<summary><strong>How long does it take to show AWS Billing data in CACM ?</strong></summary>
 
-Under 1.5 hrs. Once data is available at source, CCM should be able to show in under 1.5 hrs.
+Under 1.5 hrs. Once data is available at source, CACM should be able to show in under 1.5 hrs.
 
 AWS by itself may ingest data at "source" bucket 4 times a day.
 </details>
@@ -683,13 +683,13 @@ No. While creating the rule Harness doesn't automatically create a target group.
 <details>
 <summary><strong>Does the Free plan allow Kubernetes autostopping (CP AWS)?</strong></summary>
 
-Yes. You can perform Kubernetes autostopping on the Free tier of CCM.
+Yes. You can perform Kubernetes autostopping on the Free tier of CACM.
 </details>
 
 <details>
 <summary><strong>Is there any way to work with K8s Autostopping and bypass the need to use a Cloud Provider Connector?</strong></summary>
 
-You can provide a dummy connector. It need not have permissions at the provider. However, only the AutoStopping functionality will work, and CCM won't be able to show the cost savings.
+You can provide a dummy connector. It need not have permissions at the provider. However, only the AutoStopping functionality will work, and CACM won't be able to show the cost savings.
 </details>
 
 <details>
@@ -783,21 +783,21 @@ However, if the recommendation is not marked as applied, the potential savings w
 <details>
 <summary><strong>Do we support moving the recommendations from the Applied to Open recommendations section?</strong></summary>
 
-No. Currently, CCM supports only moving the recommendations from the **Open** to the **Applied** tab.
+No. Currently, CACM supports only moving the recommendations from the **Open** to the **Applied** tab.
 
 </details>
 
 <details>
 <summary><strong>Are there any recommendations specific to GCP, other than the nodepool and workload recommendations for clusters in GCP?</strong></summary>
 
-Currently, CCM does not offer any GCP-specific recommendations. For supported recommendations, go to the [CMM recommendations documentation](https://developer.harness.io/docs/category/recommendations).
+Currently, CACM does not offer any GCP-specific recommendations. For supported recommendations, go to the [CMM recommendations documentation](https://developer.harness.io/docs/category/recommendations).
 
 </details>
 
 <details>
-<summary><strong>Does CCM offer support for on-premises/Self Managed Platform (SMP) installations?</strong></summary>
+<summary><strong>Does CACM offer support for on-premises/Self Managed Platform (SMP) installations?</strong></summary>
 
-Yes. CCM supports the following features and functionalities in the SMP environment for AWS and Kubernetes:
+Yes. CACM supports the following features and functionalities in the SMP environment for AWS and Kubernetes:
 
 - Connector setup
 - Perspectives
@@ -807,14 +807,14 @@ Yes. CCM supports the following features and functionalities in the SMP environm
 - Anomalies
 - Recommendations
 
-For more information, go to [CCM on Harness Self-Managed Enterprise Edition](/docs/category/self-managed-enterprise-edition).
+For more information, go to [CACM on Harness Self-Managed Enterprise Edition](/docs/category/self-managed-enterprise-edition).
 
 </details>
 
 <details>
 <summary><strong>Why aren't there any actions for RDS recommendations?</strong></summary>
 
-Harness shows the RDS resize recommendations, but you can't take action from within CCM.
+Harness shows the RDS resize recommendations, but you can't take action from within CACM.
 
 This is because the [RDS resize action](https://repost.aws/knowledge-center/rds-db-storage-size) is usually a manual operation where it is necessary to dump the database, depending on the database type (such as Mysql, MariaDB, or Postgres). You then need to spin up a new DB instance with lower storage requirements and restore the data.
 
@@ -995,9 +995,9 @@ The recommendation will not appear again because it is no longer valid. Addition
 ## Budgets
 
 <details>
-<summary><strong>Do the models used in Harness CCM budgets adjust as we get more cost data?</strong></summary>
+<summary><strong>Do the models used in Harness CACM budgets adjust as we get more cost data?</strong></summary>
 
-At present, the models used in Harness CCM budgets do not automatically adjust as more cost data is collected. However, it is on our roadmap to leverage these models for budget-related forecasting in the future.
+At present, the models used in Harness CACM budgets do not automatically adjust as more cost data is collected. However, it is on our roadmap to leverage these models for budget-related forecasting in the future.
 </details>
 
 <details>
@@ -1044,7 +1044,7 @@ To ensure that your instances are shut down by the "stop-after-hours" Rule, you 
 </details>
 
 <details>
-<summary><strong>What does the "No Cluster Name" entity represent in Cloud Cost Management?</strong></summary>
+<summary><strong>What does the "No Cluster Name" entity represent in Cloud & AI Cost Management?</strong></summary>
 The "No Cluster Name" entity appears in the visualization when there are costs that cannot be attributed to a specific cluster. This typically occurs with orphaned resources or when costs are associated with a deleted cluster.
 
 </details>
@@ -1057,7 +1057,7 @@ To filter out the "No Cluster Name" entity, you can create a new cost category a
 
 <details>
 <summary><strong>What are the steps to create a new cost category and define the rule?</strong></summary>
-Navigate to the Cloud Cost Management module and select "Cost Categories" from the left-hand menu.
+Navigate to the Cloud & AI Cost Management module and select "Cost Categories" from the left-hand menu.
 Click on the "Create Cost Category" button and provide a name for your cost category.
 Choose the appropriate cloud provider and click on "Add Rule" under the "Rules" section.
 Select "Cluster Name" as the attribute, "is not" as the operator, and enter "No Cluster Name" as the value.
@@ -1068,7 +1068,7 @@ Click on "Save Rule" and then "Save Cost Category" to finalize the configuration
 <details>
 <summary><strong>How can I use the new cost category in my perspective to exclude the "No Cluster Name" entity?</strong></summary>
 Once you have created the new cost category, you can use it in your perspective instead of the default cost category. This will automatically exclude the "No Cluster Name" entity from the visualization.
-By following these steps, you can effectively manage and exclude the "No Cluster Name" entity from your Cloud Cost Management visualization, ensuring more accurate cost attribution and analysis.
+By following these steps, you can effectively manage and exclude the "No Cluster Name" entity from your Cloud & AI Cost Management visualization, ensuring more accurate cost attribution and analysis.
 
 </details>
 
@@ -1080,7 +1080,7 @@ To create an annual budget with a monthly breakdown, you need to select the budg
 </details>
 
 <details>
-<summary><strong>When we set a budget in the CCM module, is there a way to incorporate discounts?</strong></summary>
+<summary><strong>When we set a budget in the CACM module, is there a way to incorporate discounts?</strong></summary>
 
 Yes, since budgets are based on Perspectives, we can also incorporate built-in cloud discounts.
 
@@ -1115,9 +1115,9 @@ While Amazon RDS offers some automation capabilities, the resizing process, part
 </details>
 
 <details>
-<summary><strong>Does CCM show RDS resize recommendations?</strong></summary>
+<summary><strong>Does CACM show RDS resize recommendations?</strong></summary>
 
-Yes, Harness shows the RDS resize recommendations, but you can't take action from within CCM.
+Yes, Harness shows the RDS resize recommendations, but you can't take action from within CACM.
 
 Usually, the [RDS resize action](https://repost.aws/knowledge-center/rds-db-storage-size) is a manual operation where it is necessary to dump the database, depending on the database type (such as Mysql, MariaDB, or Postgres).
 </details>
@@ -1131,11 +1131,11 @@ Yes, it is possible to do so.
 <details>
 <summary><strong>I executed a governance rule with an action to save costs (for example, delete). Why do I see the cost savings estimate as $0?</strong></summary>
 
-Cloud Asset Governance uses pricing from the customer's CUR to calculate savings generated. Please check if your cloud spend data is available in Cloud Cost Management Perspectives.
+Cloud Asset Governance uses pricing from the customer's CUR to calculate savings generated. Please check if your cloud spend data is available in Cloud & AI Cost Management Perspectives.
 </details>
 
 <details>
-<summary><strong>How many spending subscriptions are reported with governance recommendations in Harness CCM?</strong></summary>
+<summary><strong>How many spending subscriptions are reported with governance recommendations in Harness CACM?</strong></summary>
 
 At present, 15 per cloud are reported.
 </details>
@@ -1314,9 +1314,9 @@ No.
 </details>
 
 <details>
-<summary><strong>Why can't my CCM connector retrieve data from an old billing table?</strong></summary>
+<summary><strong>Why can't my CACM connector retrieve data from an old billing table?</strong></summary>
 
-CCM Connectors, by default, only collect data from billing tables that have had updates within the last 24 hours. If your table hasn't had any updated data within this period, we will skip the collection process.
+CACM Connectors, by default, only collect data from billing tables that have had updates within the last 24 hours. If your table hasn't had any updated data within this period, we will skip the collection process.
 </details>
 
 <details>

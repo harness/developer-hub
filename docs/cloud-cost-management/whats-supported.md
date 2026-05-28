@@ -1,6 +1,6 @@
 ---
-title: What's supported in Harness CCM
-description: Supported platforms and feature support matrix for Harness CCM.
+title: What's supported in Harness CACM
+description: Supported platforms and feature support matrix for Harness CACM.
 sidebar_label: What's supported
 sidebar_position: 1
 ---
@@ -14,7 +14,7 @@ import Ccm from '/docs/cloud-cost-management/shared/ccm-supported-platforms.md';
 ---
 
 ## Supported Environments
-Harness CCM supports the following platforms and orchestration systems:
+Harness CACM supports the following platforms and orchestration systems:
 
 ### Cloud Platforms
 - AWS
@@ -31,7 +31,7 @@ Harness CCM supports the following platforms and orchestration systems:
 ---
 
 ### Supported Kubernetes Management Platform
-The following section lists the support for Kubernetes management platform for CCM:
+The following section lists the support for Kubernetes management platform for CACM:
 
 | **Technology**               | **Supported Platform** | **Pricing**      |
 | ---------------------------- | ---------------------- | ---------------- |
@@ -45,11 +45,11 @@ The following section lists the support for Kubernetes management platform for C
 
 ---
 
-## CCM Feature Flags
+## CACM Feature Flags
 
-Some Harness CCM features are released behind feature flags to get feedback from specific customers before releasing the features to the general audience.
+Some Harness CACM features are released behind feature flags to get feedback from specific customers before releasing the features to the general audience.
 
-The following table describes each of the feature flags relevant to Harness CCM.
+The following table describes each of the feature flags relevant to Harness CACM.
 
 :::note
 
@@ -88,7 +88,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>CCM_ENABLE_DATA_SCOPE</td>
-        <td>Enables RBAC on CCM data scope</td>
+        <td>Enables RBAC on CACM data scope</td>
     </tr>
     <tr>
         <td>CCM_GOVERNANCE_EVALUATION_COST_PER_RESOURCE</td>
@@ -96,7 +96,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>CCM_ANOMALIES_V2</td>
-        <td>Enables the new version of CCM anomalies</td>
+        <td>Enables the new version of CACM anomalies</td>
     </tr>
     <tr>
         <td>CCM_COST_CATEGORY_STAMPED_DATA</td>

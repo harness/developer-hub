@@ -1,6 +1,6 @@
 ---
 title: BI Dashboards
-description: Learn how to get started with CCM with your chosen cloud provider.
+description: Learn how to get started with CACM with your chosen cloud provider.
 sidebar_position: 20
 sidebar_label: Overview
 redirect_from: 
@@ -29,8 +29,8 @@ Harness provides pre-loaded **[out of the box](/docs/cloud-cost-management/use-c
 
 ## Before You Begin
 
-* **Dashboard-All View** permissions assigned. Go to [Manage Access Control for CCM Dashboards](/docs/cloud-cost-management/access-control/manage-access-control-for-ccm-dashboards.md).
-* Ensure that you have set up [Cloud Cost Management (CCM) for your cloud provider](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md).
+* **Dashboard-All View** permissions assigned. Go to [Manage Access Control for CACM Dashboards](/docs/cloud-cost-management/access-control/manage-access-control-for-ccm-dashboards.md).
+* Ensure that you have set up [Cloud & AI Cost Management (CACM) for your cloud provider](../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md).
 
 After setting up cost visibility for the cloud provider and the data is available in the Perspective, you can view the dashboard. The data in the Dashboard is updated within 24 hours.
 
@@ -53,17 +53,17 @@ Harness BI Dashboards are available across all Harness modules as a platform-wid
 
 -------
 
-## How to Create Custom Dashboards and Add Tiles for CCM
+## How to Create Custom Dashboards and Add Tiles for CACM
 
-<DocVideo src="https://app.tango.us/app/embed/7365df2b-2dd2-4539-a1fd-5f2513c42af4?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" style="min-height:720px" title="How to Create Custom Dashboards and Add Tiles for CCM" />
+<DocVideo src="https://app.tango.us/app/embed/7365df2b-2dd2-4539-a1fd-5f2513c42af4?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" style="min-height:720px" title="How to Create Custom Dashboards and Add Tiles for CACM" />
 
 -------
 
 ## BI Dashboards by Harness
-To access the dashboards from the CCM module, perform the following steps:
+To access the dashboards from the CACM module, perform the following steps:
 
 1. In the **Harness** application, click **Cloud Costs** > **BI Dashboards** or select **Dashboards** directly.
-2. Click on **By Harness** to view the pre-defined dashboards available. The dashboards with "Cloud Costs" tags are pre-defined CCM dashboards.
+2. Click on **By Harness** to view the pre-defined dashboards available. The dashboards with "Cloud Costs" tags are pre-defined CACM dashboards.
 
 
 :::important note
@@ -164,7 +164,7 @@ Unified Explore now supports billing export fields aligned with the [FOCUS v1.1 
 
 #### What is FOCUS?
 
-FOCUS (FinOps Open Cost and Usage Specification) is a vendor-neutral schema that defines a standard format for cloud billing data. It provides a consistent data structure across AWS, GCP, and Azure, simplifying multi-cloud cost management.
+FOCUS (FinOps Open Cost and Usage Specification) is a vendor-neutral schema that defines a standard format for cloud billing data. It provides a consistent data structure across AWS, GCP, and Azure, simplifying multi-Cloud & AI Cost Management.
 
 Read more about [FOCUS](https://focus.finops.org/focus-specification/v1-1/).
 

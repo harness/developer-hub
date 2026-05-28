@@ -1,6 +1,6 @@
 ---
-title: Detect Anomalies using Harness CCM
-description: Harness Cloud Cost Management (CCM) detects cost anomalies for your Kubernetes clusters and cloud accounts. Cloud cost anomaly detection can be used as a tool to keep cloud costs under control.
+title: Detect Anomalies using Harness CACM
+description: Harness Cloud & AI Cost Management (CACM) detects cost anomalies for your Kubernetes clusters and cloud accounts. Cloud cost anomaly detection can be used as a tool to keep cloud costs under control.
 helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from: 
@@ -16,17 +16,17 @@ import TabItem from '@theme/TabItem';
 
 ## Introduction
 
-Infrastructure changes, new services, or inefficient resource utilization can lead to **unexpected fluctuations in cloud expenses**. Harness Cloud Cost Management (CCM) anomaly detection identifies **unusually high cost spikes** and promptly **notifies users**, ensuring better **cost control** and **transparency**.
+Infrastructure changes, new services, or inefficient resource utilization can lead to **unexpected fluctuations in cloud expenses**. Harness Cloud & AI Cost Management (CACM) anomaly detection identifies **unusually high cost spikes** and promptly **notifies users**, ensuring better **cost control** and **transparency**.
 
-Harness CCM leverages **advanced detection mechanisms** to monitor cost anomalies across your **Kubernetes clusters** and **cloud accounts**. This feature acts as a safeguard for **managing cloud costs effectively**. Additionally, it includes **built-in alerting capabilities**, sending notifications through notification channels including **email** and **Slack** to ensure stakeholders are informed as soon as anomalies are detected.
+Harness CACM leverages **advanced detection mechanisms** to monitor cost anomalies across your **Kubernetes clusters** and **cloud accounts**. This feature acts as a safeguard for **managing cloud costs effectively**. Additionally, it includes **built-in alerting capabilities**, sending notifications through notification channels including **email** and **Slack** to ensure stakeholders are informed as soon as anomalies are detected.
 
 -----
 
 ## Get Started
 
-Getting started with CCM anomaly detection is straightforward and requires just a few steps:
+Getting started with CACM anomaly detection is straightforward and requires just a few steps:
 
-1. **Set up a Cloud Cost Connector** - Connect your cloud provider accounts (AWS, GCP, Azure) to Harness CCM using the appropriate connectors.
+1. **Set up a Cloud Cost Connector** - Connect your cloud provider accounts (AWS, GCP, Azure) to Harness CACM using the appropriate connectors.
 
 2. **Allow Data Collection** - Once connected, Harness will automatically begin collecting cost data from your cloud environments. The system requires approximately 42 days of historical data for optimal anomaly detection.
 
@@ -35,7 +35,7 @@ Getting started with CCM anomaly detection is straightforward and requires just 
 
 :::info Important
 
-Harness CCM uses the **Prophet Model** for anomaly detection:
+Harness CACM uses the **Prophet Model** for anomaly detection:
 
 * **Prophet Model (Default)** - Analyzes 42 days of historical data to establish baseline patterns and detect anomalies. This model is enabled by default for all customers and uses advanced time series forecasting to identify unusual spending patterns.
 :::
@@ -45,13 +45,13 @@ Harness CCM uses the **Prophet Model** for anomaly detection:
 
 ## Anomaly Detection Process 
 
-CCM's anomaly detection process works through four key steps:
+CACM's anomaly detection process works through four key steps:
 
 #### Step 1: Data Collection
 
 - Harness continuously monitors your cloud spending across **AWS, Azure, and GCP**
 - Historical data is analyzed to understand your normal spending patterns
-- CCM collects **42 days of historical cost data** for each cluster and cloud account to establish a baseline for normal spending patterns
+- CACM collects **42 days of historical cost data** for each cluster and cloud account to establish a baseline for normal spending patterns
 
 #### Step 2: Anomaly Detection
 
@@ -87,7 +87,7 @@ When anomalies are detected, [alerts](/docs/cloud-cost-management/use-ccm-cost-r
 
 :::info Event-Driven Anomaly Detection (Behind Feature Flag)
         
-        CCM also offers an advanced feature under a feature flag for AWS, GCP, and Azure that enables real-time anomaly detection:
+        CACM also offers an advanced feature under a feature flag for AWS, GCP, and Azure that enables real-time anomaly detection:
         
         - Anomaly detection runs immediately when cost data is ingested, without waiting for the next day
         - Works with partial cost data as it becomes available throughout the day
@@ -101,7 +101,7 @@ When anomalies are detected, [alerts](/docs/cloud-cost-management/use-ccm-cost-r
 
 [Released: Feb 2026]
 
-Anomaly Lookback Support in Harness Cloud Cost Management automatically keeps your anomaly data accurate and up-to-date with the latest cloud provider billing information.
+Anomaly Lookback Support in Harness Cloud & AI Cost Management automatically keeps your anomaly data accurate and up-to-date with the latest cloud provider billing information.
 
 Cloud providers (AWS, GCP, Azure) frequently update their billing data days or even weeks after initial reporting. Previously, when Harness detected a cost anomaly, the cost value was stored at detection time and not updated when cloud providers corrected their billing data.
 
@@ -308,7 +308,7 @@ Anomalies exist in one of four states:
 
 ### Anomaly Drilldown
 
-Once an anomaly is detected, for each of the anomaly detected, CCM provides insights into what are the resources which might be causing the anomaly. 
+Once an anomaly is detected, for each of the anomaly detected, CACM provides insights into what are the resources which might be causing the anomaly. 
 
 When you select an anomaly, you'll see detailed information organized into the following sections:
 
@@ -357,7 +357,7 @@ Set up alerts to receive notifications when anomalies are detected without havin
 
 - **Scope**: Select all account data or specific perspectives for anomaly alerts. 
 - **Configure the anomaly alert**: Alert conditions follow your set preferences. You may override these thresholds, but only to increase them. Currently, the user can set thresholds for “Alert when cost difference is over ($)” and/or “Alert when cost difference is over (%)” depending on whether they want to define a specific cost amount or a cost percentage.
-- **Alert Channel**: Currently, Harness CCM supports Slack and/or e-mail as possible methods of sending alerts.
+- **Alert Channel**: Currently, Harness CACM supports Slack and/or e-mail as possible methods of sending alerts.
 
 <DocImage path={require('./static/alert.png')} width="100%" height="100%" title="Click to view full size image" />
 
@@ -467,7 +467,7 @@ Click the **Delete** icon (trash) on a rule card. Confirm the deletion in the di
 
 When an ignore list rule is enabled:
 
-1. CCM's anomaly detection engine evaluates each potential anomaly against your active rules
+1. CACM's anomaly detection engine evaluates each potential anomaly against your active rules
 2. If an anomaly matches a rule's criteria (cloud provider, account, service, usage type), it is excluded from detection
 3. Excluded cost patterns do not appear in your Active anomalies list
 4. The rule applies to all future anomaly detection cycles
@@ -509,9 +509,9 @@ Overriding these settings here will only affect how costs are displayed in the a
 ## FAQs
 
 <details>
-<summary>What happens after CCM detects an anomaly and how does it help me identify the root cause?</summary>
+<summary>What happens after CACM detects an anomaly and how does it help me identify the root cause?</summary>
 
-CCM queries the cloud provider's cost data and identifies resources that have experienced significant cost increases compared to previous periods. The system:
+CACM queries the cloud provider's cost data and identifies resources that have experienced significant cost increases compared to previous periods. The system:
 
 - Aggregates total costs for each resource
 - Computes cost increases/decreases compared to the previous day

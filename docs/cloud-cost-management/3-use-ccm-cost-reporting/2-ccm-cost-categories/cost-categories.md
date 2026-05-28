@@ -1,6 +1,6 @@
 ---
 title: Cost Categories
-description: CCM cost categories provide an understanding of where and how your money is being spent. Cost categories allow you to take data across multiple sources and attribute it to business contexts, such as…
+description: CACM cost categories provide an understanding of where and how your money is being spent. Cost categories allow you to take data across multiple sources and attribute it to business contexts, such as…
 # sidebar_position: 1
 helpdocs_is_private: false
 helpdocs_is_published: true
@@ -21,7 +21,7 @@ With Cost Categories, you can:
 - **Map cloud costs to business units** - Create categories like "Teams" or "Departments" to track spending across organizational structures
 - **Drill down into detailed cost analysis** - Examine specific cost buckets (e.g., the "Operations" team within a "Teams" category) to identify spending patterns
 - **Apply consistent cost attribution** - Use the same business contexts across different cloud providers and resource types
-- **Filter and group in CCM Perspectives** - Leverage your categories in reports and dashboards for comprehensive cost analysis
+- **Filter and group in CACM Perspectives** - Leverage your categories in reports and dashboards for comprehensive cost analysis
 
 
 **The logic behind cost categories is simple: Create [Rules that bring in cost data](#what-are-rules) -> Rules combine to form [Cost Bucket](#define-your-cost-buckets) -> Cost Buckets combine to form Cost Category**
@@ -144,23 +144,23 @@ Once this Cost Category is in place, you can use it in Perspectives to:
 
 ### Before You Begin
 
-To create and manage Cost Categories in Harness CCM, you need:
+To create and manage Cost Categories in Harness CACM, you need:
 
-**Active CCM Connectors**: You must have at least one active cloud connector set up for the cloud providers you want to categorize costs for: Set Up [CCM Connectors](/docs/cloud-cost-management/get-started#aws).
+**Active CACM Connectors**: You must have at least one active cloud connector set up for the cloud providers you want to categorize costs for: Set Up [CACM Connectors](/docs/cloud-cost-management/get-started#aws).
 
 **Required Permissions**: Your Harness user account must belong to a user group with the following role permissions:
 
-- **Cloud Cost Management: Cost Categories: Create/Edit**
-- **Cloud Cost Management: Cost Categories: View**
+- **Cloud & AI Cost Management: Cost Categories: Create/Edit**
+- **Cloud & AI Cost Management: Cost Categories: View**
 
-For more details on CCM permissions, see [CCM Roles and Permissions](/docs/cloud-cost-management/access-control/ccm-roles-and-permissions).
+For more details on CACM permissions, see [CACM Roles and Permissions](/docs/cloud-cost-management/access-control/ccm-roles-and-permissions).
 
 ------
 ## Creating Cost Categories
 
 <Tabs>
 <TabItem value="Step-by-Step" label="Step-by-Step">
-- In your Harness application, go to Cloud Cost Management > Cost Categories > New Cost Category.
+- In your Harness application, go to Cloud & AI Cost Management > Cost Categories > New Cost Category.
 
 <Tabs>
 <TabItem value="Define Cost Bucket(s)" label="Define Cost Bucket(s)">
@@ -274,7 +274,7 @@ In Manage Unallocated Costs, you can choose to show or ignore unallocated costs,
 
 
 <TabItem value="Interactive Guide" label="Interactive Guide">
-    <DocVideo src="https://app.tango.us/app/embed/5ff81c2d-83f0-4993-b63c-617037d2226f" style="min-height:720px" title="Create Cost Categories in Harness CCM" />
+    <DocVideo src="https://app.tango.us/app/embed/5ff81c2d-83f0-4993-b63c-617037d2226f" style="min-height:720px" title="Create Cost Categories in Harness CACM" />
 </TabItem> 
 
 </Tabs>
@@ -303,7 +303,7 @@ The Cost Categories overview page provides a centralized view of all your define
 
 ## Use Cost Categories
 
-Cost Categories can be used across multiple Harness CCM features. The table below shows how each feature supports different Cost Category capabilities:
+Cost Categories can be used across multiple Harness CACM features. The table below shows how each feature supports different Cost Category capabilities:
 
 | Feature | Perspectives | Dashboards | Recommendations |
 |---------|-------------|------------|----------------|
@@ -400,7 +400,7 @@ In AWS, you cannot use cost categories as a dimension in custom dashboards if yo
 
 #### Using Cost Categories with Recommendations
 
-You can filter CCM Recommendations using Cost Categories to focus on specific business areas:
+You can filter CACM Recommendations using Cost Categories to focus on specific business areas:
 
 | Feature | Support Status |
 |---------|---------------|
@@ -416,7 +416,7 @@ You can filter CCM Recommendations using Cost Categories to focus on specific bu
 
 To filter recommendations using cost categories:
 
-1. Go to **Cloud Cost Management > Recommendations**
+1. Go to **Cloud & AI Cost Management > Recommendations**
 2. Select your cost category in the **Filter** panel
 3. Select the cost buckets you want to include
 4. All the resources included in your selected cost buckets will appear in the filtered recommendations view.

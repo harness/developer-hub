@@ -8,7 +8,7 @@ helpdocs_is_published: true
 
 # Cost Explorer
 
-**Cost Explorer** is the next-generation cost analysis interface in Harness Cloud Cost Management (CCM). It provides a streamlined, modern experience for exploring and analyzing your multi-cloud spending through customizable views, advanced filtering, and flexible data visualization.
+**Cost Explorer** is the next-generation cost analysis interface in Harness Cloud & AI Cost Management (CACM). It provides a streamlined, modern experience for exploring and analyzing your multi-cloud spending through customizable views, advanced filtering, and flexible data visualization.
 
 Cost Explorer is built on top of the existing Perspectives infrastructure but offers a redesigned user experience focused on faster exploration and easier view management.
 
@@ -88,7 +88,7 @@ You can create a Perspective for your resources using rules and filters. The fil
     * **Product**: Each of your active products with its cloud costs.
     * **Cloud Provider**: Filter and group costs by the cloud service provider (AWS, GCP, Azure, or Kubernetes clusters) to analyze spending across different cloud platforms.
     * **Sub Account Id**: 
-* **AWS**: CCM allows you to view your AWS costs at a glance, understand what is costing the most, and analyze cost trends across all your Amazon Web Services:
+* **AWS**: CACM allows you to view your AWS costs at a glance, understand what is costing the most, and analyze cost trends across all your Amazon Web Services:
 
     | Grouping Option | Description |
     |----------------|-------------|
@@ -141,7 +141,7 @@ You can create a Perspective for your resources using rules and filters. The fil
     | **Tenant ID** | Cost by Azure Active Directory tenant identifier, useful for organizations with multiple tenants |
 
 
-* **External Data Grouping Options**: Analyze costs from external data sources that you've integrated with CCM:
+* **External Data Grouping Options**: Analyze costs from external data sources that you've integrated with CACM:
 
     | Grouping Option | Description |
     |----------------|-------------|
@@ -153,7 +153,7 @@ You can create a Perspective for your resources using rules and filters. The fil
     | **Resource** | Cost by specific resource from external data sources |
     | **SKU** | Cost by SKU or product identifier from external systems |
 
-* **Label**: Each label that you assign to your AWS resources. You can select a label name to get more granular details of your label. For more information, go to [Tagging your AWS resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html). For tags to appear in the Perspective, you must activate the user-defined cost allocation tags in the AWS Billing and Cost Management console. For more information, go to [Activating User-Defined Cost Allocation Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/activating-tags.html). CCM updates the tag keys as follows:
+* **Label**: Each label that you assign to your AWS resources. You can select a label name to get more granular details of your label. For more information, go to [Tagging your AWS resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html). For tags to appear in the Perspective, you must activate the user-defined cost allocation tags in the AWS Billing and Cost Management console. For more information, go to [Activating User-Defined Cost Allocation Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/activating-tags.html). CACM updates the tag keys as follows:
 	+ For the user-defined tags, `user_` prefix is added.
 	+ For the AWS system tags, `aws_` prefix is added.
 	+ The characters that do not follow regex `[a-zA-Z0-9_]` are changed to `_`.

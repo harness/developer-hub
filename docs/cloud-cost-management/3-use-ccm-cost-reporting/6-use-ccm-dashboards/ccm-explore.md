@@ -1,5 +1,5 @@
 ---
-title: CCM Explore Available Data
+title: CACM Explore Available Data
 description: Learn how to explore available data.
 # sidebar_position: 2
 helpdocs_is_private: false
@@ -14,9 +14,9 @@ redirect_from:
 - Understand how to [Create Dashboards](/docs/platform/dashboards/create-dashboards) in the Harness platform
 
 
-## CCM Explore
+## CACM Explore
 
-CCM provides different Explore options with dimensions and measures for each cloud provider. Below is a comprehensive list of available data fields for each provider.
+CACM provides different Explore options with dimensions and measures for each cloud provider. Below is a comprehensive list of available data fields for each provider.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

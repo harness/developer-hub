@@ -6,9 +6,9 @@ sidebar_label: CCM SaaS Architecture
 
 <DocImage path={require('./static/CCM_SaaS_Architecture.png')} width="90%" height="90%" title="Click to view full size image" />
 
-In this high-level overview of the CCM SaaS infrastructure, we delve into the inner workings of CCM as it performs crucial operations for cloud cost visibility and optimization across popular platforms such as K8S, AWS, GCP, and Azure.
+In this high-level overview of the CACM SaaS infrastructure, we delve into the inner workings of CCM as it performs crucial operations for cloud cost visibility and optimization across popular platforms such as K8S, AWS, GCP, and Azure.
 
-At the core of CCM's architecture, a suite of microservices within the CCM Module handles diverse use cases and functionalities. These microservices manage background processing, API serving, and K8S event handling, among others.
+At the core of CCM's architecture, a suite of microservices within the CACM Module handles diverse use cases and functionalities. These microservices manage background processing, API serving, and K8S event handling, among others.
 
 The primary datastore driving CCM's Cost Visibility features is BigQuery, with additional support from CloudSQL, CloudMemorystore, MongoDB, Redis, and TimescaleDB. Complementing these datastores, CCM leverages various GCP managed cloud services including CloudFunctions, PubSub, Cloud Storage, and Cloud Scheduler.
 
@@ -30,4 +30,4 @@ Azure's cost data is initially stored in a source storage account, synced to a d
 
 In the realm of Kubernetes cost visibility, CCM extracts information through various K8S events. This is achieved by periodically pulling data via metrics server and direct calls to K8S APIs. Facilitated by a lightweight agent (delegate) installed in the source cluster, these events are sent to Harness via HTTP and consumed by backend jobs. The processed data finds its way into TimescaleDB and BigQuery. Utilization data is also fetched, aiding CCM in generating recommendations for nodepool and workload optimizations, leading to tangible hard dollar savings.
 
-This detailed exploration showcases how CCM seamlessly integrates with different cloud platforms, employing tailored strategies for each, and providing valuable insights for effective cloud cost management.
+This detailed exploration showcases how CCM seamlessly integrates with different cloud platforms, employing tailored strategies for each, and providing valuable insights for effective Cloud & AI Cost Management.

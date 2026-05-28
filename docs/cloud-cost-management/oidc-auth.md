@@ -1,6 +1,6 @@
 ---
 title: "OIDC Authentication (for AWS and GCP)"
-description: "A comprehensive guide to Harness Cloud Cost Management (CCM) licensing plans, feature limitations, and what happens when your license expires."
+description: "A comprehensive guide to Harness Cloud & AI Cost Management (CACM) licensing plans, feature limitations, and what happens when your license expires."
 sidebar_position: 7
 helpdocs_is_private: false
 helpdocs_is_published: true

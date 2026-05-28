@@ -1,16 +1,16 @@
 ---
-title: "Feature Permissions for CCM"
-description: "A comprehensive guide to Harness Cloud Cost Management (CCM) licensing plans, feature limitations, and what happens when your license expires."
+title: "Feature Permissions for CACM"
+description: "A comprehensive guide to Harness Cloud & AI Cost Management (CACM) licensing plans, feature limitations, and what happens when your license expires."
 sidebar_position: 7
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness Cloud Cost Management (CCM) supports multiple features across AWS, Azure, GCP, and Kubernetes. Each feature requires a specific set of cloud-provider permissions so that CCM can ingest data, surface insights, and (optionally) take cost-saving actions on your behalf.
+Harness Cloud & AI Cost Management (CACM) supports multiple features across AWS, Azure, GCP, and Kubernetes. Each feature requires a specific set of cloud-provider permissions so that CACM can ingest data, surface insights, and (optionally) take cost-saving actions on your behalf.
 
 Use this page to:
 
-- Understand the minimum IAM roles or policies needed for every CCM feature.
+- Understand the minimum IAM roles or policies needed for every CACM feature.
 - Apply the principle of least privilege when setting up connectors.
 - Troubleshoot connector validation errors that report missing permissions.
 

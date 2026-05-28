@@ -1,12 +1,12 @@
 ---
 title: Perspective folders
-description: This topic describes how to add and manage access control for CCM Perspectives folder.
+description: This topic describes how to add and manage access control for CACM Perspectives folder.
 # sidebar_position: 30
 redirect_from:
   - /docs/cloud-cost-management/getting-started-ccm/access-control/manage-access-control-perspective-folders
 ---
 
-# Manage access control for CCM perspective folders
+# Manage access control for CACM perspective folders
 
 You can now manage access to Perspective folders by assigning Resource Groups to users bound by the roles assigned to them.
 
@@ -15,7 +15,7 @@ Perform the following steps to restrict access to a Resource Group:
 1. In **Harness**, go to **Account Settings**.
 2. Select **Access Control**.
 3. Select **Roles**.
-4. Click **+ New Role** to create a custom role with the following permissions. For example, CCM Custom Role. 
+4. Click **+ New Role** to create a custom role with the following permissions. For example, CACM Custom Role. 
    
      ![](./static/create-new-role.png)
      
@@ -33,7 +33,7 @@ Perform the following steps to restrict access to a Resource Group:
     ![](./static/create-new-resource-group.png)
 
 8.  Select **Account only** in the **Resource Scope** dropdown list.
-9.  In the **Resources** pane, select **Cloud Cost management** > **Folders**. 
+9.  In the **Resources** pane, select **Cloud & AI Cost Management** > **Folders**. 
     
       ![](./static/select-resources.png)
 	

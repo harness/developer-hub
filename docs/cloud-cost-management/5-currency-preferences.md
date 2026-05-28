@@ -1,6 +1,6 @@
 ---
-title: Standardize your currency across CCM
-description: Currency Preference allows you to view your entire CCM application in your preferred currency for different cloud providers.
+title: Standardize your currency across CACM
+description: Currency Preference allows you to view your entire CACM application in your preferred currency for different cloud providers.
 redirect_from:
   - /docs/cloud-cost-management/use-ccm-cost-governance/ccm-currency-preferences
   - /docs/cloud-cost-management/use-ccm-cost-reporting/currency-preferences
@@ -11,9 +11,9 @@ redirect_from:
 Currently, this feature is behind the feature flag **CCM_CURRENCY_PREFERENCES**. Contact Harness Support to enable the feature.
 :::
 
-Harness CCM allows you to view your cloud spend data in the currency of your choice. It is easier to view reports and dashboards in your preferred currency rather than having it in different currencies and then converting them to your preferred currency. It provides more consistent, easy-to-consume, and meaningful cloud analytics across the entire business. 
+Harness CACM allows you to view your cloud spend data in the currency of your choice. It is easier to view reports and dashboards in your preferred currency rather than having it in different currencies and then converting them to your preferred currency. It provides more consistent, easy-to-consume, and meaningful cloud analytics across the entire business. 
 
-CCM allows you to choose from the following list of currencies and displays the cost data in the specified currency:
+CACM allows you to choose from the following list of currencies and displays the cost data in the specified currency:
 
   - ARS
   - AUD
@@ -33,9 +33,9 @@ CCM allows you to choose from the following list of currencies and displays the 
 
 ## Before you begin
 
-You must integrate your cloud accounts with Harness CCM. For more information, refer to the following topics:
+You must integrate your cloud accounts with Harness CACM. For more information, refer to the following topics:
 
-- [Create CCM Connector](/docs/cloud-cost-management/get-started#aws)
+- [Create CACM Connector](/docs/cloud-cost-management/get-started#aws)
 
 ## Set up your preferred currency 
 
@@ -43,7 +43,7 @@ To standardize the currency in which your cloud cost data is displayed, perform 
 
 1. In the Harness application, go to **Cloud Costs**. 
 2. Under **Setup**, click **Currency Preferences**.
-3. Select the currency from the **Currency followed on Cloud Cost Management** dropdown list.
+3. Select the currency from the **Currency followed on Cloud & AI Cost Management** dropdown list.
 
 <DocImage path={require('./static/currency-preference-settings.png')} width="90%" height="90%" title="Click to view full-size image" />
 
@@ -75,7 +75,7 @@ Once configured, you cannot change the currency settings. It takes up to 24 hour
 
 <DocImage path={require('./static/recommendations-currency.png')} width="90%" height="90%" title="Click to view full-size image" />
 
-* Currency standardization is supported only within CCM. Note that the currency symbol in **Dashboards** is not changed, but the cost is displayed in the preferred currency.
+* Currency standardization is supported only within CACM. Note that the currency symbol in **Dashboards** is not changed, but the cost is displayed in the preferred currency.
 * You can configure these settings only for your cloud accounts. Contact Harness Support to view the Kubernetes cluster data in your preferred currency.
 * The currency format defaults to the _en-us_ locale. If you wish to change this, contact Harness Support.
   In the following example, the locale is changed from _en-us_ to _fr-be_ which has changed the currency representation (currency symbol appears after the digits).

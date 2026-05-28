@@ -1,8 +1,8 @@
 # Set up a self-managed platform in GCP
 
-This document walks you through the steps required to set up CCM for GCP in a self-managed platform.
+This document walks you through the steps required to set up CACM for GCP in a self-managed platform.
 
-You need to perform the following tasks to set up CCM for GCP:
+You need to perform the following tasks to set up CACM for GCP:
 
 1. Configure the prerequisites in GCP.
 1. Setup data pipeline components using Terraform.
@@ -27,7 +27,7 @@ import TabItem from '@theme/TabItem';
 </TabItem>
 <TabItem value="1" label="API">
 
-You must enable the following APIs to set up Harness CCM. To learn how to enable these APIs, go to [Enabling an API in your Google Cloud project](https://cloud.google.com/endpoints/docs/openapi/enable-api).
+You must enable the following APIs to set up Harness CACM. To learn how to enable these APIs, go to [Enabling an API in your Google Cloud project](https://cloud.google.com/endpoints/docs/openapi/enable-api).
 
 ```
 Enable Cloudfunctions api (cloudfunctions.googleapis.com)

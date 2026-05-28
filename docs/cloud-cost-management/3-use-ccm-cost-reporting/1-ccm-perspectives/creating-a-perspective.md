@@ -21,7 +21,7 @@ import TabItem from '@theme/TabItem';
 
 ## What are Perspectives?
 
-Perspectives in Harness Cloud Cost Management (CCM) provide a powerful way to contextualize your cloud spending according to your business needs. By creating custom views of your cost data, you can gain insights that align with your organizational structure, projects, or any other business dimension.
+Perspectives in Harness Cloud & AI Cost Management (CACM) provide a powerful way to contextualize your cloud spending according to your business needs. By creating custom views of your cost data, you can gain insights that align with your organizational structure, projects, or any other business dimension.
 
 You can connect multiple cloud providers and external data sources and use them together in a single Perspective to get a unified view of all your cloud costs in one place.
 
@@ -29,10 +29,10 @@ You can connect multiple cloud providers and external data sources and use them 
 
 Before getting started with Perspectives, ensure you have:
 
-* An active Harness Cloud Cost Management (CCM) account
+* An active Harness Cloud & AI Cost Management (CACM) account
 * Administrative access to your cloud provider account(s)
 * Necessary permissions to create and manage connectors in Harness
-* Harness CCM Cloud Provider Connectors:
+* Harness CACM Cloud Provider Connectors:
   * **AWS** - [Complete AWS Connector Setup Guide](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws)
   * **Azure** - [Complete Azure Connector Setup Guide](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure)
   * **GCP** - [Complete GCP Connector Setup Guide](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp)
@@ -47,7 +47,7 @@ You can create up to 10,000 Perspectives.
 :::
 
 
-<DocVideo src="https://app.tango.us/app/embed/7dc1bfa7-a157-4555-8473-ff9e0bb421ec" style="min-height:720px" title="Create a Perspective in Harness CCM" />
+<DocVideo src="https://app.tango.us/app/embed/7dc1bfa7-a157-4555-8473-ff9e0bb421ec" style="min-height:720px" title="Create a Perspective in Harness CACM" />
 
 To create a Perspective, follow these steps:
 
@@ -160,7 +160,7 @@ Reports can send a cost report to specified users at the specified frequency. Yo
 
 :::important 
 
--  If the [Dynamic Perspective Reports](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts#dynamic-perspective-reports) feature is enabled for your account, CCM will disable the legacy report creation method from the Perspective Creation workflow.
+-  If the [Dynamic Perspective Reports](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts#dynamic-perspective-reports) feature is enabled for your account, CACM will disable the legacy report creation method from the Perspective Creation workflow.
 
 <DocImage  path={require('./static/enabled-ff.png')} width="80%" height="80%" title="Click to view full size image" />
 
@@ -275,7 +275,7 @@ The following cost factors retrieved from your GCP Billing Export data can be in
   <DocImage  path={require('./static/azure-p.png')} width="70%" height="70%" title="Click to view full size image" />
 </div>
 
-Azure provides two types of cost export metrics: **Actual Cost** and **Amortized Cost**, each serving distinct financial tracking and analysis needs. In the Azure portal, users can toggle between these cost types to gain insights into their billing data. CCM allows users to configure their Azure connector to support both cost types, offering enhanced visibility and control over their expenses.
+Azure provides two types of cost export metrics: **Actual Cost** and **Amortized Cost**, each serving distinct financial tracking and analysis needs. In the Azure portal, users can toggle between these cost types to gain insights into their billing data. CACM allows users to configure their Azure connector to support both cost types, offering enhanced visibility and control over their expenses.
 
 #### Azure Cost Types
 
@@ -283,14 +283,14 @@ Azure provides two types of cost export metrics: **Actual Cost** and **Amortized
 
 * **Amortized Cost**: Offers a **predictable**, **averaged representation** of costs over a **specified period**, typically on a **monthly basis**. This approach **spreads the upfront payments** or commitments of **Reserved Instances (RIs)** over their term, which can be either **one or three years**. Amortized costs are particularly useful for **evenly distributing expenses** over **reservation terms**, aiding in **financial projections** and **budgeting** by providing a **stable cost structure**.
 
-To accommodate the diverse needs of different teams, **CCM supports the setup of both Actual and Amortized cost exports** within the **same connector**. Users can **view and toggle between these costs** in their perspectives.
+To accommodate the diverse needs of different teams, **CACM supports the setup of both Actual and Amortized cost exports** within the **same connector**. Users can **view and toggle between these costs** in their perspectives.
 
 :::note
 - In order to **accurately track costs**, ensure that your connector has **one billing type set to "Actual."** If not set while creating the connector, the **creation will fail**. For existing connectors, update them such that **one of the billing types should be "Actual"**; otherwise, **connector test connection would fail**.
 
 - **Billing type will be set to "Actual"** in billing export in places where billing type was **not present before this feature launch**.
 
-- **CCM will maintain data** with the Azure cost type set to **"Actual."** **All cost computations will be based on this setting**.
+- **CACM will maintain data** with the Azure cost type set to **"Actual."** **All cost computations will be based on this setting**.
 
 - For **Active Spend** and **License-Util APIs**, Costs will be queried assuming Azure cost type **"Actual"**.
 - Prior to Azure preferences, all data was ingested as **'Actual,'** even if **Amortized billing** was used. After Azure preferences, we ingested the new **Amortized billing export data**. Due to this, in some cases, **'Actual' data might no longer show**. To fix this, kindly **change the Azure cost type filter to 'Amortized'**.

@@ -1,6 +1,6 @@
 ---
 title: Dashboards
-description: This topic describes how to add and manage access control for CCM Dashboards.
+description: This topic describes how to add and manage access control for CACM Dashboards.
 # sidebar_position: 20
 helpdocs_topic_id: ng6yaxqi2r
 helpdocs_category_id: ak4v1iorl3
@@ -10,21 +10,21 @@ redirect_from:
   - /docs/cloud-cost-management/getting-started-ccm/access-control/manage-access-control-for-ccm-dashboards
 ---
 
-# Manage access control for CCM dashboards
+# Manage access control for CACM dashboards
 
 Harness provides Role-Based Access Control (RBAC) that enables you to control user and group access to Harness Resources according to their role assignment.
 
-This topic describes how to add and manage access control for CCM Dashboards.
+This topic describes how to add and manage access control for CACM Dashboards.
 
 ## Before You Begin
 
 * [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness)
 
-## CCM Dashboards Roles and Permissions
+## CACM Dashboards Roles and Permissions
 
-The following roles are needed for CCM Dashboards:
+The following roles are needed for CACM Dashboards:
 
-* **Dashboard - Static Editor**: To add, edit, and delete CCM Dashboards
+* **Dashboard - Static Editor**: To add, edit, and delete CACM Dashboards
 * **Dashboard - All View**: To view all the **By Harness** and **Custom** dashboards
 
 
@@ -32,7 +32,7 @@ The following roles are needed for CCM Dashboards:
 |  **Roles**| **Scope** |**Permissions** |
 | --- | --- | --- |
 | Dashboard - Static Editor | Folder | <ul><li>Add Dashboard</li><li> Add Tile</li><li> Edit Dashboard</li><li>Delete Dashboard</li></ul>|
-| Dashboard - All View | Folder | View CCM Dashboards|
+| Dashboard - All View | Folder | View CACM Dashboards|
  
 
 ## Add and Manage Dashboard - Static Editor Role

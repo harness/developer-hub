@@ -30,7 +30,7 @@ Perform the following steps to restrict rule execution access:
 1. Select **Resource Groups**.
 2. Click **+ New Resource Group** to create a new resource group. For example, _RBAC GOV_.
 3. Select **Account only** in the **Resource Scope** dropdown list.
-4.  In the **Resources** pane, select **Cloud Cost management** > **Cloud Asset Governance Rules**.
+4.  In the **Resources** pane, select **Cloud & AI Cost Management** > **Cloud Asset Governance Rules**.
 5.  To restrict access to specific rules, select **Specified**, and then select **Add**. 
 6.  In the **Resources** pane, select **Shared Resources** > **Connectors**.
 7.  To restrict access to specific cloud accounts, select **Specified**, and then select **Add**. 

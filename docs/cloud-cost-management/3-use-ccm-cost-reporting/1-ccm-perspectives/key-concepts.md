@@ -13,11 +13,11 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-<DocVideo src="https://app.tango.us/app/embed/89164540-a07f-4900-bca7-b303fbb37154?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" style="min-height:720px" title="Perspective Overview in Harness CCM" />
+<DocVideo src="https://app.tango.us/app/embed/89164540-a07f-4900-bca7-b303fbb37154?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" style="min-height:720px" title="Perspective Overview in Harness CACM" />
 
 ## Overview
 
-Perspectives in Harness CCM provide powerful cost analysis capabilities through customizable views of your cloud spending data. This guide covers the key concepts and features available in Perspectives.
+Perspectives in Harness CACM provide powerful cost analysis capabilities through customizable views of your cloud spending data. This guide covers the key concepts and features available in Perspectives.
 
 ## Perspective Drilldown
 
@@ -39,7 +39,7 @@ You can create a Perspective for your resources using rules and filters. The fil
 * **Region**: Each AWS, GCP, or Azure region you're currently running services in.
 * **Product**: Each of your active products with its cloud costs.
 * **Cloud Provider**: Filter and group costs by the cloud service provider (AWS, GCP, Azure, or Kubernetes clusters) to analyze spending across different cloud platforms.
-* **Label**: Each label that you assign to your AWS resources. You can select a label name to get more granular details of your label. For more information, go to [Tagging your AWS resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html). For tags to appear in the Perspective, you must activate the user-defined cost allocation tags in the AWS Billing and Cost Management console. For more information, go to [Activating User-Defined Cost Allocation Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/activating-tags.html). CCM updates the tag keys as follows:
+* **Label**: Each label that you assign to your AWS resources. You can select a label name to get more granular details of your label. For more information, go to [Tagging your AWS resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html). For tags to appear in the Perspective, you must activate the user-defined cost allocation tags in the AWS Billing and Cost Management console. For more information, go to [Activating User-Defined Cost Allocation Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/activating-tags.html). CACM updates the tag keys as follows:
 	+ For the user-defined tags, `user_` prefix is added.
 	+ For the AWS system tags, `aws_` prefix is added.
 	+ The characters that do not follow regex `[a-zA-Z0-9_]` are changed to `_`.
@@ -48,14 +48,14 @@ You can create a Perspective for your resources using rules and filters. The fil
 
 #### Grouping Options by Data Source
 
-CCM provides various grouping options to analyze your cloud costs based on different dimensions. Select the appropriate tab to view available grouping options for each cloud provider, container platform, or external data source.
+CACM provides various grouping options to analyze your cloud costs based on different dimensions. Select the appropriate tab to view available grouping options for each cloud provider, container platform, or external data source.
 
 <Tabs groupId="cloud-providers" queryString>
 <TabItem value="aws" label="AWS" default>
 
 #### AWS Grouping Options
 
-CCM allows you to view your AWS costs at a glance, understand what is costing the most, and analyze cost trends across all your Amazon Web Services:
+CACM allows you to view your AWS costs at a glance, understand what is costing the most, and analyze cost trends across all your Amazon Web Services:
 
 | Grouping Option | Description |
 |----------------|-------------|
@@ -274,7 +274,7 @@ Dynamic Perspective Reports are a new capability that allows you to generate, sc
 <TabItem value="create-report" label="Create Reports">
 
 
-<DocVideo src="https://app.tango.us/app/embed/9d694765-9542-47a8-a2fd-a23a2c01e2ca" style="min-height:720px" title="Perspective Overview in Harness CCM" />
+<DocVideo src="https://app.tango.us/app/embed/9d694765-9542-47a8-a2fd-a23a2c01e2ca" style="min-height:720px" title="Perspective Overview in Harness CACM" />
 
 1. Navigate to the specific Perspective you wish to create a report for.
 2. Click the **Download/Save as Report** button in the upper-right corner of the Perspective view
@@ -295,11 +295,11 @@ Dynamic Perspective Reports are a new capability that allows you to generate, sc
 
 :::important 
 
--  When the Dynamic Perspective Reports feature flag is enabled for your account, CCM will disable the legacy report creation method from the Perspective Creation workflow.
+-  When the Dynamic Perspective Reports feature flag is enabled for your account, CACM will disable the legacy report creation method from the Perspective Creation workflow.
 
 <DocImage  path={require('./static/enabled-ff.png')} width="80%" height="80%" title="Click to view full size image" />
 
-- For previously created reports where **Group By settings, time range, or granularity were not available for reports,CCM utomatically takes these parameters from the perspective. In these cases, the maximum export row limit defaults to 10,000 rows.
+- For previously created reports where **Group By settings, time range, or granularity were not available for reports, CACM automatically takes these parameters from the perspective. In these cases, the maximum export row limit defaults to 10,000 rows.
 
 :::
 
@@ -344,23 +344,23 @@ The Dynamic toggle on the Perspective page gives you control over how cost categ
 - ⏱️ Load times may be slower since rules are processed at runtime.
 
 **If Dynamic OFF (Stored Data Mode):**
-- Harness CCM evaluates cost category rules during the daily data ingestion process and persists the results in a dedicated dataset. This optimized dataset contains pre-computed rule evaluations for the current month's cost data. 
+- Harness CACM evaluates cost category rules during the daily data ingestion process and persists the results in a dedicated dataset. This optimized dataset contains pre-computed rule evaluations for the current month's cost data. 
 - When Dynamic Toggle is OFF, Perspectives use **cost category rules from the stored dataset**.
 - This ensures ⚡ **faster performance** since stored data is used without any computations at runtime.
-- Note that if in case, CCM's daily process of updating the dataset is still running, **stored data is not available and only Dynamic ON (runtime calculation) is available** and a message will be displayed on the UI to inform.
+- Note that if in case, CACM's daily process of updating the dataset is still running, **stored data is not available and only Dynamic ON (runtime calculation) is available** and a message will be displayed on the UI to inform.
 <DocImage  path={require('./static/updation-in-process.png')} width="90%" height="90%" title="Click to view full size image" />
 
 :::note
-- **Historical Data**: CCM updates cost category rules **daily for the current month only**. For previous months with Dynamic OFF, Perspectives use the rules that existed when that month's data was ingested. To apply new rules to historical data, contact support to request a backfill.
+- **Historical Data**: CACM updates cost category rules **daily for the current month only**. For previous months with Dynamic OFF, Perspectives use the rules that existed when that month's data was ingested. To apply new rules to historical data, contact support to request a backfill.
 
-- **New Cost Categories**: When you create a new cost category and use it in a Perspective with Dynamic OFF (stored data mode), no data will be displayed initially. This occurs because the new cost category hasn't been processed by CCM's daily job yet. You'll need to either switch to Dynamic ON temporarily or wait for upto 24 hours for the new cost category data to appear.
+- **New Cost Categories**: When you create a new cost category and use it in a Perspective with Dynamic OFF (stored data mode), no data will be displayed initially. This occurs because the new cost category hasn't been processed by CACM's daily job yet. You'll need to either switch to Dynamic ON temporarily or wait for upto 24 hours for the new cost category data to appear.
 :::
 
 -----
 
 ## Label Migration: Label vs. Label V2
 
-Harness CCM is transitioning from the traditional Label system to the enhanced Label V2 system. Support for the legacy Label system will be discontinued in the coming months.
+Harness CACM is transitioning from the traditional Label system to the enhanced Label V2 system. Support for the legacy Label system will be discontinued in the coming months.
 
 - **Label (Legacy)**: Normalizes AWS tags. GCP, Azure and Clusters tags are not normalized.
 - **Label V2 (New)**: Preserves the original structure from AWS similar to how GCP, Azure and Cluster tags are stored.
@@ -382,7 +382,7 @@ After Label V2, AWS labels are stored as-is without any normalization.
   margin: '15px 0'
 }}>
   <h4 style={{margin: '0 0 10px 0', color: '#0066cc'}}>✅ Migration Required</h4>
-  <p style={{margin: '0'}}>Label V2 will replace the current Labels in the next release. Harness CCM will automatically migrate your existing rules. However, if your scripts reference Labels in Perspectives or CCs, you’ll need to [update them manually](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts#how-to-migrate) to use Label V2. <strong>Existing Labels will also continue to work without interruption</strong></p>
+  <p style={{margin: '0'}}>Label V2 will replace the current Labels in the next release. Harness CACM will automatically migrate your existing rules. However, if your scripts reference Labels in Perspectives or CCs, you’ll need to [update them manually](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts#how-to-migrate) to use Label V2. <strong>Existing Labels will also continue to work without interruption</strong></p>
 </div>
 
 <div style={{

@@ -1,11 +1,11 @@
 ---
 title: Video Tutorials for Dashboards  
-description: Watch tutorial videos demonstrating how to create, customize, and use CCM dashboards for visualizing and analyzing your cloud costs across multiple providers.
+description: Watch tutorial videos demonstrating how to create, customize, and use CACM dashboards for visualizing and analyzing your cloud costs across multiple providers.
 sidebar_position: 20
 sidebar_label:  Video Tutorials for Dashboards  
 ---
 
-These tutorial videos provide step-by-step guidance on creating and customizing CCM dashboards to visualize your cloud costs effectively. Each video focuses on a specific dashboard feature or technique to help you build comprehensive cost reports, analyze spending patterns, and share insights across your organization. Whether you're new to CCM dashboards or looking to enhance your existing visualizations, these tutorials will help you leverage the full power of Harness CCM's reporting capabilities.
+These tutorial videos provide step-by-step guidance on creating and customizing CACM dashboards to visualize your cloud costs effectively. Each video focuses on a specific dashboard feature or technique to help you build comprehensive cost reports, analyze spending patterns, and share insights across your organization. Whether you're new to CACM dashboards or looking to enhance your existing visualizations, these tutorials will help you leverage the full power of Harness CACM's reporting capabilities.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

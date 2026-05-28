@@ -1,6 +1,6 @@
 ---
 title: RBAC
-description: Harness RBAC includes Roles and Permissions that enable you to control access to the CCM resources in your Harness account. CCM Roles and Permissions are Account Level Only. Most Roles and Permission…
+description: Harness RBAC includes Roles and Permissions that enable you to control access to the CACM resources in your Harness account. CACM Roles and Permissions are Account Level Only. Most Roles and Permission…
 # sidebar_position: 10
 helpdocs_topic_id: di9dut7jki
 helpdocs_category_id: b943tytof4
@@ -10,41 +10,41 @@ redirect_from:
   - /docs/cloud-cost-management/getting-started-ccm/access-control/ccm-roles-and-permissions
 ---
 
-# CCM Roles and Permissions
-Harness RBAC includes Roles and Permissions that enable you to control access to the CCM resources in your Harness account.
+# CACM Roles and Permissions
+Harness RBAC includes Roles and Permissions that enable you to control access to the CACM resources in your Harness account.
 
-## CCM Roles and Permissions are Account Level Only
+## CACM Roles and Permissions are Account Level Only
 
-Most Roles and Permissions can be set at the Project, Org, and Account levels. CCM Roles and Permissions can be set at the Account level only.
+Most Roles and Permissions can be set at the Project, Org, and Account levels. CACM Roles and Permissions can be set at the Account level only.
 
 1. In your Harness Account, click **Account Settings >** **Access Control >** **Roles**. 
 2. Add or open a Role.
-3. In the Role, click **Cloud Cost Management**. The CCM Permissions are displayed.
+3. In the Role, click **Cloud & AI Cost Management**. The CACM Permissions are displayed.
 
 ![](./static/ccm-roles-and-permissions-00.png)
 
 ## Default Roles
 
-You can configure CCM Permissions for any Role, but there are two default Roles related to CCM that you can assign without having to set anything up.
+You can configure CACM Permissions for any Role, but there are two default Roles related to CACM that you can assign without having to set anything up.
 
-### CCM Admin
+### CACM Admin
 
-The default CCM Admin Role has full permissions on all CCM resources.
+The default CACM Admin Role has full permissions on all CACM resources.
 
 ![](./static/ccm-roles-and-permissions-01.png)
 
-### CCM Viewer
+### CACM Viewer
 
-The default CCM Viewer Role has read-only permissions on all CCM resources.
+The default CACM Viewer Role has read-only permissions on all CACM resources.
 
 ![](./static/ccm-roles-and-permissions-02.png)
 
 ## Permissions
 
-The following table describes the Permissions enabled in the default Harness Roles, including the two CCM default Roles.
+The following table describes the Permissions enabled in the default Harness Roles, including the two CACM default Roles.
 
 
-| **CCM Resource** | **Permission** | **Account Admin** | **Account Viewer** | **Account Basic** | **CCM Admin** | **CCM Viewer** | **What a User can do?** |
+| **CACM Resource** | **Permission** | **Account Admin** | **Account Viewer** | **Account Basic** | **CACM Admin** | **CACM Viewer** | **What a User can do?** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Recommendations | Recommendations: View | Y | Y | N | Y | Y | View the Recommendations irrespective of Perspective View Permission |
 | Anomalies | Anomalies: View | Y | Y | N | Y | Y | View the Anomalies irrespective of Perspective View Permission |

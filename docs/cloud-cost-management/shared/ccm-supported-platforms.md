@@ -19,16 +19,16 @@ import TabItem from '@theme/TabItem';
 | **🛡️ Cost Governance** | [Budgets](/docs/category/budgets) | Set and track cloud spend limits to avoid budget overruns. | ✅ | ✅ | ✅ | ✅ | ✅ |
 
 :::info
-Harness CCM does not currently support AWS China regions.
+Harness CACM does not currently support AWS China regions.
 :::
  
 
 ## Self-Managed Enterprise Edition
 
-Review the following information about what installation infrastructure and CCM features are supported on Harness Self-Managed Enterprise Edition. 
+Review the following information about what installation infrastructure and CACM features are supported on Harness Self-Managed Enterprise Edition. 
 
 :::info
-AWS is the only supported installation infrastructure. If you do not install Harness Self-Managed Enterprise Edition on AWS, then you cannot use the CCM features. 
+AWS is the only supported installation infrastructure. If you do not install Harness Self-Managed Enterprise Edition on AWS, then you cannot use the CACM features. 
 :::
   
 ### Connected Environment 
@@ -70,9 +70,9 @@ AWS is the only supported installation infrastructure. If you do not install Har
 - Tracking recommendation lifescyle through Jira and ServiceNow is not supported in Air-gapped environments.
 :::
 
-### CCM on Air-Gapped Environment
-CCM is supported in [Harness Self-Managed Enterprise Edition installs on an air-gapped environment](/docs/self-managed-enterprise-edition/install/install-in-an-air-gapped-environment).
+### CACM on Air-Gapped Environment
+CACM is supported in [Harness Self-Managed Enterprise Edition installs on an air-gapped environment](/docs/self-managed-enterprise-edition/install/install-in-an-air-gapped-environment).
 
-CCM leverages AWS APIs that require connectivity from the isolated (air-gapped) instance. To grant access to these AWS APIs, establish VPC endpoints for the respective AWS services. For services lacking VPC endpoints, use a proxy to facilitate access. For more information, go to [Manage AWS costs by using CCM on Harness Self-Managed Enterprise Edition](../get-started/ccm-smp/aws-smp.md).
+CACM leverages AWS APIs that require connectivity from the isolated (air-gapped) instance. To grant access to these AWS APIs, establish VPC endpoints for the respective AWS services. For services lacking VPC endpoints, use a proxy to facilitate access. For more information, go to [Manage AWS costs by using CCM on Harness Self-Managed Enterprise Edition](../get-started/ccm-smp/aws-smp.md).
 
 For a comprehensive list of supported features in other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/platform/platform-whats-supported).
