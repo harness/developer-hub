@@ -320,7 +320,7 @@ const config: Config = {
               to: 'https://www.harness.io/products/feature-management-experimentation',
             },
             {
-              label: 'Cloud Cost Management',
+              label: 'Cloud & AI Cost Management',
               to: 'https://harness.io/products/cloud-cost',
             },
             {

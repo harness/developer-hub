@@ -131,11 +131,11 @@ const sidebars: SidebarsConfig = {
             description: 'Learn how to enable data-driven features and gradual rollouts.',
           },
         },
-        // Cloud Cost Management Landing Page
+        // Cloud & AI Cost Management Landing Page
         {
           type: 'link',
           href: '/docs/cloud-cost-management',
-          label: 'Cloud Cost Management',
+          label: 'Cloud & AI Cost Management',
           className: 'sidebar-ccm',
 
           customProps: {
@@ -2630,10 +2630,10 @@ const sidebars: SidebarsConfig = {
     },
   ],
   cloudcostmanagement: [
-    // Cloud Cost Management Landing Page
+    // Cloud & AI Cost Management Landing Page
     {
       type: 'category',
-      label: 'Cloud Cost Management',
+      label: 'Cloud & AI Cost Management',
       className: 'sidebar-ccm',
       link: {
         type: 'doc',

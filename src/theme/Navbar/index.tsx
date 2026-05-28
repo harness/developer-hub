@@ -134,7 +134,7 @@ const docDropdownItems = [
   { type: "header", label: "Cost & Optimization" },
   {
     to: "/docs/cloud-cost-management",
-    label: "Cloud Cost Management",
+    label: "Cloud & AI Cost Management",
     icon: "/img/icon_ccm.svg",
   },
   {

@@ -175,7 +175,7 @@ The **AWS Resource Breakdown Dashboard** is displayed:
 
 [Split cost allocation data (SCAD)](https://docs.aws.amazon.com/cur/latest/userguide/split-cost-allocation-data.html) feature introduces cost and usage data for container-level resources—specifically ECS tasks and Kubernetes pods—into AWS Cost and Usage Reports (CUR). Previously AWS CUR was not including granular level K8S and ECS cost visibility. Now, split cost allocation calculates container-level costs by analyzing each container's consumption of EC2 instance resources, assigning costs based on the amortized cost of the instance and the percentage of CPU and memory resources utilized by containers running on it.
 
-CCM now has support for analyzing K8S cost data via SCAD CUR. Following are the columns which can be used.
+CACM has support for analyzing K8S cost data via SCAD CUR. Following are the columns which can be used.
 
 - `parentresourceid`
 - `reservedusage`

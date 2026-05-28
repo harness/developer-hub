@@ -7,7 +7,7 @@ helpdocs_category_id:
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-All the orchestrators are visible when you click on **Cloud Cost Management** > **Commitment**. The home page shows a list of all orchestrators. 
+All the orchestrators are visible when you click on **Cloud & AI Cost Management** > **Commitment**. The home page shows a list of all orchestrators. 
 
 import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelector/DynamicMarkdownSelector';
 

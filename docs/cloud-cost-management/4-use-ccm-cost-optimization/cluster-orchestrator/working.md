@@ -53,7 +53,7 @@ Node instance families are dynamically selected based on user preferences and wo
 
 ## Example: 84% savings on a non-production cluster
 
-Let’s take an example of a non-production EKS cluster to illustrate how staggering the savings can be with Harness CCM and the Cluster Orchestrator.
+Let’s take an example of a non-production EKS cluster to illustrate how staggering the savings can be with Harness CACM and the Cluster Orchestrator.
 
 This sample non-production EKS cluster has 10 m4.xlarge nodes running in the US East (Ohio) on Linux. 
 

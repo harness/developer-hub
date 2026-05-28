@@ -9,7 +9,7 @@ redirect_from:
 <CTABanner
   buttonText="Learn More"
   title="Continue your learning journey."
-  tagline="Take a Cloud Cost Management Certification today!"
+  tagline="Take a Cloud & AI Cost Management Certification today!"
   link="/university/cloud-cost-management"
   closable={true}
   target="_self"
@@ -21,7 +21,7 @@ Optimizing the usage of cloud resources is a significant problem that organizati
 
 Imagine having the capability to start RDS instances when developers require them and seamlessly shutting them down when they are no longer needed. By implementing such a system, the organization can drastically minimize wastage of cloud resources, resulting in substantial cost savings on the cloud bill. This proactive approach ensures that resources are utilized efficiently, aligning with the organization's goal of optimizing cloud expenditure.
 
-Harness Cloud Cost Management provides a valuable solution to address this challenge. Its intelligent cloud AutoStopping feature sets it apart by effectively reclaiming wasted budgets without requiring any modifications to your existing infrastructure. By leveraging AutoStopping, idle resources are automatically stopped when no traffic is detected, and promptly restarted when traffic is detected again. The implementation of this feature has resulted in significant cost savings for customers in their pre-production environments.
+Harness Cloud & AI Cost Management provides a valuable solution to address this challenge. Its intelligent cloud AutoStopping feature sets it apart by effectively reclaiming wasted budgets without requiring any modifications to your existing infrastructure. By leveraging AutoStopping, idle resources are automatically stopped when no traffic is detected, and promptly restarted when traffic is detected again. The implementation of this feature has resulted in significant cost savings for customers in their pre-production environments.
 
 Harness AutoStopping Proxy provides an effective solution to reduce non-production cloud costs with minimal setup requirements and without causing disruptions for developers and other users. By onboarding your RDS instance or cluster to AutoStopping using the proxy, you will incur costs for the RDS only when it is actively utilized. Moreover, when the RDS instances are not in use, they are automatically stopped, further optimizing your cloud expenditure. The following diagram illustrates how you can use a proxy to enforce an AutoStopping rule on the RDS instance or cluster:
 

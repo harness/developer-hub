@@ -19,7 +19,7 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 
 ### Before You Begin
 
-Harness CCM uses labels to process node pool recommendations. Make sure to add one of the labels listed to the Kubernetes nodes in your cluster. The following table shows the labels for the respective cloud providers:
+Harness CACM uses labels to process node pool recommendations. Make sure to add one of the labels listed to the Kubernetes nodes in your cluster. The following table shows the labels for the respective cloud providers:
 
 |  **Cloud provider**| **Labels** |
 | --- | --- |
@@ -37,7 +37,7 @@ Harness CCM uses labels to process node pool recommendations. Make sure to add o
 For nodepool recommendations, we base our calculations using public pricing data, which may differ from actual price.
 :::
 
-The node pool recommendations are computed by analyzing historical utilization data and requests metrics of Pods. CCM recommends the optimal resource configurations for the Spot and On-demand instances. It uses the following parameters to determine the maximum node counts:
+The node pool recommendations are computed by analyzing historical utilization data and requests metrics of Pods. CACM recommends the optimal resource configurations for the Spot and On-demand instances. It uses the following parameters to determine the maximum node counts:
 
 * Total CPUs
 * Total memory
@@ -138,17 +138,17 @@ As and when these values are adjusted, the recommendationed values are computed 
 
 ### Before You Begin
 
-- Connect your Kubernetes cluster in Harness and [set up CCM for cost management](/docs/cloud-cost-management/get-started/#kubernetes).
-- Cost Visibility and the Inventory Management features should be enabled on your Kubernetes CCM connector.
+- Connect your Kubernetes cluster in Harness and [set up CACM for cost management](/docs/cloud-cost-management/get-started/#kubernetes).
+- Cost Visibility and the Inventory Management features should be enabled on your Kubernetes CACM connector.
 - Enabling the **Visibility** feature allows retrieving recommendations from the Azure Advisor. The **Inventory Management** feature allows you to fetch the CPU utilization data and display the corresponding recommendations. If the Inventory Management feature is not enabled, the graph and table may show a null state.
 
 ## How are Workload Recommendations Computed?
 
-In Harness CCM, the workload recommendations are computed by analyzing the past utilization of CPU and memory of your workload. The implementation uses a histogram method to compute the recommendations.
+In Harness CACM, the workload recommendations are computed by analyzing the past utilization of CPU and memory of your workload. The implementation uses a histogram method to compute the recommendations.
 
-The computation adds a 15% buffer to the recommended resources by default. CCM also allows you to add any additional buffer using the Tune recommendations option.
+The computation adds a 15% buffer to the recommended resources by default. CACM also allows you to add any additional buffer using the Tune recommendations option.
 
-When you enable Cost Visibility for your Kubernetes Cluster, the Delegate associated with your Connector starts collecting CPU and memory resource utilization metrics for every node and pod (including individual containers) present in the cluster every minute using a metrics server. CCM relies on the Metrics Server and initializes recommendations after an initial data collection of 24-48 hours. The Metrics Server is queried by the controller every minute for utilization data.
+When you enable Cost Visibility for your Kubernetes Cluster, the Delegate associated with your Connector starts collecting CPU and memory resource utilization metrics for every node and pod (including individual containers) present in the cluster every minute using a metrics server. CACM relies on the Metrics Server and initializes recommendations after an initial data collection of 24-48 hours. The Metrics Server is queried by the controller every minute for utilization data.
 
 The utilization data collected every minute is then aggregated in the Delegate for a 20-minute window. The 20-minute aggregated data is then sent to Harness:
 

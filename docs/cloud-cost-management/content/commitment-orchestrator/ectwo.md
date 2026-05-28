@@ -6,9 +6,9 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 
 ### Before You Begin
 
-To setup Commitment Orchestrator in Harness CCM, you need:
+To setup Commitment Orchestrator in Harness CACM, you need:
 
-- **Active CCM Connectors**: You must have at least one active cloud connector set up for the cloud providers you want to categorize costs for: Set Up [CCM Connectors](/docs/cloud-cost-management/get-started#aws).
+- **Active CACM Connectors**: You must have at least one active cloud connector set up for the cloud providers you want to categorize costs for: Set Up [CACM Connectors](/docs/cloud-cost-management/get-started#aws).
 
 - A master account with the right permissions to be added via AWS connector on which you want to enable orchestration. Select the services for which you want to enable orchestration (permissions can be limited to specific service).
 
@@ -119,7 +119,7 @@ The purchases will happen only at master account level and thus will be in turn 
 
 - **Atomization:** Atomization helps with restricting all RI based transactions to a specified date. To extend on this approach, Harness Commitment Orchestrator intends to buy a Atom RI on a monthly basis in each of the regions to create a situation where in the future there would be a Atom RI expiring on a monthly basis.
 
-    You can select the Atom purchase frequency and select the Atom purchase terms and you can also see the cost implications of Atomization. By default, CCM sets it for one year, but you can also set it for three years.
+    You can select the Atom purchase frequency and select the Atom purchase terms and you can also see the cost implications of Atomization. By default, CACM sets it for one year, but you can also set it for three years.
 
 - **(Optional) Savings Plan Renewal Reduction % (Roll-Down Policy)**: Set a percentage to decide how much of an expiring commitment will be renewed. This feature gives you strategic control over how your expiring AWS Savings Plans are renewed and optimizes your commitment mix over time.
 
@@ -178,7 +178,7 @@ The Orchestration Setup page displays a comprehensive list of all Master Account
 
 ## Disable Commitment Orchestrator
 
-To disable a Commitment Orchestrator, navigate to **Cloud Cost Management** > **Commitment** > **Orchestration Setup**. Click on the three ellipses for the orchestrator you want to disable > **Manage Orchestration Setup** > **Disable**.
+To disable a Commitment Orchestrator, navigate to **Cloud & AI Cost Management** > **Commitment** > **Orchestration Setup**. Click on the three ellipses for the orchestrator you want to disable > **Manage Orchestration Setup** > **Disable**.
 
 Disabling the Commitment Orchestrator will:
 - Stop all automated commitment management for the selected orchestrator

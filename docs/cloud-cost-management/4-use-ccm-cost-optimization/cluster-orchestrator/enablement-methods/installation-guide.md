@@ -45,9 +45,9 @@ Your kubectl context must have cluster-admin permissions or equivalent to:
 
 ### Harness Prerequisites
 
-1. **Active Harness Account** with CCM module enabled
+1. **Active Harness Account** with CACM module enabled
 2. **Kubernetes Connector** configured for your cluster
-3. **API Token** with CCM permissions
+3. **API Token** with CACM permissions
 
 ---
 
@@ -59,7 +59,7 @@ Your kubectl context must have cluster-admin permissions or equivalent to:
 |----------|-------------|---------|
 | `CLUSTER_NAME` | EKS cluster name as it appears in AWS | `production-eks-cluster` |
 | `REGION` | AWS region where your cluster is deployed | `us-west-2` |
-| `CCM_K8S_CONNECTOR_ID` | Harness CCM Kubernetes connector ID | `prod_eks_connector` |
+| `CCM_K8S_CONNECTOR_ID` | Harness CACM Kubernetes connector ID | `prod_eks_connector` |
 | `TOKEN` | Harness API token for authentication | `sat.myaccount.abc123...` |
 
 ---

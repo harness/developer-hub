@@ -160,7 +160,7 @@ export const categories: Category[] = [
     blurb: "Optimize spend and developer time.",
     items: [
       {
-        name: "Cloud Cost Management",
+        name: "Cloud & AI Cost Management",
         href: "/docs/cloud-cost-management",
         module: "ccm",
         description: "Monitor and optimize cloud spend."

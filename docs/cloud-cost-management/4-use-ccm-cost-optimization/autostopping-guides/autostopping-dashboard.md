@@ -28,7 +28,7 @@ You can also perform the following actions from the AutoStopping dashboard view:
 
 
 :::info
-CCM now allows bulk processing of AutoStopping rules i.e. multiple rules can be selected at once to be disabled, enabled, and dry run.
+CACM now allows bulk processing of AutoStopping rules i.e. multiple rules can be selected at once to be disabled, enabled, and dry run.
 
 :::
 

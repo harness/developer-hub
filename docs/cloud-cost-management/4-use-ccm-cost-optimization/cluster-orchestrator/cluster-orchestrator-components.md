@@ -31,7 +31,7 @@ Cluster Orchestrator installation creates a comprehensive set of infrastructure 
 |----------|------|-------------|
 | **Service Account** | - | Created via API to represent the cluster orchestrator |
 | **API Key + Token** | - | Issued and stored in K8s as a secret for cluster-to-Harness communication |
-| **Cluster Registration** | - | Registers your EKS cluster with Harness CCM |
+| **Cluster Registration** | - | Registers your EKS cluster with Harness CACM |
 
 ## Components
 
@@ -68,5 +68,5 @@ Each of these components gets a ServiceAccount, ClusterRole, and ClusterRoleBind
 | `nodepools.karpenter.sh` | Defines node pools for Karpenter provisioning |
 | `nodeclaims.karpenter.sh` | Manages node claims for Karpenter |
 | `ec2nodeclasses.karpenter.k8s.aws` | Defines EC2 node class templates for Karpenter provisioning |
-| `workloaddistributionrules.ccm.harness.io` | Harness CCM custom CRD to control workload placement and distribution |
+| `workloaddistributionrules.ccm.harness.io` | Harness CACM custom CRD to control workload placement and distribution |
 

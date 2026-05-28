@@ -9,7 +9,7 @@ To ensure a smooth and error-free setup experience, set up GCP Billing Export be
 
 **Why is Billing Export required?**
 
-Harness Cloud & AI Cost Management (CCM) analyzes your cloud spending by accessing detailed billing data from your GCP account. The billing export automatically sends your cost and usage data to BigQuery, where Harness can securely read it.
+Harness Cloud & AI Cost Management (CACM) analyzes your cloud spending by accessing detailed billing data from your GCP account. The billing export automatically sends your cost and usage data to BigQuery, where Harness can securely read it.
 
 :::info 
 ⚠️ GCP Billing Export Table Limitations and CMEK Restrictions
@@ -107,7 +107,7 @@ You can enable authentication for your GCP account via
 Based on what you selected in **Step 3 - Choose Requirements**, you will be prompted to grant permissions to your service account alongwith the steps to be followed.
 
 :::info
-Review [Feature Permissions](/docs/cloud-cost-management/feature-permissions) for CACM to understand the minimum roles or permissions needed for every CCM feature.
+Review [Feature Permissions](/docs/cloud-cost-management/feature-permissions) for CACM to understand the minimum roles or permissions needed for every CACM feature.
 :::
 
 ---

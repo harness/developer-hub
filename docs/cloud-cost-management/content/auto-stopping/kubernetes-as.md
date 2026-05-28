@@ -15,12 +15,12 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 
 ## Installation via Helm
 
-The Autostopping controller can also be installed using Helm. CCM has a comprehensive Helm chart for deploying Harness Cloud Cost Management (CCM) AutoStopping components on Kubernetes clusters.
+The Autostopping controller can also be installed using Helm. CACM has a comprehensive Helm chart for deploying Harness Cloud & AI Cost Management (CACM) AutoStopping components on Kubernetes clusters.
 
 [Link to Helm](https://app.harness.io/ng/account/6NTMT--yR7ORXKPqwLDioA/module/code/repos/Helm/files/main/~/autostopping/helm)
 
-The Harness CCM AutoStopping Helm Chart provides an automated cost-optimization layer for Kubernetes workloads.
-It deploys a controller and supporting agents that integrate with Harness Cloud Cost Management to dynamically manage workloads based on usage patterns and traffic activity.
+The Harness CACM AutoStopping Helm Chart provides an automated cost-optimization layer for Kubernetes workloads.
+It deploys a controller and supporting agents that integrate with Harness Cloud & AI Cost Management to dynamically manage workloads based on usage patterns and traffic activity.
 
 **Components**
 
@@ -33,7 +33,7 @@ It deploys a controller and supporting agents that integrate with Harness Cloud 
 - Kubernetes: v1.20 or later
 - Helm: v3 or later
 - Harness Delegate: connected to your cluster
-- Harness CCM Kubernetes Connector configured in your Harness account
+- Harness CACM Kubernetes Connector configured in your Harness account
 - Appropriate permissions to create CRDs, ClusterRoles, and Namespaces
 
 

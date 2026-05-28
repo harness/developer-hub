@@ -229,21 +229,21 @@ To fully enable CACM for a Kubernetes cluster, you need to:
 
 - **Deploy a delegate into the target cluster.** This gives Harness a connection into your cluster.
 - **Create a Harness cloud provider Kubernetes connector that targets the delegate.** This ties your cluster and delegate to a representation of your cluster in Harness.
-- **Create a Harness CACM Kubernetes connector that targets the Kubernetes connector.** This enables the delegate to start collecting usage metrics to be sent back to Harness for use in CCM.
-- **(Optional) Deploy the autostopping controller and router into the target cluster.** This enables you to create CCM autostopping rules to reduce costs of your cluster.
+- **Create a Harness CACM Kubernetes connector that targets the Kubernetes connector.** This enables the delegate to start collecting usage metrics to be sent back to Harness for use in CACM.
+- **(Optional) Deploy the autostopping controller and router into the target cluster.** This enables you to create CACM autostopping rules to reduce costs of your cluster.
 
 :::info
 After you enable CACM in your first cluster, the data is available within a few minutes for viewing and analysis.
 
-However, you can't see the idle cost due to missing utilization data. CCM generates the last 30 days of the cost data based on the first events.
+However, you can't see the idle cost due to missing utilization data. CACM generates the last 30 days of the cost data based on the first events.
 
 From the second cluster onwards, it takes about 2 to 3 hours for the data to be available for viewing and analysis.
 
-If you are using a CCM cloud connector, the data generation is delayed. Since CCM performs cost true-up based on cost information available at cloud provider source.
+If you are using a CACM cloud connector, the data generation is delayed. Since CACM performs cost true-up based on cost information available at cloud provider source.
 :::
 
-### Kubernetes CCM connection requirements and workflow
-For CCM, you can only use Kubernetes connectors at the Account level in Harness. This section describes how to set up the CACM Kubernetes connector.
+### Kubernetes CACM connection requirements and workflow
+For CACM, you can only use Kubernetes connectors at the Account level in Harness. This section describes how to set up the CACM Kubernetes connector.
 
 Here's a visual representation of the CACM Kubernetes connector requirements and workflow:
 
@@ -256,10 +256,10 @@ Once the delegate is deployed you need to [create a Kubernetes cloud provider co
 Make sure the connector passes its connection test to validate the delegate has been installed correctly and can make outbound connections to the Harness Manager.
 
 :::warning
-In Harness, the ratio of Delegates to Connectors is 1:2. If you have 20 clusters, then you need 20 delegates and 40 connectors (one Kubernetes cloud provider connector and one CCM Cloud Integration/Cloud Costs Kubernetes connector for each cluster).
+In Harness, the ratio of Delegates to Connectors is 1:2. If you have 20 clusters, then you need 20 delegates and 40 connectors (one Kubernetes cloud provider connector and one CACM Cloud Integration/Cloud Costs Kubernetes connector for each cluster).
 :::
 
-### Create CCM Kubernetes Connector
+### Create CACM Kubernetes Connector
 ### Interactive Guide
 <DocVideo src="https://app.tango.us/app/embed/a55ce80b-4990-4510-9407-7d69690d70c1?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Add Kubernetes Cloud Cost Connector in Harness" />
 
@@ -388,7 +388,7 @@ yes
 ---
 
 ## Next Steps
-Explore these features to enhance your Cloud & AI Cost Management:
+Explore these features to enhance your cloud & AI cost management:
 
 - Create [Budgets and Alerts](/docs/cloud-cost-management/use-ccm-cost-governance/ccm-budgets/create-a-budget) to monitor spend thresholds.
 - Use [BI Dashboards](/docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/access-ccm-dashboards) to visualize cloud usage and trends.

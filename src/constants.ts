@@ -41,7 +41,7 @@ export const MODULE_DISPLAY_NAME = {
     [MODULES.gs]: 'Getting Started',
     [MODULES.ci]: 'Continuous Integration',
     [MODULES.cd]: 'Continuous Delivery',
-    [MODULES.ccm]: 'Cloud Cost Management',
+    [MODULES.ccm]: 'Cloud & AI Cost Management',
     [MODULES.ff]: 'Feature Flags',
     [MODULES.sto]: 'Security Testing Orchestration',
     [MODULES.aisec]: 'AI Security',

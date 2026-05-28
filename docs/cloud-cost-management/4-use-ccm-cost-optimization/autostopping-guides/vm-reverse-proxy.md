@@ -9,7 +9,7 @@ redirect_from:
 <CTABanner
   buttonText="Learn More"
   title="Continue your learning journey."
-  tagline="Take a Cloud Cost Management Certification today!"
+  tagline="Take a Cloud & AI Cost Management Certification today!"
   link="/university/cloud-cost-management"
   closable={true}
   target="_self"
@@ -17,7 +17,7 @@ redirect_from:
 
 Harness Intelligent Cloud AutoStopping™ revolutionizes cloud resource optimization by introducing powerful automation capabilities. This groundbreaking feature empowers businesses to effortlessly optimize their cloud costs by automatically halting idle cloud resources.
 
-AutoStopping goes beyond just stopping idle resources; it possesses the intelligence to reactivate them when necessary. This dynamic functionality allows previously stopped idle resources to be automatically brought back up during periods of activity or increased demand based on the AutoStopping rules defined in Harness CCM. AutoStopping supports a wide range of resources in multiple cloud providers, read more about them [here](/docs/category/autostopping-rules).
+AutoStopping goes beyond just stopping idle resources; it possesses the intelligence to reactivate them when necessary. This dynamic functionality allows previously stopped idle resources to be automatically brought back up during periods of activity or increased demand based on the AutoStopping rules defined in Harness CACM. AutoStopping supports a wide range of resources in multiple cloud providers, read more about them [here](/docs/category/autostopping-rules).
 
 ## AutoStopping an EC2 instance
 
@@ -94,4 +94,4 @@ The AutoStopping Proxy actively monitors incoming activity. When the pre-configu
 
 ## Conclusion
 
-In summary, by integrating Harness CCM's AutoStopping feature with setups utilizing HAProxy as a reverse proxy, you can leverage a robust solution for automating cloud resource optimization. It provides a powerful capability to automatically halt idle cloud resources and reactivate them as required. This approach allows you to efficiently manage your non-production cloud costs without compromising application availability. By dynamically controlling resource utilization, you can strike a balance between cost optimization and ensuring application availability in a flexible and automated manner.
+In summary, by integrating Harness CACM's AutoStopping feature with setups utilizing HAProxy as a reverse proxy, you can leverage a robust solution for automating cloud resource optimization. It provides a powerful capability to automatically halt idle cloud resources and reactivate them as required. This approach allows you to efficiently manage your non-production cloud costs without compromising application availability. By dynamically controlling resource utilization, you can strike a balance between cost optimization and ensuring application availability in a flexible and automated manner.

@@ -111,7 +111,7 @@ The displayed commands are dependent on your specific feature selections. Always
 :::
 
 :::info
-Review [Feature Permissions](/docs/cloud-cost-management/feature-permissions) for CACM to understand the minimum roles or permissions needed for every CCM feature.
+Review [Feature Permissions](/docs/cloud-cost-management/feature-permissions) for CACM to understand the minimum roles or permissions needed for every CACM feature.
 :::
 ---
 
@@ -192,7 +192,7 @@ az role assignment create --assignee <app-id> --role 'Cost Management Contributo
 ---
 
 ## Next Steps
-Once your Azure billing data is flowing into Harness, explore these features to enhance your Cloud & AI Cost Management:
+Once your Azure billing data is flowing into Harness, explore these features to enhance your cloud & AI cost management:
 
 - [View and Create Perspectives](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/creating-a-perspective) to visualize cloud usage and trends.
 - Create [Budgets and Alerts](/docs/cloud-cost-management/use-ccm-cost-governance/ccm-budgets/create-a-budget) to monitor spend thresholds.

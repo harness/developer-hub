@@ -182,7 +182,7 @@ You can use the external metrics ingestion feature in AWS to configure the AWS C
 
 ## How are EC2 Recommendations computed?
 
-Harness CCM provides EC2 recommendations by integrating directly with AWS services:
+Harness CACM provides EC2 recommendations by integrating directly with AWS services:
 
 - **Data Source**: Recommendations are fetched directly from AWS Cost Explorer APIs rather than being computed natively by Harness. These recommendations do not factor in Reserved Instance (RI) or Savings Plan (SP) discounts you may already have
 - **Analysis Method**: AWS analyzes historical CPU and memory utilization patterns of your EC2 instances to generate optimization suggestions
@@ -218,9 +218,9 @@ Harness CCM provides EC2 recommendations by integrating directly with AWS servic
 <TabItem value="ecs" label="ECS Recommendations">
 
 ### Before You Begin
-- To obtain ECS recommendations, configure an AWS CCM Connector with the Inventory Management feature enabled.
+- To obtain ECS recommendations, configure an AWS CACM Connector with the Inventory Management feature enabled.
 
-- No Delegate setup is required. All utilization metrics are obtained using a cross account IAM role. See [Set Up Cloud Cost Management for AWS](/docs/cloud-cost-management/get-started/#aws).
+- No Delegate setup is required. All utilization metrics are obtained using a cross account IAM role. See [Set Up Cloud & AI Cost Management for AWS](/docs/cloud-cost-management/get-started/#aws).
 
 -----
 
@@ -232,7 +232,7 @@ ECS recommendations have one primary type: **Service Resizing**. This recommenda
 
 ## How are ECS Recommendations computed?
 
-Harness CCM computes ECS recommendations by analyzing historical CPU and memory utilization patterns of your services. Here's how the process works:
+Harness CACM computes ECS recommendations by analyzing historical CPU and memory utilization patterns of your services. Here's how the process works:
 
 - **Service Analysis**: Recommendations analyze past utilization metrics for ECS workloads (called services)
 - **Coverage**: Supports both AWS Fargate and EC2 spot instances

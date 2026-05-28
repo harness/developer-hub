@@ -135,7 +135,7 @@ The table below shows the resources supported by AutoStopping and the appropriat
 <details>
 <summary>Import AutoStopping Proxy for AWS</summary>
 
-The Import Proxy feature helps organizations to take control of their proxy deployment. Rather than relying on the default auto-provisioned proxy, customers can deploy their own Proxy instance using a hardened custom Amazon Machine Image (AMI) and then import them into Harness CCM's Autostopping feature. 
+The Import Proxy feature helps organizations to take control of their proxy deployment. Rather than relying on the default auto-provisioned proxy, customers can deploy their own Proxy instance using a hardened custom Amazon Machine Image (AMI) and then import them into Harness CACM's Autostopping feature. 
 
 ## Steps to use
 
@@ -300,7 +300,7 @@ echo ">>> Setup complete."
    * In the above example, your accountID would be `Abc123-XyZ789LmNoPqr`
 
 * **authToken**: Your Harness API key
-   * Enter a valid API key with CCM Admin permissions
+   * Enter a valid API key with CACM Admin permissions
    * Choose **No Expiration** in the Expiration dropdown list while creating this API key
    * For more information on creating API keys, see [Create an API Key](https://developer.harness.io/docs/platform/automation/api/api-quickstart)
 

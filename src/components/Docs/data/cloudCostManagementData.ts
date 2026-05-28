@@ -8,7 +8,7 @@ import { MODULES } from "@site/src/constants";
     // Docs
     export const docsCards: CardSections = [
       {
-        name: "Get started with Cloud Cost Management",
+        name: "Get started with Cloud & AI Cost Management",
         description:
           "",
         list: [
@@ -16,7 +16,7 @@ import { MODULES } from "@site/src/constants";
             title: "Overview",
             module: MODULES.ccm,
             description:
-              "Learn about Harness Cloud Cost Management",
+              "Learn about Harness Cloud & AI Cost Management",
             link: "/docs/cloud-cost-management/get-started/overview",
           },
           {
@@ -41,10 +41,10 @@ import { MODULES } from "@site/src/constants";
             link: "/docs/category/autostopping-rules",
           },
           {
-            title: "Cloud Cost Recommendations",
+            title: "Recommendations",
             module: MODULES.ccm,
             description:
-              "Optimize cloud costs by applying CCM recommendations.",
+              "Optimize cloud costs by applying CACM recommendations.",
             link: "/docs/category/recommendations",
           },
           {
@@ -94,7 +94,7 @@ import { MODULES } from "@site/src/constants";
             title: "Budgets",
             module: MODULES.ccm,
             description:
-              "Take control of your cloud spend with Harness CCM Budgets — set custom budgets and get real-time alerts before your costs exceed expectations.",
+              "Take control of your cloud spend with Harness CACM Budgets — set custom budgets and get real-time alerts before your costs exceed expectations.",
             link: "/docs/category/budgets",
           },
           {

@@ -6,7 +6,7 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 
 ## GCP Recommendations
 
-CCM supports Governance recommendations for GCP.
+CACM supports Governance recommendations for GCP.
 
 For a complete list of supported governance recommendations, see [Asset Governance recommendations](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/recommendations).
 

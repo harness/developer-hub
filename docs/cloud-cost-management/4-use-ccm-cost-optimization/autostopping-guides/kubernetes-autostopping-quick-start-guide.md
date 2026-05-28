@@ -14,7 +14,7 @@ redirect_from:
 <CTABanner
   buttonText="Learn More"
   title="Continue your learning journey."
-  tagline="Take a Cloud Cost Management Certification today!"
+  tagline="Take a Cloud & AI Cost Management Certification today!"
   link="/university/cloud-cost-management"
   closable={true}
   target="_self"

@@ -1,5 +1,5 @@
 ---
-title: Recommendations in Harness CCM
+title: Recommendations in Harness CACM
 description: Learn about the recommendations summary page and the various actions that you can perform on this page.
 redirect_from:
   - /docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/azure-vm
@@ -14,7 +14,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 :::info
-After you enable CCM, it may take up to 48 hours for the recommendations to appear in Cloud Costs. It depends on the time at which CCM receives the utilization data for the service. 
+After you enable CACM, it may take up to 48 hours for the recommendations to appear in Cloud Costs. It depends on the time at which CACM receives the utilization data for the service. 
 :::
 
 <div style={{background: 'linear-gradient(90deg, #eafaf4, #f7fbf0)', borderRadius: '8px', padding: '16px', margin: '20px 0', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.03)', color: '#000000'}}>
@@ -23,7 +23,7 @@ After you enable CCM, it may take up to 48 hours for the recommendations to appe
     <h3 style={{margin: 0, fontSize: '18px', fontWeight: 600, color: '#000000'}}>What's New?</h3>
   </div>
   <p style={{margin: 0, fontSize: '15px'}}>
-    We have recently introduced AWS Passthrough Recommendations as a major enhancement to Harness Cloud Cost Management that provides <strong>intelligent, action-oriented recommendations</strong> for your AWS resources. Instead of just suggesting instance type changes, the system now analyzes your resources and recommends specific actions to optimize costs and performance.
+    We have recently introduced AWS Passthrough Recommendations as a major enhancement to Harness Cloud & AI Cost Management that provides <strong>intelligent, action-oriented recommendations</strong> for your AWS resources. Instead of just suggesting instance type changes, the system now analyzes your resources and recommends specific actions to optimize costs and performance.
     <strong>Please note, we have moved from Cost Explorer Hub to Cost Optimization Hub as a part of this change.</strong>
   </p>
 </div>
@@ -31,9 +31,9 @@ After you enable CCM, it may take up to 48 hours for the recommendations to appe
 
 ## What are Recommendations?
 
-Harness CCM Recommendations are data-driven insights that help you optimize your cloud resources for cost efficiency without compromising performance. By analyzing historical usage patterns, resource configurations, and cloud provider pricing models, CCM identifies opportunities to right-size resources, eliminate waste, and implement best practices.
+Harness CACM Recommendations are data-driven insights that help you optimize your cloud resources for cost efficiency without compromising performance. By analyzing historical usage patterns, resource configurations, and cloud provider pricing models, CACM identifies opportunities to right-size resources, eliminate waste, and implement best practices.
 
-**Benefits of Using CCM Recommendations**
+**Benefits of Using CACM Recommendations**
 
 - **Reduce Azure VM Costs**: Identify underutilized virtual machines and receive rightsizing or termination suggestions to significantly reduce Azure spending.
 
@@ -51,7 +51,7 @@ Harness CCM Recommendations are data-driven insights that help you optimize your
 
  <DocImage path={require('./static/output.gif')} width="90%" height="90%" title="Click to view full size image" />
 
-- **Recommendation Type**: CCM has six types of recommendations: `AZURE_INSTANCE`, `EC2_INSTANCE`, `GOVERNANCE`, `NODE_POOL` and `WORKLOAD`. See details about all the types of recommendations [here](#recommendations-per-cloud-provider).
+- **Recommendation Type**: CACM has six types of recommendations: `AZURE_INSTANCE`, `EC2_INSTANCE`, `GOVERNANCE`, `NODE_POOL` and `WORKLOAD`. See details about all the types of recommendations [here](#recommendations-per-cloud-provider).
 - **Cloud Provider**: 
 - **+ Add Filter**
   - **Generic Filters**: Cloud Account ID, Cloud Account Name, Resource ID, Resource Name, Region, Cost Category, Cluster Labels, Cloud Tags, Potential Spend(USD), Savings (USD), Governance Rule Name
@@ -132,7 +132,7 @@ Marking a recommendation as "Applied" assumes all resources are actioned and ful
   <DocImage path={require('./static/manage-presets.png')} width="80%" height="80%" title="Click to view full size image" />
     This helps users to create and save customized configurations for their recommendations. These presets capture specific user preferences, such as tuning parameters for resource types like workloads, nodepools, ECS, and EC2 instances.  
 
-    Users can fine-tune recommendations for different resource types by configuring specific tuning parameters and save presets. By default, Harness CCM has default presets for all resources but users can tune recommendations using custom values. To set custom values, click on the recommendation and expand the "Tune Recommendations" section to configure the tuning parameters. 
+    Users can fine-tune recommendations for different resource types by configuring specific tuning parameters and save presets. By default, Harness CACM has default presets for all resources but users can tune recommendations using custom values. To set custom values, click on the recommendation and expand the "Tune Recommendations" section to configure the tuning parameters. 
     
     <Tabs>
       <TabItem value="workload" label="Workload">
@@ -200,7 +200,7 @@ Marking a recommendation as "Applied" assumes all resources are actioned and ful
 </TabItem>
 <TabItem value="cost-settings" label="Cost Settings">
 
-  Users can choose to see AWS costs as per their preferences.These settings inherit from your Account Settings defaults. You can override them to apply only to this feature. This setting is managed in your AWS Console. Changes made in AWS will be reflected in Harness CCM after the next scheduled sync.
+  Users can choose to see AWS costs as per their preferences.These settings inherit from your Account Settings defaults. You can override them to apply only to this feature. This setting is managed in your AWS Console. Changes made in AWS will be reflected in Harness CACM after the next scheduled sync.
 
   AWS Docs: https://docs.aws.amazon.com/cost-management/latest/userguide/coh-preferences.html#coh-savings-estimation. 
 
@@ -248,11 +248,11 @@ Applying recommendations is easy! You just need to:
 1. **Review Recommendations** - Analyze the suggested optimizations in the Recommendations dashboard
 2. **Tune Parameters** - Adjust recommendation settings to see how different configurations affect potential cost savings. See [Recommendations per Cloud Provider](#recommendations-per-cloud-provider) for a deeper drilldown into a particular type of recommendation to understand the action required, cost calculations and tuning.
 3. **Implement Changes and Track using Jira/ServiceNow** -  Apply the optimizations manually in your cloud environment. [Create and manage Jira or ServiceNow tickets](#managing-recommendations-via-jira-servicenow-tickets) to monitor implementation progress
-5. **Update Status** - Mark recommendations as applied in the CCM platform once implemented. Once applied, recommendations show up in the **Applied** tab.
+5. **Update Status** - Mark recommendations as applied in the CACM platform once implemented. Once applied, recommendations show up in the **Applied** tab.
 
 ### Auto Inferences
 
-Auto Inferences is an intelligent feature in Harness Cloud Cost Management (CCM) that automatically detects when recommendations have been implemented and tracks the actual savings realized. This eliminates the need for manual tracking and provides accurate ROI measurement for your cost optimization efforts.
+Auto Inferences is an intelligent feature in Harness Cloud & AI Cost Management (CCM) that automatically detects when recommendations have been implemented and tracks the actual savings realized. This eliminates the need for manual tracking and provides accurate ROI measurement for your cost optimization efforts.
 
 Auto Inferences runs as part of daily batch jobs. Typically, implemented recommendations are detected within 24-48 hours after the recommendation expires.
 
@@ -287,7 +287,7 @@ Auto Inferences runs as a scheduled background process that:
 
 Auto Inferences is controlled at the account level through Recommendation Preferences:
 
-1. Navigate to **Cloud Cost Management** → **Recommendations** → **Settings** → **Preferences**
+1. Navigate to **Cloud & AI Cost Management** → **Recommendations** → **Settings** → **Preferences**
 2. Locate the **Automatically detect when recommendations are applied** toggle under General Preferences
 3. Save your preferences
 
@@ -314,7 +314,7 @@ We also have added new filters to the recommendations page to help you manage au
     - Steps to create a ServiceNow connector: [Create ServiceNow Connector](/docs/platform/connectors/ticketing-systems/connect-to-service-now)
 
 2. Configure ticketing tool settings: 
-    - Navigate to **Cloud Costs** > **Setup** > **Default Settings** > **Cloud Cost Management**.
+    - Navigate to **Cloud Costs** > **Setup** > **Default Settings** > **Cloud & AI Cost Management**.
     - Under **Ticketing preferences**, select the **Ticketing tool** and the **Ticketing tool connector**. The default ticketing tool is **Jira**. You can choose **ServiceNow** if that's the tool used in your organization. Switching your ticketing tool between Jira and ServiceNow results in the removal of the existing recommendation tickets. 
 
 <DocImage path={require('./static/ticketing-tool-selector.png')} width="70%" height="70%" title="Click to view full size image" />
@@ -348,7 +348,7 @@ Go to the **Recommendations** page and create tickets to apply recommendations.
 
 <DocImage path={require('./static/servicenow_Example.png')} width="80%" height="80%" title="Click to view full size image" />
 
-The Description field contains relevant information about the recommendation for which this ticket was created. Harness CCM retrieves the following data from ServiceNow:
+The Description field contains relevant information about the recommendation for which this ticket was created. Harness CACM retrieves the following data from ServiceNow:
 
 When a user opens the dialog box to create a ServiceNow ticket, a request is made to obtain all possible ticket types. Here is a sample response:
 
@@ -439,7 +439,7 @@ In ServiceNow (SNOW), a Service Request is a type of ticket that users raise whe
 - Click "New" in the top right corner to create a new catalog item.
 <DocImage path={require('./static/snow-five.png')} width="80%" height="80%" title="Click to view full size image" />
 
-- Define a service catalog with the "Software" category. Ensure the name of the catalog item exactly matches "Harness CCM Recommendation" and mark it as Active.
+- Define a service catalog with the "Software" category. Ensure the name of the catalog item exactly matches "Harness CACM Recommendation" and mark it as Active.
 <DocImage path={require('./static/snow-six.png')} width="80%" height="80%" title="Click to view full size image" />
 
 - Define variables in the catalog item so that recommendation payload can be sent with the request/ticket:

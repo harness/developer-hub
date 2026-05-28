@@ -6,7 +6,7 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 
 ## Azure Recommendations
 
-Azure Cloud Cost Management provides two types of recommendations to help optimize your cloud costs:
+Azure Cloud & AI Cost Management provides two types of recommendations to help optimize your cloud costs:
 
 <Tabs>
 <TabItem value="vm" label="Azure VM">
@@ -14,8 +14,8 @@ Azure Cloud Cost Management provides two types of recommendations to help optimi
 
 ### Before You Begin
 
-- Connect your Azure cloud account in Harness and [set up CCM for cost management](/docs/cloud-cost-management/get-started/#azure).
-- Cost Visibility and the Inventory Management features should be enabled on your Azure CCM connector.
+- Connect your Azure cloud account in Harness and [set up CACM for cost management](/docs/cloud-cost-management/get-started/#azure).
+- Cost Visibility and the Inventory Management features should be enabled on your Azure CACM connector.
 - Enabling the **Visibility** feature allows retrieving recommendations from the Azure Advisor. The **Inventory Management** feature allows you to fetch the CPU utilization data and display the corresponding recommendations. If the Inventory Management feature is not enabled, the graph and table may show a null state.
 - Connect to Azure Advisor to receive recommendations for cost optimization: 
     - Sign in to the Azure portal > Advisor > Configuration.
@@ -36,9 +36,9 @@ Virtual machines are considered low-utilization:
 
 * If the current workload can be accommodated by a smaller sized virtual machine.
 
-Harness CCM provides two types of recommendations to optimize your VMs:
+Harness CACM provides two types of recommendations to optimize your VMs:
 
-* **VM Rightsizing**: In this type of recommendation, CCM recommends resizing your VM based on usage. For information about the different types of Azure VMs, go to [Available instance types](https://learn.microsoft.com/en-us/azure/virtual-machines/sizes). 
+* **VM Rightsizing**: In this type of recommendation, CACM recommends resizing your VM based on usage. For information about the different types of Azure VMs, go to [Available instance types](https://learn.microsoft.com/en-us/azure/virtual-machines/sizes). 
 
 * **Shutdown**: In this type of recommendation, the instance is terminated or shutdown if not in use for a long time.  
   
@@ -46,7 +46,7 @@ Harness CCM provides two types of recommendations to optimize your VMs:
 
 ## How are Azure recommendations computed?
 
-The recommendations are computed by analyzing the past CPU utilization. Harness CCM leverages the Azure Advisor recommendations. CCM uses the Azure APIs to retrieve data from the Azure account.
+The recommendations are computed by analyzing the past CPU utilization. Harness CACM leverages the Azure Advisor recommendations. CACM uses the Azure APIs to retrieve data from the Azure account.
 
 Azure Advisor automatically runs in the background to find newly created resources. It can take up to 24 hours to provide recommendations on those resources as well as the newly created connectors for existing VMs.
 

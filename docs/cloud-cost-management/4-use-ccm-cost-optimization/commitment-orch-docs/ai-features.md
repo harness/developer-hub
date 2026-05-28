@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 # Commitment Orchestrator AI Assistant
 
-Harness Cloud Cost Management (CCM) includes an AI-powered assistant for Commitment Orchestrator that helps you analyze your AWS commitment landscape, understand utilization patterns, and identify optimization opportunities. The AI assistant provides intelligent insights into your Reserved Instances (RIs) and Savings Plans to maximize cost savings.
+Harness Cloud & AI Cost Management (CACM) includes an AI-powered assistant for Commitment Orchestrator that helps you analyze your AWS commitment landscape, understand utilization patterns, and identify optimization opportunities. The AI assistant provides intelligent insights into your Reserved Instances (RIs) and Savings Plans to maximize cost savings.
 
 ## Overview
 

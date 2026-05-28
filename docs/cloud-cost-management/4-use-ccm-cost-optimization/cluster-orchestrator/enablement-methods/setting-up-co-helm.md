@@ -30,7 +30,7 @@ For complete prerequisites, required tools, environment variables, and AWS/Kuber
 - **EKS Cluster** running and accessible via kubectl
 - **Helm 3.x or later** installed on your local machine
 - **Terraform 1.2.0 or later** installed on your local machine
-- **Harness Account** with CCM module enabled
+- **Harness Account** with CACM module enabled
 - **Kubernetes Connector** configured in your Harness account
 - Environment variables set: `CLUSTER_NAME`, `REGION`, `CCM_K8S_CONNECTOR_ID`, `TOKEN`
 
@@ -198,7 +198,7 @@ data "aws_iam_policy_document" "assume_inline_policy" {
 resource "aws_iam_role" "node_role" {
   name                = format("%s-%s-%s", "harness-ccm", substr(data.aws_eks_cluster.cluster.name, 0, 40), "node")
   assume_role_policy  = data.aws_iam_policy_document.assume_inline_policy.json
-  description         = format("%s %s %s", "Role to manage", data.aws_eks_cluster.cluster.name, "EKS cluster used by Harness CCM")
+  description         = format("%s %s %s", "Role to manage", data.aws_eks_cluster.cluster.name, "EKS cluster used by Harness CACM")
   managed_policy_arns = ["arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly", "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy", "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy", "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy", "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"]
 }
 
@@ -282,7 +282,7 @@ data "aws_iam_policy_document" "pod_identity_controller_trust_policy" {
 resource "aws_iam_role" "controller_role" {
   name                = format("%s-%s-%s", "harness-ccm", substr(data.aws_eks_cluster.cluster.name, 0, 40), "controller")
   assume_role_policy  = var.cluster.eks_pod_identity_enabled ? data.aws_iam_policy_document.pod_identity_controller_trust_policy.json : data.aws_iam_policy_document.oidc_controller_trust_policy.json
-  description         = format("%s %s %s", "Role to manage", data.aws_eks_cluster.cluster.name, "EKS cluster controller used by Harness CCM")
+  description         = format("%s %s %s", "Role to manage", data.aws_eks_cluster.cluster.name, "EKS cluster controller used by Harness CACM")
   managed_policy_arns = [aws_iam_policy.controller_role_policy.arn]
 }
 
@@ -419,7 +419,7 @@ After successful execution, Terraform will generate several outputs required for
 
 | Output | Description |
 |--------|-------------|
-| `harness_ccm_token` | The Harness CCM token (sensitive value) |
+| `harness_ccm_token` | The Harness CACM token (sensitive value) |
 | `eks_cluster_controller_role_arn` | The ARN for the EKS cluster controller role |
 | `eks_cluster_default_instance_profile` | The name of the default EC2 instance profile |
 | `eks_cluster_node_role_arn` | The ARN for the node IAM role |
@@ -427,7 +427,7 @@ After successful execution, Terraform will generate several outputs required for
 
 ### Step 2: Configure Helm for Cluster Orchestrator Installation
 
-#### 1. Add the Harness CCM Cluster Orchestrator Helm Repository
+#### 1. Add the Harness CACM Cluster Orchestrator Helm Repository
 
 ```bash
 helm repo add harness-ccm-cluster-orchestrator https://lightwing-downloads.s3.ap-southeast-1.amazonaws.com/cluster-orchestrator-helm-chart
@@ -521,6 +521,6 @@ kubectl edit ec2nodeclass harness-default
 
 After successful installation:
 
-1. Navigate to the Harness CCM module to verify the Cluster Orchestrator is connected
-2. Configure optimization policies in the Harness CCM UI
+1. Navigate to the Harness CACM module to verify the Cluster Orchestrator is connected
+2. Configure optimization policies in the Harness CACM UI
 3. Monitor your cluster for cost optimizations in the Harness dashboard

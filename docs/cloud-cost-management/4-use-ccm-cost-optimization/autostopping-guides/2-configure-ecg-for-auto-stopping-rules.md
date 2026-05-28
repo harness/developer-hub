@@ -200,6 +200,6 @@ You can validate the service is running by opening `Services` in Windows and loc
 
 ![](./static/windows-ecg-one.png)
 
-You should also be able to see activity metrics being sent to Harness by looking at the logs on your autostopping rule in the CCM UI.
+You should also be able to see activity metrics being sent to Harness by looking at the logs on your autostopping rule in the CACM UI.
 
 The service should restart manually on reboot. Such that after a successful shutdown by Harness, when a user restarts the machine and logs in, the machine won't be deemed "idle" until all users have logged off the machine. The machine should shut off after the defined idle period on the rule.

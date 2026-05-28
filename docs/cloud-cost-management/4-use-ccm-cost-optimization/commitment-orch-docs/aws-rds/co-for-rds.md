@@ -25,7 +25,7 @@ Commitment Orchestrator for RDS helps you optimize your Amazon RDS (Relational D
 
 Before setting up Commitment Orchestrator for RDS, ensure you have:
 
-1. A Harness account with CCM module enabled
+1. A Harness account with CACM module enabled
 2. AWS master account with appropriate permissions
 
 ## Steps to configure:

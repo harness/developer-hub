@@ -54,7 +54,7 @@ This section shows the current configuration and status of your AutoStopping rul
 
 - **Service Managed:** The name of the Kubernetes service that this AutoStopping rule is managing.
 
-- **Connector:** The cloud connector that links your Kubernetes cluster to Harness CCM.
+- **Connector:** The cloud connector that links your Kubernetes cluster to Harness CACM.
 
 - **Port:** The port number on which your service receives traffic.
 
