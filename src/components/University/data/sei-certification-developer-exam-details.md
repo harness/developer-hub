@@ -34,7 +34,7 @@ The following is a detailed list of exam objectives:
 | #   | Objectives |
 |-----|------------|
 | **1**   | **Understanding SEI Fundamentals** |
-| 1.1 | Describe the benefits and features of Harness Software Engineering Insights (SEI). |
+| 1.1 | Describe the benefits and features of Harness Harness AI DLC Insights. |
 | 1.2 | Explain the integration of SEI with third-party providers. |
 | 1.3 | Understand the concepts of Developers and Profiles within SEI. |
 | **2**   | **Getting Started with SEI** |

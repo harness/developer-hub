@@ -179,9 +179,9 @@ For information about early access (beta) features for Harness Internal Develope
 
 No early access (beta) features are available for Harness Code Repository. -->
 
-## SEI early access features
+<!-- ## SEI early access features
 
-For information about early access (beta) features for Harness Software Engineering Insights, go to [Active SEI feature flags](/docs/software-engineering-insights/sei-supported-platforms/#active-sei-feature-flags) and the [SEI release notes](/release-notes/software-engineering-insights).
+For information about early access (beta) features for Harness Software Engineering Insights, go to [Active SEI feature flags](/docs/software-engineering-insights/sei-supported-platforms/#active-sei-feature-flags) and the [SEI release notes](/release-notes/software-engineering-insights). -->
 
 <!-- ## SCS early access features
 
@@ -334,9 +334,9 @@ For information about early access (beta) features for Harness Internal Develope
 
 No information available. -->
 
-### SEI early access features
+<!-- ### SEI early access features
 
-For information about early access (beta) features for Harness Software Engineering Insights, go to [Active SEI feature flags](/docs/software-engineering-insights/sei-supported-platforms/#active-sei-feature-flags) and the [SEI release notes](/release-notes/software-engineering-insights).
+For information about early access (beta) features for Harness Software Engineering Insights, go to [Active SEI feature flags](/docs/software-engineering-insights/sei-supported-platforms/#active-sei-feature-flags) and the [SEI release notes](/release-notes/software-engineering-insights). -->
 
 <!-- ### SCS features promoted to GA
 

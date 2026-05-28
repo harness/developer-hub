@@ -168,11 +168,11 @@ import { MODULES } from "@site/src/constants";
             link: "/release-notes/software-supply-chain-assurance",
           },
           {
-            title: "Software Engineering Insights release notes",
+            title: "AI DLC Insights release notes",
             module: MODULES.sei,
             description:
               "",
-            link: "/release-notes/software-engineering-insights",
+            link: "/release-notes/ai-dlc-insights",
           },
           {
             title: "SAST and SCA release notes",

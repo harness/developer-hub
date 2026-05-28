@@ -1,6 +1,6 @@
 ---
-title: What's supported by Harness SEI
-description: Platforms and technologies supported by Harness SEI
+title: What's supported by Harness AI DLC Insights
+description: Platforms and technologies supported by Harness AI DLC Insights
 sidebar_label: What's Supported
 sidebar_position: 1
 ---
@@ -53,7 +53,7 @@ For information about what's supported for other Harness modules and the Harness
 
 For highlights of key SEI features, go to [Harness SEI overview](/docs/software-engineering-insights/propelo-sei/get-started/overview) and [Harness SEI key concepts](/docs/software-engineering-insights/propelo-sei/get-started/sei-key-concepts).
 
-For information about upcoming and recently released features, go to the [SEI release notes](/release-notes/software-engineering-insights).
+For information about upcoming and recently released features, go to the [SEI release notes](/release-notes/ai-dlc-insights).
 
 ### Harness SEI early access features
 

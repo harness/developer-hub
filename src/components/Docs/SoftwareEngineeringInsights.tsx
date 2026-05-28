@@ -26,10 +26,10 @@ export default function SEI() {
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img src={`${baseUrl}img/icon_sei.svg`} />
-            <h1>Software Engineering Insights</h1>
+            <h1>AI DLC Insights</h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/release-notes/software-engineering-insights">
+            <Link href="/release-notes/ai-dlc-insights">
               <button className={styles.btn} onClick={handleReleaseNotesClick}>
                 {/* <i className="fa-regular fa-file"></i> */}
                 <img src={`${baseUrl}img/icon_release_notes.svg`} />
@@ -41,7 +41,7 @@ export default function SEI() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Harness Software Engineering Insights (SEI) enables engineering
+              Harness AI DLC Insights enables engineering
               leaders to make data-driven decisions that improve engineering
               productivity, efficiency, alignment, planning, and execution. It
               provides actionable insights into software delivery and workflows

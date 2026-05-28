@@ -51,7 +51,7 @@ export const MODULE_DISPLAY_NAME = {
     [MODULES.srm]: 'Service Reliability Management',
     [MODULES.ce]: 'Resilience Testing',
     [MODULES.aisre]: 'AI SRE',
-    [MODULES.sei]: 'Software Engineering Insights',
+    [MODULES.sei]: 'AI DLC Insights',
     [MODULES.cet]: 'Continuous Error Tracking',
     [MODULES.ssca]: 'Supply Chain Security',
     [MODULES.idp]: 'Internal Developer Portal',

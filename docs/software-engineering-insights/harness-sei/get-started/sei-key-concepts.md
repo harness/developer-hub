@@ -1,5 +1,5 @@
 ---
-title: Key concepts in SEI 2.0 
+title: Key concepts in AI DLC Insights 
 description: The new experience for measuring engineering insights in Harness SEI
 sidebar_label: Key Concepts
 sidebar_position: 10
@@ -7,9 +7,9 @@ sidebar_position: 10
 
 ## Overview
 
-Harness Software Engineering Insights (SEI) 2.0 is a complete re-imagination of how engineering organizations can understand, measure, and improve software delivery. It brings together signals across your software delivery lifecycle (SDLC), connects them with organizational context, and transforms them into actionable insights for teams, managers, and executives.
+Harness AI DLC Insights is a complete re-imagination of how engineering organizations can understand, measure, and improve software delivery. It brings together signals across your software delivery lifecycle (SDLC), connects them with organizational context, and transforms them into actionable insights for teams, managers, and executives.
 
-SEI 2.0 is built around a set of flexible building blocks that help you answer critical questions like:
+AI DLC Insights is built around a set of flexible building blocks that help you answer critical questions like:
 
 * Are our engineering teams operating efficiently?
 * How is work flowing from idea to production?

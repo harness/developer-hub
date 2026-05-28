@@ -134,7 +134,7 @@ export const university: CardItem[] = [
     ILT_available: true,
   },
   {
-    title: "Software Engineering Insights",
+    title: "AI DLC Insights",
     module: MODULES.sei,
     description:
       "Discover SDLC bottlenecks, assess team productivity, and improve developer experience.",

@@ -137,12 +137,12 @@ export const ilt: IltCardItem[] = [
     cardType: cardType.ILT,
   },
   {
-    title: "Software Engineering Insights",
+    title: "AI DLC Insights",
     module: MODULES.sei,
     type: type.user,
     description:
-      "Deep dive into advanced Software Engineering Insights concepts across the SDLC.",
-    version: "Harness SEI Paid Plans",
+      "Deep dive into advanced AI DLC Insights concepts across the SDLC.",
+    version: "Harness AI DLC Insights Paid Plans",
     link: "https://university-registration.harness.io/ilt-software-engineering-insights",
     tileType: tileType.normal,
     cardType: cardType.ILT,

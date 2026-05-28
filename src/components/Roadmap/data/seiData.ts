@@ -3,7 +3,7 @@ import type { ModuleTheme } from "./roadmapPalette";
 
 export const seiModuleTheme: ModuleTheme = {
   moduleKey: "sei",
-  moduleTitle: "Software Engineering Insights",
+  moduleTitle: "AI DLC Insights",
   palette: {
     light: { bg: "#F6FFF2", text: "#30841F" },
     dark: { bg: "#1E3320", text: "#8ED982" },
@@ -27,7 +27,7 @@ export const SeiData: Horizon = {
       {
         tag: [{ value: "Custom Dashboards" }],
         title: "Canvas",
-        description: "Define and track custom metrics with your SEI data, reported consistently across the organization.",
+        description: "Define and track custom metrics with your AI DLC Insights data, reported consistently across the organization.",
       },
       {
         tag: [{ value: "Onboarding" }],
@@ -117,7 +117,7 @@ export const SeiData: Horizon = {
         title: "Beta Availability",
         description:
           "Beta availability of new features in SEI 2.0, including the Windsurf and Cursor integrations for AI Insights, AI Recommendations, the ArmorCode integration for Security Insights, and the SonarQube integration for Test Insights.",
-        link:"https://developer.harness.io/release-notes/software-engineering-insights/#january-2026",
+        link:"https://developer.harness.io/release-notes/ai-dlc-insights/#january-2026",
       },
     ],
   },

@@ -166,10 +166,10 @@ export const categories: Category[] = [
         description: "Monitor and optimize cloud spend."
       },
       {
-        name: "Software Engineering Insights",
+        name: "AI DLC Insights",
         href: "/docs/software-engineering-insights",
         module: "sei",
-        description: "Track productivity and bottlenecks."
+        description: "Measure AI adoption, optimize token spend, and prove engineering impact."
       },
     ],
   },

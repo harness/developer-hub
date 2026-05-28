@@ -170,10 +170,10 @@ export const docsCards: CardSections = [
         link: "/docs/category/get-started",
       },
       {
-        title: "Software Engineering Insights",
+        title: "AI DLC Insights",
         module: MODULES.sei,
         description: "Measure developer productivity, track DORA metrics, and identify bottlenecks across your engineering org.",
-        link: "/docs/software-engineering-insights/propelo-sei/get-started/sei-onboarding-guide",
+        link: "/docs/software-engineering-insights/harness-sei/get-started/sei-onboarding-guide",
       },  
     ],
   },

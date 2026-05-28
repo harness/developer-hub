@@ -94,7 +94,7 @@ const sidebars: SidebarsConfig = {
         //sei
         {
           type: "doc",
-          label: "Software Engineering Insights",
+          label: "AI DLC Insights",
           id: "sei",
           className: "sidebar-sei"
         },

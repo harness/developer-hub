@@ -137,7 +137,7 @@ const ModuleData: ModuleData[] = [
     moduleTheme: idpModuleTheme,
   },
   {
-    title: "Software Engineering Insights",
+    title: "AI DLC Insights",
     description:
       "SaaS release status: GA, SMP release status: Not yet planned",
     module: MODULES.sei,

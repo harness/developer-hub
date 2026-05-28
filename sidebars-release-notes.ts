@@ -57,7 +57,7 @@ const sidebars: SidebarsConfig = {
           className: "horizontal-bar",
     },
     "cloud-cost-management",
-    "software-engineering-insights"
+    "ai-dlc-insights"
   ],
   },
   ],

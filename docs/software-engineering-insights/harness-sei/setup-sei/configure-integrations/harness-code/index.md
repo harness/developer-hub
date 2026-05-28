@@ -9,7 +9,7 @@ sidebar_label: Harness Code
 The Harness Code integration with SEI 2.0 is in beta. To request access, contact [Harness Support](/docs/software-engineering-insights/sei-support).
 :::
 
-Use the Harness Code integration to integrate Software Engineering Insights (SEI) with the [Harness Code Repository module](/docs/code-repository).
+Use the Harness Code integration to integrate AI DLC Insights with the [Harness Code Repository module](/docs/code-repository).
 
 ### Requirements
 
@@ -23,7 +23,7 @@ To configure the Harness Code integration, you need:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-1. In your Harness project, navigate to the SEI module and select **Account Management**.
+1. In your Harness project, navigate to the AI DLC Insights module and select **Account Management**.
 1. Select **Integrations** under **Data Settings**.
 1. Select **Available Integrations** and click **Add Integration** under **Harness Code**.
 1. Select between **Cloud** and **On-Prem** installation options.

@@ -79,7 +79,7 @@ Access to Canvas dashboards is also scoped through [Harness resource groups](/do
 
 1. Navigate to **Project Settings** > **Resource Groups**.
 1. Click **+ New Resource Group**.
-1. Set the **Resource Scope** to `Project only` and under **Software Engineering Insights**, select one or both of the following resources, and configure access:
+1. Set the **Resource Scope** to `Project only` and under **AI DLC Insights**, select one or both of the following resources, and configure access:
 
    - **Insights Categories**: Select **All** or **Specified**, and click **+ Add** to choose from `Efficiency`, `Productivity`, `Business` `Alignment`, `AI Insights`, `Security`, and `Custom`.
    - **Teams**: Select **All** or **Specified**, and click **+ Add** to choose one or more Org Tree teams.

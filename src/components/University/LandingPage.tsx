@@ -389,7 +389,7 @@ export default function University() {
                     />
                     <img
                       src={`${baseUrl}img/cert_dev_sei_badge.svg`}
-                      alt="Developer SEI Badge"
+                      alt="Developer AI DLC Insights Badge"
                     />
                     <img
                       src={`${baseUrl}img/cert-dev-tbh-badge.svg`}

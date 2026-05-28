@@ -160,12 +160,12 @@ export const spt: IltCardItem[] = [
   },
 
   {
-    title: "Software Engineering Insights",
+    title: "AI DLC Insights",
     module: MODULES.sei,
     type: type.user,
     description:
-      "Self-paced video course introducing Harness Software Engineering Insights.",
-    version: "Harness SEI Paid Plans",
+      "Self-paced video course introducing Harness AI DLC Insights.",
+    version: "Harness AI DLC Insights Paid Plans",
     link: "https://university-registration.harness.io/self-paced-training-harness-software-engineering-insights",
     tileType: tileType.normal,
     cardType: cardType.SPT,

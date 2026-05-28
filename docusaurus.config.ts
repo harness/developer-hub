@@ -368,7 +368,7 @@ const config: Config = {
               to: 'https://www.harness.io/products/internal-developer-portal',
             },
             {
-              label: 'Software Engineering Insights',
+              label: 'AI DLC Insights',
               to: 'https://www.harness.io/products/software-engineering-insights',
             },
             {

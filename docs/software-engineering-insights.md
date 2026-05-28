@@ -1,7 +1,7 @@
 ---
 hide_table_of_contents: true
 hide_title: true
-title: Software Engineering Insights
+title: AI DLC Insights
 # id: software-engineering-insights
 ---
 

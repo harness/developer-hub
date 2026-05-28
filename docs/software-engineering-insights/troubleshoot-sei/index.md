@@ -1,6 +1,6 @@
 ---
-title: Software Engineering Insights Troubleshooting
-description: Learn how to troubleshoot common Software Engineering Insights issues.
+title: AI DLC Insights Troubleshooting
+description: Learn how to troubleshoot common AI DLC Insights issues.
 sidebar_label: Overview
 sidebar_position: 5
 redirect_from:
@@ -8,7 +8,7 @@ redirect_from:
   - /docs/software-engineering-insights/troubleshoot-sei/sei-troubleshooting-faqs
 ---
 
-This page provides information to help you troubleshoot issues with Software Engineering Insights (SEI). If you need additional help, contact [Harness Support](/docs/software-engineering-insights/sei-support) or visit the [Harness Community](https://developer.harness.io/community/).
+This page provides information to help you troubleshoot issues with AI DLC Insights. If you need additional help, contact [Harness Support](/docs/software-engineering-insights/sei-support) or visit the [Harness Community](https://developer.harness.io/community/).
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

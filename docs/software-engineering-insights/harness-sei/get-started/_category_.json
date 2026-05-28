@@ -1,11 +1,11 @@
 {
-    "label":"Get started with SEI 2.0",
+    "label":"Get started with AI DLC Insights",
     "position": 3,
     "collapsible":"true",
     "collapsed":"true",
     "className":"default",
     "link":{
        "type":"generated-index",
-       "title":"Get started with SEI 2.0"
+       "title":"Get started with AI DLC Insights"
     }
  }

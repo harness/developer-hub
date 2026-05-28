@@ -1,11 +1,11 @@
 {
-    "label":"Manage SEI 2.0",
+    "label":"Manage AI DLC Insights",
     "position": 6,
     "collapsible":"true",
     "collapsed":"true",
     "className":"default",
     "link":{
        "type":"generated-index",
-       "title":"Manage SEI 2.0"
+       "title":"Manage AI DLC Insights"
     }
  }

@@ -139,7 +139,7 @@ const docDropdownItems = [
   },
   {
     to: "/docs/software-engineering-insights",
-    label: "Software Engineering Insights",
+    label: "AI DLC Insights",
     icon: "/img/icon_sei.svg",
   },
   // Resources & Support

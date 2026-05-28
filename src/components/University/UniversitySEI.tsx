@@ -282,15 +282,15 @@ export default function CertificationsSEI() {
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
                     <h2>
-                      Software Engineering Insights - Developer
+                      AI DLC Insights - Developer
                     </h2>
                     <img
                       src={`${baseUrl}img/cert_dev_sei_badge.svg`}
-                      alt="Harness Certified Expert - SEI Developer"
+                      alt="Harness Certified Expert - AI DLC Insights Developer"
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness SEI Paid
+                      <strong>Product version: </strong> Harness AI DLC Insights Paid
                       Plans
                     </span>
                   </div>
@@ -298,7 +298,7 @@ export default function CertificationsSEI() {
                     <h3>Review Study Guide</h3>
                     <div className={styles.desc}>
                       Assesses the fundamental skills to deploy your
-                      applications with SEI projects.
+                      applications with AI DLC Insights projects.
                     </div>
                     <DeveloperCertificationReviewGuide />
 
@@ -358,11 +358,11 @@ export default function CertificationsSEI() {
                     </h2>
                     <img
                       src={`${baseUrl}img/cert_adm_sei_badge.svg`}
-                      alt="Harness Certified Expert - SEI Administrator"
+                      alt="Harness Certified Expert - AI DLC Insights Administrator"
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness SEI Paid
+                      <strong>Product version: </strong> Harness AI DLC Insights Paid
                       Plans
                     </span>
                   </div>
@@ -446,11 +446,11 @@ export default function CertificationsSEI() {
                     </h2>
                     <img
                       src={`${baseUrl}img/cert_arc_sei_badge.svg`}
-                      alt="Harness Certified Expert - SEI Architect"
+                      alt="Harness Certified Expert - AI DLC Insights Architect"
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness SEI Paid
+                      <strong>Product version: </strong> Harness AI DLC Insights Paid
                       Plans
                     </span>
                   </div>

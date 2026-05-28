@@ -34,7 +34,7 @@ This two-level setup ensures consistency in reporting across the organization wh
 
 To create a business alignment profile:
 
-1. In your **Harness project**, navigate to **Software Engineering Insights** and click **Account Management**.
+1. In your **Harness project**, navigate to **AI DLC Insights** and click **Account Management**.
 1. Under **Profiles**, select **Business Alignment**.
 
 1. To create a profile, click **Create**. To edit an existing profile, click the **Edit Profile** icon in the profiles list.

@@ -185,12 +185,12 @@ export const university: CardItem[] = [
     // numberOfCerts: 1,
   },
   {
-    title: "Software Engineering Insights  - Developer",
+    title: "AI DLC Insights  - Developer",
     module: MODULES.sei,
     type: certType.developer,
     description:
-      "SEI Developer focuses on the fundamental skills to discover SDLC bottlenecks and improve developer experience with data.",
-    version: "Harness SEI Paid Plans",
+      "AI DLC Insights Developer focuses on the fundamental skills to discover SDLC bottlenecks and improve developer experience with data.",
+    version: "Harness AI DLC Insights Paid Plans",
     link: "/university/sei?lvl=developer",
     // numberOfCerts: 1,
   },

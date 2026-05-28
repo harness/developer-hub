@@ -192,7 +192,7 @@ static/  @rohanmaharjan100 @wei-harness
 
 # SEI Docs
 /docs/software-engineering-insights/ @alai97 @codewdhruv @richardblack-Harness @santoshdodamani
-/release-notes/software-engineering-insights.md @alai97 @codewdhruv @richardblack-Harness @santoshdodamani
+/release-notes/ai-dlc-insights.md @alai97 @codewdhruv @richardblack-Harness @santoshdodamani
 /src/components/Roadmap/data/seiData.ts @alai97 @codewdhruv @richardblack-Harness @santoshdodamani
 /src/components/Docs/data/softwareEngineeringInsightsData.ts @alai97 @codewdhruv @richardblack-Harness @santoshdodamani
 

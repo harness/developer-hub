@@ -37,7 +37,7 @@ If you’re not sure about your access or integration status, check with your Ac
 
 To create an Efficiency profile:
 
-1. In your **Harness project**, navigate to **Software Engineering Insights** and click **Account Management**.
+1. In your **Harness project**, navigate to **AI DLC Insights** and click **Account Management**.
 1. Under **Profiles**, select **Efficiency**.
 1. To create a profile, click **Create**. To edit an existing profile, click the **Edit Profile** icon in the profiles list.
 1. In the **Overview** tab, enter a name, add an optional description for the profile, and define your organization's maturity levels. 

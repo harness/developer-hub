@@ -201,7 +201,7 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io richard.black@harness.io a
 
 # SEI Docs
 /docs/software-engineering-insights/ austin.lai@harness.io richard.black@harness.io trevor.stuart@harness.io dhrubajyoti.chakraborty@harness.io yashaswini.raghavan@harness.io ayush.mantri@harness.io mahesh.sankaran@harness.io
-/release-notes/software-engineering-insights.md austin.lai@harness.io richard.black@harness.io trevor.stuart@harness.io dhrubajyoti.chakraborty@harness.io yashaswini.raghavan@harness.io ayush.mantri@harness.io mahesh.sankaran@harness.io
+/release-notes/ai-dlc-insights.md austin.lai@harness.io richard.black@harness.io trevor.stuart@harness.io dhrubajyoti.chakraborty@harness.io yashaswini.raghavan@harness.io ayush.mantri@harness.io mahesh.sankaran@harness.io
 /release-notes/static/sei/ austin.lai@harness.io richard.black@harness.io trevor.stuart@harness.io dhrubajyoti.chakraborty@harness.io yashaswini.raghavan@harness.io ayush.mantri@harness.io mahesh.sankaran@harness.io
 /src/components/Roadmap/data/seiData.ts austin.lai@harness.io richard.black@harness.io trevor.stuart@harness.io dhrubajyoti.chakraborty@harness.io yashaswini.raghavan@harness.io
 /src/components/Docs/data/softwareEngineeringInsightsData.ts austin.lai@harness.io richard.black@harness.io trevor.stuart@harness.io dhrubajyoti.chakraborty@harness.io yashaswini.raghavan@harness.io

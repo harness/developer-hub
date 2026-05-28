@@ -145,7 +145,7 @@ export const moduleIconAndColor = {
       color: '--mod-ccm-300',
     },
   },
-  'Software Engineering Insights': {
+  'AI DLC Insights': {
     iconUrl: 'https://developer.harness.io/img/icon_sei_s.svg',
     colors: {
       border: '--mod-sei-200',

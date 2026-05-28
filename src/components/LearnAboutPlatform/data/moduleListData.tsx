@@ -159,7 +159,7 @@ export const moduleList: CardItem[] = [
   //   link: 'docs/cloud-development-environments',
   // },
   {
-    title: 'Software Engineering Insights',
+    title: 'AI DLC Insights',
     module: MODULES.sei,
     icon: "img/icon_sei.svg",
     description: <>Use data-led insights to remove bottlenecks and improve productivity.</>,
