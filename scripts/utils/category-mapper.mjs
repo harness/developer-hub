@@ -21,7 +21,7 @@ const MODULE_NAMES = {
   'software-supply-chain-assurance': 'Supply Chain Security',
   'sast-and-sca': 'SAST and SCA',
   'cloud-cost-management': 'Cloud Cost Management',
-  'software-engineering-insights': 'AI DLC Insights',
+  'ai-dlc-insights': 'AI DLC Insights',
   'service-reliability-management': 'Service Reliability Management',
   'code-repository': 'Code Repository',
   'continuous-error-tracking': 'Continuous Error Tracking',
