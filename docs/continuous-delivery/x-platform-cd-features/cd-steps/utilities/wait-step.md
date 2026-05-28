@@ -6,11 +6,6 @@ redirect_from:
   - /docs/continuous-delivery/cd-execution/cd-general-steps/wait-step
 ---
 
-:::note
-
-Currently, this feature is behind the feature flag, `WAIT_STEP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 This topic describes how to use the Wait step included in Harness pipeline stages.
 

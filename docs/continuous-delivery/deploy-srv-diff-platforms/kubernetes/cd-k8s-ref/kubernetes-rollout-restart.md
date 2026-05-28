@@ -4,10 +4,6 @@ description: This topic discusses the Kubernetes Rollout Step
 sidebar_position: 3
 ---
 
-:::info note
-1. This feature is currently behind the feature flag, `CDS_K8S_ROLLOUT_STEP`. Contact [Harness support](mailto:support@harness.io) to enable it.
-2. This feature requires Harness Delegate version **832xx**.
-:::
 
 This topic describes the **K8s Rollout** step, which allows you to manage your **Kubernetes Rolling Deployment**. In Pipeline Studio, this step is labeled **K8sRollout**. On inspection, the step is labeled **K8s Rollout**. 
 
