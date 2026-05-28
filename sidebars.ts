@@ -2646,7 +2646,7 @@ const sidebars: SidebarsConfig = {
       items: [
         {
           type: 'html',
-          value: 'New to CCM?',
+          value: 'New to CACM?',
           className: 'horizontal-bar',
         },
         'cloud-cost-management/get-started/overview',
@@ -2654,7 +2654,7 @@ const sidebars: SidebarsConfig = {
         'cloud-cost-management/get-started/onboarding-guide/external-data-ingestion',
         {
           type: 'html',
-          value: 'Use CCM',
+          value: 'Use CACM',
           className: 'horizontal-bar',
         },
         'cloud-cost-management/get-started/key-concepts',
@@ -2844,7 +2844,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'category',
-          label: 'CCM Architecture Diagrams',
+          label: 'CACM Architecture Diagrams',
           link: {
             type: 'generated-index',
           },
@@ -2870,7 +2870,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'category',
-          label: 'CCM tutorials',
+          label: 'CACM tutorials',
           link: {
             type: 'generated-index',
           },
