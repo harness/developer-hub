@@ -7,11 +7,11 @@ redirect_from:
 - /docs/software-engineering-insights/harness-sei/analytics-and-reporting/business-alignment
 ---
 
-Business Alignment in SEI 2.0 focuses on understanding how engineering effort maps to business priorities, helping teams evaluate whether day-to-day work supports strategic goals. Unlike Business Alignment in SEI 1.0, Business Alignment uses team-level category definitions instead of global allocation goals, allowing each team to define alignment rules that best match their context.
+Business Alignment in AI DLC Insights focuses on understanding how engineering effort maps to business priorities, helping teams evaluate whether day-to-day work supports strategic goals. Unlike Business Alignment in Software Engineering Insights, Business Alignment uses team-level category definitions instead of global allocation goals, allowing each team to define alignment rules that best match their context.
 
 ## Business Alignment Insights
 
-The **Business Alignment** tab on the **Insights** page in SEI 2.0 helps you understand how engineering effort is distributed across business-relevant categories, such as KTLO, Quality Improvements, and Security & Compliance. If your account has multiple Org Trees configured in SEI 2.0, the Org Trees are displayed as tiles at the top of the dashboard.
+The **Business Alignment** tab on the **Insights** page in AI DLC Insights helps you understand how engineering effort is distributed across business-relevant categories, such as KTLO, Quality Improvements, and Security & Compliance. If your account has multiple Org Trees configured in AI DLC Insights, the Org Trees are displayed as tiles at the top of the dashboard.
 
 Selecting an Org Tree tile updates the dashboard to reflect data for that org tree and filters all Business Alignment metrics to include only the teams and repositories within the selected Org Tree. This allows you to compare how different organizations allocate engineering effort relative to business priorities.
 
@@ -37,7 +37,7 @@ You can analyze the data by selecting a time range (for example, the last severa
 
 ## AI summaries and recommendations
 
-SEI 2.0 automatically generates a contextual **AI Summary** for the selected time range and granularity. AI Summaries are generated using the same metrics available in the Business Alignment Insights dashboard. This ensures recommendations remain grounded in measurable engineering outcomes instead of qualitative assessments alone. 
+AI DLC Insights automatically generates a contextual **AI Summary** for the selected time range and granularity. AI Summaries are generated using the same metrics available in the Business Alignment Insights dashboard. This ensures recommendations remain grounded in measurable engineering outcomes instead of qualitative assessments alone. 
 
 ![](../static/ba-profile-9.png)
 

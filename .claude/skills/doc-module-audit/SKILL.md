@@ -244,7 +244,7 @@ The page title is set via frontmatter; a `# Heading` in the body is always wrong
 
 **H-1 — Sentence case in headings**
 WARN for any `##` or `###` heading where a non-first, non-proper-noun word is capitalized.
-Proper nouns to allow: Harness, IaCM, CI, CD, STO, CCM, SEI, FF, SRM, CET, FME,
+Proper nouns to allow: Harness, IaCM, CI, CD, STO, CCM, AIDI, FF, SRM, CET, FME,
 Kubernetes, Terraform, OpenTofu, AWS, GCP, Azure, GitHub, Docker, Helm, Argo, Vault,
 and any word that appears as a brand or product name. Flag clearly: state the heading and the
 word(s) that are wrongly capitalized.

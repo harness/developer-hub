@@ -1,6 +1,6 @@
 ---
 title: Harness
-description: Integrate Harness SEI with Harness Continuous Delivery & GitOps and Continuous Integration modules.
+description: Integrate Harness AIDI with Harness Continuous Delivery & GitOps and Continuous Integration modules.
 sidebar_position: 1
 sidebar_label: Harness
 ---

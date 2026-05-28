@@ -1,6 +1,6 @@
 ---
 title: AI Insights
-description: Understand AI assistant adoption and correlate it with productivity and quality outcomes in SEI 2.0.
+description: Understand AI assistant adoption and correlate it with productivity and quality outcomes in AI DLC Insights.
 sidebar_label: AI Insights
 sidebar_position: 4
 redirect_from:
@@ -16,20 +16,20 @@ redirect_from:
   target="_self"
 />
 
-AI Insights in SEI 2.0 provide visibility into how AI coding assistants are adopted and how they impact engineering performance. The out-of-the-box dashboard on the **Insights** page compares adoption and performance across AI coding assistants, including Cursor and Windsurf.
+AI Insights in AI DLC Insights provide visibility into how AI coding assistants are adopted and how they impact engineering performance. The out-of-the-box dashboard on the **Insights** page compares adoption and performance across AI coding assistants, including Cursor and Windsurf.
 
 ### Prerequisites
 
 Before using AI Insights, ensure you have the following requirements:
 
 - Created API keys in [Cursor](https://cursor.com/docs/api#creating-api-keys) and [Windsurf](https://docs.windsurf.com/plugins/accounts/api-reference/api-introduction#creating-a-service-key) with appropriate permissions to access usage metrics. The API key should have read access to organization or team usage data
-- Configured the [Cursor](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/cursor/) and [Windsurf](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/windsurf/) integrations in SEI 2.0
+- Configured the [Cursor](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/cursor/) and [Windsurf](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/windsurf/) integrations in AI DLC Insights
 - Set up a [Productivity Profile](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/productivity-profile)
 - Ensure AI Insights is enabled for your organization
 
 ## AI Insights
 
-The **AI Insights** tab on the **Insights** page in SEI 2.0 helps teams understand how AI-assisted development impacts productivity and quality outcomes. If your account has multiple Org Trees configured in SEI 2.0, the Org Trees are displayed as tiles at the top of the dashboard.
+The **AI Insights** tab on the **Insights** page in AI DLC Insights helps teams understand how AI-assisted development impacts productivity and quality outcomes. If your account has multiple Org Trees configured in AI DLC Insights, the Org Trees are displayed as tiles at the top of the dashboard.
 
 Selecting an Org Tree tile updates the dashboard to reflect data for that org tree and filters all AI metrics to only include the teams and developers within the selected Org Tree. This allows you to analyze AI adoption and performance trends across different organizations and teams.
 
@@ -46,7 +46,7 @@ You can analyze the data by selecting a time range (for example, the last severa
 
 ## AI summaries and recommendations
 
-SEI 2.0 automatically generates a contextual **AI Summary** for the selected time range and granularity. AI Summaries are generated using the same metrics available in the AI Insights dashboard, including **Adoption**, **PR Velocity Per Developer**, **PR Cycle Time**, **Acceptance Rate**, and **Code Rework**. This ensures recommendations remain grounded in measurable engineering outcomes instead of qualitative assessments alone.
+AI DLC Insights automatically generates a contextual **AI Summary** for the selected time range and granularity. AI Summaries are generated using the same metrics available in the AI Insights dashboard, including **Adoption**, **PR Velocity Per Developer**, **PR Cycle Time**, **Acceptance Rate**, and **Code Rework**. This ensures recommendations remain grounded in measurable engineering outcomes instead of qualitative assessments alone.
 
 ![](../static/ai-4.png)
 

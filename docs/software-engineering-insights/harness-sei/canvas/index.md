@@ -11,18 +11,18 @@ import TabItem from '@theme/TabItem';
 
 <CTABanner
   buttonText="Request Access"
-  title="Canvas in SEI 2.0 is in beta!"
-  tagline="Create custom dashboards in SEI 2.0. Now available in beta!"
+  title="Canvas in AI DLC Insights is in beta!"
+  tagline="Create custom dashboards in AI DLC Insights. Now available in beta!"
   link="https://developer.harness.io/docs/software-engineering-insights/sei-support"
   closable={true}
   target="_self"
 />
 
-Navigate to the **Canvas** page to create and manage custom dashboards that appear on the **Insights** page in SEI 2.0. If the [out-of-the-box dashboards](/docs/software-engineering-insights/harness-sei/get-started/sei-key-concepts#dashboards-in-insights) on the **Insights** page does not provide the views your team needs, you can create <Tooltip id="sei.canvas.custom-dashboard">custom dashboards</Tooltip> on the **Canvas** page to publish, share, and collaborate with your team. 
+Navigate to the **Canvas** page to create and manage custom dashboards that appear on the **Insights** page in AI DLC Insights. If the [out-of-the-box dashboards](/docs/software-engineering-insights/harness-sei/get-started/sei-key-concepts#dashboards-in-insights) on the **Insights** page does not provide the views your team needs, you can create <Tooltip id="sei.canvas.custom-dashboard">custom dashboards</Tooltip> on the **Canvas** page to publish, share, and collaborate with your team. 
 
 ![](../static/canvas-21.png)
 
-The **Canvas** page in SEI 2.0 displays all custom dashboards created by your team. You can search, view, and manage dashboards, including details such as the name, description, author, status, timestamps, and tags. 
+The **Canvas** page in AI DLC Insights displays all custom dashboards created by your team. You can search, view, and manage dashboards, including details such as the name, description, author, status, timestamps, and tags. 
 
 ![](../static/canvas-1.png)
 
@@ -92,7 +92,7 @@ Next, associate the role with users or user groups by clicking **Manage Role Bin
 
 ## Create a Canvas dashboard
 
-1. From the Harness SEI navigation menu, navigate to the **Canvas** page and click **+ Create Dashboard**. 
+1. From the Harness AIDI navigation menu, navigate to the **Canvas** page and click **+ Create Dashboard**. 
 1. In the **Create New Dashboard** modal, enter a name (for example, `[Team Name] Issue Dashboard`) and a description. 
 1. Optionally, enter tags. 
 1. Click **Create Dashboard** to save the dashboard.

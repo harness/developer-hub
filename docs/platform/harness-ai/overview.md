@@ -58,7 +58,7 @@ For more information about navigation 2.0, go to [Harness navigation 2.0](https:
 | **SCS** | [Vulnerability Remediation](/docs/software-supply-chain-assurance/open-source-management/oss-risks-remediation) | AI-powered dependency analysis of repository-generated SBOMs with actionable remediation recommendations to secure applications. | Generally available |
 | **CE** | [ChaosGuard](/docs/chaos-engineering/guides/governance/governance-in-execution/) | Generate conditions for chaos experiments with ChaosGuard. | Generally available |
 | **FME** | [Release Agent](/docs/platform/harness-ai/release-agent) | AI-powered release intelligence with documentation summarization and experiment result analysis. | Generally available |
-| **SEI** | [AI Productivity Insights](/docs/software-engineering-insights/propelo-sei/ai-productivity-insights/aipi-overview) | AI-powered analysis of developer productivity, AI tool adoption impact, and engineering metrics including DORA and SPACE frameworks. | Generally available |
+| **AIDI** | [AI DLC Insights](/docs/software-engineering-insights/harness-sei/sei-overview) | AI-powered analysis of developer productivity, AI tool adoption impact, and engineering metrics including DORA and SPACE frameworks. | Generally available |
 | **AI SRE** | [AI Scribe Agent](/docs/ai-sre/ai-agent/) | Automated incident documentation with real-time communication monitoring across Slack, Zoom, and Microsoft Teams. | Generally available |
 | **AI Test Automation** | [AI Test Copilot](/docs/ai-test-automation/test-authoring/harness-ai-copilot/natural-language-tests) | Natural language test generation with intent-driven testing, automated step decomposition, and AI assertions. | Generally available |
 

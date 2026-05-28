@@ -1,6 +1,6 @@
 ---
 title: Cursor Integration
-description: Set up the Cursor integration to track AI assistant adoption and impact in SEI 2.0.
+description: Set up the Cursor integration to track AI assistant adoption and impact in AI DLC Insights.
 sidebar_label: Cursor
 ---
 
@@ -8,7 +8,7 @@ sidebar_label: Cursor
 The Cursor integration is in beta. To request access, contact [Harness Support](/docs/software-engineering-insights/sei-support).
 :::
 
-The Cursor integration enables SEI 2.0 to track adoption and usage metrics for Cursor coding assistants. This integration is required to view the [AI Insights dashboard](/docs/software-engineering-insights/harness-sei/insights/ai).
+The Cursor integration enables AI DLC Insights to track adoption and usage metrics for Cursor coding assistants. This integration is required to view the [AI Insights dashboard](/docs/software-engineering-insights/harness-sei/insights/ai).
 
 ### Prerequisites
 

@@ -1,6 +1,6 @@
 ---
 title: Overview
-description: Learn how to setup Harness SEI to measure engineering insights across your organization.
+description: Learn how to setup Harness AIDI to measure engineering insights across your organization.
 sidebar_position: 1
 id: index
 slug: /software-engineering-insights/harness-sei/setup
@@ -15,7 +15,7 @@ Follow these steps to get started and customize AI DLC Insights to your team's s
 
 ### Step 1: Set up integrations
 
-To start using SEI 2.0, you can [configure integrations](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/) with your organization's source control, CI/CD, and ticketing tools. 
+To start using AI DLC Insights, you can [configure integrations](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/) with your organization's source control, CI/CD, and ticketing tools. 
 
 * Source Control Management Systems (e.g., GitHub, GitLab, Bitbucket)
 * CI/CD Tools (e.g., Harness, GitHub Actions, Jenkins)
@@ -27,13 +27,13 @@ These integrations power the insights you’ll see in SEI.
 
 ### Step 2: Set up profiles
 
-**Profiles** control **what SEI 2.0 measures** and **how it measures it** by enabling or disabling specific metrics and defining which event types power those metrics. They provide a flexible way to customize SEI 2.0 insights to your organization’s goals and workflows.
+**Profiles** control **what AI DLC Insights measures** and **how it measures it** by enabling or disabling specific metrics and defining which event types power those metrics. They provide a flexible way to customize AI DLC Insights insights to your organization’s goals and workflows.
 
 Each Profile includes which **metrics** are enabled or disabled (e.g., Deployment Frequency, Lead Time, Change Failure Rate) and the **events and signals** that power those metrics.
 
 #### Types of Profiles
 
-SEI 2.0 supports three main types of Profiles, each optimized for different measurement objectives:
+AI DLC Insights supports three main types of Profiles, each optimized for different measurement objectives:
 
 | Type of profile      | Purpose                                  | Metrics                                                  |
 |---------------------|---------------------------------------------|-----------------------------------------------------------------|
@@ -45,13 +45,13 @@ SEI 2.0 supports three main types of Profiles, each optimized for different meas
 
 #### Developers
 
-Developers are the foundational unit in SEI 2.0. Every insight, metric, and trend in the platform starts with accurate identification and attribution of developer activity across your toolchain.
+Developers are the foundational unit in AI DLC Insights. Every insight, metric, and trend in the platform starts with accurate identification and attribution of developer activity across your toolchain.
 
 ![](../static/developers-landing-page.png)
 
 #### Org Tree
 
-The Org Tree represents your organizational hierarchy and structure in SEI 2.0. It provides the foundation for grouping developers and replicating the org hierarchy into SEI 2.0.
+The Org Tree represents your organizational hierarchy and structure in AI DLC Insights. It provides the foundation for grouping developers and replicating the org hierarchy into AI DLC Insights.
 At present, the Org Tree is powered by CSV-based imports from your HRIS system (e.g., Workday, BambooHR). The CSV must include a contributor attribute (such as ManagerEmail or ManagerID) that defines the reporting relationship between individuals.
 
 :::tip

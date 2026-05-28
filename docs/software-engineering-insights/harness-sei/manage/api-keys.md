@@ -1,11 +1,11 @@
 ---
-title: Harness SEI API Keys
-description: Learn how to create and manage Harness SEI API keys for SEI integrations and data ingestion at the project level.
+title: Harness AIDI API Keys
+description: Learn how to create and manage Harness AIDI API keys for SEI integrations and data ingestion at the project level.
 sidebar_label: API Keys
 sidebar_position: 3
 ---
 
-API Keys in SEI 2.0 enable programmatic access to SEI resources. You can create these keys to automate developer identity management, integrate external systems, and ingest engineering data into SEI 2.0.
+API Keys in AI DLC Insights enable programmatic access to SEI resources. You can create these keys to automate developer identity management, integrate external systems, and ingest engineering data into AI DLC Insights.
 
 ## SEI API key roles
 
@@ -13,16 +13,16 @@ API keys are created and managed at the **project level** within your Harness ac
 
 | Role | Description | Recommended Use |
 |---|---|---|
-| **SEI Admin** | Grants full control over SEI configurations and data at both the account and project levels. Includes permissions to manage data settings, teams, profiles, and KPIs. | Use for administrative automation or integrations that configure Harness SEI or sync metadata. |
+| **SEI Admin** | Grants full control over SEI configurations and data at both the account and project levels. Includes permissions to manage data settings, teams, profiles, and KPIs. | Use for administrative automation or integrations that configure Harness AIDI or sync metadata. |
 | **SEI Ingestion** | Grants limited access to submit or update engineering data (such as developer identities or metric events) without allowing configuration changes. | Use for continuous data ingestion or integration pipelines. |
 
-Each SEI API key is scoped to a specific project and inherits the permissions of its assigned role. For more information, see [Harness RBAC in SEI 2.0](/docs/software-engineering-insights/harness-sei/get-started/rbac).
+Each SEI API key is scoped to a specific project and inherits the permissions of its assigned role. For more information, see [Harness RBAC in AI DLC Insights](/docs/software-engineering-insights/harness-sei/get-started/rbac).
 
 ## Create an SEI API key
 
-To create an API key in SEI 2.0:
+To create an API key in AI DLC Insights:
 
-1. From the Harness SEI navigation menu, click **Account Management** > **API Keys** under **SEI Settings**.
+1. From the Harness AIDI navigation menu, click **Account Management** > **API Keys** under **SEI Settings**.
 1. Click **Create API Key**.
 1. Enter a name and description for the API key.
 1. Select a role to assign to the API key (`Admin` or `Ingestion`). 

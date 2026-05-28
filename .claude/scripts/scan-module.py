@@ -193,7 +193,7 @@ def check_violations(file_path: str, content: str, is_dms_content: bool, is_faq:
 
     # H-1: Heading case violations
     proper_nouns = {
-        "Harness", "IaCM", "CI", "CD", "STO", "CCM", "SEI", "FF", "SRM", "CET", "FME",
+        "Harness", "IaCM", "CI", "CD", "STO", "CCM", "AIDI", "FF", "SRM", "CET", "FME",
         "Kubernetes", "Terraform", "OpenTofu", "AWS", "GCP", "Azure", "GitHub", "Docker",
         "Helm", "Argo", "Vault", "OPA", "Rego", "PostgreSQL", "MySQL", "MongoDB"
     }

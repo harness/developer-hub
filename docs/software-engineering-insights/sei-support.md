@@ -7,7 +7,7 @@ sidebar_label: Harness Support
 
 ### Report issues / bug on the platform
 
-If you believe you have found a bug in Harness Software Engineering Insights, please create a Zendesk Support ticket.
+If you believe you have found a bug in Harness AI DLC Insights, please create a Zendesk Support ticket.
 
 To create a support ticket:
 
@@ -29,7 +29,7 @@ Have a fantastic idea? Please go to our [Idea Portal](https://ideas.harness.io) 
 Submitting your ideas is super easy, simply  follow these steps:
 
 1. Navigate to [https://ideas.harness.io](https://ideas.harness.io) (directly or from the product)
-2. Select the module as Software Engineering Insights.
+2. Select the module as AI DLC Insights.
 3. Search to see if your idea has already been proposed. If so, you can "vote up" for it, increasing its chances of being considered. You will be notified of the status and progress of your idea.
 4. If your desired feature hasn’t been suggested yet, complete the form (provide a title and a short description). Once submitted, you will be notified of the status and progress of your idea.
 

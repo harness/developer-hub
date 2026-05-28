@@ -1,6 +1,6 @@
 ---
 title: Connect with ArmorCode
-description: Integrate Harness SEI with ArmorCode.
+description: Integrate Harness AIDI with ArmorCode.
 sidebar_position: 1
 sidebar_label: ArmorCode
 ---
@@ -11,9 +11,9 @@ Security Insights is in beta. To request access, contact [Harness Support](/docs
 
 [ArmorCode](https://www.armorcode.com/) is an Application Security Posture Management (ASPM) platform that aggregates and normalizes security findings from multiple scanners. This integration provides a unified view of security posture, remediation progress, and team-level ownership using data aggregated from all security tools connected to ArmorCode.
 
-On initial setup, Harness SEI backfills up to **6 months of historical security findings**, enabling immediate MTTR calculations and trend analysis. Once connected, the Open vulnerabilities by severity metric updates on the [Security Insights dashboard](/docs/software-engineering-insights/harness-sei/insights/security) in the **Security** tab of the **Insights** page. 
+On initial setup, Harness AIDI backfills up to **6 months of historical security findings**, enabling immediate MTTR calculations and trend analysis. Once connected, the Open vulnerabilities by severity metric updates on the [Security Insights dashboard](/docs/software-engineering-insights/harness-sei/insights/security) in the **Security** tab of the **Insights** page. 
 
-Security findings are mapped to teams, enabling visibility into open vulnerabilities owned by each engineering team, remediation velocity trends per team, and alignment with your existing Harness SEI [Org Tree structure](/docs/software-engineering-insights/harness-sei/setup-sei/setup-org-tree).
+Security findings are mapped to teams, enabling visibility into open vulnerabilities owned by each engineering team, remediation velocity trends per team, and alignment with your existing Harness AIDI [Org Tree structure](/docs/software-engineering-insights/harness-sei/setup-sei/setup-org-tree).
 
 ## Prerequisites
 
@@ -44,7 +44,7 @@ Using a Service Account token with read-only permissions helps prevent disruptio
 1. Click **Validate & Continue**.
 1. Validate that the connection is successful and click **Save**.
 
-Once the integration has been created, Harness SEI automatically fetches up to **6 months** of historical security findings, importing products, assets, users, and team-related metadata from ArmorCode. No manual refresh is required after setup.
+Once the integration has been created, Harness AIDI automatically fetches up to **6 months** of historical security findings, importing products, assets, users, and team-related metadata from ArmorCode. No manual refresh is required after setup.
 
 | Object       | Description |
 |--------------|-------------|
@@ -72,7 +72,7 @@ The **Security Issues Ingested** section shows the volume of security findings i
 - **Total ingested**: The cumulative number of findings ingested since the integration was configured.
 
 :::tip
-Use this view to confirm that new security data is actively flowing into Harness SEI.
+Use this view to confirm that new security data is actively flowing into Harness AIDI.
 :::
 
 ### Data Availability

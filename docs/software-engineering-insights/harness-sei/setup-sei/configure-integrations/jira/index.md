@@ -1,6 +1,6 @@
 ---
 title: Connect with Jira Cloud
-description: Integrate Harness SEI with Jira Cloud.
+description: Integrate Harness AIDI with Jira Cloud.
 sidebar_position: 1
 sidebar_label: Jira Cloud
 redirect_from:
@@ -11,7 +11,7 @@ import JiraCustomHygiene from '@site/docs/software-engineering-insights/shared/i
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-The Jira integration enables SEI 2.0 to ingest issue management data from Atlassian Jira. This data can be used to track operational performance and correlate incidents and changes with DORA metrics in SEI 2.0 dashboards.
+The Jira integration enables AI DLC Insights to ingest issue management data from Atlassian Jira. This data can be used to track operational performance and correlate incidents and changes with DORA metrics in AI DLC Insights dashboards.
 
 ### Prerequisites
 
@@ -20,7 +20,7 @@ Before you can configure the Jira integration, ensure you have the following req
 - Create a [classic API token without scopes](https://id.atlassian.com/manage-profile/security/api-tokens) for a Jira Cloud user account. 
 
    :::tip Use a Jira user account
-   The user creating the token must have the **Browse Projects**, **View Aggregated Data**, **Browse Users**, and **User Picker** [permissions](https://support.atlassian.com/jira/kb/how-to-determine-project-visibility-in-jira-cloud-using-user-permissions/) for all projects that you want SEI 2.0 to track and search issues within relevant projects.
+   The user creating the token must have the **Browse Projects**, **View Aggregated Data**, **Browse Users**, and **User Picker** [permissions](https://support.atlassian.com/jira/kb/how-to-determine-project-visibility-in-jira-cloud-using-user-permissions/) for all projects that you want AI DLC Insights to track and search issues within relevant projects.
 
    Use a Jira user account with a classic API token without scopes. Scoped API tokens are not supported.
 
@@ -46,7 +46,7 @@ To configure the Jira integration:
 1. If you select **Jira Software Cloud**, you can click **Using Jira API Token** (recommended) or **Using Jira Connect App** (deprecated).
    
    :::info Using Jira API Token
-   Harness recommends using token-based authentication to integrate Jira Cloud with SEI 2.0. The Jira Connect App–based integration has been deprecated and should only be used for existing setups.
+   Harness recommends using token-based authentication to integrate Jira Cloud with AI DLC Insights. The Jira Connect App–based integration has been deprecated and should only be used for existing setups.
    :::
 
 <Tabs queryString="installation-type">
@@ -55,7 +55,7 @@ To configure the Jira integration:
 :::warning Reauthenticate Jira Cloud Using a Token-based Integration
 The **Using Jira Connect App** method is no longer supported. You can re-authenticate the Jira Cloud integration by using a [classic unscoped API token](#prerequisites). Scoped API tokens are not supported.
 
-The token must be created for a Jira user account. The user account must have the **Browse Projects**, **View Aggregated Data**, **Browse Users**, and **User Picker** [permissions](https://support.atlassian.com/jira/kb/how-to-determine-project-visibility-in-jira-cloud-using-user-permissions/) to be able to read/search issues and access all Jira projects you want SEI 2.0 to track. Service accounts are not supported.
+The token must be created for a Jira user account. The user account must have the **Browse Projects**, **View Aggregated Data**, **Browse Users**, and **User Picker** [permissions](https://support.atlassian.com/jira/kb/how-to-determine-project-visibility-in-jira-cloud-using-user-permissions/) to be able to read/search issues and access all Jira projects you want AI DLC Insights to track. Service accounts are not supported.
 :::
 
 To set up the integration using a Jira API token:
@@ -117,8 +117,8 @@ To set up the integration using the **Jira Connect App**:
    * Generate and copy the **Jira Connect App key** in the SEI integration configuration settings.
    * Go back to the **Jira Connect App** you just installed.
    * Select **Apps** on the header (beside Create button)
-   * Select **Harness SEI Atlassian Connect configuration** from the dropdown menu.
-   * Paste the Harness SEI OTP key.
+   * Select **Harness AIDI Atlassian Connect configuration** from the dropdown menu.
+   * Paste the Harness AIDI OTP key.
 
      :::tip
      The key expires after 10 minutes, so generate a new key if the current one expires.
@@ -129,7 +129,7 @@ To set up the integration using the **Jira Connect App**:
 </TabItem>
 </Tabs>
 
-Once enabled, Jira data is ingested into SEI 2.0.
+Once enabled, Jira data is ingested into AI DLC Insights.
 
 ### Edit configuration
 
@@ -137,7 +137,7 @@ Navigate to the **Configuration** tab to click **Edit Configuration**.
 
 ![](../static/jira-edit.png)
 
-In the **Advanced Configurations** section, you can control what Jira data is ingested into Harness SEI 2.0 by either excluding sensitive fields or defining a JQL filter.
+In the **Advanced Configurations** section, you can control what Jira data is ingested into Harness AI DLC Insights by either excluding sensitive fields or defining a JQL filter.
 
 ### Exclude sensitive fields
 
@@ -153,7 +153,7 @@ Use this option to prevent sensitive or unnecessary text fields from being inges
 
 ### Filter issues using JQL
 
-Alternatively, you can define a JQL query to control which Jira issues are ingested. Only issues matching the query will be included in SEI 2.0.
+Alternatively, you can define a JQL query to control which Jira issues are ingested. Only issues matching the query will be included in AI DLC Insights.
 
 Use JQL filtering to limit ingestion to active projects, specific teams, or relevant issue types to reduce noise in downstream analytics. For example:
 
@@ -171,7 +171,7 @@ You can map custom fields by defining filter sets for incident and change reques
 
 ![](../../../static/teams-18.png)
 
-Once configured, these fields are included in data ingestion and become available for filtering and analysis in SEI 2.0.
+Once configured, these fields are included in data ingestion and become available for filtering and analysis in AI DLC Insights.
 
 ## Hygiene rules
 
@@ -181,7 +181,7 @@ Once configured, these fields are included in data ingestion and become availabl
 
 To monitor the status of the Jira integration, navigate to the **Monitoring** tab. This page provides visibility into data ingestion, availability, and overall integration health. 
 
-The following health indicators are displayed: **Healthy**, **Unhealthy**, **Pending**, or **No Data**. These indicators help ensure data freshness and identify issues impacting Jira-based reporting in SEI 2.0. 
+The following health indicators are displayed: **Healthy**, **Unhealthy**, **Pending**, or **No Data**. These indicators help ensure data freshness and identify issues impacting Jira-based reporting in AI DLC Insights. 
 
 You can use the time range selector to switch between **Last 7 Days** and **Last 30 Days**. Changing the time range updates both the **New Projects Onboarded** and **Tickets** sections, along with their associated charts.
 
@@ -193,7 +193,7 @@ The **New Projects Onboarded** section shows the number of Jira projects discove
 - **Total Onboarded**: The cumulative number of Jira projects onboarded since the integration was configured.
 
 :::tip
-Use this view to confirm that Jira projects are being successfully discovered and synced in Harness SEI.
+Use this view to confirm that Jira projects are being successfully discovered and synced in Harness AIDI.
 :::
 
 ### Tickets
@@ -204,7 +204,7 @@ The **Tickets** section shows Jira issue ingestion activity during the selected 
 - **Total Ingested**: The cumulative number of Jira issues ingested since the integration was configured.
 
 :::tip
-Use this view to confirm that Jira issue data is being continuously ingested into Harness SEI.
+Use this view to confirm that Jira issue data is being continuously ingested into Harness AIDI.
 :::
 
 ### Data Availability
@@ -223,8 +223,8 @@ Use this view to identify ingestion gaps, delays, or outages that may impact DOR
 ## Troubleshooting
 
 <details>
-<summary>What happens to Jira tickets that are deleted after being synced to Harness SEI?</summary>
+<summary>What happens to Jira tickets that are deleted after being synced to Harness AIDI?</summary>
 
-If you delete a Jira ticket, it will still appear in Harness SEI and continue to count toward metrics until you request that it be manually hidden or removed. To remove or hide deleted tickets, contact [Harness Support](/docs/software-engineering-insights/sei-support).
+If you delete a Jira ticket, it will still appear in Harness AIDI and continue to count toward metrics until you request that it be manually hidden or removed. To remove or hide deleted tickets, contact [Harness Support](/docs/software-engineering-insights/sei-support).
 
 </details>

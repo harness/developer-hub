@@ -283,7 +283,7 @@ function getDefaultCategoryMapping() {
             link: '/release-notes/cloud-cost-management',
           },
           {
-            id: 'software-engineering-insights',
+            id: 'ai-dlc-insights',
             title: 'AI DLC Insights',
             link: '/release-notes/ai-dlc-insights',
           },

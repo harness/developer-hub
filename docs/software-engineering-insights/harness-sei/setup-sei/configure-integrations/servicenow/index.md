@@ -1,6 +1,6 @@
 ---
 title: ServiceNow Integration
-description: Set up the ServiceNow integration to ingest incident and change management data into SEI 2.0.
+description: Set up the ServiceNow integration to ingest incident and change management data into AI DLC Insights.
 sidebar_position: 1
 sidebar_label: ServiceNow
 redirect_from:
@@ -10,9 +10,9 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-The ServiceNow integration enables SEI 2.0 to ingest incident and change management (ITSM) data from ServiceNow. This data can be used to track operational performance and correlate incidents and changes with engineering metrics in SEI dashboards.
+The ServiceNow integration enables AI DLC Insights to ingest incident and change management (ITSM) data from ServiceNow. This data can be used to track operational performance and correlate incidents and changes with engineering metrics in SEI dashboards.
 
-SEI 2.0 supports the following authentication methods:
+AI DLC Insights supports the following authentication methods:
 
 * **API key authentication** using a ServiceNow API key with permissions to read ServiceNow data
 * **Username/password authentication** using ServiceNow account credentials
@@ -86,7 +86,7 @@ To configure the ServiceNow integration:
       - For **Username**, enter a username and password in the `Username` and `Password` fields.
 
    1. Enter a timezone in the `Timezone` field.
-   1. Optionally, to limit the incidents and change requests ingested into SEI 2.0, create a filter query in ServiceNow.
+   1. Optionally, to limit the incidents and change requests ingested into AI DLC Insights, create a filter query in ServiceNow.
    1. In ServiceNow, create and copy the query string for the incidents or change requests you want to ingest, then paste the query into the appropriate filter fields in the **Advanced Configuration** section.
    1. Click **Validate Connection**.
    1. Once validation succeeds, click **Validate and Create Integration**.
@@ -98,7 +98,7 @@ To configure the ServiceNow integration:
    1. In ServiceNow, configure your [Application Registry](https://www.servicenow.com/docs/r/zurich/security-management/security-incident-response/configure-application-registry-splunk.html) to include the redirect URL.
    1. Enter a client ID and client secret.
    1. Enter a timezone in the `Timezone` field.
-   1. Optionally, to limit the incidents and change requests ingested into SEI 2.0, create a filter query in ServiceNow.
+   1. Optionally, to limit the incidents and change requests ingested into AI DLC Insights, create a filter query in ServiceNow.
    1. In ServiceNow, create and copy the query string for the incidents or change requests you want to ingest, then paste the query into the appropriate filter fields in the **Advanced Configuration** section.
    1. Click **Connect ServiceNow**.
    1. Once validation succeeds, click **Validate and Create Integration**.
@@ -111,7 +111,7 @@ To configure the ServiceNow integration:
    1. In the **Overview** section, enter a name for the integration. Optionally, add a description or tags.
    1. In the **Provide ServiceNow Details** section, enter your ServiceNow URL and provide a username and password.
    1. Enter a timezone in the `Timezone` field.
-   1. Optionally, to limit the incidents and change requests ingested into SEI 2.0, create a filter query in ServiceNow.
+   1. Optionally, to limit the incidents and change requests ingested into AI DLC Insights, create a filter query in ServiceNow.
    1. In ServiceNow, create and copy the query string for the incidents or change requests you want to ingest, and add it to the appropriate fields in the **Advanced Configuration** section.
    1. Click **Download YAML File**. This `satellite.yml` file contains the metadata and configurations for establishing the connection and data ingestion from ServiceNow.
    1. [Deploy the `satellite.yml` file](/docs/software-engineering-insights/harness-sei/setup-sei/ingestion-satellite/container) to your on-premises infrastructure. 
@@ -120,7 +120,7 @@ To configure the ServiceNow integration:
    </TabItem>
    </Tabs>
 
-Once the integration is configured, Harness SEI begins ingesting ITSM data from ServiceNow.
+Once the integration is configured, Harness AIDI begins ingesting ITSM data from ServiceNow.
 
 ## Custom fields
 
@@ -130,7 +130,7 @@ You can map custom fields by defining filter sets for incident and change reques
 
 ![](../../../static/teams-18.png)
 
-Once configured, these fields are included in data ingestion and become available for filtering and analysis in SEI 2.0.
+Once configured, these fields are included in data ingestion and become available for filtering and analysis in AI DLC Insights.
 
 ## Integration monitoring
 

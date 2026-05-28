@@ -1,6 +1,6 @@
 ---
 title: Connect with GitLab On-Prem
-description: Integrate Harness SEI with GitLab On-Prem.
+description: Integrate Harness AIDI with GitLab On-Prem.
 sidebar_position: 2
 sidebar_label: GitLab On-Prem
 ---

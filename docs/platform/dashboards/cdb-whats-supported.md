@@ -20,8 +20,7 @@ For a comprehensive list that includes all Harness modules, go to [Supported pla
 | CV | ✅ |  |
 | FF | ✅ | ✅ (Beta) |
 | IaCM | ✅ | ✅ (Beta) |
-| SEI|  |  |
-| SRM| ✅ | ✅ (Beta) |
+| AIDI|  |  |
 | STO| ✅ | ✅ (Beta) |
 
 ## Custom Dashboards Self-Managed Enterprise Edition support

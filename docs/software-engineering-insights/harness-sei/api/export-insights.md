@@ -1,5 +1,5 @@
 ---
-title: Export Efficiency and Productivity Metrics Using the Harness SEI API
+title: Export Efficiency and Productivity Metrics Using the Harness AIDI API
 description: Learn how to programmatically export developer, team, and org-level Efficiency and Productivity metrics using export APIs.
 sidebar_label: Export Efficiency and Productivity Metrics
 sidebar_position: 3
@@ -10,7 +10,7 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-SEI 2.0 provides APIs to export [Productivity](/docs/software-engineering-insights/harness-sei/insights/productivity) and [Efficiency](/docs/software-engineering-insights/harness-sei/insights/efficiency) metrics in CSV format for team, developer, and organization-level reporting. There are two available APIs:
+AI DLC Insights provides APIs to export [Productivity](/docs/software-engineering-insights/harness-sei/insights/productivity) and [Efficiency](/docs/software-engineering-insights/harness-sei/insights/efficiency) metrics in CSV format for team, developer, and organization-level reporting. There are two available APIs:
 
 - **V2 Export API (recommended)**: Asynchronous, scalable, and designed for large datasets and org-wide exports.
 - **Legacy Reports API**: Synchronous export API for team and contributor reporting use cases.
@@ -365,7 +365,7 @@ For `ExportRequestDTO`:
 :::tip 
 `teamRefId` and `collectionId` refer to the same underlying team/collection identifier. Use the same value for both fields when exporting by team. 
 
-To find your collection ID in Harness SEI, navigate to any team in the Org Tree on the **Insights** page, look at the page URL, and copy the value after `collectionId=`.
+To find your collection ID in Harness AIDI, navigate to any team in the Org Tree on the **Insights** page, look at the page URL, and copy the value after `collectionId=`.
 :::
 
 **Granularity**

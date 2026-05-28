@@ -1,6 +1,6 @@
 ---
-title: Upload and Manage Developer Records Using the Harness SEI API
-description: Learn how to use the Harness SEI API to programmatically create and update developer records.
+title: Upload and Manage Developer Records Using the Harness AIDI API
+description: Learn how to use the Harness AIDI API to programmatically create and update developer records.
 sidebar_label: Upload and Manage Developers
 sidebar_position: 1
 ---
@@ -25,7 +25,7 @@ To call the SEI API, you’ll need:
 
 ### Authentication
 
-All Harness SEI APIs require authentication using a Harness API key.
+All Harness AIDI APIs require authentication using a Harness API key.
 
 To authenticate:
 
@@ -41,7 +41,7 @@ To authenticate:
 
 ## Manage developer records
 
-The Harness SEI API enables programmatic management of developer records. You can use the API to automate updates by writing scripts or jobs that trigger record changes whenever your source of truth (such as an HR system) changes. 
+The Harness AIDI API enables programmatic management of developer records. You can use the API to automate updates by writing scripts or jobs that trigger record changes whenever your source of truth (such as an HR system) changes. 
 
 This reduces manual edits, lowers the risk of errors, and ensures developer data stays accurate and consistent for productivity and DORA metrics.
 
@@ -326,7 +326,7 @@ curl -X 'GET' \
 
 ## Sync developer records
 
-You have two options for syncing developer records with Harness SEI APIs:
+You have two options for syncing developer records with Harness AIDI APIs:
 
 1. **Event-Driven Sync** (JSON, small updates): This is best for event-driven syncs, such as when a new hire webhook triggers an update. 
   

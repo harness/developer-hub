@@ -8,11 +8,11 @@ redirect_from:
 - /docs/software-engineering-insights/harness-sei/analytics-and-reporting/efficiency
 ---
 
-Efficiency in SEI 2.0 refers to the measurement and analysis of how effectively an organization or team runs its software development processes. It focuses on operational performance across deployment-based ([DORA](https://cloud.google.com/blog/products/devops-sre/announcing-the-2024-dora-report)) and sprint-based delivery metrics.
+Efficiency in AI DLC Insights refers to the measurement and analysis of how effectively an organization or team runs its software development processes. It focuses on operational performance across deployment-based ([DORA](https://cloud.google.com/blog/products/devops-sre/announcing-the-2024-dora-report)) and sprint-based delivery metrics.
 
 ## Efficiency Insights
 
-The **Efficiency** tab on the **Insights** page in SEI 2.0 helps you understand how effectively your organization delivers software. If your account has multiple Org Trees configured in SEI 2.0, the Org Trees are displayed as tiles at the top of the dashboard. 
+The **Efficiency** tab on the **Insights** page in AI DLC Insights helps you understand how effectively your organization delivers software. If your account has multiple Org Trees configured in AI DLC Insights, the Org Trees are displayed as tiles at the top of the dashboard. 
 
 Selecting an Org Tree tile updates the dashboard to reflect data for that org tree and filters all **DORA** or **Sprint** metrics to only include the teams and repositories within the selected Org Tree. This allows you to compare delivery performance across different organizations and teams.
 
@@ -32,7 +32,7 @@ Switch between the **DORA** or **Sprint Metrics** tabs to access delivery perfor
 
 ## AI summaries and recommendations
 
-SEI 2.0 automatically generates a contextual **AI Summary** for the selected time range and granularity. AI Summaries are generated using the same metrics available in the Efficiency Insights dashboard, including **Lead Time for Changes**, **Deployment Frequency**, **Change Failure Rate**, and **Mean Time to Restore**. This ensures recommendations remain grounded in measurable engineering outcomes instead of qualitative assessments alone.
+AI DLC Insights automatically generates a contextual **AI Summary** for the selected time range and granularity. AI Summaries are generated using the same metrics available in the Efficiency Insights dashboard, including **Lead Time for Changes**, **Deployment Frequency**, **Change Failure Rate**, and **Mean Time to Restore**. This ensures recommendations remain grounded in measurable engineering outcomes instead of qualitative assessments alone.
 
 ![](../static/efficiency-28.png)
 
@@ -50,7 +50,7 @@ Use the `Showing` dropdown menu to control how values are calculated across all 
 Trendlines use the Ordinary Least Squares (OLS) regression method to identify patterns and direction in your data over the selected time range.
 :::
 
-To export the Efficiency Insights dashboard data, click the kebab menu (⋮) and select **Export as PDF** or **Export as CSV**. For more information, see [Exporting SEI 2.0 Insights](/docs/software-engineering-insights/harness-sei/insights/export).
+To export the Efficiency Insights dashboard data, click the kebab menu (⋮) and select **Export as PDF** or **Export as CSV**. For more information, see [Exporting AI DLC Insights Insights](/docs/software-engineering-insights/harness-sei/insights/export).
 
 Below is a brief overview of each widget on the **DORA** tab in **Efficiency** on the **Insights** page:
 
@@ -152,7 +152,7 @@ To improve **Mean Time to Restore**, Harness recommends improving monitoring and
 
 ### Using ServiceNow data in DORA metrics
 
-Once you've configured a [ServiceNow integration](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/servicenow/), SEI 2.0 uses ServiceNow change requests and incidents as the data source for DORA metrics on the Efficiency Insights dashboard. These records are mapped and filtered based on your configuration on the **Incident Management** tab in [Team Settings](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams?team-settings=itsm-settings), and are used to calculate deployment activity, failures, and recovery times.
+Once you've configured a [ServiceNow integration](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/servicenow/), AI DLC Insights uses ServiceNow change requests and incidents as the data source for DORA metrics on the Efficiency Insights dashboard. These records are mapped and filtered based on your configuration on the **Incident Management** tab in [Team Settings](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams?team-settings=itsm-settings), and are used to calculate deployment activity, failures, and recovery times.
 
 | Metric Name                 | ServiceNow data used        | Description                                                               |
 | --------------------------- | --------------------------- | ------------------------------------------------------------------------  |
@@ -193,7 +193,7 @@ Click the **View By** dropdown menu to choose whether sprint metrics are display
 * **Story Points**: Metrics reflect the estimated effort of work items based on story point values.
 * **Work Item Count**: Metrics reflect the number of items regardless of point estimates.
 
-You can also click the **Show trendline** checkbox to toggle a trend line overlay to visualize performance changes over time. To export the Sprint Insights dashboard data, click the **Export** button. For more information, see [Exporting SEI 2.0 Insights](/docs/software-engineering-insights/harness-sei/insights/export).
+You can also click the **Show trendline** checkbox to toggle a trend line overlay to visualize performance changes over time. To export the Sprint Insights dashboard data, click the **Export** button. For more information, see [Exporting AI DLC Insights Insights](/docs/software-engineering-insights/harness-sei/insights/export).
 
 This dashboard highlights:
 

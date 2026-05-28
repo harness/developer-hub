@@ -1,6 +1,6 @@
 ---
 title: Configure Teams
-description: Learn how to configure team settings in SEI 2.0.
+description: Learn how to configure team settings in AI DLC Insights.
 sidebar_label: Configure Teams
 sidebar_position: 7
 redirect_from:
@@ -10,7 +10,7 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Teams are the core unit of measurement in SEI 2.0. Each team represents a leaf node in your [Org Tree](/docs/software-engineering-insights/harness-sei/setup-sei/setup-org-tree) and serves as the foundation for calculating metrics and surfacing insights across Efficiency, Productivity, and Business Alignment dashboards.
+Teams are the core unit of measurement in AI DLC Insights. Each team represents a leaf node in your [Org Tree](/docs/software-engineering-insights/harness-sei/setup-sei/setup-org-tree) and serves as the foundation for calculating metrics and surfacing insights across Efficiency, Productivity, and Business Alignment dashboards.
 
 The **Teams** page provides a centralized view of all teams derived from your Org Tree and their configurations. You can search teams by selecting `By Name`, `By Manager Name`, or `By Org Tree Name` in the **Search Teams** dropdown menu.
 
@@ -28,7 +28,7 @@ You can see the following details for each team in the **Teams** list:
 | **Last Updated On** | Timestamp of the most recent configuration change |
 | **Last Updated By** | User who last modified the team                   |
 
-While teams are automatically derived from your organization's hierarchy, they must be configured to ensure data is attributed correctly and metrics accurately reflect how each team delivers software in SEI 2.0. To access the **Team Settings** side panel, click on a team in the list.
+While teams are automatically derived from your organization's hierarchy, they must be configured to ensure data is attributed correctly and metrics accurately reflect how each team delivers software in AI DLC Insights. To access the **Team Settings** side panel, click on a team in the list.
 
 ![](../static/teams-2.png)
 
@@ -38,7 +38,7 @@ You can configure multiple source code management (SCM) integrations per team, e
 
 ## Configure integrations for a team
 
-Select the tools your team uses for issue management, source code management, and continuous deployment on the **Integrations** tab in **Team Settings**. These integrations power how SEI 2.0 attributes data and calculates metrics for the team.
+Select the tools your team uses for issue management, source code management, and continuous deployment on the **Integrations** tab in **Team Settings**. These integrations power how AI DLC Insights attributes data and calculates metrics for the team.
 
 :::tip
 Selecting and saving integrations is required before completing the rest of the team configuration.
@@ -60,11 +60,11 @@ To select and save integrations:
 
 1. Click **Save Integrations**.
 
-Once saved, SEI 2.0 aggregates developer activity across all connected SCMs for **Efficiency** and **Productivity** insights, providing a complete picture of team work.
+Once saved, AI DLC Insights aggregates developer activity across all connected SCMs for **Efficiency** and **Productivity** insights, providing a complete picture of team work.
 
 ## Review and update developer identifiers
 
-To measure productivity metrics accurately (e.g., coding days, PR activity), Harness SEI needs to know which developer performed which action in each tool. This is done by mapping each developer's cloud identities across your integrated systems.
+To measure productivity metrics accurately (e.g., coding days, PR activity), Harness AIDI needs to know which developer performed which action in each tool. This is done by mapping each developer's cloud identities across your integrated systems.
 
 The **Developer Records** table on the **Developers** tab in **Team Settings** includes attributes that determine how a developer was added and whether they belong to the selected team: 
 
@@ -87,7 +87,7 @@ If a developer appears to be missing activity after enabling multiple SCM integr
 
 ![](../static/teams-17.png)
 
-SEI 2.0 uses all mapped identities to attribute commits, pull requests, and repository activity accurately across all selected SCM integrations.
+AI DLC Insights uses all mapped identities to attribute commits, pull requests, and repository activity accurately across all selected SCM integrations.
 
 ### Cloud identifiers by integration
 
@@ -143,7 +143,7 @@ Click the **+** icon next to the `Developer Identities` dropdown menu to add add
 
 ### Applying metric-level developer filters
 
-The **Advanced Settings** section on the **Developers** tab in **Team Settings** lets you control which Harness SEI metrics should honor developer filters for a team. This is useful when contributors such as managers or [shared developers](#managing-shared-developers) work across multiple teams but should only influence specific insights.
+The **Advanced Settings** section on the **Developers** tab in **Team Settings** lets you control which Harness AIDI metrics should honor developer filters for a team. This is useful when contributors such as managers or [shared developers](#managing-shared-developers) work across multiple teams but should only influence specific insights.
 
 ![](../static/shared-5.png)
 
@@ -156,7 +156,7 @@ Use this setting to specify which metrics should calculate results **only from a
 To configure metric-level developer filtering:
 
 1. Navigate to the **Developers** tab in Team Settings. 
-1. In the **Advanced Settings** section, select the Harness SEI metrics that should honor developer filters for this team.
+1. In the **Advanced Settings** section, select the Harness AIDI metrics that should honor developer filters for this team.
 
    - **Productivity**: Measures individual and team-level development activity, such as code contributions and work item completion, based on data from your integrated SCM and Issue Management systems.
    - **Business Alignment**: Evaluates how development effort is distributed across business priorities and investment categories, helping ensure engineering work aligns with organizational goals.
@@ -175,9 +175,9 @@ To configure metric-level developer filtering:
 
 ## Configure team tool settings
 
-After selecting your team's integrations and mapping developer identities, configure tool-specific settings to control how SEI 2.0 interprets data from each system. Proper configuration ensures that metrics on the **Insights** page accurately reflect your team's workflows, tools, and operational context.
+After selecting your team's integrations and mapping developer identities, configure tool-specific settings to control how AI DLC Insights interprets data from each system. Proper configuration ensures that metrics on the **Insights** page accurately reflect your team's workflows, tools, and operational context.
 
-SEI 2.0 uses a filter set model to determine which work items should be included and how they are classified. Each filter set consists of:
+AI DLC Insights uses a filter set model to determine which work items should be included and how they are classified. Each filter set consists of:
 
 - **Property**: The issue attribute to evaluate (for example, `Project`, `Issue Type`, or `Label`).
 - **Condition**: How the property is matched (for example, `Equals` or `Contains`).
@@ -185,12 +185,12 @@ SEI 2.0 uses a filter set model to determine which work items should be included
 
 You can add multiple filter sets by clicking **+ Add Condition**. Each additional filter set is combined using `AND` logic, meaning all filter sets must match for a work item to be included. To remove a filter set, click the **Delete** icon next to it. Depending on the profile applied to the team, this configuration can impact delivery, reliability, productivity, and business alignment metrics. 
 
-To ensure accurate and meaningful metrics, align your filter conditions with your team's actual workflows, standardize labels and conventions for incidents, bugs, and deployments across tools, and regularly review your team settings whenever tools, processes, or team ownership changes. By keeping configurations current, you can ensure the dashboards in SEI 2.0 provide the most relevant and up-to-date insights.
+To ensure accurate and meaningful metrics, align your filter conditions with your team's actual workflows, standardize labels and conventions for incidents, bugs, and deployments across tools, and regularly review your team settings whenever tools, processes, or team ownership changes. By keeping configurations current, you can ensure the dashboards in AI DLC Insights provide the most relevant and up-to-date insights.
 
 <Tabs queryString="team-settings">
 <TabItem value="im-settings" label="Issue Management Settings">
 
-Use the **Issue Management** tab in **Team Settings** to define which work items are relevant to your team and how they should be interpreted for metrics calculation. These settings control how SEI 2.0 scopes work, identifies incidents, categorizes investment, and classifies different types of work.
+Use the **Issue Management** tab in **Team Settings** to define which work items are relevant to your team and how they should be interpreted for metrics calculation. These settings control how AI DLC Insights scopes work, identifies incidents, categorizes investment, and classifies different types of work.
 
 ### Projects
 
@@ -207,12 +207,12 @@ Define the scope of work items that belong to your team by including the project
 To include work items from a specific Jira project (like `DOCS`), use `Project Equals DOCS`. 
 
 :::tip
-Correct production incident classification ensures SEI 2.0 accurately calculates **Change Failure Rate** and [Business Alignment metrics](/docs/software-engineering-insights/harness-sei/insights/business-alignment).
+Correct production incident classification ensures AI DLC Insights accurately calculates **Change Failure Rate** and [Business Alignment metrics](/docs/software-engineering-insights/harness-sei/insights/business-alignment).
 :::
 
 ### Production Incidents
 
-Identify which work items represent production failures or incidents to help SEI 2.0 calculate Change Failure Rate.
+Identify which work items represent production failures or incidents to help AI DLC Insights calculate Change Failure Rate.
 
 ![](../static/teams-5.png)
 
@@ -225,7 +225,7 @@ Identify which work items represent production failures or incidents to help SEI
 To identify incidents using labels, use `Labels Contains production-incident`, or by issue type, use `Issue Type Equals Incident`.
 
 :::tip
-Correct production incident classification ensures SEI 2.0 accurately calculates **Change Failure Rate**.
+Correct production incident classification ensures AI DLC Insights accurately calculates **Change Failure Rate**.
 :::
 
 ### Business Alignment
@@ -243,12 +243,12 @@ Business Alignment maps work items to investment categories defined in your [Bus
 For the Epic category, use `Issue Type Equals Epic`. For the Story category, use `Issue Type Equals Story`. Each category is evaluated independently based on its own filter set.
 
 :::tip
-Correct investment category configuration ensures SEI 2.0 accurately calculates [Business Alignment metrics](/docs/software-engineering-insights/harness-sei/insights/business-alignment).
+Correct investment category configuration ensures AI DLC Insights accurately calculates [Business Alignment metrics](/docs/software-engineering-insights/harness-sei/insights/business-alignment).
 :::
 
 ### Work Type
 
-Define how SEI 2.0 classifies features, bugs, and work status for [Productivity metrics](/docs/software-engineering-insights/harness-sei/insights/productivity#productivity-insight-widgets) by configuring filter sets, setting feature and bug category thresholds, and specifying which statuses represent active and terminated work.
+Define how AI DLC Insights classifies features, bugs, and work status for [Productivity metrics](/docs/software-engineering-insights/harness-sei/insights/productivity#productivity-insight-widgets) by configuring filter sets, setting feature and bug category thresholds, and specifying which statuses represent active and terminated work.
 
 #### Features
 
@@ -269,7 +269,7 @@ In the **Feature Categories** section, you can further classify features by size
 - **Complex**: Set a minimum threshold only (for example, 7+).
 
 :::tip
-Correct feature classification ensures SEI 2.0 accurately calculates **Work Completed** and **PR Velocity**.
+Correct feature classification ensures AI DLC Insights accurately calculates **Work Completed** and **PR Velocity**.
 :::
 
 #### Bugs and defects
@@ -285,7 +285,7 @@ In the **Bug Categories** section, you can further classify bugs by severity usi
 - **Minor**: For example, `P4`, `Low`, `Lowest`.
 
 :::tip
-Correct bug classification ensures SEI 2.0 accurately calculates **Work Completed** and **PR Velocity**.
+Correct bug classification ensures AI DLC Insights accurately calculates **Work Completed** and **PR Velocity**.
 :::
 
 #### Active and terminated work
@@ -295,7 +295,7 @@ Define which statuses represent **active work** (for example, `In Progress` or `
 To classify active work, use `Statuses Equals To Do, In Progress, QA Testing`. For terminated work, use `Statuses Equal Invalid, Won't Do, Duplicate`.
 
 :::tip
-Correct status classification ensures SEI 2.0 accurately calculates **Work Completed**.
+Correct status classification ensures AI DLC Insights accurately calculates **Work Completed**.
 :::
 
 After completing all Issue Management filters, click **Save IM Settings** to apply the configuration to the team.
@@ -311,11 +311,11 @@ Source Code Management (SCM) settings are required for delivery metrics such as 
 Developer identifiers can be automatically discovered using [Auto Identity Discovery](/docs/software-engineering-insights/harness-sei/manage/automatch-developers) or manually configured if needed. If you select multiple SCM integrations on the **Integrations** tab, you must include all repositories your team contributes to for more complete metric calculations.
 :::
 
-Use the **Source Code Management** tab in **Team Settings** to define which repositories represent your team's development work, and how SEI 2.0 identifies deployment-related changes from your SCM data. These setting impact delivery metrics such as Lead Time for Change and Deployment Frequency.
+Use the **Source Code Management** tab in **Team Settings** to define which repositories represent your team's development work, and how AI DLC Insights identifies deployment-related changes from your SCM data. These setting impact delivery metrics such as Lead Time for Change and Deployment Frequency.
 
 ### Repositories
 
-Select the repositories your team actively contributes to. SEI 2.0 uses this configuration to scope developer activity and delivery metrics to relevant codebases.
+Select the repositories your team actively contributes to. AI DLC Insights uses this configuration to scope developer activity and delivery metrics to relevant codebases.
 
 ![](../static/teams-14.png)
 
@@ -358,13 +358,13 @@ To exclude maintenance changes, use `Labels Does Not Contain chore`. This helps 
 Label-based filters apply across all selected SCM integrations, ensuring deployment-related changes are identified consistently even when multiple SCM tools are configured. Once you've configured the repositories, branches, and deployment criteria, click **Save SCM Settings** to apply the configuration to the team.
 
 :::tip
-Correctly defining repositories, branches, and deployment-related criteria ensures SEI 2.0 accurately calculates **Lead Time for Change** and **Deployment Frequency**, especially when multiple SCM integrations are configured.
+Correctly defining repositories, branches, and deployment-related criteria ensures AI DLC Insights accurately calculates **Lead Time for Change** and **Deployment Frequency**, especially when multiple SCM integrations are configured.
 :::
 
 </TabItem>
 <TabItem value="cicd-settings" label="Pipeline Settings">
 
-Use the **CD Pipelines** tab in **Team Settings** to define which CD pipelines belong to your team and how SEI 2.0 identifies successful and failed deployments when calculating deployment-related metrics.
+Use the **CD Pipelines** tab in **Team Settings** to define which CD pipelines belong to your team and how AI DLC Insights identifies successful and failed deployments when calculating deployment-related metrics.
 
 ![](../static/teams-9.png)
 
@@ -386,7 +386,7 @@ Only services and CD pipelines that match these filters are used to calculate **
 
 ### Failed deployments or rollbacks
 
-Define how SEI 2.0 detects failed deployments or rollbacks in your CD system. These filters determine when a deployment is classified as a failure. 
+Define how AI DLC Insights detects failed deployments or rollbacks in your CD system. These filters determine when a deployment is classified as a failure. 
 
 | Filter field   | Available options                                           |
 | -------------- | ----------------------------------------------------------- |
@@ -397,7 +397,7 @@ Define how SEI 2.0 detects failed deployments or rollbacks in your CD system. Th
 To identify a rollback, use `Rollback Equals true`. To identify failed executions, use `Pipeline Status Equals Failure`.
 
 :::tip
-Correct failure detection ensures SEI 2.0 accurately calculates **Change Failure Rate**.
+Correct failure detection ensures AI DLC Insights accurately calculates **Change Failure Rate**.
 :::
 
 After completing all CD Pipelines filters, click **Save CD Settings** to apply the configuration to the team.
@@ -409,7 +409,7 @@ After completing all CD Pipelines filters, click **Save CD Settings** to apply t
 Security Insights is in beta. To request access, contact [Harness Support](/docs/software-engineering-insights/sei-support).
 :::
 
-Use the **Security** tab in **Team Settings** to define how SEI 2.0 maps Application Security Posture Management (ASPM) data to your teams. 
+Use the **Security** tab in **Team Settings** to define how AI DLC Insights maps Application Security Posture Management (ASPM) data to your teams. 
 
 Click **+ Add Condition** to set the scope of security assets. These filters determine which ASPM data is associated with the team and used to calculate security-related metrics. If you add several filter sets, these filter sets are evaluated together to determine the final scope of security data mapped to the team. 
 
@@ -424,7 +424,7 @@ Click **+ Add Condition** to set the scope of security assets. These filters det
 To associate assets from a specific environment, use `Environment Equals Production`. To scope assets by a source, use `Tool Source Equals Snyk`.
 
 :::info
-Only ASPM data that matches these filters is used to calculate **Security** metrics in SEI 2.0.
+Only ASPM data that matches these filters is used to calculate **Security** metrics in AI DLC Insights.
 :::
 
 After adding Security filters, click **Save Security Filters** to apply the configuration to the team.
@@ -432,7 +432,7 @@ After adding Security filters, click **Save Security Filters** to apply the conf
 </TabItem>
 <TabItem value="itsm-settings" label="Incident Management Settings">
 
-Use the **Incident Management** tab in **Team Settings** to define how SEI 2.0 maps incident and change request data from ServiceNow to your teams. Filters determine which records are included in metric calculations.
+Use the **Incident Management** tab in **Team Settings** to define how AI DLC Insights maps incident and change request data from ServiceNow to your teams. Filters determine which records are included in metric calculations.
 
 ![](../static/teams-18.png)
 
@@ -458,7 +458,7 @@ Add filters to include relevant incident data from ServiceNow.
 For example, `Urgency Equals High` only includes high-priority incidents, `Urgency Equals High OR Urgency Equals Medium` includes both high and medium priority incidents, and `Assignment Group Equals Mobile` scopes incidents to a specific team.
 
 :::tip
-Correct incident identification ensures SEI 2.0 accurately calculates **Change Failure Rate** and **MTTR**.
+Correct incident identification ensures AI DLC Insights accurately calculates **Change Failure Rate** and **MTTR**.
 :::
 
 ### Change request identification
@@ -474,7 +474,7 @@ Add filters to include relevant change request data from ServiceNow.
 For example, `Urgency Equals High` only includes high-priority change requests, `Assignment Group Equals Platform` scopes changes to a specific team, and `Business Service Contains Payments` includes changes to a specific service.
 
 :::tip
-Correct change request identification ensures SEI 2.0 accurately calculates **Deployment Frequency**.
+Correct change request identification ensures AI DLC Insights accurately calculates **Deployment Frequency**.
 :::
 
 After configuring filters, click **Save ITSM Settings** to apply the configuration.
@@ -513,6 +513,6 @@ If no override is provided, the default value defined in Canvas is used. Overrid
 
 ## Access insights
 
-After you save your tool-specific settings, SEI 2.0 automatically attributes data to your team, mapping events and activity from integrated systems based on your filters and developer identifiers. SEI 2.0 calculates all relevant Efficiency, Productivity, and Business Alignment metrics using your defined criteria, and all dashboards on the **Insights** page update reflect these data-driven insights in real time.
+After you save your tool-specific settings, AI DLC Insights automatically attributes data to your team, mapping events and activity from integrated systems based on your filters and developer identifiers. AI DLC Insights calculates all relevant Efficiency, Productivity, and Business Alignment metrics using your defined criteria, and all dashboards on the **Insights** page update reflect these data-driven insights in real time.
 
 Once your settings are configured, you can explore team insights by reviewing metrics and trends for individual teams and organizational insights by analyzing aggregated data across your Org Tree.

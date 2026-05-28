@@ -24,9 +24,9 @@ This page provides an overview of the technologies, features, and integrations s
 For more information about **What's Supported** for other Harness modules, see their respective documentation below:
 
    * [Code Repository](/docs/code-repository/code-supported)
-   * [Continous Delivery and GitOps](/docs/continuous-delivery/cd-integrations)
-   * [Continous Integration](/docs/continuous-integration/ci-supported-platforms)
-   * [Continous Verification](/docs/continuous-delivery/verify/cv-whats-supported)
+   * [Continuous Delivery and GitOps](/docs/continuous-delivery/cd-integrations)
+   * [Continuous Integration](/docs/continuous-integration/ci-supported-platforms)
+   * [Continuous Verification](/docs/continuous-delivery/verify/cv-whats-supported)
    * [Cloud Cost Management](/docs/cloud-cost-management/whats-supported)
    * [Chaos Engineering](/docs/chaos-engineering/whats-supported)
    * [Continuous Error Tracking](/docs/continuous-error-tracking/whats-supported)
@@ -36,7 +36,7 @@ For more information about **What's Supported** for other Harness modules, see t
    * [Internal Developer Portal](/docs/internal-developer-portal/whats-supported)
    * [Security Testing Orchestration](/docs/security-testing-orchestration/whats-supported/sto-deployments)
    * [Service Reliability Management](/docs/service-reliability-management/srm-whats-supported)
-   * [Software Engineering Insights](/docs/software-engineering-insights/sei-supported-platforms)
+   * [AI DLC Insights](/docs/software-engineering-insights/sei-supported-platforms)
    * [Supply Chain Security](/docs/software-supply-chain-assurance/ssca-supported)
 
 To see supported technologies and features for the **Self-Managed Enterprise Edition**, refer to the following resources:

@@ -1,6 +1,6 @@
 ---
 title: Bitbucket Metadata
-description: A complete list of metadata ingested by Harness SEI from Bitbucket.
+description: A complete list of metadata ingested by Harness AIDI from Bitbucket.
 sidebar_label: Metadata
 sidebar_position: 4
 ---

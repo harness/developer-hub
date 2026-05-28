@@ -1,6 +1,6 @@
 ---
 title: Overview
-description: Integrate your on-premise tools and custom integrations into your Harness SEI project.
+description: Integrate your on-premise tools and custom integrations into your Harness AIDI project.
 sidebar_position: 1
 sidebar_label: Overview
 ---

@@ -238,7 +238,7 @@ The best Harness skills follow the same control flow even when they target diffe
 |-------|-------------|
 | `/analyze-costs` | Cloud cost analysis and optimization (CCM) |
 | `/security-report` | Vulnerability reports, SBOMs, compliance (SCS/STO) |
-| `/dora-metrics` | DORA metrics and engineering performance (SEI) |
+| `/dora-metrics` | DORA metrics and engineering performance (AIDI) |
 | `/gitops-status` | GitOps application health and sync status |
 | `/chaos-experiment` | Create and run chaos experiments |
 | `/scorecard-review` | Service maturity scorecards (IDP) |
@@ -246,7 +246,7 @@ The best Harness skills follow the same control flow even when they target diffe
 | `/create-policy` | Create OPA governance policies for supply chain security |
 | `/ai-operations` | Configure Harness AI-powered operations (AIDA) — predictive failure analysis and automation |
 | `/manage-slos` | Manage Service Reliability — SLOs, SLIs, and error budgets |
-| `/sei-analytics` | Advanced engineering analytics via Software Engineering Insights (SEI) |
+| `/sei-analytics` | Advanced engineering analytics via AI DLC Insights (AIDI) |
 
 ## End-to-end workflows
 

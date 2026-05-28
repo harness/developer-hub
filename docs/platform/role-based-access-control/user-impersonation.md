@@ -71,7 +71,7 @@ The Action column shows the activity, while the User column indicates wh
 1. The Impersonate User option is available only at the Account scope.
 2. Only users that have logged in at least once can be impersonated.
 3. The following are not supported during an impersonation session:
-    - [Software Engineering Insights](/docs/software-engineering-insights)
+    - [AI DLC Insights](/docs/software-engineering-insights)
     - Self-impersonation
     - Creating, editing, or deleting [API Keys or Access Tokens](/docs/platform/automation/api/add-and-manage-api-keys/)
     - Account-related actions such as:

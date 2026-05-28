@@ -4728,12 +4728,12 @@ const sidebars: SidebarsConfig = {
       },
       {
         type: 'html',
-        value: 'Use SEI 1.0',
+        value: 'Use Software Engineering Insights',
         className: 'horizontal-bar',
       },
       {
         type: 'category',
-        label: 'SEI 1.0 (Legacy)',
+        label: 'Software Engineering Insights (Legacy)',
         link: {
           type: 'generated-index',
           slug: '/category/sei-current',

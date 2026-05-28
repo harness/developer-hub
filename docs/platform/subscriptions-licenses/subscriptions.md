@@ -42,7 +42,7 @@ The following Harness modules are integral to a **Developer's** daily workflow. 
 - **Continuous Integration (CI):** All users on the Harness Platform who have permission to access Harness CI module are considered as **CI Developers** and consume a license.
 - **Internal Developer Portal (IDP):** All users on the Harness Platform who have permission to access Harness IDP module are considered as **IDP Developers** and consume a license.
 - **Feature Management & Experimentation (FME)**: All users on the Harness Platform who have permission to access the Harness FME module consume a user seat. Seats represent named users who manage flags, experiments, environments, or integrations within FME.
-- **Software Engineering Insights (SEI):** SEI allows admins to explicitly define (import) the list of Developers for whom Insights must be generated. All Developers in this list, explicitly consume a Developer license. These Developers may never login to the Harness Platform, but consume a license by virtue of having Insights generated for their engineering-related work. Insights may often be accessed by management or engineering leadership.
+- **AI DLC Insights (AIDI):** AIDI allows admins to explicitly define (import) the list of Developers for whom Insights must be generated. All Developers in this list, explicitly consume a Developer license. These Developers may never login to the Harness Platform, but consume a license by virtue of having Insights generated for their engineering-related work. Insights may often be accessed by management or engineering leadership.
 
 
 ### Modules with no direct developer tracking (consumption entitlements)
@@ -163,7 +163,7 @@ You can always acquire additional consumption entitlements as needed through add
 | **Service Reliability Management** | 1 Service for every 3 **Developers** |
 | **Chaos Engineering** | 1 Service for every 3 **Developers** |
 | **Infrastructure as Code Management** | 120 Executions per **Developer** per year|
-| **Software Engineering Insights** | Not applicable since **Developers** are tracked directly |
+| **AI DLC Insights** | Not applicable since **Developers** are tracked directly |
 | **Internal Developer Portal** | Not applicable since **Developers** are tracked directly|
 | **Security Testing Orchestration** | 100 Security Scans per **Developers** per month |
 | **Supply Chain Security** | 100 Supply Chain Executions per **Developers** per month|
@@ -226,7 +226,7 @@ For more information about specific module subscriptions and licenses, go to:
 - [FME usage and billing](/docs/feature-management-experimentation/account-usage)
 - [SRM subscriptions and licenses](/docs/service-reliability-management/get-started/srm-subscription-licensing)
 - [CE license consumption](/docs/chaos-engineering/guides/license-consumption)
-- [SEI subscriptions and licenses](/docs/software-engineering-insights/harness-sei/get-started/sei-subscription-and-licensing)
+- [AIDI subscriptions and licenses](/docs/software-engineering-insights/harness-sei/get-started/sei-subscription-and-licensing)
 - [CODE subscriptions and licenses](/docs/code-repository/get-started/cr-subscription-mgmt)
 
 ## Cloud Marketplace offerings

@@ -1,7 +1,7 @@
 ---
-title: Harness RBAC for SEI 2.0
-description: Learn how SEI 2.0 integrates with Harness RBAC to manage user permissions and access across account and project scopes.
-sidebar_label: Harness RBAC for SEI 2.0
+title: Harness RBAC for AI DLC Insights
+description: Learn how AI DLC Insights integrates with Harness RBAC to manage user permissions and access across account and project scopes.
+sidebar_label: Harness RBAC for AI DLC Insights
 sidebar_position: 15
 redirect_from:
 - /docs/software-engineering-insights/sei-new-experience/enable-sei-new-experience
@@ -10,7 +10,7 @@ redirect_from:
 
 ## Overview
 
-Harness Role-based Access Control (RBAC) allows you to manage permissions for Harness SEI 2.0 resources and users. With SEI 2.0 integrated into the Harness RBAC framework, SEI permissions behave like any other Harness module—enabling consistent, scalable access control across your organization.
+Harness Role-based Access Control (RBAC) allows you to manage permissions for Harness AI DLC Insights resources and users. With AI DLC Insights integrated into the Harness RBAC framework, SEI permissions behave like any other Harness module—enabling consistent, scalable access control across your organization.
 
 ### Scopes in Harness RBAC
 
@@ -32,11 +32,11 @@ flowchart TD
 * **Organization Scope**: Groups related projects, resources, and users. Resources created at the organization level are available to all projects within that organization but are not visible outside it.
 * **Project Scope**: Contains resources specific to a project, such as SEI insights. Project-level resources are not shared with other projects or organizations.
 
-Before configuring RBAC roles, ensure SEI 2.0 is enabled on your account. For more information about Harness RBAC, see the [Harness Platform documentation](/docs/platform/role-based-access-control/rbac-in-harness).
+Before configuring RBAC roles, ensure AI DLC Insights is enabled on your account. For more information about Harness RBAC, see the [Harness Platform documentation](/docs/platform/role-based-access-control/rbac-in-harness).
 
 ## Resources and scopes
 
-Harness SEI enables you to control who can view, edit, and manage SEI data across account and project scopes.
+Harness AIDI enables you to control who can view, edit, and manage SEI data across account and project scopes.
 
 | **Resource**              | **Scope(s)**     | **Notes**                                                                     |
 | ------------------------- | ---------------- | ----------------------------------------------------------------------------- |
@@ -48,7 +48,7 @@ Harness SEI enables you to control who can view, edit, and manage SEI data acros
 
 ## Out-of-the-box roles
 
-Harness SEI provides out-of-the-box roles for setting up access in SEI 2.0: **SEI Admin**, **SEI Team Manager**, and **SEI Viewer**.
+Harness AIDI provides out-of-the-box roles for setting up access in AI DLC Insights: **SEI Admin**, **SEI Team Manager**, and **SEI Viewer**.
 
 ### SEI Admin (Account + Project Level)
 
@@ -95,27 +95,27 @@ import TabItem from '@theme/TabItem';
 <Tabs queryString="rbac-walkthroughs">
 <TabItem value="ootb" label="OOTB Role">
 
-If you're an **Account Admin**, follow these steps to assign an out-of-the-box role (such as `SEI Admin`) with account and project level access to an existing user or group in SEI 2.0. 
+If you're an **Account Admin**, follow these steps to assign an out-of-the-box role (such as `SEI Admin`) with account and project level access to an existing user or group in AI DLC Insights. 
 
 <DocVideo src="https://app.tango.us/app/embed/b85251d7-006c-4a0a-8aa8-fbc63210ca86?skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Assign an SEI Admin Role in Harness" />
 
 </TabItem>
 <TabItem value="custom" label="Custom Role">
 
-If you're an **Account Admin**, follow these steps to create a custom role with view access in SEI 2.0. After creating the role, you’ll need to assign it to the users or user groups who require access to SEI 2.0. 
+If you're an **Account Admin**, follow these steps to create a custom role with view access in AI DLC Insights. After creating the role, you’ll need to assign it to the users or user groups who require access to AI DLC Insights. 
 
-<DocVideo src="https://app.tango.us/app/embed/eafeddf9-0887-4c3a-9b48-b777d1d43b16?skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Create and Assign Custom Roles in Harness SEI" />
+<DocVideo src="https://app.tango.us/app/embed/eafeddf9-0887-4c3a-9b48-b777d1d43b16?skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Create and Assign Custom Roles in Harness AIDI" />
 
 You can assign the role to individual users or to user groups, depending on your organization's access control preferences. 
 
 </TabItem>
 </Tabs>
 
-Once roles are assigned, users automatically gain access to SEI 2.0 within their existing projects.
+Once roles are assigned, users automatically gain access to AI DLC Insights within their existing projects.
 
 ## Create a resource group using the Harness API
 
-You can programmatically create and manage [resource groups](/docs/platform/role-based-access-control/add-resource-groups) using the [Harness Platform API](https://apidocs.harness.io/project-resource-groups) when you need to set up SEI 2.0 access for multiple teams, each with its own resource group and user assignments.
+You can programmatically create and manage [resource groups](/docs/platform/role-based-access-control/add-resource-groups) using the [Harness Platform API](https://apidocs.harness.io/project-resource-groups) when you need to set up AI DLC Insights access for multiple teams, each with its own resource group and user assignments.
 
 If a resource group includes specified projects, it provides access to resources in one or more selected projects. This option is available for resource groups created at the org scope, and you can use it to provide multi-project access without granting access to all projects under an org.
 
@@ -144,11 +144,11 @@ flowchart TD
 
 - A valid [Harness API key](/docs/software-engineering-insights/harness-sei/manage/api-keys#create-an-sei-api-key) with permissions to manage resource groups
 - Your Harness Account ID, Org ID, and Project ID
-- SEI 2.0 enabled in your project
+- AI DLC Insights enabled in your project
 
 ### Create a resource group and role assignment
 
-Create a project-level resource group to define which users or user groups have access to specific resources in SEI 2.0. Each resource group acts as a logical boundary (for example, one per engineering team) and includes both the resources it controls and the associated [role assignments](https://apidocs.harness.io/project-role-assignments).
+Create a project-level resource group to define which users or user groups have access to specific resources in AI DLC Insights. Each resource group acts as a logical boundary (for example, one per engineering team) and includes both the resources it controls and the associated [role assignments](https://apidocs.harness.io/project-role-assignments).
 
 1. List existing resource groups. Use the following request to confirm which resource groups already exist in your SEI project:
 
@@ -175,7 +175,7 @@ Create a project-level resource group to define which users or user groups have 
          "team": "bravo",
          "environment": "prod"
        },
-       "description": "This is a resource group for Team Bravo, providing access to SEI 2.0.",
+       "description": "This is a resource group for Team Bravo, providing access to AI DLC Insights.",
        "included_scope": [
          {
            "filter": "EXCLUDING_CHILD_SCOPES",

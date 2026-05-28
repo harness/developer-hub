@@ -369,7 +369,7 @@ const config: Config = {
             },
             {
               label: 'AI DLC Insights',
-              to: 'https://www.harness.io/products/software-engineering-insights',
+              to: 'https://www.harness.io/products/ai-dlc-insights',
             },
             {
               label: 'AI Test Automation',

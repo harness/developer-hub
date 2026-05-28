@@ -1,6 +1,6 @@
 ---
 title: Key concepts in AI DLC Insights 
-description: The new experience for measuring engineering insights in Harness SEI
+description: The new experience for measuring engineering insights in Harness AIDI
 sidebar_label: Key Concepts
 sidebar_position: 10
 ---
@@ -18,7 +18,7 @@ AI DLC Insights is built around a set of flexible building blocks that help you 
 
 ## Core Concepts
 
-To answer these questions, SEI 2.0 introduces a simplified and extensible data model. 
+To answer these questions, AI DLC Insights introduces a simplified and extensible data model. 
 
 ```mermaid
 flowchart LR
@@ -62,15 +62,15 @@ This data model diagram walks through how SEI handles organizational data and in
 * [Org Tree(s)](#org-tree): Developers are grouped based on attributes like `Manager`, `Location`, `Role`, `Employment Type`, or `Project`. Leaf nods of the Org Tree becomes Teams.
 * [Team](#teams): Team Managers are assigned by the SEI Admin at the project level and configure team-specific settings (e.g. Jira projects, Git repos, production services, and pipelines) influenced by associated Profiles.
 * [Profiles](#profiles): Define which insights to enable and how they are computed, and are associated with one or more Org Trees to guide all insights calculations.
-* [Dashboards in Insights](#dashboards-in-insights): The primary way insights are consumed in SEI 2.0. Dashboards are generated using data filtered by Profiles, Teams, and Org Tree context, and are [viewed on the **Insights** page](/docs/software-engineering-insights/harness-sei/insights/).
+* [Dashboards in Insights](#dashboards-in-insights): The primary way insights are consumed in AI DLC Insights. Dashboards are generated using data filtered by Profiles, Teams, and Org Tree context, and are [viewed on the **Insights** page](/docs/software-engineering-insights/harness-sei/insights/).
 
 :::tip
-The foundation of Harness SEI is the account-level [Integrations setup](/docs/category/configure-integrations) by the SEI Admin. These integrations must be configured before importing developers or creating Org Trees.
+The foundation of Harness AIDI is the account-level [Integrations setup](/docs/category/configure-integrations) by the SEI Admin. These integrations must be configured before importing developers or creating Org Trees.
 :::
 
 ### Developers
 
-Developers are the foundational unit in SEI 2.0. Every insight, metric, and trend in the platform starts with accurate identification and attribution of developer activity across your toolchain.
+Developers are the foundational unit in AI DLC Insights. Every insight, metric, and trend in the platform starts with accurate identification and attribution of developer activity across your toolchain.
 SEI automatically handles the complexity of identity mapping across systems like GitHub, GitLab, Jira, Bitbucket, PagerDuty, and more so you don’t have to based on developer email.
 Developers can belong to multiple teams across different Org Trees and Projects, based on the grouping logic defined in your Org Tree.
 
@@ -78,18 +78,18 @@ Developers can belong to multiple teams across different Org Trees and Projects,
 
 ### Org Tree
 
-The Org Tree represents your organizational hierarchy and structure in SEI 2.0. It provides the foundation for grouping developers and replicating the org hierarchy into SEI 2.0.
+The Org Tree represents your organizational hierarchy and structure in AI DLC Insights. It provides the foundation for grouping developers and replicating the org hierarchy into AI DLC Insights.
 At present, the Org Tree is powered by CSV-based imports from your HRIS system (e.g., Workday, BambooHR). The CSV must include a contributor attribute (such as ManagerEmail or ManagerID) that defines the reporting relationship between individuals.
 
-Using this structure, SEI 2.0 automatically builds a manager and reportee tree, allowing you to view and analyze metrics in the context of real-world teams and reporting lines.
+Using this structure, AI DLC Insights automatically builds a manager and reportee tree, allowing you to view and analyze metrics in the context of real-world teams and reporting lines.
 
 ![](../static/org-tree-preview.png)
 
-Multi-level groupings based on custom attributes (e.g., Department → Function → Team) are supported in SEI 2.0. This allows organizations to model more complex hierarchies and operational structures, making it easier to analyze engineering performance across departments, locations, and lines of business.
+Multi-level groupings based on custom attributes (e.g., Department → Function → Team) are supported in AI DLC Insights. This allows organizations to model more complex hierarchies and operational structures, making it easier to analyze engineering performance across departments, locations, and lines of business.
 
 ### Teams
 
-Teams are the core unit of measurement in SEI 2.0. Every leaf node in the Org Tree is treated as a Team, making it the fundamental grouping for surfacing insights, applying goals, and driving accountability.
+Teams are the core unit of measurement in AI DLC Insights. Every leaf node in the Org Tree is treated as a Team, making it the fundamental grouping for surfacing insights, applying goals, and driving accountability.
 
 Each Team represents a group of developers working together within the organizational hierarchy and is automatically derived from the Org Tree structure.
 
@@ -105,13 +105,13 @@ This configuration layer adds precision to how metrics like Deployment Frequency
 
 ### Profiles
 
-**Profiles** control **what SEI 2.0 measures** and **how it measures it** by enabling or disabling specific metrics and defining which event types power those metrics. They provide a flexible way to customize SEI 2.0 insights to your organization’s goals and workflows.
+**Profiles** control **what AI DLC Insights measures** and **how it measures it** by enabling or disabling specific metrics and defining which event types power those metrics. They provide a flexible way to customize AI DLC Insights insights to your organization’s goals and workflows.
 
 Each Profile includes which **metrics** are enabled or disabled (e.g., Deployment Frequency, Lead Time, Change Failure Rate) and the **events and signals** that power those metrics.
 
 #### Types of Profiles
 
-SEI 2.0 supports three main types of Profiles, each optimized for different measurement objectives:
+AI DLC Insights supports three main types of Profiles, each optimized for different measurement objectives:
 
 | Type of profile      | Purpose                                  | Metrics                                                  |
 |---------------------|---------------------------------------------|-----------------------------------------------------------------|
@@ -127,17 +127,17 @@ SEI 2.0 supports three main types of Profiles, each optimized for different meas
 - The assigned Profile applies to the **entire Org Tree and all Teams within it**.
 - This ensures consistent measurement and reporting across all organizational units under that tree.
 
-Together, Developers, Org Trees, Teams, and Profiles define how data is collected, grouped, and calculated in SEI 2.0. This data is surfaced in dashboards on the [**Insights** page](/docs/software-engineering-insights/harness-sei/insights/).
+Together, Developers, Org Trees, Teams, and Profiles define how data is collected, grouped, and calculated in AI DLC Insights. This data is surfaced in dashboards on the [**Insights** page](/docs/software-engineering-insights/harness-sei/insights/).
 
 ### Dashboards in Insights
 
-SEI 2.0 surfaces all metrics and insights through dashboards on the **Insights** page, where dashboards are viewed and shared. These include both out-of-the-box dashboards and custom dashboards created by your team.
+AI DLC Insights surfaces all metrics and insights through dashboards on the **Insights** page, where dashboards are viewed and shared. These include both out-of-the-box dashboards and custom dashboards created by your team.
 
 Whether you're focused on shipping faster, improving collaboration, or aligning engineering with business goals, the **Insights** page is your central place to track performance.
 
 #### Out-of-the-box dashboards
 
-SEI 2.0 includes the following pre-built dashboards designed to deliver value from day one:
+AI DLC Insights includes the following pre-built dashboards designed to deliver value from day one:
 
 * **Efficiency**: Get a complete picture of your engineering throughput and stability. This dashboard combines **DORA Metrics** and **Sprint Insights** to highlight how reliably and predictably your teams are delivering
 
@@ -173,7 +173,7 @@ SEI 2.0 includes the following pre-built dashboards designed to deliver value fr
 Canvas dashboards are in beta. To request access, contact [Harness Support](/docs/software-engineering-insights/sei-support).
 :::
 
-If the out-of-the-box dashboards on the **Insights** page don’t meet your needs, you can use [Canvas](/docs/software-engineering-insights/harness-sei/canvas/) to create custom dashboards in SEI 2.0.
+If the out-of-the-box dashboards on the **Insights** page don’t meet your needs, you can use [Canvas](/docs/software-engineering-insights/harness-sei/canvas/) to create custom dashboards in AI DLC Insights.
 
 ![](../static/canvas-3.png)
 

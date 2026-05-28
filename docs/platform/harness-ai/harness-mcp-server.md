@@ -753,7 +753,7 @@ For remote pipelines, pass `store_type`, `connector_ref` (or `is_harness_code_re
 | `cost_recommendation_detail` | | x | | | | |
 | `cost_commitment` | | x | | | | |
 
-### Software Engineering Insights (SEI)
+### AI DLC Insights (AIDI)
 
 | Resource Type | List | Get | Create | Update | Delete | Execute Actions |
 |---------------|:----:|:---:|:------:|:------:|:------:|-----------------|

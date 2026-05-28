@@ -1,6 +1,6 @@
 ---
 title: Jenkins Plugin
-description: Integrate Harness SEI with Jenkins.
+description: Integrate Harness AIDI with Jenkins.
 sidebar_position: 1
 sidebar_label: Jenkins Plugin
 ---

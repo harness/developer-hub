@@ -1,12 +1,12 @@
 ---
 title: Copy Team Integration Settings Across Teams
-description: Learn how to programmatically create, update, and override team integration settings and filters using the Harness SEI REST API.
+description: Learn how to programmatically create, update, and override team integration settings and filters using the Harness AIDI REST API.
 sidebar_label: Copy Team Integration Settings
 sidebar_position: 4
 unlisted: true
 ---
 
-You can use the Harness SEI API to apply a consistent configuration across multiple teams, typically during onboarding or when introducing a new integration. When [configuring teams](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams) in Harness SEI, each team can have:
+You can use the Harness AIDI API to apply a consistent configuration across multiple teams, typically during onboarding or when introducing a new integration. When [configuring teams](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams) in Harness AIDI, each team can have:
 
 1. **Integrations** (e.g., Jira, GitHub, and Bitbucket)
 2. **Integration filters** (e.g., Jira status categories, project keys, and repository filters)
@@ -32,7 +32,7 @@ Harness recommends following these best practices:
 - **Order matters:** Always update integrations first, then filters.
 - **Filter behavior:** The `PUT` endpoint for `integration_filters` **merges** values rather than fully replacing them. If you need to remove a filter value, you may need to set the filter with only the desired values.
 - **Rate limiting:** Add a short delay between API calls to avoid overwhelming the server.
-- **Validation:** After updating, spot-check a few teams in the Harness SEI UI to confirm settings are correct.
+- **Validation:** After updating, spot-check a few teams in the Harness AIDI UI to confirm settings are correct.
 - **Leaf teams only:** Only leaf teams (teams without children) need individual filter configuration. Parent teams inherit from their children for reporting.
 
 ## Step 1: Get all teams in an Org Tree

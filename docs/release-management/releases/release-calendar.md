@@ -113,7 +113,7 @@ Use this filter to:
 When working in a multi-project account, filter releases by Harness project to see only your team's releases or monitor specific project activity. The dropdown shows a searchable list of all projects with releases.
 
 Available options include:
-- All projects in your account (e.g., SEI Sandbox, Demo Prod2, IDP)
+- All projects in your account (e.g., AIDI Sandbox, Demo Prod2, IDP)
 - Search field to quickly find projects by name
 - Multiple selection support with checkboxes
 - Clear Selection option to reset the filter

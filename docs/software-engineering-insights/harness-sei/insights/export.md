@@ -1,7 +1,7 @@
 ---
-title: Export Insights in SEI 2.0
-description: Learn how to share dashboard widgets and export insights in Harness SEI.
-sidebar_label: Export SEI 2.0 Insights
+title: Export Insights in AI DLC Insights
+description: Learn how to share dashboard widgets and export insights in Harness AIDI.
+sidebar_label: Export AI DLC Insights
 sidebar_position: 5
 redirect_from:
 - /docs/software-engineering-insights/harness-sei/analytics-and-reporting/export
@@ -10,14 +10,14 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-You can download and share insights from SEI 2.0 in PDF and CSV formats. This allows you to share key performance metrics and insights across teams and stakeholders for reporting, analysis, and decision-making. 
+You can download and share insights from AI DLC Insights in PDF and CSV formats. This allows you to share key performance metrics and insights across teams and stakeholders for reporting, analysis, and decision-making. 
 
-SEI 2.0 supports exporting **org-level, team-level, individual-level, and sprint-based metrics**, depending on the insight type and export option selected.
+AI DLC Insights supports exporting **org-level, team-level, individual-level, and sprint-based metrics**, depending on the insight type and export option selected.
 
 * **PDF Export** provides a snapshot of the dashboard view, including all widgets and the organizational hierarchy. This format is ideal for presentations and read-only sharing.
 * **CSV Export** allows you to download raw metric data for further analysis. You can choose the aggregation level (for example, org, team, individual, or sprint) and select which metrics to include. 
 
-You can click on the kebab menu (⋮) and select **Export as PDF/CSV** in the [Efficiency](/docs/software-engineering-insights/harness-sei/insights/efficiency) and [Productivity](/docs/software-engineering-insights/harness-sei/insights/productivity) dashboards, or click an **Export** button in the **Sprint Metrics** tab in the [Efficiency](/docs/software-engineering-insights/harness-sei/insights/efficiency) dashboard to export data at the insight and widget level in SEI 2.0. 
+You can click on the kebab menu (⋮) and select **Export as PDF/CSV** in the [Efficiency](/docs/software-engineering-insights/harness-sei/insights/efficiency) and [Productivity](/docs/software-engineering-insights/harness-sei/insights/productivity) dashboards, or click an **Export** button in the **Sprint Metrics** tab in the [Efficiency](/docs/software-engineering-insights/harness-sei/insights/efficiency) dashboard to export data at the insight and widget level in AI DLC Insights. 
 
 <Tabs queryString="export-options">
 <TabItem value="insights" label="Insight Level">
@@ -131,4 +131,4 @@ The following naming conventions apply:
 
 To export a PDF of the **Productivity** dashboard or individual Productivity widgets, follow the same steps from the **Productivity** tab. Widget names may appear as abbreviated identifiers such as `PRV`, `BR`, or `FC` for **PR Velocity**, **Bugs Resolved**, and **Features Completed**, respectively.
 
-For programmatic exports, see [Add Export Productivity and Efficiency Metrics Using the Harness SEI API](/docs/software-engineering-insights/harness-sei/api/export-insights).
+For programmatic exports, see [Add Export Productivity and Efficiency Metrics Using the Harness AIDI API](/docs/software-engineering-insights/harness-sei/api/export-insights).

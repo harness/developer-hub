@@ -1,12 +1,12 @@
 ---
 title: Harness Code
-description: Integrate Harness SEI with the Harness Code module.
+description: Integrate Harness AIDI with the Harness Code module.
 sidebar_position: 1
 sidebar_label: Harness Code
 ---
 
 :::tip 
-The Harness Code integration with SEI 2.0 is in beta. To request access, contact [Harness Support](/docs/software-engineering-insights/sei-support).
+The Harness Code integration with AI DLC Insights is in beta. To request access, contact [Harness Support](/docs/software-engineering-insights/sei-support).
 :::
 
 Use the Harness Code integration to integrate AI DLC Insights with the [Harness Code Repository module](/docs/code-repository).

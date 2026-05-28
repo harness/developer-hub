@@ -1,13 +1,13 @@
 ---
-title: Productivity Profiles in SEI 2.0
-description: Learn how to create a Productivity Profile in SEI 2.0 to track developer contribution and activity.
+title: Productivity Profiles in AI DLC Insights
+description: Learn how to create a Productivity Profile in AI DLC Insights to track developer contribution and activity.
 sidebar_label: Productivity
 sidebar_position: 2
 ---
 
-A Productivity Profile helps you define how developer activity and contribution metrics are calculated in SEI 2.0. These profiles surface key insights such as coding frequency, pull request behavior, work completed per developer, and code rework, without requiring any manual resource definitions.
+A Productivity Profile helps you define how developer activity and contribution metrics are calculated in AI DLC Insights. These profiles surface key insights such as coding frequency, pull request behavior, work completed per developer, and code rework, without requiring any manual resource definitions.
 
-The Harness SEI system automatically derives these metrics from your connected **Source Code Management (SCM)** and **Issue Management (IM)** systems data, based on where developer contributions are detected. For Code Rework, SEI 2.0 analyzes file changes within pull requests to identify where rework is coming from and which developers are introducing that rework, rather than relying solely on high-level SCM or IM activity signals.
+The Harness AIDI system automatically derives these metrics from your connected **Source Code Management (SCM)** and **Issue Management (IM)** systems data, based on where developer contributions are detected. For Code Rework, AI DLC Insights analyzes file changes within pull requests to identify where rework is coming from and which developers are introducing that rework, rather than relying solely on high-level SCM or IM activity signals.
 
 To ensure attribution is accurate, make sure each developer has their SCM usernames and IM account IDs added on the **Developers** tab in [Team Settings](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams).
 
@@ -15,7 +15,7 @@ To ensure attribution is accurate, make sure each developer has their SCM userna
 
 Before you begin:
 
-* The SEI 2.0 module is enabled for your Harness account.
+* The AI DLC Insights module is enabled for your Harness account.
 * You must have the **SEI Admin** role to create or manage Productivity Profiles.
 * At least one Source Code Manager or Issue Management type integration should be present in the account.
 
@@ -63,14 +63,14 @@ Pull requests are classified as Small, Medium, and Large based on configured thr
 
 Use Code Rework to measure how much development effort is spent rewriting or replacing existing code instead of introducing new code. Code Rework is file-driven, not lines-of-code driven, meaning the metric tracks the files being modified rather than raw line counts.
 
-You can customize how SEI 2.0 classifies recent and legacy code to analyze where rework is coming from and who is introducing it. Set the number of days to consider as recent code to define the time window. By default, this is set to 30 days.
+You can customize how AI DLC Insights classifies recent and legacy code to analyze where rework is coming from and who is introducing it. Set the number of days to consider as recent code to define the time window. By default, this is set to 30 days.
 
 ![](../../static/productivity-2.png)
 
 * **Recent Code**: Code introduced within the past 30 days (by default)
 * **Legacy Code**: Code introduced before the recent-code window (older than 30 days)
 
-For each merged pull request, SEI 2.0 computes reworked lines using the balance heuristic:
+For each merged pull request, AI DLC Insights computes reworked lines using the balance heuristic:
 
 $$
 \text{Reworked Lines} = \min(\text{Lines Added}, \text{Lines Deleted})

@@ -150,7 +150,7 @@ python .claude/scripts/find-oldest-docs.py --list-modules
 | `rt` | Resilience Testing |
 | `sto` | Security Testing Orchestration |
 | `platform` | Platform |
-| `sei` | AI DLC Insights |
+| `aidi` | AI DLC Insights |
 | `idp` | Internal Developer Portal |
 | `scs` | Software Supply Chain Assurance |
 | `fme` | Feature Management & Experimentation |

@@ -107,7 +107,7 @@ export default function CertificationsSEI() {
               <i className="fa-solid fa-arrow-left"></i> Back to University Home
             </Link>
           </div>
-          <h1>Software Engineering Insights</h1>
+          <h1>AI DLC Insights</h1>
           <div>
             Discover SDLC bottlenecks, assess team productivity, and improve
             developer experience guided by data and insights.
@@ -353,7 +353,7 @@ export default function CertificationsSEI() {
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
                     <h2>
-                      Software Engineering Insights - Administrator (BETA COMING
+                      AI DLC Insights - Administrator (BETA COMING
                       SOON)
                     </h2>
                     <img
@@ -441,7 +441,7 @@ export default function CertificationsSEI() {
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
                     <h2>
-                      Software Engineering Insights - Architect (BETA COMING
+                      AI DLC Insights - Architect (BETA COMING
                       SOON)
                     </h2>
                     <img

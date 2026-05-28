@@ -20,7 +20,7 @@ SEI Developer Licensing model allows SEI Admins to be in complete control of the
 
 ### View license usage
 
-You can view and manage your Harness SEI subscription in your **Harness Account Settings**.
+You can view and manage your Harness AIDI subscription in your **Harness Account Settings**.
 
 In your Harness account, go to **Account Settings** to view which Harness modules you are currently subscribed to. Subscriptions are shown in the **Subscribed Modules** section on the **Overview** page. You can select Manage to go to the **Subscriptions** page.
 

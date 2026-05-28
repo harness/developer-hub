@@ -1,6 +1,6 @@
 ---
 title: GitHub Copilot Integration
-description: Set up the GitHub Copilot integration to ingest usage and adoption metrics in SEI 2.0.
+description: Set up the GitHub Copilot integration to ingest usage and adoption metrics in AI DLC Insights.
 sidebar_label: GitHub Copilot
 ---
 
@@ -8,7 +8,7 @@ sidebar_label: GitHub Copilot
 The GitHub Copilot integration is in beta. To request access, contact [Harness Support](/docs/software-engineering-insights/sei-support).
 :::
 
-The GitHub Copilot integration enables SEI 2.0 to ingest usage and adoption metrics for GitHub Copilot coding assistants. 
+The GitHub Copilot integration enables AI DLC Insights to ingest usage and adoption metrics for GitHub Copilot coding assistants. 
 
 ### Prerequisites
 

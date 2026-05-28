@@ -11,9 +11,9 @@ redirect_from:
 Security Insights is in beta. To request access, contact [Harness Support](/docs/software-engineering-insights/sei-support).
 :::
 
-Security Insights in SEI 2.0 focuses on understanding vulnerability risk across your application and infrastructure assets. Rather than looking at security finding in isolation, SEI surfaces signals that help teams assess exposure, remediation effectiveness, and long-lived risk over time.
+Security Insights in AI DLC Insights focuses on understanding vulnerability risk across your application and infrastructure assets. Rather than looking at security finding in isolation, SEI surfaces signals that help teams assess exposure, remediation effectiveness, and long-lived risk over time.
 
-This experience is designed to provide a clear, actionable view of security health, whether you're monitoring organization-wide trends or drilling into specific teams and assets. By combining time-based analysis with asset-level filtering, SEI 2.0 helps you identify where risk is accumulating, how quickly vulnerabilities are resolved, and where remediation efforts may need to be prioritized.
+This experience is designed to provide a clear, actionable view of security health, whether you're monitoring organization-wide trends or drilling into specific teams and assets. By combining time-based analysis with asset-level filtering, AI DLC Insights helps you identify where risk is accumulating, how quickly vulnerabilities are resolved, and where remediation efforts may need to be prioritized.
 
 Use the Security Insights dashboard on the **Security** tab of the **Insights** page to analyze vulnerability risk across your application and infrastructure assets. 
 

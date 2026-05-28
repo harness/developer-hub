@@ -1,6 +1,6 @@
 ---
 title: Create Org Trees
-description: Learn how to create organizational trees for your team in SEI 2.0.
+description: Learn how to create organizational trees for your team in AI DLC Insights.
 sidebar_label: Create Org Trees
 sidebar_position: 6
 redirect_from:
@@ -10,7 +10,7 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Org Trees define the organizational structure that SEI 2.0 uses to group developers, derive teams, and calculate metrics across Efficiency, Productivity, and Business Alignment insights. Each Org Tree represents a complete reporting hierarchy built from your developer records, and serves as the source of truth for how [teams](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams) are created and measured in SEI 2.0. Teams are automatically derived as leaf nodes within an Org Tree. 
+Org Trees define the organizational structure that AI DLC Insights uses to group developers, derive teams, and calculate metrics across Efficiency, Productivity, and Business Alignment insights. Each Org Tree represents a complete reporting hierarchy built from your developer records, and serves as the source of truth for how [teams](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams) are created and measured in AI DLC Insights. Teams are automatically derived as leaf nodes within an Org Tree. 
 
 You can model complex organizational structures by defining multiple hierarchy levels and applying data filters using attributes such as `Role`, `Site`, and `Team`. Levels determine how teams are grouped in the hierarchy, while data filters limit which developer records are included in the Org Tree.
 
@@ -56,16 +56,16 @@ Before setting up your Org Tree, ensure the following:
 * You have configured Issue Management (e.g. Jira, Azure Boards), Source Code Management (e.g. GitHub, GitLab), and CI/CD (e.g. Harness) integrations, if applicable
 
 <details>
-<summary>How Org Trees Work in SEI 2.0</summary>
+<summary>How Org Trees Work in AI DLC Insights</summary>
 
 Org Trees are automatically generated from your organization's developer records, which are typically sourced from an HRIS system such as Workday or BambooHR and uploaded as a CSV file.
 
-To construct the Org Tree, SEI 2.0 uses two primary fields from the developer records:
+To construct the Org Tree, AI DLC Insights uses two primary fields from the developer records:
 
 * **Developer identifier:** A unique identifier for each developer, most commonly their email address.
 * **Reporting field:** A reference to the developer's manager (for example, `Manager Email`).
 
-Using these fields, SEI 2.0 builds a hierarchical structure that reflects your organization's reporting relationships where:
+Using these fields, AI DLC Insights builds a hierarchical structure that reflects your organization's reporting relationships where:
 
 * Each manager is represented as a node in the Org Tree.
 * Direct reports are grouped beneath their manager.
@@ -75,23 +75,23 @@ The result is a complete manager-reportee tree that mirrors your real-world orga
 
 ![](../static/org-tree-step1.png)
 
-Org Trees are kept in sync with your organization through ongoing developer record uploads. When you upload an updated CSV from your HRIS system, SEI 2.0 automatically detects changes such as new hires, reporting line updates, or team changes and rebuilds the Org Tree accordingly.
+Org Trees are kept in sync with your organization through ongoing developer record uploads. When you upload an updated CSV from your HRIS system, AI DLC Insights automatically detects changes such as new hires, reporting line updates, or team changes and rebuilds the Org Tree accordingly.
 
 If new teams are introduced or developers move between teams, you may need to review and update [**Team Settings**](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams) to ensure insights and metrics are attributed correctly.
 
 </details>
 
-Org Trees form the foundation for team-based analysis in SEI 2.0, allowing you to:
+Org Trees form the foundation for team-based analysis in AI DLC Insights, allowing you to:
 
 * Automatically group developers into teams based on real reporting structures
 * Calculate metrics and surface insights at the team, manager, or organizational level
 * Analyze performance across departments, business units, or leadership
 
-By grounding insights in your actual organizational structure, SEI 2.0 ensures that metrics reflect how work is owned, delivered, and managed across your organization.
+By grounding insights in your actual organizational structure, AI DLC Insights ensures that metrics reflect how work is owned, delivered, and managed across your organization.
 
 ## Multi-level hierarchies
 
-You can define **multi-level hierarchies** for your Org Tree in SEI 2.0. In addition to manager-reportee relationships, you can group developers by custom attributes such as `Email`, `Manager Email`, `Name`, `Role`, `Site`, and `Team`.
+You can define **multi-level hierarchies** for your Org Tree in AI DLC Insights. In addition to manager-reportee relationships, you can group developers by custom attributes such as `Email`, `Manager Email`, `Name`, `Role`, `Site`, and `Team`.
 
 This flexibility allows you to:
 
@@ -103,7 +103,7 @@ This flexibility allows you to:
 
 ## Create an Org Tree
 
-1. From the Harness SEI navigation menu, click **Org Trees**.  
+1. From the Harness AIDI navigation menu, click **Org Trees**.  
 1. Click **+ Create Org Tree**.  
 1. Enter a name for your Org Tree and click **Next**.  
 
@@ -168,10 +168,10 @@ This flexibility allows you to:
 
 1. Click **Save Org Tree** to complete setup. You will see a confirmation message: `Org tree created successfully`.
 
-After you save an Org Tree, it becomes active across SEI 2.0 and available for analysis. Engineering leaders and managers can start exploring insights at different levels of the organization: by team, manager, or business unit, based on the structure you defined.
+After you save an Org Tree, it becomes active across AI DLC Insights and available for analysis. Engineering leaders and managers can start exploring insights at different levels of the organization: by team, manager, or business unit, based on the structure you defined.
 
 Each team in the Org Tree automatically inherits the selected profiles and default integrations. These inherited settings provide a baseline configuration that ensures metrics are calculated consistently across the organization, while still allowing teams to override specific settings when needed.
 
-The Org Tree serves as a foundational layer in SEI 2.0, enabling dashboards on the **Insights** page to be organized around real teams, improving visibility into developer performance, and supporting meaningful comparisons across teams and business units.
+The Org Tree serves as a foundational layer in AI DLC Insights, enabling dashboards on the **Insights** page to be organized around real teams, improving visibility into developer performance, and supporting meaningful comparisons across teams and business units.
 
 Once your Org Tree(s) are in place, you can configure [team-specific settings](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams) and review [developer records](/docs/software-engineering-insights/harness-sei/setup-sei/manage-developers).

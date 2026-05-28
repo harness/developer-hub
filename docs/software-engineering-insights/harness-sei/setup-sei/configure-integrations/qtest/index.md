@@ -1,10 +1,10 @@
 ---
 title: Tricentis qTest Integration
-description: Set up the Tricentis qTest integration to ingest test management data in SEI 2.0.
+description: Set up the Tricentis qTest integration to ingest test management data in AI DLC Insights.
 sidebar_label: qTest
 ---
 
-The Tricentis qTest integration enables SEI 2.0 to ingest test management data from qTest Cloud. This data can be used to track testing activity and correlate test execution with engineering metrics in SEI dashboards.
+The Tricentis qTest integration enables AI DLC Insights to ingest test management data from qTest Cloud. This data can be used to track testing activity and correlate test execution with engineering metrics in SEI dashboards.
 
 ### Prerequisites
 
@@ -23,7 +23,7 @@ To configure the qTest integration:
 1. Click **Validate & Continue**.
 1. Once validation succeeds, click **Validate and Create Integration**.
 
-Once the integration is configured, Harness SEI begins ingesting test management data from qTest.
+Once the integration is configured, Harness AIDI begins ingesting test management data from qTest.
 
 ## Integration monitoring
 

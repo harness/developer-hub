@@ -52,7 +52,7 @@ const MODULE_NAME_MAP = {
   'code-repository': 'Code Repository',
   'artifact-registry': 'Artifact Registry',
   'internal-developer-portal': 'Internal Developer Portal (IDP)',
-  'software-engineering-insights': 'AI DLC Insights (SEI)',
+  'software-engineering-insights': 'AI DLC Insights (AIDI)',
   'service-reliability-management': 'Service Reliability Management (SRM)',
   'platform': 'Platform',
   'get-started': 'Get Started',

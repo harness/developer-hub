@@ -1,5 +1,5 @@
 ---
-title: View Insights across Org Trees and Teams in SEI 2.0
+title: View Insights across Org Trees and Teams in AI DLC Insights
 description: Learn how to navigate the the Org Tree on the Insights dashboard to analyze engineering metrics at the organization, team, and developer levels.
 sidebar_position: 1
 id: index
@@ -12,7 +12,7 @@ redirect_from:
 - /docs/software-engineering-insights/harness-sei/setup-sei/view-insights/granular-insights
 ---
 
-Once you’ve set up integrations, created profiles, uploaded your developer records, and created an [Org Tree](/docs/software-engineering-insights/harness-sei/setup-sei/setup-org-tree), SEI 2.0 enables you to explore high-level engineering insights across your organization, including [Efficiency](/docs/software-engineering-insights/harness-sei/insights/efficiency), [Productivity](/docs/software-engineering-insights/harness-sei/insights/productivity), and [Business Alignment](/docs/software-engineering-insights/harness-sei/insights/business-alignment) for the entire organization.
+Once you’ve set up integrations, created profiles, uploaded your developer records, and created an [Org Tree](/docs/software-engineering-insights/harness-sei/setup-sei/setup-org-tree), AI DLC Insights enables you to explore high-level engineering insights across your organization, including [Efficiency](/docs/software-engineering-insights/harness-sei/insights/efficiency), [Productivity](/docs/software-engineering-insights/harness-sei/insights/productivity), and [Business Alignment](/docs/software-engineering-insights/harness-sei/insights/business-alignment) for the entire organization.
 
 Insights are always scoped to the selected **Org Tree**, allowing you to analyze engineering performance across different organizational structures.
 
@@ -20,7 +20,7 @@ Insights are always scoped to the selected **Org Tree**, allowing you to analyze
 
 To access the Insights dashboard:
 
-1. From the Harness SEI navigation pane, click **Insights**.
+1. From the Harness AIDI navigation pane, click **Insights**.
 1. Select an [**Org Tree**](/docs/software-engineering-insights/harness-sei/get-started/sei-key-concepts#org-tree) from the dropdown menu at the top of the dashboard. 
 
    ![](../static/insights-1.png)
@@ -33,11 +33,11 @@ If your organization uses multiple Org Trees, you can switch between them to vie
 
 ![](../static/insights-3.png)
 
-For more information on exporting insights, see [Exporting SEI 2.0 Insights](/docs/software-engineering-insights/harness-sei/insights/export).
+For more information on exporting insights, see [Exporting AI DLC Insights Insights](/docs/software-engineering-insights/harness-sei/insights/export).
 
 ## View team-level insights
 
-Beyond organization-wide views, SEI 2.0 allows you to drill into specific [teams](/docs/software-engineering-insights/harness-sei/get-started/sei-key-concepts#teams) to analyze localized engineering performance on the **Insights** page.
+Beyond organization-wide views, AI DLC Insights allows you to drill into specific [teams](/docs/software-engineering-insights/harness-sei/get-started/sei-key-concepts#teams) to analyze localized engineering performance on the **Insights** page.
 
 To view team-level insights:
 
@@ -55,9 +55,9 @@ This enables consistent comparison between organization-wide performance, team-l
 
 ## Explore drilldown-level insights
 
-Beyond team-level breakdowns, SEI 2.0 provides drilldown views that allow you to inspect metrics at the developer and record level. Drilldowns help you understand *why* a metric behaves a certain way by exposing the underlying pull requests, work items, or code changes that contribute to the aggregated view.
+Beyond team-level breakdowns, AI DLC Insights provides drilldown views that allow you to inspect metrics at the developer and record level. Drilldowns help you understand *why* a metric behaves a certain way by exposing the underlying pull requests, work items, or code changes that contribute to the aggregated view.
 
-Drilldowns are available at the leaf team level after selecting **View Breakdown**, and they provide the most granular level of insight in SEI 2.0.
+Drilldowns are available at the leaf team level after selecting **View Breakdown**, and they provide the most granular level of insight in AI DLC Insights.
 
 ```mermaid
 flowchart LR
@@ -106,9 +106,9 @@ Each drilldown is scoped to the selected time range and inherits all filters app
 
 ## Engineering performance benchmarks and goals
 
-SEI 2.0 provides engineering metrics across Org Trees, teams, and developers, but interpretation of these metrics depends on team maturity, workflow, and organizational context. This section provides recommended benchmarks and goals to help teams evaluate and improve their software delivery performance over time. 
+AI DLC Insights provides engineering metrics across Org Trees, teams, and developers, but interpretation of these metrics depends on team maturity, workflow, and organizational context. This section provides recommended benchmarks and goals to help teams evaluate and improve their software delivery performance over time. 
 
-These benchmarks are not strict requirements. High-performing teams focus on sustained improvement rather than meeting fixed thresholds. Use these benchmarks to interpret insights surfaced in SEI 2.0.
+These benchmarks are not strict requirements. High-performing teams focus on sustained improvement rather than meeting fixed thresholds. Use these benchmarks to interpret insights surfaced in AI DLC Insights.
 
 <details>
 <summary>Phase 1: The Basics</summary>
@@ -221,4 +221,4 @@ At this stage, teams continuously improve across:
 
 </details>
 
-Start with **Phase 1** if your team is new to SEI 2.0 and progress through phases as maturity increases. Focus on trends, not single values and adapt benchmarks to your team structure and workflow.
+Start with **Phase 1** if your team is new to AI DLC Insights and progress through phases as maturity increases. Focus on trends, not single values and adapt benchmarks to your team structure and workflow.

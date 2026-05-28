@@ -1,19 +1,19 @@
 ---
-title: SEI 2.0 - Onboarding Guide
-description: The new experience for measuring engineering insights in Harness SEI
-sidebar_label: SEI 2.0 Onboarding Guide
+title: AI DLC Insights - Onboarding Guide
+description: The new experience for measuring engineering insights in Harness AIDI
+sidebar_label: AI DLC Insights Onboarding Guide
 sidebar_position: 10
 ---
 
-This guide explains what you need to know to get started using Harness SEI 2.0.
+This guide explains what you need to know to get started using Harness AI DLC Insights.
 
 ## Complete Harness Platform onboarding
 
-If you're new to Harness, review the [Harness Platform onboarding guide](/docs/platform/get-started/onboarding-guide) and [Harness Platform key concepts](/docs/platform/get-started/key-concepts) before onboarding to SEI 2.0.
+If you're new to Harness, review the [Harness Platform onboarding guide](/docs/platform/get-started/onboarding-guide) and [Harness Platform key concepts](/docs/platform/get-started/key-concepts) before onboarding to AI DLC Insights.
 
-## SEI 1.0 and SEI 2.0
+## Software Engineering Insights and AI DLC Insights
 
-If you're switching over to Harness SEI 2.0 from the SEI 1.0 experience, review the [SEI 1.0 vs SEI 2.0 Guide](/docs/software-engineering-insights/harness-sei/sei-overview.md) for useful information about what's new in the SEI 2.0 experience.
+If you're switching over to Harness AI DLC Insights from Software Engineering Insights, review the [Software Engineering Insights vs AI DLC Insights Guide](/docs/software-engineering-insights/harness-sei/sei-overview.md) for useful information about what's new in the AI DLC Insights experience.
 
 ## Onboarding Path
 
@@ -21,7 +21,7 @@ If you're switching over to Harness SEI 2.0 from the SEI 1.0 experience, review 
 
 | **Step** | **Purpose** | **Documentation** |
 |---------|-------------|-------------------|
-| <a href="/docs/software-engineering-insights/harness-sei/get-started/sei-key-concepts">Review Key Concepts</a> | Learn about the basic concepts of SEI 2.0 | [View Setup Guide](/docs/software-engineering-insights/harness-sei/get-started/sei-key-concepts) |  
+| <a href="/docs/software-engineering-insights/harness-sei/get-started/sei-key-concepts">Review Key Concepts</a> | Learn about the basic concepts of AI DLC Insights | [View Setup Guide](/docs/software-engineering-insights/harness-sei/get-started/sei-key-concepts) |  
 | <a href="/docs/platform/organizations-and-projects/create-an-organization">Account and Project setup</a> | Create projects and invite users | [View Setup Guide](/docs/platform/organizations-and-projects/create-an-organization) |
 
 ### Phase 2: Single Sign-On (Automate onboarding of users from external sources​)

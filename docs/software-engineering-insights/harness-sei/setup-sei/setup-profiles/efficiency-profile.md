@@ -1,6 +1,6 @@
 ---
-title: Efficiency Profiles in SEI 2.0
-description: Learn how to create an efficiency profile to capture DORA and sprint metrics in SEI 2.0.
+title: Efficiency Profiles in AI DLC Insights
+description: Learn how to create an efficiency profile to capture DORA and sprint metrics in AI DLC Insights.
 sidebar_label: Efficiency
 sidebar_position: 1
 redirect_from:
@@ -23,9 +23,9 @@ Maturity levels are applied consistently across DORA metrics and sprint reportin
 
 ## Prerequisites
 
-Before you set up an Efficiency Profile in SEI 2.0, make sure the following are in place:
+Before you set up an Efficiency Profile in AI DLC Insights, make sure the following are in place:
 
-* The SEI 2.0 module is enabled for your Harness account.
+* The AI DLC Insights module is enabled for your Harness account.
 * You must have the **SEI Admin** role to create or manage Efficiency Profiles.
 * At least one Issue Management (like Jira or Azure Boards) or a Source Code Management (like GitHub or GitLab) integration should be present in the account.
 
@@ -44,7 +44,7 @@ To create an Efficiency profile:
 
    ![](../../static/efficiency-1.png)
 
-   Maturity levels represent performance bands used to evaluate delivery efficiency across DORA metrics and sprints. By default, SEI 2.0 includes four maturity levels with different colors: **Elite**, **High**, **Medium**, and **Low**. 
+   Maturity levels represent performance bands used to evaluate delivery efficiency across DORA metrics and sprints. By default, AI DLC Insights includes four maturity levels with different colors: **Elite**, **High**, **Medium**, and **Low**. 
    
    | Label      | Description                           |
    | ---------- | ------------------------------------- |
@@ -69,7 +69,7 @@ To create an Efficiency profile:
 
 ### Lead Time for Changes
 
-Lead Time for Changes (LTTC) measures how long it takes for work to move from development to production. In SEI 2.0, configuring LTTC in your Efficiency Profile involves defining global maturity thresholds, mapping workflow stages and events, and customizing stage-level maturity thresholds.
+Lead Time for Changes (LTTC) measures how long it takes for work to move from development to production. In AI DLC Insights, configuring LTTC in your Efficiency Profile involves defining global maturity thresholds, mapping workflow stages and events, and customizing stage-level maturity thresholds.
 
 #### Configure workflow stages globally
 
@@ -92,7 +92,7 @@ You can customize the `To` values for **Elite**, **High**, and **Medium** thresh
 
 #### Configure workflow stages and events
 
-Below the global maturity settings, SEI 2.0 displays the enabled workflow stages:
+Below the global maturity settings, AI DLC Insights displays the enabled workflow stages:
 
 $$ Planning → Coding → Review → Build → Deployment $$
 
@@ -101,7 +101,7 @@ Each stage can be enabled or disabled as needed, and enabled stages include two 
 <Tabs queryString="configuration-or-maturity">
 <TabItem value="configuration" label="Configuration">
 
-Define how SEI 2.0 detects the start and end in the **Configuration** tab for each workflow stage.
+Define how AI DLC Insights detects the start and end in the **Configuration** tab for each workflow stage.
 
 Each stage is configured with the following:
 
@@ -115,13 +115,13 @@ Each stage is configured with the following:
 | **End Event Source**   | The system where the signal that ends the stage is recorded. This can differ from the start source. | `Issue Management` or `Source Code Management`                     |
 | **End Event**          | The signal that marks completion of the stage.                                                      | `Last PR Merged` <br/> `Last PR Approval`       |
 
-Event correlation (such as linking tickets to commits or builds) is automatically inferred by the Harness SEI correlation engine.
+Event correlation (such as linking tickets to commits or builds) is automatically inferred by the Harness AIDI correlation engine.
 
 ![](../../static/efficiency-8.png)
 
 #### Default workflow stages
 
-SEI 2.0 provides five default stages that reflect common delivery workflows which are customizable. 
+AI DLC Insights provides five default stages that reflect common delivery workflows which are customizable. 
 
 <Tabs queryString="workflow-stage">
 <TabItem value="planning" label="Planning">
@@ -240,7 +240,7 @@ Configure the maturity thresholds used to classify **Deployment** lead time. You
 
 #### Advanced configuration
 
-You can customize how SEI 2.0 interprets workflow events when calculating Lead Time for Changes.
+You can customize how AI DLC Insights interprets workflow events when calculating Lead Time for Changes.
 
 ![](../../static/efficiency-11.png)
 
@@ -262,7 +262,7 @@ Deployment Frequency measures how often code changes are successfully deployed t
 
 #### Select a deployment source
 
-Choose a tool type that provides deployment signals. SEI 2.0 supports the following systems:
+Choose a tool type that provides deployment signals. AI DLC Insights supports the following systems:
 
 * **Continuous Deployment**: SEI detects all completed pipeline executions. No additional configuration is required.
 * **Issue Management**: SEI counts all work items in Issue Management systems such as Jira. Selecting this enables `Consider Issue Management Releases`.
@@ -317,9 +317,9 @@ Mean Time to Restore (MTTR) measures the average time it takes for your teams to
 
 ![](../../static/efficiency-profile-6.png)
 
-Harness SEI supports MTTR measurement using:
+Harness AIDI supports MTTR measurement using:
 
-* **Issue Management** (e.g., Jira): SEI counts incidents or issues tracked in your Issue Management system that mark service downtime or failures. Selecting this enables Harness SEI to measure Mean Time to Restore based on issue resolution events.
+* **Issue Management** (e.g., Jira): SEI counts incidents or issues tracked in your Issue Management system that mark service downtime or failures. Selecting this enables Harness AIDI to measure Mean Time to Restore based on issue resolution events.
 * **Incident Management**: SEI uses change requests and incidents from integrated ITSM systems (such as ServiceNow) to calculate DORA metrics. Selecting this option enables additional configuration for Deployment Frequency, Change Failure Rate, and Mean Time to Restore (MTTR).
 
 If you selected **Incident Management** as the production incident source, you can define which incidents are included and how resolution time is calculated.
@@ -339,7 +339,7 @@ This unified setup ensures that MTTR is consistently classified while still refl
 
 ## Set up Sprint metrics
 
-The **Sprints** tab lets you configure how sprint-based work is measured, analyzed, and displayed across SEI 2.0. Sprint configuration includes computation mode, summary cards, delivery analysis, and sprint boundary grace periods.
+The **Sprints** tab lets you configure how sprint-based work is measured, analyzed, and displayed across AI DLC Insights. Sprint configuration includes computation mode, summary cards, delivery analysis, and sprint boundary grace periods.
 
 ### Computation Mode
 

@@ -1,6 +1,6 @@
 ---
 title: Jenkins Use Cases
-description: Use cases for Jenkins integration widgets in Harness SEI.
+description: Use cases for Jenkins integration widgets in Harness AIDI.
 sidebar_position: 3
 sidebar_label: Use Cases
 ---

@@ -1,6 +1,6 @@
 ---
 title: Custom CI/CD integrations
-description: Integrate custom CI/CD tools with Harness SEI.
+description: Integrate custom CI/CD tools with Harness AIDI.
 sidebar_position: 13
 ---
 

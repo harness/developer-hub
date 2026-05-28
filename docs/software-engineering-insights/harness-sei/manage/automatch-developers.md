@@ -1,23 +1,23 @@
 ---
 title: Automatch Developer Identities
-description: Learn how Auto Identity Discovery in Harness SEI automatically unifies developer identities across supported integrations, reducing manual mapping effort, streamlining onboarding, and ensuring accurate attribution of metrics. 
+description: Learn how Auto Identity Discovery in Harness AIDI automatically unifies developer identities across supported integrations, reducing manual mapping effort, streamlining onboarding, and ensuring accurate attribution of metrics. 
 sidebar_label: Auto Identity Discovery
 sidebar_position: 2
 ---
 
 ## Overview
 
-Auto Identity Discovery in Harness SEI helps you automatically identify and unify developer identities across all supported integrations. Instead of manually mapping developer identifiers (emails, usernames, or account IDs) from different tools, SEI intelligently correlates and creates a single unified developer identity.
+Auto Identity Discovery in Harness AIDI helps you automatically identify and unify developer identities across all supported integrations. Instead of manually mapping developer identifiers (emails, usernames, or account IDs) from different tools, SEI intelligently correlates and creates a single unified developer identity.
 
 This eliminates manual effort, reduces onboarding bottlenecks, and ensures that metrics are attributed correctly to each developer. In modern engineering organizations, developers work across multiple systems such as Jira, GitHub, GitLab, Azure DevOps, Bitbucket, and more. Each system may store developer information differently (email, account ID, username). 
 
 Without unification:
 
-* The same developer may appear as multiple contributors in SEI 2.0
+* The same developer may appear as multiple contributors in AI DLC Insights
 * Metrics can become inaccurate or fragmented
 * Onboarding new teams requires manual reconciliation
 
-Auto Identity Discovery solves this by using a correlation model (email-driven, contribution-driven, and API-driven, depending on the integration) to automatically unify these identities into a single record in SEI 2.0. For more information, see [Upload Developer Cloud IDs](/docs/software-engineering-insights/harness-sei/api/cloud-ids).
+Auto Identity Discovery solves this by using a correlation model (email-driven, contribution-driven, and API-driven, depending on the integration) to automatically unify these identities into a single record in AI DLC Insights. For more information, see [Upload Developer Cloud IDs](/docs/software-engineering-insights/harness-sei/api/cloud-ids).
 
 ### How It Works
 
@@ -31,7 +31,7 @@ This model runs automatically during data ingestion. Team managers can review an
 
 ### Supported integrations
 
-Auto Identity Discovery relies on fetching developer emails from the source systems. Due to security restrictions, Harness SEI cannot fetch user details for some integrations. In such scenarios, Harness provide an API that you can use to update the developer identities in SEI 2.0 by pulling the user details in your environment without having to give Harness SEI access to retrieve user details. 
+Auto Identity Discovery relies on fetching developer emails from the source systems. Due to security restrictions, Harness AIDI cannot fetch user details for some integrations. In such scenarios, Harness provide an API that you can use to update the developer identities in AI DLC Insights by pulling the user details in your environment without having to give Harness AIDI access to retrieve user details. 
 
 The required permissions vary by integration. 
 

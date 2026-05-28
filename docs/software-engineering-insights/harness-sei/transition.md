@@ -1,7 +1,7 @@
 ---
-title: SEI 1.0 to 2.0 Transition
-description: Learn how to transition from SEI 1.0 to 2.0 in Harness.
-sidebar_label: SEI 1.0 to 2.0 Transition
+title: Software Engineering Insights to AI DLC Insights Transition
+description: Learn how to transition from Software Engineering Insights to AI DLC Insights in Harness.
+sidebar_label: Software Engineering Insights to AI DLC Insights Transition
 sidebar_position: 2
 ---
 

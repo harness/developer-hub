@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/ai-dlc-insights/rss.xml" />
 
-These release notes describe recent changes to Harness AI-Driven Development Lifecycle (DLC) Insights.
+These release notes describe recent changes to Harness AI-Driven Development Lifecycle Insights (AIDI).
 
 #### Last updated: May 11, 2026
 
@@ -149,7 +149,7 @@ To request access to the GitHub Copilot integration beta experience, contact [Ha
 ----
 #### 2026-04-10
 
-Harness SEI now supports custom dashboards in SEI 2.0, allowing teams to create dashboards and add widgets that visualize SEI data most relevant to their workflows. To create and manage custom dashboards, navigate to the **Canvas** page in the Harness SEI navigation menu.
+Harness AIDI now supports custom dashboards, allowing teams to create dashboards and add widgets that visualize engineering data most relevant to their workflows. To create and manage custom dashboards, navigate to the **Canvas** page in the Harness AIDI navigation menu.
 
 ![](./static/sei/canvas-list.png)
 
@@ -293,7 +293,7 @@ Set up the [Cursor](/docs/software-engineering-insights/harness-sei/setup-sei/co
 ---
 #### 2026-01-30
 
-Security Insights is in beta for SEI 2.0, introducing vulnerability and code quality analytics alongside existing DORA, Productivity, and Business Alignment metrics. Security Insights is powered by the [ArmorCode integration](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/armorcode/), which ingests Application Security Posture Management (ASPM) data from your security toolchain into Harness SEI, and provides visibility into open vulnerabilities.
+Security Insights is in beta for SEI 2.0, introducing vulnerability and code quality analytics alongside existing DORA, Productivity, and Business Alignment metrics. Security Insights is powered by the [ArmorCode integration](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/armorcode/), which ingests Application Security Posture Management (ASPM) data from your security toolchain into Harness AI DLC Insights, and provides visibility into open vulnerabilities.
 
 Once ArmorCode is connected, you can configure how security data is attributed across your organization and teams. Use the **Integrations** tab in **Team Settings** to select [which security integrations apply to each team](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams?team-settings=security-settings#configure-integrations-for-a-team), and define filter sets on the **Security** tab in **Team Settings** to [scope ASPM data to teams](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams?team-settings=security-settings#configure-team-tool-settings).
 
@@ -320,7 +320,7 @@ These insights help teams monitor overall security posture, prioritize remediati
 ---
 #### 2025-12-26
 
-Harness SEI now supports metric-level developer filtering, giving teams explicit control over which insights should honor developer filters at the team level. By default, developer filters are applied to **Productivity** and **Lead Time for Changes**.
+Harness AIDI now supports metric-level developer filtering, giving teams explicit control over which insights should honor developer filters at the team level. By default, developer filters are applied to **Productivity** and **Lead Time for Changes**.
 
 ![](./static/sei/advanced-settings.png)
 
@@ -473,7 +473,7 @@ These changes reduce the need for manual group creation and make it easier to ap
 ---
 #### 2025-10-03
 
-Harness SEI supports automated user identity matching across supported SEI integrations based on email-driven logic. Previously, customers had to manually update the identities for each of the integrations. 
+Harness AIDI supports automated user identity matching across supported SEI integrations based on email-driven logic. Previously, customers had to manually update the identities for each of the integrations. 
 
 Auto Identity Discovery now simplifies the onboarding process significantly and ensures consistent identity data across integrations, helping accelerate the generation of accurate insights across all developers in your organization.
 
@@ -1006,7 +1006,7 @@ We have deprecated the support for **Investment Profile categories** in the **Tr
 
 #### Early access features
 
-* We have improved the navigation experience in the Harness SEI module to simplify your workflow and help you manage resources more effectively. (SEI-7679) <br /> <br /> Key enhancements include:
+* We have improved the navigation experience in the Harness AIDI module to simplify your workflow and help you manage resources more effectively. (SEI-7679) <br /> <br /> Key enhancements include:
   * Focused views per project
   * Easier navigation between **Account** and **Project** level scopes
   * Comprehensive **All projects** view in the account scope. 
@@ -1094,7 +1094,7 @@ This release brings several new features and enhancements, including the ability
 
 #### Hotfixes
 
-* The **Harness SEI Jenkins plugin** now support **Jenkins Configuration as Code (JCasC)**. This allows administrators to define the plugin’s configurations as YAML in code and use CI/CD processes to deploy the configuration. (SEI-7028)
+* The **Harness AIDI Jenkins plugin** now support **Jenkins Configuration as Code (JCasC)**. This allows administrators to define the plugin’s configurations as YAML in code and use CI/CD processes to deploy the configuration. (SEI-7028)
 
 * The **Bitbucket Cloud** integration now supports multiple **Personal Access Token (PAT) based authentication**. This will help you resolve rate limiting issues while fetching data from Bitbucket Cloud. (SEI-7696)
 
@@ -1126,7 +1126,7 @@ The new experience for the [Azure Devops integration](/docs/software-engineering
 
 #### Fixed issues
 
-* Fixed the bug for the **Harness SEI Jenkins Plugin** that caused the integration to return errors due to the **BlueOcean** dependency. (SEI-7025)
+* Fixed the bug for the **Harness AIDI Jenkins Plugin** that caused the integration to return errors due to the **BlueOcean** dependency. (SEI-7025)
 
 * Resolved the issue that caused a few of the single stat reports to display no values. (SEI-7772)
 

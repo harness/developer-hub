@@ -1,6 +1,6 @@
 ---
 title: Azure Pipelines Datasheet
-description: A complete list of metadata ingested by Harness SEI from Azure Pipelines.
+description: A complete list of metadata ingested by Harness AIDI from Azure Pipelines.
 sidebar_label: Pipelines Metadata
 sidebar_position: 5
 ---

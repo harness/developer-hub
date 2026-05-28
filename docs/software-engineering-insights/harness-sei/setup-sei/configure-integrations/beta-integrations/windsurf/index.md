@@ -1,6 +1,6 @@
 ---
 title: Windsurf Integration
-description: Set up the Windsurf integration to track AI assistant adoption and impact in SEI 2.0.
+description: Set up the Windsurf integration to track AI assistant adoption and impact in AI DLC Insights.
 sidebar_label: Windsurf
 ---
 
@@ -8,7 +8,7 @@ sidebar_label: Windsurf
 The Windsurf integration is in beta. To request access, contact [Harness Support](/docs/software-engineering-insights/sei-support).
 :::
 
-The Windsurf integration enables SEI 2.0 to track adoption and usage metrics for Windsurf coding assistants. This integration is required to view the [AI Insights dashboard](/docs/software-engineering-insights/harness-sei/insights/ai).
+The Windsurf integration enables AI DLC Insights to track adoption and usage metrics for Windsurf coding assistants. This integration is required to view the [AI Insights dashboard](/docs/software-engineering-insights/harness-sei/insights/ai).
 
 ### Prerequisites
 

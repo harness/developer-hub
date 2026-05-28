@@ -1,6 +1,6 @@
 ---
-title: Upload Developer Cloud IDs Using the Harness SEI API
-description: Learn how to use the Harness SEI API to programmatically add or update developer emails and cloud IDs.
+title: Upload Developer Cloud IDs Using the Harness AIDI API
+description: Learn how to use the Harness AIDI API to programmatically add or update developer emails and cloud IDs.
 sidebar_label: Upload Developer Cloud IDs
 sidebar_position: 2
 ---
@@ -12,7 +12,7 @@ This page explains how to add or update developer identities using cloud IDs, pr
 In some cases, SEI cannot automatically fetch user details such as emails, cloud IDs, and account IDs, from source integrations due to API restrictions or security limitations. This helps you:
 
 - Add or update developer cloud IDs and emails.
-- Map developer contributions accurately in SEI 2.0 from integrations where Harness SEI cannot fetch user records.
+- Map developer contributions accurately in AI DLC Insights from integrations where Harness AIDI cannot fetch user records.
 - Correct identity mismatches for accurate metric reporting.
 
 To ensure accurate identity mapping, SEI provides two options:

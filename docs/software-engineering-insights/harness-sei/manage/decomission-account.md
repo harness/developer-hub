@@ -5,7 +5,7 @@ sidebar_label: Decommissioning and Data Retention
 sidebar_position: 5
 ---
 
-Harness SEI provides a controlled, auditable process for decommissioning the SEI service on a Harness account. This ensures that customer data is removed securely, with full transparency and regulatory compliance.
+Harness AIDI provides a controlled, auditable process for decommissioning the SEI service on a Harness account. This ensures that customer data is removed securely, with full transparency and regulatory compliance.
 
 This documentation walks you through how to request decommissioning an SEI account, what happens during the decommissioning process, SEI data retention and deletion policies, and applicable SLAs and customer responsibilities.
 
@@ -15,7 +15,7 @@ This page is intended for cybersecurity teams, compliance reviewers, and adminis
 
 ## Decommission an SEI account
 
-SEI account decommissioning is a manual, request-driven process performed by the Harness SEI Engineering team to ensure data integrity, ownership validation, and regulatory compliance.
+SEI account decommissioning is a manual, request-driven process performed by the Harness AIDI Engineering team to ensure data integrity, ownership validation, and regulatory compliance.
 
 Customers typically request decommissioning when consolidating multiple SEI instances or retiring unused or test/sandbox environments.
 
@@ -40,7 +40,7 @@ Once the request is received:
 
 ## Data retention for SEI
 
-Harness SEI retains all customer data **indefinitely by default** unless an explicit deletion request is submitted.
+Harness AIDI retains all customer data **indefinitely by default** unless an explicit deletion request is submitted.
 
 :::danger
 Partial data retention is not supported unless explicitly requested and formally approved. 
@@ -60,15 +60,15 @@ When a deletion request is processed, the following data is permanently removed:
 ## FAQs
 
 <details>
-<summary>Does Harness SEI automatically delete customer data after a set period?</summary>
+<summary>Does Harness AIDI automatically delete customer data after a set period?</summary>
 
-No. Harness SEI retains data indefinitely unless a formal deletion or decommissioning request is submitted.
+No. Harness AIDI retains data indefinitely unless a formal deletion or decommissioning request is submitted.
 
 </details>
 <details>
-<summary>Can I export my Harness SEI data before deletion?</summary>
+<summary>Can I export my Harness AIDI data before deletion?</summary>
 
-Yes. Customers can export available datasets using existing [Harness SEI export capabilities](/docs/software-engineering-insights/harness-sei/insights/export) or [public APIs](/docs/software-engineering-insights/harness-sei/api/export-insights) before deletion.
+Yes. Customers can export available datasets using existing [Harness AIDI export capabilities](/docs/software-engineering-insights/harness-sei/insights/export) or [public APIs](/docs/software-engineering-insights/harness-sei/api/export-insights) before deletion.
 
 </details>
 <details>

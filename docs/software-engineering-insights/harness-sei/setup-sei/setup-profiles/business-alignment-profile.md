@@ -1,6 +1,6 @@
 ---
-title: Business Alignment Profiles in SEI 2.0
-description: Learn how to create an Business Alignment profile in SEI 2.0.
+title: Business Alignment Profiles in AI DLC Insights
+description: Learn how to create an Business Alignment profile in AI DLC Insights.
 sidebar_label: Business Alignment
 sidebar_position: 3
 ---
@@ -117,7 +117,7 @@ The ranking of categories plays a significant role in determining how tickets ar
    1. If `Category 1` is ranked higher (e.g., ranked 1), then Ticket 2 will also be allocated to `Category 1 `
    2. If `Category 2` is ranked higher, then Ticket 2 will be allocated to `Category 2` and it won't be included in `Category 1`
 5. **Allocation Goals and Calculations:** After tickets are allocated to Categories, you can set Allocation Goals for each Category. To learn more, see [Allocation Goals](#allocation-goals).
-6. **Business Alignment Calculations:** Once Allocation goals are set, Harness SEI calculates the Business Alignment metric value based on the actual allocation of tickets to categories and the progress made in each category.
+6. **Business Alignment Calculations:** Once Allocation goals are set, Harness AIDI calculates the Business Alignment metric value based on the actual allocation of tickets to categories and the progress made in each category.
 </details>
 
 Once you have completed the profile configuration, click **Save** to finalize your changes. The Business Alignment profile must be associated with one or more [Org Trees](/docs/software-engineering-insights/harness-sei/setup-sei/setup-org-tree#set-up-an-org-tree) in your organization. This association determines which teams can access and use the profile.

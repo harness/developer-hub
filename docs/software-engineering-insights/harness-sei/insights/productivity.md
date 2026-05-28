@@ -8,11 +8,11 @@ redirect_from:
 - /docs/software-engineering-insights/harness-sei/analytics-and-reporting/productivity
 ---
 
-Productivity in SEI 2.0 focuses on understanding the actual work being delivered by developers, the quality of that work, and how effectively teams collaborate to get it done. Rather than measuring activity for its own sake, SEI 2.0 surfaces signals that reflect meaningful engineering output, including work that drives value, improvements to existing code, and areas of potential rework.
+Productivity in AI DLC Insights focuses on understanding the actual work being delivered by developers, the quality of that work, and how effectively teams collaborate to get it done. Rather than measuring activity for its own sake, AI DLC Insights surfaces signals that reflect meaningful engineering output, including work that drives value, improvements to existing code, and areas of potential rework.
 
 ## Use Productivity Insights
 
-The **Productivity** tab on the **Insights** page in SEI 2.0 helps you understand how work flows through your engineering organization, focusing on the quality, velocity, and collaboration behind the code. If your account has multiple Org Trees configured in SEI 2.0, the Org Trees are displayed as tiles at the top of the dashboard.
+The **Productivity** tab on the **Insights** page in AI DLC Insights helps you understand how work flows through your engineering organization, focusing on the quality, velocity, and collaboration behind the code. If your account has multiple Org Trees configured in AI DLC Insights, the Org Trees are displayed as tiles at the top of the dashboard.
 
 Selecting an Org Tree tile updates the dashboard to reflect data for that org tree and filters all productivity metrics to only include the teams and repositories within the selected Org Tree. This allows you to analyze productivity trends across different organizations and teams.
 
@@ -29,7 +29,7 @@ You can analyze the data by selecting a time range (for example, the last severa
 
 ## AI summaries and recommendations
  
-SEI 2.0 automatically generates a contextual **AI Summary** for the selected time range and granularity. AI Summaries are generated using the same metrics available in the Productivity Insights dashboard, including **PR Velocity Per Developer**, **PR Cycle Time**, **Work Completed Per Developer**, **Coding Days Per Developer**, **Number of Comments Per PR**, **Average Time to First Comment**, and **Code Rework**. This ensures recommendations remain grounded in measurable engineering outcomes instead of qualitative assessments alone.
+AI DLC Insights automatically generates a contextual **AI Summary** for the selected time range and granularity. AI Summaries are generated using the same metrics available in the Productivity Insights dashboard, including **PR Velocity Per Developer**, **PR Cycle Time**, **Work Completed Per Developer**, **Coding Days Per Developer**, **Number of Comments Per PR**, **Average Time to First Comment**, and **Code Rework**. This ensures recommendations remain grounded in measurable engineering outcomes instead of qualitative assessments alone.
 
 ![](../static/productivity-7.png)
 
@@ -49,7 +49,7 @@ Use the `Showing` dropdown menu to control how values are calculated across all 
 Trendlines use the Ordinary Least Squares (OLS) regression method to identify patterns and direction in your data over the selected time range.
 :::
 
-To export the Productivity Insights dashboard data, click the kebab menu (⋮) and select **Export as PDF** or **Export as CSV**. For more information, see [Exporting SEI 2.0 Insights](/docs/software-engineering-insights/harness-sei/insights/export).
+To export the Productivity Insights dashboard data, click the kebab menu (⋮) and select **Export as PDF** or **Export as CSV**. For more information, see [Exporting AI DLC Insights Insights](/docs/software-engineering-insights/harness-sei/insights/export).
 
 Below is a brief overview of each widget in **Productivity** on the **Insights** page:
 

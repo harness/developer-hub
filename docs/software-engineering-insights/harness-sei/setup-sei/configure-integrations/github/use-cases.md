@@ -8,7 +8,7 @@ sidebar_label: Use Cases
 import GithubUsecases from '@site/docs/software-engineering-insights/shared/integrations/github-use-cases.md';
 
 :::info GitHub Commit Ingestion Update (Resolved)
-A GitHub Events API change temporarily impacted ingestion of non-PR commits in Harness SEI.
+A GitHub Events API change temporarily impacted ingestion of non-PR commits in Harness AIDI.
 
 The issue has been resolved, and missing commits have been backfilled for all healthy, non-satellite integrations. Some integrations may require token updates before backfill can complete.
 

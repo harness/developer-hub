@@ -1,6 +1,6 @@
 ---
 title: Connect with SonarQube
-description: Configure the SonarQube integration in Harness SEI to ingest code quality data.
+description: Configure the SonarQube integration in Harness AIDI to ingest code quality data.
 sidebar_position: 1
 sidebar_label: SonarQube
 ---
@@ -11,7 +11,7 @@ The SonarQube integration is in beta. To request access, contact [Harness Suppor
 
 [SonarQube](https://docs.sonarsource.com/) is an open-source platform for continuous inspection of code quality. It performs automatic static analysis to detect bugs, code quality issues, and security vulnerabilities.
 
-On initial setup, Harness SEI backfills up to 6 months of historical code quality findings. When configured, Harness SEI can ingest and validate SonarQube code quality data.
+On initial setup, Harness AIDI backfills up to 6 months of historical code quality findings. When configured, Harness AIDI can ingest and validate SonarQube code quality data.
 
 ## Prerequisites
 
