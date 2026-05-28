@@ -1,7 +1,7 @@
 ---
-title: AI-Driven Development Lifecycle Insights release notes
+title: AI DLC Insights release notes
 sidebar_label: AI DLC Insights
-date: 2026-05-11T10:00:10
+date: 2026-05-27T10:00:10
 sidebar_position: 15
 redirect_from:
   - /release-notes/software-engineering-insights
@@ -14,7 +14,7 @@ import TabItem from '@theme/TabItem';
 
 These release notes describe recent changes to Harness AI-Driven Development Lifecycle Insights (AIDI).
 
-#### Last updated: May 11, 2026
+#### Last updated: May 27, 2026
 
 :::info About Harness Release Notes
 * **Progressive deployment:** Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview** page in Harness. In the new UI, go to **Account Settings**, **Account Details**, **General**, **Account Details**, and then **Platform Service Versions**.
@@ -24,7 +24,7 @@ These release notes describe recent changes to Harness AI-Driven Development Lif
 
 ## May 2026
 
-### [New Enhancement] PR Cycle Time metrics exclude bot-generated review comments
+### PR Cycle Time metrics exclude bot-generated review comments
 ----
 #### 2026-05-05
 
@@ -41,7 +41,7 @@ This change applies to both the aggregated **PR Cycle Time** metric and the **PR
 - [Developer Productivity Insights](/docs/software-engineering-insights/harness-sei/insights/productivity#pr-cycle-time)
 - [View Insights](/docs/software-engineering-insights/harness-sei/insights)
 
-### [New Feature] qTest Integration in SEI 2.0
+### qTest Integration in SEI 2.0
 ----
 #### 2026-05-05
 
@@ -54,7 +54,7 @@ Once configured, SEI 2.0 synchronizes test execution and testing activity data t
 - [qTest Integration](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/qtest)
 - [Configure Integrations](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/)
 
-### [New Enhancement] ServiceNow Integration and ITSM Configuration in SEI 2.0
+### ServiceNow Integration and ITSM Configuration in SEI 2.0
 ----
 #### 2026-05-05
 
@@ -77,7 +77,7 @@ Once configured, ServiceNow data becomes available across [Efficiency Insights d
 - [Engineering Efficiency](/docs/software-engineering-insights/harness-sei/insights/efficiency#using-servicenow-data-in-dora-metrics)
 - [Configure Teams](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams?team-settings=itsm-settings#configure-team-tool-settings)
 
-### [New Enhancement] Enable or disable developer filtering for Lead Time for Changes (LTTC)
+### Enable or disable developer filtering for Lead Time for Changes (LTTC)
 ----
 #### 2026-05-05
 
@@ -92,7 +92,7 @@ When enabled, LTTC includes only work attributed to developers defined by team f
 - [Set up Teams](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams#applying-metric-level-developer-filters)
 - [Engineering Efficiency](/docs/software-engineering-insights/harness-sei/insights/efficiency#lead-time-for-changes)
 
-### [New Enhancement] Custom date range on Insights dashboards
+### Custom date range on Insights dashboards
 ----
 #### 2026-05-05
 
@@ -108,7 +108,7 @@ You can click the time range dropdown menu and select **Custom Date Range** to o
 - [Productivity Insights](/docs/software-engineering-insights/harness-sei/insights/productivity)
 - [Business Alignment Insights](/docs/software-engineering-insights/harness-sei/insights/business-alignment)
 
-### [New Enhancement] AI Summaries on Insights dashboards
+### AI Summaries on Insights dashboards
 ----
 #### 2026-05-05
 
@@ -131,7 +131,7 @@ AI summaries adapt based on the scope of analysis in the **Org Tree** view:
 
 ## April 2026
 
-### [New Feature] GitHub Copilot Integration is in beta
+### GitHub Copilot Integration is in beta
 ----
 #### 2026-04-24
 
@@ -145,7 +145,7 @@ To request access to the GitHub Copilot integration beta experience, contact [Ha
 
 - [GitHub Copilot Integration](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/copilot)
 
-### [New Feature] Canvas for SEI 2.0 is in beta
+### Canvas for SEI 2.0 is in beta
 ----
 #### 2026-04-10
 
@@ -184,7 +184,7 @@ To request access to the Canvas beta experience, contact [Harness Support](/docs
 
 ## March 2026
 
-### [New Feature] ServiceNow Integration is in beta
+### ServiceNow Integration is in beta
 ----
 #### 2026-03-25
 
@@ -207,7 +207,7 @@ To request access to the ServiceNow integration beta experience, contact [Harnes
 
 ## February 2026
 
-### [New Feature] Select multiple SCM integrations in Team Settings
+### Select multiple SCM integrations in Team Settings
 ----
 #### 2026-02-13
 
@@ -235,7 +235,7 @@ This feature provides a comprehensive view of team activity across multiple repo
 
 ## January 2026
 
-### [New Feature] AI Summaries and Recommendations is in beta
+### AI Summaries and Recommendations is in beta
 ----
 #### 2026-01-30
 
@@ -261,7 +261,7 @@ To request access, contact [Harness Support](/docs/software-engineering-insights
 - [Productivity Profile](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/productivity-profile)
 - [AI Insights](/docs/software-engineering-insights/harness-sei/insights/ai#ai-summaries-and-recommendations)
 
-### [New Feature] AI Insights is in beta
+### AI Insights is in beta
 ---
 #### 2026-01-30
 
@@ -289,7 +289,7 @@ Set up the [Cursor](/docs/software-engineering-insights/harness-sei/setup-sei/co
 - [Productivity Profile](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/productivity-profile)
 - [AI Insights](/docs/software-engineering-insights/harness-sei/insights/ai)
 
-### [New Feature] Security Insights is in beta
+### Security Insights is in beta
 ---
 #### 2026-01-30
 
@@ -316,7 +316,7 @@ These insights help teams monitor overall security posture, prioritize remediati
 
 ## December 2025
 
-### [New Feature] Metric-level Developer Filtering in Team Settings
+### Metric-level Developer Filtering in Team Settings
 ---
 #### 2025-12-26
 
@@ -346,7 +346,7 @@ This feature improves attribution accuracy for cross-team contributors, reduces 
 - [Set up Teams](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams#applying-metric-level-developer-filters)
 - [Automatch Developer Identities](/docs/software-engineering-insights/harness-sei/manage/automatch-developers)
 
-### [New Enhancement] Maturity Model for DORA Metrics
+### Maturity Model for DORA Metrics
 ---
 #### 2025-12-23
 
@@ -369,7 +369,7 @@ This enhancement provides more granular control over how delivery performance is
 - [Efficiency Profiles](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/efficiency-profile)
 - [Team Settings](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams#configure-team-tool-settings)
 
-### [New Feature] Shared Developers is now available
+### Shared Developers is now available
 ---
 #### 2025-12-16
 
@@ -390,7 +390,7 @@ Shared Developers help teams accurately represent cross-team contributors, maint
 - [Set up Teams](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams#managing-shared-developers)
 - [Set up Org Trees](/docs/software-engineering-insights/harness-sei/setup-sei/setup-org-tree)
 
-### [New Feature] Code Rework is in beta
+### Code Rework is in beta
 ---
 #### 2025-12-05
 
@@ -418,7 +418,7 @@ These insights help teams understand refactoring effort, identify sources of rew
 - [Productivity Profile Setup](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/productivity-profile)
 - [Developer Productivity](/docs/software-engineering-insights/harness-sei/insights/productivity)
 
-### [New Feature] Sprint Insights is in beta
+### Sprint Insights is in beta
 ---
 #### 2025-12-05
 
@@ -450,7 +450,7 @@ These insights help teams evaluate planning effectiveness, delivery consistency,
 
 ## October 2025
 
-### [New Enhancement] Harness RBAC support in SEI 2.0
+### Harness RBAC support in SEI 2.0
 ---
 #### 2025-10-15
 
@@ -469,7 +469,7 @@ These changes reduce the need for manual group creation and make it easier to ap
 - [Harness RBAC for SEI 2.0](/docs/software-engineering-insights/harness-sei/get-started/rbac)
 - [Harness RBAC](/docs/platform/role-based-access-control/rbac-in-harness/)
 
-### [New Feature] Automatch Developer Identities in SEI 2.0
+### Automatch Developer Identities in SEI 2.0
 ---
 #### 2025-10-03
 
@@ -491,7 +491,7 @@ This feature is valuable for organizations that want to:
 
 ## September 2025
 
-### [New Feature] Trendlines across Efficiency and Productivity Insights in SEI 2.0
+### Trendlines across Efficiency and Productivity Insights in SEI 2.0
 ---
 #### 2025-09-15
 
@@ -514,7 +514,7 @@ When **Show trendline** is enabled in a dashboard, trendlines are overlaid acros
 
 ## August 2025
 
-### [New Feature] Activity Logs in SEI 2.0
+### Activity Logs in SEI 2.0
 ---
 #### 2025-08-29
 
@@ -537,7 +537,7 @@ Activity Logs provide admins and auditors a transparent view of who made changes
 
 - [Activity Logs in SEI 2.0](/docs/software-engineering-insights/harness-sei/manage/activity-logs)
 
-### [New Enhancement] Multiple Org Trees, multi-level hierarchies, and data filters in SEI 2.0
+### Multiple Org Trees, multi-level hierarchies, and data filters in SEI 2.0
 ---
 #### 2025-08-28
 
@@ -557,7 +557,7 @@ These enhancements make it easier to align insights with the way your organizati
 
 ## July 2025
 
-### [New Feature] SEI 2.0 is GA
+### SEI 2.0 is GA
 ----
 #### 2025-07-31
 
@@ -573,7 +573,7 @@ For customers using SEI 1.0, there is no in-place migration. SEI 2.0 must be set
 
 ## May 2025
 
-### [New Feature] Export SEI 2.0 dashboards and widgets
+### Export SEI 2.0 dashboards and widgets
 ----
 #### 2025-05-29
 
@@ -797,9 +797,16 @@ This release does not include any early access features.
 
 * Fixed the issue where OAuth-based authentication and re-authentication were not working for the [Azure DevOps integration](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/azure-devops/sei-integration-azure-devops). (SEI-9978)
 
-## December 2024
+## Previous releases
 
-### Version 202412.2
+### 2024 releases
+
+<details>
+<summary>Expand for 2024 releases</summary>
+
+#### December 2024
+
+#### Version 202412.2
 
 <!-- December 22, 2024 -->
 
@@ -822,7 +829,7 @@ This release does not include any early access features.
 * Fixed the issue where incorrect insight was loading when selected from the **Manage Insights** view (SEI-9855)
 * Fixed the bug in the Trellis Score report drill down where *Time spent* column incorrectly included resolution state time (SEI-9733) (ZD-74405) (ZD-75651)
 
-### Version 202412.1
+#### Version 202412.1
 
 <!-- December 09, 2024 -->
 
@@ -840,9 +847,9 @@ This release does not include any early access features.
 
 * Fixed the issue in the DORA widgets that caused duplicate data to appear for the same contributor. (SEI-9642) (ZD-74061)
 
-## November 2024
+#### November 2024
 
-### Version 202411.2
+#### Version 202411.2
 
 <!-- November 26, 2024 -->
 
@@ -878,7 +885,7 @@ The new experience for configuring the **GitHub Actions integration** and **GitL
 
 
 
-### Version 202411.1
+#### Version 202411.1
 
 <!-- November 13, 2024 -->
 
@@ -904,9 +911,9 @@ The [Harness Software Engineering Insights playlist](https://www.youtube.com/emb
 
 <DocVideo src="https://www.youtube.com/embed/videoseries?si=jEksy8WQoTcVlqmv&amp;list=PLXsYHFsLmqf09e_PRmpCaraxmn3U1X1fP" />
 
-## October 2024
+#### October 2024
 
-### Version 202410.2
+#### Version 202410.2
 
 <!-- October 28, 2024 -->
 
@@ -926,7 +933,7 @@ This release does not include any early access features.
 * The issue with selecting columns in the open report view while using the Harness CI/CD integration has now been resolved (SEI-1950)
 * Resolved an issue in the SCM Committers widget where clicking on a Contributor did not redirect to the Developer Scorecard (SEI-9021) (ZD-71647)
 
-### Version 202410.1
+#### Version 202410.1
 
 <!-- October 16, 2024 -->
 
@@ -945,9 +952,9 @@ This release does not include any early access features.
 
 * Fixed the bug where when selecting the timezone field in the **Jira integration** configuration multiple values were getting selected. (SEI-8748)
 
-## September 2024
+#### September 2024
 
-### Version 202409.2
+#### Version 202409.2
 
 <!-- October 01, 2024 -->
 
@@ -975,7 +982,7 @@ This release does not include any early access features.
 
 * Fixed the issue where widget configuration wasn’t updating to the **Default Business Alignment profile** when a previously selected BA profile was deleted. (SEI-8539)
 
-### Version 202409.1
+#### Version 202409.1
 
 <!-- September 17, 2024 -->
 
@@ -1040,7 +1047,7 @@ We have deprecated the support for **Investment Profile categories** in the **Tr
 
 * Fixed a bug where integrations configured using the **Ingestion Satellite** were failing. (SEI-8305) (ZD-69585) (ZD-69491)
 
-### Version 202408.2.2
+#### Version 202408.2.2
 
 <!-- September 05, 2024 -->
 
@@ -1050,7 +1057,7 @@ We have deprecated the support for **Investment Profile categories** in the **Tr
 
 * Fixed the bug in the **HarnessNG integration** where historical data for the pipeline executions were missing from the platform. (SEI-8221)
 
-### Version 202408.2.1
+#### Version 202408.2.1
 
 <!-- September 02, 2024 -->
 
@@ -1060,9 +1067,9 @@ We have deprecated the support for **Investment Profile categories** in the **Tr
 
 * Fixed the bug where reauthenticating an existing **GitHub Cloud App** integration would incorrectly create a new integration. (SEI-8224)
 
-## August 2024
+#### August 2024
 
-### Version 202408.2
+#### Version 202408.2
 
 <!-- August 30, 2024 -->
 
@@ -1088,7 +1095,7 @@ This release brings several new features and enhancements, including the ability
 
 * Fixed an issue where the option to clone a workflow profile was not functioning correctly. (SEI-7850)
 
-### Version 202408.1.1
+#### Version 202408.1.1
 
 <!-- August 22, 2024 -->
 
@@ -1098,7 +1105,7 @@ This release brings several new features and enhancements, including the ability
 
 * The **Bitbucket Cloud** integration now supports multiple **Personal Access Token (PAT) based authentication**. This will help you resolve rate limiting issues while fetching data from Bitbucket Cloud. (SEI-7696)
 
-### Version 202408.1
+#### Version 202408.1
 
 <!-- August 14, 2024 -->
 
@@ -1130,7 +1137,7 @@ The new experience for the [Azure Devops integration](/docs/software-engineering
 
 * Resolved the issue that caused a few of the single stat reports to display no values. (SEI-7772)
 
-### Version 202407.2.2
+#### Version 202407.2.2
 
 <!-- August 09, 2024 -->
 
@@ -1142,7 +1149,7 @@ The new experience for the [Azure Devops integration](/docs/software-engineering
 
 * You can now use the **Configuration Item** field from **ServiceNow** as a filter across the application. (SEI-782
 
-### Version 202407.2.1
+#### Version 202407.2.1
 
 <!-- August 09, 2024 -->
 
@@ -1154,9 +1161,9 @@ The new experience for the [Azure Devops integration](/docs/software-engineering
 
 * Fixed the bug that caused the sorting functionality in the drill-down view to not work properly for the **Lead Time** column. (SEI-7490)
 
-## July 2024
+#### July 2024
 
-### Version 202407.2
+#### Version 202407.2
 
 <!-- July 25, 2024 -->
 
@@ -1206,7 +1213,7 @@ Note that the Integration Status page update is currently available only for the
 
 * Fixed the issue that caused inconsistency across the data displayed in the **Trellis Score report** and the **Trellis Scorecard**. (SEI-7592)
 
-### Version 202407.1
+#### Version 202407.1
 
 <!-- July 15, 2024 -->
 
@@ -1254,9 +1261,9 @@ Over the coming weeks, we will be moving away from the current static API docume
 
 * Fixed the bug that caused committers data to be displayed in the reviewers column in some cases in the drill down. (SEI-6785)
 
-## June 2024
+#### June 2024
 
-### Version 202406.2
+#### Version 202406.2
 
 <!-- June 27, 2024 -->
 
@@ -1286,7 +1293,7 @@ In our continued effort to improve the user experience, this release introduces 
 
 * Resolved an issue in the **Business Alignment** report where the **Pie Chart** displayed data outside the selected time period. (SEI-7233)
 
-### Version 202406.1
+#### Version 202406.1
 
 <!-- June 14, 2024 -->
 
@@ -1320,9 +1327,9 @@ In our continued effort to improve the user experience, this release introduces 
 
 * The issue that caused instances to not be listed properly for the **Jenkins integration** has been resolved. The integration page now displays a maximum of 300 Jenkins instances. (SEI-7099)
 
-## May 2024
+#### May 2024
 
-### Version 202405.2
+#### Version 202405.2
 
 <!-- May 24, 2024 -->
 
@@ -1362,7 +1369,7 @@ In our continued effort to improve the user experience, this release introduces 
 
 * Resolved an issue where the extended view for the **Issue Progress report** displayed inaccurate data. (SEI-6870)
 
-### Version 202405.1
+#### Version 202405.1
 
 <!-- May 13, 2024 -->
 
@@ -1450,9 +1457,9 @@ In our continued effort to improve the user experience, this release introduces 
 * The issue causing the **Jira Releases report** to not display any data has been resolved. (SEI-6692)
 
 
-## April 2024
+#### April 2024
 
-### Version 202404.1
+#### Version 202404.1
 
 #### New features and enhancements
 
@@ -1480,9 +1487,9 @@ In our continued effort to improve the user experience, this release introduces 
 * The issue causing the new **Business Alignment report** drill down to crash for Azure DevOps integration has been resolved. (SEI-6409) (SEI-6455)
 * The issue with the Drilldown displaying all deployments for the **Github Actions** integration due to **Collection filters** not working has been resolved. (SEI-6423) (ZD-60997)
 
-## March 2024
+#### March 2024
 
-### Version 202403.2.1
+#### Version 202403.2.1
 
 <!-- Mar 30, 2024 -->
 
@@ -1490,7 +1497,7 @@ In our continued effort to improve the user experience, this release introduces 
 
 * Added support for a new column **Time Spent In Stage** in the **Issue Time Across Stages report** drill-down. This field now displays the specific amount of time spent in each stage as selected in the Bar Chart widget. (SEI-6202)
 
-### Version 202403.2
+#### Version 202403.2
 
 <!-- Mar 29, 2024 -->
 
@@ -1543,7 +1550,7 @@ In our continued effort to improve the user experience, this release introduces 
 * The issue that caused the hygiene filters from being applied to the **Issue Hygiene report** has been resolved.
 * The **DORA Deployment Frequency** and **Change Failure Rate report** was not displaying data correctly when configured with certain **Filters** such as `components`, `labels`, `fix_versions`, `versions`, and `Starts with` and `Contains` **Filter Settings** under the **DORA profile** definition. This issue has been resolved. Note that if you have these Filters configured in your DORA settings, you will need to delete and re-configure the profile settings. (SEI-6164)
 
-### Version 202403.1.1
+#### Version 202403.1.1
 
 #### Hotfix
 
@@ -1551,7 +1558,7 @@ In our continued effort to improve the user experience, this release introduces 
 * Added support to retrieve and display up to 999 active versions for the **Contributor** list. (SEI-5908)
 * The repository selection dropdown was not displaying data in the Collection definition for the Bitbucket integration. This issue has been fixed. (SEI-6245)
 
-### Version 202403.1
+#### Version 202403.1
 
 #### New features and enhancements
 
@@ -1587,9 +1594,9 @@ You can now view the latest pipeline execution link as a column in the drill-dow
 * The bug in the **Collection** definition that was causing a limitation on filtering repositories beyond the first 1000 has been resolved. This fix enables users to search for and select repositories from all available options when filtering the results. (SEI-6046)
 * On SEI Harness Platform, the addition of notes on **Insights** was throwing an error. This has been resolved. (SEI-5880)
 
-## February 2024
+#### February 2024
 
-### Version 202402.2
+#### Version 202402.2
 
 #### New features and enhancements
 
@@ -1609,7 +1616,7 @@ You can now view the latest pipeline execution link as a column in the drill-dow
 
 * In the **Collection** definition, when applying **Filters**, the expectation was for the repository name to start with an uppercase letter. This issue has been fixed to ensure that the repository list no longer requires the first letter to be capitalized. This resolves the case sensitivity filter problem. (SEI-5804)
 
-### Version 202402.1.1
+#### Version 202402.1.1
 
 #### Hotfix
 
@@ -1620,7 +1627,7 @@ You can now view the latest pipeline execution link as a column in the drill-dow
 * Added the capability to ingest all types of pipeline data, including pipelines with the status `WAITING`, from **Azure Pipelines** for the **Azure DevOps** integration. (SEI-5378)
 * Improved the ingestion logic for `commits` related to a **Pull Request** for the **GitHub** and **GitLab** integration. The maximum number of commits fetched for a pull request is now limited to 250. (SEI-5858)
 
-### Version 202402.1
+#### Version 202402.1
 
 #### New features and enhancements
 
@@ -1650,7 +1657,7 @@ You can now view the latest pipeline execution link as a column in the drill-dow
   * Some Jira tasks were still appearing in the report even after they had been removed during the middle of the sprint. This happened because these tasks were included when generating metrics for the report. This has been fixed and now any tasks which are deleted mid-sprint will not appear in the Report. (SEI-5259)
   * The report incorrectly identified some tasks as falling outside of their designated sprint period. This has been resolved to identify issues added in the sprint based on the `Start Date` and `End Date` of the sprint. (SEI-5406)
 
-### Version 202401.2.1
+#### Version 202401.2.1
 
 #### Hotfix
 
@@ -1658,9 +1665,9 @@ You can now view the latest pipeline execution link as a column in the drill-dow
 * Renamed the label terminology in the **Integration Monitoring** tab from `FAILED` to `WARNING` for ingestion jobs that have failed due to some reason in the past 7 days. (SEI-5415)
 * There was an existing issue in the **Sprint Metric Single Stat reports** where clicking on commit tickets was causing the app to crash. This has been resolved now. (SEI-5372)
 
-## January 2024
+#### January 2024
 
-### Version 202401.2
+#### Version 202401.2
 
 #### New features and enhancements
 
@@ -1686,7 +1693,7 @@ You can now view the latest pipeline execution link as a column in the drill-dow
 * There was an existing issue where the report was showing as not being supported when more than one Trend Report was added to the Insight. This has been resolved. Now, you can add multiple trend reports to the Insight (SEI-5128)
 * In the Jira integration settings there was a bug where users were unable to save custom hygiene fields. This has been fixed now. (SEI-5152)
 
-### Version 202401.1
+#### Version 202401.1
 
 #### New features and enhancements
 
@@ -1700,6 +1707,4 @@ You can now view the latest pipeline execution link as a column in the drill-dow
 
 * There was a bug associated with the Azure DevOps integration that caused incorrect redirection for commit links in the reports. This issue has been resolved now. (SEI-4768)
 
-## December 2023
-
-Software Engineering Insights documentation is live on the Harness Developer Hub. Check back soon for module release notes.
+</details>

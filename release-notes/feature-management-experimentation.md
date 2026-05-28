@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2026-05-04T10:00:00
+date: 2026-05-27T10:00:00
 tags: ["fme", "feature management experimentation"]
 sidebar_position: 11
 ---
@@ -14,11 +14,11 @@ import TabItem from '@theme/TabItem';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: May 4, 2026
+#### Last updated: May 27, 2026
 
 ## May 2026
 
-### [New Enhancement] Harness Policy As Code for FME Environments, Segments, and Segment Definitions
+### Harness Policy As Code for FME Environments, Segments, and Segment Definitions
 ----
 #### 2026-05-04
 
@@ -41,7 +41,7 @@ These policies are evaluated automatically on **On Save** events, ensuring gover
 
 ## April 2026
 
-### [New Enhancement] Identity-based Targeting Improvements
+### Identity-based Targeting Improvements
 ----
 #### 2026-04-30
 
@@ -66,7 +66,7 @@ To enable key type-ahead and identity tooltip features, you must define attribut
 - [Targeting With Custom Attributes](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes)
 - [Identities API](https://docs.split.io/reference/identities-overview)
 
-### [New Enhancement] Additional FME Steps in Harness Pipelines
+### Additional FME Steps in Harness Pipelines
 ----
 #### 2026-04-30
 
@@ -80,7 +80,7 @@ These steps are available under **Feature Management & Experimentation** in the 
 
 - [Using Feature Management & Experimentation with Harness Pipelines](/docs/feature-management-experimentation/pipelines/)
 
-### [New Feature] Remote Feature Flag Cleanup Templates for Harness FME is in beta
+### Remote Feature Flag Cleanup Templates for Harness FME is in beta
 ----
 #### 2026-04-27
 
@@ -98,7 +98,7 @@ To request access to the Remote Feature Flag Cleanup Templates beta experience, 
 - [Feature Flag Cleanup Templates](/docs/feature-management-experimentation/templates/)
 - [Harness Templates](/docs/platform/templates/template)
 
-### [New Feature] Google BigQuery Support in Warehouse Native Experimentation
+### Google BigQuery Support in Warehouse Native Experimentation
 ----
 #### 2026-04-22
 
@@ -111,7 +111,7 @@ Connect your BigQuery project and dataset using a service account in Harness FME
 - [Google BigQuery](/docs/feature-management-experimentation/warehouse-native/integrations/bigquery)
 - [Connect Your Data Warehouse](/docs/feature-management-experimentation/warehouse-native/integrations/)
 
-### [New Enhancement] Reallocate Traffic (Reseed Bucketing) API
+### Reallocate Traffic (Reseed Bucketing) API
 ----
 #### 2026-04-14
 
@@ -136,7 +136,7 @@ Use the [Reallocate Traffic API](https://docs.split.io/reference/reallocate-traf
 - [Reallocate Traffic (Reseed Bucketing) API](https://docs.split.io/reference/reallocate-traffic-reseed-bucketing)
 - [How Bucketing Works](/docs/feature-management-experimentation/feature-management#ensuring-a-consistent-user-experience) 
 
-### [New Feature] Warehouse Native Experimentation is GA
+### Warehouse Native Experimentation is GA
 ----
 #### 2026-04-08
 
@@ -157,7 +157,7 @@ Warehouse Native Experimentation must be enabled for your account. To request ac
 
 ## March 2026
 
-### [New Feature] Harness Policy As Code for FME Feature Flags
+### Harness Policy As Code for FME Feature Flags
 ----
 #### 2026-03-09
 
@@ -185,7 +185,7 @@ This integration helps teams shift feature flag governance left, catching issues
 - [Harness Policy As Code](/docs/platform/governance/policy-as-code/harness-governance-quickstart)
 - [Harness Policy Samples](/docs/platform/governance/policy-as-code/sample-policy-use-case#fme-feature-flag-policies)
 
-### [New Feature] Feature Flag Archiving 
+### Feature Flag Archiving 
 ----
 #### 2026-03-09
 
@@ -211,7 +211,7 @@ With flag archiving, teams can:
 - [Permissions Reference](/docs/platform/role-based-access-control/permissions-reference/#feature-management-and-experimentation)
 - [Harness Sample Policies](/docs/platform/governance/policy-as-code/sample-policy-use-case#prevent-archiving-a-feature-flag-with-recent-traffic)
 
-### [New Feature] FME Steps in Harness Pipelines
+### FME Steps in Harness Pipelines
 ----
 #### 2026-03-05
 
@@ -235,7 +235,7 @@ These steps run alongside standard pipeline capabilities such as [approvals](/do
 
 ## February 2026
 
-### [New Enhancement] Explore Feature Flag, Segment, and Metric Lists in Harness FME
+### Explore Feature Flag, Segment, and Metric Lists in Harness FME
 ----
 #### 2026-02-13
 
@@ -275,7 +275,7 @@ With this enhancement, you can:
 
 ## January 2026
 
-### [New Enhancement] Include metadata with events
+### Include metadata with events
 ----
 #### 2026-01-30
 
@@ -303,7 +303,7 @@ The event names may differ slightly depending on the SDK or suite. With this met
 - [Node.js SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/nodejs-sdk#include-metadata)
 - [Python SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/python-sdk#include-metadata)
 
-### [New Feature] Subscribe to events in server-side SDKs
+### Subscribe to events in server-side SDKs
 ----
 #### 2026-01-30
 
@@ -324,7 +324,7 @@ The event names and available options may differ slightly depending on the SDK. 
 - [.NET SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/net-sdk#subscribe-to-events)
 - [Node.js SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/nodejs-sdk#subscribe-to-events)
 
-### [New Enhancement] Improved Onboarding Flow for Harness FME
+### Improved Onboarding Flow for Harness FME
 ----
 #### 2026-01-29
 
@@ -345,7 +345,7 @@ This enhancement helps reduce confusion during initial setup and ensures a smoot
 - [Split and Harness](/docs/feature-management-experimentation/getting-started/split-and-harness#accessing-harness-fme)
 - [Harness Feature Management & Experimentation (FME)](/docs/feature-management-experimentation/getting-started/overview/)
 
-### [New Enhancement] Identifier-based Filtering for Harness FME Projects
+### Identifier-based Filtering for Harness FME Projects
 ----
 #### 2026-01-23
 
@@ -359,7 +359,7 @@ Previously, workspace ID retrieval relied on filtering by [Harness project name]
 - [API for Split Admins](/docs/feature-management-experimentation/split-to-harness/api-for-split-admins#are-the-harness-project-identifier-and-split-project-id-wsid-equivalent-can-i-use-either-in-the-split-admin-api-endpoints-after-migration)
 - [Postman Collection](https://www.postman.com/harness-fme-enablement/harness-fme/folder/qqutu4c/harness-after)
 
-### [New Feature] FME Steps in Harness Pipelines is in Beta
+### FME Steps in Harness Pipelines is in Beta
 ----
 #### 2026-01-23
 
@@ -382,7 +382,7 @@ These steps run alongside standard pipeline steps and logic such as approvals, f
 - [FME Steps in Harness Pipelines](/docs/feature-management-experimentation/pipelines)
 - [Integrating CD with other Harness modules](/docs/continuous-delivery/cd-onboarding/integrating-cd-other-modules/)
 
-### [New Feature] Web support in the Flutter Plugin
+### Web support in the Flutter Plugin
 ----
 #### 2026-01-16
 
@@ -399,7 +399,7 @@ This feature enables you to integrate the plugin into multi-platform Flutter app
 
 - [Flutter Plugin](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/flutter-plugin)
 
-### [New Enhancement] Certificate pinning status handler for iOS SDK and iOS Suite
+### Certificate pinning status handler for iOS SDK and iOS Suite
 ---
 #### 2026-01-15
 
@@ -421,7 +421,7 @@ This enhancement enables better observability, auditing, and compliance monitori
 - [iOS SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk#certificate-pinning)
 - [iOS Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/ios-suite#certificate-pinning)
 
-### [New Enhancement] Streamline Project Configuration in FME Settings
+### Streamline Project Configuration in FME Settings
 ----
 #### 2026-01-12
 
@@ -442,7 +442,7 @@ With this enhancement, you can:
 - [Traffic Types](/docs/feature-management-experimentation/traffic-types)
 - [SDK API Keys](/docs/feature-management-experimentation/api-keys)
 
-### [New Feature] Environment Type-based Access Control in Harness FME
+### Environment Type-based Access Control in Harness FME
 ----
 #### 2026-01-12
 
@@ -476,7 +476,7 @@ This feature extends [Harness RBAC for FME](/docs/feature-management-experimenta
 
 ## December 2025
 
-### [New Feature] Disable impressions per evaluation request in the Split Evaluator
+### Disable impressions per evaluation request in the Split Evaluator
 ----
 #### 2025-12-22
 
@@ -495,7 +495,7 @@ Impressions can be disabled for both `GET` and `POST` requests by using a query 
 - [Split Evaluator](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-evaluator#disabling-impressions-per-evaluation)
 - [Impressions](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions)
 
-### [New Feature] Reverse Proxy Support for the Harness Proxy
+### Reverse Proxy Support for the Harness Proxy
 ----
 #### 2025-12-16
 
@@ -517,7 +517,7 @@ Reverse proxy support gives enterprise customers greater flexibility in meeting 
 
 - [Harness Proxy](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/harness-proxy)
 
-### [New Enhancement] Consolidate FME Large Segments into FME Segments Permission
+### Consolidate FME Large Segments into FME Segments Permission
 ----
 #### 2025-12-10
 
@@ -538,7 +538,7 @@ With this enhancement, you can:
 
 ## November 2025
 
-### [New Feature] Metric Alert Webhook Integration
+### Metric Alert Webhook Integration
 ----
 #### 2025-11-21
 
@@ -561,7 +561,7 @@ This integration enables product, experimentation, and DevOps teams to automate 
 - [Automated Alerts and Notifications](/docs/feature-management-experimentation/release-monitoring/alerts/automated-alerts-and-notifications/)
 - [Harness FME Integrations](/docs/feature-management-experimentation/integrations/)
 
-### [New Feature] Permissions Enforcement Controls for Transitioning from Split Legacy Permissions
+### Permissions Enforcement Controls for Transitioning from Split Legacy Permissions
 ----
 #### 2025-11-14
 
@@ -592,7 +592,7 @@ This feature provides administrators with full control over their transition fro
 - [Harness RBAC for FME](/docs/feature-management-experimentation/permissions/rbac)
 - [Harness RBAC](/docs/platform/role-based-access-control/rbac-in-harness)
 
-### [New Feature] Environment-level RBAC Governance in FME
+### Environment-level RBAC Governance in FME
 ----
 #### 2025-11-14
 
@@ -616,7 +616,7 @@ This feature enables Harness FME administrators to use resource groups to contro
 
 ## October 2025
 
-### [New Enhancement] Owners Are Metadata Only
+### Owners Are Metadata Only
 ----
 #### 2025-10-31
 
@@ -639,7 +639,7 @@ All existing edit permissions have been preserved. No one will lose the current 
 - [RBAC for Split Admins](/docs/feature-management-experimentation/split-to-harness/administering-migrated-account)
 - [Owners (Legacy Split)](/docs/feature-management-experimentation/owners)
 
-### [New Feature] Harness FME MCP Tools
+### Harness FME MCP Tools
 ----
 #### 2025-10-31
 
@@ -661,7 +661,7 @@ The Harness FME MCP helps teams accelerate feature delivery and experimentation 
 - [Harness FME MCP Tools](/docs/feature-management-experimentation/release-agent/mcp-tools)
 - [Harness MCP Server](/docs/platform/harness-ai/harness-mcp-server/)
 
-### [New Feature] OpenFeature Providers
+### OpenFeature Providers
 ----
 #### 2025-10-28
 
@@ -688,7 +688,7 @@ Harness FME offers providers for Android, iOS, Web, Angular, React, Java, Node.j
 - [Python SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/python-sdk)
 - [.NET SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/net-sdk)
 
-### [New Feature] Warehouse Native Experimentation in Beta
+### Warehouse Native Experimentation in Beta
 ----
 #### 2025-10-22
 
@@ -707,7 +707,7 @@ To request access for the Warehouse Native Experimentation beta experience, cont
 - [Warehouse Native Experimentation](/docs/feature-management-experimentation/warehouse-native)
 - [Warehouse Native Setup](/docs/feature-management-experimentation/warehouse-native/setup)
 
-### [New Feature] Harness Proxy
+### Harness Proxy
 ----
 #### 2025-10-15
 
@@ -730,7 +730,7 @@ Harness Proxy makes it easier for enterprise customers to meet compliance and se
 
 ## September 2025
 
-### [New Feature] Fallback Treatments
+### Fallback Treatments
 ----
 #### 2025-09-25
 
@@ -760,7 +760,7 @@ By configuring fallback treatments, you can improve reliability, reduce surprise
 - [Go SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/go-sdk#configure-fallback-treatments)
 - [React SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-sdk#configure-fallback-treatments)
 
-### [New Feature] Experiment Entry Event Filter
+### Experiment Entry Event Filter
 ----
 #### 2025-09-25
 
@@ -777,7 +777,7 @@ You can set this filter during experiment creation, and it is applied globally a
 
 ## July 2025
 
-### [New Enhancement] Dimensional Analysis
+### Dimensional Analysis
 ----
 #### 2025-07-25
 
@@ -799,7 +799,7 @@ This is especially helpful for identifying how specific segments are impacted by
 - [Analyzing experiment results](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/#current-impact-snapshot-by-treatment)
 - [Dimensional analysis](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/dimensional-analysis)
 
-### [New Feature] AI Summarize button for metrics and experiments
+### AI Summarize button for metrics and experiments
 ----
 #### 2025-07-14
 
@@ -815,7 +815,7 @@ AI summaries are especially helpful for product managers and non-technical stake
 
 ## June 2025
 
-### [New Feature] Support for rule-based segments
+### Support for rule-based segments
 ----
 #### 2025-06-18
 
@@ -840,7 +840,7 @@ This feature is especially useful when working with large user segments, as they
 - [Python SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/python-sdk)
 - [Ruby SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/ruby-sdk)
 
-### [New Feature] Experiment Tags
+### Experiment Tags
 ----
 #### 2025-06-16
 
@@ -854,7 +854,7 @@ This is especially helpful for organizations with multiple teams running experim
 - [Experimentation Overview](/docs/feature-management-experimentation/experimentation/overview)
 - [Experiments Setup](/docs/feature-management-experimentation/experimentation/setup/)
 
-### [New Feature] Control cache expiration for client-side SDKs
+### Control cache expiration for client-side SDKs
 ----
 #### 2025-06-05
 
@@ -871,7 +871,7 @@ This update introduces new configuration options for overriding that default and
 - [Android SDK Suite](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/android-suite#configure-cache-behavior)
 
 ## April 2025
-### [New Feature] Experiments Dashboard
+### Experiments Dashboard
 ----
 #### 2025-04-30
 
@@ -897,7 +897,7 @@ This release makes it easier for teams to run experiments without requiring deep
 - [Experiments](/docs/feature-management-experimentation/experimentation/overview)
 - [Experiment health check](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/health-check)
 
-### [New Feature] Centralized control for React SDK flag update behavior
+### Centralized control for React SDK flag update behavior
 ----
 #### 2025-04-16
 
@@ -930,7 +930,7 @@ const App = () => (
 #### Related documentation
 - [React SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-sdk#subscribe-to-events)
 
-### [New Feature] Append impression properties
+### Append impression properties
 ----
 #### 2025-04-10
 The following SDKs now allow you to append properties to impressions for each `getTreatment` call: Browser, iOS, JavaScript, Node.js, React, and Redux. This provides additional context for in-product troubleshooting within Live tail or downstream external analysis.
@@ -955,7 +955,7 @@ The following SDKs now allow you to append properties to impressions for each `g
 - [Go SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/go-sdk#append-properties-to-impressions)
 
 ## March 2025
-### [New Feature] Feature flag impression toggle
+### Feature flag impression toggle
 ----
 #### 2025-03-26
 The feature flag impression toggle allows you more control over your generated impression volume, by switching flag impression tracking on/off per feature flag per environment.
@@ -967,7 +967,7 @@ This feature allows you to streamline impressions sent to third party integratio
 #### Related documentation
 - [Tracking impressions](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions/#tracking-impressions)
 
-### [New Feature] AI settings
+### AI settings
 ----
 #### 2025-03-19
 The new AI settings page in Admin settings provides a toggle to enable/disable Release Agent and manage whether Release Agent has permissions to process experimentation data for experiment summarization and Q&A. This provides enhanced control over data privacy for AI features.
@@ -980,7 +980,7 @@ Your data is protected by the [Harness privacy policy](https://www.harness.io/le
 - [AI Release Agent](https://help.split.io/hc/en-us/articles/21188803158157-Switch-AI-assistant)
 
 ## February 2025
-### [New SDK] Elixir SDK
+### Elixir SDK
 ----
 #### 2025-02-28
 #### Elixir SDK General Availability
@@ -1000,7 +1000,7 @@ Splitd can be set up locally to the consumer application or be deployed as a sid
 * [Split Daemon (splitd)](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-daemon-splitd)
 
 ## January 2025
-### [New Feature] Release Agent (AI Chatbot)
+### Release Agent (AI Chatbot)
 ----
 #### 2025-01-08
 ##### AI-Generated Summary Now Supports Follow-Up Questions
@@ -1022,7 +1022,7 @@ Note: The transition from "Switch" to "Release Agent" will take place gradually.
 - [Metric details and trends](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/metric-details-and-trends/)
 - [Switch AI assistant](https://help.split.io/hc/en-us/articles/21188803158157-Switch-AI-assistant)
 
-### [New Feature] Targeting - Large segments
+### Targeting - Large segments
 ----
 #### 2025-01-07
 Harness Feature Management and Experimentation (FME) now supports "Large segments" (lists of targeting IDs) that can contain more than 100,000 IDs.
@@ -1055,8 +1055,15 @@ After familiarizing yourself with Large segments at the above links, you may fin
 ###### Adding an approval step via Admin API
 To add an approval step for Large segment creation or update when using the Admin API, reference this example:  [Open Change Request to add members to a Large Segment](https://docs.split.io/reference/create-change-request#open-change-request-to-add-members-to-a-large-segment).
 
-## December 2024
-### 2024-12-06
+## Previous releases
+
+### 2024 releases
+
+<details>
+<summary>Expand for 2024 releases</summary>
+
+#### December 2024
+#### 2024-12-06
 #### Targeting
 ##### Semantic Versioning (SemVer) Attribute Dictionary Support
 Split FME now supports SemVer type attributes and suggested values in the attribute dictionary:
@@ -1091,8 +1098,8 @@ If "is in list" is chosen as the matcher type, suggested values are shown:
 - [Creating individual custom attributes in Admin settings](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes/#creating-individual-custom-attributes-in-admin-settings)
 - [Creating multiple custom attributes in Admin Settings](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes/#creating-multiple-custom-attributes-in-admin-settings) (CSV upload)
 
-## November 2024
-### 2024-11-27
+#### November 2024
+#### 2024-11-27
 #### Alerts
 ##### Guardrail and Key Metric Alerts Now Shown in the Alerts Table
 Previously, the Alerts table on the Monitoring tab displayed Metric alerts only. Guardrail Metric alerts and Key Metric alerts generated email notifications to feature flag owners, but were not persisted in the UI.
@@ -1115,9 +1122,9 @@ As a refresher, here is quick summary of the three alert types:
     - **Configured:** at the feature flag level, by [marking a metric as a "Key metric" for that flag](/docs/feature-management-experimentation/release-monitoring/alerts/automated-alerts-and-notifications/#setting-up-feature-flag-alerting)
     - **Monitors:** percentage rollouts only for flags where the metric is a Key metric
 
-## September 2024
+#### September 2024
 
-### 2024-09-30
+#### 2024-09-30
 #### Better Together: Split + Harness
 ##### New Colors, Names for Organization and Workspace
 Starting on September 30th, we began a progressive rollout to update the Split UI, bringing it closer to the look of Harness:
@@ -1132,7 +1139,7 @@ Beyond a change in color scheme, you will also see two changes to **terminology*
 
 Note: These terminology changes are being made only to labels in the UI at this time. To avoid introducing a breaking change, the [Admin API](https://docs.split.io/reference/introduction) will continue to use the strings ws, workspace, organizationId, and orgId until further notice.
 
-### 2024-09-12
+#### 2024-09-12
 #### Monitoring
 ##### Traffic Insights and Alerts
 The **Alerts** tab has been renamed **Monitoring** and expanded to show real-time traffic insights over time and any alerts fired for the flag on a single page.
@@ -1149,7 +1156,7 @@ Changes made to flags (i.e., new flag versions) are displayed as vertical bars f
 
 For more information, have a look at the [Monitoring tab docs](https://help.split.io/hc/en-us/articles/30098162579853-Monitoring-tab).
 
-### 2024-09-10
+#### 2024-09-10
 #### Metrics
 ##### Introducing Supporting Metrics
 We’re excited to announce the next step in improving metric categorization for your feature releases and experiments: **Supporting metrics**. This new metric category gives you greater control over metrics monitored per feature flag, helping you focus on what truly matters.
@@ -1173,7 +1180,7 @@ Guardrail metrics can be assigned in the metric definition:
 
 The combination of Key metrics, Guardrail metrics, and Supporting metrics will reduce noise and increase sensitivity while ensuring important metrics are monitored for every feature release or experiment. We welcome your feedback as we continue to improve our metric results!
 
-### 2024-09-04
+#### 2024-09-04
 #### Monitoring
 ##### Guardrail Metric Alerts
 Flag owners will now automatically receive alerts on any guardrail metric without manual configuration.
@@ -1184,24 +1191,24 @@ As a reminder, Guardrail Metrics ([released 2024-06-14](#guardrail-metrics)) ens
 
 Metrics are set as guardrail metrics for your workspace on the Metric definition page. View the docs [here](/docs/feature-management-experimentation/release-monitoring/metrics/categories/).
 
-## June 2024
-### 2024-06-14
+#### June 2024
+#### 2024-06-14
 #### Monitoring
 ##### Guardrail Metrics
 Users can now categorize their organization’s most important metrics as  “guardrails”. [Guardrail metrics](/docs/feature-management-experimentation/release-monitoring/metrics/categories/) are those your organization wants to protect during a feature release or experiment. Metrics are set as guardrail metrics for your workspace on the Metric definition page.
 
-### 2024-06-06
+#### 2024-06-06
 #### SDK Enhancements
 ##### Semantic Versioning Targeting
 Using the latest Split SDKs, users can more easily define targeting rules for new features based on app, OS, and other versions using attribute-based targeting. The SDK then automatically serves the appropriate treatment to users without needing additional code configurations. Split’s native [Semantic Versioning Targeting](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes/#semver-attributes) removes the additional complexities and manual work that comes with targeting different application versions, allowing users to seamlessly deliver different experiences.
 
-## May 2024
-### 2024-05-31
+#### May 2024
+#### 2024-05-31
 #### Usability Enhancements
 ##### Left Navigation Enhancements
 Left-hand navigation within the application has been optimized. With this change, we've narrowed the navigation bar, migrated the search function to a modal dialog, and moved account settings to the bottom of the page. This makes frequently used actions (e.g. workspace switching) more readily accessible within the UI. 
 
-### 2024-05-03
+#### 2024-05-03
 #### SDK Enhancements
 ##### Split Suite, iOS SDK
 Users can automatically capture event data in Split using their [iOS SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk) without needing additional agents, integrations, or track calls. This eliminates the manual process of sending events to Split, allowing users to quickly set up metrics and alert policies.
@@ -1209,19 +1216,19 @@ Users can automatically capture event data in Split using their [iOS SDK](/docs/
 ##### Out-of-the-Box Metrics
 Split automatically creates metrics for any events being auto-captured by the Split Suite and RUM Agents ([Web](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/browser-rum-agent#automatic-metric-creation), [Android](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/android-rum-agent#automatic-metric-creation), [iOS](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/ios-rum-agent#automatic-metric-creation)). This reduces the manual effort of creating metrics and allows users to easily calculate their engineering and performance metrics.
 
-## April 2024
-### 2024-04-16
+#### April 2024
+#### 2024-04-16
 #### Usability Enhancements
 ##### Switch Updates 
 Users can now use Switch, Split’s in-app AI assistant, to easily summarize their experimentation results. Simply click on any metric card and hit the summarize button for a full analysis of your data. Please note, that this is a Generative AI feature that leverages end-user/customer data and will only be available to users who have specifically requested it to be enabled via Split’s Support team. 
 
-## February 2024
-### 2024-02-16
+#### February 2024
+#### 2024-02-16
 #### Usability Enhancements 
 ##### Change Request Management 
 To help teams easily coordinate and collaborate on flag updates, we added shareable direct links to change requests. This allows teams to quickly share feature flag updates with key stakeholders and get faster approvals when needed.
 
-### 2024-02-09
+#### 2024-02-09
 #### Usability Enhancements
 ##### Switch Updates
 
@@ -1231,7 +1238,7 @@ Users can cancel a response from Switch mid-flight. This allows users to move fo
 ###### Copy code snippets
 Users can now also copy code snippets directly from Switch, enabling faster time to value.
 
-### 2024-02-08
+#### 2024-02-08
 #### Usability Enhancements 
 ##### Filtering Improvements 
 To help teams quickly find the information they are looking for, Split has improved the filtering experience in these lists: **feature flags**, **segments**, and **metrics**. Users’ most recent search filters will be preserved as users continue to navigate the product. 
@@ -1239,54 +1246,59 @@ To help teams quickly find the information they are looking for, Split has impro
 ##### Sequential Testing Update
 Users can now reduce the [minimum sample size to 100](/docs/feature-management-experimentation/experimentation/setup/experiment-settings#minimum-sample-size#minimum-sample-size) at the organizational level via the admin setting. This allows users to get statistically significant results, faster.
 
-## January 2024
-### 2024-01-16
+#### January 2024
+#### 2024-01-16
 #### Usability Enhancements
 ##### Toast Notification Update 
 Toast notifications will now appear in the lower right corner of Split’s UI. This increases the visibility of the notification and enables users to easily take additional action within Split.
 
-### 2024-01-09
+#### 2024-01-09
 #### **SDK Enhancements**
 ##### **Split Suite, Android SDK**
 Users can now automatically capture event data in [Split for their Android SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/android-suite) without needing additional agents, integrations, or track calls. This eliminates the manual process of sending events to Split, allowing users to quickly set up metrics and alert policies.
 
-### 2024-01-02
+#### 2024-01-02
 #### **SDK Enhancements**
 ##### **Split Suite, Browser SDK**
 Users can now automatically capture event data in [Split for their Browser SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-suites/browser-suite) without needing additional agents, integrations, or track calls. This eliminates the manual process of sending events to Split, allowing users to quickly set up metrics and alert policies.
 
-## 2023 releases
+</details>
 
-## December 2023
-### 2023-12-20
+### 2023 releases
+
+<details>
+<summary>Expand for 2023 releases</summary>
+
+#### December 2023
+#### 2023-12-20
 #### SDK Enhancements
 ##### **RUM Agent iOS**
 With [RUM Agent iOS](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/ios-rum-agent), the iOS SDK will automatically capture event data and send it back to the Split Cloud. Event data will then populate in Split’s Data Hub, similar to impression data. This eliminates the manual process of sending events to Split and enables a quicker setup of metrics and alert policies.
 
 
-### 2023-12-19
+#### 2023-12-19
 #### SDK Enhancements
 ##### React SDK Updates
 Split’s [React SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/react-sdk) hooks can now return the SDK’s readiness status and support update parameters to control when an application will render. These properties now allow users to easily refresh application components with just a few lines of code.
 
 The `useSplitTreatments` hook has been optimized to detect duplicate `getTreatment` calls, improving the performance and UX of the application.
 
-### 2023-12-14
+#### 2023-12-14
 #### Usability Enhancements
 ##### Dynamic Configurations Update
 Dynamic Configuration’s JSON input field now supports text wraps. This allows users to easily view and edit content that contains very long strings like prompts for Large Language Models without needing to scroll horizontally across the screen.
 
-### 2023-12-12
+#### 2023-12-12
 #### Feature Flag Management Console 
 ##### Flag Sets 
 With [Flag Sets](/docs/feature-management-experimentation/feature-management/manage-flags/using-flag-sets-to-boost-sdk-performance/), users can group flags that logically belong together, so that the SDK only retrieves relevant flag definitions when initialized. This reduces SDK latency, memory consumption, and CPU utilization.
 
-### 2023-12-11
+#### 2023-12-11
 #### Monitoring
 ##### Event Visualization
 With [Event Visualization](/docs/feature-management-experimentation/release-monitoring/events/#exploring-events), users are now able to easily view their event data in aggregate directly in Split’s Data Hub without needing an external tool. This enables users to quickly validate if their event data is properly flowing into Split, and see how that event is behaving over time.
 
-### 2023-12-06
+#### 2023-12-06
 #### Monitoring
 ##### Custom Metrics Event Grouping (OR)
 With [Custom Metrics, Event Grouping (OR)](/docs/feature-management-experimentation/release-monitoring/metrics/), users have the flexibility to choose more than one base event and aggregate up to 5 different events together when creating metrics. This allows users to build more complex metrics that fit their needs and combine different inputs into one metric.
@@ -1294,18 +1306,18 @@ With [Custom Metrics, Event Grouping (OR)](/docs/feature-management-experimentat
 Users can now create metric definitions without needing to set [event types](/docs/feature-management-experimentation/release-monitoring/metrics/#metric-types) beforehand in the Admin UI, removing bottlenecks between admins and users. 
 Event types will be automatically deleted after 150 days of no data being received, eliminating the manual process of cleaning up unused types.
 
-## November 2023
-### 2023-11-29
+#### November 2023
+#### 2023-11-29
 #### Usability Enhancements
 ##### Keyboard Accessibility
 Users can now use tab-based navigation to access Split’s login page, change summary modal (including approval flow from email), and definitions tab. This is supported on the Edge, Firefox, Safari, and Chrome browsers.
 
-### 2023-11-09
+#### 2023-11-09
 #### Usability Enhancements
 ##### Switch 
 [Switch](https://help.split.io/hc/en-us/articles/21188803158157) is an in-app AI assistant designed to streamline the use of the Split product. It offers multilingual support, rapid responses, and knowledge-based assistance by utilizing our public documentation and blogs. Switch makes it easy for all developers to get the help they need, without ever leaving the Split interface.
 
-### 2023-11-02
+#### 2023-11-02
 #### Feature Experimentation
 ##### Sequential Testing Update
 Sequential Testing will now be the default statistical method for all net-new organizations using monitoring and experimentation. 
@@ -1313,37 +1325,37 @@ The minimum sample size for [Sequential Testing](/docs/feature-management-experi
 ##### Dimensional Analysis Update
 Users can now create up to [20 dimensions with 20 values per dimension](/docs/feature-management-experimentation/experimentation/experiment-results/analyzing-experiment-results/dimensional-analysis/#configuring-dimensions-and-values). This gives users even more flexibility when doing a deeper analysis of their feature experiments or releases.
 
-## October 2023
-### 2023-10-25
+#### October 2023
+#### 2023-10-25
 #### API Enhancements
 ####### Different Access Levels for APIs: Roles and Scopes for API Keys 
 Define specific [roles](https://docs.split.io/reference/api-keys-overview#admin-api-key-roles) and [scopes](https://docs.split.io/reference/api-keys-overview#admin-api-key-scopes) for Admin API keys. Restrict access to resources at the organizational, workspace, or environment levels. This gives admins more flexibility when granting access to Split’s Public API.
 
-### 2023-10-24
+#### 2023-10-24
 #### SDK Enhancements
 ##### PHP in-memory (PHP Thin Client SDK) updates 
 Split’s PHP in-memory SDK now supports [event tracking via the `track ()` call](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/php-thin-client-sdk#tracktrack), getting treatments with [Dynamic Configurations](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/php-thin-client-sdk#trackget-treatments-with-configurations), and retrieving information on cached flags via [SDK Manager](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/php-thin-client-sdk#trackmanager).
 
-### 2023-10-10
+#### 2023-10-10
 #### Monitoring
 ##### **Feature Flag Significance Alerting**
 With [Feature Flag Significance Alerting](/docs/feature-management-experimentation/release-monitoring/alerts/automated-alerts-and-notifications/#setting-up-feature-flag-alerting), users can now receive notifications when a statistically significant difference has been observed between two treatments on their flag’s key metrics. Feature Flag alerting is enabled automatically for releases with a percentage allocation. This enables users to make fast, accurate release decisions in a timely manner.
 ##### Out-of-the-Box Metrics, Browser RUM Agent
 Split now [automatically creates metrics](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/browser-rum-agent#automatic-metric-creation) for any events being auto-captured by the Split SDK (Browser RUM Agent). This reduces the manual effort of creating metrics and allows users to easily calculate their engineering and performance metrics.
 
-## September 2023
-### 2023-09-18
+#### September 2023
+#### 2023-09-18
 #### Integrations
 ##### Split-Segment Integration Update
 The `orginalTimestamp` precision has been updated to go from seconds to milliseconds when sending impressions to Segment. This update makes our timestamp field more consistent with the precision Segment uses.
 
-## August 2023
-### 2023-08-23
+#### August 2023
+#### 2023-08-23
 #### Feature Management Console 
 ##### Feature Flag Editor Enhancements 
 The feature flag definitions tab has added two minor UX updates to the editor flow. The treatment section will now automatically collapse once a flag definition has been created/updated. Also, users will be able to view treatment information via the environment cards on the left. These enhancements help the user understand which treatments are available in their environment and guide them to the targeting section.
 
-### 2023-08-15
+#### 2023-08-15
 #### SDK Enhancements
 ##### **RUM Agents - Web & Android**
 - Users can now automatically capture event data in Split for their [Web](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/browser-rum-agent) and [Android](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-agents/android-rum-agent) SDKs. This eliminates the manual process of sending events to Split, allowing users to quickly set up metrics and alert policies.
@@ -1351,12 +1363,12 @@ The feature flag definitions tab has added two minor UX updates to the editor fl
 ##### Custom Analysis Time Frame
 - With [Custom Analysis Time Frame](/docs/feature-management-experimentation/release-monitoring/metrics/setup/filtering/#selecting-custom-dates), users can now analyze across date ranges regardless of any changes made to the feature flag definition. This enables better flexibility when analyzing results.
 
-### 2023-08-07
+#### 2023-08-07
 #### SDK Enhancements 
 ##### **PHP in-memory (PHP Thin Client SDK)**
 - Split now supports running PHP [locally](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/php-thin-client-sdk) using the [Split Daemon (splitd)](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-daemon-splitd) process to store and maintain feature flag data. This eliminates the need to use Redis & the Split Synchronizer while using our PHP SDK and provides a simpler set-up process.
 
-### 2023-08-03
+#### 2023-08-03
 #### Learning and Onboarding
 ##### Split Arcade
 [Split Arcade](https://help.split.io/hc/en-us/articles/7996112174733-Split-Arcade-self-paced-certifications) is an interactive, gamified experience that provides persona-based technical training, tutorials, and best-practice guidance from industry experts. Users gain access to highly engaging content including product explainer videos, clickable product walkthroughs, manipulatable code examples, and more. With knowledge checks along the way, team members earn professional certifications and LinkedIn badges to validate progress.
@@ -1364,40 +1376,40 @@ The feature flag definitions tab has added two minor UX updates to the editor fl
 ##### Flutter Plugin
 [Split's Flutter Plugin](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/flutter-plugin) brings scalable feature flags to any app, website, or experience built with Flutter. Just inject the service into any component and start evaluating flags and tracking events.
 
-### 2023-08-01
+#### 2023-08-01
 #### SDK Enhancements
 ##### **Instant Feature Flags**
 - To reduce the latency of updates and increase the [reliability of SDKs](/docs/feature-management-experimentation/sdks-and-infrastructure#streaming-architecture), feature flag update notices delivered via streaming will not require a subsequent network request to fetch the changes. Instead, changes will be contained in the streaming payload itself.
 
-## July 2023
-### 2023-07-26
+#### July 2023
+#### 2023-07-26
 #### Integrations
 ##### **SDK@Edge, Split-Vercel Integration**
 - [Split’s integration with Vercel’s Edge](https://help.split.io/hc/en-us/articles/16469873148173) platform provides teams with the ability to incorporate feature flags and experiments into their Edge application and workstreams. Streamline Split data into the Edge without the extra network requests to retrieve config data.
 
-### 2023-07-24
+#### 2023-07-24
 #### Feature Management Console
 ##### **Viewer Role**
 - Admins can now assign the role, **Viewer**, to users. With the [Viewer role,](https://help.split.io/hc/en-us/articles/16432983870605-Managing-user-permissions) users can now be assigned a role that allows them to view data and objects within the Split application without the ability to make modifications. This will give admins more flexibility and control when assigning roles.
 
-## June 2023
-### 2023-06-22
+#### June 2023
+#### 2023-06-22
 #### Experimentation
 ##### **Sequential Testing**
 - [Sequential Testing](/docs/feature-management-experimentation/experimentation/setup/experiment-settings#minimum-sample-size#using-sequential-testing) is a statistical testing method that allows users to obtain statistical results without the constraint of an experiment review period. This allows users to receive faster experimentation results, so that they make informed decisions about releases, quickly.
 
-### 2023-06-07
+#### 2023-06-07
 #### Monitoring
 ##### Metric Filtering Multiple Comparison Correction (MCC) Update
 When filtering your organizational metrics on the Metrics impact page, [MCC will only be applied once for all organizational metrics](/docs/feature-management-experimentation/experimentation/key-concepts/multiple-comparison-correction/#key-and-organizational-metrics). This will prevent users from seeing different p-values when metric results are filtered.
 
-## May 2023
-### 2023-05-24
+#### May 2023
+#### 2023-05-24
 #### Monitoring
 ##### Disabled Recalculating Metrics
 To help prevent unintentional resets of your data, the [recalculate metric button has been disabled](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/#manually-recalculating-metrics) for feature flags that don't have any data available for calculations or haven't received traffic within Split's data retention period.
 
-### 2023-05-15
+#### 2023-05-15
 #### Usability Enhancements
 ##### Simplified Feature Flag Configurations
 The [feature flag configuration flow](./static/fme/simplified-feature-flag-configurations-1.pdf) on the definition tab has been reimagined with updated terminology and new visual cues. This will enable users to configure flags with a higher degree of confidence for any use case (percentage-based rollout, on/off, etc.).
@@ -1406,13 +1418,13 @@ The entire Split application has gone through a [visual refresh](./static/fme/si
 ##### Terminology Change
 To reduce the confusion between "Split", our product, and "split", the feature flag, we are [changing the term "split" to "feature flag"](./static/fme/simplified-feature-flag-configurations-1.pdf) across our application and documentation.
 
-### 2023-05-08
+#### 2023-05-08
 #### Integrations
 ##### Split's mParticle Integration Update
 Customers can now map Split traffic types to [mParticle MPID](/docs/feature-management-experimentation/integrations/mparticle#harness-fme-as-an-event-output) when sending events to Split.
 
-## April 2023
-### 2023-04-27
+#### April 2023
+#### 2023-04-27
 #### Admin API Keys Enhancements
 ##### Clone API Keys
 Users can now [clone API Keys](/docs/feature-management-experimentation/api-keys#cloning-api-keys) with the same access levels and scope as the key that is cloned. This will enable users to securely change/rotate keys on a regular basis while eliminating manual work.
@@ -1420,14 +1432,14 @@ Users can now [clone API Keys](/docs/feature-management-experimentation/api-keys
 ##### TLS support
 Split now supports TLS encryption for [Split Synchronizer](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-synchronizer#cli-configuration-options-and-its-equivalents-in-json--environment-variables) and [Split Proxy](/docs/feature-management-experimentation/sdks-and-infrastructure/optional-infra/split-proxy#cli-configuration-options-and-its-equivalents-in-json-and-environment-variables) endpoints. This will enable developers to further secure their SDK traffic.
 
-### 2023-04-26
+#### 2023-04-26
 #### SDK Enhancements
 ##### Mobile SDK Cache Encryption
 Developers can now encrypt the persistent cache of rollout plans on their [iOS](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk#configuration) and [Android](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-sdk#configuration) SDKs. This will help enhance the security of this data.
 ##### .NET Customizable Network Proxy
 Developers can now [configure specific proxies](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/net-sdk/#proxy) using higher precedence than environment variables to perform the server requests for the .NET SDK. This will give developers the flexibility to proxy Split traffic separated from app traffic.
 
-### 2023-04-06
+#### 2023-04-06
 #### Feature Management Console
 ##### Essential Scheduling
 [Essential scheduling](/docs/feature-management-experimentation/feature-management/manage-flags/using-essential-scheduling/) provides the capability to launch a feature on a certain date and time, up to 90 days in advance. This enables users to get all the necessary rollout work done, like getting approvals, long before the release.
@@ -1437,53 +1449,53 @@ There are new UI and UX updates to the feature flag editing experience that make
 ##### SCIM Support
 With [SCIM Support](https://help.split.io/hc/en-us/sections/14249918421005-SCIM), IT Admins can now manage Split users and groups using their preferred Identity Provider (IdP) including [Azure Active Directory](https://help.split.io/hc/en-us/articles/12386431119245-SCIM-for-Azure-AD) and [Okta](https://help.split.io/hc/en-us/articles/10488076923021-SCIM-for-Okta). This will help streamline the onboarding/offboarding processes as well as reduce the risk when governing users outside one's security platform.
 
-## March 2023
-### 2023-03-24
+#### March 2023
+#### 2023-03-24
 #### SDK Enhancements
 ##### SDK Offline Mode from JSON
 Developers can now start their [Go](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/go-sdk#json) and [Python](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/python-sdk#json) SDK instances in `localhost` mode, and easily download SDK data in the form of JSON files with just one command. These files can then mimic test or production environments, helping to improve the testing of applications offline.
-### 2023-03-23
+#### 2023-03-23
 #### Feature Management Console
 ##### Individual Target Key Limit
 The [individual target key limit](/docs/feature-management-experimentation/environments) has been updated to 500. This will enable users to deliver changes to their users faster without any impact on the application load times.
-### 2023-03-17
+#### 2023-03-17
 #### Documentation
 ##### SDK Validation Checklist
 The [SDK validation checklist](/docs/feature-management-experimentation/sdks-and-infrastructure/validate-sdk-setup) helps users ensure that SDKs are implemented keeping best practices in mind. This checklist defines the general guidelines, checks, and validations that can be useful for developers and software architects to avoid common mistakes or oversights and to ensure optimal performance of the Split SDK.
-### 2023-03-08
+#### 2023-03-08
 #### Experimentation
 ##### Experiment Review Period Notification
 Users will now see a section on their **My Work** page that lists [experiments ready for review](https://help.split.io/hc/en-us/articles/360042494691-My-work#experiments-for-review). This will make it easier and faster for users to access their statistical results and encourage them to take informed next steps.
 #### Integrations
 ##### Split's Amplitude Integration Update
 [Split's Amplitude Integration](/docs/feature-management-experimentation/integrations/amplitude#in-harness-fme) now supports Amplitude EU instances. This will enable customers using the EU region to properly configure the integration and send Split impressions to Amplitude.
-### 2023-03-01
+#### 2023-03-01
 #### Feature Management Console
 ##### Metric Audit Logs
 [Metric Audit Logs](/docs/feature-management-experimentation/audit-logs) will now capture when a metric name is updated and when an alert policy is created, updated, or deleted. This will help increase visibility across teams of all the changes made across Split.### February 2023
-### 2023-02-27
+#### 2023-02-27
 #### Monitoring
 ##### Metric Definition Filters
 The [metric definition tab](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/metric-details-and-trends/) has added an additional filter so users can now measure the metric event only if another event was completed beforehand. This will unlock a new way for users to measure the impact of experiments, and interpret their data.
-## January 2023
-### 2023-01-31
+#### January 2023
+#### 2023-01-31
 #### SDK Enhancements
 ##### SDK Offline Mode from JSON
 Developers can now start their [Java SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/server-side-sdks/java-sdk#json) instance in `localhost` mode, and easily download SDK data in the form of JSON files with just one command. These files can then mimic test or production environments, helping to improve the testing of applications offline.
-### 2023-01-26
+#### 2023-01-26
 #### Monitoring
 ##### Alerting UX Enhancement
 Users will now see a [bell icon](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/#viewing-metrics) within their metric list to easily identify whether or not an alert policy exists for a metric. If the icon is **white**, then no alert policy exists and if the icon is **gray**, then an alert policy exists for the metric. Clicking on the gray icon will take the user directly to the alert policy page for that metric.
-### 2023-01-23
+#### 2023-01-23
 #### Monitoring
 ##### Alerting UX Enhancement
 Previously, monitoring alerts were only generated when the sample size in each treatment reached 355. Now, users can receive alerts when the [sample size](/docs/feature-management-experimentation/experimentation/setup/experiment-settings#minimum-sample-size) reaches a minimum of 200. This will allow users to fire alerts earlier, whether or not they have configured a lower sample size in their experiment settings.
-### 2023-01-18
+#### 2023-01-18
 #### Monitoring
 ##### Alerting UX Enhancement
 Users can now [manage their alert policy](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/metrics-impact-cards/#actions-you-can-perform) directly from their metric cards on the **Metric impacts** tab. This change will make it simple to find where to manage alerts and/or know if alerts already exist for a metric.
 
-## Previous releases
+</details>
 
 ### 2022 releases
 
