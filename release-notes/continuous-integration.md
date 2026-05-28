@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2026-05-18T10:00
+date: 2026-05-25T10:00
 sidebar_position: 10
 ---
 
@@ -61,6 +61,32 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 :::
 
 ## May 2026
+
+### Version 1.141.0
+
+<!-- May 2026 -->
+
+#### New Features and Enhancements
+
+- Added Docker connector support for Bring Your Own Image (BYOI) workflows in Harness Cloud. You can now use custom container images from private registries for cloud builds. (CI-22735)
+
+- CI now uses versioned hcli (Harness CLI) binaries in Lite-Engine and Docker Runner. This improves binary management and rollback capabilities. (CI-21467)
+
+#### Fixed Issues
+
+- Fixed an issue where the Build and Push step with buildx failed with a file system error due to an overlay storage driver conflict introduced in version 1.3.17. (CI-22663)
+
+- Fixed an issue where users were unable to override `PLUGIN_ACL` for Cache Intelligence steps. Custom ACL configurations for cached objects now apply correctly. (CI-22408)
+
+- Improved cache plugin security by patching known vulnerabilities in the cache image. (CI-22506)
+
+#### Harness Images Updates
+
+| Image | Change | Previous Version | New Version |
+|-------|--------|------------------|-------------|
+| `plugins/docker` | Security and bug fixes | 21.2.6 | 21.2.8 |
+| `plugins/buildx` | Overlay storage fix | 1.3.17 | 1.3.19 |
+| `plugins/cache` | Security patch | 1.10.6 | 1.10.7 |
 
 ### Version 1.140.0
 
