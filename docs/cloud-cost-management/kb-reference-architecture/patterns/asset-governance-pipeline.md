@@ -11,7 +11,7 @@ Using the [webhook action](https://cloudcustodian.io/getting-started/actions/) f
 
 ## Setup
 
-This guide assumes you have CCM set up correctly for asset governance for at least one cloud account.
+This guide assumes you have CACM set up correctly for asset governance for at least one cloud account.
 
 ## Pipeline Setup
 
@@ -45,7 +45,7 @@ Click "Create Trigger". On the triggers screen, select the "WEBHOOK" icon and co
 
 ## Rule Setup
 
-Navigate to CCM and select the "Asset Governance" feature. Select "Rules" in the top right and press "+ New Rule".
+Navigate to CACM and select the "Asset Governance" feature. Select "Rules" in the top right and press "+ New Rule".
 
 Let's take an example rule for detecting unattached EBS instances:
 

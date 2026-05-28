@@ -10,7 +10,7 @@ helpdocs_is_published: true
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Harness CCM Budgets provide comprehensive cost governance capabilities that help you proactively manage and control your cloud spending. 
+Harness CACM Budgets provide comprehensive cost governance capabilities that help you proactively manage and control your cloud spending. 
 
 **With Budgets, you can:**
 
@@ -24,7 +24,7 @@ Harness CCM Budgets provide comprehensive cost governance capabilities that help
 
 ## Prerequisites
 
-* [Create CCM Connector](/docs/cloud-cost-management/get-started/#aws): Create a CCM connector to connect to your cloud provider.
+* [Create CACM Connector](/docs/cloud-cost-management/get-started/#aws): Create a CACM connector to connect to your cloud provider.
 * [Create Cost Perspectives](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/creating-a-perspective): Budgets are created on Perspectives. If you do not have a Perspective of the resources you would like to budget, first create a new Perspective and then proceed to set a budget. 
 
 ------
@@ -70,7 +70,7 @@ Budgets are automatically associated with their perspective's folder. When you m
 <Tabs groupId="budget-create">
 <TabItem value="step-by-step-guide" label="Step-by-Step Guide" default>
 
-1. Navigate to the **Cloud Cost Management** module and click **Budgets.**
+1. Navigate to the **Cloud & AI Cost Management** module and click **Budgets.**
 2. Click **New Budget**.
 
 ### Step 1: Define Target
@@ -226,7 +226,7 @@ Once a budget is deleted, it cannot be restored.
 
 ### What is Forecasted Cost and how is it calculated?
 
-Harness CCM displays a *Forecasted Cost* for every budget. It estimates how much you will spend **by the end of the current period** if your current pace continues.
+Harness CACM displays a *Forecasted Cost* for every budget. It estimates how much you will spend **by the end of the current period** if your current pace continues.
 
 #### Calculation 
 

@@ -1,6 +1,6 @@
 ---
 title: Azure
-description: Cloud Cost Management - Accelerator
+description: Cloud & AI Cost Management - Accelerator
 redirect_from:
   - /kb/reference-architectures/ccm/onboarding/azure
 ---
@@ -33,9 +33,9 @@ To do this, assign `Storage Blob Data Reader` to the `Harness Continuous Efficie
 
 ![](../static/azure-export.png)
 
-### Harness CCM Azure Connector
+### Harness CACM Azure Connector
 
-Now that the app has been added to your tenant and the export has been created we need to create a corresponding CCM Azure connector in your Harness account to start billing data ingestion.
+Now that the app has been added to your tenant and the export has been created we need to create a corresponding CACM Azure connector in your Harness account to start billing data ingestion.
 
 You can create this connector through the UI or via the API with a tool like Terraform. Using Terraform is the recommended approach and there is a [Harness Terraform provider here](https://registry.terraform.io/providers/harness/harness/latest/docs).
 
@@ -48,7 +48,7 @@ To configure the connector you will need the following information:
 - Storage container: The container in the storage account where the billing export is being delivered to
 - Storage directory: The folder in the container in the storage account where the billing export is being delivered to
 - Report name: The name of the billing export
-- Features enabled: The CCM features that you want to use in this subscription
+- Features enabled: The CACM features that you want to use in this subscription
   - At minimum this should be `BILLING`
   - You should additionally enable any other features you want to use in this subscription
     - `VISIBILITY`: This enables the inventory management feature
@@ -77,7 +77,7 @@ resource "harness_platform_connector_azure_cloud_cost" "billing" {
 
 ## Other Subscriptions
 
-Enabling CCM for your subscription that holds the billing export gets your cost data into Harness and enables you to start creating perspectives, budgets, alerts, and dashboards. To leverage the other features like auto stopping, and recommendations we need to give access and create connectors for each subscription where you want to use these other features.
+Enabling CACM for your subscription that holds the billing export gets your cost data into Harness and enables you to start creating perspectives, budgets, alerts, and dashboards. To leverage the other features like auto stopping, and recommendations we need to give access and create connectors for each subscription where you want to use these other features.
 
 For the inventory management feature you need to give the Harness application `Reader` access to the subscription. If you utilized management groups in your tenant it can be easier to assign this access at the management group level so that access cascades down to all the subscriptions in the tenant.
 
@@ -297,9 +297,9 @@ If you do not wish to give Contributor access to the Harness application here is
 }
 ```
 
-### Harness CCM Azure Connector
+### Harness CACM Azure Connector
 
-Now that the Harness application has been granted access to your subscriptions we need to create a corresponding CCM Azure connector in your Harness account for each subscription.
+Now that the Harness application has been granted access to your subscriptions we need to create a corresponding CACM Azure connector in your Harness account for each subscription.
 
 You can create these connectors through the UI or via the API with a tool like Terraform. Using Terraform is the recommended approach and there is a [Harness Terraform provider here](https://registry.terraform.io/providers/harness/harness/latest/docs).
 
@@ -307,7 +307,7 @@ To configure the connector you will need the following information:
 
 - Tenant ID: The ID of your Azure Tenant
 - Subscription ID: The ID of the subscription where the storage account is located
-- Features enabled: The CCM features that you want to use in this subscription
+- Features enabled: The CACM features that you want to use in this subscription
   - You should not set `BILLING` as enabled
   - You should enable the features you want to use in this subscription
     - `VISIBILITY`: This enables the inventory management feature
@@ -335,4 +335,4 @@ resource "harness_platform_connector_azure_cloud_cost" "subscription" {
 
 To get VM recommendations, you needs to [enable Azure Advisor VM/VMSS recommendations](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure#enable-azure-recommendations) for every subscription (that you want recommendations for.
 
-To enable VM recommendations you must have [Azure Advisor](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure/#enable-azure-recommendations) turned on in the subscription with VMs that you want recommendations for. Harness does not compute recommendations but pulls them from Azure Advisor across your subscriptions and centralizes them in CCM.
+To enable VM recommendations you must have [Azure Advisor](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure/#enable-azure-recommendations) turned on in the subscription with VMs that you want recommendations for. Harness does not compute recommendations but pulls them from Azure Advisor across your subscriptions and centralizes them in CACM.

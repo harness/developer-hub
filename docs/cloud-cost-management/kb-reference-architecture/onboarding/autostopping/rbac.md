@@ -1,6 +1,6 @@
 ---
 title: RBAC
-description: Cloud Cost Management - AutoStopping - RBAC
+description: Cloud & AI Cost Management - AutoStopping - RBAC
 redirect_from:
   - /kb/reference-architectures/ccm/onboarding/autostopping/rbac
 ---
@@ -25,7 +25,7 @@ If the user trying to access autostopping dosn't have `User:View` on `_all_accou
 
 To control the cloud accounts a user can perform the above actions on, you need to create a resource group (under account settings > resource groups) that encapsulates.
 
-Under "Shared Resources" select "Connectors" and then "Specified". Here you can select all the CCM AWS Account Connectors for the accounts which you want to give access to.
+Under "Shared Resources" select "Connectors" and then "Specified". Here you can select all the CACM AWS Account Connectors for the accounts which you want to give access to.
 
 You will create as many resource groups as needed depending on how many seperate access patterns you have.
 
@@ -47,7 +47,7 @@ You can use the Harness Terraform provider to create the resource groups needed 
 # pull in current account context
 data "harness_platform_current_account" "current" {}
 
-# create a ccm aws connector for an account
+# create a CACM aws connector for an account
 resource "harness_platform_connector_awscc" "member" {
   identifier = "member"
   name       = "member"
@@ -79,7 +79,7 @@ resource "harness_platform_resource_group" "member" {
     resources {
       resource_type = "CONNECTOR"
       identifiers = [
-        # scope this resource group to this ccm aws connector
+        # scope this resource group to this cacm aws connector
         harness_platform_connector_awscc.member.id
       ]
     }

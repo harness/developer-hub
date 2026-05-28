@@ -1529,7 +1529,7 @@ Cloud Asset Governance provides valuable recommendations, but when it comes to o
 
  <iframe 
      src="https://app.tango.us/app/embed/25a843d3-c733-4459-99f5-69558757865c" 
-     title="Enabling Granular Governance Recommendations in Cloud Cost Management" 
+     title="Enabling Granular Governance Recommendations in Cloud & AI Cost Management" 
      style={{minHeight:'640px'}}
      width="100%" 
      height="100%" 

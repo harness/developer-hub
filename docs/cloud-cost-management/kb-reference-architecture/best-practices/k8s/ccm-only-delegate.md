@@ -1,14 +1,14 @@
 ---
-title: IaC for a CCM Only Delegate
-description: IaC code samples for a Harness delegate that is tasked only for CCM related activities.
+title: IaC for a CACM Only Delegate
+description: IaC code samples for a Harness delegate that is tasked only for CACM related activities.
 redirect_from:
   - /kb/reference-architectures/ccm/best-practices/k8s/ccm-only-delegate
 ---
 
-# Provision a CCM Only Delegate via a Helm chart
+# Provision a CACM Only Delegate via a Helm chart
 
 ## Overview
-Because Delegates are a Harness platform offering, they can potentially be used for other modules other than CCM. In this example, we are setting specific parameters to ensure that the service account of the Delegate is read only and preventing the running of scripts:
+Because Delegates are a Harness platform offering, they can potentially be used for other modules other than CACM. In this example, we are setting specific parameters to ensure that the service account of the Delegate is read only and preventing the running of scripts:
 
 ```
 --set k8sPermissionsType=CLUSTER_VIEWER \
@@ -67,7 +67,7 @@ helm upgrade -i helm-delegate --namespace harness-delegate-ng --create-namespace
 # Use Terraform to provision Delegate tokens
 
 ## Overview
-Managing delegate tokens at scale isn't ideal inside the Harness UI.  You can instead manage these with Terraform using the [Harness provider](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_delegate_token).  All CCM functionality is at the account level so ensure you only set the `account_id` parameter and do not set an organization or project.
+Managing delegate tokens at scale isn't ideal inside the Harness UI.  You can instead manage these with Terraform using the [Harness provider](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_delegate_token).  All CACM functionality is at the account level so ensure you only set the `account_id` parameter and do not set an organization or project.
 
 You can then leverage the token created to provision your delegate with Terraform: `harness_platform_delegatetoken.this.value`.  You can use the [Helm provider](https://registry.terraform.io/providers/hashicorp/helm/latest/docs) to directly reference the delegate token within your [delegate deployment values](https://registry.terraform.io/modules/harness/kubernetes-delegate/harness/latest).
 

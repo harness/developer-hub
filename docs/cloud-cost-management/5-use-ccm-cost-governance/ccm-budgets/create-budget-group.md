@@ -38,7 +38,7 @@ Budget Groups aggregate related budgets and budget groups into one consolidated 
 <Tabs groupId="budget-group-create">
 <TabItem value="step-by-step-guide" label="Step-by-Step Guide" default>
 
-1. Navigate to the **Cloud Cost Management** module and click **Budgets**
+1. Navigate to the **Cloud & AI Cost Management** module and click **Budgets**
 2. Click **Create a new Budget Group**.
 
 ### Step 1: Define Group

@@ -163,7 +163,7 @@ resource "aws_iam_role_policy_attachment" "ccm_comm_orch_controller" {
 
 # Creating an orchestrator for your cluster
 
-Next we need to create an orchestrator in the CCM tool for your cluster. This is done with the following API call:
+Next we need to create an orchestrator in the CACM tool for your cluster. This is done with the following API call:
 
 ```
 HARNESS_ACCOUNT_ID="<harness account id>"
@@ -200,8 +200,8 @@ The following values are needed for the deployment:
 - clusterName: the name of the EKS cluster as it appears in AWS
 - clusterRegion: the AWS region the cluster is deployed in
 - remoteAccountID: the Harness account id where you are configuring the orchestrator
-- connectorID: the Harness CCM K8s connector id for the cluster
-- clusterID: the Harness CCM orchestrator id, this is from the response JSON in the API call made above
+- connectorID: the Harness CACM K8s connector id for the cluster
+- clusterID: the Harness CACM orchestrator id, this is from the response JSON in the API call made above
 - harnessAPI: the Harness URL for your account, `https://app.harness.io/lw/api` if your account is in prod-1, `https://app.harness.io/gratis/lw/api` if prod-2, and `https://app3.harness.io/lw/api` if prod-3
 - clusterEndpoint: the EKS cluster endpoint
 - awsDefaultInstanceProfile: the instance profile used in your EKS nodegroups
@@ -213,7 +213,7 @@ The following values are needed for the deployment:
 
 Once your cluster has been set up with all orchestrator components you can enable orchestration in the UI.
 
-Navigate to the CCM module, and select `Cluster Orchestrator` from the side menu. You should see a list of clusters that have been set up or are pending. Find the cluster you are onboarding and click `Resume Setup`.
+Navigate to the CACM module, and select `Cluster Orchestrator` from the side menu. You should see a list of clusters that have been set up or are pending. Find the cluster you are onboarding and click `Resume Setup`.
 
 ![](../../static/cluster-orch-existing-0.png)
 

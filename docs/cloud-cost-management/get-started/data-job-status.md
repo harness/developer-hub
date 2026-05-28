@@ -1,6 +1,6 @@
 ---
 title: Data Job Status
-description: Monitor and troubleshoot data ingestion and processing jobs across your cloud cost data pipeline in Harness CCM.
+description: Monitor and troubleshoot data ingestion and processing jobs across your cloud cost data pipeline in Harness CACM.
 sidebar_position: 20
 sidebar_label: Data Job Status
 ---
@@ -10,7 +10,7 @@ sidebar_label: Data Job Status
 Currently, this early access feature is behind a feature flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-The Data Job Status feature provides real-time visibility into the status of data ingestion and processing jobs across your cloud cost data pipeline in Harness Cloud Cost Management (CCM). It enables you to monitor, track, and troubleshoot data jobs that ingest billing data from cloud providers (AWS, Azure, GCP) into Harness.
+The Data Job Status feature provides real-time visibility into the status of data ingestion and processing jobs across your cloud cost data pipeline in Harness Cloud & AI Cost Management (CACM). It enables you to monitor, track, and troubleshoot data jobs that ingest billing data from cloud providers (AWS, Azure, GCP) into Harness.
 
 Before Data Job Status, users had limited visibility into:
 
@@ -40,7 +40,7 @@ After enabling this feature for your account, it takes approximately 24 hours to
 
  <DocImage path={require('./static/dashboard.png')} width="100%" title="Data Job Status Dashboard Overview" />
 
-When you connect cloud accounts (AWS, Azure, GCP) to Harness CCM, background jobs run to ingest billing data, process it, and make it available for cost analysis. The Data Job Status page lets you:
+When you connect cloud accounts (AWS, Azure, GCP) to Harness CACM, background jobs run to ingest billing data, process it, and make it available for cost analysis. The Data Job Status page lets you:
 
 - Monitor active data ingestion jobs
 - Identify jobs that require attention (failed or stuck)
@@ -61,7 +61,7 @@ Below the widgets, a table displays all active connectors and their latest job r
 - **Progress** - Visual progress bar showing job completion status
 - **Time Elapsed** - Duration since the job started
 - **Status** - Current job status with phase and message details. This also shows phases:
-    - **Data Sync** - Transfers billing data from your cloud provider (AWS S3, GCP BigQuery, or Azure) to CCM storage
+    - **Data Sync** - Transfers billing data from your cloud provider (AWS S3, GCP BigQuery, or Azure) to CACM storage
     - **Data Enrichment** - Applies post-processing such as monthly rollups, cost category stamping, label processing, currency conversion, and MSP adjustments
     - **Data Load** - Completes core ingestion and final load, after which your data is fresh and available for analysis
 - **Last Successful Run** - Timestamp of the most recent successful job completion for this connector
@@ -129,7 +129,7 @@ A progress bar visualizes the job's progress relative to its average completion 
 It also shows logs:
 
 - What phase the job is in along with the status. Phases are:
-    - **Data Sync** - Transfers billing data from your cloud provider (AWS S3, GCP BigQuery, or Azure) to CCM storage
+    - **Data Sync** - Transfers billing data from your cloud provider (AWS S3, GCP BigQuery, or Azure) to CACM storage
     - **Data Enrichment** - Applies post-processing such as monthly rollups, cost category stamping, label processing, currency conversion, and MSP adjustments
     - **Data Load** - Completes core ingestion and final load, after which your data is fresh and available for analysis
 - If multiple ingestions occur in a single day, you will see multiple log entries for that execution day.

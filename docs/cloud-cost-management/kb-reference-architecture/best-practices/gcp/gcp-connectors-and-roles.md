@@ -11,7 +11,7 @@ The process below defines how to provision Harness connectors and GCP IAM roles 
 
 ## Permissions
 
-You will need access to provision IAM roles in GCP and create CCM connectors in Harness. When running the Terraform code, two variables need to be defined:
+You will need access to provision IAM roles in GCP and create CACM connectors in Harness. When running the Terraform code, two variables need to be defined:
 
 `HARNESS_ACCOUNT_ID` = (Your Harness Account ID)
 
@@ -19,7 +19,7 @@ You will need access to provision IAM roles in GCP and create CCM connectors in 
 
 ## Setup Providers
 
-We need to leverage the GCP and Harness Terraform providers. We will use these to create IAM roles and CCM connectors. We also will get all GCP subscriptions and set the Harness service account.  To get all subscriptions, we are filtering on the parent folder  [This](https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/projects) document describes other ways to get a list of projects such as at the organization level.  
+We need to leverage the GCP and Harness Terraform providers. We will use these to create IAM roles and CACM connectors. We also will get all GCP subscriptions and set the Harness service account.  To get all subscriptions, we are filtering on the parent folder  [This](https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/projects) document describes other ways to get a list of projects such as at the organization level.  
 
 You should already have a billing connector in your GCP organization for the project that has the billing export.  To find this connector, go to the Harness UI -> Account Settings -> Connectors -> Click on the GCP connector that has the billing export -> Toggle the YAML view -> Copy the value for 'serviceAccountEmail'.
 
@@ -56,7 +56,7 @@ variable "harness_gcp_sa" {
 
 ## Get Projects And Create Connectors
 
-There are two options to retrieve the projects we want to create connectors for.  We'll use the Harness provider to create a CCM connector for each GCP project after we retrieve them. We are enabling recommendations (VISIBILITY), governance (GOVERNANCE), and autostopping (OPTIMIZATION).
+There are two options to retrieve the projects we want to create connectors for.  We'll use the Harness provider to create a CACM connector for each GCP project after we retrieve them. We are enabling recommendations (VISIBILITY), governance (GOVERNANCE), and autostopping (OPTIMIZATION).
 
 ### Use The Google Provider To Get All Projects In The Organization
 

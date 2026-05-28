@@ -5,9 +5,9 @@ redirect_from:
   - /kb/reference-architectures/ccm/best-practices/azure/azure-permissions
 ---
 
-# CCM Azure Permissions
+# CACM Azure Permissions
 
-When adding the Harness service principal to your Azure tenant, there are many different permissions sets based on the features you are trying to leverage in specific subscriptions. This guide is meant to cover all the different features of CCM and the permissions you need to assign to enable them.
+When adding the Harness service principal to your Azure tenant, there are many different permissions sets based on the features you are trying to leverage in specific subscriptions. This guide is meant to cover all the different features of CACM and the permissions you need to assign to enable them.
 
 To enable specific features on a connector you need to set a specific string in the `featuresEnabled` field (list) in the connector YAML. The keys for each feature are listed in the sections below.
 

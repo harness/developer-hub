@@ -35,7 +35,7 @@ For the Harness provider, you can set the following environment variables:
 - `HARNESS_ACCOUNT_ID`: your harness account identifier
 - `HARNESS_PLATFORM_API_KEY`: a harness api key, with ccm:autostopping-rule:create
 
-We will need to set a variable for the Harness CCM AWS connector ID that cooresponds to the AWS account we are checking for instances in:
+We will need to set a variable for the Harness CACM AWS connector ID that cooresponds to the AWS account we are checking for instances in:
 
 ```
 variable "cloud_connector_id" {

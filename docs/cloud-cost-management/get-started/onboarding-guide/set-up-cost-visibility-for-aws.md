@@ -10,21 +10,21 @@ redirect_from:
   - /docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-aws
 ---
 
-# Set up CCM for AWS
+# Set up CACM for AWS
 
 ## Overview
 
-Harness Cloud Cost Management (CCM) offers comprehensive solutions to manage and optimize the cloud costs of your Amazon Web Services (AWS) infrastructure. CCM provides visibility, governance, and optimization of AWS services such as EC2, S3, RDS, Lambda, and others. CCM provides recommendations to effectively right-size your cloud resources to match the workload demands and optimizes the auto-scaling groups (ASGs), and EKS clusters using intelligent cloud AutoStopping rules.
+Harness Cloud & AI Cost Management (CACM) offers comprehensive solutions to manage and optimize the cloud costs of your Amazon Web Services (AWS) infrastructure. CACM provides visibility, governance, and optimization of AWS services such as EC2, S3, RDS, Lambda, and others. CACM provides recommendations to effectively right-size your cloud resources to match the workload demands and optimizes the auto-scaling groups (ASGs), and EKS clusters using intelligent cloud AutoStopping rules.
 
 :::info
-After enabling CCM, it takes about 24 hours for the data to be available for viewing and analysis.
+After enabling CACM, it takes about 24 hours for the data to be available for viewing and analysis.
 :::
 
 ## Prerequisites
 
 ### AWS Connector requirements
 
-- For CCM, AWS connectors are available only at the Account level in Harness.
+- For CACM, AWS connectors are available only at the Account level in Harness.
 - If you have multiple AWS accounts, you may need to create multiple AWS connectors depending on desired functionality:
   - **Cost Visibility**: You may need to create one or multiple AWS connectors depending on the availability of consolidated billing. Go to **Cost and Usage Reports (CUR)** for more information.
   - **Resource Inventory Management**: You need to create an AWS connector for each account.
@@ -66,9 +66,9 @@ import TabItem from '@theme/TabItem';
 
 ## Implementation Guide
 
-### Connect CCM to your AWS account
+### Connect CACM to your AWS account
 
-To enable CCM for your AWS services (such as EC2, S3, RDS, Lambda, and so on), you simply need to connect Harness to your AWS accounts.
+To enable CACM for your AWS services (such as EC2, S3, RDS, Lambda, and so on), you simply need to connect Harness to your AWS accounts.
 
 1. Create a new AWS connector using one of the two options below:
 
@@ -147,7 +147,7 @@ Launch the AWS console and perform the following steps:
 
 ### Step 3: Choose Requirements
 
-Select the Cloud Cost Management features that you would like to enable, and then select **Continue**.
+Select the Cloud & AI Cost Management features that you would like to enable, and then select **Continue**.
 
 > **☆ NOTE —** Selecting features will add the necessary permissions to the IAM role in the next step. Cost Visibility permissions are required by default.
 
@@ -225,14 +225,14 @@ Perform the following steps in the AWS Console.
 The connection is validated, and verified in this step. After successful validation, select **Finish**.
 
 :::important
-Creating a new CUR (Cost and Usage Report) in AWS typically takes 6-8 hours. During this period, you might encounter an error message stating that Harness CCM is unable to find a CUR file.
+Creating a new CUR (Cost and Usage Report) in AWS typically takes 6-8 hours. During this period, you might encounter an error message stating that Harness CACM is unable to find a CUR file.
 :::
 
 ## Advanced Configuration
 
 ### Create Connectors for multiple AWS accounts
 
-Harness CCM also provides the ability to create connectors via API using a StackSet configured at the management account. It involves the following steps:
+Harness CACM also provides the ability to create connectors via API using a StackSet configured at the management account. It involves the following steps:
 
 - Create a Service Account and API Key in Harness
 - Create a StackSet in AWS
@@ -386,13 +386,13 @@ If the recommendations are not enabled, the following error message is displayed
 
 ## AWS access permissions
 
-CCM requires the following permissions which are automatically created via a StackSet based on the features you select during configuration.
+CACM requires the following permissions which are automatically created via a StackSet based on the features you select during configuration.
 
 > **☆ NOTE —** If you don't have access to create a cost and usage report or run a CloudFormation template, contact your IT or security teams to provide the required permissions.
 
 ## Individual Feature Permissions
 
-This section details the specific AWS permissions required for each CCM feature:
+This section details the specific AWS permissions required for each CACM feature:
 
 - [Cost Visibility Permissions](#1-cost-visibility-permissions)
 - [Resource Inventory Management Permissions](#2-resource-inventory-management-permissions)
@@ -482,7 +482,7 @@ If the `cur:DescribeReportDefinitions`, `organizations:Describe`, and `organizat
 ```
 
 - `organizations:ListAccounts`: fetches a list of all the accounts present in the organization, and also fetches the accountID to Account Name mapping.
-- `organizations:ListTagsForResource`: fetches the AWS Account level tags. Harness supports account tags within CCM that can be used for reporting and analysis.
+- `organizations:ListTagsForResource`: fetches the AWS Account level tags. Harness supports account tags within CACM that can be used for reporting and analysis.
 
 ## 2. Resource Inventory Management Permissions
 

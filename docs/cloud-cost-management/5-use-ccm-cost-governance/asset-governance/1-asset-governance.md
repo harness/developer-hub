@@ -13,7 +13,7 @@ If you are new to YAML or Cloud Custodian, we recommend reviewing the [Cloud Cus
 
 -------
 
-- **[Configure CCM Connector](/docs/cloud-cost-management/get-started/#aws)**
+- **[Configure CACM Connector](/docs/cloud-cost-management/get-started/#aws)**
   - Navigate to **Setup** > **Cloud Providers** > **Add a Connector**
   - Select your cloud provider (AWS, Azure, or GCP)
   - During [connector setup](/docs/cloud-cost-management/get-started/#aws), ensure you select **"Cloud Governance"** under **"Choose Requirements"**. 
@@ -24,7 +24,7 @@ If you are new to YAML or Cloud Custodian, we recommend reviewing the [Cloud Cus
     - For Azure: Confirm service principal has appropriate Reader roles
     - For GCP: Check service account permissions for resource monitoring
 
-After connector configuration, CCM takes up to 24 hours to collect data and identify resources.
+After connector configuration, CACM takes up to 24 hours to collect data and identify resources.
 
 ------
 
@@ -197,7 +197,7 @@ A user can create an **Enforcement** to schedule the deletion of all unattached 
 
 <DocImage path={require('./static/finopsagent.png')} width="90%" height="90%" title="Click to view full size image" />
 
-Harness CCM's intelligent **FinOps Agent** analyzes your cloud environment to automatically identify cost-saving opportunities and suggest appropriate governance enforcements. Each suggested enforcement is created as a **draft** that you can review before implementation. 
+Harness CACM's intelligent **FinOps Agent** analyzes your cloud environment to automatically identify cost-saving opportunities and suggest appropriate governance enforcements. Each suggested enforcement is created as a **draft** that you can review before implementation. 
 
 To implement a suggested enforcement, simply review and accept it. The system will then automatically create and schedule the enforcement to run against the specified accounts. All evaluations from these accepted suggestions appear on the Evaluations page alongside your manually created enforcements, providing a unified view of all governance activities.
 
@@ -251,7 +251,7 @@ Furthermore, you can disable the Enforcement at any time using the toggle button
 
 Evaluations include all the data about enforcements run (both RUN ONCE from rule editor and from Enforcement). The Evaluations window also shows you the total cost impact with each Enforcement i.e. the costs or spendings associated with each Evaluation along with the last time that Rule/Rule set was enforced. With Evaluations, you can view and audit all the Enforcements that ran in the past.
 
-Harness CCM also supports multiple statuses for evaluations. Currently CCM supports three statuses for an evaluation:
+Harness CACM also supports multiple statuses for evaluations. Currently CACM supports three statuses for an evaluation:
 
 - Success: If the evaluation is completed without any errors, the status of the evaluation is shown as "Successful".
 - Failure:  If the evaluation is not completed and has errors, the status of the evaluation is shown as "Failure".
@@ -273,7 +273,7 @@ In the output window, users can see the resources identified in form of a Table 
 
 ## Cost Correlation
 
-Cost Correlation in Harness CCM connects governance with their actual cost impact, allowing you to quantify the financial implications. 
+Cost Correlation in Harness CACM connects governance with their actual cost impact, allowing you to quantify the financial implications. 
 
 ### What's supported
 
@@ -289,12 +289,12 @@ When a feature shows ❌ (not supported), Harness can still compute costs for fi
 
 ### Cost Impact/Cost Co-relation
 
-When you click on **Refresh** button on the screen, CCM refreshes or updates the cost of all resources in the evaluation. It is exposed to resolve cases where the cost for any resource is not yet part of CUR, Billing Report, or Billing Data (due to newly deployed resources, etc.). You can hit the refresh cost button only once every 30 minutes for any evaluation.
+When you click on **Refresh** button on the screen, CACM refreshes or updates the cost of all resources in the evaluation. It is exposed to resolve cases where the cost for any resource is not yet part of CUR, Billing Report, or Billing Data (due to newly deployed resources, etc.). You can hit the refresh cost button only once every 30 minutes for any evaluation.
 
 :::note
 
 - Cost co-relation for GCP would work only if detailed billing export is setup.
-- Changes made to "Perspective Preferences" in Account Settings of Cloud Cost Management will be now applied to Asset Governance. In case of AWS, previously, costs were taken as "Unblended". Now, users can select it to be Blended, Net-Amortised, Amortised, Effective or Unblended. Kindly note, it might take up to 30 minutes for costs to be refreshed after changes are applied.
+- Changes made to "Perspective Preferences" in Account Settings of Cloud & AI Cost Management will be now applied to Asset Governance. In case of AWS, previously, costs were taken as "Unblended". Now, users can select it to be Blended, Net-Amortised, Amortised, Effective or Unblended. Kindly note, it might take up to 30 minutes for costs to be refreshed after changes are applied.
 - Azure Preferences set in Account Settings will now also be honored.
 :::
 

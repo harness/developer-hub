@@ -6,7 +6,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-External Cost Data Ingestion allows users to bring cost data from third-party vendors  such as Mongo, Snowflake, etc., into Harness Cloud Cost Management (CCM). This allows users to see unified visibility and analysis across their cloud and external spend. Instead of managing these costs in spreadsheets or siloed tools, users can now consolidate them in Harness CCM for a single source of truth across all the cloud and non-cloud spend.
+External Cost Data Ingestion allows users to bring cost data from third-party vendors  such as Mongo, Snowflake, etc., into Harness Cloud & AI Cost Management (CACM). This allows users to see unified visibility and analysis across their cloud and external spend. Instead of managing these costs in spreadsheets or siloed tools, users can now consolidate them in Harness CACM for a single source of truth across all the cloud and non-cloud spend.
 
 Harness provides a standard CSV-based ingestion format, called [FOCUS](https://focus.finops.org/what-is-focus/), which allows you to map any third-party billing data into a consistent structure. Once uploaded, Harness ingests, validates, and processes the data, automatically generating default Perspective so you can immediately begin analyzing costs, tracking budgets, and organizing spend by teams, business units, or environments.
 
@@ -26,7 +26,7 @@ These external vendors often provide cost and usage data outside of traditional 
 
 Without a centralized way to ingest and normalize this data, teams are forced to rely on manual spreadsheets, inaccurate or incomplete reports, which leads to delayed insights. 
 
-External Cost Data Ingestion in Harness CCM solves this by allowing users to upload cost data in a standardized CSV format (FOCUS). Once ingested, Harness treats this data just like native cloud costs enabling you to:
+External Cost Data Ingestion in Harness CACM solves this by allowing users to upload cost data in a standardized CSV format (FOCUS). Once ingested, Harness treats this data just like native cloud costs enabling you to:
 
 - Analyze external spend with Perspectives
 - Set Budgets and Alerts on vendor costs
@@ -35,7 +35,7 @@ External Cost Data Ingestion in Harness CCM solves this by allowing users to upl
 
 ### Supported Features
 
-The following CCM features are supported with external cost data:
+The following CACM features are supported with external cost data:
 
 ✅ Perspectives
 
@@ -67,7 +67,7 @@ Step 3: Users will be asked to asked to fill in necessary details as shown below
 
 To ensure smooth and consistent ingestion of external data into our system, we require all incoming reports to follow the `FOCUSv1` specification for report formatting. Information about each column is available [here](https://focus.finops.org/wp-content/uploads/2024/11/FOCUS-spec-v1_1.pdf). 
 
-For External Data Ingestion in Harness CCM, your report must include specific mandatory fields from the FOCUS specification. These fields ensure proper cost allocation, billing reconciliation, and data consistency.
+For External Data Ingestion in Harness CACM, your report must include specific mandatory fields from the FOCUS specification. These fields ensure proper cost allocation, billing reconciliation, and data consistency.
 
 The following table details all mandatory fields required for External Data Ingestion:
 

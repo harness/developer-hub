@@ -1,5 +1,5 @@
 ---
-title: Connectors + Roles For AWS CCM
+title: Connectors + Roles For AWS CACM
 description: Automatically create Harness connectors for accounts and IAM roles in each AWS account
 redirect_from:
   - /kb/reference-architectures/ccm/best-practices/aws/aws-connectors-and-roles
@@ -11,16 +11,16 @@ The process below defines how to provision Harness connectors and AWS IAM roles 
 
 ## Permissions
 
-You will need access to provision IAM roles in AWS and create CCM connectors in Harness. When running the Terraform code, two variables need to be defined:
+You will need access to provision IAM roles in AWS and create CACM connectors in Harness. When running the Terraform code, two variables need to be defined:
 
 `HARNESS_ACCOUNT_ID` = (Your Harness Account ID)
 
-`HARNESS_PLATFORM_API_KEY` = Created via a [service account](/docs/platform/role-based-access-control/add-and-manage-service-account/) with connector and CCM admin permissions across all resources.
+`HARNESS_PLATFORM_API_KEY` = Created via a [service account](/docs/platform/role-based-access-control/add-and-manage-service-account/) with connector and CACM admin permissions across all resources.
 
 
 ## Setup Providers
 
-We need to leverage the AWS and Harness Terraform providers. We will use these to create IAM roles and CCM connectors.
+We need to leverage the AWS and Harness Terraform providers. We will use these to create IAM roles and CACM connectors.
 
 ```
 terraform {
@@ -46,7 +46,7 @@ data "harness_platform_current_account" "current" {}
 
 ## Get Accounts And Create Connectors
 
-There are two options to retrieve the accounts we want to create connectors for.  We'll use the Harness provider to create a CCM connector for each AWS account after we retrieve them. We are enabling recommendations (VISIBILITY), governance (GOVERNANCE), and autostopping (OPTIMIZATION).
+There are two options to retrieve the accounts we want to create connectors for.  We'll use the Harness provider to create a CACM connector for each AWS account after we retrieve them. We are enabling recommendations (VISIBILITY), governance (GOVERNANCE), and autostopping (OPTIMIZATION).
 
 ### Use The AWS Provider To Get All Accounts In The Organization
 
@@ -143,7 +143,7 @@ You will have to modify parameters in the StackSet in order for it to execute co
 
 ## Conclusion
 
-This is a general example of providing read only access for each connector inside of an AWS organization. Policies will have to be added based on what other CCM features you want to use. This example doesn't include setting up the connector for the billing account. This guide assumes there already exists a connector into the master AWS account sthat has the billing export and an existing connector for the billing data.
+This is a general example of providing read only access for each connector inside of an AWS organization. Policies will have to be added based on what other CACM features you want to use. This example doesn't include setting up the connector for the billing account. This guide assumes there already exists a connector into the master AWS account sthat has the billing export and an existing connector for the billing data.
 
 ## Supplemental Information
 

@@ -1,6 +1,6 @@
 ---
 title: AWS
-description: Cloud Cost Management - Accelerator
+description: Cloud & AI Cost Management - Accelerator
 redirect_from:
   - /kb/reference-architectures/ccm/onboarding/aws
 ---
@@ -53,9 +53,9 @@ Enabling EC2 recommendations for all accounts at once is possible by navigating 
 
 **You may need to adjust the S3 bucket policy to allow the newly created Harness IAM role to read objects in the bucket.**
 
-### Harness CCM AWS Connector
+### Harness CACM AWS Connector
 
-Now that the CUR and role have been created in the payer account we need to create a corresponding CCM AWS connector in your Harness account to start billing data ingestion.
+Now that the CUR and role have been created in the payer account we need to create a corresponding CACM AWS connector in your Harness account to start billing data ingestion.
 
 You can create this connector through the UI or via the API with a tool like Terraform. Using Terraform is the recommended approach and there is a [Harness Terraform provider here](https://registry.terraform.io/providers/harness/harness/latest/docs).
 
@@ -66,7 +66,7 @@ To configure the connector you will need the following information:
 - Cross account role external ID: This is the same external ID you specified in the template/module when you created the role.
 - S3 bucket: The name (not ARN) of the S3 bucket where the CUR is located
 - Report name: The name (not ARN) of the CUR in the payer account
-- Features enabled: The CCM features that you want to use in this account
+- Features enabled: The CACM features that you want to use in this account
   - At minimum this should be `BILLING` for the payer account
 
 ```terraform
@@ -89,9 +89,9 @@ resource "harness_platform_connector_awscc" "payer" {
 
 ## Member Accounts
 
-Enabling CCM for your payer account gets your cost data into Harness and enabled you to start creating perspectives, budgets, alerts, and dashboards. To leverage the other features like auto stopping and asset governance, we need to create roles and connectors in each account where you want to use these other features.
+Enabling CACM for your payer account gets your cost data into Harness and enabled you to start creating perspectives, budgets, alerts, and dashboards. To leverage the other features like auto stopping and asset governance, we need to create roles and connectors in each account where you want to use these other features.
 
-You should leverage the same template/module that you did for the payer account but with different inputs for the features you want to enable. You will be deploying the template/role into every non-payer account where you want to utilize the other CCM features.
+You should leverage the same template/module that you did for the payer account but with different inputs for the features you want to enable. You will be deploying the template/role into every non-payer account where you want to utilize the other CACM features.
 
 [The CloudFormation stack is located here](https://continuous-efficiency-prod.s3.us-east-2.amazonaws.com/setup/ngv1/HarnessAWSTemplate_V2.yaml), and the [Terraform module here](https://github.com/harness-community/terraform-aws-harness-ccm).
 
@@ -136,9 +136,9 @@ module "ccm-member" {
 }
 ```
 
-### Harness CCM AWS Connector
+### Harness CACM AWS Connector
 
-Now that the role has been created in the member accounts we need to create corresponding CCM AWS connectors in your Harness account to allow you to use the account for the other Harness features.
+Now that the role has been created in the member accounts we need to create corresponding CACM AWS connectors in your Harness account to allow you to use the account for the other Harness features.
 
 You can create these connectors through the UI or via the API with a tool like Terraform. Using Terraform is the recommended approach and there is a [Harness Terraform provider here](https://registry.terraform.io/providers/harness/harness/latest/docs).
 
@@ -147,7 +147,7 @@ To configure the connector you will need the following information:
 - Account ID: The AWS account id for your payer account
 - Cross account role ARN: The ARN for the IAM role that was created in your payer account via the template/module that has access to read the S3 bucket
 - Cross account role external ID: This is the same external ID you specified in the template/module when you created the role.
-- Features enabled: The CCM features that you want to use in this account
+- Features enabled: The CACM features that you want to use in this account
   - You should not set `BILLING` for non-payer accounts
   - You should set the other features based on what you enabled in the template/module
     - `OPTIMIZATION` (autostopping), `VISIBILITY` (events; inventory/recommendations), `GOVERNANCE`
@@ -176,6 +176,6 @@ resource "harness_platform_connector_awscc" "member" {
 
 ## EC2 Recommendations
 
-To enable EC2 recommendations you must have [Rightsizing Recommendations](https://docs.aws.amazon.com/cost-management/latest/userguide/ce-rightsizing.html) turned on in the account with EC2 that you want recommendations for. Harness does not compute recommendations but pulls them from compute optimizer across your accounts and centralizes them in CCM.
+To enable EC2 recommendations you must have [Rightsizing Recommendations](https://docs.aws.amazon.com/cost-management/latest/userguide/ce-rightsizing.html) turned on in the account with EC2 that you want recommendations for. Harness does not compute recommendations but pulls them from compute optimizer across your accounts and centralizes them in CACM.
 
 In addition, you must have the `Events` policy provisioned in the account as well, specifically the Harness-AWS role in your account must have the `ce:GetRightsizingRecommendation` permission.

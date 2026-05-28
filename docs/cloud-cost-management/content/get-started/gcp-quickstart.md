@@ -9,7 +9,7 @@ To ensure a smooth and error-free setup experience, set up GCP Billing Export be
 
 **Why is Billing Export required?**
 
-Harness Cloud Cost Management (CCM) analyzes your cloud spending by accessing detailed billing data from your GCP account. The billing export automatically sends your cost and usage data to BigQuery, where Harness can securely read it.
+Harness Cloud & AI Cost Management (CCM) analyzes your cloud spending by accessing detailed billing data from your GCP account. The billing export automatically sends your cost and usage data to BigQuery, where Harness can securely read it.
 
 :::info 
 ⚠️ GCP Billing Export Table Limitations and CMEK Restrictions
@@ -48,7 +48,7 @@ When setting up a connector for GCP Billing Export, keep the following limitatio
 :::caution time for data delivery
 It may take up to **24 hours** for GCP to begin delivering cost and usage data. You can still proceed through the wizard, but the connection test may fail if data isn’t yet available.
 
-In the meantime, explore the optional requirements and feature integrations available in Harness CCM, these will be available to select in your **Choose Requirements** step of the connection wizard:
+In the meantime, explore the optional requirements and feature integrations available in Harness CACM, these will be available to select in your **Choose Requirements** step of the connection wizard:
 
   - [Resource Inventory Management](/docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/view-aws-ec-2-inventory-cost-dashboard/).
   - [Optimization by AutoStopping](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/getting-started).
@@ -107,7 +107,7 @@ You can enable authentication for your GCP account via
 Based on what you selected in **Step 3 - Choose Requirements**, you will be prompted to grant permissions to your service account alongwith the steps to be followed.
 
 :::info
-Review [Feature Permissions](/docs/cloud-cost-management/feature-permissions) for CCM to understand the minimum roles or permissions needed for every CCM feature.
+Review [Feature Permissions](/docs/cloud-cost-management/feature-permissions) for CACM to understand the minimum roles or permissions needed for every CCM feature.
 :::
 
 ---
@@ -125,7 +125,7 @@ Review [Feature Permissions](/docs/cloud-cost-management/feature-permissions) fo
 ---
 
 ## Next Steps
-Once your data is flowing, explore the tools available in Harness CCM to help you manage and reduce your cloud spend:
+Once your data is flowing, explore the tools available in Harness CACM to help you manage and reduce your cloud spend:
 
 - [View and Create Perspectives](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/creating-a-perspective) to visualize cloud usage and trends.
 - Create [Budgets and Alerts](/docs/cloud-cost-management/use-ccm-cost-governance/ccm-budgets/create-a-budget) to monitor spend thresholds.

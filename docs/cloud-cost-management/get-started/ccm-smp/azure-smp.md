@@ -1,22 +1,22 @@
 ---
 title: Azure 
-description: The procedure to set up CCM for Azure by using Harness Self-Managed Enterprise Edition.
+description: The procedure to set up CACM for Azure by using Harness Self-Managed Enterprise Edition.
 # sidebar_position: 2
 redirect_from:
   - /docs/cloud-cost-management/getting-started-ccm/ccm-smp/azure-smp
 ---
 
-# Manage Azure costs by using CCM on Harness Self-Managed Enterprise Edition
-This topic walks you through the steps required to set up CCM for Azure in a self-managed platform.
+# Manage Azure costs by using CACM on Harness Self-Managed Enterprise Edition
+This topic walks you through the steps required to set up CACM for Azure in a self-managed platform.
 
-**Figure: Azure CCM Self-Managed Enterprise Edition architecture diagram**
+**Figure: Azure CACM Self-Managed Enterprise Edition architecture diagram**
 <DocImage path={require('./static/azure-smp-arch.png')} title="Click to view full size image" />
 
-The flow at a high level works similarly to our SaaS environment. We support syncing data from multiple Azure account exports residing in different source storage accounts into CCM via a destination storage account (staging).
+The flow at a high level works similarly to our SaaS environment. We support syncing data from multiple Azure account exports residing in different source storage accounts into CACM via a destination storage account (staging).
 
-The goal of this particular documentation page is to set up an Azure Destination Storage Account and Application Registration, then configure an existing Harness Self-Managed Enterprise Edition deployment to utilize these components to act as a "staging area" for future Azure Billing Exports to be processed and made available for Harness CCM capabilities.
+The goal of this particular documentation page is to set up an Azure Destination Storage Account and Application Registration, then configure an existing Harness Self-Managed Enterprise Edition deployment to utilize these components to act as a "staging area" for future Azure Billing Exports to be processed and made available for Harness CACM capabilities.
 
-**Figure: Azure CCM Self-Managed Documentation Goal**
+**Figure: Azure CACM Self-Managed Documentation Goal**
 <DocImage path={require('./static/azure-smp-arch-initial-setup.jpeg')} title="Click to view full size image" />
 
 This goal consists of four tasks. For steps 1, 2, and 3 sign in to your [Azure Portal](https://portal.azure.com/#home): 
@@ -35,7 +35,7 @@ There are several times when you'll need to note some items as suggested `variab
 Within your Microsoft Azure WebUI:
 1. Navigate to [App registrations](https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade).
 2. Select "New Registration"
-3. Give your App registration a Name like `Harness CCM App`.
+3. Give your App registration a Name like `Harness CACM App`.
 4. For Supported account types select: `Accounts in any organizational directory (Any Microsoft Entra ID tenant - Multitenant)`.
 5. Click on Register. For more information, go to [Quickstart: Register an App](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app).
 
@@ -53,7 +53,7 @@ Within your Microsoft Azure WebUI:
 3. Now click on **Certificates & secrets** in the left panel.
 4. Go to **Client secrets (0)** tab.
 5. Click on **New client secret**.
-6. Enter **Description** `Harness CCM Client Secret`.
+6. Enter **Description** `Harness CACM Client Secret`.
 7. Select **Expires** from the drop down select `730 days (24 months)`(or the maximum allowed time).
 8. Click **Add** Button.
 
@@ -69,7 +69,7 @@ Make a note of the following:
 :::
 
 ## Create a new Destination Storage Account and a new Storage Container
-This Storage Account will act as a staging area for CCM to sync data from multiple billing exports originating from other Storage Accounts.
+This Storage Account will act as a staging area for CACM to sync data from multiple billing exports originating from other Storage Accounts.
 1. Select **Create** within the [Storage Accounts](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM) page.
 1. Select a **Subscription** you intend to use from the drop down.
 2. Select a **Resource Group** you intend to use from the drop down.
@@ -167,7 +167,7 @@ When installing or upgrading the Helm charts, Kubernetes secrets with default va
  
  After changing secrets, we will provide directives to `kubectl delete` the corresponding pods in order for your release to inherit new changes.
 
-The following are the secrets specific to CCM services:
+The following are the secrets specific to CACM services:
 
 - batch-processing
 
@@ -383,14 +383,14 @@ SMTP_USERNAME: <base64 of SMTP_USERNAME>
 After these secrets are implemented, please `kubectl delete` any pods related to `platform-service` and `batch-processing` for this release to start newly configured pods.
 
 :::info
-Please ensure your Persistent Volumes related to TimescaleDB is at least 100Gi, run: `kubectl edit pvc wal-volume-harness-timescaledb-0 -n <namespace>`. These volumes are critical for capabilities like Recommendations and Anomalies within CCM.
+Please ensure your Persistent Volumes related to TimescaleDB is at least 100Gi, run: `kubectl edit pvc wal-volume-harness-timescaledb-0 -n <namespace>`. These volumes are critical for capabilities like Recommendations and Anomalies within CACM.
 :::
 
 ## Next steps
 
 At this point, your "staging area" for future Microsoft Azure Billing Exports is ready and we can follow our standard methodologies for onboarding these assets.
 
-**Figure: Azure CCM Self-Managed Documentation Next Steps**
+**Figure: Azure CACM Self-Managed Documentation Next Steps**
 <DocImage path={require('./static/azure-smp-arch-next-steps.jpeg')} title="Click to view full size image" />
 
 - Use [Azure connector setup](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure) to set up Azure Billing Exports and push them to our configured destination storage account.

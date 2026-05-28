@@ -1,5 +1,5 @@
 ---
-title: Try CCM - Optimize cloud costs for Kubernetes
+title: Try CACM - Optimize costs for Kubernetes
 description: Optimize your Kubernetes costs on a public cloud provider.
 sidebar_position: 3
 redirect_from:
@@ -9,7 +9,7 @@ redirect_from:
 <CTABanner
   buttonText="Learn More"
   title="Continue your learning journey."
-  tagline="Take a Cloud Cost Management Certification today!"
+  tagline="Take a Cloud & AI Cost Management Certification today!"
   link="/university/cloud-cost-management"
   closable={true}
   target="_self"
@@ -19,7 +19,7 @@ As engineers, we are natural optimizers. Responding to users in more expeditious
 
 Resources on the public cloud are certainly not free. Public cloud vendors not only bill for the core infrastructure but also depending on the services leveraged could be billing dimensions for the control/management planes and non-obvious dimensions such as network/data transmissions. When capacity planning for infrastructure, a natural inclination is to err on the side of caution and provision extra capacity in case of a spike.
 
-Optimizing costs focuses on right sizing resource usage to match workload actuals. Coupled with finding more ephemeral infrastructure, such as spot instances, can reduce costs. Monitoring solutions typically monitor for when usage exceeds a certain threshold, but the inverse if usage is under utilized, traditional monitoring solutions might not alert on that. Harness Cloud Cost Management, or CCM, can help unlock insights based on usage in how to optimize costs. This example will connect Kubernetes workload(s) on a public cloud vendor to Harness CCM to start getting cost insights and recommendations.
+Optimizing costs focuses on right sizing resource usage to match workload actuals. Coupled with finding more ephemeral infrastructure, such as spot instances, can reduce costs. Monitoring solutions typically monitor for when usage exceeds a certain threshold, but the inverse if usage is under utilized, traditional monitoring solutions might not alert on that. Harness Cloud & AI Cost Management, or CCM, can help unlock insights based on usage in how to optimize costs. This example will connect Kubernetes workload(s) on a public cloud vendor to Harness CACM to start getting cost insights and recommendations.
 
 ## Start optimizing your Kubernetes cloud costs
 
@@ -27,14 +27,14 @@ By connecting your public cloud Kubernetes cluster to Harness, you can start to 
 
 ![Overview](./static/first-kubernetes-ccm-tutorial/overview.png)
 
-To get actual costing data from your public cloud vendor, it is recommended to [connect your public cloud billing API](https://docs.harness.io/article/80vbt5jv0q-set-up-cost-visibility-for-aws) [usage report, billing export, etc] to Harness CCM. This is not a requirement. Harness CCM will poll usage data from the [Kubernetes Metric Server](https://github.com/kubernetes-sigs/metrics-server) which comes installed by default with GKE and AKS. If using EKS, [installing the Kubernetes Metric Server](https://docs.aws.amazon.com/eks/latest/userguide/metrics-server.html) is needed.
+To get actual costing data from your public cloud vendor, it is recommended to [connect your public cloud billing API](https://docs.harness.io/article/80vbt5jv0q-set-up-cost-visibility-for-aws) [usage report, billing export, etc] to Harness CACM. This is not a requirement. Harness CACM will poll usage data from the [Kubernetes Metric Server](https://github.com/kubernetes-sigs/metrics-server) which comes installed by default with GKE and AKS. If using EKS, [installing the Kubernetes Metric Server](https://docs.aws.amazon.com/eks/latest/userguide/metrics-server.html) is needed.
 
 ## Prepare your Kubernetes cluster for optimization recommendations
 
-1. If you have not done so already, sign up for a [Harness CCM Account](https://app.harness.io/auth/#/signup/?module=ce&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=ccm-plg&utm_content=get-started).
+1. If you have not done so already, sign up for a [Harness CACM Account](https://app.harness.io/auth/#/signup/?module=ce&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=ccm-plg&utm_content=get-started).
 1. To start receiving optimizations for your cluster, you need to [install a Harness Delegate in your Kubernetes cluster](/docs/platform/get-started/tutorials/install-delegate.md). The Harness Delegate is the Harness worker node.
 
-## Connect Harness CCM to your cluster
+## Connect Harness CACM to your cluster
 
 With the Harness Delegate running, the next step is to create a Cloud Integration that represents your Kubernetes cluster.
 
@@ -79,7 +79,7 @@ After about a day, more usage data is captured and recommendations start to appe
 
 ![First Costs](./static/first-kubernetes-ccm-tutorial/first_costs.png)
 
-Digging into the savings recommendation, Harness CCM provides recommendations based on the usage data captured.
+Digging into the savings recommendation, Harness CACM provides recommendations based on the usage data captured.
 
 In Harness, go to **Cloud Costs**, select **Recommendations**, and then select your resource.
 
@@ -87,4 +87,4 @@ Digging into the recommendations list, look at a recommendation that corresponds
 
 ![First Rec](./static/first-kubernetes-ccm-tutorial/first_rec.png)
 
-Per this recommendation, resizing the worker node machine size is a prudent move. Taking a look at the back work for the recommendation, you can view the actual usage in the previous perspective. Actions to be taken to reduce costs would be to right size the nodes and place resource requests and limits on the Kubernetes workloads based on what Harness CCM is reporting. This is just the start of the capabilities with Harness CCM, which can also provide additional rules and capabilities around auto-stopping workloads and give additional infrastructure and workload recommendations. If additional changes are needed, you can leverage the Harness Platform to [experiment](/docs/feature-flags) and [make](/docs/continuous-delivery) those changes.
+Per this recommendation, resizing the worker node machine size is a prudent move. Taking a look at the back work for the recommendation, you can view the actual usage in the previous perspective. Actions to be taken to reduce costs would be to right size the nodes and place resource requests and limits on the Kubernetes workloads based on what Harness CACM is reporting. This is just the start of the capabilities with Harness CACM, which can also provide additional rules and capabilities around auto-stopping workloads and give additional infrastructure and workload recommendations. If additional changes are needed, you can leverage the Harness Platform to [experiment](/docs/feature-flags) and [make](/docs/continuous-delivery) those changes.

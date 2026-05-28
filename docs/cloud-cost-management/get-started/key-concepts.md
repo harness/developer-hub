@@ -1,6 +1,6 @@
 ---
 title: Key concepts
-description: Defines key concepts for the CCM module.
+description: Defines key concepts for the CACM module.
 sidebar_position: 2
 date: 2026-02-11
 helpdocs_topic_id: hs7cyi1nix
@@ -11,7 +11,7 @@ redirect_from:
   - /docs/cloud-cost-management/getting-started-ccm/harness-key-cloud-cost-concepts
 ---
 
-This section explains the key Harness Cloud Cost Management (CCM) concepts that you need to know before implementation.
+This section explains the key Harness Cloud & AI Cost Management (CACM) concepts that you need to know before implementation.
 
 
 ### Node Cost

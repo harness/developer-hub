@@ -1,6 +1,6 @@
 ---
 title: Kubernetes
-description: Cloud Cost Management - AutoStopping 
+description: Cloud & AI Cost Management - AutoStopping 
 redirect_from:
   - /kb/reference-architectures/ccm/onboarding/autostopping/k8s
 ---

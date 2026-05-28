@@ -5,9 +5,9 @@ redirect_from:
   - /kb/reference-architectures/ccm/best-practices/aws/aws-permissions
 ---
 
-# CCM AWS Permissions
+# CACM AWS Permissions
 
-When creating a Harness IAM Role in AWS for CCM, there are many different permissions sets based on the features you are trying to leverage in specific accounts. This guide is meant to cover all the different features of CCM and the permissions you need to assign to enable them.
+When creating a Harness IAM Role in AWS for CACM, there are many different permissions sets based on the features you are trying to leverage in specific accounts. This guide is meant to cover all the different features of CACM and the permissions you need to assign to enable them.
 
 To enable specific features on a connector you need to set a specific string in the `featuresEnabled` field (list) in the connector YAML. The keys for each feature are listed in the sections below.
 

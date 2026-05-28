@@ -1,17 +1,17 @@
 ---
-title: Harness Modules Code Repo + IaCM for Automatic Creation of CCM Cloud Connectors
-description: Automatically Create CCM Cloud Connectors via Harness Modules Code Repo and IaCM
+title: Harness Modules Code Repo + IaCM for Automatic Creation of CACM Cloud Connectors
+description: Automatically Create CACM Cloud Connectors via Harness Modules Code Repo and IaCM
 redirect_from:
   - /kb/reference-architectures/ccm/patterns/ccm-connectors-via-code-repo-and-iacm
 ---
 
 # Overview
 
-The process below defines a system where we can use the Harness modules Code Repository and Infrastructure as Code together to accomplish creating CCM cloud connectors at scale.  For this exercise, we'll focus on AWS CCM Cloud Connectors, but other cloud providers could follow this same process.
+The process below defines a system where we can use the Harness modules Code Repository and Infrastructure as Code together to accomplish creating CACM cloud connectors at scale.  For this exercise, we'll focus on AWS CACM Cloud Connectors, but other cloud providers could follow this same process.
 
 To accomplish this, we will store our Terraform code in Code Repository.  We'll then use this repo in the IaCM module to apply the connectors.
 
-Users of this guide should have an understanding of the Harness modules Code Repository, IaCM, and CCM.
+Users of this guide should have an understanding of the Harness modules Code Repository, IaCM, and CACM.
 
 ## Setup
 
@@ -27,7 +27,7 @@ The project will use the Code Repository and IaCM modules.
 
 This will be used to store and maintain our IaC.
 
-1. Go into your new project and create a new Code repository. This will hold the code for our CCM connectors.
+1. Go into your new project and create a new Code repository. This will hold the code for our CACM connectors.
 
 ![](../static/new-code-repo.png)
 
@@ -83,12 +83,12 @@ resource "harness_platform_connector_awscc" "data" {
 
 ###  Create A New IaCM Workspace
 
-We'll use this to store our IaC configuration, variables, states, and other resources necessary to manage our AWS CCM cloud connectors
+We'll use this to store our IaC configuration, variables, states, and other resources necessary to manage our AWS CACM cloud connectors
 
 1. Navigate to the IaCM module and create a new workspace.  
     - Provisioner:
         - Connector (a few options): 
-            - If you have a AWS connector for your master billing account already (not a CCM AWS connector), choose this for your connector.  
+            - If you have a AWS connector for your master billing account already (not a CACM AWS connector), choose this for your connector.  
             - If you need to create a new connector, the suggestion is to [use OIDC](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#credentials). You'll have to provision a role in your master billing AWS account that trusts Harness. In setup, you can skip setting up the backoff strategy and select connect through Harness platform for the connectivity mode.  You have to select a connector to complete setup.  Even though we aren't going to use this connector in our example (because we are getting the account ids statically in the Terraform code), we still have to specify the connector.
         - Workspace Type:
             - Choose the latest version of OpenTofu as our support for Terraform ends with 1.5.7 [due to licensing changes](/docs/infra-as-code-management/whats-supported/#supported-iac-frameworks).

@@ -9,17 +9,17 @@ redirect_from:
 
 The process below defines a system where we can locate EC2 instances based on a particular tag and automatically created schedule based autostopping rules to shut the instance down during non work hours.
 
-To accomplish this, we use CCM Asset Governance to locate the resources and a Harness pipeline to automate the creation of the autostopping rules and their schedules.
+To accomplish this, we use CACM Asset Governance to locate the resources and a Harness pipeline to automate the creation of the autostopping rules and their schedules.
 
 Users of this guide should have an understanding of schedule based autostopping, Harness pipelines, Harness service accounts, and secrets.
 
 ## Setup
 
-This guide assumes you have CCM set up correctly for Asset Governance and autostopping for at least one cloud account.  
+This guide assumes you have CACM set up correctly for Asset Governance and autostopping for at least one cloud account.  
 
 You will also need a [Kubernetes connector](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference/) with access to deploy pods in some cluster. 
 
-We need an api key to do certain platform and CCM actions in the pipeline. Create a service account with CCM Admin and Account Viewer permissions for all resources. Generate an api key and store the api key as a secret. In this case, we will assume the secret id is `api`. Remember the id given, it will be used in future steps.
+We need an api key to do certain platform and CACM actions in the pipeline. Create a service account with CACM Admin and Account Viewer permissions for all resources. Generate an api key and store the api key as a secret. In this case, we will assume the secret id is `api`. Remember the id given, it will be used in future steps.
 
 ## Pipeline Setup
 
@@ -50,7 +50,7 @@ Create a pipeline in some Harness project.
 
       ![](../static/ccm-asset-governance-step-1-container-setup-environment-variables.png)
 
-  2. 'Find AWS CCM Connector for Account'
+  2. 'Find AWS CACM Connector for Account'
       * Go to the `Advanced` tab and configure a conditional execution only if 'Find Existing Autostopping Rule' doesn't find a rule:
       `<+steps.Find_Existing_AutoStopping_Rule.output.outputVariables.RULE_ID> == ""` 
       * Configure an output variable `CONNECTOR_ID`.  Will be used in next step.
@@ -413,7 +413,7 @@ Click `Create Trigger`. On the triggers screen, select the `WEBHOOK` icon and co
 
 ## Rule Setup
 
-Navigate to CCM and select the `Asset Governance` feature. Select `Rules` in the top right and press `+ New Rule`.
+Navigate to CACM and select the `Asset Governance` feature. Select `Rules` in the top right and press `+ New Rule`.
 
 We want to send EC2 instances that contain tag `Schedule` = `usWorkHours`, and send the instance information to the pipeline we created above.
 
@@ -616,7 +616,7 @@ pipeline:
                             - name: RULE_ID
                     - step:
                         type: Run
-                        name: Find AWS CCM Connector for Account
+                        name: Find AWS CACM Connector for Account
                         identifier: Find_AWS_CCM_Connector_for_Account
                         spec:
                           connectorRef: ${var.docker_connector_id}

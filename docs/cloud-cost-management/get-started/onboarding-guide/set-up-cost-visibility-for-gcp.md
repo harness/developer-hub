@@ -1,5 +1,5 @@
 ---
-title: Set up CCM for GCP
+title: Set up CACM for GCP
 sidebar_label: GCP
 description: This topic describes how to set up cost visibility for GCP.
 # sidebar_position: 2
@@ -19,11 +19,11 @@ import Tabs from '@theme/Tabs'
 import TabItem from '@theme/TabItem'
 
 
-Harness Cloud Cost Management (CCM) monitors the cloud costs of your GCP products, projects, SKUs, and location. As a first step, you need to connect Harness to your GCP account to get insights into your cloud infrastructure, and GCP services, Compute Engine, Cloud Storage, BigQuery, etc. CCM offers a wide range of features to track and control costs associated with your cloud resources.
+Harness Cloud & AI Cost Management (CACM) monitors the cloud costs of your GCP products, projects, SKUs, and location. As a first step, you need to connect Harness to your GCP account to get insights into your cloud infrastructure, and GCP services, Compute Engine, Cloud Storage, BigQuery, etc. CACM offers a wide range of features to track and control costs associated with your cloud resources.
 
 :::info
 
-After enabling CCM, it takes about 24 hours for the data to be available for viewing and analysis.
+After enabling CACM, it takes about 24 hours for the data to be available for viewing and analysis.
 
 :::
 
@@ -34,12 +34,12 @@ After enabling CCM, it takes about 24 hours for the data to be available for vie
 	+ **Billing Account Administrator** role for the target Cloud Billing account
 	+ [BigQuery User role for the Cloud project](https://cloud.google.com/bigquery/docs/dataset-access-controls) that contains the BigQuery dataset that will be used to store the Cloud Billing data
 
-## Connect Harness CCM to Google Cloud Platform (GCP) Account
+## Connect Harness CACM to Google Cloud Platform (GCP) Account
 
-You can use Harness CCM features once your cloud account is connected to Harness CCM. This can be done via creating a cloud account connector for GCP. 
+You can use Harness CACM features once your cloud account is connected to Harness CACM. This can be done via creating a cloud account connector for GCP. 
 :::info
 
-Time periods in the GCP Cloud Billing report use the Pacific Time Zone (PST) and observe daylight saving time shifts. However, Harness CCM explorer uses the UTC time zone. You may notice some cloud cost differences between Harness CCM explorer and the GCP Cloud Billing report due to the time zone difference.
+Time periods in the GCP Cloud Billing report use the Pacific Time Zone (PST) and observe daylight saving time shifts. However, Harness CACM explorer uses the UTC time zone. You may notice some cloud cost differences between Harness CACM explorer and the GCP Cloud Billing report due to the time zone difference.
 
 :::
 
@@ -118,7 +118,7 @@ When setting up a connector for GCP Billing Export, keep the following limitatio
 
 ### Step 3: Choose Requirements
 
-Select the Cloud Cost Management features that you would like to use on your GCP account.
+Select the Cloud & AI Cost Management features that you would like to use on your GCP account.
 
 
 | Features  | Capabilities | 
@@ -228,9 +228,9 @@ To add AutoStopping permissions:
 4. In the **Add Principals to [Project name]** window, enter the service principal.
 5. Select the required roles and click **Save**.
 
-When a connector is created, a service account is created in Harness' GCP project that is unique for each customer. This service account is created only once per customer. You need to assign two roles to this service account in the GCP project that they are connecting to Harness CCM:
+When a connector is created, a service account is created in Harness' GCP project that is unique for each customer. This service account is created only once per customer. You need to assign two roles to this service account in the GCP project that they are connecting to Harness CACM:
 
-* [**Compute Admin**](https://cloud.google.com/iam/docs/roles-permissions/compute#compute.admin) - Assign this role to Harness' service account. This allows Harness CCM to be able to perform AutoStopping actions such as starting and stopping of VMs and Instance groups. Also, GCP AutoStopping involves the usage of a custom VM with configurations as per your preference (instance type configuration). This requires access to create and launch a VM in which a custom load balancer for AutoStopping is installed.
+* [**Compute Admin**](https://cloud.google.com/iam/docs/roles-permissions/compute#compute.admin) - Assign this role to Harness' service account. This allows Harness CACM to be able to perform AutoStopping actions such as starting and stopping of VMs and Instance groups. Also, GCP AutoStopping involves the usage of a custom VM with configurations as per your preference (instance type configuration). This requires access to create and launch a VM in which a custom load balancer for AutoStopping is installed.
 
 * [**Secret Manager Secret Accessor**](https://cloud.google.com/iam/docs/roles-permissions/secretmanager#secretmanager.secretAccessor) - Assign this role if you intend to use TLS/HTTPS in the routing configurations of the AutoStopping Rule. You need to upload the certificate's private key and the public certificate as secrets in GCP. Harness needs access to these secrets to be able to configure the custom load balancer. This role provides access to only the particular versions of the secrets, provided the complete path is entered during the creation of the custom load balancer. It does not let Harness view or list all the secrets in your GCP project. You can also add additional protection in the GCP on your end to provide conditional access to secrets as necessary. For example, provide access to Harness' service account to versions of only those secrets with a naming convention like "Harness-".
 :::

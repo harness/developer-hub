@@ -1,6 +1,6 @@
 ---
 title: AutoStopping
-description: Onboarding to Cloud Cost Management AutoStopping
+description: Onboarding to Cloud & AI Cost Management AutoStopping
 redirect_from:
   - /kb/reference-architectures/ccm/onboarding/autostopping/index
 ---

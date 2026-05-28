@@ -1,21 +1,21 @@
 ---
-title: Connectors For K8s and CCM K8s
-description: Automatically create Harness connectors that are required to get K8s costs into CCM
+title: Connectors For K8s and CACM K8s
+description: Automatically create Harness connectors that are required to get K8s costs into CACM
 redirect_from:
   - /kb/reference-architectures/ccm/best-practices/k8s/k8s-and-ccm-k8s-connectors
 ---
 
 # Overview
 
-The process below defines how to provision Harness connectors to get K8s costs into CCM.
+The process below defines how to provision Harness connectors to get K8s costs into CACM.
 
 ## Permissions
 
-You will need access to create CCM connectors in Harness. When running the Terraform code, two variables need to be defined:
+You will need access to create CACM connectors in Harness. When running the Terraform code, two variables need to be defined:
 
 `HARNESS_ACCOUNT_ID` = (Your Harness Account ID)
 
-`HARNESS_PLATFORM_API_KEY` = Created via a [service account](/docs/platform/role-based-access-control/add-and-manage-service-account/) with connector and CCM admin permissions across all resources.
+`HARNESS_PLATFORM_API_KEY` = Created via a [service account](/docs/platform/role-based-access-control/add-and-manage-service-account/) with connector and CACM admin permissions across all resources.
 
 ## Setup Providers
 
@@ -53,9 +53,9 @@ resource "harness_platform_connector_kubernetes" "cluster-connector" {
 }
 ```
 
-## Create A CCM K8s Connector For Each Cluster
+## Create A CACM K8s Connector For Each Cluster
 
-This connector can only be provisioned after the K8s connector.  It's in charge of letting the process know we need to start gathering metrics for CCM.
+This connector can only be provisioned after the K8s connector.  It's in charge of letting the process know we need to start gathering metrics for CACM.
 
 ```
 resource "harness_platform_connector_kubernetes_cloud_cost" "ccm-cluster-connector" {
@@ -70,4 +70,4 @@ resource "harness_platform_connector_kubernetes_cloud_cost" "ccm-cluster-connect
 
 ## Conclusion
 
-This is a general example of taking a list of clusters and creating the two necessary connectors to get K8s costs into CCM.  Before you create these connectors, you need to be sure you have a delegate running in the cluster.  If the EKS clusters are running in AWS, the metrics server also needs to be enabled in each cluster.
+This is a general example of taking a list of clusters and creating the two necessary connectors to get K8s costs into CACM.  Before you create these connectors, you need to be sure you have a delegate running in the cluster.  If the EKS clusters are running in AWS, the metrics server also needs to be enabled in each cluster.

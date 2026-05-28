@@ -10,13 +10,13 @@ redirect_from:
   - /docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-azure
 canonical_url: https://www.harness.io/harness-devops-academy/what-is-azure-cost-management
 ---
-# Set up CCM for Azure
+# Set up CACM for Azure
 
-Harness Cloud Cost Management (CCM) monitors the cloud costs of your Azure services. Connect your Azure account and set up Billing Export to get insights into your cloud infrastructure and Azure services such as Storage accounts, Virtual machines, Containers, and so on. CCM also allows you to optimize your instances and AKS clusters using intelligent cloud [AutoStopping rules](/docs/category/autostopping-rules).
+Harness Cloud & AI Cost Management (CACM) monitors the cloud costs of your Azure services. Connect your Azure account and set up Billing Export to get insights into your cloud infrastructure and Azure services such as Storage accounts, Virtual machines, Containers, and so on. CACM also allows you to optimize your instances and AKS clusters using intelligent cloud [AutoStopping rules](/docs/category/autostopping-rules).
 
 :::info
 
-After enabling CCM, it takes about 24 hours for the data to be available for viewing and analysis.
+After enabling CACM, it takes about 24 hours for the data to be available for viewing and analysis.
 
 :::
 
@@ -29,14 +29,14 @@ After enabling CCM, it takes about 24 hours for the data to be available for vie
 
 ### Azure Connector requirements
 
-* For CCM, Azure connectors are available only at the Account level in Harness.
+* For CACM, Azure connectors are available only at the Account level in Harness.
 * You can create multiple Azure connectors for each Harness Account.
 * You can create multiple Azure connectors per Azure Tenant with unique subscription IDs. 
-* If you have separate billing exports for each of your subscriptions in your Azure account, set up separate connectors in Harness to view the cloud cost of all the subscriptions in CCM.
+* If you have separate billing exports for each of your subscriptions in your Azure account, set up separate connectors in Harness to view the cloud cost of all the subscriptions in CACM.
 
-## Connect CCM to your Azure Account
+## Connect CACM to your Azure Account
 
-To enable CCM for your Azure services (such as storage accounts, virtual machines, containers, and so on), you need to connect Harness to your Azure account.
+To enable CACM for your Azure services (such as storage accounts, virtual machines, containers, and so on), you need to connect Harness to your Azure account.
 
 Perform the following steps to connect to your Azure account:
 1. Create a new Kubernetes connector using one of the two options below:
@@ -145,7 +145,7 @@ Billing export is used to get insights into your cloud infrastructure and Azure 
 
 ![](static/set-up-cost-visibility-for-azure-12.png)
 
-CCM offers the following features:
+CACM offers the following features:
 
 | Features | Capabilities |
 | --- | --- |
@@ -160,7 +160,7 @@ CCM offers the following features:
 
 Harness uses a multi-tenant app to sync billing export data from the source storage account to Harness and to perform cost optimization functions. This involves the following steps:
 
-* Register the Harness CCM application into your Azure account.
+* Register the Harness CACM application into your Azure account.
 * Grant read permissions to the storage account in which the billing data export is available and/or assign `contributor` role to the subscription if the AutoStopping feature is being utilized.
 
 Create a service principal and assign permissions by running the following commands in the bash terminal or in the Azure cloud shell.
@@ -181,7 +181,7 @@ If you encounter the following error message, proceed to [assigning permissions 
 
 `Another object with the same value for property servicePrincipalNames already exists.`
 
-The error means that your Harness CCM application is already registered into your Azure account.
+The error means that your Harness CACM application is already registered into your Azure account.
 
 :::
 
@@ -204,7 +204,7 @@ Run the following Bash commands using your terminal or Azure cloud shell.
    /subscriptions/XXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/<resourcegroupname>/providers/Microsoft.Storage/storageAccounts/<storage account name>
    ```
 
-2. Run the following command that provides Storage Blob Data Reader permission to the Harness application on the scope fetched in the previous step. It contains the ID of the Harness CCM client application: `0211763d-24fb-4d63-865d-92f86f77e908`.
+2. Run the following command that provides Storage Blob Data Reader permission to the Harness application on the scope fetched in the previous step. It contains the ID of the Harness CACM client application: `0211763d-24fb-4d63-865d-92f86f77e908`.
 
    ```
    az role assignment create --assignee 0211763d-24fb-4d63-865d-92f86f77e908 --role 'Storage Blob Data Reader' --scope $SCOPE

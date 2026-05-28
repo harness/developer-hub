@@ -1,6 +1,6 @@
 ---
 title: Proxy
-description: Cloud Cost Management - AutoStopping using a Proxy VM
+description: Cloud & AI Cost Management - AutoStopping using a Proxy VM
 redirect_from:
   - /kb/reference-architectures/ccm/onboarding/autostopping/proxy
 ---

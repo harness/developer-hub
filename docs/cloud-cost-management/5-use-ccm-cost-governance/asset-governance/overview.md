@@ -23,7 +23,7 @@ Asset Governance:
 - c7n_azure==0.7.43
 - c7n_gcp==0.4.43
 
-See how [Harness CCM compares to Cloud Custodian](https://www.harness.io/blog/harness-cloud-asset-governance-cloud-custodian-beyond).
+See how [Harness CACM compares to Cloud Custodian](https://www.harness.io/blog/harness-cloud-asset-governance-cloud-custodian-beyond).
 </div>
 
 --------

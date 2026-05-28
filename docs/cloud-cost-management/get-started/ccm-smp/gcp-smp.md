@@ -1,15 +1,15 @@
 ---
 title: GCP 
-description: The procedure to set up CCM for GCP by using Harness Self-Managed Enterprise Edition.
+description: The procedure to set up CACM for GCP by using Harness Self-Managed Enterprise Edition.
 # sidebar_position: 2
 redirect_from: 
 - /docs/cloud-cost-management/getting-started-ccm/ccm-smp/gcp-smp
 ---
 
-# Manage GCP costs by using CCM on Harness Self-Managed Enterprise Edition
-This topic walks you through the steps required to set up CCM for GCP in a self-managed platform.
+# Manage GCP costs by using CACM on Harness Self-Managed Enterprise Edition
+This topic walks you through the steps required to set up CACM for GCP in a self-managed platform.
 
-**Figure: GCP CCM Self-Managed Enterprise Edition architecture diagram**
+**Figure: GCP CACM Self-Managed Enterprise Edition architecture diagram**
 
 <DocImage path={require('./static/gcp-smp-arch.png')} width="90%" height="90%" title="Click to view full size image" />
 
@@ -30,7 +30,7 @@ This topic walks you through the steps required to set up CCM for GCP in a self-
 4. Check if the billing table exists in **ClickHouse**; create it if not.
 5. Initiate an insert query to efficiently move data from the **GCS** bucket to the **ClickHouse table** in batch.
 
-You need to perform the following tasks to set up CCM for GCP: 
+You need to perform the following tasks to set up CACM for GCP: 
 
 1. [Create Service Account](#step-1-create-service-account)
 2. [Create HMAC Key](#step-2-create-hmac-key)
@@ -140,7 +140,7 @@ The -n option with echo prevents the trailing newline character from being inclu
 
 ```base64 -i service-account.json -o service-account-base64-encoded.txt```
 
-Following are the secrets specific to CCM services:
+Following are the secrets specific to CACM services:
 
 **1. batch-processing**
     ```kubectl edit secret batch-processing -n <namespace>```
@@ -356,7 +356,7 @@ Following are some secrets from platform-service that you will need to update:
     ```
 
 :::info
-Run `kubectl edit pvc wal-volume-harness-timescaledb-0 -n <namespace>` and increase to 100Gi. It is used by recommendations and anomalies features within CCM services.
+Run `kubectl edit pvc wal-volume-harness-timescaledb-0 -n <namespace>` and increase to 100Gi. It is used by recommendations and anomalies features within CACM services.
 :::
 
 

@@ -1,19 +1,19 @@
 ---
 title: Kubernetes
-description: Cloud Cost Management - Accelerator
+description: Cloud & AI Cost Management - Accelerator
 redirect_from:
   - /kb/reference-architectures/ccm/onboarding/k8s
 ---
 
 # Kubernetes
 
-To ingest usage and cost data from a Kubernetes cluster, as well as allow access for auto stopping, we will need to deploy what is referred to as a "delegate" into some or all Kubernetes clusters. This will require the Kubernetes metrics server to be running in every cluster. Finally, for every cluster you want to enable CCM for, we will be creating two different connectors in Harness.
+To ingest usage and cost data from a Kubernetes cluster, as well as allow access for auto stopping, we will need to deploy what is referred to as a "delegate" into some or all Kubernetes clusters. This will require the Kubernetes metrics server to be running in every cluster. Finally, for every cluster you want to enable CACM for, we will be creating two different connectors in Harness.
 
 ## Delegate Architecture
 
 ### Deployment
 
-When enabling CCM for a cluster the first step is to deploy a delegate into the target cluster and give it a certain level of access (described later in this guide) depending on what you want to achieve with the Kubernetes connection. By deploying a delegate directly into the cluster you do not have to manage secrets, but simply control the access Harness has in your cluster by modifying the Kubernetes service account that is bound to the delegate deployment.
+When enabling CACM for a cluster the first step is to deploy a delegate into the target cluster and give it a certain level of access (described later in this guide) depending on what you want to achieve with the Kubernetes connection. By deploying a delegate directly into the cluster you do not have to manage secrets, but simply control the access Harness has in your cluster by modifying the Kubernetes service account that is bound to the delegate deployment.
 
 Gathering fine-grain metrics in the cluster is memory intensive.  In an effort to ensure we don't run out of memory and terminate the pod, the following sizing guidelines are recommended for the delegate:
 
@@ -29,7 +29,7 @@ Gathering fine-grain metrics in the cluster is memory intensive.  In an effort t
 
 #### Deployment Options
 
-**Delegates deployed for CCM must be located at the account level in Harness**
+**Delegates deployed for CACM must be located at the account level in Harness**
 
 There a several ways to deploy the delegate [documented here](https://developer.harness.io/docs/platform/delegates/install-delegates/overview/), but the recommended approach is to use Helm.
 
@@ -47,7 +47,7 @@ custom_envs:
     value: "true"
 ```
 
-When deploying a delegate, it is recommended that you name the delegate either the same as the cluster name or something very similar that makes it obvious what cluster the delegate is deployed into. An example of deploying a CCM Only delegate via a Helm chart is [located here](https://developer.harness.io/kb/reference-architectures/ccm/best-practices/k8s/ccm-only-delegate).
+When deploying a delegate, it is recommended that you name the delegate either the same as the cluster name or something very similar that makes it obvious what cluster the delegate is deployed into. An example of deploying a CACM Only delegate via a Helm chart is [located here](https://developer.harness.io/kb/reference-architectures/ccm/best-practices/k8s/ccm-only-delegate).
 
 ### Resource Constraints
 
@@ -58,7 +58,7 @@ When deploying a delegate, it is recommended that you name the delegate either t
 
 ## Connectors
 
-For every cluster that you are enabling CCM for you will need to create two different connectors. First a Kubernetes connector, and then a CCM Kubernetes connector that references the first connector.
+For every cluster that you are enabling CACM for you will need to create two different connectors. First a Kubernetes connector, and then a CACM Kubernetes connector that references the first connector.
 
 ### Kubernetes Connector
 
@@ -85,11 +85,11 @@ resource "harness_platform_connector_kubernetes" "cluster-a" {
 
 After the connector has been created you can view the connector in the UI and view its status, you can also manually trigger a connection test to verify everything is working as expected. 
 
-### CCM Kubernetes Connector
+### CACM Kubernetes Connector
 
-Once you have a Kubernetes connector for the cluster you then need to create a CCM Kubernetes connector. These connectors simply point at a regular Kubernetes connector, and tell Harness to start collection usage data from the cluster.
+Once you have a Kubernetes connector for the cluster you then need to create a CACM Kubernetes connector. These connectors simply point at a regular Kubernetes connector, and tell Harness to start collection usage data from the cluster.
 
-For creating all your CCM Kubernetes connectors it is recommended that you utilize [Terraform](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_connector_Kubernetes_cloud_cost):
+For creating all your CACM Kubernetes connectors it is recommended that you utilize [Terraform](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_connector_Kubernetes_cloud_cost):
 
 At a minimum you need to enable `VISIBILITY`. If you are planning to perform auto stopping in this cluster, you can also enable `OPTIMIZATION`.
 
@@ -106,7 +106,7 @@ resource "harness_platform_connector_kubernetes_cloud_cost" "cluster-a" {
 
 ## Recommendations
 
-Once you have the CCM Kubernetes connector up and running you should start to receive workload and node-pool recommendations after some time. If you do not see workload recommendations [check the labels](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/node-pool-recommendations/) on the nodes to make sure they are labeled properly.
+Once you have the CACM Kubernetes connector up and running you should start to receive workload and node-pool recommendations after some time. If you do not see workload recommendations [check the labels](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/node-pool-recommendations/) on the nodes to make sure they are labeled properly.
 
 ## Enable Auto Stopping
 
@@ -114,7 +114,7 @@ If you want to perform auto stopping in a Kubernetes cluster you will need to de
 
 [There is a helm chart for deploying the controller and router here](https://github.com/rssnyder/charts/tree/main/charts/harness-ccm-autostopping).
 
-Otherwise, to get the deployment manifest for both components navigate to CCM in the Harness UI, under `Setup`,  `Cloud Integration`, and view your current connectors under `Kubernetes Clusters`. Find your connector in the list and select the three dots on the right and select `Edit Cost Access Features`.
+Otherwise, to get the deployment manifest for both components navigate to CACM in the Harness UI, under `Setup`,  `Cloud Integration`, and view your current connectors under `Kubernetes Clusters`. Find your connector in the list and select the three dots on the right and select `Edit Cost Access Features`.
 
 Click `continue` through the menus until you land on the `Enable auto stopping` page. At this point you will be directed to do the following:
 
@@ -129,7 +129,7 @@ After the deployment has completed, check the pods in the `harness-auto stopping
 
 ![](../static/k8s-autostop-controller.png
 
-## Service Account for CCM
+## Service Account for CACM
 
 We recommend using one delegate per cluster and Large size delegates for production clusters for optimal performance.
 
@@ -142,7 +142,7 @@ metadata:
   namespace: default
 ```
 
-Next, we create a `harness-ccm-visibility` `ClusterRole` with exactly the permissions neeeded for CCM k8s visibility:
+Next, we create a `harness-ccm-visibility` `ClusterRole` with exactly the permissions neeeded for CACM k8s visibility:
 ```
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
@@ -238,20 +238,20 @@ The secret can be used along with the master URL of the cluster to create a Kube
 
 ## Using a pre-existing Harness account
 
-Scenario: You have an existing Harness account full of connectors and delegates, but you now want to leverage CCM for view cluster cost/metrics and getting recommendations.
+Scenario: You have an existing Harness account full of connectors and delegates, but you now want to leverage CACM for view cluster cost/metrics and getting recommendations.
 
-The goal when setting up CCM for an existing Harness install should be to reuse as much existing infrastructure as possible. This will mean leverage existing delegates and connectors at the account level for use with CCM.
+The goal when setting up CACM for an existing Harness install should be to reuse as much existing infrastructure as possible. This will mean leverage existing delegates and connectors at the account level for use with CACM.
 
-Recap: To enable CCM on a Kubernetes cluster, you need a Kubernetes connector at the account level. The service account for that connector needs to have either cluster admin, or a subset of permissions to allow it to gather metrics and deployment information on the cluster. Cluster admin is a built in role, and to view the specific subset of permissions needed there is an example cluster role here: https://github.com/harness/delegate-helm-chart/blob/main/harness-delegate-ng/templates/ccm/cost-access.yaml
+Recap: To enable CACM on a Kubernetes cluster, you need a Kubernetes connector at the account level. The service account for that connector needs to have either cluster admin, or a subset of permissions to allow it to gather metrics and deployment information on the cluster. Cluster admin is a built in role, and to view the specific subset of permissions needed there is an example cluster role here: https://github.com/harness/delegate-helm-chart/blob/main/harness-delegate-ng/templates/ccm/cost-access.yaml
 
 When creating a Kubernetes connector you have two options: leverage a delegate deployed into that cluster (with some service account to give it access to the cluster) or specifying a Kubernetes API URL and service account credentials.
 
-Step 1: Identify a list of all the clusters you need to onboard into Harness CCM.
+Step 1: Identify a list of all the clusters you need to onboard into Harness CACM.
 
 Step 2: Investigate the existing Kubernetes connectors at the account level, try and tie these to any of the clusters we need to onboard. 
 
-Step 2a: For each connector that already exists for a cluster, we need to verify it has the correct permissions needed for CCM. If verifying these is too much hassle, you can alternatively just enable CCM for them (step 2b) and see what happens. You will also need to verify that the Kubernetes metrics server is running in the cluster. 
+Step 2a: For each connector that already exists for a cluster, we need to verify it has the correct permissions needed for CACM. If verifying these is too much hassle, you can alternatively just enable CACM for them (step 2b) and see what happens. You will also need to verify that the Kubernetes metrics server is running in the cluster. 
 
-Step 2b: Once you've identified the connectors for clusters you need to onboard, verified their cluster access (or not), you can create a CCM Kubernetes connector that points towards each of them. You can do this by hand or by going to "Setup>Clusters" under CCM and clicking the "Enable CCM" button on the connector.
+Step 2b: Once you've identified the connectors for clusters you need to onboard, verified their cluster access (or not), you can create a CACM Kubernetes connector that points towards each of them. You can do this by hand or by going to "Setup>Clusters" under CACM and clicking the "Enable CACM" button on the connector.
 
 Step 3: For any clusters on your list from step 1 that have no existing connector, follow the regular cluster onboarding procedure. 

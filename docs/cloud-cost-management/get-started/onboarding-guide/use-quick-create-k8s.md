@@ -1,6 +1,6 @@
 ---
 title: Kubernetes quick create
-description:  This topic helps you seamlessly set up your Harness CCM with a single click for your existing Kubernetes clusters.
+description:  This topic helps you seamlessly set up your Harness CACM with a single click for your existing Kubernetes clusters.
 # sidebar_position: 2
 helpdocs_topic_id: g9dgxg2cc6
 helpdocs_category_id: ekrjjfyle0
@@ -9,8 +9,8 @@ helpdocs_is_published: true
 redirect_from:
   - /docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/use-quick-create-k8s
 ---
-# Set up CCM for Kubernetes cluster by using the Quick Create option
-The Kubernetes Quick Create feature allows you to seamlessly set up your Harness CCM with a single click for your existing Kubernetes clusters.
+# Set up CACM for Kubernetes cluster by using the Quick Create option
+The Kubernetes Quick Create feature allows you to seamlessly set up your Harness CACM with a single click for your existing Kubernetes clusters.
 
 ## Prerequisites and Permissions
 
@@ -20,7 +20,7 @@ The Kubernetes Quick Create feature allows you to seamlessly set up your Harness
 
 ## Create the Kubernetes connector using the Quick Create option
 
-The Kubernetes **Quick Create** option is recommended especially for first-time users and for users who would like to test Harness CCM on their Kubernetes clusters. You can set up Harness CCM on your cluster effortlessly using this option. The following entities are created in this process:
+The Kubernetes **Quick Create** option is recommended especially for first-time users and for users who would like to test Harness CACM on their Kubernetes clusters. You can set up Harness CACM on your cluster effortlessly using this option. The following entities are created in this process:
 
 * A Kubernetes delegate of medium size with cluster admin permissions.
 * A Kubernetes connector which can also be used for other Harness modules such as CI, CD, and so on.

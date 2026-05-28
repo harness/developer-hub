@@ -1,19 +1,19 @@
 ---
 title: AWS 
-description: The procedure to set up CCM for AWS by using Harness Self-Managed Enterprise Edition.
+description: The procedure to set up CACM for AWS by using Harness Self-Managed Enterprise Edition.
 # sidebar_position: 2
 redirect_from:
   - /docs/cloud-cost-management/getting-started-ccm/ccm-smp/aws-smp
 ---
 
-# Manage AWS costs by using CCM on Harness Self-Managed Enterprise Edition
-This topic walks you through the steps required to set up CCM for AWS in a self-managed platform.
+# Manage AWS costs by using CACM on Harness Self-Managed Enterprise Edition
+This topic walks you through the steps required to set up CACM for AWS in a self-managed platform.
 
-**Figure: AWS CCM Self-Managed Enterprise Edition architecture diagram**
+**Figure: AWS CACM Self-Managed Enterprise Edition architecture diagram**
 
 <DocImage path={require('./static/aws-smp-arch.png')} width="90%" height="90%" title="Click to view full size image" />
 
-You need to perform the following tasks to set up CCM for AWS: 
+You need to perform the following tasks to set up CACM for AWS: 
 
 1. [Add a new user for programmatic access](#add-a-new-user-for-programmatic-access).
 2. [Create Amazon S3 Bucket](#create-amazon-s3-bucket).
@@ -633,7 +633,7 @@ ccm:
 <details>
 <summary>Override file changes for an air-gapped environment</summary>
 
-CCM leverages AWS APIs that require connectivity from the isolated (air-gapped) instance. To grant access to these AWS APIs, establish VPC endpoints for the respective AWS services. For services lacking VPC endpoints, use a proxy to facilitate access.
+CACM leverages AWS APIs that require connectivity from the isolated (air-gapped) instance. To grant access to these AWS APIs, establish VPC endpoints for the respective AWS services. For services lacking VPC endpoints, use a proxy to facilitate access.
 
 ```
 global:
@@ -655,7 +655,7 @@ global:
     username: ""
     password: ""
     protocol: https
-  # -- CCM uses `us-east-1` as the default region where the respective endpoint URLs are used for STS (Security Token Service), ECS (Elastic Container Service), and CloudWatch services. However, if there is a need to specify a different region, you have the option to customize the endpoint URLs using the following configuration:
+  # -- CACM uses `us-east-1` as the default region where the respective endpoint URLs are used for STS (Security Token Service), ECS (Elastic Container Service), and CloudWatch services. However, if there is a need to specify a different region, you have the option to customize the endpoint URLs using the following configuration:
   # -- Set the `global.awsServiceEndpointUrls.enabled` parameter to true to enable endpoint URLs.
   # -- Set a valid AWS region in the `global.awsServiceEndpointUrls.endPointRegion.host` parameter to specify the region where this endpoint is accessible.
   # -- Set the the STS (Security Token Service) endpoint URL in the `global.awsServiceEndpointUrls.stsEndPointUrl` parameter.
@@ -708,7 +708,7 @@ helm upgrade <chart-name> <chart-directory> -n <namespace> -f override.yaml
 
 When installing or upgrading the Helm charts, Kubernetes secrets with default values are created within the cluster. These generated secrets should be updated with the values mentioned above. Before updating the secrets, you need to convert the secret into base64 encoded format. For example, if your **AWS_DESTINATION_BUCKET** value is "harness-ccm-service-data-bucket-12345678", it would be stored as `aGFybmVzcy1jY20tc2VydmljZS1kYXRhLWJ1Y2tldC0xMjM0NTY3OA==` after encoding. After changing secrets, we will provide directives to `kubectl delete` the corresponding pods in order for your release to inherit new changes.
 
-The following are the secrets specific to CCM services:
+The following are the secrets specific to CACM services:
 
 - batch-processing
 
@@ -916,7 +916,7 @@ The following are some secrets from platform-service that you need to update:
 
 
 :::info
-To increase TimescaleDB to 100Gi, run: `kubectl edit pvc wal-volume-harness-timescaledb-0 -n <namespace>`. Features like Recommendations and Anomalies within CCM services use it.
+To increase TimescaleDB to 100Gi, run: `kubectl edit pvc wal-volume-harness-timescaledb-0 -n <namespace>`. Features like Recommendations and Anomalies within CACM services use it.
 :::
 
 ## Next steps

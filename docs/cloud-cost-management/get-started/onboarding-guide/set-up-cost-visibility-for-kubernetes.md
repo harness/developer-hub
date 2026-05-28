@@ -1,6 +1,6 @@
 ---
-title: Set up CCM for Kubernetes cluster
-description: This topic describes how to connect your Kubernetes cluster to CCM.
+title: Set up CACM for Kubernetes cluster
+description: This topic describes how to connect your Kubernetes cluster to CACM.
 sidebar_label: Kubernetes
 # sidebar_position: 2
 helpdocs_topic_id: ltt65r6k39
@@ -12,40 +12,40 @@ redirect_from:
   - /docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes
 ---
 
-Harness Cloud Cost Management (CCM) monitors the cloud costs of your Kubernetes clusters, namespaces, nodes, workloads, and labels. CCM also allows you to optimize your Kubernetes cluster resources using intelligent cloud AutoStopping rules.
+Harness Cloud & AI Cost Management (CACM) monitors the cloud costs of your Kubernetes clusters, namespaces, nodes, workloads, and labels. CACM also allows you to optimize your Kubernetes cluster resources using intelligent cloud AutoStopping rules.
 
-This topic describes how to connect your Kubernetes cluster to CCM.
+This topic describes how to connect your Kubernetes cluster to CACM.
 
-To fully enable CCM for a Kubernetes cluster, you need to:
+To fully enable CACM for a Kubernetes cluster, you need to:
 
 - **Deploy a delegate into the target cluster.** This gives Harness a connection into your cluster.
 - **Create a Harness cloud provider Kubernetes connector that targets the delegate.** This ties your cluster and delegate to a representation of your cluster in Harness.
-- **Create a Harness CCM Kubernetes connector that targets the Kubernetes connector.** This enables the delegate to start collecting usage metrics to be sent back to Harness for use in CCM.
-- **(Optional) Deploy the autostopping controller and router into the target cluster.** This enables you to create CCM autostopping rules to reduce costs of your cluster.
+- **Create a Harness CACM Kubernetes connector that targets the Kubernetes connector.** This enables the delegate to start collecting usage metrics to be sent back to Harness for use in CACM.
+- **(Optional) Deploy the autostopping controller and router into the target cluster.** This enables you to create CACM autostopping rules to reduce costs of your cluster.
 
 :::info
 
-After you enable CCM in your first cluster, the data is available within a few minutes for viewing and analysis.
+After you enable CACM in your first cluster, the data is available within a few minutes for viewing and analysis.
 
-However, you can't see the idle cost due to missing utilization data. CCM generates the last 30 days of the cost data based on the first events.
+However, you can't see the idle cost due to missing utilization data. CACM generates the last 30 days of the cost data based on the first events.
 
 From the second cluster onwards, it takes about 2 to 3 hours for the data to be available for viewing and analysis.
 
-If you are using a CCM cloud connector, the data generation is delayed. Since CCM performs cost true-up based on cost information available at cloud provider source.
+If you are using a CACM cloud connector, the data generation is delayed. Since CACM performs cost true-up based on cost information available at cloud provider source.
 
 :::
 
-## Kubernetes CCM connection requirements and workflow
+## Kubernetes CACM connection requirements and workflow
 
-For CCM, you can only use Kubernetes connectors at the Account level in Harness. This section describes how to set up the CCM Kubernetes connector.
+For CACM, you can only use Kubernetes connectors at the Account level in Harness. This section describes how to set up the CACM Kubernetes connector.
 
-Here's a visual representation of the CCM Kubernetes connector requirements and workflow:
+Here's a visual representation of the CACM Kubernetes connector requirements and workflow:
 
 ![](./static/set-up-cost-visibility-for-kubernetes-14.png)
 
 ### Prerequisites
 
-Make sure you have the following set up before you create a Kubernetes connector for CCM:
+Make sure you have the following set up before you create a Kubernetes connector for CACM:
 
 #### Kubernetes cluster requirements
 
@@ -88,9 +88,9 @@ This scaling ensures that the delegate can handle the increased load and continu
 
 #### Metrics server requirements
 
-Metrics Server must be running on the Kubernetes cluster where your Harness Kubernetes Delegate is installed. Before enabling CCM for Kubernetes, you must make sure the utilization data for pods and nodes is available.
+Metrics Server must be running on the Kubernetes cluster where your Harness Kubernetes Delegate is installed. Before enabling CACM for Kubernetes, you must make sure the utilization data for pods and nodes is available.
 
-The Metrics Server is a cluster-wide aggregator of resource usage data. It collects resource metrics from kubelets and exposes them in the Kubernetes API server through Metrics API. CCM polls the utilization data every minute on the Delegate. The metrics are aggregated for 20 minutes and then CCM keeps one data point per 20 minutes. For more information, see [Installing the Kubernetes Metrics Server](https://docs.aws.amazon.com/eks/latest/userguide/metrics-server.html) from AWS.
+The Metrics Server is a cluster-wide aggregator of resource usage data. It collects resource metrics from kubelets and exposes them in the Kubernetes API server through Metrics API. CACM polls the utilization data every minute on the Delegate. The metrics are aggregated for 20 minutes and then CACM keeps one data point per 20 minutes. For more information, see [Installing the Kubernetes Metrics Server](https://docs.aws.amazon.com/eks/latest/userguide/metrics-server.html) from AWS.
 
 Metrics Server is installed by default on GKE and AKS clusters; however, you need to install it on the AWS EKS cluster.
 
@@ -113,12 +113,12 @@ For clusters exceeding 100 nodes, allocate the following additional resources:
 
 #### Delegate permission requirements
 
-You can choose one of the following permissions for the delegate for CCM:
+You can choose one of the following permissions for the delegate for CACM:
 
-* **Install Delegate with cluster-wide read/write access:** Creates a new namespace called "harness-delegate-ng" with the service account bound to Cluster Admin role. This Delegate will be able to read tasks (capture change events etc., needed for Harness Cloud Cost Management) anywhere on the K8s cluster where the Delegate is installed.
-* **Install Delegate with cluster-wide read access:** (Requires read-only Cluster Admin role) Creates a new namespace called "harness-delegate-ng" with the service account bound to Cluster Admin role. This Delegate will be able to perform read-only tasks (capture change events etc., needed for Harness Cloud Cost Management) anywhere on the K8s cluster where the Delegate is installed.
+* **Install Delegate with cluster-wide read/write access:** Creates a new namespace called "harness-delegate-ng" with the service account bound to Cluster Admin role. This Delegate will be able to read tasks (capture change events etc., needed for Harness Cloud & AI Cost Management) anywhere on the K8s cluster where the Delegate is installed.
+* **Install Delegate with cluster-wide read access:** (Requires read-only Cluster Admin role) Creates a new namespace called "harness-delegate-ng" with the service account bound to Cluster Admin role. This Delegate will be able to perform read-only tasks (capture change events etc., needed for Harness Cloud & AI Cost Management) anywhere on the K8s cluster where the Delegate is installed.
 
-#### Delegate role requirements for CCM visibility features and recommendations:
+#### Delegate role requirements for CACM visibility features and recommendations:
 
 The YAML provided for the Harness Delegate defaults to the `cluster-admin` role. If you can't use cluster-admin because you are using a cluster in your company, you'll need to edit the delegate YAML to include the role below. If you deployed your delegate with Helm, you can also set the value `ccm.visibility: true` to have this role and binding created.
 
@@ -189,20 +189,20 @@ Make sure the connector passes its connection test to validate the delegate has 
 
 :::warning
 
-In Harness, the ratio of Delegates to Connectors is 1:2. If you have 20 clusters, then you need 20 delegates and 40 connectors (one Kubernetes cloud provider connector and one CCM Cloud Integration/Cloud Costs Kubernetes connector for each cluster).
+In Harness, the ratio of Delegates to Connectors is 1:2. If you have 20 clusters, then you need 20 delegates and 40 connectors (one Kubernetes cloud provider connector and one CACM Cloud Integration/Cloud Costs Kubernetes connector for each cluster).
 
 
 :::
 
-### Create a CCM Kubernetes connector
+### Create a CACM Kubernetes connector
 
-To have your delegate start to collect usage metrics, you need to create a CCM Kubernetes connector at the Account level and connect it to your cluster.
+To have your delegate start to collect usage metrics, you need to create a CACM Kubernetes connector at the Account level and connect it to your cluster.
 
-You need one CCM Kubernetes connector per cluster, and you must associate each CCM Kubernetes connector with the cluster's corresponding cloud provider Kubernetes cluster connector (created previously).
+You need one CACM Kubernetes connector per cluster, and you must associate each CACM Kubernetes connector with the cluster's corresponding cloud provider Kubernetes cluster connector (created previously).
 
-Once you create and connect the CCM Kubernetes connector, CCM can collect CCM metrics for deep cloud cost visibility.
+Once you create and connect the CACM Kubernetes connector, CACM can collect cost metrics for deep cloud cost visibility.
 
-You can start creating a CCM Kubernetes connector in your Account Settings or from the Cloud Costs page in Harness.
+You can start creating a CACM Kubernetes connector in your Account Settings or from the Cloud & AI Costs page in Harness.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -231,9 +231,9 @@ For the Quick Create option, go to [Kubernetes Quick Create](/docs/cloud-cost-ma
 </TabItem>
 </Tabs>
 
-### Connect your Kubernetes cluster to CCM
+### Connect your Kubernetes cluster to CACM
 
-After beginning to create the CCM Kubernetes connector, use these steps to connect your Kubernetes cluster to CCM:
+After beginning to create the CACM Kubernetes connector, use these steps to connect your Kubernetes cluster to CACM:
 
 1. In the **Kubernetes Connector** wizard, in the **Overview** section, from the **Reference an existing connector** drop-down list, select your Cloud Provider Kubernetes Connector.
 If you do not have Cloud Provider Kubernetes Connector already created, select **Create a new connector**. See [Add a Kubernetes Cluster Connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector).
@@ -242,9 +242,9 @@ If you do not have Cloud Provider Kubernetes Connector already created, select *
 
 #### Choose Requirements
 
-In **Choose Requirements**, select the Cloud Cost Management features that you would like to enable for your Kubernetes clusters. Based on your selection Harness requires specific permissions.
+In **Choose Requirements**, select the Cloud & AI Cost Management features that you would like to enable for your Kubernetes clusters. Based on your selection Harness requires specific permissions.
 
-You need to provide different permissions depending on the features that you enable for your Kubernetes clusters. CCM offers the following features:
+You need to provide different permissions depending on the features that you enable for your Kubernetes clusters. CACM offers the following features:
 
 | Feature | Capabilities |
 | --- | --- |
@@ -255,7 +255,7 @@ You need to provide different permissions depending on the features that you ena
 
 - For [AWS](set-up-cost-visibility-for-aws.md) and [Azure](set-up-cost-visibility-for-azure.md), if the cloud connectors are set up, then the cost will be trued-up to the pricing received from the CUR/billing export. However, for [GCP](set-up-cost-visibility-for-gcp.md) the list pricing is used.
 
-- CCM supports Karpenter for AWS starting from version 0.37 and later. However, it is currently not supported for GCP and Azure.
+- CACM supports Karpenter for AWS starting from version 0.37 and later. However, it is currently not supported for GCP and Azure.
 
 :::
 
@@ -318,7 +318,7 @@ The connector is now listed in **Connectors**.
 
 #### Troubleshooting
 
-In the **Verify connection** step, if you get an error message like `few of the visibility permissions are missing`, then you need to review the CCM permissions required for Harness Delegate.
+In the **Verify connection** step, if you get an error message like `few of the visibility permissions are missing`, then you need to review the CACM permissions required for Harness Delegate.
 
 ![](./static/set-up-cost-visibility-for-kubernetes-20.png)
 

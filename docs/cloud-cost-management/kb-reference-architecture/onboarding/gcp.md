@@ -1,6 +1,6 @@
 ---
 title: GCP
-description: Cloud Cost Management - Accelerator
+description: Cloud & AI Cost Management - Accelerator
 redirect_from:
   - /kb/reference-architectures/ccm/onboarding/gcp
 ---
@@ -29,9 +29,9 @@ To do this, assign `BigQuery Data Viewer` to the Harness GCP service account you
 
 ![](../static/gcp-export.png)
 
-### Harness CCM GCP Connector
+### Harness CACM GCP Connector
 
-Now that the export has been created and access assigned we need to create a corresponding CCM GCP connector in your Harness account to start billing data ingestion.
+Now that the export has been created and access assigned we need to create a corresponding CACM GCP connector in your Harness account to start billing data ingestion.
 
 You can create this connector through the UI or via the API with a tool like Terraform. Using Terraform is the recommended approach and there is a [Harness Terraform provider here](https://registry.terraform.io/providers/harness/harness/latest/docs).
 
@@ -41,7 +41,7 @@ To configure the connector you will need the following information:
 - Service account email: The Harness service account email you found above
 - Dataset ID: The ID of the dataset where the billing export is being delivered to
 - Table ID: The ID of the table where the billing export is being delivered to
-- Features enabled: The CCM features that you want to use in this project
+- Features enabled: The CACM features that you want to use in this project
   - At minimum this should be `BILLING`
   - You should additionally enable any other features you want to use in this subscription
     - `VISIBILITY`: This enables the inventory management feature
@@ -67,7 +67,7 @@ resource "harness_platform_connector_gcp_cloud_cost" "billing" {
 
 ## Other Projects
 
-Enabling CCM for your project that holds the billing export gets your cost data into Harness and enables you to start creating perspectives, budgets, alerts, and dashboards. To leverage the other features like inventory and auto stopping we need to give access and create connectors for each project where you want to use these other features.
+Enabling CACM for your project that holds the billing export gets your cost data into Harness and enables you to start creating perspectives, budgets, alerts, and dashboards. To leverage the other features like inventory and auto stopping we need to give access and create connectors for each project where you want to use these other features.
 
 For the inventory management feature you need to enable [Compute Engine APIs](https://console.cloud.google.com/apis/library/compute.googleapis.com) and give the Harness service account `Compute Viewer` access to the project.
 
@@ -288,9 +288,9 @@ resource "google_project_iam_member" "autostopping" {
 }
 ```
 
-### Harness CCM GCP Connector
+### Harness CACM GCP Connector
 
-Now that the Harness service account has been granted access to your projects we need to create a corresponding CCM GCP connector in your Harness account for each project.
+Now that the Harness service account has been granted access to your projects we need to create a corresponding CACM GCP connector in your Harness account for each project.
 
 You can create these connectors through the UI or via the API with a tool like Terraform. Using Terraform is the recommended approach and there is a [Harness Terraform provider here](https://registry.terraform.io/providers/harness/harness/latest/docs).
 
@@ -298,7 +298,7 @@ To configure the connector you will need the following information:
 
 - Project ID: The ID of your billing (or other) project where the export is located
 - Service account email: The Harness service account email you found above
-- Features enabled: The CCM features that you want to use in this project
+- Features enabled: The CACM features that you want to use in this project
   - You should not enable `BILLING`
   - You should additionally enable any other features you want to use in this subscription
     - `VISIBILITY`: This enables the inventory management feature

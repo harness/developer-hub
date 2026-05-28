@@ -18,7 +18,7 @@ To ensure a smooth and error-free setup experience, complete the following steps
 <details>
 <summary>Set Up the Cost and Usage Report</summary>
 
-Harness Cloud Cost Management (CCM) requires AWS Cost and Usage Reports (CUR) to be configured in **Legacy CUR format**. AWS CUR 2.0 (Data Exports) is **NOT supported**.
+Harness Cloud & AI Cost Management (CCM) requires AWS Cost and Usage Reports (CUR) to be configured in **Legacy CUR format**. AWS CUR 2.0 (Data Exports) is **NOT supported**.
 
 > **Important**: When creating a new CUR in AWS, you must select the "Legacy CUR export" option. AWS now defaults to CUR 2.0 / Data Exports for new reports, which will not work with Harness.
 
@@ -37,7 +37,7 @@ When creating a Legacy CUR report in AWS, configure the following settings:
 
 **Connector Configuration**
 
-When setting up an AWS CCM connector in Harness, you need to provide:
+When setting up an AWS CACM connector in Harness, you need to provide:
 
 | Field | Description | Required |
 |-------|-------------|----------|
@@ -113,7 +113,7 @@ When setting up an AWS CCM connector in Harness, you need to provide:
 :::caution time for data delivery
 It may take up to **24 hours** for AWS to begin delivering cost and usage data. You can still proceed through the wizard, but the connection test may fail if data isn’t yet available.
 
-In the meantime, explore the optional requirements and feature integrations available in Harness CCM, these will be available to select in your **Choose Requirements** step of the connection wizard:
+In the meantime, explore the optional requirements and feature integrations available in Harness CACM, these will be available to select in your **Choose Requirements** step of the connection wizard:
 
   - [Resource Inventory Management](/docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/view-aws-ec-2-inventory-cost-dashboard/).
   - [Optimization by AutoStopping](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/getting-started).
@@ -146,7 +146,7 @@ Once you've gathered the required AWS details, follow these steps in the Harness
 3. Once the CUR appears in the list, select it and click **Continue**.
 
 :::info
-Review [Feature Permissions](/docs/cloud-cost-management/feature-permissions) for CCM to understand the minimum IAM roles or policies needed for every CCM feature.
+Review [Feature Permissions](/docs/cloud-cost-management/feature-permissions) for CACM to understand the minimum IAM roles or policies needed for every CCM feature.
 :::
 ---
 
@@ -198,7 +198,7 @@ You can enable authentication for your AWS account via
 
 
 ## Next Steps
-Once your **AWS billing data** is flowing into Harness, explore these features to enhance your cloud cost management:
+Once your **AWS billing data** is flowing into Harness, explore these features to enhance your Cloud & AI Cost Management:
 
 - [View and Create Perspectives](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/creating-a-perspective) to visualize cloud usage and trends.
 - Create [Budgets and Alerts](/docs/cloud-cost-management/use-ccm-cost-governance/ccm-budgets/create-a-budget) to monitor spend thresholds.
@@ -209,4 +209,4 @@ Once your **AWS billing data** is flowing into Harness, explore these features t
   - [Cloud Governance](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/asset-governance).
   - [Commitment Orchestration](/docs/category/commitment-orchestrator).
 
-Take the next step in your cloud cost management journey and turn visibility into action.
+Take the next step in your Cloud & AI Cost Management journey and turn visibility into action.

@@ -11,7 +11,7 @@ The process below defines how to provision Harness connectors and Azure IAM role
 
 ## Permissions
 
-You will need access to provision IAM roles in Azure and create CCM connectors in Harness. When running the Terraform code, two variables need to be defined:
+You will need access to provision IAM roles in Azure and create CACM connectors in Harness. When running the Terraform code, two variables need to be defined:
 
 `HARNESS_ACCOUNT_ID` = (Your Harness Account ID)
 
@@ -19,7 +19,7 @@ You will need access to provision IAM roles in Azure and create CCM connectors i
 
 ## Setup Providers
 
-We need to leverage the Azure and Harness Terraform providers. We will use these to create IAM roles and CCM connectors. We also will get all Azure subscriptions and set the Harness principal id.
+We need to leverage the Azure and Harness Terraform providers. We will use these to create IAM roles and CACM connectors. We also will get all Azure subscriptions and set the Harness principal id.
 
 ```
 terraform {
@@ -48,7 +48,7 @@ variable "harness_principal_id" {
 
 ## Get Subscriptions And Create Connectors
 
-There are two options to retrieve the subscriptions we want to create connectors for.  We'll use the Harness provider to create a CCM connector for each Azure subscription after we retrieve them. We are enabling recommendations (VISIBILITY), governance (GOVERNANCE), and autostopping (OPTIMIZATION).
+There are two options to retrieve the subscriptions we want to create connectors for.  We'll use the Harness provider to create a CACM connector for each Azure subscription after we retrieve them. We are enabling recommendations (VISIBILITY), governance (GOVERNANCE), and autostopping (OPTIMIZATION).
 
 ### Use the Azure provider to get all subscriptions in the tenant.
 

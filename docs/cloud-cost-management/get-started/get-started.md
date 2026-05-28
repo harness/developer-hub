@@ -1,6 +1,6 @@
 ---
 title: Get Started
-description: Learn how to get started with CCM with your chosen cloud provider.
+description: Learn how to get started with CACM with your chosen cloud provider.
 sidebar_position: 20
 sidebar_label: Get Started
 redirect_from: 
@@ -13,7 +13,7 @@ redirect_from:
 
 import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelector/DynamicMarkdownSelector';
 
-Select your cloud provider below to get started. You’ll connect your account, review your associated resource costs, and begin your journey to effective cloud cost management with Harness CCM.
+Select your cloud provider below to get started. You’ll connect your account, review your associated resource costs, and begin your journey to effective Cloud & AI Cost Management with Harness CACM.
 
 <DynamicMarkdownSelector
   options={{
@@ -42,6 +42,6 @@ Select your cloud provider below to get started. You’ll connect your account, 
   toc = {toc}
 />
 
-<UniversityAdmonition title="Harness CCM self-paced training">
-  For an interactive onboarding experience including further use cases and features like **drift detection**, **remote backends**, and **policy enforcement**, check out [**Harness CCM self-paced training**](https://university-registration.harness.io/self-paced-training-harness-cloud-cost-management).
+<UniversityAdmonition title="Harness CACM self-paced training">
+  For an interactive onboarding experience including further use cases and features like **drift detection**, **remote backends**, and **policy enforcement**, check out [**Harness CACM self-paced training**](https://university-registration.harness.io/self-paced-training-harness-cloud-cost-management).
 </UniversityAdmonition>
