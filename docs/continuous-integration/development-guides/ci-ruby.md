@@ -228,24 +228,24 @@ Harness CI supports [test splitting (parallelism)](/docs/continuous-integration/
 
 Ruby is pre-installed on Harness Cloud runners. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
 
-If your application requires a specific Ruby version, add a **Run** or **GitHub Action** step to install it.
-
-Use the [setup-ruby](https://github.com/ruby/setup-ruby) action in a [GitHub Action step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step/) to install the required Ruby version.
-
-You will need a [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token), stored as a [secret](/docs/platform/secrets/add-use-text-secrets), with read-only access for GitHub authentication.
+If your application requires a specific Ruby version, add a **Run** step to install it.
 
 <details>
 <summary>Install one Ruby version</summary>
 
 ```yaml
 - step:
-    type: Action
-    name: Install ruby
+    type: Run
+    name: Install Ruby
     identifier: installruby
     spec:
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: 3.0
+      shell: Sh
+      command: |-
+        curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash
+        export PATH=$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH
+        rbenv install 3.2.2
+        rbenv global 3.2.2
+        ruby --version
 ```
 
 </details>
@@ -268,13 +268,17 @@ You will need a [personal access token](https://docs.github.com/en/authenticatio
 
 ```yaml
 - step:
-    type: Action
-    name: Install ruby
+    type: Run
+    name: Install Ruby
     identifier: installruby
     spec:
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: <+ stage.matrix.rubyVersion >
+      shell: Sh
+      command: |-
+        curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash
+        export PATH=$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH
+        rbenv install <+matrix.rubyVersion>
+        rbenv global <+matrix.rubyVersion>
+        ruby --version
 ```
 
 </details>

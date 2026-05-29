@@ -254,25 +254,24 @@ Harness CI supports [test splitting (parallelism)](/docs/continuous-integration/
 
 Python is pre-installed on Harness Cloud runners. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
 
-If your application requires a specific Python version, add a **Run** or **GitHub Action** step to install it.
-
-Use the [setup-python](https://github.com/actions/setup-python) action in a [GitHub Action step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step/) to install the required Python version.
-
-You will need a [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token), stored as a [secret](/docs/platform/secrets/add-use-text-secrets), with read-only access for GitHub authentication.
+If your application requires a specific Python version, add a **Run** step to install it.
 
 <details>
 <summary>Install one Python version</summary>
 
 ```yaml
 - step:
-    type: Action
-    name: Install python
+    type: Run
+    name: Install Python
     identifier: installpython
     spec:
-      uses: actions/setup-python@v4
-      with:
-        python-version: 3.10.10
-        token: <+ secrets.getValue("github_token") >
+      shell: Sh
+      command: |-
+        sudo apt-get update && sudo apt-get install -y software-properties-common
+        sudo add-apt-repository -y ppa:deadsnakes/ppa
+        sudo apt-get update
+        sudo apt-get install -y python3.10
+        python3.10 --version
 ```
 
 </details>
@@ -287,22 +286,25 @@ You will need a [personal access token](https://docs.github.com/en/authenticatio
     strategy:
       matrix:
         pythonVersion:
-          - 3.11.2
-          - 3.10.10
+          - "3.11"
+          - "3.10"
 ```
 
 2. Reference the matrix variable in your steps.
 
 ```yaml
 - step:
-    type: Action
-    name: Install python
+    type: Run
+    name: Install Python
     identifier: installpython
     spec:
-      uses: actions/setup-python@v4
-      with:
-        python-version: <+ stage.matrix.pythonVersion >
-        token: <+ secrets.getValue("github_token") >
+      shell: Sh
+      command: |-
+        sudo apt-get update && sudo apt-get install -y software-properties-common
+        sudo add-apt-repository -y ppa:deadsnakes/ppa
+        sudo apt-get update
+        sudo apt-get install -y python<+matrix.pythonVersion>
+        python<+matrix.pythonVersion> --version
 ```
 
 </details>

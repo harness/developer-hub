@@ -226,44 +226,114 @@ Harness CI supports [test splitting (parallelism)](/docs/continuous-integration/
 
 Java is pre-installed on Hosted Cloud runners. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
 
-If your application requires a specific version of Java, you can use a **Run**, **GitHub Action**, or **Plugin** step to install it.
+If your application requires a specific Java version, add a **Run** step to install it.
 
-This example uses the [GitHub Action step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step) to run the `setup-java` action.
+<details>
+<summary>Install a specific version of Java</summary>
 
 ```yaml
 - step:
-    type: Action
-    name: setup java
-    identifier: setup_java
+    type: Run
+    name: Install Java
+    identifier: install_java
     spec:
-      uses: actions/setup-java@v3
-      with:
-        distribution: "temurin"
-        java-version: "16"
+      shell: Sh
+      command: |-
+        mkdir -p $HOME/java
+        curl -fsSL "https://api.adoptium.net/v3/binary/latest/17/ga/linux/x64/jdk/hotspot/normal/eclipse" | tar xz -C $HOME/java --strip-components=1
+        export JAVA_HOME=$HOME/java
+        export PATH=$JAVA_HOME/bin:$PATH
+        java -version
 ```
+
+</details>
+
+<details>
+<summary>Install multiple Java versions</summary>
+
+1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
+
+```yaml
+strategy:
+  matrix:
+    javaVersion:
+      - "17"
+      - "21"
+```
+
+2. Reference the matrix variable in your steps.
+
+```yaml
+- step:
+    type: Run
+    name: Install Java
+    identifier: install_java
+    spec:
+      shell: Sh
+      command: |-
+        mkdir -p $HOME/java
+        curl -fsSL "https://api.adoptium.net/v3/binary/latest/<+matrix.javaVersion>/ga/linux/x64/jdk/hotspot/normal/eclipse" | tar xz -C $HOME/java --strip-components=1
+        export JAVA_HOME=$HOME/java
+        export PATH=$JAVA_HOME/bin:$PATH
+        java -version
+```
+
+</details>
 
 </TabItem>
 <TabItem value="Self-managed">
 
-You can use a **Run** or **Plugin** step to install Java versions that are not already installed on your host machine.
+Specify the desired [Java Docker image](https://hub.docker.com/_/eclipse-temurin) tag in your steps. There is no need for a separate install step when using Docker.
 
-This example uses the [Plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/run-a-git-hub-action-in-cie) to run the GitHub Actions Drone plugin and run the `setup-java` action.
+<details>
+<summary>Use a specific Java version</summary>
 
 ```yaml
 - step:
-    identifier: setup_java
-    name: setup java
-    type: Plugin
+    type: Run
+    name: Java Version
+    identifier: java_version
     spec:
       connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
-      image: plugins/github-actions
-      privileged: true
-      settings:
-        uses: actions/setup-java@v3
-        with:
-          distribution: "temurin"
-          java-version: "17"
+      image: maven:3.9-eclipse-temurin-17
+      shell: Sh
+      command: |-
+        java -version
+        mvn --version
 ```
+
+</details>
+
+<details>
+<summary>Use multiple Java versions</summary>
+
+1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) configuration to your stage.
+
+```yaml
+strategy:
+  matrix:
+    javaVersion:
+      - "17"
+      - "21"
+```
+
+2. Reference the matrix variable in the `image` field of your steps.
+
+```yaml
+- step:
+    type: Run
+    name: Java Version
+    identifier: java_version
+    spec:
+      connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
+      image: maven:3.9-eclipse-temurin-<+matrix.javaVersion>
+      shell: Sh
+      command: |-
+        java -version
+        mvn --version
+```
+
+</details>
 
 </TabItem>
 </Tabs>

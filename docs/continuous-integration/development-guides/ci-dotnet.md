@@ -382,33 +382,23 @@ Harness CI supports [test splitting (parallelism)](/docs/continuous-integration/
 
 The .NET SDK is pre-installed on Hosted Cloud runners. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
 
-If you need a specific .NET Core SDK version that isn't already installed, you can use a **Run** step to install it, or you can use the [setup-dotnet](https://github.com/actions/setup-dotnet) action in a [GitHub Action step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step/).
+If you need a specific .NET Core SDK version that isn't already installed, you can use a **Run** step to install it.
 
 <details>
 <summary>Install one .NET SDK version</summary>
 
 ```yaml
 - step:
-    type: Action
+    type: Run
     name: Install dotnet
     identifier: install_dotnet
     spec:
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: "3.1.x"
-```
-
-On Windows platforms, you might also need to run the [setup-msbuild](https://github.com/microsoft/setup-msbuild) action.
-
-```yaml
-- step:
-    type: Action
-    name: Install dotnet
-    identifier: install_dotnet
-    spec:
-      uses: actions/setup-msbuild@v1
-      with: ## Optional. Specify a specific version of visual Studio if you have multiple versions installed.
-        vs-version: "16.4"
+      shell: Sh
+      command: |-
+        curl -fsSL https://dot.net/v1/dotnet-install.sh | bash -s -- --channel 8.0
+        export DOTNET_WORKSPACE=$HOME/.dotnet
+        export PATH=$DOTNET_WORKSPACE:$PATH
+        dotnet --info
 ```
 
 </details>
@@ -422,34 +412,24 @@ On Windows platforms, you might also need to run the [setup-msbuild](https://git
 strategy:
   matrix:
     dotnetVersion:
-      - 7.0.x
-      - 5.0.x
+      - "8.0"
+      - "6.0"
 ```
 
 2. Reference the matrix variable in your steps.
 
 ```yaml
 - step:
-    type: Action
+    type: Run
     name: Install dotnet
     identifier: install_dotnet
     spec:
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: <+matrix.dotnetVersion>
-```
-
-On Windows platforms, you might also need to run the [setup-msbuild](https://github.com/microsoft/setup-msbuild) action.
-
-```yaml
-- step:
-    type: Action
-    name: Install dotnet
-    identifier: install_dotnet
-    spec:
-      uses: actions/setup-msbuild@v1
-      with: ## Optional. Specify a specific version of visual Studio if you have multiple versions installed.
-        vs-version: "16.4"
+      shell: Sh
+      command: |-
+        curl -fsSL https://dot.net/v1/dotnet-install.sh | bash -s -- --channel <+matrix.dotnetVersion>
+        export DOTNET_WORKSPACE=$HOME/.dotnet
+        export PATH=$DOTNET_WORKSPACE:$PATH
+        dotnet --info
 ```
 
 </details>
@@ -472,7 +452,7 @@ Specify the desired [.NET SDK image](https://mcr.microsoft.com/en-us/product/dot
       image: mcr.microsoft.com/dotnet/sdk:7.0
       shell: Sh
       command: |-
-        dontet --info
+        dotnet --info
 ```
 
 On Windows platforms, you might also need to [install Microsoft Build Tools into the container](https://learn.microsoft.com/en-us/visualstudio/install/build-tools-container?view=vs-2019).
@@ -658,7 +638,7 @@ pipeline:
                     image: mcr.microsoft.com/dotnet/sdk:7.0
                     shell: Sh
                     command: |-
-                      dontet --info
+                      dotnet --info
               - step:
                   type: Run
                   identifier: dependencies
