@@ -171,6 +171,11 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## May 2026
 
+### Version 26.05.89207 <!-- May 30, 2026 -->
+
+#### Fixed issues
+- Fixed AWS SDK connection pool shutdown causing permanent secret manager failures on IRSA-enabled delegates
+
 ### Version 26.05.89206 <!-- May 27, 2026 -->
 
 #### Security fixes
