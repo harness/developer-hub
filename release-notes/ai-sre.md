@@ -1,7 +1,7 @@
 ---
 title: AI SRE release notes
 sidebar_label: AI SRE
-date: 2026-04-29T10:00
+date: 2026-05-29T10:00
 sidebar_position: 2
 ---
 
@@ -16,6 +16,16 @@ The release notes describe recent changes to Harness AI SRE.
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## May 2026
+
+#### New Features and Enhancements
+
+- **CEL Expression Engine:** AI SRE now supports [Common Expression Language (CEL)](https://github.com/google/cel-spec) as a full expression engine alongside Mustache templates. Write dynamic conditions using regex matching, datetime formatting, list comprehensions, and math operations in alert rule conditions, runbook trigger conditions, webhook advanced mapping conditions, and inline within runbook action field values using `${{ }}` syntax. A unified conditional builder provides consistent editing with syntax highlighting and inline validation across all expression surfaces. Go to [Create a Trigger](/docs/ai-sre/runbooks/create-trigger) to learn about CEL expression syntax.
+
+- **Google Chat Bidirectional Sync and Native Actions:** The Google Chat integration now supports bidirectional timeline mirroring. Messages posted in the AI SRE UI automatically appear in the linked Google Chat space, and Google Chat messages are ingested into the incident timeline via webhook. New native runbook actions allow you to **Create Google Chat Space** and **Add Members to Space** directly from runbook automation. Go to [Google Chat Integration](/docs/ai-sre/integrations/google-chat) to configure bidirectional sync.
+
+- **Slack Summary Modal:** The incident summary in Slack now opens in a modal dialog instead of inline, providing a cleaner reading experience and reducing channel noise.
 
 ## April 2026
 
