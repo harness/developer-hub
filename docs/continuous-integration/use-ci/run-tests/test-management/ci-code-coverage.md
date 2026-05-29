@@ -30,7 +30,7 @@ For pull requests, the diff view shows line-by-line coverage:
 
 | Format | File Extension | Languages |
 |--------|---------------|-----------|
-| LCOV | `.info`, `.lcov` | Python, Node.js, C/C++ |
+| LCOV | `.info`, `.lcov` | Python, Node.js, JavaScript, C/C++ |
 | JaCoCo XML | `.xml` | Java, Kotlin, Scala |
 | Go Coverage | `.out` | Go |
 
@@ -40,30 +40,30 @@ For pull requests, the diff view shows line-by-line coverage:
   <TabItem value="python" label="Python" default>
 
 ```yaml
-- run:
-    script: |-
-      # Install dependencies
-      pip install pytest pytest-cov
+- step:
+    type: Run
+    name: Run Tests with Coverage
+    spec:
+      shell: Sh
+      command: |-
+        # Install dependencies
+        pip install pytest pytest-cov
 
-      # Run tests with coverage
-      pytest tests/ \
-        --junitxml=test-results.xml \
-        --cov=src \
-        --cov-report=lcov:lcov.info \
-        -v
+        # Run tests with coverage
+        pytest tests/ \
+          --junitxml=test-results.xml \
+          --cov=src \
+          --cov-report=lcov:lcov.info \
+          -v
 
-      # Upload test results
-      hcli test-reports upload test-results.xml
+        # Upload test results
+        hcli test-reports upload test-results.xml
 
-      # Analyze coverage locally (optional)
-      hcli cov analyze --file lcov.info
+        # Upload coverage to Harness
+        hcli cov upload --file=lcov.info
 
-      # Upload coverage to Harness
-      hcli cov upload \
-        --file=lcov.info \
-        --provider=github \
-        --owner="$HARNESS_ORG_ID" \
-        --identifier="my-repo"
+        # Quality gate (optional)
+        hcli cov wait-until --gt=70 --patch-gt=80 --timeout=1m
 ```
 
   </TabItem>
@@ -75,7 +75,7 @@ For pull requests, the diff view shows line-by-line coverage:
     name: Run Tests with Coverage
     spec:
       shell: Sh
-      command: |
+      command: |-
         # Run tests with JaCoCo coverage
         ./gradlew test jacocoTestReport
 
@@ -83,34 +83,36 @@ For pull requests, the diff view shows line-by-line coverage:
         hcli test-reports upload "build/test-results/test/*.xml"
 
         # Upload coverage
-        hcli cov upload \
-          --file=build/reports/jacoco/test/jacocoTestReport.xml \
-          --provider=github \
-          --owner="$HARNESS_ORG_ID" \
-          --identifier="my-repo"
+        hcli cov upload --file=build/reports/jacoco/test/jacocoTestReport.xml
+
+        # Quality gate (optional)
+        hcli cov wait-until --gt=70 --patch-gt=80 --timeout=1m
 ```
 
   </TabItem>
   <TabItem value="go" label="Go">
 
 ```yaml
-- run:
-    script: |-
-      # Install JUnit reporter
-      go install github.com/jstemmer/go-junit-report/v2@latest
+- step:
+    type: Run
+    name: Run Tests with Coverage
+    spec:
+      shell: Sh
+      command: |-
+        # Install JUnit reporter
+        go install github.com/jstemmer/go-junit-report/v2@latest
 
-      # Run tests with coverage
-      go test -v -coverprofile=coverage.out ./... 2>&1 | go-junit-report > report.xml
+        # Run tests with coverage
+        go test -v -coverprofile=coverage.out ./... 2>&1 | go-junit-report > report.xml
 
-      # Upload test results
-      hcli test-reports upload report.xml
+        # Upload test results
+        hcli test-reports upload report.xml
 
-      # Upload coverage
-      hcli cov upload \
-        --file=coverage.out \
-        --provider=Harness \
-        --owner="$HARNESS_ORG_ID" \
-        --identifier="my-repo"
+        # Upload coverage
+        hcli cov upload --file=coverage.out
+
+        # Quality gate (optional)
+        hcli cov wait-until --gt=70 --patch-gt=80 --timeout=1m
 ```
 
   </TabItem>
@@ -128,21 +130,27 @@ This outputs coverage statistics without uploading to Harness, useful for debugg
 
 ## Quality Gates
 
-Enforce minimum coverage thresholds to fail pipelines that don't meet your standards. Use `hcli cov wait-until` to block the pipeline until coverage meets the specified thresholds:
+Enforce minimum coverage thresholds to fail pipelines that don't meet your standards. Use `hcli cov wait-until` to block the pipeline until coverage meets the specified thresholds.
+
+You can specify one or both thresholds as needed:
 
 ```bash
-hcli cov wait-until \
-  --gt=70 \
-  --patch-gt=80 \
-  --timeout=1m \
-  --endpoint="$HARNESS_TI_SERVICE_ENDPOINT/coverage"
+# Check both total and patch coverage
+hcli cov wait-until --gt=70 --patch-gt=80 --timeout=1m
+
+# Check only total coverage
+hcli cov wait-until --gt=70 --timeout=1m
+
+# Check only patch coverage (for PRs)
+hcli cov wait-until --patch-gt=80 --timeout=1m
 ```
 
 This command:
 1. Waits for coverage data to be available
-2. Checks if total coverage exceeds the `--gt` threshold (70%)
-3. Checks if patch coverage exceeds the `--patch-gt` threshold (80%)
-4. Fails the pipeline if thresholds are not met
+2. Checks thresholds (if specified):
+   - `--gt`: total coverage percentage
+   - `--patch-gt`: patch coverage percentage (for PRs)
+3. Fails the pipeline if any specified threshold is not met
 
 Example output when the quality gate fails:
 ```
@@ -157,31 +165,30 @@ Error: quality gate failed: 1 threshold(s) not met
 
 ### Quality Gate Parameters
 
-| Parameter | Description |
-|-----------|-------------|
-| `--gt` | Minimum total coverage percentage required |
-| `--patch-gt` | Minimum patch coverage percentage required (for PRs) |
-| `--timeout` | How long to wait for coverage data (e.g., `1m`, `30s`) |
-| `--endpoint` | Coverage service endpoint |
+| Parameter | Required | Description |
+|-----------|----------|-------------|
+| `--gt` | No | Minimum total coverage percentage required |
+| `--patch-gt` | No | Minimum patch coverage percentage required (for PRs) |
+| `--timeout` | No | How long to wait for coverage data (e.g., `1m`, `30s`). Default: `30s` |
 
 ## CLI Reference
 
 ### cov upload
 
+Upload coverage reports to Harness. Automatically detects CI environment and configuration.
+
 ```bash
-hcli cov upload \
-  --file=<coverage-file> \
-  --provider=<provider> \
-  --owner=<owner> \
-  --identifier=<repo-name>
+hcli cov upload --file=<coverage-file>
 ```
 
 | Parameter | Required | Description |
 |-----------|----------|-------------|
-| `--file` | Yes | Path to coverage file |
-| `--provider` | Yes | Git provider: `github`, `gitlab`, `bitbucket`, or `Harness` |
-| `--owner` | Yes | Organization or owner identifier |
-| `--identifier` | Yes | Repository name |
+| `--file` | Yes | Path to coverage file (LCOV `.info` or Go `.out`). Can be specified multiple times |
+| `--base-branch` | No | Base branch for diff coverage tracking (e.g., `main`, `origin/main`) |
+| `--patch` | No | Only include coverage for lines changed in the diff (requires `--base-branch`) |
+| `--tags` | No | Tags to apply to the uploaded coverage report (can be specified multiple times) |
+| `--verbose` | No | Enable verbose output for debugging (`true` or `false`) |
+| `--log-level` | No | Set log level: `debug`, `info`, `warn`, `error` (default: `info`) |
 
 ### cov analyze
 
@@ -195,12 +202,10 @@ hcli cov analyze --file <coverage-file>
 
 ### cov wait-until
 
+Wait for coverage data and enforce quality gates. Automatically detects CI environment. Specify one or both thresholds as needed.
+
 ```bash
-hcli cov wait-until \
-  --gt=<total-threshold> \
-  --patch-gt=<patch-threshold> \
-  --timeout=<duration> \
-  --endpoint=<endpoint>
+hcli cov wait-until [--gt=<total-threshold>] [--patch-gt=<patch-threshold>] [--timeout=<duration>]
 ```
 
 | Parameter | Required | Description |
@@ -208,7 +213,6 @@ hcli cov wait-until \
 | `--gt` | No | Minimum total coverage percentage (e.g., `70`) |
 | `--patch-gt` | No | Minimum patch coverage percentage (e.g., `80`) |
 | `--timeout` | No | Wait timeout (e.g., `1m`, `30s`). Default: `30s` |
-| `--endpoint` | Yes | Coverage service endpoint (`$HARNESS_TI_SERVICE_ENDPOINT/coverage`) |
 
 ## Troubleshooting
 
@@ -217,7 +221,8 @@ hcli cov wait-until \
 | Coverage shows 0% | Verify the coverage file path matches your tool's output |
 | Patch coverage not showing | Ensure you're running on a pull request build |
 | File not found | Confirm coverage file was generated before the upload step |
-| Invalid format | Verify the file format matches supported types (LCOV, JaCoCo, Go) |
+| Invalid format | Verify the file format matches supported types (LCOV, Go) |
+| Incomplete or inaccurate coverage | Check if tests failed or exited early. Some test runs that terminate prematurely (test failures with `--exitfirst`, crashes, timeouts) may generate incomplete coverage data. Ensure all tests complete successfully before evaluating coverage metrics |
 
 ## Next Steps
 

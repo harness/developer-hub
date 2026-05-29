@@ -77,23 +77,23 @@ For **local usage**, download the binary:
 
 ```bash
 # macOS (Apple Silicon)
-curl -fsSL -o hcli "https://storage.googleapis.com/harness-ti/hcli/latest/hcli-darwin-arm64"
+curl -fsSL -o hcli "https://storage.googleapis.com/harness-ti/hcli/v0.16/hcli-darwin-arm64"
 chmod +x hcli
 
 # macOS (Intel)
-curl -fsSL -o hcli "https://storage.googleapis.com/harness-ti/hcli/latest/hcli-darwin-amd64"
+curl -fsSL -o hcli "https://storage.googleapis.com/harness-ti/hcli/v0.16/hcli-darwin-amd64"
 chmod +x hcli
 
 # Linux (amd64)
-curl -fsSL -o hcli "https://storage.googleapis.com/harness-ti/hcli/latest/hcli-linux-amd64"
+curl -fsSL -o hcli "https://storage.googleapis.com/harness-ti/hcli/v0.16/hcli-linux-amd64"
 chmod +x hcli
 
 # Linux (arm64)
-curl -fsSL -o hcli "https://storage.googleapis.com/harness-ti/hcli/latest/hcli-linux-arm64"
+curl -fsSL -o hcli "https://storage.googleapis.com/harness-ti/hcli/v0.16/hcli-linux-arm64"
 chmod +x hcli
 
 # Windows (amd64)
-curl -fsSL -o hcli.exe "https://storage.googleapis.com/harness-ti/hcli/latest/hcli-windows-amd64.exe"
+curl -fsSL -o hcli.exe "https://storage.googleapis.com/harness-ti/hcli/v0.16/hcli-windows-amd64.exe"
 ```
 
 Move to your PATH or use directly: `./hcli --help`
