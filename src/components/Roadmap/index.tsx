@@ -36,7 +36,7 @@ const Roadmap = () => {
       name: 'SAST and SCA',
       icon: 'icon-qwietai.svg',
     },
-    { value: 'ccm', name: 'Cloud Cost Management', icon: 'icon_ccm.svg' },
+    { value: 'ccm', name: 'Cloud & AI Cost Management', icon: 'icon_ccm.svg' },
     {
       value: 'sto',
       name: 'Security Testing Orchestration',

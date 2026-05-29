@@ -3,7 +3,7 @@ import type { ModuleTheme } from "./roadmapPalette";
 
 export const ccmModuleTheme: ModuleTheme = {
   moduleKey: "ccm",
-  moduleTitle: "Cloud Cost Management",
+  moduleTitle: "Cloud & AI Cost Management",
   palette: {
     light: { bg: "#01C9CC", text: "#ECFFFF" },
     dark: { bg: "#0D3D3E", text: "#7ED9DB" },
@@ -74,7 +74,7 @@ export const CcmData: Horizon = {
         tag: [{value: "Visibility"}],
         title: "Cost Category Enhancements",
         description:
-          "[Released: December 2025] Performance improvements - 2x Query speeds, Support to leverage cost categories across all CCM features: Recommendations, Asset Governance, Budgets",
+          "[Released: December 2025] Performance improvements - 2x Query speeds, Support to leverage cost categories across all CACM features: Recommendations, Asset Governance, Budgets",
         backgroundColor: "var(--green-100)",
       },
       {
@@ -217,7 +217,7 @@ export const CcmData: Horizon = {
       },
       {
         tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
-        title: "IaCM<>CCM integration for automated application of recommendations",
+        title: "IaCM<>CACM integration for automated application of recommendations",
         description: "Integration with IaCM for automated application of recommendations at source ",
         backgroundColor: "var(--yellow-50)",
       },
@@ -319,8 +319,8 @@ export const CcmData: Horizon = {
       },
       {
         tag: [{value: "Cost visibility"}],
-        title: "CCM Overview Page Revamp",
-        description: "Revamp of the CCM Overview page.",
+        title: "CACM Overview Page Revamp",
+        description: "Revamp of the CACM Overview page.",
         backgroundColor: "var(--yellow-50)",
       },
       {
@@ -380,7 +380,7 @@ export const CcmData: Horizon = {
       {
         tag: [{value: "Cost visibility"}],
         title: "Data Ingestion Status Update",
-        description: "Introduces a centralized Data Jobs Status section and real-time notifications for active data jobs, third-party outages, and widget-specific alerts across ingestion, Cost Category backfills, PDT updates, and external issues impacting Harness CCM.",
+        description: "Introduces a centralized Data Jobs Status section and real-time notifications for active data jobs, third-party outages, and widget-specific alerts across ingestion, Cost Category backfills, PDT updates, and external issues impacting Harness CACM.",
         backgroundColor: "var(--yellow-50)",
       },
     ],
@@ -404,7 +404,7 @@ Later:{
         tag: [{value: "Innovation"}],
         title: " FinOps Workflows ",
         description:
-          "Automated workflows to simplify and scale the adoption of FinOps practices and CCM features across organizations.",
+          "Automated workflows to simplify and scale the adoption of FinOps practices and CACM features across organizations.",
       },
        {
         tag: [{value: "Cluster Orchestrator"}],
