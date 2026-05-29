@@ -10,6 +10,8 @@ redirect_from:
   - /docs/platform/Resource-Development/Terraform/harness-terraform-provider
 ---
 
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
+
 Terraform is an infrastructure as code (IaC) tool that allows you to build, change, and version infrastructure safely and efficiently.​
 
 Harness Terraform Provider is a library that you can use to create Harness Infrastructure. You can administer and use Harness functionality from within your Terraform setup using Harness Terraform Provider.
@@ -211,7 +213,13 @@ terraform import
 ```
 To learn more about the life cycle of a Terraform resource, see [Lifecycle of a Terraform Resource](https://freecontent.manning.com/the-lifecycle-of-a-terraform-resource/).
 
-To try out Harness Terraform Provider, see [Harness Provider](https://registry.terraform.io/providers/harness/harness/latest/docs).
+To try out the Harness Terraform Provider, see the [Harness Provider documentation](https://registry.terraform.io/providers/harness/harness/latest/docs).
+
+<Troubleshoot
+  issue="Permanent plan diff after removing description from harness_platform_infrastructure"
+  mode="docs"
+  fallback="Set description to an empty string explicitly rather than removing the attribute. This gives the provider a concrete value to send to the API, preventing the refresh from overriding with the stale cached value. Tracked in PL-71852."
+/>
 
 ### Next steps
 
