@@ -8,8 +8,7 @@ keywords:
   - node network loss
   - packet loss
   - network partition
-  - tc
-  - netem
+  - network chaos
   - kubernetes node fault
 tags:
   - chaos-engineering
@@ -23,7 +22,7 @@ redirect_from:
 
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-Node network loss is a Kubernetes node-level chaos fault that drops a configurable percentage/number of packets on the network path serving a target node. Harness Chaos Engineering schedules a privileged helper pod (`harness/chaos-ddcr-faults`) on the node, which applies Linux traffic control (`tc`) rules using the `sch_netem` qdisc. The fault therefore affects every workload that shares the node's network stack: application pods, DaemonSets, kube-proxy, CNI agents, and the kubelet itself.
+Node network loss is a Kubernetes node-level chaos fault that drops a configurable percentage of packets on the network path serving a target node for a configurable duration. The fault affects every workload that shares the node's network stack: application pods, DaemonSets, kube-proxy, CNI agents, and the kubelet itself.
 
 Use this fault to simulate a node becoming a lossy network neighbor: a flapping NIC, an overloaded top-of-rack switch, a misconfigured CNI overlay, or an unhealthy underlay route.
 
@@ -49,8 +48,8 @@ Run this fault when you want to answer concrete questions like:
 ## Prerequisites
 
 - **Kubernetes version:** 1.21 or later. Go to [What's supported](/docs/chaos-engineering/whats-supported) to confirm distribution support.
-- **Kernel module:** The `sch_netem` (also referred to as `netem`) kernel module is loadable on every node you intend to target. It is in-tree and ships with most distribution kernels. On minimal or hardened images, confirm it is available with `lsmod | grep sch_netem` or `modprobe sch_netem`. On RHEL-family hosts, install `kernel-modules-extra` if the module is missing.
-- **Privileged pods allowed:** The cluster lets you schedule privileged pods with `NET_ADMIN` and `SYS_ADMIN` capabilities in the chaos namespace. GKE Autopilot and other locked-down distributions reject these. Go to [Limitations](#limitations) to review unsupported configurations.
+- **Standard Linux networking modules:** Target nodes run a Linux kernel that includes the standard networking modules (present by default on most distributions). On minimal or hardened images, your platform team may need to install `kernel-modules-extra` (RHEL-family) or the equivalent package.
+- **Privileged pods allowed:** The cluster lets you schedule privileged pods with `NET_ADMIN` and `SYS_ADMIN` capabilities in the chaos namespace. GKE Autopilot supports this fault but requires the one-time setup in [Chaos on GKE Autopilot](/docs/resilience-testing/chaos-testing/gke-autopilot); other locked-down distributions may need similar exemptions.
 - **Node readiness:** Target nodes are in `Ready` state before the fault is launched. The fault reports a precheck failure otherwise.
 - **Chaos infrastructure isolation:** The target nodes are not single points of failure for the chaos infrastructure itself. If chaos control-plane pods are scheduled on the node you are about to partition, the experiment loses the ability to observe and roll back.
 
@@ -67,6 +66,7 @@ Run this fault when you want to answer concrete questions like:
 | Rancher | Supported |
 | VMware Tanzu | Supported |
 | Self-managed Kubernetes (CNCF-certified) | Supported |
+| GKE Autopilot | Supported with [Autopilot setup](/docs/resilience-testing/chaos-testing/gke-autopilot) |
 
 ---
 
@@ -76,8 +76,8 @@ The fault runs under the chaos infrastructure's service account. The account mus
 
 | Resource (`apiGroup`) | Verbs | Why it is needed |
 | --- | --- | --- |
-| `pods` (`""`) | `get`, `list`, `create`, `delete`, `deletecollection`, `patch`, `update` | Create the helper pod that applies `tc` rules on the target node |
-| `pods/log` (`""`) | `get`, `list`, `watch` | Stream logs from the helper pod for status and debugging |
+| `pods` (`""`) | `get`, `list`, `create`, `delete`, `deletecollection`, `patch`, `update` | Run the chaos pod that injects the fault on the target node |
+| `pods/log` (`""`) | `get`, `list`, `watch` | Stream chaos pod logs for status and debugging |
 | `events` (`""`) | `get`, `list`, `create`, `patch`, `update` | Record fault progress as Kubernetes events |
 | `nodes` (`""`) | `get`, `list` | Discover target nodes and validate selectors |
 | `jobs` (`batch`) | `get`, `list`, `create`, `delete`, `deletecollection` | Run the chaos job that drives the fault |
@@ -130,7 +130,9 @@ When `DESTINATION_IPS` and `DESTINATION_HOSTS` are both empty, every flow leavin
 
 ## Fault execution in brief
 
-Because loss is applied at the node's network path, every connection passing through it is affected unless you scope it with `DESTINATION_IPS` or `DESTINATION_HOSTS`. The traffic paths most commonly impacted are:
+Configures the target node's network interface to drop a specified percentage of packets for the configured duration, optionally scoped to certain destination IPs or hosts so other traffic passes through unaffected.
+
+Because loss is applied at the node's network path, every connection passing through it is affected unless you scope it. The traffic paths most commonly impacted are:
 
 | Path | What is affected |
 | --- | --- |
@@ -171,25 +173,9 @@ A useful experiment captures signals from three layers. Attach [resilience probe
 
 ## Verify the fault execution effect
 
-While the experiment is running, confirm that loss is actually being injected. From a workstation with `kubectl` access:
+While the experiment is running, confirm loss is reaching the node:
 
-1. **Confirm the helper pod is on the target node.**
-
-   ```bash
-   kubectl get pods -n <chaos-namespace> -o wide | grep node-network-loss-helper
-   ```
-
-   The pod's `NODE` column must match the target node and its status must be `Running`.
-
-2. **Inspect the active `tc` rules on the target node** by execing into the helper pod:
-
-   ```bash
-   kubectl exec -n <chaos-namespace> <helper-pod-name> -- tc qdisc show dev eth0
-   ```
-
-   You should see a `netem` qdisc with `loss <percentage>%`. If the output shows only `pfifo_fast`, the rule has not been applied yet or `NETWORK_INTERFACE` does not match the node's actual interface name.
-
-3. **Confirm loss from outside the node.** From another pod (on a different node):
+1. **Confirm loss from outside the node.** From another pod (on a different node):
 
    ```bash
    kubectl run -it --rm netshoot --image=nicolaka/netshoot --restart=Never -- \
@@ -198,7 +184,7 @@ While the experiment is running, confirm that loss is actually being injected. F
 
    Loss should be close to the configured `NETWORK_PACKET_LOSS_PERCENTAGE`. Tail latency from successful packets stays close to baseline; that is the signature that distinguishes loss from latency injection.
 
-4. **Watch node and pod state.**
+2. **Watch node and pod state.**
 
    ```bash
    kubectl get node <target-node> -w
@@ -211,7 +197,7 @@ While the experiment is running, confirm that loss is actually being injected. F
 
 ## Recovery and cleanup
 
-- **End of duration:** When `TOTAL_CHAOS_DURATION` elapses, the helper pod removes the `tc` qdisc it created and terminates. Packet flow returns to baseline within a few seconds. There is no node reboot.
+- **End of duration:** When `TOTAL_CHAOS_DURATION` elapses, the loss configuration is removed automatically and packet flow returns to baseline within a few seconds. There is no node reboot.
 - **Node Ready state:** Once the kubelet successfully renews its lease, the controller-manager removes the `node.kubernetes.io/unreachable:NoExecute` taint and the node transitions back to `Ready`. New pods can be scheduled on it again.
 - **Evicted Deployment pods:** Pods that were evicted during the fault are not automatically rescheduled back to the recovered node. They remain on the replacement nodes the scheduler placed them on.
 - **Terminating StatefulSet pods:** Force-delete to release the StatefulSet identity slot:
@@ -220,15 +206,8 @@ While the experiment is running, confirm that loss is actually being injected. F
   kubectl delete pod <pod-name> -n <namespace> --force --grace-period=0
   ```
 
-- **If the helper pod is killed mid-experiment:** The `tc` rule may not be removed. To clean it up manually, exec into a privileged pod on the affected node (or use a debug pod with `kubectl debug node/<node-name>`) and run:
-
-  ```bash
-  tc qdisc del dev <interface> root
-  ```
-
-  Then verify with `tc qdisc show dev <interface>`.
-
-- **Abort the experiment early:** Stop the experiment from the Harness Chaos Studio. The helper pod terminates and runs its cleanup hook.
+- **If automated cleanup did not complete:** Reboot the affected node (or have your admin reset its network configuration). The fault does not persist across a node reboot.
+- **Abort the experiment early:** Stop the experiment from the Harness Chaos Studio. Cleanup runs before the chaos pod exits.
 
 ---
 
@@ -236,38 +215,38 @@ While the experiment is running, confirm that loss is actually being injected. F
 
 This fault is not appropriate in the following scenarios:
 
-- **Serverless Kubernetes (EKS Fargate, ACI virtual nodes, GKE Autopilot):** Fargate and ACI virtual nodes do not expose real nodes, container runtime sockets, or the ability to schedule privileged pods on them. GKE Autopilot blocks the security context this fault requires.
-- **Windows nodes:** Linux `tc`/`netem` is not available. Use the equivalent [Windows network fault](/docs/chaos-engineering/faults/chaos-faults/windows/windows-network-blackhole-chaos) on Windows-only workloads.
-- **Single-node clusters or co-located chaos infrastructure:** If the chaos infrastructure pods (ddci and fault-specific pods) live on the node you are about to partition, the experiment loses observability and may fail to roll back. Schedule chaos infrastructure on a node outside the blast radius.
+- **Serverless Kubernetes (EKS Fargate, ACI virtual nodes):** These platforms do not expose real nodes or allow the privileged access this fault needs. GKE Autopilot is supported once the one-time setup in [Chaos on GKE Autopilot](/docs/resilience-testing/chaos-testing/gke-autopilot) is in place.
+- **Windows nodes:** This fault is supported on Linux nodes only. Use the equivalent [Windows network fault](/docs/chaos-engineering/faults/chaos-faults/windows/windows-network-blackhole-chaos) on Windows-only workloads.
+- **Single-node clusters or co-located chaos infrastructure:** If the chaos infrastructure pods live on the node you are about to partition, the experiment loses observability and may fail to roll back. Schedule chaos infrastructure on a node outside the blast radius.
 - **Pods using `hostNetwork: true`:** These bypass per-pod network namespaces. Loss is still applied to the node, but observed behavior depends on how the pod uses the host stack.
-- **Hardened kernels without `sch_netem`:** Some custom or stripped distribution kernels omit the netem qdisc. The fault fails fast with `Cannot find device ... Error: Specified qdisc kind is unknown.`
+- **Hardened or stripped kernels:** Some custom distribution kernels omit the networking modules this fault depends on, and the fault fails immediately on those nodes. On RHEL-family hosts, install `kernel-modules-extra` and reboot to restore the missing modules.
 
 ---
 
 ## Troubleshooting
 
 <Troubleshoot
-  issue="Node network loss helper pod stays Pending or never schedules on the target node in Harness Chaos Engineering"
+  issue="Node network loss experiment stays Pending or never starts in Harness Chaos Engineering"
   mode="docs"
-  fallback="Check the helper pod with kubectl describe pod -n <chaos-namespace>. The most common causes are taints on the target node that the helper does not tolerate, insufficient CPU or memory on the node, or a PodSecurity admission policy blocking privileged pods. Add the required tolerations to the experiment, free resources on the node, or run the experiment in a namespace with privileged Pod Security level."
+  fallback="Inspect the chaos pods in the experiment namespace with kubectl describe pod -n <chaos-namespace>. The most common causes are taints on the target node, insufficient CPU or memory on the node, or a PodSecurity admission policy blocking privileged pods. Add the required tolerations to the experiment, free resources on the node, or run the experiment in a namespace with privileged Pod Security level."
 />
 
 <Troubleshoot
-  issue="Node network loss fails immediately with tc 'Specified qdisc kind is unknown' or 'Cannot find device' in Harness Chaos Engineering"
+  issue="Node network loss fails immediately on hardened nodes or with an unknown interface"
   mode="docs"
-  fallback="The sch_netem kernel module is missing or the NETWORK_INTERFACE value does not match a real interface on the node. SSH to the node and run lsmod | grep sch_netem and ip -br link to confirm. On RHEL-family hosts install kernel-modules-extra and reboot; otherwise set NETWORK_INTERFACE to the actual interface name (for example ens5 on EKS, eth0 on most others)."
+  fallback="Either the required Linux networking kernel modules are missing on the target node, or the NETWORK_INTERFACE value does not match a real interface on the node. SSH to the node and run ip -br link to list interfaces. On RHEL-family hosts install kernel-modules-extra and reboot to restore the missing modules; otherwise set NETWORK_INTERFACE to the actual interface name (for example ens5 on EKS, eth0 on most others)."
 />
 
 <Troubleshoot
   issue="Node network loss fault runs but no packet loss is observed on the target node"
   mode="docs"
-  fallback="Three common causes: (1) DESTINATION_HOSTS resolves to IPs not on the shaped path so loss never matches, (2) the workload you are probing routes over a different interface than NETWORK_INTERFACE, or (3) traffic stays intra-node and never crosses the shaped interface. Exec into the helper pod and run tc qdisc show dev <interface> to confirm the netem rule is active, and probe loss from a pod on a different node."
+  fallback="Three common causes: (1) DESTINATION_HOSTS resolves to IPs not on the shaped path so loss never matches, (2) the workload you are probing routes over a different interface than NETWORK_INTERFACE, or (3) traffic stays intra-node and never crosses the shaped interface. Probe loss with ping from a pod on a different node to confirm whether matched flows are degrading."
 />
 
 <Troubleshoot
   issue="Node remains NotReady after node-network-loss completes in Harness Chaos Engineering"
   mode="docs"
-  fallback="The helper pod likely did not run its cleanup hook. Exec a debug pod onto the node with kubectl debug node/<node-name> -it --image=ubuntu and run tc qdisc del dev <interface> root, then tc qdisc show <interface> to confirm only pfifo_fast remains. The node returns to Ready once the kubelet successfully renews its lease."
+  fallback="Automated cleanup likely did not complete. Reboot the affected node to reset its network state. The node returns to Ready once the kubelet successfully renews its lease. If this recurs, capture the chaos pod logs from the experiment namespace and share them with Harness support."
 />
 
 ---
@@ -275,6 +254,6 @@ This fault is not appropriate in the following scenarios:
 ## Related faults
 
 - [Node network latency](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/node-network-latency): Same delivery mechanism, but injects delay instead of drops. Use it to test timeouts without provoking the unreachable-node path.
-- [Pod network loss](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-network-loss): Scopes the impact to a single pod's network namespace rather than the whole node.
+- [Pod network loss](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-network-loss): Scopes the impact to a single pod's network path rather than the whole node.
 - [Node restart](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/node-restart) and [Node drain](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/node-drain): Test planned and unplanned node loss, which is the failure mode network loss eventually escalates into.
 - [Common node fault tunables](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/common-tunables-for-node-faults): Shared environment variables for selecting target nodes across node faults.

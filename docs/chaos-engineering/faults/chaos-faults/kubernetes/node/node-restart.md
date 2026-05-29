@@ -22,7 +22,7 @@ redirect_from:
 
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-Node restart is a Kubernetes node-level chaos fault that reboots a target node. Harness Chaos Engineering connects to the node over SSH (using a private key supplied via a Kubernetes secret) and runs a configurable reboot command, by default `sudo systemctl reboot`. The kubelet stops, the node's lease expires, the controller-manager marks the node `NotReady`, and the taint manager eventually evicts the pods. After the node boots back up, the kubelet rejoins the cluster and the node becomes `Ready` again.
+Node restart is a Kubernetes node-level chaos fault that reboots a target node by invoking the configured `REBOOT_COMMAND` on it. The kubelet stops, the node's lease expires, the controller-manager marks the node `NotReady`, and the taint manager eventually evicts the pods. After the node boots back up, the kubelet rejoins the cluster and the node becomes `Ready` again.
 
 Use this fault to simulate sudden node loss: a power event, an unexpected reboot triggered by a kernel update, a hypervisor failover, or a misbehaving daemon that crashes the kernel.
 
@@ -75,6 +75,7 @@ Run this fault when you want to answer concrete questions like:
 | Rancher | Supported |
 | VMware Tanzu | Supported |
 | Self-managed Kubernetes (CNCF-certified) | Supported |
+| GKE Autopilot | Not supported (Autopilot does not expose nodes you can SSH into; only Node Network Loss and Node Network Latency are allowlisted, see [Chaos on GKE Autopilot](/docs/resilience-testing/chaos-testing/gke-autopilot)) |
 
 This fault requires SSH access to the node. Managed environments without SSH access (for example GKE Autopilot, EKS Fargate, ACI virtual nodes) cannot run this fault directly.
 
@@ -86,8 +87,8 @@ The fault runs under the chaos infrastructure's service account. Because the reb
 
 | Resource (`apiGroup`) | Verbs | Why it is needed |
 | --- | --- | --- |
-| `pods` (`""`) | `get`, `list`, `create`, `delete`, `deletecollection`, `patch`, `update` | Create the helper pod that opens the SSH session |
-| `pods/log` (`""`) | `get`, `list`, `watch` | Stream logs from the helper pod for status and debugging |
+| `pods` (`""`) | `get`, `list`, `create`, `delete`, `deletecollection`, `patch`, `update` | Run the chaos pod that opens the SSH session and reboots the node |
+| `pods/log` (`""`) | `get`, `list`, `watch` | Stream chaos pod logs for status and debugging |
 | `secrets` (`""`) | `get`, `list` | Read the SSH private key that Harness Secret Manager projects into the chaos namespace |
 | `events` (`""`) | `get`, `list`, `create`, `patch`, `update` | Record fault progress as Kubernetes events |
 | `nodes` (`""`) | `get`, `list` | Discover target nodes and validate selectors |
@@ -139,11 +140,13 @@ This fault does not cordon, drain, or respect PDBs. Pods on the target node are 
 
 ## Fault execution in brief
 
-The reboot is sudden from the cluster's perspective. The pod eviction path is the same as a network partition (taint manager + `tolerationSeconds`), but the cause is a missing kubelet rather than a missing network.
+Reboots the target node by issuing a configurable restart command, simulating a sudden host failure so the cluster's failover, rescheduling, and persistent-storage reattachment paths are exercised.
+
+The reboot is sudden from the cluster's perspective. The pod eviction path is the same as a network partition (taint manager + `tolerationSeconds`), but the cause is a missing kubelet rather than a missing network:
 
 | Stage | What happens |
 | --- | --- |
-| SSH and reboot | Helper opens SSH, runs `REBOOT_COMMAND`, returns. The node starts shutting down. |
+| Reboot | The target node starts shutting down. |
 | Lease expiry | Kubelet stops renewing the node lease. After `node-monitor-grace-period` (default 40 to 50 seconds), the controller-manager flips the node to `Ready=Unknown` and applies the `node.kubernetes.io/unreachable:NoExecute` taint. |
 | Pod eviction | Pods tolerate the taint for `tolerationSeconds: 300` by default. After that, the taint manager evicts them. Deployment pods reschedule on other Ready nodes. StatefulSet pods that share PV identity stay `Terminating` until the node rejoins or you force-delete. |
 | Node returns | When the node boots and the kubelet renews its lease, the controller-manager removes the taint and the node is `Ready` again. |
@@ -174,17 +177,9 @@ A useful experiment captures signals from three layers. Attach [resilience probe
 
 ## Verify the fault execution effect
 
-While the experiment is running, confirm that the reboot is actually happening. From a workstation with `kubectl` access:
+While the experiment is running, confirm that the reboot is actually happening:
 
-1. **Confirm the helper pod started and issued the reboot.**
-
-   ```bash
-   kubectl logs -n <chaos-namespace> <helper-pod-name>
-   ```
-
-   Look for the SSH connection log and the `REBOOT_COMMAND` execution.
-
-2. **Watch the node transition to `NotReady`.**
+1. **Watch the node transition to `NotReady`.**
 
    ```bash
    kubectl get node <target-node> -w

@@ -9,8 +9,6 @@ redirect_from:
 
 The Pod Application Function Error fault injects an error into a specified function of an application running within a Kubernetes pod. This fault helps assess the application's resilience to failures at the function level.
 
-![Pod Application Function Error](./static/images/pod-cpu-hog.png)
-
 ### Use cases
 
 - Simulate third-party API failure by injecting errors into wrapper functions.

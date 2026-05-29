@@ -21,7 +21,7 @@ redirect_from:
 
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-Node I/O stress is a Kubernetes node-level chaos fault that drives sustained disk I/O pressure on a target node. Harness Chaos Engineering schedules a privileged helper pod (`harness/chaos-ddcr-faults`) on the node, which runs Linux `stress-ng` I/O workers that read, write, and sync files on the node's filesystem. Every workload that touches the disk competes for bandwidth and IOPS: application pods writing logs or data, the kubelet writing its own logs and lease state, the container runtime pulling images, and (on single-disk clusters) etcd.
+Node I/O stress is a Kubernetes node-level chaos fault that drives sustained disk I/O pressure on a target node for a configurable duration. Every workload that touches the disk competes for bandwidth and IOPS: application pods writing logs or data, the kubelet writing its own logs and lease state, the container runtime pulling images, and (on single-disk clusters) etcd.
 
 Use this fault to simulate a disk-saturated neighbor: a misbehaving log shipper, an ETL job writing temp files faster than they can be flushed, or a node whose underlying disk has hit its provisioned IOPS ceiling.
 
@@ -47,10 +47,10 @@ Run this fault when you want to answer concrete questions like:
 ## Prerequisites
 
 - **Kubernetes version:** 1.21 or later. Go to [What's supported](/docs/chaos-engineering/whats-supported) to confirm distribution support.
-- **Privileged pods allowed:** The cluster lets you schedule privileged pods in the chaos namespace. The helper pod writes against the host filesystem.
-- **Container runtime socket:** The chaos infrastructure has access to the container runtime socket on the target nodes. The default `containerd` socket path is mounted automatically.
+- **Privileged pods allowed:** The cluster lets you schedule privileged pods in the chaos namespace. The fault needs to write against the host filesystem.
+- **Container runtime access:** The chaos infrastructure can reach the container runtime on the target nodes. The default `containerd` socket path is mounted automatically.
 - **Node readiness:** Target nodes are in `Ready` state before the fault is launched. The fault reports a precheck failure otherwise.
-- **Sufficient free disk space:** The helper writes large temp files. If you set `FILESYSTEM_UTILIZATION_BYTES` higher than the node has free, the fault may fill the disk and trigger unintended eviction. Inspect free space with `kubectl describe node <name>` (look at `ephemeral-storage`) before tuning.
+- **Sufficient free disk space:** The fault writes large temp files. If you set `FILESYSTEM_UTILIZATION_BYTES` higher than the node has free, the fault may fill the disk and trigger unintended eviction. Inspect free space with `kubectl describe node <name>` (look at `ephemeral-storage`) before tuning.
 - **Workloads have ephemeral-storage requests and limits:** Without ephemeral-storage requests, the kubelet cannot rank pods for eviction by ephemeral-storage usage.
 
 ---
@@ -66,6 +66,7 @@ Run this fault when you want to answer concrete questions like:
 | Rancher | Supported |
 | VMware Tanzu | Supported |
 | Self-managed Kubernetes (CNCF-certified) | Supported |
+| GKE Autopilot | Not supported (Autopilot does not expose the node-level access this fault requires; only Node Network Loss and Node Network Latency are allowlisted, see [Chaos on GKE Autopilot](/docs/resilience-testing/chaos-testing/gke-autopilot)) |
 
 ---
 
@@ -75,8 +76,8 @@ The fault runs under the chaos infrastructure's service account. The account mus
 
 | Resource (`apiGroup`) | Verbs | Why it is needed |
 | --- | --- | --- |
-| `pods` (`""`) | `get`, `list`, `create`, `delete`, `deletecollection`, `patch`, `update` | Create the helper pod that runs the I/O workers on the target node |
-| `pods/log` (`""`) | `get`, `list`, `watch` | Stream logs from the helper pod for status and debugging |
+| `pods` (`""`) | `get`, `list`, `create`, `delete`, `deletecollection`, `patch`, `update` | Run the chaos pod that injects the fault on the target node |
+| `pods/log` (`""`) | `get`, `list`, `watch` | Stream chaos pod logs for status and debugging |
 | `events` (`""`) | `get`, `list`, `create`, `patch`, `update` | Record fault progress and any pod evictions as Kubernetes events |
 | `nodes` (`""`) | `get`, `list` | Discover target nodes and validate selectors |
 | `jobs` (`batch`) | `get`, `list`, `create`, `delete`, `deletecollection` | Run the chaos job that drives the fault |
@@ -95,9 +96,9 @@ Configure the following fault parameters when you add Node I/O stress to an expe
 | --- | --- | --- |
 | `FILESYSTEM_UTILIZATION_PERCENTAGE` | Disk to consume as a percentage of free space on the node's filesystem. | `10` |
 | `FILESYSTEM_UTILIZATION_BYTES` | Disk to consume as an absolute value in GB. Mutually exclusive with `FILESYSTEM_UTILIZATION_PERCENTAGE`. | `""` |
-| `NUMBER_OF_WORKERS` | Number of I/O workers used to drive disk pressure. | `4` |
-| `VM_WORKERS` | Number of VM workers used to drive memory churn alongside disk I/O. | `1` |
-| `CPU` | Number of CPU cores used by the stress workers (helps keep the helper from getting throttled). | `1` |
+| `NUMBER_OF_WORKERS` | Number of parallel writers used to drive disk pressure. Higher values produce more concurrent I/O. | `4` |
+| `VM_WORKERS` | Number of parallel memory writers used to drive memory churn alongside disk I/O. | `1` |
+| `CPU` | CPU cores allocated to the fault on the target node. Raise this if you observe the fault itself getting CPU-starved. | `1` |
 | `TOTAL_CHAOS_DURATION` | Duration of the fault in seconds. | `60` |
 
 **Targeting**
@@ -125,7 +126,9 @@ Tunables that apply to every chaos fault are documented in [common tunables for 
 
 ## Fault execution in brief
 
-I/O pressure has two distinct failure shapes depending on how you tune it:
+Drives sustained disk I/O against the target node's filesystem for the configured duration, consuming a specified percentage of free space, so workloads sharing the node experience I/O contention and storage-latency spikes.
+
+The fault has two distinct failure shapes depending on how you tune it:
 
 | Tuning | Primary failure mode |
 | --- | --- |
@@ -158,26 +161,18 @@ A useful experiment captures signals from three layers. Attach [resilience probe
 
 ## Verify the fault execution effect
 
-While the experiment is running, confirm that disk pressure is actually being applied. From a workstation with `kubectl` access:
+While the experiment is running, confirm that disk pressure is reaching the node:
 
-1. **Confirm the helper pod is on the target node.**
-
-   ```bash
-   kubectl get pods -n <chaos-namespace> -o wide | grep node-io-stress-helper
-   ```
-
-   The pod's `NODE` column must match the target node and its status must be `Running`.
-
-2. **Watch disk I/O on the node.** From a privileged debug pod on the affected node:
+1. **Watch disk I/O on the node.** From a privileged debug pod on the affected node:
 
    ```bash
    kubectl debug node/<target-node> -it --image=ubuntu -- chroot /host \
      bash -c "iostat -xz 2 5"
    ```
 
-   `%util` should approach 100% and `await` should rise. If both are near baseline, the workers did not start or the helper is constrained by its own resource limits.
+   `%util` should approach 100% and `await` should rise. If both are near baseline, the fault is not driving I/O on this device.
 
-3. **Watch for eviction events (when running with `FILESYSTEM_UTILIZATION_BYTES`).**
+2. **Watch for eviction events (when running with `FILESYSTEM_UTILIZATION_BYTES`).**
 
    ```bash
    kubectl get events --field-selector reason=Evicted --all-namespaces -w
@@ -185,25 +180,17 @@ While the experiment is running, confirm that disk pressure is actually being ap
 
    Expect events with reason `Evicted` and a message referencing `DiskPressure` or `ephemeral-storage` once the disk fills past the threshold.
 
-4. **Measure application write latency.** Open the dashboard for any disk-bound service on the affected node and confirm write latency has stepped up. If you do not see the step, the application's writes may go to a separate PV that has its own queue.
+3. **Measure application write latency.** Open the dashboard for any disk-bound service on the affected node and confirm write latency has stepped up. If you do not see the step, the application's writes may go to a separate PV that has its own queue.
 
 ---
 
 ## Recovery and cleanup
 
-- **End of duration:** When `TOTAL_CHAOS_DURATION` elapses, the helper pod removes its temp files and terminates. Disk I/O returns to baseline within a few seconds.
+- **End of duration:** When `TOTAL_CHAOS_DURATION` elapses, the fault releases the disk and removes its temp files. Disk I/O returns to baseline within a few seconds.
 - **Evicted pods reschedule:** Pods that were evicted during the fault are scheduled on other Ready nodes by the scheduler. They are not placed back on the recovered node automatically.
 - **Containers that crashed on write failures may need restart:** Applications that treat a `EIO` or `ENOSPC` as fatal may be in `CrashLoopBackOff`. Investigate logs and decide whether to retry or roll back.
-- **If the helper pod is killed mid-experiment:** The temp files it created may remain on the node's filesystem. Clean them up with a debug pod:
-
-  ```bash
-  kubectl debug node/<target-node> -it --image=ubuntu -- chroot /host \
-    bash -c "find /tmp -name 'stress-ng-*' -mtime -1 -delete"
-  ```
-
-  Then confirm with `df -h /` that free space has returned to baseline.
-
-- **Abort the experiment early:** Stop the experiment from Harness Chaos Studio. The helper pod terminates and cleans up its temp files.
+- **If automated cleanup did not complete:** Temp files in `/tmp` on the affected node may need to be removed. Reboot the node, or have your admin clean `/tmp` and confirm with `df -h /` that free space has returned to baseline.
+- **Abort the experiment early:** Stop the experiment from Harness Chaos Studio. Cleanup runs before the chaos pod exits.
 
 ---
 
@@ -211,9 +198,9 @@ While the experiment is running, confirm that disk pressure is actually being ap
 
 This fault is not appropriate in the following scenarios:
 
-- **Serverless Kubernetes (EKS Fargate, ACI virtual nodes, GKE Autopilot):** Fargate and ACI virtual nodes do not expose real nodes or allow privileged pods to write at the host level. GKE Autopilot blocks the privileged security context this fault requires.
-- **Windows nodes:** The `stress-ng` utility this fault relies on is Linux-only.
-- **Single-node clusters or co-located chaos infrastructure:** If the chaos infrastructure pods (ddci and fault-specific pods) live on the saturated node and depend on disk writes, the experiment may lose observability. Schedule chaos infrastructure on a node outside the blast radius.
+- **Serverless Kubernetes (EKS Fargate, ACI virtual nodes, GKE Autopilot):** These platforms do not expose real nodes or allow the privileged access this fault needs.
+- **Windows nodes:** This fault is supported on Linux nodes only.
+- **Single-node clusters or co-located chaos infrastructure:** If the chaos infrastructure pods live on the saturated node and depend on disk writes, the experiment may lose observability. Schedule chaos infrastructure on a node outside the blast radius.
 - **Networked storage only:** If your workloads write exclusively to networked persistent volumes (EBS, NFS, Ceph), local disk pressure may produce little observable signal at the application layer. Use a workload that writes locally, or stress the storage backend directly.
 - **Production etcd on shared disks:** If etcd shares a disk with workloads in production, this fault can destabilize the control plane. Confirm topology before running.
 
@@ -222,15 +209,15 @@ This fault is not appropriate in the following scenarios:
 ## Troubleshooting
 
 <Troubleshoot
-  issue="Node I/O stress helper pod stays Pending or never schedules on the target node in Harness Chaos Engineering"
+  issue="Node I/O stress experiment stays Pending or never starts in Harness Chaos Engineering"
   mode="docs"
-  fallback="Check the helper pod with kubectl describe pod -n <chaos-namespace>. The most common causes are taints on the target node that the helper does not tolerate, insufficient ephemeral storage to schedule the helper, or a PodSecurity admission policy blocking privileged pods. Add the required tolerations, free disk space on the node, or run the experiment in a namespace with privileged Pod Security level."
+  fallback="Inspect the chaos pods in the experiment namespace with kubectl describe pod -n <chaos-namespace>. The most common causes are taints on the target node, insufficient ephemeral storage to schedule the chaos pod, or a PodSecurity admission policy blocking privileged pods. Add the required tolerations, free disk space on the node, or run the experiment in a namespace with privileged Pod Security level."
 />
 
 <Troubleshoot
   issue="Node I/O stress runs but disk metrics show no change on the target node"
   mode="docs"
-  fallback="Either the stress-ng workers failed to start or the helper pod is constrained by its own resource limits. Check the helper pod logs with kubectl logs -n <chaos-namespace> <helper-pod-name>. Confirm with iostat on the node that the helper's PID is the one driving I/O. Increase NUMBER_OF_WORKERS if you need more pressure but the helper is running."
+  fallback="The fault may not be driving I/O on the disk you are measuring. Confirm with iostat on the node that the load is on the expected device, increase NUMBER_OF_WORKERS to drive more pressure, or check that the chaos pod is scheduled on the intended target node."
 />
 
 <Troubleshoot
@@ -246,9 +233,9 @@ This fault is not appropriate in the following scenarios:
 />
 
 <Troubleshoot
-  issue="Helper pod's temp files remain on the node after node-io-stress completes"
+  issue="Temp files remain on the node after node-io-stress completes"
   mode="docs"
-  fallback="The helper pod was killed before its cleanup hook ran (for example by an out-of-memory event or by the experiment being aborted). Use kubectl debug node/<target-node> -it --image=ubuntu -- chroot /host to enter the node, then find /tmp -name 'stress-ng-*' -mtime -1 -delete. Verify with df -h / that free space has returned to baseline."
+  fallback="Automated cleanup did not complete (for example because of an out-of-memory event or because the experiment was aborted). Reboot the affected node, or have your admin clean leftover temp files in /tmp on the node. Verify with df -h / that free space has returned to baseline."
 />
 
 ---

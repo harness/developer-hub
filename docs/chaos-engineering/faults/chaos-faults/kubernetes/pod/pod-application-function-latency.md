@@ -9,8 +9,6 @@ redirect_from:
 
 The Pod Application Function Latency fault introduces artificial delay into a specified function of an application running within a Kubernetes pod. This helps evaluate the application's resilience to function-level latency and performance degradation.
 
-![Pod Application Function Latency](./static/images/pod-cpu-hog.png)
-
 ### Use cases
 
 - Simulate slow function execution to test application behavior under degraded performance.

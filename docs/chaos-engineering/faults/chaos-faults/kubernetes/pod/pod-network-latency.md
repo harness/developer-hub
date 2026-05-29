@@ -1,493 +1,250 @@
 ---
 id: pod-network-latency
 title: Pod network latency
+sidebar_label: Pod Network Latency
+description: Add a configurable delay to packets on a target Kubernetes pod's network path to test timeout, retry, and tail-latency behavior of upstream and downstream calls.
+keywords:
+  - chaos engineering
+  - pod network latency
+  - jitter
+  - network chaos
+  - kubernetes pod fault
+tags:
+  - chaos-engineering
+  - pod-faults
+  - network-chaos
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-latency
-- /docs/chaos-engineering/chaos-faults/kubernetes/pod-network-latency
-- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-network-latency
+  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-latency
+  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-network-latency
+  - /docs/chaos-engineering/chaos-faults/kubernetes/pod-network-latency
 ---
 
-Pod network latency is a Kubernetes pod-level chaos fault that introduces latency (delay) to a specific container. This fault:
-- Initiates a traffic control (tc) process with netem rules to add ingress/egress delays.
-- Degrades the network without marking the pod as unhealthy or unworthy of traffic by kube-proxy (unless there is a liveness probe that measures the latency and restarts (or crashes) the container).
-- Creates issues with microservice communication across the services can be resolved by using middleware that switches the traffic based on certain SLOs or performance parameters.
-  - Such issues can also be resolved by setting up alerts and notifications to highlight a degradation, so that they can be addressed, and rectified. A
-  - Issues can be resolved by understanding the impact of the failure and determining the last point before degradation in the application stack.
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-![Pod Network Latency](./static/images/pod-network-latency.png)
+Pod network latency is a Kubernetes pod-level chaos fault that adds a configurable delay to packets on the network path serving a target pod for a configurable duration. Only the selected pods experience the delay; other pods on the node and the node's host networking are unaffected. When the fault ends, the delay is removed and the pod's network returns to normal immediately.
 
-### Use cases
-Pod network latency:
-- Tests the application's resilience to lossy or flaky networks.
-- Determines how the application behaves when a delay occurs between your application and dependant services like message queue or database.
-- Simulates issues within the pod network or microservice communication across the services in different availability zones or regions.
-- Applications may stall or become corrupt while waiting endlessly for a data packet. This fault can reduce the blast radius to the traffic that you wish to test by specifying the IP addresses.
-- Simulates a consistently slow network connection between microservices (for example, cross-region connectivity between active-active peers of a given service or across the services or poor cni-performance in the inter-pod-communication network).
-- Simulates a jittery connection with transient latency spikes between microservices.
-- Simulates a slow response on specific third-party or dependent components or services.
-- Simulates a degraded data-plane of service-mesh infrastructure.
+Use this fault to test how a service behaves when one or more replicas suddenly experience high latency to upstream dependencies, peers, or callers: a cross-region failover, a degraded WAN, a slow database, or a queue backed up under load.
 
-### Permissions required
-
-Below is a sample Kubernetes role that defines the permissions required to execute the fault.
-
-```
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  namespace: hce
-  name: pod-network-latency
-spec:
-  definition:
-    scope: Cluster # Supports "Namespaced" mode too
-permissions:
-  - apiGroups: [""]
-    resources: ["pods"]
-    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
-  - apiGroups: [""]
-    resources: ["events"]
-    verbs: ["create", "get", "list", "patch", "update"]
-  - apiGroups: [""]
-    resources: ["pods/log"]
-    verbs: ["get", "list", "watch"]
-  - apiGroups: [""]
-    resources: ["deployments, statefulsets"]
-    verbs: ["get", "list"]
-  - apiGroups: [""]
-    resources: ["replicasets, daemonsets"]
-    verbs: ["get", "list"]
-  - apiGroups: [""]
-    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
-    verbs: ["create", "delete", "get", "list", "patch", "update"]
-  - apiGroups: ["batch"]
-    resources: ["jobs"]
-    verbs: ["create", "delete", "get", "list", "deletecollection"]
-```
-
-### Prerequisites
-- Kubernetes> 1.16
-- The application pods should be in the running state before and after injecting chaos.
-
-### Supported environments
-
-<table>
-  <tr>
-    <th> Platform </th>
-    <th> Support Status </th>
-  </tr>
-  <tr>
-    <td> GKE (Google Kubernetes Engine) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> EKS (Amazon Elastic Kubernetes Service) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> AKS (Azure Kubernetes Service) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> GKE Autopilot </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> Self-managed Kubernetes </td>
-    <td> ✅ Supported </td>
-  </tr>
-</table>
-
-### Optional tunables
-   <table>
-      <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> NETWORK_INTERFACE </td>
-        <td> Name of ethernet interface considered for shaping traffic. </td>
-        <td> For more information, go to <a href="#network-interface">network interface</a>.</td>
-      </tr>
-      <tr>
-        <td> TARGET_CONTAINER </td>
-        <td> Name of the container subject to the network latency. Applicable for <code>containerd</code> and <code>crio</code> runtimes.</td>
-        <td> With these runtimes, if the value is not provided, the fault injects chaos on the first container of the pod. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-container">target specific container</a>.</td>
-      </tr>
-      <tr>
-        <td> NETWORK_LATENCY </td>
-        <td> Delay (in milliseconds). Provide numeric values. </td>
-        <td> Defaults to 2000. For more information, go to <a href="#network-latency">network latency</a>.</td>
-      </tr>
-      <tr>
-        <td> CORRELATION </td>
-        <td> Degree of dependency between consecutive packets </td>
-        <td> It should be in range of (0,100]. For more information, go to <a href="#correlation">correlation</a>.</td>
-      </tr>
-      <tr>
-        <td> JITTER </td>
-        <td> Network jitter (in milliseconds). Provide numeric values. </td>
-        <td> Defaults to 0. For more information, go to <a href="#jitter">jitter</a>.</td>
-      </tr>
-      <tr>
-        <td> CONTAINER_RUNTIME </td>
-        <td> Container runtime interface for the cluster. </td>
-        <td> Default: containerd. Supports docker, containerd and crio. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-dns-error#container-runtime-and-socket-path">container runtime</a>. </td>
-      </tr>
-      <tr>
-        <td> SOCKET_PATH </td>
-        <td> Path of the containerd or crio or docker socket file. </td>
-        <td> Default: <code>/run/containerd/containerd.sock</code>. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-dns-error#container-runtime-and-socket-path">socket path</a>.</td>
-      </tr>
-      <tr>
-        <td> TOTAL_CHAOS_DURATION </td>
-        <td> Duration for which to insert chaos (in seconds). </td>
-        <td> Default: 60 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a>.</td>
-      </tr>
-      <tr>
-        <td> NODE_LABEL </td>
-        <td> Node label used to filter the target node if <code>TARGET_NODE</code> environment variable is not set. </td>
-        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
-      </tr>
-      <tr>
-        <td> TARGET_PODS </td>
-        <td> Comma-separated list of application pod names subject to pod network latency. </td>
-        <td> If not provided, the fault selects target pods randomly based on provided appLabels. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods"> target specific pods</a>.</td>
-      </tr>
-      <tr>
-        <td> DESTINATION_IPS </td>
-        <td> Comma-separated IP addresses and ports of the services or pods or the CIDR blocks (range of IPs) whose accessibility is impacted. Comma separated IP(S) or CIDR(S) can be provided.</td>
-        <td> If these values are not provided, the fault induces network chaos for all IPs or destinations. For more information, go to <a href="#destination-ips-and-destination-hosts">destination IPs</a>.</td>
-      </tr>
-      <tr>
-        <td> DESTINATION_HOSTS </td>
-        <td> DNS names or FQDN names of the services and ports whose accessibility is impacted. </td>
-        <td> If these values are not provided, the fault induces network chaos for all IPs or destinations or DESTINATION_IPS if already defined. For more information, go to <a href="#destination-ips-and-destination-hosts">destination hosts</a>.</td>
-      </tr>
-      <tr>
-        <td> SOURCE_PORTS </td>
-        <td> Ports of the target application, the accessibility to which is impacted </td>
-        <td> Comma separated port(s) can be provided. If not provided, it will induce network chaos for all ports. For more information, go to <a href="#source-and-destination-ports">source ports</a>.</td>
-      </tr>
-      <tr>
-        <td> DESTINATION_PORTS </td>
-        <td> Ports of the destination services or pods or the CIDR blocks(range of IPs), the accessibility to which is impacted </td>
-        <td> Comma separated port(s) can be provided. If not provided, it will induce network chaos for all ports. For more information, go to <a href="#source-and-destination-ports">destination ports</a>.</td>
-      </tr>
-      <tr>
-        <td> PODS_AFFECTED_PERC </td>
-        <td> Percentage of total pods to target. Provide numeric values. </td>
-        <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage</a>.</td>
-      </tr>
-      <tr>
-        <td> RAMP_TIME </td>
-        <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a>.</td>
-      </tr>
-      <tr>
-        <td> LIB_IMAGE </td>
-        <td> Image used to inject chaos. </td>
-        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
-      </tr>
-      <tr>
-        <td> SEQUENCE </td>
-        <td> Sequence of chaos execution for multiple target pods. </td>
-        <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a>.</td>
-      </tr>
-    </table>
-
-:::tip
-If the environment variables `DESTINATION_HOSTS` or `DESTINATION_IPS` are left empty, the default behaviour is to target all hosts. To limit the impact on all the hosts, you can specify the IP addresses of the service (use commas to separate multiple values) or the DNS or the FQDN names of the services in `DESTINATION_HOSTS`.
+:::info Run your first experiment
+If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
 :::
 
-### Network latency
+---
 
-Network delay (in ms) injected into the target application. Tune it by using the `NETWORK_LATENCY` environment variable.
+## Use cases
 
-The following YAML snippet illustrates the use of this environment variable:
+Run this fault when you want to answer concrete questions like:
 
-[embedmd]: # "./static/manifests/pod-network-latency/network-latency.yaml yaml"
+- **Timeout and retry budgets:** When a downstream call takes 5 seconds instead of 50 ms, do clients honor sensible timeouts? Does the retry budget hold, or do callers amplify load?
+- **Cross-region latency simulation:** Before a multi-region migration, simulate inter-region latency and verify whether your read-after-write semantics still hold.
+- **Connection pool sizing:** Higher latency means more in-flight requests for the same throughput. Does the pool size up, or does the workload starve?
+- **Service mesh failover:** Does the mesh shift traffic away from the slow replica through outlier detection, or do the slow responses propagate?
+- **Probe sensitivity:** Are readiness and liveness probes resilient to short latency spikes, or do they oscillate the pod in and out of service?
 
-```yaml
-# it injects network-latency for the egress/ingress traffic
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: pod-network-latency
-      spec:
-        components:
-          env:
-            # network latency to be injected
-            - name: NETWORK_LATENCY
-              value: "2000" #in ms
-            - name: TOTAL_CHAOS_DURATION
-              value: "60"
-```
+---
 
-### Correlation
+## Prerequisites
 
-Degree of dependency between consecutive packets. Tune it by using the `CORRELATION` environment variable.
+- **Kubernetes version:** 1.21 or later. Go to [What's supported](/docs/chaos-engineering/whats-supported) to confirm distribution support.
+- **Target pods are Running:** The application pods you intend to target are in the `Running` state before the fault is launched.
+- **Privileged pods allowed:** The cluster lets you schedule privileged pods in the chaos namespace.
+- **Workload selector defined:** The chaos experiment knows the target workload by kind, namespace, and either names or labels.
 
-The following YAML snippet illustrates the use of this environment variable:
+---
 
-[embedmd]:# (./static/manifests/pod-network-latency/correlation.yaml yaml)
-```yaml
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: pod-network-latency
-    spec:
-      components:
-        env:
-        - name: CORRELATION
-          value: '100' #in percentage
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
-```
+## Supported environments
 
-### Destination IPs and destination hosts
+| Platform | Support status |
+| --- | --- |
+| Amazon EKS | Supported |
+| Azure AKS | Supported |
+| Google GKE | Supported |
+| Red Hat OpenShift | Supported |
+| Rancher | Supported |
+| VMware Tanzu | Supported |
+| Self-managed Kubernetes (CNCF-certified) | Supported |
+| GKE Autopilot | Supported with [Autopilot setup](/docs/resilience-testing/chaos-testing/gke-autopilot) |
+| EKS Fargate, ACI virtual nodes | Not supported (no access to container runtime sockets) |
 
-Default IPs and hosts whose traffic is interrupted due to the network faults. Tune it by using the `DESTINATION_IPS` and `DESTINATION_HOSTS` environment variabes, respectively.
+---
 
-- `DESTINATION_IPS`: It contains the IP addresses and ports of the services or pods or the CIDR blocks(range of IPs) whose accessibility is impacted.
-- `DESTINATION_HOSTS`: It contains the DNS names or FQDN names of the services and ports whose accessibility is impacted.
+## Permissions required
 
-<b>NOTE:</b> Ports can be specified by using a pipe (|) as a separator. While providing ports is optional, omitting them will affect all ports associated with the destination IPs and hosts.
+The fault runs under the chaos infrastructure's service account.
 
-The following YAML snippet illustrates the use of these environment variables:
+| Resource (`apiGroup`) | Verbs | Why it is needed |
+| --- | --- | --- |
+| `pods` (`""`) | `get`, `list`, `create`, `delete`, `deletecollection`, `patch`, `update` | Discover target pods and run the chaos pod on the same node |
+| `pods/log` (`""`) | `get`, `list`, `watch` | Stream chaos pod logs for status and debugging |
+| `deployments`, `statefulsets`, `replicasets`, `daemonsets` (`apps`) | `get`, `list` | Resolve the target workload to the pods it owns |
+| `events` (`""`) | `get`, `list`, `create`, `patch`, `update` | Record fault progress as Kubernetes events |
+| `jobs` (`batch`) | `get`, `list`, `create`, `delete`, `deletecollection` | Run the chaos job that drives the fault |
 
-[embedmd]: # "./static/manifests/pod-network-latency/destination-ips-and-hosts.yaml yaml"
+The default Harness chaos infrastructure service account already includes these permissions.
 
-```yaml
-# it injects the chaos for the ingress/egress traffic for specific ips/hosts
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: pod-network-latency
-      spec:
-        components:
-          env:
-            # supports comma separated destination ips
-            - name: DESTINATION_IPS
-              value: "8.8.8.8,192.168.5.6|80|8080"
-            # supports comma separated destination hosts
-            - name: DESTINATION_HOSTS
-              value: "nginx.default.svc.cluster.local|80,google.com"
-            - name: TOTAL_CHAOS_DURATION
-              value: "60"
-```
+---
 
-### Source and destination ports
+## Fault tunables
 
-By default, the network experiments disrupt traffic for all the source and destination ports. The interruption of specific port(s) can be tuned via `SOURCE_PORTS` and `DESTINATION_PORTS` ENV.
+Configure the following fault parameters when you add Pod network latency to an experiment in Chaos Studio. Defaults are shown for reference.
 
-- `SOURCE_PORTS`: It contains ports of the target application, the accessibility to which is impacted
-- `DESTINATION_PORTS`: It contains the ports of the destination services or pods or the CIDR blocks(range of IPs), the accessibility to which is impacted
+**Chaos parameters**
 
-Use the following example to tune this:
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `NETWORK_LATENCY` | Latency to add to each packet. Accepts Go duration strings such as `100ms`, `2s`, `500us`. | `"2s"` |
+| `JITTER` | Random variation around `NETWORK_LATENCY` in milliseconds. `0` means perfectly fixed delay. | `0` |
+| `CORRELATION` | Latency correlation as a percentage. `0` makes each packet's delay independent; higher values smooth the variation. | `""` |
+| `TOTAL_CHAOS_DURATION` | Duration of the fault in seconds. | `60` |
 
-[embedmd]:# (./static/manifests/pod-network-latency/source-and-destination-ports.yaml yaml)
-```yaml
-# it inject the chaos for the ingress/egress traffic for specific ports
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: pod-network-latency
-    spec:
-      components:
-        env:
-        # supports comma separated source ports
-        - name: SOURCE_PORTS
-          value: '80'
-        # supports comma separated destination ports
-        - name: DESTINATION_PORTS
-          value: '8080,9000'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
-```
+**Traffic filters**
 
-### Ignore source and destination ports
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `DESTINATION_IPS` | Comma-separated list of destination IPs. Latency applies only to packets headed to these IPs. Empty matches all destinations. | `""` |
+| `DESTINATION_HOSTS` | Comma-separated list of destination hostnames. The helper resolves them and adds the resolved IPs to the filter. | `""` |
+| `SOURCE_PORTS` | Comma-separated list of source ports on the target pod. Empty matches all source ports. | `""` |
+| `DESTINATION_PORTS` | Comma-separated list of destination ports. Empty matches all destination ports. | `""` |
+| `NETWORK_INTERFACE` | Network interface inside the target container's namespace. Almost always `eth0` for standard CNI plugins. | `eth0` |
 
-By default, the network experiments disrupt traffic for all the source and destination ports. The specific ports can be ignore via `SOURCE_PORTS` and `DESTINATION_PORTS` ENV.
+**Targeting**
 
-- `SOURCE_PORTS`: Provide the comma separated source ports preceded by `!`, that you'd like to ignore from the chaos.
-- `DESTINATION_PORTS`: Provide the comma separated destination ports preceded by `!` , that you'd like to ignore from the chaos.
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `TARGET_PODS` | Comma-separated list of pod names to target. Empty selects from the workload's pods using `POD_AFFECTED_PERCENTAGE`. | `""` |
+| `TARGET_CONTAINER` | Container in the pod whose network namespace to enter. Empty targets the first container in the pod spec. | `""` |
+| `NODE_LABEL` | Label selector to filter target pods by the node they run on. Empty disables node-based filtering. | `""` |
+| `POD_AFFECTED_PERCENTAGE` | Percentage of the workload's pods to target. `0` means one pod. | `0` |
+| `SEQUENCE` | When multiple pods are targeted, inject `parallel` (all at once) or `serial` (one after another). | `parallel` |
 
-Use the following example to tune this:
+**Runtime and helper**
 
-[embedmd]:# (./static/manifests/pod-network-latency/ignore-source-and-destination-ports.yaml yaml)
-```yaml
-# ignore the source and destination ports
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: pod-network-latency
-    spec:
-      components:
-        env:
-        # it will ignore 80 and 8080 source ports
-        - name: SOURCE_PORTS
-          value: '!80,8080'
-        # it will ignore 8080 and 9000 destination ports
-        - name: DESTINATION_PORTS
-          value: '!8080,9000'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
-```
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `CONTAINER_RUNTIME` | Container runtime on the target nodes. One of `containerd`, `docker`, `crio`. | `containerd` |
+| `SOCKET_PATH` | Path to the container runtime socket on the target node. Set to match `CONTAINER_RUNTIME`. | `/run/containerd/containerd.sock` |
+| `RAMP_TIME` | Wait period in seconds before and after the fault. Go to [ramp time](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time) to read how it is applied. | `0` |
 
-### Network interface
+Tunables that apply to every chaos fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
 
-Name of the ethernet interface considered to shape the traffic. Its default value is `eth0`. Tune it by using the `NETWORK_INTERFACE` environment variable.
+:::tip Scope latency to one dependency
+Setting `DESTINATION_HOSTS=db.example.svc` or `DESTINATION_PORTS=5432` adds latency only to that dependency. Mesh control plane, metrics, DNS, and other traffic stay fast, so you isolate the variable under test.
+:::
 
-The following YAML snippet illustrates the use of this environment variable:
+### Configure for your container runtime
 
-[embedmd]: # "./static/manifests/pod-network-latency/network-interface.yaml yaml"
+Set `CONTAINER_RUNTIME` and `SOCKET_PATH` to match the runtime on the target node:
 
-```yaml
-# provide the network interface
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: pod-network-latency
-      spec:
-        components:
-          env:
-            # name of the network interface
-            - name: NETWORK_INTERFACE
-              value: "eth0"
-            - name: TOTAL_CHAOS_DURATION
-              value: "60"
-```
+| `CONTAINER_RUNTIME` | `SOCKET_PATH` |
+| --- | --- |
+| `containerd` (default) | `/run/containerd/containerd.sock` |
+| `docker` | `/var/run/docker.sock` |
+| `crio` | `/var/run/crio/crio.sock` |
 
-### Jitter
+---
 
-Specified whether or not to allow a network delay variation (in ms). Its default value is `0`. Tune it by using the `JITTER` environment variable.
+## Fault execution in brief
 
-The following YAML snippet illustrates the use of this environment variable:
+Configures the container's network interface to add a specified delay (with optional jitter) to outbound packets, optionally scoping the effect to only certain destination IPs, hosts, or ports so other traffic passes through unaffected.
 
-[embedmd]: # "./static/manifests/pod-network-latency/network-latency-jitter.yaml yaml"
+---
 
-```yaml
-# provide the network latency jitter
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: pod-network-latency
-      spec:
-        components:
-          env:
-            # value of the network latency jitter (in ms)
-            - name: JITTER
-              value: "200"
-```
+## Expected behavior during fault execution
 
-### Container runtime and socket path
+- Packets matching the filter are buffered and released after the configured delay. Round-trip times rise by `NETWORK_LATENCY` plus any `JITTER` variation.
+- TCP throughput drops in proportion to the latency increase (bandwidth-delay product). HTTP/2 and gRPC connections accommodate the delay, but each call takes correspondingly longer.
+- UDP traffic (DNS, QUIC) is delayed but not dropped. DNS lookups that previously took 5 ms now take `5 + NETWORK_LATENCY` ms; clients with short DNS timeouts may consider the lookup failed.
+- At very high latencies (10+ seconds), TCP keepalive can fail and connections drop. Health probes can time out.
+- Service meshes with outlier detection on slow response times may eject the pod from upstream load-balancing pools.
 
-The `CONTAINER_RUNTIME` and `SOCKET_PATH` environment variables to set the container runtime and socket file path, respectively.
+:::info When the fault ends
+The delay is removed and the pod's network returns to normal immediately. Any in-flight delayed packets are released as soon as the configuration is torn down.
+:::
 
-- `CONTAINER_RUNTIME`: It supports `docker`, `containerd`, and `crio` runtimes. The default value is `containerd`.
-- `SOCKET_PATH`: It contains path of containerd socket file by default(`/run/containerd/containerd.sock`). For `docker`, specify path as `/var/run/docker.sock`. For `crio`, specify path as `/var/run/crio/crio.sock`.
+### Signals to watch
 
-The following YAML snippet illustrates the use of these environment variables:
+Attach [resilience probes](/docs/resilience-testing/chaos-testing/probes) to assert each layer:
 
-[embedmd]: # "./static/manifests/pod-network-latency/container-runtime-and-socket-path.yaml yaml"
+- **Tail latency:** Use a [Prometheus probe](/docs/resilience-testing/chaos-testing/probes/apm-probes) on your p99 latency metric to confirm the increase matches the injected delay.
+- **Client timeouts and retries:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) for direct endpoint health; rising timeouts signal that the client is not budgeted for the delay.
+- **Pod readiness:** Use a [Kubernetes probe](/docs/resilience-testing/chaos-testing/probes/k8s-probe) to fail when the target pod oscillates `NotReady` due to probe timeouts.
 
-```yaml
-## provide the container runtime and socket file path
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: pod-network-latency
-      spec:
-        components:
-          env:
-            # runtime for the container
-            # supports docker, containerd, crio
-            - name: CONTAINER_RUNTIME
-              value: "containerd"
-            # path of the socket file
-            - name: SOCKET_PATH
-              value: "/run/containerd/containerd.sock"
-            - name: TOTAL_CHAOS_DURATION
-              VALUE: "60"
-```
+---
+
+## Verify the fault execution effect
+
+While the experiment is running, measure round-trip time and confirm the increase:
+
+1. **Measure round-trip time from another pod.**
+
+   ```bash
+   kubectl run -n <namespace> tester --image=nicolaka/netshoot --rm -it -- \
+     ping -c 5 <target-pod-ip>
+   ```
+
+   The reported RTT should increase by approximately `NETWORK_LATENCY` (plus any `JITTER`) on matched flows.
+
+2. **Confirm application-level impact.**
+
+   ```bash
+   kubectl run -n <namespace> tester --image=nicolaka/netshoot --rm -it -- \
+     curl -w "time=%{time_total}\n" -o /dev/null -s http://<target-pod-ip>:<port>/healthz
+   ```
+
+   `time_total` should reflect the added delay. Application timeouts shorter than `NETWORK_LATENCY` fail; longer ones succeed but with elevated tail latency.
+
+---
+
+## Recovery and cleanup
+
+- **End of duration:** The delay configuration is removed automatically and latency returns to baseline within seconds.
+- **Abort the experiment:** Stopping the experiment from Chaos Studio triggers the same cleanup path.
+- **Failed cleanup:** If automated cleanup did not complete, restart the target pod to reset its network state.
+
+---
+
+## Limitations
+
+- **Serverless Kubernetes (EKS Fargate, ACI virtual nodes):** These platforms do not allow the privileged access this fault needs. GKE Autopilot is supported once the one-time setup in [Chaos on GKE Autopilot](/docs/resilience-testing/chaos-testing/gke-autopilot) is in place.
+- **Windows containers:** This fault is supported on Linux pods only.
+- **CNI plugins that bypass the pod's `eth0`:** Some eBPF-based plugins route packets host-side and may not be affected by this fault.
+- **`hostNetwork` pods:** The fault would apply to the host interface and affect the entire node. It refuses to inject on `hostNetwork: true` pods.
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="Pod network latency experiment stays Pending or never starts in Harness Chaos Engineering"
+  mode="docs"
+  fallback="Inspect the chaos pods in the experiment namespace with kubectl describe pod -n <chaos-namespace>. The most common causes are taints on the target node, insufficient resources, or a PodSecurity admission policy blocking privileged pods. Add the required tolerations to the experiment or run in a namespace with privileged Pod Security level."
+/>
+
+<Troubleshoot
+  issue="No latency observed during pod-network-latency"
+  mode="docs"
+  fallback="The most common causes are: NETWORK_INTERFACE does not match the pod's interface (verify with kubectl exec <pod> -- ip link show); the filter is too narrow and matches no real traffic (broaden DESTINATION_IPS/HOSTS/PORTS); or the pod uses hostNetwork and the fault was refused. Run ping from another pod to the target pod IP and confirm whether matched flows are slower."
+/>
+
+<Troubleshoot
+  issue="Connection to container runtime fails for pod-network-latency in Harness Chaos Engineering"
+  mode="docs"
+  fallback="The default SOCKET_PATH is /run/containerd/containerd.sock. For Docker, set CONTAINER_RUNTIME=docker and SOCKET_PATH=/var/run/docker.sock. For CRI-O, set CONTAINER_RUNTIME=crio and SOCKET_PATH=/var/run/crio/crio.sock."
+/>
+
+<Troubleshoot
+  issue="Latency persists after pod-network-latency ends"
+  mode="docs"
+  fallback="Automated cleanup did not complete. Restart the target pod to reset its network state. If the issue recurs, capture the chaos pod logs from the experiment namespace before the next run and share them with Harness support."
+/>
+
+---
+
+## Related faults
+
+- [Pod network loss](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-network-loss): Drop packets instead of delaying them.
+- [Pod network corruption](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-network-corruption): Corrupt a percentage of packets.
+- [Pod network duplication](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-network-duplication): Duplicate a percentage of packets.
+- [Pod network rate limit](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-network-rate-limit): Throttle bandwidth instead of adding delay.
+- [Node network latency](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/node-network-latency): Apply latency at the node level rather than to a single pod.
+- [Common pod fault tunables](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults): Shared environment variables for selecting target pods and workloads.

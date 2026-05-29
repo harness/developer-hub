@@ -1,238 +1,240 @@
 ---
 id: pod-delete
 title: Pod delete
+sidebar_label: Pod Delete
+description: Delete one or more pods of a Kubernetes workload to test replica availability, controller recovery, graceful termination, and disruption budgets.
+keywords:
+  - chaos engineering
+  - pod delete
+  - pod failure
+  - kubernetes pod fault
+  - lifecycle chaos
+tags:
+  - chaos-engineering
+  - pod-faults
+  - lifecycle-chaos
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-delete
-- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-delete
-- /docs/chaos-engineering/chaos-faults/kubernetes/pod-delete
+  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-delete
+  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-delete
+  - /docs/chaos-engineering/chaos-faults/kubernetes/pod-delete
 ---
 
-Pod delete is a Kubernetes pod-level chaos fault that causes specific (or random) replicas of an application resource to fail forcibly (or gracefully).
-- To ensure smooth usage, applications must have a minimum number of available replicas.
-- When the pressure on other replicas increases, the horizontal pod autoscaler scales based on the observed resource utilization.
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-![Pod Delete](./static/images/pod-delete.png)
+Pod delete is a Kubernetes pod-level chaos fault that removes one or more pods of a target workload through the Kubernetes API. The pod's controller (Deployment, StatefulSet, DaemonSet, ReplicaSet, Rollout, or DeploymentConfig) is expected to detect the missing replica and create a replacement.
 
-### Use cases
+Use this fault to verify how quickly a workload absorbs the loss of a replica: whether request volume is preserved by the remaining replicas, whether the new pod starts and becomes Ready inside your SLO, and whether downstream consumers degrade gracefully while the replacement comes up.
 
-Pod delete:
-- Helps check the application's deployment sanity (replica availability and uninterrupted service) and recovery workflow.
-- Can be used to verify:
-  - Disk (or volume) re-attachment times in stateful applications.
-  - Application start-up times, and readiness probe configuration (health endpoints and delays).
-  - Adherence to topology constraints (node selectors, toleration, zone distribution, and affinity (or anti-affinity) policies).
-  - Proxy registration times in service-mesh environments.
-  - Post (lifecycle) hooks and termination seconds configuration for the microservices (under active load)- that is, graceful termination handling.
-  - Resource budgeting on cluster nodes (whether request or limit settings are honored on available nodes for successful schedule).
-- Simulates:
-  - Graceful delete, or rescheduling, of pods as a result of upgrades.
-  - Forced deletion of pods as a result of eviction.
-  - Leader-election in complex applications.
-- To understand how quickly an application recovers after such failures.
+:::info Run your first experiment
+If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
+:::
 
+---
 
-### Permissions required
+## Use cases
 
-Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+Run this fault when you want to answer concrete questions like:
 
-```
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  namespace: hce
-  name: pod-delete
-spec:
-  definition:
-    scope: Cluster # Supports "Namespaced" mode too
-permissions:
-  - apiGroups: [""]
-    resources: ["pods"]
-    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
-  - apiGroups: [""]
-    resources: ["events"]
-    verbs: ["create", "get", "list", "patch", "update"]
-  - apiGroups: [""]
-    resources: ["pods/log"]
-    verbs: ["get", "list", "watch"]
-  - apiGroups: [""]
-    resources: ["deployments, statefulsets"]
-    verbs: ["get", "list"]
-  - apiGroups: [""]
-    resources: ["replicasets, daemonsets"]
-    verbs: ["get", "list"]
-  - apiGroups: [""]
-    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
-    verbs: ["create", "delete", "get", "list", "patch", "update"]
-  - apiGroups: ["batch"]
-    resources: ["jobs"]
-    verbs: ["create", "delete", "get", "list", "deletecollection"]
-```
+- **Replica availability:** Does the workload stay above its minimum-available threshold while a replica is recreated, or does the loss of one pod tip it into partial outage?
+- **Graceful termination:** When `FORCE` is `false`, do your application's `preStop` hooks, `terminationGracePeriodSeconds`, and connection-draining logic run to completion?
+- **PodDisruptionBudget compliance:** Does the eviction respect any `PodDisruptionBudget` you have configured, and how does the controller behave when the PDB blocks the deletion?
+- **Leader-election in clustered apps:** For workloads that elect a leader (etcd, Redis Sentinel, Kafka controllers), does the cluster re-elect within your SLO when the current leader pod is deleted?
+- **Stateful recovery:** For `StatefulSet` pods backed by persistent storage, do volume detachment and reattachment complete within an acceptable window, and does the application catch up on replay or replication state?
 
-### Prerequisites
-- Kubernetes > 1.16
-- The application pods are in the running state before and after chaos injection.
+---
 
-### Supported environments
+## Prerequisites
 
-<table>
-  <tr>
-    <th> Platform </th>
-    <th> Support Status </th>
-  </tr>
-  <tr>
-    <td> GKE (Google Kubernetes Engine) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> EKS (Amazon Elastic Kubernetes Service) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> AKS (Azure Kubernetes Service) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> GKE Autopilot </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> Self-managed Kubernetes </td>
-    <td> ✅ Supported </td>
-  </tr>
-</table>
+- **Kubernetes version:** 1.21 or later. Go to [What's supported](/docs/chaos-engineering/whats-supported) to confirm distribution support.
+- **Target pods are Running:** The pods you intend to delete are in the `Running` state before the fault is launched. The fault reports a precheck failure otherwise.
+- **Workload selector defined:** The chaos experiment knows the target workload (`Deployment`, `StatefulSet`, `DaemonSet`, `Rollout`, etc.) by kind, namespace, and either names or labels. The fault scopes deletion to pods owned by the selected workload.
+- **PodDisruptionBudget awareness:** If the target workload is covered by a PDB, plan the experiment so the deletion does not permanently block the PDB. The fault retries through the standard eviction path; a PDB that allows zero disruptions makes the experiment fail.
 
-### Optional tunables
-   <table>
-      <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> TARGET_CONTAINER </td>
-        <td> Name of the container subject to pod deletion. </td>
-        <td> None. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-container">target specific container</a></td>
-      </tr>
-      <tr>
-        <td> NODE_LABEL </td>
-        <td> Node label used to filter the target node if <code>TARGET_NODE</code> environment variable is not set. </td>
-        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
-      </tr>
-      <tr>
-        <td> TOTAL_CHAOS_DURATION </td>
-        <td> Duration for which to insert chaos (in seconds).</td>
-        <td> Default: 15 s. Overall run duration of the fault may exceed the <code>TOTAL_CHAOS_DURATION</code> by a few minutes. For more information, go to <a href = "/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a></td>
-      </tr>
-      <tr>
-        <td> CHAOS_INTERVAL </td>
-        <td> Time interval between two successive pod failures (in seconds). </td>
-        <td> Default: 5 s. For more information, go to <a href= "/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#chaos-interval">chaos interval</a></td>
-      </tr>
-      <tr>
-        <td> RANDOMNESS </td>
-        <td> Introduces randomness into pod deletions with a minimum period defined by <code>CHAOS_INTERVAL</code> </td>
-        <td> Default: false. Supports true and false. For more information, go to <a href= "#random-interval">random interval</a> </td>
-      </tr>
-      <tr>
-        <td> FORCE </td>
-        <td> Application pod deletion mode. <code>false</code> indicates graceful deletion with the default termination period of 30s, and <code>true</code> indicates an immediate forceful deletion with 0s grace period.</td>
-        <td> Default: <code>true</code>, with <code>terminationGracePeriodSeconds=0</code>. For more information, go to <a href= "#force-delete">force delete</a> </td>
-      </tr>
-      <tr>
-        <td> TARGET_PODS </td>
-        <td> Comma-separated list of application pod names subject to chaos. </td>
-        <td> If it is not provided, it selects target pods based on provided appLabels. For more information, go to <a href= "/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods">target specific pods</a> </td>
-      </tr>
-      <tr>
-        <td> PODS_AFFECTED_PERC </td>
-        <td> Percentage of total pods to target . Provide numeric values. </td>
-        <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href= "/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage</a> </td>
-      </tr>
-      <tr>
-        <td> RAMP_TIME </td>
-        <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30 s. For more information, go to <a href= "/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a></td>
-      </tr>
-      <tr>
-        <td> SEQUENCE </td>
-        <td> Sequence of chaos execution for multiple target pods. </td>
-        <td> Default: parallel. Supports serial as well. For more information, go to <a href= "/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a></td>
-      </tr>
-    </table>
+---
 
-### Force delete
+## Supported environments
 
-Specifies if the target pod is deleted `forcefully` or `gracefully`. This fault deletes the pod forcefully if `FORCE` is set to `true` and gracefully if `FORCE` is set to `false`. Tune it by using the `FORCE` environment variable.
+| Platform | Support status |
+| --- | --- |
+| Amazon EKS | Supported |
+| Azure AKS | Supported |
+| Google GKE | Supported |
+| GKE Autopilot | Supported with [Autopilot setup](/docs/resilience-testing/chaos-testing/gke-autopilot) |
+| Red Hat OpenShift | Supported |
+| Rancher | Supported |
+| VMware Tanzu | Supported |
+| Self-managed Kubernetes (CNCF-certified) | Supported |
 
-The following YAML snippet illustrates the use of this environment variable:
+---
 
-[embedmd]: # "./static/manifests/pod-delete/force.yaml yaml"
+## Permissions required
 
-```yaml
-# tune the deletion of target pods forcefully or gracefully
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: pod-delete
-      spec:
-        components:
-          env:
-            # provided as true for the force deletion of pod
-            # supports true and false value
-            - name: FORCE
-              value: "true"
-            - name: TOTAL_CHAOS_DURATION
-              value: "60"
-```
+The fault runs under the chaos infrastructure's service account.
 
-### Random interval
+| Resource (`apiGroup`) | Verbs | Why it is needed |
+| --- | --- | --- |
+| `pods` (`""`) | `get`, `list`, `create`, `delete`, `deletecollection`, `patch`, `update` | Resolve target pods and delete them |
+| `pods/log` (`""`) | `get`, `list`, `watch` | Stream chaos pod logs for status and debugging |
+| `events` (`""`) | `get`, `list`, `create`, `patch`, `update` | Record fault progress as Kubernetes events |
+| `configmaps` (`""`) | `get`, `list` | Mount configuration into the chaos pod when specified |
+| `deployments`, `statefulsets`, `replicasets`, `daemonsets` (`apps`) | `get`, `list` | Resolve the parent controller for each target pod |
+| `replicationcontrollers` (`""`) | `get`, `list` | Resolve the parent controller for legacy workloads |
+| `deploymentconfigs` (`apps.openshift.io`) | `get`, `list` | Resolve the parent controller on OpenShift |
+| `rollouts` (`argoproj.io`) | `get`, `list` | Resolve the parent controller for Argo Rollouts |
+| `jobs` (`batch`) | `get`, `list`, `create`, `delete`, `deletecollection` | Run the chaos job that drives the fault |
+| `chaosengines`, `chaosexperiments`, `chaosresults` (`litmuschaos.io`) | `get`, `list`, `create`, `patch`, `update`, `delete` | Manage the chaos engine, experiment, and result CRDs |
 
-Specifies whether or not to enable randomness in the chaos interval by setting `RANDOMNESS` environment variable to `true`. It supports boolean values. The default value is `false`. Tune it by using the `CHAOS_INTERVAL` environment variable.
+The default Harness chaos infrastructure service account already includes these permissions. You only need to extend it if you are running with a restricted scope.
 
-- If `CHAOS_INTERVAL` is set in the form of `l-r` that is, `5-10` then it will select a random interval between l and r.
-- If `CHAOS_INTERVAL` is set in the form of `value` that is, `10` then it will select a random interval between 0 and value.
+---
 
-The following YAML snippet illustrates the use of this environment variable:
+## Fault tunables
 
-[embedmd]: # "./static/manifests/pod-delete/randomness-interval.yaml yaml"
+Configure the following fault parameters when you add Pod delete to an experiment in Chaos Studio. Defaults are shown for reference.
 
-```yaml
-# contains random chaos interval with lower and upper bound of range i.e [l,r]
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: pod-delete
-      spec:
-        components:
-          env:
-            # randomness enables iterations at random time interval
-            # it supports true and false value
-            - name: RANDOMNESS
-              value: "true"
-            - name: TOTAL_CHAOS_DURATION
-              value: "60"
-            # it will select a random interval within this range
-            # if only one value is provided then it will select a random interval within 0-CHAOS_INTERVAL range
-            - name: CHAOS_INTERVAL
-              value: "5-10"
-```
+**Chaos parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `TOTAL_CHAOS_DURATION` | Duration of the fault in seconds. The fault iterates pod deletions across this window. | `30` |
+| `CHAOS_INTERVAL` | Time between successive deletion iterations in seconds. Can be a fixed value or a range like `5-10` when `RANDOMNESS` is enabled. | `10` |
+| `FORCE` | Deletion mode. `true` deletes with `gracePeriodSeconds=0` (immediate). `false` issues a graceful delete and waits for `terminationGracePeriodSeconds`. | `false` |
+| `RANDOMNESS` | When `true`, picks a random interval within the bounds of `CHAOS_INTERVAL`. | `false` |
+
+**Targeting**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `TARGET_PODS` | Comma-separated list of pod names to delete. Empty selects from the workload's pods using `POD_AFFECTED_PERCENTAGE`. | `""` |
+| `NODE_LABEL` | Label selector to filter target pods by the node they run on. Empty disables node-based filtering. | `""` |
+| `POD_AFFECTED_PERCENTAGE` | Percentage of the workload's pods to delete in each iteration. `0` means one pod. | `0` |
+| `SEQUENCE` | When multiple pods are targeted, delete `parallel` (all at once) or `serial` (one after another). | `parallel` |
+
+**Common**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `RAMP_TIME` | Wait period in seconds before and after the fault. Go to [ramp time](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time) to read how it is applied. | `0` |
+
+Tunables that apply to every chaos fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
+
+:::warning Forceful deletion bypasses graceful shutdown
+With `FORCE: true`, the pod is removed from the API immediately and the kubelet never sends `SIGTERM` to your container. In-flight requests are dropped, `preStop` hooks do not run, and connections are not drained. Use `FORCE: false` to validate graceful-shutdown paths.
+:::
+
+---
+
+## Fault execution in brief
+
+Deletes one or more pods of the target workload through the Kubernetes API at the configured interval, either gracefully (honoring `terminationGracePeriodSeconds`) or forcefully (immediate deletion with no shutdown signal).
+
+---
+
+## Expected behavior during fault execution
+
+- The selected pod (or pods) enter the `Terminating` state. With `FORCE: false`, the kubelet sends `SIGTERM` and waits up to the pod's `terminationGracePeriodSeconds`; with `FORCE: true`, the pod is removed immediately from the API.
+- The pod's controller (Deployment, StatefulSet, DaemonSet, ReplicaSet, Rollout, DeploymentConfig) observes the missing replica and creates a replacement on a Ready node.
+- For `Deployment` and `ReplicaSet`, the replacement is scheduled wherever the scheduler finds capacity. For `StatefulSet`, the replacement waits for the previous pod's PVC to detach before binding.
+- Service endpoints for the deleted pod are removed from the relevant `EndpointSlice` once the kubelet acknowledges the deletion. Existing in-flight connections terminate or drain depending on the application.
+- HPA controllers do not react to deletions directly; they react to whatever resource utilization shift the deletion causes on the remaining replicas.
+- If the target workload is covered by a `PodDisruptionBudget` that is already at its disruption threshold, the eviction request returns `429 Too Many Requests` and the fault iteration retries.
+
+:::info When the fault ends
+After `TOTAL_CHAOS_DURATION`, no further deletions are issued. Replicas that were recreated during the fault remain in their new locations; the fault does not migrate them back.
+:::
+
+### Signals to watch
+
+A useful experiment captures signals from three layers. Attach [resilience probes](/docs/resilience-testing/chaos-testing/probes) to assert each layer automatically:
+
+- **Application availability:** Watch error rate and request volume for the workload during the fault. A spike in 5xx (or dropped requests) signals that traffic shifting did not keep up with deletion. Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) for direct endpoint health.
+- **Replica recovery:** Track `kube_deployment_status_replicas_available` (or the equivalent for your workload kind). It should return to its declared target within your acceptable recovery window. Use a [Prometheus probe](/docs/resilience-testing/chaos-testing/probes/apm-probes) to assert this automatically.
+- **Eviction events:** Look for `kubelet` events with reason `Killing` and controller events such as `SuccessfulCreate`. Use a [Kubernetes probe](/docs/resilience-testing/chaos-testing/probes/k8s-probe) to fail when the expected events do not appear.
+
+---
+
+## Verify the fault execution effect
+
+While the experiment is running, confirm that pods are actually being deleted and recreated:
+
+1. **Watch the target workload's pods.**
+
+   ```bash
+   kubectl get pods -n <namespace> -l <workload-label> -w
+   ```
+
+   You should see pods transition through `Terminating` and new pods appear with fresh names. The total `Running` count should stabilize back at the declared replicas of the workload.
+
+2. **Check the workload's available-replica count.**
+
+   ```bash
+   kubectl get deployment -n <namespace> <name>
+   ```
+
+   The `AVAILABLE` column should briefly drop below `DESIRED` during each iteration, then recover. If it stays below for the full fault duration, the replacement pods are failing to start.
+
+3. **Inspect Kubernetes events.**
+
+   ```bash
+   kubectl get events -n <namespace> --sort-by='.lastTimestamp' | tail -20
+   ```
+
+   Expect `Killing`, `SuccessfulCreate`, and `Started` events around each iteration. Lack of `SuccessfulCreate` typically points to a PDB block or insufficient node capacity.
+
+---
+
+## Recovery and cleanup
+
+- **End of duration:** When `TOTAL_CHAOS_DURATION` elapses, the fault stops issuing deletions. The workload converges to its declared replica count as soon as the most recent replacement becomes Ready.
+- **Replicas land on different nodes:** Replacement pods are scheduled wherever the scheduler finds capacity. They do not return to their original nodes unless `nodeAffinity` or topology spread constraints force them to.
+- **`Pending` replacements:** If your cluster lacks capacity (no Ready nodes with sufficient CPU, memory, or volume topology), replacement pods sit in `Pending`. The cluster autoscaler should add capacity if configured; otherwise, free resources before the workload converges.
+- **PDB blocks:** If a `PodDisruptionBudget` rejects the eviction, the fault retries that pod on the next iteration. If the PDB blocks every attempt, the fault reports a failure at the end of `TOTAL_CHAOS_DURATION`.
+- **Abort the experiment early:** Stopping the experiment from Chaos Studio prevents any further deletion. Already-deleted pods proceed through their normal controller-driven replacement.
+
+---
+
+## Limitations
+
+This fault is not appropriate in the following scenarios:
+
+- **Unmanaged (bare) pods:** Pods not owned by any controller (no `OwnerReferences`) are deleted and never recreated. The fault still succeeds, but the workload is permanently down until you redeploy.
+- **Single-replica workloads where any disruption is unacceptable:** If the workload has `replicas: 1` and no failover mechanism, the deletion guarantees an outage for at least the pod's start-up time. Use this knowledge intentionally rather than accidentally.
+- **Pods with `tolerationSeconds: 0` on the unreachable taint:** These pods are designed to be evicted instantly when their node is unhealthy and rarely need this fault to test deletion paths.
+- **StatefulSets with `OrderedReady` pod-management and tight startup probes:** Recreating a deleted pod can block the rolling order. Validate that downstream pods do not deadlock waiting for the deleted index to become Ready.
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="Pod delete experiment stays Pending or never starts in Harness Chaos Engineering"
+  mode="docs"
+  fallback="Inspect the chaos pods in the experiment namespace with kubectl describe pod -n <chaos-namespace>. The most common causes are taints on the experiment namespace's nodes, missing RBAC for the chaos service account, or a PodSecurity admission policy blocking the chaos pod. Confirm the service account has the permissions listed above and the chaos namespace has the required Pod Security level."
+/>
+
+<Troubleshoot
+  issue="Pod delete runs but the workload's replica count does not recover"
+  mode="docs"
+  fallback="The replacement pods are failing to start. Run kubectl describe pod -n <namespace> <new-pod-name> and look for ImagePullBackOff, CrashLoopBackOff, or volume-attach failures. For StatefulSets, also check whether the previous pod's PVC has detached. A PodDisruptionBudget at its threshold can also block subsequent deletions; verify with kubectl get pdb."
+/>
+
+<Troubleshoot
+  issue="Pod delete reports a PodDisruptionBudget block in Harness Chaos Engineering"
+  mode="docs"
+  fallback="The target workload is covered by a PDB that does not allow further disruptions. Run kubectl get pdb -n <namespace> to inspect minAvailable and currentHealthy. Wait for the workload to recover, raise the PDB threshold for the duration of the experiment, or lower POD_AFFECTED_PERCENTAGE so fewer pods are evicted per iteration."
+/>
+
+<Troubleshoot
+  issue="Graceful deletion did not wait for preStop hooks or terminationGracePeriodSeconds"
+  mode="docs"
+  fallback="Check that FORCE is set to false. With FORCE: true, the API server removes the pod immediately and the kubelet never invokes preStop or honors the grace period. Set FORCE to false to validate graceful-shutdown paths, and verify terminationGracePeriodSeconds is set high enough on the pod spec for your preStop hook to complete."
+/>
+
+---
+
+## Related faults
+
+- [Container kill](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/container-kill): Kill one container inside a pod instead of deleting the whole pod.
+- [Pod autoscaler](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-autoscaler): Scale a workload's replicas up or down to test capacity and autoscaling.
+- [Node drain](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/node-drain): Evict every eligible pod from a node, exercising the same recovery path at node scale.
+- [Common pod fault tunables](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults): Shared environment variables for selecting target pods and workloads.

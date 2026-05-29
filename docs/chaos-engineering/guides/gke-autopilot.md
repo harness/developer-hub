@@ -115,9 +115,7 @@ These experiments work seamlessly on GKE Autopilot as they operate within contai
 
 #### **Container Resource Stress**
 - **[Pod CPU Hog](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-cpu-hog)**: Consumes excess CPU resources of application containers
-- **[Pod CPU Hog Exec](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-cpu-hog-exec)**: Alternative CPU stress implementation using exec
 - **[Pod Memory Hog](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-memory-hog)**: Consumes memory resources causing significant memory usage spikes
-- **[Pod Memory Hog Exec](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-memory-hog-exec)**: Alternative memory stress implementation using exec
 - **[Pod IO Stress](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-io-stress)**: Causes I/O stress by spiking input/output requests
 
 #### **Container Storage Operations**

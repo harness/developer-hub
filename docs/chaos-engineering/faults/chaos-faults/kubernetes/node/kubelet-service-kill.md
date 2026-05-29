@@ -22,7 +22,7 @@ redirect_from:
 
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-Kubelet service kill is a Kubernetes node-level chaos fault that stops the kubelet on a target node for a configurable duration. Harness Chaos Engineering schedules a privileged helper pod (`harness/chaos-ddcr-faults`) on the node, which enters the host's PID namespace and stops the kubelet systemd service. Without a running kubelet, the node lease stops renewing, the controller-manager marks the node `NotReady`, and the taint manager evicts the pods. When the fault duration ends, the helper restarts the kubelet and the node rejoins the cluster.
+Kubelet service kill is a Kubernetes node-level chaos fault that stops the kubelet on a target node for a configurable duration. Without a running kubelet, the node lease stops renewing, the controller-manager marks the node `NotReady`, and the taint manager evicts the pods. When the fault duration ends, the kubelet is started again and the node rejoins the cluster.
 
 Use this fault to simulate a kubelet-only outage: a misconfigured upgrade that breaks the kubelet binary, a configuration push that crashes the kubelet on startup, or an operator stopping the kubelet for in-place maintenance. The cluster's reaction is similar to a network partition or a sudden reboot, but the node itself stays up and recovers faster.
 
@@ -48,9 +48,9 @@ Run this fault when you want to answer concrete questions like:
 ## Prerequisites
 
 - **Kubernetes version:** 1.21 or later. Go to [What's supported](/docs/chaos-engineering/whats-supported) to confirm distribution support.
-- **Kubelet runs as a systemd service:** The fault stops the kubelet via `systemctl stop kubelet`. On nodes that run the kubelet differently (containerized, static manifest only, supervisord-managed), this fault does not work.
-- **Privileged pods allowed:** The cluster lets you schedule privileged pods with `hostPID` and the required capabilities in the chaos namespace. The helper pod must enter the host's PID namespace to control systemd.
-- **Container runtime socket:** The chaos infrastructure has access to the container runtime socket on the target nodes.
+- **Kubelet runs as a systemd service:** The fault stops the kubelet through systemd. On nodes that run the kubelet differently (containerized, static manifest only, supervisord-managed), this fault does not work.
+- **Privileged pods allowed:** The cluster lets you schedule privileged pods with `hostPID` and the required capabilities in the chaos namespace.
+- **Container runtime access:** The chaos infrastructure can reach the container runtime on the target nodes.
 - **Node readiness:** Target nodes are in `Ready` state before the fault is launched. The fault reports a precheck failure otherwise.
 - **Chaos infrastructure isolation:** The chaos infrastructure pods are not scheduled on the node you are about to take down. If they are evicted along with everything else, the fault loses observability and may fail to restart the kubelet.
 
@@ -67,6 +67,7 @@ Run this fault when you want to answer concrete questions like:
 | Rancher | Supported |
 | VMware Tanzu | Supported |
 | Self-managed Kubernetes (CNCF-certified) | Supported |
+| GKE Autopilot | Not supported (Autopilot does not expose kubelet as a manageable service; only Node Network Loss and Node Network Latency are allowlisted, see [Chaos on GKE Autopilot](/docs/resilience-testing/chaos-testing/gke-autopilot)) |
 
 ---
 
@@ -76,8 +77,8 @@ The fault runs under the chaos infrastructure's service account. The account mus
 
 | Resource (`apiGroup`) | Verbs | Why it is needed |
 | --- | --- | --- |
-| `pods` (`""`) | `get`, `list`, `create`, `delete`, `deletecollection`, `patch`, `update` | Create the helper pod that stops and restarts the kubelet on the target node |
-| `pods/log` (`""`) | `get`, `list`, `watch` | Stream logs from the helper pod for status and debugging |
+| `pods` (`""`) | `get`, `list`, `create`, `delete`, `deletecollection`, `patch`, `update` | Run the chaos pod that stops and restarts the kubelet on the target node |
+| `pods/log` (`""`) | `get`, `list`, `watch` | Stream chaos pod logs for status and debugging |
 | `events` (`""`) | `get`, `list`, `create`, `patch`, `update` | Record fault progress as Kubernetes events |
 | `nodes` (`""`) | `get`, `list` | Discover target nodes and validate selectors |
 | `jobs` (`batch`) | `get`, `list`, `create`, `delete`, `deletecollection` | Run the chaos job that drives the fault |
@@ -120,14 +121,16 @@ At the default `TOTAL_CHAOS_DURATION` of 60 seconds, the node will flip to `NotR
 
 ## Fault execution in brief
 
+Stops the kubelet service on the target node for the configured duration, so the node stops sending heartbeats and the control plane treats the node as unreachable; the service is restarted automatically at the end of the fault.
+
 The cluster cannot tell the difference between a kubelet that has been stopped and a kubelet that has lost its network. Both produce the same signal: node lease renewals stop. The eviction path is therefore identical to [Node network loss](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/node-network-loss):
 
 | Stage | What happens |
 | --- | --- |
-| Stop | Helper enters host PID namespace, runs `systemctl stop kubelet`. The kubelet exits cleanly. Application pods on the node keep running because their containers are managed by the container runtime, not the kubelet. |
+| Stop | The kubelet stops on the target node. Application containers keep running because they are managed by the container runtime, not the kubelet. |
 | Lease expiry | After roughly `node-monitor-grace-period` (40 to 50 seconds), the controller-manager flips the node to `Ready=Unknown` and applies the `node.kubernetes.io/unreachable:NoExecute` taint. |
 | Eviction | Pods tolerate the taint for `tolerationSeconds: 300` by default. After that, the taint manager evicts them. Deployment pods reschedule on other Ready nodes. |
-| Restart | At the end of `TOTAL_CHAOS_DURATION`, the helper runs `systemctl start kubelet`. The kubelet renews its lease, the controller-manager removes the taint, and the node is `Ready` again. |
+| Restart | At the end of `TOTAL_CHAOS_DURATION`, the kubelet is started again. It renews its lease, the controller-manager removes the taint, and the node is `Ready` again. |
 
 ---
 
@@ -152,17 +155,9 @@ A useful experiment captures signals from three layers. Attach [resilience probe
 
 ## Verify the fault execution effect
 
-While the experiment is running, confirm that the kubelet is actually stopped. From a workstation with `kubectl` access:
+While the experiment is running, confirm that the kubelet is actually stopped:
 
-1. **Confirm the helper pod is on the target node.**
-
-   ```bash
-   kubectl get pods -n <chaos-namespace> -o wide | grep kubelet-service-kill-helper
-   ```
-
-   The pod's `NODE` column must match the target node and its status must be `Running`.
-
-2. **Watch the node transition to `NotReady`.**
+1. **Watch the node transition to `NotReady`.**
 
    ```bash
    kubectl get node <target-node> -w
@@ -170,7 +165,7 @@ While the experiment is running, confirm that the kubelet is actually stopped. F
 
    Expect `Ready` → `NotReady` within roughly one minute, then `NotReady` → `Ready` after `TOTAL_CHAOS_DURATION` ends.
 
-3. **Inspect kubelet status on the node** (from a debug pod):
+2. **Inspect kubelet status on the node** (from a debug pod):
 
    ```bash
    kubectl debug node/<target-node> -it --image=ubuntu -- chroot /host \
@@ -179,7 +174,7 @@ While the experiment is running, confirm that the kubelet is actually stopped. F
 
    While the fault is active, the status should be `inactive (dead)`. After the fault, it should return to `active (running)`.
 
-4. **Verify application containers kept running.**
+3. **Verify application containers kept running.**
 
    ```bash
    kubectl debug node/<target-node> -it --image=ubuntu -- chroot /host \
@@ -192,7 +187,7 @@ While the experiment is running, confirm that the kubelet is actually stopped. F
 
 ## Recovery and cleanup
 
-- **End of duration:** When `TOTAL_CHAOS_DURATION` elapses, the helper restarts the kubelet. Lease renewals resume within seconds, the controller-manager removes the `NoExecute` taint, and the node returns to `Ready`.
+- **End of duration:** When `TOTAL_CHAOS_DURATION` elapses, the kubelet is started again. Lease renewals resume within seconds, the controller-manager removes the `NoExecute` taint, and the node returns to `Ready`.
 - **Evicted Deployment pods do not migrate back:** Pods that were evicted during the outage stay on the replacement nodes the scheduler placed them on.
 - **Terminating StatefulSet pods:** Force-delete to release the StatefulSet identity slot:
 
@@ -201,14 +196,14 @@ While the experiment is running, confirm that the kubelet is actually stopped. F
   ```
 
 - **Pods stuck in `ContainerCreating`:** Pods scheduled onto the node during the outage may stay in `ContainerCreating` until the kubelet returns. They normally proceed automatically once it does.
-- **If the helper pod is killed mid-experiment:** The kubelet may stay stopped past `TOTAL_CHAOS_DURATION`. Restart it manually:
+- **If automated cleanup did not complete:** The kubelet may stay stopped past `TOTAL_CHAOS_DURATION`. Start it manually:
 
   ```bash
   kubectl debug node/<target-node> -it --image=ubuntu -- chroot /host \
     bash -c "systemctl start kubelet"
   ```
 
-- **Abort the experiment early:** Stop the experiment from Harness Chaos Studio. The helper pod terminates and starts the kubelet back up before exiting.
+- **Abort the experiment early:** Stop the experiment from Harness Chaos Studio. The kubelet is started back up before the chaos pod exits.
 
 ---
 
@@ -217,8 +212,8 @@ While the experiment is running, confirm that the kubelet is actually stopped. F
 This fault is not appropriate in the following scenarios:
 
 - **Serverless Kubernetes (EKS Fargate, ACI virtual nodes, GKE Autopilot):** Fargate and ACI virtual nodes do not expose a manageable kubelet. GKE Autopilot does not allow the privileged `hostPID` access this fault requires.
-- **Nodes where kubelet is not a systemd service:** Some distributions run the kubelet as a static-pod manifest managed by the container runtime, or under a different init system. `systemctl stop kubelet` does nothing on those nodes.
-- **Windows nodes:** The kubelet on Windows is a Windows service, not a systemd unit. Use a Windows-equivalent fault.
+- **Nodes where kubelet is not managed as a host-level service:** Some distributions run the kubelet as a static-pod manifest managed by the container runtime, or under a non-standard init system. The fault cannot stop kubelet cleanly on those nodes.
+- **Windows nodes:** Kubelet on Windows is managed differently than on Linux distributions and is not supported by this fault. Use a Windows-equivalent fault.
 - **Single-node clusters:** Stopping the kubelet on the only node takes the entire cluster control plane down for the duration. The chaos infrastructure itself loses observability.
 - **Co-located chaos infrastructure:** If the chaos infrastructure pods live on the affected node, they may be evicted by the `NoExecute` taint long before they can restart the kubelet. Schedule chaos infrastructure on a node outside the blast radius.
 - **Short durations only:** At the default `TOTAL_CHAOS_DURATION` of 60 seconds, you observe the `NotReady` transition but not pod eviction (which requires crossing `tolerationSeconds: 300`). To test eviction, raise the duration beyond 5 minutes or lower the workload's `tolerationSeconds`.
@@ -228,13 +223,13 @@ This fault is not appropriate in the following scenarios:
 ## Troubleshooting
 
 <Troubleshoot
-  issue="Kubelet service kill helper pod stays Pending or never schedules on the target node in Harness Chaos Engineering"
+  issue="Kubelet service kill experiment stays Pending or never starts in Harness Chaos Engineering"
   mode="docs"
-  fallback="Check the helper pod with kubectl describe pod -n <chaos-namespace>. The most common causes are taints on the target node that the helper does not tolerate, a PodSecurity admission policy blocking privileged or hostPID pods, or insufficient capacity on the node. Add the required tolerations, run the experiment in a namespace with privileged Pod Security level, or free resources on the node."
+  fallback="Inspect the chaos pods in the experiment namespace with kubectl describe pod -n <chaos-namespace>. The most common causes are taints on the target node, a PodSecurity admission policy blocking privileged or hostPID pods, or insufficient capacity on the node. Add the required tolerations, run the experiment in a namespace with privileged Pod Security level, or free resources on the node."
 />
 
 <Troubleshoot
-  issue="kubelet-service-kill helper reports 'Unit kubelet.service not loaded' on the target node"
+  issue="kubelet-service-kill reports 'Unit kubelet.service not loaded' on the target node"
   mode="docs"
   fallback="The node does not run the kubelet as a systemd service, or the unit is named differently (some distributions use kubelet.target or a wrapper unit). SSH or kubectl debug into the node and run systemctl list-units | grep -i kubelet to find the correct unit. This fault does not currently support runtime-specific kubelet wrappers; use Node restart for those distributions."
 />
@@ -242,7 +237,7 @@ This fault is not appropriate in the following scenarios:
 <Troubleshoot
   issue="Node does not return to Ready after kubelet-service-kill completes"
   mode="docs"
-  fallback="The helper pod was killed (often by the NoExecute taint it indirectly applied) before it could run systemctl start kubelet. Start the kubelet manually with kubectl debug node/<target-node> -it --image=ubuntu -- chroot /host bash -c 'systemctl start kubelet', then check journalctl -u kubelet on the node for startup errors. For future runs, ensure chaos infrastructure is scheduled on a different node."
+  fallback="Automated cleanup did not complete (often because the chaos pod was evicted by the NoExecute taint before it could restart the kubelet). Start the kubelet manually with kubectl debug node/<target-node> -it --image=ubuntu -- chroot /host bash -c 'systemctl start kubelet', then check journalctl -u kubelet on the node for startup errors. For future runs, ensure chaos infrastructure is scheduled on a different node."
 />
 
 <Troubleshoot

@@ -66,6 +66,7 @@ Run this fault when you want to answer concrete questions like:
 | Rancher | Supported |
 | VMware Tanzu | Supported |
 | Self-managed Kubernetes (CNCF-certified) | Supported |
+| GKE Autopilot | Not supported (Autopilot manages node taints itself and does not allow user-applied taints; only Node Network Loss and Node Network Latency are allowlisted, see [Chaos on GKE Autopilot](/docs/resilience-testing/chaos-testing/gke-autopilot)) |
 
 This fault is API-driven and does not require host-level access on the target node.
 
@@ -79,7 +80,7 @@ The fault runs under the chaos infrastructure's service account. Because taintin
 | --- | --- | --- |
 | `nodes` (`""`) | `get`, `list`, `patch`, `update` | Add and remove the taint on the target node |
 | `pods` (`""`) | `get`, `list`, `delete` | Observe pod eviction when `effect=NoExecute` |
-| `pods/log` (`""`) | `get`, `list`, `watch` | Stream logs from the helper pod for status and debugging |
+| `pods/log` (`""`) | `get`, `list`, `watch` | Stream chaos pod logs for status and debugging |
 | `events` (`""`) | `get`, `list`, `create`, `patch`, `update` | Record fault progress and per-pod evictions as Kubernetes events |
 | `jobs` (`batch`) | `get`, `list`, `create`, `delete`, `deletecollection` | Run the chaos job that drives the fault |
 
@@ -123,6 +124,8 @@ A `NoExecute` taint evicts pods directly, bypassing the Eviction API and any `Po
 
 ## Fault execution in brief
 
+Adds a configurable taint to the target node for the configured duration, so pods without a matching toleration cannot be scheduled there; with the `NoExecute` effect, existing pods without a toleration are also evicted.
+
 The blast radius depends entirely on which `effect` you pick:
 
 | Effect | What happens to existing pods | What happens to new pods |
@@ -137,7 +140,7 @@ DaemonSet pods that the controller wants to keep on the node typically include a
 
 ## Expected behavior during fault execution
 
-- The fault patches the node's `spec.taints` array. The Kubernetes scheduler and the controller-manager react to the change immediately; no helper pod runs on the node itself.
+- The fault patches the node's `spec.taints` array directly through the Kubernetes API. The scheduler and the controller-manager react to the change immediately; no additional workload is scheduled on the target node itself.
 - With `NoExecute`, the eviction is direct. A pod without a matching toleration is evicted on the next reconciliation pass. Unlike `kubectl drain`, no `PodDisruptionBudget` evaluation occurs.
 - A pod with a toleration that includes `tolerationSeconds: N` survives for `N` seconds after the taint is applied, then is evicted. This is the same mechanism the default `DefaultTolerationSeconds` admission controller uses to apply `tolerationSeconds: 300` to most pods for the built-in `unreachable` taint, although your `TAINTS` value will not get that default automatically.
 - `Deployment` pods are recreated on other Ready nodes. `StatefulSet` pods that share identity remain `Terminating` until the slot is reclaimed.

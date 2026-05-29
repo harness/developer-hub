@@ -52,7 +52,7 @@ This fault determines the resilience of an application when a node becomes unsch
 
 ### Node CPU hog
 
-Node CPU hog exhausts the CPU resources on a Kubernetes node. The CPU chaos is injected using a helper pod running the Linux stress tool (a workload generator). The chaos affects the application for a period defined by the `TOTAL_CHAOS_DURATION` environment variable.
+Node CPU hog exhausts the CPU resources on a Kubernetes node for the period defined by the `TOTAL_CHAOS_DURATION` environment variable.
 
 <Accordion color="green">
 <summary>Use cases</summary>
@@ -95,7 +95,7 @@ It simulates slower disk operations by the application and nosiy neighbour probl
 
 ### Node memory hog
 
-Node memory hog causes memory resource exhaustion on the Kubernetes node. It is injected using a helper pod running the Linux stress-ng tool (a workload generator). The chaos affects the application foe a duration specified by the `TOTAL_CHAOS_DURATION` environment variable.
+Node memory hog causes memory resource exhaustion on the Kubernetes node for the duration specified by the `TOTAL_CHAOS_DURATION` environment variable.
 
 <Accordion color="green">
 <summary>Use cases</summary>
@@ -109,7 +109,7 @@ It simulates the situation of memory leaks in the deployment of microservices, a
 
 ### Node network latency
 
-Node network latency causes network latency on the Kubernetes node. It is injected using a helper pod running in the target node. The chaos affects the application running on the target node for a duration specified by the `TOTAL_CHAOS_DURATION` environment variable.
+Node network latency causes network latency on the Kubernetes node. The chaos affects the application running on the target node for a duration specified by the `TOTAL_CHAOS_DURATION` environment variable.
 
 <Accordion color="green">
 <summary>Use cases</summary>
@@ -124,7 +124,7 @@ It simulates the scenarios of high-latency network connections, such as cross-co
 
 ### Node network loss
 
-Node network loss causes network loss on the Kubernetes node. It is injected using a helper pod running the target node. The chaos affects the application running on the target node for a duration specified by the `TOTAL_CHAOS_DURATION` environment variable.
+Node network loss causes network loss on the Kubernetes node. The chaos affects the application running on the target node for a duration specified by the `TOTAL_CHAOS_DURATION` environment variable.
 
 <Accordion color="green">
 <summary>Use cases</summary>
@@ -165,7 +165,7 @@ The fault aims to verify the resiliency of applications when a certain taint is 
 
 ### Container kill
 
-Container kill is a Kubernetes pod-level chaos fault that causes container failure on specific (or random) replicas of an application resource.
+Container kill is a Kubernetes pod-level chaos fault that terminates a single container inside a target pod, leaving the pod scheduled so the kubelet restarts the container in place.
 
 - It tests an application's deployment sanity (replica availability and uninterrupted service) and recovery workflow.
 - It tests the recovery of pods that possess sidecar containers.
@@ -181,7 +181,7 @@ It tests an application's deployment sanity (replica availability and uninterrup
 
 ### Disk fill
 
-Disk fill is a Kubernetes pod-level chaos fault that applies disk stress by filling the pod's ephemeral storage on a node.
+Disk fill is a Kubernetes pod-level chaos fault that consumes a configurable percentage of a target container's ephemeral storage to test eviction and write-failure handling.
 
 - It evicts the application pod if its capacity exceeds the pod's ephemeral storage limit.
 - It tests the ephemeral storage limits and ensures that the parameters are sufficient.
@@ -198,7 +198,7 @@ This fault tests the ephemeral storage limits and determines the resilience of t
 
 ### FS fill
 
-FS fill is a Kubernetes pod-level chaos fault that applies fs stress by filling the pod's ephemeral storage of the pod.
+FS fill is a Kubernetes pod-level chaos fault that writes a configurable amount of data into a specific path inside a target container to test mounted-volume capacity and write-failure handling.
 
 <Accordion color="green">
 <summary>Use cases</summary>
@@ -312,33 +312,13 @@ This fault evaluates the application's resilience to lossy (or flaky) API respon
 
 ### Pod autoscaler
 
-Pod autoscaler is a Kubernetes pod-level chaos fault that determines whether nodes can accomodate multiple replicas of a given application pod.
+Pod autoscaler is a Kubernetes pod-level chaos fault that scales a target Deployment or StatefulSet to a configured replica count for a fixed duration to test cluster capacity and node autoscaling.
 
 - It examines the node auto-scaling feature by determining whether the pods were successfully rescheduled within a specified time frame if the existing nodes are running at the specified limits.
 
 <Accordion color="green">
 <summary>Use cases</summary>
 This fault determines how an application accomodates multiple replicas of a given application pod at unexpected point in time.
-</Accordion>
-
-</FaultDetailsCard>
-
-<FaultDetailsCard category="kubernetes" subCategory="pod">
-
-### Pod CPU hog exec
-
-Pod CPU hog exec is a Kubernetes pod-level chaos fault that consumes excess CPU resources of the application container.
-
-- It simulates conditions where the application pods experience CPU spikes due to expected (or undesired) processes thereby testing the behaviour of application stack.
-
-<Accordion color="green">
-<summary>Use cases</summary>
-- The fault causes CPU stress on the target pod(s). It simulates the situation of lack of CPU for processes running on the application, which degrades their performance. 
-- It also helps verify metrics-based horizontal pod autoscaling as well as vertical autoscale, i.e. demand based CPU addition. 
-- It helps scalability of nodes based on growth beyond budgeted pods. 
-- It verifies the autopilot functionality of (cloud) managed clusters. 
-- Injecting a rogue process into a target container starves the main microservice (typically pid 1) of the resources allocated to it (where limits are defined). This slows down the application traffic or exhausts the resources leading to eviction of all pods. These faults helps build immunity to such stress cases.
-- Its benefits include verifying multi-tenant load issues (when the load increases on one container, it does not cause downtime in other containers). 
 </Accordion>
 
 </FaultDetailsCard>
@@ -367,7 +347,7 @@ Pod CPU hog is a Kubernetes pod-level chaos fault that excessively consumes CPU 
 
 ### Pod delete
 
-Pod delete is a Kubernetes pod-level chaos fault that causes specific (or random) replicas of an application resource to fail forcibly (or gracefully).
+Pod delete is a Kubernetes pod-level chaos fault that removes one or more pods of a target workload through the Kubernetes API to test replica availability, controller recovery, and graceful termination.
 
 - It tests an application's deployment sanity (replica availability and uninterrupted service) and recovery workflow.
 
@@ -779,24 +759,6 @@ Pod JVM sql latency injects chaos into a Java application executing in a Kuberne
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
-### Pod memory hog exec
-
-Pod memory hog exec is a Kubernetes pod-level chaos fault that consumes memory resources on the application container in megabytes.
-
-- It simulates conditions where app pods experience Memory spikes either due to expected/undesired processes thereby testing how the overall application stack behaves when this occurs.
-
-<Accordion color="green">
-<summary>Use cases</summary>
-Memory usage within containers is subject to various constraints in Kubernetes. If the limits are specified in their spec, exceeding them results in termination of the container (due to OOMKill of the primary process, often pid 1).
-This restarts container dependng on policy specified. For containers with no limits on memory, node can be killed based on their oom_score. This results in a bigger blast radius.
-
-This fault causes stress within the target container, which may result in the primary process in the container to be constrained or eat up the available system memory on the node.
-</Accordion>
-
-</FaultDetailsCard>
-
-<FaultDetailsCard category="kubernetes" subCategory="pod">
-
 ### Pod memory hog
 
 Pod memory hog is a Kubernetes pod-level chaos fault that consumes memory resources in excess, resulting in a significant spike in the memory usage of a pod.
@@ -817,7 +779,7 @@ This fault causes stress within the target container, which may result in the pr
 
 ### Pod network corruption
 
-Pod network corruption is a Kubernetes pod-level chaos fault that injects corrupted packets of data into the specified container by starting a traffic control (tc) process with netem rules to add egress packet corruption.
+Pod network corruption is a Kubernetes pod-level chaos fault that flips random bits in a configurable percentage of packets on a target container's network path, simulating a degraded link that mangles bytes on the wire.
 
 - Tests the application's resilience to lossy (or flaky) network.
 
@@ -832,10 +794,9 @@ This fault tests the application's resilience to lossy (or flaky) network.
 
 ### Pod network duplication
 
-Pod network duplication is a Kubernetes pod-level chaos fault that injects chaos to disrupt the network connectivity to Kubernetes pods.
+Pod network duplication is a Kubernetes pod-level chaos fault that duplicates a configurable percentage of packets on a target container's network path, exercising TCP duplicate-segment handling and application-level dedup logic.
 
-- It injects chaos on the specific container by starting a traffic control (tc) process with netem rules to add egress delays.
-- It determines the application's resilience to duplicate network.
+- It determines the application's resilience to duplicate network packets.
 
 <Accordion color="green">
 <summary>Use cases</summary>
@@ -848,7 +809,7 @@ It determines the application's resilience to duplicate network.
 
 ### Pod network latency
 
-Pod network latency is a Kubernetes pod-level chaos fault that introduces latency (delay) to a specific container by initiating a traffic control (tc) process with netem rules to add egress delays.
+Pod network latency is a Kubernetes pod-level chaos fault that adds a configurable delay to packets on a target container's network path, simulating slow upstream dependencies, congested links, or cross-region failover.
 
 - It tests the application's resilience to lossy (or flaky) networks.
 
@@ -868,7 +829,7 @@ The applications may stall or get corrupted while waiting endlessly for a packet
 
 ### Pod network loss
 
-Pod network loss is a Kubernetes pod-level chaos fault that causes packet loss in a specific container by starting a traffic control (tc) process with netem rules to add egress or ingress loss.
+Pod network loss is a Kubernetes pod-level chaos fault that drops a configurable percentage of packets on a target container's network path, simulating a flaky NIC, degraded overlay link, or CNI hiccup.
 
 - It tests the application's resilience to lossy (or flaky) network.
 

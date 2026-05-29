@@ -1,351 +1,256 @@
 ---
 id: disk-fill
 title: Disk fill
+sidebar_label: Disk Fill
+description: Fill a target Kubernetes container's ephemeral storage as a percentage of its limit to test ephemeral-storage eviction, retention, and back-pressure logic.
+keywords:
+  - chaos engineering
+  - disk fill
+  - ephemeral storage
+  - storage eviction
+  - kubernetes pod fault
+tags:
+  - chaos-engineering
+  - pod-faults
+  - storage-chaos
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/disk-fill
-- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/disk-fill
-- /docs/chaos-engineering/chaos-faults/kubernetes/disk-fill
+  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/disk-fill
+  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/disk-fill
+  - /docs/chaos-engineering/chaos-faults/kubernetes/disk-fill
 ---
 
-Disk fill is a Kubernetes pod-level chaos fault that applies disk stress by filling the pod's ephemeral storage on a node. This fault evicts the application pod if its capacity exceeds the pod's ephemeral storage limit.
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-![Disk Fill](./static/images/disk-fill.png)
+Disk fill is a Kubernetes pod-level chaos fault that consumes a configurable percentage of a target container's ephemeral storage. The fault writes data into the container's writable layer until the configured percentage of the container's `ephemeral-storage` limit is reached, then holds the consumption for the rest of the duration.
 
-### Use cases
-Disk fill:
-- Tests the ephemeral storage limits and ensures that the parameters are sufficient.
-- Determines the resilience of the application to unexpected storage exhaustion.
-- Evaluates the application's resilience to disk stress or replica evictions.
-- Simulates the filled data mount points.
-- Verifies file system performance, and thin-provisioning support.
-- Verifies space reclamation (UNMAP) capabilities on storage.
+Use this fault to test how a workload behaves when its scratch space, log directory, or temp files exceed the budget you have set: whether the kubelet evicts the pod under `DiskPressure`, whether the application gracefully rotates and discards data, and whether downstream systems detect the disrupted writes.
 
-### Permissions required
+:::info Run your first experiment
+If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
+:::
 
-Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+---
 
-```
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  namespace: hce
-  name: disk-fill
-spec:
-  definition:
-    scope: Cluster # Supports "Namespaced" mode too
-permissions:
-  - apiGroups: [""]
-    resources: ["pods"]
-    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
-  - apiGroups: [""]
-    resources: ["events"]
-    verbs: ["create", "get", "list", "patch", "update"]
-  - apiGroups: [""]
-    resources: ["pods/log"]
-    verbs: ["get", "list", "watch"]
-  - apiGroups: [""]
-    resources: ["deployments, statefulsets"]
-    verbs: ["get", "list"]
-  - apiGroups: [""]
-    resources: ["replicasets, daemonsets"]
-    verbs: ["get", "list"]
-  - apiGroups: [""]
-    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
-    verbs: ["create", "delete", "get", "list", "patch", "update"]
-  - apiGroups: ["batch"]
-    resources: ["jobs"]
-    verbs: ["create", "delete", "get", "list", "deletecollection"]
-```
+## Use cases
 
-### Prerequisites
-- Kubernetes > 1.16
-- The application pods should be in the running before and after injecting chaos.
-- Appropriate Ephemeral storage requests and limits should be set for the application before running the fault. An example specification is shown below:
-```yaml
-    apiVersion: v1
-    kind: Pod
-    metadata:
-      name: frontend
-    spec:
-      containers:
-      - name: db
-        image: mysql
-        env:
-        - name: MYSQL_ROOT_PASSWORD
-          value: "password"
-        resources:
-          requests:
-            ephemeral-storage: "2Gi"
-          limits:
-            ephemeral-storage: "4Gi"
-      - name: wp
-        image: wordpress
-        resources:
-          requests:
-            ephemeral-storage: "2Gi"
-          limits:
-            ephemeral-storage: "4Gi"
-```
+Run this fault when you want to answer concrete questions like:
 
-### Supported environments
+- **Ephemeral-storage limits:** When the container fills its `resources.limits.ephemeral-storage`, does the kubelet evict the pod with a `DiskPressure` reason inside your expected window?
+- **Log rotation under pressure:** Does the application's log rotation policy keep the writable layer below the limit when log volume spikes, or do uncapped logs themselves cause the eviction?
+- **Temp-file cleanup:** Does the workload clean up temp files on `SIGTERM`, or does an eviction leak temp data into the next replacement pod?
+- **Disk-bound back-pressure:** When the disk fills, does the application detect write failures and shed load, surface 5xx, or hang on the next `write()`?
+- **Replica recovery after eviction:** Does the workload's controller (Deployment, StatefulSet) reschedule the evicted pod onto a node with capacity inside your SLO?
 
-<table>
-  <tr>
-    <th> Platform </th>
-    <th> Support Status </th>
-  </tr>
-  <tr>
-    <td> GKE (Google Kubernetes Engine) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> EKS (Amazon Elastic Kubernetes Service) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> AKS (Azure Kubernetes Service) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> GKE Autopilot </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> Self-managed Kubernetes </td>
-    <td> ✅ Supported </td>
-  </tr>
-</table>
+---
 
-### Mandatory tunables
+## Prerequisites
 
-   <table>
-      <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> NODE_LABEL </td>
-        <td> Node label used to filter the target node if <code>TARGET_NODE</code> environment variable is not set. </td>
-        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
-      </tr>
-      <tr>
-        <td> FILL_PERCENTAGE </td>
-        <td> Percentage to fill the ephemeral storage limit. This limit is set in the target pod. </td>
-        <td> It can be set to more than 100 which force evicts the pod. For more information, go to <a href="#disk-fill-percentage">disk fill percentage</a></td>
-      </tr>
-      <tr>
-        <td> EPHEMERAL_STORAGE_MEBIBYTES </td>
-        <td> Ephemeral storage required to be filled (in mebibytes). It is mutually exclusive with <code>FILL_PERCENTAGE</code> environment variable. If both are provided, <code>FILL_PERCENTAGE</code> takes precedence.</td>
-        <td> For more information, go to <a href="#disk-fill-mebibytes">disk fill mebibytes</a></td>
-      </tr>
-      <tr>
-        <td> CONTAINER_RUNTIME </td>
-        <td> Container runtime interface for the cluster. </td>
-        <td> Default: containerd. Supports docker, containerd and crio. For more information, go to <a href="#container-runtime-and-socket-path">container runtime </a> </td>
-      </tr>
-      <tr>
-        <td> SOCKET_PATH </td>
-        <td> Path to the containerd/crio/docker socket file. </td>
-        <td> Default: <code>/run/containerd/containerd.sock</code>. For more information, go to <a href="#container-runtime-and-socket-path">socket path </a></td>
-      </tr>
-    </table>
+- **Kubernetes version:** 1.21 or later. Go to [What's supported](/docs/chaos-engineering/whats-supported) to confirm distribution support.
+- **Target pods are Running:** The pods you intend to fill are in the `Running` state before the fault is launched. The fault reports a precheck failure otherwise.
+- **Privileged pods allowed:** The cluster lets you schedule privileged pods in the chaos namespace. The fault writes into the target container's writable layer through the container runtime.
+- **Container runtime access:** The chaos infrastructure can reach the container runtime on the target nodes. The default `containerd` socket path is mounted automatically.
+- **Ephemeral-storage limit configured (recommended):** The target container has `resources.limits.ephemeral-storage` set. Without a limit, `FILL_PERCENTAGE` is interpreted against the node's filesystem capacity and the experiment can spill onto neighboring pods.
 
-### Optional tunables
-   <table>
-      <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> TARGET_CONTAINER </td>
-        <td> Name of the container subject to disk fill. </td>
-        <td> If it is not provided, the first container in the target pod will be subject to chaos. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/container-kill/#kill-specific-container">kill specific container</a></td>
-      </tr>
-      <tr>
-        <td> LIB_IMAGE </td>
-        <td> Image used to run the stress command. </td>
-        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
-      </tr>
-      <tr>
-        <td> TOTAL_CHAOS_DURATION </td>
-        <td> Duration for which to insert chaos (in seconds). </td>
-        <td> Default: 60 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a></td>
-      </tr>
-      <tr>
-        <td> TARGET_PODS </td>
-        <td> Comma-separated list of application pod names subject to disk fill chaos. </td>
-        <td> If not provided, the fault selects the target pods randomly based on provided appLabels. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods">target specific pods</a></td>
-      </tr>
-      <tr>
-        <td> DATA_BLOCK_SIZE </td>
-        <td> Data block size used to fill the disk (in KB). </td>
-        <td> Default: 256 KB. For more information, go to <a href="#data-block-size">data block size</a></td>
-      </tr>
-      <tr>
-        <td> PODS_AFFECTED_PERC </td>
-        <td> Percentage of total pods to target. Provide numeric values. </td>
-        <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage</a></td>
-      </tr>
-      <tr>
-        <td> RAMP_TIME </td>
-        <td> Period to wait before injecting chaos (in seconds). </td>
-        <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a></td>
-      </tr>
-      <tr>
-        <td> SEQUENCE </td>
-        <td> Sequence of chaos execution for multiple target pods. </td>
-        <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a></td>
-      </tr>
-    </table>
+---
 
+## Supported environments
 
-### Disk fill percentage
+| Platform | Support status |
+| --- | --- |
+| Amazon EKS | Supported |
+| Azure AKS | Supported |
+| Google GKE | Supported |
+| Red Hat OpenShift | Supported |
+| Rancher | Supported |
+| VMware Tanzu | Supported |
+| Self-managed Kubernetes (CNCF-certified) | Supported |
+| GKE Autopilot | Supported with [Autopilot setup](/docs/resilience-testing/chaos-testing/gke-autopilot) |
+| EKS Fargate, ACI virtual nodes | Not supported (no access to container runtime sockets) |
 
-Percentage of ephemeral storage limit to be filled at `resource.limits.ephemeral-storage` within the target application. Tune it by using the `FILL_PERCENTAGE` environment variable.
+---
 
-The following YAML snippet illustrates the use of this environment variable:
+## Permissions required
 
-[embedmd]: # "./static/manifests/disk-fill/fill-percentage.yaml yaml"
+The fault runs under the chaos infrastructure's service account.
 
-```yaml
-## percentage of ephemeral storage limit specified at `resource.limits.ephemeral-storage` inside target application
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: disk-fill
-      spec:
-        components:
-          env:
-            ## percentage of ephemeral storage limit, which needs to be filled
-            - name: FILL_PERCENTAGE
-              value: "80" # in percentage
-            - name: TOTAL_CHAOS_DURATION
-              VALUE: "60"
-```
+| Resource (`apiGroup`) | Verbs | Why it is needed |
+| --- | --- | --- |
+| `pods` (`""`) | `get`, `list`, `create`, `delete`, `deletecollection`, `patch`, `update` | Discover target pods and run the chaos pod on the same node |
+| `pods/log` (`""`) | `get`, `list`, `watch` | Stream chaos pod logs for status and debugging |
+| `events` (`""`) | `get`, `list`, `create`, `patch`, `update` | Record fault progress as Kubernetes events |
+| `configmaps` (`""`) | `get`, `list` | Mount configuration into the chaos pod when specified |
+| `deployments`, `statefulsets`, `replicasets`, `daemonsets` (`apps`) | `get`, `list` | Resolve the parent controller for each target pod |
+| `replicationcontrollers` (`""`) | `get`, `list` | Resolve the parent controller for legacy workloads |
+| `deploymentconfigs` (`apps.openshift.io`) | `get`, `list` | Resolve the parent controller on OpenShift |
+| `rollouts` (`argoproj.io`) | `get`, `list` | Resolve the parent controller for Argo Rollouts |
+| `jobs` (`batch`) | `get`, `list`, `create`, `delete`, `deletecollection` | Run the chaos job that drives the fault |
+| `chaosengines`, `chaosexperiments`, `chaosresults` (`litmuschaos.io`) | `get`, `list`, `create`, `patch`, `update`, `delete` | Manage the chaos engine, experiment, and result CRDs |
 
-### Disk fill mebibytes
+The default Harness chaos infrastructure service account already includes these permissions. You only need to extend it if you are running with a restricted scope.
 
-Ephemeral storage required to be filled in the target pod. Tune it by using the `EPHEMERAL_STORAGE_MEBIBYTES` environment variable.
+---
 
-`EPHEMERAL_STORAGE_MEBIBYTES` is mutually exclusive with the `FILL_PERCENTAGE` environment variable. If `FILL_PERCENTAGE` environment variable is set, the fault uses `FILL_PERCENTAGE` for the fill. Otherwise, the dault fills the ephemeral storage based on `EPHEMERAL_STORAGE_MEBIBYTES` environment variable.
+## Fault tunables
 
-The following YAML snippet illustrates the use of this environment variable:
+Configure the following fault parameters when you add Disk fill to an experiment in Chaos Studio. Defaults are shown for reference.
 
-[embedmd]: # "./static/manifests/disk-fill/ephemeral-storage-mebibytes.yaml yaml"
+**Chaos parameters**
 
-```yaml
-# ephemeral storage which needs to fill in will application
-# if ephemeral-storage limits is not specified inside target application
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: disk-fill
-      spec:
-        components:
-          env:
-            ## ephemeral storage size, which needs to be filled
-            - name: EPHEMERAL_STORAGE_MEBIBYTES
-              value: "256" #in MiBi
-            - name: TOTAL_CHAOS_DURATION
-              VALUE: "60"
-```
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `FILL_PERCENTAGE` | Percentage of the target container's `ephemeral-storage` limit to consume. | `80` |
+| `DATA_BLOCK_SIZE` | Write block size in KB. Larger blocks fill the disk faster; smaller blocks generate more I/O syscalls. | `256` |
+| `EPHEMERAL_STORAGE_MEBIBYTES` | Override for the detected ephemeral-storage limit, in MiB. Set to `0` to auto-detect from the container's resource spec. | `0` |
+| `TOTAL_CHAOS_DURATION` | Duration of the fault in seconds. The fill is held for the duration once the target percentage is reached. | `60` |
 
-### Data block size
+**Targeting**
 
-Size of the data block required to fill the ephemeral storage of the target pod. It is in terms of `KB`. The default value of `DATA_BLOCK_SIZE` is `256` KB. Tune it by using the `DATA_BLOCK_SIZE` environment variable.
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `TARGET_PODS` | Comma-separated list of pod names to target. Empty selects from the workload's pods using `POD_AFFECTED_PERCENTAGE`. | `""` |
+| `TARGET_CONTAINER` | Container in the pod whose ephemeral storage is filled. Empty targets the first container in the pod spec. | `""` |
+| `NODE_LABEL` | Label selector to filter target pods by the node they run on. Empty disables node-based filtering. | `""` |
+| `POD_AFFECTED_PERCENTAGE` | Percentage of the workload's pods to target. `0` means one pod. | `0` |
+| `SEQUENCE` | When multiple pods are targeted, fill `parallel` (all at once) or `serial` (one after another). | `parallel` |
 
-The following YAML snippet illustrates the use of this environment variable:
+**Runtime and helper**
 
-[embedmd]: # "./static/manifests/disk-fill/data-block-size.yaml yaml"
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `CONTAINER_RUNTIME` | Container runtime on the target nodes. One of `containerd`, `docker`, `crio`. | `containerd` |
+| `SOCKET_PATH` | Path to the container runtime socket on the target node. Set to match `CONTAINER_RUNTIME`. | `/run/containerd/containerd.sock` |
+| `RAMP_TIME` | Wait period in seconds before and after the fault. Go to [ramp time](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time) to read how it is applied. | `0` |
 
-```yaml
-# size of the data block used to fill the disk
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: disk-fill
-      spec:
-        components:
-          env:
-            ## size of data block used to fill the disk
-            - name: DATA_BLOCK_SIZE
-              value: "256" #in KB
-            - name: TOTAL_CHAOS_DURATION
-              VALUE: "60"
-```
+Tunables that apply to every chaos fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
 
-### Container runtime and socket path
+:::warning Without an ephemeral-storage limit, the fault has no boundary
+If the target container does not have `resources.limits.ephemeral-storage` set, the fault falls back to the node's filesystem size for the percentage calculation. A `FILL_PERCENTAGE` of 80 then targets 80 percent of the entire node disk and can starve neighboring pods. Set a sensible container limit or use the `EPHEMERAL_STORAGE_MEBIBYTES` override.
+:::
 
-The `CONTAINER_RUNTIME` and `SOCKET_PATH` environment variables to set the container runtime and socket file path, respectively.
+### Configure for your container runtime
 
-- `CONTAINER_RUNTIME`: It supports `docker`, `containerd`, and `crio` runtimes. The default value is `containerd`.
-- `SOCKET_PATH`: It contains path of containerd socket file by default(`/run/containerd/containerd.sock`). For `docker`, specify path as `/var/run/docker.sock`. For `crio`, specify path as `/var/run/crio/crio.sock`.
+Set `CONTAINER_RUNTIME` and `SOCKET_PATH` to match the runtime on the target node:
 
-The following YAML snippet illustrates the use of these environment variables:
+| `CONTAINER_RUNTIME` | `SOCKET_PATH` |
+| --- | --- |
+| `containerd` (default) | `/run/containerd/containerd.sock` |
+| `docker` | `/var/run/docker.sock` |
+| `crio` | `/var/run/crio/crio.sock` |
 
-[embedmd]: # "./static/manifests/disk-fill/container-runtime-and-socket-path.yaml yaml"
+---
 
-```yaml
-## provide the container runtime and socket file path
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: pod-api-latency
-      spec:
-        components:
-          env:
-            # runtime for the container
-            # supports docker, containerd, crio
-            - name: CONTAINER_RUNTIME
-              value: "containerd"
-            # path of the socket file
-            - name: SOCKET_PATH
-              value: "/run/containerd/containerd.sock"
-            # provide the port of the targeted service
-            - name: TARGET_SERVICE_PORT
-              value: "80"
-            - name: PATH_FILTER
-              value: '/status'
-```
+## Fault execution in brief
+
+Writes data into the target container's writable layer until the configured percentage of its ephemeral-storage limit is consumed, holds the fill for the duration, and frees the data when the fault ends.
+
+---
+
+## Expected behavior during fault execution
+
+- The container's ephemeral-storage usage rises toward the configured `FILL_PERCENTAGE` of its limit and stays there for the duration.
+- If the fill exceeds `resources.limits.ephemeral-storage`, the kubelet evicts the pod with `Reason: Evicted` and `Message: container ... has used ... ephemeral-storage which exceeds limit`. The pod's controller reschedules a replacement on another Ready node.
+- Application writes to the writable layer (logs, temp files, scratch space) may fail with `ENOSPC` (no space left on device) before the eviction completes. How the application handles that error determines the user-visible behavior.
+- Reads are not affected. Existing files remain readable; only new writes can fail.
+- Volume-backed paths (`emptyDir.medium: Memory`, PVCs, `hostPath` mounts) are not affected by ephemeral-storage limits and continue to function normally.
+- The kubelet may also apply node-level `DiskPressure` if the node's filesystem fills past the eviction threshold; this is a node-wide condition, not specific to the target pod.
+
+:::info When the fault ends
+After `TOTAL_CHAOS_DURATION`, the fault removes the data it wrote and the container's ephemeral-storage usage returns to baseline within seconds. If the pod was evicted before the fault completed, the eviction stands; the replacement pod is a fresh container.
+:::
+
+### Signals to watch
+
+A useful experiment captures signals from three layers. Attach [resilience probes](/docs/resilience-testing/chaos-testing/probes) to assert each layer automatically:
+
+- **Application error rate:** Watch for spikes in 5xx and disk-related error logs (`ENOSPC`, `no space left`) during the fault. Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) to assert direct endpoint health.
+- **Eviction events:** Track `kube_pod_status_reason{reason="Evicted"}` for the target workload's namespace. Use a [Prometheus probe](/docs/resilience-testing/chaos-testing/probes/apm-probes) to confirm whether the eviction did or did not happen, depending on what you are testing.
+- **Replica recovery:** Look for `SuccessfulCreate` events on the workload after the eviction. Use a [Kubernetes probe](/docs/resilience-testing/chaos-testing/probes/k8s-probe) to fail when the workload does not converge back to its declared replicas inside your SLO.
+
+---
+
+## Verify the fault execution effect
+
+While the experiment is running, confirm that the target container's storage is actually being consumed:
+
+1. **Check ephemeral-storage usage on the pod.**
+
+   ```bash
+   kubectl describe pod -n <namespace> <pod-name> | grep -A 3 'ephemeral-storage'
+   ```
+
+   The `Usage` line should be near `FILL_PERCENTAGE` of the configured limit.
+
+2. **List disk usage inside the target container.**
+
+   ```bash
+   kubectl exec -n <namespace> <pod-name> -c <container> -- df -h /
+   ```
+
+   The root filesystem usage should be elevated. If the container has its own emptyDir or hostPath mounts, check those separately; ephemeral-storage is the writable layer of the container itself.
+
+3. **Look for eviction events.**
+
+   ```bash
+   kubectl get events -n <namespace> --field-selector reason=Evicted --sort-by='.lastTimestamp'
+   ```
+
+   At `FILL_PERCENTAGE` above 100, expect an `Evicted` event referencing `ephemeral-storage`. Below 100, no eviction should occur.
+
+---
+
+## Recovery and cleanup
+
+- **End of duration:** When `TOTAL_CHAOS_DURATION` elapses, the written data is removed and the container's ephemeral-storage usage returns to baseline within seconds.
+- **Evicted pods reschedule:** If the fault exceeded the container's limit and the pod was evicted, the replacement is scheduled by the workload's controller on any Ready node with capacity.
+- **Replacement on the same node may re-evict immediately:** If the replacement lands on a node that is itself under `DiskPressure`, it may be evicted before becoming Ready. Free node space or wait for the kubelet to garbage-collect unused images.
+- **Application-level retention:** Applications that keep state in the writable layer (caches, scratch space, intermediate files) lose that state when evicted. Validate that the workload reconstructs the state cleanly on the replacement pod.
+- **Abort the experiment early:** Stopping the experiment from Chaos Studio triggers cleanup of the written data. Any eviction that has already happened cannot be undone.
+
+---
+
+## Limitations
+
+This fault is not appropriate in the following scenarios:
+
+- **Serverless Kubernetes (EKS Fargate, ACI virtual nodes):** These platforms do not expose container runtime sockets and reject the privileged access the fault needs. GKE Autopilot is supported once the one-time setup in [Chaos on GKE Autopilot](/docs/resilience-testing/chaos-testing/gke-autopilot) is in place.
+- **Containers without an ephemeral-storage limit:** Without a limit, the percentage calculation falls back to the node's filesystem and the blast radius extends beyond the target. Set a container limit before running this fault in production.
+- **Volume-backed writable paths:** This fault fills the container's writable layer. It does not fill `emptyDir` volumes, PVCs, or `hostPath` mounts. Use a workload-specific fault if you need to fill those.
+- **Read-only root filesystems:** Containers configured with `readOnlyRootFilesystem: true` reject writes from the fault. Use [FS fill](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/fs-fill) against a writable mount path instead.
+- **Tiny ephemeral-storage limits:** Limits below a few hundred MiB fill in well under a second and may not give the kubelet time to detect the breach. Raise the limit or use a larger duration with a lower `FILL_PERCENTAGE` to produce sustained pressure.
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="Disk fill experiment stays Pending or never starts in Harness Chaos Engineering"
+  mode="docs"
+  fallback="Inspect the chaos pods in the experiment namespace with kubectl describe pod -n <chaos-namespace>. The most common causes are taints on the target node, missing RBAC for the chaos service account, or a PodSecurity admission policy blocking privileged pods. Confirm the service account has the permissions listed above and the chaos namespace has the required Pod Security level."
+/>
+
+<Troubleshoot
+  issue="Disk fill runs but the target container's ephemeral-storage usage does not increase"
+  mode="docs"
+  fallback="The most common causes are: TARGET_CONTAINER does not match any container in the pod spec, the container has readOnlyRootFilesystem set to true, or the writable layer is too small to register a measurable change. Verify the container name with kubectl get pod <name> -o jsonpath='{.spec.containers[*].name}', check the container's securityContext, and consider using FS fill with a writable mount path instead."
+/>
+
+<Troubleshoot
+  issue="Pod was evicted but the workload's replica count did not recover"
+  mode="docs"
+  fallback="The replacement pod is failing to schedule. Run kubectl describe pod -n <namespace> <new-pod-name> for the message. Common causes: every node is under DiskPressure (the fault filled too aggressively), insufficient CPU or memory available cluster-wide, or PV topology constraints. Lower FILL_PERCENTAGE so the fault stays under the limit, or add cluster capacity."
+/>
+
+<Troubleshoot
+  issue="Connection to container runtime fails for disk-fill in Harness Chaos Engineering"
+  mode="docs"
+  fallback="The default SOCKET_PATH is /run/containerd/containerd.sock. If your nodes use Docker, set CONTAINER_RUNTIME=docker and SOCKET_PATH=/var/run/docker.sock. For CRI-O, set CONTAINER_RUNTIME=crio and SOCKET_PATH=/var/run/crio/crio.sock. Confirm the path by SSHing to the node and running ls -l on each candidate socket file."
+/>
+
+---
+
+## Related faults
+
+- [FS fill](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/fs-fill): Write a specific size of data to a specific path inside the container, useful for filling mounted volumes or non-root paths.
+- [Pod CPU hog](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-cpu-hog) and [Pod memory hog](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-memory-hog): Apply CPU or memory pressure on the target container.
+- [Node I/O stress](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/node-io-stress): Drive disk I/O at the node level rather than against a single container.
+- [Common pod fault tunables](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults): Shared environment variables for selecting target pods and workloads.

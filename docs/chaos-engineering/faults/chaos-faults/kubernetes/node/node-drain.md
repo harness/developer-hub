@@ -66,6 +66,7 @@ Run this fault when you want to answer concrete questions like:
 | Rancher | Supported |
 | VMware Tanzu | Supported |
 | Self-managed Kubernetes (CNCF-certified) | Supported |
+| GKE Autopilot | Not supported (Autopilot does not expose nodes you can cordon or drain; only Node Network Loss and Node Network Latency are allowlisted, see [Chaos on GKE Autopilot](/docs/resilience-testing/chaos-testing/gke-autopilot)) |
 
 This fault is API-driven and does not require host-level access on the target node.
 
@@ -125,12 +126,14 @@ A drain treats every pod individually. If you have not configured a `PodDisrupti
 
 ## Fault execution in brief
 
+Cordons the target node and evicts all eligible (non-DaemonSet) pods through the Kubernetes Eviction API for the configured duration, so workloads must reschedule onto other nodes; the node is uncordoned automatically at the end of the fault.
+
 The drain has three distinct stages that the API server orchestrates:
 
 | Stage | What happens |
 | --- | --- |
 | Cordon | The node's `spec.unschedulable` is set to `true`. The scheduler stops placing new pods on it; existing pods are not affected yet. |
-| Evict | The chaos infrastructure issues `Eviction` API requests for every non-DaemonSet pod on the node. The API server consults the relevant PDB before allowing each eviction. |
+| Evict | An `Eviction` API request is issued for every non-DaemonSet pod on the node. The API server consults the relevant PDB before allowing each eviction. |
 | Uncordon | At the end of `TOTAL_CHAOS_DURATION`, the node's `spec.unschedulable` is set back to `false`. New pods can be scheduled on it again. Already-evicted pods do not migrate back automatically. |
 
 DaemonSet pods are not evicted, since their controller would immediately recreate them on the same node.

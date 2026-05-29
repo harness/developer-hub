@@ -1,265 +1,255 @@
 ---
 id: container-kill
 title: Container kill
+sidebar_label: Container Kill
+description: Kill a specific container inside a Kubernetes pod to test restart loops, sidecar resilience, probe tuning, and multi-container coordination.
+keywords:
+  - chaos engineering
+  - container kill
+  - container restart
+  - sidecar resilience
+  - kubernetes pod fault
+tags:
+  - chaos-engineering
+  - pod-faults
+  - lifecycle-chaos
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/container-kill
-- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/container-kill
-- /docs/chaos-engineering/chaos-faults/kubernetes/container-kill
-- /docs/chaos-engineering/technical-reference/chaos-faults/spring-boot/spring-boot-app-kill
+  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/container-kill
+  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/container-kill
+  - /docs/chaos-engineering/chaos-faults/kubernetes/container-kill
+  - /docs/chaos-engineering/technical-reference/chaos-faults/spring-boot/spring-boot-app-kill
 ---
 
-Container kill is a Kubernetes pod-level chaos fault that causes container failure on specific or random replicas of an application resource.
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-![Container Kill](./static/images/container-kill.png)
+Container kill is a Kubernetes pod-level chaos fault that terminates a single container inside a target pod by sending a configurable signal (default `SIGKILL`). The container's pod stays running; the kubelet restarts the killed container in place, incrementing its restart count.
 
-### Use cases
+Use this fault to test what happens when one container in a multi-container pod dies without taking the whole pod down: how the surviving sidecars react, whether the restarted container reconciles its state on startup, and how long the pod is `NotReady` while the container restarts.
 
-Container kill:
-- Tests an application's deployment sanity (replica availability and uninterrupted service) and recovery workflow when certain replicas are not available.
-- Tests the recovery of pods that possess sidecar containers.
+:::info Run your first experiment
+If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
+:::
 
-### Permissions required
+---
 
-Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+## Use cases
 
-```
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  namespace: hce
-  name: container-kill
-spec:
-  definition:
-    scope: Cluster # Supports "Namespaced" mode too
-permissions:
-  - apiGroups: [""]
-    resources: ["pods"]
-    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
-  - apiGroups: [""]
-    resources: ["events"]
-    verbs: ["create", "get", "list", "patch", "update"]
-  - apiGroups: [""]
-    resources: ["pods/log"]
-    verbs: ["get", "list", "watch"]
-  - apiGroups: [""]
-    resources: ["deployments, statefulsets"]
-    verbs: ["get", "list"]
-  - apiGroups: [""]
-    resources: ["replicasets, daemonsets"]
-    verbs: ["get", "list"]
-  - apiGroups: [""]
-    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
-    verbs: ["create", "delete", "get", "list", "patch", "update"]
-  - apiGroups: ["batch"]
-    resources: ["jobs"]
-    verbs: ["create", "delete", "get", "list", "deletecollection"]
-```
+Run this fault when you want to answer concrete questions like:
 
-### Prerequisites
-- Kubernetes > 1.16
-- The application pods should be in the running state before and after injecting chaos.
+- **Sidecar resilience:** When the main application container dies, do logging, service-mesh, and auth sidecars survive cleanly? When a sidecar dies, does the main container survive?
+- **Probe tuning:** Are liveness and readiness probes configured to detect the restart and remove the pod from service quickly, then re-add it when the container is healthy again?
+- **Cold-start behavior:** Does the restarted container come up within a window your callers can tolerate, and does it correctly rejoin state (cache, connection pool, leader-election, queue offsets)?
+- **CrashLoopBackOff thresholds:** With repeated container kills (`TOTAL_CHAOS_DURATION` larger than `CHAOS_INTERVAL`), does the workload tip into `CrashLoopBackOff`, and do your alerts and runbooks handle that correctly?
+- **Connection draining at the container layer:** With `SIGNAL: SIGTERM` instead of the default `SIGKILL`, does the container honor a graceful-shutdown handler before exit?
 
-### Supported environments
+---
 
-<table>
-  <tr>
-    <th> Platform </th>
-    <th> Support Status </th>
-  </tr>
-  <tr>
-    <td> GKE (Google Kubernetes Engine) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> EKS (Amazon Elastic Kubernetes Service) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> AKS (Azure Kubernetes Service) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> GKE Autopilot </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> Self-managed Kubernetes </td>
-    <td> ✅ Supported </td>
-  </tr>
-</table>
+## Prerequisites
 
-### Optional tunables
+- **Kubernetes version:** 1.21 or later. Go to [What's supported](/docs/chaos-engineering/whats-supported) to confirm distribution support.
+- **Target pods are Running:** The pods containing the target container are in the `Running` state before the fault is launched. The fault reports a precheck failure otherwise.
+- **Privileged pods allowed:** The cluster lets you schedule privileged pods in the chaos namespace. The fault uses the container runtime to deliver the signal directly to the container PID.
+- **Container runtime access:** The chaos infrastructure can reach the container runtime on the target nodes. The default `containerd` socket path is mounted automatically.
+- **Workload selector defined:** The chaos experiment knows the target workload (`Deployment`, `StatefulSet`, `DaemonSet`, `Rollout`, etc.) by kind, namespace, and either names or labels.
 
-   <table>
-      <tr>
-        <th> Tunable </th>
-        <th> Description  </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> TARGET_CONTAINER </td>
-        <td> Name of the container that is killed. </td>
-        <td> If it is not provided, the fault deletes the first container. For more information, go to <a href="#kill-specific-container">kill specific container</a></td>
-      </tr>
-      <tr>
-        <td> CHAOS_INTERVAL </td>
-        <td> Time interval between two successive container kills (in seconds). </td>
-        <td> Default: 10 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#chaos-interval">chaos interval </a></td>
-      </tr>
-      <tr>
-        <td> TOTAL_CHAOS_DURATION </td>
-        <td> Duration for which to insert chaos (in seconds). </td>
-        <td> Default: 20 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos </a></td>
-      </tr>
-      <tr>
-        <td> PODS_AFFECTED_PERC </td>
-        <td> Percentage of total pods to target. It takes numeric values only. </td>
-        <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage </a></td>
-      </tr>
-      <tr>
-        <td> TARGET_PODS </td>
-        <td> Comma-separated list of application pod names subject to container kill.</td>
-        <td> If it is not provided, target pods are randomly based on appLabels provided. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods">target specific pods </a></td>
-      </tr>
-      <tr>
-        <td> NODE_LABEL </td>
-        <td> Node label used to filter the target node if <code>TARGET_NODE</code> environment variable is not set. </td>
-        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
-      </tr>
-      <tr>
-        <td> RAMP_TIME </td>
-        <td> Period to wait before injecting chaos (in seconds). </td>
-        <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time </a></td>
-      </tr>
-      <tr>
-        <td> SEQUENCE </td>
-        <td> Sequence of chaos execution for multiple target pods. </td>
-        <td> Default value: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a></td>
-      </tr>
-      <tr>
-        <td> SIGNAL </td>
-        <td> Termination signal used for container kill. </td>
-        <td> Defaults to <code>SIGKILL</code>. For more information, go to <a href="#signal-for-kill">signal for kill </a></td>
-      </tr>
-      <tr>
-        <td> SOCKET_PATH </td>
-        <td> Path to the <code>containerd/crio/docker</code> socket file. </td>
-        <td> Default <code>/run/containerd/containerd.sock</code>. For more information, go to <a href="#container-runtime-and-socket-path">socket path </a></td>
-      </tr>
-      <tr>
-        <td> CONTAINER_RUNTIME </td>
-        <td> Container runtime interface for the cluster. </td>
-        <td> Default: containerd. Supports docker, containerd and crio. For more information, go to <a href="#container-runtime-and-socket-path">container runtime</a></td>
-      </tr>
-    </table>
+---
 
+## Supported environments
 
-### Kill specific container
+| Platform | Support status |
+| --- | --- |
+| Amazon EKS | Supported |
+| Azure AKS | Supported |
+| Google GKE | Supported |
+| Red Hat OpenShift | Supported |
+| Rancher | Supported |
+| VMware Tanzu | Supported |
+| Self-managed Kubernetes (CNCF-certified) | Supported |
+| GKE Autopilot | Supported with [Autopilot setup](/docs/resilience-testing/chaos-testing/gke-autopilot) |
+| EKS Fargate, ACI virtual nodes | Not supported (no access to container runtime sockets) |
 
-Name of the target container. Tune it by using the `TARGET_CONTAINER` environment variable. If `TARGET_CONTAINER` environment variable is set to empty, the fault uses the first container of the target pod.
+---
 
-The following YAML snippet illustrates the use of this environment variable:
+## Permissions required
 
-[embedmd]: # "./static/manifests/container-kill/kill-specific-container.yaml yaml"
+The fault runs under the chaos infrastructure's service account.
 
-```yaml
-# kill the specific target container
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: container-kill
-      spec:
-        components:
-          env:
-            # name of the target container
-            - name: TARGET_CONTAINER
-              value: "nginx"
-            - name: TOTAL_CHAOS_DURATION
-              VALUE: "60"
-```
+| Resource (`apiGroup`) | Verbs | Why it is needed |
+| --- | --- | --- |
+| `pods` (`""`) | `get`, `list`, `create`, `delete`, `deletecollection`, `patch`, `update` | Discover target pods and run the chaos pod on the same node |
+| `pods/log` (`""`) | `get`, `list`, `watch` | Stream chaos pod logs for status and debugging |
+| `events` (`""`) | `get`, `list`, `create`, `patch`, `update` | Record fault progress as Kubernetes events |
+| `configmaps` (`""`) | `get`, `list` | Mount configuration into the chaos pod when specified |
+| `deployments`, `statefulsets`, `replicasets`, `daemonsets` (`apps`) | `get`, `list` | Resolve the parent controller for each target pod |
+| `replicationcontrollers` (`""`) | `get`, `list` | Resolve the parent controller for legacy workloads |
+| `deploymentconfigs` (`apps.openshift.io`) | `get`, `list` | Resolve the parent controller on OpenShift |
+| `rollouts` (`argoproj.io`) | `get`, `list` | Resolve the parent controller for Argo Rollouts |
+| `jobs` (`batch`) | `get`, `list`, `create`, `delete`, `deletecollection` | Run the chaos job that drives the fault |
+| `chaosengines`, `chaosexperiments`, `chaosresults` (`litmuschaos.io`) | `get`, `list`, `create`, `patch`, `update`, `delete` | Manage the chaos engine, experiment, and result CRDs |
 
-### Container runtime and socket path
+The default Harness chaos infrastructure service account already includes these permissions. You only need to extend it if you are running with a restricted scope.
 
-The `CONTAINER_RUNTIME` and `SOCKET_PATH` environment variables to set the container runtime and socket file path, respectively.
+---
 
-- `CONTAINER_RUNTIME`: It supports `docker`, `containerd`, and `crio` runtimes. The default value is `containerd`.
-- `SOCKET_PATH`: It contains path of containerd socket file by default(`/run/containerd/containerd.sock`). For `docker`, specify path as `/var/run/docker.sock`. For `crio`, specify path as `/var/run/crio/crio.sock`.
+## Fault tunables
 
-The following YAML snippet illustrates the use of these environment variables:
+Configure the following fault parameters when you add Container kill to an experiment in Chaos Studio. Defaults are shown for reference.
 
-[embedmd]: # "./static/manifests/container-kill/container-runtime-and-socket-path.yaml yaml"
+**Chaos parameters**
 
-```yaml
-## provide the container runtime and socket file path
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: container-kill
-      spec:
-        components:
-          env:
-            # runtime for the container
-            # supports docker, containerd, crio
-            - name: CONTAINER_RUNTIME
-              value: "containerd"
-            # path of the socket file
-            - name: SOCKET_PATH
-              value: "/run/containerd/containerd.sock"
-            - name: TOTAL_CHAOS_DURATION
-              VALUE: "60"
-```
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `TOTAL_CHAOS_DURATION` | Duration of the fault in seconds. The fault iterates container kills across this window. | `60` |
+| `CHAOS_INTERVAL` | Time between successive container kills in seconds. | `10` |
+| `SIGNAL` | POSIX signal sent to the container's PID 1. Common values are `SIGKILL` (default), `SIGTERM`, `SIGABRT`. | `SIGKILL` |
 
-### Signal for kill
+**Targeting**
 
-Linux signal passed when killing the container. Its default value is set to `SIGTERM`. Tune it by using the `SIGNAL` environment variable.
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `TARGET_CONTAINER` | Name of the container to kill inside the target pod. Empty selects the first container in the pod spec. | `""` |
+| `TARGET_PODS` | Comma-separated list of pod names. Empty selects from the workload's pods using `POD_AFFECTED_PERCENTAGE`. | `""` |
+| `NODE_LABEL` | Label selector to filter target pods by the node they run on. Empty disables node-based filtering. | `""` |
+| `POD_AFFECTED_PERCENTAGE` | Percentage of the workload's pods on which the target container is killed. `0` means one pod. | `0` |
+| `SEQUENCE` | When multiple pods are targeted, kill `parallel` (all at once) or `serial` (one after another). | `parallel` |
 
-The following YAML snippet illustrates the use of this environment variable:
+**Runtime and helper**
 
-[embedmd]: # "./static/manifests/container-kill/signal.yaml yaml"
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `CONTAINER_RUNTIME` | Container runtime on the target nodes. One of `containerd`, `docker`, `crio`. | `containerd` |
+| `SOCKET_PATH` | Path to the container runtime socket on the target node. Set to match `CONTAINER_RUNTIME`. | `/run/containerd/containerd.sock` |
+| `RAMP_TIME` | Wait period in seconds before and after the fault. Go to [ramp time](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time) to read how it is applied. | `0` |
 
-```yaml
-# specific linux signal passed while kiiling container
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: container-kill
-      spec:
-        components:
-          env:
-            # signal passed while killing container
-            # defaults to SIGTERM
-            - name: SIGNAL
-              value: "SIGKILL"
-            - name: TOTAL_CHAOS_DURATION
-              VALUE: "60"
-```
+Tunables that apply to every chaos fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
+
+:::warning Container kill vs Pod delete
+Container kill terminates one container inside the pod; the pod stays scheduled and the kubelet restarts the container in place (incrementing `RESTARTS`). [Pod delete](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-delete) removes the whole pod and lets the controller schedule a replacement on any Ready node. Pick the one that matches the failure you want to simulate.
+:::
+
+### Configure for your container runtime
+
+Set `CONTAINER_RUNTIME` and `SOCKET_PATH` to match the runtime on the target node:
+
+| `CONTAINER_RUNTIME` | `SOCKET_PATH` |
+| --- | --- |
+| `containerd` (default) | `/run/containerd/containerd.sock` |
+| `docker` | `/var/run/docker.sock` |
+| `crio` | `/var/run/crio/crio.sock` |
+
+---
+
+## Fault execution in brief
+
+Sends the configured POSIX signal (default `SIGKILL`) to the target container inside the selected pods at the configured interval, so the kubelet restarts the container in place while the pod itself stays scheduled.
+
+---
+
+## Expected behavior during fault execution
+
+- The targeted container exits with the status corresponding to the signal (`137` for `SIGKILL`, `143` for `SIGTERM`). The pod's `RESTARTS` counter increments.
+- With `SIGKILL`, the container is killed immediately and any in-flight work is lost. With `SIGTERM`, the container can run a graceful-shutdown handler up to its own timeout before the kubelet forcibly removes it.
+- The kubelet's restart policy (`Always` for Deployment/StatefulSet pods) recreates the container in the same pod. The pod's IP and PVC bindings do not change.
+- During the restart window, the container is `NotReady`. The kubelet removes the pod from any `Service` whose `readinessProbe` it fails.
+- Sibling containers in the same pod (sidecars, init artifacts that have already completed) keep running. They are not directly affected.
+- If `CHAOS_INTERVAL` is shorter than the container's startup time and the restart back-off, the container enters `CrashLoopBackOff` and the kubelet delays each successive restart by an increasing penalty (capped at 5 minutes).
+
+:::info When the fault ends
+After `TOTAL_CHAOS_DURATION`, no further signals are sent. The container is left in whatever state its most recent restart produced. If it is healthy, the pod returns to `Ready` once probes pass.
+:::
+
+### Signals to watch
+
+A useful experiment captures signals from three layers. Attach [resilience probes](/docs/resilience-testing/chaos-testing/probes) to assert each layer automatically:
+
+- **Application availability:** Watch p99 latency and error rate. A spike that does not subside after the kubelet restarts the container points to slow cold-start or unhealthy probe tuning. Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) to assert direct endpoint health.
+- **Restart count:** Track `kube_pod_container_status_restarts_total` for the affected container. The counter should match the number of fault iterations (one per `CHAOS_INTERVAL`). Use a [Prometheus probe](/docs/resilience-testing/chaos-testing/probes/apm-probes) to verify.
+- **Probe and restart events:** Look for kubelet events with reason `Killing`, `Started`, and `BackOff`. Use a [Kubernetes probe](/docs/resilience-testing/chaos-testing/probes/k8s-probe) to fail when the pod enters `CrashLoopBackOff` unexpectedly.
+
+---
+
+## Verify the fault execution effect
+
+While the experiment is running, confirm that the target container is actually restarting:
+
+1. **Watch the pod's container restart counter.**
+
+   ```bash
+   kubectl get pod -n <namespace> <pod-name> -o jsonpath='{.status.containerStatuses[*].restartCount}{"\n"}'
+   ```
+
+   The restart count for the targeted container should increase by one per `CHAOS_INTERVAL`.
+
+2. **Inspect the last terminated state.**
+
+   ```bash
+   kubectl describe pod -n <namespace> <pod-name> | grep -A 5 'Last State'
+   ```
+
+   The `Last State` block should show `Terminated` with the exit code that matches the signal you sent (`137` for `SIGKILL`).
+
+3. **Check container readiness during the fault.**
+
+   ```bash
+   kubectl get pod -n <namespace> <pod-name> -o jsonpath='{.status.containerStatuses[*].ready}{"\n"}'
+   ```
+
+   The targeted container should briefly report `false` during each kill, then `true` once the kubelet restarts it.
+
+---
+
+## Recovery and cleanup
+
+- **End of duration:** When `TOTAL_CHAOS_DURATION` elapses, the fault stops sending signals. The container settles into whatever state its most recent restart produced.
+- **CrashLoopBackOff:** If the container hits its restart back-off cap (5 minutes), the fault still ends on schedule, but the container may take additional minutes to settle. Investigate the underlying crash before re-running.
+- **Restarted container picks up new image only if pulled:** The kubelet restarts the same container image that was already on the node. To force a fresh pull, change the image tag or use [Pod delete](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-delete) instead.
+- **Sidecars are not restarted:** Only the target container is touched. If your debugging suggests the sidecar also needs to restart, use [Pod delete](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-delete) to restart every container in the pod.
+- **Abort the experiment early:** Stopping the experiment from Chaos Studio prevents any further signals. Any restart already in flight completes normally.
+
+---
+
+## Limitations
+
+This fault is not appropriate in the following scenarios:
+
+- **Serverless Kubernetes (EKS Fargate, ACI virtual nodes):** These platforms do not expose container runtime sockets and reject the privileged access the fault needs. GKE Autopilot is supported once the one-time setup in [Chaos on GKE Autopilot](/docs/resilience-testing/chaos-testing/gke-autopilot) is in place.
+- **Pods with `restartPolicy: Never`:** Killing the container exits the pod permanently. The pod is not recreated by the kubelet, and the workload's controller (if any) must do the recreation.
+- **Init containers:** This fault targets running containers in the `containers:` array. Init containers have already exited by the time the fault starts and cannot be signaled.
+- **Static pods:** Pods managed directly by the kubelet (not by the API server) ignore the chaos infrastructure's coordination and may behave inconsistently after a kill.
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="Container kill experiment stays Pending or never starts in Harness Chaos Engineering"
+  mode="docs"
+  fallback="Inspect the chaos pods in the experiment namespace with kubectl describe pod -n <chaos-namespace>. The most common causes are taints on the target node, missing RBAC for the chaos service account, or a PodSecurity admission policy blocking privileged pods. Confirm the service account has the permissions listed above and the chaos namespace has the required Pod Security level."
+/>
+
+<Troubleshoot
+  issue="Container kill runs but the target container is never killed"
+  mode="docs"
+  fallback="The most common causes are: TARGET_CONTAINER does not match any container in the pod spec, CONTAINER_RUNTIME or SOCKET_PATH does not match the runtime on the target node, or POD_AFFECTED_PERCENTAGE resolved to zero pods. Verify the container name with kubectl get pod <name> -o jsonpath='{.spec.containers[*].name}' and confirm the runtime by SSHing to the node and inspecting the socket file."
+/>
+
+<Troubleshoot
+  issue="Container restarts trigger CrashLoopBackOff during container kill"
+  mode="docs"
+  fallback="CHAOS_INTERVAL may be shorter than the container's startup time, so the kubelet's exponential restart back-off kicks in. Either raise CHAOS_INTERVAL above the container's startup time or shorten TOTAL_CHAOS_DURATION so the back-off does not compound. Inspect the back-off state with kubectl describe pod <name>."
+/>
+
+<Troubleshoot
+  issue="Connection to container runtime fails for container-kill in Harness Chaos Engineering"
+  mode="docs"
+  fallback="The default SOCKET_PATH is /run/containerd/containerd.sock. If your nodes use Docker, set CONTAINER_RUNTIME=docker and SOCKET_PATH=/var/run/docker.sock. For CRI-O, set CONTAINER_RUNTIME=crio and SOCKET_PATH=/var/run/crio/crio.sock. Confirm the path by SSHing to the node and running ls -l on each candidate socket file."
+/>
+
+---
+
+## Related faults
+
+- [Pod delete](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-delete): Delete the whole pod rather than a single container.
+- [Pod CPU hog](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-cpu-hog): Pressure a container's CPU instead of killing it outright.
+- [Pod memory hog](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-memory-hog): Allocate memory until the kernel OOM-kills the container.
+- [Common pod fault tunables](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults): Shared environment variables for selecting target pods and workloads.

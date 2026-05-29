@@ -22,7 +22,7 @@ redirect_from:
 
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-Node memory hog is a Kubernetes node-level chaos fault that consumes a configurable share of a target node's memory. Harness Chaos Engineering schedules a privileged helper pod (`harness/chaos-ddcr-faults`) on the node, which runs Linux `stress-ng` VM workers that allocate and touch memory pages. As free memory drops, the kubelet's eviction thresholds trip and pods are evicted in QoS order: `BestEffort` first, then `Burstable` (the pods that exceed their request the most), then `Guaranteed` only as a last resort.
+Node memory hog is a Kubernetes node-level chaos fault that consumes a configurable share of a target node's memory for a configurable duration. As free memory drops, the kubelet's eviction thresholds trip and pods are evicted in QoS order: `BestEffort` first, then `Burstable` (the pods that exceed their request the most), then `Guaranteed` only as a last resort.
 
 Use this fault to simulate a memory-leak neighbor: a runaway batch process, a JVM heap that grew past its node-level budget, or a container that ignores its memory limit and consumes whatever the kernel gives it.
 
@@ -48,8 +48,8 @@ Run this fault when you want to answer concrete questions like:
 ## Prerequisites
 
 - **Kubernetes version:** 1.21 or later. Go to [What's supported](/docs/chaos-engineering/whats-supported) to confirm distribution support.
-- **Privileged pods allowed:** The cluster lets you schedule privileged pods in the chaos namespace. The helper pod runs the memory workers against the host.
-- **Container runtime socket:** The chaos infrastructure has access to the container runtime socket on the target nodes. The default `containerd` socket path is mounted automatically.
+- **Privileged pods allowed:** The cluster lets you schedule privileged pods in the chaos namespace. The fault allocates memory against the host.
+- **Container runtime access:** The chaos infrastructure can reach the container runtime on the target nodes. The default `containerd` socket path is mounted automatically.
 - **Node readiness:** Target nodes are in `Ready` state before the fault is launched. The fault reports a precheck failure otherwise.
 - **Workloads have memory requests and limits:** Without memory requests, the kubelet cannot reason about QoS class, every pod is treated as `BestEffort`, and the experiment observes generic eviction noise rather than meaningful prioritization.
 - **Chaos infrastructure isolation:** The target nodes are not single points of failure for the chaos infrastructure itself. If chaos control-plane pods are scheduled on the saturated node and end up evicted, the experiment loses observability.
@@ -67,6 +67,7 @@ Run this fault when you want to answer concrete questions like:
 | Rancher | Supported |
 | VMware Tanzu | Supported |
 | Self-managed Kubernetes (CNCF-certified) | Supported |
+| GKE Autopilot | Not supported (Autopilot does not expose the node-level access this fault requires; only Node Network Loss and Node Network Latency are allowlisted, see [Chaos on GKE Autopilot](/docs/resilience-testing/chaos-testing/gke-autopilot)) |
 
 ---
 
@@ -76,8 +77,8 @@ The fault runs under the chaos infrastructure's service account. The account mus
 
 | Resource (`apiGroup`) | Verbs | Why it is needed |
 | --- | --- | --- |
-| `pods` (`""`) | `get`, `list`, `create`, `delete`, `deletecollection`, `patch`, `update` | Create the helper pod that runs the memory workers on the target node |
-| `pods/log` (`""`) | `get`, `list`, `watch` | Stream logs from the helper pod for status and debugging |
+| `pods` (`""`) | `get`, `list`, `create`, `delete`, `deletecollection`, `patch`, `update` | Run the chaos pod that injects memory pressure on the target node |
+| `pods/log` (`""`) | `get`, `list`, `watch` | Stream chaos pod logs for status and debugging |
 | `events` (`""`) | `get`, `list`, `create`, `patch`, `update` | Record fault progress and any pod evictions as Kubernetes events |
 | `nodes` (`""`) | `get`, `list` | Discover target nodes and validate selectors |
 | `jobs` (`batch`) | `get`, `list`, `create`, `delete`, `deletecollection` | Run the chaos job that drives the fault |
@@ -124,7 +125,9 @@ Tunables that apply to every chaos fault are documented in [common tunables for 
 
 ## Fault execution in brief
 
-Memory pressure does not have a single failure mode. The kubelet runs an eviction manager loop that watches signals like `memory.available` and ranks pods for eviction:
+Allocates a specified percentage of the target node's memory for the configured duration, so workloads sharing the node experience kubelet eviction or container OOM kills once the kubelet's memory-pressure threshold is crossed.
+
+The kubelet eviction manager ranks pods for eviction in this order:
 
 | Eviction order | What is reclaimed |
 | --- | --- |
@@ -139,7 +142,7 @@ The kubelet emits `Evicted` events naming the evicted pod and the eviction signa
 
 ## Expected behavior during fault execution
 
-- Memory consumed by the helper is added on top of whatever the node was already using. A 30% setting on a node already at 60% utilization pushes the node to 90% and likely trips kubelet eviction thresholds.
+- Memory consumed by the fault is added on top of whatever the node was already using. A 30% setting on a node already at 60% utilization pushes the node to 90% and likely trips kubelet eviction thresholds.
 - The kubelet evicts whole pods, not individual containers. Once a pod is evicted, the scheduler tries to place it on another node with capacity.
 - Application containers that hit their own memory limit are OOM-killed by the kernel and counted in `kube_pod_container_status_restarts_total`. This is independent of node eviction.
 - If `NUMBER_OF_WORKERS` is high, memory is allocated faster but consumes more CPU. For most experiments, the default `1` is enough; raise it only if you want to reach the target memory consumption in the first few seconds.
@@ -161,25 +164,17 @@ A useful experiment captures signals from three layers. Attach [resilience probe
 
 ## Verify the fault execution effect
 
-While the experiment is running, confirm that memory pressure is actually being applied. From a workstation with `kubectl` access:
+While the experiment is running, confirm that memory pressure is reaching the node:
 
-1. **Confirm the helper pod is on the target node.**
-
-   ```bash
-   kubectl get pods -n <chaos-namespace> -o wide | grep node-memory-hog-helper
-   ```
-
-   The pod's `NODE` column must match the target node and its status must be `Running`.
-
-2. **Check memory usage on the node.**
+1. **Check memory usage on the node.**
 
    ```bash
    kubectl top node <target-node>
    ```
 
-   Memory usage should rise toward the percentage you configured. If it stays flat, the workers did not start; check the helper pod logs.
+   Memory usage should rise toward the percentage you configured. If it stays flat, the fault is not driving memory pressure on the expected node.
 
-3. **Watch for eviction events.**
+2. **Watch for eviction events.**
 
    ```bash
    kubectl get events --field-selector reason=Evicted --all-namespaces -w
@@ -187,7 +182,7 @@ While the experiment is running, confirm that memory pressure is actually being 
 
    At higher consumption levels you should see `Evicted` events listing `MemoryPressure` as the reason. If no evictions occur, either the node had plenty of free memory or `MEMORY_CONSUMPTION_PERCENTAGE` was set too low to cross the kubelet's eviction threshold.
 
-4. **Look for OOM kills in pods that breached their own limit.**
+3. **Look for OOM kills in pods that breached their own limit.**
 
    ```bash
    kubectl get pods --field-selector spec.nodeName=<target-node> -o wide
@@ -200,12 +195,12 @@ While the experiment is running, confirm that memory pressure is actually being 
 
 ## Recovery and cleanup
 
-- **End of duration:** When `TOTAL_CHAOS_DURATION` elapses, the helper pod terminates and its memory pages are reclaimed. Node memory returns to baseline within a few seconds.
+- **End of duration:** When `TOTAL_CHAOS_DURATION` elapses, the allocation is freed and node memory returns to baseline within a few seconds.
 - **Evicted pods reschedule:** Pods that were evicted during the fault are scheduled on other Ready nodes by the scheduler. They are not placed back on the recovered node automatically.
 - **Pods stuck `Pending`:** If your cluster lacks capacity on other nodes, evicted pods may sit in `Pending`. The cluster autoscaler should add capacity if configured. Otherwise, the pods land back on the recovered node only after another scheduling cycle.
 - **Container OOM restarts:** Containers that were OOM-killed during the fault are restarted by the kubelet. If a container hits its limit again immediately on restart, it can enter `CrashLoopBackOff`. Investigate and raise the per-container memory limit before re-running.
-- **If the helper pod is killed mid-experiment:** The memory workers run in the helper's namespace and exit when the helper exits. No node-level cleanup is required.
-- **Abort the experiment early:** Stop the experiment from Harness Chaos Studio. The helper pod terminates and memory is reclaimed.
+- **If automated cleanup did not complete:** Memory is reclaimed as soon as the chaos pod exits. No node-level cleanup is required.
+- **Abort the experiment early:** Stop the experiment from Harness Chaos Studio. Memory is reclaimed once the chaos pod exits.
 
 ---
 
@@ -213,26 +208,26 @@ While the experiment is running, confirm that memory pressure is actually being 
 
 This fault is not appropriate in the following scenarios:
 
-- **Serverless Kubernetes (EKS Fargate, ACI virtual nodes, GKE Autopilot):** Fargate and ACI virtual nodes do not expose real nodes or the ability to schedule privileged pods. GKE Autopilot blocks the privileged security context this fault requires.
-- **Windows nodes:** The `stress-ng` utility this fault relies on is Linux-only.
-- **Single-node clusters or co-located chaos infrastructure:** If the chaos infrastructure pods (ddci and fault-specific pods) live on the node you are about to saturate, the kubelet may evict them along with everything else, and the experiment loses observability. Schedule chaos infrastructure on a node outside the blast radius.
+- **Serverless Kubernetes (EKS Fargate, ACI virtual nodes, GKE Autopilot):** These platforms do not expose real nodes or allow the privileged access this fault needs.
+- **Windows nodes:** This fault is supported on Linux nodes only.
+- **Single-node clusters or co-located chaos infrastructure:** If the chaos infrastructure pods live on the node you are about to saturate, the kubelet may evict them along with everything else, and the experiment loses observability. Schedule chaos infrastructure on a node outside the blast radius.
 - **Workloads without memory requests:** Without requests, every pod is `BestEffort` and the experiment observes generic eviction rather than meaningful QoS prioritization.
-- **Very large consumption values on small nodes:** Setting `MEMORY_CONSUMPTION_PERCENTAGE` close to 100% on a node with less headroom than the helper needs can OOM the helper itself before it produces useful signal. Start at 30% to 50% and tune from there.
+- **Very large consumption values on small nodes:** Setting `MEMORY_CONSUMPTION_PERCENTAGE` close to 100% on a node with less headroom than the chaos pod needs can OOM the chaos pod itself before it produces useful signal. Start at 30% to 50% and tune from there.
 
 ---
 
 ## Troubleshooting
 
 <Troubleshoot
-  issue="Node memory hog helper pod stays Pending or never schedules on the target node in Harness Chaos Engineering"
+  issue="Node memory hog experiment stays Pending or never starts in Harness Chaos Engineering"
   mode="docs"
-  fallback="Check the helper pod with kubectl describe pod -n <chaos-namespace>. The most common causes are taints on the target node that the helper does not tolerate, insufficient memory available to schedule the helper itself, or a PodSecurity admission policy blocking privileged pods. Add the required tolerations, free resources on the node, or run the experiment in a namespace with privileged Pod Security level."
+  fallback="Inspect the chaos pods in the experiment namespace with kubectl describe pod -n <chaos-namespace>. The most common causes are taints on the target node, insufficient memory available to schedule the chaos pod, or a PodSecurity admission policy blocking privileged pods. Add the required tolerations, free resources on the node, or run the experiment in a namespace with privileged Pod Security level."
 />
 
 <Troubleshoot
   issue="Node memory hog runs but kubectl top shows memory usage unchanged on the target node"
   mode="docs"
-  fallback="Either the stress-ng workers failed to start or the helper pod is constrained by its own memory limit. Check the helper pod logs with kubectl logs -n <chaos-namespace> <helper-pod-name>. If the helper has a small memory limit, its workers cannot allocate beyond that limit even with high MEMORY_CONSUMPTION_PERCENTAGE. Raise the helper's memory limit or remove it for the experiment."
+  fallback="The chaos pod may be constrained by its own memory limit, or it may be scheduled on a different node than expected. Verify with kubectl get pods -n <chaos-namespace> -o wide that the chaos pod is on the intended target node, and remove or raise its memory limit if it is constrained."
 />
 
 <Troubleshoot
@@ -244,7 +239,7 @@ This fault is not appropriate in the following scenarios:
 <Troubleshoot
   issue="Helper pod is killed with OOMKilled during node-memory-hog instead of evicting other pods"
   mode="docs"
-  fallback="The helper hit its own container memory limit before the kubelet reached its node-level eviction threshold. Remove or raise the helper's memory limit, or lower MEMORY_CONSUMPTION_MEBIBYTES so the helper stays within bounds. Also confirm with kubectl describe pod <helper> that the last state shows OOMKilled and Exit Code 137."
+  fallback="The chaos pod hit its own container memory limit before the kubelet reached its node-level eviction threshold. Lower MEMORY_CONSUMPTION_MEBIBYTES so the chaos pod stays within bounds, or raise the chaos pod's memory limit. Inspect the chaos pod in the experiment namespace with kubectl describe pod -n <chaos-namespace> to confirm the last state shows OOMKilled and Exit Code 137."
 />
 
 <Troubleshoot
@@ -259,5 +254,5 @@ This fault is not appropriate in the following scenarios:
 
 - [Node CPU hog](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/node-cpu-hog): Same blast-radius shape but applies CPU pressure instead of memory. Use it to test throttling rather than eviction.
 - [Node I/O stress](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/node-io-stress): Stresses disk I/O on the node. Use it to test disk-bound workloads.
-- [Pod memory hog](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-memory-hog) and [Pod memory hog exec](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-memory-hog-exec): Scope memory pressure to a single pod rather than the whole node. Use them to test per-container OOM behavior.
+- [Pod memory hog](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-memory-hog): Scope memory pressure to a single pod rather than the whole node. Use it to test per-container OOM behavior.
 - [Common node fault tunables](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/common-tunables-for-node-faults): Shared environment variables for selecting target nodes across node faults.

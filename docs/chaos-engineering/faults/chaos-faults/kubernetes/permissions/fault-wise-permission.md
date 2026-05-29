@@ -224,23 +224,6 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
     <li>nodes = NA*</li></ul></td>
     </tr>
     <tr>
-    <td> <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-cpu-hog-exec#permissions-required"> Pod CPU hog exec * </a></td>
-    <td> Namespaced, Cluster </td>
-    <td> <ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
-    <li>events = [create, get, list, patch, update]</li>
-    <li>configMaps = NA</li>
-    <li>pods/log = [get, list, watch]</li>
-    <li>pods/exec = [get, list, create]</li>
-    <li>deployments, statefulsets = [get, list]</li>
-    <li>replicasets, daemonsets = [get, list]</li>
-    <li>networkpolicies = NA</li>
-    <li>jobs = [create, delete, get, list, deletecollection]</li>
-    <li>chaosEngines, chaosExperiments, chaosResults = [create, delete, get, list, patch, update]</li>
-    <li>secrets = NA</li>
-    <li>pod eviction = NA</li>
-    <li>nodes = NA*</li></ul></td>
-    </tr>
-    <tr>
     <td> <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-cpu-hog#permissions-required"> Pod CPU hog </a></td>
     <td> Namespaced, Cluster </td>
     <td> <ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
@@ -435,23 +418,6 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
     <li>configMaps = NA</li>
     <li>pods/log = [get, list, watch]</li>
     <li>pods/exec = NA</li>
-    <li>deployments, statefulsets = [get, list]</li>
-    <li>replicasets, daemonsets = [get, list]</li>
-    <li>networkpolicies = NA</li>
-    <li>jobs = [create, delete, get, list, deletecollection]</li>
-    <li>chaosEngines, chaosExperiments, chaosResults = [create, delete, get, list, patch, update]</li>
-    <li>secrets = NA</li>
-    <li>pod eviction = NA</li>
-    <li>nodes = NA*</li></ul></td>
-    </tr>
-    <tr>
-    <td> <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-memory-hog-exec#permissions-required"> Pod memory hog exec * </a></td>
-    <td> Namespaced, Cluster </td>
-    <td> <ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
-    <li>events = [create, get, list, patch, update]</li>
-    <li>configMaps = NA</li>
-    <li>pods/log = [get, list, watch]</li>
-    <li>pods/exec = [get, list, create]</li>
     <li>deployments, statefulsets = [get, list]</li>
     <li>replicasets, daemonsets = [get, list]</li>
     <li>networkpolicies = NA</li>

@@ -1,445 +1,252 @@
 ---
 id: pod-network-loss
 title: Pod network loss
+sidebar_label: Pod Network Loss
+description: Drop a configurable percentage of packets on a target Kubernetes pod's network path to test retry, timeout, and failover behavior.
+keywords:
+  - chaos engineering
+  - pod network loss
+  - packet loss
+  - network chaos
+  - kubernetes pod fault
+tags:
+  - chaos-engineering
+  - pod-faults
+  - network-chaos
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-loss
-- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-network-loss
-- /docs/chaos-engineering/chaos-faults/kubernetes/pod-network-loss
+  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-loss
+  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-network-loss
+  - /docs/chaos-engineering/chaos-faults/kubernetes/pod-network-loss
 ---
 
-Pod network loss is a Kubernetes pod-level chaos fault that causes packet loss in a specific container by starting a traffic control (tc) process with netem rules to add egress (or ingress) loss.
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-![Pod Network Loss](./static/images/pod-network-loss.png)
+Pod network loss is a Kubernetes pod-level chaos fault that drops a configurable percentage of packets on the network path serving a target pod for a configurable duration. Only the selected pods experience the loss; other pods on the node and the node's host networking are unaffected. When the fault ends, the configuration is removed and the pod's network returns to normal immediately.
 
-### Use cases
-Pod network loss:
-- Simulates a degraded network with varied percentages of dropped packets between microservices.
-- Simulates loss of access to specific third-party or dependent services (like message queues or databases) or components.
-- Simulates blackhole against traffic to a given availability zone (that represents failure simulation of availability zones).
-- Simulates network partitions (split-brain) between peer replicas for a stateful application.
-- Tests the application's resilience to lossy (or flaky) network.
+Use this fault to test how a service behaves when one or more replicas suddenly lose packets to upstream dependencies, peers, or callers: a flaky NIC, a degraded overlay link, a CNI hiccup, or a stretched cluster across noisy WAN.
 
-### Permissions required
-
-Below is a sample Kubernetes role that defines the permissions required to execute the fault.
-
-```
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  namespace: hce
-  name: pod-network-loss
-spec:
-  definition:
-    scope: Cluster # Supports "Namespaced" mode too
-permissions:
-  - apiGroups: [""]
-    resources: ["pods"]
-    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
-  - apiGroups: [""]
-    resources: ["events"]
-    verbs: ["create", "get", "list", "patch", "update"]
-  - apiGroups: [""]
-    resources: ["pods/log"]
-    verbs: ["get", "list", "watch"]
-  - apiGroups: [""]
-    resources: ["deployments, statefulsets"]
-    verbs: ["get", "list"]
-  - apiGroups: [""]
-    resources: ["replicasets, daemonsets"]
-    verbs: ["get", "list"]
-  - apiGroups: [""]
-    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
-    verbs: ["create", "delete", "get", "list", "patch", "update"]
-  - apiGroups: ["batch"]
-    resources: ["jobs"]
-    verbs: ["create", "delete", "get", "list", "deletecollection"]
-```
-
-### Prerequisites
-- Kubernetes > 1.16
-- The application pods should be in the running state before and after injecting chaos.
-
-### Supported environments
-
-<table>
-  <tr>
-    <th> Platform </th>
-    <th> Support Status </th>
-  </tr>
-  <tr>
-    <td> GKE (Google Kubernetes Engine) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> EKS (Amazon Elastic Kubernetes Service) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> AKS (Azure Kubernetes Service) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> GKE Autopilot </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> Self-managed Kubernetes </td>
-    <td> ✅ Supported </td>
-  </tr>
-</table>
-
-### Optional tunables
-
-   <table>
-      <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> NETWORK_INTERFACE </td>
-        <td> Name of the ethernet interface considered for shaping traffic. </td>
-        <td> For more information, go to <a href="#network-interface">network interface</a>.</td>
-      </tr>
-      <tr>
-        <td> TARGET_CONTAINER </td>
-        <td> Name of the container subject to network loss. Applicable for <code>containerd</code> and <code>crio</code> runtimes only.</td>
-        <td> With these runtimes, if the value is not provided, the fault injects chaos on the first container of the pod. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-container">target specific container</a>.</td>
-      </tr>
-      <tr>
-        <td> NODE_LABEL </td>
-        <td> Node label used to filter the target node if <code>TARGET_NODE</code> environment variable is not set. </td>
-        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
-      </tr>
-      <tr>
-        <td> NETWORK_PACKET_LOSS_PERCENTAGE </td>
-        <td> Packet loss (in percentage). </td>
-        <td> Default: 100 %. For more information, go to <a href="#network-packet-loss">network packet loss</a>. </td>
-      </tr>
-      <tr>
-        <td> CORRELATION </td>
-        <td> Degree of dependency between consecutive packets </td>
-        <td> It should be in range of (0,100]. For more information, go to <a href="#correlation">correlation</a>.</td>
-      </tr>
-      <tr>
-        <td> CONTAINER_RUNTIME </td>
-        <td> Container runtime interface for the cluster. </td>
-        <td> Default: containerd. Supports docker, containerd and crio. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-dns-error#container-runtime-and-socket-path">container runtime</a>. </td>
-      </tr>
-      <tr>
-        <td> SOCKET_PATH </td>
-        <td> Path of the containerd or crio or docker socket file. </td>
-        <td> Defaults to <code>/run/containerd/containerd.sock</code>. For more information, go to <a href="#container-runtime-and-socket-path">socket path</a>.</td>
-      </tr>
-      <tr>
-        <td> TOTAL_CHAOS_DURATION </td>
-        <td> Duration to inject insert chaos (in seconds). </td>
-        <td> Default: 60 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a>. </td>
-      </tr>
-      <tr>
-        <td> TARGET_PODS </td>
-        <td> Comma-separated list of application pod names subject to pod network corruption. </td>
-        <td> If not provided, the fault selects target pods randomly based on provided appLabels. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods"> target specific pods</a>.</td>
-      </tr>
-      <tr>
-        <td> DESTINATION_IPS </td>
-        <td> Comma-separated IP addresses and ports of the services or pods or the CIDR blocks (range of IPs) whose accessibility is impacted. Comma-separated IPs or CIDRs can be provided. </td>
-        <td> If the values are not provided, the fault induces network chaos for all IPs or destinations. For more information, go to <a href="#destination-ips-and-destination-hosts">destination IPs</a>.</td>
-      </tr>
-      <tr>
-        <td> DESTINATION_HOSTS </td>
-        <td> DNS names or FQDN names of the services and ports whose accessibility is impacted. </td>
-        <td> If the values are not provided, the fault induces network chaos for all IPs or destinations or <code>DESTINATION_IPS</code> if already defined. For more information, go to <a href="#destination-ips-and-destination-hosts">destination hosts</a>.</td>
-      </tr>
-      <tr>
-        <td> SOURCE_PORTS </td>
-        <td> Ports of the target application, the accessibility to which is impacted </td>
-        <td> Comma separated port(s) can be provided. If not provided, it will induce network chaos for all ports. For more information, go to <a href="#source-and-destination-ports">source ports</a>.</td>
-      </tr>
-      <tr>
-        <td> DESTINATION_PORTS </td>
-        <td> Ports of the destination services or pods or the CIDR blocks(range of IPs), the accessibility to which is impacted </td>
-        <td> Comma separated port(s) can be provided. If not provided, it will induce network chaos for all ports. For more information, go to <a href="#source-and-destination-ports">destination ports</a>.</td>
-      </tr>
-      <tr>
-        <td> PODS_AFFECTED_PERC </td>
-        <td> Percentage of total pods to target. Provide numeric values. </td>
-        <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage</a>.</td>
-      </tr>
-      <tr>
-        <td> RAMP_TIME </td>
-        <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a>.</td>
-      </tr>
-      <tr>
-        <td> LIB_IMAGE </td>
-        <td> Image used to inject chaos. </td>
-        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
-      </tr>
-      <tr>
-        <td> SEQUENCE </td>
-        <td> Sequence of chaos execution for multiple target pods. </td>
-        <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a>.</td>
-      </tr>
-    </table>
-
-:::tip
-If the environment variables `DESTINATION_HOSTS` or `DESTINATION_IPS` are left empty, the default behaviour is to target all hosts. To limit the impact on all the hosts, you can specify the IP addresses of the service (use commas to separate multiple values) or the DNS or the FQDN names of the services in `DESTINATION_HOSTS`.
+:::info Run your first experiment
+If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
 :::
 
-### Network packet loss
+---
 
-Network packet loss (in percentage) injected into the target application. Tune it by using the `NETWORK_PACKET_LOSS_PERCENTAGE` environment variable.
+## Use cases
 
-The following YAML snippet illustrates the use of this environment variable:
+Run this fault when you want to answer concrete questions like:
 
-[embedmd]:# (./static/manifests/pod-network-loss/network-loss.yaml yaml)
-```yaml
-# it injects network-loss for the ingress/egress traffic
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: pod-network-loss
-    spec:
-      components:
-        env:
-        # network packet loss percentage
-        - name: NETWORK_PACKET_LOSS_PERCENTAGE
-          value: '100'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
-```
+- **Client retry and timeout tuning:** When packets to a downstream dependency drop, do clients retry with reasonable backoff, or do they amplify load and trigger a thundering-herd?
+- **Connection pool resilience:** Do gRPC and HTTP/2 connections recover after a packet-loss burst, or does the pool exhaust and the workload stall?
+- **Service mesh failover:** Does the mesh detect endpoint health and shift traffic away from the lossy replica? Does outlier detection eject it within a useful window?
+- **Database client behavior:** When the pod loses packets to its database, does the driver reconnect cleanly or hold dead connections?
+- **Probe sensitivity:** Are readiness and liveness probes resilient to short loss bursts, or do they oscillate the pod in and out of service?
 
-### Correlation
+---
 
-Degree of dependency between consecutive packets. Tune it by using the `CORRELATION` environment variable.
+## Prerequisites
 
-The following YAML snippet illustrates the use of this environment variable:
+- **Kubernetes version:** 1.21 or later. Go to [What's supported](/docs/chaos-engineering/whats-supported) to confirm distribution support.
+- **Target pods are Running:** The application pods you intend to target are in the `Running` state before the fault is launched.
+- **Privileged pods allowed:** The cluster lets you schedule privileged pods in the chaos namespace. GKE Autopilot supports this fault but requires the one-time setup in [Chaos on GKE Autopilot](/docs/resilience-testing/chaos-testing/gke-autopilot); other locked-down distributions may need similar exemptions.
+- **Workload selector defined:** The chaos experiment knows the target workload (`Deployment`, `StatefulSet`, `DaemonSet`, `Rollout`, etc.) by kind, namespace, and either names or labels.
 
-[embedmd]:# (./static/manifests/pod-network-loss/correlation.yaml yaml)
-```yaml
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: pod-network-loss
-    spec:
-      components:
-        env:
-        - name: CORRELATION
-          value: '100' #in percentage
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
-```
+---
 
-### Destination IPs and destination hosts
+## Supported environments
 
-Default IPs and hosts whose traffic is interrupted because of the network faults. Tune it by using the `DESTINATION_IPS` and `DESTINATION_HOSTS` environment variables, respectively.
+| Platform | Support status |
+| --- | --- |
+| Amazon EKS | Supported |
+| Azure AKS | Supported |
+| Google GKE | Supported |
+| Red Hat OpenShift | Supported |
+| Rancher | Supported |
+| VMware Tanzu | Supported |
+| Self-managed Kubernetes (CNCF-certified) | Supported |
+| GKE Autopilot | Supported with [Autopilot setup](/docs/resilience-testing/chaos-testing/gke-autopilot) |
+| EKS Fargate, ACI virtual nodes | Not supported (no access to container runtime sockets) |
 
-- `DESTINATION_IPS`: It contains the IP addresses and ports of the services or pods or the CIDR blocks (range of IPs) whose accessibility is impacted.
-- `DESTINATION_HOSTS`: It contains the DNS names or FQDN names of the services and ports whose accessibility is impacted.
+---
 
-<b>NOTE:</b> Ports can be specified by using a pipe (|) as a separator. While providing ports is optional, omitting them will affect all ports associated with the destination IPs and hosts.
+## Permissions required
 
-The following YAML snippet illustrates the use of these environment variables:
+The fault runs under the chaos infrastructure's service account.
 
-[embedmd]:# (./static/manifests/pod-network-loss/destination-ips-and-hosts.yaml yaml)
-```yaml
-# it injects the chaos for the ingress/egress traffic for specific ips/hosts
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: pod-network-loss
-    spec:
-      components:
-        env:
-        # supports comma separated destination ips
-        - name: DESTINATION_IPS
-          value: '8.8.8.8,192.168.5.6|80|8080'
-        # supports comma separated destination hosts
-        - name: DESTINATION_HOSTS
-          value: 'nginx.default.svc.cluster.local|80,google.com'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
-```
+| Resource (`apiGroup`) | Verbs | Why it is needed |
+| --- | --- | --- |
+| `pods` (`""`) | `get`, `list`, `create`, `delete`, `deletecollection`, `patch`, `update` | Discover target pods and run the chaos pod on the same node |
+| `pods/log` (`""`) | `get`, `list`, `watch` | Stream chaos pod logs for status and debugging |
+| `deployments`, `statefulsets`, `replicasets`, `daemonsets` (`apps`) | `get`, `list` | Resolve the target workload to the pods it owns |
+| `events` (`""`) | `get`, `list`, `create`, `patch`, `update` | Record fault progress as Kubernetes events |
+| `jobs` (`batch`) | `get`, `list`, `create`, `delete`, `deletecollection` | Run the chaos job that drives the fault |
 
-### Source and destination ports
+The default Harness chaos infrastructure service account already includes these permissions.
 
-By default, the network experiments disrupt traffic for all the source and destination ports. The interruption of specific port(s) can be tuned via `SOURCE_PORTS` and `DESTINATION_PORTS` environment variables.
+---
 
-- `SOURCE_PORTS`: It contains ports of the target application, the accessibility to which is impacted
-- `DESTINATION_PORTS`: It contains the ports of the destination services or pods or the CIDR blocks(range of IPs), the accessibility to which is impacted
+## Fault tunables
 
-Use the following example to tune this:
+Configure the following fault parameters when you add Pod network loss to an experiment in Chaos Studio. Defaults are shown for reference.
 
-[embedmd]:# (./static/manifests/pod-network-loss/source-and-destination-ports.yaml yaml)
-```yaml
-# it inject the chaos for the ingress/egress traffic for specific ports
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: pod-network-loss
-    spec:
-      components:
-        env:
-        # supports comma separated source ports
-        - name: SOURCE_PORTS
-          value: '80'
-        # supports comma separated destination ports
-        - name: DESTINATION_PORTS
-          value: '8080,9000'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
-```
+**Chaos parameters**
 
-### Ignore source and destination ports
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `NETWORK_PACKET_LOSS_PERCENTAGE` | Percentage of packets to drop on the matched flows. `100` means total loss; `30` simulates a flaky link. | `100` |
+| `CORRELATION` | Loss correlation as a percentage. `0` makes each packet independent; `25` clumps losses (more bursty). | `""` |
+| `TOTAL_CHAOS_DURATION` | Duration of the fault in seconds. | `60` |
 
-By default, the network experiments disrupt traffic for all the source and destination ports. The specific ports can be ignored via `SOURCE_PORTS` and `DESTINATION_PORTS` environment variables.
+**Traffic filters**
 
-- `SOURCE_PORTS`: Provide the comma separated source ports preceded by `!`, that you'd like to ignore from the chaos.
-- `DESTINATION_PORTS`: Provide the comma separated destination ports preceded by `!` , that you'd like to ignore from the chaos.
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `DESTINATION_IPS` | Comma-separated list of destination IPs. Loss applies only to packets headed to these IPs. Empty matches all destinations. | `""` |
+| `DESTINATION_HOSTS` | Comma-separated list of destination hostnames. The helper resolves them and adds the resolved IPs to the filter. | `""` |
+| `SOURCE_PORTS` | Comma-separated list of source ports on the target pod. Empty matches all source ports. | `""` |
+| `DESTINATION_PORTS` | Comma-separated list of destination ports. Empty matches all destination ports. | `""` |
+| `NETWORK_INTERFACE` | Network interface inside the target container's namespace. Almost always `eth0` for standard CNI plugins. | `eth0` |
 
-Use the following example to tune this:
+**Targeting**
 
-[embedmd]:# (./static/manifests/pod-network-loss/ignore-source-and-destination-ports.yaml yaml)
-```yaml
-# ignore the source and destination ports
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: pod-network-loss
-    spec:
-      components:
-        env:
-        # it will ignore 80 and 8080 source ports
-        - name: SOURCE_PORTS
-          value: '!80,8080'
-        # it will ignore 8080 and 9000 destination ports
-        - name: DESTINATION_PORTS
-          value: '!8080,9000'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
-```
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `TARGET_PODS` | Comma-separated list of pod names to target. Empty selects from the workload's pods using `POD_AFFECTED_PERCENTAGE`. | `""` |
+| `TARGET_CONTAINER` | Container in the pod whose network namespace to enter. Empty targets the first container in the pod spec. | `""` |
+| `NODE_LABEL` | Label selector to filter target pods by the node they run on. Empty disables node-based filtering. | `""` |
+| `POD_AFFECTED_PERCENTAGE` | Percentage of the workload's pods to target. `0` means one pod. | `0` |
+| `SEQUENCE` | When multiple pods are targeted, inject `parallel` (all at once) or `serial` (one after another). | `parallel` |
 
-### Network interface
+**Runtime and helper**
 
-Name of the ethernet interface considered to shape the traffic. Its default value is `eth0`. Tune it by using the `NETWORK_INTERFACE` environment variable.
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `CONTAINER_RUNTIME` | Container runtime on the target nodes. One of `containerd`, `docker`, `crio`. | `containerd` |
+| `SOCKET_PATH` | Path to the container runtime socket on the target node. Set to match `CONTAINER_RUNTIME`. | `/run/containerd/containerd.sock` |
+| `RAMP_TIME` | Wait period in seconds before and after the fault. Go to [ramp time](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time) to read how it is applied. | `0` |
 
-The following YAML snippet illustrates the use of this environment variable:
+Tunables that apply to every chaos fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
 
-[embedmd]:# (./static/manifests/pod-network-loss/network-interface.yaml yaml)
-```yaml
-# provide the network interface
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: pod-network-loss
-    spec:
-      components:
-        env:
-        # name of the network interface
-        - name: NETWORK_INTERFACE
-          value: 'eth0'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
-```
+:::tip Scope loss to a specific dependency
+Setting `DESTINATION_HOSTS=db.example.svc` or `DESTINATION_PORTS=5432` restricts loss to traffic for one dependency. Other connections (mesh control plane, metrics, DNS) keep working, so you isolate the variable under test.
+:::
 
-### Container runtime and socket path
+### Configure for your container runtime
 
-The `CONTAINER_RUNTIME` and `SOCKET_PATH` environment variables to set the container runtime and socket file path, respectively.
+Set `CONTAINER_RUNTIME` and `SOCKET_PATH` to match the runtime on the target node:
 
-- `CONTAINER_RUNTIME`: It supports `docker`, `containerd`, and `crio` runtimes. The default value is `containerd`.
-- `SOCKET_PATH`: It contains path of containerd socket file by default(`/run/containerd/containerd.sock`). For `docker`, specify path as `/var/run/docker.sock`. For `crio`, specify path as `/var/run/crio/crio.sock`.
+| `CONTAINER_RUNTIME` | `SOCKET_PATH` |
+| --- | --- |
+| `containerd` (default) | `/run/containerd/containerd.sock` |
+| `docker` | `/var/run/docker.sock` |
+| `crio` | `/var/run/crio/crio.sock` |
 
-The following YAML snippet illustrates the use of these environment variables:
+---
 
-[embedmd]:# (./static/manifests/pod-network-loss/container-runtime-and-socket-path.yaml yaml)
-```yaml
-## provide the container runtime and socket file path
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: pod-network-loss
-    spec:
-      components:
-        env:
-        # runtime for the container
-        # supports docker, containerd, crio
-        - name: CONTAINER_RUNTIME
-          value: 'containerd'
-        # path of the socket file
-        - name: SOCKET_PATH
-          value: '/run/containerd/containerd.sock'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
-```
+## Fault execution in brief
+
+Configures the container's network interface to drop a specified percentage of packets, optionally scoping the effect to only certain destination IPs, hosts, or ports so other traffic passes through unaffected.
+
+---
+
+## Expected behavior during fault execution
+
+- Packets matching the filter drop at the configured rate. Connections that retransmit (TCP, gRPC, HTTP/2) experience longer round-trip times and timeouts depending on the loss percentage.
+- At `NETWORK_PACKET_LOSS_PERCENTAGE: 100`, all matched flows fail. TCP connections enter retransmit storms and eventually time out; UDP traffic (DNS, QUIC) drops outright.
+- At `25-50`%, TCP backoffs kick in, throughput drops sharply, and tail latency spikes. This is the most useful range for resilience testing because it stresses retry logic without giving up entirely.
+- Health probes that route through the lossy path can fail; the kubelet may mark the pod `NotReady`. Service endpoints are then removed and traffic shifts to remaining replicas.
+- Service meshes with outlier detection observe failures and eject the pod from upstream load-balancing pools within the detection window.
+
+:::info When the fault ends
+The loss configuration is removed, and the pod's network returns to normal immediately. No application restart is required.
+:::
+
+### Signals to watch
+
+Attach [resilience probes](/docs/resilience-testing/chaos-testing/probes) to assert each layer:
+
+- **Client-side error rate and tail latency:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) or a [command probe](/docs/resilience-testing/chaos-testing/probes/command-probe) to confirm callers degrade and recover.
+- **Mesh ejection:** Use a [Prometheus probe](/docs/resilience-testing/chaos-testing/probes/apm-probes) on Istio/Envoy `cluster.outlier_detection.ejections_active` or your mesh's equivalent.
+- **Pod readiness:** Use a [Kubernetes probe](/docs/resilience-testing/chaos-testing/probes/k8s-probe) to fail when the target pod stays `NotReady` longer than your SLO allows.
+
+---
+
+## Verify the fault execution effect
+
+While the experiment is running, generate traffic and confirm loss is observed:
+
+1. **From inside another pod or the cluster, hit the target pod and watch for failures.**
+
+   ```bash
+   kubectl run -n <namespace> tester --image=nicolaka/netshoot --rm -it -- \
+     curl -m 3 http://<target-pod-ip>:<port>/healthz
+   ```
+
+   At high `NETWORK_PACKET_LOSS_PERCENTAGE`, requests time out or return errors. At 25-50%, latency rises sharply and tail-latency probes degrade.
+
+2. **Sample loss directly from a peer.**
+
+   ```bash
+   kubectl run -n <namespace> tester --image=nicolaka/netshoot --rm -it -- \
+     ping -c 50 <target-pod-ip>
+   ```
+
+   The summary line reports the observed loss percentage, which should be close to the configured `NETWORK_PACKET_LOSS_PERCENTAGE` on matched flows.
+
+---
+
+## Recovery and cleanup
+
+- **End of duration:** The loss configuration is removed automatically and connectivity returns to normal within a few seconds.
+- **Abort the experiment:** Stopping the experiment from Chaos Studio triggers the same cleanup path.
+- **Failed cleanup:** If automated cleanup did not complete, restart the target pod to reset its network state.
+
+---
+
+## Limitations
+
+This fault is not appropriate in the following scenarios:
+
+- **Serverless Kubernetes (EKS Fargate, ACI virtual nodes):** These platforms do not allow the privileged access this fault needs. GKE Autopilot is supported once the one-time setup in [Chaos on GKE Autopilot](/docs/resilience-testing/chaos-testing/gke-autopilot) is in place.
+- **Windows containers:** This fault is supported on Linux pods only.
+- **CNI plugins that bypass the pod's `eth0`:** Custom CNI configurations (for example some eBPF-based plugins routing host-side) may not be affected by this fault.
+- **`hostNetwork` pods:** Pods using the host's network would affect the entire node. The fault refuses to inject on `hostNetwork: true` pods.
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="Pod network loss experiment stays Pending or never starts in Harness Chaos Engineering"
+  mode="docs"
+  fallback="Inspect the chaos pods in the experiment namespace with kubectl describe pod -n <chaos-namespace>. The most common causes are taints on the target node that the chaos pods do not tolerate, insufficient resources, or a PodSecurity admission policy blocking privileged pods. Add the required tolerations to the experiment or run in a namespace with privileged Pod Security level."
+/>
+
+<Troubleshoot
+  issue="No packet loss is observed during pod-network-loss"
+  mode="docs"
+  fallback="The most common causes are: NETWORK_INTERFACE does not match the pod's interface (verify with kubectl exec <pod> -- ip link show); the filter is too narrow and matches no real traffic (broaden DESTINATION_IPS/HOSTS/PORTS); or the pod uses hostNetwork and the fault was refused. Generate live traffic from another pod with ping or curl and confirm whether matched flows are degrading."
+/>
+
+<Troubleshoot
+  issue="Connection to container runtime fails for pod-network-loss in Harness Chaos Engineering"
+  mode="docs"
+  fallback="The default SOCKET_PATH is /run/containerd/containerd.sock. For Docker, set CONTAINER_RUNTIME=docker and SOCKET_PATH=/var/run/docker.sock. For CRI-O, set CONTAINER_RUNTIME=crio and SOCKET_PATH=/var/run/crio/crio.sock. Confirm by SSHing to the node and running ls -l on each candidate socket file."
+/>
+
+<Troubleshoot
+  issue="Loss persists after pod-network-loss ends"
+  mode="docs"
+  fallback="Automated cleanup did not complete. Restart the target pod to reset its network state. If the issue recurs, capture the chaos pod logs from the experiment namespace before the next run and share them with Harness support."
+/>
+
+---
+
+## Related faults
+
+- [Pod network latency](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-network-latency): Add latency to the pod's network path instead of dropping packets.
+- [Pod network corruption](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-network-corruption): Corrupt a percentage of packets instead of dropping them.
+- [Pod network duplication](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-network-duplication): Duplicate a percentage of packets.
+- [Pod network partition](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-network-partition): Block ingress or egress entirely using a NetworkPolicy.
+- [Pod network rate limit](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-network-rate-limit): Throttle bandwidth instead of dropping packets.
+- [Node network loss](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/node-network-loss): Apply packet loss at the node level rather than to a single pod.
+- [Common pod fault tunables](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults): Shared environment variables for selecting target pods and workloads.

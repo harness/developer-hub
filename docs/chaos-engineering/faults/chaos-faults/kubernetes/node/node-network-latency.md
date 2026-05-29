@@ -7,8 +7,7 @@ keywords:
   - chaos engineering
   - node network latency
   - network delay
-  - tc
-  - netem
+  - network chaos
   - kubernetes node fault
 tags:
   - chaos-engineering
@@ -22,7 +21,7 @@ redirect_from:
 
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-Node network latency is a Kubernetes node-level chaos fault that adds a configurable delay to packets leaving a target node. Harness Chaos Engineering schedules a privileged helper pod (`harness/chaos-ddcr-faults`) on the node, which applies Linux traffic control (`tc`) rules using the `sch_netem` qdisc with a `delay` parameter. Every workload that shares the node's network stack experiences the added round-trip time: application pods, DaemonSets, kube-proxy, CNI agents, and the kubelet itself.
+Node network latency is a Kubernetes node-level chaos fault that adds a configurable delay to packets leaving a target node for a configurable duration. Every workload that shares the node's network stack experiences the added round-trip time: application pods, DaemonSets, kube-proxy, CNI agents, and the kubelet itself.
 
 Use this fault to simulate a slow network neighbor: a congested transit link, a saturated NIC, an overloaded service mesh sidecar, or a cross-region failover that has stretched east-west latency.
 
@@ -48,8 +47,8 @@ Run this fault when you want to answer concrete questions like:
 ## Prerequisites
 
 - **Kubernetes version:** 1.21 or later. Go to [What's supported](/docs/chaos-engineering/whats-supported) to confirm distribution support.
-- **Kernel module:** The `sch_netem` kernel module is loadable on every node you intend to target. It is in-tree and ships with most distribution kernels. Confirm it is available with `lsmod | grep sch_netem` or `modprobe sch_netem`. On RHEL-family hosts, install `kernel-modules-extra` if the module is missing.
-- **Privileged pods allowed:** The cluster lets you schedule privileged pods with `NET_ADMIN` and `SYS_ADMIN` capabilities in the chaos namespace. GKE Autopilot and other locked-down distributions reject these. Go to [Limitations](#limitations) to review unsupported configurations.
+- **Standard Linux networking modules:** Target nodes run a Linux kernel that includes the standard networking modules (present by default on most distributions). On minimal or hardened images, your platform team may need to install `kernel-modules-extra` (RHEL-family) or the equivalent package.
+- **Privileged pods allowed:** The cluster lets you schedule privileged pods with `NET_ADMIN` and `SYS_ADMIN` capabilities in the chaos namespace. GKE Autopilot supports this fault but requires the one-time setup in [Chaos on GKE Autopilot](/docs/resilience-testing/chaos-testing/gke-autopilot); other locked-down distributions may need similar exemptions.
 - **Node readiness:** Target nodes are in `Ready` state before the fault is launched. The fault reports a precheck failure otherwise.
 - **Application timeouts are configured:** Without explicit client timeouts, your application cannot distinguish a slow request from a hung one. Run this fault against services that have realistic timeouts; otherwise the observation has no failure boundary.
 
@@ -66,6 +65,7 @@ Run this fault when you want to answer concrete questions like:
 | Rancher | Supported |
 | VMware Tanzu | Supported |
 | Self-managed Kubernetes (CNCF-certified) | Supported |
+| GKE Autopilot | Supported with [Autopilot setup](/docs/resilience-testing/chaos-testing/gke-autopilot) |
 
 ---
 
@@ -75,8 +75,8 @@ The fault runs under the chaos infrastructure's service account. The account mus
 
 | Resource (`apiGroup`) | Verbs | Why it is needed |
 | --- | --- | --- |
-| `pods` (`""`) | `get`, `list`, `create`, `delete`, `deletecollection`, `patch`, `update` | Create the helper pod that applies `tc` rules on the target node |
-| `pods/log` (`""`) | `get`, `list`, `watch` | Stream logs from the helper pod for status and debugging |
+| `pods` (`""`) | `get`, `list`, `create`, `delete`, `deletecollection`, `patch`, `update` | Run the chaos pod that injects the fault on the target node |
+| `pods/log` (`""`) | `get`, `list`, `watch` | Stream chaos pod logs for status and debugging |
 | `events` (`""`) | `get`, `list`, `create`, `patch`, `update` | Record fault progress as Kubernetes events |
 | `nodes` (`""`) | `get`, `list` | Discover target nodes and validate selectors |
 | `jobs` (`batch`) | `get`, `list`, `create`, `delete`, `deletecollection` | Run the chaos job that drives the fault |
@@ -129,6 +129,8 @@ The default `2s` latency is high enough to break most service-level objectives. 
 
 ## Fault execution in brief
 
+Configures the target node's network interface to add a specified delay (with optional jitter) to packets for the configured duration, optionally scoped to certain destination IPs or hosts so other traffic passes through unaffected.
+
 Because the delay is added at the node's network path, every connection passing through it sees a longer round-trip time. The paths and behaviors most commonly affected are:
 
 | Path | What is affected |
@@ -170,25 +172,9 @@ A useful experiment captures signals from three layers. Attach [resilience probe
 
 ## Verify the fault execution effect
 
-While the experiment is running, confirm that latency is actually being injected. From a workstation with `kubectl` access:
+While the experiment is running, confirm that latency is reaching the node:
 
-1. **Confirm the helper pod is on the target node.**
-
-   ```bash
-   kubectl get pods -n <chaos-namespace> -o wide | grep node-network-latency-helper
-   ```
-
-   The pod's `NODE` column must match the target node and its status must be `Running`.
-
-2. **Inspect the active `tc` rules on the target node** by execing into the helper pod:
-
-   ```bash
-   kubectl exec -n <chaos-namespace> <helper-pod-name> -- tc qdisc show dev eth0
-   ```
-
-   You should see a `netem` qdisc with `delay <latency>ms`. If the output shows only `pfifo_fast`, the rule has not been applied yet or `NETWORK_INTERFACE` does not match the node's actual interface name.
-
-3. **Measure RTT from outside the node.** From another pod on a different node:
+1. **Measure RTT from outside the node.** From another pod on a different node:
 
    ```bash
    kubectl run -it --rm netshoot --image=nicolaka/netshoot --restart=Never -- \
@@ -197,24 +183,17 @@ While the experiment is running, confirm that latency is actually being injected
 
    Average RTT should be close to baseline + `NETWORK_LATENCY`. Packet loss should remain at zero; that is the signature that distinguishes latency from loss injection.
 
-4. **Watch application latency metrics.** Open the dashboard for the affected service and confirm p99 has stepped up by approximately `NETWORK_LATENCY`. If you do not see the step, traffic is routing around the slow path (for example, in-cluster `localhost` or sidecar bypass).
+2. **Watch application latency metrics.** Open the dashboard for the affected service and confirm p99 has stepped up by approximately `NETWORK_LATENCY`. If you do not see the step, traffic is routing around the slow path (for example, in-cluster `localhost` or sidecar bypass).
 
 ---
 
 ## Recovery and cleanup
 
-- **End of duration:** When `TOTAL_CHAOS_DURATION` elapses, the helper pod removes the `tc` qdisc it created and terminates. RTT returns to baseline within a few seconds.
+- **End of duration:** When `TOTAL_CHAOS_DURATION` elapses, the delay configuration is removed automatically and RTT returns to baseline within a few seconds.
 - **Backlogged requests drain:** Application connection pools, retry queues, and request backlogs that built up during the fault take longer to drain than the fault itself. Plan a post-experiment observation window of two to three minutes before declaring recovery complete.
 - **No node reboot or pod eviction:** Unlike [Node network loss](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/node-network-loss), this fault does not normally cause the controller-manager to mark the node `NotReady`, so no taint is applied and no pods are evicted by the taint manager.
-- **If the helper pod is killed mid-experiment:** The `netem` rule may not be removed. To clean it up manually, exec into a privileged pod on the affected node (or use a debug pod with `kubectl debug node/<node-name>`) and run:
-
-  ```bash
-  tc qdisc del dev <interface> root
-  ```
-
-  Then verify with `tc qdisc show dev <interface>`.
-
-- **Abort the experiment early:** Stop the experiment from Harness Chaos Studio. The helper pod terminates and runs its cleanup hook.
+- **If automated cleanup did not complete:** Reboot the affected node (or have your admin reset its network configuration). The fault does not persist across a node reboot.
+- **Abort the experiment early:** Stop the experiment from Harness Chaos Studio. Cleanup runs before the chaos pod exits.
 
 ---
 
@@ -222,11 +201,11 @@ While the experiment is running, confirm that latency is actually being injected
 
 This fault is not appropriate in the following scenarios:
 
-- **Serverless Kubernetes (EKS Fargate, ACI virtual nodes, GKE Autopilot):** Fargate and ACI virtual nodes do not expose real nodes, container runtime sockets, or the ability to schedule privileged pods. GKE Autopilot blocks the security context this fault requires.
-- **Windows nodes:** Linux `tc`/`netem` is not available. Use the equivalent [Windows network fault](/docs/chaos-engineering/faults/chaos-faults/windows/windows-network-blackhole-chaos) on Windows-only workloads.
-- **Single-node clusters or co-located chaos infrastructure:** If the chaos infrastructure pods (ddci and fault-specific pods) live on the slow node, the experiment loses observability. Schedule chaos infrastructure on a node outside the blast radius.
+- **Serverless Kubernetes (EKS Fargate, ACI virtual nodes):** These platforms do not expose real nodes or allow the privileged access this fault needs. GKE Autopilot is supported once the one-time setup in [Chaos on GKE Autopilot](/docs/resilience-testing/chaos-testing/gke-autopilot) is in place.
+- **Windows nodes:** This fault is supported on Linux nodes only. Use the equivalent [Windows network fault](/docs/chaos-engineering/faults/chaos-faults/windows/windows-network-blackhole-chaos) on Windows-only workloads.
+- **Single-node clusters or co-located chaos infrastructure:** If the chaos infrastructure pods live on the slow node, the experiment loses observability. Schedule chaos infrastructure on a node outside the blast radius.
 - **Pods using `hostNetwork: true`:** These bypass per-pod network namespaces. Delay is still applied to the node, but observed behavior depends on how the pod uses the host stack.
-- **Hardened kernels without `sch_netem`:** Some custom or stripped distribution kernels omit the netem qdisc. The fault fails fast with `Specified qdisc kind is unknown.`
+- **Hardened or stripped kernels:** Some custom distribution kernels omit the networking modules this fault depends on, and the fault fails immediately on those nodes. On RHEL-family hosts, install `kernel-modules-extra` and reboot to restore the missing modules.
 - **Applications without explicit timeouts:** Without client timeouts, slowness is indistinguishable from a hang and there is no observable failure boundary. Configure timeouts in the application under test before running this fault.
 
 ---
@@ -234,21 +213,21 @@ This fault is not appropriate in the following scenarios:
 ## Troubleshooting
 
 <Troubleshoot
-  issue="Node network latency helper pod stays Pending or never schedules on the target node in Harness Chaos Engineering"
+  issue="Node network latency experiment stays Pending or never starts in Harness Chaos Engineering"
   mode="docs"
-  fallback="Check the helper pod with kubectl describe pod -n <chaos-namespace>. The most common causes are taints on the target node that the helper does not tolerate, insufficient CPU or memory on the node, or a PodSecurity admission policy blocking privileged pods. Add the required tolerations to the experiment, free resources on the node, or run the experiment in a namespace with privileged Pod Security level."
+  fallback="Inspect the chaos pods in the experiment namespace with kubectl describe pod -n <chaos-namespace>. The most common causes are taints on the target node, insufficient CPU or memory on the node, or a PodSecurity admission policy blocking privileged pods. Add the required tolerations to the experiment, free resources on the node, or run the experiment in a namespace with privileged Pod Security level."
 />
 
 <Troubleshoot
-  issue="Node network latency fails immediately with tc 'Specified qdisc kind is unknown' or 'Cannot find device' in Harness Chaos Engineering"
+  issue="Node network latency fails immediately on hardened nodes or with an unknown interface"
   mode="docs"
-  fallback="The sch_netem kernel module is missing or the NETWORK_INTERFACE value does not match a real interface on the node. SSH to the node and run lsmod | grep sch_netem and ip -br link to confirm. On RHEL-family hosts install kernel-modules-extra and reboot; otherwise set NETWORK_INTERFACE to the actual interface name (for example ens5 on EKS, eth0 on most others)."
+  fallback="Either the required Linux networking kernel modules are missing on the target node, or the NETWORK_INTERFACE value does not match a real interface on the node. SSH to the node and run ip -br link to list interfaces. On RHEL-family hosts install kernel-modules-extra and reboot to restore the missing modules; otherwise set NETWORK_INTERFACE to the actual interface name (for example ens5 on EKS, eth0 on most others)."
 />
 
 <Troubleshoot
   issue="Node network latency fault runs but application latency does not increase"
   mode="docs"
-  fallback="Three common causes: (1) the workload routes intra-node over the CNI bridge and never crosses the shaped interface, (2) DESTINATION_HOSTS resolves to IPs not on the shaped path, or (3) the application talks to a sidecar over localhost which bypasses tc. Exec into the helper pod and run tc qdisc show dev <interface> to confirm the netem rule is active, then ping the target service from a pod on a different node to verify the delay end-to-end."
+  fallback="Three common causes: (1) the workload routes intra-node over the CNI bridge and never crosses the shaped interface, (2) DESTINATION_HOSTS resolves to IPs not on the shaped path, or (3) the application talks to a sidecar over localhost which bypasses the shaped path. Ping the target service from a pod on a different node to verify the delay end-to-end."
 />
 
 <Troubleshoot
@@ -263,5 +242,5 @@ This fault is not appropriate in the following scenarios:
 
 - [Node network loss](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/node-network-loss): Same delivery mechanism, but drops packets instead of delaying them. Use it to test the cluster's partition-handling path.
 - [Pod network latency](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-network-latency): Scopes the delay to a single pod's network namespace rather than the whole node.
-- [Pod network corruption](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-network-corruption) and [Pod network duplication](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-network-duplication): Other `netem` variants for testing how applications handle malformed or repeated packets.
+- [Pod network corruption](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-network-corruption) and [Pod network duplication](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-network-duplication): Other network-shaping variants for testing how applications handle malformed or repeated packets.
 - [Common node fault tunables](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/common-tunables-for-node-faults): Shared environment variables for selecting target nodes across node faults.

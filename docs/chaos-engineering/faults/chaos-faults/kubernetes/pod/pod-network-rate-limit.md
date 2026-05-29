@@ -1,472 +1,258 @@
 ---
 id: pod-network-rate-limit
 title: Pod network rate limit
+sidebar_label: Pod Network Rate Limit
+description: Cap bandwidth on a target Kubernetes pod's network path to test throughput-sensitive workloads, batch jobs, and bandwidth-bound flows.
+keywords:
+  - chaos engineering
+  - pod network rate limit
+  - bandwidth limit
+  - network chaos
+  - kubernetes pod fault
+tags:
+  - chaos-engineering
+  - pod-faults
+  - network-chaos
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-rate-limit
-- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-network-rate-limit
-- /docs/chaos-engineering/chaos-faults/kubernetes/pod-network-rate-limit
+  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-rate-limit
+  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-network-rate-limit
+  - /docs/chaos-engineering/chaos-faults/kubernetes/pod-network-rate-limit
 ---
 
-Pod network rate limit is a Kubernetes pod-level chaos fault that generates Traffic Control (tc) rules with Token Bucket Filter (TBF) to assess Kubernetes pod resilience under limited network bandwidth condition.
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-![Pod Network Rate Limit](./static/images/pod-network-rate-limit.png)
+Pod network rate limit is a Kubernetes pod-level chaos fault that caps the bandwidth available on a target pod's network path for a configurable duration. The pod can still reach all destinations, but matched flows are shaped to the configured rate. Only the selected pods are affected; other pods on the node and the node's host networking are unaffected.
 
-[This](https://youtu.be/01efVOyFGl8?si=414-AX6yVn2GqfON) video provides a step-by-step walkthrough of the execution process for the Pod Network Rate Limit experiment.
+Use this fault to test how a service behaves when its outbound (or inbound, depending on filter direction) link is saturated: a noisy neighbor consuming shared bandwidth, a misconfigured node-level rate limit, a slow WAN link, or a backup taking over the path.
 
-### Use cases
-
-Pod network rate limit:
-- Assess how well applications and services perform under constrained network bandwidth, helping identify potential bottlenecks and weaknesses.
-- Ensure that critical services receive the necessary network bandwidth allocation while non-essential services are appropriately limited to maintain overall system stability.
-- Evaluate the impact of network rate limits on security-related functions such as DDoS mitigation or intrusion detection, and assessing whether the system can withstand such scenarios.
-- Determine the optimal network bandwidth allocation for different pods and applications to effectively plan resource usage and accommodate growth without degradation in performance.
-
-### Permissions required
-
-Below is a sample Kubernetes role that defines the permissions required to execute the fault.
-
-```
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  namespace: hce
-  name: pod-network-rate-limit
-spec:
-  definition:
-    scope: Cluster # Supports "Namespaced" mode too
-permissions:
-  - apiGroups: [""]
-    resources: ["pods"]
-    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
-  - apiGroups: [""]
-    resources: ["events"]
-    verbs: ["create", "get", "list", "patch", "update"]
-  - apiGroups: [""]
-    resources: ["pods/log"]
-    verbs: ["get", "list", "watch"]
-  - apiGroups: [""]
-    resources: ["deployments, statefulsets"]
-    verbs: ["get", "list"]
-  - apiGroups: [""]
-    resources: ["replicasets, daemonsets"]
-    verbs: ["get", "list"]
-  - apiGroups: [""]
-    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
-    verbs: ["create", "delete", "get", "list", "patch", "update"]
-  - apiGroups: ["batch"]
-    resources: ["jobs"]
-    verbs: ["create", "delete", "get", "list", "deletecollection"]
-```
-
-### Prerequisites
-- Kubernetes > 1.16 
-- The `netem` kernel module must be available on the nodes. This is typically provided by the `kernel-modules-extra` package.
-- The application pods should be in the running state before and after injecting chaos.
-
-### Supported environments
-
-<table>
-  <tr>
-    <th> Platform </th>
-    <th> Support Status </th>
-  </tr>
-  <tr>
-    <td> GKE (Google Kubernetes Engine) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> EKS (Amazon Elastic Kubernetes Service) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> AKS (Azure Kubernetes Service) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> GKE Autopilot </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> Self-managed Kubernetes </td>
-    <td> ✅ Supported </td>
-  </tr>
-</table>
-
-### Mandatory tunables
-
-   <table>
-      <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> NETWORK_BANDWIDTH </td>
-        <td> Specify the network bandwidth rate limit </td>
-        <td> For more information, go to <a href="#rate-limit">rate limit</a>.</td>
-      </tr>
-      <tr>
-        <td> BURST </td>
-        <td> Specify the burst for the size of bucket, maximum amount of bytes that tokens can be available for instantaneously </td>
-        <td> For more information, go to <a href="#rate-limit">rate limit</a>.</td>
-      </tr>
-      <tr>
-        <td> LIMIT </td>
-        <td> Specify the limit for the number of bytes that can be queued waiting for tokens to become available </td>
-        <td> For more information, go to <a href="#rate-limit">rate limit</a>.</td>
-      </tr>
-    </table>
-
-### Optional tunables
-  <table>
-      <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> MIN_BURST </td>
-        <td> Specify the size of the peakrate bucket </td>
-        <td> For more information, go to <a href="#advance-tunables">advanced tunables</a>.</td>
-      </tr>
-      <tr>
-        <td> PEAK_RATE </td>
-        <td> Specify the maximum depletion rate of the bucket </td>
-        <td> For more information, go to <a href="#advance-tunables">advanced tunables</a>.</td>
-      </tr>
-      <tr>
-        <td> NETWORK_INTERFACE </td>
-        <td> Name of the ethernet interface considered for shaping traffic. </td>
-        <td> For more information, go to <a href="#network-interface">network interface</a>.</td>
-      </tr>
-      <tr>
-        <td> NODE_LABEL </td>
-        <td> Node label used to filter the target node if <code>TARGET_NODE</code> environment variable is not set. </td>
-        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
-      </tr>
-      <tr>
-        <td> TARGET_CONTAINER </td>
-        <td> Name of the container subject to network loss. Applicable for <code>containerd</code> and <code>crio</code> runtimes only.</td>
-        <td> With these runtimes, if the value is not provided, the fault injects chaos on the first container of the pod. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-container">target specific container</a>.</td>
-      </tr>
-      <tr>
-        <td> CONTAINER_RUNTIME </td>
-        <td> Container runtime interface for the cluster. </td>
-        <td> Default: containerd. Supports docker, containerd and crio. For more information, go to <a href="#container-runtime-and-socket-path">container runtime</a>. </td>
-      </tr>
-      <tr>
-        <td> SOCKET_PATH </td>
-        <td> Path of the containerd or crio or docker socket file. </td>
-        <td> Defaults to <code>/run/containerd/containerd.sock</code>. For more information, go to <a href="#container-runtime-and-socket-path">socket path</a>.</td>
-      </tr>
-      <tr>
-        <td> TOTAL_CHAOS_DURATION </td>
-        <td> Duration to inject insert chaos (in seconds). </td>
-        <td> Default: 60 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a>. </td>
-      </tr>
-      <tr>
-        <td> TARGET_PODS </td>
-        <td> Comma-separated list of application pod names subject to pod network corruption. </td>
-        <td> If not provided, the fault selects target pods randomly based on provided appLabels. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods"> target specific pods</a>.</td>
-      </tr>
-      <tr>
-        <td> DESTINATION_IPS </td>
-        <td> Comma-separated IP addresses and ports of the services or pods or the CIDR blocks (range of IPs) whose accessibility is impacted. Comma-separated IPs or CIDRs can be provided. </td>
-        <td> If the values are not provided, the fault induces network chaos for all IPs or destinations. For more information, go to <a href="#destination-ips-and-destination-hosts">destination IPs</a>.</td>
-      </tr>
-      <tr>
-        <td> DESTINATION_HOSTS </td>
-        <td> DNS names or FQDN names of the services and ports whose accessibility is impacted. </td>
-        <td> If the values are not provided, the fault induces network chaos for all IPs or destinations or <code>DESTINATION_IPS</code> if already defined. For more information, go to <a href="#destination-ips-and-destination-hosts">destination hosts</a>.</td>
-      </tr>
-      <tr>
-        <td> SOURCE_PORTS </td>
-        <td> Ports of the target application, the accessibility to which is impacted </td>
-        <td> Comma separated port(s) can be provided. If not provided, it will induce network chaos for all ports. For more information, go to <a href="#source-and-destination-ports">source ports.</a></td>
-      </tr>
-      <tr>
-        <td> DESTINATION_PORTS </td>
-        <td> Ports of the destination services or pods or the CIDR blocks(range of IPs), the accessibility to which is impacted </td>
-        <td> Comma separated port(s) can be provided. If not provided, it will induce network chaos for all ports. For more information, go to <a href="#source-and-destination-ports">destination ports.</a></td>
-      </tr>
-      <tr>
-        <td> PODS_AFFECTED_PERC </td>
-        <td> Percentage of total pods to target. Provide numeric values. </td>
-        <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage</a>.</td>
-      </tr>
-      <tr>
-        <td> RAMP_TIME </td>
-        <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a>.</td>
-      </tr>
-      <tr>
-        <td> LIB_IMAGE </td>
-        <td> Image used to inject chaos. </td>
-        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
-      </tr>
-      <tr>
-        <td> SEQUENCE </td>
-        <td> Sequence of chaos execution for multiple target pods. </td>
-        <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a>.</td>
-      </tr>
-    </table>
-
-:::tip
-If the environment variables `DESTINATION_HOSTS` or `DESTINATION_IPS` are left empty, the default behaviour is to target all hosts. To limit the impact on all the hosts, you can specify the IP addresses of the service (use commas to separate multiple values) or the DNS or the FQDN names of the services in `DESTINATION_HOSTS`.
+:::info Run your first experiment
+If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
 :::
 
-### Rate limit
+---
 
-- `NETWORK_BANDWIDTH`: It contains the network bandwidth rate limit
-- `BURST`: It contains the size of bucket, maximum amount of bytes that tokens can be available for instantaneously
-- `LIMIT`: It contains the limit for the number of bytes that can be queued waiting for tokens to become available
+## Use cases
 
-The following YAML snippet illustrates the use of this environment variable:
+Run this fault when you want to answer concrete questions like:
 
-[embedmd]:# (./static/manifests/pod-network-rate-limit/rate-limit.yaml yaml)
-```yaml
-# it injects the network rate limit
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: pod-network-rate-limit
-    spec:
-      components:
-        env:
-        - name: NETWORK_BANDWIDTH
-          value: "1mbit"
-        - name: BURST
-          value: "32kb"
-        - name: LIMIT
-          value: "2mb"
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
-```
+- **Throughput-sensitive workloads:** When a streaming or batch service has its egress bandwidth capped, does it back-pressure cleanly to upstream producers, or does it OOM by buffering?
+- **Large object transfers:** During an S3 multipart upload or a large image push, do callers handle a sudden bandwidth crunch with reasonable timeouts and resumption?
+- **Database replication lag:** If replication traffic is throttled, does the workload recover (eventual consistency) or thrash (split brain)?
+- **Service mesh and proxy behavior:** Do sidecars respect connection-level flow control and propagate back-pressure, or do they accumulate buffers and OOM?
 
-### Advance tunables
+---
 
-- `MIN_BURST`: It contains the size of the peakrate bucket
-- `PEAK_RATE`: It contains the maximum depletion rate of the bucket
+## Prerequisites
 
-The following YAML snippet illustrates the use of this environment variable:
+- **Kubernetes version:** 1.21 or later. Go to [What's supported](/docs/chaos-engineering/whats-supported) to confirm distribution support.
+- **Target pods are Running:** The application pods you intend to target are in the `Running` state before the fault is launched.
+- **Privileged pods allowed:** The cluster lets you schedule privileged pods in the chaos namespace.
+- **Workload selector defined:** The chaos experiment knows the target workload by kind, namespace, and either names or labels.
 
-[embedmd]:# (./static/manifests/pod-network-rate-limit/advance-tunables.yaml yaml)
-```yaml
-# it injects the network rate limit 
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: pod-network-rate-limit
-    spec:
-      components:
-        env:
-        - name: MIN_BURST
-          value: '16kb'
-        - name: PEAK_RATE
-          value: '2mbit'
-        - name: NETWORK_BANDWIDTH
-          value: "1mbit"
-        - name: BURST
-          value: "32kb"
-        - name: LIMIT
-          value: "2mb"
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
-```
+---
 
-### Destination IPs and destination hosts
+## Supported environments
 
-Default IPs and hosts whose traffic is interrupted because of the network faults. Tune it by using the `DESTINATION_IPS` and `DESTINATION_HOSTS` environment variables, respectively.
+| Platform | Support status |
+| --- | --- |
+| Amazon EKS | Supported |
+| Azure AKS | Supported |
+| Google GKE | Supported |
+| Red Hat OpenShift | Supported |
+| Rancher | Supported |
+| VMware Tanzu | Supported |
+| Self-managed Kubernetes (CNCF-certified) | Supported |
+| GKE Autopilot | Supported with [Autopilot setup](/docs/resilience-testing/chaos-testing/gke-autopilot) |
+| EKS Fargate, ACI virtual nodes | Not supported (no access to container runtime sockets) |
 
-- `DESTINATION_IPS`: It contains the IP addresses and ports of the services or pods or the CIDR blocks (range of IPs) whose accessibility is impacted.
-- `DESTINATION_HOSTS`: It contains the DNS names or FQDN names of the services and ports whose accessibility is impacted.
+---
 
-<b>NOTE:</b> Ports can be specified by using a pipe (|) as a separator. While providing ports is optional, omitting them will affect all ports associated with the destination IPs and hosts.
+## Permissions required
 
-The following YAML snippet illustrates the use of these environment variables:
+The fault runs under the chaos infrastructure's service account.
 
-[embedmd]:# (./static/manifests/pod-network-rate-limit/destination-ips-and-hosts.yaml yaml)
-```yaml
-# it injects the chaos for the egress traffic for specific ips/hosts
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: pod-network-rate-limit
-    spec:
-      components:
-        env:
-        - name: NETWORK_BANDWIDTH
-          value: "1mbit"
-        - name: BURST
-          value: "32kb"
-        - name: LIMIT
-          value: "2mb"
-        # supports comma separated destination ips
-        - name: DESTINATION_IPS
-          value: '8.8.8.8,192.168.5.6|80|8080'
-        # supports comma separated destination hosts
-        - name: DESTINATION_HOSTS
-          value: 'nginx.default.svc.cluster.local|80,google.com'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
-```
+| Resource (`apiGroup`) | Verbs | Why it is needed |
+| --- | --- | --- |
+| `pods` (`""`) | `get`, `list`, `create`, `delete`, `deletecollection`, `patch`, `update` | Discover target pods and run the chaos pod on the same node |
+| `pods/log` (`""`) | `get`, `list`, `watch` | Stream chaos pod logs for status and debugging |
+| `deployments`, `statefulsets`, `replicasets`, `daemonsets` (`apps`) | `get`, `list` | Resolve the target workload to the pods it owns |
+| `events` (`""`) | `get`, `list`, `create`, `patch`, `update` | Record fault progress as Kubernetes events |
+| `jobs` (`batch`) | `get`, `list`, `create`, `delete`, `deletecollection` | Run the chaos job that drives the fault |
 
-### Source and destination ports
+The default Harness chaos infrastructure service account already includes these permissions.
 
-By default, the network experiments disrupt traffic for all the source and destination ports. The interruption of specific port(s) can be tuned via `SOURCE_PORTS` and `DESTINATION_PORTS` ENV.
+---
 
-- `SOURCE_PORTS`: It contains ports of the target application, the accessibility to which is impacted
-- `DESTINATION_PORTS`: It contains the ports of the destination services or pods or the CIDR blocks(range of IPs), the accessibility to which is impacted
+## Fault tunables
 
-Use the following example to tune this:
+Configure the following fault parameters when you add Pod network rate limit to an experiment in Chaos Studio. Defaults are shown for reference.
 
-[embedmd]:# (./static/manifests/pod-network-rate-limit/source-and-destination-ports.yaml yaml)
-```yaml
-# it inject the chaos for the egress traffic for specific ports
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: pod-network-rate-limit
-    spec:
-      components:
-        env:
-        - name: NETWORK_BANDWIDTH
-          value: "1mbit"
-        - name: BURST
-          value: "32kb"
-        - name: LIMIT
-          value: "2mb"
-        # supports comma separated source ports
-        - name: SOURCE_PORTS
-          value: '80'
-        # supports comma separated destination ports
-        - name: DESTINATION_PORTS
-          value: '8080,9000'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
-```
+**Chaos parameters**
 
-### Network interface
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `NETWORK_BANDWIDTH` | Sustained bandwidth cap. Use units like `1mbit`, `512kbit`, `100mbit`. | `"1mbit"` |
+| `BURST` | Number of bytes the bucket can accumulate when idle, used to absorb short bursts. | `"32kb"` |
+| `LIMIT` | Maximum bytes queued by the shaper before packets are dropped. Larger values smooth bursts at the cost of higher latency. | `"2mb"` |
+| `MIN_BURST` | Minimum burst size, useful on slow links to avoid starving small packets. Leave empty for the kernel default. | `""` |
+| `PEAK_RATE` | Optional second bucket allowing short bursts above `NETWORK_BANDWIDTH`. Leave empty to disable. | `""` |
+| `TOTAL_CHAOS_DURATION` | Duration of the fault in seconds. | `60` |
 
-Name of the ethernet interface considered to shape the traffic. Its default value is `eth0`. Tune it by using the `NETWORK_INTERFACE` environment variable.
+**Traffic filters**
 
-The following YAML snippet illustrates the use of this environment variable:
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `DESTINATION_IPS` | Comma-separated list of destination IPs. The cap applies only to packets headed to these IPs. Empty matches all destinations. | `""` |
+| `DESTINATION_HOSTS` | Comma-separated list of destination hostnames. The helper resolves them and adds the resolved IPs to the filter. | `""` |
+| `NETWORK_INTERFACE` | Network interface inside the target container's namespace. Almost always `eth0` for standard CNI plugins. | `eth0` |
 
-[embedmd]:# (./static/manifests/pod-network-rate-limit/network-interface.yaml yaml)
-```yaml
-# provide the network interface
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: pod-network-rate-limit
-    spec:
-      components:
-        env:
-        - name: NETWORK_BANDWIDTH
-          value: "1mbit"
-        - name: BURST
-          value: "32kb"
-        - name: LIMIT
-          value: "2mb"
-        # name of the network interface
-        - name: NETWORK_INTERFACE
-          value: 'eth0'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
-```
+**Targeting**
 
-### Container runtime and socket path
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `TARGET_PODS` | Comma-separated list of pod names to target. Empty selects from the workload's pods using `POD_AFFECTED_PERCENTAGE`. | `""` |
+| `TARGET_CONTAINER` | Container in the pod whose network namespace to enter. Empty targets the first container in the pod spec. | `""` |
+| `NODE_LABEL` | Label selector to filter target pods by the node they run on. Empty disables node-based filtering. | `""` |
+| `POD_AFFECTED_PERCENTAGE` | Percentage of the workload's pods to target. `0` means one pod. | `0` |
+| `SEQUENCE` | When multiple pods are targeted, inject `parallel` (all at once) or `serial` (one after another). | `parallel` |
 
-The `CONTAINER_RUNTIME` and `SOCKET_PATH` environment variables to set the container runtime and socket file path, respectively.
+**Runtime and helper**
 
-- `CONTAINER_RUNTIME`: It supports `docker`, `containerd`, and `crio` runtimes. The default value is `containerd`.
-- `SOCKET_PATH`: It contains path of containerd socket file by default(`/run/containerd/containerd.sock`). For `docker`, specify path as `/var/run/docker.sock`. For `crio`, specify path as `/var/run/crio/crio.sock`.
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `CONTAINER_RUNTIME` | Container runtime on the target nodes. One of `containerd`, `docker`, `crio`. | `containerd` |
+| `SOCKET_PATH` | Path to the container runtime socket on the target node. Set to match `CONTAINER_RUNTIME`. | `/run/containerd/containerd.sock` |
+| `RAMP_TIME` | Wait period in seconds before and after the fault. Go to [ramp time](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time) to read how it is applied. | `0` |
 
-The following YAML snippet illustrates the use of these environment variables:
+Tunables that apply to every chaos fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
 
-[embedmd]:# (./static/manifests/pod-network-rate-limit/container-runtime-and-socket-path.yaml yaml)
-```yaml
-## provide the container runtime and socket file path
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: pod-network-rate-limit
-    spec:
-      components:
-        env:
-        - name: NETWORK_BANDWIDTH
-          value: "1mbit"
-        - name: BURST
-          value: "32kb"
-        - name: LIMIT
-          value: "2mb"
-        # runtime for the container
-        # supports docker, containerd, crio
-        - name: CONTAINER_RUNTIME
-          value: 'containerd'
-        # path of the socket file
-        - name: SOCKET_PATH
-          value: '/run/containerd/containerd.sock'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
-```
+:::tip Choose realistic values
+A `1mbit` cap reproduces ADSL-grade WAN. `10-100mbit` mimics a busy cloud network. `1gbit` or higher rarely triggers visible application behavior. Pick a rate noticeably below what your workload normally consumes.
+:::
+
+### Configure for your container runtime
+
+Set `CONTAINER_RUNTIME` and `SOCKET_PATH` to match the runtime on the target node:
+
+| `CONTAINER_RUNTIME` | `SOCKET_PATH` |
+| --- | --- |
+| `containerd` (default) | `/run/containerd/containerd.sock` |
+| `docker` | `/var/run/docker.sock` |
+| `crio` | `/var/run/crio/crio.sock` |
+
+---
+
+## Fault execution in brief
+
+Configures the container's network interface to cap outbound bandwidth at a specified rate (with configurable burst and queue behavior), optionally scoping the effect to only certain destination IPs, hosts, or ports so other traffic passes through unaffected.
+
+---
+
+## Expected behavior during fault execution
+
+- Outbound throughput from the pod to matched destinations is capped at `NETWORK_BANDWIDTH`. Existing TCP connections see their congestion window collapse to match the bottleneck.
+- Bursts up to `BURST` are allowed when the bucket has accumulated tokens (typically after the pod has been idle).
+- When the queue fills past `LIMIT`, the shaper drops new packets; the application sees these as connection-level slowdowns and potential retransmits.
+- gRPC and HTTP/2 connections accommodate the lower throughput with longer transfer times. Streaming clients (video, log shippers) back-pressure their producers; if the producer cannot slow down, it buffers and may OOM.
+- Database replication, object-storage upload, and similar bandwidth-bound flows take longer in direct proportion to the new cap.
+
+:::info When the fault ends
+The cap is removed and the pod's full bandwidth is restored immediately. Any queued packets are flushed at line rate.
+:::
+
+### Signals to watch
+
+Attach [resilience probes](/docs/resilience-testing/chaos-testing/probes) to assert each layer:
+
+- **Throughput and queue length:** Use a [Prometheus probe](/docs/resilience-testing/chaos-testing/probes/apm-probes) on your CNI's bytes-transferred metric and your application's queue depth.
+- **Back-pressure propagation:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) on upstream services to confirm they slow down rather than buffer to OOM.
+- **Application latency:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) for endpoint health; latency rises in proportion to the bandwidth crunch.
+
+---
+
+## Verify the fault execution effect
+
+While the experiment is running, measure throughput and confirm the cap is in effect:
+
+1. **Measure throughput from inside the pod.**
+
+   ```bash
+   kubectl exec -n <namespace> <pod-name> -c <target-container> -- \
+     sh -c "time curl -o /dev/null -s http://<test-endpoint>/large-file"
+   ```
+
+   The transfer rate should plateau near `NETWORK_BANDWIDTH`.
+
+2. **Measure throughput from another pod to the target.**
+
+   ```bash
+   kubectl run -n <namespace> tester --image=nicolaka/netshoot --rm -it -- \
+     iperf3 -c <target-pod-ip> -t 10
+   ```
+
+   Reported throughput on matched flows should be capped near `NETWORK_BANDWIDTH`; unmatched flows transit at the link's natural ceiling.
+
+---
+
+## Recovery and cleanup
+
+- **End of duration:** The cap is removed automatically and bandwidth returns to normal within seconds.
+- **Abort the experiment:** Stopping the experiment from Chaos Studio triggers the same cleanup path.
+- **Failed cleanup:** If automated cleanup did not complete, restart the target pod to reset its network state.
+
+---
+
+## Limitations
+
+This fault is not appropriate in the following scenarios:
+
+- **Serverless Kubernetes (EKS Fargate, ACI virtual nodes):** These platforms do not allow the privileged access this fault needs. GKE Autopilot is supported once the one-time setup in [Chaos on GKE Autopilot](/docs/resilience-testing/chaos-testing/gke-autopilot) is in place.
+- **Windows containers:** This fault is supported on Linux pods only.
+- **CNI plugins that bypass the pod's `eth0`:** Some eBPF-based plugins route packets host-side and may not be affected by this fault.
+- **`hostNetwork` pods:** The fault refuses to inject on `hostNetwork: true` pods to avoid throttling host traffic.
+- **Asymmetric flows:** The cap is enforced on egress from the target pod. Inbound traffic from the destination is not shaped, so request-response patterns are throttled only on the response leg.
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="Pod network rate limit experiment stays Pending or never starts in Harness Chaos Engineering"
+  mode="docs"
+  fallback="Inspect the chaos pods in the experiment namespace with kubectl describe pod -n <chaos-namespace>. The most common causes are taints, insufficient resources, or PodSecurity admission blocking privileged pods. Add the required tolerations or run in a namespace with privileged Pod Security level."
+/>
+
+<Troubleshoot
+  issue="Throughput not capped during pod-network-rate-limit"
+  mode="docs"
+  fallback="The most common causes are: NETWORK_INTERFACE does not match the pod's interface (verify with kubectl exec <pod> -- ip link show); the filter is too narrow and matches no real traffic (broaden DESTINATION_IPS/HOSTS); NETWORK_BANDWIDTH is higher than the path's natural ceiling; or BURST is larger than the test transfer so the entire payload fits in one burst. Lower BURST and re-run iperf3 from another pod to confirm matched flows are capped."
+/>
+
+<Troubleshoot
+  issue="Application OOMs during pod-network-rate-limit"
+  mode="docs"
+  fallback="The application is buffering data faster than the rate limit can drain, and is not propagating back-pressure to its producer. This is a real reliability finding, not a fault setup issue. Lower the producer rate, add a bounded queue with drop semantics, or raise the application's memory limit."
+/>
+
+<Troubleshoot
+  issue="Connection to container runtime fails for pod-network-rate-limit in Harness Chaos Engineering"
+  mode="docs"
+  fallback="The default SOCKET_PATH is /run/containerd/containerd.sock. For Docker, set CONTAINER_RUNTIME=docker and SOCKET_PATH=/var/run/docker.sock. For CRI-O, set CONTAINER_RUNTIME=crio and SOCKET_PATH=/var/run/crio/crio.sock."
+/>
+
+<Troubleshoot
+  issue="Bandwidth cap persists after pod-network-rate-limit ends"
+  mode="docs"
+  fallback="Automated cleanup did not complete. Restart the target pod to reset its network state. If the issue recurs, capture the chaos pod logs from the experiment namespace before the next run and share them with Harness support."
+/>
+
+---
+
+## Related faults
+
+- [Pod network loss](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-network-loss): Drop packets instead of throttling bandwidth.
+- [Pod network latency](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-network-latency): Add delay to packets instead of throttling.
+- [Pod network corruption](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-network-corruption): Corrupt packets to test checksum handling.
+- [Pod network duplication](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-network-duplication): Duplicate packets to test idempotency and dedup.
+- [Pod network partition](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-network-partition): Block traffic entirely using a NetworkPolicy.
+- [Common pod fault tunables](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults): Shared environment variables for selecting target pods and workloads.

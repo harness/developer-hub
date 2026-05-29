@@ -1,336 +1,231 @@
 ---
 id: pod-network-partition
 title: Pod network partition
+sidebar_label: Pod Network Partition
+description: Apply a temporary Kubernetes NetworkPolicy to isolate a target pod from its peers, dependencies, or namespaces and test split-brain behavior.
+keywords:
+  - chaos engineering
+  - pod network partition
+  - networkpolicy
+  - split brain
+  - kubernetes pod fault
+tags:
+  - chaos-engineering
+  - pod-faults
+  - network-chaos
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-partition
-- /docs/chaos-engineering/chaos-faults/kubernetes/pod-network-partition
-- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-network-partition
+  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-partition
+  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-network-partition
+  - /docs/chaos-engineering/chaos-faults/kubernetes/pod-network-partition
 ---
 
-Pod network partition is a Kubernetes pod-level fault that blocks 100 percent ingress and egress traffic of the target application by creating a network policy.
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-![Pod Network Partition](./static/images/pod-network-partition.png)
+Pod network partition is a Kubernetes pod-level chaos fault that isolates a target pod by creating a temporary `NetworkPolicy` that blocks ingress, egress, or both for a configurable duration. The partition is enforced by the cluster's CNI at the dataplane, so this fault has lighter prerequisites than the other pod network faults — it works wherever the cluster CNI supports `NetworkPolicy` (Calico, Cilium, AWS VPC CNI in policy mode, Azure CNI, etc.). When the fault ends, the policy is deleted and connectivity is restored immediately.
 
-### Use cases
+Use this fault to test how a service behaves when it is fully cut off from a specific peer or dependency: a network partition between leader and follower, a failed gateway, a split namespace, or an annotated dependency you want to isolate without changing application code.
 
-Pod network partition tests the application's resilience to lossy or flaky network.
-
-### Permissions required
-
-Below is a sample Kubernetes role that defines the permissions required to execute the fault.
-
-```
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  namespace: hce
-  name: pod-network-partition
-spec:
-  definition:
-    scope: Cluster # Supports "Namespaced" mode too
-permissions:
-  - apiGroups: [""]
-    resources: ["pods"]
-    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
-  - apiGroups: [""]
-    resources: ["events"]
-    verbs: ["create", "get", "list", "patch", "update"]
-  - apiGroups: [""]
-    resources: ["pods/log"]
-    verbs: ["get", "list", "watch"]
-  - apiGroups: [""]
-    resources: ["networkpolicies"]
-    verbs: ["create", "delete", "get", "list"]
-  - apiGroups: [""]
-    resources: ["deployments, statefulsets"]
-    verbs: ["get", "list"]
-  - apiGroups: [""]
-    resources: ["replicasets, daemonsets"]
-    verbs: ["get", "list"]
-  - apiGroups: [""]
-    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
-    verbs: ["create", "delete", "get", "list", "patch", "update"]
-  - apiGroups: ["batch"]
-    resources: ["jobs"]
-    verbs: ["create", "delete", "get", "list", "deletecollection"]
-```
-
-### Prerequisites
-- Kubernetes > 1.16
-- The CNI plugin must support NetworkPolicy (for example, Flannel does not support NetworkPolicy).
-- NetworkPolicy enforcement must be enabled on the Kubernetes cluster (by default, it is disabled on GKE).
-- Target pods must have labels defined for the NetworkPolicy to select them.
-- The application pods should be in the running state before and after injecting chaos.
-
-### Supported environments
-
-<table>
-  <tr>
-    <th> Platform </th>
-    <th> Support Status </th>
-  </tr>
-  <tr>
-    <td> GKE (Google Kubernetes Engine) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> EKS (Amazon Elastic Kubernetes Service) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> AKS (Azure Kubernetes Service) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> GKE Autopilot </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> Self-managed Kubernetes </td>
-    <td> ✅ Supported </td>
-  </tr>
-</table>
-
-### Optional tunables
-
-   <table>
-      <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> TOTAL_CHAOS_DURATION </td>
-        <td> Duration for which to insert chaos (in seconds). </td>
-        <td> Default: 60 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a></td>
-      </tr>
-      <tr>
-        <td> NODE_LABEL </td>
-        <td> Node label used to filter the target node if <code>TARGET_NODE</code> environment variable is not set. </td>
-        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
-      </tr>
-      <tr>
-        <td> POLICY_TYPES </td>
-        <td> Contains the type of network policy. </td>
-        <td> It supports <code>egress</code>, <code>ingress</code> and <code>all</code> values. For more information, go to <a href="#policy-type">policy type</a></td>
-      </tr>
-      <tr>
-        <td> POD_SELECTOR </td>
-        <td> Contains the labels of the destination pods. </td>
-        <td> For example, <code>app=cart</code>. For more information, go to <a href="#target-specific-pods">target pods</a></td>
-      </tr>
-      <tr>
-        <td> NAMESPACE_SELECTOR </td>
-        <td> Contains the labels of the destination namespaces. </td>
-        <td> For example, <code>env=prod</code>. For more information, go to <a href="#target-specific-namespaces">target namespaces</a> </td>
-      </tr>
-      <tr>
-        <td> PORTS </td>
-        <td> Comma-separated list of the target ports. </td>
-        <td> For example, 80,443,22. For more information, go to <a href="#destination-ports">destination ports</a></td>
-      </tr>
-      <tr>
-        <td> DESTINATION_IPS </td>
-        <td> IP addresses of the services or pods or the CIDR blocks (range of IPs) whose accessibility impacted. Comma-separated IPs or CIDRs can be provided.</td>
-        <td> If values are not provided, the fault induces network chaos on all IPs or destinations. For more information, go to <a href="#destination-ips-and-destination-hosts">destination IPs</a></td>
-      </tr>
-      <tr>
-        <td> DESTINATION_HOSTS </td>
-        <td> DNS names or FQDN names of the services whose accessibility is impacted. </td>
-        <td> If not provided, this fault induces network chaos for all IPs or destinations or <code>DESTINATION_IPS</code> if already defined. For more information, go to <a href="#destination-ips-and-destination-hosts">destination hosts</a></td>
-      </tr>
-      <tr>
-        <td> LIB_IMAGE </td>
-        <td> Image used to inject chaos. </td>
-        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
-      </tr>
-      <tr>
-        <td> RAMP_TIME </td>
-        <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a></td>
-      </tr>
-    </table>
-
-:::tip
-If the environment variables `DESTINATION_HOSTS` or `DESTINATION_IPS` are left empty, the default behaviour is to target all hosts. To limit the impact on all the hosts, you can specify the IP addresses of the service (use commas to separate multiple values) or the DNS or the FQDN names of the services in `DESTINATION_HOSTS`.
+:::info Run your first experiment
+If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
 :::
 
-### Destination IPs and destination hosts
+---
 
-Default IPs and hosts whose traffic is interrupted due to the network faults. Tune it by using the `DESTINATION_IPS` and `DESTINATION_HOSTS` environment variables, respectively.
+## Use cases
 
-- `DESTINATION_IPS`: It contains the IP addresses of the services or pods or the CIDR blocks (range of IPs) whose accessibility is impacted.
-- `DESTINATION_HOSTS`: It contains the DNS names or FQDN names of the services whose accessibility is impacted.
+Run this fault when you want to answer concrete questions like:
 
-The following YAML snippet illustrates the use of these environment variables:
+- **Leader-follower partition:** Cut off the leader of a stateful service from its followers. Does the follower set elect a new leader within the configured timeout? Does the original leader step down cleanly when the partition heals?
+- **Cross-namespace isolation:** Block one workload from a specific peer namespace and confirm the workload either fails fast or degrades to a documented fallback (cache, default value, error response).
+- **Dependency cutoff:** Isolate a workload from its database, message bus, or external API and confirm the circuit breaker engages, the cache serves stale data, and callers are not exposed to long timeouts.
+- **Probe and ejection behavior:** Does the kubelet mark the pod `NotReady` because its outbound health check fails? Does the service mesh outlier-detection eject the pod from upstream pools within the SLO?
 
-[embedmd]: # "./static/manifests/pod-network-partition/destination-ips-and-hosts.yaml yaml"
+---
 
-```yaml
-# it injects the chaos for specific ips/hosts
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: pod-network-partition
-      spec:
-        components:
-          env:
-            # supports comma separated destination ips
-            - name: DESTINATION_IPS
-              value: "8.8.8.8,192.168.5.6"
-            # supports comma separated destination hosts
-            - name: DESTINATION_HOSTS
-              value: "nginx.default.svc.cluster.local,google.com"
-            - name: TOTAL_CHAOS_DURATION
-              value: "60"
-```
+## Prerequisites
 
-### Target specific namespaces
+- **Kubernetes version:** 1.21 or later. Go to [What's supported](/docs/chaos-engineering/whats-supported) to confirm distribution support.
+- **CNI with NetworkPolicy enforcement:** The cluster's CNI plugin must enforce `NetworkPolicy`. Plain Flannel and the default AWS VPC CNI in non-policy mode do not. Verify with `kubectl api-resources | grep networkpolicy`.
+- **Target pods are Running:** The application pods you intend to target are in the `Running` state before the fault is launched.
+- **Workload selector defined:** The chaos experiment knows the target workload (`Deployment`, `StatefulSet`, etc.) by kind, namespace, and either names or labels.
 
-Specifies whether or not to provide access to and from the pods in a specific namespace. By default, the network partition interrupts traffic for all the namespaces. Tune it by using the `NAMESPACE_SELECTOR` environment variable.
+---
 
-The following YAML snippet illustrates the use of this environment variable:
+## Supported environments
 
-[embedmd]: # "./static/manifests/pod-network-partition/namespace-selectors.yaml yaml"
+| Platform | Support status |
+| --- | --- |
+| Amazon EKS (with Calico, Cilium, or VPC CNI in policy mode) | Supported |
+| Azure AKS | Supported |
+| Google GKE | Supported |
+| Red Hat OpenShift | Supported |
+| Rancher | Supported |
+| VMware Tanzu | Supported |
+| Self-managed Kubernetes with policy-enforcing CNI | Supported |
+| GKE Autopilot | Supported with [Autopilot setup](/docs/resilience-testing/chaos-testing/gke-autopilot) |
+| Clusters with no NetworkPolicy enforcement | Not supported (the policy is created but has no effect) |
 
-```yaml
-# it injects the chaos for specified namespaces, matched by labels
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: pod-network-partition
-      spec:
-        components:
-          env:
-            # labels of the destination namespace
-            - name: NAMESPACE_SELECTOR
-              value: "key=value"
-            - name: TOTAL_CHAOS_DURATION
-              value: "60"
-```
+---
 
-### Target specific pods
+## Permissions required
 
-Specifies whether or not to provide access to and from specific pods by specifying the pod labels. By default, the network partition fault interrupts traffic for all the external pods. Tune it by using the `POD_SELECTOR` environment variable.
+The fault runs under the chaos infrastructure's service account.
 
-The following YAML snippet illustrates the use of this environment variable:
+| Resource (`apiGroup`) | Verbs | Why it is needed |
+| --- | --- | --- |
+| `networkpolicies` (`networking.k8s.io`) | `get`, `list`, `create`, `delete`, `patch` | Create and delete the chaos `NetworkPolicy` in the target namespace |
+| `pods` (`""`) | `get`, `list` | Discover target pods and confirm they are Running |
+| `deployments`, `statefulsets`, `replicasets`, `daemonsets` (`apps`) | `get`, `list` | Resolve the target workload to the pods it owns |
+| `events` (`""`) | `get`, `list`, `create`, `patch`, `update` | Record fault progress as Kubernetes events |
+| `jobs` (`batch`) | `get`, `list`, `create`, `delete`, `deletecollection` | Run the chaos job that drives the fault |
 
-[embedmd]: # "./static/manifests/pod-network-partition/pod-selectors.yaml yaml"
+The default Harness chaos infrastructure service account already includes these permissions.
 
-```yaml
-# it injects the chaos for specified pods, matched by labels
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: pod-network-partition
-      spec:
-        components:
-          env:
-            # labels of the destination pods
-            - name: POD_SELECTOR
-              value: "key=value"
-            - name: TOTAL_CHAOS_DURATION
-              value: "60"
-```
+---
 
-### Policy type
+## Fault tunables
 
-Specifies whether or not to tune the interruption of the **ingress** or **egress** traffic. By default, the network partition fault interrupts both ingress and egress traffic. Tune it by using the `POLICY_TYPES` environment variable.
+Configure the following fault parameters when you add Pod network partition to an experiment in Chaos Studio. Defaults are shown for reference.
 
-The following YAML snippet illustrates the use of this environment variable:
+**Chaos parameters**
 
-[embedmd]: # "./static/manifests/pod-network-partition/policy-type.yaml yaml"
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `POLICY_TYPES` | Which traffic direction to block. One of `ingress`, `egress`, or `all`. | `all` |
+| `TOTAL_CHAOS_DURATION` | Duration of the fault in seconds. | `60` |
 
-```yaml
-# inject network loss for only ingress or only egress or all traffics
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: pod-network-partition
-      spec:
-        components:
-          env:
-            # provide the network policy type
-            # it supports `ingress`, `egress`, and `all` values
-            # default value is `all`
-            - name: POLICY_TYPES
-              value: "all"
-            - name: TOTAL_CHAOS_DURATION
-              value: "60"
-```
+**Partition scope (what is blocked)**
 
-### Destination ports
+If you set none of the following, the partition blocks all traffic in the chosen direction. Combine them to narrow the partition.
 
-Comma-separated list of ports that interrupt the traffic during a network partition fault. Specific ports are accessed by tuning `PORTS` environment variable.
-- If `PORT` is not set and none of the pod-selector, namespace-selector, or destination_ips are provided, then the fault blocks the traffic for all ports for all pods and IPs.
-- If `PORT` is not set but one of the pod-selector, namespace-selector, or destination_ips are provided, then the fault allows all the ports for all the pods and IPs filtered by the specified selectors.
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `DESTINATION_IPS` | Comma-separated CIDRs to block (for example, `10.0.0.0/16,192.168.1.0/24`). | `""` |
+| `DESTINATION_HOSTS` | Comma-separated hostnames to block. The helper resolves them and adds the resolved IPs to the policy. | `""` |
+| `POD_SELECTOR` | Label selector matching peer pods to block, in `key=value,key=value` form. | `""` |
+| `NAMESPACE_SELECTOR` | Label selector matching peer namespaces to block, in `key=value,key=value` form. | `""` |
+| `PORTS` | Comma-separated ports (or `port/protocol` pairs) the policy should restrict to. | `""` |
 
-The following YAML snippet illustrates the use of this environment variable:
+**Runtime and helper**
 
-[embedmd]: # "./static/manifests/pod-network-partition/ports.yaml yaml"
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `RAMP_TIME` | Wait period in seconds before and after the fault. Go to [ramp time](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time) to read how it is applied. | `0` |
 
-```yaml
-# it injects the chaos for specified ports
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: pod-network-partition
-      spec:
-        components:
-          env:
-            # comma separated list of ports
-            - name: PORTS
-              value: "tcp: [8080,80], udp: [9000,90]"
-            - name: TOTAL_CHAOS_DURATION
-              value: "60"
-```
+Tunables that apply to every chaos fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
+
+:::warning Empty partition scope blocks everything
+With no `DESTINATION_*`, `POD_SELECTOR`, or `NAMESPACE_SELECTOR` set, the chaos `NetworkPolicy` denies all traffic in the chosen direction, including DNS to kube-system. If you only want to cut off a single dependency, always set at least one scope tunable.
+:::
+
+---
+
+## Fault execution in brief
+
+Creates a Kubernetes `NetworkPolicy` in the target pod's namespace that denies ingress, egress, or both for the configured duration, optionally scoped to specific destinations, namespaces, pod selectors, or ports so other traffic remains unaffected.
+
+---
+
+## Expected behavior during fault execution
+
+- TCP connections in the blocked direction stop progressing. Existing sockets time out per their `tcp_user_timeout` and OS keepalive settings (often 5 to 15 minutes). New connection attempts fail immediately with `connection refused` or `host unreachable`.
+- UDP traffic (DNS, QUIC) drops silently. If you blocked egress without explicitly allowing DNS, name resolution fails.
+- The target pod can still reach anything not covered by the policy. With `POD_SELECTOR=app=foo`, only pods with that label are blocked.
+- Health probes from the kubelet still work (kubelet talks to the pod over the node's network, which is not subject to pod-level `NetworkPolicy`).
+- Service meshes that use sidecar-to-sidecar TCP detect the failures and may eject the pod from upstream pools.
+
+:::info When the fault ends
+The `NetworkPolicy` is deleted, and connectivity is restored as fast as the CNI can reconcile (typically within one second). TCP connections that timed out during the partition do not automatically reconnect; the application must handle that itself.
+:::
+
+### Signals to watch
+
+Attach [resilience probes](/docs/resilience-testing/chaos-testing/probes) to assert each layer:
+
+- **Application failover:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) against the dependency to confirm the partition is in effect, and a second HTTP probe against the application's user-facing endpoint to confirm graceful degradation.
+- **Cluster events:** Use a [Kubernetes probe](/docs/resilience-testing/chaos-testing/probes/k8s-probe) to confirm the `NetworkPolicy` was created and deleted as expected.
+- **Mesh ejection:** Use a [Prometheus probe](/docs/resilience-testing/chaos-testing/probes/apm-probes) on Istio/Envoy `cluster.outlier_detection.ejections_active` or your mesh's equivalent.
+
+---
+
+## Verify the fault execution effect
+
+While the experiment is running, confirm that the partition is actually in effect:
+
+1. **Inspect the chaos NetworkPolicy.**
+
+   ```bash
+   kubectl get networkpolicy -n <namespace> -l harness.io/chaos=pod-network-partition -o yaml
+   ```
+
+   You should see the policy with `policyTypes` and the rules you configured.
+
+2. **Test connectivity from the target pod.**
+
+   ```bash
+   kubectl exec -n <namespace> <pod-name> -- nc -zv -w 2 <blocked-host> <port>
+   ```
+
+   The connection should fail. For an unblocked destination, the same command should succeed.
+
+---
+
+## Recovery and cleanup
+
+- **End of duration:** The chaos `NetworkPolicy` is deleted automatically. The CNI reconciles within seconds and connectivity returns.
+- **Abort the experiment:** Stopping the experiment from Chaos Studio triggers the same cleanup path.
+- **Failed cleanup:** If automated cleanup did not complete, delete the chaos NetworkPolicy manually:
+
+  ```bash
+  kubectl delete networkpolicy -n <namespace> -l harness.io/chaos=pod-network-partition
+  ```
+
+- **Stuck connections:** TCP sockets that timed out during the partition stay closed; the application reconnects on its own schedule.
+
+---
+
+## Limitations
+
+This fault is not appropriate in the following scenarios:
+
+- **CNI plugins without NetworkPolicy enforcement:** Plain Flannel, default AWS VPC CNI (without policy mode), and a few others do not enforce policies. The fault creates the policy but it has no effect.
+- **`hostNetwork` pods:** Pods using the host network namespace are not subject to namespaced `NetworkPolicy`. The fault refuses to inject on `hostNetwork: true` pods.
+- **Cluster-scoped resources:** This fault works at the pod level. To partition a node from the rest of the cluster, use [Node network loss](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/node-network-loss) with `NETWORK_PACKET_LOSS_PERCENTAGE: 100`.
+- **kubelet-to-pod traffic:** `NetworkPolicy` does not apply to kubelet probe traffic in most CNI implementations, so liveness and readiness probes still work even under "block all" rules. To break probes, target a different layer.
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="Pod network partition created but the target pod can still reach the blocked destination"
+  mode="docs"
+  fallback="The cluster CNI does not enforce NetworkPolicy. Verify with kubectl describe pod -n kube-system -l k8s-app=<cni> or your CNI's docs. Plain Flannel and the default AWS VPC CNI in non-policy mode do not enforce policies. Switch to Calico, Cilium, or enable AWS VPC CNI policy mode."
+/>
+
+<Troubleshoot
+  issue="Pod network partition blocks more traffic than expected in Harness Chaos Engineering"
+  mode="docs"
+  fallback="With no DESTINATION_*, POD_SELECTOR, or NAMESPACE_SELECTOR set, the chaos NetworkPolicy denies all traffic in the chosen direction, including DNS to kube-system. Either set scope tunables to narrow the partition, or add an explicit allow rule outside this fault for DNS (UDP/53 to kube-system pods)."
+/>
+
+<Troubleshoot
+  issue="NetworkPolicy not deleted after pod-network-partition ends"
+  mode="docs"
+  fallback="Automated cleanup did not complete. Delete the chaos NetworkPolicy manually with kubectl delete networkpolicy -n <namespace> -l harness.io/chaos=pod-network-partition. Verify connectivity returns with a test from inside the target pod."
+/>
+
+<Troubleshoot
+  issue="Permission denied creating NetworkPolicy for pod-network-partition"
+  mode="docs"
+  fallback="The chaos service account lacks the create verb on networkpolicies in the networking.k8s.io group for the target namespace. Verify with kubectl auth can-i create networkpolicies --as=system:serviceaccount:<chaos-ns>:<sa-name> -n <target-ns>. Grant the missing role binding."
+/>
+
+---
+
+## Related faults
+
+- [Pod network loss](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-network-loss): Drop a percentage of packets without creating a NetworkPolicy. Useful when the CNI does not enforce policies.
+- [Pod network latency](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-network-latency): Add delay rather than blocking traffic.
+- [Node network loss](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/node-network-loss): Partition an entire node from the rest of the cluster.
+- [Common pod fault tunables](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults): Shared environment variables for selecting target pods and workloads.
