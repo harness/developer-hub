@@ -34,8 +34,8 @@ There are two ways to add the Verify step:
 
 * **When selecting the stage deployment strategy:**  
 The **Verify** step can be enabled in a CD stage the first time you open the **Execution** settings and select the deployment strategy. When you select the deployment strategy you want to use, there is also an **Enable Verification** option. Select the **Enable Verification** option.  
-Harness will automatically add the **Verify** step. For example, here is a stage where Canary strategy and the **Enable Verification** option were selected.[![](./static/verify-deployments-with-custom-health-metrics-85.png)](./static/verify-deployments-with-custom-health-metrics-85.png)
-* **Add the Verify step to an existing Execution setup:** You can also add the Verify step to the Execution section of a CD stage in a Pipeline you previously created. Simply click **Add Step** after the deployment step, and then select **Verify**.[![](./static/verify-deployments-with-custom-health-metrics-87.png)](./static/verify-deployments-with-custom-health-metrics-87.png)
+Harness will automatically add the **Verify** step. For example, here is a stage where Canary strategy and the **Enable Verification** option were selected.[![](./verify-deployments-with-custom-health-metrics-85.png)](./verify-deployments-with-custom-health-metrics-85.png)
+* **Add the Verify step to an existing Execution setup:** You can also add the Verify step to the Execution section of a CD stage in a Pipeline you previously created. Simply click **Add Step** after the deployment step, and then select **Verify**.[![](./verify-deployments-with-custom-health-metrics-87.png)](./verify-deployments-with-custom-health-metrics-87.png)
 
 ## Step 2: Enter a Name and Timeout
 
@@ -58,7 +58,7 @@ The maximum is `53w`. Timeouts can be set at the Pipeline level also.
 
 In **Continuous Verification Type**, select a type that matches your [deployment strategy](verify-deployments-with-the-verify-step.md#step-3-select-a-continuous-verification-type).
 
-![](./static/verify-deployments-with-custom-health-metrics-89.png)
+![](./verify-deployments-with-custom-health-metrics-89.png)
 
 ## Step 4: Create a Monitored Service
 
@@ -82,7 +82,7 @@ A Health Source is basically a mapping of a Harness Service to the service in a 
 
 In **Health Sources**, click **Add**. The **Add New Health Source** settings appear.
 
-![](./static/verify-deployments-with-custom-health-metrics-90.png)
+![](./verify-deployments-with-custom-health-metrics-90.png)
 
 1. In **Select health source type**, select **Custom Health**.
 2. In **Health Source Name**, enter a name for the Health Source. For example Quickstart.
@@ -96,7 +96,7 @@ In **Health Sources**, click **Add**. The **Add New Health Source** settings
 
 1. If you select Custom Health Metrics, the **Customize Health Source** settings appear as:
    
-   ![](./static/verify-deployments-with-custom-health-metrics-91.png)
+   ![](./verify-deployments-with-custom-health-metrics-91.png)
 
 2. Click **Map Metric(s) to Harness Services**.
 3. In **Metric Name**, enter the name of the metric.
@@ -130,7 +130,7 @@ In **Health Sources**, click **Add**. The **Add New Health Source** settings
 
 1. If you select Custom Health Logs, the **Customize Health Source** settings appear as:
    
-   ![](./static/verify-deployments-with-custom-health-metrics-92.png)
+   ![](./verify-deployments-with-custom-health-metrics-92.png)
 
 2. Click **Query specifications and mapping**.
 3. In **Query Name**, enter a name for the query. For example Custom Log Query.
@@ -144,14 +144,14 @@ In **Health Sources**, click **Add**. The **Add New Health Source** settings
 7. In **Body**, enter the request body. For example,`{"filter":{"query":","from":start_time,"to":end_time}}`.
 8. Click **Fetch Records** to retrieve records from the provided URL.
    
-   ![](./static/verify-deployments-with-custom-health-metrics-93.png)
+   ![](./verify-deployments-with-custom-health-metrics-93.png)
 
 9.  Once the response is retrieved, click **JSON path selection**.
 	1. In **Log Message JSON path**, click the plus icon to select the path to the log message from the data source. For example,`$.data.[*].attributes.message`.
 	2. In **Timestamp Field/Locator JSON** Path, click the plus icon to select the path to the log message from the data source. For example,`$.data.[*].attributes.timestamp`.
 	3. In **Provide Service Instance to map to Harness Service Instance**, click the plus icon to select the Service instance from the data source. For example,`$.data.[*].attributes.tags.[4]`.
 
-	![](./static/verify-deployments-with-custom-health-metrics-94.png)
+	![](./verify-deployments-with-custom-health-metrics-94.png)
 
 1.  Click **Submit**.
 
@@ -189,7 +189,7 @@ When the Pipeline is running, click the **Verify** step.
 
 The verification takes a few minutes.
 
-![](./static/verify-deployments-with-custom-health-metrics-95.png)
+![](./verify-deployments-with-custom-health-metrics-95.png)
 
 ### Summary
 
@@ -199,7 +199,7 @@ The **Summary** section shows the number of metrics and logs that are in violati
 
 Click **Console View** or simply click **View Details** in **Summary** to take a deeper look at verification.
 
-![](./static/verify-deployments-with-custom-health-metrics-96.png)
+![](./verify-deployments-with-custom-health-metrics-96.png)
 
 If you have more than one Health Source, you can use the **Health Source** dropdown to select each one.
 

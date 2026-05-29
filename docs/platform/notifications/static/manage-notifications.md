@@ -24,11 +24,11 @@ To add a delegate event notification rule, do the following:
 1. In Harness, go to **Account Settings**, **Organization Settings**, or **Project Settings**, depending on the [scope](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes) at which you want to add a delegate event notification rule.
 2. Under **General**, select **Notifications Management**. The Notification Management page opens to the **Rules** tab by default.
 
-    ![](./static/notifications-management.png)
+    ![](../static/notifications-management.png)
 
 3. Select **New Notification**. The **New Notification Setup** wizard opens.
 
-   ![](./static/new-notification-setup.png)
+   ![](../static/new-notification-setup.png)
 
    1. On the **Overview** screen, enter a **Notification Name**, then select **Continue**. The **Resources** screen opens.
    2. Under **Select Resource Type**, **Delegate** is selected for you by default. Harness plans to add additional resource types in future releases.

@@ -36,8 +36,8 @@ There are two ways to add the Verify step:
 
 * **When selecting the stage deployment strategy:**  
 The **Verify** step can be enabled in a CD stage the first time you open the **Execution** settings and select the deployment strategy. When you select the deployment strategy you want to use, there is also an **Enable Verification** option. Select the **Enable Verification** option.  
-Harness will automatically add the **Verify** step. For example, here is a stage where Canary strategy and the **Enable Verification** option were selected.[![](./static/verify-deployments-with-dynatrace-09.png)](./static/verify-deployments-with-dynatrace-09.png)
-* **Add the Verify step to an existing Execution setup:** You can also add the Verify step to the Execution section of a CD stage in a Pipeline you previously created. Simply click **Add Step** after the deployment step, and then select **Verify**.[![](./static/verify-deployments-with-dynatrace-11.png)](./static/verify-deployments-with-dynatrace-11.png)
+Harness will automatically add the **Verify** step. For example, here is a stage where Canary strategy and the **Enable Verification** option were selected.[![](./verify-deployments-with-dynatrace-09.png)](./verify-deployments-with-dynatrace-09.png)
+* **Add the Verify step to an existing Execution setup:** You can also add the Verify step to the Execution section of a CD stage in a Pipeline you previously created. Simply click **Add Step** after the deployment step, and then select **Verify**.[![](./verify-deployments-with-dynatrace-11.png)](./verify-deployments-with-dynatrace-11.png)
 
 ## Step 2: Enter a Name and Timeout
 
@@ -60,7 +60,7 @@ The maximum is `53w`.Timeouts can be set at the Pipeline level also.
 
 In **Continuous Verification Type**, select a type that matches your [deployment strategy](verify-deployments-with-the-verify-step.md#step-3-select-a-continuous-verification-type).
 
-![](./static/verify-deployments-with-dynatrace-13.png)
+![](./verify-deployments-with-dynatrace-13.png)
 
 ## Step 4: Create a Monitored Service
 
@@ -82,14 +82,14 @@ A Health Source is basically a mapping of a Harness Monitored Service to the Ser
 
 In **Health Sources**, click **Add**. The **Add New Health Source** settings appear.
 
-![](./static/verify-deployments-with-dynatrace-14.png)
+![](./verify-deployments-with-dynatrace-14.png)
 
 1. In **Select health source type**, select **Dynatrace**.
 2. In **Health Source Name**, enter a name for the Health Source. For example Quickstart.
 3. Under **Connect Health Source**, click **Select Connector**.
 4. In **Connector** settings, you can either choose an existing connector or click **New Connector** to create a new **Connector.**
    
-   ![](./static/verify-deployments-with-dynatrace-15.png)
+   ![](./verify-deployments-with-dynatrace-15.png)
 
 5. After selecting the connector, click **Apply Selected**. The Connector is added to the Health Source.
 6. In **Select Feature**, a Dynatrace feature is selected by default.
@@ -97,7 +97,7 @@ In **Health Sources**, click **Add**. The **Add New Health Source** settings
    
    The subsequent steps in **Customize Health Source** depend on the Health Source type you selected.
    
-   ![](./static/verify-deployments-with-dynatrace-16.png)
+   ![](./verify-deployments-with-dynatrace-16.png)
    	
 8. In **Find a Dynatrace service**, enter the name of the desired Dynatrace service.
 9.  In **Select Metric Packs to be monitored,** you can select **Infrastructure** or **Performance** or both.
@@ -114,7 +114,7 @@ In **Health Sources**, click **Add**. The **Add New Health Source** settings
 	* SLI
 18. In **Risk Category**, select a risk type.
 19. In **Deviation Compared to Baseline**, select one of the options based on the selected risk type.
-    ![](./static/verify-deployments-with-dynatrace-17.png)
+    ![](./verify-deployments-with-dynatrace-17.png)
 20. Click **Submit**. The Health Source is displayed in the Verify step.
 
 You can add one or more Health Sources for each APM or logging provider.
@@ -157,7 +157,7 @@ When the Pipeline is running, click the **Verify** step.
 
 The verification takes a few minutes.
 
-![](./static/verify-deployments-with-dynatrace-18.png)
+![](./verify-deployments-with-dynatrace-18.png)
 
 The risk level might initially display a number of violations, but often changes over the duration.
 
@@ -169,7 +169,7 @@ The **Summary** section shows the number of metrics that are in violation.
 
 Click **Console View** or simply click **View Details** in **Summary** to take a deeper look at verification.
 
-![](./static/verify-deployments-with-dynatrace-19.png)
+![](./verify-deployments-with-dynatrace-19.png)
 
 If you have more than one Health Source, you can use the **Health Source** dropdown to select each one.
 

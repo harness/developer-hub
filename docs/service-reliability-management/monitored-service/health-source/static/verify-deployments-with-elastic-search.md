@@ -118,7 +118,7 @@ For instance, if you input the service as `todolist` and the environment as `dev
 :::
 
 
-![Autocreate monitored service](./static/cv-sumologic-autocreate-monitoredservice.png)
+![Autocreate monitored service](./cv-sumologic-autocreate-monitoredservice.png)
 
 ## Add a health source
 
@@ -223,26 +223,26 @@ The Summary section displays the following details when the Verify step begins:
 
 Note that it may take some time for the analysis to begin. The screenshot below shows a Verification step running in a deployment:
 
-![Verification summary](./static/cv-sumologic-verify-summary-view.png)
+![Verification summary](./cv-sumologic-verify-summary-view.png)
 
 ## Console view
 
 The console view displays detailed logs of the pipeline, including verification logs. To view the console, select **View Details** in the **Summary** section or turn on the **Console View** toggle switch in the upper-right corner.
 
-![Verification step console view](./static/cv-sumologic-verify-console-view.png)
+![Verification step console view](./cv-sumologic-verify-console-view.png)
 
 By default, the console displays logs of only the anomalous metrics and affected nodes. To see all logs, clear the **Display only anomalous metrics and affected nodes** check box.
 
-![Verification step console view all data](./static/cv-sumologic-verify-view-anamalous-data.png)
+![Verification step console view all data](./cv-sumologic-verify-view-anamalous-data.png)
 
 The following screenshots show successful and failed verifications in a deployment run:
 
 **Successful verification**
 
-![Passed verification step](./static/cv-sumologic-pipeline-pass.png)
+![Passed verification step](./cv-sumologic-pipeline-pass.png)
 
 **Failed verification**
 
-![Failed verification step](./static/cv-sumologic-pipeline-fail.png)
+![Failed verification step](./cv-sumologic-pipeline-fail.png)
 
 
