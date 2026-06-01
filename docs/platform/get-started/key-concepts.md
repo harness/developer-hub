@@ -17,7 +17,6 @@ redirect_from:
   - /docs/platform/key-concepts
   - /docs/get-started/beta-preview-ga
   - /docs/get-started/release-status
-  - /docs/platform/organizations-and-projects/projects-and-organizations
 canonical_url: https://www.harness.io/blog/general-availability-harness-developer-hub-hdh
 ---
 
@@ -68,9 +67,7 @@ Do not worry if you do not recognize a term. Check the <a href="/glossary" targe
 
 ## Account
 
-A Harness account is the highest level for everything you do in Harness. It is where you define your organizational structure, manage global settings, and control access across all users and projects. Within an account, you create **organizations and projects**. This hierarchy helps teams work independently while still following shared security, governance, and access rules set at the account level.
-
-You can create resources such as **connectors** at different levels, such as **account, organization, or project**. Resources you define at a higher level are automatically available at lower levels, which reduces duplication and keeps configuration consistent.
+A Harness account is the highest level for all operations you perform in Harness. It is where you define your organizational structure, manage global settings, and control access across all users and projects. Within an account, you create **organizations and projects**. This hierarchy helps teams work independently while still following shared security, governance, and access rules set at the account level.
 
 To set up your account and get started, see the <a href="/docs/platform/get-started/onboarding-guide" target="_blank" >Platform onboarding guide</a>. 
 
@@ -85,11 +82,9 @@ To set up your account and get started, see the <a href="/docs/platform/get-star
 
 ---
 
-## Organizations and projects
-
 Within a Harness account, you organize your work using organizations and projects. This structure helps teams collaborate effectively while keeping ownership, access, and configuration clearly defined.
 
-### Organizations
+## Organizations
 
 A Harness organization (or *org*) groups together projects that share a common purpose or business goal. Organizations are often used to represent higher-level groupings in a company, such as:
 
@@ -97,15 +92,11 @@ A Harness organization (or *org*) groups together projects that share a common p
   * Product lines
   * Departments
 
+Go to <a href="/docs/platform/organizations-and-projects/#organizations" target="_blank">Organizations</a> to know more about creating and managing organizations.
 
-Each organization can contain multiple projects and provides a natural boundary for managing teams, access, and shared resources.
+## Projects
 
-
-### Projects
-
-A Harness project is where teams do their day-to-day work. Projects contain the users, pipelines, and the resources needed to build, deploy, test, and operate applications. 
-
-For example, a project might have a Harness CI pipeline to build code and push an image to a repo and a Harness CD pipeline to pull and deploy that image to a cloud platform.
+A Harness project is where teams do their day-to-day work. 
 
 Projects typically represent:
 
@@ -113,9 +104,8 @@ Projects typically represent:
   * Platform or infrastructure teams
   * Individual workloads within an organization
 
-Projects give teams a shared workspace while allowing them to operate independently. You can add an unlimited number of Harness projects to an org. All projects in the org can use the org's resources.
+Go to <a href="/docs/platform/organizations-and-projects/#projects" target="_blank">Projects</a> to know more about creating and managing projects.
 
-Much like account-level roles, project members can be assigned Project Admin, Member, and Viewer roles.
 
 ---
 

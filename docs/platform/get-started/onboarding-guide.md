@@ -52,10 +52,9 @@ After you log in to your account, select a module and you are redirected to the 
 
 Once you have created an account, you can begin creating organizations and projects. If you are part of a team account, contact your administrator to get the necessary permissions to create organizations and projects.
 
-:::important
 - With a free account, a default organization and project are already created for you. 
 - You **cannot** create another new organization. However, you can create multiple projects within the default organization, and invite collaborators into the default organization.
-:::
+
 
 #### Create an organization
 

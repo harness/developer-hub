@@ -3244,6 +3244,12 @@ html[data-theme='dark'] footer {
   max-width: 100%;
 }
 
+/* Hide sidebar items with hidden class */
+.theme-doc-sidebar-item-link.hidden,
+.menu__link.hidden {
+  display: none !important;
+}
+
 /* ===== Page transition — Documentation ↔ API Reference switcher ===== */
 
 /* Sidebar header persistence is handled via a DOM clone overlay in
