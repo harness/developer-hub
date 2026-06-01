@@ -15,7 +15,9 @@ slug: /feature-management-experimentation/templates
   target="_self"
 />
 
-Remote Feature Flag Cleanup templates help you identify and remove stale <Tooltip id="fme.openfeature.feature-flag">feature flags</Tooltip> from your codebase. These remote templates automate feature flag cleanup by generating pull requests (PRs) with the proposed code changes. The templates are maintained in the [Harness Community GitHub repository](https://github.com/harness-community/solutions-architecture/tree/main/fme).
+Remote Feature Flag Cleanup templates help you identify and remove stale <Tooltip id="fme.openfeature.feature-flag">feature flags</Tooltip> from your codebase. These remote templates automate feature flag cleanup by generating pull requests (PRs) with the proposed code changes. 
+
+The cleanup agent requires an Anthropic API key. The templates are maintained in the [Harness Community GitHub repository](https://github.com/harness-community/solutions-architecture/tree/main/fme).
 
 | Type | Use case |
 |---|---|
@@ -66,6 +68,13 @@ To import a remote template:
 1. Select where you'd like to save the template to: `Project`, `Organization`, or `Account`.
 1. Select **Remote** under `How do you want to set up your template?`.
 1. Select **Third-party Git provider** and specify a [Git connector](/docs/category/code-repo-connectors/), [repository, Git branch, and the YAML path](/docs/platform/templates/create-a-remote-pipeline-template/#create-a-remote-pipeline-template). 
+
+   :::warning Clone and customize before importing
+   The community templates hardcode `projectIdentifier` and `orgIdentifier` on lines 6–7 of each YAML file. 
+   
+   Before importing, clone the [Harness Community GitHub repository](https://github.com/harness-community/solutions-architecture/tree/main/fme) and update those values to match your own account, organization, and project. Then, point your Git connector to your cloned copy.
+   :::
+
 1. Click **Start**.
 1. Save the template and reference it in your Harness pipeline.
 
@@ -83,7 +92,7 @@ The following runtime inputs are required when configuring the remote templates:
 | `FME_ADMIN_APIKEY` | FME Admin API key used to retrieve feature flag metadata. |
 | `FME_PROJECT_ID` | FME project identifier used during discovery. |
 | `FEATURE_FLAG_SELECTION_CRITERIA` | Natural-language criteria used to identify cleanup candidates. |
-| `LLM_AUTH_TOKEN` | Authentication token used by the cleanup code agent. |
+| `LLM_AUTH_TOKEN` | Anthropic API key used by the cleanup code agent. |
 
 </details>
 
@@ -99,7 +108,7 @@ The following runtime inputs are required when configuring the remote templates:
 | `FME_ADMIN_APIKEY` | FME Admin API key used to retrieve feature flag metadata. |
 | `FME_PROJECT_ID` | FME project identifier used during discovery. |
 | `FEATURE_FLAG_SELECTION_CRITERIA` | Natural-language criteria used to identify cleanup candidates. |
-| `LLM_AUTH_TOKEN` | Authentication token used by the cleanup code agent. |
+| `LLM_AUTH_TOKEN` | Anthropic API key used by the cleanup code agent. |
 
 </details>
 
@@ -115,7 +124,7 @@ The following runtime inputs are required when configuring the remote templates:
 | `FEATURE_FLAG` | Name of the feature flag to remove. |
 | `TREATMENT` | Treatment value to inline during cleanup (for example: `on`, `off`, or `variant_a`). |
 | `REASON` | Explanation for why the feature flag is safe to remove. |
-| `LLM_AUTH_TOKEN` | Authentication token used by the cleanup code agent. |
+| `LLM_AUTH_TOKEN` | Anthropic API key used by the cleanup code agent. |
 
 </details>
 
@@ -133,17 +142,15 @@ The following runtime inputs are required when configuring the remote templates:
 | `FEATURE_FLAG` | Name of the feature flag to remove. |
 | `TREATMENT` | Treatment value to inline during cleanup (for example: `on`, `off`, or `variant_a`). |
 | `REASON` | Explanation for why the feature flag is safe to remove. |
-| `LLM_AUTH_TOKEN` | Authentication token used by the cleanup code agent. |
+| `LLM_AUTH_TOKEN` | Anthropic API key used by the cleanup code agent. |
 
 </details>
 
 ## Selection criteria
 
-`FEATURE_FLAG_SELECTION_CRITERIA` defines which feature flags should be considered eligible for cleanup.
+`FEATURE_FLAG_SELECTION_CRITERIA` defines which feature flags should be considered eligible for cleanup. Write the criteria as a short, explicit sentence describing the desired cleanup conditions. 
 
-Write the criteria as a short, explicit sentence describing the desired cleanup conditions. Some examples include:
-
-```text
+```text title="Example Criteria"
 Flags that are 100% rolled out in production
 Flags that are 100% rolled out in all environments
 Flags with rollout status 100% released
