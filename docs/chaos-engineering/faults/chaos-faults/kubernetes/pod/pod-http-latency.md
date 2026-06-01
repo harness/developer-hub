@@ -1,396 +1,252 @@
 ---
 id: pod-http-latency
 title: Pod HTTP latency
+sidebar_label: Pod HTTP Latency
+description: Add a configurable delay to HTTP responses served by a target Kubernetes pod to test timeouts, retries, and tail-latency behavior at the application protocol layer.
+keywords:
+  - chaos engineering
+  - pod http latency
+  - http chaos
+  - api latency
+  - kubernetes pod fault
+tags:
+  - chaos-engineering
+  - pod-faults
+  - http-chaos
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-http-latency
-- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-http-latency
-- /docs/chaos-engineering/chaos-faults/kubernetes/pod-http-latency
+  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-http-latency
+  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-http-latency
+  - /docs/chaos-engineering/chaos-faults/kubernetes/pod-http-latency
 ---
 
-Pod HTTP latency is a Kubernetes pod-level chaos fault that injects HTTP response latency by starting the proxy server and redirecting the traffic through it. This fault:
-- Injects the latency into the service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-![Pod HTTP Latency](./static/images/pod-http-latency.png)
+Pod HTTP latency is a Kubernetes pod-level chaos fault that adds a configurable delay to HTTP responses served by the target pod for a configurable duration. The delay is applied at the application protocol layer on the chosen service port; non-HTTP traffic and traffic on other ports passes through unaffected. When the fault ends, the delay is removed and HTTP responses return to normal immediately.
 
+Use this fault to test how a service behaves when a downstream HTTP API or internal handler becomes slow: a sluggish dependency, a backed-up worker pool, or a GC pause that adds tens of milliseconds to every response.
 
-### Use cases
-Pod HTTP latency:
-- Evaluates the application's resilience to lossy or flaky HTTP responses.
-- Simulates latency to specific API services for (or from) a given microservice.
-- Simulates a slow response on specific third-party or dependent components or services.
-
-:::info note
-Pod HTTP latency supports HTTP, HTTPS methods, and gRPC framework.
+:::info Run your first experiment
+If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
 :::
 
-### Permissions required
+---
 
-Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+## Use cases
 
-```
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  namespace: hce
-  name: pod-http-latency
-spec:
-  definition:
-    scope: Cluster # Supports "Namespaced" mode too
-permissions:
-  - apiGroups: [""]
-    resources: ["pods"]
-    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
-  - apiGroups: [""]
-    resources: ["events"]
-    verbs: ["create", "get", "list", "patch", "update"]
-  - apiGroups: [""]
-    resources: ["pods/log"]
-    verbs: ["get", "list", "watch"]
-  - apiGroups: [""]
-    resources: ["deployments, statefulsets"]
-    verbs: ["get", "list"]
-  - apiGroups: [""]
-    resources: ["replicasets, daemonsets"]
-    verbs: ["get", "list"]
-  - apiGroups: [""]
-    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
-    verbs: ["create", "delete", "get", "list", "patch", "update"]
-  - apiGroups: ["batch"]
-    resources: ["jobs"]
-    verbs: ["create", "delete", "get", "list", "deletecollection"]
-```
+Run this fault when you want to answer concrete questions like:
 
-### Prerequisites
-- Kubernetes > 1.16
-- The application pods should be in the running state before and after injecting chaos.
+- **Client timeout budgets:** When the dependency takes 2 seconds instead of 50 ms, do callers honor their timeout configuration, or do they hang waiting for a response?
+- **Retry storms:** Does the client's retry policy amplify the slowdown into a thundering herd, or does it apply backoff and jitter?
+- **Tail-latency SLOs:** Adding 500 ms to a small fraction of requests reproduces realistic tail-latency degradation. Does your p99 alert fire, and does the runbook hold up?
+- **Circuit breaker tripping:** Does the upstream client trip its circuit breaker after `n` slow responses, or does it keep sending traffic to the degraded replica?
+- **HTTP/2 and gRPC stream behavior:** A long-lived stream multiplexes many calls. Do per-call deadlines fire, or do all multiplexed calls share the same delay?
 
+---
 
-### Supported environments
+## Prerequisites
 
-<table>
-  <tr>
-    <th> Platform </th>
-    <th> Support Status </th>
-  </tr>
-  <tr>
-    <td> GKE (Google Kubernetes Engine) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> EKS (Amazon Elastic Kubernetes Service) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> AKS (Azure Kubernetes Service) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> GKE Autopilot </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> Self-managed Kubernetes </td>
-    <td> ✅ Supported </td>
-  </tr>
-</table>
+- **Kubernetes version:** 1.21 or later. Go to [What's supported](/docs/chaos-engineering/whats-supported) to confirm distribution support.
+- **Target pods are Running:** The application pods you intend to target are in the `Running` state before the fault is launched.
+- **Privileged pods allowed:** The cluster lets you schedule privileged pods in the chaos namespace. GKE Autopilot supports this fault but requires the one-time setup in [Chaos on GKE Autopilot](/docs/resilience-testing/chaos-testing/gke-autopilot); other locked-down distributions may need similar exemptions.
+- **Container runtime access:** The chaos pod can reach the container runtime socket on the target node (`/run/containerd/containerd.sock`, `/var/run/docker.sock`, or `/var/run/crio/crio.sock`).
+- **HTTP service on a known port:** The target container serves HTTP, HTTPS, or gRPC traffic on a port you can specify with `TARGET_SERVICE_PORT`.
+- **Workload selector defined:** The chaos experiment knows the target workload by kind, namespace, and either names or labels.
 
-### Mandatory tunables
+---
 
-  <h3>Mandatory tunables</h3>
-    <table>
-    <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> TARGET_SERVICE_PORT </td>
-        <td> Port of the target service. </td>
-        <td>Default: port 80. For more information, go to <a href="#target-service-port">target service port </a> </td>
-      </tr>
-      <tr>
-        <td> NODE_LABEL </td>
-        <td> Node label used to filter the target node if <code>TARGET_NODE</code> environment variable is not set. </td>
-        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
-      </tr>
-      <tr>
-        <td> LATENCY </td>
-        <td> Delay added to the requests (in milliseconds). </td>
-        <td> Default: 2000. For more information, go to <a href="#latency">latency </a></td>
-      </tr>
-    </table>
+## Supported environments
 
-### Optional tunables
-   <table>
-      <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> PROXY_PORT </td>
-        <td> Port where the proxy listens for requests.</td>
-        <td> Default: 20000. For more information, go to <a href="#proxy-port">proxy port</a></td>
-      </tr>
-      <tr>
-        <td> NETWORK_INTERFACE </td>
-        <td> Network interface used for the proxy.</td>
-        <td> Default: `eth0`. For more information, go to <a href="#network-interface">network interface </a></td>
-      </tr>
-      <tr>
-        <td> TOXICITY </td>
-        <td> Percentage of HTTP requests that will be affected. </td>
-        <td> Default: 100. For more information, go to <a href="#toxicity">toxicity</a></td>
-      </tr>
-      <tr>
-        <td> CONTAINER_RUNTIME </td>
-        <td> Container runtime interface for the cluster. </td>
-        <td> Default: containerd. Supports docker, containerd and crio. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-dns-error#container-runtime-and-socket-path">container runtime </a> </td>
-      </tr>
-      <tr>
-        <td> SOCKET_PATH </td>
-        <td> Path to the containerd/crio/docker socket file. </td>
-        <td> Default: <code>/run/containerd/containerd.sock</code>. For more information, go to <a href="#container-runtime-and-socket-path">socket path </a></td>
-      </tr>
-      <tr>
-        <td> TOTAL_CHAOS_DURATION </td>
-        <td> Duration to inject chaos (in seconds). </td>
-        <td> Default: 60 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos </a></td>
-      </tr>
-      <tr>
-        <td> TARGET_PODS </td>
-        <td> Comma-separated list of application pod names subject to pod HTTP latency.</td>
-        <td> If not provided, the fault selects target pods randomly based on provided appLabels. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods"> target specific pods</a></td>
-      </tr>
-      <tr>
-        <td> PODS_AFFECTED_PERC </td>
-        <td> Percentage of total pods to target. Provide numeric values. </td>
-        <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage </a></td>
-      </tr>
-      <tr>
-        <td> RAMP_TIME </td>
-        <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a> </td>
-      </tr>
-      <tr>
-         <td> SEQUENCE </td>
-        <td> Sequence of chaos execution for multiple target pods. </td>
-        <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a></td>
-      </tr>
-    </table>
+| Platform | Support status |
+| --- | --- |
+| Amazon EKS | Supported |
+| Azure AKS | Supported |
+| Google GKE | Supported |
+| Red Hat OpenShift | Supported |
+| Rancher | Supported |
+| VMware Tanzu | Supported |
+| Self-managed Kubernetes (CNCF-certified) | Supported |
+| GKE Autopilot | Supported with [Autopilot setup](/docs/resilience-testing/chaos-testing/gke-autopilot) |
+| EKS Fargate, ACI virtual nodes | Not supported (no access to container runtime sockets) |
 
-### Target service port
+---
 
-Port of the target service. Tune it by using the `TARGET_SERVICE_PORT` environment variable.
+## Permissions required
 
-The following YAML snippet illustrates the use of this environment variable:
+The fault runs under the chaos infrastructure's service account.
 
-[embedmd]: # "./static/manifests/pod-http-latency/target-service-port.yaml yaml"
+| Resource (`apiGroup`) | Verbs | Why it is needed |
+| --- | --- | --- |
+| `pods` (`""`) | `get`, `list`, `create`, `delete`, `deletecollection`, `patch`, `update` | Discover target pods and run the chaos pod on the same node |
+| `pods/log` (`""`) | `get`, `list`, `watch` | Stream chaos pod logs for status and debugging |
+| `deployments`, `statefulsets`, `replicasets`, `daemonsets` (`apps`) | `get`, `list` | Resolve the target workload to the pods it owns |
+| `events` (`""`) | `get`, `list`, `create`, `patch`, `update` | Record fault progress as Kubernetes events |
+| `jobs` (`batch`) | `get`, `list`, `create`, `delete`, `deletecollection` | Run the chaos job that drives the fault |
 
-```yaml
-## provide the port of the targeted service
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: pod-http-latency
-      spec:
-        components:
-          env:
-            # provide the port of the targeted service
-            - name: TARGET_SERVICE_PORT
-              value: "80"
-```
+The default Harness chaos infrastructure service account already includes these permissions.
 
-### Proxy port
+---
 
-Port on which the proxy server listens for requests. Tune it by using the `PROXY_PORT` environment variable.
+## Fault tunables
 
-The following YAML snippet illustrates the use of this environment variable:
+Configure the following fault parameters when you add Pod HTTP latency to an experiment in Chaos Studio. Defaults are shown for reference.
 
-[embedmd]: # "./static/manifests/pod-http-latency/proxy-port.yaml yaml"
+**Chaos parameters**
 
-```yaml
-# provide the port for proxy server
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: pod-http-latency
-      spec:
-        components:
-          env:
-            # provide the port for proxy server
-            - name: PROXY_PORT
-              value: "8080"
-            # provide the port of the targeted service
-            - name: TARGET_SERVICE_PORT
-              value: "80"
-```
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `LATENCY` | Delay to add to each HTTP response, in milliseconds. | `2000` |
+| `TARGET_SERVICE_PORT` | Port the target container listens on for HTTP traffic. | `80` |
+| `TOXICITY` | Percentage of intercepted requests to delay, between `0` and `100`. `100` delays every request; `0` delays none. | `100` |
+| `TOTAL_CHAOS_DURATION` | Duration of the fault in seconds. | `60` |
 
-### Latency
+**Proxy and interface**
 
-Delay added to the HTTP request. Tune it by using the `LATENCY` environment variable.
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `PROXY_PORT` | Port the chaos proxy listens on inside the container's network namespace. Must not conflict with any port already in use on the target container. | `20000` |
+| `NETWORK_INTERFACE` | Network interface inside the target container's namespace. Almost always `eth0` for standard CNI plugins. | `eth0` |
 
-The following YAML snippet illustrates the use of this environment variable:
+**Targeting**
 
-[embedmd]: # "./static/manifests/pod-http-latency/latency.yaml yaml"
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `TARGET_PODS` | Comma-separated list of pod names to target. Empty selects from the workload's pods using `POD_AFFECTED_PERCENTAGE`. | `""` |
+| `TARGET_CONTAINER` | Container in the pod whose network namespace to enter. Empty targets the first container in the pod spec. | `""` |
+| `NODE_LABEL` | Label selector to filter target pods by the node they run on. Empty disables node-based filtering. | `""` |
+| `POD_AFFECTED_PERCENTAGE` | Percentage of the workload's pods to target. `0` means one pod. | `0` |
+| `SEQUENCE` | When multiple pods are targeted, inject `parallel` (all at once) or `serial` (one after another). | `parallel` |
 
-```yaml
-## provide the latency value
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: pod-http-latency
-      spec:
-        components:
-          env:
-            # provide the latency value
-            - name: LATENCY
-              value: "2000"
-            # provide the port of the targeted service
-            - name: TARGET_SERVICE_PORT
-              value: "80"
-```
+**Runtime and helper**
 
-### Toxicity
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `CONTAINER_RUNTIME` | Container runtime on the target nodes. One of `containerd`, `docker`, `crio`. | `containerd` |
+| `SOCKET_PATH` | Path to the container runtime socket on the target node. Set to match `CONTAINER_RUNTIME`. | `/run/containerd/containerd.sock` |
+| `RAMP_TIME` | Wait period in seconds before and after the fault. Go to [ramp time](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time) to read how it is applied. | `0` |
 
-Percentage of the total number of HTTP requests that need to be affected. Tune it by using the `TOXICITY` environment variable.
+Tunables that apply to every chaos fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
 
-The following YAML snippet illustrates the use of this environment variable:
+:::tip Use `TOXICITY` to model partial failures
+Setting `TOXICITY=10` slows roughly 10% of requests instead of all of them. This is closer to real-world partial degradation and exercises clients' tail-latency handling, not just hard timeouts.
+:::
 
-[embedmd]: # "./static/manifests/pod-http-latency/toxicity.yaml yaml"
+### Configure for your container runtime
 
-```yaml
-## provide the toxicity
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: pod-http-latency
-      spec:
-        components:
-          env:
-            # toxicity is the probability of the request to be affected
-            # provide the percentage value in the range of 0-100
-            # 0 means no request will be affected and 100 means all request will be affected
-            - name: TOXICITY
-              value: "100"
-            # provide the port of the targeted service
-            - name: TARGET_SERVICE_PORT
-              value: "80"
-```
+Set `CONTAINER_RUNTIME` and `SOCKET_PATH` to match the runtime on the target node:
 
-### Network interface
+| `CONTAINER_RUNTIME` | `SOCKET_PATH` |
+| --- | --- |
+| `containerd` (default) | `/run/containerd/containerd.sock` |
+| `docker` | `/var/run/docker.sock` |
+| `crio` | `/var/run/crio/crio.sock` |
 
-Network interface that would be used for the proxy. Tune it by using the `NETWORK_INTERFACE` environment variable.
+---
 
-The following YAML snippet illustrates the use of this environment variable:
+## Fault execution in brief
 
-[embedmd]: # "./static/manifests/pod-http-latency/network-interface.yaml yaml"
+Intercepts HTTP traffic on `TARGET_SERVICE_PORT` inside the container's network namespace and adds `LATENCY` milliseconds to each response, optionally limited to a configurable percentage of requests so other traffic is unaffected.
 
-```yaml
-## provide the network interface for proxy
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: pod-http-latency
-      spec:
-        components:
-          env:
-            # provide the network interface for proxy
-            - name: NETWORK_INTERFACE
-              value: "eth0"
-            # provide the port of the targeted service
-            - name: TARGET_SERVICE_PORT
-              value: "80"
-```
+---
 
-### Container runtime and socket path
+## Expected behavior during fault execution
 
-The `CONTAINER_RUNTIME` and `SOCKET_PATH` environment variables to set the container runtime and socket file path, respectively.
+- HTTP and HTTPS responses on `TARGET_SERVICE_PORT` are delayed by `LATENCY` milliseconds before being returned to the client. gRPC unary calls (built on HTTP/2) are delayed the same way.
+- Only requests selected by `TOXICITY` are delayed; the rest pass through with normal latency.
+- Traffic on other ports of the same container is not affected. Non-HTTP TCP traffic on the same port is passed through but no chaos is applied.
+- Long-lived HTTP/2 or gRPC streams that were established before the fault began continue to serve frames; new requests through those streams are delayed.
+- Clients with timeouts shorter than `LATENCY` see request timeouts; clients with longer timeouts succeed but with elevated p99.
+- Service-mesh outlier detection that triggers on slow responses may eject the pod from upstream load-balancing pools.
 
-- `CONTAINER_RUNTIME`: It supports `docker`, `containerd`, and `crio` runtimes. The default value is `containerd`.
-- `SOCKET_PATH`: It contains path of containerd socket file by default(`/run/containerd/containerd.sock`). For `docker`, specify path as `/var/run/docker.sock`. For `crio`, specify path as `/var/run/crio/crio.sock`.
+:::info When the fault ends
+After `TOTAL_CHAOS_DURATION`, the proxy is torn down and HTTP responses return to baseline latency within a couple of seconds. In-flight requests already buffered for delay are released as soon as cleanup runs.
+:::
 
-The following YAML snippet illustrates the use of these environment variables:
+### Signals to watch
 
-[embedmd]: # "./static/manifests/pod-http-latency/container-runtime-and-socket-path.yaml yaml"
+Attach [resilience probes](/docs/resilience-testing/chaos-testing/probes) to assert each layer:
 
-```yaml
-## provide the container runtime and socket file path
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: pod-http-latency
-      spec:
-        components:
-          env:
-            # runtime for the container
-            # supports docker, containerd, crio
-            - name: CONTAINER_RUNTIME
-              value: "containerd"
-            # path of the socket file
-            - name: SOCKET_PATH
-              value: "/run/containerd/containerd.sock"
-            # provide the port of the targeted service
-            - name: TARGET_SERVICE_PORT
-              value: "80"
-```
+- **Tail latency:** Use a [Prometheus probe](/docs/resilience-testing/chaos-testing/probes/apm-probes) on the service's p99 HTTP latency metric to confirm the increase matches `LATENCY` scaled by `TOXICITY`.
+- **Client error rate:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) against the calling service to detect timeout-induced 5xx responses.
+- **Pod readiness:** Use a [Kubernetes probe](/docs/resilience-testing/chaos-testing/probes/k8s-probe) to fail when the target pod oscillates `NotReady` because its own readiness probe times out at the new latency.
+
+---
+
+## Verify the fault execution effect
+
+While the experiment is running, measure HTTP response time and confirm the increase:
+
+1. **Time a request to the target service from another pod.**
+
+   ```bash
+   kubectl run -n <namespace> tester --image=curlimages/curl --rm -it -- \
+     curl -w "time=%{time_total}\n" -o /dev/null -s \
+       http://<target-pod-ip>:<TARGET_SERVICE_PORT>/<known-path>
+   ```
+
+   `time_total` should reflect the added delay on at least `TOXICITY` percent of repeated calls.
+
+2. **Confirm the proxy is intercepting the right port.**
+
+   ```bash
+   kubectl exec -n <namespace> <target-pod> -- ss -tlnp
+   ```
+
+   The proxy listens on `PROXY_PORT` and reroutes the configured `TARGET_SERVICE_PORT` through it for the fault's duration.
+
+---
+
+## Recovery and cleanup
+
+- **End of duration:** The proxy is removed automatically and HTTP latency returns to baseline.
+- **Abort the experiment:** Stopping the experiment from Chaos Studio triggers the same cleanup path.
+- **Failed cleanup:** If automated cleanup did not complete, restart the target pod to reset its network state.
+
+---
+
+## Limitations
+
+- **Serverless Kubernetes (EKS Fargate, ACI virtual nodes):** These platforms do not expose container runtime sockets and reject the privileged access the fault needs. GKE Autopilot is supported once the one-time setup in [Chaos on GKE Autopilot](/docs/resilience-testing/chaos-testing/gke-autopilot) is in place.
+- **Windows containers:** This fault is supported on Linux pods only.
+- **TLS-terminated traffic on the same container:** If the target container serves HTTPS and the chaos proxy does not have the matching certificate, the proxy cannot inspect or delay encrypted bodies. For HTTPS scenarios with a custom CA, use [Pod API latency](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-api-latency), which supports the TLS certificate inputs needed to terminate HTTPS at the proxy.
+- **Long-lived HTTP/2 connections:** Frames on streams already in flight when the fault starts are not delayed; only new requests routed through the proxy are.
+- **Port already bound:** If `PROXY_PORT` collides with a port the target container is already using, the fault fails to start. Pick a port number outside the application's range.
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="Pod HTTP latency experiment stays Pending or never starts in Harness Chaos Engineering"
+  mode="docs"
+  fallback="Inspect the chaos pods in the experiment namespace with kubectl describe pod -n <chaos-namespace>. The most common causes are taints on the target node that the chaos pods do not tolerate, insufficient resources, or a PodSecurity admission policy blocking privileged pods. Add the required tolerations to the experiment or run in a namespace with privileged Pod Security level."
+/>
+
+<Troubleshoot
+  issue="No HTTP latency observed during pod-http-latency"
+  mode="docs"
+  fallback="The most common causes are: TARGET_SERVICE_PORT does not match the port the application actually listens on (verify with kubectl exec <pod> -- ss -tlnp); the traffic you are measuring is HTTPS but the chaos proxy is not terminating TLS (use Pod API latency instead); or TOXICITY is set lower than expected so only a fraction of requests are delayed. Re-run the experiment with TOXICITY=100 and confirm the application is reachable on the configured port."
+/>
+
+<Troubleshoot
+  issue="Connection to container runtime fails for pod-http-latency in Harness Chaos Engineering"
+  mode="docs"
+  fallback="The default SOCKET_PATH is /run/containerd/containerd.sock. For Docker, set CONTAINER_RUNTIME=docker and SOCKET_PATH=/var/run/docker.sock. For CRI-O, set CONTAINER_RUNTIME=crio and SOCKET_PATH=/var/run/crio/crio.sock."
+/>
+
+<Troubleshoot
+  issue="Latency persists after pod-http-latency ends"
+  mode="docs"
+  fallback="Automated cleanup did not complete. Restart the target pod to reset its network state. If the issue recurs, capture the chaos pod logs from the experiment namespace before the next run and share them with Harness support."
+/>
+
+---
+
+## Related faults
+
+- [Pod HTTP modify body](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-http-modify-body): Overwrite the HTTP response body instead of delaying it.
+- [Pod HTTP modify header](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-http-modify-header): Modify or remove HTTP headers on request or response.
+- [Pod HTTP reset peer](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-http-reset-peer): Reset HTTP TCP connections instead of slowing them.
+- [Pod HTTP status code](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-http-status-code): Change the HTTP response status code returned to the client.
+- [Pod API latency](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-api-latency): Add HTTP-protocol latency with rich path, method, header, source, and destination filters (and HTTPS support via supplied TLS certificates).
+- [Pod network latency](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-network-latency): Add packet-level delay at the network layer instead of the HTTP layer.
+- [Common pod fault tunables](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults): Shared environment variables for selecting target pods and workloads.

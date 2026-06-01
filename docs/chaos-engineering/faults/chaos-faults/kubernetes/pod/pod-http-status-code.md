@@ -1,561 +1,254 @@
 ---
 id: pod-http-status-code
 title: Pod HTTP status code
+sidebar_label: Pod HTTP Status Code
+description: Override the HTTP response status code returned by a target Kubernetes pod to test client error handling, retry classification, and circuit-breaker behavior on specific HTTP status codes.
+keywords:
+  - chaos engineering
+  - pod http status code
+  - http chaos
+  - status code
+  - kubernetes pod fault
+tags:
+  - chaos-engineering
+  - pod-faults
+  - http-chaos
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-http-status-code
-- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-http-status-code
-- /docs/chaos-engineering/chaos-faults/kubernetes/pod-http-status-code
+  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-http-status-code
+  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-http-status-code
+  - /docs/chaos-engineering/chaos-faults/kubernetes/pod-http-status-code
 ---
 
-Pod HTTP status code is a Kubernetes pod-level fault that injects chaos inside the pod by modifying the status code of the response from the application server to the desired status code provided by the user. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-![Pod HTTP Status Code](./static/images/pod-http-status-code.png)
+Pod HTTP status code is a Kubernetes pod-level chaos fault that overrides the HTTP response status code returned by the target pod for a configurable duration. You can also overwrite the response body to match the new status (for example, return a `500` with an error payload), or leave the body untouched. When the fault ends, status codes return to whatever the application produces naturally.
 
-### Use cases
-Pod HTTP status code:
-- Tests the application's resilience to error code HTTP responses from the provided application server.
-- Simulates unavailability of specific API services (503, 404).
-- Simulates unavailability of specific APIs for (or from) a given microservice.
-- Simulates unauthorized requests for third party services (401 or 403), and API malfunction, that is internal server error (50x).
+Use this fault to test how a client handles specific HTTP error codes: a `429` from a rate-limited dependency, a `503` from an overloaded backend, a `404` from a missing resource, or a deliberate `200` returned over a "successful" but broken response.
 
-:::info note
-Pod HTTP status code supports HTTP method only.
+:::info Run your first experiment
+If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
 :::
 
-### Permissions required
+---
 
-Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+## Use cases
 
-```
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  namespace: hce
-  name: pod-http-status-code
-spec:
-  definition:
-    scope: Cluster # Supports "Namespaced" mode too
-permissions:
-  - apiGroups: [""]
-    resources: ["pods"]
-    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
-  - apiGroups: [""]
-    resources: ["events"]
-    verbs: ["create", "get", "list", "patch", "update"]
-  - apiGroups: [""]
-    resources: ["pods/log"]
-    verbs: ["get", "list", "watch"]
-  - apiGroups: [""]
-    resources: ["deployments, statefulsets"]
-    verbs: ["get", "list"]
-  - apiGroups: [""]
-    resources: ["replicasets, daemonsets"]
-    verbs: ["get", "list"]
-  - apiGroups: [""]
-    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
-    verbs: ["create", "delete", "get", "list", "patch", "update"]
-  - apiGroups: ["batch"]
-    resources: ["jobs"]
-    verbs: ["create", "delete", "get", "list", "deletecollection"]
-```
+Run this fault when you want to answer concrete questions like:
 
-### Prerequisites
-- Kubernetes > 1.16
-- The application pods should be in the running state before and after injecting chaos.
+- **Retry classification:** Does the client retry on `503` but not on `400`? Does it honor `Retry-After` on `429`?
+- **Error budget consumption:** Forcing a percentage of `500`s reveals whether your SLO alerting and error-budget burn rules fire as expected.
+- **Cache invalidation:** Returning `404` for resources the client previously cached as `200` exposes stale-cache handling.
+- **Auth failure handling:** A targeted `401` or `403` reveals whether the client refreshes tokens, prompts the user, or simply loops.
+- **Rate-limit handling:** Returning `429` with a `Retry-After` body verifies whether the client backs off and resumes rather than thrashing.
 
-### Supported environments
+---
 
-<table>
-  <tr>
-    <th> Platform </th>
-    <th> Support Status </th>
-  </tr>
-  <tr>
-    <td> GKE (Google Kubernetes Engine) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> EKS (Amazon Elastic Kubernetes Service) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> AKS (Azure Kubernetes Service) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> GKE Autopilot </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> Self-managed Kubernetes </td>
-    <td> ✅ Supported </td>
-  </tr>
-</table>
+## Prerequisites
 
-### Mandatory tunables
+- **Kubernetes version:** 1.21 or later. Go to [What's supported](/docs/chaos-engineering/whats-supported) to confirm distribution support.
+- **Target pods are Running:** The application pods you intend to target are in the `Running` state before the fault is launched.
+- **Privileged pods allowed:** The cluster lets you schedule privileged pods in the chaos namespace. GKE Autopilot supports this fault but requires the one-time setup in [Chaos on GKE Autopilot](/docs/resilience-testing/chaos-testing/gke-autopilot); other locked-down distributions may need similar exemptions.
+- **Container runtime access:** The chaos pod can reach the container runtime socket on the target node (`/run/containerd/containerd.sock`, `/var/run/docker.sock`, or `/var/run/crio/crio.sock`).
+- **HTTP service on a known port:** The target container serves HTTP, HTTPS, or gRPC traffic on a port you can specify with `TARGET_SERVICE_PORT`.
+- **Workload selector defined:** The chaos experiment knows the target workload by kind, namespace, and either names or labels.
 
-   <table>
-      <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> TARGET_SERVICE_PORT </td>
-        <td> Port of the service to target, which refers to container that runs at pod-level. </td>
-        <td> Default: port 80. For more information, go to <a href="#target-service-port">target service port</a> </td>
-      </tr>
-      <tr>
-        <td> NODE_LABEL </td>
-        <td> Node label used to filter the target node if <code>TARGET_NODE</code> environment variable is not set. </td>
-        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
-      </tr>
-      <tr>
-        <td> STATUS_CODE </td>
-        <td> Modified status code for the HTTP response. Multiple values can be provided as a comma-separated list. A random value from the provided list will be selected. Supported values include [200, 201, 202, 204, 300, 301, 302, 304, 307, 400, 401, 403, 404, 500, 501, 502, 503, 504].</td>
-        <td> If no value is provided, a random value is selected from the list of supported values.
-         Defaults to random status code. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-http-status-code#status-code">status code </a> </td>
-      </tr>
-      <tr>
-        <td> MODIFY_RESPONSE_BODY </td>
-        <td> Specifies whether to modify the body according to the status code provided.</td>
-        <td> If true, the body is replaced by a default template for the status code. Defaults to true. For more information, go to <a href="#modify-response-body">modify response body </a> </td>
-      </tr>
-    </table>
+---
 
-### Optional tunables
-   <table>
-      <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> RESPONSE_BODY </td>
-        <td> String body to overwrite the HTTP response body. This is used only if <code>MODIFY_RESPONSE_BODY</code> is set to true. If no value is provided, response will be an empty body. </td>
-        <td> Default: empty body. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-http-status-code#response-body"> response body</a></td>
-      </tr>
-      <tr>
-        <td> CONTENT_ENCODING </td>
-        <td> Encoding type to compress/encode the response body </td>
-        <td> Accepted values are: gzip, deflate, br, identity. Defaults to none (no encoding). For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-http-status-code#content-encoding-and-content-type">content encoding </a> </td>
-      </tr>
-      <tr>
-        <td> CONTENT_TYPE </td>
-        <td> Content type of the response body </td>
-        <td> Default: text or plain. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-http-status-code#content-encoding-and-content-type">content type </a> </td>
-      </tr>
-      <tr>
-        <td> PROXY_PORT </td>
-        <td> Port where the proxy will be listening for requests</td>
-        <td> Default: 20000. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-http-status-code#proxy-port">proxy port </a> </td>
-      </tr>
-      <tr>
-        <td> NETWORK_INTERFACE </td>
-        <td> Network interface to be used for the proxy</td>
-        <td> Default: `eth0`. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-http-status-code#network-interface">network interface </a> </td>
-      </tr>
-      <tr>
-        <td> TOXICITY </td>
-        <td> Percentage of HTTP requests to be affected. </td>
-        <td> Default: 100. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-http-status-code#toxicity">toxicity </a> </td>
-      </tr>
-      <tr>
-        <td> CONTAINER_RUNTIME </td>
-        <td> Container runtime interface for the cluster. </td>
-        <td> Default: containerd. Supports docker, containerd and crio. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-dns-error#container-runtime-and-socket-path">container runtime </a> </td>
-      </tr>
-      <tr>
-        <td> SOCKET_PATH </td>
-        <td> Path of the containerd/crio/docker socket file </td>
-        <td> Default: <code>/run/containerd/containerd.sock</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-http-status-code#container-runtime-and-socket-path">socket path </a> </td>
-      </tr>
-      <tr>
-        <td> TOTAL_CHAOS_DURATION </td>
-        <td> Duration for which to insert chaos (in seconds). </td>
-        <td> Default: 60 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a></td>
-      </tr>
-      <tr>
-        <td> TARGET_PODS </td>
-        <td> Comma-separated list of application pod names subject to pod HTTP status code. </td>
-        <td> If not provided, the fault selects target pods randomly based on provided appLabels. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods"> target specific pods</a></td>
-      </tr>
-      <tr>
-        <td> PODS_AFFECTED_PERC </td>
-        <td> Percentage of total pods to target. Provide numeric values. </td>
-        <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage </a></td>
-      </tr>
-      <tr>
-        <td> RAMP_TIME </td>
-        <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a></td>
-      </tr>
-      <tr>
-        <td> SEQUENCE </td>
-        <td> Sequence of chaos execution for multiple target pods. </td>
-        <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a></td>
-      </tr>
-    </table>
+## Supported environments
 
+| Platform | Support status |
+| --- | --- |
+| Amazon EKS | Supported |
+| Azure AKS | Supported |
+| Google GKE | Supported |
+| Red Hat OpenShift | Supported |
+| Rancher | Supported |
+| VMware Tanzu | Supported |
+| Self-managed Kubernetes (CNCF-certified) | Supported |
+| GKE Autopilot | Supported with [Autopilot setup](/docs/resilience-testing/chaos-testing/gke-autopilot) |
+| EKS Fargate, ACI virtual nodes | Not supported (no access to container runtime sockets) |
 
-### Target service port
+---
 
-Port of the target service. This is the port where the application runs at the pod-level. For example, if the application pod is running the service at port 8080 and you create a service exposing this service at port 80, the target service port should be 8080. 
-Tune it by using the `TARGET_SERVICE_PORT` environment variable.
+## Permissions required
 
-The following YAML snippet illustrates the use of this environment variable:
+The fault runs under the chaos infrastructure's service account.
 
-[embedmd]: # "./static/manifests/pod-http-status-code/target-service-port.yaml yaml"
+| Resource (`apiGroup`) | Verbs | Why it is needed |
+| --- | --- | --- |
+| `pods` (`""`) | `get`, `list`, `create`, `delete`, `deletecollection`, `patch`, `update` | Discover target pods and run the chaos pod on the same node |
+| `pods/log` (`""`) | `get`, `list`, `watch` | Stream chaos pod logs for status and debugging |
+| `deployments`, `statefulsets`, `replicasets`, `daemonsets` (`apps`) | `get`, `list` | Resolve the target workload to the pods it owns |
+| `events` (`""`) | `get`, `list`, `create`, `patch`, `update` | Record fault progress as Kubernetes events |
+| `jobs` (`batch`) | `get`, `list`, `create`, `delete`, `deletecollection` | Run the chaos job that drives the fault |
 
-```yaml
-## provide the port of the targeted service
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: pod-http-status-code
-      spec:
-        components:
-          env:
-            # provide the port of the targeted service
-            - name: TARGET_SERVICE_PORT
-              value: "80"
-            # modified status code for the http response
-            - name: STATUS_CODE
-              value: "500"
-```
+The default Harness chaos infrastructure service account already includes these permissions.
 
-### Proxy port
+---
 
-Port where the proxy server listens for requests. Tune it by using the `PROXY_PORT` environment variable.
+## Fault tunables
 
-The following YAML snippet illustrates the use of this environment variable:
+Configure the following fault parameters when you add Pod HTTP status code to an experiment in Chaos Studio. Defaults are shown for reference.
 
-[embedmd]: # "./static/manifests/pod-http-status-code/proxy-port.yaml yaml"
+**Chaos parameters**
 
-```yaml
-## provide the port for proxy server
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: pod-http-status-code
-      spec:
-        components:
-          env:
-            # provide the port for proxy server
-            - name: PROXY_PORT
-              value: "8080"
-            # provide the port of the targeted service
-            - name: TARGET_SERVICE_PORT
-              value: "80"
-            # modified status code for the http response
-            - name: STATUS_CODE
-              value: "500"
-```
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `STATUS_CODE` | HTTP status code to return. Supported values: `200`, `201`, `202`, `204`, `300`, `301`, `302`, `304`, `307`, `400`, `401`, `403`, `404`, `500`, `501`, `502`, `503`, `504`. `0` picks one at random from the supported list. | `0` |
+| `MODIFY_RESPONSE_BODY` | When `true`, replaces the response body with `RESPONSE_BODY` (or a default body matching the status code if `RESPONSE_BODY` is empty). When `false`, the original body is returned alongside the new status code. | `true` |
+| `RESPONSE_BODY` | Body string to overwrite the response when `MODIFY_RESPONSE_BODY` is `true`. Empty falls back to a default body matching the status code. | `""` |
+| `CONTENT_TYPE` | `Content-Type` header set on the modified response. | `text/plain` |
+| `CONTENT_ENCODING` | Encoding applied to the body. Supported values: `gzip`, `deflate`, or empty for no encoding. | `""` |
+| `TARGET_SERVICE_PORT` | Port the target container listens on for HTTP traffic. | `80` |
+| `TOXICITY` | Percentage of intercepted responses whose status is overridden, between `0` and `100`. `100` modifies every response. | `100` |
+| `TOTAL_CHAOS_DURATION` | Duration of the fault in seconds. | `60` |
 
-### Status code
+**Proxy and interface**
 
-Status code to be modified for the HTTP response. Tune it by using the `STATUS_CODE` environment variable.
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `PROXY_PORT` | Port the chaos proxy listens on inside the container's network namespace. Must not conflict with any port already in use on the target container. | `20000` |
+| `NETWORK_INTERFACE` | Network interface inside the target container's namespace. Almost always `eth0` for standard CNI plugins. | `eth0` |
 
-The following YAML snippet illustrates the use of this environment variable:
+**Targeting**
 
-[embedmd]: # "./static/manifests/pod-http-status-code/status-code.yaml yaml"
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `TARGET_PODS` | Comma-separated list of pod names to target. Empty selects from the workload's pods using `POD_AFFECTED_PERCENTAGE`. | `""` |
+| `TARGET_CONTAINER` | Container in the pod whose network namespace to enter. Empty targets the first container in the pod spec. | `""` |
+| `NODE_LABEL` | Label selector to filter target pods by the node they run on. Empty disables node-based filtering. | `""` |
+| `POD_AFFECTED_PERCENTAGE` | Percentage of the workload's pods to target. `0` means one pod. | `0` |
+| `SEQUENCE` | When multiple pods are targeted, inject `parallel` (all at once) or `serial` (one after another). | `parallel` |
 
-```yaml
-## modified status code for the http response
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: pod-http-status-code
-      spec:
-        components:
-          env:
-            # modified status code for the http response
-            # if no value is provided, a random status code from the supported code list will selected
-            # if multiple comma separated values are provided, then a random value from the provided list will be selected
-            # if an invalid status code is provided, the fault will fail
-            # supported status code list: [200, 201, 202, 204, 300, 301, 302, 304, 307, 400, 401, 403, 404, 500, 501, 502, 503, 504]
-            - name: STATUS_CODE
-              value: "500"
-            # provide the port of the targeted service
-            - name: TARGET_SERVICE_PORT
-              value: "80"
-```
+**Runtime and helper**
 
-### Modify response body
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `CONTAINER_RUNTIME` | Container runtime on the target nodes. One of `containerd`, `docker`, `crio`. | `containerd` |
+| `SOCKET_PATH` | Path to the container runtime socket on the target node. Set to match `CONTAINER_RUNTIME`. | `/run/containerd/containerd.sock` |
+| `RAMP_TIME` | Wait period in seconds before and after the fault. Go to [ramp time](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time) to read how it is applied. | `0` |
 
-Specifies whether or not to modify the response body with a pre-defined template to match the status code value of the HTTP response. Tune it by using the `MODIFY_RESPONSE_BODY` environment variable.
+Tunables that apply to every chaos fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
 
-The following YAML snippet illustrates the use of this environment variable:
-
-[embedmd]: # "./static/manifests/pod-http-status-code/modify-body-with-response-pre-defined.yaml yaml"
-
-```yaml
-##  whether to modify the body as per the status code provided
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: pod-http-status-code
-      spec:
-        components:
-          env:
-            #  whether to modify the body as per the status code provided
-            - name: "MODIFY_RESPONSE_BODY"
-              value: "true"
-            # modified status code for the http response
-            - name: STATUS_CODE
-              value: "500"
-            # provide the port of the targeted service
-            - name: TARGET_SERVICE_PORT
-              value: "80"
-```
-
-### Toxicity
-
-Percentage of the total number of HTTP requests to be affected. Tune it by using the `TOXICITY` environment variable.
-
-The following YAML snippet illustrates the use of this environment variable:
-
-[embedmd]: # "./static/manifests/pod-http-status-code/toxicity.yaml yaml"
-
-```yaml
-## provide the toxicity
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: pod-http-status-code
-      spec:
-        components:
-          env:
-            # toxicity is the probability of the request to be affected
-            # provide the percentage value in the range of 0-100
-            # 0 means no request will be affected and 100 means all request will be affected
-            - name: TOXICITY
-              value: "100"
-            # provide the port of the targeted service
-            - name: TARGET_SERVICE_PORT
-              value: "80"
-```
-
-### Response body
-
-String body used to overwrite the HTTP response body. Tune it by using the `RESPONSE_BODY` environment variable.
-
-:::info note
-The `MODIFY_RESPONSE_BODY` environment variable should be set to `true` to enable this feature.
+:::tip Test a class of failures with random codes
+Setting `STATUS_CODE=0` cycles through the supported codes at random. This is useful for fuzz-style testing of a client's error handling across the full spectrum of HTTP failures.
 :::
 
-The following YAML snippet illustrates the use of this environment variable:
+### Configure for your container runtime
 
-[embedmd]: # "./static/manifests/pod-http-status-code/modify-body-with-response.yaml yaml"
+Set `CONTAINER_RUNTIME` and `SOCKET_PATH` to match the runtime on the target node:
 
-```yaml
-## provide the response body value
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: pod-http-status-code
-      spec:
-        components:
-          env:
-            # provide the body string to overwrite the response body. This will be used only if MODIFY_RESPONSE_BODY is set to true
-            - name: RESPONSE_BODY
-              value: "<h1>Hello World</h1>"
-            #  whether to modify the body as per the status code provided
-            - name: "MODIFY_RESPONSE_BODY"
-              value: "true"
-            # modified status code for the http response
-            - name: STATUS_CODE
-              value: "500"
-            # provide the port of the targeted service
-            - name: TARGET_SERVICE_PORT
-              value: "80"
-```
+| `CONTAINER_RUNTIME` | `SOCKET_PATH` |
+| --- | --- |
+| `containerd` (default) | `/run/containerd/containerd.sock` |
+| `docker` | `/var/run/docker.sock` |
+| `crio` | `/var/run/crio/crio.sock` |
 
-### Content encoding and content type
+---
 
-Content encoding and content type of the response body. Tune it by using the `CONTENT_ENCODING` and `CONTENT_TYPE` environment variables, respectively.
+## Fault execution in brief
 
-The following YAML snippet illustrates the use of this environment variable:
+Intercepts HTTP responses on `TARGET_SERVICE_PORT` inside the container's network namespace and replaces the status code with `STATUS_CODE` (and optionally rewrites the body), optionally limited to a configurable percentage of responses so other traffic is unaffected.
 
-[embedmd]:# (./static/manifests/pod-http-status-code/modify-body-with-encoding-type.yaml yaml)
+---
 
-```yaml
-##  whether to modify the body as per the status code provided
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: pod-http-status-code
-      spec:
-        components:
-          env:
-            # provide the encoding type for the response body
-            # currently supported value are gzip, deflate
-            # if empty no encoding will be applied
-            - name: CONTENT_ENCODING
-              value: "gzip"
-            # provide the content type for the response body
-            - name: CONTENT_TYPE
-              value: "text/html"
-            #  whether to modify the body as per the status code provided
-            - name: "MODIFY_RESPONSE_BODY"
-              value: "true"
-            # modified status code for the http response
-            - name: STATUS_CODE
-              value: "500"
-            # provide the port of the targeted service
-            - name: TARGET_SERVICE_PORT
-              value: "80"
-```
+## Expected behavior during fault execution
 
-### Network interface
+- HTTP and HTTPS responses on `TARGET_SERVICE_PORT` return the configured `STATUS_CODE` instead of the application's original status.
+- When `MODIFY_RESPONSE_BODY=true`, the body is replaced with `RESPONSE_BODY` (or a default error body matching the status code). `Content-Type` and `Content-Length` are updated accordingly. When `false`, only the status line changes.
+- Only responses selected by `TOXICITY` are modified; the rest pass through unchanged.
+- Traffic on other ports of the same container is not affected. gRPC responses (which carry status in trailers) are not currently overridden; use [Pod API status code](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-api-status-code) for gRPC-style status injection.
+- Clients that branch on status codes execute their corresponding error-handling paths: retry, fail-fast, prompt for auth, back off, and so on.
 
-Network interface used for the proxy. Tune it by using the `NETWORK_INTERFACE` environment variable.
+:::info When the fault ends
+After `TOTAL_CHAOS_DURATION`, the proxy is torn down and HTTP status codes return to whatever the application produces. In-flight responses already buffered for modification are released as soon as cleanup runs.
+:::
 
-The following YAML snippet illustrates the use of this environment variable:
+### Signals to watch
 
-[embedmd]: # "./static/manifests/pod-http-status-code/network-interface.yaml yaml"
+Attach [resilience probes](/docs/resilience-testing/chaos-testing/probes) to assert each layer:
 
-```yaml
-## provide the network interface for proxy
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: pod-http-status-code
-      spec:
-        components:
-          env:
-            # provide the network interface for proxy
-            - name: NETWORK_INTERFACE
-              value: "eth0"
-            # provide the port of the targeted service
-            - name: TARGET_SERVICE_PORT
-              value: "80"
-            # modified status code for the http response
-            - name: STATUS_CODE
-              value: "500"
-```
+- **Status-code distribution:** Use a [Prometheus probe](/docs/resilience-testing/chaos-testing/probes/apm-probes) on the service's HTTP status counter (`http_requests_total{status="503"}`) to confirm the injected codes match `STATUS_CODE`.
+- **Client retry counter:** Use a Prometheus probe on the calling service's retry counter to verify it backs off correctly.
+- **End-user error rate:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) against the top-level API to detect whether the injected errors leak through to end users.
 
-### Container runtime and socket path
+---
 
-The `CONTAINER_RUNTIME` and `SOCKET_PATH` environment variables to set the container runtime and socket file path, respectively.
+## Verify the fault execution effect
 
-- `CONTAINER_RUNTIME`: It supports `docker`, `containerd`, and `crio` runtimes. The default value is `containerd`.
-- `SOCKET_PATH`: It contains path of containerd socket file by default(`/run/containerd/containerd.sock`). For `docker`, specify path as `/var/run/docker.sock`. For `crio`, specify path as `/var/run/crio/crio.sock`.
+While the experiment is running, confirm the status code is being overridden:
 
-The following YAML snippet illustrates the use of this environment variable:
+1. **Make a request and inspect the status line.**
 
-[embedmd]: # "./static/manifests/pod-http-status-code/container-runtime-and-socket-path.yaml yaml"
+   ```bash
+   kubectl run -n <namespace> tester --image=curlimages/curl --rm -it -- \
+     curl -i http://<target-pod-ip>:<TARGET_SERVICE_PORT>/<known-path>
+   ```
 
-```yaml
-## provide the container runtime and socket file path
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: pod-http-status-code
-      spec:
-        components:
-          env:
-            # runtime for the container
-            # supports docker, containerd, crio
-            - name: CONTAINER_RUNTIME
-              value: "containerd"
-            # path of the socket file
-            - name: SOCKET_PATH
-              value: "/run/containerd/containerd.sock"
-            # provide the port of the targeted service
-            - name: TARGET_SERVICE_PORT
-              value: "80"
-            # modified status code for the http response
-            - name: STATUS_CODE
-              value: "500"
-```
+   The status line should equal `HTTP/1.1 <STATUS_CODE> ...` on at least `TOXICITY` percent of repeated calls. The body matches `RESPONSE_BODY` (or the default for the status code) when `MODIFY_RESPONSE_BODY=true`.
+
+2. **Confirm the proxy is intercepting the right port.**
+
+   ```bash
+   kubectl exec -n <namespace> <target-pod> -- ss -tlnp
+   ```
+
+   The proxy listens on `PROXY_PORT` and reroutes the configured `TARGET_SERVICE_PORT` through it for the fault's duration.
+
+---
+
+## Recovery and cleanup
+
+- **End of duration:** The proxy is removed automatically and HTTP status codes return to baseline.
+- **Abort the experiment:** Stopping the experiment from Chaos Studio triggers the same cleanup path.
+- **Failed cleanup:** If automated cleanup did not complete, restart the target pod to reset its network state.
+
+---
+
+## Limitations
+
+- **Serverless Kubernetes (EKS Fargate, ACI virtual nodes):** These platforms do not expose container runtime sockets and reject the privileged access the fault needs. GKE Autopilot is supported once the one-time setup in [Chaos on GKE Autopilot](/docs/resilience-testing/chaos-testing/gke-autopilot) is in place.
+- **Windows containers:** This fault is supported on Linux pods only.
+- **HTTPS without supplied certificates:** This fault does not terminate TLS. If the target serves HTTPS and you need to modify encrypted responses, use [Pod API status code](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-api-status-code), which accepts CA, server, and client certificates as TLS inputs.
+- **gRPC status:** gRPC carries status in HTTP/2 trailers (`grpc-status`), not the HTTP status line. Use [Pod API status code](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-api-status-code) when you need to override gRPC status codes.
+- **Status codes outside the supported set:** Only the codes listed under `STATUS_CODE` are supported. Arbitrary three-digit codes are not accepted.
+- **Port already bound:** If `PROXY_PORT` collides with a port the target container is already using, the fault fails to start. Pick a port number outside the application's range.
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="Pod HTTP status code experiment stays Pending or never starts in Harness Chaos Engineering"
+  mode="docs"
+  fallback="Inspect the chaos pods in the experiment namespace with kubectl describe pod -n <chaos-namespace>. The most common causes are taints on the target node that the chaos pods do not tolerate, insufficient resources, or a PodSecurity admission policy blocking privileged pods. Add the required tolerations to the experiment or run in a namespace with privileged Pod Security level."
+/>
+
+<Troubleshoot
+  issue="Status code is unchanged during pod-http-status-code"
+  mode="docs"
+  fallback="The most common causes are: TARGET_SERVICE_PORT does not match the port the application actually listens on (verify with kubectl exec <pod> -- ss -tlnp); the traffic is HTTPS and the chaos proxy is not terminating TLS (use Pod API status code instead); STATUS_CODE is set to a value outside the supported list; or TOXICITY is set lower than expected. Re-run with TOXICITY=100 and a known status code like 503 to confirm the path is working."
+/>
+
+<Troubleshoot
+  issue="Connection to container runtime fails for pod-http-status-code in Harness Chaos Engineering"
+  mode="docs"
+  fallback="The default SOCKET_PATH is /run/containerd/containerd.sock. For Docker, set CONTAINER_RUNTIME=docker and SOCKET_PATH=/var/run/docker.sock. For CRI-O, set CONTAINER_RUNTIME=crio and SOCKET_PATH=/var/run/crio/crio.sock."
+/>
+
+<Troubleshoot
+  issue="Status code overrides persist after pod-http-status-code ends"
+  mode="docs"
+  fallback="Automated cleanup did not complete. Restart the target pod to reset its network state. If the issue recurs, capture the chaos pod logs from the experiment namespace before the next run and share them with Harness support."
+/>
+
+---
+
+## Related faults
+
+- [Pod HTTP latency](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-http-latency): Slow HTTP responses instead of changing their status code.
+- [Pod HTTP modify body](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-http-modify-body): Overwrite the HTTP response body without changing the status code.
+- [Pod HTTP modify header](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-http-modify-header): Modify or remove HTTP headers on requests and responses.
+- [Pod HTTP reset peer](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-http-reset-peer): Reset HTTP TCP connections instead of returning a status code.
+- [Pod API status code](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-api-status-code): Override status codes with rich path, method, header, source, and destination filters (and HTTPS support via supplied TLS certificates).
+- [Common pod fault tunables](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults): Shared environment variables for selecting target pods and workloads.

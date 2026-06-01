@@ -217,13 +217,14 @@ FS fill is a Kubernetes pod-level chaos fault that writes a configurable amount 
 
 ### Pod API Block
 
-Pod API block is a Kubernetes pod-level chaos fault that blocks the api requests for the ingress and egress traffic.
-
-- It blocks the apis of service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.
+Pod API block is a Kubernetes pod-level chaos fault that blocks selected API requests or responses on a target pod using path, method, header, query parameter, and source or destination filters (with HTTPS support via supplied TLS certificates).
 
 <Accordion color="green">
 <summary>Use cases</summary>
-This fault evaluates the application's resilience to lossy (or flaky) API requests and responses.
+- Simulates single-dependency outages by blocking one upstream hostname.
+- Tests path-level rollback by blocking just one URL while the rest serve traffic.
+- Exposes mutation vs read-only failure modes by blocking `POST`/`PUT`/`DELETE`.
+- Validates tenant-scoped failure paths via header-based filtering.
 </Accordion>
 
 </FaultDetailsCard>
@@ -232,14 +233,14 @@ This fault evaluates the application's resilience to lossy (or flaky) API reques
 
 ### Pod API latency
 
-Pod API latency is a Kubernetes pod-level chaos fault that injects api request and response latency by starting proxy server and redirecting the traffic through it.
-
-- It injects the latency into the service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.
-- It evaluates the application's resilience to lossy (or flaky) API requests and responses.
+Pod API latency is a Kubernetes pod-level chaos fault that adds a configurable delay to selected API calls on a target pod using path, method, header, query, and source or destination filters (with HTTPS support via supplied TLS certificates).
 
 <Accordion color="green">
 <summary>Use cases</summary>
-This fault evaluates the application's resilience to lossy (or flaky) API requests and response.
+- Validates timeout budgets scoped to one dependency hostname.
+- Drives path-specific tail latency to expose hot-endpoint slowdowns.
+- Tests tenant-scoped degradation via header filtering.
+- Adds latency to encrypted gRPC and REST calls that simpler HTTP latency cannot reach.
 </Accordion>
 
 </FaultDetailsCard>
@@ -248,14 +249,14 @@ This fault evaluates the application's resilience to lossy (or flaky) API reques
 
 ### Pod API modify body
 
-Pod API modify body is a Kubernetes pod-level chaos fault that modifies the api request and response body by replacing any portions that match a specified regular expression with a provided value.
-
-- It modifies the body of service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.
-- It evaluates the application's resilience to lossy (or flaky) requests and responses.
+Pod API modify body is a Kubernetes pod-level chaos fault that overwrites request or response bodies on selected API calls of a target pod using path, method, header, query, and source or destination filters (with HTTPS support via supplied TLS certificates).
 
 <Accordion color="green">
 <summary>Use cases</summary>
-This fault evaluates the application's resilience to lossy (or flaky) API requests and responses.
+- Validates defensive deserialization on corrupted or empty payloads.
+- Tests schema-evolution resilience to missing fields.
+- Drives write-path validation by corrupting the request body.
+- Scopes body corruption to one tenant or one endpoint at a time.
 </Accordion>
 
 </FaultDetailsCard>
@@ -264,14 +265,14 @@ This fault evaluates the application's resilience to lossy (or flaky) API reques
 
 ### Pod API modify header
 
-Pod API modify header is a Kubernetes pod-level chaos fault that overrides the header values of API requests and responses with the user-provided values for the given keys.
-
-- It modifies the headers of service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.
-- It evaluates the application's resilience to lossy (or flaky) requests and responses.
+Pod API modify header is a Kubernetes pod-level chaos fault that overrides request or response headers on selected API calls of a target pod using path, method, query, and source or destination filters (with HTTPS support via supplied TLS certificates).
 
 <Accordion color="green">
 <summary>Use cases</summary>
-This fault evaluates the application's resilience to lossy (or flaky) API requests and responses.
+- Removes or tampers with `Authorization` on one path to validate clean `401` handling.
+- Flips `Cache-Control` directives on a specific endpoint's responses.
+- Strips tracing headers on a single upstream to expose observability gaps.
+- Tests tenant-scoped header chaos via header-based filtering.
 </Accordion>
 
 </FaultDetailsCard>
@@ -280,14 +281,14 @@ This fault evaluates the application's resilience to lossy (or flaky) API reques
 
 ### Pod API modify response custom
 
-Pod API modify response custom is a Kubernetes pod-level chaos fault that consolidates the **pod-api-modify-body**, **pod-api-modify-header**, and **pod-api-status-code** faults.
-
-- It modifies the headers, body, and status code of both request and response for the APIs of the service specified by the `TARGET_SERVICE_PORT` environment variable.
-- It assesses the application's resilience to modified or corrupted API requests and responses.
+Pod API modify response custom is a Kubernetes pod-level chaos fault that combines status code, header, and body modifications on selected API calls of a target pod in a single experiment, with path, method, query, and source or destination filters (with HTTPS support via supplied TLS certificates).
 
 <Accordion color="green">
 <summary>Use cases</summary>
-This fault assesses the application's resilience to modified or corrupted API requests and responses.
+- Simulates realistic rate-limited responses (`429` + `Retry-After` + JSON body).
+- Models maintenance-window scenarios with custom status, headers, and HTML body.
+- Reproduces auth-refresh flows by combining `401`, `WWW-Authenticate`, and an error body.
+- Tests backwards-compatibility with `200` plus a body missing an expected field.
 </Accordion>
 
 </FaultDetailsCard>
@@ -296,14 +297,14 @@ This fault assesses the application's resilience to modified or corrupted API re
 
 ### Pod API Status Code
 
-Pod API status code is a Kubernetes pod-level chaos fault that change the API response status code and optionally api response body through path filtering.
-
-- It overrides the api status code of service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.
-- It evaluates the application's resilience to lossy (or flaky) responses.
+Pod API status code is a Kubernetes pod-level chaos fault that overrides the HTTP status code returned by selected API calls of a target pod using path, method, header, query, and source or destination filters (with HTTPS support via supplied TLS certificates).
 
 <Accordion color="green">
 <summary>Use cases</summary>
-This fault evaluates the application's resilience to lossy (or flaky) API responses.
+- Tests path-scoped error injection (for example `503` on `/v2/checkout` only).
+- Validates retry classification on specific status codes (`429`, `503`, `400`).
+- Drives error-budget burn calibrated to a known endpoint.
+- Reproduces token expiry by returning `401` on the user-info endpoint.
 </Accordion>
 
 </FaultDetailsCard>
@@ -364,13 +365,14 @@ This fault helps reproduce such a situation with forced (or graceful) pod failur
 
 ### Pod DNS error
 
-Pod DNS error is a Kubernetes pod-level chaos fault that injects chaos to disrupt DNS resolution in pods.
-
-- It removes access to services by blocking the DNS resolution of host names (or domains).
+Pod DNS error is a Kubernetes pod-level chaos fault that fails DNS lookups from inside the target pod for a list of hostnames (or all hostnames) to test how the application handles upstream lookup failures and cluster DNS outages.
 
 <Accordion color="green">
 <summary>Use cases</summary>
-This fault determines the resilience of an application to DNS errors. It determines how quickly an application can resolve the host names and recover from the failure. 
+- Verifies scoped upstream outages by failing only one hostname's resolution.
+- Exposes DNS caching behavior and whether the application re-resolves on failure.
+- Tests client retry budgets and surfaces hangs caused by missing lookups.
+- Validates service-discovery resilience to `NXDOMAIN`-style failures.
 </Accordion>
 
 </FaultDetailsCard>
@@ -379,13 +381,14 @@ This fault determines the resilience of an application to DNS errors. It determi
 
 ### Pod DNS spoof
 
-Pod DNS spoof is a Kubernetes pod-level chaos fault that injects chaos into pods to mimic DNS resolution.
-
-- It resolves DNS target host names (or domains) to other IPs as specified in the `SPOOF_MAP` environment variable in the chaosengine configuration.
+Pod DNS spoof is a Kubernetes pod-level chaos fault that redirects DNS lookups for selected hostnames inside the target pod to a different address so the application opens connections to the wrong destination.
 
 <Accordion color="green">
 <summary>Use cases</summary>
-This fault determines the resilience of an application when host names are resolved incorrectly. It determines how quickly an application can resolve the host names and recover from the failure. It simulates custom responses from a spoofed upstream service.
+- Simulates misconfigured service discovery and cache-poisoning scenarios.
+- Validates TLS hostname verification by pointing a hostname at a service with a non-matching certificate.
+- Tests failover misrouting and regional steering bugs.
+- Exposes hard-coded address assumptions in client libraries.
 </Accordion>
 
 </FaultDetailsCard>
@@ -393,14 +396,14 @@ This fault determines the resilience of an application when host names are resol
 
 ### Pod HTTP latency
 
-Pod HTTP latency is a Kubernetes pod-level chaos fault that injects HTTP response latency by starting proxy server and redirecting the traffic through it.
-
-- It injects the latency into the service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.
-- It evaluates the application's resilience to lossy (or flaky) HTTP responses.
+Pod HTTP latency is a Kubernetes pod-level chaos fault that adds a configurable delay to HTTP responses served by a target pod on a chosen service port to test client timeouts, retries, and tail-latency budgets.
 
 <Accordion color="green">
 <summary>Use cases</summary>
-This fault evaluates the application's resilience to lossy (or flaky) HTTP responses.
+- Validates client timeout budgets when a dependency slows down.
+- Exposes retry-storm behavior driven by elevated response time.
+- Drives realistic tail-latency degradation via `TOXICITY` partial-affect probability.
+- Tests circuit-breaker tripping on sustained slow responses.
 </Accordion>
 
 </FaultDetailsCard>
@@ -408,15 +411,14 @@ This fault evaluates the application's resilience to lossy (or flaky) HTTP respo
 
 ### Pod HTTP modify body
 
-Pod HTTP modify body is a Kubernetes pod-level chaos fault that injects chaos on the service whose port is provided using the `TARGET_SERVICE_PORT` environment variable.
-
-- This is done by starting the proxy server and redirecting the traffic through the proxy server.
-- Can be used to overwrite the HTTP response body by providing the new body value as `RESPONSE_BODY`.
-- It can test the application's resilience to error or incorrect HTTP response body.
+Pod HTTP modify body is a Kubernetes pod-level chaos fault that overwrites the HTTP response body served by a target pod (with the value of `RESPONSE_BODY`) to test client behavior under corrupted, empty, or unexpected payloads.
 
 <Accordion color="green">
 <summary>Use cases</summary>
-It can test the application's resilience to error or incorrect HTTP response body.
+- Validates defensive parsing when the body is corrupted but the status code says success.
+- Tests schema-evolution resilience to missing fields.
+- Exposes empty-payload handling on success responses.
+- Verifies content negotiation by changing `CONTENT_TYPE` alongside the body.
 </Accordion>
 
 </FaultDetailsCard>
@@ -425,14 +427,14 @@ It can test the application's resilience to error or incorrect HTTP response bod
 
 ### Pod HTTP modify header
 
-Pod HTTP modify header is a Kubernetes pod-level chaos fault that injects chaos on the service whose port is provided using the `TARGET_SERVICE_PORT` environment variable.
-
-- This is done by starting the proxy server and redirecting the traffic through the proxy server.
-- It can cause modification of headers of requests and responses of the service. This can be used to test service resilience towards incorrect or incomplete headers.
+Pod HTTP modify header is a Kubernetes pod-level chaos fault that overrides HTTP request or response headers on a target pod (via `HEADERS_MAP`) to test resilience to missing, altered, or unexpected header values.
 
 <Accordion color="green">
 <summary>Use cases</summary>
-This can be used to test service resilience towards incorrect or incomplete headers.
+- Removes or tampers with `Authorization` to validate clean auth-error handling.
+- Flips `Cache-Control` directives to expose cache-poisoning risks.
+- Strips tracing headers (`X-Request-ID`, `traceparent`) to reveal observability gaps.
+- Tests content-negotiation logic by changing `Content-Type` on the wire.
 </Accordion>
 
 </FaultDetailsCard>
@@ -441,14 +443,14 @@ This can be used to test service resilience towards incorrect or incomplete head
 
 ### Pod HTTP reset peer
 
-Pod HTTP reset peer is a Kubernetes pod-level chaos fault that injects chaos on the service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.
-
-- This stops the outgoing HTTP requests by resetting the TCP connection by starting the proxy server and redirecting the traffic through the proxy server.
-- It can test the application's resilience to lossy/flaky HTTP connection.
+Pod HTTP reset peer is a Kubernetes pod-level chaos fault that forcibly resets the TCP connection carrying an HTTP request to a target pod after a configurable delay to test client retry, connection-pool, and circuit-breaker behavior on abrupt disconnects.
 
 <Accordion color="green">
 <summary>Use cases</summary>
-It can test the application's resilience to lossy/flaky HTTP connection.
+- Tests retry classification: connection reset versus `5xx` error.
+- Exposes connection-pool churn when pooled connections drop.
+- Drives circuit-breaker tripping on repeated `RST` packets.
+- Validates reconnect-with-backoff logic for long-lived streams.
 </Accordion>
 
 </FaultDetailsCard>
@@ -457,14 +459,14 @@ It can test the application's resilience to lossy/flaky HTTP connection.
 
 ### Pod HTTP status code
 
-Pod HTTP status code is a Kubernetes pod-level fault injects chaos inside the pod by modifying the status code of the response from the application server to the desired status code provided by the user.
-
-- The port for the service is specified using the `TARGET_SERVICE_PORT` environment variable by starting the proxy server and redirecting the traffic through the proxy server.
-- It tests the application's resilience to error code HTTP responses from the provided application server.
+Pod HTTP status code is a Kubernetes pod-level chaos fault that overrides the HTTP response status code returned by a target pod (and optionally overwrites the body) to test client error handling, retry classification, and circuit-breaker behavior on specific HTTP statuses.
 
 <Accordion color="green">
 <summary>Use cases</summary>
-It tests the application's resilience to error code HTTP responses from the provided application server.
+- Tests retry classification on `503`, `502`, and `429` responses.
+- Drives error-budget burn on a calibrated percentage of `500`s.
+- Exposes cache-invalidation handling by returning `404` on previously-cached resources.
+- Validates token-refresh paths on `401`/`403` responses.
 </Accordion>
 
 </FaultDetailsCard>
@@ -533,13 +535,14 @@ It can test the application's resilience to mistakenly writing or reading invali
 
 ### Pod IO stress
 
-Pod I/O stress is a Kubernetes pod-level chaos fault that causes IO stress on the application pod by spiking the number of input and output requests.
+Pod IO stress is a Kubernetes pod-level chaos fault that generates sustained filesystem read and write load inside a target container's mounted volume to test how the application handles disk pressure, slow IO, and ephemeral-storage exhaustion.
 
 <Accordion color="green">
 <summary>Use cases</summary>
-- Aims to verify the resiliency of applications that share this disk resource for ephemeral (or persistent) storage.
-- Stressing the disk with continuous and heavy I/O can degrade the reads and writes with respect to the microservices. Scratch space consumed on a node may lead to lack of memory for new containers to be scheduled. 
-- These faults helps build immunity to such stress cases.
+- Pushes ephemeral storage toward its limit to test pod-eviction behavior.
+- Drives the volume toward a target fill level and exposes `ENOSPC` handling.
+- Raises read/write latency to test backpressure and fsync-heavy workloads.
+- Simulates noisy-neighbor IO contention on shared nodes.
 </Accordion>
 
 </FaultDetailsCard>
@@ -918,13 +921,14 @@ Redis cache penetration fault continuously sends cache requests to the Redis dat
 
 ### Time Chaos
 
-Time Chaos is a Kubernetes pod-level fault that introduces controlled time offsets to disrupt the system time of the target pod
-
-- It can test the application's resilience for invalid system time.
+Time chaos is a Kubernetes pod-level chaos fault that shifts the wall-clock or monotonic time observed by selected processes inside a target container by a configurable offset to test application behavior under clock skew, token expiry, and time-based scheduling errors.
 
 <Accordion color="green">
 <summary>Use cases</summary>
-It can test the application's resilience for invalid system time.
+- Exercises token and TLS certificate expiry handling by shifting time forward.
+- Simulates NTP drift to test rate limits, idempotency keys, and signed-request validation.
+- Stress-tests distributed-lock and lease-deadline logic under clock skew.
+- Validates that scheduled timers fire correctly when the clock jumps.
 </Accordion>
 
 </FaultDetailsCard>

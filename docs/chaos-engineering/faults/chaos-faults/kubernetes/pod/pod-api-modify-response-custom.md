@@ -1,605 +1,281 @@
 ---
 id: pod-api-modify-response-custom
-title: Pod API Modify Response Custom
+title: Pod API modify response custom
+sidebar_label: Pod API Modify Response Custom
+description: Combine status code, header, and body modifications on selected API calls of a target Kubernetes pod in a single fault, with filtering by path, method, query, source, or destination.
+keywords:
+  - chaos engineering
+  - pod api modify response custom
+  - api chaos
+  - custom response
+  - kubernetes pod fault
+tags:
+  - chaos-engineering
+  - pod-faults
+  - api-chaos
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-api-modify-response-custom
+  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod-api-modify-response-custom
+  - /docs/chaos-engineering/chaos-faults/kubernetes/pod-api-modify-response-custom
 ---
 
-import CommonNote from './shared/common-note.md'
-import ConfTLS from './shared/configure-tls.md'
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-Pod API Modify Response Custom is a Kubernetes pod-level chaos fault that consolidates the **pod-api-modify-body**, **pod-api-modify-header**, and **pod-api-status-code** faults. It allows modifying one or more aspects of the API response simultaneously, including headers, status code, and response body.
+Pod API modify response custom is a Kubernetes pod-level chaos fault that combines status code, header, and body modifications on selected API calls in a single experiment. Think of it as [Pod API modify body](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-api-modify-body), [Pod API modify header](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-api-modify-header), and [Pod API status code](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-api-status-code) rolled into one fault. It accepts the same rich filter set (path, method, headers, query, source, destination) and supports HTTPS through user-supplied TLS certificates. When the fault ends, responses return to whatever the application produces.
 
-<CommonNote />
+Use this fault when one realistic failure scenario requires changing multiple aspects of a response at once: returning `429` with a `Retry-After` header and a JSON `{"error":"rate_limited"}` body, or simulating an upstream that returns `200` with corrupted JSON, or returning `503` with a custom `X-Maintenance` header to model planned downtime.
 
-![Pod API Modify Response Custom](./static/images/pod-api-modify-response-custom.png)
-
-### Use cases
-Pod API modify response custom:
-- Enables simultaneous modification of headers, status codes, and response bodies to simulate real-world failure scenarios, allowing end-to-end testing of API behavior under different conditions.
-- Simulates unauthorized access attempts, expired authentication tokens, or altered security policies to evaluate the robustness of authentication and authorization mechanisms.
-- Helps assess how changes in API responses impact client-side performance. For example, altering response sizes, introducing unexpected headers, or changing response codes can help identify performance bottlenecks and resilience gaps.
-- In a distributed system, modifying API responses can help validate how dependent services react to unexpected responses, such as malformed data, missing fields, or incorrect status codes, ensuring better fault tolerance.
-
-### Permissions Required
-
-Below is a sample Kubernetes role that defines the permissions required to execute the fault.
-
-```
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  namespace: hce
-  name: pod-api-modify-response-custom
-spec:
-  definition:
-    scope: Cluster # Supports "Namespaced" mode too
-permissions:
-  - apiGroups: [""]
-    resources: ["pods"]
-    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
-  - apiGroups: [""]
-    resources: ["events"]
-    verbs: ["create", "get", "list", "patch", "update"]
-  - apiGroups: [""]
-    resources: ["pods/log"]
-    verbs: ["get", "list", "watch"]
-  - apiGroups: [""]
-    resources: ["deployments, statefulsets"]
-    verbs: ["get", "list"]
-  - apiGroups: [""]
-    resources: ["replicasets, daemonsets"]
-    verbs: ["get", "list"]
-  - apiGroups: [""]
-    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
-    verbs: ["create", "delete", "get", "list", "patch", "update"]
-  - apiGroups: ["batch"]
-    resources: ["jobs"]
-    verbs: ["create", "delete", "get", "list", "deletecollection"]
-```
-
-### Prerequisites
-- Kubernetes> 1.17
-- The application pods should be in the running state before and after injecting chaos.
-
-### Supported environments
-
-<table>
-  <tr>
-    <th> Platform </th>
-    <th> Support Status </th>
-  </tr>
-  <tr>
-    <td> GKE (Google Kubernetes Engine) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> EKS (Amazon Elastic Kubernetes Service) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> AKS (Azure Kubernetes Service) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> GKE Autopilot </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> Self-managed Kubernetes </td>
-    <td> ✅ Supported </td>
-  </tr>
-</table>
-
-### Mandatory tunables
-
-   <table>
-      <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> TARGET_CONTAINER </td>
-        <td> Name of the container subject to API header modification. </td>
-        <td> None. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-container">target specific container</a></td>
-      </tr>
-      <tr>
-        <td> TARGET_SERVICE_PORT </td>
-        <td> Port of the target service.</td>
-        <td> Defaults to port 80. For more information, go to <a href="#target-service-port">target service port</a>.</td>
-      </tr>
-    </table>
-
-### Optional tunables
-  <table>
-      <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> HEADERS_MAP </td>
-        <td> Map of the headers to modify or add </td>
-        <td> For example, &#123;"X-Litmus-Test-Header": "X-Litmus-Test-Value"&#125;. To remove a header, just set the value to ""; For example, &#123;"X-Litmus-Test-Header": ""&#125;. For more information, go to <a href="#modify-response"> headers map</a>.</td>
-      </tr>
-      <tr>
-        <td> RESPONSE_BODY </td>
-        <td> String body to overwrite the HTTP response body.</td>
-        <td> For more information, go to <a href="#modify-response">response body </a></td>
-      </tr>
-      <tr>
-        <td> STATUS_CODE </td>
-        <td> Modified status code for the API response. </td>
-        <td> For more information, go to <a href="#modify-response">status code </a>. </td>
-      </tr>
-      <tr>
-        <td> PATH_FILTER </td>
-        <td> API path or route used for the filtering. </td>
-        <td> Targets all paths if not provided. For more information, go to <a href="#path-filter">path filter </a>.</td>
-      </tr>
-      <tr>
-        <td> TRANSACTION_PERCENTAGE </td>
-        <td> Percentage of the API requests to be affected. </td>
-        <td> It supports values in range (0,100]. It targets all requests if not provided. For more information, go to <a href="#advanced-filters">transaction percentage </a>.</td>
-      </tr>
-      <tr>
-        <td> HEADERS_FILTERS </td>
-        <td> Filters for HTTP request headers accept multiple comma-separated headers in the format <code>key1:value1,key2:value2</code>. </td>
-        <td> For more information, go to <a href="#advanced-filters">header filters</a>.</td>
-      </tr>
-      <tr>
-        <td> METHODS </td>
-        <td> The HTTP request method type accepts comma-separated HTTP methods in upper cases, such as "GET,POST". </td>
-        <td> For more information, go to <a href="#advanced-filters">methods</a>.</td>
-      </tr>
-      <tr>
-        <td> QUERY_PARAMS </td>
-        <td> HTTP request query parameter filters accept multiple comma-separated query parameters in the format of <code>param1:value1,param2:value2</code>. </td>
-        <td> For more information, go to <a href="#advanced-filters">query params</a>.</td>
-      </tr>
-<tr>
-        <td> SOURCE_HOSTS </td>
-        <td> Includes comma-separated source host names as filters, indicating the origin of the HTTP request. This is specifically relevant to the "ingress" type. </td>
-        <td> For more information, go to <a href="#advanced-filters">source hosts</a>.</td>
-      </tr>
-      <tr>
-        <td> SOURCE_IPS </td>
-        <td> This includes comma-separated source IPs as filters, indicating the origin of the HTTP request. This is specifically relevant to the "ingress" type. </td>
-        <td> For more information, go to <a href="#advanced-filters">source ips</a>.</td>
-      </tr>
-      <tr>
-        <td> DESTINATION_HOSTS </td>
-        <td> Comma-separated destination host names are used as filters, indicating the hosts on which you call the API. This specification applies exclusively to the "egress" type. </td>
-        <td> For more information, go to <a href="#advanced-filters">destination hosts</a>.</td>
-      </tr>
-      <tr>
-        <td> DESTINATION_IPS </td>
-        <td> Comma-separated destination IPs are used as filters, indicating the hosts on which you call the API. This specification applies exclusively to the "egress" type. </td>
-        <td> For more information, go to <a href="#advanced-filters">destination hosts</a>.</td>
-      </tr>
-      <tr>
-        <td> PROXY_PORT </td>
-        <td> Port where the proxy listens for requests.</td>
-        <td> Default: 20000. For more information, go to <a href="#advanced-fault-tunables">proxy port</a>.</td>
-      </tr>
-      <tr>
-        <td> LIB_IMAGE </td>
-        <td> Image used to inject chaos. </td>
-        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
-      </tr>
-      <tr>
-        <td> SERVICE_DIRECTION </td>
-        <td> Direction of the flow of control, ingress or egress </td>
-        <td> Default: `ingress`. For more information, go to <a href="#advanced-fault-tunables">service direction </a>.</td>
-      </tr>
-      <tr>
-        <td> DATA_DIRECTION </td>
-        <td> API payload type, request or response </td>
-        <td> Default: `both`. For more information, go to <a href="#advanced-fault-tunables">data direction </a>.</td>
-      </tr>
-      <tr>
-        <td> DESTINATION_PORTS </td>
-        <td> comma-separated list of the destination service or host ports for which `egress` traffic should be affected </td>
-        <td> Default: 80,443. For more information, go to <a href="#destination-ports">destination ports</a></td>
-      </tr>
-      <tr>
-        <td> HTTPS_ENABLED </td>
-        <td> facilitate HTTPS support for both incoming and outgoing traffic </td>
-        <td> Default: false. For more information, go to <a href="#https">https</a></td>
-      </tr>
-      <tr>
-        <td> CA_CERTIFICATES </td>
-        <td> These CA certificates are used by the proxy server to generate the server certificates for the TLS handshake between the target application and the proxy server. </td>
-        <td> These CA certificates must also be added to the target application's root certificate. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-api-modify-response-custom#using-self-signed-certificates">CA certificates.</a></td>
-        </tr>
-     <tr>
-        <td> SERVER_CERTIFICATES </td>
-        <td> These server certificates are used by the proxy server for the TLS handshake between the target application and the proxy server. </td>
-        <td> The corresponding CA certificates should be loaded as root certificates inside the target application. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-api-modify-response-custom#using-self-signed-certificates">server certificates.</a></td>
-      </tr>
-      <tr>
-        <td> CLIENT_CERTIFICATES </td>
-        <td> These client certificates are used by the proxy server for the MTLS handshake between the upstream server and the proxy server. </td>
-        <td> The corresponding CA certificates should be loaded as root certificates inside the upstream server. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-api-block#using-self-signed-certificates">client certificates.</a></td>
-      </tr>
-      <tr>
-        <td> HTTPS_ROOT_CERT_PATH </td>
-        <td> Provide the root CA certificate directory path </td>
-        <td> This setting must be configured if the root CA certificate directory differs from /etc/ssl/certs. Please refer to https://go.dev/src/crypto/x509/root_linux.go to understand the default certificate directory based on various Linux distributions. For more information, go to <a href="#https">HTTPS</a></td>
-      </tr>
-      <tr>
-        <td> HTTPS_ROOT_CERT_FILE_NAME </td>
-        <td> Provide the root CA certificate file name </td>
-        <td> This setting must be configured if the root CA certificate file name differs from ca-certificates.crt. Please refer to https://go.dev/src/crypto/x509/root_linux.go to understand the default certificate file names based on various Linux distributions. For more information, go to <a href="#https">HTTPS</a></td>
-      </tr>
-      <tr>
-        <td> NETWORK_INTERFACE </td>
-        <td> Network interface used for the proxy.</td>
-        <td> Default: `eth0`. For more information, go to <a href="#advanced-fault-tunables">network interface </a>.</td>
-      </tr>
-      <tr>
-        <td> CONTAINER_RUNTIME </td>
-        <td> Container runtime interface for the cluster</td>
-        <td> Default: containerd. Support values: docker, containerd and crio. For more information, go to <a href="#container-runtime-and-socket-path">container runtime </a>. </td>
-      </tr>
-      <tr>
-        <td> SOCKET_PATH </td>
-        <td> Path of the containerd or crio or docker socket file. </td>
-        <td> Default: <code>/run/containerd/containerd.sock</code>. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-api-modify-body#container-runtime-and-socket-path">socket path</a>.</td>
-      </tr>
-      <tr>
-        <td> TOTAL_CHAOS_DURATION </td>
-        <td> Duration of chaos injection (in seconds). </td>
-        <td> Default: 60 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos </a>.</td>
-      </tr>
-      <tr>
-        <td> TARGET_PODS </td>
-        <td> Comma-separated list of application pod names subject to pod HTTP modify body.</td>
-        <td> If not provided, the fault selects target pods randomly based on provided appLabels. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods"> target specific pods</a>.</td>
-      </tr>
-      <tr>
-        <td> PODS_AFFECTED_PERC </td>
-        <td> Percentage of total pods to target. Provide numeric values. </td>
-        <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage </a></td>
-      </tr>
-      <tr>
-        <td> RAMP_TIME </td>
-        <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a>.</td>
-      </tr>
-      <tr>
-        <td> SEQUENCE </td>
-        <td> Sequence of chaos execution for multiple target pods. </td>
-        <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a>.</td>
-      </tr>
-    </table>
-
-### Target service port
-
-Port of the targeted service. Tune it by using the `TARGET_SERVICE_PORT` environment variable.
-
-The following YAML snippet illustrates the use of this environment variable:
-
-[embedmd]: # "./static/manifests/pod-api-modify-response-custom/target-service-port.yaml yaml"
-
-```yaml
-## provide the port of the targeted service
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: pod-api-modify-response-custom
-      spec:
-        components:
-          env:
-            # provide the port of the targeted service
-            - name: TARGET_SERVICE_PORT
-              value: "80"
-            - name: HEADERS_MAP
-              value: '{"X-Litmus-Test-Header": "X-Litmus-Test-Value"}'
-            - name: PATH_FILTER
-              value: '/status'
-```
-
-### Modify response
-
-Modify the response by altering one or more of the following fields:
-
-1. `RESPONSE_BODY`: String body in `/<regex-to-be-replaced>/<substitute-string>` format, that overwrites the API request and response body.
-2. `HEADERS_MAP`: Map of the headers that need to be modified or added to the HTTP request or response.
-3. `STATUS_CODE`: Status code to be modified for the HTTP response.
-
-The following YAML snippet illustrates the use of this environment variable:
-
-[embedmd]: # "./static/manifests/pod-api-modify-response-custom/modify-response.yaml yaml"
-
-```yaml
-## provide the headers as a map
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: pod-api-modify-response-custom
-      spec:
-        components:
-          env:
-            # map of headers to modify/add; Eg: {"X-Litmus-Test-Header": "X-Litmus-Test-Value"}
-            # to remove a header, just set the value to ""; Eg: {"X-Litmus-Test-Header": ""}
-            - name: HEADERS_MAP
-              value: '{"X-HCE-Test-Header": "X-HCE-Test-Value"}'
-            # provide the http status code
-            - name: STATUS_CODE
-              value: "500"
-            # provide the response body
-            - name: RESPONSE_BODY
-              value: "/.+/internal_server_error"
-            # provide the port of the targeted service
-            - name: TARGET_SERVICE_PORT
-              value: "80"
-            - name: PATH_FILTER
-              value: '/status'
-```
-
-### Path filter
-
-API sub path (or route) to filter the API calls. Tune it by using the `PATH_FILTER` environment variable.
-
-The following YAML snippet illustrates the use of this environment variable:
-
-[embedmd]: # "./static/manifests/pod-api-modify-response-custom/path-filter.yaml yaml"
-
-```yaml
-## provide api path filter
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: pod-api-modify-response-custom
-      spec:
-        components:
-          env:
-            # provide the api path filter
-            - name: PATH_FILTER
-              value: '/status'
-            - name: HEADERS_MAP
-              value: '{"X-Litmus-Test-Header": "X-Litmus-Test-Value"}'
-            # provide the port of the targeted service
-            - name: TARGET_SERVICE_PORT
-              value: "80"
-```
-
-### Destination ports
-
-A comma-separated list of the destination service or host ports for which `egress` traffic should be affected as a result of chaos testing on the target application. Tune it by using the `DESTINATION_PORTS` environment variable.
-
-:::note
-It is applicable only for the egress `SERVICE_DIRECTION`.
+:::info Run your first experiment
+If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
 :::
 
-The following YAML snippet illustrates the use of this environment variable:
+---
 
-[embedmd]: # "./static/manifests/pod-api-modify-response-custom/destination-ports.yaml yaml"
+## Use cases
 
-```yaml
-## provide destination ports
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: pod-api-modify-response-custom
-      spec:
-        components:
-          env:
-            # provide destination ports
-            - name: DESTINATION_PORTS
-              value: '80,443'
-            # provide the api path filter
-            - name: PATH_FILTER
-              value: '/status'
-            - name: HEADERS_MAP
-              value: '{"X-Litmus-Test-Header": "X-Litmus-Test-Value"}'
-            # provide the port of the targeted service
-            - name: TARGET_SERVICE_PORT
-              value: "80"
-```
+Run this fault when you want to answer concrete questions like:
 
-### HTTPS
+- **Realistic rate-limit responses:** Set `STATUS_CODE=429`, `HEADERS_MAP={"Retry-After":"30"}`, and `RESPONSE_BODY={"error":"rate_limited"}` to simulate a real-world rate-limited upstream. Does the client honor `Retry-After`?
+- **Maintenance-window simulation:** Return `503` with a custom `X-Maintenance: planned` header and an HTML maintenance page body. Does the client surface a useful message to end users?
+- **Auth refresh path:** Return `401` with `WWW-Authenticate: Bearer error="invalid_token"` and a matching JSON body. Does the client trigger the token-refresh flow rather than failing?
+- **Backwards-compatibility breakage:** Return `200` with a body missing a field the client expects. Does the client tolerate the new shape, or does it crash on the missing field?
+- **Tenant-specific custom errors:** Use `HEADERS_FILTERS=X-Tenant: prod-eu` to apply a different status, body, and headers only to one tenant.
 
-To enable HTTPS support for both incoming and outgoing traffic between the target and the proxy, set the `HTTPS_ENABLED` field to `true`. The next step is to configure TLS, for which you can follow one of the ways: **Using self-signed certificate** or **using trusted certificate**.
+---
 
-<ConfTLS />
+## Prerequisites
 
-### Advanced fault tunables
+- **Kubernetes version:** 1.21 or later. Go to [What's supported](/docs/chaos-engineering/whats-supported) to confirm distribution support.
+- **Target pods are Running:** The application pods you intend to target are in the `Running` state before the fault is launched.
+- **Privileged pods allowed:** The cluster lets you schedule privileged pods in the chaos namespace. GKE Autopilot supports this fault but requires the one-time setup in [Chaos on GKE Autopilot](/docs/resilience-testing/chaos-testing/gke-autopilot); other locked-down distributions may need similar exemptions.
+- **Container runtime access:** The chaos pod can reach the container runtime socket on the target node (`/run/containerd/containerd.sock`, `/var/run/docker.sock`, or `/var/run/crio/crio.sock`).
+- **API service on a known port:** The target container serves HTTP, HTTPS, or gRPC traffic on a port you can specify with `TARGET_SERVICE_PORT`.
+- **TLS material for HTTPS targets:** When `HTTPS_ENABLED=true`, you provide CA, server, and (optionally) client certificate secrets so the proxy can terminate TLS and apply filters.
+- **Workload selector defined:** The chaos experiment knows the target workload by kind, namespace, and either names or labels.
 
-- `PROXY_PORT`: Port where the proxy listens for requests and responses.
-- `SERVICE_DIRECTION`: Direction of the flow of control, either `ingress` or `egress`.
-- `DATA_DIRECTION`: API payload type, request, or response. It supports `request`, `response`, and `both` values.
-- `NETWORK_INTERFACE`: Network interface used for the proxy.
+---
 
-The following YAML snippet illustrates the use of this environment variable:
+## Supported environments
 
-[embedmd]:# (./static/manifests/pod-api-modify-response-custom/advanced-fault-tunables.yaml yaml)
-```yaml
-# it injects the api modify header fault
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: pod-api-modify-response-custom
-      spec:
-        components:
-          env:
-            # provide the proxy port
-            - name: PROXY_PORT
-              value: '20000'
-            # provide the connection type
-            - name: SERVICE_DIRECTION
-              value: 'ingress'
-            # provide the payload type
-            - name: DATA_DIRECTION
-              value: 'both'
-            # provide the network interface
-            - name: NETWORK_INTERFACE
-              value: 'eth0'
-            # provide the api path filter
-            - name: PATH_FILTER
-              value: '/status'
-            # provide the port of the targeted service
-            - name: TARGET_SERVICE_PORT
-              value: "80"
-            - name: HEADERS_MAP
-              value: '{"X-Litmus-Test-Header": "X-Litmus-Test-Value"}'
-```
+| Platform | Support status |
+| --- | --- |
+| Amazon EKS | Supported |
+| Azure AKS | Supported |
+| Google GKE | Supported |
+| Red Hat OpenShift | Supported |
+| Rancher | Supported |
+| VMware Tanzu | Supported |
+| Self-managed Kubernetes (CNCF-certified) | Supported |
+| GKE Autopilot | Supported with [Autopilot setup](/docs/resilience-testing/chaos-testing/gke-autopilot) |
+| EKS Fargate, ACI virtual nodes | Not supported (no access to container runtime sockets) |
 
-### Advanced filters
+---
 
-- `HEADERS_FILTERS`: The HTTP request headers filters, that accept multiple comma-separated headers in the format of `key1:value1,key2:value2`.
-- `METHODS`: The HTTP request method type filters, that accept comma-separated HTTP methods in upper case, that is, `GET,POST`.
-- `QUERY_PARAMS`: The HTTP request query parameters filter, accepts multiple comma-separated query parameters in the format of `param1:value1,param2:value2`.
-- `SOURCE_HOSTS`: Comma-separated source host names filters, indicating the origin of the HTTP request. This is relevant to the `ingress` type, specified by `SERVICE_DIRECTION` environment variable.
-- `SOURCE_IPS`: Comma-separated source IPs filters, indicating the origin of the HTTP request. This is specifically relevant to the `ingress` type, specified by `SERVICE_DIRECTION` environment variable.
-- `DESTINATION_HOSTS`: Comma-separated destination host names filters, indicating the hosts on which you call the API. This specification applies exclusively to the `egress` type, specified by `SERVICE_DIRECTION` environment variable.
-- `DESTINATION_IPS`: Comma-separated destination IPs filters, indicating the hosts on which you call the API. This specification applies exclusively to the `egress` type, specified by `SERVICE_DIRECTION` environment variable.
-- `TRANSACTION_PERCENTAGE`: The percentage of API requests to be affected, with supported values in the range (0, 100]. If not specified, it targets all requests.
+## Permissions required
 
-The following YAML snippet illustrates the use of this environment variable:
+The fault runs under the chaos infrastructure's service account.
 
-[embedmd]:# (./static/manifests/pod-api-modify-response-custom/advanced-filters.yaml yaml)
-```yaml
-# it injects the api modify header fault
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: pod-api-modify-response-custom
-      spec:
-        components:
-          env:
-            # provide the headers filters
-            - name: HEADERS_FILTERS
-              value: 'key1:value1,key2:value2'
-            # provide the methods filters
-            - name: METHODS
-              value: 'GET,POST'
-            # provide the query params filters
-            - name: QUERY_PARAMS
-              value: 'param1:value1,param2:value2'
-            # provide the source hosts filters
-            - name: SOURCE_HOSTS
-              value: 'host1,host2'
-            # provide the source ips filters
-            - name: SOURCE_IPS
-              value: 'ip1,ip2'
-            # provide the transaction percentage within (0,100] range
-            # for example, it will affect 50% of the total requests
-            - name: TRANSACTION_PERCENTAGE
-              value: '50'
-            # provide the connection type
-            - name: SERVICE_DIRECTION
-              value: 'ingress'
-            # provide the port of the targeted service
-            - name: TARGET_SERVICE_PORT
-              value: "80"
-            - name: HEADERS_MAP
-              value: '{"X-Litmus-Test-Header": "X-Litmus-Test-Value"}'
-```
+| Resource (`apiGroup`) | Verbs | Why it is needed |
+| --- | --- | --- |
+| `pods` (`""`) | `get`, `list`, `create`, `delete`, `deletecollection`, `patch`, `update` | Discover target pods and run the chaos pod on the same node |
+| `pods/log` (`""`) | `get`, `list`, `watch` | Stream chaos pod logs for status and debugging |
+| `deployments`, `statefulsets`, `replicasets`, `daemonsets` (`apps`) | `get`, `list` | Resolve the target workload to the pods it owns |
+| `events` (`""`) | `get`, `list`, `create`, `patch`, `update` | Record fault progress as Kubernetes events |
+| `jobs` (`batch`) | `get`, `list`, `create`, `delete`, `deletecollection` | Run the chaos job that drives the fault |
+| `secrets` (`""`) | `get`, `list` | Read TLS certificate secrets when `HTTPS_ENABLED=true` |
 
-### Container runtime and socket path
+The default Harness chaos infrastructure service account already includes these permissions.
 
-The `CONTAINER_RUNTIME` and `SOCKET_PATH` environment variable to set the container runtime and socket file path, respectively.
+---
 
-- `CONTAINER_RUNTIME`: It supports `docker`, `containerd`, and `crio` runtimes. The default value is `containerd`.
-- `SOCKET_PATH`: It contains path of containerd socket file by default(`/run/containerd/containerd.sock`). For `docker`, specify path as `/var/run/docker.sock`. For `crio`, specify path as `/var/run/crio/crio.sock`.
+## Fault tunables
 
-The following YAML snippet illustrates the use of these environment variables:
+Configure the following fault parameters when you add Pod API modify response custom to an experiment in Chaos Studio. Defaults are shown for reference. Any modification field (`STATUS_CODE`, `HEADERS_MAP`, `RESPONSE_BODY`) left empty is not applied; you can use any subset of the three.
 
-[embedmd]: # "./static/manifests/pod-api-modify-response-custom/container-runtime-and-socket-path.yaml yaml"
+**Chaos parameters**
 
-```yaml
-## provide the container runtime and socket file path
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: pod-api-modify-response-custom
-      spec:
-        components:
-          env:
-            # runtime for the container
-            # supports docker, containerd, crio
-            - name: CONTAINER_RUNTIME
-              value: "containerd"
-            # path of the socket file
-            - name: SOCKET_PATH
-              value: "/run/containerd/containerd.sock"
-            # provide the port of the targeted service
-            - name: TARGET_SERVICE_PORT
-              value: "80"
-            # provide the api path filter
-            - name: PATH_FILTER
-              value: '/status'
-            - name: HEADERS_MAP
-              value: '{"X-Litmus-Test-Header": "X-Litmus-Test-Value"}'
-```
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `STATUS_CODE` | HTTP status code to return. `0` keeps the application's original status code. | `0` |
+| `HEADERS_MAP` | JSON object of header key-value pairs to inject or replace. Set a value to `""` to remove that header. Empty leaves all headers unchanged. | `""` |
+| `RESPONSE_BODY` | Body string to overwrite the response (or request, when `DATA_DIRECTION` includes `request`). Empty leaves the body unchanged. | `""` |
+| `DATA_DIRECTION` | Which direction to modify: `request`, `response`, or `both`. | `both` |
+| `TRANSACTION_PERCENTAGE` | Percentage of matched API calls to modify, between `0` and `100`. | `0` |
+| `TARGET_SERVICE_PORT` | Port the target container listens on for API traffic. | `80` |
+| `TOTAL_CHAOS_DURATION` | Duration of the fault in seconds. | `60` |
+
+**Filters (API matching)**
+
+All filters are optional. Leave empty to match everything in that dimension. Combining filters narrows the match (AND across dimensions).
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `PATH_FILTER` | URL path the fault matches. Empty matches all paths. | `""` |
+| `METHODS` | Comma-separated HTTP methods to match. Empty matches all methods. | `""` |
+| `QUERY_PARAMS` | Query-parameter filter. Empty matches all query strings. | `""` |
+| `HEADERS_FILTERS` | Header filter used to match incoming calls (distinct from `HEADERS_MAP`, which is used to inject). Empty matches all headers. | `""` |
+
+**Filters (traffic source and destination)**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `SERVICE_DIRECTION` | Whether to filter `ingress` traffic (received by the pod) or `egress` traffic (sent from the pod). | `ingress` |
+| `SOURCE_HOSTS` | Hostnames of the calling client (ingress only). Empty matches any source. | `""` |
+| `SOURCE_IPS` | Source IPs of the calling client (ingress only). Empty matches any source. | `""` |
+| `DESTINATION_HOSTS` | Destination hostnames for the call (egress only). Empty matches any destination. | `""` |
+| `DESTINATION_IPS` | Destination IPs for the call (egress only). Empty matches any destination. | `""` |
+| `DESTINATION_PORTS` | Comma-separated destination ports (egress only). Empty matches any port. | `""` |
+
+**TLS (for HTTPS targets)**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `HTTPS_ENABLED` | Set to `true` when the target serves HTTPS so the proxy terminates TLS to apply filters. | `false` |
+| `CA_CERTIFICATES` | Kubernetes secret holding the Base64-encoded CA certificate (`ca.key`, `ca.crt`). | `""` |
+| `SERVER_CERTIFICATES` | Secret holding the Base64-encoded server certificate (`server.key`, `server.crt`). | `""` |
+| `CLIENT_CERTIFICATES` | Secret holding the Base64-encoded client certificate (`client.key`, `client.crt`) for mTLS upstreams. | `""` |
+
+**Proxy and interface**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `PROXY_PORT` | Port the chaos proxy listens on inside the container's network namespace. | `20000` |
+| `NETWORK_INTERFACE` | Network interface inside the target container's namespace. Almost always `eth0` for standard CNI plugins. | `eth0` |
+
+**Targeting**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `TARGET_PODS` | Comma-separated list of pod names to target. Empty selects from the workload's pods using `POD_AFFECTED_PERCENTAGE`. | `""` |
+| `TARGET_CONTAINER` | Container in the pod whose network namespace to enter. Empty targets the first container in the pod spec. | `""` |
+| `NODE_LABEL` | Label selector to filter target pods by the node they run on. Empty disables node-based filtering. | `""` |
+| `POD_AFFECTED_PERCENTAGE` | Percentage of the workload's pods to target. `0` means one pod. | `0` |
+| `SEQUENCE` | When multiple pods are targeted, inject `parallel` (all at once) or `serial` (one after another). | `parallel` |
+
+**Runtime and helper**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `CONTAINER_RUNTIME` | Container runtime on the target nodes. One of `containerd`, `docker`, `crio`. | `containerd` |
+| `SOCKET_PATH` | Path to the container runtime socket on the target node. Set to match `CONTAINER_RUNTIME`. | `/run/containerd/containerd.sock` |
+| `RAMP_TIME` | Wait period in seconds before and after the fault. Go to [ramp time](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time) to read how it is applied. | `0` |
+
+Tunables that apply to every chaos fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
+
+:::tip Use just what you need
+If you only want to change the body, use [Pod API modify body](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-api-modify-body) instead. Reach for this fault when a realistic failure requires more than one of status, body, and headers to change together.
+:::
+
+### Configure for your container runtime
+
+Set `CONTAINER_RUNTIME` and `SOCKET_PATH` to match the runtime on the target node:
+
+| `CONTAINER_RUNTIME` | `SOCKET_PATH` |
+| --- | --- |
+| `containerd` (default) | `/run/containerd/containerd.sock` |
+| `docker` | `/var/run/docker.sock` |
+| `crio` | `/var/run/crio/crio.sock` |
+
+---
+
+## Fault execution in brief
+
+Intercepts API traffic on `TARGET_SERVICE_PORT` inside the container's network namespace and, for the configured percentage of calls that match the path, method, header, query, and source or destination filters, simultaneously overrides the status code, headers, and body with the supplied values, optionally terminating TLS to apply the same logic to HTTPS calls.
+
+---
+
+## Expected behavior during fault execution
+
+- API calls that match every configured filter have their response (and optionally request, depending on `DATA_DIRECTION`) rewritten with whatever combination of `STATUS_CODE`, `HEADERS_MAP`, and `RESPONSE_BODY` you set. Any of the three left empty is preserved as the application produced it.
+- Calls outside the filter set pass through unchanged. Only the percentage selected by `TRANSACTION_PERCENTAGE` is modified.
+- For HTTPS targets, the proxy terminates TLS using the supplied certificates so it can intercept and rewrite the call.
+- Clients see a single coherent response (for example, status + headers + body that all match the simulated scenario), exercising the same code paths a real upstream failure would.
+
+:::info When the fault ends
+After `TOTAL_CHAOS_DURATION`, the proxy is torn down and API responses return to whatever the application produces.
+:::
+
+### Signals to watch
+
+Attach [resilience probes](/docs/resilience-testing/chaos-testing/probes) to assert each layer:
+
+- **Client behavior matches the scenario:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) to verify the client honors the headers you injected (such as `Retry-After`).
+- **End-user error rate:** Use a Prometheus probe on the top-level error counter to detect leakage of the simulated failure to end users.
+- **Application logs:** Use a [command probe](/docs/resilience-testing/chaos-testing/probes/command-probe) to look for stack traces from clients that did not handle the combined response correctly.
+
+---
+
+## Verify the fault execution effect
+
+While the experiment is running, confirm all three modifications land together:
+
+1. **Make a matched call and inspect status, headers, and body.**
+
+   ```bash
+   kubectl run -n <namespace> tester --image=curlimages/curl --rm -it -- \
+     curl -i -X <METHOD> "http://<target-pod-ip>:<TARGET_SERVICE_PORT><PATH_FILTER>"
+   ```
+
+   The status line should equal `HTTP/1.1 <STATUS_CODE> ...`, headers from `HEADERS_MAP` should appear (and removed keys should be absent), and the body should equal `RESPONSE_BODY` (or remain unchanged if it was empty).
+
+2. **Confirm an unmatched call is untouched.**
+
+   A call to a different path or method should return the application's normal status, headers, and body.
+
+---
+
+## Recovery and cleanup
+
+- **End of duration:** The proxy is removed automatically and API traffic returns to baseline.
+- **Abort the experiment:** Stopping the experiment from Chaos Studio triggers the same cleanup path.
+- **Failed cleanup:** If automated cleanup did not complete, restart the target pod to reset its network state.
+
+---
+
+## Limitations
+
+- **Serverless Kubernetes (EKS Fargate, ACI virtual nodes):** These platforms do not expose container runtime sockets and reject the privileged access the fault needs. GKE Autopilot is supported once the one-time setup in [Chaos on GKE Autopilot](/docs/resilience-testing/chaos-testing/gke-autopilot) is in place.
+- **Windows containers:** This fault is supported on Linux pods only.
+- **HTTPS without certificates:** When `HTTPS_ENABLED=true`, the proxy must terminate TLS. If the supplied certificates do not chain to one the client trusts, the client refuses the connection before any filter is applied.
+- **gRPC status:** gRPC carries status in HTTP/2 trailers (`grpc-status`). This fault overrides HTTP status; gRPC clients also check `grpc-status` and may behave differently.
+- **Pseudo-headers (HTTP/2):** `:method`, `:path`, `:status`, `:authority` cannot be modified through `HEADERS_MAP`.
+- **Port already bound:** If `PROXY_PORT` collides with a port the target container is already using, the fault fails to start.
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="Pod API modify response custom experiment stays Pending or never starts in Harness Chaos Engineering"
+  mode="docs"
+  fallback="Inspect the chaos pods in the experiment namespace with kubectl describe pod -n <chaos-namespace>. The most common causes are taints on the target node that the chaos pods do not tolerate, insufficient resources, or a PodSecurity admission policy blocking privileged pods. Add the required tolerations to the experiment or run in a namespace with privileged Pod Security level."
+/>
+
+<Troubleshoot
+  issue="Responses are unchanged during pod-api-modify-response-custom"
+  mode="docs"
+  fallback="The most common causes are: TRANSACTION_PERCENTAGE is 0 (default) so no calls are modified; STATUS_CODE, HEADERS_MAP, and RESPONSE_BODY are all empty (nothing to apply); filters are over-specified and match no real traffic; HTTPS_ENABLED is false but the target serves HTTPS; or the supplied TLS certificates do not chain correctly. Re-run with TRANSACTION_PERCENTAGE=100 and a known STATUS_CODE like 503 to confirm the path."
+/>
+
+<Troubleshoot
+  issue="TLS handshake fails for pod-api-modify-response-custom in Harness Chaos Engineering"
+  mode="docs"
+  fallback="Verify the secrets referenced by CA_CERTIFICATES, SERVER_CERTIFICATES, and CLIENT_CERTIFICATES exist in the chaos namespace and contain Base64-encoded key/crt pairs (ca.key/ca.crt, server.key/server.crt, client.key/client.crt). The server certificate must include the target pod's service name in its SAN list."
+/>
+
+<Troubleshoot
+  issue="Custom responses persist after pod-api-modify-response-custom ends"
+  mode="docs"
+  fallback="Automated cleanup did not complete. Restart the target pod to reset its network state. If the issue recurs, capture the chaos pod logs from the experiment namespace before the next run and share them with Harness support."
+/>
+
+---
+
+## Related faults
+
+- [Pod API block](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-api-block): Drop API calls instead of returning a custom response.
+- [Pod API latency](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-api-latency): Delay API calls.
+- [Pod API modify body](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-api-modify-body): Only overwrite the body.
+- [Pod API modify header](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-api-modify-header): Only modify headers.
+- [Pod API status code](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-api-status-code): Only change the status code.
+- [Common pod fault tunables](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults): Shared environment variables for selecting target pods and workloads.

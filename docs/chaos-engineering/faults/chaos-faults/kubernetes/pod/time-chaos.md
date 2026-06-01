@@ -1,253 +1,238 @@
 ---
 id: time-chaos
 title: Time chaos
+sidebar_label: Time Chaos
+description: Shift the wall-clock time observed by selected processes inside a target Kubernetes pod to test application behavior under clock skew, token expiry, and time-based scheduling errors.
+keywords:
+  - chaos engineering
+  - time chaos
+  - clock skew
+  - kubernetes pod fault
+tags:
+  - chaos-engineering
+  - pod-faults
+  - state-chaos
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/time-chaos
-- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/time-chaos
-- /docs/chaos-engineering/chaos-faults/kubernetes/time-chaos
+  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/time-chaos
+  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/time-chaos
+  - /docs/chaos-engineering/chaos-faults/kubernetes/time-chaos
 ---
 
-Time chaos is a Kubernetes pod-level fault that introduces controlled time offsets to disrupt the system time of the target pod.
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-![Time Chaos](./static/images/time-chaos.png)
+Time chaos is a Kubernetes pod-level chaos fault that shifts the wall-clock or monotonic time observed by selected processes inside the target container by a configurable offset for a configurable duration. The pod's own filesystem timestamps, scheduled timers, and time-based logic see the shifted time; the node's clock and other pods are unaffected. When the fault ends, the pod's time returns to the host clock.
 
-[This](https://youtu.be/9S_wnY1rLfs) video provides a step-by-step walkthrough of the execution process for the Time Chaos experiment.
+Use this fault to test how an application handles clock skew: a token that expires earlier or later than expected, a scheduler that fires at the wrong moment, a TLS certificate that appears expired (or not yet valid), or a distributed lock that misses its lease deadline.
 
-### Use cases
-Time Chaos:
-- Simulate scenarios where TLS certificates expire while the system is in operation. This allows them to assess how their applications, services, or infrastructure handle expired certificates in real-time.
-- It is used to identify potential weaknesses in the system's ability to recover and handle time-related faults, leading to improvements in fault-tolerant designs and system resilience.
--  It can be used in various simulations to mimic real-world scenarios where time synchronization or manipulation is critical.
+:::info Run your first experiment
+If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
+:::
 
-### Permissions required
+---
 
-Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+## Use cases
 
-```
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  namespace: hce
-  name: time-chaos
-spec:
-  definition:
-    scope: Cluster # Supports "Namespaced" mode too
-permissions:
-  - apiGroups: [""]
-    resources: ["pods"]
-    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
-  - apiGroups: [""]
-    resources: ["events"]
-    verbs: ["create", "get", "list", "patch", "update"]
-  - apiGroups: [""]
-    resources: ["pods/log"]
-    verbs: ["get", "list", "watch"]
-  - apiGroups: [""]
-    resources: ["deployments, statefulsets"]
-    verbs: ["get", "list"]
-  - apiGroups: [""]
-    resources: ["replicasets, daemonsets"]
-    verbs: ["get", "list"]
-  - apiGroups: [""]
-    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
-    verbs: ["create", "delete", "get", "list", "patch", "update"]
-  - apiGroups: ["batch"]
-    resources: ["jobs"]
-    verbs: ["create", "delete", "get", "list", "deletecollection"]
-```
+Run this fault when you want to answer concrete questions like:
 
-### Prerequisites
-- Kubernetes > 1.16 is required to execute this fault.
-- The application pods should be in the running state before and after injecting chaos.
+- **Token and certificate expiry:** Shift time forward by an hour with `OFFSET=3600s`. Do JWTs reject as expired, and does the application refresh them? Do TLS handshakes fail with `certificate has expired`?
+- **NTP drift simulation:** Inject a small offset (`OFFSET=30s`) to model gradual NTP drift. Does the application's clock-comparison logic (rate limits, idempotency keys, signed requests) still hold?
+- **Distributed lock and lease deadlines:** A pod that thinks it is in the past keeps holding a lease the rest of the cluster considers expired. Does the leader-election protocol resolve cleanly?
+- **Scheduled job firing:** Shift time forward past a scheduled timer. Does the in-process scheduler fire the job once it sees the new time, or does it miss the window?
+- **Cron and time-based eviction:** Move time backward (`OFFSET=-3600s`) and verify whether logic that relies on monotonically increasing timestamps copes (database write-ahead logs, monotonic counters).
 
-### Supported environments
+---
 
-<table>
-  <tr>
-    <th> Platform </th>
-    <th> Support Status </th>
-  </tr>
-  <tr>
-    <td> GKE (Google Kubernetes Engine) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> EKS (Amazon Elastic Kubernetes Service) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> AKS (Azure Kubernetes Service) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> GKE Autopilot </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> Self-managed Kubernetes </td>
-    <td> ✅ Supported </td>
-  </tr>
-</table>
+## Prerequisites
 
-### Mandatory tunables
-  <table>
-      <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> OFFSET </td>
-        <td> Offset value used to modify the system time </td>
-        <td> Default: 3600s. For more information, go to <a href="#offset-and-clock-ids">offset</a>.</td>
-      </tr>
-    </table>
+- **Kubernetes version:** 1.21 or later. Go to [What's supported](/docs/chaos-engineering/whats-supported) to confirm distribution support.
+- **Target pods are Running:** The application pods you intend to target are in the `Running` state before the fault is launched.
+- **Privileged pods allowed:** The cluster lets you schedule privileged pods in the chaos namespace. GKE Autopilot supports this fault but requires the one-time setup in [Chaos on GKE Autopilot](/docs/resilience-testing/chaos-testing/gke-autopilot); other locked-down distributions may need similar exemptions.
+- **Container runtime access:** The chaos pod can reach the container runtime socket on the target node (`/run/containerd/containerd.sock`, `/var/run/docker.sock`, or `/var/run/crio/crio.sock`).
+- **Linux kernel supports time namespaces:** Time chaos relies on Linux time namespaces (kernel 5.6 or later). Confirm with `uname -r` on the target node.
+- **Workload selector defined:** The chaos experiment knows the target workload by kind, namespace, and either names or labels.
 
-### Optional tunables
-   <table>
-      <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> TOTAL_CHAOS_DURATION </td>
-        <td> Duration for which to insert chaos (in seconds). </td>
-        <td> Default: 60 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a>.</td>
-      </tr>
-      <tr>
-        <td> NODE_LABEL </td>
-        <td> Node label used to filter the target node if <code>TARGET_NODE</code> environment variable is not set. </td>
-        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
-      </tr>
-      <tr>
-        <td> CLOCK_IDS </td>
-        <td> Comma separated clock ids of the target system clock</td>
-        <td> Default: CLOCK_REALTIME. For more information, go to <a href="#offset-and-clock-ids">offset</a>.</td>
-      </tr>
-      <tr>
-        <td> TARGET_CONTAINER </td>
-        <td> Name of the container subject to time chaos</td>
-        <td> If this value is not provided, the fault selects the first container of the target pod. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-container">target specific container</a></td>
-      </tr>
-      <tr>
-        <td> CONTAINER_RUNTIME </td>
-        <td> Container runtime interface for the cluster</td>
-        <td> Default: containerd. Supports docker, containerd and crio. For more information, go to <a href="#container-runtime-and-socket-path">container runtime </a>.</td>
-      </tr>
-      <tr>
-        <td> SOCKET_PATH </td>
-        <td> Path of the containerd or crio or docker socket file. </td>
-        <td> Defaults to <code>/run/containerd/containerd.sock</code>. For more information, go to <a href="#container-runtime-and-socket-path">socket path</a>.</td>
-      </tr>
-      <tr>
-        <td> TARGET_PODS </td>
-        <td> Comma-separated list of application pod names subject to chaos</td>
-        <td> If not provided, the fault selects target pods randomly based on provided appLabels. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods"> target specific pods</a>.</td>
-      </tr>
-      <tr>
-        <td> PODS_AFFECTED_PERC </td>
-        <td> Percentage of total pods to target. Provide numeric values. </td>
-        <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage</a>.</td>
-      </tr>
-      <tr>
-        <td> SEQUENCE </td>
-        <td> Sequence of chaos execution for multiple target pods. </td>
-        <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a>.</td>
-      </tr>
-      <tr>
-      <td> LIB_IMAGE </td>
-        <td> Image used to inject chaos. </td>
-        <td> Default: <code>harness/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
-      </tr>
-      <tr>
-        <td> RAMP_TIME </td>
-        <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a>.</td>
-      </tr>
-    </table>
+---
 
-### Offset and Clock IDs
+## Supported environments
 
-The `OFFSET` and `CLOCK_IDS` environment variables set the offset and clock ids, respectively.
+| Platform | Support status |
+| --- | --- |
+| Amazon EKS | Supported |
+| Azure AKS | Supported |
+| Google GKE | Supported |
+| Red Hat OpenShift | Supported |
+| Rancher | Supported |
+| VMware Tanzu | Supported |
+| Self-managed Kubernetes (CNCF-certified) | Supported |
+| GKE Autopilot | Supported with [Autopilot setup](/docs/resilience-testing/chaos-testing/gke-autopilot) |
+| EKS Fargate, ACI virtual nodes | Not supported (no access to container runtime sockets) |
 
-- `OFFSET`: Offset value used to modify the system time. It should match with `^(\d+)(ms|s|m|h)$` regex.
-- `CLOCK_IDS`: Comma separated clock ids of the target system clock. Refer to 'uapi/linux/time.h' for more details.
+---
 
-The following YAML snippet illustrates the use of this environment variable:
+## Permissions required
 
-[embedmd]: # "./static/manifests/time-chaos/offset-and-clock-ids.yaml yaml"
+The fault runs under the chaos infrastructure's service account.
 
-```yaml
-## provide the offset and clock ids
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: time-chaos
-      spec:
-        components:
-          env:
-            # time offset
-            - name: OFFSET
-              value: "3600s"
-            # clock ids of the target system
-            - name: CLOCK_IDS
-              value: "CLOCK_REALTIME"
-            - name: TOTAL_CHAOS_DURATION
-              VALUE: "60"
-```
+| Resource (`apiGroup`) | Verbs | Why it is needed |
+| --- | --- | --- |
+| `pods` (`""`) | `get`, `list`, `create`, `delete`, `deletecollection`, `patch`, `update` | Discover target pods and run the chaos pod on the same node |
+| `pods/log` (`""`) | `get`, `list`, `watch` | Stream chaos pod logs for status and debugging |
+| `deployments`, `statefulsets`, `replicasets`, `daemonsets` (`apps`) | `get`, `list` | Resolve the target workload to the pods it owns |
+| `events` (`""`) | `get`, `list`, `create`, `patch`, `update` | Record fault progress as Kubernetes events |
+| `jobs` (`batch`) | `get`, `list`, `create`, `delete`, `deletecollection` | Run the chaos job that drives the fault |
 
+The default Harness chaos infrastructure service account already includes these permissions.
 
-### Container runtime and socket path
+---
 
-The `CONTAINER_RUNTIME` and `SOCKET_PATH` environment variables set the container runtime and socket file path, respectively.
+## Fault tunables
 
-- `CONTAINER_RUNTIME`: It supports `docker`, `containerd`, and `crio` runtimes. The default value is `containerd`.
-- `SOCKET_PATH`: It contains path of `containerd` socket file by default(`/run/containerd/containerd.sock`). For `docker`, specify the path as `/var/run/docker.sock`. For `crio`, specify the path as `/var/run/crio/crio.sock`.
+Configure the following fault parameters when you add Time chaos to an experiment in Chaos Studio. Defaults are shown for reference.
 
-The following YAML snippet illustrates the use of this environment variable:
+**Chaos parameters**
 
-[embedmd]: # "./static/manifests/time-chaos/container-runtime-and-socket-path.yaml yaml"
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `OFFSET` | Time offset applied to the target clock. Positive values move time forward; negative values move it backward. Accepts Go duration strings such as `30s`, `1h`, `-2h`. | `3600s` |
+| `CLOCK_IDS` | Target clock(s) to shift. Common values: `CLOCK_REALTIME` (wall clock), `CLOCK_MONOTONIC` (monotonic timer). Comma-separated to shift multiple clocks. | `CLOCK_REALTIME` |
+| `TOTAL_CHAOS_DURATION` | Duration of the fault in seconds. | `60` |
 
-```yaml
-## provide the container runtime and socket file path
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: time-chaos
-      spec:
-        components:
-          env:
-            # time offset
-            - name: OFFSET
-              value: "3600s"
-            # runtime for the container
-            # supports docker, containerd, crio
-            - name: CONTAINER_RUNTIME
-              value: "containerd"
-            # path of the socket file
-            - name: SOCKET_PATH
-              value: "/run/containerd/containerd.sock"
-            - name: TOTAL_CHAOS_DURATION
-              VALUE: "60"
-```
+**Targeting**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `TARGET_PODS` | Comma-separated list of pod names to target. Empty selects from the workload's pods using `POD_AFFECTED_PERCENTAGE`. | `""` |
+| `TARGET_CONTAINER` | Container in the pod whose processes' clock to shift. Empty targets the first container in the pod spec. | `""` |
+| `NODE_LABEL` | Label selector to filter target pods by the node they run on. Empty disables node-based filtering. | `""` |
+| `POD_AFFECTED_PERCENTAGE` | Percentage of the workload's pods to target. `0` means one pod. | `0` |
+| `SEQUENCE` | When multiple pods are targeted, inject `parallel` (all at once) or `serial` (one after another). | `parallel` |
+
+**Runtime and helper**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `CONTAINER_RUNTIME` | Container runtime on the target nodes. One of `containerd`, `docker`, `crio`. | `containerd` |
+| `SOCKET_PATH` | Path to the container runtime socket on the target node. Set to match `CONTAINER_RUNTIME`. | `/run/containerd/containerd.sock` |
+| `RAMP_TIME` | Wait period in seconds before and after the fault. Go to [ramp time](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time) to read how it is applied. | `0` |
+
+Tunables that apply to every chaos fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
+
+:::tip Pick the right clock for the test
+`CLOCK_REALTIME` affects wall-clock readings (logs, timestamps, token `exp` claims, certificate validity). `CLOCK_MONOTONIC` affects timeouts and elapsed-time calculations. Many libraries use one and not the other; match the clock to the code path you intend to break.
+:::
+
+### Configure for your container runtime
+
+Set `CONTAINER_RUNTIME` and `SOCKET_PATH` to match the runtime on the target node:
+
+| `CONTAINER_RUNTIME` | `SOCKET_PATH` |
+| --- | --- |
+| `containerd` (default) | `/run/containerd/containerd.sock` |
+| `docker` | `/var/run/docker.sock` |
+| `crio` | `/var/run/crio/crio.sock` |
+
+---
+
+## Fault execution in brief
+
+Shifts the time observed by processes in the target container by `OFFSET` on the clocks listed in `CLOCK_IDS`, so the application's reads of `time(2)`, `clock_gettime(2)`, and equivalent return values shifted by the configured amount, while the host clock and other pods are unaffected.
+
+---
+
+## Expected behavior during fault execution
+
+- Processes running in the target container observe time shifted by `OFFSET`. New timestamps written to logs, set on files, or embedded in API responses reflect the shifted clock.
+- Outside the container, the node's clock and other pods are not affected. Kubernetes control plane components (kubelet, API server) still see the real time.
+- Applications that compare their clock to external timestamps (TLS certificate validity, JWT `exp` claims, OAuth tokens, distributed-lock leases) behave according to the offset: a forward shift makes things appear to have expired; a backward shift makes them appear not yet valid.
+- Code that calls `gettimeofday`/`time` repeatedly continues to see consistent (shifted) time. Code that uses `CLOCK_MONOTONIC` for elapsed-time measurement is only affected if you include it in `CLOCK_IDS`.
+- File modification timestamps for new writes inside the container reflect the shifted time. `ls -l` shows future or past dates accordingly.
+
+:::info When the fault ends
+After `TOTAL_CHAOS_DURATION`, the time offset is removed and processes in the container see the host clock again within seconds. File timestamps already written with shifted time remain as written.
+:::
+
+### Signals to watch
+
+Attach [resilience probes](/docs/resilience-testing/chaos-testing/probes) to assert each layer:
+
+- **TLS handshake failures:** Use a [Prometheus probe](/docs/resilience-testing/chaos-testing/probes/apm-probes) on the application's TLS-error counter when shifting forward past a certificate's `notAfter`.
+- **Token refresh rate:** Use a Prometheus probe on token-refresh counters to verify the application reissues credentials after the shifted time crosses `exp`.
+- **Caller errors:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) on the calling service to detect `401`/`403` from token or signature validation failures.
+
+---
+
+## Verify the fault execution effect
+
+While the experiment is running, confirm the time shift inside the pod:
+
+1. **Read the current time from inside the container.**
+
+   ```bash
+   kubectl exec -n <namespace> <target-pod> -c <TARGET_CONTAINER> -- date
+   ```
+
+   The reported time should differ from the host's time by approximately `OFFSET`.
+
+2. **Compare against the host clock.**
+
+   ```bash
+   kubectl debug node/<node-name> -it --image=busybox -- date
+   ```
+
+   The node's `date` is unaffected by the fault. The delta between this and the pod's `date` confirms the offset.
+
+---
+
+## Recovery and cleanup
+
+- **End of duration:** The time offset is removed automatically and the container's processes see the host clock.
+- **Abort the experiment:** Stopping the experiment from Chaos Studio triggers the same cleanup path.
+- **Failed cleanup:** If automated cleanup did not complete, restart the target pod to detach from the modified time namespace.
+
+---
+
+## Limitations
+
+- **Serverless Kubernetes (EKS Fargate, ACI virtual nodes):** These platforms do not expose container runtime sockets and reject the privileged access the fault needs. GKE Autopilot is supported once the one-time setup in [Chaos on GKE Autopilot](/docs/resilience-testing/chaos-testing/gke-autopilot) is in place.
+- **Windows containers:** This fault is supported on Linux pods only.
+- **Linux kernel version:** Time namespaces require kernel 5.6 or later. On older kernels the fault fails to apply.
+- **Already-established TLS connections:** Connections that completed handshake before the fault began are not re-validated against the shifted time. The fault changes how new handshakes are evaluated.
+- **External time sources:** Code that fetches time from an external NTP-like service (rather than the local clock) bypasses the fault.
+- **File timestamps persist:** Files written with shifted timestamps keep those timestamps after the fault ends. If your application depends on monotonically increasing file timestamps, plan recovery accordingly.
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="Time chaos experiment stays Pending or never starts in Harness Chaos Engineering"
+  mode="docs"
+  fallback="Inspect the chaos pods in the experiment namespace with kubectl describe pod -n <chaos-namespace>. The most common causes are taints on the target node that the chaos pods do not tolerate, insufficient resources, or a PodSecurity admission policy blocking privileged pods. Add the required tolerations to the experiment or run in a namespace with privileged Pod Security level."
+/>
+
+<Troubleshoot
+  issue="Time offset does not apply during time-chaos"
+  mode="docs"
+  fallback="The most common causes are: the target node's Linux kernel is older than 5.6 and does not support time namespaces (check with uname -r); CLOCK_IDS does not include the clock the application actually uses (try CLOCK_REALTIME,CLOCK_MONOTONIC); or the application reads time from an external source (NTP, HTTP date header) rather than the local clock. Run date inside the target container during the fault and compare against the node's date to confirm whether the shift is in place."
+/>
+
+<Troubleshoot
+  issue="Connection to container runtime fails for time-chaos in Harness Chaos Engineering"
+  mode="docs"
+  fallback="The default SOCKET_PATH is /run/containerd/containerd.sock. For Docker, set CONTAINER_RUNTIME=docker and SOCKET_PATH=/var/run/docker.sock. For CRI-O, set CONTAINER_RUNTIME=crio and SOCKET_PATH=/var/run/crio/crio.sock."
+/>
+
+<Troubleshoot
+  issue="Time stays shifted after time-chaos ends"
+  mode="docs"
+  fallback="Automated cleanup did not complete. Restart the target pod to detach from the modified time namespace. File timestamps written with shifted time during the fault remain as written; that is expected. If the runtime continues to show shifted time, capture the chaos pod logs from the experiment namespace before the next run and share them with Harness support."
+/>
+
+---
+
+## Related faults
+
+- [Pod delete](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-delete): Test how the application recovers from sudden pod restarts.
+- [Pod CPU hog](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-cpu-hog): Stress CPU instead of time.
+- [Pod network latency](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-network-latency): Add network delay; useful in combination with time chaos for testing distributed timeouts.
+- [Common pod fault tunables](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults): Shared environment variables for selecting target pods and workloads.
