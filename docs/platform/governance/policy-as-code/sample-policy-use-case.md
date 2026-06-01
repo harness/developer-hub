@@ -1,25 +1,17 @@
 ---
 title: Policy samples
-description: See sample policies and when to use them.
+description: Learn about sample policies and their use cases in the Harness Policy Library.
 sidebar_position: 90
 canonical_url: https://www.harness.io/blog/feature-flags-best-practices
 ---
 
-Harness provides governance using Open Policy Agent (OPA), policy management, and Rego policies.
-You can enforce policies in the following ways:
+Harness supports policy enforcement through Open Policy Agent (OPA) and Rego. You can apply policies in two ways:
 
-* **Enforce policies at a scope:** Create a policy and apply it to all pipelines in your account, organization, and project.
+* **By scope:** Apply a policy across all pipelines in an account, organization, or project. See [Harness Policy As Code quickstart](/docs/platform/governance/policy-as-code/harness-governance-quickstart).
 
-  Policy evaluation occurs on pipeline-level events like **On Run** and **On Save**.
-For more information, go to [Harness Policy As Code quickstart](/docs/platform/governance/policy-as-code/harness-governance-quickstart).
+* **By stage:** Add a policy step to a pipeline with a policy set and JSON payload to evaluate. Policies run when the pipeline reaches that step, allowing evaluation of resolved expressions and runtime data. See [Add a policy step to a pipeline](/docs/platform/governance/policy-as-code/add-a-governance-policy-step-to-a-pipeline).
 
-* **Enforce policies at any stage:** Create a policy step and include a policy set and JSON payload to evaluate.
-
-  When the pipeline reaches the policy step, policy evaluation occurs. Data such as resolved expressions can be evaluated when the pipeline runs.
-
-For information about how to add a policy step to a stage, go to [Add a policy step to a pipeline](/docs/platform/governance/policy-as-code/add-a-governance-policy-step-to-a-pipeline).
-
-This topic provides sample policies you can use in policy steps and on pipeline-level events like **On Run** and **On Save**.
+This topic provides sample policies you can use in policy steps and pipeline-level events such as **On Run** and **On Save**.
 
 <!-- https://ecotrust-canada.github.io/markdown-toc/ -->
 
@@ -38,18 +30,26 @@ This topic provides sample policies you can use in policy steps and on pipeline-
 		- [Enforce remote pipeline execution from the default branch only if the user is not part of a specific user group](#enforce-remote-pipeline-execution-from-the-default-branch-only-if-the-user-is-not-part-of-a-specific-user-group)
 		- [Restrict certain commands from Inline ShellScript or Run Steps](#restrict-certain-commands-from-inline-shellscript-or-run-steps)
 	- [Feature Flag policies](#feature-flag-policies)
-		- [Prevent feature flags from being enabled in a production environment that are not configured in a stage environment](#prevent-feature-flags-from-being-enabled-in-a-production-environment-that-are-not-configured-in-a-stage-environment)
-		- [Enforce the flag types that are configured for Feature Flags](#enforce-the-flag-types-that-are-configured-for-feature-flags)
-		- [Deny the creation of Feature Flags that serve true by default](#deny-the-creation-of-feature-flags-that-serve-true-by-default)
-		- [Users want to enforce naming conventions for their Feature flags](#users-want-to-enforce-naming-conventions-for-their-feature-flags)
+		- [Enforce flag naming conventions](#enforce-flag-naming-conventions)
+		- [Enforce allowed flag types](#enforce-allowed-flag-types)
+		- [Enforce default flag values](#enforce-default-flag-values)
+		- [Enforce flag environment states](#enforce-flag-environment-states)
+		- [Enforce flag rules](#enforce-flag-rules)
+		- [Enforce service change windows](#enforce-service-change-windows)
 	- [FME Feature Flag policies](#fme-feature-flag-policies)
-		- [Require a description when creating or updating a feature flag](#require-a-description-when-creating-or-updating-a-feature-flag)
-		- [Prevent saving active feature flags without a defined owner](#prevent-saving-active-feature-flags-without-a-defined-owner)
-		- [Enforce naming conventions for FME feature flags](#enforce-naming-conventions-for-fme-feature-flags)
-		- [Prevent archiving a feature flag with recent traffic](#prevent-archiving-a-feature-flag-with-recent-traffic)
+		- [Enforce FME flag naming conventions](#enforce-fme-flag-naming-conventions)
+		- [Enforce required tags](#enforce-required-tags)
+	    - [Require team ownership](#require-team-ownership)
 	- [FME Feature Flag Definition policies](#fme-feature-flag-definition-policies)
-		- [Require default treatment to be off](#require-default-treatment-to-be-off)
-		- [Require flag sets for production definitions](#require-flag-sets-for-production-definitions)
+		- [Enforce flag definition validation rules](#enforce-flag-definition-validation-rules)
+	- [FME Environment policies](#fme-environment-policies)
+	    - [Enforce environment naming conventions](#enforce-environment-naming-conventions)
+		- [Require approvals for production environments](#require-approvals-for-production-environments)
+	- [FME Segment policies](#fme-segment-policies)
+		- [Enforce segment naming conventions](#enforce-segment-naming-conventions)
+	- [FME Segment Definition policies](#fme-segment-definition-policies)
+		- [Enforce segment definition validation rules](#enforce-segment-definition-validation-rules)
+		- [Exclude high-priority users from rule-based segments](#exclude-high-priority-users-from-rule-based-segments)
 	- [Template policy samples](#template-policy-samples)
 		- [Enforce the use of stable templates in a pipeline](#enforce-the-use-of-stable-templates-in-a-pipeline)
 		- [Enforce an Approval step in a stage template](#enforce-an-approval-step-in-a-stage-template)
@@ -412,83 +412,18 @@ deny[msg] {
 
 ### Feature Flag policies
 
-* [Prevent feature flags from being enabled in a production environment that are not configured in a stage environment](#prevent-feature-flags-from-being-enabled-in-a-production-environment-that-are-not-configured-in-a-stage-environment)
-* [Enforce the flag types that are configured for Feature Flags](#enforce-the-flag-types-that-are-configured-for-feature-flags)
-* [Deny the creation of Feature Flags that serve true by default](#deny-the-creation-of-feature-flags-that-serve-true-by-default)
-* [Users want to enforce naming conventions for their Feature flags](#users-want-to-enforce-naming-conventions-for-their-feature-flags)
+* [Enforce flag naming conventions](#enforce-flag-naming-conventions)
+* [Enforce allowed flag types](#enforce-allowed-flag-types)
+* [Enforce default flag values](#enforce-default-flag-values)
+* [Enforce flag environment states](#enforce-flag-environment-states)
+* [Enforce flag rules](#enforce-flag-rules)
+* [Enforce service change windows](#enforce-service-change-windows)
 
-#### Prevent feature flags from being enabled in a production environment that are not configured in a stage environment
+#### Enforce flag naming conventions
 
-Enforce a policy on Feature Flags to ensure the configuration of the flag is properly governed by the end user.
+Ensure flag names match your organization's naming conventions. Apply this policy using the **On Save** event for a feature flag.
 
-Here is a sample policy to do this:
-
-```json
-package feature_flags
-
-# Deny flags that are enabled in "production" but not in "stage"
-# NOTE: Try changing the "production" stage to be on to see the policy fail
-deny[msg] {
-	# Match flags where the "production" environment is on ...
-	prod := input.flag.envProperties[_]
-	prod.environment == "production"
-	prod.state == "on"
-
-	# ... and the "stage" environment is off
-	stage := input.flag.envProperties[_]
-	stage.environment == "stage"
-	stage.state == "off"
-
-	# Show a human-friendly error message
-	msg := sprintf(`Flag '%s' cannot be enabled in "production" because it is disabled in "stage"`, [input.flag.name])
-}
-```
-
-####  Enforce the flag types that are configured for Feature Flags
-
-Enforce policies to configure Feature Flags with a boolean value.
-Here is a sample policy to do this, which can be applied using the **On Creation** events for a Feature Flag:
-
-```json
-package feature_flags
-
-# Deny flags that aren't "boolean"
-# NOTE: Try adding changing the flag 'kind' to see the policy fail
-deny[msg] {
-	input.flag.kind != "boolean"
-	msg := sprintf(`Flag '%s' isn't of type "boolean"`, [input.flag.name])
-}
-```
-
-#### Deny the creation of Feature Flags that serve true by default
-
-Enforce policies to prevent users from configuring flags and serving true to all the end users of the flag. It allows for a safer rollout of the flag.
-Here is a sample policy to do this, which can be applied on feature flag configuration:
-
-```json
-package feature_flags
-
-# Deny flags that serve true by default when turned off to prevent accidentally enabling the flag
-# NOTE: Try setting the 'defaultOnVariation' to true to see the policy fail
-deny[msg] {
-	input.flag.defaultOnVariation != "false"
-	msg := sprintf("Flag '%s' does not have default 'on' value of false", [input.flag.name])
-}
-
-# Deny flags that serve true by default when turned on to prevent accidentally enabling the flag
-# NOTE: Try setting the 'defaultOffVariation' to true to see the policy fail
-deny[msg] {
-	input.flag.defaultOffVariation != "false"
-	msg := sprintf("Flag '%s' does not have default 'off' value of false", [input.flag.name])
-}
-```
-
-#### Users want to enforce naming conventions for their Feature flags
-
-Establish policies to ensure no one falls outside the proper naming convention for internal flags when naming Feature Flags.
-Here is a sample policy to do this, which can be applied using the **On Save** event for the Feature Flag:
-
-```json
+```rego title="Ensure that flag names match naming conventions"
 package feature_flags
 
 # Deny flags whose names do not contain a validly formatted Jira ticket number
@@ -500,166 +435,427 @@ deny[msg] {
 }
 ```
 
+#### Enforce allowed flag types
+
+Ensure only boolean flags can be created. Apply this policy using the **On Creation** event for a feature flag.
+
+```rego title="Ensure that only boolean flags can be created"
+package feature_flags
+
+# Deny flags that aren't "boolean"
+# NOTE: Try changing the flag 'kind' to see the policy fail
+deny[msg] {
+	input.flag.kind != "boolean"
+	msg := sprintf(`Flag '%s' isn't of type "boolean"`, [input.flag.name])
+}
+```
+
+#### Enforce default flag values
+
+Ensure flags have default on and off values of `false` to prevent accidentally enabling a flag for all users.
+
+```rego title="Ensure that flags have default on and off values of false"
+package feature_flags
+
+# Deny flags that serve true by default when turned off
+# NOTE: Try setting 'defaultOnVariation' to true to see the policy fail
+deny[msg] {
+	input.flag.defaultOnVariation != "false"
+	msg := sprintf("Flag '%s' does not have default 'on' value of false", [input.flag.name])
+}
+
+# Deny flags that serve true by default when turned on
+# NOTE: Try setting 'defaultOffVariation' to true to see the policy fail
+deny[msg] {
+	input.flag.defaultOffVariation != "false"
+	msg := sprintf("Flag '%s' does not have default 'off' value of false", [input.flag.name])
+}
+```
+
+#### Enforce flag environment states
+
+Ensure flags are enabled in a lower environment before they can be enabled in a higher one.
+
+```rego title="Ensure flags are enabled in one environment before they are enabled in another"
+package feature_flags
+
+# Deny flags that are enabled in "production" but not in "stage"
+# NOTE: Try changing the "production" state to "on" to see the policy fail
+deny[msg] {
+	# Match flags where the "production" environment is on ...
+	prod := input.flag.envProperties[_]
+	prod.environment == "production"
+	prod.state == "on"
+
+	# ... and the "stage" environment is off
+	stage := input.flag.envProperties[_]
+	stage.environment == "stage"
+	stage.state == "off"
+
+	msg := sprintf(`Flag '%s' cannot be enabled in "production" because it is disabled in "stage"`, [input.flag.name])
+}
+```
+
+#### Enforce flag rules
+
+Control how flag targeting rules can be configured, including limits on target rules and prerequisites.
+
+```rego title="Enforce how flag rules can be used"
+package feature_flags
+
+# Deny flags that have too many target rules
+# NOTE: Try adding target rules to the input to see the policy fail
+deny[msg] {
+	env = input.flag.envProperties[_]
+	count(env.variationMap[_].targets) > "2"
+	msg := sprintf("Flag '%s' has more than 2 target rules", [input.flag.name])
+}
+
+# Deny flags that have prerequisite rules
+# NOTE: Try adding prerequisite rules to the input to see the policy fail
+deny[msg] {
+	count(input.flag.prerequisites) > 0
+	msg := sprintf("Flag '%s' has a prerequisite rule configured", [input.flag.name])
+}
+```
+
+#### Enforce service change windows
+
+Ensure flags linked to regulated services can only be modified during an allowed maintenance window.
+
+```rego title="Ensure flags linked to a regulated service can only be changed during allowed times"
+package feature_flags
+
+# Only allow changes to flags linked to regulated services on a Saturday (maintenance window)
+# NOTE: Try setting metadata.timestamp to "1661507619" (a Friday) to see the policy fail
+deny[msg] {
+	services := input.flag.services[_]
+	regulated_services[_] = services.identifier
+	changeDay := time.weekday(input.metadata.timestamp*1000000000)
+	changeDay != "Saturday"
+	msg := sprintf(`Changes to regulated services are only allowed on a "Saturday", got %s`, [changeDay])
+}
+
+regulated_services = ["regulated_svc_1","regulated_svc_2"]
+```
+
 ### FME Feature Flag policies
 
-* [Require a description when creating or updating a feature flag](#require-a-description-when-creating-or-updating-a-feature-flag)
-* [Prevent saving active feature flags without a defined owner](#prevent-saving-active-feature-flags-without-a-defined-owner)
-* [Enforce naming conventions for FME feature flags](#enforce-naming-conventions-for-fme-feature-flags)
-* [Prevent archiving a feature flag with recent traffic](#prevent-archiving-a-feature-flag-with-recent-traffic)
+* [Enforce FME flag naming conventions](#enforce-fme-flag-naming-conventions)
+* [Enforce required tags](#enforce-required-tags)
+* [Require team ownership](#require-team-ownership)
 
-#### Require a description when creating or updating a feature flag
+#### Enforce FME flag naming conventions
 
-Ensure that every feature flag in Harness FME includes a meaningful description so teams understand the purpose and impact of the flag.
+Ensure feature flag names follow your organization's naming convention. For example, names must start with `ff_` and contain only lowercase letters, numbers, and underscores, between 5 and 100 characters long.
 
-This policy denies creating or updating a feature flag if the description is missing or empty. It skips validation on delete so that flags with missing descriptions can still be cleaned up.
-
-```rego
+```rego title="Ensure that FME feature flag names follow organizational naming conventions"
 package fme_feature_flags
 
-# Deny creating or updating a feature flag if no description field is present
-# NOTE: Try removing the description to see the policy fail
+# Deny flags whose names don't follow naming conventions
+# e.g. "ff_user_authentication_v2" is allowed but "FF_User_Auth" or "user_auth" is not
 deny[msg] {
-  input.entityMetadata.changeTrigger != "delete"
-  not input.featureFlag.description
-  msg := sprintf(
-    "Feature flag '%s' must include a description before it can be saved",
-    [input.featureFlag.name]
-  )
+	not regex.match("^ff_[a-z]+[a-z0-9_]*$", input.featureFlag.name)
+	msg := sprintf("FME feature flag name '%s' must start with 'ff_' and contain only lowercase letters, numbers, and underscores", [input.featureFlag.name])
 }
 
-# Deny creating or updating a feature flag if the description is an empty string
-# NOTE: Try setting the description to an empty value ("") to see the policy fail
+# Deny flags with names that are too short
 deny[msg] {
-  input.entityMetadata.changeTrigger != "delete"
-  input.featureFlag.description == ""
-  msg := sprintf(
-    "Feature flag '%s' must include a non-empty description",
-    [input.featureFlag.name]
-  )
+	count(input.featureFlag.name) < 5
+	msg := sprintf("FME feature flag name '%s' is too short (minimum 5 characters)", [input.featureFlag.name])
+}
+
+# Deny flags with names that are too long
+deny[msg] {
+	count(input.featureFlag.name) > 100
+	msg := sprintf("FME feature flag name '%s' is too long (maximum 100 characters)", [input.featureFlag.name])
 }
 ```
 
-#### Prevent saving active feature flags without a defined owner
+#### Enforce required tags
 
-Require active feature flags to have an owner assigned, ensuring team accountability and easier follow-up.
+Ensure every feature flag has the required tags for categorization and tracking: `owner`, `team`, `service`, and `component`.
 
-```rego
+```rego title="Ensure that FME feature flags have required tags for categorization and tracking"
 package fme_feature_flags
 
-# Deny saving an active feature flag when no owner is defined
-# NOTE: Try removing all owners to see the policy fail
+# Deny flags without any tags
 deny[msg] {
-  input.featureFlag.status == "ACTIVE"
-  count(input.entityMetadata.owners) == 0
-  msg := sprintf(
-    "Feature flag '%s' cannot be active without an assigned owner",
-    [input.featureFlag.name]
-  )
+	count(input.featureFlag.tags) == 0
+	msg := sprintf("FME feature flag '%s' must have at least one tag", [input.featureFlag.name])
+}
+
+# Deny flags missing an 'owner' tag
+deny[msg] {
+	not contains_required_tag("owner")
+	msg := sprintf("FME feature flag '%s' must have an 'owner' tag", [input.featureFlag.name])
+}
+
+# Deny flags missing a 'team' tag
+deny[msg] {
+	not contains_required_tag("team")
+	msg := sprintf("FME feature flag '%s' must have a 'team' tag", [input.featureFlag.name])
+}
+
+# Deny flags missing a 'service' tag
+deny[msg] {
+	not contains_required_tag("service")
+	msg := sprintf("FME feature flag '%s' must have a 'service' tag", [input.featureFlag.name])
+}
+
+# Deny flags missing a 'component' tag
+deny[msg] {
+	not contains_required_tag("component")
+	msg := sprintf("FME feature flag '%s' must have a 'component' tag", [input.featureFlag.name])
+}
+
+# Helper: check if a required tag exists
+contains_required_tag(tag_name) {
+	some i
+	contains(input.featureFlag.tags[i], tag_name)
+}
+
+# Warn if no description is set
+warn[msg] {
+	input.featureFlag.description == ""
+	msg := sprintf("FME feature flag '%s' should have a description for better documentation", [input.featureFlag.name])
 }
 ```
 
-#### Enforce naming conventions for FME feature flags
+#### Require team ownership
 
-Ensure feature flag names follow an organizational naming convention at creation time, for example, including a Jira ticket reference. This policy only runs on `create` so that existing flags with non-conforming names can still be updated or deleted.
+Ensure every feature flag has at least one owner, and that all owners are teams rather than individual users.
 
-This policy enforces a pattern like `FME-1234-feature-name`.
-
-```rego
+```rego title="Ensure that FME feature flags have at least one owner and all owners are teams, not individual users"
 package fme_feature_flags
 
-# Deny feature flags whose names do not follow the required Jira-based format
-# Only enforced on creation so existing flags can still be updated or deleted
-# Example: "FME-1234-new-checkout-flow" is allowed, "test-flag" is not
-# NOTE: Try renaming the flag to "TestFlag" to see the policy fail
+# Deny flags with no owners
 deny[msg] {
-  input.entityMetadata.changeTrigger == "create"
-  not regex.match("^FME-[0-9]+-.*", input.featureFlag.name)
-  msg := sprintf(
-    "Feature flag name '%s' must start with a valid Jira ticket (for example, FME-1234-*)",
-    [input.featureFlag.name]
-  )
+	count(input.entityMetadata.owners) == 0
+	msg := sprintf("FME feature flag '%s' must have at least one owner", [input.featureFlag.name])
 }
-```
 
-#### Prevent archiving a feature flag with recent traffic
-
-Prevent archiving a feature flag that has received traffic within the last 24 hours. This ensures teams don't accidentally retire flags that are still actively evaluated in production.
-
-This policy only runs on the `archive` change trigger and uses OPA's built-in time functions to compare the flag's `lastTrafficDate` against the current time.
-
-```rego
-package fme_feature_flags
-
-# Deny archiving a feature flag that received traffic in the last 24 hours
-# NOTE: Try setting lastTrafficDate to today's date to see the policy fail
+# Deny flags owned by individual users
 deny[msg] {
-  input.entityMetadata.changeTrigger == "archive"
-  last_traffic_ns := time.parse_rfc3339_ns(input.featureFlag.lastTrafficDate)
-  now_ns := time.now_ns()
-  one_day_ns := 24 * 60 * 60 * 1000000000
-  now_ns - last_traffic_ns < one_day_ns
-  msg := sprintf(
-    "Feature flag '%s' cannot be archived because it received traffic within the last 24 hours (last traffic: %s)",
-    [input.featureFlag.name, input.featureFlag.lastTrafficDate]
-  )
+	some i
+	owner := input.entityMetadata.owners[i]
+	owner.ownerType == "user"
+	owner_name := object.get(owner, "ownerName", owner.ownerId)
+	msg := sprintf("FME feature flag '%s' has an individual user owner '%s'. Owners must be teams, not individual users", [input.featureFlag.name, owner_name])
 }
 ```
 
 ### FME Feature Flag Definition policies
 
-* [Require default treatment to be off](#require-default-treatment-to-be-off)
-* [Require flag sets for production definitions](#require-flag-sets-for-production-definitions)
+* [Enforce flag definition validation rules](#enforce-flag-definition-validation-rules)
 
-#### Require default treatment to be off
+#### Enforce flag definition validation rules
 
-Ensure that the default treatment for any feature flag definition is set to `off` when creating or updating. This prevents new or modified flags from accidentally serving an active treatment before the rollout is intentionally configured. This policy skips validation on delete.
+Ensure every feature flag definition has at least two treatments (`on` and `off`), that each treatment has a non-empty description, and that the default treatment is always `off`.
 
-```rego
+```rego title="Ensure FME feature flag definitions have at least 2 treatments (ON & OFF), each with descriptions, and default is always OFF"
 package fme_feature_flag_definitions
 
-# Deny creating or updating a definition where the default treatment is not "off"
-# NOTE: Try setting a different treatment as the default to see the policy fail
+# Deny definitions without at least 2 treatments
 deny[msg] {
-  input.entityMetadata.changeTrigger != "delete"
-  some i
-  input.featureFlagDefinition.treatments[i].defaultTreatment == true
-  input.featureFlagDefinition.treatments[i].name != "off"
-  msg := sprintf(
-    "Feature flag '%s' in '%s' must have 'off' as the default treatment",
-    [input.featureFlagDefinition.name, input.featureFlagDefinition.environmentName]
-  )
+	count(input.featureFlagDefinition.treatments) < 2
+	msg := sprintf("FME feature flag definition '%s' must have at least 2 treatments", [input.featureFlagDefinition.name])
+}
+
+# Deny definitions missing an 'on' treatment
+deny[msg] {
+	not has_treatment("on")
+	msg := sprintf("FME feature flag definition '%s' must have an 'on' treatment", [input.featureFlagDefinition.name])
+}
+
+# Deny definitions missing an 'off' treatment
+deny[msg] {
+	not has_treatment("off")
+	msg := sprintf("FME feature flag definition '%s' must have an 'off' treatment", [input.featureFlagDefinition.name])
+}
+
+# Helper: check if a treatment exists
+has_treatment(treatment_name) {
+	some i
+	input.featureFlagDefinition.treatments[i].name == treatment_name
+}
+
+# Deny treatments with an empty or missing description
+deny[msg] {
+	some i
+	treatment := input.featureFlagDefinition.treatments[i]
+	description := object.get(treatment, "description", "")
+	description == ""
+	msg := sprintf("FME feature flag definition '%s' treatment '%s' must have a non-empty description", [input.featureFlagDefinition.name, treatment.name])
+}
+
+# Deny definitions where the default treatment is not 'off'
+deny[msg] {
+	some i
+	treatment := input.featureFlagDefinition.treatments[i]
+	treatment.defaultTreatment == true
+	treatment.name != "off"
+	msg := sprintf("FME feature flag definition '%s' must have 'off' as the default treatment, but '%s' is set as default", [input.featureFlagDefinition.name, treatment.name])
 }
 ```
 
-#### Require flag sets for production definitions
+### FME Environment policies
 
-Ensure that every feature flag definition saved in a production environment belongs to at least one flag set. Flag sets help organize flags and control which SDKs receive specific definitions, making them essential for production governance.
+* [Enforce environment naming conventions](#enforce-environment-naming-conventions)
+* [Require approvals for production environments](#require-approvals-for-production-environments)
 
-```rego
-package fme_feature_flag_definitions
+#### Enforce environment naming conventions
 
-# Deny saving a definition in production without at least one flag set
-# NOTE: Try removing all flag sets to see the policy fail
+Ensure environment names start with a lowercase letter and contain only lowercase letters, numbers, and underscores, between 3 and 100 characters long.
+
+```rego title="Ensure that FME environment names follow organizational naming conventions"
+package fme_environments
+
+# Deny environments whose names don't follow naming conventions
 deny[msg] {
-  input.featureFlagDefinition.environmentName == "Production"
-  count(input.featureFlagDefinition.flagSets) == 0
-  msg := sprintf(
-    "Feature flag '%s' in Production must belong to at least one flag set",
-    [input.featureFlagDefinition.name]
-  )
+	not regex.match("^[a-z][a-z0-9_]*$", input.fmeEnvironment.name)
+	msg := sprintf("FME environment name '%s' must start with a lowercase letter and contain only lowercase letters, numbers, and underscores", [input.fmeEnvironment.name])
+}
+
+# Deny environments with names that are too short
+deny[msg] {
+	count(input.fmeEnvironment.name) < 3
+	msg := sprintf("FME environment name '%s' is too short (minimum 3 characters)", [input.fmeEnvironment.name])
+}
+
+# Deny environments with names that are too long
+deny[msg] {
+	count(input.fmeEnvironment.name) > 100
+	msg := sprintf("FME environment name '%s' is too long (maximum 100 characters)", [input.fmeEnvironment.name])
+}
+```
+
+#### Require approvals for production environments
+
+Ensure production environments have approvals enabled and at least one approver configured.
+
+```rego title="Ensure that production environments have approvals required and at least one approver configured"
+package fme_environments
+
+# Deny production environments that don't require approvals
+deny[msg] {
+	input.fmeEnvironment.environmentType == "production"
+	not input.fmeEnvironment.changeSettings.areApprovalsRequired
+	msg := sprintf("FME production environment '%s' must have approvals required", [input.fmeEnvironment.name])
+}
+
+# Deny production environments with no approvers configured
+deny[msg] {
+	input.fmeEnvironment.environmentType == "production"
+	count(object.get(input.fmeEnvironment.changeSettings, "approvers", [])) == 0
+	msg := sprintf("FME production environment '%s' must have at least one approver configured", [input.fmeEnvironment.name])
+}
+```
+
+### FME Segment policies
+
+* [Enforce segment naming conventions](#enforce-segment-naming-conventions)
+
+#### Enforce segment naming conventions
+
+Ensure segment names start with a lowercase letter and contain only lowercase letters, numbers, and underscores, between 3 and 100 characters long.
+
+```rego title="Ensure that FME segment names follow organizational naming conventions"
+package fme_segments
+
+# Deny segments whose names do not follow naming conventions
+# Names must start with lowercase letter and contain only lowercase letters, numbers, and underscores
+deny[msg] {
+    not regex.match("^[a-z][a-z0-9_]*$", input.fmeSegment.name)
+    msg := sprintf("FME Segment name '%s' must start with a lowercase letter and contain only lowercase letters, numbers, and underscores", [input.fmeSegment.name])
+}
+
+# Deny segments with names that are too short
+deny[msg] {
+    count(input.fmeSegment.name) < 3
+    msg := sprintf("FME Segment name '%s' is too short (minimum 3 characters)", [input.fmeSegment.name])
+}
+
+# Deny segments with names that are too long
+deny[msg] {
+    count(input.fmeSegment.name) > 100
+    msg := sprintf("FME Segment name '%s' is too long (maximum 100 characters)", [input.fmeSegment.name])
+}
+```
+
+### FME Segment Definition policies
+
+* [Enforce segment definition validation rules](#enforce-segment-definition-validation-rules)
+* [Exclude high-priority users from rule-based segments](#exclude-high-priority-users-from-rule-based-segments)
+
+#### Enforce segment definition validation rules
+
+Ensure segment definitions meet organizational requirements across standard, rule-based, and large segment types. Rule-based segments must have at least one rule with at least one matcher, all definitions must be active, and large segments warn when no keys are uploaded.
+
+```rego title="Ensure that FME segment definitions meet organizational requirements across standard, rule-based, and large segment types"
+package fme_segment_definitions
+
+# Deny rule-based definitions with no rules
+deny[msg] {
+	input.fmeSegmentDefinition.segmentType == "rule_based_segment"
+	count(object.get(input.fmeSegmentDefinition, "definition", [])) == 0
+	msg := sprintf("FME rule-based segment definition '%s' in environment '%s' must have at least one rule", [input.fmeSegmentDefinition.name, input.fmeSegmentDefinition.environment.name])
+}
+
+# Deny rule-based definitions where a rule has no matchers
+deny[msg] {
+	input.fmeSegmentDefinition.segmentType == "rule_based_segment"
+	some i
+	rule := input.fmeSegmentDefinition.definition[i]
+	count(object.get(rule.condition, "matchers", [])) == 0
+	msg := sprintf("FME rule-based segment definition '%s' rule %d must have at least one matcher", [input.fmeSegmentDefinition.name, i])
+}
+
+# Deny definitions that are not active
+deny[msg] {
+	not input.fmeSegmentDefinition.status == "active"
+	msg := sprintf("FME segment definition '%s' in environment '%s' must have status 'active', got '%s'", [input.fmeSegmentDefinition.name, input.fmeSegmentDefinition.environment.name, input.fmeSegmentDefinition.status])
+}
+
+# Warn when a large segment has no keys and is not currently uploading
+warn[msg] {
+	input.fmeSegmentDefinition.segmentType == "large_segment"
+	input.fmeSegmentDefinition.currentKeyCount == 0
+	not input.fmeSegmentDefinition.uploadingKeys
+	msg := sprintf("FME large segment definition '%s' in environment '%s' has no keys and is not currently uploading", [input.fmeSegmentDefinition.name, input.fmeSegmentDefinition.environment.name])
+}
+```
+
+#### Exclude high-priority users from rule-based segments
+
+Ensure all rule-based segment definitions explicitly exclude the `high_priority_users` segment.
+
+```rego title="Ensure that rule-based segment definitions always exclude the high priority users segment"
+package fme_segment_definitions
+
+# Deny rule-based definitions that don't exclude the high_priority_users segment
+deny[msg] {
+	input.fmeSegmentDefinition.segmentType == "rule_based_segment"
+	not excludes_high_priority_users
+	msg := sprintf("Rule-based segment definition '%s' in environment '%s' must exclude the 'high_priority_users' segment", [input.fmeSegmentDefinition.name, input.fmeSegmentDefinition.environment.name])
+}
+
+excludes_high_priority_users {
+	some i
+	input.fmeSegmentDefinition.excludedSegments[i].name == "high_priority_users"
 }
 ```
 
 ### Template policy samples
 
-+ [Enforce the use of stable templates in a pipeline](#enforce-the-use-of-stable-templates-in-a-pipeline)
-+ [Enforce an Approval step in a stage template](#enforce-an-approval-step-in-a-stage-template)
-+ [Enforce specific environments to be configured for a stage template](#enforce-specific-environments-to-be-configured-for-a-stage-template)
-+ [Enforce use of an approved stage template in a pipeline](#enforce-use-of-an-approved-stage-template-in-a-pipeline)
-+ [Enforce step templates to be used in a pipeline](#enforce-step-templates-to-be-used-in-a-pipeline)
-+ [Enforce the stage structure of a pipeline](#enforce-the-stage-structure-of-a-pipeline)
-+ [Enforce steps in a pipeline](#enforce-steps-in-a-pipeline)
-+ [Enforce step order in a pipeline](#enforce-step-order-in-a-pipeline)
+* [Enforce the use of stable templates in a pipeline](#enforce-the-use-of-stable-templates-in-a-pipeline)
+* [Enforce an Approval step in a stage template](#enforce-an-approval-step-in-a-stage-template)
+* [Enforce specific environments to be configured for a stage template](#enforce-specific-environments-to-be-configured-for-a-stage-template)
+* [Enforce use of an approved stage template in a pipeline](#enforce-use-of-an-approved-stage-template-in-a-pipeline)
+* [Enforce step templates to be used in a pipeline](#enforce-step-templates-to-be-used-in-a-pipeline)
+* [Enforce the stage structure of a pipeline](#enforce-the-stage-structure-of-a-pipeline)
+* [Enforce steps in a pipeline](#enforce-steps-in-a-pipeline)
+* [Enforce step order in a pipeline](#enforce-step-order-in-a-pipeline)
 * [Secret policy samples](#secret-policy-samples)
 
 
