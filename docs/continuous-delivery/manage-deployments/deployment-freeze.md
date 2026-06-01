@@ -317,6 +317,28 @@ The alert explicitly informs you that:
   <DocImage path={require('./static/deployment-freeze-alert.png')} width="60%" height="60%" title="Click to view full size image" />
 </div>
 
+#### When the banner appears
+
+The freeze banner appears reliably when the freeze window scope is broad, such as:
+
+- Account-level freezes
+- Org-level freezes
+- Project-level freezes
+- Pipeline-level freezes (targeting specific pipelines)
+- Global freezes
+
+#### When the banner may not appear
+
+The freeze banner may not appear before pipeline execution when the freeze window uses entity-specific filters, such as:
+
+- Freezes targeting specific services with `filterType: Equals`
+- Freezes targeting specific environments with `filterType: Equals`
+- Freezes with runtime inputs or expressions that cannot be resolved before execution
+
+In these cases, the freeze enforcement still works correctly and aborts the pipeline during execution with status **Aborted By Freeze**, but you will not receive a pre-flight warning in the Run Pipeline dialog.
+
+This happens because the pre-flight validation cannot always determine if specific services or environments will be affected when those values depend on runtime resolution.
+
 ## Enabling and disabling freeze windows
 
 You can enable and disable freeze windows in the following ways:
