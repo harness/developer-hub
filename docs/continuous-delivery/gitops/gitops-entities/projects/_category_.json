@@ -1,0 +1,12 @@
+{
+    "label": "Projects",
+    "position": "5",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "description": "Learn how to create, manage, and import ArgoCD Projects in Harness GitOps",
+    "link": {
+        "type": "generated-index",
+        "title": "Projects"
+    }
+}

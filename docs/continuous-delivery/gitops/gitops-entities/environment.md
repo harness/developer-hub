@@ -1,7 +1,7 @@
 ---
 title: Environments
 description: Learn how to create and manage GitOps environments in Harness.
-sidebar_position: 5
+sidebar_position: 6
 ---
 
 import DocImage from '@site/src/components/DocImage';
