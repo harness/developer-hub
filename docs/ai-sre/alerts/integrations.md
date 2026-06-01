@@ -130,14 +130,14 @@ Example alert payload:
   "schemaId": "azureMonitorCommonAlertSchema",
   "data": {
     "essentials": {
-      "alertId": "/subscriptions/123456-7890-abcd-efgh-ijklmnopqrst/providers/Microsoft.AlertsManagement/alerts/12345678-9012-3456-7890-123456789012",
+      "alertId": "/subscriptions/<SUB_ID>/providers/Microsoft.AlertsManagement/alerts/<ALERT_ID>",
       "alertRule": "High Memory Usage Alert",
       "severity": "Sev2",
       "signalType": "Metric",
       "monitorCondition": "Fired",
       "monitoringService": "Platform",
       "alertTargetIDs": [
-        "/subscriptions/123456-7890-abcd-efgh-ijklmnopqrst/resourcegroups/production/providers/microsoft.compute/virtualmachines/web-server-01"
+        "/subscriptions/<SUB_ID>/resourceGroups/<RG>/providers/Microsoft.Compute/virtualMachines/<VM>"
       ],
       "configurationItems": [
         "web-server-01"
@@ -275,7 +275,7 @@ Example alert payload:
       "endsAt": "0001-01-01T00:00:00Z",
       "generatorURL": "https://grafana.example.com/alerting/1234",
       "fingerprint": "abc123def456",
-      "silenceURL": "https://grafana.example.com/alerting/silence/new?alertmanager=1234",
+      "silenceURL": "https://grafana.example.com/alerting/silence/new",
       "dashboardURL": "https://grafana.example.com/d/abc123/system-metrics",
       "panelURL": "https://grafana.example.com/d/abc123/system-metrics?viewPanel=10",
       "valueString": "value: 95.5"
@@ -400,7 +400,7 @@ Example alert payload:
       },
       "startsAt": "2025-03-16T15:00:00Z",
       "endsAt": "2025-03-16T16:00:00Z",
-      "generatorURL": "http://prometheus.example.com/graph?g0.expr=rate%28http_request_duration_seconds%29"
+      "generatorURL": "http://prometheus.example.com/graph?g0.expr=<PROMQL>"
     }
   ],
   "groupLabels": {
@@ -437,7 +437,7 @@ Example alert payload:
   "search_name": "High Error Rate Alert",
   "app": "search",
   "owner": "admin",
-  "results_link": "https://splunk.example.com/app/search/@go?sid=scheduler_admin_search_12345",
+  "results_link": "https://splunk.example.com/app/search/@go?sid=<SID>",
   "result": {
     "sourcetype": "access_combined",
     "count": "523",
