@@ -187,13 +187,7 @@ const config: Config = {
       'data-modal-example-questions':
         'How do I update Harness delegate?,Can I save my filter settings?',
     },
-    /* Relyance consent / traffic tracking — production only (401s on localhost) */
-    // ...(process.env.NODE_ENV === 'production' ? [{
-    //  src: 'https://consent.app.relyance.ai/relyance-agent.js',
-    //  async: true,
-    //  'data-relyance-consent-appId': 'app-25c77d8f-9b0d-5534-a04c-e3565a4c3512',
-    //  'data-relyance-zero-fire-mode': 'true',
-    //}] : []),
+    /* Relyance: loaded from client-modules/relyanceConsent.js after app bootstrap */
   ],
   markdown: {
     //Mermaid Diagram Functionality
@@ -622,14 +616,15 @@ const config: Config = {
 
     path.join(__dirname, '/plugins/suppress-coveo-bundler-warnings'),
     path.join(__dirname, '/plugins/utmcookie-plugin'),
-    path.join(__dirname, '/plugins/focusOnAnchor-plugin'),
-    path.join(__dirname, '/plugins/feedback-plugin'),
     path.join(__dirname, '/plugins/feature-flags-rss-plugin'),
   ],
   clientModules: [
     path.join(__dirname, '/client-modules/searchBar'),
     path.join(__dirname, '/client-modules/iframeEmbed'),
     path.join(__dirname, '/client-modules/dmsContentRedirect'),
+    path.join(__dirname, '/client-modules/focusOnAnchor'),
+    path.join(__dirname, '/client-modules/feedbackFooter'),
+    path.join(__dirname, '/client-modules/relyanceConsent'),
     // path.join(__dirname, '/client-modules/chatbot'),
   ],
   headTags: [
@@ -639,7 +634,7 @@ const config: Config = {
       tagName: 'script',
       attributes: {},
       innerHTML:
-        '(function(){var k=window.Kapa;if(!k){var i=function(){i.c(arguments);};i.q=[];i.c=function(a){i.q.push(a);};window.Kapa=i;}})();',
+        '(function(){if(window.Kapa)return;var k=window.Kapa;if(!k){var i=function(){i.c(arguments);};i.q=[];i.c=function(a){i.q.push(a);};window.Kapa=i;}})();',
     },
     // Pre-establish connections to Kapa endpoints so the TCP/TLS handshake is
     // already done by the time the widget loads.

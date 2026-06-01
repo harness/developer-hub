@@ -187,7 +187,7 @@ export default function NavbarWrapper(props: Props): ReactNode {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Fade to white over 400px of scroll (matching main-wrapper)
+      // Fade navbar gradient to white over 400px of scroll (matches page gradient fade)
       const progress = Math.min(window.scrollY / 400, 1);
       setScrollProgress(progress);
     };
