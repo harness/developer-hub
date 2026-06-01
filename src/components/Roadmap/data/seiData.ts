@@ -12,58 +12,58 @@ export const seiModuleTheme: ModuleTheme = {
 
 export const SeiData: Horizon = {
   Now: {
-    description: "Q1 2026, Feb-Apr 2026",
+    description: "Q2 2026, May-Jul 2026",
     feature: [
       {
         tag: [{ value: "AI" }, { value: "Insights" }],
-        title: "AI Insights",
-        description: "Track usage, cost, and impact of AI agent(s) with support for custom dashboards, Windsurf, GitHub CoPilot, and Claude Code.",
-      },
-      {
-        tag: [{ value: "AI" }, { value: "Insights" }],
-        title: "AI Summaries and Recommendations",
-        description: "AI-first summarization of insights, including clear recommendations and summaries for managers and leaders to drive measurable change.",
+        title: "AI DLC Insights",
+        description: "Track adoption, cost, and impact of AI agent(s) with support for Cursor, Windsurf, GitHub CoPilot, and Claude Code.",
       },
       {
         tag: [{ value: "Custom Dashboards" }],
-        title: "Canvas",
+        title: "Custom Insights Dashboards",
         description: "Define and track custom metrics with your AI DLC Insights data, reported consistently across the organization.",
       },
       {
-        tag: [{ value: "Onboarding" }],
-        title: "Intelligent Team Onboarding",
-        description: "Automatically detect and configure all the right IM projects, SCM repos, CI/CD pipelines for a team, to make the onboarding process seamless.",
+        tag: [{ value: "Governance" }],
+        title: "Centralized Team Settings",
+        description: "Enhanced Org Tree management allowing for editing of team structures while automatically retaining inherited settings.",
+      },
+      {
+        tag: [{ value: "Efficiency" }, { value: "Insights" }],
+        title: "Lead Time for Changes Improvements",
+        description: "Advanced analytics and bottleneck detection focused on optimizing Lead Time for Changes.",
       },
       {
         tag: [{ value: "Integrations" }],
-        title: "ServiceNow Integration",
-        description: "Integrate ServiceNow incident data to compute and track Mean Time to Recovery, Change Failure Rate, and Deployment Frequency.",
+        title: "PagerDuty Integration",
+        description: "Deep-link PagerDuty into AI DLC Insights to correlate operational incident data with developer productivity metrics.",
       },
     ],
   },
 
   Next: {
-    description: "Q2 2026, May-Jul 2026",
+    description: "Q3 2026, Aug-Oct 2026",
     feature: [
       {
-        tag: [{ value: "Actionability" }],
-        title: "Goals, KPIs, and Benchmarks",
-        description: "Track goals and KPIs while leveraging benchmarks to drive accountability.",
+        tag: [{ value: "Insights" }],
+        title: "Optimizable Spend",
+        description: "Identify optimizable spending opportunities across your organization's use of AI coding tools.",
       },
       {
         tag: [{ value: "Insights" }],
-        title: "Conversational Analytics",
-        description: "Converse with the Efficiency Agent to generate custom metrics, charts, and access actionable insights.",
+        title: "Agent Support",
+        description: "Add support for integrating with various AI agents such as Kiro and Gemini to enhance productivity and streamline workflows.",
       },
       {
-        tag: [{ value: "Insights" }, { value: "New Feature" }],
-        title: "Surveys",
-        description: "Measure Developer Satisfaction with built-in surveys. Correlate developer sentiment with metrics for deeper insights.",
+        tag: [{ value: "Insights" }],
+        title: "AI Engineering Coach",
+        description: "Developer and manager-level views that provide coaching and guidance for areas of optimization to increase efficiency and performance.",
       },
       {
-        tag: [{ value: "Insights" }, { value: "New Feature" }],
-        title: "Executive Reporting",
-        description: "Generate personalized executive reports that connect company-wide goals and KPIs to team-level performance, helping leaders identify where to focus support and how to drive better outcomes.",
+        tag: [{ value: "AI" }],
+        title: "Harness AI Integration",
+        description: "Use Harness AI to query and understand your team's performance and identify bottlenecks.",
       },
      ],
   },
@@ -72,19 +72,24 @@ export const SeiData: Horizon = {
     description: "Q3 2026+, August 2026 & beyond",
     feature: [
       {
-        tag: [{ value: "Insights" }, { value: "New Feature" }],
-        title: "Automation",
-        description: "Convert insights into actions based on the goals you define. Allow the Harness Efficiency Agent to optimize CI/CD pipelines, OPA policies, SLO budgets, feature flag rollouts, and more.",
+        tag: [{ value: "Surveys" }],
+        title: "Surveys",
+        description: "Measure Developer Satisfaction with built-in surveys. Correlate developer sentiment with metrics for deeper insights.",
       },
       {
-        tag: [{ value: "New Feature" }],
+        tag: [{ value: "Insights" }, { value: "AI" }],
+        title: "Automation through Worker Agents",
+        description: "Convert insights into actions based on the goals you define. Allow the Harness Efficiency Agent to provide notifications and digests to teams and managers.",
+      },
+      {
+        tag: [{ value: "Insights" }],
         title: "Planning",
-        description: "Accurate forecasting and planning built on historical performance to prevent overcommitment and drive team satisfaction.",
+        description: "Accurate forecasting and planning built on historical performance to prevent overcommitment, drive team satisfaction, and forecast AI engineering spend.",
       },
       {
-        tag: [{ value: "New Feature" }],
-        title: "Capitalization",
-        description: "Automate R&D costs for quick and auditable software capitalization reporting.",
+        tag: [{ value: "Insights" }],
+        title: "Scoring",
+        description: "Combine engineering metrics into unified scoring models (e.g., AI, DORA), providing a simple way to benchmark team performance and monitor engineering outcomes.",
       },
     ],
   },
@@ -92,22 +97,64 @@ export const SeiData: Horizon = {
     description: "What has been released",
     feature: [
       {
+        tag: [{ value: "AI" }, { value: "Insights" }],
+        title: "AI Summaries and Recommendations",
+        description: "AI-first summarization of insights, including clear recommendations and summaries for managers and leaders to drive measurable change.",
+        link: "https://developer.harness.io/release-notes/ai-dlc-insights#ai-summaries-on-insights-dashboards"
+      },
+      {
+        tag: [{ value: "Custom Dashboards" }],
+        title: "Canvas",
+        description: "Define and track custom metrics with your SEI data, reported consistently across the organization.",
+        link: "https://developer.harness.io/release-notes/ai-dlc-insights#new-feature-canvas-for-sei-20-is-in-beta",
+      },
+      {
+        tag: [{ value: "Integrations" }],
+        title: "ServiceNow Integration",
+        description: "Integrate ServiceNow incident data to compute and track Mean Time to Recovery, Change Failure Rate, and Deployment Frequency.",
+        link: "https://developer.harness.io/release-notes/ai-dlc-insights#new-enhancement-servicenow-integration-and-itsm-configuration-in-sei-20",
+      },
+      {
+        tag: [{ value: "Integrations" }],
+        title: "qTest Integration",
+        description: "Integrate qTest execution and testing activity data to enhance reporting and analysis.",
+        link: "https://developer.harness.io/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/qtest",
+      },
+      {
+        tag: [{ value: "AI" }, { value: "Insights" }],
+        title: "AI Summaries and Recommendations",
+        description: "AI-first summarization of insights, including clear recommendations and summaries for managers and leaders to drive measurable change.",
+        link: "https://developer.harness.io/release-notes/ai-dlc-insights#new-enhancement-ai-summaries-on-insights-dashboards",
+      },
+      {
+        tag: [{ value: "Insights" }],
+        title: "Developer Filters for LTTC",
+        description: "Enable or disable developer filters for Lead Time to Change.",
+        link: "https://developer.harness.io/release-notes/ai-dlc-insights#enable-or-disable-developer-filtering-for-lead-time-for-changes-lttc",
+      },
+      {
+        tag: [{ value: "Teams" }],
+        title: "Select Multiple Source Code Management Integrations",
+        description: "Enable or disable developer filters for Lead Time to Change.",
+        link: "https://developer.harness.io/release-notes/ai-dlc-insights#select-multiple-scm-integrations-in-team-settings",
+      },
+      {
         tag: [{ value: "User Experience" }, { value: "New Features" }],
-        title: "SEI 2.0",
+        title: "AI DLC Insights",
         description:
-          "SEI 2.0 implementation optimized for low latency and near real-time access. Comes with out-of-the-box Efficiency, Productivity and Business Alignment insights, consistently reported across the entire organization.",
+          "AI DLC Insights implementation optimized for low latency and near real-time access. Comes with out-of-the-box Efficiency, Productivity and Business Alignment insights, consistently reported across the entire organization.",
         link:"https://developer.harness.io/docs/software-engineering-insights/harness-sei/sei-overview",
       },
       {
         tag: [{ value: "Onboarding" }, { value: "Ease of Maintenance" }],
-        title: "SEI 2.0 Refinements",
+        title: "AI DLC Insights Refinements",
         description:
           "Multi-level Org Trees, Trendlines, Metric Maturity Model, improved Integration Monitoring, Custom Issue Management fields, Developer APIs, Export APIs, Activity Logs, Auto Developer Identity, and an improved correlation engine for Lead Time Tracking.",
         link:"https://developer.harness.io/docs/software-engineering-insights/harness-sei/setup-sei/setup-org-tree#multi-level-hierarchies",
         },
       {
         tag: [{ value: "Onboarding" }, { value: "Ease of Maintenance" }],
-        title: "RBAC in SEI 2.0",
+        title: "RBAC in AI DLC Insights",
         description:
           "Improved granular role-based access for more control and increased reusability.",
         link:"https://developer.harness.io/docs/software-engineering-insights/harness-sei/get-started/rbac/",
@@ -116,7 +163,7 @@ export const SeiData: Horizon = {
         tag: [{ value: "Insights" } ],
         title: "Beta Availability",
         description:
-          "Beta availability of new features in SEI 2.0, including the Windsurf and Cursor integrations for AI Insights, AI Recommendations, the ArmorCode integration for Security Insights, and the SonarQube integration for Test Insights.",
+          "Beta availability of new features in AI DLC Insights, including the Windsurf and Cursor integrations for AI Insights, AI Recommendations, the ArmorCode integration for Security Insights, and the SonarQube integration for Test Insights.",
         link:"https://developer.harness.io/release-notes/ai-dlc-insights/#january-2026",
       },
     ],
