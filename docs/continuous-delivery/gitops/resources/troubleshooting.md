@@ -50,10 +50,41 @@ For a non-HA install, use `redisSvc` instead of `redisHaProxySvc`. Go to [Config
 
 If you see the error `Forbidden: seccomp may not be set provider`, remove the following block from all Argo CD configuration files that have a `kind: deployment` key-value pair.
 
-```
+```yaml
 seccompProfile:
   type: RuntimeDefault
 ```
+
+### OpenShift Security Context Constraints (SCC) for GitOps agent
+
+On OpenShift clusters, the default `restricted` SCC blocks GitOps agent components from starting. You may see errors like `CreateContainerConfigError`, `Forbidden: seccomp may not be set`, or pods stuck in `CrashLoopBackOff`.
+
+The following table lists the minimum SCC requirements for each GitOps agent component:
+
+| Component | Required SCC | Reason |
+|-----------|-------------|--------|
+| `gitops-agent` | `nonroot-v2` | Runs as a non-root user but requires specific UID/GID |
+| `argocd-repo-server` | `nonroot-v2` | Requires writable `/tmp` and non-root execution |
+| `argocd-redis` | `anyuid` | Runs as a specific UID (999) by default |
+| `argocd-application-controller` | `nonroot-v2` | Requires non-root execution with writable home directory |
+
+To grant the required SCCs to the service accounts in your GitOps namespace:
+
+```bash
+# Replace <namespace> with your GitOps agent namespace (e.g., harness-gitops)
+oc adm policy add-scc-to-user nonroot-v2 -z argocd-repo-server -n <namespace>
+oc adm policy add-scc-to-user anyuid -z argocd-redis -n <namespace>
+oc adm policy add-scc-to-user nonroot-v2 -z argocd-application-controller -n <namespace>
+oc adm policy add-scc-to-user nonroot-v2 -z gitops-agent -n <namespace>
+```
+
+:::tip Verify SCC assignments
+After applying SCCs, verify the assignments with `oc describe scc nonroot-v2 | grep -A 10 'Users:'` and `oc adm policy who-can use scc/nonroot-v2`. Then delete the failing pods to allow them to restart with the correct security context.
+:::
+
+:::note OpenShift Operator alternative
+If the `CDS_GITOPS_OPERATOR` feature flag is enabled for your account, you can use the Harness GitOps Agent Operator for OpenShift, which handles SCC configuration automatically. Go to [GitOps Agent with OpenShift Operator](/docs/continuous-delivery/gitops/gitops-entities/agents/gitops-agent-with-openshift-operator) to install and configure the operator.
+:::
 
 ### Operator-based manifest support
 
