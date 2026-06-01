@@ -39,39 +39,32 @@ When a policy is evaluated, Harness sends an input payload to OPA containing the
 ```json title="Feature Flag Policy Evaluation Input Payload"
 {
   "featureFlag": {
-    "name": "enable_dark_mode",
-    "status": "ACTIVE",
+    "name": "ff_enable_dark_mode",
+    "status": "active",
     "description": "Enable dark mode for end users",
-    "trafficTypeName": "user",
     "tags": ["ui", "frontend"],
-    "keyMetrics": ["metric_login_success_rate"],
-    "supportingMetrics": ["metric_error_rate"],
-    "rolloutStatusName": "rollout_in_progress",
+    "trafficType": {
+      "id": "c8bcb9e0-dc3e-11f0-9821-627b61d9f8bc",
+      "name": "user"
+    },
     "pendingChangeRequests": 0,
-    "hasPendingStatusChange": false,
-    "lastTrafficDate": "2025-02-08T00:00:00Z",
-    "governanceType": "fmeFeatureFlag"
+    "hasPendingStatusChange": false
   },
   "entityMetadata": {
     "actor": {
-      "type": "user",
-      "name": "Jane Smith"
+      "id": "user_789",
+      "type": "user"
     },
-    "account": {
-      "accountId": "abc123",
-      "organizationId": "org_456"
-    },
+    "changeTrigger": "update",
+    "owners": [
+      {
+        "id": "team_frontend",
+        "type": "team"
+      }
+    ],
     "project": {
       "id": "mobile_shopping_app"
     },
-    "owners": [
-      {
-        "ownerType": "team",
-        "ownerId": "team_frontend",
-        "ownerName": "Frontend Team"
-      }
-    ],
-    "changeTrigger": "update"
   }
 }
 ```
@@ -108,9 +101,9 @@ deny[msg] {
 ```json title="Feature Flag Definition Policy Evaluation Input Payload"
 {
   "featureFlagDefinition": {
-    "name": "enable_dark_mode",
+    "name": "ff_enable_dark_mode",
     "environmentName": "Production",
-    "status": "ACTIVE",
+    "status": "active",
     "killed": false,
     "trafficTypeName": "user",
     "description": "Enable dark mode for end users",
@@ -154,24 +147,19 @@ deny[msg] {
   },
   "entityMetadata": {
     "actor": {
-      "type": "user",
-      "name": "Jane Smith"
+      "id": "user_789",
+      "type": "user"
     },
-    "account": {
-      "accountId": "abc123",
-      "organizationId": "org_456"
-    },
-    "project": {
-      "id": "mobile_shopping_app"
-    },
+    "changeTrigger": "update",
     "owners": [
       {
-        "ownerType": "team",
-        "ownerId": "team_frontend",
-        "ownerName": "Frontend Team"
+        "id": "team_frontend",
+        "type": "team"
       }
     ],
-    "changeTrigger": "update"
+    "project": {
+      "id": "mobile_shopping_app"
+    }
   }
 }
 ```
@@ -198,22 +186,33 @@ deny[msg] {
 
 ```json title="FME Environment Policy Evaluation Input Payload"
 {
-  "fmeEnvironment": {
-    "name": "production"
-  },
   "entityMetadata": {
     "actor": {
-      "type": "user",
-      "name": "Jane Smith"
+      "id": "user_789",
+      "type": "user"
     },
-    "account": {
-      "accountId": "abc123",
-      "organizationId": "org_456"
-    },
+    "changeTrigger": "update",
+    "owners": [],
     "project": {
-      "id": "mobile_shopping_app"
+      "id": "ws_prod_001"
+    }
+  },
+  "fmeEnvironment": {
+    "changeSettings": {
+      "approvalsSkippableBy": [],
+      "approvers": [
+        {
+          "id": "_project_all_users",
+          "type": "team"
+        }
+      ],
+      "areApprovalsRequired": true,
+      "areApproversRestricted": true,
+      "areKillsAllowedWithoutApproval": false
     },
-    "changeTrigger": "update"
+    "environmentType": "production",
+    "id": "env_prod_001",
+    "name": "production"
   }
 }
 ```
@@ -232,6 +231,30 @@ deny[msg] {
 }
 ```
 
+The following policy ensures that production environments require approvals and have at least one approver configured.
+
+```rego title="Require approvals for production environments"
+package fme_environments
+
+deny[msg] {
+  input.fmeEnvironment.environmentType == "production"
+  not input.fmeEnvironment.changeSettings.areApprovalsRequired
+  msg := sprintf(
+    "FME production environment '%s' must have approvals required",
+    [input.fmeEnvironment.name]
+  )
+}
+
+deny[msg] {
+  input.fmeEnvironment.environmentType == "production"
+  count(object.get(input.fmeEnvironment.changeSettings, "approvers", [])) == 0
+  msg := sprintf(
+    "FME production environment '%s' must have at least one approver configured",
+    [input.fmeEnvironment.name]
+  )
+}
+```
+
 </details>
 <details>
 <summary>Segment</summary>
@@ -243,17 +266,14 @@ deny[msg] {
   },
   "entityMetadata": {
     "actor": {
-      "type": "user",
-      "name": "Jane Smith"
+      "id": "user_789",
+      "type": "user"
     },
-    "account": {
-      "accountId": "abc123",
-      "organizationId": "org_456"
-    },
+    "changeTrigger": "update",
+    "owners": [],
     "project": {
       "id": "mobile_shopping_app"
-    },
-    "changeTrigger": "update"
+    }
   }
 }
 ```
@@ -292,17 +312,14 @@ deny[msg] {
   },
   "entityMetadata": {
     "actor": {
-      "type": "user",
-      "name": "Jane Smith"
+      "id": "user_789",
+      "type": "user"
     },
-    "account": {
-      "accountId": "abc123",
-      "organizationId": "org_456"
-    },
+    "changeTrigger": "update",
+    "owners": [],
     "project": {
       "id": "mobile_shopping_app"
-    },
-    "changeTrigger": "update"
+    }
   }
 }
 ```
@@ -569,7 +586,7 @@ On success, the change is applied. On failure, the result depends on the severit
 - **Error and Exit**: The change is blocked, and you receive an error message.
 
 :::tip Use changeTrigger to scope your policies
-The `entityMetadata.changeTrigger` field in the input payload lets you target specific operations. For example, you might skip name convention checks on `delete` to avoid blocking cleanup of legacy flags. See the [example policy](#example-require-a-description-for-feature-flags) for a pattern that excludes delete operations.
+The `entityMetadata.changeTrigger` field in the input payload lets you target specific operations. For example, you might skip name convention checks on `delete` to avoid blocking cleanup of legacy flags. See the [example policy](#input-payload-reference) for a pattern that excludes delete operations.
 :::
 
 ## Manage policy evaluations
