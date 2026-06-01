@@ -197,7 +197,7 @@ curl -X 'POST' 'YOUR_URL' \
     "sys_id": "096654f28362ea10ea8ff3a6feaad338",
     "subcategory": null,
     "state": "2",
-    "incident_url": "https://<INSTANCE>.service-now.com/nav_to.do?uri=/incident.do?sysparm_query=number=<INCIDENTID>"
+    "incident_url": "https://<INSTANCE>.service-now.com/incident.do?number=<INCIDENTID>"
   }'
 ```
 
@@ -276,7 +276,8 @@ Send data from ServiceNow to Harness AI SRE using a Business Rule and RESTMessag
 (function executeRule(current, previous /*null when async*/ ) {
     try {
         var r = new sn_ws.RESTMessageV2();
-        r.setEndpoint("https://app.harness.io/api/v1/incident/webhook");  // Replace with your Harness webhook URL
+        // Replace the URL below with your Harness webhook URL:
+        r.setEndpoint("https://app.harness.io/api/v1/incident/webhook");
         r.setHttpMethod("post");
         r.setRequestHeader("Content-Type", "application/json");
 
@@ -297,7 +298,8 @@ Send data from ServiceNow to Harness AI SRE using a Business Rule and RESTMessag
         var state = current.getValue("state");
 
         var instanceUrl = gs.getProperty('glide.servlet.uri');
-        var incident_url = instanceUrl + "nav_to.do?uri=/incident.do?sysparm_query=number=" + number;
+        var incident_url = instanceUrl
+            + "nav_to.do?uri=/incident.do?sysparm_query=number=" + number;
 
         var obj = {
             "number": number,
@@ -378,7 +380,8 @@ This Business Rule will automatically push comments and work notes from ServiceN
 
 ```javascript
 (function executeRule(current) {
-  gs.info("[Harness IR] BR triggered for journal entry: " + current.getValue('sys_id'));
+  gs.info("[Harness IR] BR triggered for journal entry: "
+    + current.getValue('sys_id'));
 
   // Determine note type (e.g., comments or work_notes)
   var type = current.getValue('element');
@@ -398,22 +401,24 @@ This Business Rule will automatically push comments and work notes from ServiceN
   }
 
   // Detect instance URL dynamically
-  var instanceUrl = gs.getProperty('glide.servlet.uri'); // e.g. https://dev319566.service-now.com/
+  // e.g. https://dev319566.service-now.com/
+  var instanceUrl = gs.getProperty('glide.servlet.uri');
   var incidentNumber = inc.getValue('number');
-  var incidentUrl = instanceUrl + "nav_to.do?uri=/incident.do?sysparm_query=number=" + incidentNumber;
+  var incidentUrl = instanceUrl
+    + "nav_to.do?uri=/incident.do?sysparm_query=number=" + incidentNumber;
 
   // Build payload
   var payload = {
     snow_incidentId: incidentNumber,                     // e.g. INC0010234
     snow_incidentSysId: inc.getUniqueValue(),            // Stable sys_id
-    note_type: type,                                     // "comments" | "work_notes"
+    note_type: type, // "comments" | "work_notes"
     note_text: current.getValue('value') || '',
     author: current.getValue('sys_created_by') || '',
-    created_on: current.sys_created_on.getGlideObject().getNumericValue(), // epoch numeric
+    created_on: current.sys_created_on.getGlideObject().getNumericValue(),
     priority: inc.getValue('priority') || '',
     short_description: inc.getValue('short_description') || '',
     note_id: current.getValue('sys_id'),                 // journal entry sys_id
-    incident_url: incidentUrl                            // Deep link to incident
+    incident_url: incidentUrl // Deep link to incident
   };
 
   gs.info("[Harness IR] Payload prepared: " + JSON.stringify(payload));
@@ -421,8 +426,15 @@ This Business Rule will automatically push comments and work notes from ServiceN
   try {
     var r = new sn_ws.RESTMessageV2();
     
-    // Replace with your AI-SRE project/org/template webhook endpoint:
-    r.setEndpoint('https://app.harness.io/ir/tp/api/v1/mc/account/<ACCOUNT_ID>/orgs/<ORG_ID>/projects/<PROJECT_ID>/incidentTemplate/<TEMPLATE_ID>/servicenow/webhook');
+    // Replace with your AI-SRE project/org/template webhook endpoint.
+    // Tip: paste the full webhook URL from AI SRE as one string.
+    var endpoint = 'https://app.harness.io/ir/tp/api/v1/mc'
+      + '/account/<ACCOUNT_ID>'
+      + '/orgs/<ORG_ID>'
+      + '/projects/<PROJECT_ID>'
+      + '/incidentTemplate/<TEMPLATE_ID>'
+      + '/servicenow/webhook';
+    r.setEndpoint(endpoint);
     r.setHttpMethod('POST');
     r.setRequestHeader("Content-Type", "application/json");
     r.setRequestBody(JSON.stringify(payload));
@@ -434,7 +446,8 @@ This Business Rule will automatically push comments and work notes from ServiceN
     if (status === 200) {
       gs.info("[Harness IR] Webhook successfully sent. Status: " + status);
     } else {
-      gs.error("[Harness IR] Webhook returned non-200 response. Status: " + status + " Body: " + body);
+      gs.error("[Harness IR] Webhook returned non-200. Status: "
+        + status + " Body: " + body);
     }
   } catch (ex) {
     gs.error("[Harness IR] Webhook failed: " + ex.getMessage());
@@ -461,10 +474,15 @@ This Business Rule will automatically push comments and work notes from ServiceN
 
 #### Endpoint Substitution Guide
 
-Use this guide to correctly substitute the placeholders in the webhook endpoint used by the Business Rule:
+Use this guide to correctly substitute the placeholders in the webhook endpoint used by the Business Rule. The full path is one URL; it is shown across lines here only for readability:
 
 ```text
-https://app.harness.io/ir/tp/api/v1/mc/account/<ACCOUNT_ID>/orgs/<ORG_ID>/projects/<PROJECT_ID>/incidentTemplate/<TEMPLATE_ID>/servicenow/webhook
+https://app.harness.io/ir/tp/api/v1/mc
+  /account/<ACCOUNT_ID>
+  /orgs/<ORG_ID>
+  /projects/<PROJECT_ID>
+  /incidentTemplate/<TEMPLATE_ID>
+  /servicenow/webhook
 ```
 
 - **`<ACCOUNT_ID>`**: Your Harness account identifier.
@@ -476,10 +494,15 @@ Recommended ways to obtain values:
 - **Copy from AI SRE**: In AI SRE, open the relevant integration/template and copy the generated webhook URL. It already includes all identifiers. Paste it into `r.setEndpoint(...)`.
 - **From UI URLs/settings**: When viewing your org or project in Harness, the URL path shows `orgs/<ORG_ID>/projects/<PROJECT_ID>`. Account ID is available in account settings. The template ID is visible in the incident template details or within the generated webhook URL.
 
-Example (for illustration only):
+Example (for illustration only; the real value is a single line):
 
 ```text
-https://app.harness.io/ir/tp/api/v1/mc/account/acc_123456/orgs/engineering/projects/sre/incidentTemplate/incident_default/servicenow/webhook
+https://app.harness.io/ir/tp/api/v1/mc
+  /account/acc_123456
+  /orgs/engineering
+  /projects/sre
+  /incidentTemplate/incident_default
+  /servicenow/webhook
 ```
 
 #### Testing the Integration
