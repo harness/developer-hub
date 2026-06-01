@@ -222,6 +222,13 @@ The following deprecated API endpoints are longer supported:
 
 ## May 2026
 
+### Version 1.150.x <!--May 27, 2026--> 
+
+#### Fixed issues
+- Resolved an issue where stale API Keys and PAT tokens for deleted users could remain active in certain account synchronization scenarios. Existing stale tokens have been cleaned up, and going forward, all associated API Keys and PAT tokens are automatically deleted when a user is removed. [PL-71268]
+- Updated the API documentation for the `POST /ng/api/user/endImpersonation/{userId}` endpoint to reflect its actual behavior. The endpoint now correctly documents that it returns `200 OK` even when no active impersonation session exists. [PL-71490]
+- Resolved an issue where the User Groups listing functionality could fail when reusable roles with the same identifier but different scopes were assigned to user groups at the same scope. This issue occurred when the `PL_ROLE_REUSABILITY_ACROSS_CHILD_SCOPES` feature flag was enabled. [PL-71529]
+
 ### Version 1.149.x <!--May 22, 2026-->
 
 No enhancements or fixes were released in this cycle.
