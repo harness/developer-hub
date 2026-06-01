@@ -25,3 +25,4 @@ Complete these tasks in order to stand up on-call for your organization:
 | 4 | [Configure Alert Rules](./configure-alert-rules) | Route monitoring alerts to the correct on-call teams automatically |
 | 5 | [Configure Teams and Notifications](./manage-teams-and-notifications) | Define team structures, assign routing rules, and configure notification channels |
 | 6 | [Configure Service Paging Webhooks](./service-paging-webhook.md) | Configure external monitoring tools, legacy systems, and custom applications to trigger on-call notifications by sending alerts directly to a service |
+| 7 | [On-Call Notification Fallback System](./notification-fallback) | Configure multi-channel notification fallback with automatic retry logic |

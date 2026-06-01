@@ -180,6 +180,8 @@ Step 4: SMS + Phone Call
 - **Test your setup**: Use the test buttons to ensure each contact method works
 - **Keep contacts updated**: Verify phone numbers and email addresses are current
 
+Go to [On-Call Notification Fallback System](/docs/ai-sre/oncall/notification-fallback) to understand multi-channel fallback behavior and retry logic.
+
 ## Troubleshooting
 
 ### Service Alerts Not Routing
@@ -230,4 +232,6 @@ Step 4: SMS + Phone Call
 
 ## Summary
 
-Harness AI SRE uses Harness Platform User Groups as the organizational unit for on-call management. Administrators configure which User Groups own which services and escalation policies, establishing the routing flow for alerts. Individual users configure their own contact methods and notification rules to ensure they're reliably notified during their on-call shifts.
+Harness AI SRE uses Harness Platform User Groups as the organizational unit for on-call management. Administrators configure which User Groups own which services and escalation policies, establishing the routing flow for alerts. Individual users configure their own contact methods and notification rules to ensure they are reliably notified during their on-call shifts.
+
+Go to [On-Call Notification Fallback System](/docs/ai-sre/oncall/notification-fallback) to learn about multi-channel notification fallback and automatic retry logic.
