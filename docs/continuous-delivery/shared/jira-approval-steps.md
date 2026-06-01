@@ -25,6 +25,7 @@ https://www.youtube.com/embed/xVeICozz4lU-->
 ### Limitations
 
 - Harness supports only Jira fields of type `Option`, `Array`, `Any`, `Number`, `Date`, and `String`. Harness does not integrate with Jira fields that manage users, issue links, or attachments. This means that Jira fields like Assignee and Sprint are not accessible in Harness' Jira integration.
+- Array-type fields (such as **Labels**) cannot be used in the **Conditions** section of approval criteria. Only string and option-type fields are supported for key-value criteria. To evaluate array-type fields, use JEXL expressions in the **JEXL Expression** field instead. For example, to check if a label exists, use `<+issue.Labels>.indexOf('your-label') >= 0`.
 
 ### Review: Jira Approval Stages vs Steps
 
@@ -210,6 +211,35 @@ Multiple conditions with the same Jira field are not allowed. Such use cases can
 :::   
 
 In **JEXL Expression**, you can use [JEXL expressions](https://commons.apache.org/proper/commons-jexl/reference/syntax.html). You can use a JEXL expression if the field is set to **Fixed value**, **Runtime input**, or **Expression**.
+
+#### Using JEXL expressions for array-type fields
+
+Array-type fields like **Labels** cannot be evaluated using the **Conditions** section. Instead, use JEXL expressions to check these fields.
+
+For example, to approve when a specific label exists on the Jira issue:
+
+```
+<+issue.Labels>.indexOf('your-label') >= 0
+```
+
+This expression returns `true` if the Labels array contains "your-label".
+
+**Additional examples:**
+
+- Check if Labels contains "fed":
+  ```
+  <+issue.Labels>.indexOf('fed') >= 0
+  ```
+
+- Check if Labels contains "approved" OR "verified":
+  ```
+  <+issue.Labels>.indexOf('approved') >= 0 || <+issue.Labels>.indexOf('verified') >= 0
+  ```
+
+- Check if Labels contains "high-priority" AND Status is "Done":
+  ```
+  <+issue.Labels>.indexOf('high-priority') >= 0 && <+issue.Status> == "Done"
+  ```
 
 ### Option: Set Rejection Criteria
 
