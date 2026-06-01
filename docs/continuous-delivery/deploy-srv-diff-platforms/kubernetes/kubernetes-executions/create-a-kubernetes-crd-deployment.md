@@ -85,6 +85,45 @@ If the `steadyStateCondition` fails, Harness logs the following error message:
 Status check for resources in namespace [[namespace]] failed.
 ```
 
+#### Steady state on redeployments: use observedGeneration
+
+The basic `steadyStateCondition` examples above work for first-time deployments, but can cause issues on **redeployments**. When Harness applies an updated manifest and immediately evaluates the condition, status fields from the *previous* successful deployment may still be present. If your condition only checks fields like `status.availableReplicas == spec.replicas`, it can evaluate to `true` before the controller has processed the new spec, causing the steady state check to pass instantly without verifying the current rollout.
+
+To avoid this, include a **generation check** in your `steadyStateCondition`. Kubernetes increments `metadata.generation` every time the resource spec changes. Well-behaved controllers update `status.observedGeneration` after they finish reconciling that generation. By requiring both values to match, you ensure Harness waits until the controller has fully processed the current deployment.
+
+**Recommended pattern:**
+
+```yaml
+"harness.io/steadyStateCondition": ${json.select("$..metadata.generation", response) == json.select("$..status.observedGeneration", response) && json.select("$..status.availableReplicas", response) == json.select("$..spec.replicas", response)}
+```
+
+This condition evaluates to `true` only when:
+
+1. The controller has observed and reconciled the current generation (`metadata.generation == status.observedGeneration`).
+2. The desired replica count matches the available replicas.
+
+:::warning
+If your CRD controller does not populate `status.observedGeneration`, this pattern will not work. Verify that your controller sets this field by running:
+
+```bash
+kubectl get <your-crd-resource> -o jsonpath='{.status.observedGeneration}'
+```
+
+If the field is empty, you need to either update your controller to track observed generations, or use an alternative field that changes on each reconciliation cycle.
+:::
+
+:::info Example: before and after
+**Before (fails on redeployment):**
+```yaml
+"harness.io/steadyStateCondition": ${json.select("$..status.lifecycleState", response) == "STABLE"}
+```
+
+**After (works on all deployments):**
+```yaml
+"harness.io/steadyStateCondition": ${json.select("$..metadata.generation", response) == json.select("$..status.observedGeneration", response) && json.select("$..status.lifecycleState", response) == "STABLE"}
+```
+:::
+
 #### Custom resource: failureCondition
 
 `harness.io/failureCondition`: This annotation allows you to treat CRDs as jobs and specify custom logic that triggers a failure.
@@ -177,7 +216,7 @@ func newDeployment(foo *samplev1alpha1.Foo) *appsv1.Deployment {
 ```
 #### Example manifest
 
-Here is an example manifest:
+Here is an example manifest that includes a generation check to ensure the steady state condition works correctly on both first deployments and redeployments:
 
 
 ```
@@ -187,7 +226,7 @@ metadata:
   name: example-foo-demo  
   annotations:  
     "harness.io/managed-workload": "true"  
-    "harness.io/steadyStateCondition": ${json.select("$..status.availableReplicas", response) == json.select("$..spec.replicas", response) && json.select("$..spec.deploymentName", response) == "example-foo-demo"}  
+    "harness.io/steadyStateCondition": ${json.select("$..metadata.generation", response) == json.select("$..status.observedGeneration", response) && json.select("$..status.availableReplicas", response) == json.select("$..spec.replicas", response) && json.select("$..spec.deploymentName", response) == "example-foo-demo"}  
 spec:  
   deploymentName: example-foo-demo  
   replicas: 2  
@@ -196,7 +235,7 @@ spec:
       labels:   
         "harness.io/release-name": {{release}}
 ```
-As you can see in this example, steady state status is checked by verifying the replicas and name of the deployed custom resource.
+This condition verifies three things: the controller has reconciled the current generation (`metadata.generation == status.observedGeneration`), the desired replicas match available replicas, and the deployment name is correct. The generation check prevents the steady state from passing immediately on redeployments when status fields are still satisfied from the previous deployment. Go to [Steady state on redeployments: use observedGeneration](#steady-state-on-redeployments-use-observedgeneration) to understand why the generation check is necessary.
 
 ### Step 1: Prepare target cluster
 
