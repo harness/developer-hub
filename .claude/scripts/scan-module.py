@@ -192,19 +192,55 @@ def check_violations(file_path: str, content: str, is_dms_content: bool, is_faq:
             violations.append({"rule": "FM-3", "text": f"H1 heading in body: {match.group(1)}", "line": body[:match.start()].count('\n')})
 
     # H-1: Heading case violations
-    proper_nouns = {
-        "Harness", "IaCM", "CI", "CD", "STO", "CCM", "AIDI", "FF", "SRM", "CET", "FME",
+    def is_proper_noun(word: str) -> bool:
+        """Check if a word is a proper noun using patterns and known terms"""
+        # Known proper nouns (Harness modules, common tech terms)
+    known_proper_nouns = {
+        "Harness", "IaCM", "CI", "CD", "STO", "CCM", "AIDI", "FF", "SRM", "FME",
         "Kubernetes", "Terraform", "OpenTofu", "AWS", "GCP", "Azure", "GitHub", "Docker",
-        "Helm", "Argo", "Vault", "OPA", "Rego", "PostgreSQL", "MySQL", "MongoDB"
+        "Helm", "Argo", "Vault", "OPA", "Rego", "PostgreSQL", "MySQL", "MongoDB",
+        "BigQuery", "CloudSQL", "Liquibase", "Flyway", "Jinja2", "CockroachDB",
+        "Backstage", "OAuth", "API", "REST", "JSON", "YAML", "JDBC", "SDK", "HTTP",
+        "HTTPS", "SSH", "SSL", "TLS", "CLI", "UI", "URL", "URI", "DNS", "IP"
     }
+
+    def is_proper_noun(word: str) -> bool:
+
+        if word in known_proper_nouns:
+            return True
+
+        # Pattern checks for common tech naming conventions
+        # CamelCase/PascalCase including acronym-prefixed words (VSCode, XMLParser)
+        if re.match(r'^[A-Z]+[a-z]+[A-Z]', word):
+
+        # Words with numbers (e.g., Jinja2, MySQL8, PostgreSQL15, OAuth2)
+        if re.match(r'^[A-Za-z]\w*\d', word):
+
+        # All caps acronyms (2+ chars, e.g., API, REST, JSON, YAML)
+        if word.isupper() and len(word) > 1:
+            return True
+
+        # Words with hyphens or dots (e.g., Node.js, gRPC, T-Mobile)
+        if re.match(r'^\w+[.-]\w+', word):
+            return True
+
+        return False
+
     for match in re.finditer(r'^##+ (.+)$', body, re.MULTILINE):
         heading = match.group(1)
         words = heading.split()
+        flagged_words = []
         for i, word in enumerate(words[1:], start=1):  # Skip first word
-            clean_word = word.strip('`*_')
-            if clean_word and clean_word[0].isupper() and clean_word not in proper_nouns:
-                violations.append({"rule": "H-1", "text": f"Heading case: {heading}", "line": body[:match.start()].count('\n')})
-                break
+            clean_word = word.strip('`*_:,')
+            if clean_word and clean_word[0].isupper() and not is_proper_noun(clean_word):
+                flagged_words.append(clean_word)
+
+        if flagged_words:
+            violations.append({
+                "rule": "H-1",
+                "text": f"Heading case: {heading} (check: {', '.join(flagged_words)})",
+                "line": body[:match.start()].count('\n')
+            })
 
     # H-2: Gerund headings (exempt FAQ pages and standard sections)
     if not is_faq:

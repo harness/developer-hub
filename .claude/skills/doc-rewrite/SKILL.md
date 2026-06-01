@@ -188,13 +188,14 @@ Rewrite the page to address all issues identified in the audit. Follow the struc
        - Do NOT nest as `content/provision-database-devops/terraform.md` — keep content folder flat
      - **DMS child file heading hierarchy:**
        - H1 heading for the section title: `# Provision via Terraform`
-       - `## Before you begin` (H2 for landmark sections)
+       - **Approach-specific prerequisites:** Use `## Terraform prerequisites` or `## API prerequisites`, not `## Before you begin` (that heading is reserved for the parent page to avoid duplicate TOC entries)
        - `### Step 1`, `### Step 2`, etc. (H3 for body content/steps — indented in TOC)
        - `#### Request`, `#### Example`, etc. (H4 for substeps under a step)
-       - This creates proper TOC indentation: Before you begin/Next steps at top level, steps nested beneath
+       - This creates proper TOC indentation: approach-specific prerequisites at top level, steps nested beneath
        - Do NOT use `## Step 1`, `## Step 2` in child files — these should be `###` to create hierarchy
+       - Do NOT use `## Before you begin` in child files — the parent page owns that section for shared prerequisites
      - **Horizontal rules in child files:**
-       - Add `---` before `## Before you begin` (after intro)
+       - Add `---` before approach-specific prerequisites (e.g., `## Terraform prerequisites`) after intro
        - Add `---` before each `### Step N` heading
        - Add `---` before any other major `###` sections (Example configuration, Things to note, etc.)
        - This provides clear visual separation between sections, same as regular pages

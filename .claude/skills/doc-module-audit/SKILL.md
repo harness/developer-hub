@@ -244,10 +244,17 @@ The page title is set via frontmatter; a `# Heading` in the body is always wrong
 
 **H-1 — Sentence case in headings**
 WARN for any `##` or `###` heading where a non-first, non-proper-noun word is capitalized.
-Proper nouns to allow: Harness, IaCM, CI, CD, STO, CCM, AIDI, FF, SRM, CET, FME,
-Kubernetes, Terraform, OpenTofu, AWS, GCP, Azure, GitHub, Docker, Helm, Argo, Vault,
-and any word that appears as a brand or product name. Flag clearly: state the heading and the
-word(s) that are wrongly capitalized.
+
+**Proper noun detection uses pattern matching:**
+- **Known terms:** Harness modules (IaCM, CI, CD, STO, CCM, etc.), common tech (Kubernetes, Terraform, AWS, GitHub, Docker, PostgreSQL, MySQL, BigQuery, Liquibase, Flyway, etc.)
+- **CamelCase/PascalCase:** Words with internal capitals (e.g., BigQuery, CloudSQL, OpenTofu)
+- **Words with numbers:** Jinja2, MySQL8, PostgreSQL15, OAuth2
+- **Acronyms:** All-caps 2+ letter words (API, REST, JSON, YAML, JDBC, SDK, HTTP, HTTPS, SSH, SSL, TLS, CLI, UI, URL, DNS, IP)
+- **Hyphenated/dotted:** Node.js, gRPC, T-Mobile
+
+Violations are reported with the full heading and flagged words for manual review: `"Heading case: Configure Stage Infrastructure (check: Stage, Infrastructure)"`
+
+This reduces false positives for legitimate product/framework names while still catching true violations like "Database Schema" or "Project Configuration".
 
 **H-2 — No gerund headings**
 FAIL for any `##` or `###` heading that ends with a word matching `\w+ing` as the final token
