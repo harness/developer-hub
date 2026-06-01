@@ -7,13 +7,11 @@ redirect_from:
 - /docs/incident-response/runbooks/integrations/slack
 ---
 
-import DocImage from '@site/src/components/DocImage';
-
 Harness AI SRE integrates with Slack at the organization level, enabling automated incident communication and team collaboration across all projects.
 
 ## Overview
 
-Slack integration enables your runbooks to:
+Slack integration enables your runbooks to do the following:
 - Send automated notifications
 - Create incident-specific channels
 - Manage threaded discussions
@@ -45,9 +43,9 @@ The Harness Slack bot requires these permissions:
 - Centralized channel management
 - Cross-project notifications
 
-## Using Slack Actions in Runbooks
+## Slack Actions in Runbooks
 
-When you add Slack actions to a runbook, you'll configure them through a form-based interface. The specific fields depend on the action type you select.
+Slack actions are configured through a form. The fields shown depend on the action type you select.
 
 ### Send Slack Message Action
 
@@ -58,7 +56,7 @@ Sends a message to a specified Slack channel.
 - **Message**: Message text to send
   - Supports Mustache variables: `{{Activity.title}}`, `{{Activity.summary}}`
   - Can include Slack markdown formatting (bold, italics, links)
-  - Supports Block Kit JSON format for rich message layouts (see Advanced Formatting below)
+  - Supports Block Kit JSON format for rich message layouts. Go to [Block Kit Formatting](#block-kit-formatting) for examples.
 
 ### Create Slack Channel Action
 
@@ -79,9 +77,9 @@ Creates a new Slack channel for incident coordination.
 - `{{Activity.summary}}` - AI SRE incident summary
 - Any custom incident fields configured in your incident template
 
-## Advanced Message Formatting with Block Kit
+## Block Kit Formatting
 
-Harness AI SRE supports Slack's Block Kit JSON format for rich message layouts. Block Kit allows you to create visually structured messages with different text sizes, colors, and formatting options beyond basic markdown.
+Harness AI SRE supports Slack's Block Kit JSON for rich layouts, including varied text sizes, colors, and formatting beyond basic markdown.
 
 ### When to Use Block Kit
 
@@ -97,15 +95,19 @@ Use simple text when you need:
 - Plain status updates
 - Messages with only basic markdown
 
-### Block Kit Format Overview
+### Format Overview
 
-Block Kit messages are defined as JSON arrays containing block objects. Each block has a `type` that determines its appearance and behavior. The Message field in the Send Slack Message action accepts either plain text or Block Kit JSON.
+Block Kit messages are JSON arrays of block objects, each with a `type`. The Message field accepts plain text or Block Kit JSON.
 
-### Section Block (Standard Formatting)
+:::note Line breaks in Block Kit JSON
+The Message field is parsed as **strict JSON**. A string cannot span lines, so use the `\n` escape inside a value. A real newline or trailing backslash is invalid JSON and renders literally.
 
-Use Section blocks for standard-sized text with markdown support. This is ideal for primary incident information and announcements.
+To keep the source readable, split content across multiple blocks or a section's `fields` array so each string stays short. The examples below use that approach.
+:::
 
-<DocImage path={require('./static/block-kit-section-example.svg')} width="90%" height="90%" title="Placeholder: Block Kit Section Block Example in Slack" />
+### Section Block
+
+Use Section blocks for standard text with markdown — ideal for primary incident info and announcements.
 
 **Example: Incident Alert with Severity**
 
@@ -115,13 +117,17 @@ Use Section blocks for standard-sized text with markdown support. This is ideal 
     "type": "section",
     "text": {
       "type": "mrkdwn",
-      "text": "<!channel> :rotating_light: *There is a new SEV{{Activity.severity.id}} incident*"
+      "text": "*New SEV{{Activity.severity.id}} incident*"
     }
   }
 ]
 ```
 
-**Rendered Output:**
+**Rendered output in Slack:**
+
+![Simple incident alert rendered in Slack](./static/block-kit-section-example.svg)
+
+**Characteristics:**
 - Standard text size
 - Full markdown support (bold, italics, links, emoji)
 - Black text on white background
@@ -129,23 +135,48 @@ Use Section blocks for standard-sized text with markdown support. This is ideal 
 
 **With Multiple Variables:**
 
+A header section carries the title; a `fields` section holds metadata as label/value pairs, keeping each string short.
+Use Context blocks for small, compact gray text, ideal for metadata or instructions that should be de-emphasized.
 ```json
 [
   {
     "type": "section",
     "text": {
       "type": "mrkdwn",
-      "text": "<!channel> :rotating_light: *{{Activity.title}}*\n\n*Severity:* SEV{{Activity.severity.id}}\n*Status:* {{Activity.status}}\n*ID:* {{Activity.id}}"
+      "text": "<!channel> :rotating_light: *{{Activity.title}}*"
     }
+  },
+  {
+    "type": "section",
+    "fields": [
+      {
+        "type": "mrkdwn",
+        "text": "*Severity:*\nSEV{{Activity.severity.id}}"
+      },
+      { "type": "mrkdwn", "text": "*Status:*\n{{Activity.status}}" },
+      { "type": "mrkdwn", "text": "*ID:*\n{{Activity.id}}" }
+    ]
   }
 ]
 ```
 
-### Context Block (Compact Formatting)
+**Rendered output in Slack:**
 
-Use Context blocks for smaller, compact gray text. This is ideal for supplementary information, metadata, or instructions that should be visually de-emphasized.
+![Incident alert with severity, status, and ID rendered in Slack](./static/block-kit-section-fields-example.svg)
 
-<DocImage path={require('./static/block-kit-context-example.svg')} width="90%" height="90%" title="Placeholder: Block Kit Context Block Example in Slack" />
+:::tip
+A `fields` array renders as a two-column grid, filling left to right. With three fields, the first two share a row and the third sits below.
+
+To stack values in one column instead, use a single section's `text` with `\n` separators:
+
+```json
+"text": "*Severity:* SEV{{Activity.severity.id}}\n*Status:* {{Activity.status}}"
+```
+:::
+
+### Context Block
+
+Use Context blocks for small, compact gray text — ideal for metadata or instructions that should be de-emphasized.
 
 **Example: Supplementary Instructions**
 
@@ -156,14 +187,18 @@ Use Context blocks for smaller, compact gray text. This is ideal for supplementa
     "elements": [
       {
         "type": "mrkdwn",
-        "text": "<!channel> :rotating_light: *There is a new SEV{{Activity.severity.id}} incident* – Click *View Summary* above for details (will only be visible to you)."
+        "text": "*New SEV{{Activity.severity.id}} incident* – details above."
       }
     ]
   }
 ]
 ```
 
-**Rendered Output:**
+**Rendered output in Slack:**
+
+![Supplementary instructions in a context block rendered in Slack](./static/block-kit-context-example.svg)
+
+**Characteristics:**
 - Smaller text size
 - Gray text color
 - Markdown support in each element
@@ -174,13 +209,13 @@ Use Context blocks for smaller, compact gray text. This is ideal for supplementa
 - Section blocks use a single `text` object
 - Context blocks render in a more compact, muted style
 
-### Combining Multiple Blocks
+### Combining Blocks
 
 Create rich, multi-section messages by combining block types. Blocks are rendered in array order.
 
-<DocImage path={require('./static/block-kit-combined-blocks.svg')} width="90%" height="90%" title="Placeholder: Combined Block Kit Blocks Example" />
-
 **Example: Incident Notification with Details and Instructions**
+
+Metadata goes in a `fields` section; the link sits in its own context block.
 
 ```json
 [
@@ -188,27 +223,32 @@ Create rich, multi-section messages by combining block types. Blocks are rendere
     "type": "section",
     "text": {
       "type": "mrkdwn",
-      "text": "<!channel> :rotating_light: *New SEV{{Activity.severity.id}} Incident Detected*"
+      "text": "*New SEV{{Activity.severity.id}} Incident Detected*"
     }
   },
   {
     "type": "section",
-    "text": {
-      "type": "mrkdwn",
-      "text": "*Title:* {{Activity.title}}\n*Status:* {{Activity.status}}\n*Summary:* {{Activity.summary}}"
-    }
+    "fields": [
+      { "type": "mrkdwn", "text": "*Title:*\n{{Activity.title}}" },
+      { "type": "mrkdwn", "text": "*Status:*\n{{Activity.status}}" },
+      { "type": "mrkdwn", "text": "*Summary:*\n{{Activity.summary}}" }
+    ]
   },
   {
     "type": "context",
     "elements": [
       {
         "type": "mrkdwn",
-        "text": ":point_right: View full incident details: <https://app.harness.io/incidents/{{Activity.id}}|Incident {{Activity.id}}>"
+        "text": "<{{Activity.url}}|Incident {{Activity.id}}>"
       }
     ]
   }
 ]
 ```
+
+**Rendered output in Slack:**
+
+![Incident notification with details and instructions rendered in Slack](./static/block-kit-combined-blocks.svg)
 
 ### Divider Blocks
 
@@ -236,7 +276,7 @@ Add visual separation between sections using divider blocks.
 ]
 ```
 
-### Markdown Formatting in Block Kit
+### Markdown Formatting
 
 Within `mrkdwn` text fields, you can use:
 - **Bold**: `*text*`
@@ -250,7 +290,7 @@ Within `mrkdwn` text fields, you can use:
 - **Emoji**: `:emoji_name:`
 - **Line breaks**: `\n`
 
-### Variable Interpolation in Block Kit
+### Variable Interpolation
 
 Mustache variables work seamlessly within Block Kit JSON. Variables are replaced before the JSON is sent to Slack.
 
@@ -259,9 +299,11 @@ Mustache variables work seamlessly within Block Kit JSON. Variables are replaced
 - `{{Activity.title}}` → `Database Connection Failure`
 - `{{Activity.status}}` → `Investigating`, `Resolved`
 
-**Important:** Ensure variable values do not contain characters that would break JSON syntax (quotes, newlines). Variables are automatically escaped.
+The examples below link with `{{Activity.url}}` and `{{Activity.postmortem_url}}`, which are example custom fields holding the incident and post-mortem links. Use whatever link fields your incident template provides, or a full URL.
 
-### Block Kit Templates for Common Scenarios
+**Important:** Variables are auto-escaped, but ensure values contain no characters that break JSON (quotes, newlines).
+
+### Common Templates
 
 #### High Severity Incident Alert
 
@@ -271,15 +313,22 @@ Mustache variables work seamlessly within Block Kit JSON. Variables are replaced
     "type": "section",
     "text": {
       "type": "mrkdwn",
-      "text": "<!channel> :red_circle: *CRITICAL: SEV{{Activity.severity.id}} Incident*\n\n*{{Activity.title}}*"
+      "text": ":red_circle: *CRITICAL: SEV{{Activity.severity.id}} Incident*"
     }
   },
   {
     "type": "section",
     "text": {
       "type": "mrkdwn",
-      "text": "*Status:* {{Activity.status}}\n*Impact:* {{Activity.summary}}"
+      "text": "*{{Activity.title}}*"
     }
+  },
+  {
+    "type": "section",
+    "fields": [
+      { "type": "mrkdwn", "text": "*Status:*\n{{Activity.status}}" },
+      { "type": "mrkdwn", "text": "*Impact:*\n{{Activity.summary}}" }
+    ]
   },
   {
     "type": "divider"
@@ -289,12 +338,16 @@ Mustache variables work seamlessly within Block Kit JSON. Variables are replaced
     "elements": [
       {
         "type": "mrkdwn",
-        "text": "Incident ID: {{Activity.id}} | <https://app.harness.io/incidents/{{Activity.id}}|View Details>"
+        "text": "ID: {{Activity.id}} | <{{Activity.url}}|Details>"
       }
     ]
   }
 ]
 ```
+
+**Rendered output in Slack:**
+
+![Critical high-severity incident alert rendered in Slack](./static/block-kit-high-severity-example.svg)
 
 #### Status Update Notification
 
@@ -309,22 +362,26 @@ Mustache variables work seamlessly within Block Kit JSON. Variables are replaced
   },
   {
     "type": "section",
-    "text": {
-      "type": "mrkdwn",
-      "text": "*Incident:* {{Activity.title}}\n*New Status:* {{Activity.status}}"
-    }
+    "fields": [
+      { "type": "mrkdwn", "text": "*Incident:*\n{{Activity.title}}" },
+      { "type": "mrkdwn", "text": "*New Status:*\n{{Activity.status}}" }
+    ]
   },
   {
     "type": "context",
     "elements": [
       {
         "type": "mrkdwn",
-        "text": "Updated at {{Activity.updated_at}} | SEV{{Activity.severity.id}}"
+        "text": "{{Activity.updated_at}} | SEV{{Activity.severity.id}}"
       }
     ]
   }
 ]
 ```
+
+**Rendered output in Slack:**
+
+![Incident status update notification rendered in Slack](./static/block-kit-status-update-example.svg)
 
 #### Resolution Notification
 
@@ -339,43 +396,51 @@ Mustache variables work seamlessly within Block Kit JSON. Variables are replaced
   },
   {
     "type": "section",
-    "text": {
-      "type": "mrkdwn",
-      "text": "*Incident:* {{Activity.title}}\n*Severity:* SEV{{Activity.severity.id}}\n*Duration:* {{Activity.duration}}"
-    }
+    "fields": [
+      { "type": "mrkdwn", "text": "*Incident:*\n{{Activity.title}}" },
+      {
+        "type": "mrkdwn",
+        "text": "*Severity:*\nSEV{{Activity.severity.id}}"
+      },
+      { "type": "mrkdwn", "text": "*Duration:*\n{{Activity.duration}}" }
+    ]
   },
   {
     "type": "context",
     "elements": [
       {
         "type": "mrkdwn",
-        "text": "All systems operational | <https://app.harness.io/incidents/{{Activity.id}}/postmortem|View Post-Mortem>"
+        "text": "Resolved | <{{Activity.postmortem_url}}|Post-Mortem>"
       }
     ]
   }
 ]
 ```
 
-### Block Kit Limitations in AI SRE
+**Rendered output in Slack:**
+
+![Incident resolution notification rendered in Slack](./static/block-kit-resolution-example.svg)
+
+### Limitations
 
 When using Block Kit in Harness AI SRE, be aware of these constraints:
 
 - **Block limit**: Slack allows up to 50 blocks per message
 - **Text length**: Section and context text fields have a 3,000 character limit
 - **JSON validation**: Invalid JSON will cause the action to fail. Validate syntax before deploying.
-- **Interactive elements**: While Slack supports buttons and interactive elements in Block Kit, these are not currently interactive when sent from AI SRE runbooks (they are displayed but do not trigger callbacks).
-- **Variable escaping**: Mustache variables are automatically escaped, but ensure your incident data does not contain malformed JSON characters.
+- **Interactive elements**: Buttons and menus display but are not interactive from AI SRE runbooks — they do not trigger callbacks.
+- **Variable escaping**: Variables are auto-escaped, but ensure incident data has no malformed JSON characters.
 
-### Testing Block Kit Messages
+### Testing Messages
 
 Before deploying runbooks with Block Kit messages:
 
-1. **Use Slack's Block Kit Builder**: Test your JSON at [api.slack.com/block-kit](https://api.slack.com/block-kit/building) to preview the rendered output.
+1. **Use Block Kit Builder**: Preview your JSON at [api.slack.com/block-kit](https://api.slack.com/block-kit/building).
 2. **Test with static data**: Replace Mustache variables with example values to validate JSON syntax.
 3. **Run in a test channel**: Execute the runbook in a non-production Slack channel first.
 4. **Verify variable rendering**: Check that all `{{Activity.*}}` variables are replaced correctly in the execution logs.
 
-### Migrating from Plain Text to Block Kit
+### Migrating from Plain Text
 
 If you have existing runbooks with plain text messages, you can migrate them to Block Kit:
 
@@ -392,11 +457,22 @@ Status: {{Activity.status}}
     "type": "section",
     "text": {
       "type": "mrkdwn",
-      "text": ":warning: *New SEV{{Activity.severity.id}} incident: {{Activity.title}}*\n*Status:* {{Activity.status}}"
+      "text": "*New SEV{{Activity.severity.id}} incident: {{Activity.title}}*"
+    }
+  },
+  {
+    "type": "section",
+    "text": {
+      "type": "mrkdwn",
+      "text": "*Status:* {{Activity.status}}"
     }
   }
 ]
 ```
+
+**Rendered output in Slack:**
+
+![Plain-text alert migrated to Block Kit rendered in Slack](./static/block-kit-migration-example.svg)
 
 **Benefits:**
 - Better visual hierarchy
@@ -420,12 +496,14 @@ Status: {{Activity.status}}
 - **Prioritize readability**: Use Block Kit for complex messages, plain text for simple updates
 - **Keep messages concise**: Slack messages should be scannable; avoid large blocks of text
 
-### Block Kit Best Practices
+### Block Kit Tips
 - **Test before deploying**: Always preview Block Kit messages in Slack Block Kit Builder
 - **Use Section blocks for primary content**: Main incident information, alerts, announcements
 - **Use Context blocks for metadata**: Timestamps, IDs, supplementary instructions
+- **Use `fields` for label/value pairs**: Keeps strings short and renders metadata in a tidy two-column grid
 - **Add dividers for visual separation**: Break up long messages into logical sections
 - **Validate JSON syntax**: Use a JSON validator before saving runbook actions
+- **Use `\n` for line breaks**: Only the `\n` escape produces a line break — never a real newline or trailing backslash
 - **Limit block count**: Keep messages under 20 blocks for best performance
 - **Store templates**: Save common Block Kit patterns as runbook templates for reuse
 - **Consider accessibility**: Ensure emoji and formatting convey meaning even without color
@@ -472,27 +550,42 @@ Status: {{Activity.status}}
     "type": "section",
     "text": {
       "type": "mrkdwn",
-      "text": "<!channel> :rotating_light: *SEV{{Activity.severity.id}} Incident Detected*\n\n*{{Activity.title}}*"
+      "text": "*SEV{{Activity.severity.id}} Incident Detected*"
     }
   },
   {
     "type": "section",
     "text": {
       "type": "mrkdwn",
-      "text": "*Service:* {{Activity.service}}\n*Status:* {{Activity.status}}\n*Channel:* <#incident-{{Activity.id}}-{{Activity.service}}>"
+      "text": "*{{Activity.title}}*"
     }
+  },
+  {
+    "type": "section",
+    "fields": [
+      { "type": "mrkdwn", "text": "*Service:*\n{{Activity.service}}" },
+      { "type": "mrkdwn", "text": "*Status:*\n{{Activity.status}}" },
+      {
+        "type": "mrkdwn",
+        "text": "*Channel:*\n<#incident-{{Activity.id}}-{{Activity.service}}>"
+      }
+    ]
   },
   {
     "type": "context",
     "elements": [
       {
         "type": "mrkdwn",
-        "text": "Join <#incident-{{Activity.id}}-{{Activity.service}}> for coordination | <https://app.harness.io/incidents/{{Activity.id}}|View Details>"
+        "text": "Coordinate above | <{{Activity.url}}|Details>"
       }
     ]
   }
 ]
 ```
+
+**Rendered output in Slack:**
+
+![Incident coordination team notification rendered in Slack](./static/block-kit-coordination-example.svg)
 
 ### Status Updates
 
@@ -519,10 +612,20 @@ Status: {{Activity.status}}
   },
   {
     "type": "section",
-    "text": {
-      "type": "mrkdwn",
-      "text": "*Current Status:* {{Activity.status}}\n*Progress:* {{Activity.progress_description}}\n*Next Steps:* {{Activity.next_steps}}"
-    }
+    "fields": [
+      {
+        "type": "mrkdwn",
+        "text": "*Current Status:*\n{{Activity.status}}"
+      },
+      {
+        "type": "mrkdwn",
+        "text": "*Progress:*\n{{Activity.progress_description}}"
+      },
+      {
+        "type": "mrkdwn",
+        "text": "*Next Steps:*\n{{Activity.next_steps}}"
+      }
+    ]
   },
   {
     "type": "divider"
@@ -538,6 +641,10 @@ Status: {{Activity.status}}
   }
 ]
 ```
+
+**Rendered output in Slack:**
+
+![Incident status update with progress and next steps rendered in Slack](./static/block-kit-status-update-usecase-example.svg)
 
 ### Post-Incident Communication
 
@@ -565,17 +672,34 @@ Status: {{Activity.status}}
   },
   {
     "type": "section",
-    "text": {
-      "type": "mrkdwn",
-      "text": "*Incident:* {{Activity.title}}\n*Duration:* {{Activity.duration}}\n*Impact:* {{Activity.impact_summary}}"
-    }
+    "fields": [
+      { "type": "mrkdwn", "text": "*Incident:*\n{{Activity.title}}" },
+      {
+        "type": "mrkdwn",
+        "text": "*Duration:*\n{{Activity.duration}}"
+      },
+      {
+        "type": "mrkdwn",
+        "text": "*Impact:*\n{{Activity.impact_summary}}"
+      }
+    ]
   },
   {
     "type": "section",
-    "text": {
-      "type": "mrkdwn",
-      "text": "*Resolution:* {{Activity.resolution_summary}}\n*Root Cause:* {{Activity.root_cause}}"
-    }
+    "fields": [
+      {
+        "type": "mrkdwn",
+        "text": "*Resolution:*\n{{Activity.resolution_summary}}"
+      },
+      {
+        "type": "mrkdwn",
+        "text": "*Root Cause:*\n{{Activity.root_cause}}"
+      },
+      {
+        "type": "mrkdwn",
+        "text": "*Retro:*\n{{Activity.retro_date}}"
+      }
+    ]
   },
   {
     "type": "divider"
@@ -585,18 +709,22 @@ Status: {{Activity.status}}
     "elements": [
       {
         "type": "mrkdwn",
-        "text": "<https://app.harness.io/incidents/{{Activity.id}}/postmortem|View Post-Mortem> | Retrospective scheduled for {{Activity.retro_date}}"
+        "text": "<{{Activity.postmortem_url}}|Post-Mortem>"
       }
     ]
   }
 ]
 ```
 
+**Rendered output in Slack:**
+
+![Post-incident resolution notice with root cause rendered in Slack](./static/block-kit-resolution-usecase-example.svg)
+
 **Action 2: Archive Channel**
 - **Action Type**: Archive Slack Channel
 - **Channel**: `incident-{{Activity.id}}-{{Activity.service}}`
 
-### Scheduled Maintenance Notifications
+### Maintenance Notifications
 
 **Example Runbook Action:**
 
@@ -615,22 +743,37 @@ Status: {{Activity.status}}
   },
   {
     "type": "section",
-    "text": {
-      "type": "mrkdwn",
-      "text": "*Service:* {{Activity.service}}\n*Start Time:* {{Activity.maintenance_start}}\n*Duration:* {{Activity.maintenance_duration}}\n*Expected Impact:* {{Activity.expected_impact}}"
-    }
+    "fields": [
+      { "type": "mrkdwn", "text": "*Service:*\n{{Activity.service}}" },
+      {
+        "type": "mrkdwn",
+        "text": "*Start Time:*\n{{Activity.maintenance_start}}"
+      },
+      {
+        "type": "mrkdwn",
+        "text": "*Duration:*\n{{Activity.maintenance_duration}}"
+      },
+      {
+        "type": "mrkdwn",
+        "text": "*Expected Impact:*\n{{Activity.expected_impact}}"
+      }
+    ]
   },
   {
     "type": "context",
     "elements": [
       {
         "type": "mrkdwn",
-        "text": "Status page: <https://status.example.com|status.example.com> | Questions? Ask in <#sre-team>"
+        "text": "<https://status.example.com|Status page> | <#sre-team>"
       }
     ]
   }
 ]
 ```
+
+**Rendered output in Slack:**
+
+![Scheduled maintenance alert rendered in Slack](./static/block-kit-maintenance-example.svg)
 
 ## Troubleshooting
 
@@ -655,6 +798,7 @@ Status: {{Activity.status}}
 **Possible causes:**
 
 - Invalid JSON syntax (missing brackets, commas, quotes)
+- A real newline or a trailing backslash (`\`) used inside a string instead of the `\n` escape
 - Mustache variable rendering breaks JSON structure
 - Block type not supported or misspelled
 - Text length exceeds 3,000 character limit
@@ -665,15 +809,20 @@ Status: {{Activity.status}}
 2. Test Block Kit structure in [Slack Block Kit Builder](https://api.slack.com/block-kit/building)
 3. Replace Mustache variables with sample values to test JSON validity
 4. Check runbook execution logs for specific JSON parsing errors
-5. Ensure all text fields use `\n` for line breaks (not actual newlines)
+5. Ensure all text fields use `\n` for line breaks (not actual newlines, and not a trailing backslash)
 
 **Common JSON errors:**
 ```json
-❌ Wrong: "text": "Line 1
+Wrong: "text": "Line 1
 Line 2"
 
-✅ Correct: "text": "Line 1\nLine 2"
+Wrong: "text": "Line 1\
+Line 2"
+
+Correct: "text": "Line 1\nLine 2"
 ```
+
+To narrow the source, split content across multiple blocks or a `fields` array rather than wrapping one long string.
 
 </details>
 
@@ -688,7 +837,7 @@ Line 2"
 
 **Resolution:**
 
-1. Verify the variable name matches exactly (case-sensitive): `{{Activity.severity.id}}` not `{{activity.severity.id}}`
+1. Verify the name matches exactly (case-sensitive): `{{Activity.severity.id}}`, not `{{activity.severity.id}}`
 2. Check that custom incident fields are populated before the runbook executes
 3. Use correct Mustache syntax: `{{variable}}` not `{variable}` or `$variable`
 4. Test with standard variables first (`{{Activity.id}}`, `{{Activity.title}}`)
@@ -772,7 +921,7 @@ Line 2"
 
 ## Quick Reference
 
-### Block Kit Structure Comparison
+### Structure Comparison
 
 | Feature | Section Block | Context Block |
 |---------|--------------|---------------|
@@ -782,27 +931,59 @@ Line 2"
 | **Structure** | Single `text` object | Array of `elements` |
 | **Markdown** | ✅ Supported | ✅ Supported |
 
-### Common Block Kit Patterns
+### Common Patterns
 
 **Simple Alert:**
 ```json
-[{"type": "section", "text": {"type": "mrkdwn", "text": "Alert message"}}]
+[
+  {
+    "type": "section",
+    "text": { "type": "mrkdwn", "text": "Alert message" }
+  }
+]
 ```
 
 **Alert with Metadata:**
 ```json
 [
-  {"type": "section", "text": {"type": "mrkdwn", "text": "Main message"}},
-  {"type": "context", "elements": [{"type": "mrkdwn", "text": "Metadata"}]}
+  {
+    "type": "section",
+    "text": { "type": "mrkdwn", "text": "Main message" }
+  },
+  {
+    "type": "context",
+    "elements": [
+      { "type": "mrkdwn", "text": "Metadata" }
+    ]
+  }
 ]
 ```
 
 **Multi-Section with Divider:**
 ```json
 [
-  {"type": "section", "text": {"type": "mrkdwn", "text": "Section 1"}},
-  {"type": "divider"},
-  {"type": "section", "text": {"type": "mrkdwn", "text": "Section 2"}}
+  {
+    "type": "section",
+    "text": { "type": "mrkdwn", "text": "Section 1" }
+  },
+  { "type": "divider" },
+  {
+    "type": "section",
+    "text": { "type": "mrkdwn", "text": "Section 2" }
+  }
+]
+```
+
+**Label/Value Metadata (two-column):**
+```json
+[
+  {
+    "type": "section",
+    "fields": [
+      {"type": "mrkdwn", "text": "*Label A:*\nValue A"},
+      {"type": "mrkdwn", "text": "*Label B:*\nValue B"}
+    ]
+  }
 ]
 ```
 
@@ -816,7 +997,7 @@ Line 2"
 | `{{Activity.status}}` | Current status | `Investigating`, `Resolved` |
 | `{{Activity.service}}` | Affected service | `api-gateway` |
 
-### Useful Slack Markdown
+### Slack Markdown
 
 | Format | Syntax | Example |
 |--------|--------|---------|
