@@ -35,7 +35,20 @@ Harness account limits for different license types are specified below:
 | [Audit Streaming](/docs/platform/governance/audit-trail/audit-streaming/#add-a-streaming-destination)         | AUDIT_STREAMING_DESTINATION | 15   | 100        | 100        |
 | [Role Assignments](/docs/platform/role-based-access-control/add-manage-roles)                                 | ROLE_ASSIGNMENT             | 100  | 95,000     | 95,000     |
 | Data Sinks                                                                                                    | DATA_SINK                   | N/A    | 1          | 10         |
+| [Triggers](/docs/platform/triggers/triggers-overview)                                                         | MAX_TRIGGER_CREATION_LIMIT  | 10,000 | 10,000   | 10,000     |
 
+
+## Limit increase requests
+
+If your usage patterns require higher limits than the defaults, contact [Harness Support](mailto:support@harness.io) with the following information:
+
+- **Account Identifier**: Your Harness account ID
+- **Resource Type**: Which limit you need to increase (for example, triggers, pipelines, connectors)
+- **Current Usage**: How many resources you currently have
+- **Requested Limit**: The new limit you're requesting
+- **Business Justification**: Why you need the higher limit
+
+Harness will review your request and respond.
 
 :::info important 
 Harness reserves the right to modify these limits at any time to ensure platform stability and resource management. 
