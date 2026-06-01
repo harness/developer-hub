@@ -125,6 +125,16 @@ Wondering where versions 1.145.xx, 1.146.xx, and 1.147.xx are? Those releases we
 
 ## May 2026
 
+### GitOps Service 1.58.0, GitOps Agent 0.118.0
+
+#### New features and enhancements
+- The GitOps agent now bundles ArgoCD 3.3.9. (**CDS-123262**)
+
+#### Fixed issues
+- Fixed an issue where the GitOps agent WebSocket dialer did not respect the `HTTPS_PROXY` environment variable, causing pod log streaming to fail in environments with an outbound proxy configured. Log streaming now correctly routes through proxy settings. (**CDS-123202**)
+- Fixed a panic in the GitOps agent that occurred during ApplicationSet validation and generation when the repository credentials database interface was not fully implemented. (**CDS-123150**)
+- Fixed an issue where GitOps applications were not visible in the application list for users with label-scoped resource groups. The application list now correctly filters results based on label-based RBAC permissions, so users can see the applications they have access to. (**CDS-122075**)
+
 ### GitOps Service 1.57.0, GitOps Agent 0.117.0
 
 #### New features and enhancements
