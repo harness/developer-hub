@@ -30,24 +30,19 @@ import SCIMurl from '/docs/platform/shared/scimurl.md'
 
 This page walks you through creating an Okta app integration, exchanging the SAML metadata with Harness, and enabling group-based authorization so Okta group members are automatically mapped to Harness user groups.
 
-Use two browser windows or tabs for this process. Open Okta in one tab and open Harness in the other.
+Okta acts as a SAML identity provider for Harness, enabling users to authenticate with their existing Okta credentials. When a user attempts to log in to Harness, they are redirected to Okta for authentication. After successful authentication, Okta sends a signed SAML assertion containing user attributes back to Harness, which validates it and grants access. 
 
-In your Harness tab, <a href="/docs/platform/authentication/authentication-overview#enable-multiple-identity-providers"target="_blank" > Add an SAML Provider</a>.
+Optionally, Okta can include group membership information in the SAML assertion through group attribute statements, allowing Harness to automatically assign users to corresponding Harness user groups for role-based access control.
 
-:::info note
-If you use <a href="/docs/self-managed-enterprise-edition/smp-overview" target="_blank">Harness Self-Managed Enterprise Edition</a>, your instance must be accessed via an HTTPS load balancer, otherwise SAML authentication will fail over HTTP.
-- Users are not created as part of the SAML SSO integration. Okta user accounts must exist prior to exchanging information between your Okta account and Harness. 
-- Users are invited to Harness using their email addresses. Once they log into Harness, their email addresses are registered as Harness Users. For more information, go to <a href="/docs/platform/authentication/single-sign-on-saml/overview"target="_blank"> SAML SSO with Harness </a>.
-:::
 
 ---
 
 ## What will you learn in this topic?
-By the end of this topic, you will be able to understand:
-- How to [create an SAML app integration in Okta](#create-app-integration-in-okta) for Harness.
-- How to [configure Harness to use Okta](#okta-saml-metadata-file) as a SAML SSO provider.
-- How to [enable and test](#enable-sso-with-okta) SSO Okta login.
-- How to set up [SAML authorization](#saml-authorization-with-okta) using Okta.
+By the end of this topic, you will be able to:
+- [Create an SAML app integration in Okta](#create-app-integration-in-okta) for Harness.
+- [Configure Harness to use Okta](#okta-saml-metadata-file) as a SAML SSO provider.
+- [Enable and test](#enable-sso-with-okta) SSO Okta login.
+- Set up [SAML authorization](#saml-authorization-with-okta) using Okta.
 
 ---
 
@@ -59,7 +54,18 @@ Before you configure Okta as the SAML identity provider for Harness, ensure you 
 
 ---
 
-## Okta user accounts
+Use two browser windows or tabs for this process. Open Okta in one tab and open Harness in the other.
+In your Harness tab, <a href="/docs/platform/authentication/authentication-overview#enable-multiple-identity-providers"target="_blank" > Add an SAML Provider</a>.
+
+:::info note
+If you use <a href="/docs/self-managed-enterprise-edition/smp-overview" target="_blank">Harness Self-Managed Enterprise Edition</a>, your instance must be accessed via an HTTPS load balancer, otherwise SAML authentication will fail over HTTP.
+- Users are not created as part of the SAML SSO integration. Okta user accounts must exist prior to exchanging information between your Okta account and Harness. 
+- Users are invited to Harness using their email addresses. Once they log into Harness, their email addresses are registered as Harness Users. For more information, go to <a href="/docs/platform/authentication/single-sign-on-saml/overview"target="_blank"> SAML SSO with Harness </a>.
+:::
+
+---
+
+## Step 1: Set up user accounts in Okta and Harness
 
 To set up a SAML support in your Okta Harness app, ensure that the app has corresponding Users in Harness:
 
@@ -73,7 +79,7 @@ To set up a SAML support in your Okta Harness app, ensure that the app has corre
 
 ---
 
-## Create app integration in Okta
+## Step 2: Create app integration in Okta
 
 1. Sign in to your Okta administrator account, and select **Applications**.
 2. Select **Create App Integration**.
@@ -140,7 +146,7 @@ If your Okta org uses groups to categorize users, you can add group attribute st
 
 ---
 
-## Okta SAML metadata file
+## Step 3: Okta SAML metadata file
 
 Download the **Identity Provider metadata** XML from your Okta app and upload it into Harness.
 
@@ -176,7 +182,7 @@ Your Okta configuration appears under **Login via SAML**.
 
 ---
 
-## Enable SSO with Okta
+## Step 4: Enable SSO with Okta
 
 Now that Okta is set up in Harness as a SAML SSO provider, you can enable and test it.
 
@@ -214,7 +220,7 @@ import Llnote from '/docs/platform/shared/local-login-note.md'
 
 ---
 
-## SAML authorization with Okta
+## Step 5: SAML authorization with Okta
 
 Once you have enabled Harness SSO with your Okta app, you can set up and enable Okta SAML authorization in Harness.
 

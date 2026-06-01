@@ -26,6 +26,8 @@ import SCIMurl from '/docs/platform/shared/scimurl.md'
 
 This guide walks you through using Keycloak as the SAML identity provider for Harness. This allows Keycloak users to log in to Harness with their existing credentials.
 
+Keycloak acts as a SAML identity provider for Harness, allowing users to authenticate with their existing Keycloak credentials. When a user attempts to log in to Harness, they are redirected to Keycloak for authentication. After successful authentication, Keycloak sends a signed SAML assertion back to Harness, which validates it and grants access. Optionally, Keycloak can sync user group memberships to Harness for role-based access control, and supports Just-in-Time (JIT) provisioning to automatically create users on their first login.
+
 :::info note
 If you use <a href="/docs/self-managed-enterprise-edition/smp-overview" target="_blank">Harness Self-Managed Enterprise Edition</a>, your instance must be accessed via an HTTPS load balancer, otherwise SAML authentication will fail over HTTP.
 :::
@@ -35,9 +37,10 @@ If you use <a href="/docs/self-managed-enterprise-edition/smp-overview" target="
 ## What will you learn in this topic?
 
 By the end of this topic, you will be able to:
-- Set up a Keycloak SAML client.
-- Configure Harness to use Keycloak SAML client as an SSO provider.
-- Enable group-based authorization.
+- [Set up a Keycloak SAML client](#set-up-a-client-in-keycloak).
+- [Configure Harness to use Keycloak SAML client as an SSO provider](#set-up-keycloak-saml-sso-in-harness).
+- [Enable group-based authorization](#optional-add-group-membership-in-saml).
+- [Use Just-in-Time (JIT) provisioning to automatically create users](#just-in-time-jit-provisioning).
 
 ---
 
@@ -49,17 +52,7 @@ Before you configure Keycloak as the SAML identity provider for Harness, check t
 
 ---
 
-## Just-in-Time (JIT) provisioning
-
-Harness supports SAML configuration with or without JIT user provision. Review <a href="/docs/platform/role-based-access-control/provision-use-jit/" target="_blank">Just-In-Time (JIT)</a> to understand how Harness creates users on first SAML login when JIT is enabled.
-
-**Without JIT**, follow the steps below to add new users:
-1. In Harness, add the users you want to set up for SAML SSO by inviting them to Harness using the same email addresses that they use in your SAML provider.
-2. In Keycloak, add the users and make sure they are in scope for the client you create in the configuration steps below.
-
-**With JIT**, you add users to Keycloak, and they are automatically added to Harness on first successful SAML login.
-
-## Set up a client in Keycloak
+## Step 1: Set up a client in Keycloak
 
 To register Harness as a SAML service provider in Keycloak, follow the steps below:
 
@@ -86,7 +79,9 @@ Replace `<YOUR ACCOUNT ID>` with your Harness account ID.
 If your Harness account uses a vanity URL, replace `https://app.harness.io` with your base URL in every field above. Example ACS URL shape: `https://<your-vanity-host>/gateway/api/users/saml-login?accountId=<YOUR ACCOUNT ID>`.
 :::
 
-### Configure client settings
+---
+
+## Step 2: Configure client settings
 
 Apply the following settings on the client you just created.
 
@@ -110,7 +105,7 @@ Apply the following settings on the client you just created.
 9. Click **Save**.
 
 
-### Download IdP metadata for Harness
+### Step 3: Download IdP metadata for Harness
 
 Harness imports Keycloak as an IdP from a metadata XML file.
 
@@ -120,7 +115,9 @@ Harness imports Keycloak as an IdP from a metadata XML file.
 
 	<DocImage path={require('../static/metadata-download.png')} alt="Keycloak Realm settings Endpoints tab with SAML 2.0 Identity Provider Metadata link" title="Click to view full size image" />
 
-### Optional: Add group membership in SAML
+---
+
+## Optional: Add group membership in SAML
 
 To automatically sync group memberships in Harness based on group memberships in Keycloak, perform the following steps:
 
@@ -140,7 +137,7 @@ To automatically sync group memberships in Harness based on group memberships in
 
 ---
 
-## Set up Keycloak SAML SSO in Harness
+## Step 4: Set up Keycloak SAML SSO in Harness
 
 Once you have the client set up in Keycloak, configure and enable Keycloak as an SAML provider in Harness. This way, Keycloak users can use the same credentials to sign in to Harness.
 
@@ -163,7 +160,7 @@ You should see the new provider under **Login via SAML**; you might need to expa
 
 ---
 
-## Enable and test SSO
+## Step 5: Enable and test SSO
 
 Enable your SSO configuration and verify users can authenticate successfully by following the steps below:
 
@@ -171,6 +168,18 @@ Enable your SSO configuration and verify users can authenticate successfully by 
 2. In the **Enable SAML provider** dialog, select **Test** so Harness validates the exchange.
 3. When the test passes, Harness shows **SAML test successful** banner at the top.
 4. Select **Confirm** to enable the provider for sign-in.
+
+---
+
+## Just-in-Time (JIT) provisioning
+
+Harness supports SAML configuration with or without JIT user provision. Review <a href="/docs/platform/role-based-access-control/provision-use-jit/" target="_blank">Just-In-Time (JIT)</a> to understand how Harness creates users on first SAML login when JIT is enabled.
+
+**Without JIT**, follow the steps below to add new users:
+1. In Harness, add the users you want to set up for SAML SSO by inviting them to Harness using the same email addresses that they use in your SAML provider.
+2. In Keycloak, add the users and make sure they are in scope for the client you create in the configuration steps below.
+
+**With JIT**, you add users to Keycloak, and they are automatically added to Harness on first successful SAML login.
 
 ---
 
