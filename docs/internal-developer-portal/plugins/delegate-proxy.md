@@ -5,6 +5,8 @@ description: This page describes the architecture of Plugins (including Custom P
 sidebar_position: 200
 ---
 
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
+
 This page describes the architecture of plugins in IDP, including custom plugins and explains the concepts such as Backend proxy and Delegate proxy.
 
 ## Types Of Plugins
@@ -63,3 +65,23 @@ For the delegate interceptor to work, the plugin must make requests to the backe
 :::
 
 Let's understand how the Delegate Proxy works, when you configure a plugin you get option to enable plugin proxy using a delegate, and once the proxy is enabled the Harness Interceptor sends the information provided as part of proxy configuration to Delegate Proxy which in-turn accesses the internal service of present behind a private network usually in customer's infrastructure using Delegate installed on that infrastructure. In case the API endpoints used in the plugins are publicly accessible, these are fetched directly into the Plugin UI. In case you have multiple delegates the delegate information is retrieved from the DB based on the selection user has done.
+
+---
+
+## Troubleshoot delegate proxy errors
+
+<Troubleshoot
+  issue='Error: "Did not receive response from Delegate"'
+  mode="docs"
+  fallback="Confirm the delegate is connected in Admin > Delegates, verify it can reach the target API endpoint (curl -v https://<target-api-host>/health), and check that the proxy secret is still valid."
+/>
+
+### Identify which delegate handles proxy requests
+
+When you enable the delegate proxy for a plugin, Harness routes requests based on the delegate selector configured in the proxy settings. To verify or change which delegate handles your plugin's proxy traffic:
+
+1. In your Harness project, go to **Internal Developer Portal**.
+2. Select **Configure > Plugins**.
+3. Select the plugin and open the **Configuration** tab.
+4. Check the **Delegate Selector** field. This determines which delegate (or delegate group) receives the proxy requests. If no selector is specified, Harness uses the default delegate selection logic (any available delegate in the account).
+
