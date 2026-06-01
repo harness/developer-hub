@@ -1,6 +1,6 @@
 ---
 title: Deploy a Synchronizer Docker container in Amazon AWS
-sidebar_position: 12
+sidebar_position: 13
 redirect_from:
   - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-optional-infra/how-to-deploy-fme-synchronizer-docker-container-in-aws/
 ---

@@ -1,6 +1,6 @@
 ---
 title: Deploy Java SDK in AWS Lambda
-sidebar_position: 11
+sidebar_position: 12
 redirect_from:
   - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/java-sdk-how-to-deploy-in-aws-lambda/
 ---

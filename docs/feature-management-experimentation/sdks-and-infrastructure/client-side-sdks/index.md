@@ -8,11 +8,15 @@ redirect_from:
   - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/
 ---
 
-## Overview
-
 Harness FME provides client-side SDKs that let you evaluate feature flags, run experiments, and deliver personalized experiences directly in your application's frontend.
 
 These SDKs are optimized for real-time updates and minimal latency, ensuring that your users always experience the most up-to-date feature set.
+
+## Certificate pinning
+
+If your application uses certificate pinning with Harness FME SDKs, you may need to [update your configuration](/docs/feature-management-experimentation/sdks-and-infrastructure/examples/certificate-pinning-migration) to support streaming infrastructure migrations and future SDK capabilities. 
+
+For platform-specific configuration instructions, see [Certificate Pinning for Android](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-sdk#certificate-pinning) and [Certificate Pinning for iOS](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk#certificate-pinning).
 
 ## Does the SDK cache expire?
 

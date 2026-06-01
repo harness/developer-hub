@@ -1875,6 +1875,14 @@ try {
 
 ### Certificate pinning
 
+:::warning Streaming infrastructure migration
+If your application uses certificate pinning with `streaming.split.io`, you may need to update your trusted certificate hashes to support streaming infrastructure migrations and future SDK capabilities.
+
+Add the required SHA-256 hashes for `streaming.split.io` before removing any existing streaming pins.
+
+For required hashes and migration guidance, see the [Certificate Pinning Migration Guide](/docs/feature-management-experimentation/sdks-and-infrastructure/examples/certificate-pinning-migration).
+:::
+
 The SDK allows you to constrain the certificates that the SDK trusts, using one of the following techniques:
 
 1. Pin a certificate's `SubjectPublicKeyInfo`, by providing the public key as a ___base64 SHA-256___ hash or a ___base64 SHA-1___ hash.

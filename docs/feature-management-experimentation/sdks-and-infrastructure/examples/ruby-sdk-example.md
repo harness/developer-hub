@@ -1,6 +1,6 @@
 ---
 title: Using the Ruby SDK with Rails and Sidekiq Service
-sidebar_position: 9
+sidebar_position: 10
 redirect_from:
   - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/ruby-sdk-example-using-sdk-with-rails-and-sidekiq-service/
 ---

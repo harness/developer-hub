@@ -48,5 +48,6 @@ Whether you’re managing feature flags at scale, migrating between environments
 | [Android app project using the FME SDK](https://github.com/Split-Community/Split-SDKs-Examples/tree/main/android-sdk)                           | [Ruby SDK example with Rails and Sidekiq service](/docs/feature-management-experimentation/sdks-and-infrastructure/examples/ruby-sdk-example)              |
 | [iOS app project using the FME SDK](https://github.com/Split-Community/Split-SDKs-Examples/tree/main/iOS-Swift-SDK)                               | [Deploy Node.js SDK in AWS Lambda](/docs/feature-management-experimentation/sdks-and-infrastructure/examples/nodejs-sdk-aws-lambda)                             |
 | [Browser SDK Migration Guide](/docs/feature-management-experimentation/sdks-and-infrastructure/examples/browser-sdk-migration)                                     | [Use the Node.js SDK in an Express app](https://github.com/splitio-examples/modular-node-express-example) |
+| [Certificate Pinning Migration Guide](/docs/feature-management-experimentation/sdks-and-infrastructure/examples/certificate-pinning-migration)                                     | |
 
 These examples demonstrate practical scenarios to integrate, automate, and optimize your usage of the Harness FME SDKs, covering both client-side and server-side implementations.

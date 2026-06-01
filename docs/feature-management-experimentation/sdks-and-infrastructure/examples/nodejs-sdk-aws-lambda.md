@@ -1,6 +1,6 @@
 ---
 title: Deploy Node.js SDK in AWS Lambda
-sidebar_position: 10
+sidebar_position: 11
 redirect_from:
   - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/nodejs-sdk-how-to-deploy-in-aws-lambda/
 ---
