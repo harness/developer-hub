@@ -58,11 +58,6 @@ export const QwietaiData: Horizon = {
         description: "Add native SAST scanning support for T-SQL."
       },
       {
-        tag: [{ value: "SAST" }, { value: "Language Support" }],
-        title: "Perl Language Support",
-        description: "Add native SAST scanning support for Perl."
-      },
-      {
         tag: [{ value: "SCA" }, { value: "Language Support" }],
         title: "Support for TOML config files",
         description: "Scan TOML configuration files in SCA."
@@ -151,6 +146,11 @@ export const QwietaiData: Horizon = {
         tag: [{ value: "Integration" }, { value: "Ticketing"}],
         title: "ServiceNow Integration",
         description: "Provide native integration for ticketing and workflow automation.",
+      },
+      {
+        tag: [{ value: "SAST" }, { value: "Language Support" }],
+        title: "Perl Language Support",
+        description: "Add native SAST scanning support for Perl."
       },
     ],
   },
