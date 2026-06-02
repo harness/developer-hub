@@ -181,10 +181,10 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io richard.black@harness.io a
 /src/components/Docs/data/softwareSupplyChainAssuranceData.tsx  lavakush.biyani@harness.io pranay.shah@harness.io sahil.jugiani@harness.io ambuj.lal@harness.io
 
 # IACM Docs
-/docs/infra-as-code-management/ richard.black@harness.io roger.simms@harness.io rohit.reddy@harness.io david.warren@harness.io kseniia.dudina@harness.io rajendra.baviskar@harness.io aleksa.buha@harness.io stephen.mcconkey@harness.io
-/release-notes/infrastructure-as-code-management.md richard.black@harness.io roger.simms@harness.io rohit.reddy@harness.io david.warren@harness.io kseniia.dudina@harness.io rajendra.baviskar@harness.io aleksa.buha@harness.io stephen.mcconkey@harness.io
-/src/components/Roadmap/data/iacmData.ts richard.black@harness.io roger.simms@harness.io rohit.reddy@harness.io david.warren@harness.io kseniia.dudina@harness.io rajendra.baviskar@harness.io aleksa.buha@harness.io stephen.mcconkey@harness.io
-/src/components/Docs/data/iacmData.ts richard.black@harness.io roger.simms@harness.io rohit.reddy@harness.io david.warren@harness.io kseniia.dudina@harness.io rajendra.baviskar@harness.io aleksa.buha@harness.io stephen.mcconkey@harness.io
+/docs/infra-as-code-management/ richard.black@harness.io roger.simms@harness.io rohit.reddy@harness.io david.warren@harness.io kseniia.dudina@harness.io rajendra.baviskar@harness.io aleksa.buha@harness.io stephen.mcconkey@harness.io kavita.maurya@harness.io
+/release-notes/infrastructure-as-code-management.md richard.black@harness.io roger.simms@harness.io rohit.reddy@harness.io david.warren@harness.io kseniia.dudina@harness.io rajendra.baviskar@harness.io aleksa.buha@harness.io stephen.mcconkey@harness.io kavita.maurya@harness.io
+/src/components/Roadmap/data/iacmData.ts richard.black@harness.io roger.simms@harness.io rohit.reddy@harness.io david.warren@harness.io kseniia.dudina@harness.io rajendra.baviskar@harness.io aleksa.buha@harness.io stephen.mcconkey@harness.io kavita.maurya@harness.io
+/src/components/Docs/data/iacmData.ts richard.black@harness.io roger.simms@harness.io rohit.reddy@harness.io david.warren@harness.io kseniia.dudina@harness.io rajendra.baviskar@harness.io aleksa.buha@harness.io stephen.mcconkey@harness.io kavita.maurya@harness.io
 
 # FF Classic Docs
 /docs/feature-flags/ austin.lai@harness.io david.karow@harness.io deepak.puthraya@harness.io rohit.pal@harness.io
@@ -246,7 +246,7 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io richard.black@harness.io a
 /docs/harness-cloud-operations/ @ankit-harness
 
 # FF GA Feed
-/release-notes/static/ff-ga-feed.json pooja.singhal@harness.io kalyan.sai@harness.io deepak.puthraya@harness.io mohit.garg@harness.io ravi.vankadari@harness.io navaneeth.kn@harness.io rohit.karelia@harness.io alexandru.casian@harness.io anshul@harness.io pritesh.chandaliya@harness.io pranay.shah@harness.io rajatha.ranganath@harness.io maanav.shah@harness.io hemanth.mantri@harness.io sakshi.jain@harness.io kuber.mehrotra@harness.io prateek.mittal@harness.io shashank.singh@harness.io ashok.prabhu@harness.io bharat.goel@harness.io
+/release-notes/static/ff-ga-feed.json pooja.singhal@harness.io kalyan.sai@harness.io deepak.puthraya@harness.io mohit.garg@harness.io ravi.vankadari@harness.io navaneeth.kn@harness.io rohit.karelia@harness.io alexandru.casian@harness.io anshul@harness.io pritesh.chandaliya@harness.io pranay.shah@harness.io rajatha.ranganath@harness.io maanav.shah@harness.io hemanth.mantri@harness.io sakshi.jain@harness.io kuber.mehrotra@harness.io prateek.mittal@harness.io shashank.singh@harness.io ashok.prabhu@harness.io bharat.goel@harness.io kavita.maurya@harness.io roger.simms@harness.io
 
 # Harness Solutions Factory
 /docs/harness-solutions-factory jeremy.goodrum@harness.io ashley.kim@harness.io aditya.kashyap@harness.io riley.snyder@harness.io
