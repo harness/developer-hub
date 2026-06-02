@@ -2643,6 +2643,7 @@ const sidebars: SidebarsConfig = {
         'cloud-cost-management/get-started/overview',
         'cloud-cost-management/get-started/get-started',
         'cloud-cost-management/get-started/onboarding-guide/external-data-ingestion',
+        'cloud-cost-management/ai-costs-introduction',
         {
           type: 'html',
           value: 'Use CACM',
@@ -2654,6 +2655,11 @@ const sidebars: SidebarsConfig = {
           type: 'html',
           value: 'Cost Reporting',
           className: 'secondary-horizontal-bar',
+        },
+        {
+          type:'doc',
+          id:'cloud-cost-management/cost-explorer',
+          label:'Cost Explorer'
         },
         {
           type: 'category',

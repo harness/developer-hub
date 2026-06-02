@@ -12,7 +12,7 @@ helpdocs_is_published: true
 
 Cost Explorer is built on top of the existing Perspectives infrastructure but offers a redesigned user experience focused on faster exploration and easier view management.
 
-To switch and use, jump directly to [Switching between Cost Explorer and Perspectives](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/cost-explorer#switching-between-cost-explorer-and-perspectives).
+To switch and use, jump directly to [Switching between Cost Explorer and Perspectives](/docs/cloud-cost-management/cost-explorer#switching-between-cost-explorer-and-perspectives).
 
 :::note
 Cost Explorer is enabled via the `CCM_PERSPECTIVES_V2` feature flag. When enabled, users can switch between the new Cost Explorer and the classic Perspectives interface.
@@ -29,7 +29,7 @@ Cost Explorer introduces a **view-centric** approach to cost analysis:
 - Quick access to recently used views
 - Seamless switching between views without page reloads
 
-<DocImage  path={require('./static/home.png')} width="50%" height="100%" title="Click to view full size image" />
+<DocImage  path={require('./3-use-ccm-cost-reporting/1-ccm-perspectives/static/home.png')} width="50%" height="100%" title="Click to view full size image" />
 
 ### Views Explorer Drawer
 
@@ -40,11 +40,11 @@ Access all your views through the **Views Explorer Drawer**:
 - **Quick Search**: Find views by name across all folders
 - **Folder Navigation**: Browse views organized in folder structure
 
-<DocImage  path={require('./static/cost-explorer-one.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage  path={require('./3-use-ccm-cost-reporting/1-ccm-perspectives/static/cost-explorer-one.png')} width="100%" height="100%" title="Click to view full size image" />
 
 ### Advanced Filter Rule Builder
 
-<DocImage  path={require('./static/ce-three.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage  path={require('./3-use-ccm-cost-reporting/1-ccm-perspectives/static/ce-three.png')} width="100%" height="100%" title="Click to view full size image" />
 
 Create complex filter logic using the **Advanced Filter Drawer**:
 
@@ -55,7 +55,8 @@ Create complex filter logic using the **Advanced Filter Drawer**:
 - **NOT NULL**: Include only resources where this field has a value
 - **LIKE**: Include resources where the field partially matches a pattern (uses regular expressions)
   - For exact pattern matching, use `^pattern$` syntax
-<DocImage  path={require('./static/ce-two.png')} width="70%" height="70%" title="Click to view full size image" />
+
+<DocImage  path={require('./3-use-ccm-cost-reporting/1-ccm-perspectives/static/ce-two.png')} width="70%" height="70%" title="Click to view full size image" />
 
 #### Using the Rule Builder
 1. Click **"add advanced filter"** o the filter chip to open the drawer
@@ -74,11 +75,11 @@ For simple filtering, use the **inline filter chips**:
 - Click the chip to modify or remove
 - Switch to Advanced Filter for complex OR logic
 
-<DocImage  path={require('./static/inline.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage  path={require('./3-use-ccm-cost-reporting/1-ccm-perspectives/static/inline.png')} width="100%" height="100%" title="Click to view full size image" />
 
 ### Group By Options
 
-<DocImage  path={require('./static/group.png')} width="50%" height="100%" title="Click to view full size image" />
+<DocImage  path={require('./3-use-ccm-cost-reporting/1-ccm-perspectives/static/group.png')} width="50%" height="100%" title="Click to view full size image" />
 
 You can create a Perspective for your resources using rules and filters. The filters are used to group the resources. The following are the supported filters:
 
@@ -180,7 +181,7 @@ You can create a Perspective for your resources using rules and filters. The fil
 
 ### Time Period & Granularity
 
-<DocImage  path={require('./static/ce-four.png')} width="50%" height="50%" title="Click to view full size image" />
+<DocImage  path={require('./3-use-ccm-cost-reporting/1-ccm-perspectives/static/ce-four.png')} width="50%" height="50%" title="Click to view full size image" />
 
 **Time Period Options**
 - Last 7 Days
@@ -197,7 +198,7 @@ You can create a Perspective for your resources using rules and filters. The fil
 
 ### Preferences
 
-<DocImage  path={require('./static/preferences-ce.png')} width="50%" height="50%" title="Click to view full size image" />
+<DocImage  path={require('./3-use-ccm-cost-reporting/1-ccm-perspectives/static/preferences-ce.png')} width="50%" height="50%" title="Click to view full size image" />
 
 #### General Preferences
 
@@ -205,7 +206,7 @@ You can create a Perspective for your resources using rules and filters. The fil
 
 - **Show Anomalies**: Highlight unusual spending patterns or sudden cost changes in your visualizations. This feature makes it easy to spot potential issues or unexpected charges that may require investigation. The number of anomalies are shown on the Group By graph in a red triangle.
 
-<DocImage  path={require('./static/anomalies.png')} width="50%" height="50%" title="Click to view full size image" />
+<DocImage  path={require('./3-use-ccm-cost-reporting/1-ccm-perspectives/static/anomalies.png')} width="50%" height="50%" title="Click to view full size image" />
 
 - **Show Negative Cost**: Displays instances where discounts exceed the actual billing amount, resulting in negative cost values in your reports. Displays the negative cost with a dotted red bar and labels it as NegativeCost in the legend. To view it, please select "Group By" as None because in other Group Bys, it might not appear in the top 12 entries.
 
@@ -244,7 +245,7 @@ View key metrics at a glance:
 - **Anomalies**: Detected cost anomalies count
 - **Recommendations**: Available optimization recommendations
 
-<DocImage  path={require('./static/summary.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage  path={require('./3-use-ccm-cost-reporting/1-ccm-perspectives/static/summary.png')} width="100%" height="100%" title="Click to view full size image" />
 
 ### Save & Manage Views
 
@@ -255,26 +256,26 @@ View key metrics at a glance:
 4. Enter view name and select folder
 5. Click **"Save"**
 
-<DocImage  path={require('./static/save.png')} width="50%" height="50%" title="Click to view full size image" />
+<DocImage  path={require('./3-use-ccm-cost-reporting/1-ccm-perspectives/static/save.png')} width="50%" height="50%" title="Click to view full size image" />
 
 **Edit View Properties**
 - Click the **edit icon** next to the view name
 - Modify name and folder location
 - Changes are saved when you save the view
 
-<DocImage  path={require('./static/edit.png')} width="50%" height="50%" title="Click to view full size image" />
+<DocImage  path={require('./3-use-ccm-cost-reporting/1-ccm-perspectives/static/edit.png')} width="50%" height="50%" title="Click to view full size image" />
 
 ### Reports and Alerts
 
-<DocImage  path={require('./static/ce-six.png')} width="50%" height="50%" title="Click to view full size image" />
+<DocImage  path={require('./3-use-ccm-cost-reporting/1-ccm-perspectives/static/ce-six.png')} width="50%" height="50%" title="Click to view full size image" />
 
 - **Quick Export**: **Download as CSV** either as a chart or as a table
-<DocImage  path={require('./static/export-csv.png')} width="50%" height="100%" title="Click to view full size image" />
+<DocImage  path={require('./3-use-ccm-cost-reporting/1-ccm-perspectives/static/export-csv.png')} width="50%" height="100%" title="Click to view full size image" />
 
 - **Scheduled Reports**: Create recurring reports from saved views
 
-<DocImage  path={require('./static/report-one.png')} width="40%" height="50%" title="Click to view full size image" />
-<DocImage  path={require('./static/report-two.png')} width="40%" height="50%" title="Click to view full size image" />
+<DocImage  path={require('./3-use-ccm-cost-reporting/1-ccm-perspectives/static/report-one.png')} width="40%" height="50%" title="Click to view full size image" />
+<DocImage  path={require('./3-use-ccm-cost-reporting/1-ccm-perspectives/static/report-two.png')} width="40%" height="50%" title="Click to view full size image" />
 
 ### Dynamic vs Stored Data Toggle
 
@@ -289,14 +290,14 @@ Read More here: [Dynamic Cost Categories Toggle](/docs/cloud-cost-management/use
 
 ### Enable Cost Explorer
 
-<DocImage  path={require('./static/switch.png')} width="50%" height="100%" title="Click to view full size image" />
+<DocImage  path={require('./3-use-ccm-cost-reporting/1-ccm-perspectives/static/switch.png')} width="50%" height="100%" title="Click to view full size image" />
 
 1. Look for the **"Switch to new Views Experience"** banner on the Perspectives page
 2. Click **"Switch"** to enable Cost Explorer
 3. The page will reload with the new interface
 
 ### Switch Back to Perspectives
-<DocImage  path={require('./static/switch-back.png')} width="50%" height="100%" title="Click to view full size image" />
+<DocImage  path={require('./3-use-ccm-cost-reporting/1-ccm-perspectives/static/switch-back.png')} width="50%" height="100%" title="Click to view full size image" />
 1. Open the **Views Explorer Drawer** (click the View selector)
 2. Click **"Switch back to Perspectives"** link in the header
 3. The page will reload with the classic Perspectives interface
