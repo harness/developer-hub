@@ -74,7 +74,7 @@ function main() {
 
   fs.writeFileSync(OUTPUT, JSON.stringify({ entries, grouped }, null, 2));
 
-  console.log(`✅ Glossary generated (${entries.length} terms)`);
+  console.log(`[build-glossary] ✓ ${entries.length} terms`);
 }
 
 main();

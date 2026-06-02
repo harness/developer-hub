@@ -7,6 +7,9 @@ const GEMINI_TIMEOUT_MS = 60000;
 let genAI = null;
 let model = null;
 
+const verbose = process.env.VERBOSE === '1';
+const log = (...args) => verbose && console.log(...args);
+
 function initializeGemini() {
   if (!GEMINI_API_KEY) {
     console.warn('[gemini-client] No GEMINI_API_KEY environment variable found');
@@ -16,7 +19,7 @@ function initializeGemini() {
   try {
     genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
     model = genAI.getGenerativeModel({ model: GEMINI_MODEL });
-    console.log(`[gemini-client] Initialized with model: ${GEMINI_MODEL}`);
+    log(`[gemini-client] Initialized with model: ${GEMINI_MODEL}`);
     return true;
   } catch (error) {
     console.error('[gemini-client] Failed to initialize:', error.message);
@@ -52,12 +55,11 @@ async function generateSummary(moduleTitle, enhancements, fixes) {
 
     if (parsed.categories) {
       const totalItems = parsed.categories.reduce((sum, cat) => sum + cat.items.length, 0);
-      console.log(
+      log(
         `[gemini-client] Generated summary for ${moduleTitle} (${parsed.categories.length} categories, ${totalItems} items)`,
       );
     } else {
-      // Fallback log for old format
-      console.log(`[gemini-client] Generated summary for ${moduleTitle}`);
+      log(`[gemini-client] Generated summary for ${moduleTitle}`);
     }
     return parsed;
   } catch (error) {

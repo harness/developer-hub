@@ -37,14 +37,24 @@ const MODULES = [
   //},
 ];
 
+const FETCH_TIMEOUT_MS = 15_000;
+const verbose = process.env.VERBOSE === '1';
+const log = (...args) => verbose && console.log(...args);
+
 async function fetchSpec(url) {
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(`HTTP ${res.status}: ${url}`);
-  const text = await res.text();
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
   try {
-    return JSON.parse(text);
-  } catch {
-    return yaml.load(text);
+    const res = await fetch(url, { signal: controller.signal });
+    if (!res.ok) throw new Error(`HTTP ${res.status}: ${url}`);
+    const text = await res.text();
+    try {
+      return JSON.parse(text);
+    } catch {
+      return yaml.load(text);
+    }
+  } finally {
+    clearTimeout(timer);
   }
 }
 
@@ -87,9 +97,7 @@ function removeDeprecatedOperations(spec) {
         description.includes('deprecated');
 
       if (isDeprecated) {
-        console.log(
-          `[fetch-api-specs] removing deprecated ${method.toUpperCase()} ${pathKey}`
-        );
+        log(`[fetch-api-specs] removing deprecated ${method.toUpperCase()} ${pathKey}`);
         delete pathItem[method];
       }
     }
@@ -126,9 +134,7 @@ function removeInternalControllerEndpoints(spec) {
         pathKey.toLowerCase().includes('controller');
 
       if (isInternal) {
-        console.log(
-          `[fetch-api-specs] removing internal Controller ${method.toUpperCase()} ${pathKey}`
-        );
+        log(`[fetch-api-specs] removing internal Controller ${method.toUpperCase()} ${pathKey}`);
         delete pathItem[method];
       }
     }
@@ -142,39 +148,67 @@ function removeInternalControllerEndpoints(spec) {
   return spec;
 }
 
-async function main() {
-  await fs.ensureDir(OUT_DIR);
-  for (const mod of MODULES) {
-    const { id } = mod;
-    try {
-      let spec;
-      const localFull = mod.localPath ? path.join(ROOT, mod.localPath) : null;
-      const useLocal = localFull && (await fs.pathExists(localFull));
-      if (useLocal) {
-        const text = await fs.readFile(localFull, 'utf8');
-        spec = yaml.load(text);
-        console.log(`[fetch-api-specs] ${id} (local) -> ${path.join(OUT_DIR, `${id}.json`)}`);
-      } else if (mod.specUrl) {
-        spec = await fetchSpec(mod.specUrl);
-        console.log(`[fetch-api-specs] ${id} -> ${path.join(OUT_DIR, `${id}.json`)}`);
-      } else {
-        throw new Error('Neither localPath (file present) nor specUrl');
-      }
+async function processModule(mod) {
+  const { id } = mod;
+  const outPath = path.join(OUT_DIR, `${id}.json`);
 
-      if (spec) {
-        spec = removeDeprecatedOperations(spec);
-        spec = removeInternalControllerEndpoints(spec);
-        spec = normalizeServers(spec, id);
-      }
+  try {
+    let spec;
+    const localFull = mod.localPath ? path.join(ROOT, mod.localPath) : null;
+    const useLocal = localFull && (await fs.pathExists(localFull));
 
-      const outPath = path.join(OUT_DIR, `${id}.json`);
-      await fs.writeJson(outPath, spec, { spaces: 0 });
+    if (useLocal) {
+      const text = await fs.readFile(localFull, 'utf8');
+      spec = yaml.load(text);
+    } else if (mod.specUrl) {
+      spec = await fetchSpec(mod.specUrl);
+    } else {
+      throw new Error('Neither localPath (file present) nor specUrl');
+    }
 
-    } catch (err) {
-      console.error(`[fetch-api-specs] ${id} failed:`, err.message);
+    if (spec) {
+      spec = removeDeprecatedOperations(spec);
+      spec = removeInternalControllerEndpoints(spec);
+      spec = normalizeServers(spec, id);
+    }
+
+    await fs.writeJson(outPath, spec, { spaces: 0 });
+    return { id, status: useLocal ? 'local' : 'fetched' };
+  } catch (err) {
+    const isTimeout = err.name === 'AbortError';
+    const reason = isTimeout ? `timed out after ${FETCH_TIMEOUT_MS / 1000}s` : err.message;
+    const cached = await fs.pathExists(outPath);
+
+    if (cached) {
+      console.warn(`[fetch-api-specs] ${id} warning: ${reason} — using cached version`);
+      return { id, status: 'cached' };
+    } else {
+      console.error(`[fetch-api-specs] ${id} failed: ${reason} — no cached version available`);
       process.exitCode = 1;
+      return { id, status: 'failed' };
     }
   }
+}
+
+async function main() {
+  await fs.ensureDir(OUT_DIR);
+  const results = (await Promise.allSettled(MODULES.map(processModule)))
+    .map((r) => r.value ?? { id: '?', status: 'failed' });
+
+  const fetched = results.filter((r) => r.status === 'fetched').map((r) => r.id);
+  const local = results.filter((r) => r.status === 'local').map((r) => r.id);
+  const cached = results.filter((r) => r.status === 'cached').map((r) => r.id);
+  const failed = results.filter((r) => r.status === 'failed').map((r) => r.id);
+
+  const parts = [
+    fetched.length && `fetched: ${fetched.join(', ')}`,
+    local.length && `local: ${local.join(', ')}`,
+    cached.length && `cached (fallback): ${cached.join(', ')}`,
+    failed.length && `failed: ${failed.join(', ')}`,
+  ].filter(Boolean);
+
+  const ok = results.length - failed.length;
+  console.log(`[fetch-api-specs] ✓ ${ok}/${results.length} specs — ${parts.join(' | ')}`);
 }
 
 main();

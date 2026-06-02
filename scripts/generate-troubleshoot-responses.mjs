@@ -19,6 +19,8 @@ const DOCS_GLOB = 'docs/**/*.md';
 const GEMINI_MODEL = 'gemini-flash-latest';
 const GEMINI_TIMEOUT_MS = 30000;
 const LOG = '[troubleshoot-gen]';
+const verbose = process.env.VERBOSE === '1';
+const log = (...args) => verbose && console.log(...args);
 
 function isGeminiAvailable() {
   return !!process.env.GEMINI_API_KEY;
@@ -107,30 +109,36 @@ async function main() {
     return;
   }
 
-  console.log(`${LOG} Generating responses for ${toGenerate.length} issue(s)…`);
+  log(`${LOG} Generating responses for ${toGenerate.length} issue(s)…`);
 
   const results = await Promise.allSettled(
     toGenerate.map(async issue => {
       try {
         const response = await callGemini(issue);
-        console.log(`${LOG} ✓ ${issue.slice(0, 60)}…`);
+        log(`${LOG} ✓ ${issue.slice(0, 60)}…`);
         return { issue, response };
       } catch (err) {
-        console.warn(`${LOG} ✗ Failed for: ${issue.slice(0, 60)}… (${err.message})`);
+        log(`${LOG} ✗ Failed for: ${issue.slice(0, 60)}… (${err.message})`);
         return { issue, response: null };
       }
     })
   );
 
   const updated = { ...existing };
+  let succeeded = 0;
+  let failed = 0;
   for (const result of results) {
     if (result.status === 'fulfilled' && result.value.response) {
       updated[result.value.issue] = result.value.response;
+      succeeded++;
+    } else {
+      failed++;
     }
   }
 
   fs.writeFileSync(GENERATED_FILE, JSON.stringify(updated, null, 2));
-  console.log(`${LOG} Written to ${GENERATED_FILE}`);
+  const failNote = failed > 0 ? `, ${failed} failed` : '';
+  console.log(`${LOG} ✓ ${succeeded}/${toGenerate.length} issues generated${failNote}`);
 }
 
 main().catch(err => {

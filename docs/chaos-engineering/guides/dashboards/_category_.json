@@ -1,6 +1,6 @@
 {
   "position": 30,
-  "label": "Chaos Dashboard",
+  "label": "Chaos Dashboard (Legacy)",
   "collapsible": "true",
   "collapsed": "true",
   "customProps": {

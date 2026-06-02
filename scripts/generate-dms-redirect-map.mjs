@@ -119,7 +119,7 @@ module.exports = DMS_REDIRECT_MAP;
 `;
   fs.writeFileSync(outFile, content, 'utf-8');
   const count = Object.keys(map).length;
-  console.log(`Wrote ${count} DMS redirect entries to ${path.relative(repoRoot, outFile)}`);
+  console.log(`[dms-redirects] ✓ ${count} entries`);
 }
 
 main();

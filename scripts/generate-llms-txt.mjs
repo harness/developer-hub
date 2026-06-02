@@ -340,27 +340,26 @@ async function writeToNetlifyBlobs(conciseContent, fullContent) {
 /**
  * Main execution
  */
+const verbose = process.env.VERBOSE === '1';
+const log = (...args) => verbose && console.log(...args);
+
 async function main() {
-  console.log('[generate-llms-txt] Starting generation...');
+  log('[generate-llms-txt] Starting generation...');
 
   // Get all doc files
   const files = getAllDocFiles(DOCS_DIR);
-  console.log(`[generate-llms-txt] Found ${files.length} documentation files`);
+  log(`[generate-llms-txt] Found ${files.length} documentation files`);
 
   // Group by module
   const modules = groupByModule(files);
-  console.log(`[generate-llms-txt] Organized into ${Object.keys(modules).length} modules`);
+  log(`[generate-llms-txt] Organized into ${Object.keys(modules).length} modules`);
 
   // Generate content
   const conciseContent = generateConcise(modules);
   const fullContent = generateFull(modules);
 
-  // Stats
   const conciseLines = conciseContent.split('\n').length;
   const fullLines = fullContent.split('\n').length;
-  console.log(`[generate-llms-txt] Stats:`);
-  console.log(`  - llms.txt: ${conciseLines} lines`);
-  console.log(`  - llms-full.txt: ${fullLines} lines`);
 
   if (process.env.NETLIFY === 'true') {
     // On Netlify: write to Deploy Blobs only — the llms_txt function serves from
@@ -369,12 +368,12 @@ async function main() {
   } else {
     // Local dev: write to static/ so the netlify dev fallback can serve them.
     fs.writeFileSync(OUTPUT_CONCISE, conciseContent, 'utf-8');
-    console.log(`[generate-llms-txt] ✓ Written to ${OUTPUT_CONCISE}`);
     fs.writeFileSync(OUTPUT_FULL, fullContent, 'utf-8');
-    console.log(`[generate-llms-txt] ✓ Written to ${OUTPUT_FULL}`);
   }
 
-  console.log('[generate-llms-txt] ✅ Done!');
+  console.log(
+    `[generate-llms-txt] ✓ ${files.length} files, ${Object.keys(modules).length} modules — llms.txt (${conciseLines} lines), llms-full.txt (${fullLines} lines)`,
+  );
 }
 
 main().catch((err) => {

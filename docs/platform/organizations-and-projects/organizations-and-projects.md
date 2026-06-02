@@ -16,7 +16,6 @@ keywords:
   - create project
 redirect_from:
   - /docs/platform/organizations-and-projects/projects-and-organizations
-  - /docs/category/organizations--projects
 ---
 
 Within a Harness account, you organize your work using organizations and projects. This structure helps your teams collaborate effectively while keeping ownership, access, and configuration clearly defined.

@@ -34,12 +34,19 @@ function stubEnhancementIfRecentFile(parsedData, daysBack) {
   return `Updates for this period are documented on the ${parsedData.title} page.`;
 }
 
-// Check for --skip-if-exists flag
+// --skip-if-exists: skip generation when the output file already exists.
+// Used in both `prebuild` and `start` so contributors don't pay the Gemini API
+// cost on every rebuild. CI always starts from a fresh clone with no output file,
+// so summaries are always regenerated there. Delete the output file locally to
+// force a full regeneration: rm release-notes/generated/ai-summaries.json
 const skipIfExists = process.argv.includes('--skip-if-exists');
+const verbose = process.argv.includes('--verbose');
 
-// Skip if output file exists and flag is set
+const log = (...args) => verbose && console.log(...args);
+const logAlways = (...args) => console.log(...args);
+
 if (skipIfExists && fs.existsSync(OUTPUT_FILE)) {
-  console.log('[rn-summaries] Output file exists, skipping generation...');
+  logAlways('[rn-summaries] Output file exists, skipping generation...');
   process.exit(0);
 }
 
@@ -85,7 +92,7 @@ function createFallbackCategories(enhancements, fixes) {
 
 async function main() {
   try {
-    console.log('[rn-summaries] Loading category mapping from sidebar...');
+    log('[rn-summaries] Loading category mapping from sidebar...');
     const categoryMapping = loadCategoryMapping(SIDEBAR_PATH);
 
     if (!categoryMapping || !categoryMapping.categories) {
@@ -94,11 +101,7 @@ async function main() {
     }
 
     const useGemini = isGeminiAvailable();
-    if (useGemini) {
-      console.log('[rn-summaries] Gemini API is available, will use AI summarization');
-    } else {
-      console.log('[rn-summaries] Gemini API not available, will use fallback parser');
-    }
+    log(`[rn-summaries] Method: ${useGemini ? 'Gemini AI' : 'fallback parser'}`);
 
     const summariesData = {
       generated_at: new Date().toISOString(),
@@ -117,7 +120,7 @@ async function main() {
     const moduleEntries = []; // { categoryName, module, parsedData, markdownPath }
 
     for (const category of categoryMapping.categories) {
-      console.log(`[rn-summaries] Processing category: ${category.name}`);
+      log(`[rn-summaries] Processing category: ${category.name}`);
 
       for (const module of category.modules) {
         totalModulesProcessed++;
@@ -125,15 +128,15 @@ async function main() {
         const markdownPath = path.join(RELEASE_NOTES_DIR, `${module.id}.md`);
 
         if (!fs.existsSync(markdownPath)) {
-          console.warn(`[rn-summaries]   - ${module.id}: file not found, skipping`);
+          log(`[rn-summaries]   - ${module.id}: file not found, skipping`);
           continue;
         }
 
-        console.log(`[rn-summaries]   - ${module.id}: parsing...`);
+        log(`[rn-summaries]   - ${module.id}: parsing...`);
         let parsedData = parseReleaseNotes(markdownPath, DAYS_BACK);
 
         if (!parsedData) {
-          console.warn(`[rn-summaries]   - ${module.id}: parsing failed, skipping`);
+          log(`[rn-summaries]   - ${module.id}: parsing failed, skipping`);
           continue;
         }
 
@@ -144,9 +147,9 @@ async function main() {
           const stub = stubEnhancementIfRecentFile(parsedData, DAYS_BACK);
           if (stub) {
             parsedData = { ...parsedData, enhancements: [stub] };
-            console.log(`[rn-summaries]   - ${module.id}: using frontmatter stub for landing list`);
+            log(`[rn-summaries]   - ${module.id}: using frontmatter stub for landing list`);
           } else {
-            console.log(`[rn-summaries]   - ${module.id}: no recent content`);
+            log(`[rn-summaries]   - ${module.id}: no recent content`);
             continue;
           }
         }
@@ -155,7 +158,7 @@ async function main() {
         moduleEntries.push(entry);
 
         if (useGemini && (parsedData.enhancements?.length > 0 || parsedData.fixes?.length > 0)) {
-          console.log(`[rn-summaries]   - ${module.id}: queued for AI categorization`);
+          log(`[rn-summaries]   - ${module.id}: queued for AI categorization`);
           geminiTasks.push({
             entry,
             promise: generateSummary(
@@ -171,9 +174,7 @@ async function main() {
     //  Await all Gemini API calls in parallel
     const geminiResults = new Map();
     if (geminiTasks.length > 0) {
-      console.log(
-        `[rn-summaries] Calling Gemini API for ${geminiTasks.length} modules in parallel...`,
-      );
+      log(`[rn-summaries] Calling Gemini API for ${geminiTasks.length} modules in parallel...`);
       const results = await Promise.allSettled(geminiTasks.map((t) => t.promise));
       for (let i = 0; i < geminiTasks.length; i++) {
         const { entry } = geminiTasks[i];
@@ -181,7 +182,7 @@ async function main() {
         if (result.status === 'fulfilled') {
           geminiResults.set(entry.module.id, result.value);
         } else {
-          console.warn(
+          log(
             `[rn-summaries]   - ${entry.module.id}: Gemini call rejected: ${result.reason?.message || result.reason}`,
           );
           geminiResults.set(entry.module.id, null);
@@ -201,12 +202,12 @@ async function main() {
         if (aiSummary && aiSummary.categories) {
           finalData = { categories: aiSummary.categories };
           totalGeminiSuccess++;
-          console.log(
+          log(
             `[rn-summaries]   - ${module.id}: AI categorization successful (${aiSummary.categories.length} categories)`,
           );
         } else {
           totalGeminiFallback++;
-          console.log(`[rn-summaries]   - ${module.id}: AI failed, using fallback categorization`);
+          log(`[rn-summaries]   - ${module.id}: AI failed, using fallback categorization`);
           finalData = createFallbackCategories(
             parsedData.enhancements || [],
             parsedData.fixes || [],
@@ -217,7 +218,7 @@ async function main() {
       }
 
       if (!finalData || !finalData.categories || finalData.categories.length === 0) {
-        console.log(`[rn-summaries]   - ${module.id}: no categorized content`);
+        log(`[rn-summaries]   - ${module.id}: no categorized content`);
         continue;
       }
 
@@ -236,7 +237,7 @@ async function main() {
       });
 
       const totalItems = finalData.categories.reduce((sum, cat) => sum + cat.items.length, 0);
-      console.log(
+      log(
         `[rn-summaries]   - ${module.id}: ${finalData.categories.length} categories, ${totalItems} total items`,
       );
     }
@@ -253,16 +254,12 @@ async function main() {
 
     fs.writeFileSync(OUTPUT_FILE, JSON.stringify(summariesData, null, 2));
 
-    console.log(`[rn-summaries] ✓ Successfully generated summaries:`);
-    console.log(`[rn-summaries]   - Method: ${summariesData.generation_method}`);
-    console.log(`[rn-summaries]   - Processed: ${totalModulesProcessed} modules`);
-    console.log(`[rn-summaries]   - With content: ${totalModulesWithContent} modules`);
-    if (useGemini) {
-      console.log(`[rn-summaries]   - AI success: ${totalGeminiSuccess} modules`);
-      console.log(`[rn-summaries]   - AI fallback: ${totalGeminiFallback} modules`);
-    }
-    console.log(`[rn-summaries]   - Categories: ${summariesData.categories.length}`);
-    console.log(`[rn-summaries]   - Output: ${OUTPUT_FILE}`);
+    const methodLabel = useGemini
+      ? `AI (${totalGeminiSuccess} ok, ${totalGeminiFallback} fallback)`
+      : 'fallback parser';
+    logAlways(
+      `[rn-summaries] ✓ ${totalModulesWithContent}/${totalModulesProcessed} modules, ${summariesData.categories.length} categories — ${methodLabel}`,
+    );
 
     process.exit(0);
   } catch (error) {

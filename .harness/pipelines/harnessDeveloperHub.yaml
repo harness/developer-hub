@@ -220,8 +220,10 @@ pipeline:
                     condition: <+trigger.event>.equals("PUSH") && <+trigger.targetBranch>.equals("main")
                     stageStatus: Success
           caching:
-            enabled: false
-            paths: []
+            enabled: true
+            key: "{{ checksum \"yarn.lock\" }}"
+            paths:
+              - node_modules
           buildIntelligence:
             enabled: false
   properties:

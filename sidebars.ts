@@ -3760,7 +3760,7 @@ const sidebars: SidebarsConfig = {
         "chaos-engineering/guides/image-registry",
         {
           type: 'category',
-          label: 'Chaos Dashboard',
+          label: 'Chaos Dashboard (Legacy)',
           link: {
             type: 'generated-index',
           },
