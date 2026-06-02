@@ -1266,6 +1266,8 @@ The **Skip application auto scaling** option allows you to control whether Harne
 
 :::note
 This feature is behind the feature flag `CDS_ECS_SKIP_APPLICATION_SCALING`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+This feature requires delegate version `26.05.89205` or later.
 :::
 
 **Default behavior:**
