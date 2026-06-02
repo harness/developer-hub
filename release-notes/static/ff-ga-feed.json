@@ -1,5 +1,17 @@
 [
   {
+    "flagKey": "STO_JIRA_ENHANCED_TICKET_METADATA",
+    "description": "Enhances Jira ticket metadata by including additional security issue details such as severity, CVSS scores, vulnerability paths, and remediation guidance to improve ticket triage and prioritization.",
+    "gaStartDate": "2026-06-02",
+    "module": "Security Test Orchestration"
+  },
+  {
+    "flagKey": "STO_NON_BASELINE_TICKETING",
+    "description": "Enables Jira ticket creation for security issues detected in non-baseline scans, allowing teams to track and remediate vulnerabilities from ad-hoc or on-demand security scans beyond the established baseline.",
+    "gaStartDate": "2026-06-02",
+    "module": "Security Test Orchestration"
+  },
+  {
     "flagKey": "IACM_USE_NEW_RESOURCES_TABLE",
     "description": "Migrates all existing IACM cloud resources from the Terraform state file into the new resources table.",
     "gaStartDate": "2026-06-02",
