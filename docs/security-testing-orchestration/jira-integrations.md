@@ -13,7 +13,9 @@ Harness STO allows you to create individual Jira tickets for security issues det
 - [Create Jira tickets for security issues](#create-jira-ticket-for-a-security-issue-in-sto)
 - [Auto Create Jira Tickets for Exemption Requests](#auto-create-jira-tickets-for-exemption-requests)
 - [Access Jira tickets from STO](#access-jira-tickets-from-sto)
+- [Jira ticket Metadata](#jira-ticket-metadata)
 - [Set up Jira integration for STO](#configure-external-tickets-settings)
+- [Enable ticket creation for issues found in non-baseline targets](#enable-ticket-creation-for-issues-found-in-non-baseline-targets)
 
 
 :::note  
@@ -36,7 +38,7 @@ Jira tickets can only be created for targets that have baselines configured. For
 
 2. Locate and select the issue for which you want to create a Jira ticket, then click **Create Ticket**.
 
-   <DocImage path={require('./use-sto/static/jira-create-ticket-button.png')} width="80%" height="80%" title="Click to view full size image" />
+<DocImage path={require('./use-sto/static/jira-create-ticket-button.png')} width="80%" height="80%" title="Click to view full size image" />
 
 3. In the **Create Ticket in Jira** dialog, configure the following fields:
 
@@ -91,15 +93,57 @@ Once a ticket is created, you can access the corresponding Jira ticket from the 
 
 Once a ticket is created, you can access the corresponding Jira ticket from the issue details page where the ticket was created. The **Create Ticket** button will be replaced with the Jira issue number. By clicking on this number, you will be directed to the Jira ticket.
 
-<DocImage path={require('./use-sto/static/jira-link-to-ticket.png')} width="80%" height="80%" title="Click to view full size image" />  
+<DocImage path={require('./use-sto/static/jira-link-to-ticket.png')} width="80%" height="80%" title="Click to view full size image" />
 
 In addition to the issue details in the Jira ticket, a link back to the detected issue in the STO UI will be added to the description of the Jira ticket.
 
-<DocImage path={require('./use-sto/static/jira-ticket.png')} width="80%" height="80%" title="Click to view full size image" />  
+<DocImage path={require('./use-sto/static/jira-ticket.png')} width="80%" height="80%" title="Click to view full size image" />
 
 The Jira link will point to a **Ticket Summary** in the STO UI, which displays all detected issues tracked by the ticket.
 
 <DocImage path={require('./use-sto/static/jira-ticket-summary-in-sto.png')} width="80%" height="80%" title="Click to view full size image" />
+
+---
+
+## Jira ticket Metadata
+
+Jira tickets created from STO include comprehensive metadata organized into the following sections:
+
+:::note
+This enhanced metadata feature is behind the feature flag `STO_JIRA_ENHANCED_TICKET_METADATA`. Contact [Harness Support](mailto:support@harness.io) to enable this flag.
+:::
+
+### Vulnerability summary
+The ticket includes a summary table with the following fields:
+
+- **Title**: The vulnerability identifier (e.g., python@3.14.5)
+- **Issue Type**: The scan type that detected the issue (e.g., SCA, SAST, DAST)
+- **Library**: The affected library or package name
+- **Current Version**: The current version of the library
+- **Variant Name**: The variant where the issue was detected (e.g., 3.14-alpine)
+- **Severity**: The severity rating with CVSS score (e.g., Critical (9.8))
+- **CVE/CWE IDs**: List of associated CVE and CWE identifiers
+- **Target**: The target where the vulnerability was detected (e.g., container image, repository)
+- **EPSS Score**: The Exploit Prediction Scoring System score and percentile
+
+### Occurrences table
+The ticket includes a comprehensive table that lists all occurrences. The columns in the table vary based on the **Issue type**.
+
+**For SCA (Software Composition Analysis) issues:**
+- **Severity**: The severity level for each occurrence
+- **File Path**: The path to the file or library where the vulnerability was found
+- **Library**: The affected library name
+- **Current Version**: The current version of the library
+- **Fix Available**: Whether a fix is available (Yes/No)
+- **Upgrade Version**: The recommended upgrade version if a fix is available
+- **Reference Identifiers**: CVE/CWE identifiers specific to that occurrence
+
+For other issue types (SAST, DAST, IaC, Secret), the occurrence table columns vary by issue type.
+
+If there are more than 10 occurrences, the ticket includes a note with a link to view additional occurrences.
+
+### Auto-creation note
+Tickets created automatically include the note "This ticket was auto created" in the description.
 
 
 ---
@@ -159,3 +203,15 @@ Example comment for exemption expiration:
 #### Create a ticket when an Exemption is created
 
 This option will allow STO to auto create a new Jira ticket whenever a new exemption request is created, only if there is no Jira ticket already associated with the issue.
+
+#### Enable ticket creation for issues found in non-baseline targets
+
+Enable this option to allow Jira ticket creation for non-baseline targets, such as feature branches and pull requests. This enables early remediation of high-risk vulnerabilities before they are merged into the main codebase.
+
+When enabled, you can manually create Jira tickets for all existing active findings detected in non-baseline scans from the STO Targets UI.
+
+<DocImage path={require('./use-sto/static/non-baseline-jira.png')} width="80%" height="80%" title="Click to view full size image" />
+
+:::note
+This feature is behind the feature flag `STO_NON_BASELINE_TICKETING`. Contact [Harness Support](mailto:support@harness.io) to enable this flag.
+:::
