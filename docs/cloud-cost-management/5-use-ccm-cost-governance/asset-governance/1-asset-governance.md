@@ -270,6 +270,9 @@ Harness CACM also supports multiple statuses for evaluations. Currently CACM sup
 In the output window, users can see the resources identified in form of a Table or JSON. The table view supports all the filters and flattening of the table is supported as well. That essentially means, nested propoerties are flattened. By default, nested objects and arrays are collapsed and can be expanded upto two levels. Further nested properties are shown as formatted JSON.
 
 <DocImage path={require('./static/evaluations-azure-table.png')} width="90%" height="90%" title="Click to view full size image" />
+</TabItem>
+</Tabs>
+-----
 
 ## Cost Correlation
 
@@ -404,7 +407,6 @@ The ZIP file is organised by evaluation ID (or by policy sub-folders for multi-p
 
 <DocImage path={require('./static/bulk-export.png')} width="100%" height="100%" title="Click to view full size image" />
 
-</TabItem>
-</Tabs>
+
 
 ---------
