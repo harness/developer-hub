@@ -1260,6 +1260,81 @@ When a task definition ARN is provided instead of a task definition spec, a forc
 
 :::
 
+### Skip application auto scaling
+
+The **Skip application auto scaling** option allows you to control whether Harness interacts with AWS Application Auto Scaling APIs during ECS Rolling deployments.
+
+:::note
+This feature is behind the feature flag `CDS_ECS_SKIP_APPLICATION_SCALING`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+**Default behavior:**
+
+Harness treats the scaling manifests in your Harness service as the source of truth for auto-scaling configuration:
+- If your Harness service contains auto-scaling manifests, Harness deletes any existing AWS scaling policies and scalable targets, deploys the ECS service, and then re-registers the scaling configuration from your Harness service manifests
+- If your Harness service does not contain auto-scaling manifests, Harness still calls the AWS Application Auto Scaling APIs to delete any existing scaling policies attached to the ECS service, and does not re-attach them after deployment
+
+This default behavior can cause issues when you deploy many services in parallel, as it may hit AWS Application Auto Scaling API rate limits.
+
+When you enable this option, Harness skips all Application Auto Scaling API interactions regardless of whether scaling manifests are configured in your Harness service or not. Use this option when you manage auto-scaling externally (via Terraform, AWS Console, or other tools) and do not want Harness to modify your scaling configuration.
+
+#### When to use this option
+
+Enable **Skip application auto scaling** if:
+
+- You manage ECS auto-scaling policies outside of Harness (through Terraform, AWS Console, CloudFormation, or other tools)
+- You deploy multiple ECS services in parallel and encounter AWS Application Auto Scaling API rate limits
+- Your pipeline has no scaling manifests configured and you want to avoid unnecessary AWS API calls
+- You want ECS deployments to only update task definitions and service configurations without modifying scaling policies
+
+#### How it works
+
+When **Skip application auto scaling** is enabled and no scaling manifests are present in your pipeline:
+
+**During deployment:**
+- Harness skips calls to `DescribeScalingPolicies`, `DescribeScalableTargets`, `DeleteScalingPolicy`, and `DeregisterScalableTarget`
+- Harness only performs task definition registration, service updates via `UpdateService`, and steady-state checks
+- Existing scaling policies and scalable targets in AWS remain active throughout the deployment
+- The deployment avoids approximately 5-6 Application Auto Scaling API calls per service
+
+**During rollback:**
+- Harness skips scaling policy restoration since it was never modified during deployment
+- Harness only reverts the task definition and service configuration to the previous version
+- Your externally-managed scaling policies continue working without disruption
+
+If scaling manifests **are** present in your pipeline (scalable targets, scaling policies, or scheduled actions), Harness manages scaling normally regardless of this setting, ensuring that explicitly configured scaling is always applied.
+
+#### Configure skip application auto scaling
+
+To enable this option in your ECS Rolling Deploy step:
+
+1. In your pipeline, select the **ECS Rolling Deploy** step
+2. In the step configuration, locate the **Skip application auto scaling** checkbox
+3. Check **Skip application auto scaling** to skip all Application Auto Scaling API interactions.
+
+Alternatively, you can configure this in YAML:
+
+<details>
+<summary>ECS Rolling Deploy step YAML example</summary>
+
+```yaml
+- step:
+    type: EcsRollingDeploy
+    name: ECS Rolling Deploy
+    identifier: ecsRollingDeploy
+    timeout: 10m
+    spec:
+      skipApplicationScaling: true
+```
+
+</details>
+
+#### Important notes
+
+When you enable this option, also enable the feature flag `CDS_ECS_USE_CREATED_AT_DEPLOYMENT_STEADY_STATE` to prevent potential `deployment.updatedAt` race conditions. This flag ensures accurate steady-state detection when auto-scaling policies remain active during deployment.
+
+Contact [Harness Support](mailto:support@harness.io) to enable both feature flags for your account.
+
 ### ECS Canary deployments
 
 In an ECS Canary deployment, Harness deploys to 1 instance, deletes it, and then performs a Rolling deployment of the new version with full desired count.
