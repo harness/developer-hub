@@ -1,7 +1,7 @@
 ---
-title: Export Efficiency and Productivity Metrics Using the Harness AIDI API
-description: Learn how to programmatically export developer, team, and org-level Efficiency and Productivity metrics using export APIs.
-sidebar_label: Export Efficiency and Productivity Metrics
+title: Export Productivity Metrics
+description: Learn how to programmatically export developer, team, and org-level Productivity metrics using export APIs.
+sidebar_label: Export Productivity Metrics
 sidebar_position: 3
 redirect_from:
   - /docs/software-engineering-insights/harness-sei/api/productivity-export-api
@@ -10,32 +10,17 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-AI DLC Insights provides APIs to export [Productivity](/docs/software-engineering-insights/harness-sei/insights/productivity) and [Efficiency](/docs/software-engineering-insights/harness-sei/insights/efficiency) metrics in CSV format for team, developer, and organization-level reporting. There are two available APIs:
+AI DLC Insights provides APIs to export [Productivity](/docs/software-engineering-insights/harness-sei/insights/productivity) metrics in CSV format for team, developer, and organization-level reporting. There are two available APIs:
 
 - **V2 Export API (recommended)**: Asynchronous, scalable, and designed for large datasets and org-wide exports.
 - **Legacy Reports API**: Synchronous export API for team and contributor reporting use cases.
 
-Both APIs return CSV output but differ in execution model and request structure. 
-
-| Feature     | V2 Export API              | Legacy Reports API       |
-| ----------- | ------------------- | ---------------- |
-| Execution model | Asynchronous | Synchronous |
-| Scale | Supports org-level exports | Best for team-level exports |
-| Workflow | Job-based export lifecycle | Single request/response |
-
-Harness recommends the following best practices: 
-
-- Prefer team-scoped exports over full organization exports when possible.
-- Use `metricGroups` instead of long lists of individual metrics.
-- Poll export status instead of repeatedly recreating export jobs.
-- Schedule exports during off-peak hours for large organizations.
-
-## Select an API
+Both APIs return CSV output but differ in execution model and request structure. The V2 Export API is recommended for new integrations and large-scale exports.
 
 <Tabs queryString="api-version">
 <TabItem value="v2" label="V2 Export API (Recommended)">
 
-The V2 Export API provides asynchronous export of productivity metrics at the developer, team, or organization scope. The export workflow looks like:
+The V2 Export API provides asynchronous exports of Productivity metrics at the developer, team, or organization scope. The export workflow looks like:
 
 ```mermaid
 graph LR
@@ -67,7 +52,8 @@ You must also include the following query parameters on all requests:
 Create an asynchronous export job. 
 
 ```bash
-POST /v2/insights/productivity/exports
+# Replace BASE_URL with your Harness cluster URL (e.g. https://app.harness.io)
+POST {BASE_URL}/v2/insights/productivity/exports
 ```
 
 #### Request Body
@@ -82,11 +68,20 @@ POST /v2/insights/productivity/exports
     "start": "2024-01-01",
     "end": "2024-12-31"
   },
-  "metricGroups": ["activity", "velocity", "volume", "quality", "collaboration"], // You can provide `metricGroups` only, `metrics` only, or both `metricGroups` and `metrics`; if both are provided, the API merges and deduplicates the metrics automatically.
-  "metrics": ["PR_Merged", "Work_Completed"],
+  "metricGroups": [
+    "activity",
+    "velocity",
+    "volume",
+    "quality",
+    "collaboration"
+  ],
+  "metrics": [
+    "PR_MERGED",
+    "WORK_COMPLETED"
+  ],
   "options": {
+    "metricLevel": "developer",
     "aggregation": "mean",
-    "aggregationLevel": "developer",
     "granularity": "monthly",
     "format": "csv"
   }
@@ -95,16 +90,28 @@ POST /v2/insights/productivity/exports
 
 #### Configuration
 
-| Field            | Description                                               |
-|------------------|-----------------------------------------------------------|
-| scope            | Defines the export scope (organization or team)           |
-| dateRange        | Start and end dates for the export period                 |
-| metricGroups     | Groups of metrics to export.                                |
-| metrics          | Individual metrics to export                              |
-| aggregation      | Aggregation method used for metric calculations           |
-| aggregationLevel | Export data grouped by `developer` (each CSV row represents a developer and time period) or `team` (each CSV row represents a team and time period)             |
-| granularity      | Reporting interval (`weekly`, `monthly`, `quarterly`)     |
-| format           | Export format (`csv`)                                     |
+| Field | Description |
+| --- | --- |
+| `scope` | Defines the export scope (organization tree or specific team). |
+| `dateRange` | Start and end dates for the export period. |
+| `metricGroups` | Groups of Productivity metrics to export. |
+| `metrics` | Individual metrics to export. |
+| `options.metricLevel` | Export level: `developer` or `team`. |
+| `options.aggregation` | Aggregation method used for metric calculations. |
+| `options.granularity` | Reporting interval (`weekly`, `monthly`, or `quarterly`). |
+| `options.format` | Export format (`csv`). |
+
+### Available metric groups
+
+The following Productivity metric groups are available:
+
+| Metric Group | Developer-level Metrics | Team-level Metrics |
+| --- | --- | --- |
+| `activity` | `CODING_DAYS` | `CODING_DAYS` |
+| `velocity` | `PR_CYCLE_TIME_DAYS_AVG`, `AVG_TIME_TO_COMPLETE` | `PR_CYCLE_TIME_DAYS_AVG`, `PR_VELOCITY`, `AVG_TIME_TO_COMPLETE` |
+| `volume` | `PR_MERGED`, `PR_MERGED_SMALL`, `PR_MERGED_MEDIUM`, `PR_MERGED_LARGE`, `LOC_ADDED`, `LOC_REMOVED`, `WORK_COMPLETED`, `WORK_FEATURES_COMPLETED`, `WORK_BUGS_COMPLETED`, `WORK_OTHER_COMPLETED` | `PR_MERGED`, `PR_MERGED_SMALL`, `PR_MERGED_MEDIUM`, `PR_MERGED_LARGE`, `WORK_COMPLETED`, `WORK_FEATURES_COMPLETED`, `WORK_BUGS_COMPLETED`, `WORK_OTHER_COMPLETED` |
+| `quality` | `REWORK_PERCENT`, `REWORK_PERCENT_RECENT`, `REWORK_PERCENT_LEGACY`, `LOC_REFACTORED`, `LOC_REFACTORED_RECENT`, `LOC_REFACTORED_LEGACY`, `PR_MISSING_TICKETS` | `REWORK_PERCENT`, `REWORK_PERCENT_RECENT`, `REWORK_PERCENT_LEGACY`, `LOC_REFACTORED`, `LOC_REFACTORED_RECENT`, `LOC_REFACTORED_LEGACY`, `PR_MISSING_TICKETS`, `LOC_TOTAL` |
+| `collaboration` | `REVIEW_COMMENTS_PER_PR_AVG`, `REVIEW_TIME_TO_FIRST_COMMENT_HRS_AVG` | `REVIEW_COMMENTS_PER_PR_AVG`, `REVIEW_TIME_TO_FIRST_COMMENT_HRS_AVG` |
 
 To export an entire organization tree: 
 
@@ -129,7 +136,7 @@ To export a specific team:
 
 #### Example Request 
 
-```json
+```json title="Create Productivity Export"
 curl -X POST "${BASE_URL}/v2/insights/productivity/exports?projectIdentifier=${PROJECT_ID}&orgIdentifier=${ORG_ID}" \
   -H "Content-Type: application/json" \
   -H "authorization: ApiKey <YOUR_SEI_API_KEY>" \
@@ -142,10 +149,13 @@ curl -X POST "${BASE_URL}/v2/insights/productivity/exports?projectIdentifier=${P
       "start": "2024-01-01",
       "end": "2024-12-31"
     },
-    "metricGroups": ["activity", "velocity"],
+    "metricGroups": [
+      "activity",
+      "velocity"
+    ],
     "options": {
+      "metricLevel": "developer",
       "aggregation": "mean",
-      "aggregationLevel": "developer",
       "granularity": "monthly",
       "format": "csv"
     }
@@ -188,7 +198,8 @@ Returned when an identical export already exists.
 Poll the export status endpoint until the export reaches the `completed` state.
 
 ```bash
-GET /v2/insights/productivity/exports/{exportId}
+# Replace BASE_URL with your Harness cluster URL (e.g. https://app.harness.io)
+GET {BASE_URL}/v2/insights/productivity/exports/{exportId}
 ```
 
 #### Example Response
@@ -222,7 +233,8 @@ The following export statuses are available:
 Downloads the generated CSV file. 
 
 ```bash
-GET /v2/insights/productivity/exports/{exportId}/download
+# Replace BASE_URL with your Harness cluster URL (e.g. https://app.harness.io)
+GET {BASE_URL}/v2/insights/productivity/exports/{exportId}/download
 ```
 
 Large exports may be automatically compressed as `.gz` files.
@@ -239,76 +251,14 @@ curl -X GET "<BASE_URL>/v2/insights/productivity/exports/<EXPORT_ID>/download?pr
 Retrieve historical export jobs.
 
 ```bash
-GET /v2/insights/productivity/exports
-```
-
-The following query parameters are available:
-
-| Parameter   | Description                          |
-| ----------- | ------------------------------------ |
-| `status`    | Filter by export status              |
-| `scope`     | `all` (default) or `mine`            |
-| `teamId`    | Filter by team ID                    |
-| `createdBy` | Filter by user ID                    |
-| `dateFrom`  | Filter exports created after a date  |
-| `dateTo`    | Filter exports created before a date |
-| `limit`     | Maximum results returned (default 50, max 100) |
-| `page`      | Page number (0-based)                |
-| `sortBy`    | `createdAt`, `completedAt`, `status` |
-| `sortOrder` | `asc` or `desc`                      |
-
-The following example demonstrates how to create an export job, poll for export completion, and download the generated CSV file.
-
-```python
-import time
-import requests
-
-BASE_URL = "<HARNESS_BASE_URL>"
-API_KEY = "YOUR_SEI_API_KEY"
-
-HEADERS = {
-    "SEI_API_KEY": API_KEY,
-    "Content-Type": "application/json"
-}
-
-PROJECT = "<HARNESS_PROJECT_ID>"
-ORG = "<HARNESS_ORG_NAME>"
-
-payload = {
-    "scope": {"orgTreeName": "<ORG_TREE_NAME>"},
-    "dateRange": {"start": "2024-01-01", "end": "2024-12-31"},
-    "metricGroups": ["activity", "velocity"],
-    "options": {
-        "aggregation": "mean",
-        "aggregationLevel": "developer",
-        "granularity": "monthly",
-        "format": "csv"
-    }
-}
-
-create_url = f"{BASE_URL}/v2/insights/productivity/exports?projectIdentifier={PROJECT}&orgIdentifier={ORG}"
-resp = requests.post(create_url, headers=HEADERS, json=payload)
-export_id = resp.json()["exportId"]
-
-status_url = f"{BASE_URL}/v2/insights/productivity/exports/{export_id}?projectIdentifier={PROJECT}&orgIdentifier={ORG}"
-
-while True:
-    status = requests.get(status_url, headers=HEADERS).json()["status"]
-    if status == "completed":
-        break
-    time.sleep(5)
-
-download_url = f"{BASE_URL}/v2/insights/productivity/exports/{export_id}/download?projectIdentifier={PROJECT}&orgIdentifier={ORG}"
-file_resp = requests.get(download_url, headers=HEADERS)
-
-with open(f"{export_id}.csv", "wb") as f:
-    f.write(file_resp.content)
+# Replace BASE_URL with your Harness cluster URL (e.g. https://app.harness.io)
+GET {BASE_URL}/v2/insights/productivity/exports
 ```
 
 </TabItem>
 <TabItem value="v1" label="Legacy Reports API">
 
-The Legacy Reports API provides synchronous CSV exports for team and contributor-level productivity and efficiency metrics.
+The Legacy Reports API provides synchronous exports for team and contributor-level Productivity metrics.
 
 :::info
 This API is maintained for backward compatibility. Use the V2 Export API for new integrations.
@@ -323,7 +273,7 @@ Both team-level and individual-level exports use the same endpoint. The behavior
 <Tabs queryString="export-type">
 <TabItem value="team" label="Team-Level Reports">
 
-Exports aggregate productivity and efficiency metrics per team.
+Exports aggregate Productivity metrics per team.
 
 **Request Body:** `ExportRequestDTO` (see the [Request body structure section](#request-body-structure) below)
 
@@ -343,10 +293,6 @@ For `ExportRequestDTO`:
   "productivity": {
     "metrics": ["PR_VELOCITY_PER_DEV", "CODING_DAYS_PER_DEV"]
   },
-  "efficiency": {
-    "metrics": ["LEAD_TIME_FOR_CHANGES", "DEPLOYMENT_FREQUENCY"],
-    "calculationType": "MEAN"
-  }
 }
 ```
 
@@ -360,7 +306,6 @@ For `ExportRequestDTO`:
 | `granularity`  | `String`                 | Yes      | Time unit for rate-based metrics (daily, weekly, monthly).                       |
 | `teamRefId`    | `Number`                 | No       | Team identifier. CSV will include this team and all child teams under it.         |
 | `productivity` | `ProductivityRequestDto` | No       | Productivity metrics configuration.                                               |
-| `efficiency`   | `EfficiencyRequestDto`   | No       | Efficiency metrics configuration.                                                 |
 
 :::tip 
 `teamRefId` and `collectionId` refer to the same underlying team/collection identifier. Use the same value for both fields when exporting by team. 
@@ -384,10 +329,6 @@ Common granularity values include the following:
 - `weekly`: Metrics calculated per week.
 - `monthly`: Metrics calculated per month.
 
-:::info
-Duration-based metrics like `LEAD_TIME_FOR_CHANGES`, `MEAN_TIME_TO_RESTORE`, `AVG_TIME_TO_COMPLETE`, or `TIME_TO_FIRST_COMMENT` are always measured in days and are not affected by granularity.
-:::
-
 **Nested objects**
 
 To configure Productivity metrics with `ProductivityRequestDto`:
@@ -410,37 +351,6 @@ The following Productivity metrics are available:
 | `CODING_DAYS_PER_DEV` | Coding Days per Developer | Days per time period (affected by `granularity`) | Counts the number of days a developer actively contributed code.<br /><br />Helps track developer engagement and activity levels.<br /><br />Useful for understanding work patterns and availability.<br /><br />Example: 3 means 3 coding days per week (if granularity is weekly). |
 | `NUMBER_OF_COMMENTS_PER_PR` | Number of Comments per PR | Count (dimensionless number) | Average number of review comments per pull request.<br /><br />Indicates code review thoroughness and collaboration intensity.<br /><br />Higher values may suggest more complex changes or detailed review processes. |
 | `AVG_TIME_TO_COMPLETE` | Average Time to Complete | Days (CSV contains numeric values without unit labels) | Average time to complete a work item from start to finish.<br /><br />Measures development cycle efficiency.<br /><br />Helps identify bottlenecks in the development process. |
-
-To configure Efficiency metrics with `EfficiencyRequestDto`:
-
-```json
-{
-  "metrics": ["LEAD_TIME_FOR_CHANGES", "DEPLOYMENT_FREQUENCY"],
-  "calculationType": "MEAN"
-}
-```
-
-- `metrics` (required): List of efficiency metric names to include in the export.
-- `calculationType` (optional): Aggregation method (defaults to `MEAN`).
-
-The following Efficiency (DORA) metrics are available:
-
-| Metric Name | Context | Unit | Description |
-|---|---|---|---|
-| `LEAD_TIME_FOR_CHANGES` | Lead Time for Changes | Days (CSV contains numeric values without unit labels) | Measures the time from code commit to production deployment.<br /><br />Key indicator of delivery speed and process efficiency.<br /><br />Lower lead times indicate faster feature delivery and more agile development.<br /><br />Industry benchmark: Elite performers achieve lead times under 1 day. |
-| `DEPLOYMENT_FREQUENCY` | Deployment Frequency | Deployments per time period (affected by `granularity`) | Tracks how often code is deployed to production.<br /><br />Indicates team's ability to deliver value continuously.<br /><br />Higher frequency suggests better automation and CI/CD maturity.<br /><br />Example: 20 means 20 deployments per week (if granularity is weekly).<br /><br />Industry benchmark: Elite performers deploy multiple times per day. |
-| `CHANGE_FAILURE_RATE` | Change Failure Rate | Percentage (0–100, CSV contains numeric values without unit labels) | Percentage of deployments that cause failures in production.<br /><br />Measures quality and stability of releases.<br /><br />Lower rates indicate better testing, quality assurance, and deployment practices.<br /><br />Industry benchmark: Elite performers maintain CFR below 15%. |
-| `MEAN_TIME_TO_RESTORE` | Mean Time to Restore (MTTR) | Days (CSV contains numeric values without unit labels) | Time to recover from a production failure or incident (aggregated using `calculationType`).<br /><br />Indicates team's incident response capability and system resilience.<br /><br />Lower MTTR suggests effective monitoring, alerting, and rollback procedures.<br /><br />Industry benchmark: Elite performers restore service in under 1 hour. |
-| `OVERALL_DORA` | Overall DORA Score | Score/Rating (implementation-specific) | Composite metric combining all four DORA metrics.<br /><br />Provides holistic view of team's DevOps performance.<br /><br />Used to classify teams as Elite, High, Medium, or Low performers.<br /><br />Based on Google's DORA State of DevOps research. |
-
-The following calculation types are available:
-
-| Aggregation Type | Description |
-|---|---|
-| `MEAN` (Average) | Calculates the arithmetic mean of all metric values. Provides a balanced view of typical performance. <br /><br /> Best for understanding overall trends. Can be skewed by outliers. |
-| `MEDIAN` (50th Percentile) | The middle value when all metrics are sorted. More resistant to outliers than mean. Represents typical performance for half the team. <br /><br /> Best for understanding central tendency when data has outliers. |
-| `P90` (90th Percentile) | 90% of metric values fall below this threshold. Highlights performance of top performers. <br /><br /> Useful for identifying best-case scenarios. Helps set aspirational targets. |
-| `P95` (95th Percentile) | 95% of metric values fall below this threshold. Focuses on exceptional performance. <br /><br /> Useful for capacity planning and SLA definitions. Helps identify peak performance patterns. |
 
 **Response format**
 
@@ -574,49 +484,38 @@ The CSV file structure contains:
 - One column for the collection name
 - One column per metric included in the export (for example, `PR Velocity per Developer`)
 
-**Usage examples**
-
-**Example 1: Export Team Productivity Report**
-
-```bash
+```bash title="Export Team Productivity Report"
 # Replace BASE_URL with your Harness cluster URL (e.g. https://app.harness.io)
-curl -X POST "${BASE_URL}/v2/insights/teams/reports?format=csv" \  
+curl -X POST "${BASE_URL}/v2/insights/teams/reports?format=csv" \
   -H "Content-Type: application/json" \
   -H "authorization: ApiKey <YOUR_API_KEY>" \
   -d '{
     "dateStart": "2024-01-01",
     "dateEnd": "2024-03-31",
     "teamRefId": 456,
-    "granularity": "weekly",
+    "metricGroups": [
+      "activity",
+      "velocity",
+      "volume",
+      "quality",
+      "collaboration"
+    ],
+    "options": {
+      "metricLevel": "developer",
+      "granularity": "weekly"
+    },
     "productivity": {
-      "metrics": ["PR_VELOCITY_PER_DEV", "CODING_DAYS_PER_DEV", "NUMBER_OF_COMMENTS_PER_PR"]
+      "metrics": [
+        "PR_VELOCITY_PER_DEV",
+        "CODING_DAYS_PER_DEV",
+        "NUMBER_OF_COMMENTS_PER_PR"
+      ]
     }
   }' \
   --output team_productivity_report.csv
 ```
 
-**Example 2: Export Team Efficiency Report (DORA Metrics)**
-
-```bash
-# Replace BASE_URL with your Harness cluster URL (e.g. https://app.harness.io)
-curl -X POST "${BASE_URL}/v2/insights/teams/reports?format=csv&projectIdentifier=myproject" \  
-  -H "Content-Type: application/json" \
-  -H "authorization: ApiKey <YOUR_API_KEY>" \
-  -d '{
-    "dateStart": "2024-01-01",
-    "dateEnd": "2024-12-31",
-    "teamRefId": 123,
-    "efficiency": {
-      "metrics": ["LEAD_TIME_FOR_CHANGES", "DEPLOYMENT_FREQUENCY", "MEAN_TIME_TO_RESTORE"],
-      "calculationType": "MEDIAN"
-    }
-  }' \
-  --output efficiency_report.csv
-```
-
-**Example 3: Export All Productivity Metrics (Empty Array)**
-
-```bash
+```bash title="Export All Productivity Metrics (Empty Array)"
 # Replace BASE_URL with your Harness cluster URL (e.g. https://app.harness.io)
 curl -X POST "${BASE_URL}/v2/insights/teams/reports?format=csv" \  
   -H "Content-Type: application/json" \
@@ -637,16 +536,15 @@ When the `metrics` array is empty, all available metrics for that category will 
 </TabItem>
 </Tabs>
 
-**Best practices**
+Harness recommends the following best practices when working with Productivity export APIs:
 
-- **Format Support:** Currently, only CSV format is supported. Attempting to use other formats will result in an error.
-- **Date Format:** All date fields must be in `yyyy-MM-dd` format.
-- **Filename Generation:** The export service automatically generates appropriate filenames based on the report content.
-- **Empty Results:** Empty or null result sets will return an empty CSV file (0 bytes).
-- **Child Teams:** The CSV automatically includes the specified team and all child teams under it.
-- **Metric Names:** Metric names are case-insensitive (e.g., `lead_time_for_changes` or `LEAD_TIME_FOR_CHANGES` both work).
-- **Empty Metrics Array:** If the `metrics` array is empty or not provided, all available metrics for that category will be exported.
-- **Default Calculation Type:** If `calculationType` is not specified for Efficiency metrics, it defaults to `MEAN`.
+- Only CSV format is currently supported.
+- All date fields must use the `yyyy-MM-dd` format.
+- Export responses automatically include child teams beneath the specified team scope.
+- Metric names are case-insensitive.
+- If the `metrics` array is empty or omitted, all available metrics for that category are exported.
+- Large exports may be automatically compressed as `.gz` files.
+- For large organizations, prefer team-scoped exports over root org tree exports to reduce export size and avoid timeouts.
 
 </TabItem>
 </Tabs>

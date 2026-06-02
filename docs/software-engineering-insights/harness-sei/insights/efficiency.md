@@ -52,6 +52,8 @@ Trendlines use the Ordinary Least Squares (OLS) regression method to identify pa
 
 To export the Efficiency Insights dashboard data, click the kebab menu (⋮) and select **Export as PDF** or **Export as CSV**. For more information, see [Exporting AI DLC Insights Insights](/docs/software-engineering-insights/harness-sei/insights/export).
 
+## DORA Metrics
+
 Below is a brief overview of each widget on the **DORA** tab in **Efficiency** on the **Insights** page:
 
 ### Lead Time for Changes
