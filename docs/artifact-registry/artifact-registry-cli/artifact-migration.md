@@ -60,6 +60,8 @@ The migration tool supports the following artifact types:
 | `RPM` | RPM packages |
 | `GO` | Go modules |
 | `CONDA` | Conda packages |
+| `COMPOSER` | Composer (PHP) packages |
+| `SWIFT` | Swift packages |
 
 ### Configuration structure
 
@@ -114,7 +116,7 @@ mappings:
 The source block configures the connection to your existing registry:
 
 - **endpoint:** Full HTTPS URL of your source registry.
-- **type:** Source registry type (for example, `NEXUS`). Refer to your source registry documentation for the correct type value.
+- **type:** Source registry type (for example, `NEXUS`, `JFROG`).
 - **credentials.username:** Username for source registry authentication.
 - **credentials.password:** API token for source registry (**important**: use API token, not user password). You can reference environment variables using `${VARIABLE_NAME}` syntax (for example, `${SOURCE_PASSWORD}`).
 - **insecure:** Set to `true` to skip SSL certificate verification (use with caution).
@@ -176,6 +178,7 @@ hc registry migrate --config migration-config.yaml --verbose
 |------|-------------|---------|
 | `-c, --config` | Path to configuration file | `config.yaml` |
 | `--concurrency` | Number of concurrent operations (overrides config) | `1` |
+| `--dry-run` | Run migration in dry-run mode (no uploads, generates file list and directory structure) | `false` |
 | `--overwrite` | Allow overwriting existing artifacts | `false` |
 | `--pkg-url` | Base URL for the package API (overrides config) | - |
 | `-v, --verbose` | Enable verbose logging | `false` |
@@ -206,9 +209,13 @@ Migration with verbose logging:
 hc registry migrate --config migration-config.yaml --verbose
 ```
 
-:::note
-The migration command executes immediately upon running. Features like dry-run preview and failure recovery modes are planned for future releases.
-:::
+Dry-run migration (preview without uploading):
+
+```bash
+hc registry migrate --config migration-config.yaml --dry-run
+```
+
+This generates a file list and directory structure of what would be migrated without performing any uploads. Use this to verify your configuration before running the actual migration.
 
 ---
 

@@ -93,7 +93,7 @@ You can also use global flags to override the org and project, to know more abou
 
 ### Configure Package Manager Clients
 
-Configure your package manager clients to work with [supported Harness Artifact Registries](/docs/artifact-registry/whats-supported), such as npm. The `hc registry configure` command automatically sets up the necessary configuration files with the correct registry URLs and authentication.
+Configure your package manager clients to work with [supported Harness Artifact Registries](/docs/artifact-registry/whats-supported). The `hc registry configure` command automatically sets up the necessary configuration files with the correct registry URLs and authentication for npm, Maven, pip, and NuGet.
 
 #### Configure npm Client
 
@@ -105,9 +105,9 @@ hc registry configure npm [flags]
 
 **Required flags:**
 - `--registry string`: Registry identifier
-- `--pkg-url string`: Package registry base URL (e.g., `https://pkg.harness.io`)
 
 **Flags:**
+- `--pkg-url string`: Package registry base URL (e.g., `https://pkg.harness.io`)
 - `--scope string`: NPM scope (e.g., `@myorg`) - configures scoped registry. If not provided, configures the default registry
 - `--global`: Configure globally for the user (modifies `~/.npmrc`)
 - `--project-level`: Configure at project level (creates/modifies `.npmrc` in current directory)
@@ -134,6 +134,43 @@ hc registry configure npm --registry npmproxy --pkg-url https://pkg.harness.io -
 
 ```bash
 hc registry configure npm --registry npmproxy --pkg-url https://pkg.harness.io --project-level
+```
+
+#### Configure other package manager clients
+
+You can configure the following package manager clients:
+
+```bash
+hc registry configure [command] --registry <registry-identifier>
+```
+
+**Available commands:**
+
+- **`npm`:** Updates `.npmrc` for npm registries.
+- **`maven`:** Updates `~/.m2/settings.xml` for Maven.
+- **`pip`:** Configures pip for PyPI registries.
+- **`nuget`:** Configures NuGet/dotnet client.
+
+All commands require the `--registry` flag and automatically resolve the registry URL from your login configuration. Use the `-h` flag on each command for additional options.
+
+After configuration, use your native package manager commands (`mvn deploy`, `pip install`, `dotnet restore`) to interact with your Harness Artifact Registry directly.
+
+**Example - Configure Maven:**
+
+```bash
+hc registry configure maven --registry maven-releases
+```
+
+**Example - Configure pip:**
+
+```bash
+hc registry configure pip --registry python-proxy
+```
+
+**Example - Configure NuGet:**
+
+```bash
+hc registry configure nuget --registry nuget-hosted
 ```
 
 ---
@@ -397,6 +434,7 @@ hc artifact push [command]
 - `python`
 - `rpm`
 - `npm`
+- `swift`
 
 Pick the appropriate command based on your package type. Use the `-h` flag to get help and understand the necessary flags for each command.
 
@@ -532,7 +570,7 @@ hc artifact metadata delete --registry r1 --package nginx --version 1.2.3 --meta
 
 ### Delete Artifacts
 
-Delete a specific version of an artifact or all versions of an artifact from the Harness Artifact Registry.
+Delete a specific version of an artifact, all versions, or use wildcard patterns to bulk delete multiple artifacts from the Harness Artifact Registry.
 
 ```bash
 hc artifact delete [artifact-name] [flags]
@@ -542,12 +580,14 @@ hc artifact delete [artifact-name] [flags]
 - `--registry string`: Name of the registry
 
 **Optional flags:**
-- `--version string`: Specific version to delete (if not provided, deletes all versions)
+- `--version string`: Specific version to delete (if not provided, deletes all versions). Supports glob wildcard patterns (for example, `1.0.*`).
+- `--dry-run`: Preview which packages or versions would be deleted without performing the actual deletion (default: `true`)
+- `--force`: Perform a hard (permanent) delete. When omitted, artifacts are soft deleted.
 
 **Example - Delete a specific version:**
 
 ```bash
-hc artifact delete my-app --registry my-docker-registry --version 1.0.0
+hc artifact delete my-app --registry my-docker-registry --version 1.0.0 --dry-run=false
 ```
 
 **Example - Delete all versions:**
@@ -555,11 +595,49 @@ hc artifact delete my-app --registry my-docker-registry --version 1.0.0
 Omit the `--version` flag to delete the entire artifact and all its versions:
 
 ```bash
-hc artifact delete my-app --registry my-docker-registry
+hc artifact delete my-app --registry my-docker-registry --dry-run=false
 ```
 
-:::warning Permanent Deletion
-Deleting artifacts is permanent and cannot be undone. Ensure you have backups or are certain about the deletion before proceeding.
+:::tip Dry-run is enabled by default
+The `--dry-run` flag defaults to `true`. This means running `hc artifact delete` without `--dry-run=false` only previews the impacted artifacts and does not delete anything. Always pass `--dry-run=false` when you are ready to execute the deletion.
+:::
+
+#### Bulk delete with wildcard patterns
+
+Use wildcard patterns in the artifact name or version to delete multiple artifacts at once.
+
+:::info Supported registry types
+Wildcard-based bulk deletion is supported for Generic, Maven, npm, Python, NuGet, Go, Conda, Composer, Swift, and Dart registries. Docker and Helm registries do not support bulk delete.
+:::
+
+**Example - Preview all artifacts matching a pattern:**
+
+```bash
+hc artifact delete "my-app-*" --registry my-generic-registry
+```
+
+This runs in dry-run mode and displays the list of impacted packages without deleting anything.
+
+**Example - Delete all artifacts matching a pattern:**
+
+```bash
+hc artifact delete "my-app-*" --registry my-generic-registry --dry-run=false
+```
+
+**Example - Delete versions matching a pattern:**
+
+```bash
+hc artifact delete my-app --registry my-generic-registry --version "1.0.*" --dry-run=false
+```
+
+**Example - Force (permanent) delete with wildcard:**
+
+```bash
+hc artifact delete "temp-*" --registry my-generic-registry --dry-run=false --force
+```
+
+:::warning Permanent deletion
+When using `--force`, deletion is permanent and cannot be undone. Without `--force`, artifacts are soft deleted. Always run with `--dry-run` first (the default) to verify the list of impacted artifacts before executing.
 :::
 
 ---
@@ -679,6 +757,6 @@ Set up your package manager client configuration once, then use standard command
 hc registry configure npm --registry npmproxy --pkg-url https://pkg.harness.io --project-level
 ```
 
-After configuration, use standard npm commands like `npm install` and `npm publish` without additional setup.
+After configuration, use standard package manager commands like `npm install`, `mvn deploy`, `pip install`, and `dotnet restore` without additional setup.
 
 ---

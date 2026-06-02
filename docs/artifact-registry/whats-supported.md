@@ -62,7 +62,7 @@ For a full description of how it works, the dashboard, and how to configure poli
 
 ### Harness CLI
 
-The **Harness CLI** (`hc`) is the command-line way to work alongside Artifact Registry: you can inspect and manage **registries** and **artifacts**, handle **metadata** and lifecycle operations where supported, **evaluate dependencies** against your registry’s security rules, and **configure local package manager clients** (for example npm) to talk to Harness registries. It is intended for automation, scripts, and day-to-day tasks without opening the UI for every change.
+The **Harness CLI** (`hc`) is the command-line way to work alongside Artifact Registry: you can inspect and manage **registries** and **artifacts**, handle **metadata** and lifecycle operations where supported, **evaluate dependencies** against your registry’s security rules, and **configure local package manager clients** (npm, Maven, pip, NuGet) to talk to Harness registries. It is intended for automation, scripts, and day-to-day tasks without opening the UI for every change.
 
 Install the CLI from [Install the Harness CLI](/docs/platform/automation/cli/install). For Artifact Registry–specific commands and examples, go to [Manage artifacts and registries with the CLI](/docs/artifact-registry/artifact-registry-cli/manage-artifacts-registries).
 
