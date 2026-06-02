@@ -41,7 +41,7 @@ These Memories persist beyond the Chat History retention period and help Harness
 
 The interface displays your past chats in a searchable, filterable list. When you open an older chat, you can review the conversation and see whether Harness has summarized or archived it into Memory.
 
-Settings allow you to enable or disable the Memory feature and Chat History search according to your preferences. For organizational or enterprise accounts, admin controls may allow disabling or resetting memory for all users.
+Settings allow you to enable or disable the Memory feature and Chat History search according to your preferences. Memory controls are personal, and account, organization, and project admins cannot view personal Memories. Go to [Harness AI Memories](/docs/platform/harness-ai/harness-ai-memories) to manage personal Memories.
 
 When you start a new chat, you begin fresh—the system still references relevant Memories (if enabled) to provide context.
 
