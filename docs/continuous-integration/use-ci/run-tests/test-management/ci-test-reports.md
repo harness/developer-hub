@@ -7,6 +7,12 @@ sidebar_position: 2
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+:::info Prerequisites
+
+To use hcli commands for uploading test results, you must set the environment variable `CI_ENABLE_HCLI_FOR_TESTS=true` in your pipeline. Go to [Environment variables](/docs/continuous-integration/use-ci/run-step-settings/#environment-variables) to configure environment variables.
+
+:::
+
 # Upload Test Results
 
 Uploading test results to Harness enables flaky test detection, test history tracking, and visibility in the **Tests** tab. This is the foundation for all test management features.

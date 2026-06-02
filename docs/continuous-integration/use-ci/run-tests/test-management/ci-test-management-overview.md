@@ -4,6 +4,16 @@ description: Automatically detect flaky tests, quarantine failures, and keep you
 sidebar_position: 1
 ---
 
+:::info Feature Flags and Prerequisites
+
+- **Flaky Test Detection, Quarantine, and Policies** require the feature flag `TI_POLICY_EVALUATION_ENABLED` to be enabled on your account.
+- **Code Coverage** requires the feature flag `CI_CODE_COVERAGE` to be enabled on your account.
+- **All hcli commands** require the environment variable `CI_ENABLE_HCLI_FOR_TESTS=true` in your pipeline.
+
+Contact [Harness Support](mailto:support@harness.io) to enable feature flags. Go to [Environment variables](/docs/continuous-integration/use-ci/run-step-settings/#environment-variables) to configure environment variables.
+
+:::
+
 # Test Management
 
 CI pipelines generate large volumes of test data, but most teams lack visibility and control over test health. Unstable tests block releases, resulting in failing pipelines, slow delivery and limited insights into coverage making it hard to understand real risk.

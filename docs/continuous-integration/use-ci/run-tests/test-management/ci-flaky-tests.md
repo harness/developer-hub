@@ -4,6 +4,14 @@ description: Automatically identify tests that pass and fail inconsistently
 sidebar_position: 3
 ---
 
+:::info Prerequisites
+
+Flaky Test Detection requires the feature flag `TI_POLICY_EVALUATION_ENABLED` to be enabled on your account. To use hcli commands for managing flaky tests, you must also set the environment variable `CI_ENABLE_HCLI_FOR_TESTS=true` in your pipeline.
+
+Contact [Harness Support](mailto:support@harness.io) to enable the feature flag. Go to [Environment variables](/docs/continuous-integration/use-ci/run-step-settings/#environment-variables) to configure environment variables.
+
+:::
+
 # Flaky Test Detection
 
 A flaky test is one that passes and fails inconsistently - without any code changes. Harness automatically detects these tests and marks them with a **FLAKY** badge so your team knows which tests are unreliable.

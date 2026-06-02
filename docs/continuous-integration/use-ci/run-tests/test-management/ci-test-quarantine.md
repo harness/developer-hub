@@ -4,6 +4,14 @@ description: Skip unstable tests to unblock deployments while you investigate
 sidebar_position: 4
 ---
 
+:::info Prerequisites
+
+Test Quarantine requires the feature flag `TI_POLICY_EVALUATION_ENABLED` to be enabled on your account. To use hcli commands for managing quarantined tests, you must also set the environment variable `CI_ENABLE_HCLI_FOR_TESTS=true` in your pipeline.
+
+Contact [Harness Support](mailto:support@harness.io) to enable the feature flag. Go to [Environment variables](/docs/continuous-integration/use-ci/run-step-settings/#environment-variables) to configure environment variables.
+
+:::
+
 # Test Quarantine
 
 When an unstable test blocks every deployment, quarantine lets you bypass it while you investigate. Quarantined tests still run, so you see if they're fixed, but their failures don't block the pipeline.

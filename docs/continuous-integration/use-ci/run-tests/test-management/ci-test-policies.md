@@ -4,6 +4,14 @@ description: Automate test management with rules that run after each pipeline ex
 sidebar_position: 5
 ---
 
+:::info Prerequisites
+
+Test Policies require the feature flag `TI_POLICY_EVALUATION_ENABLED` to be enabled on your account. To use hcli commands for managing test policies, you must also set the environment variable `CI_ENABLE_HCLI_FOR_TESTS=true` in your pipeline.
+
+Contact [Harness Support](mailto:support@harness.io) to enable the feature flag. Go to [Environment variables](/docs/continuous-integration/use-ci/run-step-settings/#environment-variables) to configure environment variables.
+
+:::
+
 # Test Policies
 
 Policies automate test management. Configure rules once, and Harness evaluates with every pipeline execution, automatically marking flaky tests or quarantining failures without manual intervention.
