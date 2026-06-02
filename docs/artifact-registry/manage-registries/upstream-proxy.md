@@ -19,6 +19,13 @@ The upstream proxy is essential for caching open-source dependencies. During a b
 - **Centralization:** Consolidate external repositories into one location for easier management
 - **Access Control:** Enforce your security policies while fetching artifacts
 - **Reliability:** Reduce dependency on external services by leveraging cached artifacts
+- **Automatic scanning:** Artifacts cached through upstream proxies are automatically scanned at ingest time via Supply Chain Security (SCS), not STO
+
+:::tip Verify your cache path configuration
+
+An incorrect cache path causes builds to bypass the cache entirely, resulting in significantly longer build times. If your builds are unexpectedly slow, verify the cache path in your upstream proxy settings matches your dependency manager configuration.
+
+:::
 
 ## Create an upstream proxy
 

@@ -5,6 +5,8 @@ sidebar_label: Dependency Firewall
 sidebar_position: 1
 ---
 
+import { FAQ } from '@site/src/components/AdaptiveAIContent';
+
 # Dependency Firewall
 
 :::info Feature Flag
@@ -89,4 +91,9 @@ When an artifact version is evaluated, it runs through all configured policy set
 
 Harness provides three built-in policy templates specifically for Dependency Firewall: CVSS Threshold, License Policy, and Package Age. You can use these templates as-is, customize them, or create your own policies using Rego. To learn how to configure policies and policy sets for Dependency Firewall, see [Configure Policies and Policy Sets](/docs/artifact-registry/dependency-firewall/configure-policies).
 
+<FAQ
+  question="Does Dependency Firewall require an STO or SCS license?"
+  mode="docs"
+  fallback="No. Dependency Firewall is included with Artifact Registry. It does not require STO or SCS licenses."
+/>
 

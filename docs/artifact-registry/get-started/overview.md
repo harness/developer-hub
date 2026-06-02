@@ -83,7 +83,13 @@ This ensures that security, compliance, and governance are not bolted on as afte
 
 #### Transparent, Storage-Based Pricing
 
-Harness offers transparent, storage-based pricing with no hidden fees or complex licensing models. You pay for what you use, making it easy to predict costs and scale without surprises.
+Harness offers transparent, storage-based pricing with no hidden fees or complex licensing models. You pay for what you use, making it easy to predict costs and scale without surprises. Harness automatically deduplicates content: uploading identical files does not consume additional storage.
+
+:::note Networking
+
+Harness Artifact Registry is accessible over the public internet. For private connectivity from your builds to your own infrastructure, go to [PrivateLink for Harness Cloud](/docs/platform/references/private-network-connectivity/private-link-connect) to configure AWS PrivateLink or GCP Private Service Connect.
+
+:::
 
 ---
 

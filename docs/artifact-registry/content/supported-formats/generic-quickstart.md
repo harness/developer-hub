@@ -125,6 +125,12 @@ curl --location --request PUT 'https://pkg.harness.io/pkg/<ACCOUNT_ID>/<REGISTRY
 --header 'x-api-key: <API_KEY>'
 ```
 
+:::tip Correct URL path
+
+The generic registry endpoint uses `/generic/` in the path. Do not use `/tools/generic/` or `/tools/files/` as those are different endpoints.
+
+:::
+
 **Parameters:**
 - `<ACCOUNT_ID>`: Your account identifier
 - `<REGISTRY_NAME>`: Name of your registry

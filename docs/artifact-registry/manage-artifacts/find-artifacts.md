@@ -75,6 +75,24 @@ Note:
 - The expanded view that lists multiple per-OS/ARCH digests beneath one entry applies to Docker/OCI images only (multi-arch manifest list/image index).
 - Other artifact types (for example, Helm, npm, Maven, Cargo) typically show one file/version per entry. They may expose checksums (SHA256/SHA1, etc.), and Helm charts stored in an OCI registry also get an OCI digest.
 
+### Untagged image support and API behavior
+
+When untagged image support is enabled for your account, the API response format changes for Docker and Helm artifacts:
+
+- The `version` field returns the **digest value** (for example, `sha256:620e85a7b3b4...`) instead of a tag name.
+- Tags are returned in a separate `metadata.tags` field as a list (for example, `["latest", "v1.2.0"]`).
+- Artifacts without any tags still appear in listings, identified solely by their digest.
+
+This affects the following API endpoints:
+
+- `GetAllArtifacts`: the `version` field shows the digest; tags move to `metadata.tags`.
+- `GetAllArtifactVersions`: each version entry uses the digest as its `name`; tags appear in `metadata.tags`.
+- Docker and Helm detail endpoints: accept digest in the path where they previously required a tag.
+
+:::note This is expected behavior
+
+The change from tag-based to digest-based identification is by design. It ensures that untagged images (images pushed without a tag or whose tag was later removed) are visible in the registry. Tags are still accessible in the response, but the primary identifier is now the content-addressable digest.
+:::
 
 ## Filter Artifacts Using Metadata
 

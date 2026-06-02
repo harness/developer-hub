@@ -27,3 +27,20 @@ The Client Setup process provides step-by-step guidance, including:
 - Pushing an image or package.
 
 Now, you should see the artifact appear in your docker registry as well as the **Artifacts** tab in the left navigation panel.
+
+---
+
+## Authentication model
+
+Harness Artifact Registry uses token-based authentication (PAT or service account tokens). The pipeline identity model determines which permissions apply:
+
+- **Manual triggers:** The pipeline uses the triggering user's RBAC permissions.
+- **Webhook, IDP (Internal Developer Portal), or schedule triggers:** The pipeline runs as a service/bot principal and uses that bot's RBAC permissions.
+
+This applies to both image pulls (requires read access) and the **Upload Artifacts to HAR** CI step (requires write access). If the triggering principal lacks the appropriate permission, the operation returns a 403 error.
+
+:::note Supported authentication methods
+
+Harness Artifact Registry supports PAT (Personal Access Token) and service account tokens for authentication. These work across all deployment environments including EKS, GKE, and AKS.
+
+:::
