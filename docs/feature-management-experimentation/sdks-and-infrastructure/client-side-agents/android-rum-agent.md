@@ -207,7 +207,7 @@ FME's Android RUM Agent collects a number of events by default.
 
 ### Automatic metric creation
 
-FME will automatically create [metrics](/docs/feature-management-experimentation/release-monitoring/metrics/) for a subset of the event types received from the Android RUM Agent. These "out of the box metrics" are auto-created for you:
+FME will automatically create [metrics](/docs/feature-management-experimentation/release-monitoring/metrics/) for a subset of the event types received from the Android RUM Agent. These out-of-the-box metrics are auto-created for you:
 
 | **Event type** | **Metric name** |
 | --- | --- |

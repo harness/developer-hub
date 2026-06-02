@@ -168,9 +168,7 @@ When you sign up you are sent a link to create an account. We utilize your compa
 
 Within this account, you can create multiple projects. Your company should have one account in Split but can have multiple projects within that account. When you first create your account, you'll have one project named Default. This project has two environments and one traffic type underneath it. You can rename and edit these environments and traffic types as well as add more.
 
-Projects allow you to separately manage your feature flags and experiments across your different business units, product lines, and/or applications. Each project in Split has its own separate set of environments, SDK API keys, feature flags, segments, metrics, and event types.
-
-For more information about projects, see [Projects](/docs/feature-management-experimentation/projects/).
+Each [project](/docs/feature-management-experimentation/projects/) has its own set of environments, SDK API keys, feature flags, segments, metrics, and event types.
 
 ### Understand environments, traffic types, and API keys
 

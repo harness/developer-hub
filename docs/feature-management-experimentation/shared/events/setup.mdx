@@ -1,5 +1,3 @@
-import eventTypes from '@site/docs/feature-management-experimentation/release-monitoring/static/events/received-events.png';
-
 ## Send event data
 
 Measure the impact of your feature rollout on your customer experience by sending Harness FME event data and calculating metrics based on those events. Events allow you to record any actions your users perform and experiences your users encounter, such as response times or errors.
@@ -200,9 +198,3 @@ The Sentry, Segment, and mParticle integrations are similar in that there is no 
 The Google Analytics integration is for the browser only and requires the SDK to be instantiated on any page that you want to use it on. Once instantiated in code, it allows sending GA hits to Harness FME automatically without needing to track individual events. This can also be used in concert with our [Google Tag Manager (GTM)](/docs/feature-management-experimentation/integrations/google-tag-manager) helper script that adds Harness FME's tracker automatically to any GTM trackers.
 
 The Amazon S3 integration requires infrastructure work of creating a new S3 bucket and setting up files with the proper naming convention, data schema, file format, and compression algorithm. The user doing this setup needs rights to set the bucket policy as well. 
-
-## Confirm events are being received
-
-To help verify that events are being received by Harness FME, from the left navigation pane, click the **profile button** at the bottom, select **Admin settings**, and click **Event types**. There you can see event types and a stream of events per event type.
-
-<img src={eventTypes} alt="Applying Metric Filters" width="700" />

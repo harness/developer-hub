@@ -343,7 +343,7 @@ type RouteChangesEvent = {
 
 ## Automatic metric creation
 
-FME will automatically create [metrics](/docs/feature-management-experimentation/release-monitoring/metrics/) for a subset of the event types received from the Browser RUM Agent. These "out of the box metrics" are auto-created for you:
+FME will automatically create [metrics](/docs/feature-management-experimentation/release-monitoring/metrics/) for a subset of the event types received from the Browser RUM Agent. These out-of-the-box metrics are auto-created for you:
 
 | **Event type** | **Metric name** | 
 | --- | --- |

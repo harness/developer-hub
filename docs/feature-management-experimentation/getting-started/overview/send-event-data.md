@@ -27,7 +27,7 @@ var queued = client.track('user', 'page_load_time', 83.334)
 
 Learn more in the track section of each SDK reference guide ([JavaScript example](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/javascript-sdk#track)).
 
-To help verify that events are being received by Split, from the left navigation pane, click the user's initials at the bottom, select **Admin settings**, and click **Event types**.
+To verify that events are being received by Harness FME, navigate to the **Event types** tab on the **Data Hub** from the FME navigation menu.
 
 ![](../static/event-types.png)
 

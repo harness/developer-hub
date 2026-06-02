@@ -51,7 +51,7 @@ Harness FME currently supports the following types of properties: strings, numbe
  
 Harness FME supports multiple ways to explore your event data, allowing you to quickly understand and troubleshoot your event pipelines:
 
-1. In **Admin settings**, the **Event types** page lists all event types that have been received by Harness FME in the last 150 days. For a given event type, you can see the count of events received over the last 7 days, the timestamp of the last event received, and all metrics that have been created using that event type. 
+1. In the Data Hub, the **Event types** tab lists all event types that have been received by Harness FME in the last 150 days. For a given event type, you can see the count of events received over the last 7 days, the timestamp of the last event received, and all metrics that have been created using that event type. 
 
    :::note
    These event types are automatically captured by Harness FME. Any event types manually entered in the [metric definition](/docs/feature-management-experimentation/release-monitoring/metrics/) will not be displayed on this page.
@@ -59,8 +59,8 @@ Harness FME supports multiple ways to explore your event data, allowing you to q
 
    <img src={eventTypes} alt="Applying Metric Filters" width="700" />
 
-2. In the Data Hub, the **Explore** tab enables you to visualize the event volume trend for a selected event type over the last 7 days. To visualize your events, first select a traffic type and an event type on the form to the left. After this, click on the **Query** button to generate a graph of your results.
+1. The **Explore** tab enables you to visualize the event volume trend for a selected event type over the last 7 days. To visualize your events, first select a traffic type and an event type on the form to the left. After this, click on the **Query** button to generate a graph of your results.
 
    <img src={dataHub} alt="Applying Metric Filters" width="700" />
 
-3. In the Data Hub, [Live tail](/docs/feature-management-experimentation/feature-management/monitoring-analysis/live-tail) enables you to run a live query of impressions and events, so you can understand your event stream in more detail, including which event properties are being sent with each event type.
+1. The [**Live Tail** tab](/docs/feature-management-experimentation/feature-management/monitoring-analysis/live-tail) enables you to run a live query of impressions and events, so you can understand your event stream in more detail, including which event properties are being sent with each event type.
