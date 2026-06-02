@@ -1,5 +1,11 @@
 [
   {
+    "flagKey": "IACM_USE_NEW_RESOURCES_TABLE",
+    "description": "This will migrate all resources from terrfrom state file to table resources.",
+    "gaStartDate": "2026-06-02",
+    "module": "IACM"
+  },
+  {
     "flagKey": "PIPE_PUBLISH_DATA_INGESTION_EVENTS_TO_GENERAL_KAFKA",
     "description": "Routes pipeline data-ingestion events (step, stage, and pipeline execution summaries) to the self-hosted (General) Kafka cluster instead of the Confluent-managed cluster, completing the Confluent to self-hosted dual-cluster migration.",
     "gaStartDate": "2026-05-29",
