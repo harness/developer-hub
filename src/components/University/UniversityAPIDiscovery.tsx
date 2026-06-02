@@ -484,6 +484,7 @@ export default function CertificationsTBH() {
                 .filter((ilt) => {
                   return (
                     ilt.tileType === "pre requisite" ||
+                    ilt.tileType === "waap" ||
                     ilt.module === "asp" ||
                     (ilt.module === "asp" && ilt.tileType === "comming soon")
                   );

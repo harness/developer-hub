@@ -269,7 +269,7 @@ export default function CertificationsTBH() {
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
                     <h2>
-                     Application & API Runtime Protection - Developer (BETA COMING
+                      Application & API Runtime Protection - Developer (BETA COMING
                       SOON)
                     </h2>
                     <img
@@ -310,7 +310,7 @@ export default function CertificationsTBH() {
 
             {/* Developer Exam Details */}
 
-           
+
             <div className={styles.examDetails}>
               <h2 id="exam-details">Exam Details</h2>
               <div className={styles.examDetailsCard}>
@@ -443,7 +443,7 @@ export default function CertificationsTBH() {
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
                     <h2>
-                     Application & API Runtime Protection - Architect (BETA COMING
+                      Application & API Runtime Protection - Architect (BETA COMING
                       SOON)
                     </h2>
                     <img
@@ -492,6 +492,7 @@ export default function CertificationsTBH() {
                 .filter((ilt) => {
                   return (
                     ilt.tileType === "pre requisite" ||
+                    ilt.tileType === "waap" ||
                     ilt.module === "arp" ||
                     (ilt.module === "arp" && ilt.tileType === "comming soon")
                   );

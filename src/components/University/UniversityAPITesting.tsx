@@ -106,7 +106,7 @@ export default function CertificationsTBH() {
           </div>
           <h1>Application & API Security Testing</h1>
           <div>
-            By analyzing API traffic, scanning for risks, such as broken authentication and data exposure, ensures that your application is secure and reliable. 
+            By analyzing API traffic, scanning for risks, such as broken authentication and data exposure, ensures that your application is secure and reliable.
           </div>
         </div>
         <div
@@ -269,7 +269,7 @@ export default function CertificationsTBH() {
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
                     <h2>
-                     Application & API Security Testing- Developer (BETA COMING
+                      Application & API Security Testing- Developer (BETA COMING
                       SOON)
                     </h2>
                     <img
@@ -310,7 +310,7 @@ export default function CertificationsTBH() {
 
             {/* Developer Exam Details */}
 
-           
+
             <div className={styles.examDetails}>
               <h2 id="exam-details">Exam Details</h2>
               <div className={styles.examDetailsCard}>
@@ -443,7 +443,7 @@ export default function CertificationsTBH() {
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
                     <h2>
-                     Application & API Security Testing - Architect (BETA COMING
+                      Application & API Security Testing - Architect (BETA COMING
                       SOON)
                     </h2>
                     <img
@@ -492,6 +492,7 @@ export default function CertificationsTBH() {
                 .filter((ilt) => {
                   return (
                     ilt.tileType === "pre requisite" ||
+                    ilt.tileType === "waap" ||
                     ilt.module === "ast" ||
                     (ilt.module === "ast" && ilt.tileType === "comming soon")
                   );

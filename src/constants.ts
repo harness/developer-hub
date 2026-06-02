@@ -34,7 +34,8 @@ export enum MODULES {
   tbh = 'tbh',
   hsf = 'hsf',
   rm = 'rm',
-  rt = 'rt'
+  rt = 'rt',
+  waap = 'waap'
 }
 
 export const MODULE_DISPLAY_NAME = {
@@ -70,7 +71,8 @@ export const MODULE_DISPLAY_NAME = {
     [MODULES.tbh]: 'Traceable by Harness',
     [MODULES.hsf]: 'Harness Solutions Factory',
     [MODULES.qwietai]: "SAST and SCA",
-    [MODULES.rt]: 'Resilience Testing'
+    [MODULES.rt]: 'Resilience Testing',
+    [MODULES.waap]: 'Web Application & API Protection'
 }
 
 export const MODULE_ICON = {
@@ -105,5 +107,6 @@ export const MODULE_ICON = {
     [MODULES.tbh]: 'img/icon_tbh.svg',
     [MODULES.hsf]: 'img/icon-hsf.svg',
     [MODULES.qwietai]: 'img/qwiet-icon.svg',
-    [MODULES.rt]: 'img/icon_ce.svg'
+    [MODULES.rt]: 'img/icon_ce.svg',
+    [MODULES.waap]: 'img/icon-waap.svg'
 }

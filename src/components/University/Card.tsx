@@ -16,6 +16,7 @@ export enum tileType {
   preReq = "pre requisite",
   commingSoon = "comming soon",
   normal = "normal",
+  waap = "waap",
 }
 
 export enum cardType {

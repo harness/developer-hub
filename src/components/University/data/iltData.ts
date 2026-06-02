@@ -103,6 +103,17 @@ export const ilt: IltCardItem[] = [
     cardType: cardType.ILT,
   },
   {
+    title: "Web Application and API Protection",
+    module: MODULES.waap,
+    type: type.user,
+    description:
+      "Deep dive into Web Application and API Protection concepts including threat detection and API security practices.",
+    version: "Harness Web Application and API Protection Paid Plans",
+    link: "https://university-registration.harness.io/ilt-waap-overview",
+    tileType: tileType.waap,
+    cardType: cardType.ILT,
+  },
+  {
     title: "Application Security Testing - STO",
     module: MODULES.sto,
     type: type.user,

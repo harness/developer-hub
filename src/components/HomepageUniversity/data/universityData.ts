@@ -99,8 +99,17 @@ export const university: CardItem[] = [
       "Capture, correlate and analyze all app and API-related activity over time, across your entire app and API ecosystem.",
     link: "/university/api-application-discovery",
     numberOfCerts: 1,
+    ILT_available: true,
     SPT_available: true,
-
+  },
+    {
+    title: "Application & API Runtime Protection",
+    module: MODULES.arp,
+    description:
+      "Protection ensures that your applications and APIs remain resilient, compliant, and secure in production.",
+    link: "/university/api-application-protection",
+    numberOfCerts: 1,
+    ILT_available: true,
   },
 
   {

@@ -528,7 +528,7 @@ export default function University() {
                 ))}
               {ilt
                 .filter((ilt) => {
-                  return ilt.tileType === "normal";
+                  return ilt.tileType === "normal" || ilt.tileType === "waap";
                 })
                 .map((ilt) => (
                   <IltCard {...ilt} />
