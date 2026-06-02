@@ -135,7 +135,7 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io richard.black@harness.io a
 
 # Platform Docs
 /docs/platform/ prateek.mittal@harness.io gokul.bansal@harness.io abhishek.thamman@harness.io vikram.sahu@harness.io anshul.goyal@harness.io ambuj.lal@harness.io smriti.satyanarayana@harness.io
-/release-notes/delegate.md prateek.mittal@harness.io abhishek.thamman@harness.io anshul@harness.io vikram.sahu@harness.io vishal.vishwaroop@harness.io akshit.madan@harness.io prasad.satam@harness.io
+/release-notes/delegate.md prateek.mittal@harness.io abhishek.thamman@harness.io anshul@harness.io vikram.sahu@harness.io vishal.vishwaroop@harness.io akshit.madan@harness.io prasad.satam@harness.io sakshi.jain@harness.io
 /release-notes/platform.md prateek.mittal@harness.io gokul.bansal@harness.io abhishek.thamman@harness.io vikram.sahu@harness.io anshul.goyal@harness.io ambuj.lal@harness.io
 /release-notes/self-managed-enterprise-edition.md prateek.mittal@harness.io abhishek.thamman@harness.io vikram.sahu@harness.io anshul.goyal@harness.io ambuj.lal@harness.io @anshul-harness @raviyadalam
 /src/components/Roadmap/data/platformData.ts prateek.mittal@harness.io abhishek.thamman@harness.io vikram.sahu@harness.io anshul.goyal@harness.io ambuj.lal@harness.io
