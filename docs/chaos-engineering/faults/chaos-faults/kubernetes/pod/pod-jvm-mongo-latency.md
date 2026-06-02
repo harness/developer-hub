@@ -1,225 +1,244 @@
 ---
 id: pod-jvm-mongo-latency
-title: Pod JVM Mongo Latency
+title: Pod JVM Mongo latency
+sidebar_label: Pod JVM Mongo Latency
+description: Add a configurable delay to MongoDB operations from a JVM running in a target Kubernetes pod, scoped by database, collection, and operation, so you can test timeout and back-pressure behavior under a slow MongoDB.
+keywords:
+  - chaos engineering
+  - pod jvm mongo latency
+  - mongodb chaos
+  - jvm fault
+  - kubernetes pod fault
+tags:
+  - chaos-engineering
+  - pod-faults
+  - jvm-chaos
 ---
 
-Pod JVM Mongo Latency fault introduces latency in the mongodb calls executed by the Java process running inside a Kubernetes pod.
-:::tip
-JVM chaos faults use the [Byteman utility](https://byteman.jboss.org/) to inject chaos faults into the JVM.
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
+
+Pod JVM Mongo latency is a Kubernetes pod-level chaos fault that adds a configurable delay to MongoDB driver calls from a JVM running in a target container, scoped to a chosen database, collection, and operation, for a configurable duration. Only matched calls are slowed; unrelated MongoDB operations and other code paths run at normal speed. When the fault ends, MongoDB calls return to baseline latency immediately.
+
+Use this fault to test how a Java service behaves when MongoDB becomes slow on a specific code path: a primary under heavy load, a long-running aggregation, or a cross-region replica taking longer to ack.
+
+:::info Run your first experiment
+If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
 :::
 
-![Pod JVM Mongo Latency](./static/images/pod-jvm-mongo-latency.png)
+---
 
-#### Use cases
-Pod JVM Mongo latency:
-- Simulate database latency to evaluate how the application handles slower db queries, assess system performance under delayed database responses, and identify potential bottlenecks in handling high volumes of requests.
-- Test the impact of database query latency on the end-user experience, ensuring the application behaves gracefully under slower response times. This includes validating timeouts, retries, and fallback mechanisms to maintain a seamless user experience.
-- Ensure that the application can handle delayed db queries without failing. Test timeout configurations, error-handling strategies, and automatic recovery processes to verify that the system can withstand latency-induced delays without causing critical failures.
+## Use cases
 
-### Permissions required
-Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+Run this fault when you want to answer concrete questions like:
 
-```yaml
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  namespace: hce
-  name: pod-jvm-mongo-latency
-spec:
-  definition:
-    scope: Namespaced
-permissions:
-  - apiGroups: [""]
-    resources: ["pods"]
-    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
-  - apiGroups: [""]
-    resources: ["events"]
-    verbs: ["create", "get", "list", "patch", "update"]
-  - apiGroups: [""]
-    resources: ["pods/log"]
-    verbs: ["get", "list", "watch"]
-  - apiGroups: [""]
-    resources: ["deployments, statefulsets"]
-    verbs: ["get", "list"]
-  - apiGroups: ["batch"]
-    resources: ["jobs"]
-    verbs: ["create", "delete", "get", "list", "deletecollection"]
-```
+- **Driver timeout sensitivity:** When a MongoDB `find` takes 2 seconds instead of 20 ms, does the application surface the slow query through tracing, or does it block worker threads?
+- **Connection-pool saturation:** Does the application's connection pool back-pressure correctly or starve under slow queries?
+- **Aggregation tail latency:** Slow only `aggregate` operations and verify whether the application's reporting paths cope with the delay.
+- **Write-path back-pressure:** Slow `insert` or `update` and see whether the application throttles producers or queues writes in memory.
+- **Caller circuit breaker:** Does a circuit breaker around the slow operation trip and recover correctly when the fault ends?
 
+---
 
+## Prerequisites
 
-:::info Java requirements
-This fault requires the following Java-specific prerequisites:
-- The Java process must allow agent attachment (Attach API must be available).
-- Utilities like `ps`, `pgrep`, and `bash` must be available in the target container.
-- File permissions must allow the JVM to read and execute agent files.
-- Agent attachment must not be restricted by user or security context configurations.
-- The target container image must not use a restricted/minimal Java runtime that removes attach-related modules.
+- **Kubernetes version:** 1.21 or later. Go to [What's supported](/docs/chaos-engineering/whats-supported) to confirm distribution support.
+- **Target pod is Running:** The Java application pod is in the `Running` state.
+- **Java agent attach available:** The Java process allows agent attach. Utilities such as `ps`, `pgrep`, and `bash` are present in the container, and the JVM is not built with a restricted runtime that strips attach modules.
+- **MongoDB Java driver in classpath:** The target JVM uses the MongoDB Java driver and exercises the configured `DATABASE`, `COLLECTION`, and `METHOD`.
+- **Privileged pods allowed:** The cluster lets you schedule privileged pods in the chaos namespace. GKE Autopilot supports this fault but requires the one-time setup in [Chaos on GKE Autopilot](/docs/resilience-testing/chaos-testing/gke-autopilot); other locked-down distributions may need similar exemptions.
+- **Container runtime access:** The chaos pod can reach the container runtime socket on the target node (`/run/containerd/containerd.sock`, `/var/run/docker.sock`, or `/var/run/crio/crio.sock`).
+- **Workload selector defined:** The chaos experiment knows the target workload by kind, namespace, and either names or labels.
+
+:::info JVM chaos uses the Byteman agent
+This fault attaches a [Byteman](https://byteman.jboss.org/) agent to the target JVM over `BYTEMAN_PORT`. The port must be reachable from the chaos pod and must not be in use by the application.
 :::
 
-### Supported environments
+---
 
-<table>
-  <tr>
-    <th> Platform </th>
-    <th> Support Status </th>
-  </tr>
-  <tr>
-    <td> GKE (Google Kubernetes Engine) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> EKS (Amazon Elastic Kubernetes Service) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> AKS (Azure Kubernetes Service) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> GKE Autopilot </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> Self-managed Kubernetes </td>
-    <td> ✅ Supported </td>
-  </tr>
-</table>
+## Supported environments
 
-### Mandatory tunables
-<table>
-  <tr>
-    <th> Tunable </th>
-    <th> Description </th>
-    <th> Notes </th>
-  </tr>
-  <tr>
-    <td> DATABASE </td>
-    <td> The name of the mongodb database to be targeted. </td>
-    <td> For more information, go to <a href= "#parameters">Parameters</a></td>
-  </tr>
-  <tr>
-    <td> COLLECTION </td>
-    <td> The name of the mongodb collection to be targeted. </td>
-    <td> For more information, go to <a href= "#parameters">Parameters</a></td>
-  </tr>
-  <tr>
-    <td> METHOD </td>
-    <td> The name of the mongodb method to be targeted. </td>
-    <td> For more information, go to <a href= "#parameters">Parameters</a></td>
-  </tr>
- <tr>
-    <td> LATENCY </td>
-    <td> The latency to be injected into the database queries (in ms). </td>
-    <td> For more information, go to <a href= "#parameters">Parameters</a></td>
-  </tr>
-</table>
+| Platform | Support status |
+| --- | --- |
+| Amazon EKS | Supported |
+| Azure AKS | Supported |
+| Google GKE | Supported |
+| Red Hat OpenShift | Supported |
+| Rancher | Supported |
+| VMware Tanzu | Supported |
+| Self-managed Kubernetes (CNCF-certified) | Supported |
+| GKE Autopilot | Supported with [Autopilot setup](/docs/resilience-testing/chaos-testing/gke-autopilot) |
+| EKS Fargate, ACI virtual nodes | Not supported (no access to container runtime sockets) |
 
-### Optional tunables
-<table>
-  <tr>
-    <th> Tunable </th>
-    <th> Description </th>
-    <th> Notes </th>
-  </tr>
- <tr>
-    <td> TOTAL_CHAOS_DURATION </td>
-    <td> Duration through which chaos is injected into the target resource. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
-    <td> Default: <code>30s</code>. For example: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code>. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults/#duration-of-the-chaos"> duration of the chaos.</a></td>
-  </tr>
-  <tr>
-    <td> TRANSACTION_PERCENTAGE </td>
-    <td> The percentage of total mongodb calls to be targeted. </td>
-    <td> Supports percentage in (0.00,1.00] range. If not provided, it targets all mongodb queries. For more information, go to <a href= "#parameters">Parameters</a></td>
-  </tr>
-  <tr>
-    <td> POD_AFFECTED_PERCENTAGE </td>
-    <td> Percentage of total pods to target. Provide numeric values. </td>
-    <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pods affected percentage </a> </td>
-    </tr>
-  <tr>
-    <td> JAVA_HOME </td>
-    <td> Path to the Java installation directory. </td>
-    <td> For example, /tmp/dir/jdk. </td>
-  </tr>
-  <tr>
-    <td> BYTEMAN_PORT </td>
-    <td> Port used by the Byteman agent. </td>
-    <td> Default: <code>9091</code>. </td>
-  </tr>
-  <tr>
-    <td> CONTAINER_RUNTIME </td>
-    <td> Container runtime interface for the cluster</td>
-    <td> Default: containerd. Support values: docker, containerd and crio. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-api-modify-body#container-runtime-and-socket-path">container runtime</a>.</td>
-    </tr>
-    <tr>
-    <td> SOCKET_PATH </td>
-    <td> Path of the containerd or crio or docker socket file. </td>
-    <td> Default: <code>/run/containerd/containerd.sock</code>. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-api-modify-body#container-runtime-and-socket-path">socket path</a>.</td>
-    </tr>
-  <tr>
-    <td> RAMP_TIME </td>
-    <td> Period to wait before and after injecting chaos. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
-    <td> Default: <code>0s</code>. For example: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code>. For more information, go to <a href= "/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
-  </tr>
-  <tr>
-    <td> SEQUENCE </td>
-    <td> Sequence of chaos execution for multiple target pods. </td>
-    <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a>.</td>
-    </tr>
-  <tr>
-    <td> TARGET_CONTAINER </td>
-    <td> Name of the container subject to API header modification. </td>
-    <td> None. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-container">target specific container</a></td>
-    </tr>
-  <tr>
-    <td> TARGET_PODS </td>
-    <td> Comma-separated list of application pod names subject to pod HTTP modify body.</td>
-    <td> If not provided, the fault selects target pods randomly based on provided appLabels. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods"> target specific pods</a>.</td>
-    </tr>
-  <tr>
-    <td> NODE_LABEL </td>
-    <td> It filters the target pods that are scheduled on nodes matching the specified `NODE_LABEL`. </td>
-    <td> For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
-    </tr>
-  <tr>
-    <td> LIB_IMAGE </td>
-    <td> Image used to inject chaos. </td>
-    <td> Default: <code>harness/ddcr-faults:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
-    </tr>
-</table>
+---
 
-### Parameters
+## Permissions required
 
-The following YAML snippet illustrates the use of these tunables:
+The fault runs under the chaos infrastructure's service account.
 
-[embedmd]:# (./static/manifests/pod-jvm-mongo-latency/params.yaml yaml)
-```yaml
-kind: KubernetesChaosExperiment
-apiVersion: litmuschaos.io/v1alpha1
-metadata:
-  name: pod-jvm-mongo-latency
-  namespace: hce
-spec:
-  tasks:
-    - definition:
-        chaos:
-          env:
-            - name: TOTAL_CHAOS_DURATION
-              value: "60"
-            # name of the mongodb database to be targeted
-            - name: DATABASE
-              value: "library"
-            # name of the mongodb collection to be targeted
-            - name: COLLECTION
-              value: "books"
-            # name of the mongodb method to be targeted
-            - name: METHOD
-              value: "find"
-            # provide the latency in ms
-            - name: LATENCY
-              value: "2000" #in ms
-            # provide the transaction percentage
-            - name: TRANSACTION_PERCENTAGE
-              value: "50"
-```
+| Resource (`apiGroup`) | Verbs | Why it is needed |
+| --- | --- | --- |
+| `pods` (`""`) | `get`, `list`, `create`, `delete`, `deletecollection`, `patch`, `update` | Discover target pods and run the chaos pod on the same node |
+| `pods/log` (`""`) | `get`, `list`, `watch` | Stream chaos pod logs for status and debugging |
+| `deployments`, `statefulsets`, `replicasets`, `daemonsets` (`apps`) | `get`, `list` | Resolve the target workload to the pods it owns |
+| `events` (`""`) | `get`, `list`, `create`, `patch`, `update` | Record fault progress as Kubernetes events |
+| `jobs` (`batch`) | `get`, `list`, `create`, `delete`, `deletecollection` | Run the chaos job that drives the fault |
+
+The default Harness chaos infrastructure service account already includes these permissions.
+
+---
+
+## Fault tunables
+
+Configure the following fault parameters when you add Pod JVM Mongo latency to an experiment in Chaos Studio. Defaults are shown for reference.
+
+**MongoDB filters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `DATABASE` | Target MongoDB database name. Empty matches all databases. | `""` |
+| `COLLECTION` | Target MongoDB collection name. Empty matches all collections in the database. | `""` |
+| `METHOD` | MongoDB operation to target. Common values: `find`, `insert`, `update`, `delete`, `aggregate`. | `"find"` |
+| `TRANSACTION_PERCENTAGE` | Percentage of matched MongoDB operations to delay, between `0` and `100`. `0` delays none; `100` delays every match. | `0` |
+
+**Chaos parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `LATENCY` | Delay to add to each matched operation, in milliseconds. | `2000` |
+| `TOTAL_CHAOS_DURATION` | Duration of the fault in seconds. | `60` |
+
+**JVM**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `BYTEMAN_PORT` | Port on which the Byteman agent listens inside the container. Must not conflict with any port already in use. | `9091` |
+| `JAVA_HOME` | Absolute path to the Java installation inside the container. Empty auto-detects from `PATH`. | `""` |
+
+**Targeting**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `TARGET_PODS` | Comma-separated list of pod names to target. Empty selects from the workload's pods using `POD_AFFECTED_PERCENTAGE`. | `""` |
+| `TARGET_CONTAINER` | Container in the pod running the JVM. Empty targets the first container in the pod spec. | `""` |
+| `NODE_LABEL` | Label selector to filter target pods by the node they run on. Empty disables node-based filtering. | `""` |
+| `POD_AFFECTED_PERCENTAGE` | Percentage of the workload's pods to target. `0` means one pod. | `0` |
+| `SEQUENCE` | When multiple pods are targeted, inject `parallel` (all at once) or `serial` (one after another). | `parallel` |
+
+**Runtime and helper**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `CONTAINER_RUNTIME` | Container runtime on the target nodes. One of `containerd`, `docker`, `crio`. | `containerd` |
+| `SOCKET_PATH` | Path to the container runtime socket on the target node. Set to match `CONTAINER_RUNTIME`. | `/run/containerd/containerd.sock` |
+| `RAMP_TIME` | Wait period in seconds before and after the fault. Go to [ramp time](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time) to read how it is applied. | `0` |
+
+Common pod selection tunables (`TARGET_WORKLOAD_KIND`, `TARGET_WORKLOAD_NAMESPACE`, `TARGET_WORKLOAD_NAMES`, `TARGET_WORKLOAD_LABELS`) are documented in [common pod fault tunables](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults). Tunables that apply to every fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
+
+:::tip Match operation to scenario
+For read-heavy workloads, target `find` and `aggregate`. For ingest paths, target `insert` and `update`. Scoping the slow operation matches a production failure mode and keeps the blast radius small.
+:::
+
+### Configure for your container runtime
+
+Set `CONTAINER_RUNTIME` and `SOCKET_PATH` to match the runtime on the target node:
+
+| `CONTAINER_RUNTIME` | `SOCKET_PATH` |
+| --- | --- |
+| `containerd` (default) | `/run/containerd/containerd.sock` |
+| `docker` | `/var/run/docker.sock` |
+| `crio` | `/var/run/crio/crio.sock` |
+
+---
+
+## Fault execution in brief
+
+Attaches a Java agent to the target JVM and intercepts MongoDB driver operations matching `DATABASE`, `COLLECTION`, and `METHOD` to add `LATENCY` milliseconds to each matched call on the configured percentage, for `TOTAL_CHAOS_DURATION` seconds.
+
+---
+
+## Expected behavior during fault execution
+
+- Matched MongoDB operations take longer by approximately `LATENCY` ms. Other operations and unrelated collections run normally.
+- Caller-side metrics (request latency, queue depth, connection-pool waiters) rise to reflect the added delay.
+- Clients with timeouts shorter than `LATENCY` cancel the call and may retry.
+- Thread-pool-bound applications saturate quickly if many concurrent callers wait on the slow operation.
+- Tracing systems show the matched driver span growing by `LATENCY` ms.
+
+:::info When the fault ends
+MongoDB calls return to baseline latency immediately. Calls in flight finish at the delayed time and then the system returns to normal.
+:::
+
+### Signals to watch
+
+Attach [resilience probes](/docs/resilience-testing/chaos-testing/probes) to assert each layer:
+
+- **Driver-level latency:** Use a [Prometheus probe](/docs/resilience-testing/chaos-testing/probes/apm-probes) on `mongodb.driver.commands` duration or your APM's MongoDB latency metric.
+- **Caller timeouts:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) against endpoints that read or write to the targeted collection.
+- **Pod readiness:** Use a [Kubernetes probe](/docs/resilience-testing/chaos-testing/probes/k8s-probe) to fail when the target pod oscillates `NotReady`.
+
+---
+
+## Verify the fault execution effect
+
+While the experiment is running, confirm operations are slower:
+
+1. **Time a request that exercises the matched operation.**
+
+   ```bash
+   kubectl run -n <namespace> tester --image=nicolaka/netshoot --rm -it -- \
+     curl -w "time=%{time_total}\n" -o /dev/null -s http://<service>:<port>/<endpoint>
+   ```
+
+   `time_total` should rise by approximately `LATENCY` ms when the endpoint exercises the matched operation.
+
+2. **Confirm in tracing.**
+
+   The driver span for the matched operation should be approximately `LATENCY` ms longer than its baseline.
+
+---
+
+## Recovery and cleanup
+
+- **End of duration:** MongoDB calls return to baseline latency automatically.
+- **Abort the experiment:** Stopping the experiment from Chaos Studio triggers the same cleanup path.
+- **Stuck threads:** If the application is wedged because of saturated thread or connection pools, restart the pod.
+
+---
+
+## Limitations
+
+- **Serverless Kubernetes (EKS Fargate, ACI virtual nodes):** These platforms do not expose container runtime sockets and reject the privileged access the fault needs. GKE Autopilot is supported once the one-time setup in [Chaos on GKE Autopilot](/docs/resilience-testing/chaos-testing/gke-autopilot) is in place.
+- **Windows containers:** This fault is supported on Linux pods only.
+- **Non-JVM and non-Mongo workloads:** This fault targets the MongoDB Java driver inside a JVM.
+- **Reactive drivers:** Reactive MongoDB driver variants may surface latency differently from blocking drivers depending on the application's subscription handling.
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="Pod JVM Mongo latency experiment stays Pending or never starts in Harness Chaos Engineering"
+  mode="docs"
+  fallback="Inspect the chaos pods in the experiment namespace with kubectl describe pod -n <chaos-namespace>. The most common causes are taints on the target node that the chaos pods do not tolerate, insufficient resources, or a PodSecurity admission policy blocking privileged pods. Add the required tolerations or run in a namespace with privileged Pod Security level."
+/>
+
+<Troubleshoot
+  issue="No latency observed during pod-jvm-mongo-latency"
+  mode="docs"
+  fallback="The most common causes are: DATABASE or COLLECTION does not match; METHOD does not match the driver operation; TRANSACTION_PERCENTAGE is 0 (default) so nothing is intercepted; or the application uses a reactive driver path. Re-run with TRANSACTION_PERCENTAGE=100, empty COLLECTION, and a larger LATENCY to confirm the path is working."
+/>
+
+<Troubleshoot
+  issue="Connection to container runtime fails for pod-jvm-mongo-latency in Harness Chaos Engineering"
+  mode="docs"
+  fallback="The default SOCKET_PATH is /run/containerd/containerd.sock. For Docker, set CONTAINER_RUNTIME=docker and SOCKET_PATH=/var/run/docker.sock. For CRI-O, set CONTAINER_RUNTIME=crio and SOCKET_PATH=/var/run/crio/crio.sock."
+/>
+
+---
+
+## Related faults
+
+- [Pod JVM Mongo exception](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-jvm-mongo-exception): Throw an exception from a MongoDB call instead of slowing it.
+- [Pod JVM SQL latency](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-jvm-sql-latency): SQL equivalent for JDBC drivers.
+- [Pod JVM method latency](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-jvm-method-latency): Generic Java method-level latency injection.
+- [Common pod fault tunables](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults): Shared environment variables for selecting target pods and workloads.

@@ -215,7 +215,7 @@ FS fill is a Kubernetes pod-level chaos fault that writes a configurable amount 
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
-### Pod API Block
+### Pod API block
 
 Pod API block is a Kubernetes pod-level chaos fault that blocks selected API requests or responses on a target pod using path, method, header, query parameter, and source or destination filters (with HTTPS support via supplied TLS certificates).
 
@@ -295,7 +295,7 @@ Pod API modify response custom is a Kubernetes pod-level chaos fault that combin
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
-### Pod API Status Code
+### Pod API status code
 
 Pod API status code is a Kubernetes pod-level chaos fault that overrides the HTTP status code returned by selected API calls of a target pod using path, method, header, query, and source or destination filters (with HTTPS support via supplied TLS certificates).
 
@@ -473,9 +473,9 @@ Pod HTTP status code is a Kubernetes pod-level chaos fault that overrides the HT
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
-### Pod IO Attribute Override
+### Pod IO attribute override
 
-Pod IO attribute override is a Kubernetes pod-level fault that modify the properties of files located within the mounted volume of the pod.
+Pod IO attribute override rewrites file attributes returned by stat syscalls on a target container's mounted volume to test how the application reacts to changed permissions, ownership, size, or timestamps.
 
 - It can test the application's resilience for the different values of file properties.
 
@@ -488,9 +488,9 @@ It can test the application's resilience for the different values of file proper
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
-### Pod IO Error
+### Pod IO error
 
-Pod IO error is a Kubernetes pod-level fault that returns an error on the system calls of files located within the mounted volume of the pod.
+Pod IO error makes filesystem syscalls on a target container's mounted volume return a configurable error code so you can validate how the application handles failed reads, writes, and opens.
 
 - It can test the application's resilience for the errors in i/o operations.
 
@@ -503,9 +503,9 @@ It can test the application's resilience for the errors in i/o operations.
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
-### Pod IO Latency
+### Pod IO latency
 
-Pod IO latency is a Kubernetes pod-level fault that delays the system calls of files located within the mounted volume of the pod.
+Pod IO latency adds a configurable delay to filesystem syscalls against a target container's mounted volume so you can test how the application behaves under slow storage.
 
 - It can test the application's resilience for the latency in i/o operations.
 
@@ -520,7 +520,7 @@ It can test the application's resilience for the latency in i/o operations.
 
 ### Pod IO mistake
 
-Pod IO mistake is a Kubernetes pod-level fault that causes the file to read or write an incorrect value within the mounted volume of the pod.
+Pod IO mistake seeds wrong bytes into reads or writes against a target container's mounted volume so you can validate how the application detects and recovers from silent data corruption.
 
 - It can test the application's resilience to mistakenly writing or reading invalid data from files.
 
@@ -551,7 +551,7 @@ Pod IO stress is a Kubernetes pod-level chaos fault that generates sustained fil
 
 ### Pod JVM CPU stress
 
-Pod JVM CPU stress injects JVM CPU stress for a Java process executing in a Kubernetes pod by consuming excessive CPU threads of the JVM.
+Pod JVM CPU stress drives a configurable number of CPU cores inside a target JVM to test how the application behaves when its Java process is starved of CPU.
 
 <Accordion color="green">
 <summary>Use cases</summary>
@@ -569,7 +569,7 @@ Pod JVM CPU stress injects JVM CPU stress for a Java process executing in a Kube
 
 ### Pod JVM method exception
 
-Pod JVM method exception injects chaos into a Java application executing in a Kubernetes pod by invoking an exception.
+Pod JVM method exception causes a specific Java method in a target JVM to throw a configurable exception on every invocation so you can test how callers handle the failure.
 
 <Accordion color="green">
 <summary>Use cases</summary>
@@ -584,7 +584,7 @@ Pod JVM method exception injects chaos into a Java application executing in a Ku
 
 ### Pod JVM method latency
 
-Pod JVM method latency slows down the Java application executing on Kubernetes pod by introducing delays in executing the method calls.
+Pod JVM method latency adds a configurable delay to every invocation of a specific Java method in a target JVM so you can test how callers and dependents behave under slow methods.
 
 <Accordion color="green">
 <summary>Use cases</summary>
@@ -603,7 +603,7 @@ Pod JVM method latency slows down the Java application executing on Kubernetes p
 
 ### Pod JVM modify return
 
-Pod JVM modify return modifies the return value of a method in a Java application executing on a Kubernetes pod, for a specific duration.
+Pod JVM modify return overrides the return value of a specific Java method in a target JVM so you can test how callers behave when a method silently returns wrong data.
 
 <Accordion color="green">
 <summary>Use cases</summary>
@@ -619,7 +619,7 @@ Pod JVM modify return modifies the return value of a method in a Java applicatio
 
 ### Pod JVM Solace Latency
 
-Pod JVM Solace Latency injects chaos into a Java application executing in a Kubernetes pod by invoking latency in solace queries.
+Pod JVM Solace Latency adds a configurable delay to Solace publisher or subscriber calls from a target JVM, scoped by topic or queue, to test timeout and back-pressure behavior under slow Solace messaging.
 
 <Accordion color="green">
 <summary>Use cases</summary>
@@ -635,7 +635,7 @@ Pod JVM Solace Latency injects chaos into a Java application executing in a Kube
 
 ### Pod JVM Solace Exception
 
-Pod JVM Solace exception injects chaos into a Java application executing in a Kubernetes pod by invoking an solace query exception.
+Pod JVM Solace Exception causes Solace publisher or subscriber calls from a target JVM to throw a configurable exception on a chosen topic or queue so you can test caller error handling.
 
 <Accordion color="green">
 <summary>Use cases</summary>
@@ -651,7 +651,7 @@ Pod JVM Solace exception injects chaos into a Java application executing in a Ku
 
 ### Pod JVM trigger gc
 
-Pod JVM trigger gc triggers the garbage collector for a Java process executing in a Kubernetes pod. This causes unused (or out of scope) objects and variables to be garbage collected and recycled, thereby freeing up memory space.
+Pod JVM trigger gc forces an immediate full garbage collection in a target JVM so you can measure GC pause impact on latency, throughput, and downstream timeouts.
 
 <Accordion color="green">
 <summary>Use cases</summary>
@@ -664,9 +664,9 @@ Pod JVM trigger gc triggers the garbage collector for a Java process executing i
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
-### Pod JVM sql exception
+### Pod JVM SQL Exception
 
-Pod JVM sql exception injects chaos into a Java application executing in a Kubernetes pod by invoking an SQL exception.
+Pod JVM SQL Exception causes JDBC calls from a target JVM to throw a configurable exception, scoped by table and SQL operation, so you can test how the application handles database failures.
 
 <Accordion color="green">
 <summary>Use cases</summary>
@@ -680,9 +680,9 @@ Pod JVM sql exception injects chaos into a Java application executing in a Kuber
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
-### Pod JVM mongo latency
+### Pod JVM Mongo Latency
 
-Pod JVM mongo latency injects chaos into a Java application executing in a Kubernetes pod by invoking latency in mongodb calls.
+Pod JVM Mongo Latency adds a configurable delay to MongoDB calls from a target JVM, scoped by database and collection, so you can test how the application behaves under slow MongoDB operations.
 
 <Accordion color="green">
 <summary>Use cases</summary>
@@ -696,9 +696,9 @@ Pod JVM mongo latency injects chaos into a Java application executing in a Kuber
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
-### Pod JVM mongo exception
+### Pod JVM Mongo Exception
 
-Pod JVM mongo exception injects chaos into a Java application executing in a Kubernetes pod by invoking an mongodb exception.
+Pod JVM Mongo Exception causes MongoDB calls from a target JVM to throw a configurable exception, scoped by database and collection, so you can test how the application handles MongoDB failures.
 
 <Accordion color="green">
 <summary>Use cases</summary>
@@ -714,7 +714,7 @@ Pod JVM mongo exception injects chaos into a Java application executing in a Kub
 
 ### Pod JVM Kafka Exception
 
-Pod JVM Kafka Exception injects chaos into a Java application executing in a Kubernetes pod by invoking Kafka producer/consumer exceptions.
+Pod JVM Kafka Exception causes Kafka producer or consumer calls from a target JVM to throw a configurable exception on a chosen topic so you can test how the application handles Kafka failures.
 
 <Accordion color="green">
 <summary>Use cases</summary>
@@ -731,7 +731,7 @@ Pod JVM Kafka Exception injects chaos into a Java application executing in a Kub
 
 ### Pod JVM Kafka Latency
 
-Pod JVM Kafka Latency injects chaos into a Java application executing in a Kubernetes pod by introducing latency in Kafka operations.
+Pod JVM Kafka Latency adds a configurable delay to Kafka producer or consumer calls from a target JVM on a chosen topic so you can test how the application behaves under slow Kafka messaging.
 
 <Accordion color="green">
 <summary>Use cases</summary>
@@ -746,9 +746,9 @@ Pod JVM Kafka Latency injects chaos into a Java application executing in a Kuber
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
-### Pod JVM sql latency
+### Pod JVM SQL Latency
 
-Pod JVM sql latency injects chaos into a Java application executing in a Kubernetes pod by invoking latency in sql queries.
+Pod JVM SQL Latency adds a configurable delay to JDBC calls from a target JVM, scoped by table and SQL operation, so you can test connection-pool exhaustion and timeout handling under slow databases.
 
 <Accordion color="green">
 <summary>Use cases</summary>
@@ -877,7 +877,7 @@ It tests the application's resilience to limited or slow network bandwidth.
   
 ### Redis cache expire
 
-Redis cache expire expires a given key (or all keys) for a specified duration. During this period of chaos, you can't access the keys associated with the cache.
+Redis cache expire expires a configurable set of keys (or all keys) on a target Redis instance to test cold-cache resilience, refill behavior, and downstream database back-pressure.
 
 <Accordion color="green">
 <summary>Use cases</summary>
@@ -891,7 +891,7 @@ Redis cache expire determines the resilience of Redis-dependant applications aga
 
 ### Redis cache limit
 
-Redis cache limit fault limits the amount of memory used by a Redis cache and restores it after the chaos duration.
+Redis cache limit caps the maximum memory of a target Redis instance to force evictions and out-of-memory write errors, then restores the original limit when the fault ends.
 
 <Accordion color="green">
 <summary>Use cases</summary>
@@ -906,7 +906,7 @@ Redis cache limit determines the resilience of Redis-dependant applications on f
 
 ### Redis cache penetration
 
-Redis cache penetration fault continuously sends cache requests to the Redis database to find the value for a key that does not exist. This continuous request reduces the performance of the application.
+Redis cache penetration issues a configurable burst of reads for keys that do not exist against a target Redis instance to test downstream database load and null-cache protection.
 
 <Accordion color="green">
 <summary>Use cases</summary>
@@ -919,7 +919,7 @@ Redis cache penetration fault continuously sends cache requests to the Redis dat
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
-### Time Chaos
+### Time chaos
 
 Time chaos is a Kubernetes pod-level chaos fault that shifts the wall-clock or monotonic time observed by selected processes inside a target container by a configurable offset to test application behavior under clock skew, token expiry, and time-based scheduling errors.
 
@@ -937,7 +937,7 @@ Time chaos is a Kubernetes pod-level chaos fault that shifts the wall-clock or m
 
 ### Pod Application Function Error
 
-Pod Application Function Error injects an error into a specified function of an application running in a Kubernetes pod. This fault is useful for testing the resilience of your application to function-level errors.
+Pod Application Function Error makes a specific instrumented application function return a configurable error on a chosen percentage of invocations so you can test caller error handling and recovery.
 
 <Accordion color="green">
 <summary>Use cases</summary>
@@ -954,7 +954,7 @@ Pod Application Function Error injects an error into a specified function of an 
 
 ### Pod Application Function Latency
 
-Pod Application Function Latency injects latency into a specified function of an application running in a Kubernetes pod. This fault is useful for testing the resilience of your application to function-level delays.
+Pod Application Function Latency adds a configurable delay to invocations of a specific instrumented application function so you can test how callers and dependents behave under slow functions.
 
 <Accordion color="green">
 <summary>Use cases</summary>
@@ -962,6 +962,23 @@ Pod Application Function Latency injects latency into a specified function of an
 - Simulate slow function execution to test application behavior under degraded performance.
 - Validate timeout, retry, and circuit breaker mechanisms when core functions are delayed.
 - Induce latency that can lead to application-level failures, helping identify resilience gaps and failure thresholds.
+
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod Application Function Exception
+
+Pod Application Function Exception throws a configurable exception from a specific instrumented application function so you can test how callers and dependents handle thrown failures, including retry filters and circuit breakers.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Validate that unchecked exceptions are caught at request boundaries and surface as clean error responses instead of leaking stack traces.
+- Confirm exception-aware fallback paths route correctly when a specific exception type is thrown.
+- Test retry-filter and circuit-breaker behavior against thrown exceptions versus returned errors.
 
 </Accordion>
 

@@ -1,234 +1,242 @@
 ---
 id: pod-jvm-solace-latency
-title: Pod JVM Solace Latency
+title: Pod JVM Solace latency
+sidebar_label: Pod JVM Solace Latency
+description: Add a configurable delay to Solace publisher or subscriber calls from a JVM running in a target Kubernetes pod, scoped by topic or queue, so you can test timeout and back-pressure behavior under slow Solace messaging.
+keywords:
+  - chaos engineering
+  - pod jvm solace latency
+  - solace chaos
+  - jvm fault
+  - kubernetes pod fault
+tags:
+  - chaos-engineering
+  - pod-faults
+  - jvm-chaos
 ---
 
-Pod JVM Solace Latency fault simulates Solace messaging delays by injecting latency into both publisher and receiver Java processes running inside a Kubernetes pod. This helps test the application's behavior and resilience against messaging slowdowns.
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-:::tip
-JVM chaos faults use the [Byteman utility](https://byteman.jboss.org/) to inject chaos faults into the JVM.
+Pod JVM Solace latency is a Kubernetes pod-level chaos fault that adds a configurable delay to Solace messaging calls from a JVM running in a target container, scoped to a chosen destination and client mode, for a configurable duration. Only matched calls are slowed; other Solace traffic and other code paths run at normal speed. When the fault ends, Solace calls return to baseline latency immediately.
+
+Use this fault to test how a Java service behaves when Solace becomes slow on a specific code path: a broker under heavy load, a slow subscriber that affects flow control, or a degraded link to the broker on one destination.
+
+:::info Run your first experiment
+If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
 :::
 
-![Pod JVM Solace Latency](./static/images/pod-jvm-solace-latency.png)
+---
 
-#### Use cases
-Pod JVM Solace latency:
-- Simulates Solace messaging latency to evaluate how the application handles delayed message delivery, assess system performance under network-induced slowdowns, and identify potential bottlenecks in message processing.
-- Tests the impact of messaging latency on the end-user experience, ensuring the application behaves gracefully under delayed Solace message delivery. This includes validating timeout mechanisms, retries, and fallback strategies to maintain seamless communication.
-- Ensures that the application can handle delayed Solace messages without failure. Test timeout configurations, error-handling strategies, and automatic recovery processes to verify that the system remains resilient against messaging-induced delays.
+## Use cases
 
-### Permissions required
-Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+Run this fault when you want to answer concrete questions like:
 
-```yaml
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  namespace: hce
-  name: pod-jvm-solace-latency
-spec:
-  definition:
-    scope: Namespaced
-permissions:
-  - apiGroups: [""]
-    resources: ["pods"]
-    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
-  - apiGroups: [""]
-    resources: ["events"]
-    verbs: ["create", "get", "list", "patch", "update"]
-  - apiGroups: [""]
-    resources: ["pods/log"]
-    verbs: ["get", "list", "watch"]
-  - apiGroups: [""]
-    resources: ["deployments, statefulsets"]
-    verbs: ["get", "list"]
-  - apiGroups: ["batch"]
-    resources: ["jobs"]
-    verbs: ["create", "delete", "get", "list", "deletecollection"]
-```
+- **Publisher timeout sensitivity:** When publish takes 2 seconds instead of 50 ms, does the application respect timeouts and shed load, or does it block?
+- **Subscriber back-pressure:** Slow processing on the subscriber side and verify whether flow control prevents the broker from over-delivering.
+- **Queue-depth growth:** Confirm whether slow subscribers cause queues to back up and how the application reacts.
+- **End-to-end SLO impact:** Does the added Solace latency push request p99 over your SLO?
+- **Circuit breaker behavior:** Does a circuit breaker around the slow operation trip and recover correctly when the fault ends?
 
+---
 
+## Prerequisites
 
-:::info Java requirements
-This fault requires the following Java-specific prerequisites:
-- The Java process must allow agent attachment (Attach API must be available).
-- Utilities like `ps`, `pgrep`, and `bash` must be available in the target container.
-- File permissions must allow the JVM to read and execute agent files.
-- Agent attachment must not be restricted by user or security context configurations.
-- The target container image must not use a restricted/minimal Java runtime that removes attach-related modules.
+- **Kubernetes version:** 1.21 or later. Go to [What's supported](/docs/chaos-engineering/whats-supported) to confirm distribution support.
+- **Target pod is Running:** The Java application pod is in the `Running` state.
+- **Java agent attach available:** The Java process allows agent attach. Utilities such as `ps`, `pgrep`, and `bash` are present in the container, and the JVM is not built with a restricted runtime that strips attach modules.
+- **Solace client in classpath:** The target JVM uses a supported Solace Java messaging client (for example the Solace JMS client) and exercises the configured `STREAM`, `SOLACE_DESTINATION_TYPE`, `SOLACE_MODE`, and `SOLACE_APPROACH`.
+- **Privileged pods allowed:** The cluster lets you schedule privileged pods in the chaos namespace. GKE Autopilot supports this fault but requires the one-time setup in [Chaos on GKE Autopilot](/docs/resilience-testing/chaos-testing/gke-autopilot); other locked-down distributions may need similar exemptions.
+- **Container runtime access:** The chaos pod can reach the container runtime socket on the target node (`/run/containerd/containerd.sock`, `/var/run/docker.sock`, or `/var/run/crio/crio.sock`).
+- **Workload selector defined:** The chaos experiment knows the target workload by kind, namespace, and either names or labels.
+
+:::info JVM chaos uses the Byteman agent
+This fault attaches a [Byteman](https://byteman.jboss.org/) agent to the target JVM over `BYTEMAN_PORT`. The port must be reachable from the chaos pod and must not be in use by the application.
 :::
 
-### Supported environments
+---
 
-<table>
-  <tr>
-    <th> Platform </th>
-    <th> Support Status </th>
-  </tr>
-  <tr>
-    <td> GKE (Google Kubernetes Engine) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> EKS (Amazon Elastic Kubernetes Service) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> AKS (Azure Kubernetes Service) </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> GKE Autopilot </td>
-    <td> ✅ Supported </td>
-  </tr>
-  <tr>
-    <td> Self-managed Kubernetes </td>
-    <td> ✅ Supported </td>
-  </tr>
-</table>
+## Supported environments
 
-### Mandatory tunables
-<table>
-  <tr>
-    <th> Tunable </th>
-    <th> Description </th>
-    <th> Notes </th>
-  </tr>
- <tr>
-    <td> STREAM </td>
-    <td> The name of the topic or queue where message delivery will be simulated. </td>
-    <td> For more information, go to <a href= "#parameters">Parameters</a></td>
-  </tr>
-  <tr>
-    <td> SOLACE_MODE </td>
-    <td> The type of Solace messaging role </td>
-    <td> It can be either `publisher` or `consumer`. For more information, go to <a href= "#parameters">Parameters</a></td>
-  </tr>
-  <tr>
-    <td> SOLACE_DESTINATION_TYPE </td>
-    <td> Type of the solace destination </td>
-    <td> It can be either `topic` or `queue`. For more information, go to <a href= "#parameters">Parameters</a></td>
-  </tr>
-  <tr>
-    <td> SOLACE_APPROACH </td>
-    <td> Implementation approach used by the target application </td>
-    <td> It can be either `jms`, `jcsmp`, or `java`. For more information, go to <a href= "#parameters">Parameters</a></td>
-  </tr>
- <tr>
-    <td> LATENCY </td>
-    <td> The latency to be injected (in ms). </td>
-    <td> For more information, go to <a href= "#parameters">Parameters</a></td>
-  </tr>
-</table>
+| Platform | Support status |
+| --- | --- |
+| Amazon EKS | Supported |
+| Azure AKS | Supported |
+| Google GKE | Supported |
+| Red Hat OpenShift | Supported |
+| Rancher | Supported |
+| VMware Tanzu | Supported |
+| Self-managed Kubernetes (CNCF-certified) | Supported |
+| GKE Autopilot | Supported with [Autopilot setup](/docs/resilience-testing/chaos-testing/gke-autopilot) |
+| EKS Fargate, ACI virtual nodes | Not supported (no access to container runtime sockets) |
 
-### Optional tunables
-<table>
-  <tr>
-    <th> Tunable </th>
-    <th> Description </th>
-    <th> Notes </th>
-  </tr>
- <tr>
-    <td> TOTAL_CHAOS_DURATION </td>
-    <td> Duration through which chaos is injected into the target resource. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
-    <td> Default: <code>30s</code>. For example: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code>. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults/#duration-of-the-chaos"> duration of the chaos.</a></td>
-  </tr>
-  <tr>
-    <td> TRANSACTION_PERCENTAGE </td>
-    <td> The percentage of total calls to be targeted. </td>
-    <td> Supports percentage in (0.00,1.00] range. If not provided, it targets all matching calls. For more information, go to <a href= "#parameters">Parameters</a></td>
-  </tr>
-  <tr>
-    <td> POD_AFFECTED_PERCENTAGE </td>
-    <td> Percentage of total pods to target. Provide numeric values. </td>
-    <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pods affected percentage </a> </td>
-    </tr>
-  <tr>
-    <td> JAVA_HOME </td>
-    <td> Path to the Java installation directory. </td>
-    <td> For example, /tmp/dir/jdk. </td>
-  </tr>
-  <tr>
-    <td> BYTEMAN_PORT </td>
-    <td> Port used by the Byteman agent. </td>
-    <td> Default: <code>9091</code>. </td>
-  </tr>
-  <tr>
-    <td> CONTAINER_RUNTIME </td>
-    <td> Container runtime interface for the cluster</td>
-    <td> Default: containerd. Support values: docker, containerd and crio. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-api-modify-body#container-runtime-and-socket-path">container runtime</a>.</td>
-    </tr>
-    <tr>
-    <td> SOCKET_PATH </td>
-    <td> Path of the containerd or crio or docker socket file. </td>
-    <td> Default: <code>/run/containerd/containerd.sock</code>. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-api-modify-body#container-runtime-and-socket-path">socket path</a>.</td>
-    </tr>
-  <tr>
-    <td> RAMP_TIME </td>
-    <td> Period to wait before and after injecting chaos. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
-    <td> Default: <code>0s</code>. For example: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code>. For more information, go to <a href= "/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
-  </tr>
-  <tr>
-    <td> SEQUENCE </td>
-    <td> Sequence of chaos execution for multiple target pods. </td>
-    <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a>.</td>
-    </tr>
-  <tr>
-    <td> TARGET_CONTAINER </td>
-    <td> Name of the container subject to API header modification. </td>
-    <td> None. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-container">target specific container</a></td>
-    </tr>
-  <tr>
-    <td> TARGET_PODS </td>
-    <td> Comma-separated list of application pod names subject to pod HTTP modify body.</td>
-    <td> If not provided, the fault selects target pods randomly based on provided appLabels. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods"> target specific pods</a>.</td>
-    </tr>
-  <tr>
-    <td> NODE_LABEL </td>
-    <td> It filters the target pods that are scheduled on nodes matching the specified `NODE_LABEL`. </td>
-    <td> For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
-    </tr>
-  <tr>
-    <td> LIB_IMAGE </td>
-    <td> Image used to inject chaos. </td>
-    <td> Default: <code>harness/ddcr-faults:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
-    </tr>
-</table>
+---
 
-### Parameters
+## Permissions required
 
-The following YAML snippet illustrates the use of these tunables:
+The fault runs under the chaos infrastructure's service account.
 
-[embedmd]:# (./static/manifests/pod-jvm-solace-latency/params.yaml yaml)
-```yaml
-kind: KubernetesChaosExperiment
-apiVersion: litmuschaos.io/v1alpha1
-metadata:
-  name: pod-jvm-solace-latency
-  namespace: hce
-spec:
-  tasks:
-    - definition:
-        chaos:
-          env:
-            - name: TOTAL_CHAOS_DURATION
-              value: "60"
-            # name of the topic or queue
-            - name: STREAM
-              value: "solace-queue"
-            # the type of Solace messaging role
-            - name: SOLACE_MODE
-              value: "receiver"
-            # type of the solace destination
-            - name: SOLACE_DESTINATION_TYPE
-              value: "queue"
-            # implementation approach used by the target application
-            - name: SOLACE_APPROACH
-              value: "jcsmp"
-            # provide the latency in ms
-            - name: LATENCY
-              value: "2000" #in ms
-            # provide the transaction percentage
-            - name: TRANSACTION_PERCENTAGE
-              value: "50"
-```
+| Resource (`apiGroup`) | Verbs | Why it is needed |
+| --- | --- | --- |
+| `pods` (`""`) | `get`, `list`, `create`, `delete`, `deletecollection`, `patch`, `update` | Discover target pods and run the chaos pod on the same node |
+| `pods/log` (`""`) | `get`, `list`, `watch` | Stream chaos pod logs for status and debugging |
+| `deployments`, `statefulsets`, `replicasets`, `daemonsets` (`apps`) | `get`, `list` | Resolve the target workload to the pods it owns |
+| `events` (`""`) | `get`, `list`, `create`, `patch`, `update` | Record fault progress as Kubernetes events |
+| `jobs` (`batch`) | `get`, `list`, `create`, `delete`, `deletecollection` | Run the chaos job that drives the fault |
+
+The default Harness chaos infrastructure service account already includes these permissions.
+
+---
+
+## Fault tunables
+
+Configure the following fault parameters when you add Pod JVM Solace latency to an experiment in Chaos Studio. Defaults are shown for reference.
+
+**Solace filters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `STREAM` | Name of the Solace topic or queue to target. | `""` |
+| `SOLACE_MODE` | Client mode to target. One of `publisher` (publish-side) or `subscriber` (subscribe-side). | `"publisher"` |
+| `SOLACE_DESTINATION_TYPE` | Destination type. One of `topic` or `queue`. | `"topic"` |
+| `SOLACE_APPROACH` | Client API approach. For example `jms`. | `"jms"` |
+| `TRANSACTION_PERCENTAGE` | Percentage of matched Solace operations to delay, between `0` and `100`. `0` delays none; `100` delays every match. | `0` |
+
+**Chaos parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `LATENCY` | Delay to add to each matched operation, in milliseconds. | `2000` |
+| `TOTAL_CHAOS_DURATION` | Duration of the fault in seconds. | `60` |
+
+**JVM**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `BYTEMAN_PORT` | Port on which the Byteman agent listens inside the container. Must not conflict with any port already in use. | `9091` |
+| `JAVA_HOME` | Absolute path to the Java installation inside the container. Empty auto-detects from `PATH`. | `""` |
+
+**Targeting**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `TARGET_PODS` | Comma-separated list of pod names to target. Empty selects from the workload's pods using `POD_AFFECTED_PERCENTAGE`. | `""` |
+| `TARGET_CONTAINER` | Container in the pod running the JVM. Empty targets the first container in the pod spec. | `""` |
+| `NODE_LABEL` | Label selector to filter target pods by the node they run on. Empty disables node-based filtering. | `""` |
+| `POD_AFFECTED_PERCENTAGE` | Percentage of the workload's pods to target. `0` means one pod. | `0` |
+| `SEQUENCE` | When multiple pods are targeted, inject `parallel` (all at once) or `serial` (one after another). | `parallel` |
+
+**Runtime and helper**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `CONTAINER_RUNTIME` | Container runtime on the target nodes. One of `containerd`, `docker`, `crio`. | `containerd` |
+| `SOCKET_PATH` | Path to the container runtime socket on the target node. Set to match `CONTAINER_RUNTIME`. | `/run/containerd/containerd.sock` |
+| `RAMP_TIME` | Wait period in seconds before and after the fault. Go to [ramp time](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time) to read how it is applied. | `0` |
+
+Common pod selection tunables (`TARGET_WORKLOAD_KIND`, `TARGET_WORKLOAD_NAMESPACE`, `TARGET_WORKLOAD_NAMES`, `TARGET_WORKLOAD_LABELS`) are documented in [common pod fault tunables](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults). Tunables that apply to every fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
+
+:::tip Match mode to scenario
+Publisher-side latency surfaces as slow publish calls. Subscriber-side latency surfaces as slow message handling and growing queue depth. Target the mode that matches the failure you want to validate.
+:::
+
+### Configure for your container runtime
+
+Set `CONTAINER_RUNTIME` and `SOCKET_PATH` to match the runtime on the target node:
+
+| `CONTAINER_RUNTIME` | `SOCKET_PATH` |
+| --- | --- |
+| `containerd` (default) | `/run/containerd/containerd.sock` |
+| `docker` | `/var/run/docker.sock` |
+| `crio` | `/var/run/crio/crio.sock` |
+
+---
+
+## Fault execution in brief
+
+Attaches a Java agent to the target JVM and intercepts Solace client operations matching `STREAM`, `SOLACE_MODE`, `SOLACE_DESTINATION_TYPE`, and `SOLACE_APPROACH` to add `LATENCY` milliseconds to each matched call on the configured percentage, for `TOTAL_CHAOS_DURATION` seconds.
+
+---
+
+## Expected behavior during fault execution
+
+- Matched Solace operations take longer by approximately `LATENCY` ms. Other destinations and the unmatched mode run normally.
+- Caller-side metrics (request latency, queue depth, in-flight count) rise to reflect the added delay.
+- Clients with timeouts shorter than `LATENCY` cancel the call and may retry.
+- Subscriber applications may see growing queue depth on the broker if processing slows below the publish rate.
+- Tracing systems show the matched Solace span growing by `LATENCY` ms.
+
+:::info When the fault ends
+Solace calls return to baseline latency immediately. Calls in flight finish at the delayed time and then the system returns to normal.
+:::
+
+### Signals to watch
+
+Attach [resilience probes](/docs/resilience-testing/chaos-testing/probes) to assert each layer:
+
+- **Publish latency:** Use a [Prometheus probe](/docs/resilience-testing/chaos-testing/probes/apm-probes) on your application's Solace latency metric.
+- **Subscriber queue depth:** Use a Prometheus probe on broker-side queue depth to detect backlog growth.
+- **End-to-end latency:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) against an endpoint that triggers a publish.
+
+---
+
+## Verify the fault execution effect
+
+While the experiment is running, confirm operations are slower:
+
+1. **Time a request that triggers the matched operation.**
+
+   ```bash
+   kubectl run -n <namespace> tester --image=nicolaka/netshoot --rm -it -- \
+     curl -w "time=%{time_total}\n" -o /dev/null -s http://<service>:<port>/<endpoint>
+   ```
+
+2. **Confirm in tracing.**
+
+   The Solace span for the matched operation should be approximately `LATENCY` ms longer than its baseline.
+
+---
+
+## Recovery and cleanup
+
+- **End of duration:** Solace calls return to baseline latency automatically.
+- **Abort the experiment:** Stopping the experiment from Chaos Studio triggers the same cleanup path.
+- **Backlog drainage:** Allow time for normal processing to drain queue depth that built up during the fault, or scale subscribers temporarily if needed.
+
+---
+
+## Limitations
+
+- **Serverless Kubernetes (EKS Fargate, ACI virtual nodes):** These platforms do not expose container runtime sockets and reject the privileged access the fault needs. GKE Autopilot is supported once the one-time setup in [Chaos on GKE Autopilot](/docs/resilience-testing/chaos-testing/gke-autopilot) is in place.
+- **Windows containers:** This fault is supported on Linux pods only.
+- **Non-JVM and non-Solace workloads:** This fault targets Solace Java messaging clients inside a JVM.
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="Pod JVM Solace latency experiment stays Pending or never starts in Harness Chaos Engineering"
+  mode="docs"
+  fallback="Inspect the chaos pods in the experiment namespace with kubectl describe pod -n <chaos-namespace>. The most common causes are taints on the target node that the chaos pods do not tolerate, insufficient resources, or a PodSecurity admission policy blocking privileged pods. Add the required tolerations or run in a namespace with privileged Pod Security level."
+/>
+
+<Troubleshoot
+  issue="No latency observed during pod-jvm-solace-latency"
+  mode="docs"
+  fallback="The most common causes are: STREAM does not match the topic or queue name; SOLACE_MODE does not match what the application uses; SOLACE_DESTINATION_TYPE or SOLACE_APPROACH do not match the client library; or TRANSACTION_PERCENTAGE is 0 (default). Re-run with TRANSACTION_PERCENTAGE=100 and a larger LATENCY to confirm."
+/>
+
+<Troubleshoot
+  issue="Connection to container runtime fails for pod-jvm-solace-latency in Harness Chaos Engineering"
+  mode="docs"
+  fallback="The default SOCKET_PATH is /run/containerd/containerd.sock. For Docker, set CONTAINER_RUNTIME=docker and SOCKET_PATH=/var/run/docker.sock. For CRI-O, set CONTAINER_RUNTIME=crio and SOCKET_PATH=/var/run/crio/crio.sock."
+/>
+
+---
+
+## Related faults
+
+- [Pod JVM Solace exception](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-jvm-solace-exception): Throw an exception from Solace calls instead of slowing them.
+- [Pod JVM Kafka latency](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-jvm-kafka-latency): Kafka equivalent for the Apache Kafka Java client.
+- [Pod JVM method latency](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-jvm-method-latency): Generic Java method-level latency injection.
+- [Common pod fault tunables](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults): Shared environment variables for selecting target pods and workloads.
