@@ -32,16 +32,16 @@ If you are having trouble completing the integration, contact us at [support@spl
 
 ## In Harness FME
 
-1. Click the **profile button** at the bottom of the left navigation pane and click **Admin settings**.
-2. Click **Integrations** and navigate to the Marketplace tab.
-3. Find Sumo Logic in the integration list, click **Add** and select the project for which you would like to configure the integration.
+1. From the FME navigation menu, click **FME Settings** and navigate to the **Integrations** page.
+1. Locate the Sumo Logic integration and click **Add**.
+1. Select the project for which you would like to configure the integration.
 
    ![](./static/sumologic-splitadmin.png)
 
-4. Paste the Source Address you copied in step 5.
+1. Paste the Source Address you copied in Step 5.
 
    ![](./static/sumologic-integration.png)
 
-5. Click **Save**.
+1. Click **Save**.
 
 Harness FME notifications should now be flowing into Sumo Logic. If you have any issues with this integration, contact [support@split.io](mailto:support@split.io).

@@ -31,8 +31,8 @@ If you are having trouble completing the integration, contact us at [support@spl
 
 ## In Harness FME
 
-1. Click the **profile button** at the bottom of the left navigation pane and click **Admin settings**.
-2. Click **Integrations** and navigate to the Marketplace tab.
+1. From the FME navigation menu, click **FME Settings** and navigate to the **Integrations** page.
+1. Locate the Rollbar integration and click **Add**.
 
    ![](./static/rollbar-splitadmin.png)
 

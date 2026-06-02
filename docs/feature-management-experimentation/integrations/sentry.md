@@ -52,13 +52,13 @@ For each Sentry project that you want to integrate with Harness FME, you will ne
 
 ### In Harness FME
 
-1. Click the **profile button** at the bottom of the left navigation pane and click **Admin settings**.
-2. Click **Integrations** and navigate to the Marketplace tab.
-3. Find Sentry in the integration list, click **Add** and select the project for which you would like to configure the integration.
+1. From the FME navigation menu, click **FME Settings** and navigate to the **Integrations** page.
+1. Locate the Sentry integration and click **Add**.
+1. Select the project for which you would like to configure the integration.
 
    ![](./static/sentry-splitadmin.png)
 
-4. Configure the Sentry integration as follows:
+1. Configure the Sentry integration as follows:
 
    ![](./static/sentry-integration.png)
 
@@ -92,7 +92,7 @@ For each Sentry project that you want to integrate with Harness FME, you will ne
 
 ## Example data mappings
 
-Below are some examples of how you might set up the integration depending on your Sentry implementation. For full examples of how Sentry formats data from their webhooks check out their docs [here](https://docs.sentry.io/workflow/integrations/integration-platform/webhooks/#error).
+Below are some examples of how you might set up the integration depending on your Sentry implementation. For additional examples of how Sentry formats data from their webhooks, see the [official Sentry documentation](https://docs.sentry.io/workflow/integrations/integration-platform/webhooks/#error).
 
 ### Standard data mapping
 

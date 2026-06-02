@@ -30,12 +30,12 @@ If you use both the `anonymousId` and `userId` fields on Segment's `track` call 
 
 ### In Harness FME
 
-1. Click the **profile button** at the bottom of the left navigation pane and click **Admin settings**.
-2. Click **Integrations** and navigate to the Marketplace tab.
-3. Find Segment in the integration list, click **Add** and select the project for which you want to configure the integration.
-4. Select the environments that you want the data sent from.
-5. Select how you would like to map Harness FME traffic types to Segment identities.
-6. Paste the write key you copied in step 3 of the _In Segment_ instructions and click **Save**.
+1. From the FME navigation menu, click **FME Settings** and navigate to the **Integrations** page.
+1. Locate the Segment integration and click **Add**.
+1. Select the project for which you want to configure the integration.
+1. Select the environments that you want the data sent from.
+1. Select how you would like to map Harness FME traffic types to Segment identities.
+1. Paste the write key you copied in step 3 of the _In Segment_ instructions and click **Save**.
 
    ![](./static/segment-step1.png)
 
@@ -49,11 +49,11 @@ When configured properly, data begins flowing in Segment as a `track` type with 
 
 ### In Harness FME
 
-1. Click the **profile button** at the bottom of the left navigation pane and click **Admin settings**.
-2. Click **Integrations** and navigate to the Marketplace tab.
-3. Find Segment in the integration list, click **Add** and select the project for which you want to configure the integration.
-4. Under Configure as a destination in Segment, click **Add configuration**.
-5. Configure the following fields:
+1. From the FME navigation menu, click **FME Settings** and navigate to the **Integrations** page.
+1. Locate the Segment integration and click **Add**.
+1. Select the project for which you want to configure the integration.
+1. Under Configure as a destination in Segment, click **Add configuration**.
+1. Configure the following fields:
     * **Select environment**: Select the environment from where you want impressions sent to Segment.
     * **Map identities**: Select which Segment identity should be used when mapping Segment identities to Harness FME traffic types. (Either Segments User ID or Anonymous ID)
     * **Enable identify**: When enabled, identities captured in Segment is mapped to the traffic types you selected above and then be displayed in Harness FME.
@@ -62,8 +62,8 @@ When configured properly, data begins flowing in Segment as a `track` type with 
         * **Value**: Optionally, if you want to create a sum or average metric, be sure to send this field.
     * **Track named pages**: Track events to FME for page method calls that have a name associated with them, e.g. page(‘signup’) translated to view_signup_page.
     * **Track named screens**: Tracks events to FME for screen method calls that have a name associated with them, e.g. screen(‘signup’) translated to viewed_signup_screen.
-6. Once you’ve configured the above fields, click **Save**.
-7. Your integration is now configured. Copy the key or click **Enable with Segment**.
+1. Once you’ve configured the above fields, click **Save**.
+1. Your integration is now configured. Copy the key or click **Enable with Segment**.
 
     ![](./static/segment-step3.png)
 
@@ -80,11 +80,11 @@ When configured properly, data begins flowing in Segment as a `track` type with 
 
 ### In Harness FME
 
-1. Click the **profile button** at the bottom of the left navigation pane and click **Admin settings**.
-2. Click **Integrations** and navigate to the Marketplace tab.
-3. Find Segment in the integration list, click **Add** and select the project for which you want to configure the integration.
-4. Under Configure as a destination in Segment, click **Add configuration**.
-5. Configure the following fields:
+1. From the FME navigation menu, click **FME Settings** and navigate to the **Integrations** page.
+1. Locate the Segment integration and click **Add**.
+1. Select the project for which you want to configure the integration.
+1. Under Configure as a destination in Segment, click **Add configuration**.
+1. Configure the following fields:
     * **Select environment**: Select the environment from where you want impressions sent to Segment.
     * **Map identities**: Select which Segment identity to use when mapping Segment identities to Harness FME traffic types (either Segments User ID or Anonymous ID).
     * **Enable identify**: When enabled, identities captured in Segment are mapped to the traffic types you selected above and displayed in Harness FME.
@@ -93,8 +93,8 @@ When configured properly, data begins flowing in Segment as a `track` type with 
         * **Value**: Optionally, if you want to create a sum or average metric, be sure to send this field.
     * **Track named pages**: Track events to FME for page method calls that have a name associated with them, e.g. page(‘signup’) translated to view_signup_page.
     * **Track named screens**: Tracks events to FME for screen method calls that have a name associated with them, e.g. screen(‘signup’) translated to viewed_signup_screen.
-6. Once you’ve configured the above fields, click **Save**.
-7. Your integration is now configured. Copy the webhook URL and secret provided.
+1. Once you’ve configured the above fields, click **Save**.
+1. Your integration is now configured. Copy the webhook URL and secret provided.
 
     ![](./static/segment-step4.png)
 
@@ -112,29 +112,29 @@ When configured properly, data begins flowing in Segment as a `track` type with 
 
 ### Identify
 
-The `identify` call lets you tie a user to their actions and record traits about them. When you enable in Harness FME and call the `identify` function, Segment passes that ID's information to FME with `userId` (or `anonymousId`) as the FME traffic type you selected when configuring the integration. Traits are mapped to traffic type attributes in FME. Learn more about attributes in Harness FME [here](https://help.split.io/hc/en-us/articles/360020529772-Identifying-customers).
+The `identify` call lets you tie a user to their actions and record traits about them. When you enable in Harness FME and call the `identify` function, Segment passes that ID's information to FME with `userId` (or `anonymousId`) as the FME traffic type you selected when configuring the integration. Traits are mapped to [traffic type attributes](/docs/feature-management-experimentation/api/#identify-users) in Harness FME.
 
-Read more on Segment's `identify` spec [here](https://segment.com/docs/spec/identify/).
+Go to the [official Segment documentation](https://segment.com/docs/spec/identify/) to learn more about the `identify` spec.
 
 ### Track
 The `track` call lets you record any actions your users perform, along with any properties that describe the action. When you enable in Harness FME and call the `track` function, FME records events within Harness FME. For more information, see the [Events documentation](/docs/feature-management-experimentation/release-monitoring/events/).
 
-Read more on Segment's `track` spec [here](https://segment.com/docs/spec/track/).
+Go to the [official Segment documentation](https://segment.com/docs/spec/track/) to learn more about the `track` spec.
 
 ### Page
 The `page` call lets you record whenever a user sees a page of your website, along with any optional properties about the page. When you enable in Harness FME and call the `page` function FME records events for `page` method calls that have a name associated with them. For example, `page('signup')` translates to `view_signup_page`.
 
-Read more on Segment's `page` spec [here](https://segment.com/docs/spec/page/).
+Go to the [official Segment documentation](https://segment.com/docs/spec/page/) to learn more about the `page` spec.
 
 ### Screen
 The `screen` call lets you record whenever a user sees a screen, the mobile equivalent of page, in your mobile app, along with any properties about the screen. When you enable in Harness FME and call the `screen` function, FME records events for `screen` method calls that have a name associated with them. For example, `screen('signup')` translates to `view_signup_screen`.
 
-Read more on Segment's `screen` spec [here](https://segment.com/docs/spec/screen/).
+Go to the [official Segment documentation](https://segment.com/docs/spec/screen/) to learn more about the `screen` spec.
 
 ### Group
 The `group` call allows you to associate an individual user with a group of users. FME associates a group with the particular traffic type you configure. Learn more about using the group methods in the advanced functionality below. 
 
-Read more on Segment's `group` spec [here](https://segment.com/docs/spec/group/).
+Go to the [official Segment documentation](https://segment.com/docs/spec/group/) to learn more about the `group` spec.
 
 ## Advanced functionality
 

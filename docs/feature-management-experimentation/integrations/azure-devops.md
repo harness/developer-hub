@@ -24,22 +24,22 @@ The following flowchart shows how this integration works:
 
 ## Set up in Harness FME 
 
-To start, you need to first set up in Harness FME by doing the following:
+To set up the Azure DevOps integration in Harness FME:
 
-1. Click the **profile button** at the bottom of the left navigation pane and click **Admin settings**.
-2. Click **Integrations** and navigate to the Marketplace tab.
-3. Locate the Azure DevOps integration, click **Add** and select the project for which you would like to configure the integration. This allows you to map each instance of the integration to a Microsoft Azure DevOps project.
-4. Enter your Azure Org ID and optionally enter your Azure personal access token (PAT) and click **Save**. This takes you back to the marketplace.
-5. From the Azure selection, click **Edit**. The Connect to Azure DevOps page displays with your generated Harness FME token. 
-6. Copy your token to configure your Harness FME extension in Azure.
+1. From the FME navigation menu, click **FME Settings** and navigate to the **Integrations** page.
+1. Locate the Azure DevOps integration and click **Add**.
+1. Select the project for which you would like to configure the integration. This allows you to map each instance of the integration to a Microsoft Azure DevOps project.
+1. Enter your Azure Org ID and optionally enter your Azure personal access token (PAT) and click **Save**. This takes you back to the marketplace.
+1. From the Azure selection, click **Edit**. The Connect to Azure DevOps page displays with your generated Harness FME token. 
+1. Copy your token to configure your Harness FME extension in Azure.
 
 ## Set up in Azure DevOps
 
 Once you have performed your set up in Harness FME, you can set up your extension in Azure DevOps. The following sections describe how to install and set up an extension.
 
-### Install an extension in Azure DevOps organization
+### Install an extension in an Azure DevOps organization
 
-The following explains how to install your extension in Azure DevOps organization. To install your Harness FME extension, do the following: 
+The following explains how to install your extension in an Azure DevOps organization. To install your Harness FME extension: 
 
 1. Go to [Azure marketplace](https://marketplace.visualstudio.com/items?itemName=SplitSoftware.split-for-azuredevops) and click the Harness FME extension. The extension displays.
 2. Click **Get it free**. This brings the extension into your Azure organization. The Split for Azure page displays.

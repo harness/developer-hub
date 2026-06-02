@@ -30,16 +30,16 @@ If you have trouble completing the integration, contact us at [support@split.io]
 
 ## In Harness FME
 
-1. Click the **profile button** at the bottom of the left navigation pane and click **Admin settings**.
-2. Click **Integrations** and navigate to the Marketplace tab.
+1. From the FME navigation menu, click **FME Settings** and navigate to the **Integrations** page.
+1. Locate the New Relic integration and click **Add**.
 
    ![](./static/new-relic-splitadmin.png)
 
-3. Find New Relic in the integrations list, click **Add** and select the project for which you would like to configure the integration.
+1. Select the project for which you would like to configure the integration.
 
    ![](./static/new-relic-integration.png)
 
-4. Paste the **Account ID** and **Key** you copied in step 5 of the New Relic instructions.
-5. Click **Save**.
+1. Paste the **Account ID** and **Key** you copied in Step 5 of the New Relic instructions.
+1. Click **Save**.
 
 Harness FME notifications should now be flowing into New Relic. If you have any issues with this integration, contact [support@split.io](mailto:support@split.io).

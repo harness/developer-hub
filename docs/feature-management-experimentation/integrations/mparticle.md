@@ -22,14 +22,14 @@ Before you begin, within your mParticle account, set up Harness FME using the In
 
 ### In Harness FME 
 
-1. Click the **profile button** at the bottom of the left navigation pane and click **Admin settings**.
-2. Click **Integrations** and navigate to the Marketplace tab.
-3. Find mParticle from the integration list, click **Add** and select the project for which you would like to configure the integration.
-4. Under Configure as a partner feed input in mParticle, select **Add configuration**.
-5. Select the environment type in mParticle you want to send your data to. You can select either: 
+1. From the FME navigation menu, click **FME Settings** and navigate to the **Integrations** page.
+1. Locate the mParticle integration and click **Add**.
+1. Select the project for which you would like to configure the integration.
+1. Under Configure as a partner feed input in mParticle, select **Add configuration**.
+1. Select the environment type in mParticle you want to send your data to. You can select either: 
     * Development 
     * Production 
-6. Select how you want to map Harness FME traffic types to mParticle identities. You can select: 
+1. Select how you want to map Harness FME traffic types to mParticle identities. You can select: 
     * customer_id
     * email
     * facebook
@@ -41,9 +41,9 @@ Before you begin, within your mParticle account, set up Harness FME using the In
     * other_id_2
     * other_id_3
     * other_id_4
-7. FME impressions display as *get_treatment* in mParticle by default or you can customize this event name with a maximum of 256 characters. 
-8. Paste the server to server key and secret from your mParticle account and click **Save**.
-9. Once you save the configuration, send a test event from Harness FME into mParticle.
+1. FME impressions display as *get_treatment* in mParticle by default or you can customize this event name with a maximum of 256 characters. 
+1. Paste the server to server key and secret from your mParticle account and click **Save**.
+1. Once you save the configuration, send a test event from Harness FME into mParticle.
 
 Repeat this process for each environment and traffic type you want to configure. 
 
@@ -51,14 +51,14 @@ Repeat this process for each environment and traffic type you want to configure.
 
 ### In Harness FME 
 
-1. Click the **profile button** at the bottom of the left navigation pane and click **Admin settings**.
-2. Click **Integrations** and navigate to the Marketplace tab.
-3. Find mParticle in the integration list, click **Add** and select the project for which you would like to configure the integration.
-4. Under Configure as an events output in mParticle, select **Add configuration**.
-5. Select the environment type in mParticle you would your data to be sent to. You can select either: 
+1. From the FME navigation menu, click **FME Settings** and navigate to the **Integrations** page.
+1. Locate the mParticle integration and click **Add**. 
+1. Select the project for which you would like to configure the integration.
+1. Under Configure as an events output in mParticle, select **Add configuration**.
+1. Select the environment type in mParticle you would your data to be sent to. You can select either: 
     * Development 
     * Production 
-6. Select how you want to map Harness FME traffic types to mParticle identities. You can select: 
+1. Select how you want to map Harness FME traffic types to mParticle identities. You can select: 
     * mpid
     * customer_id
     * email
@@ -71,10 +71,10 @@ Repeat this process for each environment and traffic type you want to configure.
     * other_id_2
     * other_id_3
     * other_id_4
-7. Enable identify to **On** if you want Harness FME to capture the user attributes in your mParticle events using an [identify call](https://help.split.io/hc/en-us/articles/360020529772-Identifying-customers).
-8. Enable events to **On** if you want Harness FME to capture mParticle events sent to FME. 
-9. Click **Save**.
-10. Copy the generated key and use it to configure the events integration settings in mParticle. 
+1. Enable identify to **On** if you want Harness FME to capture the user attributes in your mParticle events using an [identify call](/docs/feature-management-experimentation/api/#identify-users).
+1. Enable events to **On** if you want Harness FME to capture mParticle events sent to FME. 
+1. Click **Save**.
+1. Copy the generated key and use it to configure the events integration settings in mParticle. 
  
 ### In mParticle
 Within mParticle, select Split from the integration directory and configure the events integration. When prompted, enter the integration key provided by Harness FME. Refer to[mParticle documentation](https://docs.mparticle.com/integrations/split/event/) for more information. 

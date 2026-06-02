@@ -41,19 +41,21 @@ Within your Amplitude account, set up Harness FME as a data source. Copy your Am
 
 ### In Harness FME
 
-1. Click the **profile button** at the bottom of the left navigation pane and click **Admin settings**.
-2. Click **Integrations** and navigate to the Marketplace tab.
-3. Find Amplitude in the integrations list, click **Add** and select the project for which you would like to configure the integration.
+1. From the FME navigation menu, click **FME Settings** and navigate to the **Integrations** page.
+1. Locate the Amplitude integration and click **Add**.
+1. Select the project for which you would like to configure the integration.
 
     ![Amplitude](./static/amplitude-for-default.png)
 
-4. Select the environment from where you want data sent and then select how you want to map Harness FME traffic types to Amplitude identities. You can select either:
+1. Select the environment from where you want data sent and then select how you want to map Harness FME traffic types to Amplitude identities. You can select either:
+
     * `user_id`
     * `device_id` 
-5. FME impressions are shown as `get_treatment` events in Amplitude by default. You can customize this event name, with a maximum of 1,024 characters.
-6. Paste the API key and secret from your Amplitude account, copied above, and click **Save**.
-7. Select your Amplitude region. The default region is Standard.
-8. Once you save the configuration, send a test event from Harness FME into Amplitude.
+    
+1. FME impressions are shown as `get_treatment` events in Amplitude by default. You can customize this event name, with a maximum of 1,024 characters.
+1. Paste the API key and secret from your Amplitude account, copied above, and click **Save**.
+1. Select your Amplitude region. The default region is `Standard`.
+1. Once you save the configuration, send a test event from Harness FME into Amplitude.
 
 You can repeat this process depending on how many environments and traffic types you want to configure.
 

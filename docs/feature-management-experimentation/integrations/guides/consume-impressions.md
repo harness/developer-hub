@@ -141,10 +141,10 @@ The following environments:
    ```
 
 1. Restart your Django server by running `python manage.py runserver 0.0.0.0:8000`.
-1. Your webhook service is ready now, login to Split user interface, go to the **Admin Settings** page, click on **Integrations**, and click **Add** for `Outgoing Webhook (Impressions)`. 
+1. Your webhook service is ready now. From the FME navigation menu, click **FME Settings** and navigate to the **Integrations** page.
+1. Locate the Outgoing Webhook (Impressions) integration and click **Add**.
+1. Select which environment's impressions to export, paste the URL below, and click **Save**.
 
-1. Select which environment's impressions to export, and paste the URL below, and click **Save**.
-
-   ```
+   ```text
    http://[Django Server:port]/webhook_consumer/
    ```

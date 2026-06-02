@@ -20,7 +20,7 @@ GitHub workflows are triggered by events on your repository, like a merge into t
 
 ### In Harness FME
 
-In the Harness FME, you first need to create your feature flags. Take note of the FME environment for which you create your feature flag targeting rules. In Admin Settings find the _server-side SDK API Key_ for this environment and store it as a GitHub [secret](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions) for use in your GitHub workflow.
+In the Harness FME, you first need to create your feature flags. Take note of the FME environment for which you create your feature flag targeting rules. In **FME Settings**, find the _server-side SDK API Key_ for this environment and store it as a GitHub [secret](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions) for use in your GitHub workflow.
 
 ### In a GitHub workflow
 

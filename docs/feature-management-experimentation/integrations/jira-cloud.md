@@ -14,27 +14,27 @@ If you are having trouble completing the integration please contact us at [suppo
 
 ## Setting up in Harness FME
 
-To set up in Harness FME, do the following:
+To set up in Harness FME:
 
-1. Click the **profile button** at the bottom of the left navigation pane and click **Admin settings**.
-2. Click **Integrations** and navigate to the Marketplace tab.
-3. Locate the Jira Cloud integration, click **Add** and select the project and associated environments you want to connect to Jira Cloud.
+1. From the FME navigation menu, click **FME Settings** and navigate to the **Integrations** page.
+1. Locate the Jira Cloud integration and click **Add**.
+1. Select the project and associated environments you want to connect to Jira Cloud. You can select multiple projects but only one environment per project.
 
-   **Note:** You can select multiple projects but only one environment per project.
+1. Click **Save** to generate a token. The token that is generated is a Harness FME Admin API key.
 
-4. Click **Save** to generate a token. The token that is generated is a Harness FME Admin API key.
-
-5. Click **copy** to copy the Harness FME token to the clipboard. You can now use this token to configure the Jira Cloud.
+1. Click **copy** to copy the Harness FME token to the clipboard. You can now use this token to configure the Jira Cloud.
 
    ![](./static/jira-cloud-in-split.png)
 
-**Note: If your projects have set [project view permissions](https://help.split.io/hc/en-us/articles/12621628930445-Project-view-permissions), ensure that the projects you want to use with this integration grant access to the Admin API Key that you just generated in this section.**
+   :::info
+   If your projects have set [project view permissions](/docs/feature-management-experimentation/split-to-harness/administering-migrated-account#role-bindings-at-the-project-level), ensure that the projects you want to use with this integration grant access to the Admin API Key that you just generated in this section.
+   :::
 
 ## Setting up in Jira
 
-To set up in Jira, do the following:
+To set up in Jira:
 
-1. In the [Atlassian Marketplace] (https://marketplace.atlassian.com/apps/1224872/split-for-jira?hosting=cloud&tab=overview), install Split for Jira in your Jira Cloud instance.
+1. In the [Atlassian Marketplace](https://marketplace.atlassian.com/apps/1224872/split-for-jira?hosting=cloud&tab=overview), install Split for Jira in your Jira Cloud instance.
 
 2. Within **Apps** in Jira Cloud, and after the Split for Jira app is installed, click **Configure integration** in the side menu under Harness FME.
 

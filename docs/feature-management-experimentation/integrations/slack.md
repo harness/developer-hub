@@ -26,18 +26,19 @@ With this integration, as a Slack user, you can subscribe channels to notificati
 
 ## Setting up in Harness FME
 
-To start, first set up in Harness FME by doing the following:
+To set up the Slack app integration in Harness FME:
 
-1. Click the **profile button** at the bottom of the left navigation pane and click **Admin settings**.
-2. Click **Integrations** and navigate to the Marketplace tab.
-3. Locate Slack App in the integrations list and click **Add**.
-4. Click **Save**.
+1. From the FME navigation menu, click **FME Settings** and navigate to the **Integrations** page.
+1. Locate the Slack integration and click **Add**.
+1. Click **Save**.
 
    ![](./static/slack-new-integration.png)
 
-5. Navigate back to the newly created integration. The token and Add to Slack button display. 
-6. Click **Add to Slack** button. This takes you into the Slack OAuth flow.
-7. In the Slack authorization page, you see a page with the message explaining the permissions required by the Split Slack app. Click the **Allow** button. You’re prompted to open Slack. 
+1. Navigate back to the newly created integration. The token and Add to Slack button are displayed. 
+1. Click **Add to Slack**. This takes you into the Slack OAuth flow.
+1. In the Slack authorization page, you see a page with the message explaining the permissions required by the Split Slack app. 
+
+   Click **Allow**. You’re prompted to open Slack. 
 
    <div style={{maxWidth:500}}> ![](./static/slack-authorization.png) </div>
 

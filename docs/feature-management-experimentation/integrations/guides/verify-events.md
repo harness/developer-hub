@@ -49,7 +49,7 @@ For instance, if you see the following `issue_added` event in Segment:
 }
 ```
 
-You would find the equivalent event in Split by navigating to **Admin Settings** > **Event Types** and searching for the event type `issue_added`.
+You would find the equivalent event in Harness FME by navigating to the **Data Hub** page from the FME navigation menu, clicking the **Event Types** tab, and searching for the `issue_added` event type.
 
 ![](../static/event-types.png)
 
@@ -61,7 +61,7 @@ Note that the traffic type and key match up with what was sent in Segment. If yo
 
 ## Verifying Events of Multiple Traffic Types
 
-When you have Split configured as a Segment destination, events sent to that destination containing both an anonymousId and userId will show up in Split as two events: one for the traffic type mapped to anonymousId and one for the traffic type mapped to userId. You can verify this using the same steps as above. 
+When you have Split configured as a Segment destination, events sent to that destination containing both an `anonymousId` and `userId` will show up in Split as two events: one for the traffic type mapped to `anonymousId` and one for the traffic type mapped to `userId`. You can verify this using the same steps as above. 
 
 For an event in Segment that looks like this:
 

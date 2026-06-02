@@ -197,9 +197,9 @@ We can then use a Python script to extract data from the PostgreSQL database wit
 
    ![](../static/api-gateway-stage.png)
 
-1. Your Webhook service is ready now, login to the Split user interface, go to **Admin Settings**, click on **Integrations**, and click the **Add** button for **Outgoing Webhook (Impressions)**.
-
-20. Select which environment's impressions to export, paste the API Gateway URL, and click **Save**.
+1. Your Webhook service is ready now. From the FME navigation menu, click **FME Settings** and navigate to the **Integrations** page.
+1. Locate the Outgoing Webhook (Impressions) integration and click **Add**.
+1. Select which environment's impressions to export, paste the API Gateway URL, and click **Save**.
 
     ![](../static/api-gateway-url.png)
 

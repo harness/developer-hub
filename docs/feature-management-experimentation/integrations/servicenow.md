@@ -25,9 +25,8 @@ To start connecting the ServiceNow integration to Harness FME, you need to gener
 
 To create your Harness authentication token, do the following:
 
-1. Click the **profile button** at the bottom of the left navigation pane and click **Admin settings**.
-2. Click **Integrations** and navigate to the Marketplace tab.
-3. Find ServiceNow in the integrations list and click **Add**. The Connect to ServiceNow DevOps page appears.
+1. From the FME navigation menu, click **FME Settings** and navigate to the **Integrations** page.
+1. Locate the ServiceNow integration and click **Add**. The Connect to ServiceNow DevOps page appears.
 4. Enter a user friendly name for the integration and click **Save**. The authentication token is created once you save the settings page. 
 5. Copy your authentication token. You need the token to configure your Harness FME extension in ServiceNow integration.
   **Note: This field is not editable.**
@@ -40,13 +39,12 @@ You can configure your Harness FME environment so approvals only occur on the Se
 
 To configure your Harness FME environment, do the following:
 
-1. Click the **profile button** at the bottom of the left navigation pane and click **Admin settings**.
-2. Select **Projects** to see the projects in your Harness account. 
-3. For one of the projects, click **View**. The environments associated with this project display.
-4. Within the Environments tab, click **Edit** on the desired environment (e.g. Prod-client). The Edit environment page appears.
-5. In the Change permissions section, select **Require approval for changes**, then select Restrict who can approve.
-6. On the Approvers menu list, in the first field, select Integration and in the second field, select **ServiceNow, ServiceNow DevOps**.
-7. Click the **Save** button. This takes you back to the selected project page. Now when you make a change to an FME feature flag or segment in Harness, the approver is automatically set to the ServiceNow integration.  View this in the Change summary page under the Approvers field. 
+1. From the FME navigation menu, click **FME Settings** and navigate to the **Projects** page. 
+1. For one of the projects, click **View**. The environments associated with this project display.
+1. Within the Environments tab, click **Edit** on the desired environment (e.g. Prod-client). The Edit environment page appears.
+1. In the Change permissions section, select **Require approval for changes**, then select Restrict who can approve.
+1. On the Approvers menu list, in the first field, select Integration and in the second field, select **ServiceNow, ServiceNow DevOps**.
+1. Click the **Save** button. This takes you back to the selected project page. Now when you make a change to an FME feature flag or segment in Harness, the approver is automatically set to the ServiceNow integration.  View this in the Change summary page under the Approvers field. 
   
 ## Set up in ServiceNow DevOps
 
