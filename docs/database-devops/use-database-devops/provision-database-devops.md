@@ -10,6 +10,8 @@ tags:
     - db schema changes
     - db schema management
     - db schema automation
+    - bulk onboarding
+    - csv
 keywords:
     - database devops
     - terraform
@@ -19,6 +21,9 @@ keywords:
     - db schema changes
     - db schema management
     - db schema automation
+    - bulk onboarding
+    - csv import
+    - at scale
 ---
 
 import Tabs from '@theme/Tabs';
@@ -337,5 +342,225 @@ When you run the above command, you'll get the following response:
 - **Instance second**: Instances reference an existing schema.
 - **Branch**: Both schema and instance must point to the correct Git branch.
 - **Connector**: Must match the DB type (Postgres, MySQL, etc.).
+</TabItem>
+
+<TabItem value="Bulk Onboarding from CSV">
+
+When you need to onboard hundreds or thousands of database instances, manual resource creation through the UI or individual Terraform configurations becomes impractical. The Database DevOps Bulk Onboarding Terraform module streamlines this process: it provisions JDBC connectors, database instances, and schemas directly from CSV files.
+
+## Prerequisites
+
+Before you begin, ensure you have:
+
+- Terraform v1.3 or later installed.
+- Harness provider version 0.30.0 or later. Go to [Harness Terraform provider documentation](https://registry.terraform.io/providers/harness/harness/latest/docs) to configure the provider.
+- A valid [Harness Platform API Key](/docs/platform/automation/api/add-and-manage-api-keys/#create-personal-api-keys-and-tokens).
+- Active Database DevOps license. Go to [Subscription Overview and Management](/docs/platform/subscriptions-licenses/subscriptions/#modules-with-no-direct-developer-tracking-consumption-entitlements) to view your subscriptions.
+- Prepared CSV files containing your database details (see format below).
+
+## Step 1: Prepare your CSV files
+
+The module requires two CSV files: one for JDBC connectors and database instances, and another for database schemas.
+
+### JDBC connector and instance CSV
+
+This CSV file creates both a JDBC connector and a database instance per row, sharing the same identifier and name.
+
+Create a file named `jdbc_connector_and_instance.csv` with these columns:
+
+| Column | Required | Description |
+|--------|----------|-------------|
+| `identifier` | yes | Unique identifier for both the connector and instance. |
+| `name` | yes | Display name for both resources. |
+| `org_id` | yes | Harness organization identifier. |
+| `project_id` | yes | Harness project identifier. |
+| `url` | yes | JDBC connection URL (for example, `jdbc:postgresql://host:5432/db`). |
+| `description` | no | Description for both connector and instance. |
+| `delegate_selectors` | no | Delegate tags, separated by pipes (`tag1\|tag2`). |
+| `tags` | no | Tags as comma-separated `key:value` pairs. |
+| `credentials_json` | yes | JSON for the credentials block. Wrap in double quotes and escape internal quotes as `""`. |
+| `schema_identifier` | yes | Must match the `identifier` of a row in the schema CSV. |
+| `branch` | no | Git branch for the changelog. |
+| `context` | no | Liquibase context (optional filter). |
+| `substitute_properties_json` | no | JSON object for Liquibase property substitution. |
+
+**Example row:**
+
+```csv
+identifier,name,org_id,project_id,url,description,delegate_selectors,tags,credentials_json,schema_identifier,branch,context,substitute_properties_json
+prod_postgres_001,Production PostgreSQL 001,default,myproject,jdbc:postgresql://prod-db-01.example.com:5432/appdb,Production database instance,prod-delegate,env:prod,"{""type"":""UsernamePassword"",""username"":""dbuser"",""password_ref"":""account.dbpassword""}",app_schema_v1,main,production,{}
+```
+
+### Database schema CSV
+
+This CSV file creates database schema definitions that instances reference.
+
+Create a file named `db_schemas.csv` with these columns:
+
+| Column | Required | Description |
+|--------|----------|-------------|
+| `identifier` | yes | Unique identifier for the schema (referenced by `schema_identifier` in the connector CSV). |
+| `name` | yes | Display name. |
+| `org_id` | yes | Harness organization identifier. |
+| `project_id` | yes | Harness project identifier. |
+| `description` | no | Optional description. |
+| `service` | no | Associated service identifier. |
+| `type` | no | Schema type: `Repository` or `Script` (title case). |
+| `migration_type` | no | Migration tool: `Liquibase` or `Flyway`. |
+| `use_percona` | no | Set to `true` or `false` for Percona toolkit usage. |
+| `tags` | no | Comma-separated `key:value` tags. |
+| `schema_source_json` | conditional | JSON for repository-based schemas. Includes `connector` (Git connector ID), `location`, optional `repo`, `archive_path`, `toml`. |
+| `changelog_script_json` | conditional | JSON for script-based schemas. |
+
+**Example row for a repository-based schema:**
+
+```csv
+identifier,name,org_id,project_id,description,service,type,migration_type,use_percona,tags,schema_source_json,changelog_script_json
+app_schema_v1,Application Schema v1,default,myproject,Main application database schema,,Repository,Liquibase,false,team:backend,"{""connector"":""github_connector"",""location"":""db/changelog.yaml"",""repo"":""my-repo""}",
+```
+
+## Step 2: Configure the Terraform module
+
+Create a new directory for your Terraform configuration:
+
+```bash
+mkdir dbdevops-onboarding
+cd dbdevops-onboarding
+```
+
+Create a `main.tf` file that references the module:
+
+```hcl
+terraform {
+  required_providers {
+    harness = {
+      source  = "harness/harness"
+      version = ">= 0.30.0"
+    }
+  }
+}
+
+provider "harness" {
+  endpoint         = "https://app.harness.io/gateway"
+  account_id       = var.harness_account_id
+  platform_api_key = var.harness_api_key
+}
+
+module "dbdevops_onboarding" {
+  source = "git::https://github.com/harness-community/terraform-harness-database-devops-onboarding.git//modules/harness-dbdevops-onboarding"
+
+  jdbc_connector_and_instance_csv_file_path = "${path.module}/jdbc_connector_and_instance.csv"
+  db_schema_csv_file_path                   = "${path.module}/db_schemas.csv"
+}
+
+output "jdbc_instance_count" {
+  description = "Number of JDBC connectors and instances created"
+  value       = module.dbdevops_onboarding.jdbc_instance_csv_record_count
+}
+
+output "schema_count" {
+  description = "Number of database schemas created"
+  value       = module.dbdevops_onboarding.db_schema_csv_record_count
+}
+```
+
+Create a `variables.tf` file:
+
+```hcl
+variable "harness_account_id" {
+  description = "Harness account identifier"
+  type        = string
+}
+
+variable "harness_api_key" {
+  description = "Harness platform API key"
+  type        = string
+  sensitive   = true
+}
+```
+
+Create a `terraform.tfvars` file with your credentials:
+
+```hcl
+harness_account_id = "your_account_id"
+harness_api_key    = "pat.xxxxx.xxxxx.xxxxx"
+```
+
+Place your `jdbc_connector_and_instance.csv` and `db_schemas.csv` files in the same directory.
+
+## Step 3: Apply the Terraform configuration
+
+Initialize Terraform to download the required providers and module:
+
+```bash
+terraform init
+```
+
+Review the planned changes:
+
+```bash
+terraform plan
+```
+
+The output displays how many connectors, instances, and schemas will be created based on your CSV row counts.
+
+Apply the configuration to create all resources:
+
+```bash
+terraform apply
+```
+
+Type `yes` when prompted to confirm the creation.
+
+## Step 4: Verify the resources
+
+After Terraform completes, verify the resources were created:
+
+1. In Harness, select **Database DevOps** from the module picker.
+2. Navigate to **DB Schemas** to see your newly created schemas.
+3. Navigate to **DB Instances** to see your database instances.
+4. Navigate to **Connectors** under **Project Setup** to see your JDBC connectors.
+
+## Troubleshooting
+
+### CSV parsing errors
+
+If you see `csvdecode` errors during `terraform plan`:
+
+- Ensure every data row has exactly the same number of fields as the header row.
+- Do not add trailing commas at the end of rows.
+- Wrap fields containing commas in double quotes.
+- Escape double quotes inside quoted fields as `""`.
+
+### Schema identifier mismatch
+
+If instances fail to create with a message about missing schemas:
+
+- Verify that every `schema_identifier` value in the JDBC CSV matches an `identifier` in the schema CSV.
+- Check for typos or case mismatches (identifiers are case-sensitive).
+
+### Credentials JSON format
+
+The `credentials_json` column must contain valid JSON. For CSV compatibility:
+
+- Wrap the entire JSON in double quotes.
+- Escape internal double quotes as `""`.
+
+**Example:**
+
+```csv
+"{""type"":""UsernamePassword"",""username"":""dbuser"",""password_ref"":""account.dbpassword""}"
+```
+
+### Schema type validation
+
+The `type` field in the schema CSV must use title case: `Repository` or `Script`, not `REPOSITORY` or `repository`. The Harness provider validates these values strictly.
+
+## Additional resources
+
+- Go to [terraform-harness-database-devops-onboarding repository](https://github.com/harness-community/terraform-harness-database-devops-onboarding) to view the module source code and examples.
+- Go to [Set up connectors](/docs/database-devops/use-database-devops/set-up-connectors) to understand JDBC connector configuration.
+- Go to [Onboarding guide](/docs/database-devops/use-database-devops/get-started/onboarding-guide) to learn about the Database DevOps workflow after onboarding.
+
 </TabItem>
 </Tabs>
