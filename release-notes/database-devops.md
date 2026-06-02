@@ -22,15 +22,13 @@ These release notes describe recent changes to Harness Database DevOps.
 - **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 :::
 
-## May 2026
+## June 2026
 
-### Release 1.97.x
-The `1.97.x` release improves usability and consistency across database change execution workflows.
+### Release 1.98.0
 
-#### Key Highlights
+No customer-facing updates were introduced in this release.
 
-* **Feature Enhancements**
-  - Enhanced tagging behavior for database changesets, improving consistency and traceability during migration workflows.
+#### Image Upgrades
 
 | **Image Name**                    |  **Current Version**   | **Past Version**             |
 | --------------------------------- | ---------------------- | ---------------------------- |
@@ -41,10 +39,43 @@ The `1.97.x` release improves usability and consistency across database change e
 | plugins/drone-liquibase-snowflake | 1.32.0-4.33-snowflake  | 1.31.0-4.33-snowflake        |
 | plugins/drone-liquibase-percona   | 1.32.0-4.33-percona    | 1.31.0-4.33-percona          |
 | plugins/drone-liquibase-cloudsql  | 1.32.0-4.33-cloudsql   | 1.31.0-4.33-cloudsql         |
-| plugins/drone-liquibase-bigquery  | 1.32.0-4.33-bigquery   | 1.30.0-4.33-bigquery         |
+| plugins/drone-liquibase-bigquery  | 1.32.0-4.33-bigquery   | 1.31.0-4.33-bigquery         |
 | plugins/drone-flyway              | 1.3.0-11.11.2          | 1.3.0-11.11.2                |
 | plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
 | harness/drone-git                 | 1.7.16-rootless        | 1.7.16-rootless              |
+
+## May 2026
+
+### Release 1.97.x
+The `1.97.x` release improves usability and consistency across database change execution workflows.
+
+#### Key Highlights
+
+* **Feature Enhancements**
+  - Enhanced tagging behavior for database changesets, improving consistency and traceability during migration workflows.
+  - Added `DBOPS_LIQUIBASE_CONSOLIDATED_EXECUTION` flag that runs multiple commands inside the same container during execution of the apply step. From an end-user standpoint this will result in the Apply step having 3 containers running liquibase (pre apply, apply, and post-apply) instead of 7+. 
+
+    :::info
+    This feature flag should only be enabled if running Drone plugin versions `1.30.1` or higher, as older Drone plugins do not support this container consolidation.
+    :::
+    :::
+
+| **Image Name**                    |  **Current Version**   | **Past Version**             |
+| --------------------------------- | ---------------------- | ---------------------------- |
+| plugins/download-artifactory      | 1.0.0                  | 1.0.0                        |
+| plugins/drone-liquibase           | 1.32.0-4.33            | 1.31.0-4.33                  |
+| plugins/drone-liquibase-mongo     | 1.32.0-4.33-mongo      | 1.31.0-4.33-mongo            |
+| plugins/drone-liquibase-spanner   | 1.32.0-4.33-spanner    | 1.31.0-4.33-spanner          |
+| plugins/drone-liquibase-snowflake | 1.32.0-4.33-snowflake  | 1.31.0-4.33-snowflake        |
+| plugins/drone-liquibase-percona   | 1.32.0-4.33-percona    | 1.31.0-4.33-percona          |
+| plugins/drone-liquibase-cloudsql  | 1.32.0-4.33-cloudsql   | 1.31.0-4.33-cloudsql         |
+| plugins/drone-liquibase-bigquery  | 1.32.0-4.33-bigquery   | 1.31.0-4.33-bigquery         |
+| plugins/drone-flyway              | 1.3.0-11.11.2          | 1.3.0-11.11.2                |
+| plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
+| harness/drone-git                 | 1.7.16-rootless        | 1.7.16-rootless              |
+
+#### Minimum Supported Versions
+- **Drone Plugin version:** Must be version `1.30.1` or higher for the `DBOPS_LIQUIBASE_CONSOLIDATED_EXECUTION` flag to work.
 
 ### Release 1.96.x
 The `1.96.x` release expands repository integration capabilities, allowing teams to use Harness-native source repositories directly within DB DevOps workflows.
