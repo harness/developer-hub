@@ -14,16 +14,16 @@ The **Harness AI DevOps Agent** streamlines your DevOps processes by enabling yo
 
 The AI DevOps Agents use the following AI models to facilitate your DevOps tasks:
 
-- DevOps Agent: Claude Opus 4.5
-- Support Agent: OpenAI GPT-4o
-- OPA Agent: OpenAI GPT-4o
-- Error Analyzer: OpenAI GPT-4o
+- DevOps Agent: Claude Opus 4.6, hosted through AWS Bedrock and Google Vertex AI
+- Support Agent: Claude Opus 4.6, hosted through AWS Bedrock and Google Vertex AI
+- OPA Agent: Claude Opus 4.6, hosted through AWS Bedrock and Google Vertex AI
+- Error Analyzer: Claude Opus 4.6, hosted through AWS Bedrock and Google Vertex AI
 
 :::
 
 ## Installation and Setup
 
-The Harness AI DevOps Agent is enabled directly within the Harness UI—no separate installation on an external tool or marketplace is required. Follow these steps to activate the agent:
+The Harness AI DevOps Agent is enabled directly within the Harness UI. No separate installation on an external tool or marketplace is required. Follow these steps to activate the agent:
 
 1. Select **Account Settings** in the left nav. 
 2. Under **General**, select [**Default Settings**](/docs/platform/settings/default-settings).
@@ -501,21 +501,24 @@ You can initiate GitOps operations directly from the AI chat:
 
 ## Data Storage and Privacy Policies
 
-Harness AI is designed with strict data privacy and security principles. This section explains what data is used, how it is handled, and how it is discarded when you interact with the DevOps Agent or any AI-powered features in Harness. No configuration is necessary to ensure your privacy since Harness applies strict privacy defaults:
+Harness AI is designed with strict data privacy and security principles. Harness AI Chat and the DevOps Agent use provider-hosted models through Harness-managed connections.
+
+This section explains what data is used, how it is handled, and how it is discarded when you interact with the DevOps Agent or any AI-powered features in Harness. No configuration is necessary to ensure your privacy since Harness applies strict privacy defaults:
 
 - Training is disabled across all AI integrations.
 - Data is not persisted or exposed to model providers beyond inference.
 - Fallback mechanisms are used only when necessary and are compliant with strict retention policies.
+- Harness enforces account-scoped controls, RBAC, and auditability for Harness-managed AI features.
 
 This section discusses these policies in greater detail. 
 
 ### Data Privacy and Subscription Terms
 
-For a full legal breakdown of AI privacy at Harness, see: [AI Data Privacy](https://www.harness.io/legal/harness-ai-data-privacy) & [Subscription Terms 2025](https://www.harness.io/legal/subscription-terms-2025).
+Go to [Harness AI Data Privacy](https://www.harness.io/legal/harness-ai-data-privacy) to review AI privacy practices. Go to [Subscription Terms 2025](https://www.harness.io/legal/subscription-terms-2025) to review subscription terms.
 
 ### No Data Use
 
-Harness AI processes real-time user input and relevant context (e.g., pipeline metadata or error logs) to generate responses. This data is not stored, not logged, and never used for training by Harness or its model providers.
+Harness AI processes real-time user input and relevant context (for example, pipeline metadata or error logs) to generate responses. This data is not stored, not logged, and never used for training by Harness or its model providers.
 
 ### Minimum Data Retention
 
@@ -523,16 +526,18 @@ Data discard behavior depends on the underlying AI provider:
 
 | **Provider**           | **Model**        | **Discard Mechanism**              | **Retention** | **Used for Training?** |
 | ---------------------- | ---------------- | ---------------------------------- | ------------- | ---------------------- |
-| Google Vertex AI       | Claude Opus 4.5  | Immediately purged after inference | 0 days        | No                     |
-| OpenAI (fallback only) | GPT-4o           | Retained for 30 days, then purged  | 30 days       | No (Harness opts out)  |
+| AWS Bedrock and Google Vertex AI | Claude Opus 4.6 | Immediately purged after inference | 0 days | No |
+| OpenAI (fallback only) | GPT-4o | Excluded from retention under Zero Data Retention | 0 days | No |
 
 ### Failover/Fallback Scenarios
 
-In rare scenarios (e.g., outage or capacity limits), Harness AI may fall back to OpenAI APIs:
+In rare scenarios, such as outage or capacity limits, Harness AI may fall back to OpenAI APIs. Harness is approved for OpenAI Zero Data Retention for this path:
 
-- OpenAI may retain the data for 30 days.
+- OpenAI does not retain prompt or response customer content after inference.
 - Harness does not permit OpenAI to train on this data.
-- After 30 days, the data is automatically purged.
+- Customer content retention is 0 days under Zero Data Retention.
+
+The 0-day retention statement applies to the Harness-approved OpenAI fallback path. It does not apply to arbitrary OpenAI organizations, projects, endpoints, or features.
 
 ### No Anonymization/Tokenization Required
 
@@ -550,20 +555,24 @@ No, Harness AI is not available for SMP.
 
 ### Who is the AI DevOps Agent available to?
 
-Enterprise Licenses (including Dev360, Service, SI, Users) are entitled to AI DevOps free of charge. Any module that has access to pipelines will be entitled to AI DevOps - not just CI or CD. This includes all Harness modules except for CCM. The scope of the AI DevOps Agent will be restricted to the license you have. For example, a CI-only customer cannot create a CD stage.
+Enterprise licenses, including Dev360, Service, SI, and Users, include AI DevOps at no additional charge. Any module with pipeline access is entitled to AI DevOps, not only CI or CD. This includes all Harness modules except CCM. The AI DevOps Agent scope follows the modules in your license. For example, a CI-only customer cannot create a CD stage.
+
+### Can I use my own model provider with Harness AI Chat?
+
+No. Harness AI Chat and the DevOps Agent use Harness-managed model providers. Bring your own model is not supported for Harness AI Chat.
 
 ### Where can I submit feedback?
 
-Please submit feedback by emailing [Harness Support](mailto:support@harness.io) or through the UI by clicking **Help** in the bottom left corner then **Give us feedback**.
+Submit feedback by emailing [Harness Support](mailto:support@harness.io) or through the UI by clicking **Help** in the bottom left corner, then **Give us feedback**.
 
 ## Release Updates
 
-### February 18, 2026
+### Claude Opus 4.6 upgrade
 
-The Harness AI DevOps Agent has been upgraded to **Claude Opus 4.5**, bringing significant improvements across the board:
+The Harness AI DevOps Agent has been upgraded to **Claude Opus 4.6**, bringing significant improvements across the board:
 
-- **Consolidated architecture** — Merged 5 sub-agents into a single unified DevOps agent, improving speed, context retention, and pipeline generation accuracy.
-- **Improved response time and output quality** — Faster responses with higher-quality results across all interactions.
-- **Enhanced template reference capabilities** — More accurate and reusable pipeline generation through better template resolution.
-- **Support for longer and more complex pipelines** — Validated with a 50-stage pipeline test, enabling enterprise-scale pipeline generation.
-- **Stronger pipeline modification fidelity** — Higher accuracy and performance when modifying existing pipelines.
+- **Consolidated architecture:** Merged 5 sub-agents into a single unified DevOps agent, improving speed, context retention, and pipeline generation accuracy.
+- **Improved response time and output quality:** Faster responses with higher-quality results across all interactions.
+- **Enhanced template reference capabilities:** More accurate and reusable pipeline generation through better template resolution.
+- **Support for longer and more complex pipelines:** Validated with a 50-stage pipeline test, enabling enterprise-scale pipeline generation.
+- **Stronger pipeline modification fidelity:** Higher accuracy and performance when modifying existing pipelines.
