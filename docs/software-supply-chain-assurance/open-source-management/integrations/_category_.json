@@ -1,0 +1,12 @@
+{
+    "label":"Integrations",
+    "position": 39,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"default",
+    "description": "Integrate Harness SCS with third-party tools and services",
+    "link":{
+       "type":"generated-index",
+       "title":"Integrations"
+    }
+ }
