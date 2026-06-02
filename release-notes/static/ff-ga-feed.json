@@ -1,7 +1,7 @@
 [
   {
     "flagKey": "IACM_USE_NEW_RESOURCES_TABLE",
-    "description": "This will migrate all resources from terrfrom state file to table resources.",
+    "description": "Migrates all existing IACM cloud resources from the Terraform state file into the new resources table.",
     "gaStartDate": "2026-06-02",
     "module": "IACM"
   },
