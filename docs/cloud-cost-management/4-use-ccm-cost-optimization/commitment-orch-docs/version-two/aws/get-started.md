@@ -23,6 +23,11 @@ import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelecto
       logo: "/cloud-services/aws-ec.svg",
       logoSize: 32
     },
+    Elasticache: {
+      path: "/cloud-cost-management/content/commitment-orchestrator/elasticache.md",
+      logo: "/cloud-services/elasticache.svg",
+      logoSize: 32
+    },
   }}
 toc = {toc}
 />

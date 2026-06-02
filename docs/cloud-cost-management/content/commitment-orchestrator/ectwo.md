@@ -172,7 +172,7 @@ After all the set-up steps, you can review and finalise your inputs.
 
 The Orchestration Setup page displays a comprehensive list of all Master Accounts with Commitment Orchestrator connector permissions. From this page, users can enable new orchestration setups and view key metrics including Last 30 Days Coverage, Savings, and the current status of each Orchestrator configuration.
 
-<DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/overview-screen.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/overview.png')} width="100%" height="100%" title="Click to view full size image" />
 
 ------
 

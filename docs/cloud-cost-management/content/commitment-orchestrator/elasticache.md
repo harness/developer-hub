@@ -15,7 +15,8 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
    <p style={{margin: 0}}>
      <img src="/img/icon_ff.svg" alt="Feature Flag" width="18" style={{marginRight: '0.4rem', verticalAlign: 'middle'}}/> <strong>Behind a Feature Flag</strong>
      
-     Commitment Orchestrator for RDS is currently behind a [Feature Flag](/docs/cloud-cost-management/whats-supported#ccm-feature-flags). Contact [Harness Support](mailto:support@harness.io) to have the flag enabled for your account.
+ElastiCache support in Commitment Orchestrator is controlled by the `CCM_COMMORCH_ELASTICACHE` feature flag. 
+
    </p>
  </div>
  
@@ -24,93 +25,35 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 
 To setup Commitment Orchestrator in Harness CACM, you need:
 
-- **Active CACM Connectors**: You must have at least one active cloud connector set up for the cloud providers you want to categorize costs for: Set Up [CACM Connectors](/docs/cloud-cost-management/get-started#aws).
+- **Active CACM Connectors**: You must have at least one active cloud connector set up for the cloud providers you want to categorize costs for: Set Up [CCM Connectors](/docs/cloud-cost-management/get-started#aws).
 - A master account with the right permissions to be added via AWS connector on which you want to enable orchestration. Select the services for which you want to enable orchestration (permissions can be limited to specific service).
 
-<DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/permissions.png')} width="80%" height="80%" title="Click to view full size image" />
-
-Available permissions for RDS:
+Below is the Elasticache permissions required:
+```
+HarnessCommitmentElastiCachePolicy:
+    Type: 'AWS::IAM::ManagedPolicy'
+    Condition: CreateHarnessCommitmentElastiCachePolicy
+    Properties:
+      Description: Policy granting Harness Access to ElastiCache Reserved Instances
+      PolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Action:
+              - 'ce:GetSavingsPlansCoverage'
+              - 'ce:GetReservationCoverage'
+              - 'ce:GetSavingsPlansUtilization'
+              - 'ce:GetDimensionValues'
+              - 'ce:GetReservationUtilization'
+              - 'ce:GetSavingsPlansUtilizationDetails'
+              - 'ce:GetCostAndUsage'
+              - 'organizations:ListAccounts'
+              - 'elasticache:DescribeReservedCacheNodes'
+              - 'elasticache:DescribeReservedCacheNodesOfferings'
+              - 'elasticache:PurchaseReservedCacheNodesOffering'
+            Resource: '*'
 
 ```
-Action:
-- 'ce:GetSavingsPlansCoverage'
-- 'ce:GetReservationCoverage'
-- 'ce:GetSavingsPlansUtilization'
-- 'ce:GetDimensionValues'
-- 'ce:GetReservationUtilization'
-- 'ce:GetSavingsPlansUtilizationDetails'
-- 'ce:GetCostAndUsage'
-- 'organizations:ListAccounts'
-- 'rds:DescribeReservedDBInstances'
-- 'rds:DescribeReservedDBInstancesOfferings'
-- 'rds:PurchaseReservedDBInstancesOffering'
-'Resource: '*'
-```
-
-- **For AWS RDS, only RI orchestration is supported**
-
-- **Required Permissions (Read-Only)**: Your Harness user account must belong to a user group with the following role permissions:
-
-
-<details>
-<summary>**Required Read-Only Permissions**</summary>
-To enable visibility, in the master account connector, you need to add the following permissions.
-
-```
-"ec2:DescribeReservedInstancesOfferings",
-"ce:GetSavingsPlansUtilization",
-"ce:GetReservationUtilization",
-"ec2:DescribeInstanceTypeOfferings",
-"ce:GetDimensionValues",
-"ce:GetSavingsPlansUtilizationDetails",
-"ec2:DescribeReservedInstances",
-"ce:GetReservationCoverage",
-"ce:GetSavingsPlansCoverage",
-"savingsplans:DescribeSavingsPlans",
-"organizations:DescribeOrganization"
-"ce:GetCostAndUsage"
-```
-
-And to enable actual orchestration, you need to add the following permissions.
-```
-"ec2:PurchaseReservedInstancesOffering",
-"ec2:GetReservedInstancesExchangeQuote",
-"ec2:DescribeInstanceTypeOfferings",              
-"ec2:AcceptReservedInstancesExchangeQuote",              
-"ec2:DescribeReservedInstancesModifications",   
-"ec2:ModifyReservedInstances",
-"ce:GetCostAndUsage",
-"savingsplans:DescribeSavingsPlansOfferings",
-"savingsplans:CreateSavingsPlan"
-```
-
-For RDS additional permissions are required.
-```
-"rds:PurchaseReservedDBInstancesOffering",
-"rds:DescribeReservedDBInstancesOfferings",
-"pricing:GetProducts"
-```
-</details>
-
-:::important note 
-We have rolled out permissions for Elasticache as well. Available permissions for Elasticache:
-
-```
-Action:
-- 'ce:GetSavingsPlansCoverage'
-- 'ce:GetReservationCoverage'
-- 'ce:GetSavingsPlansUtilization'
-- 'ce:GetDimensionValues'
-- 'ce:GetReservationUtilization'
-- 'ce:GetSavingsPlansUtilizationDetails'
-- 'ce:GetCostAndUsage'
-- 'organizations:ListAccounts'
-- 'elasticache:DescribeReservedCacheNodes'
-- 'elasticache:DescribeReservedCacheNodesOfferings'
-- 'elasticache:PurchaseReservedCacheNodesOffering'
-Resource: '*'
-```
-:::
 
 ------
 
@@ -121,14 +64,14 @@ Resource: '*'
 <Tabs>
 <TabItem value="step1" label="Account and Service details" default>
 
-- Specify the **cloud account and service (RDS)** for which you want to enable orchestration. Currently, Commitment Orchestrator supports **AWS Elastic Compute Cloud (EC2)** and **AWS Relational Database Service (RDS)**. Support for other cloud providers is in the works.
+- Specify the **cloud account and service (Elasticache)** for which you want to enable orchestration. Currently, Commitment Orchestrator supports **AWS Elastic Compute Cloud (EC2)**, **AWS Relational Database Service (RDS)**, and **AWS Elasticache**. Support for other cloud providers is in the works.
 
 - Specify the **Master Account Connector**. You need to select the master account with the right permissions to be added via connector on which you want to enable orchestration. You can either select an existing connector for your master account or create one. 
 
     Please note, even if **"Commitment Orchestrator"** is enabled in Connector Set Up for any other Account except for **Master**, it will not be visible in the connector list in Commitment Orchestrator Setup since Commitment Orchestrator requires **Master Account connector**.
 
 
-<DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/rds-one.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/ec-step-one.png')} width="100%" height="100%" title="Click to view full size image" />
 
 </TabItem>
 <TabItem value="step2" label="Orchestrator Exclusions (Optional)">
@@ -139,9 +82,7 @@ Commitment Orchestrator provides you with an option to exclude Accounts, Regions
 
 -   **Region Exclusions**: You can include or exclude specific regions from the orchestration. All the regions are shown with their coverage and compute spend for making an informed decision
 
--   **Instance Exclusions**: You can include or exclude specific instances from the orchestration. 
-
-<DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/rds-two.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/ec-step-two.png')} width="100%" height="100%" title="Click to view full size image" />
 
 :::important note 
 The purchases will happen only at master account level and thus will be in turn applicable for child accounts as well. The exclusion list will only be considered for the compute spend calulations and actual RI/SP may be used against the instances if they are part of child accounts.
@@ -158,7 +99,15 @@ The purchases will happen only at master account level and thus will be in turn 
 
     - **Manual**: All commitment purchases require explicit manual approval before execution, giving you complete control over the process. All the recommendations are visible in the **Actions** tab on the dashboard.
 
-<DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/rds-three.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/ec-step-three.png')} width="100%" height="100%" title="Click to view full size image" />
+
+- **Notifications**: Configure alerts to stay informed about commitment activities:
+    - **Purchase Notifications**: Get notified about successful RI/SP purchases made by Harness.
+    - **Pending Approval Notifications**: Get notified when manual approval is required for RI/SP recommendations.
+    - **Savings Plans Expiry Notifications**: Receive notifications for existing Savings Plans that will expire within a specified timeframe.
+    - **Daily Summary Delivery**: Set your preferred timezone and email recipients for daily summary reports.
+
+<DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/ec-step-four.png')} width="100%" height="100%" title="Click to view full size image" />
 
 </TabItem>
 <TabItem value="step4" label="Review & Complete">
@@ -166,7 +115,7 @@ The purchases will happen only at master account level and thus will be in turn 
 
 After all the set-up steps, you can review and finalise your inputs.
 
-<DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/rds-four.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/ec-step-five.png')} width="100%" height="100%" title="Click to view full size image" />
 
 
 </TabItem>
