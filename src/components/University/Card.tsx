@@ -5,7 +5,7 @@ import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import "rc-tooltip/assets/bootstrap.css";
 import styles from "./CertCard.module.scss";
-import { MODULES } from "../../constants";
+import { MODULES, MODULE_ICON } from "../../constants";
 
 export enum type {
   user = "All Users",
@@ -60,7 +60,7 @@ export default function IltOrSptCard({
       <div>
         <div className={styles.moduleLine}>
           <h6>
-            <img src={`${baseUrl}img/icon_${module}.svg`} />{" "}
+            <img src={`${baseUrl}${MODULE_ICON[module] || `img/icon_${module}.svg`}`} />{" "}
             {type ? type : module.toUpperCase()}
           </h6>
         </div>

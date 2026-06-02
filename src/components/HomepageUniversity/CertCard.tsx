@@ -5,7 +5,7 @@ import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import "rc-tooltip/assets/bootstrap.css";
 import styles from "./CertCard.module.scss";
-import { MODULES } from "../../constants";
+import { MODULES, MODULE_ICON, MODULE_DISPLAY_NAME } from "../../constants";
 
 export enum certType {
   developer = "Developers",
@@ -54,8 +54,8 @@ export default function CertCard({
       <div>
         <div className={styles.moduleLine}>
           <h6>
-            <img src={`${baseUrl}img/icon_${module}.svg`} />{" "}
-            {type ? type : module.toUpperCase()}
+            <img src={`${baseUrl}${MODULE_ICON[module] || `img/icon_${module}.svg`}`} />{" "}
+            {type ? type : MODULE_DISPLAY_NAME[module] || module.toUpperCase()}
           </h6>
           <span>
             {[...new Array(stars[type || ""] || 0)].map(() => (

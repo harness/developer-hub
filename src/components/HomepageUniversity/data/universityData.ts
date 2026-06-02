@@ -60,7 +60,7 @@ export const university: CardItem[] = [
     ILT_available: true,
   },
 
-    {
+  {
     title: "Database DevOps",
     module: MODULES.dbdevops,
     description:
@@ -90,6 +90,17 @@ export const university: CardItem[] = [
     ILT_available: true,
     SPT_available: true,
     numberOfCerts: 2,
+  },
+
+  {
+    title: "API & Application Discovery",
+    module: MODULES.asp,
+    description:
+      "Capture, correlate and analyze all app and API-related activity over time, across your entire app and API ecosystem.",
+    link: "/university/api-application-discovery",
+    numberOfCerts: 1,
+    SPT_available: true,
+
   },
 
   {
@@ -143,15 +154,6 @@ export const university: CardItem[] = [
     ILT_available: true,
     numberOfCerts: 1,
   },
-  {
-    title: "Traceable by Harness",
-    module: MODULES.tbh,
-    description:
-      "Capture, correlate and analyze all app and API-related activity over time, across your entire app and API ecosystem.",
-    link: "/university/traceable-by-harness",
-    numberOfCerts: 1,
-    SPT_available: true,
 
-  },
 
 ];

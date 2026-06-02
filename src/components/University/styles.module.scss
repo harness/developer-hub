@@ -14,6 +14,9 @@
 .certificationsDBDO,
 .certificationsTBH,
 .certificationsFME,
+.certificationsASP,
+.certificationsARP,
+.certificationsAST,
 .certificationsPlatform {
   background: url(/img/cert_harness_bg.svg) no-repeat;
   background-position: right;
@@ -366,6 +369,19 @@
         border-color: var(--mod-fme-200);
       }
 
+      &.moduleASP {
+        border-color: var(--mod-sto-200);
+      }
+
+      &.moduleARP {
+        border-color: var(--mod-sto-200);
+      }
+
+      &.moduleAST {
+        border-color: var(--mod-sto-200);
+      }
+
+
       .certCardContainer {
         display: flex;
         width: 100%;
@@ -623,6 +639,9 @@
 .certificationsDBDO,
 .certificationsTBH,
 .certificationsFME,
+.certificationsASP,
+.certificationsARP,
+.certificationsAST,
 .certificationsPlatform {
   .certDesc {
     margin-top: 80px;
@@ -914,6 +933,24 @@
   background-size: 35%;
 }
 
+.certificationsASP {
+  background-image: url(/img/cert-asp-bg.svg);
+  background-position-x: 90%;
+  background-size: 35%;
+}
+
+.certificationsARP {
+  background-image: url(/img/cert-arp-bg.svg);
+  background-position-x: 90%;
+  background-size: 35%;
+}
+
+.certificationsAST {
+  background-image: url(/img/cert-ast-bg.svg);
+  background-position-x: 90%;
+  background-size: 35%;
+}
+
 // .certificationsPlatfrom {
 //     background-image: url(/img/cert_platform_bg.svg);
 // }
@@ -995,6 +1032,9 @@
   .certificationsDBDO,
   .certificationsTBH,
   .certificationsFME,
+  .certificationsASP,
+  .certificationsARP,
+  .certificationsAST,
   .certificationsPlatform {
     .certDesc {
       .certCard {
@@ -1040,6 +1080,9 @@
   .certificationsDBDO,
   .certificationsTBH,
   .certificationsFME,
+  .certificationsASP,
+  .certificationsARP,
+  .certificationsAST,
   .certificationsPlatform {
     .certDesc {
       .certCard {
@@ -1124,6 +1167,9 @@
   .certificationsDBDO,
   .certificationsTBH,
   .certificationsFME,
+  .certificationsASP,
+  .certificationsARP,
+  .certificationsAST,
   .certificationsPlatform {
     padding-top: 36px;
 
@@ -1217,6 +1263,9 @@
   .certificationsDBDO,
   .certificationsTBH,
   .certificationsFME,
+  .certificationsASP,
+  .certificationsARP,
+  .certificationsAST,
   .certificationsPlatform {
     padding: 10px;
     background: none;
@@ -1393,6 +1442,30 @@
       }
     }
 
+    .certificationsASP {
+      .hero {
+        .right {
+          background-image: url(/img/cert-asp-bg.svg);
+        }
+      }
+    }
+
+    .certificationsARP {
+      .hero {
+        .right {
+          background-image: url(/img/cert-arp-bg.svg);
+        }
+      }
+    }
+
+    .certificationsAST {
+      .hero {
+        .right {
+          background-image: url(/img/cert-ast-bg.svg);
+        }
+      }
+    }
+
     .hero {
       .SelfPacedTrainingBg {
         background-image: none !important;
@@ -1423,6 +1496,9 @@
     .certificationsDBDO,
     .certificationsTBH,
     .certificationsFME,
+    .certificationsASP,
+    .certificationsAST,
+    .certificationsARP,
     .certificationsPlatform {
       background: none;
       padding: 10px;
@@ -1482,6 +1558,9 @@
     .certificationsDBDO,
     .certificationsTBH,
     .certificationsFME,
+    .certificationsASP,
+    .certificationsARP,
+    .certificationsAST,
     .certificationsPlatform {
       .certDesc {
         .certCard {
@@ -1619,5 +1698,30 @@
         }
       }
     }
+
+    .certificationsASP {
+      .hero {
+        .right {
+          background-image: url(/img/cert-asp-bg.svg);
+        }
+      }
+    }
+
+    .certificationsARP {
+      .hero {
+        .right {
+          background-image: url(/img/cert-arp-bg.svg);
+        }
+      }
+    }
+
+    .certificationsAST {
+      .hero {
+        .right {
+          background-image: url(/img/cert-ast-bg.svg);
+        }
+      }
+    }
+
   }
 }

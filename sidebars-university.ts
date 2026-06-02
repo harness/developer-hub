@@ -69,6 +69,20 @@ const sidebars: SidebarsConfig = {
           id: "chaos-engineering",
           className: "sidebar-ce"
         },
+        //asp
+        {
+          type: "doc",
+          label: "API & Application Discovery",
+          id: "api-application-discovery",
+          className: "sidebar-asp"
+        },
+        //arp
+        {
+          type: "doc",
+          label: "Application & API Runtime Protection",
+          id: "api-application-protection",
+          className: "sidebar-arp"
+        },
         //sto
         {
           type: "doc",
@@ -98,13 +112,7 @@ const sidebars: SidebarsConfig = {
           id: "sei",
           className: "sidebar-sei"
         },
-         //tbh
-        {
-          type: "doc",
-          label: "Traceable by Harness",
-          id: "traceable-by-harness",
-          className: "sidebar-tbh"
-        },
+ 
         //vILT
         {
           type: "link",

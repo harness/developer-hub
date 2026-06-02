@@ -1,4 +1,4 @@
-The Traceable by Harness Developer Certification exam tests your knowledge and skills of the Traceable by Harness module.  
+The Traceable by Harness (API & Application Discovery) Developer Certification exam tests your knowledge and skills of the API & Application Discovery (Traceable by Harness) module.  
 
 ## Prerequisites
 
@@ -79,7 +79,7 @@ The following is a detailed list of exam objectives:
 
 ## Next Steps
 
-The Traceable by Harness Developer exam can start immediately after registering. Please allow up to 90 mins for the exam.
+The Traceable by Harness Developer (API & Application Discovery) exam can start immediately after registering. Please allow up to 90 mins for the exam.
 
 1. Create an account in Harness University
 2. Register for an exam 
