@@ -15,6 +15,11 @@ This feature is behind the feature flag `HAR_DEPENDENCY_FIREWALL`. Contact [Harn
 
 Dependency Firewall is a powerful security feature in Harness Artifact Registry that acts as a **gatekeeper** for your software supply chain. It works exclusively with **upstream proxy registries** to control whether artifact versions can be fetched from external sources by evaluating them against defined security policies.
 
+:::note The Dependency Firewall tab is visible in all registries by default
+
+Seeing the tab does not mean the feature is active. Dependency Firewall requires two setup steps before it evaluates artifacts: (1) go to [Configure Policies and Policy Sets](/docs/artifact-registry/dependency-firewall/configure-policies) to configure OPA policies, and (2) go to [Configure Registry](/docs/artifact-registry/manage-registries/configure-registry#enable-dependency-firewall) to enable Dependency Firewall on your upstream proxy.
+:::
+
 ## How Dependency Firewall Works
 
 When Dependency Firewall is enabled for an upstream proxy registry, every artifact version fetched from the external source is automatically evaluated against configured policy sets. Based on the evaluation results, the artifact version receives one of three statuses:

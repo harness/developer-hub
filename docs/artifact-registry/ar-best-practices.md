@@ -7,7 +7,7 @@ sidebar_position: 10
 Harness Artifact Registry provides centralized management for Docker, Helm, Maven, NPM, Python, and other artifact types. This guide outlines **naming conventions**, **scope selection**, and **governance strategies** to help you build a scalable registry structure.
 
 ## Why naming matters
-Registry names must be globally unique across your Harness account—regardless of scope (account, org, or project). **Reusing names like `docker-dev` in multiple scopes is not allowed**.
+Registry names must be globally unique across your Harness account, regardless of scope (account, org, or project). **Reusing names like `docker-dev` in multiple scopes is not allowed**. Because registry IDs are account-scoped, a pipeline in one project can push or pull artifacts from a registry created in a different project, provided the executing principal has the required permissions on the target registry.
 
 :::tip naming and scoping benefits
 Following consistent naming and scoping practices avoids registry sprawl and supports better collaboration, access control, and automation.

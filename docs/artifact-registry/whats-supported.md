@@ -67,6 +67,6 @@ The **Harness CLI** (`hc`) is the command-line way to work alongside Artifact Re
 Install the CLI from [Install the Harness CLI](/docs/platform/automation/cli/install). For Artifact Registry–specific commands and examples, go to [Manage artifacts and registries with the CLI](/docs/artifact-registry/artifact-registry-cli/manage-artifacts-registries).
 
 ### Continuous Deployment (CD)
-Speed up your deployment process by using HAR as your [Artifact sources in CD](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources) without the need for separate registry connectors.
+Speed up your deployment process by using HAR as your [Artifact sources in CD](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources) without the need for separate registry connectors. Supported deployment swimlanes include Kubernetes, ECS, and other targets that accept Docker artifact sources.
 
 Learn more about [CD services](/docs/continuous-delivery/x-platform-cd-features/services/services-overview).

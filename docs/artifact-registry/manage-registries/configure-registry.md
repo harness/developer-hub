@@ -109,7 +109,13 @@ To set up either an upstream proxy or aggregate multiple registries into a singl
 
 ![Upstream proxy configuration showing selected proxies in priority order](./static/set-upstream-proxy.png)
 
-In the example above, the registry has three selected proxies. When the registry is asked for an artifact, it queries the base registry first, then `docker-up-15`, followed by the two local registries in order.
+In the example above, the registry has three selected proxies. When the registry receives a request, it queries the base registry first, then `docker-up-15`, followed by the two local registries in order.
+
+:::warning Do not publish the same package to both local and upstream registries
+
+When a registry receives a request, it checks the local (base) registry first. If the package exists locally, that version is returned and the upstream proxy is not queried. This means a locally published version can shadow newer versions available upstream. To avoid this, do not publish the same package to both a local registry and an upstream proxy that caches the same scope.
+
+:::
 
 7. Select **Save** in the top right corner.
 

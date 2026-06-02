@@ -7,7 +7,11 @@ sidebar_position: 19
 
 import { FAQ } from '@site/src/components/AdaptiveAIContent';
 
-Soft-deleted packages and versions stay recoverable until the retention window allows them to be purged. When you [delete a registry](/docs/artifact-registry/manage-registries/delete-registry), Harness soft-deletes **all** packages, images, and versions inside that registry at the same time as the registry itself—the same cascade applies if you permanently delete the registry. The **Artifact Registries** → **Deleted** list (registry rows only) is described in that topic.
+Soft-deleted packages and versions stay recoverable until the retention window allows them to be purged. During the retention window, soft-deleted packages remain downloadable by pipelines and clients. To block downloads immediately, select **Permanently delete** in the delete confirmation dialog.
+
+For upstream proxy registries, deleting a cached artifact removes it from the local cache only. If a client requests the artifact again, the registry re-fetches it from the remote source and re-caches it.
+
+When you [delete a registry](/docs/artifact-registry/manage-registries/delete-registry), Harness soft-deletes **all** packages, images, and versions inside that registry at the same time as the registry itself; the same cascade applies if you permanently delete the registry. The **Artifact Registries** → **Deleted** list (registry rows only) is described in that topic.
 
 ## Delete Artifacts and Versions
 

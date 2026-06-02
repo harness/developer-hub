@@ -73,6 +73,7 @@ In the UI, untagged images are shown with an "N/A" label next to the digest. Exp
 
 Note:
 - The expanded view that lists multiple per-OS/ARCH digests beneath one entry applies to Docker/OCI images only (multi-arch manifest list/image index).
+- Images built with Docker buildx may include an entry showing **unknown/unknown** as the architecture. This is an attestation manifest pushed alongside your image and is expected behavior. It does not indicate a corrupted or misconfigured image.
 - Other artifact types (for example, Helm, npm, Maven, Cargo) typically show one file/version per entry. They may expose checksums (SHA256/SHA1, etc.), and Helm charts stored in an OCI registry also get an OCI digest.
 
 ### Untagged image support and API behavior
