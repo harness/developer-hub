@@ -1,41 +1,161 @@
 ---
-title: Get started with HSF
-sidebar_label: Get Started
+title: Get started with HSF Post Deployment
+sidebar_label: Post Deployment Guide
 description: Onboarding guide for HSF
 sidebar_position: 20
 ---
+Your Harness account team will handle the initial HSF deployment. Once
+deployment is complete, you can complete the configuration
+steps below.
 
-Welcome to the HSF onboarding guide. Discover how Harness accelerates onboarding and adoption by reducing setup time and maintaining best practices
+If you haven't been through deployment yet or have questions about getting
+started, reach out to your Harness account team.
 
-## Prerequisites
+## Before you begin
 
-Before HSF can be deployed, confirm the following:
+Confirm the following with your Harness account team before working through
+this guide:
 
-- Your Harness account has the IDP and IaCM modules enabled.
-- Harness Code Repository is enabled on the account.
-- You have an account with admin-level permissions, or can coordinate with someone who does to generate a temporary Personal Access Token (PAT).
-- No account-level OPA policies are in place that would block pipeline execution.
+- HSF has been successfully deployed to your account.
+- The **Harness Platform Management** organization is visible in your account.
+- You have been added to the **HSF Admins** group, which gives you the
+  permissions needed to complete the steps below.
 
-If you do not meet all these prerequisites but think your organization could benefit from HSF, please reach out to your Harness account team.
+:::note
+If anything above isn't in place, contact your Harness account team before
+continuing. Do not attempt to run any HSF pipelines until deployment is
+confirmed complete.
+:::
 
-## Post Deployment of HSF
-After deployment, complete the following steps to configure your account and verify the installation.
+## Create organizations and projects
 
-- Create Organizations and Projects. [This lab](../hands-on-labs/getting-started-lab.md) goes over some details. 
-- Add users to the HSF Admin, HSF Users (account level) and HSF Mirror Reviewers (organization level) groups
-    - This can be bound to [SSO Provider Groups](https://developer.harness.io/docs/platform/authentication/single-sign-on-saml/)
-    - Decide on the [notification preferences](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups#edit-notification-preferences) for HSF Admins (Slack, Email, Teams) 
-    - You can also change the mirror schedule by going into Harness Pilot Light and finding the `mirror_schedule` variable 
-- Change token configurations
-    - You can change the rotation schedule or if it should rotate on a schedule by going into Harness Pilot Light and finding the `should_rotate_on_schedule` and `rotation_schedule` variables
-    - By default we create a one year token with a weekly rotation.
-- If you want move your [Custom Harness Template Library](../custom-harness-template-library/setup-custom-htl.md) to a SCM of your choice:
-    - In Account Variables change the Custom Template Library Connector and Custom Template Library Repo 
-- If you want to change your HSF execution to use Kubernetes check out [this document](../configurations/converting-to-kubernetes.md)
-- Add credentials to Dockerhub Connector 
-    - When HSF is deployed we use an organization level connector (`hsf_dockerhub_connector`) to DockerHub using an anonymous authentication. Be sure to add credentials so you are not rate limited by DockerHub
-- If you are using a different container registry:
-    - Change the `hsf_pipeline_connector_ref` to the appropriate link
-    - If you are using Nexus or Artifactory make sure you include the fully qualified path for the differenet images
+Set up the organizational structure your teams will use within Harness. This
+includes creating the orgs and projects that HSF workflows will provision
+resources into.
 
-There will be a lot of resources that are created into your account once HSF is deployed. Be sure to review [this document](../use-hsf/created-resources.md) to understand what was created and where it all lives. 
+For a walkthrough of how organizations and projects work in Harness, see
+[Organizations and projects](https://developer.harness.io/docs/platform/get-started/overview#organizations-and-projects).
+
+**Why this matters:** HSF workflows provision resources into specific orgs and
+projects. Getting this structure right before running your first workflow saves
+reorganization work later.
+
+## Add users to HSF groups
+
+Add your team members to the appropriate groups based on their role:
+
+| Group | Level | Who belongs here |
+|---|---|---|
+| HSF Admins | Account | Platform engineers managing the HSF implementation. This group approves workflow changes and receives email notifications for pending approvals. |
+| HSF Users | Account | Developers and teams who will submit and monitor workflows via IDP. |
+| HSF Mirror Reviewers | Organization | Anyone responsible for reviewing and merging PRs when new HSF versions are released. |
+
+:::tip
+All three groups can be bound to your SSO provider groups. Set this up now
+to avoid managing group membership manually as your team grows.
+:::
+
+
+## Configure notifications for HSF Admins
+
+HSF Admins receive notifications when workflow approvals are pending. Choose
+the notification channel that works best for your team.
+
+Supported channels: **Slack**, **Email**, **Microsoft Teams**
+
+To configure notifications, navigate to the HSF Admins user group settings
+and add the appropriate notification connector.
+
+## Review token configuration
+
+HSF creates a one-year token for the `harness-platform-manager` service
+account with automatic weekly rotation enabled by default.
+
+To change the rotation behavior, navigate to the **Harness Pilot Light**
+workspace and update the following variables:
+
+| Variable | Description | Default |
+|---|---|---|
+| `should_rotate_on_schedule` | Whether the token rotates automatically on a schedule. | `true` |
+| `rotation_schedule` | Cron expression for the rotation schedule. | Weekly, Sundays at 03:00 |
+
+After changing either variable, run **Manage Pilot Light** to apply the update.
+
+## Configure the mirror schedule (optional)
+
+By default, HSF checks for new releases from Harness on a set schedule and
+creates a pull request when a new version is available.
+
+To change the schedule, navigate to the **Harness Pilot Light** workspace and
+update the `mirror_schedule` variable. After updating, run **Manage Pilot
+Light** to apply the change.
+
+## Move Custom Template Library to your own SCM (optional)
+
+By default, Custom Template Library is hosted in Harness Code Repository. If
+your team prefers to manage it in an external SCM (GitHub, GitLab, Bitbucket),
+update the following account-level variables:
+
+| Variable | What to change it to |
+|---|---|
+| `custom_template_library_connector` | Connector reference for your SCM |
+| `custom_template_library_repo` | URL of the repo in your SCM |
+
+For instructions on setting up a code repository connector, see
+[Connect to a Git repository](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo/).
+
+## Configure your container registry
+
+:::warning
+By default, HSF uses an organization-level connector (`hsf_dockerhub_connector`)
+to pull images from DockerHub using **anonymous authentication**. Anonymous
+DockerHub pulls are rate limited. Add credentials to this connector before
+running any workflows to avoid pipeline failures.
+:::
+
+To add credentials to the DockerHub connector, navigate to
+**Harness Platform Management** → **Connectors** → `hsf_dockerhub_connector`
+and update the authentication settings.
+
+**Using a different container registry?**
+
+If your organization uses a private registry (Nexus, Artifactory, ECR, etc.),
+update the following:
+
+1. Change the `hsf_pipeline_connector_ref` account variable to point to
+   your registry connector.
+2. If using **Nexus or Artifactory**, ensure you use the fully qualified image
+   path for all images, including the registry hostname.
+
+## Configure Kubernetes execution (optional)
+
+By default, HSF pipelines run on Harness Cloud infrastructure. To run
+pipelines on your own Kubernetes cluster see [Converting to Kubernetes](../configurations/converting-to-kubernetes.md).
+
+## Verify your installation
+
+Once you've completed the steps above, confirm everything is working:
+
+- [ ] Navigate to **IDP** → **Workflows** — you should see the default HSF
+      workflows listed.
+- [ ] Confirm the `harness-platform-manager` service account exists at the
+      account level.
+- [ ] Confirm the **HSF Admins**, **HSF Users**, and **HSF Mirror Reviewers**
+      groups are visible in the correct scopes.
+- [ ] Check the `hsf_dockerhub_connector` connector — verify it has
+      credentials and the connection test passes.
+
+:::note
+For a complete list of everything HSF created in your account during
+deployment — including all pipelines, workspaces, repositories, and variables
+— see [Created Resources](#).
+:::
+
+## Next steps
+
+- Run your first workflow — execute an IDP workflow end to end and verify
+  the output.
+- [Customize a workflow](../custom-harness-template-library/customizing-using-custom-htl.md) — modify a default workflow using Custom Template
+  Library.
+- [Upgrade HSF](../new-to-hsf/hsf-upgrade.md) — how to pull and apply new HSF releases when they're
+  available.

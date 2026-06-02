@@ -1,7 +1,7 @@
 ---
 title: Manage IacM Workspace Plugin
 description: Understand how to customize and configure the Manage IaCM Workspace Plugin
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 # Manage IACM Workspace Plugin Reference

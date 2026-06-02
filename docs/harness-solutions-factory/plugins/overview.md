@@ -1,5 +1,5 @@
 ---
-title: Plugins Overview
+title: Overview
 description: Understand HSF Plugins
 sidebar_position: 1
 ---

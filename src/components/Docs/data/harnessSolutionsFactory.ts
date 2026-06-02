@@ -40,7 +40,7 @@ export const docsCards: CardSections = [
         module: MODULES.hsf,
         description:
           "Learn about how workflows improve your experience on the Harness platform.",
-        link: "/docs/harness-solutions-factory/use-hsf/workflows",
+        link: "/docs/harness-solutions-factory/use-hsf/workflows/overview",
       },
       {
         title: "Custom Template Library",
@@ -59,7 +59,7 @@ export const docsCards: CardSections = [
         module: MODULES.hsf,
         description:
           "Learn about the best practices for Harness Solutions Factory.",
-        link: "/docs/category/best-practices-1",
+        link: "/docs/category/best-practices-2",
       },
       {
         title: "FAQs",

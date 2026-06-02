@@ -45,7 +45,7 @@ These release notes summarize what changed in the [Harness Solutions Factory](ht
 
 - **Legacy AWS factory connector:** The dedicated **HSF Solutions Factory Connector** and related deprecated AWS connector metadata are **removed effective with HSF repository v2.4.0 (February 2026)** and are no longer delivered in updated Pilot Light bundles. **Action required:** Before you mirror or apply v2.4.0, configure a standard Harness [AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector) (overview: [Connect to a cloud provider](/docs/platform/connectors/cloud-providers/connect-to-a-cloud-provider)) and align workspace variables using [Harness Solutions Factory Docs](/docs/harness-solutions-factory) and [Created resources](/docs/harness-solutions-factory/use-hsf/created-resources); then run `Manage Pilot Light` so the upgrade does not depend on the removed connector.
 
-- **Register Official IDP Templates pipeline:** The **Register Official IDP Templates** pipeline is **removed in HSF v2.4.0 (February 2026)**. Register templates with **Register Custom IDP Templates** and the custom Harness template library instead. **Migration:** Use [Workflows](/docs/harness-solutions-factory/use-hsf/workflows) for how default workflows are registered and for **Register Custom IDP Templates**, and [Customize using Custom HTL](/docs/harness-solutions-factory/custom-harness-template-library/customizing-using-custom-htl) for `idp_registry_mgr.yaml` and registration scope.
+- **Register Official IDP Templates pipeline:** The **Register Official IDP Templates** pipeline is **removed in HSF v2.4.0 (February 2026)**. Register templates with **Register Custom IDP Templates** and the custom Harness template library instead. **Migration:** Use [Workflows](/docs/harness-solutions-factory/use-hsf/workflows/overview) for how default workflows are registered and for **Register Custom IDP Templates**, and [Customize using Custom HTL](/docs/harness-solutions-factory/custom-harness-template-library/customizing-using-custom-htl) for `idp_registry_mgr.yaml` and registration scope.
 
 ---
 
@@ -131,7 +131,7 @@ These release notes summarize what changed in the [Harness Solutions Factory](ht
 
 ### New Features & Enhancements
 
-- **CI Golden Standard templates and docs:** Documentation and factory support for [Deploy Harness CI Golden Standard Templates Docs](/docs/harness-solutions-factory/use-hsf/workflows#deploy-harness-ci-golden-standard-templates) clarify day-one CI pipeline patterns for containerized applications.
+- **CI Golden Standard templates and docs:** Documentation and factory support for Deploy Harness CI Golden Standard Templates clarify day-one CI pipeline patterns for containerized applications.
 
 ---
 

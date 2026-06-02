@@ -1,7 +1,7 @@
 ---
 title: IDP Resource Manager Plugin
 description: Understand how to customize and configure the IDP Resource Manager Plugin
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # Harness IDP Resource Manager Plugin Reference

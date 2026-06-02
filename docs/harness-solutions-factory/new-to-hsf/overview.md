@@ -36,24 +36,16 @@ Custom Harness Template Library houses all the templates that are customized and
 This repository is stored in Harness Code Repository and is copied over locally when you first deploy HSF. 
 
 ### 4. [Factory Floors](../use-hsf/mini-factory-and-factory-floor.md)
-A **Factory Floor** will apply the core resource pipelines into an existing project. This will allow running the HSF framework directly within the consumer project and allows for distributed architecture.
-
-Each floor deploys the following pipelines: 
-- `Execute Drift Analysis`
-- `Provision Workspace`
-- `Bulk Workspace Management`
-- `Create and Manage IACM Workspaces`
-- `Teardown IACM Workspaces`
--  `Plan and Validate IACM Workspaces`
-
-### 5. [Mini Factory](../use-hsf/mini-factory-and-factory-floor.md)
-A **Mini Factory** is an isolated project within the Platform Management organization and is intended to be a place to collect and manage the project workspaces. As part of this, a new project is created.
-
-### 6. [Hub](../use-hsf/hsf-hub.md)
-**Hub** is a project that exposes all Harness IDP workflows as API-triggerable pipelines, enabling customers to integrate them into their own self-service portals.
-
-### 7. [Operating Modes](../use-hsf/hsf-hub.md)
 The different **operating modes** allows usage of HSF with and without Harness IDP.
+:::tip
+**Which operating mode should I use?**
+
+**Core+IDP**: The default, traditional model — use if you have Harness IDP licensed and/or want the full self-service portal experience.
+
+**Core+Hub**: Use if you want to remove the Harness IDP dependency (available in v2.4+) — Hub provides the workflow layer via chained pipelines and ABAC. 
+
+**Core+Backstage**: Use if your organization already has Backstage or another internal developer portal and wants to connect it via API.
+:::
 
 HSF Core are the core 12 pipelines of Harness Solutions Factory
 
@@ -70,4 +62,16 @@ This operating model is new with HSF 2.4. Removing the dependency on Harness IDP
 This operating model is new with HSF 2.4. It allows you to bring your own form of Backstage or API to trigger a HSF Core pipeline.
 
 ## Next Steps
-- [Get Started](get-started.md) with Harness Solutions Factory to learn how to deploy and manage your resources.
+
+HSF is delivered as part of an existing Professional Services package at no additional cost. If your organization is interested in getting started, reach out to your Harness account team — they'll confirm your eligibility and coordinate the deployment process.
+
+### Prerequisites
+
+Before HSF can be deployed, confirm the following:
+
+- The IDP, IaCM, and Harness Code Repository modules are enabled on your account. If you don't have these licensed, Harness can provide a limited license to cover HSF usage for managing Harness entities.
+- You have an account with admin-level permissions, or can coordinate with someone who does to generate a temporary Personal Access Token (PAT). This token is used to create account-level resources during deployment and can be deleted afterward.
+- No account-level OPA policies are in place that would block pipeline execution.
+
+### What to expect
+Once prerequisites are confirmed, someone from the Professional Services team will guide you through the deployment. The process creates a dedicated Harness Platform Management organization in your account along with all the core pipelines, workspaces, repositories, and user groups HSF needs to operate. You can review exactly what gets created in [Created Resources](../use-hsf/created-resources.md).

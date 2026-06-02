@@ -1,14 +1,10 @@
 ---
-title: Add Custom Template Library
-description: This document will walk you through the steps required to setup a new custom Harness Template Library and connect it to your Harness Solutions Factory deployment.
+title: Using your own SCM for Custom Harness Template Library
+description: This document will walk you through the steps required to use your own SCM for Custom Harness Template Library
 sidebar_position: 1
-redirect_from: 
-    - /kb/reference-architectures/hsf/htl/setup-custom-htl
 ---
 
-This document will walk you through the steps required to setup a new custom Harness Template Library and connect it to your Harness Solutions Factory deployment.
-
-A Custom Harness Template Library repository is included with the deployment of your Harness Solutions Factory.  This repo contains a copy of this documentation along with additional configuration files intended to help streamline the setup of new or modified Template Library entries.
+Custom Harness Template Library is a point-in-time mirror of HTL that your organization controls. You can copy templates from HTL into Custom HTL and modify them there. If Harness releases an update to a template in HTL, it won't overwrite your customizations in Custom HTL — you choose when to adopt Harness updates. The Custom Harness Template Library is included with the deployment of your Harness Solutions Factory.
 
 :::info custom template library
 If you do not have a Custom Harness Template Library repo in the root of your Harness Platform Management organization, then proceed to the documentation on [How to upgrade your Solutions Factory implementation](/docs/harness-solutions-factory/new-to-hsf/hsf-upgrade)
@@ -45,10 +41,7 @@ A Terraform scaffold is included within the baseline repository (`scaffolds/terr
 ## Updating Harness provided samples and baseline templates
 Often, the provided samples and baseline templates do not cover 100% of your use cases and require adjustment. In order to customize the Templates, follow the below steps.
 
-1. Clone the Harness Template Library (HTL) repository locally
-2. Clone your Custom Template Library (CTL) repository locally
-3. Copy the entire template directory from the HTL repository to the root of the CTL repository
-4. In your CTL repository, open the directory that you copied to edit the `.harness/catalog_template.yaml` file
+1. In your CTL repository, open the `.harness/catalog_template.yaml` file
 
     _**Note**: This file contains the details for the IDP workflow and will need to be adjusted for your SCM repository_
 
@@ -58,8 +51,8 @@ Often, the provided samples and baseline templates do not cover 100% of your use
 
     c. **STOP** If you plan first test the template using a feature branch and not using the `main` branch, then you will need to modify the value for the property `template_library_branch` to point to your specific branch. _**Note**: Make sure to follow the steps in the section titled `Production Readiness` to ensure that all adjustments are ready to be merged into the main branch._
 
-5. Optionally, the `metadata.name` can be modified to support registering a new copy without first having to replace the original version.
-6. Commit and push your changes back to your SCM repository.
+2. Optionally, the `metadata.name` can be modified to support registering a new copy without first having to replace the original version.
+3. Commit and push your changes back to your SCM repository.
 
 ## Testing and updating IDP with your new workflow
 _**STOP**: It is important to note that two templates of the same `metadata.name` cannot be registered at the same time to the same IDP environment. To resolve this, you will need to first unregister the current version of workflow within IDP._
