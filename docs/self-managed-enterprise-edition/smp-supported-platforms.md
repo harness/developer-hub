@@ -17,7 +17,6 @@ This section provides a clear overview of the Supported features, integrations, 
 * [Continuous Integration](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me/#feature-compatibility-matrix)
 * [Custom Dashboards](/docs/platform/dashboards/cdb-whats-supported)
 * [Security Test Orchestration](/docs/security-testing-orchestration/whats-supported/sto-deployments)
-* [AI SRE (Beta)](/docs/ai-sre/get-started/overview)
 * [Supply Chain Security](/docs/software-supply-chain-assurance/ssca-supported)
 * [Code Repository](/docs/code-repository)
 * [Database DevOps](/docs/database-devops/dbdevops-supported-platforms.md)
