@@ -1,5 +1,6 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
 Use a Generic repository to store raw files like `zip`, `war` and `tar` files, test reports and configuration files.
 While it is not necessarily used for binaries, you can store binaries as well.
@@ -210,5 +211,15 @@ curl --location --request DELETE 'https://pkg.harness.io/pkg/<ACCOUNT_ID>/<REGIS
 :::info Nested vs Flat Paths
 File operations support both nested paths (e.g., `config/prod/settings.json`) and flat paths (e.g., `settings.json`), giving you flexibility in how you organize your artifacts.
 :::
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="I get a 413 Request Entity Too Large error when uploading to a generic registry"
+  mode="docs"
+  fallback="The maximum file size for a single upload to a generic registry is 5 TiB. This limit cannot be changed from the Harness UI. If you receive a 413 error for a file smaller than 5 TiB, contact Harness Support."
+/>
 
 
