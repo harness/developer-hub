@@ -6,14 +6,30 @@ To register a module version, **your Git repository must have a release or tag a
 Go to [Tags](/docs/code-repository/work-in-repos/tag/) for more information on tagging with Harness Code Repository.
 :::
 
-## Authentication for Local Usage
+## Authentication for local usage
 
-To authenticate with the Harness Module Registry when working locally, set the `TF_TOKEN_<subdomain>_harness_io` environment variable with your personal access token (PAT) before running [the `init` command](/docs/infra-as-code-management/cli-commands/terraform-plugins#initialize). This allows Terraform to access private modules securely. For example, `TF_TOKEN_app_harness_io`.
+When you run OpenTofu or Terraform commands locally, such as `init`, `validate`, or `plan`, against a configuration that sources modules from the Harness registry, the CLI must authenticate with `app.harness.io`. Without this, `init` fails with a 401 error.
+
+OpenTofu and Terraform read authentication tokens from environment variables named `TF_TOKEN_<hostname>`, where any dots in the hostname are replaced with underscores. For the standard Harness SaaS endpoint (`app.harness.io`), the variable name is `TF_TOKEN_app_harness_io`.
+
+Set the variable to a [Harness personal access token (PAT)](/docs/platform/automation/api/add-and-manage-api-keys) before running any local commands:
 
 ```bash
-export TF_TOKEN_<subdomain>_harness_io=your_pat_token
+export TF_TOKEN_app_harness_io=<your_harness_pat>
+export TF_TOKEN_app_harness_io=<your_harness_pat>
 tofu init
+# or: terraform init
 ```
+
+:::note Self-Managed Platform
+If your organization runs Harness on a custom domain (for example `registry.example.com`), replace dots with underscores in that hostname:
+
+```bash
+export TF_TOKEN_registry_example_com=<your_harness_pat>
+tofu init   # or: terraform init
+:::
+
+Once the variable is set, subsequent `tofu validate`, `tofu plan`, and equivalent Terraform commands work without further configuration for the duration of your shell session. To persist the token across sessions, add the `export` line to your shell profile (for example `~/.zshrc` or `~/.bashrc`). Alternatively, store credentials in the OpenTofu or Terraform credentials file (`~/.tofurc` or `~/.terraform.d/credentials.tfrc.json`) to avoid environment variable management.
 
 ## Root Level Modules (Single Module)
 
