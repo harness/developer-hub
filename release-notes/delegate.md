@@ -171,6 +171,11 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## June 2026
 
+### Version 26.05.89208 <!-- June 02, 2026 -->
+
+#### Fixed issues
+- Fixed intermittent custom artifact resolution failures for services with multiple custom artifacts caused by temporary file collisions during concurrent artifact fetches. [CDS-123500]
+
 ### Version 26.05.89103 <!-- June 02, 2026 -->
 
 #### Fixed issues
