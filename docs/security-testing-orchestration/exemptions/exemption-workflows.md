@@ -57,7 +57,7 @@ Specify where the exemption should apply:
 :::
 #### For how long?
 
-Select the shortest practical time window for the exemption to limit the risk exposure.
+Select the shortest practical time window for the exemption to limit the risk exposure. Alternatively, you can enter a **custom duration (in days)** to specify a specific time period for the exemption.
 
 #### Reason
 
