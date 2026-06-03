@@ -122,6 +122,19 @@ Wondering where versions 1.145.xx, 1.146.xx, and 1.147.xx are? Those releases we
 - Fixed an issue in the Continuous Verification (CV) AI Verify feature by removing the unnecessary requests field from the data collection infrastructure and wiring up backend APIs for Health Sources V2 and Config Agent flow for Datadog metrics and log health sources. This feature requires the feature flag `CDS_CV_HEALTH_SOURCES_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable. (**CDS-122674**)
 - Improved performance for the Azure Container Apps managed environments API by optimizing it to be called only when its dependencies (resource group or subscription ID) change. The API now triggers on input focus during edit flows. (**CDS-122787**)
 
+## June 2026
+
+### GitOps Service 1.59.0, GitOps Agent 0.119.0
+
+#### New features and enhancements
+
+- You can now select repository templates from different scopes (account, organization, or project) when you configure GitOps repositories. (**CDS-123545**)
+- The resource status in the application resource tree detail view now updates in real time when you open a resource. You see the current health status without a page reload. (**CDS-116119**)
+
+#### Fixed issues
+
+- Fixed an issue where the recently created count on the GitOps overview page displayed a significantly inflated number. The count now accurately reflects the number of recently created applications. (**CDS-121154**)
+- Fixed an issue where pod logs did not appear in the GitOps UI for resources in an unhealthy state, and log downloads returned empty content. (**CDS-115348**)
 
 ## May 2026
 
