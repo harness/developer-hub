@@ -38,7 +38,8 @@ Harness Artifact Registry solves these challenges by providing a unified platfor
 
 Like any modern artifact registry, Harness Artifact Registry provides the foundational capabilities you expect:
 
-- **Universal format support** for Docker images, OCI containers, Helm charts, Maven, npm, PyPI, NuGet, Go modules, and generic files<!-- - **Multi-cloud replication** across AWS, Azure, GCP, and on-premises environments with active-active or active-passive strategies -->
+- **Universal format support** for Docker images, OCI containers, Helm charts, Maven, npm, PyPI, NuGet, Go modules, and generic files
+- **[Multi-region replication](/docs/artifact-registry/whats-supported#multi-region-replication)** with automatic proximity-based serving across multiple global regions
 - **Upstream proxy and caching** to cache and serve artifacts from public or private external sources, reducing latency and protecting against outages
 - **Fine-grained access control** with role-based access control (RBAC) to secure artifacts at every stage of their lifecycle
 - **Automated lifecycle management** with intelligent cleanup policies to retire artifacts based on age, usage, tags, or custom rules

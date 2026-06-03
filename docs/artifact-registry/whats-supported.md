@@ -70,3 +70,11 @@ Install the CLI from [Install the Harness CLI](/docs/platform/automation/cli/ins
 Speed up your deployment process by using HAR as your [Artifact sources in CD](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources) without the need for separate registry connectors. Supported deployment swimlanes include Kubernetes, ECS, and other targets that accept Docker artifact sources.
 
 Learn more about [CD services](/docs/continuous-delivery/x-platform-cd-features/services/services-overview).
+
+### Multi-region replication
+
+When you push an artifact, Harness stores it in your primary region and eagerly replicates it to a disaster recovery bucket. On the first pull from a different region, Harness copies the artifact to the nearest regional bucket; subsequent pulls from that region are served locally.
+
+Supported regions: US-West, US-East, EU-West, EU-East, Asia-Pacific, and Oceania. Proximity detection and regional routing are handled automatically based on client IP; no additional registry configuration is required.
+
+Read requests automatically fail over to the disaster recovery bucket if primary storage becomes unavailable. Write operations require primary storage availability.
