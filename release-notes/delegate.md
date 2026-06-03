@@ -171,6 +171,16 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## June 2026
 
+### Version 26.06.89303 <!-- June 03, 2026 -->
+
+#### Fixed issues
+- Fixed CV data collection connectors to honour NO_PROXY/nonProxyHosts settings when a proxy is configured on the delegate. [CDS-122881]
+
+### Version 26.05.89209 <!-- June 03, 2026 -->
+
+#### Fixed issues
+- Fixed CV data collection connectors to honour NO_PROXY/nonProxyHosts settings when a proxy is configured on the delegate. [CDS-122881]
+
 ### Version 26.05.89208 <!-- June 02, 2026 -->
 
 #### Fixed issues
