@@ -139,17 +139,26 @@ To enable Dependency Firewall:
 
 1. In your upstream proxy registry, select **Configuration**.
 2. Open the **Advanced (Optional)** dropdown menu.
-3. Toggle **Enable Dependency Firewall** to ON.
-4. Select the **Mode** for how policy violations should be handled:
-   - **Block:** All artifacts with policy violations are blocked and not cached in your registry. Blocked artifacts cannot be downloaded or used.
-   - **Warn:** All artifacts with policy violations are cached and flagged with a warning status for review. Warning artifacts can still be downloaded and used.
+3. Under **Dependency Firewall Configuration**, select **Enable Dependency Firewall**.
+4. Optionally, select **Quarantine artifacts on 'Warn and Continue' fail criteria** to also quarantine artifacts whose policy verdict is **Warning** (in addition to artifacts whose verdict is **Blocked**). Go to [How the quarantine checkbox behaves](#how-the-quarantine-checkbox-behaves) to understand the full behavior.
 5. Select **Save** to apply the changes.
 
-<DocImage path={require('./static/enable-dependency-firewall.png')} />
+<DocImage path={require('./static/enable-dependency-firewall.png')} alt="Advanced (Optional) panel of an upstream proxy registry showing Dependency Firewall Configuration with Enable Dependency Firewall selected and the Quarantine artifacts on Warn and Continue fail criteria checkbox" title="Dependency Firewall Configuration on an upstream proxy registry" />
 
-Once enabled, all artifacts fetched from external sources through this upstream proxy are automatically evaluated against your configured policy sets. The selected mode determines whether policy violations result in blocked artifacts (not cached) or warnings (cached but flagged for review).
+Once enabled, every artifact fetched from external sources through this upstream proxy is evaluated against the policy sets that apply to it. Each policy in the set carries its own fail action, either **Error and exit** or **Warn & continue**, chosen when the policy set is authored.
 
-Go to [Dependency Firewall](/docs/artifact-registry/dependency-firewall/overview) to understand how it works and how to view violations.
+#### How the quarantine checkbox behaves
+
+**Blocked artifacts** (a policy with *Error and exit* failed) are not cached. They require an exemption to consume.
+
+**Warning artifacts** (a policy with *Warn & continue* failed) behave one of two ways:
+
+- **Checkbox cleared (default):** the artifact is cached and remains usable; the violation only shows up on the Dependency Firewall dashboard.
+- **Checkbox selected:** the artifact is cached but quarantined. It remains blocked until someone manually unquarantines it. Exemptions do not unblock quarantined packages.
+
+Select the checkbox when you want a stricter posture without changing every individual policy from *Warn & continue* to *Error and exit*.
+
+Go to [Dependency Firewall](/docs/artifact-registry/dependency-firewall/overview) to learn how it works and view violations. Go to [Configure Policies and Policy Sets](/docs/artifact-registry/dependency-firewall/configure-policies) to configure the per-policy fail action.
 
 ### Cleanup policies
 
@@ -161,7 +170,7 @@ Enhance your registry organization and searchability by adding custom metadata. 
 
 You can add metadata such as owner information, environment tags, team assignments, or any custom attributes that help you organize your registries effectively.
 
-Go to [Artifact Registry metadata](/docs/artifact-registry/metadate-registry) to add and manage metadata at the registry, artifact, and package levels.
+Go to [Artifact Registry Metadata](/docs/artifact-registry/metadate-registry) to add and manage metadata at the registry, artifact, and package levels.
 
 ---
 

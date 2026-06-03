@@ -22,17 +22,26 @@ Seeing the tab does not mean the feature is active. Dependency Firewall requires
 
 ## How Dependency Firewall Works
 
-When Dependency Firewall is enabled for an upstream proxy registry, every artifact version fetched from the external source is automatically evaluated against configured policy sets. Based on the evaluation results, the artifact version receives one of three statuses:
+When Dependency Firewall is enabled for an upstream proxy registry, every artifact version fetched from the external source is automatically evaluated against configured policy sets. Each policy in a policy set carries its own **fail action** (chosen when the policy set is authored) that decides what verdict the artifact receives if that policy fails:
 
-- **Passed**: The artifact version meets all policy requirements, is cached in the upstream proxy registry, and can be used without restrictions
-- **Warning**: The artifact version has policy violations but is still cached in the upstream proxy registry and can be used. In Warning mode, all violations result in a warning status, allowing the artifact to be cached and used
-- **Blocked**: The artifact version violates configured policies and is **not cached** in the upstream proxy registry. It cannot be used in deployments or any other operations. In Block mode, all violations result in the artifact being blocked
+- **Error and exit:** artifact verdict is **Blocked**.
+- **Warn & continue:** artifact verdict is **Warning**.
+
+Based on the evaluation results, the artifact version receives one of three statuses:
+
+- **Passed**: The artifact version meets all policy requirements, is cached in the upstream proxy registry, and can be used without restrictions.
+- **Warning**: At least one *Warn & continue* policy failed. By default, the artifact is still cached in the upstream proxy registry and can be used; the violation is shown on the Dependency Firewall dashboard. If the registry has **Quarantine artifacts on 'Warn and Continue' fail criteria** enabled, the artifact is quarantined instead and requires an exemption to consume.
+- **Blocked**: At least one *Error and exit* policy failed. The artifact is **not cached** in the upstream proxy registry and cannot be used in deployments or any other operations. An exemption is required to consume it.
+
+:::info Verdict and quarantine in one place
+The per-policy **Error and exit** vs **Warn & continue** decision is made in the [Policy Set wizard](/docs/artifact-registry/dependency-firewall/configure-policies#creating-policy-sets). Whether *Warn & continue* artifacts are also quarantined is decided per registry, in [Enable Dependency Firewall](/docs/artifact-registry/manage-registries/configure-registry#enable-dependency-firewall) on each upstream proxy.
+:::
 
 :::note Important
-- **Blocked versions** are never cached in your upstream proxy registry and will not be available for download or use
-- If an artifact was already present in the registry and is later scanned and found to have blocking violations, it will show a **blocked** status.
-- **Warning and Passed versions** are cached in the upstream proxy registry and can be viewed in the Artifacts page
-- Passed versions do not appear in the Dependency Firewall dashboard—only Warning and Blocked violations are shown
+- **Blocked versions** are never cached in your upstream proxy registry and are not available for download or use.
+- If an artifact was already present in the registry and is later scanned and found to have blocking violations, it will show a **Blocked** status.
+- **Warning** versions are cached and remain usable **unless** the registry has *Quarantine artifacts on 'Warn and Continue' fail criteria* enabled. In that case, they are held back the same way Blocked artifacts are.
+- **Passed** versions are cached in the upstream proxy registry and can be viewed in the Artifacts page; they do not appear on the Dependency Firewall dashboard.
 :::
 
 ## The Dependency Firewall Dashboard
@@ -94,7 +103,7 @@ Dependency Firewall uses a hierarchical policy structure:
 
 When an artifact version is evaluated, it runs through all configured policy sets. If any policy within a policy set fails, the artifact version is marked as either **Blocked** or **Warning** depending on your firewall configuration.
 
-Harness provides three built-in policy templates specifically for Dependency Firewall: CVSS Threshold, License Policy, and Package Age. You can use these templates as-is, customize them, or create your own policies using Rego. To learn how to configure policies and policy sets for Dependency Firewall, see [Configure Policies and Policy Sets](/docs/artifact-registry/dependency-firewall/configure-policies).
+Harness provides three built-in policy templates specifically for Dependency Firewall: CVSS Threshold, License Policy, and Package Age. You can use these templates as-is, customize them, or create your own policies using Rego. Go to [Configure Policies and Policy Sets](/docs/artifact-registry/dependency-firewall/configure-policies) to configure policies and policy sets for Dependency Firewall.
 
 <FAQ
   question="Does Dependency Firewall require an STO or SCS license?"

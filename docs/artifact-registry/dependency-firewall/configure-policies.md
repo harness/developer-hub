@@ -56,7 +56,18 @@ To create and enforce a policy set for Dependency Firewall:
 
    <DocImage path={require('./static/policy-set.png')} />
 
-2. Enable enforcement by navigating to the **Policy Sets** list, finding your Dependency Firewall policy set, and toggling the **Enforced** switch to ON.
+2. On the **Policy evaluation criteria** step, set the **fail action** for each policy in the set. This is what Dependency Firewall uses at pull time to decide the artifact verdict.
+
+   <DocImage path={require('./static/policy-evaluation-criteria.png')} alt="Policy evaluation criteria step in the Policy Set wizard, showing three policies (firewall-age, firewall-license, firewall-vulnerability) each with a fail action dropdown set to Error and exit or Warn & continue" title="Per-policy fail action in the Policy Set wizard" />
+
+   For each policy, choose one of two fail actions:
+
+   - **Error and exit**: if this policy fails, the artifact verdict is **Blocked**. The artifact is not cached in the upstream proxy and cannot be used. An exemption is required to consume it.
+   - **Warn & continue**: if this policy fails, the artifact verdict is **Warning**. By default the artifact is still cached and remains usable; the violation only shows up on the Dependency Firewall dashboard. If the upstream proxy registry has **Quarantine artifacts on 'Warn and Continue' fail criteria** selected, the artifact is also quarantined and requires an exemption. Go to [How the quarantine checkbox behaves](/docs/artifact-registry/manage-registries/configure-registry#how-the-quarantine-checkbox-behaves) to understand the full behavior.
+
+   You can mix fail actions across policies in the same set. For example, set *vulnerability* policies to **Error and exit** for hard enforcement and set *license* or *package age* policies to **Warn & continue** for visibility-only enforcement.
+
+3. Enable enforcement by navigating to the **Policy Sets** list, finding your Dependency Firewall policy set, and toggling the **Enforced** switch to ON.
 
 <DocImage path={require('./static/toggle.png')} />
 

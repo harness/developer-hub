@@ -72,6 +72,10 @@ Go to [Copy a version](/docs/artifact-registry/manage-artifacts/artifact-managem
 
 **Soft Delete for Artifacts and Versions**
 
+:::info Feature flag
+This feature is behind the feature flag `HAR_SOFT_DELETE_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+:::
+
 Deleting a package or a version is now **soft by default**. Deleted items move to a **Deleted** view where they remain recoverable until the retention window allows them to be purged. You can also opt in to a permanent delete from the same dialog when that is what you intend.
 
 <DocImage

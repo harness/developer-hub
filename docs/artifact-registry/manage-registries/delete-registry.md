@@ -4,6 +4,10 @@ description: Delete an artifact registry from the project UI, including soft and
 sidebar_position: 40
 ---
 
+:::info Feature flag
+Soft-delete (the default delete behavior described below) is behind the feature flag `HAR_SOFT_DELETE_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable it. Without the flag, the **Permanently delete** path is the only way to remove a registry.
+:::
+
 This procedure removes an artifact registry from the project. By default, Harness **soft-deletes** the registry: it moves off the **Available** tab on **Artifact Registries** and appears under **Deleted**, where you can restore it or delete it permanently until your retention policy applies. **Soft-deleting a registry applies to everything inside it in one step:** every package, image, and version stored in that registry is soft-deleted together with the registry row (you do not keep artifacts in **Available** while only the registry row is deleted).
 
 :::warning
