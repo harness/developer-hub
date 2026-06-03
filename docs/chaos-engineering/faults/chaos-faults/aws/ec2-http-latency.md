@@ -1,326 +1,263 @@
 ---
 id: ec2-http-latency
 title: EC2 HTTP latency
+sidebar_label: EC2 HTTP Latency
+description: Add latency to inbound HTTP traffic on a configurable port of a target EC2 instance via AWS Systems Manager so you can test how clients react when an HTTP service responds slowly.
+keywords:
+  - chaos engineering
+  - ec2 http latency
+  - aws fault
+  - http chaos
+  - latency injection
+  - systems manager
+tags:
+  - chaos-engineering
+  - aws-faults
+  - ec2-chaos
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-http-latency
-- /docs/chaos-engineering/chaos-faults/aws/ec2-dns-chaos
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-http-latency
+  - /docs/chaos-engineering/chaos-faults/aws/ec2-http-latency
 ---
 
-EC2 HTTP latency disrupts the state of infrastructure resources. This fault induces HTTP chaos on an AWS EC2 instance using the Amazon SSM Run command, carried out using SSM Docs that is in-built in the fault.
-- It injects HTTP response latency to the service whose port is specified using `TARGET_SERVICE_PORT` environment variable by starting the proxy server and redirecting the traffic through the proxy server.
-- It introduces HTTP latency chaos on the EC2 instance using an SSM doc for a certain duration.
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
+EC2 HTTP latency is an AWS chaos fault that adds a configurable amount of latency to inbound HTTP traffic on a specified port of a target EC2 instance for a configurable duration. The fault interposes a transparent HTTP proxy on the instance, scoped to `TARGET_SERVICE_PORT` and `NETWORK_INTERFACE`, and dispatches the proxy via AWS Systems Manager Run Command. Unlike `ec2-network-latency`, this fault affects only HTTP traffic on a specific port, leaving other traffic untouched.
 
-![EC2 HTTP Latency](./static/images/ec2-http-latency.png)
+Use this fault to test how clients of an HTTP service react when responses become slow: do retries pile on, do connection pools exhaust, do callers honour timeouts, does the service surface the degradation in metrics?
 
-## Use cases
-EC2 HTTP latency:
-- Delays the network connectivity from the VM to the target hosts.
-- Simulates latency to specific API services for (or from) a given microservice.
-- Simulates a slow response on specific third party (or dependent) components (or services).
-
-### Prerequisites
-- Kubernetes >= 1.17
-- SSM agent is installed and running on the target EC2 instance.
-- You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
-- The EC2 instance should be in a healthy state.
-- The Kubernetes secret should have the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is the sample secret file:
-  ```yaml
-  apiVersion: v1
-  kind: Secret
-  metadata:
-    name: cloud-secret
-  type: Opaque
-  stringData:
-    cloud_config.yml: |-
-      # Add the cloud AWS credentials respectively
-      [default]
-      aws_access_key_id = XXXXXXXXXXXXXXXXXXX
-      aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-  ```
-
-:::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
+:::info Run your first experiment
+If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
 :::
 
-Below is an example AWS policy to execute the fault.
+---
+
+## Use cases
+
+Run this fault when you want to answer concrete questions like:
+
+- **Client timeout correctness:** When responses are delayed by 2-5 seconds, do clients abort at their configured timeout instead of waiting forever?
+- **Connection-pool capacity:** Does the client-side connection pool absorb the added latency, or does it exhaust and block all callers?
+- **Retry storms:** Do retries with backoff prevent storms, or do they amplify load on a slow service?
+- **Load-balancer behaviour:** Does the load balancer remove the slow instance from rotation based on response-time-based health checks?
+- **End-to-end SLO impact:** When one service slows down by 2 seconds, how much does end-to-end latency rise across the call graph?
+
+---
+
+## Prerequisites
+
+- **Kubernetes version:** 1.21 or later for the chaos infrastructure cluster.
+- **Target instance is reachable via SSM:** The instance has the SSM Agent running and an instance profile with `AmazonSSMManagedInstanceCore`.
+- **Selector provided:** Either `EC2_INSTANCE_ID` or `EC2_INSTANCE_TAG` is set.
+- **HTTP service runs on TARGET_SERVICE_PORT:** A plaintext HTTP service is listening on `TARGET_SERVICE_PORT` (the proxy operates on HTTP; for HTTPS, terminate TLS at a layer in front of the service).
+- **AWS credentials available:** Either an AWS credentials file uploaded as a **File Secret in Harness Secret Manager** (see Authentication below) or IRSA on the chaos infrastructure service account.
+
+---
+
+## Supported environments
+
+| Platform | Support status |
+| --- | --- |
+| Amazon EC2 (Linux instances with SSM Agent) | Supported |
+| Amazon EKS managed worker nodes | Supported (if SSM Agent is installed) |
+| Amazon EKS self-managed worker nodes | Supported (if SSM Agent is installed) |
+| Targeting by tag | Supported via `EC2_INSTANCE_TAG` |
+| Targeting by ID | Supported via `EC2_INSTANCE_ID` |
+| HTTPS traffic (TLS-encrypted) | Not supported on the target port; terminate TLS upstream |
+| Windows instances | Not supported (Linux-only proxy) |
+
+---
+
+## Permissions required
 
 ```json
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ssm:GetDocument",
-                "ssm:DescribeDocument",
-                "ssm:GetParameter",
-                "ssm:GetParameters",
-                "ssm:SendCommand",
-                "ssm:CancelCommand",
-                "ssm:CreateDocument",
-                "ssm:DeleteDocument",
-                "ssm:GetCommandInvocation",
-                "ssm:UpdateInstanceInformation",
-                "ssm:DescribeInstanceInformation"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ec2messages:AcknowledgeMessage",
-                "ec2messages:DeleteMessage",
-                "ec2messages:FailMessage",
-                "ec2messages:GetEndpoint",
-                "ec2messages:GetMessages",
-                "ec2messages:SendReply"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ec2:DescribeInstanceStatus",
-                "ec2:DescribeInstances"
-            ],
-            "Resource": [
-                "*"
-            ]
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:DescribeInstances",
+        "ec2:DescribeInstanceStatus"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ssm:SendCommand",
+        "ssm:CancelCommand",
+        "ssm:GetCommandInvocation",
+        "ssm:DescribeInstanceInformation",
+        "ssm:GetDocument",
+        "ssm:DescribeDocument"
+      ],
+      "Resource": "*"
+    }
+  ]
 }
 ```
 
-:::info note
-- Go to [AWS named profile for chaos](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/aws-switch-profile) to use a different profile for AWS faults and [superset permission or policy](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
-- Go to the [common tunables](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults) to tune the common tunables for all the faults.
+Go to [common policy for all AWS faults](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/policy-for-all-aws-faults) to use a single superset IAM policy.
+
+---
+
+## Authentication
+
+The fault supports three credential delivery models. Pick one based on how your chaos infrastructure is deployed.
+
+| Method | When to use it | How to configure |
+| --- | --- | --- |
+| Harness Secret Manager file secret | Chaos infrastructure runs outside EKS, or you want explicit static credentials | Upload the AWS credentials file as a **File Secret** in Harness Secret Manager and reference its identifier via `AWS_AUTHENTICATION_SECRET` |
+| IAM Roles for Service Accounts (IRSA) | Chaos infrastructure runs in EKS and uses an OIDC-bound service account | No tunable changes; the chaos pod inherits the role automatically. Go to [AWS IAM integration](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/aws-iam-integration) to set it up |
+| Assume role | The fault needs to act in a different account or with elevated permissions | Set `ASSUME_ROLE_ARN` to the role ARN; the chaos pod assumes the role on top of its base credentials |
+
+When using the Harness Secret Manager method, the File Secret should contain an AWS credentials file in the standard `~/.aws/credentials` format:
+
+```ini
+[default]
+aws_access_key_id = REPLACE_WITH_ACCESS_KEY_ID
+aws_secret_access_key = REPLACE_WITH_SECRET_ACCESS_KEY
+```
+
+Upload this file as a **File Secret** in Harness Secret Manager (Project Setup → Secrets → New File Secret), and pass the secret identifier in `AWS_AUTHENTICATION_SECRET`.
+
+---
+
+## Fault tunables
+
+**Required parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `REGION` | AWS region that hosts the target instance. | (required) |
+| `EC2_INSTANCE_ID` *or* `EC2_INSTANCE_TAG` | One of these must be set to select the target instance(s). | `""` |
+| `TARGET_SERVICE_PORT` | Port the target HTTP service listens on. | `80` |
+| `LATENCY` | Latency to add to HTTP responses (in milliseconds). | `2000` |
+
+**Chaos parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `NETWORK_INTERFACE` | Network interface where the HTTP proxy intercepts traffic. | `eth0` |
+| `TOTAL_CHAOS_DURATION` | Duration of the fault in seconds. | `30` |
+| `INSTANCE_AFFECTED_PERC` | Percentage of matching instances to target (only with `EC2_INSTANCE_TAG`). `0` targets one instance. | `0` |
+| `INSTALL_DEPENDENCIES` | Install the in-instance HTTP proxy if missing. Set to `False` to skip. | `True` |
+| `PROXY` | HTTP/HTTPS proxy used by the in-instance installer (for example `https_proxy=http://proxy.server:3128`). | `""` |
+| `SEQUENCE` | Order in which multiple instances are processed: `parallel` or `serial`. | `parallel` |
+| `RAMP_TIME` | Wait period in seconds before and after the fault. | `0` |
+
+**Authentication**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `ASSUME_ROLE_ARN` | ARN of an IAM role to assume on top of the base credentials. | `""` |
+| `AWS_AUTHENTICATION_SECRET` | Identifier of the **File Secret in Harness Secret Manager** that contains the AWS credentials file. Not required when using IRSA. | `""` |
+
+:::warning Use a non-production port if possible
+The HTTP proxy needs to interpose on `TARGET_SERVICE_PORT`. On most production hosts you cannot bind the same port twice, so the fault uses traffic redirection. If your service binds with `SO_REUSEPORT` or unusual socket options, behaviour may differ from a vanilla setup.
 :::
 
+---
 
-### Mandatory tunables
-  <table>
-        <tr>
-            <th> Tunable </th>
-            <th> Description </th>
-            <th> Notes </th>
-        </tr>
-        <tr>
-          <td> EC2_INSTANCE_ID </td>
-          <td> ID of the target EC2 instance </td>
-          <td> For example, <code>i-044d3cb4b03b8af1f</code>. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/aws/ec2-cpu-hog#multiple-ec2-instances"> EC2 instance ID.</a></td>
-        </tr>
-        <tr>
-          <td> REGION </td>
-          <td> The AWS region ID where the EC2 instance has been created. </td>
-          <td> For example, <code>us-east-1</code>. </td>
-        </tr>
-        <tr>
-            <td> LATENCY </td>
-            <td> Provide latency to be added to request in milliseconds.</td>
-            <td> For example, 1000. For more information, go to <a href="#latency"> latency.</a></td>
-        </tr>
-        <tr>
-            <td> TARGET_SERVICE_PORT </td>
-            <td> Port of the service to target </td>
-            <td> Default: port 80. For more information, go to <a href="#target-service-port"> target service port.</a></td>
-        </tr>
-    </table>
+## Fault execution in brief
 
-### Optional tunables
-  <table>
-        <tr>
-            <th> Tunable </th>
-            <th> Description </th>
-            <th> Notes </th>
-        </tr>
-        <tr>
-            <td> TOTAL_CHAOS_DURATION </td>
-            <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-            <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
-        </tr>
-        <tr>
-            <td> CHAOS_INTERVAL </td>
-            <td> Time interval between two successive instance terminations (in seconds). </td>
-            <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
-        </tr>
-        <tr>
-            <td> AWS_SHARED_CREDENTIALS_FILE </td>
-            <td> Provide the path for AWS secret credentials.</td>
-            <td> Default: <code>/tmp/cloud_config.yml</code>. </td>
-          </tr>
-        <tr>
-            <td> SEQUENCE </td>
-            <td> It defines a sequence of chaos execution for multiple instances. </td>
-            <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
-        </tr>
-        <tr>
-            <td> RAMP_TIME </td>
-            <td> Period to wait before and after injection of chaos (in seconds). </td>
-            <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
-        </tr>
-        <tr>
-            <td> INSTALL_DEPENDENCY </td>
-            <td> Specify the dependencies to be installed to run the network chaos. If the dependency exists, it can be turned off. </td>
-            <td> If the dependency already exists, you can turn it off. Default: True.</td>
-        </tr>
-        <tr>
-            <td> PROXY_PORT  </td>
-            <td> Port where the proxy listens to requests.</td>
-            <td> Default: 20000. For more information, go to <a href="#proxy-port"> proxy port.</a></td>
-        </tr>
-        <tr>
-            <td> TOXICITY </td>
-            <td> Percentage of HTTP requests affected. </td>
-            <td> Default: 100. For more information, go to <a href="#toxicity"> toxicity.</a> </td>
-        </tr>
-        <tr>
-          <td> NETWORK_INTERFACE  </td>
-          <td> Network interface used for the proxy. </td>
-          <td> Default: `eth0`. For more information, go to <a href="#network-interface"> netowkr interface.</a></td>
-        </tr>
-    </table>
+Sends an SSM Run Command to the selected instance(s) in `REGION` that interposes an HTTP proxy on `NETWORK_INTERFACE` for traffic destined to `TARGET_SERVICE_PORT`; the proxy delays every HTTP response by `LATENCY` milliseconds for `TOTAL_CHAOS_DURATION` seconds before being removed.
 
-### Target service port
+---
 
-Port of the target service. Tune it by using the `TARGET_SERVICE_PORT` environment variable.
+## Expected behavior during fault execution
 
-The following YAML snippet illustrates the use of this environment variable:
+- HTTP responses from the targeted service on `TARGET_SERVICE_PORT` are delayed by approximately `LATENCY` milliseconds.
+- Other traffic on the instance (other ports, non-HTTP traffic, traffic on other interfaces) is unaffected.
+- Clients with timeouts shorter than `LATENCY` abort and see timeout errors.
+- Clients with timeouts longer than `LATENCY` succeed but report inflated latency.
+- Load balancers performing slow-start or response-time-based health checks may detach the instance.
 
-[embedmd]:# (./static/manifests/http-latency/target-service-port.yaml yaml)
-```yaml
-## provide the port of the targeted service
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ec2-http-latency
-    spec:
-      components:
-        env:
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
-```
+:::info When the fault ends
+The chaos pod removes the HTTP proxy and traffic-redirection rules. Latency returns to baseline immediately. Connections still in flight at fault end complete with the added latency they accumulated.
+:::
 
-### Proxy port
+### Signals to watch
 
-Port where the proxy server listens to the requests. Tune it by using the `PROXY_PORT` environment variable.
+- **End-to-end response time:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) against the target endpoint.
+- **Application-side request latency:** Use a Prometheus probe on the application's HTTP request-duration histograms.
+- **Load-balancer health:** Use a Prometheus probe on `aws_applicationelb_target_response_time_average` to confirm the load balancer observed the slowdown.
 
-The following YAML snippet illustrates the use of this environment variable:
+---
 
-[embedmd]:# (./static/manifests/http-latency/proxy-port.yaml yaml)
-```yaml
-# provide the port for proxy server
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ec2-http-latency
-    spec:
-      components:
-        env:
-        # provide the port for proxy server
-        - name: PROXY_PORT
-          value: '8080'
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
-```
+## Verify the fault execution effect
 
-### Latency
+While the experiment is running:
 
-Delay added to the HTTP request. Tune it by using the `LATENCY` environment variable.
+1. **Issue HTTP requests from the instance.**
 
-The following YAML snippet illustrates the use of this environment variable:
+   ```bash
+   aws ssm send-command \
+     --region <region> \
+     --instance-ids <id> \
+     --document-name AWS-RunShellScript \
+     --parameters 'commands=["curl -s -o /dev/null -w \"%{time_total}\\n\" http://localhost:<TARGET_SERVICE_PORT>/healthz"]'
+   ```
 
-[embedmd]:# (./static/manifests/http-latency/latency.yaml yaml)
-```yaml
-## provide the latency value
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ec2-http-latency
-    spec:
-      components:
-        env:
-        # provide the latency value
-        - name: LATENCY
-          value: '2000'
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
-```
+   The reported time should be close to `LATENCY` divided by 1000.
 
-### Toxicity
+2. **Confirm other ports are unaffected.**
 
-Percentage of the total number of HTTP requests that are affected. Tune it by using the `TOXICITY` environment variable.
+   ```bash
+   aws ssm send-command \
+     --region <region> \
+     --instance-ids <id> \
+     --document-name AWS-RunShellScript \
+     --parameters 'commands=["curl -s -o /dev/null -w \"%{time_total}\\n\" http://localhost:<other-port>/"]'
+   ```
 
-The following YAML snippet illustrates the use of this environment variable:
+---
 
-[embedmd]:# (./static/manifests/http-latency/toxicity.yaml yaml)
-```yaml
-## provide the toxicity
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ec2-http-latency
-    spec:
-      components:
-        env:
-        # toxicity is the probability of the request to be affected
-        # provide the percentage value in the range of 0-100
-        # 0 means no request will be affected and 100 means all request will be affected
-        - name: TOXICITY
-          value: "100"
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
-```
+## Recovery and cleanup
 
-### Network interface
+- **End of duration:** The chaos pod stops the HTTP proxy and removes the redirection rules.
+- **Abort the experiment:** Stopping the experiment from Chaos Studio cancels the in-flight SSM command and runs cleanup.
+- **Manual cleanup:** If the proxy is left running, kill it via SSM Session Manager and remove any installed iptables rules.
 
-Network interface used for the proxy. Tune it by using the `NETWORK_INTERFACE` environment variable.
+---
 
-The following YAML snippet illustrates the use of this environment variable:
+## Limitations
 
-[embedmd]:# (./static/manifests/http-latency/network-interface.yaml yaml)
-```yaml
-## provide the network interface for proxy
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ec2-http-latency
-    spec:
-      components:
-        env:
-        # provide the network interface for proxy
-        - name: NETWORK_INTERFACE
-          value: "eth0"
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: '80'
-```
+- **HTTP only (no HTTPS):** The proxy operates on plaintext HTTP. If TLS terminates at the target port, the fault cannot inject latency. Move TLS termination upstream (load balancer, sidecar) before using this fault.
+- **Linux-only payload:** This fault runs on Linux instances.
+- **SSM Agent required:** Instances without the SSM Agent online cannot be targeted.
+- **Single-port scope:** One fault instance affects one port. Run multiple faults in parallel to affect multiple ports.
+- **HTTP/2 and gRPC:** Behaviour with multiplexed protocols may differ from HTTP/1.1; validate before relying on this fault for HTTP/2 services.
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="EC2 HTTP latency experiment fails with InvalidInstanceId in Harness Chaos Engineering"
+  mode="docs"
+  fallback="The SSM Agent is not online for the target instance. Confirm with aws ssm describe-instance-information --filters 'Key=InstanceIds,Values=<id>'. If missing, install the SSM Agent and attach an instance profile that includes AmazonSSMManagedInstanceCore."
+/>
+
+<Troubleshoot
+  issue="EC2 HTTP latency runs but client response time does not change"
+  mode="docs"
+  fallback="The most common causes are: the in-instance proxy failed to install (set INSTALL_DEPENDENCIES=True and check egress, or use PROXY); TARGET_SERVICE_PORT does not host an HTTP server (the proxy cannot interpose on a non-HTTP service); the client connects directly to the service IP bypassing the rules; or TLS terminates at the port (HTTPS is not supported on TARGET_SERVICE_PORT). Verify with curl --max-time 30 -w '%{time_total}\\n' http://localhost:<port>/ via SSM during the fault."
+/>
+
+<Troubleshoot
+  issue="EC2 HTTP latency leaves orphan iptables rules after the experiment"
+  mode="docs"
+  fallback="The fault was killed before cleanup ran. Connect via SSM Session Manager and remove the rules: iptables -t nat -L | grep <port> to identify them, then iptables -t nat -D PREROUTING <rule-number>. Also kill any orphan proxy process: pkill -f <proxy-binary>."
+/>
+
+---
+
+## Related faults
+
+- [EC2 HTTP status code](/docs/chaos-engineering/faults/chaos-faults/aws/ec2-http-status-code): Rewrite HTTP responses to return a specific status code.
+- [EC2 HTTP modify body](/docs/chaos-engineering/faults/chaos-faults/aws/ec2-http-modify-body): Modify the body of HTTP responses.
+- [EC2 HTTP modify header](/docs/chaos-engineering/faults/chaos-faults/aws/ec2-http-modify-header): Modify HTTP request or response headers.
+- [EC2 HTTP reset peer](/docs/chaos-engineering/faults/chaos-faults/aws/ec2-http-reset-peer): Reset TCP connections mid-flight.
+- [EC2 network latency](/docs/chaos-engineering/faults/chaos-faults/aws/ec2-network-latency): Add latency to all outbound traffic, not just HTTP.
+- [Common AWS fault tunables](/docs/chaos-engineering/faults/chaos-faults/aws/aws-fault-tunables): Shared environment variables for AWS faults.

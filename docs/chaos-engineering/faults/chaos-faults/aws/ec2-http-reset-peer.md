@@ -1,323 +1,246 @@
 ---
 id: ec2-http-reset-peer
 title: EC2 HTTP reset peer
+sidebar_label: EC2 HTTP Reset Peer
+description: Reset TCP connections to an HTTP service on a configurable port of a target EC2 instance via AWS Systems Manager so you can test how clients react when the server tears down connections mid-flight.
+keywords:
+  - chaos engineering
+  - ec2 http reset peer
+  - aws fault
+  - tcp reset
+  - connection chaos
+  - systems manager
+tags:
+  - chaos-engineering
+  - aws-faults
+  - ec2-chaos
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-http-reset-peer
-- /docs/chaos-engineering/chaos-faults/aws/ec2-http-reset-peer
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-http-reset-peer
+  - /docs/chaos-engineering/chaos-faults/aws/ec2-http-reset-peer
 ---
 
-EC2 HTTP reset peer injects HTTP reset on the service whose port is specified using the `TARGET_SERVICE_PORT` environment variable. This fault stops the outgoing HTTP requests by resetting the TCP connection for the requests.
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-![EC2 HTTP Reset Peer](./static/images/ec2-http-reset-peer.png)
+EC2 HTTP reset peer is an AWS chaos fault that resets inbound TCP connections to an HTTP service on a specified port of a target EC2 instance for a configurable duration. The fault interposes a transparent HTTP proxy on the instance, scoped to `TARGET_SERVICE_PORT` and `NETWORK_INTERFACE`, and dispatches the proxy via AWS Systems Manager Run Command. The proxy answers incoming requests by sending a TCP RST instead of an HTTP response, simulating an unclean peer reset.
 
-## Use cases
-EC2 HTTP reset peer:
-- Verifies connection timeout by simulating premature connection loss (firewall issues or other issues) between microservices.
-- Simulates connection resets due to resource limitations on the server side like out of memory server (or process killed or overload on the server due to a high amount of traffic).
-- Determines the application's resilience to a lossy (or flaky) HTTP connection.
+Use this fault to test how clients react when the server tears down connections mid-flight: do they retry safely, do they distinguish a reset from a clean failure, do they tear down keep-alive pools cleanly, does the load balancer detach the misbehaving instance?
 
-### Prerequisites
-- Kubernetes >= 1.17
-- The EC2 instance should be in a healthy state.
-- SSM agent is installed and running in the target EC2 instance.
-- You can pass the VM credentials as secrets or as an chaos engine environment variable.
-- The Kubernetes secret should have the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is the sample secret file:
-  ```yaml
-  apiVersion: v1
-  kind: Secret
-  metadata:
-    name: cloud-secret
-  type: Opaque
-  stringData:
-    cloud_config.yml: |-
-      # Add the cloud AWS credentials respectively
-      [default]
-      aws_access_key_id = XXXXXXXXXXXXXXXXXXX
-      aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-  ```
-
-:::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
+:::info Run your first experiment
+If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
 :::
 
-Below is an example AWS policy to execute the fault.
+---
+
+## Use cases
+
+Run this fault when you want to answer concrete questions like:
+
+- **Client retry safety:** When a connection is reset before the response arrives, does the client retry only idempotent requests, or does it retry POSTs and risk duplicate side effects?
+- **Connection-pool churn:** Does the client's HTTP pool recover after every connection in it is reset within seconds?
+- **Load-balancer behaviour:** Does the LB detach the instance because of failed health-check responses?
+- **Observability:** Do TCP-level metrics (`tcp_reset_received`) and HTTP-level metrics (5xx rate) both show the failure?
+- **Upstream propagation:** Does the reset surface to the end user as a clean error, or does it cause a cryptic upstream-level message?
+
+---
+
+## Prerequisites
+
+- **Kubernetes version:** 1.21 or later for the chaos infrastructure cluster.
+- **Target instance is reachable via SSM:** The instance has the SSM Agent running and an instance profile with `AmazonSSMManagedInstanceCore`.
+- **Selector provided:** Either `EC2_INSTANCE_ID` or `EC2_INSTANCE_TAG` is set.
+- **HTTP service runs on TARGET_SERVICE_PORT:** A plaintext HTTP service is listening on `TARGET_SERVICE_PORT`.
+- **AWS credentials available:** Either an AWS credentials file uploaded as a **File Secret in Harness Secret Manager** (see Authentication below) or IRSA on the chaos infrastructure service account.
+
+---
+
+## Supported environments
+
+| Platform | Support status |
+| --- | --- |
+| Amazon EC2 (Linux instances with SSM Agent) | Supported |
+| Amazon EKS managed worker nodes | Supported (if SSM Agent is installed) |
+| Amazon EKS self-managed worker nodes | Supported (if SSM Agent is installed) |
+| Targeting by tag | Supported via `EC2_INSTANCE_TAG` |
+| Targeting by ID | Supported via `EC2_INSTANCE_ID` |
+| HTTPS traffic (TLS-encrypted) | Not supported on the target port; terminate TLS upstream |
+| Windows instances | Not supported (Linux-only proxy) |
+
+---
+
+## Permissions required
 
 ```json
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ssm:GetDocument",
-                "ssm:DescribeDocument",
-                "ssm:GetParameter",
-                "ssm:GetParameters",
-                "ssm:SendCommand",
-                "ssm:CancelCommand",
-                "ssm:CreateDocument",
-                "ssm:DeleteDocument",
-                "ssm:GetCommandInvocation",
-                "ssm:UpdateInstanceInformation",
-                "ssm:DescribeInstanceInformation"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ec2messages:AcknowledgeMessage",
-                "ec2messages:DeleteMessage",
-                "ec2messages:FailMessage",
-                "ec2messages:GetEndpoint",
-                "ec2messages:GetMessages",
-                "ec2messages:SendReply"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ec2:DescribeInstanceStatus",
-                "ec2:DescribeInstances"
-            ],
-            "Resource": [
-                "*"
-            ]
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:DescribeInstances",
+        "ec2:DescribeInstanceStatus"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ssm:SendCommand",
+        "ssm:CancelCommand",
+        "ssm:GetCommandInvocation",
+        "ssm:DescribeInstanceInformation",
+        "ssm:GetDocument",
+        "ssm:DescribeDocument"
+      ],
+      "Resource": "*"
+    }
+  ]
 }
 ```
 
-:::info note
-- Go to [AWS named profile for chaos](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/aws-switch-profile) to use a different profile for AWS faults and [superset permission or policy](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
+Go to [common policy for all AWS faults](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/policy-for-all-aws-faults) to use a single superset IAM policy.
+
+---
+
+## Authentication
+
+The fault supports three credential delivery models. Pick one based on how your chaos infrastructure is deployed.
+
+| Method | When to use it | How to configure |
+| --- | --- | --- |
+| Harness Secret Manager file secret | Chaos infrastructure runs outside EKS, or you want explicit static credentials | Upload the AWS credentials file as a **File Secret** in Harness Secret Manager and reference its identifier via `AWS_AUTHENTICATION_SECRET` |
+| IAM Roles for Service Accounts (IRSA) | Chaos infrastructure runs in EKS and uses an OIDC-bound service account | No tunable changes; the chaos pod inherits the role automatically. Go to [AWS IAM integration](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/aws-iam-integration) to set it up |
+| Assume role | The fault needs to act in a different account or with elevated permissions | Set `ASSUME_ROLE_ARN` to the role ARN; the chaos pod assumes the role on top of its base credentials |
+
+When using the Harness Secret Manager method, the File Secret should contain an AWS credentials file in the standard `~/.aws/credentials` format:
+
+```ini
+[default]
+aws_access_key_id = REPLACE_WITH_ACCESS_KEY_ID
+aws_secret_access_key = REPLACE_WITH_SECRET_ACCESS_KEY
+```
+
+Upload this file as a **File Secret** in Harness Secret Manager (Project Setup → Secrets → New File Secret), and pass the secret identifier in `AWS_AUTHENTICATION_SECRET`.
+
+---
+
+## Fault tunables
+
+**Required parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `REGION` | AWS region that hosts the target instance. | (required) |
+| `EC2_INSTANCE_ID` *or* `EC2_INSTANCE_TAG` | One of these must be set to select the target instance(s). | `""` |
+| `TARGET_SERVICE_PORT` | Port the target HTTP service listens on. | `80` |
+
+**Chaos parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `NETWORK_INTERFACE` | Network interface where the HTTP proxy intercepts traffic. | `eth0` |
+| `TOTAL_CHAOS_DURATION` | Duration of the fault in seconds. | `30` |
+| `INSTANCE_AFFECTED_PERC` | Percentage of matching instances to target (only with `EC2_INSTANCE_TAG`). `0` targets one instance. | `0` |
+| `INSTALL_DEPENDENCIES` | Install the in-instance HTTP proxy if missing. Set to `False` to skip. | `True` |
+| `PROXY` | HTTP/HTTPS proxy used by the in-instance installer. | `""` |
+| `SEQUENCE` | Order in which multiple instances are processed: `parallel` or `serial`. | `parallel` |
+| `RAMP_TIME` | Wait period in seconds before and after the fault. | `0` |
+
+**Authentication**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `ASSUME_ROLE_ARN` | ARN of an IAM role to assume on top of the base credentials. | `""` |
+| `AWS_AUTHENTICATION_SECRET` | Identifier of the **File Secret in Harness Secret Manager** that contains the AWS credentials file. Not required when using IRSA. | `""` |
+
+---
+
+## Fault execution in brief
+
+Sends an SSM Run Command to the selected instance(s) in `REGION` that interposes an HTTP proxy on `NETWORK_INTERFACE` for traffic destined to `TARGET_SERVICE_PORT`; the proxy aborts every incoming connection by sending a TCP RST instead of an HTTP response for `TOTAL_CHAOS_DURATION` seconds before being removed.
+
+---
+
+## Expected behavior during fault execution
+
+- Every new TCP connection to `TARGET_SERVICE_PORT` is reset; clients see "connection reset by peer".
+- Long-lived connections established before the fault are torn down by the next request that traverses the proxy.
+- Clients that retry blindly may pile additional load on the instance during the fault.
+- Load-balancer health checks against the port typically fail; the LB detaches the instance until checks recover.
+
+:::info When the fault ends
+The chaos pod removes the HTTP proxy and redirection rules. New connections succeed normally. Client-side connection pools should reconnect on the next request; some pool implementations need an explicit refresh.
 :::
 
+### Signals to watch
 
-### Mandatory tunables
-  <table>
-        <tr>
-            <th> Tunable </th>
-            <th> Description </th>
-            <th> Notes </th>
-        </tr>
-        <tr>
-          <td> EC2_INSTANCE_ID </td>
-          <td> ID of the target EC2 instance. </td>
-          <td> For example, <code>i-044d3cb4b03b8af1f</code>. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/aws/ec2-cpu-hog#multiple-ec2-instances"> EC2 instance ID.</a></td>
-        </tr>
-        <tr>
-          <td> REGION </td>
-          <td> The AWS region ID where the EC2 instance has been created. </td>
-          <td> For example, <code>us-east-1</code>. </td>
-        </tr>
-        <tr>
-            <td> RESET_TIMEOUT </td>
-            <td> Duration after which the connection is reset.</td>
-            <td> Default: 0. For more information, go to <a href="#reset-timeout"> reset timeout.</a></td>
-        </tr>
-        <tr>
-            <td> TARGET_SERVICE_PORT </td>
-            <td> Port of the service to target. </td>
-            <td> Default: port 80. For more information, go to <a href="#target-service-port"> target service port.</a></td>
-        </tr>
-    </table>
+- **Client connection-reset rate:** Use a Prometheus probe on the client's `tcp_connection_reset` or HTTP `5xx` counter.
+- **Load-balancer target health:** Use a Prometheus probe on `aws_applicationelb_unhealthy_host_count`.
+- **Application logs:** Use a [command probe](/docs/resilience-testing/chaos-testing/probes/command-probe) that tails the application log via SSM and matches on `connection reset` or `EOF`.
 
-### Optional tunables
+---
 
-   <table>
-        <tr>
-            <th> Tunable </th>
-            <th> Description </th>
-            <th> Notes </th>
-        </tr>
-        <tr>
-            <td> TOTAL_CHAOS_DURATION </td>
-            <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-            <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
-        </tr>
-        <tr>
-            <td> CHAOS_INTERVAL </td>
-            <td> Time interval between two successive instance terminations (in seconds). </td>
-            <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
-        </tr>
-        <tr>
-            <td> AWS_SHARED_CREDENTIALS_FILE </td>
-            <td> Provide the path for AWS secret credentials.</td>
-            <td> Default: <code>/tmp/cloud_config.yml</code>. </td>
-        </tr>
-        <tr>
-            <td> SEQUENCE </td>
-            <td> It defines the sequence of chaos execution for multiple instances. </td>
-            <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
-        </tr>
-        <tr>
-            <td> RAMP_TIME </td>
-            <td> Period to wait before and after injection of chaos (in seconds). </td>
-            <td> For example, 30. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
-        </tr>
-        <tr>
-            <td> INSTALL_DEPENDENCY </td>
-            <td> Select to install dependencies used to run the network chaos. It can be either True or False. </td>
-            <td> If the dependency already exists, you can turn it off. Defaults to True.</td>
-        </tr>
-        <tr>
-            <td> PROXY_PORT </td>
-            <td> Port where the proxy will be listening to requests.</td>
-            <td> Default: 20000. For more information, go to <a href="#proxy-port"> proxy port.</a></td>
-        </tr>
-        <tr>
-            <td> TOXICITY </td>
-            <td> Percentage of HTTP requests to be affected. </td>
-            <td> Default: 100. For more information, go to <a href="#toxicity"> toxicity.</a></td>
-        </tr>
-        <tr>
-          <td> NETWORK_INTERFACE </td>
-          <td> Network interface to be used for the proxy.</td>
-          <td> Default: `eth0`. For more information, go to <a href="#network-interface"> network interface.</a></td>
-        </tr>
-    </table>
+## Verify the fault execution effect
 
-### Target service port
+While the experiment is running:
 
-Port of the target service. Tune it by using the `TARGET_SERVICE_PORT` environment variable.
+1. **Issue a request and observe the reset.**
 
-The following YAML snippet illustrates the use of this environment variable:
+   ```bash
+   aws ssm send-command \
+     --region <region> \
+     --instance-ids <id> \
+     --document-name AWS-RunShellScript \
+     --parameters 'commands=["curl -v http://localhost:<TARGET_SERVICE_PORT>/ 2>&1 | tail -10"]'
+   ```
 
-[embedmd]:# (./static/manifests/http-reset-peer/target-service-port.yaml yaml)
-```yaml
-## provide the port of the targeted service
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ec2-http-reset-peer
-    spec:
-      components:
-        env:
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
-```
+   The output should show `Connection reset by peer` or similar.
 
-### Proxy port
+---
 
-Port where the proxy server listens for requests. Tune it by using the `PROXY_PORT` environment variable.
+## Recovery and cleanup
 
-The following YAML snippet illustrates the use of this environment variable:
+- **End of duration:** The chaos pod stops the HTTP proxy and removes the redirection rules.
+- **Abort the experiment:** Stopping the experiment from Chaos Studio cancels the in-flight SSM command and runs cleanup.
+- **Manual cleanup:** If the proxy is left running, kill it via SSM Session Manager and remove any installed iptables rules.
 
-[embedmd]:# (./static/manifests/http-reset-peer/proxy-port.yaml yaml)
-```yaml
-# provide the port for proxy server
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ec2-http-reset-peer
-    spec:
-      components:
-        env:
-        # provide the port for proxy server
-        - name: PROXY_PORT
-          value: '8080'
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
-```
+---
 
-### Reset timeout
+## Limitations
 
-Duration after which the connection is reset, that is, the value added to the HTTP request. Tune it by using the `RESET_TIMEOUT` environment variable.
+- **HTTP only (no HTTPS):** The proxy operates on plaintext HTTP. Move TLS termination upstream before using this fault.
+- **Linux-only payload:** This fault runs on Linux instances.
+- **SSM Agent required:** Instances without the SSM Agent online cannot be targeted.
+- **All connections affected:** Every connection to the port is reset; there is no per-URL or per-percentage filter.
+- **Client-side pool recovery:** Some HTTP clients keep using a poisoned connection pool until they receive a fresh address. After the fault, force-refresh the pool from the client if needed.
 
-The following YAML snippet illustrates the use of this environment variable:
+---
 
-[embedmd]:# (./static/manifests/http-reset-peer/reset-timeout.yaml yaml)
-```yaml
-## provide the reset timeout value
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ec2-http-reset-peer
-    spec:
-      components:
-        env:
-        # reset timeout specifies after how much duration to reset the connection
-        - name: RESET_TIMEOUT #in ms
-          value: '2000'
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
-```
+## Troubleshooting
 
-### Toxicity
+<Troubleshoot
+  issue="EC2 HTTP reset peer experiment fails with InvalidInstanceId in Harness Chaos Engineering"
+  mode="docs"
+  fallback="The SSM Agent is not online for the target instance. Confirm with aws ssm describe-instance-information --filters 'Key=InstanceIds,Values=<id>'. If missing, install the SSM Agent and attach an instance profile that includes AmazonSSMManagedInstanceCore."
+/>
 
-Percentage of the total number of HTTP requests that are affected. Tune it by using the `TOXICITY` environment variable.
+<Troubleshoot
+  issue="EC2 HTTP reset peer runs but connections still complete normally"
+  mode="docs"
+  fallback="The most common causes are: TARGET_SERVICE_PORT does not host an HTTP server (the proxy cannot interpose); the client connects via a different interface than NETWORK_INTERFACE; TLS terminates at the port (HTTPS is not supported); or the in-instance proxy failed to install (set INSTALL_DEPENDENCIES=True). Verify with 'curl -v http://localhost:<port>/' via SSM during the fault."
+/>
 
-The following YAML snippet illustrates the use of this environment variable:
+<Troubleshoot
+  issue="EC2 HTTP reset peer left orphan iptables rules after the experiment"
+  mode="docs"
+  fallback="The fault was killed before cleanup ran. Connect via SSM Session Manager and remove the rules: iptables -t nat -L | grep <port>, then iptables -t nat -D PREROUTING <rule-number>. Kill the orphan proxy with pkill -f <proxy-binary>."
+/>
 
-[embedmd]:# (./static/manifests/http-reset-peer/toxicity.yaml yaml)
-```yaml
-## provide the toxicity
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ec2-http-reset-peer
-    spec:
-      components:
-        env:
-        # toxicity is the probability of the request that is affected
-        # provide the percentage value in the range of 0-100
-        # 0 means no request will be affected and 100 means all requests will be affected
-        - name: TOXICITY
-          value: "100"
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
-```
+---
 
-### Network interface
+## Related faults
 
-Network interface used for the proxy. Tune it by using the `NETWORK_INTERFACE` environment variable.
-
-The following YAML snippet illustrates the use of this environment variable:
-
-[embedmd]:# (./static/manifests/http-reset-peer/network-interface.yaml yaml)
-```yaml
-## provide the network interface for proxy
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ec2-http-reset-peer
-    spec:
-      components:
-        env:
-        # provide the network interface for proxy
-        - name: NETWORK_INTERFACE
-          value: "eth0"
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: '80'
-```
+- [EC2 HTTP latency](/docs/chaos-engineering/faults/chaos-faults/aws/ec2-http-latency): Delay responses instead of resetting connections.
+- [EC2 HTTP status code](/docs/chaos-engineering/faults/chaos-faults/aws/ec2-http-status-code): Return a specific status code instead of resetting.
+- [EC2 HTTP modify body](/docs/chaos-engineering/faults/chaos-faults/aws/ec2-http-modify-body): Rewrite the response body.
+- [EC2 HTTP modify header](/docs/chaos-engineering/faults/chaos-faults/aws/ec2-http-modify-header): Rewrite request or response headers.
+- [Common AWS fault tunables](/docs/chaos-engineering/faults/chaos-faults/aws/aws-fault-tunables): Shared environment variables for AWS faults.

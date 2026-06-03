@@ -1,295 +1,258 @@
 ---
 id: ec2-dns-chaos
 title: EC2 DNS chaos
+sidebar_label: EC2 DNS Chaos
+description: Block or redirect DNS resolution for selected hostnames on a target EC2 instance via AWS Systems Manager so you can test how the workload reacts when a dependency cannot be resolved.
+keywords:
+  - chaos engineering
+  - ec2 dns chaos
+  - aws fault
+  - dns failure
+  - resolution chaos
+  - systems manager
+tags:
+  - chaos-engineering
+  - aws-faults
+  - ec2-chaos
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-dns-chaos
-- /docs/chaos-engineering/chaos-faults/aws/ec2-dns-chaos
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-dns-chaos
+  - /docs/chaos-engineering/chaos-faults/aws/ec2-dns-chaos
 ---
 
-EC2 DNS chaos causes DNS errors such as unavailability or malfunctioning of DNS servers on the specified EC2 instance for a specific duration.
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-![EC2 DNS Chaos](./static/images/ec2-dns-chaos.png)
+EC2 DNS chaos is an AWS chaos fault that fails DNS resolution for a configurable list of hostnames on a target EC2 instance for a configurable duration. The fault dispatches the in-instance DNS server via AWS Systems Manager Run Command, listens on a configurable port, and selectively rejects queries for the targeted hostnames while forwarding the rest to the configured upstream DNS server.
 
-## Use cases
-EC2 DNS chaos:
-- Determines the performance of the application (or process) running on the EC2 instance(s).
-- Simulates the unavailability (or distorted) network connectivity from the VM to the target hosts.
-- Determines the impact of DNS chaos on the infrastructure and standalone tasks.
-- Simulates unavailability of the DNS server (loss of access to any external domain from a given microservice, access to cloud provider dependencies, and access to specific third party services).
+Use this fault to test how a workload reacts when a critical dependency cannot be resolved: does it retry endlessly, does it fall back to a cached endpoint, does the application crash on the first lookup failure?
 
-### Prerequisites
-- Kubernetes >= 1.17
-- SSM agent is installed and running on the target EC2 instance.
-- The EC2 instance should be in a healthy state.
-- You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
-- The Kubernetes secret should have the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is the sample secret file:
-  ```yaml
-  apiVersion: v1
-  kind: Secret
-  metadata:
-    name: cloud-secret
-  type: Opaque
-  stringData:
-    cloud_config.yml: |-
-      # Add the cloud AWS credentials respectively
-      [default]
-      aws_access_key_id = XXXXXXXXXXXXXXXXXXX
-      aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-  ```
-
-:::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
+:::info Run your first experiment
+If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
 :::
 
-Below is an example AWS policy to execute the fault.
+---
+
+## Use cases
+
+Run this fault when you want to answer concrete questions like:
+
+- **Dependency resolution failure:** When `api.partner.example` cannot be resolved, does the application surface a clean error or hang forever?
+- **DNS retry semantics:** When resolution fails, does the resolver back off correctly, or does it amplify load on the upstream DNS server?
+- **Cached endpoint reuse:** Does the application keep using a previously resolved IP, or does every request re-resolve?
+- **Multi-target outage:** When several hostnames fail at once (multiple `TARGET_HOSTNAMES`), does the application degrade gracefully?
+- **DNS observability:** Does the failure show up in DNS-related metrics and alerts with enough context to drive a runbook?
+
+---
+
+## Prerequisites
+
+- **Kubernetes version:** 1.21 or later for the chaos infrastructure cluster.
+- **Target instance is reachable via SSM:** The instance has the SSM Agent running and an instance profile with `AmazonSSMManagedInstanceCore`.
+- **Selector provided:** Either `EC2_INSTANCE_ID` or `EC2_INSTANCE_TAG` is set.
+- **DNS server can bind locally:** `PORT` (default `54`) is free on the target. The fault redirects the system resolver to this port for the fault duration.
+- **AWS credentials available:** Either an AWS credentials file uploaded as a **File Secret in Harness Secret Manager** (see Authentication below) or IRSA on the chaos infrastructure service account.
+
+---
+
+## Supported environments
+
+| Platform | Support status |
+| --- | --- |
+| Amazon EC2 (Linux instances with SSM Agent) | Supported |
+| Amazon EKS managed worker nodes | Supported (if SSM Agent is installed) |
+| Amazon EKS self-managed worker nodes | Supported (if SSM Agent is installed) |
+| Targeting by tag | Supported via `EC2_INSTANCE_TAG` |
+| Targeting by ID | Supported via `EC2_INSTANCE_ID` |
+| Windows instances | Not supported (Linux-only DNS interposer) |
+
+---
+
+## Permissions required
 
 ```json
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ssm:GetDocument",
-                "ssm:DescribeDocument",
-                "ssm:GetParameter",
-                "ssm:GetParameters",
-                "ssm:SendCommand",
-                "ssm:CancelCommand",
-                "ssm:CreateDocument",
-                "ssm:DeleteDocument",
-                "ssm:GetCommandInvocation",
-                "ssm:UpdateInstanceInformation",
-                "ssm:DescribeInstanceInformation"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ec2messages:AcknowledgeMessage",
-                "ec2messages:DeleteMessage",
-                "ec2messages:FailMessage",
-                "ec2messages:GetEndpoint",
-                "ec2messages:GetMessages",
-                "ec2messages:SendReply"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ec2:DescribeInstanceStatus",
-                "ec2:DescribeInstances"
-            ],
-            "Resource": [
-                "*"
-            ]
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:DescribeInstances",
+        "ec2:DescribeInstanceStatus"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ssm:SendCommand",
+        "ssm:CancelCommand",
+        "ssm:GetCommandInvocation",
+        "ssm:DescribeInstanceInformation",
+        "ssm:GetDocument",
+        "ssm:DescribeDocument"
+      ],
+      "Resource": "*"
+    }
+  ]
 }
 ```
 
-:::info note
-- Go to the [common tunables](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults) to tune the common tunables for all the faults.
-- Go to [AWS named profile for chaos](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/aws-switch-profile) to use a different profile for AWS faults and [superset permission or policy](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
-:::
+Go to [common policy for all AWS faults](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/policy-for-all-aws-faults) to use a single superset IAM policy.
+
+---
+
+## Authentication
+
+The fault supports three credential delivery models. Pick one based on how your chaos infrastructure is deployed.
+
+| Method | When to use it | How to configure |
+| --- | --- | --- |
+| Harness Secret Manager file secret | Chaos infrastructure runs outside EKS, or you want explicit static credentials | Upload the AWS credentials file as a **File Secret** in Harness Secret Manager and reference its identifier via `AWS_AUTHENTICATION_SECRET` |
+| IAM Roles for Service Accounts (IRSA) | Chaos infrastructure runs in EKS and uses an OIDC-bound service account | No tunable changes; the chaos pod inherits the role automatically. Go to [AWS IAM integration](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/aws-iam-integration) to set it up |
+| Assume role | The fault needs to act in a different account or with elevated permissions | Set `ASSUME_ROLE_ARN` to the role ARN; the chaos pod assumes the role on top of its base credentials |
+
+When using the Harness Secret Manager method, the File Secret should contain an AWS credentials file in the standard `~/.aws/credentials` format:
+
+```ini
+[default]
+aws_access_key_id = REPLACE_WITH_ACCESS_KEY_ID
+aws_secret_access_key = REPLACE_WITH_SECRET_ACCESS_KEY
+```
+
+Upload this file as a **File Secret** in Harness Secret Manager (Project Setup → Secrets → New File Secret), and pass the secret identifier in `AWS_AUTHENTICATION_SECRET`.
+
+---
 
 ## Fault tunables
-   <h3>Mandatory tunables</h3>
-    <table>
-      <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> EC2_INSTANCE_ID </td>
-        <td> ID of the target EC2 instance. </td>
-        <td> For example, <code>i-044d3cb4b03b8af1f</code>. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/aws/ec2-cpu-hog#multiple-ec2-instances"> EC2 instance ID.</a></td>
-      </tr>
-      <tr>
-        <td> REGION </td>
-        <td> AWS region ID where the EC2 instance has been created. </td>
-        <td> For example: <code>us-east-1</code>. </td>
-      </tr>
-      <tr>
-        <td> PORT </td>
-        <td> DNS port where chaos is injected. </td>
-        <td> Default: port 54. For more information, go to <a href="#run-dns-chaos-with-port"> port.</a></td>
-      </tr>
-    </table>
-    <h2>Optional tunables</h2>
-    <table>
-      <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> MACHINE </td>
-        <td> Whether chaos is applied on a Windows VM or a Linux VM. </td>
-        <td> </td>
-    </tr>
-      <tr>
-        <td> TOTAL_CHAOS_DURATION </td>
-        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
-        <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
-      </tr>
-      <tr>
-        <td> CHAOS_INTERVAL </td>
-        <td> Time interval between two successive instance terminations (in seconds). </td>
-        <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
-      </tr>
-      <tr>
-        <td> SEQUENCE </td>
-        <td> Sequence of chaos execution for multiple instance </td>
-        <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
-      </tr>
-      <tr>
-        <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
-      </tr>
-      <tr>
-        <td> INSTALL_DEPENDENCY </td>
-        <td> Select to install dependencies used to run the network chaos. It can be either True or False </td>
-        <td> If the dependency already exists, you can turn it off. Defaults to True.</td>
-      </tr>
-      <tr>
-        <td> TARGET_HOSTNAMES </td>
-        <td> List of the target host names. If this is not provided, all the host names (or domains) will be targeted. </td>
-        <td> For example, <code>'["litmuschaos","chaosnative.com"]'</code>. For more information, go to <a href="#run-dns-chaos-with-target-hostnames"> target host names.</a></td>
-      </tr>
-      <tr>
-        <td> MATCH_SCHEME </td>
-        <td> Determines whether the DNS query should exactly match the targets or can be a substring. </td>
-        <td> Default: exact. For more information, go to <a href="#run-dns-chaos-with-match-scheme"> match scheme.</a></td>
-      </tr>
-      <tr>
-        <td> UPSTREAM_SERVER </td>
-        <td> Custom upstream server to which the intercepted DNS requests are forwarded. </td>
-        <td> Default: Server mentioned in the resolv.conf file. For more information, go to <a href="#run-dns-chaos-with-upstream-server"> upstream server.</a></td>
-      </tr>
-    </table>
 
-### Run DNS chaos with port
+**Required parameters**
 
-DNS port to inject DNS chaos. Tune it by using the `PORT` environment variable.
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `REGION` | AWS region that hosts the target instance. | (required) |
+| `EC2_INSTANCE_ID` *or* `EC2_INSTANCE_TAG` | One of these must be set to select the target instance(s). | `""` |
+| `PORT` | Port the in-instance DNS server listens on. | `54` |
 
-The following YAML snippet illustrates the use of this environment variable:
+**Chaos parameters**
 
-[embedmd]:# (./static/manifests/ec2-dns-chaos/ec2-dns-port.yaml yaml)
-```yaml
-# induces dns chaos on the EC2 Instances
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ec2-dns-chaos
-    spec:
-      components:
-        env:
-        # target port
-        - name: PORT
-          value: '54'
-        - name: EC2_INSTANCE_ID
-          value: 'instance-1'
-        - name: REGION
-          value: 'us-west-2'
-```
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `TARGET_HOSTNAMES` | Comma-separated list of hostnames whose resolution should fail. Leave empty to fail all queries. | `""` |
+| `MATCH_SCHEME` | How `TARGET_HOSTNAMES` is matched: `exact` (full hostname match) or `substring` (any hostname containing the value). | `substring` |
+| `UPSTREAM_SERVER` | DNS server to forward non-targeted queries to. Defaults to the instance's existing resolver if empty. | `""` |
+| `TOTAL_CHAOS_DURATION` | Duration of the fault in seconds. | `30` |
+| `INSTANCE_AFFECTED_PERC` | Percentage of matching instances to target (only with `EC2_INSTANCE_TAG`). `0` targets one instance. | `0` |
+| `INSTALL_DEPENDENCIES` | Install dependencies inside the target instance if missing. Set to `False` to skip. | `True` |
+| `PROXY` | HTTP/HTTPS proxy used by the in-instance installer (for example `https_proxy=http://proxy.server:3128`). | `""` |
+| `SEQUENCE` | Order in which multiple instances are processed: `parallel` or `serial`. | `parallel` |
+| `RAMP_TIME` | Wait period in seconds before and after the fault. | `0` |
 
-### Run DNS chaos with target host names
+**Authentication**
 
-List of the target host names to inject DNS chaos. Tune it by using the `TARGET_HOSTNAMES` environment variable.
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `ASSUME_ROLE_ARN` | ARN of an IAM role to assume on top of the base credentials. | `""` |
+| `AWS_AUTHENTICATION_SECRET` | Identifier of the **File Secret in Harness Secret Manager** that contains the AWS credentials file. Not required when using IRSA. | `""` |
 
-The following YAML snippet illustrates the use of this environment variable:
+:::warning Match scheme matters
+`MATCH_SCHEME=substring` matches any hostname containing the value, which can be over-broad (for example, `api` matches `api.example.com` *and* `internal-api.example.com`). Use `MATCH_SCHEME=exact` for predictable blast radius.
+:::
 
-[embedmd]:# (./static/manifests/ec2-dns-chaos/ec2-dns-target-hostnames.yaml yaml)
-```yaml
-# induces dns chaos on the EC2 Instances
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ec2-dns-chaos
-    spec:
-      components:
-        env:
-        # list of target host names
-        - name: TARGET_HOSTNAMES
-          value: '["litmuschaos","chaosnative.com"]'
-        - name: EC2_INSTANCE_ID
-          value: 'instance-1'
-        - name: REGION
-          value: 'us-west-2'
-```
+---
 
+## Fault execution in brief
 
-### Run DNS chaos with match scheme
+Sends an SSM Run Command to the selected instance(s) in `REGION` that starts an in-instance DNS server on `PORT` and redirects the system resolver to it; the server fails queries for `TARGET_HOSTNAMES` (matching by `MATCH_SCHEME`) and forwards others to `UPSTREAM_SERVER` for `TOTAL_CHAOS_DURATION` seconds before reverting the resolver.
 
-Determine whether the DNS query exactly matches the target or is a substring. Tune it by using the `MATCH_SCHEME` environment variable.
+---
 
-The following YAML snippet illustrates the use of this environment variable:
+## Expected behavior during fault execution
 
-[embedmd]:# (./static/manifests/ec2-dns-chaos/ec2-dns-match-scheme.yaml yaml)
-```yaml
-# induces dns chaos on the EC2 Instances
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ec2-dns-chaos
-    spec:
-      components:
-        env:
-        # match scheme type
-        - name: MATCH_SCHEME
-          value: 'exact'
-        - name: EC2_INSTANCE_ID
-          value: 'instance-1'
-        - name: REGION
-          value: 'us-west-2'
-```
+- `nslookup <target-host>` and similar tools return `NXDOMAIN` or `SERVFAIL` for hostnames in `TARGET_HOSTNAMES`.
+- Other hostnames resolve normally via `UPSTREAM_SERVER`.
+- Applications that resolve once and cache the IP continue working until the cache expires; long-lived processes that re-resolve hit the failure immediately.
+- Applications that retry indefinitely on DNS failure may exhaust threads or sockets.
+- DNS-aware caches (Java's `networkaddress.cache.ttl`, glibc's `nscd`) influence how quickly the failure surfaces.
 
-### Run DNS chaos with upstream server
+:::info When the fault ends
+The chaos pod stops the in-instance DNS server and restores the original resolver. Queries resume normally within seconds; cached failures continue to surface until their TTL expires.
+:::
 
-Custom upstream server where the intercepted DNS requests are forwarded. It defaults to the server mentioned in the resolv.conf file. Tune it by using the `UPSTREAM_SERVER` environment variable.
+### Signals to watch
 
-The following YAML snippet illustrates the use of this environment variable:
+- **Resolution failures from the target:** Use a [command probe](/docs/resilience-testing/chaos-testing/probes/command-probe) that runs `dig <target-host>` via SSM during the fault.
+- **Application error rate:** Use a Prometheus probe on the application's DNS or upstream-error counters.
+- **End-to-end availability:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) against an endpoint that depends on the failing hostname.
 
-[embedmd]:# (./static/manifests/ec2-dns-chaos/ec2-dns-upstream-server.yaml yaml)
-```yaml
-# induces dns chaos on the EC2 Instances
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ec2-dns-chaos
-    spec:
-      components:
-        env:
-        # name of the upstream server
-        - name: UPSTREAM_SERVER
-          value: '8.8.8.8'
-        - name: EC2_INSTANCE_ID
-          value: 'instance-1'
-        - name: REGION
-          value: 'us-west-2'
-```
+---
+
+## Verify the fault execution effect
+
+While the experiment is running:
+
+1. **Confirm resolution fails for the target hostname.**
+
+   ```bash
+   aws ssm send-command \
+     --region <region> \
+     --instance-ids <id> \
+     --document-name AWS-RunShellScript \
+     --parameters 'commands=["dig +short <target-host>"]'
+   ```
+
+2. **Confirm resolution still works for other hostnames.**
+
+   ```bash
+   aws ssm send-command \
+     --region <region> \
+     --instance-ids <id> \
+     --document-name AWS-RunShellScript \
+     --parameters 'commands=["dig +short example.com"]'
+   ```
+
+---
+
+## Recovery and cleanup
+
+- **End of duration:** The chaos pod stops the in-instance DNS server and restores the original resolver.
+- **Abort the experiment:** Stopping the experiment from Chaos Studio cancels the in-flight SSM command and runs cleanup.
+- **Manual cleanup:** If the resolver is left pointed at the local server, restore `/etc/resolv.conf` (or the systemd-resolved config) and stop the local DNS process via SSM.
+
+---
+
+## Limitations
+
+- **Linux-only payload:** This fault runs on Linux instances.
+- **SSM Agent required:** Instances without the SSM Agent online cannot be targeted.
+- **Port conflict:** `PORT=54` must be free on the target. Change `PORT` if another service binds to it.
+- **DNS caches outside the fault scope:** Application-level DNS caches (JVM `InetAddress` cache, glibc `nscd`) survive the fault. They may continue returning the cached address until the cache TTL expires.
+- **Substring matching is broad:** `MATCH_SCHEME=substring` can match unintended hostnames. Use `exact` for predictable scope.
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="EC2 DNS chaos experiment fails with InvalidInstanceId in Harness Chaos Engineering"
+  mode="docs"
+  fallback="The SSM Agent is not online for the target instance. Confirm with aws ssm describe-instance-information --filters 'Key=InstanceIds,Values=<id>'. If missing, install the SSM Agent and attach an instance profile that includes AmazonSSMManagedInstanceCore."
+/>
+
+<Troubleshoot
+  issue="EC2 DNS chaos runs but the application still resolves the target hostname"
+  mode="docs"
+  fallback="The most common causes are: the application caches DNS results (JVM InetAddress cache, glibc nscd) and is using a stale entry; MATCH_SCHEME is exact but the application appends a search domain (for example api becomes api.region.compute.internal); or the application uses a custom DNS resolver that bypasses the system resolver. Verify with 'dig +short <hostname>' via SSM during the fault, and either set MATCH_SCHEME=substring, lower the application's DNS TTL, or pass the full FQDN in TARGET_HOSTNAMES."
+/>
+
+<Troubleshoot
+  issue="EC2 DNS chaos fails to start because PORT is in use"
+  mode="docs"
+  fallback="Another process is bound to PORT (default 54). Change PORT to an unused TCP/UDP port (for example 5354) and rerun. Confirm with 'ss -ulnp | grep <port>' via SSM."
+/>
+
+---
+
+## Related faults
+
+- [EC2 network latency](/docs/chaos-engineering/faults/chaos-faults/aws/ec2-network-latency): Add latency to traffic instead of failing DNS resolution.
+- [EC2 network loss](/docs/chaos-engineering/faults/chaos-faults/aws/ec2-network-loss): Drop packets instead of failing DNS resolution.
+- [Common AWS fault tunables](/docs/chaos-engineering/faults/chaos-faults/aws/aws-fault-tunables): Shared environment variables for AWS faults.

@@ -109,14 +109,14 @@ DynamoDB replication pause determines the resilience of the application when dat
 
 ### EBS loss by ID
 
-EBS loss by ID disrupts the state of EBS volume by detaching it from the node (or EC2) instance using volume ID for a certain duration.
-
-- In case of EBS persistent volumes, the volumes can self-attach and the re-attachment step can be skipped.
+EBS loss by ID detaches an EBS volume by volume ID for a configurable duration and reattaches it afterwards, so you can test how a workload behaves when its storage disappears.
 
 <Accordion color="green">
 <summary>Use cases</summary>
 
-- It tests the deployment sanity (replica availability and uninterrupted service) and recovery workflows of the application pod.
+- Validate clean IO-error handling and database failover when the data volume disappears.
+- Confirm the workload reconnects cleanly when the volume is reattached.
+- Rehearse disaster-recovery procedures for missing-volume scenarios.
 
 </Accordion>
 </FaultDetailsCard>
@@ -125,14 +125,14 @@ EBS loss by ID disrupts the state of EBS volume by detaching it from the node (o
 
 ### EBS loss by tag
 
-EBS loss by tag disrupts the state of EBS volume by detaching it from the node (or EC2) instance using volume ID for a certain duration.
-
-- In case of EBS persistent volumes, the volumes can self-attach and the re-attachment step can be skipped.
+EBS loss by tag detaches EBS volumes selected by tag for a configurable duration and reattaches them afterwards, so you can test how workloads behave when a tagged subset of storage disappears.
 
 <Accordion color="green">
 <summary>Use cases</summary>
 
-- It tests the deployment sanity (replica availability and uninterrupted service) and recovery workflows of the application pod.
+- Validate replica absorption and stateful-workload failover when a tagged subset of storage disappears.
+- Confirm `VOLUME_AFFECTED_PERC` keeps the impact within the planned blast radius.
+- Rehearse the recovery procedure for losing a tagged subset of storage.
 
 </Accordion>
 </FaultDetailsCard>
@@ -141,16 +141,14 @@ EBS loss by tag disrupts the state of EBS volume by detaching it from the node (
 
 ### EC2 CPU hog
 
-EC2 CPU hog disrupts the state of infrastructure resources. It induces stress on the AWS ECS container using Amazon SSM Run command, which is carried out using SSM docs which is in-built into the fault.
-
-- It causes CPU chaos on the containers of the ECS task using the given `CLUSTER_NAME` environment variable for a specific duration.
+EC2 CPU hog stresses a configurable number of CPU cores at a configurable load percentage inside a target EC2 instance for a configurable duration, so you can test how the workload behaves when its host is CPU-starved.
 
 <Accordion color="green">
 <summary>Use cases</summary>
 
-- Induces CPU stress on the target AWS EC2 instance(s).
-- Simulates a lack of CPU for processes running on the application, which degrades their performance.
-- Simulates slow application traffic or exhaustion of the resources, leading to degradation in the performance of processes on the instance.
+- Validate p99 latency stays within SLO when all cores are saturated.
+- Confirm CloudWatch CPU alarms and ASG scale-out trigger in the expected window.
+- Test burst-credit exhaustion on T-family instances and co-tenant isolation.
 
 </Accordion>
 </FaultDetailsCard>
@@ -159,15 +157,14 @@ EC2 CPU hog disrupts the state of infrastructure resources. It induces stress on
 
 ### EC2 DNS chaos
 
-EC2 DNS chaos causes DNS errors on the specified EC2 instance for a specific duration. It determines the performance of the application (or process) running on the EC2 instance(s).
+EC2 DNS chaos fails DNS resolution for selected hostnames on a target EC2 instance for a configurable duration, so you can test how the workload reacts when a dependency cannot be resolved.
 
 <Accordion color="green">
 <summary>Use cases</summary>
 
-- Determines the performance of the application (or process) running on the EC2 instance(s).
-- Simulates the unavailability (or distorted) network connectivity from the VM to the target hosts.
-- Determines the impact of DNS chaos on the infrastructure and standalone tasks.
-- Simulates unavailability of the DNS server (loss of access to any external domain from a given microservice, access to cloud provider dependencies, and access to specific third party services).
+- Validate clean error handling when a critical dependency cannot be resolved.
+- Confirm resolver retry semantics back off correctly instead of amplifying load.
+- Test multi-target outages and observability coverage of DNS failures.
 
 </Accordion>
 </FaultDetailsCard>
@@ -176,17 +173,14 @@ EC2 DNS chaos causes DNS errors on the specified EC2 instance for a specific dur
 
 ### EC2 HTTP latency
 
-EC2 HTTP latency disrupts the state of infrastructure resources. This fault induces HTTP chaos on an AWS EC2 instance using the Amazon SSM Run command, carried out using SSM Docs that is in-built in the fault.
-
-- It injects HTTP response latency to the service whose port is specified using `TARGET_SERVICE_PORT` environment variable by starting the proxy server and redirecting the traffic through the proxy server.
-- It introduces HTTP latency chaos on the EC2 instance using an SSM doc for a certain chaos duration.
+EC2 HTTP latency adds latency to inbound HTTP traffic on a configurable port of a target EC2 instance for a configurable duration, so you can test how clients react when an HTTP service responds slowly.
 
 <Accordion color="green">
 <summary>Use cases</summary>
 
-- Delays the network connectivity from the VM to the target hosts.
-- Simulates latency to specific API services for (or from) a given microservice.
-- Simulates a slow response on specific third party (or dependent) components (or services).
+- Validate client timeouts and retry-with-backoff paths under HTTP slowness.
+- Confirm connection pools absorb added latency without exhausting.
+- Test load-balancer behaviour and end-to-end SLO impact across the call graph.
 
 </Accordion>
 </FaultDetailsCard>
@@ -195,12 +189,14 @@ EC2 HTTP latency disrupts the state of infrastructure resources. This fault indu
 
 ### EC2 HTTP modify body
 
-EC2 HTTP modify body injects HTTP chaos which affects the request/response by modifying the status code or the body or the headers by starting proxy server and redirecting the traffic through the proxy server.
+EC2 HTTP modify body rewrites HTTP response bodies on a configurable port of a target EC2 instance for a configurable duration, so you can test how clients react when an upstream returns unexpected content.
 
 <Accordion color="green">
 <summary>Use cases</summary>
 
-- It can test the application's resilience to erroneous or incorrect HTTP response body.
+- Validate schema-validation and parse-error paths in clients.
+- Test empty-response and truncated-payload handling.
+- Confirm UX degrades gracefully when the API returns unexpected content.
 
 </Accordion>
 </FaultDetailsCard>
@@ -209,12 +205,14 @@ EC2 HTTP modify body injects HTTP chaos which affects the request/response by mo
 
 ### EC2 HTTP modify header
 
-EC2 HTTP modify header injects HTTP chaos which affects the request (or response) by modifying the status code (or the body or the headers) by starting the proxy server and redirecting the traffic through the proxy server. It modifies the headers of requests and responses of the service.
+EC2 HTTP modify header adds, changes, or removes HTTP headers on requests or responses on a configurable port of a target EC2 instance for a configurable duration, so you can test how clients and servers react when headers are missing or malformed.
 
 <Accordion color="green">
 <summary>Use cases</summary>
 
-- This can be used to test service resilience towards incorrect or incomplete headers.
+- Validate auth-failure paths when `Authorization` is stripped from requests.
+- Test cache-control and CORS-header changes against downstream caches and browser clients.
+- Confirm tracing-header propagation breaks (or recovers) exactly where expected.
 
 </Accordion>
 </FaultDetailsCard>
@@ -223,16 +221,14 @@ EC2 HTTP modify header injects HTTP chaos which affects the request (or response
 
 ### EC2 HTTP reset peer
 
-EC2 HTTP reset peer injects HTTP reset on the service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.
-
-- It stops the outgoing HTTP requests by resetting the TCP connection for the requests.
+EC2 HTTP reset peer resets inbound TCP connections to an HTTP service on a configurable port of a target EC2 instance for a configurable duration, so you can test how clients react when the server tears down connections mid-flight.
 
 <Accordion color="green">
 <summary>Use cases</summary>
 
-- Verifies connection timeout by simulating premature connection loss (firewall issues or other issues) between microservices.
-- Simulates connection resets due to resource limitations on the server side like out of memory server (or process killed or overload on the server due to a high amount of traffic).
-- Determines the application's resilience to a lossy (or flaky) HTTP connection.
+- Validate client-side retry safety when connections are reset before the response arrives.
+- Test HTTP connection-pool recovery after a churn event.
+- Confirm load-balancer detection and observability of TCP resets.
 
 </Accordion>
 </FaultDetailsCard>
@@ -241,15 +237,14 @@ EC2 HTTP reset peer injects HTTP reset on the service whose port is specified us
 
 ### EC2 HTTP status code
 
-EC2 HTTP status code injects HTTP chaos that affects the request (or response) by modifying the status code (or the body or the headers) by starting a proxy server and redirecting the traffic through the proxy server.
+EC2 HTTP status code rewrites HTTP response status codes on a configurable port of a target EC2 instance for a configurable duration, so you can test how clients react to specific error codes returned by an upstream service.
 
 <Accordion color="green">
 <summary>Use cases</summary>
 
-- Tests the application's resilience to erroneous code HTTP responses from the application server.
-- Simulates unavailability of specific API services (503, 404).
-- Simulates unavailability of specific APIs for (or from) a given microservice (TBD or Path Filter) (404).
-- Simulates unauthorized requests for 3rd party services (401 or 403), and API malfunction (internal server error) (50x).
+- Validate 4xx vs 5xx semantics: clients refrain from retrying 4xx but retry 5xx with backoff.
+- Test `429` handling, circuit-breaker open/close behaviour, and cache fallback on `502`.
+- Confirm auth-failure (`401`/`403`) paths refresh tokens cleanly.
 
 </Accordion>
 </FaultDetailsCard>
@@ -258,18 +253,14 @@ EC2 HTTP status code injects HTTP chaos that affects the request (or response) b
 
 ### EC2 IO stress
 
-EC2 IO stress disrupts the state of infrastructure resources.
-
-- The fault induces stress on AWS EC2 instance using Amazon SSM Run command that is carried out using the SSM docs that comes in-built in the fault.
-- It causes IO stress on the EC2 instance for a certain duration.
+EC2 IO stress generates sustained filesystem read and write load on a target EC2 instance for a configurable duration, so you can test how the workload behaves under disk pressure or near-full storage.
 
 <Accordion color="green">
 <summary>Use cases</summary>
 
-- Simulates slower disk operations by the application.
-- Simulates noisy neighbour problems by hogging the disk bandwidth.
-- Verifies the disk performance on increasing IO threads and varying IO block sizes.
-- Checks how the application functions under high disk latency conditions, when IO traffic is high and includes large I/O blocks, and when other services monopolize the IO disks. 
+- Validate disk-bound latency and write-error handling under saturation.
+- Test near-full disk behaviour and WAL flush stalls for databases.
+- Confirm EKS `ephemeral-storage` limits evict pods as expected.
 
 </Accordion>
 </FaultDetailsCard>
@@ -278,17 +269,14 @@ EC2 IO stress disrupts the state of infrastructure resources.
 
 ### EC2 memory hog
 
-EC2 memory hog disrupts the state of infrastructure resources.
-
-- The fault induces stress on AWS EC2 instance using Amazon SSM Run command that is carried out using the SSM docs that comes in-built in the fault.
-- It causes memory exhaustion on the EC2 instance for a specific duration.
+EC2 memory hog consumes a configurable amount of memory inside a target EC2 instance for a configurable duration, so you can test how the workload behaves when its host is starved of memory.
 
 <Accordion color="green">
 <summary>Use cases</summary>
 
-- Causes memory stress on the target AWS EC2 instance(s).
-- Simulates the situation of memory leaks in the deployment of microservices.
-- Simulates application slowness due to memory starvation, and noisy neighbour problems due to hogging.
+- Validate OOM-killer victim selection lands on the right process.
+- Test JVM heap pressure, container memory limits, and pod restarts on EKS.
+- Confirm CloudWatch memory alarms trigger ASG scale-out in time.
 
 </Accordion>
 </FaultDetailsCard>
@@ -297,18 +285,14 @@ EC2 memory hog disrupts the state of infrastructure resources.
 
 ### EC2 network latency
 
-EC2 network latency causes flaky access to the application (or services) by injecting network packet latency to EC2 instance(s). This fault:
-- Degrades the network without marking the EC2 instance as unhealthy (or unworthy) of traffic, which is resolved using a middleware that switches traffic based on SLOs (performance parameters).
-- May stall the EC2 instance or get corrupted waiting endlessly for a packet.
-- Limits the impact (blast radius) to the traffic that you wish to test, by specifying the IP addresses.
+EC2 network latency adds configurable latency and jitter to outbound traffic on a target EC2 instance for a configurable duration, so you can test how the workload reacts when network round-trip times grow.
 
 <Accordion color="green">
 <summary>Use cases</summary>
 
-- Determines the performance of the application (or process) running on the EC2 instances.
-- Simulates a consistently slow network connection between microservices (for example, cross-region connectivity between active-active peers of a given service or across services or poor cni-performance in the inter-pod-communication network).
-- Simulates jittery connection with transient latency spikes between microservices.
-- Simulates a slow response on specific third party (or dependent) components (or services), and degraded data-plane of service-mesh infrastructure.
+- Validate cross-AZ latency tolerance and database-call timeouts.
+- Test connection-pool resilience and retry-storm protection under added latency.
+- Confirm SLO error budgets burn at the expected rate when latency is injected.
 
 </Accordion>
 </FaultDetailsCard>
@@ -317,18 +301,14 @@ EC2 network latency causes flaky access to the application (or services) by inje
 
 ### EC2 network loss
 
-EC2 network loss causes flaky access to the application (or services) by injecting network packet loss to EC2 instance(s). This fault:
-- Degrades the network without marking the EC2 instance as unhealthy (or unworthy) of traffic, which is resolved using a middleware that switches traffic based on SLOs (performance parameters).
-- May stall the EC2 instance or get corrupted waiting endlessly for a packet.
-- Limits the impact (blast radius) to the traffic that you wish to test, by specifying the IP addresses.
+EC2 network loss drops a configurable percentage of outbound packets on a target EC2 instance for a configurable duration, so you can test how the workload reacts when network reliability degrades.
 
 <Accordion color="green">
 <summary>Use cases</summary>
 
-- Determines the performance of the application (or process) running on the EC2 instances.
-- Simulates a consistently slow network connection between microservices (for example, cross-region connectivity between active-active peers of a given service or across services or poor cni-performance in the inter-pod-communication network).
-- Simulates jittery connection with transient latency spikes between microservices.
-- Simulates a slow response on specific third party (or dependent) components (or services), and degraded data-plane of service-mesh infrastructure.
+- Validate partial-loss tolerance and 100%-loss failover behaviour.
+- Test TCP retransmission cost and replica failover under packet loss.
+- Confirm loss surfaces in network metrics (`tcp_retransmits`) and alerts.
 
 </Accordion>
 </FaultDetailsCard>
@@ -337,12 +317,14 @@ EC2 network loss causes flaky access to the application (or services) by injecti
 
 ### EC2 process kill
 
-EC2 process kill fault kills the target processes running on an EC2 instance. This fault disrupts the application critical processes such as databases or message queues running on the EC2 instance by killing their underlying processes or threads.
+EC2 process kill kills one or more processes by PID inside a target EC2 instance for a configurable duration, so you can test how the workload recovers when a critical process disappears without losing the host.
 
 <Accordion color="green">
 <summary>Use cases</summary>
 
-EC2 process kill determines the resilience of applications when processes on EC2 instances are unexpectedly killed (or disrupted).
+- Validate supervisor (systemd, container runtime) restart cadence.
+- Test crash vs graceful-shutdown semantics by toggling `FORCE` between SIGTERM and SIGKILL.
+- Confirm liveness probes detect the failure and trigger restarts cleanly.
 
 </Accordion>
 </FaultDetailsCard>
@@ -351,17 +333,14 @@ EC2 process kill determines the resilience of applications when processes on EC2
 
 ### EC2 stop by ID
 
-EC2 stop by ID stops an EC2 instance using the provided instance ID or list of instance IDs.
-
-- It brings back the instance after a specific duration.
-- It checks the performance of the application (or process) running on the EC2 instance.
-- When the `MANAGED_NODEGROUP` environment variable is enabled, the fault will not try to start the instance after chaos. Instead, it checks for the addition of a new node instance to the cluster.
+EC2 stop by ID stops one or more EC2 instances identified by their instance IDs for a configurable duration and then starts them again, so you can test how the workload behaves when a specific host disappears. When `MANAGED_NODEGROUP=enable`, the fault waits for a replacement node from the auto-scaling group instead of starting the original instance.
 
 <Accordion color="green">
 <summary>Use cases</summary>
 
-- Determines the performance of the application (or process) running on the EC2 instance.
-- Determines the resilience of an application to unexpected halts in the EC2 instance by validating its failover capabilities.
+- Validate replica failover when an instance hosting a workload is stopped.
+- Confirm load balancer health checks detach and reattach the instance cleanly.
+- Test auto-scaling group response and EKS managed node group recovery.
 
 </Accordion>
 </FaultDetailsCard>
@@ -370,17 +349,14 @@ EC2 stop by ID stops an EC2 instance using the provided instance ID or list of i
 
 ### EC2 stop by tag
 
-EC2 stop by tag stops an EC2 instance using the provided tag.
-
-- It brings back the instance after a specific duration.
-- It checks the performance of the application (or process) running on the EC2 instance.
-- When the `MANAGED_NODEGROUP` environment variable is enabled, the fault will not try to start the instance after chaos. Instead, it checks for the addition of a new node instance to the cluster.
+EC2 stop by tag stops EC2 instances selected by tag for a configurable duration and starts them again afterwards, so you can test how a workload behaves when a tagged subset of capacity disappears.
 
 <Accordion color="green">
 <summary>Use cases</summary>
 
-- Determines the performance of the application (or process) running on the EC2 instance.
-- Determines the resilience of an application to unexpected halts in the EC2 instance by validating its failover capabilities.
+- Validate replica failover for a tagged tier and load-balancer detach/reattach.
+- Confirm auto-scaling group response and EKS managed-node-group recovery (`MANAGED_NODEGROUP=enable`).
+- Verify `INSTANCE_AFFECTED_PERCENTAGE` keeps the blast radius within plan.
 
 </Accordion>
 </FaultDetailsCard>
@@ -961,15 +937,14 @@ NLB AZ down takes down the access for AZ (Availability Zones) on a target networ
 
 ### RDS instance delete
 
-RDS instance delete removes an instances from AWS RDS cluster.
-
-- This makes the cluster unavailable for a specific duration.
-- It determines how quickly an application can recover from an unexpected cluster deletion.
+RDS instance delete deletes a target RDS DB instance, so you can test how applications behave when a database disappears permanently and how disaster-recovery procedures handle the loss.
 
 <Accordion color="green">
 <summary>Use cases</summary>
 
-- This fault determines how quickly an application can recover from an unexpected RDS cluster deletion.
+- Rehearse the DR runbook for restoring a deleted DB instance from snapshot.
+- Validate read-replica promotion when the primary disappears.
+- Confirm monitoring detects the deletion within the expected window.
 
 </Accordion>
 </FaultDetailsCard>
@@ -978,12 +953,14 @@ RDS instance delete removes an instances from AWS RDS cluster.
 
 ### RDS instance reboot
 
-RDS instance reboot can induce an RDS instance reboot chaos on AWS RDS cluster. It derives the instance under chaos from RDS cluster.
+RDS instance reboot reboots a target RDS DB instance (with optional Multi-AZ failover) for a configurable duration, so you can test how applications behave when their database restarts.
 
 <Accordion color="green">
 <summary>Use cases</summary>
 
-- This fault determines the resilience of an application to RDS instance reboot.
+- Validate connection-pool reconnection across a reboot.
+- Test Multi-AZ failover and read-replica behaviour with `FAILOVER=true`.
+- Confirm write-path timeout handling and one cohesive alert during reboot.
 
 </Accordion>
 </FaultDetailsCard>
@@ -1009,18 +986,14 @@ Resource access restrict restricts access to a specific AWS resource for a speci
 
 ### SSM chaos by ID
 
-AWS SSM chaos by ID induces chaos on AWS EC2 instances using the Amazon SSM Run Command.
-- It is executed using the SSM document that defines the actions which the systems manager can perform on your managed instances (that have SSM agent installed).
-- This SSM document is uploaded beforehand to AWS, whose name is referenced in the faults.
-- It helps execute custom chaos (like stress, network, disk or IO) on AWS EC2 instances for a specific duration using the given ID(s).
+SSM chaos by ID runs an arbitrary AWS Systems Manager document against a target EC2 instance selected by ID, so you can inject custom chaos that is not covered by a dedicated fault.
 
 <Accordion color="green">
 <summary>Use cases</summary>
 
-AWS SSM chaos by ID:
-- Tests the resilience of an application that uses custom SSM document as input to execute chaos on EC2 instances.
-- Triggers the provided SSM document provided as an input to other AWS chaos.
-- After chaos, this fault cleans up the SSM document provided as an input to the EC2 instance.
+- Run a custom shell script or domain-specific failure not covered by another fault.
+- Trigger filesystem corruption, kernel-level chaos, or other one-shot scenarios.
+- Validate hypotheses without authoring a new dedicated fault.
 
 </Accordion>
 </FaultDetailsCard>
@@ -1029,18 +1002,14 @@ AWS SSM chaos by ID:
 
 ### SSM chaos by tag
 
-AWS SSM chaos by tag induces chaos on AWS EC2 instances using the Amazon SSM Run Command.
-- It is executed using the SSM document that defines the actions which the systems manager can perform on your managed instances (that have SSM agent installed).
-- This SSM document is uploaded beforehand to AWS, whose name is referenced in the faults.
-- It helps execute custom chaos (like stress, network, disk or IO) on AWS EC2 instances for a specific duration using the given tag(s).
+SSM chaos by tag runs an arbitrary AWS Systems Manager document against EC2 instances selected by tag, so you can inject custom chaos against a logical group of hosts.
 
 <Accordion color="green">
 <summary>Use cases</summary>
 
-AWS SSM chaos by tag:
-- Tests the resilience of an application that uses custom SSM document as input to execute chaos on EC2 instances.
-- Triggers the provided SSM document provided as an input to other AWS chaos.
-- After chaos, this fault cleans up the SSM document provided as an input to the EC2 instance.
+- Run a custom shell script across a tagged service tier.
+- Apply domain-specific failures to a percentage of tagged hosts via `INSTANCE_AFFECTED_PERC`.
+- Validate hypotheses across a fleet without authoring a new dedicated fault.
 
 </Accordion>
 </FaultDetailsCard>

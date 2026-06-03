@@ -1,342 +1,256 @@
 ---
 id: ec2-http-status-code
 title: EC2 HTTP status code
+sidebar_label: EC2 HTTP Status Code
+description: Rewrite HTTP response status codes on a configurable port of a target EC2 instance via AWS Systems Manager so you can test how clients react to specific error codes returned by an upstream service.
+keywords:
+  - chaos engineering
+  - ec2 http status code
+  - aws fault
+  - http error injection
+  - response chaos
+  - systems manager
+tags:
+  - chaos-engineering
+  - aws-faults
+  - ec2-chaos
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-http-status-code
-- /docs/chaos-engineering/chaos-faults/aws/ec2-http-status-code
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-http-status-code
+  - /docs/chaos-engineering/chaos-faults/aws/ec2-http-status-code
 ---
-EC2 HTTP status code injects HTTP chaos that affects the request (or response) by modifying the status code (or the body or the headers) by starting a proxy server and redirecting the traffic through the proxy server.
 
-![EC2 HTTP Modify Response](./static/images/ec2-http-status-code.png)
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-## Use cases
-EC2 HTTP status code:
-- Tests the application's resilience to erroneous code HTTP responses from the application server.
-- Simulates unavailability of specific API services (503, 404).
-- Simulates unavailability of specific APIs for (or from) a given microservice (TBD or Path Filter) (404).
-- Simulates unauthorized requests for 3rd party services (401 or 403), and API malfunction (internal server error) (50x).
+EC2 HTTP status code is an AWS chaos fault that rewrites HTTP response status codes on a specified port of a target EC2 instance for a configurable duration. The fault can optionally retain or strip the response body. It interposes a transparent HTTP proxy on the instance, scoped to `TARGET_SERVICE_PORT` and `NETWORK_INTERFACE`, and dispatches the proxy via AWS Systems Manager Run Command.
 
-### Prerequisites
-- Kubernetes >= 1.17
-- SSM agent is installed and running in the target EC2 instance.
-- The EC2 instance should be in a healthy state.
-- You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
-- The Kubernetes secret should have the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is the sample secret file:
-  ```yaml
-  apiVersion: v1
-  kind: Secret
-  metadata:
-    name: cloud-secret
-  type: Opaque
-  stringData:
-    cloud_config.yml: |-
-      # Add the cloud AWS credentials respectively
-      [default]
-      aws_access_key_id = XXXXXXXXXXXXXXXXXXX
-      aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-  ```
+Use this fault to test how clients react when upstream services return specific HTTP error codes: do they distinguish 4xx (don't retry) from 5xx (retry), do they fall back to a cached response, does the circuit breaker trip at the right point, does the error surface cleanly to the user?
 
-:::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
+:::info Run your first experiment
+If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
 :::
 
-Below is an example AWS policy to execute the fault.
+---
+
+## Use cases
+
+Run this fault when you want to answer concrete questions like:
+
+- **4xx vs 5xx semantics:** When the upstream returns `400`, does the client refrain from retrying? When it returns `500`, does it retry with backoff?
+- **Rate-limit handling:** When the upstream returns `429`, does the client honour `Retry-After` and back off, or does it hammer the upstream?
+- **Auth-failure handling:** When the upstream returns `401`/`403`, does the client refresh its token and retry, or does it surface the failure?
+- **Circuit-breaker behaviour:** Does the circuit open after enough consecutive 5xx responses, and does it close again cleanly when the fault ends?
+- **Cache fallback:** When the API returns `502`, does the client fall back to a cached or stale response?
+
+---
+
+## Prerequisites
+
+- **Kubernetes version:** 1.21 or later for the chaos infrastructure cluster.
+- **Target instance is reachable via SSM:** The instance has the SSM Agent running and an instance profile with `AmazonSSMManagedInstanceCore`.
+- **Selector provided:** Either `EC2_INSTANCE_ID` or `EC2_INSTANCE_TAG` is set.
+- **HTTP service runs on TARGET_SERVICE_PORT:** A plaintext HTTP service is listening on `TARGET_SERVICE_PORT`.
+- **AWS credentials available:** Either an AWS credentials file uploaded as a **File Secret in Harness Secret Manager** (see Authentication below) or IRSA on the chaos infrastructure service account.
+
+---
+
+## Supported environments
+
+| Platform | Support status |
+| --- | --- |
+| Amazon EC2 (Linux instances with SSM Agent) | Supported |
+| Amazon EKS managed worker nodes | Supported (if SSM Agent is installed) |
+| Amazon EKS self-managed worker nodes | Supported (if SSM Agent is installed) |
+| Targeting by tag | Supported via `EC2_INSTANCE_TAG` |
+| Targeting by ID | Supported via `EC2_INSTANCE_ID` |
+| HTTPS traffic (TLS-encrypted) | Not supported on the target port; terminate TLS upstream |
+| Windows instances | Not supported (Linux-only proxy) |
+
+---
+
+## Permissions required
 
 ```json
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ssm:GetDocument",
-                "ssm:DescribeDocument",
-                "ssm:GetParameter",
-                "ssm:GetParameters",
-                "ssm:SendCommand",
-                "ssm:CancelCommand",
-                "ssm:CreateDocument",
-                "ssm:DeleteDocument",
-                "ssm:GetCommandInvocation",
-                "ssm:UpdateInstanceInformation",
-                "ssm:DescribeInstanceInformation"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ec2messages:AcknowledgeMessage",
-                "ec2messages:DeleteMessage",
-                "ec2messages:FailMessage",
-                "ec2messages:GetEndpoint",
-                "ec2messages:GetMessages",
-                "ec2messages:SendReply"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ec2:DescribeInstanceStatus",
-                "ec2:DescribeInstances"
-            ],
-            "Resource": [
-                "*"
-            ]
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:DescribeInstances",
+        "ec2:DescribeInstanceStatus"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ssm:SendCommand",
+        "ssm:CancelCommand",
+        "ssm:GetCommandInvocation",
+        "ssm:DescribeInstanceInformation",
+        "ssm:GetDocument",
+        "ssm:DescribeDocument"
+      ],
+      "Resource": "*"
+    }
+  ]
 }
 ```
 
-:::info note
-- Go to [AWS named profile for chaos](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/aws-switch-profile) to use a different profile for AWS faults and the [superset permission/policy](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
-- Go to the [common tunables](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults) to tune the common tunables for all the faults.
+Go to [common policy for all AWS faults](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/policy-for-all-aws-faults) to use a single superset IAM policy.
+
+---
+
+## Authentication
+
+The fault supports three credential delivery models. Pick one based on how your chaos infrastructure is deployed.
+
+| Method | When to use it | How to configure |
+| --- | --- | --- |
+| Harness Secret Manager file secret | Chaos infrastructure runs outside EKS, or you want explicit static credentials | Upload the AWS credentials file as a **File Secret** in Harness Secret Manager and reference its identifier via `AWS_AUTHENTICATION_SECRET` |
+| IAM Roles for Service Accounts (IRSA) | Chaos infrastructure runs in EKS and uses an OIDC-bound service account | No tunable changes; the chaos pod inherits the role automatically. Go to [AWS IAM integration](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/aws-iam-integration) to set it up |
+| Assume role | The fault needs to act in a different account or with elevated permissions | Set `ASSUME_ROLE_ARN` to the role ARN; the chaos pod assumes the role on top of its base credentials |
+
+When using the Harness Secret Manager method, the File Secret should contain an AWS credentials file in the standard `~/.aws/credentials` format:
+
+```ini
+[default]
+aws_access_key_id = REPLACE_WITH_ACCESS_KEY_ID
+aws_secret_access_key = REPLACE_WITH_SECRET_ACCESS_KEY
+```
+
+Upload this file as a **File Secret** in Harness Secret Manager (Project Setup → Secrets → New File Secret), and pass the secret identifier in `AWS_AUTHENTICATION_SECRET`.
+
+---
+
+## Fault tunables
+
+**Required parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `REGION` | AWS region that hosts the target instance. | (required) |
+| `EC2_INSTANCE_ID` *or* `EC2_INSTANCE_TAG` | One of these must be set to select the target instance(s). | `""` |
+| `TARGET_SERVICE_PORT` | Port the target HTTP service listens on. | `80` |
+| `STATUS_CODE` | HTTP status code to return for every response (for example `429`, `500`, `503`). | `400` |
+| `RESPONSE_BODY` | When `true`, the original response body is included with the new status code. When `false`, an empty body is returned. | `true` |
+
+**Chaos parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `NETWORK_INTERFACE` | Network interface where the HTTP proxy intercepts traffic. | `eth0` |
+| `TOTAL_CHAOS_DURATION` | Duration of the fault in seconds. | `30` |
+| `INSTANCE_AFFECTED_PERC` | Percentage of matching instances to target (only with `EC2_INSTANCE_TAG`). `0` targets one instance. | `0` |
+| `INSTALL_DEPENDENCIES` | Install the in-instance HTTP proxy if missing. Set to `False` to skip. | `True` |
+| `PROXY` | HTTP/HTTPS proxy used by the in-instance installer. | `""` |
+| `SEQUENCE` | Order in which multiple instances are processed: `parallel` or `serial`. | `parallel` |
+| `RAMP_TIME` | Wait period in seconds before and after the fault. | `0` |
+
+**Authentication**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `ASSUME_ROLE_ARN` | ARN of an IAM role to assume on top of the base credentials. | `""` |
+| `AWS_AUTHENTICATION_SECRET` | Identifier of the **File Secret in Harness Secret Manager** that contains the AWS credentials file. Not required when using IRSA. | `""` |
+
+:::tip Pick the status code that drives the test path
+- `429` to test rate-limit handling and `Retry-After` honouring.
+- `500` / `502` / `503` to test retry-with-backoff paths and circuit breakers.
+- `401` / `403` to test token refresh and auth-failure handling.
+- `404` to test "not found" branches.
 :::
 
+---
 
-### Mandatory tunables
-   <table>
-        <tr>
-            <th> Tunable </th>
-            <th> Description </th>
-            <th> Notes </th>
-        </tr>
-        <tr>
-          <td> EC2_INSTANCE_ID </td>
-          <td> ID of the target EC2 instance. </td>
-          <td> For example, <code>i-044d3cb4b03b8af1f</code>. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/aws/ec2-cpu-hog#multiple-ec2-instances"> EC2 instance ID.</a></td>
-        </tr>
-        <tr>
-          <td> REGION </td>
-          <td> The AWS region ID where the EC2 instance has been created. </td>
-          <td> For example, <code>us-east-1</code>. </td>
-        </tr>
-        <tr>
-            <td> TARGET_SERVICE_PORT </td>
-            <td> Port of the service to target. </td>
-            <td> Default: port 80. For more information, go to <a href="#target-service-port"> target service port.</a></td>
-        </tr>
-        <tr>
-            <td> STATUS_CODE </td>
-            <td> Modified status code for the HTTP response.</td>
-            <td> If no value is provided, then a random value is selected from the list of supported values.
-            Multiple values can be provided as comma-separated, a random value from the provided list will be selected
-            Supported values: [200, 201, 202, 204, 300, 301, 302, 304, 307, 400, 401, 403, 404, 500, 501, 502, 503, 504].
-            Defaults to random status code. For more information, go to <a href="#modifying-the-response-status-code"> modifying the response status code.</a></td>
-        </tr>
-        <tr>
-            <td> MODIFY_RESPONSE_BODY </td>
-            <td> Whether to modify the body as per the status code provided.</td>
-            <td> If true, then the body is replaced by a default template for the status code. Default: True.</td>
-        </tr>
-    </table>
+## Fault execution in brief
 
-### Optional tunables
-   <table>
-        <tr>
-            <th> Tunable </th>
-            <th> Description </th>
-            <th> Notes </th>
-        </tr>
-        <tr>
-            <td> TOTAL_CHAOS_DURATION </td>
-            <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-            <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
-        </tr>
-        <tr>
-            <td> CHAOS_INTERVAL </td>
-            <td> Time interval between two successive instance terminations (in seconds). </td>
-            <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
-        </tr>
-        <tr>
-            <td> AWS_SHARED_CREDENTIALS_FILE </td>
-            <td> Provide the path for AWS secret credentials.</td>
-            <td> Default: <code>/tmp/cloud_config.yml</code>. </td>
-        </tr>
-        <tr>
-            <td> SEQUENCE </td>
-            <td> It defines the sequence of chaos execution for multiple instances. </td>
-            <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
-        </tr>
-        <tr>
-            <td> RAMP_TIME </td>
-            <td> Period to wait before and after injection of chaos (in seconds). </td>
-            <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
-        </tr>
-        <tr>
-            <td> INSTALL_DEPENDENCY </td>
-            <td> Select to install dependencies used to run the network chaos. It can be either True or False. </td>
-            <td> If the dependency already exists, you can turn it off. Defaults to True.</td>
-        </tr>
-        <tr>
-            <td> PROXY_PORT </td>
-            <td> Port where the proxy will be listening for requests.</td>
-            <td> Default: 20000. For more information, go to <a href="#proxy-port"> proxy port.</a></td>
-        </tr>
-        <tr>
-            <td> TOXICITY </td>
-            <td> Percentage of HTTP requests to be affected. </td>
-            <td> Default: 100. For more information, go to <a href="#toxicity"> toxicity.</a></td>
-        </tr>
-        <tr>
-          <td> NETWORK_INTERFACE </td>
-          <td> Network interface to be used for the proxy.</td>
-          <td> Default: `eth0`. For more information, go to <a href="#network-interface"> network interface.</a></td>
-        </tr>
-    </table>
+Sends an SSM Run Command to the selected instance(s) in `REGION` that interposes an HTTP proxy on `NETWORK_INTERFACE` for traffic destined to `TARGET_SERVICE_PORT`; the proxy rewrites the status code of every response to `STATUS_CODE` (preserving the body when `RESPONSE_BODY=true`) for `TOTAL_CHAOS_DURATION` seconds before being removed.
 
-### Target service port
+---
 
-Port of the target service. Tune it by using the `TARGET_SERVICE_PORT` environment variable.
+## Expected behavior during fault execution
 
-The following YAML snippet illustrates the use of this environment variable:
+- Every HTTP response from the service carries `STATUS_CODE` instead of the original status.
+- The body is preserved (`RESPONSE_BODY=true`) or stripped (`RESPONSE_BODY=false`).
+- Other ports and non-HTTP traffic are unaffected.
+- Client behaviour depends on the status code: 5xx typically triggers retries, 4xx typically does not, 429 should trigger backoff.
+- Load-balancer health checks may fail if they assert on `2xx` and the new status is `5xx`.
 
-[embedmd]:# (./static/manifests/http-status-code/target-service-port.yaml yaml)
-```yaml
-## provide the port of the targeted service
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ec2-http-status-code
-    spec:
-      components:
-        env:
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
-```
+:::info When the fault ends
+The chaos pod removes the HTTP proxy. Status codes return to normal immediately. Circuit breakers that opened during the fault may take time to close again according to their own half-open / close-after-success policy.
+:::
 
-### Modifying the response status code
+### Signals to watch
 
-You can modify the status code of the response using the following example.
+- **Client error rate by status code:** Use a Prometheus probe on the client's HTTP status histogram broken down by code.
+- **Retry counters:** Use a Prometheus probe on the client's retry counter for the affected endpoint.
+- **Circuit-breaker state:** Use a Prometheus probe on the circuit-breaker `state` gauge if your library exposes it.
 
-***Note***: `HTTP_CHAOS_TYPE` should be provided as `status_code`
+---
 
-The following YAML snippet illustrates the use of this environment variable:
+## Verify the fault execution effect
 
-[embedmd]:# (./static/manifests/http-status-code/status-code.yaml yaml)
-```yaml
-## provide the headers as a map
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ec2-http-status-code
-    spec:
-      components:
-        env:
-        # modified status code for the http response
-        # if no value is provided, a random status code from the supported code list will selected
-        # if multiple comma-separated values are provided, then a random value
-        # from the provided list will be selected
-        # if an invalid status code is provided, the fault will fail
-        # supported status code list:
-        # [200, 201, 202, 204, 300, 301, 302, 304, 307, 400, 401, 403, 404, 500, 501, 502, 503, 504]
-        - name: STATUS_CODE
-          value: '500'
-        # whether to modify the body as per the status code provided
-        - name: "MODIFY_RESPONSE_BODY"
-          value: "true"
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
-```
+While the experiment is running:
 
-### Proxy port
+1. **Issue a request and read the status code.**
 
-Port where the proxy server listens for requests. Tune it bby using the `PROXY_PORT` environment variable.
+   ```bash
+   aws ssm send-command \
+     --region <region> \
+     --instance-ids <id> \
+     --document-name AWS-RunShellScript \
+     --parameters 'commands=["curl -s -o /dev/null -w \"%{http_code}\\n\" http://localhost:<TARGET_SERVICE_PORT>/"]'
+   ```
 
-The following YAML snippet illustrates the use of this environment variable:
+   The output should match `STATUS_CODE`.
 
-[embedmd]:# (./static/manifests/http-status-code/proxy-port.yaml yaml)
-```yaml
-# provide the port for proxy server
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ec2-http-status-code
-    spec:
-      components:
-        env:
-        # provide the port for proxy server
-        - name: PROXY_PORT
-          value: '8080'
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
-```
+---
 
-### Toxicity
+## Recovery and cleanup
 
-Percentage of the total number of HTTP requests that are affected. Tune it by using the `TOXICITY` environment variable.
+- **End of duration:** The chaos pod stops the HTTP proxy and removes the redirection rules.
+- **Abort the experiment:** Stopping the experiment from Chaos Studio cancels the in-flight SSM command and runs cleanup.
+- **Manual cleanup:** If the proxy is left running, kill it via SSM Session Manager and remove any installed iptables rules.
 
-The following YAML snippet illustrates the use of this environment variable:
+---
 
-[embedmd]:# (./static/manifests/http-status-code/toxicity.yaml yaml)
-```yaml
-## provide the toxicity
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ec2-http-status-code
-    spec:
-      components:
-        env:
-        # toxicity is the probability of the request to be affected
-        # provide the percentage value in the range of 0-100
-        # 0 means no request will be affected and 100 means all request will be affected
-        - name: TOXICITY
-          value: "100"
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
-```
+## Limitations
 
-### Network interface
+- **HTTP only (no HTTPS):** The proxy operates on plaintext HTTP. Move TLS termination upstream before using this fault.
+- **Linux-only payload:** This fault runs on Linux instances.
+- **SSM Agent required:** Instances without the SSM Agent online cannot be targeted.
+- **All-or-nothing status rewrite:** Every response on the port gets the same `STATUS_CODE`. There is no per-URL or percentage filter.
+- **Custom status messages:** The proxy uses the standard status reason for `STATUS_CODE`. Custom reason phrases the original service might emit are lost.
 
-Network interface used for the proxy. Tune it by using the `NETWORK_INTERFACE` environment variable.
+---
 
-The following YAML snippet illustrates the use of this environment variable:
+## Troubleshooting
 
-[embedmd]:# (./static/manifests/http-status-code/network-interface.yaml yaml)
-```yaml
-## provide the network interface for proxy
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ec2-http-status-code
-    spec:
-      components:
-        env:
-        # provide the network interface for proxy
-        - name: NETWORK_INTERFACE
-          value: "eth0"
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: '80'
-```
+<Troubleshoot
+  issue="EC2 HTTP status code experiment fails with InvalidInstanceId in Harness Chaos Engineering"
+  mode="docs"
+  fallback="The SSM Agent is not online for the target instance. Confirm with aws ssm describe-instance-information --filters 'Key=InstanceIds,Values=<id>'. If missing, install the SSM Agent and attach an instance profile that includes AmazonSSMManagedInstanceCore."
+/>
+
+<Troubleshoot
+  issue="EC2 HTTP status code runs but client still sees 200 OK"
+  mode="docs"
+  fallback="The most common causes are: TARGET_SERVICE_PORT does not host an HTTP server; the client bypasses the proxy by connecting on a different interface than NETWORK_INTERFACE; TLS terminates at the port (HTTPS is not supported); or the in-instance proxy failed to install (set INSTALL_DEPENDENCIES=True). Verify with 'curl -i http://localhost:<port>/' via SSM during the fault."
+/>
+
+<Troubleshoot
+  issue="EC2 HTTP status code experiment broke client circuit breakers permanently"
+  mode="docs"
+  fallback="Circuit breakers opened during the fault and may stay open beyond TOTAL_CHAOS_DURATION because they wait for a successful response to half-close. Trigger a synthetic success after the fault ends, or wait for the circuit's own open-state timeout to elapse. Tune circuit-breaker open-state duration if you need faster recovery in chaos tests."
+/>
+
+---
+
+## Related faults
+
+- [EC2 HTTP latency](/docs/chaos-engineering/faults/chaos-faults/aws/ec2-http-latency): Delay responses instead of changing the status code.
+- [EC2 HTTP modify body](/docs/chaos-engineering/faults/chaos-faults/aws/ec2-http-modify-body): Change the response body instead of the status code.
+- [EC2 HTTP modify header](/docs/chaos-engineering/faults/chaos-faults/aws/ec2-http-modify-header): Change request or response headers.
+- [EC2 HTTP reset peer](/docs/chaos-engineering/faults/chaos-faults/aws/ec2-http-reset-peer): Reset connections instead of returning a response.
+- [Common AWS fault tunables](/docs/chaos-engineering/faults/chaos-faults/aws/aws-fault-tunables): Shared environment variables for AWS faults.

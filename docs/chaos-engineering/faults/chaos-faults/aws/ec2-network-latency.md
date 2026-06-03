@@ -1,314 +1,262 @@
 ---
 id: ec2-network-latency
 title: EC2 network latency
+sidebar_label: EC2 Network Latency
+description: Add configurable latency and jitter to outbound traffic on an EC2 instance via AWS Systems Manager so you can test how the workload reacts when network round-trip times grow.
+keywords:
+  - chaos engineering
+  - ec2 network latency
+  - aws fault
+  - network chaos
+  - latency injection
+  - systems manager
+tags:
+  - chaos-engineering
+  - aws-faults
+  - ec2-chaos
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-network-latency
-- /docs/chaos-engineering/chaos-faults/aws/ec2-network-latency
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-network-latency
+  - /docs/chaos-engineering/chaos-faults/aws/ec2-network-latency
 ---
 
-EC2 network latency causes flaky access to the application (or services) by injecting network packet latency to EC2 instance(s). This fault:
-- Degrades the network without marking the EC2 instance as unhealthy (or unworthy) of traffic, which is resolved using a middleware that switches traffic based on SLOs (performance parameters).
-- May stall the EC2 instance or get corrupted waiting endlessly for a packet.
-- Limits the impact (blast radius) to the traffic that you wish to test, by specifying the IP addresses.
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-![EC2 Network Latency](./static/images/ec2-network-latency.png)
+EC2 network latency is an AWS chaos fault that adds a configurable amount of latency (with optional jitter) to outbound network traffic on a target EC2 instance for a configurable duration. The latency can be scoped to specific destination hosts or IPs, and applied on a specific network interface. The fault dispatches the shaping rules via AWS Systems Manager Run Command.
 
-## Use cases
-EC2 network latency:
-- Determines the performance of the application (or process) running on the EC2 instances.
-- Simulates a consistently slow network connection between microservices (for example, cross-region connectivity between active-active peers of a given service or across services or poor cni-performance in the inter-pod-communication network).
-- Simulates jittery connection with transient latency spikes between microservices.
-- Simulates a slow response on specific third party (or dependent) components (or services), and degraded data-plane of service-mesh infrastructure.
+Use this fault to test how a workload reacts when network round-trip times grow: do timeouts trigger correctly, do retries amplify load, do connection pools become exhausted, does observability surface the increased latency?
 
-### Prerequisites
-- Kubernetes >= 1.17
-- SSM agent is installed and running on the target EC2 instance.
-- The EC2 instance should be in healthy state.
-- The Kubernetes secret should have the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
-  ```yaml
-  apiVersion: v1
-  kind: Secret
-  metadata:
-    name: cloud-secret
-  type: Opaque
-  stringData:
-    cloud_config.yml: |-
-      # Add the cloud AWS credentials respectively
-      [default]
-      aws_access_key_id = XXXXXXXXXXXXXXXXXXX
-      aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-  ```
-
-:::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
+:::info Run your first experiment
+If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
 :::
 
-Below is an example AWS policy to execute the fault.
+---
+
+## Use cases
+
+Run this fault when you want to answer concrete questions like:
+
+- **Cross-AZ latency simulation:** When latency to a specific destination rises by 50-100 ms, does the application degrade gracefully or do downstream timeouts cascade?
+- **Database call timeouts:** When latency to the database is added, does the client-side timeout fire at the expected point and does the application surface a clean error?
+- **Connection pool exhaustion:** Do connection pools (HTTP, database, queue) survive added latency, or do they exhaust and block all callers?
+- **Retry storm protection:** Do retries with exponential backoff and jitter prevent storms, or do they pile on?
+- **SLO validation:** When latency is added, does the SLO error budget burn at the expected rate?
+
+---
+
+## Prerequisites
+
+- **Kubernetes version:** 1.21 or later for the chaos infrastructure cluster.
+- **Target instance is reachable via SSM:** The instance has the SSM Agent running and an instance profile with `AmazonSSMManagedInstanceCore`.
+- **Selector provided:** Either `EC2_INSTANCE_ID` or `EC2_INSTANCE_TAG` is set.
+- **Network shaping tools installable:** `tc` / `iproute2` must be installable on the target. Set `INSTALL_NETEM=true` (default) to install them if missing.
+- **AWS credentials available:** Either an AWS credentials file uploaded as a **File Secret in Harness Secret Manager** (see Authentication below) or IRSA on the chaos infrastructure service account.
+
+---
+
+## Supported environments
+
+| Platform | Support status |
+| --- | --- |
+| Amazon EC2 (Linux instances with SSM Agent) | Supported |
+| Amazon EKS managed worker nodes | Supported (if SSM Agent is installed) |
+| Amazon EKS self-managed worker nodes | Supported (if SSM Agent is installed) |
+| Targeting by tag | Supported via `EC2_INSTANCE_TAG` |
+| Targeting by ID | Supported via `EC2_INSTANCE_ID` |
+| Windows instances | Not supported (Linux-only network shaping) |
+
+---
+
+## Permissions required
 
 ```json
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ssm:GetDocument",
-                "ssm:DescribeDocument",
-                "ssm:GetParameter",
-                "ssm:GetParameters",
-                "ssm:SendCommand",
-                "ssm:CancelCommand",
-                "ssm:CreateDocument",
-                "ssm:DeleteDocument",
-                "ssm:GetCommandInvocation",
-                "ssm:UpdateInstanceInformation",
-                "ssm:DescribeInstanceInformation"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ec2messages:AcknowledgeMessage",
-                "ec2messages:DeleteMessage",
-                "ec2messages:FailMessage",
-                "ec2messages:GetEndpoint",
-                "ec2messages:GetMessages",
-                "ec2messages:SendReply"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ec2:DescribeInstanceStatus",
-                "ec2:DescribeInstances"
-            ],
-            "Resource": [
-                "*"
-            ]
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:DescribeInstances",
+        "ec2:DescribeInstanceStatus"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ssm:SendCommand",
+        "ssm:CancelCommand",
+        "ssm:GetCommandInvocation",
+        "ssm:DescribeInstanceInformation",
+        "ssm:GetDocument",
+        "ssm:DescribeDocument"
+      ],
+      "Resource": "*"
+    }
+  ]
 }
 ```
 
-:::info note
-- Go to the [superset permission/policy](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/policy-for-all-aws-faults) to execute all AWS faults and [AWS named profile for chaos](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/aws-switch-profile) to use a different profile for AWS faults.
-- Go to the [common tunables](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults) to tune the common tunables for all the faults.
+Go to [common policy for all AWS faults](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/policy-for-all-aws-faults) to use a single superset IAM policy.
+
+---
+
+## Authentication
+
+The fault supports three credential delivery models. Pick one based on how your chaos infrastructure is deployed.
+
+| Method | When to use it | How to configure |
+| --- | --- | --- |
+| Harness Secret Manager file secret | Chaos infrastructure runs outside EKS, or you want explicit static credentials | Upload the AWS credentials file as a **File Secret** in Harness Secret Manager and reference its identifier via `AWS_AUTHENTICATION_SECRET` |
+| IAM Roles for Service Accounts (IRSA) | Chaos infrastructure runs in EKS and uses an OIDC-bound service account | No tunable changes; the chaos pod inherits the role automatically. Go to [AWS IAM integration](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/aws-iam-integration) to set it up |
+| Assume role | The fault needs to act in a different account or with elevated permissions | Set `ASSUME_ROLE_ARN` to the role ARN; the chaos pod assumes the role on top of its base credentials |
+
+When using the Harness Secret Manager method, the File Secret should contain an AWS credentials file in the standard `~/.aws/credentials` format:
+
+```ini
+[default]
+aws_access_key_id = REPLACE_WITH_ACCESS_KEY_ID
+aws_secret_access_key = REPLACE_WITH_SECRET_ACCESS_KEY
+```
+
+Upload this file as a **File Secret** in Harness Secret Manager (Project Setup → Secrets → New File Secret), and pass the secret identifier in `AWS_AUTHENTICATION_SECRET`.
+
+---
+
+## Fault tunables
+
+**Required parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `REGION` | AWS region that hosts the target instance. | (required) |
+| `EC2_INSTANCE_ID` *or* `EC2_INSTANCE_TAG` | One of these must be set to select the target instance(s). | `""` |
+
+**Chaos parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `NETWORK_LATENCY` | Latency to inject (in milliseconds). | `3000` |
+| `JITTER` | Random variation in latency (in milliseconds). | `2000` |
+| `NETWORK_INTERFACE` | Network interface to apply shaping on. | `eth0` |
+| `DESTINATION_HOSTS` | Comma-separated list of destination hostnames to target. Leave empty to affect all destinations. | `""` |
+| `DESTINATION_IPS` | Comma-separated list of destination IPs/CIDRs to target. Leave empty to affect all destinations. | `""` |
+| `TOTAL_CHAOS_DURATION` | Duration of the fault in seconds. | `30` |
+| `INSTANCE_AFFECTED_PERC` | Percentage of matching instances to target (only with `EC2_INSTANCE_TAG`). `0` targets one instance. | `0` |
+| `INSTALL_DEPENDENCIES` | Install dependencies inside the target instance if missing. Set to `False` to skip. | `True` |
+| `INSTALL_NETEM` | Install the `tc` / netem networking tools if missing. | `true` |
+| `PROXY` | HTTP/HTTPS proxy used by the in-instance installer (for example `https_proxy=http://proxy.server:3128`). | `""` |
+| `SEQUENCE` | Order in which multiple instances are processed: `parallel` or `serial`. | `parallel` |
+| `RAMP_TIME` | Wait period in seconds before and after the fault. | `0` |
+
+**Authentication**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `ASSUME_ROLE_ARN` | ARN of an IAM role to assume on top of the base credentials. | `""` |
+| `AWS_AUTHENTICATION_SECRET` | Identifier of the **File Secret in Harness Secret Manager** that contains the AWS credentials file. Not required when using IRSA. | `""` |
+
+:::tip Scope the blast radius with destinations
+Without `DESTINATION_HOSTS` or `DESTINATION_IPS`, the latency applies to all outbound traffic, including the SSM control channel back to AWS. Scope to specific destinations whenever possible.
 :::
 
-### Mandatory tunables
-  <table>
-      <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> EC2_INSTANCE_ID </td>
-        <td> ID of the target EC2 instance. </td>
-        <td> For example, <code>i-044d3cb4b03b8af1f</code>. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/aws/ec2-cpu-hog#multiple-ec2-instances"> EC2 instance ID.</a></td>
-      </tr>
-      <tr>
-        <td> REGION </td>
-        <td> The AWS region ID where the EC2 instance has been created. </td>
-        <td> For example, <code>us-east-1</code>. </td>
-      </tr>
-    </table>
+---
 
-### Optional tunables
+## Fault execution in brief
 
-   <table>
-        <tr>
-            <th> Tunable </th>
-            <th> Description </th>
-            <th> Notes </th>
-        </tr>
-        <tr>
-            <td> TOTAL_CHAOS_DURATION </td>
-            <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
-            <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
-        </tr>
-        <tr>
-            <td> CHAOS_INTERVAL </td>
-            <td> Time interval between two successive instance terminations (in seconds). </td>
-            <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
-        </tr>
-        <tr>
-            <td> AWS_SHARED_CREDENTIALS_FILE </td>
-            <td> Provide the path for AWS secret credentials.</td>
-            <td> Default: <code>/tmp/cloud_config.yml</code>. </td>
-        </tr>
-        <tr>
-            <td> INSTALL_DEPENDENCY </td>
-            <td> Select to install dependencies used to run the network chaos. It can be either True or False. </td>
-        <td> If the dependency already exists, you can turn it off. Default: True.</td>
-        </tr>
-        <tr>
-            <td> NETWORK_LATENCY </td>
-            <td> The latency/delay in ms. Provide numeric values only.</td>
-            <td> Default: 2000. For more information, go to <a href="#network-packet-latency"> latency.</a></td>
-        </tr>
-        <tr>
-            <td> JITTER </td>
-            <td> The network jitter value in ms. Provide numeric values only. </td>
-            <td> Default: 0. For more information, go to <a href="#run-with-jitter"> jitter.</a></td>
-        </tr>
-        <tr>
-            <td> DESTINATION_IPS </td>
-            <td> IP addresses of the services or the CIDR blocks(range of IPs), the accessibility to which is impacted. </td>
-            <td> Comma-separated IP(S) or CIDR(S) can be provided. If not provided, it will induce network chaos for all ips/destinations. For more information, go to <a href="#run-with-destination-ips-and-destination-hosts"> destination IPs.</a></td>
-        </tr>
-        <tr>
-            <td> DESTINATION_HOSTS </td>
-            <td> DNS names of the services, the accessibility to which, is impacted. </td>
-            <td> If not provided, it will induce network chaos for all ips/destinations or DESTINATION_IPS if already defined. For more information, go to <a href="#run-wtih-destination-ips-and-destination-hosts"> destination hosts.</a></td>
-        </tr>
-        <tr>
-            <td> NETWORK_INTERFACE </td>
-            <td> Name of ethernet interface considered for shaping traffic.</td>
-            <td> Default: `eth0`. For more information, go to <a href="#network-interface"> network interface.</a></td>
-        </tr>
-        <tr>
-            <td> SEQUENCE </td>
-            <td> It defines the sequence of chaos execution for multiple instances. </td>
-            <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
-        </tr>
-        <tr>
-            <td> RAMP_TIME </td>
-            <td> Period to wait before and after injecting chaos (in seconds).  </td>
-            <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
-        </tr>
-    </table>
+Sends an SSM Run Command to the selected instance(s) in `REGION` that adds a network-shaping rule on `NETWORK_INTERFACE` to delay outbound traffic to `DESTINATION_HOSTS`/`DESTINATION_IPS` by `NETWORK_LATENCY` ± `JITTER` milliseconds for `TOTAL_CHAOS_DURATION` seconds, then removes the rule.
 
-:::tip
-If the environment variables `DESTINATION_HOSTS` or `DESTINATION_IPS` are left empty, the default behaviour is to target all hosts. To limit the impact on all the hosts, you can specify the IP addresses of the service (use commas to separate multiple values) or the DNS or the FQDN names of the services in `DESTINATION_HOSTS`.
+---
+
+## Expected behavior during fault execution
+
+- Outbound RTT to the targeted destinations rises by approximately `NETWORK_LATENCY` ± `JITTER` milliseconds.
+- TCP connections established during the fault have inflated handshake times.
+- Long-running connections continue working but with higher latency per round trip.
+- Latency-sensitive operations (synchronous RPCs, database queries) may time out depending on client configuration.
+- CloudWatch network metrics (`NetworkIn`, `NetworkOut`) typically do not visibly change; latency does not affect throughput unless callers retry aggressively.
+
+:::info When the fault ends
+The chaos pod removes the network-shaping rule. Latency to the targeted destinations returns to baseline within seconds. Connections that timed out during the fault must be re-established.
 :::
 
-### Network packet latency
+### Signals to watch
 
-Network packet latency (delay) that is injected on the EC2 instances. Tune it by using the `NETWORK_LATENCY` environment variable.
+- **End-to-end latency:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) against an endpoint that calls one of the affected destinations.
+- **Synthetic RTT from the target:** Use a [command probe](/docs/resilience-testing/chaos-testing/probes/command-probe) that runs `ping -c 3 <destination>` via SSM during the fault.
+- **Connection-pool saturation:** Use Prometheus probes on application-specific pool-size metrics.
 
-The following YAML snippet illustrates the use of this environment variable:
+---
 
-[embedmd]:# (./static/manifests/ec2-network-latency/network-latency.yaml yaml)
-```yaml
-# it injects the chaos into the ingress/egress traffic
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ec2-network-latency
-    spec:
-      components:
-        env:
-        # network packet latency
-        - name: NETWORK_LATENCY
-          value: '2000'
-        - name: EC2_INSTANCE_ID
-          value: 'instance-1'
-        - name: REGION
-          value: 'us-west-2'
-```
+## Verify the fault execution effect
 
-### Run with jitter
+While the experiment is running:
 
-Introduces a network delay variation (in ms). Tune it by using the `JITTER` environment variable. Its default value is 0.
+1. **Confirm the shaping rule is in place via SSM.**
 
-The following YAML snippet illustrates the use of this environment variable:
+   ```bash
+   aws ssm send-command \
+     --region <region> \
+     --instance-ids <id> \
+     --document-name AWS-RunShellScript \
+     --parameters 'commands=["tc qdisc show dev <NETWORK_INTERFACE>"]'
+   ```
 
-[embedmd]:# (./static/manifests/ec2-network-latency/network-latency-with-jitter.yaml yaml)
-```yaml
-# it injects the chaos into the ingress/egress traffic
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ec2-network-latency
-    spec:
-      components:
-        env:
-        # value of the network latency jitter (in ms)
-        - name: JITTER
-          value: '200'
-        - name: NETWORK_LATENCY
-          value: '2000'
-        - name: EC2_INSTANCE_ID
-          value: 'instance-1'
-        - name: REGION
-          value: 'us-west-2'
-```
+2. **Measure RTT to the destination.**
 
-### Run with destination IPs and destination hosts
+   ```bash
+   aws ssm send-command \
+     --region <region> \
+     --instance-ids <id> \
+     --document-name AWS-RunShellScript \
+     --parameters 'commands=["ping -c 5 <destination-host>"]'
+   ```
 
-Interruption of IPs/hosts. By default, all IPs/hosts are interrupted. Tune specific IPs/hosts by using the `DESTINATION_IPS` and `DESTINATION_HOSTS` environment variables, respectively.
+---
 
-`DESTINATION_IPS`: It contains the IP addresses of the services or the CIDR blocks (range of IPs) whose accessibility is impacted.
-`DESTINATION_HOSTS`: It contains the DNS names of the services whose accessibility is impacted.
+## Recovery and cleanup
 
-The following YAML snippet illustrates the use of this environment variable:
+- **End of duration:** The chaos pod removes the network-shaping rule.
+- **Abort the experiment:** Stopping the experiment from Chaos Studio cancels the in-flight SSM command and removes any installed rules.
+- **Manual cleanup:** If a rule is left behind, remove it via SSM: `tc qdisc del dev <NETWORK_INTERFACE> root`.
 
-[embedmd]:# (./static/manifests/ec2-network-latency/destination-host-and-ip.yaml yaml)
-```yaml
-# it injects the chaos into the ingress/egress traffic for specific IPs/hosts
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ec2-network-latency
-    spec:
-      components:
-        env:
-        # supports comma-separated destination ips
-        - name: DESTINATION_IPS
-          value: '8.8.8.8,192.168.5.6'
-        # supports comma-separated destination hosts
-        - name: DESTINATION_HOSTS
-          value: 'google.com'
-        - name: EC2_INSTANCE_ID
-          value: 'instance-1'
-        - name: REGION
-          value: 'us-west-2'
-```
+---
 
-###  Network interface
+## Limitations
 
-Name of the ethernet interface considered for shaping traffic. Tune it by using the `NETWORK_INTERFACE` environment variable. Its default value is `eth0`.
+- **Linux-only payload:** This fault shapes traffic on Linux instances. For Windows hosts, use `windows-ec2-network-latency`.
+- **SSM Agent required:** Instances without the SSM Agent online cannot be targeted.
+- **Outbound only:** Latency is applied to traffic leaving `NETWORK_INTERFACE`. Inbound latency is not directly controllable from the receiver side.
+- **Control-channel impact:** Without `DESTINATION_HOSTS`/`DESTINATION_IPS`, the rule affects all outbound traffic including the SSM control channel; very high latency values may delay cleanup.
+- **DNS resolution:** Hosts in `DESTINATION_HOSTS` are resolved once at the start of the fault. IPs that change during the experiment are not picked up.
 
-The following YAML snippet illustrates the use of this environment variable:
+---
 
-[embedmd]:# (./static/manifests/ec2-network-latency/network-interface.yaml yaml)
-```yaml
-# it injects the chaos into the ingress/egress traffic for specific network interface
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ec2-network-latency
-    spec:
-      components:
-        env:
-        # name of the network interface
-        - name: NETWORK_INTERFACE
-          value: 'eth0'
-        - name: EC2_INSTANCE_ID
-          value: 'instance-1'
-        - name: REGION
-          value: 'us-west-2'
-```
+## Troubleshooting
+
+<Troubleshoot
+  issue="EC2 network latency experiment fails with InvalidInstanceId in Harness Chaos Engineering"
+  mode="docs"
+  fallback="The SSM Agent is not online for the target instance. Confirm with aws ssm describe-instance-information --filters 'Key=InstanceIds,Values=<id>'. If missing, install the SSM Agent and attach an instance profile that includes AmazonSSMManagedInstanceCore."
+/>
+
+<Troubleshoot
+  issue="EC2 network latency runs but RTT to the destination does not change"
+  mode="docs"
+  fallback="The most common causes are: tc/iproute2 failed to install (set INSTALL_NETEM=true and verify network egress from the instance, or use PROXY); NETWORK_INTERFACE is wrong (use 'ip link show' to confirm); or DESTINATION_HOSTS resolved to IPs that the target reaches via a different interface. Run 'tc qdisc show dev <interface>' via SSM during the fault to verify the rule is in place."
+/>
+
+<Troubleshoot
+  issue="EC2 network latency disrupted my SSM connection and the fault hangs"
+  mode="docs"
+  fallback="DESTINATION_HOSTS / DESTINATION_IPS were left empty, so latency applied to all outbound traffic including the SSM control channel. Wait for TOTAL_CHAOS_DURATION to elapse and the cleanup command to land, then rerun with explicit DESTINATION_HOSTS or DESTINATION_IPS that exclude the SSM endpoint."
+/>
+
+---
+
+## Related faults
+
+- [EC2 network loss](/docs/chaos-engineering/faults/chaos-faults/aws/ec2-network-loss): Drop a percentage of packets instead of adding latency.
+- [EC2 DNS chaos](/docs/chaos-engineering/faults/chaos-faults/aws/ec2-dns-chaos): Block DNS resolution for specific hostnames.
+- [EC2 HTTP latency](/docs/chaos-engineering/faults/chaos-faults/aws/ec2-http-latency): Add latency only to HTTP traffic on a specific port.
+- [Windows EC2 network latency](/docs/chaos-engineering/faults/chaos-faults/aws/windows-ec2-network-latency): Network latency for Windows instances.
+- [Common AWS fault tunables](/docs/chaos-engineering/faults/chaos-faults/aws/aws-fault-tunables): Shared environment variables for AWS faults.

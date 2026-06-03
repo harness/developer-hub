@@ -39,112 +39,112 @@ export const experiments: ExperimentDetails[] = [
   {
     name: "EBS loss by ID",
     description:
-      "EBS loss by ID disrupts the state of EBS volume by detaching it from the node (or EC2) instance using volume ID for a certain duration.",
+      "EBS loss by ID detaches an EBS volume by volume ID for a configurable duration and reattaches it afterwards, so you can test how a workload behaves when its storage disappears.",
     tags: ['loss', 'id'],
     category: "aws",
   },
   {
     name: "EBS loss by tag",
     description:
-      "EBS loss by tag disrupts the state of EBS volume by detaching it from the node (or EC2) instance using volume ID for a certain duration.",
+      "EBS loss by tag detaches EBS volumes selected by tag for a configurable duration and reattaches them afterwards, so you can test how workloads behave when a tagged subset of storage disappears.",
     tags: ['loss', 'tag'],
     category: "aws",
   },
   {
     name: "EC2 CPU hog",
     description:
-      "EC2 CPU hog disrupts the state of infrastructure resources. It induces stress on the AWS ECS container using Amazon SSM Run command, which is carried out using SSM docs which is in-built into the fault.",
+      "EC2 CPU hog stresses a configurable number of CPU cores at a configurable load percentage inside a target EC2 instance for a configurable duration, so you can test how the workload behaves when its host is CPU-starved.",
     tags: ['cpu', 'stress'],
     category: "aws",
   },
   {
     name: "EC2 DNS chaos",
     description:
-      "EC2 DNS chaos causes DNS errors on the specified EC2 instance for a specific duration. ",
+      "EC2 DNS chaos fails DNS resolution for selected hostnames on a target EC2 instance for a configurable duration, so you can test how the workload reacts when a dependency cannot be resolved.",
     tags: ['dns'],
     category: "aws",
   },
   {
     name: "EC2 HTTP latency",
     description:
-      "EC2 HTTP latency disrupts the state of infrastructure resources. This fault induces HTTP chaos on an AWS EC2 instance using the Amazon SSM Run command, carried out using SSM Docs that is in-built in the fault.",
+      "EC2 HTTP latency adds latency to inbound HTTP traffic on a configurable port of a target EC2 instance for a configurable duration, so you can test how clients react when an HTTP service responds slowly.",
     tags: ['http', 'latency'],
     category: "aws",
   },
   {
     name: "EC2 HTTP modify body",
     description:
-      "EC2 HTTP modify body injects HTTP chaos which affects the request/response by modifying the status code or the body or the headers by starting proxy server and redirecting the traffic through the proxy server.",
+      "EC2 HTTP modify body rewrites HTTP response bodies on a configurable port of a target EC2 instance for a configurable duration, so you can test how clients react when an upstream returns unexpected content.",
     tags: ['http', 'modify', 'body'],
     category: "aws",
   },
   {
     name: "EC2 HTTP modify header",
     description:
-      "EC2 HTTP modify header injects HTTP chaos which affects the request (or response) by modifying the status code (or the body or the headers) by starting the proxy server and redirecting the traffic through the proxy server.",
+      "EC2 HTTP modify header adds, changes, or removes HTTP headers on requests or responses on a configurable port of a target EC2 instance for a configurable duration, so you can test how clients and servers react when headers are missing or malformed.",
     tags: ['http', 'modify', 'header'],
     category: "aws",
   },
   {
     name: "EC2 HTTP reset peer",
     description:
-      "EC2 HTTP reset peer injects HTTP reset on the service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.",
+      "EC2 HTTP reset peer resets inbound TCP connections to an HTTP service on a configurable port of a target EC2 instance for a configurable duration, so you can test how clients react when the server tears down connections mid-flight.",
     tags: ['http', 'reset', 'peer'],
     category: "aws",
   },
   {
     name: "EC2 HTTP status code",
     description:
-      "EC2 HTTP status code injects HTTP chaos that affects the request (or response) by modifying the status code (or the body or the headers) by starting a proxy server and redirecting the traffic through the proxy server.",
+      "EC2 HTTP status code rewrites HTTP response status codes on a configurable port of a target EC2 instance for a configurable duration, so you can test how clients react to specific error codes returned by an upstream service.",
     tags: ['http', 'status', 'code'],
     category: "aws",
   },
   {
     name: "EC2 IO stress",
     description:
-      "EC2 IO stress disrupts the state of infrastructure resources. ",
+      "EC2 IO stress generates sustained filesystem read and write load on a target EC2 instance for a configurable duration, so you can test how the workload behaves under disk pressure or near-full storage.",
     tags: ['io', 'stress'],
     category: "aws",
   },
   {
     name: "EC2 memory hog",
     description:
-      "EC2 memory hog disrupts the state of infrastructure resources. ",
+      "EC2 memory hog consumes a configurable amount of memory inside a target EC2 instance for a configurable duration, so you can test how the workload behaves when its host is starved of memory.",
     tags: ['memory', 'stress'],
     category: "aws",
   },
   {
     name: "EC2 network latency",
     description:
-      "EC2 network latency causes flaky access to the application (or services) by injecting network packet latency to EC2 instance(s).",
+      "EC2 network latency adds configurable latency and jitter to outbound traffic on a target EC2 instance for a configurable duration, so you can test how the workload reacts when network round-trip times grow.",
     tags: ['network', 'latency'],
     category: "aws",
   },
   {
     name: "EC2 network loss",
     description:
-      "EC2 network loss causes flaky access to the application (or services) by injecting network packet loss to EC2 instance(s).",
+      "EC2 network loss drops a configurable percentage of outbound packets on a target EC2 instance for a configurable duration, so you can test how the workload reacts when network reliability degrades.",
     tags: ['network', 'loss'],
     category: "aws",
   },
   {
     name: "EC2 process kill",
     description:
-      "EC2 process kill fault kills the target processes running on an EC2 instance.",
+      "EC2 process kill kills one or more processes by PID inside a target EC2 instance for a configurable duration, so you can test how the workload recovers when a critical process disappears without losing the host.",
     tags: ['process', 'kill'],
     category: "aws",
   },
   {
     name: "EC2 stop by ID",
     description:
-      "EC2 stop by ID stops an EC2 instance using the provided instance ID or list of instance IDs.",
+      "EC2 stop by ID stops one or more EC2 instances identified by their instance IDs for a configurable duration and then starts them again, so you can test how the workload behaves when a specific host disappears.",
     tags: ['stop', 'id'],
     category: "aws",
   },
   {
     name: "EC2 stop by tag",
     description:
-      "EC2 stop by tag stops an EC2 instance using the provided tag.",
+      "EC2 stop by tag stops EC2 instances selected by tag for a configurable duration and starts them again afterwards, so you can test how a workload behaves when a tagged subset of capacity disappears.",
     tags: ['stop', 'tag'],
     category: "aws",
   },
@@ -382,14 +382,14 @@ export const experiments: ExperimentDetails[] = [
   {
     name: "RDS instance delete",
     description:
-      "RDS instance delete removes an instances from AWS RDS cluster. ",
+      "RDS instance delete deletes a target RDS DB instance, so you can test how applications behave when a database disappears permanently and how disaster-recovery procedures handle the loss.",
     tags: ['instance', 'delete'],
     category: "aws",
   },
   {
     name: "RDS instance reboot",
     description:
-      "RDS instance reboot can induce an RDS instance reboot chaos on AWS RDS cluster. It derives the instance under chaos from RDS cluster.",
+      "RDS instance reboot reboots a target RDS DB instance (with optional Multi-AZ failover) for a configurable duration, so you can test how applications behave when their database restarts.",
     tags: ['instance', 'reboot'],
     category: "aws",
   },
@@ -403,14 +403,14 @@ export const experiments: ExperimentDetails[] = [
   {
     name: "SSM chaos by ID",
     description:
-      "AWS SSM chaos by ID induces chaos on AWS EC2 instances using the Amazon SSM Run Command. It is executed using the SSM document that defines the actions which the systems manager can perform on your managed instances (that have SSM agent installed). This SSM document is uploaded beforehand to AWS, whose name is referenced as an input to the chaos faults.",
+      "SSM chaos by ID runs an arbitrary AWS Systems Manager document against a target EC2 instance selected by ID, so you can inject custom chaos that is not covered by a dedicated fault.",
     tags: ['ssm', 'id'],
     category: "aws",
   },
   {
     name: "SSM chaos by tag",
     description:
-      "AWS SSM chaos by tag induces chaos on AWS EC2 instances using the Amazon SSM Run Command. It is executed using the SSM document that defines the actions which the systems manager can perform on your managed instances (that have SSM agent installed). This SSM document is uploaded beforehand to AWS, whose name is referenced as an input to the chaos faults.",
+      "SSM chaos by tag runs an arbitrary AWS Systems Manager document against EC2 instances selected by tag, so you can inject custom chaos against a logical group of hosts.",
     tags: ['ssm', 'tag'],
     category: "aws",
   },

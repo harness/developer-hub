@@ -1,370 +1,253 @@
 ---
 id: ec2-http-modify-header
 title: EC2 HTTP modify header
+sidebar_label: EC2 HTTP Modify Header
+description: Add, change, or remove HTTP headers on a configurable port of a target EC2 instance via AWS Systems Manager so you can test how clients react when headers are missing or malformed.
+keywords:
+  - chaos engineering
+  - ec2 http modify header
+  - aws fault
+  - http header injection
+  - response chaos
+  - systems manager
+tags:
+  - chaos-engineering
+  - aws-faults
+  - ec2-chaos
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-http-modify-header
-- /docs/chaos-engineering/chaos-faults/aws/ec2-http-modify-header
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-http-modify-header
+  - /docs/chaos-engineering/chaos-faults/aws/ec2-http-modify-header
 ---
 
-EC2 HTTP modify header injects HTTP chaos which affects the request (or response) by modifying the status code (or the body or the headers) by starting the proxy server and redirecting the traffic through the proxy server. This fault modifies the headers of requests and responses of the service.
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-![EC2 HTTP Modify Response](./static/images/ec2-http-modify-header.png)
+EC2 HTTP modify header is an AWS chaos fault that adds, changes, or removes HTTP headers on a configurable port of a target EC2 instance for a configurable duration. The fault can rewrite headers on requests entering the service or on responses leaving the service (controlled by `HEADERS_MODE`). The fault interposes a transparent HTTP proxy on the instance, scoped to `TARGET_SERVICE_PORT` and `NETWORK_INTERFACE`, and dispatches the proxy via AWS Systems Manager Run Command.
+
+Use this fault to test how clients and servers react when expected headers are missing or malformed: do auth checks fail safely when the auth header is stripped, do cache layers misbehave when cache headers change, does the application surface a clean error or behave erratically?
+
+:::info Run your first experiment
+If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
+:::
+
+---
 
 ## Use cases
 
-EC2 HTTP modify header tests the resilience of the application to incorrect or incomplete headers.
+Run this fault when you want to answer concrete questions like:
 
-### Prerequisites
-- Kubernetes >= 1.17
-- You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
-- The EC2 instance should be in a healthy state.
-- SSM agent is installed and running in the target EC2 instance.
-- The Kubernetes secret should have the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. A secret file looks like:
-  ```yaml
-  apiVersion: v1
-  kind: Secret
-  metadata:
-    name: cloud-secret
-  type: Opaque
-  stringData:
-    cloud_config.yml: |-
-      # Add the cloud AWS credentials respectively
-      [default]
-      aws_access_key_id = XXXXXXXXXXXXXXXXXXX
-      aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-  ```
+- **Missing auth header on requests:** When `Authorization` is stripped from incoming requests, does the server return `401` cleanly or crash?
+- **Missing content-type on responses:** When `Content-Type` is stripped from responses, do clients fall back gracefully?
+- **Invalid CORS headers:** When CORS headers are changed, do browser clients honour the changes correctly?
+- **Cache control churn:** When `Cache-Control` is set to `no-store`, do downstream caches honour it and how does this affect load?
+- **Tracing-header propagation:** When tracing headers are removed, does the trace break exactly where expected (a useful negative test)?
 
-:::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
-:::
+---
 
-Below is an example AWS policy to execute the fault.
+## Prerequisites
+
+- **Kubernetes version:** 1.21 or later for the chaos infrastructure cluster.
+- **Target instance is reachable via SSM:** The instance has the SSM Agent running and an instance profile with `AmazonSSMManagedInstanceCore`.
+- **Selector provided:** Either `EC2_INSTANCE_ID` or `EC2_INSTANCE_TAG` is set.
+- **HTTP service runs on TARGET_SERVICE_PORT:** A plaintext HTTP service is listening on `TARGET_SERVICE_PORT`.
+- **AWS credentials available:** Either an AWS credentials file uploaded as a **File Secret in Harness Secret Manager** (see Authentication below) or IRSA on the chaos infrastructure service account.
+
+---
+
+## Supported environments
+
+| Platform | Support status |
+| --- | --- |
+| Amazon EC2 (Linux instances with SSM Agent) | Supported |
+| Amazon EKS managed worker nodes | Supported (if SSM Agent is installed) |
+| Amazon EKS self-managed worker nodes | Supported (if SSM Agent is installed) |
+| Targeting by tag | Supported via `EC2_INSTANCE_TAG` |
+| Targeting by ID | Supported via `EC2_INSTANCE_ID` |
+| HTTPS traffic (TLS-encrypted) | Not supported on the target port; terminate TLS upstream |
+| Windows instances | Not supported (Linux-only proxy) |
+
+---
+
+## Permissions required
 
 ```json
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ssm:GetDocument",
-                "ssm:DescribeDocument",
-                "ssm:GetParameter",
-                "ssm:GetParameters",
-                "ssm:SendCommand",
-                "ssm:CancelCommand",
-                "ssm:CreateDocument",
-                "ssm:DeleteDocument",
-                "ssm:GetCommandInvocation",
-                "ssm:UpdateInstanceInformation",
-                "ssm:DescribeInstanceInformation"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ec2messages:AcknowledgeMessage",
-                "ec2messages:DeleteMessage",
-                "ec2messages:FailMessage",
-                "ec2messages:GetEndpoint",
-                "ec2messages:GetMessages",
-                "ec2messages:SendReply"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ec2:DescribeInstanceStatus",
-                "ec2:DescribeInstances"
-            ],
-            "Resource": [
-                "*"
-            ]
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:DescribeInstances",
+        "ec2:DescribeInstanceStatus"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ssm:SendCommand",
+        "ssm:CancelCommand",
+        "ssm:GetCommandInvocation",
+        "ssm:DescribeInstanceInformation",
+        "ssm:GetDocument",
+        "ssm:DescribeDocument"
+      ],
+      "Resource": "*"
+    }
+  ]
 }
 ```
 
-:::info note
-- Go to [AWS named profile for chaos](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/aws-switch-profile) to use a different profile for AWS faults and [superset permission or policy](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
-- Go to the [common attributes](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults) to tune the common tunables for all the faults.
+Go to [common policy for all AWS faults](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/policy-for-all-aws-faults) to use a single superset IAM policy.
+
+---
+
+## Authentication
+
+The fault supports three credential delivery models. Pick one based on how your chaos infrastructure is deployed.
+
+| Method | When to use it | How to configure |
+| --- | --- | --- |
+| Harness Secret Manager file secret | Chaos infrastructure runs outside EKS, or you want explicit static credentials | Upload the AWS credentials file as a **File Secret** in Harness Secret Manager and reference its identifier via `AWS_AUTHENTICATION_SECRET` |
+| IAM Roles for Service Accounts (IRSA) | Chaos infrastructure runs in EKS and uses an OIDC-bound service account | No tunable changes; the chaos pod inherits the role automatically. Go to [AWS IAM integration](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/aws-iam-integration) to set it up |
+| Assume role | The fault needs to act in a different account or with elevated permissions | Set `ASSUME_ROLE_ARN` to the role ARN; the chaos pod assumes the role on top of its base credentials |
+
+When using the Harness Secret Manager method, the File Secret should contain an AWS credentials file in the standard `~/.aws/credentials` format:
+
+```ini
+[default]
+aws_access_key_id = REPLACE_WITH_ACCESS_KEY_ID
+aws_secret_access_key = REPLACE_WITH_SECRET_ACCESS_KEY
+```
+
+Upload this file as a **File Secret** in Harness Secret Manager (Project Setup → Secrets → New File Secret), and pass the secret identifier in `AWS_AUTHENTICATION_SECRET`.
+
+---
+
+## Fault tunables
+
+**Required parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `REGION` | AWS region that hosts the target instance. | (required) |
+| `EC2_INSTANCE_ID` *or* `EC2_INSTANCE_TAG` | One of these must be set to select the target instance(s). | `""` |
+| `TARGET_SERVICE_PORT` | Port the target HTTP service listens on. | `80` |
+| `HEADERS_MAP` | JSON object mapping header names to values to inject. Setting a value to an empty string removes the header. Example: `{"X-Auth": "fake", "Content-Type": ""}`. | `{"key": "value"}` |
+| `HEADERS_MODE` | Side to apply the rewrite to: `request` (incoming requests to the service) or `response` (outgoing responses from the service). | `response` |
+
+**Chaos parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `NETWORK_INTERFACE` | Network interface where the HTTP proxy intercepts traffic. | `eth0` |
+| `TOTAL_CHAOS_DURATION` | Duration of the fault in seconds. | `30` |
+| `INSTANCE_AFFECTED_PERC` | Percentage of matching instances to target (only with `EC2_INSTANCE_TAG`). `0` targets one instance. | `0` |
+| `INSTALL_DEPENDENCIES` | Install the in-instance HTTP proxy if missing. Set to `False` to skip. | `True` |
+| `PROXY` | HTTP/HTTPS proxy used by the in-instance installer. | `""` |
+| `SEQUENCE` | Order in which multiple instances are processed: `parallel` or `serial`. | `parallel` |
+| `RAMP_TIME` | Wait period in seconds before and after the fault. | `0` |
+
+**Authentication**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `ASSUME_ROLE_ARN` | ARN of an IAM role to assume on top of the base credentials. | `""` |
+| `AWS_AUTHENTICATION_SECRET` | Identifier of the **File Secret in Harness Secret Manager** that contains the AWS credentials file. Not required when using IRSA. | `""` |
+
+:::tip Remove headers with the empty string
+To remove a header rather than overwrite it, set its value to `""` in `HEADERS_MAP`. For example, `{"Authorization": ""}` strips the auth header from every request when `HEADERS_MODE=request`.
 :::
 
-### Mandatory tunables
-   <table>
-        <tr>
-            <th> Tunable </th>
-            <th> Description </th>
-            <th> Notes </th>
-        </tr>
-        <tr>
-          <td> EC2_INSTANCE_ID </td>
-          <td> ID of the target EC2 instance. </td>
-          <td> For example, <code>i-044d3cb4b03b8af1f</code>. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/aws/ec2-cpu-hog#multiple-ec2-instances"> EC2 instance ID.</a></td>
-        </tr>
-        <tr>
-          <td> REGION </td>
-          <td> The AWS region ID where the EC2 instance has been created. </td>
-          <td> For example, <code>us-east-1</code>. </td>
-        </tr>
-        <tr>
-            <td> TARGET_SERVICE_PORT </td>
-            <td> Port of the service to target. </td>
-            <td> Default: port 80. For more information, go to <a href="#target-service-port"> target service port.</a></td>
-        </tr>
-        <tr>
-            <td> HEADERS_MAP </td>
-            <td> Map of headers to modify (or add). </td>
-            <td> For example, &#123;"X-Litmus-Test-Header":"X-Litmus-Test-Value"&#125;. To remove a header, just set the value to ""; For example, &#123;"X-Litmus-Test-Header": ""&#125;. For more information, go to <a href="#modifying-the-response-headers"> headers map.</a></td>
-        </tr>
-        <tr>
-            <td> HEADER_MODE </td>
-            <td> Whether to modify response headers or request headers. Accepted values: request, response.</td>
-            <td> Default: response. For more information, go to <a href="#modifying-the-response-headers"> header mode.</a></td>
-        </tr>
-    </table>
+---
 
-### Optional tunables
-  <table>
-        <tr>
-            <th> Tunable </th>
-            <th> Description </th>
-            <th> Notes </th>
-        </tr>
-        <tr>
-            <td> TOTAL_CHAOS_DURATION </td>
-            <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-            <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
-        </tr>
-        <tr>
-            <td> CHAOS_INTERVAL </td>
-            <td> Time interval between two successive instance terminations (in seconds). </td>
-            <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
-        </tr>
-        <tr>
-            <td> AWS_SHARED_CREDENTIALS_FILE </td>
-            <td> Provide the path for aws secret credentials.</td>
-            <td> Default: <code>/tmp/cloud_config.yml</code>. </td>
-        </tr>
-        <tr>
-            <td> SEQUENCE </td>
-            <td> It defines the sequence of chaos execution for multiple instances. </td>
-            <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
-        </tr>
-        <tr>
-            <td> RAMP_TIME </td>
-            <td> Period to wait before and after injection of chaos (in seconds). </td>
-            <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
-        </tr>
-        <tr>
-            <td> INSTALL_DEPENDENCY </td>
-            <td> Select to install dependencies used to run the network chaos. It can be either True or False. </td>
-            <td> If the dependency already exists, you can turn it off. Defaults to True.</td>
-        </tr>
-        <tr>
-            <td> PROXY_PORT </td>
-            <td> Port where the proxy will be listening for requests.</td>
-            <td> Default: 20000. For more information, go to <a href="#proxy-port"> proxy port.</a></td>
-        </tr>
-        <tr>
-            <td> TOXICITY </td>
-            <td> Percentage of HTTP requests to be affected. </td>
-            <td> Default: 100. For more information, go to <a href="#toxicity"> toxicity.</a></td>
-        </tr>
-        <tr>
-          <td> NETWORK_INTERFACE </td>
-          <td> Network interface to be used for the proxy. </td>
-          <td> Default: `eth0`. For more information, go to <a href="#network-interface"> network interface.</a></td>
-        </tr>
-    </table>
+## Fault execution in brief
 
-### Target service port
+Sends an SSM Run Command to the selected instance(s) in `REGION` that interposes an HTTP proxy on `NETWORK_INTERFACE` for traffic destined to `TARGET_SERVICE_PORT`; the proxy applies the header rewrites in `HEADERS_MAP` on either incoming requests or outgoing responses (per `HEADERS_MODE`) for `TOTAL_CHAOS_DURATION` seconds before being removed.
 
-Port of the target service. Tune it by using the `TARGET_SERVICE_PORT` environment variable.
+---
 
-The following YAML snippet illustrates the use of this environment variable:
+## Expected behavior during fault execution
 
-[embedmd]:# (./static/manifests/http-modify-header/target-service-port.yaml yaml)
-```yaml
-## provide the port of the targeted service
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ec2-http-modify-header
-    spec:
-      components:
-        env:
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
-```
+- Every HTTP request (`HEADERS_MODE=request`) or response (`HEADERS_MODE=response`) is modified by the rewrites in `HEADERS_MAP`.
+- Headers explicitly set in `HEADERS_MAP` are added or overwritten.
+- Headers set to an empty string are removed.
+- Other ports and non-HTTP traffic are unaffected.
+- Application behavior depends on which header was modified: auth changes typically cause `401`/`403`, content-type changes typically cause parse errors, cache-control changes affect downstream caches.
 
-### Modifying the response headers
-
-Body string to modify the response header. Tune it by using the `HEADER_MAP` environment variable. `HEADER_MODE` environment variable is used to choose between modifying the request or response headers.
-
-:::tip
-`HTTP_CHAOS_TYPE` should be provided as `header`.
+:::info When the fault ends
+The chaos pod removes the HTTP proxy. Headers return to normal immediately. Clients or downstream caches that captured the modified headers continue using them until they refresh.
 :::
 
-The following YAML snippet illustrates the use of this environment variable:
+### Signals to watch
 
-[embedmd]:# (./static/manifests/http-modify-header/response-headers.yaml yaml)
-```yaml
-## provide the headers as a map
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ec2-http-modify-header
-    spec:
-      components:
-        env:
-        # map of headers to modify/add; For example, {"X-Litmus-Test-Header": "X-Litmus-Test-Value"}
-        # to remove a header, just set the value to ""; For example, {"X-Litmus-Test-Header": ""}
-        - name: HEADERS_MAP
-          value: '{"X-Litmus-Test-Header": "X-Litmus-Test-Value"}'
-        # whether to modify response headers or request headers. Accepted values: request, response
-        - name: HEADER_MODE
-          value: 'response'
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
-```
+- **Observed headers:** Use a [command probe](/docs/resilience-testing/chaos-testing/probes/command-probe) that runs `curl -I http://localhost:<port>/` via SSM and asserts on the headers.
+- **Auth failures:** Use a Prometheus probe on the application's auth-failure counter when stripping `Authorization`.
+- **Client-side cache hit rate:** When changing `Cache-Control`, watch downstream cache hit rate metrics for a drop.
 
-### Modifying the request headers
+---
 
-Body string to modify the request header. Tune it by using the `HEADERS_MAP` environment variable. `HEADER_MODE` environment variable is used to choose between modifying the request or response headers.
+## Verify the fault execution effect
 
-:::tip
-`HTTP_CHAOS_TYPE` should be provided as `header`.
-:::
+While the experiment is running:
 
-The following YAML snippet illustrates the use of this environment variable:
+1. **Inspect response headers via SSM.**
 
-[embedmd]:# (./static/manifests/http-modify-header/response-headers.yaml yaml)
-```yaml
-## provide the headers as a map
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ec2-http-modify-header
-    spec:
-      components:
-        env:
-        # map of headers to modify/add; For example, {"X-Litmus-Test-Header": "X-Litmus-Test-Value"}
-        # to remove a header, just set the value to ""; For example, {"X-Litmus-Test-Header": ""}
-        - name: HEADERS_MAP
-          value: '{"X-Litmus-Test-Header": "X-Litmus-Test-Value"}'
-        # whether to modify response headers or request headers. Accepted values: request, response
-        - name: HEADER_MODE
-          value: 'response'
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
-```
+   ```bash
+   aws ssm send-command \
+     --region <region> \
+     --instance-ids <id> \
+     --document-name AWS-RunShellScript \
+     --parameters 'commands=["curl -I http://localhost:<TARGET_SERVICE_PORT>/"]'
+   ```
 
-### Proxy port
+   The output should reflect the headers in `HEADERS_MAP`.
 
-Port where the proxy server listens for requests. Tune it by using the `PROXY_PORT` environment variable.
+---
 
-The following YAML snippet illustrates the use of this environment variable:
+## Recovery and cleanup
 
-[embedmd]:# (./static/manifests/http-modify-header/proxy-port.yaml yaml)
-```yaml
-# provide the port for proxy server
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ec2-http-modify-header
-    spec:
-      components:
-        env:
-        # provide the port for proxy server
-        - name: PROXY_PORT
-          value: '8080'
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
-```
+- **End of duration:** The chaos pod stops the HTTP proxy and removes the redirection rules.
+- **Abort the experiment:** Stopping the experiment from Chaos Studio cancels the in-flight SSM command and runs cleanup.
+- **Manual cleanup:** If the proxy is left running, kill it via SSM Session Manager and remove any installed iptables rules.
 
-### Toxicity
+---
 
-Percentage of the total number of HTTP requests that are affected. Tune it by using the `TOXICITY` environment variable.
+## Limitations
 
-The following YAML snippet illustrates the use of this environment variable:
+- **HTTP only (no HTTPS):** The proxy operates on plaintext HTTP. Move TLS termination upstream before using this fault.
+- **Linux-only payload:** This fault runs on Linux instances.
+- **SSM Agent required:** Instances without the SSM Agent online cannot be targeted.
+- **All-or-nothing header rewrite:** Every request or response on the port is modified. There is no per-URL or per-status-code filter.
+- **HEADERS_MAP must be valid JSON:** Quote keys and values correctly. Malformed JSON fails the SSM Run Command.
 
-[embedmd]:# (./static/manifests/http-modify-header/toxicity.yaml yaml)
-```yaml
-## provide the toxicity
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ec2-http-modify-header
-    spec:
-      components:
-        env:
-        # toxicity is the probability of the request that is affected
-        # provide the percentage value in the range of 0-100
-        # 0 means no request will be affected and 100 means all requests will be affected
-        - name: TOXICITY
-          value: "100"
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
-```
+---
 
-### Network interface
+## Troubleshooting
 
-Network interface used for the proxy. Tune it by using the `NETWORK_INTERFACE` environment variable.
+<Troubleshoot
+  issue="EC2 HTTP modify header experiment fails with InvalidInstanceId in Harness Chaos Engineering"
+  mode="docs"
+  fallback="The SSM Agent is not online for the target instance. Confirm with aws ssm describe-instance-information --filters 'Key=InstanceIds,Values=<id>'. If missing, install the SSM Agent and attach an instance profile that includes AmazonSSMManagedInstanceCore."
+/>
 
-The following YAML snippet illustrates the use of this environment variable:
+<Troubleshoot
+  issue="EC2 HTTP modify header runs but headers are unchanged in client responses"
+  mode="docs"
+  fallback="The most common causes are: HEADERS_MODE is set to the wrong side (use 'request' to mutate inbound or 'response' to mutate outbound); HEADERS_MAP is malformed JSON; TLS terminates at the port (HTTPS is not supported); or a downstream proxy strips or re-adds the header after the chaos proxy modifies it. Verify with 'curl -I http://localhost:<port>/' via SSM during the fault."
+/>
 
-[embedmd]:# (./static/manifests/http-modify-header/network-interface.yaml yaml)
-```yaml
-## provide the network interface for proxy
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ec2-http-modify-header
-    spec:
-      components:
-        env:
-        # provide the network interface for proxy
-        - name: NETWORK_INTERFACE
-          value: "eth0"
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: '80'
-```
+<Troubleshoot
+  issue="EC2 HTTP modify header rejected my HEADERS_MAP"
+  mode="docs"
+  fallback='HEADERS_MAP must be a single-line JSON object with quoted keys and string values, for example: a key "X-Auth" with value "fake". Escape quotes if you are pasting into a YAML field. Empty values remove the header (set the value of "Authorization" to an empty string to strip it).'
+/>
+
+---
+
+## Related faults
+
+- [EC2 HTTP latency](/docs/chaos-engineering/faults/chaos-faults/aws/ec2-http-latency): Delay HTTP responses instead of changing headers.
+- [EC2 HTTP modify body](/docs/chaos-engineering/faults/chaos-faults/aws/ec2-http-modify-body): Rewrite the response body instead of headers.
+- [EC2 HTTP status code](/docs/chaos-engineering/faults/chaos-faults/aws/ec2-http-status-code): Rewrite the response status code.
+- [EC2 HTTP reset peer](/docs/chaos-engineering/faults/chaos-faults/aws/ec2-http-reset-peer): Reset TCP connections mid-flight.
+- [Common AWS fault tunables](/docs/chaos-engineering/faults/chaos-faults/aws/aws-fault-tunables): Shared environment variables for AWS faults.
