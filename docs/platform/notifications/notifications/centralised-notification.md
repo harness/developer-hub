@@ -129,6 +129,56 @@ These notifications help track delegate disconnection, expiration, and expiring 
 </TabItem>
 </Tabs>
 
+## Artifact Registry Notifications
+
+Centralised Notifications for Artifact Registry let you alert teams when key Artifact Registry events occur, without configuring rules per registry. Rules are scoped at the organization level and apply to every project under the organizations you select. Project-level scoping is not available for Artifact Registry rules today.
+
+The following Artifact Registry events are available as conditions today:
+
+- **Dependency Firewall Exemption Requested**: Fires when a developer submits a new exemption request from the Policy Violations tab.
+- **Dependency Firewall Exemption Status Changed**: Fires when an existing exemption transitions to `APPROVED` or `REJECTED`.
+
+For background on the exemption workflow these events describe, see [Dependency Exemptions](/docs/artifact-registry/dependency-firewall/exemptions).
+
+### Configuration Steps
+
+1. **Access Notification Management**
+   - Navigate to **Account Settings** > **General** > **Notifications Management**
+   - Click **+ New Notification** to create a new rule
+
+2. **Set up Artifact Registry Notification Rule**
+   - Provide a **Notification Name** and click **Continue**
+   - Select **Artifact Registry** as the **Resource Type**
+   - Choose your scope: **All Organizations** or **Specified Organizations**
+   - Click **Continue**
+
+   <DocImage
+     path={require('./static/artifact-registry/ar-notification-resources.png')}
+     alt="Artifact Registry notification rule wizard with Resource Type set to Artifact Registry and a scope selection"
+     title="Artifact Registry notification rule: resource and scope"
+     width="100%"
+   />
+
+3. **Set Conditions**
+   - Click **+ Add Condition** to specify when notifications trigger
+   - Enter a **Condition Name**
+   - From **Select Artifact Registry Events**, choose one or both:
+     - **Dependency Firewall Exemption Requested**
+     - **Dependency Firewall Exemption Status Changed**
+   - Click **Apply**, then **Continue**
+
+   <DocImage
+     path={require('./static/artifact-registry/ar-notification-conditions.png')}
+     alt="Conditions step of the Artifact Registry notification wizard with the Dependency Firewall events selected"
+     title="Artifact Registry notification rule: conditions"
+     width="100%"
+   />
+
+4. **Configure Channels**
+   - Choose existing channels or [create new ones](/docs/platform/notifications/notification-settings#configure-new-channels-to-sent-notification)
+   - Toggle **Enable on Save** to activate the rule immediately
+   - Click **Submit** to save your configuration
+
 ## GitOps application notifications
 
 Centralised notifications for GitOps allow you to receive alerts for application sync and health events. This gives you visibility into your GitOps environment without configuring notifications on individual applications or pipelines. All five notification channels (Slack, Microsoft Teams, email, webhooks, and PagerDuty) are supported.
