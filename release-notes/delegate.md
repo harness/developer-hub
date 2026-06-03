@@ -171,10 +171,20 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## June 2026
 
+### Version 26.06.89304 <!-- June 03, 2026 -->
+
+#### Fixed issues
+- Resolved issues with task metadata sent during task execution. [DEL-6946]
+
 ### Version 26.06.89303 <!-- June 03, 2026 -->
 
 #### Fixed issues
 - Fixed CV data collection connectors to honour NO_PROXY/nonProxyHosts settings when a proxy is configured on the delegate. [CDS-122881]
+
+### Version 26.05.89210 <!-- June 03, 2026 -->
+
+#### Fixed issues
+- Resolved issues with task metadata sent during task execution. [DEL-6946]
 
 ### Version 26.05.89209 <!-- June 03, 2026 -->
 
