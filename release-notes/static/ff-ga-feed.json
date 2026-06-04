@@ -1,5 +1,11 @@
 [
   {
+    "flagKey": "STO_ISSUES_PAGE_V2",
+    "description": "Redesigned STO Issues page to provide a comprehensive security posture view with trend analysis to surface active and remediated issue trends across Targets within a project.",
+    "gaStartDate": "2026-06-04",
+    "module": "Security Test Orchestration"
+  },
+  {
     "flagKey": "STO_JIRA_ENHANCED_TICKET_METADATA",
     "description": "Enhances Jira ticket metadata by including additional security issue details such as severity, CVSS scores, vulnerability paths, and remediation guidance to improve ticket triage and prioritization.",
     "gaStartDate": "2026-06-02",
