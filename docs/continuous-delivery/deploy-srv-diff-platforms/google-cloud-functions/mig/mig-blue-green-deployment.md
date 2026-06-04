@@ -24,14 +24,14 @@ After configuring your service, environment, and infrastructure, navigate to the
 
 ## Blue-Green deployment step group
 
-When you select the Blue-Green strategy, Harness automatically configures the **Google MIG Blue Green Deploy** step group with four essential steps that orchestrate the entire deployment lifecycle:
+When you select the Blue-Green strategy, Harness automatically configures the **Google MIG Blue Green Deploy** step group with essential steps that orchestrate the entire deployment lifecycle:
 
 - **Download Manifests** - Downloads your MIG configuration files from the specified manifest store
 - **Google MIG Blue Green Deploy** - Creates or updates the MIG and orchestrates the Blue-Green deployment
 - **Google MIG Steady State** - Verifies that all instances reach a healthy, stable state
-- **Google MIG Traffic Shift** - Manages traffic distribution between stable and stage environments using Cloud Service Mesh
+- **Google MIG Traffic Shift** - Manages traffic distribution between stable and stage environments using Cloud Service Mesh, and can optionally expose the staging environment for testing
 
-These steps execute sequentially, ensuring each phase completes successfully before proceeding to the next.
+For validation workflows that require pre-production testing, configure the Traffic Shift step to expose the staging environment via custom headers or a test endpoint. Add external validation steps outside the step group, such as manual approval or automated tests. Then add a final Traffic Cutover step group for the production traffic shift.
 
 <div style={{textAlign: 'center'}}>
   <DocImage path={require('./static/mig-bluegreen-stepgroup.png')} width="80%" height="80%" title="Click to view full size image" />
@@ -44,6 +44,8 @@ This section assumes you have already configured your backend service, at least 
 :::
 
 Blue-Green deployment maintains two identical environments that alternate roles with each deployment, ensuring zero downtime and instant rollback capabilities. Harness supports two deployment scenarios based on your existing infrastructure.
+
+For validation workflows, you can configure the Traffic Shift step to expose the staging environment for testing by routing traffic with custom headers or through a test endpoint before performing the final production traffic shift. This allows you to run validation tests, automated checks, or manual QA against the new version without affecting production users. The validation and approval steps run outside the containerized step group, with a separate Traffic Cutover step group handling the final production traffic shift.
 
 
 ### Scenario 1: Starting with One Backend Service and MIG
@@ -153,7 +155,7 @@ Harness shifts traffic from stable (blue) to stage (green) based on configured w
 
 ## Deployment steps overview
 
-The Blue-Green deployment workflow consists of four coordinated steps that work together to achieve zero-downtime deployments. Each step performs a specific function in the deployment lifecycle, from downloading configurations to shifting production traffic. Understanding these steps helps you troubleshoot deployments and customize the workflow for your exact requirements.
+The Blue-Green deployment workflow consists of coordinated steps that work together to achieve zero-downtime deployments. Each step performs a specific function in the deployment lifecycle, from downloading configurations to validating staging environments and shifting production traffic. Understanding these steps helps you troubleshoot deployments and customize the workflow for your exact requirements.
 
 ### 1. Download Manifests
 
@@ -287,7 +289,7 @@ Harness supports two deployment scenarios:
 
 ### 3. Google MIG Steady State
 
-This step verifies that the newly deployed MIG (the one labeled as `stage` or secondary service) has reached a stable, healthy state before proceeding with traffic shifting. Harness checks that the MIG status is `stable` and that all instances use the correct instance template version. 
+This step verifies that the newly deployed MIG (the one labeled as `stage` or secondary service) has reached a stable, healthy state before proceeding with traffic shifting or validation testing. Harness checks that the MIG status is `stable` and that all instances use the correct instance template version. 
 
 The step only monitors the secondary (stage) service, not the primary (stable) service, since the primary is already running and serving production traffic. The step fails if the secondary MIG doesn't achieve steady state within the configured timeout. This validation prevents premature traffic shifting to an unhealthy environment and is critical for zero-downtime deployments.
 
@@ -354,7 +356,9 @@ Use this expression to fetch the instance template name from the Blue-Green Depl
 
 ### 4. Google MIG Traffic Shift
 
-This step shifts production traffic from the primary (stable) service to the secondary (stage) service. It enables safe, controlled rollouts by allowing you to move traffic incrementally (e.g., 10% → 25% → 50% → 100%) while monitoring application metrics, error rates, and performance. 
+This step shifts production traffic from the primary (stable) service to the secondary (stage) service. It enables safe, controlled rollouts by allowing you to move traffic incrementally (e.g., 10% → 25% → 50% → 100%) while monitoring application metrics, error rates, and performance.
+
+For validation workflows, you can configure this step to expose the staging environment for testing before shifting production traffic. The step supports routing traffic with custom headers to the staging backend, allowing your test tools, QA team, or automated tests to access the new deployment independently of production users. After validation completes (using manual approval steps or automated validation outside the containerized step group), you add a separate Traffic Cutover step group to perform the final production traffic shift.
 
 Traffic flows from the primary (currently serving production) to the secondary (newly deployed). Once the secondary service reaches 100% traffic weight, Harness automatically swaps the labels—the secondary becomes the new `stable` (primary) and the previous primary becomes the new `stage` (secondary). 
 
@@ -378,6 +382,10 @@ For example, setting Stable=90 and Stage=10 sends 90% of requests to the primary
 
 When the secondary (stage) reaches 100% traffic weight, Harness automatically swaps the labels—the secondary becomes the new primary (stable) and serves production traffic going forward. Monitor application metrics between shifts to catch issues early.
 
+**Header Routing Add** (optional): Configure custom header-based routing rules to expose the staging environment for testing. This field allows you to add header matching rules that route requests with specific headers to the staging backend, independent of the weight-based traffic distribution. Each header rule specifies a key, value, match type (exact or regex), and destination (stage or stable). Use this to enable QA teams or automated tests to access the staging environment by sending requests with specific headers (e.g., `X-Test-Stage: true`). This pattern is useful for pre-production validation workflows where you want to test the staging environment before shifting production traffic.
+
+**Header Routing Remove** (optional): Specify header keys to remove from the route configuration during the traffic cutover phase. After validation completes and you are ready to shift production traffic, use this field in the Traffic Cutover step to clean up the header routing rules added during the staging validation phase. This ensures that header-based routing rules do not remain in the route after the deployment completes.
+
 **Downsize Old MIG** (optional): Enable this flag to automatically downscale the old MIG (the one that was previously serving production traffic) to zero instances after the label swap completes during a traffic shift. This only takes effect when the stage service reaches 100% traffic weight and the label swap occurs. Enabling this flag optimizes costs and resource utilization by ensuring unused instances from the previous deployment are scaled down. If the old MIG has an associated autoscaler, Harness manages the autoscaler configuration during the downsize operation. The step output includes a `downsizedOldMig` property indicating whether the old MIG was successfully downsized.
 
 **Container Configuration**:
@@ -386,18 +394,30 @@ When the secondary (stage) reaches 100% traffic weight, Harness automatically sw
 
 **Image**: Full path to the deployment plugin container image for this step. Use the official Harness image: [`harness/google-mig-traffic-shift:0.1.0-linux-amd64`](https://hub.docker.com/r/harness/google-mig-traffic-shift/tags) for traffic shifting operations.
 
+#### Staging validation workflow
+
+For teams requiring pre-production testing, you can configure a multi-step validation workflow:
+
+1. **Initial Traffic Shift** (within Blue Green Deployment step group): Configure the Traffic Shift step to route traffic with custom headers to the staging backend. This exposes the staging environment for testing without affecting production users.
+
+2. **Validation Steps** (outside the containerized step group): Add manual approval steps, automated test execution, or other validation steps. These run outside the step group since Harness does not support approval steps inside containerized step groups.
+
+3. **Traffic Cutover** (separate step group): Add a final Traffic Cutover step group containing a Traffic Shift step that performs the production traffic shift (100% to stage). This completes the Blue-Green deployment after validation.
+
+This pattern matches the workflow shown in the Harness UI where the Blue Green Deployment step group, Validate Stage Environment step, and Traffic Cutover step group are separate pipeline components.
+
 <details>
-<summary>YAML Example</summary>
+<summary>YAML Example - Basic Traffic Shift</summary>
 
 ```yaml
-        - step:
+- step:
     identifier: traffic_shift_100
-            type: GoogleMigTrafficShift
+    type: GoogleMigTrafficShift
     name: Traffic_Shift_100
-            spec:
-              trafficConfig:
-                type: CSM
-                spec:
+    spec:
+      trafficConfig:
+        type: CSM
+        spec:
           type: GRPCRoute
           route: projects/PROJECT_ID/locations/global/grpcRoutes/ROUTE_NAME
           destinations:
@@ -414,6 +434,45 @@ When the secondary (stage) reaches 100% traffic weight, Harness automatically sw
           memory: 512Mi
           cpu: 0.5
       outputVariables: []
+```
+
+</details>
+
+<details>
+<summary>YAML Example - Traffic Shift with Header Routing for Staging Validation</summary>
+
+```yaml
+- step:
+    identifier: traffic_shift_with_headers
+    type: GoogleMigTrafficShift
+    name: Traffic Shift with Header Routing
+    spec:
+      trafficConfig:
+        type: CSM
+        spec:
+          type: GRPCRoute
+          route: projects/PROJECT_ID/locations/global/grpcRoutes/ROUTE_NAME
+          destinations:
+            - destination: stage
+              weight: 100
+            - destination: stable
+              weight: 0
+          headerRoutingAdd:
+            - key: X-Test-Stage
+              value: "true"
+              matchType: exact
+              destination: stage
+            - key: X-QA-Version
+              value: <+pipeline.variables.versionTag>
+              matchType: regex
+              destination: stage
+      connectorRef: account.harnessImage
+      image: harness/google-mig-traffic-shift:0.1.0-linux-amd64
+      imagePullPolicy: Always
+      resources:
+        limits:
+          memory: 512Mi
+          cpu: 0.5
 ```
 
 </details>
@@ -558,7 +617,7 @@ Configure the **GoogleMigBlueGreenRollback** step in the Rollback Steps section 
 
 ### Basic Blue-Green deployment pipeline
 
-This example shows a complete Blue-Green deployment pipeline with automatic rollback configuration. The pipeline deploys a new version to the stage environment, verifies it reaches steady state, and shifts 100% traffic in a single step.
+This example shows a complete Blue-Green deployment pipeline with automatic rollback configuration. The pipeline deploys a new version to the stage environment, verifies it reaches steady state, and shifts 100% traffic in a single step. For validation workflows, you can add the optional Google MIG Staging Endpoint step after the Blue Green Deploy step.
 
 <details>
 <summary>Complete Pipeline YAML Example</summary>
@@ -706,9 +765,193 @@ pipeline:
 
 </details>
 
-### Gradual traffic shifting pipeline
+### Blue-Green deployment with staging validation
 
-This example demonstrates a phased rollout approach with gradual traffic shifting. The pipeline deploys to the stage environment and then gradually shifts traffic: 20% → 50% → 100%. This allows you to validate the new version at each traffic level before increasing exposure, making it ideal for production deployments that aim to minimize risk.
+This example demonstrates a deployment pipeline that exposes the staging environment for validation testing before shifting production traffic. The pipeline uses three main components:
+
+1. **Blue Green Deployment** step group - Deploys to staging, verifies steady state, and configures traffic routing with headers for testing
+2. **Validate Stage Environment** step - Automated test step outside the containerized step group (Harness does not support approval steps inside containerized step groups)
+3. **Traffic Cutover** step group - Performs the final production traffic shift after validation
+
+This workflow is ideal for teams that require explicit QA sign-off or automated test execution against production-like environments before committing to a full traffic shift.
+
+<details>
+<summary>Complete Pipeline YAML Example with Staging Validation</summary>
+
+```yaml
+pipeline:
+  identifier: PIPELINE_ID
+  name: mig-staging-validation
+  projectIdentifier: PROJECT_ID
+  orgIdentifier: ORG_ID
+  tags: {}
+  stages:
+    - stage:
+        name: Deploy
+        identifier: Deploy
+        description: Blue-Green MIG Deployment with Staging Validation
+        type: Deployment
+        spec:
+          deploymentType: GoogleManagedInstanceGroup
+          service:
+            serviceRef: MIG_SERVICE_REF
+          environment:
+            environmentRef: ENVIRONMENT_REF
+            deployToAll: false
+            infrastructureDefinitions:
+              - identifier: INFRA_ID
+          execution:
+            steps:
+              # Step Group 1: Blue Green Deployment
+              - stepGroup:
+                  name: Blue Green Deployment
+                  identifier: blueGreenDeployment
+                  steps:
+                    - step:
+                        type: DownloadManifests
+                        name: Download Manifests
+                        identifier: DownloadManifests
+                        spec: {}
+                        failureStrategies: []
+                    - step:
+                        name: Google MIG Blue Green Deploy
+                        identifier: GoogleMigBlueGreenDeploy
+                        type: GoogleMigBlueGreenDeploy
+                        timeout: 10m
+                        spec:
+                          connectorRef: account.harnessImage
+                          image: harness/google-mig-bluegreen-deploy:0.1.0-linux-amd64
+                          blueEnvironment:
+                            backendService: projects/PROJECT_ID/locations/global/backendServices/BACKEND_SERVICE_NAME
+                            mig: MIG_NAME
+                          trafficConfig:
+                            type: CSM
+                            spec:
+                              type: GRPCRoute
+                              route: projects/PROJECT_ID/locations/global/grpcRoutes/ROUTE_NAME
+                          targetSize: 3
+                    - step:
+                        name: Google MIG Traffic Shift
+                        identifier: GoogleMigTrafficShift
+                        type: GoogleMigTrafficShift
+                        timeout: 10m
+                        spec:
+                          connectorRef: account.harnessImage
+                          image: harness/google-mig-traffic-shift:0.1.0-linux-amd64
+                          trafficConfig:
+                            type: CSM
+                            spec:
+                              type: GRPCRoute
+                              route: projects/PROJECT_ID/locations/global/grpcRoutes/ROUTE_NAME
+                              destinations:
+                                - destination: stage
+                                  weight: 100
+                                - destination: stable
+                                  weight: 0
+                              headerRoutingAdd:
+                                - key: X-Test-Stage
+                                  value: "true"
+                                  matchType: exact
+                                  destination: stage
+                                - key: X-QA-Version
+                                  value: <+pipeline.variables.versionTag>
+                                  matchType: regex
+                                  destination: stage
+                          resources:
+                            limits:
+                              memory: 512Mi
+                              cpu: "0.5"
+                  stepGroupInfra:
+                    type: KubernetesDirect
+                    spec:
+                      connectorRef: K8S_CONNECTOR_ID
+                      namespace: NAMESPACE
+              
+              # Validation Step (outside containerized step group)
+              - step:
+                  type: ShellScript
+                  name: Validate Stage Environment
+                  identifier: ValidateStageEnvironment
+                  timeout: 10m
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: |
+                          # Run automated tests against staging with header X-Test-Stage: true
+                          # Example: curl with custom header to access staging backend
+                          echo "Running validation tests against staging environment..."
+                    environmentVariables: []
+                    outputVariables: []
+              
+              # Step Group 2: Traffic Cutover
+              - stepGroup:
+                  name: Traffic Cutover
+                  identifier: trafficCutover
+                  steps:
+                    - step:
+                        name: Google MIG Traffic Shift Cutover
+                        identifier: GoogleMigTrafficShiftCutover
+                        type: GoogleMigTrafficShift
+                        timeout: 10m
+                        spec:
+                          connectorRef: account.harnessImage
+                          image: harness/google-mig-traffic-shift:0.1.0-linux-amd64
+                          trafficConfig:
+                            type: CSM
+                            spec:
+                              type: GRPCRoute
+                              route: projects/PROJECT_ID/locations/global/grpcRoutes/ROUTE_NAME
+                              destinations:
+                                - destination: stage
+                                  weight: 100
+                                - destination: stable
+                                  weight: 0
+                              headerRoutingRemove:
+                                - key: X-Test-Stage
+                                - key: X-QA-Version
+                          downsizeOldMig: true
+                          resources:
+                            limits:
+                              memory: 512Mi
+                              cpu: "0.5"
+                  stepGroupInfra:
+                    type: KubernetesDirect
+                    spec:
+                      connectorRef: K8S_CONNECTOR_ID
+                      namespace: NAMESPACE
+            rollbackSteps:
+              - stepGroup:
+                  name: Blue Green Rollback
+                  identifier: blueGreenRollback
+                  steps:
+                    - step:
+                        name: Google MIG Blue Green Rollback
+                        identifier: GoogleMigBlueGreenRollback
+                        type: GoogleMigBlueGreenRollback
+                        timeout: 10m
+                        spec:
+                          connectorRef: account.harnessImage
+                          image: harness/google-mig-bluegreen-rollback:0.1.0-linux-amd64
+                  stepGroupInfra:
+                    type: KubernetesDirect
+                    spec:
+                      connectorRef: K8S_CONNECTOR_ID
+                      namespace: NAMESPACE
+        tags: {}
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: StageRollback
+```
+
+</details>
+
+### Gradual traffic shifting pipeline
 
 <details>
 <summary>Complete Pipeline YAML Example for Gradual Traffic Shifting</summary>
