@@ -10,6 +10,7 @@ import type { TOCItem } from "@docusaurus/mdx-loader";
 
 const DELIM = "--";
 const normalize = (str: string) => str.toLowerCase().replace(/\s+/g, "");
+const safeDecodeURIComponent = (s: string) => { try { return decodeURIComponent(s); } catch (e) { if (e instanceof URIError) return s; throw e; } };
 
 /** Slug from option path (last segment, no .md). Enables hash to match either label (e.g. #aws) or content filename (e.g. #aws-as). */
 function slugFromPath(path: string): string {
@@ -110,7 +111,7 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({
 
   /** Resolve hash (label or content-path slug) to option label. */
   const findLabelByHash = (hashValue: string) => {
-    const normalized = normalize(hashValue);
+    const normalized = normalize(safeDecodeURIComponent(hashValue));
     return labels.find((label) => hashAliases.get(label)?.has(normalized)) ?? labels[0];
   };
 
@@ -123,7 +124,7 @@ const DynamicMarkdownSelector: React.FC<DynamicMarkdownSelectorProps> = ({
     const raw = hash.replace(/^#/, "").trim();
     if (!raw) return { sel: "", sec: "" };
     const [sel, ...rest] = raw.split(DELIM);
-    return { sel: sel || "", sec: rest.join(DELIM) || "" };
+    return { sel: sel || "", sec: safeDecodeURIComponent(rest.join(DELIM)) || "" };
   };
 
   const getInitialSelected = () => {
