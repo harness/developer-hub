@@ -1,7 +1,7 @@
 ---
 title: Amazon S3
 sidebar_label: Amazon S3
-description: ""
+description: Send event data to Harness FME from Amazon S3 or export Harness FME impression data to Amazon S3.
 ---
 
 Amazon Simple Storage Service (Amazon S3) is an object storage service offered by Amazon as part of Amazon Web Services (AWS) that offers the ability to store and retrieve any amount of data, at any time, from anywhere on the web. With this integration, you can easily and reliably send high volumes of event data to Harness FME, as well as export your impression data.
@@ -370,14 +370,53 @@ This information discusses additional considerations related to Harness FME gene
 
 ## Send Harness FME impressions to S3
 
-The following describes how to send Harness FME impressions to S3. Impressions are sent in batches every 30 minutes.
+Harness FME exports impression data to Amazon S3 in batches every 30 minutes. When impressions exist during a batch window, Harness FME writes Parquet export files to the configured S3 destination prefix. If no impressions occur during a batch window, no files are written.
+
+Alongside exported impression files, Harness FME writes metadata files such as `_SUCCESS` and `_committed_*` to indicate successful export completion. These metadata files are only generated when impression data files are successfully written to the bucket.
+
+#### File path format
+
+Impression exports are written beneath the configured destination prefix using the following structure:
+
+```text title="Impression export file path format"
+{destination_prefix}/schema-v1/part-{partition_index}-{task_id}-{uuid}-00000-1-c000.{format}.{compression}
+```
+
+The `partition_index` represents the internal export partition used when writing files to S3. This value may vary across batches depending on the number of partitions used during export and is not guaranteed to be sequential or consistent over time. The remaining identifiers (`task_id`, `uuid`) are used internally to ensure file uniqueness and traceability.
+
+Metadata files are written alongside exported data files in the same schema directory:
+
+```text title="Metadata file path format"
+{destination_prefix}/schema-v1/_SUCCESS
+{destination_prefix}/schema-v1/_committed_{n}
+```
+
+#### Committed metadata file naming
+
+In deployments using the batch window–based export format, committed metadata files include the execution time window:
+
+```text title="Committed metadata file path format with timestamp ranges"
+{destination_prefix}/schema-v1/_committed_{ISO_start}_{ISO_end}
+```
+
+For example:
+
+```text title="Example committed metadata filename"
+_committed_2024-01-15T10:00:00Z_2024-01-15T11:00:00Z
+```
+
+The time range represents the export execution window (write time), not impression event timestamps.
+
+The committed filename format depends on the outbound export configuration version enabled for the workspace. If time-range committed filenames are enabled, all committed metadata files in the integration will use the `{ISO_start}_{ISO_end}` format; otherwise, numeric `_committed_{n}` filenames are used.
+
+Outbound impression exports use a flat file layout beneath the configured prefix and do not use hive-style partitioning (`dt=YYYY-MM-DD/hour=HH`) or date-hierarchical partitioning (`YYYY/MM/DD/HH`).
 
 ### Prepare your S3 bucket
 
 To connect your AWS S3 bucket to Harness FME, you need:
 
-* An S3 bucket destination already created.
-* An AWS account with the ability to grant Harness FME permission to read, put, and remove data in the bucket. **Note: We only remove transactional files created during the transfer.**
+* An S3 bucket destination already created. Single-region S3 buckets, including buckets hosted in `us-east-1`, are supported.
+* An AWS account with the ability to grant Harness FME permission to read, put, and remove data in the bucket. Harness FME only removes temporary transactional files created during transfer operations.
 
 **File specifications**:
 
@@ -386,6 +425,7 @@ To connect your AWS S3 bucket to Harness FME, you need:
 * Schema: 
   
   * key: [String] Identifier for the user or system triggering or associated with the impression
+  * bucketingKey: [String, Nullable] Optional bucketing key used for hash calculations when provided by the SDK
   * label: [String] Label associated with the impression
   * treatment: [String] The treatment shown for this impression
   * splitName: [String] Name of the feature flag
@@ -399,6 +439,12 @@ To connect your AWS S3 bucket to Harness FME, you need:
   * machineIp: [String, Nullable] IP of the machine sending the impression
   * timestamp: [Long] The time when the impression occurred, in milliseconds past epoch
   * receptionTimestamp: [Long] Timestamp when the impression was received by Harness FME
+
+:::info[Matching keys and bucketing keys]
+The `key` field represents the matching key used for targeting and evaluation. When SDKs provide a separate bucketing key, outbound impression exports also include a `bucketingKey` field.
+
+If no bucketing key is provided by the SDK, the `bucketingKey` field is empty and the matching key is used for both targeting and bucketing behavior.
+:::
 
 ### Configure integration in Harness FME (outbound)
 
