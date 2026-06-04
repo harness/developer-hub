@@ -1,11 +1,17 @@
 ---
 title: ServiceNow CMDB Integration
 description: ServiceNow CMDB Integrations
-sidebar_position: 4
+sidebar_position: 10
 sidebar_label: ServiceNow CMDB
 ---
 
 The ServiceNow CMDB integration syncs records from a ServiceNow CMDB table into the IDP Catalog. It uses configurable field mappings to control which CMDB columns are ingested and where they appear in the catalog entity YAML.
+
+The integration syncs records from a configured CMDB table. The fields collected depend on your field mapping configuration. For example:
+
+| Resource | What it provides |
+|---|---|
+| **CMDB Record** | Any mapped CMDB columns, such as lifecycle, MTTR, and service name, stored as catalog entity fields or custom properties under `spec.properties`. |
 
 ---
 

@@ -1,13 +1,19 @@
 ---
 title: Google Cloud Integration
 description: Auto-discover Google Cloud resources and populate the IDP Catalog with infrastructure, compute, database, and AI resource metadata.
-sidebar_position: 7
+sidebar_position: 5
 sidebar_label: Google Cloud
 ---
 
 import DocVideo from '@site/src/components/DocVideo';
 
 The Google Cloud integration connects to your GCP organization or folder and brings resources into the IDP Catalog, such as Compute Instances, GCS Buckets, Cloud Run services, BigQuery datasets, GKE clusters, and more. Once discovered, entities can be registered as new catalog entries, enriching them with GCP-sourced metadata such as asset type, location, state, and resource identifiers.
+
+For each resource, the integration collects the following:
+
+| Resource | What it provides |
+|---|---|
+| **GCP Resource** | Asset type, display name, location, state, organization and project identifiers, creation time, and resource-specific attributes such as machine type, labels, and network tags. |
 
 ---
 
@@ -105,7 +111,7 @@ The **Advanced Settings** section controls how frequently IDP syncs with GCP.
 
 1. Select an **Update Frequency** from the dropdown to control how often IDP polls GCP for new data.
 
-   Available options: `10 min`, `30 min`, `1 hour`, `1 day`.
+   Available options: `10 min`, `30 min`, `1 hour`, `3 hours`, `6 hours`, `12 hours`, `1 day`, `2 days`, `7 days`.
 
 2. Once all sections are configured, click **Confirm & Enable**. A confirmation dialog will appear before the changes are applied.
 
@@ -158,9 +164,6 @@ To stop syncing a specific entity without deleting the catalog entity, use the t
 
 Once imported, GCP entities are available in the **Catalog** section of IDP as standard catalog entities. Each entity's kind and type reflect the selections made during resource configuration.
 
-![Entity Inspector Page showing Ingested Properties](./static/ingested-gcp-property.gif)
-<center>Figure 8: Entity Inspector Page showing Ingested Properties</center>
-
 Open any entity to view GCP-sourced data such as asset type, location, project, and state directly on the entity details page. This data is displayed through two dedicated UI components: a card on the **Overview** tab and a **GCP Integration** tab. Both require a one-time layout configuration, described in the [next section](#layout-for-gcp-components).
 
 ### Layout for GCP Components
@@ -173,7 +176,7 @@ To display GCP data on the [entity details](/docs/internal-developer-portal/cata
 4. In the YAML editor, add the `IntegrationsContent` component inside the **Overview** tab's `contents` block, and add a new **GCP Integration** tab using the `GCPIntegrationTab` component.
 
    ![Entity Layout configuration for GCP components](./static/gcp-layout-config.png)
-   <center>Figure 9: Layout configuration for GCP Cloud Card and GCP Integration tab</center>
+   <center>Figure 8: Layout configuration for GCP Cloud Card and GCP Integration tab</center>
 
    The relevant YAML additions are:
 
@@ -201,7 +204,7 @@ To display GCP data on the [entity details](/docs/internal-developer-portal/cata
 After the layout is configured, a card appears in the **Overview** tab of any entity that has GCP data linked to it. The card displays the key GCP metadata ingested for that entity, sourced from the entity's [ingested properties](#ingested-properties).
 
 ![GCP Cloud Card on the Overview tab](./static/gcp-cloud-card-overview.png)
-<center>Figure 10: GCP Cloud Card on the Overview tab</center>
+<center>Figure 9: GCP Cloud Card on the Overview tab</center>
 
 If the GCP integration has not been configured for the entity, the card shows a **Not configured** state with a link to the Integrations page. If multiple GCP integrations are active on your account, a dropdown appears at the top of the card to switch between integrations.
 
@@ -210,7 +213,7 @@ If the GCP integration has not been configured for the entity, the card shows a 
 The **GCP Integration** tab provides a more complete view of the GCP data for the entity. This tab fetches latest possible data using the integration ID and entity UUID.
 
 ![GCP Integration tab showing full resource details](./static/gcp-integration-tab.png)
-<center>Figure 11: GCP Integration tab showing full GCP resource details</center>
+<center>Figure 10: GCP Integration tab showing full GCP resource details</center>
 
 :::tip Feature Highlights
 * The tab shows all available fields for the resource type, including fields not present in the **Overview**.
@@ -220,12 +223,12 @@ The **GCP Integration** tab provides a more complete view of the GCP data for th
 * If multiple GCP integrations are linked to the entity, a dropdown appears above the details to switch between integrations.
 :::
 
----
-
-
 ### Ingested Properties
 
 To inspect the raw data ingested from GCP, open the entity and click **View YAML** → **Ingested Properties** in the Entity Inspector.
+
+![Entity Inspector Page showing Ingested Properties](./static/ingested-gcp-property.gif)
+<center>Figure 11: Entity Inspector Page showing Ingested Properties</center>
 
 Ingested properties are stored in two sections of the entity YAML:
 

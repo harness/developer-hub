@@ -1,11 +1,19 @@
 ---
 title: GitHub Integration
 description: Auto-discover GitHub repositories, teams, and AI assets and populate the IDP Catalog for service discovery and dependency mapping.
-sidebar_position: 6
+sidebar_position: 4
 sidebar_label: GitHub
 ---
 
 The GitHub integration automatically discovers repositories, teams, and AI assets from your GitHub organization and brings them into the IDP Catalog. Once discovered, entities can be registered as new catalog entries or merged into existing ones, enriching them with GitHub-sourced metadata for service discovery, team ownership, and dependency mapping.
+
+For each entity type, the integration collects the following:
+
+| Entity | What it provides |
+|---|---|
+| **Repository** | Repository URL, primary language, language breakdown, latest release details, full release history, and whether an agents file is present. |
+| **Team** | Team membership and ownership data. |
+| **AI Assets** | AI/ML asset metadata discovered from manifest files in repositories. |
 
 ---
 
@@ -120,6 +128,8 @@ The Repository Entity mapping imports GitHub repositories as catalog entities, w
    | **Pull Requests** | Pull request details for each repository. The first sync ingests pull requests from the last 30 days; subsequent syncs backfill all new pull requests incrementally. |
    | **Repository Stats** | Summary counts for each repository, including open PRs, closed PRs, merged PRs, and open issues. |
 
+   On the first sync, IDP fetches a limited snapshot per repository. If the total PRs or commits across all repositories exceed their respective per-sync limits (i.e. 5000), the excess is not dropped. Subsequent syncs backfill the remaining PRs and commits and pick up any new ones.
+
    :::caution Secondary kinds cannot be changed after setup
    These selections are locked once the integration is created and cannot be modified later. Choose carefully before confirming.
    :::
@@ -187,7 +197,7 @@ This asset class is registered in the IDP Catalog under `AIAsset` kind with its 
 When AI assets of type `skill` or `agent` are imported, IDP automatically fetches their corresponding instruction file (for example, `SKILL.md`) from GitHub and stores it along with the entity. This powers the **Instructions** tab on the entity page as shown below. 
 
 ![](./static/instructions.gif)
-<center>Figure 7a: AI Assets Instructions</center>
+<center>Figure 8: AI Assets Instructions</center>
 
 Additional metadata is also captured as annotations on the entity, including commit count, last commit message, author, and source location. These are visible in the **Entity Inspector** under **Metadata**.
 
@@ -209,7 +219,7 @@ However, this requires you to add an `InstructionsTab` component to your AI Asse
    ```
 
    ![](./static/layout-edit.gif)
-   <center>Figure 7b: Edit Layout to display Instructions tab on Entity</center>
+   <center>Figure 9: Edit Layout to display Instructions tab on Entity</center>
  
 5. Click **Save**.
 
@@ -225,9 +235,11 @@ The Instructions tab is currently supported for `skill` and `agent` type AI asse
 The **Advanced Settings** section controls how frequently IDP syncs with GitHub and how far back historical data is pulled.
 
 ![](./static/gh-advanced-settings.png)
-<center>Figure 8: Advanced Settings</center>
+<center>Figure 10: Advanced Settings</center>
 
 1. Select an **Update Frequency** from the dropdown to control how often IDP polls GitHub for new data.
+
+   Available options: `30 min`, `1 hour`, `3 hours`, `6 hours`, `12 hours`, `1 day`.
 
 2. Set the **Select start date** to define the earliest date from which IDP will pull GitHub data. Any data before this date will be excluded. By default, this is set to one year prior to today.
 
@@ -250,7 +262,7 @@ This section covers how to view the GitHub entities discovered by the integratio
 After the integration runs, all GitHub entities detected appear in the **Discovered** tab. Use the **Repository**, **Team**, and **AI Assets** sub-tabs to switch between entity types. If entities do not appear, use the **Sync** button at the top right to manually refresh.
 
 ![](./static/discovered-tab-gh.png)
-<center>Figure 9: 'Discovered' tab showing GitHub Repositories, Teams, and AI Assets</center>
+<center>Figure 11: 'Discovered' tab showing GitHub Repositories, Teams, and AI Assets</center>
 
 For each discovered entity, you can see its name, the recommended catalog action, kind, and the date it was detected. You can choose how to bring entities into the catalog using one of the following actions:
 
@@ -267,7 +279,7 @@ For each discovered entity, you can see its name, the recommended catalog action
 The **Imported** tab displays all GitHub entities that have been brought into the catalog. Use the **Repository**, **Team**, and **AI Assets** sub-tabs to view each entity type separately.
 
 ![](./static/imported-tab-gh.png)
-<center>Figure 10: 'Imported' tab showing GitHub entities linked to catalog entities</center>
+<center>Figure 12: 'Imported' tab showing GitHub entities linked to catalog entities</center>
 
 It displays the following data:
 
@@ -296,9 +308,6 @@ Each imported GitHub repository is registered with:
 * **Type:** `service`
 * **Scope:** The Harness account the integration belongs to
 
-![](./static/catalog-entity-gh.png)
-<center>Figure 11: IDP Catalog Entity Page showing Service/Team/AI-Asset Relationship</center>
-
 Each imported GitHub team is registered with:
 
 * **Kind:** `Group`
@@ -310,14 +319,70 @@ Each imported AI asset is registered with:
 * **Kind:** `aiasset`
 * **Scope:** The Harness account the integration belongs to
 
-Open any entity to view its Overview, Relationships, Scorecards, and any other tabs configured for your entity layout. The **Relationships** section reflects ownership links between AI assets, teams, and repositories as discovered from GitHub.
+Open any entity to view GitHub-sourced data directly on the entity details page. This data is displayed through two dedicated UI components: a card on the **Overview** tab and a **Source Code** tab. Both require a one-time layout configuration, described in the [next section](#layout-for-github-components).
+
+### Layout for GitHub Components
+
+To display GitHub data on the [entity details](/docs/internal-developer-portal/catalog/create-entity/entity-details) page, you need to add the two GitHub components to the relevant entity layout. This is a one-time configuration per entity kind and type.
+
+1. From the left sidebar of IDP, go to **Configure** → **Layout** → **Catalog Entities**.
+2. Edit the existing layout for your entity or create a new one.
+3. Select the **Entity Kind** (e.g., `component`) and the **Entity Type** (e.g., `service`) that matches your imported GitHub entities.
+4. In the YAML editor, add the `IntegrationsContent` component inside the **Overview** tab's `contents` block, and add a new **Source Code** tab using the `SourceControlTab` component.
+
+   ![Entity Layout configuration for GitHub components](./static/gh-layout-config.png)
+   <center>Figure 13: Layout configuration for GitHub cards in Overview tab and Source Code tab</center>
+
+   The relevant YAML additions are:
+
+   ```yaml title="Inside the Overview tab's contents block"
+           - component: IntegrationsContent
+             specs:
+               props:
+                 variant: gridItem
+               gridProps:
+                 md: 12
+   ```
+   ```yaml title="A new top-level tab entry"
+       - name: Source Code
+         path: /source-code
+         title: Source Code
+         contents:
+           - component: SourceControlTab
+   ```
+
+5. Click **Save** to apply the layout changes. The GitHub components will now appear on all entity detail pages of the selected kind and type that have GitHub data.
+
+
+### Cards in Overview Tab
+
+After the layout is configured, a `Source Control Management` card appears in the **Overview** tab of any entity that has GitHub data linked to it. The card displays the key GitHub metadata ingested for that entity, sourced from the entity's [ingested properties](#ingested-properties).
+
+![GitHub Cards on the Overview tab](./static/gh-card-overview.gif)
+<center>Figure 14: GitHub Cards on the Overview tab</center>
+
+If the GitHub integration has not been configured for the entity, the card shows a **Not configured** state with a link to the Integrations page. 
+
+### Source Code Tab
+
+The **Source Code** tab provides a more complete view of the GitHub data for the entity. This tab fetches the latest possible data using the integration ID and entity UUID.
+
+![Source Code tab showing full resource details](./static/sourcecode.png)
+<center>Figure 15: Source Code tab showing full GitHub resource details</center>
+
+:::tip Feature Highlights
+* The tab shows all available fields for the resource type, including fields not present in the **Overview**.
+* All the fields are dynamic.
+* The Open and Merged PR metrics show data from the last 30 days.
+* The Pull Requests table shows PRs updated since 30 days before integration setup, limited to the 1000 most recently updated PRs.
+:::
 
 ### Ingested Properties
 
 To inspect the raw data ingested from GitHub, open the entity and click **View YAML** → **Ingested Properties** in the Entity Inspector.
 
 ![](./static/catalog-yaml-gh.gif)
-<center>Figure 12: Entity Inspector Page showing Ingested Properties</center>
+<center>Figure 16: Entity Inspector Page showing Ingested Properties</center>
 
 Ingested properties are stored in two sections of the entity YAML:
 

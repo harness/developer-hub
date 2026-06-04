@@ -1,11 +1,18 @@
 ---
 title: PagerDuty Integration
 description: Auto-discover PagerDuty services and teams and populate the IDP Catalog for on-call visibility and incident context.
-sidebar_position: 5
+sidebar_position: 8
 sidebar_label: PagerDuty
 ---
 
 The PagerDuty integration automatically discovers services and teams from your PagerDuty account and brings them into the IDP Catalog. Once discovered, entities can be registered as new catalog entries or merged into existing ones, enriching them with PagerDuty-sourced metadata such as on-call schedules, incident analytics, and team ownership.
+
+For each entity type, the integration collects the following:
+
+| Entity | What it provides |
+|---|---|
+| **Service** | Total incidents, mean time to first acknowledgment, mean time to resolve, on-call responders, and linked PagerDuty teams. |
+| **Team** | Team-level incident analytics and team identifiers. |
 
 ---
 
@@ -148,13 +155,9 @@ The **Advanced Settings** section controls how frequently IDP syncs with PagerDu
 
 1. Select an **Update Frequency** from the dropdown to control how often IDP polls PagerDuty for new data. 
 
-   Available options: `10 min`, `30 min`, `1 hour`, `1 day`.
+   Available options: `10 min`, `30 min`, `1 hour`, `3 hours`, `6 hours`, `12 hours`, `1 day`, `2 days`, `7 days`.
 
-2. Set the **Select start date** to define the earliest date from which IDP will pull PagerDuty data. Any data before this date will be excluded. By default, this is set to one year prior to today.
-
-   :::info Start Date Update Limits
-   The start date may be updated after the integration is configured, but only to an earlier date than the one originally selected. It cannot be moved forward.
-   :::
+2. Set the **Select Duration** to define how far back IDP pulls service and team analytics data from PagerDuty. Available options: `1 month`, `2 months`, `3 months`, `4 months`, `5 months`, `6 months`. Note that for incidents, the duration is always 1 month regardless of this setting.
 
 3. Once all sections are configured, click **Confirm & Enable**. A confirmation dialog will appear before the changes are applied.
 
@@ -217,26 +220,80 @@ Each imported PagerDuty service is registered with:
 * **Type:** `Service`
 * **Scope:** The Harness account the integration belongs to
 
-![](./static/catalog-entity-pd.png)
-<center>Figure 10: IDP Catalog Entity Page showing Service/Team Relationship</center>
-
 Similarly, each imported PagerDuty team is registered with:
 
 * **Kind:** `Group`
 * **Type:** `Team`
 * **Scope:** The Harness account the integration belongs to
 
-Open any entity to view its Overview, Relationships, Scorecards, and any other tabs configured for your entity layout. The **Relationships** section reflects ownership links between teams and services as discovered from PagerDuty.
+Open any entity to view PagerDuty-sourced data directly on the entity details page. This data is displayed through two dedicated UI components: a card on the **Overview** tab and an **Incidents** tab. Both require a one-time layout configuration, described in the [next section](#layout-for-pagerduty-components).
+
+### Layout for PagerDuty Components
+
+To display PagerDuty data on the [entity details](/docs/internal-developer-portal/catalog/create-entity/entity-details) page, you need to add the two PagerDuty components to the relevant entity layout. This is a one-time configuration per entity kind and type.
+
+1. From the left sidebar of IDP, go to **Configure** → **Layout** → **Catalog Entities**.
+2. Edit the existing layout for your entity or create a new one.
+3. Select the **Entity Kind** (e.g., `component`) and the **Entity Type** (e.g., `service`) that matches your imported PagerDuty entities.
+4. In the YAML editor, add the `IntegrationsContent` component inside the **Overview** tab's `contents` block, and add a new **Incidents** tab using the `IncidentTabContent` component.
+
+   ![Entity Layout configuration for PagerDuty components](./static/pd-layout-config.png)
+   <center>Figure 10: Layout configuration for PagerDuty cards in Overview tab and Incidents tab</center>
+
+   The relevant YAML additions are:
+
+   ```yaml title="Inside the Overview tab's contents block"
+           - component: IntegrationsContent
+             specs:
+               props:
+                 variant: gridItem
+               gridProps:
+                 md: 12
+   ```
+   ```yaml title="A new top-level tab entry"
+       - name: Incidents
+         path: /incidents
+         title: Incidents
+         contents:
+           - component: IncidentTabContent
+   ```
+
+5. Click **Save** to apply the layout changes. The PagerDuty components will now appear on all entity detail pages of the selected kind and type that have PagerDuty data.
+
+
+### Cards in Overview Tab
+
+After the layout is configured, two cards `Incidents` and `On-Call` appear in the **Overview** tab of any entity that has PagerDuty data linked to it. The card displays the key PagerDuty metadata ingested for that entity, sourced from the entity's [ingested properties](#ingested-properties).
+
+![PagerDuty Cards on the Overview tab](./static/pd-card-overview.png)
+<center>Figure 11: PagerDuty Cards on the Overview tab</center>
+
+If the PagerDuty integration has not been configured for the entity, the card shows a **Not configured** state with a link to the Integrations page. 
+
+### Incidents Tab
+
+The **Incidents** tab provides a more complete view of the PagerDuty data for the entity. This tab fetches latest possible data using the integration ID and entity UUID.
+
+![Incidents tab showing full resource details](./static/incidents-tab.png)
+<center>Figure 12: Incidents tab showing full PagerDuty resource details</center>
+
+:::tip Feature Highlights
+* The tab shows all available fields for the resource type, including fields not present in the **Overview**.
+* All the fields are dynamic.
+* 'Service Metrics' card displays data from the date you configured the integration.
+* 'On-Call' card displays data last synced from PagerDuty, based on your configured [update frequency](#4-configure-advanced-settings).
+* 'Incidents' card lists all incidents (resolved, triggered, acknowledged) from 30 days before the integration was created. Incidents are retained for 6 months from their last update.
+:::
 
 ### Ingested Properties
 
 To inspect the raw data ingested from PagerDuty, open the entity and click **View YAML** → **Ingested Properties** in the Entity Inspector.
 
 ![](./static/catalog-yaml-pd1.gif)
-<center>Figure 11a: Entity Inspector Page showing ingested properties of Service Data</center>
+<center>Figure 13a: Entity Inspector Page showing ingested properties of Service Data</center>
 
 ![](./static/catalog-yaml-pd2.gif)
-<center>Figure 11b: Entity Inspector Page showing ingested properties of Team Data</center>
+<center>Figure 13b: Entity Inspector Page showing ingested properties of Team Data</center>
 
 Ingested properties are stored in two sections of the entity YAML:
 

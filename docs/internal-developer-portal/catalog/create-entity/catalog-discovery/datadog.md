@@ -1,7 +1,7 @@
 ---
 title: Datadog Integration
 description: Auto-discover Datadog services and import them into the IDP Catalog with monitor health, SLO tracking, and service dependency context.
-sidebar_position: 8
+sidebar_position: 3
 sidebar_label: Datadog
 ---
 
@@ -15,6 +15,10 @@ For each service, the integration collects the following resources from Datadog:
 | **Monitor** | Monitor metrics and health summary using queries. |
 | **SLO** | Service Level Objective data associated with the service. |
 | **Service Dependency** | Upstream and downstream service relationships, scoped to an environment you configure. |
+
+:::info
+Service dependencies (upstream/downstream) ingested from Datadog are displayed on the entity page but are not used to auto-detect or create relationships between entities in the IDP Catalog.
+:::
 
 ---
 
@@ -68,7 +72,7 @@ This section connects Harness IDP to your Datadog account.
 
 3. (Optional) In the Environment for dependencies field, enter the environment name whose service dependencies you want to see on entity pages (e.g., production). Leave it empty if you do not need dependency information. 
 
-   :::note
+   :::info
    Service dependencies are tracked by Datadog based on recent APM traces. If a service is down and not generating traces, it will not appear in the dependency view.
    :::
 
@@ -137,6 +141,8 @@ The **Advanced Settings** section controls how frequently IDP syncs with Datadog
 
 1. Select an **Update Frequency** from the dropdown to control how often IDP polls Datadog for new data.
 
+   Available options: `10 min`, `30 min`, `1 hour`, `3 hours`, `6 hours`, `12 hours`, `1 day`, `2 days`, `7 days`.
+
 2. Once all sections are configured, click **Confirm & Enable**. 
 
 The integration is now enabled and IDP begins syncing data from Datadog. Discovered services appear in the [**Discovered** tab](#discovered-tab).
@@ -199,20 +205,67 @@ Each imported Datadog service is registered with:
 - **Type:** `Service`
 - **Scope:** The Harness account the integration belongs to
 
-![Catalog entity page for a Datadog-imported service](./static/dd-catalog-entity.gif)
-<center>Figure 8: IDP Catalog Entity Page for a Datadog service</center>
+Open any entity to view Datadog-sourced data directly on the entity details page. This data is displayed through two dedicated UI components: one on the **Overview** tab and an **Observability** tab. Both require a one-time layout configuration, described in the [next section](#layout-for-datadog-components).
 
-Open any entity to view its Overview, Scorecards, and other configured tabs. The **Integrations** section on the Overview tab reflects the Datadog connection status for the entity.
+### Layout for Datadog Components
+
+To display Datadog data on the [entity details](/docs/internal-developer-portal/catalog/create-entity/entity-details) page, you need to add the two Datadog components to the relevant entity layout. This is a one-time configuration per entity kind and type.
+
+1. From the left sidebar of IDP, go to **Configure** → **Layout** → **Catalog Entities**.
+2. Edit the existing layout for your entity or create a new one.
+3. Select the **Entity Kind** (e.g., `component`) and the **Entity Type** (e.g., `service`) that matches your imported Datadog entities.
+4. In the YAML editor, add the `IntegrationsContent` component inside the **Overview** tab's `contents` block, and add a new **Observability** tab using the `ObservabilityTabContent` component.
+
+   ![Entity Layout configuration for Datadog components](./static/dd-layout-config.png)
+   <center>Figure 8: Layout configuration for Datadog cards in Overview tab and Observability tab</center>
+
+   The relevant YAML additions are:
+
+   ```yaml title="Inside the Overview tab's contents block"
+           - component: IntegrationsContent
+             specs:
+               props:
+                 variant: gridItem
+               gridProps:
+                 md: 12
+   ```
+   ```yaml title="A new top-level tab entry"
+       - name: Observability
+         path: /observabilitiy
+         title: Observability
+         contents:
+           - component: ObservabilityTabContent
+   ```
+
+5. Click **Save** to apply the layout changes. The Datadog components will now appear on all entity detail pages of the selected kind and type that have Datadog data.
+
+
+### Cards in Overview Tab
+
+After the layout is configured, cards like `Monitors` and `SLOs` appear in the **Overview** tab of any entity that has Datadog data linked to it. The card displays the key Datadog metadata ingested for that entity, sourced from the entity's [ingested properties](#ingested-properties).
+
+![Catalog entity page for a Datadog-imported service](./static/dd-catalog-entity.gif)
+<center>Figure 9a: IDP Catalog Entity Page for a Datadog service</center>
 
 ![Dependencies of a Datadog-imported service](./static/dd-entity-dependencies.png)
-<center>Figure 9: IDP Catalog Entity Page for a Datadog service</center>
+<center>Figure 9b: Dependencies of a Datadog-imported service</center>
+
+If the Datadog integration has not been configured for the entity, the card shows a **Not configured** state with a link to the Integrations page. 
+
+### Observability Tab
+
+The **Observability** tab provides a more complete view of the Datadog data for the entity. This tab fetches latest possible data using the integration ID and entity UUID.
+
+![Observability tab showing full resource details](./static/observability-tab.png)
+<center>Figure 10: Observability tab showing full Datadog resource details</center>
+
 
 ### Ingested Properties
 
 To inspect the raw data ingested from Datadog, open the entity and click **View YAML**, then select **Ingested Properties** in the Entity Inspector.
 
 ![Entity Inspector showing Datadog ingested properties](./static/dd-ingested-properties.gif)
-<center>Figure 10: Entity Inspector showing Datadog Ingested Properties</center>
+<center>Figure 11: Entity Inspector showing Datadog Ingested Properties</center>
 
 Ingested properties are stored in two sections of the entity YAML:
 

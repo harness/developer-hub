@@ -1,11 +1,17 @@
 ---
 title: Kubernetes Integration
 description: Auto-discover Kubernetes services and populate the IDP Catalog for service discovery and dependency mapping.
-sidebar_position: 3
+sidebar_position: 7
 sidebar_label: Kubernetes
 ---
 
 The Kubernetes integration automatically discovers services running in your Kubernetes cluster and brings them into the IDP Catalog. Once discovered, services can be registered as new catalog entities or merged into existing ones, enriching them with Kubernetes-sourced metadata for service discovery and dependency mapping.
+
+For each service, the integration collects the following:
+
+| Resource | What it provides |
+|---|---|
+| **Service** | Imported Kubernetes services organized by environment, including kind, namespace, replica count, and name. |
 
 ---
 

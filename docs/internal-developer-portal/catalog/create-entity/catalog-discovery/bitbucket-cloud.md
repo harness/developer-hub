@@ -1,7 +1,7 @@
 ---
 title: Bitbucket Cloud Integration
 description: Auto-discover Bitbucket Cloud repositories and populate the IDP Catalog for service discovery and dependency mapping.
-sidebar_position: 8
+sidebar_position: 2
 sidebar_label: Bitbucket Cloud
 ---
 
@@ -9,6 +9,12 @@ import DocImage from '@site/src/components/DocImage';
 import DocVideo from '@site/src/components/DocVideo';
 
 The Bitbucket Cloud integration automatically discovers repositories from your Bitbucket workspace and brings them into the IDP Catalog. Once discovered, entities can be registered as new catalog entries or merged into existing ones, enriching them with Bitbucket-sourced metadata for service discovery and dependency mapping.
+
+For each repository, the integration collects the following:
+
+| Resource | What it provides |
+|---|---|
+| **Repository** | Repository name, default branch, description, visibility, project details, tags, and repository URL. |
 
 ---
 
@@ -120,7 +126,9 @@ The **Advanced Settings** section controls how frequently IDP syncs with Bitbuck
 
 <DocImage path={require('./static/bb-advanced-settings.png')} />
 
-1. Select an **Update Frequency** from the dropdown to control how often IDP polls Bitbucket for new data. The default is 3 hours.
+1. Select an **Update Frequency** from the dropdown to control how often IDP polls Bitbucket for new data.
+
+   Available options: `30 min`, `1 hour`, `3 hours`, `6 hours`, `12 hours`, `1 day`.
 
 2. Optionally, set a **Select start date** to define the earliest date from which IDP will pull Bitbucket data.
 
@@ -197,6 +205,10 @@ Ingested properties are stored in two sections of the entity YAML:
 
 * **`metadata.integration`** - Tracks which integrations are linked to this entity, including the entity action (for example, `REGISTER` or `MERGE`) and the linked entity UUID for each integration instance.
 * **`integration_properties.BitbucketCloud`** - Contains the Bitbucket-specific data for the entity, including repository metadata such as name, URL, project key, default branch, tags, and visibility.
+
+:::info
+The UI to visualize this data on catalog entity pages will be available in the upcoming release.
+:::
 
 ---
 

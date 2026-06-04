@@ -1,6 +1,6 @@
 ---
 title: Catalog Auto-Discovery with Platform Integrations
-sidebar_position: 2
+sidebar_position: 9
 sidebar_label: Platform Integration
 description: Discover services from Platform integrations and sync them to the IDP Catalog
 keywords:

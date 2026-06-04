@@ -1,11 +1,17 @@
 ---
 title: Catalog Auto-Discovery with Harness CD Services
 description: Steps to use Catalog Ingestion API to ingest metadata and use the information on the catalog overview and workflows
-sidebar_position: 2
+sidebar_position: 6
 sidebar_label: Harness CD
 ---
 
 This document is a detailed guide on how to use the **Harness IDP Catalog Auto-Discovery** integration to sync **Harness CD** services into the **IDP Catalog**. This integration populates your Catalog with CD services so you can sync, view, and manage them directly in Catalog. Services are created as **IDP service entities** and kept in **real-time, uni-directional sync** with their corresponding CD services.
+
+For each service, the integration collects the following:
+
+| Resource | What it provides |
+|---|---|
+| **Service** | DORA metrics: average deployment duration, change failure rate, and deployment frequency per sprint. |
 
 ---
 

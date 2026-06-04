@@ -1,7 +1,7 @@
 ---
 title: SonarQube Integration
 description: Auto-discover SonarQube projects and populate the IDP Catalog with code quality metrics, security data, and issue analytics.
-sidebar_position: 6
+sidebar_position: 11
 sidebar_label: SonarQube
 ---
 
@@ -11,6 +11,12 @@ The SonarQube integration connects to your SonarQube Server (self-hosted) or Son
 * Security hotspots
 * Quality gate status
 * Issue analytics
+
+For each project, the integration collects the following:
+
+| Resource | What it provides |
+|---|---|
+| **Project** | Quality gate status, reliability rating, security rating, SQALE rating, line and branch coverage, duplication metrics, code size, bugs, vulnerabilities, security hotspots, and code smells. |
 
 ---
 
@@ -125,7 +131,7 @@ The **Advanced Settings** section controls how frequently IDP syncs with SonarQu
 
 1. Select an **Update Frequency** from the dropdown to control how often IDP polls SonarQube for new data.
 
-   Available options: `10 min`, `30 min`, `1 hour`, `1 day`.
+   Available options: `10 min`, `30 min`, `1 hour`, `3 hours`, `6 hours`, `12 hours`, `1 day`, `2 days`, `7 days`.
 
 2. Set the **Select start date** to define the earliest date from which IDP will pull SonarQube data. Note that setting this date too far in the past might increase the volume of data pulled on the initial sync and slow it down.
 
@@ -190,17 +196,69 @@ Each imported SonarQube project is registered with:
 * **Type:** `Service`
 * **Scope:** The Harness scope the integration belongs to
 
-![](./static/catalog-entity-sq.png)
-<center>Figure 7: IDP Catalog Entity Page showing Entity Relationship</center>
+Open any entity to view SonarQube-sourced data directly on the entity details page. This data is displayed through two dedicated UI components: a card on the **Overview** tab and an **Code Quality** tab. Both require a one-time layout configuration, described in the [next section](#layout-for-sonarqube-components).
 
-Open any entity to view its Overview, Scorecards, CI/CD, and other tabs configured for your entity layout.
+### Layout for SonarQube Components
+
+To display SonarQube data on the [entity details](/docs/internal-developer-portal/catalog/create-entity/entity-details) page, you need to add the two SonarQube components to the relevant entity layout. This is a one-time configuration per entity kind and type.
+
+1. From the left sidebar of IDP, go to **Configure** → **Layout** → **Catalog Entities**.
+2. Edit the existing layout for your entity or create a new one.
+3. Select the **Entity Kind** (e.g., `component`) and the **Entity Type** (e.g., `service`) that matches your imported SonarQube entities.
+4. In the YAML editor, add the `IntegrationsContent` component inside the **Overview** tab's `contents` block, and add a new **Code Quality** tab using the `CodeQualityTab` component.
+
+   ![Entity Layout configuration for SonarQube components](./static/sq-layout-config.png)
+   <center>Figure 7: Layout configuration for SonarQube cards in Overview tab and Code Quality tab</center>
+
+   The relevant YAML additions are:
+
+   ```yaml title="Inside the Overview tab's contents block"
+           - component: IntegrationsContent
+             specs:
+               props:
+                 variant: gridItem
+               gridProps:
+                 md: 12
+   ```
+   ```yaml title="A new top-level tab entry"
+       - name: Code Quality
+         path: /code-quality
+         title: Code Quality
+         contents:
+           - component: CodeQualityTab
+   ```
+
+5. Click **Save** to apply the layout changes. The SonarQube components will now appear on all entity detail pages of the selected kind and type that have SonarQube data.
+
+
+### Cards in Overview Tab
+
+After the layout is configured, a `Code Quality` card appears in the **Overview** tab of any entity that has SonarQube data linked to it. The card displays the key SonarQube metadata ingested for that entity, sourced from the entity's [ingested properties](#ingested-properties).
+
+![SonarQube Cards on the Overview tab](./static/sq-card-overview.png)
+<center>Figure 8: SonarQube Cards on the Overview tab</center>
+
+If the SonarQube integration has not been configured for the entity, the card shows a **Not configured** state with a link to the Integrations page. 
+
+### Code Quality Tab
+
+The **Code Quality** tab provides a more complete view of the SonarQube data for the entity. This tab fetches latest possible data using the integration ID and entity UUID.
+
+![Code Quality tab showing full resource details](./static/code-quality-tab.png)
+<center>Figure 9: Code Quality tab showing full SonarQube resource details</center>
+
+:::tip Feature Highlights
+* The tab shows all available fields for the resource type, including fields not present in the **Overview**.
+* All the fields are dynamic.
+* All the cards display data last synced from SonarQube, based on your configured [update frequency](#4-configure-advanced-settings).
+:::
 
 ### Ingested Properties
 
 To inspect the raw data ingested from SonarQube, open the entity and click **View YAML** → **Ingested Properties** in the Entity Inspector.
 
 ![](./static/catalog-yaml-sq.gif)
-<center>Figure 8: Entity Inspector Page showing Ingested Properties</center>
+<center>Figure 10: Entity Inspector Page showing Ingested Properties</center>
 
 Ingested properties are stored in two sections of the entity YAML:
 
