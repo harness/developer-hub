@@ -19,7 +19,7 @@ By default, Harness uses the built-in Harness Image Docker connector with anonym
 - [Use credentials for specific stages.](#use-credentials-to-pull-harness-images-for-specific-stages)
 - [Pull images from a private registry.](#pull-harness-images-from-a-private-registry)
 
-To configure any of these options, you need [permissions](../../role-based-access-control/permissions-reference) to create, edit, and view connectors at the account [scope](/docs/platform/role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+To configure any of these options, you need [permissions](../../role-based-access-control/permissions-reference) to create, edit, and view connectors at the account [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 :::tip Rate Limiting
 

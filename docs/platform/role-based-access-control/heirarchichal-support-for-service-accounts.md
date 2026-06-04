@@ -83,4 +83,4 @@ For more information on how to manage service accounts, create roles, and assign
 
 - [Creating and Managing Roles](./add-manage-roles.md)
 
-- [Assigning Roles and Permissions](./rbac-in-harness.md)
+- [Assigning Roles and Permissions](/docs/category/platform-access-control/rbac-in-harness)

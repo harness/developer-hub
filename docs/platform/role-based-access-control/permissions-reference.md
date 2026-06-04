@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness.md). For API permissions, go to the [API permissions reference](/docs/platform/automation/api/api-permissions-reference).
+This topic describes permissions relevant to [RBAC in Harness](/docs/category/platform-access-control/rbac-in-harness). For API permissions, go to the [API permissions reference](/docs/platform/automation/api/api-permissions-reference).
 
 :::note
     **Types of Permission**:
@@ -27,17 +27,17 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 | Resource | Permissions | Status |
 | --- | --- | --- |
 | Resource Groups | <ul><li>View (`core_resourcegroup_view`)</li><li>Create/Edit (`core_resourcegroup_edit`)</li><li>Delete (`core_resourcegroup_delete`)</li></ul> | Active |
-| Account Settings | Available at the account [scope](./rbac-in-harness.md#permissions-hierarchy-scopes) only.<br/><ul><li>View (`core_setting_view`)</li><li>Edit (`core_setting_edit`)</li></ul> | Active |
+| Account Settings | Available at the account [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes) only.<br/><ul><li>View (`core_setting_view`)</li><li>Edit (`core_setting_edit`)</li></ul> | Active |
 | Default Settings | <ul><li>Create/Edit</li></ul> | Active |
 | Projects | <ul><li>View (`core_project_view`)</li><li>Create (`core_project_create`)</li><li>Edit (`core_project_edit`)</li><li>Delete (`core_project_delete`)</li><li>Move (`core_project_move`)</li></ul> | Active |
 | User Groups | <ul><li>View (<code>core_usergroup_view</code>)</li><li>Manage: Create, edit, and delete user groups (<code>core_usergroup_manage</code>) – Default permission.<ul><em><strong>Note</strong>: You can enable feature flags to split the default <code>Manage</code> permission into granular permissions for finer control.</em><li>Create (<code>core_usergroup_create</code>)</li><li>Edit metadata (<code>core_usergroup_editMetadata</code>)</li><li>Delete (<code>core_usergroup_delete</code>)</li><li>Manage users (<code>core_usergroup_manageUsers</code>)</li><li>Manage through SSO (<code>core_usergroup_manageSSO</code>)</li><li>Manage through SCIM (<code>core_usergroup_manageSCIM</code>)</li><li>Manage notifications (<code>core_usergroup_manageNotifications</code>)</li><li>Manage role assignments (<code>core_usergroup_manageRoleAssignments</code>)</li></ul></li></ul> | Active |
 | Service Accounts | <ul><li>View (`core_serviceaccount_view`)</li><li>Create/Edit (`core_serviceaccount_edit`)</li><li>Delete (`core_serviceaccount_delete`)</li><li>Manage: Create, edit, and delete API keys and tokens for service accounts (`core_serviceaccount_manageapikey`)</li><li>List Service Accounts (`core_serviceaccount_list`)</li></ul> | Active |
-| Organizations | Available at the account and org [scopes](./rbac-in-harness.md#permissions-hierarchy-scopes) only.<br/><ul><li>View (`core_organization_view`)</li><li>Create (`core_organization_create`)</li><li>Edit (`core_organization_edit`)</li><li>Delete (`core_organization_delete`)</li></ul> | Active |
+| Organizations | Available at the account and org [scopes](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes) only.<br/><ul><li>View (`core_organization_view`)</li><li>Create (`core_organization_create`)</li><li>Edit (`core_organization_edit`)</li><li>Delete (`core_organization_delete`)</li></ul> | Active |
 | Roles | <ul><li>View (`core_role_view`)</li><li>Create/Edit (`core_role_edit`)</li><li>Delete (`core_role_delete`)</li></ul> | Active |
-| Streaming Destination | Available at the account [scope](./rbac-in-harness.md#permissions-hierarchy-scopes) only.<br/><ul><li>View (`core_streamingDestination_view`)</li><li>Create/Edit (`core_streamingDestination_edit`)</li><li>Delete (`core_streamingDestination_delete`)</li></ul> | Experimental |
-| Banners | Available at the account [scope](./rbac-in-harness.md#permissions-hierarchy-scopes) only.<br/><ul><li>View (`core_banner_view`)</li><li>Create/Edit (`core_banner_edit`)</li><li>Delete (`core_banner_delete`)</li></ul> | Active |
+| Streaming Destination | Available at the account [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes) only.<br/><ul><li>View (`core_streamingDestination_view`)</li><li>Create/Edit (`core_streamingDestination_edit`)</li><li>Delete (`core_streamingDestination_delete`)</li></ul> | Experimental |
+| Banners | Available at the account [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes) only.<br/><ul><li>View (`core_banner_view`)</li><li>Create/Edit (`core_banner_edit`)</li><li>Delete (`core_banner_delete`)</li></ul> | Active |
 | Users | <ul><li>View (`core_user_view`)</li><li>Manage: Edit and delete users (`core_user_manager`)</li><li>Invite: Add users by inviting them to Harness (`core_user_invite`)</li><li>Impersonate Users (`core_user_impersonate`)</li></ul> | Active |
-| Authentication Settings | Available at the account [scope](./rbac-in-harness.md#permissions-hierarchy-scopes) only.<br/><ul><li>View (`core_authsetting_view`)</li><li>Create/Edit (`core_authsetting_edit`)</li><li>Delete (`core_authsetting_delete`)</li></ul> | Active |
+| Authentication Settings | Available at the account [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes) only.<br/><ul><li>View (`core_authsetting_view`)</li><li>Create/Edit (`core_authsetting_edit`)</li><li>Delete (`core_authsetting_delete`)</li></ul> | Active |
 | SMTP Configuration | <ul><li>View (`core_smtp_view`)</li><li>Create/Edit (`core_smtp_edit`)</li><li>Delete (`core_smtp_delete`)</li></ul> | Active |
 | Certificates | <ul><li>View (`core_certificate_view`)</li><li>Create/Edit (`core_certificate_edit`)</li><li>Delete (`core_certificate_delete`)</li></ul> | Active |
 | Account Management | <ul><li>View (`core_account_view`)</li><li>Edit (`core_account_edit`)</li></ul> | Active |

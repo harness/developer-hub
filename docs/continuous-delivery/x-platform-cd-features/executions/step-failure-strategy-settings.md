@@ -132,7 +132,7 @@ Currently this behaviour is behind FF `PIE_SEND_SECRET_REF_FOR_SHELLSCRIPT_VARIA
 
 When a secret is referenced in ShellScript environment variables, the pipeline will not execute if the user does not have access to the referenced secret. This ensures that only users with the appropriate permissions can trigger pipelines that require access to specific secrets.
 
-This behavior applies to pipelines configured via direct YAML updates as well. In the UI, secret selection is filtered based on [RBAC](/docs/platform/role-based-access-control/rbac-in-harness.md), so users will only see the secrets they have access to.
+This behavior applies to pipelines configured via direct YAML updates as well. In the UI, secret selection is filtered based on [RBAC](/docs/category/platform-access-control/rbac-in-harness), so users will only see the secrets they have access to.
 
 
 **When the feature flag is enabled**: The pipeline will be blocked from execution entirely if the user does not have access to the secret.

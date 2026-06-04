@@ -11,7 +11,7 @@ You can use JSON Web Tokens (JWT) for authentication with Harness SCIM APIs. To 
 
 ## Requirements
 
-- You need **View** and **Edit** [permissions](../../role-based-access-control/permissions-reference.md) for **Default Settings** at the account [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+- You need **View** and **Edit** [permissions](../../role-based-access-control/permissions-reference.md) for **Default Settings** at the account [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 - You must be able to create service accounts.
 - You need an [API key and an unexpired token](/docs/platform/automation/api/add-and-manage-api-keys).
 - You need your [Harness account ID](./api-quickstart.md#get-your-account-id).

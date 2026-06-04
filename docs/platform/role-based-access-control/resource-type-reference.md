@@ -4,7 +4,7 @@ description: Resource type reference for Harness RBAC.
 sidebar_position: 130
 ---
 
-This topic lists resource types relevant to [RBAC in Harness](./rbac-in-harness.md).
+This topic lists resource types relevant to [RBAC in Harness](/docs/category/platform-access-control/rbac-in-harness).
 
 ## Resource types
 

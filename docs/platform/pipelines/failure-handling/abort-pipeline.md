@@ -10,7 +10,7 @@ This topic explains how to stop an in-progress pipeline, stage, or step. Take ca
 
 ## Required permissions
 
-To abort a pipeline, stage, or step, you need permission to abort pipelines. There are two primary ways you can configure this with [Harness RBAC](/docs/platform/role-based-access-control/rbac-in-harness.md):
+To abort a pipeline, stage, or step, you need permission to abort pipelines. There are two primary ways you can configure this with [Harness RBAC](/docs/category/platform-access-control/rbac-in-harness):
 
 * **Pipeline Execute** permission: By default, this permission grants you the ability to initiate and interact with pipeline executions, including running pipelines, aborting pipelines and pipeline components (stages and steps), retrying/rerunning pipelines, and so on.
 * (Beta) **Abort** permission: To control the **Abort** permission separately from other pipeline execute functions, you can enable the Feature Flag `CDS_PIPELINE_ABORT_RBAC_PERMISSION` by contacting [Harness Support](mailto:support@harness.io).

@@ -457,5 +457,5 @@ The script uses pagination to efficiently handle large datasets. Each API call f
 * [Manage users](./add-users.md)
 * [Get started with Harness API](/docs/platform/automation/api/api-quickstart)
 * [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys)
-* [RBAC in Harness](./rbac-in-harness.md)
+* [RBAC in Harness](/docs/category/platform-access-control/rbac-in-harness)
 * [Permissions reference](./permissions-reference.md)

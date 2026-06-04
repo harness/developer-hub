@@ -11,7 +11,7 @@ You can create repositories directly in Harness Code or [import repositories](./
 
 ## Create a repository
 
-1. In the Harness Code module, make sure you are at the [scope](/docs/platform/role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes) where you want to create the repository.
+1. In the Harness Code module, make sure you are at the [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes) where you want to create the repository.
 
    You can create repos at the account, organization, or project scope. For example, a repo created at the account scope is available to the entire account, whereas a repo created at the project scope is limited to that project.
 

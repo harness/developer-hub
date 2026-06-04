@@ -35,7 +35,7 @@ If you're not an admin, you may still configure certain RBAC settings if you hav
 Also, ensure you understand the following concepts:
 
 * [Scopes, Roles & Permissions](/docs/internal-developer-portal/rbac/scopes.md)
-* [Key Concepts of Harness Platform Hierarchy](/docs/platform/role-based-access-control/rbac-in-harness.md)
+* [Key Concepts of Harness Platform Hierarchy](/docs/category/platform-access-control/rbac-in-harness)
 * [Harness IDP RBAC Components](/docs/internal-developer-portal/rbac/scopes.md#rbac-components)
 * [Catalog RBAC](/docs/internal-developer-portal/rbac/catalog-rbac.md) & [Workflow RBAC](/docs/internal-developer-portal/rbac/workflow-rbac.md) Principles
 

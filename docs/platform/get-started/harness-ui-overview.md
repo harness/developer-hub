@@ -42,7 +42,7 @@ The left navigation for version 2.0 includes the following options.
 <Tabs>
 <TabItem value="scope" label="Scope" default>
 
-Your [scope](/docs/platform/role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes) is given at the top of the left navigation. Select the scope (**Account**, **Organization**, or **Project**) to change your scope.
+Your [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes) is given at the top of the left navigation. Select the scope (**Account**, **Organization**, or **Project**) to change your scope.
 
 If you hover over the scope selector, a list of recent scopes will appear to choose from. Click the selector to view all scopes. 
 

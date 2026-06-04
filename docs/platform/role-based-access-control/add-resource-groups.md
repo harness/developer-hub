@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Resource groups are an [RBAC component](./rbac-in-harness.md#rbac-components) that define the objects that a user or service account can access. Objects are any Harness resource, including projects, pipelines, connectors, secrets, delegates, environments, users, and more. When you assign a resource groups to a user, user group, or service account, the access defined in the resource group is granted to the target user, group, or service account.
+Resource groups are an [RBAC component](/docs/category/platform-access-control/rbac-in-harness#rbac-components) that define the objects that a user or service account can access. Objects are any Harness resource, including projects, pipelines, connectors, secrets, delegates, environments, users, and more. When you assign a resource groups to a user, user group, or service account, the access defined in the resource group is granted to the target user, group, or service account.
 
 Harness includes some [built-in resource groups](#built-in-resource-groups), and you can [create custom resource groups](#create-a-resource-group), which are useful for limited and fine-grained access control.
 
@@ -34,7 +34,7 @@ While Harness includes some built-in roles and resource groups, to ensure the le
 
 ## Scopes and refinement
 
-Resource groups are scope-specific, and you can create them at any [scope](./rbac-in-harness.md#permissions-hierarchy-scopes). For example, a resource group created at the project scope is only available in that project.
+Resource groups are scope-specific, and you can create them at any [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes). For example, a resource group created at the project scope is only available in that project.
 
 In addition to the scope at which you create the resource group, each resource group includes **Resource Scope** options that control the scope of access *within the resource group's overall scope*. For example, if you create a resource group at the org level, you can allow access to all projects under that organization, or you can select specific projects.
 
@@ -301,7 +301,7 @@ Make sure you understand how [scopes and refinement](#scopes-and-refinement) wor
 
 ## Continue RBAC configuration
 
-Creating resource groups is one part of [configuring RBAC in Harness](./rbac-in-harness.md#configure-rbac-in-harness).
+Creating resource groups is one part of [configuring RBAC in Harness](/docs/category/platform-access-control/rbac-in-harness#configure-rbac-in-harness).
 
 [Roles](./add-manage-roles.md), which grant permissions, work alongside resource groups, which grant access.
 

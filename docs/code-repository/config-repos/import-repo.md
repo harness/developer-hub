@@ -17,7 +17,7 @@ Harness provides a CLI tool to fully migrate git repositories as well as all met
 
 ## Import repositories
 
-1. In the Harness Code module, make sure you are at the [scope](/docs/platform/role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes) where you want to import repositories.
+1. In the Harness Code module, make sure you are at the [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes) where you want to import repositories.
 
    You can import repos at the account, organization, or project scope. For example, a repo imported at the account scope is available to the entire account, whereas a repo imported at the project scope is limited to that project.
 

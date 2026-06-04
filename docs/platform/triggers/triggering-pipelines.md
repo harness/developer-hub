@@ -24,7 +24,7 @@ Currently, Harness supports Git-based triggers for the most common Git providers
 
 :::info
 
-With [Harness RBAC](../role-based-access-control/rbac-in-harness.md), you can control who can create and use triggers _within Harness_, but you must use your Git provider's RBAC to control who can initiate the Git events that start your Harness Git event triggers.
+With [Harness RBAC](/docs/category/platform-access-control/rbac-in-harness), you can control who can create and use triggers _within Harness_, but you must use your Git provider's RBAC to control who can initiate the Git events that start your Harness Git event triggers.
 
 :::
 

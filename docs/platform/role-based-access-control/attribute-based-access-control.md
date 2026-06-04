@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 [Role-based access control (RBAC) in Harness](/docs/platform/role-based-access-control/rbac-in-harness) helps you manage who has access to your Harness resources, what they can do with those resources, and in what scope they have access. RBAC is role-based, which means permissions and access to resources are determined by the roles assigned to users, user groups, and service accounts.
 
-Attribute-based access control (ABAC) grants access to Harness resources based on attributes associated with those resources, such as connector type. ABAC is an optional extension of [RBAC in Harness](./rbac-in-harness.md) that uses attribute-based rules to grant access in the context of specific actions. ABAC is a way to refine [resource groups](./add-resource-groups.md) by adding another dimension of control.
+Attribute-based access control (ABAC) grants access to Harness resources based on attributes associated with those resources, such as connector type. ABAC is an optional extension of [RBAC in Harness](/docs/category/platform-access-control/rbac-in-harness) that uses attribute-based rules to grant access in the context of specific actions. ABAC is a way to refine [resource groups](./add-resource-groups.md) by adding another dimension of control.
 
 ABAC can help you:
 
@@ -67,7 +67,7 @@ To configure ABAC in Harness, you must be an **Admin** for the relevant account,
 
 ## Continue RBAC configuration
 
-Creating resource groups with ABAC is one part of [configuring RBAC in Harness](./rbac-in-harness.md#configure-rbac-in-harness).
+Creating resource groups with ABAC is one part of [configuring RBAC in Harness](/docs/category/platform-access-control/rbac-in-harness#configure-rbac-in-harness).
 
 [Roles](./add-manage-roles.md), which grant permissions, work alongside resource groups and ABAC, which grant access. Because ABAC applies to environments and connectors, the role you choose to accompany your ABAC-enhanced resource group should include permissions relevant to environments or connectors.
 

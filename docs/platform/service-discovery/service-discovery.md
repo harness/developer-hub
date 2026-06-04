@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 title: Service Discovery
+sidebar_class_name: hidden
 redirect_from:
 - /docs/chaos-engineering/features/service-discovery/intro-service-discovery
 - /docs/category/service-discovery

@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 A Harness user is any individual registered with Harness with a unique email address. Users can be associated with multiple Harness accounts, and they can be in multiple user groups. You can assign [roles](./add-manage-roles.md) and [resource groups](./add-resource-groups.md) directly to users, or they can inherit them from [user groups](./add-user-groups.md).
 
-You can [add users manually](#add-users-manually) or through [automated provisioning](#use-automated-provisioning). You can create user groups at all [scopes](./rbac-in-harness.md#permissions-hierarchy-scopes).
+You can [add users manually](#add-users-manually) or through [automated provisioning](#use-automated-provisioning). You can create user groups at all [scopes](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 :::tip Service accounts
 
@@ -45,7 +45,7 @@ You can add up to 50,000 users in paid plans. Free plans and Harness Community E
 When a new user is added to a project, the user is automatically added to the `All Organization Users` user group of the parent organization. However, when a user is removed from a project, they are not removed from the `All Organization Users` user group of the parent organization.
 :::
 
-1. In Harness, go to the [scope](./rbac-in-harness.md#permissions-hierarchy-scopes) where you want to add the user.
+1. In Harness, go to the [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes) where you want to add the user.
 
    * To add a user at the account scope, select **Account Settings**, and then select **Access Control**.
    * To add a user at the organization scope, go to **Account Settings**, select **Organizations**, select the relevant organization, and then select **Access Control**.
@@ -120,7 +120,7 @@ When you add a user, Harness checks your [authentication method](/docs/platform/
 
 ## Assign roles and resource groups
 
-You assign [roles](./add-manage-roles.md) and [resource groups](./add-resource-groups.md) to users to grant them permissions and access in Harness. Users can inherit roles and resource groups from [group membership](./add-user-groups.md), or you can assign roles and resource groups directly to individual users. For more information about assigning roles and resource groups, go to [RBAC in Harness: Role binding](./rbac-in-harness.md#role-binding).
+You assign [roles](./add-manage-roles.md) and [resource groups](./add-resource-groups.md) to users to grant them permissions and access in Harness. Users can inherit roles and resource groups from [group membership](./add-user-groups.md), or you can assign roles and resource groups directly to individual users. For more information about assigning roles and resource groups, go to [RBAC in Harness: Role binding](/docs/category/platform-access-control/rbac-in-harness#role-binding).
 
 :::warning Least privilege
 
@@ -139,7 +139,7 @@ To manage users in Harness, you need a role, such as **Account Admin**, that has
 
 ### View role bindings
 
-1. In Harness, go to the [scope](./rbac-in-harness.md#permissions-hierarchy-scopes) where the user exists.
+1. In Harness, go to the [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes) where the user exists.
 
    * To edit a user at the account scope, select **Account Settings**, and then select **Access Control**.
    * To edit a user at the organization scope, go to **Account Settings**, select **Organizations**, select the relevant organization, and then select **Access Control**.
@@ -147,7 +147,7 @@ To manage users in Harness, you need a role, such as **Account Admin**, that has
 
 2. Select the user you want to view.
 3. Switch to the **Role Bindings** tab.
-4. Select a **[Scope](./rbac-in-harness.md#permissions-hierarchy-scopes)**.
+4. Select a **[Scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes)**.
 
    * **All**: List role bindings across all scopes.
    * **Account only**: List role bindings only at the account scope.
@@ -190,7 +190,7 @@ To edit group membership through a user's profile:
 
    <DocImage path={require('./static/add-users-14.png')} />
 
-3. Select a **[Scope](./rbac-in-harness.md#permissions-hierarchy-scopes)**.
+3. Select a **[Scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes)**.
 
    * **All**: List groups across all scopes.
    * **Account only**: List groups only at the account scope.
@@ -219,7 +219,7 @@ If you [use automated provisioning](#use-automated-provisioning), user accounts 
 :::
 
 1. Make sure you have a role, such as **Account Admin**, that has [permission](./permissions-reference.md) to manage users.
-2. In Harness, go to the [scope](./rbac-in-harness.md#permissions-hierarchy-scopes) where the user exists.
+2. In Harness, go to the [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes) where the user exists.
 
    * To delete a user at the account scope, select **Account Settings**, and then select **Access Control**.
    * To delete a user at the organization scope, go to **Account Settings**, select **Organizations**, select the relevant organization, and then select **Access Control**.

@@ -1,16 +1,20 @@
 ---
 title: Role-based access control (RBAC) in Harness
 description: Learn about RBAC in Harness.
-sidebar_position: 10
+sidebar_position: 1
 sidebar_label: RBAC in Harness
+sidebar_class_name: hidden
 helpdocs_topic_id: vz5cq0nfg2
 helpdocs_category_id: w4rzhnf27d
 helpdocs_is_private: false
 helpdocs_is_published: true
 canonical_url: https://www.harness.io/blog/rbac
+redirect_from:
+   - /docs/platform/role-based-access-control/rbac-in-harness
+   - /docs/category/platform-access-control
+slug: /category/platform-access-control/rbac-in-harness
 ---
 
-<!-- No redirect for /4_role-based-access-control/1-rbac-in-harness because that link didn't exist in prod. Now the link is true to prod: /role-based-access-control/rbac-in-harness. -->
 
 Role-based access control (RBAC) lets you control who can access your resources and what actions they can perform on the resources. To do this, a Harness account administrator assigns resource-related permissions to members of user groups.
 
@@ -601,5 +605,3 @@ When the feature flag is enabled, review your existing permissions carefully to 
   * If none of these permissions are present, the request fails.
   * If some permissions are present, only the components covered by those permissions are updated.
 :::
-
-

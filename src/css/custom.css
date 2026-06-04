@@ -3264,3 +3264,9 @@ html[data-theme='dark'] footer {
   animation-duration: 200ms;
   animation-timing-function: ease-out;
 }
+
+/* Hide sidebar items with hidden class */
+.theme-doc-sidebar-item-link.hidden,
+.menu__link.hidden {
+  display: none !important;
+}

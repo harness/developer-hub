@@ -26,15 +26,15 @@ The following permissions allow an API key to manage a Harness account's details
 * View license: `core_license_view`
 * Edit license: `core_license_edit`
 
-`core_account_view` and `core_account_edit` are only available at the account [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes). The `setting` and `license` permissions are available at any scope.
+`core_account_view` and `core_account_edit` are only available at the account [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes). The `setting` and `license` permissions are available at any scope.
 
 ## Audits
 
-The `core_audit_view` permission allows an API key to view audits. It is available at any [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+The `core_audit_view` permission allows an API key to view audits. It is available at any [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 ## CCM
 
-The following permissions allow an API key to interact with CCM. They are only available at the account [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+The following permissions allow an API key to interact with CCM. They are only available at the account [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 | Permission ID | Description |
 | --------- | ----------- |
@@ -60,7 +60,7 @@ The following permissions allow an API key to interact with CCM. They are only a
 
 ## Chaos Engineering
 
-The following permissions allow an API key to interact with Chaos Engineering. They are available at any [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+The following permissions allow an API key to interact with Chaos Engineering. They are available at any [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 | Permission ID | Description |
 | --------- | ----------- |
@@ -94,7 +94,7 @@ The following permissions allow an API key to interact with Chaos Engineering. T
 
 ## Connectors
 
-The following permissions allow an API key to manage connectors. They are available at any [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+The following permissions allow an API key to manage connectors. They are available at any [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 * View connectors: `core_connector_view`
 * Create/edit connectors: `core_connector_edit`
@@ -103,14 +103,14 @@ The following permissions allow an API key to manage connectors. They are availa
 
 ## Dashboards
 
-The following permissions allow an API key to manage account dashboards. They are available at either the account or organization [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes) but not the project [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+The following permissions allow an API key to manage account dashboards. They are available at either the account or organization [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes) but not the project [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 * View dashboards: `core_dashboards_view`
 * Edit dashboards: `core_dashboards_edit`
 
 ## Delegates
 
-The following permissions allow an API key to manage delegates. They are available at any [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+The following permissions allow an API key to manage delegates. They are available at any [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 | Permission ID | Description |
 | --------- | ----------- |
@@ -123,7 +123,7 @@ The following permissions allow an API key to manage delegates. They are availab
 
 ## Deployment freeze
 
-The following permissions allow an API key to manage deployment freezes. They are available at any [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+The following permissions allow an API key to manage deployment freezes. They are available at any [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 * Manage deployment freezes: `core_deploymentfreeze_manage`
 * Override deployment freezes: `core_deploymentfreeze_override`
@@ -131,7 +131,7 @@ The following permissions allow an API key to manage deployment freezes. They ar
 
 ## Environments
 
-The following permissions allow an API key to manage environments and environment groups. They are available at any [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+The following permissions allow an API key to manage environments and environment groups. They are available at any [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 | Permission ID | Description |
 | --------- | ----------- |
@@ -146,7 +146,7 @@ The following permissions allow an API key to manage environments and environmen
 
 ## Feature Flag
 
-The following permissions allow an API key to interact with the Feature Flag module. They are available at any [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+The following permissions allow an API key to interact with the Feature Flag module. They are available at any [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 | Permission ID | Description |
 | --------- | ----------- |
@@ -167,7 +167,7 @@ The following permissions allow an API key to interact with the Feature Flag mod
 
 ## Files
 
-The following permissions allow an API key to manage files. They are available at any [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+The following permissions allow an API key to manage files. They are available at any [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 * View files: `core_file_view`
 * Edit files: `core_file_edit`
@@ -176,7 +176,7 @@ The following permissions allow an API key to manage files. They are available a
 
 ## GitOps
 
-The following permissions allow an API key to interact with GitOps. They are available at any [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+The following permissions allow an API key to interact with GitOps. They are available at any [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 | Permission ID | Description |
 | --------- | ----------- |
@@ -202,7 +202,7 @@ The following permissions allow an API key to interact with GitOps. They are ava
 
 ## Governance Policies
 
-The following permissions allow an API key to manage governance policies. They are available at any [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+The following permissions allow an API key to manage governance policies. They are available at any [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 | Permission ID | Description |
 | --------- | ----------- |
@@ -216,7 +216,7 @@ The following permissions allow an API key to manage governance policies. They a
 
 ## Infrastructure as Code Management
 
-The following permissions allow an API key to manage IACM workspaces. They are available at any [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+The following permissions allow an API key to manage IACM workspaces. They are available at any [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 | Permission ID | Description |
 | --------- | ----------- |
@@ -230,7 +230,7 @@ The following permissions allow an API key to manage IACM workspaces. They are a
 
 ## Internal Developer Portal
 
-The following permissions allow an API key to interact with IDP Admin resources. They are only available at the account [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+The following permissions allow an API key to interact with IDP Admin resources. They are only available at the account [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 | Permission ID | Description |
 | --------- | ----------- |
@@ -257,7 +257,7 @@ The following permissions allow an API key to interact with IDP Admin resources.
 
 ## Input Sets
 
-The following permissions allow an API key to manage Input Sets. They are available at any [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+The following permissions allow an API key to manage Input Sets. They are available at any [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 * View input sets: `core_inputset_view`
 * Create/edit input sets: `core_inputset_edit`
@@ -265,7 +265,7 @@ The following permissions allow an API key to manage Input Sets. They are availa
 
 ## Organizations
 
-The following permissions allow an API key to manage organizations. They are available at either the account or organization [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes) but not the project [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+The following permissions allow an API key to manage organizations. They are available at either the account or organization [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes) but not the project [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 * View organizations: `core_organization_view`
 * Create organizations: `core_organization_create`
@@ -274,7 +274,7 @@ The following permissions allow an API key to manage organizations. They are ava
 
 ## Pipelines
 
-The following permissions allow an API key to manage pipelines. They are available at any [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+The following permissions allow an API key to manage pipelines. They are available at any [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 * View pipelines: `core_pipeline_view`
 * Create/edit pipelines: `core_pipeline_edit`
@@ -283,7 +283,7 @@ The following permissions allow an API key to manage pipelines. They are availab
 
 ## Projects
 
-The following permissions allow an API key to manage projects. They are available at any [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+The following permissions allow an API key to manage projects. They are available at any [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 * View projects: `core_project_view`
 * Create projects: `core_project_create`
@@ -296,7 +296,7 @@ The following permissions allow an API key to manage RBAC and authorization rela
 
 ### Authorization
 
-Authorization settings management permissions are only available at the account [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+Authorization settings management permissions are only available at the account [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 * View authorization settings: `core_authsetting_view`
 * Edit authorization settings: `core_authsetting_edit`
@@ -304,7 +304,7 @@ Authorization settings management permissions are only available at the account 
 
 ### Resource groups
 
-Resource group management permissions are available at any [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+Resource group management permissions are available at any [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 * View resource groups: `core_resourcegroup_view`
 * Create/edit resource groups: `core_resourcegroup_edit`
@@ -312,7 +312,7 @@ Resource group management permissions are available at any [scope](../../role-ba
 
 ### Roles
 
-Role management permissions are available at any [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+Role management permissions are available at any [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 * View roles: `core_role_view`
 * Create/edit roles: `core_role_edit`
@@ -320,14 +320,14 @@ Role management permissions are available at any [scope](../../role-based-access
 
 ### User groups
 
-User group management permissions are available at any [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+User group management permissions are available at any [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 * View user groups: `core_usergroup_view`
 * Manage user groups: `core_usergroup_manage`
 
 ### Users
 
-User management permissions are available at any [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+User management permissions are available at any [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 * Invite users: `core_user_invite`
 * View users: `core_user_view`
@@ -335,13 +335,13 @@ User management permissions are available at any [scope](../../role-based-access
 
 ### Service accounts
 
-The following permissions allow an API key or user to manage [service accounts](../../role-based-access-control/add-and-manage-service-account.md) in Harness. These permissions are only available at the account [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes). <!-- conflicting info: table said they are available at all scopes-->
+The following permissions allow an API key or user to manage [service accounts](../../role-based-access-control/add-and-manage-service-account.md) in Harness. These permissions are only available at the account [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes). <!-- conflicting info: table said they are available at all scopes-->
 
 * View service accounts: `core_serviceaccount_view`
 * Create/edit service accounts: `core_serviceaccount_edit`
 * Delete service accounts: `core_serviceaccount_delete`
 
-To manage [API keys](./add-and-manage-api-keys.md) for service accounts, the `core_serviceaccount_manageapikey` permission can be applied at any [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+To manage [API keys](./add-and-manage-api-keys.md) for service accounts, the `core_serviceaccount_manageapikey` permission can be applied at any [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 ## Secrets
 
@@ -352,11 +352,11 @@ The following permissions allow an API key to manage secrets.
 * Access secrets: `core_secret_access`
 * Delete secrets: `core_secret_delete`
 
-`core_secret_view` is only available at the account [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes). All other secrets permissions are available at all scopes.
+`core_secret_view` is only available at the account [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes). All other secrets permissions are available at all scopes.
 
 ## Services
 
-The following permissions allow an API key to manage services. They are available at any [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+The following permissions allow an API key to manage services. They are available at any [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 * View services: `core_service_view`
 * Create/edit services: `core_service_edit`
@@ -365,7 +365,7 @@ The following permissions allow an API key to manage services. They are availabl
 
 ## SMTP
 
-The following permissions allow an API key to manage the SMTP configuration. These are only available at the account [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+The following permissions allow an API key to manage the SMTP configuration. These are only available at the account [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 * View SMTP config: `core_smtp_view`
 * Create/edit SMTP config: `core_smtp_edit`
@@ -373,7 +373,7 @@ The following permissions allow an API key to manage the SMTP configuration. The
 
 ## SRM
 
-The following permissions allow an API key to manage SRM. They are available at any [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+The following permissions allow an API key to manage SRM. They are available at any [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 | Permission ID | Description |
 | --------- | ----------- |
@@ -387,7 +387,7 @@ The following permissions allow an API key to manage SRM. They are available at 
 
 ## STO
 
-The following permissions allow an API key to manage STO. They are available at any [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+The following permissions allow an API key to manage STO. They are available at any [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 | Permission ID | Description |
 | --------- | ----------- |
@@ -401,7 +401,7 @@ The following permissions allow an API key to manage STO. They are available at 
 
 ## Templates
 
-The following permissions allow an API key to manage templates. They are available at any [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+The following permissions allow an API key to manage templates. They are available at any [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 | Permission ID | Description |
 | --------- | ----------- |
@@ -413,7 +413,7 @@ The following permissions allow an API key to manage templates. They are availab
 
 ## Variables
 
-The following permissions allow an API key to manage variables. They are available at any [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+The following permissions allow an API key to manage variables. They are available at any [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 * View variables: `core_variable_view`
 * Create/edit variables: `core_variable_edit`
@@ -421,7 +421,7 @@ The following permissions allow an API key to manage variables. They are availab
 
 ## Database DevOps
 
-The following permissions allow an API key to interact with Database DevOps resources. They are available at any [scope](../../role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+The following permissions allow an API key to interact with Database DevOps resources. They are available at any [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 | Permission ID           | Description              |
 |-------------------------|--------------------------|
