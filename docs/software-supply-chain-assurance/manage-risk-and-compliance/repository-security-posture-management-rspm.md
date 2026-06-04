@@ -112,6 +112,12 @@ The SBOM section provides a comprehensive view of your repository’s dependenci
 * Click on any dependency to open the dependency side panel.
   * The **Overview tab** of the dependency side panel opens by default. It has the following sections:
     * **Details** - Review the dependency’s current and latest available versions, license, package manager, and associated Package URL (PURL).
+    * **OSS Risks** - Displays detailed information about the OSS risks associated with the selected dependency, including the total number of identified risks. Each risk is presented in a collapsible section. Click a collapsed section to view its details.
+      :::note
+
+      If multiple risks are present, the first section is expanded by default, while the remaining sections are collapsed. If only one risk is present, its section is expanded by default.
+
+      :::
     * **Vulnerabilities** - Displays the number of vulnerabilities by severity (Critical, High, Medium, and Low) and their source.
     * **Remediation** - Provides information related to the remediation of the dependency version. For more information, see [OSS Risks Remediation](/docs/software-supply-chain-assurance/open-source-management/oss-risks-remediation).
 
