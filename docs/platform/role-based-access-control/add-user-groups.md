@@ -2,6 +2,8 @@
 title: Manage user groups
 description: User groups are part of RBAC in Harness.
 sidebar_position: 50
+redirect_from:
+- /docs/platform/role-based-access-control/rbac-in-harness#split-manage-permissions
 helpdocs_topic_id: dfwuvmy33m
 helpdocs_category_id: w4rzhnf27d
 helpdocs_is_private: false
@@ -12,11 +14,11 @@ User groups contain multiple Harness users. You assign [roles](./add-manage-role
 
 You can also assign roles and resource groups to individual users that are not in a group. However, user groups help keep your RBAC organized and make it easier to manage permissions and access. Instead of modifying each user individually, you can edit the permissions and access for the entire group at once.
 
-Harness includes some [built-in user groups](#built-in-user-groups), and you can [create user groups manually](#create-user-groups-manually), through [inheritance](#create-roles-by-inheritance-assign-roles), or through [automated provisioning](#use-automated-provisioning). You can create user groups at all [scopes](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes).
+Harness includes some [built-in user groups](#built-in-user-groups), and you can [create user groups manually](#create-user-groups-manually), through [inheritance](#create-roles-by-inheritance-assign-roles), or through [automated provisioning](#use-automated-provisioning). You can create user groups at all [scopes](./rbac-in-harness.md#permissions-hierarchy-scopes).
 
 ## Built-in user groups
 
-Harness has a built-in user group at each [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes). This group is called **All Project Users**, **All Organization Users**, or **All Account Users**, depending on the scope. By default, users within a particular scope are in the **All Users** group for that scope.
+Harness has a built-in user group at each [scope](./rbac-in-harness.md#permissions-hierarchy-scopes). This group is called **All Project Users**, **All Organization Users**, or **All Account Users**, depending on the scope. By default, users within a particular scope are in the **All Users** group for that scope.
 
 * **All Account Users:** All users in the account scope.
 * **All Organization Users:** All users in an organization's scope.
@@ -55,7 +57,7 @@ The name of the corresponding user group created in Harness will retain the spec
 
 To create user groups in Harness, you need a role, such as **Account Admin**, that has [permission](./permissions-reference.md) to view and manage user groups.
 
-1. In Harness, go to the [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes) where you want to create the user group.
+1. In Harness, go to the [scope](./rbac-in-harness.md#permissions-hierarchy-scopes) where you want to create the user group.
 
    * To create a user group at the account scope, select **Account Settings**, and then select **Access Control**.
    * To create a user group at the organization scope, go to **Account Settings**, select **Organizations**, select the relevant organization, and then select **Access Control**.
@@ -95,7 +97,7 @@ To inherit user groups in Harness, you need the following [permissions](./permis
    Learn more about split Manage permissions [here](/docs/platform/role-based-access-control/rbac-in-harness#split-manage-permissions).
    :::
 
-1. In Harness, go to the [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes) where you want to inherit the user group.
+1. In Harness, go to the [scope](./rbac-in-harness.md#permissions-hierarchy-scopes) where you want to inherit the user group.
 
    * To inherit a user group at the organization scope, go to **Account Settings**, select **Organizations**, select the relevant organization, and then select **Access Control**.
    * To inherit a user group at the project scope, go to **Projects**, select the relevant project, and then select **Access Control**.
@@ -117,7 +119,7 @@ When viewing user groups at higher scopes, you can find a list of **Organization
 
 ## Assign roles and resource groups
 
-Initially, user groups have no permissions or access. You assign [roles](./add-manage-roles.md) and [resource groups](./add-resource-groups.md) to user groups, and then the permissions and access granted by the assigned roles and resource groups are applied to all group members. For more information about assigning roles and resource groups, go to [RBAC in Harness: Role binding](/docs/category/platform-access-control/rbac-in-harness#role-binding).
+Initially, user groups have no permissions or access. You assign [roles](./add-manage-roles.md) and [resource groups](./add-resource-groups.md) to user groups, and then the permissions and access granted by the assigned roles and resource groups are applied to all group members. Go to [RBAC in Harness: Role binding](./rbac-in-harness.md#role-binding) for more information.
 
 :::warning Least privilege
 
@@ -134,7 +136,7 @@ While Harness includes some built-in roles and resource groups, to ensure the le
 
 To manage user groups in Harness, you need a role, such as **Account Admin**, that has [permission](./permissions-reference.md) to view and manage user groups.
 
-1. In Harness, go to the [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes) where you want to configure the group's  role and resource group assignments.
+1. In Harness, go to the [scope](./rbac-in-harness.md#permissions-hierarchy-scopes) where you want to configure the group's  role and resource group assignments.
 
    * To edit a user group at the account scope, select **Account Settings**, and then select **Access Control**.
    * To edit a user group at the organization scope, go to **Account Settings**, select **Organizations**, select the relevant organization, and then select **Access Control**.
@@ -153,7 +155,7 @@ To manage user groups in Harness, you need a role, such as **Account Admin**, th
 
 Use these steps to edit a user group's name, description, or tags.
 
-1. In Harness, go to the [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes) where the user group exists.
+1. In Harness, go to the [scope](./rbac-in-harness.md#permissions-hierarchy-scopes) where the user group exists.
 
    * To edit a user group at the account scope, select **Account Settings**, and then select **Access Control**.
    * To edit a user group at the organization scope, go to **Account Settings**, select **Organizations**, select the relevant organization, and then select **Access Control**.
@@ -168,7 +170,7 @@ Use these steps to edit a user group's name, description, or tags.
 
 Use these steps to add and remove users in a user group.
 
-1. In Harness, go to the [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes) where the user group exists.
+1. In Harness, go to the [scope](./rbac-in-harness.md#permissions-hierarchy-scopes) where the user group exists.
 
    * To edit a user group at the account scope, select **Account Settings**, and then select **Access Control**.
    * To edit a user group at the organization scope, go to **Account Settings**, select **Organizations**, select the relevant organization, and then select **Access Control**.
@@ -183,7 +185,7 @@ Use these steps to add and remove users in a user group.
 
 You can configure notification channels for Harness to send messages to group members. When you assign an alert notification rule to a group, the channels specified in the group's **Notification Preferences** are used to notify all group members.
 
-1. In Harness, go to the [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes) where the user group exists.
+1. In Harness, go to the [scope](./rbac-in-harness.md#permissions-hierarchy-scopes) where the user group exists.
 
    * To edit a user group at the account scope, select **Account Settings**, and then select **Access Control**.
    * To edit a user group at the organization scope, go to **Account Settings**, select **Organizations**, select the relevant organization, and then select **Access Control**.
@@ -202,7 +204,7 @@ You can configure notification channels for Harness to send messages to group me
 
 ## Delete user groups
 
-1. In Harness, go to the [scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes) where the user group exists.
+1. In Harness, go to the [scope](./rbac-in-harness.md#permissions-hierarchy-scopes) where the user group exists.
 
    * To delete a user group at the account scope, select **Account Settings**, and then select **Access Control**.
    * To delete a user group at the organization scope, go to **Account Settings**, select **Organizations**, select the relevant organization, and then select **Access Control**.
@@ -211,3 +213,80 @@ You can configure notification channels for Harness to send messages to group me
 2. Select **User Groups** in the header.
 3. Locate the group you want to delete.
 4. Select **More options** (&vellip;), and then select **Delete**.
+
+## Split Manage Permissions
+
+### User Groups
+
+Harness now supports granular permissions for [User Groups](/docs/platform/role-based-access-control/add-user-groups). Instead of a single broad Manage permission that allowed full control, you can now grant access only to the specific actions required.
+
+#### Feature Flag Rollout Process
+
+This feature is controlled by two feature flags that must be enabled in the following order:
+
+- `PL_USER_GROUPS_MANAGE_PERMISSION_SPLIT_MIGRATION`: This flag enables migration — roles are migrated into granular permissions as shown in the [table below](#user-group-permissions).
+- `PL_USER_GROUPS_MANAGE_PERMISSION_SPLIT_ENFORCE`: Permissions are now enforced — UI changes and access checks depend on the split permissions.
+
+
+:::note 
+Reach out to [Harness Support](mailto:support@harness.io) to enable these feature flags.
+:::
+
+#### User Group Permissions
+
+The **View** permission remains unchanged and is always available. The **Manage** permission for User Groups has been split into multiple granular permissions to provide administrators with finer control, as shown below:
+
+:::note
+`core_usergroup_manage` permission is a no longer available once the feature flag is enabled.
+:::
+   
+| **Action**              | **Permission**              | **Description**                                                               |
+| ----------------------- | -------------------------------------- | ----------------------------------------------------------------------------- |
+| Create                  | `core_usergroup_create`                | Permission to create a user group                                             |
+| Edit (metadata)         | `core_usergroup_editMetadata`          | Permission to edit metadata of a user group                                   |
+| Delete                  | `core_usergroup_delete`                | Permission to delete a user group                                             |
+| Manage Users            | `core_usergroup_manageUsers`           | Permission to manage users in a user group                                    |
+| Manage SSO              | `core_usergroup_manageSSO`             | Permission to perform SSO-related operations within the scope of a user group |
+| Manage SCIM             | `core_usergroup_manageSCIM`            | Permission to manage a user group through SCIM                                |
+| Manage Notifications    | `core_usergroup_manageNotifications`   | Permission to manage notification settings for a user group                   |
+| Manage Role Assignments | `core_usergroup_manageRoleAssignments` | Permission to manage role assignments for a user group                        |
+
+
+<details>
+<summary>View all User Group permissions</summary>
+
+The following permissions are always available:
+
+- `core_usergroup_view` — permission to view a user group  
+- `core_usergroup_manage` — permission to manage a user group
+
+**With feature flag enabled**:
+
+- `core_usergroup_create` — permission to create a user group  
+- `core_usergroup_editMetadata` — permission to edit metadata of a user group  
+- `core_usergroup_delete` — permission to delete a user group  
+- `core_usergroup_manageUsers` — permission to manage users in a user group  
+- `core_usergroup_manageSSO` — permission to perform SSO-related operations within the scope of a user group.  
+- `core_usergroup_manageSCIM` — permission to manage user group through SCIM. 
+- `core_usergroup_manageNotifications` — permission to manage notifications settings for a user group.
+- `core_usergroup_manageRoleAssignments` — permission to manage role assignments for a user group
+
+</details>
+
+:::warning 
+When the feature flag is enabled, review your existing permissions carefully to understand how they are used and which additional permissions may be required.
+
+* If your automation assigns the `core_usergroup_manage` permission to the user, then it now needs to assign the new permissions. Otherwise, users will not be able to perform the intended operations.
+* Any APIs that were previously accessed using the `core_usergroup_manage` permission now require new granular permissions. Review the APIs calls and add the required permissions for each operation; otherwise, those API requests will fail after the feature flag is enabled.
+
+**New permission behavior**
+
+* **Creating a user group**
+  The `core_usergroup_create` permission is mandatory. If additional permissions (such as `core_usergroup_manageUsers`, `core_usergroup_manageSSO`, or `core_usergroup_manageNotifications`) are missing, the request still succeeds, but only the components covered by the granted permissions are created.
+
+* **Updating a user group**
+  At least one relevant edit or manage permission is required (for example, `core_usergroup_editMetadata`, `core_usergroup_manageUsers`, `core_usergroup_manageSSO`, or `core_usergroup_manageNotifications`).
+
+  * If none of these permissions are present, the request fails.
+  * If some permissions are present, only the components covered by those permissions are updated.
+:::

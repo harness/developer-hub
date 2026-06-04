@@ -9,6 +9,7 @@ helpdocs_is_published: true
 redirect_from:
   - /docs/platform/authentication/multiple-identity-providers
   - /docs/platform/authentication/authentication-overview
+  - /docs/category/authentication
 keywords:
   - authentication
   - Harness authentication
