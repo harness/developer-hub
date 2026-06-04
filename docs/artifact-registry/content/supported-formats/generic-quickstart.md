@@ -57,25 +57,6 @@ An upstream proxy allows your registry to fetch artifacts from external sources 
 6. Choose visibility between **Public** and **Private**.
 7. Provide the URL of the custom source for your **Remote registry**.
 
-:::note Custom URL Structure and Path Resolution
-When configuring a custom upstream URL, it's important to understand how the URL structure impacts artifact resolution and download paths. The custom URL you provide serves as the base path, and the registry automatically appends the artifact name and version to construct the complete download URL.
-
-
-Your custom URL should point to a publicly accessible location with a logical folder structure where artifacts are stored. 
-
-**Example:**
-If you configure your custom URL as:
-```
-https://www.nuget.org/api/v2/package/
-```
-
-When downloading artifact `Newtonsoft.Json` version `10.0.3`, the registry resolves to:
-```
-https://www.nuget.org/api/v2/package/Newtonsoft.Json/10.0.3
-```
-Include the complete API path and folder structure in your custom URL. This way, you only need to specify the artifact name and version during download operations, keeping your workflow clean and consistent.
-:::
-
 8. Click **Create Registry** to finalize.
 
 :::info registry name criteria
@@ -94,6 +75,53 @@ Your registry name must start with a letter and can include `lowercase alphanume
 
 </TabItem>
 </Tabs>
+
+---
+
+## Custom URL and API path mapping
+
+When you configure a custom upstream URL, the URL you provide serves as the base path. Your custom URL should point to a publicly accessible location with a logical folder structure where artifacts are stored.
+
+**Example:** If you configure your custom URL as:
+```
+https://www.nuget.org/api/v2/package/
+```
+
+When downloading artifact `Newtonsoft.Json` version `10.0.3`, the upstream registry resolves to:
+```
+https://www.nuget.org/api/v2/package/Newtonsoft.Json/10.0.3
+```
+
+Include the complete API path and folder structure in your custom URL. This way, you only need to specify the artifact name and version during download operations.
+
+### How the Harness API URL maps to the upstream URL
+
+```
+https://pkg.harness.io/pkg/<ACCOUNT_ID>/<REGISTRY_NAME>/generic/<ARTIFACT_NAME>/<VERSION>/<NESTED_PATH>
+```
+
+- **`ARTIFACT_NAME`**: The artifact name you want displayed in Harness Artifact Registry. This is used by Harness for internal tracking and does not get passed to the upstream URL.
+- **`VERSION`**: The artifact version you want displayed in Harness Artifact Registry. This is also used by Harness internally and does not get passed to the upstream URL.
+- **`NESTED_PATH`**: Everything after `ARTIFACT_NAME/VERSION` is passed directly to your custom base URL for resolution.
+
+**Example:**
+
+Custom URL configured on the upstream proxy:
+```
+https://www.nuget.org/api/v2/package/
+```
+
+To cache `Newtonsoft.Json` version `10.0.3` from this source into HAR with a display name of `my-nuget-pkg` at version `1.0`:
+
+```bash
+curl --location 'https://pkg.harness.io/pkg/<ACCOUNT_ID>/<REGISTRY_NAME>/generic/my-nuget-pkg/1.0/Newtonsoft.Json/10.0.3' \
+--header 'x-api-key: <API_KEY>' -J -O
+```
+
+In this request:
+- `my-nuget-pkg` = artifact name shown in HAR (used by Harness)
+- `1.0` = version shown in HAR (used by Harness)
+- `Newtonsoft.Json/10.0.3` = nested path passed to the custom base URL, resolving to `https://www.nuget.org/api/v2/package/Newtonsoft.Json/10.0.3`
 
 ---
 
