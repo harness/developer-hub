@@ -87,6 +87,10 @@ If you have built a [Custom Plugin](/docs/internal-developer-portal/plugins/cust
 
 ## Embedding an Iframe
 
+:::caution Limited Support
+Iframe embedding via the sidebar has limited support now. Due to Content Security Policy (CSP) enforcement on the Harness platform, iframes will be blocked from rendering content from domains that are not explicitly whitelisted. If your target URL's domain is not on the CSP allowlist, the iframe will fail to load. Contact your Harness administrator to verify whether your domain is whitelisted before using this feature.
+:::
+
 You can embed an iframe inside the sidenav layout to display external web content directly within your Harness IDP.
 
 ![](./static/iframe-embedd.png)
@@ -114,5 +118,5 @@ When configuring the iframe SidebarItem:
   * `url`: The external URL you want to display within the iframe
 
 :::info
-iframes come with certain inherent limitations — for example, OAuth will not work and some websites put limits or block themselves from being rendered inside iframes.
+iframes come with certain inherent limitations. For example, OAuth will not work and some websites block themselves from being rendered inside iframes. Additionally, CSP enforcement will block iframes from rendering content from non-whitelisted domains.
 :::

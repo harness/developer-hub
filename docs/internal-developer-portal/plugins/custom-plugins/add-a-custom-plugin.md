@@ -186,6 +186,10 @@ new-plugin/
 
 ## Configurations
 
+:::warning CSP Enforcement: Use the Backend Proxy for External Calls
+Due to Content Security Policy (CSP) enforcement, direct calls to external endpoints from custom plugins will be blocked. Use the [Backend Proxy](/docs/internal-developer-portal/plugins/delegate-proxy) instead to communicate with external endpoints.
+:::
+
 7. Now Click Next and go to the Configurations Page by default configuration is disabled.
 
 8. If your plugin doesn't require any configuration settings like **Proxy** or authentication for **API** you can go ahead and enable the plugin directly. 
