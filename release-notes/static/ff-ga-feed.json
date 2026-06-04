@@ -1582,5 +1582,17 @@
     "description": "Enables support for onboarding Bitbucket repositories in Repository Security Posture Management (RSPM)",
     "gaStartDate": "2026-05-26",
     "module": "Supply Chain Security"
+  },
+  {
+    "flagKey": "OPA_GITX_PARITY",
+    "description": "Enables enhanced Git Experience UI features for OPA policies.",
+    "gaStartDate": "2026-06-04",
+    "module": "Pipeline"
+  },
+  {
+    "flagKey": "OPA_GITX_DIRECT_FETCH",
+    "description": "Enables direct batch fetch of policy content from Git during evaluation, improving performance and error reporting.",
+    "gaStartDate": "2026-06-04",
+    "module": "Pipeline"
   }
 ]
