@@ -112,6 +112,16 @@ export const university: CardItem[] = [
     ILT_available: true,
   },
 
+      {
+    title: "Application & API Security Testing",
+    module: MODULES.ast,
+    description:
+      "By analyzing API traffic, scanning for risks, ensures that your application is secure and reliable.",
+    link: "/university/api-application-testing",
+    numberOfCerts: 1,
+    ILT_available: true,
+  },
+
   {
     title: "Application Security Testing - STO",
     module: MODULES.sto,

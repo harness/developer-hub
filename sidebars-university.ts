@@ -83,6 +83,13 @@ const sidebars: SidebarsConfig = {
           id: "api-application-protection",
           className: "sidebar-arp"
         },
+        //ast
+        {
+          type: "doc",
+          label: "Application & API Security Testing",
+          id: "api-application-testing",
+          className: "sidebar-ast"
+        },      
         //sto
         {
           type: "doc",
