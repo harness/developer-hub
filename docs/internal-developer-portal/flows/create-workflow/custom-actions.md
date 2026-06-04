@@ -174,11 +174,11 @@ parameters:
         type: string
       property-2:
         title: title-2
-    token:
-      title: Harness Token
-      type: string
-      ui:widget: password
-      ui:field: HarnessAuthToken
+      token:
+        title: Harness Token
+        type: string
+        ui:widget: password
+        ui:field: HarnessAuthToken
   - title: <PAGE-2 TITLE>
     properties:
       property-1:
@@ -186,17 +186,17 @@ parameters:
         type: string
       property-2:
         title: title-2
+        type: string
   - title: <PAGE-n TITLE>  
 ```
 :::
 
 ```YAML
-```YAML
-token:
-    title: Harness Token
-    type: string
-    ui:widget: password
-    ui:field: HarnessAuthToken
+      token:
+        title: Harness Token
+        type: string
+        ui:widget: password
+        ui:field: HarnessAuthToken
 ```
 
 #### 2. Referencing the **`token`** in the **`steps`** spec of the Workflow YAML:

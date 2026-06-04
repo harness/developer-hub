@@ -211,11 +211,11 @@ parameters:
 :::
 
 ```YAML
-token:
-    title: Harness Token
-    type: string
-    ui:widget: password
-    ui:field: HarnessAuthToken
+      token:
+        title: Harness Token
+        type: string
+        ui:widget: password
+        ui:field: HarnessAuthToken
 ```
 
 #### 2. Referencing the **`token`** in the **`steps`** spec of the Workflow YAML:
@@ -234,11 +234,11 @@ parameters:
       username:
         title: Username
         type: string
-    token:
-      title: Harness Token
-      type: string
-      ui:widget: password
-      ui:field: HarnessAuthToken
+      token:
+        title: Harness Token
+        type: string
+        ui:widget: password
+        ui:field: HarnessAuthToken
 steps:
   - id: trigger
     name: Run Deploy service
