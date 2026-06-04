@@ -179,7 +179,19 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 ### Version 26.06.89303 <!-- June 03, 2026 -->
 
 #### Fixed issues
+
 - Fixed CV data collection connectors to honour NO_PROXY/nonProxyHosts settings when a proxy is configured on the delegate. [CDS-122881]
+- Fixed AWS Secrets Manager failing after delegate upgrade from 26.05.89102 to 26.05.89205. The issue occurred because singleton credential caching caused conflicts during background refresh. The fix replaces singleton instances with independent instances and disables background credential refresh. [PL-71883]
+- Fixed AWS Secrets Manager defaulting URL to region name instead of URL in newer AWS regions. The issue occurred when AWS KMS fallback returned the region ID instead of the proper URL, causing malformed URL exceptions. The fix ensures all newer regions return the correct URL format. [CDS-124845]
+- Fixed Amazon S3 artifact triggers failing with INVALID_ARTIFACT_SERVER error after delegate upgrade from 26.01.88303 to 26.05.89101. The issue occurred during AWS S3 API v1 to v2 migration. The fix ensures proper migration handling. [CDS-123533]
+- Fixed custom artifact polling failing intermittently under concurrent parallel stage execution. The issue occurred when multiple custom artifacts (primary and sidecar) received the same execution ID, causing temp file overwrites and FileNotFoundException errors. The fix appends a unique suffix to temp filenames to prevent conflicts. [CDS-123500]
+- Fixed artifact triggers permanently failing when artifact source does not exist at trigger creation time. The trigger now gracefully handles missing packages instead of marking them as failures. [CDS-123495]
+- Fixed OCI Helm chart validation failing when pulling charts from AWS ECR. The issue occurred when the manifest base path was dropped during ECR queries, causing RepositoryNotFoundException for charts at base path and chart name locations. The fix ensures base path is retained in all three call sites: deploy-time chart fetch, chart-metadata fetch, and chart-version listing. [CDS-123082]
+- Fixed self-hosted Windows Kubernetes case failure. [CI-21600]
+
+#### Breaking changes
+
+- **Fixed Terraform Provider connector validation to use the connector's delegate selector instead of the executing delegate's selector.** Previously, when a Git connector and its secret manager used different delegate selectors pointing to delegates in separate AWS accounts, validation would fail because no single delegate could satisfy both selectors. This fix is controlled by the feature flag PIE_GITX_EVALUATE_ENCRYPTED_CAPABILITIES. [CDS-118093]
 
 ### Version 26.05.89210 <!-- June 03, 2026 -->
 
