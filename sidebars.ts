@@ -5524,20 +5524,33 @@ const sidebars: SidebarsConfig = {
         'release-management/notifications',
         {
           type: 'html',
-          value: 'Examples and Walkthroughs',
+          value: 'Troubleshooting & Resources',
           className: 'horizontal-bar',
         },
         {
           type: 'category',
-          label: 'Examples and Walkthroughs',
+          label: 'Use Cases',
           link: {
             type: 'generated-index',
-            slug: '/category/release-orchestration-examples',
+            slug: '/category/release-orchestration-use-cases',
           },
           collapsed: true,
           items: [
             'release-management/examples-and-walkthroughs/end-to-end-release-walkthrough',
             'release-management/examples-and-walkthroughs/multi-service-release-example',
+            'release-management/examples-and-walkthroughs/passing-activity-outputs',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Troubleshooting',
+          link: {
+            type: 'generated-index',
+            slug: '/category/release-orchestration-troubleshooting',
+          },
+          collapsed: true,
+          items: [
+            'release-management/troubleshooting/activity-output-troubleshooting',
           ],
         },
       ],

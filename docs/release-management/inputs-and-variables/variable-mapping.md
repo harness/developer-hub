@@ -25,8 +25,64 @@ The variable mapping flow works as follows:
 3. **Activity Variables** (for pipeline activities) get mapped to phase variables
    - Phase variables, in turn, get mapped to global variables
    - Activity variables map to the pipeline in case of an automated activity
+4. **Activity Outputs** can be captured from pipeline executions and used as inputs to later activities
+   - Outputs from one activity become inputs to subsequent activities
+   - This enables dynamic workflows where values generated in early phases flow to later phases
 
 This way, there is an easy flow of variables and ease of use for end users to understand the minimum set of inputs they have to provide.
+
+## Activity Output Mapping
+
+Activities can capture outputs from pipeline executions and make those values available to other activities. This is useful when you need to:
+
+- Generate a dynamic value (version number, artifact URL) in one pipeline
+- Use that value as input to multiple subsequent pipelines
+- Maintain data consistency across different phases
+
+### Configuring Activity Outputs
+
+In the source activity (the one generating the value), define outputs that capture pipeline output variables:
+
+```yaml
+activity:
+  id: generate_version
+  outputs:
+    RELEASE_VERSION: <+pipeline.stages.version_stage.spec.execution.steps.generate_step.output.outputVariables.VERSION>
+```
+
+### Mapping Outputs to Inputs
+
+In the process input configuration, map the source activity's output to the destination activity's input:
+
+```yaml
+processInput:
+  phases:
+    - id: deployment
+      activities:
+        - id: deploy_activity
+          inputs:
+            VERSION: <+phase.generation.activity.generate_version.outputs.RELEASE_VERSION>
+```
+
+### Expression Syntax for Activity Outputs
+
+To reference an activity's output in a process input:
+
+```
+<+phase.<PHASE_ID>.activity.<ACTIVITY_ID>.outputs.<OUTPUT_NAME>>
+```
+
+**Example:**
+- Phase ID: `build_phase`
+- Activity ID: `build_app`
+- Output name: `ARTIFACT_URL`
+- Expression: `<+phase.build_phase.activity.build_app.outputs.ARTIFACT_URL>`
+
+:::important Phase Dependencies
+When using activity outputs, ensure the destination phase depends on the source phase using `depends-on`. Without this dependency, phases may execute in parallel, and the output value won't be available when needed.
+:::
+
+Go to [Passing Activity Outputs](/docs/release-orchestration/examples-and-walkthroughs/passing-activity-outputs) to explore a complete walkthrough with examples.
 
 ## Benefits
 
@@ -49,20 +105,6 @@ These global variables will in turn be mapped to:
 - **Activity variables**: Each activity (especially pipeline activities) can have variables that map to phase variables
 
 When executing the release, users only need to provide these 3 global variables, and the system handles the mapping to phase and activity variables automatically.
-
-## Best Practices
-
-### Clear Mapping
-Use clear mappings:
-- **Descriptive Names**: Clear variable names
-- **Documentation**: Document mappings
-- **Examples**: Provide examples
-
-### Error Handling
-Handle mapping errors:
-- **Default Values**: Provide defaults
-- **Error Messages**: Clear errors
-- **Fallbacks**: Fallback values
 
 ## Related Topics
 

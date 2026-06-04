@@ -15,6 +15,47 @@ Activity variables are scoped to the activity where they're defined, making them
 
 Each activity can have its own unique configuration, even when multiple activities use the same template. This makes activity variables the most specific variable scope available, providing the narrowest scope in the variable hierarchy.
 
+## Activity Inputs vs Activity Outputs
+
+Activities work with two types of variables:
+
+### Activity Inputs
+
+Activity inputs are values that the activity receives from external sources (process inputs, global variables, or phase variables). These inputs are then mapped to pipeline variables for automated activities.
+
+**Example:**
+```yaml
+activity:
+  inputs:
+    DEPLOYMENT_VERSION:
+      type: string
+      default: "v1.0.0"
+  pipeline:
+    inputSet:
+      variables:
+        - name: version
+          value: <+activityInput.DEPLOYMENT_VERSION>
+```
+
+The expression `<+activityInput.DEPLOYMENT_VERSION>` references the activity's input and passes it to the pipeline.
+
+### Activity Outputs
+
+Activity outputs are values that the activity captures from pipeline execution and makes available to other activities. These allow data to flow from one activity to subsequent activities.
+
+**Example:**
+```yaml
+activity:
+  outputs:
+    BUILD_VERSION: <+pipeline.stages.build.spec.execution.steps.version_step.output.outputVariables.VERSION>
+```
+
+This captures the `VERSION` output variable from the pipeline and makes it available as `BUILD_VERSION` to other activities.
+
+:::tip
+Activity outputs enable dynamic workflows where values generated in early activities (like version numbers or artifact URLs) flow automatically to later activities. Go to [Passing Activity Outputs](/docs/release-orchestration/examples-and-walkthroughs/passing-activity-outputs) to see a complete example.
+:::
+
 ## Examples
 
 Activity variables are useful for configuration that's specific to a single activity's execution. Common examples include the image tag or artifact ID to deploy, the Jira project or issue type to be updated for a release, or the Slack channel to notify for this activity only.
