@@ -124,6 +124,30 @@ Wondering where versions 1.145.xx, 1.146.xx, and 1.147.xx are? Those releases we
 
 ## June 2026
 
+### Version 1.151.1
+
+#### New features and enhancements
+
+- ECS Rolling deployments now support skipping AWS Application Auto Scaling API interactions through the **Skip application auto scaling** option, allowing you to manage auto-scaling externally and prevent API rate limit issues when deploying multiple services in parallel. This feature requires the feature flag `CDS_ECS_SKIP_APPLICATION_SCALING` and delegate version `26.05.89205` or later. Contact [Harness Support](mailto:support@harness.io) to enable. Go to [Skip application auto scaling](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/#skip-application-auto-scaling) to configure this option.
+
+- Published new Docker images for AWS CDK deployments with CDK version 2.1125.0. The updated images are available at [harness/aws-cdk-plugin](https://hub.docker.com/r/harness/aws-cdk-plugin/tags).
+
+- Published new Docker images for AWS SAM deployments with SAM CLI version 1.161.1. The updated images are available at [harness/aws-sam-plugin](https://hub.docker.com/r/harness/aws-sam-plugin/tags).
+
+- Cron triggers now support AND semantics for complex scheduling where both date range and day-of-week conditions must be satisfied simultaneously. For example, the cron expression `0 3 16-22 * 1` executes at 3:00 AM UTC only on Mondays between the 16th and 22nd of the month, enabling precise scheduling for monthly maintenance windows, deployment schedules, and compliance tasks. This feature requires the feature flag `PIPE_CRON_TRIGGER_AND_SEMANTICS`. Contact [Harness Support](mailto:support@harness.io) to enable. Go to [Schedule pipelines using cron triggers](/docs/platform/triggers/schedule-pipelines-using-cron-triggers/) to learn about cron syntax and AND semantics.
+
+#### Fixed issues
+
+- Fixed an issue where the Terraform provider validates AWS Secrets Manager connectors using the executing delegate instead of the connector's delegate selector, breaking environment IAM isolation. This fix requires the feature flags `CDS_SECRET_MANAGER_DELEGATE_SELECTOR_PRECEDENCE` and `PIE_GITX_EVALUATE_ENCRYPTED_CAPABILITIES`. When enabled, the secret manager's delegate selector takes precedence over the connector's delegate selector during connector validation and Git file operations. Contact [Harness Support](mailto:support@harness.io) to enable both feature flags. (**CDS-118093**, **ZD-100682**)
+- Fixed an issue where artifact triggers permanently fail when the artifact source does not exist at trigger creation time. The solution is to not take the absence of Google Artifact Registry (GAR) package as a failure. (**CDS-123495**, **ZD-113576**)
+- Fixed an issue where custom artifact polling fails intermittently when a service has multiple custom artifact sources (for example, primary and sidecar) configured simultaneously under concurrent parallel stage execution. The error displayed was: `Failed to fetch artifacts. Failed to transform results to the Custom Repository Response. Reason: FileNotFoundException`. The fix takes effect automatically upon delegate upgrade. (**CDS-123500**, **ZD-113475**)
+- Fixed an issue where custom webhook triggers silently fail to execute pipelines when `projectIdentifier` is empty in the URL (regression). Added validation for case when `orgId` or `projectId` is empty when the feature flag is enabled. (**CDS-124554**, **ZD-114388**)
+- Fixed an issue where delegate selection logs in console view were unresponsive. The **Details** button in the log view for a failed step did not open the details panel. (**CDS-124585**)
+- Fixed an issue where AWS Secrets Manager defaults URL to region name instead of URL. The AWS KMS fallback returned the region ID instead of the URL for newer regions, leading to a malformed URL exception. This has been fixed and the newer regions are added as well. (**CDS-124845**, **ZD-114730**)
+- Fixed an issue where service accounts are unable to list project environments with view permission. This fix requires the feature flag `CDS_ENV_LISTING_RBAC_IMPROVEMENT`. Contact [Harness Support](mailto:support@harness.io) to enable. (**CDS-124866**, **ZD-114080**)
+- Fixed an issue where frequent error pages appear when navigating links in Harness. (**PIPE-33938**, **ZD-113744**)
+- Fixed an issue where pipelines no longer send Git configuration to Policy as Code. This fix requires the feature flag `PIPE_DISABLE_OPA_GITCONFIG_NEW_BRANCH_FIX`. Contact [Harness Support](mailto:support@harness.io) to enable. (**PIPE-33953**, **ZD-114085**)
+
 ### GitOps Service 1.59.0, GitOps Agent 0.119.0
 
 #### New features and enhancements
