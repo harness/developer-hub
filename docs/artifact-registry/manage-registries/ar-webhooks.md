@@ -33,10 +33,22 @@ Webhook support for additional package types is being actively developed.
 
 ## Types of triggers
 1. **Artifact Creation**
-    - Executes when a new artifact is pushed to the registry.
+    - Executes when a new artifact is pushed to the registry or cached through an upstream proxy.
     - Useful for automating deployments or notifying downstream systems.
 2. **Artifact Deletion**
-    - Triggers when an artifact version is deleted.
+    - Triggers when an artifact version is deleted or removed from the upstream proxy cache.
+
+:::note Upstream proxy registries
+
+Webhook events fire for upstream proxy registries in addition to local registries. When a package is fetched from an external source and cached in your upstream proxy, an Artifact Creation event fires. Supported for Docker, Maven, npm, Python (PyPI), and NuGet upstream proxies.
+
+:::
+
+:::note Cosign signature and attestation filtering
+
+Webhook triggers automatically filter out Cosign signature (`.sig`) and attestation (`.att`) OCI artifacts. Only the original image push triggers an event, preventing duplicate pipeline executions from auxiliary signing artifacts.
+
+:::
 ---
 A webhook sends a notification to your app when a new artifact is pushed to the registry, and the trigger in your CD build pipeline automatically starts a deployment or build process in response to that notification.
 To configure and use a webhook, you need to:

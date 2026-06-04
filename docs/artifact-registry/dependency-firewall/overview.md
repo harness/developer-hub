@@ -103,7 +103,7 @@ Dependency Firewall uses a hierarchical policy structure:
 
 When an artifact version is evaluated, it runs through all configured policy sets. If any policy within a policy set fails, the artifact version is marked as either **Blocked** or **Warning** depending on your firewall configuration.
 
-Harness provides three built-in policy templates specifically for Dependency Firewall: CVSS Threshold, License Policy, and Package Age. You can use these templates as-is, customize them, or create your own policies using Rego. Go to [Configure Policies and Policy Sets](/docs/artifact-registry/dependency-firewall/configure-policies) to configure policies and policy sets for Dependency Firewall.
+Harness provides five built-in policy templates specifically for Dependency Firewall: CVSS Threshold, License Policy, Package Age, OSS Risk Level, and Malicious Package. You can use these templates as-is, customize them, or create your own policies using Rego. Go to [Configure Policies and Policy Sets](/docs/artifact-registry/dependency-firewall/configure-policies) to configure policies and policy sets for Dependency Firewall.
 
 <FAQ
   question="Does Dependency Firewall require an STO or SCS license?"

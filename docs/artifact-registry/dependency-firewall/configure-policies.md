@@ -33,6 +33,12 @@ Checks artifact licenses against your organization's approved or blocked license
 **Package Age**
 Evaluates artifacts based on their age or release date. Use this template to block newly released packages during a cooldown period, helping prevent the use of untested versions that may contain security issues or bugs.
 
+**OSS Risk Level**
+Evaluates artifacts based on their open-source risk score. Use this template to block or warn about packages that exceed a configured risk threshold. Risk scores factor in maintenance status, known vulnerabilities, and community health indicators.
+
+**Malicious Package**
+Detects packages that have been flagged as malicious in threat intelligence databases. Use this template to automatically block any package version identified as containing malware, typosquatting attempts, or other malicious payloads.
+
 :::tip
 You can edit any of these templates or create completely custom policies using Rego. The templates provide a solid foundation that you can modify to suit your specific security requirements.
 

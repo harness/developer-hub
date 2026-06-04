@@ -1,7 +1,7 @@
 ---
 title: Artifact Registry Release Notes
 sidebar_label: Artifact Registry
-date: 2026-04-30T12:00
+date: 2026-06-04T12:00
 sidebar_position: 1
 # toc_max_heading_level: 4
 ---
@@ -26,6 +26,47 @@ The release notes describe recent changes to Harness Artifact Registry.
 ## 📌 Release Deployment Status by Cluster
 
 **Progressive deployment:** Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview** page in Harness. In the new UI, go to **Account Settings**, **Account Details**, **General**, **Account Details**, and then **Platform Service Versions**.
+
+## May 2026
+
+### 2026.5.v1
+
+#### New Features
+
+**Dependency Firewall Exemptions**
+
+Request temporary access to blocked package versions through an approval workflow. A developer files a request with a business justification, an approver reviews it, and on approval the version becomes usable for a fixed duration. After expiry, the original policy verdict applies again. Centralized notification rules are available for exemption events.
+
+Go to [Dependency Exemptions](/docs/artifact-registry/dependency-firewall/exemptions) to set up the workflow.
+
+**Quarantine artifacts on Warning verdict**
+
+A new checkbox on the upstream proxy configuration quarantines artifacts whose policy verdict is Warning (in addition to Blocked). Warning artifacts are cached but blocked until an administrator releases them from quarantine using the quarantine management UI. Exemptions do not apply to quarantined packages.
+
+Go to [Enable Dependency Firewall](/docs/artifact-registry/manage-registries/configure-registry#enable-dependency-firewall) to configure this option.
+
+**OSS Risk Level and Malicious Package policy templates**
+
+Two new built-in Dependency Firewall policy templates:
+
+- **OSS Risk Level:** Blocks artifacts that exceed a configured open-source risk threshold, factoring in maintenance status, known vulnerabilities, and community health.
+- **Malicious Package:** Blocks any artifact version flagged as malicious in threat intelligence databases.
+
+These join the existing CVSS Threshold, License Policy, and Package Age templates. Go to [Configure Policies and Policy Sets](/docs/artifact-registry/dependency-firewall/configure-policies) to use them.
+
+#### Enhancements & Fixes
+
+**CLI bulk artifact deletion**
+
+The Harness CLI now supports bulk deletion with wildcard patterns (for example, `1.0.*`) and dry-run preview. Supported for Generic, Maven, npm, Python, NuGet, Go, Conda, Composer, Swift, and Dart registries. Go to [Delete Artifacts](/docs/artifact-registry/artifact-registry-cli/manage-artifacts-registries#delete-artifacts) to use bulk delete.
+
+**Webhooks for upstream proxy registries**
+
+Artifact Creation and Artifact Deletion webhook events now fire for upstream proxy registries. When a package is cached from an external source, the creation event fires. Supported for Docker, Maven, npm, Python, and NuGet upstream proxies. Cosign signature (`.sig`) and attestation (`.att`) artifacts are automatically filtered out. *[AH-3516, AH-3943]*
+
+Go to [Webhooks](/docs/artifact-registry/manage-registries/ar-webhooks) to configure triggers.
+
+---
 
 ## April 2026
 
