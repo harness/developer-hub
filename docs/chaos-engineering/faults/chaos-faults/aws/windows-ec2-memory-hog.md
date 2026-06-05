@@ -1,252 +1,278 @@
 ---
 id: windows-ec2-memory-hog
 title: Windows EC2 memory hog
+sidebar_label: Windows EC2 Memory Hog
+description: Consume a configurable amount of memory (absolute or percentage) on one or more Windows EC2 instances (selected by ID or tag) for a configurable duration so you can test how Windows-hosted workloads behave under sustained memory pressure.
+keywords:
+  - chaos engineering
+  - windows ec2 memory hog
+  - aws fault
+  - ec2 fault
+  - windows chaos
+tags:
+  - chaos-engineering
+  - aws-faults
+  - ec2-chaos
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/aws/windows-ec2-memory-hog
-- /docs/chaos-engineering/chaos-faults/aws/windows-ec2-memory-hog
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/windows-ec2-memory-hog
+  - /docs/chaos-engineering/chaos-faults/aws/windows-ec2-memory-hog
 ---
 
-Windows EC2 memory hog induces memory stress on the target AWS Windows EC2 instance using Amazon SSM Run command. The SSM Run command is executed using SSM documentation that is built into the fault. This fault causes memory exhaustion on the target Windows EC2 instance for a specific duration.
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-![Windows EC2 Memory Hog](./static/images/windows-ec2-memory-hog.png)
+Windows EC2 memory hog is an AWS chaos fault that allocates `MEMORY_CONSUMPTION` MB (or `MEMORY_PERCENTAGE` percent of total memory) on one or more Windows EC2 instances for a configurable duration. Targets are selected by `EC2_INSTANCE_ID` or `EC2_INSTANCE_TAG`. The fault dispatches a PowerShell allocation command via AWS Systems Manager Run Command and releases the memory at the end of the fault.
+
+Use this fault to test how a Windows-hosted workload behaves under sustained memory pressure: whether the application sheds load when memory is tight, whether the working set spills to swap (paging file), and whether memory-based monitoring catches the pressure quickly.
+
+:::info Run your first experiment
+If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
+:::
+
+---
 
 ## Use cases
 
-Windows EC2 memory hog:
-- Causes memory stress on the target AWS EC2 instance(s).
-- Simulates the situation of memory leaks in the deployment of microservices.
-- Simulates application slowness due to memory starvation, and noisy neighbour problems due to hogging.
+Run this fault when you want to answer concrete questions like:
 
-### Prerequisites
-- Kubernetes >= 1.17
-- The EC2 instance must be in a healthy state.
-- SSM agent must be installed and running on the target EC2 Windows instance in the admin mode.
-- SSM IAM role must be attached to the target EC2 instance(s).
-- Kubernetes secret must have the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
-    ```yaml
-    apiVersion: v1
-    kind: Secret
-    metadata:
-      name: cloud-secret
-    type: Opaque
-    stringData:
-      cloud_config.yml: |-
-        # Add the cloud AWS credentials respectively
-        [default]
-        aws_access_key_id = XXXXXXXXXXXXXXXXXXX
-        aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-    ```
+- **Memory pressure handling:** When free memory shrinks, does the application sustain throughput, or does paging cause throughput collapse?
+- **Service recovery:** Do Windows services (IIS, SQL Server Express, application services) recover cleanly when memory is freed?
+- **Autoscaling:** Does a memory-based scaling policy fire and add capacity?
+- **Monitoring SLA:** Does the alert on `Memory % Committed Bytes In Use` fire within the SLA?
+- **Recovery time:** When the chaos ends, how quickly does memory return to baseline?
 
-:::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
-:::
+---
 
-Below is an example AWS policy to execute the fault.
+## Prerequisites
+
+- **Kubernetes version:** 1.21 or later for the chaos infrastructure cluster. Go to [What's supported](/docs/chaos-engineering/whats-supported) to confirm distribution support.
+- **Target Windows EC2 instances:** Each instance is in the `running` state and registered with AWS Systems Manager.
+- **Selection criteria:** Either `EC2_INSTANCE_ID` is set or `EC2_INSTANCE_TAG` is set.
+- **AWS credentials available:** Either an AWS credentials file uploaded as a **File Secret in Harness Secret Manager** (see Authentication below) or an IAM role for service accounts (IRSA) bound to the chaos infrastructure service account.
+- **IAM permissions granted:** The credentials or role include the permissions listed below.
+
+---
+
+## Supported environments
+
+| Platform | Support status |
+| --- | --- |
+| Windows Server 2016 / 2019 / 2022 EC2 | Supported |
+| Linux EC2 instances | Not supported (use [EC2 memory hog](/docs/chaos-engineering/faults/chaos-faults/aws/ec2-memory-hog)) |
+| AWS regions | Supported in every commercial region; pass the region in `REGION` |
+
+---
+
+## Permissions required
+
+The IAM principal that the chaos pod uses (the credentials mounted from the Harness Secret Manager file secret, the IRSA role on the chaos service account, or the role assumed via `ASSUME_ROLE_ARN`) needs the following AWS actions.
 
 ```json
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ssm:GetDocument",
-                "ssm:DescribeDocument",
-                "ssm:GetParameter",
-                "ssm:GetParameters",
-                "ssm:SendCommand",
-                "ssm:CancelCommand",
-                "ssm:CreateDocument",
-                "ssm:DeleteDocument",
-                "ssm:GetCommandInvocation",
-                "ssm:UpdateInstanceInformation",
-                "ssm:DescribeInstanceInformation"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ec2messages:AcknowledgeMessage",
-                "ec2messages:DeleteMessage",
-                "ec2messages:FailMessage",
-                "ec2messages:GetEndpoint",
-                "ec2messages:GetMessages",
-                "ec2messages:SendReply"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ec2:DescribeInstanceStatus",
-                "ec2:DescribeInstances"
-            ],
-            "Resource": [
-                "*"
-            ]
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:DescribeInstances",
+        "ec2:DescribeInstanceStatus"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ssm:SendCommand",
+        "ssm:CancelCommand",
+        "ssm:GetCommandInvocation",
+        "ssm:DescribeInstanceInformation"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2messages:AcknowledgeMessage",
+        "ec2messages:DeleteMessage",
+        "ec2messages:FailMessage",
+        "ec2messages:GetEndpoint",
+        "ec2messages:GetMessages",
+        "ec2messages:SendReply"
+      ],
+      "Resource": "*"
+    }
+  ]
 }
 ```
 
-:::info note
-- Go to [AWS named profile for chaos](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/aws-switch-profile) to use a different profile for AWS faults.
+Go to [common policy for all AWS faults](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/policy-for-all-aws-faults) to use a single superset IAM policy across every AWS fault.
+
+---
+
+## Authentication
+
+The fault supports three credential delivery models. Pick one based on how your chaos infrastructure is deployed.
+
+| Method | When to use it | How to configure |
+| --- | --- | --- |
+| Harness Secret Manager file secret | Chaos infrastructure runs outside EKS, or you want explicit static credentials | Upload the AWS credentials file as a **File Secret** in Harness Secret Manager and reference its identifier via `AWS_AUTHENTICATION_SECRET` |
+| IAM Roles for Service Accounts (IRSA) | Chaos infrastructure runs in EKS and uses an OIDC-bound service account | No tunable changes; the chaos pod inherits the role automatically. Go to [AWS IAM integration](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/aws-iam-integration) to set it up |
+| Assume role | The fault needs to act in a different account or with elevated permissions | Set `ASSUME_ROLE_ARN` to the role ARN; the chaos pod assumes the role on top of its base credentials |
+
+When using the Harness Secret Manager method, the contents of the File Secret should be the AWS credentials file in the standard `~/.aws/credentials` format:
+
+```ini
+[default]
+aws_access_key_id = REPLACE_WITH_ACCESS_KEY_ID
+aws_secret_access_key = REPLACE_WITH_SECRET_ACCESS_KEY
+```
+
+Upload this file as a **File Secret** in Harness Secret Manager (Project Setup → Secrets → New File Secret), and pass the secret identifier in `AWS_AUTHENTICATION_SECRET` when configuring the fault.
+
+Go to [AWS named profile for chaos](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/aws-switch-profile) to switch between profiles inside a single credentials file.
+
+---
+
+## Fault tunables
+
+Configure the following fault parameters when you add Windows EC2 memory hog to an experiment in Chaos Studio. Defaults are shown for reference.
+
+**Required parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `REGION` | AWS region that hosts the target instances (for example `us-east-1`). | (required) |
+
+**Targeting parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `EC2_INSTANCE_ID` | Comma-separated list of EC2 instance IDs to affect. | `""` |
+| `EC2_INSTANCE_TAG` | Tag in `Key:Value` form matching candidate instances when `EC2_INSTANCE_ID` is empty. | `""` |
+| `INSTANCE_AFFECTED_PERC` | Percentage of matching instances (by tag) to affect. `0` corresponds to one instance. | `0` |
+
+**Chaos parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `MEMORY_CONSUMPTION` | Memory to allocate in MB. Set to `0` and use `MEMORY_PERCENTAGE` for percentage-based allocation. | `0` |
+| `MEMORY_PERCENTAGE` | Percentage of total system memory to allocate. Used only when `MEMORY_CONSUMPTION=0`. | `50` |
+| `TOTAL_CHAOS_DURATION` | Duration of the fault in seconds. | `60` |
+| `INSTALL_DEPENDENCIES` | Install the stress tooling on the Windows host if missing. | `true` |
+| `SEQUENCE` | Order in which multiple instances are stressed: `parallel` stresses all selected instances at once; `serial` stresses one at a time. | `parallel` |
+| `RAMP_TIME` | Wait period in seconds before and after the fault. Go to [ramp time](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time) to read how it is applied. | `0` |
+
+**Authentication**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `ASSUME_ROLE_ARN` | ARN of an IAM role to assume on top of the base credentials. Leave empty to use the base credentials directly. | `""` |
+| `AWS_AUTHENTICATION_SECRET` | Identifier of the **File Secret in Harness Secret Manager** that contains the AWS credentials file. Not required when using IRSA. | `""` |
+
+Tunables that apply to every fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults). AWS-specific shared tunables are documented in [common AWS fault tunables](/docs/chaos-engineering/faults/chaos-faults/aws/aws-fault-tunables).
+
+---
+
+## Fault execution in brief
+
+Resolves the target instance list from `EC2_INSTANCE_ID` (or by `EC2_INSTANCE_TAG`), dispatches a PowerShell memory-allocation command via AWS Systems Manager Run Command to each selected Windows instance, holds the allocation for `TOTAL_CHAOS_DURATION` seconds, then releases the memory.
+
+---
+
+## Expected behavior during fault execution
+
+- Free memory on the targeted Windows instances drops by approximately `MEMORY_CONSUMPTION` MB (or to the `MEMORY_PERCENTAGE` target).
+- If the working set exceeds available physical memory, Windows pages to the paging file; throughput collapses.
+- IIS and Windows services may experience increased response latency.
+- CloudWatch `MemoryUtilization` (when the CloudWatch Agent is installed) rises.
+
+:::info When the fault ends
+The chaos pod releases the memory on each host. Memory returns to baseline within seconds.
 :::
 
+### Signals to watch
 
-### Mandatory tunables
-<table>
-    <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-    </tr>
-    <tr>
-        <td> EC2_INSTANCE_ID </td>
-        <td> ID of the target EC2 instance. </td>
-        <td> For example, <code>i-044d3cb4b03b8af1f</code>. For more information, go to <a href="#multiple-ec2-instances"> EC2 instances.</a></td>
-    </tr>
-    <tr>
-        <td> REGION </td>
-        <td> AWS region ID where the EC2 instance has been created. </td>
-        <td> For example, <code>us-east-1</code>. </td>
-    </tr>
-</table>
+Attach [resilience probes](/docs/resilience-testing/chaos-testing/probes) to assert each layer:
 
-### Optional tunables
-  <table>
-    <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-    </tr>
-    <tr>
-        <td> TOTAL_CHAOS_DURATION </td>
-        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
-        <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
-    </tr>
-    <tr>
-        <td> AWS_SHARED_CREDENTIALS_FILE </td>
-        <td> Path to the AWS secret credentials.</td>
-        <td> Defaults to <code>/tmp/cloud_config.yml</code>. </td>
-    </tr>
-    <tr>
-        <td> INSTALL_DEPENDENCIES </td>
-        <td> Install dependencies to run the network chaos. It can be 'True' or 'False'. </td>
-        <td> If the dependency already exists, you can turn it off. Default: True.</td>
-    </tr>
-    <tr>
-        <td> MEMORY_CONSUMPTION </td>
-        <td> Amount of memory to be consumed by the EC2 instance (in megabytes). </td>
-        <td> Default: 0 MB. For more information, go to <a href="#memory-consumption-in-megabytes"> memory consumption in MB.</a></td>
-    </tr>
-    <tr>
-        <td> MEMORY_PERCENTAGE </td>
-        <td> Amount of memory to be consumed by the EC2 instance (in percentage).</td>
-        <td> Default: 50. For more information, go to <a href="#memory-consumption-by-percentage"> memory consumption by percentage.</a></td>
-    </tr>
-    <tr>
-        <td> SEQUENCE </td>
-        <td> Sequence of chaos execution for multiple instances.</td>
-        <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
-    </tr>
-    <tr>
-        <td> RAMP_TIME </td>
-        <td> Period to wait before and after injecting chaos (in seconds).  </td>
-        <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
-    </tr>
-</table>
+- **Memory utilization:** Use a [Prometheus probe](/docs/resilience-testing/chaos-testing/probes/apm-probes) on a memory-utilization metric (`Memory % Committed Bytes In Use` exported via CloudWatch).
+- **Application latency:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) and assert percentile latency SLOs.
+- **Paging activity:** Use a Prometheus probe on `Pages/sec` or equivalent to detect pressure.
+- **Service availability:** Monitor that Windows services stay in the `Running` state.
 
-### Memory consumption in megabytes
+---
 
-Memory utilized on the EC2 instance (in megabytes). Tune it by using the `MEMORY_CONSUMPTION` environment variable.
+## Verify the fault execution effect
 
-The following YAML snippet illustrates the use of this environment variable:
+While the experiment is running, confirm memory pressure is applied:
 
-[embedmd]:# (./static/manifests/windows-ec2-memory-hog/memory-bytes.yaml yaml)
-```yaml
-# memory in mb to utilize
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: windows-ec2-memory-hog
-    spec:
-      components:
-        env:
-        - name: MEMORY_CONSUMPTION
-          VALUE: '1024'
-        # ID of the EC2 instance
-        - name: EC2_INSTANCE_ID
-          value: 'instance-1'
-        # region for the EC2 instance
-        - name: REGION
-          value: 'us-east-1'
-```
+1. **Inspect from the Windows host (via SSM Session Manager).**
 
-### Memory consumption by percentage
+   ```powershell
+   Get-Counter '\Memory\Available MBytes', '\Memory\% Committed Bytes In Use' -SampleInterval 1 -MaxSamples 5
+   ```
 
-Memory utilized on the EC2 instance (in percentage). Tune it by using the `MEMORY_PERCENTAGE` environment variable.
+   Available memory should drop by approximately `MEMORY_CONSUMPTION` during the chaos window.
 
-The following YAML snippet illustrates the use of this environment variable:
+2. **Check CloudWatch (if the CW Agent is installed).**
 
-[embedmd]:# (./static/manifests/windows-ec2-memory-hog/memory-percentage.yaml yaml)
-```yaml
-# memory percentage to utilize
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: windows-ec2-memory-hog
-    spec:
-      components:
-        env:
-        - name: MEMORY_PERCENTAGE
-          value: '50'
-        - name: MEMORY_CONSUMPTION
-          value: '0'
-        # ID of the EC2 instance
-        - name: EC2_INSTANCE_ID
-          value: 'instance-1'
-        # region for the EC2 instance
-        - name: REGION
-          value: 'us-east-1'
-```
+   In CloudWatch, `mem_used_percent` (or the equivalent) should rise on the affected instances.
 
-### Multiple EC2 instances
+3. **Inspect SSM command status.**
 
-Multiple EC2 instances specified as comma-separated IDs targeted in one chaos run. Tune it by using the `EC2_INSTANCE_ID` environment variable.
+   ```bash
+   aws ssm list-command-invocations --region <region> --details --filters "key=Status,value=InProgress"
+   ```
 
-The following YAML snippet illustrates the use of this environment variable:
+---
 
-[embedmd]:# (./static/manifests/windows-ec2-memory-hog/multiple-instances.yaml yaml)
-```yaml
-# multiple instance targets
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: windows-ec2-memory-hog
-    spec:
-      components:
-        env:
-        # ids of the EC2 instances
-        - name: EC2_INSTANCE_ID
-          value: 'instance-1,instance-2,instance-3'
-        # region for the EC2 instance
-        - name: REGION
-          value: 'us-east-1'
-```
+## Recovery and cleanup
+
+- **End of duration:** The chaos pod releases the memory on each host.
+- **Abort the experiment:** Stopping the experiment from Chaos Studio cancels the SSM command.
+- **Manual recovery:** If the fault exits before cleanup, kill the stress process on the host via SSM Run Command (PowerShell `Stop-Process`).
+- **Workload recovery:** Pages swapped out during the stress are read back into memory on demand; some latency may persist briefly after recovery.
+
+---
+
+## Limitations
+
+- **Windows-only.**
+- **SSM-managed hosts only.**
+- **Paging file behaviour:** If the paging file is small or disabled, Windows may BSOD or kill processes when memory is exhausted.
+- **Cross-region targeting:** A single experiment targets one region (the value of `REGION`).
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="Windows EC2 memory hog fails with AccessDeniedException in Harness Chaos Engineering"
+  mode="docs"
+  fallback="The credentials supplied to the chaos pod do not have the required EC2 or SSM permissions. Confirm the IAM policy attached to the user, role, or IRSA service account includes ec2:DescribeInstances, ssm:SendCommand, ssm:GetCommandInvocation, and the ec2messages:* actions used by SSM."
+/>
+
+<Troubleshoot
+  issue="Windows EC2 memory hog reports instance is not SSM-managed"
+  mode="docs"
+  fallback="Confirm the SSM Agent is installed and running on the Windows host (the SSMAgent service should be in Running state), the host has an instance profile with AmazonSSMManagedInstanceCore (or equivalent), and the host appears in 'aws ssm describe-instance-information' with PlatformType=Windows."
+/>
+
+<Troubleshoot
+  issue="System becomes unresponsive during the chaos window"
+  mode="docs"
+  fallback="If MEMORY_PERCENTAGE is very high (90+) and the paging file is small, Windows may freeze or BSOD as it runs out of memory. Lower MEMORY_PERCENTAGE to a value that leaves headroom (60-70 is usually safe), and ensure the paging file is sized appropriately for the workload."
+/>
+
+<Troubleshoot
+  issue="Memory utilization does not rise during the chaos window"
+  mode="docs"
+  fallback="The most common causes are: the chaos process exited early (check the SSM command output); MEMORY_CONSUMPTION is small relative to total memory (raise it); or the host has more physical memory than expected. Check Get-Counter '\\Memory\\Available MBytes' on the host to confirm."
+/>
+
+---
+
+## Related faults
+
+- [Windows EC2 CPU hog](/docs/chaos-engineering/faults/chaos-faults/aws/windows-ec2-cpu-hog): Stress CPU on Windows instances instead of memory.
+- [EC2 memory hog](/docs/chaos-engineering/faults/chaos-faults/aws/ec2-memory-hog): Memory stress on Linux EC2 instances.
+- [Windows EC2 process kill](/docs/chaos-engineering/faults/chaos-faults/aws/windows-ec2-process-kill): Kill specific Windows processes on the instance.
+- [Common AWS fault tunables](/docs/chaos-engineering/faults/chaos-faults/aws/aws-fault-tunables): Shared environment variables for AWS faults.

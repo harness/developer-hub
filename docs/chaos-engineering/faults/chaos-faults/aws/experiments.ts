@@ -4,14 +4,14 @@ export const experiments: ExperimentDetails[] = [
   {
     name: "ALB AZ down",
     description:
-      "ALB AZ down takes down the AZ (Availability Zones) on a target application load balancer for a specific duration.",
+      "ALB AZ down detaches one or more availability zones from an Application Load Balancer for a configurable duration so you can test how clients, target groups, and AZ-aware routing behave when a zone is taken out of the load balancer rotation.",
     tags: ['availability', 'load balancer'],
     category: "aws",
   },
   {
     name: "CLB AZ down",
     description:
-      "CLB AZ down takes down the AZ (Availability Zones) on a target CLB for a specific duration.",
+      "CLB AZ down disables one or more availability zones on a Classic Load Balancer for a configurable duration so you can test how clients and back-end instances behave when an AZ is removed from the load balancer rotation.",
     tags: ['availability', 'load balancer'],
     category: "aws",
   },
@@ -151,154 +151,147 @@ export const experiments: ExperimentDetails[] = [
   {
     name: "ECS agent stop",
     description:
-      "ECS agent stop disrupts the state of infrastructure resources. ",
+      "ECS agent stop halts the ECS agent on one or more EC2 container instances for a configurable duration so you can test how the ECS cluster behaves when the data-plane bridge between agent and control plane is interrupted.",
     tags: ['agent', 'stop'],
     category: "aws",
   },
   {
     name: "ECS container CPU hog",
     description:
-      "ECS Container CPU hog disrupts the state of infrastructure resources. It induces stress on the AWS ECS container using Amazon SSM Run command, which is carried out using SSM docs which is in-built into the fault.",
+      "ECS container CPU hog stresses CPU inside containers of EC2-backed ECS tasks for a configurable duration so you can test how the application and the host behave under CPU saturation.",
     tags: ['container', 'cpu', 'stress'],
     category: "aws",
   },
   {
     name: "ECS container HTTP latency",
     description:
-      "ECS container HTTP latency induces chaos to inject latency on the target ECS task container.",
+      "ECS container HTTP latency adds latency to inbound HTTP traffic on a configurable port of containers in an EC2-backed ECS task for a configurable duration so you can test how clients react when an HTTP service responds slowly.",
     tags: ['container', 'http', 'latency'],
     category: "aws",
   },
   {
     name: "ECS container HTTP modify body",
     description:
-      "ECS container HTTP modify body induces chaos to inject faulty response body on the target ECS task container.",
+      "ECS container HTTP modify body rewrites HTTP response bodies on a configurable port of containers in an EC2-backed ECS task for a configurable duration so you can test how clients react when an upstream returns unexpected content.",
     tags: ['container', 'http', 'modify', 'body'],
-    category: "aws",
-  },
-  {
-    name: "ECS container HTTP modify header",
-    description:
-      "ECS container HTTP modify header injects HTTP chaos which modifies the headers of the request or response of the service.",
-    tags: ['container', 'http', 'modify', 'header'],
     category: "aws",
   },
   {
     name: "ECS container HTTP reset peer",
     description:
-      "ECS container HTTP reset peer induces chaos to reset the TCP connection on the target ECS task container .",
+      "ECS container HTTP reset peer resets inbound TCP connections to an HTTP service on a configurable port of containers in an EC2-backed ECS task for a configurable duration so you can test how clients react when the server tears down connections mid-flight.",
     tags: ['container', 'http', 'reset', 'peer'],
     category: "aws",
   },
   {
     name: "ECS container HTTP status code",
     description:
-      "ECS container HTTP status code induces chaos to modify the status code from the HTTP response from the target ECS container",
+      "ECS container HTTP status code rewrites HTTP response status codes on a configurable port of containers in an EC2-backed ECS task for a configurable duration so you can test how clients react to specific error codes returned by an upstream service.",
     tags: ['container', 'http', 'status', 'code'],
     category: "aws",
   },
   {
     name: "ECS container IO stress",
     description:
-      "ECS container IO stress disrupts the state of infrastructure resources. It induces stress on the AWS ECS container using Amazon SSM Run command, which is carried out using SSM docs which is in-built into the fault.",
+      "ECS container IO stress generates sustained filesystem read and write load inside containers of EC2-backed ECS tasks for a configurable duration so you can test how the workload behaves under disk pressure.",
     tags: ['container', 'io', 'stress'],
     category: "aws",
   },
   {
     name: "ECS container memory hog",
     description:
-      "ECS container memory hog disrupts the state of infrastructure resources. It induces stress on the AWS ECS container using Amazon SSM Run command, which is carried out using SSM docs which is in-built into the fault.",
+      "ECS container memory hog consumes a configurable amount of memory inside containers of EC2-backed ECS tasks for a configurable duration so you can test how the workload behaves when its container is starved of memory.",
     tags: ['container', 'memory', 'stress'],
     category: "aws",
   },
   {
     name: "ECS container network latency",
     description:
-      "ECS container network latency disrupts the state of infrastructure resources. It brings delay on the AWS ECS container using Amazon SSM Run command, which is carried out using SSM docs which is in-built into the fault.",
+      "ECS container network latency adds configurable latency to outbound traffic from containers in EC2-backed ECS tasks for a configurable duration so you can test how the workload reacts when network round-trip times grow.",
     tags: ['container', 'network', 'latency'],
     category: "aws",
   },
   {
     name: "ECS container network loss",
     description:
-      "ECS container network loss disrupts the state of infrastructure resources. ",
+      "ECS container network loss drops a configurable percentage of outbound packets from containers in EC2-backed ECS tasks for a configurable duration so you can test how the workload reacts when network reliability degrades.",
     tags: ['container', 'network', 'loss'],
     category: "aws",
   },
   {
     name: "ECS container volume detach",
     description:
-      "ECS container volume detach induces chaos to detach the volumes from ECS container for specified service and chaos duration",
+      "ECS container volume detach detaches EBS volumes attached to ECS task containers for a configurable duration so you can test how stateful tasks behave when their storage disappears.",
     tags: ['container', 'volume', 'detach'],
     category: "aws",
   },
   {
     name: "ECS Fargate CPU hog",
     description:
-      "ECS Fargate CPU hog induces chaos to stress the CPU usage of an ECS task from the specified service",
-    tags: ['cpu', 'stress'],
+      "ECS Fargate CPU hog stresses CPU inside a Fargate task for a configurable duration so you can test how the application behaves when its task is CPU-starved.",
+    tags: ['cpu', 'stress', 'fargate'],
     category: "aws",
   },
   {
     name: "ECS Fargate memory hog",
     description:
-      "ECS Fargate memory hog induces chaos to hog the memory utilization of an ECS task from the specified service",
-    tags: ['memory', 'stress', 'stress'],
+      "ECS Fargate memory hog consumes a configurable amount of memory inside a Fargate task for a configurable duration so you can test how the application behaves when its task is starved of memory.",
+    tags: ['memory', 'stress', 'fargate'],
     category: "aws",
   },
   {
     name: "ECS instance stop",
     description:
-      "ECS instance stop induces stress on an AWS ECS cluster. It derives the instance under chaos from the ECS cluster.",
+      "ECS instance stop stops one or more EC2 container instances belonging to an ECS cluster for a configurable duration so you can test how the cluster reschedules tasks and how the workload behaves when a host disappears.",
     tags: ['instance', 'stop'],
     category: "aws",
   },
   {
     name: "ECS invalid container image",
     description:
-      "ECS invalid container image allows you to update the Docker image used by a container in an Amazon ECS (Elastic Container Service) task.",
+      "ECS invalid container image swaps a container image to an invalid value on an ECS service for a configurable duration so you can test how the deployment, rollback, and monitoring react to a failing image pull.",
     tags: ['invalid', 'container', 'image'],
     category: "aws",
   },
   {
     name: "ECS network restrict",
     description:
-      "ECS network restrict induces chaos to inject the access restriction on the target ECS container.",
+      "ECS network restrict modifies the security group rules of an ECS service for a configurable duration so you can test how the workload behaves when outbound or inbound network access is restricted.",
     tags: ['network', 'restrict'],
     category: "aws",
   },
   {
     name: "ECS task scale",
     description:
-      "ECS task scale is an AWS fault that injects chaos to scale (up or down) the ECS tasks based on the services and checks the task availability.",
+      "ECS task scale changes the desired count of an ECS service for a configurable duration so you can test how the workload behaves under sudden scale-up or scale-down.",
     tags: ['task', 'scale'],
     category: "aws",
   },
   {
     name: "ECS task stop",
     description:
-      "ECS task stop injects chaos to stop the ECS tasks based on the services or task replica ID and checks the task availability.",
+      "ECS task stop stops one or more ECS tasks (selected by service or task ID) for a configurable duration so you can test how the workload behaves when a specific task disappears.",
     tags: ['task', 'stop'],
     category: "aws",
   },
   {
     name: "ECS update container resource limit",
     description:
-      "ECS update container resource Limit induces chaos to change the task container CPU and Memory resource limit",
+      "ECS update container resource limit re-registers an ECS task definition with reduced CPU or memory limits for a configurable duration so you can test how the workload behaves under tightened resource constraints.",
     tags: ['update', 'container', 'resource'],
     category: "aws",
   },
   {
     name: "ECS update container timeout",
     description:
-      "ECS update container timeout induces chaos to change the target container start and stop timeout values.",
+      "ECS update container timeout re-registers an ECS task definition with modified start and stop timeouts for a configurable duration so you can test how the deployment behaves when container start or stop takes longer than expected.",
     tags: ['update', 'container', 'timeout'],
     category: "aws",
   },
   {
     name: "ECS update task role",
     description:
-      "ECS update task role induces chaos to update the task role ARN for a specified chaos duration.",
+      "ECS update task role swaps the IAM task role on an ECS service for a configurable duration so you can test how the workload behaves when its IAM permissions change.",
     tags: ['task', 'role'],
     category: "aws",
   },
@@ -375,7 +368,7 @@ export const experiments: ExperimentDetails[] = [
   {
     name: "NLB AZ down",
     description:
-      "NLB AZ down induces chaos to restrict access to specific availability zones by blocking the subnet ACL for a specified duration",
+      "NLB AZ down detaches one or more availability zones from a Network Load Balancer for a configurable duration so you can test how clients, target groups, and AZ-aware routing behave when a zone is taken out of the load balancer rotation.",
     tags: ['load balancer', 'availability'],
     category: "aws",
   },
@@ -417,28 +410,42 @@ export const experiments: ExperimentDetails[] = [
   {
     name: "Windows EC2 blackhole chaos",
     description:
-      "Windows EC2 blackhole chaos results in access loss to the given target hosts or IPs by injecting firewall rules.",
-    tags: ['windows', 'blackhole', 'stress'],
+      "Windows EC2 blackhole chaos drops all network traffic destined for specific IPs or hosts on one or more Windows EC2 instances for a configurable duration so you can test how Windows-hosted workloads behave when a specific dependency is completely unreachable.",
+    tags: ['windows', 'blackhole', 'network'],
     category: "aws",
   },
   {
     name: "Windows EC2 CPU hog",
     description:
-      "EC2 windows CPU hog induces CPU stress on the AWS Windows EC2 instances using Amazon SSM Run command.",
+      "Windows EC2 CPU hog stresses a configurable number of CPU cores at a configurable load percentage inside one or more Windows EC2 instances for a configurable duration so you can test how Windows-hosted workloads behave when their host is CPU-starved.",
     tags: ['cpu', 'stress', 'windows'],
     category: "aws",
   },
   {
     name: "Windows EC2 memory hog",
     description:
-      "Windows EC2 memory hog induces memory stress on the target AWS Windows EC2 instance using Amazon SSM Run command.",
+      "Windows EC2 memory hog consumes a configurable amount of memory inside one or more Windows EC2 instances for a configurable duration so you can test how Windows-hosted workloads behave when their host is starved of memory.",
     tags: ['memory', 'stress', 'windows'],
     category: "aws",
   },
   {
-    name: "Windows EC2 Process Kill",
+    name: "Windows EC2 network latency",
     description:
-      "Windows EC2 Process Kill fault kills the target processes running on a Windows EC2 instance. This fault disrupts application-critical processes such as databases or message queues running on the instance by killing their underlying processes or threads.",
+      "Windows EC2 network latency adds a configurable amount of latency to network traffic destined for specific IPs or hosts on one or more Windows EC2 instances for a configurable duration so you can test how Windows-hosted workloads behave when the network is slow.",
+    tags: ['network', 'latency', 'windows'],
+    category: "aws",
+  },
+  {
+    name: "Windows EC2 network loss",
+    description:
+      "Windows EC2 network loss drops a configurable percentage of network packets destined for specific IPs or hosts on one or more Windows EC2 instances for a configurable duration so you can test how Windows-hosted workloads behave when the network is lossy.",
+    tags: ['network', 'loss', 'windows'],
+    category: "aws",
+  },
+  {
+    name: "Windows EC2 process kill",
+    description:
+      "Windows EC2 process kill kills one or more processes (selected by PID or process name) on one or more Windows EC2 instances for a configurable duration so you can test how Windows-hosted workloads behave when their backing processes die.",
     tags: ['process', 'kill', 'windows', 'ec2'],
     category: "aws",
   },

@@ -42,21 +42,19 @@ Faults that belong to this category are listed below:
 
 4. [AWS ECS Container HTTP Modify Body](/docs/chaos-engineering/faults/chaos-faults/aws/ecs-container-http-modify-body)
 
-5. [AWS ECS Container HTTP Modify Header](/docs/chaos-engineering/faults/chaos-faults/aws/ecs-container-http-modify-header)
+5. [AWS ECS Container HTTP Reset Peer](/docs/chaos-engineering/faults/chaos-faults/aws/ecs-container-http-reset-peer)
 
-6. [AWS ECS Container HTTP Reset Peer](/docs/chaos-engineering/faults/chaos-faults/aws/ecs-container-http-reset-peer)
+6. [AWS ECS Container HTTP Status Code](/docs/chaos-engineering/faults/chaos-faults/aws/ecs-container-http-status-code)
 
-7. [AWS ECS Container HTTP Status Code](/docs/chaos-engineering/faults/chaos-faults/aws/ecs-container-http-status-code)
+7. [AWS ECS Container IO Stress](/docs/chaos-engineering/faults/chaos-faults/aws/ecs-container-io-stress)
 
-8. [AWS ECS Container IO Stress](/docs/chaos-engineering/faults/chaos-faults/aws/ecs-container-io-stress)
+8. [AWS ECS Container Memory Hog](/docs/chaos-engineering/faults/chaos-faults/aws/ecs-container-memory-hog)
 
-9. [AWS ECS Container Memory Hog](/docs/chaos-engineering/faults/chaos-faults/aws/ecs-container-memory-hog)
+9. [AWS ECS Container Network Latency](/docs/chaos-engineering/faults/chaos-faults/aws/ecs-container-network-latency)
 
-10. [AWS ECS Container Network Latency](/docs/chaos-engineering/faults/chaos-faults/aws/ecs-container-network-latency)
+10. [AWS ECS Container Network Loss](/docs/chaos-engineering/faults/chaos-faults/aws/ecs-container-network-loss)
 
-11. [AWS ECS Container Network Loss](/docs/chaos-engineering/faults/chaos-faults/aws/ecs-container-network-loss)
-
-12. [AWS ECS Instance Stop](/docs/chaos-engineering/faults/chaos-faults/aws/ecs-instance-stop)
+11. [AWS ECS Instance Stop](/docs/chaos-engineering/faults/chaos-faults/aws/ecs-instance-stop)
 
 ## EC2-backed and serverless faults
 

@@ -1,244 +1,281 @@
 ---
 id: windows-ec2-cpu-hog
 title: Windows EC2 CPU hog
+sidebar_label: Windows EC2 CPU Hog
+description: Stress a configurable number of CPU cores at a configurable percentage on one or more Windows EC2 instances (selected by ID or tag) for a configurable duration so you can test how Windows-hosted workloads behave under sustained CPU pressure.
+keywords:
+  - chaos engineering
+  - windows ec2 cpu hog
+  - aws fault
+  - ec2 fault
+  - windows chaos
+tags:
+  - chaos-engineering
+  - aws-faults
+  - ec2-chaos
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/aws/windows-ec2-cpu-hog
-- /docs/chaos-engineering/chaos-faults/aws/windows-ec2-cpu-hog
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/windows-ec2-cpu-hog
+  - /docs/chaos-engineering/chaos-faults/aws/windows-ec2-cpu-hog
 ---
-EC2 Windows CPU hog induces CPU stress on the AWS Windows EC2 instances using Amazon SSM Run command. The SSM Run command is executed using SSM documentation that is built into the fault.
 
-![Windows EC2 CPU hog](./static/images/windows-ec2-cpu-hog.png)
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
+
+Windows EC2 CPU hog is an AWS chaos fault that stresses `CPU_CORES` cores at `CPU_PERCENTAGE` percent on one or more Windows EC2 instances for a configurable duration. Targets are selected by `EC2_INSTANCE_ID` (explicit) or by `EC2_INSTANCE_TAG` (any instance carrying the tag). The fault dispatches a PowerShell stress command via AWS Systems Manager Run Command and removes the stress at the end of the fault.
+
+Use this fault to test how a Windows-hosted workload behaves under sustained CPU pressure: whether request latency degrades predictably, whether autoscaling alarms fire, and whether application-level circuit breakers shed load.
+
+:::info Run your first experiment
+If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
+:::
+
+---
 
 ## Use cases
 
-EC2 Windows CPU hog:
-- Simulates the situation of a lack of CPU for processes running on the instance, which degrades their performance.
-- Simulates slow application traffic or exhaustion of the resources, leading to degradation in the performance of processes on the instance.
+Run this fault when you want to answer concrete questions like:
 
-### Prerequisites
-- Kubernetes >= 1.17
-- The EC2 instance must be in a healthy state.
-- SSM agent must be installed and running on the target EC2 instance.
-- SSM IAM role must be attached to the target EC2 instance(s).
-- Kubernetes secret must have the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
-    ```yaml
-    apiVersion: v1
-    kind: Secret
-    metadata:
-      name: cloud-secret
-    type: Opaque
-    stringData:
-      cloud_config.yml: |-
-        # Add the cloud AWS credentials respectively
-        [default]
-        aws_access_key_id = XXXXXXXXXXXXXXXXXXX
-        aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-    ```
+- **CPU pressure on the workload:** When a fraction of replicas is CPU-saturated, do remaining replicas absorb the traffic without breaching latency SLOs?
+- **Autoscaling:** Does the CPU-based scaling policy fire and add capacity within the expected window?
+- **IIS / Windows-service behaviour:** Do IIS or Windows services running under high CPU pressure recover when the stress ends, or do they need manual intervention?
+- **Noisy-neighbour isolation:** Does CPU pressure on one EC2 instance affect other tenants on the same Auto Scaling group?
+- **Recovery time:** When the stress ends, how quickly does latency return to baseline?
 
-:::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
-:::
+---
 
-Below is an example AWS policy to execute the fault.
+## Prerequisites
+
+- **Kubernetes version:** 1.21 or later for the chaos infrastructure cluster. Go to [What's supported](/docs/chaos-engineering/whats-supported) to confirm distribution support.
+- **Target Windows EC2 instances:** Each instance is in the `running` state and registered with AWS Systems Manager.
+- **Selection criteria:** Either `EC2_INSTANCE_ID` is set (explicit list) or `EC2_INSTANCE_TAG` is set (`Key:Value` matching any tag attached to candidate instances).
+- **AWS credentials available:** Either an AWS credentials file uploaded as a **File Secret in Harness Secret Manager** (see Authentication below) or an IAM role for service accounts (IRSA) bound to the chaos infrastructure service account.
+- **IAM permissions granted:** The credentials or role include the permissions listed below.
+
+---
+
+## Supported environments
+
+| Platform | Support status |
+| --- | --- |
+| Windows Server 2016 / 2019 / 2022 EC2 | Supported |
+| EKS or ECS Windows worker nodes | Supported (the fault stresses the host; workload behaviour depends on the orchestrator) |
+| Linux EC2 instances | Not supported (use [EC2 CPU hog](/docs/chaos-engineering/faults/chaos-faults/aws/ec2-cpu-hog)) |
+| AWS regions | Supported in every commercial region; pass the region in `REGION` |
+
+---
+
+## Permissions required
+
+The IAM principal that the chaos pod uses (the credentials mounted from the Harness Secret Manager file secret, the IRSA role on the chaos service account, or the role assumed via `ASSUME_ROLE_ARN`) needs the following AWS actions.
 
 ```json
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ssm:GetDocument",
-                "ssm:DescribeDocument",
-                "ssm:GetParameter",
-                "ssm:GetParameters",
-                "ssm:SendCommand",
-                "ssm:CancelCommand",
-                "ssm:CreateDocument",
-                "ssm:DeleteDocument",
-                "ssm:GetCommandInvocation",
-                "ssm:UpdateInstanceInformation",
-                "ssm:DescribeInstanceInformation"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ec2messages:AcknowledgeMessage",
-                "ec2messages:DeleteMessage",
-                "ec2messages:FailMessage",
-                "ec2messages:GetEndpoint",
-                "ec2messages:GetMessages",
-                "ec2messages:SendReply"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ec2:DescribeInstanceStatus",
-                "ec2:DescribeInstances"
-            ],
-            "Resource": [
-                "*"
-            ]
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:DescribeInstances",
+        "ec2:DescribeInstanceStatus"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ssm:SendCommand",
+        "ssm:CancelCommand",
+        "ssm:GetCommandInvocation",
+        "ssm:DescribeInstanceInformation"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2messages:AcknowledgeMessage",
+        "ec2messages:DeleteMessage",
+        "ec2messages:FailMessage",
+        "ec2messages:GetEndpoint",
+        "ec2messages:GetMessages",
+        "ec2messages:SendReply"
+      ],
+      "Resource": "*"
+    }
+  ]
 }
 ```
 
-:::info note
-- Go to [AWS named profile for chaos](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/aws-switch-profile) to use a different profile for AWS faults.
-- Go to [superset permission/policy](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
+Go to [common policy for all AWS faults](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/policy-for-all-aws-faults) to use a single superset IAM policy across every AWS fault.
+
+---
+
+## Authentication
+
+The fault supports three credential delivery models. Pick one based on how your chaos infrastructure is deployed.
+
+| Method | When to use it | How to configure |
+| --- | --- | --- |
+| Harness Secret Manager file secret | Chaos infrastructure runs outside EKS, or you want explicit static credentials | Upload the AWS credentials file as a **File Secret** in Harness Secret Manager and reference its identifier via `AWS_AUTHENTICATION_SECRET` |
+| IAM Roles for Service Accounts (IRSA) | Chaos infrastructure runs in EKS and uses an OIDC-bound service account | No tunable changes; the chaos pod inherits the role automatically. Go to [AWS IAM integration](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/aws-iam-integration) to set it up |
+| Assume role | The fault needs to act in a different account or with elevated permissions | Set `ASSUME_ROLE_ARN` to the role ARN; the chaos pod assumes the role on top of its base credentials |
+
+When using the Harness Secret Manager method, the contents of the File Secret should be the AWS credentials file in the standard `~/.aws/credentials` format:
+
+```ini
+[default]
+aws_access_key_id = REPLACE_WITH_ACCESS_KEY_ID
+aws_secret_access_key = REPLACE_WITH_SECRET_ACCESS_KEY
+```
+
+Upload this file as a **File Secret** in Harness Secret Manager (Project Setup → Secrets → New File Secret), and pass the secret identifier in `AWS_AUTHENTICATION_SECRET` when configuring the fault.
+
+Go to [AWS named profile for chaos](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/aws-switch-profile) to switch between profiles inside a single credentials file.
+
+---
+
+## Fault tunables
+
+Configure the following fault parameters when you add Windows EC2 CPU hog to an experiment in Chaos Studio. Defaults are shown for reference.
+
+**Required parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `REGION` | AWS region that hosts the target instances (for example `us-east-1`). | (required) |
+
+**Targeting parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `EC2_INSTANCE_ID` | Comma-separated list of EC2 instance IDs to stress. | `""` |
+| `EC2_INSTANCE_TAG` | Tag in `Key:Value` form matching candidate instances when `EC2_INSTANCE_ID` is empty. | `""` |
+| `INSTANCE_AFFECTED_PERC` | Percentage of matching instances (by tag) to affect. `0` corresponds to one instance. | `0` |
+
+**Chaos parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `CPU_CORES` | Number of CPU cores to stress on each target. `0` stresses every available core. | `0` |
+| `CPU_PERCENTAGE` | Load percentage applied per stressed core (0-100). | `50` |
+| `TOTAL_CHAOS_DURATION` | Duration of the fault in seconds. | `60` |
+| `INSTALL_DEPENDENCIES` | Install the stress tooling on the Windows host if missing. | `true` |
+| `SEQUENCE` | Order in which multiple instances are stressed: `parallel` stresses all selected instances at once; `serial` stresses one at a time. | `parallel` |
+| `RAMP_TIME` | Wait period in seconds before and after the fault. Go to [ramp time](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time) to read how it is applied. | `0` |
+
+**Authentication**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `ASSUME_ROLE_ARN` | ARN of an IAM role to assume on top of the base credentials. Leave empty to use the base credentials directly. | `""` |
+| `AWS_AUTHENTICATION_SECRET` | Identifier of the **File Secret in Harness Secret Manager** that contains the AWS credentials file. Not required when using IRSA. | `""` |
+
+Tunables that apply to every fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults). AWS-specific shared tunables are documented in [common AWS fault tunables](/docs/chaos-engineering/faults/chaos-faults/aws/aws-fault-tunables).
+
+---
+
+## Fault execution in brief
+
+Resolves the target instance list from `EC2_INSTANCE_ID` (or by `EC2_INSTANCE_TAG`), dispatches a PowerShell CPU-stress command via AWS Systems Manager Run Command to each selected Windows instance, holds the load for `TOTAL_CHAOS_DURATION` seconds, then stops the stress process.
+
+---
+
+## Expected behavior during fault execution
+
+- CPU utilization on the targeted Windows instances rises to approximately `CPU_PERCENTAGE` across `CPU_CORES` cores.
+- Workloads running on the host (IIS sites, Windows services, ECS/EKS Windows tasks) experience CPU contention; latency and throughput degrade.
+- CloudWatch `CPUUtilization` for the affected instances rises.
+- CPU-based autoscaling alarms may fire.
+
+:::info When the fault ends
+The chaos pod stops the stress process on each host. CPU returns to baseline within seconds.
 :::
 
-### Mandatory tunables
- <table>
-        <tr>
-            <th> Tunable </th>
-            <th> Description </th>
-            <th> Notes </th>
-        </tr>
-        <tr>
-            <td> EC2_INSTANCE_ID </td>
-            <td> ID(s) of the target EC2 instances. </td>
-            <td> For example: <code>i-044d3cb4b03b8af1f</code>. For more information, go to <a href="#multiple-ec2-instances"> EC2 instances.</a></td>
-        </tr>
-        <tr>
-            <td> REGION </td>
-            <td> AWS region ID where the EC2 instance has been created. </td>
-            <td> For example: <code>us-east-1</code>. </td>
-        </tr>
-    </table>
+### Signals to watch
 
-### Optional tunables
-  <table>
-        <tr>
-            <th> Tunable </th>
-            <th> Description </th>
-            <th> Notes </th>
-        </tr>
-        <tr>
-            <td> TOTAL_CHAOS_DURATION </td>
-            <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
-        <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
-        </tr>
-        <tr>
-            <td> AWS_SHARED_CREDENTIALS_FILE </td>
-            <td> Path to the AWS secret credentials. </td>
-            <td> Default: <code>/tmp/cloud_config.yml</code>. </td>
-        </tr>
-        <tr>
-            <td> CPU_CORE </td>
-            <td> Number of CPU cores to consume.</td>
-            <td> Default: 0. This means all available CPU cores are consumed. For more information, go to <a href="#cpu-core"> CPU core.</a></td>
-        </tr>
-        <tr>
-          <td> CPU_PERCENTAGE </td>
-          <td> Percentage of CPU core that is consumed.</td>
-          <td> <code>CPU_CORES</code> and <code>CPU_PERCENTAGE</code> are mututally exclusive, and if values for both there tunables are provided, the latter takes precedence. For example, if <code>CPU_CORES</code> is 1 and <code>CPU_PERCENTAGE</code> is 50, 50 percent of the resources are stressed. For more information, go to <a href="#cpu-percentage">CPU percentage</a>.</td>
-      </tr>
-        <tr>
-            <td> SEQUENCE </td>
-            <td> Sequence of chaos execution for multiple instances. </td>
-            <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
-        </tr>
-        <tr>
-            <td> RAMP_TIME </td>
-            <td> Period to wait before and after injecting chaos (in seconds). </td>
-            <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
-        </tr>
-    </table>
+Attach [resilience probes](/docs/resilience-testing/chaos-testing/probes) to assert each layer:
 
-### CPU core
+- **Application latency:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) and assert percentile latency SLOs.
+- **CPU utilization:** Use a [Prometheus probe](/docs/resilience-testing/chaos-testing/probes/apm-probes) on `aws_ec2_cpuutilization` (CloudWatch exporter).
+- **Autoscaling alarms:** Confirm CPU-based alarms fire.
+- **Service availability:** For Windows services or IIS sites, monitor whether the service stays in the `Running` state.
 
-Number of CPU cores utilized on the EC2 instance. Tune it by using the `CPU_CORE` environment variable. All available CPU cores can be consumed by setting this variable to `0`.
+---
 
-The following YAML snippet illustrates the use of this environment variable:
+## Verify the fault execution effect
 
-[embedmd]:# (./static/manifests/windows-ec2-cpu-hog/cpu-core.yaml yaml)
-```yaml
-# CPU cores to utilize
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: windows-ec2-cpu-hog
-    spec:
-      components:
-        env:
-        - name: CPU_CORE
-          VALUE: '2'
-        # ID of the EC2 instance
-        - name: EC2_INSTANCE_ID
-          value: 'instance-1'
-        # region for the EC2 instance
-        - name: REGION
-          value: 'us-east-1'
-```
+While the experiment is running, confirm CPU pressure is applied:
 
-### CPU percentage
-The `CPU_PERCENTAGE` environment variable specifies the percentage of stress applied on the target Windows VM for a specific duration. If the variable is set to `0`, the fault consumes all the available CPU cores.
+1. **Check CloudWatch CPU metrics.**
 
-Following YAML snippet illustrates the use of this input variable.
+   In the AWS console (CloudWatch → EC2 → Per-Instance Metrics), the target instance's `CPUUtilization` should rise during the chaos window and fall after recovery.
 
-[embedmd]:# (./static/manifests/windows-cpu-stress/win-cpu-stress-perc.yaml yaml)
-```yaml
-# CPU hog in the Windows VM
-apiVersion: litmuschaos.io/v1alpha1
-kind: MachineChaosExperiment
-metadata:
-  name: windows-cpu-stress
-spec:
-  infraType: "windows"
-  steps:
-    - - name: windows-cpu-stress
-  tasks:
-    - name: windows-cpu-stress
-      infraId: ""
-      definition:
-        chaos:
-          fault: windows-cpu-stress
-          env:
-           # CPU cores for stress
-            - name: CPU_PERCENTAGE
-              value: '50'
-```
+2. **Inspect SSM command status.**
 
-:::info note
-If both `CPU_CORE` and `CPU_PERCENTAGE` are set to 0, no stress is applied on any of the Windows machine resources.
-:::
+   ```bash
+   aws ssm list-command-invocations --region <region> --details --filters "key=Status,value=InProgress"
+   ```
 
-### Multiple EC2 instances
+   During the fault, you should see in-progress commands on the affected instances.
 
-Multiple EC2 instances specified as comma-separated IDs targeted in one chaos run. Tune it by using the `EC2_INSTANCE_ID` environment variable.
+3. **Inspect from the Windows host (via RDP or SSM Session Manager).**
 
-The following YAML snippet illustrates the use of this environment variable:
+   ```powershell
+   Get-Counter '\Processor(_Total)\% Processor Time' -SampleInterval 1 -MaxSamples 5
+   ```
 
-[embedmd]:# (./static/manifests/windows-ec2-cpu-hog/multiple-instances.yaml yaml)
-```yaml
-# mutilple instance targets
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: windows-ec2-cpu-hog
-    spec:
-      components:
-        env:
-        # ids of the EC2 instances
-        - name: EC2_INSTANCE_ID
-          value: 'instance-1,instance-2,instance-3'
-        # region for the EC2 instance
-        - name: REGION
-          value: 'us-east-1'
-```
+   Total processor utilization should be near the configured `CPU_PERCENTAGE`.
+
+---
+
+## Recovery and cleanup
+
+- **End of duration:** The chaos pod stops the stress process on each host.
+- **Abort the experiment:** Stopping the experiment from Chaos Studio cancels the SSM command.
+- **Manual recovery:** If the fault exits before cleanup, kill the stress process on the host via SSM Run Command (PowerShell `Stop-Process`).
+- **Workload recovery:** Most CPU-bound workloads recover automatically; long-running batch jobs may have produced incorrect or incomplete results during the stress.
+
+---
+
+## Limitations
+
+- **Windows-only:** This fault uses PowerShell and Windows process tooling. For Linux, use [EC2 CPU hog](/docs/chaos-engineering/faults/chaos-faults/aws/ec2-cpu-hog).
+- **SSM-managed hosts only:** Instances not registered with SSM cannot be reached.
+- **CPU governor / power plans:** Some Windows power plans cap CPU below 100%; the stress may not reach the configured load.
+- **Cross-region targeting:** A single experiment targets one region (the value of `REGION`).
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="Windows EC2 CPU hog fails with AccessDeniedException in Harness Chaos Engineering"
+  mode="docs"
+  fallback="The credentials supplied to the chaos pod do not have the required EC2 or SSM permissions. Confirm the IAM policy attached to the user, role, or IRSA service account includes ec2:DescribeInstances, ssm:SendCommand, ssm:GetCommandInvocation, and the ec2messages:* actions used by SSM."
+/>
+
+<Troubleshoot
+  issue="Windows EC2 CPU hog reports instance is not SSM-managed"
+  mode="docs"
+  fallback="Confirm the SSM Agent is installed and running on the Windows host (the SSMAgent service should be in Running state), the host has an instance profile with AmazonSSMManagedInstanceCore (or equivalent), and the host appears in 'aws ssm describe-instance-information' with PlatformType=Windows. Newly bootstrapped instances may take a few minutes to register."
+/>
+
+<Troubleshoot
+  issue="CPU utilization does not reach the configured percentage"
+  mode="docs"
+  fallback="The most common causes are: the Windows power plan caps the CPU (set to High Performance for the test); CPU_CORES is smaller than the available cores so total utilization is lower than expected; or another workload is throttling the chaos process. Set CPU_CORES=0 to stress every core and verify the High Performance power plan is active."
+/>
+
+<Troubleshoot
+  issue="Tags match more instances than expected"
+  mode="docs"
+  fallback="EC2_INSTANCE_TAG matches any instance carrying that tag in the target REGION; if the tag is broadly used, the fault may affect more than the intended set. Use a more specific tag (or use INSTANCE_AFFECTED_PERC to bound the blast radius), and verify the candidate list with 'aws ec2 describe-instances --filters Name=tag:Key,Values=Value'."
+/>
+
+---
+
+## Related faults
+
+- [Windows EC2 memory hog](/docs/chaos-engineering/faults/chaos-faults/aws/windows-ec2-memory-hog): Stress memory on Windows instances instead of CPU.
+- [EC2 CPU hog](/docs/chaos-engineering/faults/chaos-faults/aws/ec2-cpu-hog): CPU stress on Linux EC2 instances.
+- [Windows EC2 process kill](/docs/chaos-engineering/faults/chaos-faults/aws/windows-ec2-process-kill): Kill specific Windows processes on the instance.
+- [Common AWS fault tunables](/docs/chaos-engineering/faults/chaos-faults/aws/aws-fault-tunables): Shared environment variables for AWS faults.

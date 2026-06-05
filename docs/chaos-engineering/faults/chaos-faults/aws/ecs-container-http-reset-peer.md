@@ -1,441 +1,301 @@
 ---
 id: ecs-container-http-reset-peer
 title: ECS container HTTP reset peer
+sidebar_label: ECS Container HTTP Reset Peer
+description: Reset TCP connections to HTTP clients on a specific port after a configurable timeout inside a percentage of running ECS tasks (EC2 launch type) for a configurable duration so you can test how clients behave when the server abruptly closes the connection.
+keywords:
+  - chaos engineering
+  - ecs container http reset peer
+  - aws fault
+  - ecs fault
+  - http chaos
+tags:
+  - chaos-engineering
+  - aws-faults
+  - ecs-chaos
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-container-http-reset-peer
-- /docs/chaos-engineering/chaos-faults/aws/ecs-container-http-reset-peer
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-container-http-reset-peer
+  - /docs/chaos-engineering/chaos-faults/aws/ecs-container-http-reset-peer
 ---
 
-ECS container HTTP reset peer injects HTTP reset on the service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.
-- It stops the outgoing HTTP requests by resetting the TCP connection for the requests.
-- It determines the application's resilience to a lossy (or flaky) HTTP connection.
-- This experiment induces chaos within a container and depends on an EC2 instance. Typically, these are prefixed with ["ECS container"](/docs/chaos-engineering/faults/chaos-faults/aws/ec2-and-serverless-faults#ec2-backed-faults) and involve direct interaction with the EC2 instances hosting the ECS containers.
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-![ECS Container HTTP Reset Peer](./static/images/ecs-container-http-reset-peer.png)
+ECS container HTTP reset peer is an AWS chaos fault that resets HTTP connections to clients on `TARGET_SERVICE_PORT` after `RESET_TIMEOUT` milliseconds inside a percentage of running ECS tasks (EC2 launch type) for a configurable duration. The fault interposes a transparent HTTP proxy on the container instance, scoped to the target container via ECS container metadata and dispatched via AWS Systems Manager Run Command. After `RESET_TIMEOUT` ms the proxy sends a TCP RST to the client.
 
-## Use cases
-ECS container HTTP reset peer:
-- Simulates premature connection loss (firewall issues or other issues) between microservices (verify connection timeout).
-- Simulates connection resets due to resource limitations on the server side like out of memory server (or process killed or overload on the server due to a high amount of traffic).
+Use this fault to test how HTTP clients behave when the server abruptly resets the connection mid-request: whether retries engage, whether the client surfaces a clear error, and whether downstream systems are protected from cascading failures.
 
-### Prerequisites
-- Kubernetes >= 1.17
-- ECS container metadata is enabled (disabled by default). To enable it, go to [container metadata](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-metadata.html). If your task is currently running, you may need to restart it to get the metadata directory.
-- ECS cluster running with the desired tasks and containers and familiarity with ECS service update and deployment concepts.
-- Access to the ECS cluster instances with the necessary permissions to update the start and stop timeouts for containers. Refer to [systems manager docs](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-launch-managed-instance.html).
-- Backup and recovery mechanisms in place to handle potential failures during the testing process.
-- You and the ECS cluster instances have a role with the required AWS access to perform the SSM and ECS operations.
-- Kubernetes secret with AWS Access Key ID and secret access key credentials in the `CHAOS_NAMESPACE`. Below is the sample secret file:
-
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: cloud-secret
-type: Opaque
-stringData:
-  cloud_config.yml: |-
-    # Add the cloud AWS credentials respectively
-    [default]
-    aws_access_key_id = XXXXXXXXXXXXXXXXXXX
-    aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-```
-
-:::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
+:::info Run your first experiment
+If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
 :::
 
-Below is an example AWS policy to execute the fault.
+---
+
+## Use cases
+
+Run this fault when you want to answer concrete questions like:
+
+- **Reset handling:** When the server resets the connection mid-request, does the client surface a clear error to its caller, or does it retry forever?
+- **Idempotency safety:** For non-idempotent requests that the client retries on reset, does the server detect and reject duplicate requests?
+- **Connection pool churn:** Do reset connections cause the client's connection pool to churn, leading to TLS handshake storms?
+- **Long-lived streams:** Do gRPC streams and WebSocket connections recover, or do they degrade gracefully?
+- **Monitoring fidelity:** Do client-side `EOF` and `connection reset by peer` metrics rise as expected, and do alarms fire?
+
+---
+
+## Prerequisites
+
+- **Kubernetes version:** 1.21 or later for the chaos infrastructure cluster. Go to [What's supported](/docs/chaos-engineering/whats-supported) to confirm distribution support.
+- **Target ECS service or cluster:** `CLUSTER_NAME` exists in `REGION` and uses the EC2 launch type.
+- **Container instances are SSM-managed.**
+- **ECS container metadata enabled.**
+- **AWS credentials available:** Either an AWS credentials file uploaded as a **File Secret in Harness Secret Manager** (see Authentication below) or an IAM role for service accounts (IRSA) bound to the chaos infrastructure service account.
+- **IAM permissions granted:** The credentials or role include the permissions listed below.
+
+---
+
+## Supported environments
+
+| Platform | Support status |
+| --- | --- |
+| Amazon ECS on EC2 launch type | Supported |
+| Amazon ECS on Fargate launch type | Not supported |
+| HTTP/1.1 and HTTP/2 traffic on `TARGET_SERVICE_PORT` | Supported |
+| HTTPS terminated inside the container | Not supported |
+| Linux container instances | Supported |
+| Windows container instances | Not supported |
+| AWS regions | Supported in every commercial region; pass the region in `REGION` |
+
+---
+
+## Permissions required
+
+The IAM principal that the chaos pod uses (the credentials mounted from the Harness Secret Manager file secret, the IRSA role on the chaos service account, or the role assumed via `ASSUME_ROLE_ARN`) needs the following AWS actions.
 
 ```json
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ssm:GetDocument",
-                "ssm:DescribeDocument",
-                "ssm:GetParameter",
-                "ssm:GetParameters",
-                "ssm:SendCommand",
-                "ssm:CancelCommand",
-                "ssm:CreateDocument",
-                "ssm:DeleteDocument",
-                "ssm:GetCommandInvocation",
-                "ssm:UpdateInstanceInformation",
-                "ssm:DescribeInstanceInformation"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ec2messages:AcknowledgeMessage",
-                "ec2messages:DeleteMessage",
-                "ec2messages:FailMessage",
-                "ec2messages:GetEndpoint",
-                "ec2messages:GetMessages",
-                "ec2messages:SendReply"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ec2:DescribeInstanceStatus",
-                "ec2:DescribeInstances"
-            ],
-            "Resource": [
-                "*"
-            ]
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ecs:DescribeClusters",
+        "ecs:DescribeServices",
+        "ecs:DescribeTasks",
+        "ecs:ListTasks",
+        "ecs:ListContainerInstances",
+        "ecs:DescribeContainerInstances"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ssm:SendCommand",
+        "ssm:CancelCommand",
+        "ssm:GetCommandInvocation",
+        "ssm:DescribeInstanceInformation"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:DescribeInstances",
+        "ec2messages:AcknowledgeMessage",
+        "ec2messages:DeleteMessage",
+        "ec2messages:FailMessage",
+        "ec2messages:GetEndpoint",
+        "ec2messages:GetMessages",
+        "ec2messages:SendReply"
+      ],
+      "Resource": "*"
+    }
+  ]
 }
 ```
 
-:::info note
-- You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
-- The ECS container should be in a healthy state before and after introducing chaos.
-- Refer to the [superset permission or policy](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
-- Refer to the [common attributes](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults) to tune the common tunables for all the faults.
-- Refer to [AWS named profile for chaos](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/aws-switch-profile) to use a different profile for AWS faults.
+Go to [common policy for all AWS faults](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/policy-for-all-aws-faults) to use a single superset IAM policy across every AWS fault.
+
+---
+
+## Authentication
+
+The fault supports three credential delivery models. Pick one based on how your chaos infrastructure is deployed.
+
+| Method | When to use it | How to configure |
+| --- | --- | --- |
+| Harness Secret Manager file secret | Chaos infrastructure runs outside EKS, or you want explicit static credentials | Upload the AWS credentials file as a **File Secret** in Harness Secret Manager and reference its identifier via `AWS_AUTHENTICATION_SECRET` |
+| IAM Roles for Service Accounts (IRSA) | Chaos infrastructure runs in EKS and uses an OIDC-bound service account | No tunable changes; the chaos pod inherits the role automatically. Go to [AWS IAM integration](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/aws-iam-integration) to set it up |
+| Assume role | The fault needs to act in a different account or with elevated permissions | Set `ASSUME_ROLE_ARN` to the role ARN; the chaos pod assumes the role on top of its base credentials |
+
+When using the Harness Secret Manager method, the contents of the File Secret should be the AWS credentials file in the standard `~/.aws/credentials` format:
+
+```ini
+[default]
+aws_access_key_id = REPLACE_WITH_ACCESS_KEY_ID
+aws_secret_access_key = REPLACE_WITH_SECRET_ACCESS_KEY
+```
+
+Upload this file as a **File Secret** in Harness Secret Manager (Project Setup → Secrets → New File Secret), and pass the secret identifier in `AWS_AUTHENTICATION_SECRET` when configuring the fault.
+
+Go to [AWS named profile for chaos](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/aws-switch-profile) to switch between profiles inside a single credentials file.
+
+---
+
+## Fault tunables
+
+Configure the following fault parameters when you add ECS container HTTP reset peer to an experiment in Chaos Studio. Defaults are shown for reference.
+
+**Required parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `CLUSTER_NAME` | Name of the target ECS cluster. | (required) |
+| `REGION` | AWS region that hosts the ECS cluster (for example `us-east-1`). | (required) |
+
+**Targeting parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `SERVICE_NAME` | Name of the target ECS service. When set, the fault selects `TASK_REPLICA_AFFECTED_PERC` of the service's running tasks. | `""` |
+| `TASK_REPLICA_ID` | ID of a specific task replica to target. | `""` |
+| `TASK_REPLICA_AFFECTED_PERC` | Percentage of running tasks to affect when `SERVICE_NAME` is set. | `100` |
+
+**Chaos parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `RESET_TIMEOUT` | Number of milliseconds the proxy waits after the client connects before sending a TCP RST. Use `0` to reset immediately on connect. | `10000` |
+| `TARGET_SERVICE_PORT` | TCP port the affected container serves on. | `80` |
+| `PROXY_PORT` | Port the chaos proxy listens on inside the container. | `20000` |
+| `NETWORK_INTERFACE` | Network interface inside the container on which to install the redirect rules. `auto` discovers the primary interface. | `auto` |
+| `TOTAL_CHAOS_DURATION` | Duration of the fault in seconds. | `60` |
+| `INSTALL_DEPENDENCIES` | Install the proxy and networking tooling on each container instance if missing. | `true` |
+| `SEQUENCE` | Order in which multiple tasks are affected: `parallel` installs the proxy on all selected tasks at once; `serial` does so one at a time. | `parallel` |
+| `RAMP_TIME` | Wait period in seconds before and after the fault. Go to [ramp time](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time) to read how it is applied. | `0` |
+
+**Authentication**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `ASSUME_ROLE_ARN` | ARN of an IAM role to assume on top of the base credentials. Leave empty to use the base credentials directly. | `""` |
+| `AWS_AUTHENTICATION_SECRET` | Identifier of the **File Secret in Harness Secret Manager** that contains the AWS credentials file. Not required when using IRSA. | `""` |
+
+Tunables that apply to every fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults). AWS-specific shared tunables are documented in [common AWS fault tunables](/docs/chaos-engineering/faults/chaos-faults/aws/aws-fault-tunables).
+
+---
+
+## Fault execution in brief
+
+Resolves the running tasks for `SERVICE_NAME` (or the explicit `TASK_REPLICA_ID`), picks `TASK_REPLICA_AFFECTED_PERC` of them, and dispatches a transparent HTTP proxy via AWS Systems Manager Run Command into the affected container. New TCP connections on `TARGET_SERVICE_PORT` are redirected through the proxy on `PROXY_PORT`; the proxy waits `RESET_TIMEOUT` ms after the connection is established and then sends a TCP RST to the client. After `TOTAL_CHAOS_DURATION` seconds the proxy is stopped and the redirect rules are removed.
+
+---
+
+## Expected behavior during fault execution
+
+- HTTP clients connecting to the affected containers experience `connection reset by peer` errors after `RESET_TIMEOUT` ms.
+- Idempotent clients with retry will retry; non-idempotent clients surface the error to the caller.
+- TCP connections established before the chaos started are not affected (security-group-style; the proxy only intercepts new connections).
+- CloudWatch metrics may show elevated 5xx, 502, or 0-length responses (depending on which side of the reset the load balancer is).
+
+:::info When the fault ends
+The chaos pod stops the proxy and removes the redirect rules. New connections are not reset.
 :::
 
-### Mandatory tunables
-  <table>
-        <tr>
-            <th> Tunable </th>
-            <th> Description </th>
-            <th> Notes </th>
-        </tr>
-        <tr>
-          <td> REGION </td>
-          <td> The AWS region ID where the ECS container has been created. </td>
-          <td> For example, <code>us-east-1</code>. </td>
-        </tr>
-        <tr>
-            <td> RESET_TIMEOUT </td>
-            <td> Reset Timeout specifies after how much duration to reset the connection.</td>
-            <td> Default: 0. For more information, go to <a href="#reset-timeout"> reset timeout.</a></td>
-        </tr>
-        <tr>
-            <td> TARGET_SERVICE_PORT </td>
-            <td> Port of the service to target. </td>
-            <td> Default: port 80. For more information, go to <a href="#target-service-port"> target service port.</a></td>
-        </tr>
-    </table>
+### Signals to watch
 
-### Optional tunables
-  <table>
-        <tr>
-            <th> Tunable </th>
-            <th> Description </th>
-            <th> Notes </th>
-        </tr>
-        <tr>
-            <td> TOTAL_CHAOS_DURATION </td>
-            <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-            <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
-        </tr>
-        <tr>
-            <td> CHAOS_INTERVAL </td>
-            <td> Time interval between two successive instance terminations (in seconds). </td>
-            <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
-        </tr>
-        <tr>
-          <td> CLUSTER_NAME </td>
-          <td> Name of the target ECS cluster</td>
-          <td> Single name supported For example, <code>demo-cluster</code>. For more information, go to <a href="#agent-stop"> cluster name.</a></td>
-        </tr>
-        <tr>
-          <td> TASK_REPLICA_AFFECTED_PERC </td>
-          <td> Percentage of total tasks that are targeted. </td>
-          <td> Default: 100. For more information, go to <a href="#ecs-task-replica-affected-percentage"> ECS task replica affected percentage.</a></td>
-      </tr>
-        <tr>
-          <td> SERVICE_NAME </td>
-          <td> Target ECS service name. </td>
-          <td> For example, <code>app-svc</code>. For more information, go to <a href="#ecs-service-name"> ECS service name.</a></td>
-        </tr>
-        <tr>
-          <td> TASK_REPLICA_ID </td>
-          <td> Comma-separated target task replica IDs. </td>
-          <td> `SERVICE_NAME` and `TASK_REPLICA_ID` are mutually exclusive. If both the values are provided, `SERVICE_NAME` takes precedence. For more information, go to <a href="#ecs-task-replica-ids"> ECS task replica ID.</a></td>
-        </tr>
-        <tr>
-            <td> AWS_SHARED_CREDENTIALS_FILE </td>
-            <td> Provide the path for aws secret credentials.</td>
-            <td> Defaults to <code>/tmp/cloud_config.yml</code>. </td>
-        </tr>
-        <tr>
-            <td> SEQUENCE </td>
-            <td> It defines the sequence of chaos execution for multiple instances. </td>
-            <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
-        </tr>
-        <tr>
-            <td> RAMP_TIME </td>
-            <td> Period to wait before and after injection of chaos (in seconds). </td>
-            <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
-        </tr>
-        <tr>
-            <td> INSTALL_DEPENDENCY </td>
-            <td> Select to install dependencies used to run the network chaos. It can be either True or False. </td>
-            <td> If the dependency already exists, you can turn it off. Defaults to True.</td>
-        </tr>
-        <tr>
-            <td> PROXY_PORT </td>
-            <td> Port where the proxy will be listening to requests.</td>
-            <td> Defaults to 20000. For more information, go to <a href="#proxy-port"> proxy port.</a></td>
-        </tr>
-        <tr>
-          <td> NETWORK_INTERFACE </td>
-          <td> Network interface to be used for the proxy.</td>
-          <td> Default: `eth0`. For more information, go to <a href="#network-interface"> network interface.</a></td>
-        </tr>
-    </table>
+Attach [resilience probes](/docs/resilience-testing/chaos-testing/probes) to assert each layer:
 
-### Target service port
+- **Connection error counters:** Use a [Prometheus probe](/docs/resilience-testing/chaos-testing/probes/apm-probes) on client-side connection-reset counters.
+- **Application availability:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) and confirm the failure surfaces.
+- **Retry counters:** Use a Prometheus probe on retry counters to detect amplification.
+- **Load balancer 5xx:** Use a Prometheus probe on `aws_applicationelb_httpcode_target_5xx_count` to confirm the LB sees the failures.
 
-Service port that is targeted. Tune it by using the `TARGET_SERVICE_PORT` environment variable.
+---
 
-The following YAML snippet illustrates the use of this environment variable:
+## Verify the fault execution effect
 
-[embedmd]:# (./static/manifests/http-reset-peer/target-service-port.yaml yaml)
-```yaml
-## provide the port of the targeted service
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ecs-container-http-reset-peer
-    spec:
-      components:
-        env:
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
-```
+While the experiment is running, confirm connections are reset:
 
-### Proxy port
+1. **Probe with curl.**
 
-Port where the proxy server listens for requests. Tune it by using the `PROXY_PORT` environment variable.
+   ```bash
+   curl --max-time 30 -v http://<service-endpoint>:<port>/
+   ```
 
-The following YAML snippet illustrates the use of this environment variable:
+   You should see `Empty reply from server` or `Connection reset by peer` after approximately `RESET_TIMEOUT` ms.
 
-[embedmd]:# (./static/manifests/http-reset-peer/proxy-port.yaml yaml)
-```yaml
-# provide the port for proxy server
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ecs-container-http-reset-peer
-    spec:
-      components:
-        env:
-        # provide the port for proxy server
-        - name: PROXY_PORT
-          value: '8080'
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
-```
+2. **Inspect the redirect rules on the host (via SSM).**
 
-### Reset timeout
+   ```bash
+   aws ssm send-command \
+     --region <region> \
+     --document-name AWS-RunShellScript \
+     --instance-ids <container-instance-id> \
+     --parameters 'commands=["iptables -t nat -L PREROUTING -n"]'
+   ```
 
-Reset timeout value added to the HTTP request. Tune it by using the `RESET_TIMEOUT` environment variable.
+3. **Inspect SSM command status.**
 
-The following YAML snippet illustrates the use of this environment variable:
+   ```bash
+   aws ssm list-command-invocations --region <region> --details --filters "key=Status,value=InProgress"
+   ```
 
-[embedmd]:# (./static/manifests/http-reset-peer/reset-timeout.yaml yaml)
-```yaml
-## provide the reset timeout value
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ecs-container-http-reset-peer
-    spec:
-      components:
-        env:
-        # reset timeout specifies after how much duration to reset the connection
-        - name: RESET_TIMEOUT #in ms
-          value: '2000'
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
-```
+---
 
-### Network interface
+## Recovery and cleanup
 
-Network interface used for the proxy. Tune it by using the `NETWORK_INTERFACE` environment variable.
+- **End of duration:** The chaos pod stops the proxy and removes the redirect rules on each host.
+- **Abort the experiment:** Stopping the experiment from Chaos Studio cancels the SSM command and removes the proxy.
+- **Manual recovery:** If the fault exits before cleanup, remove the redirect rules and kill the proxy process via SSM.
+- **Workload recovery:** Connections reset during the chaos window are not restored; clients must re-establish them.
 
-The following YAML snippet illustrates the use of this environment variable:
+---
 
-[embedmd]:# (./static/manifests/http-reset-peer/network-interface.yaml yaml)
-```yaml
-## provide the network interface for proxy
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ecs-container-http-reset-peer
-    spec:
-      components:
-        env:
-        # provide the network interface for proxy
-        - name: NETWORK_INTERFACE
-          value: "eth0"
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: '80'
-```
+## Limitations
 
-### Agent stop
+- **EC2 launch type only.**
+- **Container metadata must be enabled.**
+- **SSM-managed hosts only.**
+- **Linux-only.**
+- **HTTPS terminated inside the container is not supported.**
+- **Only new connections are affected:** Already-established connections continue normally.
+- **One port per experiment:** The proxy intercepts only `TARGET_SERVICE_PORT`.
+- **Cross-region targeting:** A single experiment targets one region (the value of `REGION`).
 
-Target agent that is stopped for a specific duration. Tune it by using the `CLUSTER_NAME` environment variable. 
+---
 
-The following YAML snippet illustrates the use of this environment variable:
+## Troubleshooting
 
-[embedmd]:# (./static/manifests/ecs-container-http-reset-peer/cluster-name.yaml yaml)
-```yaml
-# stops the agent of an ECS cluster
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ecs-agent-stop
-    spec:
-      components:
-        env:
-        # provide the name of ECS cluster
-        - name: CLUSTER_NAME
-          value: 'demo'
-        - name: REGION
-          value: 'us-east-2'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
-```
+<Troubleshoot
+  issue="ECS container HTTP reset peer fails with AccessDeniedException in Harness Chaos Engineering"
+  mode="docs"
+  fallback="The credentials supplied to the chaos pod do not have the required ECS or SSM permissions. Confirm the IAM policy attached to the user, role, or IRSA service account includes ecs:DescribeServices, ecs:DescribeTasks, ssm:SendCommand, and ssm:GetCommandInvocation."
+/>
 
-### ECS task replica affected percentage
+<Troubleshoot
+  issue="Reset is not observed by client"
+  mode="docs"
+  fallback="The most common causes are: the client connects on a different port (set TARGET_SERVICE_PORT correctly); the client used a pre-existing pooled connection that escaped the proxy; the load balancer routed traffic to a non-affected task; or the proxy could not install the redirect rule (check NETWORK_INTERFACE). Force a fresh connection from the client and re-check."
+/>
 
-Number of tasks to target (in percentage). Tune it by using the `TASK_REPLICA_AFFECTED_PERC` environment variable.
+<Troubleshoot
+  issue="Tasks are restarted by health checks during the chaos window"
+  mode="docs"
+  fallback="If the health check uses TARGET_SERVICE_PORT, the proxy resets it too, causing the probe to fail. Either point the health check at a separate port not intercepted by the proxy, or increase the health check failure threshold during the experiment so probes can tolerate the resets."
+/>
 
-The following YAML snippet illustrates the use of this environment variable:
+<Troubleshoot
+  issue="Redirect rules remain after the chaos window"
+  mode="docs"
+  fallback="If the cleanup SSM command failed, the iptables PREROUTING redirect rules may persist on the container instance. Send an SSM AWS-RunShellScript command to the affected container instance that flushes the iptables NAT PREROUTING chain. The exact command is recorded in the chaos pod logs."
+/>
 
-[embedmd]:# (./static/manifests/ecs-container-http-reset-peer/task-replica-affected-perc.yaml yaml)
-```yaml
-# stop the tasks of an ECS cluster
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ecs-task-stop
-    spec:
-      components:
-        env:
-        # provide the name of ECS cluster
-        - name: CLUSTER_NAME
-          value: 'demo'
-        - name: SERVICE_NAME
-          vale: 'test-svc'
-        - name: TASK_REPLICA_AFFECTED_PERC
-          vale: '100'
-        - name: REGION
-          value: 'us-east-1'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
-```
+---
 
-### ECS task replica IDs
+## Related faults
 
-Task replicas that have a specific ID which are to be stoppee. Tune it by using the `TASK_REPLICA_ID` environment variable.
-
-The following YAML snippet illustrates the use of this environment variable:
-
-[embedmd]:# (./static/manifests/ecs-container-http-reset-peer/task-replica-id.yaml yaml)
-```yaml
-# stop the tasks of an ECS cluster
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ecs-task-stop
-    spec:
-      components:
-        env:
-        # provide the name of ECS cluster
-        - name: CLUSTER_NAME
-          value: 'demo'
-        - name: TASK_REPLICA_ID
-          vale: '1b751cf956e34e54b9d83b6a5c067f60,20d5041c044941dfb2126f1722d10558'
-        - name: REGION
-          value: 'us-east-1'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
-```
-
-### ECS service name
-
-Service name whose tasks are stopped. Tune it by using the `SERVICE_NAME` environment variable.
-
-The following YAML snippet illustrates the use of this environment variable:
-
-[embedmd]:# (./static/manifests/ecs-container-http-reset-peer/service-name.yaml yaml)
-```yaml
-# stop the tasks of an ECS cluster
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ecs-task-stop
-    spec:
-      components:
-        env:
-        # provide the name of ECS cluster
-        - name: CLUSTER_NAME
-          value: 'demo'
-        - name: SERVICE_NAME
-          vale: 'test-svc'
-        - name: REGION
-          value: 'us-east-1'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
-```
+- [ECS container HTTP latency](/docs/chaos-engineering/faults/chaos-faults/aws/ecs-container-http-latency): Delay the response instead of resetting.
+- [ECS container HTTP status code](/docs/chaos-engineering/faults/chaos-faults/aws/ecs-container-http-status-code): Return a chaos status code instead of resetting.
+- [ECS container HTTP modify body](/docs/chaos-engineering/faults/chaos-faults/aws/ecs-container-http-modify-body): Modify the body instead of resetting.
+- [Common AWS fault tunables](/docs/chaos-engineering/faults/chaos-faults/aws/aws-fault-tunables): Shared environment variables for AWS faults.

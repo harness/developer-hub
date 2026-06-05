@@ -1,283 +1,294 @@
 ---
 id: ecs-container-cpu-hog
 title: ECS container CPU hog
+sidebar_label: ECS Container CPU Hog
+description: Stress a configurable number of CPU cores at a configurable load percentage inside a percentage of running ECS tasks (EC2 launch type) for a configurable duration so you can test how the workload behaves under sustained CPU pressure.
+keywords:
+  - chaos engineering
+  - ecs container cpu hog
+  - aws fault
+  - ecs fault
+  - cpu stress
+tags:
+  - chaos-engineering
+  - aws-faults
+  - ecs-chaos
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-container-cpu-hog
-- /docs/chaos-engineering/chaos-faults/aws/ecs-container-cpu-hog
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-container-cpu-hog
+  - /docs/chaos-engineering/chaos-faults/aws/ecs-container-cpu-hog
 ---
 
-ECS container CPU hog disrupts the state of infrastructure resources. It induces stress on the AWS ECS container using Amazon SSM Run command, which is carried out using SSM documentation that is in-built into the fault. This fault:
-- Causes CPU chaos on the containers of the ECS task using the given `CLUSTER_NAME` environment variable for a specific duration.
-- To select the Task Under Chaos (TUC), use the service name associated with the task. If you provide the service name along with the cluster name, all the tasks associated with the given service will be selected as chaos targets.
-- This experiment induces chaos within a container and depends on an EC2 instance. Typically, these are prefixed with ["ECS container"](/docs/chaos-engineering/faults/chaos-faults/aws/ec2-and-serverless-faults#ec2-backed-faults) and involve direct interaction with the EC2 instances hosting the ECS containers.
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
+ECS container CPU hog is an AWS chaos fault that stresses `CPU_CORES` cores at `CPU_LOAD` percent inside a percentage of running ECS tasks (EC2 launch type) for a configurable duration. The fault discovers the EC2 container instances hosting the target tasks and runs CPU-stress commands inside the relevant containers via AWS Systems Manager Run Command on each host, scoped by ECS container metadata. The chaos stops automatically at the end of the fault and the affected processes are cleaned up on each host.
 
-![ECS Container CPU Hog](./static/images/ecs-container-cpu-hog.png)
+Use this fault to test how an ECS workload behaves under sustained CPU pressure that is contained to a subset of tasks: whether request latency degrades predictably, whether application-level circuit breakers shed load, whether autoscaling alarms fire, and whether multi-tenant noisy-neighbour isolation works as expected.
 
-## Use cases
-ECS Container CPU hog:
-- Evicts the application (task container) thereby impacting its delivery. These issues are known as noisy neighbour problems.
-- Simulates a lack of CPU for processes running on the application, which degrades their performance.
-- Verifies metrics-based horizontal pod autoscaling as well as vertical autoscale, that is, demand-based CPU addition.
-- Scales the nodes based on growth beyond budgeted pods.
-- Verifies the autopilot functionality of (cloud) managed clusters.
-- Verifies multi-tenant load issue, wherein when the load increases on one container, it does not cause downtime in other containers.
-- Tests the ECS task sanity (service availability) and recovery of the task containers subject to CPU stress.
-
-
-### Prerequisites
-- Kubernetes >= 1.17
-- ECS container instance should be in a healthy state.
-- ECS container metadata is enabled (disabled by default). To enable it, go to [container metadata](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-metadata.html). If your task is running from before, you may need to restart it to get the metadata directory.
-- You and the ECS cluster instances have a role with the required AWS access to perform the SSM and ECS operations. Go to [systems manager documentation](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-launch-managed-instance.html).
-- The Kubernetes secret should have the AWS access configuration(key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
-  ```yaml
-  apiVersion: v1
-  kind: Secret
-  metadata:
-    name: cloud-secret
-  type: Opaque
-  stringData:
-    cloud_config.yml: |-
-      # Add the cloud AWS credentials respectively
-      [default]
-      aws_access_key_id = XXXXXXXXXXXXXXXXXXX
-      aws_secret_access_key = XXXXXXXXXXXXXXX
-  ```
-
-:::tip
-HCE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
+:::info Run your first experiment
+If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
 :::
 
-Below is an example AWS policy to execute the fault.
+---
+
+## Use cases
+
+Run this fault when you want to answer concrete questions like:
+
+- **CPU pressure on the workload:** When a fraction of replicas is CPU-saturated, do remaining replicas absorb the traffic without breaching latency SLOs?
+- **Autoscaling:** Does the CPU-based scaling policy fire and add capacity within the expected window?
+- **Noisy-neighbour isolation:** Does CPU pressure on one container affect sibling containers on the same task or host, and is that acceptable?
+- **Circuit breaker engagement:** Does the application's internal circuit breaker engage when downstream latency rises because of CPU starvation?
+- **Recovery time:** When the stress ends, how quickly does latency return to baseline?
+
+---
+
+## Prerequisites
+
+- **Kubernetes version:** 1.21 or later for the chaos infrastructure cluster. Go to [What's supported](/docs/chaos-engineering/whats-supported) to confirm distribution support.
+- **Target ECS service or cluster:** `CLUSTER_NAME` exists in `REGION` and uses the EC2 launch type. If `SERVICE_NAME` is set, the fault selects from that service's running tasks.
+- **Container instances are SSM-managed:** Every EC2 container instance is registered with AWS Systems Manager. Go to [Setting up Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html) to enable SSM.
+- **ECS container metadata enabled:** Container metadata must be enabled on the cluster so the fault can locate the target container on each host. Go to [Container metadata file](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-metadata.html) to enable it; if your task is older than the change, restart it to populate the metadata directory.
+- **AWS credentials available:** Either an AWS credentials file uploaded as a **File Secret in Harness Secret Manager** (see Authentication below) or an IAM role for service accounts (IRSA) bound to the chaos infrastructure service account.
+- **IAM permissions granted:** The credentials or role include the permissions listed below.
+
+---
+
+## Supported environments
+
+| Platform | Support status |
+| --- | --- |
+| Amazon ECS on EC2 launch type | Supported |
+| Amazon ECS on Fargate launch type | Not supported (use [ECS Fargate CPU hog](/docs/chaos-engineering/faults/chaos-faults/aws/ecs-fargate-cpu-hog) instead) |
+| Linux container instances | Supported |
+| Windows container instances | Not supported |
+| AWS regions | Supported in every commercial region; pass the region in `REGION` |
+
+---
+
+## Permissions required
+
+The IAM principal that the chaos pod uses (the credentials mounted from the Harness Secret Manager file secret, the IRSA role on the chaos service account, or the role assumed via `ASSUME_ROLE_ARN`) needs the following AWS actions.
 
 ```json
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "VisualEditor0",
-            "Effect": "Allow",
-            "Action": [
-                "ecs:UpdateContainerInstancesState",
-                "ecs:RegisterContainerInstance",
-                "ecs:ListContainerInstances",
-                "ecs:DeregisterContainerInstance",
-                "ecs:DescribeContainerInstances",
-                "ecs:ListTasks",
-                "ecs:DescribeClusters"
-
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ssm:GetDocument",
-                "ssm:DescribeDocument",
-                "ssm:GetParameter",
-                "ssm:GetParameters",
-                "ssm:SendCommand",
-                "ssm:CancelCommand",
-                "ssm:CreateDocument",
-                "ssm:DeleteDocument",
-                "ssm:GetCommandInvocation",
-                "ssm:UpdateInstanceInformation",
-                "ssm:DescribeInstanceInformation"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ec2messages:AcknowledgeMessage",
-                "ec2messages:DeleteMessage",
-                "ec2messages:FailMessage",
-                "ec2messages:GetEndpoint",
-                "ec2messages:GetMessages",
-                "ec2messages:SendReply"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "ec2:DescribeInstances"
-            ],
-            "Resource": [
-                "*"
-            ]
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ecs:DescribeClusters",
+        "ecs:DescribeServices",
+        "ecs:DescribeTasks",
+        "ecs:ListTasks",
+        "ecs:ListContainerInstances",
+        "ecs:DescribeContainerInstances"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ssm:SendCommand",
+        "ssm:CancelCommand",
+        "ssm:GetCommandInvocation",
+        "ssm:DescribeInstanceInformation"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:DescribeInstances",
+        "ec2messages:AcknowledgeMessage",
+        "ec2messages:DeleteMessage",
+        "ec2messages:FailMessage",
+        "ec2messages:GetEndpoint",
+        "ec2messages:GetMessages",
+        "ec2messages:SendReply"
+      ],
+      "Resource": "*"
+    }
+  ]
 }
 ```
 
-:::info note
-- Go to [AWS named profile for chaos](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/aws-switch-profile) to use a different profile for AWS faults and the [superset permission/policy](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
-- Go to the [common tunables](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults) and [AWS-specific tunables](/docs/chaos-engineering/faults/chaos-faults/aws/aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
+Go to [common policy for all AWS faults](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/policy-for-all-aws-faults) to use a single superset IAM policy across every AWS fault.
+
+---
+
+## Authentication
+
+The fault supports three credential delivery models. Pick one based on how your chaos infrastructure is deployed.
+
+| Method | When to use it | How to configure |
+| --- | --- | --- |
+| Harness Secret Manager file secret | Chaos infrastructure runs outside EKS, or you want explicit static credentials | Upload the AWS credentials file as a **File Secret** in Harness Secret Manager and reference its identifier via `AWS_AUTHENTICATION_SECRET` |
+| IAM Roles for Service Accounts (IRSA) | Chaos infrastructure runs in EKS and uses an OIDC-bound service account | No tunable changes; the chaos pod inherits the role automatically. Go to [AWS IAM integration](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/aws-iam-integration) to set it up |
+| Assume role | The fault needs to act in a different account or with elevated permissions | Set `ASSUME_ROLE_ARN` to the role ARN; the chaos pod assumes the role on top of its base credentials |
+
+When using the Harness Secret Manager method, the contents of the File Secret should be the AWS credentials file in the standard `~/.aws/credentials` format:
+
+```ini
+[default]
+aws_access_key_id = REPLACE_WITH_ACCESS_KEY_ID
+aws_secret_access_key = REPLACE_WITH_SECRET_ACCESS_KEY
+```
+
+Upload this file as a **File Secret** in Harness Secret Manager (Project Setup → Secrets → New File Secret), and pass the secret identifier in `AWS_AUTHENTICATION_SECRET` when configuring the fault.
+
+Go to [AWS named profile for chaos](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/aws-switch-profile) to switch between profiles inside a single credentials file.
+
+---
+
+## Fault tunables
+
+Configure the following fault parameters when you add ECS container CPU hog to an experiment in Chaos Studio. Defaults are shown for reference.
+
+**Required parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `CLUSTER_NAME` | Name of the target ECS cluster. | (required) |
+| `REGION` | AWS region that hosts the ECS cluster (for example `us-east-1`). | (required) |
+
+**Targeting parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `SERVICE_NAME` | Name of the target ECS service. When set, the fault selects `TASK_REPLICA_AFFECTED_PERC` of the service's running tasks; leave empty to target all running tasks in the cluster. | `""` |
+| `TASK_REPLICA_AFFECTED_PERC` | Percentage of running tasks to stress when `SERVICE_NAME` is set. | `100` |
+
+**Chaos parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `CPU_CORES` | Number of CPU cores to stress inside each affected container. | `1` |
+| `CPU_LOAD` | Load percentage applied to each core (0-100). | `100` |
+| `TOTAL_CHAOS_DURATION` | Duration of the fault in seconds. | `60` |
+| `INSTALL_DEPENDENCIES` | Install the stress tooling on each container instance if missing. Set to `false` when your AMI already has it and you want to skip the install step. | `true` |
+| `DEFAULT_HEALTH_CHECK` | When `true`, the fault runs additional checks against ECS to verify task health before and after the stress. | `false` |
+| `SEQUENCE` | Order in which multiple tasks are stressed: `parallel` issues the stress on all selected tasks at once; `serial` does so one at a time. | `parallel` |
+| `RAMP_TIME` | Wait period in seconds before and after the fault. Go to [ramp time](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time) to read how it is applied. | `0` |
+
+**Authentication**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `ASSUME_ROLE_ARN` | ARN of an IAM role to assume on top of the base credentials. Leave empty to use the base credentials directly. | `""` |
+| `AWS_AUTHENTICATION_SECRET` | Identifier of the **File Secret in Harness Secret Manager** that contains the AWS credentials file. Not required when using IRSA. | `""` |
+
+Tunables that apply to every fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults). AWS-specific shared tunables are documented in [common AWS fault tunables](/docs/chaos-engineering/faults/chaos-faults/aws/aws-fault-tunables).
+
+---
+
+## Fault execution in brief
+
+Resolves the running tasks for `SERVICE_NAME` (or all tasks in `CLUSTER_NAME`), picks `TASK_REPLICA_AFFECTED_PERC` of them, and dispatches a CPU-stress command via AWS Systems Manager Run Command to the EC2 host of each selected task. The command is scoped to the target container via ECS container metadata, runs for `TOTAL_CHAOS_DURATION` seconds, and is cleaned up at the end.
+
+---
+
+## Expected behavior during fault execution
+
+- The targeted containers' CPU utilization rises to the configured `CPU_LOAD` across `CPU_CORES` cores.
+- Application latency rises in proportion to the CPU pressure; clients may see slower responses or timeouts.
+- ECS CloudWatch metrics for the service (CPUUtilization) reflect the elevated usage on the affected tasks.
+- Other containers on the same EC2 host may experience noisy-neighbour effects depending on cgroup limits.
+- Health checks may fail under sustained pressure, triggering ECS to replace tasks.
+
+:::info When the fault ends
+The chaos pod stops the stress process on each host. CPU returns to baseline within seconds; any tasks killed by health checks during the stress are rescheduled by the ECS service controller.
 :::
 
-### Mandatory tunables
-   <table>
-        <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-        </tr>
-        <tr>
-        <td> CLUSTER_NAME </td>
-        <td> Name of the target ECS cluster. </td>
-        <td> For example, <code>cluster-1</code>. </td>
-        </tr>
-        <tr>
-        <td> REGION </td>
-        <td> Region name of the target ECS cluster</td>
-        <td> For example, <code>us-east-1</code>. </td>
-        </tr>
-    </table>
+### Signals to watch
 
-### Optional tunables
+Attach [resilience probes](/docs/resilience-testing/chaos-testing/probes) to assert each layer:
 
-   <table>
-      <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> TOTAL_CHAOS_DURATION </td>
-        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
-      </tr>
-      <tr>
-        <td> CHAOS_INTERVAL </td>
-        <td> Interval between successive instance terminations (in seconds).</td>
-        <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
-      </tr>
-      <tr>
-        <td> AWS_SHARED_CREDENTIALS_FILE </td>
-        <td> Path to the AWS secret credentials.</td>
-        <td> Default: <code>/tmp/cloud_config.yml</code>. </td>
-      </tr>
-      <tr>
-          <td> SERVICE_NAME </td>
-          <td> Target ECS service name. </td>
-          <td> For example, <code>app-svc</code>. For more information, go to <a href="#ecs-service-name"> ECS service name.</a></td>
-        </tr>
-      <tr>
-        <td> CPU_CORE </td>
-        <td> Number of CPU cores to consume.</td>
-        <td> Default: 0. For more information, go to <a href="#cpu-cores"> CPU core.</a></td>
-      </tr>
-      <tr>
-        <td> CPU_LOAD </td>
-        <td> Percentage of the CPU to consume.</td>
-        <td> Default: 100. For more information, go to <a href="#cpu-load"> CPU load.</a></td>
-      </tr>
-      <tr>
-        <td> SEQUENCE </td>
-        <td> Sequence of chaos execution for multiple instances</td>
-        <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
-      </tr>
-      <tr>
-        <td> RAMP_TIME </td>
-        <td> Period to wait before and after injecting chaos (in seconds).  </td>
-        <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
-      </tr>
-    </table>
+- **Application latency:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) and assert percentile latency SLOs.
+- **CPU utilization:** Use a [Prometheus probe](/docs/resilience-testing/chaos-testing/probes/apm-probes) on `aws_ecs_cpu_utilization` for the affected service.
+- **Autoscaling alarms:** Confirm CPU-based scaling policy alarms fire when expected.
+- **Task lifecycle:** Use a [command probe](/docs/resilience-testing/chaos-testing/probes/command-probe) that runs `aws ecs describe-tasks` and asserts task health.
 
+---
 
-### CPU cores
+## Verify the fault execution effect
 
-Number of cores of the CPU to consume for the target container instances. Tune it by using the ` CPU_CORE` environment variable. When this environment variable is set to 0, all the available CPU resources are consumed.
+While the experiment is running, confirm CPU pressure is applied to the targeted containers:
 
-The following YAML snippet illustrates the use of this environment variable:
+1. **Check CPU utilization metrics.**
 
-[embedmd]:# (./static/manifests/ecs-stress-chaos/cpu-core.yaml yaml)
-```yaml
-# cpu cores for the stress
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ecs-container-cpu-hog
-    spec:
-      components:
-        env:
-        # provide the cpu core to be hogged
-        - name: CPU_CORE
-          value: '0'
-        - name: REGION
-          value: 'us-east-2'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
-```
+   In the AWS console (CloudWatch → ECS → ClusterName → ServiceName), `CPUUtilization` should rise sharply during the chaos window and fall after recovery.
 
-### CPU load
+2. **Inspect SSM command status.**
 
-Percentage of CPU to be consumed for the target container instances. Tune it by using the ` CPU_LOAD` environment variable. When CPU load is set to 100, 100 percent of the CPU core is consumed.
+   ```bash
+   aws ssm list-command-invocations \
+     --region <region> \
+     --details \
+     --filters "key=Status,value=InProgress"
+   ```
 
-The following YAML snippet illustrates the use of this environment variable:
+   During the fault, you should see in-progress commands on the affected container instances.
 
-[embedmd]:# (./static/manifests/ecs-stress-chaos/cpu-load.yaml yaml)
-```yaml
-# cpu load for the stress
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ecs-container-cpu-hog
-    spec:
-      components:
-        env:
-        # provide the cpu load percentage
-        - name: CPU_LOAD
-          value: '100'
-        - name: CPU_CORE
-          value: '0'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
-```
+3. **List affected tasks before and after.**
 
-### ECS service name
+   ```bash
+   aws ecs list-tasks --cluster <cluster> --service-name <service> --desired-status RUNNING --region <region>
+   ```
 
-Service name whose tasks are stopped. Tune it by using the `SERVICE_NAME` environment variable.
+   Task ARNs should match across the chaos window unless health checks killed and replaced them.
 
-The following YAML snippet illustrates the use of this environment variable:
+---
 
-[embedmd]:# (./static/manifests/ecs-stress-chaos/service-name.yaml yaml)
-```yaml
-# stop the tasks of an ECS cluster
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ecs-task-stop
-    spec:
-      components:
-        env:
-        # provide the name of ECS cluster
-        - name: CLUSTER_NAME
-          value: 'demo'
-        - name: SERVICE_NAME
-          vale: 'test-svc'
-        - name: REGION
-          value: 'us-east-1'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
-```
+## Recovery and cleanup
+
+- **End of duration:** The chaos pod terminates the stress process on each host. CPU returns to baseline.
+- **Abort the experiment:** Stopping the experiment from Chaos Studio cancels the SSM command and stops the stress.
+- **Manual recovery:** If the fault exits before cleanup runs, you can stop the stress process by sending `aws ssm send-command --document-name AWS-RunShellScript --parameters 'commands=["pkill -f stress"]'` to the affected hosts.
+- **Workload recovery:** Tasks killed by health checks during the stress are rescheduled by the ECS service controller; no manual intervention is needed.
+
+---
+
+## Limitations
+
+- **EC2 launch type only:** This fault uses SSM Run Command against the underlying EC2 host. Fargate has no exposed host; use [ECS Fargate CPU hog](/docs/chaos-engineering/faults/chaos-faults/aws/ecs-fargate-cpu-hog).
+- **Container metadata must be enabled:** Without ECS container metadata, the fault cannot locate the target container on the host.
+- **SSM-managed hosts only:** Container instances that are not SSM-registered cannot be reached.
+- **Linux-only:** The stress tooling installed by `INSTALL_DEPENDENCIES=true` is Linux-only.
+- **Cross-region targeting:** A single experiment targets one region (the value of `REGION`).
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="ECS container CPU hog fails with AccessDeniedException in Harness Chaos Engineering"
+  mode="docs"
+  fallback="The credentials supplied to the chaos pod do not have the required ECS or SSM permissions. Confirm the IAM policy attached to the user, role, or IRSA service account includes ecs:DescribeServices, ecs:DescribeTasks, ecs:ListContainerInstances, ssm:SendCommand, and ssm:GetCommandInvocation. When using ASSUME_ROLE_ARN, also confirm the source identity is trusted to assume the role."
+/>
+
+<Troubleshoot
+  issue="ECS container CPU hog reports the container instance is not SSM-managed"
+  mode="docs"
+  fallback="The fault uses AWS Systems Manager Run Command on the underlying EC2 host. Confirm the SSM Agent is installed and running on the host, the host has an instance profile with AmazonSSMManagedInstanceCore (or equivalent), and the host appears in 'aws ssm describe-instance-information'. After enabling SSM the instance may take a few minutes to register."
+/>
+
+<Troubleshoot
+  issue="ECS container CPU hog reports container metadata is missing"
+  mode="docs"
+  fallback="ECS container metadata must be enabled on the cluster for the fault to find the target container on the host. Enable container metadata in the ECS agent configuration (ECS_ENABLE_CONTAINER_METADATA=true) on each container instance, then restart the agent. Existing tasks may need to be restarted to populate the metadata directory."
+/>
+
+<Troubleshoot
+  issue="CPU utilization rises but the application keeps serving traffic normally"
+  mode="docs"
+  fallback="The most common causes are: CPU_CORES is small relative to the task's CPU allocation (raise CPU_CORES or CPU_LOAD); the load balancer routed traffic away from the stressed tasks because of failing health checks (verify with target group health); or the application is IO-bound and not CPU-bound. Pick a different fault (memory hog, IO stress) if CPU pressure is not the right signal."
+/>
+
+---
+
+## Related faults
+
+- [ECS container memory hog](/docs/chaos-engineering/faults/chaos-faults/aws/ecs-container-memory-hog): Stress memory inside containers instead of CPU.
+- [ECS container IO stress](/docs/chaos-engineering/faults/chaos-faults/aws/ecs-container-io-stress): Stress filesystem IO inside containers.
+- [ECS Fargate CPU hog](/docs/chaos-engineering/faults/chaos-faults/aws/ecs-fargate-cpu-hog): CPU stress for Fargate tasks (different mechanism).
+- [Common AWS fault tunables](/docs/chaos-engineering/faults/chaos-faults/aws/aws-fault-tunables): Shared environment variables for AWS faults.
