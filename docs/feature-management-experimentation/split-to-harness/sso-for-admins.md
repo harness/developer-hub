@@ -3,6 +3,27 @@ title: SSO for Split Admins
 description: Learn how how SSO for Split administrators works before and after your account migration.
 sidebar_label: SSO for Split Admins
 sidebar_position: 7
+redirect_from:
+  - /docs/feature-management-experimentation/management-and-administration/authentication
+  - /docs/feature-management-experimentation/management-and-administration/authentication/scim
+  - /docs/feature-management-experimentation/management-and-administration/authentication/scim/microsoft
+  - /docs/feature-management-experimentation/management-and-administration/authentication/scim/okta
+  - /docs/feature-management-experimentation/management-and-administration/authentication/sso
+  - /docs/feature-management-experimentation/management-and-administration/authentication/sso/ad-fs
+  - /docs/feature-management-experimentation/management-and-administration/authentication/sso/azure
+  - /docs/feature-management-experimentation/management-and-administration/authentication/sso/google
+  - /docs/feature-management-experimentation/management-and-administration/authentication/sso/okta
+  - /docs/feature-management-experimentation/management-and-administration/authentication/sso/onelogin
+  - /docs/feature-management-experimentation/authentication
+  - /docs/feature-management-experimentation/authentication/scim
+  - /docs/feature-management-experimentation/authentication/scim/okta
+  - /docs/feature-management-experimentation/authentication/scim/microsoft
+  - /docs/feature-management-experimentation/authentication/sso
+  - /docs/feature-management-experimentation/authentication/sso/azure
+  - /docs/feature-management-experimentation/authentication/sso/ad-fs
+  - /docs/feature-management-experimentation/authentication/sso/google
+  - /docs/feature-management-experimentation/authentication/sso/okta
+  - /docs/feature-management-experimentation/authentication/sso/onelogin
 ---
 
 import InfoOmitFMEAdmins from './shared/scim-info-omit-fme-admins.md';

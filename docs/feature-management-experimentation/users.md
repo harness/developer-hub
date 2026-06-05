@@ -42,6 +42,12 @@ Split supports three roles to give users different permission levels in the Spli
 Administrators is a group that has been created for you. The first user in a new account is automatically added to the Administrators group. A user added to the Administrators group will have full administrator privileges, without regard for other role assignments.
 :::
 
+## Session management
+
+The Split console uses a single important cookie: **`split-token`**, which stores the user’s JSON Web Token (JWT) credentials after authentication.  
+
+This cookie is required to maintain the user’s session while they are logged in.
+
 ## Assigning user roles
 
 The following sections explain how a user in the Administrators group can assign a role to other users.
