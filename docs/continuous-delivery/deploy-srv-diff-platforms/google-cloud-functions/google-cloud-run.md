@@ -341,8 +341,9 @@ The following are the minimum set of permissions required for deploying Google C
 5. **Invoke Cloud Run Services** (if needed for execution):
    - `run.routes.invoke`
 
-6. **Get Service Monitoring Data for Instance Sync**:
+6. **Get Service Monitoring Data for Instance Sync and Post-Deploy Verification**:
    - `monitoring.timeSeries.list`
+   - `monitoring.metricDescriptors.list`
 
 7. **View Configuration and Permissions**:
    - `run.configurations.list`
@@ -380,7 +381,7 @@ Alternatively, the following roles can also be used:
    - Access to logs for debugging Cloud Run services.
 
 4. **Monitoring Viewer (`roles/monitoring.viewer`)**:
-   - Permission to view service monitoring data.
+   - Required for post-deploy instance verification. Harness uses the Google Cloud Monitoring SDK to fetch and log instance details after each new revision is deployed. Without this role, the deploy step may succeed but then fail with a `PermissionDenied` error during verification.
 
 5. **IAM Workload Identity Pool Admin (`roles/iam.workloadIdentityPoolAdmin`)**:
    - This role grants you the necessary permissions to create, update, and delete workload identity pools and providers.
