@@ -23,7 +23,7 @@ To answer these questions, AI DLC Insights introduces a simplified and extensibl
 ```mermaid
 flowchart LR
     %% Left to Right Layout
-    A["**CSV Import**<br><br>Developer data is imported from an HRIS system. <br><br>*Owner: SEI Admin*<br>*Scope: Account*"] --> B["**Developers**<br><br>A collection of all developers is created in SEI. <br><br>*Owner: SEI Admin*<br>*Scope: Account*"] --> C["**Org Tree**<br><br>A hierarchy of developers is formed for team organization.<br><br>*Owner: SEI Admin*<br>*Scope: Project*"] --> D["**Team Settings**<br><br>Team managers configure settings for their teams (e.g. Jira projects, Git repos, and pipelines).<br><br>*Owner: Team Manager*<br>*Scope: Project*"] --> E["**Insights**<br><br>The central page where dashboards are viewed. Includes both out-of-the-box dashboards and custom dashboards created in Canvas.<br><br>*Access: SEI Viewers*<br>*Scope: Project*"]
+    A["**CSV Import**<br><br>Developer data is imported from an HRIS system. <br><br>*Owner: SEI Admin*<br>*Scope: Account*"] --> B["**Developers**<br><br>A collection of all developers is created in SEI. <br><br>*Owner: SEI Admin*<br>*Scope: Account*"] --> C["**Org Tree**<br><br>A hierarchy of developers is formed for team organization.<br><br>*Owner: SEI Admin*<br>*Scope: Project*"] --> D["**Team Settings**<br><br>Team managers configure settings for their teams (e.g. Jira projects, Git repos, and pipelines).<br><br>*Owner: Team Manager*<br>*Scope: Project*"] --> E["**Insights**<br><br>The central page where dashboards are viewed. Includes both out-of-the-box dashboards and custom dashboards created in Studio.<br><br>*Access: SEI Viewers*<br>*Scope: Project*"]
 
     %% Profiles below Org Tree
     F["**Profiles**<br><br>Defines which insights (e.g. Efficiency, Productivity, Business Alignment) to show and how they are computed. <br><br>*Owner: SEI Admin*<br>*Scope: Account*"] -.-> C
@@ -167,14 +167,14 @@ AI DLC Insights includes the following pre-built dashboards designed to deliver 
   All dashboards are automatically scoped using your **Org Tree**, **Teams**, and **Profiles** so each viewer (from developer, team lead, to executives) sees the insights most relevant to them.
   :::
 
-#### Canvas dashboards
+#### Studio dashboards
 
 :::tip
-Canvas dashboards are in beta. To request access, contact [Harness Support](/docs/software-engineering-insights/sei-support).
+Studio dashboards are in beta. To request access, contact [Harness Support](/docs/software-engineering-insights/sei-support).
 :::
 
-If the out-of-the-box dashboards on the **Insights** page don’t meet your needs, you can use [Canvas](/docs/software-engineering-insights/harness-sei/canvas/) to create custom dashboards in AI DLC Insights.
+If the out-of-the-box dashboards on the **Insights** page don’t meet your needs, you can use [Studio](/docs/software-engineering-insights/harness-sei/canvas/) to create custom dashboards in AI DLC Insights.
 
 ![](../static/canvas-3.png)
 
-Canvas is where dashboards are created and managed. Once created, they are published to the **Insights** page, where they can be viewed and shared across your team.
+Studio is where dashboards are created and managed. Once created, they are published to the **Insights** page, where they can be viewed and shared across your team.

@@ -266,7 +266,7 @@ This topic describes permissions relevant to [RBAC in Harness](/docs/category/pl
 | AIDI Insight Categories | <ul><li>View (`sei_seiinsightscategory_view`)</li></ul> | Active |
 | AIDI Teams | <ul><li>View (`sei_seiteams_view`)</li><li>Create (`sei_seiteams_create`)</li><li>Edit (`sei_seiteams_edit`)</li><li>Delete (`sei_seiteams_delete`)</li></ul> | Active |
 | AIDI Profiles | <ul><li>View (`sei_seiprofiles_view`)</li><li>Create (`sei_seiprofiles_create`)</li><li>Edit (`sei_seiprofiles_edit`)</li><li>Delete (`sei_seiprofiles_delete`)</li></ul> | Active |
-| AIDI Canvas | <ul><li>View (`sei_seicanvas_view`)</li><li>Create (`sei_seicanvas_create`)</li><li>Edit (`sei_seicanvas_edit`)</li><li>Delete (`sei_seicanvas_delete`)</li></ul> | Active |
+| AIDI Studio | <ul><li>View (`sei_seicanvas_view`)</li><li>Create (`sei_seicanvas_create`)</li><li>Edit (`sei_seicanvas_edit`)</li><li>Delete (`sei_seicanvas_delete`)</li></ul> | Active |
 
 ### Feature Management and Experimentation
 

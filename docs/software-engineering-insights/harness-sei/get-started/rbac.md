@@ -44,7 +44,7 @@ Harness AIDI enables you to control who can view, edit, and manage SEI data acro
 | Teams                     | Project          | Team and hierarchy definitions live at the project level.                      |
 | Insights Categories       | Project          | Includes insight dashboards and data.                                                 |
 | Profiles                  | Account          | Includes Efficiency, Productivity, and Business Alignment profiles.                                   |
-| Canvas  | Project          | Controls access to custom dashboards, including create, edit, publish, clone, and delete actions. Visibility is further scoped by Teams (associated by Org Trees). |
+| Studio  | Project          | Controls access to custom dashboards, including create, edit, publish, clone, and delete actions. Visibility is further scoped by Teams (associated by Org Trees). |
 
 ## Out-of-the-box roles
 
@@ -58,7 +58,7 @@ The SEI Admin role enables users full control over SEI configurations and data.
 | ------------------------- | ----------------- | -------- | -------- | ---------- | ---------- | ----------------------------------------- |
 | Data settings             | Account, Project  |    ✅   |    ✅   |    ✅     |    ✅     | Manage contributor data and integrations. |
 | Teams                     | Project           |    ✅   |    ✅   |    ✅     |    ✅     | Manage team definitions in any project.                  |
-| Canvas  | Project           |    ✅    |    ✅    |    ✅     |    ✅     | Create, edit, publish, clone, and delete custom dashboards.               |
+| Studio  | Project           |    ✅    |    ✅    |    ✅     |    ✅     | Create, edit, publish, clone, and delete custom dashboards.               |
 | Insights Categories                  | Project           |    ✅   |         |           |           | View insight dashboards.                          |
 | Profiles                  | Account           |    ✅   |    ✅   |    ✅     |    ✅     | Manage org trees and profile assignments. |
 

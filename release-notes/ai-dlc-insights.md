@@ -28,37 +28,37 @@ These release notes describe recent changes to Harness AI-Driven Development Lif
 ----
 #### 2026-05-05
 
-The **Productivity Insights** dashboard in SEI 2.0 now excludes bot-generated review comments from **PR Cycle Time** calculations and all related visualizations. This improves the accuracy of review workflow metrics by ensuring only human-generated review activity is considered.
+The **Productivity Insights** dashboard in AIDI now excludes bot-generated review comments from **PR Cycle Time** calculations and all related visualizations. This improves the accuracy of review workflow metrics by ensuring only human-generated review activity is considered.
 
 ![](./static/sei/productivity-pr.png)
 
 This change applies to both the aggregated **PR Cycle Time** metric and the **PR Cycle Time Drilldown** view, including `First Review` and `Approval` timing displayed within individual pull request records.
 
-[**PR Cycle Time** metrics](/docs/software-engineering-insights/harness-sei/insights/productivity#pr-cycle-time) reflects the time taken for meaningful human review activity, reducing noise introduced by automated systems, bots, or CI-generated comments. This enhancement ensures consistency in how code review is measured across SEI 2.0.
+[**PR Cycle Time** metrics](/docs/software-engineering-insights/harness-sei/insights/productivity#pr-cycle-time) reflects the time taken for meaningful human review activity, reducing noise introduced by automated systems, bots, or CI-generated comments. This enhancement ensures consistency in how code review is measured across AIDI.
 
 #### Related documentation
 
 - [Developer Productivity Insights](/docs/software-engineering-insights/harness-sei/insights/productivity#pr-cycle-time)
 - [View Insights](/docs/software-engineering-insights/harness-sei/insights)
 
-### qTest Integration in SEI 2.0
+### qTest Integration in AIDI
 ----
 #### 2026-05-05
 
-SEI 2.0 now includes a qTest integration. This integration allows teams to ingest test management data from qTest Cloud using an API key on the [**Download qTest Resources** page](https://docs.tricentis.com/qtest-saas/content/overview/download_qtest_resources_page.htm). 
+AIDI now includes a qTest integration. This integration allows teams to ingest test management data from qTest Cloud using an API key on the [**Download qTest Resources** page](https://docs.tricentis.com/qtest-saas/content/overview/download_qtest_resources_page.htm). 
 
-Once configured, SEI 2.0 synchronizes test execution and testing activity data to support engineering insights and reporting. You can monitor ingestion activity using ingestion logs, which provide visibility into synchronization status and help troubleshoot data ingestion issues.
+Once configured, AIDI synchronizes test execution and testing activity data to support engineering insights and reporting. You can monitor ingestion activity using ingestion logs, which provide visibility into synchronization status and help troubleshoot data ingestion issues.
 
 #### Related documentation
 
 - [qTest Integration](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/qtest)
 - [Configure Integrations](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/)
 
-### ServiceNow Integration and ITSM Configuration in SEI 2.0
+### ServiceNow Integration and ITSM Configuration in AIDI
 ----
 #### 2026-05-05
 
-SEI 2.0 now supports a ServiceNow integration, enabling teams to ingest, normalize, and analyze ITSM data directly within their [Engineering Insights dashboards](/docs/software-engineering-insights/harness-sei/insights/efficiency#using-servicenow-data-in-dora-metrics).
+AIDI now supports a ServiceNow integration, enabling teams to ingest, normalize, and analyze ITSM data directly within their [Engineering Insights dashboards](/docs/software-engineering-insights/harness-sei/insights/efficiency#using-servicenow-data-in-dora-metrics).
 
 Teams can bring in incident and change request data to improve visibility into delivery performance and operational health. This allows SEI to more accurately interpret engineering metrics such as **Deployment Frequency, Change Failure Rate, and Mean Time to Restore**, by grounding them in real-world operational events.
 
@@ -96,7 +96,7 @@ When enabled, LTTC includes only work attributed to developers defined by team f
 ----
 #### 2026-05-05
 
-SEI 2.0 now supports a custom date range across all dashboards on the **Insights** page. This allows you to analyze metrics over any time period beyond the default presets (such as `Last 4 Weeks`, `Last Month`, or `Last Quarter`).
+AIDI now supports a custom date range across all dashboards on the **Insights** page. This allows you to analyze metrics over any time period beyond the default presets (such as `Last 4 Weeks`, `Last Month`, or `Last Quarter`).
 
 ![](./static/sei/custom-date-range.png)
 
@@ -112,7 +112,7 @@ You can click the time range dropdown menu and select **Custom Date Range** to o
 ----
 #### 2026-05-05
 
-SEI 2.0 now includes AI-generated summaries across out-of-the-box Insights dashboards, providing structured, contextual narratives that explain performance trends and highlight actionable opportunities across **Efficiency (DORA)**, **Productivity**, and **Business Alignment** signals.
+AIDI now includes AI-generated summaries across out-of-the-box Insights dashboards, providing structured, contextual narratives that explain performance trends and highlight actionable opportunities across **Efficiency (DORA)**, **Productivity**, and **Business Alignment** signals.
 
 The **Insights** page automatically generates a structured breakdown of key signals over the selected time range, including a summary, actionable insights, and recommendations. These summaries help teams interpret engineering data without manually analyzing individual charts or visualizations.
 
@@ -135,7 +135,7 @@ AI summaries adapt based on the scope of analysis in the **Org Tree** view:
 ----
 #### 2026-04-24
 
-SEI 2.0 now includes a GitHub Copilot integration in beta, allowing teams to ingest GitHub Copilot usage and adoption data from GitHub organizations and enterprise accounts. 
+AIDI now includes a GitHub Copilot integration in beta, allowing teams to ingest GitHub Copilot usage and adoption data from GitHub organizations and enterprise accounts. 
 
 Administrators must enable the [Copilot usage metrics policy](https://docs.github.com/en/copilot/concepts/copilot-usage-metrics/copilot-metrics) in GitHub Enterprise settings and generate a [GitHub Copilot API key](https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-for-enterprise/use-your-own-api-keys) with `manage_billing:copilot`, `read:org`, and `read:enterprise` permissions.
 
@@ -145,27 +145,27 @@ To request access to the GitHub Copilot integration beta experience, contact [Ha
 
 - [GitHub Copilot Integration](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/copilot)
 
-### Canvas for SEI 2.0 is in beta
+### Studio for AIDI is in beta
 ----
 #### 2026-04-10
 
-Harness AIDI now supports custom dashboards, allowing teams to create dashboards and add widgets that visualize engineering data most relevant to their workflows. To create and manage custom dashboards, navigate to the **Canvas** page in the Harness AIDI navigation menu.
+Harness AIDI now supports custom dashboards, allowing teams to create dashboards and add widgets that visualize engineering data most relevant to their workflows. To create and manage custom dashboards, navigate to the **Studio** page in the Harness AIDI navigation menu.
 
 ![](./static/sei/canvas-list.png)
 
-To use Canvas, first set up a data source by [setting up an integration](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/). Once configured, SEI 2.0 generates a data source that can be queried using HQL in Canvas widgets when [building dashboards](/docs/software-engineering-insights/harness-sei/canvas/?query-config=editor#create-a-custom-insights-dashboard). This enables teams to extend SEI analytics with metrics from proprietary tools, operational systems, or other engineering platforms.
+To use Studio, first set up a data source by [setting up an integration](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/). Once configured, AIDI generates a data source that can be queried using HQL in Studio widgets when [building dashboards](/docs/software-engineering-insights/harness-sei/canvas/?query-config=editor#create-a-custom-insights-dashboard). This enables teams to extend SEI analytics with metrics from proprietary tools, operational systems, or other engineering platforms.
 
-Teams can further customize how metrics are computed using **Query Variables** defined in the Canvas dashboard editor. These variables can be overridden per team in the **Custom Variables** tab in [**Team Settings**](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams?team-settings=custom-variable#configure-team-tool-settings), enabling team-specific values without modifying the underlying dashboard logic. This allows a single dashboard to be reused across teams with different values, without duplicating configuration or logic.
+Teams can further customize how metrics are computed using **Query Variables** defined in the Studio dashboard editor. These variables can be overridden per team in the **Custom Variables** tab in [**Team Settings**](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams?team-settings=custom-variable#configure-team-tool-settings), enabling team-specific values without modifying the underlying dashboard logic. This allows a single dashboard to be reused across teams with different values, without duplicating configuration or logic.
 
-Dashboards in Canvas support `Draft` and `Published` statuses, enabling teams to build and iterate safely before sharing with others. You can clone dashboards, publish them to specific [Org Trees](/docs/software-engineering-insights/harness-sei/get-started/sei-key-concepts#org-tree), or move them back to `Draft` for further editing. Published dashboards are read-only and must be moved back to `Draft` before making changes.
+Dashboards in Studio support `Draft` and `Published` statuses, enabling teams to build and iterate safely before sharing with others. You can clone dashboards, publish them to specific [Org Trees](/docs/software-engineering-insights/harness-sei/get-started/sei-key-concepts#org-tree), or move them back to `Draft` for further editing. Published dashboards are read-only and must be moved back to `Draft` before making changes.
 
 ![](./static/sei/canvas-dashboard.png)
 
-Access to Canvas is governed by [Harness RBAC](/docs/software-engineering-insights/harness-sei/get-started/rbac) and requires the [following permissions](/docs/software-engineering-insights/harness-sei/canvas/#prerequisites):
+Access to Studio is governed by [Harness RBAC](/docs/software-engineering-insights/harness-sei/get-started/rbac) and requires the [following permissions](/docs/software-engineering-insights/harness-sei/canvas/#prerequisites):
 
-- **View SEI Canvas** (`sei_seicanvas_view`)
-- **Create/Edit SEI Canvas** (`sei_sei_canvas_create` and `sei_seicanvas_edit`)
-- **Delete SEI Canvas** (`sei_seicanvas_delete`)
+- **View SEI Studio** (`sei_seicanvas_view`)
+- **Create/Edit SEI Studio** (`sei_sei_canvas_create` and `sei_seicanvas_edit`)
+- **Delete SEI Studio** (`sei_seicanvas_delete`)
 
 ![](./static/sei/canvas-rbac.png)
 
@@ -173,11 +173,11 @@ Access is further scoped using resource groups, where you can control visibility
 
 ![](./static/sei/canvas-rbac-1.png)
 
-To request access to the Canvas beta experience, contact [Harness Support](/docs/software-engineering-insights/sei-support).
+To request access to the Studio beta experience, contact [Harness Support](/docs/software-engineering-insights/sei-support).
 
 #### Related documentation
 
-- [Canvas](/docs/software-engineering-insights/harness-sei/canvas/)
+- [Studio](/docs/software-engineering-insights/harness-sei/canvas/)
 - [Configure Teams](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams?team-settings=custom-variable#configure-team-tool-settings)
 - [Harness RBAC for SEI](/docs/software-engineering-insights/harness-sei/get-started/rbac)
 - [Platform Permissions Reference](/docs/platform/role-based-access-control/permissions-reference/#software-engineering-insights)
@@ -188,7 +188,7 @@ To request access to the Canvas beta experience, contact [Harness Support](/docs
 ----
 #### 2026-03-25
 
-SEI 2.0 now includes a ServiceNow integration in beta, allowing teams to connect ServiceNow and ingest incident and change management data. This integration enables teams to select `Incident Management` as a data source and define which incident and change request statuses are used in DORA metric calculations on the **DORA** tab in an [Efficiency Profile](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/efficiency-profile#deployment-frequency). 
+AIDI now includes a ServiceNow integration in beta, allowing teams to connect ServiceNow and ingest incident and change management data. This integration enables teams to select `Incident Management` as a data source and define which incident and change request statuses are used in DORA metric calculations on the **DORA** tab in an [Efficiency Profile](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/efficiency-profile#deployment-frequency). 
 
 ![](./static/sei/itsm-source.png)
 
@@ -211,7 +211,7 @@ To request access to the ServiceNow integration beta experience, contact [Harnes
 ----
 #### 2026-02-13
 
-SEI 2.0 now supports selecting multiple source code management (SCM) integrations per team on the **Integrations** tab in Team Settings. This enables more accurate insights and metrics across all repositories your team contributes to.
+AIDI now supports selecting multiple source code management (SCM) integrations per team on the **Integrations** tab in Team Settings. This enables more accurate insights and metrics across all repositories your team contributes to.
 
 ![](./static/sei/multi-scm.png)
 
@@ -223,7 +223,7 @@ You can specify all the repositories your team develops in, select the destinati
 
 ![](./static/sei/multi-tab.png)
 
-Correct configuration of repositories, branches, and deployment-related criteria on the **Source Code Management** tab is required to ensure SEI 2.0 calculates accurate Efficiency and Productivity metrics across all SCM integrations.
+Correct configuration of repositories, branches, and deployment-related criteria on the **Source Code Management** tab is required to ensure AIDI calculates accurate Efficiency and Productivity metrics across all SCM integrations.
 
 This feature provides a comprehensive view of team activity across multiple repositories and SCMs, improving attribution accuracy and reducing noise in insights.
 
@@ -243,7 +243,7 @@ This feature provides a comprehensive view of team activity across multiple repo
 
 ![](./static/sei/ai-summary-org.png)
 
-When you navigate to the **AI Insights** tab on the **Insights** page, SEI 2.0 generates a contextual AI summary for the selected time range and granularity. This section integrates trends across AI assistant adoption, productivity metrics, and code rework metrics to highlight what changed, why it matters, and where to take action.
+When you navigate to the **AI Insights** tab on the **Insights** page, AIDI generates a contextual AI summary for the selected time range and granularity. This section integrates trends across AI assistant adoption, productivity metrics, and code rework metrics to highlight what changed, why it matters, and where to take action.
 
 The **AI Summary** section adapts as you navigate through teams in the **Org Tree**:
 
@@ -265,7 +265,7 @@ To request access, contact [Harness Support](/docs/software-engineering-insights
 ---
 #### 2026-01-30
 
-AI Insights is in beta for SEI 2.0, enabling teams to measure AI assistant adoption and correlate AI usage to productivity and code quality metrics. The AI Insights dashboard supports Cursor and Windsurf integrations and helps organizations understand how AI-assisted development impacts overall pull request velocity and code rework.
+AI Insights is in beta for AIDI, enabling teams to measure AI assistant adoption and correlate AI usage to productivity and code quality metrics. The AI Insights dashboard supports Cursor and Windsurf integrations and helps organizations understand how AI-assisted development impacts overall pull request velocity and code rework.
 
 ![](./static/sei/ai-insights.png)
 
@@ -280,7 +280,7 @@ With AI Insights, teams can:
 
 ![](./static/sei/ai-insights-1.png)
 
-Set up the [Cursor](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/cursor#prerequisites) and [Windsurf](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/windsurf#prerequisites) integrations and configure a [Productivity profile](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/productivity-profile) in SEI 2.0. To request access to the AI Insights beta experience, contact [Harness Support](/docs/software-engineering-insights/sei-support).
+Set up the [Cursor](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/cursor#prerequisites) and [Windsurf](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/windsurf#prerequisites) integrations and configure a [Productivity profile](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/productivity-profile) in AIDI. To request access to the AI Insights beta experience, contact [Harness Support](/docs/software-engineering-insights/sei-support).
 
 #### Related documentation
 
@@ -293,7 +293,7 @@ Set up the [Cursor](/docs/software-engineering-insights/harness-sei/setup-sei/co
 ---
 #### 2026-01-30
 
-Security Insights is in beta for SEI 2.0, introducing vulnerability and code quality analytics alongside existing DORA, Productivity, and Business Alignment metrics. Security Insights is powered by the [ArmorCode integration](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/armorcode/), which ingests Application Security Posture Management (ASPM) data from your security toolchain into Harness AI DLC Insights, and provides visibility into open vulnerabilities.
+Security Insights is in beta for AIDI, introducing vulnerability and code quality analytics alongside existing DORA, Productivity, and Business Alignment metrics. Security Insights is powered by the [ArmorCode integration](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/armorcode/), which ingests Application Security Posture Management (ASPM) data from your security toolchain into Harness AI DLC Insights, and provides visibility into open vulnerabilities.
 
 Once ArmorCode is connected, you can configure how security data is attributed across your organization and teams. Use the **Integrations** tab in **Team Settings** to select [which security integrations apply to each team](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams?team-settings=security-settings#configure-integrations-for-a-team), and define filter sets on the **Security** tab in **Team Settings** to [scope ASPM data to teams](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams?team-settings=security-settings#configure-team-tool-settings).
 
@@ -350,7 +350,7 @@ This feature improves attribution accuracy for cross-team contributors, reduces 
 ---
 #### 2025-12-23
 
-You can now define and customize maturity thresholds for DORA metrics in SEI 2.0. Organization-wide maturity levels are defined when creating or editing an Efficiency Profile, and maturity thresholds are configured by level on the **DORA** tab in an Efficiency Profile.
+You can now define and customize maturity thresholds for DORA metrics in AIDI. Organization-wide maturity levels are defined when creating or editing an Efficiency Profile, and maturity thresholds are configured by level on the **DORA** tab in an Efficiency Profile.
 
 ![](./static/sei/maturity.png)
 
@@ -373,7 +373,7 @@ This enhancement provides more granular control over how delivery performance is
 ---
 #### 2025-12-16
 
-Shared Developers is now available in SEI 2.0, offering clearer controls for managing developers who contribute across multiple teams but are not part of a team's inherited [Org Tree membership](/docs/software-engineering-insights/harness-sei/setup-sei/setup-org-tree). Shared Developers provide a more flexible way of maintaining developer records, whether they were added automatically through the API/CSV file upload or manually using the UI.
+Shared Developers is now available in AIDI, offering clearer controls for managing developers who contribute across multiple teams but are not part of a team's inherited [Org Tree membership](/docs/software-engineering-insights/harness-sei/setup-sei/setup-org-tree). Shared Developers provide a more flexible way of maintaining developer records, whether they were added automatically through the API/CSV file upload or manually using the UI.
 
 You can add shared developers on the **Developers** tab in **Team Settings**, and include contributors such as engineering managers or individual contributors who regularly work across teams without modifying Org Tree membership. This streamlines team setup, improves identity management, and ensures accurate attribution for efficiency and productivity metrics.
 
@@ -394,7 +394,7 @@ Shared Developers help teams accurately represent cross-team contributors, maint
 ---
 #### 2025-12-05
 
-Code Rework is in beta for SEI 2.0, providing developer-level visibility into refactoring activity and how much effort is spent rewriting or replacing existing code instead of introducing new code.
+Code Rework is in beta for AIDI, providing developer-level visibility into refactoring activity and how much effort is spent rewriting or replacing existing code instead of introducing new code.
 
 With Code Rework, you can configure how recent and legacy code is classified in a [Productivity Profile](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/productivity-profile#set-up-productivity-metrics), including the time window for recent code (set as 30 days, by default). This lets you analyze where rework is coming from and who is introducing it.
 
@@ -422,7 +422,7 @@ These insights help teams understand refactoring effort, identify sources of rew
 ---
 #### 2025-12-05
 
-Sprint Insights is in beta for SEI 2.0, introducing sprint-based delivery analytics alongside existing DORA metrics.
+Sprint Insights is in beta for AIDI, introducing sprint-based delivery analytics alongside existing DORA metrics.
 
 With Sprint Insights, you can configure DORA and sprint metrics in an [Efficiency Profile](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/efficiency-profile). Sprint configuration includes how sprint work is measured, which sprint metrics are enabled, delivery performance analysis, and sprint boundary grace periods.
 
@@ -450,26 +450,26 @@ These insights help teams evaluate planning effectiveness, delivery consistency,
 
 ## October 2025
 
-### Harness RBAC support in SEI 2.0
+### Harness RBAC support in AIDI
 ---
 #### 2025-10-15
 
-You can now manage SEI 2.0 permissions directly through Harness Role-Based Access Control (RBAC). This enhancement enables consistent, centralized access management across Harness product modules.
+You can now manage AIDI permissions directly through Harness Role-Based Access Control (RBAC). This enhancement enables consistent, centralized access management across Harness product modules.
 
-With Harness RBAC in SEI 2.0:
+With Harness RBAC in AIDI:
 
 * You can assign **SEI Admin** roles at the account level for central configuration of integrations, profiles, and data definitions.
 * You can grant **SEI Team** Manager roles at the project level to allow local management of team hierarchies, developer records, and metrics targets.
 * You can provide **SEI Viewer** roles to stakeholders who need read-only visibility into project insights and KPIs.
 
-These changes reduce the need for manual group creation and make it easier to apply consistent, least-privilege access control in SEI 2.0.
+These changes reduce the need for manual group creation and make it easier to apply consistent, least-privilege access control in AIDI.
 
 #### Related documentation
 
-- [Harness RBAC for SEI 2.0](/docs/software-engineering-insights/harness-sei/get-started/rbac)
+- [Harness RBAC for AIDI](/docs/software-engineering-insights/harness-sei/get-started/rbac)
 - [Harness RBAC](/docs/platform/role-based-access-control/rbac-in-harness/)
 
-### Automatch Developer Identities in SEI 2.0
+### Automatch Developer Identities in AIDI
 ---
 #### 2025-10-03
 
@@ -491,11 +491,11 @@ This feature is valuable for organizations that want to:
 
 ## September 2025
 
-### Trendlines across Efficiency and Productivity Insights in SEI 2.0
+### Trendlines across Efficiency and Productivity Insights in AIDI
 ---
 #### 2025-09-15
 
-SEI 2.0 now includes trendlines across **Efficiency** and **Productivity Insights**, making it easier to understand how key metrics change over time. 
+AIDI now includes trendlines across **Efficiency** and **Productivity Insights**, making it easier to understand how key metrics change over time. 
 
 ![](./static/sei/trendline.png)
 
@@ -514,11 +514,11 @@ When **Show trendline** is enabled in a dashboard, trendlines are overlaid acros
 
 ## August 2025
 
-### Activity Logs in SEI 2.0
+### Activity Logs in AIDI
 ---
 #### 2025-08-29
 
-SEI 2.0 includes Activity Logs to provide compliance coverage across critical operations. 
+AIDI includes Activity Logs to provide compliance coverage across critical operations. 
 
 ![](./static/sei/activity-logs.png)
 
@@ -535,13 +535,13 @@ Activity Logs provide admins and auditors a transparent view of who made changes
 
 #### Related documentation
 
-- [Activity Logs in SEI 2.0](/docs/software-engineering-insights/harness-sei/manage/activity-logs)
+- [Activity Logs in AIDI](/docs/software-engineering-insights/harness-sei/manage/activity-logs)
 
-### Multiple Org Trees, multi-level hierarchies, and data filters in SEI 2.0
+### Multiple Org Trees, multi-level hierarchies, and data filters in AIDI
 ---
 #### 2025-08-28
 
-SEI 2.0 provides additional flexibility in modeling your engineering organization:
+AIDI provides additional flexibility in modeling your engineering organization:
 
 * **Multiple Org Trees**: Create and manage multiple Org Trees per account to represent different business units, geographies, or alternative organizational views.  
 * **Multi-Level Hierarchies**: Go beyond manager-reportee relationships by grouping developers across attributes such as `Email`, `Role`, `Site`, and `Team`.  
@@ -557,27 +557,27 @@ These enhancements make it easier to align insights with the way your organizati
 
 ## July 2025
 
-### SEI 2.0 is GA
+### AIDI is GA
 ----
 #### 2025-07-31
 
-SEI 2.0 introduces a re-imagined engineering insights experience with near real-time access to efficiency, productivity, and business alignment metrics. Built on a modern, high-performance architecture, SEI 2.0 features enable automated developer and organization management, decentralized team administration, and data drill-down options to help organizations scale with ease.
+AIDI introduces a re-imagined engineering insights experience with near real-time access to efficiency, productivity, and business alignment metrics. Built on a modern, high-performance architecture, AIDI features enable automated developer and organization management, decentralized team administration, and data drill-down options to help organizations scale with ease.
 
-For customers using SEI 1.0, there is no in-place migration. SEI 2.0 must be set up separately in the same account, and Account Admins can roll it out to teams at their own pace.
+For customers using SEI 1.0, there is no in-place migration. AIDI must be set up separately in the same account, and Account Admins can roll it out to teams at their own pace.
 
 #### Related documentation
 
-- [SEI 2.0 Overview](/docs/software-engineering-insights/harness-sei/sei-overview)
-- [SEI 2.0 Developer Licensing](/docs/software-engineering-insights/harness-sei/get-started/sei-subscription-and-licensing/)
+- [AIDI Overview](/docs/software-engineering-insights/harness-sei/sei-overview)
+- [AIDI Developer Licensing](/docs/software-engineering-insights/harness-sei/get-started/sei-subscription-and-licensing/)
 - [SEI 1.0 to 2.0 Transition](/docs/software-engineering-insights/harness-sei/transition)
 
 ## May 2025
 
-### Export SEI 2.0 dashboards and widgets
+### Export AIDI dashboards and widgets
 ----
 #### 2025-05-29
 
-You can now export insights from the SEI 2.0 platform in both PDF and CSV formats. 
+You can now export insights from the AIDI platform in both PDF and CSV formats. 
 
 ![](./static/sei/export-insights.png)
 
@@ -585,7 +585,7 @@ This feature makes it easier to share key performance metrics across teams and s
 
 #### Related documentation
 
-- [Exporting SEI 2.0 Insights](/docs/software-engineering-insights/harness-sei/insights/export/)
+- [Exporting AIDI Insights](/docs/software-engineering-insights/harness-sei/insights/export/)
 
 ## April 2025
 

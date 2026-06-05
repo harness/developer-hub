@@ -1,5 +1,5 @@
 ---
-title: Canvas
+title: Studio
 id: index
 slug: /software-engineering-insights/harness-sei/canvas/
 sidebar_label: Overview
@@ -11,22 +11,22 @@ import TabItem from '@theme/TabItem';
 
 <CTABanner
   buttonText="Request Access"
-  title="Canvas in AI DLC Insights is in beta!"
+  title="Studio in AI DLC Insights is in beta!"
   tagline="Create custom dashboards in AI DLC Insights. Now available in beta!"
   link="https://developer.harness.io/docs/software-engineering-insights/sei-support"
   closable={true}
   target="_self"
 />
 
-Navigate to the **Canvas** page to create and manage custom dashboards that appear on the **Insights** page in AI DLC Insights. If the [out-of-the-box dashboards](/docs/software-engineering-insights/harness-sei/get-started/sei-key-concepts#dashboards-in-insights) on the **Insights** page does not provide the views your team needs, you can create <Tooltip id="sei.canvas.custom-dashboard">custom dashboards</Tooltip> on the **Canvas** page to publish, share, and collaborate with your team. 
+Navigate to the **Studio** page to create and manage custom dashboards that appear on the **Insights** page in AI DLC Insights. If the [out-of-the-box dashboards](/docs/software-engineering-insights/harness-sei/get-started/sei-key-concepts#dashboards-in-insights) on the **Insights** page do not provide the views your team needs, you can create <Tooltip id="sei.canvas.custom-dashboard">custom dashboards</Tooltip> on the **Studio** page to publish, share, and collaborate with your team. 
 
 ![](../static/canvas-21.png)
 
-The **Canvas** page in AI DLC Insights displays all custom dashboards created by your team. You can search, view, and manage dashboards, including details such as the name, description, author, status, timestamps, and tags. 
+The **Studio** page in AI DLC Insights displays all custom dashboards created by your team. You can search, view, and manage dashboards, including details such as the name, description, author, status, timestamps, and tags. 
 
 ![](../static/canvas-1.png)
 
-Each dashboard in the Canvas list includes the following metadata:
+Each dashboard in the Studio list includes the following metadata:
 
 | Field | Description |
 |------|-------------|
@@ -37,13 +37,13 @@ Each dashboard in the Canvas list includes the following metadata:
 | Status | Current lifecycle state (`Draft` or `Published`). |
 | Tags | Optional labels used for grouping and filtering dashboards. |
 
-Canvas dashboards support [query-level variables](#use-query-variables-in-dashboards), including team-scoped filters and custom variables. This allows dashboards to dynamically adapt based on your configuration in **Team Settings**. 
+Studio dashboards support [query-level variables](#use-query-variables-in-dashboards), including team-scoped filters and custom variables. This allows dashboards to dynamically adapt based on your configuration in **Team Settings**. 
 
 To filter dashboards by status, click the `All Status` dropdown menu next to **+ Create Dashboard**.
 
 ![](../static/canvas-7.png)
 
-Canvas dashboards support the following statuses:
+Studio dashboards support the following statuses:
 
 - **Draft**: The dashboard is still in progress and not yet shared broadly.
 - **Published**: The dashboard is finalized and visible for wider consumption depending on permissions.
@@ -61,21 +61,21 @@ C --> D[**Move to Draft**<br/>Removed from Insights page<br/>Keep configuration]
 D --> A
 ```
 
-Published Canvas dashboards are read-only. To make changes, move the dashboard back to `Draft`, update it, and then publish it again. For more information, see [Managing dashboards in Canvas](#manage-dashboards-in-canvas).
+Published Studio dashboards are read-only. To make changes, move the dashboard back to `Draft`, update it, and then publish it again. For more information, see [Managing dashboards in Studio](#manage-dashboards-in-studio).
 
 ### Prerequisites
 
-Access to Canvas is governed by [Harness RBAC](/docs/software-engineering-insights/harness-sei/get-started/rbac). Permissions are managed using roles, resource groups, and role bindings.
+Access to Studio is governed by [Harness RBAC](/docs/software-engineering-insights/harness-sei/get-started/rbac). Permissions are managed using roles, resource groups, and role bindings.
 
-To view and manage Canvas dashboards, ensure your role includes the following permissions:
+To view and manage Studio dashboards, ensure your role includes the following permissions:
 
-- **View SEI Canvas** (`sei_seicanvas_view`)
-- **Create/Edit SEI Canvas** (`sei_seicanvas_create` and `sei_seicanvas_edit`)
-- **Delete SEI Canvas** (`sei_seicanvas_delete`)
+- **View SEI Studio** (`sei_seicanvas_view`)
+- **Create/Edit SEI Studio** (`sei_seicanvas_create` and `sei_seicanvas_edit`)
+- **Delete SEI Studio** (`sei_seicanvas_delete`)
 
 ![](../static/canvas-4.png)
 
-Access to Canvas dashboards is also scoped through [Harness resource groups](/docs/platform/role-based-access-control/add-resource-groups/). 
+Access to Studio dashboards is also scoped through [Harness resource groups](/docs/platform/role-based-access-control/add-resource-groups/). 
 
 1. Navigate to **Project Settings** > **Resource Groups**.
 1. Click **+ New Resource Group**.
@@ -90,14 +90,14 @@ Access to Canvas dashboards is also scoped through [Harness resource groups](/do
 
 Next, associate the role with users or user groups by clicking **Manage Role Bindings**, selecting the role (such as `SEI Team Manager`), associating it with the appropriate resource group (such as all account-level resources), and clicking **Save**.
 
-## Create a Canvas dashboard
+## Create a Studio dashboard
 
-1. From the Harness AIDI navigation menu, navigate to the **Canvas** page and click **+ Create Dashboard**. 
+1. From the Harness AIDI navigation menu, navigate to the **Studio** page and click **+ Create Dashboard**. 
 1. In the **Create New Dashboard** modal, enter a name (for example, `[Team Name] Issue Dashboard`) and a description. 
 1. Optionally, enter tags. 
 1. Click **Create Dashboard** to save the dashboard.
 
-## Edit a Canvas dashboard
+## Edit a Studio dashboard
 
 Once you edit or create a dashboard, you enter a Dashboard Editor view where you can customize your dashboard layout and add widgets. To apply dashboard-level filters, click the **+ Add Filters** dropdown menu and select `Project`, `Repository`, or `Time Range`. 
 
@@ -203,14 +203,14 @@ Additional options under **Content Formatting** allow you to customize how resul
 - **Locale**: Adapts formatting based on the user's locale settings. 
 - **Raw**: Displays the unformatted numeric value.
 
-To save your widget to a Canvas dashboard: 
+To save your widget to a Studio dashboard: 
 
 1. Once you've configured the widget, including selecting a time range and visualize type, click **Add Widget** to add it to the dashboard.
 1. You are redirected to the dashboard view with the widget added. To create additional widgets, click **+ New Widget**. 
 
    ![](../static/canvas-15.png)
 
-When you are done editing the dashboard, click **Save** to finalize your changes. Dashboards and their widgets can be edited or updated anytime from the **Canvas** page.
+When you are done editing the dashboard, click **Save** to finalize your changes. Dashboards and their widgets can be edited or updated anytime from the **Studio** page.
 
 ## Use query variables in dashboards
 
@@ -301,7 +301,7 @@ filter issue_created_at >= ${startTimeFilter}
 </TabItem> 
 <TabItem value="custom" label="Custom Variables">
 
-<Tooltip id="sei.canvas.custom-variable">Custom variables</Tooltip> allow you to define reusable variables that can be overridden at the team level. You can create and manage these variables directly from the **Query Variables** panel in the Canvas dashboard editor.
+<Tooltip id="sei.canvas.custom-variable">Custom variables</Tooltip> allow you to define reusable variables that can be overridden at the team level. You can create and manage these variables directly from the **Query Variables** panel in the Studio dashboard editor.
 
 To create a custom variable:
 
@@ -324,14 +324,14 @@ Once created, the variable becomes available for use in your queries:
 filter priority = ${priority_issues}
 ```
 
-Custom Variables created in Canvas are available in the [**Custom Variables** tab in Team Settings](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams/?team-settings=custom-variable#configure-team-tool-settings), where teams can override the default value.
+Custom Variables created in Studio are available in the [**Custom Variables** tab in Team Settings](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams/?team-settings=custom-variable#configure-team-tool-settings), where teams can override the default value.
 
 </TabItem> 
 </Tabs>
 
-## Manage dashboards in Canvas
+## Manage dashboards in Studio
 
-Each custom dashboard in the list on the **Canvas** page includes an overflow menu (**...**) that contains additional management actions:
+Each custom dashboard in the list on the **Studio** page includes an overflow menu (**...**) that contains additional management actions:
 
 ![](../static/canvas-8.png)
 
@@ -345,7 +345,7 @@ Each custom dashboard in the list on the **Canvas** page includes an overflow me
 
    ![](../static/canvas-20.png)
 
-   Once published, the dashboard status changes to **Published**, the dashboard is available in the **Canvas** tab on the **Insights** page, and the selected Org Trees appear on the left-side panel, allowing you to view the dashboard in the context of each organizational hierarchy.
+   Once published, the dashboard status changes to **Published**, the dashboard is available in the **Studio** tab on the **Insights** page, and the selected Org Trees appear on the left-side panel, allowing you to view the dashboard in the context of each organizational hierarchy.
    
    ![](../static/canvas-21.png)
 
@@ -353,7 +353,7 @@ Each custom dashboard in the list on the **Canvas** page includes an overflow me
   
   ![](../static/canvas-19.png)
 
-  When you click **Move to Draft**, the dashboard is removed from the **Insights** page, the status changes to `Draft` on the **Canvas** page, all dashboard configurations are preserved, and you can continue editing and republish the dashboard at any time.
+  When you click **Move to Draft**, the dashboard is removed from the **Insights** page, the status changes to `Draft` on the **Studio** page, all dashboard configurations are preserved, and you can continue editing and republish the dashboard at any time.
 
 - **Delete**: Permanently removes the dashboard. When you click **Delete**, a confirmation modal appears. Click **Delete** to confirm.
 

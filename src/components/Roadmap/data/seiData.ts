@@ -104,15 +104,15 @@ export const SeiData: Horizon = {
       },
       {
         tag: [{ value: "Custom Dashboards" }],
-        title: "Canvas",
+        title: "Studio",
         description: "Define and track custom metrics with your SEI data, reported consistently across the organization.",
-        link: "https://developer.harness.io/release-notes/ai-dlc-insights#new-feature-canvas-for-sei-20-is-in-beta",
+        link: "https://developer.harness.io/release-notes/ai-dlc-insights#new-feature-studio-for-aidi-is-in-beta",
       },
       {
         tag: [{ value: "Integrations" }],
         title: "ServiceNow Integration",
         description: "Integrate ServiceNow incident data to compute and track Mean Time to Recovery, Change Failure Rate, and Deployment Frequency.",
-        link: "https://developer.harness.io/release-notes/ai-dlc-insights#new-enhancement-servicenow-integration-and-itsm-configuration-in-sei-20",
+        link: "https://developer.harness.io/release-notes/ai-dlc-insights#new-enhancement-servicenow-integration-and-itsm-configuration-in-aidi",
       },
       {
         tag: [{ value: "Integrations" }],

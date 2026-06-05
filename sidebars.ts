@@ -4701,7 +4701,7 @@ const sidebars: SidebarsConfig = {
       },
       {
         type: 'category',
-        label: 'Canvas',
+        label: 'Studio',
         className: 'sidebar-item-beta',
         link: { 
             type: 'doc', 

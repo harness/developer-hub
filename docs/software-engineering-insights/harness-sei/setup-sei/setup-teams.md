@@ -483,10 +483,10 @@ After configuring filters, click **Save ITSM Settings** to apply the configurati
 <TabItem value="custom-variable" label="Custom Variables">
 
 :::tip
-Canvas is in beta. To request access, contact [Harness Support](/docs/software-engineering-insights/sei-support).
+Studio is in beta. To request access, contact [Harness Support](/docs/software-engineering-insights/sei-support).
 :::
 
-Use the **Custom Variables** tab in **Team Settings** to override default values for variables defined in Canvas metrics. Custom variables are created in the [**Query Variables** menu on the **Canvas** page](/docs/software-engineering-insights/harness-sei/canvas/?query-variables=custom#use-query-variables-in-dashboards) and automatically appear for each team. You can override the default value to tailor how metrics are computed for that specific team.
+Use the **Custom Variables** tab in **Team Settings** to override default values for variables defined in Studio metrics. Custom variables are created in the [**Query Variables** menu on the **Studio** page](/docs/software-engineering-insights/harness-sei/canvas/?query-variables=custom#use-query-variables-in-dashboards) and automatically appear for each team. You can override the default value to tailor how metrics are computed for that specific team.
 
 ![](../static/teams-19.png)
 
@@ -505,7 +505,7 @@ To override a variable:
 1. Click the **Checkmark** icon to save.
 
 :::info
-If no override is provided, the default value defined in Canvas is used. Overrides apply only to the selected team, and changes affect how metrics are calculated in Canvas dashboards.
+If no override is provided, the default value defined in Studio is used. Overrides apply only to the selected team, and changes affect how metrics are calculated in Studio dashboards.
 :::
 
 </TabItem>
