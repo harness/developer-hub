@@ -50,7 +50,33 @@ You can set up Continuous Verification by adding a Verify step to a pipeline. Th
 
 You can set the sensitivity option as **High**, **Medium**, or **Low**.
 
-The following table shows how sensitivity affects the verification results. 
+Sensitivity controls how strictly the anomaly detection evaluates deviations in your deployment by adjusting the statistical threshold (measured in standard deviations) that determines what counts as an anomaly.
+
+### How it works
+
+Harness uses machine learning to establish a baseline of normal behavior from your historical data. During deployment verification, it compares new data points against this baseline. The sensitivity setting determines how many standard deviations away from the baseline a data point must be before it is flagged as an anomaly:
+
+- **High sensitivity (1σ threshold)**: Flags data points that deviate by 1 or more standard deviations from the baseline. This is the strictest threshold, catching smaller deviations that may indicate issues. Best for stable services with predictable behavior where even minor deviations may signal problems.
+
+- **Medium sensitivity (2σ threshold)**: Flags data points that deviate by 2 or more standard deviations from the baseline. This provides a balanced threshold that filters out normal variance while catching significant anomalies. This is the default and works well for most production services.
+
+- **Low sensitivity (3σ threshold)**: Flags only data points that deviate by 3 or more standard deviations from the baseline. This is the most lenient threshold, filtering out most normal variance and reducing false positives. Best for services with high variability or frequent changes where you want to catch only significant anomalies.
+
+### Choose the right sensitivity
+
+Based on the statistical thresholds above, consider the following guidance when selecting sensitivity for your services:
+
+| Service Characteristics | Suggested Sensitivity | Why This Works |
+|------------------------|----------------------|----------------|
+| Stable microservices with consistent traffic patterns | High | The 1σ threshold is strict and catches small deviations that may indicate issues in predictable services |
+| Production services with moderate variance | Medium (default) | The 2σ threshold balances anomaly detection with tolerance for normal variance |
+| Services with high variability (batch jobs, scheduled tasks) | Low | The 3σ threshold is lenient and filters out expected variance while catching extreme outliers |
+| Services undergoing frequent changes or experiments | Low | Higher tolerance (3σ) reduces false positives from ongoing changes |
+| Critical payment or security services | High | Lower tolerance (1σ) maximizes early detection of any deviation from normal behavior |
+
+### Verification results by sensitivity
+
+The following table shows how sensitivity affects the verification results based on the health status determined by anomaly detection.
 
 :::note
 
@@ -58,20 +84,20 @@ The following table shows how sensitivity affects the verification results.
 
 :::
 
-| Sensitivity | Health Status                  | Result |
-|-------------|--------------------------------|--------|
-| High        | Healthy                        | Pass   |
-| High        | Medium Healthy                 | Fail   |
-| High        | Medium Healthy (With feedback) | Pass   |
-| High        | Unhealthy                      | Fail   |
-| Medium      | Healthy                        | Pass   |
-| Medium      | Medium Healthy                 | Pass   |
-| Medium      | Medium Healthy (With feedback) | Pass   |
-| Medium      | Unhealthy                      | Fail   |
-| Low         | Healthy                        | Pass   |
-| Low         | Medium Healthy                 | Pass   |
-| Low         | Medium Healthy (With feedback) | Pass   |
-| Low         | Unhealthy                      | Fail   |
+| Sensitivity | Health Status                  | Result | Explanation |
+|-------------|--------------------------------|--------|-------------|
+| High        | Healthy                        | Pass   | All metrics and logs are within acceptable thresholds (within 1σ). For logs: only Known event clusters detected. For metrics: all data points fall within the normal range established by baseline. |
+| High        | Medium Healthy                 | Fail   | Anomalies detected that exceed 1σ threshold. For logs: Unexpected Frequency clusters found (known errors occurring more frequently). For metrics: data points deviate by 1-2σ from baseline. High sensitivity treats these deviations as deployment issues. |
+| High        | Medium Healthy (With feedback) | Pass   | Same anomalies detected, but user has explicitly marked them as acceptable via event preferences. This overrides the automatic risk assessment. |
+| High        | Unhealthy                      | Fail   | Severe anomalies detected. For logs: Unknown event clusters found (new errors not seen in baseline). For metrics: data points exceed 2σ deviation. These indicate genuine deployment problems. |
+| Medium      | Healthy                        | Pass   | All metrics and logs within acceptable thresholds (within 2σ). Only Known event clusters for logs. |
+| Medium      | Medium Healthy                 | Pass   | Minor anomalies detected but within medium tolerance (1-2σ). For logs: Unexpected Frequency clusters are tolerated. For metrics: deviations up to 2σ are considered normal variance. Medium sensitivity filters these as acceptable. |
+| Medium      | Medium Healthy (With feedback) | Pass   | User feedback reinforces the default behavior of medium sensitivity. |
+| Medium      | Unhealthy                      | Fail   | Severe anomalies exceeding 2σ threshold. For logs: Unknown event clusters (new errors). For metrics: data points deviate by more than 2σ from baseline. |
+| Low         | Healthy                        | Pass   | All metrics and logs within acceptable thresholds (within 3σ). Only Known event clusters for logs. |
+| Low         | Medium Healthy                 | Pass   | Moderate anomalies detected but within low tolerance (1-3σ). For logs: Unexpected Frequency clusters are tolerated. For metrics: deviations up to 3σ are filtered as normal variance. Low sensitivity is very permissive. |
+| Low         | Medium Healthy (With feedback) | Pass   | User feedback aligns with the high tolerance of low sensitivity. |
+| Low         | Unhealthy                      | Fail   | Extreme anomalies exceeding 3σ threshold. For logs: Unknown event clusters that are statistically significant outliers. For metrics: only data points with extreme deviations (>3σ) cause failure. |
 
 ## Duration
 
@@ -90,6 +116,46 @@ You can configure the pipeline to fail if there is no data from the health sourc
 The Verify step also includes a metric-level option to fail the Verify step when the analysis of a given custom metric is not possible because there is no data for the custom metric on either the test nodes or the control nodes.
 
 To enable the metric-level fail-on-no-analysis option, in the configuration pane of your Verify step, select **Step Parameters**, expand **Optional**, and select **Fail if any custom metrics has no analysis**.
+
+## Fail-fast thresholds
+
+Fail-fast thresholds allow you to terminate verification immediately when specific conditions are met, enabling faster feedback on critical issues without waiting for the full analysis duration to complete.
+
+### Availability by data type
+
+| Data Type | Fail-Fast Support | Reason |
+|-----------|-------------------|--------|
+| **Metrics** | Supported | Metrics can be evaluated in real-time against numeric thresholds. You can define custom thresholds (e.g., "error rate > 5%" or "response time > 500ms") and mark them as fail-fast. When a threshold is breached, verification terminates immediately. |
+| **Logs** | Not supported | Logs require complete analysis window for statistical clustering and frequency analysis. Real-time evaluation is not possible due to the ML-based nature of log analysis. |
+
+### Why logs do not support fail-fast
+
+Log verification uses machine learning to cluster similar log messages and compare them against baseline patterns. This process requires the complete analysis duration because:
+
+1. **Clustering requires full dataset**: The ML model must collect all logs over the analysis period to identify patterns and group similar messages together. Individual log entries cannot be classified as "known," "unknown," or "unexpected frequency" until the clustering is complete.
+
+2. **Frequency analysis needs time**: To determine if an error has "unexpected frequency," the system must observe the cluster's occurrence rate over the full duration and compare it statistically to baseline rates. A single occurrence early in the analysis window does not provide enough information.
+
+3. **Statistical confidence requires samples**: If you see a new error in minute 1, you cannot determine if it is a genuine deployment issue or a transient error that also appeared in the baseline until you analyze the complete time window and establish statistical significance.
+
+4. **No predefined thresholds**: Unlike metrics where you can set specific numeric thresholds, log risk is determined dynamically based on:
+   - Whether the error cluster is new (unknown)
+   - Whether a known error's frequency changed significantly
+   - Statistical comparison against baseline behavior
+
+For these reasons, log verification always runs for the complete analysis duration specified in the Verify step configuration.
+
+### Configure fail-fast for metrics
+
+To configure fail-fast thresholds for metrics:
+
+1. In your Verify step, go to **Health Sources**
+2. Select a metric-based health source (APM or infrastructure monitoring tool)
+3. Configure custom thresholds for specific metrics
+4. Set the threshold action to **Fail Fast**
+5. Define the threshold criteria (greater than, less than, percentage deviation)
+
+When a fail-fast threshold is breached during verification, the deployment is marked as failed immediately, and you can configure failure strategies (rollback, manual intervention, etc.) to handle the situation.
 
 ## Health source
 
