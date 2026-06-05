@@ -27,6 +27,7 @@ You can also use Harness [input sets and overlays](/docs/platform/pipelines/inpu
 
 - When you propagate a service from one stage to another, the stages must use the same input set. For example, if you have Stage 1 using Input Set A, and you propagate its service to Stage 2, Stage 2 must use Input Set A. If Stage 2 uses a different input set, the service cannot propagate from Stage 1 to Stage 2.
 - You cannot propagate service from a stage which also propagates service from another stage.
+- Propagation copies service **configuration**, not resolved artifact versions. Artifact expressions such as `<+lastPublished.tag>` are re-evaluated in each stage and can resolve to different values.
 
 ## Propagate a service
 
