@@ -1,13 +1,11 @@
 ---
 title: Configure Policies and Policy Sets
 description: Learn how to create and configure policies and policy sets for Dependency Firewall in Harness Artifact Registry.
-sidebar_position: 2
+sidebar_position: 99
 sidebar_label: Configure Policies
 ---
 
-# Configure Policies and Policy Sets
-
-Dependency Firewall uses Harness Policy as Code to evaluate artifacts against security rules. To get started, you'll need to create policies and policy sets that define the evaluation criteria for your upstream proxy registries.
+Dependency Firewall uses Harness Policy as Code to evaluate artifacts against security rules. To get started, you need to create policies and policy sets that define the evaluation criteria for your upstream proxy registries.
 
 ## Prerequisites
 

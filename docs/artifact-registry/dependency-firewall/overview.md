@@ -3,11 +3,19 @@ title: Dependency Firewall
 description: Learn how Dependency Firewall in Harness Artifact Registry acts as a gatekeeper to control and secure your software supply chain.
 sidebar_label: Dependency Firewall
 sidebar_position: 1
+keywords:
+  - dependency firewall
+  - supply chain security
+  - artifact policy
+  - blocked packages
+  - upstream proxy
+tags:
+  - artifact-registry
+  - dependency-firewall
 ---
 
 import { FAQ } from '@site/src/components/AdaptiveAIContent';
-
-# Dependency Firewall
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
 :::info Feature Flag
 This feature is behind the feature flag `HAR_DEPENDENCY_FIREWALL`. Contact [Harness Support](mailto:support@harness.io) to enable it.
@@ -20,7 +28,7 @@ Dependency Firewall is a powerful security feature in Harness Artifact Registry 
 Seeing the tab does not mean the feature is active. Dependency Firewall requires two setup steps before it evaluates artifacts: (1) go to [Configure Policies and Policy Sets](/docs/artifact-registry/dependency-firewall/configure-policies) to configure OPA policies, and (2) go to [Configure Registry](/docs/artifact-registry/manage-registries/configure-registry#enable-dependency-firewall) to enable Dependency Firewall on your upstream proxy.
 :::
 
-## How Dependency Firewall Works
+## How Dependency Firewall works
 
 When Dependency Firewall is enabled for an upstream proxy registry, every artifact version fetched from the external source is automatically evaluated against configured policy sets. Each policy in a policy set carries its own **fail action** (chosen when the policy set is authored) that decides what verdict the artifact receives if that policy fails:
 
@@ -44,34 +52,59 @@ The per-policy **Error and exit** vs **Warn & continue** decision is made in the
 - **Passed** versions are cached in the upstream proxy registry and can be viewed in the Artifacts page; they do not appear on the Dependency Firewall dashboard.
 :::
 
-## The Dependency Firewall Dashboard
+## The Dependency Firewall dashboard
 
 The Dependency Firewall dashboard provides a centralized view of all policy violations detected when fetching artifacts from external sources through upstream proxy registries.
 
-<DocImage path={require('./static/dashboard.png')} />
+<DocImage path={require('./static/policy-violations-tab.png')} width="100%" />
 
-#### What You'll See
+#### What you see
 
-At the top of the dashboard, you'll find a summary of violations:
+At the top of the dashboard, you find a summary of violations:
 
 - **Total Violations**: Complete count of all policy violations (Warning + Blocked)
 - **Blocked Violations**: Number of artifact versions that are blocked and not cached
 - **Warning Violations**: Number of artifact versions with warnings that are still cached and usable
 
-### Filtering and Searching Violations
+### Filter and search violations
 
 To help you quickly find specific violations, the dashboard provides multiple filtering options. You can filter by **Registry Type** to view violations for specific registry types (Docker, Maven, NPM, Helm, etc.), filter by **Package Type**, or use the **Search** function to find specific artifact names or versions.
 
-## Viewing Violation Details
+## Affected Pipelines
 
-When you need to investigate why a specific artifact version was blocked or flagged with a warning, click on the dependency version in the dashboard. A **Violation Details** sidebar opens on the right-hand side with the following information:
+The **Affected Pipelines** tab shows which CI/CD pipelines use blocked dependencies. This data is populated when pipelines install packages using the Harness CLI wrappers (`hc artifact npm install`, `hc artifact mvn install`, `hc artifact pip install`, or `hc artifact dotnet restore`).
 
-<DocImage path={require('./static/violation-details.png')} width="40%" />
+Go to [Affected Pipelines](/docs/artifact-registry/dependency-firewall/affected-pipelines) to understand the tab, dependency tracking, and how to set up your pipelines.
+
+---
+
+## View violation details
+
+When you need to investigate why a specific artifact version was blocked or flagged with a warning, click on the dependency version in the dashboard. A **Details** sidebar opens on the right-hand side with two tabs: **Violation Details** and **Evaluation Details**.
+
+### Violation Details
+
+<DocImage path={require('./static/violation-details-pulled-in-by.png')} width="40%" />
 
 **Basic Information**
-- **Package Name**: The artifact name (e.g., "lodash")
-- **Upstream Proxy**: The upstream proxy registry name (e.g., "npmjs")
+- **Package Name**: The artifact name (e.g., "bytes")
+- **Version**: The specific version evaluated (e.g., "3.1.2")
+- **Artifact Registry**: The upstream proxy registry name
+- **Upstream Proxy**: The upstream proxy that fetched this package
 - **Status**: Shows whether the version has a Warning or is Blocked
+- **Pulled in by**: The number of direct dependencies that pull in this flagged package. This field is populated only when packages are installed using the Harness CLI.
+
+**Affected Pipelines**
+
+Shows how many pipelines are affected by this blocked dependency. Select **View pipelines** to see the full list of affected pipelines with their execution IDs, project, violation count, and categories. This field is populated only when packages are installed using the Harness CLI wrappers. Go to [Affected Pipelines](/docs/artifact-registry/dependency-firewall/affected-pipelines) to set up dependency tracking.
+
+<DocImage path={require('./static/affected-pipelines-filtered.png')} width="100%" />
+
+**Pulled in By**
+
+Shows which root package is downloading the vulnerable package. Each entry displays the root package that depends on this blocked transitive dependency.
+
+To populate this field, use `hc artifact npm install` (or the equivalent for your package type) in your pipeline. Go to [Affected Pipelines](/docs/artifact-registry/dependency-firewall/affected-pipelines#trace-the-root-package-pulled-in-by) to understand how root package tracking works.
 
 **Violated Policies**
 
@@ -94,7 +127,17 @@ Multiple policy sets can fail for the same artifact version, and each is display
 
 At the bottom of the sidebar, click **Re-Evaluate** to re-run the evaluation against all configured policy sets and see updated results in real-time. This is useful when policies have been updated, new security information is available, or you want to verify if a previously blocked version now passes.
 
-## Understanding Policies and Policy Sets
+### Evaluation Details
+
+Select the **Evaluation Details** tab to view deeper analysis of the flagged package.
+
+<DocImage path={require('./static/evaluation-details-sidebar.png')} width="40%" />
+
+- **Overview:** Shows version details (current version, latest available version), license, package manager, and PURL.
+- **OSS Risks:** Displays risk indicators such as End of Life, Unmaintained, and Outdated statuses with a risk score (out of 100) and key findings including security vulnerabilities and impact scores.
+- **Vulnerabilities:** Shows vulnerability counts by severity (Critical, High, Medium, Low) derived from the internal database.
+
+## Policies and policy sets
 
 Dependency Firewall uses a hierarchical policy structure:
 
@@ -103,11 +146,25 @@ Dependency Firewall uses a hierarchical policy structure:
 
 When an artifact version is evaluated, it runs through all configured policy sets. If any policy within a policy set fails, the artifact version is marked as either **Blocked** or **Warning** depending on your firewall configuration.
 
-Harness provides five built-in policy templates specifically for Dependency Firewall: CVSS Threshold, License Policy, Package Age, OSS Risk Level, and Malicious Package. You can use these templates as-is, customize them, or create your own policies using Rego. Go to [Configure Policies and Policy Sets](/docs/artifact-registry/dependency-firewall/configure-policies) to configure policies and policy sets for Dependency Firewall.
+Harness provides five built-in policy templates specifically for Dependency Firewall: CVSS Threshold, License Policy, Package Age, OSS Risk Level, and Malicious Package. You can use these templates as-is, customize them, or create your own policies using Rego. Go to [Configure Policies and Policy Sets](/docs/artifact-registry/dependency-firewall/configure-policies) to set up policies and policy sets for Dependency Firewall.
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="I enabled Dependency Firewall but no violations appear on the dashboard"
+  mode="docs"
+  fallback="Dependency Firewall evaluates packages only when they are fetched through the upstream proxy for the first time. If your packages are already cached, no new evaluation occurs. Try pulling a new package version that has not been cached yet. Also verify that at least one policy set with the Upstream Proxy entity type is enforced."
+/>
+
+<Troubleshoot
+  issue="My pipeline gets a 403 error but I do not see the package in the Dependency Firewall dashboard"
+  mode="docs"
+  fallback="The 403 may come from an authentication issue rather than a firewall block. Verify that your token has read access to the upstream proxy registry. If authentication is correct and the package still does not appear in the dashboard, check that Dependency Firewall is enabled on the specific upstream proxy registry your pipeline is configured to use."
+/>
 
 <FAQ
   question="Does Dependency Firewall require an STO or SCS license?"
-  mode="docs"
-  fallback="No. Dependency Firewall is included with Artifact Registry. It does not require STO or SCS licenses."
+  mode="fallback-only"
+  fallback="No. Dependency Firewall is included with Harness Artifact Registry and does not require a separate STO (Security Testing Orchestration) or SCS (Supply Chain Security) license. It is a standalone feature available to all Artifact Registry users."
 />
 

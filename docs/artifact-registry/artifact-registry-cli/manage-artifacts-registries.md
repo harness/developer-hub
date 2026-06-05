@@ -479,6 +479,99 @@ This downloads the specified artifact to the destination path on your local mach
 
 ---
 
+### Install packages with dependency tracking
+
+The Harness CLI provides wrapper commands that run your native package install while adding Dependency Firewall evaluation and dependency graph generation. The dependency graph populates the **Pulled in By** field and **Affected Pipelines** tab in the Dependency Firewall dashboard.
+
+**Supported commands:**
+
+| Package type | Command | Wraps |
+|---|---|---|
+| npm | `hc artifact npm install` | `npm install` |
+| npm | `hc artifact npm ci` | `npm ci` |
+| Maven | `hc artifact mvn install` | `mvn install` |
+| Python | `hc artifact pip install` | `pip install` |
+| NuGet/.NET | `hc artifact dotnet restore` | `dotnet restore` |
+
+All other subcommands are passed through to the native tool without firewall evaluation.
+
+**What these commands do:**
+
+1. Run the native install command, routing package resolution through your configured upstream proxy.
+2. Evaluate dependencies against Dependency Firewall policies, showing dependency error details at the time of installation.
+3. Upload the dependency graph to Harness, populating the **Pulled in By** and **Affected Pipelines** views in the Dependency Firewall dashboard.
+
+Go to [Affected Pipelines](/docs/artifact-registry/dependency-firewall/affected-pipelines) to understand how pipeline tracking works, including environment variable mapping and dependency resolution details.
+
+**Prerequisites:**
+- Authenticate with `hc auth login`
+- Configure the package manager client with `hc registry configure npm|pip|maven|nuget`
+- Dependency Firewall must be enabled on the upstream proxy registry
+
+**Example: npm**
+
+```bash
+hc auth login --api-url https://app.harness.io --api-token $HARNESS_API_TOKEN --account $HARNESS_ACCOUNT_ID
+hc registry configure npm --registry npm-upstream --org default --project my-project --global
+hc artifact npm install
+```
+
+**Example: Maven**
+
+```bash
+hc auth login --api-url https://app.harness.io --api-token $HARNESS_API_TOKEN --account $HARNESS_ACCOUNT_ID
+hc registry configure maven --registry maven-upstream
+hc artifact mvn install
+```
+
+**Example: Python**
+
+```bash
+hc auth login --api-url https://app.harness.io --api-token $HARNESS_API_TOKEN --account $HARNESS_ACCOUNT_ID
+hc registry configure pip --registry pypi-upstream
+hc artifact pip install
+```
+
+**Example: dotnet**
+
+```bash
+hc auth login --api-url https://app.harness.io --api-token $HARNESS_API_TOKEN --account $HARNESS_ACCOUNT_ID
+hc registry configure nuget --registry nuget-upstream
+hc artifact dotnet restore
+```
+
+**Example output (npm):**
+
+```
+⚡ Detecting HAR registry...
+  ✅ Found HAR registry: npm-upstream
+⚡ Running npm install...
+  ❌ npm install failed (firewall may have blocked packages)
+⚡ Resolving complete dependency list...
+  ✅ Resolved 15 total dependencies (including transitive)
+⚡ Fetching firewall evaluation info...
+  ✅ Firewall evaluation completed (15 packages)
+
+FIREWALL EVALUATION: 15 package(s) evaluated
+
+  ❌ BLOCKED  lodash@4.18.1
+    Policy Set: Firewall
+      Category: License | Policy: firewall-license
+
+  ✅ PASSED   express@4.18.2
+
+  ▶ Uploading build info...
+  ✅ Build info uploaded (15 nodes)
+```
+
+After the build info is uploaded, the Dependency Firewall dashboard shows:
+- **Pulled in By**: Which direct dependencies pull in each blocked transitive dependency
+- **Affected Pipelines**: Which pipelines encountered blocked dependencies
+
+Go to [Affected Pipelines](/docs/artifact-registry/dependency-firewall/affected-pipelines) to understand the full dashboard view and pipeline tracking.
+
+---
+
 ### Manage Artifact Metadata
 
 Attach custom key-value pairs to packages or specific versions for better organization, tracking, and automation workflows.
