@@ -30,9 +30,63 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 | **Version** | **prod0** | **prod1** | **prod2** | **prod3** | **prod4** | **prodeu1** |
 | ----------- | --------- | --------- | --------- | --------- | --------- | ----------- |
+| [2026.5.v2](/release-notes/internal-developer-portal#may---20265v2)   | ✅        | ✅         | ✅           | ✅        | ✅         | ✅         |
 | [2026.5.v1](/release-notes/internal-developer-portal#may---20265v1)   | ✅        | ✅         | ✅           | ✅        | ✅         | ✅         |
 | [2026.4.v1](/release-notes/internal-developer-portal#april---20264v1) | ✅        | ✅         | ✅           | ✅        | ✅         | ✅         |
-| [2026.3.v2](/release-notes/internal-developer-portal#march---20263v2) | ✅        | ✅         | ✅           | ✅        | ✅         | ✅         |
+
+## May - [2026.5.v2]
+
+---
+
+### New Features
+
+#### Bitbucket Cloud Integration | [Read Doc](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/bitbucket-cloud)
+
+Harness IDP now supports a Bitbucket Cloud integration that automatically discovers repositories from your Bitbucket workspace and brings them into the IDP Catalog enriching them with repository metadata.
+
+You can also configure secondary kinds (pull requests and commits) to sync additional development activity data per repository.
+
+<DocImage path={require('../docs/internal-developer-portal/catalog/create-entity/catalog-discovery/static/bb-ingested-properties.gif')} />
+
+#### Datadog Integration | [Read Doc](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/datadog)
+
+Harness IDP now supports a Datadog integration that automatically discovers services from your Datadog account and brings them into the IDP Catalog enriching them with Datadog-sourced metadata including:
+
+- Core service metadata from the Datadog Service Catalog (description, contacts, resources, and repository information)
+- Monitor metrics and health summary
+- Service Level Objective (SLO) data associated with the service
+- Upstream and downstream service dependencies scoped to a configured environment
+
+<DocImage path={require('../docs/internal-developer-portal/catalog/create-entity/catalog-discovery/static/dd-catalog-entity.gif')} />
+
+#### Dynatrace Integration | [Read Doc](https://developer.harness.io/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/dynatrace)
+
+Harness IDP now supports another observability integration that connects to your Dynatrace instance and brings services into the IDP Catalog.
+
+<DocImage path={require('../docs/internal-developer-portal/catalog/create-entity/catalog-discovery/static/dt-screen.png')} />
+
+---
+
+### Enhancements & Bug Fixes
+
+#### Richer Entity Pages for GCP Resources | [Read Doc](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/gcp#view-gcp-entities-in-the-catalog)
+
+Resource entities imported from GCP to the IDP Catalog now show live GCP metadata directly on the entity page via two configurable layout components: an **Overview card** and a dedicated **GCP Integration tab**. Both are added via a one-time layout configuration and surface fields such as asset type, location, state, and project info for the entity.
+
+<DocImage path={require('../docs/internal-developer-portal/catalog/create-entity/catalog-discovery/static/gcp-integration-tab.png')} />
+
+#### Environment Dependency Notifications | [Read Doc](/docs/internal-developer-portal/environment-management/environments#dependency-change-notifications)
+
+When something an environment depends on changes or goes offline (an IaCM workspace template, a CD service, a pipeline, or another environment), a notification banner now appears automatically on the environment detail page with context on what changed and a recommended action to resolve it.
+
+<DocImage path={require('../docs/internal-developer-portal/environment-management/static/dependency-notification-banner.png')} />
+
+#### Fixes
+
+- Org and project-scoped connectors were being saved with an incorrect connector reference in integration setup, causing configuration flows to fail. Users can now successfully select connectors across all supported scopes. [IDP-9359]
+- When an integration was deleted, empty stale metadata blocks were left behind in the entity YAML, making it appear as if the integration was still active when inspecting entity properties. These are now fully cleaned up on deletion. [IDP-9429]
+
+---
 
 ## May - [2026.5.v1]
 
