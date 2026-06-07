@@ -17,8 +17,17 @@ Integrations allow you to fetch data from Harness modules as well as third-party
 
 The following integrations are currently available under the `IDP_INTEGRATIONS` feature flag:
 
-- [**Harness CD**](./harness-cd.md) — Import CD services with customizable DORA metrics and deployment data.
-- [**ServiceNow CMDB**](./servicenow-cmdb.md) — Sync CMDB records into the catalog with configurable field mappings.
+- [**Bitbucket Cloud**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/bitbucket-cloud): Auto-discover Bitbucket Cloud repositories and populate the IDP Catalog for service discovery and dependency mapping.
+- [**Datadog**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/datadog): Auto-discover Datadog services and import them into the IDP Catalog with monitor health, SLO tracking, and service dependency context.
+- [**Dynatrace**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/dynatrace): Auto-discover Dynatrace services with problems, SLO tracking, and service health context.
+- [**GCP**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/gcp): Auto-discover Google Cloud resources and populate the IDP Catalog with infrastructure, compute, database, and AI resource metadata.
+- [**GitHub**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/github): Auto-discover repositories, teams, and AI assets from your GitHub organization.
+- [**Harness CD**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/harness-cd): Import CD services with customizable DORA metrics and deployment data.
+- [**Kubernetes**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/kubernetes): Auto-discover Kubernetes services and populate the IDP Catalog for service discovery and dependency mapping.
+- [**PagerDuty**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/pagerduty): Auto-discover PagerDuty services and teams and populate the IDP Catalog for on-call visibility and incident context.
+- [**Platform Integration**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/platform-cd): Sync all Harness Platform hierarchy entities (accounts, organizations, projects) into the catalog.
+- [**ServiceNow CMDB**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/servicenow-cmdb): Sync CMDB records into the catalog with configurable field mappings.
+- [**SonarQube**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/sonarqube): Auto-discover SonarQube projects and populate the IDP Catalog with code quality metrics, security data, and issue analytics.
 
 Each integration follows a common workflow: configure the integration, review discovered entities, and choose whether to **register** them as new catalog entities or **merge** them into existing ones.
 

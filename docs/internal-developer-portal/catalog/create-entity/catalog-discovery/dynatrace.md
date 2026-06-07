@@ -31,13 +31,13 @@ For each service, the integration collects the following resources from Dynatrac
 
 The following are needed to get the integration running:
 
-* Ensure the feature flag `IDP_CATALOG_CD_AUTO_DISCOVERY` is enabled. Contact [Harness Support](mailto:support@harness.io) to enable it.
+* Ensure the feature flags `IDP_CATALOG_CD_AUTO_DISCOVERY` and `IDP_INTEGRATIONS` are enabled. Contact [Harness Support](mailto:support@harness.io) to enable them.
 * You have the required RBAC permissions to manage integrations. All integration operations require the `IDP_INTEGRATION_EDIT` permission on the `IDP_INTEGRATION` resource type.
 * A [Dynatrace connector](/docs/platform/connectors/monitoring-and-logging-systems/connect-to-monitoring-and-logging-systems#add-dynatrace) is configured in Harness with Dynatrace Classic URL (format: `https://xxxxxxxx.live.dynatrace.com/`) and an API Token (access token in Dynatrace). You can also create the connector during the integration setup. Ensure the access token must have the following scopes:
   - `entities.read`
   - `problems.read`
   - `metrics.read`
-  - `ReadSyntheticData`, `ExternalSyntheticIntegration`, and `DataExport` (required for monitor data)
+  -  Any one of `ReadSyntheticData`, `ExternalSyntheticIntegration`, and `DataExport` (required for monitor data)
 * (Optional) A Dynatrace platform token with the `slo:slos:read` scope if you want SLO data to flow into IDP.
 
 :::info Proxy Configuration

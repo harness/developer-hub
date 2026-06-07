@@ -20,7 +20,7 @@ For each entity type, the integration collects the following:
 
 The following are needed to get the integration running:
 
-* The feature flag `IDP_CATALOG_CD_AUTO_DISCOVERY` is enabled. Contact [Harness Support](mailto:support@harness.io) to enable it.
+* Ensure the feature flags `IDP_CATALOG_CD_AUTO_DISCOVERY` and `IDP_INTEGRATIONS` are enabled. Contact [Harness Support](mailto:support@harness.io) to enable them.
 * You have the required RBAC permissions to manage integrations. All integration operations require the `IDP_INTEGRATION_EDIT` permission on the `IDP_INTEGRATION` resource type.
 * A [PagerDuty connector](https://youtu.be/QE8dFDeK8Vs) is configured in Harness with the credentials needed to access your PagerDuty account. You can also add the connector during the setup of PagerDuty Integration.
 

@@ -21,7 +21,7 @@ For each entity type, the integration collects the following:
 
 The following are needed to get the integration running:
 
-* The feature flag `IDP_CATALOG_CD_AUTO_DISCOVERY` is enabled. Contact [Harness Support](mailto:support@harness.io) to enable it.
+* Ensure the feature flags `IDP_CATALOG_CD_AUTO_DISCOVERY` and `IDP_INTEGRATIONS` are enabled. Contact [Harness Support](mailto:support@harness.io) to enable them.
 * You have the required RBAC permissions to manage integrations. All integration operations require the `IDP_INTEGRATION_EDIT` permission on the `IDP_INTEGRATION` resource type.
 * A [GitHub PAT Connector](https://www.youtube.com/watch?v=67r7gXk-UcU) or [GitHub App Connector](/docs/platform/connectors/code-repositories/git-hub-app-support) is configured in Harness with the credentials needed to access your GitHub organization. Ensure that the connector has the [necessary permissions on your GitHub](#github-permissions). You can create a new connector directly during the integration setup. 
 * For each GitHub org, user has to maintain one integration.
@@ -373,8 +373,7 @@ The **Source Code** tab provides a more complete view of the GitHub data for the
 :::tip Feature Highlights
 * The tab shows all available fields for the resource type, including fields not present in the **Overview**.
 * All the fields are dynamic.
-* The Open and Merged PR metrics show data from the last 30 days.
-* The Pull Requests table shows PRs updated since 30 days before integration setup, limited to the 1000 most recently updated PRs.
+* The Open and Merged PR numbers and the Pull Requests table shows PRs updated since 30 days before integration setup, limited to the 1000 most recently updated PRs.
 :::
 
 ### Ingested Properties

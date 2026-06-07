@@ -22,7 +22,7 @@ For each repository, the integration collects the following:
 
 The following are needed to get the integration running:
 
-* The feature flag `IDP_CATALOG_CD_AUTO_DISCOVERY` is enabled. Contact [Harness Support](mailto:support@harness.io) to enable it.
+* Ensure the feature flags `IDP_CATALOG_CD_AUTO_DISCOVERY` and `IDP_INTEGRATIONS` are enabled. Contact [Harness Support](mailto:support@harness.io) to enable them.
 * You have the required RBAC permissions to manage integrations. All integration operations require the `IDP_INTEGRATION_EDIT` permission on the `IDP_INTEGRATION` resource type.
 * A [Bitbucket Cloud connector](https://www.youtube.com/watch?v=PTfoe7siyGs) is configured in Harness with the credentials needed to access your Bitbucket workspace. Ensure that the connector has the [necessary permissions on your Bitbucket Cloud](#bitbucket-permissions). Go to [Set up a Bitbucket Cloud Connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference/) to review the required settings and scopes. You can create a new connector directly during the integration setup.
 * While setting up the Bitbucket Cloud connector, make sure to select HTTP (not SSH) and authenticate using an access token. Use `x-token-auth` as the username. If you have an API token or App Password, generate a workspace access token instead.
