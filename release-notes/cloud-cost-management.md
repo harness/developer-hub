@@ -1,7 +1,7 @@
 ---
-title: Cloud Cost Management Release Notes
-sidebar_label: Cloud Cost Management
-date: 2026-05-22T18:00
+title: Cloud & AI Cost Management Release Notes
+sidebar_label: Cloud & AI Cost Management
+date: 2026-06-08T18:00
 sidebar_position: 6
 ---
 
@@ -25,16 +25,51 @@ We've migrated to LabelsV2, which preserves your original label keys while drama
 
 [Instructions to Update](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts/#how-to-migrate)
 
+## June 2026 - Version 1.99.11
+#### Deployment Date: June 8, 2026 (Prod-1)
+
+### New Features and Enhancements
+
+- New changes to CACM Overview page: We've revamped the **Cloud & AI Cost Management Overview** page with a refreshed layout, new widgets, and finer control over how cost is displayed.
+
+  - New Widgets: Your starred Perspectives now appear directly on Overview for one-click access to the views that matter most. If you haven't starred any Perspectives yet, we'll show a set of out-of-the-box views so the section is never empty.
+
+  - Top Spenders: A new card that highlights where your spend is concentrated, with quick tabs to slice by:
+    - **Service Categories**
+    - **Regions**
+    - **Sub-account ID**
+
+  - Optimization Impact: A single, consolidated view of savings across CCM modules:
+    - **Recommendations** — Savings Realized and Potential Savings (today), including how many recommendations were applied in the last *N* days
+    - **Autostopping Savings**
+    - **Cluster Orchestrator Savings** (with optimized cluster count)
+    - **Asset Governance Savings**
+
+  - Service Breakdown: Top services by spend, with each row showing its **% of total spend** and a **View full breakdown** link into Cost Explorer.
+
+  - Summary Cards: Refreshed KPI tiles at the top of the page, including **AI Spend**, and **vs prior period** trend indicators (e.g., YTD, All Cloud)
+
+  - Cost Type Support on Overview: You can now control how costs are calculated for the Overview widgets without changing your account-wide configuration.
+
+  - New **Cost Types** button and drawer on Overview let you override the cost type used by the spend widgets.
+  - Supports **AWS cost adjustments** and **GCP cost adjustments**.
+  - Settings **inherit from Account Cost Settings** by default; overrides apply only to the Overview spend widgets.
+  - Clear indicators when widgets are showing **mixed cost types**.
+  - Cluster Orchestrator Savings continue to use *net-amortized; unblended for spot* — surfaced inline for transparency. [CCM-32814, CCM-32818, CCM-32819, CCM-32822, CCM-32823, CCM-33085, CCM-33171, CCM-33233]
+
+- **RBAC enforcement for anomaly alert notifications**: Anomaly alert notifications now respect role-based access control. Users without the required permission can no longer edit, disable, or delete alerts created by other users. For view-only users, the corresponding action buttons are disabled in the UI to make permission boundaries clear. [CCM-32967]
+
+- **Localized cost type labels in Recommendations**: The Recommendations list now displays localized cost type labels under **Monthly Savings**, making it easier to interpret savings in your preferred cost context. When the preferred cost type is unavailable, a fallback tooltip explains which cost type is being shown and why. [CCM-32720]
+
+
 ## May 2026 - Version 1.89.6
 #### Deployment Date: May 22, 2026 (Prod-1)
 
 ### [New Feature] Data Job Status Dashboard
 Monitor the health and progress of your cloud data ingestion jobs with the new Data Job Status page. The dashboard provides real-time visibility into active, completed, and failed jobs across all your connected cloud accounts (AWS, Azure, GCP), with detailed logs and historical run tracking.
 
-
 ### [New Feature]  Cost Explorer 
 Introducing Cost Explorer, a redesigned cost analysis interface that provides a streamlined, view-centric experience for exploring your multi-cloud spending. The new Advanced Filter Rule Builder enables complex AND/OR filter logic with operators like IN, CONTAINS, and STARTS WITH, while the Views Explorer drawer offers quick access to saved views, reports, and folder navigation. This feature is being the `CCM_PERSPECTIVES_V2` feature flag and users can easily switch between Cost Explorer and classic Perspectives at any time.
-
 
 ### Enhancements
 
