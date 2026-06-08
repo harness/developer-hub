@@ -76,7 +76,7 @@ Only the latest comment from an approval or rejection action is displayed in the
 
 <DocImage path={require('./static/approve-exemption-project-view.png')} width="100%" height="100%" title="Click to view full size image" />
 
-<DocImage path={require('./static/exemption-comment-approve.png')} width="70%" height="70%" title="Click to view full size image" />
+<DocImage path={require('./static/approve-exemption.png')} width="70%" height="70%" title="Click to view full size image" />
 
 #### Users Can Approve Their Own Exemptions
 
@@ -105,6 +105,7 @@ Clicking **Cancel** on an exemption request immediately removes it from the syst
 - A user with the [Security Testing AppSec](/docs/security-testing-orchestration/rbac) role should periodically review all exemptions and update their statuses as needed.
   
 - Always [define a baseline for every target](/docs/security-testing-orchestration/key-concepts/targets-and-baselines#every-target-needs-a-baseline). If a target doesn’t have a baseline, exemption details won’t be visible. Instead, you’ll see a link prompting you to define the target’s baseline.  
+
   <img src={baseline_not_defined} alt="Can't view exemption details because the target has no baseline" height="50%" width="50%" />
 
 - You can view the **Time Remaining** for approved exemptions and the **Requested Duration** for pending, rejected, and expired requests.
