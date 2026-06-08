@@ -106,7 +106,17 @@ Add a Shell Script step to your build pipeline that runs **after** the artifact 
 ```bash
 #!/bin/bash
 
-json_payload="{\"artifact\": {\"name\": \"${ARTIFACT_REPO}\",\"version\": \"${NEW_VERSION}\"},\"source\": {\"commitSha\": \"${COMMIT_SHA}\",\"kind\": \"branch\",\"value\": \"${BRANCH}\",\"repository_url\": \"${MANIFEST_REPO}\"},\"service\": {\"name\": \"${ARTIFACT_REPO}\",\"version\": \"${NEW_VERSION}\"},\"buildId\": \"<+pipeline.executionId>\"}"
+# The trailing backslashes are line continuations. Bash joins these into a
+# single-line JSON string with no embedded newlines.
+json_payload="{\
+\"artifact\": {\"name\": \"${ARTIFACT_REPO}\", \"version\": \"${NEW_VERSION}\"}, \
+\"source\": {\
+\"commitSha\": \"${COMMIT_SHA}\", \
+\"kind\": \"branch\", \
+\"value\": \"${BRANCH}\", \
+\"repository_url\": \"${MANIFEST_REPO}\"}, \
+\"service\": {\"name\": \"${ARTIFACT_REPO}\", \"version\": \"${NEW_VERSION}\"}, \
+\"buildId\": \"<+pipeline.executionId>\"}"
 
 curl 'YOUR_BUILD_WEBHOOK_URL_HERE' \
   -s \
@@ -127,7 +137,8 @@ Map these variables to your pipeline outputs:
 
 :::warning Important notes
 - Escape all quotes in `json_payload`
-- No newlines in the JSON string
+- The assembled `json_payload` must contain no newlines. The backslash line
+  continuations above keep the source readable while producing a single-line string.
 - Replace `YOUR_BUILD_WEBHOOK_URL_HERE` with the endpoint URL from your Build integration
 :::
 
@@ -145,7 +156,7 @@ The Build webhook expects this JSON structure:
     "commitSha": "9b5866d04b5255f80d7463f7670e3d8a5ff48e34",
     "kind": "branch",
     "value": "release/harness-service-1.7.0",
-    "repository_url": "https://app.harness.io/ng/account/accountId/module/code/orgs/default/projects/default/repos/harness-service"
+    "repository_url": "https://github.com/yourorg/harness-service"
   },
   "service": {
     "name": "harness-service",
@@ -213,7 +224,17 @@ Add a Shell Script step to your deployment pipeline that runs **after** the depl
 ```bash
 #!/bin/bash
 
-json_payload="{\"services\": [{\"service\": \"bootstrap\",\"version\": \"1.34.0\"},{\"service\": \"code-api\",\"version\": \"1.42.2\"}],\"environments\": [\"qa\"],\"changeId\": \"<+pipeline.executionId>\",\"status\": \"SUCCESS\",\"deployedBy\": \"<+pipeline.triggeredBy.name>\",\"deployTimestamp\": \"<+pipeline.startTs>\"}"
+# The trailing backslashes are line continuations. Bash joins these into a
+# single-line JSON string with no embedded newlines.
+json_payload="{\
+\"services\": [\
+{\"service\": \"bootstrap\", \"version\": \"1.34.0\"}, \
+{\"service\": \"code-api\", \"version\": \"1.42.2\"}], \
+\"environments\": [\"qa\"], \
+\"changeId\": \"<+pipeline.executionId>\", \
+\"status\": \"SUCCESS\", \
+\"deployedBy\": \"<+pipeline.triggeredBy.name>\", \
+\"deployTimestamp\": \"<+pipeline.startTs>\"}"
 
 curl 'YOUR_DEPLOY_WEBHOOK_URL_HERE' \
   -s \
