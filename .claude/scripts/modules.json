@@ -52,7 +52,7 @@
     "code": "scs",
     "base_url": "/docs/software-supply-chain-assurance",
     "folder": "docs/software-supply-chain-assurance"
-  }, 
+  },
   {
     "code": "fme",
     "base_url": "/docs/feature-management-experimentation",
@@ -77,6 +77,24 @@
     "code": "ait",
     "base_url": "/docs/ai-test-automation",
     "folder": "docs/ai-test-automation",
-    "aliases": ["ai-test-automation"]
+    "aliases": [
+      "ai-test-automation"
+    ]
+  },
+  {
+    "code": "cr",
+    "base_url": "/docs/code-repository",
+    "folder": "docs/code-repository",
+    "aliases": [
+      "code-repository"
+    ]
+  },
+  {
+    "code": "aisre",
+    "base_url": "/docs/ai-sre",
+    "folder": "docs/ai-sre",
+    "aliases": [
+      "ai-sre"
+    ]
   }
 ]

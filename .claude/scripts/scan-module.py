@@ -5,6 +5,7 @@ import os
 import re
 import json
 import argparse
+import subprocess
 from pathlib import Path
 from datetime import datetime, timedelta
 from typing import Dict, List, Set
@@ -50,31 +51,38 @@ def get_file_list(module_folder: str, exclude_folders: List[str]) -> List[str]:
 
 
 def get_git_date(file_path: str) -> tuple:
-    """Get last git commit date for a file and calculate staleness"""
-    import subprocess
+    """Get last modified date for a file using git log, with filesystem stat as fallback.
+
+    Note: the filesystem fallback reflects disk-touch time, not authorship date.
+    In CI environments (git clone, workspace restore), mtime is unreliable.
+    """
+    def _staleness(date_obj: datetime) -> str:
+        age_days = (datetime.now() - date_obj).days
+        if age_days < 180:
+            return "🟢"
+        elif age_days < 540:
+            return "🟡"
+        else:
+            return "🔴"
+
     try:
         result = subprocess.run(
-            ["git", "log", "--format=%ad", "--date=short", "-1", "--", file_path],
-            capture_output=True,
-            text=True,
-            check=True
+            ["git", "log", "-1", "--format=%cs", "--", file_path],
+            capture_output=True, text=True, check=True
         )
         date_str = result.stdout.strip()
-        if not date_str:
-            return "unknown", "⚪"
-
-        date_obj = datetime.strptime(date_str, "%Y-%m-%d")
-        age_days = (datetime.now() - date_obj).days
-
-        if age_days < 180:  # < 6 months
-            staleness = "🟢"
-        elif age_days < 540:  # 6-18 months
-            staleness = "🟡"
-        else:  # > 18 months
-            staleness = "🔴"
-
-        return date_str, staleness
+        if date_str:
+            date_obj = datetime.strptime(date_str, "%Y-%m-%d")
+            return date_str, _staleness(date_obj)
     except subprocess.CalledProcessError:
+        pass
+
+    # Fallback: filesystem mtime (unreliable in CI)
+    try:
+        mtime = os.path.getmtime(file_path)
+        date_obj = datetime.fromtimestamp(mtime)
+        return date_obj.strftime("%Y-%m-%d"), _staleness(date_obj)
+    except OSError:
         return "unknown", "⚪"
 
 
@@ -210,11 +218,13 @@ def check_violations(file_path: str, content: str, is_dms_content: bool, is_faq:
             return True
 
         # Pattern checks for common tech naming conventions
-        # CamelCase/PascalCase including acronym-prefixed words (VSCode, XMLParser)
-        if re.match(r'^[A-Z]+[a-z]+[A-Z]', word):
+        # CamelCase/PascalCase (e.g., CamelCase, PascalCase)
+        if re.match(r'^[A-Z][a-z]+[A-Z]', word):
+            return True
 
         # Words with numbers (e.g., Jinja2, MySQL8, PostgreSQL15, OAuth2)
         if re.match(r'^[A-Za-z]\w*\d', word):
+            return True
 
         # All caps acronyms (2+ chars, e.g., API, REST, JSON, YAML)
         if word.isupper() and len(word) > 1:
