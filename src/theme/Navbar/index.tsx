@@ -174,7 +174,7 @@ const secondaryNavItems = [
   { to: "/docs", label: "Documentation", isDropdown: true },
   { to: "https://apidocs.harness.io/", label: "API Reference", external: true },
   { to: "/roadmap", label: "Roadmap" },
-  { to: "/release-notes", label: "Release Notes" },
+  { to: "/release-notes", label: "Release Notes"},
   { to: "/university", label: "University" },
   { to: "/glossary", label: "Glossary" },
 ];
@@ -182,6 +182,7 @@ const secondaryNavItems = [
 export default function NavbarWrapper(props: Props): ReactNode {
   const location = useLocation();
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [releaseNoteDropdownOpen, setreleaseNoteDropdownOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const { colorMode } = useColorMode();
 
@@ -198,8 +199,23 @@ export default function NavbarWrapper(props: Props): ReactNode {
   }, []);
 
   const isActive = (path: string) => {
-    if (path === "/") return location.pathname === "/";
-    return location.pathname.startsWith(path);
+    const current = location.pathname;
+
+    if (path === "/") return current === "/";
+
+    // exact match wins first
+    if (current === path) return true;
+
+    // prevent parent route from stealing active state
+    // if a more specific nav item exists under it
+    const isChildRoute = current.startsWith(path + "/");
+
+    // special case: don't highlight /release-notes when on feature registry
+    if (path === "/release-notes") {
+      return current === "/release-notes";
+    }
+
+    return isChildRoute;
   };
 
   /* Documentation stays active (underlined/bold) when viewing API Reference */
@@ -274,7 +290,7 @@ export default function NavbarWrapper(props: Props): ReactNode {
                   </div>
                 )}
               </div>
-            ) : (
+          ) : (
               <Link
                 key={item.to}
                 to={item.to}

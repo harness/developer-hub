@@ -45,7 +45,10 @@ README.md prateek.mittal@harness.io vikram.sahu@harness.io richard.black@harness
 # Redirect Archives
 /archive/  prateek.mittal@harness.io wei.guo@harness.io richard.black@harness.io austin.lai@harness.io
 
-# Documentation ###
+# Feature Flag Registry
+/release-notes/static/ff-ga-feed.json austin.lai@harness.io richard.black@harness.io ambuj.lal@harness.io pooja.singhal@harness.io kalyan.sai@harness.io deepak.puthraya@harness.io mohit.garg@harness.io ravi.vankadari@harness.io navaneeth.kn@harness.io rohit.karelia@harness.io alexandru.casian@harness.io anshul@harness.io pritesh.chandaliya@harness.io pranay.shah@harness.io rajatha.ranganath@harness.io maanav.shah@harness.io hemanth.mantri@harness.io sakshi.jain@harness.io kuber.mehrotra@harness.io prateek.mittal@harness.io shashank.singh@harness.io ashok.prabhu@harness.io bharat.goel@harness.io kavita.maurya@harness.io roger.simms@harness.io
+
+# Documentation 
 
 # All Static files (images etc.)
 static/  rohan.maharjan@harness.io wei.guo@harness.io richard.black@harness.io austin.lai@harness.io

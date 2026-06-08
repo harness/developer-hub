@@ -19,18 +19,22 @@
   background: var(--ifm-background-color);
   box-shadow: 0 1.5px 3px 0 rgb(0 0 0 / 8%);
   color: var(--ifm-font-color-base);
+  table-layout: fixed;
 }
 
 .gaTable th, .gaTable td {
   border: 1px solid var(--ifm-table-border-color);
   padding: 0.75rem 1rem;
   text-align: left;
+  font-size: 14px;
+  line-height: 20px;
 }
 
 .gaTable th {
   background: var(--ifm-table-head-background, #f5f6fa);
   color: var(--ifm-color-primary);
   font-weight: 600;
+  text-align: center;
 }
 
 .gaTable tr:nth-child(even) {
@@ -39,6 +43,16 @@
 
 .gaTable tr:hover {
   background: var(--ifm-hover-overlay, #f0f4fa);
+}
+
+.gaTable td:first-child {
+  width: 220px;
+  max-width: 220px;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  font-family: monospace;
+  font-size: 13px;
 }
 
 .btnContainer {

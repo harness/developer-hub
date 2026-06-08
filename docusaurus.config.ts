@@ -407,8 +407,8 @@ const config: Config = {
               to: 'https://ideas.harness.io',
             },
             {
-              label: 'Feature Flags GA Timeline',
-              to: '/release-notes/feature-flags-ga-timeline',
+              label: 'Feature Availability',
+              to: '/release-notes/features',
             },
             {
               label: 'Glossary',

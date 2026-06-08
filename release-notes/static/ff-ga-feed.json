@@ -1,1598 +1,1409 @@
 [
   {
-    "flagKey": "STO_ISSUES_PAGE_V2",
+    "flagKey": "ISSUES_PAGE_V2",
     "description": "Redesigned STO Issues page to provide a comprehensive security posture view with trend analysis to surface active and remediated issue trends across Targets within a project.",
     "gaStartDate": "2026-06-04",
-    "module": "Security Test Orchestration"
+    "module": "Security Test Orchestration",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "STO_JIRA_ENHANCED_TICKET_METADATA",
+    "flagKey": "JIRA_ENHANCED_TICKET_METADATA",
     "description": "Enhances Jira ticket metadata by including additional security issue details such as severity, CVSS scores, vulnerability paths, and remediation guidance to improve ticket triage and prioritization.",
     "gaStartDate": "2026-06-02",
-    "module": "Security Test Orchestration"
+    "module": "Security Test Orchestration",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "STO_NON_BASELINE_TICKETING",
+    "flagKey": "NON_BASELINE_TICKETING",
     "description": "Enables Jira ticket creation for security issues detected in non-baseline scans, allowing teams to track and remediate vulnerabilities from ad-hoc or on-demand security scans beyond the established baseline.",
     "gaStartDate": "2026-06-02",
-    "module": "Security Test Orchestration"
+    "module": "Security Test Orchestration",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "IACM_USE_NEW_RESOURCES_TABLE",
+    "flagKey": "USE_NEW_RESOURCES_TABLE",
     "description": "Migrates all existing IACM cloud resources from the Terraform state file into the new resources table.",
     "gaStartDate": "2026-06-02",
-    "module": "IACM"
+    "module": "Infrastructure as Code Management",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PIPE_PUBLISH_DATA_INGESTION_EVENTS_TO_GENERAL_KAFKA",
+    "flagKey": "PUBLISH_DATA_INGESTION_EVENTS_TO_GENERAL_KAFKA",
     "description": "Routes pipeline data-ingestion events (step, stage, and pipeline execution summaries) to the self-hosted (General) Kafka cluster instead of the Confluent-managed cluster, completing the Confluent to self-hosted dual-cluster migration.",
     "gaStartDate": "2026-05-29",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PL_ENABLE_USER_IMPERSONATION",
+    "flagKey": "ENABLE_USER_IMPERSONATION",
     "description": "Account administrators can temporarily act as another user (30-minute session, fully audit-logged, with restricted-action blocklist) to troubleshoot permissions and validate configurations on behalf of users in their account.",
     "gaStartDate": "2026-06-03",
-    "module": "Platform"
+    "module": "Platform",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "PIPE_CENTRALISED_NOTIFICATION",
+    "flagKey": "CENTRALISED_NOTIFICATION",
     "description": "Routes pipeline events to the platform Centralised Notification Service (CNS), allowing users to manage pipeline notification rules from a unified notification center instead of only per-pipeline notification rules.",
     "gaStartDate": "2026-05-25",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "PIPE_DYNAMIC_STAGE_EXECUTION",
+    "flagKey": "DYNAMIC_STAGE_EXECUTION",
     "description": "Enables a Dynamic Stage in pipelines, allowing stages to be dynamically injected and executed at runtime using inline YAML or Git-stored definitions.",
     "gaStartDate": "2026-05-22",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "SEI_2_ENABLE_ITSM",
+    "flagKey": "ENABLE_ITSM",
     "description": "Enables ServiceNow integration as a data source for change requests and incidents on the Incident Management tab in Team Settings.",
     "gaStartDate": "2026-05-21",
-    "module": "AI DLC Insights"
+    "module": "AI DLC Insights",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "PL_ROLE_REUSABILITY_ACROSS_CHILD_SCOPES",
+    "flagKey": "ROLE_REUSABILITY_ACROSS_CHILD_SCOPES",
     "description": "Allows roles created at a higher scope (account/org) to be reused in lower scopes.",
     "gaStartDate": "2026-05-21",
-    "module": "Platform"
+    "module": "Platform",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CDS_ADD_DEPLOYMENT_FREEZE_BYPASS_AUDIT",
-    "description": "Enables audit logging for deployment freeze bypass actions.",
-    "gaStartDate": "2025-09-15",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_DEPLOYMENT_FREEZE_GRANULAR_RBAC",
-    "description": "Provides granular role-based access control for deployment freeze operations based on environment type.",
-    "gaStartDate": "2025-09-15",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_GITLAB_TRIGGER_TAG_EVENT",
+    "flagKey": "GITLAB_TRIGGER_TAG_EVENT",
     "description": "Enables GitLab tag event triggers for pipelines.",
     "gaStartDate": "2025-09-15",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CDS_TF_POLICY_EVALUATION",
+    "flagKey": "TF_POLICY_EVALUATION",
     "description": "Enables Terraform policy evaluation in Continuous Delivery workflows.",
     "gaStartDate": "2025-09-15",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CDS_TEXTAREA_FOR_OVERRIDE_VARIABLES",
-    "description": "Provides textarea input for override variables in deployment configurations.",
-    "gaStartDate": "2025-09-15",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_TAS_LOGIN_OPTIMIZATION",
+    "flagKey": "TAS_LOGIN_OPTIMIZATION",
     "description": "Optimizes Tanzu Application Service (TAS) login performance and reliability by reducing the number of CLI initialisation calls.",
     "gaStartDate": "2025-09-15",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CDS_SUPPORT_TF_CLOUD_PLAN_REFRESH_TYPE",
-    "description": "Adds support for Terraform Cloud plan refresh type operations.",
-    "gaStartDate": "2025-09-15",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_UI_ENABLE_DISALLOWED_USER_EMAILS_IN_APPROVAL_STEP",
-    "description": "Enables configuration to block certain users from approving in Harness Approval steps based on emails.",
-    "gaStartDate": "2025-09-15",
-    "module": "Pipeline"
-  },
-  {
-    "flagKey": "CDS_AZURE_OIDC_AUTHENTICATION",
+    "flagKey": "AZURE_OIDC_AUTHENTICATION",
     "description": "Enables OIDC authentication for Azure connectors.",
     "gaStartDate": "2025-09-15",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CDS_GCP_LIST_PROJECTS_AUTH_FIX",
+    "flagKey": "GCP_LIST_PROJECTS_AUTH_FIX",
     "description": "Fixes authentication issues when listing Google Cloud Platform projects.",
     "gaStartDate": "2025-09-15",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CDS_GCP_OIDC_CONNECTOR_CROSS_PROJECT_ACCESS",
-    "description": "Enables cross-project access for Google Cloud Platform connectors.",
-    "gaStartDate": "2025-09-15",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_OPTIONAL_VALUES_YAML",
-    "description": "Enables optional values.yaml files in K8s & Helm deployments.",
-    "gaStartDate": "2025-09-15",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_ENFORCE_GIT_EXPERIENCE",
+    "flagKey": "ENFORCE_GIT_EXPERIENCE",
     "description": "Enforces Git-based experience for CD entities such as service, environment, infrastructure and override configurations.",
     "gaStartDate": "2025-09-15",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CDS_K8S_DETAILED_LOGS",
+    "flagKey": "K8S_DETAILED_LOGS",
     "description": "Provides detailed logging for Kubernetes operations in CD.",
     "gaStartDate": "2025-09-15",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CDS_INFRA_DEFINITION_VALIDATION",
+    "flagKey": "INFRA_DEFINITION_VALIDATION",
     "description": "Enforces certain validation for infrastructure definitions in CD.",
     "gaStartDate": "2025-09-15",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CDS_USE_SECONDARY_NODE_FOR_TIMESCALE_QUERIES",
-    "description": "Internal optimisation to use secondary database nodes for TimescaleDB queries to improve performance.",
+    "flagKey": "USE_SECONDARY_NODE_FOR_TIMESCALE_QUERIES",
+    "description": "Internal optimization to use secondary database nodes for TimescaleDB queries to improve performance.",
     "gaStartDate": "2025-09-15",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CDS_ADD_EXPRESSION_RESOLUTION_FOR_OVERRIDES_V2_AT_SERVICE_STEP",
-    "description": "Fixes a bug that resolves expressions in overrides at the service step.",
-    "gaStartDate": "2025-09-15",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_OVERRIDES_GITX",
-    "description": "Enables Git experience for service and infrastructure overrides management.",
-    "gaStartDate": "2025-09-15",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_EVENT_BRIDGE_WEBHOOK",
+    "flagKey": "EVENT_BRIDGE_WEBHOOK",
     "description": "Enables Event Relay triggers for pipelines.",
     "gaStartDate": "2025-09-15",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CDS_SERVICE_INFRA_FAILURE_STRATEGY",
+    "flagKey": "SERVICE_INFRA_FAILURE_STRATEGY",
     "description": "Implements failure strategies for service and infrastructure deployment steps.",
     "gaStartDate": "2025-09-15",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CDS_OVERRIDES_V2_IDENTIFIER_SUPPORT",
-    "description": "Adds identifier support for version 2 service and infrastructure overrides.",
-    "gaStartDate": "2025-09-15",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_FIX_ROLLBACK_IN_SSH_WINRM",
-    "description": "Fixes rollback functionality in SSH and WinRM deployments.",
-    "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_ECS_STEADY_STATE_CHECK_ON_RETRIES",
-    "description": "Enables steady state checks on retries for ECS deployments.",
-    "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_ASG_FIX_LIFECYCLE_HOOKS_ORDER",
+    "flagKey": "ASG_FIX_LIFECYCLE_HOOKS_ORDER",
     "description": "Fixes the order of lifecycle hooks in Auto Scaling Group deployments.",
     "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CDS_ASG_MULTI_DEPLOY_ROLLBACK_SUPPORT",
+    "flagKey": "ASG_MULTI_DEPLOY_ROLLBACK_SUPPORT",
     "description": "Adds rollback support for multi-deployment Auto Scaling Group deployments.",
     "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CDS_AWS_LAMBDA_CANARY_DEPLOY",
-    "description": "Enables canary deployment strategy for AWS Lambda functions.",
-    "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_DETECT_ORPHAN_INSTANCES",
-    "description": "Enables detection of orphaned instances in deployments & cleans them up.",
-    "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_AZURE_FUNCTION_EXTRACT_CORRECT_SLOT_NAME_USING_FUNCTION_NAME",
-    "description": "Improves slot name extraction for Azure Functions using function names.",
-    "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_AWS_LAMBDA_DISABLE_DOUBLE_VERSION_PUBLISH",
-    "description": "Fixes a bug by preventing double version publishing in AWS Lambda deployments.",
-    "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_REFRESH_IN_JIRA_SERVICENOW_APPROVALS",
-    "description": "Provides a refresh button to manually refresh the status of the approval ticket in Jira and ServiceNow approval steps.",
-    "gaStartDate": "2025-09-18",
-    "module": "Pipeline"
-  },
-  {
-    "flagKey": "CDS_OVERRIDES_DISABLE_ENV_API_UPDATES",
+    "flagKey": "OVERRIDES_DISABLE_ENV_API_UPDATES",
     "description": "Disables environment API updates for service overrides on overrides V2.",
     "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CDS_K8S_MASK_SECRETS_IN_WRAPUP_LOGS",
+    "flagKey": "K8S_MASK_SECRETS_IN_WRAPUP_LOGS",
     "description": "Masks secrets in Kubernetes deployment wrap-up logs for security.",
     "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CDS_SERVICE_OVERRIDES_1_0_VALIDATE_MANIFEST_TYPE",
-    "description": "Adds validation for manifest types in service overrides version 1.0.",
-    "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_SPOT_TRAFFIC_SHIFT",
-    "description": "Enables traffic shifting for Spot deployments.",
-    "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_K8S_EKS_REFRESH_EXEC_AUTH_TOKEN",
-    "description": "Refreshes execution authentication tokens for EKS clusters.",
-    "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_ENABLE_VALIDATION_FOR_NAMESPACE_OVERRIDES_TO_MATCH_WITH_INFRA_NAMESPACE",
-    "description": "Validates that namespace overrides match with infrastructure namespace configurations.",
-    "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_SERVICE_DASHBOARD_SIMPLIFICATION",
+    "flagKey": "SERVICE_DASHBOARD_SIMPLIFICATION",
     "description": "Improves service dashboard load time by optimizing API calls and relocating certain data to enhance performance.",
     "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CDS_AWS_LAMBDA_ECS_TAG_SUPPORT",
+    "flagKey": "AWS_LAMBDA_ECS_TAG_SUPPORT",
     "description": "Adds ECS tag support for AWS Lambda deployments.",
     "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CDS_ECS_TRAFFIC_SHIFT",
-    "description": "Enables traffic shifting capabilities for ECS deployments.",
-    "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_CONFIG_MAPS_AND_SECRETS_AS_VOLUME",
-    "description": "Enables mounting ConfigMaps and Secrets as volumes in container step groups.",
-    "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_K8S_TRAFFIC_ROUTE_REWRITE_RULE_SUPPORT",
-    "description": "Adds support for traffic route rewrite rules in Kubernetes deployments.",
-    "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_ENABLE_SERVICE_OPA_EVAL_ON_RUNTIME_CONTEXT",
+    "flagKey": "ENABLE_SERVICE_OPA_EVAL_ON_RUNTIME_CONTEXT",
     "description": "Enables Open Policy Agent evaluation on runtime context for services.",
     "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CDS_SERVICE_OVERRIDES_MERGE_FIX",
+    "flagKey": "SERVICE_OVERRIDES_MERGE_FIX",
     "description": "Fixes a rare bug in how service overrides were merged.",
     "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CDS_ECS_MONITOR_TASK_STATUS",
+    "flagKey": "ECS_MONITOR_TASK_STATUS",
     "description": "Enables monitoring of task status in ECS deployments.",
     "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CDS_SEND_CORRECT_SCOPE_TO_ACCESS_CONTROL_FOR_INFRA",
-    "description": "Fixes a bug where scope of the infrastructure was not being honored to enforce RBAC.",
-    "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_ECS_BG_VALIDATION_WITH_SAME_TARGET_GROUPS",
+    "flagKey": "ECS_BG_VALIDATION_WITH_SAME_TARGET_GROUPS",
     "description": "Enables blue-green deployment validation with same target groups in ECS.",
     "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CDS_TRAFFIC_SHIFT_WITHOUT_TEMP_VERSION",
+    "flagKey": "TRAFFIC_SHIFT_WITHOUT_TEMP_VERSION",
     "description": "Enables traffic shifting without creating temporary versions.",
     "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CDS_OPA_CD_ENTITIES_GOVERNANCE",
-    "description": "Enables Open Policy Agent governance for CD entities such as service, environment, infrastructure and overrides.",
-    "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_ASYNC_EXECUTABLE_USE_SELECTORS",
+    "flagKey": "ASYNC_EXECUTABLE_USE_SELECTORS",
     "description": "Enables the use of selectors in asynchronous executable operations.",
     "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CDS_CROSS_SCOPED_ENV_GROUPS",
+    "flagKey": "CROSS_SCOPED_ENV_GROUPS",
     "description": "Enables creating environments groups containing environments from different scopes.",
     "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CDS_SVC_ENV_DASHBOARD_FOR_ACCOUNT_AND_ORG_LEVEL",
+    "flagKey": "SVC_ENV_DASHBOARD_FOR_ACCOUNT_AND_ORG_LEVEL",
     "description": "Enables service and environment dashboard at account and organization levels for better visibility.",
     "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CDS_CONTAINER_STEP_DELEGATE_SELECTOR_PRECEDENCE",
+    "flagKey": "CONTAINER_STEP_DELEGATE_SELECTOR_PRECEDENCE",
     "description": "Fixes a bug where the Delegate selector precedence was not being honored for container step groups.",
     "gaStartDate": "2025-09-18",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CDS_CONTAINER_STEP_GROUP_RUN_AS_USER_AND_PRIVILEGED_FIX",
+    "flagKey": "CONTAINER_STEP_GROUP_RUN_AS_USER_AND_PRIVILEGED_FIX",
     "description": "Fixes a bug where run-as-user and privileged mode settings were not being honored for container step groups.",
     "gaStartDate": "2025-09-18",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CDS_UI_SERVICE_DASHBOARD_API_PAGINATION",
-    "description": "Implements API pagination for the service dashboard user interface for better performance.",
-    "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_NG_INSTANCE_SYNC_ALWAYS_RESET_PT",
-    "description": "Always resets perpetual tasks post deployments ensuring the recent connector details are used.",
-    "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_NEW_PROJECT_OVERVIEW_DASHBOARD",
-    "description": "Enables the new project overview dashboard interface for better visibility.",
-    "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_INIT_STEP_FAILURE_STRATEGY",
+    "flagKey": "INIT_STEP_FAILURE_STRATEGY",
     "description": "Implements failure strategies for initialization steps.",
     "gaStartDate": "2025-09-18",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CDS_MULTI_DEPLOYMENT_ON_FAILURE",
+    "flagKey": "MULTI_DEPLOYMENT_ON_FAILURE",
     "description": "Allows users to configure how the Pipeline should handle failures during multi-service/multi-environment/multi-infrastructure deployments.",
     "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CDS_SPECIFY_INFRASTRUCTURES",
+    "flagKey": "SPECIFY_INFRASTRUCTURES",
     "description": "Enables specification of infrastructure configurations in deployments.",
     "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CDS_PERFORM_SHELL_SCRIPT_HOST_CAPABILITY",
+    "flagKey": "PERFORM_SHELL_SCRIPT_HOST_CAPABILITY",
     "description": "Enables shell script execution host capability checks.",
     "gaStartDate": "2025-09-18",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CDS_WINRM_COPY_CONFIG_FILES_WITH_ENCODING_NG",
+    "flagKey": "WINRM_COPY_CONFIG_FILES_WITH_ENCODING_NG",
     "description": "Enables WinRM configuration file copying with proper encoding support.",
     "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CDS_SKIP_INFRA_VALIDATION",
+    "flagKey": "SKIP_INFRA_VALIDATION",
     "description": "Allows skipping infrastructure validation during deployments.",
     "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CDS_USE_K8S_API_FOR_STEADY_STATE_CHECK",
+    "flagKey": "USE_K8S_API_FOR_STEADY_STATE_CHECK",
     "description": "Uses Kubernetes API for steady state checks instead of kubectl.",
     "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CDS_ALLOW_USER_TYPE_FIELDS_JIRA",
-    "description": "Allows user type fields in Jira integration configurations.",
-    "gaStartDate": "2025-09-18",
-    "module": "Pipeline"
-  },
-  {
-    "flagKey": "CDS_LANDING_OVERVIEW_PAGE_V2",
+    "flagKey": "LANDING_OVERVIEW_PAGE_V2",
     "description": "Enables a new landing overview page interface for better visibility and performance.",
     "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CDS_NG_K8S_SERVICE_RELEASE_NAME",
-    "description": "Enables Next Generation Kubernetes service release naming.",
-    "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "GITOPS_MULTI_SOURCE_ENABLED",
-    "description": "Enables multiple source configurations for GitOps Applications.",
-    "gaStartDate": "2025-09-18",
-    "module": "GitOps"
-  },
-  {
-    "flagKey": "CDS_ENABLE_RUN_HELM_CHART_TESTS",
-    "description": "Add the functionality to run Helm chart tests.",
-    "gaStartDate": "2025-09-17",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_MANIFEST_CONNECTOR_URL",
-    "description": "Add attribute connectorUrl as a manifest output from service step.",
-    "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_INSTANCE_CLEANUP_ON_TASK_INFO_DELETE",
-    "description": "Delete instance records in all cases when we are deleting the instance sync perpetual tasks related records.",
-    "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "GITOPS_AUDIT_TRAIL_ENABLED",
-    "description": "Adds Audit Trail for GitOps related actions.",
-    "gaStartDate": "2025-09-18",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_ENABLE_KUBECTL_CLIENT_OVERRIDES",
-    "description": "Use oc client when in Wrap Up and rollback when Kubernetes manifest contains Openshift resources",
-    "gaStartDate": "2025-09-22",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_SHOW_OVERRIDES_V2_YAML_IN_MENU",
-    "description": "Adds option in Override menu to view override yaml without expanding the specific override.",
-    "gaStartDate": "2025-09-22",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_MANIFEST_HASH_WITH_DECLARATIVE_ROLLBACK",
-    "description": "Ensures pod rollout on ConfigMap/Secret changes when Declarative Rollback is enabled.",
-    "gaStartDate": "2025-09-22",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_DELEGATE_VIRTUAL_SERVICE_SUPPORT",
-    "description": "Support K8s delegate virtual service during Blue/Green deployment",
-    "gaStartDate": "2025-09-22",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_NG_K8S_PASS_RELEASE_METADATA",
-    "description": "Track release name usage across services and warn during execution if same release name is used by a different service or environment for current workload",
-    "gaStartDate": "2025-09-22",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_APPROVAL_AND_STAGE_NOTIFICATIONS_WITH_CD_METADATA",
-    "description": "Approval notifications can now include details about the service, environment, and infrastructure used in the CD stages.",
-    "gaStartDate": "2025-09-22",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_USE_SWEEPING_OUTPUT_SECRET_FUNCTOR_FOR_IMAGE_PULL_SECRET",
+    "flagKey": "USE_SWEEPING_OUTPUT_SECRET_FUNCTOR_FOR_IMAGE_PULL_SECRET",
     "description": "Ensures sensitive information is kept safe when pulling container images.",
     "gaStartDate": "2025-09-22",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CDS_GITOPS_OPERATOR",
-    "description": "Enable GitOps operator configuration.",
-    "gaStartDate": "2025-09-17",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_DISABLE_FABRIC8_NG",
+    "flagKey": "DISABLE_FABRIC8_NG",
     "description": "Improve handling of istio traffic routing resources for Kuberentes canary deployments",
     "gaStartDate": "2025-09-22",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CDS_ADD_GIT_INFO_IN_POST_DEPLOYMENT_ROLLBACK",
-    "description": "Fixes rollback failures by ensuring correct branch reference is used when retrieving YAML files during post-deployment rollbacks.",
-    "gaStartDate": "2025-09-23",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_FILTER_ACTIVE_INSTANCES_SAM_SERVERLESS_PT",
-    "description": "Added a filter to exclude inactive or failed Lambda functions from being counted as instances.",
-    "gaStartDate": "2025-09-24",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_SERVICE_ENV_CLONING",
+    "flagKey": "SERVICE_ENV_CLONING",
     "description": "It allows to clone the environment across scopes.",
     "gaStartDate": "2025-09-24",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "PIPE_STAGE_NOTIFICATION_ENV_SVC",
-    "description": "Include environment and service information in stage notifications",
-    "gaStartDate": "2025-09-24",
-    "modutle": "Continuous Delivery"
-  },
-  {
-    "flagKey": "PL_CENTRAL_NOTIFICATIONS",
+    "flagKey": "CENTRAL_NOTIFICATIONS",
     "description": "Enable the Notifications management feature at all scopes",
     "gaStartDate": "2025-09-24",
-    "module": "Platform"
+    "module": "Platform",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CDS_GITOPS_ENABLE_UPDATE_GITOPS_APP_ROLLBACK",
-    "description": "Flag to indicate update GitOps app rollback behaviour. Once enabled, during rollback, application sources will be fetched from application revision history",
-    "gaStartDate": "2025-09-27",
-    "module": "GitOps"
-  },
-  {
-    "flagKey": "CDS_TEMPLATE_SET_GIT_CONTEXT",
+    "flagKey": "TEMPLATE_SET_GIT_CONTEXT",
     "description": "Child entity should be resolved by parent git context.",
     "gaStartDate": "2025-10-07",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CDS_PIPELINE_TEMPLATE_API_OPTIMISATIONS",
-    "description": "Optimisations for pipeline apis w.r.t template resolution in NG",
-    "gaStartDate": "2025-10-07",
-    "module": "Pipeline"
-  },
-  {
-    "flagKey": "CDS_PIPELINE_STAGE_TEMPLATE_VALIDATION_OPTIMISATIONS",
+    "flagKey": "PIPELINE_STAGE_TEMPLATE_VALIDATION_OPTIMISATIONS",
     "description": "Optimisations for resolving templates for pipeline chaining validation",
     "gaStartDate": "2025-10-07",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CDS_MARK_PIPELINE_AS_FAILURE",
+    "flagKey": "MARK_PIPELINE_AS_FAILURE",
     "description": "Feature Flag to enable User marked pipeline failure",
     "gaStartDate": "2025-10-07",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CDS_EXPRESSION_V2_OPTIMISATION",
+    "flagKey": "EXPRESSION_V2_OPTIMISATION",
     "description": "Optimisation for ExpressionV2 engine",
     "gaStartDate": "2025-10-07",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CDS_ALLOW_EXPRESSION_RESOLUTION_PIPELINE_ROLLBACK",
+    "flagKey": "ALLOW_EXPRESSION_RESOLUTION_PIPELINE_ROLLBACK",
     "description": "Allow expression resolution of previous stage in pipeline rollback mode",
     "gaStartDate": "2025-10-07",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PIPE_FIX_RESOURCE_RESTRAINTS_FOR_RETRY_STEPS",
+    "flagKey": "FIX_RESOURCE_RESTRAINTS_FOR_RETRY_STEPS",
     "description": "FF to avoid recreation of resource restarint instance when a queue step is retried",
     "gaStartDate": "2025-10-07",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PIE_RESTRICT_SUBGRAPH_API_TO_STEP_GROUP",
+    "flagKey": "RESTRICT_SUBGRAPH_API_TO_STEP_GROUP",
     "description": "FF to enable to limit subGraph API to only step group nodes",
     "gaStartDate": "2025-10-07",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PIPE_RESTRICT_INVALID_TEMPLATE_AND_INPUT_SET_YAML_THROW_EXCEPTION",
+    "flagKey": "RESTRICT_INVALID_TEMPLATE_AND_INPUT_SET_YAML_THROW_EXCEPTION",
     "description": "FF to redirect invalid template yaml and input set yaml to yaml view of templates and input set",
     "gaStartDate": "2025-10-07",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PIPE_RESOLVE_TO_NULL_VALUE_BASED_ON_EXPRESSION_MODE",
+    "flagKey": "RESOLVE_TO_NULL_VALUE_BASED_ON_EXPRESSION_MODE",
     "description": "FF to enable resolution to null value if unresolved expressions come via StringReplacer",
     "gaStartDate": "2025-10-07",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PIE_RESOLVE_EXECUTION_INPUT_EXPRESSION",
+    "flagKey": "RESOLVE_EXECUTION_INPUT_EXPRESSION",
     "description": "FF to enable expression resolution for executionInput",
     "gaStartDate": "2025-10-07",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PIPE_SEPARATE_PLAN_CREATION_EXECUTORS",
+    "flagKey": "SEPARATE_PLAN_CREATION_EXECUTORS",
     "description": "FF to separate out executor services per module for plan creation",
     "gaStartDate": "2025-10-07",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PIE_REVERSE_STAGE_ORDER_IN_POST_EXECUTION_ROLLBACK",
+    "flagKey": "REVERSE_STAGE_ORDER_IN_POST_EXECUTION_ROLLBACK",
     "description": "FF to reverse the order of stages to execute in the post-execution rollback",
     "gaStartDate": "2025-10-07",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PIPE_MARK_PARENT_PIPELINE_STATUS_WAITING_AS_CHILD",
+    "flagKey": "MARK_PARENT_PIPELINE_STATUS_WAITING_AS_CHILD",
     "description": "FF to mark the parent pipeline status waiting as well, In case child pipeline status is waiting",
     "gaStartDate": "2025-10-07",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PIE_CACHE_OLD_RETRIED_STEP_GROUP_GRAPH",
+    "flagKey": "CACHE_OLD_RETRIED_STEP_GROUP_GRAPH",
     "description": "FF to cache the old retried step group graph in cacheEntities collection",
     "gaStartDate": "2025-10-07",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PIE_POPULATE_RETRY_NODE_METADATA",
+    "flagKey": "POPULATE_RETRY_NODE_METADATA",
     "description": "FF to store start and end time of previously skipped nodes in retried execution",
     "gaStartDate": "2025-10-07",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PIPE_MOVE_INSTANCE_FUNCTOR_TO_PIPELINE_SERVICE",
+    "flagKey": "MOVE_INSTANCE_FUNCTOR_TO_PIPELINE_SERVICE",
     "description": "FF to migrate the instance expressions resolution to pipeline-service",
     "gaStartDate": "2025-10-07",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PIPE_MOVE_KUBERNETES_RELEASE_FUNCTOR",
+    "flagKey": "MOVE_KUBERNETES_RELEASE_FUNCTOR",
     "description": "FF to move expression resolution of kubernetes release functor to pipeline-service",
     "gaStartDate": "2025-10-07",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PIPE_OPTIMISE_EXPORTED_VARIABLES_FUNCTOR",
+    "flagKey": "OPTIMISE_EXPORTED_VARIABLES_FUNCTOR",
     "description": "FF to remove grpc call for sweeping outputs from exported variables functor",
     "gaStartDate": "2025-10-07",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PIPE_MASK_SECRET_EXPRESSIONS_IN_TRIGGER_PAYLOAD",
+    "flagKey": "MASK_SECRET_EXPRESSIONS_IN_TRIGGER_PAYLOAD",
     "description": "Mask secret expressions which are part of trigger payload",
     "gaStartDate": "2025-10-07",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PIPE_TRIGGER_CHANGED_FILES_EXPRESSION",
+    "flagKey": "TRIGGER_CHANGED_FILES_EXPRESSION",
     "description": "Includes changed files in push event in trigger expression via <+trigger.changedFiles>",
     "gaStartDate": "2025-10-07",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PIPE_SUPPORT_FILTER_DELETION_ON_ORG_OR_PROJECT_DELETION",
+    "flagKey": "SUPPORT_FILTER_DELETION_ON_ORG_OR_PROJECT_DELETION",
     "description": "FF to support pipeline filter deletion on org/project deletion",
     "gaStartDate": "2025-10-07",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PIPE_ALLOW_MULTIPLE_FILEPATH_CONDITIONS",
+    "flagKey": "ALLOW_MULTIPLE_FILEPATH_CONDITIONS",
     "description": "FF to optimize filepath condition evaluations in triggers by allowing multiple conditions in one single delegate task",
     "gaStartDate": "2025-10-07",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CDS_AWS_STS_NON_DEFAULT_REGION",
-    "description": "For non-default regions, the STS URL must be customized to include the region.",
-    "gaStartDate": "2025-10-01",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_LIST_BRANCH_V2",
+    "flagKey": "LIST_BRANCH_V2",
     "description": "FF to use newer APIs for GitX branch listing.",
     "gaStartDate": "2025-10-03",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_PAGINATED_CONNECTORS_FETCHING_IN_TRIGGER_FILTERS",
-    "description": "Uses paginated requests to fetch connectors for webhook triggers.",
-    "gaStartDate": "2025-10-03",
-    "module": "Pipeline"
-  },
-  {
-    "flagKey": "CV_NEWRELIC_NEW_API",
-    "description": "FF to enable New Relic graphQL API.",
-    "gaStartDate": "2025-10-03",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
     "flagKey": "CVNG_TEMPLATE_VERIFY_STEP",
     "description": "FF to enable Verify Step Template",
     "gaStartDate": "2025-10-03",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
     "flagKey": "CV_UI_HEALTHSOURCE_SERVICE_INSTANCE_PREVIEW",
     "description": "FF to fetch and display Service Instance Identifiers for Health Sources",
     "gaStartDate": "2025-10-07",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CDS_ADD_STAGES_PREFIX_TO_EXECUTION_INPUT_EXPRESSIONS",
+    "flagKey": "ADD_STAGES_PREFIX_TO_EXECUTION_INPUT_EXPRESSIONS",
     "description": "FF to support execution time inputs for single service propagation, without looping strategy configured at stage level",
     "gaStartDate": "2025-10-08",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CDS_HELM_STEP_COMMAND_FLAGS",
-    "description": "Enables support for specifying command flags at the Helm step level.",
-    "gaStartDate": "2025-10-09",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_K8S_NOT_ADD_TRAFFIC_ROUTING_TO_CANARY_WORKLOAD",
-    "description": "The traffic routing resources will not be added to the canary workload.",
-    "gaStartDate": "2025-10-09",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "CDS_SETTINGS_ACCORDION",
+    "flagKey": "SETTINGS_ACCORDION",
     "description": "This will add popover for settings in the Left navigation",
     "gaStartDate": "2025-10-13",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "PIPE_REFERENCED_TEMPLATES",
+    "flagKey": "REFERENCED_TEMPLATES",
     "description": "This will add a referenced/unreferenced tag to the templates listing card and list view.",
     "gaStartDate": "2025-10-13",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
     "flagKey": "CVNG_TEMPLATE_MONITORED_SERVICE",
     "description": "FF to allow creating new Monitored Service Template",
     "gaStartDate": "2025-10-14",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CDS_GITOPS_ENABLE_UI_CLUSTER_DETAIL_UX",
-    "description": "Flag to enable new cluster details page UX",
-    "gaStartDate": "2025-10-13",
-    "module": "GitOps"
-  },
-  {
-    "flagKey": "GITOPS_FILTER_PANE_ENABLED",
-    "description": "Flag to enable new GitOps filter panel experience",
-    "gaStartDate": "2025-10-17",
-    "module": "GitOps"
-  },
-  {
-    "flagKey": "PIPE_REMOVE_AMBIANCE_POPULATION_IN_NODE_EXECUTION",
+    "flagKey": "REMOVE_AMBIANCE_POPULATION_IN_NODE_EXECUTION",
     "description": "FF to use remove ambiance population in nodeExecution collection",
     "gaStartDate": "2025-10-27",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PIPE_NOTIFICATION_TEMPLATE_INPUT_VARIABLE_PROMPT_UI",
+    "flagKey": "NOTIFICATION_TEMPLATE_INPUT_VARIABLE_PROMPT_UI",
     "description": "FF to prompt users to fill in unresolved input variables and reconfiguring pipeline-level notification rule templates.",
     "gaStartDate": "2025-10-27",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "PIPE_ENABLE_BARRIER_STEPS_SETUP_OPTIMIZATION",
+    "flagKey": "ENABLE_BARRIER_STEPS_SETUP_OPTIMIZATION",
     "description": "This optimization makes barrier steps avoid race conditions and unecessary locks",
     "gaStartDate": "2025-10-27",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PIE_FLEXIBLE_TEMPLATES",
+    "flagKey": "FLEXIBLE_TEMPLATES",
     "description": "Added support for flexible templates",
     "gaStartDate": "2025-10-27",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PIE_FLEXIBLE_TEMPLATES_PHASE2",
+    "flagKey": "FLEXIBLE_TEMPLATES_PHASE2",
     "description": "FF for UI to show resolved templates in preview template as read only mode.",
     "gaStartDate": "2025-10-27",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PIPE_USE_STAGE_EXECUTION_ID_PROJECTION_FROM_AMBIANCE",
+    "flagKey": "USE_STAGE_EXECUTION_ID_PROJECTION_FROM_AMBIANCE",
     "description": "Use stageExecutionId projection while getting ambiance from nodeExecution",
     "gaStartDate": "2025-10-27",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PIPE_FIND_ALL_TERMINAL_CHILDREN_OPTIMIZATION",
+    "flagKey": "FIND_ALL_TERMINAL_CHILDREN_OPTIMIZATION",
     "description": "This optimization delegates graph lookup to mongodb on NodeExecutionsCache#findAllChildrenWithStatusInAndWithoutOldRetries",
     "gaStartDate": "2025-10-27",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PIPE_ENABLE_TRIGGER_FAILED_NOTIFICATION",
+    "flagKey": "ENABLE_TRIGGER_FAILED_NOTIFICATION",
     "description": "FF to enabled notification when trigger fails",
     "gaStartDate": "2025-10-27",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PIPE_STORE_TEMPLATE_REFERENCE_SUMMARY_PER_EXECUTION",
+    "flagKey": "STORE_TEMPLATE_REFERENCE_SUMMARY_PER_EXECUTION",
     "description": "FF to start storing template id and version for pipeline/stage/step per execution",
     "gaStartDate": "2025-10-27",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "PIPE_ENABLE_MANUAL_STAGE_RUN",
+    "flagKey": "ENABLE_MANUAL_STAGE_RUN",
     "description": "FF to enable running a stage manually",
     "gaStartDate": "2025-10-27",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PIPE_USE_ORIGINAL_YAML_FOR_EXECUTION",
+    "flagKey": "USE_ORIGINAL_YAML_FOR_EXECUTION",
     "description": "Enable Rerun with Original Pipeline Yaml",
     "gaStartDate": "2025-10-27",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "PIPE_BULK_RECONCILIATION_PHASE2",
+    "flagKey": "BULK_RECONCILIATION_PHASE2",
     "description": "FF to enable bulk reconciliation for remote entities",
     "gaStartDate": "2025-10-27",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PIPE_BARRIERS_FOR_CHAINED_PIPELINES",
+    "flagKey": "BARRIERS_FOR_CHAINED_PIPELINES",
     "description": "Added support for Barriers for Chained Pipelines",
     "gaStartDate": "2025-10-27",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PIPE_SUPPORT_DELEGATE_EXPRESSIONS_FOR_PIPELINE_NOTIFICATIONS",
+    "flagKey": "SUPPORT_DELEGATE_EXPRESSIONS_FOR_PIPELINE_NOTIFICATIONS",
     "description": "Added support for Expressions Pipeline Notifications",
     "gaStartDate": "2025-10-27",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "PIPE_ADD_ORIGINAL_FAILED_CHILDREN_TO_OUTPUT",
+    "flagKey": "ADD_ORIGINAL_FAILED_CHILDREN_TO_OUTPUT",
     "description": "Included the original failed children in the failed children sweeping output to ensure correct execution of Stage Rollback.",
     "gaStartDate": "2025-10-27",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PIPE_DISABLE_PIPELINE_CHAINING_FOR_FREE_TIER",
+    "flagKey": "DISABLE_PIPELINE_CHAINING_FOR_FREE_TIER",
     "description": "FF to Validate License for Pipeline Chaining Feature",
     "gaStartDate": "2025-10-27",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PIPE_REVERT_DEPLOYMENT_TEMPLATE_FILTER_CREATION_ISSUE_FIX",
-    "description": "FF to disable fix for deployment template filter creation issue",
-    "gaStartDate": "2025-10-27",
-    "module": "Pipeline"
-  },
-  {
-    "flagKey": "PIPE_ENABLE_CD_DEVOPS_ESSENTIALS_RESTRICTION",
+    "flagKey": "ENABLE_CD_DEVOPS_ESSENTIALS_RESTRICTION",
     "description": "FF to enable CD Devops Essentials restrictions",
     "gaStartDate": "2025-10-27",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PIPE_BB_ONPREM_COMPARE_COMMITS_ISSUE_FIX",
+    "flagKey": "BB_ONPREM_COMPARE_COMMITS_ISSUE_FIX",
     "description": "FF to fix the compare commits API issue on BB onprem",
     "gaStartDate": "2025-10-27",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PIPE_DISABLE_PIPELINE_NOTIFICATIONS_ON_ROLLBACK",
-    "description": "FF to disable sending pipeline-level notifications for rollback executions",
-    "gaStartDate": "2025-10-27",
-    "module": "Pipeline"
-  },
-  {
-    "flagKey": "PIPE_SUPPORT_MULTIPLE_TIMEZONES_IN_CRON_TRIGGERS",
+    "flagKey": "SUPPORT_MULTIPLE_TIMEZONES_IN_CRON_TRIGGERS",
     "description": "FF to support scheduling cron triggers across multiple timezones",
     "gaStartDate": "2025-10-27",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CDS_INCLUDE_ALWAYS_USE_STABLE_VERSION_UI",
+    "flagKey": "INCLUDE_ALWAYS_USE_STABLE_VERSION_UI",
     "description": "Added Always use the stable version support to Template Bar for all template types",
     "gaStartDate": "2025-10-27",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CDS_SAVE_PIPELINE_OPA_RESPONSE_CODE_CHANGE",
+    "flagKey": "SAVE_PIPELINE_OPA_RESPONSE_CODE_CHANGE",
     "description": "FF to enable 4xx response code on pipeline save when OPA policy fails",
     "gaStartDate": "2025-10-27",
-    "module": "CDC"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PIE_RESTRICT_NEXT_OF_STARTING_NODE_IN_NODE_GRAPH",
+    "flagKey": "RESTRICT_NEXT_OF_STARTING_NODE_IN_NODE_GRAPH",
     "description": "FF to enable to not process next node of starting node in the graph",
     "gaStartDate": "2025-10-27",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PIE_GITX_OAUTH",
+    "flagKey": "GITX_OAUTH",
     "description": "Use users' oauth creds to fetch and commit in git",
     "gaStartDate": "2025-10-27",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "GITOPS_BULK_ACTIONS_ENABLED",
-    "description": "FF to enable bulk actions (sync/refresh) for GitOps",
-    "gaStartDate": "2025-10-22",
-    "module": "GitOps"
-  },
-  {
-    "flagKey": "PL_GCP_OIDC_AUTHENTICATION",
+    "flagKey": "GCP_OIDC_AUTHENTICATION",
     "description": "OpenID Connect (OIDC) support in Google Secret Manager, Google Cloud Platform (GCP) and Google Cloud Key Management Service (Cloud KMS connectors",
     "gaStartDate": "2025-10-29",
-    "module": "Platform"
+    "module": "Platform",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PL_APPROLE_CUSTOM_PATH",
+    "flagKey": "APPROLE_CUSTOM_PATH",
     "description": "Custom authentication path for AppRole authentication in HashiCorp Vault connector",
     "gaStartDate": "2025-10-29",
-    "module": "Platform"
+    "module": "Platform",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PL_CENTRAL_CERTIFICATES_MANAGEMENT",
+    "flagKey": "CENTRAL_CERTIFICATES_MANAGEMENT",
     "description": "Custom Certificate feature in Harness is behind this feature flag",
     "gaStartDate": "2025-10-29",
-    "module": "Platform"
+    "module": "Platform",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PL_SHOW_AUTO_UPGRADE_FOR_DOCKER_DELEGATE",
+    "flagKey": "SHOW_AUTO_UPGRADE_FOR_DOCKER_DELEGATE",
     "description": " Docker Delegate Upgrader is currently behind this feature flag",
     "gaStartDate": "2025-10-29",
-    "module": "Platform"
+    "module": "Platform",
+    "lifecycleState": "Limited GA"
   },
   {
     "flagKey": "CV_USE_SEPARATE_LE_TASK_TYPE_FOR_LOG_CLUSTERING",
     "description": "FF to use CV_LOG_CLUSTER task type for log clustering instead of LOG_CLUSTER",
     "gaStartDate": "2025-10-21",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PL_USE_IMPERSONATED_DELEGATE_LOGGING_TOKEN",
+    "flagKey": "USE_IMPERSONATED_DELEGATE_LOGGING_TOKEN",
     "description": "Enables usage of GSA for writing and reading logs from GCP",
     "gaStartDate": "2025-10-24",
-    "module": "Platform"
+    "module": "Platform",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CDS_GITOPS_STEP_DELEGATE_SELECTOR_PRECEDENCE",
+    "flagKey": "STEP_DELEGATE_SELECTOR_PRECEDENCE",
     "description": "Flag to follow delegate selector precedence in GitOps steps",
     "gaStartDate": "2025-10-31",
-    "module": "GitOps"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "GITOPS_APPSYNCS_ON_SERVICE_DASHBOARD",
-    "description": "FF to enable GitOps AppSyncs dashboards on Service Dashboard page",
-    "gaStartDate": "2025-11-05",
-    "module": "GitOps"
-  },
-  {
-    "flagKey": "STO_SONARQUBE_CODE_SMELLS",
+    "flagKey": "SONARQUBE_CODE_SMELLS",
     "description": "Enable proper severity mapping for Code Smells and Bug Smells from SonarQube instead of using info as the default severity",
     "gaStartDate": "2025-11-11",
-    "module": "Security Test Orchestration"
+    "module": "Security Testing Orchestration",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PL_CUSTOM_BANNERS",
+    "flagKey": "CUSTOM_BANNERS",
     "description": "Enable the Banners feature in Account Settings",
     "gaStartDate": "2025-11-27",
-    "module": "Platform"
+    "module": "Platform",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CDS_GITOPS_USE_BATCH_TASK_FOR_POD_LOGS",
-    "description": "Feature flag introduces a new faster mechanism for fetching pod logs for Gitops Application Pods in the resource view.",
-    "gaStartDate": "2025-12-02",
-    "module": "GitOps"
-  },
-  {
-    "flagKey": "CI_HOSTED_USE_GOOGLE_DNS",
+    "flagKey": "HOSTED_USE_GOOGLE_DNS",
     "description": "Enables google dns by default for Harness CI Hosted Builds.",
     "gaStartDate": "2025-12-02",
-    "module": "Continuous Integration"
+    "module": "Continuous Integration",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CI_ENABLE_PARALLEL_SECRET_RESOLUTION",
+    "flagKey": "ENABLE_PARALLEL_SECRET_RESOLUTION",
     "description": "Enable parallel secret resolution for faster initialization time in CI stages & Container step groups",
     "gaStartDate": "2026-01-20",
-    "module": "Continuous Integration"
+    "module": "Continuous Integration",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CDS_AWS_LAMBDA_ROUTING_CONFIG_ADDITION_DURING_ALIAS_UPDATE",
+    "flagKey": "AWS_LAMBDA_ROUTING_CONFIG_ADDITION_DURING_ALIAS_UPDATE",
     "description": "Enables support to modify subsequent updates to the alias `routingConfig` during alias update",
     "gaStartDate": "2026-01-30",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CDS_ASG_SKIP_INSTANCE_HEALTH_CHECK_BEFORE_INSTANCE_REFRESH",
+    "flagKey": "ASG_SKIP_INSTANCE_HEALTH_CHECK_BEFORE_INSTANCE_REFRESH",
     "description": "Enables skipping the ASG instance health check before instance refresh",
     "gaStartDate": "2026-02-04",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "PIE_GITXWEBHOOKS_RBAC_PERMISSIONS",
+    "flagKey": "GITXWEBHOOKS_RBAC_PERMISSIONS",
     "description": "FF to enable GitX Webhooks RBAC permissions",
     "gaStartDate": "2026-02-05",
-    "module": "Pipeline"
+    "module": "Continuous Integration",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "PIPE_AUDIT_GITX_WEBHOOKS",
+    "flagKey": "AUDIT_GITX_WEBHOOKS",
     "description": "FF to support GitX webhook audit events",
     "gaStartDate": "2026-02-05",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CDS_GITOPS_ENABLE_ENV_PROPAGATION_UX",
-    "description": "Enables the environment propagation UX in GitOps pipeline stages",
-    "gaStartDate": "2026-02-11",
-    "module": "Continuous Delivery"
-  },
-  {
-    "flagKey": "GITOPS_APPLICATIONSET_FIRST_CLASS_SUPPORT",
-    "description": "Enables ApplicationSet first class support.",
-    "gaStartDate": "2026-02-11",
-    "module": "GitOps"
-  },
-  {
-    "flagKey": "CDS_GITOPS_ENABLE_ROLLOUTS_PIPELINE_UX",
+    "flagKey": "ENABLE_ROLLOUTS_PIPELINE_UX",
     "description": "Enables GitOps Rollout step and Auto Promote Rollout dropdown in GitOps Sync Step",
     "gaStartDate": "2026-02-19",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "STO_STEP_PALETTE_SHIFTLEFT",
+    "flagKey": "STEP_PALETTE_SHIFTLEFT",
     "description": "Enables Harness SAST and SCA scanners in the step palette for security tests.",
     "gaStartDate": "2026-02-24",
-    "module": "Security Test Orchestration"
+    "module": "Security Testing Orchestration",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "STO_FETCH_DATAFLOW",
+    "flagKey": "FETCH_DATAFLOW",
     "description": "Enables fetching dataflow information for security issue occurrences to provide better visibility into vulnerability paths for Harness SAST and SCA scanners.",
     "gaStartDate": "2026-02-24",
-    "module": "Security Test Orchestration"
+    "module": "Security Testing Orchestration",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "STO_ISSUE_EPSS",
+    "flagKey": "ISSUE_EPSS",
     "description": "Enables EPSS scoring for CVE-associated security issues, allowing prioritization based on the likelihood of exploitation.",
     "gaStartDate": "2026-02-25",
-    "module": "Security Test Orchestration"
+    "module": "Security Testing Orchestration",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CODE_ENABLE_MFE_V2",
+    "flagKey": "ENABLE_MFE_V2",
     "description": "Enables new revamped UI for harness code.",
     "gaStartDate": "2026-02-25",
-    "module": "Harness Code"
+    "module": "Harness Code",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "FME_ENABLE_PIPELINES",
+    "flagKey": "ENABLE_PIPELINES",
     "description": "Enable FME steps such as Flag create, update, Flag treatment updates etc.",
     "gaStartDate": "2026-03-02",
-    "module": "Feature Management & Experimentation"
+    "module": "Feature Management & Experimentation",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CDS_GITOPS_RETURN_NOT_FOUND_FOR_MISSING_AGENT",
-    "description": "GitOps APIs return HTTP 404(Not Found) in case of missing agent",
-    "gaStartDate": "2026-03-02",
-    "module": "GitOps"
-  },
-  {
-    "flagKey": "CI_GLOBAL_QUEUEING_ENABLED",
+    "flagKey": "GLOBAL_QUEUEING_ENABLED",
     "description": "Enables global queueing for hosted build stages, allowing them to be automatically queued and executed once infrastructure resources become available.",
     "gaStartDate": "2026-03-04",
-    "module": "Continuous Integration"
+    "module": "Continuous Integration",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "FME_FLAG_SET_TARGETING_RULES",
+    "flagKey": "FLAG_SET_TARGETING_RULES",
     "description": "Enables a FME step to configure flag targeting rules.",
     "gaStartDate": "2026-03-06",
-    "module": "Feature Management & Experimentation"
+    "module": "Feature Management & Experimentation",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "FME_FLAG_ARCHIVE",
+    "flagKey": "FLAG_ARCHIVE",
     "description": "Enables a FME step to support archival of a feature flag.",
     "gaStartDate": "2026-03-06",
-    "module": "Feature Management & Experimentation"
+    "module": "Feature Management & Experimentation",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "FME_OPA_POLICY",
+    "flagKey": "OPA_POLICY",
     "description": "Support for policies with FME feature flags and feature flag definitions",
     "gaStartDate": "2026-03-06",
-    "module": "Feature Management & Experimentation"
+    "module": "Feature Management & Experimentation",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "FME_RBAC_ARCHIVE_FF",
+    "flagKey": "RBAC_ARCHIVE_FF",
     "description": "Enables granular role-based access control for FME Feature Flag archive and unarchive actions.",
     "gaStartDate": "2026-03-09",
-    "module": "Feature Management & Experimentation"
+    "module": "Feature Management & Experimentation",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "STO_CONTAINERLESS_INGESTION",
+    "flagKey": "CONTAINERLESS_INGESTION",
     "description": "Support for Delegate 2.0 for all STO steps running in Ingestion mode on Linux and MacOS.",
     "gaStartDate": "2026-03-10",
-    "module": "Security Test Orchestration"
+    "module": "Security Testing Orchestration",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "STO_ISSUE_OVERRIDE",
+    "flagKey": "ISSUE_OVERRIDE",
     "description": "Enables manual override of security issue severity for more accurate prioritization based on issue criticality, exploit exposure, compensating controls, and production impact.",
     "gaStartDate": "2026-03-10",
-    "module": "Security Test Orchestration"
+    "module": "Security Testing Orchestration",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CDS_K8S_TRAFFIC_ROUTING_ON_CANARY_DELETE",
+    "flagKey": "K8S_TRAFFIC_ROUTING_ON_CANARY_DELETE",
     "description": "Traffic will be automatically shifted back to the stable version when a canary deployment is deleted.",
     "gaStartDate": "2026-03-12",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CDS_K8S_NOT_ADD_TRAFFIC_ROUTING_TO_CANARY_WORKLOAD",
+    "flagKey": "K8S_NOT_ADD_TRAFFIC_ROUTING_TO_CANARY_WORKLOAD",
     "description": "Removing the traffic configuration from the canary workload to prevent virtual services from being deleted during rollback.",
     "gaStartDate": "2026-03-12",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "SEI_2_ENABLE_PRODUCTIVITY_DEFAULT_IN_TEAM_SETTINGS",
+    "flagKey": "ENABLE_PRODUCTIVITY_CONFIG_IN_TEAM_SETTINGS",
     "description": "Enables default Productivity configuration on the Issue Management tab in Team Settings.",
     "gaStartDate": "2026-03-18",
-    "module": "AI DLC Insights"
+    "module": "AI DLC Insights",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "SEI_2_SPRINT_INSIGHTS",
+    "flagKey": "SPRINT_INSIGHTS",
     "description": "Enables Sprint Insights in SEI 2.0.",
     "gaStartDate": "2026-03-18",
-    "module": "AI DLC Insights"
+    "module": "AI DLC Insights",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "SEI_ENABLE_SCM_MULTI_SELECT",
-    "description": "Enables support for selecting multiple source code management (SCM) integrations per team on the Integrations tab in Team Settings.",
-    "gaStartDate": "2026-03-18",
-    "module": "AI DLC Insights"
-  },
-  {
-    "flagKey": "SEI_ENABLE_SHARED_DEVELOPERS",
+    "flagKey": "ENABLE_SHARED_DEVELOPERS",
     "description": "Enables shared developer identity mapping across multiple integrations on the Developers tab in Team Settings.",
     "gaStartDate": "2026-03-18",
-    "module": "AI DLC Insights"
+    "module": "AI DLC Insights",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "SEI_2_ENABLE_CODE_REWORK",
-    "description": "Enables Code Rework Insights in SEI 2.0.",
-    "gaStartDate": "2026-03-18",
-    "module": "AI DLC Insights"
-  },
-  {
-    "flagKey": "CDS_GITOPS_URR_FILE_UPDATE_ENHANCEMENT",
+    "flagKey": "URR_FILE_UPDATE_ENHANCEMENT",
     "description": "Feature to enable file update enhancements for GitOps Update release repo step",
     "gaStartDate": "2026-03-18",
-    "module": "GitOps"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "STO_EXEMPTION_FILTERS",
-    "description": " Added filters to the Exemptions page to narrow down issues based on Issue Type, Target, Target Type, Severity, and many more.",
+    "flagKey": "EXEMPTION_FILTERS",
+    "description": "Added filters to the Exemptions page to narrow down issues based on Issue Type, Target, Target Type, Severity, and many more.",
     "gaStartDate": "2026-03-19",
-    "module": "Security Test Orchestration"
+    "module": "Security Testing Orchestration",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CI_SIMPLIFY_POOL_YAML",
+    "flagKey": "SIMPLIFY_POOL_YAML",
     "description": "Simplifies pool YAML configuration in Harness-hosted builds, reducing configuration complexity for build infrastructure setup.",
     "gaStartDate": "2026-03-19",
-    "module": "Continuous Integration"
+    "module": "Continuous Integration",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CDS_NG_SECRET_RUNTIME_USAGE_EVENT_GENERATION",
+    "flagKey": "NG_SECRET_RUNTIME_USAGE_EVENT_GENERATION",
     "description": "FF to enable secret runtime usage event generation for ng",
     "gaStartDate": "2026-03-30",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CDS_PRINT_K8S_RESOURCES_ONE_PER_LINE",
+    "flagKey": "PRINT_K8S_RESOURCES_ONE_PER_LINE",
     "description": "Prints each Kubernetes resource on a separate line in deployment logs for improved readability.",
     "gaStartDate": "2026-03-30",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CDS_GOOGLE_MIG",
+    "flagKey": "GOOGLE_MIG",
     "description": "Adds support for Google Cloud Managed Instance Groups in deployment workflows.",
     "gaStartDate": "2026-03-30",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CDS_ECS_SCALE_STEP",
+    "flagKey": "ECS_SCALE_STEP",
     "description": "FF to enable ECS scale step",
     "gaStartDate": "2026-03-30",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CDS_INVALID_PT_TASK_INSTANCE_CLEAN_UP",
+    "flagKey": "INVALID_PT_TASK_INSTANCE_CLEAN_UP",
     "description": "Enables cleanup of invalid perpetual task instances to improve system performance.",
     "gaStartDate": "2026-04-01",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CDS_SERVICE_DASHBOARD_SKIP_DEPLOYMENT_TYPE_FROM_TIMESCALE",
+    "flagKey": "SERVICE_DASHBOARD_SKIP_DEPLOYMENT_TYPE_FROM_TIMESCALE",
     "description": "Optimizes service dashboard performance by skipping certain deployment types from database queries.",
     "gaStartDate": "2026-04-01",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PIPE_DYNAMIC_PIPELINES_EXECUTION",
+    "flagKey": "DYNAMIC_PIPELINES_EXECUTION",
     "description": "Enable the Dynamic executions for the Pipelines. This will allow running a pipeline-yaml without having to save it by passing the YAML as the payload in pipeline execute API.",
     "gaStartDate": "2026-04-07",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CDS_REUSE_CHART_MUSEUM_SERVER",
+    "flagKey": "REUSE_CHART_MUSEUM_SERVER",
     "description": "Improves Helm chart deployment performance by reusing ChartMuseum server instances for S3-backed repositories.",
     "gaStartDate": "2026-04-08",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CDS_USE_CACHED_REPOSITORY_SUFFIX",
+    "flagKey": "USE_CACHED_REPOSITORY_SUFFIX",
     "description": "Enables automatic fallback to cached Artifactory repositories when no artifacts are found in the primary repository.",
     "gaStartDate": "2026-04-08",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "SCS_HAR_ARTIFACT_SIGNING_VERIFICATION",
+    "flagKey": "HAR_ARTIFACT_SIGNING_VERIFICATION",
     "description": "Enables Artifact Registry (AR) integration for artifact signing and verification steps",
     "gaStartDate": "2026-04-10",
-    "module": "Supply Chain Security"
+    "module": "Supply Chain Security",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CDS_CV_DYNATRACE_CANARY_ENABLED",
+    "flagKey": "CV_DYNATRACE_CANARY_ENABLED",
     "description": "Enable dimension filters and service instance selection to support Canary Verification in Dynatrace",
     "gaStartDate": "2026-04-16",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CDS_EXECUTION_LIST_CARD_VIEW",
+    "flagKey": "EXECUTION_LIST_CARD_VIEW",
     "description": "The Service and Environment columns have been replaced by an Update Summary column that shows service-to-environment mappings for CD stages and schema-to-instance mappings for Database DevOps stages.",
     "gaStartDate": "2026-04-17",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "FME_SEGMENT_CREATE",
+    "flagKey": "SEGMENT_CREATE",
     "description": "Enables a FME pipeline step to create segments (standard and rule-based) with configurable traffic type, owners, and description.",
     "gaStartDate": "2026-04-15",
-    "module": "Feature Management & Experimentation"
+    "module": "Feature Management & Experimentation",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "FME_SEGMENT_UPDATE",
+    "flagKey": "SEGMENT_UPDATE",
     "description": "Enables a FME pipeline step to update segment metadata such as description and owners.",
     "gaStartDate": "2026-04-15",
-    "module": "Feature Management & Experimentation"
+    "module": "Feature Management & Experimentation",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "FME_SEGMENT_DELETE",
+    "flagKey": "SEGMENT_DELETE",
     "description": "Enables a FME pipeline step to delete segments via Harness pipelines.",
     "gaStartDate": "2026-04-15",
-    "module": "Feature Management & Experimentation"
+    "module": "Feature Management & Experimentation",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "FME_FLAGSET_CREATE",
+    "flagKey": "FLAGSET_CREATE",
     "description": "Enables a FME pipeline step to create flagsets for organizing feature flags.",
     "gaStartDate": "2026-04-15",
-    "module": "Feature Management & Experimentation"
+    "module": "Feature Management & Experimentation",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "FME_FLAGSET_DELETE",
+    "flagKey": "FLAGSET_DELETE",
     "description": "Enables a FME pipeline step to delete flagsets via Harness pipelines.",
     "gaStartDate": "2026-04-15",
-    "module": "Feature Management & Experimentation"
+    "module": "Feature Management & Experimentation",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "FME_FLAG_ADD_REMOVE_FLAGSETS",
+    "flagKey": "FLAG_ADD_REMOVE_FLAGSETS",
     "description": "Enables a FME pipeline step to add or remove flags from flagsets.",
     "gaStartDate": "2026-04-15",
-    "module": "Feature Management & Experimentation"
+    "module": "Feature Management & Experimentation",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "FME_SEGMENT_ADD_REMOVE_TARGETS",
+    "flagKey": "SEGMENT_ADD_REMOVE_TARGETS",
     "description": "Enables a FME pipeline step to add or remove target keys from segments in a specific environment.",
     "gaStartDate": "2026-04-15",
-    "module": "Feature Management & Experimentation"
+    "module": "Feature Management & Experimentation",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "FME_SEGMENT_SET_TARGETING_RULES",
+    "flagKey": "SEGMENT_SET_TARGETING_RULES",
     "description": "Enables a FME pipeline step to configure targeting rules on rule-based segments.",
     "gaStartDate": "2026-04-15",
-    "module": "Feature Management & Experimentation"
+    "module": "Feature Management & Experimentation",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "FME_FLAG_SET_IMPRESSION_TRACKING",
+    "flagKey": "FLAG_SET_IMPRESSION_TRACKING",
     "description": "Enables a FME pipeline step to enable or disable impression tracking on feature flags.",
     "gaStartDate": "2026-04-15",
-    "module": "Feature Management & Experimentation"
+    "module": "Feature Management & Experimentation",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "SCS_AUTO_PR_CONFIGURATION",
+    "flagKey": "AUTO_PR_CONFIGURATION",
     "description": "Enables configuration of automated pull request workflows in SCS, allowing teams to define and manage Auto PR behavior for remediation and policy-driven updates.",
     "gaStartDate": "2026-04-17",
-    "module": "Supply Chain Security"
+    "module": "Supply Chain Security",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "SCS_AUTO_REMEDIATION",
+    "flagKey": "AUTO_REMEDIATION",
     "description": "Controls visibility of navigation options and enables manual pull request (PR) remediation workflows in Supply Chain Security.",
     "gaStartDate": "2026-04-17",
-    "module": "Supply Chain Security"
+    "module": "Supply Chain Security",
+    "lifecycleState": "Limited GA"
   },
   {
     "flagKey": "OPA_IMPORT_FROM_GIT",
     "description": "Enables users to import OPA policies directly from Git.",
     "gaStartDate": "2026-04-21",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "SCS_SLSA_NON_CONTAINER",
+    "flagKey": "SLSA_NON_CONTAINER",
     "description": "Enables SLSA provenance generation for non-containerized artifacts like Helm charts, manifest files, JARs, WARs, etc.",
     "gaStartDate": "2026-04-22",
-    "module": "Supply Chain Security"
+    "module": "Supply Chain Security",
+    "lifecycleState": "Limited GA"
   },
   {
     "flagKey": "CV_ENABLE_DATA_RETENTION_FROM_PIPELINE",
     "description": "Pipeline-driven data retention",
     "gaStartDate": "2026-04-21",
-    "module": "Service Reliability Management"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CDS_CV_DYNATRACE_GRAIL_LOGS_ENABLED",
+    "flagKey": "CV_DYNATRACE_GRAIL_LOGS_ENABLED",
     "description": "Delegate compatibility for Dynatrace Grail logs health source",
     "gaStartDate": "2026-04-21",
-    "module": "Service Reliability Management"
+    "module": "Service Reliability Management",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CDS_CV_CLOUDWATCH_LOGS_ENABLED",
+    "flagKey": "CV_CLOUDWATCH_LOGS_ENABLED",
     "description": "Delegate compatibility for CloudWatch Logs health source",
     "gaStartDate": "2026-04-21",
-    "module": "Service Reliability Management"
+    "module": "Service Reliability Management",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CDS_CV_INPUT_OUTPUT_VARIABLES_ENABLED",
+    "flagKey": "CV_INPUT_OUTPUT_VARIABLES_ENABLED",
     "description": "Verify step I/O variables in CV config handling",
     "gaStartDate": "2026-04-21",
-    "module": "Service Reliability Management"
+    "module": "Service Reliability Management",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PIPE_FAIL_USER_MARKED_FAIL_ALL_INTERRUPT_WITHOUT_LEAF_NODES",
+    "flagKey": "FAIL_USER_MARKED_FAIL_ALL_INTERRUPT_WITHOUT_LEAF_NODES",
     "description": "Allows users to mark a pipeline as failed even when no steps are actively running, useful for handling stuck or edge-case executions.",
     "gaStartDate": "2026-04-25",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PIPE_PIPELINE_RESUME_NOTIFICATION",
+    "flagKey": "PIPELINE_RESUME_NOTIFICATION",
     "description": "Sends notifications when a pipeline resumes after user approval, manual input, or intervention actions.",
     "gaStartDate": "2026-04-25",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PIPE_REMOVE_PROCESSED_NOTIFY_IDS_FROM_WAIT_INSTANCES",
+    "flagKey": "REMOVE_PROCESSED_NOTIFY_IDS_FROM_WAIT_INSTANCES",
     "description": "Improves pipeline execution performance by optimizing how barrier and config-file steps handle completed callbacks.",
     "gaStartDate": "2026-04-25",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CDS_TERRAFORM_HIDE_SENSITIVE_OUTPUTS",
+    "flagKey": "TERRAFORM_HIDE_SENSITIVE_OUTPUTS",
     "description": "Mask Terraform sensitive step outputs",
     "gaStartDate": "2026-04-27",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "SCS_KEYLESS_SIGNING",
+    "flagKey": "KEYLESS_SIGNING",
     "description": "Enables keyless signing and verification for artifacts, SBOMs, and SLSA provenance using identity-based trust instead of long-lived signing keys.",
     "gaStartDate": "2026-04-23",
-    "module": "Supply Chain Security"
+    "module": "Supply Chain Security",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "PIPE_ENABLE_INPUT_SET_FILTER",
+    "flagKey": "ENABLE_INPUT_SET_FILTER",
     "description": "Enables Input Sets filter in execution listing page.",
     "gaStartDate": "2026-04-30",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CDS_CV_CUSTOM_DATACOLLECTION_DURATION",
+    "flagKey": "CV_CUSTOM_DATACOLLECTION_DURATION",
     "description": "Custom data collection duration for verify step",
     "gaStartDate": "2026-04-29",
-    "module": "Service Reliability Management"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
     "flagKey": "PERSIST_MONITORED_SERVICE_TEMPLATE_STEP",
     "description": "Persist MS created during template verify step",
     "gaStartDate": "2026-04-29",
-    "module": "Service Reliability Management"
+    "module": "Service Reliability Management",
+    "lifecycleState": "Limited GA"
   },
   {
     "flagKey": "CVNG_MONITORED_SERVICE_DEMO",
     "description": "Marks CV configs as demo in template flows",
     "gaStartDate": "2026-04-29",
-    "module": "Service Reliability Management"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "SEI_2_ENABLE_AI_SUMMARY",
+    "flagKey": "ENABLE_AI_SUMMARY",
     "description": "Enables AI-generated summaries across insights in SEI 2.0, providing high-level, contextual explanations of metric trends and patterns.",
     "gaStartDate": "2026-05-04",
-    "module": "AI DLC Insights"
+    "module": "AI DLC Insights",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "SEI_2_ENABLE_AI_SUMMARY_FOR_EFFICIENCY",
+    "flagKey": "ENABLE_AI_SUMMARY_FOR_EFFICIENCY",
     "description": "Activates AI summaries specifically for efficiency-related insights (DORA only) helping users quickly understand bottlenecks and optimization opportunities.",
     "gaStartDate": "2026-05-04",
-    "module": "AI DLC Insights"
+    "module": "AI DLC Insights",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "SEI_2_ENABLE_AI_SUMMARY_FOR_PRODUCTIVITY",
+    "flagKey": "ENABLE_AI_SUMMARY_FOR_PRODUCTIVITY",
     "description": "Enables AI-driven summaries for productivity metrics, highlighting developer output trends and changes over time.",
     "gaStartDate": "2026-05-04",
-    "module": "AI DLC Insights"
+    "module": "AI DLC Insights",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "SEI_2_ENABLE_AI_SUMMARY_FOR_BUSINESS_ALIGNMENT",
+    "flagKey": "ENABLE_AI_SUMMARY_FOR_BUSINESS_ALIGNMENT",
     "description": "Provides AI summaries for Business Alignment insights, translating engineering metrics into business impact and R&D alignment.",
     "gaStartDate": "2026-05-04",
-    "module": "AI DLC Insights"
+    "module": "AI DLC Insights",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "SEI_2_AGENTIC_AI_SUMMARY",
+    "flagKey": "AGENTIC_AI_SUMMARY",
     "description": "Enables agentic AI-generated summaries that go beyond static explanations by incorporating contextual reasoning and dynamic interpretation across multiple signals.",
     "gaStartDate": "2026-05-04",
-    "module": "AI DLC Insights"
+    "module": "AI DLC Insights",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "SEI_ENABLE_SERVICENOW",
+    "flagKey": "ENABLE_SERVICENOW",
     "description": "Enables ServiceNow integration in SEI, allowing ingestion and analysis of ITSM data.",
     "gaStartDate": "2026-05-04",
-    "module": "AI DLC Insights"
+    "module": "AI DLC Insights",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "SEI_SERVICE_NOW_ADVANCE_CONFIGURATION_FIELD",
+    "flagKey": "SERVICE_NOW_ADVANCE_CONFIGURATION_FIELD",
     "description": "Unlocks advanced configuration options for ServiceNow integrations, supporting custom field mappings and extended data control.",
     "gaStartDate": "2026-05-04",
-    "module": "AI DLC Insights"
+    "module": "AI DLC Insights",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "SEI_2_SNOW_ENABLED",
+    "flagKey": "SNOW_ENABLED",
     "description": "Enables ServiceNow as a supported ITSM provider within the SEI 2.0 experience.",
     "gaStartDate": "2026-05-04",
-    "module": "AI DLC Insights"
+    "module": "AI DLC Insights",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "SEI_MERGE_TEAM_FILTERS",
+    "flagKey": "MERGE_TEAM_FILTERS",
     "description": "Introduces optimized team filtering to improve performance when querying org-wide data across large org trees in SEI 2.0.",
     "gaStartDate": "2026-05-04",
-    "module": "AI DLC Insights"
+    "module": "AI DLC Insights",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "SEI_PANORAMA_CUSTOM_DATE_RANGE_PICKER",
+    "flagKey": "PANORAMA_CUSTOM_DATE_RANGE_PICKER",
     "description": "Enables custom date range selection in SEI 2.0 dashboards, allowing users to analyze insights over flexible time windows beyond predefined ranges.",
     "gaStartDate": "2026-05-04",
-    "module": "AI DLC Insights"
+    "module": "AI DLC Insights",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CDS_ENABLE_INFRA_ENV_OPA_EVAL_ON_RUNTIME_CONTEXT",
+    "flagKey": "ENABLE_INFRA_ENV_OPA_EVAL_ON_RUNTIME_CONTEXT",
     "description": "Enable support for evaluating infrastructure and environment context on run",
     "gaStartDate": "2026-05-04",
-    "module": "Continuous Delivery"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "FME_OPA_POLICY_ENVIRONMENT",
+    "flagKey": "OPA_POLICY_ENVIRONMENT",
     "description": "Extends OPA policy support to FME environments, allowing authoring of policies that fire on environment create, update, and delete operations.",
     "gaStartDate": "2026-05-05",
-    "module": "Feature Management & Experimentation"
+    "module": "Feature Management & Experimentation",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "FME_OPA_POLICY_SEGMENT",
+    "flagKey": "OPA_POLICY_SEGMENT",
     "description": "Extends OPA policy support to FME segments, allowing authoring of policies that fire on segment create, update, and delete operations.",
     "gaStartDate": "2026-05-05",
-    "module": "Feature Management & Experimentation"
+    "module": "Feature Management & Experimentation",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "FME_OPA_POLICY_SEGMENT_DEFINITION",
+    "flagKey": "OPA_POLICY_SEGMENT_DEFINITION",
     "description": "Extends OPA policy support to FME segment definitions, allowing authoring of policies that fire on segment definition create, update, and delete operations, including targeting rules and target key removals.",
     "gaStartDate": "2026-05-05",
-    "module": "Feature Management & Experimentation"
+    "module": "Feature Management & Experimentation",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "SRM_ENABLE_BASELINE_BASED_VERIFICATION",
+    "flagKey": "ENABLE_BASELINE_BASED_VERIFICATION",
     "description": "Baseline-based path in deployment log analysis",
     "gaStartDate": "2026-05-11",
-    "module": "Service Reliability Management"
+    "module": "Service Reliability Management",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "SRM_LOG_FEEDBACK_ENABLE_UI",
+    "flagKey": "LOG_FEEDBACK_ENABLE_UI",
     "description": "Log feedback behavior in deployment log analysis state flow",
     "gaStartDate": "2026-05-11",
-    "module": "Service Reliability Management"
+    "module": "Service Reliability Management",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "SRM_MONITORED_SERVICE_VALIDATION",
+    "flagKey": "MONITORED_SERVICE_VALIDATION",
     "description": "Extra validation of service/env/connector refs on MS create/update",
     "gaStartDate": "2026-05-11",
-    "module": "Service Reliability Management"
+    "module": "Service Reliability Management",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "SSCA_LICENSE_FAMILY_CLASSIFICATION",
+    "flagKey": "LICENSE_FAMILY_CLASSIFICATION",
     "description": "Enables license family classification in SBOMs to classify open-source licenses by their family type for better license compliance management.",
     "gaStartDate": "2026-05-11",
-    "module": "Supply Chain Security"
+    "module": "Software Supply Chain Assurance",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "IDP_SONARQUBE_INTEGRATION",
+    "flagKey": "SONARQUBE_INTEGRATION",
     "description": "Enables the SonarQube integration in Harness IDP, allowing auto-discovery of SonarQube projects and enriching the Software Catalog with code quality metrics, security hotspots, quality gate status, and issue analytics.",
     "gaStartDate": "2026-05-12",
-    "module": "Internal Developer Portal"
+    "module": "Internal Developer Portal",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "IDP_AGENTLESS_AIRBYTE_EXECUTIONS",
+    "flagKey": "AGENTLESS_AIRBYTE_EXECUTIONS",
     "description": "Enables agentless workflow execution for Airbyte in Harness IDP",
     "gaStartDate": "2026-05-12",
-    "module": "Internal Developer Portal"
+    "module": "Internal Developer Portal",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "PIPE_ENABLE_GITHUB_ENTERPRISE_PROVIDER_FLOW",
+    "flagKey": "ENABLE_GITHUB_ENTERPRISE_PROVIDER_FLOW",
     "description": "Enables the GitHub Enterprise provider configuration flow in UI, allowing users to configure their GitHub Enterprise Server instance with OAuth credentials for Git sync and repository access.",
     "gaStartDate": "2026-05-12",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CI_CPU_MEMORY_INSIGHTS",
+    "flagKey": "CPU_MEMORY_INSIGHTS",
     "description": "Enables support in UI to view cpu and memory metrics for pipeline running in Harness cloud",
     "gaStartDate": "2026-05-22",
-    "module": "Continuous Integration"
+    "module": "Continuous Integration",
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "SCS_MALICIOUS_PACKAGES_SUPPORT",
+    "flagKey": "MALICIOUS_PACKAGES_SUPPORT",
     "description": "Enables detection of malicious packages as OSS risks within SBOMs",
     "gaStartDate": "2026-05-26",
-    "module": "Supply Chain Security"
+    "module": "Supply Chain Security",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "SCS_BITBUCKET_RSPM",
+    "flagKey": "BITBUCKET_RSPM",
     "description": "Enables support for onboarding Bitbucket repositories in Repository Security Posture Management (RSPM)",
     "gaStartDate": "2026-05-26",
-    "module": "Supply Chain Security"
+    "module": "Supply Chain Security",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "OPA_GITX_PARITY",
+    "flagKey": "GITX_PARITY",
     "description": "Enables enhanced Git Experience UI features for OPA policies.",
     "gaStartDate": "2026-06-04",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "OPA_GITX_DIRECT_FETCH",
+    "flagKey": "GITX_DIRECT_FETCH",
     "description": "Enables direct batch fetch of policy content from Git during evaluation, improving performance and error reporting.",
     "gaStartDate": "2026-06-04",
-    "module": "Pipeline"
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   }
 ]

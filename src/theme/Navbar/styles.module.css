@@ -82,8 +82,9 @@
   position: absolute;
   top: 100%;
   left: 0;
-  min-width: 340px;
+  min-width: 180px;
   max-height: 70vh;
+  width: fit-content;
   overflow-y: auto;
   background: #fff;
   border: 1px solid #e5e7eb;

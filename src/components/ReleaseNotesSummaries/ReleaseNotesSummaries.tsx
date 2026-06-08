@@ -48,6 +48,12 @@ export default function ReleaseNotesSummaries() {
               Please review the full module release notes by selecting a module in the sidebar, or using
               the <strong>View full release notes</strong> links beside each module summary.
             </p>
+            <p>
+              Looking for available features rather than recent changes? You can explore Beta and Limited GA features across Harness modules on the {' '}
+              <Link href={`${baseUrl}release-notes/features`}>
+                Feature Availability
+              </Link>{' '} page.
+            </p>
           </Admonition>
 
           {hasCategories ? (

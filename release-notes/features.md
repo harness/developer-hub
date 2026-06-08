@@ -1,10 +1,12 @@
 ---
 hide_table_of_contents: true
-hide_title: true
-title: All Feature Flags GA Timeline
+hide_title: false
+title: New Feature Availability
 hidden: true
 sidebar_position: 100
-date: 2025-09-13T10:00
+date: 2026-05-22T10:00
+redirect_from:
+  - /release-notes/feature-flags-ga-timeline
 ---
 
 import FeatureFlagsLanding from '../src/components/FeatureFlagGA/FeatureFlagsLanding';
