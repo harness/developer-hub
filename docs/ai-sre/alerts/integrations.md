@@ -88,8 +88,8 @@ Example alert payload:
     "alarmName": "HighCPUAlarm",
     "state": {
       "value": "ALARM",
-      "reason": "Threshold Crossed: 1 datapoint [99.5 (16/03/25 14:55:00)] was greater than the threshold (90.0).",
-      "reasonData": "{\"version\":\"1.0\",\"queryDate\":\"2025-03-16T15:00:00.000+0000\",\"startDate\":\"2025-03-16T14:55:00.000+0000\",\"statistic\":\"Average\",\"period\":300,\"recentDatapoints\":[99.5],\"threshold\":90.0}",
+      "reason": "Threshold crossed: [99.5] > 90.0",
+      "reasonData": "{\"statistic\":\"Average\",\"threshold\":90.0}",
       "timestamp": "2025-03-16T15:00:00.000+0000"
     },
     "configuration": {
@@ -130,14 +130,14 @@ Example alert payload:
   "schemaId": "azureMonitorCommonAlertSchema",
   "data": {
     "essentials": {
-      "alertId": "/subscriptions/<SUB_ID>/providers/Microsoft.AlertsManagement/alerts/<ALERT_ID>",
+      "alertId": "/subscriptions/<SUB_ID>/.../alerts/<ALERT_ID>",
       "alertRule": "High Memory Usage Alert",
       "severity": "Sev2",
       "signalType": "Metric",
       "monitorCondition": "Fired",
       "monitoringService": "Platform",
       "alertTargetIDs": [
-        "/subscriptions/<SUB_ID>/resourceGroups/<RG>/providers/Microsoft.Compute/virtualMachines/<VM>"
+        "/subscriptions/<SUB_ID>/.../virtualMachines/<VM>"
       ],
       "configurationItems": [
         "web-server-01"
@@ -226,19 +226,19 @@ Example alert payload:
     {
       "type": "SERVICE",
       "name": "payment-service",
-      "entity": "SERVICE-F5D7459A6CD9842B"
+      "entity": "SERVICE-F5D7459A"
     }
   ],
-  "ImpactedEntity": "SERVICE-F5D7459A6CD9842B",
-  "PID": "PID-F5D7459A6CD9842B",
+  "ImpactedEntity": "SERVICE-F5D7459A",
+  "PID": "PID-F5D7459A",
   "ProblemDetailsHTML": "<div>High response time detected</div>",
   "ProblemDetailsJSON": {
-    "ID": "PID-F5D7459A6CD9842B"
+    "ID": "PID-F5D7459A"
   },
-  "ProblemID": "PID-F5D7459A6CD9842B",
+  "ProblemID": "PID-F5D7459A",
   "ProblemImpact": "APPLICATION",
   "ProblemTitle": "Response time degradation",
-  "Problem URL": "https://dynatrace.example.com/problems/PID-F5D7459A6CD9842B",
+  "Problem URL": "https://dynatrace.example.com/problems/PID-F5D7459A",
   "State": "OPEN",
   "Tags": "production,payment,critical"
 }
@@ -276,8 +276,8 @@ Example alert payload:
       "generatorURL": "https://grafana.example.com/alerting/1234",
       "fingerprint": "abc123def456",
       "silenceURL": "https://grafana.example.com/alerting/silence/new",
-      "dashboardURL": "https://grafana.example.com/d/abc123/system-metrics",
-      "panelURL": "https://grafana.example.com/d/abc123/system-metrics?viewPanel=10",
+      "dashboardURL": "https://grafana.example.com/d/abc123/metrics",
+      "panelURL": "https://grafana.example.com/d/abc123?viewPanel=10",
       "valueString": "value: 95.5"
     }
   ],
@@ -315,7 +315,7 @@ Example alert payload:
     "severity": "critical",
     "state": "open",
     "timestamp": 1647446400,
-    "url": "https://alerts.newrelic.com/accounts/12345/incidents/123456789"
+    "url": "https://alerts.newrelic.com/incidents/123456789"
   },
   "details": {
     "message": "Error rate exceeded 5% threshold",
@@ -329,7 +329,7 @@ Example alert payload:
       "name": "Production API",
       "type": "application",
       "product": "APM",
-      "link": "https://rpm.newrelic.com/accounts/12345/applications/987654321"
+      "link": "https://rpm.newrelic.com/applications/987654321"
     }
   ]
 }
@@ -400,7 +400,7 @@ Example alert payload:
       },
       "startsAt": "2025-03-16T15:00:00Z",
       "endsAt": "2025-03-16T16:00:00Z",
-      "generatorURL": "http://prometheus.example.com/graph?g0.expr=<PROMQL>"
+      "generatorURL": "http://prometheus.example.com/graph?expr=<Q>"
     }
   ],
   "groupLabels": {
@@ -437,7 +437,7 @@ Example alert payload:
   "search_name": "High Error Rate Alert",
   "app": "search",
   "owner": "admin",
-  "results_link": "https://splunk.example.com/app/search/@go?sid=<SID>",
+  "results_link": "https://splunk.example.com/app/search?sid=<SID>",
   "result": {
     "sourcetype": "access_combined",
     "count": "523",
