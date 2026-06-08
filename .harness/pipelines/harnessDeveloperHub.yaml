@@ -289,3 +289,8 @@ pipeline:
       description: ""
       required: true
       value: kapaProject
+    - name: MIXPANEL_TOKEN
+      type: Secret
+      description: Mixpanel token to track HDH traffic and user docc activity
+      required: false
+      value: mixpanelToken
