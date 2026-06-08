@@ -1405,5 +1405,19 @@
     "gaStartDate": "2026-06-04",
     "module": "Continuous Delivery",
     "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "OPA_DISABLE_AIDA_INTEGRATION",
+    "description": "Disables the old AI integration for generating OPA policies.",
+    "gaStartDate": "2026-06-08",
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "OPA_ENABLE_CANARY_AI",
+    "description": "Enables the new AI chat experience which enhances the rego generation capability integrated with the Harness MCP V2 to automatically create or update OPA policies.",
+    "gaStartDate": "2026-06-08",
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   }
 ]
