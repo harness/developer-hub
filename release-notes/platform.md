@@ -222,6 +222,11 @@ The following deprecated API endpoints are longer supported:
 
 ## May 2026
 
+### Version 1.151.x <!--June 09, 2026-->
+
+#### New features and enhancements
+- Added request payload validation to the Role Assignment filter API endpoints (`/filter`, `/filter/internal`, and `v2/filter`) to improve request handling and provide clearer error responses for invalid payloads. [PL-66807]
+
 ### Version 1.150.x <!--May 27, 2026--> 
 
 #### Fixed issues
