@@ -1,6 +1,6 @@
 {
     "iacm": {
-      "workspace": "A workspace is a one-to-one mapping of your infrastructure state. It is used to store and manage your infrastructure state in Harness IaCM.",  
+      "workspace": "A workspace is a one-to-one mapping of your infrastructure state. It is used to store and manage your infrastructure state in Harness IaCM.",
       "provider-registry": {
         "custom-provider": "An OpenTofu or Terraform provider built and maintained by your organization, usually for internal APIs or services not available in the public registry.",
         "gpg-key": "A cryptographic key used to verify the authenticity and integrity of files. In this case, it ensures provider binaries have not been tampered with.",
@@ -10,31 +10,53 @@
         "signature-file": "A detached signature produced by signing the checksum file with your GPG private key. The public key is used to verify authenticity."
       },
       "tf-commands": {
-        "init": "OpenTofu/Terraform command used to initialize a configuration. It downloads and configures providers, modules, and other dependencies."
+        "init": "OpenTofu/Terraform command used to initialize a configuration. It downloads and configures providers, modules, and other dependencies.",
+        "plan": "OpenTofu/Terraform command that creates an execution plan showing what changes will be made to your infrastructure without applying them.",
+        "apply": "OpenTofu/Terraform command that applies the changes described in a plan to create, update, or destroy infrastructure resources.",
+        "destroy": "OpenTofu/Terraform command that removes all resources managed by the current workspace configuration.",
+        "plan-destroy": "OpenTofu/Terraform command that creates a plan to destroy all resources managed by the workspace, without actually deleting them."
+      },
+      "concepts": {
+        "state-file": "A JSON file that maps your Harness IaCM workspace configuration to real-world infrastructure resources. It tracks resource metadata and dependencies.",
+        "drift-detection": "A Harness IaCM feature that compares the actual state of provisioned infrastructure against the expected state defined in code, and flags discrepancies.",
+        "cost-estimation": "A Harness IaCM feature that estimates the monthly cost impact of infrastructure changes before they are applied.",
+        "approval-step": "A step in an IaCM pipeline that pauses execution and requires manual or automated approval before applying infrastructure changes.",
+        "variable-set": "A reusable collection of input variables and environment variables in Harness IaCM that can be attached to one or more workspaces.",
+        "workspace-state": "The current status of a Harness IaCM workspace (active, drifted, failed, provisioning) indicating the health of managed infrastructure.",
+        "resource-count": "The total number of infrastructure resources currently tracked and managed within a Harness IaCM workspace."
       }
     },
     "fme": {
       "feature-management": {
         "segment": "Segments are groups of users defined by specific attributes or behaviors. They allow you to target feature flags and experiments to specific subsets of your user base.",
         "attribute": "A key-value pair used to describe a user, account, or entity during feature flag evaluation. Attributes can be used in targeting rules to determine which treatment is served.",
-        "identity": "A unique key representing a user, account, device, or other entity in Harness FME. Identities can store associated attribute data used for targeting workflows, search, and analysis."
-        },
+        "identity": "A unique key representing a user, account, device, or other entity in Harness FME. Identities can store associated attribute data used for targeting workflows, search, and analysis.",
+        "treatment": "A specific variation or value that a feature flag serves to a user. Each flag can have multiple treatments representing different behaviors or configurations.",
+        "targeting-rule": "A rule that determines which treatment a user receives based on attributes, segments, or percentage-based rollouts.",
+        "rollout": "A gradual release of a feature to an increasing percentage of users, controlled through targeting rules in Harness FME.",
+        "kill-switch": "The ability to immediately disable a feature flag and revert all users to the default treatment without a code deployment.",
+        "default-treatment": "The treatment served to users who do not match any targeting rule. This is the fallback behavior when no other rule applies.",
+        "flag-dependency": "A relationship between feature flags where one flag's evaluation depends on the state of another flag.",
+        "flag-lifecycle": "The stages a feature flag goes through from creation to cleanup: active, rolled out, permanent, and archived.",
+        "stale-flag": "A feature flag that has been fully rolled out or is no longer actively managed, and is a candidate for code cleanup."
+      },
       "release-monitoring": {
-        "metric":"A metric measures events that are sent to Harness FME and can count the occurrence of events, measure event values, or measure event properties. Metrics are used to evaluate the impact of feature flags and experiments on user behavior and system performance.",
+        "metric": "A metric measures events that are sent to Harness FME and can count the occurrence of events, measure event values, or measure event properties. Metrics are used to evaluate the impact of feature flags and experiments on user behavior and system performance.",
         "key-metric": "A key metric is a specific metric that is critical for evaluating the success of a feature flag or experiment. It is used to determine whether a feature rollout or experiment is achieving its intended goals and can influence decisions about further rollouts or adjustments.",
         "guardrail-metric": "A guardrail metric is a specific type of metric used to monitor for negative impacts during a feature rollout or experiment. It serves as a safety check to ensure that the new feature does not cause significant issues or degrade user experience. If a guardrail metric indicates a problem, it can trigger alerts or rollbacks to mitigate potential harm.",
-        "statistical-significance": "Statistical significance is a measure of the likelihood that the observed results of an experiment are not due to random chance. It is typically determined by a p-value threshold (e.g., 0.05), indicating that there is a less than 5% probability that the results occurred by chance. Achieving statistical significance helps teams make informed decisions about feature rollouts or adjustments based on the experiment's outcomes.",
-        "significance-alert": "A significance alert is a notification triggered when the results of an experiment reach a predefined level of statistical significance. This indicates that the observed effects are unlikely to be due to chance, helping teams make informed decisions about feature rollouts or adjustments based on the experiment's outcomes.",
-        "metric-alert": "A metric alert is a notification triggered when a specific metric reaches a predefined threshold. This can indicate potential issues or significant changes in user behavior, allowing teams to respond quickly to mitigate negative impacts or capitalize on positive trends."
+        "statistical-significance": "Statistical significance is a measure of the likelihood that the observed results of an experiment are not due to random chance. It is typically determined by a p-value threshold (e.g., 0.05), indicating that there is a less than 5% probability that the results occurred by chance.",
+        "significance-alert": "A significance alert is a notification triggered when the results of an experiment reach a predefined level of statistical significance, helping teams make informed decisions about feature rollouts.",
+        "metric-alert": "A metric alert is a notification triggered when a specific metric reaches a predefined threshold, allowing teams to respond quickly to mitigate negative impacts or capitalize on positive trends.",
+        "sample-size": "The number of users or events that must be collected before an experiment result can be considered statistically meaningful in Harness FME."
       },
       "openfeature": {
         "feature-flag": "A feature flag is a conditional toggle in Harness FME that enables or disables specific functionality without deploying new code. It allows for controlled feature rollouts, A/B testing, and quick rollbacks if issues arise.",
         "targeting-key": "A unique identifier used to target specific users or entities when evaluating feature flags. It helps determine which variation of a flag should be served based on predefined rules and conditions.",
         "evaluation-api": "The Evaluation API is the main interface developers use to interact with feature flags. It enables applications to evaluate feature flags and adapt behavior based on the results, while supporting customization and integration with additional tools.",
-        "evaluation-context": "The Evaluation Context holds contextual information used during flag evaluation. It can include static data (like application or host identifiers) and dynamic data (such as a client IP address), which can be passed explicitly or propagated automatically. Static and dynamic values can be merged for richer, more targeted evaluations.",
-        "provider": "An OpenFeature Provider wraps the Harness FME SDK, acting as a bridge between the OpenFeature SDK and the FME SDK. It translates OpenFeature function calls into operations handled by the FME SDK, which communicates with Harness services to evaluate flags and retrieve configuration updates.",
+        "evaluation-context": "The Evaluation Context holds contextual information used during flag evaluation. It can include static data (like application or host identifiers) and dynamic data (such as a client IP address), which can be passed explicitly or propagated automatically.",
+        "provider": "An OpenFeature Provider wraps the Harness FME SDK, acting as a bridge between the OpenFeature SDK and the FME SDK. It translates OpenFeature function calls into operations handled by the FME SDK.",
         "hook": "Hooks let you inject custom behavior at various points in the flag evaluation lifecycle. They can be used for validation, modifying the evaluation context, logging, telemetry, or custom functionality to extend the SDK.",
-        "events": "Events allow your application to respond to changes in provider state or flag configuration, such as readiness changes, errors, or updates to flag values."      
+        "events": "Events allow your application to respond to changes in provider state or flag configuration, such as readiness changes, errors, or updates to flag values."
       },
       "warehouse-native": {
         "metric": "A quantifiable measure used to track and assess the performance of a specific aspect of an experiment. In Warehouse Native, metrics are defined in Harness FME.",
@@ -61,11 +83,245 @@
         "data-source": "A data source is a connection to an external system or database that provides data for use in Studio. It allows you to pull in data from various sources to create visualizations and insights in your custom dashboards.",
         "query-variable": "A query variable is a dynamic parameter that can be used in Studio HQL queries to filter or modify the data being retrieved. It allows you to create more flexible and interactive dashboards by enabling users to input values that affect the displayed data.",
         "custom-variable": "A custom variable is a user-defined parameter that can be used in Studio to store and manipulate data. It can be used in queries, calculations, or as part of the dashboard configuration to create more complex and tailored visualizations."
+      },
+      "concepts": {
+        "dora-metrics": "A set of four key engineering metrics (deployment frequency, lead time for changes, change failure rate, mean time to recovery) tracked by Harness SEI to measure software delivery performance.",
+        "contribution": "A unit of developer activity tracked by Harness SEI, such as a commit, pull request, code review, or issue update.",
+        "trellis-score": "A composite productivity score in Harness SEI calculated from multiple factors including code quality, volume, speed, impact, and collaboration metrics.",
+        "integration": "A connection between Harness SEI and an external tool (such as Jira, GitHub, or PagerDuty) that provides data for engineering insights.",
+        "collection": "A grouping of teams or individuals in Harness SEI used to filter and aggregate engineering metrics for reporting and comparison.",
+        "investment-profile": "A classification scheme in Harness SEI that categorizes engineering work into buckets (feature, bug fix, maintenance, infrastructure) based on issue labels or types.",
+        "sprint-metrics": "Metrics in Harness SEI that track sprint health including velocity, scope creep, done-to-commit ratio, and average ticket age."
       }
     },
     "platform": {
       "account": "An account is the highest-level container where you define organizational structure, manage global settings, and establish shared security and governance rules that cascade down to all organizations and projects in the Harness platform.",
       "organization": "An organization groups projects sharing common goals or business units, providing a structured way for managing teams, access, and shared resources in the Harness platform.",
-      "project": "A project is a shared workspace within an organization where teams manage their users, pipelines, and resources needed to build, deploy, and operate their applications in the Harness platform."
+      "project": "A project is a shared workspace within an organization where teams manage their users, pipelines, and resources needed to build, deploy, and operate their applications in the Harness platform.",
+      "concepts": {
+        "delegate": "A lightweight agent installed in your infrastructure that connects to the Harness platform and executes tasks such as deployments, builds, and verifications on your behalf.",
+        "delegate-selector": "A label assigned to a delegate that allows you to route specific tasks to specific delegates based on infrastructure location, capabilities, or network access.",
+        "connector": "A configuration object that stores connection details (URLs, credentials, authentication) for external systems such as cloud providers, Git repos, artifact registries, and monitoring tools.",
+        "secret": "A securely stored credential (password, token, SSH key, or certificate) managed by Harness and referenced by connectors, pipelines, and other configurations without exposing the raw value.",
+        "secret-manager": "A configured connection to an external secrets store (HashiCorp Vault, AWS Secrets Manager, GCP Secret Manager, Azure Key Vault) where Harness reads and manages secrets.",
+        "variable": "A named placeholder that stores a value and can be referenced across pipelines, stages, and steps. Variables can be defined at account, organization, or project scope.",
+        "template": "A reusable configuration for pipelines, stages, steps, or services that enforces consistency and reduces duplication across teams and projects.",
+        "input-set": "A predefined collection of runtime inputs for a pipeline that allows you to execute the same pipeline with different parameter values without editing the pipeline definition.",
+        "overlay-input-set": "A layered input set in Harness that merges values from multiple input sets, allowing teams to compose runtime inputs from shared and team-specific configurations.",
+        "trigger": "An automated mechanism that starts a pipeline execution in response to an event such as a Git push, webhook, schedule (cron), or artifact publication.",
+        "notification": "A message sent to users or channels (email, Slack, PagerDuty, Microsoft Teams) when a pipeline event occurs, such as stage completion, failure, or approval request.",
+        "resource-group": "A named collection of Harness resources (pipelines, connectors, environments, services) used in RBAC to define what resources a role can access.",
+        "role": "A set of permissions that define what actions (view, create, edit, delete, execute) a user or user group can perform on Harness resources.",
+        "user-group": "A collection of users that share the same role bindings and notification preferences within Harness.",
+        "rbac": "Role-Based Access Control in Harness that governs who can perform which actions on which resources, configured through roles, resource groups, and user group assignments.",
+        "api-key": "A token-based authentication credential used to call Harness APIs programmatically. API keys are scoped to a service account or user and can have specific role bindings.",
+        "service-account": "A non-human identity in Harness used for automated API access and integrations. Service accounts hold API keys and role bindings independent of individual users.",
+        "audit-trail": "A chronological record of all user and system actions in Harness, including who performed the action, what changed, and when it occurred.",
+        "governance": "The policy-as-code framework in Harness (powered by OPA/Rego) that enforces organizational rules on pipelines, deployments, and configurations before or after execution.",
+        "policy": "A rule written in Rego (OPA) that evaluates Harness resources or pipeline events against organizational standards and returns allow, deny, or warning results.",
+        "policy-set": "A collection of policies in Harness grouped together and applied to specific events (on-save, on-run, on-step) at a defined scope (account, organization, or project).",
+        "pipeline-execution": "A single run of a pipeline from start to finish, including all stages, steps, inputs, outputs, and status information.",
+        "approval": "A manual or automated gate in a pipeline that pauses execution until a designated person or system grants permission to continue.",
+        "barrier": "A synchronization mechanism in Harness pipelines that pauses multiple stages or pipelines at a defined point and releases them together.",
+        "failure-strategy": "A configured set of actions (retry, rollback, abort, ignore, manual intervention) that a pipeline takes when a step or stage fails.",
+        "looping-strategy": "A configuration that repeats a stage or step multiple times, either iterating over a list of items (matrix) or running in parallel across a defined set of values.",
+        "expression": "A runtime reference in Harness (using the syntax <+...>) that resolves to a value from pipeline context, variables, secrets, outputs, or built-in functions.",
+        "scope": "The level at which a Harness resource is defined and accessible: account (global), organization (shared within an org), or project (team-level).",
+        "tag": "A key-value label applied to Harness resources for organizing, filtering, and searching across the platform.",
+        "freeze-window": "A configured time period during which pipeline executions are blocked to prevent changes during critical business periods or maintenance windows.",
+        "smp": "Harness Self-Managed Platform (SMP) is a deployment option where the Harness platform runs on your own infrastructure instead of Harness-hosted SaaS.",
+        "hsu": "Harness Subscription Unit. A standardized unit for measuring usage across all Harness modules in the Flex Pricing model."
+      },
+      "authentication": {
+        "identity-provider": "An Identity Provider (IdP) is an external authentication system (such as Okta, Azure AD, or OneLogin) that Harness connects to for user login via SAML or OAuth. Not to be confused with Harness IDP (Internal Developer Portal).",
+        "personal-access-token": "A Personal Access Token (PAT) is a user-scoped authentication token in Harness used to call APIs on behalf of that user. PATs inherit the user's permissions and can be rotated or revoked independently.",
+        "service-account-token": "A Service Account Token (SAT) is an API token scoped to a Harness service account rather than a human user. SATs are used for machine-to-machine integrations and CI/CD automation.",
+        "saml": "Security Assertion Markup Language. A protocol used to enable single sign-on (SSO) between an identity provider and Harness, allowing users to authenticate without separate Harness credentials.",
+        "oauth": "An authorization protocol supported by Harness that allows users to log in using existing accounts from providers like Google, GitHub, GitLab, Azure, or Bitbucket.",
+        "scim": "System for Cross-domain Identity Management. A protocol Harness uses to automatically provision and deprovision users and groups from your identity provider.",
+        "two-factor-authentication": "An additional security layer in Harness that requires users to provide a time-based one-time password (TOTP) from an authenticator app in addition to their primary credentials.",
+        "vanity-url": "A custom domain (such as mycompany.harness.io) configured for your Harness account to provide a branded login and access experience.",
+        "session-timeout": "The configured duration of inactivity after which a user is automatically logged out of the Harness platform.",
+        "ip-allowlist": "A security feature in Harness that restricts platform access to requests originating from specified IP addresses or CIDR ranges."
+      }
+    },
+    "cd": {
+      "concepts": {
+        "service": "A logical representation of a deployable workload in Harness CD. A service includes the artifact, manifests, config files, and variables needed for deployment. Not to be confused with a Kubernetes Service resource.",
+        "environment": "A target destination where services are deployed, such as development, staging, QA, or production. Environments define infrastructure and configuration overrides.",
+        "environment-group": "A collection of environments in Harness CD that allows you to deploy a service to multiple environments in parallel or sequentially from a single pipeline.",
+        "infrastructure-definition": "The specification of where within an environment a service is deployed, including the cluster, namespace, region, or resource group details.",
+        "service-overrides": "Configuration values that override default service settings for a specific environment, allowing the same service to behave differently across environments.",
+        "artifact": "A deployable package (Docker image, JAR, WAR, ZIP, AMI, or Helm chart) that Harness CD pulls from a configured artifact source and deploys to an environment.",
+        "artifact-source": "The configured repository or registry (Docker Hub, ECR, GCR, Artifactory, Nexus, S3) from which Harness CD pulls artifacts for deployment.",
+        "manifest": "A deployment specification file (Kubernetes YAML, Helm chart, ECS task definition, CloudFormation template) that defines how an artifact is deployed to infrastructure.",
+        "values-yaml": "A file containing variable overrides for Helm chart deployments in Harness CD. Values files can be environment-specific and are merged during deployment.",
+        "deployment-strategy": "The method used to release a new version of a service. Harness supports canary, blue-green, rolling, and basic deployment strategies.",
+        "canary-deployment": "A deployment strategy that releases a new version to a small percentage of traffic first, validates health, then gradually shifts all traffic to the new version.",
+        "blue-green-deployment": "A deployment strategy that maintains two identical environments (blue and green), routes traffic to the new version in the idle environment, and switches over after validation.",
+        "rolling-deployment": "A deployment strategy that incrementally replaces instances of the previous version with the new version, one batch at a time.",
+        "rollback": "The process of reverting a failed deployment to the last known successful version. Harness can trigger rollbacks automatically based on failure strategies or verification results.",
+        "execution": "A single run of a CD pipeline or stage that deploys a specific version of a service to an environment.",
+        "deployment-freeze": "A configured time window during which Harness blocks all or specific deployments to protect stability during critical business periods.",
+        "pipeline-chaining": "Running one pipeline as a stage within another pipeline, enabling complex multi-service or multi-environment orchestrations."
+      },
+      "gitops": {
+        "gitops": "A deployment approach in Harness where the desired state of infrastructure and applications is stored in a Git repository, and an agent reconciles the live state to match.",
+        "gitops-agent": "A component installed in your cluster that watches a Git repository and synchronizes the declared state to your Kubernetes environment through Harness GitOps.",
+        "gitops-cluster": "A Kubernetes cluster registered with Harness GitOps where applications are deployed and reconciled by the GitOps agent.",
+        "gitops-repository": "A Git repository configured in Harness GitOps that contains the desired state manifests (Kubernetes YAML, Helm charts, Kustomize) for your applications.",
+        "gitops-application": "A mapping in Harness GitOps between a source (Git repo path) and a destination (cluster + namespace) that defines what to deploy and where.",
+        "sync-status": "The current state of a Harness GitOps application indicating whether the live cluster matches the desired state in Git (synced, out-of-sync, or unknown).",
+        "application-set": "A template in Harness GitOps that generates multiple GitOps applications from a single definition, useful for deploying to many clusters or environments."
+      },
+      "verification": {
+        "continuous-verification": "A Harness CD feature that automatically validates deployments by analyzing metrics and logs from monitoring tools after each deployment phase.",
+        "health-source": "A configured connection to a monitoring or observability tool (Prometheus, Datadog, New Relic, AppDynamics, Splunk) used for deployment verification.",
+        "verification-type": "The analysis approach used during continuous verification: auto (ML-based), previous (compare to last deployment), or canary (compare canary vs production).",
+        "sensitivity": "The threshold setting for continuous verification that determines how much deviation from baseline metrics triggers a deployment failure (low, medium, high)."
+      }
+    },
+    "ci": {
+      "concepts": {
+        "build": "A single execution of a CI pipeline that compiles code, runs tests, and produces artifacts from a codebase.",
+        "codebase": "The source code repository configuration in a Harness CI pipeline that defines which repo to clone, the branch or tag, and clone depth.",
+        "build-infrastructure": "The compute environment where CI pipeline steps execute. Options include Harness Cloud (hosted runners), Kubernetes clusters, VMs, or local Docker.",
+        "harness-cloud": "Harness-hosted build infrastructure that provides pre-configured, managed runners for CI pipelines without requiring you to manage your own build machines.",
+        "step-group": "A collection of steps in a CI pipeline that share the same execution context (container image, resources) and can run sequentially or in parallel.",
+        "cache-intelligence": "A Harness CI feature that automatically identifies and caches build dependencies (such as Maven, npm, or Go modules) to speed up subsequent pipeline runs.",
+        "test-intelligence": "A Harness CI feature that selects and runs only the tests affected by code changes, reducing test execution time without sacrificing coverage.",
+        "run-step": "A CI step that executes shell commands or scripts in a container, used for tasks like running tests, linting, or custom build logic.",
+        "plugin-step": "A CI step that runs a pre-built container image to perform a specific task (publishing artifacts, sending notifications, scanning code) without writing custom scripts.",
+        "background-step": "A CI step that starts a long-running service (such as a database or API server) in the background for other steps to use during pipeline execution.",
+        "artifact-upload": "A CI step that publishes built artifacts (Docker images, binaries, packages) to a registry or storage location for downstream consumption.",
+        "shared-path": "A directory path shared across all steps in a CI stage, allowing steps to pass files to subsequent steps within the same stage.",
+        "service-dependency": "A container that runs alongside your CI stage (such as a database, Redis, or mock server) providing services needed by your tests.",
+        "drone-plugin": "A Docker-based CI plugin compatible with Harness CI that performs a discrete task and communicates via environment variables and shared volumes.",
+        "build-credit": "A unit of Harness Cloud compute usage consumed when running CI pipelines on hosted infrastructure, measured in build minutes."
+      }
+    },
+    "sto": {
+      "concepts": {
+        "scan": "A single execution of a security scanner against a target (code repository, container image, running application, or configuration) within a Harness STO pipeline.",
+        "scanner": "A security testing tool integrated with Harness STO (such as Snyk, SonarQube, Checkmarx, or Aqua Trivy) that identifies vulnerabilities in your code or artifacts.",
+        "scanner-template": "A preconfigured scan step in Harness STO that connects to a specific scanner with default settings, simplifying pipeline setup.",
+        "target": "The subject of a security scan in Harness STO, such as a source code repository, a container image, a running application instance, or an infrastructure configuration.",
+        "target-variant": "A specific version or branch of a scan target (such as the main branch or a particular image tag) that results are tracked against.",
+        "baseline": "A reference scan result in Harness STO used to compare against subsequent scans. Only new or changed vulnerabilities relative to the baseline are flagged.",
+        "exemption": "A documented exception in Harness STO that suppresses a specific vulnerability finding for a defined period, typically with a justification and an expiry date.",
+        "severity": "A classification (critical, high, medium, low, info) assigned to a vulnerability finding based on its potential impact and exploitability.",
+        "deduplication": "The process in Harness STO of normalizing and merging findings from multiple scanners to present a single, unified view of vulnerabilities without duplicates.",
+        "governance-policy": "An OPA policy applied to STO scan results that can block pipeline execution if vulnerabilities exceed defined thresholds (such as no critical issues allowed).",
+        "ingestion-mode": "A scan mode in Harness STO where you provide pre-generated scan results (JSON, SARIF) from external tools rather than running the scanner within the pipeline.",
+        "orchestration-mode": "A scan mode in Harness STO where the platform manages the full scanner lifecycle: pulling the tool, running the scan, and normalizing results.",
+        "dataload-mode": "A scan mode in Harness STO where the platform retrieves scan results directly from the scanner's API without re-running the scan."
+      }
+    },
+    "cacm": {
+      "concepts": {
+        "perspective": "A saved view in Harness CACM that filters and groups cloud costs by dimensions such as account, service, team, environment, or custom labels.",
+        "budget": "A spending threshold configured in Harness CACM for a specific perspective or cost category, with alerts triggered at defined percentage levels.",
+        "budget-group": "A collection of budgets in Harness CACM that aggregates spend limits across multiple perspectives for organization-wide cost governance.",
+        "anomaly": "An unexpected spike or deviation in cloud spend detected by Harness CACM using historical patterns and machine learning.",
+        "recommendation": "A cost optimization suggestion generated by Harness CACM, such as rightsizing instances, deleting unused resources, or purchasing reserved capacity.",
+        "autostopping-rule": "A Harness CACM rule that automatically stops idle cloud resources (VMs, clusters, RDS instances) when not in use and restarts them on demand.",
+        "autostopping-proxy": "A lightweight load balancer deployed by Harness CACM that detects traffic to stopped resources, starts them on demand, and stops them after idle timeout.",
+        "cloud-asset-governance": "A Harness CACM feature that enforces policies on cloud resource configurations to prevent waste, such as tagging requirements or instance type restrictions.",
+        "cost-category": "A user-defined grouping in Harness CACM that maps cloud costs to business concepts like teams, products, or cost centers using rules based on labels, accounts, or services.",
+        "cluster-orchestrator": "A Harness CACM feature that optimizes Kubernetes cluster costs by managing node pools, spot instances, and bin-packing workloads efficiently.",
+        "commitment-orchestrator": "A Harness CACM feature that manages Reserved Instance and Savings Plan purchases across cloud accounts to maximize discount coverage.",
+        "shared-cost": "A cost in Harness CACM (such as shared infrastructure or platform fees) that is distributed across cost categories based on configured allocation rules.",
+        "markup": "A percentage added to cloud costs in Harness CACM perspectives to account for overhead costs such as support fees, margins, or shared services."
+      }
+    },
+    "ce": {
+      "concepts": {
+        "chaos-experiment": "A defined failure scenario in Harness Chaos Engineering that injects faults into a target system to test its resilience and recovery behavior.",
+        "chaos-hub": "A repository of reusable chaos experiment templates and fault definitions that can be shared across teams in Harness Chaos Engineering.",
+        "chaos-fault": "A specific type of failure injection (such as pod kill, CPU stress, network latency, or disk fill) that can be applied to a target in a chaos experiment.",
+        "resilience-probe": "A validation check in Harness Chaos Engineering that runs during or after a chaos experiment to verify that the system behaves as expected under failure conditions.",
+        "chaos-infrastructure": "The agent and runtime environment installed in your target cluster or VM that executes chaos faults on behalf of the Harness Chaos Engineering platform.",
+        "resilience-score": "A numerical score in Harness Chaos Engineering that measures how well a system withstood chaos experiments, based on probe success rates and recovery times.",
+        "chaos-guard": "A safety mechanism in Harness Chaos Engineering that defines conditions under which a chaos experiment is automatically stopped to prevent unacceptable impact.",
+        "gameday": "A scheduled chaos engineering event in Harness where multiple experiments run against production or staging systems to validate overall system resilience.",
+        "blast-radius": "The scope of impact of a chaos fault, defined by which resources (pods, nodes, services, zones) are targeted during an experiment."
+      }
+    },
+    "idp": {
+      "concepts": {
+        "internal-developer-portal": "Harness IDP (Internal Developer Portal) is a developer self-service platform for service catalog, software templates, and developer workflows. Not to be confused with IdP (Identity Provider) used for authentication.",
+        "software-catalog": "A centralized registry in Harness IDP that indexes all services, libraries, and infrastructure components across your organization with ownership and metadata.",
+        "catalog-entity": "A single entry in the Harness IDP software catalog representing a service, component, resource, API, or system, defined by a YAML descriptor file.",
+        "catalog-ingestion": "The process by which Harness IDP discovers and imports catalog entities from Git repositories, Kubernetes clusters, or external systems.",
+        "scorecard": "A set of checks in Harness IDP that evaluates catalog entities against best practices (such as CI/CD coverage, documentation, ownership, and security scanning).",
+        "workflow": "A self-service automation in Harness IDP that developers use to perform common tasks like creating a new service, onboarding a repo, or provisioning infrastructure.",
+        "plugin": "An extension in Harness IDP that adds functionality to catalog entity pages, such as CI/CD status, API docs, monitoring dashboards, or cost information.",
+        "tech-docs": "Documentation generated from markdown files in a service repository and published automatically alongside the catalog entity in Harness IDP.",
+        "backstage": "The open-source developer portal framework that Harness IDP is built upon, originally created by Spotify.",
+        "layout": "A configurable page structure in Harness IDP that defines which plugins and content cards appear on a catalog entity page."
+      }
+    },
+    "ar": {
+      "concepts": {
+        "registry": "A container in Harness Artifact Registry that stores and manages versioned artifacts such as Docker images, Helm charts, and generic packages.",
+        "upstream-proxy": "A configuration in Harness Artifact Registry that caches artifacts from external registries (Docker Hub, Maven Central, npm) and serves them to your builds.",
+        "artifact-version": "A specific tagged or versioned instance of an artifact stored in Harness Artifact Registry, identifiable by digest or semantic version.",
+        "cleanup-policy": "A rule in Harness Artifact Registry that automatically deletes old or unused artifact versions based on age, count, or usage criteria to manage storage.",
+        "virtual-registry": "A logical registry in Harness Artifact Registry that combines multiple upstream sources and local storage into a single pull endpoint.",
+        "immutable-tag": "A setting in Harness Artifact Registry that prevents overwriting an existing tag, ensuring that a specific version always resolves to the same artifact."
+      }
+    },
+    "code": {
+      "concepts": {
+        "repository": "A Git repository hosted and managed within Harness Code Repository, providing version control with integrated CI/CD and security scanning.",
+        "pull-request": "A code review request in Harness Code Repository where changes from one branch are proposed for merge into another, with inline comments and approval workflows.",
+        "branch-rule": "A protection rule in Harness Code Repository that enforces requirements (such as required reviewers, passing CI, or no force push) before changes can be merged.",
+        "code-owner": "A user or group automatically assigned as a required reviewer in Harness Code Repository when changes affect files they own, defined in a CODEOWNERS file.",
+        "webhook": "An HTTP callback configured in Harness Code Repository that sends event notifications (push, PR created, merged) to external systems.",
+        "semantic-search": "An AI-powered search feature in Harness Code Repository that finds code based on natural language queries rather than exact text matches."
+      }
+    },
+    "dbdevops": {
+      "concepts": {
+        "schema-instance": "A specific database schema deployed and tracked by Harness Database DevOps across an environment (each dev, staging, and prod instance counts separately).",
+        "changeset": "A versioned unit of database schema change (table creation, column alteration, index addition) applied through Harness Database DevOps.",
+        "drift-detection": "A Harness Database DevOps feature that compares the live database schema against the expected state and flags unauthorized or untracked changes.",
+        "governance-gate": "A pipeline step in Harness Database DevOps that validates schema changes against defined rules (naming conventions, required indexes, prohibited operations) before execution.",
+        "rollback-script": "An automatically generated reverse migration in Harness Database DevOps that undoes a changeset if a deployment fails or needs to be reverted."
+      }
+    },
+    "aisre": {
+      "concepts": {
+        "ai-sre": "Harness AI SRE is an AI-powered site reliability engineering assistant that helps diagnose incidents, suggest remediations, and automate root cause analysis.",
+        "root-cause-analysis": "An AI-driven investigation in Harness AI SRE that correlates deployment events, metrics anomalies, and log patterns to identify the likely cause of an incident.",
+        "runbook": "A documented set of diagnostic and remediation steps in Harness AI SRE that can be executed automatically or semi-automatically in response to an incident.",
+        "incident": "An event in Harness AI SRE representing a service degradation or outage that requires investigation and resolution.",
+        "correlation": "The process in Harness AI SRE of linking related signals (metric spikes, log errors, recent deployments, configuration changes) to form a unified incident context."
+      }
+    },
+    "scs": {
+      "concepts": {
+        "sbom": "Software Bill of Materials. A machine-readable inventory of all components, libraries, and dependencies in a software artifact, generated by Harness Supply Chain Security.",
+        "slsa": "Supply-chain Levels for Software Artifacts. A framework for ensuring the integrity of software artifacts. Harness SCS generates SLSA attestations to prove build provenance.",
+        "attestation": "A signed statement in Harness SCS that cryptographically proves facts about how a software artifact was built, including source, builder, and build steps.",
+        "policy-enforcement": "The process in Harness SCS of evaluating artifacts against supply chain policies (allowed licenses, required attestations, blocked packages) before deployment.",
+        "artifact-provenance": "A verifiable record in Harness SCS of where an artifact came from, who built it, what source code was used, and what build process produced it."
+      }
+    },
+    "disambiguation": {
+      "commonly-confused": {
+        "idp-vs-identity-provider": "IDP (Internal Developer Portal) is a Harness module for developer self-service and software catalogs. IdP (Identity Provider) is an authentication system (Okta, Azure AD) used for SSO login. These are completely different concepts.",
+        "service-cd-vs-service-account": "A service in Harness CD is a deployable workload (microservice, app). A service account in Harness Platform is a non-human identity for API automation. They are unrelated.",
+        "pipeline-ci-vs-pipeline-cd": "CI pipelines build, test, and produce artifacts. CD pipelines deploy those artifacts to environments. Both use the same pipeline engine but serve different purposes.",
+        "connector-vs-delegate": "A connector stores connection details (what to connect to and how to authenticate). A delegate is the agent that executes the actual connection from your infrastructure to Harness.",
+        "trigger-vs-input-set": "A trigger automatically starts a pipeline when an event occurs. An input set provides runtime values to a pipeline but does not start it; input sets are used by triggers or manual runs.",
+        "environment-cd-vs-environment-variable": "An environment in Harness CD is a deployment target (dev, prod). An environment variable is a key-value pair passed to a running process or container at runtime.",
+        "workspace-iacm-vs-workspace-project": "A workspace in Harness IaCM maps to a Terraform state file. A project workspace in Harness Platform is the team-level container for pipelines and resources.",
+        "stage-vs-step": "A stage is a major phase of a pipeline (build, deploy, approve). A step is a single action within a stage (run script, deploy service, send notification).",
+        "template-vs-input-set": "A template defines a reusable pipeline/stage/step structure. An input set provides values for the runtime inputs defined in that template.",
+        "secret-vs-variable": "A secret is an encrypted credential (password, token, key) that is never displayed in plain text. A variable is a general-purpose named value that may or may not be sensitive.",
+        "rbac-role-vs-user-group": "A role defines what actions are allowed. A user group defines who the role applies to. Role bindings connect roles to user groups on specific resource groups.",
+        "artifact-cd-vs-artifact-registry": "An artifact in CD is any deployable package referenced by a service. Artifact Registry (AR) is the Harness module that hosts and manages those packages."
+      }
     }
   }

@@ -8,10 +8,29 @@ import "@site/src/css/glossary.css";
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
 const MODULE_LABELS: Record<string, string> = {
-  fme: "Feature Management & Experimentation",
-  iacm: "Infrastructure as Code Management",
-  "sei": "AI DLC Insights",
+  platform: "Platform",
+  cd: "CD",
+  ci: "CI",
+  sto: "STO",
+  cacm: "CACM",
+  rt: "Resilience Testing",
+  fme: "FME",
+  iacm: "IaCM",
+  sei: "SEI",
+  idp: "IDP",
+  ar: "Artifact Registry",
+  code: "Code Repository",
+  dbdevops: "Database DevOps",
+  aisre: "AI SRE",
+  scs: "Supply Chain Security",
 };
+
+const disambiguationEntries = glossaryData.entries.filter(
+  (e) => e.module === "disambiguation"
+);
+const glossaryEntries = glossaryData.entries.filter(
+  (e) => e.module !== "disambiguation"
+);
 
 export default function GlossaryPage() {
   const location = useLocation();
@@ -25,11 +44,12 @@ export default function GlossaryPage() {
 
   const [activeLetter, setActiveLetter] = useState(initialLetter);
   const [activeModule, setActiveModule] = useState(initialModule);
+  const [searchQuery, setSearchQuery] = useState("");
   const [showBackToTop, setShowBackToTop] = useState(false);
 
   const modules = Array.from(
-    new Set(glossaryData.entries.map((e) => e.module).filter(Boolean))
-  );
+    new Set(glossaryEntries.map((e) => e.module).filter(Boolean))
+  ).sort((a, b) => (MODULE_LABELS[a] || a).localeCompare(MODULE_LABELS[b] || b));
 
   /** URL helper */
   const updateURL = (module: string, hash: string = "") => {
@@ -48,7 +68,8 @@ export default function GlossaryPage() {
   /** Handlers */
   const handleModuleChange = (m: string) => {
     setActiveModule(m);
-    updateURL(m, location.hash);
+    setActiveLetter("All");
+    updateURL(m, "");
   };
 
   const handleLetterChange = (l: string) => {
@@ -59,17 +80,23 @@ export default function GlossaryPage() {
 
   /** Group entries */
   const groupedEntries = useMemo(() => {
-    const group: Record<string, typeof glossaryData.entries> = {};
+    const group: Record<string, typeof glossaryEntries> = {};
+    const query = searchQuery.toLowerCase().trim();
 
-    glossaryData.entries.forEach((entry) => {
+    glossaryEntries.forEach((entry) => {
       if (activeModule !== "All" && entry.module !== activeModule) return;
+      if (query && !entry.term.toLowerCase().includes(query) && !entry.definition.toLowerCase().includes(query)) return;
 
       if (!group[entry.letter]) group[entry.letter] = [];
       group[entry.letter].push(entry);
     });
 
     return group;
-  }, [activeModule]);
+  }, [activeModule, searchQuery]);
+
+  const availableLetters = useMemo(() => {
+    return new Set(Object.keys(groupedEntries));
+  }, [groupedEntries]);
 
   /** Scroll + Back to Top */
   useEffect(() => {
@@ -91,6 +118,7 @@ export default function GlossaryPage() {
     (entryModule || "")
       .split(",")
       .map((m) => m.trim())
+      .filter((m) => m !== "disambiguation")
       .map((m) => (
         <span
           key={m}
@@ -104,7 +132,7 @@ export default function GlossaryPage() {
             marginBottom: 4,
           }}
         >
-          {MODULE_LABELS[m] || m}
+          {MODULE_LABELS[m] || m.toUpperCase()}
         </span>
       ));
 
@@ -155,56 +183,143 @@ export default function GlossaryPage() {
           <div style={{ maxWidth: "800px", margin: "0 auto" }}>
             <h1>Glossary</h1>
             <p>
-              Welcome to the Harness Glossary! This page is a work in progress.
-              If you have feedback or terms to define, click the Feedback button.
+              Explore definitions for terminology used throughout the Harness
+              platform. Filter by product area or browse alphabetically to learn
+              about concepts, features, and capabilities across Harness modules.
             </p>
 
-            {/* Module filters */}
+            {/* Search */}
             <div style={{ marginBottom: 16 }}>
-              <strong>Module: </strong>
+              <input
+                type="text"
+                placeholder="Search terms or definitions..."
+                value={searchQuery}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                  setActiveLetter("All");
+                }}
+                style={{
+                  width: "100%",
+                  padding: "10px 14px",
+                  fontSize: "0.95em",
+                  border: "1.5px solid var(--ifm-color-emphasis-300, #dee2e6)",
+                  borderRadius: 6,
+                  outline: "none",
+                  background: "var(--ifm-background-color, #fff)",
+                  color: "var(--ifm-color-content, #333)",
+                }}
+              />
+            </div>
+
+            {/* Module filters */}
+            <div style={{ marginBottom: 16, display: "flex", flexWrap: "wrap", gap: 6, alignItems: "center" }}>
+              <strong style={{ marginRight: 4 }}>Module: </strong>
               {["All", ...modules].map((m) => (
                 <button
                   key={m}
                   onClick={() => handleModuleChange(m)}
                   style={{
-                    marginRight: 8,
-                    padding: "4px 8px",
+                    padding: "4px 10px",
                     background: activeModule === m ? "#0078d4" : "#eee",
                     color: activeModule === m ? "#fff" : "#000",
                     border: "none",
                     borderRadius: 4,
                     cursor: "pointer",
+                    fontSize: "0.85em",
+                    fontWeight: activeModule === m ? 600 : 400,
                   }}
                 >
-                  {m === "All" ? "All" : MODULE_LABELS[m] || m}
+                  {m === "All" ? "All" : MODULE_LABELS[m] || m.toUpperCase()}
                 </button>
               ))}
             </div>
 
             {/* Letter filters */}
             <div style={{ marginBottom: 24 }}>
-              {["All", ...letters].map((l) => (
-                <button
-                  key={l}
-                  onClick={() => handleLetterChange(l)}
-                  style={{
-                    margin: 2,
-                    padding: "4px 8px",
-                    background: activeLetter === l ? "#0078d4" : "#eee",
-                    color: activeLetter === l ? "#fff" : "#000",
-                    border: "none",
-                    borderRadius: 4,
-                    cursor: groupedEntries[l]?.length
-                      ? "pointer"
-                      : "not-allowed",
-                    opacity: groupedEntries[l]?.length ? 1 : 0.4,
-                  }}
-                  disabled={!groupedEntries[l]?.length}
-                >
-                  {l}
-                </button>
-              ))}
+              {["All", ...letters].map((l) => {
+                const isAll = l === "All";
+                const hasEntries = isAll || availableLetters.has(l);
+                return (
+                  <button
+                    key={l}
+                    onClick={() => handleLetterChange(l)}
+                    style={{
+                      margin: 2,
+                      padding: "4px 8px",
+                      background: activeLetter === l ? "#0078d4" : "#eee",
+                      color: activeLetter === l ? "#fff" : "#000",
+                      border: "none",
+                      borderRadius: 4,
+                      cursor: hasEntries ? "pointer" : "not-allowed",
+                      opacity: hasEntries ? 1 : 0.4,
+                    }}
+                    disabled={!hasEntries}
+                  >
+                    {l}
+                  </button>
+                );
+              })}
             </div>
+
+            {/* Commonly confused terms — collapsible */}
+            {disambiguationEntries.length > 0 && (
+              <details
+                style={{
+                  marginBottom: 24,
+                  border: "1px solid var(--ifm-color-emphasis-200, #e9ecef)",
+                  borderRadius: 6,
+                  overflow: "hidden",
+                }}
+              >
+                <summary
+                  style={{
+                    padding: "10px 16px",
+                    cursor: "pointer",
+                    fontWeight: 600,
+                    fontSize: "0.9em",
+                    background: "var(--ifm-color-emphasis-100, #f8f9fa)",
+                    userSelect: "none",
+                  }}
+                >
+                  Commonly confused terms ({disambiguationEntries.length})
+                </summary>
+                <div style={{ padding: "12px 16px" }}>
+                  {disambiguationEntries.map((entry) => (
+                    <div
+                      key={entry.id}
+                      id={entry.slug}
+                      style={{
+                        marginBottom: 10,
+                        paddingBottom: 10,
+                        borderBottom: "1px solid var(--ifm-color-emphasis-100, #f1f3f5)",
+                      }}
+                    >
+                      <strong style={{ fontSize: "0.9em" }}>
+                        {entry.term}
+                      </strong>
+                      <p
+                        style={{
+                          margin: "4px 0 0",
+                          fontSize: "0.85em",
+                          lineHeight: 1.5,
+                          color: "var(--ifm-color-content-secondary)",
+                        }}
+                      >
+                        {entry.definition}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </details>
+            )}
+
+            {/* Active module indicator */}
+            {activeModule !== "All" && (
+              <p style={{ fontSize: "0.85em", marginBottom: 16, opacity: 0.7 }}>
+                Showing terms for <strong>{MODULE_LABELS[activeModule] || activeModule.toUpperCase()}</strong>{" "}
+                ({Object.values(groupedEntries).flat().length} terms)
+              </p>
+            )}
 
             {/* Sections */}
             {(activeLetter === "All" ? letters : [activeLetter]).map(
@@ -254,7 +369,7 @@ export default function GlossaryPage() {
                 );
               }
             )}
-            
+
             {/* Feedback widget */}
               <Feedback />
 
