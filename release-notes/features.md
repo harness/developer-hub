@@ -5,8 +5,6 @@ title: New Feature Availability
 hidden: true
 sidebar_position: 100
 date: 2026-05-22T10:00
-redirect_from:
-  - /release-notes/feature-flags-ga-timeline
 ---
 
 import FeatureFlagsLanding from '../src/components/FeatureFlagGA/FeatureFlagsLanding';

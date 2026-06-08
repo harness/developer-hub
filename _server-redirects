@@ -197,6 +197,9 @@ docs/self-managed-enterprise-edition/monitor-harness-on-prem#view-metrics-on-the
 # Added by animesh on 22-01-2026 for db devops images to overview
 /docs/database-devops/use-database-devops/database-devops-images/ /docs/database-devops/overview
 
+# Added by richard.black on 2026-06-08 for HDH-692 - Feature Flags GA Timeline superseded by Feature Availability
+/release-notes/feature-flags-ga-timeline /release-notes/features 301
+
 # Redirect for llms.txt file
 /docs/llms.txt /llms.txt
 
