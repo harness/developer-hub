@@ -199,8 +199,11 @@ To set up the Auto PR configuration:
     * Enable the toggle beside `Avoid End-of-Life components` to avoid updating and remediating dependencies with [End of Life](/docs/software-supply-chain-assurance/manage-risk-and-compliance/opensource-security-risk-management/#end-of-life-components) OSS risk.
   * **Advanced Controls**
     * Specify the dependencies to exclude from a raised pull request by entering comma-separated strings. For example, _Log4j or Log4j@2.3.1, flask@0.5.1_.
-    * Specify the maximum number of pull requests that you can raise for a repository in a week. By default, the number is set to 10.
+    * Specify the repositories for which automated pull requests can be raised. You can enter one or more repository names in the format `<org>/<repo-name>`. Wildcard patterns are also supported. For example, _my-app-*_.
+    * Specify the maximum number of pull requests that you can raise for a repository in a week. By default, the value is set to 10.
     * Select the frequency for the pull request schedule from the dropdown. The available options are `Daily`, `Weekly`, `Bi-weekly`, and `Monthly`. By default, it is set to `Daily`.
+    * Enable the toggle beside `Enforce Minimum Package Age` to enforce a minimum package age for dependency versions. When enabled, upgraded pull requests include only dependency versions that meet the specified minimum package age requirement. This helps reduce the risk of introducing newly released packages. This setting is enabled by default with the Strict preset.
+    * Specify the minimum number of days a package must exist before it can be considered for upgrades. By default, this value is set to 2 days.
   
   <DocImage path={require('./static/autopr-settings-configuration.png')} width="80%" height="80%" title="Click to view full size image" />
 
