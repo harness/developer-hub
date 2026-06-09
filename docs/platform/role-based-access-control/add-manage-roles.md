@@ -201,7 +201,7 @@ This feature is behind the feature flag `PL_ROLE_REUSABILITY_ACROSS_CHILD_SCOPES
 
 To view principals assigned to a [specified role](#platform-roles), navigate to the appropriate scope (account, organization, or project) and follow the steps below. 
 
-The steps below use the Account scope and Account Admin role as an example. You can follow the same steps for the Organization and Project scopes.
+The steps below use the **Account scope** and **Account Admin** role as an example. You can follow the same steps for the organization and project scopes.
 
 <Tabs>
   <TabItem value="Interactive" label="Interactive" default>
@@ -217,10 +217,10 @@ The steps below use the Account scope and Account Admin role as an example. You 
   </TabItem>
 
    <TabItem value="Manual" label="Manual" default>
-      1. Navigate to the scope’s Settings → Access Control → Roles.
+      1. Navigate to the scope’s **Settings** → **Access Control** → **Roles**.
       2. Locate or search for the [specific role](#platform-roles).
       3. Click on the role, switch to the **Assigned To** tab.
-      4. By default, the "Users" list appears for the assigned role. You can also switch to the "User Groups" or "Service Accounts" tabs to view principals for the specified role.
+      4. By default, the **Users** list appears for the assigned role. You can also switch to the **User Groups** or **Service Accounts** tabs to view principals for the specified role.
    </TabItem>
 </Tabs>
 
