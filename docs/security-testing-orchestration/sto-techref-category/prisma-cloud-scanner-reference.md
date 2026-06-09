@@ -267,13 +267,28 @@ import StoSettingFailOnSeverity from './shared/step-palette/all/fail-on-severity
 <StoSettingFailOnSeverity />
 
 
+
 ### Settings
 
 import StoSettingSettings from './shared/step-palette/all/settings.md';
 
 <StoSettingSettings />
 
-To add labels such as `JOB_NAME` to your Prisma Cloud scans, add key-value pairs to **Settings (optional)**. These key-value pairs will be added as labels in the Prisma Cloud UI when you run the scan.
+Add key-value pairs to **Settings (optional)** to configure Prisma Cloud scan behavior and labels.
+
+
+#### Grace period
+
+Apply Prisma Cloud grace periods during **Fail on Severity** evaluation. Add `GRACE_PERIOD: TRUE` to **Settings (optional)** on the Prisma Cloud scan step to enable grace period support.
+
+- **Active grace periods:** Harness STO reads grace period metadata from Prisma scan results. Findings with an **active** grace period are excluded from **Fail on Severity** for the scanned Target. The pipeline does not fail for those vulnerabilities, even when severity meets or exceeds your threshold. The findings still appear in scan results.
+- **Expiration:** After a grace period ends, Harness STO includes the vulnerability in **Fail on Severity** evaluation on the next scan. This matches Prisma Cloud Console behavior.
+- **STO exemptions:** An approved [issue exemption](/docs/security-testing-orchestration/exemptions/exemption-workflows) in Harness STO overrides an active Prisma Cloud grace period for **Fail on Severity** evaluation.
+
+
+#### Scan labels
+
+To add labels such as `JOB_NAME` to your Prisma Cloud scans, add additional key-value pairs to **Settings (optional)**. These key-value pairs are added as labels in the Prisma Cloud UI when you run the scan.
 
 ### Additional Configuration
 
