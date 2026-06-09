@@ -272,6 +272,42 @@ Enable **Disallow the executor from approving the pipeline** to stop the user wh
 - Only applies to manual executions (not webhook/Git triggers).  
 - If you need to block more than just the executor, such as a specific list of users or dynamically resolve emails during executions, use **Disallowed User Emails** instead.
 
+---
+
+## Enable approval visibility for non-approvers
+
+By default, only users with approval permissions can view approval step details during pipeline execution. Enable the approval visibility setting to let non-approvers view those details in the pipeline execution view.
+
+Non-approvers can see the approval message, step details, and execution history, but the **Approve** and **Reject** actions remain disabled.
+
+### Configure the default setting
+
+To enable approval visibility for non-approvers at the project level:
+
+1. Go to **Project Settings**, and then select **Default Settings**.
+2. Expand **Pipeline**, and then locate **Allow non-approvers to see Approval Step details**.
+3. Set the toggle to **True** to allow non-approvers to view approval step details.
+
+:::info note
+This setting is disabled by default. When disabled, only users with approval permissions can view approval step details during execution.
+:::
+
+When this setting is enabled, users without approval permissions see the same approval step interface as approvers, but with the **Approve** and **Reject** buttons disabled. They can view the approval message, execution history, and any other approval step details, but cannot take approval actions.
+
+### View approval steps as a non-approver
+
+When a non-approver views a pipeline execution with an approval step (after enabling the default setting):
+
+- The approval step details are visible in the execution view
+- The approval message and execution history are displayed
+- The **Approve** and **Reject** buttons are disabled (grayed out)
+- Any approver inputs or variables are visible but not editable
+- The approval status is visible in real time, including when an authorized approver grants or rejects the approval
+
+This feature helps teams maintain transparency in the deployment process while enforcing proper approval controls. Non-approvers can stay informed about pipeline progress without the ability to bypass approval gates.
+
+---
+
 ### Disallowed User Emails
 
 You can block users from approving this step by listing their email addresses under **Disallowed User Emails**. This applies to all execution types—manual runs and triggers from GitHub, GitLab, webhooks, etc.
