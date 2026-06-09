@@ -591,6 +591,40 @@ Next, we'll add the Docker image artifact for deployment.
 
 1. Click **Continue** to add the target ECS cluster.
 
+---
+
+## Deploy artifacts from non-ECR private registries
+
+ECS requires explicit credential configuration to pull container images from private registries outside of Amazon ECR, such as Harness Code Repository, Azure Container Registry, and Docker Registry. Without this configuration, deployments fail with a 401 authentication error. Store your registry credentials in AWS Secrets Manager and reference the secret ARN in your task definition.
+
+This is standard ECS behavior for non-ECR private registries and applies to all supported artifact sources in Harness.
+
+To configure private registry authentication:
+
+1. Create an AWS Secrets Manager secret with your registry credentials (username and password):
+   ```bash
+   aws secretsmanager create-secret \
+     --name my-registry-credentials \
+     --secret-string '{"username":"my-username","password":"my-password"}' \
+     --region us-east-1
+     --region us-east-1
+   ```
+
+2. Add the `repositoryCredentials.credentialsParameter` field to your task definition and reference the secret ARN:
+   ```yaml
+   containerDefinitions:
+     - name: my-app
+       image: myregistry.example.com/my-app:latest
+       repositoryCredentials:
+         credentialsParameter: arn:aws:secretsmanager:us-east-1:123456789012:secret:my-registry-credentials-AbCdEf
+   ```
+
+3. Ensure your ECS task execution role has the `secretsmanager:GetSecretValue` permission for the secret.
+
+For complete configuration details and IAM policy examples, go to [Private registry authentication for tasks](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/private-auth.html) in the AWS documentation.
+
+---
+
 ## Define the infrastructure
 
 You define the target infrastructure for your deployment in the **Environment** settings of the pipeline stage. You can define an environment separately and select it in the stage, or create the environment within the stage **Environment** tab.
