@@ -769,10 +769,6 @@ jq '.["test-output-name1"].value' file.json
 
 ### Mask sensitive outputs
 
-:::note
-This feature is behind the feature flag `CDS_TERRAFORM_HIDE_SENSITIVE_OUTPUTS`. Contact [Harness Support](mailto:support@harness.io) to enable it.
-:::
-
 When a Terraform output is marked `sensitive = true` in your `main.tf` file, Harness automatically detects that flag and masks the value in the **Output** tab. Non-sensitive outputs continue to appear as plain text.
 
 Sensitive values are displayed as encrypted expressions in the output:

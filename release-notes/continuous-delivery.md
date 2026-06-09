@@ -289,7 +289,7 @@ Wondering where versions 1.140.xx and 1.141.xx are? Those releases were rolled i
 
 - AWS connector validation no longer requires the `ec2:DescribeRegions` IAM permission when the feature flag `CDS_AWS_DESCRIBE_REGIONS_OPTIONAL` is enabled. Harness switches to `sts:GetCallerIdentity`, which requires no IAM permissions. Requires delegate version 889xx or later. Contact [Harness Support](mailto:support@harness.io) to enable. (**CDS-92587**)
 
-- Terraform output fields marked as `sensitive = true` in your `main.tf` file are now automatically masked in the pipeline **Output** tab during a [Terraform Apply](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step#mask-sensitive-terraform-outputs) step execution. Non-sensitive outputs continue to appear as plain text, and sensitive outputs remain accessible in downstream steps using standard Harness expressions. This is behind the feature flag `CDS_TERRAFORM_HIDE_SENSITIVE_OUTPUTS`. Contact [Harness Support](mailto:support@harness.io) to enable it. (**CDS-83382**)
+- Terraform output fields marked as `sensitive = true` in your `main.tf` file are now automatically masked in the pipeline **Output** tab during a [Terraform Apply](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step#mask-sensitive-terraform-outputs) step execution. Non-sensitive outputs continue to appear as plain text, and sensitive outputs remain accessible in downstream steps using standard Harness expressions. (**CDS-83382**)
 
 #### Fixed issues
 
