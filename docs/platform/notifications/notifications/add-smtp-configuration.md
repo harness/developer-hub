@@ -33,7 +33,7 @@ In your Harness account, go to **Account Settings**.
 
 Click **Account Resources.**
 
-![](./static/add-smtp-configuration-00.png)
+![](../static/add-smtp-configuration-00.png)
 
 Click **SMTP Configuration** and then click **Setup**.
 

@@ -35,7 +35,7 @@ You can configure default notification templates at different scopes (Account, O
 
 - Select the **Default Template Sets** tab.
 
-    ![default-notification](./static/default-notification-template.gif)
+    ![default-notification](../static/default-notification-template.gif)
 
 ### Step 2: Create a Default Template Set
 
@@ -47,31 +47,31 @@ You can configure default notification templates at different scopes (Account, O
 
 - Click Continue
 
-        ![d-nt-1](./static/default-nt-1.gif)
+        ![d-nt-1](../static/default-nt-1.gif)
 
 ### Step 3: Configure Resource and Channel Type
 
 - **Resource Type**: Automatically set to **Pipeline** (currently the only supported resource).
 
-        ![](./static/resource-notification-type.png)
+        ![](../static/resource-notification-type.png)
 
 - **Channel Type**: Select one from the dropdown. Click Continue to proceed.
 
-        ![](./static/channel-notification-type.png)
+        ![](../static/channel-notification-type.png)
 
 ### 4: Define Event-Template Combinations
 
 - Select one or more pipeline events from the **Select Pipeline Events** dropdown.
 
-        ![](./static/select-pipeline-event.png)
+        ![](../static/select-pipeline-event.png)
 
 - Click **Select Template** and choose the template to serve as the default for the selected event type. If the template includes runtime input variables, provide the required values. Repeat this process for additional event and template combinations as needed.
 
-        ![](./static/template-selection.gif)
+        ![](../static/template-selection.gif)
 
 - Click **Submit** to save the default template set. Once saved, the template set appears on the Default Template Sets page with a summary showing the configured events and templates.
 
-        ![](./static/default-template-set.png)
+        ![](../static/default-template-set.png)
 
 ## **Template Selection Priority**
 

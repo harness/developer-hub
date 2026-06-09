@@ -39,7 +39,7 @@ This feature allows you to move a project from one organization to another withi
     - Links in old audit logs pointing to the moved project in the older organization will break as they still contain the older organization.
     - New audit logs for the moved project will appear in the newer organization.
 
-For detailed pre-move validation and post-move remediation steps, refer the [guide](./pre-move-and-post-move-guide.md).
+For detailed pre-move validation and post-move remediation steps, go to the [pre-move and post-move guide](/docs/platform/organizations-and-projects/move-projects/pre-move-and-post-move-guide) to review required actions.
 
 ## Supported modules
 
