@@ -13,6 +13,8 @@ keywords:
   - move project between organizations
   - transfer project
   - organization restructure
+redirect_from:
+  - /docs/platform/organizations-and-projects/move-projects/overview
 ---
 
 :::note Feature availability
