@@ -155,6 +155,186 @@ The following fields define a Worker Agent. Required fields are marked in the **
 
 ---
 
+## Agent definition YAML reference
+
+The following YAML shows the full structure of a Worker Agent definition. This is the YAML visible in the **YAML** tab when you view or edit an agent in the Worker Agent Catalog (AI > Worker Agents > select agent > YAML tab).
+
+```yaml
+version: 1
+agent:
+  step:
+    group:
+      steps:
+        - name: Agent
+          if: <+Always>
+          id: agent
+          run:
+            container:
+              image: pkg.harness.io/vrvdt5ius7uwygso8s0bia/harness-agents/harness-ai-agent:latest
+            env:
+              PLUGIN_MAX_TURNS: 150
+              PLUGIN_TASK: |
+                # Agent instructions (system prompt) go here.
+                # Supports Harness expressions for dynamic context injection.
+              PLUGIN_HARNESS_CONNECTOR: ${{inputs.llmConnector.id}}
+              PLUGIN_MCP_FORMAT: harness
+              PLUGIN_MCP_SERVERS: <+connectorInputs.resolveList(<+inputs.mcpConnectors>)>
+  inputs:
+    llmConnector:
+      type: connector
+      required: true
+      default: connector_Anthropic_112e
+      ui:
+        connectorCategories:
+          - AI
+    mcpConnectors:
+      type: array
+      default:
+        - connector_Mcp_66c8
+      ui:
+        component: array
+        input:
+          inputType: connector
+          inputConfig:
+            connectorTypes:
+              - Mcp
+  layout:
+    - title: Agent Configuration
+      items:
+        - llmConnector
+        - mcpConnectors
+```
+
+### YAML field reference
+
+| Field | Description |
+|---|---|
+| `version` | Schema version. Always `1`. |
+| `agent.step.group.steps` | Array of steps executed inside the agent container. The primary step has `id: agent` and `if: <+Always>`. |
+| `run.container.image` | Docker image for the agent runtime. You can override this with your own registry path if you have pulled the Harness base image and published it to your own repository (for example, to add custom tools or dependencies on top of the base image). |
+| `env.PLUGIN_MAX_TURNS` | Maximum reasoning turns the agent can take per execution. |
+| `env.PLUGIN_TASK` | The agent's system prompt (Instructions). Supports Harness expressions and built-in Harness environment variables (`$HARNESS_ACCOUNT_ID`, `$HARNESS_ORG_ID`, `$HARNESS_PROJECT_ID`). |
+| `env.PLUGIN_HARNESS_CONNECTOR` | References the LLM connector input using `${{inputs.llmConnector.id}}`. |
+| `env.PLUGIN_MCP_FORMAT` | MCP protocol format. Use `harness` for Harness MCP connectors. |
+| `env.PLUGIN_MCP_SERVERS` | Resolves MCP connector references at runtime using `<+connectorInputs.resolveList(...)>`. |
+| `inputs` | Typed parameters the agent accepts. Each input has a `type`, optional `required`, `default`, and `ui` configuration. |
+| `inputs.<name>.ui` | Controls how the input renders in the Visual editor. `connectorCategories` filters connector types; `inputConfig.connectorTypes` restricts to specific connector kinds. |
+| `layout` | Defines the Visual editor layout. Groups inputs under titled sections. |
+
+### Use a custom container image
+
+The `run.container.image` field defaults to the Harness-managed agent image (`pkg.harness.io/vrvdt5ius7uwygso8s0bia/harness-agents/harness-ai-agent:latest`). You can override this value to point to your own container registry if you need to add customizations on top of the base image.
+
+Common reasons to use a custom image:
+
+- Install additional CLI tools or language runtimes the agent needs at runtime.
+- Bundle internal certificates or proxy configuration for air-gapped environments.
+- Pin a specific image tag for reproducibility instead of using `latest`.
+
+To use a custom image, pull the Harness base image, extend it with your changes, publish it to your own registry, and update the `image` field:
+
+```yaml
+run:
+  container:
+    image: your-registry.example.com/your-org/harness-ai-agent-custom:1.0.0
+```
+
+The custom image must be accessible from your Harness delegate or Harness Cloud network at pipeline execution time.
+
+### Example: Pipeline Discovery Agent
+
+The following complete agent definition lists and summarizes pipelines in a Harness account using Harness MCP Server tools:
+
+```yaml
+version: 1
+agent:
+  step:
+    group:
+      steps:
+        - name: Agent
+          if: <+Always>
+          id: agent
+          run:
+            container:
+              image: pkg.harness.io/vrvdt5ius7uwygso8s0bia/harness-agents/harness-ai-agent:latest
+            env:
+              PLUGIN_MAX_TURNS: 150
+              # You can also reference built-in Harness environment variables in the prompt:
+              # $HARNESS_ACCOUNT_ID, $HARNESS_ORG_ID, $HARNESS_PROJECT_ID
+              # These are automatically available at runtime without defining them as inputs.
+              PLUGIN_TASK: |
+                You are a Harness Pipeline Discovery Agent. Your job is to list and summarize
+                pipelines and list and summarize their executions in a Harness account using
+                the Harness MCP Server tools.
+
+                ## Harness context:
+                $HARNESS_ACCOUNT_ID
+                $HARNESS_ORG_ID
+                $HARNESS_PROJECT_ID
+
+                ## Tool usage rules
+                - Use the Harness MCP pipeline tools (e.g., list_pipelines) for all pipeline data.
+                  Never fabricate pipeline names, IDs, or metadata.
+                  configurations return unreliable or truncated results.
+                - Default to account-level scope. If the user specifies an org or project,
+                  narrow scope using orgIdentifier / projectIdentifier parameters.
+                - If results are paginated, retrieve all pages before responding unless the
+                  user asks for a sample or top-N.
+
+                ## Scoping behavior
+                - If the user's request is ambiguous (e.g., "show me pipelines"), list at the
+                  account level and note the scope in your response.
+                - If a specified org/project returns zero results, confirm the identifiers are
+                  correct and suggest listing available orgs/projects rather than returning
+                  an empty answer.
+
+                ## Output format
+                - Return results as a table: Pipeline Name | Identifier | Project | Org |
+                  Last Modified | Status (if available).
+                - Lead with a one-line summary (e.g., "Found 42 pipelines across 6 projects").
+                - If >25 results, group by project and offer to filter.
+
+                ## Error handling
+                - On auth or permission errors: report the failure plainly, state which scope
+                  failed, and suggest verifying API key permissions — do not retry silently
+                  more than once.
+                - On empty results: state scope searched and parameters used so the user can
+                  verify, never imply pipelines don't exist without confirming scope.
+
+                ## Constraints
+                - Read-only: never create, update, delete, or execute pipelines.
+                - Do not expose API keys, tokens, or full request payloads in responses.
+              PLUGIN_HARNESS_CONNECTOR: ${{inputs.llmConnector.id}}
+              PLUGIN_MCP_FORMAT: harness
+              PLUGIN_MCP_SERVERS: <+connectorInputs.resolveList(<+inputs.mcpConnectors>)>
+  inputs:
+    llmConnector:
+      type: connector
+      required: true
+      default: connector_Anthropic_112e
+      ui:
+        connectorCategories:
+          - AI
+    mcpConnectors:
+      type: array
+      default:
+        - connector_Mcp_66c8
+      ui:
+        component: array
+        input:
+          inputType: connector
+          inputConfig:
+            connectorTypes:
+              - Mcp
+  layout:
+    - title: Agent Configuration
+      items:
+        - llmConnector
+        - mcpConnectors
+```
+
+---
+
 ## Supported stage types
 
 The **Agent** step can be added to any of the following Harness stage types:
@@ -244,6 +424,64 @@ The scoped token operates with the same credentials as the user who authored the
 
 ---
 
+## Agent permissions (pipeline-level)
+
+:::info Feature flag
+This feature is behind the feature flag `HARNESS_TOKEN_INJECT`. Contact [Harness Support](mailto:support@harness.io) to enable it on your account.
+:::
+
+Agent permissions allow you to define explicit resource-level permissions for a Worker Agent directly in the pipeline stage YAML. When configured, the agent uses its own scoped permissions to access Harness entities during execution, rather than relying on a user's configured permissions via an MCP Connector.
+
+This provides fine-grained control over what the agent can do at runtime without requiring a separate user identity or connector-level permission grants.
+
+### Configure agent permissions
+
+Add a `permissions` block under `spec` in the stage definition:
+
+```yaml
+stages:
+  - stage:
+      name: Agent
+      identifier: Agent
+      description: ""
+      type: CI
+      spec:
+        permissions:
+          pipeline: view|edit|create|delete|execute|abort
+          code_repository: view|edit|create|delete|push|review
+          artifact_registry: view|edit|delete|uploadartifact|downloadartifact|deleteartifact|quarantineartifact|firewallexceptionapprove
+          user: view|manage|invite|impersonate
+```
+
+### Supported permissions
+
+The following table lists the supported entities and their available permission values. Separate multiple permissions with the pipe (`|`) character.
+
+| Entity | Available permissions |
+|---|---|
+| `pipeline` | `view`, `edit`, `create`, `delete`, `execute`, `abort`. The `view` permission also grants access to pipeline execution data. |
+| `code_repository` | `view`, `edit`, `create`, `delete`, `push`, `review` |
+| `artifact_registry` | `view`, `edit`, `delete`, `uploadartifact`, `downloadartifact`, `deleteartifact`, `quarantineartifact`, `firewallexceptionapprove` |
+| `user` | `view`, `manage`, `invite`, `impersonate` |
+
+### How agent permissions work
+
+- The `permissions` block scopes the agent's access token to only the specified entities and actions.
+- The agent receives a runtime token with these permissions injected, independent of the pipeline author's personal permissions.
+- This replaces the default behavior where the agent inherits the authoring user's credentials via an MCP Connector for Harness.
+- Permissions are evaluated at pipeline execution time and apply for the duration of the agent step.
+
+### Current limitations
+
+The agent permission token currently supports access to the following Harness entities only:
+
+- **Pipelines** (including execution data)
+- **Code Repositories**
+
+Fetching data from the following modules is **not supported** with the agent permission token at this time: CI, CD, CCM, STO, SCS, and IaCM. For access to these modules, continue using user-configured permissions via an MCP Connector.
+
+---
+
 ## RBAC for Worker Agents
 
 Worker Agents have dedicated RBAC permissions in Harness. Administrators can control who can view, create, modify, and delete agents.
@@ -329,6 +567,10 @@ MCP (Model Context Protocol) connectors give the Worker Agent real-time access t
 - **API Key:** The authentication credential for that MCP server.
 
 **Harness Hosted MCP** is the recommended connector for accessing Harness-native data, including pipelines, executions, services, and environments. GitHub is also supported as an MCP source.
+
+:::warning GitHub MCP Connector
+The **GitHub MCP Connector** in the Harness Connector Catalog is designed for use with **AI Chat only**. It is not compatible with Worker Agents at this time. To give a Worker Agent access to GitHub data, use the Harness Hosted MCP connector or configure a custom MCP server endpoint.
+:::
 
 ### Harness Hosted MCP endpoints
 
@@ -1794,6 +2036,27 @@ For example, to gate a deployment based on an agent's risk assessment, add a con
 
 ---
 
+## Policy governance for agents (coming soon)
+
+:::info Coming soon
+Policy governance on Worker Agent objects is under development and not yet available.
+:::
+
+Harness will support OPA-based governance policies that are evaluated when a Worker Agent is saved. This allows platform administrators to enforce organizational standards on agent definitions before they are published to the catalog.
+
+With policy governance on agents, you can write policies that:
+
+- Restrict which models or model connectors an agent is allowed to use.
+- Require specific MCP connectors or block unauthorized ones.
+- Enforce naming conventions, description requirements, or maximum `max_turns` values.
+- Prevent agents from using overly broad permissions or sensitive environment variables.
+
+Policies are evaluated at **save time** (when a user creates or updates an agent definition), not at pipeline execution time. An agent that violates a policy cannot be saved until the violation is resolved.
+
+Go to [Harness Policy As Code overview](/docs/platform/governance/policy-as-code/harness-governance-overview) to learn about OPA-based governance in Harness.
+
+---
+
 ## Constraints and known limitations
 
 :::warning Model Name override format
@@ -1866,6 +2129,37 @@ The following limitations apply to Worker Agents:
   mode="general"
   fallback="Worker Agents on Harness Cloud cannot reach localhost directly. Use a tunneling tool such as ngrok to expose your local MCP server (for example, `npx harness-mcp-v2 http --port 8080`) and use the resulting public URL as the MCP Server URL in your MCP Connector. Note: if your organization uses Zscaler, ngrok URLs may be blocked under the Anonymizer category (error D22, policy HAR-ISMS-1001). If this occurs, escalate to your network or IT team to allowlist the URL, or use an alternative tunneling tool."
 />
+
+<Troubleshoot
+  issue="Worker Agent cannot connect to Harness APIs because BASE_URL is not set correctly"
+  mode="fallback-only"
+  fallback="If the agent fails to reach Harness APIs because the base URL is not being resolved correctly at runtime, add a HARNESS_BASE_URL stage variable as a workaround. In your stage definition, add a variables block with the correct base URL for your cluster (for example, https://app.harness.io or your vanity domain). See the YAML snippet in the section below."
+/>
+
+### Workaround: HARNESS_BASE_URL not set correctly
+
+If the `HARNESS_BASE_URL` is not being resolved correctly at the stage level, add it as an explicit stage variable. This ensures the agent can reach the correct Harness API endpoint at runtime.
+
+Add the following `variables` block to your stage definition:
+
+```yaml
+stages:
+  - stage:
+      name: Agent
+      identifier: Agent
+      description: ""
+      type: CI
+      spec:
+        # ... stage spec ...
+      variables:
+        - name: HARNESS_BASE_URL
+          type: String
+          description: ""
+          required: false
+          value: https://app.harness.io
+```
+
+Replace the `value` with your cluster's base URL (for example, `https://app3.harness.io`, `https://accounts.eu.harness.io`, or your vanity domain such as `https://customer-hackathon.harness.io`).
 
 ---
 
