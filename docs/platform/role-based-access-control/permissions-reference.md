@@ -108,6 +108,10 @@ This topic describes permissions relevant to [RBAC in Harness](/docs/category/pl
 
 | Resource | Permissions | Status |
 | --- | --- | --- |
+| Integrations | <ul><li>View (`ssca_integrations_view`)</li><li>Create (`ssca_integrations_create`)</li><li>Edit (`ssca_integrations_edit`)</li><li>Delete (`ssca_integrations_delete`)</li></ul> | Active |
+| Configurations | <ul><li>View (`ssca_configurations_view`)</li><li>Create (`ssca_configurations_create`)</li><li>Edit (`ssca_configurations_edit`)</li></ul> | Active |
+| External Tickets | <ul><li>View (`ssca_externaltickets_view`)</li><li>Create (`ssca_externaltickets_create`)</li><li>Edit (`ssca_externaltickets_edit`)</li></ul> | Active |
+| Pull Requests | <ul><li>View (`ssca_pullrequests_view`)</li><li>Create (`ssca_pullrequests_create`)</li><li>Edit (`ssca_pullrequests_edit`)</li></ul> | Active |
 | Remediation Tracker | <ul><li>View (`ssca_remediationtracker_view`)</li><li>Create/Edit (`ssca_remediationtracker_edit`)</li><li>Close (`ssca_remediationtracker_close`)</li></ul> | Active |
 
 ## Webhooks
