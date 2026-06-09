@@ -274,13 +274,13 @@ Enable **Disallow the executor from approving the pipeline** to stop the user wh
 
 ---
 
-## Enable approval visibility for non-approvers
+### Enable approval visibility for non-approvers
 
 By default, only users with approval permissions can view approval step details during pipeline execution. Enable the approval visibility setting to let non-approvers view those details in the pipeline execution view.
 
 Non-approvers can see the approval message, step details, and execution history, but the **Approve** and **Reject** actions remain disabled.
 
-### Configure the default setting
+**Configure the default setting**
 
 To enable approval visibility for non-approvers at the project level:
 
@@ -294,7 +294,7 @@ This setting is disabled by default. When disabled, only users with approval per
 
 When this setting is enabled, users without approval permissions see the same approval step interface as approvers, but with the **Approve** and **Reject** buttons disabled. They can view the approval message, execution history, and any other approval step details, but cannot take approval actions.
 
-### View approval steps as a non-approver
+**View approval steps as a non-approver**
 
 When a non-approver views a pipeline execution with an approval step (after enabling the default setting):
 
