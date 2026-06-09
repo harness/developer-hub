@@ -11,6 +11,7 @@ keywords:
 tags:
   - Configuration Management
   - Ansible
+sidebar_position: 70
 ---
 
 import { FAQ } from '@site/src/components/AdaptiveAIContent';
@@ -140,7 +141,7 @@ Writing full output to file: ansible-output.json
 
 When `ANSIBLE_OUTPUT_FILE` is configured, the output file can be uploaded to cloud storage (S3, GCS, Azure Blob) as a subsequent pipeline step.
 
-Go to [Upload and download artifacts](/docs/category/uploaddownload-artifacts) to review configuration options for uploading artifacts to object storage.
+Go to [Build and upload artifacts](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact) to review configuration options for uploading artifacts to object storage.
 
 ---
 
@@ -212,3 +213,9 @@ Summary payload size: 82.45 KB (original: 25.80 MB)
 </>
 )}
 </BrowserOnly>
+
+---
+
+## Related concepts
+
+- [Output variables for Ansible](/docs/infra-as-code-management/configuration-management/ansible/output-variables-for-ansible): Export data from playbooks to other pipeline steps.

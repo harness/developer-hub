@@ -1747,6 +1747,7 @@ const sidebars: SidebarsConfig = {
                 'infra-as-code-management/configuration-management/ansible/example-use-cases',
                 'infra-as-code-management/configuration-management/ansible/variable-files',
                 'infra-as-code-management/configuration-management/ansible/manage-dependencies',
+                'infra-as-code-management/configuration-management/ansible/authenticate-private-collections',
                 'infra-as-code-management/configuration-management/ansible/output-variables-for-ansible',
                 'infra-as-code-management/configuration-management/ansible/managing-large-outputs',
               ],

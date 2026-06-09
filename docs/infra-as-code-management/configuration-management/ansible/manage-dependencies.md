@@ -15,7 +15,7 @@ tags:
   - iacm
   - ansible
   - python
-sidebar_position: 55
+sidebar_position: 50
 redirect_from:
   - /docs/infra-as-code-management/configuration-management/ansible/python-requirements
   - /docs/infra-as-code-management/configuration-management/ansible/custom-images
