@@ -215,7 +215,7 @@ upgrades:
       - The required flag is enabled and set `timescale-backup-minio` secret to be ignored by Argo CD, similar to other secrets.
       - For subsequent upgrades from 0.26.x to any other version, disable the flag to prevent Argo CD from overwriting the secret, which could lead to authentication issues. 
 
-    ### Upgrade Scenarios:
+    #### Upgrade Scenarios:
       
       1. First-time upgrade to 0.26.x:
           - Set `archive_minio_secret: true`
@@ -257,7 +257,7 @@ upgrades:
     
     **Reference:** [Upcoming changes to the Bitnami catalog (effective August 28th, 2025)](https://github.com/bitnami/charts/issues/28508)
 
-      ### Required Override
+      #### Required Override
       
       To ensure compatibility, update your Harness overrides/add additional overrides in your install/upgrade commands as shown below:
 
@@ -289,7 +289,7 @@ upgrades:
 
       After applying this change, Harness will continue pulling the required Bitnami images without disruption.
 
-      ### Example
+      #### Example
       
       Save the above override file as `bitnami-migration.yaml`:
 

@@ -8,43 +8,36 @@ sidebar_position: 10
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-- Improved [PrivateLink](/docs/platform/references/private-network-connectivity/private-link-connect) reliability. For private-connect connectors that have no delegate selectors configured, Harness now automatically injects the `harness-cloud` delegate selector. This feature is behind the feature flag `CI_ENABLE_PRIVATE_CONNECT`. (CI-22672)
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/continuous-integration/rss.xml" />
 
 These release notes describe recent changes to Harness Continuous Integration.
 
-- Fixed an issue where `executionTags.addTag` added `null` values to pipeline execution tags when referencing unresolved environment variables. (CI-22595)
+:::info About Harness Release Notes
 
-- Fixed an issue where a false "CI image version outdated" warning appeared when using SHA-256 digest references for `ci-addon` or `lite-engine` images instead of tags. (CI-22628)
+- **Progressive deployment:** Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview** page in Harness. In the new UI, go to **Account Settings**, **Account Details**, **General**, **Account Details**, and then **Platform Service Versions**.
 - **Security advisories:** Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
 - **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
 
 :::note
-## Harness Cloud update – Removal of Flex Resource Class and Upgrade to 8-Core Linux Entry Machines
+**Harness Cloud update – Removal of Flex Resource Class and Upgrade to 8-Core Linux Entry Machines**
 
 The `Flex` resource class was designed to automatically assign the best available machine based on cloud capacity, with a minimum commitment of 4 cores for Linux and Windows workloads. To simplify pricing and provide a faster, more consistent experience, we are:
-*  **Removing the Flex resource class** and discontinuing the 4-core (`small`) Linux machine option. **Linux cloud workloads will now default to an 8-core machine (`medium`) as the new entry point, at no additional cost**.
 
+*  **Removing the Flex resource class** and discontinuing the 4-core (`small`) Linux machine option. **Linux cloud workloads will now default to an 8-core machine (`medium`) as the new entry point, at no additional cost**.
 * As part of this update, **Windows `small` machine pricing has been reduced by 25%**, with the minute multiplier decreasing from 8 to 6.
 
-
-### Impact
+**Impact**
 
 * Pipeline stages referencing the `Flex` machine size, or not explicitly specifying a resource class size, will automatically run on the default machine for the selected operating system (8-core for Linux, 4-core for Windows).
-
 * Linux pipelines using the `small` (4-core) machine will be upgraded to the default 8-core machine.
-
 * **No action is required from users**.
-
 * This update applies only to stages executed on Harness Cloud.
 
 We have already begun rolling out this change, and the transition will complete during December 2025.
 
-
 For additional information about Harness Cloud pricing, please visit [Subscriptions and licenses](/docs/continuous-integration/get-started/ci-subscription-mgmt#harness-cloud-billing-and-cloud-credits).
-
-
 
 :::
 
