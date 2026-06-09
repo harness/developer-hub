@@ -17,6 +17,33 @@ These release notes describe recent changes to Harness Supply Chain Security.
 
 :::
 
+## May 2026
+
+### Version: v1.62.3 , Plugin Version: v0.61.0
+
+#### New Features and Enhancements
+
+- Added support for [Role-Based Access Control (RBAC) for Supply Chain Security](/docs/software-supply-chain-assurance/settings/rbac), enabling granular access management for SCS workflows across Account, Organization, and Project scopes through configurable role-based permissions. This feature is behind the feature flag `SCS_RBAC` for existing accounts.
+  <DocImage path={require('./static/scs/access-control-permissions.png')} width="70%" height="70%" title="Click to view full size image" />
+- Added support for [Bitbucket Repository Onboarding in RSPM](/docs/software-supply-chain-assurance/open-source-management/integrations/bitbucket), allowing you to discover, onboard, and manage Bitbucket repositories directly within SCS.
+
+  <DocImage path={require('./static/scs/bitbucket-integration.png')} width="70%" height="70%" title="Click to view full size image" />
+
+- Added support for detecting dependencies with [malicious packages](/docs/software-supply-chain-assurance/manage-risk-and-compliance/opensource-security-risk-management/#malicious-packages) and [typosquatting](/docs/software-supply-chain-assurance/manage-risk-and-compliance/opensource-security-risk-management#typosquatting) OSS risks, helping identify potentially deceptive or harmful open-source dependencies. You can filter dependencies by these risk types, review detailed risk summaries, and use the detected risk counts in pipeline policies to strengthen software supply chain security.
+  <DocImage path={require('./static/scs/malicious-package-typosquatting-ossrisks.png')} width="70%" height="70%" title="Click to view full size image" />
+
+- Added support for [License Family Classification](/docs/software-supply-chain-assurance/open-source-management/license-family) in Software Bill of Materials (SBOM), enabling automatic categorization of licenses into license families for improved license risk assessment and governance. This feature also supports custom license family mappings and policy-based enforcement using OPA policies.
+
+  <DocImage path={require('./static/scs/license-family-configuration.png')} width="70%" height="70%" title="Click to view full size image" />
+
+#### Breaking Changes
+
+- With the general availability of [Role-Based Access Control (RBAC) for Supply Chain Security](/docs/software-supply-chain-assurance/settings/rbac), users assigned view-only roles can no longer perform write operations on SCS resources unless explicitly granted the required permissions.
+
+### Fixed Issues
+
+- Fixed an issue where SBOM orchestration steps could fail during SBOM upload when custom configuration settings were not applied correctly, resulting in connectivity issues ([ZD-112588](https://harnesssupport.zendesk.com/agent/tickets/112588)).
+
 ## April 2026
 
 ### Version: v1.59.0 , Plugin Version: v0.59.0
