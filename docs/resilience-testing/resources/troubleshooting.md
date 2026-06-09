@@ -463,7 +463,7 @@ Harness CE currently offers GameDay support for orchestrating and running multip
 
 ### Inclusion in ChaosGuard Policies
 
-[ChaosGuard](../chaos-testing/governance/rbac) is a Harness CE feature that enhances the security and control of chaos experiments. Currently, ChaosGuard policies don't support Windows chaos experiments.
+[ChaosGuard](/docs/resilience-testing/chaos-testing/governance/governance-in-execution) is a Harness CE feature that enhances the security and control of chaos experiments. Currently, ChaosGuard policies don't support Windows chaos experiments.
 
 ### Scheduled or Cron Experiments
 

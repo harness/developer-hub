@@ -81,7 +81,7 @@ Chaos control plane has the concept of services that are used for license tracki
 
 Chaos governance is a critical feature of the Harness Resilience Testing module, reflecting its role in minimizing risks and ensuring controlled, purposeful chaos experiments. Without effective governance, poorly planned experiments can unintentionally expand the blast radius, leading to unexpected disruptions that may harm developer productivity or diminish customer satisfaction. Governance in chaos engineering can be broadly categorized into two key aspects, ensuring structured, safe, and impactful experimentation.
 
-1. Guardrails around creating chaos agents, chaos experiments, and chaos execution policies. This is achieved through the [Harness platform RBAC policies](./chaos-testing/governance/rbac).
+1. Guardrails around creating chaos agents, chaos experiments, and chaos execution policies. This is achieved through the [Harness platform RBAC policies](/docs/resilience-testing/access-control/rbac).
 2. Guardrails around running chaos experiments. This is achieved through the [ChaosGuard](./chaos-testing/governance/governance-in-execution).
 
 ### Construct Chaos Experiments

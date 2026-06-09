@@ -20,6 +20,33 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 :::
 
+## June 2026
+
+### Version 1.89.0
+
+#### Images required
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
+
+- harness/chaos-ddcr:1.89.0
+- harness/chaos-ddcr-faults:1.89.0
+- harness/chaos-log-watcher:1.89.0
+- harness/service-discovery-collector:0.69.0
+
+#### New Features and Enhancements
+
+- Added a risk insights landing page and routes in Chaos
+- Added handling for Pending and Failed statuses for the helper pod
+- Added propagation of the infrastructure securityContext to the experiment and helper pods
+- Added propagation of DDCR resources to the experiment and helper pods
+- Updated experiment execution from pipelines to use the `chaos_chaosexperiment_execute` permission. The `chaos_chaosexperiment_executepipeline` permission is deprecated and removed.
+- Enabled the Download report button on the chaos subscriptions page
+
+#### Fixed Issues
+
+- Fixed an incorrect error message shown for permission errors
+- Fixed missing support for extra volume mounts and extra volumes in background processor (bg-processor) jobs
+- Fixed the experiment report for Linux and Windows not showing environment details
+
 ## May 2026
 
 ### Version 1.88.0

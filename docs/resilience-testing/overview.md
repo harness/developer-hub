@@ -103,7 +103,7 @@ The platform includes enterprise features like RBAC, SSO, comprehensive logging,
 - [Key Concepts](./key-concepts): Understand core resilience testing terminology and concepts
 - [Get Started with Chaos Testing](./chaos-testing/get-started): Run your first chaos experiment
 - [Explore Chaos Faults](/docs/chaos-engineering/faults/chaos-faults): Browse 200+ ready-to-use fault scenarios
-- [Set Up Governance](./chaos-testing/governance/rbac): Configure RBAC and ChaosGuard for safe testing
+- [Set Up Governance](/docs/resilience-testing/access-control/rbac): Configure RBAC and ChaosGuard for safe testing
 - [Get Started with Load Testing](./load-testing/get-started): Simulate traffic and test performance
 - [Get Started with DR Testing](#): Validate disaster recovery procedures
 

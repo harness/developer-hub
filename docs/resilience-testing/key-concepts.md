@@ -239,5 +239,5 @@ Now that you understand the core concepts:
 - [Architecture](./architecture): Learn about the control plane and execution plane architecture
 - [Get Started with Chaos Testing](./chaos-testing/get-started): Run your first chaos experiment
 - [Explore Chaos Faults](/docs/chaos-engineering/faults/chaos-faults): Browse 200+ ready-to-use fault scenarios
-- [Set Up Governance](./chaos-testing/governance/rbac): Configure RBAC and ChaosGuard for safe testing 
+- [Set Up Governance](/docs/resilience-testing/access-control/rbac): Configure RBAC and ChaosGuard for safe testing 
 
