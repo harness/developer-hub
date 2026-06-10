@@ -227,11 +227,11 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io richard.black@harness.io a
 /release-notes/ai-sre.md ryan.taylor@harness.io tina.huang@harness.io nicholas.lanam@harness.io matthew.sullivan@harness.io brett.lazarus@harness.io c_geertjan.wielenga@harness.io bavithra.devi@harness.io rajbabu.das@harness.io naveen.shukla@harness.io hrishav.kumar@harness.io laura.mannus@harness.io
 
 # AI Test automation Docs
-/docs/ai-test-automation/ shibam.dhar@harness.io debaditya.chatterjee@harness.io
-/release-notes/ai-test-automation.md shibam.dhar@harness.io debaditya.chatterjee@harness.io
-/src/components/Docs/AiTestAutomation.tsx shibam.dhar@harness.io debaditya.chatterjee@harness.io
-/src/components/Roadmap/data/ataData.ts shibam.dhar@harness.io debaditya.chatterjee@harness.io
-/release-notes/static/ait/ shibam.dhar@harness.io debaditya.chatterjee@harness.io
+/docs/ai-test-automation/ shibam.dhar@harness.io debaditya.chatterjee@harness.io sumit.khaitan@harness.io
+/release-notes/ai-test-automation.md shibam.dhar@harness.io debaditya.chatterjee@harness.io sumit.khaitan@harness.io
+/src/components/Docs/AiTestAutomation.tsx shibam.dhar@harness.io debaditya.chatterjee@harness.io sumit.khaitan@harness.io
+/src/components/Roadmap/data/ataData.ts shibam.dhar@harness.io debaditya.chatterjee@harness.io sumit.khaitan@harness.io
+/release-notes/static/ait/ shibam.dhar@harness.io debaditya.chatterjee@harness.io sumit.khaitan@harness.io
 
 
 # Artifact Registry Docs

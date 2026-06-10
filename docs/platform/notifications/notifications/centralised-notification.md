@@ -11,15 +11,14 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import React from 'react';
 
-## Overview
-
-Harness centralised notifications allow you to send notifications based on rules and conditions across pipelines, delegates, and GitOps applications. You can configure and manage alerts to stay informed about critical events in your Harness environment.
+Harness centralised notifications allow you to send notifications based on rules and conditions across pipelines, delegates, GitOps applications, and AI Test Automation. You can configure and manage alerts to stay informed about critical events in your Harness environment.
 
 You can configure centralised notifications for:
 
 - **Pipelines:** Get notified about pipeline events like success, failure, or stage completion.
 - **Delegates:** Receive alerts when delegates disconnect, expire, or are about to expire.
 - **GitOps Applications:** Get notified about application sync and health events, such as sync success/failure, out-of-sync drift, and health degradation.
+- **AI Test Automation:** Get notified when Playwright test runs complete, fail, or are aborted.
 
 ## Pipeline Notifications
 
@@ -77,6 +76,18 @@ You can also configure the **Waiting for User Action** event in centralized noti
    - Click **Submit** to save your configuration
 </TabItem>
 </Tabs>
+
+## AI Test Automation Notifications
+
+Centralised Notifications for AI Test Automation allow you to receive alerts when Playwright test runs complete, fail, or are aborted. Create a notification rule following the same steps as [Pipeline Notifications](#pipeline-notifications), but select **AI Test Automation** as the **Resource Type** in Step 2.
+
+**Available events:**
+
+- **Playwright Run Completed**
+- **Playwright Run Failed**
+- **Playwright Run Aborted**
+
+For the AI Test Automation side of setup, go to [Set up notifications for Playwright runs](/docs/ai-test-automation/suites/playwright-builds#set-up-notifications-for-playwright-runs).
 
 ## Delegate Notifications
 

@@ -1,7 +1,9 @@
 ---
-title: Test Suites
-description: Group and run multiple tests together for efficient batch execution
+title: AI Test Automation
+description: Group and run multiple Harness AI tests together from the AI Test Automation tab under Suites
 sidebar_position: 10
+redirect_from:
+  - /docs/ai-test-automation/test-suite
 keywords:
   - test suite creation
   - batch test execution
@@ -12,10 +14,20 @@ tags:
   - execution
 ---
 
+Under **Test Suites** in the product, select **Create new suite** and choose **AI Test** to create and run batches of Harness-authored tests. For **Playwright** suites executed in Harness, select **Playwright** from the same dropdown. Go to [Playwright in AI Test Automation](/docs/ai-test-automation/suites/playwright-builds) for that flow.
 
-Test Suites allow you to group multiple tests together and run them as a single batch. This is particularly useful for:
+---
 
-- **CI/CD integration**: Automate test execution in your deployment pipelines
+<DocImage
+  path={require('./static/suites-list.png')}
+  alt="Test Suites list page showing suite names, creators, and latest run status"
+  title="Test Suites list page"
+  width="100%"
+/>
+
+Test suites let you group multiple tests together and run them as a single batch. This is particularly useful for:
+
+- **CI/CD integration**: Automate test execution from [Harness CI and CD pipelines](/docs/ai-test-automation/integrations/harness-cd) using a **custom stage** and the **AI Test Automation** step
 - **Regression testing**: Run comprehensive test sets to validate application changes
 - **Organized testing**: Group related tests by feature, module, or test type
 - **Parallel execution**: Run multiple tests simultaneously to reduce overall execution time
@@ -258,4 +270,3 @@ Tests in the suite run with default parameters and can be bulk edited before exe
 Watch this overview of Test Suites in Harness AI Test Automation:
 
 <iframe src="https://www.loom.com/embed/82b37c54cbb24b4db74f926c0f719e7a" width="960" height="540" frameborder="0" allowfullscreen></iframe>
-

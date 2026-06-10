@@ -45,7 +45,7 @@ AI Test Automation provides the following capabilities:
 - **Self-healing tests:** AI dynamically adjusts to UI or workflow changes, maintaining stable tests without manual patching.
 - **Environment agnostic:** Define tests once and run across QA, staging, or production by switching environment parameters. Go to [Application environments](/docs/ai-test-automation/test-environments/adding-application-environments) to configure environments.
 - **Pipeline integration:** Automate tests within your CI/CD workflows for faster, reliable feedback. Go to [Harness pipeline integration](/docs/ai-test-automation/integrations/harness-cd) to set up pipeline triggers.
-- **Comprehensive test suites:** Organize and manage tests grouped logically for batch runs, scheduling, and notifications. Go to [Test suites](/docs/ai-test-automation/test-suite) to configure suites.
+- **Comprehensive test suites:** Organize and manage tests grouped logically for batch runs, scheduling, and notifications. Go to [Test suites](/docs/ai-test-automation/suites/harness-ai-suites) to configure suites.
 - **Reusable tasks:** Modular components streamline complex workflows like authentication or setup sequences. Go to [Tasks](/docs/ai-test-automation/test-authoring/creating-tests/tasks) to create and manage tasks.
 - **Secure execution:** Tests run isolated in Kubernetes pods with strict privacy controls, including no persistent user data.
 

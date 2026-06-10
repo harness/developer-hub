@@ -2,6 +2,8 @@
 title: Setting test suite with setup & teardown
 description: Setup and Teardown
 sidebar_position: 20
+redirect_from:
+  - /docs/ai-test-automation/test-suite/setting-up-a-test-suite-with-setup-and-teardown
 ---
 Often in test automation a test suite is expected to have `Setup` and `Teardown` phases. In the `Setup` phase, users often create data that is used or modifed by subsequent tests in the test suite. The teardown cleans up the data that is created by the setup phase and by the subsequent tests.&#x20;
 
