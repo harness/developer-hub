@@ -1419,5 +1419,13 @@
     "gaStartDate": "2026-06-08",
     "module": "Continuous Delivery",
     "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "SCS_RBAC",
+    "description": "Enables support for Role-Based Access Control (RBAC) for Supply Chain Security",
+    "gaStartDate": "2026-06-09",
+    "module": "Supply Chain Security",
+    "lifecycleState": "Limited GA"
   }
 ]
+
