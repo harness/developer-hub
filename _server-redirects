@@ -199,6 +199,7 @@ docs/self-managed-enterprise-edition/monitor-harness-on-prem#view-metrics-on-the
 
 # Added by richard.black on 2026-06-08 for HDH-692 - Feature Flags GA Timeline superseded by Feature Availability
 /release-notes/feature-flags-ga-timeline /release-notes/features 301
+/release-notes/early-access /release-notes/features
 
 # Redirect for llms.txt file
 /docs/llms.txt /llms.txt

@@ -27,13 +27,10 @@ Some Harness CI features are released behind feature flags to get feedback from 
 
 You can opt-in to the early access (beta) features for Harness CI described in the following table. Contact [Harness Support](mailto:support@harness.io) to enable specific early access features in your Harness account. Include the feature flag or name with your request.
 
-For more information about early access features, including early access features for the Harness Platform, delegate, and other Harness modules, go to [Early access features](/release-notes/early-access).
-
 | Flag | Description | Availability |
 | ---  | ----------- | ------------ |
 | `CI_ENABLE_OUTPUT_SECRETS` | Type selection for [output variables in Run steps](/docs/continuous-integration/use-ci/run-step-settings#output-variables). | Beta |
 | `CI_USE_LESS_STRICT_EVALUATION_FOR_MAP_VARS` | Allows empty environment variables in CI pipelines. | Beta |
-| `CI_ENABLE_OUTPUT_SECRETS` | Type selection for [output variables in Run steps](/docs/continuous-integration/use-ci/run-step-settings#output-variables). | Beta |
 | `CI_USE_LESS_STRICT_EVALUATION_FOR_MAP_VARS` | Allows empty environment variables in CI pipelines. | Beta |
 | `CI_ENABLE_VM_DELEGATE_SELECTOR` | Delegate selectors for self-managed VM build infrastructures (CI-11545).<br/>With this feature flag enabled, you can use [delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) with [self-managed VM build infrastructure](/docs/category/set-up-vm-build-infrastructures). | Beta |
 | `CI_CODEBASE_SELECTOR` | Delegate selectors for codebase tasks (CI-9980).<br/>Without this feature flag enabled, delegate selectors aren't applied to delegate-related CI codebase tasks.<br/>With this feature flag enabled, Harness uses your [delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) for delegate-related codebase tasks. Delegate selection for these tasks takes precedence in order of [pipeline selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#pipeline-delegate-selector) over [connector selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#infrastructure-connector). | Beta |
@@ -48,7 +45,7 @@ For more information about early access features, including early access feature
 | `CI_IGNORE_TEST_CONNECTION` | Skip connector preflight checks (CI-13806).<br/>When this account-level feature flag is enabled along with the `ignoreTestConnection: true` property in a connector's YAML configuration, connection tests will always return as successful, bypassing actual connectivity validation. This is useful when network restrictions, split DNS, or firewall policies prevent connection tests from succeeding even though the connector can function properly at runtime. For more information, go to [Create a connector using YAML](/docs/platform/connectors/create-a-connector-using-yaml). | Beta |
 | `CI_SCM_TASK_TIMEOUT_CONFIGURABLE` | Increase SCM codebase task timeout (CI-22015).<br/>Without this feature flag enabled, the SCM codebase task that fetches pull request, branch, or commit metadata uses a 30-second timeout. With this feature flag enabled, Harness uses a 180-second timeout for this task. Enable this flag for accounts with large pull requests or slow Git providers where the default 30-second timeout results in pipeline failures with the error `Failed to retrieve codebase info from returned delegate response`. | Beta |
 
-<!-- In development: CI_YAML_VERSIONING, CI_ENABLE_TTY_LOGS, CIE_ENABLE_RUNTEST_V2, CI_ENABLE_INTELLIGENT_DEFAULTS  -->
+<!-- In development: CI_YAML_VERSIONING, CI_ENABLE_TTY_LOGS, CI_ENABLE_INTELLIGENT_DEFAULTS  -->
 
 <!-- Beta but not listed in table: CI_PIPELINE_VARIABLES_IN_STEPS (build & push env vars?), CI_VM_CONTAINERLESS_RUN_ASUSER
 
@@ -56,4 +53,4 @@ CI_INDIRECT_LOG_UPLOAD possibly moving to Account settings
 
 Harness Cloud flags: CI_ENABLE_BARE_METAL, HOSTED_BUILDS, CIE_HOSTED_VMS
 
-<!-- unknown: CI_DISABLE_RESOURCE_OPTIMIZATION, CI_EXTRA_ADDON_RESOURCE, DISABLE_CI_STAGE_DEL_SELECTOR, ENABLE_K8_BUILDS (probably remove since K8s is paid only), CI_PARSE_SAVINGS -->
+<!-- unknown: CI_EXTRA_ADDON_RESOURCE, DISABLE_CI_STAGE_DEL_SELECTOR, ENABLE_K8_BUILDS (probably remove since K8s is paid only), CI_PARSE_SAVINGS -->

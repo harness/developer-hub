@@ -1421,11 +1421,200 @@
     "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "SCS_RBAC",
-    "description": "Enables support for Role-Based Access Control (RBAC) for Supply Chain Security",
-    "gaStartDate": "2026-06-09",
-    "module": "Supply Chain Security",
+  "flagKey": "BASE_IMAGE_DETECTION",
+  "description": "Detects vulnerabilities originating from container base images during STO container scans.",
+  "gaStartDate": "2025-11-01",
+  "module": "Security Testing Orchestration",
+  "lifecycleState": "Limited GA"
+  },
+  {
+  "flagKey": "AI_SUPPORT_CHATBOT",
+  "description": "Provides access to the Harness AI-powered support chat experience.",
+  "gaStartDate": "2024-04-25",
+  "module": "Platform",
+  "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "ENFORCE_DELEGATE_REGISTRATION_ALLOWLIST",
+    "description": "Restricts delegate registration to approved IP addresses or CIDR ranges defined in a Harness allowlist.",
+    "gaStartDate": "2024-01-01",
+    "module": "Platform",
+    "lifecycleState": "Beta"
+  },
+  {
+    "flagKey": "ALLOW_TO_SET_PUBLIC_ACCESS",
+    "description": "Allows public access to Harness pipeline execution views through pipeline and authentication settings.",
+    "gaStartDate": "2024-01-01",
+    "module": "Platform",
     "lifecycleState": "Limited GA"
-  }
+  },
+  {
+    "flagKey": "NEW_SCIM_STANDARDS",
+    "description": "Adds enhanced SCIM 2.0 compliance, including user name attributes, metadata fields, and group membership responses.",
+    "gaStartDate": "2023-03-01",
+    "module": "Platform",
+    "lifecycleState": "Beta"
+  },
+  {
+    "flagKey": "USER_DELETION_V2",
+    "description": "Enables deletion of SCIM-provisioned users in NextGen while retaining the user in FirstGen.",
+    "gaStartDate": "2023-02-01",
+    "module": "Platform",
+    "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "AUTO_ACCEPT_SAML_ACCOUNT_INVITES",
+    "description": "Automatically accepts SAML user invitations and sends invite notification emails.",
+    "gaStartDate": "2022-10-01",
+    "module": "Platform",
+    "lifecycleState": "Beta"
+  },
+  {
+    "flagKey": "NO_EMAIL_FOR_SAML_ACCOUNT_INVITES",
+    "description": "Disables email notifications for SAML-based user invitations.",
+    "gaStartDate": "2022-10-01",
+    "module": "Platform",
+    "lifecycleState": "Beta"
+  },
+  {
+    "flagKey": "TASK_CAPACITY_CHECK",
+    "description": "Allows Harness delegates to limit concurrent task acquisition and queue excess tasks based on configured capacity.",
+    "gaStartDate": "2023-07-01",
+    "module": "Platform",
+    "lifecycleState": "Beta"
+  },
+  {
+    "flagKey": "ENABLE_DYNAMIC_HANDLING_OF_REQUEST",
+    "description": "Captures Harness delegate agent metrics, including task execution, connectivity, and resource utilization, for immutable delegates.",
+    "gaStartDate": "2023-05-01",
+    "module": "Platform",
+    "lifecycleState": "Beta"
+  },
+  {
+    "flagKey": "YAML_VERSIONING",
+    "description": "Enables versioning of CI YAML schemas to support gradual rollout of new schema versions and maintain backward compatibility.",
+    "gaStartDate": "2024-06-24",
+    "module": "Continuous Integration",
+    "lifecycleState": "Beta"
+  },
+  {
+    "flagKey": "ENABLE_TTY_LOGS",
+    "description": "Enables TTY logs for CI builds, providing enhanced log formatting and readability for build output.",
+    "gaStartDate": "2024-06-24",
+    "module": "Continuous Integration",
+    "lifecycleState": "Beta"
+  },
+  {
+    "flagKey": "ENABLE_INTELLIGENT_DEFAULTS",
+    "description": "Enables TTY logs specifically for Harness-hosted CI builds, improving log formatting and readability for builds running on Harness infrastructure.",
+    "gaStartDate": "2024-06-18",
+    "module": "Continuous Integration",
+    "lifecycleState": "Beta"
+  },
+  {
+    "flagKey": "PIPELINE_VARIABLES_IN_STEPS",
+    "description": "Enables the use of pipeline-level variables within CI steps for more flexible and dynamic pipeline configurations.",
+    "gaStartDate": "2024-06-18",
+    "module": "Continuous Integration",
+    "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "VM_CONTAINERLESS_RUN_ASUSER",
+    "description": "Enables running CI steps as non-root users in containerless execution environments for enhanced security and compliance.",
+    "gaStartDate": "2024-06-18",
+    "module": "Continuous Integration",
+    "lifecycleState": "Beta"
+  },
+  {
+    "flagKey": "INDIRECT_LOG_UPLOAD",
+    "description": "Enables indirect log upload for CI builds, allowing logs to be uploaded asynchronously to improve build performance and reliability.",
+    "gaStartDate": "2024-06-18",
+    "module": "Continuous Integration",
+    "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "ENABLE_BARE_METAL",
+    "description": "Enables support for running CI builds on bare metal infrastructure for improved performance and resource utilization.",
+    "gaStartDate": "2024-04-22",
+    "module": "Continuous Integration",
+    "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "ENABLE_BARE_METAL_FREE_ACCOUNT",
+    "description": "Enables support for running CI builds on bare metal infrastructure for free accounts, providing enhanced performance and resource utilization for users on the free tier.",
+    "gaStartDate": "2024-04-25",
+    "module": "Continuous Integration",
+    "lifecycleState": "Beta"
+  },
+  {
+    "flagKey": "ENABLE_BARE_METAL_STANDARD_32",
+    "description": "Enables support for running CI builds on bare metal infrastructure for standard accounts with up to 32 concurrent builds, providing enhanced performance and resource utilization for users on the standard tier.",
+    "gaStartDate": "2024-06-18",
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "HOSTED_BUILDS",
+    "description": "Enables support for running CI builds on Harness-hosted infrastructure for improved performance and simplified setup.",
+    "gaStartDate": "2024-04-22",
+    "module": "Continuous Integration",
+    "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "HOSTED_BUILDS_USE_RUNNER",
+    "description": "Enables support for running CI builds on Harness-hosted infrastructure using the Runner execution engine for improved performance and reliability.",
+    "gaStartDate": "2025-01-06",
+    "module": "Continuous Integration",
+    "lifecycleState": "Beta"
+  },
+   {
+    "flagKey": "HOSTED_BUILDS_SUNSET_DLITE",
+    "description": "Disables the older DLite execution engine for CI builds running on Harness-hosted infrastructure, fully transitioning to the newer Runner engine for improved performance and reliability.",
+    "gaStartDate": "2025-07-23",
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
+   },
+   {
+    "flagKey": "HOSTED_VMS",
+    "description": "Enables support for running CI builds on Harness-hosted virtual machine infrastructure for improved performance and simplified setup.",
+    "gaStartDate": "2024-04-22",
+    "module": "Continuous Integration",
+    "lifecycleState": "Limited GA"
+   },
+   {
+    "flagKey": "HOSTED_VMS_MAC",
+    "description": "Enables support for running CI builds on Harness-hosted virtual machine infrastructure with MacOS for improved performance and simplified setup for MacOS builds.",
+    "gaStartDate": "2024-05-06",
+    "module": "Continuous Integration",
+    "lifecycleState": "Limited GA"
+   },
+   {
+    "flagKey": "EXTRA_ADDON_RESOURCE",
+    "description": "Enables support for extra addon resources in CI builds, allowing users to specify additional resources for CI build execution.",
+    "gaStartDate": "2024-06-24",
+    "module": "Continuous Integration",
+    "lifecycleState": "Beta"
+   },
+   {
+    "flagKey": "DISABLE_CI_STAGE_DEL_SELECTOR",
+    "description": "Disables the use of delegate selectors at the CI stage level, enforcing delegate selection at the step level for more granular control over CI build execution.",
+    "gaStartDate": "2024-06-24",
+    "module": "Continuous Integration",
+    "lifecycleState": "Beta"
+   },
+   {
+    "flagKey": "ENABLE_K8_BUILDS",
+    "description": "Enables support for running CI builds on Kubernetes infrastructure for improved scalability and resource utilization.",
+    "gaStartDate": "2024-04-22",
+    "module": "Continuous Integration",
+    "lifecycleState": "Limited GA"
+   },
+   {
+    "flagKey": "PARSE_SAVINGS",
+    "description": "Enables parsing of savings information from CI build execution for improved cost visibility and optimization.",
+    "gaStartDate": "2024-06-18",
+    "module": "Continuous Integration",
+    "lifecycleState": "Limited GA"
+   }
 ]
 

@@ -8,7 +8,7 @@ redirect_from:
 ---
 
 :::info
-The Trellis Factors feature is currently in BETA and is behind the Feature Flag SEI_SHOW_TRELIS_NEW_INTERVAL and SEI_TRELLIS_BY_JOB_ROLES. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+The Trellis Factors feature is in beta and is behind the `SEI_SHOW_TRELIS_NEW_INTERVAL` feature flag. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
 :::
 
 Trellis Factors are used to define the threshold for Trellis Metrics calculations in Harness SEI. 

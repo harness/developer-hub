@@ -320,7 +320,7 @@ Learn about recent and upcoming changes to the Harness Platform and modules.
 
 * <a href="/release-notes" target="_blank" >Release notes</a>
 * <a href="/roadmap" target="_blank" >Product roadmap</a>
-* <a href="/release-notes/early-access" target="_blank" >Early access features</a>
+* <a href="/release-notes/features" target="_blank" >Feature availability</a>
 
 <details>
 <summary> Beta, Limited GA, and GA definitions </summary>

@@ -7,9 +7,7 @@ redirect_from:
 ---
 Harness SEI is currently available to a limited set of customers. To get started, send an email to [support@harness.io](mailto:support@harness.io) for a demo and a Harness specialist will get you going.
 
-To enable Harness Software Engineering Insights (SEI):
-* Request activation of the SEI_ENABLED feature flag for your account
-* Specify your account details and any relevant information
+To enable Harness Software Engineering Insights (SEI), specify your account details and any relevant information.
 
 Once Harness SEI is enabled in your account, an account administrator can help you configure your integrations and create the required Insights.
 

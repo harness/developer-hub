@@ -78,18 +78,6 @@ To configure the **Issue Hygiene report**, follow these steps:
 
 Configure the widget's **Filters**. Filters can be blank or filtered down to a desired ticket type or time frame. If you include multiple filters, they are inherently combined with an `AND` operator.
 
-:::info
-**EARLY ACCESS FEATURE**
-
-The ability to select specific sprints or the current sprint at the widget level is currently in BETA. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
-
-When the Feature Flag is enabled for the SEI module you can:
-
-* Define the criteria for considering sprints under the Filters section. You have two options: you can either include the current sprint or filter by the last sprint.
-* You can also manually select the sprints for which you want to configure the widget.
-
-:::
-
 #### Step 3: Define the Weights for each Hygiene Category
 
 Configure the **Weights** for each hygiene category.

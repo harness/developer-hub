@@ -79,7 +79,7 @@ To reference an output variable in a stage other than the one where the output v
 
 :::note
 
-Currently, this [early access feature](/release-notes/early-access) is behind the feature flag `CI_ENABLE_OUTPUT_SECRETS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, this [early access feature](/release-notes/features) is behind the feature flag `CI_ENABLE_OUTPUT_SECRETS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 
@@ -97,7 +97,7 @@ If you select the **Secret** type, Harness treats the output variable value as a
 
 :::note
 
-Currently, this [early access feature](/release-notes/early-access) is behind the feature flag `CI_OUTPUT_VARIABLES_AS_ENV`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, this [early access feature](/release-notes/features) is behind the feature flag `CI_OUTPUT_VARIABLES_AS_ENV`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 
