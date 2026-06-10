@@ -7,6 +7,7 @@ sidebar_position: 10
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
 
 This topic describes how to use the **Git Clone** step included in Harness Continuous Integration (CI) pipelines. The **Git Clone** step clones a repository into the CI stage's workspace. In addition to the pipeline's default [clone codebase](./create-and-configure-a-codebase.md), you can use **Git Clone**, **Run**, and **Plugin** steps to clone additional code repos into the pipeline's workspace.
@@ -153,6 +154,60 @@ This could be used, for example, to set additional LFS configurations or clone s
 ```bash
 git config lfs.fetchexclude ".jpg"
 ```
+
+#### Example: Partial clone
+
+[Git partial clone](https://git-scm.com/docs/partial-clone) downloads commit and tree objects upfront but defers blob (file content) downloads until those files are accessed. The full commit history is available for `git log` with no extra network calls. Operations that read file content, such as `git blame`, `git show`, and the checkout step performed by `git bisect`, trigger on-demand blob downloads as the files they touch are accessed. The initial fetch size for large repositories is reduced.
+
+Partial clone works with the [Harness Code Repository module](/docs/code-repository) and any third-party Git provider that supports the partial clone protocol (GitHub, GitLab, Bitbucket, and others).
+
+To enable partial clone, set `depth: 0` so the clone is not shallow, then add a `preFetchCommand` that runs `git fetch` with a `--filter` flag:
+
+```yaml
+- step:
+    type: GitClone
+    name: clone repo
+    identifier: clone_repo
+    spec:
+      connectorRef: YOUR_CONNECTOR_ID
+      build:
+        type: branch
+        spec:
+          branch: <+codebase.branch>
+      depth: 0
+      preFetchCommand: git fetch --filter=blob:none origin <+codebase.branch>
+```
+
+`depth: 0` is required. If `depth` is greater than `0`, the clone is shallow, and combining a shallow clone with a partial-clone filter is not supported and may produce unexpected results.
+
+The expression `<+codebase.branch>` resolves to the pipeline codebase branch at runtime. You can also use a literal branch name such as `main` or `master`. For pull request triggers, `<+codebase.branch>` resolves to the source branch of the PR. If you need to fetch from the target branch instead, use `<+codebase.targetBranch>`.
+
+You can substitute any `--filter` value that Git supports. For example:
+
+- **Defer all blobs:** `git fetch --filter=blob:none origin <+codebase.branch>` downloads no blobs upfront and fetches each one on first access.
+- **Defer large blobs only:** `git fetch --filter=blob:limit=100k origin <+codebase.branch>` downloads blobs smaller than 100 KB upfront and defers the rest.
+
+Go to the [`git rev-list --filter` reference](https://git-scm.com/docs/git-rev-list#Documentation/git-rev-list.txt---filterltfilter-specgt) to review all supported filter values.
+
+To verify that partial clone is active after the **Git Clone** step, add a **Run** step that prints the following Git configuration values from inside the cloned directory:
+
+```bash
+git config --get remote.origin.promisor              # expected: true
+git config --get remote.origin.partialclonefilter    # expected: your filter value, for example blob:none
+git rev-parse --is-shallow-repository                # expected: false
+```
+
+:::tip
+Combine partial clone with [sparse checkout](https://git-scm.com/docs/git-sparse-checkout) to limit which directories are materialized in the working tree. This further reduces disk usage when only a subset of the repository is needed for the build.
+:::
+
+Blobs that were not fetched upfront are downloaded on demand the first time they are accessed, for example by `git checkout`, `git show`, or `git blame`.
+
+<Troubleshoot
+  issue="Partial clone filter is ignored or produces errors when depth is greater than 0"
+  mode="docs"
+  fallback="Set depth to 0. Shallow clones (depth > 0) are incompatible with partial clone filters. Remove the depth setting or set it explicitly to 0, then re-run the pipeline."
+/>
 
 ### SSL Verify
 
