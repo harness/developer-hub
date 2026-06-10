@@ -239,6 +239,14 @@ run:
     image: your-registry.example.com/your-org/harness-ai-agent-custom:1.0.0
 ```
 
+Alternatively, if you prefer to pull the image from the Harness DockerHub registry instead of the default Harness private registry, use the following image reference (requires a Docker connector configured in your pipeline):
+
+```yaml
+run:
+  container:
+    image: harness/harness-ai-agent:0.1.40
+```
+
 The custom image must be accessible from your Harness delegate or Harness Cloud network at pipeline execution time.
 
 ### Example: Pipeline Discovery Agent
@@ -605,6 +613,51 @@ To create an MCP Server Connector in Harness:
 :::warning
 MCP connectors require **both** a valid hosted MCP URL and an API key. A connector name alone is not sufficient.
 :::
+
+### MCP Connector YAML examples
+
+The following examples show the connector YAML for Harness MCP and GitHub MCP. You can create these connectors via the API or by importing the YAML in the Harness Connector settings.
+
+**Harness MCP Connector:**
+
+```yaml
+connector:
+  name: Harness MCP
+  identifier: connector_Mcp_66c8
+  accountIdentifier: <your_account_id>
+  orgIdentifier: default
+  projectIdentifier: <your_project>
+  type: Mcp
+  spec:
+    serverUrl: https://unifiedpipeline.harness.io/mcp-server-external/mcp
+    auth:
+      type: CustomHeader
+      spec:
+        headerName: X-Api-Key
+        headerValueRef: <your_harness_api_key_secret>
+    executeOnDelegate: false
+```
+
+**GitHub MCP Connector:**
+
+```yaml
+connector:
+  name: Github_MCP
+  identifier: Github_MCP
+  accountIdentifier: <your_account_id>
+  orgIdentifier: default
+  projectIdentifier: <your_project>
+  type: Mcp
+  spec:
+    serverUrl: https://api.githubcopilot.com/mcp
+    auth:
+      type: ApiKey
+      spec:
+        apiKeyRef: <your_github_oauth_token_secret>
+    executeOnDelegate: false
+```
+
+Replace the placeholder values (`<your_account_id>`, `<your_project>`, `<your_harness_api_key_secret>`, `<your_github_oauth_token_secret>`) with your actual account identifier, project identifier, and secret references.
 
 ---
 
@@ -2131,14 +2184,24 @@ The following limitations apply to Worker Agents:
 />
 
 <Troubleshoot
+  issue="Worker Agent creation fails with Internal Server Error"
+  mode="fallback-only"
+  fallback="Agent names cannot contain special characters. Use only alphanumeric characters, hyphens, and underscores. Remove any special characters from the agent name and try saving again."
+/>
+
+<Troubleshoot
   issue="Worker Agent cannot connect to Harness APIs because BASE_URL is not set correctly"
   mode="fallback-only"
-  fallback="If the agent fails to reach Harness APIs because the base URL is not being resolved correctly at runtime, add a HARNESS_BASE_URL stage variable as a workaround. In your stage definition, add a variables block with the correct base URL for your cluster (for example, https://app.harness.io or your vanity domain). See the YAML snippet in the section below."
+  fallback="If the agent fails to reach Harness APIs because the base URL is not being resolved correctly at runtime, add a HARNESS_BASE_URL stage variable as a workaround. In your stage definition, add a variables block with the correct base URL for your cluster (for example, https://app.harness.io or your vanity domain). This workaround only applies to CI stage types. For CD and Custom stages, configure an MCP Connector for Harness MCP instead. See the YAML snippet in the section below."
 />
 
 ### Workaround: HARNESS_BASE_URL not set correctly
 
-If the `HARNESS_BASE_URL` is not being resolved correctly at the stage level, add it as an explicit stage variable. This ensures the agent can reach the correct Harness API endpoint at runtime.
+If the `HARNESS_BASE_URL` is not being resolved correctly at the stage level, add it as an explicit stage variable. The `HARNESS_BASE_URL` variable allows the agent to get the base URL of the account to authenticate with MCP at runtime.
+
+:::warning CI stage type only
+This stage variable workaround only works for **CI** stage types. For **CD** and **Custom** stages, you must configure an MCP Connector for Harness MCP instead. Go to [Configure MCP connectors](#configure-mcp-connectors) to set up the connector.
+:::
 
 Add the following `variables` block to your stage definition:
 
