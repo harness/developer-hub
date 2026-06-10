@@ -18,6 +18,11 @@ export const QwietaiData: Horizon = {
         description: "Integrate with Harness MCP to support SAST/SCA scanning and actions directly from IDEs.",
       },
       {
+        tag: [{ value: "AI" }, { value: "IDE" }],
+        title: "Security Skills",
+        description: "Provide guided security operations through reusable AI-powered Skills.",
+      },
+      {
         tag: [{ value: "SAST" }, { value: "AI"}],
         title: "AI-Enhanced SAST",
         description: "Extend SAST coverage and reduce false positives through AI-enhanced vulnerability detection.",
@@ -101,6 +106,16 @@ export const QwietaiData: Horizon = {
         tag: [{ value: "Platform" }, { value: "Deployment" }],
         title: "SMP + FIPS Support",
         description: "Enable Harness SAST and SCA support for air-gapped deployments on the Self-Managed Platform."
+      },
+      {
+        tag: [{ value: "AI" }, { value: "Governance" }],
+        title: "Skills & MCP Security Scanner",
+        description: "Detect malicious patterns and security risks in AI agent Skills and MCP configurations.",
+      },
+      {
+        tag: [{ value: "AI" }, { value: "Automation" }],
+        title: "Security AI Agents",
+        description: "Enable AI-powered agents to detect, triage, and remediate security issues through automated or on-demand workflows.",
       },
       {
         tag: [{ value: "AI" }, { value: "Automation"}],
