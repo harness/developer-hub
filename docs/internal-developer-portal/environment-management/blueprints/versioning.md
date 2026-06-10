@@ -66,7 +66,6 @@ To deprecate or delete a version:
 <DocImage
   path={require("./static/compare-version.png")}
   alt="Compare Versions"
-  caption="Compare Versions"
 />
 
 Version comparison helps you understand the differences between blueprint iterations, making it easier to assess the impact of changes before upgrading environments.
@@ -88,7 +87,7 @@ To create an environment with a specific blueprint version:
 1. Navigate to the **Environments** section and select **Create** → **Environment**
 2. Browse the available blueprints
 
-   <DocImage path={require("./static/env-from-blueprints.png")} alt="Environment from Blueprints" caption="Environment from Blueprints"/>
+   <DocImage path={require("./static/env-from-blueprints.png")} alt="Environment from Blueprints" />
 
 3. On the blueprint card, open the dropdown menu next to **Use this blueprint** and select your desired version
 4. You can also modify the version selection on the subsequent page whilst defining environment details

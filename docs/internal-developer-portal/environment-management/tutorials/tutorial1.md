@@ -45,7 +45,7 @@ A complete self-service environment system where developers can:
 ## Prerequisites
 :::caution Make Sure You Fulfill The Requirements
 
-Before proceeding with the tutorial steps, ensure you have completed the [prerequisites outlined](../get-started.md#prerequisites) in the [**Get Started with Environment Management**](../get-started.md) guide:
+Before proceeding with the tutorial steps, ensure you have completed the [prerequisites outlined](../get-started.md#before-you-begin) in the [**Get Started with Environment Management**](../get-started.md) guide:
 
 * ☑ Required modules and feature flags enabled
 * ☑ Connector and delegate configured
@@ -82,7 +82,7 @@ Before proceeding with the tutorial steps, ensure you have completed the [prereq
 
 ## Step-by-Step Walkthrough
 
-:::note
+:::info
 Update variables (marked as `<your-*>`) in code snippets with relevant reference to your set up
 :::
 

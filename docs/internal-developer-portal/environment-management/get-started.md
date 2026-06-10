@@ -16,9 +16,15 @@ An environment is a collection of software services deployed using CD and execut
 
 ![](./static/user-journey.png)
 
+## How environment management works for you
+
+* **Platform Engineers** - You can design and maintain Environment Blueprints. A blueprint is a declarative YAML template that defines which infrastructure resources (IaCM workspaces) and services (IDP Catalog components) make up an environment, how they depend on each other, and how they are provisioned and torn down. Before creating a blueprint, platform engineers set up the underlying resources in Harness: workspace templates in IaCM, CD services, and deployment pipelines. These are then referenced in the blueprint YAML. Go to [Create an Environment Blueprint](/docs/internal-developer-portal/environment-management/blueprints/create-environment-blueprint) to get started.
+
+* **Developers** - You can create environments from blueprints your platform team has published. You select a blueprint, provide the required inputs (such as a name or service version), and the system provisions infrastructure and deploys services in the correct dependency order. Go to [Environments](/docs/internal-developer-portal/environment-management/environments#create-environments) to create your first environment.
+
 ---
 
-## Prerequisites
+## Before you begin
 
 Use the checklist below to ensure your setup is complete before getting started.
 
@@ -60,8 +66,8 @@ Permissions required to manage entities within the IDP
 
 | Resource | Permissions |
 |---|---|
-| IDP Environment | `View` `Create/Edit` `Delete` |
-| IDP Environment Blueprint | `View` `Create/Edit` `Delete` |
+| IDP Environment | `View` `Create` `Edit` `Delete` |
+| IDP Environment Blueprint | `View` `Create` `Edit` `Delete` |
 | IDP Catalog | `View` `Create/Edit` `Delete` |
 
   </TabItem>
@@ -101,3 +107,13 @@ Once the setup is complete, additional users can be granted the required permiss
 | Name | Description |
 |---|---|
 | [Tutorial 1 - Build an Ephemeral Developer Testing Environment](./tutorials/tutorial1.md) | Set up a self-service ephemeral environment system that automatically provisions isolated test environments for PRs and deletes them after a stipulated time period. |
+
+---
+
+## Quick Start Path
+
+If you are setting up environment management for the first time, follow this sequence:
+
+1. **Platform Engineers**: [Create an Environment Blueprint](/docs/internal-developer-portal/environment-management/blueprints/create-environment-blueprint) to define the infrastructure and service template for your team's environments.
+2. **Developers**: [Create an Environment](/docs/internal-developer-portal/environment-management/environments#create-environments) using an available blueprint.
+3. Manage the environment lifecycle from the [Environments](/docs/internal-developer-portal/environment-management/environments) page, including starting, stopping, updating, and deleting environments.

@@ -2,7 +2,7 @@
 title: Environments in Harness IDP
 description: Learn more about Environments in Harness IDP. 
 sidebar_label: Environments
-sidebar_position: 4
+sidebar_position: 3
 toc_min_heading_level: 2
 toc_max_heading_level: 3
 ---
@@ -15,7 +15,7 @@ An **Environment** is instantiated using an **Environment Blueprint**, consider 
 
 Based on the time-to-live (TTL) duration, Harness IDP environment management supports two types of environments:
 
-* **Ephemeral environments**: Short-lived environments that are created and paused on demand. They run only for a specific time interval configured by the user.
+* **Ephemeral environments**: Short-lived environments that are created and paused on demand. They run only for a specific time interval configured by the user. When the TTL expires, the environment is automatically paused and the **Last Known Execution** column on the environments list shows **TTL Expired**.
 * **Long-lived environments**: Environments that run indefinitely and are not paused automatically. They are paused only when the user explicitly does so.
 
 Go to [Configure TTL](/docs/internal-developer-portal/environment-management/blueprints/env-blueprint-yaml#configure-ttl-time-to-live) to learn more. 
@@ -33,7 +33,7 @@ Using the [Environment Blueprint](/docs/internal-developer-portal/environment-ma
 2. A list of available environment blueprints will be visible. Select your new environment by clicking the **Use this Blueprint** option beneath it.
 ![](./static/env-use.png)
 
-3. Give your environment a Name, select owners, input lifecycle (add a new one if the dropdown list is empty), and select the project scope for your environment. Then click "Configure Environment".
+3. Give your environment a name, select the blueprint version to use, choose an owner, and set the project scope. Then click **Next: Configure Environment**.
 
 ![](./static/config-env-v2.png)
 
@@ -57,6 +57,53 @@ The Environment should now be creating, and you can follow the progress by viewi
 
 ---
 
+## The Environment Detail Page
+
+When you open an environment, you land on its detail page. Understanding this page is essential for both monitoring your environment and taking action on it.
+
+The top of the page shows a metadata row with these fields: **Environment State**, **Drift status**, **Session started on**, **Session Uptime**, **Last Updated On**, and **Expires on** (populated only for ephemeral environments with a fixed TTL).
+
+To the right of the main content, a **Properties** panel shows the **Environment Blueprint** the environment was created from (linked), the **Blueprint Version** it is pinned to (with a STABLE badge if that version is marked stable), **Type**, **Owner**, **Description**, **Tags**, **Scope**, and **Created on**.
+
+### Environment states
+
+The environment state reflects the combined status of all entities defined in its blueprint.
+
+| State | What it means |
+|---|---|
+| **Online** | All entities are provisioned and running. |
+| **Online (Partially Failed)** | Some entities provisioned successfully and others failed. Check the **Components** and **Resources** tabs to identify which entities failed. An error banner on the detail page names the failed entities and provides **View Pipeline** and **Retry** options. |
+| **Paused** | The environment has been explicitly stopped. Infrastructure and service resources are wound down but the environment record is retained so it can be started again. |
+| **Offline** | The environment is fully offline. This occurs when the TTL expires on an ephemeral environment or when Stop Environment has fully completed. |
+
+### Action buttons and menus
+
+Two action surfaces exist, and they offer different actions:
+
+The list page kebab menu (⋮) on each environment row provides: **Edit** (opens the Edit Environment dialog), **Copy URL** (copies a direct link to the environment), and **Check for Drift**.
+
+The detail page kebab menu (⋮) next to the Edit Configuration button provides: **Check for Drift**, **Stop Environment**, and **Delete Environment**.
+
+**Start Environment** and **Edit Configuration** appear as primary buttons on the detail page. Start Environment is available only when the environment is stopped or paused.
+
+### Tabs: Explained
+
+The six tabs on the detail page give you different lenses on your running environment. Each tab corresponds directly to how the environment's blueprint is structured.
+
+1. **Chart** - A visual dependency graph of all entities defined in the blueprint. Each node shows the entity identifier and backend type, and reflects the entity's current state. Use this to understand provisioning order and see at a glance whether all entities are healthy.
+
+2. **Components** - Lists every entity your blueprint defined with `backend.type: Catalog`. These are your CD-deployed application services. Columns: Name, Type (always Catalog), Version, State, Last Updated At, Actions. Use this to check which services are running, skipped, or failed.
+
+3. **Resources** - Lists every entity your blueprint defined with `backend.type: HarnessIACM`. These are your IaCM-provisioned infrastructure pieces such as Kubernetes namespaces and workspaces. Columns: Name, Type (always HarnessIACM), State, Last Updated At, Actions. Use this to check infrastructure provisioning state.
+
+4. **Outputs** - Shows the output values produced by the environment's entities once they finish provisioning (IaCM workspaces) or deploying (CD services). These are the resolved values that your blueprint's `${{dependencies.ENTITY_ID.output.FIELD_NAME}}` expressions read at runtime. For example, if your blueprint uses `${{dependencies.namespace.output.name}}` to pass a namespace name to a dependent service, the resolved value appears here after the namespace workspace provisions successfully. The tab shows **No Outputs available** until at least one entity has finished provisioning or deploying.
+
+5. **Drift Detection** - Shows the drift check results for each HarnessIACM entity. The tab displays Last Drift Status, a count of Resources Changed, and a searchable list of resources. Selecting a resource shows whether drift was detected and which attributes have diverged from the expected state. Use this to identify unauthorized infrastructure changes after an environment has been running.
+
+6. **Activity** - Shows the full execution history of pipeline runs triggered by environment actions (create, update, destroy, and so on). Columns: ID, By, View Pipeline, Started At, Stopped At, State. Use this to audit who triggered what action and when, and to investigate failures by following the View in Pipeline link.
+
+---
+
 ## Environment Actions
 
 Since environments are treated as managed entities, platform teams and developers can control their lifecycle directly from the platform. This includes stopping, starting, updating, and deleting environments as needed.
@@ -74,15 +121,19 @@ The exact steps that execute during each action are defined in the blueprint as 
 
 ### Edit Environment Configuration
 
-If you wish to make changes to your environment, go to your environment and click **Edit Configuration**. It helps you perform the following:
-* Change or update inputs to the environment
-* Update the blueprint version that the environment uses
+If you wish to make changes to your environment, go to your environment and click **Edit Configuration**. In the dialog that opens, you can:
+
+* Change or update inputs to the environment.
+* Update the blueprint version that the environment uses.
+* Toggle **Reference from environment** on any input field to pull that field's value from another environment's output instead of entering it manually. This is the mechanism for cross-environment input references.
+
+When done, click **Update Environment**.
 
 ![](./static/env-edit.png)
 
 Depending on the scope of the change, this may trigger a full environment update or only update the affected resources and components.
 
-:::note
+:::info
 When you update an environment’s configuration, the environment is **re-provisioned** and the TTL is **reset**. The new TTL countdown starts from the time of the update.
 :::
 
@@ -90,8 +141,8 @@ When you update an environment’s configuration, the environment is **re-provis
 
 Drift detection helps you identify when your environment's actual infrastructure state has diverged from its intended configuration. This feature is essential for maintaining infrastructure consistency, improving security by identifying unauthorized changes, and enabling compliance tracking across your environments.
 
-:::note Prerequisites
-Each workspace that you want to detect drift on must have an available drift detection pipeline. These pipelines can be specified at different levels:
+:::info Prerequisites
+Before you can detect drift, each workspace must have an available drift detection pipeline. These pipelines can be specified at different levels:
 - **Workspace level**: Configure a drift detection pipeline directly on the workspace
 - **Workspace template level**: Define a drift detection pipeline in the workspace template
 - **Project level**: Set a default drift detection pipeline at the project level
@@ -110,6 +161,8 @@ When drift is detected, you can resolve it by:
 - Triggering an environment update, which will re-provision all workspaces and bring them back in sync with the desired configuration
 :::
 
+To review results after running drift detection, open the **Drift Detection** tab on the environment detail page. The tab shows the Last Drift Status, a count of Resources Changed, and a resource list. Select any resource to see whether drift was detected and which attributes have diverged.
+
 ### Stop Environments
 
 If you wish to temporarily suspend the activity of an environment, you may stop it. This triggers the pipelines defined in the `destroy` step of IaCM resources and `delete` step of CD components.
@@ -126,7 +179,7 @@ You may start an environment if you wish to bring it back online from a stopped 
 
 Go to your environment, and from the kebab menu (**:**) at the top right, click **Start Environment**. When starting an environment, the system fetches the latest blueprint for the configured version and provisions accordingly. If the blueprint has been updated since the environment was last running, those changes are applied automatically. 
 
-:::note
+:::info
 Both [Start Environment](#start-environments) and [Apply Updates](#apply-updates) use delta-only re-provisioning. Rather than re-running every entity, the system compares the previously applied blueprint against the latest version and only re-provisions entities where actual differences are detected. Unchanged entities are left untouched. This makes updates faster, safer, and minimizes disruption to running workloads.
 :::
 
@@ -141,7 +194,7 @@ When updates are available for a running environment, a banner appears on the en
 
 **Apply Updates** evaluates the differences between the current environment state and the latest blueprint, then only updates the components or resources that have changed. Unchanged entities are left alone. Note that some changes may require updating underlying infrastructure, which could lead to temporary environment downtime.
 
-:::note
+:::info
 You can also trigger updates for an individual component or resource. Updating an entity will automatically update any downstream entities connected to it. For example, updating a namespace will also update the backend and frontend components deployed within it.
 :::
 
@@ -201,6 +254,40 @@ You can decommission the environment and clean up all associated services and in
 ![](./static/env-delete.png)
 
 Go to your environment, and from the kebab menu (**:**) at the top right, click **Delete Environment**. It will destroy the namespace and delete the environment.
+
+---
+
+## Cross-Environment Output References
+
+An environment can consume output values from another environment in the same project. This lets you build layered environments where one environment provides shared infrastructure and other environments depend on it.
+
+For example, a shared networking environment might expose its cluster name as an output. A dependent application environment can then pull that cluster name as an input rather than hardcoding it.
+
+### How it works
+
+Cross-environment references use this syntax: `${{environment.<env_identifier>.<output_variable_name>}}`
+
+Where `<env_identifier>` is the identifier of the environment whose outputs you want to read, and `<output_variable_name>` is a key defined in that environment's blueprint `spec.outputs` block.
+
+### Important constraint
+
+Cross-environment references can only be specified in environment overrides when creating or editing an environment. They cannot be placed in a blueprint directly. Blueprints are reusable templates and must not depend on specific environment instances.
+
+In practice, this means you use the **Reference from environment** toggle on any input field in the **Create Environment** or **Edit Configuration** dialog. Toggling it on lets you select an environment and its output variable as the source for that field, instead of entering a static value.
+
+### Requirements for the referenced environment
+
+For the reference to resolve successfully, the environment being referenced must:
+
+- Exist in the same project
+- Be running with at least one successful execution
+- Have a `spec.outputs` block in its blueprint that defines the variable you are referencing
+
+If any of these conditions are not met, the environment creation or update will fail with a descriptive error indicating which condition was not satisfied.
+
+### Scope
+
+Cross-environment references currently work within the same project only. Cross-project references are not supported.
 
 ---
 

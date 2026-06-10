@@ -1,13 +1,13 @@
 ---
 title: Environment Blueprints in Harness IDP
 description: Learn more about Environment Blueprints in Harness IDP. 
-sidebar_label: Environment Blueprints
-sidebar_position: 1
+sidebar_label: Environment Blueprint YAML
+sidebar_position: 2
 toc_min_heading_level: 2
 toc_max_heading_level: 3
 ---
 
-An **Environment Blueprint** is a collection of infrastructure templates, services, their configurations and lifecycle management details of each. When a blueprint is orchestrated, it generates running instances of Environments. Blueprints are typically owned by the **Platform Engineering** team. 
+This page covers the complete YAML schema for defining an Environment Blueprint. For a conceptual overview, go to [Overview & Key Concepts](/docs/internal-developer-portal/environment-management/overview). To create a blueprint through the UI, go to [Create an Environment Blueprint](/docs/internal-developer-portal/environment-management/blueprints/create-environment-blueprint).
 
 ## Environment Blueprint YAML
 
@@ -287,14 +287,14 @@ Durations support hours, minutes, and seconds (e.g., `1h`, `30m`, `1h30m`).
 
 **2. TTL kinds**
 
-* **`fixed`** — A fixed, preconfigured duration in the blueprint. Users **cannot** change it when creating an environment.
-* **`custom`** — A user-configurable duration chosen at environment creation time.
-* **`none`** — No TTL. The environment is **long-lived** and is only paused/stopped when a user does so explicitly.
+* **`fixed`** - A fixed, preconfigured duration in the blueprint. Users **cannot** change it when creating an environment.
+* **`custom`** - A user-configurable duration chosen at environment creation time.
+* **`none`** - No TTL. The environment is **long-lived** and is only paused/stopped when a user does so explicitly.
 
 **3. TTL parameters**
 
-* **`default`** — The default TTL duration for the blueprint (optional).
-* **`max`** — The maximum allowed TTL duration for the blueprint (optional).
+* **`default`** - The default TTL duration for the blueprint (optional).
+* **`max`** - The maximum allowed TTL duration for the blueprint (optional).
 
 **4. Examples**
 
@@ -334,6 +334,57 @@ Platform engineers can use Harness OPA governance to enforce TTL requirements ac
 
 ---
 
+### Blueprint Outputs
+
+A blueprint can define an `outputs` block under `spec` to expose values from its entities once the environment is provisioned. These values appear in the **Outputs** tab of the environment detail page and can be referenced by other environments using cross-environment output syntax.
+
+```yaml
+spec:
+  outputs:
+    <output-name>:
+      type: string
+      description: <optional description>
+      value: <expression>
+```
+
+The `value` field uses the entity output expression format described in [YAML Templating System](#yaml-templating-system).
+
+**IaCM entity output** (Terraform output from a workspace):
+
+```yaml
+spec:
+  outputs:
+    namespace-name:
+      type: string
+      value: ${{entity.namespace.output.name}}
+```
+
+**IaCM pipeline output** (output from a provisioning pipeline stage):
+
+```yaml
+spec:
+  outputs:
+    apply-result:
+      type: string
+      value: ${{entity.namespace.provision.apply.output.output.outputVariables.name}}
+```
+
+**CD pipeline output** (stage output from a deployment pipeline):
+
+```yaml
+spec:
+  outputs:
+    release-name:
+      type: string
+      value: ${{entity.frontend.deploy.HelmDeploy_1.output.releaseHelmChartOutcome.name}}
+```
+
+:::note
+For IaCM entities, output values are sourced from Terraform outputs of the workspace. For CD entities, output values are sourced from stage outputs of the deployment pipeline.
+:::
+
+---
+
 
 ### YAML Templating System
 
@@ -341,11 +392,12 @@ Environment Blueprints use a powerful templating system for dynamic configuratio
 
 #### Template Variables
 
-| Variable Type | Example | Description |
-|---------------|---------|-------------|
-| Environment Config | `${{env.config.name}}` | Access environment-level inputs |
-| Entity Config | `${{entity.config.replicas}}` | Access entity-specific inputs |
-| Dependency Outputs | `${{dependencies.namespace.output.name}}` | Reference outputs from dependent entities |
+| Variable Type | Format | Description |
+|---|---|---|
+| Environment Config | `${{env.config.name}}` | Access blueprint-level inputs defined in `spec.inputs`. |
+| Entity Config | `${{entity.config.replicas}}` | Access entity-level inputs defined in `interface.inputs`. |
+| Entity Output | `${{entity.<id>.output.<path>}}` | Reference an output from an entity in this blueprint. For a specific pipeline stage and step: `${{entity.<id>.<stage>.<step>.output.<path>}}` |
+| Dependency Output | `${{dependencies.<id>.output.<path>}}` | Reference an output from a dependent entity. For a specific pipeline stage and step: `${{dependencies.<id>.<stage>.<step>.output.<path>}}` |
 
 #### Example Usage
 
@@ -361,6 +413,8 @@ variables:
 # Dependency resolution
 namespace: ${{dependencies.namespace.output.name}}
 ```
+
+Output values are populated once environment entities finish provisioning (IaCM workspaces) or deploying (CD services). To see the resolved output values for a running environment, open the environment and select the **Outputs** tab.
 
 ---
 
@@ -398,8 +452,8 @@ The environment management RBAC is structured across two main resource types:
 
 | Resource Type | Scope | Available Permissions | Resource Group Options |
 |---------------|-------|----------------------|------------------------|
-| **Environment Blueprint** | Account, Org, or Project Level | <ul><li>**VIEW**: View environment blueprints</li><li>**CREATE/EDIT**: Create new blueprints or edit existing ones</li><li>**DELETE**: Delete environment blueprints</li></ul> | <ul><li>All Environment Blueprints</li><li>Specific Environment Blueprints</li></ul> |
-| **Environment** | Project Level | <ul><li>**VIEW**: View environments</li><li>**CREATE/EDIT**: Create new environments or edit existing ones</li><li>**DELETE**: Delete environments</li></ul> | <ul><li>All Environments</li><li>Specific Environments</li></ul> |
+| **Environment Blueprint** | Account, Org, or Project Level | <ul><li>**VIEW**: View environment blueprints</li><li>**CREATE**: Create new blueprints</li><li>**EDIT**: Edit existing blueprints</li><li>**DELETE**: Delete environment blueprints</li></ul> | <ul><li>All Environment Blueprints</li><li>Specific Environment Blueprints</li></ul> |
+| **Environment** | Project Level | <ul><li>**VIEW**: View environments</li><li>**CREATE**: Create new environments</li><li>**EDIT**: Edit existing environments</li><li>**DELETE**: Delete environments</li></ul> | <ul><li>All Environments</li><li>Specific Environments</li></ul> |
 
 For a complete overview of all IDP resources and their permissions across different scopes, refer to the [Permissions & Resources table](/docs/internal-developer-portal/rbac/scopes#permissions--resources-idp-20) in the IDP RBAC documentation.
 
@@ -410,7 +464,7 @@ To configure access control for environment management:
 1. **For Environment Blueprints (Account, Org, or Project Level)**:
    - Navigate to the settings for the relevant scope (Account Settings, Org Settings, or Project Settings) → **Access Control** → **Roles**
    - Navigate to **Account Settings** → **Access Control** → **Roles**
-   - Create or edit a role and assign Environment Blueprint permissions (VIEW, CREATE/EDIT, DELETE)
+   - Create or edit a role and assign Environment Blueprint permissions (VIEW, CREATE, EDIT, DELETE)
    - Create a **Resource Group** and select either:
      - **All Environment Blueprints** - Grants access to all blueprints in the account
      - **Specific Environment Blueprints** - Grants access to selected blueprints only
@@ -418,7 +472,7 @@ To configure access control for environment management:
 
 2. **For Environments (Project Level)**:
    - Navigate to **Project Settings** → **Access Control** → **Roles**
-   - Create or edit a role and assign Environment permissions (VIEW, CREATE/EDIT, DELETE)
+   - Create or edit a role and assign Environment permissions (VIEW, CREATE, EDIT, DELETE)
    - Create a **Resource Group** and select either:
      - **All Environments** - Grants access to all environments in the project
      - **Specific Environments** - Grants access to selected environments only
@@ -531,6 +585,6 @@ spec:
 ---
 
 ## Create Environment Blueprints
-In Harness IDP (Environments), navigate to the **Environments** section, and hit **“Create”** and then **“Environment Blueprint”**. Use the [YAML provided above](/docs/internal-developer-portal/environment-management/blueprints/env-blueprint-yaml#example-blueprint-yaml) to create the environment blueprint.
 
-![](../static/scope-blueprint-yaml.png)
+For a step-by-step UI walkthrough of the blueprint creation flow, go to [Create an Environment Blueprint](/docs/internal-developer-portal/environment-management/blueprints/create-environment-blueprint).
+
