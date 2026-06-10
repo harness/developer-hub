@@ -405,6 +405,12 @@ Harness Chaos experiment pods consume Kubernetes secrets that contain access cre
 </details>
 
 <details>
+<summary><strong>Can I use an external secret manager such as HashiCorp Vault or Google Cloud KMS with chaos experiments?</strong></summary>
+
+Yes. Chaos experiments can resolve secrets from an external secret manager the same way they resolve secrets from the Harness Secret Manager, so your existing experiments and probes do not change. This is enabled by the dedicated chaos delegate task and is behind the feature flag `CHAOS_DEDICATED_DELEGATE_TASK`. Support has been validated with HashiCorp Vault and Google Cloud KMS. Go to [Use an external secret manager](/docs/resilience-testing/security/#use-an-external-secret-manager) to understand how it works.
+</details>
+
+<details>
 <summary><strong>Can cloud service accounts be used instead of user credentials to access cloud resources?</strong></summary>
 
 When the chaos infrastructure is deployed on EKS clusters, the experiments can leverage the IAM service account (IRSA) instead of consuming secrets with user account access details. To learn more, go to [IAM integration for AWS authentication](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/aws-iam-integration).

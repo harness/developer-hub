@@ -14,7 +14,7 @@ Harness provides several controls to ensure the safe execution of chaos experime
 - [Kubernetes roles for the chaos infrastructure](#kubernetes-roles-for-chaos-infrastructure)
 - [User authentication to the Harness Chaos Engineering module](#user-authentication)
 - [Access control and permissions for chaos actions](#user-authorization-and-role-based-access-control )
-- [Secrets management](#secrets-management)
+- [Secrets management](#secrets-management), including [external secret manager support](#use-an-external-secret-manager)
 - [Blast radius control using permissions](#blast-radius-control-using-permissions)
 
 Further sections provide a quick summary of the internal security controls and processes for the chaos module to help you gain insights into how security is baked into the build process. The processes include:
@@ -62,7 +62,39 @@ The permissions listed an be tuned for further minimization based on environment
 
 ### Secrets management
 
-HCE leverages secrets for administrative or management purposes as well as at runtime (during execution of chaos experiments). The former involves users leveraging the Harness Secret Manager on the control plane, while the latter is purely managed by the users themselves in their respective Kubernetes clusters.
+HCE leverages secrets for administrative or management purposes as well as at runtime (during execution of chaos experiments). On the Harness control plane, secrets such as connector credentials and probe authentication keys are stored and encrypted by a secret manager. At runtime, the secrets that are injected into chaos pods within your own Kubernetes clusters are managed by you.
+
+By default, control plane secrets are backed by the built-in Harness Secret Manager. You can also use an external secret manager to store and resolve these secrets. Go to [Use an external secret manager](#use-an-external-secret-manager) to understand how this works.
+
+### Use an external secret manager
+
+You can store the secrets that chaos experiments consume, such as connector credentials and APM or cloud probe authentication keys, in an external secret manager instead of the Harness Secret Manager. External secret managers are referenced exactly the same way as the Harness Secret Manager, so your existing experiments and probes do not change.
+
+Until now, the Resilience Testing module could only use the Harness Secret Manager. You can now use external secret managers within Resilience Testing the same way you already use them across other Harness modules.
+
+#### Harness Secret Manager compared with external secret managers
+
+| Secret manager | Description | When to use |
+|----------------|-------------|-------------|
+| **Harness Secret Manager** | The secret manager built into Harness. | Use when you do not already operate your own secret manager to store credentials. |
+| **External secret manager** | A third-party secret manager that you already operate, such as HashiCorp Vault, Google Cloud Secret Manager, or Azure Key Vault. | Use when you already store credentials in your own secret manager, which is the case for most teams. |
+
+This is useful when you already manage credentials in your own secret manager and you want chaos experiments to resolve secrets from the same source as your other Harness modules. Harness provides comprehensive setup guidance for every supported option. Go to [Secrets management](/docs/category/secrets-management) to review all supported secret managers.
+
+How it works:
+
+- Chaos experiments that run through [Harness Delegate](/docs/resilience-testing/chaos-testing/infrastructure/types/ddcr) use a dedicated chaos delegate task to decrypt secrets at runtime.
+- The delegate resolves each referenced secret from whichever secret manager you configured for it, whether that is the Harness Secret Manager or an external one.
+
+:::info Feature flag
+External secret manager support is behind the feature flag `CHAOS_DEDICATED_DELEGATE_TASK`. Contact [Harness Support](mailto:support@harness.io) to enable it for your account. When the flag is enabled, chaos workflows that use the Harness NG Manager `/chaos/...` endpoints start using the dedicated chaos delegate task.
+:::
+
+:::info Supported secret managers
+All secret managers that Harness supports work with chaos experiments. Support has been validated with HashiCorp Vault and Google Cloud KMS.
+:::
+
+To set up a secret manager and add secrets, go to [Harness Secret Manager overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview) to use the built-in option. To connect an external secret manager, go to [Add HashiCorp Vault](/docs/platform/secrets/secrets-management/add-hashicorp-vault) or [Add a Google KMS secret manager](/docs/platform/secrets/secrets-management/add-google-kms-secrets-manager).
 
 ### Secrets to access chaos artifact (Git) repositories
 

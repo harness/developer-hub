@@ -67,6 +67,18 @@ The number of tunables configured in an experiment that uses Harness Delegate is
 
 Earlier, resilience score was measured at the experiment level. With Harness Delegate, you can gain insights into an application along with its associated application map. This way, you can view the application-level resilience score and application-map-level resilience score.
 
+## Secret decryption with external secret managers
+
+Chaos experiments that run through Harness Delegate use a dedicated chaos delegate task to decrypt the secrets they consume at runtime, such as connector credentials and APM or cloud probe authentication keys.
+
+Because the delegate performs the decryption, you can store these secrets in the Harness Secret Manager or in an external secret manager such as HashiCorp Vault, Google Cloud KMS, or Azure Key Vault. Secrets are referenced the same way regardless of where they are stored, so your existing experiments and probes do not change.
+
+:::info Feature flag
+This behavior is behind the feature flag `CHAOS_DEDICATED_DELEGATE_TASK`. Contact [Harness Support](mailto:support@harness.io) to enable it for your account. When the flag is enabled, chaos workflows that use the Harness NG Manager `/chaos/...` endpoints start using the dedicated chaos delegate task.
+:::
+
+Go to [Use an external secret manager](/docs/resilience-testing/security/#use-an-external-secret-manager) to review the supported secret managers and setup steps.
+
 ## Next Steps
 
 - [Permissions Required](./permissions)
