@@ -18,21 +18,21 @@ export const experiments: ExperimentDetails[] = [
   {
     name: "AZ blackhole",
     description:
-        "AZ blackhole causes network blackhole by isolating traffic in specific availability zones across an entire region.",
+      "AZ blackhole isolates network traffic in one or more AWS Availability Zones (optionally scoped to specific VPCs or subnets) for a configurable duration and restores connectivity afterwards, so you can test how multi-AZ workloads handle a zone-level outage.",
     tags: ['zone', 'blackhole'],
     category: "aws",
   },
   {
     name: "VPC route misconfiguration",
     description:
-        "VPC route misconfiguration causes network issues due to misconfiguration on the route table associated with the target VPC.",
+      "VPC route misconfiguration temporarily removes specified CIDR routes from one or more VPC route tables for a configurable duration and restores them afterwards, so you can test how the workload behaves when egress to a Transit Gateway, NAT Gateway, VPC peer, or internet gateway disappears.",
     tags: ['vpc', 'route tables'],
     category: "aws",
   },
   {
     name: "DynamoDB replication pause",
     description:
-      "DynamoDB replication pause fault pauses the data replication in DynamoDB tables over multiple locations for the chaos duration.",
+      "DynamoDB replication pause pauses cross-region replication on one or more Amazon DynamoDB global tables for a configurable duration using an AWS Fault Injection Service (FIS) experiment, so you can test how your application handles a brief stop in multi-region consistency.",
     tags: ['replication', 'pause', "dynamodb"],
     category: "aws",
   },
@@ -298,70 +298,84 @@ export const experiments: ExperimentDetails[] = [
   {
     name: "Generic experiment template",
     description:
-      "Generic experiment template provides a template to natively inject faults using FIS for different services, such as EC2, EBS, DynamoDB, and so on.",
-    tags: ['generic', 'template'],
+      "Generic experiment template starts a pre-existing AWS Fault Injection Service (FIS) template by ID, so you can fold native AWS-managed faults into a Harness chaos experiment and probe, verify, and report on the result as you do with any other Harness fault.",
+    tags: ['generic', 'template', 'fis'],
+    category: "aws",
+  },
+  {
+    name: "Lambda block TCP connection",
+    description:
+      "Lambda block TCP connection blocks outbound TCP connections from an AWS Lambda function to one or more target hostnames for a configurable duration, so you can test how the function behaves when a TCP-based dependency is unreachable.",
+    tags: ['lambda', 'tcp', 'network', 'block'],
     category: "aws",
   },
   {
     name: "Lambda delete event source mapping",
     description:
-      "Lambda delete event source mapping removes the event source mapping from an AWS Lambda function for a specific duration.",
+      "Lambda delete event source mapping deletes one or more event source mappings on an AWS Lambda function for a configurable duration and recreates them afterwards, so you can test how the workload behaves when the function stops receiving events from its source.",
     tags: ['lambda', 'delete', 'source', 'map'],
     category: "aws",
   },
   {
     name: "Lambda delete function concurrency",
     description:
-      "Lambda delete function concurrency deletes the Lambda function's reserved concurrency, thereby ensuring that the function has adequate unreserved concurrency to run.",
+      "Lambda delete function concurrency deletes the reserved concurrency configuration on an AWS Lambda function for a configurable duration and restores it afterwards, so you can test how the workload behaves when the function has to share account-level concurrency with other functions.",
     tags: ['lambda', 'delete', 'concurrency'],
     category: "aws",
   },
   {
     name: "Lambda function layer detach",
     description:
-      "Lambda function layer detach is an AWS fault that detaches the Lambda layer associated with the function, thereby causing dependency-related issues or breaking the Lambda function that relies on the layer's content.",
+      "Lambda function layer detach detaches a specified Lambda layer from a target AWS Lambda function for a configurable duration and reattaches it afterwards, so you can test how the workload behaves when a shared dependency layer disappears.",
     tags: ['lambda', 'detach', 'function'],
+    category: "aws",
+  },
+  {
+    name: "Lambda inject latency",
+    description:
+      "Lambda inject latency adds a configurable amount of latency to every invocation of an AWS Lambda function for a configurable duration, so you can test how upstream callers and downstream consumers handle slower-than-expected responses, cold-start spikes, and resource contention.",
+    tags: ['lambda', 'latency', 'network'],
     category: "aws",
   },
   {
     name: "Lambda toggle event mapping state",
     description:
-      "Lambda toggle event mapping state toggles (or sets) the event source mapping state to `disable` for a Lambda function during a specific duration.",
+      "Lambda toggle event mapping state disables one or more event source mappings on an AWS Lambda function for a configurable duration and re-enables them afterwards, so you can test how the workload behaves when the function temporarily stops receiving events from its source.",
     tags: ['lambda', 'toggle', 'map'],
     category: "aws",
   },
   {
     name: "Lambda update function memory",
     description:
-      "Lambda update function memory causes the memory of a Lambda function to be updated to a specified value for a certain duration.",
+      "Lambda update function memory lowers the memory allocation of an AWS Lambda function for a configurable duration and restores it afterwards, so you can test how the workload behaves with less memory and a proportionally smaller CPU share.",
     tags: ['lambda', 'function', 'memory'],
     category: "aws",
   },
   {
     name: "Lambda update function timeout",
     description:
-      "Lambda update function timeout causes timeout of a Lambda function to be updated to a specified value for a certain duration.",
+      "Lambda update function timeout lowers the configured timeout of an AWS Lambda function for a configurable duration and restores it afterwards, so you can test how the workload behaves when invocations are cut short.",
     tags: ['lambda', 'timeout', 'update'],
     category: "aws",
   },
   {
     name: "Lambda inject status code",
     description:
-        "Lambda inject status code simulates runtime erroneous HTTP status codes in Lambda function responses for a certain duration.",
-    tags: ['lambda', 'runtime', 'update'],
+      "Lambda inject status code overrides the HTTP status code returned by an AWS Lambda function for a configurable duration, so you can test how upstream callers and downstream consumers handle unexpected error status responses.",
+    tags: ['lambda', 'runtime', 'status code'],
     category: "aws",
   },
   {
     name: "Lambda update role permission",
     description:
-      "  Lambda update role permission is an AWS fault that modifies the role policies associated with a Lambda function.",
+      "Lambda update role permission detaches a specified IAM policy from the execution role attached to an AWS Lambda function for a configurable duration and reattaches it afterwards, so you can test how the workload behaves when the function loses permission to call a downstream AWS service.",
     tags: ['lambda', 'role', 'permission'],
     category: "aws",
   },
   {
     name: "Lambda modify response body",
     description:
-        "Lambda modify response body modifies the response body of a Lambda function at runtime, simulating unexpected output alterations. This interrupt the flow of the given function.",
+      "Lambda modify response body overrides the response body returned by an AWS Lambda function for a configurable duration, so you can test how upstream callers and client applications handle unexpected payload shapes and corrupted data.",
     tags: ['lambda', 'runtime', 'function'],
     category: "aws",
   },
@@ -389,7 +403,7 @@ export const experiments: ExperimentDetails[] = [
   {
     name: "Resource access restrict",
     description:
-      "Resource access restrict induces chaos to create network access restrictions by selectively blocking incoming or outgoing traffic from a security group",
+      "Resource access restrict temporarily strips ingress or egress rules from one or more AWS security groups for a configurable duration and restores them afterwards, so you can test how the workload behaves when network access to (or from) an AWS resource disappears.",
     tags: ['resource', 'access', 'restrict'],
     category: "aws",
   },
@@ -447,13 +461,6 @@ export const experiments: ExperimentDetails[] = [
     description:
       "Windows EC2 process kill kills one or more processes (selected by PID or process name) on one or more Windows EC2 instances for a configurable duration so you can test how Windows-hosted workloads behave when their backing processes die.",
     tags: ['process', 'kill', 'windows', 'ec2'],
-    category: "aws",
-  },
-  {
-    name: "Lambda Block TCP Connection",
-    description:
-      "Lambda Block TCP Connection is an AWS fault that simulates network blocks for TCP connections of a Lambda function. This fault helps you evaluate how your application responds when outbound TCP connections from a Lambda function are blocked.",
-    tags: ['lambda', 'tcp', 'network', 'block'],
     category: "aws",
   },
 ];

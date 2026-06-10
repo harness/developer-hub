@@ -1,411 +1,213 @@
 ---
 id: linux-api-latency
 title: Linux API latency
+sidebar_label: Linux API Latency
+description: Add latency to API requests passing through a target Linux machine for a configurable duration so you can test how callers handle slow API responses.
+keywords:
+  - chaos engineering
+  - linux api latency
+  - linux fault
+  - api chaos
+tags:
+  - chaos-engineering
+  - linux-faults
+  - api-chaos
 redirect_from:
-  - /docs/chaos-engineering/chaos-faults/linux/linux-api-latency
+- /docs/chaos-engineering/technical-reference/chaos-faults/linux/linux-api-latency
+- /docs/chaos-engineering/chaos-faults/linux/linux-api-latency
 ---
-import Ossupport from './shared/note-supported-os.md'
-import ApiChaosFaultPermissions from './shared/api-chaos-fault-permissions.md'
 
-Linux API latency injects API request and response latency into a Linux machine by starting proxy server and redirecting the traffic through it. It induces API call latency that adds a time delay before sending a response.
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-![Linux API Latency](./static/images/linux-api-latency.png)
+Linux API latency is a chaos fault that starts a local proxy on the target Linux machine, redirects traffic to/from `TARGET_SERVICE_PORT` through the proxy on `PROXY_PORT`, and adds `LATENCY` of delay to matching API requests for `DURATION`. `DATA_DIRECTION` chooses whether the delay is applied to the `request`, `response`, or `both`. Filters and HTTPS interception controls mirror [Linux API block](/docs/chaos-engineering/faults/chaos-faults/linux/linux-api-block). The fault runs through the Linux Chaos Infrastructure (LCI) systemd service installed on the target VM.
 
-## Use cases
-Linux API latency:
-- Simulate high-traffic scenarios and test the resilience and performance of an application or API, where the API may experience delays due to heavy load.
-- Simulate situations where an API request takes longer than expected to respond. By introducing latency, you can test how well your application handles timeouts and implements appropriate error-handling mechanisms.
-- Helps test how well the application handles network delays and failures, and if it recovers gracefully when network connectivity is restored.
+Use this fault to test how callers behave when an API gets slow: whether they honor their own timeouts, whether retries amplify the delay, whether thread pools exhaust, and whether monitoring detects the elevated tail latency within the alerting SLA.
 
-<Ossupport />
-
-<ApiChaosFaultPermissions />
-
-### External packages
-This fault uses [`stress-ng`](https://github.com/ColinIanKing/stress-ng), which is installed as part of the infrastructure installation.
-
-### Optional tunables
-<table>
-  <tr>
-    <th> Tunable </th>
-    <th> Description </th>
-    <th> Notes </th>
-  </tr>
-  <tr>
-      <td> networkInterface </td>
-      <td> Network interface used for the proxy when the <code>SERVICE_DIRECTION</code> is ingress.</td>
-      <td> Default: `eth0`. For more information, go to <a href="#advanced-fault-tunables">network interface </a>.</td>
-    </tr>
-  <tr>
-    <td> duration </td>
-    <td> Duration through which chaos is injected into the target resource. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
-    <td> Default: <code>30 s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code>. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos </a>. </td>
-  </tr>
-  <tr>
-    <td> rampTime </td>
-    <td> Period to wait before and after injecting chaos. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
-    <td> Default: <code>0s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code>. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a>. </td>
-  </tr>
-  <tr>
-      <td> targetServicePort </td>
-      <td> Port of the target service used when the <code>serviceDirection</code> is ingress.</td>
-      <td> Default: 80. For more information, go to <a href="#target-service-port">target service port</a>.</td>
-    </tr>
-  <tr>
-      <td> proxyPort </td>
-      <td> Port where the proxy listens for requests. </td>
-      <td> Default: 20000. For more information, go to <a href="#advanced-fault-tunables">proxy port</a>.</td>
-  </tr>
-  <tr>
-      <td> pathFilter </td>
-      <td> API path or route used for the filtering. </td>
-      <td> Targets all paths if not provided. For more information, go to <a href="#path-filter">path filter </a>.</td>
-  </tr>
-  <tr>
-      <td> serviceDirection </td>
-      <td> Direction of the flow of control, `ingress` or `egress`.</td>
-      <td> Default: `ingress`. For more information, go to <a href="#advanced-fault-tunables">service direction </a>.</td>
-  </tr>
-  <tr>
-      <td> httpsEnabled </td>
-      <td> Facilitate HTTPS support for both incoming and outgoing traffic. </td>
-      <td> Default: false. For more information, go to <a href="#https">HTTPS</a>. </td>
-  </tr>
-  <tr>
-      <td> destinationPorts </td>
-      <td> Comma-separated list of the destination service or host ports for which `egress` traffic should be affected. </td>
-      <td> Default: 80,8443. For more information, go to <a href="#destination-ports">destination ports</a></td>
-  </tr>
-  <tr>
-      <td> httpsRootCertFile </td>
-      <td> Provide the root CA certificate file name. </td>
-      <td> This setting must be configured if the root CA certificate file name differs from ca-certificates.crt. Go to [root Linux] (https://go.dev/src/crypto/x509/root_linux.go) for the default certificate file names based on various Linux distributions. For more information, go to <a href="#https">HTTPS. </a></td>
-  </tr>
-  <tr>
-      <td> customCertificates </td>
-      <td> Provide the custom certificates for the proxy server to serve as intermediate certificates for HTTPS communication. </td>
-      <td> HTTPS communication necessitates its use as intermediate certificates by the proxy server. These certificates should be loaded into the target application. For more information, go to <a href="#https">HTTPS. </a></td>
-  </tr>
-  <tr>
-      <td> headersFilters </td>
-      <td> Filters for HTTP request headers accept multiple comma-separated headers in the format <code>key1:value1,key2:value2</code>.</td>
-      <td> For more information, go to <a href="#advanced-filters">headers filters</a>.</td>
-  </tr>
-  <tr>
-      <td> methods </td>
-      <td> The HTTP request method type accepts comma-separated HTTP methods in upper cases, such as "GET,POST". </td>
-      <td> For more information, go to <a href="#advanced-filters">methods</a>.</td>
-  </tr>
-  <tr>
-      <td> queryParams </td>
-      <td> HTTP request query parameter filters accept multiple comma-separated query parameters in the format of <code>param1:value1,param2:value2</code>. </td>
-      <td> For more information, go to <a href="#advanced-filters">query params</a>.</td>
-  </tr>
-  <tr>
-      <td> sourceHosts </td>
-      <td> Includes comma-separated source host names as filters, indicating the origin of the HTTP request. This is specifically relevant to the "ingress" type. </td>
-      <td> For more information, go to <a href="#advanced-filters">source hosts</a>.</td>
-  </tr>
-  <tr>
-      <td> sourceIPs </td>
-      <td> This includes comma-separated source IPs as filters, indicating the origin of the HTTP request. This is specifically relevant to the "ingress" type. </td>
-      <td> For more information, go to <a href="#advanced-filters">source IPs</a>.</td>
-  </tr>
-  <tr>
-      <td> destinationHosts </td>
-      <td> Comma-separated destination host names are used as filters, indicating the hosts on which you call the API. This specification applies exclusively to the "egress" type. </td>
-      <td> For more information, go to <a href="#advanced-filters">destination hosts</a>.</td>
-  </tr>
-  <tr>
-      <td> destinationIPs </td>
-      <td> Comma-separated destination IPs are used as filters, indicating the hosts on which you call the API. This specification applies exclusively to the "egress" type.</td>
-      <td> For more information, go to <a href="#advanced-filters">destination hosts</a>.</td>
-  </tr>
-  <tr>
-      <td> latency </td>
-      <td> Delay introduced in the application. </td>
-      <td> Default: 2s. </td>
-  </tr>
-  <tr>
-      <td> dataDirection </td>
-      <td> The direction in which the latency is to be injected. </td>
-      <td> Supports values <code>request</code>, <code>response</code> and <code>both</code>. </td>
-  </tr>
-</table>
-
-### Target service port
-
-Port of the target service. Tune it by using the `targetServicePort` input variable.
-
-The following YAML snippet illustrates the use of this input variable:
-
-[embedmd]: # "./static/manifests/linux-api-latency/target-service-port.yaml yaml"
-
-```yaml
-## provide the port of the target service
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: linux-api-latency
-      spec:
-        components:
-          env:
-            # provide the port of the target service
-            - name: targetServicePort
-              value: 80
-            - name: pathFilter
-              value: '/status'
-```
-
-### Path filter
-
-API sub-path (or route) to filter the API calls. Tune it by using the `pathFilter` input variable.
-
-The following YAML snippet illustrates the use of this input variable:
-
-[embedmd]: # "./static/manifests/linux-api-latency/path-filter.yaml yaml"
-
-```yaml
-## provide api path filter
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: linux-api-latency
-      spec:
-        components:
-          env:
-            # provide the api path filter
-            - name: pathFilter
-              value: '/status'
-            # provide the port of the target service
-            - name: targetServicePort
-              value: 80
-```
-
-### Destination ports
-
-Comma-separated list of the destination service or host ports for which `egress` traffic takes affect as a result of applying chaos on the target application. Tune it by using the `destinationPorts` input variable.
-
-:::tip
-It is applicable only when `serviceDirection` input variables has the value `egress`.
+:::info Run your first experiment
+If you have not installed the Linux Chaos Infrastructure yet, go to [Linux Chaos Infrastructure](/docs/chaos-engineering/guides/infrastructures/types/legacy-infra/linux) to install the agent and connect the VM to the control plane.
 :::
 
-The following YAML snippet illustrates the use of this input variable:
+---
 
-[embedmd]: # "./static/manifests/linux-api-latency/destination-ports.yaml yaml"
+## Use cases
 
-```yaml
-## provide destination ports
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: linux-api-latency
-      spec:
-        components:
-          env:
-            # provide destination ports
-            - name: destinationPorts
-              value: '80,443'
-            # provide the api path filter
-            - name: pathFilter
-              value: '/status'
-            # provide the port of the target service
-            - name: targetServicePort
-              value: 80
-```
+Run this fault when you want to answer concrete questions like:
 
-### HTTPS
+- **Caller timeouts:** When the API takes `LATENCY` longer than usual, do callers honor their own timeouts cleanly?
+- **Thread-pool starvation:** Do upstream worker pools back up when responses get slow?
+- **Retry storms:** Do retries amplify the slow traffic, or do exponential backoff and jitter contain it?
+- **Monitoring fidelity:** Do alerts on end-to-end p99, queue depth, and timeout counters fire within the alerting SLA?
 
-Enable the HTTPS support for both incoming and outgoing traffic by setting the `httpsEnabled` field to `true`. Its usage varies depending on whether it is applied to `ingress` or `egress` scenario.
+---
 
-#### Ingress
+## Prerequisites
 
-Set this parameter if the HTTPS URL of the target application includes a port whose format is `https://<hostname>:port`. However, if the HTTPS URL is in the format `https://<hostname>` without a port, this setting is not required.
+- **Linux Chaos Infrastructure installed:** The `linux-chaos-infrastructure` systemd service is `active` on the target VM and the infrastructure is in `CONNECTED` state. Go to [Linux Chaos Infrastructure](/docs/chaos-engineering/guides/infrastructures/types/legacy-infra/linux) to install it.
+- **Target service port reachable:** `TARGET_SERVICE_PORT` is the port the application listens on (ingress) or the upstream service port (egress).
+- **Proxy port free:** `PROXY_PORT` (default `20000`) is not bound by another process on the target VM.
+- **HTTPS material if `HTTPS_ENABLED=true`:** Provide a CA bundle in `HTTPS_ROOT_CERT_FILE` and additional certificates in `CUSTOM_CERTIFICATES`.
+- **`/tmp` is exec-mountable:** Verify with `findmnt -l | grep noexec | grep /tmp`. If `/tmp` is mounted `noexec`, remount with `sudo mount /tmp -o remount,exec`.
 
-#### Egress
+---
 
-For outbound traffic, set `httpsEnabled` to `true` to enable HTTPS support for external services. This enables using TLS certificates for the proxy within the target application.
+## Supported environments
 
-- If the HTTP client in the target application is configured to reload certificates with each API call, set `httpsEnabled` to `true`. You won't need to provide `customCertificates` input variable.
-- However, if the root CA certificate file path is not `/etc/ssl/certs/ca-certificates.crt`, provide it using `httpsRootCertFile` input variable.
-- If the HTTP client in the target application isn't configured to reload certificates with each API call, provide the `customCertificates` input variable to the chaos experiment. There is no need to set `httpsRootCertFile` input variable. The same custom certificates should be loaded into the target application.
-- You can generate custom certificates using the following commands:
+The fault has been tested on the following Linux distributions. Go to [Linux fault requirements](/docs/chaos-engineering/faults/chaos-faults/linux/permissions) to see the full compatibility matrix.
+
+| Platform | Support status |
+| --- | --- |
+| Ubuntu 16+, Debian 10+ | Supported |
+| CentOS 7+, RHEL 7+, Fedora 30+ | Supported |
+| openSUSE LEAP 15.4+ / SUSE Linux Enterprise 15+ | Supported |
+
+---
+
+## Permissions required
+
+This fault is classified as an **Advanced** Linux fault. It requires the Linux Chaos Infrastructure systemd service to run with the root user and root user group on the target VM so it can install iptables redirects and bind the proxy port. No cloud credentials are needed.
+
+---
+
+## Fault tunables
+
+Configure the following fault parameters when you add Linux API latency to an experiment in Chaos Studio. Defaults are shown for reference.
+
+**Chaos parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `DURATION` | Total duration of the fault. Accepts `[hours]h[minutes]m[seconds]s` format. | `30s` |
+| `LATENCY` | Latency to inject per matching request (for example, `2s`, `500ms`). | `2s` |
+| `TARGET_SERVICE_PORT` | Port of the application (ingress) or upstream service (egress) to intercept. | `80` |
+| `PROXY_PORT` | Port on which the local proxy listens. | `20000` |
+| `NETWORK_INTERFACE` | Network interface used for ingress redirection. | `eth0` |
+| `DATA_DIRECTION` | Direction of data to delay. Accepts `request`, `response`, or `both`. | `both` |
+| `RAMP_TIME` | Wait period in seconds before and after the fault. Go to [ramp time](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time) to read how it is applied. | `0` |
+
+**Request filters (combine as needed)**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `PATH_FILTER` | API path glob to match. Leave empty to match all paths. | `""` |
+| `HEADERS_FILTERS` | HTTP headers filter (comma-separated `Header=value` pairs). | `""` |
+| `METHODS` | Comma-separated HTTP methods to match. | `""` |
+
+**Direction and source/destination filters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `SERVICE_DIRECTION` | `ingress` (delay requests arriving at the VM) or `egress` (delay requests leaving the VM). | `ingress` |
+| `SOURCE_HOSTS` | Comma-separated source host names to match (ingress only). | `""` |
+| `SOURCE_IPS` | Comma-separated source IPs to match (ingress only). | `""` |
+| `DESTINATION_HOSTS` | Comma-separated destination host names to match (egress only). | `""` |
+| `DESTINATION_IPS` | Comma-separated destination IPs to match (egress only). | `""` |
+| `DESTINATION_PORTS` | Comma-separated destination ports for egress traffic. | `""` |
+
+**HTTPS interception (egress)**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `HTTPS_ENABLED` | Enable HTTPS interception. Required for matching HTTPS traffic by `PATH_FILTER`, headers, or methods. | `false` |
+| `HTTPS_ROOT_CERT_FILE` | Path to the root CA bundle used by the proxy to terminate egress HTTPS. | `""` |
+| `CUSTOM_CERTIFICATES` | Base64-encoded custom certificates added to the proxy trust store. | `""` |
+
+Tunables that apply to every fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
+
+---
+
+## Fault execution in brief
+
+Adds an iptables redirect on `NETWORK_INTERFACE` that routes `TARGET_SERVICE_PORT` traffic through the local proxy on `PROXY_PORT` for `DURATION`. Matching requests are held by `LATENCY` (in `DATA_DIRECTION`) before being forwarded; non-matching requests pass through unchanged. On exit, the iptables redirect and proxy are removed.
+
+---
+
+## Expected behavior during fault execution
+
+- Matching API calls take `LATENCY` longer than usual for the duration of the fault.
+- Callers see slower responses; tail latency (`p99`) shifts upward by approximately `LATENCY`.
+- Callers with shorter timeouts than `LATENCY` see clean timeout errors.
+- After the duration ends, the iptables redirect is removed and the proxy stops; traffic resumes its original path with no added latency.
+
+:::info When the fault ends
+The chaos pod removes the iptables redirect and stops the local proxy. The next request flows directly with no added latency.
+:::
+
+### Signals to watch
+
+Attach [resilience probes](/docs/resilience-testing/chaos-testing/probes) to assert each layer:
+
+- **End-to-end latency:** Use a [Prometheus probe](/docs/resilience-testing/chaos-testing/probes/apm-probes) on application p95/p99 metrics.
+- **Caller timeout counters:** Use a Prometheus probe on caller timeout/connection-error counters.
+- **HTTP probe:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) on a user-visible endpoint that exercises the slowed API.
+
+---
+
+## Verify the fault execution effect
+
+1. **Send a matching request from the VM.**
 
    ```bash
-   openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.crt -days 365 -nodes -subj '/CN=*'
-   cat key.pem cert.crt > ca-cert.pem
-   cat ca-cert.pem | base64 # provide it inside the customCertificates input variable
+   curl -w '%{time_total}\n' -o /dev/null -s http://localhost:<TARGET_SERVICE_PORT><PATH_FILTER-example>
    ```
-  Load the `cert.crt` into the target application and provide the base64 encoded value of `ca-cert.pem` to the `customCertificates` input variable.
 
-The following YAML snippet illustrates the use of this input variable:
+   Latency should rise by approximately `LATENCY` during the chaos window.
 
-[embedmd]: # "./static/manifests/linux-api-latency/https-enabled.yaml yaml"
+2. **Inspect iptables redirects.**
 
-```yaml
-## enable https support
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: linux-api-latency
-      spec:
-        components:
-          env:
-            # enable https support
-            - name: httpsEnabled
-              value: 'true'
-            - name: customCertificates
-              value: 'Y3VzdG9tIGNlcnRpZmljYXRlcwo='
-            # provide the api path filter
-            - name: pathFilter
-              value: '/status'
-            # provide the port of the targeted service
-            - name: targetServicePort
-              value: 80
-```
+   ```bash
+   sudo iptables -t nat -L -n -v | grep <PROXY_PORT>
+   ```
 
-### Advanced fault tunables
+3. **Inspect Linux Chaos Infrastructure logs.**
 
-- **proxyPort**: Port where the proxy listens for requests and responses.
-- **serviceDirection**: Direction of the flow of control, either `ingress` or `egress`.
-- **networkInterface**: Network interface used for the proxy.
-- **latency**: Delay introduced in the application.
-- **dataDirection**: The direction in which the latency is to be injected. Supports values `request`, `response` and `both`.
+   ```bash
+   sudo journalctl -u linux-chaos-infrastructure -n 100 --no-pager
+   ```
 
-The following YAML snippet illustrates the use of these input variables:
+---
 
-[embedmd]:# (./static/manifests/linux-api-latency/advanced-fault-tunables.yaml yaml)
-```yaml
-# it injects the api modify body fault
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: linux-api-latency
-      spec:
-        components:
-          env:
-            # provide the proxy port
-            - name: proxyPort
-              value: '20000'
-            # provide the connection type
-            - name: serviceDirection
-              value: 'ingress'
-            # provide the network interface
-            - name: networkInterface
-              value: 'eth0'
-            # provide the api path filter
-            - name: pathFilter
-              value: '/status'
-            # provide the port of the target service
-            - name: targetServicePort
-              value: 80
-            - name: latency
-              value: 2
-            - name: dataDirection
-              value: 'both'
-```
+## Recovery and cleanup
 
-### Advanced filters
+- **End of duration:** The chaos pod removes the iptables redirect and stops the proxy when `DURATION` elapses.
+- **Abort the experiment:** Stopping the experiment from Chaos Studio also removes the redirect and stops the proxy.
+- **Manual recovery:** If the redirect survives an abort, inspect with `sudo iptables -t nat -L -n -v` and delete the rule added by the fault; kill the proxy with `sudo lsof -i :<PROXY_PORT>` followed by `sudo kill <pid>`.
 
-- **headersFilters**: The HTTP request headers filters, that accept multiple comma-separated headers in the format of `key1:value1,key2:value2`.
-- **methods**: The HTTP request method type filters, that accept comma-separated HTTP methods in upper case, that is, `GET,POST`.
-- **queryParams**: The HTTP request query parameters filter, accepts multiple comma-separated query parameters in the format of `param1:value1,param2:value2`.
-- **sourceHosts**: Comma-separated source host names filters, indicating the origin of the HTTP request. This is relevant to the `ingress` type, specified by `SERVICE_DIRECTION` input variable.
-- **sourceIPs**: Comma-separated source IPs filters, indicating the origin of the HTTP request. This is specifically relevant to the `ingress` type, specified by `serviceDirection` input variable.
-- **destinationHosts**: Comma-separated destination host names filters, indicating the hosts on which you call the API. This specification applies exclusively to the `egress` type, specified by `serviceDirection` input variable.
-- **destinationIPs**: Comma-separated destination IPs filters, indicating the hosts on which you call the API. This specification applies exclusively to the `egress` type, specified by `serviceDirection` input variable.
+---
 
-The following YAML snippet illustrates the use of this input variable:
+## Limitations
 
-[embedmd]:# (./static/manifests/linux-api-latency/advanced-filters.yaml yaml)
-```yaml
-# it injects the api latency fault
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: linux-api-latency
-      spec:
-        components:
-          env:
-            # provide the headers filters
-            - name: headersFilters
-              value: 'key1:value1,key2:value2'
-            # provide the methods filters
-            - name: methods
-              value: 'GET,POST'
-            # provide the query params filters
-            - name: queryParams
-              value: 'param1:value1,param2:value2'
-            # provide the source hosts filters
-            - name: sourceHosts
-              value: 'host1,host2'
-            # provide the source ips filters
-            - name: sourceIPs
-              value: 'ip1,ip2'
-            # provide the connection type
-            - name: serviceDirection
-              value: 'ingress'
-            # provide the port of the target service
-            - name: targetServicePort
-              value: 80
-```
+- **HTTP/3 (QUIC) not intercepted.**
+- **HTTPS requires certificates:** Without `HTTPS_ROOT_CERT_FILE`, HTTPS traffic cannot be matched on path/header/method.
+- **Single VM scope:** Each fault run targets one VM.
+- **Per-request delay:** `LATENCY` is applied per matching request; high-request-rate workloads accumulate large delays.
+- **`/tmp` exec required.**
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="Linux API latency fault did not slow any request in Harness Chaos Engineering"
+  mode="docs"
+  fallback="Verify PATH_FILTER, METHODS, and HEADERS_FILTERS match your test traffic. For HTTPS endpoints, set HTTPS_ENABLED=true and provide HTTPS_ROOT_CERT_FILE. Confirm the iptables redirect is in place with sudo iptables -t nat -L -n -v."
+/>
+
+<Troubleshoot
+  issue="Proxy port already in use"
+  mode="docs"
+  fallback="PROXY_PORT (default 20000) conflicted with another listener. Change PROXY_PORT to a free port and re-run."
+/>
+
+<Troubleshoot
+  issue="Latency persists after the experiment ends"
+  mode="docs"
+  fallback="If the iptables redirect was not removed, inspect with sudo iptables -t nat -L -n -v and delete the rule added by the fault. Kill any orphan proxy on PROXY_PORT."
+/>
+
+---
+
+## Related faults
+
+- [Linux API block](/docs/chaos-engineering/faults/chaos-faults/linux/linux-api-block): Block requests entirely instead of delaying them.
+- [Linux API status code](/docs/chaos-engineering/faults/chaos-faults/linux/linux-api-status-code): Change the status code without adding latency.
+- [Linux network latency](/docs/chaos-engineering/faults/chaos-faults/linux/linux-network-latency): Delay at the network layer instead of the application layer.

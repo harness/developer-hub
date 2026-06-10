@@ -1,210 +1,199 @@
 ---
 id: linux-network-rate-limit
 title: Linux network rate limit
+sidebar_label: Linux Network Rate Limit
+description: Throttle network bandwidth leaving a target Linux machine for a configurable duration so you can test how the workload behaves when bandwidth is constrained.
+keywords:
+  - chaos engineering
+  - linux network rate limit
+  - linux fault
+  - network chaos
+tags:
+  - chaos-engineering
+  - linux-faults
+  - network-chaos
 redirect_from:
 - /docs/chaos-engineering/technical-reference/chaos-faults/linux/linux-network-rate-limit
 - /docs/chaos-engineering/chaos-faults/linux/linux-network-rate-limit
 ---
 
-import Ossupport from './shared/note-supported-os.md'
-import FaultPermissions from './shared/fault-permissions.md'
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
+Linux network rate limit is a chaos fault that throttles egress bandwidth on `NETWORK_INTERFACES` of the target Linux machine to `NETWORK_BANDWIDTH` (with a burst of `BURST` and queue limit `LIMIT`) for `DURATION`, then restores normal connectivity. Rate limiting is restricted to traffic destined for `DESTINATION_HOSTS`/`DESTINATION_IPS` and the configured port filters; SSH ports stay reachable when `WHITELIST_SSH` is `true`. The fault runs through the Linux Chaos Infrastructure (LCI) systemd service installed on the target VM.
 
-Linux network rate limit injects chaos to slow down the network connectivity on the Linux machine by limiting the network bandwidth to process fixed number of network packets per unit time.
+Use this fault to test how a workload behaves when bandwidth is constrained: whether large transfers degrade gracefully, whether back-pressure flows through the application correctly, whether buffer pools and queue depths stay inside bounds, and whether monitoring detects the saturation within the alerting SLA.
 
-![Linux network rate limit](./static/images/linux-network-rate-limit.png)
+:::info Run your first experiment
+If you have not installed the Linux Chaos Infrastructure yet, go to [Linux Chaos Infrastructure](/docs/chaos-engineering/guides/infrastructures/types/legacy-infra/linux) to install the agent and connect the VM to the control plane.
+:::
+
+---
 
 ## Use cases
-Linux network rate limit:
-- Induces network rate limit on the target Linux machines.
-- Simulates loss of connectivity access by blocking the network requests on the machine.
 
-<Ossupport />
+Run this fault when you want to answer concrete questions like:
 
-<FaultPermissions />
+- **Bandwidth headroom:** When egress is throttled to `NETWORK_BANDWIDTH`, do bulk transfers complete inside the SLA?
+- **Back-pressure:** Do producers slow down cleanly when the pipe is full, or do they OOM the local buffer?
+- **Queue depth:** Do queue depths in the application stay inside bounds when downstream is throttled?
+- **Monitoring fidelity:** Do alerts on transmit queue length, congestion, and SLA breach fire within the alerting SLA?
 
-## Mandatory tunables
-<table>
-  <tr>
-    <th> Tunable </th>
-    <th> Description </th>
-    <th> Notes </th>
-  </tr>
-  <tr>
-    <td> networkInterfaces </td>
-    <td> Comma-separated values of target network interfaces. </td>
-    <td> For example, <code>eth0,ens192</code> </td>
-  </tr>
-</table>
+---
 
-### Optional tunables
-<table>
-  <tr>
-    <th> Tunable </th>
-    <th> Description </th>
-    <th> Notes </th>
-  </tr>
-  <tr>
-    <td> destinationHosts </td>
-    <td> List of the target host names or keywords. For example, <code>google.com,litmuschaos.io</code></td>
-    <td> If neither <code>destinationHosts</code> nor <code> destinationIPs</code> is provided, all host names/domains are targeted. </td>
-  </tr>
-  <tr>
-    <td> destinationIPs </td>
-    <td> List of comma-separated target IPs. Also supports a list of target destination ports for a given IP, that are separated by a pipe (<code>|</code>). For example, <code>1.1.1.1,35.24.108.92|3000|8080</code>. </td>
-    <td> If neither <code>destinationHosts</code> nor <code> destinationIPs</code> is provided, all host names/domains are targeted. </td>
-  </tr>
-  <tr>
-    <td> networkBandwidth </td>
-    <td> Specify the network bandwidth rate limit. </td>
-    <td> Defaults to <code>1mbit</code> </td>
-  </tr>
-  <tr>
-    <td> burst </td>
-    <td> Size of bucket, in bytes. The maximum amount of bytes for which tokens can be instantaneously available. </td>
-    <td> Default: <code>2kb</code> </td>
-  </tr>
-  <tr>
-    <td> limit </td>
-    <td> Limit on the number of bytes that can be queued while waiting for tokens to become available. </td>
-    <td> Defaults to <code>2kb</code> </td>
-  </tr>
-  <tr>
-    <td> minBurst </td>
-    <td> Size of the peak rate bucket. </td>
-    <td> For example, <code>1kb</code>. </td>
-  </tr>
-    <tr>
-    <td> peakRate </td>
-    <td> Maximum depletion rate of the bucket. </td>
-    <td> For example, <code>1mbit</code>. </td>
-  </tr>
-  <tr>
-    <td> sourcePorts </td>
-    <td> Source ports to be filtered for chaos. For example, <code> 5000,8080 </code> </td>
-    <td> Alternatively, the ports that can be whitelisted, that is, filtered to be exempt from chaos. Prepend a <code>!</code> to the list of ports to be exempted. For example, <code> !5000,8080 </code> </td>
-  </tr>
-  <tr>
-    <td> destinationPorts </td>
-    <td> Destination ports to be filtered for chaos. For example, <code> 5000,8080 </code> </td>
-    <td> Alternatively, the ports can be whitelisted, that is, filtered to be exempt from chaos. Prepend a <code>!</code> to the list of ports to be exempted. For example, <code> !5000,8080 </code>. </td>
-  </tr>
-  <tr>
-    <td> whitelistSSH </td>
-    <td> Specifies whether the SSH connectivity should be retained during the chaos in the target machine.</td>
-    <td> Default: <code>true</code>. Supports one of: <code>true</code>, <code>false</code></td>
-  </tr>
-  <tr>
-    <td> duration </td>
-    <td> Duration through which chaos is injected into the target resource (in seconds). </td>
-    <td> Default: 30s </td>
-  </tr>
-  <tr>
-    <td> rampTime </td>
-    <td> Period to wait before and after injecting chaos (in seconds). </td>
-    <td> Default: 0s </td>
-  </tr>
-</table>
+## Prerequisites
 
-### Destination hosts
+- **Linux Chaos Infrastructure installed:** The `linux-chaos-infrastructure` systemd service is `active` on the target VM and the infrastructure is in `CONNECTED` state. Go to [Linux Chaos Infrastructure](/docs/chaos-engineering/guides/infrastructures/types/legacy-infra/linux) to install it.
+- **Target interface exists:** Each entry in `NETWORK_INTERFACES` exists on the target VM. Confirm with `ip -br link`.
+- **`tc` available:** The fault uses Linux Traffic Control (`tc`) with the token bucket filter (`tbf`) qdisc. Provided by iproute2.
 
-Comma-separated names of the target hosts that are subject to chaos. Tune it using the `destinationHosts` input variable.
+---
 
-The following YAML snippet illustrates the use of this input variable:
+## Supported environments
 
-[embedmd]:# (./static/manifests/linux-network-rate-limit/destination-hosts.yaml yaml)
-```yaml
-apiVersion: litmuchaos.io/v1alpha1
-kind: LinuxFault
-metadata:
-  name: linux-network-rate-limit
-  labels:
-    name: network-rate-limit
-spec:
-  networkChaos/inputs:
-    destinationHosts: 'google.com'
-    networkInterfaces: "eth0"
-```
+The fault has been tested on the following Linux distributions. Go to [Linux fault requirements](/docs/chaos-engineering/faults/chaos-faults/linux/permissions) to see the full compatibility matrix.
 
-### Destination IPs
+| Platform | Support status |
+| --- | --- |
+| Ubuntu 16+, Debian 10+ | Supported |
+| CentOS 7+, RHEL 7+, Fedora 30+ | Supported |
+| openSUSE LEAP 15.4+ / SUSE Linux Enterprise 15+ | Supported |
 
-The `destinationIPs` input variable subjects the comma-separated names of the target IPs to chaos. You can specify the ports to be targeted for an IP by using a pipe (`|`) as a separator. While providing ports is optional, omitting them will affect all the ports associated with the destination IPs.
+---
 
-The following YAML snippet illustrates the use of this input variable:
+## Permissions required
 
-[embedmd]:# (./static/manifests/linux-network-rate-limit/destination-ips.yaml yaml)
-```yaml
-apiVersion: litmuchaos.io/v1alpha1
-kind: LinuxFault
-metadata:
-  name: linux-network-rate-limit
-  labels:
-    name: network-rate-limit
-spec:
-  networkChaos/inputs:
-    destinationIPs: '1.1.1.1,192.168.5.6|80|8080'
-    networkInterfaces: "eth0"
-```
+This fault is classified as an **Advanced** Linux fault. It requires the Linux Chaos Infrastructure systemd service to run with the root user and root user group on the target VM so it can manage the `tc` qdisc. No cloud credentials are needed.
 
-### Network bandwidth
+---
 
-Network bandwidth injected during chaos. Tune it by using the `networkBandwidth` input variable.
+## Fault tunables
 
-Following YAML snippet illustrates the use of this input variable:
+Configure the following fault parameters when you add Linux network rate limit to an experiment in Chaos Studio. Defaults are shown for reference.
 
-[embedmd]:# (./static/manifests/linux-network-rate-limit/network-bandwidth.yaml yaml)
-```yaml
-apiVersion: litmuchaos.io/v1alpha1
-kind: LinuxFault
-metadata:
-  name: linux-network-rate-limit
-  labels:
-    name: network-rate-limit
-spec:
-  networkChaos/inputs:
-    destinationIPs: '1.1.1.1'
-    networkInterfaces: "eth0"
-    networkBandwidth: 1mbit
-```
+**Chaos parameters**
 
-### Burst
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `DURATION` | Total duration of the fault. Accepts `[hours]h[minutes]m[seconds]s` format. | `30s` |
+| `NETWORK_BANDWIDTH` | Bandwidth ceiling for egress traffic (for example, `1mbit`, `512kbit`). | `1mbit` |
+| `BURST` | Burst size that the bucket allows above `NETWORK_BANDWIDTH` (for example, `32kb`). | `32kb` |
+| `LIMIT` | Queue limit before packets start to be dropped (for example, `2mb`). | `2mb` |
+| `PEAK_RATE` | Peak rate ceiling (for example, `2mbit`). Leave empty to skip the peak rate cap. | `""` |
+| `MIN_BURST` | Minimum burst size, in bytes, used with `PEAK_RATE`. Leave empty to skip. | `""` |
+| `NETWORK_INTERFACES` | Comma-separated network interfaces to apply chaos on. | `eth0` |
+| `RAMP_TIME` | Wait period in seconds before and after the fault. Go to [ramp time](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time) to read how it is applied. | `0` |
 
-Size of the bucket, in bytes. It is the maximum number of bytes for which tokens can be instantaneously available. Tune it by using the `burst` input variable.
+**Target filters (provide at least one host or IP to limit blast radius)**
 
-Following YAML snippet illustrates the use of this input variable:
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `DESTINATION_HOSTS` | Comma-separated destination host names to target. | `""` |
+| `DESTINATION_IPS` | Comma-separated destination IPs to target. Per-IP ports can be specified using the `ip\|port` format. | `""` |
+| `SOURCE_PORTS` | Comma-separated source ports to target. Prefix with `!` to whitelist. | `""` |
+| `DESTINATION_PORTS` | Comma-separated destination ports to target. Prefix with `!` to whitelist. | `""` |
+| `WHITELIST_SSH` | Keep SSH ports (`22,2222`) excluded from chaos. | `true` |
 
-[embedmd]:# (./static/manifests/network-rate-limit/burst.yaml yaml)
-```yaml
-apiVersion: litmuchaos.io/v1alpha1
-kind: LinuxFault
-metadata:
-  name: linux-network-rate-limit
-  labels:
-    name: network-rate-limit
-spec:
-  networkChaos/inputs:
-    destinationIPs: '1.1.1.1'
-    networkInterfaces: "eth0"
-    burst: 2kb
-```
+When neither `DESTINATION_HOSTS` nor `DESTINATION_IPS` is set, the fault applies to all destinations on the interface.
 
-### Limit
+Tunables that apply to every fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
 
-Limit on the number of bytes that can be queued while waiting for tokens to become available. Tune it by using the `limit` input variable.
+---
 
-Following YAML snippet illustrates the use of this input variable:
+## Fault execution in brief
 
-[embedmd]:# (./static/manifests/network-rate-limit/limit.yaml yaml)
-```yaml
-apiVersion: litmuchaos.io/v1alpha1
-kind: LinuxFault
-metadata:
-  name: linux-network-rate-limit
-  labels:
-    name: network-rate-limit
-spec:
-  networkChaos/inputs:
-    destinationIPs: '1.1.1.1'
-    networkInterfaces: "eth0"
-    limit: 2kb
-```
+Adds a token bucket filter (`tbf`) qdisc on `NETWORK_INTERFACES` that caps egress bandwidth at `NETWORK_BANDWIDTH` (with `BURST` and `LIMIT`) for `DURATION` against the configured filters, then removes the qdisc.
+
+---
+
+## Expected behavior during fault execution
+
+- Egress throughput to matched destinations is capped at approximately `NETWORK_BANDWIDTH`.
+- Burst traffic up to `BURST` is allowed; sustained traffic is throttled.
+- The transmit queue grows until it hits `LIMIT`, after which packets are dropped.
+- Application bulk transfers slow down; small request/response patterns may still complete inside the SLA.
+- After the duration ends, the qdisc is removed and bandwidth returns to baseline.
+
+:::info When the fault ends
+The chaos pod removes the `tbf` qdisc. Bandwidth returns to baseline; queued packets drain into the underlying interface.
+:::
+
+### Signals to watch
+
+Attach [resilience probes](/docs/resilience-testing/chaos-testing/probes) to assert each layer:
+
+- **Egress throughput:** Use a [Prometheus probe](/docs/resilience-testing/chaos-testing/probes/apm-probes) on `rate(node_network_transmit_bytes_total[1m])` and assert it dropped to the configured ceiling.
+- **Queue depth:** Use a [command probe](/docs/resilience-testing/chaos-testing/probes/command-probe) running `tc -s qdisc show dev <interface>` and inspect the qdisc stats.
+- **End-to-end availability:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) on a user-visible bulk endpoint.
+
+---
+
+## Verify the fault execution effect
+
+1. **Inspect the active qdisc.**
+
+   ```bash
+   tc -s qdisc show dev <interface>
+   ```
+
+   A `tbf` qdisc with the configured `rate` and `burst` should be present during the chaos window.
+
+2. **Run a bandwidth test against a matched destination.**
+
+   ```bash
+   iperf3 -c <target> -t 30
+   ```
+
+   Throughput should cap at approximately `NETWORK_BANDWIDTH` during the chaos window and return to line rate afterwards.
+
+3. **Inspect Linux Chaos Infrastructure logs.**
+
+   ```bash
+   sudo journalctl -u linux-chaos-infrastructure -n 100 --no-pager
+   ```
+
+---
+
+## Recovery and cleanup
+
+- **End of duration:** The chaos pod removes the `tbf` qdisc when `DURATION` elapses.
+- **Abort the experiment:** Stopping the experiment from Chaos Studio also removes the qdisc.
+- **Manual recovery:** If the qdisc survives an abort, remove it with `sudo tc qdisc del dev <interface> root`.
+
+---
+
+## Limitations
+
+- **Egress only:** The fault throttles packets leaving the VM on the configured interfaces; ingress bandwidth is not capped.
+- **Single VM scope:** Each fault run targets one VM.
+- **TBF behavior:** Token bucket filtering allows short bursts above `NETWORK_BANDWIDTH`; tune `BURST` to constrain bursting.
+- **SSH whitelisting:** When `WHITELIST_SSH` is `false`, your SSH session may slow down or stall if SSH ports match the filter.
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="Linux network rate limit fault shows no measurable throttling in Harness Chaos Engineering"
+  mode="docs"
+  fallback="Confirm the destination filter matches your test traffic. Run tc -s qdisc show dev <interface> to verify the tbf qdisc is installed. NETWORK_BANDWIDTH values above the line rate have no effect."
+/>
+
+<Troubleshoot
+  issue="Bursts above NETWORK_BANDWIDTH visible in monitoring"
+  mode="docs"
+  fallback="Token bucket filtering allows short bursts up to BURST. Reduce BURST (for example, to 1kb) to constrain bursting. PEAK_RATE caps the maximum instantaneous rate when set."
+/>
+
+<Troubleshoot
+  issue="Throttling persists after the experiment ends"
+  mode="docs"
+  fallback="If the tbf qdisc was not removed, remove it manually with sudo tc qdisc del dev <interface> root."
+/>
+
+---
+
+## Related faults
+
+- [Linux network latency](/docs/chaos-engineering/faults/chaos-faults/linux/linux-network-latency): Add delay instead of capping bandwidth.
+- [Linux network loss](/docs/chaos-engineering/faults/chaos-faults/linux/linux-network-loss): Drop packets instead of throttling.
+- [Linux network corruption](/docs/chaos-engineering/faults/chaos-faults/linux/linux-network-corruption): Corrupt packets instead of throttling.

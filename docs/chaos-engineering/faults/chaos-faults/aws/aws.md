@@ -61,14 +61,14 @@ CLB AZ down disables one or more availability zones on a Classic Load Balancer f
 
 ### AZ blackhole
 
-The AZ blackhole causes network blackhole by isolating traffic in specific availability zones across an entire region. Users can control the blast radius by providing targeted VPC IDs for the AZ failure.
+AZ blackhole isolates network traffic in one or more AWS Availability Zones (optionally scoped to specific VPCs or subnets) for a configurable duration and restores connectivity afterwards, so you can test how multi-AZ workloads handle a zone-level outage.
 
 <Accordion color="green">
 <summary>Use cases</summary>
 
-- Checks how the applications and services handle the loss of network connectivity in specific zones.
-- Determine the effects of network isolation on critical business processes by simulating major network disruptions, helping teams to identify weak links and improve overall system robustness.
-- Test and refine disaster recovery plans by simulating AZ-level blackholes, ensuring that your infrastructure can efficiently reroute traffic and maintain operational continuity during large-scale outages.
+- Validate ALB / NLB failover to remaining zones when an AZ goes dark.
+- Confirm Multi-AZ databases (RDS, ElastiCache, OpenSearch, MSK) survive a single-AZ blackhole without data loss.
+- Rehearse Auto Scaling and disaster-recovery automation under a zone-level outage.
 
 </Accordion>
 </FaultDetailsCard>
@@ -77,14 +77,14 @@ The AZ blackhole causes network blackhole by isolating traffic in specific avail
 
 ### VPC route misconfiguration
 
-The vpc route misconfiguration chaos causes network issues due to the misconfiguration of the route table associated with the targeted VPC.
+VPC route misconfiguration temporarily removes specified CIDR routes from one or more VPC route tables for a configurable duration and restores them afterwards, so you can test how the workload behaves when egress to a Transit Gateway, NAT Gateway, VPC peer, or internet gateway disappears.
 
 <Accordion color="green">
 <summary>Use cases</summary>
 
-- Misconfigured changes to VPC route tables
-- Accidental deletion of external or internal routes
-- Loss of connectivity to critical components such as Transit Gateway (TGW), NAT Gateway (NATGW), or VPC Peering connections
+- Detect blast radius of a future change to a VPC route table before rolling it out.
+- Validate clean error handling when egress to a TGW / NAT Gateway / peer is broken.
+- Confirm alarms on NAT bytes or TGW packet drops fire within the SLA.
 
 </Accordion>
 </FaultDetailsCard>
@@ -93,14 +93,14 @@ The vpc route misconfiguration chaos causes network issues due to the misconfigu
 
 ### DynamoDB replication pause
 
-DynamoDB replication pause fault pauses the data replication in DynamoDB tables over multiple locations for the chaos duration.
-- When chaos experiment is being executed, any changes to the DynamoDB table will not be replicated in different regions, thereby making the data in the DynamoDB inconsistent.
-- You can execute this fault on a DynamoDB table that is global, that is, there should be more than one replica of the table.
+DynamoDB replication pause pauses cross-region replication on one or more Amazon DynamoDB global tables for a configurable duration using an AWS Fault Injection Service (FIS) experiment, so you can test how your application handles a brief stop in multi-region consistency.
 
 <Accordion color="green">
 <summary>Use cases</summary>
 
-DynamoDB replication pause determines the resilience of the application when data (in a database) that needs to be constantly updated is disrupted.
+- Validate eventual-consistency tolerance when replication latency spikes.
+- Confirm cross-region failover automation does not misfire on a temporary replication pause.
+- Rehearse global-table catch-up after a multi-region replication gap.
 
 </Accordion>
 </FaultDetailsCard>
@@ -701,18 +701,30 @@ ECS update task role swaps the IAM task role on an ECS service for a configurabl
 
 ### Generic experiment template
 
-Generic experiment template provides a template to natively inject faults using FIS for different services, such as EC2, EBS, DynamoDB, and so on.
-- You need to create an FIS template and store it.
-- Provide parameters to the pre-created FIS templates and execute experiments.
-- You can specify the template ID and region on Harness to execute the experiments using these FIS templates.
-- You can monitor and report the results of executing the experiment from these FIS templates.
+Generic experiment template (also known as Generic FIS experiment template) starts a pre-existing AWS Fault Injection Service (FIS) template by ID, so you can fold native AWS-managed faults into a Harness chaos experiment and probe, verify, and report on the result as you do with any other Harness fault.
 
 <Accordion color="green">
 <summary>Use cases</summary>
 
-- Inject faults natively using FIS services.
-- Monitor and report the results of executing the experiment from the FIS templates.
-- Build chaos experiments with pre-defined templates or build experiments from scratch using FIS service.
+- Drive an existing FIS template from Chaos Studio so you can attach probes, hypothesis criteria, and reports.
+- Mix native FIS actions with Harness-native faults inside one experiment.
+- Centralise FIS results alongside every other Harness chaos run.
+
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
+### Lambda block TCP connection
+
+Lambda block TCP connection blocks outbound TCP connections from an AWS Lambda function to one or more target hostnames for a configurable duration, so you can test how the function behaves when a TCP-based dependency is unreachable.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Validate fail-fast behaviour when a TCP-based dependency (database, cache, external API) is unreachable.
+- Confirm function timeout protects against TCP-blocked dependencies without amplifying cost.
+- Test alarm fidelity for elevated Lambda error rate.
 
 </Accordion>
 </FaultDetailsCard>
@@ -721,13 +733,14 @@ Generic experiment template provides a template to natively inject faults using 
 
 ### Lambda delete event source mapping
 
-Lambda delete event source mapping removes the event source mapping from an AWS Lambda function for a specific duration. Deleting an event source mapping from a Lambda function is critical. It can lead to failure in updating the database on an event trigger, which can break the service.
+Lambda delete event source mapping deletes one or more event source mappings on an AWS Lambda function for a configurable duration and recreates them afterwards, so you can test how the workload behaves when the function stops receiving events from its source.
 
 <Accordion color="green">
 <summary>Use cases</summary>
 
-- Determines the performance of the application (or service) without the event source mapping that may cause missing entries in a database.
-- Determines whether proper error handling or auto-recovery options have been configured for the application.
+- Validate event backlog handling (SQS / Kinesis / DynamoDB Streams) when the mapping is removed.
+- Confirm drain behaviour and idempotency when the mapping is recreated.
+- Test alarm fidelity for iterator age and queue depth.
 
 </Accordion>
 </FaultDetailsCard>
@@ -736,13 +749,14 @@ Lambda delete event source mapping removes the event source mapping from an AWS 
 
 ### Lambda function layer detach
 
-Lambda function layer detach is an AWS fault that detaches the Lambda layer associated with the function, thereby causing dependency-related issues or breaking the Lambda function that relies on the layer's content.
+Lambda function layer detach detaches a specified Lambda layer from a target AWS Lambda function for a configurable duration and reattaches it afterwards, so you can test how the workload behaves when a shared dependency layer disappears.
 
 <Accordion color="green">
 <summary>Use cases</summary>
 
-- Debug runtime errors caused by a specific library in the layer.
-- Tests how the Lambda function behaves without the dependencies provided by the layer, thereby identifying the unnecessary dependencies and reduce the layer's footprint.
+- Validate clean error reporting when the layer's libraries or binaries disappear.
+- Audit whether the function actually uses the libraries provided by the layer.
+- Confirm reattach restores normal operation without manual intervention.
 
 </Accordion>
 </FaultDetailsCard>
@@ -751,12 +765,14 @@ Lambda function layer detach is an AWS fault that detaches the Lambda layer asso
 
 ### Lambda delete function concurrency
 
-Lambda delete function concurrency deletes the Lambda function's reserved concurrency, thereby ensuring that the function has adequate unreserved concurrency to run.
+Lambda delete function concurrency deletes the reserved concurrency configuration on an AWS Lambda function for a configurable duration and restores it afterwards, so you can test how the workload behaves when the function has to share account-level concurrency with other functions.
 
 <Accordion color="green">
 <summary>Use cases</summary>
 
-- Lambda delete function concurrency examines the performance of the running Lambda application, if the Lambda function lacks sufficient concurrency.
+- Validate throttling exposure when the reservation disappears.
+- Confirm alarm fidelity on `Throttles` and account-level concurrency usage.
+- Test downstream consumer behaviour when the function throughput drops.
 
 </Accordion>
 </FaultDetailsCard>
@@ -765,13 +781,14 @@ Lambda delete function concurrency deletes the Lambda function's reserved concur
 
 ### Lambda toggle event mapping state
 
-Lambda toggle event mapping state toggles (or sets) the event source mapping state to `disable` for a Lambda function during a specific duration. Toggling between different states of event source mapping from a Lambda function may lead to failures when updating the database on an event trigger. This can break the service and impact its delivery.
+Lambda toggle event mapping state disables one or more event source mappings on an AWS Lambda function for a configurable duration and re-enables them afterwards, so you can test how the workload behaves when the function temporarily stops receiving events from its source.
 
 <Accordion color="green">
 <summary>Use cases</summary>
 
-- Checks the performance of the running application when the event source mapping is not enabled. This may cause missing entries in a database.
-- Determines if the application has proper error handling or auto recovery actions configured.
+- Validate event backlog handling when the mapping is disabled (without losing the mapping).
+- Confirm drain behaviour when the mapping is re-enabled.
+- Test alarm fidelity for iterator age, queue depth, and "no invocations".
 
 </Accordion>
 </FaultDetailsCard>
@@ -780,14 +797,14 @@ Lambda toggle event mapping state toggles (or sets) the event source mapping sta
 
 ### Lambda update function memory
 
-Lambda update function memory causes the memory of a Lambda function to update to a specific value for a certain duration. This fault:
-- Determines a safe overall memory limit value for the function. Smaller the memory limit, higher will be the time taken by the Lambda function under load.
+Lambda update function memory lowers the memory allocation of an AWS Lambda function for a configurable duration and restores it afterwards, so you can test how the workload behaves with less memory and a proportionally smaller CPU share.
 
 <Accordion color="green">
 <summary>Use cases</summary>
 
-- Helps build resilience to unexpected scenarios such as hitting a memory limit with the Lambda function, that slows down the service and impacts its delivery. Running out of memory due to smaller limits interrupts the flow of the given function.
-- Checks the performance of the application (or service) running with a new memory limit.
+- Validate OOM behaviour and the impact of reduced CPU share on duration.
+- Identify the lowest safe memory setting for cost optimization.
+- Confirm alarms fire when memory pressure rises.
 
 </Accordion>
 </FaultDetailsCard>
@@ -796,14 +813,30 @@ Lambda update function memory causes the memory of a Lambda function to update t
 
 ### Lambda update function timeout
 
-Lambda update function timeout causes a timeout of a Lambda function, thereby updating the timeout to a specific value for a certain duration. Timeout errors interrupt the flow of the given function.
-Hitting a timeout is a frequent scenario with Lambda functions. This can break the service and impact the delivery. Such scenarios can occur despite the availability aids provided by AWS.
+Lambda update function timeout lowers the configured timeout of an AWS Lambda function for a configurable duration and restores it afterwards, so you can test how the workload behaves when invocations are cut short.
 
 <Accordion color="green">
 <summary>Use cases</summary>
 
-- Checks the performance of the application (or service) running with a new timeout.
-- Determines a safe overall timeout value for the function.
+- Validate clean caller behaviour when tail invocations are killed.
+- Identify the lowest safe timeout setting for cost optimization.
+- Confirm alarms fire on elevated `Errors` from timed-out invocations.
+
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
+### Lambda inject latency
+
+Lambda inject latency adds a configurable amount of latency to every invocation of an AWS Lambda function for a configurable duration, so you can test how upstream callers and downstream consumers handle slower-than-expected responses, cold-start spikes, and resource contention.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Validate caller timeout and retry behaviour when the function is slow.
+- Confirm retries do not amplify load on the function or its dependencies.
+- Test alarm fidelity for `Duration` and end-to-end p99.
 
 </Accordion>
 </FaultDetailsCard>
@@ -812,16 +845,14 @@ Hitting a timeout is a frequent scenario with Lambda functions. This can break t
 
 ### Lambda inject status code
 
+Lambda inject status code overrides the HTTP status code returned by an AWS Lambda function for a configurable duration, so you can test how upstream callers and downstream consumers handle unexpected error status responses.
+
 <Accordion color="green">
 <summary>Use cases</summary>
 
-- Assess how downstream services react when receiving non-standard or error HTTP status codes, ensuring that error-handling logic and fallback mechanisms are effective.
-- Test the robustness of client applications and APIs when they encounter unexpected status codes, allowing for early detection of integration issues.
-- Evaluate and fine-tune retry policies and error logging strategies by simulating intermittent faulty responses in a controlled manner.
-=======
-- Checks integrated services handle delayed responses, ensuring that timeouts and fallback mechanisms are appropriately configured.
-- Inject latency when interacting with external APIs or databases to determine if your system can maintain functionality under slower-than-expected response times.
-- Evaluate the impact of delays typically experienced during cold starts or resource contention, and refine scaling strategies accordingly.
+- Validate caller error handling, retry budgets, circuit breakers, and fallback flows.
+- Confirm alarm fidelity on Lambda `Errors` and API Gateway / ALB 5xx.
+- Test client behaviour against unexpected statuses without crashing.
 
 </Accordion>
 </FaultDetailsCard>
@@ -830,14 +861,14 @@ Hitting a timeout is a frequent scenario with Lambda functions. This can break t
 
 ### Lambda update role permission
 
-Lambda update role permission is an AWS fault that modifies the role policies associated with a Lambda function. Sometimes, Lambda functions depend on services like RDS, DynamoDB, and S3. In such cases, certain permissions are required to access these services. This fault helps understand how your application would behave when a Lambda function does not have enough permissions to access the services.
+Lambda update role permission detaches a specified IAM policy from the execution role attached to an AWS Lambda function for a configurable duration and reattaches it afterwards, so you can test how the workload behaves when the function loses permission to call a downstream AWS service.
 
 <Accordion color="green">
 <summary>Use cases</summary>
 
-- Verifies the handling mechanism for function failures.
-- Updates the role attached to a Lambda function.
-- Determines the performance of the running Lambda application when it does not have enough permissions.
+- Validate fail-fast behaviour when an AWS API permission disappears.
+- Confirm alarm fidelity on Lambda errors and downstream service access denials.
+- Test caller and downstream behaviour during the IAM propagation window.
 
 </Accordion>
 </FaultDetailsCard>
@@ -846,13 +877,14 @@ Lambda update role permission is an AWS fault that modifies the role policies as
 
 ### Lambda modify response body
 
-Lambda modify response body modifies the response body of a Lambda function at runtime, simulating unexpected output alterations. This interrupt the flow of the given function.
+Lambda modify response body overrides the response body returned by an AWS Lambda function for a configurable duration, so you can test how upstream callers and client applications handle unexpected payload shapes and corrupted data.
 
 <Accordion color="green">
 <summary>Use cases</summary>
 
-- Debug runtime errors caused by unexpected function response.
-- Diagnose and mitigate response inconsistencies in real-time, reducing service disruptions and enhancing overall system reliability
+- Validate response-schema validation in client applications.
+- Identify silent consumers that accept invalid responses without alerting.
+- Confirm alarm fidelity on application-level error rate.
 
 </Accordion>
 </FaultDetailsCard>
@@ -909,15 +941,14 @@ RDS instance reboot reboots a target RDS DB instance (with optional Multi-AZ fai
 
 ### Resource access restrict
 
-Resource access restrict restricts access to a specific AWS resource for a specific duration.
+Resource access restrict temporarily strips ingress or egress rules from one or more AWS security groups for a configurable duration and restores them afterwards, so you can test how the workload behaves when network access to (or from) an AWS resource disappears.
 
 <Accordion color="green">
 <summary>Use cases</summary>
 
-- Tests the application's resiliency and error handling when access to a critical AWS resource is restricted.
-- Validates the application's ability to handle and recover from temporary resource unavailability.
-- Test the application's response to restricted access to AWS resources, such as ec2, database storage.
-- Evaluate the application's error handling and recovery mechanisms in the face of resource unavailability.
+- Validate clean fail-fast behaviour when network access disappears.
+- Confirm multi-AZ resilience absorbs the load on healthy resources.
+- Test alarm fidelity on connection errors and target health.
 
 </Accordion>
 </FaultDetailsCard>
@@ -1046,22 +1077,6 @@ Windows EC2 process kill kills one or more processes (selected by PID or process
 - Validate Windows Service Control Manager recovery options.
 - Confirm cluster failover (SQL Server AlwaysOn, MSCS) when a local process dies.
 - Test custom watchdog/supervisor (NSSM, FireDaemon) respawn behaviour.
-
-</Accordion>
-</FaultDetailsCard>
-
-<FaultDetailsCard category="aws">
-
-### Lambda Block TCP Connection
-
-Lambda Block TCP Connection is an AWS fault that simulates network blocks for TCP connections of a Lambda function. This fault helps you evaluate how your application responds when outbound TCP connections from a Lambda function are blocked.
-
-<Accordion color="green">
-<summary>Use cases</summary>
-
-- Simulate network blocks to test Lambda function resilience.
-- Evaluate the impact of blocked TCP connections on application performance and error handling.
-- Test fallback mechanisms and error reporting in serverless architectures.
 
 </Accordion>
 </FaultDetailsCard>

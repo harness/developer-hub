@@ -1,52 +1,70 @@
 ---
 id: vpc-route-misconfiguration
-title: VPC Route misconfiguration
+title: VPC route misconfiguration
+sidebar_label: VPC Route Misconfiguration
+description: Temporarily remove specified CIDR routes from one or more VPC route tables for a configurable duration and restore them afterwards so you can test how the workload behaves when egress to a Transit Gateway, NAT Gateway, VPC peer, or internet gateway disappears.
+keywords:
+  - chaos engineering
+  - vpc route misconfiguration
+  - aws fault
+  - network chaos
+tags:
+  - chaos-engineering
+  - aws-faults
+  - network-chaos
 ---
 
-VPC Route Misconfiguration is a chaos fault designed to simulate network disruptions across an AWS region by intentionally misconfiguring VPC route tables routes. It works by temporarily removing one or more target CIDR routes from the VPC route tables, creating a scenario where network connectivity is impacted. During the defined chaos duration, the system allows observation and monitoring of the effects caused by the misconfiguration. After the chaos period ends, the fault automatically restores the original route configuration to ensure normal operations are resumed without manual intervention.
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-:::tip
-Note: It safely ignores local routes and supports multiple CIDRs via a single run.
+VPC route misconfiguration is an AWS chaos fault that removes one or more CIDR routes (listed in `TARGET_ROUTE_CIDRS`) from the route tables associated with the target VPC (`VPC_ID` in `REGION`), optionally restricted to the route table IDs in `TARGET_ROUTE_TABLE_IDS` or tagged with `TARGET_ROUTE_TABLE_TAG`, for `TOTAL_CHAOS_DURATION` seconds. Local routes are always left untouched. After the chaos window the original routes are reinstalled.
+
+Use this fault to test how a workload behaves when egress to a specific CIDR (a Transit Gateway, NAT Gateway, VPC peer, internet gateway, or internal service network) disappears: whether the workload fails fast with a clear error, whether retries amplify load, whether monitoring detects the routing change, and whether downstream consumers degrade gracefully under a partial network partition.
+
+:::info Run your first experiment
+If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
 :::
 
-
-![VPC Route misconfiguration](./static/images/vpc-route-misconfiguration.png)
+---
 
 ## Use cases
 
-VPC Route Misconfiguration:
+Run this fault when you want to answer concrete questions like:
 
-VPC Route Misconfiguration can mimics the following chaos scenarios:
+- **Misconfigured route changes:** Detect blast radius of a future change to a VPC route table before it is rolled out.
+- **Connectivity loss to TGW / NATGW / peer:** When the route to a critical CIDR disappears, do workloads fail fast with a clear error?
+- **Monitoring fidelity:** Do CloudWatch alarms on NAT bytes, TGW packet drops, or application-level errors fire within the SLA?
+- **Retry storms:** Do retries amplify failure when egress is broken?
+- **Recovery:** When the route is reinstalled, do existing connections recover automatically?
 
-- Misconfigured changes to VPC route tables
-- Accidental deletion of external or internal routes
-- Loss of connectivity to critical components such as Transit Gateway (TGW), NAT Gateway (NATGW), or VPC Peering connections
+---
 
+## Prerequisites
 
-### Prerequisites
-- Kubernetes >= 1.17
-- Ensure you have the required AWS permissions to induce a network blackhole in the specified availability zone within the region..
-- Ensure that the specified VPC (if provided) includes the target availability zone.
-- The Kubernetes secret should have AWS access configuration (key) in the `CHAOS_NAMESPACE`. Below is a sample secret file.
-  ```yaml
-  apiVersion: v1
-  kind: Secret
-  metadata:
-    name: cloud-secret
-  type: Opaque
-  stringData:
-    cloud_config.yml: |-
-      # Add the cloud AWS credentials respectively
-      [default]
-      aws_access_key_id = XXXXXXXXXXXXXXXXXXX
-      aws_secret_access_key = XXXXXXXXXXXXXXX
-  ```
+- **Kubernetes version:** 1.21 or later for the chaos infrastructure cluster. Go to [What's supported](/docs/chaos-engineering/whats-supported) to confirm distribution support.
+- **Target VPC and routes:** `VPC_ID` exists in `REGION`, and at least one route table in the VPC currently contains every CIDR in `TARGET_ROUTE_CIDRS`.
+- **Scope control:** Use `TARGET_ROUTE_TABLE_IDS` or `TARGET_ROUTE_TABLE_TAG` to limit which route tables are affected. Without those filters, every non-default route table that contains the CIDR is modified, scaled by `ROUTE_TABLE_AFFECTED_PERCENTAGE`.
+- **AWS credentials available:** Either an AWS credentials file uploaded as a **File Secret in Harness Secret Manager** (see Authentication below) or an IAM role for service accounts (IRSA) bound to the chaos infrastructure service account.
+- **IAM permissions granted:** The credentials or role include the permissions listed below.
 
-:::tip
-Harness CE recommends that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you won't be able to use the default health check probes.
+:::caution Wide blast radius
+Removing a route used by many subnets affects every workload in those subnets. Always scope with `TARGET_ROUTE_TABLE_IDS` or `TARGET_ROUTE_TABLE_TAG` in shared accounts.
 :::
 
-Below is an example AWS policy to execute the fault.
+---
+
+## Supported environments
+
+| Platform | Support status |
+| --- | --- |
+| AWS VPC route tables in any commercial region | Supported |
+| Local routes | Not affected (the fault explicitly skips them) |
+| AWS Outposts, AWS Wavelength, Local Zones | Not supported |
+
+---
+
+## Permissions required
+
+The IAM principal that the chaos pod uses (the credentials mounted from the Harness Secret Manager file secret, the IRSA role on the chaos service account, or the role assumed via `ASSUME_ROLE_ARN`) needs the following AWS actions.
 
 ```json
 {
@@ -55,10 +73,12 @@ Below is an example AWS policy to execute the fault.
     {
       "Effect": "Allow",
       "Action": [
-        "ec2:DescribeRouteTables",
         "ec2:DescribeVpcs",
+        "ec2:DescribeRouteTables",
+        "ec2:CreateRoute",
         "ec2:DeleteRoute",
-        "ec2:CreateRoute"
+        "ec2:ReplaceRoute",
+        "ec2:CreateTags"
       ],
       "Resource": "*"
     }
@@ -66,201 +86,174 @@ Below is an example AWS policy to execute the fault.
 }
 ```
 
-:::info note
-- Go to [superset permission/policy](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
-- Go to [common attributes](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults) and [AWS-specific tunables](/docs/chaos-engineering/faults/chaos-faults/aws/aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
-- Go to [AWS named profile for chaos](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/aws-switch-profile) to use a different profile for AWS faults.
+Go to [common policy for all AWS faults](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/policy-for-all-aws-faults) to use a single superset IAM policy across every AWS fault.
+
+---
+
+## Authentication
+
+The fault supports three credential delivery models. Pick one based on how your chaos infrastructure is deployed.
+
+| Method | When to use it | How to configure |
+| --- | --- | --- |
+| Harness Secret Manager file secret | Chaos infrastructure runs outside EKS, or you want explicit static credentials | Upload the AWS credentials file as a **File Secret** in Harness Secret Manager and reference its identifier via `AWS_AUTHENTICATION_SECRET` |
+| IAM Roles for Service Accounts (IRSA) | Chaos infrastructure runs in EKS and uses an OIDC-bound service account | No tunable changes; the chaos pod inherits the role automatically. Go to [AWS IAM integration](/docs/chaos-engineering/faults/chaos-faults/aws/security-configurations/aws-iam-integration) to set it up |
+| Assume role | The fault needs to act in a different account or with elevated permissions | Set `ASSUME_ROLE_ARN` to the role ARN; the chaos pod assumes the role on top of its base credentials |
+
+When using the Harness Secret Manager method, the contents of the File Secret should be the AWS credentials file in the standard `~/.aws/credentials` format:
+
+```ini
+[default]
+aws_access_key_id = REPLACE_WITH_ACCESS_KEY_ID
+aws_secret_access_key = REPLACE_WITH_SECRET_ACCESS_KEY
+```
+
+Upload this file as a **File Secret** in Harness Secret Manager (Project Setup → Secrets → New File Secret), and pass the secret identifier in `AWS_AUTHENTICATION_SECRET` when configuring the fault.
+
+---
+
+## Fault tunables
+
+Configure the following fault parameters when you add VPC route misconfiguration to an experiment in Chaos Studio. Defaults are shown for reference.
+
+**Required parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `VPC_ID` | ID of the target VPC. | (required) |
+| `REGION` | AWS region where the VPC is deployed. | (required) |
+| `TARGET_ROUTE_CIDRS` | Comma-separated list of destination CIDRs to remove from the route tables (for example `10.20.0.0/16,0.0.0.0/0`). Local routes are skipped automatically. | (required) |
+
+**Scope filters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `TARGET_ROUTE_TABLE_IDS` | Comma-separated list of route table IDs to target. Leave empty to consider every route table in the VPC. | `""` |
+| `TARGET_ROUTE_TABLE_TAG` | Tag (`key=value`) to filter target route tables. | `""` |
+| `ROUTE_TABLE_AFFECTED_PERCENTAGE` | Percentage of matching route tables to affect. | `100` |
+
+**Chaos parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `TOTAL_CHAOS_DURATION` | Duration of the fault in seconds. | `60` |
+| `CHAOS_INTERVAL` | Delay in seconds between successive iterations when running for more than one cycle. | `60` |
+| `SEQUENCE` | Order in which multiple route tables are processed: `parallel` or `serial`. | `parallel` |
+| `RAMP_TIME` | Wait period in seconds before and after the fault. Go to [ramp time](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time) to read how it is applied. | `0` |
+
+**Authentication**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `ASSUME_ROLE_ARN` | ARN of an IAM role to assume on top of the base credentials. Leave empty to use the base credentials directly. | `""` |
+| `AWS_AUTHENTICATION_SECRET` | Identifier of the **File Secret in Harness Secret Manager** that contains the AWS credentials file. Not required when using IRSA. | `""` |
+
+Tunables that apply to every fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
+
+---
+
+## Fault execution in brief
+
+Discovers route tables in `VPC_ID` that match the scope filters and contain any CIDR in `TARGET_ROUTE_CIDRS`, captures the existing route entries, deletes them, waits for `TOTAL_CHAOS_DURATION` seconds, then recreates the original routes with their original targets.
+
+---
+
+## Expected behavior during fault execution
+
+- Workloads in subnets associated with the affected route tables can no longer reach destinations covered by the deleted CIDRs.
+- Outbound calls to the affected CIDRs hang or fail (no route to host).
+- NAT Gateway / Transit Gateway metrics for the affected destinations drop to zero; per-target health on dependent load balancers may degrade.
+- Application-level error metrics rise for code paths that depend on the unreachable destinations.
+
+:::info When the fault ends
+The chaos pod recreates each deleted route with its original target (Transit Gateway, NAT Gateway, peering connection, internet gateway, instance, network interface). Connectivity resumes within seconds.
 :::
 
-### Mandatory Tunables
+### Signals to watch
 
-<table>
-  <thead>
-    <tr>
-      <th>Tunable</th>
-      <th>Description</th>
-      <th>Notes</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>VPC_ID</td>
-      <td>Specify the ID of the VPC whose route tables will be targeted for connection interruption.</td>
-      <td>Example: <code>vpc-213214</code>. For more information, see <a href="#vpc-id">VPC_ID</a>.</td>
-    </tr>
-    <tr>
-      <td>TARGET_ROUTE_CIDRS</td>
-      <td>Provide the target route CIDR blocks as a comma-separated list.</td>
-      <td>Example: <code>10.0.0.1/12,0.0.0.0/24</code>. For more information, see <a href="#target-route-cidrs">TARGET_ROUTE_CIDRS</a>.</td>
-    </tr>
-    <tr>
-      <td>TARGET_ROUTE_TABLE_IDS</td>
-      <td>Specify the IDs of the route tables associated with the given VPC. You must provide either the route table IDs or a tag.</td>
-      <td>Example: <code>rtb-123,rtb-456</code>. For more information, see <a href="#route-table-ids">TARGET_ROUTE_TABLE_IDS</a>.</td>
-    </tr>
-    <tr>
-      <td>TARGET_ROUTE_TABLE_TAG</td>
-      <td>Provide the tag key-value pair used to identify the target route tables within the VPC. It is in the format <code>key=value</code> (for example, 'team=devops'). You must provide either the route table IDs or a tag.</td>
-      <td>Example: <code>type=chaos</code>. For more information, see <a href="#route-table-tag">TARGET_ROUTE_TABLE_TAG</a>.</td>
-    </tr>
-    <tr>
-      <td>REGION</td>
-      <td>Specify the AWS Region where the target VPC and route tables reside.</td>
-      <td>Example: <code>us-east-1</code>.</td>
-    </tr>
-  </tbody>
-</table>
+Attach [resilience probes](/docs/resilience-testing/chaos-testing/probes) to assert each layer:
 
-### Optional Tunables
-   <table>
-      <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> TOTAL_CHAOS_DURATION </td>
-        <td> Duration to insert chaos (in seconds). </td>
-        <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
-      </tr>
-      <tr>
-        <td> CHAOS_INTERVAL </td>
-        <td> Interval between successive instance terminations (in seconds).</td>
-        <td> Default: 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
-      </tr>
-      <tr>
-        <td> AWS_SHARED_CREDENTIALS_FILE </td>
-        <td> Path to the AWS secret credentials. </td>
-        <td> Default: <code>/tmp/cloud_config.yml</code>. </td>
-      </tr>
-      <tr>
-        <td> CHAOS_INTERVAL </td>
-        <td> Duration between the attachment and detachment of the volumes (in seconds). </td>
-        <td> Default: 30 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
-      </tr>
-      <tr>
-        <td> SEQUENCE </td>
-        <td> Sequence of chaos execution for multiple volumes. </td>
-        <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
-      </tr>
-      <tr>
-        <td> RAMP_TIME </td>
-        <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
-      </tr>
-    </table>
+- **End-to-end availability:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) on the user-visible endpoint and assert it stays inside the SLO.
+- **NAT/TGW bytes:** Use a [Prometheus probe](/docs/resilience-testing/chaos-testing/probes/apm-probes) on `aws_natgateway_bytes_out_to_destination` or TGW packet drop metrics for the affected CIDR.
+- **Application errors:** Use a Prometheus probe on your application-level error counter.
 
+---
 
-### VPC ID
+## Verify the fault execution effect
 
-Specify the ID of the VPC whose route tables will be targeted for connection interruption. Tune it by using the `VPC_ID` environment variable.
+While the experiment is running, confirm the route is removed and then restored:
 
-The following YAML snippet illustrates the use of this environment variable:
+1. **Inspect the route table.**
 
-[embedmd]:# (./static/manifests/vpc-route-misconfiguration/vpc-id.yaml yaml)
-```yaml
-# contains vpc ids for given region
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: vpc-route-misconfiguration
-    spec:
-      components:
-        env:
-        # target vpc id for the chaos
-        - name: VPC_ID
-          value: 'vpc-21312481928410'
-        - name: TARGET_ROUTE_CIDRS
-          value: '0.0.0.0/0'
-```
+   ```bash
+   aws ec2 describe-route-tables \
+     --region <region> \
+     --route-table-ids <rtb-id> \
+     --query "RouteTables[0].Routes"
+   ```
 
-### Target route CIDRs
+   During the chaos window the CIDRs in `TARGET_ROUTE_CIDRS` should be missing; after recovery they should reappear with the original target.
 
-Comma-separated list of the target routes CIDR under for the given route tables. Tune it by using the `TARGET_ROUTE_CIDRS` environment variable.
+2. **Test connectivity from an instance in a subnet associated with the route table.**
 
-The following YAML snippet illustrates the use of this environment variable:
+   ```bash
+   ssh ec2-user@<instance> "curl -m 5 -s -o /dev/null -w '%{http_code}' https://<destination-in-cidr>"
+   ```
 
-[embedmd]:# (./static/manifests/vpc-route-misconfiguration/target-route-cidrs.yaml yaml)
-```yaml
-# contains route table cidr for given region
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: vpc-route-misconfiguration
-    spec:
-      components:
-        env:
-        # target route table cidr for the chaos
-        - name: TARGET_ROUTE_CIDRS
-          value: '10.1.0.0/16,0.0.0.0/0'
-        - name: TARGET_ROUTE_TABLE_IDS
-          value: 'rtb-212'
-        - name: VPC_ID
-          value: 'vpc-21312'
-```
+   The request should fail (timeout) during the chaos window and succeed afterwards.
 
-### Route Table IDs
+---
 
-Comma-separated list of the target route table Ids that are associated with the given VPC. Tune it by using the `TARGET_ROUTE_TABLE_IDS` environment variable.
+## Recovery and cleanup
 
-The following YAML snippet illustrates the use of this environment variable:
+- **End of duration:** The chaos pod recreates every deleted route with its original target.
+- **Abort the experiment:** Stopping the experiment from Chaos Studio also triggers the restore call.
+- **Manual recovery:** If the fault exits before restore, use `aws ec2 create-route --route-table-id <rtb-id> --destination-cidr-block <cidr> --transit-gateway-id <tgw>` (or the appropriate `--nat-gateway-id`, `--vpc-peering-connection-id`, `--gateway-id`, `--network-interface-id`, `--instance-id`) using the original target recorded in the chaos pod logs.
+- **Workload recovery:** TCP connections that were already established may break and need to be re-established by the application.
 
-[embedmd]:# (./static/manifests/vpc-route-misconfiguration/route-table-ids.yaml yaml)
-```yaml
-# contains route tables by id for given region
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: vpc-route-misconfiguration
-    spec:
-      components:
-        env:
-        # target route tables by id for the chaos
-        - name: TARGET_ROUTE_TABLE_IDS
-          value: 'rtb-23213'
-        - name: VPC_ID
-          value: 'vpc-21312'
-```
+---
 
-### Route Table Tag
+## Limitations
 
-Specify the tag to filter the target route tables associated with the given VPC. Tune it by using the `TARGET_ROUTE_TABLE_TAG` environment variable.
+- **Local routes excluded:** The local CIDR (the VPC CIDR itself) is never removed; pass any non-local CIDR.
+- **Single VPC per experiment:** Each run targets one `VPC_ID`. Chain experiments for multi-VPC scenarios.
+- **No multi-region:** A single experiment targets one region (the value of `REGION`).
+- **Route replacement edge cases:** If the route table was modified by another process during the chaos window, the restore reverts those external changes.
+- **Cross-account targeting:** Use `ASSUME_ROLE_ARN` to target a VPC in a different account.
 
-The following YAML snippet illustrates the use of this environment variable:
+---
 
-[embedmd]:# (./static/manifests/vpc-route-misconfiguration/route-table-tag.yaml yaml)
-```yaml
-# contains route tables by tag for given region
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: vpc-route-misconfiguration
-    spec:
-      components:
-        env:
-        # target route tables by tag for the chaos
-        - name: TARGET_ROUTE_TABLE_TAG
-          value: 'type=chaos'
-        - name: VPC_ID
-          value: 'vpc-21312'
-```
+## Troubleshooting
+
+<Troubleshoot
+  issue="VPC route misconfiguration fails with AccessDeniedException in Harness Chaos Engineering"
+  mode="docs"
+  fallback="The credentials supplied to the chaos pod do not have the required EC2 routing permissions. Confirm the IAM policy attached to the user, role, or IRSA service account includes ec2:DescribeRouteTables, ec2:CreateRoute, ec2:DeleteRoute, and ec2:ReplaceRoute."
+/>
+
+<Troubleshoot
+  issue="No matching routes were found"
+  mode="docs"
+  fallback="The fault aborts when no route table in the VPC contains any CIDR in TARGET_ROUTE_CIDRS. List the route tables with 'aws ec2 describe-route-tables --filters Name=vpc-id,Values=<vpc-id>' and confirm the CIDR exists; adjust scope filters (TARGET_ROUTE_TABLE_IDS, TARGET_ROUTE_TABLE_TAG, ROUTE_TABLE_AFFECTED_PERCENTAGE) accordingly."
+/>
+
+<Troubleshoot
+  issue="Workload still has connectivity after the route is removed"
+  mode="docs"
+  fallback="Traffic may flow over a different path: a more specific route, a different VPC, a Transit Gateway, AWS PrivateLink, or a VPN. Use the AWS reachability analyzer or 'aws ec2 describe-route-tables' to see which route table actually serves the source subnet, and run the fault with the correct TARGET_ROUTE_TABLE_IDS."
+/>
+
+<Troubleshoot
+  issue="Routes not restored after the chaos window"
+  mode="docs"
+  fallback="If the restore call failed, run 'aws ec2 create-route --route-table-id <id> --destination-cidr-block <cidr> --<target-type-flag> <target>' with the original target recorded in the chaos pod logs. Inspect the temporary ACL/route entries created by the fault and clean them up if necessary."
+/>
+
+---
+
+## Related faults
+
+- [AZ blackhole](/docs/chaos-engineering/faults/chaos-faults/aws/az-blackhole): Blackhole an entire Availability Zone instead of specific CIDRs.
+- [Resource access restrict](/docs/chaos-engineering/faults/chaos-faults/aws/resource-access-restrict): Restrict network access at the security group level.
+- [EC2 stop by tag](/docs/chaos-engineering/faults/chaos-faults/aws/ec2-stop-by-tag): Take down EC2 instances instead of removing routes.
+- [Common AWS fault tunables](/docs/chaos-engineering/faults/chaos-faults/aws/aws-fault-tunables): Shared environment variables for AWS faults.

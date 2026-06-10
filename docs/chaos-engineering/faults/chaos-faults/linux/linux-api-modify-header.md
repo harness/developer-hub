@@ -1,418 +1,218 @@
 ---
 id: linux-api-modify-header
 title: Linux API modify header
+sidebar_label: Linux API Modify Header
+description: Override HTTP headers on API requests or responses passing through a target Linux machine for a configurable duration so you can test how callers handle altered headers.
+keywords:
+  - chaos engineering
+  - linux api modify header
+  - linux fault
+  - api chaos
+tags:
+  - chaos-engineering
+  - linux-faults
+  - api-chaos
 redirect_from:
-  - /docs/chaos-engineering/chaos-faults/linux/linux-api-modify-header
+- /docs/chaos-engineering/technical-reference/chaos-faults/linux/linux-api-modify-header
+- /docs/chaos-engineering/chaos-faults/linux/linux-api-modify-header
 ---
 
-import Ossupport from './shared/note-supported-os.md'
-import ApiChaosFaultPermissions from './shared/api-chaos-fault-permissions.md'
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-Linux API modify header injects API fault into a Linux machine for a specific duration to override the header values of API requests and responses with the user-provided values for the given keys. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
+Linux API modify header is a chaos fault that starts a local proxy on the target Linux machine, redirects traffic to/from `TARGET_SERVICE_PORT` through the proxy on `PROXY_PORT`, and replaces header values in matching API calls with the keys/values defined in `HEADERS_MAP` for `DURATION`. `DATA_DIRECTION` chooses whether to modify the `request`, `response`, or `both`. Filters and HTTPS interception controls mirror [Linux API block](/docs/chaos-engineering/faults/chaos-faults/linux/linux-api-block). The fault runs through the Linux Chaos Infrastructure (LCI) systemd service installed on the target VM.
 
-![Linux API modify header](./static/images/linux-api-modify-header.png)
+Use this fault to test how callers handle altered headers: whether authentication breaks with invalid tokens, whether content-type changes affect parsing, whether cache headers cause stale or missed cache lookups, and whether monitoring detects the resulting errors within the alerting SLA.
 
-## Use cases
-Linux API modify header:
-- Simulate different authentication states or test the behavior of your application when using invalid or expired credentials.
-- Validates the caching behavior of your API or client applications. By overriding cache-related headers, such as the "Cache-Control" or "ETag" headers, you can simulate cache validation scenarios.
-- Tests content negotiation capabilities. By modifying the "Accept" header in the API request, you can simulate different content types or formats that the client application can accept.
-
-<Ossupport />
-
-<ApiChaosFaultPermissions />
-
-### Mandatory tunables
-
-<table>
-  <tr>
-    <th> Tunable </th>
-    <th> Description </th>
-    <th> Notes </th>
-  </tr>
-  <tr>
-    <td> headersMap </td>
-    <td> JSON map in string format that shows comma-separated header keys and values.</td>
-    <td> For example: <code>`{"X-Litmus-Test-Header": "X-Litmus-Test-Value"}`</code>. You can either modify the existing header by providing a new value for the key or add a new "key:value" to the header. For more information, go to <a href="#advanced-fault-tunables"> headersMap. </a></td>
-  </tr>
-</table>
-
-### Optional tunables
-<table>
-  <tr>
-    <th> Tunable </th>
-    <th> Description </th>
-    <th> Notes </th>
-  </tr>
-  <tr>
-    <td> networkInterface </td>
-    <td> Network interface used for the proxy when the <code>SERVICE_DIRECTION</code> is ingress.</td>
-    <td> Default: `eth0`. For more information, go to <a href="#advanced-fault-tunables">network interface </a>.</td>
-    </tr>
-  <tr>
-    <td> duration </td>
-    <td> Duration through which chaos is injected into the target resource. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
-    <td> Default: <code>30 s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code>. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos </a>. </td>
-  </tr>
-  <tr>
-    <td> rampTime </td>
-    <td> Period to wait before and after injecting chaos. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
-    <td> Default: <code>0s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code>. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a>. </td>
-  </tr>
-  <tr>
-    <td> targetServicePort </td>
-    <td> Port of the target service used when the <code>serviceDirection</code> is ingress.</td>
-    <td> Default: 80. For more information, go to <a href="#target-service-port">target service port</a>.</td>
-    </tr>
-  <tr>
-    <td> proxyPort </td>
-    <td> Port where the proxy listens for requests. </td>
-    <td> Default: 20000. For more information, go to <a href="#advanced-fault-tunables">proxy port</a>.</td>
-  </tr>
-  <tr>
-    <td> pathFilter </td>
-    <td> API path or route used for the filtering. </td>
-    <td> Targets all paths if not provided. For more information, go to <a href="#path-filter">path filter </a>.</td>
-  </tr>
-  <tr>
-    <td> serviceDirection </td>
-    <td> Direction of the flow of control, `ingress` or `egress`.</td>
-    <td> Default: `ingress`. For more information, go to <a href="#advanced-fault-tunables">service direction </a>.</td>
-  </tr>
-  <tr>
-    <td> httpsEnabled </td>
-    <td> Facilitate HTTPS support for both incoming and outgoing traffic. </td>
-    <td> Default: false. For more information, go to <a href="#https">HTTPS</a>. </td>
-  </tr>
-  <tr>
-    <td> destinationPorts </td>
-    <td> Comma-separated list of the destination service or host ports for which `egress` traffic should be affected. </td>
-    <td> Default: 80,8443. For more information, go to <a href="#destination-ports">destination ports</a></td>
-  </tr>
-  <tr>
-    <td> httpsRootCertFile </td>
-    <td> Provide the root CA certificate file name. </td>
-    <td> This setting must be configured if the root CA certificate file name differs from ca-certificates.crt. Go to [root Linux] (https://go.dev/src/crypto/x509/root_linux.go) for the default certificate file names based on various Linux distributions. For more information, go to <a href="#https">HTTPS. </a></td>
-  </tr>
-  <tr>
-    <td> customCertificates </td>
-    <td> Provide the custom certificates for the proxy server to serve as intermediate certificates for HTTPS communication. </td>
-    <td> HTTPS communication necessitates its use as intermediate certificates by the proxy server. These certificates should be loaded into the target application. For more information, go to <a href="#https">HTTPS. </a></td>
-  </tr>
-  <tr>
-    <td> headersFilters </td>
-    <td> Filters for HTTP request headers accept multiple comma-separated headers in the format <code>key1:value1,key2:value2</code>.</td>
-    <td> For more information, go to <a href="#advanced-filters">headers filters</a>.</td>
-  </tr>
-  <tr>
-    <td> methods </td>
-    <td> The HTTP request method type accepts comma-separated HTTP methods in upper cases, such as "GET,POST". </td>
-    <td> For more information, go to <a href="#advanced-filters">methods</a>.</td>
-  </tr>
-  <tr>
-    <td> queryParams </td>
-    <td> HTTP request query parameter filters accept multiple comma-separated query parameters in the format of <code>param1:value1,param2:value2</code>. </td>
-    <td> For more information, go to <a href="#advanced-filters">query params</a>.</td>
-  </tr>
-  <tr>
-    <td> sourceHosts </td>
-    <td> Includes comma-separated source host names as filters, indicating the origin of the HTTP request. This is specifically relevant to the "ingress" type. </td>
-    <td> For more information, go to <a href="#advanced-filters">source hosts</a>.</td>
-  </tr>
-  <tr>
-    <td> sourceIPs </td>
-    <td> This includes comma-separated source IPs as filters, indicating the origin of the HTTP request. This is specifically relevant to the "ingress" type. </td>
-    <td> For more information, go to <a href="#advanced-filters">source IPs</a>.</td>
-  </tr>
-  <tr>
-    <td> destinationHosts </td>
-    <td> Comma-separated destination host names are used as filters, indicating the hosts on which you call the API. This specification applies exclusively to the "egress" type. </td>
-    <td> For more information, go to <a href="#advanced-filters">destination hosts</a>.</td>
-  </tr>
-  <tr>
-    <td> destinationIPs </td>
-    <td> Comma-separated destination IPs are used as filters, indicating the hosts on which you call the API. This specification applies exclusively to the "egress" type.</td>
-    <td> For more information, go to <a href="#advanced-filters">destination hosts</a>.</td>
-  </tr>
-  <tr>
-    <td> dataDirection </td>
-    <td> The direction in which the API header is modified. </td>
-    <td> Supports values <code>request</code>, <code>response</code> and <code>both</code>. </td>
-  </tr>
-</table>
-
-### Target service port
-
-Port of the target service. Tune it by using the `targetServicePort` input variable.
-
-The following YAML snippet illustrates the use of this input variable:
-
-[embedmd]: # "./static/manifests/linux-api-modify-header/target-service-port.yaml yaml"
-
-```yaml
-## provide the port of the target service
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: linux-api-modify-header
-      spec:
-        components:
-          env:
-            # provide the port of the target service
-            - name: targetServicePort
-              value: 80
-            - name: pathFilter
-              value: '/status'
-```
-
-### Path filter
-
-API sub-path (or route) to filter the API calls. Tune it by using the `pathFilter` input variable.
-
-The following YAML snippet illustrates the use of this input variable:
-
-[embedmd]: # "./static/manifests/linux-api-modify-header/path-filter.yaml yaml"
-
-```yaml
-## provide api path filter
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: linux-api-modify-header
-      spec:
-        components:
-          env:
-            # provide the api path filter
-            - name: pathFilter
-              value: '/status'
-            # provide the port of the target service
-            - name: targetServicePort
-              value: 80
-```
-
-### Destination ports
-
-Comma-separated list of the destination service or host ports for which `egress` traffic takes affect as a result of applying chaos on the target application. Tune it by using the `destinationPorts` input variable.
-
-:::tip
-It is applicable only when `serviceDirection` input variables has the value `egress`.
+:::info Run your first experiment
+If you have not installed the Linux Chaos Infrastructure yet, go to [Linux Chaos Infrastructure](/docs/chaos-engineering/guides/infrastructures/types/legacy-infra/linux) to install the agent and connect the VM to the control plane.
 :::
 
-The following YAML snippet illustrates the use of this input variable:
+---
 
-[embedmd]: # "./static/manifests/linux-api-modify-header/destination-ports.yaml yaml"
+## Use cases
 
-```yaml
-## provide destination ports
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: linux-api-modify-header
-      spec:
-        components:
-          env:
-            # provide destination ports
-            - name: destinationPorts
-              value: '80,443'
-            # provide the api path filter
-            - name: pathFilter
-              value: '/status'
-            # provide the port of the target service
-            - name: targetServicePort
-              value: 80
-```
+Run this fault when you want to answer concrete questions like:
 
-### HTTPS
+- **Authentication failures:** When `Authorization` is replaced with a stale token, do upstream services return clean `401`s?
+- **Content negotiation:** Replace `Accept` or `Content-Type` to drive different code paths in the dependent service.
+- **Cache headers:** Override `Cache-Control` or `ETag` to validate cache-validation behavior.
+- **Monitoring fidelity:** Do alerts on authentication failures, content-type mismatches, and downstream errors fire within the alerting SLA?
 
-Enable the HTTPS support for both incoming and outgoing traffic by setting the `httpsEnabled` field to `true`. Its usage varies depending on whether it is applied to `ingress` or `egress` scenario.
+---
 
-#### Ingress
+## Prerequisites
 
-Set this parameter if the HTTPS URL of the target application includes a port whose format is `https://<hostname>:port`. However, if the HTTPS URL is in the format `https://<hostname>` without a port, this setting is not required.
+- **Linux Chaos Infrastructure installed:** The `linux-chaos-infrastructure` systemd service is `active` on the target VM and the infrastructure is in `CONNECTED` state. Go to [Linux Chaos Infrastructure](/docs/chaos-engineering/guides/infrastructures/types/legacy-infra/linux) to install it.
+- **Target service port reachable:** `TARGET_SERVICE_PORT` is the port the application listens on (ingress) or the upstream service port (egress).
+- **Proxy port free:** `PROXY_PORT` (default `20000`) is not bound by another process.
+- **HTTPS material if `HTTPS_ENABLED=true`:** Provide a CA bundle in `HTTPS_ROOT_CERT_FILE`.
+- **`/tmp` is exec-mountable.**
 
-#### Egress
+---
 
-For outbound traffic, set `httpsEnabled` to `true` to enable HTTPS support for external services. This enables using TLS certificates for the proxy within the target application.
+## Supported environments
 
-- If the HTTP client in the target application is configured to reload certificates with each API call, set `httpsEnabled` to `true`. You won't need to provide `customCertificates` input variable.
-- However, if the root CA certificate file path is not `/etc/ssl/certs/ca-certificates.crt`, provide it using `httpsRootCertFile` input variable.
-- If the HTTP client in the target application isn't configured to reload certificates with each API call, provide the `customCertificates` input variable to the chaos experiment. There is no need to set `httpsRootCertFile` input variable. The same custom certificates should be loaded into the target application.
-- You can generate custom certificates using the following commands:
+The fault has been tested on the following Linux distributions. Go to [Linux fault requirements](/docs/chaos-engineering/faults/chaos-faults/linux/permissions) to see the full compatibility matrix.
+
+| Platform | Support status |
+| --- | --- |
+| Ubuntu 16+, Debian 10+ | Supported |
+| CentOS 7+, RHEL 7+, Fedora 30+ | Supported |
+| openSUSE LEAP 15.4+ / SUSE Linux Enterprise 15+ | Supported |
+
+---
+
+## Permissions required
+
+This fault is classified as an **Advanced** Linux fault. It requires the Linux Chaos Infrastructure systemd service to run with the root user and root user group on the target VM so it can install iptables redirects and bind the proxy port. No cloud credentials are needed.
+
+---
+
+## Fault tunables
+
+Configure the following fault parameters when you add Linux API modify header to an experiment in Chaos Studio. Defaults are shown for reference.
+
+**Required parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `HEADERS_MAP` | JSON map of header keys to override and the new values (for example, `{"Authorization":"Bearer stale","Cache-Control":"no-cache"}`). | (required) |
+
+**Chaos parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `DURATION` | Total duration of the fault. Accepts `[hours]h[minutes]m[seconds]s` format. | `30s` |
+| `TARGET_SERVICE_PORT` | Port of the application (ingress) or upstream service (egress) to intercept. | `80` |
+| `PROXY_PORT` | Port on which the local proxy listens. | `20000` |
+| `NETWORK_INTERFACE` | Network interface used for ingress redirection. | `eth0` |
+| `DATA_DIRECTION` | Direction of data to modify. Accepts `request`, `response`, or `both`. | `both` |
+| `RAMP_TIME` | Wait period in seconds before and after the fault. Go to [ramp time](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time) to read how it is applied. | `0` |
+
+**Request filters (combine as needed)**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `PATH_FILTER` | API path glob to match. | `""` |
+| `HEADERS_FILTERS` | HTTP headers filter (used to match traffic, distinct from `HEADERS_MAP`). | `""` |
+| `METHODS` | Comma-separated HTTP methods to match. | `""` |
+
+**Direction and source/destination filters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `SERVICE_DIRECTION` | `ingress` or `egress`. | `ingress` |
+| `SOURCE_HOSTS` | Comma-separated source host names (ingress only). | `""` |
+| `SOURCE_IPS` | Comma-separated source IPs (ingress only). | `""` |
+| `DESTINATION_HOSTS` | Comma-separated destination host names (egress only). | `""` |
+| `DESTINATION_IPS` | Comma-separated destination IPs (egress only). | `""` |
+| `DESTINATION_PORTS` | Comma-separated destination ports (egress only). | `""` |
+
+**HTTPS interception (egress)**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `HTTPS_ENABLED` | Enable HTTPS interception. | `false` |
+| `HTTPS_ROOT_CERT_FILE` | Path to the root CA bundle. | `""` |
+| `CUSTOM_CERTIFICATES` | Base64-encoded custom certificates. | `""` |
+
+Tunables that apply to every fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
+
+---
+
+## Fault execution in brief
+
+Adds an iptables redirect that routes `TARGET_SERVICE_PORT` traffic through the local proxy on `PROXY_PORT` for `DURATION`. Matching API calls have header values replaced per `HEADERS_MAP` (in `DATA_DIRECTION`) before being forwarded. On exit, the iptables redirect and proxy are removed.
+
+---
+
+## Expected behavior during fault execution
+
+- Headers listed in `HEADERS_MAP` are replaced with the configured values on matching API calls.
+- Headers not in `HEADERS_MAP` pass through unchanged.
+- The status code and body are unchanged unless paired with [Linux API status code](/docs/chaos-engineering/faults/chaos-faults/linux/linux-api-status-code) or [Linux API modify body](/docs/chaos-engineering/faults/chaos-faults/linux/linux-api-modify-body).
+- After the duration ends, the iptables redirect is removed and the proxy stops; headers pass through unchanged.
+
+:::info When the fault ends
+The chaos pod removes the iptables redirect and stops the local proxy. The next request flows directly with the original headers.
+:::
+
+### Signals to watch
+
+Attach [resilience probes](/docs/resilience-testing/chaos-testing/probes) to assert each layer:
+
+- **Authentication failures:** Use a [Prometheus probe](/docs/resilience-testing/chaos-testing/probes/apm-probes) on `401`/`403` counters.
+- **Cache hit ratio:** Use a Prometheus probe on cache-hit-ratio metrics when overriding cache headers.
+- **End-to-end behavior:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) on a user-visible endpoint.
+
+---
+
+## Verify the fault execution effect
+
+1. **Send a matching request from the VM.**
 
    ```bash
-   openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.crt -days 365 -nodes -subj '/CN=*'
-   cat key.pem cert.crt > ca-cert.pem
-   cat ca-cert.pem | base64 # provide it inside the customCertificates input variable
+   curl -i http://localhost:<TARGET_SERVICE_PORT><PATH_FILTER-example>
    ```
-  Load the `cert.crt` into the target application and provide the base64 encoded value of `ca-cert.pem` to the `customCertificates` input variable.
 
-The following YAML snippet illustrates the use of this input variable:
+   The response headers should reflect the overrides in `HEADERS_MAP` during the chaos window.
 
-[embedmd]: # "./static/manifests/linux-api-modify-header/https-enabled.yaml yaml"
+2. **Inspect iptables redirects.**
 
-```yaml
-## enable https support
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: linux-api-modify-header
-      spec:
-        components:
-          env:
-            # enable https support
-            - name: httpsEnabled
-              value: 'true'
-            - name: customCertificates
-              value: 'Y3VzdG9tIGNlcnRpZmljYXRlcwo='
-            # provide the api path filter
-            - name: pathFilter
-              value: '/status'
-            # provide the port of the targeted service
-            - name: targetServicePort
-              value: 80
-```
+   ```bash
+   sudo iptables -t nat -L -n -v | grep <PROXY_PORT>
+   ```
 
-### Advanced fault tunables
+3. **Inspect Linux Chaos Infrastructure logs.**
 
-- **proxyPort**: Port where the proxy listens for requests and responses.
-- **serviceDirection**: Direction of the flow of control, either `ingress` or `egress`.
-- **networkInterface**: Network interface used for the proxy.
-- **headerMap**: The "key:value" value pair that is added or the value of a key that is modified. If no value is provided, it throws an error. You can either modify the existing header by providing a new value for the key or add a new "key:value" to the header.
-- **dataDirection**: The direction in which the data is to be modified. Supports values `request`, `response` and `both`.
+   ```bash
+   sudo journalctl -u linux-chaos-infrastructure -n 100 --no-pager
+   ```
 
-The following YAML snippet illustrates the use of this input variable:
+---
 
-[embedmd]:# (./static/manifests/linux-api-modify-header/advanced-fault-tunables.yaml yaml)
-```yaml
-# it injects the api modify header fault
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: linux-api-modify-header
-      spec:
-        components:
-          env:
-            # provide the proxy port
-            - name: proxyPort
-              value: '20000'
-            # provide the connection type
-            - name: serviceDirection
-              value: 'ingress'
-            # provide the network interface
-            - name: networkInterface
-              value: 'eth0'
-            # provide the api path filter
-            - name: pathFilter
-              value: '/status'
-            # provide the port of the target service
-            - name: targetServicePort
-              value: 80
-            # provide the key:value pair
-            - name: headersMap
-              value: '{"X-Litmus-Test-Header": "X-Litmus-Test-Value"}'
-```
+## Recovery and cleanup
 
-### Advanced filters
+- **End of duration:** The chaos pod removes the iptables redirect and stops the proxy when `DURATION` elapses.
+- **Abort the experiment:** Stopping the experiment from Chaos Studio also removes the redirect and stops the proxy.
+- **Manual recovery:** If the redirect survives an abort, inspect with `sudo iptables -t nat -L -n -v` and delete the rule; kill the proxy on `PROXY_PORT`.
 
-- `headersFilters`: The HTTP request headers filters, that accept multiple comma-separated headers in the format of `key1:value1,key2:value2`.
-- `methods`: The HTTP request method type filters, that accept comma-separated HTTP methods in upper case, that is, `GET,POST`.
-- `queryParams`: The HTTP request query parameters filter, accepts multiple comma-separated query parameters in the format of `param1:value1,param2:value2`.
-- `sourceHosts`: Comma-separated source host names filters, indicating the origin of the HTTP request. This is relevant to the `ingress` type, specified by `SERVICE_DIRECTION` input variable.
-- `sourceIPs`: Comma-separated source IPs filters, indicating the origin of the HTTP request. This is specifically relevant to the `ingress` type, specified by `serviceDirection` input variable.
-- `destinationHosts`: Comma-separated destination host names filters, indicating the hosts on which you call the API. This specification applies exclusively to the `egress` type, specified by `serviceDirection` input variable.
-- `destinationIPs`: Comma-separated destination IPs filters, indicating the hosts on which you call the API. This specification applies exclusively to the `egress` type, specified by `serviceDirection` input variable.
+---
 
-The following YAML snippet illustrates the use of this input variable:
+## Limitations
 
-[embedmd]:# (./static/manifests/linux-api-modify-header/advanced-filters.yaml yaml)
-```yaml
-# it injects the api modify header fault
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: linux-api-modify-header
-      spec:
-        components:
-          env:
-            # provide the headers filters
-            - name: headersFilters
-              value: 'key1:value1,key2:value2'
-            # provide the methods filters
-            - name: methods
-              value: 'GET,POST'
-            # provide the query params filters
-            - name: queryParams
-              value: 'param1:value1,param2:value2'
-            # provide the source hosts filters
-            - name: sourceHosts
-              value: 'host1,host2'
-            # provide the source ips filters
-            - name: sourceIPs
-              value: 'ip1,ip2'
-            # provide the connection type
-            - name: serviceDirection
-              value: 'ingress'
-            # provide the port of the target service
-            - name: targetServicePort
-              value: 80
-```
+- **Header replacement, not addition:** `HEADERS_MAP` replaces existing headers. To add headers that do not yet exist, the proxy still injects them as the new value.
+- **Authentication contracts:** Replacing `Authorization` may break TLS-bound or signed requests if the upstream verifies the signature against original headers.
+- **HTTPS requires certificates** for matching and rewriting HTTPS traffic.
+- **Single VM scope:** Each fault run targets one VM.
+- **`/tmp` exec required.**
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="Linux API modify header fault did not modify any header in Harness Chaos Engineering"
+  mode="docs"
+  fallback="Verify HEADERS_MAP is valid JSON and PATH_FILTER/METHODS match your test traffic. For HTTPS endpoints, set HTTPS_ENABLED=true and provide HTTPS_ROOT_CERT_FILE."
+/>
+
+<Troubleshoot
+  issue="HEADERS_MAP parsing error"
+  mode="docs"
+  fallback='HEADERS_MAP must be a single-line valid JSON object such as {"Header-Name":"value"}. Validate with jq before running the fault.'
+/>
+
+<Troubleshoot
+  issue="Header overrides persisted after the experiment ended"
+  mode="docs"
+  fallback="If the iptables redirect was not removed, inspect with sudo iptables -t nat -L -n -v and delete the rule. Kill any orphan proxy on PROXY_PORT."
+/>
+
+---
+
+## Related faults
+
+- [Linux API modify body](/docs/chaos-engineering/faults/chaos-faults/linux/linux-api-modify-body): Override the body instead of headers.
+- [Linux API status code](/docs/chaos-engineering/faults/chaos-faults/linux/linux-api-status-code): Change the status code (and optionally the body).
+- [Linux API block](/docs/chaos-engineering/faults/chaos-faults/linux/linux-api-block): Block requests entirely instead of modifying headers.

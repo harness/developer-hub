@@ -1,197 +1,201 @@
 ---
 id: linux-network-loss
 title: Linux network loss
+sidebar_label: Linux Network Loss
+description: Drop a percentage of network packets leaving a target Linux machine for a configurable duration so you can test how the workload behaves when packets are lost.
+keywords:
+  - chaos engineering
+  - linux network loss
+  - linux fault
+  - network chaos
+tags:
+  - chaos-engineering
+  - linux-faults
+  - network-chaos
 redirect_from:
 - /docs/chaos-engineering/technical-reference/chaos-faults/linux/linux-network-loss
 - /docs/chaos-engineering/chaos-faults/linux/linux-network-loss
 ---
 
-import Ossupport from './shared/note-supported-os.md'
-import FaultPermissions from './shared/fault-permissions.md'
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
+Linux network loss is a chaos fault that drops `NETWORK_PACKET_LOSS_PERCENTAGE` percent of packets leaving the target Linux machine on `NETWORK_INTERFACES` for `DURATION`, then restores normal connectivity. Loss is restricted to traffic destined for `DESTINATION_HOSTS`/`DESTINATION_IPS` and the configured port filters; SSH ports stay reachable when `WHITELIST_SSH` is `true`. The fault runs through the Linux Chaos Infrastructure (LCI) systemd service installed on the target VM.
 
-Linux network loss injects chaos to disrupt network connectivity by blocking the network requests on the Linux machine.
+Use this fault to test how a workload behaves when the network is unreliable: whether application clients honor their own timeouts, whether retries amplify the loss, whether circuit breakers fire correctly, and whether monitoring detects the connectivity degradation within the alerting SLA.
 
-![Linux network loss](./static/images/linux-network-loss.png)
+:::info Run your first experiment
+If you have not installed the Linux Chaos Infrastructure yet, go to [Linux Chaos Infrastructure](/docs/chaos-engineering/guides/infrastructures/types/legacy-infra/linux) to install the agent and connect the VM to the control plane.
+:::
+
+---
 
 ## Use cases
-Linux network loss:
-- Induces network loss on the target Linux machines.
-- Simulates loss of connectivity access by blocking the incoming and outgoing network requests on the machine.
 
-<Ossupport />
+Run this fault when you want to answer concrete questions like:
 
-<FaultPermissions />
+- **Packet-loss tolerance:** When `NETWORK_PACKET_LOSS_PERCENTAGE` of packets to `DESTINATION_HOSTS` are dropped, do application clients honor their own timeouts cleanly?
+- **Retry storms:** Do retries amplify the lost traffic, or do exponential backoff and jitter prevent it?
+- **Circuit breakers:** Does the service-mesh or application circuit breaker open within the configured threshold?
+- **Monitoring fidelity:** Do alerts on connection errors, retransmits (`node_netstat_TcpExt_TCPLostRetransmit`), and end-to-end p99 fire within the alerting SLA?
 
-### Mandatory tunables
-<table>
-  <tr>
-    <th> Tunable </th>
-    <th> Description </th>
-    <th> Notes </th>
-  </tr>
-  <tr>
-    <td> networkInterfaces </td>
-    <td> Comma-separated values of target network interfaces. </td>
-    <td> For example, <code>eth0,ens192</code>. </td>
-  </tr>
-</table>
+---
 
-### Optional fields
-<table>
-  <tr>
-    <th> Tunable </th>
-    <th> Description </th>
-    <th> Notes </th>
-  </tr>
-  <tr>
-    <td> destinationHosts </td>
-    <td> List of the target host names or keywords. For example, <code>google.com,litmuschaos.io</code>.</td>
-    <td> If neither <code>destinationHosts</code> nor <code> destinationIPs</code> is present, the fault injects chaos for all host names or domains. </td>
-  </tr>
-  <tr>
-    <td> destinationIPs </td>
-    <td> List of comma-separated target IPs. Also supports a list of target destination ports for a given IP, that are separated by a pipe (<code>|</code>). For example, <code>1.1.1.1,35.24.108.92|3000|8080</code>. </td>
-    <td> If neither <code>destinationHosts</code> nor <code> destinationIPs</code> is provided, all host names or domains are targeted.</td>
-  </tr>
-  <tr>
-    <td> packetLossPercentage </td>
-    <td> Percentage of packet loss. For example, <code> 100 </code> </td>
-    <td> Default: 100% </td>
-  </tr>
-  <tr>
-    <td> sourcePorts </td>
-    <td> Source ports to be filtered for chaos. For example: <code> 5000,8080 </code>. </td>
-    <td> Alternatively, the ports can be whitelisted, that is, filtered to be exempt from chaos. Prepend a <code>!</code> to the list of ports to be exempted. For example, <code> !5000,8080 </code>. </td>
-  </tr>
-  <tr>
-    <td> destinationPorts </td>
-    <td> Destination ports to be filtered for chaos. For example: <code> 5000,8080 </code> </td>
-    <td> Alternatively, the ports can be whitelisted, that is, filtered to be exempt from chaos. Prepend a <code>!</code> to the list of ports to be exempted. For example, <code> !5000,8080 </code>. </td>
-  </tr>
-  <tr>
-    <td> whitelistSSH </td>
-    <td> Specifies whether the SSH connectivity should be retained during the chaos in the target machine.</td>
-    <td> Default: <code>true</code>. Supports one of: <code>true</code>, <code>false</code></td>
-  </tr>
-  <tr>
-    <td> duration </td>
-    <td> Duration through which chaos is injected into the target resource. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
-    <td> Default: <code>30s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code> </td>
-  </tr>
-  <tr>
-    <td> rampTime </td>
-    <td> Period to wait before and after injecting chaos. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
-    <td> Default: <code>0s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code> </td>
-  </tr>
-</table>
+## Prerequisites
 
-### Destination hosts
+- **Linux Chaos Infrastructure installed:** The `linux-chaos-infrastructure` systemd service is `active` on the target VM and the infrastructure is in `CONNECTED` state. Go to [Linux Chaos Infrastructure](/docs/chaos-engineering/guides/infrastructures/types/legacy-infra/linux) to install it.
+- **Target interface exists:** Each entry in `NETWORK_INTERFACES` exists on the target VM. Confirm with `ip -br link`.
+- **`tc` available:** The fault uses Linux Traffic Control (`tc`) with the `netem` qdisc to apply loss. Provided by iproute2, installed on all supported distributions.
 
-The `destinationHosts` input variable subjects the comma-separated names of the target hosts to chaos.
+---
 
-The following YAML snippet illustrates the use of this input variable:
+## Supported environments
 
-[embedmd]:# (./static/manifests/linux-network-loss/destination-hosts.yaml yaml)
-```yaml
-apiVersion: litmuchaos.io/v1alpha1
-kind: LinuxFault
-metadata:
-  name: linux-network-loss
-  labels:
-    name: network-loss
-spec:
-  networkChaos/inputs:
-    destinationHosts: 'google.com'
-    networkInterfaces: "eth0"
-```
+The fault has been tested on the following Linux distributions. Go to [Linux fault requirements](/docs/chaos-engineering/faults/chaos-faults/linux/permissions) to see the full compatibility matrix.
 
-### Destination IPs
+| Platform | Support status |
+| --- | --- |
+| Ubuntu 16+, Debian 10+ | Supported |
+| CentOS 7+, RHEL 7+, Fedora 30+ | Supported |
+| openSUSE LEAP 15.4+ / SUSE Linux Enterprise 15+ | Supported |
 
-The `destinationIPs` input variable subjects the comma-separated names of the target IPs to chaos. You can specify the ports to be targeted for an IP by using a pipe (`|`) as a separator. While providing ports is optional, omitting them will affect all the ports associated with the destination IPs.
+---
 
-The following YAML snippet illustrates the use of this input variable:
+## Permissions required
 
-[embedmd]:# (./static/manifests/linux-network-loss/destination-ips.yaml yaml)
-```yaml
-apiVersion: litmuchaos.io/v1alpha1
-kind: LinuxFault
-metadata:
-  name: linux-network-loss
-  labels:
-    name: network-loss
-spec:
-  networkChaos/inputs:
-    destinationIPs: '1.1.1.1,192.168.5.6|80|8080'
-    networkInterfaces: "eth0"
-```
+This fault is classified as an **Advanced** Linux fault. It requires the Linux Chaos Infrastructure systemd service to run with the root user and root user group on the target VM so it can manage the `tc` qdisc. No cloud credentials are needed.
 
-### Source and destination ports
+---
 
-By default, the network experiments disrupt traffic for all the source and destination ports. Tune the interruption of specific port(s) using `sourcePorts` and `destinationPorts` inputs, respectively.
+## Fault tunables
 
-- `sourcePorts`: Ports of the target application whose accessibility is impacted.
-- `destinationPorts`: Ports of the destination services or pods or the CIDR blocks(range of IPs) whose accessibility is impacted.
+Configure the following fault parameters when you add Linux network loss to an experiment in Chaos Studio. Defaults are shown for reference.
 
-The following YAML snippet illustrates the use of this input variable:
+**Chaos parameters**
 
-[embedmd]:# (./static/manifests/linux-network-loss/source-and-destination-ports.yaml yaml)
-```yaml
-apiVersion: litmuchaos.io/v1alpha1
-kind: LinuxFault
-metadata:
-  name: linux-network-loss
-  labels:
-    name: network-loss
-spec:
-  networkChaos/inputs:
-    destinationIPs: '1.1.1.1'
-    networkInterfaces: "eth0"
-    sourcePorts: "8080,3000"
-    destinationPorts: "5000,3000"
-```
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `DURATION` | Total duration of the fault. Accepts `[hours]h[minutes]m[seconds]s` format. | `30s` |
+| `NETWORK_PACKET_LOSS_PERCENTAGE` | Percentage of packets to drop (0 to 100). | `100` |
+| `NETWORK_INTERFACES` | Comma-separated network interfaces to apply chaos on (for example, `eth0,ens192`). | `eth0` |
+| `RAMP_TIME` | Wait period in seconds before and after the fault. Go to [ramp time](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time) to read how it is applied. | `0` |
 
-### Ignore Source and Destination Ports
+**Target filters (provide at least one host or IP to limit blast radius)**
 
-By default, the network experiments disrupt traffic for all the source and destination ports. Ignore the specific ports using `sourcePorts` and `destinationPorts` inputs, respectively.
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `DESTINATION_HOSTS` | Comma-separated destination host names to target (for example, `google.com,api.example.com`). | `""` |
+| `DESTINATION_IPS` | Comma-separated destination IPs to target. Per-IP ports can be specified using the `ip\|port` format (for example, `1.1.1.1,35.24.108.92\|3000\|8080`). | `""` |
+| `SOURCE_PORTS` | Comma-separated source ports to target. Prefix with `!` to whitelist instead of target (for example, `!22,2222` excludes SSH). | `""` |
+| `DESTINATION_PORTS` | Comma-separated destination ports to target. Prefix with `!` to whitelist instead of target. | `""` |
+| `WHITELIST_SSH` | Keep SSH ports (`22,2222`) excluded from chaos to preserve management access. | `true` |
 
-- `sourcePorts`: Provide source ports that are not subject to chaos as comma-separated values preceded by `!`.
-- `destinationPorts`: Provide destination ports that are not subject to chaos as comma-separated values preceded by `!`.
+When neither `DESTINATION_HOSTS` nor `DESTINATION_IPS` is set, the fault applies to all destinations on the interface.
 
-The following YAML snippet illustrates the use of this input variable:
+Tunables that apply to every fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
 
-[embedmd]:# (./static/manifests/linux-network-loss/ignore-source-and-destination-ports.yaml yaml)
-```yaml
-apiVersion: litmuchaos.io/v1alpha1
-kind: LinuxFault
-metadata:
-  name: linux-network-loss
-  labels:
-    name: network-loss
-spec:
-  networkChaos/inputs:
-    destinationIPs: '1.1.1.1'
-    networkInterfaces: "eth0"
-    sourcePorts: "!8080,3000"
-    destinationPorts: "!5000,3000"
-```
+---
 
-### Packet loss percentage
+## Fault execution in brief
 
-The `packetLossPercentage` input variable loses a specific percentage of the data packets.
+Adds a `netem` qdisc on `NETWORK_INTERFACES` that drops `NETWORK_PACKET_LOSS_PERCENTAGE` percent of egress packets matching the configured destination and port filters for `DURATION`, then removes the qdisc.
 
-The following YAML snippet illustrates the use of this input variable:
+---
 
-[embedmd]:# (./static/manifests/linux-network-loss/packet-loss-percentage.yaml yaml)
-```yaml
-apiVersion: litmuchaos.io/v1alpha1
-kind: LinuxFault
-metadata:
-  name: linux-network-loss
-  labels:
-    name: network-loss
-spec:
-  networkChaos/inputs:
-    packetLossPercentage: '50'
-    networkInterfaces: "eth0"
-```
+## Expected behavior during fault execution
+
+- The configured percentage of egress packets to matched destinations is dropped for the duration of the fault.
+- TCP connections see retransmissions (`TCPLostRetransmit`); UDP traffic loses datagrams silently.
+- Application calls to the matched destinations time out or fail; retries may succeed when they hit the surviving packets.
+- After the duration ends, the qdisc is removed and packet flow returns to baseline.
+
+:::info When the fault ends
+The chaos pod removes the `netem` qdisc. Packets flow normally on the next send; in-flight retransmissions may take a few RTTs to settle.
+:::
+
+### Signals to watch
+
+Attach [resilience probes](/docs/resilience-testing/chaos-testing/probes) to assert each layer:
+
+- **TCP retransmits:** Use a [Prometheus probe](/docs/resilience-testing/chaos-testing/probes/apm-probes) on `node_netstat_TcpExt_TCPLostRetransmit` and assert it rose during the chaos window.
+- **Application timeouts:** Use a Prometheus probe on application timeout/connection-error counters.
+- **End-to-end availability:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) on a user-visible endpoint that depends on the matched destinations.
+
+---
+
+## Verify the fault execution effect
+
+While the experiment is running, confirm packets were dropped and then recovered:
+
+1. **Inspect the active qdisc.**
+
+   ```bash
+   tc -s qdisc show dev <interface>
+   ```
+
+   A `netem` qdisc with the configured `loss` parameter should be present during the chaos window and removed afterwards.
+
+2. **Run ping or curl against a matched destination.**
+
+   ```bash
+   ping -c 20 <one-of-DESTINATION_HOSTS>
+   curl -w '%{http_code}\n' -m 5 https://<one-of-DESTINATION_HOSTS>
+   ```
+
+   Packet loss and curl timeouts should match approximately `NETWORK_PACKET_LOSS_PERCENTAGE`.
+
+3. **Inspect Linux Chaos Infrastructure logs.**
+
+   ```bash
+   sudo journalctl -u linux-chaos-infrastructure -n 100 --no-pager
+   ```
+
+   Look for the fault start, the resolved targets, and the fault end markers.
+
+---
+
+## Recovery and cleanup
+
+- **End of duration:** The chaos pod removes the `netem` qdisc when `DURATION` elapses; packets flow normally.
+- **Abort the experiment:** Stopping the experiment from Chaos Studio also removes the qdisc.
+- **Manual recovery:** If the qdisc survives an abort, remove it with `sudo tc qdisc del dev <interface> root` (or `parent ffff:` for ingress qdiscs created by the fault).
+- **Workload recovery:** Applications resume normal throughput as soon as the qdisc is removed; long-lived connections that broke must be re-established by the client.
+
+---
+
+## Limitations
+
+- **Egress only:** The fault drops packets leaving the VM on the configured interfaces; inbound packets are not directly dropped.
+- **Single VM scope:** Each fault run targets one VM (the VM hosting the selected Linux Chaos Infrastructure).
+- **Loss is uniform random:** Drops are random per packet; the actual drop rate approximates `NETWORK_PACKET_LOSS_PERCENTAGE` over many packets.
+- **SSH whitelisting:** When `WHITELIST_SSH` is `false`, the fault may sever your SSH session to the target VM if the SSH ports match the filter.
+- **Existing qdisc:** If a custom qdisc is already attached to the interface, the fault adds a child or fails; review with `tc qdisc show` before running.
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="Linux network loss fault shows no packet loss in Harness Chaos Engineering"
+  mode="docs"
+  fallback="Confirm the destination filter matches your test traffic and that you are sending egress traffic on the configured NETWORK_INTERFACES. Run tc -s qdisc show dev <interface> during the chaos window to see the netem statistics."
+/>
+
+<Troubleshoot
+  issue="SSH session dropped during the experiment"
+  mode="docs"
+  fallback="WHITELIST_SSH defaults to true to keep ports 22 and 2222 reachable. If SSH dropped, your session may be on a custom port. Add that port to SOURCE_PORTS with the ! prefix to whitelist it (for example, !22,2222,2200)."
+/>
+
+<Troubleshoot
+  issue="Packet loss persists after the experiment ends"
+  mode="docs"
+  fallback="If the netem qdisc was not removed (for example, the experiment aborted ungracefully), remove it manually with sudo tc qdisc del dev <interface> root. Inspect with tc qdisc show dev <interface> first."
+/>
+
+---
+
+## Related faults
+
+- [Linux network latency](/docs/chaos-engineering/faults/chaos-faults/linux/linux-network-latency): Add latency instead of dropping packets.
+- [Linux network corruption](/docs/chaos-engineering/faults/chaos-faults/linux/linux-network-corruption): Corrupt packets instead of dropping them.
+- [Linux network rate limit](/docs/chaos-engineering/faults/chaos-faults/linux/linux-network-rate-limit): Throttle bandwidth instead of dropping packets.

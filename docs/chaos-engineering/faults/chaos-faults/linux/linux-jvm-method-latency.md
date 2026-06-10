@@ -1,218 +1,199 @@
 ---
 id: linux-jvm-method-latency
 title: Linux JVM method latency
+sidebar_label: Linux JVM Method Latency
+description: Add latency to a target class and method in a Java process on a Linux machine so you can test how the application behaves when an internal method slows down.
+keywords:
+  - chaos engineering
+  - linux jvm method latency
+  - linux fault
+  - jvm chaos
+tags:
+  - chaos-engineering
+  - linux-faults
+  - jvm-chaos
 redirect_from:
-  - /docs/chaos-engineering/chaos-faults/linux/linux-jvm-method-latency
+- /docs/chaos-engineering/technical-reference/chaos-faults/linux/linux-jvm-method-latency
+- /docs/chaos-engineering/chaos-faults/linux/linux-jvm-method-latency
 ---
 
-import Ossupport from './shared/note-supported-os.md'
-import FaultPermissions from './shared/fault-permissions.md'
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-Linux JVM method latency slows down the Java application by introducing delays in executing the method calls.
+Linux JVM method latency is a chaos fault that uses Byteman to add `LATENCY` milliseconds of delay to every invocation of `CLASS.METHOD` in the target Java process for `DURATION`, then removes the rule. The target Java process is selected by `PID`, by `STARTUP_COMMAND`, or by attaching to a running Byteman agent on `PORT`. The fault runs through the Linux Chaos Infrastructure (LCI) systemd service installed on the target VM.
 
-:::tip
-JVM chaos faults use the [Byteman utility](https://byteman.jboss.org/) to inject chaos faults into the JVM.
+Use this fault to test how a Java workload behaves when a hot method gets slow: whether the caller honors its own timeout, whether thread-pool exhaustion appears, whether circuit breakers fire, and whether monitoring detects the in-JVM slowdown within the alerting SLA.
+
+:::info Run your first experiment
+If you have not installed the Linux Chaos Infrastructure yet, go to [Linux Chaos Infrastructure](/docs/chaos-engineering/guides/infrastructures/types/legacy-infra/linux) to install the agent and connect the VM to the control plane.
 :::
 
-![Linux JVM method latency](./static/images/linux-jvm-method-latency.png)
+---
 
 ## Use cases
-Linux JVM method latency:
-- Determines the performance bottlenecks of the application.
-- Tests the system's ability to handle heavy payloads.
-- Evaluates the application's behavior in high-stress cases.
-- Determines how quickly an application returns to normalcy after the delay.
-- Determines the performance and resilience of the dependant application (or services) running on Linux.
 
-<Ossupport />
+Run this fault when you want to answer concrete questions like:
 
-<FaultPermissions />
+- **Method slowdown tolerance:** When `CLASS.METHOD` slows by `LATENCY` milliseconds, do request handlers stay inside their p99 SLA?
+- **Thread-pool starvation:** Do worker pools or async executors back up when a hot method blocks?
+- **Caller timeouts:** Do callers honor their own timeouts, or do they hold the thread until the method returns?
+- **Monitoring fidelity:** Do alerts on method-level latency, queue depth, and request latency fire within the alerting SLA?
 
-### Mandatory tunables
-<table>
-  <tr>
-    <th> Tunable </th>
-    <th> Description </th>
-    <th> Notes </th>
-  </tr>
-  <tr>
-    <td> class </td>
-    <td> Specify as <b>packageName.className</b> that specifies the class in which you define the exception. </td>
-    <td> For example, <code>org.framework.appName.system.WelcomeController</code>. For more information, go to <a href="#class-name"> class name.</a></td>
-  </tr>
-  <tr>
-    <td> latency </td>
-    <td> The delay you want to introduce in the application (in ms). </td>
-    <td> Default: 2000 ms. For more information, go to <a href="#latency"> latency.</a></td>
-  </tr>
-  <tr>
-    <td> method </td>
-    <td> The method to which exception is applied. </td>
-    <td> For example, <code>Welcome</code>. For more information, go to <a href="#method"> method name.</a></td>
-  </tr>
-  <tr>
-    <td> pid </td>
-    <td> The process ID that Byteman uses to target the service. This is mutually exclusive with <code>startupCommand</code>. If <code>pid</code> is specified (other than 0), <code>startupCommand</code> is not required.</td>
-    <td> For example, <code>6429</code>. For more information, go to <a href="#pid"> process Id.</a></td>
-  </tr>
-  <tr>
-    <td> startupCommand </td>
-    <td> The command used to start the Java process. A substring match is used with the given command for all processes. This is mutually exclusive with <b>pid</b>.</td>
-    <td> If <code>startupCommand</code> is specified, you need to set <code>pid</code> to 0. For example, <code>/usr/local/bin/pet-clinic.jar</code>. For more information, go to <a href="#startup-command"> startup command.</a></td>
-  </tr>
-</table>
+---
 
-### Optional tunables
-<table>
-  <tr>
-    <th> Tunable </th>
-    <th> Description </th>
-    <th> Notes </th>
-  </tr>
-  <tr>
-    <td> duration </td>
-    <td> Duration through which chaos is injected into the target resource. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format.</td>
-    <td> Default: <code>30s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code>. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults/#duration-of-the-chaos"> duration of the chaos.</a></td>
-  </tr>
-  <tr>
-    <td> rampTime </td>
-    <td> Period to wait before and after injecting chaos. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
-    <td> Default: <code>0s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code>. For example, 30s. For more information, go to <a href= "/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
-  </tr>
-  <tr>
-    <td> port </td>
-    <td> Port used by the Byteman agent. </td>
-    <td> Default: <code>9091</code>. </td>
-  </tr>
-</table>
+## Prerequisites
 
-:::tip
-If multiple Java processes on the same machine are subject to JVM chaos, whether simultaneously or not, each process must use a unique Byteman port.
+- **Linux Chaos Infrastructure installed:** The `linux-chaos-infrastructure` systemd service is `active` on the target VM and the infrastructure is in `CONNECTED` state. Go to [Linux Chaos Infrastructure](/docs/chaos-engineering/guides/infrastructures/types/legacy-infra/linux) to install it.
+- **Target JVM identifiable:** Provide one of `PID` or `STARTUP_COMMAND`, or ensure a Byteman agent is already listening on `PORT`.
+- **`JAVA_HOME` reachable:** Set `JAVA_HOME` if it is not on the LCI service environment.
+- **Target class loaded:** The JVM must have `CLASS` loaded and the matching `METHOD` defined.
+
+---
+
+## Supported environments
+
+The fault has been tested on the following Linux distributions. Go to [Linux fault requirements](/docs/chaos-engineering/faults/chaos-faults/linux/permissions) to see the full compatibility matrix.
+
+| Platform | Support status |
+| --- | --- |
+| Ubuntu 16+, Debian 10+ | Supported |
+| CentOS 7+, RHEL 7+, Fedora 30+ | Supported |
+| openSUSE LEAP 15.4+ / SUSE Linux Enterprise 15+ | Supported |
+| JVM versions | OpenJDK 8, 11, 17, 21 (any JVM compatible with Byteman) |
+
+---
+
+## Permissions required
+
+This fault is classified as a **Basic** Linux fault. It runs with the privileges of the Linux Chaos Infrastructure systemd service (root user and root user group) on the target VM. The LCI service must have permission to attach to the target Java process. No cloud credentials are needed.
+
+---
+
+## Fault tunables
+
+Configure the following fault parameters when you add Linux JVM method latency to an experiment in Chaos Studio. Defaults are shown for reference.
+
+**Required parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `CLASS` | Fully qualified class name containing the target method. | (required) |
+| `METHOD` | Method name within `CLASS` to delay. | (required) |
+
+**JVM selectors (provide one or rely on `PORT`)**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `PID` | PID of the target Java process. Set to `0` to fall back to `STARTUP_COMMAND` or `PORT`. | `0` |
+| `STARTUP_COMMAND` | Substring of the Java process command line used to identify the target. | `""` |
+| `PORT` | Port of the Byteman agent. | `9091` |
+| `JAVA_HOME` | Path to the JDK used by the target JVM. | `""` |
+
+**Chaos parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `DURATION` | Total duration of the fault. Accepts `[hours]h[minutes]m[seconds]s` format. | `30s` |
+| `LATENCY` | Latency to inject per method call, in milliseconds. | `2000` |
+| `RAMP_TIME` | Wait period in seconds before and after the fault. Go to [ramp time](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time) to read how it is applied. | `0` |
+
+Tunables that apply to every fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
+
+---
+
+## Fault execution in brief
+
+Attaches Byteman to the target JVM on `PORT`, installs a rule that sleeps `LATENCY` milliseconds before `CLASS.METHOD` executes (per invocation) for `DURATION`, then removes the rule.
+
+---
+
+## Expected behavior during fault execution
+
+- Every invocation of `CLASS.METHOD` takes `LATENCY` milliseconds longer than usual for the duration of the fault.
+- Request handlers that depend on the method are delayed; thread-pool occupancy rises.
+- Tail latency (`p99`) for endpoints exercising the method shifts upward by approximately `LATENCY`.
+- Callers that have shorter timeouts than `LATENCY` see clean timeout errors.
+- After the duration ends, the Byteman rule is removed and the method runs at baseline speed.
+
+:::info When the fault ends
+The chaos pod removes the Byteman rule. The next invocation of the method runs at baseline speed; in-flight invocations complete after their delay.
 :::
 
-### Class name
+### Signals to watch
 
-The `class` input variable targets the class name where the exception is present. Specify it in the format `packageName.className`.
+Attach [resilience probes](/docs/resilience-testing/chaos-testing/probes) to assert each layer:
 
-The following YAML snippet illustrates the use of this input variable:
+- **Method latency:** Use a [Prometheus probe](/docs/resilience-testing/chaos-testing/probes/apm-probes) on application method-level latency metrics.
+- **Request latency:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) on a user-visible endpoint that exercises the method.
+- **Thread-pool occupancy:** Use a Prometheus probe on `jvm_threads_state` or a custom thread-pool gauge.
 
-[embedmd]:# (./static/manifests/linux-jvm-method-latency/class-name.yaml yaml)
-```yaml
-apiVersion: litmuchaos.io/v1alpha1
-kind: LinuxFault
-metadata:
-  name: linux-jvm-method-latency
-  labels:
-    name: jvm-method-latency
-spec:
-  jvmChaos/inputs:
-    duration: 30s
-    port: 9091
-    pid: 1
-    class: "org.framework.appName.system.WelcomeController"
-    method: ""
-    latency: 2000
-    rampTime: ""
-```
+---
 
-### Latency
+## Verify the fault execution effect
 
-The delay introduced in the Java application, in milliseconds. Its default value is 2000 ms.
+1. **Trigger the method via a user-visible endpoint.**
 
-The following YAML snippet illustrates the use of this input variable:
+   ```bash
+   curl -w '%{time_total}\n' -o /dev/null -s https://<app>/<endpoint>
+   ```
 
-[embedmd]:# (./static/manifests/linux-jvm-method-latency/latency.yaml yaml)
-```yaml
-apiVersion: litmuchaos.io/v1alpha1
-kind: LinuxFault
-metadata:
-  name: linux-jvm-method-latency
-  labels:
-    name: jvm-method-latency
-spec:
-  jvmChaos/inputs:
-    duration: 30s
-    port: 9091
-    pid: 1
-    class: "org.framework.appName.system.WelcomeController"
-    method: ""
-    latency: 2000
-    rampTime: ""
-```
+   Latency for the endpoint should rise by approximately `LATENCY` (per method call) during the chaos window.
 
-### Method
+2. **Inspect Byteman state.**
 
-The method name on which you apply the `exception` input variable.
+   ```bash
+   sudo $JAVA_HOME/bin/bmtool -p <PORT> -l
+   ```
 
-The following YAML snippet illustrates the use of this input variable:
+3. **Inspect Linux Chaos Infrastructure logs.**
 
-[embedmd]:# (./static/manifests/linux-jvm-method-latency/method.yaml yaml)
-```yaml
-apiVersion: litmuchaos.io/v1alpha1
-kind: LinuxFault
-metadata:
-  name: linux-jvm-method-latency
-  labels:
-    name: jvm-method-latency
-spec:
-  jvmChaos/inputs:
-    duration: 30s
-    port: 9091
-    pid: 1
-    class: ""
-    method: "Welcome"
-    latency: 2000
-    startupCommand: ""
-    rampTime: ""
-```
+   ```bash
+   sudo journalctl -u linux-chaos-infrastructure -n 100 --no-pager
+   ```
 
-### Pid
+---
 
-The process ID used by Byteman to target the services of the Java application. This is mutually exclusive with the `Startup command` input variable.
+## Recovery and cleanup
 
-The following YAML snippet illustrates the use of this input variable:
+- **End of duration:** The chaos pod removes the Byteman rule when `DURATION` elapses.
+- **Abort the experiment:** Stopping the experiment from Chaos Studio also removes the rule.
+- **Manual recovery:** If the rule survives an abort, remove it with `sudo $JAVA_HOME/bin/bmtool -p <PORT> -u <rule>`.
 
-[embedmd]:# (./static/manifests/linux-jvm-method-latency/pid.yaml yaml)
-```yaml
-apiVersion: litmuchaos.io/v1alpha1
-kind: LinuxFault
-metadata:
-  name: linux-jvm-method-latency
-  labels:
-    name: jvm-method-latency
-spec:
-  jvmChaos/inputs:
-    duration: 30s
-    port: 9091
-    pid: 2
-    class: ""
-    method: ""
-    latency: 2000
-    rampTime: ""
-```
+---
 
-### Startup command
+## Limitations
 
-The command used to start the Java process. A substring match is used with the given command for all processes. This is mutually exclusive with the `pid` input variable.
+- **Per-invocation delay:** `LATENCY` is added per invocation; methods called in tight loops will accumulate large delays.
+- **Method visibility:** The target method must be defined on a loaded class; lazy-loaded classes are not affected until first use.
+- **Overload resolution:** Byteman matches on method name; all overloads are delayed.
+- **Byteman dependency:** The target JVM must allow Byteman attachment.
+- **Single JVM scope:** Each fault run targets one Java process.
 
-The following YAML snippet illustrates the use of this input variable:
+---
 
-[embedmd]:# (./static/manifests/linux-jvm-method-latency/startup-command.yaml yaml)
-```yaml
-apiVersion: litmuchaos.io/v1alpha1
-kind: LinuxFault
-metadata:
-  name: linux-jvm-method-latency
-  labels:
-    name: jvm-method-latency
-spec:
-  jvmChaos/inputs:
-    duration: 30s
-    port: 9091
-    pid: 0
-    class: "org.framework.appName.system.WelcomeController"
-    method: ""
-    latency: 2000
-    startupCommand: "/usr/bin/pet-clinic.jar"
-    rampTime: ""
-```
+## Troubleshooting
+
+<Troubleshoot
+  issue="Linux JVM method latency fault did not slow the method in Harness Chaos Engineering"
+  mode="docs"
+  fallback="Confirm CLASS is the fully qualified name and that METHOD is defined on a loaded class. Trigger the method explicitly and measure the response time with curl. Verify Byteman attached with sudo bmtool -p <PORT> -l."
+/>
+
+<Troubleshoot
+  issue="Latency accumulated faster than expected"
+  mode="docs"
+  fallback="LATENCY is added per invocation. If the method is called many times per request, total request latency is approximately N x LATENCY. Reduce LATENCY or instrument the call site to see the actual invocation count."
+/>
+
+<Troubleshoot
+  issue="Latency persisted after the experiment ended"
+  mode="docs"
+  fallback="If the Byteman rule was not removed, list with sudo bmtool -p <PORT> -l and remove with -u <rule>. If the rule cannot be removed, restart the target JVM to clear injected rules."
+/>
+
+---
+
+## Related faults
+
+- [Linux JVM method exception](/docs/chaos-engineering/faults/chaos-faults/linux/linux-jvm-method-exception): Throw an exception from the method instead of delaying it.
+- [Linux JVM modify return](/docs/chaos-engineering/faults/chaos-faults/linux/linux-jvm-modify-return): Override the return value instead of delaying.
+- [Linux network latency](/docs/chaos-engineering/faults/chaos-faults/linux/linux-network-latency): Add latency at the network layer instead of inside the JVM.
