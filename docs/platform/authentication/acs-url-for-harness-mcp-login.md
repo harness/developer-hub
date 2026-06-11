@@ -5,10 +5,6 @@ description: Learn how to add an additional ACS URL or redirect URI in your Iden
 sidebar_position: 60
 ---
 
-:::note Feature availability
-This feature is behind the `PL_ENABLE_MCP_REPLY_URL_FOR_SSO_PROVIDERS` feature flag. Contact the [Harness Support team](https://support.harness.io) to enable it. 
-:::
-
 Harness MCP uses a separate authentication flow from the standard Harness platform login. Instead of authenticating directly through the Harness platform, MCP authentication is routed through HarnessID, a dedicated identity broker. As a result, the Assertion Consumer Service (ACS) URL included in SAML authentication requests differs from the ACS URL used for standard Harness platform login.
 
 Most Identity Providers (IdPs) validate that the ACS URL in a SAML authentication request matches one of the Reply URLs configured for the application. If the MCP-specific ACS URL is not configured in your IdP, users will be unable to authenticate to Harness MCP using SAML.
