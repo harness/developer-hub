@@ -167,6 +167,16 @@ export const QwietaiData: Horizon = {
         title: "Perl Language Support",
         description: "Add native SAST scanning support for Perl."
       },
+      {
+        tag: [{ value: "Container" }, { value: "Visibility" }],
+        title: "Deep Container Analysis",
+        description: "Deliver layer-by-layer visibility into container risks with OS and application dependency attribution."
+      },
+      {
+        tag: [{ value: "SCA" }, { value: "Binary Analysis" }],
+        title: "Expanded Binary Analysis",
+        description: "Extend binary scanning support across additional binary formats and package types."
+      },
     ],
   },
 
