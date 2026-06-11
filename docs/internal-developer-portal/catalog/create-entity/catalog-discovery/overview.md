@@ -1,6 +1,6 @@
 ---
 title: Catalog Auto-Discovery & Population Overview
-sidebar_position: 1
+sidebar_position: 0
 sidebar_label: Overview
 description: Discover services from  integrations and sync them to the IDP Catalog
 keywords:
@@ -36,6 +36,7 @@ Before you begin your integrations journey, please ensure that:
 
 1. The **`IDP_INTEGRATIONS`** feature flag is enabled for your account. Contact [Harness Support](mailto:support@harness.io) to enable it.
 2. You have the required **RBAC permissions** to manage integrations. All integration operations require the **IDP Integration Edit** permission (`IDP_INTEGRATION_EDIT`) on the **IDP Integration** resource type (`IDP_INTEGRATION`).
+3. You have completed the **[Initial Configuration](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/initial-config)** for catalog discovery integrations. This is a one-time setup required before creating any Airbyte-based integration.
 
 :::
 
