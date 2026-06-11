@@ -53,6 +53,30 @@ Google Container Registry (GCR) is deprecated on **March 18, 2025**. It is recom
 For more information on GCR, see the [Harness GCR Documentation](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#google-container-registry-gcr).
 :::
 
+## June 2026
+
+### Version 1.152.0
+
+#### New features and enhancements
+
+- The Artifactory connector now supports OIDC authentication, enabling credential-free federated authentication with JFrog Artifactory using short-lived JWT tokens. This feature requires the feature flag `CDS_ARTIFACTORY_OIDC_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable. For more information, go to [Artifactory connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference#oidc-authentication). (**CDS-121048**)
+
+- Harness AI for OPA policies now provides enhanced policy generation capabilities powered by the unified Harness AI agent, offering more accurate and context-aware policy suggestions through specialized skills trained on OPA and REGO best practices. The AI assistant helps you write OPA policies without deep REGO knowledge and provides detailed descriptions of existing policies in plain language. This feature requires the feature flag `OPA_DISABLE_AIDA_INTEGRATION`. Contact [Harness Support](mailto:support@harness.io) to enable. For more information, go to [Build policies using Harness AI](/docs/platform/governance/policy-as-code/ai-for-policies). (**PIPE-34241**)
+
+- Istio traffic routing steps now support configurable AND/OR match logic for route rules through the **Match all rules** option. When enabled, all configured route rules (URI, headers, method, port) must match for a request to be routed to the destination. When disabled, a request matching any single rule will be routed. For more information, go to [Traffic shifting step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/traffic-shifting-step#match-all-rules). (**CDS-122246**)
+
+- AWS connectors with OIDC authentication now include environment identifiers as session tags in OIDC tokens, enabling environment-specific IAM policy enforcement for resources and secrets. This allows you to restrict production secrets to production pipelines while using shared delegate pools across environments. This feature requires the feature flag `CDS_OIDC_AWS_SESSION_TAGS`. Contact [Harness Support](mailto:support@harness.io) to enable. For more information, go to [OIDC environment-based session tags for AWS](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference#oidc-environment-based-session-tags-for-aws). (**CDS-123292**)
+
+- Approval steps now support enabling visibility for non-approvers, allowing users without approval permissions to view approval step details during pipeline execution while keeping approval actions disabled. This setting is configured at the project level under **Default Settings** and is disabled by default. For more information, go to [Enable approval visibility for non-approvers](/docs/platform/approvals/adding-harness-approval-stages#enable-approval-visibility-for-non-approvers). (**CDS-125606**)
+
+#### Fixed issues
+
+- Fixed an issue where Helm canary deployments failed with delegate selector AND-collision when using delegate-pinned Git connectors. This fix requires the feature flag `CDS_ASYNC_EXECUTABLE_USE_SELECTORS`. Contact [Harness Support](mailto:support@harness.io) to enable. (**CDS-124714**, **ZD-114569**)
+- Fixed an issue where Git configuration was missing in the OPA request payload when initially creating service, infrastructure, or environment entities. The system now includes Git configuration in OPA requests for entity creation. (**CDS-124756**, **ZD-114085**)
+- Fixed an issue where an invalid or empty cluster name in Amazon EKS infrastructure caused a misleading JSON marshalling error instead of a validation failure. The error message now clearly indicates the empty cluster in EKS infrastructure. (**CDS-124973**, **ZD-114328**)
+- Fixed an issue where the Terraform provider returned a misleading "file already exists" error during concurrent pipeline creation with Git Experience. (**PIPE-33810**, **ZD-113331**)
+- Fixed an issue where deployments no longer displayed service runtime inputs under the inputs section of pipeline executions. (**PIPE-34769**, **ZD-115520**, **ZD-115608**)
+
 ## May 2026
 
 ### Version 1.150.3
