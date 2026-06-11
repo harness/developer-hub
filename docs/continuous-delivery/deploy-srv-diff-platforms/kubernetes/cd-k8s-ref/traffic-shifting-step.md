@@ -129,7 +129,59 @@ Before you begin, make sure you have an understanding of Istio and how it works 
             * **port**: 
                 * **Value**: Specify which port you want to match the incoming request port with.
 
-        * **Rewrite Rule**: A rewrite rule in a traffic shifting step refers to modifying the incoming request’s path or URL before it's forwarded to the backend service.
+        * **Match all rules**: When enabled, all configured route rules (URI, headers, method, etc.) must match for a request to be routed to the specified destinations. When disabled, a request matching any single rule will be routed.
+
+            :::note
+            This setting affects how Istio evaluates multiple route rules. Go to the [Istio HTTPMatchRequest specification](https://istio.io/latest/docs/reference/config/networking/virtual-service/#HTTPMatchRequest) to understand how fields within a single match entry are AND'd together, while separate match entries are OR'd.
+            :::
+
+            **Enabled (AND semantics - default):** All route rules are combined into a single HTTPMatchRequest entry. A request must satisfy all configured rules to be routed to the destination.
+
+            <details>
+            <summary>Example VirtualService with AND matching</summary>
+
+            When you configure a route with both a URI prefix rule and a header rule with the **Match all rules** checkbox enabled:
+
+            ```yaml
+            http:
+              - match:
+                - headers:
+                    cookie:
+                      regex: .*app-version=canary.*
+                  uri:
+                    prefix: /personal/consumer/creditcards/directdebit/bos
+            ```
+
+            In this case, a request is routed to canary only if it matches both the URI prefix AND the cookie header.
+
+            </details>
+
+            **Disabled (OR semantics):** Each route rule is rendered as a separate HTTPMatchRequest entry. A request matching any configured rule will be routed to the destination.
+
+            <details>
+            <summary>Example VirtualService with OR matching</summary>
+
+            When you configure the same route with the **Match all rules** checkbox disabled:
+
+            ```yaml
+            http:
+              - match:
+                - headers:
+                    cookie:
+                      regex: .*app-version=canary.*
+                - uri:
+                    prefix: /personal/consumer/creditcards/directdebit/bos
+            ```
+
+            In this case, a request is routed to canary if it matches the URI prefix OR the cookie header.
+
+            </details>
+
+            :::warning
+            Using OR semantics (**Match all rules** disabled) with path-based and header-based rules can cause issues. For example, any request hitting the URI prefix will be routed to canary regardless of the cookie header, potentially causing you to receive a mix of stable and canary resources (CSS, JavaScript, etc.), which may break the application.
+            :::
+
+        * **Rewrite Rule**: A rewrite rule in a traffic shifting step refers to modifying the incoming request’s path or URL before it’s forwarded to the backend service.
 
 <div align="center">
           <DocImage path={require('./static/add-rewrite-rule.png')} width="50%" height="50%" title="Click to view full size image" />
@@ -391,11 +443,12 @@ Destination3 -> Host: svc3, Weight: 15
 ## Configuration examples
 
 ### Istio service mesh configuration
-Here we have an example of an Istio service mesh traffic routing step which will take all the traffic that is coming from gateway `testgateway` and with host `test.com`.
-It will filter all incoming request that have URI `/login` with HTTP method `POST` and header `X-Request` with value `authxx`.
-This request will be split between PODs which are behind two service `svc1` and `svc2` in ratio 65 to 35, respectively.
-The resource created would be a `Virtual Service` with name `istio-vs-k8s-res`
-```
+Here we have an example of an Istio service mesh traffic routing step. It takes all traffic coming from gateway `testgateway` with host `test.com`. It filters incoming requests that have URI `/login`, HTTP method `POST`, and header `X-Request` with value `authxx`. With `matchAllConditions` set to `true`, a request must satisfy all three criteria to be routed. Traffic is split between pods behind `svc1` and `svc2` at a 65/35 ratio. The resource created is a `VirtualService` named `istio-vs-k8s-res`.
+
+<details>
+<summary>Istio Traffic Routing YAML example</summary>
+
+```yaml
   - step:
       identifier: K8sTrafficRoutingConfig
       type: K8sTrafficRouting
@@ -438,7 +491,10 @@ The resource created would be a `Virtual Service` with name `istio-vs-k8s-res`
                     - destination:
                         host: svc2
                         weight: 35
+          matchAllConditions: true
 ```
+
+</details>
 
 ### SMI service mesh configuration
 Here we have an example of an SMI service mesh traffic routing step which will take all the traffic that is coming into service `svc1`
@@ -558,3 +614,9 @@ routes:
 In this example, both destinations share the same host (`my-service`). The step collapses them into a single destination with `weight: 100` and no subset field.
 
 </details>
+
+<Troubleshoot
+  issue="Traffic is routed to canary when only one of multiple route rules matches (URI or header, not both)"
+  mode="docs"
+  fallback="Enable the 'Match all rules' checkbox in your Traffic Routing configuration. When disabled, Istio applies OR semantics, meaning any matching rule routes traffic to canary. When enabled (AND semantics), all configured rules must match. This prevents issues where you receive mixed stable/canary resources that break the application."
+/>
