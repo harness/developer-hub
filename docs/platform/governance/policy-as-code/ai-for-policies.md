@@ -8,7 +8,7 @@ redirect_from:
 ---
 
 :::note
-This feature is behind the feature flag `OPA_DISABLE_AIDA_INTEGRATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+This feature is behind the feature flag `OPA_ENABLE_CANARY_AI`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
 Visit the following Harness Legal pages for legal information about AI:
