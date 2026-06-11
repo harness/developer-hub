@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2026-05-25T10:00
+date: 2026-06-08T10:00
 sidebar_position: 10
 ---
 
@@ -52,6 +52,33 @@ For additional information about Harness Cloud pricing, please visit [Subscripti
 Please reach out to your support team to get these flag enabled.
 Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud-vm-images/) for details.
 :::
+
+## June 2026
+
+### Version 1.143.0
+
+<!-- June 2026 -->
+
+#### New Features and Enhancements
+
+- Added Azure-backed storage support for Build Cache. You can now use Azure Blob Storage as the backend for CI cache operations, expanding cache storage options beyond S3 and GCS. (CI-22956, CI-22992)
+
+#### Fixed Issues
+
+- Fixed an issue where Docker Layer Caching (DLC) cache key collisions occurred when multiple Build and Push steps ran in parallel with different `PLUGIN_PLATFORM` values. Each platform variant now generates a unique cache key. (CI-21579, ZD-109383)
+
+- Fixed an issue where drone-git-rootless encountered a permission denied error in Self-Managed Platform (SMP) environments. (CI-23004)
+
+#### Harness Images Updates
+
+| Image | Change | Previous Version | New Version |
+|-------|--------|------------------|-------------|
+| `harness-cache-server` | Azure storage support | 1.7.17 | 1.7.18 |
+| `plugins/docker` | Bug fixes and enhancements | 21.2.8 | 21.2.9 |
+| `plugins/ecr` | Bug fixes and enhancements | 21.2.8 | 21.2.9 |
+| `plugins/acr` | Bug fixes and enhancements | 21.2.8 | 21.2.9 |
+| `plugins/gcr` | Bug fixes and enhancements | 21.2.8 | 21.2.9 |
+| `plugins/gar` | Bug fixes and enhancements | 21.2.8 | 21.2.9 |
 
 ## May 2026
 
