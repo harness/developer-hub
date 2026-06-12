@@ -75,6 +75,23 @@ As part of improving the security posture of the platform, Harness is upgrading 
   var ENVIRONMENT=<+env.identifier>,
   var REGION=<+pipeline.variables.region>
   ```
+- **Ternary expressions followed immediately by `[` must be rewritten.** JEXL 3.5 treats `?[` as the null-safe array access operator, so the parser consumes `?[...]` as a single token and fails to evaluate the ternary. For example, the following expression will fail:
+
+  ```
+  <+pipeline.variables.BUILD_ENVS=="dev"?[""]:"qa">
+  ```
+
+  Rewrite it by adding a space after `?` so the parser treats the ternary and the array literal as separate tokens:
+
+  ```
+  <+pipeline.variables.BUILD_ENVS=="dev"? [""]:"qa">
+  ```
+
+  Or wrap the array in parentheses to disambiguate:
+
+  ```
+  <+pipeline.variables.BUILD_ENVS=="QAdf"?([""]):"abcds">
+  ```
 
 Please monitor pipeline executions and contact Harness Support if any issues are encountered or remediation assistance is required.
 
