@@ -171,6 +171,16 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## June 2026
 
+### Version 26.06.89309 <!-- June 11, 2026 -->
+
+#### Fixed issues
+- Resolved CVE-2026-2332 in jetty framework. [DEL-6377]
+
+### Version 26.06.89308 <!-- June 11, 2026 -->
+
+#### Fixed issues
+- Resolved CVE-2026-44930 in org.apache.cxf. [DEL-10275]
+
 ### Version 26.06.89307 <!-- June 11, 2026 -->
 
 #### Fixed issues
