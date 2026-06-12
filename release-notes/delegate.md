@@ -171,6 +171,11 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## June 2026
 
+### Version 26.06.89307 <!-- June 11, 2026 -->
+
+#### Fixed issues
+- Resolved CVE-2026-33117 in com.azure:azure-security-keyvault-keys. [PL-72036]
+
 ### Version 26.06.89304 <!-- June 03, 2026 -->
 
 #### Fixed issues
