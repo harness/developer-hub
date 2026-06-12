@@ -51,7 +51,30 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 As part of improving the security posture of the platform, Harness is upgrading JEXL from version 3.0 to 3.5. This change introduces the following restrictions on JEXL expressions:
 
 - **Reflection-based expressions are blocked.** Any JEXL expression that uses reflection to access classes, methods, or fields will be rejected. For example, expressions such as `<+''.getClass().forName("java.lang.Runtime")>` will no longer execute.
-- **Nested subscript expressions must be rewritten.** Expressions that nest one subscript (square bracket) accessor directly inside another needs to be rewritten in a different format. For example, `<+pipeline.variables[<+stage.variables['test']>]>` must be rewritten as `<+pipeline.variables["<+stage.variables['test']>"]>`.
+- **Nested subscript expressions must be rewritten.** Expressions that nest one subscript (square bracket) accessor directly inside another needs to be rewritten in a different format. For example, the following expression will fail:
+
+  ```
+  <+pipeline.variables[<+stage.variables['test']>]>
+  ```
+
+  Rewrite it as:
+
+  ```
+  <+pipeline.variables["<+stage.variables['test']>"]>
+  ```
+- **JEXL global variable assignments are disallowed.** Expressions that declare global variables will fail to execute. For example, the following expression is no longer supported:
+
+  ```
+  ENVIRONMENT=<+env.identifier>,
+  REGION=<+pipeline.variables.region>
+  ```
+
+  Rewrite the expression using local variables (prefixed with `var`) instead. For example:
+
+  ```
+  var ENVIRONMENT=<+env.identifier>,
+  var REGION=<+pipeline.variables.region>
+  ```
 
 Please monitor pipeline executions and contact Harness Support if any issues are encountered or remediation assistance is required.
 
