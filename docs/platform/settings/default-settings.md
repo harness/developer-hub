@@ -154,6 +154,20 @@ Use the **Object Store for Self-Managed Build Infrastructure** settings to conne
 Azure Blob Storage is currently supported only for **Cache Intelligence**. Docker Layer Caching (DLC) and Build Intelligence require AWS S3, GCP Cloud Storage, or S3-compatible storage.
 :::
 
+:::note
+### Supported Azure Blob Storage Authentication Methods
+
+Cache Intelligence currently supports the following Azure Blob Storage authentication methods:
+
+| Authentication Method | Required Parameters                                   |
+| --------------------- | ----------------------------------------------------- |
+| **OIDC**              | `OIDCTokenID`, `TenantID`, `ClientID`, `AccountName`  |
+| **Service Principal** | `ClientID`, `ClientSecret`, `TenantID`, `AccountName` |
+| **Shared Key**        | `AccountName`, `AccountKey`                           |
+
+> Only the authentication methods listed above are currently supported for Azure Blob Storage integrations with Cache Intelligence.
+:::
+
 
 #### Upload Logs Via Harness
 
