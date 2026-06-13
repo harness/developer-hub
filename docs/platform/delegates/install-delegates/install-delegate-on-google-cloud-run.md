@@ -13,6 +13,7 @@ import DeployContainer from './static/container-image-url.png';
 import ConfigureService from './static/cloud-run-configure.png';
 import ContainerConfig from './static/configure-container-vol-security.png';
 import HealthCheck from './static/health-check.png';
+import CloudrunDelegateSecret from './static/cloudrun-delegate-secret.png';
 import DelegateStatus from './static/delegate-status.png';
 import EnVariable from './static/environment-variables.gif';
 import ServiceUrl from  './static/service-url.gif';
@@ -56,6 +57,7 @@ To configure a delegate on Google Cloud Run:
                 <img src={ConfigureService} width="600"/>
                                 
         2.3.  Configure Ingress to control access to Cloud Run services. For now, select "All" to allow direct access from the internet.
+        2.4.  For busier delegates, it is recommended to check 'Instance based' billing for quicker response times between requests and responsiveness.
 
     3. To edit container configuration, click **Container(s), Volumes, Networking, Security** section to expand the options and set the following details accordingly.
         
@@ -116,6 +118,10 @@ To configure a delegate on Google Cloud Run:
 
                     - `HOST_NAME_COMMAND`: echo uniqdelegate-$(openssl rand -hex 3)
             :::
+
+            You can also store your DELEGATE_TOKEN using the 'secrets exposed as environment variables' functionality of google cloud:
+
+            <img src={CloudrunDelegateSecret} width="800"/>
 
             ```bash
                 DELEGATE_NAME="<your_delegate_name>"
