@@ -713,3 +713,97 @@ Users can:
 - Use the Bitbucket API to retrieve necessary files.
 - Implement an AWS CLI-based deployment script.
 - Automate the process via a Harness pipeline step.
+
+### What types of Lambda deployments does Harness support?
+Harness supports Basic and Canary Lambda deployments. Basic shifts all traffic immediately, while Canary gradually shifts it based on defined steps.
+
+### Can I deploy existing Lambda functions?
+Yes. If you specify an existing FunctionName, Harness updates that function instead of creating a new one.
+
+### What artifact types are supported for lambda deployment?
+Harness supports ZIP files from S3 and container images from ECR as Lambda artifacts.
+
+### Can I use aliases for traffic routing?
+Yes. You can define and manage Lambda aliases for version traffic control. Avoid using harness-latest for custom aliases.
+
+### How do I specify Lambda configuration?
+You define a function manifest JSON with fields like functionName, runtime, handler, and role.
+
+### What permissions are required to deploy Lambda through Harness?
+You need an AWS IAM role with permissions for Lambda creation, updates, alias management, and artifact access (for example, AWSLambda_FullAccess and AmazonS3ReadOnlyAccess).
+
+### What happens during a rollback for lamda deployment?
+If a deployment fails, Harness automatically rolls back to the last stable version using aliases to redirect traffic safely.
+
+### Why am I getting the error “AccessDenied: HarnessCDDelegateRole is not authorized to perform: cloudformation:CreateStack with an explicit deny in a service control policy” while creating an EC2 instance using a CloudFormation template in my Harness pipeline?
+This error occurs because a **Service Control Policy (SCP)** applied at the AWS Organization or OU level is explicitly denying the cloudformation:CreateStack action, even though the HarnessCDDelegateRole has the necessary IAM permissions.
+
+Resolution:
+
+If you have permission to manage SCPs, update or remove the explicit deny for cloudformation:CreateStack.
+If you don’t have access to SCPs, contact your AWS Organization administrator and request them to allow this action for the HarnessCDDelegateRole or the specific resource.
+
+### Why am I getting the error `fork/exec /opt/harness/scripts/run.sh:` exec format error when using the Harness CDK step with the image harness/aws-cdk-plugin:1.3.0-java-linux-arm64?
+This issue occurs due to a mismatch between the container image architecture and the environment it’s running on. The arm64 image is not compatible with your host architecture.
+
+### Why am I receiving an AccessDeniedException for the ecs:ListClusters action?
+The `AccessDeniedException` typically occurs when the assumed IAM role lacks the necessary permissions to perform the ECS action. Even if the IAM policy seems correct, the issue may be due to:
+
+Missing or incorrectly attached permissions on the role.
+A trust policy misconfiguration preventing the calling identity from assuming the role.
+A permission boundary or Service Control Policy (SCP) restricting the action if AWS Organizations is in use.
+
+### How can I verify that the assumed IAM role allows ECS access?
+Check that the role used by your ECS deployment pipeline includes the necessary ECS and ECR permissions (for example, ecs:ListClusters, ecr:GetAuthorizationToken, etc.). Make sure these permissions are attached to the role itself, not just defined in a detached or unused policy document.
+
+### What should the trust policy look like for the assumed role?
+The trust policy defines which identity can assume the role. Ensure that the role explicitly trusts the calling account or user.
+
+### How does Harness handle rollbacks during ECS deployments?
+During ECS deployments, Harness performs a prepare rollback data step to capture the current state before deployment. If a rollback is needed—either automatically due to failure or manually triggered—Harness first rolls back the ECS services to their previous working version.
+During a rollback, all steps are executed in reverse order of the original deployment. This behavior applies to ECS services deployed on both EC2 and Fargate clusters.
+
+### Do the AWS connector and the pipeline need to use the same delegate?
+If a delegate selector is configured on the AWS connector and no other selector is specified in the pipeline, the same delegate will be used automatically for AWS-related tasks.
+However, if a delegate selector is defined at the pipeline, stage, or step level, that selector takes precedence over the one set on the connector.
+
+### Can I deploy to ECS in multiple AWS accounts using a single EKS cluster and connector?
+Yes. You can use a single AWS connector to deploy to multiple AWS accounts by enabling cross-account access (STS Role) in the connector’s Credentials settings.
+The STS role allows the connector to assume roles in other accounts for deployment.
+Supported for: EC2 and ECS
+For EKS: Supported when using the IRSA credentials option
+This approach lets you centralize deployments without creating multiple connectors or delegates for each account.
+
+### Are AWS OIDC connectors supported for CDK deployments?
+Yes. AWS OIDC connectors are supported starting with delegate version 859xx or later.
+
+### Why must AWS CDK steps be in a containerized step group?
+Because AWS CDK operations require a shared workspace for cloned repositories and synthesized templates across steps.
+
+### What is a Provisioner Identifier?
+It’s a unique ID that identifies a CDK Deploy step and links it to corresponding Rollback steps for consistent rollback operations.
+
+### What happens if you omit stack names in a multi-stack app?
+The CDK step may fail because it won’t know which stacks to operate on; stack names must be explicitly listed.
+
+### Does using AWS CDK consume Harness Service Instances (SIs)?
+No. CDK provisioning alone doesn’t consume SI licenses unless artifacts are deployed to the provisioned infrastructure.
+
+### What is the purpose of cdk synth?
+cdk synth generates and prints the CloudFormation template for a stack without deploying it.
+
+### Can Harness trigger SAM rollback on deployment failure?
+No. AWS SAM handles rollback during stack creation if deployment fails. Harness cannot initiate a rollback after a successful SAM deployment due to SAM CLI limitations.
+
+### Can I use AWS IRSA with Harness SAM steps?
+Yes. You must create a Kubernetes service account bound to the IAM role and configure your step group to use it. Ensure AWS endpoints are whitelisted for access.
+
+### Can I customize the container images for SAM steps?
+Yes. While Harness sets default images, you can use your own container registry connector and images as long as they support your SAM runtime.
+
+### SAM Deploy hangs or times out?
+Large artifacts, network latency, or blocked S3 upload.
+Solution:
+Check S3 bucket region matches deployment region.
+Split large Lambda packages into smaller artifacts or use Lambda layers.
+Run sam deploy --guided to troubleshoot parameter prompts.
