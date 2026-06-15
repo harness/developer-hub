@@ -150,6 +150,7 @@ pipeline:
                       KAPA_FME_WEBSITE_ID: <+pipeline.variables.KAPA_FME_WEBSITE_ID>
                       KAPA_API_KEY: <+pipeline.variables.KAPA_API_KEY>
                       KAPA_PROJECT_ID: <+pipeline.variables.KAPA_PROJECT_ID>
+                      MIXPANEL_TOKEN: <+pipeline.variables.MIXPANEL_TOKEN>
               - step:
                   type: Plugin
                   name: Publish-Netifly-Preview
