@@ -1,0 +1,267 @@
+// ModuleLandingPageAnimation.module.scss
+//
+// The component sets --workflow-color on .wrapper at runtime.
+// All active-colour references use that property, with #5fb34e (IaCM green)
+// as a safe fallback.
+
+$fallback: #5fb34e;
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Wrapper
+// ─────────────────────────────────────────────────────────────────────────────
+.wrapper {
+  width: 100%;
+  padding: 12px 0 8px;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Sequence title
+// ─────────────────────────────────────────────────────────────────────────────
+.sequenceTitle {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: left;
+  color: var(--workflow-color, $fallback);
+  margin-bottom: 14px;
+  min-height: 1.1em;   // reserve space so the canvas doesn't jump
+  transition: opacity 0.35s ease;
+}
+
+.titleVisible { opacity: 1; }
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Canvas  (nodes + connectors live here, absolutely positioned)
+// ─────────────────────────────────────────────────────────────────────────────
+.canvas {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  // Height is set as an inline style from the JS constant CANVAS_H
+}
+
+// Kill all transitions during the one-frame reset so connectors/nodes
+// snap back to zero without an animated reverse sweep.
+.noTransition * {
+  transition: none !important;
+  animation:  none !important;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Connector tracks  (rotated divs — angle set via inline transform)
+// ─────────────────────────────────────────────────────────────────────────────
+.connTrack {
+  position:         absolute;
+  background:       var(--ifm-color-emphasis-200);
+  border-radius:    2px;
+  overflow:         hidden;
+  // pointer-events off so the track never blocks label clicks
+  pointer-events:   none;
+}
+
+.connFill {
+  position:   absolute;
+  inset:      0;
+  width:      0;
+  background: var(--workflow-color, $fallback);
+  // Transition only width; the fill sweeps left→right along the (rotated) bar
+  transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.connFillActive {
+  width: 100%;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Node circles
+// ─────────────────────────────────────────────────────────────────────────────
+.node {
+  position:        absolute;
+  border-radius:   50%;
+  background:      var(--ifm-color-emphasis-200);
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  z-index:         2;
+  user-select:     none;
+  cursor:          default;
+  transition:      background 0.35s ease, color 0.35s ease;
+}
+
+.nodeDone {
+  background: var(--workflow-color, $fallback);
+  color:      #fff;
+}
+
+.nodeCurrent {
+  background: var(--workflow-color, $fallback);
+  color:      #fff;
+  animation:  nodePulse 1.6s ease-in-out infinite;
+}
+
+@keyframes nodePulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.18); }
+}
+
+// Last node while it is the active step — white fill with a spinning arc.
+// Uses ::before so it doesn't clash with nodeFinished's ::after ring.
+.nodeLastCurrent {
+  background: var(--ifm-background-color, #fff);
+  color:      var(--workflow-color, $fallback);
+  overflow:   visible;
+
+  &::before {
+    content:          '';
+    position:         absolute;
+    inset:            -4px;
+    border-radius:    50%;
+    // Grey track + coloured leading edge = classic loading spinner
+    border:           3px solid var(--ifm-color-emphasis-300);
+    border-top-color: var(--workflow-color, $fallback);
+    animation:        spinArc 0.9s linear infinite;
+    pointer-events:   none;
+  }
+}
+
+@keyframes spinArc {
+  to { transform: rotate(360deg); }
+}
+
+// Final node — solid done colour + single expanding ring
+.nodeFinished {
+  background: var(--workflow-color, $fallback);
+  color:      #fff;
+  overflow:   visible;  // let the ring expand beyond the circle boundary
+
+  &::after {
+    content:        '';
+    position:       absolute;
+    inset:          0;
+    border-radius:  50%;
+    border:         2.5px solid var(--workflow-color, $fallback);
+    animation:      finishRing 1s ease-out 1 forwards;
+    pointer-events: none;
+  }
+}
+
+@keyframes finishRing {
+  0%   { transform: scale(1);   opacity: 1; }
+  100% { transform: scale(2.8); opacity: 0; }
+}
+
+// Icon inside circle
+.nodeIcon {
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  font-size:       1rem;
+  line-height:     1;
+
+  // FontAwesome <i> sizing
+  i { font-size: 0.9rem; }
+
+  // Inline <img> sizing
+  img {
+    width:      18px;
+    height:     18px;
+    object-fit: contain;
+    // Invert icon to white once node is active (done / current)
+    .nodeDone &,
+    .nodeCurrent & {
+      filter: brightness(0) invert(1);
+    }
+  }
+}
+
+// Fallback number (shown when no icon supplied)
+.nodeNum {
+  font-size:   0.68rem;
+  font-weight: 700;
+  color:       var(--ifm-color-content-secondary);
+
+  .nodeDone &,
+  .nodeCurrent & {
+    color: #fff;
+  }
+
+  // White background — keep number in module colour so it stays readable
+  .nodeLastCurrent & {
+    color: var(--workflow-color, $fallback);
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Step labels  (absolutely positioned, centred on their node's X)
+// ─────────────────────────────────────────────────────────────────────────────
+.stepLabel {
+  position:        absolute;
+  // Every label is centered on its node's x. The end nodes are inset by half a
+  // label (in the component geometry) so the centered first/last captions reach
+  // the canvas edges without clipping — no edge special-casing needed.
+  transform:       translateX(-50%);
+  text-align:      center;
+  color:           var(--ifm-color-content-secondary);
+  text-decoration: none;
+  cursor:          default;
+  transition:      color 0.3s ease;
+  z-index:         2;
+
+  // Only interactive when rendered as a <Link> (has href in DOM)
+  &[href] {
+    cursor: pointer;
+
+    &:hover {
+      color:           var(--workflow-color, $fallback);
+      text-decoration: none;
+    }
+  }
+}
+
+.labelActive {
+  color: var(--ifm-color-content);
+}
+
+.labelCurrent {
+  color:       var(--workflow-color, $fallback);
+  font-weight: 600;
+}
+
+.labelText {
+  display:     block;
+  font-size:   0.72rem;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.sublabel {
+  display:     block;
+  font-size:   0.62rem;
+  color:       var(--ifm-color-content-secondary);
+  line-height: 1.2;
+  margin-top:  2px;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Reduced-motion
+// ─────────────────────────────────────────────────────────────────────────────
+@media (prefers-reduced-motion: reduce) {
+  .nodeCurrent          { animation: none; }
+  .nodeLastCurrent::before { animation: none; }
+  .nodeFinished::after  { animation: none; }
+  .connFill             { transition: none; }
+  .sequenceTitle        { transition: none; }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Responsive
+// ─────────────────────────────────────────────────────────────────────────────
+@media screen and (max-width: 768px) {
+  .sublabel  { display: none; }
+  .labelText { font-size: 0.62rem; }
+}
+
+@media screen and (max-width: 480px) {
+  .labelText { font-size: 0.58rem; }
+}
