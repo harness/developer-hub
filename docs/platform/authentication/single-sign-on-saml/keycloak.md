@@ -65,12 +65,12 @@ To register Harness as a SAML service provider in Keycloak, follow the steps bel
 
 3. Select **Create client**. Set **Client type** to **SAML** and **Client ID** to `app.harness.io`, then select **Next**.
 
-Replace `<YOUR ACCOUNT ID>` with your Harness account ID.
+   Replace `<YOUR ACCOUNT ID>` with your Harness account ID.
 
-   - **Root URL:** `https://app.harness.io/`
-   - **Home URL:** `https://app.harness.io/ng/account/<YOUR ACCOUNT ID>/main-dashboard`
-   - **Valid post logout redirect URIs:** `https://app.harness.io/ng/account/<YOUR ACCOUNT ID>/main-dashboard`
-   - **Master SAML processing URL:** `https://app.harness.io/gateway/api/users/saml-login?accountId=<YOUR ACCOUNT ID>`
+      - **Root URL:** `https://app.harness.io/`
+      - **Home URL:** `https://app.harness.io/ng/account/<YOUR ACCOUNT ID>/main-dashboard`
+      - **Valid post logout redirect URIs:** `https://app.harness.io/ng/account/<YOUR ACCOUNT ID>/main-dashboard`
+      - **Master SAML processing URL:** `https://app.harness.io/gateway/api/users/saml-login?accountId=<YOUR ACCOUNT ID>`
 
 
 4. Click **Save**.
@@ -171,15 +171,10 @@ Enable your SSO configuration and verify users can authenticate successfully by 
 
 ---
 
-## Just-in-Time (JIT) provisioning
+## Just-In-Time (JIT) provisioning
 
-Harness supports SAML configuration with or without JIT user provision. Review <a href="/docs/platform/role-based-access-control/provision-use-jit/" target="_blank">Just-In-Time (JIT)</a> to understand how Harness creates users on first SAML login when JIT is enabled.
 
-**Without JIT**, follow the steps below to add new users:
-1. In Harness, add the users you want to set up for SAML SSO by inviting them to Harness using the same email addresses that they use in your SAML provider.
-2. In Keycloak, add the users and make sure they are in scope for the client you create in the configuration steps below.
-
-**With JIT**, you add users to Keycloak, and they are automatically added to Harness on first successful SAML login.
+Harness supports SAML configuration <a href="/docs/platform/authentication/single-sign-on-saml/#just-in-time-jit-provisioning" target="_blank"> with or without JIT user provisioning</a>. Go to <a href="/docs/platform/role-based-access-control/provision-use-jit" target="_blank">Just-in-Time (JIT) user provisioning</a> to understand how Harness creates users on first SAML login when JIT is enabled.
 
 ---
 

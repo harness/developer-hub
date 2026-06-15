@@ -20,6 +20,9 @@ keywords:
   - OneLogin setup
   - OneLogin IdP
   - SAML assertion
+  - JIT provisioning
+  - just-in-time provisioning
+  - automatic user creation
 tags:
   - Authentication
   - SAML
@@ -45,6 +48,7 @@ By the end of this topic, you will be able to:
 - [Enable SSO authentication](#enable-onelogin-as-a-harness-sso-provider).
 - [Configure OneLogin roles and parameters to sync user permissions with Harness user groups](#assign-roles-to-users).
 - [Test and verify OneLogin authentication and authorization](#test-the-integration).
+- [Use Just-in-Time (JIT) provisioning](#just-in-time-jit-provisioning) to automatically create users on first login.
 
 ---
 
@@ -323,6 +327,13 @@ After you've synced Users between OneLogin and Harness, users will be assigned t
 :::info note
 You cannot delete a SAML SSO Provider from Harness that is linked to a Harness Group. You must first remove the link to the SSO Provider from the Group.
 :::
+
+---
+
+## Just-In-Time (JIT) provisioning
+
+Harness supports SAML configuration <a href="/docs/platform/authentication/single-sign-on-saml/#just-in-time-jit-provisioning" target="_blank"> with or without JIT user provisioning</a>. Go to <a href="/docs/platform/role-based-access-control/provision-use-jit" target="_blank">Just-in-Time (JIT) user provisioning</a> to understand how Harness creates users on first SAML login when JIT is enabled.
+
 
 ---
 

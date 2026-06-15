@@ -20,6 +20,9 @@ keywords:
   - federation metadata
   - Azure enterprise application
   - Microsoft authentication
+  - JIT provisioning
+  - just-in-time provisioning
+  - automatic user creation
 tags:
   - Authentication
   - SAML
@@ -40,6 +43,7 @@ By the end of this topic, you will be able to:
 - [Configure Microsoft Entra ID as a SAML SSO provider in Harness](#endpoint-url-for-azure).
 - [Set up authentication and user attribute mapping](#user-attributes-and-claims).
 - [Enable and test SAML authorization with Azure](#enable-and-test-sso-with-azure).
+- [Use Just-in-Time (JIT) provisioning](#just-in-time-jit-provisioning) to automatically create users on first login.
 
 ---
 
@@ -293,6 +297,12 @@ To configure Harness to handle users in more than 150 groups, do the following:
    - `GroupMember.Read.All`
    - `User.Read.All`
 For more information on Azure application permissions, go to <a href="https://learn.microsoft.com/en-us/graph/permissions-reference#application-permissions-93" target="_blank">Application permissions</a> in the Azure documentation.
+
+---
+
+## Just-In-Time (JIT) provisioning
+
+Harness supports SAML configuration <a href="/docs/platform/authentication/single-sign-on-saml/#just-in-time-jit-provisioning" target="_blank"> with or without JIT user provisioning</a>. Go to <a href="/docs/platform/role-based-access-control/provision-use-jit" target="_blank">Just-in-Time (JIT) user provisioning</a> to understand how Harness creates users on first SAML login when JIT is enabled.
 
 ---
 
