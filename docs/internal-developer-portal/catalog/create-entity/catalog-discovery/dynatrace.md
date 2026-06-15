@@ -179,10 +179,6 @@ The **Events** tab provides a log of sync activity for this integration, includi
 
 ## View Dynatrace Entities in the Catalog
 
-:::info
-The UI to visualize this data on catalog entity pages will be available in the upcoming release.
-:::
-
 Once imported, Dynatrace entities are available in the **Catalog** section of IDP as standard catalog entities.
 
 Each imported Dynatrace service is registered with:
@@ -191,9 +187,63 @@ Each imported Dynatrace service is registered with:
 - **Type:** `Service`
 - **Scope:** The Harness account the integration belongs to
 
-Open any entity to view its Overview, Scorecards, and other configured tabs.
+Open any entity to view Dynatrace-sourced data directly on the entity details page. This data is displayed through two dedicated UI components: one on the **Overview** tab and a **Dynatrace** tab. Both require a one-time layout configuration, described in the [next section](#layout-for-dynatrace-components).
 
 <DocImage path={require('./static/dt-catalog-entity.gif')} />
+
+### Layout for Dynatrace components
+
+To display Dynatrace data on the [entity details](/docs/internal-developer-portal/catalog/create-entity/entity-details) page, you need to add the two Dynatrace components to the relevant entity layout. This is a one-time configuration per entity kind and type.
+
+1. From the left sidebar of IDP, go to **Configure** → **Layout** → **Catalog Entities**.
+2. Edit the existing layout for your entity or create a new one.
+3. Select the **Entity Kind** (e.g., `component`) and the **Entity Type** (e.g., `service`) that matches your imported Dynatrace entities.
+4. In the YAML editor, add the `IntegrationsContent` component inside the **Overview** tab's `contents` block, and add a new **Dynatrace** tab using the `ObservabilityTabContent` component.
+
+   ![Entity Layout configuration for Dynatrace components](./static/dt-layout-config.png)
+   <center>Figure 8: Layout configuration for Dynatrace cards in Overview tab and Dynatrace tab</center>
+
+   The relevant YAML additions are:
+
+   ```yaml title="Inside the Overview tab's contents block"
+           - component: IntegrationsContent
+             specs:
+               props:
+                 variant: gridItem
+               gridProps:
+                 md: 12
+   ```
+   ```yaml title="A new top-level tab entry"
+       - name: Dynatrace
+         path: /dynatrace
+         title: Dynatrace
+         contents:
+           - component: ObservabilityTabContent
+             specs:
+               props:
+                 observabilityType: DYNATRACE
+   ```
+
+5. Click **Save** to apply the layout changes. The Dynatrace components will now appear on all entity detail pages of the selected kind and type that have Dynatrace data.
+
+
+### Cards in Overview tab
+
+After the layout is configured, cards like `Monitors` and `SLOs` appear in the **Overview** tab of any entity that has Dynatrace data linked to it. The card displays the key Dynatrace metadata ingested for that entity, sourced from the entity's [ingested properties](#ingested-properties).
+
+![Catalog entity page for a Dynatrace-imported service](./static/dt-catalog-entity2.gif)
+<center>Figure 9: IDP Catalog Entity Page for a Dynatrace service</center>
+
+If the Dynatrace integration has not been configured for the entity, the card shows a **Not configured** state with a link to the Integrations page.
+
+### Dynatrace Tab
+
+The **Dynatrace** tab provides a more complete view of the Dynatrace data for the entity. This tab fetches latest possible data using the integration ID and entity UUID.
+
+![Dynatrace tab showing full resource details](./static/dynatrace-tab.png)
+<center>Figure 10: Tab showing full Dynatrace resource details</center>
+
+
 
 ### Ingested Properties
 

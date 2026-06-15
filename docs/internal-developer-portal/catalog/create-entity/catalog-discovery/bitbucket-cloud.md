@@ -179,6 +179,12 @@ It displays the following data:
 To stop syncing a specific entity without deleting the catalog entity, use the three-dot menu on any row and select **Unlink**. This stops sync updates while keeping the IDP entity and its existing data intact.
 :::
 
+### Events tab
+
+The **Events** tab provides a log of sync activity for this integration, including discovery runs, import actions, and any errors encountered during sync. Use this tab to troubleshoot unexpected behavior or verify that a sync completed successfully.
+
+<DocImage path={require('./static/bb-events.png')} />
+
 ---
 
 ## View Bitbucket Entities in the Catalog
@@ -191,9 +197,68 @@ Each imported Bitbucket repository is registered with:
 * **Type:** `service`
 * **Scope:** The Harness account the integration belongs to
 
-Open any entity to view its Overview, Relationships, Scorecards, and any other tabs configured for your entity layout.
 
-<DocImage path={require('./static/bb-catalog-entity.png')} />
+Open any entity to view Bitbucket-sourced data directly on the entity details page. This data is displayed through two dedicated UI components: one on the **Overview** tab and a **Bitbucket Cloud** tab. Both require a one-time layout configuration, described in the [next section](#layout-for-bitbucket-cloud-components).
+
+<DocImage path={require('./static/bb-catalog-entity.gif')} />
+
+### Layout for Bitbucket Cloud components
+
+To display Bitbucket Cloud data on the [entity details](/docs/internal-developer-portal/catalog/create-entity/entity-details) page, you need to add the two Bitbucket Cloud components to the relevant entity layout. This is a one-time configuration per entity kind and type.
+
+1. From the left sidebar of IDP, go to **Configure** → **Layout** → **Catalog Entities**.
+2. Edit the existing layout for your entity or create a new one.
+3. Select the **Entity Kind** (e.g., `component`) and the **Entity Type** (e.g., `service`) that matches your imported Bitbucket Cloud entities.
+4. In the YAML editor, add the `IntegrationsContent` component inside the **Overview** tab's `contents` block, and add a new **Bitbucket Cloud** tab using the `SourceControlTab` component.
+
+   ![Entity Layout configuration for Bitbucket Cloud components](./static/bb-layout-config.png)
+   <center>Figure 8: Layout configuration for Bitbucket Cloud cards in Overview tab and Bitbucket Cloud tab</center>
+
+   The relevant YAML additions are:
+
+   ```yaml title="Inside the Overview tab's contents block"
+           - component: IntegrationsContent
+             specs:
+               props:
+                 variant: gridItem
+               gridProps:
+                 md: 12
+   ```
+   ```yaml title="A new top-level tab entry"
+       - name: Bitbucket
+         path: /bitbucket-cloud
+         title: Bitbucket Cloud
+         contents:
+           - component: SourceControlTab
+             specs:
+               props:
+                 sourceControlType: BitbucketCloud
+   ```
+
+5. Click **Save** to apply the layout changes. The Bitbucket Cloud components will now appear on all entity detail pages of the selected kind and type that have Bitbucket Cloud data.
+
+
+### Cards in Overview tab
+
+After the layout is configured, a `Source Control Management` card appears in the **Overview** tab of any entity that has Bitbucket Cloud data linked to it. The card displays the key Bitbucket Cloud metadata ingested for that entity, sourced from the entity's [ingested properties](#ingested-properties).
+
+![Catalog entity page for a Bitbucket-imported service](./static/bb-catalog-entity.png)
+<center>Figure 9: IDP Catalog Entity Page for a Bitbucket Cloud service</center>
+
+If the Bitbucket Cloud integration has not been configured for the entity, the card shows a **Not configured** state with a link to the Integrations page.
+
+### Bitbucket Cloud Tab
+
+The **Bitbucket Cloud** tab provides a more complete view of the Bitbucket Cloud data for the entity. This tab fetches latest possible data using the integration ID and entity UUID.
+
+![Bitbucket Cloud tab showing full resource details](./static/bitbucket-cloud-tab.png)
+<center>Figure 10: Tab showing full Bitbucket Cloud resource details</center>
+
+:::tip Feature Highlights
+* The tab shows all available fields for the resource type, including fields not present in the **Overview**.
+* All the fields are dynamic.
+* The Open and Merged PR metrics and the Pull Requests table shows PRs updated since 30 days before integration setup, limited to the 1000 most recently updated PRs. In the first sync, only the latest 50 pull requests are imported initially.
+:::
 
 ### Ingested Properties
 
@@ -205,10 +270,6 @@ Ingested properties are stored in two sections of the entity YAML:
 
 * **`metadata.integration`** - Tracks which integrations are linked to this entity, including the entity action (for example, `REGISTER` or `MERGE`) and the linked entity UUID for each integration instance.
 * **`integration_properties.BitbucketCloud`** - Contains the Bitbucket-specific data for the entity, including repository metadata such as name, URL, project key, default branch, tags, and visibility.
-
-:::info
-The UI to visualize this data on catalog entity pages will be available in the upcoming release.
-:::
 
 ---
 
