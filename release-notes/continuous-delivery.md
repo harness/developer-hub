@@ -92,6 +92,26 @@ As part of improving the security posture of the platform, Harness is upgrading 
   ```
   <+pipeline.variables.BUILD_ENVS=="QAdf"?([""]):"abcds">
   ```
+- **Ternary expressions require `==` for string equality.** Using `=` in a ternary expression returns `null`. The following examples use `<+pipeline.variables.ENV>` with a value of `"prod"`:
+
+  **Correct:**
+
+  ```
+  # Equal: evaluates to "prod-cluster"
+  <+pipeline.variables.ENV == "prod" ? "prod-cluster" : "dev-cluster">
+
+  # Not equal: evaluates to "dev-cluster"
+  <+pipeline.variables.ENV == "staging" ? "prod-cluster" : "dev-cluster">
+  ```
+
+  **Broken (using `=` instead of `==`):**
+
+  ```
+  # Returns null, do not use this form
+  <+pipeline.variables.ENV = "prod" ? "prod-cluster" : "dev-cluster">
+  ```
+
+  Update any ternary expressions that use `=` for equality to use `==` instead.
 
 Please monitor pipeline executions and contact Harness Support if any issues are encountered or remediation assistance is required.
 
