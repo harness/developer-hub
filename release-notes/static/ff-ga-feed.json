@@ -1,5 +1,12 @@
 [
   {
+    "flagKey": "PL_ENABLE_IN_APP_ALERTS",
+    "description": "Adds an in-app alerts center accessible from the Harness UI so users can see important events in the product itself.",
+    "gaStartDate": "2026-06-15",
+    "module": "Platform",
+    "lifecycleState": "Limited GA"
+  },
+  {
     "flagKey": "USE_ORIGINAL_YAML_FOR_EXECUTION",
     "description": "Enables Rerun with Original Pipeline YAML: when the feature flag and the allow_original_yaml_on_rerun setting are on, a rerun can use the pipeline definition and inputs stored from the original execution (including chained child pipelines), instead of the current Pipeline in Harness or Git. Without the feature flag, that path is blocked and reruns always use the latest Pipeline YAML, even if the Pipeline has changed since the original run.",
     "gaStartDate": "2026-06-09",
