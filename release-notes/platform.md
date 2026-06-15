@@ -222,6 +222,12 @@ The following deprecated API endpoints are longer supported:
 
 ## May 2026
 
+### Version 1.152.x <!--June 15, 2026-->
+
+#### Fixed issues
+- Fixed a visual issue in the CD and GitOps modules where a white border appeared around side navigation links when selected. This improves navigation consistency and user experience. [PL-72071]
+- Fixed an issue where navigation from the context menu could open the wrong project context. Project and organization identifiers are now correctly included in navigation URLs. [PL-71553]
+
 ### Version 1.151.x <!--June 09, 2026-->
 
 #### New features and enhancements
