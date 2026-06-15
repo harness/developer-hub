@@ -1,10 +1,17 @@
 [
   {
-    "flagKey": "PL_ENABLE_IN_APP_ALERTS",
+    "flagKey": "ENABLE_IN_APP_ALERTS",
     "description": "Adds an in-app alerts center accessible from the Harness UI so users can see important events in the product itself.",
     "gaStartDate": "2026-06-15",
     "module": "Platform",
-    "lifecycleState": "Limited GA"
+    "lifecycleState": "Beta"
+  },
+  {
+    "flagKey": "USE_AIDI_MFE",
+    "description": "Enables the AI Engineering Insights experience in AI DLC Insights, replacing the existing AI Insights experience with enhanced AI capabilities and a redesigned interface.",
+    "gaStartDate": "2026-06-15",
+    "module": "AI DLC Insights",
+    "lifecycleState": "Beta"
   },
   {
     "flagKey": "USE_ORIGINAL_YAML_FOR_EXECUTION",
