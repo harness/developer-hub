@@ -54,6 +54,28 @@ Metrics with # above the include the suffix `_total` as of Harness Delegate 23.1
 
 This topic includes example YAML files you can use to create application manifests for your Prometheus and Grafana configurations.
 
+## Understand what delegate health covers
+
+A delegate's health and connected status (including the `io_harness_custom_metric_delegate_connected` metric) reflects the delegate itself, not the downstream systems it talks to during a pipeline run. Read these signals as a statement about the delegate, not about every integration that runs on it.
+
+A healthy, connected delegate confirms that:
+
+- The delegate process is running and live.
+- The delegate is connected to the Harness Manager and sending its heartbeat.
+
+A healthy, connected delegate does not confirm that:
+
+- Secret managers are reachable or returning secrets.
+- Cloud provider credentials are valid or unexpired.
+- The target Kubernetes cluster is reachable and the delegate has access to it.
+- Artifact registries are reachable.
+
+These integrations are exercised per step at run time, using the connector, secret, or target that the step references. A delegate can stay healthy and connected while any of these fails, so a green delegate status does not mean a step that runs on it will succeed.
+
+:::tip troubleshoot a failure on a healthy delegate
+When a delegate shows healthy but a step fails, look at the connector, secret, or target that the step references, not at the delegate status. For example, if a step cannot read a secret because the secret manager is unreachable (such as a custom certificate that the delegate does not trust), the delegate stays healthy while the step fails. For one such case, go to [Install delegates with custom certificates](/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs).
+:::
+
 ### General recommended metrics configuration
 
 Below are the metrics settings recommended by Harness. Tailor these settings according to your organization's specific needs.
