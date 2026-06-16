@@ -80,3 +80,27 @@ Harness pulls various details from your module and makes it easy to review them.
 :::info syncing module versions
 The Sync button checks your registered module in Harness against the latest release in your repository and configured connector branch. If a newer version exists, it will sync it.
 :::
+
+---
+
+## Troubleshooting
+
+### Resolve a 404 when a pipeline downloads a module at runtime
+
+When an IaCM pipeline initializes, it downloads the modules referenced by your configuration from the Module Registry. If a module download returns a 404 (not found), the run fails before it can plan or apply.
+
+A 404 on a module download usually means the requested module version cannot be resolved in the registry at the moment of the download. The most common causes are a version that was never published, a source reference that does not match the registry entry, or a download that ran before a newly published version finished propagating. Work through the checks below to tell these cases apart.
+
+1. Check whether the requested version is published in the registry. In the Harness UI, go to the Module Registry to open the module and confirm that the exact version your configuration pins appears in the version list. If the version is missing, register or sync it (see [Register a module](#register-a-module)), or update your configuration to pin a version that is published.
+
+2. Check whether the module source reference matches the registry entry. The namespace, name, and provider (system) in your `source` reference must match the registered module exactly, including case. Open the module in the Module Registry and compare its name and provider against the reference in your configuration. Correct any mismatch in the reference so it resolves to the registered module.
+
+3. Check whether the version was published only moments before the run. If you published or synced the version shortly before the pipeline started, re-run the pipeline and confirm whether the same version downloads successfully on the retry. A version that fails on one run and succeeds on a retry without any change to the configuration or registry points to a transient download rather than a missing version.
+
+4. Confirm the module exists and the reference syntax is correct before re-running. Open the module in the Module Registry to verify the version is listed, then confirm your `source` reference uses the syntax shown for that module. Correcting the reference or pinning a published version resolves a genuine "not found"; if the version is present and the reference is correct, treat an intermittent 404 as a transient download and retry.
+
+:::note registry propagation
+A version that was just published or synced may not be immediately downloadable. If a 404 appears right after publishing and the same version downloads on a later run with no other change, retry the pipeline before treating the version as missing.
+:::
+
+If a 404 persists for a version that is confirmed present in the registry with a matching reference, contact [Harness Support](mailto:support@harness.io) with the failing pipeline execution URL and the module reference.
