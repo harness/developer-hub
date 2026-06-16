@@ -25,7 +25,18 @@ We've migrated to LabelsV2, which preserves your original label keys while drama
 
 [Instructions to Update](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts/#how-to-migrate)
 
-## June 2026 - Version 1.99.11
+
+## June 2026 - Version 1.92.0
+#### Deployment Date: June 16, 2026 (Prod-1)
+
+### New Features and Enhancements
+
+- **OpenAI and Anthropic Connectors:** Users can now connect their OpenAI and Anthropic account through a guided 3-step setup wizard consisting of Overview, Details, and Connection Test steps. The wizard supports both creating new connectors and editing existing ones, includes secure API key configuration using secret inputs, and provides built-in connection testing with real-time status feedback to validate connectivity before saving. This feature is behind a feature flag. Please see the documentation [here](https://developer.harness.io/docs/cloud-cost-management/ai-costs-introduction).
+
+- **Traces in Cost Explorer** : When grouping AI Traces by Service Name in Cost Explorer, clicking a service row now opens a Service Traces drawer with trace-level details. The drawer displays recent runs, a span waterfall timeline, and detailed span information, making it easier to analyze AI service execution, understand request flows, and attribute costs at the trace level. [CCM-32888]
+
+
+## June 2026 - Version 1.91.0
 #### Deployment Date: June 8, 2026 (Prod-1)
 
 ### New Features and Enhancements
