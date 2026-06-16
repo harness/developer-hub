@@ -62,7 +62,9 @@ As part of improving the security posture of the platform, Harness is upgrading 
   ```
   <+pipeline.variables["<+stage.variables['test']>"]>
   ```
-- **JEXL global variable assignments are disallowed.** Expressions that declare global variables will fail to execute. For example, the following expression is no longer supported:
+- **JEXL global variable assignments are disallowed.** Expressions that declare global variables will fail to execute. In JEXL, the single `=` operator performs an assignment, not an equality check. Any expression that uses `=` between a variable reference and a value is treated as a global variable assignment and will be rejected in JEXL 3.5.
+
+  For example, the following expression is no longer supported:
 
   ```
   ENVIRONMENT=<+env.identifier>,
@@ -75,6 +77,25 @@ As part of improving the security posture of the platform, Harness is upgrading 
   var ENVIRONMENT=<+env.identifier>,
   var REGION=<+pipeline.variables.region>
   ```
+
+  This restriction also affects expressions used to compare values in `when` conditions, such as:
+
+  ```yaml
+  when:
+    stageStatus: Success
+    condition: <+stage.variables.shouldRun="Yes">
+  ```
+
+  When `<+stage.variables.shouldRun="Yes">` is used in a `when` condition, JEXL does not interpret this as an equality check. It is parsed as a global assignment, and the expression evaluates to the assigned value (`"Yes"`). The `when` condition then coerces this value to a boolean, which is `true` for any non-empty, non-null string, so the condition appears to pass regardless of the variable's actual value. In JEXL 3.5, because global assignments are disabled, this expression fails with an error.
+
+  Replace `=` with `==` to perform an equality check:
+
+  ```yaml
+  when:
+    stageStatus: Success
+    condition: <+stage.variables.shouldRun == "Yes">
+  ```
+
 - **Ternary expressions followed immediately by `[` must be rewritten.** JEXL 3.5 treats `?[` as the null-safe array access operator, so the parser consumes `?[...]` as a single token and fails to evaluate the ternary. For example, the following expression will fail:
 
   ```
@@ -92,26 +113,6 @@ As part of improving the security posture of the platform, Harness is upgrading 
   ```
   <+pipeline.variables.BUILD_ENVS=="QAdf"?([""]):"abcds">
   ```
-- **Ternary expressions require `==` for string equality.** Using `=` in a ternary expression returns `null`. The following examples use `<+pipeline.variables.ENV>` with a value of `"prod"`:
-
-  **Correct:**
-
-  ```
-  # Equal: evaluates to "prod-cluster"
-  <+pipeline.variables.ENV == "prod" ? "prod-cluster" : "dev-cluster">
-
-  # Not equal: evaluates to "dev-cluster"
-  <+pipeline.variables.ENV == "staging" ? "prod-cluster" : "dev-cluster">
-  ```
-
-  **Broken (using `=` instead of `==`):**
-
-  ```
-  # Returns null, do not use this form
-  <+pipeline.variables.ENV = "prod" ? "prod-cluster" : "dev-cluster">
-  ```
-
-  Update any ternary expressions that use `=` for equality to use `==` instead.
 
 Please monitor pipeline executions and contact Harness Support if any issues are encountered or remediation assistance is required.
 
