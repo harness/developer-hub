@@ -72,7 +72,29 @@ Apply any necessary updates to the Terraform configuration.
 
 <DocVideo src="https://app.tango.us/app/embed/d60d5d52-ff6d-4e88-8759-b12bfe7da0fe?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Removed Resources in Harness IaCM" />
 
-## Best Practices
+## Use removed blocks for already-deleted resources
+
+The `removed` block can also fix `plan-destroy` failures when a resource has already been deleted from the platform (for example, a Harness resource that returns 404 during a Terraform state refresh).
+
+When Terraform encounters a resource in state that no longer exists in the remote API, the provider may return a fatal error instead of gracefully removing it. Adding a `removed` block tells Terraform to drop the resource from state without attempting an API delete.
+
+```hcl
+removed {
+  from = module.example.harness_platform_idp_catalog_entity.this
+
+  lifecycle {
+    destroy = false
+  }
+}
+```
+
+After adding this block, run `plan-destroy` again. Terraform skips the deleted resource and proceeds with destroying the remaining infrastructure.
+
+:::note `lifecycle { destroy = false }` is required
+The `lifecycle { destroy = false }` directive is required. Without it, Terraform attempts a DELETE API call on a resource that already returns 404, causing the destroy plan to fail again.
+:::
+
+## Best practices
 - Always back up your state file before making changes.
 - Communicate clearly with teams involved in the migration to avoid conflicts.
 - Use version control to track changes to Terraform configuration files.
