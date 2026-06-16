@@ -39,7 +39,7 @@ You can [manually create user groups](#create-user-groups-manually) and users in
 * [Okta SCIM](./provision-users-with-okta-scim.md)
 * [Azure AD SCIM](./provision-users-and-groups-using-azure-ad-scim.md)
 * [OneLogin SCIM](./provision-users-and-groups-with-one-login-scim.md)
-* [Just-in-time provisioning](./provision-use-jit.md)
+* [Just-in-time provisioning](/docs/platform/role-based-access-control/just-in-time-user-provisioning/)
 
 When you use automated provisioning, users and user groups are imported from your IdP, and then you [assign roles and resource groups](#assign-roles-and-resource-groups) to the imported users and groups in Harness. For imported users and groups, you manage group metadata, group membership, and user profiles in your IdP, and you manage their role and resource group assignments in Harness. You can also create users and user groups directly in Harness, but any users or groups imported from your IdP must be managed in your IdP.
 
