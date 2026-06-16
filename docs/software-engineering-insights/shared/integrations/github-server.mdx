@@ -54,7 +54,7 @@ To set up the integration for the GitHub Enterprise:
 6. Configure the integration settings and authentication:
    * Add the **PAT Key** that you previously generated for your GitHub account.
      Note that you can add multiple PATs for the same integration.
-   * Enter the URL of your GitHub Enterprise On-prem instance, for example, `<https://GITHUB.ORGANIZATION-DOMAIN>`. Ensure it's a valid URL.
+   * Enter the bare server base URL of your GitHub Enterprise On-prem instance, for example, `https://github.example.com`. Do not append the API path. SEI adds the `/api/v3` path automatically. Ensure it's a valid URL.
 
      <img src={onpremInstance} alt="GitHub Enterprise On-Prem Configuration" width="900" />
 
@@ -88,7 +88,7 @@ To set up the integration for the GitHub Enterprise:
 5. Configure the integration settings and authentication:
    * Add the **PAT Key** that you previously generated for your GitHub account.
      Note that you can add multiple PATs for the same integration.
-   * Enter the URL of your GitHub Enterprise On-prem instance, for example, `<https://GITHUB.ORGANIZATION-DOMAIN>`. Ensure it's a valid URL.
+   * Enter the bare server base URL of your GitHub Enterprise On-prem instance, for example, `https://github.example.com`. Do not append the API path. SEI adds the `/api/v3` path automatically. Ensure it's a valid URL.
 
      <img src={onpremInstance} alt="GitHub Enterprise Configuration" width="900" />
 
@@ -124,6 +124,8 @@ satellite:
 integrations:
   - id: '<INTEGRATION_ID>'
     application: github
+    # Supply the bare server base URL, for example, https://github.example.com.
+    # Do not append /api/v3. SEI adds the API path automatically.
     url: '<GITHUB_ENTERPRISE_INSTANCE_URL>'
     authentication: multiple_api_keys
     keys:

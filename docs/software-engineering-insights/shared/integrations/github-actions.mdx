@@ -73,7 +73,7 @@ The steps for configuring the integration using the **Ingestion Satellite** is s
 1. In **Integration Name**, enter a **Name** for the integration.
 2. Add a **Description** for the integration. (Optional)
 3. Enter the **Personal Access Token** that you generated earlier.
-4. In the **GitHub Actions URL** field, add the URL where your GitHub Actions instance is hosted.
+4. In the **GitHub Actions URL** field, add the bare server base URL where your GitHub Actions instance is hosted, for example, `https://github.example.com`. Do not append the API path. SEI adds the `/api/v3` path automatically.
 5. Click on the **Download YAML File** button and save the `satellite.yml` file. Update it following the instructions [here](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-ingestion-satellite/run-the-satellite-container).
 
    <img src={downloadYaml} alt="Download YAML File" width="1000" /> 
@@ -92,8 +92,10 @@ satellite:
 integrations:
   - id: "<INTEGRATION_ID>"
     application: github_actions
+    # Supply the bare server base URL, for example, https://github.example.com.
+    # Do not append /api/v3. SEI adds the API path automatically.
     url: "<GITHUB_INSTANCE_URL>"
-    authentication: apikey
+    authentication: api_key
 ```
 
 :::note
