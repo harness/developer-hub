@@ -26,11 +26,62 @@ There are a few behaviors to note when using Barriers within a looping strategy 
 
 * In general, Barriers are supported in all the looping strategies. You can use them when [repeating stages, looping, or in matrices](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism), or when using multi-service or multi-environment stages in pipelines.
 * When setting up the Barrier step, ensure that you are using the same **Barrier Reference** in all of the looped stages (this ensure that all the looped stages execute until the Barrier step, and then continue/fail together.
-* You cannot use the `maxConcurrency` parameter in setting up looping. When this parameter is used, not all the stages start up in parallel, and some wait for the first few to end. Barriers will prevent the initial set of stages from ending, so the pipeline will get stuck. 
+* Do not use the `maxConcurrency` parameter when looping stages that contain a Barrier step. When `maxConcurrency` is set, not all the iterations start in parallel: some wait for the first batch to finish before they begin. In testing, this causes barriers to be scoped per batch rather than across all iterations, so the barrier may not synchronize as intended.
 * When using barriers with a multi-service deployment, please select the **Deploy Services in Parallel** option, so that the pipeline does not wait for a stage to complete before beginning the next one. 
 * You can use barriers to coordinate between multiple sets of looped stages, or between a single stage and a group of looped stages. As mentioned before, the same **Barrier Reference** must be used across all the sets of stages. The stages will all execute up to the Barrier step and wait for the others. This applies even if one of the groups starts later than another.
 * **Barriers are also supported across child pipelines.** A parent pipeline can define and use a barrier, and any child pipeline can reference and synchronize using the same barrier.
 
+:::warning do not use maxconcurrency with barriers
+
+When a looping strategy uses `maxConcurrency`, the iterations run in batches instead of all at once. In testing, this caused the barrier to be scoped per batch rather than across all iterations, so the barrier did not synchronize across the full loop. Leave `maxConcurrency` unset on any looping strategy whose stages contain a Barrier step.
+
+:::
+
+## Example: matrix stages synchronized with a barrier
+
+The following pipeline defines a barrier named `deployBarrier` in **Flow Control**, then uses a matrix to fan out one stage per region. Each generated stage runs a Barrier step that references the same barrier, so every region waits at the barrier before any of them proceeds. The matrix omits `maxConcurrency` so that all iterations start in parallel.
+
+```yaml
+pipeline:
+  identifier: matrix_barrier_example
+  name: matrix-barrier-example
+  flowControl:
+    barriers:
+      - identifier: deployBarrier
+        name: deployBarrier
+  stages:
+    - stage:
+        identifier: deploy
+        name: deploy
+        type: Deployment
+        strategy:
+          matrix:
+            region:
+              - us-east-1
+              - us-west-2
+              - eu-west-1
+            # Do not set maxConcurrency here; it scopes the barrier per batch.
+        spec:
+          deploymentType: Kubernetes
+          execution:
+            steps:
+              - step:
+                  identifier: waitAtBarrier
+                  name: wait at barrier
+                  type: Barrier
+                  timeout: 10m
+                  spec:
+                    barrierRef: deployBarrier
+              - step:
+                  identifier: rollout
+                  name: rollout
+                  type: K8sRollingDeploy
+                  timeout: 10m
+                  spec:
+                    skipDryRun: false
+```
+
+Each matrix iteration (`us-east-1`, `us-west-2`, `eu-west-1`) reaches the `waitAtBarrier` step and holds until all iterations arrive, then all of them continue to the rollout step together.
 
 ## Important notes
 

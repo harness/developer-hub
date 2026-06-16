@@ -207,4 +207,7 @@ docs/self-managed-enterprise-edition/monitor-harness-on-prem#view-metrics-on-the
 # Redirect for llms.txt file
 /docs/llms.txt /llms.txt
 
+# Added by daniel.song on 2026-06-16 for HDH-745
+/docs/continuous-delivery/manage-deployments/synchronize-deployments-using-barriers /docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/synchronize-deployments-using-barriers
+
 # Redirects generated from Front Matter [sytem generated goes below here]:

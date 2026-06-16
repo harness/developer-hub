@@ -390,7 +390,7 @@ pipeline:
 
 ### Flow Control
 
-[Barriers](/docs/continuous-delivery/manage-deployments/synchronize-deployments-using-barriers/) allow you to synchronize different stages in your pipeline, and control the flow of your deployments systematically.
+[Barriers](/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/synchronize-deployments-using-barriers/) allow you to synchronize different stages in your pipeline, and control the flow of your deployments systematically.
 
 These are optional and added to the end of the pipeline YAML.
 

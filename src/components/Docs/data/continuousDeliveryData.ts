@@ -248,7 +248,7 @@ import { MODULES } from "@site/src/constants";
               module: MODULES.cd,
               description:
                 "",
-              link: "/docs/continuous-delivery/manage-deployments/synchronize-deployments-using-barriers",
+              link: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/synchronize-deployments-using-barriers",
             },
             {
               title: "Deployment logs and limitations",

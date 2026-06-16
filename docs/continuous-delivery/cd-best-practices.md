@@ -76,7 +76,7 @@ Deployment freezes prevent accidental releases during critical business periods 
 Deploying the same service to the same infrastructure simultaneously can corrupt state or create race conditions. Harness provides three mechanisms to prevent this.
 
 - **Resource constraints (default):** Every service + infrastructure combination gets a unique infrastructure key. By default, only one deployment runs at a time per key. Enable `allowSimultaneousDeployments` only when your deployment type genuinely supports it. See [Deployment resource constraints](/docs/continuous-delivery/manage-deployments/deployment-resource-constraints).
-- **Barriers:** Synchronize parallel stages within a single pipeline execution so dependent stages wait for each other before proceeding. See [Synchronize deployments using barriers](/docs/continuous-delivery/manage-deployments/synchronize-deployments-using-barriers).
+- **Barriers:** Synchronize parallel stages within a single pipeline execution so dependent stages wait for each other before proceeding. See [Synchronize deployments using barriers](/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/synchronize-deployments-using-barriers).
 - **Queue steps:** Serialize executions across pipelines at the account level using a custom resource key. Useful when multiple pipelines target a shared resource like a database migration. See [Queue steps](/docs/continuous-delivery/manage-deployments/control-resource-usage-with-queue-steps).
 
 ## Enforce Governance with Policy as Code

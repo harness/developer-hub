@@ -763,7 +763,7 @@ Harness also supports Terraform Cloud and Enterprise.
   - Multiple step types can be run containerized.
 - **Controls:**
   - [Strategies](/docs/continuous-delivery/manage-deployments/deployment-concepts): basic, rolling, canary, blue green, custom.
-  - [Barriers](/docs/continuous-delivery/manage-deployments/synchronize-deployments-using-barriers)
+  - [Barriers](/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/synchronize-deployments-using-barriers)
   - [Resource Constraints](/docs/continuous-delivery/manage-deployments/deployment-resource-constraints)
   - [Queue steps](/docs/continuous-delivery/manage-deployments/control-resource-usage-with-queue-steps)
   - [Deployment freeze](/docs/continuous-delivery/manage-deployments/deployment-freeze)

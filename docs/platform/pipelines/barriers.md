@@ -5,7 +5,7 @@ description: Use Barrier steps in Harness pipelines to synchronize execution acr
 
 In complex pipelines that orchestrate interdependent services or components, you may need to coordinate the execution flow across different stages or step groups. For example, you might want to verify a group of services only after all of them are deployed successfully.
 
-Harness provides **Barriers** to help with this kind of synchronization. Barriers allow you to pause execution at defined points and ensure that multiple parallel entities—such as stages or step groups—only proceed once all required parts reach the same barrier.
+Harness provides **Barriers** to help with this kind of synchronization. Barriers allow you to pause execution at defined points and ensure that multiple parallel entities (such as stages or step groups) only proceed once all required parts reach the same barrier.
 
 :::info
 Barrier steps are only supported inside **Deploy** and **Custom** stage types.
