@@ -276,6 +276,27 @@ import HelmManifestExpressions from '/docs/continuous-delivery/shared/helm-manif
 
 <HelmManifestExpressions name="helmexpressions" />
 
+### Kubernetes manifest expressions
+
+For Kubernetes deployments, you can use expressions to reference manifest configuration details.
+
+The `MANIFEST_ID` is located in `service.serviceDefinition.spec.manifests.manifest.identifier` in the Harness service YAML.
+
+| Expression | Description |
+|------------|-------------|
+| `<+manifests.MANIFEST_ID.identifier>` | Resolves to the manifest identifier in Harness. |
+| `<+manifests.MANIFEST_ID.type>` | Resolves to the manifest type (for example, K8sManifest). |
+| `<+manifests.MANIFEST_ID.spec.store>` | The store configuration for the manifest (for example, Git, GitHub, Harness File Store). |
+| `<+manifests.MANIFEST_ID.spec.valuesPaths>` | The values file paths specified in the manifest configuration. |
+
+You can also use `<+manifestConfig.primaryManifestId>` to reference the primary manifest identifier dynamically:
+
+```
+<+manifests.<+manifestConfig.primaryManifestId>.spec.store>
+```
+
+This allows your expressions to work regardless of the specific manifest identifier used in the service configuration.
+
 ### Pipeline expressions
 
 The following expressions reference information about a pipeline run, such as the execution ID or start time. For expressions referencing custom pipeline variables, go to [Custom variables](#custom-variables). For expressions referencing pipeline triggers, go to [Trigger expressions](#trigger-expressions).
