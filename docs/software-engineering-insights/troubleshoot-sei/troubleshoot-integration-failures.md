@@ -9,7 +9,7 @@ redirect_from:
 This page includes FAQs and troubleshooting information for SEI integrations.
 
 :::danger SEI Version Notice
-The following FAQs reflect SEI 1.0 behavior. If you are using SEI 2.0, see the [SEI 2.0 documentation](/docs/software-engineering-insights/harness-sei/sei-overview/).
+The following FAQs reflect Software Engineering Insights behavior. If you are using AI DLC Insights, see the [AI DLC Insights documentation](/docs/software-engineering-insights/harness-sei/sei-overview/).
 :::
 
 ### Can the data ingestion cadence be adjusted?

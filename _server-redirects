@@ -201,6 +201,9 @@ docs/self-managed-enterprise-edition/monitor-harness-on-prem#view-metrics-on-the
 /release-notes/feature-flags-ga-timeline /release-notes/features 301
 /release-notes/early-access /release-notes/features
 
+# Redirect for SEI to AI DLC Insights release notes
+/release-notes/software-engineering-insights /release-notes/ai-dlc-insights
+
 # Redirect for llms.txt file
 /docs/llms.txt /llms.txt
 

@@ -4726,7 +4726,7 @@ const sidebars: SidebarsConfig = {
       },
       {
         type: 'category',
-        label: 'Software Engineering Insights (Legacy)',
+        label: 'Get started with Software Engineering Insights',
         link: {
           type: 'generated-index',
           slug: '/category/sei-current',

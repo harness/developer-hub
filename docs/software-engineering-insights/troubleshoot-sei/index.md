@@ -13,12 +13,12 @@ This page provides information to help you troubleshoot issues with AI DLC Insig
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-<Tabs queryString="sei-experience">
-<TabItem value="2" label="SEI 2.0">
+<Tabs queryString="platform-experience">
+<TabItem value="aidi" label="AI DLC Insights">
 
-## What are the out-of-the-box roles in SEI 2.0?
+## What are the out-of-the-box roles in AI DLC Insights?
 
-SEI 2.0 includes three pre-defined roles:
+AI DLC Insights includes three pre-defined roles:
 
 - SEI Admin: Full control over SEI data, settings, and configurations.
 - SEI Team Manager: Manage teams and developer records at the project level.
@@ -32,15 +32,15 @@ An SEI Team Manager can:
 - View integrations and profiles.
 - Access insights in read-only mode.
 
-## Can I create custom SEI roles in SEI 2.0?
+## Can I create custom SEI roles in AI DLC Insights?
 
-Yes. Account Admins can create custom roles with specific SEI 2.0 permissions such as View, Edit, Create, or Delete—depending on the needs of the organization.
+Yes. Account Admins can create custom roles with specific AI DLC Insights permissions such as View, Edit, Create, or Delete—depending on the needs of the organization.
 
-## What is a Team in SEI 2.0?
+## What is a Team in AI DLC Insights?
 
 Team represents a group of developers working together within your organization’s hierarchy. Every **leaf node** in the Org Tree automatically becomes a Team in SEI, making it the fundamental unit for insights, goals, and accountability.
 
-## How are Teams created in SEI 2.0?
+## How are Teams created in AI DLC Insights?
 
 Teams are auto-derived from your organization’s hierarchy (Org Tree). You don’t have to manually create them — SEI automatically identifies every leaf node as a Team.
 
@@ -93,7 +93,7 @@ For example, if `Inbox` is configured as a development status and `Closed` is co
 The original developer will still receive credit in **Work Completed Per Developer**, even if they are not the current assignee.
 
 </TabItem>
-<TabItem value="1" label="SEI 1.0">
+<TabItem value="sei" label="Software Engineering Insights">
 
 ## Can we track on how long was an issue open before it got delivered (Ticket, Story, Epic, etc.)?
 
@@ -182,7 +182,6 @@ Specifically:
 - No commit message references the Jira ticket ID.
 
 To enable mapping, ensure that the Jira issue ID is included in at least one of the locations described above.
-
 
 </TabItem>
 </Tabs>

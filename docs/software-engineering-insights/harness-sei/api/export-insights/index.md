@@ -1,13 +1,13 @@
 ---
 title: Export Insights Data Using the Harness SEI API
-description: Learn how to programmatically export developer, team, and org-level Insights data from SEI 2.0 using export APIs.
+description: Learn how to programmatically export developer, team, and org-level Insights data from Harness AIDI using export APIs.
 sidebar_label: Export Insights
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-SEI 2.0 provides asynchronous CSV export APIs for exporting data from the out-of-the-box dashboards on the **Insights** page. Downloads are gzip-compressed by default for large exports. All exports are scoped to the authenticated account, and export responses include team hierarchy fields where applicable.
+Harness AIDI provides asynchronous CSV export APIs for exporting data from the out-of-the-box dashboards on the **Insights** page. Downloads are gzip-compressed by default for large exports. All exports are scoped to the authenticated account, and export responses include team hierarchy fields where applicable.
 
 ## Export APIs
 

@@ -939,7 +939,7 @@
   },
   {
     "flagKey": "SPRINT_INSIGHTS",
-    "description": "Enables Sprint Insights in SEI 2.0.",
+    "description": "Enables Sprint Insights in Harness AIDI.",
     "gaStartDate": "2026-03-18",
     "module": "AI DLC Insights",
     "lifecycleState": "Beta"
@@ -1240,7 +1240,7 @@
   },
   {
     "flagKey": "ENABLE_AI_SUMMARY",
-    "description": "Enables AI-generated summaries across insights in SEI 2.0, providing high-level, contextual explanations of metric trends and patterns.",
+    "description": "Enables AI-generated summaries across insights in Harness AIDI, providing high-level, contextual explanations of metric trends and patterns.",
     "gaStartDate": "2026-05-04",
     "module": "AI DLC Insights",
     "lifecycleState": "Limited GA"
@@ -1289,21 +1289,21 @@
   },
   {
     "flagKey": "SNOW_ENABLED",
-    "description": "Enables ServiceNow as a supported ITSM provider within the SEI 2.0 experience.",
+    "description": "Enables ServiceNow as a supported ITSM provider within the Harness AIDI experience.",
     "gaStartDate": "2026-05-04",
     "module": "AI DLC Insights",
     "lifecycleState": "Limited GA"
   },
   {
     "flagKey": "MERGE_TEAM_FILTERS",
-    "description": "Introduces optimized team filtering to improve performance when querying org-wide data across large org trees in SEI 2.0.",
+    "description": "Introduces optimized team filtering to improve performance when querying org-wide data across large org trees in Harness AIDI.",
     "gaStartDate": "2026-05-04",
     "module": "AI DLC Insights",
     "lifecycleState": "Limited GA"
   },
   {
     "flagKey": "PANORAMA_CUSTOM_DATE_RANGE_PICKER",
-    "description": "Enables custom date range selection in SEI 2.0 dashboards, allowing users to analyze insights over flexible time windows beyond predefined ranges.",
+    "description": "Enables custom date range selection in Harness AIDI dashboards, allowing users to analyze insights over flexible time windows beyond predefined ranges.",
     "gaStartDate": "2026-05-04",
     "module": "AI DLC Insights",
     "lifecycleState": "Limited GA"

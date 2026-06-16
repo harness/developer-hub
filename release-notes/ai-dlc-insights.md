@@ -3,8 +3,6 @@ title: AI DLC Insights release notes
 sidebar_label: AI DLC Insights
 date: 2026-05-27T10:00:10
 sidebar_position: 15
-redirect_from:
-  - /release-notes/software-engineering-insights
 ---
 
 import Tabs from '@theme/Tabs';
@@ -563,13 +561,13 @@ These enhancements make it easier to align insights with the way your organizati
 
 AIDI introduces a re-imagined engineering insights experience with near real-time access to efficiency, productivity, and business alignment metrics. Built on a modern, high-performance architecture, AIDI features enable automated developer and organization management, decentralized team administration, and data drill-down options to help organizations scale with ease.
 
-For customers using SEI 1.0, there is no in-place migration. AIDI must be set up separately in the same account, and Account Admins can roll it out to teams at their own pace.
+For customers using SEI, there is no in-place migration. AIDI must be set up separately in the same account, and Account Admins can roll it out to teams at their own pace.
 
 #### Related documentation
 
 - [AIDI Overview](/docs/software-engineering-insights/harness-sei/sei-overview)
 - [AIDI Developer Licensing](/docs/software-engineering-insights/harness-sei/get-started/sei-subscription-and-licensing/)
-- [SEI 1.0 to 2.0 Transition](/docs/software-engineering-insights/harness-sei/transition)
+- [SEI to AIDI Transition](/docs/software-engineering-insights/harness-sei/transition)
 
 ## May 2025
 
