@@ -19,6 +19,7 @@ export default (function () {
 
         // Get token from global variable (injected via headTags)
         const token = window.__MIXPANEL_TOKEN__;
+        console.log("[Mixpanel] Token received:", token ? `${token.substring(0, 8)}...` : "undefined");
 
         if (token && token.length > 0) {
           try {
@@ -30,9 +31,12 @@ export default (function () {
               record_sessions_percent: 100,
             });
             window.__MIXPANEL_INITIALIZED__ = true;
+            console.log("[Mixpanel] Initialized successfully");
           } catch (e) {
-            // Silent failure - token might be invalid or Mixpanel unavailable
+            console.error("[Mixpanel] Initialization failed:", e);
           }
+        } else {
+          console.warn("[Mixpanel] Token not found or empty");
         }
       }
     },
