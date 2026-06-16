@@ -128,9 +128,9 @@ These notifications help track delegate disconnection, expiration, and expiring 
    - Click **+ Add Condition** to specify when notifications trigger
    - Enter a **Condition Name**
    - Select **Delegate Events**:
-     - **Delegate Disconnected**: Immediate notification when disconnection occurs
-     - **Delegate Expired**: Daily notification for expired delegates
-     - **Delegate Expires in [X] Weeks**: Advance warning (1-4 weeks)
+     - **Delegate Disconnected**: Notifies you when a delegate unexpectedly loses connection to the Harness platform. This helps you identify connectivity issues that may impact your deployments. Note that this does not trigger for normal delegate shutdowns.
+     - **Delegate Expired**: Daily notification when your delegate version has reached the end of its support lifecycle according to the [delegate expiration policy](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#delegate-expiration-support-policy). Upgrade your delegate to continue operations.
+     - **Delegate Expires in [X] Weeks**: Advance warning (1-4 weeks) before your delegate version expires, giving you time to plan and schedule upgrades. Learn more about [delegate upgrades](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#delegate-expiration-support-policy).
    - Click **Continue**
 
 4. **Configure Channels**
@@ -139,6 +139,10 @@ These notifications help track delegate disconnection, expiration, and expiring 
    - Click **Submit** to save your configuration.
 </TabItem>
 </Tabs>
+
+:::note
+The **Delegate Disconnected** notification is designed to alert you about unexpected connectivity issues. Planned delegate shutdowns during maintenance or scaling operations will not trigger this notification.
+:::
 
 ## Artifact Registry Notifications
 
@@ -307,6 +311,12 @@ You can configure notifications for an existing service account or create a new 
 10. Turn on **Enable on Save** to activate the rule immediately after you click **Submit**.
 </TabItem>
 </Tabs>
+
+
+
+
+
+
 
 
 
