@@ -839,6 +839,29 @@
       ]
     },
     {
+      "id": "cd.verification.change-source",
+      "term": "change source",
+      "definition": "An integration that reports deployment, infrastructure, or incident changes to Harness SRM so they can be correlated with service health data.",
+      "slug": "change-source",
+      "module": "cd",
+      "category": "verification",
+      "letter": "C",
+      "related": [
+        {
+          "term": "monitored service",
+          "slug": "monitored-service"
+        },
+        {
+          "term": "health source",
+          "slug": "health-source"
+        },
+        {
+          "term": "data source",
+          "slug": "data-source"
+        }
+      ]
+    },
+    {
       "id": "dbdevops.concepts.changeset",
       "term": "changeset",
       "definition": "A versioned unit of database schema change (table creation, column alteration, index addition) applied through Harness Database DevOps.",
@@ -1180,6 +1203,29 @@
         {
           "term": "api key",
           "slug": "api-key"
+        }
+      ]
+    },
+    {
+      "id": "platform.pipelines.conditional-execution",
+      "term": "conditional execution",
+      "definition": "A rule attached to a stage or step that determines whether it runs based on JEXL expressions, previous stage status, or runtime inputs.",
+      "slug": "conditional-execution",
+      "module": "platform",
+      "category": "pipelines",
+      "letter": "C",
+      "related": [
+        {
+          "term": "expression",
+          "slug": "expression"
+        },
+        {
+          "term": "failure strategy",
+          "slug": "failure-strategy"
+        },
+        {
+          "term": "stage",
+          "slug": "stage"
         }
       ]
     },
@@ -1824,6 +1870,29 @@
         {
           "term": "api key",
           "slug": "api-key"
+        }
+      ]
+    },
+    {
+      "id": "cd.verification.error-budget",
+      "term": "error budget",
+      "definition": "The allowed margin of SLO violation before alerts or policy actions trigger. It represents the difference between perfect reliability and the SLO target.",
+      "slug": "error-budget",
+      "module": "cd",
+      "category": "verification",
+      "letter": "E",
+      "related": [
+        {
+          "term": "slo",
+          "slug": "slo"
+        },
+        {
+          "term": "sli",
+          "slug": "sli"
+        },
+        {
+          "term": "notification rule",
+          "slug": "notification-rule"
         }
       ]
     },
@@ -2886,6 +2955,29 @@
       ]
     },
     {
+      "id": "platform.pipelines.matrix",
+      "term": "matrix",
+      "definition": "A looping strategy that fans out a stage or step across multiple combinations of dimension values, enabling parallel execution of parameterized workloads.",
+      "slug": "matrix",
+      "module": "platform",
+      "category": "pipelines",
+      "letter": "M",
+      "related": [
+        {
+          "term": "looping strategy",
+          "slug": "looping-strategy"
+        },
+        {
+          "term": "stage",
+          "slug": "stage"
+        },
+        {
+          "term": "step group",
+          "slug": "step-group"
+        }
+      ]
+    },
+    {
       "id": "fme.release-monitoring.metric",
       "term": "metric",
       "definition": "A metric measures events that are sent to Harness FME and can count the occurrence of events, measure event values, or measure event properties. Metrics are used to evaluate the impact of feature flags and experiments on user behavior and system performance.",
@@ -2978,6 +3070,52 @@
       ]
     },
     {
+      "id": "platform.concepts.module",
+      "term": "module",
+      "definition": "A discrete product capability within the Harness platform such as CI, CD, Feature Flags, Cloud Cost Management, or Security Testing Orchestration.",
+      "slug": "module",
+      "module": "platform",
+      "category": "concepts",
+      "letter": "M",
+      "related": [
+        {
+          "term": "account",
+          "slug": "account"
+        },
+        {
+          "term": "subscription",
+          "slug": "subscription"
+        },
+        {
+          "term": "project",
+          "slug": "project"
+        }
+      ]
+    },
+    {
+      "id": "cd.verification.monitored-service",
+      "term": "monitored service",
+      "definition": "A service and environment pair tracked by Harness SRM for health monitoring, change tracking, and continuous verification.",
+      "slug": "monitored-service",
+      "module": "cd",
+      "category": "verification",
+      "letter": "M",
+      "related": [
+        {
+          "term": "continuous verification",
+          "slug": "continuous-verification"
+        },
+        {
+          "term": "health source",
+          "slug": "health-source"
+        },
+        {
+          "term": "slo",
+          "slug": "slo"
+        }
+      ]
+    },
+    {
       "id": "iacm.provider-registry.multiple-platforms",
       "term": "multiple platforms",
       "definition": "Supported platforms include Darwin/macOS (arm64, amd64), Linux (amd64), and Windows (amd64).",
@@ -3001,6 +3139,29 @@
       ]
     },
     {
+      "id": "cacm.concepts.node-pool",
+      "term": "node pool",
+      "definition": "A group of compute nodes with shared configuration managed by Cluster Orchestrator for autoscaling and cost-optimized workload placement.",
+      "slug": "node-pool",
+      "module": "cacm",
+      "category": "concepts",
+      "letter": "N",
+      "related": [
+        {
+          "term": "cluster orchestrator",
+          "slug": "cluster-orchestrator"
+        },
+        {
+          "term": "workload",
+          "slug": "workload"
+        },
+        {
+          "term": "recommendation",
+          "slug": "recommendation"
+        }
+      ]
+    },
+    {
       "id": "platform.concepts.notification",
       "term": "notification",
       "definition": "A message sent to users or channels (email, Slack, PagerDuty, Microsoft Teams) when a pipeline event occurs, such as stage completion, failure, or approval request.",
@@ -3020,6 +3181,29 @@
         {
           "term": "api key",
           "slug": "api-key"
+        }
+      ]
+    },
+    {
+      "id": "platform.concepts.notification-rule",
+      "term": "notification rule",
+      "definition": "A configured alert in Harness that fires on specific events such as pipeline failures, SLO breaches, governance violations, or approval requests.",
+      "slug": "notification-rule",
+      "module": "platform",
+      "category": "concepts",
+      "letter": "N",
+      "related": [
+        {
+          "term": "notification",
+          "slug": "notification"
+        },
+        {
+          "term": "pipeline",
+          "slug": "pipeline"
+        },
+        {
+          "term": "slo",
+          "slug": "slo"
         }
       ]
     },
@@ -3080,6 +3264,29 @@
       "related": []
     },
     {
+      "id": "platform.pipelines.output-variable",
+      "term": "output variable",
+      "definition": "A variable published by a step or stage during pipeline execution that can be referenced by downstream steps using Harness expressions.",
+      "slug": "output-variable",
+      "module": "platform",
+      "category": "pipelines",
+      "letter": "O",
+      "related": [
+        {
+          "term": "variable",
+          "slug": "variable"
+        },
+        {
+          "term": "expression",
+          "slug": "expression"
+        },
+        {
+          "term": "step",
+          "slug": "step"
+        }
+      ]
+    },
+    {
       "id": "platform.concepts.overlay-input-set",
       "term": "overlay input set",
       "definition": "A layered input set in Harness that merges values from multiple input sets, allowing teams to compose runtime inputs from shared and team-specific configurations.",
@@ -3099,6 +3306,29 @@
         {
           "term": "api key",
           "slug": "api-key"
+        }
+      ]
+    },
+    {
+      "id": "platform.concepts.permission",
+      "term": "permission",
+      "definition": "A specific action such as view, create, edit, or delete that can be granted on a resource type within a role in Harness RBAC.",
+      "slug": "permission",
+      "module": "platform",
+      "category": "concepts",
+      "letter": "P",
+      "related": [
+        {
+          "term": "role",
+          "slug": "role"
+        },
+        {
+          "term": "rbac",
+          "slug": "rbac"
+        },
+        {
+          "term": "resource group",
+          "slug": "resource-group"
         }
       ]
     },
@@ -3237,6 +3467,29 @@
         {
           "term": "api key",
           "slug": "api-key"
+        }
+      ]
+    },
+    {
+      "id": "platform.pipelines.pipeline-studio",
+      "term": "pipeline studio",
+      "definition": "The visual editor in Harness for building, configuring, and debugging pipelines using a drag-and-drop interface alongside YAML.",
+      "slug": "pipeline-studio",
+      "module": "platform",
+      "category": "pipelines",
+      "letter": "P",
+      "related": [
+        {
+          "term": "pipeline",
+          "slug": "pipeline"
+        },
+        {
+          "term": "stage",
+          "slug": "stage"
+        },
+        {
+          "term": "input set",
+          "slug": "input-set"
         }
       ]
     },
@@ -3425,6 +3678,29 @@
       ]
     },
     {
+      "id": "platform.concepts.principal",
+      "term": "principal",
+      "definition": "The entity that performs actions in Harness. A principal can be a user, service account, or API key and is the subject to which role bindings are attached.",
+      "slug": "principal",
+      "module": "platform",
+      "category": "concepts",
+      "letter": "P",
+      "related": [
+        {
+          "term": "user",
+          "slug": "user"
+        },
+        {
+          "term": "service account",
+          "slug": "service-account"
+        },
+        {
+          "term": "api key",
+          "slug": "api-key"
+        }
+      ]
+    },
+    {
       "id": "platform.project",
       "term": "project",
       "definition": "A project is a shared workspace within an organization where teams manage their users, pipelines, and resources needed to build, deploy, and operate their applications in the Harness platform.",
@@ -3592,6 +3868,29 @@
         {
           "term": "api key",
           "slug": "api-key"
+        }
+      ]
+    },
+    {
+      "id": "scs.concepts.remediation-tracker",
+      "term": "remediation tracker",
+      "definition": "A tool in Harness SCS that tracks the lifecycle of vulnerability findings from detection through remediation, with assignees, deadlines, and status.",
+      "slug": "remediation-tracker",
+      "module": "scs",
+      "category": "concepts",
+      "letter": "R",
+      "related": [
+        {
+          "term": "sbom",
+          "slug": "sbom"
+        },
+        {
+          "term": "scan",
+          "slug": "scan"
+        },
+        {
+          "term": "severity",
+          "slug": "severity"
         }
       ]
     },
@@ -4539,6 +4838,52 @@
       ]
     },
     {
+      "id": "cd.verification.sli",
+      "term": "sli",
+      "definition": "A Service Level Indicator is a quantitative metric used to measure whether a Service Level Objective is being met, such as latency, error rate, or throughput.",
+      "slug": "sli",
+      "module": "cd",
+      "category": "verification",
+      "letter": "S",
+      "related": [
+        {
+          "term": "slo",
+          "slug": "slo"
+        },
+        {
+          "term": "metric",
+          "slug": "metric"
+        },
+        {
+          "term": "health source",
+          "slug": "health-source"
+        }
+      ]
+    },
+    {
+      "id": "cd.verification.slo",
+      "term": "slo",
+      "definition": "A Service Level Objective that defines a reliability target for a monitored service, expressed as a percentage of good requests or uptime over a rolling or calendar window.",
+      "slug": "slo",
+      "module": "cd",
+      "category": "verification",
+      "letter": "S",
+      "related": [
+        {
+          "term": "sli",
+          "slug": "sli"
+        },
+        {
+          "term": "error budget",
+          "slug": "error-budget"
+        },
+        {
+          "term": "monitored service",
+          "slug": "monitored-service"
+        }
+      ]
+    },
+    {
       "id": "scs.concepts.slsa",
       "term": "slsa",
       "definition": "Supply-chain Levels for Software Artifacts. A framework for ensuring the integrity of software artifacts. Harness SCS generates SLSA attestations to prove build provenance.",
@@ -4811,6 +5156,29 @@
         {
           "term": "api key",
           "slug": "api-key"
+        }
+      ]
+    },
+    {
+      "id": "platform.concepts.subscription",
+      "term": "subscription",
+      "definition": "The license tier and entitlements that govern which modules, features, and usage limits an account can access in Harness.",
+      "slug": "subscription",
+      "module": "platform",
+      "category": "concepts",
+      "letter": "S",
+      "related": [
+        {
+          "term": "account",
+          "slug": "account"
+        },
+        {
+          "term": "module",
+          "slug": "module"
+        },
+        {
+          "term": "build credit",
+          "slug": "build-credit"
         }
       ]
     },
@@ -5183,6 +5551,29 @@
       ]
     },
     {
+      "id": "platform.concepts.user",
+      "term": "user",
+      "definition": "An individual identity that authenticates and interacts with the Harness platform. Users are assigned to user groups, hold role bindings, and can be provisioned via SCIM or SAML.",
+      "slug": "user",
+      "module": "platform",
+      "category": "concepts",
+      "letter": "U",
+      "related": [
+        {
+          "term": "user group",
+          "slug": "user-group"
+        },
+        {
+          "term": "role",
+          "slug": "role"
+        },
+        {
+          "term": "rbac",
+          "slug": "rbac"
+        }
+      ]
+    },
+    {
       "id": "platform.concepts.user-group",
       "term": "user group",
       "definition": "A collection of users that share the same role bindings and notification preferences within Harness.",
@@ -5432,6 +5823,29 @@
         {
           "term": "api key",
           "slug": "api-key"
+        }
+      ]
+    },
+    {
+      "id": "cacm.concepts.workload",
+      "term": "workload",
+      "definition": "A running application such as a Kubernetes pod or deployment tracked by Cluster Orchestrator for right-sizing recommendations and cost optimization.",
+      "slug": "workload",
+      "module": "cacm",
+      "category": "concepts",
+      "letter": "W",
+      "related": [
+        {
+          "term": "node pool",
+          "slug": "node-pool"
+        },
+        {
+          "term": "cluster orchestrator",
+          "slug": "cluster-orchestrator"
+        },
+        {
+          "term": "recommendation",
+          "slug": "recommendation"
         }
       ]
     },
