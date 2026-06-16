@@ -358,7 +358,27 @@ In the example expression above, we can create a test variable with this express
 >
 ```
 
-For more information about using ternary operators in Harness, go to [Using Ternary Operators with Triggers](https://developer.harness.io/docs/continuous-delivery/kb-articles/articles/ternary-operator/).
+For more information about using ternary operators in Harness, go to [Use ternary operators with triggers](/docs/continuous-delivery/kb-articles/articles/ternary-operator) to see worked trigger examples.
+
+#### Keep ternary branches nested
+
+Keep the entire ternary expression nested inside a single outer `<+...>` delimiter. If you split the branches into their own delimiters so that the operators sit outside the expression, the expression can silently evaluate to `null` instead of returning the branch value. The engine resolves the inner delimiters first and then has no complete ternary left to evaluate, so no error is raised and the output is empty.
+
+For example, assume a pipeline variable `myvar` with a value of `1.1`.
+
+* De-nested (returns a silent `null`): the operators and branch values are outside the inner delimiters, so the ternary is not evaluated as a whole.
+
+  ```text
+  <+stage.variables.myvar>=="1.1"?<+pipeline.variables.passValue>:<+pipeline.variables.failValue>
+  ```
+
+* Corrected (returns the intended value): wrap the full ternary in one outer delimiter so the condition and both branches are evaluated together.
+
+  ```text
+  <+<+stage.variables.myvar>=="1.1"?<+pipeline.variables.passValue>:<+pipeline.variables.failValue>>
+  ```
+
+If a ternary expression resolves to an empty value with no error, check that the whole condition-and-branches expression is wrapped in a single outer `<+...>` delimiter.
 
 #### Using isResolved and isUnresolved evaluation instead of null
 Customers may be considering using a ternary evaluations which will evaluate whether the expression `== null` or `!= null` as the condition.
@@ -975,7 +995,7 @@ To achieve this same result in NextGen, you must declare each expression with se
 | `workflow.pipelineResumeUuid`   | Not applicable in NextGen |
 | `workflow.lastGoodReleaseNo`    | Not applicable in NextGen     |
 | `workflow.lastGoodDeploymentDisplayName`     | Not applicable in NextGen    |
-| `regex.extract("v[0-9]+.[0-9]+", artifact.fileName)`   | Not applicable in NextGen     |
+| `regex.extract("v[0-9]+.[0-9]+", artifact.fileName)`   | Available in NextGen. Use the same `regex.extract` expression, with the pattern as the first argument and the input string as the second. |
 | `currentStep.type`  | Not applicable in NextGen    |
 
 </details>

@@ -3235,7 +3235,25 @@ They are a way to refer to something in Harness such as an entity name or a conf
 
 ### What is the correct syntax for the Regex Extract built-in variable?
 
-`regex.extract("v[0-9]+.[0-9]+", artifact.fileName)` is the correct syntax.
+`regex.extract("v[0-9]+.[0-9]+", artifact.fileName)` is the correct syntax. This expression is available in both FirstGen and NextGen.
+
+The argument order is pattern first, input string second:
+
+```text
+<+regex.extract("<pattern>", <stringInput>)>
+```
+
+For example, to pull the version prefix out of an artifact file name:
+
+```text
+<+regex.extract("v[0-9]+.[0-9]+", <+artifact.fileName>)>
+```
+
+:::note argument order matters
+
+Pass the regex pattern as the first argument and the string to search as the second. If the arguments are reversed, the expression may return an empty string instead of the extracted match.
+
+:::
 
 ### What are the statuses of nodes using the Harness looping Strategy?
 
