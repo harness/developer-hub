@@ -261,10 +261,9 @@ python3 eample.py `<+trigger.payload>`
 ### How Do I preserve the formating of multiline secret in shell script?
 
 Please the use below command-
-```
-echo ${secrets.getValue("key_file")} > /tmp/id_rsa_base64
+```bash
+echo <+secrets.getValue("key_file")> > /tmp/id_rsa_base64
 cat /tmp/id_rsa_base64 | base64 -di
-
 ```
 
 ### I need something that value I can change in the middle of pipeline (automatically using bash script for example).
