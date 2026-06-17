@@ -463,6 +463,80 @@ To obtain a JET identity token, authenticate with your identity provider using y
 
 Additionally, this option requires Harness Delegate version 24.09.84100 or later.
 
+#### JSON secret mapping
+
+You can store multiple AWS credential fields (`access key`, `secret key`, `session token`) in a single JSON-formatted secret and map individual fields using JSONPath dot notation. This is useful for AWS STS temporary credentials or external credential management systems that export credentials as JSON.
+
+**Delegate support**: This option requires Harness Delegate version 894xx or later.
+
+:::note Feature Availability
+- This feature is currently behind the feature flag `PL_CONNECTOR_JSON_CREDENTIAL_MAPPING`. Contact <a href="mailto:support@harness.io">Harness Support</a> to enable this feature for your account.
+:::
+
+**JSON secret formats**
+
+<Tabs>
+<TabItem value="flat" label="Flat JSON">
+
+```json
+{
+  "access_key": "AKIAIOSFODNN7EXXXXX",
+  "secret_key": "wJalrXUtnFXXXSDFRGXXXXxRfiCYEXAMPLEKEY",
+  "session_token": "FwoGZXIvYXdXXXXXDH..."
+}
+```
+
+**Field mappings**
+- Access Key Mapping: `access_key`
+- Secret Key Mapping: `secret_key`
+- Session Token Mapping: `session_token`
+
+</TabItem>
+<TabItem value="nested" label="Nested JSON (AWS STS format)">
+
+```json
+{
+  "Credentials": {
+    "AccessKeyId": "AKIAIOSFODNN7EXXXXX",
+    "SecretAccessKey": "wJalrXUtnFXXXSDFRGXXXXxRfiCYEXAMPLEKEY",
+    "SessionToken": "FwoGZXIvYXdXXXXXDH...",
+    "Expiration": "2024-12-31T23:59:59Z"
+  }
+}
+```
+
+**Field mappings (JSONPath dot notation)**
+- Access Key Mapping: `Credentials.AccessKeyId`
+- Secret Key Mapping: `Credentials.SecretAccessKey`
+- Session Token Mapping: `Credentials.SessionToken`
+
+</TabItem>
+</Tabs>
+
+**Configuration steps**
+
+Create a secret in your secret manager with your AWS credentials in JSON format:
+
+1. In Harness, go to **Project Settings** → **Secrets** and [create a new text secret](/docs/platform/secrets/add-use-text-secrets#add-a-text-secret).
+2. When configuring the AWS connector, select **JSON Secret** as the **Authentication** method.
+3. Select your **JSON secret**.
+4. Configure the JSONPath mappings for `access key`, `secret key`, and optionally `session token` based on your JSON structure.
+5. Click **Continue**.
+
+**JSONPath dot notation**
+
+Use dots (`.`) to navigate nested JSON structures:
+- Simple key: `username` → accesses `{"username": "value"}`
+- Nested path: `parent.child` → accesses `{"parent": {"child": "value"}}`
+- Deep nesting: `a.b.c` → accesses `{"a": {"b": {"c": "value"}}}`
+
+
+:::warning Avoid literal dots in JSON key names
+
+Do not use literal dots in JSON key names (for example, `"aws.key"`). The JSONPath parser treats dots as path separators. Use underscores (`aws_key`) or camelCase (`awsKey`) instead.
+
+:::
+
 </TabItem>
 <TabItem value="irsa" label="Use IRSA">
 
@@ -1518,8 +1592,6 @@ The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/
 Finally, it is possible to create a connector with a non-existent delegate. This behavior is intended. This design allows you to replace a delegate with a new one that has the same name or tag.
 
 :::
-
-*End of Credentials* 
 
 
 ### Enable cross-account access (STS Role)
