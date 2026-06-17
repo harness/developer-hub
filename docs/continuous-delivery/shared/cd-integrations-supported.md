@@ -139,14 +139,52 @@ The following versions are tested and supported for Kubernetes Canary, Rolling, 
 - 1.30.10
 - 1.31.8
 - 1.33.4
+- 1.34.0
 
-For details on other tools and versions included in Harness, see [Delegate-required SDKs](/docs/platform/delegates/delegate-reference/delegate-required-sdks).
+Go to [Delegate-required SDKs](/docs/platform/delegates/delegate-reference/delegate-required-sdks) to view other tools and versions included in Harness.
 
 Guidelines:
 
 - Harness will officially support 3 previous versions from the last stable release. For example, the current most recent stable release is 1.25.6, and so Harness supports 1.24, 1.23, and 1.22.
 - Harness supports any other versions of Kubernetes you are using on a best effort basis.
 - Harness commits to support new minor versions within 3 months of the first stable release. For example, if the stable release of 1.25.6 occurs on April 15th, we will support it for compatibility by July 15th.
+
+#### Kubernetes Java client compatibility
+
+Harness uses the Kubernetes Java client (`io.kubernetes:client-java`) version **22.0.1**, which is generated from the Kubernetes **1.31** OpenAPI specification. This client is compatible with Kubernetes API servers across multiple versions due to Kubernetes API backward and forward compatibility guarantees.
+
+:::warning Kubernetes 1.33 approaching end of life
+Kubernetes 1.33 is approaching end of life (EOL) in July 2026. Harness supports Kubernetes 1.34 to ensure customers can upgrade before 1.33 reaches EOL. A future upgrade to Kubernetes Java client 25.x is planned to provide full support for Kubernetes 1.34 and newer versions.
+:::
+
+**Compatibility matrix:**
+
+| Kubernetes API Server Version | Harness Client Support Status | Notes |
+|------------------------------|-------------------------------|-------|
+| 1.13 - 1.31 | Fully Supported | All features tested and certified |
+| 1.32 - 1.34 | Partially Supported | Deployments work; manifests using fields added after 1.31 cause validation errors (see limitations below) |
+| 1.35 and later | Partially Supported | Deployments work; manifests using fields added after 1.31 cause validation errors (see limitations below) |
+
+**Important notes:**
+
+When deploying to Kubernetes clusters running versions 1.32 and above, be aware of the following limitations:
+
+- **New API fields:** Kubernetes versions after 1.31 introduce new optional fields in core resource types (Pod, Deployment, DaemonSet, StatefulSet, Job, CronJob).
+- **Validation behavior:** If your manifests contain fields that were added in Kubernetes versions 1.32 and later, Harness will throw a `KubernetesYamlException` during manifest validation.
+- **Affected fields:** The following fields added between Kubernetes 1.31 and 1.35 are not recognized by the current client:
+  - `spec.hostnameOverride`, `spec.resources`, `spec.workloadRef` (in PodSpec)
+  - `containers[].restartPolicyRules` (in Container and EphemeralContainer)
+  - `containers[].lifecycle.stopSignal` (in Lifecycle)
+  - `spec.securityContext.seLinuxChangePolicy` (in PodSecurityContext)
+  - `spec.volumes[].projected.sources[].podCertificate` (in VolumeProjection)
+  - `containers[].env[].valueFrom.fileKeyRef` (in EnvVarSource)
+
+**Workaround:**
+
+If you encounter validation errors when using these newer fields, you have two options:
+
+1. **Remove the new fields:** Remove any Kubernetes 1.32+ fields from your manifests. These fields are optional additions and your deployments will work without them on supported Kubernetes versions.
+2. **Use kubectl apply:** Use the Harness **Apply** step instead of the standard deployment steps. The Apply step uses kubectl directly and bypasses the Java client validation, allowing newer fields to pass through to your cluster.
 
 ### Helm notes
 
