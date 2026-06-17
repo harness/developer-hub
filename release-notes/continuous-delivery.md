@@ -245,6 +245,12 @@ Wondering where versions 1.145.xx, 1.146.xx, and 1.147.xx are? Those releases we
 - Fixed an issue where frequent error pages appear when navigating links in Harness. (**PIPE-33938**, **ZD-113744**)
 - Fixed an issue where pipelines no longer send Git configuration to Policy as Code. This fix requires the feature flag `PIPE_DISABLE_OPA_GITCONFIG_NEW_BRANCH_FIX`. Contact [Harness Support](mailto:support@harness.io) to enable. (**PIPE-33953**, **ZD-114085**)
 
+### GitOps Service 1.60.0, GitOps Agent 0.120.0
+
+#### New features and enhancements
+
+- The GitOps agent now bundles ArgoCD 3.3.10. (**CDS-125193**)
+
 ### GitOps Service 1.59.0, GitOps Agent 0.119.0
 
 #### New features and enhancements
