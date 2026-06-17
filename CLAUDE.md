@@ -80,6 +80,8 @@ Usage:
 - `mode="general"` — Infrastructure-adjacent issues (auth, networking, Terraform, Kubernetes). Gemini pre-generates a response at build time.
 - `mode="fallback-only"` — Deterministic fixes that never change. Always shows the static `fallback`.
 
+**Validate the mode against Kapa before publishing (especially for new or pending-release features):** Run each `issue` string through Kapa. If Kapa returns a **grounded, accurate** answer, keep `mode="docs"`. If Kapa is **uncertain or contradicts the feature** (common when the page is not yet published or indexed, so it answers "this is not documented" or conflates it with a different feature), use `mode="general"` so Gemini answers from the issue text at build time. Reserve `mode="fallback-only"` for deterministic fixes. Always supply an accurate static `fallback` regardless of mode. When a pending-release page later goes live and Kapa re-indexes it, re-evaluate the `general` entries and switch the ones Kapa now answers well to `mode="docs"`.
+
 **Rules:**
 - Do **not** add `###` headings above each `<Troubleshoot>` — the `issue` prop is the collapsible heading.
 - The `fallback` prop is required on every entry.
@@ -146,6 +148,49 @@ Use bold labels followed by colons:
 - **Label:** Description text here.
 - **Another point:** More description text.
 ```
+
+---
+
+## Tabs for Parallel Variants — Use `<Tabs>`
+
+When two or more sections document **the same action or reference for different targets**, consolidate them under **one** heading with unsynced tabs instead of repeating near-identical sibling headings. This is the default for **configuration-level** and **operation-variant** pairs.
+
+- **Configuration levels:** Replace `### Enable X for a workspace` + `### Enable X for a project` with a single `### Enable X` and **Workspace level** / **Project level** tabs.
+- **Operation variants:** Replace `### Destroy schedule fields` + `### Delete schedule fields` with a single `### Schedule fields` and **Destroy schedule** / **Delete schedule** tabs.
+
+Import once at the top of the file (after frontmatter):
+
+```mdx
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
+Usage:
+
+```jsx
+### Enable X
+
+Configure X at the workspace level for a single workspace, or at the project level for every matching workspace.
+
+<Tabs>
+<TabItem value="workspace" label="Workspace level" default>
+
+Workspace-level steps, code, and notes here.
+
+</TabItem>
+<TabItem value="project" label="Project level">
+
+Project-level steps, code, and notes here.
+
+</TabItem>
+</Tabs>
+```
+
+**Rules:**
+- Keep a one-line intro under the heading, before `<Tabs>`, that states what the tabs cover.
+- Put each variant's full content (tables, code blocks, callouts) **inside** its `<TabItem>`.
+- Mark the first tab `default`. Use **Title Case** tab labels.
+- For long, self-contained variants or more than ~5 options, use `DynamicMarkdownSelector` instead. Go to `.cursor/rules/doc-structure-template.mdc` to review the full DMS-vs-tabs decision guide.
 
 ---
 

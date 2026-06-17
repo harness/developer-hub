@@ -29,7 +29,7 @@ A workspace can have one of the following statuses:
 - **Apply_Needed:** Apply is required to bring the infrastructure in sync with the workspace configuration.
 - **Unknown:** Changes were made outside the product.
 
-Go to [workspace statuses](/docs/infra-as-code-management/workspaces/worksace-statuses) to find out more about filtering workspace by status.
+Go to [workspace statuses](/docs/infra-as-code-management/workspaces/workspace-statuses) to find out more about filtering workspace by status.
 
 ## Create a new workspace
 

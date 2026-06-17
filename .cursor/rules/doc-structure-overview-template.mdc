@@ -189,6 +189,36 @@ deny[msg] {
 This policy evaluates the `provisioner_version` attribute and uses semantic versioning comparison to enforce a minimum version requirement.
 ```
 
+##### Tabs for parallel variants
+
+When a concept or reference has **parallel variants** (the same thing for different targets, levels, or operations), consolidate them under **one** heading with unsynced tabs instead of repeating near-identical sibling headings. This keeps the right-hand TOC clean and lets the reader compare one variant at a time.
+
+- **Configuration levels:** Use one `## Enable X` (or `### Enable X`) with **Workspace level** / **Project level** tabs rather than separate "for a workspace" and "for a project" headings.
+- **Operation variants:** Use one `### Schedule fields` with **Destroy schedule** / **Delete schedule** tabs rather than separate "Destroy schedule fields" and "Delete schedule fields" headings.
+- Keep a one-line intro under the heading (before `<Tabs>`) that states what the tabs cover. Put each variant's full content (tables, code, notes) inside its `<TabItem>`, mark the first tab `default`, and use Title Case labels.
+
+Import once after the frontmatter:
+
+```mdx
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
+```jsx
+<Tabs>
+<TabItem value="workspace" label="Workspace level" default>
+
+Workspace-level reference content here.
+
+</TabItem>
+<TabItem value="project" label="Project level">
+
+Project-level reference content here.
+
+</TabItem>
+</Tabs>
+```
+
 **Screenshots and images:**
 
 Add descriptive captions to provide context. Use centered alignment only for narrow screenshots (mobile UI, diagrams, small widgets).
@@ -257,6 +287,8 @@ import { FAQ } from '@site/src/components/AdaptiveAIContent';
   fallback="Plan evaluation happens before changes are applied; state evaluation happens after. Use plan policies to prevent unwanted changes; use state policies to verify the final infrastructure matches requirements."
 />
 ```
+
+**Choosing the `mode`:** Validate each `<Troubleshoot>` `issue` against Kapa before publishing. If Kapa returns a grounded, accurate answer, use `mode="docs"`. If Kapa is uncertain or contradicts the content (common for new or pending-release concepts Kapa has not indexed yet), use `mode="general"` so Gemini answers at build time. Use `mode="fallback-only"` for deterministic answers. `<FAQ>` supports only `mode="docs"` and `mode="fallback-only"`. Go to `.cursor/rules/doc-structure-template.mdc` to review the full mode-selection rule.
 
 #### 7. Related concepts (instead of "Next steps")
 

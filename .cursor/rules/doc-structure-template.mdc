@@ -216,6 +216,14 @@ Then in the body:
 - `mode="general"` — Infrastructure-adjacent issues (auth, networking, Terraform, Kubernetes). Gemini pre-generates a response at build time.
 - `mode="fallback-only"` — Deterministic fixes where the answer never changes. Always shows the `fallback`; no AI call is made.
 
+**Validate the mode against Kapa (especially for new or pending-release features):** Before publishing, run each `issue` string through Kapa (the Query API the component uses, or the Ask AI widget on a built preview). Decide per entry:
+
+- Kapa returns a **grounded, accurate** answer → keep **`mode="docs"`**.
+- Kapa is **uncertain or contradicts the feature** (typical when the page is not yet published or indexed by Kapa, so it replies "this is not documented" or conflates it with a different feature) → use **`mode="general"`** so Gemini answers from the issue text at build time.
+- The fix is **deterministic and never changes** → use **`mode="fallback-only"`**.
+
+Always supply an accurate static `fallback` regardless of mode. For a **pending-release** page, prefer `mode="general"` for entries Kapa cannot yet ground, and add a TODO to re-evaluate them once the page is live and re-indexed (switch the ones Kapa then answers well back to `mode="docs"`).
+
 **Rules:**
 
 - Do **not** add `###` headings above each component — the `issue` prop serves as the collapsible heading.
@@ -337,6 +345,39 @@ DMS child files are accessed via the parent page URL + a fragment (e.g., `#docke
 
 - Use for **2–5 shorter** parallel sections on **one** page to reduce vertical scroll.
 - If sections are **long** or there are **more than ~5** options, prefer **DMS** instead.
+
+**Parallel variants under one heading (collapse repeated sibling headings):** When two or more `###` sections document **the same action or reference for different targets**, consolidate them under **one** heading with unsynced tabs instead of repeating near-identical sibling headings. This is the default for **configuration-level** and **operation variant** pairs.
+
+- **Configuration levels:** Replace `### Enable X for a workspace` + `### Enable X for a project` with a single `### Enable X` and **Workspace level** / **Project level** tabs.
+- **Operation variants:** Replace `### Destroy schedule fields` + `### Delete schedule fields` with a single `### Schedule fields` and **Destroy schedule** / **Delete schedule** tabs.
+- Keep a **one-line intro** under the heading (before `<Tabs>`) that states what the tabs cover, per [Intro before lists](#4-step-by-step-instructions).
+- Put each variant's full content (tables, code blocks, notes) **inside** its `<TabItem>`. Mark the first tab `default`. Use **Title Case** tab labels.
+
+Import once after the frontmatter:
+
+```mdx
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
+```jsx
+### Enable X
+
+Configure X at the workspace level for a single workspace, or at the project level for every matching workspace.
+
+<Tabs>
+<TabItem value="workspace" label="Workspace level" default>
+
+Workspace-level steps, code, and notes here.
+
+</TabItem>
+<TabItem value="project" label="Project level">
+
+Project-level steps, code, and notes here.
+
+</TabItem>
+</Tabs>
+```
 
 If none of these apply, a conventional single page or sidebar navigation is fine.
 

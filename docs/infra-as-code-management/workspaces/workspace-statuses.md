@@ -2,6 +2,8 @@
 title: Workspace Statuses
 description: Learn about IaCM workspace status
 sidebar_position: 70
+redirect_from:
+  - /docs/infra-as-code-management/workspaces/worksace-statuses
 ---
 
 
