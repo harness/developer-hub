@@ -76,7 +76,50 @@ if not then create it with these command
 
 - Once mc is installed, create the bucket using the command `mb myminio/sbom-store`
 
-### 4. Installed SMP via Harness Helm charts, How do I add other modules?
+### 4. Do I need additional configuration when using Amazon S3 or another S3-compatible object store instead of MinIO?
+
+Yes. By default, the SBOM attestation workflow uploads artifacts to MinIO. For SMP deployments that use Amazon S3 or another S3-compatible storage service instead of MinIO, you must configure S3 connectivity and credentials for both the **component-service** and **ssca-manager** services.
+
+The following example shows how to configure both services when using Amazon S3 or another S3-compatible object store instead of MinIO:
+
+```yaml
+
+ssca:
+  component-service:
+    componentService:
+      bucketName: "your-bucket-name"
+    config:
+      S3_ENDPOINT: "https://your-s3-endpoint.com"
+      S3_REGION: "us-west-2"
+    secrets:
+      kubernetesSecrets:
+        - secretName: "your-s3-secret"
+          keys:
+            S3_ACCESS_KEY_ID: "accessKey"
+            S3_ACCESS_SECRET_KEY: "secretKey"
+
+  ssca-manager:
+    ssca:
+      bucketName: "your-bucket-name"
+    config:
+      S3_ENDPOINT: "https://your-s3-endpoint.com"
+      S3_REGION: "us-west-2"
+    secrets:
+      kubernetesSecrets:
+        - secretName: "your-s3-secret"
+          keys:
+            S3_ACCESS_KEY_ID: "accessKey"
+            S3_ACCESS_SECRET_KEY: "secretKey"
+
+```
+
+:::note
+
+If the **ssca-manager** service is not configured with valid S3 credentials, the SBOM attestation step may fail with `HTTP 500` errors when attempting to upload attestation artifacts.
+
+:::
+
+### 5. Installed SMP via Harness Helm charts, How do I add other modules?
 
 - The Harness Helm chart installs only the core platform components. To add other modules (like SCS, STO, etc.), you need to edit the `override.yaml` file and enable them explicitly.
 
