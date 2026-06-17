@@ -15,7 +15,7 @@ An **Environment** is instantiated using an **Environment Blueprint**, consider 
 
 Based on the time-to-live (TTL) duration, Harness IDP environment management supports two types of environments:
 
-* **Ephemeral environments**: Short-lived environments that are created and paused on demand. They run only for a specific time interval configured by the user. When the TTL expires, the environment is automatically paused and the **Last Known Execution** column on the environments list shows **TTL Expired**.
+* **Ephemeral environments**: Short-lived environments that are created and paused on demand. They run only for a specific time interval configured by the user. When the TTL expires, the environment moves to an `Offline | TTL Expired` state automatically. Go to [Environment states](#environment-states) to view all possible states.
 * **Long-lived environments**: Environments that run indefinitely and are not paused automatically. They are paused only when the user explicitly does so.
 
 Go to [Configure TTL](/docs/internal-developer-portal/environment-management/blueprints/env-blueprint-yaml#configure-ttl-time-to-live) to learn more. 
@@ -67,14 +67,27 @@ To the right of the main content, a **Properties** panel shows the **Environment
 
 ### Environment states
 
-The environment state reflects the combined status of all entities defined in its blueprint.
+The environment state reflects the current health and operational status of your environment. It appears in the **STATE** column on the environments list and in the **Environment State** field on the environment detail page.
 
-| State | What it means |
-|---|---|
-| **Online** | All entities are provisioned and running. |
-| **Online (Partially Failed)** | Some entities provisioned successfully and others failed. Check the **Components** and **Resources** tabs to identify which entities failed. An error banner on the detail page names the failed entities and provides **View Pipeline** and **Retry** options. |
-| **Paused** | The environment has been explicitly stopped. Infrastructure and service resources are wound down but the environment record is retained so it can be started again. |
-| **Offline** | The environment is fully offline. This occurs when the TTL expires on an ephemeral environment or when Stop Environment has fully completed. |
+![Animation showing environment state transitions across Online, Offline, and Paused statuses](./static/env-states.gif)
+
+* **Environment Status:** High-level operational state (online, offline, paused)
+* **Environment State:** Sub-state providing additional context (updating, stopping, starting, failed, partially_failed, aborted, ttl_expired, or empty)
+
+| Environment Status | Environment State | When It Appears | Description |
+|---|---|---|---|
+| **Online** | (empty) | All instances running, no operations in progress | All resources and services are running. No operations are in progress. |
+| **Online** | *Updating* | Environment is running and an update operation is in progress | Changes are being applied to the environment. Some services may restart during this process. |
+| **Online** | *Stopping* | Environment is running and a destroy/stop operation is in progress | The environment is stopping. Running services will shut down shortly. |
+| **Online** | *Partially Failed* | Environment is running but some instances failed | The environment is running, but some services failed and may be unavailable. |
+| **Online** | *Aborted* | Environment is running but last operation was aborted | The environment is running, but the last operation was interrupted before completion. Some changes may not have been applied. |
+| **Offline** | (empty) | All instances inactive, no operations in progress | No resources or services are running. It can be resumed. |
+| **Offline** | *Updating* | Environment is offline and an update is being applied | Changes are being applied to the environment. |
+| **Offline** | *Starting* | Environment is being provisioned or resumed | The environment is starting up. |
+| **Offline** | *Failed* | Environment failed to start or update failed | The environment is stopped due to a failed update. Review logs to identify the issue. |
+| **Offline** | *Aborted* | Environment is stopped, last operation was interrupted | The environment is stopped. The last operation was interrupted before completion. |
+| **Offline** | *TTL Expired* | Environment was automatically paused due to TTL expiry | The environment is paused because the TTL expired. Services are not active. |
+| **Paused** | (empty) | Environment was manually paused by a user | The environment is paused. Services are not active. |
 
 ### Action buttons and menus
 
@@ -134,7 +147,7 @@ When done, click **Update Environment**.
 Depending on the scope of the change, this may trigger a full environment update or only update the affected resources and components.
 
 :::info
-When you update an environment’s configuration, the environment is **re-provisioned** and the TTL is **reset**. The new TTL countdown starts from the time of the update.
+When you update an environment’s configuration, the environment is re-provisioned and the TTL is reset. The new TTL countdown starts from the time of the update.
 :::
 
 ### Drift Detection
