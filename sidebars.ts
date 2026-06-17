@@ -2639,6 +2639,7 @@ const sidebars: SidebarsConfig = {
         'cloud-cost-management/get-started/get-started',
         'cloud-cost-management/get-started/onboarding-guide/external-data-ingestion',
         'cloud-cost-management/ai-costs-introduction',
+        'cloud-cost-management/unit-costs',
         {
           type: 'html',
           value: 'Use CACM',
