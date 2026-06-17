@@ -186,6 +186,43 @@ def check_violations(file_path: str, content: str, is_dms_content: bool, is_faq:
         frontmatter = ""
         body = content
 
+    # CommonMark-aware fenced-code scan, shared by code-masking and the C-2 rule. A fence
+    # only closes with the same marker character at length >= the opener, so nested or
+    # mixed ``` / ~~~ / ```` fences in MDX examples no longer desync the state. Masked
+    # lines are blanked (not removed) so reported line numbers stay aligned.
+    def _fence_scan(text):
+        open_re = re.compile(r'^[ \t]*(`{3,}|~{3,})([^\n]*)$')
+        code_lines, bare_openings = set(), []
+        fence_char, fence_len = None, 0
+        for i, ln in enumerate(text.split('\n')):
+            m = open_re.match(ln)
+            if fence_char is None:
+                if m:
+                    marker, info = m.group(1), m.group(2).strip()
+                    if marker[0] == '`' and '`' in info:
+                        continue  # backtick fence info cannot contain backticks
+                    fence_char, fence_len = marker[0], len(marker)
+                    code_lines.add(i)
+                    if info == "":
+                        bare_openings.append(i)
+            else:
+                code_lines.add(i)
+                if m:
+                    marker, rest = m.group(1), m.group(2).strip()
+                    if marker[0] == fence_char and len(marker) >= fence_len and rest == "":
+                        fence_char, fence_len = None, 0
+        return code_lines, bare_openings
+
+    body_raw = body
+    _code_lines, _bare_fences = _fence_scan(body_raw)
+    body = '\n'.join('' if i in _code_lines else ln
+                     for i, ln in enumerate(body_raw.split('\n')))
+
+    # Landmark sections recognised across all doc types (overview + how-to).
+    _LANDMARKS = ["Before you begin", "What you will learn", "Related concepts",
+                  "Next steps", "Troubleshooting"]
+    has_landmark = any(re.search(rf'^## {re.escape(l)}', body, re.MULTILINE) for l in _LANDMARKS)
+
     # FM-1: Missing title (exempt DMS content)
     if not is_dms_content and not re.search(r'^title:', frontmatter, re.MULTILINE):
         violations.append({"rule": "FM-1", "text": "Missing title in frontmatter"})
@@ -194,10 +231,11 @@ def check_violations(file_path: str, content: str, is_dms_content: bool, is_faq:
     if not is_dms_content and not re.search(r'^description:', frontmatter, re.MULTILINE):
         violations.append({"rule": "FM-2", "text": "Missing description in frontmatter"})
 
-    # FM-3: H1 in body (exempt DMS content)
+    # FM-4: H1 in body (exempt DMS content). Runs on the code-masked body so "# ..."
+    # comment lines inside code blocks are not mistaken for Markdown H1 headings.
     if not is_dms_content:
         for match in re.finditer(r'^# (.+)$', body, re.MULTILINE):
-            violations.append({"rule": "FM-3", "text": f"H1 heading in body: {match.group(1)}", "line": body[:match.start()].count('\n')})
+            violations.append({"rule": "FM-4", "text": f"H1 heading in body: {match.group(1)}", "line": body[:match.start()].count('\n')})
 
     # H-1: Heading case violations
     def is_proper_noun(word: str) -> bool:
@@ -260,13 +298,13 @@ def check_violations(file_path: str, content: str, is_dms_content: bool, is_faq:
             if heading not in standard_sections:
                 violations.append({"rule": "H-2", "text": f"Gerund heading: {heading}", "line": body[:match.start()].count('\n')})
 
-    # H-3: Body content at ## level (heuristic - more than 4 ## headings, no step headings)
+    # H-3: Body content at ## level (heuristic). Exempt pages that show intentional
+    # structure: Step headings (how-to) or any recognised landmark section (overview).
     if not is_faq:
         h2_headings = re.findall(r'^## (.+)$', body, re.MULTILINE)
-        if len(h2_headings) > 4:
-            has_steps = any(re.match(r'Step \d+', h) for h in h2_headings)
-            if not has_steps:
-                violations.append({"rule": "H-3", "text": f"Body content at ## level ({len(h2_headings)} H2 headings)"})
+        has_steps = any(re.match(r'Step \d+', h) for h in h2_headings)
+        if len(h2_headings) > 4 and not has_steps and not has_landmark:
+            violations.append({"rule": "H-3", "text": f"Body content at ## level ({len(h2_headings)} H2 headings)"})
 
     # S-1: Em dashes
     for match in re.finditer(r'—', body):
@@ -288,9 +326,13 @@ def check_violations(file_path: str, content: str, is_dms_content: bool, is_faq:
     for match in re.finditer(r'\bplease\b', body, re.IGNORECASE):
         violations.append({"rule": "S-5", "text": "Word 'please' found", "line": body[:match.start()].count('\n')})
 
-    # S-6: No intro before list
-    for match in re.finditer(r'^##+ .+\n\n[-\d]', body, re.MULTILINE):
-        violations.append({"rule": "S-6", "text": "List immediately after heading", "line": body[:match.start()].count('\n')})
+    # S-6: No intro before list. Exempt landmark sections that conventionally lead with
+    # a list (What you will learn, Before you begin, etc.).
+    _S6_EXEMPT = {"What you will learn", "Before you begin", "Related concepts",
+                  "Next steps", "Prerequisites"}
+    for match in re.finditer(r'^##+ (.+)\n\n[ \t]*(?:[-*]|\d+\.)\s', body, re.MULTILINE):
+        if match.group(1).strip() not in _S6_EXEMPT:
+            violations.append({"rule": "S-6", "text": "List immediately after heading", "line": body[:match.start()].count('\n')})
 
     # S-7: Contractions
     contractions = [
@@ -303,20 +345,19 @@ def check_violations(file_path: str, content: str, is_dms_content: bool, is_faq:
         for match in re.finditer(rf'\b{contraction}\b', body, re.IGNORECASE):
             violations.append({"rule": "S-7", "text": f"Contraction: {contraction}", "line": body[:match.start()].count('\n')})
 
-    # C-1: No landmark sections (exempt DMS content and FAQ pages)
-    if not is_dms_content and not is_faq:
-        landmarks = ["Prerequisites", "Next steps", "Troubleshooting", "What will you learn"]
-        has_landmark = any(re.search(rf'^## {landmark}', body, re.MULTILINE) for landmark in landmarks)
-        if not has_landmark:
-            violations.append({"rule": "C-1", "text": "No landmark sections found"})
+    # C-1: No landmark sections (exempt DMS content and FAQ pages). Uses the shared
+    # has_landmark computed near the top of this function.
+    if not is_dms_content and not is_faq and not has_landmark:
+        violations.append({"rule": "C-1", "text": "No landmark sections found"})
 
-    # C-2: Code blocks without language tags
-    for match in re.finditer(r'^```\s*$', body, re.MULTILINE):
-        violations.append({"rule": "C-2", "text": "Code block without language tag", "line": body[:match.start()].count('\n')})
+    # C-2: Code blocks without language tags. Opening fences with no info string, taken
+    # from the CommonMark-aware scan above (handles nested / mixed fences).
+    for _li in _bare_fences:
+        violations.append({"rule": "C-2", "text": "Code block without language tag", "line": _li})
 
     # T-1: Troubleshoot component not used (exempt DMS content and FAQ pages)
     if not is_dms_content and not is_faq:
-        if re.search(r'^## Troubleshooting', body, re.MULTILINE) and '<Troubleshoot' not in body:
+        if re.search(r'^## Troubleshooting', body, re.MULTILINE) and '<Troubleshoot' not in body_raw:
             violations.append({"rule": "T-1", "text": "Troubleshooting section without <Troubleshoot> component"})
 
     # T-2: ## Introduction heading (exempt DMS content)

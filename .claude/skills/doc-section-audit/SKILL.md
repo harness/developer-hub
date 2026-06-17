@@ -111,23 +111,44 @@ Tell the user: **"Oldest page in [MODULE]: [FILE-PATH] — last updated [DATE]. 
 
 Read the target file and determine its type before fetching the template. Check for FAQ first.
 
+**Use the same page type detection logic as `doc-audit` Step 2**, including support for **Hybrid pages**:
+
 **FAQ page** if ANY of:
 - `sidebar_label: FAQ` in frontmatter, OR `title` contains "FAQ" or "Frequently asked questions" (case-insensitive)
 - Filename is `faq.md`, ends with `-faq.md`, or ends with `-faqs.md`
 - More than 60% of H2 sections contain only `<details>`/`<summary>` blocks with no step-by-step prose
+
+**Instructional page** if the **dominant content** is procedural (≥60% procedural)
+
+**Overview page** if the **dominant content** is conceptual (≥60% conceptual)
+
+**Hybrid page** if it contains substantial conceptual AND procedural sections:
+- If ≥60% procedural → score as Instructional (hybrid leaning instructional)
+- If ≥60% conceptual → score as Overview (hybrid leaning overview)
+- If 40-60% each → score against both templates, use higher score (hybrid balanced)
 
 **For FAQ pages:**
 ```bash
 cat .cursor/rules/faq-template.mdc
 ```
 
-**For all other pages** (Instructional or Overview — use the same type detection as `doc-audit` Step 2):
+**For Instructional pages (or hybrid leaning instructional):**
 ```bash
-cat .cursor/rules/doc-structure-template.mdc      # Instructional
-cat .cursor/rules/doc-structure-overview-template.mdc  # Overview
+cat .cursor/rules/doc-structure-template.mdc
 ```
 
-Use the selected template as the structural benchmark for the Editorial score. Tell the user which type was detected.
+**For Overview pages (or hybrid leaning overview):**
+```bash
+cat .cursor/rules/doc-structure-overview-template.mdc
+```
+
+**For balanced hybrid pages, fetch both:**
+```bash
+cat .cursor/rules/doc-structure-template.mdc
+cat .cursor/rules/doc-structure-overview-template.mdc
+```
+
+Use the selected template(s) as the structural benchmark for the Editorial score. Tell the user which type was detected and, for hybrid pages, explain the reasoning.
 
 ---
 
@@ -141,13 +162,24 @@ cat <file-path>
 If a live URL exists, optionally use Claude in Chrome to view the rendered page for context —
 but base all scoring and edits on the local file, not the rendered version.
 
-Score across three dimensions (each starts at 100):
+Score across three dimensions (each starts at 100). **Use the same scoring logic as `doc-audit` Step 3**, including the adjusted scoring rules for Hybrid pages:
 
-**Accuracy (40%):** –20 contradicts UI/behaviour, –15 steps would error, –15 outdated screenshots, –15 broken code, –10 wrong API, –10 stale versions, –10 wrong prerequisites, –5 broken links
+**For Instructional pages:**
+- **Accuracy (40%):** –20 contradicts UI/behaviour, –15 steps would error, –15 outdated screenshots, –15 broken code, –10 wrong API, –10 stale versions, –10 wrong prerequisites, –5 broken links
+- **Completion (30%):** –15 undocumented capabilities, –10 missing prerequisites (account/RBAC), –10 missing troubleshooting, –10 missing config options, –10 no code examples, –10 missing cross-module refs (esp. Platform), –10 no RBAC guidance, –10 missing limitations, –10 incomplete API params, –5 no Next Steps
+- **Editorial (30%):** –15 wrong structure (vs template), –10 missing/incorrect frontmatter, –10 wrong heading case (must be sentence case + imperative), –10 non-site-relative links, –10 missing redirect_from, –10 em dashes / bare link text (S-1, S-3), –5 link phrasing (S-2), –10 walls of text, –5 inconsistent UI bolding, –5 no intro before lists (S-6), –5 "please" in body (S-5), –5 contractions (S-7), –5 missing Troubleshoot component (T-1) / ## Introduction heading (T-2), –5 spelling/grammar, –5 missing callouts, –5 slug /docs/docs/ bug
 
-**Completion (30%):** –15 undocumented capabilities, –10 missing prerequisites, –10 missing troubleshooting, –10 missing config options, –10 no code examples, –10 missing cross-module refs (esp. Platform), –10 no RBAC guidance, –10 missing limitations, –10 incomplete API params, –5 no Next Steps
+**For Overview pages:**
+- **Accuracy (40%):** –20 contradicts behavior/concepts, –15 incorrect examples, –15 broken code, –10 wrong API/schema, –10 stale versions, –10 incorrect conceptual explanations, –5 broken links
+- **Completion (30%):** –15 missing "What you will learn", –10 incomplete concept explanations, –10 missing reference material (attributes/params), –10 no code examples, –10 missing cross-module refs (esp. Platform), –10 missing architectural context, –10 missing limitations/caveats, –5 no Related concepts/Next steps, –5 light/no prerequisites for knowledge context
+- **Editorial (30%):** –15 wrong structure (vs overview template), –10 missing/incorrect frontmatter, –10 wrong heading case (must be sentence case + descriptive/noun phrases, NOT imperative), –10 non-site-relative links, –10 missing redirect_from, –10 em dashes / bare link text (S-1, S-3), –5 link phrasing (S-2), –10 walls of text, –5 inconsistent bolding, –5 no intro before lists (S-6), –5 "please" in body (S-5), –5 contractions (S-7), –5 missing Troubleshoot component (T-1) / ## Introduction heading (T-2), –5 spelling/grammar, –5 missing callouts, –5 slug /docs/docs/ bug
 
-**Editorial (30%):** –15 wrong structure (vs template), –10 missing/incorrect frontmatter (must include title, sidebar_label, description, keywords, tags, sidebar_position as multiple of 10), –10 wrong heading case (must be sentence case; gerund headings such as "Configuring X" are wrong), –10 non-site-relative links, –10 missing redirect_from, –10 em dashes / bare link text — here, click here (S-1, S-3), –5 link phrasing — see [link], refer to, to learn more (S-2), –10 walls of text, –5 inconsistent UI bolding, –5 no intro before lists (S-6), –5 "please" in body (S-5), –5 contractions — don't, won't, can't etc. (S-7), –5 missing Troubleshoot component with at least 3 entries (T-1) / ## Introduction heading in body (T-2), –5 spelling/grammar, –5 missing callouts, –5 slug /docs/docs/ bug
+**For Hybrid pages:**
+- Apply the adjusted scoring rules from `doc-audit` Step 3:
+  - Allow mixed heading styles (imperative for procedural sections, descriptive for conceptual sections)
+  - Do not penalize for having both "What you will learn" and detailed "Before you begin"
+  - Reduce RBAC penalty to –5 if page is architecture-focused
+  - For balanced hybrids, score against both templates and use the higher score
 
 **Weighted score:** `(Accuracy × 0.4) + (Completion × 0.3) + (Editorial × 0.3)`
 **Pass: ≥ 80. Fail: < 80.**

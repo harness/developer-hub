@@ -256,11 +256,14 @@ Violations are reported with the full heading and flagged words for manual revie
 
 This reduces false positives for legitimate product/framework names while still catching true violations like "Database Schema" or "Project Configuration".
 
+**For hybrid pages:** H-1 violations should be reviewed carefully. Hybrid pages may legitimately contain **mixed heading styles** — imperative headings for procedural sections ("Configure X", "Enable Y") and descriptive noun phrases for conceptual sections ("Configuration levels", "How it works", "Workspace lifecycle"). A page with both styles is not necessarily wrong if the heading style matches the section type. The scanner reports these as WARN, not FAIL, so they can be reviewed in context.
+
 **H-2 — No gerund headings**
 FAIL for any `##` or `###` heading that ends with a word matching `\w+ing` as the final token
 (e.g. "## Configuring the connector", "### Installing delegates").
 Exceptions: `## Troubleshooting`, `## Before you begin` — these are standard section names.
 **Exempt:** FAQ pages (`is_faq: true`) — FAQ category headings are noun phrases by design, not imperatives.
+**For hybrid pages:** Gerund headings are always wrong regardless of page type. Use imperative forms ("Configure X", not "Configuring X") for procedural sections and noun phrases ("Configuration overview", not "Configuring overview") for conceptual sections.
 
 **H-3 — Body content at `##` level**
 WARN if the file uses `##` headings for body sections rather than only the standard landmarks

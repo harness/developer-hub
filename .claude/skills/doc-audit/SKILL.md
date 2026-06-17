@@ -131,40 +131,59 @@ Read the page file first to assess its type. Check for FAQ first — it is the m
   - Filename is `faq.md`, ends with `-faq.md`, or ends with `-faqs.md`
   - More than 60% of H2 sections contain only `<details>`/`<summary>` blocks with no step-by-step prose (legacy detection)
 
-- **Instructional/Action page** if:
-  - Title is action-oriented ("Create", "Configure", "Set up", "Install")
-  - Contains step-by-step UI navigation ("Select X, then click Y")
-  - Has sequential procedures users follow verbatim
-  - Before you begin include account access and RBAC permissions
+- **Instructional/Action page** if the **dominant content** is procedural:
+  - Title is action-oriented ("Create", "Configure", "Set up", "Install") AND
+  - Contains step-by-step UI navigation ("Select X, then click Y") OR
+  - Has sequential procedures users follow verbatim OR
+  - Contains API curl examples with specific endpoints and parameters
+  - Before you begin may include account access and RBAC permissions
 
-- **Informative/Overview page** if:
-  - Title is a noun phrase ("OPA Policies", "Workspace Architecture", "Delegate Types")
-  - Explains concepts, architecture, or "how it works"
-  - Code examples are illustrative/reference, not step-by-step
+- **Informative/Overview page** if the **dominant content** is conceptual:
+  - Title is a noun phrase ("OPA Policies", "Workspace Architecture", "Delegate Types") AND
+  - Explains concepts, architecture, or "how it works" AND
+  - Code examples are illustrative/reference, not step-by-step AND
   - No UI walkthrough or sequential procedures
   - Content is "what/why/how" rather than "do this, then that"
 
-Once you determine the page type, fetch the appropriate template:
+- **Hybrid page** if BOTH:
+  - Contains substantial conceptual sections (architecture, "how it works", reference tables) AND
+  - Contains substantial procedural sections (step-by-step UI navigation, API examples, configuration instructions)
+  - Common patterns: feature pages that explain what something is, then show how to configure it; reference pages with procedural setup sections
+
+**For hybrid pages, score against both templates and use the scoring approach that best fits the dominant content:**
+- If **≥60% of the page is procedural** (UI steps, API calls, configuration walkthroughs) → score as Instructional
+- If **≥60% of the page is conceptual** (architecture explanations, reference tables, "how it works") → score as Overview
+- If roughly equal (40-60% each) → score against **both templates**, use whichever yields the **higher overall score**, and note both scores in the report
+
+Once you determine the page type, fetch the appropriate template(s):
 
 **For FAQ pages:**
 ```bash
 cat .cursor/rules/faq-template.mdc
 ```
 
-**For instructional pages:**
+**For instructional pages (or hybrid leaning instructional):**
 ```bash
 cat .cursor/rules/doc-structure-template.mdc
 ```
 
-**For overview pages:**
+**For overview pages (or hybrid leaning overview):**
 ```bash
 cat .cursor/rules/doc-structure-overview-template.mdc
 ```
 
-Use the selected template as the structural benchmark for the Editorial score.
+**For balanced hybrid pages, fetch both:**
+```bash
+cat .cursor/rules/doc-structure-template.mdc
+cat .cursor/rules/doc-structure-overview-template.mdc
+```
+
+Use the selected template(s) as the structural benchmark for the Editorial score.
 
 **Report the page type to the user:**
-Tell the user: **"Page type: [FAQ/Instructional/Overview] — using [template name] for scoring."**
+- For clear types: **"Page type: [FAQ/Instructional/Overview] — using [template name] for scoring."**
+- For hybrid pages: **"Page type: Hybrid ([dominant type] leaning) — [explanation of why]. Using [template name] for scoring."**
+- For balanced hybrid: **"Page type: Hybrid (balanced) — scored against both templates. Using [chosen template] (score: X/100) over [other template] (score: Y/100)."**
 
 ---
 
@@ -219,6 +238,38 @@ Score across three dimensions (each starts at 100). **Adjust criteria based on p
 - Headings should be descriptive/noun phrases, NOT imperative verbs
 - Troubleshooting/FAQs are optional
 - End section is "Related concepts" or "Learn more" (not necessarily "Next steps")
+
+---
+
+### Scoring for Hybrid pages
+
+**When a page is classified as Hybrid, apply adjusted scoring rules that account for cross-template characteristics:**
+
+**Hybrid pages (Instructional leaning — ≥60% procedural):**
+- Score using **Instructional template** rules above
+- **Do NOT penalize** for having "What you will learn" section (common in hybrids)
+- **Do NOT penalize** for having conceptual "How it works" sections with noun phrase headings alongside imperative procedural headings
+- **Reduce penalty** for missing detailed RBAC prerequisites if the page is primarily configuration-focused (–5 instead of –10)
+- Heading case: Allow **mixed heading styles** — imperative for procedural sections ("Configure X"), descriptive for conceptual sections ("Configuration levels", "How X works")
+
+**Hybrid pages (Overview leaning — ≥60% conceptual):**
+- Score using **Overview template** rules above
+- **Do NOT penalize** for having procedural sections with step-by-step instructions (common in hybrids)
+- **Do NOT penalize** for having imperative headings in procedural subsections alongside descriptive headings in conceptual sections
+- **Reduce penalty** for missing "What you will learn" if the page has a strong introductory explanation (–5 instead of –15)
+- Heading case: Allow **mixed heading styles** — descriptive for conceptual sections, imperative for procedural sections
+
+**Hybrid pages (Balanced — 40-60% each):**
+- Score against **both templates**
+- Report **both scores** in the audit
+- Use whichever score is **higher** as the official score
+- In the report, note: "Hybrid (balanced) — Instructional scoring: X/100, Overview scoring: Y/100. Using higher score."
+- In the "Page type assessment" section, explain why both templates apply and which characteristics lean which direction
+
+**General hybrid scoring adjustments:**
+- **Editorial heading case:** For all hybrid pages, allow mixed heading styles without penalty as long as each heading matches its section type (imperative for steps, descriptive for concepts)
+- **Completion RBAC:** Reduce RBAC prerequisite penalty to –5 if the page focuses more on architecture/concepts than account setup
+- **Structure flexibility:** Do not penalize for having both "What you will learn" (overview pattern) and detailed "Before you begin" (instructional pattern) in the same document
 
 **Weighted score:** `(Accuracy × 0.4) + (Completion × 0.3) + (Editorial × 0.3)`
 **Pass: ≥ 80. Fail: < 80.**
