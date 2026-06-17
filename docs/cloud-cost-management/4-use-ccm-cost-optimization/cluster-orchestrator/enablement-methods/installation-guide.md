@@ -66,6 +66,11 @@ Your kubectl context must have cluster-admin permissions or equivalent to:
 
 ## Installation Methods
 
+**Link to Operator:** https://hub.docker.com/r/harness/cluster-orchestrator/tags
+
+**Link to Helm Chart:** https://app.harness.io/ng/account/6NTMT--yR7ORXKPqwLDioA/module/code/repos/Helm
+
+
 ### Helm Installation 
 
 Helm provides:
