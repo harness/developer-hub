@@ -1,204 +1,248 @@
 ---
-title: Add ACS URL for Harness MCP login
-sidebar_label: ACS URL for Harness MCP
+title: Configure Single Sign-On (SSO) for Harness MCP
+sidebar_label: Configure SSO for Harness MCP
 description: Learn how to add an additional ACS URL or redirect URI in your Identity Provider to enable Harness MCP login via SAML or OIDC.
 sidebar_position: 60
+redirect_from:
+  - /docs/platform/authentication/acs-url-for-harness-mcp-login
 ---
 
-Harness MCP uses a separate authentication flow from the standard Harness platform login. Instead of authenticating directly through the Harness platform, MCP authentication is routed through HarnessID, a dedicated identity broker. As a result, the Assertion Consumer Service (ACS) URL included in SAML authentication requests differs from the ACS URL used for standard Harness platform login.
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import DocImage from '@site/src/components/DocImage';
 
-Most Identity Providers (IdPs) validate that the ACS URL in a SAML authentication request matches one of the Reply URLs configured for the application. If the MCP-specific ACS URL is not configured in your IdP, users will be unable to authenticate to Harness MCP using SAML.
+Harness MCP supports authentication through your existing Single Sign-On (SSO) provider. To enable SSO for MCP, add an additional Assertion Consumer Service (ACS) URL (for SAML) or redirect URI (for OIDC) to your Identity Provider (IdP).
 
-| Authentication flow        | ACS URL                                                                               | Action required                           |
-| -------------------------- | ------------------------------------------------------------------------------------- | ----------------------------------------- |
-| **Harness platform login** | `https://<your-domain>.harness.io/gateway/api/users/saml-login?accountId=<accountId>` | No changes required                       |
-| **Harness MCP login**      | Account-specific ACS URL provided by Harness                                          | Add the ACS URL to your IdP configuration |
+An ACS URL or redirect URI specifies where your Identity Provider sends authentication responses after a user signs in. Because Harness MCP uses a different authentication endpoint than the standard Harness platform login, it requires its own ACS URL or redirect URI.
 
-> Note: Adding the MCP-specific ACS URL to your Identity Provider (IdP) configuration does not affect your existing Harness platform SAML setup. Standard Harness platform login continues to use its existing ACS URL and remains fully functional.
-
-### What you'll learn
-
-- How to retrieve the MCP ACS URL from the Harness SAML configuration.
-- How to add the ACS URL in Azure AD (Microsoft Entra ID), [Okta](#okta), or Ping Identity.
-- How to configure the equivalent redirect URI if you use OIDC instead of SAML.
-
-### Before you begin
-
-- You must have **Account Admin** or **Authentication Settings** permissions in Harness.
-- Your IdP must already be configured for SAML or OIDC SSO with Harness. If you haven't set this up yet, see [Single Sign-On (SSO) with SAML](/docs/platform/authentication/single-sign-on-saml).
-- You need admin access to your IdP (Azure AD, Okta, or Ping Identity) to add Reply URLs or redirect URIs.
+Adding the MCP-specific URL does not affect your existing Harness platform login. Users can continue to access both Harness and Harness MCP through the same SSO provider.
 
 ---
 
-## Retrieve the additional ACS URL from Harness
+## What will you learn in this topic?
 
-Harness displays the MCP-specific ACS URL on the SAML configuration page.
+By the end of this topic, you will be able to:
 
-1. Sign in to your Harness account.
-2. Navigate to **Account Settings** > **Security and Governance** > **Authentication**.
-3. Locate your SAML provider configuration.
-4. Select the **three-dot menu (⋮)** on the SAML provider and select **Edit**.
-5. On the first page (Name and Display Name), select **Continue**.
-6. On the **URL and Identity Provider** page, you will see two URL fields:
-   - **SAML Endpoint URL** — Your existing ACS URL (no changes needed).
-   - **Additional Reply URL for MCP (Optional)** — The new ACS URL to add to your IdP.
-7. Copy the **Additional Reply URL for MCP** value. The URL follows this pattern:
-
-    ```
-    https://id.harness.io/idp/realms/HarnessIDP/broker/<broker-id>/endpoint
-    ```
-
-:::note
-If the Additional Reply URL for MCP field is empty or not visible, contact [Harness Support](mailto:support@harness.io) or your Customer Success Manager to enable MCP for your account.
-:::
+* Retrieve the MCP-specific ACS URL or redirect URI from Harness.
+* Add the MCP URL to your Identity Provider.
+* Configure SSO authentication for Harness MCP.
+* Verify that users can authenticate successfully.
 
 ---
 
-## Add the ACS URL in your Identity Provider
+## Before you begin
 
-### Azure AD (Microsoft Entra ID)
+Before you configure SSO for Harness MCP, ensure that:
 
-1. Sign in to the [Azure Portal](https://portal.azure.com).
-2. Navigate to **Microsoft Entra ID** > **Enterprise Applications**.
+* You have **Account Admin** or **Authentication Settings** permissions in Harness.
+* Your Identity Provider is already configured for SAML or OIDC authentication with Harness. Go to [Single Sign-On (SSO) with SAML](/docs/platform/authentication/single-sign-on-saml) to set this up if needed.
+* You have administrative access to your Identity Provider.
+
+---
+
+## Configure SAML for Harness MCP
+
+Before updating your Identity Provider, retrieve the MCP ACS URL from your Harness SAML configuration.
+
+<Tabs>
+<TabItem value="manual" label="Manual">
+
+1. Sign in to Harness.
+2. Go to **Account Settings** > **Security and Governance** > **Authentication**.
+3. Locate your SAML provider.
+4. Select **⋮** > **Edit**.
+5. Copy the value from **Enter this SAML Endpoint URL as your Harness SAML Provider application's ACS URL**.
+
+</TabItem>
+<TabItem value="interactive" label="Interactive">
+
+<iframe src="https://app.tango.us/app/embed/95bbba7a-0744-4f0a-b47f-d483464aab72" style={{minHeight: '640px'}} sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin" security="restricted" title="Configure SSO for Harness MCP" width="100%" height="100%" referrerPolicy="strict-origin-when-cross-origin" frameBorder="0" allowFullScreen></iframe>
+
+</TabItem>
+</Tabs>
+
+Add the MCP ACS URL to your Identity Provider.
+
+### Microsoft Entra ID (Azure AD)
+
+<Tabs>
+<TabItem value="manual" label="Manual">
+
+1. Sign in to the Azure portal.
+2. Go to **Microsoft Entra ID** > **Manage** >  **Enterprise Applications**.
 3. Select your Harness application.
-4. Go to **Manage** > **Single sign-on** in the left navigation.
-5. In the **Basic SAML Configuration** section, select **Edit**.
+4. Select **Manage** > **Single sign-on**.
+5. In **Basic SAML Configuration**, select **Edit**.
 6. Under **Reply URL (Assertion Consumer Service URL)**, select **Add reply URL**.
 7. Enter the MCP ACS URL copied from Harness.
 8. Select **Save**.
 
-:::warning
-Do not remove your existing Reply URL. Your original Harness platform login continues to use that URL. Add the new MCP URL as an additional entry so both login flows work.
-:::
+</TabItem>
+<TabItem value="interactive" label="Interactive">
+
+<iframe src="https://app.tango.us/app/embed/0077839f-e0dd-4d99-b605-cffe8eecdb85" style={{minHeight: '640px'}} sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin" security="restricted" title="Configure Harness Single Sign-On in Entra ID" width="100%" height="100%" referrerPolicy="strict-origin-when-cross-origin" frameBorder="0" allowFullScreen></iframe>
+
+</TabItem>
+</Tabs>
 
 #### Troubleshooting
 
-- If you see the error `AADSTS50011: The reply URL specified in the request does not match the reply URLs configured for the application`, the MCP ACS URL has not been registered yet.
-- Azure AD supports multiple Reply URLs per Enterprise Application. The correct URL is selected automatically based on the ACS URL in the incoming AuthnRequest.
+If you receive the following error:
 
----
+```bash
+AADSTS50011: The reply URL specified in the request does not match the reply URLs configured for the application.
+```
+
+Verify that the MCP ACS URL has been added and exactly matches the value displayed in Harness.
 
 ### Okta
 
-Okta requires you to add **two additional** ACS URLs as Requestable SSO URLs. Your existing Single sign-on URL remains unchanged. Both new URLs are displayed in the Harness SAML configuration UI and must both be added — if either is missing, one of the two login flows will break.
+Okta handles multiple ACS URLs differently from other Identity Providers. Instead of a simple list of Reply URLs, Okta requires you to enable **Requestable SSO URLs** and add each additional endpoint with an index value.
 
-1. Sign in to your **Okta Admin Console**.
-2. Navigate to **Applications** > **Applications**.
+<Tabs>
+<TabItem value="manual" label="Manual">
+
+1. Sign in to the **Okta Admin Console**.
+2. Go to **Applications** > **Applications**.
 3. Select your Harness application.
 4. On the **General** tab, select **Edit** in the **SAML Settings** section.
-5. Select **Next** to proceed to the **Configure SAML** step.
+5. Select **Next**.
 6. Leave the existing **Single sign-on URL** unchanged.
-7. Check the box **"Allow this app to request other SSO URLs"**.
-8. In the Advanced settings, under the ** Other Requestable SSO URLs** section, select **Add Another**.
-9. Add the **SAML Endpoint URL** from Harness with Index `1`.
-10. Select **Add Another** again.
-11. Add the **Additional Reply URL for MCP** from Harness with Index `2`.
-12. Select **Next**, then **Finish** to save.
+7. Enable **Allow this app to request other SSO URLs**.
+8. Under **Other Requestable SSO URLs**, select **Add Another**.
+    :::note
+    After configuration, your Okta application will have three URLs total:
 
-:::warning
-All three URLs must be present — the original Single sign-on URL plus both new Requestable SSO URLs. Removing the SAML Endpoint URL breaks platform login; removing the MCP URL breaks MCP login.
-:::
+    | URL | Source | Purpose |
+    | --- | ------ | ------- |
+    | **SAML Endpoint URL** (index 0) | Copy from Harness SAML config | Harness platform login via HarnessID |
+    | **Additional Reply URL for MCP** (index 1) | Copy from Harness SAML config | Harness MCP login |
 
-#### Where to find the URLs in Harness
+    Two URLs must be present. If you remove the SAML Endpoint URL, platform login breaks. If you remove the MCP URL, MCP login breaks.
+    :::
+9. Select **Next**, then select **Finish**.
 
-- Both new URLs are available in the Harness UI under **Account Settings** > **Authentication** > **SAML Provider** > **Edit** > **Continue** (URL and Identity Provider page).
-- No other SAML settings (certificates, Entity ID, SSO URL) need to change.
+</TabItem>
+<TabItem value="interactive" label="Interactive">
 
----
+<iframe src="https://app.tango.us/app/embed/8dfc15f0-f5dd-49db-941b-95071e17fdf6" style={{minHeight: '640px'}} sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin" security="restricted" title="Add MCP URL to Okta" width="100%" height="100%" referrerPolicy="strict-origin-when-cross-origin" frameBorder="0" allowFullScreen></iframe>
+
+</TabItem>
+</Tabs>
 
 ### Ping Identity (PingOne)
 
 1. Sign in to the **PingOne Admin Console**.
-2. Navigate to **Applications** > **Applications** in the left sidebar.
+2. Go to **Applications** > **Applications**.
 3. Select your Harness application.
-4. Select the **Configuration** tab.
-5. Select the **Edit** (pencil) icon to open the configuration editor.
-6. In the **SAML Settings** section, locate the **ACS URLs** field.
-7. Select **+ Add** below the existing ACS URL.
-8. Enter the MCP ACS URL copied from Harness.
-9. Select **Save**.
+4. Open the **Configuration** tab.
+5. Select **Edit**.
+6. Under **ACS URLs**, select **Add**.
+7. Enter the MCP ACS URL copied from Harness.
+8. Select **Save**.
 
-:::warning
-Do not remove your existing ACS URL. Add the new MCP URL as an additional entry so both login flows work.
+    <DocImage path={require('./static/pingone.png')} alt="PingOne ACS URL configuration" title="Click to view full size image" width="600" height="400" />
+
+Keep your existing ACS URL and add the MCP ACS URL as an additional entry. Both URLs are required to support authentication for the Harness platform and Harness MCP.
+
+:::note
+PingOne supports multiple ACS URLs for a single SAML application and automatically selects the appropriate URL during authentication.
+
+You do not need to modify any other SAML settings, including certificates, Entity IDs, signing configuration, or NameID settings.
 :::
-
-#### How multiple ACS URLs work in PingOne
-
-- PingOne supports multiple ACS URLs per SAML application. The correct URL is selected automatically based on the ACS URL in the incoming AuthnRequest.
-- All other SAML settings (Signing Key, Signing Algorithm, Entity ID, Subject NameID Format) remain unchanged.
 
 ---
 
-## OIDC authentication
+## Configure OIDC for Harness MCP
 
-If your Harness account uses OIDC (OpenID Connect) instead of SAML, you need to add the MCP callback URL as an additional redirect URI in your IdP.
+If your Harness account uses OpenID Connect (OIDC), add the MCP redirect URI to your Identity Provider.
 
-### Retrieve the additional redirect URL
+<Tabs>
+<TabItem value="manual" label="Manual">
 
-1. Sign in to your Harness account.
-2. Navigate to **Account Settings** > **Authentication**.
-3. Under the **Login via OIDC** section, locate your OIDC provider configuration.
-4. Select the **three-dot menu (⋮)** on the OIDC provider and select **Edit**.
-5. On the first page (OIDC Provider Overview), select **Continue**.
-6. On the **Client Settings** page, copy the **Additional Reply URL for MCP** value.
+1. Sign in to Harness.
+2. Go to **Account Settings** > **Authentication**.
+3. Locate your OIDC provider under **Login via OIDC**.
+4. Select **⋮** > **Edit**.
+5. Copy the value from **Additional Reply URL for MCP (Optional)**.
 
-The URL follows the same pattern as the SAML ACS URL:
+</TabItem>
+<TabItem value="interactive" label="Interactive">
 
-```
-https://id.harness.io/idp/realms/HarnessIDP/broker/<broker-id>/endpoint
-```
+<iframe src="https://app.tango.us/app/embed/ca437b6d-42d1-44ff-bf9a-1d583a518a34" style={{minHeight: '640px'}} sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin" security="restricted" title="Configure SSO (OIDC) for Harness MCP" width="100%" height="100%" referrerPolicy="strict-origin-when-cross-origin" frameBorder="0" allowFullScreen></iframe>
 
-### Add the redirect URI in your Identity Provider
+</TabItem>
+</Tabs>
 
-#### Azure AD (Microsoft Entra ID)
+### Microsoft Entra ID (Azure AD)
 
-1. In the [Azure Portal](https://portal.azure.com), go to **Microsoft Entra ID** > **App registrations**.
-2. Select your Harness application.
-3. Go to **Authentication** in the left navigation.
-4. Under **Redirect URIs**, select **Add URI**.
-5. Enter the MCP redirect URL and select **Save**.
+<Tabs>
+<TabItem value="manual" label="Manual">
 
-#### Okta
+1. Sign in to the Azure portal.
+2. Go to **Microsoft Entra ID** > **App registrations**.
+3. Select your Harness application.
+4. Go to **Authentication** in the left navigation.
+5. Under **Redirect URIs**, select **Add URI**.
+6. Enter the MCP redirect URL and select **Save**.
 
-1. In the **Okta Admin Console**, go to **Applications** > **Applications**.
-2. Select your Harness OIDC application.
-3. On the **General** tab, select **Edit** in the **Login** section.
+</TabItem>
+<TabItem value="interactive" label="Interactive">
+
+<iframe src="https://app.tango.us/app/embed/b73a9125-82c7-4622-8eff-353fc5dbf9b1" style={{minHeight: '640px'}} sandbox="allow-scripts allow-top-navigation-by-user-activation allow-popups allow-same-origin" security="restricted" title="Configure Teams Reader Redirect URI" width="100%" height="100%" referrerPolicy="strict-origin-when-cross-origin" frameBorder="0" allowFullScreen></iframe>
+
+</TabItem>
+</Tabs>
+
+### Okta
+
+1. Sign in to the **Okta Admin Console**.
+2. Go to **Applications** > **Applications**.
+3. Select your Harness application.
+4. On the **General** tab, select **Edit** in the **Login** section.
 4. Under **Sign-in redirect URIs**, select **Add URI**.
 5. Enter the MCP redirect URL and select **Save**.
 
-#### Ping Identity (PingOne)
+### Ping Identity (PingOne)
 
-1. In the **PingOne Admin Console**, go to **Applications** > **Applications**.
-2. Select your Harness application.
-3. On the **Configuration** tab, select the **Edit** (pencil) icon.
-4. Under **Redirect URIs**, select **+ Add**.
-5. Enter the MCP redirect URL and select **Save**.
+1. Sign in to the **PingOne Admin Console**.
+2. Go to **Applications** > **Applications**.
+3. Select your Harness application.
+4. Open the **Configuration** tab.
+5. Select **Edit**.
+6. Under **Redirect URIs**, select **+ Add**.
+7. Enter the MCP redirect URL and select **Save**.
 
-:::warning
-Do not remove your existing redirect URI. Add the MCP URL as an additional entry so both login flows work.
+:::note
+Keep your existing redirect URI and add the MCP redirect URI as an additional entry. Both redirect URIs are required to support authentication for the Harness platform and Harness MCP.
 :::
 
 ---
 
-## Frequently asked questions (FAQs)
+## Frequently asked questions
 
-### Will my existing Harness platform login continue to work?
+#### Will adding the MCP URL affect my existing Harness login?
 
-Yes. Adding the MCP-specific ACS URL to your Identity Provider (IdP) configuration does not affect your existing Harness platform login. Both authentication flows can coexist and continue to function independently.
+No. Adding the MCP ACS URL or redirect URI does not affect your existing SSO configuration. Users can continue to access both Harness and Harness MCP through the same Identity Provider.
 
-### Do I need to update certificates, Entity IDs, or other IdP settings?
+#### Do I need to update certificates, Entity IDs, or other SSO settings?
 
-No. You only need to add the MCP-specific ACS URL (or redirect URI for OIDC) to your IdP configuration. No changes to certificates, Entity IDs, user assignments, or other SSO settings are required.
+No. You only need to add the MCP ACS URL (SAML) or redirect URI (OIDC). No other changes are required.
 
-### What happens if I do not add the MCP ACS URL?
+#### What happens if I do not add the MCP URL?
 
-Users will be unable to authenticate to Harness MCP through SSO, and login attempts will fail. Standard Harness platform login will continue to work as expected.
+Users will not be able to sign in to Harness MCP through SSO. Standard Harness platform login will continue to work.
 
-### Does my IdP support multiple ACS URLs?
+#### Can my Identity Provider support multiple ACS URLs or redirect URIs?
 
-Most enterprise Identity Providers, including Azure AD, Okta, and Ping Identity, support multiple ACS URLs or reply URLs for a single application. During authentication, the IdP uses the ACS URL specified in the incoming SAML request to determine the correct response destination.
+Most enterprise Identity Providers, including Microsoft Entra ID, Okta, and PingOne, support multiple ACS URLs or redirect URIs for a single application.
 
-### Do all customers need to make this change?
+#### Do I need to make this change if I do not use Harness MCP?
 
-No. This update is only required if you use, or plan to use, Harness MCP with SSO authentication. If you only use the standard Harness platform login, no changes are required.
+No. This update is only required if you use Harness MCP with SSO authentication. If you only use the standard Harness platform login, no action is required.
+
+#### Do I need to create a separate application in my Identity Provider for Harness MCP?
+
+No. Add the MCP ACS URL or redirect URI to your existing Harness application. You do not need to create a separate application for Harness MCP.
+
 
