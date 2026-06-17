@@ -848,16 +848,16 @@
       "letter": "C",
       "related": [
         {
-          "term": "monitored service",
-          "slug": "monitored-service"
+          "term": "continuous verification",
+          "slug": "continuous-verification"
+        },
+        {
+          "term": "error budget",
+          "slug": "error-budget"
         },
         {
           "term": "health source",
           "slug": "health-source"
-        },
-        {
-          "term": "data source",
-          "slug": "data-source"
         }
       ]
     },
@@ -1216,16 +1216,16 @@
       "letter": "C",
       "related": [
         {
-          "term": "expression",
-          "slug": "expression"
+          "term": "custom stage",
+          "slug": "custom-stage"
         },
         {
-          "term": "failure strategy",
-          "slug": "failure-strategy"
+          "term": "matrix",
+          "slug": "matrix"
         },
         {
-          "term": "stage",
-          "slug": "stage"
+          "term": "output variable",
+          "slug": "output-variable"
         }
       ]
     },
@@ -1285,16 +1285,16 @@
       "letter": "C",
       "related": [
         {
+          "term": "change source",
+          "slug": "change-source"
+        },
+        {
+          "term": "error budget",
+          "slug": "error-budget"
+        },
+        {
           "term": "health source",
           "slug": "health-source"
-        },
-        {
-          "term": "sensitivity",
-          "slug": "sensitivity"
-        },
-        {
-          "term": "verification type",
-          "slug": "verification-type"
         }
       ]
     },
@@ -1446,16 +1446,16 @@
       "letter": "C",
       "related": [
         {
-          "term": "pipeline",
-          "slug": "pipeline"
+          "term": "conditional execution",
+          "slug": "conditional-execution"
         },
         {
-          "term": "pipeline template",
-          "slug": "pipeline-template"
+          "term": "matrix",
+          "slug": "matrix"
         },
         {
-          "term": "stage",
-          "slug": "stage"
+          "term": "output variable",
+          "slug": "output-variable"
         }
       ]
     },
@@ -1883,16 +1883,16 @@
       "letter": "E",
       "related": [
         {
-          "term": "slo",
-          "slug": "slo"
+          "term": "change source",
+          "slug": "change-source"
         },
         {
-          "term": "sli",
-          "slug": "sli"
+          "term": "continuous verification",
+          "slug": "continuous-verification"
         },
         {
-          "term": "notification rule",
-          "slug": "notification-rule"
+          "term": "health source",
+          "slug": "health-source"
         }
       ]
     },
@@ -2458,16 +2458,16 @@
       "letter": "H",
       "related": [
         {
+          "term": "change source",
+          "slug": "change-source"
+        },
+        {
           "term": "continuous verification",
           "slug": "continuous-verification"
         },
         {
-          "term": "sensitivity",
-          "slug": "sensitivity"
-        },
-        {
-          "term": "verification type",
-          "slug": "verification-type"
+          "term": "error budget",
+          "slug": "error-budget"
         }
       ]
     },
@@ -2964,16 +2964,16 @@
       "letter": "M",
       "related": [
         {
-          "term": "looping strategy",
-          "slug": "looping-strategy"
+          "term": "conditional execution",
+          "slug": "conditional-execution"
         },
         {
-          "term": "stage",
-          "slug": "stage"
+          "term": "custom stage",
+          "slug": "custom-stage"
         },
         {
-          "term": "step group",
-          "slug": "step-group"
+          "term": "output variable",
+          "slug": "output-variable"
         }
       ]
     },
@@ -3079,16 +3079,16 @@
       "letter": "M",
       "related": [
         {
-          "term": "account",
-          "slug": "account"
+          "term": "ai sre",
+          "slug": "ai-sre"
         },
         {
-          "term": "subscription",
-          "slug": "subscription"
+          "term": "anomaly",
+          "slug": "anomaly"
         },
         {
-          "term": "project",
-          "slug": "project"
+          "term": "api key",
+          "slug": "api-key"
         }
       ]
     },
@@ -3102,16 +3102,16 @@
       "letter": "M",
       "related": [
         {
+          "term": "change source",
+          "slug": "change-source"
+        },
+        {
           "term": "continuous verification",
           "slug": "continuous-verification"
         },
         {
-          "term": "health source",
-          "slug": "health-source"
-        },
-        {
-          "term": "slo",
-          "slug": "slo"
+          "term": "error budget",
+          "slug": "error-budget"
         }
       ]
     },
@@ -3148,16 +3148,16 @@
       "letter": "N",
       "related": [
         {
-          "term": "cluster orchestrator",
-          "slug": "cluster-orchestrator"
+          "term": "ai sre",
+          "slug": "ai-sre"
         },
         {
-          "term": "workload",
-          "slug": "workload"
+          "term": "anomaly",
+          "slug": "anomaly"
         },
         {
-          "term": "recommendation",
-          "slug": "recommendation"
+          "term": "api key",
+          "slug": "api-key"
         }
       ]
     },
@@ -3194,16 +3194,16 @@
       "letter": "N",
       "related": [
         {
-          "term": "notification",
-          "slug": "notification"
+          "term": "ai sre",
+          "slug": "ai-sre"
         },
         {
-          "term": "pipeline",
-          "slug": "pipeline"
+          "term": "anomaly",
+          "slug": "anomaly"
         },
         {
-          "term": "slo",
-          "slug": "slo"
+          "term": "api key",
+          "slug": "api-key"
         }
       ]
     },
@@ -3273,16 +3273,16 @@
       "letter": "O",
       "related": [
         {
-          "term": "variable",
-          "slug": "variable"
+          "term": "conditional execution",
+          "slug": "conditional-execution"
         },
         {
-          "term": "expression",
-          "slug": "expression"
+          "term": "custom stage",
+          "slug": "custom-stage"
         },
         {
-          "term": "step",
-          "slug": "step"
+          "term": "matrix",
+          "slug": "matrix"
         }
       ]
     },
@@ -3319,16 +3319,16 @@
       "letter": "P",
       "related": [
         {
-          "term": "role",
-          "slug": "role"
+          "term": "ai sre",
+          "slug": "ai-sre"
         },
         {
-          "term": "rbac",
-          "slug": "rbac"
+          "term": "anomaly",
+          "slug": "anomaly"
         },
         {
-          "term": "resource group",
-          "slug": "resource-group"
+          "term": "api key",
+          "slug": "api-key"
         }
       ]
     },
@@ -3388,16 +3388,16 @@
       "letter": "P",
       "related": [
         {
+          "term": "conditional execution",
+          "slug": "conditional-execution"
+        },
+        {
           "term": "custom stage",
           "slug": "custom-stage"
         },
         {
-          "term": "pipeline template",
-          "slug": "pipeline-template"
-        },
-        {
-          "term": "stage",
-          "slug": "stage"
+          "term": "matrix",
+          "slug": "matrix"
         }
       ]
     },
@@ -3480,16 +3480,16 @@
       "letter": "P",
       "related": [
         {
-          "term": "pipeline",
-          "slug": "pipeline"
+          "term": "conditional execution",
+          "slug": "conditional-execution"
         },
         {
-          "term": "stage",
-          "slug": "stage"
+          "term": "custom stage",
+          "slug": "custom-stage"
         },
         {
-          "term": "input set",
-          "slug": "input-set"
+          "term": "matrix",
+          "slug": "matrix"
         }
       ]
     },
@@ -3503,16 +3503,16 @@
       "letter": "P",
       "related": [
         {
+          "term": "conditional execution",
+          "slug": "conditional-execution"
+        },
+        {
           "term": "custom stage",
           "slug": "custom-stage"
         },
         {
-          "term": "pipeline",
-          "slug": "pipeline"
-        },
-        {
-          "term": "stage",
-          "slug": "stage"
+          "term": "matrix",
+          "slug": "matrix"
         }
       ]
     },
@@ -3687,12 +3687,12 @@
       "letter": "P",
       "related": [
         {
-          "term": "user",
-          "slug": "user"
+          "term": "ai sre",
+          "slug": "ai-sre"
         },
         {
-          "term": "service account",
-          "slug": "service-account"
+          "term": "anomaly",
+          "slug": "anomaly"
         },
         {
           "term": "api key",
@@ -3881,16 +3881,16 @@
       "letter": "R",
       "related": [
         {
-          "term": "sbom",
-          "slug": "sbom"
+          "term": "ai sre",
+          "slug": "ai-sre"
         },
         {
-          "term": "scan",
-          "slug": "scan"
+          "term": "anomaly",
+          "slug": "anomaly"
         },
         {
-          "term": "severity",
-          "slug": "severity"
+          "term": "api key",
+          "slug": "api-key"
         }
       ]
     },
@@ -4548,16 +4548,16 @@
       "letter": "S",
       "related": [
         {
+          "term": "change source",
+          "slug": "change-source"
+        },
+        {
           "term": "continuous verification",
           "slug": "continuous-verification"
         },
         {
-          "term": "health source",
-          "slug": "health-source"
-        },
-        {
-          "term": "verification type",
-          "slug": "verification-type"
+          "term": "error budget",
+          "slug": "error-budget"
         }
       ]
     },
@@ -4847,16 +4847,16 @@
       "letter": "S",
       "related": [
         {
-          "term": "slo",
-          "slug": "slo"
+          "term": "change source",
+          "slug": "change-source"
         },
         {
-          "term": "metric",
-          "slug": "metric"
+          "term": "continuous verification",
+          "slug": "continuous-verification"
         },
         {
-          "term": "health source",
-          "slug": "health-source"
+          "term": "error budget",
+          "slug": "error-budget"
         }
       ]
     },
@@ -4870,16 +4870,16 @@
       "letter": "S",
       "related": [
         {
-          "term": "sli",
-          "slug": "sli"
+          "term": "change source",
+          "slug": "change-source"
+        },
+        {
+          "term": "continuous verification",
+          "slug": "continuous-verification"
         },
         {
           "term": "error budget",
           "slug": "error-budget"
-        },
-        {
-          "term": "monitored service",
-          "slug": "monitored-service"
         }
       ]
     },
@@ -4985,16 +4985,16 @@
       "letter": "S",
       "related": [
         {
+          "term": "conditional execution",
+          "slug": "conditional-execution"
+        },
+        {
           "term": "custom stage",
           "slug": "custom-stage"
         },
         {
-          "term": "pipeline",
-          "slug": "pipeline"
-        },
-        {
-          "term": "pipeline template",
-          "slug": "pipeline-template"
+          "term": "matrix",
+          "slug": "matrix"
         }
       ]
     },
@@ -5008,16 +5008,16 @@
       "letter": "S",
       "related": [
         {
+          "term": "conditional execution",
+          "slug": "conditional-execution"
+        },
+        {
           "term": "custom stage",
           "slug": "custom-stage"
         },
         {
-          "term": "pipeline",
-          "slug": "pipeline"
-        },
-        {
-          "term": "pipeline template",
-          "slug": "pipeline-template"
+          "term": "matrix",
+          "slug": "matrix"
         }
       ]
     },
@@ -5123,16 +5123,16 @@
       "letter": "S",
       "related": [
         {
+          "term": "conditional execution",
+          "slug": "conditional-execution"
+        },
+        {
           "term": "custom stage",
           "slug": "custom-stage"
         },
         {
-          "term": "pipeline",
-          "slug": "pipeline"
-        },
-        {
-          "term": "pipeline template",
-          "slug": "pipeline-template"
+          "term": "matrix",
+          "slug": "matrix"
         }
       ]
     },
@@ -5169,16 +5169,16 @@
       "letter": "S",
       "related": [
         {
-          "term": "account",
-          "slug": "account"
+          "term": "ai sre",
+          "slug": "ai-sre"
         },
         {
-          "term": "module",
-          "slug": "module"
+          "term": "anomaly",
+          "slug": "anomaly"
         },
         {
-          "term": "build credit",
-          "slug": "build-credit"
+          "term": "api key",
+          "slug": "api-key"
         }
       ]
     },
@@ -5560,16 +5560,16 @@
       "letter": "U",
       "related": [
         {
-          "term": "user group",
-          "slug": "user-group"
+          "term": "ai sre",
+          "slug": "ai-sre"
         },
         {
-          "term": "role",
-          "slug": "role"
+          "term": "anomaly",
+          "slug": "anomaly"
         },
         {
-          "term": "rbac",
-          "slug": "rbac"
+          "term": "api key",
+          "slug": "api-key"
         }
       ]
     },
@@ -5698,16 +5698,16 @@
       "letter": "V",
       "related": [
         {
+          "term": "change source",
+          "slug": "change-source"
+        },
+        {
           "term": "continuous verification",
           "slug": "continuous-verification"
         },
         {
-          "term": "health source",
-          "slug": "health-source"
-        },
-        {
-          "term": "sensitivity",
-          "slug": "sensitivity"
+          "term": "error budget",
+          "slug": "error-budget"
         }
       ]
     },
@@ -5836,16 +5836,16 @@
       "letter": "W",
       "related": [
         {
-          "term": "node pool",
-          "slug": "node-pool"
+          "term": "ai sre",
+          "slug": "ai-sre"
         },
         {
-          "term": "cluster orchestrator",
-          "slug": "cluster-orchestrator"
+          "term": "anomaly",
+          "slug": "anomaly"
         },
         {
-          "term": "recommendation",
-          "slug": "recommendation"
+          "term": "api key",
+          "slug": "api-key"
         }
       ]
     },
@@ -6751,6 +6751,29 @@
         ]
       },
       {
+        "id": "cd.verification.change-source",
+        "term": "change source",
+        "definition": "An integration that reports deployment, infrastructure, or incident changes to Harness SRM so they can be correlated with service health data.",
+        "slug": "change-source",
+        "module": "cd",
+        "category": "verification",
+        "letter": "C",
+        "related": [
+          {
+            "term": "continuous verification",
+            "slug": "continuous-verification"
+          },
+          {
+            "term": "error budget",
+            "slug": "error-budget"
+          },
+          {
+            "term": "health source",
+            "slug": "health-source"
+          }
+        ]
+      },
+      {
         "id": "dbdevops.concepts.changeset",
         "term": "changeset",
         "definition": "A versioned unit of database schema change (table creation, column alteration, index addition) applied through Harness Database DevOps.",
@@ -7096,6 +7119,29 @@
         ]
       },
       {
+        "id": "platform.pipelines.conditional-execution",
+        "term": "conditional execution",
+        "definition": "A rule attached to a stage or step that determines whether it runs based on JEXL expressions, previous stage status, or runtime inputs.",
+        "slug": "conditional-execution",
+        "module": "platform",
+        "category": "pipelines",
+        "letter": "C",
+        "related": [
+          {
+            "term": "custom stage",
+            "slug": "custom-stage"
+          },
+          {
+            "term": "matrix",
+            "slug": "matrix"
+          },
+          {
+            "term": "output variable",
+            "slug": "output-variable"
+          }
+        ]
+      },
+      {
         "id": "platform.concepts.connector",
         "term": "connector",
         "definition": "A configuration object that stores connection details (URLs, credentials, authentication) for external systems such as cloud providers, Git repos, artifact registries, and monitoring tools.",
@@ -7151,16 +7197,16 @@
         "letter": "C",
         "related": [
           {
+            "term": "change source",
+            "slug": "change-source"
+          },
+          {
+            "term": "error budget",
+            "slug": "error-budget"
+          },
+          {
             "term": "health source",
             "slug": "health-source"
-          },
-          {
-            "term": "sensitivity",
-            "slug": "sensitivity"
-          },
-          {
-            "term": "verification type",
-            "slug": "verification-type"
           }
         ]
       },
@@ -7312,16 +7358,16 @@
         "letter": "C",
         "related": [
           {
-            "term": "pipeline",
-            "slug": "pipeline"
+            "term": "conditional execution",
+            "slug": "conditional-execution"
           },
           {
-            "term": "pipeline template",
-            "slug": "pipeline-template"
+            "term": "matrix",
+            "slug": "matrix"
           },
           {
-            "term": "stage",
-            "slug": "stage"
+            "term": "output variable",
+            "slug": "output-variable"
           }
         ]
       },
@@ -7740,6 +7786,29 @@
           {
             "term": "api key",
             "slug": "api-key"
+          }
+        ]
+      },
+      {
+        "id": "cd.verification.error-budget",
+        "term": "error budget",
+        "definition": "The allowed margin of SLO violation before alerts or policy actions trigger. It represents the difference between perfect reliability and the SLO target.",
+        "slug": "error-budget",
+        "module": "cd",
+        "category": "verification",
+        "letter": "E",
+        "related": [
+          {
+            "term": "change source",
+            "slug": "change-source"
+          },
+          {
+            "term": "continuous verification",
+            "slug": "continuous-verification"
+          },
+          {
+            "term": "health source",
+            "slug": "health-source"
           }
         ]
       },
@@ -8311,16 +8380,16 @@
         "letter": "H",
         "related": [
           {
+            "term": "change source",
+            "slug": "change-source"
+          },
+          {
             "term": "continuous verification",
             "slug": "continuous-verification"
           },
           {
-            "term": "sensitivity",
-            "slug": "sensitivity"
-          },
-          {
-            "term": "verification type",
-            "slug": "verification-type"
+            "term": "error budget",
+            "slug": "error-budget"
           }
         ]
       },
@@ -8816,6 +8885,29 @@
         ]
       },
       {
+        "id": "platform.pipelines.matrix",
+        "term": "matrix",
+        "definition": "A looping strategy that fans out a stage or step across multiple combinations of dimension values, enabling parallel execution of parameterized workloads.",
+        "slug": "matrix",
+        "module": "platform",
+        "category": "pipelines",
+        "letter": "M",
+        "related": [
+          {
+            "term": "conditional execution",
+            "slug": "conditional-execution"
+          },
+          {
+            "term": "custom stage",
+            "slug": "custom-stage"
+          },
+          {
+            "term": "output variable",
+            "slug": "output-variable"
+          }
+        ]
+      },
+      {
         "id": "fme.release-monitoring.metric",
         "term": "metric",
         "definition": "A metric measures events that are sent to Harness FME and can count the occurrence of events, measure event values, or measure event properties. Metrics are used to evaluate the impact of feature flags and experiments on user behavior and system performance.",
@@ -8908,6 +9000,52 @@
         ]
       },
       {
+        "id": "platform.concepts.module",
+        "term": "module",
+        "definition": "A discrete product capability within the Harness platform such as CI, CD, Feature Flags, Cloud Cost Management, or Security Testing Orchestration.",
+        "slug": "module",
+        "module": "platform",
+        "category": "concepts",
+        "letter": "M",
+        "related": [
+          {
+            "term": "ai sre",
+            "slug": "ai-sre"
+          },
+          {
+            "term": "anomaly",
+            "slug": "anomaly"
+          },
+          {
+            "term": "api key",
+            "slug": "api-key"
+          }
+        ]
+      },
+      {
+        "id": "cd.verification.monitored-service",
+        "term": "monitored service",
+        "definition": "A service and environment pair tracked by Harness SRM for health monitoring, change tracking, and continuous verification.",
+        "slug": "monitored-service",
+        "module": "cd",
+        "category": "verification",
+        "letter": "M",
+        "related": [
+          {
+            "term": "change source",
+            "slug": "change-source"
+          },
+          {
+            "term": "continuous verification",
+            "slug": "continuous-verification"
+          },
+          {
+            "term": "error budget",
+            "slug": "error-budget"
+          }
+        ]
+      },
+      {
         "id": "iacm.provider-registry.multiple-platforms",
         "term": "multiple platforms",
         "definition": "Supported platforms include Darwin/macOS (arm64, amd64), Linux (amd64), and Windows (amd64).",
@@ -8933,10 +9071,56 @@
     ],
     "N": [
       {
+        "id": "cacm.concepts.node-pool",
+        "term": "node pool",
+        "definition": "A group of compute nodes with shared configuration managed by Cluster Orchestrator for autoscaling and cost-optimized workload placement.",
+        "slug": "node-pool",
+        "module": "cacm",
+        "category": "concepts",
+        "letter": "N",
+        "related": [
+          {
+            "term": "ai sre",
+            "slug": "ai-sre"
+          },
+          {
+            "term": "anomaly",
+            "slug": "anomaly"
+          },
+          {
+            "term": "api key",
+            "slug": "api-key"
+          }
+        ]
+      },
+      {
         "id": "platform.concepts.notification",
         "term": "notification",
         "definition": "A message sent to users or channels (email, Slack, PagerDuty, Microsoft Teams) when a pipeline event occurs, such as stage completion, failure, or approval request.",
         "slug": "notification",
+        "module": "platform",
+        "category": "concepts",
+        "letter": "N",
+        "related": [
+          {
+            "term": "ai sre",
+            "slug": "ai-sre"
+          },
+          {
+            "term": "anomaly",
+            "slug": "anomaly"
+          },
+          {
+            "term": "api key",
+            "slug": "api-key"
+          }
+        ]
+      },
+      {
+        "id": "platform.concepts.notification-rule",
+        "term": "notification rule",
+        "definition": "A configured alert in Harness that fires on specific events such as pipeline failures, SLO breaches, governance violations, or approval requests.",
+        "slug": "notification-rule",
         "module": "platform",
         "category": "concepts",
         "letter": "N",
@@ -9014,6 +9198,29 @@
         "related": []
       },
       {
+        "id": "platform.pipelines.output-variable",
+        "term": "output variable",
+        "definition": "A variable published by a step or stage during pipeline execution that can be referenced by downstream steps using Harness expressions.",
+        "slug": "output-variable",
+        "module": "platform",
+        "category": "pipelines",
+        "letter": "O",
+        "related": [
+          {
+            "term": "conditional execution",
+            "slug": "conditional-execution"
+          },
+          {
+            "term": "custom stage",
+            "slug": "custom-stage"
+          },
+          {
+            "term": "matrix",
+            "slug": "matrix"
+          }
+        ]
+      },
+      {
         "id": "platform.concepts.overlay-input-set",
         "term": "overlay input set",
         "definition": "A layered input set in Harness that merges values from multiple input sets, allowing teams to compose runtime inputs from shared and team-specific configurations.",
@@ -9038,6 +9245,29 @@
       }
     ],
     "P": [
+      {
+        "id": "platform.concepts.permission",
+        "term": "permission",
+        "definition": "A specific action such as view, create, edit, or delete that can be granted on a resource type within a role in Harness RBAC.",
+        "slug": "permission",
+        "module": "platform",
+        "category": "concepts",
+        "letter": "P",
+        "related": [
+          {
+            "term": "ai sre",
+            "slug": "ai-sre"
+          },
+          {
+            "term": "anomaly",
+            "slug": "anomaly"
+          },
+          {
+            "term": "api key",
+            "slug": "api-key"
+          }
+        ]
+      },
       {
         "id": "platform.authentication.personal-access-token",
         "term": "personal access token",
@@ -9094,16 +9324,16 @@
         "letter": "P",
         "related": [
           {
+            "term": "conditional execution",
+            "slug": "conditional-execution"
+          },
+          {
             "term": "custom stage",
             "slug": "custom-stage"
           },
           {
-            "term": "pipeline template",
-            "slug": "pipeline-template"
-          },
-          {
-            "term": "stage",
-            "slug": "stage"
+            "term": "matrix",
+            "slug": "matrix"
           }
         ]
       },
@@ -9177,6 +9407,29 @@
         ]
       },
       {
+        "id": "platform.pipelines.pipeline-studio",
+        "term": "pipeline studio",
+        "definition": "The visual editor in Harness for building, configuring, and debugging pipelines using a drag-and-drop interface alongside YAML.",
+        "slug": "pipeline-studio",
+        "module": "platform",
+        "category": "pipelines",
+        "letter": "P",
+        "related": [
+          {
+            "term": "conditional execution",
+            "slug": "conditional-execution"
+          },
+          {
+            "term": "custom stage",
+            "slug": "custom-stage"
+          },
+          {
+            "term": "matrix",
+            "slug": "matrix"
+          }
+        ]
+      },
+      {
         "id": "fme.pipelines.pipeline-template",
         "term": "pipeline template",
         "definition": "A reusable end-to-end workflow that discovers eligible feature flags, lets you select a cleanup candidate, and generates a pull request with the proposed code changes.",
@@ -9186,16 +9439,16 @@
         "letter": "P",
         "related": [
           {
+            "term": "conditional execution",
+            "slug": "conditional-execution"
+          },
+          {
             "term": "custom stage",
             "slug": "custom-stage"
           },
           {
-            "term": "pipeline",
-            "slug": "pipeline"
-          },
-          {
-            "term": "stage",
-            "slug": "stage"
+            "term": "matrix",
+            "slug": "matrix"
           }
         ]
       },
@@ -9342,6 +9595,29 @@
         "term": "policy set",
         "definition": "A collection of policies in Harness grouped together and applied to specific events (on-save, on-run, on-step) at a defined scope (account, organization, or project).",
         "slug": "policy-set",
+        "module": "platform",
+        "category": "concepts",
+        "letter": "P",
+        "related": [
+          {
+            "term": "ai sre",
+            "slug": "ai-sre"
+          },
+          {
+            "term": "anomaly",
+            "slug": "anomaly"
+          },
+          {
+            "term": "api key",
+            "slug": "api-key"
+          }
+        ]
+      },
+      {
+        "id": "platform.concepts.principal",
+        "term": "principal",
+        "definition": "The entity that performs actions in Harness. A principal can be a user, service account, or API key and is the subject to which role bindings are attached.",
+        "slug": "principal",
         "module": "platform",
         "category": "concepts",
         "letter": "P",
@@ -9518,6 +9794,29 @@
         "definition": "A container in Harness Artifact Registry that stores and manages versioned artifacts such as Docker images, Helm charts, and generic packages.",
         "slug": "registry",
         "module": "ar",
+        "category": "concepts",
+        "letter": "R",
+        "related": [
+          {
+            "term": "ai sre",
+            "slug": "ai-sre"
+          },
+          {
+            "term": "anomaly",
+            "slug": "anomaly"
+          },
+          {
+            "term": "api key",
+            "slug": "api-key"
+          }
+        ]
+      },
+      {
+        "id": "scs.concepts.remediation-tracker",
+        "term": "remediation tracker",
+        "definition": "A tool in Harness SCS that tracks the lifecycle of vulnerability findings from detection through remediation, with assignees, deadlines, and status.",
+        "slug": "remediation-tracker",
+        "module": "scs",
         "category": "concepts",
         "letter": "R",
         "related": [
@@ -10191,16 +10490,16 @@
         "letter": "S",
         "related": [
           {
+            "term": "change source",
+            "slug": "change-source"
+          },
+          {
             "term": "continuous verification",
             "slug": "continuous-verification"
           },
           {
-            "term": "health source",
-            "slug": "health-source"
-          },
-          {
-            "term": "verification type",
-            "slug": "verification-type"
+            "term": "error budget",
+            "slug": "error-budget"
           }
         ]
       },
@@ -10481,6 +10780,52 @@
         ]
       },
       {
+        "id": "cd.verification.sli",
+        "term": "sli",
+        "definition": "A Service Level Indicator is a quantitative metric used to measure whether a Service Level Objective is being met, such as latency, error rate, or throughput.",
+        "slug": "sli",
+        "module": "cd",
+        "category": "verification",
+        "letter": "S",
+        "related": [
+          {
+            "term": "change source",
+            "slug": "change-source"
+          },
+          {
+            "term": "continuous verification",
+            "slug": "continuous-verification"
+          },
+          {
+            "term": "error budget",
+            "slug": "error-budget"
+          }
+        ]
+      },
+      {
+        "id": "cd.verification.slo",
+        "term": "slo",
+        "definition": "A Service Level Objective that defines a reliability target for a monitored service, expressed as a percentage of good requests or uptime over a rolling or calendar window.",
+        "slug": "slo",
+        "module": "cd",
+        "category": "verification",
+        "letter": "S",
+        "related": [
+          {
+            "term": "change source",
+            "slug": "change-source"
+          },
+          {
+            "term": "continuous verification",
+            "slug": "continuous-verification"
+          },
+          {
+            "term": "error budget",
+            "slug": "error-budget"
+          }
+        ]
+      },
+      {
         "id": "scs.concepts.slsa",
         "term": "slsa",
         "definition": "Supply-chain Levels for Software Artifacts. A framework for ensuring the integrity of software artifacts. Harness SCS generates SLSA attestations to prove build provenance.",
@@ -10582,16 +10927,16 @@
         "letter": "S",
         "related": [
           {
+            "term": "conditional execution",
+            "slug": "conditional-execution"
+          },
+          {
             "term": "custom stage",
             "slug": "custom-stage"
           },
           {
-            "term": "pipeline",
-            "slug": "pipeline"
-          },
-          {
-            "term": "pipeline template",
-            "slug": "pipeline-template"
+            "term": "matrix",
+            "slug": "matrix"
           }
         ]
       },
@@ -10605,16 +10950,16 @@
         "letter": "S",
         "related": [
           {
+            "term": "conditional execution",
+            "slug": "conditional-execution"
+          },
+          {
             "term": "custom stage",
             "slug": "custom-stage"
           },
           {
-            "term": "pipeline",
-            "slug": "pipeline"
-          },
-          {
-            "term": "pipeline template",
-            "slug": "pipeline-template"
+            "term": "matrix",
+            "slug": "matrix"
           }
         ]
       },
@@ -10720,16 +11065,16 @@
         "letter": "S",
         "related": [
           {
+            "term": "conditional execution",
+            "slug": "conditional-execution"
+          },
+          {
             "term": "custom stage",
             "slug": "custom-stage"
           },
           {
-            "term": "pipeline",
-            "slug": "pipeline"
-          },
-          {
-            "term": "pipeline template",
-            "slug": "pipeline-template"
+            "term": "matrix",
+            "slug": "matrix"
           }
         ]
       },
@@ -10739,6 +11084,29 @@
         "definition": "A collection of steps in a CI pipeline that share the same execution context (container image, resources) and can run sequentially or in parallel.",
         "slug": "step-group",
         "module": "ci",
+        "category": "concepts",
+        "letter": "S",
+        "related": [
+          {
+            "term": "ai sre",
+            "slug": "ai-sre"
+          },
+          {
+            "term": "anomaly",
+            "slug": "anomaly"
+          },
+          {
+            "term": "api key",
+            "slug": "api-key"
+          }
+        ]
+      },
+      {
+        "id": "platform.concepts.subscription",
+        "term": "subscription",
+        "definition": "The license tier and entitlements that govern which modules, features, and usage limits an account can access in Harness.",
+        "slug": "subscription",
+        "module": "platform",
         "category": "concepts",
         "letter": "S",
         "related": [
@@ -11129,6 +11497,29 @@
         ]
       },
       {
+        "id": "platform.concepts.user",
+        "term": "user",
+        "definition": "An individual identity that authenticates and interacts with the Harness platform. Users are assigned to user groups, hold role bindings, and can be provisioned via SCIM or SAML.",
+        "slug": "user",
+        "module": "platform",
+        "category": "concepts",
+        "letter": "U",
+        "related": [
+          {
+            "term": "ai sre",
+            "slug": "ai-sre"
+          },
+          {
+            "term": "anomaly",
+            "slug": "anomaly"
+          },
+          {
+            "term": "api key",
+            "slug": "api-key"
+          }
+        ]
+      },
+      {
         "id": "platform.concepts.user-group",
         "term": "user group",
         "definition": "A collection of users that share the same role bindings and notification preferences within Harness.",
@@ -11255,16 +11646,16 @@
         "letter": "V",
         "related": [
           {
+            "term": "change source",
+            "slug": "change-source"
+          },
+          {
             "term": "continuous verification",
             "slug": "continuous-verification"
           },
           {
-            "term": "health source",
-            "slug": "health-source"
-          },
-          {
-            "term": "sensitivity",
-            "slug": "sensitivity"
+            "term": "error budget",
+            "slug": "error-budget"
           }
         ]
       },
@@ -11368,6 +11759,29 @@
         "definition": "A self-service automation in Harness IDP that developers use to perform common tasks like creating a new service, onboarding a repo, or provisioning infrastructure.",
         "slug": "workflow",
         "module": "idp",
+        "category": "concepts",
+        "letter": "W",
+        "related": [
+          {
+            "term": "ai sre",
+            "slug": "ai-sre"
+          },
+          {
+            "term": "anomaly",
+            "slug": "anomaly"
+          },
+          {
+            "term": "api key",
+            "slug": "api-key"
+          }
+        ]
+      },
+      {
+        "id": "cacm.concepts.workload",
+        "term": "workload",
+        "definition": "A running application such as a Kubernetes pod or deployment tracked by Cluster Orchestrator for right-sizing recommendations and cost optimization.",
+        "slug": "workload",
+        "module": "cacm",
         "category": "concepts",
         "letter": "W",
         "related": [
