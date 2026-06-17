@@ -36,6 +36,24 @@ Custom Harness Template Library houses all the templates that are customized and
 This repository is stored in Harness Code Repository and is copied over locally when you first deploy HSF. 
 
 ### 4. [Factory Floors](../use-hsf/mini-factory-and-factory-floor.md)
+A **Factory Floor** will apply the core resource pipelines into an existing project. This will allow running the HSF framework directly within the consumer project and allows for distributed architecture.
+
+Each floor deploys the following pipelines: 
+
+- `Bulk Workspace Management`
+- `Create and Manage IACM Workspaces`
+- `Execute Drift Analysis`
+- `Plan and Validate IACM Workspaces`
+- `Provision Workspace`
+- `Teardown IACM Workspaces`
+
+### 5. [Mini Factory](../use-hsf/mini-factory-and-factory-floor.md)
+A **Mini Factory** is an isolated project within the Platform Management organization and is intended to be a place to collect and manage the project workspaces. As part of this, a new project is created.
+
+### 6. [Hub](../use-hsf/hsf-hub.md)
+**Hub** is a project that exposes all Harness IDP workflows as API-triggerable pipelines, enabling customers to integrate them into their own self-service portals.
+
+### 7. [Operating Modes](../use-hsf/hsf-hub.md)
 The different **operating modes** allows usage of HSF with and without Harness IDP.
 :::tip
 **Which operating mode should I use?**
