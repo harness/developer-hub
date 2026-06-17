@@ -11,12 +11,12 @@ This topic describes the Kubernetes Traffic Routing step parameters and use case
 This feature allows you to perform east-west routing of traffic. You would select a routing service mesh provider (currently supported SMI and Istio) and then configure one or more routes which are essentially groups of destinations and optional rules that applies for them.   
 
 :::warning SMI end of support
-**Effective July 20, 2026.**
+**Effective Aug 1, 2026.**
 
 Service Mesh Interface (SMI) was officially archived by the CNCF in October 2023 and is no longer maintained upstream. Harness is deprecating support for SMI as a traffic shifting provider in Harness Kubernetes deployments.
 
 - Existing SMI configurations are marked as deprecated in the Harness UI as of this announcement.
-- New SMI-based traffic routing configurations are blocked in Kubernetes deployment configuration effective **July 20, 2026**.
+- New SMI-based traffic routing configurations are blocked in Kubernetes deployment configuration effective **Aug 1, 2026**.
 - Use Istio as your traffic shifting provider. Harness CD provides full native Istio support for canary and blue-green Kubernetes deployments with equivalent functionality. Configure it from the **Istio - New Config option** section below.
 
 For questions, contact [Harness Support](mailto:support@harness.io).
@@ -46,7 +46,7 @@ Each provider will have some common configuration options and some provider spec
 ### Service Mesh Interface (SMI) - New Config option
 
 :::warning Deprecated
-SMI traffic shifting is deprecated. New SMI-based configurations are blocked in Kubernetes deployment configuration effective **July 20, 2026**. Use Istio as your traffic shifting provider instead.
+SMI traffic shifting is deprecated. New SMI-based configurations are blocked in Kubernetes deployment configuration effective **Aug 1, 2026**. Use Istio as your traffic shifting provider instead.
 :::
 
 Before you begin, make sure you have an understanding on what SMI is and how it works by [visiting their website](https://smi-spec.io/). 
