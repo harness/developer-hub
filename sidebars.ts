@@ -4676,14 +4676,20 @@ const sidebars: SidebarsConfig = {
           },
           { 
             type: 'doc', 
-            id: 'software-engineering-insights/harness-sei/insights/ai',
-            label: 'AI Insights',
+            id: 'software-engineering-insights/harness-sei/insights/business-alignment',
+            label: 'Business Alignment Insights',
+          },
+                    { 
+            type: 'doc', 
+            id: 'software-engineering-insights/harness-sei/insights/ai-engineering',
+            label: 'AI Engineering',
             className: 'sidebar-item-beta',
           },
           { 
             type: 'doc', 
-            id: 'software-engineering-insights/harness-sei/insights/business-alignment',
-            label: 'Business Alignment Insights',
+            id: 'software-engineering-insights/harness-sei/insights/ai',
+            label: 'AI Insights',
+            className: 'sidebar-item-beta',
           },
           { 
             type: 'doc', 
@@ -4694,7 +4700,7 @@ const sidebars: SidebarsConfig = {
           {
             type: 'doc',
             id: 'software-engineering-insights/harness-sei/insights/export',
-            label: 'Export AI DLC Insights',
+            label: 'Export Metrics',
           },
         ],
       },

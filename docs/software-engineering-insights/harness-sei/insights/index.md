@@ -1,7 +1,6 @@
 ---
 title: View Insights across Org Trees and Teams in AI DLC Insights
 description: Learn how to navigate the the Org Tree on the Insights dashboard to analyze engineering metrics at the organization, team, and developer levels.
-sidebar_position: 1
 id: index
 slug: /software-engineering-insights/harness-sei/insights
 redirect_from:

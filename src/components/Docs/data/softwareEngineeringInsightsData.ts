@@ -99,11 +99,11 @@ import { MODULES } from "@site/src/constants";
             link: "/docs/software-engineering-insights/harness-sei/insights/productivity",
           },
           {
-            title: "Analyze AI Insights",
+            title: "Analyze AI Engineering",
             module: MODULES.sei,
             description:
-              "Understand how AI coding assistants impact developer productivity.",
-            link: "/docs/software-engineering-insights/harness-sei/insights/ai",
+              "Measure AI coding agent adoption, output, and cost-effectiveness across your engineering organization.",
+            link: "/docs/software-engineering-insights/harness-sei/insights/ai-engineering",
           },
           {
             title: "Measure Business Alignment",

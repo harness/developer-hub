@@ -1,7 +1,7 @@
 ---
 title: AI DLC Insights release notes
 sidebar_label: AI DLC Insights
-date: 2026-05-27T10:00:10
+date: 2026-06-17T10:00:10
 sidebar_position: 15
 ---
 
@@ -12,13 +12,42 @@ import TabItem from '@theme/TabItem';
 
 These release notes describe recent changes to Harness AI-Driven Development Lifecycle Insights (AIDI).
 
-#### Last updated: May 27, 2026
+#### Last updated: June 17, 2026
 
 :::info About Harness Release Notes
 * **Progressive deployment:** Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview** page in Harness. In the new UI, go to **Account Settings**, **Account Details**, **General**, **Account Details**, and then **Platform Service Versions**.
 * **Security advisories:** Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 :::
+
+## June 2026
+
+### AI Engineering Insights is in beta
+----
+#### 2026-06-17
+
+AI Engineering Insights is in beta for AI DLC Insights, enabling teams to measure AI coding agent adoption, output volume, and cost-effectiveness across their engineering organization. The AI Engineering dashboard surfaces agent-level telemetry (sessions, token spend, ship rates, and commit attribution) and helps organizations understand the ROI of AI-assisted development at both the org and team level.
+
+You can access adoption, impact, and efficiency metrics at the organization level, or select an individual team in the **Org Tree** to focus the dashboard at the team level.
+
+![](./static/sei/ai-eng-insights.png)
+
+With AI Engineering Insights, teams can:
+
+- Track AI coding agent adoption and active usage across teams over time
+- Measure AI output volume with **AI Committed Code %**, **AI Lines Generated**, and **Ship Rate**
+- Monitor cost-effectiveness with **Total Spend**, **Spend/Dev**, **Spend/Commit**, and **Wastage**
+- Compare AI-assisted and non-AI developer performance across **PR Merged per Dev**, **PR Cycle Time**, and **Work Items Delivered per Dev**
+- Drill into individual developer metrics using the **Leaderboard** to identify usage patterns, productivity gains, and cost outliers
+
+To request access to the AI Engineering Insights beta, contact [Harness Support](/docs/software-engineering-insights/sei-support).
+
+#### Related documentation
+
+- [Harness AI DLC Agent](/docs/software-engineering-insights/harness-sei/setup-sei/agent/)
+- [Harness AI DLC Agent Data Security](/docs/software-engineering-insights/harness-sei/setup-sei/agent/data-security)
+- [AI Engineering Insights](/docs/software-engineering-insights/harness-sei/insights/ai-engineering)
+- [Harness Support](/docs/software-engineering-insights/sei-support)
 
 ## May 2026
 
