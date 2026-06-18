@@ -1,10 +1,15 @@
-/**
- * Client module to initialize Mixpanel with the token from Docusaurus config
- * This runs on every page load and ensures Mixpanel is properly initialized
- */
-
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import mixpanelLib from "mixpanel-browser";
+
+export function getSessionId() {
+  if (typeof sessionStorage === "undefined") return null;
+  let sessionId = sessionStorage.getItem("analytics_session_id");
+  if (!sessionId) {
+    sessionId = `sess_${Date.now()}_${Math.random().toString(36).slice(2, 11)}`;
+    sessionStorage.setItem("analytics_session_id", sessionId);
+  }
+  return sessionId;
+}
 
 export default (function () {
   if (!ExecutionEnvironment.canUseDOM) {
@@ -14,12 +19,10 @@ export default (function () {
   return {
     onRouteUpdate({ location }) {
       if (!window.__MIXPANEL_INITIALIZED__) {
-        // Expose mixpanel globally for console access
         window.mixpanel = mixpanelLib;
+        window.getAnalyticsSessionId = getSessionId;
 
-        // Get token from global variable (injected via headTags)
         const token = window.__MIXPANEL_TOKEN__;
-        console.log("[Mixpanel] Token received:", token ? `${token.substring(0, 8)}...` : "undefined");
 
         if (token && token.length > 0) {
           try {
@@ -27,16 +30,14 @@ export default (function () {
               debug: false,
               track_pageview: "full-url",
               persistence: "localStorage",
-              autocapture: true,
-              record_sessions_percent: 100,
+              autocapture: false,
+              record_sessions_percent: 2,
             });
+
             window.__MIXPANEL_INITIALIZED__ = true;
-            console.log("[Mixpanel] Initialized successfully");
           } catch (e) {
-            console.error("[Mixpanel] Initialization failed:", e);
+            // Silent failure - token might be invalid or Mixpanel unavailable
           }
-        } else {
-          console.warn("[Mixpanel] Token not found or empty");
         }
       }
     },

@@ -58,11 +58,15 @@ export function trackEvent(event, properties = {}) {
   initializeUser();
 
   try {
+    const sessionId = typeof window.getAnalyticsSessionId === "function"
+      ? window.getAnalyticsSessionId()
+      : null;
     mixpanel.track(event, {
       page_url: window.location.href,
       page_name: document.title,
       pathname: window.location.pathname,
       section: "database-devops",
+      ...(sessionId ? { session_id: sessionId } : {}),
       ...properties
     });
   } catch (e) {
