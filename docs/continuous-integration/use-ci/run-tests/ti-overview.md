@@ -69,20 +69,7 @@ Test Intelligence is comprised of a TI service, a Test Runner Agent, and the **T
 
 ## Enable Test Intelligence (TI)
 
-:::tip
-
-**We recommend using [**Test**](./tests-v2.md) Step (Test Intelligence v2)** to run your tests. This is a newer, simplified version of Test Intelligence, where you do not need to change your test commands - Test Intelligence will be automatically configured for you in runtime, making it easier to use.
-
-:::
-
-**For instructions on using the Test Intelligence (v2), go to: [Test Intelligence step](./tests-v2.md)**
-
-For instructions on using the Test Intelligence (v1), go to:
-
-- [Enable TI with Run Tests step for C#](./tests-v1/ti-for-csharp.md)
-- [Enable TI with Run Tests step for Java, Kotlin, or Scala](./tests-v1/ti-for-java-kotlin-scala.md)
-- [Enable TI with Run Tests step for Python](./tests-v1/ti-for-python.md)
-- [Enable TI with Run Tests step for Ruby](./tests-v1/ti-for-ruby.md)
+**For instructions on using the Test Intelligence step, go to: [Test Intelligence step](./tests-v2.md)**
 
 ### Handling report files with parallelism
 
@@ -134,3 +121,20 @@ Go to the [CI Knowledge Base](/docs/continuous-integration/ci-articles-faqs/cont
 - [Does Test Intelligence support dynamic code?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#does-test-intelligence-support-dynamic-code)
 - [Errors when running TI on Python code.](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#python-test-intelligence-errors)
 - [Test Intelligence fails with error 'Unable to get changed files list'.](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#test-intelligence-fails-with-error-unable-to-get-changed-files-list)
+
+---
+
+## Instructions for using the Run Tests step
+
+:::warning Run Tests step is legacy
+
+The [Run Tests step](/docs/category/run-tests-step/) is no longer the recommended way to use Test Intelligence. This section is maintained for customers currently using Test Intelligence with the Run Tests step. Go to [Test Intelligence step](./tests-v2.md) to use the current Test Intelligence implementation.
+
+:::
+
+For instructions on using Test Intelligence with the Run Tests step, go to:
+
+- [Enable TI with Run Tests step for C#](./tests-v1/ti-for-csharp.md)
+- [Enable TI with Run Tests step for Java, Kotlin, or Scala](./tests-v1/ti-for-java-kotlin-scala.md)
+- [Enable TI with Run Tests step for Python](./tests-v1/ti-for-python.md)
+- [Enable TI with Run Tests step for Ruby](./tests-v1/ti-for-ruby.md)

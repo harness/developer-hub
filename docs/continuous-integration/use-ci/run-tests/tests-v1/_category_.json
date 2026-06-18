@@ -7,5 +7,8 @@
     "link":{
         "type": "generated-index",
         "title": "Run Tests step"
+    },
+    "customProps": {
+        "sidebar_is_hidden": true
     }
 }
