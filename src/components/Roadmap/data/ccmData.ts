@@ -16,6 +16,18 @@ export const CcmData: Horizon = {
     feature: [
       {
         tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
+        title: "Fine-Tune Recommendations with Presets and Preferences",
+        description: "[Released: June 2026] Tailor recommendations to your reality. New presets and preferences for pass-through and governance recommendations let you align savings guidance with your organization's policies, risk tolerance, and operating model.",
+        backgroundColor: "var(--green-100)",
+      },
+      {
+        tag: [{value: "Commitment Orchestrator"}],
+        title: "Email Alerts for Expiring RIs and Savings Plans",
+        description: "[Released: June 2026] Stay ahead of every renewal. Proactive email alerts for expiring Reserved Instances and Savings Plans help teams renew or adjust commitments on time and avoid unexpected on-demand charges.",
+        backgroundColor: "var(--green-100)",
+      },
+      {
+        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
         title: "Auto-Inference of Savings",
         description: "Auto-inference of savings (partially realized) in Recommendations.",
         backgroundColor: "var(--green-100)",
@@ -216,42 +228,6 @@ export const CcmData: Horizon = {
         backgroundColor: "var(--yellow-50)",
       },
       {
-        tag: [{value: "AI Cost Management"}],
-        title: "Track AI Provider Spend Directly in Harness with AI Connectors",
-        description: "Bring your AI bills into the same pane of glass as your cloud spend. New AI connectors pull cost data from providers like OpenAI and Anthropic directly into Cloud Cost Management, so you can monitor, attribute, and optimize AI spend alongside the rest of your infrastructure.",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "AI Cost Management"}],
-        title: "Trace-Level Cost Visibility for Every AI Agent Run",
-        description: "Understand exactly what your AI agents cost, run by run. ",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "AI Cost Management"}],
-        title: "Measure AI Efficiency with Custom Unit Cost Metrics",
-        description: "Tie AI spend to the outcomes that matter to your business. Build custom unit cost metrics,to track trends over time, and prove the ROI of your AI investments.",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "AI Cost Management"}],
-        title: "Track AI Provider Spend Directly in Harness with AI Connectors",
-        description: "Bring your AI bills into the same pane of glass as your cloud spend. New AI connectors pull cost data from providers like OpenAI and Anthropic directly into Cloud Cost Management, so you can monitor, attribute, and optimize AI spend alongside the rest of your infrastructure.",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "AI Cost Management"}],
-        title: "Trace-Level Cost Visibility for Every AI Agent Run",
-        description: "Understand exactly what your AI agents cost, run by run. ",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "AI Cost Management"}],
-        title: "Measure AI Efficiency with Custom Unit Cost Metrics",
-        description: "Tie AI spend to the outcomes that matter to your business. Build custom unit cost metrics,to track trends over time, and prove the ROI of your AI investments.",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
         tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
         title: "FinOps AI Assistant for Anomalies",
         description: "Put an AI analyst on every cost anomaly. The FinOps AI Assistant explains what changed and why, surfaces likely root cause, and notifies the right stakeholders, turning hours of manual investigation into minutes.",
@@ -271,32 +247,8 @@ export const CcmData: Horizon = {
       },
       {
         tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
-        title: "Apply Recommendations at the Source with IaCM",
-        description: "Close the loop between insight and action. Native integration with Harness IaCM lets you apply cost recommendations directly in your infrastructure code, so savings are realized at the source instead of getting stuck in a backlog.",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
-        title: "Prove Realized Savings in Perspectives and Reports",
-        description: "Show the dollars you've actually saved. Track the real-world impact of applied recommendations directly in Perspectives and Reports, giving FinOps and finance teams the proof points they need to demonstrate ROI.",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
-        title: "Smarter Anomalies with Allowlisting for RIs, SPs, and Services",
-        description: "Cut the noise from expected spend. Allowlist Reserved Instances, Savings Plans, and specific services so anomaly detection focuses only on the unexpected changes that actually need your attention.",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
-        title: "Prioritize What Matters with Active vs. One-Time Anomalies",
-        description: "Focus on the spend that's still bleeding. Anomalies are now classified as 'active/ongoing' (the spike is still in effect) or 'one-time' (spend already returned to normal), so teams can prioritize the issues that are still costing money.",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
-        title: "Fine-Tune Recommendations to Fit Your Business",
-        description: "Tailor recommendations to your reality. New tuning controls for pass-through and governance recommendations let you align savings guidance with your organization's policies, risk tolerance, and operating model.",
+        title: "Reduce Anomaly Noise by Ignoring RIs and SPs",
+        description: "Cut the noise from expected spend. Ignore Reserved Instance and Savings Plan purchases so anomaly detection focuses only on the unexpected changes that actually need your attention.",
         backgroundColor: "var(--yellow-50)",
       },
       {
@@ -337,32 +289,14 @@ export const CcmData: Horizon = {
       },
       {
         tag: [{value: "Cluster Orchestrator"}],
-        title: "Enterprise-Grade Access Control for Cluster Orchestrator",
-        description: "Scale cluster optimization across teams with confidence. Fine-grained role-based access control gives platform teams the security and governance guardrails they need to roll out Cluster Orchestrator enterprise-wide.",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "Cluster Orchestrator"}],
-        title: "Cluster Orchestrator Comes to Azure Kubernetes Service (AKS)",
-        description: "Bring intelligent, workload-aware autoscaling to AKS. Full Cluster Orchestrator support for Azure includes automated discovery, scale up/down, advanced Spot handling (interruption, fallback, reverse fallback, and schedule windows), and Karpenter on the latest Azure version.",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "Cluster Orchestrator"}],
-        title: "Deploy Cluster Orchestrator as Code with Terraform",
-        description: "Roll out and standardize Cluster Orchestrator the GitOps way. A dedicated Terraform module makes deployment and configuration fully repeatable, version-controlled, and easy to scale across every cluster.",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "Cluster Orchestrator"}],
-        title: "Full Visibility into Cluster Orchestrator Savings and Activity",
-        description: "Know exactly what Cluster Orchestrator is doing and what it's saving you. Enhanced observability and monitoring give platform and FinOps teams clear, real-time insight into scaling decisions, Spot activity, and realized cost impact.",
+        title: "Cluster Orchestrator for Amazon EKS GA",
+        description: "Production-ready intelligent node autoscaling for Amazon EKS. Now generally available, Cluster Orchestrator delivers workload-driven scaling and distributed Spot orchestration to cut Kubernetes compute costs with enterprise confidence.",
         backgroundColor: "var(--yellow-50)",
       },
       {
         tag: [{value: "Cost visibility"}],
-        title: "More Accurate Kubernetes Cost Data on AWS",
-        description: "Trust your Kubernetes cost numbers. Improvements to K8s data ingestion for AWS deliver higher data accuracy, eliminate lost events and node-status discrepancies, and support delegate-less cluster cost collection.",
+        title: "More Accurate Kubernetes Cost Data on AWS and GCP",
+        description: "Trust your Kubernetes cost numbers. SCAD-based improvements to K8s data ingestion for AWS and GCP deliver higher data accuracy, eliminate lost events and node-status discrepancies, and support delegate-less cluster cost collection.",
         backgroundColor: "var(--yellow-50)",
       },
       {
@@ -375,18 +309,6 @@ export const CcmData: Horizon = {
         tag: [{value: "Commitment Orchestrator"}],
         title: "Commitment Orchestrator for Amazon RDS is Now GA",
         description: "Automate database commitment management at scale. Now generally available for Amazon RDS, Commitment Orchestrator continuously optimizes Reserved Instance coverage to drive maximum savings on your database spend.",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "Commitment Orchestrator"}],
-        title: "Never Get Surprised by Expiring RIs and Savings Plans",
-        description: "Stay ahead of every renewal. Proactive email alerts for expiring Reserved Instances and Savings Plans help teams renew or adjust commitments on time and avoid unexpected on-demand charges.",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "Commitment Orchestrator"}],
-        title: "Commitment Orchestrator Expands to Azure",
-        description: "Bring automated commitment optimization to Azure. Get full visibility into utilization, savings, coverage, and permissions so you can maximize the value of your Azure commitments alongside AWS.",
         backgroundColor: "var(--yellow-50)",
       },
       {
@@ -431,24 +353,6 @@ export const CcmData: Horizon = {
         description: "Always know the state of your data. A centralized Data Jobs Status hub with real-time notifications keeps you informed about active jobs, cloud provider outages, Cost Category backfills, and PDT updates, so you can trust your numbers and act without guesswork.",
         backgroundColor: "var(--yellow-50)",
       },
-      {
-        tag: [{value: "AI Cost Management"}],
-        title: "Track AI Provider Spend Directly in Harness with AI Connectors",
-        description: "Bring your AI bills into the same pane of glass as your cloud spend. New AI connectors pull cost data from providers like OpenAI and Anthropic directly into Cloud Cost Management, so you can monitor, attribute, and optimize AI spend alongside the rest of your infrastructure.",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "AI Cost Management"}],
-        title: "Trace-Level Cost Visibility for Every AI Agent Run",
-        description: "Understand exactly what your AI agents cost, run by run. ",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "AI Cost Management"}],
-        title: "Measure AI Efficiency with Custom Unit Cost Metrics",
-        description: "Tie AI spend to the outcomes that matter to your business. Build custom unit cost metrics,to track trends over time, and prove the ROI of your AI investments.",
-        backgroundColor: "var(--yellow-50)",
-      },
     ],
  },
 Later:{
@@ -487,6 +391,18 @@ Later:{
         tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
         title: "Recommendations OPA Policy - CD integration",
         description: "Recommendations OPA Policy with CD integration ",
+      },
+      {
+        tag: [{value: "Cluster Orchestrator"}],
+        title: "Cluster Orchestrator Comes to Azure Kubernetes Service (AKS)",
+        description:
+          "Bring intelligent, workload-aware autoscaling to AKS. Full Cluster Orchestrator support for Azure includes automated discovery, scale up/down, advanced Spot handling (interruption, fallback, reverse fallback, and schedule windows), and Karpenter on the latest Azure version.",
+      },
+      {
+        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
+        title: "Apply Recommendations at the Source with IaCM",
+        description:
+          "Close the loop between insight and action. Native integration with Harness IaCM lets you apply cost recommendations directly in your infrastructure code, so savings are realized at the source instead of getting stuck in a backlog.",
       },
     ],
   }
