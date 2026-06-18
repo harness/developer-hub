@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2026-06-08T10:00
+date: 2026-06-15T10:00
 sidebar_position: 10
 ---
 
@@ -54,6 +54,29 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 :::
 
 ## June 2026
+
+### Version 1.144.0
+
+<!-- June 2026 -->
+
+#### New Features and Enhancements
+
+- Added a test management dashboard that lists all tests including quarantined and flaky tests with their health status and last run results. (CI-21991)
+
+#### Fixed Issues
+
+- Fixed an issue where the `CI_OUTPUT_VARIABLES_AS_ENV` feature caused Cache Intelligence steps to fail with a forbidden error when AWS credentials were exported as output variables. Auto-injected CI steps now skip output-env injection to prevent credential conflicts. (CI-22830, ZD-114180)
+
+- Fixed an issue where log masking via `sanitize-patterns.txt` did not apply to container steps on Kubernetes. Log sanitization patterns now work consistently across both delegate-executed and container steps. (CI-23029, ZD-114984)
+
+- Improved hcli security by upgrading from v0.15 to v0.17 to resolve high-severity CVEs. (CI-23104, ZD-115977)
+
+#### Harness Images Updates
+
+| Image | Change | Previous Version | New Version |
+|-------|--------|------------------|-------------|
+| `harness/ci-addon` | Version update | 1.18.23 | 1.18.24 |
+| `harness/ci-lite-engine` | Version update | 1.18.23 | 1.18.24 |
 
 ### Version 1.143.0
 
