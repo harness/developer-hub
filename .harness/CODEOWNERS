@@ -46,7 +46,7 @@ README.md prateek.mittal@harness.io vikram.sahu@harness.io richard.black@harness
 /archive/  prateek.mittal@harness.io wei.guo@harness.io richard.black@harness.io austin.lai@harness.io
 
 # Feature Flag Registry
-/release-notes/static/ff-ga-feed.json austin.lai@harness.io richard.black@harness.io ambuj.lal@harness.io pooja.singhal@harness.io kalyan.sai@harness.io deepak.puthraya@harness.io mohit.garg@harness.io ravi.vankadari@harness.io navaneeth.kn@harness.io rohit.karelia@harness.io alexandru.casian@harness.io anshul@harness.io pritesh.chandaliya@harness.io pranay.shah@harness.io rajatha.ranganath@harness.io maanav.shah@harness.io hemanth.mantri@harness.io sakshi.jain@harness.io kuber.mehrotra@harness.io prateek.mittal@harness.io shashank.singh@harness.io ashok.prabhu@harness.io bharat.goel@harness.io kavita.maurya@harness.io roger.simms@harness.io
+/release-notes/static/ff-ga-feed.json austin.lai@harness.io richard.black@harness.io ambuj.lal@harness.io pooja.singhal@harness.io kalyan.sai@harness.io deepak.puthraya@harness.io mohit.garg@harness.io ravi.vankadari@harness.io navaneeth.kn@harness.io rohit.karelia@harness.io alexandru.casian@harness.io anshul@harness.io pritesh.chandaliya@harness.io pranay.shah@harness.io rajatha.ranganath@harness.io maanav.shah@harness.io hemanth.mantri@harness.io sakshi.jain@harness.io kuber.mehrotra@harness.io prateek.mittal@harness.io shashank.singh@harness.io ashok.prabhu@harness.io bharat.goel@harness.io kavita.maurya@harness.io roger.simms@harness.io vikyath.harekal@harness.io
 
 # Documentation 
 
@@ -169,12 +169,12 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io richard.black@harness.io a
 /docs/platform/harness-ai/ prateek.mittal@harness.io rohan.gupta@harness.iovikram.sahu@harness.io abhishek.thamman@harness.io vishal.vishwaroop@harness.io
 
 # IDP Docs
-/docs/internal-developer-portal/ shibam.dhar@harness.io manisha.sahasrabudhe@harness.io rashmi.hegde@harness.io sandeepa.kv@harness.io ashok.nayak@harness.io
-/release-notes/internal-developer-portal.md shibam.dhar@harness.io manisha.sahasrabudhe@harness.io rashmi.hegde@harness.io sandeepa.kv@harness.io ashok.nayak@harness.io
-/release-notes/static/idp/ shibam.dhar@harness.io manisha.sahasrabudhe@harness.io rashmi.hegde@harness.io sandeepa.kv@harness.io ashok.nayak@harness.io
-/release-notes/static/internal-developer-portal/ shibam.dhar@harness.io manisha.sahasrabudhe@harness.io rashmi.hegde@harness.io sandeepa.kv@harness.io ashok.nayak@harness.io
-/src/components/Roadmap/data/idpData.ts shibam.dhar@harness.io manisha.sahasrabudhe@harness.io rashmi.hegde@harness.io sandeepa.kv@harness.io ashok.nayak@harness.io
-/src/components/Docs/data/internalDeveloperPortal.ts shibam.dhar@harness.io manisha.sahasrabudhe@harness.io rashmi.hegde@harness.io sandeepa.kv@harness.io ashok.nayak@harness.io
+/docs/internal-developer-portal/ shibam.dhar@harness.io vikyath.harekal@harness.io rashmi.hegde@harness.io sandeepa.kv@harness.io ashok.nayak@harness.io
+/release-notes/internal-developer-portal.md shibam.dhar@harness.io vikyath.harekal@harness.io rashmi.hegde@harness.io sandeepa.kv@harness.io ashok.nayak@harness.io
+/release-notes/static/idp/ shibam.dhar@harness.io vikyath.harekal@harness.io rashmi.hegde@harness.io sandeepa.kv@harness.io ashok.nayak@harness.io
+/release-notes/static/internal-developer-portal/ shibam.dhar@harness.io vikyath.harekal@harness.io rashmi.hegde@harness.io sandeepa.kv@harness.io ashok.nayak@harness.io
+/src/components/Roadmap/data/idpData.ts shibam.dhar@harness.io vikyath.harekal@harness.io rashmi.hegde@harness.io sandeepa.kv@harness.io ashok.nayak@harness.io
+/src/components/Docs/data/internalDeveloperPortal.ts shibam.dhar@harness.io vikyath.harekal@harness.io rashmi.hegde@harness.io sandeepa.kv@harness.io ashok.nayak@harness.io
 
 # SCS Docs
 /docs/software-supply-chain-assurance/  lavakush.biyani@harness.io pranay.shah@harness.io sahil.jugiani@harness.io ambuj.lal@harness.io
@@ -249,7 +249,7 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io richard.black@harness.io a
 /docs/harness-cloud-operations/ @ankit-harness
 
 # FF GA Feed
-/release-notes/static/ff-ga-feed.json pooja.singhal@harness.io kalyan.sai@harness.io deepak.puthraya@harness.io mohit.garg@harness.io ravi.vankadari@harness.io navaneeth.kn@harness.io rohit.karelia@harness.io alexandru.casian@harness.io anshul@harness.io pritesh.chandaliya@harness.io pranay.shah@harness.io rajatha.ranganath@harness.io maanav.shah@harness.io hemanth.mantri@harness.io sakshi.jain@harness.io kuber.mehrotra@harness.io prateek.mittal@harness.io shashank.singh@harness.io ashok.prabhu@harness.io bharat.goel@harness.io kavita.maurya@harness.io roger.simms@harness.io
+/release-notes/static/ff-ga-feed.json pooja.singhal@harness.io kalyan.sai@harness.io deepak.puthraya@harness.io mohit.garg@harness.io ravi.vankadari@harness.io navaneeth.kn@harness.io rohit.karelia@harness.io alexandru.casian@harness.io anshul@harness.io pritesh.chandaliya@harness.io pranay.shah@harness.io rajatha.ranganath@harness.io maanav.shah@harness.io hemanth.mantri@harness.io sakshi.jain@harness.io kuber.mehrotra@harness.io prateek.mittal@harness.io shashank.singh@harness.io ashok.prabhu@harness.io bharat.goel@harness.io kavita.maurya@harness.io roger.simms@harness.io vikyath.harekal@harness.io
 
 # Harness Solutions Factory
 /docs/harness-solutions-factory jeremy.goodrum@harness.io ashley.kim@harness.io aditya.kashyap@harness.io riley.snyder@harness.io
