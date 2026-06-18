@@ -15,7 +15,7 @@ slug: /feature-management-experimentation/templates
   target="_self"
 />
 
-Remote Feature Flag Cleanup templates help you identify and remove stale <Tooltip id="fme.openfeature.feature-flag">feature flags</Tooltip> from your codebase. These remote templates automate feature flag cleanup by generating pull requests (PRs) with the proposed code changes. 
+Remote Feature Flag Cleanup templates help you identify and remove stale <Tooltip id="fme.feature-management.feature-flag">feature flags</Tooltip> from your codebase. These remote templates automate feature flag cleanup by generating pull requests (PRs) with the proposed code changes. 
 
 The cleanup agent requires an Anthropic API key. The templates are maintained in the [Harness Community GitHub repository](https://github.com/harness-community/solutions-architecture/tree/main/fme).
 

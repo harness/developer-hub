@@ -1,14 +1,17 @@
 ---
-title: Overview
-sidebar_label: Overview
-description: How to make Feature Management & Experimentation work for you
+title: Getting Started with Harness FME
+id: index
+slug: /feature-management-experimentation/getting-started
+description: How to make Feature Management & Experimentation work for you.
+sidebar_position: 1
 redirect_from:
   - /docs/feature-management-experimentation/feature-management/best-practices/o-reilly-book
+  - /docs/feature-management-experimentation/getting-started/overview
 ---
 
 In June 2024, [Harness acquired Split](https://www.harness.io/blog/harness-to-acquire-split), now called Harness Feature Management & Experimentation (FME). FME combines capabilities for feature delivery and control with built-in tools for measurement and learning, connecting data to every feature release and supporting modern practices such as continuous and progressive delivery.
 
-![](../static/overview.png)
+![](./static/overview.png)
 
 #### Architected for performance, security, and resilience
 
@@ -24,9 +27,9 @@ The stateless architecture scales to millions of users without performance degra
 
 FME is a product decision platform that helps engineering and product teams deliver software quickly and safely. It provides a unified feature flags and experimentation solution for making data-driven decisions. As teams mature, they can iterate faster, refine functionality, and reduce time to value.
 
-![](../static/maturity-curve.png)
+![](./static/maturity-curve.png)
 
-<Tooltip id="fme.openfeature.feature-flag">Feature flags</Tooltip> form the basis of the platform, reducing risk in continuous delivery and streamlining development. They allow you to assess application stability before exposing features to users and include safeguards like instant kill switches.  
+<Tooltip id="fme.feature-management.feature-flag">Feature flags</Tooltip> form the basis of the platform, reducing risk in continuous delivery and streamlining development. They allow you to assess application stability before exposing features to users and include safeguards like instant kill switches.  
 
 Functional and performance issues are critical concerns for any application. Engineering metrics such as API response time and page load time can be impacted by each feature. FME correlates these KPIs with feature changes, while granular targeting supports phased rollouts.
 
@@ -40,7 +43,7 @@ Behind the UI are the feature flagging functionality and analytics engine, which
 
 In addition, the platform is built with security and high availability in mind, along with third-party integrations to better leverage Split within your environment.
 
-![](../static/split-diagram-1.png)
+![](./static/split-diagram-1.png)
 
 Let’s look at the data flow in a little more detail. Split provides implementation options to meet your requirements. By far, the most common is to install the Split SDK in your application, whether using JavaScript, IOS or Android on the front end or any of the most common back end platforms. 
 
@@ -50,7 +53,7 @@ Because Split is a self-contained decisioning engine installed in your applicati
 
 In addition, because evaluations are executed in memory, Split is lightning fast, eliminating the potential negative impact on the performance of your application.
 
-![](../static/split-diagram-2.png)
+![](./static/split-diagram-2.png)
 
 When the evaluation is made whether or not to expose a feature to the user, the impressions are returned to Split along with the information necessary to track who’s seen what.
 
@@ -72,7 +75,7 @@ Let’s take a look at the UI for feature flags. We can narrow the left nav bar,
 
 We can choose this feature flag, which is rolling out a new feature for doing course registrations. At the moment, there are two treatments, either you get the new feature, or you don’t, in this case based on a random 50/50 flag targeting setup of all users. Otherwise, the feature is dark.
 
-![](../static/example.png)
+![](./static/example.png)
 
 Segments allow us to create groups of users or accounts. For example, as we just saw, a list of beta schools. I might also create a list for entitlements, such as an early access group, or QA teams for pre-production testing.
 
@@ -229,7 +232,7 @@ If you have on-premise systems that need to integrate with Split—such as a web
 :::info
 You’ll see entries marked “Active” (primary region) and “Passive” (secondary region), and traffic types labeled “Inbound” or “Outbound.” 
 
-![](../static/ips.png)
+![](./static/ips.png)
 
 This list may change in the event of a failover, so we recommend subscribing to Split's [Status Page](https://status.split.io/) for updates.
 :::

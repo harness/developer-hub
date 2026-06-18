@@ -10,32 +10,25 @@ import { MODULES } from "@site/src/constants"
   // Docs
   export const docsCards: CardSections = [
     {
-      name: "Getting started",
+      name: "Getting Started",
       description: "",
       list: [
         {
-          title: "What's supported",
-          module: MODULES.fme,
-          description:
-            "Explore the various platforms and technologies supported in Harness FME.",
-          link: "/docs/feature-management-experimentation/getting-started/whats-supported",
-        },
-        {
-          title: "Key concepts",
+          title: "Key Concepts",
           module: MODULES.fme,
           description:
             "Learn about key concepts in Harness FME, including feature flags, experiments, and more.",
-          link: "/docs/feature-management-experimentation/getting-started/key-concepts",
+          link: "/docs/feature-management-experimentation/key-concepts",
         },
         {
-          title: "Overview",
+          title: "Getting Started",
           module: MODULES.fme,
           description:
             "Set up Harness FME and start managing your first features.",
-          link: "/docs/feature-management-experimentation/getting-started/overview/",
+          link: "/docs/feature-management-experimentation/getting-started",
         },
         {
-          title: "SDKs and customer-deployed components",
+          title: "SDKs and Customer-deployed Components",
           module: MODULES.fme,
           description:
             "Integrate Harness FME with your preferred languages and platforms, and configure your environments and infrastructure for seamless feature management.",
@@ -125,6 +118,20 @@ import { MODULES } from "@site/src/constants"
       name: "Troubleshooting & Resources",
       description: "",
       list: [
+        {
+          title: "What's Supported",
+          module: MODULES.fme,
+          description:
+            "Explore the various platforms and technologies supported in Harness FME.",
+          link: "/docs/feature-management-experimentation/whats-supported",
+        },
+        {
+          title: "Harness FME's Approach to Statistics",
+          module: MODULES.fme,
+          description:
+            "Learn about the statistical methods and approaches used in Harness FME for experimentation analysis.",
+          link: "/docs/feature-management-experimentation/statistical-approach",
+        },
         {
           title: "Migrate from Split to Harness FME",
           module: MODULES.fme,

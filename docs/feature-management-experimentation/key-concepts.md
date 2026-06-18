@@ -1,15 +1,14 @@
 ---
 title: Key concepts
-sidebar_label: Key concepts
+sidebar_label: Key Concepts
 sidebar_position: 3
 description: Understand the key components of Harness FME to help you start targeting users and releasing features with confidence.
+redirect_from:
+  - /docs/feature-management-experimentation/getting-started/key-concepts
 ---
 
-## Overview
-
-Take 5 minutes to learn the foundational concepts of Harness Feature Management & Experimentation (FME).
-
 ## What is a feature flag?
+
 A feature flag wraps or gates a section of your code, allowing it to be selectively turned on or off remotely with precision, down to the level of an individual user, at any time, without a new code deployment.
 
 ### Decouple your deploy from your feature release

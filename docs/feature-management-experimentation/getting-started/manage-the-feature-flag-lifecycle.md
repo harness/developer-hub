@@ -3,9 +3,9 @@ title: Manage the Feature Flag Lifecycle
 sidebar_label: Manage the Feature Flag Lifecycle
 description: Learn how to manage the feature flag lifecycle with Harness FME.
 sidebar_position: 9
+redirect_from:
+  - /docs/feature-management-experimentation/getting-started/overview/manage-the-feature-flag-lifecycle
 ---
-
-## Overview
 
 As you scale utilization, it becomes increasingly important to have a strategy for how to best  clean up feature flags.  This should be a consideration from the very first feature flag you create.
 
@@ -15,7 +15,7 @@ When creating new feature flags, there are a variety of reasons for placing a ch
 
 The three main types of flags to consider are the following:
 
-![](../static/feature-flag-diagram.png)
+![](./static/feature-flag-diagram.png)
 
 * **Release Management** feature flags:
 
@@ -44,7 +44,7 @@ To surface the feature flags that fall into the first two criteria, within the *
 * Feature flags that have been modified in the last 7 days 
 * Feature flags that have not been modified in the last 30 days
 
-![](../static/environment-dropdown.png)
+![](./static/environment-dropdown.png)
 
 :::tip For Consistency 
 Before removing a feature flag from code, ensure that everyone in the population is receiving the same intended treatment, essentially rolled out to 100%.

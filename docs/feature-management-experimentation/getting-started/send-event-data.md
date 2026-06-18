@@ -3,9 +3,9 @@ title: Send Event Data
 sidebar_label: Send Event Data
 description: Learn how to send event data to Harness FME.
 sidebar_position: 4
+redirect_from:
+  - /docs/feature-management-experimentation/getting-started/overview/send-event-data
 ---
-
-## Overview
 
 Measure the impact of your feature rollout on your customer experience by sending Split event data and calculating metrics based on those events. Events allow you to record any actions your users perform and experiences your users encounter, such as response times or errors.
 
@@ -29,7 +29,7 @@ Learn more in the track section of each SDK reference guide ([JavaScript example
 
 To verify that events are being received by Harness FME, navigate to the **Event types** tab on the **Data Hub** from the FME navigation menu.
 
-![](../static/event-types.png)
+![](./static/event-types.png)
 
 You can see event types and a stream of events per event type. For more information about events, see [Events](/docs/feature-management-experimentation/release-monitoring/events/).
 

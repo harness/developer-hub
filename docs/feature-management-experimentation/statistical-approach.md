@@ -2,9 +2,9 @@
 title: Harness FME's approach to statistics
 description: Learn about Harness FME's approach to statistics.
 sidebar_position: 4
+redirect_from:
+  - /docs/feature-management-experimentation/getting-started/statistical-approach
 ---
-
-## Overview
 
 Harness FME's experimentation platform is designed to help you make confident, data-driven decisions. Our statistical framework is grounded in industry best practices and supports both flexibility and rigor. 
 

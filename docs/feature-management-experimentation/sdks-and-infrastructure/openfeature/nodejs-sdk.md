@@ -7,7 +7,7 @@ description: Integrate OpenFeature with Harness FME in your Node.js applications
 
 Integrate your Node.js applications with Harness FME using the <Tooltip id="fme.openfeature.provider">Node.js OpenFeature Provider</Tooltip>, a standardized, vendor-agnostic feature flagging API. This provider implements the OpenFeature specification and bridges the OpenFeature SDK with the Harness FME Node.js SDK.
 
-This page walks you through installing, configuring, and using the Node.js OpenFeature provider to evaluate <Tooltip id="fme.openfeature.feature-flag">feature flags</Tooltip> in your Node.js applications.
+This page walks you through installing, configuring, and using the Node.js OpenFeature provider to evaluate <Tooltip id="fme.feature-management.feature-flag">feature flags</Tooltip> in your Node.js applications.
 
 ### Before you begin
 
@@ -146,7 +146,7 @@ const config = booleanTreatment.flagMetadata.config
 
 ## Track events
 
-The Harness FME OpenFeature provider supports tracking user actions or conversion <Tooltip id="fme.openfeature.events">events</Tooltip> directly from your Node.js application.
+The Harness FME OpenFeature provider supports tracking user actions or conversion <Tooltip id="fme.feature-management.event">events</Tooltip> directly from your Node.js application.
 
 To enable event tracking, your evaluation context must include the following:
 

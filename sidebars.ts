@@ -2031,12 +2031,14 @@ const sidebars: SidebarsConfig = {
           value: 'New to FME?',
           className: 'horizontal-bar',
         },
+        'feature-management-experimentation/split-and-harness',
+        'feature-management-experimentation/key-concepts',
         {
           type: 'category',
-          label: 'Getting Started',
+          label: 'Get Started',
           link: {
-            type: 'generated-index',
-            slug: 'feature-management-experimentation/getting-started',
+            type: 'doc',
+            id: 'feature-management-experimentation/getting-started/index',
           },
           collapsed: true,
           items: [
@@ -2398,6 +2400,8 @@ const sidebars: SidebarsConfig = {
           value: 'Troubleshooting & Resources',
           className: 'horizontal-bar',
         },
+        'feature-management-experimentation/whats-supported',
+        'feature-management-experimentation/statistical-approach',
         {
           type: 'category',
           label: 'Split to Harness Migration',

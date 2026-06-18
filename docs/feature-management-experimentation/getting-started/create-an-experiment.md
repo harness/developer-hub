@@ -5,9 +5,8 @@ description: Learn how to create an experiment in Harness FME.
 sidebar_position: 7
 redirect_from:
   - /docs/feature-management-experimentation/feature-management/faqs/is-there-a-way-to-limit-the-number-of-users-in-an-experiment
+  - /docs/feature-management-experimentation/getting-started/overview/create-an-experiment
 ---
-
-## Overview
 
 [A/B testing](https://www.harness.io/harness-devops-academy/ab-testing), also known as split testing, allows you to evaluate how changes (such as a new feature, layout, or user experience) impact user behavior. By randomly assigning users to different variants and measuring performance across groups, you can determine whether a proposed change improves key metrics like conversions, engagement, or retention.
 

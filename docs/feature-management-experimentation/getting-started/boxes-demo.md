@@ -4,7 +4,8 @@ sidebar_label: Explore How Feature Flags Affect User Targeting
 description: Learn how to use this visualization tool to help you explore the effects of individual targeting, custom attributes, traffic allocation limits, and dynamic configurations on feature flags.
 sidebar_position: 3
 redirect_from:
-  - /docs/feature-management-experimentation/feature-management/best-practices/split-boxes-demo/
+  - /docs/feature-management-experimentation/feature-management/best-practices/split-boxes-demo
+  - /docs/feature-management-experimentation/getting-started/overview/boxes-demo
 ---
 
 :::info
@@ -17,7 +18,7 @@ The Split Boxes demo is a visualization tool that helps you understand how featu
 
 You can target users individually or in groups by defining targeting rules based on their attributes. For example, you might target a specific user by referencing a single cell (such as `b8` or `j5`), or define a segment that includes multiple values.
 
-![](.././static/split-boxes-demo.png)
+![](./static/split-boxes-demo.png)
 
 Each box represents a unique user ID in a grid-based layout, and the following targeting attributes are supported: **row**, **col**, or **account**.
   
@@ -33,9 +34,9 @@ You can also modify treatment configurations dynamically in the HTML file. For e
 
 The Boxes demo consists of three files that work together to create and evaluate a feature flag locally.
 
-- [**CreateBoxSplit.sh.zip**](.././static/create-box-split.sh.zip): A script for creating the feature flag using the Admin REST API.
-- [**Boxes\_split.txt**](.././static/boxes-split.txt): A text file that contains a baseline definition of the feature flag.
-- [**Boxes.htm**](.././static/boxes.htm): An HTML file that includes the SDK and can be run locally or hosted on a server.
+- [**CreateBoxSplit.sh.zip**](././static/create-box-split.sh.zip): A script for creating the feature flag using the Admin REST API.
+- [**Boxes\_split.txt**](././static/boxes-split.txt): A text file that contains a baseline definition of the feature flag.
+- [**Boxes.htm**](././static/boxes.htm): An HTML file that includes the SDK and can be run locally or hosted on a server.
 
 In the HTML file, provide the browser API key and the feature flag name as variables for the environment you want to use:
 
@@ -66,4 +67,4 @@ The script attempts both `x-api-key` and `Authorization: Bearer` authentication 
 
 To see feature flag changes immediately in Chrome, disable caching on the **Network** tab in Chrome Developer Tools.
 
-![](.././static/split-boxes-chrome.png)
+![](././static/split-boxes-chrome.png)

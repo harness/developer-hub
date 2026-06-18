@@ -7,7 +7,7 @@ description: Integrate OpenFeature with Harness FME in your .NET applications to
 
 Integrate your .NET applications with Harness FME using the <Tooltip id="fme.openfeature.provider">.NET OpenFeature Provider</Tooltip>, a standardized, vendor-agnostic feature flagging API. This provider implements the OpenFeature specification and bridges the OpenFeature SDK with the Harness FME .NET SDK.
 
-This page walks you through installing, configuring, and using the .NET OpenFeature provider to evaluate <Tooltip id="fme.openfeature.feature-flag">feature flags</Tooltip> in your .NET applications.
+This page walks you through installing, configuring, and using the .NET OpenFeature provider to evaluate <Tooltip id="fme.feature-management.feature-flag">feature flags</Tooltip> in your .NET applications.
 
 ### Before you begin
 

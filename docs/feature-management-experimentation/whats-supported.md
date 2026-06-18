@@ -1,15 +1,13 @@
 ---
 title: What's supported in Harness FME
 description: Learn about the various platforms and technologies that are supported in Harness Feature Management & Experimentation.
-sidebar_label: What's supported
+sidebar_label: What's Supported
 sidebar_position: 1
+redirect_from:
+  - /docs/feature-management-experimentation/getting-started/whats-supported
 ---
 
-This topic lists platform and technologies supported by Harness Feature Management & Experimentation (FME).
-
-For more information about FME features and functionality, go to the [Harness FME overview](/docs/feature-management-experimentation/getting-started/overview).
-
-To learn about upcoming and recently released features, go to the [Harness FME product roadmap](https://developer.harness.io/roadmap/#fme).
+This page describes supported platforms and technologies for Harness Feature Management & Experimentation (FME). To learn about upcoming and recently released features, go to the [Harness FME product roadmap](https://developer.harness.io/roadmap/#fme).
 
 ## Supported server-side SDKs
 

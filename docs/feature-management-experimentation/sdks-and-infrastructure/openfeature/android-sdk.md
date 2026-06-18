@@ -7,7 +7,7 @@ description: Integrate OpenFeature with Harness FME in your Android applications
 
 Integrate your Android applications with Harness FME using the <Tooltip id="fme.openfeature.provider">Android OpenFeature Provider</Tooltip>, a standardized, vendor-agnostic feature flagging API. This provider implements the OpenFeature specification and bridges the OpenFeature SDK with the Harness FME Android SDK.
 
-This page walks you through installing, configuring, and using the Android OpenFeature provider to evaluate <Tooltip id="fme.openfeature.feature-flag">feature flags</Tooltip> in your Android applications.
+This page walks you through installing, configuring, and using the Android OpenFeature provider to evaluate <Tooltip id="fme.feature-management.feature-flag">feature flags</Tooltip> in your Android applications.
 
 ### Before you begin
 
@@ -106,7 +106,7 @@ OpenFeatureAPI.setEvaluationContext(newContext)
 
 ## Observe provider events
 
-The Harness FME OpenFeature provider emits <Tooltip id="fme.openfeature.events">events</Tooltip> when provider state changes (for example, when flags update, configuration changes, or errors) occur. You can observe these events to update your application's behavior in real time.
+The Harness FME OpenFeature provider emits <Tooltip id="fme.feature-management.event">events</Tooltip> when provider state changes (for example, when flags update, configuration changes, or errors) occur. You can observe these events to update your application's behavior in real time.
 
 You can enable your application to:
 
@@ -148,7 +148,7 @@ lifecycleScope.launch {
 
 ## Track events
 
-The Harness FME OpenFeature provider supports tracking user actions or conversion <Tooltip id="fme.openfeature.events">events</Tooltip> directly from your Android application. 
+The Harness FME OpenFeature provider supports tracking user actions or conversion <Tooltip id="fme.feature-management.event">events</Tooltip> directly from your Android application. 
 
 To enable event tracking, your evaluation context must include the following:
 

@@ -3,6 +3,8 @@ title: Create a Feature Flag and Target Users
 sidebar_label: Create a Feature Flag and Target Users
 description: Learn how to create a feature flag and target users in Harness FME.
 sidebar_position: 2
+redirect_from:
+  - /docs/feature-management-experimentation/getting-started/overview/create-a-feature-flag
 ---
 
 ## Overview

@@ -28,35 +28,42 @@
   },
   "fme": {
     "feature-management": {
+      "feature-flag": "A conditional toggle that wraps a section of code, enabling it to be selectively turned on or off remotely (down to an individual user) without a new code deployment. Feature flags decouple deploys from releases and support canary rollouts, A/B testing, and instant kill switches.",
       "segment": "Segments are groups of users defined by specific attributes or behaviors. They allow you to target feature flags and experiments to specific subsets of your user base.",
       "attribute": "A key-value pair used to describe a user, account, or entity during feature flag evaluation. Attributes can be used in targeting rules to determine which treatment is served.",
       "identity": "A unique key representing a user, account, device, or other entity in Harness FME. Identities can store associated attribute data used for targeting workflows, search, and analysis.",
       "treatment": "A specific variation or value that a feature flag serves to a user. Each flag can have multiple treatments representing different behaviors or configurations.",
-      "targeting-rule": "A rule that determines which treatment a user receives based on attributes, segments, or percentage-based rollouts.",
+      "targeting-rule": "A rule that determines which treatment a user receives based on attributes, segments, or percentage-based rollouts. Rules are managed at the environment level, so staging and production can have independent configurations.",
       "rollout": "A gradual release of a feature to an increasing percentage of users, controlled through targeting rules in Harness FME.",
       "kill-switch": "The ability to immediately disable a feature flag and revert all users to the default treatment without a code deployment.",
       "default-treatment": "The treatment served to users who do not match any targeting rule. This is the fallback behavior when no other rule applies.",
       "flag-dependency": "A relationship between feature flags where one flag's evaluation depends on the state of another flag.",
       "flag-lifecycle": "The stages a feature flag goes through from creation to cleanup: active, rolled out, permanent, and archived.",
-      "stale-flag": "A feature flag that has been fully rolled out or is no longer actively managed, and is a candidate for code cleanup."
+      "stale-flag": "A feature flag that has been fully rolled out or is no longer actively managed, and is a candidate for code cleanup.",
+      "impression": "A record created automatically each time a feature flag is evaluated. It captures the unique key targeted, the treatment served, the targeting rule that drove the decision, and a timestamp. Impressions are used to attribute downstream events to flag evaluations.",
+      "event": "A record of user or system behavior (such as a page visit, button click, or transaction) associated with a unique key and timestamp. Events are not tied to a specific flag; FME's attribution engine links them to flag evaluations after the fact.",
+      "traffic-type": "A category of unique key used for targeting decisions, such as user, account, device, or anonymous. Each project supports up to ten traffic types. The traffic type on a flag determines which key FME uses when making and observing targeting decisions.",
+      "environment": "A scoped context within a project (such as development, staging, or production) where targeting rules for feature flags and segments are independently managed.",
+      "project": "A top-level container within a Harness account that partitions the work of different teams, product lines, or areas. Objects such as flags, segments, and metrics are not shared across projects.",
+      "tag": "A label used to organize and filter feature flags, segments, and metrics across the Harness FME interface. Tags can represent teams, epics, system layers, or any other grouping.",
+      "flag-status": "A team-defined indicator of which stage of a release a feature flag is in (e.g., in development, ready for review, launched). Used to filter and communicate rollout progress across teammates."
     },
     "release-monitoring": {
-      "metric": "A metric measures events that are sent to Harness FME and can count the occurrence of events, measure event values, or measure event properties. Metrics are used to evaluate the impact of feature flags and experiments on user behavior and system performance.",
+      "metric": "A metric measures events that are sent to Harness FME and can count the occurrence of events, measure event values, or measure event properties. Metrics are defined centrally and calculated across all flags automatically to surface unexpected impacts.",
       "key-metric": "A key metric is a specific metric that is critical for evaluating the success of a feature flag or experiment. It is used to determine whether a feature rollout or experiment is achieving its intended goals and can influence decisions about further rollouts or adjustments.",
       "guardrail-metric": "A guardrail metric is a specific type of metric used to monitor for negative impacts during a feature rollout or experiment. It serves as a safety check to ensure that the new feature does not cause significant issues or degrade user experience. If a guardrail metric indicates a problem, it can trigger alerts or rollbacks to mitigate potential harm.",
+      "alert": "A notification triggered when a metric threshold is exceeded during a rollout or experiment. Alerts are centrally defined once and automatically applied to every future rollout, so safety monitoring is on by default rather than configured per flag.",
       "statistical-significance": "Statistical significance is a measure of the likelihood that the observed results of an experiment are not due to random chance. It is typically determined by a p-value threshold (e.g., 0.05), indicating that there is a less than 5% probability that the results occurred by chance.",
       "significance-alert": "A significance alert is a notification triggered when the results of an experiment reach a predefined level of statistical significance, helping teams make informed decisions about feature rollouts.",
       "metric-alert": "A metric alert is a notification triggered when a specific metric reaches a predefined threshold, allowing teams to respond quickly to mitigate negative impacts or capitalize on positive trends.",
       "sample-size": "The number of users or events that must be collected before an experiment result can be considered statistically meaningful in Harness FME."
     },
     "openfeature": {
-      "feature-flag": "A feature flag is a conditional toggle in Harness FME that enables or disables specific functionality without deploying new code. It allows for controlled feature rollouts, A/B testing, and quick rollbacks if issues arise.",
       "targeting-key": "A unique identifier used to target specific users or entities when evaluating feature flags. It helps determine which variation of a flag should be served based on predefined rules and conditions.",
       "evaluation-api": "The Evaluation API is the main interface developers use to interact with feature flags. It enables applications to evaluate feature flags and adapt behavior based on the results, while supporting customization and integration with additional tools.",
       "evaluation-context": "The Evaluation Context holds contextual information used during flag evaluation. It can include static data (like application or host identifiers) and dynamic data (such as a client IP address), which can be passed explicitly or propagated automatically.",
       "provider": "An OpenFeature Provider wraps the Harness FME SDK, acting as a bridge between the OpenFeature SDK and the FME SDK. It translates OpenFeature function calls into operations handled by the FME SDK.",
-      "hook": "Hooks let you inject custom behavior at various points in the flag evaluation lifecycle. They can be used for validation, modifying the evaluation context, logging, telemetry, or custom functionality to extend the SDK.",
-      "events": "Events allow your application to respond to changes in provider state or flag configuration, such as readiness changes, errors, or updates to flag values."
+      "hook": "Hooks let you inject custom behavior at various points in the flag evaluation lifecycle. They can be used for validation, modifying the evaluation context, logging, telemetry, or custom functionality to extend the SDK."
     },
     "warehouse-native": {
       "metric": "A quantifiable measure used to track and assess the performance of a specific aspect of an experiment. In Warehouse Native, metrics are defined in Harness FME.",
@@ -74,6 +81,12 @@
       "custom-stage": "A custom stage is a user-defined stage in a pipeline that allows you to run custom logic or actions as part of a pipeline. FME steps are only supported in Custom stages.",
       "pipeline-template": "A reusable end-to-end workflow that discovers eligible feature flags, lets you select a cleanup candidate, and generates a pull request with the proposed code changes.",
       "stage-template": "A reusable cleanup stage that removes a specific feature flag and generates a pull request when the target flag and treatment are already known."
+    },
+    "sdks-and-infrastructure": {
+      "sdk": "A language-specific library you include and initialize in your application to evaluate feature flags locally. On initialization, the SDK retrieves targeting rules from a nearby CDN node, caches them in memory, and keeps them current via a streaming architecture, so flag evaluations are instant with no network call required at evaluation time.",
+      "split-evaluator": "A customer-hosted service that exposes flag evaluation as a REST API. It is an alternative to embedding an FME SDK directly and is intended for environments or languages that do not have a published FME SDK. Like the SDK, the Split Evaluator never sends private user data to the Harness network.",
+      "cdn": "A content delivery network used by the FME SDK to retrieve and cache targeting rules close to your application. Rules are fetched from the nearest CDN node on SDK initialization and updated in real time via streaming.",
+      "streaming-architecture": "The mechanism by which FME SDKs receive real-time updates to targeting rules in milliseconds, without polling. Changes made in the Harness UI propagate to all SDK instances automatically."
     }
   },
   "sei": {
