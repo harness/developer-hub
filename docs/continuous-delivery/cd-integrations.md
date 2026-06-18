@@ -99,7 +99,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 | GITOPS_GET_APP_DETAILS_STEP | Enables users to fetch the details and status of their application. <b> This feature is in Limited GA. </b> |
 | CDS_HELM_STEADY_STATE_CHECK_1_16 | Allow users leveraging Kubernetes version 1.16 or later to perform steady state check for Helm deployments. <b> This feature is in Limited GA. </b> |
 | OPA_PIPELINE_GOVERNANCE | Enables [Policy as code](/docs/platform/governance/policy-as-code/harness-governance-overview) for a Harness account. <b> This feature is GA. </b> |
-| CDS_HELM_VERSION_3_8_0 | Sets the default version of Helm to 3.8 when using the Harness Helm delegate. <b> This feature is in Limited GA. </b> |
 | NG_PIPELINE_TEMPLATE | Enables [Harness templates](https://developer.harness.io/docs/platform/templates/create-pipeline-template). <b> This feature is Limited GA. </b> |
 | OPA_GIT_GOVERNANCE | Store and fetch your <a href="/docs/platform/governance/policy-as-code/configure-gitexperience-for-opa">OPA policies in Git.</a>. <b> This feature is Limited GA. </b> |
 | NG_CUSTOM_STAGE | Enables the[Custom stage](/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) for use in a pipeline. <b> This feature is GA. </b> |

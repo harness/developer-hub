@@ -22,7 +22,7 @@ import PlatformList from '/docs/continuous-delivery/shared/platform-support.md'
 
 - **Overview:**
   - [Kubernetes](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview)
-  - [Helm charts](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart) (v2 and v3)
+  - [Helm charts](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart) (v3)
   - [Kustomize](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-quickstart)
   - Local ([Harness Community Edition](/docs/continuous-delivery/deploy-srv-diff-platforms/community-ed/harness-community-edition-overview))
 
@@ -61,8 +61,7 @@ import PlatformList from '/docs/continuous-delivery/shared/platform-support.md'
   - Tooling:
     - OpenShift - oc client binary
     - Kustomize - kustomize binary
-    - Helm - Helm 3.12 (default) and 2.8 binary
-    - Helm 3.8 supported via feature flag `CDS_HELM_VERSION_3_8_0`
+    - Helm - Helm v3.15.4 (shipped); Helm v3 versions up to v3.21.1 are supported
 - **Limitations:**
   - Helm:
     - Helm Hooks are not supported for this swimlane. Harness manages and orchestrates the manifests and their release.
@@ -230,15 +229,14 @@ To use an AKS cluster for deployment, the AKS cluster parameter `disableLocalAcc
   - AWS Elastic Kubernetes Service
   - Red Hat OpenShift
 - **Versions and tooling support:**
-  - Helm Client Versions: 2.8 - 3.8
+  - Helm Client Versions: Harness ships Helm v3.15.4; Helm v3 versions up to v3.21.1 are supported
   - We support what each of the Cloud Providers support, we recommend users to keep their binary versions up to date
-  - By default Harness ships with helm client 3.12.
   - Tooling:
     - OpenShift - oc client binary
     - Kustomize - kustomize binary
-    - Helm - Helm 3.12 & 2.8 binary. Helm 3.8 can be supported via feature flag.
+    - Helm - Helm v3.15.4 (shipped)
 - **Limitations:**
-  - Helm 2 is deprecated so there is limited support for Helm 2.
+  - Helm v2 is not supported. Only Helm v3 is supported.
   - Helm 3 is now the default for Harness Helm Chart Deployments.
   - Helm Plugins are not supported
   - Only Basic Deployment Strategy supported (No Canary or Blue-Green Support Out of the box)

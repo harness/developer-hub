@@ -425,7 +425,7 @@ Here's a summary of the step's tasks that you will see in the step log once its 
 2. **Exporting variables:**
    1. Several environment variables are set using the `export` command, including `PLUGIN_SAM_TEMPLATE_FILE_PATH`, `PLUGIN_VALUES_YAML_FILE_PATH`, and `PLUGIN_VALUES_YAML_CONTENT`. These variables are exported to be used in subsequent commands.
 3. **Resolving expressions in SAM template:**
-   1. The command `/opt/harness/client-tools/go-template/v0.4.1/go-template -t template.yaml -f values.yaml -o .` is executed to resolve expressions in the SAM template file based on the values provided in values.yaml.
+   1. The command `/opt/harness/client-tools/go-template/v0.4.15/go-template -t template.yaml -f values.yaml -o .` is executed to resolve expressions in the SAM template file based on the values provided in values.yaml.
    2. The resolved SAM template content is displayed in the log before and after expression resolution.
 4. **Building SAM application code:**
    1. The command `java -jar /opt/harness/sam-build.jar` is executed to build the SAM application.
