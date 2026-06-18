@@ -55,7 +55,7 @@ Each entity in the blueprint is composed of **2 main parts**:
 
 **1. Backend** - Describes the lifecycle implementation of the entity
 - Defines **how** the entity is provisioned, deployed, or managed
-- Specifies the **backend type** (`HarnessIACM` for infrastructure, `Catalog` for services). Go to [Backend Types](/docs/internal-developer-portal/environment-management/blueprints/env-blueprint-yaml#backend-types) to learn more.
+- Specifies the **backend type** (`HarnessIACM` for infrastructure, `Catalog` or `HarnessCD` for services). Go to [Backend Types](/docs/internal-developer-portal/environment-management/blueprints/env-blueprint-yaml#backend-types) to learn more.
 - Contains configuration values and operational steps
 
 **2. Interface** - Defines how the entity relates to other entities specified in the blueprint
@@ -70,7 +70,7 @@ entities:
     dependencies: []      # List of entities this depends on
     inputs: {}           # User-configurable parameters
   backend:                # Lifecycle implementation
-    type: <backend-type>  # HarnessIACM or Catalog
+    type: <backend-type>  # HarnessIACM, Catalog, or HarnessCD
     values: {}           # Configuration and settings
     steps: {}            # Operational steps (for IaCM)
 ```
@@ -96,7 +96,7 @@ entities:
 
 | Parameter | Type | Description | Example |
 |-----------|------|-----------|---------|
-| `type` | string | Backend type for entity provisioning | `HarnessIACM`, `Catalog` |
+| `type` | string | Backend type for entity provisioning | `HarnessIACM`, `Catalog`, `HarnessCD` |
 | `values` | object | Configuration settings specific to the backend type | Varies by backend type |
 | `steps` | object | Operational steps for lifecycle management **(IaCM only)** | `{"create": {"template": "MyTemplate"}}` |
 
@@ -104,7 +104,7 @@ entities:
 
 ### Backend Types
 
-Environment Blueprints support two main **backend types**:
+Environment Blueprints support three main **backend types**:
 
 ---
 
@@ -241,6 +241,13 @@ entities:
 | `variables` | object | Input variables passed to the component | `{"replicas": "${{entity.config.replicas}}"}` |
 | `environment` | object | Target deployment environment specification | See environment parameters below |
 
+:::caution
+The `values.variables` field maps to service-level variables on the Harness Service, not pipeline-level variables. If your deployment pipeline defines variables at the pipeline level (for example, `pipeline.variables.COMMIT_SHA`), those variables cannot be resolved through `values.variables`. Use the [HarnessCD backend](#3-harnesscd-backend-services) instead and pass pipeline variables under `steps.apply.variables`.
+:::
+
+**Environment Parameters (`backend.values.environment`)**
+
+
 **Environment Parameters (`backend.values.environment`)**
 
 | Parameter | Type | Description | Example |
@@ -260,6 +267,77 @@ entities:
 |------|----------|-------------|------------|
 | `apply` | Yes | Deploys the service using the specified pipeline | `pipeline` |
 | `destroy` | Yes | Removes the deployed service using the specified pipeline | `pipeline` |
+
+---
+
+#### 3. HarnessCD Backend (Services)
+
+Used for deploying application services when your deployment pipelines use pipeline-level variables. Unlike the `Catalog` backend type, where `values.variables` maps to service-level variables on the Harness Service, the `HarnessCD` backend type lets you define pipeline variables (for example, `COMMIT_SHA`) directly under `steps.apply.variables`.
+
+In this definition, `backend.type` is set to `HarnessCD`.
+
+**YAML Structure**
+
+```yaml {7}
+entities:
+- identifier: backend
+  interface:
+    dependencies:
+    - identifier: namespace
+  backend:
+    type: HarnessCD
+    values:
+      service: ssem           # Harness CD service identifier
+      variables:                  # Service-level variables (not pipeline-level)
+      environment:
+        identifier: mycluster
+        infra:
+          identifier: ssemteam
+          namespace: my-app-${{env.config.namespace}}
+    steps:
+      apply:
+        pipeline: Deploy
+        variables:                # Pipeline-level variables
+          COMMIT_SHA: ${{env.config.COMMIT_SHA}}
+      destroy:
+        pipeline: Uninstall
+```
+
+**HarnessCD Backend (`backend.values`)**
+
+| Parameter | Type | Description | Example |
+|-----------|------|-------------|---------|
+| `service` | string | Harness CD service identifier | `frontend`, `backend` |
+| `variables` | object | Service-level input variables passed to the Harness Service | `{"IMAGE_TAG": "${{env.config.IMAGE_TAG}}"}` |
+| `environment` | object | Target CD environment specification | See Environment Parameters below |
+
+**Environment Parameters (`backend.values.environment`)**
+
+| Parameter | Type | Description | Example |
+|-----------|------|-------------|---------|
+| `identifier` | string | CD Service Environment identifier where the service will be deployed | `mycluster` |
+| `infra` | object | Infrastructure specification within the environment | See infra parameters below |
+
+**Infrastructure Parameters (`backend.values.environment.infra`)**
+
+| Parameter | Type | Description | Example |
+|-----------|------|-------------|---------|
+| `identifier` | string | Infrastructure identifier | `ssemteam` |
+| `namespace` | string | Kubernetes namespace for the deployment (supports templating) | `my-app-${{env.config.name}}` |
+
+**HarnessCD Backend Steps (`backend.steps`)**
+
+| Step | Required | Description | Parameters |
+|------|----------|-------------|------------|
+| `apply` | Yes | Deploys the service using the specified pipeline | `pipeline`, `variables` |
+| `destroy` | Yes | Removes the deployed service using the specified pipeline | `pipeline` |
+
+**Step Parameters (`backend.steps.apply`)**
+
+| Parameter | Type | Description | Example |
+|-----------|------|-------------|---------|
+| `pipeline` | string | Deploy pipeline identifier | `Deploy` |
+| `variables` | object | Pipeline-level variables passed directly to the pipeline at execution time | `{"COMMIT_SHA": "${{env.config.COMMIT_SHA}}"}` |
 
 ---
 
