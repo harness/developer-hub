@@ -152,8 +152,10 @@ The following Artifact Registry events are available as conditions today:
 
 - **Dependency Firewall Exemption Requested**: Fires when a developer submits a new exemption request from the Policy Violations tab.
 - **Dependency Firewall Exemption Status Changed**: Fires when an existing exemption transitions to `APPROVED` or `REJECTED`.
+- **Lifecycle Policy Execution Completed**: Fires when a scheduled cleanup rule finishes executing.
+- **Lifecycle Policy Dry Run Execution Completed**: Fires when a dry run (manual or scheduled) finishes.
 
-For background on the exemption workflow these events describe, see [Dependency Exemptions](/docs/artifact-registry/dependency-firewall/exemptions).
+For background on the exemption workflow, see <a href="/docs/artifact-registry/dependency-firewall/exemptions" target="_blank">Dependency Exemptions</a>. For background on lifecycle rules, see <a href="/docs/artifact-registry/lifecycle-rules/overview" target="_blank">Lifecycle Rules</a>.
 
 ### Configuration Steps
 
@@ -177,9 +179,11 @@ For background on the exemption workflow these events describe, see [Dependency 
 3. **Set Conditions**
    - Click **+ Add Condition** to specify when notifications trigger
    - Enter a **Condition Name**
-   - From **Select Artifact Registry Events**, choose one or both:
+   - From **Select Artifact Registry Events**, choose the relevant events:
      - **Dependency Firewall Exemption Requested**
      - **Dependency Firewall Exemption Status Changed**
+     - **Lifecycle Policy Execution Completed**
+     - **Lifecycle Policy Dry Run Execution Completed**
    - Click **Apply**, then **Continue**
 
    <DocImage
