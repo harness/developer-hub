@@ -171,6 +171,18 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## June 2026
 
+### Version 26.06.89401 <!-- June 17, 2026 -->
+
+#### Fixed issues
+
+- Fixed ECS scheduled scaling failing with Instant deserialization error when start_time or end_time fields contain timezone offsets (for example, +05:30). The issue occurred because the Jackson JSON parser could not deserialize timezone-aware timestamps in PutScheduledActionRequest. The fix adds JavaTimeModule to handle ISO-8601 timestamps with timezone offsets. [CDS-125473]
+- Fixed NullPointerException in QA CD service error reporting when password resolution returns null. The issue occurred because error handling did not check for null password resolution before accessing it. The fix adds a guardrail to handle null resolution gracefully. [CDS-125273]
+- Fixed SMP AWS connectors failing with "Unknown error occurred" message. [CCM-33161]
+- Fixed runtime support missing for destinations, headerRoutingAdd, and headerRoutingRemove fields in step configurations. The issue occurred because these fields were not marked as runtime-capable in the backend. The fix adds runtime support for all three fields. [CDS-125162]
+- Fixed Terraform Cloud Apply step succeeding but retrying due to loss of log streaming. The issue occurred because log streaming would intermittently disconnect, causing the step to retry even though the apply operation completed successfully. The fix adds retry logic to maintain log streaming connections. [CDS-125110]
+- Fixed unclear error message when CD Deploy Stage uses invalid or empty cluster name in EKS Infrastructure. Previously, empty cluster names caused shell script steps to fail with misleading JSON marshalling errors instead of validation failures. The issue occurred because delegate-side validation was missing for EKS cluster names. The fix adds proper validation and now clearly indicates when the cluster name is empty. [CDS-124973]
+- Fixed HelmCanaryDeploy failing with delegate selector collision when using delegate-pinned Git connectors with different selectors. The issue occurred because CdAsyncChainExecutableHelper.getAsyncChainExecutableResponse() hardcoded passFullSelectors=false, bypassing the CDS_ASYNC_EXECUTABLE_USE_SELECTORS feature flag and preventing step-over-connector precedence. The fix routes through the 5-param mapTaskRequestToDelegateTaskRequest overload, which respects the feature flag to preserve selector origins. This fix requires the feature flag CDS_ASYNC_EXECUTABLE_USE_SELECTORS to be enabled. [CDS-124714]
+
 ### Version 26.06.89309 <!-- June 11, 2026 -->
 
 #### Fixed issues
