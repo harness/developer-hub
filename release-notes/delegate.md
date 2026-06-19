@@ -183,6 +183,11 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 - Fixed unclear error message when CD Deploy Stage uses invalid or empty cluster name in EKS Infrastructure. Previously, empty cluster names caused shell script steps to fail with misleading JSON marshalling errors instead of validation failures. The issue occurred because delegate-side validation was missing for EKS cluster names. The fix adds proper validation and now clearly indicates when the cluster name is empty. [CDS-124973]
 - Fixed HelmCanaryDeploy failing with delegate selector collision when using delegate-pinned Git connectors with different selectors. The issue occurred because CdAsyncChainExecutableHelper.getAsyncChainExecutableResponse() hardcoded passFullSelectors=false, bypassing the CDS_ASYNC_EXECUTABLE_USE_SELECTORS feature flag and preventing step-over-connector precedence. The fix routes through the 5-param mapTaskRequestToDelegateTaskRequest overload, which respects the feature flag to preserve selector origins. This fix requires the feature flag CDS_ASYNC_EXECUTABLE_USE_SELECTORS to be enabled. [CDS-124714]
 
+### Version 26.06.89310 <!-- June 19, 2026 -->
+
+#### Fixed issues
+- Resolved CVE-2021-28170 in glassfish. [DEL-10281]
+
 ### Version 26.06.89309 <!-- June 11, 2026 -->
 
 #### Fixed issues
