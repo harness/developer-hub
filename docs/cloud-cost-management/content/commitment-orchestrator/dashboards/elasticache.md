@@ -32,7 +32,7 @@ The dashboard will show:
   
     Both net amortized and unblended costs are displayed, allowing you to analyze your spend in the format that best suits your financial reporting needs.
 
-      <DocImage path={require('../../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/ecs-two.png')} width="100%" height="100%" title="Click to view full size image" />
+      <DocImage path={require('../../../4-use-ccm-cost-optimization/commitment-orch-docs/managing-commitments-static/ecs-two.png')} width="100%" height="100%" title="Click to view full size image" />
 
 
 ------
@@ -44,7 +44,7 @@ The dashboard will show:
   
   Along with a graph for trends and breakdown. You can view compute coverage either by cost or by hours. When viewing by hours, it shows you the commitment hours and the coverage by purchase option in hours.
 
-      <DocImage path={require('../../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/ecs-three.png')} width="100%" height="100%" title="Click to view full size image" />
+      <DocImage path={require('../../../4-use-ccm-cost-optimization/commitment-orch-docs/managing-commitments-static/ecs-three.png')} width="100%" height="100%" title="Click to view full size image" />
 
 
 

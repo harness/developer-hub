@@ -1,6 +1,6 @@
 
 
-<DocImage path={require('../../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/homepage-rds.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('../../../4-use-ccm-cost-optimization/commitment-orch-docs/managing-commitments-static/homepage-rds.png')} width="100%" height="100%" title="Click to view full size image" />
 
 ## View insights of an orchestrator 
 
@@ -10,7 +10,7 @@ The dashboard will show:
 
 - **Savings Breakdown**: This provides information about total savings through on-demand and Reserved Instances, as well as savings orchestrated by Harness. You can also see a graph for savings trends and details where you will see all commitment types and aggregate savings with variance compared to the last period.
 
-<DocImage path={require('../../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/drds-zero.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('../../../4-use-ccm-cost-optimization/commitment-orch-docs/managing-commitments-static/drds-zero.png')} width="100%" height="100%" title="Click to view full size image" />
 
 
 ------
@@ -27,20 +27,20 @@ The dashboard will show:
   
     Both net amortized and unblended costs are displayed, allowing you to analyze your spend in the format that best suits your financial reporting needs.
 
-      <DocImage path={require('../../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/drds-one.png')} width="100%" height="100%" title="Click to view full size image" />
+      <DocImage path={require('../../../4-use-ccm-cost-optimization/commitment-orch-docs/managing-commitments-static/drds-one.png')} width="100%" height="100%" title="Click to view full size image" />
 
 
 ------
 
 - **Compute Coverage**: This represents the percentage of your RDS compute usage covered by Reserved Instances or On-Demand. It shows coverage by cost and displays how much you've spent on-demand as the total average coverage. It also shows average coverage by purchase options (On-Demand, Reserved Instances) along with a graph for trends and breakdown. You can view compute coverage either by cost or by hours. When viewing by hours, it shows you the commitment hours and the coverage by purchase option in hours.
 
-      <DocImage path={require('../../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/drds-two.png')} width="100%" height="100%" title="Click to view full size image" />
+      <DocImage path={require('../../../4-use-ccm-cost-optimization/commitment-orch-docs/managing-commitments-static/drds-two.png')} width="100%" height="100%" title="Click to view full size image" />
 
 ------
 
 - **Commitment Utilization**: This represents the percentage of your purchased Reserved Instances that are actively being used. It shows the commitment utilization by purchase options. You can view utilization for all your commitments, including Reserved Instances, as well as the utilization orchestrated by Harness. A graph displays the trend and details for compute utilization and variance over time.
 
-      <DocImage path={require('../../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/drds-three.png')} width="100%" height="100%" title="Click to view full size image" />
+      <DocImage path={require('../../../4-use-ccm-cost-optimization/commitment-orch-docs/managing-commitments-static/drds-three.png')} width="100%" height="100%" title="Click to view full size image" />
 
 ------
 
@@ -58,7 +58,7 @@ The dashboard will show:
 
         - **Queued**: The action is in the queue and waiting to be processed.
         
-    <DocImage path={require('../../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/drds-four.png')} width="100%" height="100%" title="Click to view full size image" />
+    <DocImage path={require('../../../4-use-ccm-cost-optimization/commitment-orch-docs/managing-commitments-static/drds-four.png')} width="100%" height="100%" title="Click to view full size image" />
     
 
 ------
@@ -73,13 +73,13 @@ The dashboard will show:
 
     The inventory table shows you all the details about the ID of the RI, type, count, scope (region), start date, expiry date, term and average utilization. You can also view the commitments purchased by Harness.
 
-    <DocImage path={require('../../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/drds-five.png')} width="100%" height="100%" title="Click to view full size image" />
+    <DocImage path={require('../../../4-use-ccm-cost-optimization/commitment-orch-docs/managing-commitments-static/drds-five.png')} width="100%" height="100%" title="Click to view full size image" />
 
 ------
 
 - **Logs**: The Log History section provides a comprehensive audit trail of all Commitment Orchestrator activities, including date, connector name, type (RI Event), and description of purchases. You also have the ability to export the logs as a CSV file.
 
-    <DocImage path={require('../../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/drds-six.png')} width="100%" height="100%" title="Click to view full size image" />
+    <DocImage path={require('../../../4-use-ccm-cost-optimization/commitment-orch-docs/managing-commitments-static/drds-six.png')} width="100%" height="100%" title="Click to view full size image" />
 
 -----
 

@@ -1,12 +1,11 @@
 {
-    "label":"AWS",
-    "position": 4,
+    "label":"Commitment Orchestrator",
+    "position": 1,
     "collapsible":"true",
-    "collapsed":"true",
+    "collapsed":"false",
     "className":"default",
     "link":{
        "type":"generated-index",
        "title":"Commitment Orchestrator"
     }
-    }
- 
+}

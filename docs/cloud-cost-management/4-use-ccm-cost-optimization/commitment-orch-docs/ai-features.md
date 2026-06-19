@@ -1,7 +1,7 @@
 ---
 title: AI Assistant
 description: This topic describes AI assistant in Commitment Orchestrator.
-# sidebar_position: 2
+sidebar_position: 4
 helpdocs_topic_id: 
 helpdocs_category_id: 
 helpdocs_is_private: false

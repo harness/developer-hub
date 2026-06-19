@@ -1,7 +1,7 @@
 ---
-title: Dashboard
+title: Managing Commitments
 description: This topic describes the Commitment Orchestrator and how it works.
-sidebar_position: 3
+sidebar_position: 2
 helpdocs_topic_id: 
 helpdocs_category_id: 
 helpdocs_is_private: false
