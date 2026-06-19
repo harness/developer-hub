@@ -40,18 +40,6 @@ Here's how to set it up: [Configure delegate proxy settings](/docs/platform/dele
 
    ![](./static/snow-enable.png)
 
-:::info
-If this is your first ServiceNow integration, you will need to install a Kubernetes agent in your environment. This agent will run data synchronization workloads as containerized processes in your Kubernetes environment for security, scalability, and isolation and provide the execution environment needed to safely extract and process ServiceNow data. 
-
-You will be prompted to provide some details the first time you create a ServiceNow integration:
-
-* Write agent name,
-* Select/create a [Kubernetes connector](https://developer.harness.io/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector/) to connect with Kubernetes cluster. This Kubernetes connector should point to Kubernetes cluster where integration Kubernetes agent would be installed.
-* Write Kubernetes namespace on which agent will run.
-* Kubernetes manifest file will be downloaded after filling these details which could be used to install agent in customer environment.
-:::
-
-
 ### Setup and Connectivity
 
    ![](./static/snow-setup-and-connectivity.png)
@@ -116,4 +104,3 @@ After merging, the catalog entity's Overview page displays:
 - A **ServiceNow** integration card showing the CMDB-specific properties (for example, MTTR, CMDB table name). You might need to configure the layout to see this card. 
 - Updated fields populated from the CMDB field mappings.
 - The **Integrations** status card showing **ServiceNow: Connected**.
-
