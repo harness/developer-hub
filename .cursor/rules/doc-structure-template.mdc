@@ -60,6 +60,15 @@ tags:
 - **`title`:** Official page title (browser, SEO, and default sidebar label). May use phrasing that fits the page better than the nav.
 - **`sidebar_label`:** Use when the **sidebar** label must differ from `title`. Sidebar labels use **Title Case** (capitalize major words). If omitted, Docusaurus derives the sidebar entry from `title`.
 
+**Sidebar configuration:**
+
+After creating a page, check if it needs a sidebar entry:
+
+- **Module-root files** `/docs/[module]/file.md` require explicit entry in `sidebars.ts`
+- **Nested files** (in subfolders, any depth) auto-generate — just add `sidebar_position: [number]` to frontmatter
+
+Go to the **Sidebar Navigation Configuration** section in `CLAUDE.md` for the full decision tree.
+
 #### 2. Introduction (1 short paragraph, 2-3 lines)
 
 A single concise paragraph that states what the user will accomplish and why it matters. Do not include "What will you learn?" content here—that goes in a separate section if needed.

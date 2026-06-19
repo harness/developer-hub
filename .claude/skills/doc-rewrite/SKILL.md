@@ -124,6 +124,7 @@ Rewrite the page to address all issues identified in the audit. Follow the struc
    - Add `sidebar_position` if missing (must be a multiple of 10, requires checking sibling pages in section to determine appropriate positioning)
    - Add `redirect_from` if URLs are being superseded
    - Ensure `slug` doesn't include `/docs/` prefix
+   - **Check sidebar configuration:** Module-root files `/docs/[module]/file.md` need explicit entry in `sidebars.ts`. Nested files (in subfolders) auto-generate and only need `sidebar_position` in frontmatter. See CLAUDE.md "Sidebar Navigation Configuration" for details.
 
 2. **Introduction enhancement:**
    - Expand to 2-3 full paragraphs (what, why, key benefits)

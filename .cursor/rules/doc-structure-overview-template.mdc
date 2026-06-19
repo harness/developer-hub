@@ -50,6 +50,15 @@ tags:
 - **`sidebar_label`:** Title Case for navigation. Omit if it matches `title`.
 - **`description`:** Summarize what the reader will understand after reading
 
+**Sidebar configuration:**
+
+After creating a page, check if it needs a sidebar entry:
+
+- **Module-root files** `/docs/[module]/file.md` require explicit entry in `sidebars.ts`
+- **Nested files** (in subfolders, any depth) auto-generate — just add `sidebar_position: [number]` to frontmatter
+
+Go to the **Sidebar Navigation Configuration** section in `CLAUDE.md` for the full decision tree.
+
 #### 2. Introduction (2 paragraphs maximum)
 
 Keep overview introductions focused and concise. Two paragraphs is the maximum—avoid walls of text.
