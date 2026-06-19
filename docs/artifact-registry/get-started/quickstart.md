@@ -16,6 +16,12 @@ Harness Artifact Registry provides a centralized solution for storing and managi
 
 Getting started with Artifact Registry typically involves [creating a registry](/docs/artifact-registry/manage-registries/create-registry), optionally [configuring an upstream proxy](/docs/artifact-registry/manage-registries/upstream-proxy) for external dependencies, and [setting up your client](/docs/artifact-registry/manage-registries/client-setup) to connect to your registry.
 
+:::tip Registry type not visible?
+
+Some registry types are being rolled out progressively and may require enablement on your account. If you do not see a specific registry type in the **New Artifact Registry** list, contact [Harness Support](mailto:support@harness.io) to enable it.
+
+:::
+
 Select your artifact format below to get started:
 
 <DynamicMarkdownSelector
@@ -100,6 +106,11 @@ Select your artifact format below to get started:
     Swift: {
       path: "/artifact-registry/content/supported-formats/swift-quickstart.md",
       logo: "swift-logo.svg",
+      logoSize: 24
+    },
+    Puppet: {
+      path: "/artifact-registry/content/supported-formats/puppet-quickstart.md",
+      logo: "puppet-logo.svg",
       logoSize: 24
     }
   }}
