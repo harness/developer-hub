@@ -63,6 +63,10 @@ helm rollback  release-1d0bcdea6247c9f82cc9204b1d81593e7b985651
 
 Harness ships Helm v3.15.4 and supports Helm v3 versions up to v3.21.1. Helm v2 is no longer shipped or supported. If your pipelines referenced Helm v2, update them to use Helm v3.
 
+:::caution Known Helm issue with multiple API versions for the same Kind
+There is an outstanding Helm bug ([helm/helm#10748](https://github.com/helm/helm/issues/10748)) where Helm does not remove a resource during an upgrade if another resource with the same `Kind` but a different `apiVersion` exists in the same release. Helm merged a fix but subsequently reverted it due to a regression, and the issue remains unresolved.
+:::
+
 
 ## Deployment requirements
 

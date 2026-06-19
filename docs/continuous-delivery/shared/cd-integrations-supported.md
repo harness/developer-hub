@@ -65,6 +65,7 @@ import PlatformList from '/docs/continuous-delivery/shared/platform-support.md'
 - **Limitations:**
   - Helm:
     - Helm Hooks are not supported for this swimlane. Harness manages and orchestrates the manifests and their release.
+    - There is a known open Helm issue ([helm/helm#10748](https://github.com/helm/helm/issues/10748)) where Helm does not remove a resource on upgrade if another resource with the same `Kind` but a different `apiVersion` exists in the same release. Helm merged a fix but subsequently reverted it due to a regression, and the issue remains unresolved.
     - Kustomize:
       - Kustomize Patches are only supported in YAML, not JSON
       - Kustomize Containerized Plugins are not supported
