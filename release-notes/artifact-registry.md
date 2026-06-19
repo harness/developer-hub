@@ -1,7 +1,7 @@
 ---
 title: Artifact Registry Release Notes
 sidebar_label: Artifact Registry
-date: 2026-06-04T12:00
+date: 2026-06-19T12:00
 sidebar_position: 1
 # toc_max_heading_level: 4
 ---
@@ -26,6 +26,54 @@ The release notes describe recent changes to Harness Artifact Registry.
 ## 📌 Release Deployment Status by Cluster
 
 **Progressive deployment:** Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview** page in Harness. In the new UI, go to **Account Settings**, **Account Details**, **General**, **Account Details**, and then **Platform Service Versions**.
+
+## June 2026
+
+### 2026.6.v1
+
+#### New Features
+
+**Lifecycle Rules (Cleanup and Retention)**
+
+:::info Feature flag
+This feature is behind the feature flag `HAR_ARTIFACT_LIFECYCLE_POLICY`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+:::
+
+Lifecycle rules bring policy-based artifact management to Harness Artifact Registry. Define rules that automatically identify and soft-delete stale artifact versions on a recurring schedule, so your registries stay lean without manual cleanup.
+
+<DocImage
+  path={require('./static/artifact-registry/june-2026-lifecycle-rules.png')}
+  alt="Lifecycle Rules list view showing cleanup and retention rules with status, scope, and attached registries"
+  title="Lifecycle Rules: manage cleanup and retention policies from a single view"
+  width="100%"
+/>
+
+**Key capabilities:**
+
+- **Cleanup rules:** Soft-delete versions that match your criteria (age, version count, or name pattern). Deleted artifacts remain recoverable during the configured recovery period.
+- **Retention rules:** Protect matching artifacts from all deletion, including cleanup rules, manual soft delete, and manual hard delete. Retention rules are always evaluated first, overriding any deletion attempt.
+- **Hierarchical scoping:** Create rules at the account, organization, or project level and attach them to one or more registries.
+- **Dry-run mode:** Preview which versions a rule would affect before you enable it, so you can validate criteria safely.
+- **Execution history:** Track every run with detailed logs showing which versions were deleted and which were retained.
+- **Notification integration:** Fire centralised notification events when a cleanup rule or dry run finishes executing.
+
+Go to [Lifecycle Rules](/docs/artifact-registry/lifecycle-rules/overview) to understand how rules work. To start creating rules, go to [Create a cleanup rule](/docs/artifact-registry/lifecycle-rules/create-cleanup-rule) or [Create a retention rule](/docs/artifact-registry/lifecycle-rules/create-retention-rule).
+
+**Centralised Notifications for Artifact Registry**
+
+Centralised Notifications now support Artifact Registry events. Configure notification rules at the organization level that apply to every project under the organizations you select, with no per-registry setup required.
+
+Available events: Dependency Firewall Exemption Requested, Dependency Firewall Exemption Status Changed, Lifecycle Policy Execution Completed, and Lifecycle Policy Dry Run Execution Completed.
+
+Go to [Centralised Notification](/docs/platform/notifications/centralised-notification#artifact-registry-notifications) to configure notification rules for Artifact Registry events.
+
+**Puppet Registry Support**
+
+Harness Artifact Registry now supports **Puppet modules** with full Puppet Forge compatibility. Publish with the Puppet CLI or `r10k`, host private modules inside your Harness account, and cache modules from external Puppet Forge sources through an upstream proxy.
+
+Go to the [Puppet Registry Quickstart](/docs/artifact-registry/get-started/quickstart#puppet) to set up a Puppet registry and publish your first module.
+
+---
 
 ## May 2026
 
