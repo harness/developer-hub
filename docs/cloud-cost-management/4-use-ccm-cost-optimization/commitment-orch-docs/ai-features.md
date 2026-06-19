@@ -1,7 +1,7 @@
 ---
 title: AI Assistant
-description: This topic describes AI assistant in Commitment Orchestrator.
-sidebar_position: 4
+description: Discover how the AI Assistant in Commitment Orchestrator analyzes your AWS commitment landscape, identifies optimization opportunities, and provides actionable insights to maximize your cloud savings.
+sidebar_position: 4  
 helpdocs_topic_id: 
 helpdocs_category_id: 
 helpdocs_is_private: false

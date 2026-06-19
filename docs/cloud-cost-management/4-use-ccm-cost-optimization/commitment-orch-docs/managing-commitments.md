@@ -1,6 +1,6 @@
 ---
 title: Managing Commitments
-description: This topic describes the Commitment Orchestrator and how it works.
+description: Learn how to use the Commitment Orchestrator to optimize cloud spending by automatically managing and recommending cloud commitments across your infrastructure.
 sidebar_position: 2
 helpdocs_topic_id: 
 helpdocs_category_id: 
