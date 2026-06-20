@@ -35,6 +35,17 @@ export const spt: IltCardItem[] = [
     tileType: tileType.normal,
     cardType: cardType.SPT,
   },
+ {
+    title: "Continuous Delivery & GitOps",
+    module: MODULES.cd,
+    type: type.user,
+    description:
+      "Self-paced tidbit introducing Policy as Code [OPA].",
+    version: "Harness CD & GitOps Free Plans",
+    link: "https://university-registration.harness.io/self-paced-training-tidbit-policy-as-code",
+    tileType: tileType.normal,
+    cardType: cardType.SPT,
+  },
   {
     title: "Continuous Integration",
     module: MODULES.ci,
