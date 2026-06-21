@@ -44,6 +44,9 @@ Harness Database DevOps currently supports several database platforms, including
 | Snowflake            | Liquibase Community          | PKI (Key Pair Authentication)              |
 | Amazon DocumentDB    | Liquibase Community          | Username/Password (SCRAM), SSL             |
 | Google BigQuery      | Liquibase Community          | OIDC (Workload Identity Federation)        |
+| IBM DB2 LUW          | Liquibase Community          | Basic Auth, SSL                            | DB2 for Linux, Unix, and Windows |
+| IBM DB2 for i        | Liquibase Community          | Basic Auth                                 | DB2 for iSeries (AS/400) |
+| IBM DB2 z/OS         | Liquibase Community          | Basic Auth, SSL                            | Requires customer-provided IBM license JAR |
 
 :::info note
 Harness Database DevOps supports all database providers for Postgres and MySQL such as AWS RDS, Aurora DB, Azure Database for PostgreSQL, Azure Database for MySQL, and more. 

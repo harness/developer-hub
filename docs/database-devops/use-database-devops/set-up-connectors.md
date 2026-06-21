@@ -1,6 +1,6 @@
 ---
-title: Setting Up Connectors
-sidebar_label: Setting Up Connectors
+title: Setting Up JDBC Connectors
+sidebar_label: Setting Up JDBC Connectors
 description: Learn how to set up and configure connectors in Harness DB DevOps to securely link databases, artifact registries, and secret managers.
 sidebar_position: 4
 keywords:
@@ -22,7 +22,7 @@ tags:
   - database-connectivity
 ---
 
-This topic describes how to set up connectors within Harness DB DevOps. 
+This topic describes how to set up JDBC Connectors within Harness DB DevOps. 
 
 ## Setting Up Connectors for Databases
 
@@ -61,6 +61,11 @@ The JDBC connector is used for connecting to your database instance.
 | **COCKROACHDB SSL**| `jdbc:postgresql://{host}:{port}/{dbName}?sslmode=require`                                                                       |
 | **DocumentDB**     | `mongodb://{host}:{port}/{dbName}?tls=true&tlsAllowInvalidHostnames=true&directConnection=true&retryWrites=false&authSource=admin` |
 | **BIGQUERY**       | `jdbc:bigquery://https://www.googleapis.com/bigquery/v2:443;ProjectId={project-id};DefaultDataset={dataset-name};Location={region};` |
+| **DB2 LUW**        | `jdbc:db2://{host}:50000/{dbName}` |
+| **DB2 LUW SSL**    | `jdbc:db2://{host}:50000/{dbName}?sslConnection=true` |
+| **DB2 for i**      | `jdbc:as400://{host}/{library};translate binary=true;date format=iso` |
+| **DB2 z/OS**       | `jdbc:db2://{host}:446/{locationName}` |
+| **DB2 z/OS SSL**   | `jdbc:db2://{host}:446/{locationName}?sslConnection=true` |
 
 ---
 
@@ -236,6 +241,35 @@ Go to [Configure OIDC authentication for GCP databases](/docs/database-devops/fe
 
 ---
 
+## Setting Up IBM DB2
+
+IBM DB2 is a family of data management products that includes three variants, each running on different platforms and requiring different JDBC drivers and connection formats.
+
+Harness DB DevOps supports:
+- **DB2 LUW**: DB2 for Linux, Unix, and Windows
+- **DB2 for i**: DB2 for iSeries (AS/400)
+- **DB2 z/OS**: DB2 for IBM Mainframe
+
+:::info note
+Go to [Set up IBM DB2](/docs/database-devops/use-database-devops/set-up-db2-connector) for detailed prerequisites, license requirements, and configuration instructions for each DB2 variant.
+:::
+
+### DB2 JDBC URL Quick Reference
+
+| Variant | JDBC URL Format |
+|---------|----------------|
+| **DB2 LUW** | `jdbc:db2://{host}:50000/{dbName}` |
+| **DB2 LUW (SSL)** | `jdbc:db2://{host}:50000/{dbName}?sslConnection=true` |
+| **DB2 for i** | `jdbc:as400://{host}/{library};translate binary=true;date format=iso` |
+| **DB2 z/OS** | `jdbc:db2://{host}:446/{locationName}` |
+| **DB2 z/OS (SSL)** | `jdbc:db2://{host}:446/{locationName}?sslConnection=true` |
+
+:::warning DB2 z/OS license requirement
+DB2 z/OS requires a customer-provided IBM DB2 Connect license JAR (`db2jcc_license_cisuz.jar`). Go to [Set up IBM DB2](/docs/database-devops/use-database-devops/set-up-db2-connector#providing-the-db2-zos-license-jar) to configure the license.
+:::
+
+---
+
 ## Connector FAQs
 
 ### Why can't I connect to my Oracle database with a &nbsp; `sys as sysdba` &nbsp; username? 
@@ -246,3 +280,7 @@ Sometimes, users want to login to their database using the `sys as sysdba` usern
 2. Your **Username** should be `sys`.
 
 Go to [Oracle's documentation](https://docs.oracle.com/en/database/oracle/oracle-database/23/jjdbc/data-sources-and-URLs.html#GUID-44572C63-10D2-478A-BB2E-ACF6674C59CC) for information about logging on as `sys`.
+
+### Where can I find IBM DB2 setup instructions?
+
+Go to [Set up IBM DB2](/docs/database-devops/use-database-devops/set-up-db2-connector) for detailed instructions on configuring DB2 LUW, DB2 for i, and DB2 z/OS connectors, including license provisioning for z/OS.
