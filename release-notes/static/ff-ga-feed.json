@@ -1629,6 +1629,90 @@
     "gaStartDate": "2024-06-18",
     "module": "Continuous Integration",
     "lifecycleState": "Limited GA"
-   }
+   },
+   {
+    "flagKey": "CCM_ANOMALIES_V2",
+    "description": "Revamped UI-UX for anomalies detection",
+    "gaStartDate": "2026-06-19",
+    "module": "Cloud & AI Cost Management",
+    "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "CCM_ANOMALIES_CONDITIONAL_DRILL_DOWN",
+    "description": "Show perspective link when drill down is missing",
+    "gaStartDate": "2026-06-19",
+    "module": "Cloud & AI Cost Management",
+    "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "CCM_ANOMALY_LOOKBACK_RECOMPUTATION",
+    "description": "Revise existing anomalies with latest cost",
+    "gaStartDate": "2026-06-19",
+    "module": "Cloud & AI Cost Management",
+    "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "CCM_ANOMALY_EXTENDED_RERUN_DAYS",
+    "description": "Rerun anomalies on past 15 days",
+    "gaStartDate": "2026-06-19",
+    "module": "Cloud & AI Cost Management",
+    "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "CCM_ANOMALY_WHITELISTING",
+    "description": "Enable the ignore list rule in anomalies",
+    "gaStartDate": "2026-06-19",
+    "module": "Cloud & AI Cost Management",
+    "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "CCM_ANOMALY_CC_OTHER_FILTER_BYPASS",
+    "description": "Bypass additional non-CC filters for cost category anomalies in perspectives",
+    "gaStartDate": "2026-06-19",
+    "module": "Cloud & AI Cost Management",
+    "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "CCM_ANOMALIES_PROPHET_V2",
+    "description": "Enable Prophet V2 anomaly detection",
+    "gaStartDate": "2026-05-22",
+    "module": "Cloud & AI Cost Management",
+    "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "CCM_ANOMALY_REQUIRE_BOTH_THRESHOLDS",
+    "description": "Require both cost and percentage thresholds for anomaly filtering",
+    "gaStartDate": "2026-05-15",
+    "module": "Cloud & AI Cost Management",
+    "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "CCM_RECOMMENDATION_AWS_PASSTHROUGH_V2",
+    "description": "Use cost optimization hub instead of cost explorer. Enables AWS passthrough for recommendations",
+    "gaStartDate": "2026-06-19",
+    "module": "Cloud & AI Cost Management",
+    "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "CCM_NODE_POOL_RECOMMENDATIONS_V2",
+    "description": "Enable Node Pool Recommendations V2",
+    "gaStartDate": "2026-06-19",
+    "module": "Cloud & AI Cost Management",
+    "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "CCM_FILTER_AUTOSCALED_NODEPOOLS",
+    "description": "Filter autoscaled node pools",
+    "gaStartDate": "2026-06-19",
+    "module": "Cloud & AI Cost Management",
+    "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "CCM_WORKLOAD_RECOMMENDATIONS_V2",
+    "description": "Enable Workload Recommendations V2",
+    "gaStartDate": "2026-06-19",
+    "module": "Cloud & AI Cost Management",
+    "lifecycleState": "Limited GA"
+  }
 ]
 
