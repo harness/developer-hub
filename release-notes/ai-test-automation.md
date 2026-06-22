@@ -1,7 +1,7 @@
 ---
 title: AI Test Automation Release Notes
 sidebar_label: AI Test Automation
-date: 2026-05-21T12:00
+date: 2026-06-19T12:00
 sidebar_position: 1
 ---
 
@@ -22,6 +22,15 @@ The release notes describe recent changes to Harness AI Test Automation.
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## June 2026
+
+### 2026.06.v1
+
+#### New Features
+
+- **Generate and download test cases in natural language**  
+  You can now generate natural language versions of your existing tests and download them. Share, review, or document test coverage with team members who do not work directly with code.
 
 ## May 2026
 
