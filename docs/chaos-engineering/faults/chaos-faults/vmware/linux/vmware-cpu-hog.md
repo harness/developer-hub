@@ -1,171 +1,209 @@
 ---
 id: vmware-cpu-hog
 title: VMware CPU hog
+sidebar_label: VMware CPU Hog
+description: Consume CPU resources on a Linux VMware VM for a configurable duration so you can test how the workload behaves when compute headroom shrinks.
+keywords:
+  - chaos engineering
+  - vmware cpu hog
+  - vmware fault
+  - cpu stress
+tags:
+  - chaos-engineering
+  - vmware-faults
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-cpu-hog
-- /docs/chaos-engineering/chaos-faults/vmware/vmware-cpu-hog
-- /docs/chaos-engineering/faults/chaos-faults/vmware/vmware-cpu-hog
+- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/linux/vmware-cpu-hog
+- /docs/chaos-engineering/chaos-faults/vmware/linux/vmware-cpu-hog
 ---
 
-VMware CPU hog applies stress on the CPU resources on Linux OS based VMware VM. It checks the performance of the application running on the VMware VMs.
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-![VMware Cpu Hog](./static/images/vmware-cpu-hog.png)
+VMware CPU hog is a VMware chaos fault that drives CPU utilization to `CPU_LOAD` percent across `CPU_CORES` cores on the Linux VM `VM_NAME` (hosted in vCenter) for `TOTAL_CHAOS_DURATION` seconds, then stops the stress workload. The fault uses VMware Tools (Guest Operations API) to run the stress workload inside the guest as `VM_USER_NAME` and reverts cleanly at the end.
 
-:::info note
-HCE doesn't support injecting VMWare Windows faults on Bare metal server.
+Use this fault to test how a workload on a VMware-hosted VM behaves when compute headroom shrinks: whether latency stays inside the SLA, whether the OS scheduler keeps critical processes responsive, whether vSphere DRS responds correctly, and whether monitoring detects CPU saturation within the alerting SLA.
+
+:::info Run your first experiment
+If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
 :::
+
+---
 
 ## Use cases
 
-- VMware CPU hog determines the resilience of an application when stress is applied on the CPU resources of a VMware virtual machine.
-- VMware CPU hog simulates the situation of lack of CPU for processes running on the application, which degrades their performance.
-- It also helps verify metrics-based horizontal pod autoscaling as well as vertical autoscale, that is, demand based CPU addition.
-- It verifies the autopilot functionality of cloud managed clusters.
-- It verifies multi-tenant load issues, that is, when the load on one container increases, it should not cause downtime in other containers.
+Run this fault when you want to answer concrete questions like:
 
-### Prerequisites
-- Kubernetes > 1.16 is required to execute this fault.
-- Execution plane should be connected to vCenter and host vCenter on port 443.
-- VMware tool should be installed on the target VM with remote execution enabled.
-- Adequate vCenter permissions should be provided to access the hosts and the VMs.
-- The VM should be in a healthy state before and after injecting chaos.
-- Run the fault with a user possessing admin rights, preferably the built-in Administrator, to guarantee permissions for memory stress testing. [See how to enable the built-in Administrator in Windows](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/enable-and-disable-the-built-in-administrator-account?view=windows-11).
+- **CPU pressure on a vSphere VM:** When CPU utilization climbs, does application latency stay inside the SLA?
+- **DRS migration:** Does vSphere DRS migrate the VM to a less-loaded host when sustained CPU pressure persists?
+- **Co-tenant impact:** Do other VMs on the same ESXi host degrade because of the CPU steal time?
+- **Monitoring fidelity:** Do vCenter performance counters and downstream alerts fire inside the alerting SLA?
 
-- Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. VM credentials can be passed as secrets or as a `ChaosEngine` environment variable. Below is a sample secret file:
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: vcenter-secret
-  namespace: litmus
-type: Opaque
-stringData:
-    VCENTERSERVER: XXXXXXXXXXX
-    VCENTERUSER: XXXXXXXXXXXXX
-    VCENTERPASS: XXXXXXXXXXXXX
-```
+---
 
-### Mandatory tunables
+## Prerequisites
 
-   <table>
-      <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> VM_NAME </td>
-        <td> Name of the target VM. </td>
-        <td> For example, <code>ubuntu-vm-1</code> </td>
-      </tr>
-      <tr>
-          <td> VM_USER_NAME </td>
-          <td> Username of the target VM.</td>
-          <td> For example, <code>vm-user</code>. </td>
-      </tr>
-      <tr>
-          <td> VM_PASSWORD </td>
-          <td> User password for the target VM. </td>
-          <td> For example, <code>1234</code>. Note: You can take the password from secret as well. </td>
-      </tr>
-    </table>
+- **Kubernetes version:** 1.21 or later for the chaos infrastructure cluster.
+- **vCenter reachable:** The chaos infrastructure can reach `GOVC_URL` over port 443.
+- **VMware Tools running on the guest:** Verify with `vmware-toolbox-cmd -v` inside the VM.
+- **Stress binary installed inside the guest:** Go to [VMware Linux binary installation](/docs/chaos-engineering/faults/chaos-faults/vmware/linux/binary-installation) to install the CPU stress prerequisite (`stress-ng` and `pkill`).
+- **vCenter chaos role:** The vCenter user (`GOVC_USERNAME`) is mapped to the chaos role described in [VMware permissions](/docs/chaos-engineering/faults/chaos-faults/vmware/permissions).
 
-### Optional tunables
-   <table>
-      <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> CPU_CORES </td>
-        <td> Number of CPU cores subject to CPU stress. </td>
-        <td> Default to 1. For more information, go to <a href="#cpu_cores"> CPU cores.</a></td>
-        </tr>
-      <tr>
-        <td> CPU_LOAD </td>
-        <td> Load exerted on each CPU core (in percentage).</td>
-        <td> Defaults to 100%. For more information, go to <a href="#cpu-load"> CPU load. </a></td>
-      </tr>
-      <tr>
-        <td> TOTAL_CHAOS_DURATION </td>
-        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
-        <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a>.</td>
-      </tr>
-      <tr>
-        <td> CHAOS_INTERVAL </td>
-        <td> Time interval between two successive instance terminations (in seconds). </td>
-        <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval. </a></td>
-      </tr>
-      <tr>
-        <td> RAMP_TIME </td>
-        <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
-      </tr>
-      <tr>
-        <td> SEQUENCE </td>
-        <td> Sequence of chaos execution for multiple instances. </td>
-        <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
-      </tr>
-      <tr>
-      <td>DEFAULT_HEALTH_CHECK</td>
-      <td>Determines if you wish to run the default health check which is present inside the fault. </td>
-      <td> Default: 'true'. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
-      </tr>
-    </table>
+---
 
-### CPU cores
-It specifies the number of CPU cores of the target VM on which stress is applied. Tune it by using the `CPU_CORE` environment variable.
+## Supported environments
 
-Use the following example to tune it:
+| Platform | Support status |
+| --- | --- |
+| Linux VMs hosted on vSphere / vCenter (any distro with VMware Tools) | Supported |
+| Linux VMs without VMware Tools | Not supported (the fault drives the guest via Guest Operations) |
+| Windows VMs | Not supported (use [VMware Windows CPU hog](/docs/chaos-engineering/faults/chaos-faults/windows/windows-cpu-stress)) |
 
-[embedmd]:# (./static/manifests/vmware-cpu-hog/vm-cpu-hog-core.yaml yaml)
-```yaml
-# CPU hog in the VMware VM
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: VMware-cpu-hog
-    spec:
-      components:
-        env:
-        # Name of the VM
-        - name: VM_NAME
-          value: 'test-vm-01'
-       # CPU cores for stress
-        - name: CPU_CORES
-          value: '1'
-```
+---
 
-### CPU load
-It specifies the load exerted on each VM CPU core (in percentage). Tune it by using the `CPU_LOAD` environment variable.
+## Permissions required
 
-Use the following example to tune it:
+Two layers of permissions apply.
 
-[embedmd]:# (./static/manifests/vmware-cpu-hog/vm-cpu-hog-load.yaml yaml)
-```yaml
-# CPU hog in the VMware VM
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: VMware-cpu-hog
-    spec:
-      components:
-        env:
-        # Name of the VM
-        - name: VM_NAME
-          value: 'test-vm-01'
-        # CPU load in percentage for the stress
-        - name: CPU_LOAD
-          value: '100'
-```
+**On vCenter.** Map `GOVC_USERNAME` to the chaos role described in [VMware permissions](/docs/chaos-engineering/faults/chaos-faults/vmware/permissions). For this Basic fault, the role needs at minimum:
+
+- Virtual machine → Guest operations → Program execution, Modifications, Queries.
+
+**On the guest OS.** `VM_USER_NAME` must be able to execute the CPU stress binary and (on abort) run `pkill`. For non-root accounts, configure `sudo` for the stress binary if needed.
+
+---
+
+## Authentication
+
+Two credential sets are required.
+
+| Layer | Tunables |
+| --- | --- |
+| vCenter (control plane) | `GOVC_URL`, `GOVC_USERNAME`, `GOVC_PASSWORD`, `GOVC_INSECURE` |
+| Guest OS (target VM) | `VM_USER_NAME`, `VM_PASSWORD` |
+
+Store each credential as a text secret in [Harness Secret Manager](/docs/platform/secrets/add-use-text-secrets) and reference the secret identifier when configuring the experiment.
+
+Set `GOVC_INSECURE=true` only if your vCenter certificate is self-signed and not yet trusted.
+
+---
+
+## Fault tunables
+
+Configure the following fault parameters when you add VMware CPU hog to an experiment in Chaos Studio. Defaults are shown for reference.
+
+**Required parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `VM_NAME` | Name of the target VM as it appears in vCenter. | (required) |
+| `VM_USER_NAME` | OS user account on the target VM. | (required) |
+| `VM_PASSWORD` | Password for `VM_USER_NAME`. | (required) |
+
+**Stress parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `CPU_CORES` | Number of CPU cores to stress. | `2` |
+| `CPU_LOAD` | Target CPU utilization percentage per stressed core (0-100). | `100` |
+
+**Chaos parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `TOTAL_CHAOS_DURATION` | Total duration of the fault in seconds. | `30` |
+| `CHAOS_INTERVAL` | Delay in seconds between successive iterations when running for more than one cycle. | `10` |
+| `SEQUENCE` | Order in which multiple targets are stressed: `parallel` or `serial`. | `parallel` |
+| `RAMP_TIME` | Wait period in seconds before and after the fault. Go to [ramp time](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time) to read how it is applied. | `0` |
+
+**vCenter authentication**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `GOVC_URL` | vCenter server URL (without scheme), for example `vcenter.example.com`. | `""` |
+| `GOVC_USERNAME` | vCenter user mapped to the chaos role. | `""` |
+| `GOVC_PASSWORD` | Password for `GOVC_USERNAME`. | `""` |
+| `GOVC_INSECURE` | Skip SSL certificate verification when set to `true`. | `true` |
+
+Tunables that apply to every fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
+
+---
+
+## Fault execution in brief
+
+Authenticates to vCenter (`GOVC_URL`), opens a Guest Operations session on `VM_NAME` as `VM_USER_NAME`, launches a CPU stress workload that targets `CPU_CORES` at `CPU_LOAD` percent for `TOTAL_CHAOS_DURATION` seconds, then terminates the workload.
+
+---
+
+## Expected behavior during fault execution
+
+- CPU utilization on the target VM climbs to `CPU_LOAD` percent on `CPU_CORES` cores for the duration.
+- Application latency may grow in proportion to the load.
+- vCenter performance counters (`cpu.usage.average`) reflect the spike on the VM and may show steal time impact on co-tenant VMs.
+- After the duration ends, the stress workload exits and CPU utilization returns to baseline.
+
+:::info When the fault ends
+The chaos pod stops the stress workload via Guest Operations. CPU utilization returns to baseline within seconds.
+:::
+
+### Signals to watch
+
+- **VM CPU:** Use a [Prometheus probe](/docs/resilience-testing/chaos-testing/probes/apm-probes) on `node_cpu_seconds_total` from a node exporter inside the VM.
+- **Application latency:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) on a user-visible endpoint.
+
+---
+
+## Verify the fault execution effect
+
+1. **Inspect vCenter performance counters.**
+
+   In vCenter UI, open the VM → Monitor → Performance, switch to **CPU** view. You should see a spike during the chaos window.
+
+2. **SSH into the VM and run `top`.**
+
+   The stress process should be visible during the chaos window.
+
+---
+
+## Recovery and cleanup
+
+- **End of duration:** The chaos pod stops the stress workload through Guest Operations.
+- **Abort the experiment:** Stopping the experiment from Chaos Studio also stops the workload.
+- **Manual recovery:** SSH into the VM and `sudo pkill -f stress-ng` if the workload survived.
+
+---
+
+## Limitations
+
+- **VMware Tools required:** Without VMware Tools, vCenter cannot inject the workload.
+- **Guest user privileges:** If `VM_USER_NAME` cannot run the stress binary, the fault errors out.
+- **Single VM per run:** Each fault run targets one `VM_NAME`. Use multiple experiments to fan out.
+- **ESXi co-tenant impact:** Aggressive `CPU_LOAD` on `CPU_CORES` close to the VM's vCPU count can affect co-tenants; size conservatively in production.
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="VMware CPU hog fails with VMware Tools not running in Harness Chaos Engineering"
+  mode="docs"
+  fallback="The Guest Operations API requires VMware Tools to be installed and running on the target VM. Install or restart open-vm-tools / VMware Tools on the guest and retry."
+/>
+
+<Troubleshoot
+  issue="VMware CPU hog fails with authentication failure"
+  mode="docs"
+  fallback="Verify GOVC_URL, GOVC_USERNAME, GOVC_PASSWORD against vCenter and VM_USER_NAME / VM_PASSWORD against the guest. For self-signed vCenter certificates, set GOVC_INSECURE=true."
+/>
+
+<Troubleshoot
+  issue="No CPU spike visible after starting the fault"
+  mode="docs"
+  fallback="Confirm the stress binary is installed inside the guest. SSH into the VM and run which stress-ng. Reinstall it per the VMware Linux binary installation page if missing."
+/>
+
+---
+
+## Related faults
+
+- [VMware memory hog](/docs/chaos-engineering/faults/chaos-faults/vmware/linux/vmware-memory-hog): Stress memory instead of CPU.
+- [VMware IO stress](/docs/chaos-engineering/faults/chaos-faults/vmware/linux/vmware-io-stress): Stress disk IO instead of CPU.
+- [VMware VM power off](/docs/chaos-engineering/faults/chaos-faults/vmware/vcenter/vmware-vm-poweroff): Power off the VM entirely.

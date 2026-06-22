@@ -1,275 +1,201 @@
 ---
 id: vmware-http-latency
 title: VMware HTTP latency
+sidebar_label: VMware HTTP Latency
+description: Inject HTTP response latency on a target service running inside a Linux VMware VM so you can test how callers behave when a downstream service slows down.
+keywords:
+  - chaos engineering
+  - vmware http latency
+  - vmware fault
+  - http chaos
+tags:
+  - chaos-engineering
+  - vmware-faults
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-http-latency
-- /docs/chaos-engineering/chaos-faults/vmware/vmware-http-latency
+- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/linux/vmware-http-latency
+- /docs/chaos-engineering/chaos-faults/vmware/linux/vmware-http-latency
 ---
-VMware HTTP latency injects HTTP response latency into the service of a specific port.
-- This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
-- It helps determine the application's resilience to lossy (or flaky) HTTP responses.
 
-![VMware HTTP Latency](./static/images/vmware-http-latency.png)
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-:::info note
-HCE doesn't support injecting VMWare Windows faults on Bare metal server.
+VMware HTTP latency is a VMware chaos fault that adds `LATENCY` milliseconds to HTTP responses from the service listening on `TARGET_SERVICE_PORT` inside the Linux VM `VM_NAME`. The fault inserts an HTTP proxy on `PROXY_PORT` (on interface `NETWORK_INTERFACE`) that intercepts a `TOXICITY` percentage of traffic for `TOTAL_CHAOS_DURATION` seconds, then restores normal routing. The proxy is launched via VMware Tools (Guest Operations API) as `VM_USER_NAME`.
+
+Use this fault to test how callers behave when a service slows down: whether the caller honours its timeout, whether circuit breakers trip, whether retries amplify load, whether monitoring detects the regression within the alerting SLA, and whether on-call alerts fire correctly.
+
+:::info Run your first experiment
+If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
 :::
+
+---
 
 ## Use cases
 
-- VMware HTTP latency determines the resilience of an application to HTTP latency.
-- It determines how the system recovers or fetches the responses when there is a delay in accessing the service.
-- It simulates latency to specific API services for (or from) a given microservice.
-- It also simulates a slow response on specific third party (or dependent) components (or services).
+- **Slow downstream service:** When the service slows by `LATENCY` ms, does the caller honour its timeout?
+- **Partial slowdown:** With `TOXICITY < 100`, only a percentage of requests slow down: do tail-latency dashboards reflect this correctly?
+- **Retry-storm risk:** Do retries amplify the load when responses slow?
 
-### Prerequisites
-- Kubernetes >= 1.17 is required to execute this fault.
-- Appropriate vCenter permissions should be provided to start and stop the VMs.
-- The VM should be in a healthy state before and after injecting chaos.
-- Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. VM credentials can be passed as secrets or as a `ChaosEngine` environment variable. Below is a sample secret file:
+---
 
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-    name: vcenter-secret
-    namespace: litmus
-type: Opaque
-stringData:
-    VCENTERSERVER: XXXXXXXXXXX
-    VCENTERUSER: XXXXXXXXXXXXX
-    VCENTERPASS: XXXXXXXXXXXXX
-```
+## Prerequisites
 
-### Mandatory tunables 
-   <table>
-        <tr>
-            <th> Tunable </th>
-            <th> Description </th>
-            <th> Notes </th>
-        </tr>
-        <tr>
-            <td> VM_NAME </td>
-            <td> Name of the VMware VM.</td>
-            <td> For example, test-vm. </td>
-        </tr>
-        <tr>
-            <td> VM_USER_NAME </td>
-            <td> Username with sudo privileges.</td>
-            <td> For example, vm-user. </td>
-        </tr>
-        <tr>
-            <td> VM_PASSWORD </td>
-            <td> User password. </td>
-            <td> For example, 1234. </td>
-        </tr>
-        <tr>
-            <td> LATENCY </td>
-            <td> Delay added to the request (in milliseconds).</td>
-            <td> For example, 1000ms. For more information, go to <a href="#latency"> latency.</a></td>
-        </tr>
-        <tr>
-            <td> TARGET_SERVICE_PORT </td>
-            <td> Service port to target. </td>
-            <td> Defaults to port 80. For more information, go to <a href="#target-service-port"> target service port.</a></td>
-        </tr>
-    </table>
+- **Kubernetes version:** 1.21 or later for the chaos infrastructure cluster.
+- **VMware Tools running on the guest:** Verify with `vmware-toolbox-cmd -v`.
+- **HTTP proxy binary installed inside the guest:** Go to [VMware Linux binary installation](/docs/chaos-engineering/faults/chaos-faults/vmware/linux/binary-installation) to install the HTTP chaos prerequisite.
+- **Free port:** `PROXY_PORT` is not already in use on `NETWORK_INTERFACE`.
+- **Capability for the port:** `VM_USER_NAME` can bind `PROXY_PORT` (ports below 1024 require `sudo` or `CAP_NET_BIND_SERVICE`).
+- **Traffic redirected to the proxy:** The fault's traffic-redirection requires `iptables` or equivalent to send service traffic through `PROXY_PORT`.
+- **vCenter chaos role:** `GOVC_USERNAME` is mapped to the chaos role per [VMware permissions](/docs/chaos-engineering/faults/chaos-faults/vmware/permissions).
 
-### Optional tunables
-  <table>
-        <tr>
-            <th> Tunable </th>
-            <th> Description </th>
-            <th> Notes </th>
-        </tr>
-        <tr>
-            <td> TOTAL_CHAOS_DURATION </td>
-            <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-            <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
-        </tr>
-        <tr>
-            <td> CHAOS_INTERVAL </td>
-            <td> Time interval between two successive instance terminations (in seconds). </td>
-            <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
-        </tr>
-        <tr>
-            <td> SEQUENCE </td>
-            <td> Sequence of chaos execution for multiple instances. </td>
-        <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
-        </tr>
-        <tr>
-        <td> RAMP_TIME </td>
-        <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
-        </tr>
-        <tr>
-            <td> INSTALL_DEPENDENCY </td>
-            <td> Whether to install the dependency to run the fault </td>
-            <td> If the dependency already exists, you can turn it off. Its default value is 'True'. </td>
-        </tr>
-        <tr>
-            <td> PROXY_PORT </td>
-            <td> Port where the proxy listens for requests.</td>
-            <td> Defaults to 20000. For more information, go to <a href="#proxy-port"> proxy port.</a></td>
-        </tr>
-        <tr>
-            <td> TOXICITY </td>
-            <td> Percentage of HTTP requests affected. </td>
-            <td> Defaults to 100. For more information, go to <a href="#toxicity"> toxicity.</a></td>
-        </tr>
-        <tr>
-          <td> NETWORK_INTERFACE </td>
-          <td> Network interface used for the proxy. </td>
-          <td> Defaults to eth0. For more information, go to <a href="#network-interface"> network interface. </a></td>
-        </tr>
-        <tr>
-      <td>DEFAULT_HEALTH_CHECK</td>
-      <td>Determines if you wish to run the default health check which is present inside the fault. </td>
-      <td> Default: 'true'. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
-      </tr>
-    </table>
+---
 
+## Supported environments
 
-### Target service port
+| Platform | Support status |
+| --- | --- |
+| Linux VMs hosted on vSphere / vCenter (any distro with VMware Tools, `iptables`, and the HTTP chaos binary) | Supported |
+| Windows VMs | Not supported |
 
-It specifies the port of the target service. Tune it by using the `TARGET_SERVICE_PORT` environment variable.
+---
 
-Use the following example to tune it:
+## Permissions required
 
-[embedmd]:# (./static/manifests/http-latency/target-service-port.yaml yaml)
-```yaml
-## provide the port of the targeted service
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: VMware-http-latency
-    spec:
-      components:
-        env:
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
-```
+**On vCenter.** Map `GOVC_USERNAME` to the chaos role described in [VMware permissions](/docs/chaos-engineering/faults/chaos-faults/vmware/permissions). The role needs Guest Operations (Program execution, Modifications, Queries).
 
-### Proxy Port
+**On the guest OS.** `VM_USER_NAME` must be able to launch the HTTP chaos binary, bind `PROXY_PORT`, and update `iptables` rules for traffic redirection.
 
-It specifies the port where the proxy server listens for requests. Tune it by using the `PROXY_PORT` environment variable.
+---
 
-Use the following example to tune it:
+## Authentication
 
-[embedmd]:# (./static/manifests/http-latency/proxy-port.yaml yaml)
-```yaml
-# provide the port for proxy server
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: VMware-http-latency
-    spec:
-      components:
-        env:
-        # provide the port for proxy server
-        - name: PROXY_PORT
-          value: '8080'
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
-```
+| Layer | Tunables |
+| --- | --- |
+| vCenter | `GOVC_URL`, `GOVC_USERNAME`, `GOVC_PASSWORD`, `GOVC_INSECURE` |
+| Guest OS | `VM_USER_NAME`, `VM_PASSWORD` |
 
-### Latency
+Store each credential as a text secret in [Harness Secret Manager](/docs/platform/secrets/add-use-text-secrets) and reference the secret identifier when configuring the experiment.
 
-It specifies the latency value added to the HTTP request. Tune it by using the `LATENCY` environment variable.
+---
 
-Use the following example to tune it:
+## Fault tunables
 
-[embedmd]:# (./static/manifests/http-latency/latency.yaml yaml)
-```yaml
-## provide the latency value
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: VMware-http-latency
-    spec:
-      components:
-        env:
-        # provide the latency value
-        - name: LATENCY
-          value: '2000'
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
-```
+**Required parameters**
 
-### Toxicity
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `VM_NAME` | Name of the target VM as it appears in vCenter. | (required) |
+| `VM_USER_NAME` | OS user account on the target VM. | (required) |
+| `VM_PASSWORD` | Password for `VM_USER_NAME`. | (required) |
 
-It specifies the toxicity value added to the HTTP request. Toxicity value defines the percentage of the total number of HTTP requests that are affected. Tune it by using the `TOXICITY` environment variable.
+**HTTP chaos parameters**
 
-Use the following example to tune it:
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `NETWORK_INTERFACE` | Interface where the proxy is inserted. | `ens160` |
+| `TARGET_SERVICE_PORT` | Port of the target HTTP service on the guest. | `80` |
+| `PROXY_PORT` | Port the chaos proxy listens on. | `8080` |
+| `LATENCY` | HTTP response latency to inject in milliseconds. | `2000` |
+| `TOXICITY` | Percentage of intercepted requests affected (0-100). | `100` |
 
-[embedmd]:# (./static/manifests/http-latency/toxicity.yaml yaml)
-```yaml
-## provide the toxicity
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: VMware-http-latency
-    spec:
-      components:
-        env:
-        # toxicity is the probability of the request to be affected
-        # provide the percentage value in the range of 0-100
-        # 0 means no request will be affected and 100 means all request will be affected
-        - name: TOXICITY
-          value: "100"
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
-```
+**Chaos parameters**
 
-### Network interface
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `TOTAL_CHAOS_DURATION` | Total duration of the fault in seconds. | `30` |
+| `CHAOS_INTERVAL` | Delay in seconds between iterations. | `10` |
+| `SEQUENCE` | `parallel` or `serial`. | `parallel` |
+| `RAMP_TIME` | Wait period in seconds before and after the fault. | `0` |
 
-It specifies the network interface to be used for the proxy. Tune it by using the `NETWORK_INTERFACE` environment variable.
+**vCenter authentication**
 
-Use the following example to tune it:
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `GOVC_URL` | vCenter server URL. | `""` |
+| `GOVC_USERNAME` | vCenter user mapped to the chaos role. | `""` |
+| `GOVC_PASSWORD` | Password for `GOVC_USERNAME`. | `""` |
+| `GOVC_INSECURE` | Skip SSL certificate verification when set to `true`. | `true` |
 
-[embedmd]:# (./static/manifests/http-latency/network-interface.yaml yaml)
-```yaml
-## provide the network interface for proxy
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: VMware-http-latency
-    spec:
-      components:
-        env:
-        # provide the network interface for proxy
-        - name: NETWORK_INTERFACE
-          value: "eth0"
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: '80'
-```
+Tunables that apply to every fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
+
+---
+
+## Fault execution in brief
+
+Authenticates to vCenter, opens a Guest Operations session on `VM_NAME` as `VM_USER_NAME`, runs an HTTP chaos proxy on `PROXY_PORT` of `NETWORK_INTERFACE`, redirects traffic destined for `TARGET_SERVICE_PORT` through the proxy, applies `LATENCY` ms of latency to `TOXICITY` percent of requests for `TOTAL_CHAOS_DURATION` seconds, then removes the redirection and stops the proxy.
+
+---
+
+## Expected behavior during fault execution
+
+- HTTP response latency on `TARGET_SERVICE_PORT` rises by `LATENCY` ms for `TOXICITY` percent of requests.
+- Callers see higher round-trip latency; SLO-sensitive paths may breach.
+- After the duration ends, the redirection is removed and the proxy stopped; latency returns to baseline.
+
+:::info When the fault ends
+The chaos pod removes the traffic redirection and stops the proxy via Guest Operations. HTTP latency returns to baseline within seconds.
+:::
+
+### Signals to watch
+
+- **End-to-end latency:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) from outside the VM and assert p95 within the SLA.
+- **Caller behavior:** Use a Prometheus probe on caller-side timeout, retry, and circuit-breaker metrics.
+
+---
+
+## Verify the fault execution effect
+
+1. **Send an HTTP request to the target service during the chaos window.**
+
+   ```bash
+   time curl http://<VM_IP>:<TARGET_SERVICE_PORT>/health
+   ```
+
+   Latency should rise by `LATENCY` (within `TOXICITY` percent of requests).
+
+2. **Inspect `iptables` rules on the guest.**
+
+   ```bash
+   sudo iptables -t nat -L -n
+   ```
+
+   You should see the chaos redirection during the window and it should be removed afterwards.
+
+---
+
+## Recovery and cleanup
+
+- **End of duration:** The chaos pod removes the redirection and stops the proxy.
+- **Abort:** Stopping the experiment also removes the redirection and stops the proxy.
+- **Manual recovery:** If the redirection remains, SSH into the VM and remove the offending `iptables` rule, and kill the chaos process listening on `PROXY_PORT`.
+
+---
+
+## Limitations
+
+- **HTTP only:** The fault affects HTTP traffic. HTTPS (TLS) requires the proxy to terminate TLS or the client to trust the proxy CA.
+- **Single port per run:** Each fault run targets one `TARGET_SERVICE_PORT`.
+- **VMware Tools required:** Without VMware Tools, the fault cannot run.
+- **Traffic redirection invasive:** The fault mutates `iptables` NAT rules. Workloads that depend on specific NAT behavior may interact in unexpected ways.
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="VMware HTTP latency has no observable effect in Harness Chaos Engineering"
+  mode="docs"
+  fallback="Verify that traffic is actually flowing through the chaos proxy (sudo iptables -t nat -L -n on the guest). Confirm TARGET_SERVICE_PORT matches the live service port. Confirm the workload talks HTTP, not HTTPS."
+/>
+
+<Troubleshoot
+  issue="VMware HTTP latency fails with address already in use"
+  mode="docs"
+  fallback="Another process is already listening on PROXY_PORT. Either stop that process or choose a different PROXY_PORT in the experiment tunables."
+/>
+
+---
+
+## Related faults
+
+- [VMware HTTP reset peer](/docs/chaos-engineering/faults/chaos-faults/vmware/linux/vmware-http-reset-peer): Reset TCP connections instead of slowing them.
+- [VMware HTTP response modify](/docs/chaos-engineering/faults/chaos-faults/vmware/linux/vmware-http-response-modify): Modify HTTP responses (status code, body, headers) instead of slowing them.
+- [VMware network latency](/docs/chaos-engineering/faults/chaos-faults/vmware/linux/vmware-network-latency): Inject latency at the network layer instead of at HTTP layer.
