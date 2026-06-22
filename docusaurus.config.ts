@@ -188,7 +188,6 @@ const config: Config = {
       'data-modal-example-questions':
         'How do I update Harness delegate?,Can I save my filter settings?',
     },
-    /* Relyance: loaded from client-modules/relyanceConsent.js after app bootstrap */
   ],
   markdown: {
     //Mermaid Diagram Functionality

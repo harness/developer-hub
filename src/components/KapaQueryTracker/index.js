@@ -7,13 +7,48 @@ import { trackEvent } from "../../utils/dbdevopsTracking";
  * Tracks questions asked to the Kapa.ai "Ask AI" widget using multiple detection methods.
  *
  * Methods (in order of reliability):
- * 1. PostMessage listener - for iframe-based widgets
- * 2. Network request interception - catch API calls to Kapa backend
- * 3. DOM mutation observer - fallback for non-iframe widgets
+ * 1. Kapa API callback (onAskAIQuerySubmit) - official API, most reliable
+ * 2. PostMessage listener - for iframe-based widgets
+ * 3. Network request interception - catch API calls to Kapa backend
+ * 4. DOM mutation observer - fallback for non-iframe widgets
  */
 export default function KapaQueryTracker() {
   useEffect(() => {
     let mutationObserver = null;
+    let checkKapaReady;
+    let stopCheckingTimeout;
+    let domCheckInterval;
+    let domCheckStopTimeout;
+    let kapaQueryHandler = null;
+    const setupKapaCallback = () => {
+      // Wait for Kapa to be fully initialized
+      checkKapaReady = setInterval(() => {
+        if (typeof window.Kapa === "function") {
+          clearInterval(checkKapaReady);
+
+          try {
+            // Register callback for question submissions.
+            // Kapa event API: https://docs.kapa.ai/integrations/website-widget/javascript-api/events           
+            const handler = (data = {}) => {
+              const question = data.question || data.query;
+              if (question && typeof question === "string") {
+                trackEvent("Ask AI Query Submitted", {
+                  query: question.substring(0, 500), // Limit to 500 chars
+                  query_length: question.length,
+                  widget_type: "kapa",
+                  detection_method: "kapa_api_callback",
+                });
+              }
+            };
+            window.Kapa("onAskAIQuerySubmit", handler);
+            kapaQueryHandler = handler;
+          } catch (err) {
+            // Silently fall back to alternative detection methods.
+          }
+        }
+      }, 100);
+      stopCheckingTimeout = setTimeout(() => clearInterval(checkKapaReady), 10000);
+    };
 
     const handleKapaPostMessage = (event) => {
       if (
@@ -155,17 +190,31 @@ export default function KapaQueryTracker() {
         childList: true,
         subtree: true,
       });
-      const checkInterval = setInterval(checkForKapaInput, 500);
-      setTimeout(() => clearInterval(checkInterval), 10000);
+      domCheckInterval = setInterval(checkForKapaInput, 500);
+      domCheckStopTimeout = setTimeout(() => clearInterval(domCheckInterval), 10000);
     };
 
     // Initialize all methods
+    setupKapaCallback();
     window.addEventListener("message", handleKapaPostMessage);
     interceptKapaRequests();
     observeKapaDOM();
 
     // Cleanup
     return () => {
+      clearInterval(checkKapaReady);
+      clearTimeout(stopCheckingTimeout);
+      clearInterval(domCheckInterval);
+      clearTimeout(domCheckStopTimeout);
+      if (kapaQueryHandler) {
+        try {
+          // Kapa event listeners are removed by passing the same handler with the "remove" option.
+          // The try/catch covers the case where window.Kapa is gone or the widget is unmounted.
+          window.Kapa("onAskAIQuerySubmit", kapaQueryHandler, "remove");
+        } catch (err) {
+          // Ignore — widget may already be unmounted.
+        }
+      }
       window.removeEventListener("message", handleKapaPostMessage);
       if (mutationObserver) {
         mutationObserver.disconnect();
