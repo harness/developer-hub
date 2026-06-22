@@ -220,7 +220,12 @@ The following deprecated API endpoints are longer supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
-## May 2026
+## June 2026
+
+### Version 1.153.x <!--June 17, 2026-->
+
+#### Fixed issues
+- Fixed an issue where Audit Logs could not be accessed from Account and Organization Settings when navigating within module-specific views. [PL-72047]
 
 ### Version 1.152.x <!--June 15, 2026-->
 
@@ -232,6 +237,8 @@ The following deprecated API endpoints are longer supported:
 
 #### New features and enhancements
 - Added request payload validation to the Role Assignment filter API endpoints (`/filter`, `/filter/internal`, and `v2/filter`) to improve request handling and provide clearer error responses for invalid payloads. [PL-66807]
+
+## May 2026
 
 ### Version 1.150.x <!--May 27, 2026--> 
 
