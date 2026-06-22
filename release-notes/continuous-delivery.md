@@ -128,6 +128,19 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## June 2026
 
+### Version 1.153.0
+
+#### Fixed issues
+
+- Fixed an issue where the Terraform Cloud Apply step succeeded but triggered a retry due to loss of log streaming, potentially causing the apply to run more than once. The step now correctly marks a successful apply as complete and does not retry. (**CDS-125110**, **ZD-115187**)
+- Fixed an issue where Google Cloud Functions Gen2 rollback failed with a 401 error due to lost invoker permissions after rollback. (**CDS-125272**, **ZD-115421**)
+- Fixed an issue where the feature flag `CDS_ENABLE_PIPELINE_SCOPED_OIDC_SUB` did not include the pipeline ID in the OIDC sub claim for containerized step groups. The sub claim now correctly includes the pipeline ID for containerized step group executions. (**CDS-125413**, **ZD-115447**)
+- Fixed an issue where ECS scheduled scaling configurations with timezone offsets in `start_time` or `end_time` fields (for example, `+05:30`) caused deserialization errors in the prepare rollback step. The step now correctly parses timezone-offset values. (**CDS-125473**, **ZD-115819**)
+- Fixed an issue where the GitOps step returned an incomplete `RolloutStatusResponse`, omitting some fields. The step now correctly returns all `RolloutStatusResponse` fields. (**CDS-125476**)
+- Fixed an issue where the Terraform provider returned a misleading "file already exists" error during concurrent pipeline creation with Git Experience. (**PIPE-33810**, **ZD-113331**)
+- Fixed an issue where `parentEntityRepo` was incorrectly set as the template repo instead of the pipeline repo. To apply this fix, enable the feature flag `PIPE_DISABLE_PARENT_REPO_NAME_CONTEXT_POPULATION_FOR_TEMPLATE`. Go to [Harness Support](mailto:support@harness.io) to enable this flag. (**PIPE-33917**, **ZD-113413**, **ZD-114657**)
+- Fixed an issue where deployments no longer displayed service runtime inputs under the inputs section of pipeline executions. (**PIPE-34769**, **ZD-115520**, **ZD-115608**)
+
 ### Version 1.152.0
 
 #### New features and enhancements
