@@ -26,6 +26,21 @@ We've migrated to LabelsV2, which preserves your original label keys while drama
 [Instructions to Update](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts/#how-to-migrate)
 
 
+## June 2026 - Version 1.93.6
+#### Deployment Date: June 22, 2026 (Prod-1)
+
+### New Features and Enhancements
+
+- **Node Pool Recommendation Savings Accuracy:** Fixed nodepool recommendation savings for Net-amortized cost type to ensure displayed savings use the same selected-cost basis as monthly cost. This prevents inflated savings values when preference-based savings are shown for nodepool recommendations. [CCM-33470]
+
+- **Anomalies Aggregation on Overview Page:** Enhanced anomaly calculations to display total active anomalies on the Overview page, including both resource-level and cost category-level anomalies. The Perspective screen now correctly aggregates anomalies from both resources and cost buckets. [CCM-33419]
+
+- **Advanced Filters and Cost Explorer Improvements:** Fixed messaging in the Advanced Filters drawer and improved preferences handling to disable filtered-out providers in Cost Explorer. [CCM-33102]
+
+- **Commitment Orchestrator Renewal Events:** Improved the display of multiple renewal events in Commitment Orchestration by consolidating multiple icons into a single indicator with detailed information available on hover. [CCM-32717]
+
+- **[BEHIND A FEATURE FLAG] Asset Governance Cost Settings Tab:** Asset Governance now includes a new Cost Settings tab that lets you configure cost preferences for AWS, GCP, and Azure. Features include cost type selection (Net Amortized, Actual, or Amortized) and granular controls for savings programs such as CUD discounts, Promotional Credits, Sustained Use Discounts (SUDs), and Negotiated Savings. Settings inherit account-level defaults and can be overridden at the feature level when needed. This is part of a broader consolidation of Governance configuration into a single unified Settings drawer accessible from the Governance header, bringing together Alerts, Preferences, and Cost Settings in one place. [CCM-32545]
+
 ## June 2026 - Version 1.92.0
 #### Deployment Date: June 16, 2026 (Prod-1)
 
