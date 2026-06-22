@@ -1,274 +1,200 @@
 ---
 id: azure-instance-io-stress
 title: Azure instance IO stress
+sidebar_label: Azure Instance IO Stress
+description: Drive disk IO load on one or more Azure VMs for a configurable duration so you can test how the workload behaves when the storage subsystem is saturated.
+keywords:
+  - chaos engineering
+  - azure instance io stress
+  - azure fault
+  - disk io stress
+tags:
+  - chaos-engineering
+  - azure-faults
 redirect_from:
 - /docs/chaos-engineering/technical-reference/chaos-faults/azure/azure-instance-io-stress
 - /docs/chaos-engineering/chaos-faults/azure/azure-instance-io-stress
 ---
 
-Azure instance I/O stress disrupts the state of infra resources. 
-- This fault induces stress on the Azure instance using the Azure `Run` command. The Azure `Run` command is executed using the in-built bash scripts within the fault.
-- It causes I/O stress on the Azure Instance using the bash script for a specific duration.
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-![Azure Instances IO Stress](./static/images/azure-instance-io-stress.png)
+Azure instance IO stress is an Azure chaos fault that drives sustained disk read/write IO on the volume mounted at `VOLUME_MOUNT_PATH` of each VM listed in `AZURE_INSTANCE_NAMES` (in `RESOURCE_GROUP`, subscription `AZURE_SUBSCRIPTION_ID`) for `TOTAL_CHAOS_DURATION` seconds. The fault writes `FILESYSTEM_UTILIZATION_BYTES` GB (or `FILESYSTEM_UTILIZATION_PERCENTAGE` percent when set) across `NUMBER_OF_WORKERS` workers using the Azure VM run-command extension.
+
+Use this fault to test how a workload behaves when the storage subsystem is saturated: whether application latency degrades gracefully, whether write-heavy paths back off correctly, whether IO autoscale (Premium SSD bursting) kicks in, and whether monitoring detects the saturation within the alerting SLA.
+
+:::info Run your first experiment
+If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
+:::
+
+---
 
 ## Use cases
-Azure instance I/O stress:
-- Determines the resilience of an Azure instance when unexpected stress is applied on the I/O sources. 
-- Determines how Azure scales the resources to maintain the application under stress. 
-- Simulates slower disk operations by the application.
-- Simulates noisy neighbour problems by hogging the disk bandwidth. 
-- Verifies the disk performance on increasing I/O threads and varying I/O block sizes. 
-- Checks whether or not the application functions under high disk latency conditions.
-- Checks whether or not the application functions under high I/O traffic, and large I/O blocks.
-- Checks if other services monopolize the I/O disks during stress. 
 
-### Prerequisites
-- Kubernetes >= 1.17
-- Azure authentication configured for chaos faults. Refer to [Azure authentication methods](/docs/chaos-engineering/faults/chaos-faults/azure/security-configurations/azure-authentication-methods) for setup instructions.
-- Azure Run Command agent is installed and running in the target Azure instance.
-- Azure instance should be in a healthy state.
+Run this fault when you want to answer concrete questions like:
 
-### Mandatory tunables
+- **IO pressure:** When the disk is saturated, does application latency stay inside the SLA?
+- **Premium SSD bursting:** Does the disk burst credit cover the spike, or does throttling kick in?
+- **Write-amplification:** Do logs, journals, or background writers degrade gracefully?
+- **Monitoring fidelity:** Do alerts on `Disk Read Bytes` / `Disk Write Bytes` and disk queue depth fire inside the alerting SLA?
 
-<table>
-    <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-    </tr>
-     <tr>
-        <td> AZURE_INSTANCE_NAMES </td>
-        <td> Names of the target Azure instances. </td>
-        <td> Multiple values can be provided as a comma-separated string. For example, <code>instance-1,instance-2</code>. For more information, go to <a href="#stop-instances-by-name"> stop instance by name. </a></td>
-    </tr>
-    <tr>
-        <td> RESOURCE_GROUP </td>
-        <td> The Azure Resource Group name where the instances will be created. </td>
-        <td> All the instances must be from the same resource group. For more information, go to <a href="#multiple-workers"> resource group field in the YAML file. </a></td>
-    </tr>
-</table>
+---
 
-### Optional tunables
-<table>
-    <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-    </tr>
-    <tr>
-        <td> TOTAL_CHAOS_DURATION </td>
-        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos.</a></td>
-    </tr>
-    <tr>
-        <td> CHAOS_INTERVAL </td>
-        <td> Time interval between two successive container kills (in seconds).</td>
-        <td> Defaults to 60s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
-    </tr>
-    <tr>
-        <td> AZURE_AUTH_LOCATION </td>
-        <td> Name of the Azure secret credentials files.</td>
-        <td> Defaults to <code>azure.auth</code>. </td>
-    </tr>
-    <tr>
-        <td> SCALE_SET </td>
-        <td> Check if the instance is a part of Scale Set.</td>
-        <td> Defaults to <code>disable</code>. Also supports <code>enable</code>. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/azure/azure-instance-stop#stop-scale-set-instances"> scale set instances. </a></td>
-    </tr>
-    <tr>
-        <td> INSTALL_DEPENDENCIES </td>
-        <td> Install dependencies to run I/O stress. </td>
-        <td> Defaults to <code>true</code>. Also supports <code>false</code>. </td>
-    </tr>
-    <tr>
-        <td> FILESYSTEM_UTILIZATION_PERCENTAGE </td>
-        <td> Specify the size as a percentage of free space on the file system.</td>
-        <td> Defaults to 0 %, which results in 1 GB utilization. For more information, go to <a href="#file-system-utilization-in-percentage"> file system utilization in percentage. </a></td>
-    </tr>
-    <tr>
-        <td> FILESYSTEM_UTILIZATION_BYTES </td>
-        <td> Specify the size of the files used per worker (in GB). <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> and <code>FILESYSTEM_UTILIZATION_BYTES</code> are mutually exclusive. If both are specified, <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> takes precedence. </td>
-        <td> Defaults to 0 GB, which results in 1 GB utilization. For more information, go to <a href="#file-system-utilization-in-gigabytes"> file system utilization in gigabytes. </a></td>
-    </tr>
-    <tr>
-        <td> NUMBER_OF_WORKERS </td>
-        <td> Number of I/O workers involved in I/O disk stress. </td>
-        <td> Default to 4. For more information, go to <a href="#multiple-workers"> multiple workers. </a></td>
-    </tr>
-    <tr>
-        <td> VOLUME_MOUNT_PATH </td>
-        <td> Location that points to the volume mount path used in I/O stress.</td>
-        <td> Defaults to the user HOME directory. For more information, go to <a href="#volume-mount-path"> volume mount path. </a></td>
-    </tr>
-    <tr>
-        <td> DEFAULT_HEALTH_CHECK </td>
-        <td> Determines if you wish to run the default health check which is present inside the fault. </td>
-        <td> Default: 'true'. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
-        </tr>
-    <tr>
-        <td> SEQUENCE </td>
-        <td> Sequence of chaos execution for multiple target pods.</td>
-        <td> Defaults to <code>parallel</code>. Also supports <code>serial</code> sequence. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
-    </tr>
-    <tr>
-        <td> RAMP_TIME </td>
-        <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
-    </tr>
-</table>
+## Prerequisites
 
+- **Kubernetes version:** 1.21 or later for the chaos infrastructure cluster.
+- **Target VMs reachable:** Each entry in `AZURE_INSTANCE_NAMES` exists in `RESOURCE_GROUP` and is in `running` state.
+- **VM Agent and run-command enabled:** The Azure VM Agent must be running on the target VM.
+- **Mount path exists:** `VOLUME_MOUNT_PATH` (default `/tmp`) must be a writable directory on the VM with enough free space for `FILESYSTEM_UTILIZATION_BYTES`.
+- **Azure credentials available:** A service principal File Secret in Harness Secret Manager, workload identity on AKS, or managed identity on the AKS node pool.
 
-### File system utilization in gigabytes
+---
 
-It specifies the size of file utilised by the Azure instance (in gigabytes). Tune it by using the `FILESYSTEM_UTILIZATION_BYTES` environment variable.
+## Supported environments
 
-Use the following example to tune it:
+| Platform | Support status |
+| --- | --- |
+| Standalone Linux VMs | Supported |
+| Standalone Windows VMs | Supported (use [Windows disk stress](/docs/chaos-engineering/faults/chaos-faults/windows/windows-disk-stress) for native Windows support) |
+| VMSS instances | Supported (set `SCALE_SET=enable`) |
+| AKS worker nodes (VMSS-backed) | Supported with `SCALE_SET=enable` |
 
-[embedmd]:# (./static/manifests/azure-instance-io-stress/filesystem-bytes.yaml yaml)
-```yaml
-# filesystem bytes to utilize
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: azure-instance-io-stress
-    spec:
-      components:
-        env:
-        - name: FILESYSTEM_UTILIZATION_BYTES
-          VALUE: '1024'
-        # name of the Azure instance
-        - name: AZURE_INSTANCE_NAMES
-          value: 'instance-1'
-        # resource group for the Azure instance
-        - name: RESOURCE_GROUP
-          value: 'rg-azure'
-```
+---
 
-### File system utilization in percentage
-It specifies the size of files utilised on the Azure instance (in percentage). Tune it by using the `FILESYSTEM_UTILIZATION_PERCENTAGE` environment variable.
+## Permissions required
 
-Use the following example to tune it:
+The Azure principal used by the chaos pod needs the following role on the target resource group or subscription.
 
-[embedmd]:# (./static/manifests/azure-instance-io-stress/filesystem-percentage.yaml yaml)
-```yaml
-# filesystem percentage to utilize
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: azure-instance-io-stress
-    spec:
-      components:
-        env:
-        - name: FILESYSTEM_UTILIZATION_PERCENTAGE
-          VALUE: '50'
-        # name of the Azure instance
-        - name: AZURE_INSTANCE_NAMES
-          value: 'instance-1'
-        # resource group for the Azure instance
-        - name: RESOURCE_GROUP
-          value: 'rg-azure'
-```
+**Recommended built-in role:** `Virtual Machine Contributor`
 
-### Multiple workers
+**Custom role (minimum actions):** see the [Azure instance CPU hog permissions](/docs/chaos-engineering/faults/chaos-faults/azure/azure-instance-cpu-hog#permissions-required) (same actions apply).
 
-It specifies the CPU threads that will be run to spike the file system utilisation. As a consequence, it increases file system consumption. Tune it by using the `NUMBER_OF_WORKERS` environment variable.
+Go to [Azure fault permissions](/docs/chaos-engineering/faults/chaos-faults/azure/security-configurations/fault-permissions) to read the full permission catalog.
 
-Use the following example to tune it:
+---
 
-[embedmd]:# (./static/manifests/azure-instance-io-stress/multiple-workers.yaml yaml)
-```yaml
-# multiple workers to utilize resources
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: azure-instance-io-stress
-    spec:
-      components:
-        env:
-        - name: NUMBER_OF_WORKERS
-          VALUE: '3'
-        # name of the Azure instance
-        - name: AZURE_INSTANCE_NAMES
-          value: 'instance-1'
-        # resource group for the Azure instance
-        - name: RESOURCE_GROUP
-          value: 'rg-azure'
-```
+## Authentication
 
-### Volume mount path
+Go to [Azure authentication methods](/docs/chaos-engineering/faults/chaos-faults/azure/security-configurations/azure-authentication-methods) to set up Service principal, Workload identity, or Managed identity.
 
-It specifies the location that points to the volume mount path used in I/O stress with respect to the Azure instance. Tune it by using the `VOLUME_MOUNT_PATH` environment variable.
+---
 
-Use the following example to tune it:
+## Fault tunables
 
-[embedmd]:# (./static/manifests/azure-instance-io-stress/volume-path.yaml yaml)
-```yaml
-# volume path to be used for io stress
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: azure-instance-io-stress
-    spec:
-      components:
-        env:
-        - name: VOLUME_MOUNT_PATH
-          VALUE: '/tmp'
-        # name of the Azure instance
-        - name: AZURE_INSTANCE_NAMES
-          value: 'instance-1'
-        # resource group for the Azure instance
-        - name: RESOURCE_GROUP
-          value: 'rg-azure'
-```
+Configure the following fault parameters when you add Azure instance IO stress to an experiment in Chaos Studio. Defaults are shown for reference.
 
-### Multiple Azure instances
+**Required parameters**
 
-It specifies comma-separated Azure instance names that are subject to chaos in a single run. Tune it by using the `AZURE_INSTANCE_NAMES` environment variable.
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `AZURE_INSTANCE_NAMES` | Comma-separated list of VM names. | (required) |
+| `RESOURCE_GROUP` | Resource group that contains the VMs. | (required) |
 
-Use the following example to tune it:
+**Stress parameters**
 
-[embedmd]:# (./static/manifests/azure-instance-io-stress/multiple-instances.yaml yaml)
-```yaml
-# mutilple instance targets
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: azure-instance-io-stress
-    spec:
-      components:
-        env:
-        - name: MEMORY_CONSUMPTION
-          VALUE: '1024'
-        # names of the Azure instance
-        - name: AZURE_INSTANCE_NAMES
-          value: 'instance-1,instance-2'
-        # resource group for the Azure instance
-        - name: RESOURCE_GROUP
-          value: 'rg-azure'
-```
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `FILESYSTEM_UTILIZATION_BYTES` | Total bytes (GB) written by the stress workers. Ignored when `FILESYSTEM_UTILIZATION_PERCENTAGE > 0`. | `5` |
+| `FILESYSTEM_UTILIZATION_PERCENTAGE` | Percentage of filesystem free space to use. Set to `0` to use `FILESYSTEM_UTILIZATION_BYTES`. | `0` |
+| `NUMBER_OF_WORKERS` | Number of parallel IO stress workers. | `1` |
+| `VOLUME_MOUNT_PATH` | Filesystem path used as the stress target. | `/tmp` |
+
+**Chaos parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `TOTAL_CHAOS_DURATION` | Total duration of the fault in seconds. | `30` |
+| `CHAOS_INTERVAL` | Delay in seconds between successive iterations when running for more than one cycle. | `30` |
+| `SCALE_SET` | Set to `enable` when the VMs belong to a Virtual Machine Scale Set. | `""` |
+| `SEQUENCE` | Order in which multiple instances are stressed: `parallel` or `serial`. | `parallel` |
+| `RAMP_TIME` | Wait period in seconds before and after the fault. Go to [ramp time](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time) to read how it is applied. | `0` |
+
+**Authentication**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `AZURE_SUBSCRIPTION_ID` | Target Azure subscription ID. | `""` |
+| `AZURE_CLIENT_ID` | Client ID of a user-assigned managed identity. | `""` |
+| `AZURE_AUTHENTICATION_SECRET` | Identifier of the **File Secret in Harness Secret Manager** that contains the service principal JSON. | `""` |
+
+Tunables that apply to every fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
+
+---
+
+## Fault execution in brief
+
+Uses the Azure VM run-command extension to launch `NUMBER_OF_WORKERS` IO stress workers on each VM, writing `FILESYSTEM_UTILIZATION_BYTES` GB (or `FILESYSTEM_UTILIZATION_PERCENTAGE` percent of free space) to `VOLUME_MOUNT_PATH` for `TOTAL_CHAOS_DURATION` seconds, then terminates the workers and cleans up the stress files.
+
+---
+
+## Expected behavior during fault execution
+
+- Disk read/write throughput on the affected VMs climbs for the duration.
+- Application latency on read/write paths grows in proportion to the load.
+- Azure Monitor `Disk Read Bytes/sec`, `Disk Write Bytes/sec`, and queue depth reflect the spike.
+- After the duration ends, the workers exit, the stress files are cleaned up, and IO returns to baseline.
+
+:::info When the fault ends
+The chaos pod terminates the workers and removes the stress files written under `VOLUME_MOUNT_PATH`. Disk usage returns to baseline.
+:::
+
+### Signals to watch
+
+- **VM disk metrics:** Use a [Prometheus probe](/docs/resilience-testing/chaos-testing/probes/apm-probes) on `node_disk_io_time_seconds_total` and assert the spike is observed.
+- **Application latency:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) on a write-heavy endpoint.
+
+---
+
+## Verify the fault execution effect
+
+1. **Inspect Azure Monitor disk metrics.**
+
+   ```bash
+   az monitor metrics list \
+     --resource /subscriptions/<sub>/resourceGroups/<rg>/providers/Microsoft.Compute/virtualMachines/<vm> \
+     --metric "Disk Read Bytes,Disk Write Bytes" \
+     --interval PT1M
+   ```
+
+2. **SSH into the VM and run `iostat -x 2` during the chaos window.**
+
+   `%util` should climb and `await` should grow.
+
+---
+
+## Recovery and cleanup
+
+- **End of duration:** The chaos pod terminates the workers and removes the stress files from `VOLUME_MOUNT_PATH`.
+- **Abort the experiment:** Stopping the experiment from Chaos Studio also cleans up.
+- **Manual recovery:** SSH into the VM and remove any `stress-*` files left behind under `VOLUME_MOUNT_PATH`.
+
+---
+
+## Limitations
+
+- **Filesystem space requirement:** The chosen `VOLUME_MOUNT_PATH` must have enough free space; the fault errors out if it does not.
+- **Premium SSD bursting:** Bursting credit may mask the impact on small VMs; size `FILESYSTEM_UTILIZATION_BYTES` accordingly.
+- **Same-subscription targeting:** A single experiment targets one `AZURE_SUBSCRIPTION_ID`.
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="Azure instance IO stress fails with No space left on device in Harness Chaos Engineering"
+  mode="docs"
+  fallback="VOLUME_MOUNT_PATH does not have enough free space. Verify with df -h <path> on the VM, then either lower FILESYSTEM_UTILIZATION_BYTES or pick a different mount path."
+/>
+
+<Troubleshoot
+  issue="No IO spike visible in Azure Monitor"
+  mode="docs"
+  fallback="Azure Monitor metrics aggregate at 1-minute granularity. For short chaos windows, inspect node-level metrics through iostat or a Prometheus node exporter scrape. Premium SSD burst credits may also absorb short bursts."
+/>
+
+---
+
+## Related faults
+
+- [Azure instance CPU hog](/docs/chaos-engineering/faults/chaos-faults/azure/azure-instance-cpu-hog): Stress CPU instead of disk.
+- [Azure instance memory hog](/docs/chaos-engineering/faults/chaos-faults/azure/azure-instance-memory-hog): Stress memory instead of disk.
+- [Azure disk loss](/docs/chaos-engineering/faults/chaos-faults/azure/azure-disk-loss): Detach the disk entirely.

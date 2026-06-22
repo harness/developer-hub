@@ -1,144 +1,226 @@
 ---
 id: gcp-sql-instance-failover
-title: GCP SQL Instance Failover
+title: GCP SQL instance failover
+sidebar_label: GCP SQL Instance Failover
+description: Trigger a failover on a GCP Cloud SQL high-availability instance so you can test how the application behaves when the primary node fails over to its standby.
+keywords:
+  - chaos engineering
+  - gcp sql instance failover
+  - gcp fault
+  - cloud sql
+tags:
+  - chaos-engineering
+  - gcp-faults
+redirect_from:
+- /docs/chaos-engineering/technical-reference/chaos-faults/gcp/gcp-sql-instance-failover
+- /docs/chaos-engineering/chaos-faults/gcp/gcp-sql-instance-failover
 ---
 
-GCP SQL Instance Failover disrupts the state of GCP SQL instance filtered using a name and project ID by triggering failover on the SQL instance.
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-![GCP VM Disk Loss By Label](./static/images/gcp-sql-instance-failover.png)
+GCP SQL instance failover is a GCP chaos fault that triggers a failover on a managed Cloud SQL instance (`SQL_INSTANCE_NAME` in project `GCP_PROJECT_ID`). The fault calls the Cloud SQL `failover` API, which promotes the high-availability standby node to primary; the original primary becomes the new standby once the failover completes.
+
+Use this fault to test how an application behaves when a Cloud SQL primary becomes unavailable and traffic shifts to the standby: whether application connection handling reconnects cleanly, whether transactions in flight surface clean errors, whether read/write split logic copes with the brief outage, and whether monitoring detects the failover within the alerting SLA.
+
+:::info Run your first experiment
+If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
+:::
+
+---
 
 ## Use cases
 
-GCP SQL instance failover fault:
+Run this fault when you want to answer concrete questions like:
 
-- Determines the resilience of the GKE infrastructure.
-- Determines how quickly an SQL Instance can recover when a failover on one of the replicas is triggered.
+- **Reconnect handling:** When the primary fails over, do application connection pools reconnect cleanly inside the SLA?
+- **Transaction safety:** Do in-flight transactions surface clean rollback errors rather than data corruption?
+- **Read/write split correctness:** If the application uses a proxy or read replicas, does it pause writes and resume cleanly when the new primary is healthy?
+- **Failover budget:** Does the actual failover time (typically 30-90s for Cloud SQL HA) fit your application's SLO?
+- **Monitoring fidelity:** Do alerts on Cloud SQL `replica/replica_lag`, `database/up`, and application connection errors fire within the alerting SLA?
 
-### Prerequisites
+---
 
-- Kubernetes > 1.16
-- Service account should have editor access (or owner access) to the GCP project.
-- High Availability should be enabled on target GCP SQL Instance
-- Kubernetes secret should have the GCP service account credentials in the default namespace. Refer [generate the necessary credentials in order to authenticate your identity with the Google Cloud Platform (GCP)](/docs/chaos-engineering/faults/chaos-faults/gcp/security-configurations/prepare-secret-for-gcp) docs for more information.
+## Prerequisites
 
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: cloud-secret
-type: Opaque
-stringData:
-  type: "service_account"
-  project_id: "<PROJECT_ID>"
-  private_key_id: "<PRIVATE_KEY_ID>"
-  private_key: <PRIVATE_KEY>
-  client_email: "<CLIENT_EMAIL>"
-  client_id: "<CLIENT_ID>"
-  auth_uri: "https://accounts.google.com/o/oauth2/auth"
-  token_uri: "https://oauth2.googleapis.com/token"
-  auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs"
-  client_x509_cert_url: "<CLIENT_X509_CERT_URL>"
-  universe_domain: "googleapis.com"
+- **Kubernetes version:** 1.21 or later for the chaos infrastructure cluster.
+- **HA Cloud SQL instance:** `SQL_INSTANCE_NAME` is a Cloud SQL instance configured for high availability (a standby exists in another zone). Non-HA instances are not eligible for failover.
+- **Instance is `RUNNABLE`:** A failover cannot start on an instance that is `MAINTENANCE`, `STOPPED`, or `FAILED`.
+- **GCP credentials available:** Either a Google service account JSON key uploaded as a **File Secret in Harness Secret Manager** (referenced via `GCP_AUTHENTICATION_SECRET`) or Workload Identity bound to the chaos infrastructure service account.
+- **IAM permissions granted:** The service account includes the permissions listed below.
+
+---
+
+## Supported environments
+
+| Platform | Support status |
+| --- | --- |
+| Cloud SQL for MySQL (HA) | Supported |
+| Cloud SQL for PostgreSQL (HA) | Supported |
+| Cloud SQL for SQL Server (HA) | Supported |
+| Cloud SQL without HA | Not supported (no standby to fail over to) |
+| Cloud SQL read replicas | Supported only when configured for HA failover (use the primary's `SQL_INSTANCE_NAME`) |
+
+---
+
+## Permissions required
+
+The Google service account used by the chaos pod needs the following IAM permissions on the target project.
+
+```json
+{
+  "permissions": [
+    "cloudsql.instances.get",
+    "cloudsql.instances.failover",
+    "cloudsql.instances.list"
+  ]
+}
 ```
 
-### Mandatory tunables
+Granting the predefined role `roles/cloudsql.admin` covers these.
 
-   <table>
-      <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> GCP_PROJECT_ID </td>
-        <td> Id of the GCP project containing the SQL Instance. </td>
-        <td> Target SQL Instance should belong to this GCP project. For more information, go to <a href="#failover-sql-instance-by-name"> GCP project ID.</a></td>
-      </tr>
-      <tr>
-        <td> SQL_INSTANCE_NAME </td>
-        <td>Name of the target GCP SQL Instance. </td>
-        <td> For more information, go to <a href="#failover-sql-instance-by-name">SQL INSTANCE NAME.</a></td>
-      </tr>
-    </table>
+---
 
-### Optional tunables
+## Authentication
 
-   <table>
-      <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> TOTAL_CHAOS_DURATION </td>
-        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos.</a></td>
-      </tr>
-       <tr>
-        <td> CHAOS_INTERVAL </td>
-        <td> Time interval between two successive chaos iterations (in seconds). </td>
-        <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#chaos-interval">chaos interval.</a></td>
-      </tr>
-      <tr>
-        <td> SEQUENCE </td>
-        <td> Sequence of chaos execution for multiple target disks. </td>
-        <td> Defaults to parallel. It supports serial sequence as well. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution. </a></td>
-      </tr>
-      <tr>
-        <td> RAMP_TIME </td>
-        <td> Period to wait before and after injecting chaos (in seconds).</td>
-        <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time. </a></td>
-      </tr>
-      <tr>
-      <td>DEFAULT_HEALTH_CHECK</td>
-      <td>Determines if you wish to run the default health check which is present inside the fault. </td>
-      <td> Default: 'true'. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
-      </tr>
-    </table>
+The fault supports two credential delivery models.
 
-### IAM permissions
+| Method | When to use it | How to configure |
+| --- | --- | --- |
+| Harness Secret Manager File Secret | Chaos infrastructure runs outside GKE, or you want explicit static credentials | Upload the GCP service account JSON key as a **File Secret** in Harness Secret Manager and reference its identifier via `GCP_AUTHENTICATION_SECRET` |
+| Workload Identity | Chaos infrastructure runs on GKE with Workload Identity enabled | Bind a Google service account to the chaos infra Kubernetes service account; no tunable changes required |
 
-Listed below are the IAM permissions leveraged by the fault:
+Go to [Creating secrets for GCP experiments](/docs/chaos-engineering/faults/chaos-faults/gcp/security-configurations/prepare-secret-for-gcp) to read the secret format.
 
-- `cloudsql.instances.get`
-- `cloudsql.instances.failover`
-- `cloudsql.instances.list`
+---
 
-### Failover SQL Instance by name
+## Fault tunables
 
-The name of SQL Instance subject to Failover. It triggers failover on the sql instances with the provided name under `SQL_INSTANCE_NAME` within the `GCP_PROJECT_ID` project. It waits for the failover to complete & target instance to come in RUNNING state again in different zone.
+Configure the following fault parameters when you add GCP SQL instance failover to an experiment in Chaos Studio. Defaults are shown for reference.
 
-**GCP project ID**: The project ID which is a unique identifier for a GCP project. Tune it by using the `GCP_PROJECT_ID` environment variable.
+**Required parameters**
 
-The following YAML snippet illustrates the use of this environment variable:
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `SQL_INSTANCE_NAME` | Name of the Cloud SQL instance to failover. | (required) |
+| `GCP_PROJECT_ID` | ID of the GCP project that contains the Cloud SQL instance. | (required) |
 
-[embedmd]: # "./static/manifests/gcp-sql-instance-failover/gcp-sql-instance-failover.yaml yaml"
+**Chaos parameters**
 
-```yaml
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: gcp-sql-instance-failover
-      image: docker.io/harness/chaos-go-runner:main-latest
-      imagePullPolicy: Always
-      args:
-        - -c
-        - ./experiments -name gcp-sql-instance-failover
-      command:
-        - /bin/bash
-      components:
-        env:
-          - name: TOTAL_CHAOS_DURATION
-            value: "30"
-          - name: SQL_INSTANCE_NAME
-            value: "test-sql-instance"
-          - name: GCP_PROJECT_ID
-            value: "sample-project-id"
-          - name: DEFAULT_HEALTH_CHECK
-            value: "false"
-```
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `RAMP_TIME` | Wait period in seconds before and after the fault. Go to [ramp time](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time) to read how it is applied. | `0` |
+
+**Authentication**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `GCP_AUTHENTICATION_SECRET` | Identifier of the **File Secret in Harness Secret Manager** that contains the GCP service account JSON key. Not required when using Workload Identity. | `""` |
+
+Tunables that apply to every fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
+
+:::info Failover is a single API call
+This fault does not take a `TOTAL_CHAOS_DURATION`. It triggers the failover and reports completion when the Cloud SQL operation finishes. The actual outage duration depends on Cloud SQL's failover time (typically 30-90s).
+:::
+
+---
+
+## Fault execution in brief
+
+Calls the Cloud SQL `instances.failover` API on `SQL_INSTANCE_NAME` in `GCP_PROJECT_ID`, waits for the failover operation to reach the `DONE` state, and exits.
+
+---
+
+## Expected behavior during fault execution
+
+- The primary Cloud SQL node enters a brief unavailable window (typically 30-90 seconds for HA failover).
+- Application connections to the old primary are reset; new connections to the instance hostname route to the new primary once DNS/proxy updates.
+- Transactions in flight at the time of failover are rolled back.
+- Cloud SQL metrics show a brief drop in `database/up` and `database/network/connections` on the failing primary.
+- After the failover completes, the standby becomes the new primary; the old primary becomes the new standby.
+
+:::info When the fault ends
+Cloud SQL marks the failover operation `DONE` once the new primary is serving. Application reconnection time depends on the connection pool's reconnect backoff.
+:::
+
+### Signals to watch
+
+Attach [resilience probes](/docs/resilience-testing/chaos-testing/probes) to assert each layer:
+
+- **Database availability:** Use a [Prometheus probe](/docs/resilience-testing/chaos-testing/probes/apm-probes) on `cloudsql_database_up` and assert the gap is inside the SLA.
+- **Application connection errors:** Use a Prometheus probe on the application's connection-error counter.
+- **End-to-end availability:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) on a user-visible endpoint backed by the database.
+
+---
+
+## Verify the fault execution effect
+
+1. **Inspect the failover operation.**
+
+   ```bash
+   gcloud sql operations list \
+     --instance=<SQL_INSTANCE_NAME> \
+     --filter="operationType=FAILOVER" \
+     --limit=5
+   ```
+
+   The most recent operation should be `FAILOVER` with status `DONE`.
+
+2. **Inspect Cloud SQL instance state.**
+
+   ```bash
+   gcloud sql instances describe <SQL_INSTANCE_NAME> \
+     --format="value(state,settings.availabilityType)"
+   ```
+
+   The instance should be `RUNNABLE` with `REGIONAL` availability after the failover.
+
+3. **Inspect Cloud Monitoring.**
+
+   Use the Cloud Console to confirm `cloudsql.googleapis.com/database/up` briefly dropped during the failover window.
+
+---
+
+## Recovery and cleanup
+
+- **Automatic:** Cloud SQL completes the failover automatically; no manual cleanup is required.
+- **Application recovery:** Reconnect time depends on the application's connection-pool retry/backoff policy.
+- **Re-balance:** If you want the original primary to return to the primary role, run another failover (Cloud SQL alternates which zone is primary on each failover).
+
+---
+
+## Limitations
+
+- **HA only:** Non-HA Cloud SQL instances are not supported.
+- **One instance per run:** Each fault run targets one `SQL_INSTANCE_NAME`.
+- **No duration tunable:** The fault is event-based; the outage duration is driven by Cloud SQL, not by `TOTAL_CHAOS_DURATION`.
+- **Concurrent failovers blocked:** Cloud SQL queues subsequent failover requests; spacing them by at least 5 minutes is recommended.
+- **Cross-region replicas:** Cross-region read replicas continue to operate independently and replicate from the new primary.
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="GCP SQL instance failover fails with FAILED_PRECONDITION in Harness Chaos Engineering"
+  mode="docs"
+  fallback="The Cloud SQL instance must be configured for high availability (availabilityType=REGIONAL) and in state RUNNABLE. Verify with gcloud sql instances describe <name> --format='value(state,settings.availabilityType)'."
+/>
+
+<Troubleshoot
+  issue="GCP SQL instance failover fails with PermissionDenied"
+  mode="docs"
+  fallback="The service account used by the chaos pod is missing cloudsql.instances.failover. Grant roles/cloudsql.admin on the target project."
+/>
+
+<Troubleshoot
+  issue="Application connections did not recover after the failover"
+  mode="docs"
+  fallback="Most connection pools need a sane reconnect/backoff policy. Verify the pool: tcpKeepalive, validateOnReturn, maxLifetime should all be set. For JDBC/Postgres, ensure tcpKeepAlive=true and the driver's reconnect logic is enabled."
+/>
+
+---
+
+## Related faults
+
+- [GCP VM instance stop](/docs/chaos-engineering/faults/chaos-faults/gcp/gcp-vm-instance-stop): Stop the VM hosting the application instead of the database.
+- [GCP VM disk loss](/docs/chaos-engineering/faults/chaos-faults/gcp/gcp-vm-disk-loss): Detach disks instead of failing over a managed database.

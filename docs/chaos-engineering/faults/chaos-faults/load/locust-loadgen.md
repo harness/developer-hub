@@ -1,145 +1,76 @@
 ---
 id: locust-loadgen
 title: Locust loadgen
+sidebar_label: Locust Loadgen
+description: Generate a configurable load against a target host with a Locust script for a configurable duration so you can test how the workload behaves under sustained traffic.
+keywords:
+  - chaos engineering
+  - locust loadgen
+  - load chaos
+  - load testing
+tags:
+  - chaos-engineering
+  - load-faults
 redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/load/locust-loadgen
-  - /docs/chaos-engineering/technical-reference/chaos-faults/load/locust-loadgen-chaos
-  - /docs/chaos-engineering/chaos-faults/load/locust-loadgen-chaos
+  - /docs/chaos-engineering/chaos-faults/load/locust-loadgen
 ---
 
-Locust loadgen fault simulates load generation on the target hosts for a specific chaos duration. This fault:
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-- Slows down or makes the target host unavailable due to heavy load.
-- Checks the performance of the application or process running on the instance.
+Locust loadgen is a chaos fault that runs a [Locust](https://locust.io) load-test script against `HOST` from `REPLICA` helper pods inside the chaos infrastructure cluster for `TOTAL_CHAOS_DURATION` seconds, then stops. Each runner spawns `USERS` virtual users at `SPAWN_RATE` users per second. The Locust task file is supplied via a ConfigMap mounted at `CONFIG_MAP_FILE` (default `/tmp/config.py`), so the load profile is fully driven by the script.
 
-![Locust Loadgen Chaos](./static/images/locust-loadgen-chaos.png)
+Use this fault to test how a target workload behaves under sustained Python-driven synthetic load: whether application latency stays inside the SLA, whether autoscaling kicks in, whether circuit breakers and rate limiters work as expected, and whether monitoring detects the saturation within the alerting SLA.
+
+:::info Run your first experiment
+If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
+:::
+
+---
 
 ## Use cases
 
-- Locust loadgen fault determines the resilience of an application under heavy load.
-- It determines how quickly the target application recovers from such a failure.
+Run this fault when you want to answer concrete questions like:
 
-### Prerequisites
+- **API latency under load:** When `USERS` virtual users hit `HOST` at `SPAWN_RATE` users/second, does p95/p99 stay inside the SLA?
+- **Autoscaling fidelity:** Does HPA, KEDA, or a custom autoscaler add capacity inside the alerting SLA?
+- **Rate limiting and quotas:** Does the rate limiter return `429`s correctly under sustained burst traffic without leaking errors downstream?
+- **OAuth/credentialed APIs:** Use `GRANT_TYPE=client_credentials` (or another grant) in the Locust script to test authenticated endpoints under load.
+- **Distributed load:** Drive load from `REPLICA` runner pods (pinned to `NODE_NAMES`) to spread egress and avoid hitting per-pod limits.
 
-- Kubernetes > 1.17 is required to execute this fault.
-- The target host should be accessible.
-- Kubernetes ConfigMap that contains the `config.py` file is required. This file is used as a locust file to generate load in the `CHAOS_NAMESPACE`. Below is a sample ConfigMap:
+---
+
+## Prerequisites
+
+- **Kubernetes version:** 1.21 or later for the cluster running the chaos infrastructure.
+- **Locust task file:** A ConfigMap in the chaos infrastructure namespace that contains the Locust `config.py` mounted at `CONFIG_MAP_FILE`. Provide it through the helper pod spec.
+- **Target host reachable:** `HOST` is reachable from the chaos infrastructure cluster.
+- **Image accessible:** `LOAD_IMAGE` (default `chaosnative/locust-loadgen:latest`) is pullable from the cluster, or mirror it to your own registry and override the tunable.
+- **Node selectors (optional):** If `NODE_NAMES` is set, the runner pods are scheduled only on the listed nodes (comma-separated).
+
+---
+
+## Supported environments
+
+| Platform | Support status |
+| --- | --- |
+| Self-hosted Kubernetes (1.21+) | Supported |
+| Managed Kubernetes (EKS, GKE, AKS, OKE) | Supported |
+| OpenShift | Supported |
+| Targets running on AWS, Azure, GCP, or any reachable host | Supported |
+
+---
+
+## Permissions required
+
+This fault is classified as a **Basic** Load fault. The chaos service account needs the following Kubernetes RBAC permissions.
 
 ```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: load
-  namespace: <CHAOS-NAMESPACE>
-data:
-  config.py: |
-    import time
-    from locust import HttpUser, task, between
-    class QuickstartUser(HttpUser):
-        wait_time = between(1, 5)
-        @task
-        def hello_world(self):
-            self.client.get("")
-```
-
-:::tip
-If you change the `config.py` file, ensure that you update the `CONFIG_MAP_FILE` environment variable in the chaos experiment with the new name.
-:::
-
-### Mandatory tunables
-
-   <table>
-        <tr>
-            <th> Tunable </th>
-            <th> Description </th>
-            <th> Notes </th>
-        </tr>
-        <tr>
-            <td> HOST </td>
-            <td> Name of the target host under chaos. </td>
-            <td> Provide the name of target host ex: <code>https://google.com</code>. For more information, go to <a href="#target-host"> target host.</a></td>
-        </tr>
-    </table>
-
-### Optional tunables
-
-   <table>
-        <tr>
-            <th> Tunable </th>
-            <th> Description </th>
-            <th> Notes </th>
-        </tr>
-        <tr>
-            <td> TOTAL_CHAOS_DURATION </td>
-            <td> Time taken to inject chaos into the target resource (in seconds). </td>
-            <td> Default: 60s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a>.</td>
-        </tr>
-        <tr>
-            <td> CHAOS_INTERVAL </td>
-            <td> Time interval between two successive instance poweroffs (in seconds). </td>
-            <td> Default: 60s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
-        </tr>
-        <tr>
-            <td> USERS </td>
-            <td> Peak number of concurrent Locust users causing the load. </td>
-            <td> Default: <code>30</code>. For more information, go to <a href="#number-of-users"> number of users.</a></td>
-        </tr>
-        <tr>
-            <td> SPAWN_RATE </td>
-            <td> Number of users spawned per second.</td>
-            <td> Default: <code>30</code>. For more information, go to <a href="#spawn-rate"> spawn rate.</a></td>
-        </tr>
-        <tr>
-            <td> REPLICA </td>
-            <td> Number of helper pod replicas generating the load. </td>
-            <td> Default: <code>1</code>. </td>
-        </tr>
-        <tr>
-            <td> LOAD_IMAGE </td>
-            <td> Image used in helper pod that contains the chaos injection logic. </td>
-            <td> Default: <code>chaosnative/locust-loadgen:latest</code>. For more information, go to <a href="#custom-load-image"> custom load image.</a></td>
-        </tr>
-        <tr>
-            <td> LOAD_TYPE </td>
-            <td> Used as a suffix in the load file name. </td>
-            <td> Default: to <code>load</code>. </td>
-        </tr>
-        <tr>
-            <td> GRANT_TYPE </td>
-            <td> Used for OAuth 2.0 authentication process. </td>
-            <td> Supports client_credentials only. Used when client requests access to protected resources based on the client ID and client secret. </td>
-        </tr>
-        <tr>
-            <td> NODE_NAMES </td>
-            <td> Comma-separated node names subject to chaos</td>
-            <td> For example, <code>node1,node2,..</code></td>
-        </tr>
-        <tr>
-            <td> CONFIG_MAP_FILE </td>
-            <td> Path to the configuration file where you set locust logic parameters. </td>
-            <td> You can specify additional file using the `--config` flag. </td>
-        </tr>
-        <tr>
-            <td> RAMP_TIME </td>
-            <td> Wait period before and after injecting chaos (in seconds). </td>
-            <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
-        </tr>
-    </table>
-
-### Permissions required
-
-Below is a sample Kubernetes role that defines the permissions required to execute the fault.
-
-```
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   namespace: hce
   name: locust-loadgen
-spec:
-  definition:
-    scope: Namespaced # Supports "Cluster" mode too
-permissions:
+rules:
   - apiGroups: [""]
     resources: ["pods"]
     verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
@@ -149,11 +80,8 @@ permissions:
   - apiGroups: [""]
     resources: ["pods/log"]
     verbs: ["get", "list", "watch"]
-  - apiGroups: [""]
-    resources: ["deployments"]
-    verbs: ["get", "list"]
-  - apiGroups: [""]
-    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
+  - apiGroups: ["litmuschaos.io"]
+    resources: ["chaosengines", "chaosexperiments", "chaosresults"]
     verbs: ["create", "delete", "get", "list", "patch", "update"]
   - apiGroups: ["batch"]
     resources: ["jobs"]
@@ -163,110 +91,160 @@ permissions:
     verbs: ["get", "list", "watch"]
 ```
 
-### Target host
+---
 
-It specifies the value of the target host. Tune it by using the `HOST` environment variable.
+## Fault tunables
 
-The following YAML snippet illustrates the use of this environment variable:
+Configure the following fault parameters when you add Locust loadgen to an experiment in Chaos Studio. Defaults are shown for reference.
 
-[embedmd]: # "./static/manifests/locust-loadgen-chaos/host.yaml yaml"
+**Required parameters**
 
-```yaml
-# generate load on the target host
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: load-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: locust-load-generator
-      spec:
-        components:
-          env:
-            - name: HOST
-              value: "https://www.google.com"
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `HOST` | URL of the target host (for example `https://api.example.com`). | `https://google.com` |
+
+**Chaos parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `TOTAL_CHAOS_DURATION` | Total duration of the fault, in seconds. Locust runs for this period. | `60` |
+| `CHAOS_INTERVAL` | Delay in seconds between successive iterations when running for more than one cycle. | `60` |
+| `USERS` | Number of concurrent virtual users per runner pod. | `300` |
+| `SPAWN_RATE` | Number of virtual users to spawn per second. | `300` |
+| `LOAD_TYPE` | Type of load produced by the script (used by the Locust task to choose a profile, for example `load`, `spike`, `stress`). | `load` |
+| `GRANT_TYPE` | OAuth grant type used by the script when the target needs credentials (for example `client_credentials`). | `client_credentials` |
+| `REPLICA` | Number of runner pods to launch. Total virtual users equal `USERS x REPLICA`. | `3` |
+| `NODE_NAMES` | Comma-separated node names where runner pods are scheduled. Empty means any node. | `""` |
+| `CONFIG_MAP_FILE` | Path inside the runner pod where the Locust task file is mounted from the supplied ConfigMap. | `/tmp/config.py` |
+| `LOAD_IMAGE` | Container image used to run Locust inside each runner pod. | `chaosnative/locust-loadgen:latest` |
+| `RAMP_TIME` | Wait period in seconds before and after the fault. Go to [ramp time](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time) to read how it is applied. | `0` |
+
+Tunables that apply to every fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
+
+---
+
+## Sample Locust task
+
+The ConfigMap mounted at `CONFIG_MAP_FILE` contains the Locust task file. A minimal `config.py`:
+
+```python
+from locust import HttpUser, task, between
+
+class WebsiteUser(HttpUser):
+    wait_time = between(0.5, 1.5)
+
+    @task
+    def index(self):
+        self.client.get("/")
+
+    @task(3)
+    def health(self):
+        self.client.get("/health")
 ```
 
-### Number of users
+Go to the [Locust documentation](https://docs.locust.io) to read the task reference.
 
-It specifies the number of users or workers involved in the load generation. Tune it by using the `USERS` environment variable.
+---
 
-The following YAML snippet illustrates the use of this environment variable:
+## Fault execution in brief
 
-[embedmd]: # "./static/manifests/locust-loadgen-chaos/users.yaml yaml"
+Launches `REPLICA` runner pods running `LOAD_IMAGE`, mounts the Locust task file from the ConfigMap at `CONFIG_MAP_FILE`, runs `locust` against `HOST` with `USERS` concurrent virtual users at `SPAWN_RATE` per second for `TOTAL_CHAOS_DURATION`, then tears the runner pods down.
 
-```yaml
-# provid number of users for loadgen
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: load-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: locust-load-generator
-      spec:
-        components:
-          env:
-            - name: USERS
-              value: "100"
-            - name: HOST
-              value: "https://www.google.com"
-```
+---
 
-### Custom load image
+## Expected behavior during fault execution
 
-It specifies the rate at which users are spawned per second. Tune it by using the `LOAD_IMAGE` environment variable.
+- The target host sees sustained synthetic traffic for `TOTAL_CHAOS_DURATION` seconds at the rate driven by `USERS`, `SPAWN_RATE`, and `REPLICA`.
+- Application metrics on the target (latency, throughput, error rate) shift in line with the load profile.
+- Autoscalers (HPA, KEDA) may add capacity if CPU/RPS thresholds are reached.
+- After the duration ends, the runner pods are deleted; traffic from the fault stops within seconds.
 
-The following YAML snippet illustrates the use of this environment variable:
+:::info When the fault ends
+The chaos pod stops Locust and deletes the runner pods when `TOTAL_CHAOS_DURATION` elapses. Synthetic traffic stops within seconds; in-flight requests complete naturally.
+:::
 
-[embedmd]: # "./static/manifests/locust-loadgen-chaos/load-image.yaml yaml"
+### Signals to watch
 
-```yaml
-# provid a custom image for load generation
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: load-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: locust-load-generator
-      spec:
-        components:
-          env:
-            - name: LOAD_IMAGE
-              value: "chaosnative/locust-loadgen:latest"
-```
+Attach [resilience probes](/docs/resilience-testing/chaos-testing/probes) to assert each layer:
 
-### Spawn rate
+- **Application latency:** Use a [Prometheus probe](/docs/resilience-testing/chaos-testing/probes/apm-probes) on the application's request-duration histogram and assert p95/p99 stays inside the SLA.
+- **Error rate:** Use a Prometheus probe on the application's 5xx counter and assert it stays below threshold.
+- **Autoscaling reaction:** Use a [command probe](/docs/resilience-testing/chaos-testing/probes/command-probe) running `kubectl get hpa <name>` to assert replicas grew.
 
-It specifies the custom image name of the load generated. Tune it by using the `SPAWN_RATE` environment variable.
+---
 
-The following YAML snippet illustrates the use of this environment variable:
+## Verify the fault execution effect
 
-[embedmd]: # "./static/manifests/locust-loadgen-chaos/spawn-rate.yaml yaml"
+1. **Watch the runner pod logs for Locust output.**
 
-```yaml
-# provid number of spawn users at (users per second)
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: load-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    - name: locust-load-generator
-      spec:
-        components:
-          env:
-            - name: SPAWN_RATE
-              value: "100"
-            - name: HOST
-              value: "https://www.google.com"
-```
+   ```bash
+   kubectl logs -n <chaos-infra-namespace> -l name=locust-load-generator -f
+   ```
+
+   You should see Locust's per-second stats lines (RPS, response times, failures).
+
+2. **Inspect target metrics.**
+
+   Use your APM tool (Prometheus, Datadog, New Relic) to confirm RPS and latency rose during the chaos window and recovered afterwards.
+
+3. **Confirm the runner pods were cleaned up.**
+
+   ```bash
+   kubectl get pods -n <chaos-infra-namespace> -l name=locust-load-generator
+   ```
+
+   The pods should be gone after the experiment ends.
+
+---
+
+## Recovery and cleanup
+
+- **End of duration:** The chaos pod stops Locust and deletes the runner pods when `TOTAL_CHAOS_DURATION` elapses.
+- **Abort the experiment:** Stopping the experiment from Chaos Studio also stops Locust and cleans up the runner pods.
+- **Manual recovery:** If the runner pods survive an abort, delete them with `kubectl delete pods -n <chaos-infra-namespace> -l name=locust-load-generator`.
+- **Workload recovery:** Application metrics recover as soon as synthetic traffic stops; HPA-driven replicas scale back in over the autoscaler cooldown.
+
+---
+
+## Limitations
+
+- **Single host per run:** The fault drives load against one `HOST`; running against many hosts requires that the script address them inside one task file.
+- **Distributed runners are independent:** Each runner pod tracks its own users and statistics; aggregate them in the target's APM, not in the per-pod logs.
+- **No mid-flight reconfigure:** Changes to `USERS`, `SPAWN_RATE`, or the task file require re-running the experiment.
+- **Cluster network egress:** Synthetic traffic leaves the chaos infrastructure cluster; egress costs and per-host rate limits apply.
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="Locust loadgen runner pods fail to start in Harness Chaos Engineering"
+  mode="docs"
+  fallback="Confirm the ConfigMap containing config.py exists in the chaos infrastructure namespace and is mounted at CONFIG_MAP_FILE. If NODE_NAMES is set, verify each node name matches kubectl get nodes exactly."
+/>
+
+<Troubleshoot
+  issue="Locust runner pod stuck in ImagePullBackOff"
+  mode="docs"
+  fallback="LOAD_IMAGE defaults to chaosnative/locust-loadgen:latest. If your cluster cannot reach docker.io, mirror the image to a registry you can reach and set LOAD_IMAGE to that path."
+/>
+
+<Troubleshoot
+  issue="Target host not reachable from the chaos infrastructure cluster"
+  mode="docs"
+  fallback="Confirm HOST is reachable from inside the cluster: kubectl run debug --image=alpine --rm -it -- wget HOST. Adjust network policies, security groups, or egress rules to allow traffic from the chaos infra namespace."
+/>
+
+<Troubleshoot
+  issue="Locust reports zero RPS or all failures"
+  mode="docs"
+  fallback="Check the task file (config.py) and confirm self.client points at a valid path under HOST. If HOST needs authentication, confirm the task fetches an OAuth token using GRANT_TYPE and attaches it to subsequent calls."
+/>
+
+---
+
+## Related faults
+
+- [K6 loadgen](/docs/chaos-engineering/faults/chaos-faults/load/k6-loadgen): Generate load with k6 (JavaScript-based) instead of Locust.
+- [Pod HTTP latency](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-http-latency): Inject latency on the server side instead of driving load from outside.
+- [Pod CPU hog](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-cpu-hog): Stress server CPU instead of driving traffic.
