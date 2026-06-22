@@ -130,6 +130,48 @@ This is currently supported for pipeline, stage, step group, and step templates.
 
 - In the **log view**, the **step-level details** display the template name and its `versionLabel`.
 - In the **console view**, hovering over each step that uses a template shows a tooltip with the **template name and version**.
+- In the **compiled YAML** view, the YAML contains both the fully resolved template content and the `template:` block. This is intentional: Harness re-attaches the template reference after resolution so you can audit exactly which template and version was used for that execution, even if the template changes afterward.
+
+  ```yaml
+  pipeline:
+    identifier: run
+    name: run
+    template:
+      templateRef: pipelineTemplate
+      versionLabel: V1
+      templateInputs:
+        stages:
+          - stage:
+              identifier: shell
+              type: Custom
+              variables:
+                - name: var1
+                  type: String
+                  value: testingInput
+    stages:
+      - stage:
+          identifier: shell
+          type: Custom
+          name: shell
+          spec:
+            execution:
+              steps:
+                - step:
+                    identifier: ShellScript_1
+                    type: ShellScript
+                    name: ShellScript_1
+                    spec:
+                      shell: Bash
+                      source:
+                        type: Inline
+                        spec:
+                          script: echo 1
+                    timeout: 10m
+    projectIdentifier: myProject
+    orgIdentifier: default
+  ```
+
+  The `template:` block is the reference summary retained for auditing. The `stages:` block is the fully resolved content that was actually executed.
 
 This helps you trace exactly which version of the template was used in a specific pipeline run, even if the template has changed afterward.
 
