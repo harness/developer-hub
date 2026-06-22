@@ -7,22 +7,22 @@ sidebar_position: 3
 With the release of **Granular RBAC in IDP 2.0**, you can now control access to **Workflows** in your Harness IDP. This means you can restrict who can **create** and **execute** Workflows across your IDP setup. Workflows can be created at all available scopes: **Account**, **Organization**, or **Project**.
 To learn more about permissions and scopes, visit the [IDP 2.0 Data Model](/docs/internal-developer-portal/catalog/data-model).
 
-## RBAC Workflow in Harness IDP
+## RBAC workflow in Harness IDP
 
 Before configuring RBAC for Workflows, ensure you’ve reviewed the [Scopes](/docs/internal-developer-portal/rbac/scopes#scopes), [Permissions](/docs/internal-developer-portal/rbac/scopes#permissions--resources), and [RBAC Components](/docs/internal-developer-portal/rbac/scopes#rbac-components).
 
 Here’s the step-by-step workflow for configuring RBAC in Harness IDP:
 
 1. Go to your administrative settings and select the scope (**Account**, **Org**, or **Project**) where you want to configure RBAC for Workflows.
-2. [Create roles with the required permissions](https://developer.harness.io/docs/platform/role-based-access-control/add-manage-roles).
+2. [Create roles with the required permissions](/docs/platform/role-based-access-control/add-manage-roles).
    *For example: If you want to configure RBAC for Workflow creation, ensure the role includes the **Create/Edit (Workflow)** permission.*
-3. [Create resource groups](https://developer.harness.io/docs/platform/role-based-access-control/add-resource-groups) to apply RBAC to a specific set of resources for the principal.
+3. [Create resource groups](/docs/platform/role-based-access-control/add-resource-groups) to apply RBAC to a specific set of resources for the principal.
    *For example: To control Workflow access, ensure the **Workflow** resource is added to the resource group.*
-4. [Create user groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups) and [add users](https://developer.harness.io/docs/platform/role-based-access-control/add-users).
-5. [Assign roles and resource groups](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness#role-binding) to the user groups or users.
-6. If not already configured, [set up authentication](https://developer.harness.io/docs/platform/authentication/authentication-overview).
+4. [Create user groups](/docs/platform/role-based-access-control/add-user-groups) and [add users](/docs/platform/role-based-access-control/add-users).
+5. [Assign roles and resource groups](/docs/platform/role-based-access-control/rbac-in-harness#role-binding) to the user groups or users.
+6. If not already configured, [set up authentication](/docs/platform/authentication/authentication-overview).
 
-## Permissions for Workflows
+## Permissions for workflows
 
 The following permissions can be configured for Workflows when creating a custom role:
 
@@ -33,19 +33,19 @@ The following permissions can be configured for Workflows when creating a custom
 | **Delete**      | Allows users to delete Workflows.                                      |
 | **Execute**     | Allows users to execute Workflows.                                     |
 
-These permissions can be configured when [creating or modifying a custom role](https://developer.harness.io/docs/platform/role-based-access-control/add-manage-roles). Choose the permissions that best suit the access level you want to grant.
-To learn more, see [Manage Roles](https://developer.harness.io/docs/platform/role-based-access-control/add-manage-roles).
+These permissions can be configured when [creating or modifying a custom role](/docs/platform/role-based-access-control/add-manage-roles). Choose the permissions that best suit the access level you want to grant.
+Go to [Manage Roles](/docs/platform/role-based-access-control/add-manage-roles) to create or update custom roles.
 
 ![](./static/workflows-permissions.png)
 
-## Workflow RBAC Example
+## Workflow RBAC example
 
 You can access **Administrative Settings** from your Harness UI directly using the sidenavbar. 
 
 <DocVideo src="https://app.tango.us/app/embed/1dcbc9e9-70f4-49e7-bbec-6a2c94c97ae7" title="Create the IDP Catalog Create Role" />
 
 
-### Configure RBAC for Project-Level Workflow Execution
+### Configure RBAC for Project-Level workflow execution
 
 This example walks through configuring RBAC to allow users to execute Workflows at a specific project level.
 
@@ -64,7 +64,7 @@ The **All Workflow Execute Resources** group exists at the **project scope** and
 
 
 
-#### Step 1: Use or Create the IDP Workflow Execute Role
+#### Step 1: Use or create the IDP workflow execute role
 
 1. In Harness, navigate to the project where you want to configure RBAC.
 2. Go to **Project Settings** → **Roles** under the **Access Control** category.
@@ -74,11 +74,11 @@ The **All Workflow Execute Resources** group exists at the **project scope** and
 6. Under **Developer Portal** → **Workflow**, select the **Execute** permission.
 7. Click **Apply Changes**.
 
-> Learn more about role creation and permissions: [Manage Roles](https://developer.harness.io/docs/platform/role-based-access-control/add-manage-roles) | [Permissions Reference](https://developer.harness.io/docs/platform/role-based-access-control/permissions-reference/)
+> Learn more about role creation and permissions: [Manage Roles](/docs/platform/role-based-access-control/add-manage-roles) | [Permissions Reference](/docs/platform/role-based-access-control/permissions-reference/)
 
 ---
 
-#### Step 2: Create a custom Resource Group
+#### Step 2: Create a custom resource group
 
 1. In the same project, go to **Project Settings** → **Resource Groups** under **Access Control**.
 2. Click **New Resource Group**.
@@ -90,11 +90,11 @@ The **All Workflow Execute Resources** group exists at the **project scope** and
 7. Click **Save**.
 
 > If you need to allow Workflow execution at a higher scope (Org or Account), configure the role, resource group, and user group at that higher scope.
-> Learn more: [Manage Resource Groups](https://developer.harness.io/docs/platform/role-based-access-control/add-resource-groups)
+> Learn more: [Manage Resource Groups](/docs/platform/role-based-access-control/add-resource-groups)
 
 ---
 
-#### Step 3: Create the Workflow Execute Users User Group
+#### Step 3: Create the workflow execute users user group
 
 1. In the same project, go to **Project Settings** → **User Groups** under **Access Control**.
 2. Click **New User Group**.
@@ -102,11 +102,11 @@ The **All Workflow Execute Resources** group exists at the **project scope** and
 4. Under **Add Users**, select the users to include.
 5. Click **Save**.
 
-> Learn more: [Manage User Groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups) | [Manage Users](https://developer.harness.io/docs/platform/role-based-access-control/add-users)
+> Learn more: [Manage User Groups](/docs/platform/role-based-access-control/add-user-groups) | [Manage Users](/docs/platform/role-based-access-control/add-users)
 
 ---
 
-#### Step 4: Assign the Role and Resource Group to the User Group
+#### Step 4: Assign the role and resource group to the user group
 
 1. In the same project, go to **Project Settings** → **User Groups**.
 2. Find the **Workflow Execute Users** group and click **Manage Roles**.
@@ -115,7 +115,7 @@ The **All Workflow Execute Resources** group exists at the **project scope** and
 5. For **Resource Groups**, select **All Workflow Execute Resources**.
 6. Click **Apply**.
 
-> Learn more: [Role Binding](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#role-binding)
+> Learn more: [Role Binding](/docs/platform/role-based-access-control/rbac-in-harness#role-binding)
 
 ---
 

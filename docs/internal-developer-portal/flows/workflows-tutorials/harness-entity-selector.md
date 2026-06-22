@@ -182,7 +182,7 @@ parameters:
 The `projectIdentifier` field stays idle until `orgIdentifier` is filled. Order your fields so users fill dependencies first.
 :::
 
-### 3-chained dropdowns: Org, Project, and Service
+### 3-chained dropdowns: Org, Project, and service
 
 Three chained pickers in a single step. Each field uses `{{ parameters.<field> }}` so later requests wait until earlier selections exist.
  

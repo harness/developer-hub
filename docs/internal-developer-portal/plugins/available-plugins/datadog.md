@@ -50,9 +50,9 @@ This plugin exports the `EntityDatadogGraphCard` that you can show on the **Over
 
 To configure the plugin for a service in the software catalog, you need to add specific annotations to its `catalog-info.yaml` definition file. Below are the steps to configure these annotations.
 
-### Embedding a Datadog Dashboard in Backstage
+### Embed a Datadog dashboard in Backstage
 
-#### Steps to Get the Dashboard URL
+#### Steps to get the dashboard URL
 
 1. Navigate to the dashboards list by hovering over **Dashboards** on the page’s left-hand side and selecting **Dashboard List**.
 
@@ -85,7 +85,7 @@ metadata:
 ```
 
 :::info
-### Setting the Datadog Domain
+### Set the Datadog domain
 
 By default, the Datadog embedded graph uses `datadoghq.eu` as its top-level domain unless specified otherwise. If you are using a different domain, you must specify it using the `datadoghq.com/site annotation`.
 

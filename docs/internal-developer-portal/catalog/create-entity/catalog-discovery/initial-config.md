@@ -31,7 +31,7 @@ This is a one-time setup done from the **Integrations** section of IDP, and can 
 
 ---
 
-## Kubernetes Configurations
+## Kubernetes configurations
 
 Data collection for each integration runs as pods inside your Kubernetes cluster. IDP sends collection tasks to a [delegate](/docs/platform/delegates/delegate-concepts/delegate-overview) running in your cluster, which executes them using credentials stored in your own environment. The Kubernetes Configurations tell IDP which cluster and namespace to use for these pods.
 
@@ -49,7 +49,7 @@ Data collection for each integration runs as pods inside your Kubernetes cluster
 
 ---
 
-## Docker Configurations
+## Docker configurations
 
 Data collection pods run as containers that need images to start. By default, IDP pulls these images from the public Harness container registry. 
 

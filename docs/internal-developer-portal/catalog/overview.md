@@ -26,29 +26,29 @@ The catalog helps you:
 
 ---
 
-## What are Catalog Entities?
+## What are catalog entities?
 
 **Entities** are the building blocks of your Software Catalog. Each entity represents a distinct software asset in your organization and contains structured metadata that describes its purpose, ownership, and relationships.
 
-### Core Entity Types
+### Core entity types
 
 Harness IDP supports several core entity types:
 
-- **[Component](/docs/internal-developer-portal/catalog/data-model/#idp2.0--component)**: Services, libraries, websites, or any deployable software unit
-- **[API](/docs/internal-developer-portal/catalog/data-model/#idp2.0--api)**: REST APIs, GraphQL endpoints, or other programmatic interfaces
-- **[Resource](/docs/internal-developer-portal/catalog/data-model/#idp2.0--resource)**: Databases, message queues, storage buckets, or infrastructure resources
-- **[System](/docs/internal-developer-portal/catalog/data-model/#idp2.0--system)**: Logical groupings of related components, APIs, and resources
-- **[User Group](/docs/internal-developer-portal/catalog/data-model/#idp2.0--custom-user-groups)**: Custom organizational units or teams that own and manage catalog entities 
+- **[Component](/docs/internal-developer-portal/catalog/data-model#idp2.0--component)**: Services, libraries, websites, or any deployable software unit
+- **[API](/docs/internal-developer-portal/catalog/data-model#idp2.0--api)**: REST APIs, GraphQL endpoints, or other programmatic interfaces
+- **[Resource](/docs/internal-developer-portal/catalog/data-model#idp2.0--resource)**: Databases, message queues, storage buckets, or infrastructure resources
+- **[System](/docs/internal-developer-portal/catalog/data-model#idp2.0--system)**: Logical groupings of related components, APIs, and resources
+- **[User Group](/docs/internal-developer-portal/catalog/data-model#idp2.0--custom-user-groups)**: Custom organizational units or teams that own and manage catalog entities 
 
 Each entity type has its own schema and metadata fields tailored to its specific purpose. For a comprehensive understanding of entity types, their structure, and relationships, refer to the [Catalog Data Model](/docs/internal-developer-portal/catalog/data-model).
 
 ---
 
-## Populate Your Catalog
+## Populate your catalog
 
 There are multiple ways to add entities to your Software Catalog, each suited for different use cases and workflows:
 
-### 1. Create Entities Manually
+### 1. Create entities manually
 
 In IDP 2.0, entity creation is simplified with full UI support and optional YAML-based creation. Entities are now **"inline,"** which means their entire lifecycle can be managed through the UI or API, without Git integration.
 
@@ -70,7 +70,7 @@ Use the **Harness IDP Catalog Auto-Discovery** integration to sync **Harness CD*
 
 ---
 
-## Manage Your Catalog
+## Manage your catalog
 
 Once your entities are registered, you can:
 
@@ -86,7 +86,7 @@ To understand everything available on an individual entity page, including the `
 
 ---
 
-## Next Steps
+## Next steps
 
 Ready to get started with the Software Catalog? Here are some recommended next steps:
 

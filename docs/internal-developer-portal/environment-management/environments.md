@@ -11,7 +11,7 @@ An **Environment** is instantiated using an **Environment Blueprint**, consider 
 
 ---
 
-## Types of Environments
+## Types of environments
 
 Based on the time-to-live (TTL) duration, Harness IDP environment management supports two types of environments:
 
@@ -24,7 +24,7 @@ Go to [Configure TTL](/docs/internal-developer-portal/environment-management/blu
 
 ---
 
-## Create Environments
+## Create environments
 Using the [Environment Blueprint](/docs/internal-developer-portal/environment-management/blueprints/env-blueprint-yaml) we can now create and spin up an ephemeral environment. 
 
 1. In Harness IDP (Environments), click **+ Create** in the right corner, then select **Environment**.
@@ -57,7 +57,7 @@ The Environment should now be creating, and you can follow the progress by viewi
 
 ---
 
-## The Environment Detail Page
+## The environment detail page
 
 When you open an environment, you land on its detail page. Understanding this page is essential for both monitoring your environment and taking action on it.
 
@@ -117,7 +117,7 @@ The six tabs on the detail page give you different lenses on your running enviro
 
 ---
 
-## Environment Actions
+## Environment actions
 
 Since environments are treated as managed entities, platform teams and developers can control their lifecycle directly from the platform. This includes stopping, starting, updating, and deleting environments as needed.
 
@@ -132,7 +132,7 @@ The exact steps that execute during each action are defined in the blueprint as 
 * [Delete Environment](#delete-environments)
 
 
-### Edit Environment Configuration
+### Edit environment configuration
 
 If you wish to make changes to your environment, go to your environment and click **Edit Configuration**. In the dialog that opens, you can:
 
@@ -150,7 +150,7 @@ Depending on the scope of the change, this may trigger a full environment update
 When you update an environment’s configuration, the environment is re-provisioned and the TTL is reset. The new TTL countdown starts from the time of the update.
 :::
 
-### Drift Detection
+### Drift detection
 
 Drift detection helps you identify when your environment's actual infrastructure state has diverged from its intended configuration. This feature is essential for maintaining infrastructure consistency, improving security by identifying unauthorized changes, and enabling compliance tracking across your environments.
 
@@ -160,7 +160,7 @@ Before you can detect drift, each workspace must have an available drift detecti
 - **Workspace template level**: Define a drift detection pipeline in the workspace template
 - **Project level**: Set a default drift detection pipeline at the project level
 
-Learn how to [create a drift detection pipeline in IaCM](https://developer.harness.io/docs/infra-as-code-management/pipelines/operations/drift-detection/#detect-drift).
+Learn how to [create a drift detection pipeline in IaCM](/docs/infra-as-code-management/pipelines/operations/drift-detection#detect-drift).
 :::
 
 To detect drift, navigate to your environment in Harness IDP, and from the kebab menu (**:**) at the top right, click **Check for Drift**. Alternatively, this option is also available under the **Drift Detection** tab of your selected environment. 
@@ -170,13 +170,13 @@ The system chains and dynamically executes drift detection pipelines for each wo
 
 :::tip How to resolve drift
 When drift is detected, you can resolve it by:
-- Following the drift resolution workflows in IaCM (see [IaCM Drift Detection documentation](https://developer.harness.io/docs/infra-as-code-management/pipelines/operations/drift-detection/))
+- Go to [IaCM Drift Detection documentation](/docs/infra-as-code-management/pipelines/operations/drift-detection/) to follow the drift resolution workflows in IaCM.
 - Triggering an environment update, which will re-provision all workspaces and bring them back in sync with the desired configuration
 :::
 
 To review results after running drift detection, open the **Drift Detection** tab on the environment detail page. The tab shows the Last Drift Status, a count of Resources Changed, and a resource list. Select any resource to see whether drift was detected and which attributes have diverged.
 
-### Stop Environments
+### Stop environments
 
 If you wish to temporarily suspend the activity of an environment, you may stop it. This triggers the pipelines defined in the `destroy` step of IaCM resources and `delete` step of CD components.
 
@@ -184,7 +184,7 @@ If you wish to temporarily suspend the activity of an environment, you may stop 
 
 Go to your environment, and from the kebab menu (**:**) at the top right, click **Stop Environment**. It will fully wind down an environment while retaining the ability to bring it back later.
 
-### Start Environments
+### Start environments
 
 You may start an environment if you wish to bring it back online from a stopped state. This runs the `create` step defined in the blueprint for each resource and `apply` step for each component.
 
@@ -196,7 +196,7 @@ Go to your environment, and from the kebab menu (**:**) at the top right, click 
 Both [Start Environment](#start-environments) and [Apply Updates](#apply-updates) use delta-only re-provisioning. Rather than re-running every entity, the system compares the previously applied blueprint against the latest version and only re-provisions entities where actual differences are detected. Unchanged entities are left untouched. This makes updates faster, safer, and minimizes disruption to running workloads.
 :::
 
-### Apply Updates
+### Apply updates
 
 When updates are available for a running environment, a banner appears on the environment detail page prompting you to apply them. There are two scenarios which will trigger this banner:
 
@@ -211,7 +211,7 @@ When updates are available for a running environment, a banner appears on the en
 You can also trigger updates for an individual component or resource. Updating an entity will automatically update any downstream entities connected to it. For example, updating a namespace will also update the backend and frontend components deployed within it.
 :::
 
-### Dependency Change Notifications
+### Dependency change notifications
 
 Your environment may depend on external entities such as IaCM workspace templates, CD services, pipelines, and other environments. If any of these change or become unavailable, a notification banner appears at the top of the environment detail page.
 
@@ -260,7 +260,7 @@ The recommended action depends on what changed:
 For all cases except a referenced environment coming back online, the notification persists until the underlying issue is resolved. Dismissing the banner does not clear it permanently; it reappears on the next page load as long as the dependency issue remains.
 
 
-### Delete Environments
+### Delete environments
 
 You can decommission the environment and clean up all associated services and infrastructure resources when you no longer need the environment. This corresponds to the `delete` definition in the blueprint yaml of IACM entities.
 
@@ -270,7 +270,7 @@ Go to your environment, and from the kebab menu (**:**) at the top right, click 
 
 ---
 
-## Cross-Environment Output References
+## Cross-Environment output references
 
 An environment can consume output values from another environment in the same project. This lets you build layered environments where one environment provides shared infrastructure and other environments depend on it.
 
@@ -304,12 +304,12 @@ Cross-environment references currently work within the same project only. Cross-
 
 ---
 
-## Use Pipeline Approvals in Environments
+## Use pipeline approvals in environments
 
-Environment management in Harness IDP enables integration with **[Harness Pipeline Approvals](https://developer.harness.io/docs/platform/approvals/approvals-tutorial)**.
+Environment management in Harness IDP enables integration with **[Harness Pipeline Approvals](/docs/platform/approvals/approvals-tutorial)**.
 This feature allows you to add approvers in the CD service pipeline and control the environment creation process through pipeline approvals and rejections.
 
-1. Ensure that you have an **approval step/stage** added in your CD service pipeline. Refer to [Approvals](https://developer.harness.io/docs/platform/approvals/approvals-tutorial) for more details.
+1. Ensure that you have an **approval step/stage** added in your CD service pipeline. Go to [Approvals](/docs/platform/approvals/approvals-tutorial) for more details.
 2. Use the same pipeline details in your environment blueprint steps `apply` and `destroy` for your [CD services](/docs/internal-developer-portal/environment-management/blueprints/env-blueprint-yaml#2-catalog-backend-services).
 3. Create a new environment using the same environment blueprint. You will be prompted to approve the pipeline deployment for your service instances.
 ![](./static/approval-prompt1.png)

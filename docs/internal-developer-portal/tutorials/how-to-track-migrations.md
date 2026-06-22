@@ -8,17 +8,16 @@ redirect_from:
 
 <DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
 
-## Introduction
 
-In this tutorial we will be using [Scorecards](https://developer.harness.io/docs/internal-developer-portal/scorecards/scorecard) for tracking and driving migrations. Recently we have introduced new Data Points for git based Data Sources to extract information from files using regex patterns. In this tutorial we will be building some custom checks using these Data Points to track library and language versions from the contents of metadata files.
+In this tutorial we will be using [Scorecards](/docs/internal-developer-portal/scorecards/scorecard) for tracking and driving migrations. Recently we have introduced new Data Points for git based Data Sources to extract information from files using regex patterns. In this tutorial we will be building some custom checks using these Data Points to track library and language versions from the contents of metadata files.
 
-## Prerequisites
+## Before you begin
 
 Before starting, ensure you have:
 
-1. An active Harness IDP account, at present IDP is enabled on request so please [fill this form](https://www.harness.io/demo/internal-developer-portal) to get IDP enabled for you.
+1. An active Harness IDP account, at present IDP is enabled on request so [fill this form](https://www.harness.io/demo/internal-developer-portal) to get IDP enabled for you.
 
-2. Access to your git provider through the connectors in the Admin section, remember to provide API access. Follow the [steps mentioned here to create connector](https://developer.harness.io/docs/category/code-repo-connectors) once you're in the connector window.
+2. Access to your git provider through the connectors in the Admin section, remember to provide API access. Follow the [steps mentioned here to create connector](/docs/category/code-repo-connectors) once you are in the connector window.
 
 ![](./static/connector-sc.png)
 
@@ -38,11 +37,11 @@ Before starting, ensure you have:
 
 4. A [registered software component](/docs/internal-developer-portal/tutorials/register-component-in-catalog) for which you want to track migration.
 
-## Understanding Checks in Scorecards
+## Understand checks in scorecards
 
 We have added data points for git based datasources (GitHub, GitLab, etc.), to be used to create custom checks in Scorecards that can match and extract specific string patterns from any file in your source code. This feature is particularly useful for tracking versions in various files eg., bazel for java, Dockerfile, go.mod for go, package.json for react and javascript, manifest files, etc.
 
-## Setting up a Custom Check
+## Set up a custom check
 
 1. Under **Configure** section select **Scorecards**, now go to **Checks** tab and select **Create Custom Check**
 
@@ -54,7 +53,7 @@ We have added data points for git based datasources (GitHub, GitLab, etc.), to b
 
 3. Select the git provider datasource, for example GitHub along with `extract string from a file` data point to extract the version number.
 
-### Branch Specification
+### Branch specification
 
 4. Specifying the Branch: If you know the branch name, specify it directly. If not, the system will use the branch from `backstage.io/source-location` annotation.
 
@@ -62,7 +61,7 @@ We have added data points for git based datasources (GitHub, GitLab, etc.), to b
 
 ### How to add `backstage.io/source-location`
 
-Ideally `backstage.io/source-location` is taken from the root of the `catalog-info.yaml` in case your services don't live there, you need to add an annotation as mentioned below in your `catalog-info.yaml`
+Ideally `backstage.io/source-location` is taken from the root of the `catalog-info.yaml` in case your services do not live there, you need to add an annotation as mentioned below in your `catalog-info.yaml`
 
 ```YAML
 #Example
@@ -75,13 +74,13 @@ A `Location` reference that points to the source code of the entity (typically a
 
 :::
 
-### File Specification
+### File specification
 
 5. Defining the File: Specify the filename with its extension or provide the relative path from the root folder. For example, use .bazelrc, package.json, manifest/Dockerfile. Also you can provide the filename as a regex pattern, example for a file path `/backstage/blob/master/scripts/log-20240105.anyextension` the regex would be `/backstage/blob/master/scripts/log-20240105\..*`
 
-### Specify the Pattern
+### Specify the pattern
 
-6. Since I'm trying to track to Java Version of my project using the bazelrc file which mentions my java version as `build --java_language_version=17` and the corresponding Regex Pattern to be used for the same is `^build --java_language_version=(\d+)`
+6. Since I am trying to track to Java Version of my project using the bazelrc file which mentions my java version as `build --java_language_version=17` and the corresponding Regex Pattern to be used for the same is `^build --java_language_version=(\d+)`
 
 :::info
 
@@ -93,7 +92,7 @@ Also we suggest you to use [chatgpt](https://chat.openai.com/) for generating an
 
 ![](./static/java-version.png)
 
-## Create a Scorecard
+## Create a scorecard
 
 Once the Checks are created, now we need to add them to a new Scorecard.
 
@@ -103,33 +102,33 @@ Once the Checks are created, now we need to add them to a new Scorecard.
 
 ![](./static/create-scorecard.png)
 
-### Check Score
+### Check score
 
 9. Now go to the software component in your catalog and under the Scorecards tab you can view the scores, also you can re-run the check to compute score instantaneously.
 
 ![](./static/java-check.png)
 
-### How does the Score gets computed?
+### How does the score gets computed?
 
-#### Pattern Extraction
+#### Pattern extraction
 
 Extracting Data: The system fetches the file, searches for the specified regex pattern within its contents, and then extracts and returns the value.
 
-#### Return Value
+#### Return value
 
 Result: The system returns a true/false value based on whether the pattern was found in the file or whether a value is the same as desired.
 
 ## Troubleshooting
 
-### Incorrect File Path:
+### Incorrect file path:
 
 Ensure the file path is relative to the root folder of the repository.
 
-### Pattern Matching Errors:
+### Pattern matching errors:
 
-Verify the accuracy of the pattern you are trying to match. You can use [this website](http://regex101.com/) for the same, also check for the group `()` for the string you're trying to match.
+Verify the accuracy of the pattern you are trying to match. You can use [this website](http://regex101.com/) for the same, also check for the group `()` for the string you are trying to match.
 
-## Best Practices
+## Best practices
 
 Regularly update the backstage.io/source-location annotation to reflect any changes in the repository structure.
 Check the regex used for pattern matching.
@@ -138,4 +137,4 @@ Check the regex used for pattern matching.
 
 In this tutorial, we covered how to use Scorecards in Harness IDP for tracking and driving migrations. This tool is incredibly useful for maintaining up-to-date information on various aspects of your software projects, such as dependency versions.
 
-For more detailed information and support, refer to the [Harness IDP documentation](https://developer.harness.io/docs/internal-developer-portal) and [community forums](https://join-community-slack.harness.io/).
+For more detailed information and support, refer to the [Harness IDP documentation](/docs/internal-developer-portal) and [community forums](https://join-community-slack.harness.io/).

@@ -12,7 +12,6 @@ redirect_from:
 
 ![](./static/adoption%20playbook%20poster.png)
 
-## Introduction
 
 Harness Internal Developer Portal (IDP) is a unified home for developers to create, manage, and explore software effortlessly. It enables teams to:
 
@@ -23,7 +22,7 @@ Harness Internal Developer Portal (IDP) is a unified home for developers to crea
 
 The goal of this playbook is to provide actionable guidance, helping engineering leaders and platform teams achieve a successful IDP rollout.
 
-## Top 10 IDP Use Cases
+## Top 10 IDP use cases
 
 These are the top 10 standard use-cases that Harness Internal Developer Portal is used for:
 
@@ -42,13 +41,13 @@ These are the top 10 standard use-cases that Harness Internal Developer Portal i
 
 Since IDPs have traditionally been built from scratch, there are few other use-cases that can be considered that IDP can address. However, they are often harder to implement and take longer to be adopted by developers.
 
-## Adoption Mindsets
+## Adoption mindsets
 
 ![](./static/adoption-mindsets.png)
 
 When it comes to adopting an Internal Developer Portal (IDP), organizations generally approach it with one of the two mindsets: the **Platform-First Mindset** or the **Developer-First Mindset**. While both have their merits, our research shows that a Developer-First Mindset leads to significantly higher adoption success.
 
-### Platform-First Mindset
+### Platform-First mindset
 
 This mindset is driven by the platform engineering team’s desire to standardize and optimize the organization’s developer platform. It often stems from recognizing gaps in existing systems, such as:
 
@@ -62,7 +61,7 @@ While these goals are valid and can improve overall efficiency, a Platform-First
 - Feedback loops that highlight a lack of practical utility, resulting in stalled adoption efforts.
 - Risk of project abandonment if initial traction and developer buy-in are insufficient.
 
-### Developer-First Mindset ✅
+### Developer-First mindset ✅
 
 A Developer-First Mindset, on the other hand, focuses on solving the real, day-to-day challenges that developers face. This mindset emphasizes:
 
@@ -78,7 +77,7 @@ By putting developers at the center, this approach fosters higher engagement and
 
 To achieve maximum success with IDP adoption, you should strive for a Developer-First Mindset. Focusing on developer utility ensures that the portal delivers tangible value to the end users (Developers), making it an indispensable part of their daily workflow. By addressing developer pain points first, you can build trust and momentum, leading to broader adoption and long-term viability.
 
-## Developer Daily Utility
+## Developer daily utility
 
 ![](./static/success-daily-utility.png)
 
@@ -88,9 +87,9 @@ Ensure IDP addresses daily needs of your developers like quick access to service
 
 Harness tracks "Monthly Active Users" (MAU) as an indicator of engagement. You can find all IDP Adoption details in the built-in dashboard. We highly recommend setting up weekly alerts to this dashboard so that you can keep track of adoption in your inbox.
 
-[Check out IDP Adoption Dashboard](https://developer.harness.io/docs/internal-developer-portal/get-started/how-to-track-adoption/)
+[Check out IDP Adoption Dashboard](/docs/internal-developer-portal/get-started/how-to-track-adoption/)
 
-## Adoption Flywheel
+## Adoption flywheel
 
 ![](./static/the-adoption-flywheel.png)
 
@@ -108,8 +107,8 @@ The research phase of an IDP is extremely important. The goal of this phase is t
 
 Pitfalls to avoid:
 
-- Don't look out for an IDP just because you see others in the industry doing so. Identify your own unique challenges in improving developer experience and evaluate if that is one of the top IDP use-cases as defined above.
-- Even after identifying DevEx problems, it’s important to understand the frequency and ROI of it. If the problem only occurs once a quarter, once a year, then it’s not good enough. IDP may not be the answer. If the problem is frequent enough that it can become a daily utility, then yes, that's a good sign.
+- Do not look out for an IDP just because you see others in the industry doing so. Identify your own unique challenges in improving developer experience and evaluate if that is one of the top IDP use-cases as defined above.
+- Even after identifying DevEx problems, it’s important to understand the frequency and ROI of it. If the problem only occurs once a quarter, once a year, then it’s not good enough. IDP may not be the answer. If the problem is frequent enough that it can become a daily utility, then yes, that is a good sign.
 
 ### 2\. Setup
 
@@ -118,11 +117,11 @@ This phase has two main goals
 1. Identify owners and stakeholders
 2. Identify success criteria and KPIs
 
-#### Owners and Stakeholders
+#### Owners and stakeholders
 
 Usually the Internal Developer Portal initiative is owned by the Head of Developer Experience or the Head of Platform Engineering. If these organizations do not exist, then it falls back to the DevOps team. Sometimes, IDPs are also owned by SREs.
 
-You should have 1-2 Platform Engineers who understand the product in depth and have some experience with the Software Development Lifecycle at your organization. These Platform Engineers should go through the [IDP Getting Started](https://developer.harness.io/docs/internal-developer-portal/get-started/) and understand the basics of how the Harness Platform, Catalog, Scorecards and Workflows work. 
+You should have 1-2 Platform Engineers who understand the product in depth and have some experience with the Software Development Lifecycle at your organization. These Platform Engineers should go through the [IDP Getting Started](/docs/internal-developer-portal/get-started/) and understand the basics of how the Harness Platform, Catalog, Scorecards and Workflows work. 
 
 You should also have a Platform Product Manager whose main responsibility is to collect feedback from your Developers, create Roadmap and evangelise solutions that you will launch. In case you do not have a Platform Product Manager, the Engineering Manager/Director can also take up this as a part time responsibility. The key is to ensure there is someone who can create the feedback loop with Developers and other Stakeholders. And it should not be the Platform Engineers implementing IDP.
 
@@ -135,7 +134,7 @@ Once you have identified the central team who will own IDP, you should work very
 
 You should share responsibilities with stakeholders from these teams and invite them to provide Workflows, create Scorecards and set standards in the IDP. Be inclusive and collaborative with them, otherwise they will create tool fragmentation and impact your IDP rollout.
 
-#### Success Criteria and KPIs
+#### Success criteria and KPIs
 
 You must measure and track some Developer Experience KPIs which align with your IDP initiative. Monthly Active Users, Onboarding speed and Developer Satisfaction levels are a few examples. If you already have such metrics aligned with the business then use them. You can also start with DORA metrics. If you want to keep things extremely simple, run a bi-annual survey where ask developers to score their productivity from 0-100. We recommend using platforms such as [Harness Software Engineering Intelligence](https://www.harness.io/products/software-engineering-insights) for measuring developer effectiveness.
 
@@ -143,7 +142,7 @@ You must measure and track some Developer Experience KPIs which align with your 
 
 Start small by focusing on a few teams and avoid overpromising features to thousands of developers. You need to identify your early users and understand their top DevEx problems. This product strategy is well explained in [Crossing the Chasm curve](https://en.wikipedia.org/wiki/Crossing_the_Chasm#/media/File:Technology-Adoption-Lifecycle.png) by Geoffrey Moore.
 
-For example, this can be 2 teams, 10 developers each, so 20 people. They might be struggling with one problem that they spend a lot of manual time on. It is common and experienced by other teams as well. They are willing to give you early feedback. One of those problems could be \- let's say, every time they have to debug some customer issue, they need to raise the Jira ticket to get some access or provision some infrastructure or perform a series of tasks. And the whole process takes several hours a week. It would be amazing if the whole thing can be automated while Approval gates are put in place so that Platform Engineers can still monitor and be compliant.
+For example, this can be 2 teams, 10 developers each, so 20 people. They might be struggling with one problem that they spend a lot of manual time on. It is common and experienced by other teams as well. They are willing to give you early feedback. One of those problems could be \- let us say, every time they have to debug some customer issue, they need to raise the Jira ticket to get some access or provision some infrastructure or perform a series of tasks. And the whole process takes several hours a week. It would be amazing if the whole thing can be automated while Approval gates are put in place so that Platform Engineers can still monitor and be compliant.
 
 Another use-case could be \- Developers find it overwhelming to manage their JIRA tickets and Pull Requests. Only if there was one place they could go and see all their tickets, PRs they have created and PRs they have to review.
 
@@ -167,7 +166,7 @@ Celebrate this early success with other teams and your stakeholders. Build excit
 
 And this kicks off your adoption flywheel. You will continue to expand to more teams and solve more Developer Experience problems.
 
-## Timeline and Rollout Strategy
+## Timeline and rollout strategy
 
 ![](./static/the-adoption-timeline.png)
 
@@ -182,7 +181,7 @@ It’s important to realize that IDP Adoption is best done in cycles with expand
 
 A much more successful approach is to find early adopters and important use-cases. Then release early and release often.
 
-## Visibility-first vs Automation-first
+## Visibility-first vs automation-first
 
 ![](./static/visibility-first-vs-automation.png)
 
@@ -197,7 +196,7 @@ Hence it’s important to maintain balance between both Visibility and Automatio
 
 ![](./static/3-pillars.png)
 
-## Golden Path to Adoption: Steps
+## Golden path to adoption: Steps
 
 ![](./static/adoption-step-by-step.png)
 
@@ -205,61 +204,61 @@ This is a step-by-step guide for Platform Engineers to onboard IDP. Your mileage
 
 1. **Core Harness Platform Setup**
    1. SSO, Users and User Groups, RBAC, Hierarchy, Secret Manager, Delegate, etc.
-   - *Docs and Tutorials for Reference:* [Platform access control](https://developer.harness.io/docs/category/platform-access-control), [RBAC in IDP](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles), [Delegates](https://developer.harness.io/docs/category/delegates), [Secrets Management](https://developer.harness.io/docs/category/secrets-management)
+   - *Docs and Tutorials for Reference:* [Platform access control](/docs/category/platform-access-control), [RBAC in IDP](/docs/internal-developer-portal/rbac/), [Delegates](/docs/category/delegates), [Secrets Management](/docs/category/secrets-management)
 2. **Setup Git Integrations**
-   - *Docs and Tutorials for Reference:* [Setup Git Integration](https://developer.harness.io/docs/internal-developer-portal/get-started/setup-git-integration)
+   - *Docs and Tutorials for Reference:* [Setup Git Integration](/docs/internal-developer-portal/get-started/setup-git-integration)
 3. **Your first Self Service Workflow**
    1. Remove TicketOps, focus on quick automation use-cases. Ask your Platform Teams \- what is the most common type of JIRA ticket they receive
-   - *Docs and Tutorials for Reference:* [Getting Started with Workflows](https://developer.harness.io/docs/internal-developer-portal/get-started/workflow-quickstart), [Self Service Workflows Overview](https://developer.harness.io/docs/internal-developer-portal/flows/service-onboarding-pipelines)
+   - *Docs and Tutorials for Reference:* [Getting Started with Workflows](/docs/internal-developer-portal/get-started/content/get-started/step-3-workflows), [Self Service Workflows Overview](/docs/internal-developer-portal/flows/service-onboarding-pipelines)
 4. **Your first Service Onboarding Workflow**
    1. Standardize how a new Backend or Frontend application gets created with CI/CD pipelines and infrastructure included
-   - *Docs and Tutorials for Reference:* [Create a service onboarding pipeline](https://developer.harness.io/docs/internal-developer-portal/flows/workflows-tutorials/create-a-new-service-using-idp-stage) 
+   - *Docs and Tutorials for Reference:* [Create a service onboarding pipeline](/docs/internal-developer-portal/flows/workflows-tutorials/create-a-new-service-using-idp-stage) 
 5. **Your first Catalog Components**
    1. Onboard Applications, Services, APIs or Libraries owned by your first users/teams
-   - *Docs and Tutorials for Reference:* [Register a Software Component in Catalog](https://developer.harness.io/docs/internal-developer-portal/catalog/register-software-component)
+   - *Docs and Tutorials for Reference:* [Register a Software Component in Catalog](/docs/internal-developer-portal/catalog/register-software-component)
 6. **First TechDocs**
    1. Enable TechDocs for one of those applications where documentation is available in markdown.
    2. You can also choose to onboard central documentation such as engineering handbooks if you have those written in Markdown (docs-like-code approach)
-   - *Docs and Tutorials for Reference:* [Enable documentation for your Component](https://developer.harness.io/docs/internal-developer-portal/catalog/integrate-tools/techdocs/enable-docs)
+   - *Docs and Tutorials for Reference:* [Enable documentation for your Component](/docs/internal-developer-portal/catalog/integrate-tools/techdocs/enable-docs)
 7. **First few Catalog Plugins**
    1. Look at the IDP Plugins Marketplace and enable up to 5 plugins which are the most commonly used tools in your organization.
-   - *Docs and Tutorials for Reference:* [List of curated plugins supported in the Internal Developer Portal](https://developer.harness.io/docs/category/available-plugins)
+   - *Docs and Tutorials for Reference:* [List of curated plugins supported in the Internal Developer Portal](/docs/category/available-plugins)
 8. **Your First Scorecard**
    1. Create a “Catalog Readiness” Scorecard which can help you ensure that the Catalog entries are fully updated and all annotations required by the Plugins are set
-   - *Docs and Tutorials for Reference:* [Getting Started with Scorecards](https://developer.harness.io/docs/internal-developer-portal/scorecards/create-scorecards/create-scorecard)
+   - *Docs and Tutorials for Reference:* [Getting Started with Scorecards](/docs/internal-developer-portal/scorecards/create-scorecards/create-scorecard)
 9. **Invite your early users ✉️**
    1. Send invites to 10-20 users that you have identified as early adopters. Collect feedback
 10. **Setup Metadata Ingestion**
     1. Use Catalog Ingestion API to auto-fill some of the details that your early users don’t want to provide manually
-    - *Docs and Tutorials for Reference:* [Catalog Ingestion API](https://developer.harness.io/docs/internal-developer-portal/catalog/integrate-tools/catalog-ingestion-api)
+    - *Docs and Tutorials for Reference:* [Catalog Ingestion API](/docs/internal-developer-portal/catalog/integrate-tools/catalog-ingestion-api)
 11. **Your first Custom Plugin (Optional)**
     1. Create a small widget on the Catalog to show some application metadata which is hard to find today for your developers
-    - *Docs and Tutorials for Reference:* [Overview of custom plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/custom-plugins/overview)
+    - *Docs and Tutorials for Reference:* [Overview of custom plugins](/docs/internal-developer-portal/plugins/custom-plugins/overview)
 12. **Setup Weekly IDP Adoption Dashboard Updates**
     1. Ensure you are subscribed to receive weekly adoption reports from IDP.
-    - *Docs and Tutorials for Reference:* [Adoption Dashboard](https://developer.harness.io/docs/internal-developer-portal/dashboard/custom-dashboards)
+    - *Docs and Tutorials for Reference:* [Adoption Dashboard](/docs/internal-developer-portal/dashboard/custom-dashboards)
 
 From this point onwards, onboard more teams, solve newer use-cases, onboard their Catalog Components and build more Workflows!
 
-## Miscellaneous Adoption Tips and Tricks
+## Miscellaneous adoption tips and tricks
 
 - Create an internal Slack/Teams channel called **#harness-idp-adoption**. Announce new features and ask users to share feedback (both good and bad).
 - No two portals please. Avoiding creating fragmentation for Developers when it comes to their IDP use-cases.
 - Onboarding is not the same as Adoption. Onboarding refers to one or more Platform Engineers setting up the tool with Authentication, Authorization and other configuration. Adoption refers to active usage by Developers. Onboarding is a prerequisite to Adoption.
 
-### Central vs Distributed Catalog definition YAML files
+### Central vs distributed catalog definition YAML files
 
 Catalog completeness is key to a successful Internal Developer Portal (IDP). Achieving this requires choosing the right approach for managing `catalog-info.yaml` files. Below, we break down **centralized and distributed strategies** and how both of them works very well with Harness IDP.
 
 Our recommendation for new adopters is to start with all IDP YAML files in one git repository; and after onboarding, move on to a distributed model where team leads can take control of their respective Catalog YAML files.
 
-#### Centralized Catalog Management
+#### Centralized catalog management
 
 In this approach, all catalog definition YAML files are stored in a single centralized repository. This gives the flexibility to manage all YAML files easily without getting stuck at PR approvals from dozens of teams.
 
 Most IDP functionalities such as Scorecards and plugins use an annotation under `metadata` to reference the source code, ensuring documentation, scorecard evaluations, and dependency analysis works seamlessly, even when the YAML file is not colocated with the service. This is made possible by using the `backstage.io/source-location` annotation, which links the catalog entry in the central repository to the actual source repository of the components.
 
-Here's an example annotation:
+Here is an example annotation:
 
 ```YAML
 ## Example catalog-info.yaml
@@ -282,7 +281,7 @@ Create a dedicated repository named idp-catalog or similar, containing all `cata
   team-b/
     service-c/catalog-info.yaml
 ```
-#### Distributed Catalog Management
+#### Distributed catalog management
 
 Catalog definition YAML files are stored within each component's own repository, allowing teams to manage their own catalog entries. By colocating the `catalog-info.yaml` file with the service's code, the `backstage.io/source-location` annotation becomes redundant for most operations because the source code and metadata are already in the same repository. If necessary, the `backstage.io/source-location` annotation can be made to point to additional repositories or locations related to the service. 
 
@@ -297,11 +296,11 @@ Each service repository should include the `catalog-info.yaml` file at the root 
     docs/
     src/
 ```
-#### Harness IDP Tools for Catalog Population
+#### Harness IDP tools for catalog population
 
 1. **Automation Script for Bulk Onboarding:**
 
-Harness provides a [Python script](https://developer.harness.io/docs/internal-developer-portal/catalog/catalog-scripts) that automates the generation and registration of `catalog-info.yaml` files across multiple repositories. This script is particularly useful for organizations aiming to onboard many services simultaneously.
+Harness provides a [Python script](/docs/internal-developer-portal/catalog/tutorials/migrate-catalog-scripts/catalog-scripts) that automates the generation and registration of `catalog-info.yaml` files across multiple repositories. This script is particularly useful for organizations aiming to onboard many services simultaneously.
 
 **Key Features of the Script:**
 
@@ -311,15 +310,15 @@ Harness provides a [Python script](https://developer.harness.io/docs/internal-de
 
 - *Customization:* Allows filtering repositories using regex patterns to target specific services.
 
-2. Harness IDP’s **[Create Catalog](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#4-create-catalog)**, **[Direct Push](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#5-direct-push)** and **[Register Catalog](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#6-register-catalog)** step allows teams to directly onboard services into the catalog via workflows. 
+2. Harness IDP’s **[Create Catalog](/docs/internal-developer-portal/flows/idp-stage#4-create-catalog)**, **[Direct Push](/docs/internal-developer-portal/flows/idp-stage#5-direct-push)** and **[Register Catalog](/docs/internal-developer-portal/flows/idp-stage#6-register-catalog)** step allows teams to directly onboard services into the catalog via workflows. 
 
-## Resources and Support
+## Resources and support
 
-- [Harness IDP Documentation](https://developer.harness.io/docs/internal-developer-portal)
-- [Getting Started](https://developer.harness.io/docs/internal-developer-portal/get-started/)
+- [Harness IDP Documentation](/docs/internal-developer-portal)
+- [Getting Started](/docs/internal-developer-portal/get-started/)
 - Ask a Question or Report a Bug using [Harness Support](https://www.harness.io/support)
 - Submit feature requests using [Harness Ideas Portal](https://ideas.harness.io)
-- [IDP Roadmap](https://developer.harness.io/roadmap/#idp)
+- [IDP Roadmap](https://developer.harness.io/roadmap#idp)
 - Keep up with [Release Notes](https://developer.harness.io/release-notes/internal-developer-portal) for new feature announcements
 
 By adhering to this playbook, organizations can drive impactful and sustainable IDP adoption, empowering their developers and unlocking significant long-term value. Reach out to us if you have any questions. Feel free to download this content as PDF and re-use internally to talk about Harness IDP.

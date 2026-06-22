@@ -79,7 +79,7 @@ Also, you could add a conditional like `isHarnessCcmAvailable` which is met when
 
 ## Annotations
 
-To configure the plugin for a service in the software catalog, set one or both of the following annotations in its `catalog-info.yaml` definition file, you can fetch the Perspective URL from the [Perspectives](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-cost-perspectives#perspectives) page:
+To configure the plugin for a service in the software catalog, set one or both of the following annotations in its `catalog-info.yaml` definition file, you can fetch the Perspective URL from the [Perspectives](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-cost-perspectives#perspectives) page:
 
 ```YAML
 apiVersion: backstage.io/v1alpha1

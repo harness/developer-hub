@@ -14,7 +14,7 @@ The following are the list of Backstage APIs supported by IDP.
 The APIs listed here are [Backstage APIs](https://backstage.io/docs/features/software-catalog/software-catalog-api) exposed through Harness Platform and you could find all other APIs for [IDP mentioned in openapi specs](https://apidocs.harness.io/tag/AppConfig)
 :::
 
-In order to use the APIs in Harness platform, you need to generate a Harness API Key as described in [Manage API keys](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys)
+In order to use the APIs in Harness platform, you need to generate a Harness API Key as described in [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys)
 
 
 
@@ -24,7 +24,7 @@ In order to use the APIs in Harness platform, you need to generate a Harness API
 
 Register Software Component in Harness Catalog.
 
-#### HTTP Method
+#### HTTP method
 
 `POST`
 
@@ -33,7 +33,7 @@ Register Software Component in Harness Catalog.
 ```bash
 https://idp.harness.io/<ACCOUNT_ID>/idp/api/catalog/locations
 ```
-#### URL Parameters
+#### URL parameters
 
 `ACCOUNT_ID`: Your Harness account ID.
 
@@ -46,7 +46,7 @@ https://app.harness.io/ng/account/<ACCOUNT_ID>/idp/overview
 #### Headers
 - `x-api-key`: Your Harness API token.
 
-#### Request Body
+#### Request body
 
 ```json
 {
@@ -55,7 +55,7 @@ https://app.harness.io/ng/account/<ACCOUNT_ID>/idp/overview
 }
 ```
 
-### cURL Example
+### cURL example
 
 ```cURL
 curl --location 'https://idp.harness.io/<ACCOUNT_ID>/idp/api/catalog/locations' \
@@ -66,13 +66,13 @@ curl --location 'https://idp.harness.io/<ACCOUNT_ID>/idp/api/catalog/locations' 
 The response will register a software component in your IDP catalog as defined in the `catalog-info.yaml` or `idp.yaml` file from the specified git repository.
 
 
-## Catalog Refresh API
+## Catalog refresh API
 
 #### Endpoint
 
 Syncs the component with the latest version of `catalog-info.yaml` stored in git providers.
 
-#### HTTP Method
+#### HTTP method
 
 `POST`
 
@@ -81,7 +81,7 @@ Syncs the component with the latest version of `catalog-info.yaml` stored in git
 ```bash
 https://idp.harness.io/<ACCOUNT_ID>/idp/api/catalog/refresh
 ```
-#### URL Parameters
+#### URL parameters
 
 `ACCOUNT_ID`: Your Harness account ID.
 
@@ -94,7 +94,7 @@ https://app.harness.io/ng/account/<ACCOUNT_ID>/idp/overview
 #### Headers
 - `x-api-key`: Your Harness API token.
 
-### cURL Example
+### cURL example
 
 ```cURL
 curl 'https://idp.harness.io/<ACCOUNT_ID>/idp/api/catalog/refresh' \
@@ -116,15 +116,15 @@ Go to **Inspect Entity** on the component page and under **Identity** in Overvie
 
 The response will immediately sync the mentioned component in the entity ref with the `catalog-info.yaml` stored in the git provider
 
-## Catalog Entities Delete API
+## Catalog entities delete API
 
-### Delete Using Location ID
+### Delete using location ID
 
 #### Endpoint
 
 Delete Software Component from Harness Catalog.
 
-#### HTTP Method
+#### HTTP method
 
 `DELETE`
 
@@ -133,7 +133,7 @@ Delete Software Component from Harness Catalog.
 ```bash
 https://idp.harness.io/<ACCOUNT_ID>/idp/api/catalog/locations/<LOCATION_ID>
 ```
-#### URL Parameters
+#### URL parameters
 
 `ACCOUNT_ID`: Your Harness account ID.
 
@@ -169,7 +169,7 @@ The Response of the above cURL would be as shown below and the `id` mentioned is
 #### Headers
 - `x-api-key`: Your Harness API token.
 
-### cURL Example
+### cURL example
 
 ```cURL
 curl --location --request DELETE 'https://idp.harness.io/<ACCOUNT_ID>/idp/api/catalog/locations/<LOCATION_ID>' \
@@ -179,13 +179,13 @@ curl --location --request DELETE 'https://idp.harness.io/<ACCOUNT_ID>/idp/api/ca
 The response will remove the software component along the with the locations from your IDP catalog as defined in the location provided.
 
 
-### Delete Using `metadata.uid` for Orphaned Entities
+### Delete using `metadata.uid` for orphaned entities
 
 #### Endpoint
 
 Deletes an entity by its `metadata.uid` field value. 
 
-#### HTTP Method
+#### HTTP method
 
 `DELETE`
 
@@ -194,7 +194,7 @@ Deletes an entity by its `metadata.uid` field value.
 ```bash
 https://idp.harness.io/<ACCOUNT_ID>/idp/api/catalog/entities/by-uid/<uid>
 ```
-#### URL Parameters
+#### URL parameters
 
 `ACCOUNT_ID`: Your Harness account ID.
 
@@ -237,7 +237,7 @@ The Response of the above cURL would be as shown below and the `metadata.uid` me
 #### Headers
 - `x-api-key`: Your Harness API token.
 
-### cURL Example
+### cURL example
 
 ```cURL
 curl --location --request DELETE 'https://idp.harness.io/<ACCOUNT_ID>/idp/api/catalog/entities/by-uid/<UID>' \
@@ -247,13 +247,13 @@ curl --location --request DELETE 'https://idp.harness.io/<ACCOUNT_ID>/idp/api/ca
 The response will remove the locations from your IDP catalog as defined in the `uid`.
 
 
-## Catalog Entities API
+## Catalog entities API
 
 #### Endpoint
 
 Retrieves catalog entities that match a specific filter from the Harness IDP.
 
-#### HTTP Method
+#### HTTP method
 
 `GET`
 
@@ -262,7 +262,7 @@ Retrieves catalog entities that match a specific filter from the Harness IDP.
 ```bash
 https://idp.harness.io/<ACCOUNT_ID>/idp/api/catalog/entities
 ```
-#### URL Parameters
+#### URL parameters
 
 1. `ACCOUNT_ID`: Your Harness account ID.
 
@@ -278,7 +278,7 @@ https://app.harness.io/ng/account/<ACCOUNT_ID>/idp/overview
 `fields`, for selecting only parts of the full data structure of each entity
 `offset`, `limit`, and `after` for pagination
 
-#### Filtering
+#### Filter
 You can pass in one or more filter sets that get matched against each entity. Each filter set is a number of conditions that all have to match for the condition to be true (conditions effectively have an AND between them). At least one filter set has to be true for the entity to be part of the result set (filter sets effectively have an OR between them).
 
 Example:
@@ -307,7 +307,7 @@ Example:
 curl --location 'https://idp.harness.io/<ACCOUNT_ID>/idp/api/catalog/entities?filter=kind=component,relations.partOf=system:default/SYSTEM_NAME' \
 --header 'x-api-key: <HARNESS_TOKEN>'
 ```
-In the above example since the `system` name is mentioned under `relations` in component's definition YAML, hence we have used the filter `relations.partOf=system:default/SYSTEM_NAME`. Here's the mention of `system` in component's YAML. 
+In the above example since the `system` name is mentioned under `relations` in component's definition YAML, hence we have used the filter `relations.partOf=system:default/SYSTEM_NAME`. Here is the mention of `system` in component's YAML. 
 
 ```YAML {17, 19}
 ## Example IDP YAML
@@ -337,7 +337,7 @@ relations:
 #### Headers
 - `x-api-key`: Your Harness API token.
 
-### cURL Example
+### cURL example
 
 ```cURL
 curl 'https://idp.harness.io/<ACCOUNT_ID>/idp/api/catalog/entities?filter=kind=template' \

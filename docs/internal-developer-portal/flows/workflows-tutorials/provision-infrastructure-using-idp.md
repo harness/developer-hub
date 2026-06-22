@@ -12,20 +12,20 @@ This tutorial is designed to help a platform engineer to get started with Harnes
 
 Users (developers) must perform a sequence of tasks to provision the infrastructure. First, they interact with a software template. A software template is a form that collects a user's requirements. After a user submits the form, IDP executes a Harness IaCM pipeline that provisions the new ec2 instance.
 
-## Prerequisites
+## Before you begin
 
 Before you begin this tutorial, make sure that you have completed the following requirements:
 
 - Enable Harness IDP and Harness IaCM for your account.
-- Make sure you are assigned the **[IDP Admin Role](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles#1-idp-admin)** or another role that has full access to all IDP resources along with the **IACM Workspace**. 
-- Create a [Service Now](https://developer.harness.io/docs/platform/connectors/ticketing-systems/connect-to-service-now/) and [JIRA connector](https://developer.harness.io/docs/platform/connectors/ticketing-systems/connect-to-jira) with access to the projects where you want to create the tickets for provisioning the pipeline. 
-- Create a [Connector for AWS](/docs/infra-as-code-management/get-started/#add-connectors).
-- Create a [connector for git provider](/docs/infra-as-code-management/get-started/#add-connectors)
-- Create a [Workspace](/docs/infra-as-code-management/get-started/#add-a-new-workspace) using the AWS Connector created above. Also use the following [repository](https://github.com/luisredda/terraform-aws-ec2-instance) for the workspace and add the **branch** as `master` and **file path** as `.`
+- Make sure you are assigned the **[IDP Admin Role](/docs/internal-developer-portal/rbac/scopes#idp-admin-role)** or another role that has full access to all IDP resources along with the **IACM Workspace**. 
+- Create a [Service Now](/docs/platform/connectors/ticketing-systems/connect-to-service-now/) and [JIRA connector](/docs/platform/connectors/ticketing-systems/connect-to-jira) with access to the projects where you want to create the tickets for provisioning the pipeline. 
+- Create a [Connector for AWS](/docs/infra-as-code-management/get-started#add-connectors).
+- Create a [connector for git provider](/docs/infra-as-code-management/get-started#add-connectors)
+- Create a [Workspace](/docs/infra-as-code-management/get-started#add-a-new-workspace) using the AWS Connector created above. Also use the following [repository](https://github.com/luisredda/terraform-aws-ec2-instance) for the workspace and add the **branch** as `master` and **file path** as `.`
 
 ![](./static/iacm-workspace.png)
 
-## Create a Pipeline
+## Create a pipeline
 
 ![](./static/pipeline-iacm.png)
 
@@ -43,13 +43,13 @@ You can also create a new project for the service onboarding pipelines. Eventual
 
 ![](./static/add-a-pipeline.png)
 
-3. The YAML below defines an IaCM stage with a number of steps [as described here](/docs/infra-as-code-management/get-started/#add-a-pipeline) that will perform the actions provision the infrastructure. Copy the YAML below, then in the Harness Pipeline Studio go to the YAML view and paste below the existing YAML.
+3. The YAML below defines an IaCM stage with a number of steps [as described here](/docs/infra-as-code-management/get-started#add-a-pipeline) that will perform the actions provision the infrastructure. Copy the YAML below, then in the Harness Pipeline Studio go to the YAML view and paste below the existing YAML.
 
 :::info
 
 You need to have completed all the steps under **[PreRequisites](#prerequisites)** for the below given YAML to work properly 
 
-Please update the `connectorRef: <the_connector_name_you_created_under_prerequisites>` for all the steps it's used.
+Update the `connectorRef: <the_connector_name_you_created_under_prerequisites>` for all the steps it is used.
 
 :::
 
@@ -247,15 +247,15 @@ pipeline:
 
 :::info
 
-All inputs, except for [pipeline input as variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline-expressions), must be of [fixed value](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values).
+All inputs, except for [pipeline input as variables](/docs/platform/variables-and-expressions/harness-variables#pipeline-expressions), must be of [fixed value](/docs/platform/variables-and-expressions/runtime-inputs#fixed-values).
 
 ![](./static/pipeline-varialbles-idp-implementation.png)
 
 :::
 
-## Create a Workflow
+## Create a workflow
 
-Now that our pipeline is ready to execute when a project name and a GitHub repository name are provided, let's create the UI counterpart of it in IDP. Create a `workflow.yaml` file anywhere in your Git repository. 
+Now that our pipeline is ready to execute when a project name and a GitHub repository name are provided, let us create the UI counterpart of it in IDP. Create a `workflow.yaml` file anywhere in your Git repository. 
 
 In the following `workflow.yaml` we have added few enums to choose from the available list of options like for the `instance_type`, `ami`, `subnet` and `vpc`. Team responsible for infrastructure provisioning is expected to fill this enums with available possibilities for the ease of developers to just select form the available options. 
 
@@ -375,7 +375,7 @@ Replace the `YOUR PIPELINE URL HERE` with the pipeline URL that you created.
 
 This YAML code is governed by Backstage. You can change the name and description of the software template. 
 
-### Authenticating the Request to the Pipeline
+### Authenticate the request to the pipeline
 
 The Workflow contains a single action which is designed to trigger the pipeline you created via an API call. Since the API call requires authentication, Harness has created a custom component to authenticate based of the logged-in user's credentials.
 
@@ -436,11 +436,11 @@ That token is then used as part of `steps` as `apikey`
         apikey: ${{ parameters.token }}
 ```
 
-### Register the Workflow in IDP
+### Register the workflow in IDP
 
 Use the URL to the `workflow.yaml` created above and register it by using the same process for [registering a new software component](/docs/internal-developer-portal/get-started).
 
-## Use the Self Service Workflows
+## Use the self service workflows
 
 Now navigate to the **Workflows** page in IDP. You will see the newly created Workflow appear. Click on **Choose**, fill in the form, click **Next Step**, then **Create** to trigger the automated pipeline. Once complete, you should be able to see the EC2 instance provisioned.
 

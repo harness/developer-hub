@@ -11,7 +11,7 @@ Scorecards help you measure software maturity and ensure adherence to organizati
 
 ---
 
-## Scorecard View
+## Scorecard view
 
 Scorecards have two main UI components that are developer-facing and displayed in the Catalog:
 
@@ -22,7 +22,7 @@ Scorecards have two main UI components that are developer-facing and displayed i
 
 ---
 
-## Enable Scorecards
+## Enable scorecards
 
 :::info
 
@@ -65,13 +65,13 @@ Follow these steps to add Scorecards to your catalog entities:
 
 ---
 
-## Create a Scorecard
+## Create a scorecard
 
 :::info
 Before you create a Scorecard, ensure that you have created some checks. To learn more about checks, go to [Scorecard Checks](/docs/internal-developer-portal/scorecards/create-scorecards/checks).
 :::
 
-Once you've enabled the Scorecard components, follow these steps to create your first scorecard:
+Once you have enabled the Scorecard components, follow these steps to create your first scorecard:
 
 1. **Navigate to Scorecards**
    - Go to **Configure** → **Scorecards**. 
@@ -107,12 +107,12 @@ Once you've enabled the Scorecard components, follow these steps to create your 
 ![](../static/create-scorecard.png)
 
 :::info GitX Enabled
-Scorecard calculations are based on entity data from the default branch of the associated Git repository. If you're using a remote Git repository to manage your Scorecard definitions, ensure that the YAML file is committed and pushed to the default branch. This behavior maintains a single source of truth and prevents confusion from incomplete or in-progress configurations.
+Scorecard calculations are based on entity data from the default branch of the associated Git repository. If you are using a remote Git repository to manage your Scorecard definitions, ensure that the YAML file is committed and pushed to the default branch. This behavior maintains a single source of truth and prevents confusion from incomplete or in-progress configurations.
 :::
 
 ---
 
-## Next Steps
+## Next steps
 
 After creating your scorecard:
 - Learn how to [create custom checks](/docs/internal-developer-portal/scorecards/create-scorecards/checks) for your scorecards

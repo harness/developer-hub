@@ -96,11 +96,11 @@ For displaying issues based on a specific JQL query:
 - component: EntityJiraQueryCard
 ```
 
-This component uses the `jira/all-issues-jql` annotation from the entity's metadata (see Annotations section below). You don't need to provide JQL in the component configuration.
+This component uses the `jira/all-issues-jql` annotation from the entity's metadata (see Annotations section below). You do not need to provide JQL in the component configuration.
 
 The JQL query is specified in the entity's annotations.
 
-### Conditional Display
+### Conditional display
 
 You can make these cards appear conditionally based on whether the required annotations are present. Each card type has its own condition:
 

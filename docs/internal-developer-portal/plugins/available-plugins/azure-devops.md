@@ -11,9 +11,9 @@ description: Easily view your Azure Pipelines within the Software Catalog.
 | **Type**       | Open-source plugin                                                            |
 
 
-## Prerequisites
+## Before you begin
 
-Make sure to add the azure integration under git integration section to have an error free experience with this plugin. Follow this [doc](https://developer.harness.io/docs/internal-developer-portal/get-started/setup-git-integration/?Connector=azure-connector) to know more.
+Make sure to add the azure integration under git integration section to have an error free experience with this plugin. Follow this [doc](/docs/internal-developer-portal/get-started/setup-git-integration/?Connector=azure-connector) to know more.
 
 ## Configuration
 
@@ -93,7 +93,7 @@ metadata:
   annotations:
     dev.azure.com/project-repo: <project-name>/<repo-name>
 ```
-Let's break this down a little: `<project-name>` will be the name of your Team Project and `<repo-name>` will be the name of your repository which needs to be part of the Team Project you entered for `<project-name>`.
+Let us break this down a little: `<project-name>` will be the name of your Team Project and `<repo-name>` will be the name of your repository which needs to be part of the Team Project you entered for `<project-name>`.
 
 
 
@@ -114,7 +114,7 @@ dev.azure.com/project-repo: <project-with-source-code>/<my-repo>
 dev.azure.com/build-definition: <build-definition-name>
 dev.azure.com/project: <project-with-build-code>
 ```
-### Azure Pipelines Only
+### Azure pipelines only
 
 If you are only using Azure Pipelines along with a different SCM tool then you can use the following two annotations to see Builds:
 
@@ -123,11 +123,11 @@ dev.azure.com/project: <project-name>
 dev.azure.com/build-definition: <build-definition-name>
 ```
 
-In this case `<project-name>` will be the name of your Team Project and `<build-definition-name>` will be the name of the Build Definition you would like to see Builds for, and it's possible to add more Builds separated by a comma. If the Build Definition name has spaces in it make sure to put quotes around it.
+In this case `<project-name>` will be the name of your Team Project and `<build-definition-name>` will be the name of the Build Definition you would like to see Builds for, and it is possible to add more Builds separated by a comma. If the Build Definition name has spaces in it make sure to put quotes around it.
 
-### Multiple Organizations
+### Multiple organizations
 
-If you have multiple organizations you'll need to also add this annotation:
+If you have multiple organizations you will need to also add this annotation:
 
 ```YAML
 dev.azure.com/host-org: <host>/<organization>

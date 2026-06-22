@@ -10,11 +10,11 @@ redirect_from:
 Harness Policy As Code uses [Open Policy Agent (OPA)](https://www.openpolicyagent.org/) as the central service to store and enforce policies for different entities and processes across the Harness platform. You can centrally define and store policies, then select where (which entities) and when (which events) they will be applied.
 
 Policies use the OPA authoring language **Rego**. For more information, go to:
-- [Harness Governance Overview](https://developer.harness.io/docs/platform/governance/policy-as-code/harness-governance-overview)
-- [Harness Governance Quickstart](https://developer.harness.io/docs/platform/governance/policy-as-code/harness-governance-quickstart)
+- [Harness Governance Overview](/docs/platform/governance/policy-as-code/harness-governance-overview)
+- [Harness Governance Quickstart](/docs/platform/governance/policy-as-code/harness-governance-quickstart)
 - [OPA Policy Authoring](https://academy.styra.com/courses/opa-rego)
 
-## OPA Policy Examples with Scorecards
+## OPA policy examples with scorecards
 
 You can apply OPA policies to CD pipelines to enforce scorecard-based governance. The following examples demonstrate two common use cases:
 
@@ -89,11 +89,11 @@ deny[msg] {
 
 ---
 
-## Create and Apply OPA Policies for Scorecards
+## Create and apply OPA policies for scorecards
 
 This tutorial demonstrates how to create a policy and apply it to all services in your account. The policy is evaluated at the service level based on scorecard scores and user-defined conditions. The policy triggers on pipeline events, such as saving a pipeline.
 
-### Create a Policy
+### Create a policy
 
 1. **Navigate to Policies**
    - Go to **Account Settings** under **Administrative Settings**
@@ -118,7 +118,7 @@ This tutorial demonstrates how to create a policy and apply it to all services i
 
 ---
 
-### Create a Policy Set
+### Create a policy set
 
 1. **Navigate to Policy Sets**
    - Go to **Policy Sets** and select **New Policy Set**
@@ -141,7 +141,7 @@ This tutorial demonstrates how to create a policy and apply it to all services i
 
 ---
 
-### Use the Policy Set
+### Use the policy set
 
 Once saved, the policy set will automatically be applied to your CD pipelines based on the entity and event you configured. The policy will evaluate scorecard scores and enforce governance rules according to your specifications.
 
@@ -157,4 +157,4 @@ Key takeaways:
 - Policy sets allow you to apply multiple policies to specific entities
 - Enforcement types (Warn & Continue or Error and Exit) provide flexibility in how policies are applied
 
-For more information, refer to the [Harness Governance documentation](https://developer.harness.io/docs/platform/governance/policy-as-code/harness-governance-overview) and explore [Scorecard creation](/docs/internal-developer-portal/scorecards/create-scorecards/create-scorecard).
+For more information, refer to the [Harness Governance documentation](/docs/platform/governance/policy-as-code/harness-governance-overview) and explore [Scorecard creation](/docs/internal-developer-portal/scorecards/create-scorecards/create-scorecard).

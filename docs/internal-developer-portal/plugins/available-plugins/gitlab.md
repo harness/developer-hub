@@ -20,7 +20,7 @@ The GitLab plugin connects your Internal Developer Portal to your GitLab reposit
 - Track project issues and milestones
 - View Pipeline status for a project
 
-## Setting up the plugin
+## Set up the plugin
 
 ### Step 1: Basic configuration
 
@@ -36,17 +36,17 @@ gitlab:
 
 ### Step 2: Managing authentication
 
-You'll need to set up a GitLab connector in Harness to authenticate with your GitLab instance. This connector allows secure communication between Harness IDP and your GitLab repositories. You can configure it with a Personal Access Token (recommended), basic authentication, or OAuth. 
+You will need to set up a GitLab connector in Harness to authenticate with your GitLab instance. This connector allows secure communication between Harness IDP and your GitLab repositories. You can configure it with a Personal Access Token (recommended), basic authentication, or OAuth. 
 
 Go to **Harness IDP** → **Configure** → **Git Integrations** and add a new GitLab connector integration. 
 
-For detailed setup instructions, see the [GitLab connector documentation](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo/#connect-to-gitlab).
+For detailed setup instructions, see the [GitLab connector documentation](/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-gitlab).
 
 This connector is used to authenticate with your GitLab instance and retrieve data about your projects, including their pipelines, issues, and merge requests. 
 
 ### Step 3: Network access setup
 
-If your GitLab instance isn't directly accessible from Harness:
+If your GitLab instance is not directly accessible from Harness:
 
 1. Set up a delegate HTTP proxy by providing:
    - Host URL (without protocol or trailing slashes)
@@ -56,7 +56,7 @@ If your GitLab instance isn't directly accessible from Harness:
    - Use specific delegate tags if needed
    - For best results, use a single delegate with access to your GitLab instance
 
-## Using the plugin
+## Use the plugin
 
 ### Available components
 
@@ -71,17 +71,17 @@ The UI components are:
 - **Merge Requests Stats Card**: Shows the merge requests statistics overview
 - **Releases Card**: List the last releases 
 
-#### Layout Options
+#### Layout options
 This plugin exposes a default tab layout structure for the GitLab plugin using the ``EntityGitlabContent`` component. This adds a default GitLab tab to the plugin layout. 
 You can also customise the plugin layout for your Catalog entities using the **Layout Editor**. Go to **Configure** → **Layout** → **Catalog Entities**. Select the entity type for which you want to customise the layout structure and add the plugin components in the layout editor. 
 
 :::info
-It's recommended to have the ``EntityGitlabPipelinesTable`` component as the default top component in your plugin layout. To learn more about these components, go to [GitLab Plugin Documentation](https://github.com/immobiliare/backstage-plugin-gitlab). 
+It is recommended to have the ``EntityGitlabPipelinesTable`` component as the default top component in your plugin layout. To learn more about these components, go to [GitLab Plugin Documentation](https://github.com/immobiliare/backstage-plugin-gitlab). 
 :::
 
 ![GitLab Plugin Layout Options](./static/gitlabplugin2.png)
 
-### Linking catalog entities to GitLab projects
+### Link catalog entities to GitLab projects
 
 By default, the plugin looks for GitLab project information based on where your catalog file is located. You can override this by adding annotations to your catalog entities:
 

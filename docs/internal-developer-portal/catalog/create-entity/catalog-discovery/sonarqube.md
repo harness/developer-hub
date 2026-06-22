@@ -29,20 +29,20 @@ The following are needed to get the integration running:
 * A SonarQube user token with global-level `Browse` privileges is available. Generate it via **My Account** → **Security** → **Generate Tokens** in SonarQube.
 
 :::info Proxy Configuration
-If your environment blocks outbound third-party traffic and routes it through a proxy, you'll need to configure proxy settings on your Harness Delegate. Once configured there, the proxy settings are automatically picked up by IDP integrations. No additional setup is needed on the integration side. 
+If your environment blocks outbound third-party traffic and routes it through a proxy, you will need to configure proxy settings on your Harness Delegate. Once configured there, the proxy settings are automatically picked up by IDP integrations. No additional setup is needed on the integration side. 
 
-Here's how to set it up: [Configure delegate proxy settings](/docs/platform/delegates/manage-delegates/configure-delegate-proxy-settings)
+Here is how to set it up: [Configure delegate proxy settings](/docs/platform/delegates/manage-delegates/configure-delegate-proxy-settings)
 :::
 
 ---
 
-## Enable the SonarQube Integration
+## Enable the SonarQube integration
 
 :::info
 The SonarQube integration is available at the **Account**, **Organization**, and **Project** levels of Harness. Navigate to the appropriate scope of the Internal Developer Portal to add or manage SonarQube integrations.
 :::
 
-### 1. Navigate to the Integrations Page
+### 1. Navigate to the integrations page
 
 1. In Harness, open the **Internal Developer Portal**.
 
@@ -57,7 +57,7 @@ The SonarQube integration is available at the **Account**, **Organization**, and
 
 5. Select **SonarQube** from the integration type picker. You will be taken to the **Auto Discover SonarQube Integration** page.
 
-### 2. Configure Setup & Connectivity
+### 2. Configure setup & connectivity
 
 This section connects Harness IDP to your SonarQube instance.
 
@@ -94,7 +94,7 @@ This section connects Harness IDP to your SonarQube instance.
    For SonarQube Server (self-hosted) instances, ensure that your SonarQube instance is reachable from within the environment where your Harness Delegate is running. The delegate must have network access to the SonarQube Host URL you configure.
    :::
 
-### 3. Configure Mapping & Correlation
+### 3. Configure mapping & correlation
 
 This section defines how SonarQube projects are mapped to IDP catalog entities and how they are correlated with existing catalog records.
 
@@ -103,7 +103,7 @@ The integration supports the **Project Entity** type, which imports SonarQube pr
 ![](./static/sq-entities.png)
 <center>Figure 3: Available Entities - Projects</center>
 
-#### Project Entity
+#### Project entity
 
 1. Ensure the **Project Entity** toggle is turned on.
 
@@ -122,7 +122,7 @@ The integration supports the **Project Entity** type, which imports SonarQube pr
 
 5. Optionally, click **Configure** next to **Configure fields (optional)** to customize which SonarQube fields are synced to the catalog. By default, all available fields are selected.
 
-### 4. Configure Advanced Settings
+### 4. Configure advanced settings
 
 The **Advanced Settings** section controls how frequently IDP syncs with SonarQube and, for SonarQube Cloud, how far back historical data is pulled.
 
@@ -141,7 +141,7 @@ The integration is now enabled and IDP begins syncing data from SonarQube. Disco
 
 ---
 
-## Discover and Import SonarQube Entities
+## Discover and import SonarQube entities
 
 This section covers how to view the SonarQube entities discovered by the integration and import them into your IDP Catalog.
 
@@ -186,7 +186,7 @@ To stop syncing a specific entity without deleting the catalog entity, use the t
 
 ---
 
-## View SonarQube Entities in the Catalog
+## View SonarQube entities in the catalog
 
 Once imported, SonarQube entities are available in the **Catalog** section of IDP as standard catalog entities.
 
@@ -198,7 +198,7 @@ Each imported SonarQube project is registered with:
 
 Open any entity to view SonarQube-sourced data directly on the entity details page. This data is displayed through two dedicated UI components: a card on the **Overview** tab and an **Code Quality** tab. Both require a one-time layout configuration, described in the [next section](#layout-for-sonarqube-components).
 
-### Layout for SonarQube Components
+### Layout for SonarQube components
 
 To display SonarQube data on the [entity details](/docs/internal-developer-portal/catalog/create-entity/entity-details) page, you need to add the two SonarQube components to the relevant entity layout. This is a one-time configuration per entity kind and type.
 
@@ -231,7 +231,7 @@ To display SonarQube data on the [entity details](/docs/internal-developer-porta
 5. Click **Save** to apply the layout changes. The SonarQube components will now appear on all entity detail pages of the selected kind and type that have SonarQube data.
 
 
-### Cards in Overview Tab
+### Cards in overview tab
 
 After the layout is configured, a `Code Quality` card appears in the **Overview** tab of any entity that has SonarQube data linked to it. The card displays the key SonarQube metadata ingested for that entity, sourced from the entity's [ingested properties](#ingested-properties).
 
@@ -240,7 +240,7 @@ After the layout is configured, a `Code Quality` card appears in the **Overview*
 
 If the SonarQube integration has not been configured for the entity, the card shows a **Not configured** state with a link to the Integrations page. 
 
-### Code Quality Tab
+### Code quality tab
 
 The **Code Quality** tab provides a more complete view of the SonarQube data for the entity. This tab fetches latest possible data using the integration ID and entity UUID.
 
@@ -253,7 +253,7 @@ The **Code Quality** tab provides a more complete view of the SonarQube data for
 * All the cards display data last synced from SonarQube, based on your configured [update frequency](#4-configure-advanced-settings).
 :::
 
-### Ingested Properties
+### Ingested properties
 
 To inspect the raw data ingested from SonarQube, open the entity and click **View YAML** → **Ingested Properties** in the Entity Inspector.
 
@@ -267,13 +267,13 @@ Ingested properties are stored in two sections of the entity YAML:
 
 ---
 
-## Manage the SonarQube Integration
+## Manage the SonarQube integration
 
-### Edit the Integration
+### Edit the integration
 
 To update the integration name, change the host URL, token, or mapping and correlation settings, navigate to the **Integrations** page, find your SonarQube integration card, and click **View**. From there, click **Configuration** to open the edit screen.
 
-### Suspend Auto-Discovery
+### Suspend auto-discovery
 
 If auto-discovery is suspended, new entities will not appear in the **Discovered** tab. Existing imported entities remain unchanged in the catalog, and the sync between SonarQube and their corresponding IDP entities will stop.
 

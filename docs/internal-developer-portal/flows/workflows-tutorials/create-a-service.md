@@ -16,7 +16,7 @@ Your users (developers) must perform a sequence of tasks to create the applicati
 
 ![](./static/service-onboarding-user-flow.png)
 
-## Prerequisites
+## Before you begin
 
 Before you begin this tutorial, make sure that you fulfil the following requirements:
 
@@ -27,7 +27,7 @@ Before you begin this tutorial, make sure that you fulfil the following requirem
 
 Begin by creating a pipeline for onboarding the service.
 
-### Create a Build or Custom stage
+### Create a build or custom stage
 
 To create a Build or Custom stage, perform the following steps:
 
@@ -75,7 +75,7 @@ In the CI or Build stage type, container step is named Run, and it has the same 
    Depending upon our operation, we might have to adjust the memory limit of the container. If required, you can change Limit Memory from `500Mi` to `4000Mi`.
    :::
 
-### Cookiecutter Scripts Based on your SCM
+### Cookiecutter scripts based on your SCM
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -141,7 +141,7 @@ import TabItem from '@theme/TabItem';
 
 :::info
 
-In the above script you need to add the **[Personal Access Token](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys/#create-personal-api-keys-and-tokens)** to make the API call to register your catalog, 
+In the above script you need to add the **[Personal Access Token](/docs/platform/automation/api/add-and-manage-api-keys#create-personal-api-keys-and-tokens)** to make the API call to register your catalog, 
 
 :::
 
@@ -159,7 +159,7 @@ The script uses several pipeline variables. The variables are as follows:
 - `<+pipeline.variables.github_org>`
 - `<+pipeline.variables.github_repo>`
 
-Except for the secrets all the variables should have a [runtime input type](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) and the variable name should match with the parameter name used in the Workflow as the values would be pre-populated from the values entered as input in the below IDP Workflow.
+Except for the secrets all the variables should have a [runtime input type](/docs/platform/variables-and-expressions/runtime-inputs#runtime-inputs) and the variable name should match with the parameter name used in the Workflow as the values would be pre-populated from the values entered as input in the below IDP Workflow.
 
 For eg: `<+pipeline.variables.project_name>` variable is pre-populated by `project_name: ${{ parameters.project_name }}` under `input set:` in the below given Workflow.
 
@@ -236,7 +236,7 @@ For eg: `<+pipeline.variables.project_name>` variable is pre-populated by `proje
 - `<+pipeline.variables.gitlab_org>`
 - `<+pipeline.variables.gitlab_repo>`
 
-Except for the secrets all the variables should have a [runtime input type](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) and the variable name should match with the parameter name used in the Workflow as the values would be pre-populated from the values entered as input in the below IDP Workflow.
+Except for the secrets all the variables should have a [runtime input type](/docs/platform/variables-and-expressions/runtime-inputs#runtime-inputs) and the variable name should match with the parameter name used in the Workflow as the values would be pre-populated from the values entered as input in the below IDP Workflow.
 
 For e.g., : `<+pipeline.variables.project_name>` variable is pre-populated by `project_name: ${{ parameters.project_name }}` under `input set:` in the below given Workflow.
 
@@ -251,9 +251,9 @@ You can create any number of pipeline variables and decide their value type. Som
 
 Variables such as project name and GitHub repository are runtime inputs. They are needed at the time of pipeline execution. When creating a new variable, you can specify its type in the UI. For more information about reference variables, go to the [reference documentation](/docs/platform/variables-and-expressions/harness-variables/) on pipeline variables.
 
-### Create a software Workflow definition in IDP
+### Create a software workflow definition in IDP
 
-Now that our pipeline is ready to execute when a project name and a GitHub repository name are provided, let's create the UI counterpart of it in IDP. This is powered by the [Backstage Software Workflow](https://backstage.io/docs/features/software-Workflows/writing-Workflows). Create a `Workflow.yaml` file anywhere in your Git repository. Usually, that would be the same place as your skeleton hello world code. We use the [react-jsonschema-form playground](https://rjsf-team.github.io/react-jsonschema-form/) to build the Workflow. [Nunjucks](https://mozilla.github.io/nunjucks/) is templating engine for the IDP Workflows.  
+Now that our pipeline is ready to execute when a project name and a GitHub repository name are provided, let us create the UI counterpart of it in IDP. This is powered by the [Backstage Software Workflow](https://backstage.io/docs/features/software-Workflows/writing-Workflows). Create a `Workflow.yaml` file anywhere in your Git repository. Usually, that would be the same place as your skeleton hello world code. We use the [react-jsonschema-form playground](https://rjsf-team.github.io/react-jsonschema-form/) to build the Workflow. [Nunjucks](https://mozilla.github.io/nunjucks/) is templating engine for the IDP Workflows.  
 
 <Tabs>
 <TabItem value="GitHub">
@@ -398,13 +398,13 @@ This YAML code is governed by Backstage. You can change the name and description
 ![](./static/template-2.png)
 
 
-Let's take a look at the inputs that the Workflow expects from a developer. The inputs are written in the `spec.parameters` field. It has two parts, but you can combine them. The keys in `properties` are the unique IDs of fields (for example, `github_repo` and `project_name`). If you recall, they are the pipeline variables that we set as runtime inputs earlier. This is what we want the developer to enter when creating their new application.
+Let us take a look at the inputs that the Workflow expects from a developer. The inputs are written in the `spec.parameters` field. It has two parts, but you can combine them. The keys in `properties` are the unique IDs of fields (for example, `github_repo` and `project_name`). If you recall, they are the pipeline variables that we set as runtime inputs earlier. This is what we want the developer to enter when creating their new application.
 
 The YAML definition includes fields such as cloud provider and database choice. They are for demonstration purposes only and are not used in this tutorial.
 
-### Adding the owner
+### Add the owner
 
-By default the owner is of type **Group** which is same as the **[User Group](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/#built-in-user-groups)** in Harness. In case the owner is a user you have to mention it as `user:default/debabrata.panigrahi`, and it should only contain the username not the complete email ID. 
+By default the owner is of type **Group** which is same as the **[User Group](/docs/platform/role-based-access-control/add-user-groups#built-in-user-groups)** in Harness. In case the owner is a user you have to mention it as `user:default/debabrata.panigrahi`, and it should only contain the username not the complete email ID. 
 
 ### Authenticate the request
 
@@ -422,7 +422,7 @@ token:
 
 The `token` property we use to fetch **Harness Auth Token** is hidden on the Review Step using `ui:widget: password`, but for this to work the token property needs to be mentioned under the first `page` in case you have multiple pages.
 
-```
+```yaml
 # example workflow.yaml
 ...
 parameters:
@@ -471,7 +471,7 @@ This is a custom component we created to authenticate the call to execute the pi
 
 :::info
 
-The Workflow actions currently supports only [custom stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) and codebase disabled [CI stage with Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings/#add-the-run-step), also all input, except for [pipeline input as variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline-expressions), must be of [fixed value](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values).
+The Workflow actions currently supports only [custom stage](/docs/platform/pipelines/add-a-stage#add-a-custom-stage) and codebase disabled [CI stage with Run step](/docs/continuous-integration/use-ci/run-step-settings#add-the-run-step), also all input, except for [pipeline input as variables](/docs/platform/variables-and-expressions/harness-variables#pipeline-expressions), must be of [fixed value](/docs/platform/variables-and-expressions/runtime-inputs#fixed-values).
 
 ![](./static/pipeline-varialbles-idp-implementation.png)
 
@@ -479,13 +479,13 @@ The Workflow actions currently supports only [custom stage](https://developer.ha
 
 The `spec.steps` field contains only one action, and that is to trigger a Harness pipeline. Update the `url` and replace it with the URL of your service onboarding pipeline. Also, ensure that the `inputset` is correct, and it contains all the runtime input variables that the pipeline needs.
 
-### Register the Workflow
+### Register the workflow
 
 Use the URL to the `workflow.yaml` created above and register it by using the same process for [registering a new software component](/docs/internal-developer-portal/get-started).
 
 Now navigate to the **Create** page in IDP. You will see the newly created Workflow appear. Try it out!
 
-### Unregister/Delete Workflow
+### Unregister/Delete workflow
 
 1. Navigate to the **Catalog** page, and select **Template** under Kind.
 
@@ -502,10 +502,10 @@ Now navigate to the **Create** page in IDP. You will see the newly created Workf
 
 5. This will delete the Workflow.
 
-## Extended Reading
+## Extended reading
 
-1. [How to add conditional Inputs in Workflow?](https://developer.harness.io/docs/internal-developer-portal/flows/flows-input#conditional-inputs-in-workflows) 
+1. [How to add conditional Inputs in Workflow?](/docs/internal-developer-portal/flows/flows-input#conditional-inputs-in-workflows) 
 
-2. [How to upload a file in a Workflow?](https://developer.harness.io/docs/internal-developer-portal/flows/flows-input#upload-a-file-using-workflows)
+2. [How to upload a file in a Workflow?](/docs/internal-developer-portal/flows/flows-input#upload-a-file-using-workflows)
 
-3. [How to ingest data dynamically into Workflows?](https://developer.harness.io/docs/internal-developer-portal/flows/dynamic-picker)
+3. [How to ingest data dynamically into Workflows?](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker)

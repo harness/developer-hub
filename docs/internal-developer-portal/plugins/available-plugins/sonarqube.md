@@ -22,7 +22,7 @@ description: Components to display code quality metrics from SonarCloud and Sona
 ### Secrets
 
 - Go to SonarQube, "eg: `https://sonar.your-comapny-name.io/account/security`", for generating a new token, **Enter Token Name** and choose **User Token** in **Select Token Type**. 
-- Please ensure the secret is *not* encoded.  Harness will handle the encoding of the secret and passing it to the destination.
+- Ensure the secret is *not* encoded. Harness will handle the encoding of the secret and passing it to the destination.
 
 :::info
 
@@ -38,7 +38,7 @@ Ensure that the user creating the token has the necessary permissions to access 
 
 ### Delegate proxy
 
-- If SonarQube is deployed on-prem, `sonar.mycompany.com` will not be accessible from outside, so a delegate proxy has to be selected. Please ensure you have [Harness Delegate installed](https://developer.harness.io/docs/platform/delegates/install-delegates/overview) for the same. 
+- If SonarQube is deployed on-prem, `sonar.mycompany.com` will not be accessible from outside, so a delegate proxy has to be selected. Ensure you have [Harness Delegate installed](/docs/platform/delegates/install-delegates/overview) for the same. 
 
 ![](./static/sonar.png)
 

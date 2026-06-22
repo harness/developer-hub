@@ -48,9 +48,9 @@ Go to [Configure delegate proxy settings](/docs/platform/delegates/manage-delega
 
 ---
 
-## Enable the Dynatrace Integration
+## Enable the Dynatrace integration
 
-### 1. Navigate to the Integrations Page
+### 1. Navigate to the integrations page
 
 1. In Harness, open the **Internal Developer Portal**.
 
@@ -64,7 +64,7 @@ Go to [Configure delegate proxy settings](/docs/platform/delegates/manage-delega
 
 5. Select **Dynatrace** from the integration type picker. You will be taken to the **Dynatrace Integration** configuration page.
 
-### 2. Configure Setup & Connectivity
+### 2. Configure setup & connectivity
 
 This section connects Harness IDP to your Dynatrace account.
 
@@ -74,7 +74,7 @@ This section connects Harness IDP to your Dynatrace account.
 
 2. Click the **Choose Dynatrace connector** dropdown and select the Dynatrace connector you want to use to pull data into IDP.
 
-   :::info Don't have a Dynatrace connector yet?
+   :::info Do not have a Dynatrace connector yet?
    If no connectors appear in the dropdown, you need to first [create a Dynatrace connector](/docs/platform/connectors/monitoring-and-logging-systems/connect-to-monitoring-and-logging-systems#add-dynatrace) (classic) in Harness. Once saved, it will appear in the dropdown.
 
    <DocVideo src="https://www.youtube.com/embed/zgeXCSll3Oc" />
@@ -82,13 +82,13 @@ This section connects Harness IDP to your Dynatrace account.
 
 3. (Optional) In the **Platform token** field, enter a Dynatrace platform token if you want to collect SLO data too. Leave it empty if you do not need SLO data to flow into IDP. The platform token must have the scope `slo:slos:read` included.
 
-### 3. Configure Mapping & Correlation
+### 3. Configure mapping & correlation
 
 This section defines how Dynatrace services are mapped to IDP catalog entities and how they are correlated with existing records.
 
 <DocImage path={require('./static/dt-mapping-correlation.png')} />
 
-#### Service Entity
+#### Service entity
 
 The Service Entity mapping imports Dynatrace services as catalog components.
 
@@ -107,7 +107,7 @@ The Service Entity mapping imports Dynatrace services as catalog components.
 
    <DocImage path={require('./static/dt-field-config.gif')} />
 
-### 4. Configure Advanced Settings
+### 4. Configure advanced settings
 
 The **Advanced Settings** section controls the sync frequency and how far back in time Dynatrace data is fetched.
 
@@ -129,11 +129,11 @@ The integration is now enabled and IDP begins syncing data from Dynatrace. Disco
 
 ---
 
-## Discover and Import Dynatrace Entities
+## Discover and import Dynatrace entities
 
 This section covers how to view the Dynatrace services discovered by the integration and import them into your IDP Catalog.
 
-### Discovered Tab
+### Discovered tab
 
 After the integration runs, all Dynatrace services detected appear in the **Discovered** tab. If no services appear yet, the sync may still be in progress. Use the **Sync** button at the top right to manually trigger a refresh if needed.
 
@@ -148,7 +148,7 @@ Once discovery completes, each discovered service appears with its name, recomme
 Select multiple entities using the checkboxes and click **Import selected entities** at the bottom of the page to import them all at once.
 :::
 
-### Imported Tab
+### Imported tab
 
 The **Imported** tab displays all Dynatrace services that have been brought into the catalog.
 
@@ -169,7 +169,7 @@ It displays the following data:
 To stop syncing a specific entity without deleting the catalog entity, use the three-dot menu on any row and select **Unlink**. This stops sync updates while keeping the IDP entity and its existing data intact.
 :::
 
-### Events Tab
+### Events tab
 
 The **Events** tab provides a log of sync activity for this integration, including discovery runs, import actions, and any errors encountered during sync. Use this tab to troubleshoot unexpected behavior or verify that a sync completed successfully.
 
@@ -177,7 +177,7 @@ The **Events** tab provides a log of sync activity for this integration, includi
 
 ---
 
-## View Dynatrace Entities in the Catalog
+## View Dynatrace entities in the catalog
 
 Once imported, Dynatrace entities are available in the **Catalog** section of IDP as standard catalog entities.
 
@@ -227,7 +227,7 @@ To display Dynatrace data on the [entity details](/docs/internal-developer-porta
 5. Click **Save** to apply the layout changes. The Dynatrace components will now appear on all entity detail pages of the selected kind and type that have Dynatrace data.
 
 
-### Cards in Overview tab
+### Cards in overview tab
 
 After the layout is configured, cards like `Monitors` and `SLOs` appear in the **Overview** tab of any entity that has Dynatrace data linked to it. The card displays the key Dynatrace metadata ingested for that entity, sourced from the entity's [ingested properties](#ingested-properties).
 
@@ -236,7 +236,7 @@ After the layout is configured, cards like `Monitors` and `SLOs` appear in the *
 
 If the Dynatrace integration has not been configured for the entity, the card shows a **Not configured** state with a link to the Integrations page.
 
-### Dynatrace Tab
+### Dynatrace tab
 
 The **Dynatrace** tab provides a more complete view of the Dynatrace data for the entity. This tab fetches latest possible data using the integration ID and entity UUID.
 
@@ -245,7 +245,7 @@ The **Dynatrace** tab provides a more complete view of the Dynatrace data for th
 
 
 
-### Ingested Properties
+### Ingested properties
 
 To inspect the raw data ingested from Dynatrace, open the entity and click **View YAML**, then select **Ingested Properties** in the Entity Inspector.
 
@@ -258,13 +258,13 @@ Ingested properties are stored in two sections of the entity YAML:
 
 ---
 
-## Manage the Dynatrace Integration
+## Manage the Dynatrace integration
 
-### Edit the Integration
+### Edit the integration
 
 To update the integration name, switch the Dynatrace connector, or change the mapping and correlation settings, navigate to the **Integrations** page, find your Dynatrace integration card, and click **View**. From there, click **Configuration** to open the edit screen.
 
-### Suspend Auto-Discovery
+### Suspend auto-discovery
 
 If auto-discovery is suspended, new entities will not appear in the **Discovered** tab. Existing imported entities remain unchanged in the catalog and the sync between Dynatrace and their corresponding IDP entities will stop.
 

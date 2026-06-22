@@ -12,15 +12,15 @@ This tutorial is designed to help a platform engineer to get started with Harnes
 
 Users (developers) must perform a sequence of tasks to create the application. First, they interact with a workflow. A workflow is a form that collects a user's requirements. After a user submits the form, IDP executes a Harness pipeline that onboards the new service. Usually the pipeline fetches a cookiecutter template code, creates a new repository, and interacts with third-party providers such as cloud providers, Jira, and Slack.
 
-## Prerequisites
+## Before you begin
 
 Before you begin this tutorial, make sure that you have completed the following requirements:
 
 - Enable Harness IDP for your account.
-- Make sure you are assigned the [IDP Admin Role](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles#1-idp-admin) or another role that has full access to all IDP resources. 
+- Make sure you are assigned the [IDP Admin Role](/docs/internal-developer-portal/rbac/scopes#idp-admin-role) or another role that has full access to all IDP resources. 
 - Create a **GitHub** connector named `democonnector` at the account scope. This connector should be configured for a GitHub organization (personal accounts are currently not supported by this tutorial). 
 
-## Create a Pipeline
+## Create a pipeline
 
 Begin by creating a pipeline for onboarding the service.
 
@@ -36,13 +36,13 @@ You can also create a new project for the service onboarding pipelines. Eventual
 
 ![](./static/add-a-pipeline.png)
 
-3. The YAML below defines an IDP Stage with a number of steps ([as described here](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage/#execution-steps)) that will perform the actions to onboard the new service. Copy the YAML below, then in the Harness Pipeline Studio go to the YAML view and paste below the existing YAML.
+3. The YAML below defines an IDP Stage with a number of steps ([as described here](/docs/internal-developer-portal/flows/idp-stage#execution-steps)) that will perform the actions to onboard the new service. Copy the YAML below, then in the Harness Pipeline Studio go to the YAML view and paste below the existing YAML.
 
 :::info
 
 You need to have completed all the steps under **[PreRequisites](#prerequisites)** for the below given YAML to work properly 
 
-Please update the `connectorRef: <the_connector_name_you_created_under_prerequisites>` for all the steps it's used, also here we are assuming the git provider to be GitHub please update the `connectorType` for `CreateRepo`, `DirectPush` and `RegisterCatalog` step in case it's other than GitHub. Also under the slack notify step for `token` add the token identifier, you have created above as part of prerequisites. 
+Update the `connectorRef: <the_connector_name_you_created_under_prerequisites>` for all the steps it is used, also here we are assuming the git provider to be GitHub update the `connectorType` for `CreateRepo`, `DirectPush` and `RegisterCatalog` step in case it is other than GitHub. Also under the slack notify step for `token` add the token identifier, you have created above as part of prerequisites. 
 
 :::
 
@@ -180,15 +180,15 @@ Please update the `connectorRef: <the_connector_name_you_created_under_prerequis
 
 :::info
 
-Software Templates currently support pipelines that are comprised only of [IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage)[custom stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) and [CI stage with Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings/#add-the-run-step) with codebase disabled. Additionally, all inputs, except for [pipeline input as variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline-expressions), must be of [fixed value](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values).
+Software Templates currently support pipelines that are comprised only of [IDP Stage](/docs/internal-developer-portal/flows/idp-stage)[custom stage](/docs/platform/pipelines/add-a-stage#add-a-custom-stage) and [CI stage with Run step](/docs/continuous-integration/use-ci/run-step-settings#add-the-run-step) with codebase disabled. Additionally, all inputs, except for [pipeline input as variables](/docs/platform/variables-and-expressions/harness-variables#pipeline-expressions), must be of [fixed value](/docs/platform/variables-and-expressions/runtime-inputs#fixed-values).
 
 ![](./static/pipeline-varialbles-idp-implementation.png)
 
 :::
 
-## Create a Workflow
+## Create a workflow
 
-Now that our pipeline is ready to execute when a project name and a GitHub repository name are provided, let's create the UI counterpart of it in IDP. Create a `workflow.yaml` file anywhere in your Git repository. Usually, that would be the same place as your cookiecutter template. We use the [react-jsonschema-form playground](https://rjsf-team.github.io/react-jsonschema-form/) to build the template. [Nunjucks](https://mozilla.github.io/nunjucks/) is templating engine for the IDP Workflows.
+Now that our pipeline is ready to execute when a project name and a GitHub repository name are provided, let us create the UI counterpart of it in IDP. Create a `workflow.yaml` file anywhere in your Git repository. Usually, that would be the same place as your cookiecutter template. We use the [react-jsonschema-form playground](https://rjsf-team.github.io/react-jsonschema-form/) to build the template. [Nunjucks](https://mozilla.github.io/nunjucks/) is templating engine for the IDP Workflows.
 
 [Source](https://github.com/harness-community/idp-samples/blob/main/tutorial-self-service-flow-template.yaml)
 
@@ -295,11 +295,11 @@ This YAML code is governed by Backstage. You can change the name and description
 ![](./static/template-new-1.png)
 ![](./static/template-new-2.png)
 
-Let's take a look at the inputs that the Workflow expects from a developer. The inputs are written in the `spec.parameters` field. It has two parts, but you can combine them. The keys in `properties` are the unique IDs of fields (for example, `github_repo` and `project_name`). If you recall, they are the pipeline variables that we set as runtime inputs earlier. This is what we want the developer to enter when creating their new application.
+Let us take a look at the inputs that the Workflow expects from a developer. The inputs are written in the `spec.parameters` field. It has two parts, but you can combine them. The keys in `properties` are the unique IDs of fields (for example, `github_repo` and `project_name`). If you recall, they are the pipeline variables that we set as runtime inputs earlier. This is what we want the developer to enter when creating their new application.
 
 The YAML definition includes fields such as cloud provider and database choice. They are for demonstration purposes only and are not used in this tutorial.
 
-### Authenticating the Request to the Pipeline
+### Authenticate the request to the pipeline
 
 The Workflow contains a single action which is designed to trigger the pipeline you created via an API call. Since the API call requires authentication, Harness has created a custom component to authenticate based of the logged-in user's credentials.
 
@@ -328,17 +328,17 @@ That token is then used as part of `steps` as `apikey`
         apikey: ${{ parameters.token }}
 ```
 
-### Register the Workflow in IDP
+### Register the workflow in IDP
 
 Use the URL to the `workflow.yaml` created above and register it by using the same process for [registering a new software component](/docs/internal-developer-portal/get-started).
 
-## Use the Self Service Workflows
+## Use the self service workflows
 
 Now navigate to the **Workflows** page in IDP. You will see the newly created Workflow appear. Click on **Choose**, fill in the form, click **Next Step**, then **Create** to trigger the automated pipeline. Once complete, you should be able to see the new repo created and bootstrapped in your target GitHub organization!
 
-## Additional Information
+## Additional information
 
-### Conditional Inputs in Workflows
+### Conditional inputs in workflows
 
 1. One Of: Helps you create a dropdown in the workflow, where only one of all the options available could be selected. 
 
@@ -373,7 +373,7 @@ allOf:
     ipsum:
       type: string
 ```
-3. Any Of: Helps you to select from multiple properties where both can't be selected together at once. 
+3. Any Of: Helps you to select from multiple properties where both cannot be selected together at once. 
 
 ```YAML
 type: object
@@ -411,7 +411,7 @@ anyOf:
 
 For more such references and validate your conditional steps take a look at the [react-json schema project](https://rjsf-team.github.io/react-jsonschema-form/). 
 
-### Upload a File in a Workflow
+### Upload a file in a workflow
 
 There are 3 types of file upload. 
 
@@ -440,7 +440,7 @@ properties:
     title: Single File with Accept attribute
 ```
 
-### Pass an Array of Inputs to a Harness Pipeline 
+### Pass an array of inputs to a Harness pipeline 
 
 Harness Pipelines variables can only be 3 types, string, number and secrets, in case you want to add multiple strings and comma separated values you need to [join](https://mozilla.github.io/nunjucks/templating.html#join) them and send as single input parameters. 
 
@@ -477,7 +477,7 @@ As you could see in the example below under `inputset`, `exampleVar` takes input
         apikey: ${{ parameters.token }}
 ```
 
-### Unregister/Delete Workflow
+### Unregister/Delete workflow
 
 1. Navigate to the **Catalog** page, and select **Template** under Kind.
 

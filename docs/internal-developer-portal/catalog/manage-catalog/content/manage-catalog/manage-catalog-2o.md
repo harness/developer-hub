@@ -5,24 +5,24 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 
 import DocImage from '@site/src/components/DocImage';
 
-The **Software Catalog** is a centralized registry for all your software assets — including components, services, websites, libraries, data pipelines, and more.
+The **Software Catalog** is a centralized registry for all your software assets, including components, services, websites, libraries, data pipelines, and more.
 Think of it as a curated directory of all your **entities**, helping you efficiently track ownership, metadata, and dependencies across your entire software ecosystem.
 
 ---
 
-## Manage Catalog
+## Manage catalog
 
-### Edit Entities
+### Edit entities
 You can now modify your entities directly from the **Harness IDP UI**, removing the dependency on manually editing the Catalog YAML file in your Git repository. This streamlines the update process and makes entity management much easier.
 
 To edit an entity:
 1. Navigate to the **Catalog** and select the entity you want to modify.
 2. In the entity details view, click on **Edit** in the top-right corner.
 <DocImage path={require('../../../static/edit-entity-1.png')} />
-3. You can update the entity using either the **Visual View** or the **YAML View**. Both views are live-synced—changes made in one will instantly reflect in the other.
+3. You can update the entity using either the **Visual View** or the **YAML View**. Both views are live-synced, changes made in one will instantly reflect in the other.
 4. Click **Save Changes** to apply and save your updates.
 
-#### Entity Inspector
+#### Entity inspector
 You can also view the **entity's YAML** by clicking **"View YAML"** from the entity details screen.
 <DocImage path={require('../../../static/view-yaml.png')} />
 
@@ -31,10 +31,10 @@ This opens the **Entity Inspector**, where you can review both the Raw YAML and 
 
 ---
 
-### Delete Entities
+### Delete entities
 You can also **delete** any existing entity from the Software Catalog.
 
-Here's how to do it:
+Here is how to do it:
 1. Navigate to your **Catalog** and select the entity you want to delete.
 2. In the entity details view, click the **three-dot menu** in the top-right corner.
 3. From the dropdown, select **Delete**. The entity will be removed from the catalog.
@@ -43,19 +43,19 @@ Here's how to do it:
 
 ---
 
-### Share Entities
-You can also copy the **entity URL** from the same dropdown menu and share it with others—provided they have the necessary access permissions.
+### Share entities
+You can also copy the **entity URL** from the same dropdown menu and share it with others, provided they have the necessary access permissions.
 
 <DocImage path={require('../../../static/copy-url.png')} />
 
-### Use Scopes & Filters
-With the revamped **Catalog UI**, you can now use various scopes and filters to efficiently track all your applications, services, and other entities. It offers intuitive filtering and a streamlined way to access and manage everything within your Catalog. This update also introduces visibility into scorecard data and scope-level details—right within the Catalog—so you get deeper insights without navigating away.
+### Use scopes & filters
+With the revamped **Catalog UI**, you can now use various scopes and filters to efficiently track all your applications, services, and other entities. It offers intuitive filtering and a streamlined way to access and manage everything within your Catalog. This update also introduces visibility into scorecard data and scope-level details, right within the Catalog, so you get deeper insights without navigating away.
 
 <DocImage path={require('../../../static/catalog-ui.png')} />
 
 ---
 
-## Manage Catalog UI
+## Manage catalog UI
 
 The **Catalog table** is an all-in-one view and centralized registry of all your software entities (services, websites, APIs, libraries, etc.). It’s where you can view, manage, and search for software entities and track their ownership, dependencies, and metadata.
 
@@ -65,15 +65,15 @@ This guide details the steps to customize and manage **custom columns** in a Cat
 
 ---
 
-### Customize Catalog Table UI
+### Customize catalog table UI
 
 This feature enables you to customize and manage the columns of the Catalog table to meet your requirements. Your Catalog table can be tailored for your team to display the most relevant information for the specific **entity kind** you’re viewing.
 
-#### Prerequisite
+#### Before you begin
 
-* Users with **Create/Edit** permissions on the **Layout** resource in Harness IDP, or users with the **IDP Admin** role, can customize the Catalog table UI. See [Scopes, Roles & Permissions](/docs/internal-developer-portal/rbac/scopes#permissions--resources-idp-20) to learn more about configuring these permissions.
+* Users with **Create/Edit** permissions on the **Layout** resource in Harness IDP, or users with the **IDP Admin** role, can customize the Catalog table UI. Go to [Scopes, Roles & Permissions](/docs/internal-developer-portal/rbac/scopes#permissions--resources-idp-20) to learn more about configuring these permissions.
 
-#### Customize Columns
+#### Customize columns
 
 To customize the columns of the Catalog table, go to your **Catalog** view and click **Customize Columns** in the top-right corner. Each customization view in the Catalog table is tied to a specific entity `kind`. This means every **entity kind** has its own unique **customization view**, allowing different column configurations for different entity kinds.
 
@@ -96,7 +96,7 @@ Ensure to edit and save the customization view for each entity kind you want to 
 
 <DocVideo src="https://app.tango.us/app/embed/a790a86e-3665-4cf5-bf2e-fbe2e4a93e75" title="Customize Catalog Table Columns" />
 
-#### Add Custom Columns
+#### Add custom columns
 
 You can define custom columns in the Catalog table using entity metadata. This feature lets you add columns based on custom Catalog properties.
 
@@ -124,10 +124,10 @@ You can also edit or delete custom columns in the same **Manage Columns** view. 
 
 ---
 
-### Understand Catalog Entity UI
-Whenever you register an entity in your software catalog, you can view all its details from the Catalog Entity page in your Harness IDP UI. Every section on the entity page is uniquely designed to present the most relevant information for the specific type of entity you're viewing.
+### Understand catalog entity UI
+Whenever you register an entity in your software catalog, you can view all its details from the Catalog Entity page in your Harness IDP UI. Every section on the entity page is uniquely designed to present the most relevant information for the specific type of entity you are viewing.
 
-For a full reference of all tabs, cards, and integration signals available on the entity details page, see [Entity Details Page](/docs/internal-developer-portal/catalog/create-entity/entity-details).
+For a full reference of all tabs, cards, and integration signals available on the entity details page, go to [Entity Details Page](/docs/internal-developer-portal/catalog/create-entity/entity-details).
 
 Here’s how to access the catalog entity details page:
 1. In your Harness IDP, navigate to **Catalog**.
@@ -149,7 +149,7 @@ When you enable a plugin (or create a custom one), you can choose where the plug
 
 ---
 
-### Manage Catalog Entity UI
+### Manage catalog entity UI
 
 You can manage and edit Catalog Entity UI layouts directly using the **Layout Editor**.
 
@@ -164,9 +164,9 @@ For example:
 > Note: Entity kinds (such as Component, API, Resource) are fixed. However, you can create any arbitrary **types** under them (e.g., `spec.type: micro-frontend`).
 
 
-#### Use the Layout Editor
+#### Use the layout editor
 
-#### Access the Layout Editor
+#### Access the layout editor
 <Tabs>
 <TabItem value="Interactive guide">
 <DocVideo src="https://app.tango.us/app/embed/f0f1e522-bc37-430c-b5f5-ab82d8afb649" title="Accessing the Layout Editor" />
@@ -182,7 +182,7 @@ For example:
 </TabItem>
 </Tabs>
 
-#### Create a New Layout
+#### Create a new layout
 
 <Tabs>
 <TabItem value="Interactive guide">
@@ -196,7 +196,7 @@ For example:
 </TabItem>
 </Tabs>
 
-#### Edit an Existing Layout
+#### Edit an existing layout
 
 1. In the Layout Editor, select the relevant **Entity Kind** and **Entity Type**.
 2. Click **Edit Layout** and modify the YAML.
@@ -210,7 +210,7 @@ You can see which entities a specific layout applies to by clicking **View Appli
 
 ---
 
-#### Understand Layout YAML
+#### Understand layout YAML
 
 Entity Page Layouts are defined in a hierarchical structure, starting with the ``page`` key, which represents the entity page. Each ``page`` consists of ``tabs``, an array that controls the rendered tabs for the entity page.
 
@@ -227,7 +227,7 @@ Entity Page Layouts are defined in a hierarchical structure, starting with the `
 
 ---
 
-#### Example: Entity Layout YAML
+#### Example: Entity layout YAML
 
 ```yaml
 page:
@@ -266,9 +266,9 @@ page:
 
 ---
 
-### Advanced Use Cases
+### Advanced use cases
 
-#### Add Links
+#### Add links
 
 You can also add a list of **external hyperlinks** related to the entity on the catalog entity's UI page. **Links** can provide additional contextual information that may exist outside of Harness itself, such as an admin dashboard or an external CMS page.
 
@@ -311,7 +311,7 @@ metadata:
     ...
 ```
 
-#### Add an Additional Info Card
+#### Add an additional info card
 
 You can add an **Additional Info Card** to display additional details about the catalog entity on the **"Overview"** page. You can populate this card using the catalog entity's YAML metadata for fields like apiVersion, kind, metadata, and spec, including additional values ingested. 
 
@@ -329,7 +329,7 @@ metadata:
     offShoreTeamLead: Dan John
 ```
 
-#### Use this card in Layout Editor
+#### Use this card in layout editor
 You can refer to the detailed demo linked here.
 
 Here are the steps to add the Additional Info Card:
@@ -369,7 +369,7 @@ Contains information sourced from `catalog-info.yaml`:
 - `type:` Defaults to `string`, but also supports `link` type.
 - `style:` Used for text styling, as demonstrated in the example above.
 
-#### headerItems (Optional):
+#### headerItems (optional):
 Contains information to be displayed in the header section of the card:
 - `icon:` Supports any Material icon.
 - `url:` Adds a `link` to the Material icon.

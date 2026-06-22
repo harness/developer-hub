@@ -1,7 +1,7 @@
 ---
-title: What's supported in Harness IDP
+title: What is supported in Harness IDP
 description: Lists the plugins, git providers, and third-party integrations supported in IDP.
-sidebar_label: What's Supported
+sidebar_label: What is Supported
 sidebar_position: 1
 ---
 
@@ -9,21 +9,21 @@ Harness Internal Developer Portal integrates with a number of third-party provid
 
 ---
 
-## 1. Git Providers
+## 1. Git providers
 
 Harness IDP supports the following Git providers for storing and managing catalog entity YAML definitions and Workflow YAML definitions:
 
 | **Git Provider** | **Support Type** | **Documentation** |
 |------------------|------------------|-------------------|
-| **Harness Code Repository** | Default | [Learn more](https://developer.harness.io/docs/code-repository/get-started/overview/) |
-| **GitHub** | Cloud & Enterprise | [Cloud](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-github) \| [Enterprise](https://docs.github.com/en/enterprise-server@3.14/admin/overview/about-github-enterprise-server) |
-| **GitLab** | Cloud & Self-Hosted | [Learn more](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-gitlab) |
-| **Bitbucket** | Cloud & Server | [Learn more](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-bitbucket) |
-| **Azure Repos** | Cloud | [Learn more](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-a-azure-repo) |
+| **Harness Code Repository** | Default | [Learn more](/docs/code-repository/get-started/overview/) |
+| **GitHub** | Cloud & Enterprise | [Cloud](/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-github) \| [Enterprise](https://docs.github.com/en/enterprise-server@3.14/admin/overview/about-github-enterprise-server) |
+| **GitLab** | Cloud & Self-Hosted | [Learn more](/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-gitlab) |
+| **Bitbucket** | Cloud & Server | [Learn more](/docs/platform/connectors/code-repositories/connect-to-code-repo#connect-to-bitbucket) |
+| **Azure Repos** | Cloud | [Learn more](/docs/platform/connectors/code-repositories/connect-to-a-azure-repo) |
 
 :::warning Authentication Type
 
-Backstage doesn't support SSH auth type for integrations. **Only HTTP connection is supported** for all Git provider-based connectors in IDP.
+Backstage does not support SSH auth type for integrations. **Only HTTP connection is supported** for all Git provider-based connectors in IDP.
 
 API calls in IDP are used to fetch YAML data, last commit SHA, and detect any new changes. SSH authentication cannot be used for making these API calls; it is only used for cloning repositories. Therefore, the main Git connector for IDP Git integration must support API requests, hence HTTP is the only supported method.
 
@@ -31,7 +31,7 @@ API calls in IDP are used to fetch YAML data, last commit SHA, and detect any ne
 
 ---
 
-## 2. IDP Entities for Git Experience
+## 2. IDP entities for Git experience
 
 [Harness IDP Git Experience](/docs/internal-developer-portal/git-experience/gitx-journey.md) allows you to store and version control your IDP configurations in Git repositories. The following table shows which IDP entities support Git Experience:
 
@@ -39,13 +39,13 @@ API calls in IDP are used to fetch YAML data, last commit SHA, and detect any ne
 |----------------|---------------------------|-----------|
 | **Catalog Entities** | Supported | Component, API, Resource, and other catalog entities can be stored as YAML files in Git |
 | **Workflows** | Supported | Workflow definitions can be stored and tracked in Git repositories |
-| **Scorecards** | Not Supported | Scorecards don't currently support Git Experience |
-| **Plugins** | Not Supported | Plugin configurations don't currently support Git Experience |
-| **Layouts** | Not Supported | Layout configurations don't currently support Git Experience |
+| **Scorecards** | Not Supported | Scorecards do not currently support Git Experience |
+| **Plugins** | Not Supported | Plugin configurations do not currently support Git Experience |
+| **Layouts** | Not Supported | Layout configurations do not currently support Git Experience |
 
 ---
 
-## 3. CI/CD Providers
+## 3. CI/CD providers
 
 Harness IDP is **CI/CD agnostic** and integrates with various CI/CD tools:
 
@@ -59,7 +59,7 @@ Harness IDP is **CI/CD agnostic** and integrates with various CI/CD tools:
 | **Other CI/CD Tools** | Supported | Any CI/CD tool that can be triggered via API/webhook |
 
 ---
-## 4. Harness IDP Plugins
+## 4. Harness IDP plugins
 
 Harness IDP supports a curated collection of plugins to integrate the software catalog with third-party providers and extend functionality:
 
@@ -67,17 +67,17 @@ Harness IDP supports a curated collection of plugins to integrate the software c
 |----------------|-----------------|-------------------|
 | **Harness Native Plugins** | Official plugins that integrate seamlessly with other Harness modules (CI/CD, Feature Flags, Chaos Engineering, STO, etc.) | [View Harness Plugins](/docs/category/harness-modules) |
 | **Backstage Community Plugins** | Third-party and community plugins from the Backstage ecosystem | [View Available Plugins](/docs/category/available-plugins) |
-| **Custom Plugins** | Build your own frontend plugins for specific use cases | [Build Custom Plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/custom-plugins/overview) |
+| **Custom Plugins** | Build your own frontend plugins for specific use cases | [Build Custom Plugins](/docs/internal-developer-portal/plugins/custom-plugins/overview) |
 
 :::info Secret Management for Plugins
 
-Harness IDP requires some secrets to be set for plugins and external integrations in the Catalog to work. We support all types of [secret managers](https://developer.harness.io/docs/category/secrets-management) for secure credential storage.
+Harness IDP requires some secrets to be set for plugins and external integrations in the Catalog to work. We support all types of [secret managers](/docs/category/secrets-management) for secure credential storage.
 
 :::
 
 ---
 
-## 5. Harness IDP Workflow Backends
+## 5. Harness IDP workflow backends
 
 **Harness Pipelines**: Self-service workflows in Harness IDP are powered by **Harness Pipelines**. Each Workflow's backend is configured using Actions and Harness Pipelines. Go to [Setting up the Backend with Harness IDP Pipeline](/docs/internal-developer-portal/flows/create-workflow/harness-pipeline) for more information.
 
@@ -85,7 +85,7 @@ You can also use other tools (such as GitHub Actions or Jenkins) as the backend 
 
 ---
 
-## 6. Harness IDP Workflow Actions
+## 6. Harness IDP workflow actions
 
 Harness IDP Workflows use custom actions to trigger and orchestrate Harness Pipelines. Go to [Supported Workflow Actions](/docs/internal-developer-portal/flows/create-workflow/custom-actions#supported-actions) for more information.
 
@@ -97,13 +97,13 @@ Additional features and capabilities supported in Harness IDP:
 
 | **Feature** | **Support Status** | **Details** |
 |------------|-------------------|-------------|
-| **Custom Plugins** | Supported | We support only [Frontend Backstage Plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/build-a-frontend-plugin) as [Custom Plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/custom-plugins/overview) |
-| **Scorecard Data Sources** | Supported | Multiple data sources available for scorecards. [View all data sources](https://developer.harness.io/docs/internal-developer-portal/scorecards/create-scorecards/data-sources) |
+| **Custom Plugins** | Supported | We support only [Frontend Backstage Plugins](/docs/internal-developer-portal/plugins/build-a-frontend-plugin) as [Custom Plugins](/docs/internal-developer-portal/plugins/custom-plugins/overview) |
+| **Scorecard Data Sources** | Supported | Multiple data sources available for scorecards. [View all data sources](/docs/internal-developer-portal/scorecards/create-scorecards/data-sources) |
 | **Backstage Plugins** | Supported | Curated collection of Backstage plugins. [View available plugins](/docs/category/available-plugins) |
 | **Custom Theming and Branding** | Not Supported | Custom theming is not currently available |
 | **Developer Homepage Customization** | Supported | You can customize the Homepage for a personalized developer experience |
-| **API Support for Entity Updates** | Supported | [Ingestion APIs](https://developer.harness.io/docs/internal-developer-portal/catalog/custom-catalog-properties) available to programmatically update catalog entities |
+| **API Support for Entity Updates** | Supported | [Ingestion APIs](/docs/internal-developer-portal/catalog/custom-catalog-properties) available to programmatically update catalog entities |
 | **Harness Delegate** | Supported | Required for accessing private URLs and resources behind firewalls |
-| **Secret Managers** | Supported | All types of [secret managers](https://developer.harness.io/docs/category/secrets-management) are supported |
+| **Secret Managers** | Supported | All types of [secret managers](/docs/category/secrets-management) are supported |
 
-For information about what's supported for other Harness modules and the Harness Platform overall, refer to [Supported platforms and technologies](/docs/platform/platform-whats-supported.md).
+For information about what is supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/platform/platform-whats-supported.md).

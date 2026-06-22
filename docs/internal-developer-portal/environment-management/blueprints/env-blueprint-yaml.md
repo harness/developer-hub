@@ -9,13 +9,13 @@ toc_max_heading_level: 3
 
 This page covers the complete YAML schema for defining an Environment Blueprint. For a conceptual overview, go to [Overview & Key Concepts](/docs/internal-developer-portal/environment-management/overview). To create a blueprint through the UI, go to [Create an Environment Blueprint](/docs/internal-developer-portal/environment-management/blueprints/create-environment-blueprint).
 
-## Environment Blueprint YAML
+## Environment blueprint YAML
 
 An Environment Blueprint is defined using a **declarative YAML format**. The YAML structure defines infrastructure templates, services, dependencies, and lifecycle management for environments. 
 
 ---
 
-### Core Components
+### Core components
 An environment blueprint YAML has the following core components: 
 
 **1. API Definition**
@@ -43,13 +43,13 @@ spec:
 
 ---
 
-### Entity Specification
+### Entity specification
 
 Each entity in an Environment Blueprint represents a component (infrastructure or service) that will be provisioned or deployed. Entities are the building blocks that define what gets created and how they interact with each other.
 
 ---
 
-#### Entity Structure
+#### Entity structure
 
 Each entity in the blueprint is composed of **2 main parts**:
 
@@ -77,7 +77,7 @@ entities:
 
 ---
 
-#### Entity Parameters
+#### Entity parameters
 
 | Parameter | Type | Description | Example |
 |-----------|------|-----------|---------|
@@ -102,13 +102,13 @@ entities:
 
 ---
 
-### Backend Types
+### Backend types
 
 Environment Blueprints support three main **backend types**:
 
 ---
 
-#### 1. HarnessIACM Backend (Infrastructure)
+#### 1. HarnessIACM backend (infrastructure)
 
 Used for provisioning infrastructure resources using Infrastructure as Code Management. 
 
@@ -193,7 +193,7 @@ Resources must respect the Harness organizational hierarchy. A project-level env
 
 ---
 
-#### 2. Catalog Backend (Services)
+#### 2. Catalog backend (services)
 
 Used for deploying application services from the IDP catalog.
 
@@ -270,7 +270,7 @@ The `values.variables` field maps to service-level variables on the Harness Serv
 
 ---
 
-#### 3. HarnessCD Backend (Services)
+#### 3. HarnessCD backend (services)
 
 Used for deploying application services when your deployment pipelines use pipeline-level variables. Unlike the `Catalog` backend type, where `values.variables` maps to service-level variables on the Harness Service, the `HarnessCD` backend type lets you define pipeline variables (for example, `COMMIT_SHA`) directly under `steps.apply.variables`.
 
@@ -345,9 +345,9 @@ entities:
 
 You can configure TTL for environments in the environment blueprint. Defining a TTL specifies how long an environment can run before it is **automatically paused**. This helps control costs and prevents lingering environments.
 
-Based on the TTL specification, there are two environment types: **Ephemeral** and **Long-lived**. Go to [Types of Environments](/docs/internal-developer-portal/environment-management/environments.md#types-of-environments) to learn more.
+Based on the TTL specification, there are two environment types: **Ephemeral** and **Long-lived**. Go to [Types of Environments](/docs/internal-developer-portal/environment-management/environments#types-of-environments) to learn more.
 
-#### Set TTL in an Environment Blueprint
+#### Set TTL in an environment blueprint
 
 To define a TTL, add the `spec.ttl` field to the environment blueprint YAML. The `ttl` field is specified as follows:
 
@@ -412,7 +412,7 @@ Platform engineers can use Harness OPA governance to enforce TTL requirements ac
 
 ---
 
-### Blueprint Outputs
+### Blueprint outputs
 
 A blueprint can define an `outputs` block under `spec` to expose values from its entities once the environment is provisioned. These values appear in the **Outputs** tab of the environment detail page and can be referenced by other environments using cross-environment output syntax.
 
@@ -464,11 +464,11 @@ For IaCM entities, output values are sourced from Terraform outputs of the works
 ---
 
 
-### YAML Templating System
+### YAML templating system
 
 Environment Blueprints use a powerful templating system for dynamic configuration:
 
-#### Template Variables
+#### Template variables
 
 | Variable Type | Format | Description |
 |---|---|---|
@@ -477,7 +477,7 @@ Environment Blueprints use a powerful templating system for dynamic configuratio
 | Entity Output | `${{entity.<id>.output.<path>}}` | Reference an output from an entity in this blueprint. For a specific pipeline stage and step: `${{entity.<id>.<stage>.<step>.output.<path>}}` |
 | Dependency Output | `${{dependencies.<id>.output.<path>}}` | Reference an output from a dependent entity. For a specific pipeline stage and step: `${{dependencies.<id>.<stage>.<step>.output.<path>}}` |
 
-#### Example Usage
+#### Example usage
 
 ```yaml
 # Dynamic workspace naming
@@ -496,7 +496,7 @@ Output values are populated once environment entities finish provisioning (IaCM 
 
 ---
 
-### Scope & Hierarchy
+### Scope & hierarchy
 Environment Blueprints can be created at the **account**, **organization**, or **project** scope. The scope is determined by the `orgIdentifier` and `projectIdentifier` fields in the blueprint YAML:
 
 - A blueprint with no `orgIdentifier` or `projectIdentifier` is created at the **account scope**.
@@ -506,7 +506,7 @@ Environment Blueprints can be created at the **account**, **organization**, or *
 Environments are currently created at the **project scope**. However, an environment can reference a blueprint from its own project scope, its parent org scope, or the account scope.
 
 
-#### Reference Blueprints from Environments
+#### Reference blueprints from environments
 
 When an environment references a blueprint, the blueprint identifier uses a scope prefix to indicate which scope the blueprint belongs to:
 
@@ -520,7 +520,7 @@ Existing environments that referenced blueprints without a scope prefix have bee
 
 In an environment blueprint, all the entities, workspace templates, pipelines, etc. are also created at the **project scope**.
 
-#### Environment Management RBAC
+#### Environment management RBAC
 
 Harness IDP provides granular Role-Based Access Control (RBAC) for environment management, allowing you to control who can view, create, edit, or delete environment blueprints and environments. The RBAC model follows the Harness platform hierarchy with different scopes for blueprints and environments.
 
@@ -557,12 +557,12 @@ To configure access control for environment management:
    - Assign the role and resource group to users or user groups
 
 :::tip
-For more information on configuring RBAC in Harness, refer to the [RBAC documentation](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness).
+For more information on configuring RBAC in Harness, refer to the [RBAC documentation](/docs/platform/role-based-access-control/rbac-in-harness).
 :::  
 
 ---
 
-### Example Blueprint YAML
+### Example blueprint YAML
 
 ```yaml
 apiVersion: harness.io/v1
@@ -662,7 +662,7 @@ spec:
 
 ---
 
-## Create Environment Blueprints
+## Create environment blueprints
 
 For a step-by-step UI walkthrough of the blueprint creation flow, go to [Create an Environment Blueprint](/docs/internal-developer-portal/environment-management/blueprints/create-environment-blueprint).
 

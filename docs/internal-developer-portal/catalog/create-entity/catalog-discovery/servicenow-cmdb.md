@@ -25,29 +25,29 @@ The following are needed to get the integration running:
 
 
 :::info Proxy Configuration
-If your environment blocks outbound third-party traffic and routes it through a proxy, you'll need to configure proxy settings on your Harness Delegate. Once configured there, the proxy settings are automatically picked up by IDP integrations. No additional setup is needed on the integration side. 
+If your environment blocks outbound third-party traffic and routes it through a proxy, you will need to configure proxy settings on your Harness Delegate. Once configured there, the proxy settings are automatically picked up by IDP integrations. No additional setup is needed on the integration side. 
 
-Here's how to set it up: [Configure delegate proxy settings](/docs/platform/delegates/manage-delegates/configure-delegate-proxy-settings)
+Here is how to set it up: [Configure delegate proxy settings](/docs/platform/delegates/manage-delegates/configure-delegate-proxy-settings)
 :::
 
 ---
 
 
-## Enable and Configure the ServiceNow CMDB Integration
+## Enable and configure the ServiceNow CMDB integration
 
 1. In Harness IDP, go to **Configure** → **Integrations**.
 2. Click on **+New integration** and choose **ServiceNow**. This will take you to the **Configuration** page.
 
    ![](./static/snow-enable.png)
 
-### Setup and Connectivity
+### Setup and connectivity
 
    ![](./static/snow-setup-and-connectivity.png)
 
 1. Enter a friendly name for the integration. This will be shown in the **Integrations** list card.
-2. Select the Harness [ServiceNow connector](https://developer.harness.io/docs/platform/connectors/service-now-connector/) that is configured to access your ServiceNow instance. This connector is used to fetch table data from the CMDB. Please note that we support username/password and OAuth authentication for this connector.
+2. Select the Harness [ServiceNow connector](/docs/platform/connectors/ticketing-systems/connect-to-service-now) that is configured to access your ServiceNow instance. This connector is used to fetch table data from the CMDB. Note that we support username/password and OAuth authentication for this connector.
 
-### Field Mapping
+### Field mapping
 
    ![](./static/snow-field-mapping.png)
 
@@ -73,16 +73,16 @@ Any CMDB field can be mapped to a standard catalog field or to a custom property
 
 4. **Display Name and Unique Identifier** - Configure which CMDB columns serve as the **display name** and **unique identifier** for discovered entities. These determine how entities are labeled and deduplicated in the Discovered tab.
 
-5. **Correlation Field** - Set a **correlation field** — the catalog field used to automatically map discovered CMDB records to existing catalog entities. For example, setting the correlation field to `name` means the integration will look for existing catalog entities with a matching name and pre-select the **Merge** option for those matches.
+5. **Correlation Field** - Set a **correlation field**, the catalog field used to automatically map discovered CMDB records to existing catalog entities. For example, setting the correlation field to `name` means the integration will look for existing catalog entities with a matching name and pre-select the **Merge** option for those matches.
 
-#### Advanced Settings
+#### Advanced settings
    ![](./static/snow-advanced-settings.png)
 
 6. **Sync Schedule** - Configure when and how often the integration runs to fetch updated data from ServiceNow.
 
 ---
 
-## Discover and Import CMDB Records
+## Discover and import CMDB records
 
 After the integration runs, discovered CMDB records appear in the **Discovered** tab.
 
@@ -90,14 +90,14 @@ If a correlation field is configured, matching catalog entities are automaticall
 
 For each discovered record:
 
-- **Register** — Creates a new catalog entity populated with the mapped CMDB fields.
-- **Merge** — Enriches an existing catalog entity with the mapped CMDB fields (for example, adding `lifecycle`, `owner`, and custom properties like `mttr`).
+- **Register**: Creates a new catalog entity populated with the mapped CMDB fields.
+- **Merge**: Enriches an existing catalog entity with the mapped CMDB fields (for example, adding `lifecycle`, `owner`, and custom properties like `mttr`).
 
 You have the option of turning on **Auto-import** for integrations. This will automatically import all discovered entities without needing the manual effort of reviewing discovered entities.
 
 ---
 
-## View ServiceNow Data on a Catalog Entity
+## View ServiceNow data on a catalog entity
 
 After merging, the catalog entity's Overview page displays:
 

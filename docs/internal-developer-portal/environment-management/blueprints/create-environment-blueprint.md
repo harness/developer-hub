@@ -23,7 +23,7 @@ This page walks through the full process of creating a blueprint using the Harne
 
 ---
 
-## Step 1: Open the Create Blueprint form
+## Step 1: Open the create blueprint form
 
 1. In Harness IDP, select **Environments** in the left navigation.
 2. Select the **Environment Blueprints** tab.
@@ -38,11 +38,11 @@ The **+ Create** dropdown also shows an **Environment** option under **For Devel
 
 ---
 
-## Step 2: Fill in General Details
+## Step 2: Fill in general details
 
 The General Details step collects the blueprint's identity and access scope.
 
-### Basic Details
+### Basic details
 
 | Field | Required | Description |
 |---|---|---|
@@ -54,7 +54,7 @@ The General Details step collects the blueprint's identity and access scope.
 
 <DocImage path={require('./static/blueprint-general-details.png')} />
 
-### Define Scope
+### Define scope
 
 Choose the scope at which this blueprint will be created. The scope determines which teams and projects can access and use it.
 
@@ -72,7 +72,7 @@ Click **Configure Environment Blueprint** to proceed.
 
 ---
 
-## Step 3: Write the Blueprint YAML
+## Step 3: Write the blueprint YAML
 
 The Specification step has two panels:
 
@@ -117,7 +117,7 @@ If your account has OPA governance policies enforced for blueprints, clicking **
 
 ---
 
-## Step 4: Create the Blueprint
+## Step 4: Create the blueprint
 
 Click **Create Environment Blueprint** in the top right corner. The **Specify version details** dialog appears.
 

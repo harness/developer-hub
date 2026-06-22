@@ -8,13 +8,12 @@ redirect_from:
 
 <DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
 
-## Introduction
 
 Harness provides governance using [Open Policy Agent (OPA)](https://www.openpolicyagent.org/), Policy Management, and Rego policies.
 
-In this tutorial we will look into how you can create the policy and apply it to all Services in your Account. The policy is evaluated on Service-level based on the score fetched from scorecards and the conditions set by users, and applues on pipeline-event like On Save which occurs during Connector Creation and Updates. Go to [Harness Governance Quickstart](https://developer.harness.io/docs/platform/governance/policy-as-code/harness-governance-quickstart).
+In this tutorial we will look into how you can create the policy and apply it to all Services in your Account. The policy is evaluated on Service-level based on the score fetched from scorecards and the conditions set by users, and applues on pipeline-event like On Save which occurs during Connector Creation and Updates. Go to [Harness Governance Quickstart](/docs/platform/governance/policy-as-code/harness-governance-quickstart).
 
-## Get Statred
+## Get started
 
 1. Go to **Account Setting** under **Administrative Settings**.
 
@@ -38,7 +37,7 @@ In this tutorial we will look into how you can create the policy and apply it to
 
 6. Now test and save it.
 
-## Create a Policy Set 
+## Create a policy set 
 
 7. Now go to **Policy Sets** and create a **+New Policy Set**.
 8. Add a Name and Entity it applies to followed by the event it should be evaluated. 

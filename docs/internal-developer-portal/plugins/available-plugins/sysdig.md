@@ -27,7 +27,7 @@ description: Generate security reports using Sysdig Secure
 
 ### Delegate proxy
 
-- If your Sysdig instance is behind a firewall, e.g.,`sysdig.mycompany.com` will not be accessible directly from Harness SaaS clusters, a delegate proxy has to be setup. Please ensure you have [Harness Delegate installed](https://developer.harness.io/docs/platform/delegates/install-delegates/overview) for the same. 
+- If your Sysdig instance is behind a firewall, e.g.,`sysdig.mycompany.com` will not be accessible directly from Harness SaaS clusters, a delegate proxy has to be setup. Ensure you have [Harness Delegate installed](/docs/platform/delegates/install-delegates/overview) for the same. 
 
 ![](./static/sysdig-delegate.png)
 

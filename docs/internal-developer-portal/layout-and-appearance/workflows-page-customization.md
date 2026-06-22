@@ -4,7 +4,6 @@ sidebar_label: Workflows Homepage Customization
 description: Learn how you can customize your workflows homepage and organize workflows under groups
 sidebar_position: 30
 ---
-## Introduction
 
 You can organize your IDP Workflows into groups such as Service Onboarding, Infrastructure Use Cases or Day 1 Onboarding using the Workflows Homepage Customization. You can also change the icons of individual groups and each Workflow. You can also change the primary button text from "Execute" to more suitable verbs such as "Create", "Delete" or "Run" with appropriate intent colors. Finally, you can change the order of the groups and Workflows within an individual group as well.
 
@@ -12,15 +11,15 @@ This will help you surface out the most useful Workflows for your developers, wh
 
 <DocImage title="WorkflowsV2" path={require('./static/workflows-v2-overview.png')} />
 
-## Available Customizations
+## Available customizations
 
-**Platform Engineers** (users assigned with the role of [IDP Admin](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles#1-idp-admin) or having [Layout edit permission](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles#4-layouts)) can customize the **Workflows homepage** under **Configure**  → **Layouts** → **Workflows** section by creating **groups** and adding Workflows to each group. These groups can be further customized using a **name**, **icon**, and **description** and they can be arranged in a specific order to determine how they appear on the Workflows homepage.
+**Platform Engineers** (users assigned with the role of [IDP Admin](/docs/internal-developer-portal/rbac/scopes#idp-admin-role) or having [Layout edit permission](/docs/internal-developer-portal/rbac/scopes#permissions--resources-idp-20)) can customize the **Workflows homepage** under **Configure**  → **Layouts** → **Workflows** section by creating **groups** and adding Workflows to each group. These groups can be further customized using a **name**, **icon**, and **description** and they can be arranged in a specific order to determine how they appear on the Workflows homepage.
 
 The option to create new groups is also available under the Workflows homepage which will take you to the **Layout** → **Workflows** under **Configure**. 
 
 ![](./static/new-group-workflows-page.gif)
 
-### Grouping Workflows
+### Group workflows
 
 We can add a new **Group** by navigating to **Configure** → **Layout** → **Workflows**.
 
@@ -49,19 +48,19 @@ We can add a new **Group** by navigating to **Configure** → **Layout** → **W
 
 ![](./static/drag-and-drop.png)
 
-### Removing Workflows from Groups
+### Remove workflows from groups
 
 To remove workflows under a group, select the **add/remove** workflows option and remove the workflow, then **save** the changes. 
 
 ![](./static/remove-workflows.png)
 
-### Removing a Group
+### Remove a group
 
 You can Remove a Group by clicking on the **three dots** on the Groups tabs and select **Delete**. 
 
 ![](./static/delete-workflows.png)
 
-### Customizing a Workflow using Icons and Action Button
+### Customize a workflow using icons and action button
 
 You can now add an **icon** and change the **action** button **name** and **color** according to the use case. 
 
@@ -78,7 +77,7 @@ spec:
 ...
 ```
 
-- **Button:** Under the `metadata` field add `actionButton:` and [provide the values](https://github.com/harness-community/idp-samples/blob/678537d76978267dcf1b137c17634b0e381afab3/icons-actions-buttons.yaml#L8-L10) for `intent`(updates the color of the button) and `text` (could be anything according to the use-case e.g., Create, Run, Stop, Delete etc.). Here's the supported list of intent/colors.
+- **Button:** Under the `metadata` field add `actionButton:` and [provide the values](https://github.com/harness-community/idp-samples/blob/678537d76978267dcf1b137c17634b0e381afab3/icons-actions-buttons.yaml#L8-L10) for `intent`(updates the color of the button) and `text` (could be anything according to the use-case e.g., Create, Run, Stop, Delete etc.). Here is the supported list of intent/colors.
 
 | Supported Intent | Colors |
 |------------------|--------|
@@ -102,9 +101,9 @@ spec:
 ...
 ```
 
-## Navigating the HomePage
+## Navigate the HomePage
 
-1. **Register New Workflow**: [Register](https://developer.harness.io/docs/internal-developer-portal/get-started/workflow-quickstart#register-template-in-idp) a new workflow in Harness IDP.
+1. **Register New Workflow**: [Register](/docs/internal-developer-portal/get-started/content/get-started/step-3-workflows) a new workflow in Harness IDP.
 2. **Favourites**: List all the starred workflows
 3. **All Workflows**: Lists all the workflows irrespective of the groups they are part of.
 4. **Search**: Search the list of workflows based on the workflows title. 
@@ -122,9 +121,9 @@ spec:
 ![](./static/open-playground.png)
 
 
-## Extended Reading
+## Extended reading
 
-### Icons Supported in Harness IDP
+### Icons supported in Harness IDP
 
 - Go to Icons under **Configure** → **Layout**, and highlight the icon name you want to add, it will be copied, and now you can add it under the `metadata.icon` in the Workflow definition YAML. 
 
