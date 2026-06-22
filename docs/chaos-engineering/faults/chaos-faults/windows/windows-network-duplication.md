@@ -1,149 +1,149 @@
 ---
 id: windows-network-duplication
-title: Windows Network Duplication
+title: Windows network duplication
+sidebar_label: Windows Network Duplication
+description: Duplicate a configurable percentage of egress packets from a Windows VM so you can test how the workload behaves when packets are duplicated.
+keywords:
+  - chaos engineering
+  - windows network duplication
+  - windows fault
+  - packet duplication
+tags:
+  - chaos-engineering
+  - windows-faults
+redirect_from:
+- /docs/chaos-engineering/technical-reference/chaos-faults/windows/windows-network-duplication
+- /docs/chaos-engineering/chaos-faults/windows/windows-network-duplication
+- /docs/chaos-engineering/faults/chaos-faults/vmware/windows/vmware-windows-network-duplication
+- /docs/chaos-engineering/chaos-faults/vmware/windows/vmware-windows-network-duplication
 ---
 
-Windows network duplication duplicates network packets on Windows VM for the target hosts or IP addresses using [Clumsy](https://jagt.github.io/clumsy/). It checks the performance of the services running on the Windows VMs.
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-![Windows Network Duplication](./static/images/windows-network-duplication.png)
+Windows network duplication is a Windows chaos fault that duplicates `NETWORK_PACKET_DUPLICATION_PERCENTAGE` percent of egress packets from the target Windows VM to destinations listed in `DESTINATION_HOSTS`/`DESTINATION_IPS` on ports `DESTINATION_PORTS` and protocols `NETWORK_PROTOCOLS` for `DURATION`, then removes the filter. The fault runs through the Windows chaos agent installed as a service on the target VM. Use the `NETWORK_WHITELIST_*` tunables to spare specific destinations.
 
-:::tip
-When Clumsy is downloaded, the path is exported which is used while executing the experiment. 
+Use this fault to test how a workload on a Windows VM behaves when packets are duplicated: whether TCP de-duplication handles the load, whether UDP receivers handle duplicate packets at the application layer, whether monitoring detects bandwidth spikes, and whether on-call alerts fire correctly.
+
+:::info Run your first experiment
+If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
 :::
+
+---
 
 ## Use cases
 
-Windows network duplication:
-- Determines the resilience of an application when a network duplication scenario is simulated on a Windows virtual machine.
-- Simulates the situation of network duplication on the application, which degrades their performance.
-- Helps verify the application's ability to handle network failures and its failover mechanisms.
+- **Duplicate packets on the wire:** Does TCP de-duplicate correctly, or does the workload's TCP stack misbehave?
+- **UDP idempotency:** Do UDP receivers handle duplicates correctly, or does the workload process the same event twice?
+- **Bandwidth spike:** Does the bandwidth spike trigger alerts and/or violate rate limits?
+
+---
 
 ## Prerequisites
-- Ensure that the [prerequisites](/docs/chaos-engineering/faults/chaos-faults/windows/prerequisites) are fulfilled before executing the experiment.
-- Verify that [Clumsy](https://app.harness.io/public/shared/tools/chaos/windows/clumsy-0.3-win64-a.zip) is installed on the Windows VM.
 
-### Mandatory tunables
+- **Windows chaos infrastructure:** Install the chaos agent on the target VM. Go to [Windows requirements and security considerations](/docs/chaos-engineering/faults/chaos-faults/windows/windows-chaos-permissions).
+- **Administrator privileges:** Network duplication is an Advanced fault and requires the agent to run as administrator.
 
-   <table>
-      <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> NETWORK_PACKET_DUPLICATION_PERCENTAGE </td>
-        <td> The percentage of data packets duplicated during transmission. </td>
-        <td> For example, 100. For more information, go to <a href="#network-packet-duplication"> network packet duplication. </a></td>
-      </tr>
-      <tr>
-          <td> DESTINATION_HOSTS </td>
-          <td> DNS or FQDN names of services whose access is affected. You can specify multiple inputs as comma-separated values. </td>
-          <td> For example, "abc.com,github.com". It is mutually exclusive with <code>DESTINATION_IPS</code> variable. For more information, go to <a href="#destination-hosts"> destination hosts. </a></td>
-      </tr>
-      <tr>
-        <td> DESTINATION_IPS </td>
-        <td> IP addresses of the target destination services. You can specify multiple inputs as comma-separated values.</td>
-        <td> It is mutually exclusive with <code>DESTINATION_HOSTS</code> variable. For example, '0.8.0.8,192.168.5.6'. For more information, go to <a href="#destination-ips"> destination IPs. </a></td>
-      </tr>
-    </table>
+---
 
-### Optional tunables
-   <table>
-      <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> DURATION </td>
-        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
-        <td> Default: 60s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
-      </tr>
-      <tr>
-        <td> RAMP_TIME </td>
-        <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
-      </tr>
-    </table>
+## Supported environments
 
-### Network packet duplication
+| Platform | Support status |
+| --- | --- |
+| Windows Server VMs with the Windows chaos agent installed | Supported |
+| Linux VMs | Not supported (use [Linux network duplication](/docs/chaos-engineering/faults/chaos-faults/linux/linux-network-duplication)) |
 
-The `NETWORK_PACKET_DUPLICATION_PERCENTAGE` environment variable specifies the percentage of data packets duplicated during transmission.
+---
 
-Use the following example to specify network packet duplication:
+## Permissions required
 
-[embedmd]:# (./static/manifests/windows-network-duplication/network-packet-duplication.yaml yaml)
-```yaml
-apiVersion: litmuschaos.io/v1alpha1
-kind: MachineChaosExperiment
-metadata:
-  name: windows-network-duplication
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    infraType: windows
-    steps:
-      - - name: windows-network-duplication
-    tasks:
-    - definition:
-        chaos:
-          env:
-            - name: NETWORK_PACKET_DUPLICATION_PERCENTAGE
-              value: "100"
-```
+This fault is classified as **Advanced** and requires the chaos agent to run as administrator on the target VM.
 
-### Destination hosts
-The `DESTINATION_HOSTS` environment variable specifies the destination hosts to induce network duplication on the target Windows VM. You can provide multiple values using comma-separated list. 
-`DESTINATION_HOSTS` and `DESTINATION_IPS` environment variables are mutually exclusive.
+---
 
-Use the following example to specify destination hosts:
+## Fault tunables
 
-[embedmd]:# (./static/manifests/windows-network-duplication/destination-hosts.yaml yaml)
-```yaml
-apiVersion: litmuschaos.io/v1alpha1
-kind: MachineChaosExperiment
-metadata:
-  name: windows-network-duplication
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    infraType: windows
-    steps:
-      - - name: windows-network-duplication
-    tasks:
-    - definition:
-        chaos:
-          env:
-            - name: DESTINATION_HOSTS
-              value: "aws.amazon.com,github.com"
-```
+**Chaos parameters**
 
-### Destination IPS
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `DURATION` | Total duration of the fault as a Go duration string (for example `30s`). | `30s` |
+| `NETWORK_PACKET_DUPLICATION_PERCENTAGE` | Percentage of egress packets to duplicate (0-100). | `100` |
+| `DESTINATION_HOSTS` | Comma-separated destination hostnames. | `""` |
+| `DESTINATION_IPS` | Comma-separated destination IPs/CIDRs. | `""` |
+| `DESTINATION_PORTS` | Comma-separated destination ports. | `""` |
+| `NETWORK_PROTOCOLS` | Comma-separated protocols (`tcp`, `udp`, `icmp`). | `""` |
+| `NETWORK_WHITELIST_DESTINATION_HOSTS` | Hostnames excluded from duplication. | `""` |
+| `NETWORK_WHITELIST_DESTINATION_IPS` | IPs/CIDRs excluded from duplication. | `""` |
+| `NETWORK_WHITELIST_DESTINATION_PORTS` | Ports excluded from duplication. | `""` |
+| `RAMP_TIME` | Wait period in seconds before and after the fault. | `0` |
 
-The `DESTINATION_IPS` environment variable specifies the IP addresses of target destination services. You can specify multiple inputs as comma-separated values. 
-`DESTINATION_IPS` and `DESTINATION_HOSTS` environment variables are mutually exclusive.
+Tunables that apply to every fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
 
-Use the following example to specify destination IPS:
+---
 
-[embedmd]:# (./static/manifests/windows-network-duplication/destination-ips.yaml yaml)
-```yaml
-apiVersion: litmuschaos.io/v1alpha1
-kind: MachineChaosExperiment
-metadata:
-  name: windows-network-duplication
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    infraType: windows
-    steps:
-      - - name: windows-network-duplication
-    tasks:
-    - definition:
-        chaos:
-          env:
-            - name: DESTINATION_IPS
-              value: '0.8.0.8,192.168.5.6'
-```
+## Fault execution in brief
+
+The Windows chaos agent on the target VM installs a network filter that duplicates `NETWORK_PACKET_DUPLICATION_PERCENTAGE` percent of egress packets matching the destination/port/protocol filters (minus the whitelist) for `DURATION`, then removes the filter.
+
+---
+
+## Expected behavior during fault execution
+
+- A configurable share of egress packets are sent twice.
+- TCP receivers de-duplicate; UDP receivers see duplicates.
+- Egress bandwidth approximately doubles for affected flows.
+- After the duration ends, the filter is removed and traffic returns to baseline.
+
+:::info When the fault ends
+The chaos agent removes the network filter. Egress bandwidth returns to baseline within seconds.
+:::
+
+### Signals to watch
+
+- **Egress bandwidth:** Use a [Prometheus probe](/docs/resilience-testing/chaos-testing/probes/apm-probes) on Windows Exporter network counters.
+- **Workload:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe).
+
+---
+
+## Verify the fault execution effect
+
+1. **Inspect egress bytes on the VM during the chaos window.**
+
+   ```powershell
+   Get-Counter '\Network Interface(*)\Bytes Sent/sec' -Continuous
+   ```
+
+   Bytes sent per second should rise during the window.
+
+---
+
+## Recovery and cleanup
+
+- **End of duration:** The chaos agent removes the filter.
+- **Abort:** Stopping the experiment also removes the filter.
+- **Manual recovery:** Restart the chaos agent service if filters survive.
+
+---
+
+## Limitations
+
+- **Egress only:** The rule affects egress packets only.
+- **TCP often masks duplication:** TCP receivers de-duplicate, so the visible effect is bandwidth doubling, not duplicate processing at the app layer.
+- **Administrator required:** This is an Advanced fault and requires the agent to run as administrator.
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="Windows network duplication has no observable effect in Harness Chaos Engineering"
+  mode="docs"
+  fallback="TCP de-duplicates transparently, so the most visible signal is egress-bandwidth doubling. For UDP workloads, the workload must check for duplicate messages itself."
+/>
+
+---
+
+## Related faults
+
+- [Windows network loss](/docs/chaos-engineering/faults/chaos-faults/windows/windows-network-loss): Drop packets instead of duplicating them.
+- [Windows network corruption](/docs/chaos-engineering/faults/chaos-faults/windows/windows-network-corruption): Corrupt packets instead of duplicating them.

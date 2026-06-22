@@ -4,64 +4,64 @@ export const experiments: ExperimentDetails[] = [
   {
     name: "Windows CPU stress",
     description:
-      "Windows CPU stress applies stress on the CPU resources of Windows OS VM.",
+      "Drive CPU utilization to a configurable percentage across a configurable number of cores on a Windows VM for a configurable duration.",
     tags: ["cpu"],
     category: "windows",
   },
   {
-    name: "Windows Disk stress",
+    name: "Windows memory stress",
     description:
-      "Windows disk stress injects disk stress into a Windows OS based VM, by consuming and exhausting the disk resources on the target Windows machine.",
-    tags: ["disk"],
-    category: "windows",
-  },
-  {
-    name: "Windows Memory stress",
-    description:
-      "Windows memory stress applies stress on the memory resources of a Windows OS based VM.",
+      "Consume a configurable amount of memory on a Windows VM for a configurable duration so you can test how the workload behaves when memory headroom shrinks.",
     tags: ["memory"],
     category: "windows",
   },
   {
-    name: "Windows Network Blackhole Chaos",
+    name: "Windows disk stress",
     description:
-      "Windows network blackhole chaos simulates a network blackhole scenario on Windows OS based VM.",
-    tags: ["network"],
+      "Drive disk IO load on a Windows VM for a configurable duration so you can test how the workload behaves when storage throughput is saturated.",
+    tags: ["disk"],
     category: "windows",
   },
   {
-    name: "Windows Network Corruption",
+    name: "Windows process kill",
     description:
-      "Windows Network Corruption corrupts network packets on Windows VMs for the target hosts using Clumsy. It checks the performance of the application running on the Windows VMs when network packets are corrupted during transmission.",
-    tags: ["network", "corruption"],
+      "Terminate one or more processes (by PID or name) on a Windows VM for a configurable duration.",
+    tags: ["process", "kill"],
     category: "windows",
   },
   {
-    name: "Windows Network Duplication",
+    name: "Windows blackhole chaos",
     description:
-      "Windows network duplication duplicates network packets on Windows VM for the target hosts or IP addresses using Clumsy. It checks the performance of the services running on the Windows VMs.",
-    tags: ["network", "duplication"],
+      "Block all network traffic to selected destination hosts or IP addresses from a Windows VM for a configurable duration.",
+    tags: ["network", "blackhole"],
     category: "windows",
   },
   {
-    name: "Windows Network Latency",
+    name: "Windows network latency",
     description:
-      "Windows Network Latency causes a network packet delay on Windows VMs for the target hosts by causing network packet delay using Clumsy.",
+      "Add latency to egress traffic from a Windows VM for a configurable duration. Scope by destination IP, hostname, port, or protocol.",
     tags: ["network", "latency"],
     category: "windows",
   },
   {
-    name: "Windows Network Loss",
+    name: "Windows network loss",
     description:
-      "Windows network loss causes a network packet loss on Windows VM for the target hosts or IP addresses using Clumsy.",
+      "Drop a configurable percentage of egress packets from a Windows VM for a configurable duration.",
     tags: ["network", "loss"],
     category: "windows",
   },
   {
-    name: "Windows Process Kill",
+    name: "Windows network corruption",
     description:
-      "Windows process kill kills the target processes that are running as a part of a Windows OS based VM. The services that are disrupted might be running in the VM, and this fault kills their underlying processes or threads.",
-    tags: ["process", "kill"],
+      "Corrupt a configurable percentage of egress packets from a Windows VM for a configurable duration.",
+    tags: ["network", "corruption"],
+    category: "windows",
+  },
+  {
+    name: "Windows network duplication",
+    description:
+      "Duplicate a configurable percentage of egress packets from a Windows VM for a configurable duration.",
+    tags: ["network", "duplication"],
     category: "windows",
   },
 ];
