@@ -1631,88 +1631,102 @@
     "lifecycleState": "Limited GA"
    },
    {
-    "flagKey": "CCM_ANOMALIES_V2",
-    "description": "Revamped UI-UX for anomalies detection",
+    "flagKey": "ANOMALIES_V2",
+    "description": "Enables the new anomalies experience in Cloud & AI Cost Management, providing improved anomaly detection and analysis capabilities.",
     "gaStartDate": "2026-06-19",
     "module": "Cloud & AI Cost Management",
     "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CCM_ANOMALIES_CONDITIONAL_DRILL_DOWN",
-    "description": "Show perspective link when drill down is missing",
+    "flagKey": "ANOMALIES_CONDITIONAL_DRILL_DOWN",
+    "description": "Enables conditional drill-down for anomalies in Cloud & AI Cost Management, allowing users to view detailed anomaly information based on specific conditions.",
     "gaStartDate": "2026-06-19",
     "module": "Cloud & AI Cost Management",
     "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CCM_ANOMALY_LOOKBACK_RECOMPUTATION",
-    "description": "Revise existing anomalies with latest cost",
+    "flagKey": "ANOMALY_LOOKBACK_RECOMPUTATION",
+    "description": "Enables lookback recomputation for anomalies in Cloud & AI Cost Management, allowing users to revise existing anomalies with the latest cost data.",
     "gaStartDate": "2026-06-19",
     "module": "Cloud & AI Cost Management",
-    "lifecycleState": "Limited GA"
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CCM_ANOMALY_EXTENDED_RERUN_DAYS",
-    "description": "Rerun anomalies on past 15 days",
+    "flagKey": "ANOMALY_EXTENDED_RERUN_DAYS",
+    "description": "Enables extended rerun days for anomalies in Cloud & AI Cost Management, allowing users to rerun anomaly detection on past 15 days of data.",
     "gaStartDate": "2026-06-19",
     "module": "Cloud & AI Cost Management",
-    "lifecycleState": "Limited GA"
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CCM_ANOMALY_WHITELISTING",
-    "description": "Enable the ignore list rule in anomalies",
+    "flagKey": "ANOMALY_WHITELISTING",
+    "description": "Enables anomaly whitelisting in Cloud & AI Cost Management, allowing users to ignore specific anomalies based on defined rules.",
     "gaStartDate": "2026-06-19",
     "module": "Cloud & AI Cost Management",
-    "lifecycleState": "Limited GA"
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CCM_ANOMALY_CC_OTHER_FILTER_BYPASS",
-    "description": "Bypass additional non-CC filters for cost category anomalies in perspectives",
+    "flagKey": "ANOMALY_CC_OTHER_FILTER_BYPASS",
+    "description": "Enables bypassing of additional non-cost category filters for anomalies in Cloud & AI Cost Management, allowing users to focus on cost category anomalies in perspectives.",
     "gaStartDate": "2026-06-19",
     "module": "Cloud & AI Cost Management",
-    "lifecycleState": "Limited GA"
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CCM_ANOMALIES_PROPHET_V2",
-    "description": "Enable Prophet V2 anomaly detection",
+    "flagKey": "ANOMALIES_PROPHET_V2",
+    "description": "Enables Prophet V2 anomaly detection in Cloud & AI Cost Management, providing improved anomaly detection capabilities.",
     "gaStartDate": "2026-05-22",
     "module": "Cloud & AI Cost Management",
     "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CCM_ANOMALY_REQUIRE_BOTH_THRESHOLDS",
-    "description": "Require both cost and percentage thresholds for anomaly filtering",
+    "flagKey": "ANOMALY_REQUIRE_BOTH_THRESHOLDS",
+    "description": "Enables the requirement of both absolute and percentage thresholds for anomaly detection in Cloud & AI Cost Management, providing more precise anomaly identification.",
     "gaStartDate": "2026-05-15",
     "module": "Cloud & AI Cost Management",
-    "lifecycleState": "Limited GA"
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CCM_RECOMMENDATION_AWS_PASSTHROUGH_V2",
-    "description": "Use cost optimization hub instead of cost explorer. Enables AWS passthrough for recommendations",
+    "flagKey": "RECOMMENDATION_AWS_PASSTHROUGH_V2",
+    "description": "Enables AWS passthrough for recommendations in Cloud & AI Cost Management, allowing users to view recommendations directly from AWS without additional processing.",
     "gaStartDate": "2026-06-19",
     "module": "Cloud & AI Cost Management",
-    "lifecycleState": "Limited GA"
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CCM_NODE_POOL_RECOMMENDATIONS_V2",
-    "description": "Enable Node Pool Recommendations V2",
+    "flagKey": "RECOMMENDATION_AWS_PASSTHROUGH_V2_READ",
+    "description": "Enables read-only access to AWS passthrough recommendations in Cloud & AI Cost Management, allowing users to view recommendations without making changes.",
     "gaStartDate": "2026-06-19",
     "module": "Cloud & AI Cost Management",
-    "lifecycleState": "Limited GA"
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CCM_FILTER_AUTOSCALED_NODEPOOLS",
-    "description": "Filter autoscaled node pools",
+    "flagKey": "NODE_POOL_RECOMMENDATIONS_V2",
+    "description": "Enables Node Pool Recommendations V2 in Cloud & AI Cost Management, providing improved recommendation capabilities.",
     "gaStartDate": "2026-06-19",
     "module": "Cloud & AI Cost Management",
-    "lifecycleState": "Limited GA"
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CCM_WORKLOAD_RECOMMENDATIONS_V2",
-    "description": "Enable Workload Recommendations V2",
+    "flagKey": "FILTER_AUTOSCALED_NODEPOOLS",
+    "description": "Enables filtering of autoscaled node pools in Cloud & AI Cost Management, allowing users to focus on specific node pool types.",
     "gaStartDate": "2026-06-19",
     "module": "Cloud & AI Cost Management",
-    "lifecycleState": "Limited GA"
+    "lifecycleState": "Beta"
+  },
+  {
+    "flagKey": "WORKLOAD_RECOMMENDATIONS_V2",
+    "description": "Enables Workload Recommendations V2 in Cloud & AI Cost Management, providing improved recommendation capabilities.",
+    "gaStartDate": "2026-06-19",
+    "module": "Cloud & AI Cost Management",
+    "lifecycleState": "Beta"
+  },
+  {
+    "flagKey": "ARTIFACT_LIFECYCLE_POLICY",
+    "description": "Enables Lifecycle Rules in Artifact Registry, allowing users to define and manage lifecycle policies for artifacts.",
+    "gaStartDate": "2026-06-22",
+    "module": "Artifact Registry",
+    "lifecycleState": "Beta"
   }
 ]
 
