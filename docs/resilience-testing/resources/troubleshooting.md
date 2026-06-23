@@ -457,10 +457,6 @@ probe:
 
 Harness CE platform provides [native integration for chaos experiments with the CD module](../chaos-testing/integrations/cicd/jenkins). We currently don't support the integration of Windows chaos experiments with Harness CD pipelines.
 
-### GameDay Support
-
-Harness CE currently offers GameDay support for orchestrating and running multiple Kubernetes experiments across various infrastructures in a coordinated manner. However, GameDay support for Windows chaos experiments is not yet available.
-
 ### Inclusion in ChaosGuard Policies
 
 [ChaosGuard](/docs/resilience-testing/chaos-testing/governance/governance-in-execution) is a Harness CE feature that enhances the security and control of chaos experiments. Currently, ChaosGuard policies don't support Windows chaos experiments.

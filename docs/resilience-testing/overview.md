@@ -66,8 +66,6 @@ True resilience requires all three approaches working in concert. Here's how the
 
 **Peak traffic preparation**: Combine load testing with chaos experiments to simulate high-traffic events like product launches or seasonal sales while validating that your system remains resilient to infrastructure failures.
 
-**GameDay exercises**: Use the GameDay portal to conduct controlled production testing that validates incident response procedures, system recovery capabilities, and team readiness for real incidents.
-
 **Disaster recovery validation**: Systematically test backup systems, failover mechanisms, and recovery procedures to ensure your DR plans work when you need them most.
 
 **Multi-region resilience**: Validate that your system can handle region failures, network partitions, and cross-region failover scenarios while maintaining performance and availability.
@@ -93,8 +91,6 @@ True resilience requires all three approaches working in concert. Here's how the
 **AI-Powered Insights**: Get intelligent recommendations for experiment creation, optimization, and failure resolution from the AI Reliability Agent.
 
 <!-- **MCP Tools**: Interact with your Harness Resilience Testing projects using natural language prompts from AI editors like Claude Desktop, Windsurf, and Cursor through the Harness MCP server. -->
-
-**GameDay Portal**: Controlled testing environment for SREs to run experiments safely in production.
 
 The platform includes enterprise features like RBAC, SSO, comprehensive logging, and audit capabilities. Available in SaaS and on-premise deployments with a free plan that includes all capabilities. For information about general Harness Platform concepts and features, go to [Harness Platform key concepts](/docs/platform/get-started/key-concepts).
 

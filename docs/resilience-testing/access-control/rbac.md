@@ -77,10 +77,6 @@ Harness registers the following resources for RBAC under the **Resilience** modu
 | DR Tests | <ul><li>View</li><li>Create / Edit</li><li>Delete</li></ul> | Manage [disaster recovery tests](/docs/resilience-testing/dr-testing/get-started). |
 | Image Registry | <ul><li>View</li><li>Create / Edit</li></ul> | Manage the [image registry](/docs/resilience-testing/chaos-testing/image-registry) used to pull resilience images. |
 
-:::info Chaos Gameday is being deprecated
-The role editor still shows a **Chaos Gameday** resource, but GameDays are being deprecated. Do not build new roles around the Chaos Gameday permissions.
-:::
-
 ---
 
 ## Environment permission (required to run experiments)

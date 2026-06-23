@@ -86,7 +86,6 @@ sidebar_position: 1
 | **Governance Controls** | ChaosHub RBACs | ✅ | ✅ |
 | | Infrastructure RBACs | ✅ | ✅ |
 | | Experiment CRUD RBACs | ✅ | ✅ |
-| | GameDay RBACs | ❌ | ✅ |
 | | Target-specific RBACs | ❌ | ✅ |
 | | Fault-specific RBACs | ❌ | ✅ |
 | | User-specific RBACs | ❌ | ✅ |
