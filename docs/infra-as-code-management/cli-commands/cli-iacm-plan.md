@@ -20,9 +20,9 @@ tags:
 
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-:::warning Install the unified Harness CLI 3.0
+<!-- :::warning Install the unified Harness CLI 3.0
 For install, authentication, and workspace commands, use the unified **Harness CLI 3.0**. The standalone install and login steps for the earlier CLI are deprecated for IaCM. Go to [Harness CLI 3.0 for IaCM](/docs/infra-as-code-management/cli-commands/harness-cli) to install and authenticate, then return here to run a local plan.
-:::
+::: -->
 
 The `harness iacm plan` command lets you run OpenTofu or Terraform plans against your local code while using secrets and configuration stored securely in Harness. The command uploads your local directory, triggers a default plan pipeline in your workspace, and displays execution results in the Harness UI. This approach combines the speed of local development with enterprise-grade security and pipeline integration.
 
@@ -43,7 +43,7 @@ Building upon [Harness CLI capabilities](/docs/platform/automation/cli/reference
 - **Pipeline permissions:** You need **View** and **Execute** for [Pipelines](/docs/platform/role-based-access-control/permissions-reference#pipelines). To get these, an administrator must assign you a role that includes them. Go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) and [Manage roles](/docs/platform/role-based-access-control/add-manage-roles) to understand how roles work.
 - **Workspace access:** You need **View** and **Edit** permissions on the IaCM workspace. An administrator assigns these via [IaCM workspace permissions](/docs/infra-as-code-management/workspaces/workspace-rbac).
 - **OpenTofu or Terraform installed locally:** Install [OpenTofu](https://opentofu.org/) or [Terraform](https://terraform.io/) on your machine. The CLI does not bundle these tools.
-- **Harness CLI 3.0 installed and authenticated:** [Install and authenticate the Harness CLI 3.0](/docs/infra-as-code-management/cli-commands/harness-cli).
+<!-- - **Harness CLI 3.0 installed and authenticated:** [Install and authenticate the Harness CLI 3.0](/docs/infra-as-code-management/cli-commands/harness-cli). -->
 - **Workspace with default plan pipeline configured:** A default plan pipeline must be configured in your workspace. A default plan pipeline is a pre-configured pipeline that runs when you execute the CLI plan command. Workspaces can have one default plan and one default apply pipeline. Go to [Configure default pipelines](/docs/infra-as-code-management/pipelines/default-pipelines) to set this up.
 
 ---
@@ -110,11 +110,11 @@ workspace: <workspaceName>
 
 ## Troubleshooting
 
-<Troubleshoot
+<!-- <Troubleshoot
   issue="harness iacm plan command fails with authentication error in Harness CLI 3.0"
   mode="fallback-only"
   fallback="Run `harness auth status` to confirm your active profile and token. If your token expired or is invalid, run `harness auth login` (use `--profile` if you log into multiple accounts). In CI or any non-interactive shell, set `HARNESS_API_KEY` instead of running `harness auth login`. If it still fails, confirm your profile or API key has Execute permission on the IaCM workspace and that your `--org-id`, `--project-id`, and `--workspace-id` values are correct."
-/>
+/> -->
 
 <Troubleshoot
   issue="harness iacm plan fails with 'default plan pipeline not configured' in IaCM workspace"
@@ -148,4 +148,4 @@ You have successfully run a local Terraform plan using the Harness CLI. You can 
 
 - Go to [Configure default pipelines](/docs/infra-as-code-management/pipelines/default-pipelines) to set up default apply pipelines.
 - Go to [Manage workspaces](/docs/infra-as-code-management/workspaces/workspace-tabs) to learn about workspace configuration and state management.
-- Go to [Harness CLI 3.0 for IaCM](/docs/infra-as-code-management/cli-commands/harness-cli) to explore additional CLI commands.
+<!-- - Go to [Harness CLI 3.0 for IaCM](/docs/infra-as-code-management/cli-commands/harness-cli) to explore additional CLI commands. -->

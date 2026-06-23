@@ -2,6 +2,7 @@
 title: Harness CLI 3.0 for IaCM
 sidebar_label: Harness CLI 3.0
 sidebar_position: 10
+unlisted: true
 description: Install, authenticate, and run the unified Harness CLI 3.0 to manage IaCM workspaces from your terminal.
 keywords:
   - harness cli
