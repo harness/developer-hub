@@ -19,6 +19,10 @@ import TabItem from '@theme/TabItem';
 
 Harness AI Test Automation runs your existing Playwright suite, your `playwright.config`, your spec files, your `package.json` scripts, without rewrites, wrappers, or migration. Point Harness at the repository that contains your project, and your suite executes on managed cloud workers using the config you already have.
 
+The following video walks through creating and running a Playwright test suite in Harness AI Test Automation.
+
+<DocVideo src="https://youtu.be/rgtrIGBfaFA" width="100%" height="450" title="Create and run a Playwright test suite in Harness AI Test Automation" />
+
 Playwright test suites live in the same **Test Suites** list as AI-authored tests, so on-demand runs, environments, variables, tunnels, run history, and per-spec pass/fail reporting all work the same way across both. You keep authoring tests in Playwright as you do today; Harness handles execution and brings the results into one place, including AI-assisted failure triage on every failed test so you can see why a test broke, not just that it broke.
 
 Your `playwright.config` in the repo controls how tests run by default. For a single run, you can override specific settings from the **Run** dialog without changing the repo, for example bumping retries, raising a timeout, or pointing the run through a tunnel to reach a firewall-protected app. Any field you leave blank falls back to your config.
