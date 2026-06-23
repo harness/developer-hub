@@ -22,6 +22,29 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 ## June 2026
 
+### Version 1.90.0
+
+#### Images required
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
+
+- harness/chaos-ddcr:1.90.0
+- harness/chaos-ddcr-faults:1.90.0
+- harness/chaos-log-watcher:1.90.0
+- harness/service-discovery-collector:0.70.0
+
+#### New Features and Enhancements
+
+- Added conditional execution for faults, probes, and actions, so you can control whether each step runs based on conditions you define
+- Added remote Kubernetes execution for Linux and Windows experiments. You can now run Kubernetes probes, actions, and faults against a default Kubernetes infrastructure that you set and edit on the experiment.
+- Removed the legacy Prometheus, Datadog, and Dynatrace probe types from Kubernetes. If you use any of these probes, migrate to the current equivalent probe before you upgrade.
+
+#### Fixed Issues
+
+- Fixed high-severity vulnerabilities in the log-watcher
+- Fixed load test dashboard graphs that showed gaps when DDCR dropped metric snapshots during transient gateway failures
+- Fixed the missing action icon and title on the input set screen shown when you run an experiment
+- Fixed missing tooltips in the advanced configuration options during chaos onboarding
+
 ### Version 1.89.0
 
 #### Images required

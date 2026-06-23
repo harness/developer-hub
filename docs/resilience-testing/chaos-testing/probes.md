@@ -43,6 +43,25 @@ Not all probes are available on every infrastructure type. The following table s
 | [Datadog Probe](./probes/apm-probes) | ✅ | ✅ | - |
 | [Dynatrace Probe](./probes/apm-probes) | ✅ | ✅ | - |
 
+The table shows native (inline) support on each infrastructure. Probes that are native to Kubernetes only, such as the Kubernetes Probe, Container Probe, and APM probes, can also run in Linux and Windows experiments through remote Kubernetes execution. Go to [Remote Kubernetes Execution](#remote-kubernetes-execution) to understand how this works.
+
+## Remote Kubernetes Execution
+
+When you run an experiment on a Linux or Windows infrastructure, you can also run Kubernetes probes by mapping a Kubernetes infrastructure to the experiment. Linux and Windows probes run inline on the target machine, while the mapped Kubernetes probes run remotely on the mapped Kubernetes infrastructure.
+
+This lets you use Kubernetes-only probes, such as the Kubernetes Probe, Container Probe, and APM probes, alongside your Linux and Windows experiments without recreating them for each infrastructure.
+
+You map a Kubernetes infrastructure in one of two ways:
+
+- When you set up the Linux or Windows infrastructure, where the mapped Kubernetes infrastructure applies to experiments on that infrastructure.
+- When you add a probe to an experiment, where you map a Kubernetes infrastructure to that probe so it runs as a remote probe.
+
+Remote Kubernetes execution gives you the following benefits:
+
+- **Reuse across infrastructures:** Use the same probe definition and logic on Kubernetes, Linux, and Windows infrastructures.
+- **Access to Kubernetes-only capabilities:** Use features such as external secrets in Linux and Windows experiments.
+- **Less duplicate maintenance:** Keep a single probe definition instead of maintaining separate probes per infrastructure.
+
 ## Built-in Probe Templates
 
 Harness provides pre-built [Built-in Probe Templates](./probes/probe-templates) to help you quickly set up probes for common validation scenarios. Currently, built-in templates are available for **Command Probes** targeting **Kubernetes** infrastructure, covering checks like pod status, node health, resource utilization, and cloud provider resource validation.

@@ -113,6 +113,23 @@ Actions support different infrastructure types:
 - **Kubernetes** - Actions can be executed in Kubernetes environments
 - **Windows** - Actions can be configured for Windows infrastructure targets
 
+### Remote Kubernetes Execution
+
+When you run an experiment on a Linux or Windows infrastructure, you can also run Kubernetes actions by mapping a Kubernetes infrastructure to the experiment. Linux and Windows actions run inline on the target machine, while the mapped Kubernetes actions run remotely on the mapped Kubernetes infrastructure.
+
+This lets you reuse Kubernetes actions, such as the Container Action, in Linux and Windows experiments without recreating them for each infrastructure.
+
+You map a Kubernetes infrastructure in one of two ways:
+
+- When you set up the Linux or Windows infrastructure, where the mapped Kubernetes infrastructure applies to experiments on that infrastructure.
+- When you add an action to an experiment, where you map a Kubernetes infrastructure to that action so it runs as a remote action.
+
+Remote Kubernetes execution gives you the following benefits:
+
+- **Reuse across infrastructures:** Use the same action definition and logic on Kubernetes, Linux, and Windows infrastructures.
+- **Access to Kubernetes-only capabilities:** Use features such as external secrets in Linux and Windows experiments.
+- **Less duplicate maintenance:** Keep a single action definition instead of maintaining separate actions per infrastructure.
+
 ### Action Execution
 
 Actions are executed as part of the experiment workflow and can be:

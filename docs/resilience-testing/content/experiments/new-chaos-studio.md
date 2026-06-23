@@ -73,6 +73,60 @@ You can add multiple faults, probes, and actions to run in parallel by using **C
 
 --- 
 
+## Conditional Execution
+
+Conditional execution lets you control whether a fault, probe, or action runs during an experiment based on conditions you define. Use it to build a single experiment that adapts to different targets, environments, or runtime inputs instead of maintaining a separate experiment for each scenario.
+
+Conditions are evaluated when the experiment runs. When the conditions for a node resolve to true, that node executes. When they resolve to false, the node is skipped and the experiment continues with the next node.
+
+### Enable Conditions on a Fault, Probe, or Action
+
+You configure conditions from the **Advanced** tab, which is available on faults, probes, and actions.
+
+1. In the **Experiment Builder**, select the fault, probe, or action you want to gate.
+
+2. Open the **Advanced** tab and turn on **Enable Conditions**.
+
+3. Select an **Operator** to define how multiple values combine:
+
+    ![Operator dropdown showing AND and OR](./static/conditional-execution/operator-dropdown.png)
+
+    | Operator | Behavior |
+    |----------|----------|
+    | **AND** | The node runs only when every value evaluates to true. |
+    | **OR** | The node runs when at least one value evaluates to true. |
+
+4. In **Values**, enter the condition values to evaluate. Select **Add** to evaluate more than one value with the chosen operator.
+
+5. Select **Apply Changes**.
+
+:::info Supported operators
+Conditions support two operators: **AND** and **OR**. Use **AND** when every value must hold before the node runs. Use **OR** when any single value is enough.
+:::
+
+### Choose a Value Input Type
+
+Each value supports three input types. Select the icon at the end of the value field to switch between them.
+
+![Value input types: Fixed value, Runtime input, and Expression](./static/conditional-execution/value-input-types.png)
+
+| Input type | Icon | Description |
+|------------|------|-------------|
+| **Fixed value** | Pin | A value you enter manually when you configure the condition. It does not change at run time. |
+| **Runtime input** | `Σx` | A value supplied when the experiment runs, either in the **Run Experiment** dialog or from a saved input set. Use it to decide whether a node runs at execution time without editing the experiment. |
+| **Expression** | `f(x)` | A value resolved from an expression, such as a reference to an experiment variable. Use it to evaluate conditions against values defined elsewhere in the experiment. |
+
+Runtime inputs and expressions pair well with [runtime variables](#runtime-variable-support) and [experiment variables](#experiment-variables). For example, define an experiment variable for the target environment, then reference it in a fault condition with an expression so the fault runs only in the environments you choose at run time.
+
+### Use Cases
+
+- **Gate destructive faults by environment:** Add a condition to a `pod-delete` or node-level fault so it runs only in non-production environments, while the rest of the experiment runs everywhere.
+- **Run a probe only when relevant:** Attach a condition to a probe so it validates a specific service only when that service is part of the run, which avoids false negatives on targets where the check does not apply.
+- **Trigger an action selectively:** Gate a notification or cleanup action so it runs only when a chosen condition is met, such as a specific platform or region passed as a runtime input.
+- **Reuse one experiment across teams:** Combine conditions with runtime inputs so each team supplies its own values at run time and exercises only the faults, probes, and actions that apply to its services.
+
+--- 
+
 ## Run Experiment & Monitor with Timeline View
 
 1. Save the experiment and click on **Run** to execute the experiment.
