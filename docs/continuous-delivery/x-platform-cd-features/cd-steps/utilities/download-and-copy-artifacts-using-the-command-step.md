@@ -229,6 +229,118 @@ Here's an example of the results of a copy config command:
 
 **Deployment Templates:** to run the download command on the target hosts, add the command after the Fetch Instances step. Go to [looping strategy and target hosts](#looping-strategy-and-target-hosts) below for more information.
 
+### Preserve directory structure when copying config files
+
+When you copy config files that contain nested directories, you can control whether Harness preserves the original directory structure at the destination or copies all files into a single directory.
+
+Prior to this enhancement, the Copy command always flattened all files into a single destination directory. This caused data loss when multiple files shared the same name but existed in different subdirectories.
+
+#### How it works
+
+The Copy command includes a **Preserve Directory Structure** checkbox that controls directory structure handling when you copy config files:
+
+- **Checked** (default): The full directory structure from the source is recreated at the destination. The hierarchy is preserved and file name conflicts are avoided.
+- **Unchecked**: All files are copied directly to the destination directory without subdirectories (flattened structure).
+
+#### Example: Environment-specific configuration files
+
+Consider a config file directory structure with environment-specific property files:
+
+```
+configs/
+└── root/
+    ├── env1/
+    │   └── env.properties
+    ├── env2/
+    │   └── env.properties
+    ├── env3/
+    │   └── env.properties
+    ├── log4j2.xml
+    └── log4j2.txt
+```
+
+**With directory structure preserved (Preserve Directory Structure checked):**
+
+The destination maintains the original hierarchy:
+
+```
+<destination-path>/
+└── root/
+    ├── env1/
+    │   └── env.properties
+    ├── env2/
+    │   └── env.properties
+    ├── env3/
+    │   └── env.properties
+    ├── log4j2.xml
+    └── log4j2.txt
+```
+
+Each `env.properties` file is preserved in its respective subdirectory without conflicts.
+
+**With directory structure flattened (Preserve Directory Structure unchecked):**
+
+All files are copied to a single directory:
+
+```
+<destination-path>/
+├── env.properties   (overwritten - only the last copy remains)
+├── log4j2.xml
+└── log4j2.txt
+```
+
+Multiple `env.properties` files overwrite each other, and only the final copy survives.
+
+#### Configure directory structure preservation
+
+The **Preserve Directory Structure** checkbox appears in the Add Command dialog when you select **Copy** as the command type and **Config File** as the file type.
+
+![Copy config with Preserve Directory Structure checkbox](./static/copy-config-preserve-directory-structure.png)
+
+In YAML, the `preserveDirectoryStructure` field controls how Harness copies files. Set it to `true` (the default) to keep the original directory hierarchy, or `false` to copy all files into a single flat directory.
+
+<details>
+<summary>Copy command with directory structure preservation</summary>
+
+```yaml
+steps:
+  - step:
+      type: Command
+      name: Copy Config Files
+      identifier: CopyConfigFiles
+      spec:
+        onDelegate: false
+        environmentVariables: []
+        outputVariables: []
+        commandUnits:
+          - identifier: CopyConfigs
+            name: CopyConfigs
+            type: Copy
+            spec:
+              sourceType: Config
+              destinationPath: /opt/app/config
+              preserveDirectoryStructure: true
+      timeout: 10m
+      strategy:
+        repeat:
+          items: <+stage.output.hosts>
+```
+
+</details>
+
+When you set `preserveDirectoryStructure` to `true`, Harness creates subdirectories automatically at the destination.
+
+#### When to preserve directory structure
+
+Preserve directory structure when your deployment requires hierarchical organization of config files:
+
+- **Environment-based configurations**: Separate config files for dev, staging, and production environments that share the same filename but contain different values.
+- **Multi-tenant applications**: Configuration files organized by tenant or customer with identical filenames in each tenant directory.
+- **Modular applications**: Component-specific config files stored in separate subdirectories (for example, `auth/config.yaml`, `database/config.yaml`, `cache/config.yaml`).
+- **Host-level configurations**: Group-specific or host-specific settings organized in a directory tree.
+
+Use the flattened structure when you need all config files in a single directory at the destination and file name uniqueness is already guaranteed.
+
 ## Use a script
 
 You can run a script on all of the target hosts. This is the same as the [shell script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step.
