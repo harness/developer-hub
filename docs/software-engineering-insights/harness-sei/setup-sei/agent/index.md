@@ -157,7 +157,7 @@ The **Diagnostics** tab in the AI Engineering Insights module displays the healt
 
 ### Monitor rollout stats
 
-![AI DLC Agent - Monitoring](../../static/ai-eng-20.png)
+![AI DLC Agent - Monitoring](../../static/ai-eng-2.png)
 
 The **Developer Installations** table lists every developer machine with the agent installed. Use this table to verify coverage, identify machines on outdated versions, and audit installation timestamps.
 
