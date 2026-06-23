@@ -162,7 +162,7 @@ Set up a Jira Connector to enable communication between Harness and your Jira in
 
 ### Configure External Tickets settings
 
-Navigate to **Account Settings** > **External Tickets**, and configure the following fields:
+Navigate to **Security Test Orchestration** > **Account Settings** > **External Tickets**, and configure the following fields:
 
 - **Ticket Provider Connector**: Select the Jira connector you created.  
 - **Default Project Name**: Choose the default Jira project for ticket creation. This field will present a list of all your Jira projects. You can select a different project while creating tickets.  
