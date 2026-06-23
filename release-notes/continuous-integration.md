@@ -84,6 +84,8 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 
 #### New Features and Enhancements
 
+- Optimized the CI build initialization step to send only the required fields when starting a build, reducing the size of the initialization payload for pipelines that run on Kubernetes build infrastructure. This results in faster and more reliable build initialization, especially for pipelines with a large number of steps. This feature is behind the feature flag `CI_INIT_REQUIRED_FIELDS_ONLY` and requires Harness Delegate version 26.06.89309 or later. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-22785)
+
 - Added Azure-backed storage support for Build Cache. You can now use Azure Blob Storage as the backend for CI cache operations, expanding cache storage options beyond S3 and GCS. (CI-22956, CI-22992)
 
 #### Fixed Issues

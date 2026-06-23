@@ -473,6 +473,33 @@ With this feature flag enabled, Harness uses your [delegate selectors](/docs/pla
 
 </details>
 
+## Reduce the build initialization payload for large pipelines
+
+When a build starts, Harness sends an initialization payload to the build infrastructure that describes the steps to run. For large pipelines, with many steps or heavy use of expressions and secrets in a single stage, this payload can grow large and slow down build initialization.
+
+You can enable an optimization that sends only the fields required to initialize the build. Harness resolves the remaining values, such as commands, arguments, environment variables, and secrets, at runtime inside the build pod, exactly when each step runs. This keeps the initialization payload small regardless of how many steps or expressions a stage contains, which results in faster and more reliable build initialization.
+
+This optimization applies to pipelines that run on Kubernetes build infrastructure. Your existing pipelines work without any YAML or step changes, and expressions and secrets resolve to the same values as before. Secrets remain masked in logs and are resolved at runtime inside the build pod.
+
+### Prerequisites
+
+- **Delegate version:** Harness Delegate version 26.06.89309 or later. Go to the [Delegate release notes](/release-notes/delegate) to review delegate versions.
+- **Feature flag:** Contact [Harness Support](mailto:support@harness.io) to enable the feature flag `CI_INIT_REQUIRED_FIELDS_ONLY` on your account.
+
+### Enable the optimization
+
+1. Upgrade the delegates used for your CI builds to version 26.06.89309 or later.
+2. Contact [Harness Support](mailto:support@harness.io) to enable `CI_INIT_REQUIRED_FIELDS_ONLY` on your account.
+3. Run your pipelines as usual. No YAML or step changes are required.
+
+:::tip Validate before a broad rollout
+
+Upgrade the delegate before you enable the feature flag, so the delegate understands the optimized payload before it is used. Then validate on one of your largest stages and confirm the build succeeds and step outputs resolve as expected before you roll out broadly.
+
+:::
+
+To revert to the previous behavior, contact Harness Support to disable `CI_INIT_REQUIRED_FIELDS_ONLY`. No pipeline changes are required.
+
 ## Troubleshoot Kubernetes cluster build infrastructures
 
 Go to the [CI Knowledge Base](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs) for questions and issues related to Kubernetes cluster build infrastructures, including:
