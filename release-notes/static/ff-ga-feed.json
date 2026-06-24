@@ -1719,7 +1719,91 @@
     "description": "Enables filtering of autoscaled node pools in Cloud & AI Cost Management, allowing users to focus on specific node pool types.",
     "gaStartDate": "2026-06-19",
     "module": "Cloud & AI Cost Management",
-    "lifecycleState": "Beta"
+    "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "CCM_RECOMMENDATION_COST_TYPES",
+    "description": "Enables global and per-feature cost type settings for display of recommendations",
+    "gaStartDate": "2026-06-23",
+    "module": "Cloud & AI Cost Management",
+    "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "CCM_RECOMMENDATIONS_USE_NET_AMORTIZED_COST",
+    "description": "Use net amortized cost for pass-through recommendations from AWS Cost Explorer",
+    "gaStartDate": "2026-06-23",
+    "module": "Cloud & AI Cost Management",
+    "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "CCM_RECOMMENDATION_AWS_PASSTHROUGH_V2_READ",
+    "description": "Enable read access to new AWS Passthrough V2 recommendation types (ASG, EBS, RDS)",
+    "gaStartDate": "2026-06-23",
+    "module": "Cloud & AI Cost Management",
+    "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "CCM_AZURE_PASSTHROUGH_RECOMMENDATIONS_V2_READ",
+    "description": "Read Azure recommendations from the new data store for the frontend",
+    "gaStartDate": "2026-06-23",
+    "module": "Cloud & AI Cost Management",
+    "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "CCM_AZURE_PASSTHROUGH_RECOMMENDATIONS_V2_INGESTION",
+    "description": "Ingest Azure recommendations into the new data store with updated resource type and monthly cost",
+    "gaStartDate": "2026-06-23",
+    "module": "Cloud & AI Cost Management",
+    "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "CCM_WORKLOAD_RECOMMENDATION_AUTO_INFERENCE",
+    "description": "Enable auto-inference for K8s workload recommendation application by detecting resource changes",
+    "gaStartDate": "2026-06-23",
+    "module": "Cloud & AI Cost Management",
+    "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "CCM_ECS_RECOMMENDATION_AUTO_INFERENCE",
+    "description": "Enable auto-inference for ECS recommendation application by detecting resource changes",
+    "gaStartDate": "2026-06-23",
+    "module": "Cloud & AI Cost Management",
+    "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "CCM_RECOMMENDATION_AZURE_PASSTHROUGH_COST_SETTINGS",
+    "description": "Enable cost type settings for Azure passthrough recommendations",
+    "gaStartDate": "2026-06-23",
+    "module": "Cloud & AI Cost Management",
+    "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "CCM_RECOMMENDATION_NODEPOOL_COST_SETTINGS",
+    "description": "Enable cost type settings for node pool recommendations",
+    "gaStartDate": "2026-06-23",
+    "module": "Cloud & AI Cost Management",
+    "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "CCM_RECOMMENDATION_ACTUAL_SAVINGS",
+    "description": "Display actual realized savings for recommendations",
+    "gaStartDate": "2026-06-23",
+    "module": "Cloud & AI Cost Management",
+    "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "CCM_PERSPECTIVE_RECOMMENDATIONS",
+    "description": "Show recommendations within Perspectives",
+    "gaStartDate": "2026-06-23",
+    "module": "Cloud & AI Cost Management",
+    "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "CCM_RECOMMENDATION_ECS_COST_SETTINGS",
+    "description": "Enable cost type settings for ECS recommendations",
+    "gaStartDate": "2026-06-23",
+    "module": "Cloud & AI Cost Management",
+    "lifecycleState": "Limited GA"
   },
   {
     "flagKey": "WORKLOAD_RECOMMENDATIONS_V2",
