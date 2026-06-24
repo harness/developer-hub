@@ -1379,11 +1379,11 @@
     "lifecycleState": "Beta"
   },
   {
-    "flagKey": "IDP_CATALOG_V2",
+    "flagKey": "CATALOG_V2",
     "description": "Enables the UI to use /v2/entities, which provides an optimized retrieval of entities along with their associated scorecards, while preserving the filtering behavior of the /v1/entities API.",
     "gaStartDate": "2026-06-23",
     "module": "Internal Developer Portal",
-    "lifecycleState": "Limited GA"
+    "lifecycleState": "Beta"
   },
   {
     "flagKey": "ENABLE_GITHUB_ENTERPRISE_PROVIDER_FLOW",
