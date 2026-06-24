@@ -36,13 +36,24 @@ export const spt: IltCardItem[] = [
     cardType: cardType.SPT,
   },
  {
-    title: "Continuous Delivery & GitOps",
+    title: "Introduction to Policy as Code [OPA]",
     module: MODULES.cd,
     type: type.user,
     description:
       "Self-paced tidbit introducing Policy as Code [OPA].",
     version: "Harness CD & GitOps Free Plans",
     link: "https://university-registration.harness.io/self-paced-training-tidbit-policy-as-code",
+    tileType: tileType.normal,
+    cardType: cardType.SPT,
+  },
+   {
+    title: "Introduction to Drift Detection",
+    module: MODULES.cd,
+    type: type.user,
+    description:
+      "Self-paced tidbit introducing Drift Detection.",
+    version: "Harness CD & GitOps Free Plans",
+    link: "https://university-registration.harness.io/self-paced-training-tidbit-harness-cd-drift-detection",
     tileType: tileType.normal,
     cardType: cardType.SPT,
   },
