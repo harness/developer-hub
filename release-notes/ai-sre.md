@@ -21,6 +21,8 @@ The release notes describe recent changes to Harness AI SRE.
 
 #### New Features and Enhancements
 
+- **Selective On-Call Sync:** You can now import on-call configuration selectively from PagerDuty, OpsGenie, and xMatters by choosing specific services (PagerDuty) or groups (OpsGenie, xMatters) rather than importing an entire account. A preview step shows which users, teams, schedules, and escalation policies already exist in Harness before you commit, and the sync runs as a resumable, cancellable background job that stays idempotent on retry. Matched users are invited and on-call roles are auto-assigned during the sync, and a dedicated sync history view tracks each run's results. Navigate to **On-Call > 3rd Party Sync** to import from a connected provider. This feature is gated behind the `IR_ENABLE_SELECTIVE_SYNC` feature flag and enabled per account; contact Harness to have it enabled for your organization. Go to [Configure On-Call Schedules](/docs/ai-sre/oncall/create-oncall-schedules) to set up on-call schedules.
+
 - **Duplicate Runbook:** You can now duplicate an existing runbook from the runbook menu. Selecting **Duplicate** creates a full copy with all chain items, action configurations, and metadata preserved, then automatically navigates to the newly created runbook so you can rename and adjust it. This is helpful for building variations of a proven runbook without rebuilding from scratch. This feature is gated behind the `IR_DUPLICATE_RUNBOOK` feature flag. See [Create a Runbook](/docs/ai-sre/runbooks/create-runbook) for details.
 
 ## May 2026
