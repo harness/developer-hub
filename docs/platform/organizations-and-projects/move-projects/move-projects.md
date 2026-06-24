@@ -85,6 +85,7 @@ Project moves are supported for the following Harness modules:
 * <a href="/docs/security-testing-orchestration/whats-supported/sto-deployments" target="_blank">Security Test Orchestration</a>: Full support.
 * <a href="/docs/code-repository/code-supported" target="_blank">Code Repository</a>: Full support.
 * <a href="/docs/database-devops/dbdevops-supported-platforms" target="_blank">Database DevOps</a>: Full support.
+* <a href="/docs/artifact-registry/whats-supported" target="_blank">Artifact Registry</a>: Full support.
 
 Go to <a href="/docs/platform/references/harness-entity-reference" target="_blank">Harness entity reference</a> for details about all Harness entities.
 
