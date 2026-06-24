@@ -111,6 +111,7 @@ To add FME steps to a pipeline:
    | [**Limit Exposure**](#limit-exposure)                        | Control exposure to targeting rules       | Use when you want to set the percentage of users exposed to targeting rules in a specific environment, with everyone else going to the default treatment.            |
    | [**Reallocate Traffic**](#reallocate-traffic)                | Reassign users across treatments          | Use to reassign users across treatments for a feature flag in a specific environment without changing the targeting rules. This regenerates the seed value used for randomizing assignment in percentage distributions. |
    | [**Patch Definition**](#patch-definition)                    | Apply patch operations to a flag definition | Use when you want to apply granular patch operations to a feature flag definition in a specific environment.                                                       |
+   | [**Definition Instructions**](#definition-instructions)         | Apply flag definition instructions atomically | Use when you want to apply structured, UI-driven changes to a feature flag definition in a single, atomic operation in a specific environment.   |
    | [**Create Segment**](#create-segment) | Create standard or rule-based segments | Use when you want to create reusable audience segments for targeting feature flags based on user attributes, traffic type, or targeting rules. |
    | [**Update Segment**](#update-segment) | Update segment metadata | Use when you need to modify segment metadata such as descriptions or owners without changing the segment targeting logic. |
    | [**Delete Segment**](#delete-segment) | Permanently delete a segment | Use when a segment is no longer needed and should be removed from Harness FME. |
@@ -502,7 +503,7 @@ Use this step to reassign users across treatments for a feature flag in a specif
 
 ### Patch Definition
 
-Use this step to apply patch operations to a feature flag definition in a specific environment. This step supports bundling multiple changes into a single operation and can be used for advanced configurations not yet available as a dedicated step. For available operations, refer to the [FME Admin API partial update endpoint](https://docs.split.io/reference/partial-update-feature-flag-definition-in-environment).
+Use this step to apply patch operations to a feature flag definition in a specific environment. This step supports bundling multiple changes into a single operation and can be used for advanced configurations. For available operations, refer to the [FME Admin API partial update endpoint](https://docs.split.io/reference/partial-update-feature-flag-definition-in-environment).
 
 1. In your pipeline stage, click **+ Add Step**.
 1. Select **Patch Definition** under **Feature Management & Experimentation** in the Step Library.
@@ -514,6 +515,197 @@ Use this step to apply patch operations to a feature flag definition in a specif
    - **Operations**: Enter the patch operations to apply to the flag definition.
 
 1. Optionally, define [input variables](/docs/platform/variables-and-expressions/harness-variables#input-and-output-variables) that can be referenced within this step and others in the pipeline.
+1. Click **Apply Changes** to add the step to the pipeline.
+
+### Definition Instructions
+
+Use this step to apply structured change instructions to a feature flag definition in a specific environment. All changes are applied atomically, ensuring consistency across multiple updates in a single execution. This step is ideal when you want a UI-driven way to update flag configurations without writing raw patch operations.
+
+1. In your pipeline stage, click **+ Add Step**.
+1. Select **Definition Instructions** under **Feature Management & Experimentation** in the Step Library.
+1. In the **Step Parameters** tab, configure the following:
+
+   - **Name**: Add a step name.
+   - **Environment**: Specify the environment.
+   - **Feature Flag**: Add the feature flag name.
+
+1. In the **Flag Definition Changes** section, click **Add a Flag Change** and select an operation from the following options:
+
+   ![](./static/pipeline-flag.png)
+   
+   <br />
+
+   <details> 
+   <summary>Set Default Treatment</summary> 
+   
+   In the `Default Treatment` section, enter a treatment name. 
+   
+   </details>
+   <details> 
+   <summary>Set Baseline Treatment</summary> 
+   
+   In the `Baseline Treatment` section, enter a treatment name. 
+   
+   </details>
+   <details> 
+   <summary>Set Track Impression</summary> 
+   
+   In the `Enable Impression Tracking` section, select **Enabled** or **Disabled**. 
+   
+   </details>
+   <details> 
+   <summary>Set Limit Exposure</summary> 
+   
+   In the `Exposure Limit` section, enter a number from 0 to 100. 
+   
+   </details>
+   <details>
+   <summary>Update Individual Targets</summary> 
+   
+   In the `Treatment Configurations` section, enter a treatment name in the `Treatment` field. 
+   
+   - Optionally, enter keys to add in the `Add Keys` field.
+   - Optionally, enter keys to remove in the `Remove Keys` field.
+   - Optionally, enter keys to set in the `Set Keys` field.
+   - Optionally, enter segments to add in the `Add Segments` field.
+   - Optionally, enter segments to remove in the `Remove Segments` field.
+   - Optionally, enter segments to set in the `Set Segments` field.
+   
+   <br />
+
+   You cannot use **Set Keys** together with **Add Keys** or **Remove Keys** in the same change. Similarly, you cannot use **Set Segments** together with **Add Segments** or **Remove Segments**.
+
+   - Use **Set** when you want to fully replace existing values.
+   - Use **Add/Remove** when you want to incrementally update existing values.
+
+   <br />
+
+   Click **+ Add Treatment** to configure additional treatments.
+
+   </details>
+   <details>
+   <summary>Update Dynamic Configuration</summary>
+
+   Enter a treatment name in the `Treatment` field. Provide a JSON configuration in the editor, or leave the value empty to clear any previously set configuration for that treatment.
+   
+   Click **+ Add Treatment** to configure additional treatments.
+
+   </details>
+   <details>
+   <summary>Set Targeting Rules</summary>
+
+   Click **+ Add Rule** to add a targeting rule. Click **+ Add** to define conditions using a supported rule type. You can optionally negate a rule by clicking the **Negate** checkbox. 
+   
+   The following rule types are supported:
+
+   - **In Segment**  
+   - **In Feature Flag**  
+   - **Boolean**  
+   - **On Date**  
+   - **On or After Date**  
+   - **On or Before Date**  
+   - **Between Dates**  
+   - **Equal (Set)**  
+   - **Any Of (Set)**  
+   - **All Of (Set)**  
+   - **Part Of (Set)**  
+   - **Equal (Number)**  
+   - **Less Than or Equal (Number)**  
+   - **Greater Than or Equal (Number)**  
+   - **Between (Number)**  
+   - **In List (String)**  
+   - **Starts With (String)**  
+   - **Ends With (String)**  
+   - **Contains (String)**  
+   - **Matches (String)**  
+   - **Equal To (Semver)**  
+   - **Greater Than or Equal To (Semver)**  
+   - **Less Than or Equal To (Semver)** 
+   - **Between (Semver)**  
+   - **In List (Semver)**
+   
+   <br />
+   
+   Enter a segment identifier in the `Segment` field. Click **+ Add** to add an additional `AND` condition.
+
+   Configure traffic allocation in the `Distribute treatment as follows` section by assigning percentages per treatment. Click **+ Add Allocation** to add an allocation.
+
+   - In the `Treatment` field, enter a treatment name. 
+   - In the `Size %` field, enter a percentage. 
+
+   </details>
+   <details>
+   <summary>Set Default Allocations</summary>
+
+   Configure percentage-based traffic allocation across treatments.
+
+   - In the `Treatment` field, enter a treatment name. 
+   - In the `Allocation Percentage` field, enter a percentage value. 
+   
+   <br />
+
+   Click **+ Add Treatment** to configure additional treatments. 
+   
+   :::info Allocation Percentage
+   The total allocation across all treatments must equal 100.
+   :::
+
+   </details>
+   <details>
+   <summary>Set Treatments</summary>
+
+   Configure treatments for the feature flag definition.
+   
+   - In the `Treatment` field, enter a treatment name. 
+   - In the `Description` field, enter a description. 
+   
+   <br />
+   
+   Click **+ Add Treatment** to configure additional treatments. 
+
+   </details>
+   <details>
+   <summary>Set Rollout Status</summary>
+
+   In the `Rollout Status` field, select one of the following statuses: 
+
+   - **Pre-Production**
+   - **0% in Production**
+   - **Killed**
+   - **Internal Testing**
+   - **External Beta**
+   - **Ramping**
+   - **Experimenting**
+   - **100% Released**
+   - **Removed from Code**
+   - **Permanent**
+
+   </details>
+   <details>
+   <summary>Kill/Restore Flag</summary>
+
+   In the `Action` field, select one of the following:
+   
+   - **Kill** 
+   - **Restore**  
+
+   </details>
+
+1. Add additional changes by clicking **+ Add a Flag Change**. Each change type can be used at most once per step.
+1. In the `Optional Configuration` section, you can configure treatments if the flag definition does not already exist in the target environment. These settings are ignored when a flag definition already exists.
+
+   To configure treatments:
+
+   - Click **+ Add Treatment**.
+   - Enter a treatment name.
+   - Optionally, enter a description.
+   - Repeat as needed for additional treatments.
+
+   Then configure the following:
+
+   - In the `Default Treatment` field, select a default treatment.
+   - In the `Baseline Treatment` field, select a baseline treatment.
+
 1. Click **Apply Changes** to add the step to the pipeline.
 
 ### Create Segment

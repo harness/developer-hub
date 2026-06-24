@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2026-05-27T10:00:00
+date: 2026-06-24T10:00:00
 tags: ["fme", "feature management experimentation"]
 sidebar_position: 11
 ---
@@ -14,7 +14,28 @@ import TabItem from '@theme/TabItem';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: May 27, 2026
+#### Last updated: June 24, 2026
+
+## June 2026
+
+### [New Enhancement] Update Feature Flag Definitions in Harness Pipelines
+----
+#### 2026-06-24
+
+Harness FME now supports the **Definition Instructions** step, allowing structured, atomic updates to feature flag definitions in [Harness pipelines](/docs/feature-management-experimentation/pipelines/). Teams can use this step to apply multiple configuration changes to a feature flag in a single, consistent operation without requiring raw patch operations.
+
+![](./static/fme/pipelines-flag.png)
+
+With the **Definition Instructions** step, teams can standardize how feature flags are configured across environments by applying updates to default treatments, baseline treatments, targeting rules, individual targeting, dynamic configurations, impression tracking, default allocations, treatments, rollout status, and kill/restore operations, all executed atomically to ensure consistency across changes.
+
+This simplifies complex flag updates by providing a UI-driven approach to feature flag configuration. Instead of constructing patch payloads, you can define structured change instructions that are validated and applied together as a single operation. For advanced use cases requiring granular control, teams can use the [Admin API endpoint](https://docs.split.io/reference/full-update-feature-flag-definition-in-environment).
+
+This step is available under **Feature Management & Experimentation** in the [Harness pipeline step library](/docs/platform/pipelines/add-a-stage#steps-available-for-custom-stages) and can be combined with existing pipeline capabilities such as approvals, notifications, and failure strategies to standardize and automate feature management workflows.
+
+#### Related documentation
+
+- [Using Feature Management & Experimentation with Harness Pipelines](/docs/feature-management-experimentation/pipelines/#definition-instructions)
+- [Full Update Feature Flag Definition Admin API Endpoint](https://docs.split.io/reference/full-update-feature-flag-definition-in-environment)
 
 ## May 2026
 
