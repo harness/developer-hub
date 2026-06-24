@@ -19,6 +19,8 @@ redirect_from:
 
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 import DocImage from '@site/src/components/DocImage';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 Worker Agents are AI-powered automation units that execute tasks inside Harness pipelines using a language model, MCP-connected data sources, and configurable inputs. Each Worker Agent pairs a prompt (Instructions), a Model Connector, and optional MCP Servers into a single, reusable, governed step you can add to CI, CD, IaCM, STO, SCS, or Custom stages.
 
@@ -444,7 +446,12 @@ This provides fine-grained control over what the agent can do at runtime without
 
 ### Configure agent permissions
 
-Add a `permissions` block under `spec` in the stage definition:
+The placement of the `permissions` block differs by stage type. Select your stage below.
+
+<Tabs>
+<TabItem value="ci" label="CI, STO, SCS, IaCM (Stage Level)" default>
+
+In CI, STO, SCS, and IaCM stages, the Agent step runs directly in the stage. Add a `permissions` block under `spec` in the stage definition:
 
 ```yaml
 stages:
@@ -461,6 +468,45 @@ stages:
           user: view|manage|invite|impersonate
 ```
 
+</TabItem>
+<TabItem value="cd" label="CD, Custom (Step Group Level)">
+
+Add the `permissions` block to the Containerized Step Group, not the stage. The scoped token is injected into every step in the group and exposed as the `HARNESS_TOKEN` and `HARNESS_BASE_URL` environment variables, which steps read to authenticate with Harness APIs.
+
+```yaml
+- stepGroup:
+    name: Container
+    identifier: Container
+    permissions:
+      pipeline: execute|view
+      code_repository: view
+      artifact_registry: view|downloadartifact
+    steps:
+      - step:
+          type: Run
+          name: Run_1
+          identifier: Run_1
+          spec:
+            connectorRef: account.your_docker_connector
+            image: busybox
+            shell: Sh
+            command: |-
+              # Do not run 'env' in production. It dumps all environment
+              # variables, including HARNESS_TOKEN, to the build log.
+              echo "HARNESS_TOKEN: $HARNESS_TOKEN"
+              echo "HARNESS_BASE_URL: $HARNESS_BASE_URL"
+    stepGroupInfra:
+      type: KubernetesDirect
+      spec:
+        connectorRef: account.your_k8s_connector
+        namespace: your-delegate-namespace
+```
+
+The token is scoped to exactly the permissions declared on the step group. In the example above, every step in the `Container` group can execute and view pipelines, view code repositories, and view or download artifacts. No other actions are permitted, even if the agent author holds broader permissions.
+
+</TabItem>
+</Tabs>
+
 ### Supported permissions
 
 The following table lists the supported entities and their available permission values. Separate multiple permissions with the pipe (`|`) character.
@@ -474,7 +520,7 @@ The following table lists the supported entities and their available permission 
 
 ### How agent permissions work
 
-- The `permissions` block scopes the agent's access token to only the specified entities and actions.
+- The `permissions` block scopes the agent's access token down to only the specified entities and actions. The token cannot perform any action you do not list, even if the agent author holds broader permissions.
 - The agent receives a runtime token with these permissions injected, independent of the pipeline author's personal permissions.
 - This replaces the default behavior where the agent inherits the authoring user's credentials via an MCP Connector for Harness.
 - Permissions are evaluated at pipeline execution time and apply for the duration of the agent step.
@@ -778,6 +824,9 @@ Always store your Slack webhook URL as an encrypted text secret in Harness and r
 
 This agent acts as a Principal-level Staff Engineer and Security Architect. It performs deep, opinionated review across four domains: Security, Compliance, Schema/Architecture, and Engineering Judgment. It is suited for high-risk or architecture-sensitive changes.
 
+<details>
+<summary>Staff Engineer PR Review Agent definition (full YAML)</summary>
+
 ```yaml
 version: 1
 agent:
@@ -829,6 +878,8 @@ agent:
         - harness_hosted_mcp
 ```
 
+</details>
+
 ---
 
 ## Example: Diff-scoped PR Reviewer
@@ -841,6 +892,9 @@ Key differences from the Staff Engineer example:
 - **Diff-scoped review:** Reviews only files and lines changed by the diff, not the entire repository.
 - **Lower cost:** `max_turns: 40` (compared to 150) for faster, lower-cost execution.
 - **Explicit failure mode:** Stops and reports if the exact diff cannot be retrieved.
+
+<details>
+<summary>Diff-scoped PR Reviewer Agent definition (full YAML)</summary>
 
 ```yaml
 version: 1
@@ -910,6 +964,8 @@ agent:
           inputType: connector
 ```
 
+</details>
+
 ---
 
 ## Example: IaC Plan Safety Agent with output variables
@@ -924,6 +980,9 @@ Key features of this example:
 - **Structured JSON contract:** The agent writes a validated JSON assessment file and publishes key fields as output variables for pipeline-level consumption.
 
 ### Agent definition YAML
+
+<details>
+<summary>IaC Plan Safety Agent definition (full YAML)</summary>
 
 ```yaml
 version: 1
@@ -1185,6 +1244,8 @@ agent:
       default: /harness/.agent/output/risk-assessment.json
 ```
 
+</details>
+
 ### Output declarations
 
 The `output` array at the end of the `with` block declares which keys the agent publishes as step output variables:
@@ -1233,6 +1294,9 @@ Each agent is a standalone Worker Agent definition that can be reused independen
 ### Agent 1: Feature Analyzer (spec generator)
 
 This agent scans the PR diff for `Features.md` files, generates a structured spec for each one, and commits the spec to the PR source branch.
+
+<details>
+<summary>Feature Analyzer Agent definition (full YAML)</summary>
 
 ````yaml
 version: 1
@@ -1395,9 +1459,14 @@ agent:
           inputType: connector
 ````
 
+</details>
+
 ### Agent 2: Plan Generator (spec + coding plan)
 
 This agent extends the spec generator to also produce a `Plan.md` with a task-level work breakdown, architecture decisions, and test strategy. It reads the spec as its primary input and commits both spec and plan artifacts in a single batched commit.
+
+<details>
+<summary>Plan Generator Agent definition (full YAML)</summary>
 
 ````yaml
 version: 1
@@ -1551,9 +1620,14 @@ agent:
           inputType: connector
 ````
 
+</details>
+
 ### Agent 3: Implementation Agent
 
 This agent reads the coding plan, implements tasks in order, runs build and test commands, and commits code changes to the PR source branch. It tracks progress in a sidecar status file so subsequent runs resume where the previous run left off.
+
+<details>
+<summary>Implementation Agent definition (full YAML)</summary>
 
 ````yaml
 version: 1
@@ -1695,6 +1769,8 @@ agent:
       type: string
       default: "5"
 ````
+
+</details>
 
 ### Pipeline: Spec-driven development
 
