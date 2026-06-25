@@ -200,27 +200,23 @@ The Provision operation adds three Terraform plugin steps: `init`, `plan`, and `
 
 ---
 
-### Step 4: Add an Approval step (optional)
+### Step 4: Run your pipeline
 
-You can add the Approval step to prompt a review of the previous pipeline before proceeding to the next. The most common use case would be to add the Approval step between the `plan` and `apply` steps to ensure you are happy with the infrastructure changes and estimated costs (if `cost estimation` is enabled on your Workspace) that come with them before applying them.
+Now run your pipeline to provision your infrastructure.
 
-:::warning Approval steps hold resources
-When using an Approval step, the underlying machine running the pipeline remains active until the approval is resolved. This means it will continue consuming compute resources.
+To run your provision pipeline, do the following:
+
+1. Click **Save** to save your pipeline.
+2. Click **Run** in the top right corner.
+3. Confirm any runtime inputs if prompted.
+4. Click **Run Pipeline**.
+
+The pipeline executes the three steps in order: init, plan, and apply. Each step shows progress in real time. Click any step to view detailed logs.
+
+After the apply step completes successfully, your infrastructure is provisioned. Go to the **Workspaces** view, select your workspace, and open the **Resources** tab to see the resources created.
+
+:::note Add production features
+
+Go to [Set Up OpenTofu Provisioner](/docs/infra-as-code-management/iac-provisioners/opentofu/setup-opentofu-provisioner) to add approval gates, cost estimation, and variable management to your provisioner.
+
 :::
-
-<Tabs>
-<TabItem value="Interactive guide">
-<DocVideo src="https://app.tango.us/app/embed/e84d97b6-413b-4e04-a4dc-fd4c802d0f05?skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Add Approval step to your OpenTofu Pipeline in Harness IaCM" />
-</TabItem>
-<TabItem value="Step-by-step">
-
-1. From the Pipeline > **Execution** tab, click on **+** between `plan` and `apply`.
-
-![Add Approval Step](./static/add-approval-step.png)
-
-2. Click **Add Step**.
-3. Under **IACM**, select **IACM Approval**.
-4. Name the approval step and click **Apply Changes**.
-5. Select **Save**, then **Run** your pipeline.
-</TabItem>
-</Tabs>

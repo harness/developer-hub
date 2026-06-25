@@ -1736,15 +1736,36 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'category',
-          label: 'AWS CDK',
+          label: 'IaC Provisioners',
           link: {
-            type: 'doc',
-            id: 'infra-as-code-management/aws-cdk/overview',
+            type: 'generated-index',
           },
           collapsed: true,
           items: [
-            'infra-as-code-management/aws-cdk/overview',
-            'infra-as-code-management/aws-cdk/cdk-pipeline-steps',
+            {
+              type: 'category',
+              label: 'OpenTofu',
+              link: {
+                type: 'generated-index',
+              },
+              collapsed: true,
+              items: [
+                'infra-as-code-management/iac-provisioners/opentofu/setup-opentofu-provisioner',
+              ],
+            },
+            {
+              type: 'category',
+              label: 'AWS CDK',
+              link: {
+                type: 'doc',
+                id: 'infra-as-code-management/iac-provisioners/cdk/overview',
+              },
+              collapsed: true,
+              items: [
+                'infra-as-code-management/iac-provisioners/cdk/overview',
+                'infra-as-code-management/iac-provisioners/cdk/cdk-pipeline-steps',
+              ],
+            },
           ],
         },
         {

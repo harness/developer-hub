@@ -13,6 +13,8 @@ keywords:
 tags:
   - iacm
   - aws-cdk
+redirect_from:
+  - /docs/infra-as-code-management/aws-cdk/overview
 sidebar_position: 10
 ---
 
@@ -38,7 +40,7 @@ CDK workspaces in Harness IaCM run four pipeline steps in sequence. Each step co
 
 **Deploy** executes the CloudFormation change set and provisions your infrastructure. Harness records the result in the workspace activity history, broken down by stack.
 
-Go to [CDK pipeline steps](/docs/infra-as-code-management/aws-cdk/cdk-pipeline-steps) to read the full reference on each step's inputs and configuration options.
+Go to [CDK pipeline steps](/docs/infra-as-code-management/iac-provisioners/cdk/cdk-pipeline-steps) to read the full reference on each step's inputs and configuration options.
 
 ---
 
@@ -104,5 +106,5 @@ You can still target a single stack from the pipeline UI using the **Stack Path*
 ## Related concepts
 
 - Go to [Get started with IaCM](/docs/infra-as-code-management/get-started#awscdk) to create your first CDK workspace and run a deploy pipeline.
-- Go to [CDK pipeline steps](/docs/infra-as-code-management/aws-cdk/cdk-pipeline-steps) to read the reference for the bootstrap, synth, diff, and deploy steps.
+- Go to [CDK pipeline steps](/docs/infra-as-code-management/iac-provisioners/cdk/cdk-pipeline-steps) to read the reference for the bootstrap, synth, diff, and deploy steps.
 - Go to [AWS CDK provisioning: Step settings common to multiple steps](/docs/continuous-delivery/cd-infrastructure/aws-cdk#step-settings-common-to-multiple-steps) for shared settings on containerized CDK steps in CD and IaCM.

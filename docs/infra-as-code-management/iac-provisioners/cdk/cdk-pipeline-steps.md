@@ -13,6 +13,8 @@ keywords:
 tags:
   - iacm
   - aws-cdk
+redirect_from:
+  - /docs/infra-as-code-management/aws-cdk/cdk-pipeline-steps
 sidebar_position: 20
 ---
 
@@ -20,7 +22,7 @@ import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
 CDK workspaces in Harness IaCM use dedicated pipeline steps that map to the CDK deployment lifecycle. Each step is available in the pipeline editor under the **IACM** step category.
 
-Go to [Get started with IaCM](/docs/infra-as-code-management/get-started#awscdk) to understand how these steps fit together in a complete deploy pipeline. Go to [AWS CDK overview](/docs/infra-as-code-management/aws-cdk/overview) to understand the lifecycle and stacks.
+Go to [Get started with IaCM](/docs/infra-as-code-management/get-started#awscdk) to understand how these steps fit together in a complete deploy pipeline. Go to [AWS CDK overview](/docs/infra-as-code-management/iac-provisioners/cdk/overview) to understand the lifecycle and stacks.
 
 ---
 
@@ -75,7 +77,7 @@ When diff shows a resource replacement (remove and re-add), the existing resourc
 
 Deploy executes the CloudFormation change set produced by synth and applies the infrastructure changes to your AWS account. Harness records the result in the workspace activity history, broken down by stack.
 
-By default, deploy runs against all stacks defined in your CDK app. To deploy a single stack, set the **Stack Path** field to the identifier of the target stack. Go to [Stacks](/docs/infra-as-code-management/aws-cdk/overview#stacks) to understand how stacks work.
+By default, deploy runs against all stacks defined in your CDK app. To deploy a single stack, set the **Stack Path** field to the identifier of the target stack. Go to [Stacks](/docs/infra-as-code-management/iac-provisioners/cdk/overview#stacks) to understand how stacks work.
 
 :::info CloudFormation manages rollback
 If a resource fails to provision during deploy, CloudFormation automatically rolls back the entire stack to its previous state. Harness reflects the rollback status in the activity history.

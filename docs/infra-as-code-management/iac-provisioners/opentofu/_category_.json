@@ -1,0 +1,15 @@
+{
+  "label": "OpenTofu",
+  "position": 30,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "default",
+  "link": {
+    "type": "generated-index",
+    "title": "OpenTofu",
+    "slug": "/category/iacm-opentofu"
+  },
+  "customProps": {
+    "helpdocs_category_id": ""
+  }
+}
