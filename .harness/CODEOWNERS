@@ -233,7 +233,6 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io richard.black@harness.io a
 /src/components/Roadmap/data/ataData.ts shibam.dhar@harness.io debaditya.chatterjee@harness.io sumit.khaitan@harness.io
 /release-notes/static/ait/ shibam.dhar@harness.io debaditya.chatterjee@harness.io sumit.khaitan@harness.io
 
-
 # Artifact Registry Docs
 /docs/artifact-registry/ ranajoy.roy@harness.io shankar.hariharan@harness.io shivakumar.ningappa@harness.io richard.black@harness.io arvind.choudhary@harness.io shibam.dhar@harness.io
 /release-notes/artifact-registry.md ranajoy.roy@harness.io shankar.hariharan@harness.io shivakumar.ningappa@harness.io richard.black@harness.io arvind.choudhary@harness.io shibam.dhar@harness.io
@@ -247,9 +246,6 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io richard.black@harness.io a
 
 # Cloud Operations Docs
 /docs/harness-cloud-operations/ @ankit-harness
-
-# FF GA Feed
-/release-notes/static/ff-ga-feed.json pooja.singhal@harness.io kalyan.sai@harness.io deepak.puthraya@harness.io mohit.garg@harness.io ravi.vankadari@harness.io navaneeth.kn@harness.io rohit.karelia@harness.io alexandru.casian@harness.io anshul@harness.io pritesh.chandaliya@harness.io pranay.shah@harness.io rajatha.ranganath@harness.io maanav.shah@harness.io hemanth.mantri@harness.io sakshi.jain@harness.io kuber.mehrotra@harness.io prateek.mittal@harness.io shashank.singh@harness.io ashok.prabhu@harness.io bharat.goel@harness.io kavita.maurya@harness.io roger.simms@harness.io vikyath.harekal@harness.io @sumit.kumar@harness.io
 
 # Harness Solutions Factory
 /docs/harness-solutions-factory jeremy.goodrum@harness.io ashley.kim@harness.io aditya.kashyap@harness.io riley.snyder@harness.io
