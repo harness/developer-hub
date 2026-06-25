@@ -58,6 +58,17 @@ export const spt: IltCardItem[] = [
     cardType: cardType.SPT,
   },
   {
+    title: "Introduction to Pipeline Controls",
+    module: MODULES.cd,
+    type: type.user,
+    description:
+      "Self-paced tidbit introducing Pipeline Controls.",
+    version: "Harness CD & GitOps Free Plans",
+    link: "https://university-registration.harness.io/self-paced-training-tidbit-harness-cd-pipeline-controls-in-build-deploy-and-rollback",
+    tileType: tileType.normal,
+    cardType: cardType.SPT,
+  },
+  {
     title: "Continuous Integration",
     module: MODULES.ci,
     type: type.user,
