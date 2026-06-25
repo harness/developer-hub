@@ -1,266 +1,207 @@
 ---
 id: cf-app-route-unmap
 title: CF app route unmap
+sidebar_label: CF App Route Unmap
+description: Temporarily unmap a route from a Cloud Foundry app so you can test how upstream consumers behave when the app becomes unreachable via that route.
+keywords:
+  - chaos engineering
+  - cloud foundry
+  - cf app route unmap
+  - route disruption
+tags:
+  - chaos-engineering
+  - cloud-foundry-faults
 redirect_from:
 - /docs/chaos-engineering/technical-reference/chaos-faults/cloud-foundry/cf-app-route-unmap
 - /docs/chaos-engineering/chaos-faults/cloud-foundry/cf-app-route-unmap
 ---
 
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 import CFSecrets from './shared/cf-secrets.md';
 import VSphereSecrets from './shared/vsphere-secrets.md';
 
-CF app route unmap temporarily unmaps a Cloud Foundry app route and later maps it back to the app.
+CF app route unmap is a Cloud Foundry chaos fault that detaches a specific route (`host`, `path`, optional `port`) from `app` in `organization`/`space` for `duration` seconds, then re-maps it. The app itself keeps running; only its inbound route is disrupted.
 
-![CF App Route Unmap](./static/images/cf-app-route-unmap.png)
+Use this fault to validate how consumers behave when an app stops being reachable via one of its routes: gateway retries, fallback responses, alerting on 404s from the router, and DNS-level fallbacks.
+
+:::info Run your first experiment
+If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the Linux chaos infrastructure and run an experiment end to end.
+:::
+
+---
 
 ## Use cases
-CF app route unmap:
-- Checks resilience against abrupt un-mapping of an app route.
-- Validates the effectiveness of disaster recovery and high availability of the app.
 
-### Mandatory tunables
-<table>
-  <tr>
-    <th> Tunable </th>
-    <th> Description </th>
-    <th> Notes </th>
-  </tr>
-  <tr>
-    <td> organization </td>
-    <td> Organization where the target app resides. </td>
-    <td> For example, <code>dev-org</code>. </td>
-  </tr>
-  <tr>
-    <td> space </td>
-    <td> Space where the target app resides. </td>
-    <td> The space must reside within the given organization. For example, <code>dev-space</code>. </td>
-  </tr>
-  <tr>
-    <td> app </td>
-    <td> The app to be stopped </td>
-    <td> The app must reside within the given organization and space. For example, <code>cf-app</code>. </td>
-  </tr>
-  <tr>
-    <td> host </td>
-    <td> Host name of the route to be unmapped. </td>
-    <td> For example, <code>v1</code>. For more information, go to <a href="#host"> host.</a></td>
-  </tr>
-</table>
+- **Gateway resilience:** Confirm an upstream gateway or load balancer fails over correctly when one route returns 404 from the CF router.
+- **Failover routes:** Validate that secondary routes mapped to the same app continue serving traffic.
+- **Consumer behavior:** Test consumer retry, fallback, and circuit-breaker logic when a known endpoint disappears.
+- **Operational drills:** Practice the runbook for unintentional route removal.
 
-### Optional tunables
-<table>
-  <tr>
-    <th> Tunable </th>
-    <th> Description </th>
-    <th> Notes </th>
-  </tr>
-  <tr>
-    <td> faultInjectorLocation </td>
-    <td> Fault injector placement with respect to where the LCI is hosted. </td>
-    <td> Default: <code>local</code>. Supports <code>local</code> and <code>vSphere</code>. For more information, go to <a href="#fault-injector-location"> Fault Injector location</a>. </td>
-  </tr>
-  <tr>
-    <td> path </td>
-    <td> Path of the route to be un-mapped. </td>
-    <td> For example, <code>/cart</code>. For more information, go to <a href="#path"> path.</a></td>
-  </tr>
-  <tr>
-    <td> port </td>
-    <td> Port of the route to be un-mapped. </td>
-    <td> For example, <code>8080</code>. </td>
-  </tr>
-  <tr>
-    <td> faultInjectorPort </td>
-    <td> Local server port used by the fault-injector utility. </td>
-    <td> Default: <code>50320</code>. If the default port is unavailable, a random port in the range of <code>50320-51320</code> is selected. For more information, go to <a href="#fault-injector-port"> fault injector port.</a></td>
-  </tr>
-  <tr>
-    <td> duration </td>
-    <td> Duration through which chaos is injected into the target resource (in seconds). </td>
-    <td> Default: 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> chaos duration.</a> </td>
-  </tr>
-  <tr>
-    <td> skipSSLValidation </td>
-    <td> Skip SSL validation while invoking CF APIs. </td>
-    <td> Supports <code>true</code> and <code>false</code>. Default: <code>false</code>. For more information, go to <a href="#skip-ssl-validation"> skip SSL validation.</a></td>
-  </tr>
-  <tr>
-    <td> rampTime </td>
-    <td> Period to wait before and after injecting chaos (in seconds). </td>
-    <td> Default: 0s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a> </td>
-  </tr>
-</table>
+---
+
+## Before you begin
+
+- **Chaos infrastructure:** A Linux chaos infrastructure (LCI) that can reach the Cloud Foundry API and UAA endpoints.
+- **CF credentials:** `CF_API_ENDPOINT`, `CF_USERNAME`, `CF_PASSWORD`, and `UAA_SERVER_ENDPOINT` available on the LCI host.
+- **Target identifiers:** You know the `organization`, `space`, `app`, `host`, and (if non-root) `path` and `port` of the route to unmap.
+- **Route mapping exists:** The route is currently mapped to the app (run `cf routes` to confirm).
+
+---
+
+## Supported environments
+
+| Platform | Support status |
+| --- | --- |
+| Cloud Foundry (TAS, PCF, open-source) | Supported |
+| Apps with only a default route | Supported (the default route is unmapped and re-mapped) |
+
+---
+
+## Permissions required
+
+| Action | Required role | Required OAuth scope |
+| --- | --- | --- |
+| List apps and routes the user can access | `SpaceDeveloper`, `SpaceAuditor`, `OrgManager`, or `OrgAuditor` | `cloud_controller.read` or `cloud_controller.admin` |
+| Unmap and re-map the route | `SpaceDeveloper` in the app's space | `cloud_controller.write` or `cloud_controller.admin` |
+
+---
+
+## Authentication
+
+| Layer | Where to provide | Tunables |
+| --- | --- | --- |
+| Cloud Foundry API | `/etc/linux-chaos-infrastructure/cf.env` on the LCI host | `CF_API_ENDPOINT`, `CF_USERNAME`, `CF_PASSWORD`, `UAA_SERVER_ENDPOINT` |
+| vSphere (only when `faultInjectorLocation: vSphere`) | `/etc/linux-chaos-infrastructure/vsphere.env` | `GOVC_URL`, `GOVC_USERNAME`, `GOVC_PASSWORD`, `GOVC_INSECURE`, `VM_NAME`, `VM_USERNAME`, `VM_PASSWORD` |
+
+---
+
+## Fault tunables
+
+**Required parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `organization` | CF organization that owns the app. | (required) |
+| `space` | CF space within the organization. | (required) |
+| `app` | Name of the app whose route is unmapped. | (required) |
+| `host` | Host (subdomain) component of the route to unmap. For example, `my-app` for `my-app.apps.example.com`. | (required) |
+
+**Chaos parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `path` | Path component of the route. Leave empty to target the root route. | `""` |
+| `port` | TCP port of the route. Required only for TCP routes. | `""` |
+| `duration` | Total chaos duration. The route is re-mapped after this period. | `30s` |
+| `faultInjectorLocation` | Where the fault-injector runs. Supports `local` and `vSphere`. | `local` |
+| `faultInjectorPort` | Local port used by the fault-injector. | `50320` |
+| `skipSSLValidation` | Skip SSL validation when calling CF APIs. | `false` |
+| `rampTime` | Wait period in seconds before and after the fault. | `0` |
+
+Tunables that apply to every fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
+
+---
+
+## Fault execution in brief
+
+Authenticates to Cloud Foundry, locates the route specified by `host`/`path`/`port` mapped to `app`, calls the CF API to unmap it, waits `duration` seconds, then re-maps the same route. Consumers hitting the route during the fault receive 404 from the CF router because the route no longer points at any app.
+
+---
+
+## Expected behavior during fault execution
+
+- Requests to the unmapped route receive `404 Not Found` from the Cloud Foundry router.
+- The app itself continues to serve other routes normally.
+- After the fault ends, the route is re-mapped and requests succeed again.
+
+### Signals to watch
+
+- **Route reachability:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) on the route under test and assert the expected failure mode during the chaos window.
+- **Secondary route health:** Probe alternative routes mapped to the same app and confirm they keep returning 2xx.
+
+---
+
+## Recovery and cleanup
+
+- The fault re-maps the route automatically when `duration` elapses.
+- If the experiment is aborted, the fault still attempts to re-map the route on exit.
+
+---
+
+## Limitations
+
+- Affects only the specific route identified by `host`/`path`/`port`. Other routes on the same app are unaffected.
+- The fault does not delete the route from CF, only its mapping to the app. The route definition itself remains.
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="CF app route unmap fails with 'route not found' in Harness Chaos Engineering"
+  mode="docs"
+  fallback="Run cf routes from the LCI host as CF_USERNAME and confirm the host/path/port combination is currently mapped to the app. The host must be the subdomain only (not the full FQDN)."
+/>
+
+<Troubleshoot
+  issue="Route was not re-mapped after the experiment ended"
+  mode="docs"
+  fallback="The fault attempts a re-map on cleanup. If it failed, manually re-map with cf map-route <app> <domain> --hostname <host> --path <path>."
+/>
+
+---
+
+## Common configurations
+
+### Unmap a path-based route
+
+```yaml
+apiVersion: litmuchaos.io/v1alpha1
+kind: LinuxFault
+metadata:
+  name: cf-app-route-unmap
+  labels:
+    name: app-route-unmap
+spec:
+  cfAppRouteUnmap/inputs:
+    duration: 60s
+    faultInjectorLocation: local
+    app: cf-app
+    organization: dev-org
+    space: dev-space
+    host: my-app
+    path: /api/v1
+```
+
+### Unmap a TCP route
+
+```yaml
+apiVersion: litmuchaos.io/v1alpha1
+kind: LinuxFault
+metadata:
+  name: cf-app-route-unmap
+  labels:
+    name: app-route-unmap
+spec:
+  cfAppRouteUnmap/inputs:
+    duration: 30s
+    faultInjectorLocation: local
+    app: cf-app
+    organization: dev-org
+    space: dev-space
+    host: my-app
+    port: "1024"
+```
+
+---
 
 <CFSecrets />
 
 <VSphereSecrets />
 
-## Fault Permissions
-### Lists all apps that the user or system has visibility into
-
-**Required Roles (any one):**
--   `SpaceDeveloper`
--   `SpaceAuditor`
--   `OrgManager`
--   `OrgAuditor`
-
-**Required OAuth Scopes (any one):**
--   `cloud_controller.read`
--   `cloud_controller.admin`
--   `cloud_controller.global_auditor`
-
-### Fetch routes associated with a specific app
-
-**Required Roles (any one):**
--   `SpaceDeveloper`
--   `SpaceAuditor`
-
-**Required OAuth Scopes (any one):**
--   `cloud_controller.read`
--   `cloud_controller.admin`
--   `cloud_controller.global_auditor`
-
-### Remove (unmap) a specific route from the given app
-
-**Required Role:**
--   `SpaceDeveloper` (in the space where the app exists)
-
-**Required OAuth Scopes (any one):**
--   `cloud_controller.write`
--   `cloud_controller.admin`
-
-### Associate (map) a specific route with an app
-
-**Required Role:**
--   `SpaceDeveloper`
-
-**Required OAuth Scopes (any one):**
--   `cloud_controller.write`
--   `cloud_controller.admin`
-
 ---
 
-### Host
-The `host` input variable determines the host of the route which is un-mapped.
-For example, for a route `http://example-app.shared-domain.example.com`, the host is `example-app`.
+## Related faults
 
-The following YAML snippet illustrates the use of this input variable:
-
-[embedmd]:# (./static/manifests/cf-app-route-unmap/host.yaml yaml)
-```yaml
-# host for the route
-apiVersion: litmuchaos.io/v1alpha1
-kind: LinuxFault
-metadata:
-  name: cf-app-route-unmap
-  labels:
-    name: app-route-unmap
-spec:
-  cfAppRouteUnmap/inputs:
-    duration: 30
-    faultInjectorLocation: vSphere
-    app: cf-app
-    organization: dev-org
-    space: dev-space
-    host: example-app
-```
-
-### Path
-The `path` input variable determines the path of the route which is un-mapped.
-For example, for a route `http://example-app.shared-domain.example.com/abc`, the path is `/abc`.
-
-The following YAML snippet illustrates the use of this input variable:
-
-[embedmd]:# (./static/manifests/cf-app-route-unmap/path.yaml yaml)
-```yaml
-# host and path for the route
-apiVersion: litmuchaos.io/v1alpha1
-kind: LinuxFault
-metadata:
-  name: cf-app-route-unmap
-  labels:
-    name: app-route-unmap
-spec:
-  cfAppRouteUnmap/inputs:
-    duration: 30
-    faultInjectorLocation: vSphere
-    app: cf-app
-    organization: dev-org
-    space: dev-space
-    host: example-app
-    path: /abc
-```
-
-### Fault Injector location
-The `faultInjectorLocation` input determines the fault injector placement with respect to where the LCI is hosted.
-- It supports one of: 
-  - `local`: LCI and fault injector are placed in the same machine.
-  - `vSphere`: Fault injector is placed in a remote vSphere managed VM.
-
-The following YAML snippet illustrates the use of this environment variable:
-
-[embedmd]:# (./static/manifests/cf-app-container-kill/faultInjectorLocation.yaml yaml)
-```yaml
-# Fault Injector location
-apiVersion: litmuchaos.io/v1alpha1
-kind: LinuxFault
-metadata:
-  name: cf-app-container-kill
-  labels:
-    name: app-container-kill
-spec:
-  cfAppContainerKill/inputs:
-    duration: 30s
-    faultInjectorLocation: vSphere
-    app: cf-app
-    organization: dev-org
-    space: dev-space
-```
-
-### Skip SSL validation
-The `skipSSLValidation` input variable determines whether to skip SSL validation for calling the CF APIs.
-
-The following YAML snippet illustrates the use of this input variable:
-
-[embedmd]:# (./static/manifests/cf-app-route-unmap/skipSSLValidation.yaml yaml)
-```yaml
-# skip ssl validation for cf
-apiVersion: litmuchaos.io/v1alpha1
-kind: LinuxFault
-metadata:
-  name: cf-app-route-unmap
-  labels:
-    name: app-route-unmap
-spec:
-  cfAppRouteUnmap/inputs:
-    duration: 30
-    faultInjectorLocation: vSphere
-    app: cf-app
-    organization: dev-org
-    space: dev-space
-    skipSSLValidation: true
-```
-
-### Fault injector port
-The `faultInjectorPort` input variable determines the port used for the fault-injector local server.
-
-The following YAML snippet illustrates the use of this input variable:
-
-[embedmd]:# (./static/manifests/cf-app-route-unmap/faultInjectorPort.yaml yaml)
-```yaml
-# fault injector port
-apiVersion: litmuchaos.io/v1alpha1
-kind: LinuxFault
-metadata:
-  name: cf-app-route-unmap
-  labels:
-    name: app-route-unmap
-spec:
-  cfAppRouteUnmap/inputs:
-    duration: 30
-    faultInjectorLocation: local
-    app: cf-app
-    organization: dev-org
-    space: dev-space
-    faultInjectorPort: 50331
-```
+- [CF app stop](/docs/chaos-engineering/faults/chaos-faults/cloud-foundry/cf-app-stop): Stop the entire app rather than only its route.
+- [CF app container kill](/docs/chaos-engineering/faults/chaos-faults/cloud-foundry/cf-app-container-kill): Kill a container instance instead of unmapping a route.

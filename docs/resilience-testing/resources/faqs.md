@@ -94,7 +94,7 @@ To report an issue which is not mentioned here, head over to **Help** in Harness
 <details>
 <summary><strong>How do you inject chaos on managed cloud services?</strong></summary>
 
-You can obtain the required permissions to inject chaos on respective cloud-services like [AWS permissions](https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/aws/permissions), [Cloud foundry](https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/cloud-foundry/permissions), and [GCP](https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/gcp/security-configurations/prepare-secret-for-gcp).
+You can obtain the required permissions to inject chaos on respective cloud-services like [AWS permissions](/docs/chaos-engineering/faults/chaos-faults/aws/permissions), [Cloud Foundry permissions](/docs/chaos-engineering/faults/chaos-faults/cloud-foundry/permissions), and [GCP](/docs/chaos-engineering/faults/chaos-faults/gcp/security-configurations/prepare-secret-for-gcp).
 </details>
 
 <details>
@@ -363,7 +363,7 @@ To learn more, go to [authentication overview](/docs/platform/authentication/aut
 <details>
 <summary><strong>How does the chaos infrastructure connect to the Harness SaaS control plane? Which ports should be opened in the users' environments?</strong></summary>
 
-The chaos infrastructure connects to the Harness control plane through outbound connectivity over HTTP(s) using port 443. To learn more, go to [chaos infrastructures](/docs/chaos-engineering/faults/chaos-faults/cloud-foundry/permissions/).
+The chaos infrastructure connects to the Harness control plane through outbound connectivity over HTTP(s) using port 443. Go to [Chaos infrastructures](/docs/chaos-engineering/guides/infrastructures/) to read how the chaos infrastructure connects to Harness.
 </details>
 
 <details>

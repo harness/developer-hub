@@ -1,319 +1,224 @@
 ---
 id: cf-app-jvm-cpu-stress
 title: CF app JVM CPU stress
+sidebar_label: CF App JVM CPU Stress
+description: Drive CPU saturation inside the JVM of a Cloud Foundry app instance so you can test how the application and the platform react to sustained CPU pressure.
+keywords:
+  - chaos engineering
+  - cloud foundry
+  - cf app jvm cpu stress
+  - jvm cpu
+tags:
+  - chaos-engineering
+  - cloud-foundry-faults
 redirect_from:
-  - /docs/chaos-engineering/chaos-faults/cloud-foundry/cf-app-jvm-cpu-stress
+- /docs/chaos-engineering/technical-reference/chaos-faults/cloud-foundry/cf-app-jvm-cpu-stress
+- /docs/chaos-engineering/chaos-faults/cloud-foundry/cf-app-jvm-cpu-stress
 ---
 
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 import CFAndBOSHSecrets from './shared/cf-and-bosh-secrets.md';
 import VSphereSecrets from './shared/vsphere-secrets.md';
 
-CF app JVM CPU stress injects CPU stress into a Java based Cloud Foundry app's JVM.
+CF app JVM CPU stress is a Cloud Foundry chaos fault that drives high CPU usage inside the JVM process of one or more instances of a Java-based `app` in `organization`/`space`. The stress lasts for `duration` seconds and is then released.
 
-![CF App JVM CPU Stress](./static/images/cf-app-jvm-cpu-stress.png)
+Use this fault to validate how the application, the CF platform, and downstream consumers behave under sustained JVM CPU pressure: whether response latencies stay within SLO, whether the JVM's autoscaling decisions are sensible, whether the platform scales additional instances, and whether alerts fire only when the workload actually degrades.
+
+:::info Run your first experiment
+If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the Linux chaos infrastructure and run an experiment end to end.
+:::
+
+---
 
 ## Use cases
-CF app JVM CPU stress applies CPU stress to:
-- Evaluate the application's performance and throughput limits.
-- Assess the application's scalability and identify bottlenecks.
-- Simulate high CPU usage to determine performance under peak load conditions.
-- Tests the application's ability to handle resource exhaustion gracefully.
-- Increase the CPU load to test the application's concurrency handling and thread management under stress.
 
-### Mandatory tunables
-<table>
-  <tr>
-    <th>Tunable</th>
-    <th>Description</th>
-    <th>Notes</th>
-  </tr>
-  <tr>
-    <td> deploymentModel </td>
-    <td> The deployment model being used for Linux Chaos Infrastructure + Cloud Foundry Fault Injector. For more information, refer <a href="cf-chaos-components-and-their-deployment-architecture/#direct-installation-of-lci-in-the-tas-vms">here</a>.</td>
-    <td> One of: <code>model-1</code>,<code>model-2</code>. No default value is assumed, if the tunable is not provided. For <code>model-1</code>, <code>boshDeployment</code> and <code>faultInjectorLocation</code> inputs are not required. </td>
-  </tr>
-  <tr>
-    <td>organization</td>
-    <td>Organization where the target app resides.</td>
-    <td>For example, <code>dev-org</code>.</td>
-  </tr>
-  <tr>
-    <td>space</td>
-    <td>Space where the target app resides.</td>
-    <td>The space must reside within the given organization. For example, <code>dev-space</code>.</td>
-  </tr>
-  <tr>
-    <td>app</td>
-    <td>The app in which chaos will be injected.</td>
-    <td>The app must reside within the given organization and space. For example, <code>cf-app</code>.</td>
-  </tr>
-</table>
+- **Throughput limits:** Measure the application's behavior at the edge of its compute envelope.
+- **Autoscaler validation:** Confirm horizontal scaling rules trigger correctly and pull traffic away from the stressed instance.
+- **Thread pool tuning:** Check whether thread pools handle requests gracefully under contention.
+- **Alert thresholds:** Distinguish transient spikes from sustained pressure that should page on-call.
 
-### Optional tunables
-<table>
-  <tr>
-    <th>Tunable</th>
-    <th>Description</th>
-    <th>Notes</th>
-  </tr>
-  <tr>
-    <td> javaHome </td>
-		<td> Value of the <code>JAVA_HOME</code> environment variable. </td>
-		<td> Not required if the Java binary file path is added to the Linux <code>PATH</code> env or <code>JAVA_HOME</code> env is added to the Linux <code>PATH</code> env. </td>
-  </tr>
-  <tr>
-    <td> cpu </td>
-		<td> The number of CPU cores to be stressed. </td>
-		<td> Default: <code>2</code> </td>
-  </tr>
-  <tr>
-		<td> instanceAffectedPercentage </td>
-		<td> Percentage of total number of app instances that will be targeted. </td>
-		<td> Default: 0 (1 instance). For more information, go to <a href="#instance-affected-percentage"> instance affected percentage</a>. </td>
-	</tr>
-    <tr>
-		<td> faultInjectorPort </td>
-		<td> Local server port used by the fault-injector utility. </td>
-		<td> Default: <code>50320</code>. If the default port is unavailable, a random port in the range of <code>50320-51320</code> is selected. For more information, go to <a href="#fault-injector-port"> fault injector port</a>. </td>
-	</tr>
-	<tr>
-		<td> duration </td>
-		<td> Duration through which chaos is injected into the target resource (in seconds). </td>
-		<td> Default: 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> chaos duration</a>. </td>
-	</tr>
-	<tr>
-		<td> skipSSLValidation </td>
-		<td> Skip SSL validation while invoking CF APIs. </td>
-		<td> Supports <code>true</code> and <code>false</code>. Default: <code>false</code>. For more information, go to <a href="#skip-ssl-validation"> skip SSL validation</a>. </td>
-	</tr>
-	<tr>
-		<td> rampTime </td>
-		<td> Period to wait before and after injecting chaos (in seconds). </td>
-		<td> Defaults to 0. </td>
-	</tr>
-  <tr>
-    <td> boshDeployment </td>
-    <td> The bosh deployment under which the CF components are being managed. </td>
-    <td> It can be obtained using the BOSH CLI command <code>bosh deployments</code>. For more information, go to <a href="#bosh-deployment"> BOSH deployment</a>. </td>
-  </tr>
-  <tr>
-    <td> faultInjectorLocation </td>
-    <td> Location of the fault injector with respect to the cloud foundry vms. </td>
-    <td> Default: <code>local</code>. Supports <code>local</code> and <code>vSphere</code>. For more information, go to <a href="#fault-injector-location"> Fault Injector location</a>. </td>
-  </tr>
-</table>
+---
+
+## Before you begin
+
+- **Chaos infrastructure:** A Linux chaos infrastructure (LCI) installed in one of the supported deployment models.
+- **CF and BOSH credentials:** The LCI host has `CF_*`, `UAA_SERVER_ENDPOINT`, and `BOSH_*` credentials configured.
+- **Target identifiers:** You know the `organization`, `space`, `app`, and the `boshDeployment` that manages the cluster.
+- **Java app:** The target app is a Java workload. The fault relies on the JVM exposing a debug agent on `port` (default `9091`).
+- **`javaHome`:** Either the `JAVA_HOME` environment variable is set on the container, or you provide `javaHome` explicitly.
+
+---
+
+## Supported environments
+
+| Platform | Support status |
+| --- | --- |
+| Java apps deployed to Cloud Foundry (TAS, PCF, open-source) | Supported |
+| Non-Java workloads (Node.js, Python, Go) | Not supported (use [CF app network latency](/docs/chaos-engineering/faults/chaos-faults/cloud-foundry/cf-app-network-latency) for protocol-level stress) |
+
+---
+
+## Permissions required
+
+| Action | Requirement |
+| --- | --- |
+| List apps the CF user can access | `SpaceDeveloper`, `SpaceAuditor`, `OrgManager`, or `OrgAuditor`; scopes `cloud_controller.read` or `cloud_controller.admin` |
+| List BOSH deployments | BOSH user with `bosh.read` scope |
+| SSH to a Diego cell via BOSH | BOSH UAA token with `bosh.ssh` or `bosh.admin` scope |
+| Attach the JVM agent to the target container | Operator with `sudo` or root on the cell host |
+
+---
+
+## Authentication
+
+| Layer | Where to provide | Tunables |
+| --- | --- | --- |
+| Cloud Foundry API + BOSH director | `/etc/linux-chaos-infrastructure/cf.env` on the LCI host | `CF_API_ENDPOINT`, `CF_USERNAME`, `CF_PASSWORD`, `UAA_SERVER_ENDPOINT`, `BOSH_CLIENT`, `BOSH_CLIENT_SECRET`, `BOSH_CA_CERT`, `BOSH_ENVIRONMENT` |
+| vSphere (only when `faultInjectorLocation: vSphere`) | `/etc/linux-chaos-infrastructure/vsphere.env` | `GOVC_URL`, `GOVC_USERNAME`, `GOVC_PASSWORD`, `GOVC_INSECURE`, `VM_NAME`, `VM_USERNAME`, `VM_PASSWORD` |
+
+---
+
+## Fault tunables
+
+**Required parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `deploymentModel` | LCI placement model. One of `model-1` or `model-2`. For `model-1`, `boshDeployment` and `faultInjectorLocation` are not required. | (required) |
+| `organization` | CF organization that owns the app. | (required) |
+| `space` | CF space within the organization. | (required) |
+| `app` | Java app to stress. | (required) |
+
+**Chaos parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `cpu` | Number of CPU cores to saturate inside the JVM. | `2` |
+| `port` | Port exposed by the JVM agent inside the container. | `9091` |
+| `javaHome` | Value of `JAVA_HOME`. Not required if the Java binary is already on the container's `PATH`. | `""` |
+| `instanceAffectedPercentage` | Percentage of instances to target. `0` targets exactly one. | `0` |
+| `boshDeployment` | BOSH deployment name. Required for `deploymentModel: model-2`. | `""` |
+| `faultInjectorLocation` | `local` or `vSphere`. Required for `deploymentModel: model-2`. | `local` |
+| `faultInjectorPort` | Local port used by the fault-injector. | `50320` |
+| `duration` | Total chaos duration. | `30s` |
+| `skipSSLValidation` | Skip SSL validation when calling CF APIs. | `false` |
+| `rampTime` | Wait period in seconds before and after the fault. | `0` |
+
+Tunables that apply to every fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
+
+---
+
+## Fault execution in brief
+
+Authenticates to Cloud Foundry and BOSH, locates the target app instance(s), attaches an agent to the JVM process via the JVM debug port, and drives `cpu` cores worth of CPU usage inside the JVM for `duration` seconds. The agent is detached on completion and CPU usage returns to baseline.
+
+---
+
+## Expected behavior during fault execution
+
+- Process CPU on the affected instance rises toward 100% of `cpu` cores.
+- Application response latencies typically rise; throughput may dip.
+- Autoscalers may scale the app out if scale-up thresholds are reached.
+- After the fault ends, CPU returns to baseline and latencies recover.
+
+### Signals to watch
+
+- **Latency:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) and assert P95 stays within SLO.
+- **Instance count:** Use a [command probe](/docs/resilience-testing/chaos-testing/probes/command-probe) running `cf app <name>` and verify autoscaling behavior.
+
+---
+
+## Recovery and cleanup
+
+- The JVM agent is detached at the end of `duration`, releasing CPU pressure.
+- If the experiment is aborted, the fault still attempts to detach the agent before exiting.
+
+---
+
+## Limitations
+
+- Targets the JVM process inside the container, not the host. Other workloads on the same Diego cell are unaffected.
+- Requires JVM debug port (`port`) reachable inside the container.
+- Recovery time depends on the workload re-establishing its steady state after the stress is removed.
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="CF app JVM CPU stress fails with 'JAVA_HOME not found' in Harness Chaos Engineering"
+  mode="docs"
+  fallback="Set the javaHome tunable to the absolute path of the JDK on the app container (for example, /usr/lib/jvm/openjdk). If you do not know the path, run cf ssh <app> -c 'echo $JAVA_HOME' from the LCI host."
+/>
+
+<Troubleshoot
+  issue="Cannot attach to JVM debug port"
+  mode="docs"
+  fallback="Confirm the app exposes a JVM agent on the port you configured (default 9091). For Java buildpack apps, set JBP_CONFIG_DEBUG: enabled=true,port=9091 as an app env var, restage the app, and retry."
+/>
+
+<Troubleshoot
+  issue="CPU usage does not return to baseline after the experiment"
+  mode="docs"
+  fallback="The agent may have failed to detach. Restart the affected app instance: cf restart-app-instance <app> <index>. If the issue persists, restage the app to release any leaked threads."
+/>
+
+---
+
+## Common configurations
+
+### Stress multiple cores
+
+```yaml
+apiVersion: litmuchaos.io/v1alpha1
+kind: LinuxFault
+metadata:
+  name: cf-app-jvm-cpu-stress
+  labels:
+    name: app-jvm-cpu-stress
+spec:
+  cfAppJVMChaos/inputs:
+    duration: 60s
+    deploymentModel: model-2
+    faultInjectorLocation: vSphere
+    app: cf-app
+    organization: dev-org
+    space: dev-space
+    boshDeployment: cf
+    cpu: 4
+```
+
+### Target multiple instances
+
+```yaml
+apiVersion: litmuchaos.io/v1alpha1
+kind: LinuxFault
+metadata:
+  name: cf-app-jvm-cpu-stress
+  labels:
+    name: app-jvm-cpu-stress
+spec:
+  cfAppJVMChaos/inputs:
+    duration: 30s
+    deploymentModel: model-2
+    faultInjectorLocation: vSphere
+    app: cf-app
+    organization: dev-org
+    space: dev-space
+    boshDeployment: cf
+    cpu: 2
+    instanceAffectedPercentage: 50
+```
+
+---
 
 <CFAndBOSHSecrets />
 
 <VSphereSecrets />
 
-## Fault Permissions
-### List all applications the user or client has access to
-**Required Roles (any one):**
--   `SpaceDeveloper` (in the app’s space)
--   `SpaceAuditor` (read-only role in the app’s space)
--   `OrgManager` or `OrgAuditor` (at the org level)
-
-**Required OAuth Scopes (for tokens):**
--   `cloud_controller.read`
--   `cloud_controller.admin`
--   `cloud_controller.global_auditor`
-
-### List all BOSH deployments
-**Required Role:**
--   BOSH user with read permissions (typically `admin` or a user with `read` access to deployments)
-
-**Required Auth:**
--   Valid BOSH UAA token with `bosh.read` scope
-
-### Establish SSH session to a Diego Cell via BOSH SSH
-**Required Role:**
--   BOSH user with SSH access permissions for the Diego Cell instance group
-
-**Required Auth:**
--   BOSH UAA token with `bosh.ssh` or `bosh.admin` scope
-
-### Use `cfdot` to list LRPs and locate app containers
-**Required Role:**
--   Operator with SSH access to a cell and executable access to `cfdot`
-
-**Required Auth:**
--   Requires `diego.read` scope in BOSH UAA or access to the Diego BBS with a trusted client certificate
-
-### Use `ctr` (containerd CLI) to get container-level metadata and target PIDs
-**Required Role:**
--   SSH-level access to the cell host and root access (or `sudo`) to interact with containerd
-
-**Required Auth:**
--   None via API; local root or elevated user access is required
-
-### Download Byteman artifacts into the target container
-**Required Role:**
--   Root or privileged access to copy files into the app container’s namespace using tools like `nsenter` or `ctr`
-
-**Required Auth:**
--   None via API; file access is performed locally via root privileges
-
-### Inject JVM chaos using Byteman scripts inside target containers
-
-**Required Role:**
--   Root access to attach Byteman agent and execute scripts within the JVM process namespace
-
-**Required Auth:**
--   None via API; requires PID-level access to the target JVM and execution rights
-
-### Remove injected chaos by clearing Byteman rules
-**Required Role:**
--   Same as above — continued root-level access to the JVM process namespace
-
-**Required Auth:**
--   None via API; local cleanup via script execution with appropriate permissions
-
 ---
 
-### Deployment Model
-The `deploymentModel` input specifies the LCI deployment model with respect to its placement in the host TAS VM.
-- It accepts one of: `model-1`, `model-2`.
-- No default value is assumed if the input is not provided, but the experiment execution fails with an error.
+## Related faults
 
-The following YAML snippet illustrates the use of this environment variable:
-
-[embedmd]:# (./static/manifests/cf-app-jvm-cpu-stress/deploymentModel.yaml yaml)
-```yaml
-# deployment model for LCI
-apiVersion: litmuchaos.io/v1alpha1
-kind: LinuxFault
-metadata:
-  name: cf-app-jvm-cpu-stress
-  labels:
-    name: app-jvm-cpu-stress
-spec:
-  cfAppJVMChaos/inputs:
-    duration: 30s
-    faultInjectorLocation: vSphere
-    app: cf-app
-    organization: dev-org
-    space: dev-space
-    deploymentModel: model-1
-```
-
-### BOSH deployment
-The `boshDeployment` input determines the BOSH deployment name under which all the CF resources are managed. You can obtain it using the BOSH CLI command `bosh deployments`.
-
-The following YAML snippet illustrates the use of this input:
-
-[embedmd]:# (./static/manifests/cf-app-jvm-cpu-stress/boshDeployment.yaml yaml)
-```yaml
-# bosh deployment
-apiVersion: litmuchaos.io/v1alpha1
-kind: LinuxFault
-metadata:
-  name: cf-app-jvm-cpu-stress
-  labels:
-    name: app-jvm-cpu-stress
-spec:
-  cfAppJVMChaos/inputs:
-    duration: 30s
-    faultInjectorLocation: vSphere
-    app: cf-app
-    organization: dev-org
-    space: dev-space
-    boshDeployment: cf
-```
-
-### Instance affected percentage
-The `instanceAffectedPercentage` input specifies the percentage of total number of app instances that are targeted. It defaults to 0 (1 instance).
-
-The following YAML snippet illustrates the use of this input:
-
-[embedmd]:# (./static/manifests/cf-app-jvm-cpu-stress/instanceAffectedPercentage.yaml yaml)
-```yaml
-# instance affected percentage
-apiVersion: litmuchaos.io/v1alpha1
-kind: LinuxFault
-metadata:
-  name: cf-app-jvm-cpu-stress
-  labels:
-    name: app-jvm-cpu-stress
-spec:
-  cfAppJVMChaos/inputs:
-    duration: 30s
-    faultInjectorLocation: vSphere
-    app: cf-app
-    organization: dev-org
-    space: dev-space
-    boshDeployment: cf
-    instanceAffectedPercentage: 50
-```
-
-### Fault injector location
-The `faultInjectorLocation` input determines the location of the fault injector with respect to the infrastructure. It is the location where the fault-injector utility is executed.
-- It can be local, that is, the same environment used by the infrastructure, or a remote machine.
-
-The following YAML snippet illustrates the use of this input:
-
-[embedmd]:# (./static/manifests/cf-app-jvm-cpu-stress/faultInjectorLocation.yaml yaml)
-```yaml
-# Fault Injector location
-apiVersion: litmuchaos.io/v1alpha1
-kind: LinuxFault
-metadata:
-  name: cf-app-jvm-cpu-stress
-  labels:
-    name: app-jvm-cpu-stress
-spec:
-  cfAppJVMChaos/inputs:
-    duration: 30s
-    faultInjectorLocation: vSphere
-    app: cf-app
-    organization: dev-org
-    space: dev-space
-```
-
-### Skip SSL validation
-The `skipSSLValidation` input determines whether to skip SSL validation for calling the CF APIs.
-
-The following YAML snippet illustrates the use of this input:
-
-[embedmd]:# (./static/manifests/cf-app-jvm-cpu-stress/skipSSLValidation.yaml yaml)
-```yaml
-# skip ssl validation for cf
-apiVersion: litmuchaos.io/v1alpha1
-kind: LinuxFault
-metadata:
-  name: cf-app-jvm-cpu-stress
-  labels:
-    name: app-jvm-cpu-stress
-spec:
-  cfAppJVMChaos/inputs:
-    duration: 30s
-    faultInjectorLocation: vSphere
-    app: cf-app
-    organization: dev-org
-    space: dev-space
-    skipSSLValidation: true
-```
-
-### Fault injector port
-The `faultInjectorPort` input determines the port used for the fault-injector local server.
-
-The following YAML snippet illustrates the use of this input:
-
-[embedmd]:# (./static/manifests/cf-app-jvm-cpu-stress/faultInjectorPort.yaml yaml)
-```yaml
-# fault injector port
-apiVersion: litmuchaos.io/v1alpha1
-kind: LinuxFault
-metadata:
-  name: cf-app-jvm-cpu-stress
-  labels:
-    name: app-jvm-cpu-stress
-spec:
-  cfAppJVMChaos/inputs:
-    duration: 30s
-    faultInjectorLocation: local
-    app: cf-app
-    organization: dev-org
-    space: dev-space
-    faultInjectorPort: 50331
-```
+- [CF app JVM memory stress](/docs/chaos-engineering/faults/chaos-faults/cloud-foundry/cf-app-jvm-memory-stress): Apply heap or non-heap memory pressure instead of CPU stress.
+- [CF app JVM trigger GC](/docs/chaos-engineering/faults/chaos-faults/cloud-foundry/cf-app-jvm-trigger-gc): Force a garbage collection cycle to test pause-time behavior.

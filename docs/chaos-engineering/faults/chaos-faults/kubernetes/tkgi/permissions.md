@@ -40,7 +40,7 @@ This topic describes the HCE platform requires to execute chaos experiments.
 </tr>
 <tr>
 		<th> Chaos deployment and architecture details </th>
-        <td><ul><li> Refer to <a href="/docs/chaos-engineering/faults/chaos-faults/cloud-foundry/CF%20chaos%20components%20and%20their%20deployment%20architecture#run-lci-in-diego-cells-hosting-the-app-instances"> TKGi approach </a> and <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/classification#namespace-scope-mode"> namespace-scoped cluster mode. </a></li></ul></td>
+        <td><ul><li> Go to <a href="/docs/chaos-engineering/faults/chaos-faults/cloud-foundry/cf-chaos-components-and-their-deployment-architecture"> Cloud Foundry chaos deployment </a> and <a href="/docs/chaos-engineering/faults/chaos-faults/kubernetes/classification#namespace-scope-mode"> namespace-scoped cluster mode </a> to read how chaos is deployed.</li></ul></td>
 </tr>
 <tr>
 		<th> Supported chaos faults	</th>

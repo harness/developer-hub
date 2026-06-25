@@ -29,7 +29,7 @@ export const categories: FaultCardItem[] = [
 
   {
     title: "Cloud Foundry",
-    description: <>Chaos faults for Cloud Foundry </>,
+    description: <>Chaos faults for Cloud Foundry</>,
     faults: CloudFoundryExperiments.length,
     category: "cloud-foundry",
   },

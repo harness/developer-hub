@@ -65,7 +65,7 @@ To report an issue which is not mentioned here, head over to **Help** in Harness
 ## Features and capabilities
 
 #### How do you inject chaos on managed cloud services?
-You can obtain the required permissions to inject chaos on respective cloud-services like [AWS permissions](https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/aws/permissions),[Cloud foundry](https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/cloud-foundry/permissions), and [GCP](https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/gcp/security-configurations/prepare-secret-for-gcp).
+You can obtain the required permissions to inject chaos on respective cloud-services like [AWS permissions](/docs/chaos-engineering/faults/chaos-faults/aws/permissions), [Cloud Foundry permissions](/docs/chaos-engineering/faults/chaos-faults/cloud-foundry/permissions), and [GCP](/docs/chaos-engineering/faults/chaos-faults/gcp/security-configurations/prepare-secret-for-gcp).
 
 #### Do you support chaos on [X] [AWS/GCP/Azure] service?
 Yes. For more information, go to [AWS chaos](https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/aws/), [GCP chaos](https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/gcp/), and [Azure chaos](https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/azure/).
