@@ -78,13 +78,16 @@ Go to <a href="/docs/platform/organizations-and-projects/move-projects/pre-move-
 
 Project moves are supported for the following Harness modules:
 
-* <a href="/docs/platform/platform-whats-supported" target="_blank">Platform</a>: Full support.
-* <a href="/docs/continuous-delivery/cd-integrations" target="_blank">Continuous Delivery and GitOps</a>: Supported except <a href="/docs/category/get-started-with-gitops" target="_blank">GitOps</a> and <a href="/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step" target="_blank">Continuous Verification</a> entities.
-* <a href="/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me/#feature-compatibility-matrix" target="_blank">Continuous Integration</a>: Full support.
-* <a href="/docs/internal-developer-portal/whats-supported" target="_blank">Internal Developer Portal</a>: Supported except <a href="/docs/category/scorecards" target="_blank">Scorecards</a>.
-* <a href="/docs/security-testing-orchestration/whats-supported/sto-deployments" target="_blank">Security Test Orchestration</a>: Full support.
-* <a href="/docs/code-repository/code-supported" target="_blank">Code Repository</a>: Full support.
-* <a href="/docs/database-devops/dbdevops-supported-platforms" target="_blank">Database DevOps</a>: Full support.
+* <a href="/docs/artifact-registry" target="_blank">Artifact Registry</a>: Full support.
+* <a href="/docs/code-repository" target="_blank">Code Repository</a>: Full support.
+* <a href="/docs/continuous-delivery" target="_blank">Continuous Delivery and GitOps</a>: Supported except <a href="/docs/category/get-started-with-gitops" target="_blank">GitOps</a> and <a href="/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step" target="_blank">Continuous Verification</a> entities.
+* <a href="/docs/continuous-integration" target="_blank">Continuous Integration</a>: Full support.
+* <a href="/docs/database-devops" target="_blank">Database DevOps</a>: Full support.
+* <a href="/docs/internal-developer-portal" target="_blank">Internal Developer Portal</a>: Supported except <a href="/docs/category/scorecards" target="_blank">Scorecards</a>.
+* <a href="/docs/platform/get-started/overview" target="_blank">Platform</a>: Full support.
+* <a href="/docs/resilience-testing" target="_blank">Resilience Testing</a>: Full support.
+* <a href="/docs/security-testing-orchestration" target="_blank">Security Test Orchestration</a>: Full support.
+* <a href="/docs/software-supply-chain-assurance" target="_blank">Software Supply Chain Assurance (SCS)</a>: Full support.
 
 Go to <a href="/docs/platform/references/harness-entity-reference" target="_blank">Harness entity reference</a> for details about all Harness entities.
 
