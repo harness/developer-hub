@@ -341,6 +341,301 @@ upgrades:
 </details>  
 :::
 
+## June 22, 2026, Version 0.42.1 <!-- June 22, 2026 -->
+
+This table lists the module, its components, its version and the release notes versions associated with it.
+
+<table>
+<thead>
+<tr>
+<th style={{textAlign: 'center'}}>Module</th>
+<th style={{textAlign: 'center'}}>Services</th>
+<th style={{textAlign: 'center'}}>Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style={{textAlign: 'center'}} rowSpan={2}>Continuous Integration</td>
+<td style={{textAlign: 'center'}}>CI Manager</td>
+<td style={{textAlign: 'center'}}>1.141.5</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>Log Service</td>
+<td style={{textAlign: 'center'}}>1.48.1</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>DB Devops</td>
+<td style={{textAlign: 'center'}}>DB Devops Service</td>
+<td style={{textAlign: 'center'}}>1.97.1</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>GitOps</td>
+<td style={{textAlign: 'center'}}>GitOps Service</td>
+<td style={{textAlign: 'center'}}>1.58.0</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>STO</td>
+<td style={{textAlign: 'center'}}>STO Core</td>
+<td style={{textAlign: 'center'}}>1.195.0</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}} rowSpan={5}>CCM</td>
+<td style={{textAlign: 'center'}}>CE Nextgen</td>
+<td style={{textAlign: 'center'}}>1.90.11</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>Batch Processing</td>
+<td style={{textAlign: 'center'}}>1.88.14</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>NG CE UI</td>
+<td style={{textAlign: 'center'}}>1.86.5</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>Anomaly Detection</td>
+<td style={{textAlign: 'center'}}>1.28.5</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>Telescopes</td>
+<td style={{textAlign: 'center'}}>1.7.2</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}} rowSpan={2}>Feature Flags</td>
+<td style={{textAlign: 'center'}}>Feature Flag Service</td>
+<td style={{textAlign: 'center'}}>1.1200.0</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>Feature Flag Pushpin Service</td>
+<td style={{textAlign: 'center'}}>1.1139.0</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}} rowSpan={3}>IaCM</td>
+<td style={{textAlign: 'center'}}>IACM Manager</td>
+<td style={{textAlign: 'center'}}>1.161.1</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>IAC Server</td>
+<td style={{textAlign: 'center'}}>1.404.0</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>Ticket Service</td>
+<td style={{textAlign: 'center'}}>1.12.0</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}} rowSpan={4}>Code Repository</td>
+<td style={{textAlign: 'center'}}>Code API</td>
+<td style={{textAlign: 'center'}}>1.87.5</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>Code GitRPC</td>
+<td style={{textAlign: 'center'}}>1.87.0</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>Code GitHA</td>
+<td style={{textAlign: 'center'}}>1.87.0</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>Code Search</td>
+<td style={{textAlign: 'center'}}>1.86.0</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}} rowSpan={4}>SSCA</td>
+<td style={{textAlign: 'center'}}>SSCA Manager</td>
+<td style={{textAlign: 'center'}}>1.61.13</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>Component Analysis Service</td>
+<td style={{textAlign: 'center'}}>1.10.0</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>Component Service</td>
+<td style={{textAlign: 'center'}}>1.14.0</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>SSCA UI</td>
+<td style={{textAlign: 'center'}}>0.48.5</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}} rowSpan={8}>Platform</td>
+<td style={{textAlign: 'center'}}>Platform Service</td>
+<td style={{textAlign: 'center'}}>1.130.1</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>Access Control</td>
+<td style={{textAlign: 'center'}}>1.267.0</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>Audit Event Streaming</td>
+<td style={{textAlign: 'center'}}>1.96.0</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>Gateway Service</td>
+<td style={{textAlign: 'center'}}>1.66.1</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>NG Auth UI</td>
+<td style={{textAlign: 'center'}}>1.43.0</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>NG Dashboard Aggregator</td>
+<td style={{textAlign: 'center'}}>1.116.0</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>Policy Management</td>
+<td style={{textAlign: 'center'}}>1.52.0</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>Service Discovery Manager</td>
+<td style={{textAlign: 'center'}}>0.68.1</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}} rowSpan={8}>Resilience testing</td>
+<td style={{textAlign: 'center'}}>Chaos Manager</td>
+<td style={{textAlign: 'center'}}>1.88.2</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>Chaos CRD</td>
+<td style={{textAlign: 'center'}}>1.82.0</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>Chaos K8s IFS</td>
+<td style={{textAlign: 'center'}}>1.88.0</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>Chaos Linux IFC</td>
+<td style={{textAlign: 'center'}}>1.88.0</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>Chaos Linux IFS</td>
+<td style={{textAlign: 'center'}}>1.88.0</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>Chaos Machine IFS</td>
+<td style={{textAlign: 'center'}}>1.88.0</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>Chaos Machine IFC</td>
+<td style={{textAlign: 'center'}}>1.88.0</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>Chaos Web</td>
+<td style={{textAlign: 'center'}}>1.88.1</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}} rowSpan={9}>Continuous Delivery</td>
+<td style={{textAlign: 'center'}}>NG Manager</td>
+<td style={{textAlign: 'center'}}>1.150.5</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>NG Custom Dashboards</td>
+<td style={{textAlign: 'center'}}>1.113.0</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>Pipeline Service</td>
+<td style={{textAlign: 'center'}}>1.190.0</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>Harness Manager</td>
+<td style={{textAlign: 'center'}}>1.149.4</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>Template Service</td>
+<td style={{textAlign: 'center'}}>1.152.0</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>Queue Service</td>
+<td style={{textAlign: 'center'}}>1.10.0</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>Debezium Service</td>
+<td style={{textAlign: 'center'}}>1.27.0</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>Delegate Proxy</td>
+<td style={{textAlign: 'center'}}>1.9.0</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>Delegate Version (Immutable)</td>
+<td style={{textAlign: 'center'}}>26.05.89206</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}} rowSpan={2}>IDP</td>
+<td style={{textAlign: 'center'}}>Load Test Manager</td>
+<td style={{textAlign: 'center'}}>1.12.2</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>Cloud Info</td>
+<td style={{textAlign: 'center'}}>1.16.3</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}} rowSpan={13}>Others</td>
+<td style={{textAlign: 'center'}}>Helm Chart</td>
+<td style={{textAlign: 'center'}}><a href="https://github.com/harness/helm-charts/releases/tag/harness-0.42.1">0.42.1</a></td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>Air Gap Bundle</td>
+<td style={{textAlign: 'center'}}><a href="https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.42.1">0.42.1</a></td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>Bootstrap</td>
+<td style={{textAlign: 'center'}}>1.74.1</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>Change Data Capture</td>
+<td style={{textAlign: 'center'}}>1.57.0</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>Event Service</td>
+<td style={{textAlign: 'center'}}>1.18.1</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>Looker</td>
+<td style={{textAlign: 'center'}}>1.18.0</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>Test Intelligence Service</td>
+<td style={{textAlign: 'center'}}>1.71.3</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>UI</td>
+<td style={{textAlign: 'center'}}>1.36.2</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>SCM Service</td>
+<td style={{textAlign: 'center'}}>1.50.0</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>Next Gen UI</td>
+<td style={{textAlign: 'center'}}>1.137.8</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>CV Nextgen</td>
+<td style={{textAlign: 'center'}}>1.66.0</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>LE Nextgen</td>
+<td style={{textAlign: 'center'}}>1.19.0</td>
+</tr>
+<tr>
+<td style={{textAlign: 'center'}}>SRM UI</td>
+<td style={{textAlign: 'center'}}>1.16.2</td>
+</tr>
+</tbody>
+</table>
+
+
+**Air-gap bundle download method**
+:::info Note on new airgap bundle structure
+Starting with version 0.38.x, the airgap bundle structure has been redesigned. Components are now grouped into core modules and execution components, allowing you to download exactly what you need using our new interactive scripts.
+:::
+For a comprehensive guide on installing Harness Self-Managed Enterprise Edition in an air-gapped environment, see the **Version 0.38.x and later** tab in the [Install in an air-gapped environment](/docs/self-managed-enterprise-edition/install/install-in-an-air-gapped-environment) documentation. It covers downloading airgap bundles using interactive scripts (or alternative methods like `gsutil` and `curl`), organizing the core modules and execution components, and securely pushing them to your private container registry.
+
+### Fixed issues
+
+#### Harness Platform
+
+- Fixed an issue that could cause token rotation to fail for users with certain organization or project level permissions. [PL-72385]
+
 ## June 12, 2026, Version 0.42.0 <!-- June 12, 2026 -->
 
 This table lists the module, its components, its version and the release notes versions associated with it.
