@@ -24,6 +24,8 @@ tags:
 
 import SCIMurl from '/docs/platform/shared/scimurl.md'
 
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
+
 This guide walks you through using Keycloak as the SAML identity provider for Harness. This allows Keycloak users to log in to Harness with their existing credentials.
 
 Keycloak acts as a SAML identity provider for Harness, allowing users to authenticate with their existing Keycloak credentials. When a user attempts to log in to Harness, they are redirected to Keycloak for authentication. After successful authentication, Keycloak sends a signed SAML assertion back to Harness, which validates it and grants access. Optionally, Keycloak can sync user group memberships to Harness for role-based access control, and supports Just-in-Time (JIT) provisioning to automatically create users on their first login.
@@ -175,6 +177,16 @@ Enable your SSO configuration and verify users can authenticate successfully by 
 
 
 Harness supports SAML configuration <a href="/docs/platform/authentication/single-sign-on-saml/#just-in-time-jit-provisioning" target="_blank"> with or without JIT user provisioning</a>. Go to <a href="/docs/platform/role-based-access-control/provision-use-jit" target="_blank">Just-in-Time (JIT) user provisioning</a> to understand how Harness creates users on first SAML login when JIT is enabled.
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="SAML authentication fails with Keycloak"
+  mode="docs"
+  fallback="Ensure the Client ID is set to app.harness.io and Client type is set to SAML when creating the Keycloak client. Verify the Master SAML processing URL is set to https://app.harness.io/gateway/api/users/saml-login?accountId=<YOUR ACCOUNT ID>. If using a vanity URL or Harness Self-Managed Enterprise Edition, replace https://app.harness.io with your custom base URL in all fields."
+/>
 
 ---
 

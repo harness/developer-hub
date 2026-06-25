@@ -33,6 +33,8 @@ tags:
 
 import SCIMurl from '/docs/platform/shared/scimurl.md'
 
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
+
 Microsoft Entra ID acts as a SAML identity provider for Harness, allowing users to authenticate with their existing Microsoft credentials. When a user attempts to log in to Harness, they are redirected to Microsoft Entra ID for authentication. After successful authentication, Entra ID sends a signed SAML assertion containing user attributes back to Harness, which validates it and grants access. Optionally, Entra ID can send group membership information in the SAML token, allowing Harness to automatically assign users to the appropriate Harness User Groups for role-based access control.
 
 ---
@@ -303,6 +305,16 @@ For more information on Azure application permissions, go to <a href="https://le
 ## Just-In-Time (JIT) provisioning
 
 Harness supports SAML configuration <a href="/docs/platform/authentication/single-sign-on-saml/#just-in-time-jit-provisioning" target="_blank"> with or without JIT user provisioning</a>. Go to <a href="/docs/platform/role-based-access-control/provision-use-jit" target="_blank">Just-in-Time (JIT) user provisioning</a> to understand how Harness creates users on first SAML login when JIT is enabled.
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="SAML authentication fails with Microsoft Entra ID (Azure AD)"
+  mode="docs"
+  fallback="Ensure the Harness SAML Endpoint URL is added as a Reply URL (Assertion Consumer Service URL) in the Azure app's Basic SAML Configuration. Verify the Identifier (Entity ID) is set to app.harness.io. If multiple SAML applications exist in the same tenant, use a unique identifier instead. Ensure the Federated Metadata XML downloaded from Entra ID has been uploaded to Harness."
+/>
 
 ---
 

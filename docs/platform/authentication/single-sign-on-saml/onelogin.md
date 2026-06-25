@@ -32,6 +32,8 @@ tags:
 
 import SCIMurl from '/docs/platform/shared/scimurl.md'
 
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
+
 OneLogin acts as a SAML identity provider for Harness, enabling users to authenticate with their existing OneLogin credentials. When a user attempts to log in to Harness, they are redirected to OneLogin for authentication. After successful authentication, OneLogin sends a signed SAML assertion back to Harness, which validates it and grants access. Optionally, OneLogin can include role information in the SAML assertion through custom parameters, allowing Harness to automatically assign users to corresponding Harness user groups based on their OneLogin roles for role-based access control.
 
 :::info note
@@ -333,6 +335,17 @@ You cannot delete a SAML SSO Provider from Harness that is linked to a Harness G
 ## Just-In-Time (JIT) provisioning
 
 Harness supports SAML configuration <a href="/docs/platform/authentication/single-sign-on-saml/#just-in-time-jit-provisioning" target="_blank"> with or without JIT user provisioning</a>. Go to <a href="/docs/platform/role-based-access-control/provision-use-jit" target="_blank">Just-in-Time (JIT) user provisioning</a> to understand how Harness creates users on first SAML login when JIT is enabled.
+
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="SAML authentication fails with OneLogin"
+  mode="docs"
+  fallback="Ensure the SAML Endpoint URL from Harness is pasted into the SCIM Base URL field in OneLogin's Configuration tab. Verify the SAML Metadata XML file has been downloaded from OneLogin's SSO tab and uploaded to Harness."
+/>
 
 
 ---

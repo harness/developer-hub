@@ -28,6 +28,8 @@ tags:
 
 import SCIMurl from '/docs/platform/shared/scimurl.md'
 
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
+
 This page walks you through creating an Okta app integration, exchanging the SAML metadata with Harness, and enabling group-based authorization so Okta group members are automatically mapped to Harness user groups.
 
 Okta acts as a SAML identity provider for Harness, enabling users to authenticate with their existing Okta credentials. When a user attempts to log in to Harness, they are redirected to Okta for authentication. After successful authentication, Okta sends a signed SAML assertion containing user attributes back to Harness, which validates it and grants access. 
@@ -371,6 +373,16 @@ Delinking groups is required to remove a SAML SSO provider configuration from Ha
    </div>
 
 5. Click **Save**.
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="SAML assertion validation failed when signing in to Harness with Okta"
+  mode="docs"
+  fallback="Ensure the SAML Endpoint URL from Harness is entered in the Single sign-on URL field in Okta. Verify the Audience URI (SP Entity ID) is set to app.harness.io. Confirm users or groups are assigned to the Harness application under the Assignments tab."
+/>
 
 ---
 

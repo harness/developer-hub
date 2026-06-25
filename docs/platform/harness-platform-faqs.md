@@ -683,9 +683,9 @@ For more information, go to [Set up two-factor authentication](https://developer
 
 Currently there is no easy way for Harness to disable the 2FA for a user. The user can disable 2FA in their profile if they lost access to the auth app. The user must reach out to their account admin and ask them to resend the 2fa code. Then the user can reset the 2FA auth app, sign in to the account, and disable 2FA from their profile.
 
-### How can I change my identity provider to OKTA from another other provider?
+### How can I change my identity provider to Okta from another other provider?
 
-When you set up a new OKTA SAML and then migrate your users to it, you must set additional configurations in Harness. Harness requires the metadata XML file from OKTA with the configuration.
+When you set up a new Okta SAML and then migrate your users to it, you must set additional configurations in Harness. Harness requires the metadata XML file from Okta with the configuration.
 
 The permissions for Harness are managed by the User Groups present in Harness. In case of authorization, the user groups from SAML app are linked to Harness Local User groups.
 

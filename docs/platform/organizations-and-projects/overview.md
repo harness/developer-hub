@@ -3,7 +3,6 @@ title: Organizations and Projects
 description: Learn how to structure your work in Harness using organizations and projects, including creation, management, and moving projects between organizations.
 sidebar_label: Overview
 sidebar_position: 1
-sidebar_class_name: hidden
 tags:
   - organizations
   - projects
@@ -16,13 +15,15 @@ keywords:
   - create project
 redirect_from:
   - /docs/platform/organizations-and-projects/projects-and-organizations
+  - /docs/platform/organizations-and-projects/
+  - /docs/category/organizations--projects
 ---
 
 Within a Harness account, you organize your work using organizations and projects. This structure helps your teams collaborate effectively while keeping ownership, access, and configuration clearly defined.
 
 ---
 
-## What will you learn in this section?
+## What will you learn in this topic?
 
 By the end of this section, you will be able to:
 
