@@ -1,0 +1,206 @@
+---
+description: Standard structure template for best-practices/recommendation documentation pages
+globs: **/*.md
+alwaysApply: false
+---
+
+## Documentation structure template — Best-practices pages
+
+This template is for **best-practices and recommendation pages**: pages that tell the reader what to do, why it matters, and what goes wrong if they do not. These pages read like advice from an experienced practitioner, not like a feature tour or a concept explainer.
+
+This template applies to **any module**. The structure and voice stay the same whether the page covers IaCM, CI, CD, Security Testing, or the platform. Only the examples change.
+
+**Use this template for:**
+- "Best practices" pages
+- "Recommendations for X" or "X best practices" pages
+- Hardening, production-readiness, and "before you scale" guidance
+- Pages whose job is to steer decisions, not to define concepts or list features
+
+**Do NOT use this template for:**
+- Concept or architecture explanations (use `doc-structure-overview-template.mdc`)
+- Step-by-step tutorials, quickstarts, or setup guides (use `doc-structure-template.mdc`)
+- Pure reference material (attributes, schemas, API parameters)
+
+**Naming convention:** Use "Best Practices" or "X best practices" (for example "Pipeline best practices"). The title signals advice, so the reader expects opinionated guidance, not a neutral overview.
+
+---
+
+### The defining rule: recommendation, rationale, consequence
+
+Every entry on a best-practices page states three things:
+
+1. **The recommendation:** what to do, in the imperative.
+2. **The rationale:** why it matters.
+3. **The consequence:** what breaks, degrades, or costs more if the reader does not follow it.
+
+The consequence is what separates a best practice from a feature description. A bare instruction ("Use remote state backends") reads like documentation of a setting. The same instruction with its consequence ("Use a remote backend, because local state cannot be locked, so two concurrent applies corrupt it and there is no shared source of truth for your team") reads like advice.
+
+**If you cannot state a consequence for an entry, it is probably not a best practice.** It may be a concept, a feature, or a setup step that belongs on a different page.
+
+**Before and after:**
+
+```markdown
+<!-- Weak: bare imperative, no consequence. Reads like a feature list. -->
+- **Remote state storage:** Store state in a remote backend rather than locally.
+
+<!-- Strong: recommendation + rationale + consequence. Reads like advice. -->
+- **Use a remote backend, not local state:** Store state in a remote backend so OpenTofu
+  and Terraform can lock it. If you keep state locally, the next run starts from empty
+  state and can recreate or destroy live resources, and your team loses its shared source
+  of truth.
+```
+
+---
+
+### What a best-practices page must NOT contain
+
+A best-practices page is scored differently from a feature or overview page. Do not carry over sections from those templates. Specifically, **omit** the following:
+
+- **No "What you will learn" section.** That belongs on overview pages. A best-practices reader wants recommendations, not learning outcomes.
+- **No `<Troubleshoot>` section and no troubleshooting blocks.** Debugging failures belongs on a dedicated troubleshooting page or the relevant feature page. Someone on a best-practices page is setting things up right, not recovering from a failure. If a failure mode is instructive, fold it into a recommendation as the *consequence*, not as a separate troubleshooting entry.
+- **No concept dumps.** Architecture, resource hierarchies, framework or version matrices, and "how RBAC works" explanations belong on overview or concept pages. Link out to them; do not reproduce them here.
+- **No standalone "Limitations and gotchas" section.** Where a limitation drives a recommendation (for example, "delegates fail silently when outdated, so keep them current"), express it as a practice with its consequence. Move pure reference limitations to the feature page.
+- **No feature-tour intro.** Do not open by listing what the product does. Open with the purpose of the page: these are the recommended practices and what breaks without them.
+
+When concept or platform-level material is genuinely useful (for example RBAC, secret management, or a hierarchy diagram), **route it out**: link to the canonical page, or surface it under Next steps. Do not let it become the body of the page.
+
+---
+
+### Standard structure for best-practices pages
+
+#### 1. Frontmatter
+
+```yaml
+---
+title: Best Practices
+# Optional: left navigation label (Title Case). Omit when it should match `title`.
+sidebar_label: Best Practices
+description: Recommended practices for running X in production, and what breaks when teams skip them.
+keywords:
+  - x best practices
+  - keyword2
+tags:
+  - module-tag
+  - best-practices
+sidebar_position: [number]
+---
+```
+
+- **`title`:** "Best Practices" or "X best practices".
+- **`description`:** Frame it as advice plus consequence, not as a feature summary.
+
+**Sidebar configuration:**
+
+- **Module-root files** `/docs/[module]/file.md` require an explicit entry in `sidebars.ts`.
+- **Nested files** (in subfolders, any depth) auto-generate. Add `sidebar_position` to frontmatter.
+
+Go to the **Sidebar Navigation Configuration** section in `CLAUDE.md` to review the full decision tree.
+
+#### 2. Introduction (1 short paragraph)
+
+State what the page is for and set the advice frame. Do not describe the product.
+
+```markdown
+This page collects the practices Harness recommends when you run X in production, along
+with what tends to break when teams skip them. Apply them as you design [the relevant
+artifacts]. Go to [What's supported](/docs/...) to confirm what is available before you
+adopt these practices.
+```
+
+**Visual separation:** Add a horizontal rule (`---`) before each major `##` section heading.
+
+#### 3. Practice sections (the body)
+
+Group related recommendations under **imperative headings** that name the practice. The imperative voice is itself a marker of this page type.
+
+**Good best-practices headings:**
+- `## Store state in a remote backend`
+- `## Reuse configuration instead of copying it`
+- `## Add guardrails before apply`
+- `## Keep delegates current`
+
+**Avoid (these belong on overview or instructional pages):**
+- `## State management` (neutral noun phrase; reads like a concept page)
+- `## What you will learn`
+- `## Troubleshooting`
+
+Open each section with one sentence of framing that states the stakes, then list the recommendations. Use the standard list format with a **bold label** and a colon, and make sure each entry carries its consequence:
+
+```markdown
+## Add guardrails before apply
+
+An apply changes real infrastructure and can change your bill. Put automated checks in
+front of it so mistakes stop before they reach production.
+
+- **Policies:** Apply [policies](/docs/...) to fail pipelines when a change violates your
+  rules. Without policy gates, a non-compliant change reaches production before anyone
+  reviews it.
+- **Cost checks:** Enable [cost estimation](/docs/...) so a plan that exceeds a threshold
+  stops before apply. Without it, a mistyped change provisions expensive resources and you
+  find out on the bill.
+```
+
+**Acknowledge real trade-offs.** When you recommend one option over another, state the cost of the recommendation honestly. Do not write a section titled "Trade-offs" that only lists benefits. If a heading or intro promises trade-offs, the content must include the actual downside and when the alternative is the better choice.
+
+#### 4. Next steps
+
+Close with a short pointer to what to do next, and use this section to **route out** the platform-level or concept material you deliberately kept out of the body.
+
+```markdown
+---
+
+## Next steps
+
+Adopt the practices above as defaults, then layer in the platform controls that govern
+access and secrets.
+
+- [Get started with X](/docs/...): Set up your first [artifact] and run it.
+- [X security](/docs/...): Review the controls and scanners available in X.
+- [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness): Control who
+  can change [the relevant artifacts].
+```
+
+---
+
+### Voice and tone
+
+Follow the project-wide voice rules in `CLAUDE.md`, and apply these emphases for best-practices pages:
+
+- **Imperative and direct.** "Store state remotely", not "State can be stored remotely". The page gives instructions.
+- **Second person, present tense.** Speak to the reader as "you".
+- **No contractions.** Write "do not", "cannot", "it is" in full.
+- **No em dashes.** Use commas, periods, or semicolons.
+- **No gerunds in headings.** "Reuse configuration", not "Reusing configuration".
+- **Lead with the stronger consequence.** When ordering practices within a section, put the one with the most damaging failure mode first.
+
+---
+
+### Scoring a best-practices page
+
+When you review or score a best-practices page, judge it against this template, not the feature or overview templates. A good page:
+
+- States a **consequence** for every recommendation ("if you do not, then ...").
+- Reads like **advice from an experienced practitioner**, not a feature description.
+- Uses **imperative headings** that name practices.
+- **Omits** "What you will learn" and "Troubleshooting" by design. Do not penalize their absence; penalize their presence.
+- **Links out** concept, hierarchy, and platform-level material instead of reproducing it.
+- States **honest trade-offs** for the options it recommends.
+
+Common failure signals to flag:
+- Bare imperatives with no rationale or consequence.
+- Concept or reference content (hierarchies, version matrices, "how X works") in the body.
+- A troubleshooting or limitations section that belongs on the feature page.
+- A "trade-offs" heading whose content lists only benefits.
+- An intro that describes the product instead of framing the advice.
+
+---
+
+### When to use which template
+
+| Page goal | Template |
+|---|---|
+| Tell the reader what to do and what breaks if they do not | **This template** (`doc-structure-best-practices-template.mdc`) |
+| Explain what something is or how it works | `doc-structure-overview-template.mdc` |
+| Walk the reader through a task step by step | `doc-structure-template.mdc` |
+
+If a page mixes advice with concept explanation, split it: keep the recommendations here and move the concept material to an overview page, then link between them.

@@ -131,6 +131,13 @@ Read the page file first to assess its type. Check for FAQ first — it is the m
   - Filename is `faq.md`, ends with `-faq.md`, or ends with `-faqs.md`
   - More than 60% of H2 sections contain only `<details>`/`<summary>` blocks with no step-by-step prose (legacy detection)
 
+- **Best-practices page** if ANY of (check this before Instructional/Overview — it is a specific type):
+  - `title` is "Best Practices" or matches "X best practices" (case-insensitive), OR `sidebar_label` is "Best Practices"
+  - `best-practices` (or `best_practices`) appears in the frontmatter `tags`
+  - Filename is `best-practices.md` or ends with `-best-practices.md`
+  - The dominant content is **recommendation-oriented**: most sections give an imperative recommendation paired with a rationale and a consequence ("if you do not do X, then Y happens"), rather than explaining concepts or walking through a procedure
+  - **Misclassification check:** if a page carries a best-practices title or tag but reads like a feature or overview tour (bare imperatives with no consequence, concept dumps, framework/version matrices), it is **mislabeled**. Score it against the best-practices rubric and flag in the report that it should either be rewritten to the recommendation + rationale + consequence model or reclassified as Overview. Conversely, a page full of recommendation + consequence advice but labelled Overview or Feature should be flagged for reclassification to Best-practices.
+
 - **Instructional/Action page** if the **dominant content** is procedural:
   - Title is action-oriented ("Create", "Configure", "Set up", "Install") AND
   - Contains step-by-step UI navigation ("Select X, then click Y") OR
@@ -172,6 +179,11 @@ cat .cursor/rules/doc-structure-template.mdc
 cat .cursor/rules/doc-structure-overview-template.mdc
 ```
 
+**For best-practices pages:**
+```bash
+cat .cursor/rules/doc-structure-best-practices-template.mdc
+```
+
 **For balanced hybrid pages, fetch both:**
 ```bash
 cat .cursor/rules/doc-structure-template.mdc
@@ -181,7 +193,7 @@ cat .cursor/rules/doc-structure-overview-template.mdc
 Use the selected template(s) as the structural benchmark for the Editorial score.
 
 **Report the page type to the user:**
-- For clear types: **"Page type: [FAQ/Instructional/Overview] — using [template name] for scoring."**
+- For clear types: **"Page type: [FAQ/Best-practices/Instructional/Overview] — using [template name] for scoring."**
 - For hybrid pages: **"Page type: Hybrid ([dominant type] leaning) — [explanation of why]. Using [template name] for scoring."**
 - For balanced hybrid: **"Page type: Hybrid (balanced) — scored against both templates. Using [chosen template] (score: X/100) over [other template] (score: Y/100)."**
 
@@ -213,6 +225,26 @@ Score across three dimensions (each starts at 100). **Adjust criteria based on p
 - C-1 (landmark sections) does not apply
 - H-2 (gerund headings) does not apply — FAQ categories are noun phrases by design
 - The `<FAQ>` component is allowed only when fewer than 10 questions appear on the page
+
+---
+
+### Scoring for Best-practices pages
+
+Best-practices pages are scored against `.cursor/rules/doc-structure-best-practices-template.mdc`, not the overview or instructional rubric. The defining test is whether every recommendation carries a consequence.
+
+**Accuracy (40%):** –20 a recommendation contradicts current product behaviour, –15 a stated consequence is wrong or overstated, –10 recommends a deprecated or unsupported approach, –10 stale version or feature info, –5 broken links
+
+**Completion (30%):** –20 recommendations lack a consequence (the "if you do not do X, then Y" framing is the defining trait — apply this when most entries are bare imperatives), –10 missing key practices a production reader needs, –10 concept, hierarchy, or setup content that belongs on another page and is not routed out, –5 trade-offs presented as benefits only, –5 no Next steps or no links out to the platform controls (RBAC, secrets) the page deliberately omits. **Do NOT penalize** missing "What you will learn" or missing Troubleshooting — both must be absent.
+
+**Editorial (30%):** –15 wrong structure (includes a "What you will learn" section, a `<Troubleshoot>` block, a standalone Troubleshooting or "Limitations and gotchas" section, or a concept dump), –10 feature-tour introduction instead of an advice frame, –10 missing/incorrect frontmatter, –10 non-site-relative links, –10 missing redirect_from, –10 em dashes / bare link text (S-1, S-3), –10 walls of text, –5 link phrasing (S-2), –5 gerund headings (use imperative practice names), –5 "please" (S-5), –5 contractions (S-7), –5 inconsistent bolding, –5 spelling/grammar, –5 slug /docs/docs/ bug
+
+**Key differences for best-practices pages:**
+- Every recommendation states a consequence. Bare imperatives with no rationale or consequence are the primary Completion failure.
+- "What you will learn" must be **absent** — penalize its presence, not its absence.
+- Troubleshooting and "Limitations and gotchas" sections must be **absent** — fold instructive failure modes into a recommendation as its consequence, or route them to the feature page.
+- Headings are **imperative practice names** ("Store state in a remote backend"), so imperative headings are correct here, unlike on overview pages.
+- Concept, hierarchy, and platform-level material (RBAC, secret management) is **linked out**, not reproduced, and surfaced under Next steps.
+- Best-practices pages are rare — generally one per module. When auditing one, note whether the module already has another; consolidation or reclassification may be needed (CD and Platform may carry a few scoped exceptions).
 
 ---
 
@@ -484,11 +516,11 @@ Save to `.claude/skills/doc-audit/audits/[slug]-audit-YYYYMMDD.md` (e.g. `auth-4
 
 ## Page type assessment
 
-**Type:** [Instructional | Overview]
-**Template used:** [.cursor/rules/doc-structure-template.mdc | .cursor/rules/doc-structure-overview-template.mdc]
+**Type:** [FAQ | Best-practices | Instructional | Overview]
+**Template used:** [.cursor/rules/faq-template.mdc | .cursor/rules/doc-structure-best-practices-template.mdc | .cursor/rules/doc-structure-template.mdc | .cursor/rules/doc-structure-overview-template.mdc]
 
 **Rationale:**
-[2-3 sentences explaining why this page is categorized as instructional or overview. Reference title pattern, content style, presence/absence of step-by-step procedures, etc.]
+[2-3 sentences explaining why this page is categorized as FAQ, Best-practices, Instructional, or Overview. Reference title pattern, content style, and presence/absence of step-by-step procedures or recommendation + consequence framing. For a Best-practices page, also note whether the module already has another best-practices page (rarity check).]
 
 ## Scores
 | Dimension | Raw | Weight | Weighted |
@@ -559,7 +591,7 @@ Copy this prompt into Claude Code or Cursor to apply the suggested changes:
 Rewrite the following Harness Developer Hub documentation page to address quality issues
 identified in an audit. Before making any changes, read these files in order:
 
-1. [.cursor/rules/doc-structure-template.mdc OR .cursor/rules/doc-structure-overview-template.mdc — use the template that matches the page type from the audit]
+1. [.cursor/rules/doc-structure-template.mdc OR .cursor/rules/doc-structure-overview-template.mdc OR .cursor/rules/doc-structure-best-practices-template.mdc — use the template that matches the page type from the audit]
 2. .cursor/rules/doc-linking.mdc             — link formatting (site-relative paths only)
 3. .cursor/rules/doc-slugs-and-redirects.mdc — slug and redirect_from conventions
 4. .cursor/rules/doc-move.mdc                — redirect requirements if restructuring
@@ -569,7 +601,7 @@ Page to rewrite: [repo-relative file path]
 Live URL: [full URL]
 Audit report: .claude/skills/doc-audit/audits/[slug]-audit-YYYYMMDD.md
 
-**Page type:** [Instructional | Overview] — see audit report for rationale
+**Page type:** [FAQ | Best-practices | Instructional | Overview] — see audit report for rationale
 
 ---
 ACCURACY FIXES
@@ -601,6 +633,14 @@ The rewritten page must satisfy all of the following before you consider it done
 - No `## Before you begin`, `## Next steps`, `## Troubleshooting`, or `###` headings anywhere on the page
 - `<FAQ>` component only used if page has fewer than 10 questions total
 - No `<Troubleshoot>` component
+
+**For Best-practices pages:**
+- Follows doc-structure-best-practices-template.mdc skeleton (frontmatter → advice-frame intro → practice sections with imperative headings → Next steps)
+- Every recommendation states a recommendation + rationale + consequence ("if you do not do X, then Y happens")
+- No "What you will learn" section, no `<Troubleshoot>` block, no standalone Troubleshooting or "Limitations and gotchas" section
+- No concept dumps (hierarchies, framework/version matrices, "how RBAC works") — linked out instead
+- Trade-offs state the real downside, not benefits only
+- Platform-level material (RBAC, secrets) routed to Next steps, not explained in the body
 
 **For Instructional pages:**
 - Follows doc-structure-template.mdc skeleton exactly (frontmatter → intro → prerequisites →

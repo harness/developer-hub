@@ -44,6 +44,18 @@ A typical IaCM journey looks like this:
 
 For **Terragrunt** workspaces, you can set a default **Folder Path** on the workspace and optionally set **Folder Path Override** per run on each Terragrunt pipeline step, such as **init**, **plan**, and **apply**. This is useful for monorepos and per-environment paths without separate workspaces. Details appear in the Terragrunt content under [Get started with IaCM](/docs/infra-as-code-management/get-started#terragrunt).
 
+### Resource hierarchy
+
+Harness IaCM organizes resources in a nested hierarchy. Understanding this structure helps you decide where to create workspaces and how to scope access:
+
+- **Account** is the root level, containing multiple organizations.
+- **Organizations** contain multiple projects.
+- **Projects** contain multiple workspaces.
+- **Workspaces** are isolated environments for IaC execution within a project.
+- **Pipelines** are independent entities that you can execute against any workspace within a project.
+
+![IaCM workflow hierarchy](../static/iacm-hierarchy-diagram.png)
+
 ## Key Concepts
 
 Infrastructure as Code (IaC) is the ability to define cloud resources as code, allowing for repeatable infrastructure configuration. Examples of IaC tools include HashiCorp Terraform and Amazon CloudFormation.

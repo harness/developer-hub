@@ -1,97 +1,91 @@
 ---
 title: Best Practices
-description: Learn about IaCM onboarding and best practices.
+sidebar_label: Best Practices
+description: Recommended practices for running Harness IaCM in production, and what tends to break when teams skip them.
+keywords:
+  - iacm best practices
+  - infrastructure as code
+  - opentofu
+  - terraform
+  - state management
+  - governance
+tags:
+  - infra-as-code-management
+  - best-practices
+sidebar_position: 20
 ---
 
-import HarnessApiData from '/src/components/HarnessApiData/index.tsx';
+This page collects the practices Harness recommends when you run IaCM in production, along with what tends to break when teams skip them. Go to [What's supported](/docs/infra-as-code-management/whats-supported) to confirm the platforms, frameworks, and integrations available before you adopt these practices.
 
-Harness Infrastructure as Code allows you to **define**, **deploy**, and **manage infrastructure across environments**, ensuring compliance and control.  
+---
 
-Key features include [cost estimation](/docs/infra-as-code-management/workspaces/cost-estimation), [approval steps](/docs/infra-as-code-management/pipelines/operations/approval-step), [PR automation](/docs/infra-as-code-management/pipelines/operations/pr-automation), [policy enforcement](/docs/infra-as-code-management/policies-governance/opa-workspace), and [drift detection](/docs/infra-as-code-management/pipelines/operations/drift-detection). These integrate seamlessly with other Harness modules and third-party services, enhancing your DevOps lifecycle.
+## Store state in a remote backend
 
-This document provides best practices and guidelines to help you implement and manage IaCM effectively. It offers clear, actionable recommendations to optimize performance, strengthen security, and avoid common pitfalls.
+Start with your state backend, before you run a real apply. Your state file is the source of truth for what IaCM manages, and damaged or lost state is the hardest failure to recover from.
 
-## Workflow hierarchy
+- **Use a remote backend, not local state:** Store state in a remote backend such as Harness-managed storage, AWS S3, GCP Cloud Storage, or Azure Blob Storage. If you keep state on a local disk or in the runner, the next run starts from empty state and can try to recreate or destroy resources that already exist, and your team loses the shared source of truth. Go to [remote backends](/docs/infra-as-code-management/remote-backends/use-backends) to configure state storage.
+- **Keep state locking enabled:** A remote backend lets OpenTofu and Terraform lock state so only one apply runs at a time. Without locking, two concurrent runs write the same state and corrupt it, which orphans resources and leaves the state file unusable.
+- **Version and restrict access to state:** State holds resource attributes and can contain sensitive values. Enable versioning on the backend so you can roll back a bad apply, and restrict who can read it. If state is deleted with no version history, there is no reliable way to rebuild it without re-importing every resource by hand.
 
-- **Account** is the root level, containing multiple Organizations.  
-    - **Organizations** contain multiple Projects.  
-        - **Projects** contain multiple Workspaces.  
-            - **Workspaces** are isolated environments for IaC execution within a Project.
-            - **Pipelines** are independent entities that can be executed against any Workspace within a Project.
+---
 
-![IaCM workflow hierarchy](static/iacm-hierarchy-diagram.png)
+## Authenticate providers through connectors
 
-### Supported IaC Frameworks
-:::info opentofu / terraform
-Harness IaCM currently supports integration with all **OpenTofu** versions<HarnessApiData
-    query="https://app.harness.io/gateway/iacm/api/provisioners/supported/opentofu"
-    token="process.env.HARNESS_GENERIC_READ_ONLY_KEY"
-    fallback=""
-    parse='.[-1] | " (latest: v\(.))"'></HarnessApiData>.
-    
- For **Terraform**, we support all MPL versions up to **1.5.x**, any BSL versions (from 1.6.0) are not supported.
-:::
+How you supply credentials determines whether secrets stay protected or leak into plan output, logs, and state.
 
-### Configuration Guidelines
-As a first step, we recommend you [configure your Cloud Provider and Code repository connectors](/docs/infra-as-code-management/get-started/#add-connectors) to streamline further configurations like workspace and pipeline creation so they can be easily selected.  
+- **Prefer connectors over inline credentials:** For providers with native Harness integration, such as AWS, Azure, and GCP, authenticate with [connectors](/docs/infra-as-code-management/configuration/connectors-and-variables/connectors-variables). Connectors keep credentials in Harness and out of your code. If you embed credentials in variables or provider blocks, they can end up in plan output, logs, or state files, where they are hard to rotate and easy to expose.
+- **Store remaining secrets in a secret manager:** For providers without a native connector, supply credentials through a secret manager and reference them as secrets, not plain text. Secrets resolved this way are masked in logs and are never written to Harness Cloud copies of state.
+- **Configure AWS roles on the connector, not the delegate:** IaCM does not inherit IAM roles from the delegate. If you depend on delegate role inheritance, authentication fails at init or plan. Configure the role to assume directly on the AWS connector.
+- **Bundle special dependencies in a custom plugin image:** When a provider needs specific tools or versions, package them in a [custom plugin image](/docs/infra-as-code-management/pipelines/plugin-images) to keep runs reproducible. The trade-off is that you maintain the image as provider requirements change.
 
-### OpenTofu / Terraform Authentication
-To effectively authenticate OpenTofu or Terraform across different providers, it’s crucial to follow a consistent approach that aligns with the requirements of each provider while ensuring security and efficiency.
+---
 
-1. **Use Connectors When Available:** If the provider supports native integration with Harness (e.g., AWS, Azure, GCP), use the relevant [Harness connectors](/docs/infra-as-code-management/get-started/#add-connectors). These connectors provide secure and streamlined authentication, reducing the need for manual setup and environment configuration.
-2. **Environment Variables and Secrets:** For providers that do not have native Harness connectors, you can manage authentication using environment variables and secrets. Ensure that sensitive credentials are securely stored using Harness Secret Manager or another secure secret management system.
-3. **Custom Plugin Images:** If the provider has specific dependencies or custom configurations, use a [custom plugin image](/docs/infra-as-code-management/pipelines/plugin-images) to include the necessary tools and libraries. This approach allows for flexibility and tailored setups but requires maintaining the image to match provider updates and requirements.
+## Add guardrails before apply
 
-Go to [What's supported](/docs/infra-as-code-management/whats-supported#supported-workspace-connectors) to see what cloud provider and code repository vendors are supported by Harness. 
+The get started flow ends in an apply, which changes real infrastructure and can change your bill. Put manual and automated checks in front of that apply before you scale.
 
-## Recommended Workflows and Performance Optimization
-### Reusable components
-For general use cases to reduce unnecessary complexity and to optimize performance, we encourage reuse wherever possible.
+- **Approvals and review gates:** Add a manual [approval step](/docs/infra-as-code-management/pipelines/operations-overview) as the first gate before an apply, so a reviewer can confirm plan output, cost, and policy results before infrastructure changes. Without a review gate, unverified changes apply automatically. The same Pipeline Operations page covers PR automation and drift detection: surface plan output in pull requests for review, and catch resources changed outside your IaC workflow before they accumulate and an apply reverts or conflicts with them.
+- **Policies:** Apply [OPA policies](/docs/infra-as-code-management/policies-governance/opa-workspace) to warn or fail pipelines when a change violates your rules, for example version requirements, resource tagging, or connector restrictions. Without policy gates, a non-compliant change reaches production before anyone reviews it.
+- **Cost checks:** Enable [cost estimation](/docs/infra-as-code-management/workspaces/cost-estimation) and [plan and cost policies](/docs/infra-as-code-management/policies-governance/terraform-plan-cost-policy) so a plan that exceeds a threshold stops before apply. Without them, a large or mistyped change provisions expensive resources and you find out on the bill.
 
-Some reusable options can be to:
-- Create reusable pipelines and set them as default pipelines to trigger quickly from any workspace within a project.
-- Use [pipeline variables](/docs/infra-as-code-management/configuration/connectors-and-variables/connectors-variables) to ensure consistency.
-- Use built-in plugins such as [drift detection](/docs/infra-as-code-management/pipelines/operations/drift-detection), [PR automation](/docs/infra-as-code-management/pipelines/operations/pr-automation) and [IaCM Approval steps](/docs/infra-as-code-management/pipelines/operations/approval-step).
-- Utilize [built-in OPA policies](/docs/infra-as-code-management/policies-governance/terraform-plan-cost-policy) to add protection and ensure your pipelines warn or fail if certain conditions are not met, e.g. if your total monthly infrastructure costs exceed a specified amount.
-<!-- placeholder for module registry -->
-<!-- placeholder for workspace templates -->
+---
 
-### Trade-offs and considerations
-Harness seamlessly integrates with third-party services like external code repositories and secret managers, providing flexibility in tool choice. However, using Harness’s native services like [Harness Code Repository](/docs/code-repository/) and [Harness Secret Manager](/docs/platform/secrets/secrets-management/harness-secret-manager-overview/) can offer key performance and operational benefits.
+## Reuse configuration instead of copying it
 
-- **Reduced Latency:** Avoids external API calls, leading to faster execution and reduced overhead.
-- **Simplified Authentication:** Minimizes multiple authentication mechanisms, reducing complexity and potential security risks.
-- **Streamlined Management:** Centralizes configuration, simplifying updates and secret rotation.
-- **Enhanced Visibility:** Provides a single point of control for auditing and policy enforcement.
-- **Reduced Dependencies:** Lowers reliance on external services, increasing system resilience.
+Once your pipelines run, duplicated configuration becomes the most common source of silent drift between environments. Centralize what teams share so a fix in one place reaches everywhere.
 
-## Limitations & Gotchas
-Be aware of the following when working with IaCM:
-- **AWS Connector via Delegates:** IAM role inheritance from delegates is not supported. If you need to assume roles, configure them directly in the connector.  
-- **Feature-flagged functionality:** Some features are released behind feature flags. Pages covering these features should include a **Pending Release** banner until the feature is fully available in production.  
-- **Delegate version requirements:** Certain features (such as module registry sync) may fail silently if your delegate is outdated. Always confirm you are running the latest delegate version to ensure support for new capabilities.  
+- **Default pipelines:** Create reusable [default pipelines](/docs/infra-as-code-management/pipelines/default-pipelines) and set them per project so any workspace runs a consistent init, plan, and apply flow. If every workspace defines its own pipeline, each fix or policy change has to be repeated by hand and quietly diverges.
+- **Variable sets:** Share variables and connector references with [variable sets](/docs/infra-as-code-management/configuration/connectors-and-variables/variable-sets). Without them, the same values are copied across workspaces and drift apart, so one environment behaves differently from another for reasons nobody can trace. For single-pipeline values, use [pipeline variables](/docs/infra-as-code-management/configuration/connectors-and-variables/connectors-variables).
+- **Module registry:** Publish shared modules to the [module registry](/docs/infra-as-code-management/registry/module-registry/module-registry-overview) so teams consume governed, versioned modules. If teams copy module code between repositories instead, a fix in one copy never reaches the others.
+- **Provider registry:** Serve internal providers through the [provider registry](/docs/infra-as-code-management/registry/provider-registry) to pin sources and versions. Without a controlled source, runs pull unexpected provider versions and behavior changes between environments.
 
-## Security
-- **Access Controls:** [Role-based access control (RBAC)](/docs/platform/role-based-access-control/rbac-in-harness/) lets you control who can access your resources and what actions they can perform on the resources. To do this, a Harness account administrator assigns resource-related permissions to members of user groups.
-- **Secret Management:** Go to the [secret management page](/docs/category/secrets-management) to see all supported secret management option available in the Harness Platform and determine what option is best suited for your needs. As mentioned above, Harness offer integration with multiple secret management options but recommend [Harness secret manager](/docs/platform/secrets/secrets-management/harness-secret-manager-overview/) to help offer optimal performance.
-- **OPA Policies:** Use [OPA policies](/docs/platform/governance/policy-as-code/harness-governance-overview/) to implement governance and trigger pipeline warnings or failures when policy conditions are not met. 
+---
 
-### State Management
-- **Remote State Storage:** Use remote state backends like AWS S3, GCP Cloud Storage, or Azure Blob Storage for reliable and scalable state management. Ensure state files are stored securely and versioned to prevent accidental data loss or corruption. Go to [OpenTofu backend configuration](https://opentofu.org/docs/language/settings/backends/configuration/) for more information.
-- **State Locking and Security:** Implement state locking to prevent multiple users or processes from modifying the state simultaneously, reducing the risk of conflicting changes and state corruption. For example, tools like OpenTofu or Terraform provide native support for state locking, typically using a shared backend like a database or cloud storage service. This ensures that only one operation can modify the state at a time, protecting the integrity of your infrastructure configurations.
+## Prefer Harness-native services where practical
 
-### Error Handling and Debugging
-- **Common Errors:** Common IaCM errors include misconfigurations, authentication failures, and resource conflicts. To troubleshoot these, check the error messages in your pipeline execution logs, which provide detailed information about the cause and location of the issue.
-- **Pipeline Execution Logs:** Utilize pipeline execution history to view detailed logs for each pipeline run. These logs capture step-by-step execution details, making it easier to identify and resolve issues.
+IaCM integrates with third-party code repositories and secret managers, so you keep your choice of tools. For new setups without an existing investment to preserve, Harness-native services such as [Harness Code Repository](/docs/code-repository/) and [Harness Secret Manager](/docs/platform/secrets/secrets-management/harness-secret-manager-overview/) reduce moving parts:
 
-## Approval Processes in IaCM
-Harness IaCM provides multiple layers of approval mechanisms to ensure secure and controlled infrastructure changes. Here's an overview of the available approval options:
+- **Lower latency:** Native calls avoid round-trips to external APIs, so runs finish faster.
+- **Simpler authentication:** Fewer credential mechanisms mean less to manage and rotate.
+- **Centralized control:** One place to audit changes and enforce policy.
 
-### Access Control (RBAC)
-Role-Based Access Control (RBAC) forms the foundation of approval processes in IaCM. Through workspace RBAC, you can **define who has permission to manage infrastructure resources** and **what actions they can perform**. This granular control ensures that only **authorized team members** can make changes to your infrastructure. Learn more about setting up access controls in our [Workspace RBAC configuration guide](/docs/infra-as-code-management/manage-projects/workspace-rbac).
+The trade-off matters: if your team already standardizes on an external repository or secret manager, switching adds migration work and retraining for limited gain. Adopt native services for new setups, and keep external tools where they are already embedded in your workflows.
 
-### Pipeline Approval Steps
-When you need additional oversight for infrastructure changes, you can add **manual approval steps** to your pipelines. These approval gates allow **designated team members to review and approve changes** before they're applied to your infrastructure. You can **configure who needs to approve changes** and **how long the system should wait for approvals**. See our guide on [implementing approval steps](/docs/infra-as-code-management/pipelines/operations/approval-step) to get started.
+---
 
-### PR Automation
-Streamline your infrastructure change process by **automating pull request workflows**. PR automation helps **standardize how changes are proposed, reviewed, and merged** into your infrastructure code. This ensures **consistent review processes** and maintains a **clear audit trail** of all infrastructure modifications. Check out our documentation on [PR automation](/docs/infra-as-code-management/pipelines/operations/pr-automation) to learn how to set this up for your team.
+## Keep delegates current
+
+IaCM runs on delegates you operate, and an outdated delegate is one of the most common sources of silent failures across the Harness platform. This step is optional if Harness manages your infrastructure, but worth checking first when something fails for no obvious reason.
+
+- **Run a current delegate version:** Some capabilities, such as module registry sync, depend on a recent delegate and fail silently on an outdated one, so a feature looks configured but never runs. Confirm your delegates run a current version before you adopt new IaCM capabilities. Go to [delegate overview](/docs/platform/delegates/install-delegates/overview) to check and upgrade your delegates.
+
+---
+
+## Next steps
+
+Adopt the practices above as defaults, then layer in the platform controls that govern access and secrets across Harness.
+
+- [Get started with IaCM](/docs/infra-as-code-management/get-started): Set up your first workspace and run a plan and apply.
+- [IaCM security](/docs/infra-as-code-management/iacm-security): Review encryption, audit trail, and the scanners available in IaCM.
+- [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness): Control who can change workspaces and pipelines.
+- [Secrets management](/docs/category/secrets-management): Choose and configure a secret manager for your providers.

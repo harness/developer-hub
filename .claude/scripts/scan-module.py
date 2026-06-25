@@ -173,6 +173,25 @@ def is_faq_page(file_path: str, content: str) -> bool:
     return False
 
 
+def is_best_practices_page(file_path: str, content: str) -> bool:
+    """Determine if a page is a best-practices page"""
+    filename = Path(file_path).name
+    if filename == "best-practices.md" or filename.endswith("-best-practices.md"):
+        return True
+
+    frontmatter_match = re.search(r'^---\n(.*?)\n---', content, re.DOTALL | re.MULTILINE)
+    if frontmatter_match:
+        fm = frontmatter_match.group(1)
+        if re.search(r'sidebar_label:\s*Best Practices', fm, re.IGNORECASE):
+            return True
+        if re.search(r'title:.*\bbest practices\b', fm, re.IGNORECASE):
+            return True
+        if re.search(r'^\s*-\s*best[-_]practices\s*$', fm, re.IGNORECASE | re.MULTILINE):
+            return True
+
+    return False
+
+
 def check_violations(file_path: str, content: str, is_dms_content: bool, is_faq: bool) -> List[Dict]:
     """Check all compliance rules and return violations"""
     violations = []
@@ -510,6 +529,7 @@ def scan_module(module_code: str, output_path: str):
         url = derive_url(file_path, module_config)
         is_dms_content = "/content/" in file_path
         is_faq = is_faq_page(file_path, content)
+        is_best_practices = is_best_practices_page(file_path, content)
 
         # Extract title
         title_match = re.search(r'^title:\s*(.+)$', content, re.MULTILINE)
@@ -533,6 +553,7 @@ def scan_module(module_code: str, output_path: str):
             "staleness": staleness,
             "is_dms_content": is_dms_content,
             "is_faq": is_faq,
+            "is_best_practices": is_best_practices,
             "violations": violations,
             "unique_violation_codes": unique_codes
         })

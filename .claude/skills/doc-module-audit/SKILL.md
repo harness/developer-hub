@@ -183,6 +183,16 @@ A file is an **FAQ page** if ANY of:
 
 Store `is_faq: true` alongside each file's metadata when detected. FAQ pages are exempt from several rules — see the per-rule notes below.
 
+**Step D2 — Classify best-practices pages**
+
+A file is a **best-practices page** if ANY of:
+- `title` is "Best Practices" or matches "X best practices" (case-insensitive), OR `sidebar_label` is "Best Practices"
+- `best-practices` (or `best_practices`) appears in the frontmatter `tags`
+- Filename is `best-practices.md` or ends with `-best-practices.md`
+- The dominant content is recommendation-oriented: most sections pair an imperative recommendation with a rationale and a consequence ("if you do not do X, then Y happens")
+
+Store `is_best_practices: true` alongside each file's metadata when detected (the scanner also reports this field). Best-practices pages are scored against the best-practices rubric in `doc-audit` Step 3, not the overview rubric, and they are subject to the module-level count rule (BP-1) below.
+
 **Step C — Fetch last-updated date**
 
 For each file, get the date of its most recent git commit:
@@ -199,7 +209,7 @@ Assign a staleness indicator based on how long ago that date was (relative to to
 | 6–18 months | 🟡 |
 | > 18 months | 🔴 |
 
-Store each file’s `{path, url, is_dms_content, is_faq, last_updated, staleness}` where `is_dms_content` is true when the path contains `/content/` as a segment, `is_faq` is true when the file matches the FAQ classification in Step D, and `staleness` is one of 🟢 🟡 🔴.
+Store each file’s `{path, url, is_dms_content, is_faq, is_best_practices, last_updated, staleness}` where `is_dms_content` is true when the path contains `/content/` as a segment, `is_faq` is true when the file matches the FAQ classification in Step D, `is_best_practices` is true when the file matches the best-practices classification in Step D2, and `staleness` is one of 🟢 🟡 🔴.
 
 ---
 
@@ -344,6 +354,21 @@ WARN if both `## Before you begin` and `## Next steps` are present but `## Next 
 before `## Before you begin` in the file (check line numbers). Before you begin must come first.
 **Exempt:** DMS content files (path contains `/content/`).
 **Exempt:** FAQ pages (`is_faq: true`) — neither section is present in a correctly structured FAQ.
+
+---
+
+## Module-level rule — best-practices page count (BP-1)
+
+This rule runs once per module, after classification, using the `is_best_practices` flags. It is not a per-file rule.
+
+Best-practices pages are deliberately rare. A module should have **at most one** canonical best-practices page (for example `iacm-best-practices.md`). Count the best-practices pages in scope and report:
+
+- **0 pages:** WARN — the module has no best-practices page. Note it as a content gap; most modules should have one.
+- **Exactly 1 page:** PASS — record which file it is.
+- **More than 1 page:** FAIL — list every best-practices page. Recommend consolidating into one canonical page, or reclassifying the extras as Overview or Feature pages. **Exceptions:** the **CD** and **Platform** modules may legitimately carry a small number of scoped best-practices pages (for example per major sub-area); for those modules, report the count for review rather than failing automatically.
+- **Mislabeled pages:** also flag any page that reads like best-practices advice (recommendation + consequence throughout) but is labelled Overview or Feature, and any page labelled best-practices that is really a feature or overview tour. Recommend reclassification or a rewrite to the best-practices model.
+
+Surface the BP-1 result in the report summary alongside the pass/partial/fail counts.
 
 ---
 

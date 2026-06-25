@@ -6,7 +6,7 @@ This file provides project-wide conventions and rules for Claude (Claude Code an
 
 ## Documentation Structure
 
-We have **two documentation templates** depending on page type:
+We have **three documentation templates** depending on page type:
 
 **Instructional/Action pages** (`.cursor/rules/doc-structure-template.mdc`):
 - Step-by-step tutorials and quickstarts
@@ -22,7 +22,15 @@ We have **two documentation templates** depending on page type:
 - API/schema reference material
 - Structure: Frontmatter → Introduction → What you will learn → Optional lightweight prerequisites → Concept sections → Optional FAQs → Related concepts
 
-**When in doubt:** If the page title is action-oriented ("Create", "Configure", "Set up"), use the instructional template. If the title is a noun phrase ("OPA Policies", "Workspace Architecture"), use the overview template.
+**Best-practices pages** (`.cursor/rules/doc-structure-best-practices-template.mdc`):
+- "Best Practices" or "X best practices" pages
+- Hardening, production-readiness, and "before you scale" guidance
+- Pages that steer decisions rather than define concepts or list features
+- Structure: Frontmatter → Introduction (advice frame, not a feature tour) → Practice sections with imperative headings → Next steps
+- Defining rule: every entry states a **recommendation + rationale + consequence** ("if you do not do X, then Y happens"). If you cannot state a consequence, it is not a best practice.
+- Deliberately **omit** "What you will learn", `<Troubleshoot>` blocks, concept dumps (hierarchies, version matrices, "how RBAC works"), and standalone "Limitations" sections. Link concept and platform-level material out, or surface it under Next steps. Score these pages against this rule, not the feature or overview rubric.
+
+**When in doubt:** If the page title is action-oriented ("Create", "Configure", "Set up"), use the instructional template. If the title is a noun phrase ("OPA Policies", "Workspace Architecture"), use the overview template. If the page tells the reader what to do and what breaks if they do not ("Best Practices"), use the best-practices template.
 
 ---
 
