@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2026-06-15T10:00
+date: 2026-06-22T10:00
 sidebar_position: 10
 ---
 
@@ -54,6 +54,25 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 :::
 
 ## June 2026
+
+### Version 1.145.0
+
+<!-- June 2026 -->
+
+#### New Features and Enhancements
+
+- Added Azure Blob Storage support for Docker Layer Caching (DLC). You can now use Azure-backed storage as the backend for DLC operations, expanding DLC storage options beyond S3 and GCS. (CI-22993, CI-23139)
+
+- Improved lite-engine resilience by adding proper handling of 3XX/4XX responses from the log service. The lite-engine HTTP client now gracefully handles redirect and error responses during log stream and upload operations. (CI-23135)
+
+#### Harness Images Updates
+
+| Image | Change | Previous Version | New Version |
+|-------|--------|------------------|-------------|
+| `plugins/buildx` | Azure DLC support | 1.3.19 | 1.3.20 |
+| `plugins/buildx-ecr` | Azure DLC support | 1.4.9 | 1.5.0 |
+| `plugins/buildx-acr` | Azure DLC support | 1.5.0 | 1.5.1 |
+| `plugins/buildx-gar` | Azure DLC support | 1.4.9 | 1.5.0 |
 
 ### Version 1.144.0
 
