@@ -209,6 +209,56 @@ Blobs that were not fetched upfront are downloaded on demand the first time they
   fallback="Set depth to 0. Shallow clones (depth > 0) are incompatible with partial clone filters. Remove the depth setting or set it explicitly to 0, then re-run the pipeline."
 />
 
+#### Example: Conditional Git clean and reset
+
+When you run builds on persistent workspaces, for example a [shared path](../prep-ci-pipeline-components#shared-paths) on a self-managed build infrastructure that retains the cloned repository across executions, you may want to control whether each run discards untracked files or resets the working tree back to the remote branch. You can drive this behavior from `preFetchCommand` using pipeline variables and conditional expressions, so a single pipeline supports both warm and clean runs without editing the pipeline structure.
+
+Declare two string pipeline variables and reference them in `preFetchCommand` with the ternary operator. If the variable resolves to the literal string `"TRUE"`, the prefetch phase runs the corresponding Git command. Otherwise, it runs `git --version` as a no-op so the expression remains valid.
+
+```yaml
+- step:
+    type: GitClone
+    name: clone repo
+    identifier: clone_repo
+    spec:
+      connectorRef: YOUR_CONNECTOR_ID
+      build:
+        type: branch
+        spec:
+          branch: <+codebase.branch>
+      preFetchCommand: |-
+        <+<+pipeline.variables.cleanVar>=="TRUE"?"git clean -fdx":"git --version">
+        <+<+pipeline.variables.resetVar>=="TRUE"?"git fetch origin <+pipeline.variables.branch> && git reset --hard origin/<+pipeline.variables.branch>":"git --version">
+```
+
+Declare the supporting pipeline variables alongside your other pipeline-level variables:
+
+```yaml
+variables:
+  - name: cleanVar
+    type: String
+    value: <+input>.default(TRUE)
+  - name: resetVar
+    type: String
+    value: <+input>.default(TRUE)
+  - name: branch
+    type: String
+    value: <+input>.default(<+codebase.branch>)
+```
+
+**Behavior:**
+
+- **`cleanVar == "TRUE"`:** Runs `git clean -fdx`, which removes all untracked files and directories, including ignored files. Use this to remove build artifacts and restore a clean working tree.
+- **`resetVar == "TRUE"`:** Runs `git fetch origin <branch>` followed by `git reset --hard origin/<branch>`, which moves the local branch pointer to the remote tip and discards any local commits or uncommitted changes.
+- **Neither variable set to `"TRUE"`:** Both expressions resolve to `git --version`, which leaves the existing workspace untouched.
+
+**Important callouts:**
+
+- **Case-sensitive matching:** The comparison is strict string matching. Only the literal value `TRUE` triggers the command. Values such as `true`, `True`, or `1` are treated as false.
+- **Independent toggles:** `cleanVar` and `resetVar` are evaluated separately. You can enable one, both, or neither per execution.
+- **Runtime overrides:** Because the variables use `<+input>.default(...)`, you can override `cleanVar`, `resetVar`, or `branch` at runtime from the **Run Pipeline** form or from a [trigger](/docs/platform/triggers/triggers-overview), or pin them through an input set.
+- **No-op fallback:** The `git --version` placeholder is required so the ternary expression always produces a valid command line when the condition is false.
+
 ### SSL Verify
 
 If **True**, which is the default value, the pipeline verifies your Git SSL certificates. The build fails if the certificate check fails. Set this to **False** only if you have a known issue with the certificate and you are willing to run your builds anyway.
