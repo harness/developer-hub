@@ -27,7 +27,6 @@ When Harness performs a deployment, it compiles all values YAML files and manife
 
 - The Dry Run step's resolved manifests are stored in the Harness cloud. There is a storage limit of 5MB per Dry Run step execution.
 - **Service hooks:** The Dry Run step only supports FetchFiles hooks (pre and post). Other hook types such as TemplateManifest and SteadyStateCheck do not execute during a Dry Run.
-- **Command flags:** The Dry Run step does not support the `commandFlags` field. Unlike other Kubernetes steps (Rolling Deploy, Canary, Blue Green, Apply), you cannot pass additional `kubectl` flags to the Dry Run step.
 
 ## Add the Dry Run step
 
@@ -97,6 +96,155 @@ Set `encryptYamlOutput` to `true` to treat the entire manifest output as a Harne
 </Tabs>
 
 
+---
+
+## Configure command flags
+
+You can pass additional flags to the `kubectl apply --dry-run` command executed during the Dry Run step. This allows you to control how kubectl validates and processes your manifests before deployment.
+
+Command flags are useful when you need the dry run behavior to match your actual deployment configuration. For example, if your deployment uses server-side apply with conflict resolution, you can pass the same flags to the Dry Run step to ensure the validation reflects what will actually happen during deployment.
+
+Use command flags to:
+
+- Test manifests with server-side apply semantics before deployment.
+- Pass strict validation flags to catch schema errors before deployment reaches approval gates.
+- Control how kubectl handles field conflicts during manifest validation.
+- Align the dry run validation with the exact kubectl command flags used in your deployment steps.
+
+Use command flags when you need to:
+
+- Test manifests with server-side apply semantics before deployment. Server-side apply is the modern kubectl mode where the API server handles field ownership rather than the client. If your deployment uses `--server-side` and `--force-conflicts`, pass the same flags to the Dry Run step so the validation output matches the actual deployment behavior.
+- Pass strict validation flags to catch schema errors before deployment reaches approval gates.
+- Control how kubectl handles field conflicts during manifest validation.
+- Align the dry run validation with the exact kubectl command flags used in your deployment steps.
+
+### Add command flags
+
+<Tabs>
+  <TabItem value="Visual" label="Visual" default>
+
+To add command flags in the visual editor:
+
+1. In the Dry Run step, go to the **Advanced** tab.
+2. In the **Command Flags** section, select **Add Command Flag**.
+3. In the **Command Type** dropdown, select **Apply**.
+4. In the **Flag** field, enter the kubectl flags you want to pass, separated by spaces (for example, `--server-side --force-conflicts`).
+5. Select **Apply Changes**.
+
+![Command Flags configuration](static/k8s-dry-run-command-flags.png)
+
+</TabItem>
+  <TabItem value="YAML" label="YAML">
+
+Add command flags directly in your pipeline YAML:
+
+```yaml
+- step:
+    type: K8sDryRun
+    name: Dry Run with Command Flags
+    identifier: DryRun_1
+    spec:
+      encryptYamlOutput: false
+      commandFlags:
+        - commandType: Apply
+          flag: "--server-side --force-conflicts"
+    timeout: 10m
+```
+
+</TabItem>
+</Tabs>
+
+### Supported flags
+
+You can pass any valid kubectl flag that works with the `kubectl apply` command. Common flags include:
+
+- `--server-side`: Use server-side apply semantics. The API server handles field ownership and merging rather than the client.
+- `--force-conflicts`: Force apply when field conflicts occur. This resolves ownership conflicts by forcefully taking ownership of fields.
+- `--validate=strict`: Use strict validation mode. This catches more schema errors than the default validation.
+- `--dry-run=server`: Perform server-side dry run instead of client-side. The server validates the request against the current cluster state.
+
+Go to the [kubectl apply documentation](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply) to view all available flags.
+
+### Use expressions with command flags
+
+Command flags support Harness runtime expressions and runtime inputs. This allows you to set flag values dynamically at execution time or use pipeline variables to control dry run behavior across environments.
+
+For example, you can use a pipeline variable to control the validation mode:
+
+```yaml
+- step:
+    type: K8sDryRun
+    name: Dry Run with Expression
+    identifier: DryRun_1
+    spec:
+      commandFlags:
+        - commandType: Apply
+          flag: "<+pipeline.variables.validationMode>"
+    timeout: 10m
+```
+
+You can also use runtime inputs to let users provide flags at pipeline execution:
+
+```yaml
+- step:
+    type: K8sDryRun
+    name: Dry Run with Runtime Input
+    identifier: DryRun_1
+    spec:
+      commandFlags:
+        - commandType: Apply
+          flag: <input>
+    timeout: 10m
+```
+
+This flexibility is useful when multiple teams share a common pipeline template but need different dry run behaviors for their specific deployment requirements.
+
+**Example: Server-side apply with conflict resolution**
+
+<details>
+<summary>Pipeline workflow with server-side apply validation</summary>
+
+When using server-side apply in your deployments, pass the same flags to the Dry Run step to ensure accurate validation:
+
+```yaml
+- step:
+    type: K8sDryRun
+    name: Validate Server-Side Apply
+    identifier: ValidateSSA
+    spec:
+      encryptYamlOutput: false
+      commandFlags:
+        - commandType: Apply
+          flag: "--server-side --force-conflicts"
+    timeout: 10m
+- step:
+    type: HarnessApproval
+    name: Review Manifests
+    identifier: ReviewManifests
+    spec:
+      approvalMessage: Review the dry run output before deployment
+      approvers:
+        userGroups:
+          - devops_team
+    timeout: 1d
+- step:
+    type: K8sApply
+    name: Apply Manifests
+    identifier: ApplyManifests
+    spec:
+      commandFlags:
+        - commandType: Apply
+          flag: "--server-side --force-conflicts"
+    timeout: 10m
+```
+
+In this example, the Dry Run step validates manifests with the same server-side apply flags that will be used during the actual deployment. The approval gate uses the dry run output to verify the deployment will succeed with the expected conflict resolution behavior.
+
+</details>
+
+---
+
+
 ## Secret masking in Dry Run output
 
 By default, the Dry Run step masks sensitive values in the rendered manifest output. When your service manifests include Kubernetes `Secret` resources, Harness replaces the values inside the `data` field with a masked placeholder. The masked value appears as `Kioq`, which is the Base64-encoded form of `***`.
@@ -127,11 +275,24 @@ When you run the pipeline, the output of the Dry Run step indicates that the man
 
 ```Sh
 Validating manifests with Dry Run
-kubectl --kubeconfig=config apply --filename=manifests-dry-run.yaml --dry-run
+kubectl --kubeconfig=config apply --filename=manifests-dry-run.yaml --dry-run=client
 namespace/dev created (dry run)
 configmap/nginx-k8s-config created (dry run)
 service/nginx-k8s-svc created (dry run)
 deployment.apps/nginx-k8s-deployment created (dry run)
+
+Done.
+```
+
+When command flags are configured, they appear in the kubectl command output:
+
+```Sh
+Validating manifests with Dry Run
+kubectl --kubeconfig=config apply --filename=manifests-dry-run.yaml --dry-run --server-side --force-conflicts
+namespace/dev configured (server dry run)
+configmap/nginx-k8s-config configured (server dry run)
+service/nginx-k8s-svc configured (server dry run)
+deployment.apps/nginx-k8s-deployment configured (server dry run)
 
 Done.
 ```
