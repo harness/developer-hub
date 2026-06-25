@@ -28,6 +28,28 @@ Dependency Firewall is a powerful security feature in Harness Artifact Registry 
 Seeing the tab does not mean the feature is active. Dependency Firewall requires two setup steps before it evaluates artifacts: (1) go to [Configure Policies and Policy Sets](/docs/artifact-registry/dependency-firewall/configure-policies) to configure OPA policies, and (2) go to [Configure Registry](/docs/artifact-registry/manage-registries/configure-registry#enable-dependency-firewall) to enable Dependency Firewall on your upstream proxy.
 :::
 
+---
+
+## Supported registry types
+
+Dependency Firewall works with non-OCI upstream proxy registry types. Harness plans to add support for OCI-compliant registry types (Docker, Helm OCI) in a future release. These types may appear as options in the dashboard filter but do not generate Dependency Firewall violations.
+
+<details>
+<summary>View supported registry types</summary>
+
+- Maven
+- npm
+- PyPI
+- NuGet
+- Cargo
+- Go
+- RPM
+- Composer
+
+</details>
+
+---
+
 ## How Dependency Firewall works
 
 When Dependency Firewall is enabled for an upstream proxy registry, every artifact version fetched from the external source is automatically evaluated against configured policy sets. Each policy in a policy set carries its own **fail action** (chosen when the policy set is authored) that decides what verdict the artifact receives if that policy fails:
