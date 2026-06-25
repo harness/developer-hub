@@ -74,10 +74,10 @@ To create a Perspective, follow these steps:
 
 <div style={{marginBottom: '10px'}}>Rules help you define which cloud resources to include in your perspective using a simple "Operand-Operator-Value" structure.</div>
 
-<div className="rule-components-container" style={{display: 'flex', justifyContent: 'space-between', marginBottom: '20px'}}>
-  <div className="rule-component" style={{flex: '1', padding: '15px', margin: '0 10px', border: '1px solid #eee', borderRadius: '5px'}}>
-    <div style={{fontSize: '18px', fontWeight: 'bold', marginBottom: '10px', textAlign: 'center'}}>Operand</div>
-    <div style={{fontSize: '13px', backgroundColor: '#f8f8f8', padding: '6px', borderRadius: '4px', marginBottom: '8px', fontStyle: 'italic'}}>The data category or attribute you want to filter on</div>
+<div className="rule-components-container">
+  <div className="rule-component">
+    <div className="rule-component__title">Operand</div>
+    <div className="rule-component__desc">The data category or attribute you want to filter on</div>
     <div>Select from:</div>
     <ul style={{paddingLeft: '20px'}}>
       <li>Common</li>
@@ -90,9 +90,9 @@ To create a Perspective, follow these steps:
     </ul>
   </div>
   
-  <div className="rule-component" style={{flex: '1', padding: '15px', margin: '0 10px', border: '1px solid #eee', borderRadius: '5px'}}>
-    <div style={{fontSize: '18px', fontWeight: 'bold', marginBottom: '10px', textAlign: 'center'}}>Operator</div>
-    <div style={{fontSize: '13px', backgroundColor: '#f8f8f8', padding: '6px', borderRadius: '4px', marginBottom: '8px', fontStyle: 'italic'}}>The comparison method that defines how to match values</div>
+  <div className="rule-component">
+    <div className="rule-component__title">Operator</div>
+    <div className="rule-component__desc">The comparison method that defines how to match values</div>
     <div>Choose from:</div>
 
     * **IN**: Include only resources that exactly match the specified value
@@ -104,9 +104,9 @@ To create a Perspective, follow these steps:
     
   </div>
   
-  <div className="rule-component" style={{flex: '1', padding: '15px', margin: '0 10px', border: '1px solid #eee', borderRadius: '5px'}}>
-    <div style={{fontSize: '18px', fontWeight: 'bold', marginBottom: '10px', textAlign: 'center'}}>Values</div>
-    <div style={{fontSize: '13px', backgroundColor: '#f8f8f8', padding: '6px', borderRadius: '4px', marginBottom: '8px', fontStyle: 'italic'}}>The specific data points to include or exclude in your perspective</div>
+  <div className="rule-component">
+    <div className="rule-component__title">Values</div>
+    <div className="rule-component__desc">The specific data points to include or exclude in your perspective</div>
     <div>Select the specific data points to apply the rule to.</div>
     <div style={{marginTop: '10px'}}>These will vary based on your selected Operand and Operator.</div>
   </div>

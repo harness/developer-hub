@@ -37,45 +37,45 @@ With Cost Categories, you can:
 
 <DocImage path={require('./static/what-is.png')} width="100%" height="100%" title="Click to view full size image" />
 
-<div style={{backgroundColor: '#f8fafc', padding: '20px', borderRadius: '8px', border: '1px solid #e2e8f0', marginBottom: '24px'}}>
+<div className="concept-panel">
 
-### <span style={{color: '#334155'}}>What is the difference between Cost Categories and Perspectives?</span>
+### What is the difference between Cost Categories and Perspectives?
 
-<p style={{fontSize: '16px', lineHeight: '1.6'}}>
-  <span style={{backgroundColor: '#e0f2fe', padding: '2px 6px', borderRadius: '4px', fontWeight: 'bold'}}>Cost Categories</span> label and organize your cloud spend into custom buckets, while <span style={{backgroundColor: '#dcfce7', padding: '2px 6px', borderRadius: '4px', fontWeight: 'bold'}}>Perspectives</span> let you view and analyze that categorized data using Cost Categories as filters or group-by dimensions.
+<p>
+  <span className="concept-chip concept-chip--info">Cost Categories</span> label and organize your cloud spend into custom buckets, while <span className="concept-chip concept-chip--success">Perspectives</span> let you view and analyze that categorized data using Cost Categories as filters or group-by dimensions.
 </p>
 
 <div style={{overflowX: 'auto'}}>
-  <table style={{width: '100%', borderCollapse: 'separate', borderSpacing: '0', marginTop: '16px'}}>
+  <table className="concept-table">
     <thead>
-      <tr style={{backgroundColor: '#f1f5f9'}}>
-        <th style={{padding: '12px 16px', textAlign: 'left', fontWeight: '600', borderBottom: '2px solid #cbd5e1'}}>Aspect</th>
-        <th style={{padding: '12px 16px', textAlign: 'left', fontWeight: '600', borderBottom: '2px solid #0ea5e9', color: '#0284c7'}}>Cost Categories</th>
-        <th style={{padding: '12px 16px', textAlign: 'left', fontWeight: '600', borderBottom: '2px solid #10b981', color: '#059669'}}>Perspectives</th>
+      <tr>
+        <th>Aspect</th>
+        <th className="concept-col-info">Cost Categories</th>
+        <th className="concept-col-success">Perspectives</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td style={{padding: '12px 16px', borderBottom: '1px solid #e2e8f0', fontWeight: '600'}}>What it is</td>
-        <td style={{padding: '12px 16px', borderBottom: '1px solid #e2e8f0', backgroundColor: '#f0f9ff'}}>A <strong>classification system</strong> that assigns costs into custom buckets based on rules you define.</td>
-        <td style={{padding: '12px 16px', borderBottom: '1px solid #e2e8f0', backgroundColor: '#f0fdf4'}}>A <strong>saved view</strong> of cost data with predefined filters, groupings, and time ranges.</td>
+        <td className="concept-row-label">What it is</td>
+        <td className="concept-col-info">A <strong>classification system</strong> that assigns costs into custom buckets based on rules you define.</td>
+        <td className="concept-col-success">A <strong>saved view</strong> of cost data with predefined filters, groupings, and time ranges.</td>
       </tr>
       <tr>
-        <td style={{padding: '12px 16px', borderBottom: '1px solid #e2e8f0', fontWeight: '600'}}>Purpose</td>
-        <td style={{padding: '12px 16px', borderBottom: '1px solid #e2e8f0', backgroundColor: '#f0f9ff'}}>To <strong>label and organize</strong> costs into meaningful business groupings (e.g., Environment, Department, Project).</td>
-        <td style={{padding: '12px 16px', borderBottom: '1px solid #e2e8f0', backgroundColor: '#f0fdf4'}}>To <strong>analyze and visualize</strong> costs through a consistent lens, making it easy to track trends or budgets over time.</td>
+        <td className="concept-row-label">Purpose</td>
+        <td className="concept-col-info">To <strong>label and organize</strong> costs into meaningful business groupings (e.g., Environment, Department, Project).</td>
+        <td className="concept-col-success">To <strong>analyze and visualize</strong> costs through a consistent lens, making it easy to track trends or budgets over time.</td>
       </tr>
       <tr>
-        <td style={{padding: '12px 16px', borderBottom: '1px solid #e2e8f0', fontWeight: '600'}}>Scope</td>
-        <td style={{padding: '12px 16px', borderBottom: '1px solid #e2e8f0', backgroundColor: '#f0f9ff'}}>Changes how cost line items are categorized across all reporting and dashboards.</td>
-        <td style={{padding: '12px 16px', borderBottom: '1px solid #e2e8f0', backgroundColor: '#f0fdf4'}}>Controls <strong>how</strong> the categorized cost data is displayed and compared in reports.</td>
+        <td className="concept-row-label">Scope</td>
+        <td className="concept-col-info">Changes how cost line items are categorized across all reporting and dashboards.</td>
+        <td className="concept-col-success">Controls <strong>how</strong> the categorized cost data is displayed and compared in reports.</td>
       </tr>
     </tbody>
   </table>
 </div>
 
-<div style={{marginTop: '24px', backgroundColor: '#f1f5f9', padding: '16px', borderRadius: '6px', borderLeft: '4px solid #64748b'}}>
-  <h3 style={{margin: '0 0 12px 0', color: '#334155'}}>How They Work Together</h3>
+<div className="concept-callout" style={{marginTop: '24px'}}>
+  <h3>How They Work Together</h3>
   <ul style={{marginBottom: '0', paddingLeft: '20px'}}>
     <li><strong>Cost Categories</strong> define the labels for your costs.</li>
     <li><strong>Perspectives</strong> decide how to look at those costs.</li>
@@ -91,37 +91,37 @@ With Cost Categories, you can:
 
 <details>
 <summary>Example: Using Cost Categories with Perspectives</summary>
-<div style={{backgroundColor: '#f0f7ff', padding: '20px', borderRadius: '8px', border: '1px solid #cce3ff', marginBottom: '24px', boxShadow: '0 2px 4px rgba(0,0,0,0.05)'}}>  
+<div className="concept-panel concept-panel--info">  
 
-Let's say your organization runs workloads in <span style={{backgroundColor: '#e6f2ff', padding: '2px 5px', borderRadius: '3px'}}>multiple AWS accounts</span>. Some accounts are for Production, some for Development, and others for Staging. 
+Let's say your organization runs workloads in <span className="concept-chip concept-chip--info">multiple AWS accounts</span>. Some accounts are for Production, some for Development, and others for Staging. 
 
-<div style={{backgroundColor: '#ffe6e6', padding: '10px', borderRadius: '5px', marginBottom: '15px', borderLeft: '3px solid #ff8080'}}>
+<div className="concept-callout concept-callout--warning">
 <span style={{fontWeight: 'bold'}}>Without Cost Categories:</span> Creating a Perspective to analyze costs by environment requires creating perspectives with multiple rules and any new account or tag variation means updating the Perspective again.
 </div>
 
-<div style={{backgroundColor: '#e6ffe6', padding: '10px', borderRadius: '5px', marginBottom: '15px', borderLeft: '3px solid #80c080'}}>
+<div className="concept-callout concept-callout--success">
 <span style={{fontWeight: 'bold'}}>With Cost Categories:</span> You can define an Environment cost category that standardizes this classification by using three cost buckets (Production, Development, and Staging).
 </div>
 
-<table style={{width: '100%', borderCollapse: 'separate', borderSpacing: '0', marginBottom: '20px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)'}}>
+<table className="concept-table">
   <thead>
-    <tr style={{backgroundColor: '#f0f7ff'}}>
-      <th style={{padding: '12px', borderBottom: '2px solid #cce3ff', textAlign: 'left'}}>Rule</th>
-      <th style={{padding: '12px', borderBottom: '2px solid #cce3ff', textAlign: 'left'}}>Cost Bucket</th>
+    <tr>
+      <th>Rule</th>
+      <th>Cost Bucket</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style={{padding: '10px', borderBottom: '1px solid #e6e6e6'}}><span style={{fontWeight: 'bold'}}>Operand:</span> AWS, <span style={{fontWeight: 'bold'}}>Operator:</span> Account, <span style={{fontWeight: 'bold'}}>Value:</span> &#123;all the accounts related to production&#125;</td>
-      <td style={{padding: '10px', borderBottom: '1px solid #e6e6e6', backgroundColor: '#f9f9f9'}}><span style={{color: '#0066cc', fontWeight: 'bold'}}>Production</span></td>
+      <td><span style={{fontWeight: 'bold'}}>Operand:</span> AWS, <span style={{fontWeight: 'bold'}}>Operator:</span> Account, <span style={{fontWeight: 'bold'}}>Value:</span> &#123;all the accounts related to production&#125;</td>
+      <td><span className="concept-text-accent">Production</span></td>
     </tr>
     <tr>
-      <td style={{padding: '10px', borderBottom: '1px solid #e6e6e6'}}><span style={{fontWeight: 'bold'}}>Operand:</span> AWS, <span style={{fontWeight: 'bold'}}>Operator:</span> Usage Type, <span style={{fontWeight: 'bold'}}>Value:</span> &#123;all the usage types related to development&#125; <span style={{backgroundColor: '#fff2cc', padding: '1px 5px', borderRadius: '3px'}}>OR</span> <span style={{fontWeight: 'bold'}}>Operand:</span> AWS, <span style={{fontWeight: 'bold'}}>Operator:</span> Service, <span style={{fontWeight: 'bold'}}>Value:</span> &#123;all the services related to development&#125;</td>
-      <td style={{padding: '10px', borderBottom: '1px solid #e6e6e6', backgroundColor: '#f9f9f9'}}><span style={{color: '#0066cc', fontWeight: 'bold'}}>Development</span></td>
+      <td><span style={{fontWeight: 'bold'}}>Operand:</span> AWS, <span style={{fontWeight: 'bold'}}>Operator:</span> Usage Type, <span style={{fontWeight: 'bold'}}>Value:</span> &#123;all the usage types related to development&#125; <span className="concept-chip concept-chip--amber">OR</span> <span style={{fontWeight: 'bold'}}>Operand:</span> AWS, <span style={{fontWeight: 'bold'}}>Operator:</span> Service, <span style={{fontWeight: 'bold'}}>Value:</span> &#123;all the services related to development&#125;</td>
+      <td><span className="concept-text-accent">Development</span></td>
     </tr>
     <tr>
-      <td style={{padding: '10px', borderBottom: '1px solid #e6e6e6'}}><span style={{fontWeight: 'bold'}}>Operand:</span> AWS, <span style={{fontWeight: 'bold'}}>Operator:</span> Service, <span style={{fontWeight: 'bold'}}>Value:</span> &#123;all the services related to staging&#125;</td>
-      <td style={{padding: '10px', borderBottom: '1px solid #e6e6e6', backgroundColor: '#f9f9f9'}}><span style={{color: '#0066cc', fontWeight: 'bold'}}>Staging</span></td>
+      <td><span style={{fontWeight: 'bold'}}>Operand:</span> AWS, <span style={{fontWeight: 'bold'}}>Operator:</span> Service, <span style={{fontWeight: 'bold'}}>Value:</span> &#123;all the services related to staging&#125;</td>
+      <td><span className="concept-text-accent">Staging</span></td>
     </tr>
   </tbody>
 </table>
@@ -129,11 +129,11 @@ Let's say your organization runs workloads in <span style={{backgroundColor: '#e
 
 
 
-<div style={{backgroundColor: '#f0f7ff', padding: '12px', borderRadius: '5px', borderLeft: '3px solid #0066cc'}}>
+<div className="concept-callout concept-callout--info">
 Once this Cost Category is in place, you can use it in Perspectives to:
 <ul style={{marginTop: '8px', marginBottom: '8px'}}>
-  <li><span style={{backgroundColor: '#cce3ff', padding: '2px 6px', borderRadius: '3px', fontWeight: 'bold'}}>Filter:</span> Filter by any cost bucket.</li>
-  <li><span style={{backgroundColor: '#cce3ff', padding: '2px 6px', borderRadius: '3px', fontWeight: 'bold'}}>Group By:</span> Break down total spend by your cost buckets.</li>
+  <li><span className="concept-chip concept-chip--info">Filter:</span> Filter by any cost bucket.</li>
+  <li><span className="concept-chip concept-chip--info">Group By:</span> Break down total spend by your cost buckets.</li>
 </ul>
 </div>
 
@@ -178,10 +178,10 @@ A cost category is composed of one or more buckets. Each bucket contains filters
 
 <div style={{marginBottom: '10px'}}>Rules help you define which cloud resources to include in your Cost Bucket using a simple "Operand-Operator-Value" structure.</div>
 
-<div className="rule-components-container" style={{display: 'flex', justifyContent: 'space-between', marginBottom: '20px'}}>
-  <div className="rule-component" style={{flex: '1', padding: '15px', margin: '0 10px', border: '1px solid #eee', borderRadius: '5px'}}>
-    <div style={{fontSize: '18px', fontWeight: 'bold', marginBottom: '10px', textAlign: 'center'}}>Operand</div>
-    <div style={{fontSize: '13px', backgroundColor: '#f8f8f8', padding: '6px', borderRadius: '4px', marginBottom: '8px', fontStyle: 'italic'}}>The data category or attribute you want to filter on</div>
+<div className="rule-components-container">
+  <div className="rule-component">
+    <div className="rule-component__title">Operand</div>
+    <div className="rule-component__desc">The data category or attribute you want to filter on</div>
     <div>Select from:</div>
     <ul style={{paddingLeft: '20px'}}>
       <li>Common</li>
@@ -194,9 +194,9 @@ A cost category is composed of one or more buckets. Each bucket contains filters
     </ul>
   </div>
   
-  <div className="rule-component" style={{flex: '1', padding: '15px', margin: '0 10px', border: '1px solid #eee', borderRadius: '5px'}}>
-    <div style={{fontSize: '18px', fontWeight: 'bold', marginBottom: '10px', textAlign: 'center'}}>Operator</div>
-    <div style={{fontSize: '13px', backgroundColor: '#f8f8f8', padding: '6px', borderRadius: '4px', marginBottom: '8px', fontStyle: 'italic'}}>The comparison method that defines how to match values</div>
+  <div className="rule-component">
+    <div className="rule-component__title">Operator</div>
+    <div className="rule-component__desc">The comparison method that defines how to match values</div>
     <div>Choose from:</div>
 
     * **IN**: Include only resources that exactly match the specified value
@@ -208,9 +208,9 @@ A cost category is composed of one or more buckets. Each bucket contains filters
     
   </div>
   
-  <div className="rule-component" style={{flex: '1', padding: '15px', margin: '0 10px', border: '1px solid #eee', borderRadius: '5px'}}>
-    <div style={{fontSize: '18px', fontWeight: 'bold', marginBottom: '10px', textAlign: 'center'}}>Values</div>
-    <div style={{fontSize: '13px', backgroundColor: '#f8f8f8', padding: '6px', borderRadius: '4px', marginBottom: '8px', fontStyle: 'italic'}}>The specific data points to include or exclude in your perspective</div>
+  <div className="rule-component">
+    <div className="rule-component__title">Values</div>
+    <div className="rule-component__desc">The specific data points to include or exclude in your perspective</div>
     <div>Select the specific data points to apply the rule to.</div>
     <div style={{marginTop: '10px'}}>These will vary based on your selected Operand and Operator.</div>
   </div>

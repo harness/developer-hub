@@ -3270,3 +3270,224 @@ html[data-theme='dark'] footer {
 .menu__link.hidden {
   display: none !important;
 }
+
+/* ============================================================
+   Doc concept blocks (callouts, comparison tables, rule cards)
+   Theme-aware replacements for former hardcoded inline styles.
+   Used by the CCM Cost Categories and Perspectives docs.
+   Fixes HDH-784: light backgrounds with inherited text color
+   rendered as white-on-light (illegible) in dark mode.
+   ============================================================ */
+
+:root {
+  /* Surfaces and text */
+  --concept-card-bg: #f8fafc;
+  --concept-card-border: #e2e8f0;
+  --concept-card-heading: #334155;
+  --concept-card-text: #334155;
+
+  /* Accent families: soft = inline chip bg, accent = border/heading text */
+  --concept-info-bg: #f0f9ff;
+  --concept-info-soft: #e0f2fe;
+  --concept-info-accent: #0284c7;
+
+  --concept-success-bg: #f0fdf4;
+  --concept-success-soft: #dcfce7;
+  --concept-success-accent: #059669;
+
+  --concept-warning-bg: #ffe6e6;
+  --concept-warning-soft: #ffe6e6;
+  --concept-warning-accent: #e11d48;
+
+  --concept-amber-soft: #fff2cc;
+
+  --concept-neutral-bg: #f1f5f9;
+  --concept-neutral-accent: #64748b;
+
+  --concept-chip-bg: #f1f5f9;
+  --concept-chip-text: #1e293b;
+}
+
+[data-theme='dark'] {
+  --concept-card-bg: #11161c;
+  --concept-card-border: #2a2f37;
+  --concept-card-heading: #e2e8f0;
+  --concept-card-text: #cbd5e1;
+
+  --concept-info-bg: rgba(2, 132, 199, 0.12);
+  --concept-info-soft: rgba(2, 132, 199, 0.3);
+  --concept-info-accent: #38bdf8;
+
+  --concept-success-bg: rgba(5, 150, 105, 0.12);
+  --concept-success-soft: rgba(5, 150, 105, 0.3);
+  --concept-success-accent: #34d399;
+
+  --concept-warning-bg: rgba(225, 29, 72, 0.14);
+  --concept-warning-soft: rgba(225, 29, 72, 0.3);
+  --concept-warning-accent: #fb7185;
+
+  --concept-amber-soft: rgba(234, 179, 8, 0.28);
+
+  --concept-neutral-bg: rgba(148, 163, 184, 0.14);
+  --concept-neutral-accent: #94a3b8;
+
+  --concept-chip-bg: #2a2f37;
+  --concept-chip-text: #e2e8f0;
+}
+
+/* Card: rounded, bordered container that holds a concept block */
+.concept-panel {
+  background-color: var(--concept-card-bg);
+  color: var(--concept-card-text);
+  border: 1px solid var(--concept-card-border);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.concept-panel--info {
+  background-color: var(--concept-info-bg);
+  border-color: var(--concept-info-accent);
+}
+
+.concept-panel h3,
+.concept-panel h4 {
+  color: var(--concept-card-heading);
+  margin-top: 0;
+}
+
+/* Callout: accent left-border highlight box */
+.concept-callout {
+  background-color: var(--concept-neutral-bg);
+  border-left: 4px solid var(--concept-neutral-accent);
+  color: var(--concept-card-text);
+  padding: 12px 16px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+}
+
+.concept-callout--info {
+  background-color: var(--concept-info-bg);
+  border-left-color: var(--concept-info-accent);
+}
+
+.concept-callout--success {
+  background-color: var(--concept-success-bg);
+  border-left-color: var(--concept-success-accent);
+}
+
+.concept-callout--warning {
+  background-color: var(--concept-warning-bg);
+  border-left-color: var(--concept-warning-accent);
+}
+
+/* Inline highlighted keyword chip */
+.concept-chip {
+  background-color: var(--concept-chip-bg);
+  color: var(--concept-chip-text);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.concept-chip--info {
+  background-color: var(--concept-info-soft);
+  color: var(--concept-chip-text);
+}
+
+.concept-chip--success {
+  background-color: var(--concept-success-soft);
+  color: var(--concept-chip-text);
+}
+
+.concept-chip--amber {
+  background-color: var(--concept-amber-soft);
+  color: var(--concept-chip-text);
+}
+
+/* Accent inline text (e.g. bucket names) */
+.concept-text-accent {
+  color: var(--concept-info-accent);
+  font-weight: bold;
+}
+
+/* Comparison / concept tables */
+.concept-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+  color: var(--concept-card-text);
+}
+
+.concept-table th,
+.concept-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--concept-card-border);
+}
+
+.concept-table thead th {
+  font-weight: 600;
+  background-color: var(--concept-neutral-bg);
+}
+
+.concept-table th.concept-col-info {
+  color: var(--concept-info-accent);
+  border-bottom: 2px solid var(--concept-info-accent);
+}
+
+.concept-table th.concept-col-success {
+  color: var(--concept-success-accent);
+  border-bottom: 2px solid var(--concept-success-accent);
+}
+
+.concept-table td.concept-col-info {
+  background-color: var(--concept-info-bg);
+}
+
+.concept-table td.concept-col-success {
+  background-color: var(--concept-success-bg);
+}
+
+.concept-table td.concept-row-label {
+  font-weight: 600;
+}
+
+/* Rule cards: Operand / Operator / Values columns */
+.rule-components-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.rule-component {
+  flex: 1;
+  padding: 15px;
+  border: 1px solid var(--concept-card-border);
+  border-radius: 5px;
+  background-color: var(--concept-card-bg);
+  color: var(--concept-card-text);
+}
+
+.rule-component__title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.rule-component__desc {
+  font-size: 13px;
+  background-color: var(--concept-neutral-bg);
+  padding: 6px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .rule-components-container {
+    flex-direction: column;
+  }
+}
