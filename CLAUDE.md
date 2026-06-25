@@ -601,3 +601,18 @@ npm run generate-llms-txt
 - **Metadata**: Edit `METADATA` object at top of script
 
 **Format follows the emerging `llms.txt` standard** for AI-friendly documentation indexing.
+
+---
+
+## Feature Availability Page
+
+The `ff-ga-feed.json` file is the source of truth for the Feature Availability page.
+
+When updating this file:
+
+* Do not expose module prefixes or internal feature flag identifiers. Future versions may separate internal flag identifiers from customer-facing display names.
+* Write descriptions for customers, not engineers.
+* Use only `Beta` or `Limited GA`.
+* Remove entries once rollout is complete and the capability becomes part of the standard product experience.
+
+Refer to `.cursor/rules/feature-availability.mdc` for complete standards and examples.

@@ -1,0 +1,145 @@
+---
+description: Maintain the Feature Availability feed used by the Harness Developer Hub
+globs: ["**/ff-ga-feed.json"]
+alwaysApply: false
+---
+
+# Feature Availability Feed
+
+## Purpose
+
+The `ff-ga-feed.json` file is the source of truth for the Feature Availability page.
+
+This page communicates customer-facing capabilities that are still progressing through rollout. It is not intended to expose internal feature flag implementation details.
+
+---
+
+## Data Ownership
+
+The following fields are owned by `ff-ga-feed.json`:
+
+* Feature name
+* Customer-facing description
+* Product module
+* Lifecycle status
+
+---
+
+## Lifecycle States
+
+Use only the following values:
+
+* `Beta`
+* `Limited GA`
+
+| Rollout State                             | Lifecycle State |
+| ----------------------------------------- | --------------- |
+| Mostly Preview or Disabled                | Beta            |
+| Broad rollout across environments         | Limited GA      |
+| Fully rolled out or flag no longer exists | Remove entry    |
+
+Do not add additional lifecycle values.
+
+---
+
+## Feature Names
+
+Do not present capabilities as feature flags.
+
+The Feature Availability page should describe product capabilities, not internal implementation details.
+
+### Good
+
+```json
+{
+  "flagKey": "JIRA_ENHANCED_TICKET_METADATA",
+}
+```
+
+### Bad
+
+```json
+{
+  "flagKey": "STO_JIRA_ENHANCED_TICKET_METADATA"
+}
+```
+
+### Naming Rules
+
+* Remove module prefixes
+* Remove internal abbreviations where possible
+* Remove implementation-specific suffixes
+* Use title case
+* Write names as customer-facing capabilities
+
+The displayed name should read naturally to a customer who has never seen the underlying feature flag.
+
+---
+
+## Descriptions
+
+Descriptions should be intentionally different from internal feature flag descriptions.
+
+Write for customers, not engineers.
+
+Descriptions should:
+
+* Focus on customer value
+* Explain what the capability enables
+* Avoid implementation details
+* Be one or two sentences
+* Read like release notes or product documentation
+
+### Good
+
+```json
+"description": "Enhances Jira ticket metadata by including additional security issue details such as severity, CVSS scores, vulnerability paths, and remediation guidance to improve ticket triage and prioritization."
+```
+
+### Bad
+
+```json
+"description": "FF to support JIRA_ENHANCED_TICKET_METADATA rollout."
+```
+
+You may generate descriptions from release notes or existing product documentation, but review them for clarity before committing.
+
+---
+
+## Module
+
+Use the customer-facing module name as it appears in product documentation.
+
+Examples:
+
+* Continuous Delivery
+* Continuous Integration
+* Security Test Orchestration
+* Internal Developer Portal
+
+Do not use internal team names or organizational names.
+
+---
+
+## Removal Criteria
+
+Remove an entry when all of the following are true:
+
+* The feature flag no longer exists, or rollout is complete
+* The capability is broadly available
+* The capability is considered part of the standard product experience
+
+The Feature Availability page should only contain capabilities that are still progressing through rollout.
+
+---
+
+## Example Entry
+
+```json
+{
+  "flagKey": "JIRA_ENHANCED_TICKET_METADATA",
+  "description": "Enhances Jira ticket metadata by including additional security issue details such as severity, CVSS scores, vulnerability paths, and remediation guidance to improve ticket triage and prioritization.",
+  "module": "Security Test Orchestration",
+  "lifecycleState": "Beta"
+}
+```
