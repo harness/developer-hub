@@ -1,7 +1,7 @@
 ---
 title: Two-factor authentication
 description: Set up and enforce two-factor authentication (2FA) for your Harness account or for all users in the account.
-sidebar_position: 15
+sidebar_position: 18
 helpdocs_topic_id: ipsux8n7gm
 helpdocs_category_id: fe0577j8ie
 helpdocs_is_private: false

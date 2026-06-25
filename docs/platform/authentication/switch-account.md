@@ -1,7 +1,7 @@
 ---
 title: Switch account
 description: Learn how to switch between multiple Harness accounts and understand when re-authentication is required.
-sidebar_position: 18
+sidebar_position: 22
 helpdocs_topic_id: 918lei069y
 helpdocs_category_id: fe0577j8ie
 helpdocs_is_private: false

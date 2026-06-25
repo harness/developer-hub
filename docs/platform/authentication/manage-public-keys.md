@@ -1,7 +1,7 @@
 ---
 title: Manage public keys
 description: Generate, add, and delete GPG and SSH public keys in your Harness user profile to verify commit authenticity.
-sidebar_position: 16
+sidebar_position: 26
 keywords:
   - GPG key
   - SSH key
