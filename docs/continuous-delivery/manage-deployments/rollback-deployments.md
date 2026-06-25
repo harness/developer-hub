@@ -16,6 +16,7 @@ Post deployment rollback initiates a rollback of your most recent successful dep
   - Tanzu Application Services (TAS)
   - Amazon Elastic Container Service (ECS)
   - Native Helm
+  - Google Managed Instance Group (MIG)
 
     Harness anticipates expanding this feature to other deployment types in the future.
 * Alternatively, for unsupported deployment types like **SSH deployments**, users can get the previous version and create a new forward deployment with the required version of the artifact and the manifest.
