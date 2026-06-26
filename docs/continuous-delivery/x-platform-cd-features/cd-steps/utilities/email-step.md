@@ -134,6 +134,15 @@ pipeline:
 
 </details>
 
+## Fire and Forget
+
+The **Fire and Forget** checkbox controls whether the Email step waits for email delivery confirmation or continues immediately.
+
+- **Unchecked (default):** The Email step waits for the notification service to confirm email delivery before marking the step as complete. If email delivery fails, the step fails and the pipeline may be interrupted depending on your failure strategy.
+- **Checked:** The Email step sends the email request and immediately marks as successful without waiting for delivery confirmation. Pipeline execution continues regardless of whether the email is actually delivered. This prevents email delivery issues from blocking or failing your pipeline.
+
+Enable this option when email notifications are informational and should not affect pipeline success. Leave it unchecked when email delivery is critical to your workflow.
+
 ## Using Input Variables
 
 You can use input variables in the Email Step to customize the subject, body, and recipient list with dynamic values from your pipeline.
@@ -190,7 +199,9 @@ To notify larger audiences, use a distribution list (DL) or group email address 
 
 ### Asynchronous processing
 
-The Email step sends emails asynchronously through the notification service. Because of this, the step may report a timeout or connection failure even when the SMTP server has already delivered the emails.
+When the **Fire and Forget** option is enabled, the Email step operates asynchronously. Your pipeline execution continues immediately without waiting for email delivery confirmation.
+
+Harness marks the Email step as successful once the email request is sent to the notification service, even if email delivery fails later. This design prevents email issues from blocking pipeline executions when the notification is informational rather than critical.
 
 Before you re-run a failed email step, check your SMTP server logs to verify whether the emails were delivered. This prevents duplicate messages.
 
