@@ -20,7 +20,7 @@ The extracted files have many levels of nested directories. To locate specific l
 
 * You might encounter the error message `Prefix Key Exceeds Maximum Download Limit` if your download exceeds the maximum number of log files.
    * The download contains individual log files for each step and step sub-section in the execution.
-   * There is a limit of 500 log files per download request.
+   * There is a limit of 100 log files per download request.
 * Windows users may encounter issues extracting `logs.zip` with the native extraction tool. To avoid this, we recommend using a third-party tool such as 7-Zip or similar.
 
 ## Download pipeline log files
