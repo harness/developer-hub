@@ -176,6 +176,11 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 #### Fixed issues
 - Resolved CVE-2026-44249, CVE-2026-44250, CVE-2026-44890, CVE-2026-44893 in netty. [DEL-10286]
 
+### Version 26.06.89404 <!-- June 26, 2026 -->
+
+#### Fixed issues
+- Add support for OCI helm repo from GAR source. [CDS-125282]
+
 ### Version 26.06.89403 <!-- June 17, 2026 -->
 
 #### Fixed issues
