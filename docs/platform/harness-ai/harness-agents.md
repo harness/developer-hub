@@ -39,7 +39,7 @@ Worker Agents are AI-powered automation units that execute tasks inside Harness 
 - **Pipeline permissions:** You need **View**, **Create/Edit**, and **Execute** for [Pipelines](/docs/platform/role-based-access-control/permissions-reference#pipelines). An administrator must assign you a role that includes them. Go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) to configure roles.
 - **Connector permissions:** You need **View**, **Create/Edit**, and **Delete** for [Connectors](/docs/platform/role-based-access-control/permissions-reference#connectors) to create and manage the Model Provider Connector and MCP Connector.
 - **Secret permissions:** You need **View** and **Access** (reference) for [Secrets](/docs/platform/role-based-access-control/permissions-reference#secrets) at a minimum, since both the Model Provider Connector and MCP Connector reference secrets for authentication.
-- **Model Connector:** An Anthropic Connector configured with a default model. Go to [Configure Model Connectors](#configure-model-connectors) to review supported models and setup options.
+- **Model Connector:** An Anthropic or OpenAI Model Connector configured with a default model. Go to [Configure Model Connectors](#configure-model-connectors) to review supported providers, models, and setup options.
 - **MCP Connector (optional):** An MCP Server Connector with a valid hosted MCP URL and API key. Go to [Harness MCP Server](/docs/platform/harness-ai/harness-mcp-server) to set up MCP access.
 
 ---
@@ -56,10 +56,10 @@ The catalog displays all available worker agents for your project scope, includi
 
 ## Create a Worker Agent
 
-Custom agents appear in the **Custom** tab of the Worker Agent Catalog. These are agents you or your team have created or forked from the Marketplace.
+Custom agents appear in the **Custom** tab of the Worker Agent Catalog. These are agents you or your team have created.
 
 <DocImage path={require('./static/custom-agents-catalog.png')} alt="Worker Agent Catalog Custom tab showing user-created agents including Approval review, Code review, IaCM plan safety, Pipeline failure summarizer, and PR review agents" title="Click to view full size" />
-<p align="center"><em>The Custom tab displays all user-created and forked Worker Agents in your project</em></p>
+<p align="center"><em>The Custom tab displays all user-created Worker Agents in your project</em></p>
 
 To create a new custom agent:
 
@@ -109,7 +109,7 @@ Go to [Harness MCP Server](/docs/platform/harness-ai/harness-mcp-server) to inst
 
 ## Agent Marketplace
 
-The Worker Agent Catalog includes a **Marketplace** tab and a **Custom** tab. The Marketplace provides pre-built agents maintained by Harness that you can use immediately or fork into custom agents.
+The Worker Agent Catalog includes a **Marketplace** tab and a **Custom** tab. The Marketplace provides pre-built agents maintained by Harness that you can use immediately.
 
 <DocImage path={require('./static/agent-marketplace.png')} alt="Worker Agent Catalog showing the Marketplace tab with Harness-managed agents including Feature flag cleanup, Manifest remediator, Autofix, Onboarding, Code review, Zero day remediation, Code coverage, IaCM remediation, and React upgrade agents" title="Click to view full size" />
 <p align="center"><em>The Agent Marketplace with Harness-managed agents available for your project</em></p>
@@ -125,18 +125,6 @@ The Marketplace includes three categories of agents:
 | **Community** | Agents contributed by the Harness community. Available for use but not officially maintained by Harness. |
 
 By default, your account includes **Harness Managed** agents. These agents are ready to use out of the box and cover common use cases such as code review, autofix, code coverage, manifest remediation, onboarding, feature flag cleanup, zero day remediation, IaCM remediation, and library upgrades.
-
-### Fork and customize a Marketplace agent
-
-You can fork any Marketplace agent to create a custom version:
-
-1. In the **Marketplace** tab, select the agent you want to customize.
-2. Review the agent's instructions, inputs, and configuration.
-3. Select **Fork** (or copy the agent definition) to create a new custom agent based on the Marketplace agent.
-4. Modify the instructions, inputs, environment variables, or MCP connectors to fit your requirements.
-5. Select **Save** to publish your custom agent to the **Custom** tab.
-
-Forked agents are independent of the original Marketplace agent. Changes to the Marketplace version do not affect your custom copy.
 
 ---
 
@@ -370,39 +358,15 @@ For CD and Custom stages, the Agent step must be placed inside a **Containerized
 
 The Model Connector defines the LLM provider and default model for your Worker Agent. When you create or select a connector, you choose a default model that the agent uses at runtime unless overridden by the optional **Model Name** field.
 
-### Anthropic Connector
+Harness supports the following Model Connectors:
 
-The Anthropic Connector supports both **direct Anthropic** endpoints and **AWS Bedrock** endpoints. When creating the connector, select the **Authentication Type** (Personal Token for direct Anthropic, or Amazon Bedrock API Key), the **Region**, and the default **Model Name**.
+- **Anthropic Model Connector:** Run agents on Claude models through direct Anthropic or AWS Bedrock endpoints. Go to [Anthropic Model Connector](/docs/platform/harness-ai/anthropic-model-connector) to review supported models and setup options.
+- **OpenAI Model Connector:** Run agents on GPT-5.5 with configurable reasoning effort. Go to [OpenAI Model Connector](/docs/platform/harness-ai/openai-model-connector) to review supported models, effort levels, and setup options.
 
-<div align="center">
-  <DocImage path={require('./static/anthropic-connector-setup.png')} alt="Anthropic Connector configuration showing authentication type, region, and model name fields" title="Click to view full size" width="50%" />
-  <p align="center"><em>Anthropic Connector setup with authentication type selection and model configuration</em></p>
-</div>
+If you do not have access to a model provider, Harness offers a managed LLM connector you can use instead.
 
-The following models are available when configuring the connector:
-
-| Model | Description |
-|---|---|
-| Claude Opus 4.7 | Latest and most capable model for complex reasoning |
-| Claude Opus 4.6 | High-capability model for complex reasoning |
-| Claude Sonnet 4.6 | Fast, high-capability model for most tasks |
-| Claude Sonnet 4.5 | Previous-generation fast model |
-| Claude Haiku 4.5 | Lightweight, low-latency model for simple tasks |
-
-### OpenAI Connector (coming soon)
-
-OpenAI Connector support is under development. The following models will be available at launch:
-
-| Model | Description |
-|---|---|
-| GPT-4o | Multimodal model (not the latest OpenAI generation) |
-| GPT-4o mini | Lightweight, cost-efficient model (not the latest OpenAI generation) |
-| GPT-4.1 | Previous generation model |
-| GPT-4.1 mini | Lightweight previous generation model |
-| GPT-4.1 nano | Ultra-lightweight previous generation model |
-
-:::info
-These are not the latest OpenAI models (the current generation is GPT-5.x). Support for newer model families will be added in future releases.
+:::note Managed connector billing
+Until August 2026, usage of the Harness-managed LLM connector is included in your Harness subscription at no additional cost. After August 2026, Harness bills managed LLM connector usage separately, in addition to your Harness subscription.
 :::
 
 ---
@@ -538,7 +502,7 @@ Fetching data from the following modules is **not supported** with the agent per
 
 ## RBAC for Worker Agents
 
-Worker Agents have dedicated RBAC permissions in Harness. Administrators can control who can view, create, modify, and delete agents.
+Worker Agents have dedicated RBAC permissions in Harness. Administrators can control who can view, create, modify, and delete agents. Users can view, edit, and delete Worker Agents based on the permissions assigned to their role.
 
 ### Available permissions
 
@@ -2165,13 +2129,9 @@ For example, to gate a deployment based on an agent's risk assessment, add a con
 
 ---
 
-## Policy governance for agents (coming soon)
+## Policy governance for agents
 
-:::info Coming soon
-Policy governance on Worker Agent objects is under development and not yet available.
-:::
-
-Harness will support OPA-based governance policies that are evaluated when a Worker Agent is saved. This allows platform administrators to enforce organizational standards on agent definitions before they are published to the catalog.
+Harness supports OPA-based governance policies for Worker Agents. Platform administrators can enforce organizational standards on agent definitions and on how agents are used in pipelines.
 
 With policy governance on agents, you can write policies that:
 
@@ -2180,7 +2140,10 @@ With policy governance on agents, you can write policies that:
 - Enforce naming conventions, description requirements, or maximum `max_turns` values.
 - Prevent agents from using overly broad permissions or sensitive environment variables.
 
-Policies are evaluated at **save time** (when a user creates or updates an agent definition), not at pipeline execution time. An agent that violates a policy cannot be saved until the violation is resolved.
+Policies are evaluated at two points:
+
+- **On save:** When a user creates or updates a Worker Agent, Harness evaluates the agent configuration against your policies. An agent that violates a policy cannot be saved until the violation is resolved.
+- **On run:** When a pipeline runs an Agent step, Harness evaluates whether the agent is properly configured in the pipeline before execution proceeds.
 
 Go to [Harness Policy As Code overview](/docs/platform/governance/policy-as-code/harness-governance-overview) to learn about OPA-based governance in Harness.
 
@@ -2195,7 +2158,7 @@ If you override the default model using the optional **Model Name** field, you m
 The following limitations apply to Worker Agents:
 
 - **MCP connector requirements:** MCP connectors require both a valid hosted MCP URL and an API key. A connector name alone is not sufficient.
-- **Model provider support:** Only **direct Anthropic** and **AWS Bedrock** endpoints are supported as model providers. OpenAI Connector support is coming soon.
+- **Model provider support:** Anthropic (**direct Anthropic** and **AWS Bedrock** endpoints) and **OpenAI** are supported as model providers.
 - **Expression resolution timing:** Harness expressions in the Instructions field are resolved at pipeline execution time, not at agent save time.
 - **Max turns:** The `max_turns` parameter caps the agent's reasoning steps per execution to manage cost and latency.
 - **Network access:** The agent container image must be accessible from your Harness delegate network.
