@@ -1,7 +1,7 @@
 ---
 title: Jira Cloud
 sidebar_label: Jira Cloud
-description: ""
+description: "Connect feature flags created in Harness FME with Jira Cloud issues to track rollouts, link work items to flags, and navigate between Jira and Harness FME."
 ---
 
 Jira Software offers flexible issue and project tracking, and the Harness FME for Jira integration allows you to connect feature flags and Jira issues from either Jira or FME, and view details in both Jira and FME. With this bidirectional connection, you can track rollouts with an associated issue in Jira and issues tied to a feature flag in Harness FME. If you are tracking source code changes and deployments in Jira, you will be able to go from feature flag to issue to code change or deployment details in as few as three clicks.
