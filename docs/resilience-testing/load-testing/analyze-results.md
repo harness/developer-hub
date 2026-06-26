@@ -21,7 +21,7 @@ The left panel shows metadata about the test and its execution:
 |---|---|
 | **Test Name** | Name of the load test |
 | **Load Test Infrastructure** | The Linux infrastructure that executed the test, along with its connection status |
-| **Type** | Load testing framework used (e.g., Locust) |
+| **Type** | Load testing framework used (Locust or k6) |
 | **Users** | Peak concurrent virtual users configured |
 | **Duration** | Total configured test duration |
 | **Ramp-Up Duration** | Time to linearly ramp from 0 to peak users |
@@ -94,8 +94,13 @@ Use this chart to spot:
 
 A test run shows **Failed** status when:
 - The test infrastructure lost connectivity during execution
-- The Locust process exited with an error
+- The load test process exited with an error
 - The test was manually stopped before completion
+- A k6 threshold was breached (for example, the 95th-percentile response time exceeded the configured limit)
+
+:::info k6 thresholds
+For k6 tests, a breached threshold marks the run as Failed. This is the mechanism that turns a k6 load test into a pass/fail gate. Go to [k6](./create-load-test/k6) to configure thresholds.
+:::
 
 :::note
 A high error rate does not automatically mark the test as Failed. The status reflects execution health, not application health. A test that completes with 100% error rate still shows as a completed run — review the Error Rate metric to assess application behavior.

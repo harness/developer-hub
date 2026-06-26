@@ -3572,16 +3572,12 @@ const sidebars: SidebarsConfig = {
           label: "Create a Load Test",
           link: {
             type: 'doc',
-            id: 'resilience-testing/load-testing/create-load-test/linux-vm',
+            id: 'resilience-testing/load-testing/create-load-test/locust',
           },
           collapsed: true,
           items: [
-            {
-              type: 'doc',
-              id: 'resilience-testing/load-testing/create-load-test/linux-vm',
-              label: 'Linux VM',
-            },
-            "resilience-testing/load-testing/create-load-test/kubernetes",
+            "resilience-testing/load-testing/create-load-test/locust",
+            "resilience-testing/load-testing/create-load-test/k6",
           ],
         },
         "resilience-testing/load-testing/analyze-results",

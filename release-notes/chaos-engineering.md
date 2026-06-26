@@ -22,6 +22,30 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 ## June 2026
 
+### Version 1.91.3
+
+#### Images required
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
+
+- harness/chaos-ddcr:1.91.0
+- harness/chaos-ddcr-faults:1.91.0
+- harness/chaos-log-watcher:1.91.0
+- harness/service-discovery-collector:0.71.0
+
+#### New Features and Enhancements
+
+- Added support for Linux and Windows Chaos Experiment Templates as part of the Chaos Step template in a pipeline
+- Added audit trail support for the image registry, including YAML difference visualization
+- Improved probe timeout, duration, and retry handling
+- Added the ability to copy output variables from the timeline view node
+
+#### Fixed Issues
+
+- Fixed high-severity vulnerabilities in chaos components, including source-probe, chaos-ddcr-faults, and chaos-ddcr
+- Fixed worker count not being passed when running a Kubernetes load test from the list page
+- Fixed a probe taking more time than the configured timeout
+- Fixed optional parameters no longer being optional when set as runtime inputs in an experiment template
+
 ### Version 1.90.0
 
 #### Images required
