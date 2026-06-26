@@ -128,6 +128,24 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 ## June 2026
 
+### Version 1.154.7
+
+#### New features and enhancements
+
+- **Preserve Directory Structure when copying config files:** The Command step's Copy command now includes a **Preserve Directory Structure** option that maintains the original directory hierarchy when copying config files to target hosts. This prevents data loss from file overwrites when multiple files share the same name but exist in different subdirectories (for example, `env1/config.properties` and `env2/config.properties`).
+
+- **Kubernetes Dry Run step command flags:** The Kubernetes Dry Run step now supports command flags. You can pass additional kubectl flags (such as `--server-side` and `--force-conflicts`) to the dry run validation command. This ensures your dry run output accurately reflects the actual deployment behavior, making approval gates more reliable for teams using server-side apply or strict validation modes.
+
+#### Fixed issues
+
+- Fixed an issue where custom artifact polling failed intermittently under concurrent parallel stage execution. When multiple custom artifact sources were defined on a single service (for example, primary and sidecar artifacts), delegate tasks responsible for fetching each artifact's versions ran concurrently but shared the same temporary script file path. This caused a race condition where one task would overwrite the other's script, leading to the failing task being unable to find its expected output file. The Custom Artifact resolution now generates unique temporary file names for each concurrent task, ensuring that multiple custom artifact sources on the same service are resolved independently without interfering with each other. You do not need to take any action. The fix takes effect automatically upon delegate upgrade. (**CDS-123500**, **ZD-113475**)
+- Fixed an issue where the GitOps UpdateReleaseRepo step intermittently appeared stuck when many concurrent URR steps were in progress. Under high concurrency, the mechanism to take a lock on the GitHub token to avoid concurrent updates and prevent secondary rate limiting by GitHub caused the step to appear stuck while waiting for the lock to be acquired. Harness has added a new command unit in URR for git restraint logs to provide better visibility into lock contention. To resolve this issue, enable the `disableGitRestraint` flag on the pipeline to bypass the GitHub token lock mechanism, or use different git tokens to ensure the UpdateReleaseRepo step works efficiently in high-concurrency environments. (**CDS-125451**, **ZD-115644**)
+- Fixed an issue where Kubernetes Apply failed for large GitHub CRD manifests (approximately 1.21 MB) due to SCM fetch JSON unmarshal errors, resulting in empty compiled manifests during dry run. (**CDS-125617**, **ZD-115404**)
+- Fixed an issue where users were unable to import a template into a pipeline from Bitbucket. (**PIPE-34247**, **ZD-114955**)
+- Fixed an issue where rollback step failure prevented subsequent steps with the **Always** condition from executing in CD stages. The rollback was not showing the **On rollback** condition, and by default it was using **Always**. Harness has corrected this behavior. (**PIPE-34274**, **ZD-115229**)
+- Fixed an issue where selecting parallel environments without choosing a value in the input set caused unsaved changes to appear when just viewing the YAML (from visual view). For parallel environments and environment groups, Harness now sets the **Use from Stage** or equivalent field to `false` in the pipeline input set. (**PIPE-34316**)
+- Fixed an issue where users were unable to create a template from a pipeline. This fix requires the feature flag `PIPE_PIPELINE_STAGE_PIPELINE_TEMPLATE`. Contact [Harness Support](mailto:support@harness.io) to enable this feature flag. (**PIPE-35106**, **ZD-114977**, **ZD-116644**)
+
 ### Version 1.153.0
 
 #### Fixed issues
