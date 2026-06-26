@@ -171,6 +171,11 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## June 2026
 
+### Version 26.06.89405 <!-- June 26, 2026 -->
+
+#### Fixed issues
+- Resolved CVE-2026-44249, CVE-2026-44250, CVE-2026-44890, CVE-2026-44893 in netty. [DEL-10286]
+
 ### Version 26.06.89403 <!-- June 17, 2026 -->
 
 #### Fixed issues
