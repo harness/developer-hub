@@ -496,7 +496,7 @@ Please read more on Custom Certs in the following [Documentation](https://develo
 
 #### Can we use Continuous Verification inside CD module without any dependency of SRM ?
 
-Yes, one can set up a Monitored Service in the Service Reliability Management module or in the `Verify step` in a CD stage.
+Yes, one can set up a Monitored Service in the Service Reliability Management module or in the `AI Verify (v1) step` in a CD stage.
 Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-new-relic/#review-cv-setup-options).
 
 #### How do I create a Dashboard in NG, which shows all the CD pipelines which are executing currently, in real-time ?

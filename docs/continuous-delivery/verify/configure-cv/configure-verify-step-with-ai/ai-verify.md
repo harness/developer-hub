@@ -1,22 +1,26 @@
 ---
-title: Configure the AI Verify step
-description: Add the AI Verify step to your pipeline for automated deployment verification
-sidebar_label: AI Verify Step
+title: Configure the AI Verify (v2) step
+description: Add the AI Verify (v2) step to your pipeline for automated deployment verification
+sidebar_label: AI Verify (v2) Step
 slug: /continuous-delivery/verify/configure-cv/configure-verify-step-with-ai/ai-verify
 sidebar_position: 3
 ---
 
-This guide shows how to add and configure the AI Verify step in your deployment pipeline. Before proceeding, ensure you have [created AI-assisted health sources](./ai-assisted-health-source.md) to define what metrics and logs to analyze. For an overview of how AI-powered verification works, see the [Overview](./overview.md).
+This guide shows how to add and configure the AI Verify (v2) step in your deployment pipeline. Before proceeding, ensure you have [created AI-assisted health sources](/docs/continuous-delivery/verify/configure-cv/configure-verify-step-with-ai/ai-assisted-health-source) to define what metrics and logs to analyze. For an overview of how AI-powered verification works, see the [Overview](/docs/continuous-delivery/verify/configure-cv/configure-verify-step-with-ai/overview).
 
-The AI Verify step deploys data collection plugins (not LLM agents) into your Kubernetes cluster. These plugins collect and aggregate data while stripping personally identifiable information before it leaves your cluster. Anomaly detection uses statistical and algorithmic methods, with LLMs augmenting results through contextualization and insight generation.
+The AI Verify (v2) step deploys data collection plugins (not LLM agents) into your Kubernetes cluster. These plugins collect and aggregate data while stripping personally identifiable information before it leaves your cluster. Anomaly detection uses statistical and algorithmic methods, with LLMs augmenting results through contextualization and insight generation.
 
 :::note
 AI Verify is behind feature flags `CDS_CV_AI_VERIFY_NG` and `CDS_CV_HEALTH_SOURCES_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable these features.
 :::
 
-## Add the AI Verify step
+## Add the AI Verify (v2) step
 
-Open your pipeline and navigate to the Execution section of your deployment stage. Click Add Step after the deployment completes, then search for and select the **AI Verify** step.
+:::important
+AI Verify (v2) must be added inside a **Container Step Group** (not as a standalone step). The step group provides the infrastructure configuration needed to deploy data collection plugins.
+:::
+
+Open your pipeline and navigate to the Execution section of your deployment stage. After the deployment completes, click **Add Step Group** to create a container step group. Inside the step group, click **Add Step** and search for **AI Verification**. Select the **AI Verify (v2)** tile (with purple icon).
 
 The step configuration opens with two tabs:
 - **Step Parameters**: Configure data collection, sensitivity, health sources, and infrastructure
@@ -42,7 +46,7 @@ The Step Parameters tab contains all the settings for configuring the AI Verify 
 | **Data Collection Infrastructure Type** | Where to run data collection plugin pods (KubernetesDirect) | Yes | - |
 | **Connector** | Kubernetes cluster connector reference | Yes | - |
 | **Namespace** | Kubernetes namespace for deploying plugin pods | Yes | - |
-| **Limit Memory** | Maximum memory per plugin container (e.g., `250Mi`) | Yes | - |
+| **Limit Memory** | Maximum memory per plugin container (e.g., `256Mi`) | Yes | - |
 | **Limit CPU** | Maximum CPU per plugin container (e.g., `250m`) | Yes | - |
 
 ### Name
@@ -84,7 +88,7 @@ Each health source in the list shows:
 
 You can add multiple health sources to analyze both logs and metrics from the same deployment. Each health source runs as a separate analysis with its own plugin pod and independent verdict. The step tracks each health source analysis separately, allowing you to identify which specific health source detected issues if the verification fails.
 
-**Note**: The health sources must be created at the project, organization, or account level before they can be referenced here. See [AI-assisted health source configuration](./ai-assisted-health-source.md) for creating health sources.
+**Note**: The health sources must be created at the project, organization, or account level before they can be referenced here. See [AI-assisted health source configuration](/docs/continuous-delivery/verify/configure-cv/configure-verify-step-with-ai/ai-assisted-health-source) for creating health sources.
 
 ### Data Collection Infrastructure
 
@@ -150,18 +154,20 @@ The Details tab shows standard execution information like start time, duration, 
 
 ## Write the YAML configuration
 
-You can configure the AI Verify step directly in YAML if you prefer editing pipelines as code. The step type is `AIVerifyNG` and requires several configuration fields under the spec section.
+You can configure the AI Verify (v2) step directly in YAML if you prefer editing pipelines as code. The step type is `AIVerifyNG` and must be inside a **stepGroup** with **stepGroupInfra** configuration.
 
 ```yaml
 pipeline:
-  name: My Pipeline
-  identifier: my_pipeline
-  projectIdentifier: default_project
+  name: AI-verify-Deploy-check
+  identifier: AIverifyDeploycheck
+  projectIdentifier: my_project
   orgIdentifier: default
+  tags: {}
   stages:
     - stage:
-        name: Deploy and Verify
-        identifier: deploy_verify
+        name: deploy-and-verify
+        identifier: deployAndVerify
+        description: ""
         type: Deployment
         spec:
           deploymentType: Kubernetes
@@ -174,37 +180,56 @@ pipeline:
               - identifier: my_infrastructure
           execution:
             steps:
-              - step:
-                  type: AIVerifyNG
-                  name: AI Verify
-                  identifier: ai_verify_step
-                  timeout: 10m
-                  spec:
-                    dataCollectionWindow: 5m
-                    sensitivity: MEDIUM
-                    failOnNoAnalysis: false
-                    healthSourceRefs:
-                      - datadog_metrics_health_source
-                      - dynatrace_logs_health_source
-                    dataCollectionInfrastructure:
-                      type: KubernetesDirect
-                      spec:
-                        connectorRef: k8s_connector
-                        namespace: harness-delegate-ng
-                        resources:
-                          limits:
-                            cpu: 250m
-                            memory: 256Mi
+              - stepGroup:
+                  name: ai-verify-step-group
+                  identifier: aiVerifyStepGroup
+                  steps:
+                    - step:
+                        type: AIVerifyNG
+                        name: AIVerifyV2_1
+                        identifier: AIVerifyV2_1
+                        spec:
+                          dataCollectionWindow: 5m
+                          healthSources:
+                            - healthSourceRef: my_health_source_1
+                            - healthSourceRef: my_health_source_2
+                          resources:
+                            limits:
+                              cpu: 250m
+                              memory: 256Mi
+                        timeout: 10m
+                  stepGroupInfra:
+                    type: KubernetesDirect
+                    spec:
+                      connectorRef: my_k8s_connector
+                      namespace: harness-delegate-ng
+            rollbackSteps: []
+        tags: {}
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: StageRollback
 ```
 
 **Key fields:**
 
-- `dataCollectionWindow`: Time duration for collecting logs and metrics (e.g., `2m`, `5m`, `10m`)
-- `sensitivity`: Anomaly detection sensitivity (LOW, MEDIUM, HIGH)
-- `timeout`: Maximum time for the entire step execution (must be at step level, not in spec). Should be significantly longer than dataCollectionWindow to allow for analysis processing.
-- `failOnNoAnalysis`: Whether to fail the pipeline if analysis cannot be performed (default: false)
-- `healthSourceRefs`: List of health source identifiers you created earlier. Can include both LOG and METRIC type health sources.
-- `dataCollectionInfrastructure`: Kubernetes cluster configuration for deploying data collection plugins
-- `connectorRef`: Kubernetes connector identifier (scope prefix optional)
-- `namespace`: Kubernetes namespace for deploying plugin pods
-- `resources.limits`: CPU and memory limits for each plugin pod
+- **stepGroup**: AI Verify (v2) must be inside a step group (not a standalone step)
+  - `steps`: Contains the AIVerifyNG step
+  - `stepGroupInfra`: Defines where data collection plugins run
+    - `type`: KubernetesDirect (currently the only supported type)
+    - `spec.connectorRef`: Kubernetes connector identifier
+    - `spec.namespace`: Kubernetes namespace for plugin pods
+
+- **AIVerifyNG step fields**:
+  - `name`: Step name (e.g., `AIVerifyV2_1`)
+  - `identifier`: Step identifier (e.g., `AIVerifyV2_1`)
+  - `timeout`: Maximum time for the entire step execution (must be at step level). Should be significantly longer than dataCollectionWindow to allow for analysis processing.
+  - `spec.dataCollectionWindow`: Time duration for collecting logs and metrics (e.g., `5m`, `10m`, or `<+input>` for runtime input)
+  - `spec.healthSources`: List of health source references (use `healthSourceRef` for each)
+    - Each health source must be created beforehand at project/org/account level
+    - Can include both LOG and METRIC type health sources
+  - `spec.resources.limits`: CPU and memory limits for each plugin pod
+    - `cpu`: e.g., `250m` (250 millicores)
+    - `memory`: e.g., `256Mi` (256 mebibytes)

@@ -62,7 +62,7 @@ In **Health Sources**, click **Add**. The **Add New Health Source** settings
    | Performance/Response time | Web / Business transactions | Higher is bad | 20 | 0.2 |
 
 6. In **Deviation Compared to Baseline**, select one of the options based on the selected risk type.
-7. Click **Submit**. The Health Source is displayed in the Verify step.
+7. Click **Submit**. The Health Source is displayed in the AI Verify (v1) step.
 
 ## Option: Cloud Logs
 
@@ -78,6 +78,6 @@ You can customize the metrics to map the Harness Service to the monitored enviro
 
 ![](./static/verify-deployments-with-google-cloud-operations-129.png)
 
-Click **Submit**. The Health Source is displayed in the Verify step.
+Click **Submit**. The Health Source is displayed in the AI Verify (v1) step.
 
 You can add one or more Health Sources for each APM or logging provider.

@@ -72,7 +72,7 @@ A Health Source is basically a mapping of a Harness Service to the service in a 
 
       ![](./static/new-relic-4.png)
 
-12. Select **Submit**. The Health Source is displayed in the Verify step.
+12. Select **Submit**. The Health Source is displayed in the AI Verify (v1) step.
 
 You can add one or more Health Sources for each APM or logging provider.
 

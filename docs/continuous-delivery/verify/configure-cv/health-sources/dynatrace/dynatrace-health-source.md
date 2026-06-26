@@ -112,7 +112,7 @@ For Dynatrace, the only possible values of the SII are your entity selectors.
 </TabItem>
 </Tabs>
 
-Finally, Click **Submit**. The Health Source is displayed in the Verify step.
+Finally, Click **Submit**. The Health Source is displayed in the AI Verify (v1) step.
 
 You can add one or more Health Sources for each APM or logging provider.
 
@@ -140,7 +140,7 @@ Contact [Harness Support](mailto:support@harness.io) to enable the feature flag.
 
     ![](../static/field-mapping.png)
 
-14. Click **Submit**. The health source is displayed in the verify step!
+14. Click **Submit**. The health source is displayed in the AI Verify (v1) step!
 
 </TabItem>
 <TabItem value="Dynatrace Grail Metrics">
@@ -243,7 +243,7 @@ Dynatrace Grail Metrics uses [Dynatrace Query Language (DQL)](https://docs.dynat
 
     Click **+ Add Threshold** to define rules by metric type, metric name, and criteria.
 
-17. Click **Submit**. The health source is displayed in the verify step.
+17. Click **Submit**. The health source is displayed in the AI Verify (v1) step.
 
 
 <details>

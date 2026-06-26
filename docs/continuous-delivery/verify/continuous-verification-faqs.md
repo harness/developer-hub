@@ -34,7 +34,7 @@ You can use Webhook notifications to post the pipeline event to an endpoint and 
 
 ### Can we use Continuous Verification inside CD module without any dependency of SRM ?
 
-Yes, one can set up a Monitored Service in the Service Reliability Management module or in the `Verify step` in a CD stage.
+Yes, one can set up a Monitored Service in the Service Reliability Management module or in the `AI Verify (v1) step` in a CD stage.
 Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-new-relic/#review-cv-setup-options)
 
 
@@ -61,7 +61,7 @@ Yes, You can deploy to selective stages.
 
 ### I am trying to implement Continuous Verification in Harness, but I am not able to see the Continuous Verification or Verify option.
 
-Can you check and confirm the type of stage where you are trying to add the Verify step, as this option is only available with the CD (Deploy) stage.
+Can you check and confirm the type of stage where you are trying to add the AI Verify (v1) step, as this option is only available with the CD (Deploy) stage.
 
 
 ### Do I need to create a monitored service before running the execution?
@@ -86,7 +86,7 @@ Yes, you can use a multiple-node filter. All of those filters should be applied.
 
 It depends upon what kind of metric you want to monitor. For K8s deployments, the best SII selection is typically pod, podname, or containername.
 
-### I have set up a failure strategy at timeout, but it is not working for the verify step. Despite this, API calls for CloudWatch are still timing out. How can I resolve this issue?
+### I have set up a failure strategy at timeout, but it is not working for the AI Verify (v1) step. Despite this, API calls for CloudWatch are still timing out. How can I resolve this issue?
 
 The failure strategy is for step time timeouts and not for api calls that are being made. You need to set up a failure strategy for all failures in these scenarios.
 
@@ -110,7 +110,7 @@ The **path** field represents the complete hierarchical metric path that Harness
 
 The **validationPath** field provides an alternative, simpler metric path used for validation and verification purposes. This path typically represents a more aggregated view of the same metric at the tier level. For the same `calls_per_minute` metric, the validation path is: `Overall Application Performance|__tier_name__|Calls per Minute`.
 
-To verify these metric paths in your AppDynamics environment, navigate to the AppDynamics Metric Browser. You can access it from your AppDynamics controller under the metrics section. Browse through the hierarchy to locate metrics under either path structure. You can also verify which path is being used by examining the external API calls in your Verify step execution logs.
+To verify these metric paths in your AppDynamics environment, navigate to the AppDynamics Metric Browser. You can access it from your AppDynamics controller under the metrics section. Browse through the hierarchy to locate metrics under either path structure. You can also verify which path is being used by examining the external API calls in your AI Verify (v1) step execution logs.
 
 If you need to troubleshoot data discrepancies, check the API calls made during the verification process. These calls will show the exact metric paths being queried and the responses received from AppDynamics.
 
@@ -165,7 +165,7 @@ Error:
 Cause and Resolution:
 This issue is caused by a change in the response format from New Relic. It is a known issue that has been addressed in Delegate version 850xx and later.
 
-### My Verify step is failing without any details. How can I find more information?
+### My AI Verify step is failing without any details. How can I find more information?
 
 You can check the execution logs to identify the root cause. This could help you determine if the failure is due to data collection issues or problems encountered during the analysis phase.
 

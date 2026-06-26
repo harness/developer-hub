@@ -6,7 +6,7 @@ redirect_from:
     - /docs/continuous-delivery/verify/configure-cv/verify-deployments-with-custom-health-metrics
 ---
 
-This topic covers how to add and configure Custom Health as a Health Source for the Verify step.
+This topic covers how to add and configure Custom Health as a Health Source for the AI Verify (v1) step.
 
 Harness offers support for all major APM vendors and log providers, but there are cases where a customized APM or log provider is needed. The Custom Health Source lets you customize APMs and log providers of your choice.
 

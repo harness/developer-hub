@@ -24,7 +24,7 @@ You can [configure your APM tool](/docs/category/configure-cv) (also known as a 
 
 Harness CV provides a powerful mechanism to visualize and interpret the metric verification results.
 
-**Prerequisite**: You should have added a health source to the Verify step and run the pipeline. To learn more about how to add a health source to the verify step and run the pipeline, go to Configure CV.
+**Prerequisite**: You should have added a health source to the AI Verify (v1) step and run the pipeline. To learn more about how to add a health source to the AI Verify (v1) step and run the pipeline, go to Configure CV.
 
 To view metric verification results for a pipeline:
 

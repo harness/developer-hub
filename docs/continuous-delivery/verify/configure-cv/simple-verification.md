@@ -10,7 +10,7 @@ redirect_from:
 Currently, this feature is behind the feature flag `SRM_ENABLE_SIMPLE_VERIFICATION`. Contact Harness Support to enable the feature.
 :::
 
-This topic outlines the process of adding a Verify step into a Harness CD pipeline, configuring a health source, and conducting deployment verification using threshold analysis (no ML).
+This topic outlines the process of adding a AI Verify (v1) step into a Harness CD pipeline, configuring a health source, and conducting deployment verification using threshold analysis (no ML).
 
 For illustration purposes, this topic uses SumoLogic as a sample health source to guide you through the health source configuration steps.
 
@@ -24,16 +24,16 @@ Make sure that you have created:
 - A CD deployment pipeline in Harness. To learn how to create a CD pipeline, go to [Create your first CD pipeline](/docs/continuous-delivery/cd-onboarding/onboarding-guide#step-2-create-your-first-cd-pipeline). 
 
 
-## Add a Verify step to your CD pipeline  
+## Add a AI Verify (v1) step to your CD pipeline  
 
-To add a Verify step to your pipeline, use one of the methods below.
+To add a AI Verify (v1) step to your pipeline, use one of the methods below.
 
 1. In your Harness project, go to the **Deployments** module > **Pipelines**. 
 
 2. Select the pipeline to which you want to add the **Verify** step.
    The Pipeline Studio page appears.
 
-3. Select the stage where you want to add the Verify step. 
+3. Select the stage where you want to add the AI Verify (v1) step. 
 
 4. On the stage settings pane, select the **Execution** tab.
 
@@ -44,7 +44,7 @@ You can add a step at various points in the pipeline, such as the beginning, end
 4. In the **Continuous Verification** section, select **Verify**.  
    The Verify settings page appears.
 
-![Verify step settings page](./static/verify-step-settings-page.png)
+![AI Verify (v1) step settings page](./static/verify-step-settings-page.png)
 
 
 ## Define name and timeout information
@@ -79,7 +79,7 @@ On the Verify settings page, do the following:
 
 ## Create a monitored service
 
-The next step is to create a monitored service for the Verify step. Continuous Verification uses a monitored service to monitor health trend deviations using logs and metrics obtained from your SumoLogic health source.
+The next step is to create a monitored service for the AI Verify (v1) step. Continuous Verification uses a monitored service to monitor health trend deviations using logs and metrics obtained from your SumoLogic health source.
 
 
 :::info note
@@ -95,7 +95,7 @@ To create a monitored service, on the Verify settings page, do the following:
 
       Harness automatically generates a monitored service name by combining the service and environment names. The generated name appears in the **Monitored Service Name** field. Note that you cannot edit the monitored service name.
 
-      If a monitored service with the same name and environment already exists, the **Click to autocreate a monitored service** option is hidden, and Harness assigns the existing monitored service to the Verify step.
+      If a monitored service with the same name and environment already exists, the **Click to autocreate a monitored service** option is hidden, and Harness assigns the existing monitored service to the AI Verify (v1) step.
 
 ## Add a health source
 
@@ -198,7 +198,7 @@ To set a fail-fast threshold, follow these steps:
 
 ### Save the health source settings
 
-1. After configuring all the settings, select **Submit** to add the health source to the Verify step.
+1. After configuring all the settings, select **Submit** to add the health source to the AI Verify (v1) step.
    
 2. Select **Apply Changes** to save the changes made to the **Verify** step. You will now see the health source listed in the **Health Sources** section.
    

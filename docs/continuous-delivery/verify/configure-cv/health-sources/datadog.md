@@ -54,7 +54,7 @@ Select a query from the options displayed on the left side of setting panel. The
 
 ![](./static/verify-deployments-with-datadog-55.png)
 
-Click **Submit**. The Health Source is displayed in the Verify step.
+Click **Submit**. The Health Source is displayed in the AI Verify (v1) step.
 
 ### Configure Datadog formulas as Harness queries
 
@@ -114,4 +114,4 @@ In **Log Indexes**, select a log index from the list.
 
 In **Service Instance Identifier**, select the drop-down and choose the path of the service instance. Any of the tags used in metric or log can be used as service instance identifier. It should correspond to instances that are running. The drop-down list contains all the tags returned by data through the API. For more information, go to [List tags by metric name](https://docs.datadoghq.com/api/latest/metrics/#list-tags-by-metric-name).
 
-Click **Submit**. The Health Source is displayed in the Verify step.
+Click **Submit**. The Health Source is displayed in the AI Verify (v1) step.

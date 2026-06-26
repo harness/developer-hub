@@ -1,6 +1,6 @@
 ---
 title: Node Filtering
-description: Learn how to filter nodes in the verify step.
+description: Learn how to filter nodes in the AI Verify (v1) step.
 sidebar_position: 200
 ---
 
@@ -14,7 +14,7 @@ Currently, this feature is behind the feature flag `CV_UI_DISPLAY_NODE_REGEX_FIL
 
 ## Before you begin
 
-You will need to know how to [add and configure a verify step](/docs/continuous-delivery/verify/configure-cv/verify-deployments). 
+You will need to know how to [add and configure a AI Verify (v1) step](/docs/continuous-delivery/verify/configure-cv/verify-deployments). 
 
 ## Add filtering
 

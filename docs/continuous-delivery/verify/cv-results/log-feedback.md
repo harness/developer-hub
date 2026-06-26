@@ -8,7 +8,7 @@ description: Enhance the accuracy of the log verification process using log feed
 
 Event preference or log feedback allows you to customize the event type, enhancing the accuracy of the verification process for a specific service.
 
-After running log verification as part of the verify step, you can review the detected logs and provide feedback. This feedback is taken into account during subsequent verifications. The feedback is provided in the form of a risk value assigned to each log. By providing log feedback and assigning appropriate risk values, you can fine-tune the verification outcome to better suit your specific requirements and context.
+After running log verification as part of the AI Verify (v1) step, you can review the detected logs and provide feedback. This feedback is taken into account during subsequent verifications. The feedback is provided in the form of a risk value assigned to each log. By providing log feedback and assigning appropriate risk values, you can fine-tune the verification outcome to better suit your specific requirements and context.
 
 ### Set event preference
 :::note

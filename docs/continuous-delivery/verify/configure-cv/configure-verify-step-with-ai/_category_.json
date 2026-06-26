@@ -1,12 +1,12 @@
 {
-  "label": "Configure verify step with AI",
+  "label": "AI Verify (v2)",
   "position": 2,
   "collapsible": "true",
   "collapsed": "true",
   "className": "default",
   "link": {
     "type": "generated-index",
-    "title": "Configure verify step with AI",
+    "title": "AI Verify (v2)",
     "description": "Analyze deployment health without manual baseline configuration. Uses statistical anomaly detection with LLM-powered contextualization and insights. Configure health sources through AI-guided workflows that discover and classify signals from your observability platform."
   }
 }

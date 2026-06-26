@@ -4,7 +4,7 @@ description: Use Dynatrace SRG alongside Harness Continuous Verification to gate
 sidebar_position: 2
 ---
 
-If your organization already uses [Dynatrace Site Reliability Guardian (SRG)](https://docs.dynatrace.com/docs/deliver/site-reliability-guardian) to evaluate release quality, you can integrate it directly into your Harness CD pipelines. This lets you combine Dynatrace's metric-driven validation with Harness's deployment orchestration and the Continuous Verification (CV) Verify step — giving you two independent layers of release verification.
+If your organization already uses [Dynatrace Site Reliability Guardian (SRG)](https://docs.dynatrace.com/docs/deliver/site-reliability-guardian) to evaluate release quality, you can integrate it directly into your Harness CD pipelines. This lets you combine Dynatrace's metric-driven validation with Harness's deployment orchestration and the Continuous Verification (CV) AI Verify (v1) step — giving you two independent layers of release verification.
 
 Harness handles the deployment and makes the final promotion decision. Dynatrace performs the reliability evaluation. Together, they create a robust release gate that catches regressions before they reach production traffic.
 
@@ -152,7 +152,7 @@ template:
 
 ## Set up the pipeline
 
-The following pipeline demonstrates a complete canary deployment with both Dynatrace SRG and Harness CV running in parallel. It uses the SRG Validation template from above and adds a Verify step alongside it.
+The following pipeline demonstrates a complete canary deployment with both Dynatrace SRG and Harness CV running in parallel. It uses the SRG Validation template from above and adds a AI Verify (v1) step alongside it.
 
 ### Pipeline variables
 
@@ -166,14 +166,14 @@ Define these variables at the pipeline level:
 The pipeline execution follows this sequence:
 
 1. **K8sCanaryDeploy** — Deploys a single canary pod.
-2. **Parallel verification** — The SRG Validation step group and the CV Verify step run simultaneously. The step group template receives the canary pod name dynamically using the deployment info outcome expression.
+2. **Parallel verification** — The SRG Validation step group and the CV AI Verify (v1) step run simultaneously. The step group template receives the canary pod name dynamically using the deployment info outcome expression.
 3. **Release Verification Summary** — A shell script logs the verdicts from both SRG and CV for visibility. This step runs regardless of the previous step outcomes (configured with `stageStatus: All`).
 4. **K8sCanaryDelete** — Cleans up the canary pod.
 5. **K8sRollingDeploy** — Promotes the deployment to all pods, but only if SRG returned `pass`. This is controlled by a conditional execution expression on the step.
 
 If any step fails, the pipeline triggers a stage rollback using `K8sRollingRollback`.
 
-The following screenshot shows the full pipeline execution flow in the Harness Pipeline Studio, with the SRG Validation step group and the CV Verify step running in parallel:
+The following screenshot shows the full pipeline execution flow in the Harness Pipeline Studio, with the SRG Validation step group and the CV AI Verify (v1) step running in parallel:
 
 ![Pipeline execution flow with SRG and CV in parallel](./static/srg-pipeline-execution-flow.png)
 
@@ -376,7 +376,7 @@ Once the pipeline is set up, the execution follows this flow:
 1. **Deploy:** Harness deploys the new version using your chosen deployment strategy (canary, rolling, blue-green, etc.).
 2. **Run verification in parallel:** Two verification paths execute simultaneously:
    - **Dynatrace SRG validation** — The step group triggers a Dynatrace SRG workflow, waits for it to complete, and captures the verdict.
-   - **Harness CV Verify step** — The standard Verify step evaluates health source metrics using Harness ML-based analysis.
+   - **Harness CV AI Verify (v1) step** — The standard AI Verify (v1) step evaluates health source metrics using Harness ML-based analysis.
 3. **Gate the release:** A shell script inspects the SRG verdict. If SRG returns `pass` and the CV step succeeds, Harness promotes the deployment. If either check fails, the pipeline stops and rolls back.
 
 This parallel approach means SRG and CV validate the deployment independently. A failure from either source blocks the release.
@@ -389,7 +389,7 @@ When both SRG and CV pass, the pipeline promotes the deployment and all steps co
 
 ### Failed execution
 
-When CV detects anomalies or SRG returns a failing verdict, the pipeline stops the promotion. In this example, the Verify step failed while SRG passed — the downstream steps are skipped and the deployment is not promoted:
+When CV detects anomalies or SRG returns a failing verdict, the pipeline stops the promotion. In this example, the AI Verify (v1) step failed while SRG passed — the downstream steps are skipped and the deployment is not promoted:
 
 ![Failed pipeline execution where CV detected issues](./static/srg-execution-fail.png)
 
@@ -407,6 +407,6 @@ When both checks fail, the pipeline triggers a rollback automatically through th
 
 ## Next steps
 
-- [Configure the Verify step](/docs/continuous-delivery/verify/configure-cv/verify-deployments) to set up health sources for Harness CV.
+- [Configure the AI Verify (v1) step](/docs/continuous-delivery/verify/configure-cv/verify-deployments) to set up health sources for Harness CV.
 - [Dynatrace health source](/docs/continuous-delivery/verify/configure-cv/health-sources/dynatrace) for configuring Dynatrace as a CV health source alongside the SRG integration.
 - [Create a Kubernetes canary deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-canary-deployment) for setting up the canary strategy used in this guide.

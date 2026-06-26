@@ -1,7 +1,7 @@
 ---
-title: Overview
+title: AI Verify (v2) Overview
 description: AI-powered deployment verification without baseline configuration
-sidebar_label: Overview
+sidebar_label: AI Verify (v2) Overview
 slug: /continuous-delivery/verify/configure-cv/configure-verify-step-with-ai/overview
 sidebar_position: 1
 ---
@@ -12,16 +12,16 @@ Traditional continuous verification requires extensive manual setup—creating m
 
 AI-powered verification combines two components that work together to provide automated deployment health analysis:
 
-**AI Verify step**: A pipeline step that deploys data collection plugins into your Kubernetes cluster to collect and analyze logs and metrics during deployments. The plugins aggregate and cluster data while stripping personally identifiable information before it leaves your cluster. Instead of comparing against historical baselines or predefined thresholds, the step uses statistical and algorithmic methods for anomaly detection, with LLMs augmenting the results by contextualizing anomalies against deployment verification criteria, filtering false positives based on business criticality, and synthesizing actionable root cause insights.
+**AI Verify (v2) step**: A pipeline step that deploys data collection plugins into your Kubernetes cluster to collect and analyze logs and metrics during deployments. The plugins aggregate and cluster data while stripping personally identifiable information before it leaves your cluster. Instead of comparing against historical baselines or predefined thresholds, the step uses statistical and algorithmic methods for anomaly detection, with LLMs augmenting the results by contextualizing anomalies against deployment verification criteria, filtering false positives based on business criticality, and synthesizing actionable root cause insights.
 
 **AI-assisted health source configuration**: An LLM-powered Configuration Agent that automatically discovers and configures metrics from your observability platforms. Describe your service and monitoring goals in natural language, and the agent generates appropriate metric categories, queries, and aggregation settings.
 
-## How it differs from traditional verification
+## How it differs from AI Verify (v1)
 
-Traditional continuous verification and AI-powered verification take fundamentally different approaches:
+AI Verify (v1) (the legacy Verify step) and AI Verify (v2) take fundamentally different approaches to deployment verification:
 
-| Aspect | Traditional Verification | AI-Powered Verification |
-|--------|-------------------------|------------------------|
+| Aspect | AI Verify (v1) | AI Verify (v2) |
+|--------|----------------|----------------|
 | **Baseline requirement** | Requires clean baseline data before verification works | Uses baseline data but does not require manual baseline configuration |
 | **Configuration** | Manual monitored service setup, health source queries, threshold tuning | Describe service in natural language, agent discovers and configures metrics |
 | **Anomaly detection** | Rule-based comparison against thresholds | Statistical and algorithmic detection with LLM-based contextualization |
@@ -81,7 +81,7 @@ The Configuration Agent uses a three-phase pipeline (discovery, configuration, v
 
 ### Phase 2: Deployment verification
 
-When the AI Verify step executes in your pipeline:
+When the AI Verify (v2) step executes in your pipeline:
 
 1. **Plugin deployment**: Deploys data collection plugins as pods in your Kubernetes cluster. Each health source creates an independent plugin for parallel analysis.
 
@@ -117,11 +117,11 @@ When the AI Verify step executes in your pipeline:
 AI-powered verification is behind feature flags `CDS_CV_AI_VERIFY_NG` and `CDS_CV_HEALTH_SOURCES_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable these features.
 :::
 
-To start using AI-powered verification:
+To start using AI Verify (v2):
 
-1. **Create AI-assisted health sources**: Use the Configuration Agent to automatically discover and configure metrics from your observability platforms. See [AI-assisted health source configuration](./ai-assisted-health-source.md) for step-by-step instructions.
+1. **Create AI-assisted health sources**: Use the Configuration Agent to automatically discover and configure metrics from your observability platforms. See [AI-assisted health source configuration](/docs/continuous-delivery/verify/configure-cv/configure-verify-step-with-ai/ai-assisted-health-source) for step-by-step instructions.
 
-2. **Add AI Verify step to pipelines**: Configure the AI Verify step in your deployment pipelines to analyze health sources during deployments. See [Configure the AI Verify step](./ai-verify.md) for detailed configuration options.
+2. **Add AI Verify (v2) step to pipelines**: Configure the AI Verify (v2) step in your deployment pipelines to analyze health sources during deployments. See [Configure the AI Verify (v2) step](/docs/continuous-delivery/verify/configure-cv/configure-verify-step-with-ai/ai-verify) for detailed configuration options.
 
 3. **Monitor executions**: View real-time agent events, data clustering, and natural language insights during pipeline execution. Review explanations and remediation suggestions when issues are detected.
 

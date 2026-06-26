@@ -55,19 +55,19 @@ After creating the monitored service template, you can edit it to add a Health S
 [Git Experience](/docs/platform/git-experience/git-experience-overview.md) is not supported for monitored services
 :::
 
-## Configure the monitored service template in a Verify step
+## Configure the monitored service template in a AI Verify (v1) step
 
-You can configure the monitored service template in the Verify step configuration. You can select whether you want to use Default or Template for verification.
+You can configure the monitored service template in the AI Verify (v1) step configuration. You can select whether you want to use Default or Template for verification.
 
-* **Default**: Verify step will automatically identify the right monitored service based on the service and environment configuration of the stage to be used for verification. If it does not find the corresponding monitored service, then the step will be skipped.
+* **Default**: AI Verify (v1) step will automatically identify the right monitored service based on the service and environment configuration of the stage to be used for verification. If it does not find the corresponding monitored service, then the step will be skipped.
   
   :::important
-  When using the Default option for Monitored Service Type in the Verify step, you can see the option, **Click to autocreate a monitored service**. It is done just to make the user interaction simpler while using a deployment stage with fixed service and environment input. The Verify step identifies if a corresponding monitored service exists or not. If it does not exist, then the step provides the option to automatically create a monitored service. You can add add health sources and configure the complete monitored service using this option.
+  When using the Default option for Monitored Service Type in the AI Verify (v1) step, you can see the option, **Click to autocreate a monitored service**. It is done just to make the user interaction simpler while using a deployment stage with fixed service and environment input. The AI Verify (v1) step identifies if a corresponding monitored service exists or not. If it does not exist, then the step provides the option to automatically create a monitored service. You can add add health sources and configure the complete monitored service using this option.
   :::
   
 * **Template**: You can specify the monitored service template to be used for verification as a fixed value or runtime input.
 
-To select a monitored service template, select **Template** under **Monitored Service** > **Monitored Service Type** in the Verify step configuration page. The template input can be a fixed value or runtime input. 
+To select a monitored service template, select **Template** under **Monitored Service** > **Monitored Service Type** in the AI Verify (v1) step configuration page. The template input can be a fixed value or runtime input. 
 
 ### Select a fixed monitored service template 
 
@@ -85,7 +85,7 @@ To select a monitored service template, select **Template** under **Monitored Se
 This feature is currently behind the feature flag, `CV_MONITORED_SERVICE_TEMPLATIZATION`. To enable a feature flag in your Harness account, contact [Harness Support](mailto:support@harness.io).
 :::
 
-To select a monitored service template during runtime, on the Verify step settings page, do the following:
+To select a monitored service template during runtime, on the AI Verify (v1) step settings page, do the following:
 
 1. Select Template input as a runtime value, and apply changes to the step configuration.
    
@@ -106,7 +106,7 @@ To select a monitored service template during runtime, on the Verify step settin
 
 A monitored service template allows the following use cases:
 
-* Multiple verify steps with different monitored service templates can be configured to be run in a particular stage. These steps can be then configured to be run based on certain conditions.
+* Multiple AI Verify (v1) steps with different monitored service templates can be configured to be run in a particular stage. These steps can be then configured to be run based on certain conditions.
 * A monitored service template with an user impacting metric (not necessarily satisfied/linked to a single service) can be created and use in verification in addition to a template with service linked metric.
 
 

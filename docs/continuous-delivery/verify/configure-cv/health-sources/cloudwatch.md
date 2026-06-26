@@ -77,7 +77,7 @@ You can customize the metrics to map the Harness Service to the monitored enviro
    
    ![](./static/verify-deployments-with-cloudwatch-116.png)
    
-9. Click **Submit**. The Health Source is displayed in the Verify step.
+9. Click **Submit**. The Health Source is displayed in the AI Verify (v1) step.
    
    ![](./static/verify-deployments-with-cloudwatch-117.png)
 
@@ -107,7 +107,7 @@ For more information on the prerequisites, configuration steps, and permissions 
 
    ![](./static/field-mapping.png)
 
-9. Click **Submit**. The health source will be displayed in the verify step!
+9. Click **Submit**. The health source will be displayed in the AI Verify (v1) step!
 
 </TabItem>
 </Tabs>

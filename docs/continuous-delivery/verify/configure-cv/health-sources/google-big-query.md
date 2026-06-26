@@ -26,7 +26,7 @@ A Health Source is basically a mapping of a Harness Service to the service in a 
 10. Enter your **Query Name**.
 11. Enter a query in the **Query** text box. 
 12. Click **Run Query** to retrieve the details. The results are displayed under **Records.**
-13. Click **Submit**. The Health Source is displayed in the Verify step.
+13. Click **Submit**. The Health Source is displayed in the AI Verify (v1) step.
 
 Optionally, you can click **Get sample log messages** to get a list of sample logs for your query. 
 

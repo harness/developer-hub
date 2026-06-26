@@ -1,6 +1,7 @@
 ---
-title: Verify Overview
-description: Get an overview of Harness Continuous Verification.
+title: Verification Overview
+description: Get an overview of Harness Continuous Verification with AI Verify.
+sidebar_label: Verification Overview
 sidebar_position: 1
 helpdocs_topic_id: 3xhqq9xllp
 helpdocs_category_id: 9mefqceij0
@@ -12,12 +13,12 @@ redirect_from:
   - /docs/first-gen/continuous-delivery/continuous-verification/continuous-verification-overview/concepts-cv/instana-verification-overview/
 ---
 
-Continuous Verification is a critical step in the deployment pipeline that validates deployments. It integrates with APMs and logging tools to verify that the deployment is running safely and efficiently. Harness applies machine learning algorithms to every deployment for identifying normal behavior, which allows it to identify and flag anomalies in future deployments. During the Verify step, Continuous Verification automatically triggers a rollback if anomalies are found.
+Continuous Verification is a critical step in the deployment pipeline that validates deployments. It integrates with APMs and logging tools to verify that the deployment is running safely and efficiently. Harness applies machine learning algorithms to every deployment for identifying normal behavior, which allows it to identify and flag anomalies in future deployments. During the AI Verify (v1) step, Continuous Verification automatically triggers a rollback if anomalies are found.
 
-This topic provides an overview of the prerequisites and steps involved in setting up Continuous Verification.
+This topic provides an overview of the prerequisites and steps involved in setting up Continuous Verification with AI Verify (v1).
 
 :::info note
-If you are already familiar with setting up Continuous Verification and the Verify step and are looking for instructions on configuring the verification step for a specific health source, go to [Configure verification](/docs/category/configure-cv).
+If you are already familiar with setting up Continuous Verification and the AI Verify (v1) step and are looking for instructions on configuring the verification step for a specific health source, go to [Configure verification](/docs/category/configure-cv).
 :::
 
 
@@ -30,7 +31,7 @@ If you are already familiar with setting up Continuous Verification and the Veri
 
 ## Deployment strategies
 
-You can set up Continuous Verification by adding a Verify step to a pipeline. The following deployment strategies are available when configuring verification.
+You can set up Continuous Verification by adding an AI Verify (v1) step to a pipeline. The following deployment strategies are available when configuring verification.
 
 
 ### Continuous verification type
@@ -113,9 +114,9 @@ Use the Harness expression `<+serviceConfig.artifacts.primary.tag>` to reference
    
 You can configure the pipeline to fail if there is no data from the health source. This ensures that the deployment fails when there is no data for Harness to analyze.
 
-The Verify step also includes a metric-level option to fail the Verify step when the analysis of a given custom metric is not possible because there is no data for the custom metric on either the test nodes or the control nodes.
+The AI Verify (v1) step also includes a metric-level option to fail the AI Verify (v1) step when the analysis of a given custom metric is not possible because there is no data for the custom metric on either the test nodes or the control nodes.
 
-To enable the metric-level fail-on-no-analysis option, in the configuration pane of your Verify step, select **Step Parameters**, expand **Optional**, and select **Fail if any custom metrics has no analysis**.
+To enable the metric-level fail-on-no-analysis option, in the configuration pane of your AI Verify (v1) step, select **Step Parameters**, expand **Optional**, and select **Fail if any custom metrics has no analysis**.
 
 ## Fail-fast thresholds
 
@@ -143,13 +144,13 @@ Log verification uses machine learning to cluster similar log messages and compa
    - Whether a known error's frequency changed significantly
    - Statistical comparison against baseline behavior
 
-For these reasons, log verification always runs for the complete analysis duration specified in the Verify step configuration.
+For these reasons, log verification always runs for the complete analysis duration specified in the AI Verify (v1) step configuration.
 
 ### Configure fail-fast for metrics
 
 To configure fail-fast thresholds for metrics:
 
-1. In your Verify step, go to **Health Sources**
+1. In your AI Verify (v1) step, go to **Health Sources**
 2. Select a metric-based health source (APM or infrastructure monitoring tool)
 3. Configure custom thresholds for specific metrics
 4. Set the threshold action to **Fail Fast**

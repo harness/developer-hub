@@ -102,19 +102,19 @@ Node wise comparison as explained in case of (canary deployment) takes place her
 
 * Pre-Deployment metric/log is collected (For example , let us assume deployment gets completed at 10.00 AM, takes 2 mins to settle and verification is running for 5 mins. In this case the metric/log is collected from 9.55 AM to 10.00 AM and compared with data of 10.02-10.07 AM).
 
-In case of B/G deployment, where you place the verification matters. In case you want to run verification after the blue environment is ready then you need to put some traffic to it. In this case while running verification, analysis will be done between blue and green environment nodes. In case you put the verify step after complete switch of traffic to blue environment, then analysis will be done between pre deployment & post deployment data.
+In case of B/G deployment, where you place the verification matters. In case you want to run verification after the blue environment is ready then you need to put some traffic to it. In this case while running verification, analysis will be done between blue and green environment nodes. In case you put the AI Verify (v1) step after complete switch of traffic to blue environment, then analysis will be done between pre deployment & post deployment data.
 
 ## Alternative Usage
 
-While CV has been designed to verify deployment, it can still act as a verification for any kind of change getting done through a Harness pipeline. You can add the verify step at any place, and it will do a pre & post action analysis (similar to rolling deployment). Only condition to be satisfied is that there shall be some metric/log data before the change was introduced and also after that change is completed.
+While CV has been designed to verify deployment, it can still act as a verification for any kind of change getting done through a Harness pipeline. You can add the AI Verify (v1) step at any place, and it will do a pre & post action analysis (similar to rolling deployment). Only condition to be satisfied is that there shall be some metric/log data before the change was introduced and also after that change is completed.
 
 ### Load Test
 
-The user can configure the verify step to work in *Load Test* configuration. Here the verification is done by comparing the post deployment data with a predefined baseline data. Analysis is done at service level instead of node. Currently we support last passed verification of the same service as baseline.
+The user can configure the AI Verify (v1) step to work in *Load Test* configuration. Here the verification is done by comparing the post deployment data with a predefined baseline data. Analysis is done at service level instead of node. Currently we support last passed verification of the same service as baseline.
 
 ### Plain Threshold Based Verification
 
-Another option is to do plain threshold based verification without doing any comparative analysis. In this the user can define the failure threshold for the metric and verify step can fail if thresholds are breached during verification. It does not include any node based analysis and any ML usage.
+Another option is to do plain threshold based verification without doing any comparative analysis. In this the user can define the failure threshold for the metric and AI Verify (v1) step can fail if thresholds are breached during verification. It does not include any node based analysis and any ML usage.
 
 ## Feedback
 
@@ -131,7 +131,7 @@ Users can define thresholds for metric as part of health source configuration. T
 
 ### Log Feedback
 
-Once a log verification has run as part of the verify step, users can review the logs detected and provide feedback for them. These feedbacks will be considered when next time verification runs. Feedback can be provided as the risk value of that particular log. Supported values are:
+Once a log verification has run as part of the AI Verify (v1) step, users can review the logs detected and provide feedback for them. These feedbacks will be considered when next time verification runs. Feedback can be provided as the risk value of that particular log. Supported values are:
 
 * **High Risk**: It means any time this log is seen, verification will fail. So it can happen that this log was seen with the older version, but verification will fail if it is seen again with the new version.
 * **Medium Risk**: A log with medium risk will make verification fail only if user is running verification with high sensitivity.

@@ -55,7 +55,7 @@ In **Health Sources**, click **Add**. The **Add New Health Source** settings
    * SLI
 17. In **Risk Category**, select a risk type from the list.
 18. In **Deviation Compared to Baseline**, select one of the options based on the selected risk type.
-19. Click **Submit**. The Health Source is displayed in the Verify step.
+19. Click **Submit**. The Health Source is displayed in the AI Verify (v1) step.
 
 ![](./static/verify-deployments-with-app-dynamics-69.png)
 
@@ -98,7 +98,7 @@ To verify the metric paths and validate the data being collected:
 
 Alternatively, you can verify which metrics Harness is querying by examining the execution logs:
 
-1. Run a Verify step that uses your AppDynamics health source.
+1. Run a AI Verify (v1) step that uses your AppDynamics health source.
 2. Check the execution logs for external API calls.
 3. Review the API call details to see the exact metric paths being queried and the responses received from AppDynamics.
 

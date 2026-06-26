@@ -51,7 +51,7 @@ In **Health Sources**, click **Add**. The **Add New Health Source** settings
 14. In **Filter on Service**, select a filter. To add more filters, click **Additional Filter** which is optional.
 15. To add an aggregator for the metric, click **Aggregator** which is also optional.
 16. In **Assign**, you can select the services for which you want to apply the metric.![](./static/verify-deployment-with-prometheus-81.png)
-17. Click **Submit**. The Health Source is displayed in the Verify step.
+17. Click **Submit**. The Health Source is displayed in the AI Verify (v1) step.
 
 You can add one or more Health Sources for each APM or logging provider.
 

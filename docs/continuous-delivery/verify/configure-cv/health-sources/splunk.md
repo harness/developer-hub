@@ -45,7 +45,7 @@ A Health Source is basically a mapping of a Harness Service to the service in a 
    ![](./static/verify-deployments-with-splunk-42.png)
 
 13. Once the records are fetched, click the plus icon in **Identify Service Instance** to select the path for service instance.
-14. Click **Submit**. The Health Source is displayed in the Verify step.
+14. Click **Submit**. The Health Source is displayed in the AI Verify (v1) step.
 
 ![](./static/verify-deployments-with-splunk-43.png)
 

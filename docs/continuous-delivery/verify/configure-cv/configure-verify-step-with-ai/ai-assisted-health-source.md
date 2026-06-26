@@ -6,7 +6,7 @@ slug: /continuous-delivery/verify/configure-cv/configure-verify-step-with-ai/ai-
 sidebar_position: 2
 ---
 
-This guide walks through creating health sources using the AI-assisted Configuration Agent. The agent automatically discovers metrics from your observability platforms and generates appropriate queries based on your service context. For an overview of how the Configuration Agent works within AI-powered verification, see the [Overview](./overview.md).
+This guide walks through creating health sources using the AI-assisted Configuration Agent. The agent automatically discovers metrics from your observability platforms and generates appropriate queries based on your service context. For an overview of how the Configuration Agent works within AI-powered verification, see the [Overview](/docs/continuous-delivery/verify/configure-cv/configure-verify-step-with-ai/overview).
 
 :::note
 AI-assisted health source configuration is behind feature flags `CDS_CV_AI_VERIFY_NG` and `CDS_CV_HEALTH_SOURCES_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable these features.
@@ -38,7 +38,7 @@ The Overview tab contains the basic configuration for your health source.
 
 **Setup Approach**: Two options are available:
 - **AI-Assisted Setup (Recommended)** - Uses the Configuration Agent to automatically discover and configure metrics
-- **Manual Setup** - Requires manual query configuration. See [Health Sources documentation](/docs/category/health-sources) for manual setup instructions.
+- **Manual Setup** - Requires manual query configuration. See [Health Sources documentation](/docs/continuous-delivery/verify/configure-cv/health-sources) for manual setup instructions.
 
 Select **AI-Assisted Setup (Recommended)** to use the Configuration Agent.
 

@@ -46,7 +46,7 @@ Harness CV classifies the error clusters identified by the ML model during log a
 
 Harness CV provides a powerful mechanism to visualize and interpret the log verification results.
 
-**Prerequisite**: You should have added a health source to the Verify step and run the pipeline. To learn more about how to add a health source to the verify step and run the pipeline, go to [Configure verification](/docs/category/configure-cv).
+**Prerequisite**: You should have added a health source to the AI Verify (v1) step and run the pipeline. To learn more about how to add a health source to the AI Verify (v1) step and run the pipeline, go to [Configure verification](/docs/category/configure-cv).
 
 To view log verification results for a pipeline:
 
@@ -120,7 +120,7 @@ Event health has three possible values: **Healthy**, **Medium Healthy**, and **U
 
 ### Sensitivity and event health 
 
-The event health plays a crucial role in the verification process and is determined based on the sensitivity configuration of the verify step. The rules for determining verification outcomes are as follows:
+The event health plays a crucial role in the verification process and is determined based on the sensitivity configuration of the AI Verify (v1) step. The rules for determining verification outcomes are as follows:
 
 - High sensitivity: Verification fails if there is any Unhealthy or Medium Healthy cluster that is not set by the user. If a user [sets an event preference](/docs/continuous-delivery/verify/cv-results/log-feedback#set-event-preference) to **medium risk** that will set the cluster to medium healthy, but will not fail for high sensitivity verification.
 

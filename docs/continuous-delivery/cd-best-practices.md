@@ -91,8 +91,8 @@ Manual reviews don't scale. Use OPA policies to codify your deployment standards
 
 Deploying code is only half the job. Verifying that the deployment is healthy before promoting or completing it closes the feedback loop.
 
-- **Add a Verify step** after deployment to connect your APM provider (Datadog, Prometheus, New Relic, Splunk, AppDynamics, etc.) and let Harness analyze metrics and logs for anomalies. See [Verify deployments with the Verify step](/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step).
-- **Pair verification with canary deployments.** Run the Verify step during the canary phase so anomalies are caught while only a fraction of traffic is exposed. If verification fails, the automatic rollback removes the canary before users are broadly impacted.
+- **Add an AI Verify (v1) step** after deployment to connect your APM provider (Datadog, Prometheus, New Relic, Splunk, AppDynamics, etc.) and let Harness analyze metrics and logs for anomalies. See [AI Verify (v1) overview](/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step).
+- **Pair verification with canary deployments.** Run the AI Verify (v1) step during the canary phase so anomalies are caught while only a fraction of traffic is exposed. If verification fails, the automatic rollback removes the canary before users are broadly impacted.
 
 ## Standardize with Templates
 
