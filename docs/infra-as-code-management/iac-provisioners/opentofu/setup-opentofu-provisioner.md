@@ -174,9 +174,11 @@ Go to [Connectors and Variables](/docs/infra-as-code-management/configuration/co
 
 ## Understand remote state
 
-Harness IaCM automatically configures itself as the remote backend for your OpenTofu state when you create a workspace. You do not need to add a backend block to your `.tf` files. State is encrypted at rest and access is controlled through Harness RBAC permissions.
+Harness IaCM automatically configures itself as the remote backend for your OpenTofu state when you create a workspace. You do not need to add a backend block in your `.tf` files. State is encrypted at rest and access is controlled through Harness RBAC permissions.
 
 State locking prevents concurrent modifications. When a provision operation runs, Harness locks the state for that workspace until the operation completes.
+
+Go to [State Management](/docs/infra-as-code-management/iac-provisioners/opentofu/state-management) to learn about viewing state in the UI, migrating existing state, using external backends, and accessing state locally.
 
 ---
 
