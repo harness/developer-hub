@@ -1,6 +1,6 @@
 ---
-title: Add tags dynamically to an execution 
-description: This page illustrates how to add tags dynamically to an execution.
+title: Pipeline execution tags
+description: Add tags dynamically to pipeline executions and filter by AND or OR logic.
 sidebar_position: 35
 tags: 
 - dynamic-tags
@@ -16,7 +16,11 @@ tags:
 - add-tags-dynamically-to-pipeline
 - add-tags-dynamically
 - add-tags-dynamically-to-pipeline-execution
+- filter-pipeline-tags
+- tag-filtering
+- and-or-logic
 ---
+
 
 ## Overview
 
@@ -258,6 +262,65 @@ pipeline:
 
 </details>
 
-### More on Tags
+---
+
+## Filter pipeline executions by tag logic
+
+When you view pipeline execution history, you can filter by multiple tags using AND or OR logic. This helps you narrow down results to find executions that match specific tag combinations.
+
+### Filter executions by tags
+
+After you have added tags to your pipeline executions (either statically or dynamically), you can filter the execution history to find specific runs.
+
+1. Go to **Pipelines** and select **Execution History**.
+
+2. Select the **Filters** panel.
+
+3. In the **Pipeline Tags** section, select the tags you want to filter by.
+
+4. After selecting multiple tags, choose the operator under **Conditions**:
+
+   - **Matches Any:** Returns executions that have at least one of the selected tags (OR logic)
+   - **Matches All:** Returns only executions that have all of the selected tags (AND logic)
+
+<DocImage path={require('./static/filter-tags-matches-any.png')} title="Filter with Matches Any (OR logic)" />
+
+<DocImage path={require('./static/filter-tags-matches-all.png')} title="Filter with Matches All (AND logic)" />
+
+The default behavior is **Matches Any** (OR logic), which returns any pipeline that has at least one of your selected tags. When you switch to **Matches All** (AND logic), only pipelines that have every tag you selected will appear in the results.
+
+### Use cases for AND logic
+
+:::note
+The AND logic option (Matches All) is behind the feature flag `PIPE_TAG_CONDITIONAL_FILTER`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. OR logic (Matches Any) is available by default.
+:::
+
+AND logic is most useful when you need to identify pipelines that meet multiple specific criteria simultaneously.
+
+When troubleshooting production issues in a specific service, filter by tags such as `env:prod` AND `service:payment-api` to see only production deployments for that service, excluding test deployments or other services running in production.
+
+For compliance audits, combine tags such as `compliance:sox` AND `environment:production` AND `region:us-east-1` to generate reports showing only production deployments in SOX-compliant regions.
+
+When multiple teams share a pipeline execution view, use tags such as `team:platform` AND `priority:high` to focus on high-priority work from a specific team.
+
+### Use cases for OR logic
+
+OR logic works well when you want to see pipelines matching any of several criteria.
+
+When monitoring deployments across multiple regions, filter by tags such as `region:us-east-1` OR `region:eu-west-1` to see deployments in either region.
+
+For reviewing work across related services, use tags such as `service:payment-api` OR `service:checkout-service` to view executions for any service in your payment flow.
+
+### Save filters with conditional logic
+
+When you save a filter, Harness saves your tag filter operator choice along with the selected tags.
+
+:::info Backward compatibility
+Filters created before this feature was enabled default to OR logic (Matches Any) when you edit them. If you want a saved filter to use AND logic, edit the filter and change the operator to Matches All, then save the filter again.
+:::
+
+---
+
+Go to [Tags](/docs/platform/tags/) to learn how to structure tags and assign metadata using them in Harness.
 
 You can find more on structure of tags and how to assign metadata using them in Harness [here](/docs/platform/tags/).
