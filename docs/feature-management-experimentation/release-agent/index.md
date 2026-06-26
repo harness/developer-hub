@@ -7,21 +7,13 @@ sidebar_position: 1
 sidebar_label: Overview
 ---
 
-## Overview
-
 Release Agent is an in-app AI chatbot designed to streamline the use of Harness FME. It offers multilingual support, rapid responses, and knowledge-based assistance by utilizing our public documentation and blogs. 
 
 Release Agent makes it easy for all developers to get the help they need, without ever leaving the Harness interface. This documentation provides technical details and guidelines for developers to work with Release Agent effectively.
 
-## Setup
+## Ask Release Agent
 
-If Release Agent is available to your team, you will find the Release Agent icon in the bottom left.
-
-![](./static/release-agent.png)
-
-When you click **Release Agent**, the chat will open on the right side of the screen. You can click on one of the suggested questions to get started or type in your own question.
-
-![](./static/modal.png)
+From the FME navigation menu, click **Ask Release Agent** to open the chat modal.
 
 ### Example questions
 
@@ -47,27 +39,19 @@ The Release Agent can summarize metric results on a feature flag's Metric detail
 
 ### Feature flag metrics
 
-To use the **AI Summarize** button on a feature flag's metric:
+To use the **AI Summarize** button on a feature flag's metric, drill into a metric tile on a feature flag's Metrics impact dashboard and click **Summarize**.
 
-![](./static/feature-flag-summarize.png)
-
-1. Drill into a metric tile on a feature flag's Metrics impact dashboard and click **Summarize**.
-1. After viewing the summary, type your follow-up question and click **Continue conversation in Release Agent**.
-1. Continue to ask additional follow-up questions if you would like, including suggestions for next steps.
-
-![](./static/results-convo.png)
+![](./static/metric.png)
 
 ### Experiment results and metrics
 
-To use the **AI Summarize** button on an experiment's results:
-
-![](./static/experiment-summarize.png)
-
-1. Drill into a metric on an experiment's Metrics dashboard and click **Summarize**.
-1. After viewing the summary, type your follow-up question and click **Continue conversation in Release Agent**.
-1. Continue to ask additional follow-up questions if you would like, including suggestions for next steps.
+To use the **AI Summarize** button on an experiment's results, drill into a metric on an experiment's Metrics dashboard and click **Summarize**.
 
 ![](./static/experiment-metric-summarize.png)
+
+To summarize an experiment's overall results, select an experiment on the **Experiments** page and click **Summarize**.
+
+![](./static/experiment-summarize.png)
 
 For more information, see [Viewing experiment results](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/#use-ai-summarize).
 
