@@ -56,66 +56,112 @@ Go to [Data Security](/docs/software-engineering-insights/harness-sei/setup-sei/
 - **Privileges:** Standard user account. No admin or root required for operation.
 - **Network:** Outbound HTTPS to `*.harness.io` on port 443.
 - **Harness account:** Active Harness account with the AI Engineering Insights module enabled.
+- **Role:** You must be an **Account Admin** in Harness to generate a scoped service token.
 
 ## Install the agent
 
 ### Step 1: Generate an API token
 
-1. Sign in to your Harness account and navigate to the **AI Engineering Insights** module.
-2. On the Insights page, select **Download Agent** to open the setup panel.
-3. In the setup panel, select **Generate Token**. This token is scoped to your organization and limits the agent to telemetry-write operations only.
-4. Copy the token and store it securely. You need it for the MDM installation script.
+1. Sign in to your Harness account and navigate to the **Engineering Insights** module.
+   
+   ![](../../static/agent-8.png)
 
-![AI DLC Agent - API token](../../static/ai-eng-16.png)
+2. On the **AI Engineering** tab, select **Download Agent** to open the setup panel.
+
+   ![](../../static/agent-10.png)
+
+3. In the setup panel, select **Generate PAT**. This token is scoped to your organization and limits the agent to telemetry-write operations only.
+
+   ![](../../static/agent-9.png)
+
+4. Copy the token and store it securely. You need it for the installation script in Step 3.
+
+   ![AI DLC Agent - API token](../../static/agent-5.png)
 
 ### Step 2: Download the agent binary
 
-In the setup panel, select the download option for the operating system used by developers in your organization. The agent is distributed as a signed, versioned binary for macOS (arm64 and x64).
+1. In the setup panel, select the download option for the operating system used by developers in your organization. The agent is distributed as a signed, versioned binary for macOS (arm64 and x64).
 
-### Step 3: Install the agent
+   ![](../../static/agent-4.png)
+
+2. Once the download is complete, click **Close** to dismiss the setup panel.
+
+   ![](../../static/agent-7.png)
+
+1. After a successful installation, navigate to the **AI Engineering** section under **Integrations**. The Harness AI DLC Agent will show a **● Connected** status.
+
+   ![](../../static/agent-6.png)
+
+### Step 3: Update the installation script
+
+1. Unzip the downloaded package. The folder contains two files: the agent binary and the installation script (`harness-aidlc-agent-macos-arm64-install.sh`).
+2. Open the installation script and set the token from Step 1 as the value of `SEI_SERVICE_TOKEN`.
+   
+   ![](../../static/agent-2.png)
+
+3. Save the script.
+
+### Step 4: Install the agent
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-<Tabs>
+<Tabs queryString="installation">
 <TabItem value="mdm" label="Deploy via MDM" default>
 
-Organization administrators distribute the agent to developer machines using MDM (Mobile Device Management). The installation script performs the following steps:
+Organization administrators distribute the agent to developer machines using MDM (Mobile Device Management).
 
-| Step | Action | Details |
-| ---: | --- | --- |
-| 1 | Distribute install script and binary | MDM deploys `harness-aidlc-agent-macos-arm64-install.sh` and the signed binary package to the target device. |
-| 2 | Inject configuration parameters | MDM passes the endpoint, integration ID, and token to the installer as script arguments. |
-| 3 | Verify binary integrity | The script verifies the SHA-256 checksum before proceeding. |
-| 4 | Store token in Keychain | The script stores the API token in the macOS System Keychain. Tokens are never written to disk. |
-| 5 | Write configuration | The script creates `~/.harness-aidlc-agent/config.json` containing the endpoint and integration ID. |
-| 6 | Install binary | The agent binary is placed at `/usr/local/bin/harness-aidlc-agent`. |
-| 7 | Register LaunchAgent | The script creates a LaunchAgent plist at `~/Library/LaunchAgents/com.harness.aidlc-agent.plist`. |
-| 8 | Start daemon | The LaunchAgent starts the daemon automatically, initiating telemetry collection. |
+1. Zip the binary and the updated installation script from Step 3. 
+1. Push the `.zip` package to developer machines. 
+1. Create a post-install script (see below) to locate and execute the installation script automatically from the extracted zip. 
+1. Initialize the binary installation using the installation script. The post-install script runs the installation script, which verifies the binary, stores the token in the macOS Keychain, writes configuration, places the binary, registers the LaunchAgent, and starts the daemon. 
 
-**Required parameters:**
+**Post-install script for MDM zip deployment**: When installing from a .zip file via MDM, you need a post-install script to locate and execute the installation script automatically. Save the following as your post-install script in your MDM configuration:
 
-- `--endpoint`: The Harness telemetry endpoint URL.
-- `--integration-id`: Your organization's integration identifier.
-- `--token`: The scoped API token generated in Step 1.
+```bash
+#!/bin/bash
+# 1. Define the location where the zip is extracted
+BASE_DIR="<location-where-zip-is-pushed>"
+INSTALL_SCRIPT="$BASE_DIR/harness-aidlc-agent-macos-arm64-install.sh"
 
-**Optional parameters:**
+# 2. Check if the script exists
+if [[ -f "$INSTALL_SCRIPT" ]]; then
+  echo "Found install script at $INSTALL_SCRIPT. Executing now..."
 
-- `--checksum`: SHA-256 hash for binary verification.
-- `--disable-metrics`: Comma-separated list of metric types to disable.
+  # 3. Make the script executable
+  chmod +x "$INSTALL_SCRIPT"
+
+  # 4. Execute the script
+  "$INSTALL_SCRIPT"
+  
+  # 5. Capture the exit status
+  EXIT_CODE=$?
+  if [ $EXIT_CODE -eq 0 ]; then
+    echo "Installation script finished successfully."
+    exit 0
+  else
+    echo "Installation script failed with error code $EXIT_CODE."
+    exit "$EXIT_CODE"
+  fi
+else
+  echo "Error: Installation script not found at $INSTALL_SCRIPT"
+  exit 1
+fi
+```
+
+Replace `<location-where-zip-is-pushed>` with the actual path where your MDM tool extracts the zip package on developer machines.
 
 </TabItem>
 <TabItem value="manual" label="Manual installation">
 
 Use manual installation for individual developer machines or to test the agent before a broader MDM rollout.
 
-1. Extract the binary package downloaded in Step 2.
-2. Open the `harness-aidlc-agent-macos-arm64-install.sh` script and update the API token field with the token generated in Step 1.
-3. Run the install script. It automatically installs the Harness AI DLC Agent on the developer workstation, configures the LaunchAgent, and starts the daemon.
+1. Complete Steps 1–3 above.
+2. Run the updated installation script:
 
-```bash
-sudo bash harness-aidlc-agent-macos-arm64-install.sh
-```
+   ```bash
+   sudo bash harness-aidlc-agent-macos-arm64-install.sh
+   ```
 
 Once the script completes, the agent begins collecting telemetry in the background.
 
@@ -137,13 +183,21 @@ Once the script completes, the agent begins collecting telemetry in the backgrou
 
 ## Verify the installation
 
-Run the following command to confirm the agent is running:
+### With direct machine access
+
+Run the following command to confirm the agent binary is installed and check its version:
+
+```bash
+harness-aidlc-agent version
+```
+
+This returns the version string of the installed binary. To confirm the daemon is running:
 
 ```bash
 launchctl list | grep harness.aidlc
 ```
 
-If the agent is running, you see a line with `com.harness.aidlc-agent` and a process ID. A `0` exit status in the second column indicates the agent started successfully.
+A line with `com.harness.aidlc-agent` and a process ID confirms the daemon is active. A `0` exit status in the second column indicates the agent started successfully.
 
 To view recent telemetry activity, check the audit log:
 
@@ -151,32 +205,24 @@ To view recent telemetry activity, check the audit log:
 tail -20 ~/.harness-aidlc-agent/send.log
 ```
 
-## Diagnostics
+### Without direct machine access
 
-The **Diagnostics** tab in the AI Engineering Insights module displays the health and status of all machines where the agent was installed. When a new version of the agent is available, download and redeploy it from this tab. Harness recommends keeping agents up to date to ensure accurate telemetry collection and access to new capabilities.
+1. From the **Integrations** page, click **Back to Project** in the top-left corner of the sidebar.
 
-### Monitor rollout stats
+   ![](../../static/agent-1.png)
 
-![AI DLC Agent - Monitoring](../../static/ai-eng-2.png)
+2. Navigate to the **AI Engineering** tab and click **Diagnostics**. The **Diagnostics** page lists all developers for whom the agent was installed successfully, along with the installed version and last session time.
 
-The **Developer Installations** table lists every developer machine with the agent installed. Use this table to verify coverage, identify machines on outdated versions, and audit installation timestamps.
-
-| Column | Description |
-| --- | --- |
-| **Name** | Developer display name. |
-| **Email** | Developer email address. |
-| **Version** | Agent version installed on this machine. |
-| **Installation time** | Date and time the agent was installed or last updated. |
-| **Last session** | Most recent timestamp when the agent reported AI coding tool activity. A stale date may indicate the agent has stopped or the developer has not used any coding tools recently. |
-
-To filter by a specific agent version, use the **All Versions** dropdown above the table. To export the list, select **Download CSV**.
+   ![](../../static/agent-3.png)
+  
+   Collected data is processed every 15 minutes, so allow up to 15 minutes after installation before expecting the developer to appear.
 
 ## Troubleshooting
 
 <details>
 <summary>A developer is missing from the AI Engineering dashboard</summary>
 
-Verify the agent is installed on their machine by running `launchctl list | grep harness.aidlc`. Check the **Last session** timestamp in the **Developer Installations** table. If the agent has not reported in, reinstall using the MDM package.
+Verify the agent is installed on their machine by running `launchctl list | grep harness.aidlc`. Check the **Last session** timestamp in the **Developer Installations** table. Note that data is processed every 15 minutes, so allow up to 15 minutes after a new installation or session before the developer appears. If the agent has not reported in, reinstall using the MDM package.
 
 </details>
 
