@@ -26,6 +26,19 @@ We've migrated to LabelsV2, which preserves your original label keys while drama
 [Instructions to Update](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts/#how-to-migrate)
 
 
+## June 2026 - Version 1.94.12
+#### Deployment Date: June 26, 2026 (Prod-1)
+
+### New Features and Enhancements
+
+- **Advanced Filters and Cost Explorer Improvements:** We have updated the messaging in the Advanced Filters drawer and refined preference handling so that filtered-out providers are now disabled in Cost Explorer. [CCM-33102]
+
+- **Anomalies Metrics API Perspective Filter Fix:** We have resolved an issue where the Anomalies metrics API could silently ignore a perspective filter if the referenced perspective no longer existed. The view filter is now applied correctly, and results return empty when the perspective is missing or invalid. [CCM-33665]
+
+- **Accurate Cost Types in Overview Anomalies:** The Overview anomalies section now reflects the cost types configured on the Anomalies page, rather than defaulting to the standard cost types. [CCM-33597]
+
+- **Improved Recommendations Widget Navigation:** Clicking the Recommendations widget on the Overview page now opens the Recommendations page scrolled to the top, instead of carrying over the scroll position from the previous page. [CCM-33593]
+
 ## June 2026 - Version 1.93.6
 #### Deployment Date: June 22, 2026 (Prod-1)
 
