@@ -553,7 +553,7 @@ export default function University() {
                 ))}
               {spt
                 .filter((spt) => {
-                  return spt.cardType === "FREE" && spt.tileType === "normal";
+                  return spt.cardType === "FREE" && (spt.tileType === "normal" || spt.tileType === "pre requisite waap");
                 })
                 .map((spt) => (
                   <IltCard {...spt} />

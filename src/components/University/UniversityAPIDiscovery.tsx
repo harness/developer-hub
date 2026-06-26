@@ -484,6 +484,7 @@ export default function CertificationsTBH() {
                 .filter((ilt) => {
                   return (
                     ilt.tileType === "pre requisite" ||
+                    ilt.tileType === "pre requisite waap" ||
                     ilt.tileType === "waap" ||
                     ilt.module === "asp" ||
                     (ilt.module === "asp" && ilt.tileType === "comming soon")
@@ -505,7 +506,7 @@ export default function CertificationsTBH() {
             <div className={styles.cardContainer}>
               {spt
                 .filter((spt) => {
-                  return spt.tileType === "pre requisite";
+                  return spt.tileType === "pre requisite" || spt.tileType === "pre requisite waap";
                 })
                 .map((spt) => (
                   <IltCard {...spt} />

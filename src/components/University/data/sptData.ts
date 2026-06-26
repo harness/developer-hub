@@ -14,6 +14,17 @@ export const spt: IltCardItem[] = [
     cardType: cardType.SPT,
   },
   {
+    title: "Introduction to AI Agents",
+    module: MODULES.platform,
+    type: type.user,
+    description:
+      "Self-paced tidbit introducing the Custom AI Agents.",
+    version: "Paid Plans of any module",
+    link: "https://university-registration.harness.io/self-paced-training-tidbit-custom-ai-agents",
+    tileType: tileType.preReq,
+    cardType: cardType.SPT,
+  },
+  {
     title: "Code Repository",
     module: MODULES.code,
     type: type.user,
@@ -35,7 +46,7 @@ export const spt: IltCardItem[] = [
     tileType: tileType.normal,
     cardType: cardType.SPT,
   },
- {
+  {
     title: "Introduction to Policy as Code [OPA]",
     module: MODULES.cd,
     type: type.user,
@@ -46,7 +57,7 @@ export const spt: IltCardItem[] = [
     tileType: tileType.normal,
     cardType: cardType.SPT,
   },
-   {
+  {
     title: "Introduction to Drift Detection",
     module: MODULES.cd,
     type: type.user,
@@ -90,7 +101,7 @@ export const spt: IltCardItem[] = [
     tileType: tileType.normal,
     cardType: cardType.SPT,
   },
-    {
+  {
     title: "Introduction to Parallel Steps",
     module: MODULES.ci,
     type: type.user,
@@ -123,7 +134,7 @@ export const spt: IltCardItem[] = [
     tileType: tileType.normal,
     cardType: cardType.SPT,
   },
-    {
+  {
     title: "Database DevOps",
     module: MODULES.dbdevops,
     type: type.user,
@@ -156,7 +167,7 @@ export const spt: IltCardItem[] = [
     tileType: tileType.normal,
     cardType: cardType.SPT,
   },
-    {
+  {
     title: "Traceable by Harness Platform Fundamentals",
     module: MODULES.asp,
     type: type.user,
@@ -165,6 +176,17 @@ export const spt: IltCardItem[] = [
     version: "Traceable by Harness Paid Plans",
     link: "https://university-registration.harness.io/self-paced-training-traceable-platform-fundamentals",
     tileType: tileType.normal,
+    cardType: cardType.SPT,
+  },
+  {
+    title: "Harness Web Application and API Protection Fundamentals",
+    module: MODULES.waap,
+    type: type.user,
+    description:
+      "Self-paced video course introducing the Harness Web Application and API Protection Platform.",
+    version: "Harness Web Application and API Protection Paid Plans",
+    link: "https://university-registration.harness.io/self-paced-training-harness-web-application-and-api-protection",
+    tileType: tileType.preReqWAAP,
     cardType: cardType.SPT,
   },
 

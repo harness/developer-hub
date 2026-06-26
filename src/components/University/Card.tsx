@@ -14,6 +14,7 @@ export enum type {
 
 export enum tileType {
   preReq = "pre requisite",
+  preReqWAAP = "pre requisite waap",
   commingSoon = "comming soon",
   normal = "normal",
   waap = "waap",
