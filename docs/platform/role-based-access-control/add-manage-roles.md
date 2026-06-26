@@ -124,7 +124,9 @@ Harness creates these roles for you depending on the modules you use. These role
 
 To manage roles in Harness, you need a role, such as **Account Admin**, that has [permission](/docs/platform/role-based-access-control/permissions-reference) to view, create/edit, and delete roles.
 
-<DocImage path={require('./static/add-manage-roles-17.png')} />
+   <div style={{textAlign: 'center'}}>
+   <DocImage path={require('./static/add-manage-roles-17.png')} width="80%" height="40%" title="Click to view full size image" />
+   </div>
 
 ### Create a role
 
@@ -134,7 +136,9 @@ To manage roles in Harness, you need a role, such as **Account Admin**, that has
 4. Click **Save**.
 5. Select [permissions](/docs/platform/role-based-access-control/permissions-reference) for the role.
 
-   <DocImage path={require('./static/add-manage-roles-19.png')} />
+   <div style={{textAlign: 'center'}}>
+   <DocImage path={require('./static/add-manage-roles-19.png')} width="80%" height="40%" title="Click to view full size image" />
+   </div>
 
 6. Click **Apply Changes**.
 
@@ -184,12 +188,16 @@ The example below walks through reusing a role across scopes. The role is create
 4. Under **Role Bindings**, click **Add**.
 5. Under **Select an Existing Role**, select **Account** in the header and then select the role you want to assign.
 
-   <DocImage path={require('./static/add-manage-roles-20.png')} />
+   <div style={{textAlign: 'center'}}>
+   <DocImage path={require('./static/add-manage-roles-20.png')} width="80%" height="40%" title="Click to view full size image" />
+   </div>
    
 6. Click **Apply Selected**.
 7. Click **Save**.
 
-   <DocImage path={require('./static/add-manage-roles-21.png')} />
+<div style={{textAlign: 'center'}}>
+   <DocImage path={require('./static/add-manage-roles-21.png')} width="80%" height="40%" title="Click to view full size image" />
+   </div>
 
 ---
 
