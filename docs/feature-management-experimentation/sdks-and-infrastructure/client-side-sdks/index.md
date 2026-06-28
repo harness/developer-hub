@@ -1,6 +1,6 @@
 ---
-title: Client-side SDKs
-description: Learn about Harness FME client-side SDKs.
+title: Client-side Standard SDKs
+description: Learn about Harness FME client-side standard SDKs.
 redirect_from:
   - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/ios-android-browser-sdk-fme-changes-roll-out-slowly-to-user-devices
   - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-client-side-sdks/ios-android-browser-sdk-does-the-sdk-cache-expire
@@ -11,6 +11,10 @@ redirect_from:
 Harness FME provides client-side SDKs that let you evaluate feature flags, run experiments, and deliver personalized experiences directly in your application's frontend.
 
 These SDKs are optimized for real-time updates and minimal latency, ensuring that your users always experience the most up-to-date feature set.
+
+Standard SDKs evaluate feature flags locally on the device. They pull rollout rules and segment-membership data from FME cloud, cache them, and run `getTreatment` in-process. **Standard SDKs are the recommended path for most applications**: user attributes stay on the device, and once the SDK is ready it can evaluate any flag for any target.
+
+If you have not chosen between local and remote evaluation yet, see [Choosing an evaluation mode](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/evaluation-modes).
 
 ## Certificate pinning
 

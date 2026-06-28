@@ -1,5 +1,4 @@
 module.exports = [
-  "feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/index",
   "feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-sdk",
   "feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/angular-utilities",
   "feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/browser-sdk",

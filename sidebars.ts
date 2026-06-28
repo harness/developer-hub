@@ -2095,11 +2095,27 @@ const sidebars: SidebarsConfig = {
             {
               type: 'category',
               label: 'Client-side SDKs',
-              link: {
-                type: 'doc',
-                id: 'feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/index',
-              },
-              items: require('./docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/sidebar.js'),
+              items: [
+                'feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/evaluation-modes',
+                {
+                  type: 'category',
+                  label: 'Client-side Standard SDKs',
+                  link: {
+                    type: 'doc',
+                    id: 'feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/index',
+                  },
+                  items: require('./docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/sidebar.js'),
+                },
+                {
+                  type: 'category',
+                  label: 'Client-side Thin SDKs',
+                  link: {
+                    type: 'doc',
+                    id: 'feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/thin-sdks',
+                  },
+                  items: require('./docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/thin-sdks-sidebar.js'),
+                },
+              ],
             },
             {
               type: 'category',

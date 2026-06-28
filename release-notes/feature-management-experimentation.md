@@ -14,9 +14,29 @@ import TabItem from '@theme/TabItem';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: June 24, 2026
+#### Last updated: June 26, 2026
 
 ## June 2026
+
+### Remote evaluation SDKs for client-side are now supported
+----
+#### 2026-06-26
+
+Harness FME now supports remote evaluation through a new family of **thin SDKs** built for browsers, mobile applications, and edge/serverless JavaScript runtimes. With remote evaluation, the SDK delegates flag evaluation to the **Remote Evaluator** in FME cloud rather than computing treatments on the device. Rollout rules and segment definitions stay in the cloud, and the SDK only receives evaluation results.
+
+Thin SDKs give teams choice over where evaluation happens, on a per-surface basis:
+
+- **Total rule privacy**: keep targeting logic and segment definitions in the cloud, eliminating the risk of client-side rule inspection. With short-lived JWT authentication, thin SDKs receive only the evaluation result for the current target, never the underlying rollout configuration or segment definitions.
+- **Architectural choice**: mix and match thin SDKs on high-sensitivity frontends with standard SDKs on surfaces where local-first performance matters. The same SDK key, target, and flag produce the same treatment in either mode.
+- **Consistent and familiar**: thin SDKs share the same `getTreatment`, `track`, and event APIs as the standard SDKs, and use the same deterministic hashing and bucketing logic. Impressions, metrics, and experiments work identically across modes.
+
+Standard SDKs with local evaluation remain the recommended default for most applications. Thin SDKs are the option when keeping targeting rules (not rollout rules) off the client is a priority, or even a must. To help teams choose, see the new [Choosing an evaluation mode](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/evaluation-modes) page.
+
+#### Related documentation
+
+- [Choosing an evaluation mode](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/evaluation-modes)
+- [Client-side Standard SDKs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks)
+- [Client-side Thin SDKs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/thin-sdks)
 
 ### [New Enhancement] Update Feature Flag Definitions in Harness Pipelines
 ----
