@@ -26,14 +26,14 @@ export const DbdevopsData: Horizon = {
         description:
           "support using DBDevOps against DB2 (LUW, iseries, or zOS).",
         tag: [{ value: "Database Support" }, {value: "Q1"}],
-        link: "https://developer.harness.io/release-notes/database-devops/#release-187x"
+        link: "https://developer.harness.io/docs/database-devops/use-database-devops/set-up-db2-connector"
       },
       {
         title: "BigQuery Support",
         description:
           "support using DBDevOps against Google Bigquery.",
         tag: [{ value: "Database Support" }, {value: "Q1"}],
-        link: "https://developer.harness.io/release-notes/database-devops#release-189x"
+        link: "https://developer.harness.io/docs/database-devops/use-database-devops/set-up-connectors#setting-up-bigquery"
       },
       {
         title: "GCP Keyless auth for Liquibase",
@@ -67,7 +67,8 @@ export const DbdevopsData: Horizon = {
         title: "Execution Time Optimization Part 1",
         description:
           "Decreases how many containers the apply step runs. This is behind a feature flag currently, contact Harness for access.",
-        tag: [{ value: "Core Features" }, {value: "Q1"}]
+        tag: [{ value: "Core Features" }, {value: "Q1"}],
+        link: "https://developer.harness.io/release-notes/database-devops#release-197x"
       }
     ],
   },
