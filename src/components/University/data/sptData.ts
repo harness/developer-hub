@@ -46,6 +46,17 @@ export const spt: IltCardItem[] = [
     tileType: tileType.normal,
     cardType: cardType.SPT,
   },
+   {
+    title: "Introduction to GitOps Application Deployments with Feature Management",
+    module: MODULES.cd,
+    type: type.user,
+    description:
+      "Self-paced tidbit introducing GitOps applications with feature management.",
+    version: "Harness CD & GitOps Free Plans",
+    link: "https://university-registration.harness.io/self-paced-training-tidbit-harness-deploying-a-gitops-application-with-feature-management",
+    tileType: tileType.normal,
+    cardType: cardType.SPT,
+  },
   {
     title: "Introduction to Policy as Code [OPA]",
     module: MODULES.cd,
