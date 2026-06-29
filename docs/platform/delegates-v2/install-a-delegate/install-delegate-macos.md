@@ -363,6 +363,24 @@ For the CI stages that you want to use Delegate 3.x with, [define the stage vari
 
 Then, [set your pipeline's build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure#set-the-pipelines-build-infrastructure) as usual. Ensure that you have set **Local** as the **Infrastructure** and that the **Operating System** and **Architecture** match the delegate you installed.
 
+:::info Helper binary for container steps
+For container steps, the delegate downloads a helper binary (`hcli-linux`) to `~/harness/bin/hcli-linux`, or to `/tmp/harness/bin/hcli-linux` if `HOME` is not set. The recommended `colima start` command (go to the [Colima section](#colima) to review the mount configuration) mounts both locations, so it is covered.
+
+If you run the delegate as a **LaunchDaemon** (system service), `HOME` may be unset. Set it in `/Library/LaunchDaemons/harness-delegate.plist` under `EnvironmentVariables`:
+
+```xml
+<key>HOME</key>
+<string>/Users/<your-macos-username></string>
+```
+
+Then reload the service:
+
+```bash
+sudo launchctl unload /Library/LaunchDaemons/harness-delegate.plist
+sudo launchctl load /Library/LaunchDaemons/harness-delegate.plist
+```
+:::
+
 ## Delegate Configuration
 
 The `config.env` file location depends on your service mode:
@@ -496,3 +514,43 @@ colima ssh -- sudo mkdir -p /private/tmp/engine
 ```
 
 For full Colima configuration details, see the [Colima section](#colima) under Additional Configuration.
+
+### Bind mount error: hcli-linux not found
+
+:::info Applies to Delegate 3.x runner
+This applies only to **Delegate 3.x (runner)** with **Local** as the build infrastructure.
+:::
+
+A container-based step fails at startup with:
+
+```text
+invalid mount config for type "bind": bind source path does not exist:
+/tmp/harness/bin/hcli-linux
+```
+
+The delegate downloads a helper binary (`hcli-linux`) and bind-mounts it into the step container. This error means the binary is on a host path the Docker VM cannot see.
+
+**Fix:** Start Colima with the recommended mounts so the binary's location is visible:
+
+```bash
+colima start --vm-type qemu --mount-type sshfs --cpu 8 --memory 20 \
+  --mount ~:w --mount /private/tmp:/private/tmp:w
+```
+
+:::tip Already mounted only /private/tmp/engine?
+If you previously applied the fix in [Output Variable Errors with Colima](#output-variable-errors-with-colima), replace the narrower `--mount /private/tmp/engine:/private/tmp/engine:w` with `--mount /private/tmp:/private/tmp:w`. The broader path covers both errors.
+:::
+
+If the file is on a mounted path but the container still cannot see it, your VM's file sharing (`virtiofs` with the `vz` VM type) may be failing. Switch to QEMU and sshfs as shown above.
+
+**Cannot change the VM config?** First set `HOME` (go to [Configure Pipeline Delegate](#configure-pipeline-delegate) to find the `EnvironmentVariables` plist snippet), then place the binary directly inside the VM at that same home path. Repeat this only if you delete and recreate the VM (`colima delete`):
+
+```bash
+colima ssh -- sudo mkdir -p /Users/<your-macos-username>/harness/bin
+colima ssh -- sudo curl -L \
+  https://storage.googleapis.com/harness-ti/hcli/latest/hcli-linux-<arch> \
+  -o /Users/<your-macos-username>/harness/bin/hcli-linux
+colima ssh -- sudo chmod +x /Users/<your-macos-username>/harness/bin/hcli-linux
+```
+
+Use `<arch>` = `amd64` (Intel) or `arm64` (Apple Silicon), matching your VM (check with `colima status`).
