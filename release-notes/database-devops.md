@@ -24,7 +24,7 @@ These release notes describe recent changes to Harness Database DevOps.
 
 ## June 2026
 
-### Release 1.98.0
+### Release 1.102.x
 
 No customer-facing updates were introduced in this release.
 
@@ -44,6 +44,100 @@ No customer-facing updates were introduced in this release.
 | plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
 | harness/drone-git                 | 1.7.16-rootless        | 1.7.16-rootless              |
 
+**Bundled Liquibase version:** 4.33 (Open Source)
+
+
+### Release 1.101.x
+
+No customer-facing updates were introduced in this release.
+
+#### Image Upgrades
+
+| **Image Name**                    |  **Current Version**   | **Past Version**             |
+| --------------------------------- | ---------------------- | ---------------------------- |
+| plugins/download-artifactory      | 1.0.0                  | 1.0.0                        |
+| plugins/drone-liquibase           | 1.32.0-4.33            | 1.31.0-4.33                  |
+| plugins/drone-liquibase-mongo     | 1.32.0-4.33-mongo      | 1.31.0-4.33-mongo            |
+| plugins/drone-liquibase-spanner   | 1.32.0-4.33-spanner    | 1.31.0-4.33-spanner          |
+| plugins/drone-liquibase-snowflake | 1.32.0-4.33-snowflake  | 1.31.0-4.33-snowflake        |
+| plugins/drone-liquibase-percona   | 1.32.0-4.33-percona    | 1.31.0-4.33-percona          |
+| plugins/drone-liquibase-cloudsql  | 1.32.0-4.33-cloudsql   | 1.31.0-4.33-cloudsql         |
+| plugins/drone-liquibase-bigquery  | 1.32.0-4.33-bigquery   | 1.31.0-4.33-bigquery         |
+| plugins/drone-flyway              | 1.3.0-11.11.2          | 1.3.0-11.11.2                |
+| plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
+| harness/drone-git                 | 1.7.16-rootless        | 1.7.16-rootless              |
+
+**Bundled Liquibase version:** 4.33 (Open Source)
+
+
+### Release 1.100.x
+
+No customer-facing updates were introduced in this release.
+
+#### Image Upgrades
+
+| **Image Name**                    |  **Current Version**   | **Past Version**             |
+| --------------------------------- | ---------------------- | ---------------------------- |
+| plugins/download-artifactory      | 1.0.0                  | 1.0.0                        |
+| plugins/drone-liquibase           | 1.32.0-4.33            | 1.31.0-4.33                  |
+| plugins/drone-liquibase-mongo     | 1.32.0-4.33-mongo      | 1.31.0-4.33-mongo            |
+| plugins/drone-liquibase-spanner   | 1.32.0-4.33-spanner    | 1.31.0-4.33-spanner          |
+| plugins/drone-liquibase-snowflake | 1.32.0-4.33-snowflake  | 1.31.0-4.33-snowflake        |
+| plugins/drone-liquibase-percona   | 1.32.0-4.33-percona    | 1.31.0-4.33-percona          |
+| plugins/drone-liquibase-cloudsql  | 1.32.0-4.33-cloudsql   | 1.31.0-4.33-cloudsql         |
+| plugins/drone-liquibase-bigquery  | 1.32.0-4.33-bigquery   | 1.31.0-4.33-bigquery         |
+| plugins/drone-flyway              | 1.3.0-11.11.2          | 1.3.0-11.11.2                |
+| plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
+| harness/drone-git                 | 1.7.16-rootless        | 1.7.16-rootless              |
+
+**Bundled Liquibase version:** 4.33 (Open Source)
+
+
+### Release 1.99.x
+
+No customer-facing updates were introduced in this release.
+
+#### Image Upgrades
+
+| **Image Name**                    |  **Current Version**   | **Past Version**             |
+| --------------------------------- | ---------------------- | ---------------------------- |
+| plugins/download-artifactory      | 1.0.0                  | 1.0.0                        |
+| plugins/drone-liquibase           | 1.32.0-4.33            | 1.31.0-4.33                  |
+| plugins/drone-liquibase-mongo     | 1.32.0-4.33-mongo      | 1.31.0-4.33-mongo            |
+| plugins/drone-liquibase-spanner   | 1.32.0-4.33-spanner    | 1.31.0-4.33-spanner          |
+| plugins/drone-liquibase-snowflake | 1.32.0-4.33-snowflake  | 1.31.0-4.33-snowflake        |
+| plugins/drone-liquibase-percona   | 1.32.0-4.33-percona    | 1.31.0-4.33-percona          |
+| plugins/drone-liquibase-cloudsql  | 1.32.0-4.33-cloudsql   | 1.31.0-4.33-cloudsql         |
+| plugins/drone-liquibase-bigquery  | 1.32.0-4.33-bigquery   | 1.31.0-4.33-bigquery         |
+| plugins/drone-flyway              | 1.3.0-11.11.2          | 1.3.0-11.11.2                |
+| plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
+| harness/drone-git                 | 1.7.16-rootless        | 1.7.16-rootless              |
+
+**Bundled Liquibase version:** 4.33 (Open Source)
+
+
+### Release 1.98.x
+
+No customer-facing updates were introduced in this release.
+
+#### Image Upgrades
+
+| **Image Name**                    |  **Current Version**   | **Past Version**             |
+| --------------------------------- | ---------------------- | ---------------------------- |
+| plugins/download-artifactory      | 1.0.0                  | 1.0.0                        |
+| plugins/drone-liquibase           | 1.32.0-4.33            | 1.31.0-4.33                  |
+| plugins/drone-liquibase-mongo     | 1.32.0-4.33-mongo      | 1.31.0-4.33-mongo            |
+| plugins/drone-liquibase-spanner   | 1.32.0-4.33-spanner    | 1.31.0-4.33-spanner          |
+| plugins/drone-liquibase-snowflake | 1.32.0-4.33-snowflake  | 1.31.0-4.33-snowflake        |
+| plugins/drone-liquibase-percona   | 1.32.0-4.33-percona    | 1.31.0-4.33-percona          |
+| plugins/drone-liquibase-cloudsql  | 1.32.0-4.33-cloudsql   | 1.31.0-4.33-cloudsql         |
+| plugins/drone-liquibase-bigquery  | 1.32.0-4.33-bigquery   | 1.31.0-4.33-bigquery         |
+| plugins/drone-flyway              | 1.3.0-11.11.2          | 1.3.0-11.11.2                |
+| plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
+| harness/drone-git                 | 1.7.16-rootless        | 1.7.16-rootless              |
+
+**Bundled Liquibase version:** 4.33 (Open Source)
+
 ## May 2026
 
 ### Release 1.97.x
@@ -57,7 +151,6 @@ The `1.97.x` release improves usability and consistency across database change e
 
     :::info
     This feature flag should only be enabled if running Drone plugin versions `1.30.1` or higher, as older Drone plugins do not support this container consolidation.
-    :::
     :::
 
 | **Image Name**                    |  **Current Version**   | **Past Version**             |
@@ -73,6 +166,8 @@ The `1.97.x` release improves usability and consistency across database change e
 | plugins/drone-flyway              | 1.3.0-11.11.2          | 1.3.0-11.11.2                |
 | plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
 | harness/drone-git                 | 1.7.16-rootless        | 1.7.16-rootless              |
+
+**Bundled Liquibase version:** 4.33 (Open Source)
 
 #### Minimum Supported Versions
 - **Drone Plugin version:** Must be version `1.30.1` or higher for the `DBOPS_LIQUIBASE_CONSOLIDATED_EXECUTION` flag to work.
@@ -99,6 +194,8 @@ The `1.96.x` release expands repository integration capabilities, allowing teams
 | plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
 | harness/drone-git                 | 1.7.16-rootless        | 1.7.16-rootless              |
 
+**Bundled Liquibase version:** 4.33 (Open Source)
+
 ### Release 1.95.x
 The `1.95.x` release improves security and stability across DB DevOps workflows, ensuring safer and more reliable execution of database changes.
 
@@ -120,6 +217,8 @@ The `1.95.x` release improves security and stability across DB DevOps workflows,
 | plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
 | harness/drone-git                 | 1.7.16-rootless        | 1.7.16-rootless              |
 
+**Bundled Liquibase version:** 4.33 (Open Source)
+
 ### Release 1.94.x
 
 No customer-facing updates were introduced in this release.
@@ -137,6 +236,8 @@ No customer-facing updates were introduced in this release.
 | plugins/drone-flyway              | 1.3.0-11.11.2          | 1.3.0-11.11.2                |
 | plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
 | harness/drone-git                 | 1.7.16-rootless        | 1.7.16-rootless              |
+
+**Bundled Liquibase version:** 4.33 (Open Source)
 
 ### Release 1.93.x
 
@@ -156,6 +257,8 @@ No customer-facing updates were introduced in this release.
 | plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
 | harness/drone-git                 | 1.7.16-rootless        | 1.7.16-rootless              |
 
+**Bundled Liquibase version:** 4.33 (Open Source)
+
 ### Release 1.92.x
 
 No customer-facing updates were introduced in this release.
@@ -173,6 +276,8 @@ No customer-facing updates were introduced in this release.
 | plugins/drone-flyway              | 1.3.0-11.11.2          | 1.3.0-11.11.2                |
 | plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
 | harness/drone-git                 | 1.7.16-rootless        | 1.7.16-rootless              |
+
+**Bundled Liquibase version:** 4.33 (Open Source)
 
 ### Release 1.91.x
 
@@ -192,6 +297,8 @@ No customer-facing updates were introduced in this release.
 | plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
 | harness/drone-git                 | 1.7.16-rootless        | 1.7.16-rootless              |
 
+**Bundled Liquibase version:** 4.33 (Open Source)
+
 ### Release 1.90.x
 
 No customer-facing updates were introduced in this release.
@@ -209,6 +316,8 @@ No customer-facing updates were introduced in this release.
 | plugins/drone-flyway              | 1.3.0-11.11.2          | 1.3.0-11.11.2                |
 | plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
 | harness/drone-git                 | 1.7.16-rootless        | 1.7.16-rootless              |
+
+**Bundled Liquibase version:** 4.33 (Open Source)
 
 ## April 2026
 
@@ -234,6 +343,8 @@ The `1.89.x` release expands database support, enabling teams to manage schema c
 | plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
 | harness/drone-git                 | 1.7.16-rootless        | 1.7.16-rootless              |
 
+**Bundled Liquibase version:** 4.33 (Open Source)
+
 #### Minimum Supported Versions
 - **Delegate:** Must be version `26.04.89002` or higher for the BigQuery connector to work.
 
@@ -253,6 +364,8 @@ No customer-facing updates were introduced in this release.
 | plugins/drone-flyway              | 1.3.0-11.11.2          | 1.3.0-11.11.2                |
 | plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
 | harness/drone-git                 | 1.7.16-rootless        | 1.7.16-rootless              |
+
+**Bundled Liquibase version:** 4.33 (Open Source)
 
 ### Release 1.87.x
 The `1.87.x` release expands database support and improves authentication reliability across DB DevOps workflows.
@@ -281,6 +394,8 @@ The `1.87.x` release expands database support and improves authentication reliab
 | plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
 | harness/drone-git                 | 1.7.16-rootless        | 1.7.16-rootless              |
 
+**Bundled Liquibase version:** 4.33 (Open Source)
+
 ## March 2026
 
 ### Release 1.86.x
@@ -308,6 +423,8 @@ The `1.86.x` release focuses on improving security and execution reliability, en
 | plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
 | harness/drone-git                 | 1.7.16-rootless        | 1.7.16-rootless              |
 
+**Bundled Liquibase version:** 4.33 (Open Source)
+
 ### Release 1.85.x
 The `1.85.x` release enhances execution stability and AI-assisted workflows, improving reliability across database operations.
 
@@ -330,6 +447,8 @@ The `1.85.x` release enhances execution stability and AI-assisted workflows, imp
 | plugins/drone-flyway              | 1.3.0-11.11.2          | 1.3.0-11.11.2                |
 | plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
 | harness/drone-git                 | 1.7.16-rootless        | 1.6.4-rootless               |
+
+**Bundled Liquibase version:** 4.33 (Open Source)
 
 ### Release 1.84.x
 The `1.84.x` release improves database compatibility and pipeline validation, reducing execution failures and expanding supported environments.
@@ -359,6 +478,8 @@ The `1.84.x` release improves database compatibility and pipeline validation, re
 | plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
 | harness/drone-git                 | 1.7.16-rootless        | 1.6.4-rootless               |
 
+**Bundled Liquibase version:** 4.33 (Open Source)
+
 
 ### Release 1.83.x
 
@@ -378,6 +499,8 @@ No customer-facing updates were introduced in this release.
 | plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
 | harness/drone-git                 | 1.7.16-rootless        | 1.6.4-rootless               |
 
+**Bundled Liquibase version:** 4.33 (Open Source)
+
 ### Release 1.82.x
 
 No customer-facing updates were introduced in this release.
@@ -395,6 +518,8 @@ No customer-facing updates were introduced in this release.
 | plugins/drone-flyway              | 1.3.0-11.11.2          | 1.3.0-11.11.2                |
 | plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
 | harness/drone-git                 | 1.7.16-rootless        | 1.6.4-rootless               |
+
+**Bundled Liquibase version:** 4.33 (Open Source)
 
 ### Release 1.81.x
 
@@ -423,6 +548,8 @@ The `1.81.x` release improves migration state accuracy and enhances the schema/i
 | plugins/drone-flyway              | 1.3.0-11.11.2          | 1.3.0-11.11.2                |
 | plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
 | harness/drone-git                 | 1.6.4-rootless         | 1.6.4-rootless               |
+
+**Bundled Liquibase version:** 4.33 (Open Source)
 
 ## February 2026
 
@@ -460,6 +587,8 @@ The `1.79.x` release improves onboarding experience, rollback accuracy, and adds
 | plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
 | harness/drone-git                 | 1.6.4-rootless         | 1.6.4-rootless               |
 
+**Bundled Liquibase version:** 4.33 (Open Source)
+
 ### Release 1.78.x
 
 The `1.78.x` release enhances Liquibase execution flexibility for Percona users.
@@ -481,6 +610,8 @@ The `1.78.x` release enhances Liquibase execution flexibility for Percona users.
 | plugins/drone-flyway              | 1.3.0-11.11.2          | 1.3.0-11.11.2                |
 | plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
 | harness/drone-git                 | 1.6.4-rootless         | 1.6.4-rootless               |
+
+**Bundled Liquibase version:** 4.33 (Open Source)
 
 ### Release 1.77.x
 
@@ -508,6 +639,8 @@ The `1.77.x` release expands database compatibility and improves migration track
 | plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
 | harness/drone-git                 | 1.6.4-rootless         | 1.6.4-rootless               |
 
+**Bundled Liquibase version:** 4.33 (Open Source)
+
 ### Release 1.76.x
 The `1.76.x` release focuses on security hardening and execution stability.
 
@@ -529,6 +662,8 @@ The `1.76.x` release focuses on security hardening and execution stability.
 | plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
 | harness/drone-git                 | 1.6.4-rootless         | 1.6.4-rootless               |
 
+**Bundled Liquibase version:** 4.33 (Open Source)
+
 ### Release 1.75.x
 
 No customer-facing updates were introduced in this release.
@@ -545,6 +680,8 @@ No customer-facing updates were introduced in this release.
 | plugins/drone-flyway              | 1.3.0-11.11.2          | 1.3.0-11.11.2                |
 | plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
 | harness/drone-git                 | 1.6.4-rootless         | 1.6.4-rootless               |
+
+**Bundled Liquibase version:** 4.33 (Open Source)
 
 ## January 2026
 
@@ -571,6 +708,8 @@ The `1.74.x` release improves execution reliability and migration state accuracy
 | plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
 | harness/drone-git               | 1.6.4-rootless       | 1.6.4-rootless               |
 
+**Bundled Liquibase version:** 4.33 (Open Source)
+
 ### Release 1.73.x
 The `1.73.x` release focuses on improving the stability and reliability of schema and instance management flows.
 
@@ -590,6 +729,8 @@ The `1.73.x` release focuses on improving the stability and reliability of schem
 | plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
 | harness/drone-git               | 1.6.4-rootless       | 1.6.4-rootless               |
 
+**Bundled Liquibase version:** 4.33 (Open Source)
+
 ## December 2025
 
 ### Release 1.72.x
@@ -606,6 +747,8 @@ No customer-facing updates were introduced in this release.
 | plugins/drone-flyway              | 1.3.0-11.11.2          | 1.3.0-11.11.2                |
 | plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
 | harness/drone-git               | 1.6.4-rootless       | 1.6.4-rootless               |
+
+**Bundled Liquibase version:** 4.33 (Open Source)
 
 ### Release 1.71.x
 The `1.71.x` release delivers targeted fixes that improve reliability and correctness when working with connectors and Flyway dashboards.
@@ -627,6 +770,8 @@ The `1.71.x` release delivers targeted fixes that improve reliability and correc
 | plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
 | harness/drone-git               | 1.6.4-rootless       | 1.6.4-rootless               |
 
+**Bundled Liquibase version:** 4.33 (Open Source)
+
 ### Release 1.70.x
 The `1.70.x` release focuses on improving migration correctness and security across supported database workflows.
 
@@ -646,6 +791,8 @@ The `1.70.x` release focuses on improving migration correctness and security acr
 | plugins/drone-flyway              | 1.3.0-11.11.2          | 1.3.0-11.11.2                |
 | plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
 | harness/drone-git               | 1.6.4-rootless       | 1.6.4-rootless             |
+
+**Bundled Liquibase version:** 4.33 (Open Source)
 
 ### Release 1.69.x
 The `1.69.x` release focuses on security hardening and reliability improvements for database change execution and AI-assisted pipeline authoring.
