@@ -1818,6 +1818,13 @@
     "gaStartDate": "2026-06-22",
     "module": "Artifact Registry",
     "lifecycleState": "Beta"
+  },
+  {
+    "flagKey": "ENABLE_ADO_ETL_SPARK_PROCESSOR",
+    "description": "Enables the Spark-based ETL processor to optimize and accelerate data processing performance for the Azure DevOps Boards integration.",
+    "gaStartDate": "2026-06-26",
+    "module": "AI DLC Insights",
+    "lifecycleState": "Limited GA"
   }
 ]
 
