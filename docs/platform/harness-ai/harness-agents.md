@@ -111,8 +111,8 @@ Go to [Harness MCP Server](/docs/platform/harness-ai/harness-mcp-server) to inst
 
 The Worker Agent Catalog includes a **Marketplace** tab and a **Custom** tab. The Marketplace provides pre-built agents maintained by Harness that you can use immediately.
 
-<DocImage path={require('./static/agent-marketplace.png')} alt="Worker Agent Catalog showing the Marketplace tab with Harness-managed agents including Feature flag cleanup, Manifest remediator, Autofix, Onboarding, Code review, Zero day remediation, Code coverage, IaCM remediation, and React upgrade agents" title="Click to view full size" />
-<p align="center"><em>The Agent Marketplace with Harness-managed agents available for your project</em></p>
+<DocImage path={require('./static/agent-marketplace.png')} alt="Worker Agent Catalog showing the Marketplace tab with agents including Code review, Feature flag cleanup, Spec authoring, IaCM cost remediation, Code coverage generation, IaCM remediation, Feature spec planning, Kubernetes manifest remediation, CI failure autofix, Plan execution, Template audit, Regression repair, Test failure classification, and Vulnerability remediation agents" title="Click to view full size" />
+<p align="center"><em>The Agent Marketplace with agents available for your project</em></p>
 
 ### Agent categories
 
@@ -125,6 +125,12 @@ The Marketplace includes three categories of agents:
 | **Community** | Agents contributed by the Harness community. Available for use but not officially maintained by Harness. |
 
 By default, your account includes **Harness Managed** agents. These agents are ready to use out of the box and cover common use cases such as code review, autofix, code coverage, manifest remediation, onboarding, feature flag cleanup, zero day remediation, IaCM remediation, and library upgrades.
+
+### Contribute a Worker Agent to the Marketplace
+
+You can submit your own Worker Agents to the **Community** category so other Harness users can discover and use them. Go to [Agent categories](#agent-categories) to understand how Community agents differ from Harness Certified and Harness Managed agents.
+
+Go to the [Worker Agent submission form](https://docs.google.com/forms/d/e/1FAIpQLSezpouRTRs3pOl9r6svUmf5L98dQZGgxIQl0FUOkgnCLvcPOg/viewform) to submit your agent for review. Include the agent name, a clear description, the agent definition YAML, and the use case it solves. The Harness team reviews each submission before publishing it to the Marketplace. If you do not receive a response within 10 business days, contact [Harness Support](mailto:support@harness.io).
 
 ---
 
