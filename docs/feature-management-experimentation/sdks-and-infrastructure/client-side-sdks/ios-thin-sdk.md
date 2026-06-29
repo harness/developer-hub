@@ -7,6 +7,10 @@ description: Set up the Harness FME iOS Thin SDK in Swift apps. The thin SDK cal
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+:::info[Beta]
+The iOS Thin SDK is currently in beta and is scheduled for general availability in the next few days.
+:::
+
 This guide covers the FME **iOS Thin SDK**. Unlike the standard [iOS SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-sdk), the thin SDK does not download flag definitions or segment data. It calls FME cloud to evaluate flags for a given target and caches the results locally for fast subsequent lookups.
 
 Use the thin SDK when you want to keep rollout configuration server-side, minimize what is shipped on device, or restrict the targeting data exposed to clients.
@@ -29,7 +33,7 @@ Add the SDK as a Swift Package Manager dependency. In Xcode, choose **File** > *
 
 ```swift title="Package.swift"
 dependencies: [
-    .package(url: "https://github.com/splitio/ios-thin-client.git", from: "1.0.0"),
+    .package(url: "https://github.com/splitio/ios-thin-client.git", from: "1.0.0-beta1"),
 ],
 targets: [
     .target(

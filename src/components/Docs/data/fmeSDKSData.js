@@ -54,12 +54,11 @@ export const clientSideThinSDKs = [
     img: '/provider-logos/android-logo.svg',
     link: '/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/android-thin-sdk',
   },
-  // Hidden 2026-06-26: iOS thin SDK not ready for launch. Restore when SDK is ready.
-  // {
-  //   name: 'iOS Thin SDK',
-  //   img: '/provider-logos/ios-logo.svg',
-  //   link: '/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-thin-sdk',
-  // },
+  {
+    name: 'iOS Thin SDK',
+    img: '/provider-logos/ios-logo.svg',
+    link: '/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/ios-thin-sdk',
+  },
   {
     name: 'JavaScript Thin SDK',
     img: '/provider-logos/js-logo.svg',

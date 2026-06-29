@@ -36,11 +36,6 @@ export const FmeData: Horizon = {
         description: "Integrate built-in data checks in your pipelines to automatically validate release health based on performance metrics.",
       },
       {
-        tag: [{ value: "Better Together" }],
-        title: "Remote evaluation client-side SDKs",
-        description: "The power of choice: Ensure rule privacy exactly where you need it with a cloud SDK engine that evaluates flags remotely for thin SDKs clients, eliminating rule exposure.",
-      },
-      {
         tag: [{ value: "Configuration Management" }],
         title: "AI Config Management",
         description: "Extended Config Management to include out-of-the-box templates for AI product configurations.",
@@ -177,6 +172,12 @@ export const FmeData: Horizon = {
   Released: {
     description: "What has been released",
     feature: [
+      {
+        tag: [{ value: "Better Together" }],
+        title: "Remote evaluation client-side SDKs",
+        description: "The power of choice: Ensure rule privacy exactly where you need it with a cloud SDK engine that evaluates flags remotely for thin SDKs clients, eliminating rule exposure.",
+        link: "https://developer.harness.io/release-notes/feature-management-experimentation#remote-evaluation-sdks-for-client-side-are-now-supported",
+      },
       {
         tag: [{ value: "Better Together" }],
         title: "Advanced configuration support for pipelines",

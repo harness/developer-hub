@@ -4,9 +4,13 @@ sidebar_label: Choosing an evaluation mode
 description: Understand how Harness FME client-side SDKs evaluate feature flags, when to choose local evaluation with the standard SDK, and when to choose remote evaluation with the thin SDK.
 ---
 
+import EvaluationModesImage from '@site/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/EvaluationModesImage.js';
+
 Harness FME offers two ways for a client-side SDK to evaluate feature flags: **local evaluation** with a standard SDK and **remote evaluation** with a thin SDK. Both modes use the same SDK key, the same evaluation API, the same hashing logic, and the same FME UI for authoring flags and segments. Treatments are consistent across modes for the same target. They differ in where the rollout plan lives, where evaluation runs, and what data leaves the device.
 
-Local evaluation is the default and the right choice for most client-side applications: user attributes stay on the device, and once the SDK is ready it can evaluate any flag for any target or attributes combination.
+<EvaluationModesImage />
+
+Most client-side applications use local evaluation: user attributes stay on the device, and once the SDK is ready it can evaluate any flag for any target or attribute combination. Remote evaluation is the better fit when targeting rules must stay off the client. The rest of this page helps you confirm that choice or spot where remote fits better.
 
 ## Two privacy properties, not one
 

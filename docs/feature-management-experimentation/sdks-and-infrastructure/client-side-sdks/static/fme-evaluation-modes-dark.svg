@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 584" width="100%" role="img" aria-labelledby="fmeTitle fmeDesc" font-family="ui-sans-serif, system-ui, Helvetica, sans-serif">
+  <title id="fmeTitle">FME evaluation modes: Local and Remote</title>
+  <desc id="fmeDesc">Both SDKs hold a local cache. The Standard SDK runs the rules engine in the app and evaluates on the device while attributes stay home, downloading the rollout plan from Harness FME cloud. The Thin SDK has no rules engine and sends the target to the Remote Evaluator, which reads the same rollout plan and returns the result.</desc>
+
+  <defs>
+    <marker id="fmeHeadGrey" markerWidth="8" markerHeight="8" refX="5" refY="4" orient="auto"><path d="M0,0 L7,4 L0,8 Z" fill="#7f8494"/></marker>
+    <marker id="fmeHeadPurple" markerWidth="8" markerHeight="8" refX="5" refY="4" orient="auto"><path d="M0,0 L7,4 L0,8 Z" fill="#b88cf2"/></marker>
+  </defs>
+
+  <rect x="0" y="0" width="1000" height="584" rx="16" fill="#14141c"/>
+  <text x="500" y="48" text-anchor="middle" font-size="20" font-weight="700" fill="#ededf3">Evaluation mode</text>
+
+  <rect x="370" y="68" width="260" height="42" rx="21" fill="#1b1b25" stroke="#33333f"/>
+  <line x1="500" y1="74" x2="500" y2="104" stroke="#33333f"/>
+  <text x="435" y="95" text-anchor="middle" font-size="15" font-weight="600" fill="#ededf3">Local</text>
+  <text x="565" y="95" text-anchor="middle" font-size="15" font-weight="600" fill="#ededf3">Remote</text>
+  <line x1="435" y1="110" x2="435" y2="148" stroke="#7f8494" stroke-width="2" marker-end="url(#fmeHeadGrey)"/>
+  <line x1="565" y1="110" x2="565" y2="148" stroke="#7f8494" stroke-width="2" marker-end="url(#fmeHeadGrey)"/>
+
+  <!-- LEFT app card (Local) -->
+  <rect x="60" y="152" width="400" height="162" rx="12" fill="#1b1b25" stroke="#33333f"/>
+  <text x="84" y="186" font-size="17" font-weight="700" fill="#ededf3">Standard SDK</text>
+  <text x="436" y="186" text-anchor="end" font-size="12" font-family="'SF Mono', ui-monospace, Menlo, monospace" fill="#9c9cb0">App</text>
+  <text x="84" y="210" font-size="13" fill="#9c9cb0">Attributes stay on device</text>
+  <text x="84" y="230" font-size="13" fill="#9c9cb0">Evaluates on the device</text>
+  <rect x="84" y="248" width="168" height="48" rx="10" fill="#232330" stroke="#33333f"/>
+  <text x="168" y="277" text-anchor="middle" font-size="14" font-weight="600" fill="#ededf3">Local cache</text>
+  <rect x="268" y="248" width="168" height="48" rx="10" fill="#8254cf"/>
+  <text x="352" y="277" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">Rules engine</text>
+
+  <!-- RIGHT app card (Remote) -->
+  <rect x="540" y="152" width="400" height="162" rx="12" fill="#1b1b25" stroke="#33333f"/>
+  <text x="564" y="186" font-size="17" font-weight="700" fill="#ededf3">Thin SDK</text>
+  <text x="916" y="186" text-anchor="end" font-size="12" font-family="'SF Mono', ui-monospace, Menlo, monospace" fill="#9c9cb0">App</text>
+  <text x="564" y="210" font-size="13" fill="#9c9cb0">Rules stay in the cloud</text>
+  <text x="564" y="230" font-size="13" fill="#9c9cb0">Evaluates in the cloud</text>
+  <rect x="564" y="248" width="168" height="48" rx="10" fill="#232330" stroke="#33333f"/>
+  <text x="648" y="277" text-anchor="middle" font-size="14" font-weight="600" fill="#ededf3">Local cache</text>
+  <rect x="748" y="248" width="168" height="48" rx="10" fill="none" stroke="#4a4a58" stroke-width="1.5" stroke-dasharray="6 5"/>
+  <text x="832" y="277" text-anchor="middle" font-size="13" font-weight="500" fill="#9c9cb0">No rules engine</text>
+
+  <!-- CLOUD (tightened) -->
+  <rect x="60" y="434" width="880" height="110" rx="12" fill="#1b1b25" stroke="#33333f"/>
+  <text x="84" y="457" font-size="12" font-family="'SF Mono', ui-monospace, Menlo, monospace" fill="#9c9cb0">Harness FME cloud</text>
+  <rect x="100" y="476" width="300" height="52" rx="10" fill="#232330" stroke="#33333f"/>
+  <text x="250" y="496" text-anchor="middle" font-size="16" font-weight="700" fill="#ededf3">Rollout plan</text>
+  <text x="250" y="515" text-anchor="middle" font-size="12" fill="#9c9cb0">Flag definitions + targeting rules</text>
+  <rect x="600" y="476" width="320" height="52" rx="10" fill="#8254cf"/>
+  <text x="760" y="507" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">Remote Evaluator</text>
+  <text x="500" y="492" text-anchor="middle" font-size="11" fill="#9c9cb0">reads rules</text>
+  <line x1="400" y1="502" x2="594" y2="502" stroke="#7f8494" stroke-width="2" marker-end="url(#fmeHeadGrey)"/>
+
+  <!-- LEFT app data flow -->
+  <text x="168" y="334" text-anchor="middle" font-size="11" fill="#7a7a8c">downloads</text>
+  <line x1="168" y1="426" x2="168" y2="342" stroke="#b88cf2" stroke-width="2" marker-end="url(#fmeHeadPurple)"/>
+  <text x="158" y="390" text-anchor="end" font-size="12" font-weight="600" fill="#c4a3f5">Rollout plan</text>
+  <text x="310" y="334" text-anchor="middle" font-size="11" fill="#7a7a8c">sends</text>
+  <line x1="310" y1="342" x2="310" y2="426" stroke="#7f8494" stroke-width="2" marker-end="url(#fmeHeadGrey)"/>
+  <text x="320" y="390" text-anchor="start" font-size="12" fill="#9c9cb0">Impressions</text>
+
+  <!-- RIGHT app data flow -->
+  <text x="720" y="334" text-anchor="middle" font-size="11" fill="#7a7a8c">sends</text>
+  <line x1="720" y1="342" x2="720" y2="470" stroke="#b88cf2" stroke-width="2" marker-end="url(#fmeHeadPurple)"/>
+  <text x="710" y="390" text-anchor="end" font-size="12" font-weight="600" fill="#c4a3f5">Key + attributes</text>
+  <text x="800" y="334" text-anchor="middle" font-size="11" fill="#7a7a8c">downloads</text>
+  <line x1="800" y1="470" x2="800" y2="342" stroke="#7f8494" stroke-width="2" marker-end="url(#fmeHeadGrey)"/>
+  <text x="810" y="390" text-anchor="start" font-size="12" fill="#9c9cb0">Evaluated result</text>
+</svg>
