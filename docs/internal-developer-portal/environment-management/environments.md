@@ -7,6 +7,8 @@ toc_min_heading_level: 2
 toc_max_heading_level: 3
 ---
 
+import DocImage from '@site/src/components/DocImage';
+
 An **Environment** is instantiated using an **Environment Blueprint**, consider it as a running instance of environment blueprint. It represents the deployed infrastructure and services, as defined in the blueprint. It is a collection of software services deployed using CD tools and executed on infrastructure provisioned through IaCM tools.
 
 ---
@@ -213,42 +215,57 @@ You can also trigger updates for an individual component or resource. Updating a
 
 ### Dependency change notifications
 
-Your environment may depend on external entities such as IaCM workspace templates, CD services, pipelines, and other environments. If any of these change or become unavailable, a notification banner appears at the top of the environment detail page.
+Your environment may depend on external entities such as IaCM workspace templates, CD services, pipelines, and other environments. If any of these are updated, a notification banner appears at the top of the environment detail page showing what was updated. The same applies if any of these become unavailable.
 
 <DocImage path={require('./static/dependency-notification-banner.png')} />
 
-Click **View Details** to open the **Dependency Changes** panel, which shows what changed and what action to take.
+Click **View Details** to open the **Dependency Changes** panel, which shows what changed and what action to take. If multiple dependencies have changed, all notifications are grouped together in the same panel.
 
-<DocImage path={require('./static/dependency-changes-panel.png')} />
+<DocImage path={require('./static/dependency-changes-panel-v2.png')} />
+
+Each entry in the panel shows the affected dependency name, a description of what changed, and a recommendation for what to do. Click **View Change Details** on any entry to see a before/after YAML diff of that dependency.
+
+In the diff view, red lines show the previous state and green lines show the current state. Lines with no highlight are unchanged. After you review the diff, close it to return to the panel, then follow the **Recommendation** for that entry before clicking **Update**.
+
+<DocImage path={require('./static/dependency-change-details.png')} />
 
 :::info
 This is different from the [Apply Updates](#apply-updates) banner. Apply Updates notifies you when the environment's blueprint itself has changed. Dependency change notifications alert you when an external entity that the blueprint references has changed or been removed.
 :::
 
+#### How it works
+
+IDP tracks a baseline snapshot of all external dependencies each time your environment is deployed or updated. The system checks for changes approximately every 60 seconds. When a dependency differs from the saved baseline, a notification appears on the environment detail page.
+
+Dependencies can be referenced at different scopes using the following identifier prefixes. Notification behavior is the same regardless of scope.
+
+- Project scope (default): `myservice`
+- Org scope: `org.myservice`
+- Account scope: `account.myservice`
+
+
 #### When a notification appears
 
 A notification is raised when any of the following changes are detected:
 
-**IaCM (Infrastructure)**
-- The IaCM workspace used by this environment no longer exists.
-- The workspace template referenced in the blueprint has been deleted.
-- The workspace template has changed and requires reconciliation (for example, due to Terraform module updates or input/output changes).
+- **IaCM (Infrastructure)**
+    - The IaCM workspace used by this environment no longer exists.
+    - The workspace template referenced in the blueprint has been deleted.
+    - The workspace template has changed and requires reconciliation (for example, due to Terraform module updates or input/output changes).
 
-**CD (Services)**
-- A CD service referenced in the blueprint has been deleted from Harness.
-- A Harness CD environment referenced in the blueprint has been updated or deleted.
-- An infrastructure definition referenced in the blueprint has been updated or deleted.
+- **CD (Services)**
+    - A CD service referenced in the blueprint has been deleted from Harness.
+    - A Harness CD environment referenced in the blueprint has been updated or deleted.
+    - An infrastructure definition referenced in the blueprint has been updated or deleted.
 
-**Pipelines**
-- A pipeline referenced in the blueprint has been deleted.
-- An InputSet referenced in the blueprint has been deleted.
+- **Pipelines**
+    - A Deploy, Destroy, Provision, or Uninstall pipeline referenced in the blueprint has been deleted.
+    - An InputSet referenced in the blueprint has been deleted.
 
-**Cross-environment dependencies**
-- This environment references an output from another environment, and that environment has been stopped, deleted, or its output variable has been removed or changed.
+- **Cross-environment dependencies**
+    - This environment references an output from another environment, and that environment has been stopped, deleted, or its output variable has been removed or changed.
 
 :::tip How to resolve a notification?
-Each entry in the Dependency Changes panel includes a description of what changed and a **Recommendation** for what to do. If multiple dependencies have changed, all notifications are grouped together in the same panel.
-
 The recommended action depends on what changed:
 
 - **Referenced environment is offline**: Start the referenced environment. Once it is back online and its outputs are available, the notification clears automatically.
@@ -257,7 +274,9 @@ The recommended action depends on what changed:
 - **CD environment or infra definition changed**: Verify the deployment targets are still valid. Contact your platform engineer if the blueprint needs to be updated.
 :::
 
-For all cases except a referenced environment coming back online, the notification persists until the underlying issue is resolved. Dismissing the banner does not clear it permanently; it reappears on the next page load as long as the dependency issue remains.
+Once you have reviewed the changes and are ready to proceed, click **Update** in the **Dependency Changes** panel to apply the latest dependency versions to your environment. All notifications are cleared immediately after clicking **Update**. If no pipeline re-execution is required, the update completes instantly.
+
+Closing the panel without clicking **Update** does not clear the notification permanently. For all cases except a referenced environment coming back online, the banner reappears on the next page load as long as the dependency issue remains.
 
 
 ### Delete environments
