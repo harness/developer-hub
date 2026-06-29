@@ -230,6 +230,12 @@ The pipeline execution appears in the **Affected Pipelines** tab even if the ins
   fallback="The CLI resolves dependencies from your lockfile or manifest. If no lockfile exists, the CLI generates one using the native resolution mechanism. Ensure your project has a valid package.json (npm), pom.xml (Maven), requirements.txt (pip), or .csproj (dotnet) in the working directory when the command runs."
 />
 
+<Troubleshoot
+  issue="hc artifact install wrappers return 404 registry not found for an account-level upstream registry in a Harness CI pipeline"
+  mode="docs"
+  fallback="This affects hc artifact npm install, mvn install, pip install, and dotnet restore on harness-cli versions older than v1.3.22. The CI step injects HARNESS_ORG_ID and HARNESS_PROJECT_ID for pipeline identity, and older CLI versions read those variables to scope the registry lookup. The lookup is forced to a project-scoped path, so an account-level registry returns 404 registry not found. Upgrade harness-cli to v1.3.22 or later, which no longer reads those variables for registry scoping. Project-level registries are unaffected and work on any CLI version."
+/>
+
 ---
 
 ## Next steps
