@@ -23,9 +23,14 @@ This feature is behind the feature flag `HAR_DEPENDENCY_FIREWALL`. Contact [Harn
 
 Dependency Firewall is a powerful security feature in Harness Artifact Registry that acts as a **gatekeeper** for your software supply chain. It works exclusively with **upstream proxy registries** to control whether artifact versions can be fetched from external sources by evaluating them against defined security policies.
 
-:::note The Dependency Firewall tab is visible in all registries by default
+:::info Quick setup
 
-Seeing the tab does not mean the feature is active. Dependency Firewall requires two setup steps before it evaluates artifacts: (1) go to [Configure Policies and Policy Sets](/docs/artifact-registry/dependency-firewall/configure-policies) to configure OPA policies, and (2) go to [Configure Registry](/docs/artifact-registry/manage-registries/configure-registry#enable-dependency-firewall) to enable Dependency Firewall on your upstream proxy.
+To activate Dependency Firewall on a registry, complete two steps:
+
+1. Go to [Configure Policies and Policy Sets](/docs/artifact-registry/dependency-firewall/configure-policies) to create OPA policies.
+2. Go to [Configure Registry](/docs/artifact-registry/manage-registries/configure-registry#enable-dependency-firewall) to enable Dependency Firewall on your upstream proxy.
+
+The Dependency Firewall tab appears in all registries by default, but it only shows violations after you complete both steps above.
 :::
 
 ---
@@ -74,13 +79,15 @@ The per-policy **Error and exit** vs **Warn & continue** decision is made in the
 - **Passed** versions are cached in the upstream proxy registry and can be viewed in the Artifacts page; they do not appear on the Dependency Firewall dashboard.
 :::
 
+---
+
 ## The Dependency Firewall dashboard
 
 The Dependency Firewall dashboard provides a centralized view of all policy violations detected when fetching artifacts from external sources through upstream proxy registries.
 
 <DocImage path={require('./static/policy-violations-tab.png')} width="100%" />
 
-#### What you see
+### Violation summary
 
 At the top of the dashboard, you find a summary of violations:
 
@@ -91,6 +98,8 @@ At the top of the dashboard, you find a summary of violations:
 ### Filter and search violations
 
 To help you quickly find specific violations, the dashboard provides multiple filtering options. You can filter by **Registry Type** to view violations for specific registry types (Docker, Maven, NPM, Helm, etc.), filter by **Package Type**, or use the **Search** function to find specific artifact names or versions.
+
+---
 
 ## Affected Pipelines
 
@@ -159,6 +168,8 @@ Select the **Evaluation Details** tab to view deeper analysis of the flagged pac
 - **OSS Risks:** Displays risk indicators such as End of Life, Unmaintained, and Outdated statuses with a risk score (out of 100) and key findings including security vulnerabilities and impact scores.
 - **Vulnerabilities:** Shows vulnerability counts by severity (Critical, High, Medium, Low) derived from the internal database.
 
+---
+
 ## Policies and policy sets
 
 Dependency Firewall uses a hierarchical policy structure:
@@ -168,7 +179,15 @@ Dependency Firewall uses a hierarchical policy structure:
 
 When an artifact version is evaluated, it runs through all configured policy sets. If any policy within a policy set fails, the artifact version is marked as either **Blocked** or **Warning** depending on your firewall configuration.
 
-Harness provides five built-in policy templates specifically for Dependency Firewall: CVSS Threshold, License Policy, Package Age, OSS Risk Level, and Malicious Package. You can use these templates as-is, customize them, or create your own policies using Rego. Go to [Configure Policies and Policy Sets](/docs/artifact-registry/dependency-firewall/configure-policies) to set up policies and policy sets for Dependency Firewall.
+Harness provides five built-in policy templates specifically for Dependency Firewall:
+
+- **CVSS Threshold:** Block or warn on packages with known vulnerabilities above a severity threshold.
+- **License Policy:** Enforce license compliance against an approved or blocked list.
+- **Package Age:** Quarantine newly released versions during a configurable cooldown period.
+- **OSS Risk Level:** Flag packages with poor maintenance, end-of-life status, or high aggregate risk scores.
+- **Malicious Package:** Block packages intentionally designed to attack your supply chain, powered by a threat intelligence database that is **automatically refreshed every 4 hours**.
+
+Go to [Built-in Policy Templates](/docs/artifact-registry/dependency-firewall/built-in-policy-templates) for full details on each template, detection methodology, recommended configuration, and how to combine them. Go to [Configure Policies and Policy Sets](/docs/artifact-registry/dependency-firewall/configure-policies) to create and enforce policy sets.
 
 ---
 

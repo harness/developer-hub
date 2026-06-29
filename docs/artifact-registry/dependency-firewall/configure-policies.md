@@ -16,31 +16,14 @@ Before configuring policies for Dependency Firewall, familiarize yourself with H
 
 Policies are written in Rego, the policy language from Open Policy Agent (OPA). If you're new to Rego, check out the free [OPA Policy Authoring course](https://academy.styra.com/courses/opa-rego).
 
-## Dependency Firewall Policy Templates
+## Dependency Firewall policy templates
 
-When creating a policy in the Harness Policy Library, you'll find built-in templates specifically designed for Dependency Firewall. You can use these templates as-is, customize them to match your requirements, or create your own custom policies from scratch using the Rego language.
+When creating a policy in the Harness Policy Library, you find five built-in templates specifically designed for Dependency Firewall: CVSS Threshold, License Policy, Package Age, OSS Risk Level, and Malicious Package. You can use these templates as-is, customize them, or create your own custom policies from scratch using Rego.
 
-<DocImage path={require('./static/firewall-policies.png')} />
-
-**CVSS Threshold**
-Evaluates artifacts based on Common Vulnerability Scoring System (CVSS) scores. Use this template to block or warn about vulnerabilities above a certain severity level. You can customize the threshold values to match your organization's risk tolerance.
-
-**License Policy**
-Checks artifact licenses against your organization's approved or blocked license list. This template helps ensure compliance with your licensing requirements by evaluating whether an artifact's license is allowed for use. You can modify the allowed list to customize which licenses are acceptable for your organization.
-
-**Package Age**
-Evaluates artifacts based on their age or release date. Use this template to block newly released packages during a cooldown period, helping prevent the use of untested versions that may contain security issues or bugs.
-
-**OSS Risk Level**
-Evaluates artifacts based on their open-source risk score. Use this template to block or warn about packages that exceed a configured risk threshold. Risk scores factor in maintenance status, known vulnerabilities, and community health indicators.
-
-**Malicious Package**
-Detects packages that have been flagged as malicious in threat intelligence databases. Use this template to automatically block any package version identified as containing malware, typosquatting attempts, or other malicious payloads.
+Go to [Built-in Policy Templates](/docs/artifact-registry/dependency-firewall/built-in-policy-templates) for full details on each template, detection methodology, recommended fail actions, and how to combine them in a single policy set.
 
 :::tip
-You can edit any of these templates or create completely custom policies using Rego. The templates provide a solid foundation that you can modify to suit your specific security requirements.
-
-**Important**: When customizing policies, ensure that the output format of the policy remains the same. The Dependency Firewall expects a specific output structure to properly evaluate and categorize violations.
+You can edit any template or create completely custom policies using Rego. When customizing policies, ensure that the output format remains the same. Dependency Firewall expects a specific output structure to properly evaluate and categorize violations.
 :::
 
 **Entity Type for Dependency Firewall**
