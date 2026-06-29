@@ -90,6 +90,17 @@ export const spt: IltCardItem[] = [
     tileType: tileType.normal,
     cardType: cardType.SPT,
   },
+    {
+    title: "Introduction to Continuous Verification with Prometheus",
+    module: MODULES.cd,
+    type: type.user,
+    description:
+      "Self-paced tidbit introducing Continuous Verification with Prometheus.",
+    version: "Harness CD & GitOps Free Plans",
+    link: "https://university-registration.harness.io/self-paced-training-tidbit-harness-continuous-verification-with-prometheus",
+    tileType: tileType.normal,
+    cardType: cardType.SPT,
+  },
   {
     title: "Continuous Integration",
     module: MODULES.ci,
