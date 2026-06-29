@@ -48,7 +48,7 @@ If your workspace is created from a workspace template, it may include connector
 You can attach more than one connector to a workspace. This allows your IaCM runs to access multiple cloud providers or external systems from a single workspace (for example, both AWS and Azure). However, a workspace can only have one connector per provider type (for example, one AWS, one GCP, one Azure).
 
 - Connectors appear in the **Connectors and Variables** tab.
-- If a workspace is linked to a template, template-defined connectors are included automatically and can be locked. Go to [Locked fields](/docs/infra-as-code-management/workspaces/workspace-templates#locked-fields) to understand which template settings are enforced.
+- If a workspace is created from a template, template-defined connectors are included automatically (read-only).
 - You can add more connectors inline or select from account/project scope.
 
 ---
