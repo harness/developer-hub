@@ -429,12 +429,12 @@ import StoSettingFailOnSeverity from '../shared/step-palette/all/fail-on-severit
 
 <StoSettingFailOnSeverity />
 
-### View SCA upgrade versions for repository findings
+### Optional Settings
 
-To view the recommended upgrade versions for SCA findings when you scan a repository with Harness STO, add the following key value pairs under **Settings** in your Checkmarx One step which will allow the Harness STO to authenticate with Checkmarx One CLI and fetch upgrade version data for vulnerable packages.
+For repository scans, you can optionally add the following key value pairs to the **Settings** section of your Checkmarx One step. Harness STO uses these values to call the Checkmarx One API and retrieve repository scan metadata that is not exposed by the Checkmarx One CLI.
 
-- **`product_domain`:** Regional IAM base URL for your Checkmarx One environment. The STO CLI uses it to send authenticated API requests to the correct Checkmarx One instance. Example: `https://deu.iam.checkmarx077.net`
-- **`product_team_name`:** Your Checkmarx One tenant name, also called the account or organization name. It scopes API calls to your tenant so the CLI can retrieve project and scan data, including package upgrade versions. Example: `sto_partners`
+- **`product_domain`:** The regional IAM base URL for your Checkmarx One environment.
+- **`product_team_name`:** Your Checkmarx One tenant name, also referred to as your account or organization name.
 
 ### Exclude issues marked as Not Exploited
 
