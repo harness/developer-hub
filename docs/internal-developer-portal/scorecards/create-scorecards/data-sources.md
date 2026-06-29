@@ -8,6 +8,8 @@ redirect_from:
   - /docs/internal-developer-portal/scorecards/data-sources
 ---
 
+import DocImage from '@site/src/components/DocImage';
+
 Harness IDP allows you to integrate various data sources to collect specific data points for each software component. Once a data source is enabled, you can use it to create checks for your scorecards.
 
 **Data Sources** are third-party providers that supply specific types of data for software components. Examples include GitHub, GitLab, Bitbucket, Harness, PagerDuty, Jira, and Kubernetes. **Data Points** are the specific pieces of information that each data source provides for a software component. Data points can be numbers, strings, or booleans.
@@ -383,21 +385,26 @@ For Bitbucket data points that require a branch name, the same priority rules ap
 
 #### Prerequisites for Bitbucket connector
 
-When setting up a Bitbucket connector, you will need to configure the appropriate access token with the correct permissions based on your integration scope:
+Configure the Bitbucket connector using **Email and API Token** authentication to ensure Scorecards can fetch Bitbucket data without permission-related issues.
 
-##### Repository-Level Access Token
-If you are configuring access at the repository level, ensure your access token has below permissions:
-- `repository:admin`
+<DocImage path={require('./static/bb-authentication.png')} />
 
-This permission is required as specified in the [Bitbucket API documentation for branch restrictions](https://developer.atlassian.com/cloud/bitbucket/rest/api-group-branch-restrictions#api-repositories-workspace-repo-slug-branch-restrictions-get).
+Use the following credentials when setting up the connector:
 
-##### Project-Level Access Token
-If you are configuring access at the project level, ensure your access token has below permissions:
-- `project:read` 
-- `repository:admin` 
-- `repository:read` 
+- **Email**: Your Bitbucket account email address
+- **API Token**: A Bitbucket API token with the required scopes
 
-These permissions are required as specified in the [Bitbucket API authentication documentation](https://developer.atlassian.com/cloud/bitbucket/rest/intro#authentication#project).
+To create an API token, go to [Atlassian account security settings](https://id.atlassian.com/manage-profile/security/api-tokens).
+
+The API token must include the following scopes:
+
+- `read:repository:bitbucket`
+- `read:project:bitbucket`
+- `read:pullrequest:bitbucket`
+- `read:workspace:bitbucket`
+- `admin:project:bitbucket`
+- `admin:repository:bitbucket`
+- `admin:workspace:bitbucket`
 
 ---
 

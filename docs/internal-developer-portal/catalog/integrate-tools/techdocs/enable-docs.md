@@ -199,8 +199,8 @@ metadata:
 **Third-Party Git Providers:**
 - **GitHub**: `url:https://githubhost.com/org/repo/tree/<branch_name>`
 - **GitLab**: `url:https://gitlabhost.com/org/repo/tree/<branch_name>`
-- **Bitbucket**: `url:https://bitbuckethost.com/project/repo/src/<branch_name>`
 - **Azure**: `url:https://azurehost.com/organization/project/_git/repository`
+- **Bitbucket**: `url:https://bitbuckethost.com/project/repo/src/<branch_name>`. If you are using Bitbucket, go to [Prerequisites for Bitbucket connector](/docs/internal-developer-portal/scorecards/create-scorecards/data-sources#prerequisites-for-bitbucket-connector) to configure the required connector settings.
 
 :::tip Subdirectory Support
 You can provide a path to a non-root directory inside the repository that contains the `mkdocs.yml` file and `docs/` directory.
