@@ -181,9 +181,11 @@ To stop syncing a specific entity without deleting the catalog entity, use the t
 
 ### Events tab
 
-The **Events** tab provides a log of sync activity for this integration, including discovery runs, import actions, and any errors encountered during sync. Use this tab to troubleshoot unexpected behavior or verify that a sync completed successfully.
+The **Events** tab logs all sync and lifecycle activity for this integration. Use it to verify that syncs are running, confirm that imports completed successfully, and investigate any failures.
 
 <DocImage path={require('./static/bb-events.png')} />
+
+For the full event type reference and detail panel fields, go to [Integration Events](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integration-events).
 
 ---
 

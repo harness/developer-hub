@@ -67,6 +67,10 @@ Some integrations (e.g. ServiceNow CMDB) support a **Correlation field**, which 
 
 Each catalog entity can optionally display an **Integrations** card on its Overview page. This card shows which integrations are connected to the entity and their current status (for example, **Connected** or **Not configured**). As you enable and merge additional integrations, this card updates to reflect the enriched data sources.
 
+### Events tab
+
+Your Airbyte-based integrations include an **Events** tab on the integration detail page. The tab logs all sync runs, configuration changes, import operations, and entity unlink events for that integration. Use it to monitor sync health and investigate failures. For the full event type reference, go to [Integration Events](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integration-events).
+
 ---
 
 ## Plugins vs. integrations

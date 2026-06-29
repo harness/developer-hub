@@ -95,6 +95,12 @@ For each discovered record:
 
 You have the option of turning on **Auto-import** for integrations. This will automatically import all discovered entities without needing the manual effort of reviewing discovered entities.
 
+### Events tab
+
+The **Events** tab logs all sync and lifecycle activity for this integration. Use it to verify that syncs are running, confirm that imports completed successfully, and investigate any failures.
+
+For the full event type reference and detail panel fields, go to [Integration Events](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/integration-events).
+
 ---
 
 ## View ServiceNow data on a catalog entity
