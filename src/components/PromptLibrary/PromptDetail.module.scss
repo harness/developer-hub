@@ -1,0 +1,146 @@
+// Mirrors `.prose-detail` and related rules from globals.css in the original
+// RT-prompt-library repo. Hard-coded tokens (light) match the source; a
+// [data-theme='dark'] block at the bottom adapts surfaces for Docusaurus dark.
+//
+//   ink:    #0c1325 (default), #2a3553 (soft), #5a6580 (muted), #8089a3 (muted2)
+//   bg:     #f7f8fb (default), #ffffff (elev), #f1f3f8 (alt)
+//   border: #e3e7ef (default), #cbd2e0 (strong)
+//   brand:  #2c5cff (default), #1c3fcc (deep)
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    sans-serif;
+  color: #2a3553;
+}
+
+// ── Section block ──────────────────────────────────────────────────────────
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+// h4 in source: text-[13px] uppercase tracking-[0.1em] text-ink-muted font-bold mb-3
+.sectionHeading {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #5a6580;
+  line-height: 1.4;
+}
+
+.scenario {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #5a6580;
+}
+
+// .prose-detail p { text-ink-soft text-sm leading-7 }
+.body {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.75;
+  color: #2a3553;
+}
+
+// .chip from globals.css: font-mono text-[11px] text-ink-soft bg-bg-alt border border-border rounded-md px-1.5 py-[3px] font-medium
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  margin-top: 0.25rem;
+}
+
+.chip {
+  display: inline-block;
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: #2a3553;
+  background: #f1f3f8;
+  border: 1px solid #e3e7ef;
+  border-radius: 6px;
+  padding: 3px 6px;
+  line-height: 1.4;
+}
+
+// ── Notes callout (amber gradient + dark-orange heading) ───────────────────
+// Source markup:
+//   <div className="mt-7 rounded-xl border px-4 py-4"
+//        style={{ background: "linear-gradient(180deg, rgba(255,176,46,0.08), rgba(255,176,46,0.02))",
+//                 borderColor: "rgba(255,176,46,0.25)" }}>
+//     <h4 className="!mt-0 !text-[#b35e00]">Notes</h4>
+//     <p className="!text-[13.5px]">…</p>
+//   </div>
+.notes {
+  margin-top: 0.5rem;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 176, 46, 0.25);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 176, 46, 0.08),
+    rgba(255, 176, 46, 0.02)
+  );
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.notesHeading {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #b35e00;
+  line-height: 1.4;
+}
+
+.notesBody {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: #2a3553;
+}
+
+// ── Dark-mode adjustments ──────────────────────────────────────────────────
+[data-theme='dark'] {
+  .detail {
+    color: var(--ifm-color-content);
+  }
+  .sectionHeading {
+    color: var(--ifm-color-content-secondary);
+  }
+  .scenario {
+    color: var(--ifm-color-content-secondary);
+  }
+  .body {
+    color: var(--ifm-color-content);
+  }
+  .chip {
+    background: var(--ifm-color-emphasis-100);
+    border-color: var(--ifm-color-emphasis-200);
+    color: var(--ifm-color-content-secondary);
+  }
+  .notes {
+    border-color: rgba(255, 176, 46, 0.35);
+    background: linear-gradient(
+      180deg,
+      rgba(255, 176, 46, 0.14),
+      rgba(255, 176, 46, 0.04)
+    );
+  }
+  .notesHeading {
+    color: #ffb02e;
+  }
+  .notesBody {
+    color: var(--ifm-color-content);
+  }
+}

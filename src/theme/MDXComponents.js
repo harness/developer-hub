@@ -16,6 +16,11 @@ import DocTable from "../components/DocTable/DocTable";
 import UniversityAdmonition from "../components/Admonition/UniversityAdmonition";
 import DynamicMarkdownSelector from "@site/src/components/DynamicMarkdownSelector/DynamicMarkdownSelector";
 import { Troubleshoot, FAQ } from "@site/src/components/AdaptiveAIContent";
+import PromptBuilder from "@site/src/components/PromptBuilder";
+import PromptLibrary, {
+  PromptCard,
+  PromptLibraryProvider,
+} from "@site/src/components/PromptLibrary";
 
 export default {
   // Re-use the default mapping
@@ -38,4 +43,8 @@ export default {
   DynamicMarkdownSelector: DynamicMarkdownSelector,
   FAQ: FAQ,
   Troubleshoot: Troubleshoot,
+  PromptBuilder: PromptBuilder,
+  PromptLibrary: PromptLibrary,
+  PromptCard: PromptCard,
+  PromptLibraryProvider: PromptLibraryProvider,
 };
