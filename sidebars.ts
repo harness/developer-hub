@@ -4180,6 +4180,7 @@ const sidebars: SidebarsConfig = {
         },
         'ai-sre/resources/whats-supported',
         'ai-sre/resources/ai-sre-best-practices',
+        'ai-sre/resources/ai-sre-security',
         'ai-sre/resources/faq',
       ],
     },
