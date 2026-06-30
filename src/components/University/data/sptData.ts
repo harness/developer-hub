@@ -46,7 +46,7 @@ export const spt: IltCardItem[] = [
     tileType: tileType.normal,
     cardType: cardType.SPT,
   },
-   {
+  {
     title: "Introduction to GitOps Application Deployments with Feature Management",
     module: MODULES.cd,
     type: type.user,
@@ -90,7 +90,7 @@ export const spt: IltCardItem[] = [
     tileType: tileType.normal,
     cardType: cardType.SPT,
   },
-    {
+  {
     title: "Introduction to Continuous Verification with Prometheus",
     module: MODULES.cd,
     type: type.user,

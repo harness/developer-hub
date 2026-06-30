@@ -283,7 +283,7 @@ export default function CertificationsTBH() {
                     </span>
                   </div>
                   <div className={styles.right}>
-                    <h3>Review Study Guide</h3>
+                    <h3>Coming Soon...</h3>
                     <div className={styles.desc}>
                       Assesses the fundamental skills to manage your
                       posture with API & Application Runtime Protection projects.
@@ -310,13 +310,15 @@ export default function CertificationsTBH() {
 
             {/* Developer Exam Details */}
 
-
+            {/*
             <div className={styles.examDetails}>
               <h2 id="exam-details">Exam Details</h2>
               <div className={styles.examDetailsCard}>
 
-                {/*
-            
+
+
+
+
                 <DeveloperCertificationExamDetails />
                 <div className={styles.btnContainer}>
                   <Link href="https://university-registration.harness.io/certification-exam-traceable-by-harness-developer-certification">
@@ -326,50 +328,51 @@ export default function CertificationsTBH() {
                   </Link>
                 </div>
 
-                */}
 
-              </div>
-            </div>
+
+          </div>
+        </div>
+        */}
 
           </div>
 
-          {/* Administrator Tab Content */}
-          <div
-            className={clsx(
-              styles.tabContent,
-              certType[tab] === certType.administrator && styles.active
-            )}
-          >
-            <div className={styles.studyGuide}>
-              <h2 id="prepare">Prepare for the Exam</h2>
-              <div
-                className={clsx(
-                  styles.studyGuideCard,
-                  styles[certType.administrator]
-                )}
-              >
-                <div className={styles.info}>
-                  <i className="fa-solid fa-circle-info"></i>
-                  <strong>Get Certified</strong> | Harness Expert
-                </div>
-                <div className={styles.innerCard}>
-                  <div className={styles.left}>
-                    <h2>
-                      Application & API Runtime Protection - Administrator (BETA COMING
-                      SOON)
-                    </h2>
-                    <img
-                      src={`${baseUrl}img/cert-adm-arp-badge.svg`}
-                      alt="Harness Certified Expert - Application & API Runtime Protection Administrator"
-                      className={styles.badge}
-                    />
-                    <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Application & API Runtime Protection Paid
-                      Plans
-                    </span>
-                  </div>
-                  <div className={styles.right}>
-                    {/* <h3>Review Study Guide</h3>
+          {/* Administrator Tab Content */ }
+  <div
+    className={clsx(
+      styles.tabContent,
+      certType[tab] === certType.administrator && styles.active
+    )}
+  >
+    <div className={styles.studyGuide}>
+      <h2 id="prepare">Prepare for the Exam</h2>
+      <div
+        className={clsx(
+          styles.studyGuideCard,
+          styles[certType.administrator]
+        )}
+      >
+        <div className={styles.info}>
+          <i className="fa-solid fa-circle-info"></i>
+          <strong>Get Certified</strong> | Harness Expert
+        </div>
+        <div className={styles.innerCard}>
+          <div className={styles.left}>
+            <h2>
+              Application & API Runtime Protection - Administrator (BETA COMING
+              SOON)
+            </h2>
+            <img
+              src={`${baseUrl}img/cert-adm-arp-badge.svg`}
+              alt="Harness Certified Expert - Application & API Runtime Protection Administrator"
+              className={styles.badge}
+            />
+            <span className={styles.productVersion}>
+              <strong>Product version: </strong> Application & API Runtime Protection Paid
+              Plans
+            </span>
+          </div>
+          <div className={styles.right}>
+            {/* <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
                     Assesses the fundamental skills to implement Traceable by Harness
                     in your projects and the overall Harness Platform. This
@@ -386,26 +389,26 @@ export default function CertificationsTBH() {
                         Register for Exam
                       </button>
                     </Link> */}
-                    {/* <Link href="/docs/database-devops">
+            {/* <Link href="/docs/database-devops">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>
                       </button>
                     </Link>*/}
-                    {/* </div> */}
+            {/* </div> */}
 
-                    <h3>Coming Soon...</h3>
-                    <div className={styles.desc}>
-                      Assesses the fundamental skills to deploy and maintain Application & API Runtime Protection
-                      projects and the overall Harness Platform.
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <h3>Coming Soon...</h3>
+            <div className={styles.desc}>
+              Assesses the fundamental skills to deploy and maintain Application & API Runtime Protection
+              projects and the overall Harness Platform.
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-            {/* Admin Exam Details */}
-            {/* <div className={styles.examDetails}>
+    {/* Admin Exam Details */}
+    {/* <div className={styles.examDetails}>
             <h2 id="exam-details">Exam Details</h2>
             <div className={styles.examDetailsCard}>
               <AdminCertificationExamDetails />
@@ -419,120 +422,125 @@ export default function CertificationsTBH() {
               </div>
             </div>
           </div> */}
-          </div>
+  </div>
 
-          {/* Architect Tab Content */}
-          <div
-            className={clsx(
-              styles.tabContent,
-              certType[tab] === certType.architect && styles.active
-            )}
-          >
-            <div className={styles.studyGuide}>
-              <h2 id="prepare">Prepare for the Exam</h2>
-              <div
-                className={clsx(
-                  styles.studyGuideCard,
-                  styles[certType.architect]
-                )}
-              >
-                <div className={styles.info}>
-                  <i className="fa-solid fa-circle-info"></i>
-                  <strong>Get Certified</strong> | Harness Expert
-                </div>
-                <div className={styles.innerCard}>
-                  <div className={styles.left}>
-                    <h2>
-                      Application & API Runtime Protection - Architect (BETA COMING
-                      SOON)
-                    </h2>
-                    <img
-                      src={`${baseUrl}img/cert-arc-arp-badge.svg`}
-                      alt="Harness Certified Expert - Application & API Runtime Protection Architect"
-                      className={styles.badge}
-                    />
-                    <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Application & API Runtime Protection Paid
-                      Plans
-                    </span>
-                  </div>
-                  <div className={styles.right}>
-                    <h3>Coming Soon...</h3>
-                    <div className={styles.desc}>
-                      Assess key technical job functions and advanced skills in
-                      design, implementation and management of Application & API Runtime Protection.
-                    </div>
-                  </div>
-                </div>
-              </div>
+  {/* Architect Tab Content */ }
+  <div
+    className={clsx(
+      styles.tabContent,
+      certType[tab] === certType.architect && styles.active
+    )}
+  >
+    <div className={styles.studyGuide}>
+      <h2 id="prepare">Prepare for the Exam</h2>
+      <div
+        className={clsx(
+          styles.studyGuideCard,
+          styles[certType.architect]
+        )}
+      >
+        <div className={styles.info}>
+          <i className="fa-solid fa-circle-info"></i>
+          <strong>Get Certified</strong> | Harness Expert
+        </div>
+        <div className={styles.innerCard}>
+          <div className={styles.left}>
+            <h2>
+              Application & API Runtime Protection - Architect (BETA COMING
+              SOON)
+            </h2>
+            <img
+              src={`${baseUrl}img/cert-arc-arp-badge.svg`}
+              alt="Harness Certified Expert - Application & API Runtime Protection Architect"
+              className={styles.badge}
+            />
+            <span className={styles.productVersion}>
+              <strong>Product version: </strong> Application & API Runtime Protection Paid
+              Plans
+            </span>
+          </div>
+          <div className={styles.right}>
+            <h3>Coming Soon...</h3>
+            <div className={styles.desc}>
+              Assess key technical job functions and advanced skills in
+              design, implementation and management of Application & API Runtime Protection.
             </div>
           </div>
         </div>
-      )}
-
-      {activePage === ActivePage.InstructorLedTraining && (
-        <div className={styles.tabs}>
-          <h2>Instructor-Led Training</h2>
-          <p>
-            Intensive two-day courses are designed for engineers looking to
-            deepen their understanding and expertise in Harness. Can be
-            delivered in a dedicated or{" "}
-            <a
-              href="https://university-registration.harness.io/calendar"
-              target="_blank"
-            >
-              {" "}
-              shared virtual{" "}
-            </a>{" "}
-            format.
-          </p>
-          <div className={clsx(styles.tabContent, styles.active)}>
-            <div className={styles.cardContainer}>
-              {ilt
-                .filter((ilt) => {
-                  return (
-                    ilt.tileType === "pre requisite" ||
-                    ilt.tileType === "pre requisite waap" ||
-                    ilt.tileType === "waap" ||
-                    ilt.module === "arp" ||
-                    (ilt.module === "arp" && ilt.tileType === "comming soon")
-                  );
-                })
-
-                .map((ilt) => (
-                  <IltCard {...ilt} />
-                ))}
-            </div>
-          </div>
-        </div>
-      )}
-      {activePage === ActivePage.SelfPacedTraning && (
-        <div className={styles.tabs}>
-          <h2>Self-Paced Training</h2>
-          <p>Free self-paced courses that you can consume on your own time.</p>
-          <div className={clsx(styles.tabContent, styles.active)}>
-            <div className={styles.cardContainer}>
-              {spt
-                .filter((spt) => {
-                  return spt.tileType === "pre requisite" || spt.tileType === "pre requisite waap";
-                })
-                .map((spt) => (
-                  <IltCard {...spt} />
-                ))}
-              {spt
-                .filter((spt) => {
-                  return (
-                    (spt.module === "arp" && spt.cardType === "FREE") ||
-                    (spt.module === "arp" && spt.tileType === "comming soon")
-                  );
-                })
-                .map((spt) => (
-                  <IltCard {...spt} />
-                ))}
-            </div>
-          </div>
-        </div>
-      )}
+      </div>
     </div>
+  </div>
+        </div >
+      )
+}
+
+{
+  activePage === ActivePage.InstructorLedTraining && (
+    <div className={styles.tabs}>
+      <h2>Instructor-Led Training</h2>
+      <p>
+        Intensive two-day courses are designed for engineers looking to
+        deepen their understanding and expertise in Harness. Can be
+        delivered in a dedicated or{" "}
+        <a
+          href="https://university-registration.harness.io/calendar"
+          target="_blank"
+        >
+          {" "}
+          shared virtual{" "}
+        </a>{" "}
+        format.
+      </p>
+      <div className={clsx(styles.tabContent, styles.active)}>
+        <div className={styles.cardContainer}>
+          {ilt
+            .filter((ilt) => {
+              return (
+                ilt.tileType === "pre requisite" ||
+                ilt.tileType === "pre requisite waap" ||
+                ilt.tileType === "waap" ||
+                ilt.module === "arp" ||
+                (ilt.module === "arp" && ilt.tileType === "comming soon")
+              );
+            })
+
+            .map((ilt) => (
+              <IltCard {...ilt} />
+            ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+{
+  activePage === ActivePage.SelfPacedTraning && (
+    <div className={styles.tabs}>
+      <h2>Self-Paced Training</h2>
+      <p>Free self-paced courses that you can consume on your own time.</p>
+      <div className={clsx(styles.tabContent, styles.active)}>
+        <div className={styles.cardContainer}>
+          {spt
+            .filter((spt) => {
+              return spt.tileType === "pre requisite" || spt.tileType === "pre requisite waap";
+            })
+            .map((spt) => (
+              <IltCard {...spt} />
+            ))}
+          {spt
+            .filter((spt) => {
+              return (
+                (spt.module === "arp" && spt.cardType === "FREE") ||
+                (spt.module === "arp" && spt.tileType === "comming soon")
+              );
+            })
+            .map((spt) => (
+              <IltCard {...spt} />
+            ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+    </div >
   );
 }

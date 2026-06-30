@@ -283,7 +283,7 @@ export default function CertificationsTBH() {
                     </span>
                   </div>
                   <div className={styles.right}>
-                    <h3>Review Study Guide</h3>
+                    <h3>Coming Soon...</h3>
                     <div className={styles.desc}>
                       Assesses the fundamental skills to manage your
                       posture with API & Application Security Testing projects.
@@ -310,13 +310,13 @@ export default function CertificationsTBH() {
 
             {/* Developer Exam Details */}
 
-
+            {/*
             <div className={styles.examDetails}>
               <h2 id="exam-details">Exam Details</h2>
               <div className={styles.examDetailsCard}>
 
-                {/*
-            
+
+
                 <DeveloperCertificationExamDetails />
                 <div className={styles.btnContainer}>
                   <Link href="https://university-registration.harness.io/certification-exam-traceable-by-harness-developer-certification">
@@ -326,10 +326,11 @@ export default function CertificationsTBH() {
                   </Link>
                 </div>
 
-                */}
+
 
               </div>
             </div>
+            */}
 
           </div>
 
