@@ -36,6 +36,11 @@ Select your artifact format below to get started:
       logo: "helm-logo.svg",
       logoSize: 28
     },
+    "Helm HTTP": {
+      path: "/artifact-registry/content/supported-formats/helm-http-quickstart.md",
+      logo: "helm-http-logo.svg",
+      logoSize: 24
+    },
     Generic: {
       path: "/artifact-registry/content/supported-formats/generic-quickstart.md",
       logo: "generic-logo.svg",
