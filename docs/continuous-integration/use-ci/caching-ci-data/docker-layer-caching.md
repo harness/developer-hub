@@ -51,16 +51,17 @@ The cache retention window is 15 days, which resets whenever a cache is updated.
 </TabItem>
 <TabItem value="sm" label="Self-managed build infrastructures">
 
-When running builds in self-managed infrastructures, [configure S3-compatible  default object storage](/docs/platform/settings/default-settings.md#continuous-integration) that Harness can use to seamlessly store and manage the cache.
+When running builds in self-managed infrastructures, [configure default object storage (Azure Blob Storage, GCP Cloud Storage, AWS S3, or any S3-compatible storage)](/docs/platform/settings/default-settings.md#continuous-integration) that Harness can use to seamlessly store and manage the cache.
 
 
-If your storage isn't S3-compatible or your don't want to use access key and secret key for authentication, consider using [remote cache image](#remote-cache-image) instead.
+If your storage is not S3-compatible or you do not want to use access key and secret key for authentication, consider using [remote cache image](#remote-cache-image) instead.
 
 We suggest that you consider setting bucket level retention policy for efficient cache management. 
 
 :::info
 - Enabling DLC when running on Kubernetes requires *privileged mode* on the cluster where the builds run. 
 - To use path-style S3 addressing in self-hosted Build and Push steps with DLC, set `PLUGIN_PATH_STYLE: "true"` in envVariables. This allows compatibility with S3 providers that do not support virtual-hosted style URLs.
+- When using Azure Blob Storage, authenticate with the Azure connector using **Service Principal** or **OIDC**. Managed Identity authentication is not supported for Docker Layer Caching.
 :::
 
 
@@ -70,7 +71,7 @@ We suggest that you consider setting bucket level retention policy for efficient
 
 ### Enable Docker Layer Caching
 
-1. If you're *not* using Harness Cloud build infrastructure, you must [configure S3-compatible global object storage](/docs/platform/settings/default-settings.md#continuous-integration) that Harness can use to store and manage caches.
+1. If you are *not* using Harness Cloud build infrastructure, you must [configure default object storage (Azure Blob Storage, GCP Cloud Storage, AWS S3, or any S3-compatible storage)](/docs/platform/settings/default-settings.md#continuous-integration) that Harness can use to store and manage caches.
 
    This is not required for Harness Cloud build infrastructure. For more information, go to [Cache storage](#cache-storage).
 

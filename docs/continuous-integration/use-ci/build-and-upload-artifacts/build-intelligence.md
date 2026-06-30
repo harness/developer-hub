@@ -80,9 +80,10 @@ The cache retention window is 15 days, which resets whenever a cache is updated.
    - By default, Build Intelligence uses port 8082, and downloads the Build Intelligence plugin from Maven Central. You can change the default behaviour in [CI default settings](/docs/platform/settings/default-settings.md#continuous-integration).
   :::
 
-  - When using a Build Intelligence with self-hosted infrastructure, an S3-compatible bucket is required for cache storage. Please visit [configure default S3-compatible object storage](/docs/platform/settings/default-settings.md#continuous-integration) for more information.
+  - When using Build Intelligence with self-hosted infrastructure, you need object storage for cache storage. Build Intelligence supports Azure Blob Storage, GCP Cloud Storage, AWS S3, and any S3-compatible storage. Go to [configure default object storage](/docs/platform/settings/default-settings.md#continuous-integration) to set up your storage.
   - By default, the Build Intelligence step configures a proxy on port 8082. However, for self-hosted setups, you can configure the port by setting the stage variable `CACHE_SERVICE_HTTPS_BIND`, or in [CI default settings](/docs/platform/settings/default-settings.md#continuous-integration).
   - You can also override the storage connector, region, bucket name, and sidecar container settings at the stage level. Go to [Override storage and sidecar settings](#override-storage-and-sidecar-settings) to configure per-stage overrides.
+  - When using Azure Blob Storage, authenticate with the Azure connector using **Service Principal** or **OIDC**. Managed Identity authentication is not supported for Build Intelligence.
 
 Example Pipeline YAML:
 
@@ -253,7 +254,7 @@ These settings apply only to Kubernetes build infrastructure.
 
 Use `connectorRef`, `region`, and `bucket_name` to override the storage settings configured in your account-level Default Settings.
 
-- `connectorRef` specifies the connector ID for cloud storage. This overrides the Cloud Storage Connector from Default Settings. Supported connector types include AWS S3, GCP Cloud Storage, and S3-compatible storage.
+- `connectorRef` specifies the connector ID for cloud storage. This overrides the Cloud Storage Connector from Default Settings. Supported connector types include Azure Blob Storage, GCP Cloud Storage, AWS S3, and any S3-compatible storage. When using an Azure connector, authenticate with **Service Principal** or **OIDC** only; Managed Identity is not supported.
 - `region` specifies the bucket region. This overrides the account-level Region setting.
 - `bucket_name` specifies the bucket name. This overrides the account-level Bucket Name setting.
 

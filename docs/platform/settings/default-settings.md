@@ -115,7 +115,7 @@ If this setting is enabled **Skip Pre Flight** will be checked by default.
 
 #### Build Intelligence
 
-- **Automatically Enable Build Intelligence** - This setting applies only to newly created CI stages. When set to `True`, CI stages will be set with Build Intelligence Intelligence enabled (users will still have the option to enable/disable the feature in stage settings as well). Using Build Intelligence requires S3-compatible storage to be set in Default Settings for self-hosted builds.
+- **Automatically Enable Build Intelligence** - This setting applies only to newly created CI stages. When set to `True`, CI stages will be set with Build Intelligence enabled (users will still have the option to enable/disable the feature in stage settings as well). Using Build Intelligence requires object storage (Azure Blob Storage, GCP Cloud Storage, AWS S3, or any S3-compatible storage) to be set in Default Settings for self-hosted builds.
 
 - **Maven Repository URL** - Applicable only in self-hosted builds. By default, the Build Intelligence plugin is downloaded from Maven Central. If you prefer using a custom Maven repository, provide a different URL.
 
@@ -126,7 +126,7 @@ Learn more about [Build Intelligence](/docs/continuous-integration/use-ci/build-
 
 #### Cache Intelligence
 
-- **Automatically Enable Cache Intelligence** - This setting applies only to newly created CI stages. When set to `True`, CI stages will be set with Cache Intelligence enabled (users will still have the option to enable/disable the feature in stage settings as well). Using Cache Intelligence requires S3-compatible storage to be set in Default Settings for self-hosted builds.
+- **Automatically Enable Cache Intelligence** - This setting applies only to newly created CI stages. When set to `True`, CI stages will be set with Cache Intelligence enabled (users will still have the option to enable/disable the feature in stage settings as well). Using Cache Intelligence requires object storage (Azure Blob Storage, GCP Cloud Storage, AWS S3, or any S3-compatible storage) to be set in Default Settings for self-hosted builds.
 
 - **Always Override** - Enable cache override to always update the cache, regardless of cache changes. This is useful if you have infrequent builds and want to ensure your cache remains fresh.
 
@@ -151,7 +151,7 @@ Use the **Object Store for Self-Managed Build Infrastructure** settings to conne
 * **Access Key** and **Secret Key:** Access credentials for S3-compatible storage. NOTE: If you're using 'Cloud Storage Connector' (recommended) then there is no need to enter values for access/secret key fields.
 
 :::note
-Azure Blob Storage is currently supported only for **Cache Intelligence**. Docker Layer Caching (DLC) and Build Intelligence require AWS S3, GCP Cloud Storage, or S3-compatible storage.
+When using Azure Blob Storage with any Harness CI Intelligence caching feature (Build Intelligence, Docker Layer Caching, or Cache Intelligence), authenticate with the Azure connector using **Service Principal** or **OIDC**. Managed Identity authentication is not supported.
 :::
 
 

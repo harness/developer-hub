@@ -75,10 +75,6 @@ For blobs larger than 5 GB, multi-part upload (enabled via FF `CI_ENABLE_MULTIPA
 
 When running builds in self-managed infrastructures, [configure default object storage (Azure Blob Storage, GCP Cloud Storage, AWS S3, or any S3-compatible storage)](/docs/platform/settings/default-settings.md#continuous-integration) that Harness can use to seamlessly store and manage the cache.
 
-:::note
-Azure Blob Storage is currently supported only for Cache Intelligence. Docker Layer Caching (DLC) and Build Intelligence require AWS S3, GCP Cloud Storage, or S3-compatible storage.
-:::
-
 We suggest that you consider setting bucket level retention policy for efficient cache management.
 
 You can also override the storage connector and configure sidecar container settings at the stage level. Go to [Override storage and sidecar settings](#override-storage-and-sidecar-settings) to configure per-stage overrides.
