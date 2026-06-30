@@ -266,3 +266,15 @@ If you want to use specific delegates, you must identify those delegates. For mo
 ### Kubernetes delegate with self-signed certificates
 
 If your codebase connector allows API access and connects through a Harness Delegate that uses self-signed certificates, you must specify `ADDITIONAL_CERTS_PATH` in the delegate pod, as described in [Configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates#enable-self-signed-certificates).
+
+---
+
+## Important notes
+
+### File size limitation
+
+The GitHub Contents API, which Harness uses to fetch files from repositories, has a 1 MB file size limit. If you attempt to fetch a file larger than 1 MB (such as a large Kubernetes manifest or Custom Resource Definition), the operation will fail.
+
+**Workaround:** Use the platform-agnostic Git connector instead of the GitHub connector. The Git connector uses git clone to fetch files, which does not have the same file size limitation. Go to [Use the platform-agnostic Git connector](/docs/platform/connectors/code-repositories/connect-to-code-repo#use-the-platform-agnostic-git-connector) to connect to your code repository without the file size constraint.
+
+Go to the [GitHub REST API documentation on repository contents](https://docs.github.com/en/rest/repos/contents#get-repository-content) to understand the file size constraints imposed by the GitHub Contents API.

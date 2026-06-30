@@ -56,6 +56,27 @@ Harness provides two options for applying Kubernetes manifests:
 - **Service Option**: When you configure from the service, you can provide a file path within the manifest source repository configured in the service definition.
 - **Remote Option**: When you configure the remote option, you can provide a Harness Git connector, a repo location, and a file path to apply any kind of Kubernetes manifest. Harness allows you to provide a values.yaml as well for templating in the configuration.
 
+:::warning GitHub file size limitation
+
+When using a GitHub connector to fetch manifest files, the GitHub Contents API has a 1 MB file size limit. If your manifest file exceeds 1 MB, the Apply step will fail.
+
+**Workaround:** Use the platform-agnostic Git connector instead of the GitHub connector. The Git connector uses git clone, which does not have the same file size limitation. Go to [Use the platform-agnostic Git connector](/docs/platform/connectors/code-repositories/connect-to-code-repo#use-the-platform-agnostic-git-connector) to connect to your code repository without the file size constraint.
+
+Alternatively, split your large manifest file into multiple smaller files, each under 1 MB.
+
+:::
+
+:::info Kubernetes resource size limits
+
+Even when using the Git connector workaround, be aware that Kubernetes itself enforces size limits on certain resources:
+
+- **ConfigMaps**: Cannot exceed 1 MB in total size
+- **Custom Resource Definitions (CRDs)**: Default etcd limit of 1.5 MB
+
+Go to the Kubernetes documentation on [ConfigMaps](https://kubernetes.io/docs/concepts/configuration/configmap/#motivation) to understand ConfigMap size constraints, and go to the [etcd documentation](https://etcd.io/docs/latest/dev-guide/limit/) to understand etcd object size limits.
+
+:::
+
 When **Remote Manifest** is selected, you will see this in the logs:
 
 ```
