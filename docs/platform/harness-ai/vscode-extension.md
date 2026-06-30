@@ -7,10 +7,14 @@ keywords:
   - harness
   - vs code
   - vscode
+  - cursor
+  - windsurf
+  - antigravity
   - extension
   - pipeline
   - ide
   - ai
+  - openvsx
 tags:
   - harness-ai
   - ide
@@ -23,7 +27,9 @@ redirect_from:
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 import BrowserOnly from '@docusaurus/BrowserOnly';
 
-The Harness VS Code Extension brings Harness CI/CD pipeline monitoring, log viewing, deployment approvals, and AI-assisted debugging directly into Visual Studio Code. You can track pipeline executions, inspect logs, and approve deployments without leaving your IDE.
+The Harness VS Code Extension brings Harness CI/CD pipeline monitoring, log viewing, deployment approvals, and AI-assisted debugging directly into your IDE. You can track pipeline executions, inspect logs, approve deployments, and re-run or abort pipelines without leaving your editor.
+
+The extension is available in VS Code, Cursor, Windsurf, and AntiGravity.
 
 :::note
 Looking for the Harness AI Code Agent (AI code completions and chat)? That feature has been updated. Go to [Harness AI overview](/docs/platform/harness-ai/overview) to find current AI-assisted development tools.
@@ -34,6 +40,7 @@ Looking for the Harness AI Code Agent (AI code completions and chat)? That featu
 ## Before you begin
 
 - **VS Code:** Version 1.85.0 or later.
+- **Cursor, Windsurf, or AntiGravity:** A build that supports OpenVSX extensions and the VS Code 1.85.0 extension API.
 - **Harness account:** An active Harness account with project access.
 - **Personal Access Token (PAT):** Generated in your Harness account. Go to [Manage API keys](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys) to create one.
 
@@ -41,7 +48,9 @@ Looking for the Harness AI Code Agent (AI code completions and chat)? That featu
 
 ## Install the extension
 
-1. Open the Extensions view in VS Code (`Cmd+Shift+X` on macOS or `Ctrl+Shift+X` on Windows/Linux).
+### VS Code
+
+1. Open the Extensions view (`Cmd+Shift+X` on macOS or `Ctrl+Shift+X` on Windows/Linux).
 2. Search for **Harness**.
 3. Select the **Harness** extension published by Harness, Inc.
 4. Select **Install**.
@@ -54,11 +63,20 @@ code --install-extension harness-inc.harness-vscode
 
 Or go to the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=harness-inc.harness-vscode) and select **Install**.
 
+### Cursor, Windsurf, and AntiGravity
+
+The extension is published to the [OpenVSX Registry](https://open-vsx.org/extension/harness-inc/harness-vscode) and is available directly in the Extensions panel of Cursor, Windsurf, and AntiGravity.
+
+1. Open the Extensions panel in your IDE.
+2. Search for **Harness**.
+3. Select the **Harness** extension published by Harness, Inc.
+4. Select **Install**.
+
 ---
 
 ## Configure the extension
 
-1. Select the Harness icon in the VS Code Activity Bar.
+1. Select the Harness icon in the Activity Bar.
 2. Run the command **Harness: Configure API Key** from the Command Palette (`Cmd+Shift+P` / `Ctrl+Shift+P`).
 3. Enter your Harness instance URL (default: `https://app.harness.io`).
 4. Enter your PAT. The extension automatically extracts your account ID from the token.
@@ -66,7 +84,7 @@ Or go to the [VS Code Marketplace](https://marketplace.visualstudio.com/items?it
 
 ### Use environment variables (CI/CD-friendly)
 
-Set the following environment variables before launching VS Code to skip the credential prompts:
+Set the following environment variables before launching your IDE to skip the credential prompts:
 
 ```bash
 export HARNESS_API_KEY="your-pat"
@@ -74,7 +92,7 @@ export HARNESS_BASE_URL="https://app.harness.io"
 export HARNESS_ACCOUNT_ID="your-account-id"
 ```
 
-Set `harness.authSource` to `env` in your VS Code settings to activate environment variable authentication.
+Set `harness.authSource` to `env` in your editor settings to activate environment variable authentication.
 
 ---
 
@@ -85,15 +103,26 @@ The extension adds two views to the Harness Activity Bar panel:
 - **Pipelines:** Browse all accessible pipelines. Search, filter by status, and pin favorites.
 - **Executions:** View full execution history filtered by pipeline or status.
 
-Both views refresh automatically on a configurable interval (default: 10 seconds). The extension pauses polling when the sidebar is hidden or VS Code loses focus to conserve resources.
+Both views refresh automatically on a configurable interval (default: 10 seconds). The extension pauses polling when the sidebar is hidden or the IDE loses focus to conserve resources.
 
 ### View pipeline logs
 
 Select any execution to open step-level logs in a dedicated editor tab with syntax highlighting. Failed steps are highlighted for quick triage.
 
-### Re-run a failed stage or test
+### Re-run or abort a pipeline
 
-Right-click a failed stage or test in the Executions view and select **Re-run Failed Stage** or **Re-run Test via Harness** to trigger a retry without leaving VS Code.
+- **Re-run:** Select the re-run button on any finished execution to restart it with the original inputs. The extension confirms before triggering and navigates to the new execution automatically.
+- **Abort:** Select the abort button on a running execution and choose an interrupt type: **Abort All** or **Mark as Failed**.
+
+The action button adapts to execution status: re-run appears for terminal executions, abort appears for running ones.
+
+### View execution detail tabs
+
+Select an execution to open stage-level detail tabs:
+
+- **Build:** Repository, branch, commits, and published image or SBOM artifacts.
+- **Deploy:** Per-stage services with manifests, environments, and skip reasons, plus a live rollup of active stages and environments.
+- **Security:** STO scanner results with per-severity tiles and new-vulnerability deltas. The tab badge updates live during an in-progress scan.
 
 ### Export an execution
 
@@ -176,7 +205,7 @@ Run **Harness: Switch Project (This Workspace)** from the Command Palette to set
       <Troubleshoot
         issue="Logs do not open or show blank content"
         mode="docs"
-        fallback="Run Harness: Show Debug Output from the Command Palette and check for API errors. Confirm your Harness instance URL is reachable from your machine. If you are behind a corporate proxy, verify VS Code Proxy Support is enabled in Settings."
+        fallback="Run Harness: Show Debug Output from the Command Palette and check for API errors. Confirm your Harness instance URL is reachable from your machine. If you are behind a corporate proxy, verify proxy support is enabled in your editor settings."
       />
 
       <Troubleshoot
