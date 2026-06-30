@@ -28,7 +28,7 @@ proxy:
         api/proxy/snyk/?: /
       headers:
         User-Agent: tech-services/backstage-plugin/1.x
-        Authorization: ${SNYK_TOKEN}
+        Authorization: token ${SNYK_TOKEN}
 ```
 
 ### Secrets
