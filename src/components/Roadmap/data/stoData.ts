@@ -162,8 +162,8 @@ export const StoData: Horizon = {
       },
       {
         tag: [{ value: "Delegate" }],
-        title: "Delegate 2.0 Support",
-        description: "Extend STO steps to execute on Delegate 2.0.",
+        title: "Delegate 3.0 Support",
+        description: "Extend STO steps to execute on Delegate 3.0.",
       },
       {
         tag: [{ value: "Override Severity" }],

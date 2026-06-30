@@ -152,7 +152,8 @@ CLI version `0.x` will continue to work with existing credentials, while CLI ver
 
 [**Exemptions page filters:**](/docs/security-testing-orchestration/exemptions/exemption-workflows#filters-in-exemption-section) Added filters to the Exemptions page to narrow down issues based on Issue Type, Target, Target Type, Severity, and many more. This feature is behind the feature flag `STO_EXEMPTION_FILTER`. Contact [Harness Support](mailto:support@harness.io) to enable it.
 
-**Delegate 2.0**: Delegate 2.0 is now supported for all STO steps running in **Ingestion mode** on **Linux and MacOS** operating systems, across supported infrastructure types (Harness Cloud, Local (Docker), and Kubernetes). This feature is behind the feature flag `STO_CONTAINERLESS_INGESTION`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+**Delegate 3.0**: Delegate 3.0 is now supported for all STO steps on **Linux and MacOS** operating systems, across supported infrastructure types (Harness Cloud, Local (Docker), and Kubernetes). 
+
 
 #### Fixed Issues
 
