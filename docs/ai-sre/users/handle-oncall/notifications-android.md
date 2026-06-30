@@ -48,11 +48,11 @@ The Harness On-Call app can temporarily unmute your phone when sending critical 
 
 **How this works:** When you receive a critical notification, provided we have Do Not Disturb access, we'll temporarily unmute your phone and then send the notification. We'll re-mute your phone 60 seconds later.
 
-**Note:** If we don't have Do Not Disturb access, we'll fall back to playing the sound using your alarm volume.
+**Note:** If we do not have Do Not Disturb access, we'll fall back to playing the sound using your alarm volume.
 
 ### Samsung Focus Modes
 
-Some Samsung devices have a feature called **Focus modes** which can add additional rules to your do-not-disturb settings. If you're not receiving notifications whilst in a Focus mode (such as "Work" or "Sleep"), then you need to:
+Some Samsung devices have a feature called **Focus modes** which can add additional rules to your do-not-disturb settings. If you are not receiving notifications whilst in a Focus mode (such as "Work" or "Sleep"), then you need to:
 
 1. Go to **Settings > Modes and Routines**
 2. Select the Focus mode you use (e.g., "Sleep" or "Work")
@@ -61,12 +61,14 @@ Some Samsung devices have a feature called **Focus modes** which can add additio
 
 ### Work Profile Setup
 
-If you're using Harness On-Call in a work profile and want to use the mute switch bypass feature, there's a workaround available:
+If you are using Harness On-Call in a work profile and want to use the mute switch bypass feature, there's a workaround available:
 
 1. Install Harness On-Call in a personal profile (outside the work profile)
 2. Grant Do Not Disturb access to the app in the personal profile
-3. You don't need to sign in on the personal profile
+3. You do not need to sign in on the personal profile
 4. This should allow the work profile to get that permission as well
+
+---
 
 ## Customizing notification sounds
 
@@ -81,6 +83,8 @@ You can customize sounds for each notification channel through your device setti
 
 If you want a notification to make a sound for a long time, consider using longer ringtones or custom alert tones.
 
+---
+
 ## Testing your setup
 
 After configuring these settings, test your notification setup:
@@ -91,10 +95,12 @@ After configuring these settings, test your notification setup:
 4. Enable Do Not Disturb mode on your phone
 5. Send a test notification to confirm it comes through with sound
 
-**Important:** If the test notification doesn't make a sound while in Do Not Disturb, double-check that you've:
+**Important:** If the test notification does not make a sound while in Do Not Disturb, double-check that you've:
 - Starred/favorited the Harness contact
 - Allowed starred contacts to bypass DND in your DND exceptions
 - Granted Do Not Disturb access to the Harness On-Call app
+
+---
 
 ## Important notes about Android behavior
 
@@ -103,6 +109,8 @@ After configuring these settings, test your notification setup:
 - If your phone was on silent before receiving a notification, Harness On-Call will revert it to **vibrate** mode rather than silent. This is due to an [Android system limitation](https://developer.android.com/reference/android/media/AudioManager#setRingerMode(int)) where we cannot set your phone back to silent without inadvertently enabling Do Not Disturb
 - Battery optimization settings can interfere with notification delivery. Make sure Harness On-Call is exempt from battery optimization in your phone's settings
 - Some manufacturers (Samsung, Xiaomi, Huawei, OnePlus) have aggressive background process management that may affect notifications. You may need to add Harness On-Call to protected/allowed apps
+
+---
 
 ## Device-specific instructions
 
@@ -120,16 +128,18 @@ After configuring these settings, test your notification setup:
 
 ### OnePlus devices
 1. Go to **Settings > Apps > Harness On-Call > Battery**
-2. Select **Don't optimize**
+2. Select **do not optimize**
 3. Enable **Allow background activity**
 
 ### Google Pixel devices
 1. Go to **Settings > Apps > Harness On-Call > Battery**
 2. Select **Unrestricted**
 
+---
+
 ## Troubleshooting
 
-If you're not receiving notifications:
+If you are not receiving notifications:
 
 1. Verify notification permissions are enabled for Harness On-Call
 2. Check that the Harness contact is starred/favorited
@@ -139,6 +149,6 @@ If you're not receiving notifications:
 6. Ensure your device has an active internet connection
 7. Try restarting the Harness On-Call app
 8. Check your Focus mode/Modes and Routines settings if using Samsung
-9. Verify you're logged into the correct Harness organization in the app
+9. Verify you are logged into the correct Harness organization in the app
 
 If issues persist, contact support through the app or email support@harness.io.

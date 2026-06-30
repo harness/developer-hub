@@ -17,13 +17,13 @@ As an administrator, you'll create rotation schedules for your teams, manage ove
 
 <DocVideo src="https://app.tango.us/app/embed/bc9db76e-c622-457e-95b1-45aa0ff06906?skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Create On-Call Schedule" />
 
-1. Navigate to **On-Call** → **Schedules**.
+1. Go to **On-Call** → **Schedules**.
 2. Click **Create Schedule**.
 3. Configure the schedule:
-   - **Name** — A descriptive name (e.g., "Payments Team — Weekly Rotation").
-   - **Rotation pattern** — Set the rotation type (e.g., weekly) with a customizable start time and day.
-   - **Time zone** — Select the appropriate time zone for the team.
-   - **Participants** — Add team members to the rotation.
+   - **Name**: A descriptive name (e.g., "Payments Team: Weekly Rotation").
+   - **Rotation pattern**: Set the rotation type (e.g., weekly) with a customizable start time and day.
+   - **Time zone**: Select the appropriate time zone for the team.
+   - **Participants**: Add team members to the rotation.
 4. Review the schedule preview to verify coverage.
 5. Click **Save**.
 
@@ -35,18 +35,22 @@ As an administrator, you'll create rotation schedules for your teams, manage ove
 - **Holiday calendars** to account for planned time off.
 - **Edit YAML** for programmatic schedule setup and bulk configuration.
 
+---
+
 ## Create Schedule Overrides
 
-Overrides let you temporarily change who's on call — for example, when someone is out sick, on vacation, or swapping shifts.
+Overrides let you temporarily change who's on call: for example, when someone is out sick, on vacation, or swapping shifts.
 
 <DocVideo src="https://app.tango.us/app/embed/2fe2c6c2-d4ed-40ce-80da-369a005c9259?skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Create an Override Schedule" />
 
-1. Navigate to the schedule you want to override.
+1. Go to the schedule you want to override.
 2. Click **Add Override**.
 3. Specify:
    - The **person** covering the shift.
    - The **start and end time** for the override.
 4. Save the override. The schedule view will reflect the temporary change.
+
+---
 
 ## Import from External Sources
 
@@ -54,15 +58,119 @@ If your organization is migrating from another on-call tool, you can import sche
 
 <DocVideo src="https://app.tango.us/app/embed/81ad2a7e-07f5-4a1a-813e-45f8fea4ab7c?skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Setting On-Call from external source" />
 
-<!-- CHANGED (comment #9): The previous callout said PagerDuty import was "planned for a future release." The PagerDuty and OpsGenie syncers are shipped — full syncers exist in the codebase and the related Jira tickets (IR-2455, IR-2370, IR-2361) are marked done. Updated to reflect live status for both. The xMatters syncer remains in development and is noted as coming in a future release. -->
-:::info Migrating from another on-call tool
-Syncers for importing users, escalation policies, and schedules are available for **PagerDuty** and **OpsGenie**. An xMatters syncer is planned for a future release.
-:::
+<!-- CHANGED (comment #9): The previous callout said PagerDuty import was "planned for a future release." The PagerDuty and OpsGenie syncers are shipped: full syncers exist in the codebase and the related Jira tickets (IR-2455, IR-2370, IR-2361) are marked done. Updated to reflect live status for both. The xMatters syncer remains in development and is noted as coming in a future release. -->
+
+---
+
+## Syncing with External On-call Tools
+
+Syncers for importing users, escalation policies, and schedules are available for **PagerDuty**, **OpsGenie**, and **xMatters**.
+
+When you sync with an external on-call tool, the following data is imported:
+
+- **Users**: Team members and their contact information
+- **Schedules**: Rotation patterns, time zones, and coverage periods
+- **Escalation Policies**: Rules for routing alerts and escalating to backup responders
+- **Teams/Groups**: Team structure and ownership
+
+### Configure PagerDuty Sync
+
+1. Go to **On-Call** → **Sync from 3rd Party** tab
+2. **Connect Source**: Select **PagerDuty** as the source system and configure the connector:
+   - **API Token**: Generate from PagerDuty → **Integrations** → **API Access Keys**
+   - **Subdomain**: Your PagerDuty subdomain (e.g., `yourcompany.pagerduty.com`)
+3. Click **Next: Select Entities**
+4. **Select Entities**: Choose which services to sync
+   - Select specific services or all services
+   - Preview shows what will be imported: schedules, escalation policies, groups, people, contact details
+5. Click **Next: Invite Users**
+6. **Invite Users**: Invite discovered users to Harness (optional)
+   - Select users who need Harness accounts to receive pages
+   - Invited users will receive email invitations
+7. Click **Next: Configure Sync Rules**
+8. **Configure Sync Rules**: Configure sync behavior
+   - **Sync Contact Details**: Enable to import email, SMS, phone numbers
+   - **Sync Strategy**: Choose how to handle conflicts (preserve local changes or overwrite)
+9. Click **Start Sync**
+10. **Sync Summary**: Monitor the import progress
+    - View imported: users, schedules, escalation policies, teams
+
+### Configure OpsGenie Sync
+
+1. Go to **On-Call** → **Sync from 3rd Party** tab
+2. **Connect Source**: Select **OpsGenie** as the source system and configure the connector:
+   - **API Key**: Generate from OpsGenie → **Settings** → **API Key Management**
+   - **Region**: Select US or EU based on your OpsGenie instance
+3. Click **Next: Select Entities**
+4. **Select Entities**: Choose which services to sync
+   - Select specific services or all services
+   - Preview shows what will be imported: schedules, escalation policies, groups, people, contact details
+5. Click **Next: Invite Users**
+6. **Invite Users**: Invite discovered users to Harness (optional)
+   - Select users who need Harness accounts to receive pages
+7. Click **Next: Configure Sync Rules**
+8. **Configure Sync Rules**: Configure sync behavior
+   - **Sync Contact Details**: Enable to import email, SMS, phone numbers
+   - **Sync Strategy**: Choose how to handle conflicts
+9. Click **Start Sync**
+10. **Sync Summary**: Monitor the import progress
+
+### Configure xMatters Sync
+
+1. Go to **On-Call** → **Sync from 3rd Party** tab
+2. **Connect Source**: Select **xMatters** as the source system and configure the connector:
+   - **Instance URL**: Your xMatters instance URL (e.g., `https://yourcompany.xmatters.com`)
+   - **Username**: API user username
+   - **Password**: API user password or API key
+3. Click **Next: Select Entities**
+4. **Select Entities**: Choose which services to sync
+   - Select specific services/groups or all
+   - Preview shows what will be imported: schedules, shifts, escalation policies (on-call groups), people, contact details
+5. Click **Next: Invite Users**
+6. **Invite Users**: Invite discovered users to Harness (optional)
+   - Select users who need Harness accounts to receive pages
+7. Click **Next: Configure Sync Rules**
+8. **Configure Sync Rules**: Configure sync behavior
+   - **Sync Contact Details**: Enable to import email, SMS, phone numbers
+   - **Sync Strategy**: Choose how to handle conflicts
+9. Click **Start Sync**
+10. **Sync Summary**: Monitor the import progress
+
+#### Post-Import Steps
+
+After importing from an external tool:
+
+1. **Verify User Mapping**: Ensure external users are correctly mapped to Harness users by email
+2. **Review Schedules**: Check that rotation patterns and time zones imported correctly
+3. **Test Escalation Policies**: Verify escalation rules work as expected
+4. **Update Service Ownership**: Assign imported teams to services in the Service Directory
+5. **Configure Notifications**: Set up notification preferences for imported users
+
+#### Import Conflicts
+
+Common conflicts and how to resolve them:
+
+| Conflict Type | Cause | Resolution |
+|--------------|-------|------------|
+| **User not found** | External user email does not match a Harness user | Invite the user to Harness or map to an existing user |
+| **Duplicate schedule** | Schedule with same name already exists | Rename one of the schedules or merge them |
+| **Team name collision** | User Group with same name exists | Rename the User Group or choose to merge |
+| **Timezone mismatch** | External tool uses different timezone format | Review and confirm timezone conversions |
+
+#### Ongoing Sync
+
+After initial import, you can:
+
+- **Re-sync periodically** to pull updates from the external tool
+- **One-way sync** - Changes in the external tool can be synced to AI SRE
+- **Manual management** - After import, manage schedules independently in AI SRE
+
+---
 
 ## Best Practices
 
-- **Ensure full coverage** — Review the schedule preview for gaps. Every hour should have a designated responder.
-- **Set reasonable rotation lengths** — Weekly rotations are a common default. Shorter rotations reduce fatigue; longer ones reduce handoff overhead. Adjust based on team feedback.
-- **Use overrides instead of editing the schedule** — Overrides preserve the base rotation and create a clear audit trail of coverage changes.
-- **Leverage YAML for large teams** — The Edit YAML feature makes it easier to manage complex or multi-team schedules programmatically.
-- **Account for time zones** — For distributed teams, verify that handoff times make sense in each participant's local time zone.
+- **Ensure full coverage**: Review the schedule preview for gaps. Every hour should have a designated responder.
+- **Set reasonable rotation lengths**: Weekly rotations are a common default. Shorter rotations reduce fatigue; longer ones reduce handoff overhead. Adjust based on team feedback.
+- **Use overrides instead of editing the schedule**: Overrides preserve the base rotation and create a clear audit trail of coverage changes.
+- **Leverage YAML for large teams**: The Edit YAML feature makes it easier to manage complex or multi-team schedules programmatically.
+- **Account for time zones**: For distributed teams, verify that handoff times make sense in each participant's local time zone.

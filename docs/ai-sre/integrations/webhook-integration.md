@@ -12,6 +12,8 @@ import TabItem from '@theme/TabItem';
 import NeedHelpFooter from '../_snippets/need-help-footer.mdx';
 import DocVideo from '@site/src/components/DocVideo';
 
+# Configure Webhook Integration
+
 Webhook integrations in Harness AI SRE enable bidirectional communication with external monitoring tools, CI/CD systems, and other services. These integrations process incoming webhook payloads to create alerts and incidents in AI SRE, and can also send updates back to external systems when configured with proper authentication and connectors.
 
 ## Overview
@@ -25,33 +27,35 @@ Webhook integrations provide real-time, scalable processing of external system e
 - **Flexible Payload Mapping**: Customize field extraction and mapping for different webhook sources with custom field support
 - **Centralized Management**: Manage all webhook integrations from a single interface with scalable, high-volume processing
 
+---
+
 ## Integration Types and Templates
 
 ### Alert Type Integrations
 Process alerts and monitoring data from external systems:
 
 **Available Templates:**
-- **AlertManager** - Prometheus AlertManager notifications
-- **AlertSite** - Website monitoring alerts
-- **BigPanda** - Alert correlation and management
-- **Bitbucket** - Repository and pipeline alerts
-- **Cloudwatch** - AWS CloudWatch alarms
-- **Datadog** - Infrastructure and application monitoring
-- **Dynatrace** - Application performance monitoring
-- **GitHub** - Repository events and security alerts
-- **GitLab** - CI/CD pipeline and security notifications
-- **Grafana** - Dashboard and alerting notifications
-- **Grafana Incident** - Grafana incident management
-- **Harness SLO** - Service level objective violations
-- **Jira** - Project and issue notifications
-- **Lacework** - Cloud security alerts
-- **New Relic** - Application performance and infrastructure monitoring
-- **Octopus Deploy** - Deployment notifications
-- **Opsgenie** - Incident management and alerting
-- **PagerDuty** - On-call and incident notifications
-- **Sentry** - Error tracking and performance monitoring
-- **ServiceNow** - IT service management alerts
-- **Travis CI** - Continuous integration build notifications
+- **[AlertManager](/docs/ai-sre/alerts/alerts/integrations/monitoring/prometheus)** - Prometheus AlertManager notifications
+- **[AlertSite](/docs/ai-sre/alerts/alerts/integrations/monitoring/alertsite)** - Website monitoring alerts
+- **[BigPanda](/docs/ai-sre/alerts/alerts/integrations/monitoring/bigpanda)** - Alert correlation and management
+- **[Bitbucket](/docs/ai-sre/alerts/alerts/integrations/cicd/bitbucket)** - Repository and pipeline alerts
+- **[Cloudwatch](/docs/ai-sre/alerts/alerts/integrations/cloud/aws-cloudwatch)** - AWS CloudWatch alarms
+- **[Datadog](/docs/ai-sre/alerts/alerts/integrations/monitoring/datadog)** - Infrastructure and application monitoring
+- **[Dynatrace](/docs/ai-sre/alerts/alerts/integrations/monitoring/dynatrace)** - Application performance monitoring
+- **[GitHub](/docs/ai-sre/alerts/alerts/integrations/cicd/github)** - Repository events and security alerts
+- **[GitLab](/docs/ai-sre/alerts/alerts/integrations/cicd/gitlab)** - CI/CD pipeline and security notifications
+- **[Grafana](/docs/ai-sre/alerts/alerts/integrations/monitoring/grafana)** - Dashboard and alerting notifications
+- **[Grafana Incident](/docs/ai-sre/alerts/alerts/integrations/monitoring/grafana-incident)** - Grafana incident management
+- **[Harness SLO](/docs/ai-sre/alerts/alerts/integrations/monitoring/harness-slo)** - Service level objective violations
+- **[Jira](/docs/ai-sre/alerts/alerts/integrations/itsm/jira)** - Project and issue notifications
+- **[Lacework](/docs/ai-sre/alerts/alerts/integrations/monitoring/lacework)** - Cloud security alerts
+- **[New Relic](/docs/ai-sre/alerts/alerts/integrations/monitoring/new-relic)** - Application performance and infrastructure monitoring
+- **[Octopus Deploy](/docs/ai-sre/alerts/alerts/integrations/cicd/octopus-deploy)** - Deployment notifications
+- **[OpsGenie](/docs/ai-sre/alerts/alerts/integrations/monitoring/opsgenie)** - Incident management and alerting
+- **[PagerDuty](/docs/ai-sre/alerts/alerts/integrations/monitoring/pagerduty)** - On-call and incident notifications
+- **[Sentry](/docs/ai-sre/alerts/alerts/integrations/monitoring/sentry)** - Error tracking and performance monitoring
+- **[ServiceNow](/docs/ai-sre/alerts/alerts/integrations/itsm/servicenow)** - IT service management alerts
+- **[Travis CI](/docs/ai-sre/alerts/alerts/integrations/cicd/travis-ci)** - Continuous integration build notifications
 
 ### Incident Type Integrations
 Handle incident data with bidirectional synchronization:
@@ -72,18 +76,20 @@ Handle deployment events and notifications:
 **Available Templates:**
 - **Harness Deployment** - Harness CD deployment notifications
 
+---
+
 ## Integration Capabilities
 
 Certain integrations support bidirectional communication, enabling AI SRE to both receive data from and send updates to external systems:
 
 ### ServiceNow Integration
-- **Inbound**: Receive incident notifications and updates from ServiceNow
-- **Outbound**: Send work notes, comments, and status updates back to ServiceNow incidents
+- **Inbound**: Receive incident notifications and updates from ServiceNow. Go to [ServiceNow webhook integration](/docs/ai-sre/alerts/alerts/integrations/itsm/servicenow) for configuration details.
+- **Outbound**: Send work notes, comments, and status updates back to ServiceNow incidents. Go to [ServiceNow runbook integration](/docs/ai-sre/runbooks/integrations/servicenow) to configure runbook actions.
 - **Synchronization**: Maintain real-time sync between AI SRE incidents and ServiceNow records
 
 ### Jira Integration  
-- **Inbound**: Receive issue notifications and updates from Jira
-- **Outbound**: Send comments, status updates, and field changes back to Jira issues
+- **Inbound**: Receive issue notifications and updates from Jira. Go to [Jira webhook integration](/docs/ai-sre/alerts/alerts/integrations/itsm/jira) for configuration details.
+- **Outbound**: Send comments, status updates, and field changes back to Jira issues. Go to [Jira runbook integration](/docs/ai-sre/runbooks/integrations/jira) to configure runbook actions.
 - **Synchronization**: Keep AI SRE incidents and Jira issues synchronized
 
 ### Requirements for Bidirectional Sync
@@ -91,6 +97,8 @@ Certain integrations support bidirectional communication, enabling AI SRE to bot
 - Appropriate connector setup for outbound communication
 - Matching field mappings between systems
 - Network connectivity for both inbound webhooks and outbound API calls
+
+---
 
 ## Integration Trigger Methods
 
@@ -154,6 +162,8 @@ Both trigger methods respect the same integration configuration:
 - You need a simpler integration method without webhook configuration
 - You want a backup alert channel when webhook delivery fails
 - Testing and debugging alert flows quickly
+
+---
 
 ## Creating Webhook Integrations
 
@@ -281,11 +291,13 @@ Follow this interactive guide to configure webhook integrations with payload map
   </TabItem>
 </Tabs>
 
+---
+
 ## Payload Configuration Best Practices
 
 ### Field Selection Strategy
 - **Include Essential Fields**: Always map critical fields like severity, service, and description
-- **Avoid Over-Mapping**: Don't extract unnecessary fields that won't be used
+- **Avoid Over-Mapping**: do not extract unnecessary fields that will not be used
 - **Consider Future Needs**: Include fields that might be useful for future automation
 - **Validate Data Types**: Ensure field types match expected webhook payload structure
 
@@ -300,6 +312,8 @@ Follow this interactive guide to configure webhook integrations with payload map
 - **Field Nesting**: Handle nested objects and arrays appropriately
 - **Error Handling**: Plan for missing or malformed data scenarios
 - **Performance**: Optimize payload size for processing efficiency
+
+---
 
 ## Troubleshooting Common Issues
 
@@ -327,19 +341,49 @@ Follow this interactive guide to configure webhook integrations with payload map
 - **Delayed Alert Creation**: Email processing may take longer than webhook endpoint delivery due to email routing
 - **Quiet Mode Active**: Verify Quiet Mode is not suppressing email-triggered alerts during quiet periods
 
+---
+
+## Related Integrations
+
+For outbound communication and bidirectional sync with external tools, configure runbook integrations:
+
+### Collaboration and Communication
+- Go to [Slack Integration](/docs/ai-sre/runbooks/integrations/slack) to send messages and create channels.
+- Go to [Microsoft Teams Integration](/docs/ai-sre/runbooks/integrations/teams) to post updates to Teams channels.
+- Go to [Google Chat Integration](/docs/ai-sre/runbooks/integrations/google-chat) to send messages to Google Chat spaces.
+- Go to [Zoom Integration](/docs/ai-sre/runbooks/integrations/zoom) to create incident bridge meetings.
+
+### Incident Management and On-Call
+- Go to [PagerDuty Integration](/docs/ai-sre/runbooks/integrations/pagerduty) to create and manage incidents.
+- Go to [OpsGenie Integration](/docs/ai-sre/runbooks/integrations/opsgenie) to create and manage alerts.
+
+### Ticketing and Documentation
+- Go to [Jira Integration](/docs/ai-sre/runbooks/integrations/jira) to create and update issues.
+- Go to [ServiceNow Integration](/docs/ai-sre/runbooks/integrations/servicenow) to manage incidents and work notes.
+- Go to [Confluence Integration](/docs/ai-sre/runbooks/integrations/confluence) to create postmortem pages.
+
+### Source Control
+- Go to [GitHub Integration](/docs/ai-sre/runbooks/integrations/github) to create branches and pull requests.
+
+### Automation
+- Go to [Harness Pipelines Integration](/docs/ai-sre/runbooks/integrations/harness-pipelines) to trigger deployment and remediation pipelines.
+
+Go to [Integrate External Tools](/docs/category/integrate-external-tools) to view all available runbook integrations.
+
+---
+
 ## Next Steps
 
 ### Getting Started
-- [Configure Alert Rules](../alerts/alert-rules.md) to process webhook-generated alerts
-- [Set Up Incident Types](../incidents/incident-types.md) for webhook-created incidents
-- [Set Up On-Call Schedules](../oncall/oncall.md) for webhook-triggered notifications
+- Go to [Configure Alert Rules](/docs/ai-sre/alerts/alert-rules/overview) to process webhook-generated alerts.
+- Go to [Set Up Incident Types](/docs/ai-sre/incidents/incident-types) for webhook-created incidents.
+- Go to [Set Up On-Call Schedules](/docs/ai-sre/oncall/create-oncall-schedules) for webhook-triggered notifications.
 
 ### Response Automation
-- [Create Runbooks](../runbooks/create-runbook.md) to automate responses to webhook-created incidents
-- [Configure Runbook Actions](../runbooks/runbook-action-integrations/slack.md) for outbound integrations with external systems
+- Go to [Create Runbooks](/docs/ai-sre/runbooks/create-runbook) to automate responses to webhook-created incidents.
 
 ### Advanced Configuration
-- [Manage Incidents](../incidents/incidents.md) created from webhook integrations
-- [AI SRE Best Practices](../resources/ai-sre-best-practices.md) for webhook integration optimization
+- Go to [Manage Incidents](/docs/ai-sre/incidents) to handle incidents created from webhook integrations.
+- Go to [AI SRE Best Practices](/docs/ai-sre/resources/ai-sre-best-practices) for webhook integration optimization.
 
 <NeedHelpFooter />

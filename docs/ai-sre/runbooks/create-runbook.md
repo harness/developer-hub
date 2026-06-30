@@ -37,17 +37,12 @@ Before diving into runbook creation, familiarize yourself with these core concep
 - **Variables**: Dynamic values that can be passed between actions and customized per execution.
 - **Sequences**: The order in which actions are executed within your workflow.
 
+---
+
 ## Creating Your Runbook
 
 <Tabs groupId="runbook-creation" queryString>
-  <TabItem value="interactive-guide" label="Interactive Guide" default>
-
-<DocVideo src="https://app.tango.us/app/embed/f23544ee-c6cb-4a81-85b2-51fd968eae9d?skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Create a Runbook" />
-
-Follow this interactive guide to create automated runbooks with actions, workflows, and integrations.
-
-  </TabItem>
-  <TabItem value="step-by-step" label="Step by Step">
+  <TabItem value="step-by-step" label="Step by Step" default>
 
 ### Step 1: Access Runbooks
 
@@ -75,18 +70,23 @@ Follow this interactive guide to create automated runbooks with actions, workflo
 
 ### Step 5: Add Your First Action
 
-1. Click **New Action** to add steps to your runbook workflow
-2. This opens the action selection interface where you can choose from various automation categories
+1. Click **New Step** to add steps to your runbook workflow
+2. Select **Action** from the dropdown menu to add an automated action
+
+<DocImage path={require('./integrations/static/runbook-new-step-menu.png')} width="40%" height="40%" title="New Step Menu Options" />
+
+3. This opens the action selection interface where you can choose from various automation categories
 
 ### Step 6: Explore Action Categories
 
 1. The **left panel** displays different action categories:
    - **Communication**: Slack, MS Teams, Zoom, and Email
-   - **Harness**: Pipeline execution, feature flags, deployments
-   - **Ticketing**: Jira, ServiceNow 
-   - **Change**: GitHub pull requests, code changes
-   - **Alerting and On-Call**: OpsGenie, PagerDuty
-   - **Lifecycle**: Key events, managing incident timeline, resolving alerts, and closing incidents
+   - **Tickets & Code**: Jira, ServiceNow, GitHub, Confluence
+   - **On-Call**: OpsGenie, PagerDuty
+   - **Incidents and Alerts**: Managing incident timeline, resolving alerts, and closing incidents
+   - **Other**: Additional integrations and custom actions
+
+<DocImage path={require('./integrations/static/runbook-select-action-dialog.png')} width="90%" height="90%" title="Select Action Dialog with Categories" />
 
 2. Browse through categories to find the appropriate action for your workflow
 
@@ -204,60 +204,28 @@ For event-driven runbooks, you can configure Key Events directly:
 3. All configured actions and workflows are preserved for future execution
 
   </TabItem>
+  <TabItem value="interactive-guide" label="Interactive Guide">
+
+<DocVideo src="https://app.tango.us/app/embed/f23544ee-c6cb-4a81-85b2-51fd968eae9d?skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Create a Runbook" />
+
+Follow this interactive guide to create automated runbooks with actions, workflows, and integrations.
+
+  </TabItem>
 </Tabs>
+
+---
 
 ## Advanced Configuration
 
-For advanced trigger configuration including Key Events, conditional logic, and complex automation scenarios, refer to the comprehensive [Create a Runbook Trigger](./create-trigger.md) guide.
+For advanced trigger configuration including Key Events, conditional logic, and complex automation scenarios, refer to the comprehensive [Create a Runbook Trigger](./triggers/create-trigger.md) guide.
 
-## Available Actions and Integrations
-
-Harness AI SRE provides a comprehensive library of pre-built actions across multiple categories. Choose the right combination of actions to build effective automation workflows.
-
-### Communication & Collaboration Tools
-Establish immediate communication channels and keep stakeholders informed throughout incident resolution.
-
-#### **[Slack Integration](./runbook-action-integrations/slack.md)**
-- **Send Notifications**: Broadcast alerts to channels or direct messages (supports Block Kit JSON for rich formatting).
-- **Create Channels**: Automatically create incident-specific channels.
-- **Start Threads**: Organize discussions and updates.
-- **Add Members**: Add members to the channel.
-- **Archive Channels**: Clean up after incident resolution.
-
-#### **[Microsoft Teams Integration](./runbook-action-integrations/teams.md)**
-- **Send Messages**: Send alerts to specific teams or channels.
-- **Create Meetings**: Automatically create Teams meeting, optionally attaching an AI transcription bot.
-
-#### **[Zoom Integration](./runbook-action-integrations/zoom.md)**
-- **Create Meetings**: Instantly set up incident response calls, optionally attaching an AI transcription bot.
-- **End Meetings**: End an active Zoom meeting.
-
-### Incident Response & Ticketing Systems
-Automate incident tracking, assignment, and resolution workflows across your preferred ticketing platforms.
-
-#### **[Jira Integration](./runbook-action-integrations/jira.md)**
-- **Issue Creation**: Automatically create tickets with relevant context.
-- **Status Updates**: Progress incidents through workflow states.
-- **Update Tickets**: Updates an existing Jira issue's summary, description, issue type, or adds a comment with relevant context.
-
-#### **[ServiceNow Integration](./runbook-action-integrations/servicenow.md)**
-- **Incident Management**: Create and manage ServiceNow incidents.
-- **Change Requests**: Initiate emergency or standard changes.
-- **Update Incidents**: Updates an existing ServiceNow incident's summary, description, issue type, or adds a comment with relevant context.
-
-### Automation & Pipeline Execution
-Execute remediation actions, deploy fixes, and trigger operational workflows.
-
-#### **[Harness Pipelines Integration](./runbook-action-integrations/harness-pipelines.md)**
-- **Pipeline Execution**: Trigger deployment or remediation pipeline.
-- **Feature Flag Management**: Deploy specific versions or rollback changes.
-- **Environment Management**: Manage infrastructure scaling or configuration.
+---
 
 ## Configure Triggers
 
 Triggers determine when and how your runbooks execute automatically. For comprehensive trigger configuration including interactive guides and detailed setup instructions, see:
 
-**[Create a Runbook Trigger](./create-trigger.md)** - Complete guide for configuring automated runbook execution based on incidents, alerts, and key events.
+**[Create a Runbook Trigger](./triggers/create-trigger.md)** - Complete guide for configuring automated runbook execution based on incidents, alerts, and key events.
 
 ### Quick Trigger Setup
 1. **Access Trigger Configuration**: Click the **Triggers** tab in your runbook editor
@@ -269,6 +237,8 @@ Triggers determine when and how your runbooks execute automatically. For compreh
 :::info
 **Note**: Multiple triggers can be added to a single runbook based on your use case requirements.
 :::
+
+---
 
 ## Configure Runbook Slugs
 
@@ -331,6 +301,8 @@ Once configured, on-call responders can execute runbooks from Slack:
 
 Go to [Use Slack Commands](/docs/ai-sre/get-started/slack-commands#running-runbooks-with-slugs) for complete user documentation on slug commands.
 
+---
+
 ## Test Your Runbook
 
 Thorough testing is essential before deploying runbooks to production. A well-tested runbook prevents failures during critical incidents and ensures reliable automation.
@@ -378,6 +350,8 @@ Thorough testing is essential before deploying runbooks to production. A well-te
 - [ ] Performance meets acceptable thresholds.
 - [ ] Security permissions are correctly enforced.
 
+---
+
 ## Deploy and Monitor
 
 Once testing is complete, deploy your runbook to production and establish monitoring to ensure continued effectiveness.
@@ -387,6 +361,8 @@ Once testing is complete, deploy your runbook to production and establish monito
 2. **Stakeholder Approval**: Obtain necessary approvals from the team.
 3. **Production Deployment**: Activate the runbook in your production environment.
 4. **Documentation Update**: Update operational documentation with runbook details.
+
+---
 
 ## Best Practices for Runbook Creation
 
@@ -399,6 +375,8 @@ Once testing is complete, deploy your runbook to production and establish monito
 - **Regular Updates**: Review and update runbooks regularly to reflect changes in infrastructure and processes.
 - **Timeout Configuration**: Set appropriate timeouts to prevent runbooks from hanging indefinitely.
 - **Conditional Logic**: Use conditional statements to avoid unnecessary action execution.
+
+---
 
 ## Troubleshooting Common Issues
 
@@ -416,25 +394,27 @@ Once testing is complete, deploy your runbook to production and establish monito
 - **Solution**: Optimize action sequences and enable parallel execution where possible.
 - **Prevention**: Regular performance testing and monitoring.
 
+---
+
 ## Next Steps
 
 ### Advanced Configuration
-- **[Create a Runbook Trigger](./create-trigger.md)**: Set up automated runbook execution based on incidents, alerts, and events.
-- **[Configure Authentication](./configure-authentication.md)**: Set up secure access to integrated tools and services.
-- **[Configure Incident Fields](./configure-incident-fields.md)**: Customize incident data collection and processing.
+- **[Create a Runbook Trigger](./triggers/create-trigger.md)**: Set up automated runbook execution based on incidents, alerts, and events.
+- **[Configure Authentication](./integrations/overview.md)**: Set up secure access to integrated tools and services.
+- **[Configure Incident Fields](./workflows/overview.md)**: Customize incident data collection and processing.
 - **[Return to Overview](./runbooks.md)**: Explore additional runbook capabilities and features.
 
 ### Integration Setup Guides
 #### Communication & Collaboration
-- **[Slack Integration](./runbook-action-integrations/slack.md)**: Complete setup guide for Slack automation.
-- **[Microsoft Teams Integration](./runbook-action-integrations/teams.md)**: Configure Teams notifications and collaboration.
-- **[Zoom Integration](./runbook-action-integrations/zoom.md)**: Set up automated meeting creation and management.
+- **[Slack Integration](./integrations/collaboration/slack.md)**: Complete setup guide for Slack automation.
+- **[Microsoft Teams Integration](./integrations/collaboration/teams.md)**: Configure Teams notifications and collaboration.
+- **[Zoom Integration](./integrations/collaboration/zoom.md)**: Set up automated meeting creation and management.
 
 #### Incident Management
-- **[Jira Integration](./runbook-action-integrations/jira.md)**: Automate issue tracking and project management.
-- **[ServiceNow Integration](./runbook-action-integrations/servicenow.md)**: Integrate with enterprise service management.
+- **[Jira Integration](./integrations/ticketing/jira.md)**: Automate issue tracking and project management.
+- **[ServiceNow Integration](./integrations/ticketing/servicenow.md)**: Integrate with enterprise service management.
 
 #### Automation & Pipelines
-- **[Harness Pipelines Integration](./runbook-action-integrations/harness-pipelines.md)**: Execute deployment and remediation pipelines.
+- **[Harness Pipelines Integration](./integrations/automation/harness-pipelines.md)**: Execute deployment and remediation pipelines.
 
 <NeedHelpFooter />

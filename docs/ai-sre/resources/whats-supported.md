@@ -7,6 +7,8 @@ redirect_from:
 - /docs/incident-response/resources/whats-supported
 ---
 
+# What's Supported in Harness AI SRE
+
 This page outlines the supported platforms, integrations, and features available in Harness AI SRE.
 
 For information about support in other Harness modules, visit the Harness Platform documentation.
@@ -19,12 +21,16 @@ To configure and use Harness AI SRE, ensure the following:
 - Administrator access to configure integrations, automations, and communication tools.
 - Service accounts with API access for third-party integrations (e.g., Jira, Slack, ServiceNow).
 
+---
+
 ## Incident Data Sources
 
 Harness AI SRE supports two primary ways to ingest incident-related data:
 
 1. **Webhooks** – Send alerts, tickets, and event data to AI SRE from external systems.
 2. **Harness Connectors & Delegates** – Direct integrations for bidirectional updates and automation.
+
+---
 
 ## Webhook-Based Integrations
 
@@ -59,6 +65,8 @@ These integrations send incident alerts, monitoring signals, and notifications t
 
 ### Custom Webhook Sources
 - Any tool capable of sending HTTP webhooks with JSON payloads can integrate with AI SRE.
+
+---
 
 ## Harness Connector / Delegate-Based Integrations
 
@@ -96,6 +104,8 @@ These integrations use Harness Connectors or Delegates for direct API-based inte
 - Harness – Execute pipelines, select input sets and projects  
 - Jenkins – Run jobs, select projects  
 
+---
+
 ## AI & Machine Learning Capabilities
 
 Harness AI SRE leverages AI-driven incident response with:
@@ -111,11 +121,15 @@ Harness AI SRE leverages AI-driven incident response with:
 Voice Transcription Analysis used in conjunction with Recall.ai 
 :::
 
+---
+
 ## Stakeholder Communication
 
 - **Status Updates**: Incident commanders can send structured status updates via email to stakeholders subscribed to impacted services. Recipients are resolved dynamically from service subscriber lists configured in the Service Directory.
 - **Service Subscriptions**: Individual users and Harness User Groups can subscribe to services to receive automated status update notifications during incidents affecting those services.
 - **Email Delivery**: Status updates are delivered via branded HTML emails from `aisre-noreply@harness.io`.
+
+---
 
 ## Feature Flags
 

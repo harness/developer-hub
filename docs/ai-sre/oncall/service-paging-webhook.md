@@ -22,6 +22,8 @@ When an alert is received via either method, the system automatically:
 2. Routes the alert to the service's assigned team
 3. Pages responders according to the service's escalation policy
 
+---
+
 ## How It Works
 
 When you enable a paging webhook on a service, the system atomically creates three components:
@@ -44,6 +46,8 @@ The paging webhook accepts these fields:
 | `status` | Alert status | `triggered` |
 | `created_at` | Alert creation timestamp | Current time |
 | `started_at` | Alert start timestamp | Current time |
+
+---
 
 ## Enable Service Paging Webhook
 
@@ -68,6 +72,8 @@ The webhook is now active and ready to receive alerts.
 :::info One Webhook Per Service
 Each service supports one paging webhook. Attempting to enable a second webhook on the same service will refresh the existing webhook configuration rather than creating a new one.
 :::
+
+---
 
 ## Using the HTTP Webhook
 
@@ -149,6 +155,8 @@ curl -X POST "$WEBHOOK_URL" \
   -d "{\"message\":\"$MESSAGE\",\"email_text\":\"$DETAILS\"}"
 ```
 
+---
+
 ## Using the Email Integration
 
 Each service paging webhook includes a unique email address. Sending an email to this address triggers the same paging flow as the HTTP webhook.
@@ -203,6 +211,8 @@ Emails exceeding these limits are rejected or truncated.
 
 Emails containing an `In-Reply-To` header are ignored. Only new emails (not replies) create alerts. This prevents duplicate alerts when someone replies to an alert notification.
 
+---
+
 ## Use Cases
 
 ### External Monitoring Tools
@@ -228,6 +238,8 @@ Emails containing an `In-Reply-To` header are ignored. Only new emails (not repl
 **Scenario:** A SaaS tool lacks a direct Harness integration but supports webhooks or email notifications.
 
 **Solution:** Configure the tool to send webhooks or emails to the service paging endpoint.
+
+---
 
 ## Disable or Refresh a Paging Webhook
 
@@ -257,6 +269,8 @@ Re-enabling a webhook refreshes its configuration and removes quiet mode. This i
 - Quiet mode is removed
 - The webhook resumes creating alerts and paging responders
 
+---
+
 ## Debug and Monitor Webhooks
 
 ### Service Paging Webhook Debug Drawer
@@ -275,6 +289,8 @@ The Service Directory UI includes a **Debug Drawer** that shows:
 3. Click **Debug** in the lower left corner of the dialog.
 ![Debug paging](./static/enable-paging-02.png)
 4. Review recent alerts and their status.
+
+---
 
 ## Best Practices
 
@@ -300,6 +316,8 @@ The Service Directory UI includes a **Debug Drawer** that shows:
 - **Use HTTPS only**: Webhook URLs use HTTPS. Do not downgrade to HTTP.
 - **Rotate keys periodically**: Disable and re-enable webhooks to refresh keys if they are compromised.
 - **Restrict email senders**: Configure external systems to send emails from trusted addresses only.
+
+---
 
 ## Troubleshooting
 
@@ -366,9 +384,11 @@ The Service Directory UI includes a **Debug Drawer** that shows:
 
 </details>
 
+---
+
 ## Next Steps
 
 - Go to [Integrate with the Service Directory](/docs/ai-sre/oncall/integrate-service-directory) to configure service-to-team mappings.
 - Go to [Define Escalation Policies](/docs/ai-sre/oncall/define-escalation-policies) to set up on-call routing.
 - Go to [Configure Alert Rules](/docs/ai-sre/oncall/configure-alert-rules) to create advanced alert routing logic.
-- Go to [Configure Webhooks](/docs/ai-sre/alerts/webhooks) for general webhook configuration beyond service paging.
+- Go to [Configure Webhooks](/docs/ai-sre/alerts/webhooks/overview) for general webhook configuration beyond service paging.

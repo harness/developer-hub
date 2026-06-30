@@ -23,6 +23,8 @@ The AI Investigator analyzes incidents using multiple data sources to identify r
 - Running domain-specific analysis logic (canary metric checks, change database queries, compliance validations)
 - Enriching investigations with infrastructure-specific context (cloud provider metadata, network topology, service dependencies)
 
+---
+
 ## What Are Agent Pipelines?
 
 Agent pipelines are custom investigation workflows built using Harness pipeline stages. When an incident is created (or manually triggered), the pipeline executes and returns investigation results that appear alongside built-in RCA theories in the Investigator panel.
@@ -33,6 +35,8 @@ Agent pipelines are custom investigation workflows built using Harness pipeline 
 - **Appear alongside built-in theories**: Custom pipeline results display in the same Investigator panel as RCA Change Agent theories
 - **Flexible data sources**: Connect any API, database, or internal tool accessible from Harness pipelines
 - **Domain-specific logic**: Implement analysis specific to your infrastructure (e.g., query deployment canary metrics, check feature flag states, validate compliance)
+
+---
 
 ## How It Works
 
@@ -99,6 +103,8 @@ Pipelines return investigation results in a structured format:
 - **confidence**: Confidence score (0-100) indicating likelihood this is the root cause
 - **evidence**: Array of supporting data points (deployments, metrics, logs, configuration changes)
 
+---
+
 ## Supported Step Types
 
 Agent pipelines use standard Harness pipeline stages to execute investigation logic:
@@ -124,6 +130,8 @@ Add context from infrastructure-specific sources:
 
 - **HTTP Step**: Fetch metadata from cloud providers (AWS, GCP, Azure), service meshes (Istio, Linkerd), or custom CMDBs
 - **Shell Script Step**: Query internal documentation wikis, runbook repositories, or compliance databases
+
+---
 
 ## Creating an Agent Pipeline
 
@@ -277,6 +285,8 @@ Set up the pipeline to run automatically on incident creation:
    - Trigger only for specific services
 5. Save the trigger.
 
+---
+
 ## Connecting Custom Data Sources
 
 ### Internal APIs
@@ -313,6 +323,8 @@ Fetch infrastructure metadata:
 - **GCP**: Query GCE, GKE, Cloud Run metadata using gcloud CLI or SDKs
 - **Azure**: Query VM, AKS, Functions metadata using az CLI or SDKs
 
+---
+
 ## Viewing Investigation Results
 
 ### In the Investigator Panel
@@ -342,6 +354,8 @@ Check which pipelines ran and their outputs:
    - "Investigator pipeline failed: [pipeline name]"
 4. Click the event to view detailed pipeline execution logs.
 
+---
+
 ## Use Cases
 
 ### Query Internal Change Databases
@@ -367,6 +381,8 @@ Check which pipelines ran and their outputs:
 **Scenario:** You use a vendor-specific tool (e.g., proprietary observability platform, custom CMDB) with no native Harness integration.
 
 **Solution:** Create a pipeline that calls the vendor API, fetches relevant data, and includes it as investigation evidence.
+
+---
 
 ## Early Access Limitations
 
@@ -395,6 +411,8 @@ The current Early Access release supports the core end-to-end flow but has these
 - **Limited error handling**: Implement retry logic and timeouts in pipeline stages manually
 - **Manual deduplication**: Design pipelines to avoid overlapping investigation scopes
 
+---
+
 ## Best Practices
 
 ### For Pipeline Design
@@ -418,6 +436,8 @@ The current Early Access release supports the core end-to-end flow but has these
 - **Cache frequently accessed data**: Store static data (service topology, configuration) in pipeline variables
 - **Limit lookback windows**: Query only relevant time ranges (e.g., 30 minutes before incident start)
 - **Paginate large result sets**: Fetch only the most recent N records to avoid overwhelming the Investigator panel
+
+---
 
 ## Troubleshooting
 
@@ -469,11 +489,15 @@ The current Early Access release supports the core end-to-end flow but has these
 
 </details>
 
+---
+
 ## Next Steps
 
 - Go to [Use RCA Change Agent](/docs/ai-sre/ai-agent/rca-change-agent) to learn about the built-in investigation capabilities.
 - Go to [Use AI Scribe Agent](/docs/ai-sre/ai-agent) to understand how the AI Scribe captures incident context used by agent pipelines.
 - Go to [Create Runbooks](/docs/ai-sre/runbooks/create-runbook) to automate response actions based on investigation findings.
+
+---
 
 ## Feedback and Support
 

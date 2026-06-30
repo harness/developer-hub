@@ -24,6 +24,8 @@ Built as part of the comprehensive AI SRE platform, the mobile app integrates se
     </a>
 </div>
 
+---
+
 ## Overview
 
 The mobile app serves as your command center for incident response, providing:
@@ -46,6 +48,8 @@ The mobile app serves as your command center for incident response, providing:
 - Integration with communication tools (Slack, Teams, Zoom)
 - Direct connection to monitoring and observability platforms
 
+---
+
 ## Prerequisites
 
 Before using the Harness AI SRE mobile app, ensure you have:
@@ -66,7 +70,7 @@ Before using the Harness AI SRE mobile app, ensure you have:
 
 ### **Integration Setup**
 Ensure your AI SRE platform is configured with:
-- [Alert integrations](/docs/ai-sre/alerts/integrations) from monitoring tools
+- [Alert integrations](/docs/ai-sre/alerts/alerts/integrations/overview) from monitoring tools
 - [Incident types](/docs/ai-sre/incidents/incident-templates) and severity levels
 - [On-call schedules](/docs/ai-sre/oncall) and escalation policies
 - [Runbook automation](/docs/ai-sre/runbooks) for incident response
@@ -74,6 +78,8 @@ Ensure your AI SRE platform is configured with:
 :::tip Optimize Your Setup
 For the best mobile experience, configure your *notification preferences* to ensure critical alerts reach you instantly while filtering out noise.
 :::
+
+---
 
 ## Getting Started
 
@@ -128,6 +134,8 @@ For detailed instructions on configuring notifications to work during Do Not Dis
 - **iOS users**: See the [iOS notification setup guide](notifications-ios)
 :::
 
+---
+
 ## Dashboard Overview
 
 Your mobile dashboard provides a comprehensive view of your incident response status and activities.
@@ -151,6 +159,8 @@ Access frequently used functions:
 - **Runbook Launcher**: Execute automated response workflows
 - **Team Communication**: Connect to incident-specific Slack channels or Zoom bridges
 - **Status Updates**: Post updates to status pages or communication channels
+
+---
 
 ## Intelligent Notification System
 
@@ -188,6 +198,8 @@ Configure notifications to match your response preferences:
 For comprehensive notification setup including Do Not Disturb configuration, see:
 - [Android notification setup guide](notifications-android)
 - [iOS notification setup guide](notifications-ios)
+
+---
 
 ## Alert Management
 
@@ -242,6 +254,8 @@ Filter alerts using multiple criteria:
 - **Automated Handoff**: Triggers notification to escalated responder
 - **Audit Trail**: Maintains complete escalation history
 
+---
+
 ## Incident Response
 
 ### **Incident Overview**
@@ -293,6 +307,8 @@ View and manage incidents with comprehensive details:
 <DocImage path={require('./static/incident-resolve.png')} width="30%" height="30%" title="Incident Resolution" />
 </div>
 
+---
+
 ## Common Workflows
 
 ### **Critical Alert Response**
@@ -316,6 +332,8 @@ View and manage incidents with comprehensive details:
 2. **Proactive Monitoring**: Review service health and potential issues
 3. **Shift Handoff**: Coordinate with previous/next on-call responder
 4. **Coverage Requests**: Request backup coverage for planned unavailability
+
+---
 
 ## Configuration & Settings
 
@@ -348,6 +366,8 @@ Customize your alert experience:
 - **Offline Mode**: Configure what data is available when disconnected
 - **Cache Management**: Clear stored data to free up device storage
 
+---
+
 ## Next Steps
 
 ### **Optimize Your Setup**
@@ -357,7 +377,7 @@ Customize your alert experience:
 - **Train Your Team**: Ensure all team members understand mobile response procedures
 
 ### **Learn More**
-- [AI SRE Getting Started Guide](/docs/ai-sre/get-started/onboarding-guide-admins)
+- [AI SRE Onboarding Guide for Administrators](/docs/ai-sre/get-started/onboarding/overview)
 - [Runbook Automation](/docs/ai-sre/runbooks)
 - [Alert Management Best Practices](/docs/ai-sre/resources/ai-sre-best-practices)
 - [Integration Setup Guides](/docs/category/integrations)

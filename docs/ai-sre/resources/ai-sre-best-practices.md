@@ -22,6 +22,8 @@ Effective incident management depends on the right approach. Four key best pract
 - **Unify Communication and Collaboration** – Centralize incident-related data, discussions, and actions within a single platform to streamline response efforts and reduce context switching.
 - **Deliver Real-Time Stakeholder Visibility** – Combine dashboards, AI-driven summarization, and automated status updates to provide stakeholders with continuous incident insights while minimizing disruptions.  
 
+---
+
 ## The DevOps and SRE Incident Management Process
 
 A more flexible and collaborative approach to incident management is commonly found in **DevOps and SRE** practices. Instead of a rigid framework, it emphasizes **preparedness, collaboration, and continuous learning**.
@@ -35,6 +37,8 @@ The DevOps and SRE approach follows these general stages:
 1. **Detection** – Teams use telemetry, monitoring tools, and SLO/SLI-based indicators to proactively detect issues, ensuring applications and services meet expected performance levels even when no outright failures occur.  
 2. **Response and Resolution** – An incident commander leads the response, assembling the right experts, gathering key data, and communicating with stakeholders to mitigate impact.  
 3. **Analysis and Preparation** – Post-incident reviews focus on continuous improvement, using insights from incidents, SLO trends, and error budget consumption to refine processes, documentation, and engineering practices.
+
+---
 
 ## The ITIL Incident Management Process
 
@@ -57,6 +61,8 @@ The ITIL approach to incident management relies on a structured plan with define
 4. **Resolution and Recovery** – Implement the resolution, validate it, and restore the system to its previous working condition.
 
 5. **Closure** – Retest the solution and confirm with the incident reporter that the issue has been resolved.
+
+---
 
 ## Next Steps
 

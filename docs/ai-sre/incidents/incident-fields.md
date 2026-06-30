@@ -20,6 +20,8 @@ Incident fields help you:
 - Support automation
 - Generate insights
 
+---
+
 ## Field Types
 
 ### Required Fields
@@ -65,7 +67,7 @@ The severity field uses numeric string values internally. When configuring runbo
 - **Maps to "3":** `SEV3`, `INTERNAL-NONPROD`, `MAINTENANCE`
 - **Maps to "4":** Any other value
 
-Go to [Configure Runbook Triggers](/docs/ai-sre/runbooks/create-trigger#severity-field) to learn how to use severity values in trigger conditions.
+Go to [Configure Runbook Triggers](/docs/ai-sre/runbooks/triggers/create-trigger#severity-field) to learn how to use severity values in trigger conditions.
 
 #### Service Context
 ```yaml
@@ -116,6 +118,8 @@ field_definitions:
     computed: true
     formula: "resolved_at - detected_at"
 ```
+
+---
 
 ## Field Configuration
 
@@ -168,6 +172,8 @@ validation:
     max: 1000000
 ```
 
+---
+
 ## Field Templates
 
 ### Service Incident
@@ -209,6 +215,8 @@ template:
     description: "Infrastructure issue detected in [service]"
 ```
 
+---
+
 ## Field Usage
 
 ### Incident Creation
@@ -244,6 +252,8 @@ resolve_incident:
         due_date: [timestamp]
 ```
 
+---
+
 ## Best Practices
 
 ### Field Design
@@ -267,6 +277,8 @@ resolve_incident:
 - Monitor effectiveness
 - Gather feedback
 
+---
+
 ## Next Steps
 
 ### Documentation
@@ -276,5 +288,5 @@ resolve_incident:
 - [Severity & Priority Labels](./severities-priorities.md)
 
 ### Related Topics
-- [Configure Fields](../runbooks/configure-incident-fields.md)
-- [Alert Rules](../alerts/alert-rules.md)
+- [Configure Fields](../runbooks/workflows/overview.md)
+- [Alert Rules](../alerts/alert-rules/overview.md)

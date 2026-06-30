@@ -19,6 +19,8 @@ By default, Harness AI SRE uses standard severity and priority labels. You can c
 
 **Important:** Custom labels only change the display text. The underlying severity/priority values remain the same, ensuring compatibility with integrations, APIs, and historical data.
 
+---
+
 ## Access Custom Options
 
 1. Navigate to **Organization Settings**
@@ -26,6 +28,8 @@ By default, Harness AI SRE uses standard severity and priority labels. You can c
 3. Use the tabs to configure:
    - **Incidents tab** - Configure severity levels
    - **Alerts tab** - Configure priority levels
+
+---
 
 ## Configure Incident Severity Levels
 
@@ -80,6 +84,8 @@ trigger:
 
 Go to [Incident Fields](./incident-fields.md#severity-field-values) for more information about using severity values in integrations.
 
+---
+
 ## Configure Alert Priority Levels
 
 ### Default Priority Labels
@@ -131,6 +137,8 @@ alert_rule:
     create_incident: true
 ```
 
+---
+
 ## Best Practices
 
 ### Label Design
@@ -155,7 +163,9 @@ alert_rule:
 - **Test integrations** - Verify external systems work with custom labels
 - **Document mappings** - Create a reference showing ID to label mappings
 - **Update documentation** - Update internal runbooks and procedures
-- **Monitor for issues** - Check that custom labels don't break workflows
+- **Monitor for issues** - Check that custom labels do not break workflows
+
+---
 
 ## Important Notes
 
@@ -165,7 +175,7 @@ alert_rule:
 - Labels in exports and reports
 - Labels in search and filters
 
-### What Doesn't Change
+### What does not Change
 - Underlying ID values
 - API request/response formats
 - Integration mappings
@@ -178,6 +188,8 @@ Custom severity and priority labels apply to:
 - All teams and users
 - All incidents and alerts (past and future)
 - All integrations and workflows
+
+---
 
 ## Troubleshooting
 
@@ -193,7 +205,9 @@ Custom severity and priority labels apply to:
 
 ### API requests failing
 - Always use ID values in API calls, never custom labels
-- See [Incident Fields](./incident-fields.md#severity-field-values) for correct ID values
+- Go to [Incident Fields](./incident-fields.md#severity-field-values) to review correct ID values
+
+---
 
 ## Example Configurations
 
@@ -224,12 +238,14 @@ SEV3 → "Minimal Impact"
 SEV4 → "No Customer Impact"
 ```
 
+---
+
 ## Next Steps
 
 ### Documentation
 - [Configure Incident Fields](./incident-fields.md)
 - [Incident Types](./incident-types.md)
-- [Alert Rules](../alerts/alert-rules.md)
+- [Alert Rules](../alerts/alert-rules/overview.md)
 
 ### Related Topics
 - [Incident Workflows](./incident-workflows.md)

@@ -26,6 +26,8 @@ AI SRE supports two types of subscribers:
 - **Individual users**: Specific users in your Harness organization
 - **User groups**: Harness platform User Groups (expanded to member emails at send time via the Harness V2 API)
 
+---
+
 ## Add Subscribers to a Service
 
 1. Navigate to **Project Settings** → **Service Directory (AI SRE)**.
@@ -39,15 +41,21 @@ AI SRE supports two types of subscribers:
 
 Repeat this process for each service where you want to configure stakeholder notifications.
 
+---
+
 ## Delivery Channel
 
 - **Email only**: Status updates are delivered via email from `aisre-noreply@harness.io` (sender name: "AI SRE").
 - **Branded format**: Emails include header and footer images and are rendered as HTML with incident context.
 - **No Slack delivery**: Slack notifications are not currently supported for status updates.
 
+---
+
 ## Who Can Send Status Updates
 
 Any user with access to the incident detail page can send a status update. RBAC controls for subscription management (who can add or remove subscribers from services) are planned for a future release.
+
+---
 
 ## Status Update Contents
 
@@ -65,6 +73,8 @@ The sender can edit both the subject line and message body before sending. The d
 AI SRE Status update for incident [incident-ID]
 ```
 
+---
+
 ## Recipient Preview
 
 Before sending, the UI displays:
@@ -74,6 +84,8 @@ Before sending, the UI displays:
 
 This allows the sender to verify the recipient list before delivery.
 
+---
+
 ## Best Practices
 
 ### For Administrators
@@ -81,13 +93,15 @@ This allows the sender to verify the recipient list before delivery.
 - **Map service ownership clearly**: Ensure every production service has a defined owner team so stakeholders know which services to subscribe to.
 - **Use user groups for role-based subscriptions**: Subscribe user groups (e.g., "Platform Leadership", "Customer Success") rather than individual users to reduce maintenance when team membership changes.
 - **Keep subscriptions current**: Review subscriber lists periodically and remove users who no longer need updates.
-- **Align with on-call structure**: Subscribers typically mirror your escalation policies — if a team is on-call for a service, their leadership should be subscribed for status updates.
+- **Align with on-call structure**: Subscribers typically mirror your escalation policies, if a team is on-call for a service, their leadership should be subscribed for status updates.
 
 ### For Incident Commanders
 
 - **Send updates at key milestones**: Status changes (Identified → Monitoring), mitigation actions, or significant scope changes are good times to send an update.
 - **Edit the default template**: The pre-populated content is a starting point. Add business context, customer impact, and next steps relevant to your stakeholders.
 - **Review recipients before sending**: Use the recipient preview to confirm the right stakeholders will receive the update.
+
+---
 
 ## Next Steps
 

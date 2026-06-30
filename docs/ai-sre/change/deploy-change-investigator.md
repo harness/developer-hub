@@ -16,6 +16,8 @@ sidebar_position: 2
 
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
+# Deploy Change Investigator Setup Guide
+
 The Deploy Change Investigator helps you understand what changed when incidents occur by connecting three critical data streams: builds, deployments, and code changes (PRs).
 
 ## How it works
@@ -33,10 +35,12 @@ The investigator connects your CI/CD pipeline data to provide precise answers ab
 The investigator maps deployments → builds → code changes, giving you precise answers to "what changed?" during incidents.
 
 :::info Why all three pieces matter
-- **Without builds:** Can't map deployments to code changes
-- **Without deploys:** Can't correlate incidents to specific releases
-- **Without PR ingestion:** Can't show which changes were in the deployment
+- **Without builds:** cannot map deployments to code changes
+- **Without deploys:** cannot correlate incidents to specific releases
+- **Without PR ingestion:** cannot show which changes were in the deployment
 :::
+
+---
 
 ## Prerequisites
 
@@ -46,13 +50,15 @@ Before starting, ensure you have:
 - **Pipeline permissions** to add webhook steps to your build and deployment pipelines
 - **Source control connector** (if not using Harness Code) - GitHub or Bitbucket credentials configured in your project
 
+---
+
 ## Set up source control connector
 
 :::tip Start here
 Set up your connector first. When you test your build webhook later, AI SRE will automatically create a PR ingestion job for your repository.
 :::
 
-**Skip this step if:** You're using Harness Code (it's already integrated).
+**Skip this step if:** you are using Harness Code (it is already integrated).
 
 ### If you already have a platform connector
 
@@ -63,6 +69,8 @@ Set up your connector first. When you test your build webhook later, AI SRE will
 
 When you send your first build webhook, AI SRE will use this connector to automatically create a PR ingestion job for your repository's main branch.
 
+---
+
 ## Create build webhook integration
 
 1. Navigate to **AI SRE** → **Integrations** (left sidebar)
@@ -72,13 +80,15 @@ When you send your first build webhook, AI SRE will use this connector to automa
    - **Type:** Build
    - **Select Template:** Harness Build
 4. Click **Save**
-5. **Copy the Endpoint URL** — you'll need this when configuring your pipeline
+5. **Copy the Endpoint URL**, you'll need this when configuring your pipeline
 
 The integration is created with a unique ID (e.g., `BUILB1A`) and a webhook URL like:
 
 ```
 https://app.harness.io/gateway/ir/tp/account/{accountId}/api/v1/mc/webhook/{webhookId}/{token}
 ```
+
+---
 
 ## Create deploy webhook integration
 
@@ -88,9 +98,11 @@ https://app.harness.io/gateway/ir/tp/account/{accountId}/api/v1/mc/webhook/{webh
    - **Type:** Deployment
    - **Select Template:** Harness Deployment
 3. Click **Save**
-4. **Copy the Endpoint URL** — you'll need this when configuring your pipeline
+4. **Copy the Endpoint URL**, you'll need this when configuring your pipeline
 
 You should now see both integrations listed in your integrations view.
+
+---
 
 ## Configure build pipeline webhooks
 
@@ -178,6 +190,8 @@ The Build webhook expects this JSON structure:
 - **service.version:** Same as artifact version
 - **buildId:** Unique build ID (pipeline execution ID)
 
+---
+
 ## Test build webhook and verify PR ingestion
 
 Run your build pipeline and verify two things:
@@ -209,6 +223,8 @@ At this point, you should have:
 - ✓ Build webhooks flowing (visible in Debug view)
 - ✓ PR ingestion job created and running
 :::
+
+---
 
 ## Configure deploy pipeline webhooks
 
@@ -282,18 +298,20 @@ The Deploy webhook expects this JSON structure:
 
 **Field mapping:**
 
-- **services[]** — Array of services deployed (can be one or many)
-- **services[].service** — Service name (must match `service.name` from Build webhook)
-- **services[].version** — Artifact version deployed (must match `artifact.version` from Build webhook)
-- **environments[]** — Array of environments deployed to
-- **changeId** — Unique deployment ID
-- **status** — "SUCCESS" or "FAILURE"
-- **deployedBy** — User who triggered the deployment
-- **deployTimestamp** — ISO 8601 timestamp of deployment
+- **services[]**, Array of services deployed (can be one or many)
+- **services[].service**, Service name (must match `service.name` from Build webhook)
+- **services[].version**, Artifact version deployed (must match `artifact.version` from Build webhook)
+- **environments[]**, Array of environments deployed to
+- **changeId**, Unique deployment ID
+- **status**, "SUCCESS" or "FAILURE"
+- **deployedBy**, User who triggered the deployment
+- **deployTimestamp**, ISO 8601 timestamp of deployment
 
 :::danger Critical mapping requirement
 The `services[].service` and `services[].version` **must match** the corresponding fields from your Build webhooks. This is how the investigator links deployments → builds → commits.
 :::
+
+---
 
 ## Test deploy webhook
 
@@ -304,6 +322,8 @@ After running a deployment, verify the webhook is being received:
 3. Select **Debug**
 4. You should see deployment events with timestamps and payloads
 
+---
+
 ## Verification checklist
 
 At this point, you should have:
@@ -313,6 +333,8 @@ At this point, you should have:
 - ✓ Deploy webhook integration created and receiving events
 - ✓ PR ingestion job created and syncing
 - ✓ Verified webhook data in Debug views
+
+---
 
 ## Troubleshooting
 
@@ -340,10 +362,12 @@ At this point, you should have:
   fallback="Check: (1) The connector has read permissions on the repository, (2) The branch being tracked matches your actual deploy branch name, (3) PRs have been merged to that branch recently. View the job details for specific error messages."
 />
 
+---
+
 ## Next steps
 
 Now that your Deploy Change Investigator is configured:
 
 - Learn how the [AI Agent uses change detection during incidents](/docs/ai-sre/ai-agent/rca-change-agent)
 - Explore [incident management workflows](/docs/ai-sre/incidents)
-- Configure [alert rules and integrations](/docs/ai-sre/alerts)
+- Configure [alert rules and integrations](/docs/ai-sre/alerts/alert-rules/overview)

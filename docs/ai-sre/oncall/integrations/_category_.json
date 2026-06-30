@@ -1,0 +1,8 @@
+{
+  "label": "Integrate External Tools",
+  "position": 8,
+  "link": {
+    "type": "generated-index",
+    "description": "Integrate external on-call management tools with Harness AI SRE to synchronize schedules, escalation policies, and user information."
+  }
+}

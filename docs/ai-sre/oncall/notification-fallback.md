@@ -1,15 +1,15 @@
 ---
-title: On-Call Notification Fallback System
+title: Configure Notification Fallback
 description: Configure multi-channel notification fallback to ensure on-call responders are reached via SMS, push, voice, email, or Slack when primary channels fail.
-sidebar_label: Notification Fallback
+sidebar_label: Configure Notification Fallback
 sidebar_position: 7
 ---
 
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-Harness AI SRE provides a multi-channel notification fallback system that automatically tries alternative notification methods when primary channels fail. This ensures on-call responders are reliably notified during critical incidents, even if their preferred notification channel is unavailable.
+# Configure Notification Fallback
 
----
+Configure multi-channel notification fallback to ensure on-call responders are reached via SMS, push, voice, email, or Slack when primary channels fail. Harness AI SRE automatically tries alternative notification methods when primary channels fail, ensuring on-call responders are reliably notified during critical incidents.
 
 ## How notification fallback works
 
@@ -83,8 +83,6 @@ Step 4: Voice Call
 
 This approach gives you time to respond via Slack or mobile app before receiving text messages or phone calls.
 
----
-
 ### Example 2: High-urgency immediate response
 
 Use all channels simultaneously for critical alerts:
@@ -96,8 +94,6 @@ Step 3: Voice Call + SMS
 ```
 
 This ensures maximum visibility immediately while escalating to repeated voice calls if unacknowledged.
-
----
 
 ### Example 3: Business hours vs. after hours
 
@@ -141,8 +137,6 @@ When SMS delivery fails:
 5. Retries up to 3 times with 60-second delays
 6. If all retries fail, moves to next notification step
 
----
-
 ### Voice call retry logic
 
 - **Maximum retries**: 3 attempts per escalation level
@@ -152,8 +146,6 @@ When SMS delivery fails:
 - **TwiML redirect**: Uses callback URL for custom call handling
 
 Voice calls are typically configured as later steps in notification rules since they are the most disruptive notification method.
-
----
 
 ### Slack retry logic
 
@@ -165,8 +157,6 @@ Voice calls are typically configured as later steps in notification rules since 
 
 Slack notifications fail gracefully when the user is not in the workspace or has disconnected their account.
 
----
-
 ### Mobile push retry logic
 
 - **Maximum retries**: 1 attempt (no automatic retry)
@@ -175,8 +165,6 @@ Slack notifications fail gracefully when the user is not in the workspace or has
 - **Delivery confirmation**: Via Firebase Cloud Messaging callbacks
 
 Mobile push notifications do not retry automatically. If delivery fails, the notification advances to the next step in the rule immediately.
-
----
 
 ### Email retry logic
 
@@ -326,8 +314,6 @@ Go to [Define Escalation Policies](/docs/ai-sre/oncall/define-escalation-policie
 - **Test your entire rule**: Use the test buttons to verify each contact method works before your on-call shift
 - **Configure backup channels**: Always include at least one SMS or voice step as a fallback
 
----
-
 ### For contact method management
 
 - **Keep contact information current**: Update phone numbers and email addresses immediately when they change
@@ -335,8 +321,6 @@ Go to [Define Escalation Policies](/docs/ai-sre/oncall/define-escalation-policie
 - **Install the mobile app**: Push notifications are the fastest way to receive and acknowledge incidents
 - **Test regularly**: Use test buttons to verify each contact method delivers successfully
 - **Label contacts clearly**: Use Work, Home, or Other labels to distinguish between contact methods
-
----
 
 ### For incident response
 

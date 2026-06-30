@@ -1,8 +1,0 @@
-{
-  "label": "Integrate External Tools",
-  "position": 5,
-  "link": {
-    "type": "generated-index",
-    "description": "Learn how to integrate Runbook actions with external tools and services including Slack, Teams, Zoom, Jira, ServiceNow, and Harness Pipelines for automated incident response and workflow orchestration."
-  }
-}

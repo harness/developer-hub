@@ -21,10 +21,12 @@ As new information becomes available, it updates theory confidence scores and ca
 
 The RCA Change Agent runs automatically as a background job whenever key events are added to an active incident. This means:
 
-- **Automatic triggering**: No manual configuration required — the agent activates when the AI Scribe Agent captures key events
+- **Automatic triggering**: No manual configuration required, the agent activates when the AI Scribe Agent captures key events
 - **Continuous updates**: Each time new key events are added, the agent re-evaluates its theories
 - **Progressive refinement**: Confidence scores adjust as more data becomes available
 - **Theory evolution**: New theories can be added, and unlikely theories can be ruled out as the incident progresses
+
+---
 
 ## ServiceNow Change Integration
 
@@ -51,6 +53,9 @@ If your organization already uses a Harness ServiceNow connector (common for pip
 When you save or update a ServiceNow connector in Harness, the system automatically creates an ingest job that polls the `change_request` table and makes those changes available to the RCA Change Agent.
 
 <!-- 
+
+---
+
 ## Investigation Tools
 
 The RCA Change Agent uses specialized tools to investigate incidents:
@@ -70,6 +75,8 @@ The RCA Change Agent uses specialized tools to investigate incidents:
 ### Code Investigation (Optional)
 When configured, the agent can access investigator runbooks that execute code-level analysis to examine specific services or components identified as potential causes.
 
+---
+
 ## Root Cause Theories
 
 The RCA Change Agent generates theories about potential root causes. Each theory includes:
@@ -88,9 +95,11 @@ The RCA Change Agent generates theories about potential root causes. Each theory
 
 Theories progress through these statuses as investigation continues:
 
-- **INVESTIGATING** (default) — Theory is being evaluated; more data is needed
-- **CONFIRMED** — High confidence this is the root cause based on strong evidence
-- **RULED_OUT** — Evidence indicates this is not the root cause
+- **INVESTIGATING** (default), Theory is being evaluated; more data is needed
+- **CONFIRMED**, High confidence this is the root cause based on strong evidence
+- **RULED_OUT**, Evidence indicates this is not the root cause
+
+---
 
 ## Integration with AI Scribe Agent
 
@@ -101,11 +110,13 @@ The RCA Change Agent depends on the AI Scribe Agent for structured incident data
 3. **Confidence scores update** as new key events provide additional context
 4. **Post-Incident Review action** (when configured in a runbook) generates human-readable reports using the RCA theories
 
-The quality of root cause theories depends directly on the completeness of the AI Scribe Agent's timeline. Teams that follow [communication best practices](/docs/ai-sre/ai-agent/#communication-best-practices) — particularly explicitly stating observed symptoms and root cause hypotheses — will see more accurate analysis.
+The quality of root cause theories depends directly on the completeness of the AI Scribe Agent's timeline. Teams that follow [communication best practices](/docs/ai-sre/ai-agent/#communication-best-practices), particularly explicitly stating observed symptoms and root cause hypotheses, will see more accurate analysis.
 
 :::note
 If the AI Scribe Agent was not active during an incident, the RCA Change Agent cannot run, as it requires the structured timeline and key events.
 :::
+
+---
 
 ## Viewing RCA Analysis
 
@@ -115,6 +126,8 @@ Root cause theories appear in the incident view as they are generated:
 - **Related items**: Click through to deployments, PRs, or change events linked to each theory
 - **Timeline correlation**: See which timeline events contributed to each theory
 - **Confidence progression**: Watch how confidence scores change as new data arrives
+
+---
 
 ## Example Analysis
 
@@ -137,6 +150,8 @@ Related: deployment deploy-1234, PR-456, alert payment-timeouts-high
 Evidence: Error rates spiked 2 minutes after deploy-1234, correlates with timeout changes in PR-456
 ```
 
+---
+
 ## Configuration
 
 ### Enabling RCA Analysis
@@ -147,7 +162,7 @@ The RCA Change Agent requires:
 2. **Valid services and environments** configured in your incident type
 3. **Alert integrations** connected to provide telemetry data
 
-No additional runbook configuration is required — the agent runs automatically when these prerequisites are met.
+No additional runbook configuration is required, the agent runs automatically when these prerequisites are met.
 
 ### Optional: Change Event Analysis
 
@@ -163,6 +178,8 @@ Investigator runbooks can be configured to enable deeper code-level analysis. Wh
 
 Contact your Harness representative for information on configuring investigator runbooks.
 
+---
+
 ## Data Sources
 
 The RCA Change Agent automatically analyzes:
@@ -176,6 +193,8 @@ The RCA Change Agent automatically analyzes:
 | **Change events** | Feature flags, infrastructure changes, configuration updates |
 | **Alert data** | Signals from connected observability platforms |
 | **System telemetry** | Metrics and traces from affected services |
+
+---
 
 ## Best Practices
 
@@ -194,17 +213,21 @@ The RCA Change Agent automatically analyzes:
 - **Update based on findings**: As you confirm or rule out causes, theories will adjust
 - **Document decisions**: Add key events when you confirm or rule out a root cause
 
+---
+
 ## Getting Started
 
 ### Quick Setup
 - [AI Scribe Agent](/docs/ai-sre/ai-agent/)
-- [Alert Integration](/docs/ai-sre/alerts/integrations)
+- [Alert Integration](/docs/ai-sre/alerts/alerts/integrations/overview)
 - [Runbook Automation](/docs/ai-sre/runbooks/)
 
 ### Related Resources
 - [Incident Management Overview](/docs/ai-sre/incidents/)
 - [Post-Incident Review](/docs/ai-sre/ai-agent/#post-incident-review)
 - [Runbook Automation](/docs/ai-sre/runbooks/) -->
+
+---
 
 ## Summary
 

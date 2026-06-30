@@ -19,6 +19,8 @@ The directory is automatically populated by services defined in Harness CD, so y
 - Each service can be mapped to a **team** and an **escalation policy**, which determines who gets paged when an alert for that service arrives.
 - When an alert payload includes a service identifier, AI SRE uses the directory to look up the correct on-call responder.
 
+---
+
 ## Set Up Service Mapping
 
 1. Navigate to **Project Settings** → **Service Directory (AI SRE)**.
@@ -27,6 +29,8 @@ The directory is automatically populated by services defined in Harness CD, so y
    - **Team**: The team responsible for this service.
    - **Escalation policy**: The escalation chain to use when this service is impacted.
 4. Save your mappings.
+
+---
 
 ## Configure Service Subscribers
 
@@ -46,6 +50,8 @@ Service subscribers receive status updates during incidents affecting their subs
 When an incident commander sends a status update for an incident affecting this service, all subscribers receive an email with incident details, current status, and mitigation actions.
 
 Go to [Configure Status Updates and Service Subscribers](/docs/ai-sre/incidents/status-updates) for complete documentation on the subscription model and delivery options.
+
+---
 
 ## Enable Service Paging Webhook
 
@@ -74,6 +80,8 @@ When you enable a paging webhook on a service, the system automatically creates:
 - **Third-party tools**: Connect SaaS tools that support webhooks or email notifications
 
 Go to [Service Paging Webhook](/docs/ai-sre/oncall/service-paging-webhook) for complete documentation on HTTP and email integration, field mapping, and troubleshooting.
+
+---
 
 ## Best Practices
 

@@ -59,7 +59,7 @@ The release notes describe recent changes to Harness AI SRE.
 
 - **ServiceNow Native Actions:** Runbooks now include native ServiceNow actions for creating incidents, updating incidents, and adding comments, without requiring custom webhook configuration. Fields are dynamically retrieved from your ServiceNow instance based on your connector. Configure a ServiceNow connector under Project Settings -> **Connectors**, then use the **Create ServiceNow Incident**, **Update ServiceNow Incident**, and **Add ServiceNow Comment** actions in your runbooks.
 
-- **User-Defined Webhook Templates:** You can now save webhook configurations as reusable templates and select them when creating new integrations. Configure a webhook once, click **Save as Template**, and reuse it across future webhooks. Templates appear in the **Select Payload Template** dropdown grouped under **System Templates** and **Custom Templates**. Templates are organization-scoped and use copy-on-write — changes do not propagate to existing webhooks. Go to [Configure Webhooks](/docs/ai-sre/alerts/webhooks) to configure webhook templates.
+- **User-Defined Webhook Templates:** You can now save webhook configurations as reusable templates and select them when creating new integrations. Configure a webhook once, click **Save as Template**, and reuse it across future webhooks. Templates appear in the **Select Payload Template** dropdown grouped under **System Templates** and **Custom Templates**. Templates are organization-scoped and use copy-on-write — changes do not propagate to existing webhooks. Go to [Configure Webhooks](/docs/ai-sre/alerts/webhooks/overview) to configure webhook templates.
 
 - **Named Alert Rules:** Alert rules now support custom display names, making it easier to identify and manage rules across your organization. Set a name when creating or editing an alert rule under **Alerts > Alert Rules**.
 
@@ -85,7 +85,7 @@ The release notes describe recent changes to Harness AI SRE.
 
 - **PagerDuty Migration Tooling:** Import schedules, escalation policies, and user configurations directly from PagerDuty. Accessible under **On-Call > Settings > Import**.
 
-- **Jira Dynamic Fields Integration:** The new **Create Jira Ticket V2** and **Update Jira Issue V2** [runbook actions](/docs/ai-sre/runbooks/runbook-action-integrations/jira) dynamically retrieve available fields based on the selected Jira project and issue type, replacing the previous static field configuration. Fields render with appropriate input types including multi-select for array fields. A manual key-value mode is available when the issue type is set dynamically using Mustache expressions.
+- **Jira Dynamic Fields Integration:** The new **Create Jira Ticket V2** and **Update Jira Issue V2** [runbook actions](/docs/ai-sre/runbooks/integrations/ticketing/jira) dynamically retrieve available fields based on the selected Jira project and issue type, replacing the previous static field configuration. Fields render with appropriate input types including multi-select for array fields. A manual key-value mode is available when the issue type is set dynamically using Mustache expressions.
 
 :::note
 On-call is currently optimized for teams using AI SRE's incident response and alert management workflows. Direct integrations with third-party observability tools (e.g., Datadog) that enable automatic paging workflows between those tools and AI SRE on-call are planned for a future release.

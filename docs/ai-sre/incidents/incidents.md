@@ -26,6 +26,8 @@ Incidents in Harness AI SRE help you:
 - Integrate with monitoring tools for automatic incident creation
 - Manage escalation policies and on-call notifications
 
+---
+
 ## Key Features
 
 ### Intelligent Incident Creation
@@ -53,6 +55,8 @@ Incidents in Harness AI SRE help you:
 - Team notifications and stakeholder communication
 - Action item tracking and assignment
 - Post-incident analysis and documentation
+
+---
 
 ## Creating an Incident
 
@@ -160,6 +164,8 @@ Follow this interactive guide to create and manage incidents with AI-powered ass
   </TabItem>
 </Tabs>
 
+---
+
 ## Best Practices
 
 ### Incident Creation and Classification
@@ -199,6 +205,8 @@ Follow this interactive guide to create and manage incidents with AI-powered ass
 - **Update Documentation**: Refine runbooks, procedures, and incident types based on lessons learned
 - **Share Knowledge**: Communicate insights and improvements with the broader team
 
+---
+
 ## Benefits
 
 - **Streamlined Response**: AI-powered incident creation reduces time to response and improves accuracy
@@ -209,11 +217,13 @@ Follow this interactive guide to create and manage incidents with AI-powered ass
 - **Continuous Improvement**: Action item tracking and post-incident analysis drive process optimization
 - **Integration Ready**: Seamless connection with monitoring tools, alert systems, and communication platforms
 
+---
+
 ## Next Steps
 
 ### Getting Started
 - [Configure Incident Types](./incident-types.md) to standardize incident classification
-- [Set Up Alert Rules](../alerts/alert-rules.md) to automatically create incidents from monitoring alerts
+- [Set Up Alert Rules](../alerts/alert-rules/overview.md) to automatically create incidents from monitoring alerts
 - [Configure On-Call Schedules](../oncall/oncall.md) for proper incident assignment and escalation
 
 ### Advanced Configuration
@@ -221,9 +231,9 @@ Follow this interactive guide to create and manage incidents with AI-powered ass
 - [Set Up Incident Workflows](./incident-workflows.md) for advanced automation
 - [Configure Incident Templates](./incident-templates.md) for consistent incident creation
 - [Configure Status Updates](./status-updates.md) for stakeholder communication
-- [Integrate Monitoring Tools](../alerts/integrations.md) for automatic incident generation
+- [Integrate Monitoring Tools](../alerts/alerts/integrations/overview.md) for automatic incident generation
 
 ### Best Practices Resources
 - [AI SRE Best Practices Guide](../resources/ai-sre-best-practices.md)
 - [Incident Response Playbooks](../runbooks/create-runbook.md)
-- [Team Training and Onboarding](../get-started/onboarding-guide-admins.md)
+- [AI SRE Onboarding Guide for Administrators](../get-started/onboarding/overview.md)

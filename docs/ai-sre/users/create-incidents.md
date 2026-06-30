@@ -11,7 +11,7 @@ import DocVideo from '@site/src/components/DocVideo';
 
 # Create Incidents
 
-When you spot a problem — whether from a customer report, degraded performance, or a teammate flagging something — you can declare an incident in Harness AI SRE. 
+When you spot a problem, whether from a customer report, degraded performance, or a teammate flagging something, you can declare an incident in Harness AI SRE. 
 
 The AI-powered Quick Start feature analyzes your problem description and auto-populates incident fields, so you can get an incident up and running in seconds.
 
@@ -37,7 +37,7 @@ The AI-powered Quick Start feature analyzes your problem description and auto-po
    <img src={require('../get-started/static/create-new-incident.png').default} alt="Create new incident form" width="450" style={{border: '1px solid black'}} />
 
 2. This will pre-populate relevant fields and associate appropriate runbooks.
-3. If you're unsure which type to pick, check with your team lead — incident types are configured by your administrator to match your organization's response processes.
+3. If you are unsure which type to pick, check with your team lead, incident types are configured by your administrator to match your organization's response processes.
 
 ### Step 3: Describe the Problem
 
@@ -70,20 +70,26 @@ Follow this interactive guide to create an incident with AI-powered assistance.
   </TabItem>
 </Tabs>
 
+---
+
 ## Create Incidents from Slack
 
 You can also create incidents directly from Slack using the `/harness new` command. This is especially useful during on-call shifts when you want to stay in your communication tool.
 
 ![Slack incident notification](../get-started/static/slack-incident-notification.png)
 
-See [Managing Incidents in Slack](/docs/ai-sre/get-started/slack-commands) for the full command reference.
+Go to [Managing Incidents in Slack](/docs/ai-sre/get-started/slack-commands) for the full command reference.
+
+---
 
 ## Best Practices for Incident Creation
 
-- **Choose the right incident type** — Select the most specific type available to get the right runbooks and field configuration.
-- **Write a clear description** — Good Quick Start descriptions lead to more accurate AI field suggestions. Include what's affected, what you're observing, and when it started.
-- **Verify auto-generated fields** — Always review and adjust AI-suggested values to ensure accuracy.
-- **Set correct severity levels** — Align severity with actual business impact and response time requirements.
+- **Choose the right incident type**, Select the most specific type available to get the right runbooks and field configuration.
+- **Write a clear description**, Good Quick Start descriptions lead to more accurate AI field suggestions. Include what's affected, what you are observing, and when it started.
+- **Verify auto-generated fields**, Always review and adjust AI-suggested values to ensure accuracy.
+- **Set correct severity levels**, Align severity with actual business impact and response time requirements.
+
+---
 
 ## What Happens Next
 
@@ -94,4 +100,4 @@ Once you save the incident:
 - Any **runbooks** associated with the incident type may be auto-attached.
 - The **Incident Details** page opens, where you'll manage the incident through resolution.
 
-To learn how to work through an active incident, see [Managing an Active Incident](./manage-incidents/manage-incidents.md).
+To learn how to work through an active incident, Go to [Managing an Active Incident](./manage-incidents/manage-incidents.md).

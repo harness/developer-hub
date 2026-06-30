@@ -7,7 +7,7 @@ sidebar_position: 1
 
 # Active Incident Management
 
-Once an incident is created — whether by you, a teammate, or automatically from a monitoring alert — the **Incident Details** page is your central workspace for driving it to resolution. 
+Once an incident is created, whether by you, a teammate, or automatically from a monitoring alert, the **Incident Details** page is your central workspace for driving it to resolution. 
 
 This section covers everything from acknowledging a page to closing out the incident.
 

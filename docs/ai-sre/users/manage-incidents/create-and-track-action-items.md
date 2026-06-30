@@ -7,7 +7,7 @@ sidebar_position: 6
 
 # Create and Track Action Items
 
-Action items capture work that needs to happen during or after an incident — things like deploying a permanent fix, updating documentation, adding monitoring coverage, or following up with an affected customer. 
+Action items capture work that needs to happen during or after an incident, things like deploying a permanent fix, updating documentation, adding monitoring coverage, or following up with an affected customer. 
 
 Tracking them inside the incident ensures nothing falls through the cracks.
 
@@ -53,6 +53,8 @@ The system automatically avoids creating duplicate action items. If an action it
 
 Detected action items appear in the **Action Items** pane on the incident detail page alongside manually created items.
 
+---
+
 ## Create an Action Item Manually
 
 You can also create action items manually when needed:
@@ -66,11 +68,15 @@ You can also create action items manually when needed:
    - **Due date**: When it needs to be done.
 5. Click the **check mark** to save.
 
+---
+
 ## Track Progress
 
 - Action items appear in a list on the **Action Items** tab with their current status.
 - Use the **pencil icon** to update an action item's status, reassign it, or adjust the due date.
 - Completed action items remain visible in the list for historical reference.
+
+---
 
 ## When to Create Action Items
 
@@ -84,9 +90,11 @@ You can also create action items manually when needed:
 - Runbook steps need to be added or updated based on what you learned.
 - Infrastructure changes are needed to prevent recurrence.
 
+---
+
 ## Best Practices
 
-- **Be specific** — "Fix the database" is too vague. "Increase connection pool max from 50 to 200 on db-primary-01 and add a CloudWatch alarm at 80% utilization" is actionable.
-- **Always assign an owner** — Unassigned action items don't get done. Every item needs a name next to it.
-- **Set realistic due dates** — Urgent follow-ups (like deploying a permanent fix for a workaround) should have short deadlines. Process improvements can have longer timelines, but should still have a date.
-- **Review before closing the incident** — Before marking an incident resolved, scan the action items tab. Make sure everything that came up during the incident has been captured.
+- **Be specific**, "Fix the database" is too vague. "Increase connection pool max from 50 to 200 on db-primary-01 and add a CloudWatch alarm at 80% utilization" is actionable.
+- **Always assign an owner**, Unassigned action items do not get done. Every item needs a name next to it.
+- **Set realistic due dates**, Urgent follow-ups (like deploying a permanent fix for a workaround) should have short deadlines. Process improvements can have longer timelines, but should still have a date.
+- **Review before closing the incident**, Before marking an incident resolved, scan the action items tab. Make sure everything that came up during the incident has been captured.

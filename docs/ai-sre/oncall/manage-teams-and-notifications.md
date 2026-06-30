@@ -7,7 +7,7 @@ sidebar_position: 6
 
 # Configure On-Call Teams and Routing
 
-Harness AI SRE uses **User Groups** from the Harness Platform as the organizational unit for on-call management. User Groups serve as "teams" in the on-call context — they own services, own escalation policies, and determine routing for alerts.
+Harness AI SRE uses **User Groups** from the Harness Platform as the organizational unit for on-call management. User Groups serve as "teams" in the on-call context, they own services, own escalation policies, and determine routing for alerts.
 
 This page covers both **administrator configuration** (User Groups, service ownership, routing) and **individual user configuration** (personal notification settings).
 
@@ -17,20 +17,22 @@ Harness AI SRE does not have a separate concept of "teams." Instead, it uses **H
 
 ### What are User Groups?
 
-User Groups are collections of users managed in the Harness Platform. They're used for:
+User Groups are collections of users managed in the Harness Platform. they are used for:
 - Role-based access control (RBAC)
 - Service ownership in AI SRE
 - Escalation policy ownership in AI SRE
 - Alert routing in on-call management
 
-For complete information on creating and managing User Groups, see [Add and Manage User Groups](/docs/platform/role-based-access-control/add-user-groups/) in the Harness Platform documentation.
+For complete information on creating and managing User Groups, Go to [Add and Manage User Groups](/docs/platform/role-based-access-control/add-user-groups/) in the Harness Platform documentation.
 
 ### User Groups in AI SRE On-Call
 
 In the on-call context, User Groups determine:
-- **Who owns which services** — Each service in the Service Directory can be assigned an owning User Group
-- **Who owns escalation policies** — Each escalation policy is owned by a User Group
-- **How alerts are routed** — Alerts for a service route to the service's owning User Group's escalation policy
+- **Who owns which services**, Each service in the Service Directory can be assigned an owning User Group
+- **Who owns escalation policies**, Each escalation policy is owned by a User Group
+- **How alerts are routed**, Alerts for a service route to the service's owning User Group's escalation policy
+
+---
 
 ## Configure Service Ownership
 
@@ -52,6 +54,8 @@ Services in the AI SRE Service Directory are assigned to User Groups. This deter
 - The alert routes to that User Group's escalation policy
 - The escalation policy determines which schedule (and therefore which on-call responder) receives the page
 
+---
+
 ## Escalation Policy Ownership
 
 Escalation policies are owned by User Groups. This ties the policy to a specific team.
@@ -69,25 +73,29 @@ When creating or editing an escalation policy:
 - When a service's owning User Group matches an escalation policy's owner, that policy is used for routing (unless the service specifies an override)
 - If a User Group has no default escalation policy, alerts for services owned by that User Group cannot be automatically routed
 
+---
+
 ## Alert Routing Flow
 
 Understanding how alerts route through User Groups, services, and escalation policies:
 
 1. **Alert arrives** with a service identifier in the payload
-2. **Service Directory lookup** — AI SRE finds the service in the Service Directory
-3. **User Group resolution** — AI SRE identifies the service's owning User Group
-4. **Escalation policy selection** — AI SRE uses:
+2. **Service Directory lookup**, AI SRE finds the service in the Service Directory
+3. **User Group resolution**, AI SRE identifies the service's owning User Group
+4. **Escalation policy selection**, AI SRE uses:
    - The service's escalation policy override (if configured), OR
    - The User Group's default escalation policy
-5. **Schedule lookup** — The escalation policy references one or more schedules
-6. **On-call responder identification** — AI SRE determines who is on-call at that moment
-7. **Notification dispatch** — The on-call responder's personal notification rules are triggered
+5. **Schedule lookup**, The escalation policy references one or more schedules
+6. **On-call responder identification**, AI SRE determines who is on-call at that moment
+7. **Notification dispatch**, The on-call responder's personal notification rules are triggered
 
 This flow ensures alerts always reach the right person based on service ownership and team structure.
 
+---
+
 ## User Notification Settings
 
-While administrators configure User Groups and service ownership, **each individual user** configures their own contact methods and notification rules. These personal settings determine how you're notified when you're on-call and an incident is assigned to you.
+While administrators configure User Groups and service ownership, **each individual user** configures their own contact methods and notification rules. These personal settings determine how you are notified when you are on-call and an incident is assigned to you.
 
 ### Contact Information
 
@@ -136,14 +144,14 @@ Navigate to **On-Call** → **Contact Settings** to manage your notification cha
 
 ### Notification Rules
 
-Notification rules define the sequence and timing of how you're notified when you're on-call.
+Notification rules define the sequence and timing of how you are notified when you are on-call.
 
 #### How Notification Rules Work
 
 When an incident is assigned to you:
 1. AI SRE starts at the first step in your notification rule
 2. Sends notification via the contact method(s) defined in that step
-3. If you don't acknowledge within the step's timeout, moves to the next step
+3. If you do not acknowledge within the step's timeout, moves to the next step
 4. Continues through steps until you acknowledge or the rule completes
 
 #### Creating Notification Steps
@@ -182,6 +190,8 @@ Step 4: SMS + Phone Call
 
 Go to [On-Call Notification Fallback System](/docs/ai-sre/oncall/notification-fallback) to understand multi-channel fallback behavior and retry logic.
 
+---
+
 ## Troubleshooting
 
 ### Service Alerts Not Routing
@@ -212,23 +222,27 @@ Go to [On-Call Notification Fallback System](/docs/ai-sre/oncall/notification-fa
 - Test the Slack connection using the Test button
 - Only one Slack account can be linked per user
 
+---
+
 ## Best Practices
 
 ### For Administrators
 
-- **Align User Groups with actual team structure** — User Groups should reflect real organizational teams
-- **Assign every production service to a User Group** — Unmapped services can't route alerts automatically
-- **Ensure every User Group has a default escalation policy** — Without one, alerts can't be routed
-- **Keep service ownership current** — Update the Service Directory when teams change ownership
-- **Document naming conventions** — Use consistent User Group names that clearly identify the team
+- **Align User Groups with actual team structure**, User Groups should reflect real organizational teams
+- **Assign every production service to a User Group**, Unmapped services cannot route alerts automatically
+- **Ensure every User Group has a default escalation policy**, Without one, alerts cannot be routed
+- **Keep service ownership current**, Update the Service Directory when teams change ownership
+- **Document naming conventions**, Use consistent User Group names that clearly identify the team
 
 ### For On-Call Responders
 
-- **Configure at least two contact methods** — Redundancy ensures you're reached even if one channel fails
-- **Test your notification setup regularly** — Use test buttons to verify delivery before your on-call shift
-- **Keep contact information current** — Update phone numbers and email addresses immediately when they change
-- **Review your notification rules** — Ensure escalation steps match your preferred notification sequence
-- **Install the mobile app** — Push notifications are the most reliable way to receive urgent alerts
+- **Configure at least two contact methods**, Redundancy ensures you are reached even if one channel fails
+- **Test your notification setup regularly**, Use test buttons to verify delivery before your on-call shift
+- **Keep contact information current**, Update phone numbers and email addresses immediately when they change
+- **Review your notification rules**, Ensure escalation steps match your preferred notification sequence
+- **Install the mobile app**, Push notifications are the most reliable way to receive urgent alerts
+
+---
 
 ## Summary
 

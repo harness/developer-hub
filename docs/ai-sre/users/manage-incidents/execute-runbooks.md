@@ -26,11 +26,13 @@ Some runbooks are automatically attached to an incident based on the incident ty
 
    ![Runbooks tab open](../../get-started/static/incident-detail-runbooks-tab-open.png)
 
+---
+
 ## Execute a Runbook
 
 ### From the Harness UI
 
-1. On the **Runbooks** tab, click **Execute** on an attached runbook — or click **Execute Additional Runbook** to add and run a different one.
+1. On the **Runbooks** tab, click **Execute** on an attached runbook, or click **Execute Additional Runbook** to add and run a different one.
 2. If adding a new runbook, search for or browse available runbooks, select the appropriate one, and confirm.
 3. Work through the steps in order:
    - **Automated steps** run on their own and report results (success, failure, output). Review the results before proceeding.
@@ -73,17 +75,21 @@ The system responds with a list of all runbook slugs available for the current p
 
 Go to [Use Slack Commands](/docs/ai-sre/get-started/slack-commands#running-runbooks-with-slugs) for complete documentation on runbook slug commands.
 
+---
+
 ## Choose the Right Runbook
 
-If you're unsure which runbook to use:
+If you are unsure which runbook to use:
 
-- **Check the incident type** — Your administrator has likely associated recommended runbooks with each type. Auto-attached runbooks are the first place to look.
-- **Browse the runbook library** — Navigate to **Runbooks** in the left panel to see all available runbooks, their descriptions, and which incident types they're designed for.
-- **Ask your team** — If multiple runbooks seem applicable, check with teammates in the incident channel.
+- **Check the incident type**, Your administrator has likely associated recommended runbooks with each type. Auto-attached runbooks are the first place to look.
+- **Browse the runbook library**, Navigate to **Runbooks** in the left panel to see all available runbooks, their descriptions, and which incident types they are designed for.
+- **Ask your team**, If multiple runbooks seem applicable, check with teammates in the incident channel.
+
+---
 
 ## Best Practices
 
-- **Start with auto-attached runbooks** — They're pre-selected for the incident type and are usually the most relevant first response.
-- **Review automated step results before moving on** — An automated step might fail or return unexpected output. Verify before proceeding to the next step.
-- **Don't skip manual steps** — Even if you think you know the procedure, follow the runbook. It exists to prevent steps from being missed during high-pressure situations.
-- **Note deviations** — If you need to deviate from the runbook (a step doesn't apply, you take a different action), document what you did in the [incident timeline](./use-the-incident-timeline.md) so it's captured for post-incident review.
+- **Start with auto-attached runbooks**, they are pre-selected for the incident type and are usually the most relevant first response.
+- **Review automated step results before moving on**, An automated step might fail or return unexpected output. Verify before proceeding to the next step.
+- **do not skip manual steps**, Even if you think you know the procedure, follow the runbook. It exists to prevent steps from being missed during high-pressure situations.
+- **Note deviations**, If you need to deviate from the runbook (a step does not apply, you take a different action), document what you did in the [incident timeline](./use-the-incident-timeline.md) so it is captured for post-incident review.

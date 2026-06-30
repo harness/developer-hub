@@ -26,6 +26,8 @@ Incident types are configured through the AI SRE UI, not through YAML files. Eac
 - **Pinned runbooks** - Runbooks that are automatically suggested for this incident type
 - **Base activity type** - The underlying incident category (e.g., Incident, Alert)
 
+---
+
 ## Creating an Incident Type
 
 To create a new incident type:
@@ -57,6 +59,8 @@ To create a new incident type:
    - Pinned runbooks appear at the top of the runbook list during incidents
 
 7. Click **Save**
+
+---
 
 ## Common Incident Type Patterns
 
@@ -105,6 +109,8 @@ To create a new incident type:
 - Scale Infrastructure
 - Failover to Secondary Region
 
+---
+
 ## Field Types and When to Use Them
 
 ### Text Field
@@ -138,6 +144,8 @@ To create a new incident type:
 ### Date/Time
 - Calendar and time picker
 - Use for: scheduled maintenance windows, deadline tracking
+
+---
 
 ## Using Incident Types
 
@@ -191,6 +199,8 @@ Configure alert rules to automatically create incidents of a specific type:
 
 When alerts match the rule, incidents are auto-created with the specified type.
 
+---
+
 ## Managing Incident Types
 
 ### Edit an Incident Type
@@ -222,6 +232,8 @@ AI SRE tracks incident type versions:
 - Are referenced in alert rules
 - Are referenced in runbook triggers
 
+---
+
 ## Best Practices
 
 ### Keep Types Focused
@@ -245,9 +257,11 @@ AI SRE tracks incident type versions:
 - Gather feedback from incident responders
 - Update types as your processes evolve
 
+---
+
 ## Related Documentation
 
 - [Incident Fields Reference](./incident-fields.md) - Standard fields available on all incidents
 - [Create Incidents](../users/create-incidents.md) - User guide for creating incidents
-- [Alert Rules](../alerts/alert-rules.md) - Configure alerts to auto-create incidents
+- [Alert Rules](../alerts/alert-rules/overview.md) - Configure alerts to auto-create incidents
 - [Create a Runbook](../runbooks/create-runbook.md) - Build runbooks to pin to incident types

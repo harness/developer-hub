@@ -2,7 +2,7 @@
 title: Runbook Management
 sidebar_label: Overview
 sidebar_position: 1
-description: Learn about Harness AI SRE Runbook Automation - a powerful tool for automating incident response with integrations for communication, remediation, and monitoring.
+description: Learn about Harness AI SRE Runbook Automation - a tool for automating incident response with integrations for communication, remediation, and monitoring.
 redirect_from:
 - /docs/incident-response/runbooks/runbooks
 ---
@@ -20,13 +20,15 @@ Harness AI SRE allows teams to **automate incident resolution** by leveraging **
 
 ### Integration Ecosystem
 - **Communication Tools**
-  - [Slack](./runbook-action-integrations/slack.md) - Channel management and notifications
-  - [Microsoft Teams](./runbook-action-integrations/teams.md) - Team collaboration
-  - [Zoom](./runbook-action-integrations/zoom.md) - Incident bridges
+  - [Slack](./integrations/collaboration/slack.md) - Channel management and notifications
+  - [Microsoft Teams](./integrations/collaboration/teams.md) - Team collaboration
+  - [Zoom](./integrations/collaboration/zoom.md) - Incident bridges
 
 - **Ticketing Systems**
-  - [Jira](./runbook-action-integrations/jira.md) - Issue tracking and updates
-  - [ServiceNow](./runbook-action-integrations/servicenow.md) - Incident management
+  - [Jira](./integrations/ticketing/jira.md) - Issue tracking and updates
+  - [ServiceNow](./integrations/ticketing/servicenow.md) - Incident management
+
+---
 
 ## Getting Started
 
@@ -35,15 +37,17 @@ Harness AI SRE allows teams to **automate incident resolution** by leveraging **
    - Configure triggers
    - Test and deploy
 
-2. [Configure Authentication](./configure-authentication.md)
+2. [Configure Authentication](./integrations/overview.md)
    - Set up integration access
    - Manage permissions
    - Secure your runbooks
 
-3. [Configure Incident Fields](./configure-incident-fields.md)
+3. [Configure Incident Fields](./workflows/overview.md)
    - Define custom fields
    - Set up field mapping
    - Configure templates
+
+---
 
 ## Example Runbook Templates
 
@@ -150,18 +154,20 @@ Harness AI SRE allows teams to **automate incident resolution** by leveraging **
    - Name: "API Incident Bridge"
    - Participants: ["@api-team", "@product"]
 
+---
+
 ## Next Steps
 
 ### Documentation
 - [Create a Runbook](./create-runbook.md)
-- [Configure Authentication](./configure-authentication.md)
-- [Configure Incident Fields](./configure-incident-fields.md)
+- [Configure Authentication](./integrations/overview.md)
+- [Configure Incident Fields](./workflows/overview.md)
 
 ### Integration Guides
 - Communication Tools
-  - [Slack Integration](./runbook-action-integrations/slack.md)
-  - [Microsoft Teams Integration](./runbook-action-integrations/teams.md)
-  - [Zoom Integration](./runbook-action-integrations/zoom.md)
+  - [Slack Integration](./integrations/collaboration/slack.md)
+  - [Microsoft Teams Integration](./integrations/collaboration/teams.md)
+  - [Zoom Integration](./integrations/collaboration/zoom.md)
 - Ticketing Systems
-  - [Jira Integration](./runbook-action-integrations/jira.md)
-  - [ServiceNow Integration](./runbook-action-integrations/servicenow.md)
+  - [Jira Integration](./integrations/ticketing/jira.md)
+  - [ServiceNow Integration](./integrations/ticketing/servicenow.md)

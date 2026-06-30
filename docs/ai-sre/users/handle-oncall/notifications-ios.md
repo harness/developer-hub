@@ -63,13 +63,17 @@ After configuring these settings, use the **Test Notifications** feature in the 
 5. Send a test notification to confirm it comes through with sound
 
 
-**Important:** If the test notification doesn't make a sound while in Do Not Disturb, double-check that you've:
+**Important:** If the test notification does not make a sound while in Do Not Disturb, double-check that you've:
 - Added Harness On-Call to your DND allowed apps list
 - Enabled Emergency Bypass for the Harness contact (for SMS/calls)
+
+---
 
 ## Customizing notification sounds
 
 For push notifications, you can pick a custom notification sound from **Notifications > Sounds**. If you want the notification to make a sound for a long time, we have notification sounds ranging from 1 second to 2 minutes long.
+
+---
 
 ## Important notes
 
@@ -79,21 +83,25 @@ For push notifications, you can pick a custom notification sound from **Notifica
 - **Screen Time**: If you have a time limit set on your device, iOS might not deliver notifications correctly
 - **Low Power Mode**: In rare cases, Low Power Mode can delay notification delivery
 
+---
+
 ## Additional recommendations
 
 - **Keep the app updated**: Regularly update the Harness On-Call app from the App Store to ensure you have the latest notification improvements
 - **Repeat the setup for all Focus modes**: If you use multiple Focus modes (Sleep, Work, Personal, Driving), make sure to add Harness On-Call as an allowed app in each one
 - **Test regularly**: Periodically test your notification setup, especially after iOS updates or if you've changed Focus mode configurations
 
+---
+
 ## Troubleshooting
 
-If you're not receiving notifications:
+If you are not receiving notifications:
 
 1. Verify notification permissions are enabled in **Settings > Harness On-Call > Notifications**
 2. Check that Harness On-Call is in your allowed apps list for your active Focus mode
 3. Ensure your device has an active internet connection
 4. Try restarting the Harness On-Call app
 5. If using SMS/calls, verify the Harness contact has Emergency Bypass enabled
-6. Check that you're logged into the correct Harness organization in the app
+6. Check that you are logged into the correct Harness organization in the app
 
 If issues persist, contact support through the app or email support@harness.io.

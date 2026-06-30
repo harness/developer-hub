@@ -10,7 +10,7 @@ redirect_from:
 # Use AI Scribe Agent
 
 :::info What is the AI Scribe Agent?
-The AI Scribe Agent is a specialized autonomous component of the Harness AI SRE platform that acts as a virtual scribe during incidents. It automatically documents communications, decisions, and actions across multiple channels to create comprehensive incident records without manual effort. The AI Scribe Agent works in conjunction with the [RCA Change Agent](/docs/ai-sre/ai-agent/rca-change-agent) — the Scribe captures the incident narrative, and the RCA Change Agent uses that structured data to identify root causes and drive corrective action.
+The AI Scribe Agent is a specialized autonomous component of the Harness AI SRE platform that acts as a virtual scribe during incidents. It automatically documents communications, decisions, and actions across multiple channels to create comprehensive incident records without manual effort. The AI Scribe Agent works in conjunction with the [RCA Change Agent](/docs/ai-sre/ai-agent/rca-change-agent), the Scribe captures the incident narrative, and the RCA Change Agent uses that structured data to identify root causes and drive corrective action.
 :::
 
 The AI Scribe Agent serves as your dedicated incident management specialist, automatically capturing and organizing all incident response activities across communication platforms. 
@@ -33,9 +33,11 @@ The AI Scribe Agent provides these specific autonomous functions:
   - Deliberately excludes routine activities like creating tickets, standard investigation steps, team coordination, and minor configuration changes
 
 ### Communication Analysis
-<!-- CHANGED (comment #5): Rewrote "Context Preservation: Maintains the complete narrative of an incident" — this was presenting an implementation detail as a named feature. What actually happens is the agent persists state between invocations and processes messages incrementally. -->
+<!-- CHANGED (comment #5): Rewrote "Context Preservation: Maintains the complete narrative of an incident", this was presenting an implementation detail as a named feature. What actually happens is the agent persists state between invocations and processes messages incrementally. -->
 - **Continuity Across the Incident**: The AI Scribe maintains context by tracking conversation state and processing new messages incrementally, ensuring events from early in the incident are available when later messages are analyzed.
 - **Timeline Construction**: Creates chronological records of events
+
+---
 
 ## Communication Platform Integrations
 
@@ -71,6 +73,8 @@ The AI SRE Scribe Agent participates in Teams meetings to:
 - **Speaker Attribution**: Maintains record of who said what in the transcript
 - **Timeline Integration**: Adds significant discussion points to the incident timeline as key events
 - **Action Item Detection**: Automatically extracts action items from meeting transcripts where someone explicitly commits to a task, including assignee and due date if mentioned
+
+---
 
 ## Automated Documentation Features
 
@@ -123,6 +127,8 @@ Memory leak identified in payment service after metric review
 
 Note: Key events are concise, executive-level summaries. The complete messages and full context remain available in the conversation transcript.
 
+---
+
 ## AI-Native Post-Mortem Generation
 
 :::info Note
@@ -172,6 +178,8 @@ If generation fails, any previously generated post-mortem is preserved. The erro
 
 The timeline and event data produced by the AI Scribe Agent serves as a primary input to the [RCA (Root Cause Analysis) Change Agent](/docs/ai-sre/ai-agent/rca-change-agent). The RCA Change Agent runs in realtime as the incident collects new data, ingesting the Scribe's structured timeline alongside alert and telemetry data to identify causal chains and recommend likely root cause candidates so that engineers can focus on long term remediation.
 
+---
+
 ## Maximizing the AI SRE Scribe Agent
 
 ### Optimal Configuration
@@ -182,7 +190,7 @@ The timeline and event data produced by the AI Scribe Agent serves as a primary 
 - **Platform Coverage**: Deploy across all communication platforms
 
 ### Communication Best Practices
-<!-- CHANGED (comment #16): Reframed the keyword prefix tips. Previously the framing implied the AI requires these cues to function, which undermines the "intelligent" positioning. Changed to present them as tips that help the AI Scribe capture intent accurately — useful guidance without suggesting the NLP falls back to keyword matching. -->
+<!-- CHANGED (comment #16): Reframed the keyword prefix tips. Previously the framing implied the AI requires these cues to function, which undermines the "intelligent" positioning. Changed to present them as tips that help the AI Scribe capture intent accurately, useful guidance without suggesting the NLP falls back to keyword matching. -->
 These tips help the AI Scribe capture your intent more accurately. The Scribe uses NLP to interpret messages in context, but clear formatting makes it easier to detect what matters most:
 - **Decision Markers**: Prefix key decisions with "DECISION:" to help the Scribe identify them reliably
 - **Action Formatting**: Use "ACTION ITEM:" to flag tasks clearly
@@ -199,7 +207,7 @@ These tips help the AI Scribe capture your intent more accurately. The Scribe us
 
 ### AI Scribe Capabilities vs. Human Scribes
 
-<!-- CHANGED (comment #6): Changed "Captures 100% of communications" to an accurate scoped claim. The Scribe does not capture DMs, threads the bot isn't in, side conversations, phone calls, or in-person discussions. "100%" is indefensible. -->
+<!-- CHANGED (comment #6): Changed "Captures 100% of communications" to an accurate scoped claim. The Scribe does not capture DMs, threads the bot is not in, side conversations, phone calls, or in-person discussions. "100%" is indefensible. -->
 
 | Aspect | AI Scribe Agent | Human Scribe |
 |--------|---------------------|---------------|
@@ -208,18 +216,22 @@ These tips help the AI Scribe capture your intent more accurately. The Scribe us
 | Consistency | Uniform documentation format | Varies by individual |
 | Cost | Fixed platform cost | Requires dedicated staff time |
 
+---
+
 ## Getting Started
 
 ### Quick Setup
-- [Configure Slack Integration](/docs/ai-sre/runbooks/runbook-action-integrations/slack)
-- [Set Up Zoom Integration](/docs/ai-sre/runbooks/runbook-action-integrations/zoom)
-- [Connect Microsoft Teams](/docs/ai-sre/runbooks/runbook-action-integrations/teams)
+- [Configure Slack Integration](/docs/ai-sre/runbooks/integrations/slack)
+- [Set Up Zoom Integration](/docs/ai-sre/runbooks/integrations/zoom)
+- [Connect Microsoft Teams](/docs/ai-sre/runbooks/integrations/teams)
 
 ### Related Resources
 - [Incident Management Overview](/docs/ai-sre/incidents/)
 - [Runbook Automation](/docs/ai-sre/runbooks/)
-- [Alert Integration](/docs/ai-sre/alerts/integrations)
+- [Alert Integration](/docs/ai-sre/alerts/alerts/integrations/overview)
 - [RCA Change Agent](/docs/ai-sre/ai-agent/rca-change-agent)
+
+---
 
 ## Summary
 

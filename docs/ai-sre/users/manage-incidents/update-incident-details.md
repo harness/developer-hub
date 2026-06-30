@@ -17,7 +17,9 @@ Accurate details help stakeholders stay informed, trigger the right automated wo
 - Click **Edit** on the **Incident Summary** to update the description with new findings or context.
 - Click **Save** after making changes.
 
-Update fields whenever the situation changes — for example, if you discover additional affected services or need to reassign the incident to another responder.
+Update fields whenever the situation changes, for example, if you discover additional affected services or need to reassign the incident to another responder.
+
+---
 
 ## Update Incident Status
 
@@ -25,14 +27,16 @@ Keep the status current as you work through the incident. Status changes are vis
 
 | Status | Meaning |
 | --- | --- |
-| **Investigating** | You're actively looking into the issue. |
+| **Investigating** | you are actively looking into the issue. |
 | **Identified** | Root cause or a contributing factor has been found. |
-| **Monitoring** | A fix has been applied; you're watching for stability. |
+| **Monitoring** | A fix has been applied; you are watching for stability. |
 | **Resolved** | The incident is closed. |
 
 Change the status from the incident details page by clicking the status field and selecting the new value.
 
 ![Incident status dropdown](../../get-started/static/incident-status-dropdown.png)
+
+---
 
 ## Add Key Events
 
@@ -43,7 +47,9 @@ Key events mark important milestones: root cause identified, mitigation applied,
 3. Click the **check mark** to save.
 4. Click **Save** from the top right.
 
-Key events appear in the incident timeline and are used by the [AI Scribe Agent](/docs/ai-sre/ai-agent) when generating post-incident summaries. Adding them as they happen — rather than reconstructing after the fact — produces a more accurate record.
+Key events appear in the incident timeline and are used by the [AI Scribe Agent](/docs/ai-sre/ai-agent) when generating post-incident summaries. Adding them as they happen, rather than reconstructing after the fact, produces a more accurate record.
+
+---
 
 ## Send Status Updates
 
@@ -86,8 +92,10 @@ Send updates at significant milestones during the incident:
 Status updates allow stakeholders to stay informed without joining the incident war room or interrupting responders with "what's the status?" messages. Send updates proactively at key milestones.
 :::
 
+---
+
 ## Best Practices
 
-- **Update status as soon as the phase changes** — don't wait until resolution to batch-update. Real-time status drives stakeholder confidence and automated workflows.
-- **Be specific in key events** — "Identified root cause: connection pool exhaustion on db-primary-01" is far more useful than "Found the issue."
-- **Reassign when appropriate** — If you've identified that the incident belongs to another team or specialist, update the assignee and notify them.
+- **Update status as soon as the phase changes**, do not wait until resolution to batch-update. Real-time status drives stakeholder confidence and automated workflows.
+- **Be specific in key events**, "Identified root cause: connection pool exhaustion on db-primary-01" is far more useful than "Found the issue."
+- **Reassign when appropriate**, If you've identified that the incident belongs to another team or specialist, update the assignee and notify them.

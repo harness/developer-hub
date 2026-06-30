@@ -25,6 +25,8 @@ Incident Types help you:
 - Associate relevant runbooks and response procedures
 - Ensure appropriate escalation paths and team assignments
 
+---
+
 ## Key Features
 
 ### Standardized Classification
@@ -44,6 +46,8 @@ Incident Types help you:
 - Standardized incident descriptions and procedures
 - Consistent data collection across incident types
 - Streamlined incident reporting and analysis
+
+---
 
 ## Configuration Steps
 
@@ -126,6 +130,8 @@ Follow this interactive guide to create and configure incident types with custom
   </TabItem>
 </Tabs>
 
+---
+
 ## Best Practices
 
 ### Incident Type Design
@@ -152,6 +158,7 @@ Follow this interactive guide to create and configure incident types with custom
 - Test incident type configurations with sample scenarios
 - Train teams on proper incident type selection and usage
 
+---
 
 ## Common Incident Types
 
@@ -175,6 +182,7 @@ Follow this interactive guide to create and configure incident types with custom
 - **Key Fields**: Error messages, affected features, rollback requirements
 - **Runbooks**: Debugging procedures, rollback workflows
 
+---
 
 ## Benefits
 
@@ -185,9 +193,11 @@ Follow this interactive guide to create and configure incident types with custom
 - **Compliance**: Structured data collection for audit and regulatory requirements
 - **Learning**: Historical data analysis for continuous improvement
 
+---
+
 ## Next Steps
 
-- [Configure Alert Rules](../alerts/alert-rules.md) to automatically create incidents
+- [Configure Alert Rules](../alerts/alert-rules/overview.md) to automatically create incidents
 - [Create Runbooks](../runbooks/create-runbook.md) for automated response procedures
 - [Set Up Incident Workflows](./incident-workflows.md) for advanced automation
 - [Configure Custom Fields](./incident-fields.md) for specialized data collection

@@ -28,6 +28,8 @@ Harness AI SRE ensures incident security by restricting access, encrypting data,
 - **Automation & Runbook Security**: Ensures that only authorized users execute automated actions.
 - **Audit & Compliance**: Logs every action for tracking and compliance reviews.
 
+---
+
 ## Role-Based Access Control (RBAC)
 
 AI SRE uses the Harness Platform's RBAC system. Roles are configured under **Organization**, **Account**, or **Project** settings → **Roles**.
@@ -206,6 +208,8 @@ Create roles that match your organization's needs using the available AI SRE per
 3. Under the **AI SRE** resource group, enable the permissions required for the role.
 4. Assign the role to users or user groups under **Project Settings** → **Access Control** → **Users** or **User Groups**.
 
+---
+
 ## Security Components
 
 <Tabs>
@@ -252,6 +256,8 @@ Harness AI SRE integrates with communication tools and on-call platforms through
 </TabItem>
 </Tabs>
 
+---
+
 ## Operational Security
 
 Harness AI SRE ensures security at every stage:
@@ -275,6 +281,8 @@ Harness AI SRE ensures security at every stage:
 5. **Third-Party Integration Security**  
    - OAuth tokens, API keys, and access scopes protect integrations.  
    - Secure connections use TLS 1.3 encryption.
+
+---
 
 ## Best Practices
 

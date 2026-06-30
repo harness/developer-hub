@@ -25,6 +25,8 @@ Workflow automation in AI SRE uses **form-based UI configuration with Mustache t
 - Reference incident data using Mustache syntax like `{{incident.title}}` or `{{alert.severity}}`
 - Test actions before saving
 
+---
+
 ## Automation Patterns
 
 ### Pattern 1: Alert Detection → Incident Creation
@@ -47,8 +49,6 @@ Workflow automation in AI SRE uses **form-based UI configuration with Mustache t
 4. Click **Save**
 
 **Result**: When P1 or P2 alerts are received, incidents are automatically created with pre-populated fields.
-
----
 
 ### Pattern 2: Incident Creation → Automated Response
 
@@ -86,8 +86,6 @@ Workflow automation in AI SRE uses **form-based UI configuration with Mustache t
    - Click **Save**
 
 **Result**: P1 incidents automatically trigger the runbook, creating a Zoom bridge and notifying responders.
-
----
 
 ### Pattern 3: Status Change → Stakeholder Notification
 
@@ -129,11 +127,9 @@ Workflow automation in AI SRE uses **form-based UI configuration with Mustache t
 
 **Result**: When incidents are marked resolved, stakeholders are notified and a review task is created in Jira.
 
----
-
 ### Pattern 4: Time-Based Escalation
 
-**Use case**: If a P1 incident isn't acknowledged within 5 minutes, escalate to VP Engineering
+**Use case**: If a P1 incident is not acknowledged within 5 minutes, escalate to VP Engineering
 
 **How to configure**:
 
@@ -163,8 +159,6 @@ Workflow automation in AI SRE uses **form-based UI configuration with Mustache t
    - **Only run if**: `incident.status` not equals `Acknowledged`
 
 **Result**: If P1 incidents remain unacknowledged for 5 minutes, executives are paged.
-
----
 
 ### Pattern 5: Deployment Change → Proactive Investigation
 
@@ -300,6 +294,8 @@ incident.status changed_to Resolved
 alert.priority equals p1_critical
 ```
 
+---
+
 ## Integration Examples
 
 ### Slack Incident Channel Creation
@@ -364,7 +360,7 @@ Requires custom configuration using Jira Automation Rules:
      - Method: PUT
      - Body: `{"status": "{{issue.status}}"}`
 
-See [Jira Integration Guide](../runbooks/runbook-action-integrations/jira.md) for complete setup.
+Go to [Jira Integration Guide](../runbooks/integrations/ticketing/jira.md) for complete setup instructions.
 
 ### ServiceNow Change Correlation
 
@@ -386,7 +382,9 @@ See [Jira Integration Guide](../runbooks/runbook-action-integrations/jira.md) fo
    - Go to **Investigation** tab
    - ServiceNow changes appear as root cause theories
 
-See [RCA Change Agent](../ai-agent/rca-change-agent.md) for details.
+Go to [RCA Change Agent](../ai-agent/rca-change-agent.md) for more details.
+
+---
 
 ## Best Practices
 
@@ -417,10 +415,12 @@ See [RCA Change Agent](../ai-agent/rca-change-agent.md) for details.
 - Note any prerequisites (credentials, permissions)
 - Keep runbooks focused on single workflows
 
+---
+
 ## Related Documentation
 
 - [Create a Runbook](../runbooks/create-runbook.md) - Detailed runbook creation guide
-- [Runbook Triggers](../runbooks/create-trigger.md) - Configure automatic execution
-- [Alert Rules](../alerts/alert-rules.md) - Route alerts and auto-create incidents
-- [Slack Integration](../runbooks/runbook-action-integrations/slack.md) - Slack action reference
-- [Jira Integration](../runbooks/runbook-action-integrations/jira.md) - Jira action reference
+- [Runbook Triggers](../runbooks/triggers/create-trigger.md) - Configure automatic execution
+- [Alert Rules](../alerts/alert-rules/overview.md) - Route alerts and auto-create incidents
+- [Slack Integration](../runbooks/integrations/collaboration/slack.md) - Slack action reference
+- [Jira Integration](../runbooks/integrations/ticketing/jira.md) - Jira action reference

@@ -18,6 +18,8 @@ The AI SRE Overview Dashboard shows the current state of your systems and incide
 ![AI SRE dashboard](./static/ai-sre-dashboard-overview.png)
 <!-- Screenshot: Home dashboard or platform overview -->
 
+---
+
 ## AI Agents
 
 Two AI agents run automatically during an incident and work together as it unfolds.
@@ -39,6 +41,8 @@ The scores update as new events come in, so the analysis stays current throughou
 
 ![RCA Change Agent theories](../ai-agent/static/rca-change-agent-theories-panel.png)
 <!-- Screenshot: RCA theories panel showing confidence scores and linked deployments/PRs -->
+
+---
 
 ## Alerts and Incidents
 
@@ -62,6 +66,8 @@ Once an incident is open, it links to the affected services, the runbooks that h
 ![Incident detail view](./static/incident-list.png)
 <!-- Screenshot: Open incident showing timeline, linked services, and runbook activity -->
 
+---
+
 ## Runbooks and Actions
 
 Runbooks and actions let you codify your response procedures so they execute consistently every time. Runbooks define the overall sequence, while actions are the individual steps that carry it out.
@@ -83,6 +89,8 @@ Actions are the individual steps inside a runbook. Some are simple, like posting
 
 Actions that talk to external systems run through a [Harness Delegate](/docs/platform/delegates/delegate-concepts/delegate-overview) to keep the connection secure.
 
+---
+
 ## On-Call Management
 
 On-call management lets you define who is responsible and how they get notified. You set up rotation schedules, escalation policies, and notification channels so the right person is always reachable.
@@ -95,6 +103,8 @@ On-call management lets you define who is responsible and how they get notified.
 Currently, this feature is behind a feature flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
+
+---
 
 ## Fire Drills
 
@@ -110,6 +120,8 @@ Currently, this feature is behind a feature flag. Contact [Harness Support](mail
 
 :::
 
+---
+
 ## Change Events
 
 Change events track modifications to your system that could cause problems: code commits, deployments, feature flag changes, infrastructure updates, and third-party changes.
@@ -118,6 +130,8 @@ They show up alongside incident data so you can check whether something changed 
 
 ![Change events feed](./static/change-list.png)
 <!-- Screenshot: Change events list shown alongside an incident timeline -->
+
+---
 
 ## Integrations
 

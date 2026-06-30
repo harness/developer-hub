@@ -10,6 +10,8 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+# AI SRE Security
+
 Harness AI SRE includes security measures to protect incident data, ensuring confidentiality, integrity, and availability. It integrates with the Harness Platform’s security features, including authentication, role-based access control (RBAC), audit trails, and secret management. 
 
 Security measures include:
@@ -27,6 +29,8 @@ Harness AI SRE ensures incident security by restricting access, encrypting data,
 - **Data Protection**: Encrypts incident metadata, logs, and communication history.
 - **Automation & Runbook Security**: Ensures that only authorized users execute automated actions.
 - **Audit & Compliance**: Logs every action for tracking and compliance reviews.
+
+---
 
 ## Security Components
 
@@ -74,6 +78,8 @@ Harness IR integrates with communication tools and on-call platforms through sec
 </TabItem>
 </Tabs>
 
+---
+
 ## Operational Security
 
 Harness IR ensures security at every stage:
@@ -97,6 +103,8 @@ Harness IR ensures security at every stage:
 5. **Third-Party Integration Security**  
    - OAuth tokens, API keys, and access scopes protect integrations.  
    - Secure connections use TLS 1.3 encryption.
+
+---
 
 ## Best Practices
 
