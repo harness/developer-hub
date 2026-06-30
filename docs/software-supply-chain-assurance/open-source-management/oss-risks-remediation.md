@@ -181,7 +181,7 @@ To set up the Auto PR configuration:
   * You can switch back to the Strict preset at any time.
   :::
 
-3. Select the radio button beside Custom to choose the Custom preset. Configure the following settings:
+3. Select the radio button beside `Custom` to choose the Custom preset. Configure the following settings:
   * **Security Conditions**
     * Enable the toggle beside `Create PR only if no new vulnerabilities are introduced` to raise a pull request only if there are no new vulnerabilities found within the scanned dependencies. This is enabled by default with the Strict preset.
     * Enable the toggle beside `Create PR only if critical and high vulnerabilities are resolved` to raise a pull request only if the critical and high vulnerabilities are resolved from the scanned dependencies. This is enabled by default with the Strict preset.
