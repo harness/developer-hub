@@ -73,9 +73,9 @@ In **Monitored Service**, click **Click to autocreate a monitored service**.
 
 Harness automatically creates a monitored service using a concatenation of the service and environment names. For example, a service named `todolist` and an environment named `dev` results in a monitored service with the name `todolist_dev`.
 
-:::warning
+:::info GitX support for monitored services
 
-Monitored services are not compatible with GitX. Monitored services will always fetch the service and infrastructure information from the **default branch** and not from the feature branch. 
+Monitored services can be stored in Git repositories using GitX, enabling version control and feature branch support for verification configurations. Go to [Store monitored services in Git](/docs/platform/git-experience/gitx-monitored-services) to configure GitX for monitored services.
 
 :::
 

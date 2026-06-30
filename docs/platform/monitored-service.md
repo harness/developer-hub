@@ -19,9 +19,9 @@ Currently, [built-in Harness variables and expressions](/docs/category/variables
 
 :::
 
-:::warning
+:::info GitX support for monitored services
 
-Monitored services are not compatible with GitX. Monitored services will always fetch the service and infrastructure information from the **default branch** and not from the feature branch. 
+Monitored services can be stored in Git repositories using GitX. This enables version control, code review workflows, and feature branch support for your verification configurations. Go to [Store monitored services in Git](/docs/platform/git-experience/gitx-monitored-services) to learn how to configure GitX for monitored services.
 
 :::
 

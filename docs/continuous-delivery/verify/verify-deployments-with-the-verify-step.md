@@ -162,6 +162,12 @@ When a fail-fast threshold is breached during verification, the deployment is ma
 
 Continuous Verification monitors health trend deviations using logs and metrics obtained from the health source, such as APM and logging tools, via a monitored service. A health source is an APM or logging tool that monitors and aggregates data in your deployment environment. You can add multiple health sources.
 
+:::info Store monitored services in Git
+
+You can store monitored service definitions in Git repositories using GitX, enabling version control, code review workflows, and feature branch support for your verification configurations. Go to [Store monitored services in Git](/docs/platform/git-experience/gitx-monitored-services) to configure GitX for monitored services.
+
+:::
+
 ## Service Instance Identifier (SII)
 
 The Service Instance Identifier (SII) is a feature used in Continuous Verification to identify [new or changed nodes](/docs/continuous-delivery/verify/cv-results/interpret-metric-results#nodes-section) during a deployment. It acts as a filter to pinpoint metrics related to what has been deployed. Continuous Verification uses the SII to calculate the deployed components based on observed metrics. This is particularly useful in scenarios like canary deployments, where the SII helps determine which nodes are stable and which nodes represent the canary in the current phase of analysis.
