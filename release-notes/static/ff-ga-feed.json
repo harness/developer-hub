@@ -1813,60 +1813,53 @@
     "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CCM_DISABLE_STATISTICAL_ANOMALIES",
+    "flagKey": "DISABLE_STATISTICAL_ANOMALIES",
     "description": "Disables the legacy statistical anomaly detection model and uses only the improved ML-based detection for more accurate anomaly identification.",
     "gaStartDate": "2026-07-01",
     "module": "Cloud & AI Cost Management",
     "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "CCM_ANOMALIES_COST_TYPES_CALCULATION",
+    "flagKey": "ANOMALIES_COST_TYPES_CALCULATION",
     "description": "Enables anomaly detection for each cost type (unblended, amortized, net amortized) in addition to existing anomaly calculations.",
     "gaStartDate": "2026-07-01",
     "module": "Cloud & AI Cost Management",
-    "lifecycleState": "Limited GA"
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CCM_ANOMALIES_COST_TYPES",
+    "flagKey": "ANOMALIES_COST_TYPES",
     "description": "Enables viewing and filtering anomalies by cost type (unblended, amortized, net amortized) in Cloud & AI Cost Management.",
     "gaStartDate": "2026-07-01",
     "module": "Cloud & AI Cost Management",
-    "lifecycleState": "Limited GA"
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CCM_COST_CATEGORY_ANOMALY_DETECTION",
+    "flagKey": "COST_CATEGORY_ANOMALY_DETECTION",
     "description": "Enables anomaly detection based on cost categories, allowing organizations to track spending anomalies at the business unit or service level.",
     "gaStartDate": "2026-07-01",
     "module": "Cloud & AI Cost Management",
-    "lifecycleState": "Limited GA"
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CCM_USE_PREAGGREGATED_MV",
+    "flagKey": "USE_PREAGGREGATED_MV",
     "description": "Improves cost report query performance and data consistency across Cloud & AI Cost Management dashboards.",
     "gaStartDate": "2026-07-01",
     "module": "Cloud & AI Cost Management",
     "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CCM_ANOMALY_EXCLUDE_RECURRING_FEES",
-    "description": "Excludes recurring fees, commitment charges, taxes, credits, and adjustments from anomaly detection to reduce false positives.",
-    "gaStartDate": "2026-07-01",
-    "module": "Cloud & AI Cost Management",
-    "lifecycleState": "Limited GA"
-  },
-  {
-    "flagKey": "CCM_ANOMALY_EXCLUDE_MARKETPLACE",
+    "flagKey": "ANOMALY_EXCLUDE_MARKETPLACE",
     "description": "Excludes cloud marketplace charges from anomaly detection to focus on infrastructure and service spend anomalies.",
     "gaStartDate": "2026-07-01",
     "module": "Cloud & AI Cost Management",
-    "lifecycleState": "Limited GA"
+    "lifecycleState": "Beta"
   },
   {
-    "flagKey": "CCM_RECOMMENDATION_AWS_PASSTHROUGH_PRESETS",
+    "flagKey": "RECOMMENDATION_AWS_PASSTHROUGH_PRESETS",
     "description": "Enables preset support for AWS Cost Optimization Hub recommendations, providing predefined recommendation filters and configurations.",
     "gaStartDate": "2026-07-01",
     "module": "Cloud & AI Cost Management",
-    "lifecycleState": "Limited GA"
+    "lifecycleState": "Beta"
   },
   {
     "flagKey": "ARTIFACT_LIFECYCLE_POLICY",
