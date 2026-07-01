@@ -3,6 +3,8 @@ title: What's supported by Harness SCS
 description: The SCS module supports these components and standards.
 sidebar_label: What's supported
 sidebar_position: 10
+redirect_from:
+  - /docs/software-supply-chain-assurance/ssca-supported
 ---
 
 import Ssca from '/docs/software-supply-chain-assurance/shared/ssca-supported.md';

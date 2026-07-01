@@ -3329,7 +3329,7 @@ const sidebars: SidebarsConfig = {
         "software-supply-chain-assurance/get-started/overview",
         "software-supply-chain-assurance/get-started/key-concepts",
         "software-supply-chain-assurance/get-started/get-started",
-
+        "software-supply-chain-assurance/get-started/ssca-supported",
         {
           type: "html",
           value: 'Use SCS',
@@ -3390,7 +3390,6 @@ const sidebars: SidebarsConfig = {
           value: "Troubleshooting & Resources",
           className: "horizontal-bar",
         },
-        "software-supply-chain-assurance/ssca-supported",
         "software-supply-chain-assurance/faq",
 
         {
