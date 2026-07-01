@@ -25,7 +25,7 @@ This is a one-time setup done from the **Integrations** section of IDP, and can 
 
     <DocImage path={require('./static/integrations-config.png')} />
 
-3. The **Infra Configuration** panel opens with two steps in the sidebar: [Kubernetes Configurations](#kubernetes-configurations) and [Docker Configurations](#docker-configurations)
+3. The **Infra Configuration** panel opens with three steps in the sidebar: [Kubernetes Configurations](#kubernetes-configurations), [Docker Configurations](#docker-configurations), and [Sync Configurations](#sync-configurations).
 
     <DocImage path={require('./static/infra-config.png')} />
 
@@ -54,6 +54,10 @@ Data collection for each integration runs as pods inside your Kubernetes cluster
 Data collection pods run as containers that need images to start. By default, IDP pulls these images from the public Harness container registry. 
 
 
+:::info
+Docker Configurations can only be configured at the account level and are not editable at the [organization or project scope](/docs/internal-developer-portal/rbac/scopes#scopes-idp-20).
+:::
+
 :::tip
 All fields in this section are optional. Configure them if any of the following apply:
 
@@ -73,4 +77,30 @@ All fields in this section are optional. Configure them if any of the following 
     
       <DocImage path={require('./static/docker-connector-images.png')} />
 
-3. Click **Save**. The initial configuration is now complete and you may create your integrations successfully.
+3. Click **Continue** to proceed to [Sync Configurations](#sync-configurations).
+
+---
+
+## Sync Configurations
+
+:::info 
+Sync Configurations can only be configured at the account level and are not editable at the [organization or project scope](/docs/internal-developer-portal/rbac/scopes#scopes-idp-20).
+
+This is an optional configuration.
+:::
+
+By default, integration sync data travels through the default endpoint (i.e., `accounts.harness.io`, `app.harness.io`, or `app3.harness.io`). This section lets you override that behavior if your network restricts outbound traffic to your account's vanity URL only.
+
+<DocImage path={require('./static/sync-configurations.png')} />
+
+1. Toggle on the **Use vanity URL for sync traffic** checkbox if your network whitelists your custom vanity URL (e.g., `yourcompany.harness.io`) and does not allow the default endpoint.
+
+    Once enabled, the sync traffic routes through your vanity URL. No manual URL input is needed.
+
+    :::info
+    If your account has no vanity URL configured, the default endpoint is used regardless of this setting.
+    :::
+
+2. Click **Save**.
+
+The initial configuration is now complete and you may create your integrations successfully.
