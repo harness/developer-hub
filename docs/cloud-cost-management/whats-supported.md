@@ -110,4 +110,68 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>PL_ENABLE_USER_IMPERSONATION</td>
         <td>Enables user impersonation for platform. By user impersonation, you can run stimulated the platform as another user.</td>
     </tr>
+    <tr>
+        <td>CCM_ANOMALIES_CONDITIONAL_DRILL_DOWN</td>
+        <td>Shows perspective link when drill down is missing for anomalies</td>
+    </tr>
+    <tr>
+        <td>CCM_DISABLE_STATISTICAL_ANOMALIES</td>
+        <td>Disables statistical model anomalies and shows only prophet-based anomalies</td>
+    </tr>
+    <tr>
+        <td>CCM_ANOMALIES_PROPHET_V2</td>
+        <td>Enables Prophet V2 model for anomaly detection</td>
+    </tr>
+    <tr>
+        <td>CCM_ANOMALY_LOOKBACK_RECOMPUTATION</td>
+        <td>Revises existing anomalies with latest cost data</td>
+    </tr>
+    <tr>
+        <td>CCM_ANOMALY_EXTENDED_RERUN_DAYS</td>
+        <td>Reruns anomaly detection on past 15 days instead of 4 days</td>
+    </tr>
+    <tr>
+        <td>CCM_ANOMALY_REQUIRE_BOTH_THRESHOLDS</td>
+        <td>Requires both cost and percentage thresholds for anomaly filtering</td>
+    </tr>
+    <tr>
+        <td>CCM_ANOMALY_WHITELISTING</td>
+        <td>Enables ignore list rule in anomalies</td>
+    </tr>
+    <tr>
+        <td>CCM_ANOMALY_EXCLUDE_RECURRING_FEES</td>
+        <td>Excludes recurring fees, commitments, taxes, credits, and adjustments from anomaly detection</td>
+    </tr>
+    <tr>
+        <td>CCM_ANOMALY_CC_OTHER_FILTER_BYPASS</td>
+        <td>Bypasses additional non-cost-category filters for cost category anomalies in perspectives</td>
+    </tr>
+    <tr>
+        <td>CCM_ANOMALY_EXCLUDE_MARKETPLACE</td>
+        <td>Excludes marketplace charges from anomaly detection</td>
+    </tr>
+    <tr>
+        <td>CCM_RECOMMENDATION_AWS_PASSTHROUGH_V2</td>
+        <td>Uses AWS Cost Optimization Hub instead of AWS Cost Explorer for recommendations</td>
+    </tr>
+    <tr>
+        <td>CCM_RECOMMENDATION_AWS_PASSTHROUGH_V2_READ</td>
+        <td>Enables API filtering for AWS passthrough recommendations V2</td>
+    </tr>
+    <tr>
+        <td>CCM_RECOMMENDATION_COST_TYPES</td>
+        <td>Enables cost type support for recommendations</td>
+    </tr>
+    <tr>
+        <td>CCM_NODE_POOL_RECOMMENDATIONS_V2</td>
+        <td>Enables node pool recommendations V2</td>
+    </tr>
+    <tr>
+        <td>CCM_FILTER_AUTOSCALED_NODEPOOLS</td>
+        <td>Filters out autoscaled node pools from recommendations</td>
+    </tr>
+    <tr>
+        <td>CCM_WORKLOAD_RECOMMENDATIONS_V2</td>
+        <td>Enables workload recommendations V2</td>
+    </tr>
 </table>
