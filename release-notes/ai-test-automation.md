@@ -25,6 +25,16 @@ The release notes describe recent changes to Harness AI Test Automation.
 
 ## June 2026
 
+### 2026.06.v2
+
+#### New Features
+
+- **Task-level configuration overrides with browser relaunch**  
+  You can now apply a different configuration to a specific group of steps instead of the whole test. Use this when navigating between applications that have different security requirements, for example when one application needs cross-origin security set differently than the calling application. The same mechanism can also apply a constant wait across a defined set of steps. Harness relaunches the browser with the overridden configuration so the targeted steps run under the correct context.
+
+- **Faster AI Task execution with the agentic executor**  
+  AI Tasks now run on a new agentic executor that replaces the legacy multi-agent architecture (13+ agents with 5 to 7 serial LLM calls per step) with a single tool-calling loop. Per-step latency drops from 35 to 60 seconds down to 5 to 10 seconds, and token cost is reduced by approximately 76%. The new executor is gated behind a feature flag and applies to AI-generated test execution only. Existing recorded-replay tests continue to run on the previous path and are unaffected.
+
 ### 2026.06.v1
 
 #### New Features
