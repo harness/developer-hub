@@ -29,6 +29,16 @@ These release notes describe recent changes to Harness Platform.
 ---
 ## Important feature change notice
 
+:::danger BREAKING CHANGE: Audit Trail YAML Optimization (Effective: Aug 16, 2026)
+
+Harness is updating how YAML is stored in the Audit Trail. When there is no meaningful difference between the old and new state of a resource, the YAML will no longer be stored in the audit entry.
+
+- **Current behaviour**: Audit log entries always include old and new YAML snapshots, even when there is no actual change in the resource configuration.
+- **New behaviour**: When there is no change between the old and new YAML, audit entries indicate that no change occurred, and the YAML snapshots are not stored.
+
+**Action Required**: This should not affect most users. However, if you have automation that reads YAML data from audit log entries (for example, for resources such as secrets, where a value change may not reflect in the YAML), update your automation to handle audit entries that may not contain YAML data. Please reach out to [Harness support](mailto:support@harness.io) in case of any concerns.
+:::
+
 :::warning Breaking change: Bitbucket Cloud cross-workspace API deprecation (Delegate v26.02.88600 and SCM Service v1.45.1)
 
 Starting with **Delegate version 26.02.88600** and **SCM Service version 1.45.1**, Harness has migrated to the new Bitbucket Cloud APIs following Atlassian's [deprecation of cross-workspace APIs](https://community.atlassian.com/forums/Bitbucket-articles/Bitbucket-Cloud-Announcing-End-of-Life-for-Cross-Workspace-APIs/ba-p/3196105).
@@ -40,6 +50,18 @@ Starting with **Delegate version 26.02.88600** and **SCM Service version 1.45.1*
 **Recommendation:** Switch to **workspace-level access tokens** for full Bitbucket Cloud connector functionality. For configuration guidance, see the [Bitbucket connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference#credentials-settings).
 
 :::
+
+:::danger OIDC ID Token API Access Update (Effective: Mar 20, 2026)
+To strengthen security and reduce potential risks, the [**OIDC ID token–related APIs**](https://apidocs.harness.io/oidc-id-token) will be made internal to Harness and will no longer be available for direct access.
+
+  - **Current behaviour**: OIDC ID token APIs can be directly accessed.
+  - **New behaviour**: These APIs can only be used through the Harness Connector for OIDC-based authentication with external platforms (e.g., HashiCorp Vault, AWS).
+
+**Action Required**: If you are directly invoking OIDC ID token APIs, update your automation to use the connector before this change takes effect on March 20, 2026. Please reach out to [Harness support](mailto:support@harness.io) in case of any concerns.
+:::
+
+<details>
+<summary>Archived Highlights</summary>
 
 :::danger BREAKING CHANGE: Page Size Validation for Role Assignment Filter APIs (Effective: April 3, 2026)
 
@@ -59,15 +81,6 @@ This update improves API reliability and enforces consistent pagination limits.
 If you are currently using these APIs with a `pageSize` greater than 100, please update your requests to use a value of **100 or less** to avoid request failures after this change takes effect on April 3, 2026.
 
 Please reach out to [Harness support](mailto:support@harness.io) in case of any concerns.
-:::
-
-:::danger OIDC ID Token API Access Update (Effective: Mar 20, 2026)
-To strengthen security and reduce potential risks, the [**OIDC ID token–related APIs**](https://apidocs.harness.io/oidc-id-token) will be made internal to Harness and will no longer be available for direct access.
-
-  - **Current behaviour**: OIDC ID token APIs can be directly accessed.
-  - **New behaviour**: These APIs can only be used through the Harness Connector for OIDC-based authentication with external platforms (e.g., HashiCorp Vault, AWS).
-
-**Action Required**: If you are directly invoking OIDC ID token APIs, update your automation to use the connector before this change takes effect on March 20, 2026. Please reach out to [Harness support](mailto:support@harness.io) in case of any concerns.
 :::
 
 :::danger BREAKING CHANGE: Reserved Identifier Enforcement for Platform Entities (Effective : Feb 18, 2026)
@@ -96,9 +109,6 @@ We are enforcing restrictions on some keywords that can be used as identifiers f
 
 For questions or assistance, please contact [Harness Support](mailto:support@harness.io).
 :::
-
-<details>
-<summary>Archived Highlights</summary>
 
 :::danger Breaking Change: Delete API Response Codes for Notification Rules and Channels (Effective October 20, 2025)
 We have aligned the delete APIs for Notification Rules and Channels with Harness API documentation and standard REST practices.
