@@ -17,6 +17,7 @@ redirect_from:
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import DocImage from '@site/src/components/DocImage';
 
 [Locust](https://locust.io/) is a Python load testing framework that models user behavior as Python classes and tasks. Use Locust when your team works in Python, when you want to express user journeys as code with conditional logic, or when you need a straightforward ramp-up to steady-state load. Locust runs on both **Linux VM** and **Kubernetes** infrastructure, so it fits everything from a single on-premises host to scalable distributed runs.
 
@@ -76,41 +77,17 @@ The agent in the cluster orchestrates a master pod and optional worker pods for 
 </TabItem>
 </Tabs>
 
+<DocImage path={require('./static/locust/load-test-image.png')} alt="The Overview tab showing the Metadata fields, the Execution Environment with Kubernetes and Linux VM target types, the Load Test Infrastructure dropdown, and Locust selected as the Load Test Type" title="Click to view full size" />
+<p align="center"><em>The Overview tab. Enter the test name and optional description and tags, choose a Target Type (Kubernetes or Linux VM), select the load test infrastructure, then set Load Test Type to Locust.</em></p>
+
 Click **Next** to proceed to **Test Configuration**.
 
 ### Define the test
 
-On the **Test Configuration** tab, choose how you want to define the test workload.
+On the **Test Configuration** tab, choose how you want to define the test workload. Locust supports two modes: upload a Python script, or reference a custom container image.
 
 <Tabs>
-<TabItem value="ui" label="Define test via UI" default>
-
-Use the visual editor to build HTTP scenarios without writing code. Harness generates the Locust script from your configuration at execution time.
-
-Each request represents one HTTP call your virtual users execute on every loop. For each request:
-
-| Field | Description |
-|---|---|
-| **Request name** | Optional label to identify this request in results. |
-| **HTTP Method** | GET, POST, PUT, DELETE, PATCH, HEAD, or OPTIONS. |
-| **URL** | Full endpoint URL (for example, `https://api.example.com/users`). |
-
-Each request has four tabs:
-
-- **Query Parameters:** Key-value pairs appended to the URL as `?key=value&key2=value2`.
-- **Headers:** HTTP request headers. Common examples are `Authorization: Bearer <token>` and `Content-Type: application/json`.
-- **Assertions:** Conditions that must be true for the request to count as a success. Failed assertions are recorded as errors in results.
-- **Extract from Response:** Captures a dynamic value from a response (for example, a login token) and stores it as a variable for use in later requests. Reference extracted values with `{{variable_name}}`.
-
-| Assertion type | Validates |
-|---|---|
-| **Text** | Response body contains (or does not contain) a specific string. |
-| **Response Time** | Request completes within a specified threshold (milliseconds). |
-
-Click **+** to add more requests to the scenario.
-
-</TabItem>
-<TabItem value="script" label="Upload Python Script">
+<TabItem value="script" label="Upload Python script" default>
 
 Upload a custom [Locust](https://locust.io/) `.py` script for advanced scenarios that require custom logic, authentication flows, or complex user behavior.
 
@@ -136,8 +113,11 @@ class WebsiteUser(HttpUser):
 
 `@task(weight)` controls relative execution frequency across tasks.
 
+<DocImage path={require('./static/locust/upload-python-script.png')} alt="The Test Configuration tab with Upload Python script selected, showing the Host URL and Locust Script File upload fields alongside the Load Configuration and Load Profile graph" title="Click to view full size" />
+<p align="center"><em>The Upload Python script mode. Provide an optional Host URL that Locust prepends to relative paths, upload your <code>.py</code> script, then set Users, Duration, Ramp Up Duration, and Worker Count in the Load Configuration.</em></p>
+
 </TabItem>
-<TabItem value="image" label="Using Image (Kubernetes only)">
+<TabItem value="image" label="Using Custom Image">
 
 Use a prebuilt container image as the load test source. This is useful when you have a custom Locust setup packaged as a Docker image. This mode is available on Kubernetes infrastructure only, since the image runs as a pod in the cluster.
 
@@ -145,7 +125,11 @@ Use a prebuilt container image as the load test source. This is useful when you 
 |---|---|
 | **Host URL** | Base URL of the application under test. |
 | **Load Test Image** | Container image reference (for example, `my-registry/my-load-test:latest`). |
-| **Entrypoint** | Path to the Locust script inside the container (for example, `/locust/locust.py`). |
+| **Entrypoint** | Path to the Locust script inside the container (for example, `/scripts/locustfile.py`). |
+| **Arguments** | Optional runtime arguments passed to the container (for example, `tags=smoke,fast;headless=true`). |
+
+<DocImage path={require('./static/locust/using-custom-image.png')} alt="The Test Configuration tab with Using Custom Image selected, showing the Host URL, Load Test Image, Entrypoint, and Arguments fields alongside the Load Configuration and Load Profile graph" title="Click to view full size" />
+<p align="center"><em>The Using Custom Image mode, available on Kubernetes only. Provide the Host URL, container image, entrypoint, and optional arguments, then set the load profile in the Load Configuration.</em></p>
 
 </TabItem>
 </Tabs>
@@ -156,11 +140,12 @@ Configure how virtual users are ramped up and sustained during the test:
 
 | Parameter | Description | Constraint |
 |---|---|---|
-| **Number of Users** | Peak concurrent virtual users. | Must be a positive integer. |
-| **Test Duration (seconds)** | Total test runtime. | Must be greater than Ramp-Up Duration. |
-| **Ramp-Up Duration (seconds)** | Time to reach peak users from zero. | Must be less than Test Duration. |
+| **Users** | Peak concurrent virtual users. | Must be a positive integer. |
+| **Duration (seconds)** | Total test runtime. | Must be greater than Ramp Up Duration. |
+| **Ramp Up Duration (seconds)** | Time to reach peak users from zero. | Must be less than Duration. |
+| **Worker Count** | Number of worker processes that generate load. | Must be a positive integer. |
 
-Steady-state duration = `Test Duration - Ramp-Up Duration`.
+Steady-state duration = `Duration - Ramp Up Duration`.
 
 The **Load Profile** graph updates in real time as you adjust values. The **Load Profile Summary** shows a plain-English breakdown, for example: Ramp up to 100 users in 120s, maintain steady state for 480s, total duration 600s (10m 0s).
 

@@ -3,111 +3,89 @@ title: Analyze Load Test Results
 sidebar_label: Test Results
 sidebar_position: 4
 description: Understand and interpret load test execution results in Harness Resilience Testing
+keywords:
+  - load test results
+  - performance metrics
+  - error rate
+  - response time
+tags:
+  - load-testing
+  - results
 ---
 
-After you run a load test, Harness displays real-time and post-execution results on the **Run** detail page. This page explains every section of the results view and how to interpret the data.
+import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelector/DynamicMarkdownSelector';
 
-## Accessing Results
+After you run a load test, Harness opens the **Run detail** page and streams results in real time. The same page shows the final results after the run finishes.
 
-1. Navigate to **Resilience Testing** > **Load Testing**
-2. Click on a test name to view its executions
-3. Select a specific run (e.g., **Run #1**) to open the results view
+The Locust and k6 results views share the same layout but differ in a few areas, such as the summary cards, the k6-only Thresholds and Checks tables, and the k6 Response Time Histogram. Select your framework below to see the walkthrough that matches your test.
 
-## Run Overview
+---
 
-The left panel shows metadata about the test and its execution:
+## Access results
 
-| Field | Description |
-|---|---|
-| **Test Name** | Name of the load test |
-| **Load Test Infrastructure** | The Linux infrastructure that executed the test, along with its connection status |
-| **Type** | Load testing framework used (Locust or k6) |
-| **Users** | Peak concurrent virtual users configured |
-| **Duration** | Total configured test duration |
-| **Ramp-Up Duration** | Time to linearly ramp from 0 to peak users |
-| **Run Started** | Timestamp when the execution began |
-| **Time Elapsed** | How long the test has been running (or total runtime if complete) |
-| **Status** | Current execution status: **Running**, **Finished**, or **Failed** |
+1. Go to **Resilience Testing** > **Load Testing**.
+2. Click a test name to open its list of executions.
+3. Select a run (for example, **Run #2**) to open the Run detail page.
 
-## Summary Cards
+Each execution is numbered and keeps its own results, so you can compare runs over time.
 
-Four key metrics are displayed as summary cards at the top of the results panel:
+---
 
-| Metric | What it measures |
-|---|---|
-| **Total Requests** | Total number of HTTP requests sent during the test |
-| **Request Per Second** | Average throughput (requests/second) across the entire test duration |
-| **Error Rate** | Percentage of requests that returned errors (non-2xx responses or assertion failures) |
-| **Avg Response Time** | Mean response time across all requests, in milliseconds |
+## Read the Run detail page
 
-## Charts
+<DynamicMarkdownSelector
+  options={{
+    "Locust": {
+      path: "/resilience-testing/content/load-testing/results-locust.md"
+    },
+    "k6": {
+      path: "/resilience-testing/content/load-testing/results-k6.md"
+    },
+  }}
+  toc={toc}
+  precedingHeadingID="read-the-run-detail-page"
+  nextHeadingID="interpret-the-results"
+  disableSort={true}
+/>
 
-### Active Users
+---
 
-A time-series line chart showing the number of concurrent virtual users over time. This visualizes:
+## Interpret the results
 
-- The **ramp-up phase** as users increase linearly from 0 to the configured peak
-- The **steady-state phase** where user count plateaus at the configured maximum
-- Any early termination if the test is stopped or fails before completing
-
-### Total Requests Per Second
-
-A time-series chart with two lines:
-
-- **Request Per Second** (green) — throughput over time
-- **Errors/sec** (red) — error rate over time
-
-Use this chart to identify:
-- Whether throughput remains stable under sustained load
-- Spikes in error rate that may indicate the system is reaching capacity
-- Correlation between increasing users (from the Active Users chart) and throughput changes
-
-### Response Time Distribution
-
-A scatter plot showing individual request response times over the test duration. Each dot represents a request, color-coded by request name and outcome:
-
-- **Success** — requests that returned a successful response and passed all assertions
-- **Failure** — requests that failed or violated an assertion
-
-Use this chart to spot:
-- Response time degradation as load increases
-- Outlier requests with abnormally high latency
-- Whether response times remain within acceptable thresholds
-
-## Interpreting Results
+The following guidance applies to both frameworks. Where a metric name differs, the Locust name is given first.
 
 ### Healthy test indicators
 
-- **Error Rate** stays at or near `0.00%`
-- **Avg Response Time** remains within your SLA or performance budget
-- **Requests Per Second** scales proportionally with active users during ramp-up
-- Response time distribution shows consistent clustering without upward drift
+- **Error Rate** (or **Failed Rate**) stays at or near `0.00%`.
+- **Avg Response Time** and the **P95** / **P99** percentiles stay within your SLA or performance budget.
+- **Request Per Second** scales with active users during ramp-up.
+- The response time distribution clusters consistently without upward drift.
 
 ### Warning signs
 
-- **Error rate climbing during ramp-up** — your system may be hitting capacity before reaching the target user count
-- **Response times increasing over time** — potential memory leak, connection pool exhaustion, or resource saturation
-- **Throughput plateauing while users increase** — a bottleneck is capping request processing (CPU, database connections, rate limiting, etc.)
-- **Scattered response time outliers** — intermittent issues like garbage collection pauses, DNS resolution delays, or cold starts
+- **Error rate climbing during ramp-up:** the system may hit capacity before reaching the target user count.
+- **Response times rising over time:** a possible memory leak, connection pool exhaustion, or resource saturation.
+- **Throughput plateauing while users increase:** a bottleneck is capping request processing, such as CPU, database connections, or rate limiting.
+- **Scattered response time outliers:** intermittent issues like garbage collection pauses, DNS delays, or cold starts.
+- **One endpoint failing in Endpoint Statistics:** the problem is scoped to that route, not the whole service.
 
 ### Failed status
 
-A test run shows **Failed** status when:
-- The test infrastructure lost connectivity during execution
-- The load test process exited with an error
-- The test was manually stopped before completion
-- A k6 threshold was breached (for example, the 95th-percentile response time exceeded the configured limit)
+A run shows **Failed** status when:
 
-:::info k6 thresholds
-For k6 tests, a breached threshold marks the run as Failed. This is the mechanism that turns a k6 load test into a pass/fail gate. Go to [k6](./create-load-test/k6) to configure thresholds.
+- The test infrastructure lost connectivity during execution.
+- The load test process exited with an error.
+- The test was stopped before completion.
+- A k6 threshold was breached (for example, the 95th-percentile response time exceeded its limit).
+
+:::info Status reflects execution health, not application health
+A high error rate does not by itself mark the run as **Failed**. A test that completes with a 100% error rate still shows as a completed run. Read the **Error Rate** or **Failed Rate** metric to assess how the application behaved, and use **Status** to confirm the test itself ran to completion.
 :::
 
-:::note
-A high error rate does not automatically mark the test as Failed. The status reflects execution health, not application health. A test that completes with 100% error rate still shows as a completed run — review the Error Rate metric to assess application behavior.
-:::
+---
 
-## Next Steps
+## Next steps
 
-- [Get Started with Load Testing](./get-started): Create and run your first load test
-- [Key Concepts](./get-started#key-concepts): Understand virtual users, load profiles, and assertions
-- [Infrastructure Types](../chaos-testing/infrastructure/types): Set up and manage infrastructure for load tests
+- Go to [Get started with load testing](./get-started) to create and run your first load test.
+- Go to [k6](./create-load-test/k6) to configure thresholds that gate a release on performance.
+- Go to [Key concepts](./get-started#key-concepts) to review virtual users, load profiles, and assertions.
