@@ -335,6 +335,8 @@ The following settings are required for the AWS CDK Deploy step:
   /usr/local/bin/cdk deploy cdkTest3stack1 cdkTest3stack2 --parameters cdkTest3stack1:sname=stackOneSecretNameStage1ZfBcO4T6Te --parameters cdkTest3stack2:sname=stackTwoSecretNameStage1mEDUcmGTm1 -c stack1_name=cdkTest3stack1 -c stack2_name=cdkTest3stack2 --outputs-file cdk-outputs.json
   ```
 
+- **Always Deploy (ignore CDK diff result):** When enabled, the Deploy step runs regardless of whether a preceding CDK Diff step detected changes. When disabled (default), the Deploy step may be skipped automatically if no infrastructure changes were detected. Go to [Skip deployment when no changes are detected](#skip-deployment-when-no-changes-are-detected) for details.
+
 :::note Multi-account deployments
 
 You can deploy to different AWS accounts using the same connector by configuring the optional AWS connector settings. This allows you to override the region and assume a different IAM role at the step level. Go to [AWS connector configuration (optional)](#aws-connector-configuration-optional) for details.
@@ -342,6 +344,56 @@ You can deploy to different AWS accounts using the same connector by configuring
 :::
 
 For the remaining settings, including [AWS connector configuration](#aws-connector-configuration-optional), see [Step settings common to multiple steps](#step-settings-common-to-multiple-steps) below.
+
+### Skip deployment when no changes are detected
+
+:::note
+This feature is behind the feature flag `CDS_SKIP_CDK_DEPLOY_IF_NO_DIFF`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+When the feature flag `CDS_SKIP_CDK_DEPLOY_IF_NO_DIFF` is enabled, Harness can automatically skip the CDK Deploy step if the preceding CDK Diff step detected no infrastructure changes. This optimization reduces pipeline execution time by avoiding unnecessary deployment operations when the infrastructure already matches the desired state defined in your CDK application.
+
+The CDK Diff step outputs a variable `CDK_DIFF_FOUND` that indicates whether infrastructure changes were detected. When this variable is set to `false`, it means the current infrastructure state matches the CDK application definition, and no deployment is needed.
+
+#### How it works
+
+When the feature flag is enabled and the **Always Deploy (ignore CDK diff result)** checkbox is disabled (the default state), the CDK Deploy step checks the most recent CDK Diff step outcome in the same stage. If the Diff step reported no changes (`CDK_DIFF_FOUND=false`), the Deploy step automatically skips execution with a status of `SKIPPED`. The container for the Deploy step does not start, saving execution time and resources.
+
+#### When the Deploy step runs
+
+The Deploy step runs normally in the following cases:
+
+- The feature flag `CDS_SKIP_CDK_DEPLOY_IF_NO_DIFF` is disabled (default behavior, no change from previous versions)
+- The **Always Deploy (ignore CDK diff result)** checkbox is enabled on the Deploy step
+- The CDK Diff step reported changes (`CDK_DIFF_FOUND=true`)
+- The CDK Diff step was not run, failed, or was skipped
+- No CDK Diff outcome is available in the current stage scope
+- The CDK Diff step used an older plugin version that does not output `CDK_DIFF_FOUND`
+
+#### When the Deploy step is skipped
+
+The Deploy step is automatically skipped when all of the following conditions are met:
+
+- The feature flag `CDS_SKIP_CDK_DEPLOY_IF_NO_DIFF` is enabled for your account
+- The **Always Deploy (ignore CDK diff result)** checkbox is disabled on the Deploy step (default)
+- A CDK Diff step was executed successfully earlier in the same stage
+- The Diff step reported no infrastructure changes (`CDK_DIFF_FOUND=false`)
+
+When a Deploy step is skipped, it does not save an `AwsCdkConfig` record or publish output variables such as `CDK_OUTPUT`, `GIT_COMMIT_ID`, or `LATEST_SUCCESSFUL_PROVISIONING_COMMIT_ID`. If downstream steps or pipelines reference these output variables using expressions like `<+execution.steps.deploy.output...>`, add conditional logic to handle cases where the Deploy step was skipped.
+
+#### Multiple Diff steps in a stage
+
+If your stage contains multiple CDK Diff steps, the Deploy step uses the outcome from the most recently executed Diff step. Harness recommends using a single sequential `Diff → Deploy` flow per stage to ensure predictable behavior. Avoid parallel branches, matrix strategies, or looping that produce concurrent diff outcomes for the same Deploy step.
+
+#### Example pipeline structure
+
+A typical pipeline structure with automatic skip logic:
+
+1. Git Clone step
+2. AWS CDK Diff step (reports `CDK_DIFF_FOUND=false` if no changes)
+3. AWS CDK Deploy step (automatically skips when no diff found)
+
+This structure ensures that deployment only occurs when infrastructure changes are detected, optimizing pipeline execution time while maintaining infrastructure consistency.
 
 ### Verify successful deployment
 
