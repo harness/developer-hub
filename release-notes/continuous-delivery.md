@@ -288,6 +288,22 @@ Wondering where versions 1.145.xx, 1.146.xx, and 1.147.xx are? Those releases we
 - Fixed an issue where frequent error pages appear when navigating links in Harness. (**PIPE-33938**, **ZD-113744**)
 - Fixed an issue where pipelines no longer send Git configuration to Policy as Code. This fix requires the feature flag `PIPE_DISABLE_OPA_GITCONFIG_NEW_BRANCH_FIX`. Contact [Harness Support](mailto:support@harness.io) to enable. (**PIPE-33953**, **ZD-114085**)
 
+
+### GitOps Service 1.61.0, GitOps Agent 0.121.0
+
+#### New features and enhancements
+
+- You can now roll back a GitOps application to a previous deployment directly from the Harness UI. A new **History & Rollback** tab on the application details page shows the deployment history and lets you select a version to roll back to. Rollback is also available as a pipeline step. (**CDS-124453**, **CDS-124458**)
+- GitOps now supports Applications in Any Namespace. When you configure a cluster-scoped agent, you can specify `applicationNamespaces` to allow ArgoCD Application resources to be created in namespaces other than the agent's install namespace. Namespace-scoped agents are not supported for this feature. (**CDS-125046**, **CDS-125047**, **CDS-125053**, **CDS-125054**)
+- You can now force-delete a GitOps application from Harness when the underlying ArgoCD application is unreachable, for example when the agent or ArgoCD project has been deleted. The **Delete from Harness** option removes the application record without requiring connectivity to the agent. (**CDS-125317**)
+- GitOps now enforces finer-grained RBAC for application resource actions. A new permission separates access to application-level operations (create, edit, delete) from Kubernetes resource actions (sync, restart, delete pod). The ArgoCD RBAC engine in the agent can also be enabled via a feature flag for users who want ArgoCD project-level RBAC enforcement. (**CDS-124556**, **CDS-124557**)
+- The GitOps agent now supports the Zero Trust Service (ZTS) for agent-to-SaaS communication, sending task parameters through the ZTS validation flow for enhanced security. (**CDS-126136**)
+
+#### Fixed issues
+
+- Fixed an issue where newly deployed GitOps applications never received utilization snapshots when the cluster state remained stable, causing them to be excluded from license counting and the Subscriptions usage view. (**CDS-123210**)
+- Fixed an issue where the redeploy button on the GitOps application UI page attempted to redeploy to the HEAD of the branch instead of the commit used for the original deployment. Also fixed an inconsistency where multi-source applications sometimes displayed a single source in the sync dialog. (**CDS-126340**)
+
 ### GitOps Service 1.60.0, GitOps Agent 0.120.0
 
 #### New features and enhancements
