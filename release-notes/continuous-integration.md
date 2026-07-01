@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2026-06-22T10:00
+date: 2026-06-29T10:00
 sidebar_position: 10
 ---
 
@@ -54,6 +54,34 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 :::
 
 ## June 2026
+
+### Version 1.146.0
+
+<!-- June 2026 -->
+
+#### New Features and Enhancements
+
+- Added project and organization identifiers to the logs streaming payload, improving traceability for log data across multi-tenant environments. (CI-23272)
+
+#### Fixed Issues
+
+- Fixed an issue where the Test Intelligence agent download used the internal ingress controller host instead of the configured vanity URL when `CI_OVERRIDE_SERVICE_URLS` was enabled in SMP environments. (CI-23049, ZD-115722)
+
+- Fixed an issue where pipeline execution tags with a value-less key were incorrectly filtered out. Tags with empty key values are now preserved. (CI-23054)
+
+- Fixed an issue where Run steps within Custom Stages were incorrectly counted against CI build entitlements. Custom stage pipelines no longer consume CI build quota. (CI-22888)
+
+- Improved ci-addon security by patching known vulnerabilities in the container image. (CI-23239)
+
+- Improved harness-cache-server security by resolving critical and high-severity vulnerabilities. (CI-21725)
+
+#### Harness Images Updates
+
+| Image | Change | Previous Version | New Version |
+|-------|--------|------------------|-------------|
+| `harness/ci-addon` | Security and version update | 1.18.24 | 1.18.26 |
+| `harness/ci-lite-engine` | Version update | 1.18.24 | 1.18.26 |
+| `harness/harness-cache-server` | Security fix | 1.7.18 | 1.7.19 |
 
 ### Version 1.145.0
 
