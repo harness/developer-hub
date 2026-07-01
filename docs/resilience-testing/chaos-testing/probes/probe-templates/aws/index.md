@@ -23,7 +23,7 @@ Here are AWS probe templates that you can use in your chaos experiments.
 
 Validates the current state of an EC2 instance. This probe checks if the specified EC2 instance(s) are in the expected state. At least one of `EC2_INSTANCE_ID` or `EC2_INSTANCE_TAG` must be provided.
 
-**Required Environment Variables:**
+**Key environment variables:**
 - `EC2_INSTANCE_ID`: Comma-separated list of EC2 instance IDs (either this or `EC2_INSTANCE_TAG` required)
 - `EC2_INSTANCE_TAG`: Comma-separated list of EC2 instance tags (either this or `EC2_INSTANCE_ID` required)
 - `REGION`: AWS region where the EC2 instances are located
@@ -45,7 +45,7 @@ Validates the current state of an EC2 instance. This probe checks if the specifi
 
 Validates the status of an Amazon ECS service. This probe checks if the specified ECS service has reached the desired state (e.g., running tasks count matches desired count) within the given timeout.
 
-**Required Environment Variables:**
+**Key environment variables:**
 - `CLUSTER_NAME`: Name of the ECS cluster containing the service
 - `SERVICE_NAMES`: Comma-separated list of ECS service names to check
 - `REGION`: AWS region where the ECS cluster is located
@@ -67,7 +67,7 @@ Validates the status of an Amazon ECS service. This probe checks if the specifie
 
 This probe checks if a Lambda function exists and is in the 'Active' state.
 
-**Required Environment Variables:**
+**Key environment variables:**
 - `FUNCTION_NAME`: Name of the Lambda function to check
 - `REGION`: AWS region where the Lambda function is located
 
@@ -88,7 +88,7 @@ This probe checks if a Lambda function exists and is in the 'Active' state.
 
 Validates the availability of target availability zone(s) in the given ALB or CLB.
 
-**Required Environment Variables:**
+**Key environment variables:**
 - `LOAD_BALANCER_ARN`: ARN of the ALB to check (required for ALB)
 - `LOAD_BALANCER_NAME`: Name of the CLB to check (required for CLB)
 - `REGION`: AWS region where the load balancer is located
@@ -111,7 +111,7 @@ Validates the availability of target availability zone(s) in the given ALB or CL
 
 Validates the presence of rules in AWS security groups. This probe checks if the specified security groups have any rules configured. It can be used to verify that security groups are not left open.
 
-**Required Environment Variables:**
+**Key environment variables:**
 - `SECURITY_GROUP_IDS`: Comma-separated list of security group IDs to check
 - `REGION`: AWS region where the security groups are located
 

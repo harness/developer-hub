@@ -23,7 +23,7 @@ Here are Kubernetes probe templates that you can use in your chaos experiments.
 
 Container restart check validates the restart count of a container.
 
-**Required Environment Variables:**
+**Key environment variables:**
 - `TARGET_LABELS`: Comma-separated list of target labels to filter pods
 - `TARGET_NAMES`: Comma-separated list of target pod names
 - `TARGET_NAMESPACE`: Namespace of the target pods
@@ -33,7 +33,7 @@ Container restart check validates the restart count of a container.
 <Accordion color="green">
 <summary>Use cases</summary>
 
-- Verify containers don't restart excessively during chaos experiments
+- Verify containers do not restart excessively during chaos experiments
 - Monitor container stability during resource stress
 - Validate application resilience to failures
 - Ensure pods maintain healthy restart counts
@@ -47,7 +47,7 @@ Container restart check validates the restart count of a container.
 
 Node status check validates the current state of Kubernetes nodes.
 
-**Required Environment Variables:**
+**Key environment variables:**
 - `TARGET_NODE`: Comma-separated list of nodes to be checked
 - `TARGET_NODES`: Comma-separated list of nodes to be checked
 - `NODE_LABEL`: Node label to filter nodes (e.g., `node-role.kubernetes.io/worker=`)
@@ -68,7 +68,7 @@ Node status check validates the current state of Kubernetes nodes.
 
 Pod replica count check validates the current replica count of Kubernetes pods.
 
-**Required Environment Variables:**
+**Key environment variables:**
 - `TARGET_LABELS`: Comma-separated list of target labels to filter resources
 - `TARGET_NAMES`: Comma-separated list of target resource names
 - `TARGET_NAMESPACE`: Namespace of the target resources
@@ -92,7 +92,7 @@ Pod replica count check validates the current replica count of Kubernetes pods.
 
 Pod resource utilisation check validates the current resource utilisation metrics of Kubernetes pods.
 
-**Required Environment Variables:**
+**Key environment variables:**
 - `TARGET_LABELS`: Comma-separated list of target labels to filter pods
 - `TARGET_NAMES`: Comma-separated list of target pod names
 - `TARGET_NAMESPACE`: Namespace of the target pods
@@ -106,7 +106,7 @@ Pod resource utilisation check validates the current resource utilisation metric
 - Monitor resource usage during stress chaos experiments
 - Verify resource limits are respected
 - Validate application performance under load
-- Ensure pods don't exceed resource thresholds
+- Ensure pods do not exceed resource thresholds
 
 </Accordion>
 </ProbeTemplateCard>
@@ -117,7 +117,7 @@ Pod resource utilisation check validates the current resource utilisation metric
 
 Pod startup time check validates the startup time of Kubernetes pods.
 
-**Required Environment Variables:**
+**Key environment variables:**
 - `TARGET_LABELS`: Comma-separated list of target labels to filter pods
 - `TARGET_NAMES`: Comma-separated list of target pod names
 - `TARGET_NAMESPACE`: Namespace of the target pods
@@ -140,7 +140,7 @@ Pod startup time check validates the startup time of Kubernetes pods.
 
 Pod status check validates the current state of Kubernetes pods.
 
-**Required Environment Variables:**
+**Key environment variables:**
 - `TARGET_LABELS`: Comma-separated list of target labels to filter pods
 - `TARGET_NAMES`: Comma-separated list of target pod names
 - `TARGET_NAMESPACE`: Namespace of the target pods
@@ -162,7 +162,7 @@ Pod status check validates the current state of Kubernetes pods.
 
 Pod warnings check checks for warnings in the pod events.
 
-**Required Environment Variables:**
+**Key environment variables:**
 - `TARGET_LABELS`: Comma-separated list of target labels to filter pods
 - `TARGET_NAMES`: Comma-separated list of target pod names
 - `TARGET_NAMESPACE`: Namespace of the target pods

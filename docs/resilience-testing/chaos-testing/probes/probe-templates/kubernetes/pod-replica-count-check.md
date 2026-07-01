@@ -1,44 +1,63 @@
 ---
 id: pod-replica-count-check
+title: Pod Replica Count Check
+sidebar_label: Pod Replica Count Check
+description: Built-in Command Probe template that validates whether a Kubernetes workload keeps its minimum healthy replica count during a chaos experiment.
+keywords:
+  - chaos engineering
+  - resilience probe
+  - command probe template
+  - kubernetes probe
+  - replica count
+tags:
+  - chaos-engineering
+  - resilience-probes
+  - probe-templates
+  - kubernetes-probes
 ---
 
-# Pod Replica Count Check {#introduction}
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-Pod replica count check validates the current replica count of Kubernetes pods.
+Pod Replica Count Check is a built-in Command Probe template that validates whether a Kubernetes workload keeps at least a minimum number of healthy replicas during a chaos experiment. Use it to confirm that a Deployment, StatefulSet, or DaemonSet maintains availability while a fault removes or disrupts pods. You select the workload by label, by name, or by the owning workload kind and namespace.
 
-## Infrastructure type
+The probe runs the `healthchecks` utility bundled in the chaos probe image, queries the Kubernetes API, and prints `[Pass]` when the workload has at least `MINIMUM_HEALTHY_REPLICA_COUNT` healthy replicas. The comparator marks the probe as passed when the output contains `[Pass]`.
 
-- **Kubernetes**
+:::info Built-in probe template
+This is a built-in Command Probe template that runs on Kubernetes chaos infrastructure. Add it to an experiment from the probe library and customize its inputs. Go to [Built-in probe templates](/docs/resilience-testing/chaos-testing/probes/probe-templates) to browse the full library, or go to [Command probe](/docs/resilience-testing/chaos-testing/probes/command-probe) to understand how command probes work.
+:::
+
+---
 
 ## Use cases
 
-Pod Replica Count Check probe helps you:
-- Verify deployments maintain desired replica count
-- Validate auto-scaling behavior during load chaos
-- Monitor application availability during pod failures
-- Ensure high availability during chaos experiments
+Use this probe template to:
+
+- Verify that deployments maintain the desired replica count.
+- Validate auto-scaling behavior during load chaos.
+- Monitor application availability during pod failures.
+- Confirm high availability during chaos experiments.
 
 ---
 
-## Overview
+## How the probe works
 
-This probe validates that Kubernetes resources (Deployments, StatefulSets, DaemonSets, etc.) maintain the minimum required number of healthy replicas during chaos experiments.
+The template configures a Command Probe that runs `healthchecks -name validate-pod-replica`. The utility resolves the target workloads from `TARGET_LABELS`, `TARGET_NAMES`, `TARGET_KIND`, and `TARGET_NAMESPACE`, queries the Kubernetes API, and prints `[Pass]` when the number of healthy replicas is at or above `MINIMUM_HEALTHY_REPLICA_COUNT`. The comparator passes the probe when the output contains `[Pass]`, and fails it otherwise.
 
-### Probe type
-**Command Probe**
+---
 
-### Prerequisites
+## Prerequisites
 
-- Kubernetes cluster with chaos infrastructure installed
-- Access to target namespace and resources
-- Sufficient RBAC permissions to query resource status
+- **Chaos infrastructure:** A Kubernetes chaos infrastructure installed in the target cluster.
+- **Namespace access:** Access to the target namespace and resources.
+- **RBAC permissions:** Permissions for the chaos service account to query resource status.
 
 ---
 
 ## Probe properties
 
 ### Command
-```
+
+```bash
 healthchecks -name validate-pod-replica
 ```
 
@@ -46,21 +65,21 @@ healthchecks -name validate-pod-replica
 
 | Type | Criteria | Value |
 |------|----------|-------|
-| string | contains | [Pass] |
+| string | contains | `[Pass]` |
 
-The probe passes when the command output contains `[Pass]`, indicating the resource has the minimum required healthy replicas.
+The probe passes when the command output contains `[Pass]`, which indicates that the workload has at least the minimum required healthy replicas.
 
 ### Environment variables
 
 | Variable | Description | Required | Default |
 |----------|-------------|----------|---------|
-| `TARGET_LABELS` | Comma-separated list of target labels to filter resources. | No | - |
+| `TARGET_LABELS` | Comma-separated list of labels used to filter resources (for example, `app=nginx,tier=frontend`). | No | - |
 | `TARGET_NAMES` | Comma-separated list of target resource names. | No | - |
-| `TARGET_NAMESPACE` | Namespace of the target resources. | No | - |
-| `TARGET_KIND` | Kind of the target resource (e.g., `deployment`, `statefulset`, `daemonset`). | No | deployment |
-| `MINIMUM_HEALTHY_REPLICA_COUNT` | Minimum healthy replica count for the target. | No | 1 |
-| `STATUS_CHECK_TIMEOUT` | Maximum time in seconds to wait for status check. | No | 180 |
-| `STATUS_CHECK_DELAY` | Delay in seconds between status checks. | No | 2 |
+| `TARGET_NAMESPACE` | Namespace of the target resources. | Yes | - |
+| `TARGET_KIND` | Kind of the target resource (for example, `deployment`, `statefulset`, `daemonset`). | No | `deployment` |
+| `MINIMUM_HEALTHY_REPLICA_COUNT` | Minimum healthy replica count required for the target. | No | `1` |
+| `STATUS_CHECK_TIMEOUT` | Maximum time in seconds to wait for the status check. | No | `180` |
+| `STATUS_CHECK_DELAY` | Delay in seconds between status checks. | No | `2` |
 
 ---
 
@@ -68,73 +87,40 @@ The probe passes when the command output contains `[Pass]`, indicating the resou
 
 | Property | Description | Type | Default |
 |----------|-------------|------|---------|
-| `timeout` | Maximum time to wait for the probe to complete (e.g., `30s`, `1m`, `5m`) | String | 180s |
-| `interval` | Time between probe executions (e.g., `1s`, `5s`, `10s`) | String | 1s |
-| `attempt` | Number of retry attempts before marking the probe as failed | Integer | 1 |
-| `pollingInterval` | Time between retry attempts (e.g., `1s`, `5s`, `10s`) | String | - |
-| `initialDelay` | Initial delay before starting the probe (e.g., `0s`, `10s`, `30s`) | String | - |
-| `stopOnFailure` | Stop the experiment if the probe fails | Boolean | false |
-| `verbosity` | Log verbosity level (`info`, `debug`, `trace`) | String | - |
+| `timeout` | Maximum time to wait for the probe to complete (for example, `30s`, `1m`, `5m`). | String | `180s` |
+| `interval` | Time between probe executions (for example, `1s`, `5s`, `10s`). | String | `1s` |
+| `attempt` | Number of retry attempts before the probe is marked as failed. | Integer | `1` |
+| `pollingInterval` | Time between retry attempts (for example, `1s`, `5s`, `10s`). | String | - |
+| `initialDelay` | Initial delay before the probe starts (for example, `0s`, `10s`, `30s`). | String | - |
+| `stopOnFailure` | Stop the experiment if the probe fails. | Boolean | `false` |
+| `verbosity` | Log verbosity level (`info`, `debug`, `trace`). | String | - |
 
 ---
 
-## Probe definition
+## Troubleshooting
 
-You can define this probe in your chaos experiment as follows:
+<Troubleshoot
+  issue="Pod Replica Count Check probe fails because the workload dropped below the minimum"
+  mode="general"
+  fallback="The number of healthy replicas is below MINIMUM_HEALTHY_REPLICA_COUNT, which usually means the injected fault removed more pods than the workload could replace in time. Inspect the workload with kubectl get deployment or kubectl describe to confirm replica counts, check whether the cluster has capacity to schedule replacements, and increase STATUS_CHECK_TIMEOUT so the probe waits for recovery."
+/>
 
-### Using resource labels
+<Troubleshoot
+  issue="Pod Replica Count Check probe fails because no resources matched the target"
+  mode="general"
+  fallback="The selectors did not resolve any workloads. Confirm that TARGET_LABELS, TARGET_NAMES, and TARGET_NAMESPACE match the workload, and that TARGET_KIND matches the resource type (deployment, statefulset, or daemonset). An empty match is treated as a failure."
+/>
 
-```yaml
-probe:
-  - name: "replica-count-validation"
-    type: "cmdProbe"
-    mode: "Continuous"
-    cmdProbe/inputs:
-      command: "healthchecks -name validate-pod-replica"
-      comparator:
-        type: "string"
-        criteria: "contains"
-        value: "[Pass]"
-      env:
-        - name: TARGET_LABELS
-          value: "app=nginx,tier=frontend"
-        - name: TARGET_NAMESPACE
-          value: "production"
-        - name: TARGET_KIND
-          value: "deployment"
-        - name: MINIMUM_HEALTHY_REPLICA_COUNT
-          value: "3"
-    runProperties:
-      timeout: 180s
-      interval: 1s
-      attempt: 1
-      stopOnFailure: false
-```
+<Troubleshoot
+  issue="Pod Replica Count Check probe fails with a forbidden or RBAC error"
+  mode="general"
+  fallback="The chaos service account does not have permission to read the target workload in the namespace. Grant get and list on the relevant resource type (deployments, statefulsets, or daemonsets) and on pods for the chaos service account, then rerun the experiment."
+/>
 
-### Using resource names
+---
 
-```yaml
-probe:
-  - name: "deployment-replica-check"
-    type: "cmdProbe"
-    mode: "Edge"
-    cmdProbe/inputs:
-      command: "healthchecks -name validate-pod-replica"
-      comparator:
-        type: "string"
-        criteria: "contains"
-        value: "[Pass]"
-      env:
-        - name: TARGET_NAMES
-          value: "my-deployment,my-statefulset"
-        - name: TARGET_NAMESPACE
-          value: "default"
-        - name: MINIMUM_HEALTHY_REPLICA_COUNT
-          value: "2"
-        - name: STATUS_CHECK_TIMEOUT
-          value: "120"
-    runProperties:
-      timeout: 150s
-      interval: 2s
-      attempt: 3
-```
+## Related probe templates
+
+- [Pod Status Check](/docs/resilience-testing/chaos-testing/probes/probe-templates/kubernetes/pod-status-check): Validate that pods stay in the Running state.
+- [Pod Startup Time Check](/docs/resilience-testing/chaos-testing/probes/probe-templates/kubernetes/pod-startup-time-check): Validate that pods start within a duration.
+- [Built-in probe templates](/docs/resilience-testing/chaos-testing/probes/probe-templates): Browse the full probe template library.

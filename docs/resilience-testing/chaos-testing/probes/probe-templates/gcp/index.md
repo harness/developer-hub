@@ -23,7 +23,7 @@ Here are GCP probe templates that you can use in your chaos experiments.
 
 Validates if a GCP Cloud SQL instance is in Running state.
 
-**Required Environment Variables:**
+**Key environment variables:**
 - `SQL_INSTANCE_NAME`: Name of the Cloud SQL instance to check
 - `GCP_PROJECT_ID`: GCP Project ID where the instance is located
 
@@ -44,7 +44,7 @@ Validates if a GCP Cloud SQL instance is in Running state.
 
 Validates if a GCP Compute Engine persistent disk is in ready to use state.
 
-**Required Environment Variables:**
+**Key environment variables:**
 - `DISK_VOLUME_NAMES`: Comma-separated list of persistent disk names (one of this or `DISK_VOLUME_LABEL` required)
 - `DISK_VOLUME_LABEL`: Label of the persistent disk (one of this or `DISK_VOLUME_NAMES` required)
 - `GCP_PROJECT_ID`: GCP Project ID where the disk is located
@@ -67,7 +67,7 @@ Validates if a GCP Compute Engine persistent disk is in ready to use state.
 
 Validates if a GCP Compute Engine VM instance is in Running state.
 
-**Required Environment Variables:**
+**Key environment variables:**
 - `VM_INSTANCE_NAMES`: Comma-separated list of VM instance names (one of this or `INSTANCE_LABEL` required)
 - `INSTANCE_LABEL`: Label of the VM instance (one of this or `VM_INSTANCE_NAMES` required)
 - `GCP_PROJECT_ID`: GCP Project ID where the VM is located

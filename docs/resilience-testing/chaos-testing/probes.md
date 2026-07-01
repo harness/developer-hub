@@ -64,7 +64,7 @@ Remote Kubernetes execution gives you the following benefits:
 
 ## Built-in Probe Templates
 
-Harness provides pre-built [Built-in Probe Templates](./probes/probe-templates) to help you quickly set up probes for common validation scenarios. Currently, built-in templates are available for **Command Probes** targeting **Kubernetes** infrastructure, covering checks like pod status, node health, resource utilization, and cloud provider resource validation.
+Harness provides [built-in probe templates](./probes/probe-templates) to help you quickly set up probes for common validation scenarios. These templates are Command Probes that run on Kubernetes chaos infrastructure, covering Kubernetes resource checks (pod status, node health, resource utilisation, and more) as well as AWS and GCP resource checks (EC2, ECS, Lambda, load balancers, Compute Engine VMs, persistent disks, and Cloud SQL).
 
 ## Probe Verification
 

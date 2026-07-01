@@ -1,44 +1,63 @@
 ---
 id: pod-warnings-check
+title: Pod Warnings Check
+sidebar_label: Pod Warnings Check
+description: Built-in Command Probe template that checks for warning events on Kubernetes pods during a chaos experiment.
+keywords:
+  - chaos engineering
+  - resilience probe
+  - command probe template
+  - kubernetes probe
+  - pod warning events
+tags:
+  - chaos-engineering
+  - resilience-probes
+  - probe-templates
+  - kubernetes-probes
 ---
 
-# Pod Warnings Check {#introduction}
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-Pod warnings check checks for warnings in the pod events.
+Pod Warnings Check is a built-in Command Probe template that checks for warning events on the targeted Kubernetes pods during a chaos experiment. Use it to detect problems such as image pull errors, scheduling failures, and resource constraints that surface as warning events while a fault is injected. You select pods by label, by name, or by the owning workload kind and namespace.
 
-## Infrastructure type
+The probe runs the `healthchecks` utility bundled in the chaos probe image, queries the Kubernetes event API, and prints `[Pass]` when no warning events are found on the targeted pods. The comparator marks the probe as passed when the output contains `[Pass]`.
 
-- **Kubernetes**
+:::info Built-in probe template
+This is a built-in Command Probe template that runs on Kubernetes chaos infrastructure. Add it to an experiment from the probe library and customize its inputs. Go to [Built-in probe templates](/docs/resilience-testing/chaos-testing/probes/probe-templates) to browse the full library, or go to [Command probe](/docs/resilience-testing/chaos-testing/probes/command-probe) to understand how command probes work.
+:::
+
+---
 
 ## Use cases
 
-Pod Warnings Check probe helps you:
-- Monitor pod health indicators during chaos experiments
-- Detect configuration issues during experiments
-- Validate application behavior under stress
-- Identify potential problems before they become critical
+Use this probe template to:
+
+- Monitor pod health indicators during chaos experiments.
+- Detect configuration issues during experiments.
+- Validate application behavior under stress.
+- Identify potential problems before they become critical.
 
 ---
 
-## Overview
+## How the probe works
 
-This probe checks for warning events in pod event logs. It's useful for detecting issues like image pull errors, scheduling problems, resource constraints, and other warnings that might indicate problems during chaos experiments.
+The template configures a Command Probe that runs `healthchecks -name validate-pod-failure`. The utility resolves the target pods from `TARGET_LABELS`, `TARGET_NAMES`, `TARGET_KIND`, and `TARGET_NAMESPACE`, reads their events through the Kubernetes API, and prints `[Pass]` when no warning events are present. The comparator passes the probe when the output contains `[Pass]`, and fails it otherwise.
 
-### Probe type
-**Command Probe**
+---
 
-### Prerequisites
+## Prerequisites
 
-- Kubernetes cluster with chaos infrastructure installed
-- Access to target namespace and pods
-- Sufficient RBAC permissions to query pod events
+- **Chaos infrastructure:** A Kubernetes chaos infrastructure installed in the target cluster.
+- **Namespace access:** Access to the target namespace and pods.
+- **RBAC permissions:** Permissions for the chaos service account to query pod events.
 
 ---
 
 ## Probe properties
 
 ### Command
-```
+
+```bash
 healthchecks -name validate-pod-failure
 ```
 
@@ -46,20 +65,20 @@ healthchecks -name validate-pod-failure
 
 | Type | Criteria | Value |
 |------|----------|-------|
-| string | contains | [Pass] |
+| string | contains | `[Pass]` |
 
-The probe passes when the command output contains `[Pass]`, indicating no warning events were found in the pod logs.
+The probe passes when the command output contains `[Pass]`, which indicates that no warning events were found on the targeted pods.
 
 ### Environment variables
 
 | Variable | Description | Required | Default |
 |----------|-------------|----------|---------|
-| `TARGET_LABELS` | Comma-separated list of target labels to filter pods. | No | - |
+| `TARGET_LABELS` | Comma-separated list of labels used to filter pods (for example, `app=nginx`). | No | - |
 | `TARGET_NAMES` | Comma-separated list of target pod names. | No | - |
-| `TARGET_NAMESPACE` | Namespace of the target pods. | No | - |
-| `TARGET_KIND` | Kind of the target resource (e.g., `deployment`, `statefulset`, `daemonset`). | No | deployment |
-| `STATUS_CHECK_TIMEOUT` | Maximum time in seconds to wait for status check. | No | 180 |
-| `STATUS_CHECK_DELAY` | Delay in seconds between status checks. | No | 2 |
+| `TARGET_NAMESPACE` | Namespace of the target pods. | Yes | - |
+| `TARGET_KIND` | Kind of the owning workload (for example, `deployment`, `statefulset`, `daemonset`). | No | `deployment` |
+| `STATUS_CHECK_TIMEOUT` | Maximum time in seconds to wait for the status check. | No | `180` |
+| `STATUS_CHECK_DELAY` | Delay in seconds between status checks. | No | `2` |
 
 ---
 
@@ -67,71 +86,40 @@ The probe passes when the command output contains `[Pass]`, indicating no warnin
 
 | Property | Description | Type | Default |
 |----------|-------------|------|---------|
-| `timeout` | Maximum time to wait for the probe to complete (e.g., `30s`, `1m`, `5m`) | String | 180s |
-| `interval` | Time between probe executions (e.g., `1s`, `5s`, `10s`) | String | 1s |
-| `attempt` | Number of retry attempts before marking the probe as failed | Integer | 1 |
-| `pollingInterval` | Time between retry attempts (e.g., `1s`, `5s`, `10s`) | String | - |
-| `initialDelay` | Initial delay before starting the probe (e.g., `0s`, `10s`, `30s`) | String | - |
-| `stopOnFailure` | Stop the experiment if the probe fails | Boolean | false |
-| `verbosity` | Log verbosity level (`info`, `debug`, `trace`) | String | - |
+| `timeout` | Maximum time to wait for the probe to complete (for example, `30s`, `1m`, `5m`). | String | `180s` |
+| `interval` | Time between probe executions (for example, `1s`, `5s`, `10s`). | String | `1s` |
+| `attempt` | Number of retry attempts before the probe is marked as failed. | Integer | `1` |
+| `pollingInterval` | Time between retry attempts (for example, `1s`, `5s`, `10s`). | String | - |
+| `initialDelay` | Initial delay before the probe starts (for example, `0s`, `10s`, `30s`). | String | - |
+| `stopOnFailure` | Stop the experiment if the probe fails. | Boolean | `false` |
+| `verbosity` | Log verbosity level (`info`, `debug`, `trace`). | String | - |
 
 ---
 
-## Probe definition
+## Troubleshooting
 
-You can define this probe in your chaos experiment as follows:
+<Troubleshoot
+  issue="Pod Warnings Check probe fails because warning events were found"
+  mode="general"
+  fallback="The targeted pods have warning events, which is the condition this probe detects. Run kubectl describe pod or kubectl get events --field-selector type=Warning in the target namespace to read the warnings, then address the underlying cause such as failed image pulls, scheduling failures, or readiness probe failures."
+/>
 
-### Using pod labels
+<Troubleshoot
+  issue="Pod Warnings Check probe fails because no pods matched the target"
+  mode="general"
+  fallback="The selectors did not resolve any pods. Confirm that TARGET_LABELS, TARGET_NAMES, TARGET_NAMESPACE, and TARGET_KIND match running pods. An empty match is treated as a failure."
+/>
 
-```yaml
-probe:
-  - name: "pod-warnings-validation"
-    type: "cmdProbe"
-    mode: "Continuous"
-    cmdProbe/inputs:
-      command: "healthchecks -name validate-pod-failure"
-      comparator:
-        type: "string"
-        criteria: "contains"
-        value: "[Pass]"
-      env:
-        - name: TARGET_LABELS
-          value: "app=nginx"
-        - name: TARGET_NAMESPACE
-          value: "production"
-        - name: STATUS_CHECK_TIMEOUT
-          value: "180"
-        - name: STATUS_CHECK_DELAY
-          value: "2"
-    runProperties:
-      timeout: 180s
-      interval: 1s
-      attempt: 1
-      stopOnFailure: false
-```
+<Troubleshoot
+  issue="Pod Warnings Check probe fails with a forbidden or RBAC error"
+  mode="general"
+  fallback="The chaos service account does not have permission to read pods or events in the target namespace. Grant get and list on pods and events for the chaos service account in that namespace, then rerun the experiment."
+/>
 
-### Using pod names
+---
 
-```yaml
-probe:
-  - name: "specific-pod-warnings-check"
-    type: "cmdProbe"
-    mode: "Edge"
-    cmdProbe/inputs:
-      command: "healthchecks -name validate-pod-failure"
-      comparator:
-        type: "string"
-        criteria: "contains"
-        value: "[Pass]"
-      env:
-        - name: TARGET_NAMES
-          value: "my-app-pod"
-        - name: TARGET_NAMESPACE
-          value: "default"
-        - name: STATUS_CHECK_TIMEOUT
-          value: "120"
-    runProperties:
-      timeout: 150s
-      interval: 2s
-      attempt: 3
-```
+## Related probe templates
+
+- [Pod Status Check](/docs/resilience-testing/chaos-testing/probes/probe-templates/kubernetes/pod-status-check): Validate that pods stay in the Running state.
+- [Container Restart Check](/docs/resilience-testing/chaos-testing/probes/probe-templates/kubernetes/container-restart-check): Validate that container restart counts stay within a threshold.
+- [Built-in probe templates](/docs/resilience-testing/chaos-testing/probes/probe-templates): Browse the full probe template library.
