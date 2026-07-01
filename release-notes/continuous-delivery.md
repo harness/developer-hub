@@ -48,9 +48,15 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 :::warning Announcement
 **JEXL 3.5 Upgrade Notice 📢**
 
-As part of improving the security posture of the platform, Harness is upgrading JEXL from version 3.0 to 3.5. This change introduces the following restrictions on JEXL expressions:
+As part of improving the security posture of the platform, Harness is upgrading JEXL from version 3.0 to 3.5. This change introduces restrictions on JEXL expressions including: blocked reflection-based expressions, rewritten nested subscript expressions, disallowed global variable assignments (use `==` instead of `=` for comparisons), and ternary expressions followed by `[` must be rewritten.
+
+Please monitor pipeline executions and contact Harness Support if any issues are encountered or remediation assistance is required.
+
+<details>
+<summary>View detailed migration guidance</summary>
 
 - **Reflection-based expressions are blocked.** Any JEXL expression that uses reflection to access classes, methods, or fields will be rejected. For example, expressions such as `<+''.getClass().forName("java.lang.Runtime")>` will no longer execute.
+
 - **Nested subscript expressions must be rewritten.** Expressions that nest one subscript (square bracket) accessor directly inside another needs to be rewritten in a different format. For example, the following expression will fail:
 
   ```
@@ -62,6 +68,7 @@ As part of improving the security posture of the platform, Harness is upgrading 
   ```
   <+pipeline.variables["<+stage.variables['test']>"]>
   ```
+
 - **JEXL global variable assignments are disallowed.** Expressions that declare global variables will fail to execute. In JEXL, the single `=` operator performs an assignment, not an equality check. Any expression that uses `=` between a variable reference and a value is treated as a global variable assignment and will be rejected in JEXL 3.5.
 
   For example, the following expression is no longer supported:
@@ -114,7 +121,7 @@ As part of improving the security posture of the platform, Harness is upgrading 
   <+pipeline.variables.BUILD_ENVS=="QAdf"?([""]):"abcds">
   ```
 
-Please monitor pipeline executions and contact Harness Support if any issues are encountered or remediation assistance is required.
+</details>
 
 :::
 
@@ -126,15 +133,61 @@ Google Container Registry (GCR) is deprecated on **March 18, 2025**. It is recom
 For more information on GCR, see the [Harness GCR Documentation](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#google-container-registry-gcr).
 :::
 
+:::info Product Update
+The AI-powered verification steps have been renamed for clarity. The classic Verify step is now **AI Verify (v1)**, and the newer "Configure verify step with AI" is now **AI Verify (v2)**. These new names make it easier to distinguish between the two versions in your pipelines. No changes to your existing pipelines or configurations are required.
+:::
+
+:::warning Announcement
+**SMI (Service Mesh Interface) Deprecation Notice 📢**
+
+Service Mesh Interface (SMI) for traffic routing in Kubernetes deployments is deprecated and support will be removed by **August 1, 2026**. 
+
+SMI was used as a traffic routing provider for advanced deployment strategies like canary and blue-green deployments with service mesh implementations. If you are currently using SMI for traffic management in your Harness pipelines, you should plan to migrate to alternative traffic routing solutions such as Istio native traffic management or other supported service mesh providers.
+
+Refer to the [traffic routing documentation](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/traffic-shifting-step/) for supported alternatives and migration guidance.
+:::
+
 ## June 2026
 
-### Version 1.154.7
+### Version 1.155.0
 
 #### New features and enhancements
 
-- **Preserve Directory Structure when copying config files:** The Command step's Copy command now includes a **Preserve Directory Structure** option that maintains the original directory hierarchy when copying config files to target hosts. This prevents data loss from file overwrites when multiple files share the same name but exist in different subdirectories (for example, `env1/config.properties` and `env2/config.properties`).
+- Harness Approval steps can now be added inside Container Step Groups in CD pipelines. When stage timeout exceeds 24 hours, pod TTL automatically extends to support longer approval response times. This feature requires the feature flag `CDS_CONTAINER_STEP_GROUP_STAGE_TIMEOUT`. Contact [Harness Support](mailto:support@harness.io) to enable.
 
-- **Kubernetes Dry Run step command flags:** The Kubernetes Dry Run step now supports command flags. You can pass additional kubectl flags (such as `--server-side` and `--force-conflicts`) to the dry run validation command. This ensures your dry run output accurately reflects the actual deployment behavior, making approval gates more reliable for teams using server-side apply or strict validation modes.
+- AWS CDK Deploy steps automatically skip execution when no infrastructure changes are detected by a preceding CDK Diff step, reducing deployment time. This feature requires the feature flag `CDS_SKIP_CDK_DEPLOY_IF_NO_DIFF`. Contact [Harness Support](mailto:support@harness.io) to enable.
+
+#### Fixed issues
+
+- Fixed an issue where the runtime YAML of a stage type ECS deployment template is not rendering fully for OPA testing framework. (**CDS-125948**, **ZD-113014**)
+- Fixed an issue where the curl progress meter in the inbuilt download artifacts command step was shown in red (stderr) even though the step succeeds. Changed output from stderr to stdout. (**CDS-126051**, **ZD-116716**)
+- Fixed an issue where a template's "referencing entities" have some wrong entries (referencing entity no longer has reference). If pipeline no longer references a template, it will be removed from referencing entities of template. Similarly, if pipeline starts referring a template, it will show up in referencing entities. (**PIPE-33491**, **ZD-111733**)
+- Fixed an issue where api to list all templates in an organization is throwing an error. Added validation in auto create flow and blocked the creation. (**PIPE-34760**, **ZD-115536**)
+- Fixed an issue with selecting the input list during step runtime. (**PIPE-35004**, **ZD-115945**)
+- Fixed an issue where Harness did not strip `.git` from the repo URL while comparing two repo URLs. Blocked customers will now be able to see webhook events of a corresponding webhook. (**PIPE-35024**, **ZD-114997**)
+- Fixed an issue where a pipeline continued executing after the user marked it as failed due to a missing interrupt check. This fix requires the feature flag `PIPE_FAIL_USER_MARKED_FAIL_ALL_INTERRUPT_WITHOUT_LEAF_NODES`. Contact [Harness Support](mailto:support@harness.io) to enable. (**PIPE-35074**, **ZD-116355**, **ZD-116823**)
+- Fixed an issue where unable to create template from pipeline. This fix requires the feature flag `PIPE_PIPELINE_STAGE_PIPELINE_TEMPLATE`. Contact [Harness Support](mailto:support@harness.io) to enable. (**PIPE-35106**, **ZD-114977**, **ZD-116644**)
+- Fixed an issue where reconcile errors persist for failure strategies after successful save. (**PIPE-35111**, **ZD-116644**)
+
+### Version 1.154.7
+
+:::info Product Update
+The AI-powered verification steps have been renamed for clarity. The classic Verify step is now **AI Verify (v1)**, and the newer "Configure verify step with AI" is now **AI Verify (v2)**. These new names make it easier to distinguish between the two versions in your pipelines. No changes to your existing pipelines or configurations are required. (**CDS-125595**)
+:::
+
+#### New features and enhancements
+
+- Harness now supports **storing monitored services in Git using GitX**, enabling version control and code review workflows for verification configurations. This feature requires the feature flag `CDS_CV_MS_GITX`. Contact [Harness Support](mailto:support@harness.io) to enable.
+
+- Harness now supports **Fire and Forget** email notifications for the Email step, allowing pipeline execution to continue immediately without waiting for delivery confirmation.
+
+- Harness now supports **template labels** for referencing template versions using semantic names instead of fixed version numbers. This feature requires the feature flag `PIPE_TEMPLATE_LABELS_FEATURE`. Contact [Harness Support](mailto:support@harness.io) to enable.
+
+- Harness now supports **AND/OR logic for filtering pipeline executions by tags**, enabling **Matches Any** (OR) or **Matches All** (AND) filtering options.
+
+- Harness now supports **Preserve Directory Structure** when copying config files in the Command step. The Copy command now includes a **Preserve Directory Structure** option that maintains the original directory hierarchy when copying config files to target hosts. This prevents data loss from file overwrites when multiple files share the same name but exist in different subdirectories (for example, `env1/config.properties` and `env2/config.properties`).
+
+- Harness now supports **command flags for the Kubernetes Dry Run step**. You can pass additional kubectl flags (such as `--server-side` and `--force-conflicts`) to the dry run validation command. This ensures your dry run output accurately reflects the actual deployment behavior, making approval gates more reliable for teams using server-side apply or strict validation modes.
 
 #### Fixed issues
 
@@ -171,7 +224,7 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 
 - The Artifactory connector now supports OIDC authentication, enabling credential-free federated authentication with JFrog Artifactory using short-lived JWT tokens. This feature requires the feature flag `CDS_ARTIFACTORY_OIDC_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable. For more information, go to [Artifactory connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference#oidc-authentication). (**CDS-121048**)
 
-- Harness AI for OPA policies now provides enhanced policy generation capabilities powered by the unified Harness AI agent, offering more accurate and context-aware policy suggestions through specialized skills trained on OPA and REGO best practices. The AI assistant helps you write OPA policies without deep REGO knowledge and provides detailed descriptions of existing policies in plain language. This feature requires the feature flag `OPA_DISABLE_AIDA_INTEGRATION`. Contact [Harness Support](mailto:support@harness.io) to enable. For more information, go to [Build policies using Harness AI](/docs/platform/governance/policy-as-code/ai-for-policies). (**PIPE-34241**)
+- Harness AI for OPA policies now provides enhanced policy generation capabilities powered by the unified Harness AI agent, offering more accurate and context-aware policy suggestions through specialized skills trained on OPA and REGO best practices. The AI assistant helps you write OPA policies without deep REGO knowledge and provides detailed descriptions of existing policies in plain language. This feature requires the feature flag `OPA_ENABLE_CANARY_AI`. Contact [Harness Support](mailto:support@harness.io) to enable. For more information, go to [Build policies using Harness AI](/docs/platform/governance/policy-as-code/ai-for-policies). (**PIPE-34241**)
 
 - Istio traffic routing steps now support configurable AND/OR match logic for route rules through the **Match all rules** option. When enabled, all configured route rules (URI, headers, method, port) must match for a request to be routed to the destination. When disabled, a request matching any single rule will be routed. For more information, go to [Traffic shifting step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/traffic-shifting-step#match-all-rules). (**CDS-122246**)
 
