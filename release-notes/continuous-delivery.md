@@ -159,6 +159,12 @@ For more information on GCR, see the [Harness GCR Documentation](/docs/continuou
 - Fixed an issue where `parentEntityRepo` was incorrectly set as the template repo instead of the pipeline repo. To apply this fix, enable the feature flag `PIPE_DISABLE_PARENT_REPO_NAME_CONTEXT_POPULATION_FOR_TEMPLATE`. Go to [Harness Support](mailto:support@harness.io) to enable this flag. (**PIPE-33917**, **ZD-113413**, **ZD-114657**)
 - Fixed an issue where deployments no longer displayed service runtime inputs under the inputs section of pipeline executions. (**PIPE-34769**, **ZD-115520**, **ZD-115608**)
 
+### Version 1.152.5
+
+#### New features and enhancements
+
+- You can now use OCI-based Helm charts stored in Google Artifact Registry (GAR) as a manifest source for Helm deployments. (**CDS-125775**)
+
 ### Version 1.152.0
 
 #### New features and enhancements
@@ -251,6 +257,12 @@ Wondering where versions 1.145.xx, 1.146.xx, and 1.147.xx are? Those releases we
 - Improved performance for the Azure Container Apps managed environments API by optimizing it to be called only when its dependencies (resource group or subscription ID) change. The API now triggers on input focus during edit flows. (**CDS-122787**)
 
 ## June 2026
+
+### Version 1.151.4
+
+#### New features and enhancements
+
+- You can now use OCI-based Helm charts stored in Google Artifact Registry (GAR) as a manifest source for Helm deployments. (**CDS-125775**)
 
 ### Version 1.151.1
 
