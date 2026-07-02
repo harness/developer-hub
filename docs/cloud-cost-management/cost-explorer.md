@@ -267,6 +267,17 @@ You can create a Perspective for your resources using rules and filters. The fil
     | **Project Id** | Cost by OpenAI project identifier |
     | **Token Type** | Cost by token type (prompt tokens, completion tokens, embedding tokens) | 
 
+* **[NEW] Anthropic**: Analyze costs specifically for Anthropic API usage:
+
+    | Grouping Option | Description |
+    |----------------|-------------|
+    | **Model** | Cost by Anthropic model (Claude Opus, Claude Sonnet, Claude Haiku, etc.) |
+    | **Organization ID** | Cost by Anthropic organization identifier |
+    | **Organization Name** | Cost by Anthropic organization name |
+    | **Project Id** | Cost by Anthropic project identifier |
+    | **Project Name** | Cost by Anthropic project name |
+    | **Token Type** | Cost by token type (input tokens, output tokens, cache tokens) | 
+
 ### Time Period & Granularity
 
 <DocImage  path={require('./3-use-ccm-cost-reporting/1-ccm-perspectives/static/ce-four.png')} width="50%" height="50%" title="Click to view full size image" />

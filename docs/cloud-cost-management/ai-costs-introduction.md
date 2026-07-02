@@ -45,7 +45,11 @@ AI cost data lives in several places, and each one tells you something different
 - AI gateway integration, ingesting telemetry from your existing gateway for per-request attribution
 - OpenTelemetry traces using GenAI semantic conventions, for full session and workflow attribution from any OTel-compatible source
 
-To get started, just go to **Cloud & AI Cost Management** > **Account Settings** > **AI Cloud Providers** and select **Add AI Provider**. Supported providers: OpenAI, Anthropic. 
+To get started, just go to **Cloud & AI Cost Management** > **Account Settings** > **AI Cloud Providers** and select **Add AI Provider**. Supported providers: OpenAI, Anthropic. For AWS Bedrock, Google Vertex AI and Azure - cloud provider connectors will be able to capture the AI costs if billing is enabled.
+
+Once you have set up the connectors as described below, open [Cost Explorer](https://developer.harness.io/docs/cloud-cost-management/cost-explorer) to explore your AI costs and work with the AI-specific dimensions. For a clearer breakdown, you can save these as separate Views.
+
+<DocImage  path={require('./static/ai-costs-in-explorer.png')} width="100%" height="100%" title="Click to view full size image" />
 
 <Tabs>
 <TabItem value="OpenAI">
@@ -57,11 +61,10 @@ To get started, just go to **Cloud & AI Cost Management** > **Account Settings**
 
 <DocImage  path={require('./static/openai-one.png')} width="100%" height="100%" title="Click to view full size image" />
 
-**Step 2:** Add URL and API Key. Make sure the API key is an Admin API key with read-only access. Check more [here](https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/admin_api_keys/methods/create).
+**Step 2:** Add URL and API Key
 
 - **URL**: The OpenAI API endpoint URL. Use the default in UI unless you have a custom endpoint.
-- **API Key**: Your OpenAI Admin API key with read-only access. This key is used to fetch usage and cost data from your OpenAI account.
-- **Model Name**: Select the OpenAI model(s) you want to track costs for (e.g., GPT-4).
+- **API Key**: Your OpenAI Admin API key with read-only access. This key is used to fetch usage and cost data from your OpenAI account. Check how to get Admin API key [here](https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/admin_api_keys/methods/create).
 
 <DocImage  path={require('./static/openai-two.png')} width="100%" height="100%" title="Click to view full size image" />
 
@@ -78,10 +81,10 @@ Click on **Continue** and wait for connection test.
 
 <DocImage  path={require('./static/an-one.png')} width="100%" height="100%" title="Click to view full size image" />
 
-**Step 2:** Add Authentication (either Personal Token or Bedrock API Key) and API Key. Make sure the API key is an Admin API key.
+**Step 2:** Add URL and API Key
 
-- **API Key**: Your Anthropic Admin API key
-- **Model Name**: Select the Anthropic model(s) you want to track costs for (e.g., Claude 3.5 Sonnet).
+- **URL**: The Anthropic API endpoint URL. Use the default in UI unless you have a custom endpoint.
+- **API Key**: Your Anthropic Admin API key. This key is used to fetch usage and cost data from your Anthropic account. Check how to get API key [here](https://docs.anthropic.com/en/api/getting-started).
 
 <DocImage  path={require('./static/an-two.png')} width="100%" height="100%" title="Click to view full size image" />
 
@@ -128,7 +131,7 @@ Take a customer-support copilot as an example. The total invoice tells you the b
 
 ### AI Cost Explorer
 
-Filter and group AI spend by the dimensions that matter for AI workloads:
+After setting up the connectors, you can use the AI Cost Explorer to filter and group AI spend by the dimensions that matter for AI workloads:
 
 - Provider, account, and project
 - Model and model version
@@ -137,4 +140,7 @@ Filter and group AI spend by the dimensions that matter for AI workloads:
 - Region
 - Labels and custom dimensions
 - Drill down from business-level metrics to raw cost data, with filters that compose the way they do everywhere else in CACM.
+
+<DocImage  path={require('./static/ai-costs-in-explorer.png')} width="100%" height="100%" title="Click to view full size image" />
+
 ---
