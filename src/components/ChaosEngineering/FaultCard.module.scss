@@ -1,4 +1,11 @@
 .tutorialCard {
+  /* Reset native button styles so <button> renders identically to the card design */
+  appearance: none;
+  border: none;
+  margin: 0;
+  font-family: inherit;
+  text-align: inherit;
+
   display: flex;
   flex-direction: column;
   align-items: center;

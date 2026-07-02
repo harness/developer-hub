@@ -1,10 +1,11 @@
-## ChaosHub
+---
+title: Manage ChaosHub
+sidebar_label: Manage ChaosHub
+sidebar_position: 2
+description: Create and manage ChaosHubs at the project, organization, and account levels
+---
 
-A ChaosHub is a collection of reusable faults, probes, and action templates that you can use to create chaos experiments. 
-
-You can reuse these templates to build consistent and reliable chaos experiments while sharing proven chaos scenarios across teams and projects, maintaining consistency in chaos engineering practices, and enabling collaboration and knowledge sharing within your organization.
-
-Harness Chaos Engineering supports creating ChaosHubs at three different levels, each serving specific use cases and providing different levels of access and control.
+Harness Resilience Testing supports creating ChaosHubs at three different levels, each serving specific use cases and providing different levels of access and control.
 
 ## Project Level ChaosHub
 
@@ -15,12 +16,12 @@ Project Level ChaosHubs are scoped to individual projects, providing teams with 
 1. Navigate to your specific Chaos Engineering project in Harness
 2. Go to **Project Settings** → **ChaosHubs**
 
-    ![scope](./static/chaoshub-scopes/project-level-chaoshub.png)
+    ![scope](../../content/chaoshub/static/chaoshub-scopes/project-level-chaoshub.png)
 
 3. Click **New ChaosHub**
 4. Enter the ChaosHub details and click **Create**
 
-    ![create](./static/chaoshub-scopes/create-project-level-chaoshub.png)
+    ![create](../../content/chaoshub/static/chaoshub-scopes/create-project-level-chaoshub.png)
 
 ---
 
@@ -47,12 +48,6 @@ Account Level ChaosHubs provide the highest scope, available across all organiza
 2. Go to **Account Settings** → **ChaosHubs**
 3. Click **New ChaosHub**
 4. Enter the ChaosHub details and click **Create**
-
-:::note Enterprise ChaosHub
-Harness provides a default **Enterprise ChaosHub** at the account level, which comes pre-configured with a wide array of faults and chaos scenarios. This enterprise hub includes battle-tested chaos experiments for various platforms and technologies, giving you a head start with proven chaos engineering patterns.
-
-![Enterprise ChaosHub](./static/new-chaos-studio/enterprise-chaos-hub.png)
-:::
 
 ---
 
