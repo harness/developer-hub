@@ -6,6 +6,8 @@ import applySnowQuery from '@site/docs/software-engineering-insights/propelo-sei
 import snowSuccess from '@site/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/static/snow-success.png';
 import authTypes from '@site/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/static/snow-auth-types.png';
 import snowOnPremQuery from '@site/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/static/snow-on-prem-query.png';
+import snowCustom from '@site/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/static/snow-custom.png';
+import snowField from '@site/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/static/snow-field.png';
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -191,9 +193,7 @@ If you want to filter the incidents or change requests to be ingested, create a 
 
    <img src={applySnowQuery} alt="Apply the ServiceNow Query" width="500" />
 
-1. Click on the **Next: Validate Connection**.
-  
-  It will establish a connection with the provided URL, perform authentication, and then run the preflight checks. If everything is successful, you will see a message confirming a successful connection.
+1. Click **Next: Validate Connection** to establish a connection with the provided URL, perform authentication, and run the preflight checks. If everything is successful, you will see a message confirming a successful connection.
 
 1. Click on the **Done** button and the integration will be successfully saved.
 
@@ -212,9 +212,7 @@ If you want to filter the incidents or change requests to be ingested, create a 
 1. Set the timezone to UTC by default. If you use a different timezone, specify it here.
 1. Click on the **Connect ServiceNow** button. This will redirect you to the ServiceNow application.
 1. Allow the application and grant the required permissions, and it will redirect you back to SEI.
-1. Click on the **Next: Validate Connection**.
-  
-  It will establish a connection with the provided URL, perform authentication, and then run the preflight checks. If everything is successful, you will see a message confirming a successful connection.
+1. Click **Next: Validate Connection**. It will establish a connection with the provided URL, perform authentication, and then run the preflight checks. If everything is successful, you will see a message confirming a successful connection.
 
 1. Click on the **Done** button and the integration will be successfully saved.
 
@@ -222,6 +220,52 @@ If you want to filter the incidents or change requests to be ingested, create a 
 
 </TabItem>
 </Tabs>
+
+### ServiceNow field mapping and display values
+
+ServiceNow [display value fields](https://www.servicenow.com/docs/r/platform-administration/ai-platform-administration/c_DisplayValues.html) (`dv_*`) are exposed differently in SEI depending on whether the underlying field is a standard ServiceNow field or a custom field.
+
+<details>
+<summary>Custom Fields</summary>
+
+Custom ServiceNow fields (`u_*`) are available by clicking **Add custom fields** and are mapped using their display labels. 
+
+<img src={snowCustom} alt="ServiceNow custom field mapping in SEI" width="500" />
+
+For example:
+
+| ServiceNow field         | SEI field         |
+| ------------------------ | ----------------- |
+| `dv_u_reason_for_change` | Reason for Change |
+| `dv_u_subcategory`       | Subcategory       |
+| `dv_u_line_of_business`  | Line of Business  |
+
+</details>
+<details>
+<summary>Standard Fields</summary>
+
+Standard ServiceNow fields do not appear in the **Add custom fields** list because they are already available as built-in workflow filters.
+
+For example:
+
+| ServiceNow field | SEI field |
+| ---------------- | --------- |
+| `dv_state`       | Status    |
+| `dv_category`    | Category  |
+
+To filter on these fields, select **Status** or **Category** directly from the workflow filter dropdown instead of adding them as custom fields.
+
+<img src={snowField} alt="ServiceNow standard field selected from the workflow filter dropdown" width="800" />
+
+</details>
+
+### Recreate ServiceNow queries
+
+When recreating a ServiceNow query in SEI:
+
+* Use the display label shown in SEI rather than the raw `dv_*` field name.
+* For custom fields (`dv_u_*`), add the field by clicking **Add custom fields** first.
+* For standard fields such as `dv_state` and `dv_category`, use the built-in filter fields already available in workflow profiles.
 
 ## ServiceNow On-Prem
 
