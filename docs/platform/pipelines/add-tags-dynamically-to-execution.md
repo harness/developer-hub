@@ -323,4 +323,4 @@ Filters created before this feature was enabled default to OR logic (Matches Any
 
 Go to [Tags](/docs/platform/tags/) to learn how to structure tags and assign metadata using them in Harness.
 
-You can find more on structure of tags and how to assign metadata using them in Harness [here](/docs/platform/tags/).
+You can find more on structure of tags and how to assign metadata using them in Harness <a href="/docs/platform/tags/assign-metadata-using-tags">here</a>.

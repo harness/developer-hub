@@ -46,7 +46,7 @@ Invalid request: Secret [MySecretName] specified in template is stored in secret
 ### Templates overview
 
 * You can add secret manager templates to template libraries at any [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
-* You can use [tags](../references/tags-reference.md) to group templates. You can search or filter templates using these tags.
+* You can use [tags](/docs/platform/tags/assign-metadata-using-tags) to group templates. You can search or filter templates using these tags.
 * If you change the template inputs, you must update the entities referencing the template for the changes to be reflected.
 
 ### Secret manager template scope

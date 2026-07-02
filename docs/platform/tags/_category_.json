@@ -1,14 +1,9 @@
 {
     "label": "Tags",
-    "collapsible": "true",
-    "collapsed": "true",
-    "className": "red",
+    "collapsible": true,
+    "collapsed": true,
     "position": 21,
-    "link": {
-        "type": "generated-index",
-        "title": "Tags"
-    },
     "customProps": {
-        
+        "description": "Tags"
     }
 }

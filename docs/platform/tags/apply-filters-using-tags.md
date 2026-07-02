@@ -1,7 +1,7 @@
 ---
 title: Apply filters using tags
 description: Once you’ve applied tags to your Harness applications and components, you can use these tags to filter what components you see. This topic describes how to use tags to create different views of your…
-sidebar_position: 3
+sidebar_position: 6
 ---
 
 Once you’ve applied tags to your Harness applications and components, you can use these tags to filter what components you see. This topic describes how to use tags to create different views of your applications and components. 
@@ -9,7 +9,7 @@ Once you’ve applied tags to your Harness applications and components, you can 
 ## Before you begin
 
 * Go to [Onboarding guide](/docs/platform/get-started/onboarding-guide).
-* Go to [Assign metadata using tags](tags.md).
+* Go to <a href="/docs/platform/tags/assign-metadata-using-tags">Assign metadata using tags</a>.
 * Go to [Tags reference](/docs/platform/references/tags-reference/).
 
 ## Filter applications or components by tags

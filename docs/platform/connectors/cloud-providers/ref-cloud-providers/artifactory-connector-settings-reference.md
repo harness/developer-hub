@@ -70,7 +70,7 @@ The Artifactory connector has the following settings.
 * **Name:** The unique name for this Connector.
 * **ID:** Go to [Entity Identifier reference](../../../references/entity-identifier-reference.md).
 * **Description:** Optional text string.
-* **Tags:** Go to the [Tags reference](../../../references/tags-reference.md).
+* **Tags:** Go to the <a href="/docs/platform/tags/overview#create-tags-for-pipelines">Tags reference</a>.
 
 ### Artifactory Repository URL
 

@@ -59,7 +59,7 @@ connector:
 
 * **Name:** Enter a name for this connector. Harness creates an [ID](/docs/platform//references/entity-identifier-reference.md) based on the name.
 * **Description:** Optional text string.
-* **Tags:** Optional [tags](/docs/platform/references/tags-reference.md).
+* **Tags:** Optional <a href="/docs/platform/tags/overview#create-tags-for-pipelines">tags</a>.
 
 ## Provider type
 

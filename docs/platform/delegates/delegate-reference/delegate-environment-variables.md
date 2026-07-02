@@ -58,7 +58,7 @@ The namespace for the delegate is taken from the `StatefulSet` namespace.
 
 Delegate tags are descriptors that are added to the delegate before the registration process, in Harness Manager or in YAML. Harness generates tags based on the delegate name; you can add others. You can specify multiple tags in YAML as a comma-separated list.
 
-Tags are displayed on the delegate details page in Harness Manager. Go to [Tags reference](../../references/tags-reference.md) and [Use delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md).
+Tags are displayed on the delegate details page in Harness Manager. Go to <a href="/docs/platform/tags/overview#create-tags-for-pipelines">Tags reference</a> and [Use delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md).
 
 ```yaml
         - name: DELEGATE_TAGS

@@ -81,7 +81,7 @@ The GCP connector has the following settings to allow Harness to securely connec
 * **Name:** The unique name for the connector.
 * **Id:** Harness automatically creates an **Id** ([Entity Identifier](../../../references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id** during initial connector creation. Once saved, the **Id** can't be changed.
 * **Description:** Optional.
-* **Tags:** For information about tags, go to the [Tags reference](../../../references/tags-reference.md).
+* **Tags:** For information about tags, go to the <a href="/docs/platform/tags/overview#create-tags-for-pipelines">Tags reference</a>.
 
 ### Details settings
 

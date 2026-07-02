@@ -75,7 +75,7 @@ trigger:
 
 * **Name** and **Id**: Enter a name for the trigger. Harness automatically assigns an **Id** ([Entity Identifier Reference](../references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id** until the trigger is saved. Once saved, you can change the name but not the Id.
 * **Description**: Optional text string.
-* **Tags**: Go to the [Tags Reference](../references/tags-reference.md).
+* **Tags**: Go to the <a href="/docs/platform/tags/overview#create-tags-for-pipelines">Tags Reference</a>.
 
 ### Payload Type
 

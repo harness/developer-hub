@@ -82,7 +82,7 @@ The tags that were added to the delegate in Harness Manager or YAML before deleg
 
 Harness generates tags based on the delegate name. You can add others. The tags appear on the delegate details page in Harness Manager.
 
-For more information, go to [Tags reference](/docs/platform/references/tags-reference.md) and [Select delegates with tags](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md).
+For more information, go to <a href="/docs/platform/tags/overview#create-tags-for-pipelines">Tags reference</a> and [Select delegates with tags](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md).
 
 ```yaml
 - name: DELEGATE_TAGS

@@ -155,7 +155,7 @@ The following table provides rough estimates of potential resource requirements 
 * **Name:** The unique name for this connector.
 * **ID:** [Entity Identifier.](../../../references/entity-identifier-reference.md)
 * **Description:** Optional text string.
-* **Tags:** Optional [tags](../../../references/tags-reference.md).
+* **Tags:** Optional <a href="/docs/platform/tags/overview#create-tags-for-pipelines">tags</a>.
 
 ### Use the credentials of a specific Harness Delegate
 

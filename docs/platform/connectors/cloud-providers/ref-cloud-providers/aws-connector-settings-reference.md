@@ -417,7 +417,7 @@ The AWS connector has the following settings.
 - **Name:** The name for the connector.
 - **Id:** [Entity Identifier.](../../../references/entity-identifier-reference.md)
 - **Description:** Optional text string.
-- **Tags**: Optional [tags](../../../references/tags-reference.md).
+- **Tags**: Optional <a href="/docs/platform/tags/overview#create-tags-for-pipelines">tags</a>.
 
 ### Credentials
 

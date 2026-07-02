@@ -1,7 +1,10 @@
 ---
 title: Assign metadata using tags
 description: Define and apply tags (key-value pairs) to organize and view your Harness resources.
-sidebar_position: 1
+sidebar_position: 9
+slug: /platform/tags/assign-metadata-using-tags
+redirect_from:
+- /docs/platform/tags/
 ---
 
 Harness enables you to provide metadata for organizing, searching, and filtering components. You add your metadata using Harness tags. This topic explains how to create tags, including guidelines and restrictions.
@@ -113,4 +116,5 @@ There is no automatic undo. To restore a removed tag, you must manually re-enter
 
 ## Next Steps
 
-* [Apply filters using tags](apply-filters-using-tags.md)
+* <a href="/docs/platform/tags/apply-filters-using-tags">Apply filters using tags</a>
+

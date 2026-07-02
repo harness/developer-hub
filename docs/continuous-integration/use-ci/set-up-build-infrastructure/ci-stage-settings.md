@@ -20,7 +20,7 @@ To create, edit, and delete stages in CI pipelines, you need either Project Admi
 
    Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/references/entity-identifier-reference.md)) based on the **Name**. You can change the **Id** when you first add the stage. After you add the stage, it the **Id** can't be changed.
 
-   The description and [tags](../../../platform/references/tags-reference.md) are optional.
+   The description and <a href="/docs/platform/tags/overview#create-tags-for-pipelines">tags</a> are optional.
 
 4. Configure the [default codebase settings](../codebase-configuration/create-and-configure-a-codebase.md).
 5. Select **Set Up Stage**.

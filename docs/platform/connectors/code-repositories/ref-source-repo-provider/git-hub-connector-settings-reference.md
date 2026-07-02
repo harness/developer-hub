@@ -17,7 +17,7 @@ This topic provides settings and permissions for the GitHub connector. For instr
 
 * **Name:** The unique name for this connector. Harness generates an **Id** ([Entity Identifier](../../../references/entity-identifier-reference.md)) based on the **Name**. You can edit the **Id** during initial connector creation. Once you save the connector, the **Id** is locked.
 * **Description:** Optional text string.
-* **Tags:** Optional labels you can use for filtering. For details, go to the [Tags reference](../../../references/tags-reference.md).
+* **Tags:** Optional labels you can use for filtering. For details, go to the <a href="/docs/platform/tags/overview#create-tags-for-pipelines">Tags reference</a>.
 
 ## Details settings
 

@@ -19,7 +19,7 @@ The stage template demonstrated in this topic uses runtime inputs. Runtime input
 * Review [Templates overview](template.md).
 * Review the [Harness key concepts](/docs/platform/get-started/key-concepts).
 * You can add templates to template libraries at any [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
-* [Tags](../references/tags-reference.md) can be used to group templates. You can search or filter templates using these tags.
+* [Tags](/docs/platform/tags/assign-metadata-using-tags) can be used to group templates. You can search or filter templates using these tags.
 * You can have nested templates. You can refer to a stage template in a pipeline template.
 
 ### Step 1: Create a stage template

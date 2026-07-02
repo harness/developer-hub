@@ -35,7 +35,7 @@ Text string.
 
 ### Tags
 
-See [Tags Reference](../../../references/tags-reference.md).
+See [Tags Reference](/docs/platform/tags/overview#create-tags-for-pipelines).
 
 ### Helm Repository URL
 

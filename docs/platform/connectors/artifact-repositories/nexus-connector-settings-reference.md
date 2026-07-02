@@ -50,7 +50,7 @@ The unique name for this connector.
 
 Harness creates an [Id (Entity Identifier)](../../references/entity-identifier-reference.md) based on the name. You can change the **Id** while creating the connector. Once saved, the **Id** can't be changed, but you can change the **Name**.
 
-**Description** and [**Tags**](../../references/tags-reference.md) are optional.
+**Description** and <a href="/docs/platform/tags/overview#create-tags-for-pipelines"><strong>Tags</strong></a> are optional.
 
 ### Nexus Repository URL
 
@@ -101,4 +101,4 @@ The repository and artifact path must not begin or end with `/`.
 
 ### Tag
 
-Select a [tag](../../references/tags-reference.md) from the list.
+Select a [tag](/docs/platform/tags/overview#create-tags-for-pipelines) from the list.

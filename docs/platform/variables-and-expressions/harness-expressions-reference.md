@@ -434,7 +434,7 @@ Use these expressions to get artifact identifiers, tags, and labels.
 
    <DocImage path={require('./static/harness-variables-41.png')} width="60%" height="60%" title="Click to view full size image" />
 
-* `<+artifacts.primary.tag>`: The tags on the pushed, pulled, or deployed artifact, such as AMI tags. For example, if you deployed the Docker image `nginx:stable-perl`, the `<+artifacts.primary.tag>` is `stable-perl`. This expression has no relationship to [Harness tags](/docs/platform/references/tags-reference.md).
+* `<+artifacts.primary.tag>`: The tags on the pushed, pulled, or deployed artifact, such as AMI tags. For example, if you deployed the Docker image `nginx:stable-perl`, the `<+artifacts.primary.tag>` is `stable-perl`. This expression has no relationship to <a href="/docs/platform/tags/overview#create-tags-for-pipelines">Harness tags</a>.
 
 :::info note
 GAR(Google Artifact Registry) does not have a tag field but a rather a version which can be fetched using `<+artifacts.primary.version>`
