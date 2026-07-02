@@ -30,7 +30,7 @@ proxy:
 
 ### Secrets
 
-Generate a Personal Auth Token and set it as variable of `BUGSNAG_PERSONAL_TOKEN`, For instructions on how to create a Personal Auth Token, [read the instructions](https://bugsnagapiv2.docs.apiary.io#introduction/authentication/personal-auth-tokens-(recommended)).
+Generate a Personal Auth Token and set it as variable of `BUGSNAG_PERSONAL_TOKEN`, For instructions on how to create a Personal Auth Token, [read the instructions](https://bugsnagapiv2.docs.apiary.io/#introduction/authentication/personal-auth-tokens-(recommended)).
 
 ### Delegate proxy
 

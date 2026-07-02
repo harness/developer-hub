@@ -1,0 +1,12 @@
+{
+  "label": "Health Sources",
+  "position": 100,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "default",
+  "link": {
+    "type": "generated-index",
+    "title": "Health Sources",
+    "description": "Configure health sources such as Prometheus, Datadog, Splunk, New Relic, and other APM and logging tools to collect metrics and logs for deployment verification."
+  }
+}

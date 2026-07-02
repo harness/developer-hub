@@ -1,0 +1,12 @@
+{
+   "label":"SLSA Compliance",
+   "position": 10,
+   "collapsible":"true",
+   "collapsed":"true",
+   "className":"default",
+   "description": "Generate and Verify SLSA Provenance to comply with all SLSA levels",
+   "link":{
+      "type":"generated-index",
+      "title":"SLSA Compliance"
+   }
+}

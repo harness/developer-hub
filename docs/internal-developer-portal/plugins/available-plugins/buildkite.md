@@ -27,7 +27,7 @@ The Buildkite plugin enables developers to view and interact with their CI/CD pi
 
 ![buildkite](./static/buildkite.png)
 
-## Plugin metadata
+## Plugin Metadata
 
 | Field         | Value |
 |---------------|-------|
@@ -38,7 +38,7 @@ The Buildkite plugin enables developers to view and interact with their CI/CD pi
 
 ## Configuration
 
-### Application configuration YAML
+### Application Configuration YAML
 
 
 ```yaml

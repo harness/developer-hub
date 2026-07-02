@@ -1,9 +1,8 @@
 ---
 title: ServiceNow - Add New Version of Spinnaker
 redirect_from:
-  - /docs/continuous-delivery/armory/general/servicenow---add-new-version-of-spinnaker
+  - /docs/continuous-delivery/armory/general/servicenowadd-new-version-of-spinnaker
 ---
-
 
 Adding Versions to ServiceNow and Jira need to be done anytime a new major version of Spinnaker is created.
 ServiceNow Changes

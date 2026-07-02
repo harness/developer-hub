@@ -13,10 +13,10 @@ description: View CI/CD executions running within your Jenkins instance.
 ## Configuration
 
 :::info
-As part of our [March-v0.41.0 release](/release-notes/internal-developer-portal), we have upgraded the Jenkins Plugin to its latest version, introducing support for [additional parameters](/docs/internal-developer-portal/plugins/available-plugins/jenkins#optional-parameters-in-backend-config) in the backend configuration. If you already have the plugin enabled, you can now optionally include these new parameters as needed.
+As part of our [March-v0.41.0 release](/release-notes/internal-developer-portal), we've upgraded the Jenkins Plugin to its latest version, introducing support for [additional parameters](/docs/internal-developer-portal/plugins/available-plugins/jenkins.md#optional-parameters-in-backend-config) in the backend configuration. If you already have the plugin enabled, you can now optionally include these new parameters as needed.
 :::
 
-### Application configuration YAML
+### Application Configuration YAML
 
 This plugin requires a backend configuration to make calls to your Jenkins instance with authentication. Update the following configuration with your Jenkins URL and a username:
 
@@ -28,7 +28,7 @@ jenkins:
       username: "<your-jenkins-username>"
       apiKey: ${JENKINS_TOKEN}
 ```
-### Additional parameters
+### Additional Parameters
 
 With the latest Jenkins Plugin upgrade, support for additional parameters has been introduced in the backend configuration. You can include these parameters as needed. These parameters serve specific roles in configuring Jenkins instances.
 
@@ -50,7 +50,7 @@ In this example, the plugin will process up to 100 projects from the specified J
 
 This parameter specifies a regular expression pattern used to securely override the `baseUrl` defined in the configuration using values from the catalog annotations. This provides flexibility while adding security, ensuring only approved URLs can override the base configuration.
 
-#### Example configuration:
+#### Example Configuration:
 
 **Backend Config**
 ```yaml

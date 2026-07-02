@@ -19,7 +19,7 @@ IDP 2.0 is an ongoing project under active iteration. Here is the most recent st
 | [**Git Experience (YAML files in Git)**](/docs/internal-developer-portal/git-experience/gitx-journey) | ✅ (Ready to onboard) |
 | [**New System Entity for grouping**](/docs/internal-developer-portal/catalog/data-model/system-entity)           | ✅ (Ready to onboard)  |
 | [**Custom User Groups**](/docs/internal-developer-portal/catalog/data-model/user-group)                   | ✅ (Ready to onboard)  |
-| [**Project/Org filters in Scorecards**](/docs/internal-developer-portal/scorecards/scorecard#create-a-scorecard)                                                                | ✅ (Ready to onboard)        |
+| [**Project/Org filters in Scorecards**](/docs/internal-developer-portal/scorecards/scorecard.md#create-a-scorecard)                                                                | ✅ (Ready to onboard)        |
 
 :::
 
@@ -34,17 +34,17 @@ IDP 2.0 is an ongoing project under active iteration. Here is the most recent st
 - **Backstage Plugin Support**: Continue using existing plugins without any changes.
 - **Automatic Upgrade**: IDP 2.0 can be enabled via a feature flag. Your existing entities will be automatically upgraded to the new model.
 - **Default Upgrade Behavior**: Entities will initially live at the **Account scope**. You can later organize them into Org/Project scopes as needed.
-- **Breaking Changes**: The **Catalog APIs** and **entity YAML definitions** have changed. If you’ve built automations or integrations, review the [breaking changes](#breaking-changes).
+- **Breaking Changes**: The **Catalog APIs** and **entity YAML definitions** have changed. If you’ve built automations or integrations, please review the [breaking changes](#breaking-changes).
 
 <DocVideo src="https://www.youtube.com/watch?v=9Rj-jJp3Ehc" />
 
-## Address key challenges (why IDP 2.0)
+## Addressing Key Challenges (Why IDP 2.0)
 
 While IDP 1.0 was a strong foundation built on Backstage, we encountered several platform and user experience challenges at scale. IDP 2.0 addresses these core limitations:
 
 - **No Granular RBAC**: It was not possible to restrict who could view or edit specific Catalog entities or Workflows. IDP 2.0 introduces scope-aware permissions aligned with Harness Projects, Organizations and Account.
 
-- **No Controlled Workflow Rollout**: There was no way to gradually test and release IDP Workflows without impacting everyone in the organization. IDP 2.0 supports staged rollouts, start in your project and expand scope to Organization and Account as the Workflow matures.
+- **No Controlled Workflow Rollout**: There was no way to gradually test and release IDP Workflows without impacting everyone in the organization. IDP 2.0 supports staged rollouts — start in your project and expand scope to Organization and Account as the Workflow matures.
 
 - **Manual YAML Management**: Users were required to manage Catalog YAML files for every update. This made adoption harder, especially for entities which required frequent updates such as infrastructure resources. IDP 2.0 supports "inline entities" and complete entity lifecycle using API and UI without necessarily having to do Git operations.
 
@@ -56,33 +56,33 @@ While IDP 1.0 was a strong foundation built on Backstage, we encountered several
 
 - **Bugs with Location Entities**: YAML Locations were dedicated entities in 1.0 which would often result in unexpected scenarios causing conflicts when refreshing Components.
 
-## What is new in IDP 2.0 (feature highlights)
+## What's New in IDP 2.0 (Feature Highlights)
 
 Harness IDP 2.0 brings foundational improvements across architecture, security, scalability, and user experience. Here’s a breakdown of the key capabilities:
 
-### Platform hierarchy & granular RBAC
+### Platform Hierarchy & Granular RBAC
 
 Entities can now be created explicitly at Account, Organization, or Project scope. By default, entities at the Account scope are accessible platform-wide, while Project-level entities are scoped to the teams that own them. This allows teams to manage their own components while sharing approved workflows across the org.
 
 You can define custom roles with specific permissions for Catalog and Workflows (Create, Edit, Read, Delete, Execute), and organize them into reusable resource groups. These permissions align fully with the existing Harness RBAC framework.
 
-Learn more about the [Harness platform hierarchy](/docs/platform/get-started/key-concepts#account).
+Learn more about the [Harness platform hierarchy](https://developer.harness.io/docs/platform/get-started/key-concepts/#account).
 
-### Native Harness Git experience
+### Native Harness Git Experience
 
 IDP 2.0 introduces native Git support for all catalog entities, enabling real-time, bi-directional sync:
 
 - Edit the entity YAML in Git, and the changes reflect in IDP.
 - Modify the entity in IDP UI or API, and it updates Git (via direct push or a pull request using OAuth as well as API keys).
 - Choose between an inline entity (no YAML file) or a remote entity (YAML lives in your Git provider) depending on your preference.
-- Updates are instant via webhooks, no more periodic polling.
+- Updates are instant via webhooks—no more periodic polling.
 - Supports multiple branches and version history for audit and rollback.
 
-This eliminates previous rate-limit issues and improves developer productivity. Learn more about the [Harness Git Experience](/docs/platform/git-experience/git-experience-overview/).
+This eliminates previous rate-limit issues and improves developer productivity. Learn more about the [Harness Git Experience](https://developer.harness.io/docs/platform/git-experience/git-experience-overview/).
 
-### UI-Driven catalog entity creation
+### UI-Driven Catalog Entity Creation
 
-Users can now create and manage entities directly from the UI, no YAML expertise required:
+Users can now create and manage entities directly from the UI—no YAML expertise required:
 
 - Guided, form-based creation of Components, APIs, Resources, and Workflows.
 - Live sync between YAML and visual view for transparency.
@@ -90,7 +90,7 @@ Users can now create and manage entities directly from the UI, no YAML expertise
 
 This makes it easier for any developer to onboard into the portal without learning Backstage-specific YAML conventions.
 
-### Improved scalability & UX
+### Improved Scalability & UX
 
 The new Catalog and Workflow experience has been rebuilt for clarity, speed, and customization:
 
@@ -101,7 +101,7 @@ The new Catalog and Workflow experience has been rebuilt for clarity, speed, and
 
 These improvements reduce friction for everyday tasks and improve visibility for platform teams.
 
-### Enhanced workflow management
+### Enhanced Workflow Management
 
 The lifecycle of IDP Self Service Workflows can now easily be managed:
 
@@ -111,9 +111,9 @@ The lifecycle of IDP Self Service Workflows can now easily be managed:
 
 This supports safer rollout of IDP automation across environments and teams.
 
-## Break changes in IDP 2.0
+## Breaking Changes in IDP 2.0
 
-### API changes (Backstage catalog APIs → Harness catalog APIs)
+### API Changes (Backstage Catalog APIs → Harness Catalog APIs)
 
 All Catalog and Workflow APIs are now delivered directly through Harness Platform APIs, ensuring responses properly incorporate Role-Based Access Control (RBAC) and entity scope considerations. The Backstage native APIs, including entity registration and refresh functionality, are no longer available in version 2.0.
 
@@ -125,7 +125,7 @@ All Catalog and Workflow APIs are now delivered directly through Harness Platfor
 
 We will provide detailed documentation on the newer API docs and provide sample scripts using the newer Catalog APIs.
 
-### Single entity per YAML file
+### Single Entity per YAML File
 
 In IDP 1.0, it was possible to define multiple entities in a single YAML file using the `---` separator. For example:
 
@@ -146,7 +146,7 @@ This approach is no longer supported in IDP 2.0. To align with the Harness platf
 
 This change ensures better alignment with GitX workflows and simplifies entity lifecycle management.
 
-> NOTE: This update also impacts the Git Experience documentation and onboarding flows. Ensure each service or entity has its own entity YAML file. Ensure your `identifier` follows [naming rules](/docs/platform/references/entity-identifier-reference#identifier-naming-rules). Invalid identifiers may lead to entity registration errors.
+> NOTE: This update also impacts the Git Experience documentation and onboarding flows. Ensure each service or entity has its own entity YAML file. Ensure your `identifier` follows [naming rules](https://developer.harness.io/docs/platform/references/entity-identifier-reference/#identifier-naming-rules). Invalid identifiers may lead to entity registration errors.
 
 :::note
 Identifiers must use only letters, numbers, and underscores. Hyphens and special characters aren’t allowed.
@@ -154,16 +154,16 @@ Identifiers must use only letters, numbers, and underscores. Hyphens and special
 :::
 
 
-### Entity YAML definition
+### Entity YAML Definition
 
 IDP 2.0 implements a Harness-native entity schema featuring targeted adjustments to previous Backstage-style YAML configurations. These changes primarily introduce scope concepts (project, organization, or account) while enhancing readability based on user feedback.
 
 :::info Note
-With the IDP Git experience feature, one entity can have only one YAML file. Storing multiple entities within a single YAML is not supported in IDP 2.0. This design choice is _in line_ with the rest of the Harness platform, which emphasizes clarity and consistency through single-entity YAML definitions. To understand more about this and other key differences, see the [breaking changes in IDP 2.0](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path#breaking-changes-in-idp-20).
+With the IDP Git experience feature, one entity can have only one YAML file. Storing multiple entities within a single YAML is not supported in IDP 2.0. This design choice is _in line_ with the rest of the Harness platform, which emphasizes clarity and consistency through single-entity YAML definitions. To understand more about this and other key differences, see the [breaking changes in IDP 2.0](https://developer.harness.io/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path#breaking-changes-in-idp-20).
 :::
 
 
-For convenience, we have developed an API that converts Backstage catalog YAML to Harness catalog YAML format. This conversion is also available in the user interface, simply paste a Backstage Catalog YAML to automatically convert it to Harness Catalog YAML.
+For convenience, we've developed an API that converts Backstage catalog YAML to Harness catalog YAML format. This conversion is also available in the user interface—simply paste a Backstage Catalog YAML to automatically convert it to Harness Catalog YAML.
 
 JSON Schemas for all Catalog entities are available through our API.
 
@@ -200,7 +200,7 @@ These fields define the entity's scope. For project-scoped entities, both fields
 - `metadata` continues to be flexible. You can define your own properties within metadata.
 - `annotations`, `description`, `tags`, `links`, `labels` etc. continue to be part of metadata.
 
-#### YAML comparison
+#### YAML Comparison
 
 <Tabs>
   <TabItem value="idp-1" label="IDP 1.0 (Backstage YAML)">
@@ -263,7 +263,7 @@ spec:
 Existing Backstage YAML files will no longer be valid in IDP 2.0 due to the structural changes outlined above.
 For existing entities, use Harness Git Experience APIs to create corresponding YAML files in a new repository. For new entities, users will have the option to use inline or remote definitions during entity creation.
 
-### Entity reference structure changes
+### Entity Reference Structure Changes
 
 Entity references maintain similar structure with one key difference: `namespace` is replaced by the Harness scope identifier.
 
@@ -276,13 +276,13 @@ Scope can be one of:
 
 This applies to all relationships including `dependsOn`, `subComponentOf`, `providesApis`, entity references in Catalog Ingestion APIs, and any other YAML-based entity references.
 
-### Hidden tags removed (use RBAC instead)
+### Hidden Tags Removed (Use RBAC Instead)
 
 The "hidden" or "private" tags previously used to restrict entity visibility to owners are now deprecated in favor of Harness RBAC.
 Entities should be created at the appropriate scope (Project, Organization, Account) with properly configured roles, users, and user groups to establish the required permissions.
 For example, to restrict a set of Components to a specific team, create them at a Project scope and assign only that team as Project Viewers.
 
-### Enhanced system entity support
+### Enhanced System Entity Support
 
 <!-- Original content about System and Domain entities
 `System` and `Domain` entities have been removed. These often duplicated Harness Project and Organization structures, respectively.
@@ -318,23 +318,23 @@ spec:
 
 <!-- (TODO: Provide Layout YAML for customers who might have removed it) -->
 
-### Register/Catalog-Import → redirects to UI flow
+### Register/Catalog-Import → Redirects to UI Flow
 
 The Catalog Import page at `/catalog-import` is deprecated as entities must now be created using the new data model. Users will be guided through an intuitive "Create Entity" workflow in the UI, eliminating the need to write raw YAML before registering entities.
 
 You should remove this page from your sidebar by using the "Layout & Appearance" page inside "IDP Configure" view.
 
-### Old catalog access control page is deprecated
+### Old Catalog Access Control page is deprecated
 
-The IDP 1.0 "Access Control" page within the IDP Configure view has been removed. Use Harness Platform RBAC instead. Administrators can assign permissions to users/groups via roles scoped to Account/Organization/Project, or create custom roles with specific permissions.
+The IDP 1.0 "Access Control" page within the IDP Configure view has been removed. Please use Harness Platform RBAC instead. Administrators can assign permissions to users/groups via roles scoped to Account/Organization/Project, or create custom roles with specific permissions.
 
-### Pipeline step: Create catalog and register catalog steps
+### Pipeline Step: Create Catalog and Register Catalog steps
 
 The "Create Catalog" and "Register Catalog" steps previously used in IDP pipelines have been deprecated. These relied on creating a YAML file, committing and pushing it to Git, then using the URL to register it in IDP Catalog.
 
 You can now directly use Harness IDP Catalog APIs to register new entities using YAML definitions without Git operations. A dedicated step for this functionality will be available soon.
 
-### Custom user groups
+### Custom User Groups
 
 Harness IDP 2.0 supports Custom User Groups as first-class catalog entities! These groups differ from platform user groups synced from identity providers and offer several advantages:
 
@@ -346,13 +346,13 @@ Harness IDP 2.0 supports Custom User Groups as first-class catalog entities! The
 
 Custom User Groups are created at the account level and coexist with platform user groups. [Learn more about Custom User Groups](/docs/internal-developer-portal/catalog/data-model/user-group).
 
-## Feature compatibility matrix (1.0 vs 2.0)
+## Feature Compatibility Matrix (1.0 vs 2.0)
 
 | Feature                              | IDP 1.0 | IDP 2.0 | Notes                                                                                                                                                                                                          |
 | ------------------------------------ | ------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 📁 **Catalog**                       |         |         |                                                                                                                                                                                                                |
 | System Entity                        | ✅      | ✅      | Enhanced in IDP 2.0 with multi-scope support and many-to-many relationships                                                                                                                                |
-| Catalog Entity YAMLs                 | ✅      | ✅      | YAML structure has changed in IDP 2.0. Go to [Breaking Changes](#breaking-changes).                                                                                                                              |
+| Catalog Entity YAMLs                 | ✅      | ✅      | YAML structure has changed in IDP 2.0. See [Breaking Changes](#breaking-changes).                                                                                                                              |
 | UI-based Entity Creation             | ❌      | ✅      |                                                                                                                                                                                                                |
 | Edit Entities via UI                 | ❌      | ✅      |                                                                                                                                                                                                                |
 | Backstage Plugins Support            | ✅      | ✅      | Existing Backstage plugins are fully supported via annotations.                                                                                                                                                |

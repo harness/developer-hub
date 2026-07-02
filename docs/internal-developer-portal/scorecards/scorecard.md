@@ -15,7 +15,7 @@ Scorecards help you measure and improve software quality by evaluating your serv
 
 ---
 
-## What are scorecards?
+## What are Scorecards?
 
 Scorecards are evaluation frameworks that assess your software components against predefined criteria. They help you:
 
@@ -24,7 +24,7 @@ Scorecards are evaluation frameworks that assess your software components agains
 - **Gamification**: Encourage developers to adhere to standards by providing scores
 - **Confidence Estimation**: Help teams estimate the reliability of software based on its score
 
-### Key concepts
+### Key Concepts
 
 - **[Check](/docs/internal-developer-portal/scorecards/create-scorecards/checks.md)**: A check is a query performed against a data point for a software component which results in either `Pass` or `Fail`
 - **[Data Source](/docs/internal-developer-portal/scorecards/create-scorecards/data-sources.md)**: Data Sources are third-party providers which can provide a specific type of data for a software component. Example - GitHub, GitLab, Harness, PagerDuty, etc.
@@ -44,18 +44,18 @@ Scorecards assign a score to each service based on how well it meets these crite
 
 ---
 
-## Scorecard view 
+## Scorecard View 
 
 Scorecards are integrated directly into your service catalog, making it easy for developers to see their service scores at a glance.
 
-#### Overview card
+#### Overview Card
 
 A compact scorecard card appears on each service's overview page, displaying:
 - Overall scorecard score as a percentage
 - Number of passed and failed checks
 - Quick visual indicator of service health
 
-#### Detailed scorecard tab
+#### Detailed Scorecard Tab
 
 Click on the Scorecard tab to view comprehensive information:
 - Individual check results (Pass/Fail)
@@ -79,7 +79,7 @@ Learn more in the [Checks documentation](/docs/internal-developer-portal/scoreca
 
 ---
 
-## Data sources
+## Data Sources
 
 Data sources provide the information that checks evaluate. Harness IDP supports multiple data sources including:
 
@@ -95,16 +95,16 @@ Learn more in the [Data Sources documentation](/docs/internal-developer-portal/s
 
 ---
 
-## Get started with scorecards
+## Get Started with Scorecards
 
 Follow these steps to start using scorecards in your developer portal:
 
-1. **Enable Scorecard UI Components**: Add scorecard components to your catalog layout so developers can see scores on service pages. Go to [Enable Scorecard](/docs/internal-developer-portal/scorecards/create-scorecards/create-scorecard#enable-scorecards) for detailed instructions.
+1. **Enable Scorecard UI Components**: Add scorecard components to your catalog layout so developers can see scores on service pages. See [Enable Scorecard](/docs/internal-developer-portal/scorecards/create-scorecards/create-scorecard#enable-scorecards) for detailed instructions.
 
 2. **Create Checks**: Define the criteria you want to evaluate. Create custom checks using data from various sources. Learn more in [Scorecard Checks](/docs/internal-developer-portal/scorecards/create-scorecards/checks).
 
 3. **Create Your First Scorecard**: Combine checks into a scorecard, add filters to target specific services, and publish. Follow the [Create a Scorecard](/docs/internal-developer-portal/scorecards/create-scorecards/create-scorecard) guide.
 
-4. **View and Track Results**: Check scores on service pages, view detailed check results, and monitor trends over time. Go to [Manage Scorecards](/docs/internal-developer-portal/scorecards/manage-scorecards) for more information.
+4. **View and Track Results**: Check scores on service pages, view detailed check results, and monitor trends over time. See [Manage Scorecards](/docs/internal-developer-portal/scorecards/manage-scorecards) for more information.
 
   

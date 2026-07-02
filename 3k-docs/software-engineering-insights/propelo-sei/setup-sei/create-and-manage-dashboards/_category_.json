@@ -1,0 +1,11 @@
+{
+    "label":"Create & manage dashboards",
+    "position": 35,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"default",
+    "link":{
+       "type":"generated-index",
+       "title":"Create & manage dashboards"
+    }
+ }

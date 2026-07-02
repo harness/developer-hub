@@ -2,7 +2,6 @@
 title: Creating a Change Request in ServiceNow
 ---
 
-
 At Armory, we aim to provide customers with a secure method to request changes to their environments.  Authorized users can be added and managed by customers' self-designated [ServiceNow Service Portal Customer Administrators](https://support.armory.io/support?id=kb_article_view&sysparm_article=KB0010240).
 Users with access to the support portal can submit requests to make changes to their environment such as adding accounts, or adjusting configuration changes to their Armory-Managed Spinnaker environment by following the procedure below
 In order to ensure issues are resolved effectively, we ask that customers please do not mix requests and issue submissions, and to please open separate tickets for separate issues/changes.

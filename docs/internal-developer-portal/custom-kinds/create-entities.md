@@ -11,7 +11,7 @@ Once a custom kind exists, any user with catalog write access can create entitie
 
 ---
 
-## From the catalog UI (visual)
+## From the Catalog UI (Visual)
 
 ![](./static/catalog-ui-visual.png)
 <center>Figure 1: Creating Entity Visually in Catalog UI</center>

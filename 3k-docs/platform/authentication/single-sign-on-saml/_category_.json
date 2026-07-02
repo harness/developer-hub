@@ -1,0 +1,9 @@
+{
+    "label": "Single sign-on with SAML",
+    "collapsible": true,
+    "collapsed": true,
+    "position": 6,
+    "customProps": {
+        "description": "Authentication using SAML SSO providers."
+  }
+}

@@ -45,7 +45,7 @@ Since the `SPLUNK_ON_CALL_API_ID` and `SPLUNK_ON_CALL_API_KEY` variable is used 
 
 - You can create a new routing key on https://portal.victorops.com/ by going to Settings → Routing Keys.
 
-- You can read [Create & Manage Alert Routing Keys](https://help.victorops.com/knowledge-base/routing-keys#routing-key-tips-tricks) for further information.
+- You can read [Create & Manage Alert Routing Keys](https://help.victorops.com/knowledge-base/routing-keys/#routing-key-tips-tricks) for further information.
 
 ### Delegate proxy
 
@@ -57,7 +57,7 @@ This plugin does not require a delegate proxy to be set up because Splunk On-cal
 
 _No action required_
 
-This plugin exports a UI card that you can show on the **Overview** tab of a service or any other layout page. Go to **Configure** → **Layout**, select **Service** in the dropdown menu, and you will find following in the **Overview** section:
+This plugin exports a UI card that you can show on the **Overview** tab of a service or any other layout page. Go to **Configure** → **Layout**, select **Service** in the dropdown menu, and you'll find following in the **Overview** section:
 
 ```yaml
 - component: EntitySplunkOnCallCard

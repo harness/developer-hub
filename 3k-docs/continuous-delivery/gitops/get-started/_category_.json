@@ -1,0 +1,11 @@
+{
+  "label": "Get Started with GitOps",
+  "position": "100",
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+      "type": "generated-index",
+      "title": "Get Started with Harness GitOps"
+  }
+}

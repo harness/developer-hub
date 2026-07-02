@@ -2,8 +2,6 @@
 title: Contributing to OSS Spinnaker (Plugins and Donations of Code)
 ---
 
-
-
 ## Table of Contents
 * [Overview of OSS](#mcetoc_1h293plrv2s)* [Proposing Changes](#mcetoc_1h293plrv2t)* [Pull Requests](#mcetoc_1h293plrv2u)* [Testing](#mcetoc_1h293plrv2v)* [Releasing](#mcetoc_1h293plrv30)* [Documentation](#mcetoc_1h293plrv31)
 

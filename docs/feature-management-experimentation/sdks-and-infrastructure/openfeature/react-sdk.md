@@ -7,7 +7,7 @@ description: Integrate OpenFeature with Harness FME in your React applications t
 
 Integrate your React applications with Harness FME using the <Tooltip id="fme.openfeature.provider">React OpenFeature Provider</Tooltip>, a standardized, vendor-agnostic feature flagging API. This provider implements the OpenFeature specification and bridges the OpenFeature SDK with the Harness FME Browser SDK.
 
-This page walks you through installing, configuring, and using the React OpenFeature provider to evaluate <Tooltip id="fme.feature-management.feature-flag">feature flags</Tooltip> in your React applications.
+This page walks you through installing, configuring, and using the React OpenFeature provider to evaluate <Tooltip id="fme.openfeature.feature-flag">feature flags</Tooltip> in your React applications.
 
 ### Before you begin
 

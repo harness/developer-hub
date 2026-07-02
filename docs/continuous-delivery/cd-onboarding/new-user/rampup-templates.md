@@ -6,7 +6,6 @@ redirect_from:
   - /docs/continuous-delivery/cd-onboarding/new-user/rampup-templates
 ---
 
-
 Harness templates serve as a powerful tool to standardize deployment patterns, streamline processes, and eliminate duplicate efforts. 
 
 This guide outlines a set of best practices to utilize Harness templates more effectively.

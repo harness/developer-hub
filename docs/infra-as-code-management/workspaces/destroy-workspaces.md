@@ -6,7 +6,6 @@ sidebar_position: 80
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
 You can perform specific operations against your workspace configuration. Similarly to [provisioning a workspace](/docs/infra-as-code-management/workspaces/provision-workspace), you can tear down the infrastructure state from a workspace without deleting the workspace itself. This guide walks you through how to create a Destroy pipeline to run the `init`, `plan` and `destroy` commands with OpenTofu or Terraform.
 
@@ -100,11 +99,3 @@ Notice the three steps to execute your `init`, `plan` and `destroy` commands.
 :::tip review resources
 After the plan is created, view resources and Terraform outputs on the **Resources** tab. Check which resources will be added, modified, or removed.
 :::
-
-## Troubleshooting
-
-<Troubleshoot
-  issue="Plan-destroy fails with 404 Not Found — a resource in Terraform state was deleted outside of Terraform (for example, manually removed from the Harness platform or deleted by another pipeline). Terraform refreshes state before planning; when it queries the Harness API for a resource that no longer exists, the provider returns a 404 and the plan fails."
-  mode="docs"
-  fallback="Add a removed block with lifecycle { destroy = false } to drop the resource from state without an API delete, then re-run plan-destroy. Alternatively, run terraform state rm <resource_address> if you have CLI access, or remove the orphaned entry via the Harness IaCM State tab."
-/>

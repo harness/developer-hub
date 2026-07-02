@@ -2,7 +2,6 @@
 title: Where Does Spinnaker Begin and Jenkins End
 ---
 
-
 ### Question:
 Where does Spinnaker begin and Jenkins end?
 ### Answer:

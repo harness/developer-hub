@@ -1,7 +1,7 @@
 ---
 title: Enable Detailed Logging / Debugging Mode in Spinnaker Environment Service
 redirect_from:
-  - /docs/continuous-delivery/armory/general/enable-detailed-logging---debugging-mode-in-spinnaker-environment-service
+  - /docs/continuous-delivery/armory/general/enable-detailed-loggingdebugging-mode-in-spinnaker-environment-service
 ---
 
 ## Introduction

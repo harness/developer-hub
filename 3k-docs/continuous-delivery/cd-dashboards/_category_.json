@@ -1,0 +1,14 @@
+{
+    "label": "CD Dashboards",
+    "position": "2800",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "CD Dashboards"
+    },
+    "customProps": {
+        "helpdocs_category_id": "0gyfk4938x"
+    }
+}

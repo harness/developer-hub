@@ -6,7 +6,6 @@ redirect_from:
   - /docs/cloud-cost-management/use-ccm-cost-reporting/currency-preferences
 ---
 
-
 :::note
 Currently, this feature is behind the feature flag **CCM_CURRENCY_PREFERENCES**. Contact Harness Support to enable the feature.
 :::

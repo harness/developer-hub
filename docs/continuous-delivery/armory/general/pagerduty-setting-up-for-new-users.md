@@ -1,10 +1,8 @@
 ---
 title: PagerDuty - Setting up for New Users
 redirect_from:
-  - /docs/continuous-delivery/armory/general/pagerduty---setting-up-for-new-users
+  - /docs/continuous-delivery/armory/general/pagerdutysetting-up-for-new-users
 ---
-
-
 
 ### Administration to Setup User in the Pager Duty Queues
 

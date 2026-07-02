@@ -2,7 +2,6 @@
 title: Cases and Change Requests
 ---
 
-
 Customers may find themselves needing to submit either a Case or a Change Request within our portal.  The following article should assist customers with understanding when one type of submission should be used over the other.
 In order to ensure issues are resolved effectively, we ask that customers please do not mix requests and issue submissions, and to please open separate tickets for separate issues/changes.
 ### Case Submissions

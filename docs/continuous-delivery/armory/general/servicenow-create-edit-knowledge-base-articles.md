@@ -1,10 +1,8 @@
 ---
 title: ServiceNow - Create/Edit Knowledge Base Articles
 redirect_from:
-  - /docs/continuous-delivery/armory/general/servicenow---create-edit-knowledge-base-articles
+  - /docs/continuous-delivery/armory/general/servicenowcreate-edit-knowledge-base-articles
 ---
-
-
 
 ### Overview
 

@@ -5,10 +5,11 @@ description: Learn how you can customize your homepage and add card banners and 
 sidebar_position: 1
 ---
 
+## Introduction
 
 Homepage of IDP is meant to provide personalized view for developers, serving as a single pane of glass for all the necessary information required across tools and software systems in use, and it differs for different organization as well as different teams in an organization. So to help with varied use-cases, you can customize the homepage, add quick links in the headers, change text on the header, banner and cards according to your engineering org and make it useful for your developers.
 
-## Available customizations
+## Available Customizations
 
 The **Platform Admins** can customize the homepage under Layouts for 3 different categories **Header**, **Banner** and **Cards**. A preview of the changes with sample data is available while customizing the homepage. The cards can be of two width sizes, i.e., medium(6md) and large(12md).
 
@@ -24,7 +25,7 @@ The **Platform Admins** can customize the homepage under Layouts for 3 different
     - If your users have names of the format "last name, first name", then you can use Welcome `<+last_name>`, `<+first_name>`! Or you can name the portal a unique product name such as - `Welcome to MyPortal!` (maybe, a bit more creative than MyPortal).
     - There is a special variable called `<+greeting>` which resolves to Good Morning, Good Evening, etc. depending upon the timezone of the user. e.g. `<+greeting> <+first_name>`
 
-- For Quick links you can upload a Custom Icon **(Recommended Size: 128x128px and file size: 200KB)** along with a name and a link. You can also drag and re-arrange the order of the links. It is ideal to add a few links to some central documents that you want your users to go to when they come to your Developer Portal. e.g. Onboarding Docs, Link to Slack, etc.
+- For Quick links you can upload a Custom Icon **(Recommended Size: 128x128px and file size: 200KB)** along with a name and a link. You can also drag and re-arrange the order of the links. It's ideal to add a few links to some central documents that you want your users to go to when they come to your Developer Portal. e.g. Onboarding Docs, Link to Slack, etc.
 
 ![](./static/add-quicklinks.png)
 
@@ -41,20 +42,20 @@ The **Platform Admins** can customize the homepage under Layouts for 3 different
 
 ![](./static/homepage-cards.png)
 
-#### Default cards
+#### Default Cards
 
-- The home page displays the following cards by default, and they can only be removed or rearranged by using drag-drop but cannot be edited.
+- The home page displays the following cards by default, and they can only be removed or rearranged by using drag-drop but can't be edited.
 
 1. Recently Visited: The pages on IDP you visited recently.
 2. Top Visited: Most viewed pages in IDP by a user.
 3. Learn More: Important links to learn more on Harness IDP. 
 4. Starred Entities: Your Starred Components, Workflows or TechDocs are displayed here. 
 
-#### Other cards
+#### Other Cards
 
 Apart from these, there are two more cards that can be added, removed or edited according to your requirements. 
 
-### My pull requests card
+### My Pull Requests Card
 
 #### 1. GitHub
 
@@ -64,7 +65,7 @@ This GitHub PR card provides quick access to the pull requests you have created 
 
 The numbers displayed at the top, such as "15 Created," "1 Review Requests," and "1 Assigned" only reflect open pull requests, even though the card also contains information on closed pull requests, as seen by the "Closed (525)" tab.
 
-- **How To Set up**: The access is configured thorough [OAuth Configurations in IDP](/docs/internal-developer-portal/plugins/oauth-support-for-plugins), once the card is enabled on the Developer's Homepage you will be redirected to GitHub to sign-in to populate this card. 
+- **How To Set up**: The access is configured thorough [OAuth Configurations in IDP](https://developer.harness.io/docs/internal-developer-portal/plugins/oauth-support-for-plugins), once the card is enabled on the Developer's Homepage you'll be redirected to GitHub to sign-in to populate this card. 
 
 ![](./static/oauth-plugin-config-github.png)
 ![](./static/homepage-github-sign-in.png)
@@ -80,11 +81,11 @@ The numbers displayed at the top, such as "15 Created," "1 Review Requests," and
 
 - **Value Addition**: It will display data across all repositories you have permissions for, making it easy to track your contributions, review requests, and assigned PRs in one place without switching contexts.
 
-- **Limitation**: The real-time data is fetched in case of an event(e.g., updating the org filters, re-loading the homepage), and it does not periodically update the values. 
+- **Limitation**: The real-time data is fetched in case of an event(e.g., updating the org filters, re-loading the homepage), and it doesn't periodically update the values. 
 
 Currently, the "My PRs" card only supports GitHub as a data source. Support for Harness Code Repository is coming soon. Other platforms, such as GitLab, Azure, and Bitbucket, are not yet supported. Let us know if you’d like to see support for these platforms in the future!
 
-#### 2. Harness code repository
+#### 2. Harness Code Repository
 
 ![](./static/pull-request-card-hcr.png)
 
@@ -92,11 +93,11 @@ The Harness Code Repo (HCR) Pull Request Card provides a quick overview of pull 
 
 The numbers displayed at the top, such as "0 Created" and "1 Review Requests," reflect only open pull requests, although the card also includes information about closed pull requests, as shown under the "Closed" tab.
 
-### My tasks card
+### My Tasks Card
 
 #### 1. JIRA
 
-This JIRA card offers a centralized view of your assigned tasks, ensuring easy tracking of work items. It provides a categorized summary of the tickets you are currently working on, tickets assigned for the sprint, including their current status, priority, and associated metadata.
+This JIRA card offers a centralized view of your assigned tasks, ensuring easy tracking of work items. It provides a categorized summary of the tickets you're currently working on, tickets assigned for the sprint, including their current status, priority, and associated metadata.
 
 ![](./static/my-task-jira.png)
 
@@ -110,7 +111,7 @@ This JIRA card offers a centralized view of your assigned tasks, ensuring easy t
 
 2. Filters for Better Focus:
 
-- Worked On: Displays all the tickets you have worked on, regardless of their current status. Useful for tracking your progress across projects.
+- Worked On: Displays all the tickets you've worked on, regardless of their current status. Useful for tracking your progress across projects.
 - Assigned To Me: A focused view of tasks specifically assigned to you.
 - Current Sprint: Highlights tasks that are part of the active sprint.
 
@@ -128,7 +129,7 @@ This JIRA card offers a centralized view of your assigned tasks, ensuring easy t
 - Current Status: Clearly indicates if a ticket is in progress or another phase.
 
 - **How to Set Up:**
-Access to this JIRA card is authenticated via [OAuth Configurations in IDP](/docs/internal-developer-portal/plugins/oauth-support-for-plugins). To populate your task list, you need to add your Atlassian OAuth App client secret and ID in the configurations page, then developers can login from the homepage. 
+Access to this JIRA card is authenticated via [OAuth Configurations in IDP](https://developer.harness.io/docs/internal-developer-portal/plugins/oauth-support-for-plugins). To populate your task list, you need to add your Atlassian OAuth App client secret and ID in the configurations page, then developers can login from the homepage. 
 
 ![](./static/oauth-plugin-config.png)
 
@@ -142,9 +143,9 @@ Access to this JIRA card is authenticated via [OAuth Configurations in IDP](/doc
 - *Developer*: Sign in using the pre-configured OAuth App to access personalized data from JIRA. Utilize the "My JIRA Tickets" card on the homepage for real-time updates.
     - Scope: Access is limited to the JIRA projects, tickets, and associated data they have permissions for within the JIRA system. Developers only see tickets they are assigned to, tickets they created, or those they are mentioned in.
 
-### Markdown card
+### Markdown Card
 
-The Markdown Card is a customizable component that supports full markdown syntax, designed to serve various informational purposes on the IDP Homepage. Here is an example of Engineering Handbook card. 
+The Markdown Card is a customizable component that supports full markdown syntax, designed to serve various informational purposes on the IDP Homepage. Here's an example of Engineering Handbook card. 
 
 ![](./static/markdown-small.gif)
 
@@ -175,7 +176,7 @@ Here are some of the use cases:
 Feedback? Let us know on Slack: #idp-feedback
 ```
 
-### Tool kit
+### Tool Kit
 
 -  This card acts as a necessary bookmark for all the links visited by the developer quite frequently, e.g; JIRA Sprint Dashboard, QA Environments
 
@@ -187,7 +188,7 @@ Feedback? Let us know on Slack: #idp-feedback
 
 :::info
 
-Make sure to click on **Save Changes** for each time you want to save a new change otherwise the changes would be discarded and we show a dialog box with this warning when you try to exit the page without saving the changes. Also, the right side of the page is dedicated only for preview you cannot edit anything there. 
+Make sure to click on **Save Changes** for each time you want to save a new change otherwise the changes would be discarded and we show a dialog box with this warning when you try to exit the page without saving the changes. Also, the right side of the page is dedicated only for preview you can't edit anything there. 
 
 ![](./static/preview-save.png)
 

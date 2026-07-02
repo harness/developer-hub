@@ -22,6 +22,6 @@ The Backstage API includes the Backstage endpoints exposed through the Harness P
 
 The Platform API provides native Harness IDP APIs within the Harness Platform. For detailed documentation on endpoints and other Harness IDP API reference information, go to the [Harness API reference documentation](https://apidocs.harness.io/tag/AppConfig).
 
-### Catalog ingestion API
+### Catalog Ingestion API
 
 Software Catalog in Harness IDP supports modifying metadata for the services, libraries, websites and any other entities registered in the Catalog using the [Catalog Ingestion API](/docs/internal-developer-portal/catalog/integrate-tools/catalog-ingestion-api). 

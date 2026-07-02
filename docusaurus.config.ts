@@ -7,7 +7,6 @@ import type * as Preset from '@docusaurus/preset-classic';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import { repoPathToCanonical } from './client-modules/repoPathToCanonical.js';
-import mixpanel from './src/utils/mixpanel.js';
 
 const BASE_URL = process.env.BASE_URL || '/';
 
@@ -157,8 +156,8 @@ const config: Config = {
     'Learn intelligent software delivery skills at your own pace and in one place. Step-by-step tutorials, videos, and reference docs to help you create and deliver software.',
   url: 'https://developer.harness.io',
   baseUrl: BASE_URL,
-  onBrokenLinks: 'throw',
-  onBrokenAnchors: 'ignore',
+  onBrokenLinks: 'warn',
+  onBrokenAnchors: 'warn',
   favicon: 'img/hdh_fav_icon_grey.ico',
   customFields: {
     SEGMENT_API_KEY: process.env.SEGMENT_API_KEY,
@@ -188,6 +187,7 @@ const config: Config = {
       'data-modal-example-questions':
         'How do I update Harness delegate?,Can I save my filter settings?',
     },
+    /* Relyance: loaded from client-modules/relyanceConsent.js after app bootstrap */
   ],
   markdown: {
     //Mermaid Diagram Functionality
@@ -552,7 +552,40 @@ const config: Config = {
         ],
       },
     ],
-
+    [
+      path.resolve(__dirname, './plugins/docsEnhanced-plugin'),
+      {
+        id: 'docs3k',
+        path: '3k-docs',
+        sidebarPath: require.resolve('./sidebars-3k-docs.js'),
+        editUrl: 'https://github.com/harness/developer-hub/tree/main', // /tree/main/packages/create-docusaurus/templates/shared/
+        // include: ["tutorials/**/*.{md, mdx}", "docs/**/*.{md, mdx}"],
+        // content/ included so those docs are built and indexable by search; hidden from sidebar via sidebarItemsGenerator
+        exclude: ['**/shared/**', '**/static/**'],
+        routeBasePath: '3k-docs', //CHANGE HERE
+        showLastUpdateTime: true,
+        async sidebarItemsGenerator({ defaultSidebarItemsGenerator, ...args }) {
+          const sidebarItems = await defaultSidebarItemsGenerator(args);
+          return hideContentDocsFromSidebarItems(sidebarItems);
+        },
+        remarkPlugins: [
+          [
+            remarkMath,
+            {
+              strict: false,
+            },
+          ],
+        ],
+        rehypePlugins: [
+          [
+            rehypeKatex,
+            {
+              strict: false,
+            },
+          ],
+        ],
+      },
+    ],
     [
       path.resolve(__dirname, './plugins/docsEnhanced-plugin'),
       {
@@ -619,7 +652,6 @@ const config: Config = {
     path.join(__dirname, '/plugins/feature-flags-rss-plugin'),
   ],
   clientModules: [
-    path.join(__dirname, '/client-modules/mixpanelInit'),
     path.join(__dirname, '/client-modules/searchBar'),
     path.join(__dirname, '/client-modules/iframeEmbed'),
     path.join(__dirname, '/client-modules/dmsContentRedirect'),
@@ -629,12 +661,6 @@ const config: Config = {
     // path.join(__dirname, '/client-modules/chatbot'),
   ],
   headTags: [
-    // Inject Mixpanel token as a global variable before any scripts run
-    {
-      tagName: 'script',
-      attributes: {},
-      innerHTML: `window.__MIXPANEL_TOKEN__ = ${JSON.stringify(process.env.MIXPANEL_TOKEN || '')};`,
-    },
     // Queue `Kapa('open', …)` until `kapa-widget.bundle.js` finishes loading — same pattern as
     // https://docs.kapa.ai/integrations/website-widget/javascript-api/preinitialize
     {

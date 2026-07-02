@@ -1,7 +1,7 @@
 ---
 title: Error - Credential not found (AWS)
 redirect_from:
-  - /docs/continuous-delivery/armory/general/error---credential-not-found-aws
+  - /docs/continuous-delivery/armory/general/errorcredential-not-found-aws
 ---
 
 ## Issue

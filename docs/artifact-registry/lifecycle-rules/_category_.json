@@ -1,8 +1,0 @@
-{
-  "label": "Lifecycle Rules",
-  "collapsible": true,
-  "collapsed": true,
-  "link": { "type": "doc", "id": "artifact-registry/lifecycle-rules/overview" },
-  "customProps": {},
-  "position": 32
-}

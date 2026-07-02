@@ -2,7 +2,6 @@
 title: New Relic Canary Integration
 ---
 
-
 First you will need a Query Key and your account number.Follow [https://docs.newrelic.com/docs/insights/insights-api/get-data/query-insights-event-data-api](https://docs.newrelic.com/docs/insights/insights-api/get-data/query-insights-event-data-api)
 
 For your Account number you can fetch it from the url when you log into New Relic Insights

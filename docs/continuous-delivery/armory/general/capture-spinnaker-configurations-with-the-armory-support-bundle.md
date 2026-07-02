@@ -2,7 +2,6 @@
 title: Capture Spinnaker configurations with the Armory Support Bundle
 ---
 
-
 ### Introduction
 Troubleshooting a Spinnaker issue may require customers to manually pull the configurations  from their environment. At times, the configurations may be incomplete which would again require customers to pull the details causing a delay in the actual issue resolution.
 To avoid such discrepancies, ```Armory's Support Bundle``` application helps in capturing the accurate details  about the customer's Spinnaker installation. The Armory Support Bundle is a Kubernetes tool that pulls a standardized set of configuration details from Spinnaker manifests. The debug information is then compressed in the form of zip file and can provided to Armory's technical support team over the support case.  

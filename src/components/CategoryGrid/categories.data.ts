@@ -2,9 +2,13 @@
 export type ModuleLink = {
   name: string;
   href: string;
-  /** Optional explicit icon path (relative to site static dir, e.g. "img/icon-ci.svg") */
+  /** Light-mode icon path (relative to site static dir, e.g. "img/home/deployment.svg") */
+  iconLight?: string;
+  /** Dark-mode icon path — falls back to iconLight when omitted */
+  iconDark?: string;
+  /** Legacy single icon path — used when iconLight/iconDark are not set */
   icon?: string;
-  /** Module slug used for fallback icon: img/icon-{module}.svg */
+  /** Module slug used as last-resort fallback icon: img/icon-{module}.svg */
   module: string;
   description?: string;
   badge?: 'NEW' | 'EA' | 'GA';
@@ -18,158 +22,170 @@ export type Category = {
 
 export const categories: Category[] = [
   {
-    title: "AI for DevOps & Automation",
-    blurb: "Ship faster with modern delivery pipelines.",
+    title: "Delivery",
+    blurb: "",
     items: [
       {
-        name: "Continuous Delivery & GitOps",
-        href: "/docs/continuous-delivery",
+        name: "Deployments",
+        href: "/3k-docs/continuous-delivery",
         module: "cd",
-        description: "Automate deployments with GitOps workflows."
+        iconLight: "img/home/deployment.svg",
+        iconDark: "img/home/deployment.svg",
+        description: "Deploy to any environment using pipelines or GitOps workflows."
       },
       {
-        name: "Continuous Integration",
-        href: "/docs/continuous-integration",
+        name: "Builds",
+        href: "/3k-docs/continuous-integration",
         module: "ci",
-        description: "Build and test code at scale."
+        iconLight: "img/home/build.svg",
+        iconDark: "img/home/build.svg",
+        description: "Build, test, and publish code with scalable CI pipelines."
       },
       {
-        name: "Internal Developer Portal",
-        href: "/docs/internal-developer-portal",
-        module: "idp",
-        description: "Enable self-service golden paths."
+        name: "Feature Releases",
+        href: "/3k-docs/feature-management-experimentation",
+        module: "ff",
+        iconLight: "img/home/feature.svg",
+        iconDark: "img/home/feature.svg",
+        description: "Roll out features safely with flags and progressive delivery."
       },
       {
-        name: "Infrastructure as Code Management",
-        href: "/docs/infrastructure-as-code-management",
-        module: "iacm",
-        description: "Safely manage OpenTofu/Terraform infrastructure."
-      },
-      {
-        name: "Database DevOps",
-        href: "/docs/database-devops",
+        name: "Databases",
+        href: "/3k-docs/database-devops",
         module: "db-devops",
-        badge: "NEW",
-        description: "Version and deploy DB schema changes."
+        iconLight: "img/home/database.svg",
+        iconDark: "img/home/database.svg",
+        description: "Automate schema migrations within your delivery pipeline."
       },
       {
-        name: "Artifact Registry",
-        href: "/docs/artifact-registry",
+        name: "Infrastructure",
+        href: "/3k-docs/infrastructure-as-code-management",
+        module: "iacm",
+        iconLight: "img/home/infrastructure.svg",
+        iconDark: "img/home/infrastructure.svg",
+        description: "Provision infrastructure as code with drift detection."
+      },
+      {
+        name: "Artifacts",
+        href: "/3k-docs/artifact-registry",
         module: "ar",
-        badge: "NEW",
-        description: "Host, proxy, and distribute artifacts."
+        iconLight: "img/home/artifact.svg",
+        iconDark: "img/home/artifact.svg",
+        description: "Store and serve artifacts and images with access control."
       },
-      // Cloud Development Environments hidden from navigation (HDH-542)
-      // {
-      //   name: "Cloud Development Environments",
-      //   href: "/docs/cloud-development-environments",
-      //   module: "cde",
-      //   badge: "NEW",
-      //   description: "Spin up ephemeral cloud dev spaces."
-      // },
     ],
   },
   {
-    title: "AI for Testing & Resilience",
-    blurb: "Raise confidence with intelligent quality gates.",
+    title: "Quality",
+    blurb: "",
     items: [
       {
-        name: "Feature Management & Experimentation",
-        href: "/docs/feature-management-experimentation",
-        module: "fme",
-        description: "Control rollouts and run experiments."
-      },
-      {
-        name: "Resilience Testing",
-        href: "/docs/resilience-testing",
+        name: "Resilience Tests",
+        href: "/3k-docs/resilience-testing",
         module: "rt",
-        description: "Test resilience with Chaos, Load, and DR."
+        iconLight: "img/home/resilience-test.svg",
+        iconDark: "img/home/resilience-test.svg",
+        description: "Run chaos experiments to uncover weaknesses before outages."
       },
-      // {
-      //   name: "Chaos Engineering",
-      //   href: "/docs/chaos-engineering",
-      //   module: "ce",
-      //   description: "Inject faults to test resilience."
-      // },
       {
-        name: "AI Test Automation",
-        href: "/docs/ai-test-automation",
+        name: "UI Tests",
+        href: "/3k-docs/ai-test-automation",
         module: "aita",
-        badge: "NEW",
-        description: "Expand coverage with AI-driven tests."
+        iconLight: "img/home/ui-test.svg",
+        iconDark: "img/home/ui-test.svg",
+        description: "Generate and run browser and end-to-end tests with AI."
       },
       {
-        name: "AI SRE",
-        href: "/docs/ai-sre",
-        module: "aisre",
-        badge: "NEW",
-        description: "Resolve incidents with AI assistance."
+        name: "AI Evals",
+        href: "/3k-docs/ai-test-automation",
+        module: "aida",
+        iconLight: "img/home/ai-code.svg",
+        iconDark: "img/home/ai-code.svg",
+        description: "Evaluate the quality, accuracy, and safety of your AI apps."
+      },
+      {
+        name: "AI Code Review",
+        href: "/3k-docs/ai-test-automation",
+        module: "aida",
+        iconLight: "img/home/ai-code.svg",
+        iconDark: "img/home/ai-code.svg",
+        description: "Review code with AI to catch issues before merge."
       },
     ],
   },
   {
-    title: "AI for Security & Compliance",
-    blurb: "Protect apps from design to runtime.",
+    title: "Security",
+    blurb: "",
     items: [
+      {
+        name: "Security Tests",
+        href: "/3k-docs/security-testing-orchestration",
+        module: "armory",
+        iconLight: "img/home/security-test.svg",
+        iconDark: "img/home/security-test.svg",
+        description: "Scan and remediate vulnerabilities across your pipeline."
+      },
+      {
+        name: "Runtime Protection",
+        href: "/3k-docs/appsec-runtime-protection",
+        module: "ast",
+        iconLight: "img/home/runtime.svg",
+        iconDark: "img/home/runtime.svg",
+        description: "Detect and block threats to your apps and APIs at runtime."
+      },
       {
         name: "AI Security",
-        href: "/docs/ai-security",
+        href: "/3k-docs/ai-security",
         module: "aisec",
-        description: "Discover AI assets, assess, and secure them."
+        iconLight: "img/home/shield.svg",
+        iconDark: "img/home/shield.svg",
+        description: "Discover AI assets, monitor threats, and test AI endpoints."
       },
-      {
-        name: "API & Application Discovery",
-        href: "/docs/appsec-discovery",
-        module: "asp",
-        description: "Discover App/APIs and assess risks."
-      },
-      {
-        name: "Application & API Runtime Protection",
-        href: "/docs/appsec-runtime-protection",
-        module: "arp",
-        description: "Protect App/APIs and block attacks."
-      },
-      {
-        name: "Application & API Security Testing",
-        href: "/docs/appsec-security-testing",
-        module: "ast",
-        description: "Run security tests and detect issues."
-      },
-      {
-        name: "Security Testing Orchestration",
-        href: "/docs/security-testing-orchestration",
-        module: "sto",
-        description: "Automate security scans in pipelines."
-      },
-      {
-        name: "Supply Chain Security",
-        href: "/docs/software-supply-chain-assurance",
-        module: "ssca",
-        description: "Secure dependencies and build integrity."
-      },
-      {
-        name: "SAST and SCA",
-        href: "/docs/sast-and-sca",
-        module: "qwietai",
-        description: "Secure code and dependencies with AI-powered static analysis."
-      }
     ],
   },
   {
-    title: "AI for Cost & Optimization",
-    blurb: "Optimize spend and developer time.",
+    title: "Operations",
+    blurb: "",
     items: [
       {
-        name: "Cloud & AI Cost Management",
-        href: "/docs/cloud-cost-management",
-        module: "ccm",
-        description: "Monitor and optimize cloud spend."
+        name: "Developer Portal",
+        href: "/3k-docs/internal-developer-portal",
+        module: "idp",
+        iconLight: "img/home/portal.svg",
+        iconDark: "img/home/portal.svg",
+        description: "Give developers a self-service portal for services and workflows."
       },
       {
-        name: "AI DLC Insights",
-        href: "/docs/software-engineering-insights",
+        name: "Cloud Costs",
+        href: "/3k-docs/cloud-cost-management",
+        module: "ccm",
+        iconLight: "img/home/cloud-cost.svg",
+        iconDark: "img/home/cloud-cost.svg",
+        description: "Gain visibility into cloud spend and reduce waste with AI."
+      },
+      {
+        name: "Incidents",
+        href: "/3k-docs/ai-sre",
+        module: "inc",
+        iconLight: "img/home/incident.svg",
+        iconDark: "img/home/incident.svg",
+        description: "Detect incidents and automate root cause analysis to cut MTTR."
+      },
+      {
+        name: "Engineering Insights",
+        href: "/3k-docs/software-engineering-insights/harness-sei/sei-overview",
         module: "sei",
+        iconLight: "img/home/engineering-insights-classic.svg",
+        iconDark: "img/home/engineering-insights-classic.svg",
         description: "Measure AI adoption, optimize token spend, and prove engineering impact."
+      },
+      {
+        name: "Engineering Insights Classic",
+        href: "/3k-docs/software-engineering-insights/propelo-sei/get-started/overview",
+        module: "sei",
+        iconLight: "img/home/engineering-insights-classic.svg",
+        iconDark: "img/home/engineering-insights-classic.svg",
+        description: "Measure productivity, track DORA metrics, and surface bottlenecks."
       },
     ],
   },

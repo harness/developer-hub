@@ -1,0 +1,9 @@
+{
+    "label": "Environment Blueprints",
+    "collapsible": "true",
+    "collapsed": "true",
+    "position": 30,
+    "link": { "type": "doc", "id": "env-blueprint-yaml" },
+    "customProps": {}
+  }
+  

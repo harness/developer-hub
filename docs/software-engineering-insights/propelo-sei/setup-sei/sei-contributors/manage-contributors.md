@@ -7,7 +7,6 @@ redirect_from:
   - /docs/software-engineering-insights/setup-sei/sei-contributors/manage-contributors
 ---
 
-
 Contributors are developers and other team members that complete actions and activities that contribute to your SEI metrics and insights. Contributors are represented by contributor records in SEI. SEI contributor records serve two primary functions: Account association and Collection association.
 
 Account associations connect related user accounts across your SDLC tools. For example, you can associate a contributor's Jira, GitHub, and Harness accounts so the data from those accounts are correlated to the same record in SEI, rather than three "instances" of a user. This makes it easier to track individual contributor activity across tools.

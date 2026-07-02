@@ -1,0 +1,11 @@
+{
+  "label": "Helm",
+  "position": "300",
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+      "type": "generated-index",
+      "title": "Helm"
+  }
+}

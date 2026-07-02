@@ -1,193 +1,341 @@
 ---
 id: vmware-network-rate-limit
 title: VMware network rate limit
-sidebar_label: VMware Network Rate Limit
-description: Cap egress bandwidth on a Linux VMware VM so you can test how the workload behaves when network throughput is throttled.
-keywords:
-  - chaos engineering
-  - vmware network rate limit
-  - vmware fault
-  - bandwidth throttle
-tags:
-  - chaos-engineering
-  - vmware-faults
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/linux/vmware-network-rate-limit
-- /docs/chaos-engineering/chaos-faults/vmware/linux/vmware-network-rate-limit
+- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-network-rate-limit
+- /docs/chaos-engineering/chaos-faults/vmware/vmware-network-rate-limit
 ---
+VMware network rate limit fault injects network rate limit from the VMware VM(s) into the application (or service). This results in flaky access to the application. It checks the performance of the application (or process) running on the VMware VM(s).
 
-import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
+![VMware Network Rate Limit](./static/images/vmware-network-rate-limit.png)
 
-VMware network rate limit is a VMware chaos fault that caps egress bandwidth on the network interface `NETWORK_INTERFACE` of the Linux VM `VM_NAME` to `NETWORK_BANDWIDTH` (with optional `BURST` and `LIMIT`) for `TOTAL_CHAOS_DURATION` seconds, then removes the cap. The fault uses VMware Tools (Guest Operations API) to apply the rule inside the guest as `VM_USER_NAME`.
-
-Use this fault to test how a workload on a VMware-hosted VM behaves when bandwidth is constrained: whether streaming/transfer workloads degrade gracefully, whether retries amplify the slowdown, and whether monitoring detects the regression within the alerting SLA.
-
-:::info Run your first experiment
-If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
+:::info note
+HCE doesn't support injecting VMWare Windows faults on Bare metal server.
 :::
-
----
 
 ## Use cases
+VMware network rate limit:
+- Simulates issues within the VM network (or microservice) communication across services in different hosts.
+- Determines the impact of degradation while accessing a microservice.
+- Simulates network congestion by artificially limiting the available bandwidth to understand how the system behaves under reduced network capacity.
+- Helps assess the impact of network rate limits on the quality of service (QoS) and compliance with service level agreements (SLAs) by observing the system's response time and performance.
+- Validates whether rate-limiting mechanisms in your application or network infrastructure are functioning correctly and effectively.
+- Helps assess how the system performs when network resources are constrained, mimicking real-world scenarios where network connectivity may be compromised during a disaster or outage.
+- Determines how the system prioritizes and handles different types of traffic when network rate limits are in place, ensuring that critical services receive preferential treatment.
 
-- **Constrained bandwidth:** When bandwidth is throttled, does the workload degrade inside the SLA?
-- **Replication backlog:** Does database replication catch up after the cap is removed?
-- **Backup window:** Does a backup job complete within the maintenance window when bandwidth halves?
+### Prerequisites
+- Kubernetes > 1.16 is required to execute this fault.
+- Appropriate vCenter permissions should be provided to start and stop the VMs.
+- The VM should be in a healthy state before and after injecting chaos.
+- Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. VM credentials can be passed as secrets or as a `ChaosEngine` environment variable. Below is a sample secret file:
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: vcenter-secret
+  namespace: litmus
+type: Opaque
+stringData:
+    VCENTERSERVER: XXXXXXXXXXX
+    VCENTERUSER: XXXXXXXXXXXXX
+    VCENTERPASS: XXXXXXXXXXXXX
+```
 
----
+### Mandatory tunables
 
-## Prerequisites
+  <table>
+      <tr>
+        <th> Tunable </th>
+        <th> Description </th>
+        <th> Notes </th>
+      </tr>
+      <tr>
+        <td> VM_NAME </td>
+        <td> Comma-separated names of the target VMs.</td>
+        <td> For example, <code> vm-1,vm-2</code>. </td>
+      </tr>
+      <tr>
+        <td> VM_USER_NAME </td>
+        <td> Username of the target VM(s).</td>
+        <td> Multiple usernames can be provided as comma-separated values which corresponds to more than one VM under chaos. It is used to run the govc command. </td>
+      </tr>
+      <tr>
+        <td> VM_PASSWORD </td>
+        <td> Password for the target VM(s).</td>
+        <td> It is used to run the govc command. </td>
+      </tr>
+      <tr>
+        <td> NETWORK_INTERFACE </td>
+        <td> Name of the ethernet interface considered for shaping traffic. </td>
+        <td> For example, <code>ens160</code>. For more information, go to <a href="#network-interface"> network interface. </a></td>
+      </tr>
+    </table>
 
-- **VMware Tools** running on the guest.
-- **`tc` (iproute2)** installed inside the guest. Go to [VMware Linux binary installation](/docs/chaos-engineering/faults/chaos-faults/vmware/linux/binary-installation).
-- **Sudo for `tc`:** `VM_USER_NAME` can run `tc qdisc` on `NETWORK_INTERFACE`.
-- **vCenter chaos role:** per [VMware permissions](/docs/chaos-engineering/faults/chaos-faults/vmware/permissions).
+### Optional tunables
 
----
+   <table>
+      <tr>
+        <th> Tunable </th>
+        <th> Description </th>
+        <th> Notes </th>
+      </tr>
+      <tr>
+        <td> TOTAL_CHAOS_DURATION </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
+      </tr>
+      <tr>
+        <td> CHAOS_INTERVAL </td>
+        <td> Time interval between two successive instance terminations (in seconds). </td>
+        <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval. </a></td>
+      </tr>
+      <tr>
+        <td> NETWORK_BANDWIDTH </td>
+        <td> Specify the network bandwidth rate limit. </td>
+        <td> Defaults to <code>1mbit</code>. For more information, go to <a href="#network-bandwidth"> network bandwidth. </a></td>
+      </tr>
+      <tr>
+        <td> BURST </td>
+        <td> Burst for the size of bucket, that is, the maximum amount of bytes that tokens can be available for instantaneously. </td>
+        <td> Defaults to <code>2kb</code>. For more information, go to <a href="#burst"> burst. </a></td>
+      </tr>
+      <tr>
+        <td> LIMIT </td>
+        <td> Limit on the number of bytes that can be queued while waiting for tokens to become available. </td>
+        <td> Defaults to <code>2kb</code>. For more information, go to <a href="#limit"> limit. </a></td>
+      </tr>
+      <tr>
+        <td> MIN_BURST </td>
+        <td> Size of the peakrate bucket. </td>
+        <td> For example, <code>1kb</code>. </td>
+      </tr>
+      <tr>
+        <td> PEAK_RATE </td>
+        <td> Maximum depletion rate of the bucket. </td>
+        <td> For example, <code>1mbit</code>. </td>
+      </tr>
+      <tr>
+        <td> DESTINATION_IPS </td>
+        <td> IP addresses of the services or pods whose accessibility should be affected. You can also specify a CIDR block. </td>
+        <td> Comma-separated IPs (or CIDRs) can be provided. If it has not been provided, network chaos is induced on all IPs (or destinations). For more information, go to <a href="#run-with-destination-ips-and-destination-hosts"> run with destination IPs.</a></td>
+      </tr>
+      <tr>
+        <td> DESTINATION_HOSTS </td>
+        <td> DNS names (or FQDN names) of the services whose accessibility is affected. </td>
+        <td> If it has not been provided, network chaos is induced on all IPs (or destinations). For more information, go to <a href="#run-with-destination-ips-and-destination-hosts"> run with destination hosts. </a></td>
+      </tr>
+      <tr>
+        <td> SEQUENCE </td>
+        <td> Sequence of chaos execution for multiple instances. </td>
+        <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
+      </tr>
+      <tr>
+        <td> RAMP_TIME </td>
+        <td> Period to wait before and after injecting chaos (in seconds). </td>
+        <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
+      </tr>
+      <tr>
+      <td>DEFAULT_HEALTH_CHECK</td>
+      <td>Determines if you wish to run the default health check which is present inside the fault. </td>
+      <td> Default: 'true'. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
+      </tr>
+    </table>
 
-## Supported environments
-
-| Platform | Support status |
-| --- | --- |
-| Linux VMs hosted on vSphere / vCenter (any distro with VMware Tools and `tc`) | Supported |
-| Windows VMs | Not supported |
-
----
-
-## Permissions required
-
-**On vCenter.** Map `GOVC_USERNAME` to the chaos role described in [VMware permissions](/docs/chaos-engineering/faults/chaos-faults/vmware/permissions). The role needs Guest Operations (Program execution, Modifications, Queries).
-
-**On the guest OS.** `VM_USER_NAME` must be able to run `tc qdisc` on `NETWORK_INTERFACE`.
-
----
-
-## Authentication
-
-| Layer | Tunables |
-| --- | --- |
-| vCenter | `GOVC_URL`, `GOVC_USERNAME`, `GOVC_PASSWORD`, `GOVC_INSECURE` |
-| Guest OS | `VM_USER_NAME`, `VM_PASSWORD` |
-
-Store each credential as a text secret in [Harness Secret Manager](/docs/platform/secrets/add-use-text-secrets) and reference the secret identifier when configuring the experiment.
-
----
-
-## Fault tunables
-
-**Required parameters**
-
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `VM_NAME` | Name of the target VM as it appears in vCenter. | (required) |
-| `VM_USER_NAME` | OS user account on the target VM. | (required) |
-| `VM_PASSWORD` | Password for `VM_USER_NAME`. | (required) |
-
-**Rate-limit parameters**
-
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `NETWORK_INTERFACE` | Name of the interface to throttle. | `eth0` |
-| `NETWORK_BANDWIDTH` | Bandwidth cap with unit (for example `1mbit`, `512kbit`). | `1mbit` |
-| `BURST` | Maximum burst size with unit (for example `2kb`). | `""` |
-| `LIMIT` | Queue limit in bytes (for example `20mb`). | `""` |
-| `PEAK_RATE` | Peak rate for the bucket (for example `1mb`). | `""` |
-| `MIN_BURST` | Minimum chunk size with unit (for example `1540`). | `""` |
-
-**Chaos parameters**
-
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `TOTAL_CHAOS_DURATION` | Total duration of the fault in seconds. | `30` |
-| `CHAOS_INTERVAL` | Delay in seconds between iterations. | `10` |
-| `SEQUENCE` | `parallel` or `serial`. | `parallel` |
-| `RAMP_TIME` | Wait period in seconds before and after the fault. | `0` |
-
-**vCenter authentication**
-
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `GOVC_URL` | vCenter server URL. | `""` |
-| `GOVC_USERNAME` | vCenter user mapped to the chaos role. | `""` |
-| `GOVC_PASSWORD` | Password for `GOVC_USERNAME`. | `""` |
-| `GOVC_INSECURE` | Skip SSL certificate verification when set to `true`. | `true` |
-
-Tunables that apply to every fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
-
----
-
-## Fault execution in brief
-
-Authenticates to vCenter, opens a Guest Operations session on `VM_NAME` as `VM_USER_NAME`, installs a token-bucket queueing discipline on `NETWORK_INTERFACE` that caps egress bandwidth at `NETWORK_BANDWIDTH` (with `BURST`, `LIMIT`, `PEAK_RATE`, `MIN_BURST` when set) for `TOTAL_CHAOS_DURATION` seconds, then removes the rule.
-
----
-
-## Expected behavior during fault execution
-
-- Egress throughput from `VM_NAME` is capped at `NETWORK_BANDWIDTH`.
-- Large transfers slow down; replication may fall behind.
-- After the duration ends, the cap is removed and throughput returns to baseline.
-
-:::info When the fault ends
-The chaos pod removes the `tc qdisc` rule via Guest Operations. Throughput returns to baseline within seconds.
+:::tip
+If the environment variables `DESTINATION_HOSTS` or `DESTINATION_IPS` are left empty, the default behaviour is to target all hosts. To limit the impact on all the hosts, you can specify the IP addresses of the service (use commas to separate multiple values) or the DNS or the FQDN names of the services in `DESTINATION_HOSTS`.
 :::
 
-### Signals to watch
+### Secret tunables
+   <table>
+      <tr>
+        <th> Tunable </th>
+        <th> Description </th>
+        <th> Notes </th>
+      </tr>
+      <tr>
+        <td> GOVC_URL </td>
+        <td> vCenter server URL used to perform API calls using the govc command. </td>
+        <td> It is derived from a secret. </td>
+      </tr>
+        <tr>
+        <td> GOVC_USERNAME </td>
+        <td> Username of the vCenter server used for authentication purposes. </td>
+        <td> It can be set up using a secret. </td>
+      </tr>
+      <tr>
+        <td> GOVC_PASSWORD </td>
+        <td> Password of the vCenter server used for authentication purposes. </td>
+        <td> It can be set up using a secret. </td>
+      </tr>
+      <tr>
+        <td> GOVC_INSECURE </td>
+        <td> Runs the govc command in insecure mode. It is set to <code>true</code>. </td>
+        <td> It can be set up using a secret. </td>
+      </tr>
+     </table>
 
-- **Throughput:** Use a Prometheus probe on `node_network_transmit_bytes_total`.
-- **Replication lag:** Use a [command probe](/docs/resilience-testing/chaos-testing/probes/command-probe) that reads the replication lag from your database.
+### Network bandwidth
 
----
+Network bandwidth injected to the VM. Tune it by using the `NETWORK_BANDWIDTH` environment variable.
 
-## Verify the fault execution effect
+Following YAML snippet illustrates the use of this input variable.
 
-1. **Inspect the qdisc on the guest.**
+[embedmd]:# (./static/manifests/vmware-network-rate-limit/network-bandwidth.yaml yaml)
+```yaml
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: VMware-engine
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: VMware-network-rate-limit
+    spec:
+      components:
+        env:
+        - name: NETWORK_BANDWIDTH
+          value: '2mbit'
+        - name: VM_NAME
+          value: 'vm-1,vm-2'
+        - name: VM_USER_NAME
+          value: 'ubuntu,debian'
+        - name: VM_PASSWORD
+          value: '123,123'
+```
 
-   ```bash
-   sudo tc qdisc show dev eth0
-   ```
+### Burst
 
-   Look for the token-bucket filter with the configured rate.
+Size of bucket, in bytes. It is the maximum number of bytes for which tokens can be instantaneously available. Tune it by using the `BURST` environment variable.
 
-2. **Run an iperf/scp transfer from the VM.**
+Following YAML snippet illustrates the use of this input variable.
 
-   Throughput should be capped at `NETWORK_BANDWIDTH` during the window.
+[embedmd]:# (./static/manifests/vmware-network-rate-limit/burst.yaml yaml)
+```yaml
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: VMware-engine
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: VMware-network-rate-limit
+    spec:
+      components:
+        env:
+        - name: NETWORK_BANDWIDTH
+          value: '2mbit'
+        - name: BURST
+          value: '2kb'
+        - name: VM_NAME
+          value: 'vm-1,vm-2'
+        - name: VM_USER_NAME
+          value: 'ubuntu,debian'
+        - name: VM_PASSWORD
+          value: '123,123'
+```
 
----
+### Limit
 
-## Recovery and cleanup
+Limit on the number of bytes that can be queued while waiting for tokens to become available. Tune it by using the `LIMIT` environment variable.
 
-- **End of duration:** The chaos pod removes the rule.
-- **Abort:** Stopping the experiment also removes the rule.
-- **Manual recovery:** `sudo tc qdisc del dev <NETWORK_INTERFACE> root`.
+Following YAML snippet illustrates the use of this input variable.
 
----
+[embedmd]:# (./static/manifests/vmware-network-rate-limit/limit.yaml yaml)
+```yaml
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: VMware-engine
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: VMware-network-rate-limit
+    spec:
+      components:
+        env:
+        - name: NETWORK_BANDWIDTH
+          value: '2mbit'
+        - name: BURST
+          value: '2kb'
+        - name: LIMIT
+          value: '2kb'
+        - name: VM_NAME
+          value: 'vm-1,vm-2'
+        - name: VM_USER_NAME
+          value: 'ubuntu,debian'
+        - name: VM_PASSWORD
+          value: '123,123'
+```
 
-## Limitations
+### Run with destination IPs and destination hosts
 
-- **Egress only:** The cap applies to egress traffic only.
-- **Single interface per run:** Repeat the fault for additional interfaces.
-- **Unit format:** `NETWORK_BANDWIDTH` must include a `tc`-compatible unit (`kbit`, `mbit`, etc).
+The IPs/hosts that interrupt traffic by default. Tune it by using the `DESTINATION_IPS` and `DESTINATION_HOSTS` environment variables, respectively.
 
----
+`DESTINATION_IPS`: IP addresses of the services or the CIDR blocks (range of IPs) whose accessibility is impacted.
+`DESTINATION_HOSTS`: DNS names of the services whose accessibility is impacted.
 
-## Troubleshooting
+Following YAML snippet illustrates the use of this input variable.
 
-<Troubleshoot
-  issue="VMware network rate limit has no observable effect in Harness Chaos Engineering"
-  mode="docs"
-  fallback="Verify NETWORK_INTERFACE matches the active interface inside the guest (ip a). Verify the workload actually transmits more than NETWORK_BANDWIDTH before the cap. Verify VM_USER_NAME can run tc with sudo."
-/>
+[embedmd]:# (./static/manifests/vmware-network-rate-limit/destination-host-and-ip.yaml yaml)
+```yaml
+## it injects the chaos for the egress traffic for specific ips/hosts
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: VMware-engine
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: VMware-network-rate-limit
+    spec:
+      components:
+        env:
+        # supports comma separated destination ips
+        - name: DESTINATION_IPS
+          value: '8.8.8.8,192.168.5.6'
+        # supports comma separated destination hosts
+        - name: DESTINATION_HOSTS
+          value: 'google.com'
+        - name: VM_NAME
+          value: 'vm-1,vm-2'
+        - name: VM_USER_NAME
+          value: 'ubuntu,debian'
+        - name: VM_PASSWORD
+          value: '123,123'
+```
 
-<Troubleshoot
-  issue="tc rule remains after the experiment"
-  mode="docs"
-  fallback="Run sudo tc qdisc del dev <NETWORK_INTERFACE> root inside the guest to remove lingering rules."
-/>
+###  Network interface
 
----
+Name of the ethernet interface that shapes the traffic. Tune it by using the `NETWORK_INTERFACE` environment variable. Its default value is `eth0`.
 
-## Related faults
+Following YAML snippet illustrates the use of this input variable.
 
-- [VMware network latency](/docs/chaos-engineering/faults/chaos-faults/vmware/linux/vmware-network-latency): Add latency instead of throttling bandwidth.
-- [VMware network loss](/docs/chaos-engineering/faults/chaos-faults/vmware/linux/vmware-network-loss): Drop packets instead of throttling.
+[embedmd]:# (./static/manifests/vmware-network-rate-limit/network-interface.yaml yaml)
+```yaml
+## it injects the chaos for the egress traffic for specific ips/hosts
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: VMware-engine
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: VMware-network-rate-limit
+    spec:
+      components:
+        env:
+        # name of the network interface
+        - name: NETWORK_INTERFACE
+          value: 'eth0'
+        - name: VM_NAME
+          value: 'vm-1,vm-2'
+        - name: VM_USER_NAME
+          value: 'ubuntu,debian'
+        - name: VM_PASSWORD
+          value: '123,123'
+```

@@ -24,15 +24,15 @@ Make sure the following prerequisites are met:
 
 ---
 
-## Catalog auto-discovery with Harness CD
+## Catalog Auto-Discovery with Harness CD
 
-### 1. Enable the Harness CD auto-discovery integration
+### 1. Enable the Harness CD Auto-Discovery integration
 
 1. In Harness IDP, go to **Configure** → **Integrations**.
 2. On the **Harness CD services** integration card, select **Enable**.
 ![](./static/enable-integration-idp.png)
 
-### 2. Sync Harness CD services to the IDP catalog
+### 2. Sync Harness CD services to the IDP Catalog
 
 After enabling the integration, configure what to sync:
 
@@ -76,9 +76,9 @@ After enabling the integration, configure what to sync:
 ![](./static/edit-integ-2.png)
 2. Choose a scope:
 
-   * **All Scopes**: Sync services across the entire account (all organizations and projects).
+   * **All Scopes** — Sync services across the entire account (all organizations and projects).
    ![](./static/all-scopes.png)
-   * **Particular Organizations & Projects**: Sync from selected organizations and/or projects using the dropdown.
+   * **Particular Organizations & Projects** — Sync from selected organizations and/or projects using the dropdown.
    ![](./static/specific-scopes.png)
 3. Select **Save Changes** to begin syncing.
 
@@ -92,9 +92,9 @@ If you remove a project or organization from the sync scope:
 
 That’s it; your CD services will appear in the IDP Catalog.
 
-For suspending auto-discovery, go to [Suspend Auto-Discovery](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/harness-cd#4-suspend-auto-discovery).
+For suspending auto-discovery, see [Suspend Auto-Discovery](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/harness-cd.md#4-suspend-auto-discovery).
 
-### 3. View & manage CD services in the IDP catalog
+### 3. View & manage CD services in the IDP Catalog
 
 Once synced, search for any CD service in **IDP Catalog**:
 
@@ -111,7 +111,7 @@ Once synced, search for any CD service in **IDP Catalog**:
 * From there, open the corresponding IDP entity.
 ![](./static/cd-referenced-by.png)
 
-### 4. Suspend auto-discovery
+### 4. Suspend Auto-Discovery
 **What happens when auto-discovery is suspended:**
 - **New CD services** will not be automatically created as IDP entities. 
 - **Existing IDP entities** that were created through auto-discovery will remain unchanged. 
@@ -127,7 +127,7 @@ Auto-discovery is now suspended.
 
 ---
 
-## CD auto-discovery with idp_integrations feature flag
+## CD Auto-Discovery with IDP_INTEGRATIONS Feature Flag
 
 :::info
 This enhanced CD Auto-Discovery experience requires the **`IDP_INTEGRATIONS`** feature flag to be enabled. Contact [Harness Support](mailto:support@harness.io) to enable it.
@@ -135,7 +135,7 @@ This enhanced CD Auto-Discovery experience requires the **`IDP_INTEGRATIONS`** f
 
 When the `IDP_INTEGRATIONS` feature flag is enabled, the CD Auto-Discovery integration transforms into a more powerful workflow with enhanced discovery and management capabilities for CD services.
 
-### What changes with the idp_integrations feature flag?
+### What changes with the IDP_INTEGRATIONS feature flag?
 
 The CD Auto-Discovery workflow becomes more comprehensive with new capabilities:
 
@@ -145,7 +145,7 @@ The CD Auto-Discovery workflow becomes more comprehensive with new capabilities:
 
 **Entity sync behavior:** CD services sync the same fields as before (name, identifier, description, tags), but with the enhanced workflow you get more visibility into the sync process. If an entity with the same CD service ID already exists, the system performs a merge operation automatically. You can view which entities are linked to which CD services in the Imported tab.
 
-**Flexible import options:** You can import services one at a time or select multiple services for bulk import. There is also an **Auto-import toggle** that automatically imports all future discovered services, giving you the choice between manual curation and automatic syncing.
+**Flexible import options:** You can import services one at a time or select multiple services for bulk import. There's also an **Auto-import toggle** that automatically imports all future discovered services, giving you the choice between manual curation and automatic syncing.
 
 <DocImage path={require('./static/import-toggle.png')} alt="Import Toggle" title="Click to view full size image" />
 
@@ -155,7 +155,7 @@ The CD Auto-Discovery workflow becomes more comprehensive with new capabilities:
 
 <DocImage path={require('./static/imported.png')} alt="Imported Services" title="Click to view full size image" />
 
-**Configuration changes:** When configuring the sync scope, you will use the **Configuration** button instead of **Edit**, and confirm changes with **Confirm** instead of **Save Changes**. The scope selection options remain the same (All Scopes or specific organizations/projects), but you can now also select specific account-level entities.
+**Configuration changes:** When configuring the sync scope, you'll use the **Configuration** button instead of **Edit**, and confirm changes with **Confirm** instead of **Save Changes**. The scope selection options remain the same (All Scopes or specific organizations/projects), but you can now also select specific account-level entities.
 
 In addition to scope selection, you can now configure **DORA metrics settings**:
 - Set the **deployment cycle period** (in days) to define the time window for calculating DORA metrics
@@ -163,7 +163,7 @@ In addition to scope selection, you can now configure **DORA metrics settings**:
 
 <DocImage path={require('./static/config.png')} alt="Configuration" title="Click to view full size image" />
 
-### Ingested properties
+### Ingested Properties
 
 To inspect the raw data ingested from Harness CD, open the entity and click **View YAML** → **Ingested Properties** in the Entity Inspector.
 
@@ -178,7 +178,7 @@ Ingested properties are stored in two sections of the entity YAML:
 Prior to this change, these fields were available directly under `metadata` (e.g., `metadata.deploymentFrequencyPerSprint`). They have been moved to `metadata.integration_properties.HarnessCD`. Update any existing layout YAML to use the new paths.
 :::
 
-#### Surface DORA metrics (synced from a CD integration)
+#### Surfacing DORA metrics (synced from a CD integration)
 
 To display DORA metrics on the catalog entity page, add a `StatsCardGroup` component to your [catalog layout](/docs/internal-developer-portal/layout-and-appearance/catalog) using the `metadata.integration_properties.HarnessCD` field paths:
 
@@ -200,7 +200,7 @@ To display DORA metrics on the catalog entity page, add a `StatsCardGroup` compo
 If you remove a project or organization from the sync scope, existing linked entities from that scope remain in your catalog unchanged but stop receiving updates. The link between the CD service and IDP entity remains active but sync is paused. To resume sync, add the scope back to the filter.
 :::
 
-**Suspend behavior:** When you suspend auto-discovery with the `IDP_INTEGRATIONS` feature flag enabled, new CD services will not appear in the Discovered tab, and the Discovered tab will not refresh automatically. Existing entities remain unchanged, and you can re-enable auto-discovery at any time.
+**Suspend behavior:** When you suspend auto-discovery with the `IDP_INTEGRATIONS` feature flag enabled, new CD services won't appear in the Discovered tab, and the Discovered tab won't refresh automatically. Existing entities remain unchanged, and you can re-enable auto-discovery at any time.
 
 **Additional RBAC requirement:** All operations for CD Auto-Discovery with the `IDP_INTEGRATIONS` feature flag require the **IDP Integration Edit** permission (`IDP_INTEGRATION_EDIT`) on the **IDP Integration** resource type.
 

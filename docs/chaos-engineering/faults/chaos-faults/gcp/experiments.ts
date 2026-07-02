@@ -4,36 +4,43 @@ export const experiments: ExperimentDetails[] = [
   {
     name: "GCP SQL instance failover",
     description:
-      "Trigger a failover on a high-availability Cloud SQL instance so you can test how the application behaves when the primary node fails over to its standby.",
+      "It disrupts the state of GCP SQL instance filtered using a name and project ID by triggering failover on the SQL instance.",
     tags: ["instance", "failover"],
     category: "gcp",
   },
   {
     name: "GCP VM disk loss by label",
     description:
-      "Detach a percentage of non-boot persistent disks selected by label from GCP VM instances for a configurable duration, then reattach them.",
+      "It disrupts the state of GCP persistent disk volume filtered using a label by detaching the disk volume from its VM instance for a specific duration.",
     tags: ["disk loss"],
     category: "gcp",
   },
   {
     name: "GCP VM disk loss",
     description:
-      "Detach one or more named non-boot persistent disks from GCP VM instances for a configurable duration, then reattach them.",
+      "It disrupts the state of GCP persistent disk volume by detaching the disk volume from its VM instance using the disk name for a specific duration.",
     tags: ["disk loss"],
     category: "gcp",
   },
   {
     name: "GCP VM instance stop by label",
     description:
-      "Stop a percentage of Compute Engine VMs selected by label for a configurable duration, then start them again (or rely on the MIG auto-healer).",
+      "It powers off a GCP VM instances (that are filtered by a label) for a specific duration.",
     tags: ["instance stop"],
     category: "gcp",
   },
   {
     name: "GCP VM instance stop",
     description:
-      "Stop one or more named Compute Engine VMs for a configurable duration, then start them again (or rely on the MIG auto-healer).",
+      "It powers off a GCP VM instance based on the instance name (or list of instance names) for a specific duration.",
     tags: ["instance stop"],
+    category: "gcp",
+  },
+  {
+    name: "GCP VM service kill",
+    description:
+     "It disrupts the state of the VM instance by halting a service for a specific chaos duration.",
+    tags: ["service stop"],
     category: "gcp",
   },
 ];

@@ -7,11 +7,13 @@ redirect_from:
   - /docs/feature-management-experimentation/api/webhook/impressions
 ---
 
-Use the Impressions webhook to send Harness FME [impression](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions/) data to the tools your team already uses, such as analytics platforms, data warehouses, or custom systems. This webhook helps engineering and product teams track feature flag evaluations and enrich their existing tracking pipelines.
+## Overview
 
-## Outgoing data
+Use this outgoing webhook to integrate Split impressions into the tools that your team already uses. You can use Split webhooks to enhance your tracking, and analytics tools to provide insights around the impact of feature changes.
 
-When an impression is recorded by an SDK, Harness FME sends an HTTP `POST` payload to the configured webhook URL in JSON format (`Content-Type: application/json`). Impressions are batched and delivered approximately every 10 seconds. To reduce latency, each request is gzipped unless the endpoint is a Slack or [Fivetran](https://fivetran.com/) webhook.
+Whenever Split stores down an [impression](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions/) from an SDK, we send an HTTP POST payload to the webhook's configured URL in JSON format (`Content-Type: application/json`) in batches of impressions seen approximately every 10 seconds. The data sent has the following schema. Any response code other than 200 is marked as failure.
+
+To reduce latency, each HTTP POST is be gzipped unless the URL represents a Slack or [Fivetran](https://fivetran.com/) webhook.
 
 ```json
 [
@@ -35,43 +37,19 @@ When an impression is recorded by an SDK, Harness FME sends an HTTP `POST` paylo
 ]
 ```
 
-A `200` response indicates successful delivery. Any other response code is marked as a failure.
-
 ## Retry
 
-If Harness FME receives a non-`200` response from your endpoint, it waits 300 milliseconds and retries delivery once. For sustained failures, see [Delivery protection](#delivery-protection) below.
+If Split receives a non-200 response to a webhook POST, Split waits 300 milliseconds and attempts to retry the delivery once.
 
-## Delivery protection
+## Configuring the webhook
 
-To ensure reliable delivery, Harness monitors the health of each configured webhook endpoint. If an endpoint returns a sustained high rate of errors (non-2xx responses, timeouts, or connection failures), delivery to that specific integration configuration may be temporarily paused.
+To configure this webhook, do the following:
 
-This protection is applied per integration configuration. Other integrations or configurations within the same project are not affected.
-
-### What happens during a pause
-
-- After a short cooldown period, Harness automatically retries delivery.
-- If the endpoint has recovered and responds successfully, normal delivery resumes immediately.
-- If the endpoint continues to fail, the pause is extended.
-
-### What does not trigger a pause
-
-Occasional or sporadic errors do not cause a pause. Only a sustained pattern of failures activates this protection.
-
-### Recommended actions 
-
-If you notice a gap in impression delivery:
-
-1. **Check your endpoint health**: Verify that your receiving service is reachable, responding with 2xx status codes, and processing requests promptly.
-2. **Review error responses**: If your endpoint is returning 4xx or 5xx errors, identify and fix the root cause. Once your endpoint responds successfully, delivery resumes automatically.
-
-## Setup
-
-To configure the impressions webhook:
-
-1. From the Harness FME navigation menu, click **FME Settings** > **Integrations** and select **Webhooks** from the categories menu.
-1. Click **Add** on the **Outgoing Webhook (Impressions)** integration and select a project to add the webhook to.
-1. Select one or more environments from which impressions should be sent.
-1. Enter the webhook URL where `POST` requests should be sent.
+1. Click the **user's initials** at the bottom of the left navigation pane and click **Admin settings**.
+1. Click **Integrations** and navigate to the **Marketplace** tab.
+1. Find Outgoing webhook (impressions), click **Add** and select the Split project for which you would like to configure the integration.
+1. Check the environments where you would like data sent from.
+1. Enter the URL where the POST should be sent.
 1. Click **Save**.
 
-If you experience any issues with webhook delivery or payload configuration, contact [Harness Support](/docs/feature-management-experimentation/fme-support).
+Contact support@split.io if you have any issues with this webhook.

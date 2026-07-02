@@ -1,0 +1,11 @@
+{
+    "label": "Snyk",
+    "position": 380,
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+       "type": "generated-index",
+       "title": "Snyk"
+    }
+ }

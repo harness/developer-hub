@@ -1,0 +1,12 @@
+{
+    "label": "Applications",
+    "position": "500",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "description": "Learn how to create, manage, and sync GitOps applications with Harness",
+    "link": {
+        "type": "generated-index",
+        "title": "Applications"
+    }
+  }

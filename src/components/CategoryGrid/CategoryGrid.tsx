@@ -4,6 +4,7 @@ import clsx from "clsx";
 import styles from "./CategoryGrid.module.scss";
 import type { Category } from "./categories.data";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import { useColorMode } from "@docusaurus/theme-common";
 import { moduleList } from "@site/src/components/LearnAboutPlatform/data/moduleListData";
 
 /* ----- utils ----- */
@@ -57,11 +58,19 @@ function useModuleIconMap() {
 
 function buildIconCandidates(
   item: Category["items"][number],
-  moduleIconMap: Map<string, string>
+  moduleIconMap: Map<string, string>,
+  colorMode = "light"
 ) {
   const roots = ["img", "icons"];
   const list: string[] = [];
 
+  // 1. Explicit light/dark icons (highest priority)
+  if (colorMode === "dark" && item.iconDark)
+    list.push(stripLeadingSlash(item.iconDark));
+  if (item.iconLight) list.push(stripLeadingSlash(item.iconLight));
+  if (colorMode === "dark" && item.iconLight)
+    list.push(stripLeadingSlash(item.iconLight)); // dark fallback to light
+  // 2. Legacy single icon
   if (item.icon) list.push(stripLeadingSlash(item.icon));
   if (item.module && ICON_ALIASES[item.module])
     list.push(ICON_ALIASES[item.module]);
@@ -136,19 +145,31 @@ export default function CategoryGrid({
   categories: Category[];
 }) {
   const isMobile = useIsMobile();
+  const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   const moduleIconMap = useModuleIconMap();
 
-  // Track which column is keyboard-focused so it expands like hover.
   const [focusedCol, setFocusedCol] = useState<number | null>(null);
 
   return (
     <section className={styles.wrapper} aria-label="Documentation categories">
       <div className="container">
+
+        {/* ── Section header ─────────────────────────────────────────────── */}
+        <div className={styles.sectionHeader}>
+          <img
+            src={joinBase(baseUrl, "img/home/harness.svg")}
+            alt=""
+            aria-hidden="true"
+            className={styles.sectionHeaderIcon}
+          />
+          <h3>Modules</h3>
+        </div>
+
         {isMobile ? (
-          // Mobile: collapsible accordions (unchanged)
+          // Mobile: collapsible accordions
           <>
-            {categories.map((cat, i) => (
+            {categories.map((cat) => (
               <details key={cat.title} className={styles.categoryDetails}>
                 <summary className={styles.categorySummary}>
                   <span className={styles.categoryTitle}>{cat.title}</span>
@@ -159,24 +180,38 @@ export default function CategoryGrid({
                 <ul className={styles.tileList} role="list">
                   {cat.items.map((item) => (
                     <li key={item.name} className={styles.tileListItem}>
-                    <Link to={item.href} className={styles.tileRow} aria-label={`${item.name} documentation`}>
-                      <div className={styles.tileRowHead}>
-                        <div className={styles.iconWrap} aria-hidden="true">
-                          <FallbackImg
-                            baseUrl={baseUrl}
-                            candidates={buildIconCandidates(item, moduleIconMap)}
-                            className={styles.featureSvg}
-                          />
+                      <Link
+                        to={item.href}
+                        className={styles.tileRow}
+                        aria-label={`${item.name} documentation`}
+                      >
+                        <div className={styles.tileRowHead}>
+                          <div className={styles.iconWrap} aria-hidden="true">
+                            <FallbackImg
+                              baseUrl={baseUrl}
+                              candidates={buildIconCandidates(item, moduleIconMap, colorMode)}
+                              className={styles.featureSvg}
+                            />
+                          </div>
+                          <span className={styles.tileTitle}>{item.name}</span>
+                          {item.badge && (
+                            <span
+                              className={clsx(
+                                styles.badge,
+                                styles[`badge_${item.badge}`]
+                              )}
+                            >
+                              {item.badge}
+                            </span>
+                          )}
                         </div>
-                        <span className={styles.tileTitle}>{item.name}</span>
-                        {item.badge && <span className={clsx(styles.badge, styles[`badge_${item.badge}`])}>{item.badge}</span>}
-                      </div>
-                  
-                      {item.description && (
-                        <span className={styles.tileDescriptionMobile}>{item.description}</span>
-                      )}
-                    </Link>
-                  </li>
+                        {item.description && (
+                          <span className={styles.tileDescriptionMobile}>
+                            {item.description}
+                          </span>
+                        )}
+                      </Link>
+                    </li>
                   ))}
                 </ul>
               </details>
@@ -197,7 +232,6 @@ export default function CategoryGrid({
                 )}
                 onFocusCapture={() => setFocusedCol(idx)}
                 onBlurCapture={(e) => {
-                  // collapse when focus leaves the column
                   if (
                     !(e.currentTarget as HTMLElement).contains(
                       e.relatedTarget as Node
@@ -217,26 +251,38 @@ export default function CategoryGrid({
                 <ul className={styles.colTiles} role="list">
                   {cat.items.map((item) => (
                     <li key={item.name} className={styles.colTileItem}>
-                    <Link to={item.href} className={styles.colTile} aria-label={`${item.name} documentation`}>
-                      <div className={styles.colTileHead}>
-                        <div className={styles.iconWrap} aria-hidden="true">
-                          <FallbackImg
-                            baseUrl={baseUrl}
-                            candidates={buildIconCandidates(item, moduleIconMap)}
-                            className={styles.featureSvg}
-                          />
+                      <Link
+                        to={item.href}
+                        className={styles.colTile}
+                        aria-label={`${item.name} documentation`}
+                      >
+                        <div className={styles.colTileHead}>
+                          <div className={styles.iconWrap} aria-hidden="true">
+                            <FallbackImg
+                              baseUrl={baseUrl}
+                              candidates={buildIconCandidates(item, moduleIconMap, colorMode)}
+                              className={styles.featureSvg}
+                            />
+                          </div>
+                          <span className={styles.tileTitle}>{item.name}</span>
+                          {item.badge && (
+                            <span
+                              className={clsx(
+                                styles.badge,
+                                styles[`badge_${item.badge}`]
+                              )}
+                            >
+                              {item.badge}
+                            </span>
+                          )}
                         </div>
-                        <span className={styles.tileTitle}>{item.name}</span>
-                        {item.badge && (
-                          <span className={clsx(styles.badge, styles[`badge_${item.badge}`])}>{item.badge}</span>
+                        {item.description && (
+                          <p className={styles.tileDescription}>
+                            {item.description}
+                          </p>
                         )}
-                      </div>
-                  
-                      {item.description && (
-                        <p className={styles.tileDescription}>{item.description}</p>
-                      )}
-                    </Link>
-                  </li>
+                      </Link>
+                    </li>
                   ))}
                 </ul>
               </div>

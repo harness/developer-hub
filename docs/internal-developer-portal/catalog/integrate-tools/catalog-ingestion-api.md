@@ -15,9 +15,9 @@ The ingested data can be used to display on the UI, can be consumed in [Custom P
 
 <DocImage title="Architecture Diagram of Catalog Ingestion" path={require('./catalog-ingestion/static/catalog-custom-property.png')} />
 
-## Use cases - API quick overview
+## Use Cases - API Quick Overview
 
-### 1. Update a single property of a single catalog entity
+### 1. Update a Single Property of a Single Catalog Entity
 
 ```
 POST /catalog/custom-properties/entity
@@ -31,7 +31,7 @@ POST /catalog/custom-properties/entity
 }
 ```
 
-### 2. Update multiple properties of a single catalog entity
+### 2. Update Multiple Properties of a Single Catalog Entity
 
 ```
 POST /catalog/custom-properties/entity
@@ -53,7 +53,7 @@ POST /catalog/custom-properties/entity
 }
 ```
 
-### 3. Update a single property of multiple catalog entities
+### 3. Update a Single Property of Multiple Catalog Entities
 
 ```
 POST /catalog/custom-properties/property
@@ -78,7 +78,7 @@ POST /catalog/custom-properties/property
 }
 ```
 
-### 4. Update a single property of multiple unspecified catalog entities using filters
+### 4. Update a Single Property of Multiple Unspecified Catalog Entities using Filters
 
 ```
 POST /catalog/custom-properties
@@ -95,7 +95,7 @@ POST /catalog/custom-properties
 }
 ```
 
-### 5. Update a single property of a catalog entity without replacing existing values
+### 5. Update a Single Property of a Catalog Entity Without Replacing Existing Values
 
 ```http
 POST /catalog/custom-properties/entity
@@ -117,9 +117,9 @@ POST /catalog/custom-properties/entity
 > **Note**: `append` only works with data types that can hold multiple values, such as arrays or maps. It does not apply to simple data types like strings.
 
 
-## Common API request details
+## Common API Request Details
 
-### API base URL
+### API Base URL
 
 `https://app.harness.io/gateway/v1/`
 
@@ -130,15 +130,15 @@ X-API-KEY: Harness API Key
 Content-Type: application/json
 ```
 
-You can generate your Harness API Keys by following the [Harness API Key docs](/docs/platform/automation/api/add-and-manage-api-keys/).
+You can generate your Harness API Keys by following the [Harness API Key docs](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys/).
 
 You can find your account ID in any of your Harness URLs, for example: `https://app.harness.io/ng/account/<ACCOUNT_ID>/idp/overview`.
 
-## Detailed API usage and examples
+## Detailed API Usage and Examples
 
-### Update a single property of a single catalog entity
+### Update a Single Property of a Single Catalog Entity
 
-#### cURL example
+#### cURL Example
 
 ```sh
 curl \
@@ -164,7 +164,7 @@ curl \
 https://app.harness.io/gateway/v1/catalog/custom-properties/entity
 ```
 
-#### Request body
+#### Request Body
 
 ```json
 {
@@ -223,9 +223,9 @@ metadata:
 
 <!-- TODO (about mode): Add an example with mode. Push an array in metadata.custom_tags and then use mode:append and push an extra item. Currently this is broken https://harness.atlassian.net/browse/IDP-3734 -->
 
-### Update multiple properties of a single catalog entity
+### Update Multiple Properties of a Single Catalog Entity
 
-#### cURL example
+#### cURL Example
 
 ```sh
 curl \
@@ -256,7 +256,7 @@ curl \
 
 #### Endpoint
 
-#### HTTP method
+#### HTTP Method
 
 `POST`
 
@@ -266,7 +266,7 @@ curl \
 https://app.harness.io/gateway/v1/catalog/custom-properties/entity
 ```
 
-#### Request body
+#### Request Body
 
 ```json
 {
@@ -334,9 +334,9 @@ metadata:
 
 </details>
 
-### Update a single property of multiple catalog entities
+### Update a Single Property of Multiple Catalog Entities
 
-#### cURL example
+#### cURL Example
 
 ```sh
 curl --location 'https://app.harness.io/gateway/v1/catalog/custom-properties/entity' \
@@ -394,7 +394,7 @@ metadata:
 
 #### Endpoint
 
-#### HTTP method
+#### HTTP Method
 
 `POST`
 
@@ -404,7 +404,7 @@ metadata:
 https://app.harness.io/gateway/v1/catalog/custom-properties/entity
 ```
 
-#### Request body
+#### Request Body
 
 ```json
 {
@@ -475,9 +475,9 @@ metadata:
 <!-- See TODO comment above on Mode
 - **mode:**`mode` is optional, takes value `append/replace` and is in use when the property holds an **array** like `tags`, `relations`, etc. For arrays, the **default** mode value is `replace` e.g. if you post a new tag, it will replace the existing tags added in the entity. -->
 
-### Update a single property of multiple unspecified catalog entities using filters
+### Update a Single Property of Multiple Unspecified Catalog Entities using Filters
 
-#### HTTP method
+#### HTTP Method
 
 `POST`
 
@@ -487,7 +487,7 @@ metadata:
 https://app.harness.io/gateway/v1/catalog/custom-properties
 ```
 
-#### Request body
+#### Request Body
 
 ```json
 {
@@ -523,7 +523,7 @@ Entity Refs are case-insensitive.
 
 </details>
 
-- **field:** It contains the information on the metadata name to be added, here in the above example it would ingest the `teamLead` under metadata. **This will not append your catalog-info.yaml stored in your git**, rather you could view the changes on IDP.
+- **field:** It contains the information on the metadata name to be added, here in the above example it would ingest the `teamLead` under metadata. **This won't append your catalog-info.yaml stored in your git**, rather you could view the changes on IDP.
 
 :::info
 
@@ -564,9 +564,9 @@ metadata:
 
 </details>
 
-### Update a single property of a catalog entity without replacing existing values
+### Update a Single Property of a Catalog Entity Without Replacing Existing Values
 
-#### cURL example
+#### cURL Example
 
 ```sh
 curl --location 'https://app.harness.io/gateway/v1/catalog/custom-properties/entity' \
@@ -586,7 +586,7 @@ curl --location 'https://app.harness.io/gateway/v1/catalog/custom-properties/ent
 
 #### Endpoint
 
-#### HTTP method
+#### HTTP Method
 
 `POST`
 
@@ -596,7 +596,7 @@ curl --location 'https://app.harness.io/gateway/v1/catalog/custom-properties/ent
 https://app.harness.io/gateway/v1/catalog/custom-properties/entity
 ```
 
-#### Request body
+#### Request Body
 
 ```json
 {
@@ -613,7 +613,7 @@ https://app.harness.io/gateway/v1/catalog/custom-properties/entity
 
 When you want to update a specific property of a catalog entity, you can use different modes to control how the update behaves. The default mode is `replace`, which completely overwrites the existing value. However, you can use other modes like `append` for complex datatype like array to preserve the existing values while adding new ones.
 
-#### Available modes:
+#### Available Modes:
 - **replace** (default): Completely replaces the existing value with the new one provided in the `value` field.
 - **append**: Adds new values to the existing array (or other types to be appended like maps or key-value pairs).
 
@@ -621,7 +621,7 @@ When you want to update a specific property of a catalog entity, you can use dif
 
 ---
 
-#### Example 1: Add a property to the entity (no mode specified)
+#### Example 1: Add a Property to the Entity (No Mode Specified)
 
 By default, when you add a property to an entity, it uses the `replace` mode to set the value.
 
@@ -640,7 +640,7 @@ POST /catalog/custom-properties/entity
 ```
 This sets the `metadata.tags` for `boutique-service` to `"scala"` replacing the existing values
 
-#### Example 2: Add new values to the entity
+#### Example 2: Add New Values to the Entity
 
 To add new tags without replacing the existing ones, you can use the `append` mode.
 
@@ -682,7 +682,7 @@ POST /catalog/custom-properties/entity
 ```
 Result: The `metadata.annotations` property will now add `harness.io/pipelines` to the existing annotations. If `harness.io/pipelines` annotations already exists then this will overwrite the same. 
 
-#### When to use each mode:
+#### When to Use Each Mode:
 
 - `replace`: Use when you want to completely replace the value of a property. For example, if the existing tags are outdated, and you want to set new ones.
 
@@ -715,11 +715,11 @@ metadata:
 ...
 ```
 
-## Other examples
+## Other Examples
 
-### Dry run
+### Dry Run
 
-Using the **dry_run** field, you can check all the metadata and components getting affected by the **Catalog Metadata Ingestion API** without actually modifying them. `dry_run` will not apply any change rather will provide a preview of all the changes as shown in the example below.
+Using the **dry_run** field, you can check all the metadata and components getting affected by the **Catalog Metadata Ingestion API** without actually modifying them. `dry_run` won't apply any change rather will provide a preview of all the changes as shown in the example below.
 
 ```json
 [
@@ -746,7 +746,7 @@ As you could see in the example above we display the affected software component
 https://app.harness.io/gateway/v1/catalog/custom-properties?dry_run=true
 ```
 
-### Advanced example of using catalog filters
+### Advanced example of using Catalog Filters
 
 ```
 POST https://app.harness.io/gateway/v1/catalog/custom-properties
@@ -814,7 +814,7 @@ curl --location --request DELETE 'https://app.harness.io/gateway/v1/catalog/cust
 }'
 ```
 
-### Delete one property on unspecified catalog entities using filters
+### Delete one property on Unspecified Catalog Entities using Filters
 
 ```bash
 curl --location --request DELETE 'https://app.harness.io/gateway/v1/catalog/custom-properties' \
@@ -832,23 +832,23 @@ curl --location --request DELETE 'https://app.harness.io/gateway/v1/catalog/cust
 
 In the above example it will delete the property `metadata.teamLead`, across **all** the entities **except** `order-service` mentioned under `skip_entity_refs`.
 
-### Get catalog custom properties for a given entity
+### Get Catalog Custom Properties for a given Entity
 
 ```
 GET /catalog/custom-properties/entity?entity_ref=boutique-service
 ```
 
-### Get entities associated with a custom property
+### Get Entities associated with a Custom Property
 
 ```
 GET /catalog/custom-properties/entity?property=metadata.releaseVersion
 ```
 
-## Other catalog endpoints
+## Other Catalog Endpoints
 
-This page describes only the ingestion related Catalog endpoints. Look at other [Catalog API endpoints](/docs/internal-developer-portal/api-references/public-api) which contains basic endpoints for fetching full entity, registering and unregistering entities.
+This page describes only the ingestion related Catalog endpoints. Please look at other [Catalog API endpoints](/docs/internal-developer-portal/api-references/public-api) which contains basic endpoints for fetching full entity, registering and unregistering entities.
 
-## API takes priority over catalog YAML file (in case of a conflict)
+## API takes priority over Catalog YAML file (in case of a conflict)
 
 Any property updated using Ingestion APIs will take priority over what is specified in the Catalog Info YAML files. For example, if a `catalog-info.yaml` has the following
 

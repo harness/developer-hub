@@ -2,7 +2,6 @@
 title: Set Execution History Lookback
 ---
 
-
 If you have a pipeline that hasn’t run in a long time, you might only ever see one pipeline execution in its history – and as soon as you run the pipeline again, it disappears, leaving only the latest.
 This is because Spinnaker, by default, limits lookback to only the last 14 days of activity; if no execution history is found in that time, it only returns the last known execution, regardless how many you ask it to display.
 This can’t currently be turned off, but you can adjust it with configuration.

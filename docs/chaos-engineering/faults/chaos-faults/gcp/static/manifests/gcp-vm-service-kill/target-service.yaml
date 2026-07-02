@@ -1,0 +1,19 @@
+# kill the target service on the target VM instance
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: gcp-vm-service-kill
+    spec:
+      components:
+        env:
+        # name of the target node
+        - name: SERVICE_NAME
+          value: 'containerd'
+        - name: VM_INSTANCE_NAMES
+          VALUE: 'instance-01'

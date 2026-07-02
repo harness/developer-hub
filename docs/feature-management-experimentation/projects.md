@@ -10,7 +10,7 @@ redirect_from:
 - Use a single project when teams need to share feature flags, metrics, environments, or visibility across services. 
 - Use separate projects when teams require isolated RBAC, independent release cadences, or strict separation of feature flag and experimentation data.
 
-Projects in Harness FME are hard partitions for <Tooltip id="fme.feature-management.feature-flag">feature flag</Tooltip> and <Tooltip id="fme.warehouse-native.experiment">experimentation</Tooltip> data. Related flags (such as parent-child or flag prerequisites) and metrics that rely on the same event streams must exist within the same project. If you only need lightweight organization within a shared domain, consider using naming conventions and tags instead of creating separate projects.
+Projects in Harness FME are hard partitions for <Tooltip id="fme.openfeature.feature-flag">feature flag</Tooltip> and <Tooltip id="fme.warehouse-native.experiment">experimentation</Tooltip> data. Related flags (such as parent-child or flag prerequisites) and metrics that rely on the same event streams must exist within the same project. If you only need lightweight organization within a shared domain, consider using naming conventions and tags instead of creating separate projects.
 
 When you first create your <Tooltip id="platform.account">account</Tooltip>, Harness FME provides a default project named `Default`. The `Default` project includes two [environments](/docs/feature-management-experimentation/environments) and one [traffic type](/docs/feature-management-experimentation/traffic-types). 
 

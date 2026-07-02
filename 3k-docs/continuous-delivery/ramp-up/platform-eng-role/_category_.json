@@ -1,0 +1,11 @@
+{
+  "label": "Platform Engineer Role",
+  "position": "4",
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+      "type": "generated-index",
+      "title": "Platform Engineer Role"
+  }
+}

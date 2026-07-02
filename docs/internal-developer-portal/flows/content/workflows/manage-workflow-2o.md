@@ -8,13 +8,13 @@ Workflows enable **developer self-service** by automating manual tasks and proce
 - Simplify **Day 2 operations** for developers.
 - Provide developers with **golden paths to production** that include guardrails and best practices.
 
-This guide will walk you through the process of registering and managing your Workflows directly from Harness IDP. Let us dive in!
+This guide will walk you through the process of registering and managing your Workflows directly from Harness IDP. Let's dive in!
 
 ---
-## Workflows in software catalog 
+## Workflows in Software Catalog 
 Once a workflow is registered, it is stored in the Software Catalog under the kind **"Workflow"**.
 
-### Access workflows 
+### Access Workflows 
 
 1. Navigate to the **Catalog** page in Harness IDP.  
 2. Select **Workflows** from the Catalog filter categories to view all registered Workflows.  
@@ -24,7 +24,7 @@ Once a workflow is registered, it is stored in the Software Catalog under the ki
 
 ---
 
-### View workflow YAML
+### View Workflow YAML
 You can inspect the Workflow YAML in two ways:
 
 1. From the **Catalog**, select the desired Workflow and click **View YAML**.  
@@ -34,24 +34,24 @@ You can inspect the Workflow YAML in two ways:
 
 ---
 
-## Manage workflows 
+## Manage Workflows 
 
-### Create workflows 
+### Create Workflows 
 With IDP 2.0, we are moving towards a Harness-native Data Model designed for enterprise scale and access control. To learn more about the different changes in the schema, go to [Data Model](/docs/internal-developer-portal/catalog/data-model). 
 
 There are two ways for you to add and create a new Workflow in your IDP:
-- **Create a Workflow via the Harness IDP UI**: Use the Harness UI to create Workflows directly, no YAML required. This method offers a streamlined, code-free experience for adding entities.
+- **Create a Workflow via the Harness IDP UI**: Use the Harness UI to create Workflows directly—no YAML required. This method offers a streamlined, code-free experience for adding entities.
 - **Create a Workflow using your Workflow YAML**: You can still create Workflows using your existing Workflow YAML files. Harness will automatically convert legacy Backstage YAML into the new Harness-native Data Model and register the corresponding Workflow.
 
-Let us try creating a **Workflow** using both the methods: 
+Let's try creating a **Workflow** using both the methods: 
 
 <Tabs>
   <TabItem value="UI" label="Harness IDP UI">
   To create a new **Workflow**, navigate to the Harness IDP portal and click on **"Create"** from the side-bar menu. Choose **Workflow** from the panel, and follow these steps:
-  1. You will be redirected to the **"Visual View"**, where you can input basic Workflow details and begin the creation process.
+  1. You'll be redirected to the **"Visual View"**, where you can input basic Workflow details and begin the creation process.
   2. Enter the required Workflow information. The **Visual view** is synced in real-time with the **YAML view** for full transparency.
   ![](../../static/workflow-1.png)
-  3. Define the **Workflow scope**, choose whether the Workflow should reside at the Account, Project, or Organization level. For this use-case, let us select the Account scope. Read more about Workflow RBAC.
+  3. Define the **Workflow scope** — choose whether the Workflow should reside at the Account, Project, or Organization level. For this use-case, let's select the Account scope. Read more about Workflow RBAC.
   ![](../../static/workflow-scope.png)
   4. You now have two options for managing your Workflow configuration:
     * **Inline (default):** Manage the Workflow YAML directly within Harness.
@@ -61,12 +61,12 @@ Let us try creating a **Workflow** using both the methods:
      > The Git Experience is ideal for teams who prefer to manage Workflows as code, with full version control and Git-native workflows. The changes are reflected in both YAML and execution views, via a [webhook](/docs/internal-developer-portal/git-experience/gitx-journey#workflow-execution-visibility-and-webhook-requirement) which is automatically configured on the Git connector. Learn more in the [Git Experience Journey documentation](/docs/internal-developer-portal/git-experience/gitx-journey).
 
 
-  5. Click on **"Review YAML"** to view the auto-generated YAML. Since there is a live sync between the Visual and YAML views, changes in one will reflect in the other. 
-  6. You can configure your Workflow by editing the YAML directly, add inputs, backend actions, and outputs as needed. This allows you to fully customize the Workflow behavior. Learn more about the [components of a Workflow](/docs/internal-developer-portal/flows/workflowyaml#components-of-workflow-yaml) and its [YAML structure](/docs/internal-developer-portal/flows/workflowyaml#workflow-yaml-definition).
+  5. Click on **"Review YAML"** to view the auto-generated YAML. Since there's a live sync between the Visual and YAML views, changes in one will reflect in the other. 
+  6. You can configure your Workflow by editing the YAML directly—add inputs, backend actions, and outputs as needed. This allows you to fully customize the Workflow behavior. Learn more about the [components of a Workflow](/docs/internal-developer-portal/flows/workflowyaml#components-of-workflow-yaml) and its [YAML structure](/docs/internal-developer-portal/flows/workflowyaml#workflow-yaml-definition) here.  
   ![](../../static/workflow-yaml.png)
 
   :::info
-  **YAML validation** is performed to ensure compatibility with the **Harness-native Data Model**. Any errors will be shown in the Validation logs. Ensure your `identifier` follows [naming rules](/docs/platform/references/entity-identifier-reference#identifier-naming-rules). Invalid identifiers may lead to entity registration errors.
+  **YAML validation** is performed to ensure compatibility with the **Harness-native Data Model**. Any errors will be shown in the Validation logs. Ensure your `identifier` follows [naming rules](https://developer.harness.io/docs/platform/references/entity-identifier-reference/#identifier-naming-rules). Invalid identifiers may lead to entity registration errors.
   :::
 
   6. Once everything is set, click **"Create Workflow"** to finalize and create the Workflow.
@@ -78,15 +78,15 @@ Let us try creating a **Workflow** using both the methods:
   If you have a **legacy Backstage YAML**, you can still use it to create a **Workflow**. Harness will automatically convert it into the **Harness-native Data Model** format.
   :::
 
-1. You will be redirected to the **Visual View**. You can switch to the **YAML View** using the toggle at the top of the screen. This allows you to directly edit the Workflow's YAML definition.
+1. You'll be redirected to the **Visual View**. You can switch to the **YAML View** using the toggle at the top of the screen. This allows you to directly edit the Workflow's YAML definition.
 ![](../../static/yaml-view-workflows.png)
-2. If you are using a **legacy Backstage YAML**, paste it into the YAML view. Harness will convert it into the **Harness-native format** automatically. You can then proceed to finalize and create the Workflow. Since the Visual and YAML views are **live-synced**, changes made in one view will reflect in the other.
+2. If you're using a **legacy Backstage YAML**, paste it into the YAML view. Harness will convert it into the **Harness-native format** automatically. You can then proceed to finalize and create the Workflow. Since the Visual and YAML views are **live-synced**, changes made in one view will reflect in the other.
 ![](../../static/workflow-yaml-conversion.png)
 
-3. You can configure your Workflow by editing the YAML directly, add inputs, backend actions, and outputs as needed. This allows you to fully customize the Workflow behavior. Learn more about the [components of a Workflow](/docs/internal-developer-portal/flows/workflowyaml#components-of-workflow-yaml) and its [YAML structure](/docs/internal-developer-portal/flows/workflowyaml#workflow-yaml-definition).
+3. You can configure your Workflow by editing the YAML directly—add inputs, backend actions, and outputs as needed. This allows you to fully customize the Workflow behavior. Learn more about the [components of a Workflow](/docs/internal-developer-portal/flows/workflowyaml#components-of-workflow-yaml) and its [YAML structure](/docs/internal-developer-portal/flows/workflowyaml#workflow-yaml-definition) here.  
 ![](../../static/workflow-yaml.png)
 
-4. Define the **scope** of the Workflow in two ways: either switch to the Visual View and select the desired scope, or specify the **[projectIdentifier](/docs/internal-developer-portal/catalog/catalog-yaml#projectidentifier)** or **[orgIdentifier](/docs/internal-developer-portal/catalog/catalog-yaml#orgidentifier)** directly in the YAML to set the project or organization scope.
+4. Define the **scope** of the Workflow in two ways: either switch to the Visual View and select the desired scope, or specify the **[projectIdentifier](/docs/internal-developer-portal/catalog/catalog-yaml.md#projectidentifier)** or **[orgIdentifier](/docs/internal-developer-portal/catalog/catalog-yaml.md#orgidentifier)** directly in the YAML to set the project or organization scope.
 ![](../../static/workflow-scope.png)
 
 5. You now have two options for managing your Workflow configuration:
@@ -106,7 +106,7 @@ Note: **YAML validation** is automatically performed to ensure compatibility wit
 
 ---
 
-### Execute workflows 
+### Execute Workflows 
 Once a Workflow is created, it can be executed from:
 
 1. The **Catalog** – Click the Workflow entry from the Catalog, then click **Launch Template** on the details page.  
@@ -114,9 +114,9 @@ Once a Workflow is created, it can be executed from:
 2. The **Workflows** page – Locate the Workflow from the Workflows page and click **Execute**.
 ![](../../static/execute-workflows-2.png)
 
-#### Execute workflows with different branches
+#### Execute Workflows with different branches
 
-When Workflows are stored in a Git repository, you can execute them from different branches. If you have created Workflows from multiple branches of the same repository, the **branch selector** feature enables you to switch between branches and execute the corresponding Workflow version.
+When Workflows are stored in a Git repository, you can execute them from different branches. If you've created Workflows from multiple branches of the same repository, the **branch selector** feature enables you to switch between branches and execute the corresponding Workflow version.
 
 **How to execute Workflows from different branches:**
 
@@ -131,13 +131,13 @@ When Workflows are stored in a Git repository, you can execute them from differe
 
 ---
 
-### Execution view
+### Execution View
 
 :::info
-This feature is behind a feature flag `IDP_WORKFLOW_EXECUTION_V2`. Contact [Harness Support](mailto:support@harness.io) to enable this feature flag.
+This feature is behind a feature flag `IDP_WORKFLOW_EXECUTION_V2`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature flag.
 :::
 
-Once you execute a Workflow, you will be taken to the **Workflow execution view** where you can monitor the progress in real-time. 
+Once you execute a Workflow, you'll be taken to the **Workflow execution view** where you can monitor the progress in real-time. 
 
 The top bar of the execution view displays key information about the Workflow run like:
 - **Branch**: The branch from which the Workflow is being executed
@@ -166,7 +166,7 @@ The **Actions** tab shows **real-time status** of all pipeline executions trigge
 
 :::info Access Requirements
 
-To view pipeline logs and details, you must have the appropriate **permissions and RBAC (Role-Based Access Control)** configured in Harness. If you do not have the necessary permissions, you will not be able to access the pipeline execution details or logs.
+To view pipeline logs and details, you must have the appropriate **permissions and RBAC (Role-Based Access Control)** configured in Harness. If you don't have the necessary permissions, you won't be able to access the pipeline execution details or logs.
 
 :::
 
@@ -190,7 +190,7 @@ You can cancel a running Workflow at any time by clicking the **"Cancel Run"** b
 
 ---
 
-### Rerun failed workflows
+### Rerun Failed Workflows
 
 When a Workflow execution fails at a specific stage in the pipeline, you can retry the execution from the failed stage instead of starting from scratch. This saves time and resources by resuming the Workflow from where it failed.
 
@@ -207,7 +207,7 @@ This feature is particularly useful for workflows that encounter temporary issue
 
 ---
 
-### Edit workflows
+### Edit Workflows
 1. Go to the **Workflows** page.  
 2. Click the three-dot menu on the Workflow you want to edit.  
 3. Select **Edit Workflow** to open it in edit mode.
@@ -215,7 +215,7 @@ This feature is particularly useful for workflows that encounter temporary issue
 
 ---
 
-### Delete workflows 
+### Delete Workflows 
 1. Go to the **Workflows** page.  
 2. Click the three-dot menu on the Workflow you want to delete.  
 3. Select **Delete Workflow** and confirm the action.
@@ -223,7 +223,7 @@ This feature is particularly useful for workflows that encounter temporary issue
 
 ---
 
-### Share workflows 
+### Share Workflows 
 You can share Workflows by copying their direct URL:
 
 1. On the **Workflows** page, click the three-dot menu for the Workflow.  

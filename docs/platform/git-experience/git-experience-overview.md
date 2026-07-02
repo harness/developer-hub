@@ -8,7 +8,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-
 import create_pipeline from './static/git-experience-overview-02.png'
 import branch_selection from './static/git-experience-overview-03.png'
 

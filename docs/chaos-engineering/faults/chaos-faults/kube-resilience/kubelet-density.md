@@ -1,79 +1,32 @@
 ---
 id: kubelet-density
 title: Kubelet density
-sidebar_label: Kubelet Density
-description: Create a configurable number of pods on a target Kubernetes node so you can test how the node, kubelet, and workload behave during a sudden pod-storm.
-keywords:
-  - chaos engineering
-  - kubelet density
-  - kube resilience
-  - kubernetes fault
-tags:
-  - chaos-engineering
-  - kube-resilience
-  - kubernetes-faults
 redirect_from:
 - /docs/chaos-engineering/technical-reference/chaos-faults/kube-resilience/kubelet-density
 - /docs/chaos-engineering/chaos-faults/kube-resilience/kubelet-density
 ---
 
-import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
+Kubelet density determines the resilience of the kubelet by creating pods on a specific node.
+- In distributed systems like Kube resilience, application replicas might not be sufficient to manage the traffic (indicated by SLIs) during system (or application) failures.
+- A common application failure occurs when the pressure on other replicas increases, and the horizontal pod autoscaler (HPA) scales based on the observed resource utilization, and the amount of time it takes the persistent volume to mount on rescheduling.
+- In case of failures, the application needs to meet the SLOs (service level objectives) by making a minimum number of replicas available.
 
-Kubelet density is a chaos fault that creates `POD_COUNT` pods on the target Kubernetes node (`TARGET_NODE`) for `TOTAL_CHAOS_DURATION`, then deletes them. The pods are scheduled with a node selector or affinity that pins them to the target node, so the kubelet on that node has to handle a sudden burst of pod-create requests in a short window.
+![Kubelet Density](./static/images/kubelet-density.png)
 
-Use this fault to test how a node, the kubelet, the container runtime, and any co-located workloads behave under a pod-storm: whether the kubelet stays responsive, whether image pulls and CNI setup keep up, whether the HPA reacts correctly, and whether monitoring detects the saturation within the alerting SLA.
+### Permissions required
 
-:::info Run your first experiment
-If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
-:::
+Below is a sample Kubernetes role that defines the permissions required to execute the fault.
 
----
-
-## Use cases
-
-Run this fault when you want to answer concrete questions like:
-
-- **Kubelet resilience:** When `POD_COUNT` pods land on `TARGET_NODE` at once, does the kubelet stay responsive (heartbeats, status updates) inside its SLA?
-- **Pod-create throughput:** Does the API server / scheduler / kubelet handle the burst inside the target latency, or do scheduling backlogs and `ContainerCreating` queues build up?
-- **HPA fidelity:** Does horizontal pod autoscaling react inside the alerting SLA when load suddenly grows on the targeted node?
-- **Topology constraints:** Do node selectors, tolerations, affinity/anti-affinity, topology spread constraints, and zone distribution stay enforced during a pod-storm?
-- **Workload impact:** Do co-located workloads on the same node degrade (CPU, memory, network) when the storm hits, and do their alerts fire correctly?
-
----
-
-## Prerequisites
-
-- **Kubernetes version:** 1.21 or later for the cluster running the chaos infrastructure.
-- **Target node reachable:** `TARGET_NODE` exists in the cluster and is in `Ready` state. If `TARGET_NODE` is empty, the fault selects a random ready node.
-- **Headroom on the target node:** The node has enough allocatable CPU, memory, pod count (kubelet `--max-pods`), and image-pull bandwidth to host `POD_COUNT` extra pods.
-- **Image accessible:** `POD_IMAGE` is pullable from the cluster (or the default `gcr.io/google_containers/pause-amd64:3.0` is reachable).
-- **RBAC granted:** The chaos service account has the permissions listed under [Permissions required](#permissions-required).
-
----
-
-## Supported environments
-
-| Platform | Support status |
-| --- | --- |
-| Self-hosted Kubernetes (1.21+) | Supported |
-| Managed Kubernetes (EKS, GKE, AKS, OKE) | Supported |
-| OpenShift | Supported |
-| Minikube / Kind | Supported (use small `POD_COUNT` values) |
-| Cluster autoscaler enabled | Supported (the fault targets one node, so autoscaler should not interfere) |
-
----
-
-## Permissions required
-
-This fault is classified as an **Advanced** Kube-resilience fault. The chaos service account needs the following Kubernetes RBAC permissions in the namespace where the helper pods are created (or cluster-scoped if `TARGET_NAMESPACE` differs from the chaos namespace).
-
-```yaml
+```
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   namespace: hce
   name: kubelet-density
-rules:
+spec:
+  definition:
+    scope: Namespaced # Supports Cluster mode too
+permissions:
   - apiGroups: [""]
     resources: ["pods"]
     verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
@@ -81,10 +34,10 @@ rules:
     resources: ["events"]
     verbs: ["create", "get", "list", "patch", "update"]
   - apiGroups: [""]
-    resources: ["configmaps"]
+    resources: ["configMaps"]
     verbs: ["get", "list"]
-  - apiGroups: ["litmuschaos.io"]
-    resources: ["chaosengines", "chaosexperiments", "chaosresults"]
+  - apiGroups: [""]
+    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
     verbs: ["create", "delete", "get", "list", "patch", "update"]
   - apiGroups: [""]
     resources: ["pods/log"]
@@ -100,148 +53,207 @@ rules:
     verbs: ["get", "list"]
 ```
 
----
+## Use cases
 
-## Fault tunables
+Kubelet density:
+- Determines the resilience of an application to unplanned scaling of Kubernetes pods.
+- It simulates pod-storm (due to autoscale) on high traffic conditions.
+- It verifies functioning of the application services from latency and availability standpoint.
+- It ensures that the topology constraints are adhered to on pod scale (node selectors, tolerations, zone distribution, affinity or anti-affinity policies). 
+- It also verifies pod creation and scheduling SLIs on the cluster nodes.
+- It also helps determine the performance of the kubelet for a specific node.
 
-Configure the following fault parameters when you add Kubelet density to an experiment in Chaos Studio. Defaults are shown for reference.
+### Prerequisites
+- Kubernetes > 1.16
+- The target nodes should be in the healthy state before and after injecting chaos.
 
-**Required parameters**
 
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `TARGET_NODE` | Name of the target node where the storm pods are created. Leave empty to pick a random ready node. | `""` |
+### Mandatory tunables
 
-**Chaos parameters**
+   <table>
+      <tr>
+        <th> Tunable </th>
+        <th> Description </th>
+        <th> Notes </th>
+      </tr>
+      <tr>
+        <td> TARGET_NODE </td>
+        <td> Name of the target node. </td>
+        <td> If this environment variable isn't set, a random target node is selected. For more information, go to <a href = "/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-single-node">target node</a>.</td>
+      </tr>
+    </table>
+    
+### Optional tunables
+   <table>
+      <tr>
+        <th> Tunable </th>
+        <th> Description </th>
+        <th> Notes </th>
+      </tr>
+      <tr>
+        <td> TOTAL_CHAOS_DURATION </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Defaults to 90s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults/#duration-of-the-chaos"> duration of the chaos.</a></td>
+      </tr>
+      <tr>
+        <td> POD_COUNT </td>
+        <td> Total number of pods that are created during chaos. </td>
+        <td> Default: 50. For more information, go to <a href="#pod-count"> pod count. </a></td>
+      </tr>
+      <tr>
+        <td> TARGET_NAMESPACE </td>
+        <td> Namespace where the pods will be created. </td>
+        <td> Defaults to the namespace specified in <code>CHAOS_NAMESPACE</code>. For more information, go to <a href="#target-namespace"> target namespace. </a></td>
+      </tr>
+      <tr>
+        <td> POD_TEMPLATE_CM </td>
+        <td> Name of the config map that contains the pod template. </td>
+        <td> For example: <code>stress-app-manifest</code>. For more information, go to <a href="#pod-template-provided-as-a-configmap"> pod template provided as a configmap. </a></td>
+      </tr>
+      <tr>
+        <td> POD_TEMPLATE_PATH </td>
+        <td> Path to the pod template configMap mount. </td>
+        <td> Defaults to <code>/templates/pod.yml</code>. For more information, go to <a href="#pod-template-provided-as-a-configmap"> pod template provided as a configmap</a></td>
+      </tr>
+      <tr>
+        <td> POD_SELECTOR </td>
+        <td> Labels of destination pods.</td>
+        <td> Defaults to <code>&#123;name: kubelet-density-app&#125;</code>. For more information, go to <a href="#pod-image-and-pod-selectors">pod selector.</a> </td>
+      </tr>
+      <tr>
+        <td> POD_IMAGE </td>
+        <td> Pod image used to create multiple pods. </td>
+        <td> Defaults to <code>gcr.io/google_containers/pause-amd64:3.0</code>. For more information, go to <a href="#pod-image-and-pod-selectors">pod image.</a> </td>
+      </tr>
+      <tr>
+        <td> RAMP_TIME </td>
+        <td> Period to wait before and after injecting chaos (in seconds). </td>
+        <td> For example, 30s. For more information, go to <a href= "/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
+      </tr>
+    </table>
 
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `TOTAL_CHAOS_DURATION` | Total duration of the fault, in seconds. The pods stay running on the target node for this period. | `60` |
-| `POD_COUNT` | Number of pods to create on the target node during the chaos window. | `50` |
-| `TARGET_NAMESPACE` | Namespace where the storm pods are created. Empty defaults to the chaos infrastructure namespace. | `""` |
-| `RAMP_TIME` | Wait period in seconds before and after the fault. Go to [ramp time](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time) to read how it is applied. | `0` |
+### Pod template provided as a configmap
 
-**Pod template parameters**
+A chaos experiment creates pods on the target node during execution. The template for the pod is provided by mounting the pod template using the configmap and passing the name and `mountPath` of the pod using the `POD_TEMPLATE_CM` and `POD_TEMPLATE_PATH` environment variables, respectively.
 
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `POD_IMAGE` | Container image for each storm pod. The default is a small `pause` image so the storm exercises kubelet, not the runtime. | `gcr.io/google_containers/pause-amd64:3.0` |
-| `POD_SELECTOR` | Label selector applied to the storm pods (also used to clean them up at the end). | `{name: kubelet-density-app}` |
-| `POD_TEMPLATE_CM` | Name of a ConfigMap that contains a custom pod template (`spec` only). Empty uses the default template. | `""` |
-| `POD_TEMPLATE_PATH` | Path inside the ConfigMap mount where the pod template YAML is read from. | `/templates/pod.yml` |
+The following YAML snippet illustrates the use of this environment variable:
 
-Tunables that apply to every fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
+[embedmd]: # "./static/manifests/kubelet-density/pod-template.yaml yaml"
 
----
+```yaml
+# defines pod template cm and its mount path
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: kubelet-density
+      spec:
+        components:
+          env:
+            # name of the pod template cm
+            - name: POD_TEMPLATE_CM
+              value: "pod-template-cm"
+              # mount path of the cm
+            - name: POD_TEMPLATE_PATH
+              VALUE: "/templates/pod.yml"
+            - name: TARGET_NODE
+              value: "node1"
+```
 
-## Fault execution in brief
+### Pod count
 
-Schedules `POD_COUNT` pods (each using `POD_IMAGE` or the template from `POD_TEMPLATE_CM`) onto `TARGET_NODE`, waits for `TOTAL_CHAOS_DURATION`, then deletes every pod matching `POD_SELECTOR` from `TARGET_NAMESPACE`.
+It specifies the number of the pods that will be created on the target node. Tune it by using the `POD_COUNT` environment variable.
 
----
+The following YAML snippet illustrates the use of this environment variable:
 
-## Expected behavior during fault execution
+[embedmd]: # "./static/manifests/kubelet-density/pod-count.yaml yaml"
 
-- The target node sees a sudden burst of `Pending` → `ContainerCreating` → `Running` transitions for `POD_COUNT` extra pods.
-- Kubelet metrics (`kubelet_runtime_operations_duration_seconds`, `kubelet_pod_start_duration_seconds`) shift upward.
-- Node allocatable resources shrink; co-located workloads may degrade on CPU, memory, network, or PIDs.
-- The HPA on the workload (if configured) may scale up in response to the load.
-- After the duration ends, the storm pods are deleted; node resources return to baseline as the runtime tears them down.
+```yaml
+# defines count of the pod
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: kubelet-density
+      spec:
+        components:
+          env:
+            # number of pods, which needs to be created
+            - name: POD_COUNT
+              value: "50"
+            - name: TARGET_NODE
+              value: "node1"
+```
 
-:::info When the fault ends
-The chaos pod deletes every pod matching `POD_SELECTOR` in `TARGET_NAMESPACE`. Node-level usage and kubelet metrics return to baseline within a few seconds as the runtime reclaims resources.
-:::
+### Target namespace
 
-### Signals to watch
+It specifies the namespace where the pods are created. Tune it by using the `TARGET_NAMESPACE` environment variable.
 
-Attach [resilience probes](/docs/resilience-testing/chaos-testing/probes) to assert each layer:
+The following YAML snippet illustrates the use of this environment variable:
 
-- **Kubelet health:** Use a [Prometheus probe](/docs/resilience-testing/chaos-testing/probes/apm-probes) on `kubelet_pod_start_duration_seconds` and assert the p95 stays inside the SLA.
-- **Pod scheduling:** Use a Prometheus probe on `scheduler_pending_pods` and assert the queue drains within the expected window.
-- **Workload availability:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) on a user-visible endpoint served by pods that share the target node.
-- **Autoscaling:** Use a [command probe](/docs/resilience-testing/chaos-testing/probes/command-probe) running `kubectl get hpa <name> -o jsonpath='{.status.currentReplicas}'` and assert the HPA reacted.
+[embedmd]: # "./static/manifests/kubelet-density/target-namespace.yaml yaml"
 
----
+```yaml
+# defines pod namespace
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: kubelet-density
+      spec:
+        components:
+          env:
+            # namespace where pods need to be created
+            - name: TARGET_NAMESPACE
+              value: "litmus"
+            - name: TARGET_NODE
+              value: "node1"
+```
 
-## Verify the fault execution effect
+### Pod image and pod selectors
 
-While the experiment is running, confirm the storm pods were created and then cleaned up:
+Tune the pod image and label selectors by using the `POD_IMAGE` and `POD_SELECTOR` environment variables, respectively.
 
-1. **List the storm pods on the target node.**
+The following YAML snippet illustrates the use of this environment variable:
 
-   ```bash
-   kubectl get pods -n <TARGET_NAMESPACE> -l name=kubelet-density-app -o wide
-   ```
+[embedmd]: # "./static/manifests/kubelet-density/pod-image-and-selectors.yaml yaml"
 
-   The output should list `POD_COUNT` pods, all scheduled on `TARGET_NODE`, during the chaos window.
-
-2. **Inspect the node's pod density.**
-
-   ```bash
-   kubectl describe node <TARGET_NODE> | grep -E "Non-terminated Pods|Allocatable|Allocated"
-   ```
-
-   Allocated CPU / memory / pod count should rise during the chaos window and fall back afterwards.
-
-3. **Inspect kubelet log on the node (if you have SSH).**
-
-   ```bash
-   sudo journalctl -u kubelet -n 200 --no-pager | grep -E "PodWorkers|SyncLoop|image"
-   ```
-
-   Look for pod-create activity during the chaos window.
-
----
-
-## Recovery and cleanup
-
-- **End of duration:** The chaos pod deletes every pod matching `POD_SELECTOR` in `TARGET_NAMESPACE` when `TOTAL_CHAOS_DURATION` elapses.
-- **Abort the experiment:** Stopping the experiment from Chaos Studio also triggers the cleanup delete.
-- **Manual recovery:** If the storm pods survive an abort, delete them with `kubectl delete pods -n <TARGET_NAMESPACE> -l name=kubelet-density-app`.
-- **Workload recovery:** Co-located workloads recover as soon as the storm pods are removed; the HPA may scale back in over its own cooldown.
-
----
-
-## Limitations
-
-- **Single node per run:** Each fault run targets one node (`TARGET_NODE`). Use multiple experiments to stress more than one node.
-- **Kubelet `max-pods`:** If `POD_COUNT` plus the node's existing pods exceeds the kubelet `--max-pods` (default `110`), the extras stay `Pending`.
-- **Image pull contention:** If `POD_IMAGE` is large or not cached, image-pull bandwidth dominates the storm; use the default `pause` image to focus on kubelet behaviour.
-- **Cluster autoscaler:** When enabled, the cluster autoscaler may not react because the fault targets one specific node, not unschedulable pods.
-- **No mid-flight resize:** `POD_COUNT` cannot be adjusted during the chaos window; abort and re-run to change it.
-
----
-
-## Troubleshooting
-
-<Troubleshoot
-  issue="Kubelet density storm pods stay Pending in Harness Chaos Engineering"
-  mode="docs"
-  fallback="The target node may not have allocatable headroom for POD_COUNT extra pods. Check kubectl describe node TARGET_NODE for Allocatable vs Allocated. Either reduce POD_COUNT or pick a less-loaded node."
-/>
-
-<Troubleshoot
-  issue="ImagePullBackOff on storm pods"
-  mode="docs"
-  fallback="POD_IMAGE must be reachable from every node in the cluster. The default gcr.io/google_containers/pause-amd64:3.0 is small and widely cached. If your nodes cannot reach gcr.io, mirror the image to your own registry and pass it via POD_IMAGE."
-/>
-
-<Troubleshoot
-  issue="Storm pods landed on a different node"
-  mode="docs"
-  fallback="Confirm TARGET_NODE matches kubectl get nodes exactly. If TARGET_NODE is empty, the fault picks a random ready node. Check taints on the target node (kubectl describe node) - the default template does not tolerate taints."
-/>
-
-<Troubleshoot
-  issue="Storm pods remained after the experiment ended"
-  mode="docs"
-  fallback="If the cleanup delete failed (for example because the chaos pod aborted ungracefully), run kubectl delete pods -n TARGET_NAMESPACE -l name=kubelet-density-app to remove them manually."
-/>
-
----
-
-## Related faults
-
-- [Node CPU hog](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/node-cpu-hog): Stress CPU on a node instead of overloading the kubelet with pod creates.
-- [Node memory hog](/docs/chaos-engineering/faults/chaos-faults/kubernetes/node/node-memory-hog): Stress memory on a node instead of pod density.
-- [Pod delete](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-delete): Delete existing pods instead of creating a burst.
+```yaml
+# defines pod image and label selectors
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: kubelet-density
+      spec:
+        components:
+          env:
+            # image of the pod
+            - name: POD_IMAGE
+              value: "nginx"
+            # pod label selectors
+            - name: POD_SELECTOR
+              value: "{name: kubelet-density-app}"
+            - name: TARGET_NODE
+              value: "node1"
+```

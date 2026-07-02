@@ -477,7 +477,6 @@ pipeline:
 
 ## Related resources
 
-- [Azure Container Apps Sample Repository](https://github.com/harness-community/harnesscd-example-apps/tree/master/azure-container-apps) - Complete canary deployment example
 - [Azure Container Apps Revisions](https://learn.microsoft.com/en-us/azure/container-apps/revisions)
 - [Traffic splitting in Azure Container Apps](https://learn.microsoft.com/en-us/azure/container-apps/revisions-manage#traffic-splitting)
 - [Configure Service and Environment](configure-service-environment.md)

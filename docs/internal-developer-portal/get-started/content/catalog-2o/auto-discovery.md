@@ -8,23 +8,23 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-## Auto-Discover entities using Harness CD
+## Auto-Discover Entities Using Harness CD
 
 Harness IDP can automatically discover and import your Harness CD services into the Software Catalog. This feature allows you to quickly populate your catalog with existing services without any manual configuration.
 
-### What is auto-discovery?
+### What is Auto-Discovery?
 
 Auto-Discovery integration enables:
 - **Automatic scanning** of your Harness account for all CD services across the selected scope (Account, Organization, or Project level)
 - **Automatic conversion** of each CD service into a **Component** entity with the **Service** type in Harness IDP
 - **Metadata mapping** from service configuration to IDP entity properties
-- **Uni-directional sync** from CD service to IDP entity (changes in IDP do not affect the CD service)
+- **Uni-directional sync** from CD service to IDP entity (changes in IDP don't affect the CD service)
 
 For detailed information about the integration, go to [Auto-Discovery using Harness CD](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/harness-cd.md).
 
 ---
 
-### Before you begin
+### Prerequisites
 
 Before you begin, ensure:
 - The feature flag **`IDP_CATALOG_CD_AUTO_DISCOVERY`** is enabled on your account. Contact [Harness Support](mailto:support@harness.io) to enable it.
@@ -33,7 +33,7 @@ Before you begin, ensure:
 
 ---
 
-### Configure auto-discovery integration
+### Configure Auto-Discovery Integration
 
 <Tabs>
 <TabItem value="Interactive Guide">
@@ -43,7 +43,7 @@ Before you begin, ensure:
 </TabItem>
 <TabItem value="Step-by-Step">
 
-#### Step 1: Enable the Harness CD auto-discovery integration
+#### Step 1: Enable the Harness CD Auto-Discovery Integration
 
 1. In Harness IDP, navigate to **Configure** → **Integrations**.
 2. Locate the **Harness CD services** integration card.
@@ -51,7 +51,7 @@ Before you begin, ensure:
 
 ---
 
-#### Step 2: Configure and sync Harness CD services
+#### Step 2: Configure and Sync Harness CD Services
 
 After enabling the integration, configure what services to sync to your IDP Catalog. When you enable auto-discovery, each CD service is converted into an IDP entity with some specific characteristics. Go to [Sync Harness CD Services](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/harness-cd#2-sync-harness-cd-services-to-the-idp-catalog) to learn more about this entity mapping. 
 
@@ -68,14 +68,14 @@ After enabling the integration, configure what services to sync to your IDP Cata
    
 3. Click **Save Changes** to begin syncing. 
 
-That is it! Your CD services will now appear in the IDP Catalog.
+That's it! Your CD services will now appear in the IDP Catalog.
 
 </TabItem>
 </Tabs>
 
 ---
 
-### View and manage CD services in the IDP catalog
+### View and Manage CD Services in the IDP Catalog
 
 Once the sync is complete, you can view and manage your auto-discovered services.
 
@@ -87,7 +87,7 @@ Once the sync is complete, you can view and manage your auto-discovered services
 </TabItem>
 <TabItem value="Step-by-Step">
 
-#### View synced services:
+#### Viewing Synced Services:
 
 1. Navigate to the **Catalog** in Harness IDP
 2. Search for any CD service by name or identifier
@@ -95,7 +95,7 @@ Once the sync is complete, you can view and manage your auto-discovered services
 
 ---
 
-#### Auto-Configured features: 
+#### Auto-Configured Features: 
 
 Auto-discovered entities come with built-in features:
 

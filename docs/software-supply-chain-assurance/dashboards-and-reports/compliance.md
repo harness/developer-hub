@@ -15,7 +15,6 @@ tags:
   - regulatory-compliance
 ---
 
-
 The Compliance Report provides detailed insights into your organization's compliance status. Reports are generated for each compliance standard, including Top 10 OWASP CI/CD and CIS Benchmarks, helps you identify repository-level security gaps. The dashboard supports multiple filters to help narrow down and analyze specific subsets of data. You can download or email the report for further analysis. After applying any filter, click **Reload** icon at the top right of the dashboard for the changes to take effect.
 
 You can generate the compliance report for a [single repository](/docs/software-supply-chain-assurance/dashboards-and-reports/compliance#compliance-report-repo), or [summary report for all repositories](/docs/software-supply-chain-assurance/dashboards-and-reports/compliance#compliance-report-summary) within a project or organization of your choice

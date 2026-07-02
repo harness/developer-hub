@@ -1,0 +1,12 @@
+{
+  "label": "Verify Deployments",
+  "position": "600",
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Verify Deployments",
+    "description": "Use Continuous Verification to validate deployments by integrating with APM and logging tools. Automatically detect anomalies and trigger rollbacks when issues are found."
+  }
+}

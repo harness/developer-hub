@@ -1,197 +1,209 @@
 ---
 id: vmware-memory-hog
 title: VMware memory hog
-sidebar_label: VMware Memory Hog
-description: Consume a configurable amount of memory on a Linux VMware VM for a configurable duration so you can test how the workload behaves when memory headroom shrinks.
-keywords:
-  - chaos engineering
-  - vmware memory hog
-  - vmware fault
-  - memory stress
-tags:
-  - chaos-engineering
-  - vmware-faults
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/linux/vmware-memory-hog
-- /docs/chaos-engineering/chaos-faults/vmware/linux/vmware-memory-hog
+- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-memory-hog
+- /docs/chaos-engineering/chaos-faults/vmware/vmware-memory-hog
 ---
 
-import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
+VMware memory hog fault consumes excessive memory resources on Linux OS based VMware VMs. It determines the performance of the application running on the VMware VMs. This fault allocates and maps a specific amount of virtual address space and keeps rewriting to that same memory space for the chaos duration before un-mapping it.
 
-VMware memory hog is a VMware chaos fault that consumes `MEMORY_CONSUMPTION_PERCENTAGE` percent of RAM (or `MEMORY_CONSUMPTION_MEBIBYTES` mebibytes when set) through `NUMBER_OF_WORKERS` worker processes on the Linux VM `VM_NAME` for `TOTAL_CHAOS_DURATION` seconds, then stops the workers. The fault uses VMware Tools (Guest Operations API) to run the stress workload inside the guest as `VM_USER_NAME`.
+![VMware Memory Hog](./static/images/vmware-memory-hog.png)
 
-Use this fault to test how a workload on a VMware-hosted VM behaves when memory headroom shrinks: whether the OOM killer fires on the right process, whether GC-heavy applications pause, whether vSphere DRS reacts, and whether monitoring detects the saturation within the alerting SLA.
-
-:::info Run your first experiment
-If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
+:::info note
+HCE doesn't support injecting VMWare Windows faults on Bare metal server.
 :::
-
----
 
 ## Use cases
 
-Run this fault when you want to answer concrete questions like:
+- VMware memory hog determines the resilience of an application to unexpected consumption of excessive memory by application resources.
+- It simulates the situation of memory leaks in the deployment of microservices.
+- It simulates application slowness due to memory starvation.
+- It also simulates noisy neighbour problems due to hogging.
+- It verifies pod priority and QoS setting for eviction purposes.
+- It also verifies application restarts on OOM (out of memory) kills.
 
-- **Memory pressure on a vSphere VM:** When RAM utilization climbs, does the OOM killer target the expected process?
-- **GC behavior:** Does the JVM/CLR pause for an unacceptable duration under memory pressure?
-- **DRS reaction:** Does vSphere DRS migrate the VM to a host with more headroom?
-- **Monitoring fidelity:** Do vCenter performance counters and downstream alerts fire inside the alerting SLA?
-
----
-
-## Prerequisites
-
-- **Kubernetes version:** 1.21 or later for the chaos infrastructure cluster.
-- **vCenter reachable:** The chaos infrastructure can reach `GOVC_URL` over port 443.
-- **VMware Tools running on the guest:** Verify with `vmware-toolbox-cmd -v` inside the VM.
-- **Stress binary installed inside the guest:** Go to [VMware Linux binary installation](/docs/chaos-engineering/faults/chaos-faults/vmware/linux/binary-installation) to install the memory stress prerequisite.
-- **vCenter chaos role:** `GOVC_USERNAME` is mapped to the chaos role described in [VMware permissions](/docs/chaos-engineering/faults/chaos-faults/vmware/permissions).
-
----
-
-## Supported environments
-
-| Platform | Support status |
-| --- | --- |
-| Linux VMs hosted on vSphere / vCenter (any distro with VMware Tools) | Supported |
-| Linux VMs without VMware Tools | Not supported |
-| Windows VMs | Not supported (use [VMware Windows memory hog](/docs/chaos-engineering/faults/chaos-faults/windows/windows-memory-stress)) |
-
----
-
-## Permissions required
-
-**On vCenter.** Map `GOVC_USERNAME` to the chaos role described in [VMware permissions](/docs/chaos-engineering/faults/chaos-faults/vmware/permissions). For this Advanced fault, the role needs:
-
-- Virtual machine → Guest operations → Program execution, Modifications, Queries.
-
-**On the guest OS.** `VM_USER_NAME` must be able to execute the memory stress binary and `pkill`.
-
----
-
-## Authentication
-
-| Layer | Tunables |
-| --- | --- |
-| vCenter (control plane) | `GOVC_URL`, `GOVC_USERNAME`, `GOVC_PASSWORD`, `GOVC_INSECURE` |
-| Guest OS (target VM) | `VM_USER_NAME`, `VM_PASSWORD` |
-
-Store each credential as a text secret in [Harness Secret Manager](/docs/platform/secrets/add-use-text-secrets) and reference the secret identifier when configuring the experiment.
-
----
-
-## Fault tunables
-
-Configure the following fault parameters when you add VMware memory hog to an experiment in Chaos Studio. Defaults are shown for reference.
-
-**Required parameters**
-
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `VM_NAME` | Name of the target VM as it appears in vCenter. | (required) |
-| `VM_USER_NAME` | OS user account on the target VM. | (required) |
-| `VM_PASSWORD` | Password for `VM_USER_NAME`. | (required) |
-
-**Stress parameters**
-
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `MEMORY_CONSUMPTION_PERCENTAGE` | Percentage of guest RAM to consume (0-100). Ignored when `MEMORY_CONSUMPTION_MEBIBYTES` is set. | `30` |
-| `MEMORY_CONSUMPTION_MEBIBYTES` | Memory to consume in mebibytes. Takes precedence over `MEMORY_CONSUMPTION_PERCENTAGE` when set. | `""` |
-| `NUMBER_OF_WORKERS` | Number of worker processes that hold the memory. | `4` |
-
-**Chaos parameters**
-
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `TOTAL_CHAOS_DURATION` | Total duration of the fault in seconds. | `30` |
-| `CHAOS_INTERVAL` | Delay in seconds between successive iterations when running for more than one cycle. | `10` |
-| `SEQUENCE` | Order in which multiple targets are stressed: `parallel` or `serial`. | `parallel` |
-| `RAMP_TIME` | Wait period in seconds before and after the fault. Go to [ramp time](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time) to read how it is applied. | `0` |
-
-**vCenter authentication**
-
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `GOVC_URL` | vCenter server URL. | `""` |
-| `GOVC_USERNAME` | vCenter user mapped to the chaos role. | `""` |
-| `GOVC_PASSWORD` | Password for `GOVC_USERNAME`. | `""` |
-| `GOVC_INSECURE` | Skip SSL certificate verification when set to `true`. | `true` |
-
-Tunables that apply to every fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
-
----
-
-## Fault execution in brief
-
-Authenticates to vCenter, opens a Guest Operations session on `VM_NAME` as `VM_USER_NAME`, launches `NUMBER_OF_WORKERS` memory-stress workers that hold `MEMORY_CONSUMPTION_PERCENTAGE` percent of RAM (or `MEMORY_CONSUMPTION_MEBIBYTES` MiB) for `TOTAL_CHAOS_DURATION` seconds, then stops the workers.
-
----
-
-## Expected behavior during fault execution
-
-- Available memory on the target VM drops for the duration.
-- Workloads with high memory pressure may hit GC pauses, swap, or OOM kill.
-- vCenter performance counters (`mem.usage.average`, `mem.swapout.average`) reflect the drop.
-- After the duration ends, the workers exit and memory returns to baseline.
-
-:::info When the fault ends
-The chaos pod stops the stress workers via Guest Operations. Memory returns to baseline within seconds.
+:::tip
+The mapped memory space is unmapped only after the chaos duration; the same memory space is used to write data into memory in an iterative manner. This way, constant memory is consumed throughout the fault duration.
 :::
 
-### Signals to watch
+### Prerequisites
+- Kubernetes > 1.16 is required to execute this fault.
+- Execution plane should be connected to vCenter and host vCenter on port 443.
+- The VM should be in a healthy state before and after injecting chaos.
+- VMware tool should be installed on the target VM with remote execution enabled.
+- Appropriate vCenter permissions should be provided to access the hosts and the VMs.
+- Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. VM credentials can be passed as secrets or as a `ChaosEngine` environment variable. Below is a sample secret file:
 
-- **VM memory:** Use a [Prometheus probe](/docs/resilience-testing/chaos-testing/probes/apm-probes) on `node_memory_MemAvailable_bytes`.
-- **Application:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) and assert error rate stays under threshold.
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: vcenter-secret
+  namespace: litmus
+type: Opaque
+stringData:
+    VCENTERSERVER: XXXXXXXXXXX
+    VCENTERUSER: XXXXXXXXXXXXX
+    VCENTERPASS: XXXXXXXXXXXXX
+```
 
----
+### Mandatory tunables
 
-## Verify the fault execution effect
+   <table>
+      <tr>
+        <th> Tunable </th>
+        <th> Description </th>
+        <th> Notes </th>
+      </tr>
+      <tr>
+        <td> VM_NAME </td>
+        <td> Name of the target VM. </td>
+        <td> For example, <code>ubuntu-vm-1</code>. </td>
+      </tr>
+      <tr>
+          <td> VM_USER_NAME </td>
+          <td> Username of the target VM.</td>
+          <td> For example, <code>vm-user</code>. </td>
+      </tr>
+      <tr>
+          <td> VM_PASSWORD </td>
+          <td> User password for the target VM. </td>
+          <td> For example, <code>1234</code>. Note: You can take the password from secret as well. </td>
+      </tr>
+    </table>
 
-1. **Inspect vCenter Memory performance.**
 
-   In vCenter UI, open the VM → Monitor → Performance, switch to **Memory** view.
+### Optional tunables
 
-2. **SSH and run `free -h`.**
+   <table>
+      <tr>
+        <th> Tunable </th>
+        <th> Description </th>
+        <th> Notes </th>
+      </tr>
+     <tr>
+        <td> MEMORY_CONSUMPTION_MEBIBYTES </td>
+        <td> Amount of memory consumed by VMware VMs (in MiB). </td>
+        <td> For example, <code>4024</code>. For more information, go to <a href="#memory-consumption-in-mebibytes"> memory consumption in mebibytes. </a></td>
+      </tr>
+      <tr>
+        <td> MEMORY_CONSUMPTION_PERCENTAGE </td>
+        <td> Amount of total memory to be consumed (in percentage). </td>
+        <td> Default to 100. For more information, go to <a href="#memory-consumption-in-percentage"> memory consumption in percentage. </a></td>
+      </tr>
+      <tr>
+        <td> NUMBER_OF_WORKERS </td>
+        <td> Number of workers used to run the stress process. </td>
+        <td> Defaults to 4. For more information, go to <a href="#workers-for-stress"> workers for stress. </a></td>
+      </tr>
+      <tr>
+        <td> TOTAL_CHAOS_DURATION </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
+      </tr>
+      <tr>
+        <td> CHAOS_INTERVAL </td>
+        <td> Time interval between two successive instance terminations (in seconds). </td>
+        <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval. </a></td>
+      </tr>
+      <tr>
+        <td> SEQUENCE </td>
+        <td> Sequence of chaos execution for multiple instances. </td>
+        <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
+      </tr>
+      <tr>
+        <td> RAMP_TIME </td>
+        <td> Period to wait before and after injecting chaos (in seconds). </td>
+        <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
+      </tr>
+      <tr>
+      <td>DEFAULT_HEALTH_CHECK</td>
+      <td>Determines if you wish to run the default health check which is present inside the fault. </td>
+      <td> Default: 'true'. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
+      </tr>
+    </table>
 
-   `available` should drop during the chaos window.
+### Memory consumption in percentage
+It specifies the memory consumed by the target VM (in percentage). Tune it by using the `MEMORY_CONSUMPTION_PERCENTAGE` environment variable.
 
----
+Use the following example to tune it:
 
-## Recovery and cleanup
+[embedmd]:# (./static/manifests/vmware-memory-hog/vm-memory-hog-mem-consumption-perc.yaml yaml)
+```yaml
+# Memory hog in the VMware VM
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: VMware-memory-hog
+      spec:
+        components:
+          env:
+            # Name of the VM
+            - name: VM_NAME
+              value: 'test-vm-01'
+            # memory consumption value
+            - name: MEMORY_CONSUMPTION_PERCENTAGE
+              value: '50'
+```
 
-- **End of duration:** The chaos pod stops the workers via Guest Operations.
-- **Abort the experiment:** Stopping the experiment from Chaos Studio also stops the workers.
-- **Manual recovery:** SSH into the VM and `sudo pkill -f stress-ng` if any workers survived.
+### Memory consumption in mebibytes
+It specifies the memory consumed by the target VM in mebi bytes (MiB). Tune it by using the `MEMORY_CONSUMPTION_MEBIBYTES` environment variable.
 
----
+Use the following example to tune it:
 
-## Limitations
+[embedmd]:# (./static/manifests/vmware-memory-hog/vm-memory-hog-memory-consumption.yaml yaml)
+```yaml
+# Memory hog in the VMware VM
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: VMware-memory-hog
+      spec:
+        components:
+          env:
+            # Name of the VM
+            - name: VM_NAME
+              value: 'test-vm-01'
+            # memory consumption value
+            - name: MEMORY_CONSUMPTION_MEBIBYTES
+              value: '500'
+```
 
-- **OOM risk:** Setting `MEMORY_CONSUMPTION_PERCENTAGE` close to 100 may OOM-kill critical processes; start conservatively.
-- **Swap behavior varies:** Guest swap configuration affects behavior; pages may swap instead of OOM.
-- **VMware Tools required:** Without VMware Tools, the fault cannot run.
-- **Single VM per run:** Each fault run targets one `VM_NAME`.
+### Workers for stress
+It specifies the worker's count for stress. Tune it by using the `NUMBER_OF_WORKERS` environment variable.
 
----
+Use the following example to tune it:
 
-## Troubleshooting
-
-<Troubleshoot
-  issue="VMware memory hog fails with VMware Tools not running in Harness Chaos Engineering"
-  mode="docs"
-  fallback="The Guest Operations API requires VMware Tools to be installed and running on the target VM. Install or restart open-vm-tools / VMware Tools on the guest and retry."
-/>
-
-<Troubleshoot
-  issue="VM became unresponsive during memory hog"
-  mode="docs"
-  fallback="If MEMORY_CONSUMPTION_PERCENTAGE was very high, the OOM killer may have terminated VMware Tools or SSH. Power-cycle the VM via vCenter (or use ESXi reset) and reduce MEMORY_CONSUMPTION_PERCENTAGE."
-/>
-
----
-
-## Related faults
-
-- [VMware CPU hog](/docs/chaos-engineering/faults/chaos-faults/vmware/linux/vmware-cpu-hog): Stress CPU instead of memory.
-- [VMware IO stress](/docs/chaos-engineering/faults/chaos-faults/vmware/linux/vmware-io-stress): Stress disk IO instead of memory.
+[embedmd]:# (./static/manifests/vmware-memory-hog/vm-memory-hog-worker.yaml yaml)
+```yaml
+# Memory hog in the VMware VM
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: VMware-memory-hog
+      spec:
+        components:
+          env:
+            # Name of the VM
+            - name: VM_NAME
+              value: 'test-vm-01'
+            # Number of workers for stress
+            - name: NUMBER_OF_WORKERS
+              value: '4'
+```

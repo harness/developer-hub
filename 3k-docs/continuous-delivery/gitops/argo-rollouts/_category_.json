@@ -1,0 +1,12 @@
+{
+    "label": "Argo Rollouts",
+    "position": "500",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "description": "Learn how to use Argo Rollouts with Harness GitOps",
+    "link": {
+        "type": "generated-index",
+        "title": "Argo Rollouts"
+    }
+  }

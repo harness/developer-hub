@@ -1,7 +1,7 @@
 ---
 title: Stuck Pipeline - Orca with MySQL Editing the Database
 redirect_from:
-  - /docs/continuous-delivery/armory/general/stuck-pipeline---orca-with-mysql-editing-the-database
+  - /docs/continuous-delivery/armory/general/stuck-pipelineorca-with-mysql-editing-the-database
 ---
 
 ## Issue

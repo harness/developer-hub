@@ -1,0 +1,10 @@
+{
+    "label":"Settings",
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"default",
+    "link":{
+       "type":"generated-index",
+       "title":"Settings"
+    }
+ }

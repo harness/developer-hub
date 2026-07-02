@@ -2,7 +2,6 @@
 title: Getting the IP of an EC2 Instance With Pipeline Expressions
 ---
 
-
 Question
 How do I get the IP of an instance in an ASG through a Pipeline Expression in Spinnaker?
 Answer

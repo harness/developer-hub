@@ -1,0 +1,11 @@
+{
+   "label":"Collaborate and develop",
+   "position": 40,
+   "collapsible":"true",
+   "collapsed":"true",
+   "className":"default",
+   "link":{
+      "type":"generated-index",
+      "title":"Collaborate and develop"
+   }
+}

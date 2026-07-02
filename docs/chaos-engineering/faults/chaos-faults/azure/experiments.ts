@@ -2,65 +2,57 @@ import { ExperimentDetails } from "@site/src/components/ChaosEngineering/Experim
 
 export const experiments: ExperimentDetails[] = [
   {
-    name: "Azure AKS node down",
+    name: "Azure disk loss",
     description:
-      "Deallocate a percentage of AKS worker VMs (selected by node pool and zone) for a configurable duration, then start them again.",
-    tags: ["AKS", "node down", "kubernetes"],
+      "Azure disk loss detaches the virtual disk from an Azure instance.",
+    tags: ["disk loss"],
     category: "azure",
   },
   {
-    name: "Azure disk loss",
+    name: "Azure AKS node down",
     description:
-      "Detach one or more managed data disks from their attached VMs for a configurable duration, then reattach them on the same LUN.",
-    tags: ["disk loss"],
+      "Azure AKS node down deallocates nodes in an Azure Kubernetes Service (AKS) cluster for a certain chaos duration. It helps to check the resilience of your applications when AKS nodes become unavailable.",
+    tags: ["AKS", "node down", "kubernetes"],
     category: "azure",
   },
   {
     name: "Azure instance CPU hog",
     description:
-      "Drive CPU utilization to a configurable target on one or more Azure VMs for a configurable duration via the VM run-command extension.",
+      "Azure instance CPU hog disrupts the state of infrastructure resources. It induces stress on the Azure instance using the Azure `Run` command. The Azure `Run` command is executed using the in-built bash scripts within the fault. It utilizes excess amounts of CPU on the Azure instance using the bash script for a specific duration.",
     tags: ["CPU hog"],
     category: "azure",
   },
   {
     name: "Azure instance IO stress",
     description:
-      "Drive sustained disk read/write IO on one or more Azure VMs for a configurable duration via the VM run-command extension.",
+      "Azure instance I/O stress disrupts the state of infra resources. This fault induces stress on the Azure instance using the Azure `Run` command. The Azure `Run` command is executed using the in-built bash scripts within the fault. It causes I/O stress on the Azure Instance using the bash script for a specific duration.",
     tags: ["I/O stress"],
     category: "azure",
   },
   {
     name: "Azure instance memory hog",
     description:
-      "Consume a configurable amount of memory on one or more Azure VMs for a configurable duration via the VM run-command extension.",
+      "Azure instance memory hog disrupts the state of infrastructure resources. It induces stress on the Azure Instance using the Azure `Run` command. The Azure `Run` command is executed using the in-built bash scripts within the fault. It utilizes memory in excess on the Azure Instance using the bash script for a specific duration.",
     tags: ["memory hog"],
     category: "azure",
   },
   {
     name: "Azure instance stop",
     description:
-      "Stop one or more Azure VMs (or VMSS instances) for a configurable duration, then start them again.",
+      "Azure instance stop powers off from an Azure instance for a specific duration. It checks the performance of the application or process running on the instance.",
     tags: ["azure"],
-    category: "azure",
-  },
-  {
-    name: "Azure Service Bus queue state change",
-    description:
-      "Change the operational status of one or more Service Bus queues (Disabled, SendDisabled, ReceiveDisabled) for a configurable duration, then restore Active.",
-    tags: ["service bus", "messaging"],
     category: "azure",
   },
   {
     name: "Azure web app access restrict",
     description:
-      "Add an Access Restriction rule to one or more App Service web apps for a configurable duration so callers in the blocked range receive 403 Forbidden.",
+      "Azure web app access restrict causes a split brain condition by restricting the access to an application service instance. This fault checks if the requests have been serviced and recovery is automated after the restrictions have been lifted. It checks the performance of the application (or process) running on the instance.",
     tags: ["restrict access"],
     category: "azure",
   },
   {
     name: "Azure web app stop",
-    description:
-      "Stop one or more App Service web apps for a configurable duration, then start them again.",
+    description: "Azure web app stop shuts down the application. It checks whether the requests have been re-routed to another instance on the application service.",
     tags: ["stop"],
     category: "azure",
   },

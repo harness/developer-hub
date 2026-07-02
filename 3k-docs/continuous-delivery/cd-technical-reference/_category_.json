@@ -1,0 +1,14 @@
+{
+    "label": "CD Tech Reference",
+    "position": "2900",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "CD Tech Reference"
+    },
+    "customProps": {
+        "helpdocs_category_id": "gfqpgmuo4q"
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "label": "Custom Entity Kinds",
+    "collapsible": true,
+    "collapsed": true,
+    "position": 60,
+    "link": {
+      "type": "generated-index",
+      "title": "Custom Entity Kinds"
+    },
+    "customProps": {}
+  }

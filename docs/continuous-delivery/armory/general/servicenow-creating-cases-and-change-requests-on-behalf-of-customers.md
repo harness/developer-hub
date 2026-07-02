@@ -1,9 +1,8 @@
 ---
 title: ServiceNow - Creating Cases and Change Requests on Behalf of Customers
 redirect_from:
-  - /docs/continuous-delivery/armory/general/servicenow---creating-cases-and-change-requests-on-behalf-of-customers
+  - /docs/continuous-delivery/armory/general/servicenowcreating-cases-and-change-requests-on-behalf-of-customers
 ---
-
 
 **Note:** For information on distinguishing Change Requests and Cases, please review the following KB article on the subject.  Customers are recommended to use this for reference during their orientation as well: [https://support.armory.io/support?id=kb_article_view&sysparm_article=KB0010266](https://support.armory.io/support?id=kb_article_view&sysparm_article=KB0010266)
 ### General Recommendations

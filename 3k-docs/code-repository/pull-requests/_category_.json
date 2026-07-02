@@ -1,0 +1,11 @@
+{
+   "label":"Pull requests",
+   "position": 60,
+   "collapsible":"true",
+   "collapsed":"true",
+   "className":"default",
+   "link":{
+      "type":"generated-index",
+      "title":"Pull requests"
+   }
+}

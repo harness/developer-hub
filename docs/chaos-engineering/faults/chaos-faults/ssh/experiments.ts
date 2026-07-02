@@ -4,7 +4,7 @@ export const experiments: ExperimentDetails[] = [
   {
     name: "SSH chaos",
     description:
-      "Run a user-supplied inject script on a remote host over SSH for a configurable duration, with a rollback script invoked on completion or abort.",
+      "SSH chaos injects chaos on the target host using SSH connections by passing custom chaos logic through a configmap.",
     tags: ["ssh"],
     category: "ssh",
   },

@@ -1,0 +1,11 @@
+{
+  "label": "Verification Concepts",
+  "position": 30,
+  "collapsible": "true",
+  "collapsed": "true",
+  "link": {
+    "type": "generated-index",
+    "title": "Verification Concepts",
+    "description": "Learn about key Continuous Verification concepts including machine learning analysis, monitored service templates, and how verification detects deployment anomalies."
+  }
+}

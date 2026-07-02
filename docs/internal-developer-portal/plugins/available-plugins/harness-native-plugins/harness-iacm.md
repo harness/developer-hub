@@ -85,7 +85,7 @@ The IACM plugin displays comprehensive workspace information including:
 
 Set the `harness.io/workspace-url` annotation in its `catalog-info.yaml` definition file to configure the plugin for a service in the software catalog.
 
-The URL must point to the IaCM workspace in Harness.
+The URL format should be: `https://app.harness.io/ng/account/<ACCOUNT_ID>/module/iacm/orgs/<ORGANIZATION_ID>/projects/<PROJECT_ID>/workspaces/<WORKSPACE_ID>/resources`
 
 ```yaml
 apiVersion: backstage.io/v1alpha1
@@ -94,8 +94,7 @@ metadata:
   name: payment-service
   description: Payment processing service
   annotations:
-    harness.io/workspace-url: |
-      <WORKSPACE_NAME>: https://app.harness.io/ng/account/<ACCOUNT_ID>/module/iacm/orgs/<ORGANIZATION_ID>/projects/<PROJECT_ID>/workspaces/<WORKSPACE_ID>/resources
+    harness.io/workspace-url: https://app.harness.io/ng/account/<ACCOUNT_ID>/module/iacm/orgs/<ORGANIZATION_ID>/projects/<PROJECT_ID>/workspaces/<WORKSPACE_ID>/resources
 spec:
   type: service
   lifecycle: production

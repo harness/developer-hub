@@ -1,140 +1,118 @@
-.learnAboutPlatform {
-  padding: 2rem 0 4rem 0;
+// ── Shared tile styles ────────────────────────────────────────────────────────
 
-  h2 {
-    // margin-bottom: 32px;
-    width: 100%;
-    font-weight: 600;
-    font-size: 32px;
-    line-height: 40px;
+%tileList {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 24px;
+  padding-left: 0;
+  list-style: none;
+  margin: 8px 0 0 0;
+
+  a:hover {
+    color: unset;
+    text-decoration: none;
   }
 
-  h3 {
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 13px;
-    /* identical to box height, or 72% */
-    letter-spacing: 4px;
-    text-transform: uppercase;
-  }
-
-  .subSectionName {
-    width: 200px;
-    border-bottom: 1px solid #9293ab;
-    padding: 8px 0;
-  }
-
-  .platform {
-    .platformIllustration {
-      width: 100%;
-      height: auto;
-      margin-top: 1em;
-    }
-  }
-
-  ul.platformList,
-  ul.platformListMore {
+  li {
+    box-sizing: border-box;
     display: flex;
-    flex-flow: row wrap;
-    margin-top: 32px;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
-    gap: 32px;
+    text-align: center;
+    padding: 24px 16px;
+    width: 220px;
+    min-height: 120px;
+    border: 2px solid #a3e9ff;
+    border-radius: 8px;
 
-    a:hover {
-      color: unset;
+    &:hover {
+      box-shadow: 0px 0px 2px rgba(40, 41, 61, 0.04),
+        0px 4px 8px rgba(96, 97, 112, 0.16);
     }
 
-    li {
-      box-sizing: border-box;
-      // background-color: white;
-      /* Auto layout */
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 32px 16px;
-
-      width: 270px;
-      height: 322px;
-
-      /* Gray Scale / Gray Scale 0 */
-
-      // background: #FFFFFF;
-      /* Primary/Primary 3 - Lighter */
-
-      border: 2px solid #a3e9ff;
-      border-radius: 8px;
-
-      &:hover {
-        // background: #a3e9ff;
-        /* Primary / Primary 1 */
-
-        // border: 2px solid #EFFBFF;
-        /* Light/Large */
-
-        // box-shadow: 0px 0px 2px rgba(40, 41, 61, 0.04),
-        //   0px 4px 8px rgba(96, 97, 112, 0.16);
-
-        box-shadow: 0px 0px 2px rgba(40, 41, 61, 0.04),
-          0px 4px 8px rgba(96, 97, 112, 0.16);
-      }
-
-      img {
-        height: 130px;
-        width: auto;
-      }
-
-      h4 {
-        font-weight: 600;
-        font-size: 16px;
-        line-height: 24px;
-        margin: 16px 0 4px 0;
-        color: var(--text-color);
-      }
-
-      p {
-        margin: 0;
-        font-weight: 500;
-        font-size: 12px;
-        line-height: 18px;
-        color: var(--text-color);
-      }
+    img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
     }
-  }
 
-  ul.platformListMore {
-    li {
-      width: 370px;
-      height: 150px;
-
-      h4 {
-        margin-top: 4px;
-      }
-    }
-  }
-
-  .btnShowMore {
-    display: flex;
-    justify-content: center;
-    margin-top: 36px;
-
-    button {
-      border: none;
-      background: none;
-      color: var(--primary-7); // #0278D5;
+    h4 {
       font-weight: 600;
-      font-size: 13px;
-      cursor: pointer;
-      line-height: 16px;
+      font-size: 14px;
+      line-height: 20px;
+      margin: 10px 0 4px 0;
+      color: var(--text-color);
+    }
 
-      &:hover {
-        color: var(--primary-5);
-      }
+    img ~ h4 {
+      margin-top: 10px;
+    }
+
+    h4:first-child {
+      margin-top: 0;
+    }
+
+    p {
+      margin: 0;
+      font-weight: 500;
+      font-size: 11px;
+      line-height: 16px;
+      color: var(--text-color);
     }
   }
 }
+
+// ── Section header pulse animation ───────────────────────────────────────────
+
+@keyframes headerPulse {
+  0%, 100% { color: var(--text-color); }
+  50%       { color: #00ade4; }
+}
+
+// ── LearnAboutPlatform ────────────────────────────────────────────────────────
+
+.learnAboutPlatform {
+  padding: 0 0 4rem 0;
+
+  // ── Section header (RESOURCES) ───────────────────────────────────────────
+
+  .sectionHeader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #9293ab;
+    padding: 8px 0;
+    margin: 0 0 24px 0;
+
+    h3 {
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 13px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin: 0;
+      animation: headerPulse 12s ease-in-out infinite;
+    }
+  }
+
+  .sectionHeaderIcon {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+  }
+
+  // ── Resources ────────────────────────────────────────────────────────────
+
+  ul.resourceGrid {
+    @extend %tileList;
+  }
+}
+
+// ── Modules component (./Modules) — unchanged ─────────────────────────────────
 
 .modules {
   padding: 3rem 0 4rem 0;
@@ -143,9 +121,6 @@
     display: flex;
     justify-content: center;
     flex-flow: row wrap;
-    // align-items: center;
-    /* width: 100%; */
-    // flex-basis: 70%;
     flex-grow: 1;
 
     a:hover {
@@ -153,12 +128,9 @@
     }
 
     .getStartItem {
-      width: 270px; // 250px;
-      height: 142px; // 230px;
+      width: 270px;
+      height: 142px;
       overflow: hidden;
-      /* Light/Background/White */
-      // background: #FFFFFF;
-      /* Light/Medium */
       box-shadow: 0px 0px 1px rgba(40, 41, 61, 0.04),
         0px 2px 4px rgba(96, 97, 112, 0.16);
       border: var(--card-border);
@@ -167,7 +139,7 @@
       padding: 32px 0 24px 0;
 
       .titleAndDesc {
-        height: 26px; // 96px;
+        height: 26px;
       }
 
       h3 {
@@ -196,102 +168,35 @@
         border: 2px solid var(--primary-6);
       }
 
-      &.ci:hover {
-        border-color: var(--mod-ci-200);
-      }
-
-      &.cd:hover {
-        border-color: var(--mod-cd-200);
-      }
-
-      &.ccm:hover {
-        border-color: var(--mod-ccm-200);
-      }
-
-      &.code:hover {
-        border-color: var(--mod-code-200);
-      }
-
-      &.ff:hover {
-        border-color: var(--mod-ff-200);
-      }
-
-      &.sto:hover {
-        border-color: var(--mod-sto-200);
-      }
-
-      &.iacm:hover {
-        border-color: var(--mod-iacm-200);
-      }
-
-      &.srm:hover {
-        border-color: var(--mod-srm-200);
-      }
-
-      &.ce:hover {
-        border-color: var(--mod-ce-200);
-      }
-
-      &.cet:hover {
-        border-color: var(--mod-cet-200);
-      }
-
-      &.idp:hover {
-        border-color: var(--mod-idp-200);
-      }
-
-      &.sei:hover {
-        border-color: var(--mod-sei-200);
-      }
-
-      &.gitness:hover {
-        border-color: var(--mod-gitness-200);
-      }
-
-      &.ssca:hover {
-        border-color: var(--mod-ssca-200);
-      }
-
-      &.ata:hover {
-        border-color: var(--mod-aida-200);
-      }
-
-      &.aisre:hover {
-        border-color: var(--mod-aisre-200);
-      }
-
-      &.fme:hover {
-        border-color: var(--mod-fme-200);
-      }
-
-      &.opensource:hover {
-        border-color: var(--mod-opensource-200);
-      }
-
-      &.dbdevops:hover {
-        border-color: var(--mod-dbdevops-200);
-      }
+      &.ci:hover    { border-color: var(--mod-ci-200); }
+      &.cd:hover    { border-color: var(--mod-cd-200); }
+      &.ccm:hover   { border-color: var(--mod-ccm-200); }
+      &.code:hover  { border-color: var(--mod-code-200); }
+      &.ff:hover    { border-color: var(--mod-ff-200); }
+      &.sto:hover   { border-color: var(--mod-sto-200); }
+      &.iacm:hover  { border-color: var(--mod-iacm-200); }
+      &.srm:hover   { border-color: var(--mod-srm-200); }
+      &.ce:hover    { border-color: var(--mod-ce-200); }
+      &.cet:hover   { border-color: var(--mod-cet-200); }
+      &.idp:hover   { border-color: var(--mod-idp-200); }
+      &.sei:hover   { border-color: var(--mod-sei-200); }
+      &.gitness:hover    { border-color: var(--mod-gitness-200); }
+      &.ssca:hover       { border-color: var(--mod-ssca-200); }
+      &.ata:hover        { border-color: var(--mod-aida-200); }
+      &.aisre:hover      { border-color: var(--mod-aisre-200); }
+      &.fme:hover        { border-color: var(--mod-fme-200); }
+      &.opensource:hover { border-color: var(--mod-opensource-200); }
+      &.dbdevops:hover   { border-color: var(--mod-dbdevops-200); }
     }
   }
 }
 
-@media screen and (max-width: 996px) {
+// ── Responsive ────────────────────────────────────────────────────────────────
 
-  // @media screen and (max-width: 768px) {
-  .learnAboutPlatform {
-    ul.platformListMore {
-      li {
-        width: 270px;
-        height: 170px;
-      }
-    }
-  }
-}
-
-// @media screen and (max-width: 996px) {
 @media screen and (max-width: 768px) {
-  .learnAboutPlatform h2 {
-    font-size: 28px;
+  .learnAboutPlatform ul.resourceGrid li {
+    width: 190px;
+    min-height: 110px;
   }
 
   .modules h2 {
@@ -300,26 +205,14 @@
 }
 
 @media screen and (max-width: 393px) {
-
-  /* for mobile */
   .learnAboutPlatform {
-    h2 {
-      font-size: 22px;
-      line-height: 150%;
-    }
-
-    h3 {
+    .sectionHeader h3 {
       font-size: 14px;
       line-height: 150%;
     }
 
-    .subSectionName {
-      padding: 0;
-    }
-
-    ul.platformList,
-    ul.platformListMore {
-      padding-left: 0;
+    ul.resourceGrid li {
+      width: 165px;
     }
   }
 
@@ -329,10 +222,16 @@
       line-height: 150%;
     }
 
-    .getStart {
-      .getStartItem {
-        margin-right: unset;
-      }
+    .getStart .getStartItem {
+      margin-right: unset;
     }
+  }
+}
+
+// ── Reduced motion (accessibility) ───────────────────────────────────────────
+
+@media (prefers-reduced-motion: reduce) {
+  .learnAboutPlatform .sectionHeader h3 {
+    animation: none;
   }
 }

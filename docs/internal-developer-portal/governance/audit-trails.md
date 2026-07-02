@@ -4,14 +4,15 @@ description: Learn More about How you can track events through Audit Trails
 sidebar_position: 10
 ---
 
+## Introduction
 
 With Audit Trail in Harness, you can view and track changes to your Harness resources within your Harness account.
 
 The audit data retention period is 2 years. Harness reserves the right to delete audit data after 2 years. You can request a longer retention period by contacting Harness. For example, if you require audit data for legal discoveries, etc., contact Harness and we can help.
 
-## IDP events in audit trail
+## IDP Events in Audit Trail
 
-To access the Audit Trail, in your Harness project, navigate to **Account Settings** → **Audit Trail**. Follow the steps mentioned in [platform docs](/docs/platform/governance/audit-trail#step-view-an-audit-trail) for more details.
+To access the Audit Trail, in your Harness project, navigate to **Account Settings** → **Audit Trail**. Follow the steps mentioned in [platform docs](https://developer.harness.io/docs/platform/governance/audit-trail/#step-view-an-audit-trail) for more details.
 
 The Account Audit Trail includes the following IDP events:
 

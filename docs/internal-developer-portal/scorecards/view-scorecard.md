@@ -10,7 +10,7 @@ You can view the Scorecard results in your Catalog entity pages. This helps you 
 
 ---
 
-## Scorecard view
+## Scorecard View
 
 Scorecards have two main UI components that are developer-facing and displayed in the Catalog:
 
@@ -21,7 +21,7 @@ Scorecards have two main UI components that are developer-facing and displayed i
 
 ---
 
-## Trends dashboard for scorecards
+## Trends Dashboard for Scorecards
 
 After creating a Scorecard, you can track its aggregate trends and component-wise details in the **Trends Dashboard**. This dashboard displays the number of components the Scorecard applies to and provides detailed scores for each component.
 
@@ -44,7 +44,7 @@ Follow these steps to view the Trends Dashboard for a scorecard:
 
 ---
 
-## Trends dashboard for checks
+## Trends Dashboard for Checks
 
 Similarly, you can track trends for individual **Checks** to view component details and status updates.
 
@@ -56,7 +56,7 @@ Follow these steps to view the Trends Dashboard for a check:
 
 1. Click **Configure** in the side navigation bar and go to Harness IDP's admin view
 2. Click **Scorecards** and navigate to the **Checks** section
-3. Here, you will find a list of all created Checks
+3. Here, you'll find a list of all created Checks
 4. Locate the Check you want to analyze and click on the **Check Stats** field
 
 ![](./static/trends-checks-1.png)

@@ -7,24 +7,24 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-With the release of **Granular RBAC in IDP 2.0**, you can now control access to your **Catalog entities**, i.e., you can restrict who can create and view these entities. Catalog entities can be created at all available scopes: **Account**, **Org**, or **Project**. To learn more about entities, permissions, and scopes, visit the [IDP 2.0 Data Model](/docs/internal-developer-portal/catalog/data-model).
+With the release of **Granular RBAC in IDP 2.0**, you can now control access to your **Catalog entities**—i.e., you can restrict who can create and view these entities. Catalog entities can be created at all available scopes: **Account**, **Org**, or **Project**. To learn more about entities, permissions, and scopes, visit the [IDP 2.0 Data Model](/docs/internal-developer-portal/catalog/data-model).
 
-## RBAC workflow in Harness IDP
+## RBAC Workflow in Harness IDP
 
 Before configuring RBAC for your Catalog entities, ensure you’ve reviewed the documentation on [Scopes](/docs/internal-developer-portal/rbac/scopes#scopes), [Permissions](/docs/internal-developer-portal/rbac/scopes#permissions--resources), and different [RBAC Components](/docs/internal-developer-portal/rbac/scopes#rbac-components).
 
 Here’s the workflow for configuring RBAC in Harness IDP:
 
 1. Go to your administrative settings and select the scope (**Account**, **Org**, or **Project**) at which you want to configure RBAC.
-2. [Create roles with the desired permissions](/docs/platform/role-based-access-control/add-manage-roles#create-a-role).
+2. [Create roles with the desired permissions](/docs/platform/role-based-access-control/add-manage-roles.md#create-a-role).
    *Example: If you are configuring RBAC for Catalog entity creation, ensure the role has the **Create/Edit (Catalog)** permission enabled.*
-3. [Create resource groups](/docs/platform/role-based-access-control/add-resource-groups#create-a-resource-group) to apply RBAC to a specific set of resources for the principal.
+3. [Create resource groups](/docs/platform/role-based-access-control/add-resource-groups.md#create-a-resource-group) to apply RBAC to a specific set of resources for the principal.
    *Example: To configure RBAC for Catalog entities, ensure the **Catalog** resource is added to the resource group.*
-4. [Create user groups](/docs/platform/role-based-access-control/add-user-groups#create-user-groups-manually) and [add users](/docs/platform/role-based-access-control/add-users).
+4. [Create user groups](/docs/platform/role-based-access-control/add-user-groups.md#create-user-groups-manually) and [add users](https://developer.harness.io/docs/platform/role-based-access-control/add-users).
 5. [Assign roles and resource groups](/docs/platform/role-based-access-control/rbac-in-harness#role-binding) to users or user groups.
 6. If you haven’t already, [configure authentication](/docs/platform/authentication/authentication-overview.md).
 
-## Permissions for catalog entities
+## Permissions for Catalog Entities
 
 All core Catalog entities (**Component**, **API**, **Resource**) fall under the **"Catalog"** resource category for RBAC. The following permissions can be configured when creating a custom role:
 
@@ -34,13 +34,13 @@ All core Catalog entities (**Component**, **API**, **Resource**) fall under the 
 | **View**        | Allows users to view Catalog entities but not create, modify, or delete them. |
 | **Delete**      | Allows users to delete Catalog entities.                                      |
 
-These permissions can be configured when [creating a custom role](/docs/platform/role-based-access-control/add-manage-roles#create-a-role). Select the desired permissions based on the level of access you want to grant. To learn more, go to [Manage Roles](/docs/platform/role-based-access-control/add-manage-roles).
+These permissions can be configured when [creating a custom role](/docs/platform/role-based-access-control/add-manage-roles/#create-a-role). Select the desired permissions based on the level of access you want to grant. To learn more, see [Manage Roles](/docs/platform/role-based-access-control/add-manage-roles).
 
 <img width="850" alt="Image" src="https://github.com/user-attachments/assets/28bbaebe-a480-4141-b118-250c45771bc5" />
 
-## Catalog RBAC example
+## Catalog RBAC Example
 
-### Configure RBAC for Account-Level catalog entity creation
+### Configure RBAC for Account-Level Catalog Entity Creation
 
 This example shows how to configure RBAC to allow full control over Catalog entity creation and modification at the **Account scope** (including all child resources).
 
@@ -58,7 +58,7 @@ You can access **Administrative Settings** from your Harness UI directly using t
 
 ---
 
-#### Step 1: Create the IDP catalog creator role
+#### Step 1: Create the IDP Catalog Creator Role
 <Tabs>
 <TabItem value="Interactive guide">
 <DocVideo src="https://app.tango.us/app/embed/d3160dfc-3011-462f-a877-da804d730609" title="Create the IDP Catalog Create Role" />
@@ -74,11 +74,11 @@ You can access **Administrative Settings** from your Harness UI directly using t
 </TabItem>
 </Tabs>
 
-> Learn more about roles: [Manage roles](/docs/platform/role-based-access-control/add-manage-roles) | [Permissions reference](/docs/platform/role-based-access-control/permissions-reference/)
+> Learn more about roles: [Manage roles](https://developer.harness.io/docs/platform/role-based-access-control/add-manage-roles) | [Permissions reference](https://developer.harness.io/docs/platform/role-based-access-control/permissions-reference/)
 
 ---
 
-#### *(Optional)* Step 2: Create a custom resource group
+#### *(Optional)* Step 2: Create a custom Resource Group
 <Tabs>
 <TabItem value="Interactive guide">
 <DocVideo src="https://app.tango.us/app/embed/e6962da9-989b-4885-b697-63c265b74d1d" title="Create the IDP Catalog Create Role" />
@@ -90,17 +90,17 @@ You can access **Administrative Settings** from your Harness UI directly using t
 4. Click **Save**.
 5. For **Resource Scope**, choose **All (including all Organizations and Projects)**.
    This grants access to the selected resources across the account, including all orgs and projects.
-   [More on Resource Scopes](/docs/platform/role-based-access-control/add-resource-groups#scopes-and-refinement)
+   [More on Resource Scopes](https://developer.harness.io/docs/platform/role-based-access-control/add-resource-groups/#scopes-and-refinement)
 6. For **Resources**, select **Specified**, and then add **Catalog** from the table.
 7. Click **Save**.
 </TabItem>
 </Tabs>
 
-> Learn more: [Manage resource groups](/docs/platform/role-based-access-control/add-resource-groups)
+> Learn more: [Manage resource groups](https://developer.harness.io/docs/platform/role-based-access-control/add-resource-groups)
 
 ---
 
-#### *(Optional)* Step 3: Create the "catalog create users" user group
+#### *(Optional)* Step 3: Create the "Catalog Create Users" User Group
 
 <Tabs>
 <TabItem value="Interactive guide">
@@ -115,11 +115,11 @@ You can access **Administrative Settings** from your Harness UI directly using t
 </TabItem>
 </Tabs>
 
-> Learn more: [Manage user groups](/docs/platform/role-based-access-control/add-user-groups) | [Manage users](/docs/platform/role-based-access-control/add-users)
+> Learn more: [Manage user groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups) | [Manage users](https://developer.harness.io/docs/platform/role-based-access-control/add-users)
 
 ---
 
-#### Step 4: Assign the role and resource group to the user group
+#### Step 4: Assign the Role and Resource Group to the User Group
 <Tabs>
 <TabItem value="Interactive guide">
 <DocVideo src="https://app.tango.us/app/embed/cc01bb71-292b-4448-b1b7-9b04bc8a7f9a" title="Create the IDP Catalog Create Role" />
@@ -134,6 +134,6 @@ You can access **Administrative Settings** from your Harness UI directly using t
 </TabItem>
 </Tabs>
 
-> Learn more: [Role binding](/docs/platform/role-based-access-control/rbac-in-harness#role-binding)
+> Learn more: [Role binding](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#role-binding)
 
 This setup configures RBAC so that users in the **Catalog Create Users** group have **Create/Edit** access to Catalog entities at the **Account scope**, as well as within all Organizations and Projects under the account.

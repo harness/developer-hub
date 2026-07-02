@@ -401,16 +401,15 @@ The SDK has a number of knobs for configuring performance. Each knob is tuned to
 
 | **Configuration** | **Description** | **Default value** |
 | --- | --- | --- |
-| block_until_ready | Maximum time (in seconds) the SDK blocks waiting for readiness during initialization. If the SDK does not become ready within this period, it raises a `SDKBlockerTimeoutExpiredException`. | 15s |
 | logger | The log implementation to use for warnings and errors from the SDK. | Logs to STDOUT  |
 | debug_enabled| Enabled verbose mode. | false  |
 | transport_debug_enabled | Super verbose mode that prints network payloads among others. | false  |
 | connection_timeout| HTTP client connection timeout (in seconds). | 5s  |
 | read_timeout | HTTP socket read timeout (in seconds). | 5s  |
-| features_refresh_rate  |The SDK polls Harness servers for changes to feature flags at this period (in seconds). | 60s |
+| features_refresh_rate  |The SDK polls Harness servers for changes to feature flags at this period (in seconds). | 5s |
 | segments_refresh_rate | The SDK polls Harness servers for changes to segments at this period (in seconds). | 60s  |
 | telemetry_refresh_rate | The SDK caches diagnostic data that it periodically sends to Harness servers. This configuration controls how frequently this data is sent back to Harness servers (in seconds). | 3600s  |
-| impressions_refresh_rate | How often impressions are sent out (in seconds). | 300s  |
+| impressions_refresh_rate | How often impressions are sent out (in seconds). | 60s  |
 | events_push_rate | How often events are sent out (in seconds). | 60s  |
 | cache_adapter| Where to store feature flags and impressions: `:memory` or `:redis` | `:memory`  |
 | redis_url | Redis URL or hash with configuration for SDK to connect to. See [http://www.rubydoc.info/github/redis/redis-rb/Redis%3Ainitialize](http://www.rubydoc.info/github/redis/redis-rb/Redis%3Ainitialize) | 'redis://127.0.0.1:6379/0'  |

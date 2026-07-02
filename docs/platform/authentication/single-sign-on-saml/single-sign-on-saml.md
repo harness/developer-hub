@@ -99,20 +99,6 @@ Ensure that you have at least two corresponding user accounts when setting up an
 
 ---
 
-## Just-In-Time (JIT) provisioning
-
-Harness supports SAML configuration with or without JIT user provisioning. JIT provisioning automatically creates user accounts in Harness on first successful SAML login, eliminating the need to manually invite users before they can log in.
-
-Go to <a href="/docs/platform/role-based-access-control/provision-use-jit/" target="_blank">Just-In-Time (JIT) provisioning</a> to understand how Harness creates users on first SAML login when JIT is enabled.
-
-**Without JIT**, follow the steps below to add new users:
-1. In Harness, add the users you want to set up for SAML SSO by inviting them to Harness using the same email addresses that they use in your SAML provider.
-2. In the SAML provider (such as Okta, Microsoft Entra ID, OneLogin, and so on), add the users and make sure they are in scope for the client you create in the configuration steps below.
-
-**With JIT**, when you add users to different SAML providers (such as Okta, Microsoft Entra ID, OneLogin, and so on), they are automatically added to Harness on first successful SAML login.
-
----
-
 ## Next steps
 
 - <a href="/docs/platform/authentication/single-sign-on-saml/ms-entra-id"target="_blank" >SAML SSO with Microsoft Entra ID</a> - Configure Microsoft Entra ID as a SAML SSO provider in Harness.

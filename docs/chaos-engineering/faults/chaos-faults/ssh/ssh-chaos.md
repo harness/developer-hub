@@ -1,79 +1,107 @@
 ---
 id: ssh-chaos
 title: SSH chaos
-sidebar_label: SSH Chaos
-description: Run a custom chaos script and matching abort script on a remote VM over SSH for a configurable duration so you can build any kind of host-level fault that the gold-standard fault library does not cover out of the box.
-keywords:
-  - chaos engineering
-  - ssh chaos
-  - custom chaos
-tags:
-  - chaos-engineering
-  - ssh-faults
 redirect_from:
   - /docs/chaos-engineering/technical-reference/chaos-faults/ssh/ssh-chaos
   - /docs/chaos-engineering/chaos-faults/ssh/ssh-chaos
 ---
 
-import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
+SSH chaos injects chaos on the target host using SSH connections by passing custom chaos logic through a ConfigMap. These scripts are executed using SSH credentials, which are securely referenced in the ConfigMap. This enables direct fault injection on the target host. This experiment offers customisation for the chaos injection logic, providing flexibility and control over chaos experiments.
 
-SSH chaos is a chaos fault that opens an SSH session to `HOST` as `USERNAME` (authenticating with `SSH_PASSWORD` or `SSH_KEY` from Harness Secret Manager), runs the user-supplied chaos script at `CHAOS_SCRIPT_PATH` with the parameters in `CHAOS_PARAMETER`, waits, and then runs the abort script at `ABORT_SCRIPT_PATH` with the parameters in `ABORT_PARAMETER` to roll back. Both scripts are mounted into the fault pod from ConfigMaps (`chaos-script`, `abort-script` by default).
-
-Use this fault to add a host-level chaos experiment that the gold-standard fault library does not cover natively (custom service restart, custom network manipulation, custom storage manipulation, and so on) without writing a new fault from scratch.
-
-:::info Run your first experiment
-If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end. Then go to [SSH chaos prerequisites](/docs/chaos-engineering/faults/chaos-faults/ssh/prerequisites) to install the required ConfigMaps and Secrets.
-:::
-
----
+![SSH chaos](./static/images/ssh-chaos/ssh-chaos.png)
 
 ## Use cases
 
-Run this fault when you want to answer concrete questions like:
+SSH chaos can be used with custom chaos logic and transferred to a target VM (to execute network chaos experiments, power off, and so on).
 
-- **Custom chaos:** Inject a fault on a target VM (any TCP block, any service kill, any custom workload script) where the script does the injection and the abort script reverses it.
-- **Composite experiments:** Chain multiple host-level manipulations in a single script (for example, hold a network port, restart a process, mutate a config file) so the fault has one rollback step.
-- **Rollback rehearsal:** Validate that your abort script returns the host to its pre-fault state cleanly after every run.
-- **Bridge to non-Harness automation:** Re-use existing chaos scripts (Bash, Python, Ansible) without porting them to the Harness fault SDK.
+- This serves as a framework that can be customised to perform other chaos experiments, such as network stress, HTTP, DNS, restart services, and so on.
+- This framework can be used to roll back to the original state of an abort event.
 
----
+## Executing the SSH chaos experiment
 
-## Prerequisites
+Before executing the SSH chaos experiment, ensure that you follow the steps in the [prerequisites](/docs/chaos-engineering/faults/chaos-faults/ssh/prerequisites) section. This generates two experiment YAML files, namely `ssh-chaos-with-key.yaml` and `ssh-chaos-with-pass.yaml`. You can use one of them based on the authentication method you choose.
 
-- **Kubernetes version:** 1.21 or later for the cluster running the chaos infrastructure.
-- **SSH reachability:** The chaos infrastructure pod can reach `HOST:22` (or the SSH port the script connects to). Adjust network policies, security groups, and routes as needed.
-- **Credentials provisioned:** The SSH password or private key is stored in [Harness Secret Manager](/docs/platform/secrets/add-use-text-secrets) (as a Text Secret for `SSH_PASSWORD`, as a File Secret for `SSH_KEY`) and referenced by identifier in the experiment.
-- **Scripts uploaded as ConfigMaps:** The chaos script and the abort script are stored in Kubernetes ConfigMaps mounted into the fault pod. The defaults are `chaos-script` mounted at `/tmp/chaos-script/` (script file `script.sh`) and `abort-script` mounted at `/tmp/abort-script/` (script file `abort-script.sh`).
-- **Both scripts are idempotent:** The abort script must succeed even if the chaos script never ran, and the chaos script must tolerate a partially-applied previous run.
+- Use `ssh-chaos-with-key.yaml` for private key authentication. This file references secrets in its YAML view. The `PASSWORD` environment variable should be empty.
 
-Go to [SSH chaos prerequisites](/docs/chaos-engineering/faults/chaos-faults/ssh/prerequisites) to create the ConfigMaps and secret with the recommended layout.
+- Use `ssh-chaos-with-pass.yaml` for password authentication. This file fetches the `PASSWORD` environment variable from the secret.
 
----
+:::tip
+If you use the default names for ConfigMap and secrets, you won't need to modify the experiment. If you use different names, update the respective environment variables with their names. For example, if your script file is `test.sh` instead of `script.sh`, update the `CHAOS SCRIPT PATH` environment variable with the correct value.
+:::
 
-## Supported environments
+### Mandatory tunables
 
-| Platform | Support status |
-| --- | --- |
-| Linux VMs (any distribution) | Supported |
-| VMs hosted on AWS, Azure, GCP, on-prem, or bare metal | Supported |
-| Windows VMs over SSH | Not supported (use [Windows faults](/docs/chaos-engineering/faults/chaos-faults/windows)) |
-| Containers (no SSH service) | Not supported (use Kubernetes faults) |
+   <table>
+        <tr>
+            <th> Variables </th>
+            <th> Description </th>
+            <th> Notes </th>
+        </tr>
+        <tr>
+            <td> HOST </td>
+            <td> Name of the target host under chaos. </td>
+            <td> Provide the name of the target host, for example, <code>https://google.com</code>.</td>
+        </tr>
+        <tr>
+            <td> USERNAME </td>
+            <td> Username of the target VM. </td>
+            <td> For example, "username".</td>
+        </tr>
+        <tr>
+            <td> PASSWORD </td>
+            <td> Password used for authentication. Either <code>PASSWORD</code> or <code>PRIVATE KEY</code> is used. </td>
+            <td> For example: "abcd".</td>
+        </tr>
+        <tr>
+            <td> PRIVATE KEY </td>
+            <td> Key used for file-based authentication. Either <code>PASSWORD</code> or <code>PRIVATE KEY</code> is used. </td>
+            <td> For example: key-file.pem </td>
+        </tr>
+        <tr>
+            <td> CHAOS SCRIPT PATH </td>
+            <td> Path to the chaos script. </td>
+            <td> For more information, go to <a href="#chaos-script-path"> chaos script path.</a></td>
+        </tr>
+        <tr>
+            <td> ABORT SCRIPT PATH </td>
+            <td> Path to the abort script. </td>
+            <td> For more information, go to <a href="#abort-script-path"> abort script path.</a></td>
+        </tr>
+        <tr>
+            <td> CHAOS_PARAMETER </td>
+            <td> Parameter for the chaos script. </td>
+            <td> For more information, go to <a href="#chaos-parameter"> chaos parameter.</a></td>
+        </tr>
+        <tr>
+            <td> ABORT_PARAMETER </td>
+            <td> Parameter for the abort script. </td>
+            <td> For more information, go to <a href="#abort-parameter"> abort parameter.</a></td>
+        </tr>
+        <tr>
+            <td> INDICATOR_TYPES </td>
+            <td> Comma-separated indicator types for customisation of parameter indicators. </td>
+            <td> For more information, go to <a href="#indicator-types"> indicator types.</a></td>
+        </tr>
+    </table>
 
----
+:::info note
+HCE recommends using the format `env:{$ENV_NAME}` to pass confidential parameters. In this method, the environment variable is retrieved from a secure source (such as a secret). This ensures that the sensitive information remains uncompromised.
+:::
 
-## Permissions required
+### Permissions required
 
-This fault is classified as an **Advanced** SSH fault. Two layers of permissions apply.
+Below is a sample Kubernetes role that defines the permissions required to execute the fault.
 
-**On the chaos infrastructure cluster.** The chaos service account needs the following Kubernetes RBAC permissions.
-
-```yaml
+```
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   namespace: hce
   name: ssh-chaos
-rules:
+spec:
+  definition:
+    scope: Namespaced # Supports "Cluster" mode too
+permissions:
   - apiGroups: [""]
     resources: ["pods"]
     verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
@@ -83,11 +111,11 @@ rules:
   - apiGroups: [""]
     resources: ["pods/log"]
     verbs: ["get", "list", "watch"]
-  - apiGroups: ["apps"]
+  - apiGroups: [""]
     resources: ["deployments"]
     verbs: ["get", "list"]
-  - apiGroups: ["litmuschaos.io"]
-    resources: ["chaosengines", "chaosexperiments", "chaosresults"]
+  - apiGroups: [""]
+    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
     verbs: ["create", "delete", "get", "list", "patch", "update"]
   - apiGroups: ["batch"]
     resources: ["jobs"]
@@ -97,171 +125,184 @@ rules:
     verbs: ["get", "list", "watch"]
 ```
 
-**On the target VM.** `USERNAME` must have enough OS-level privileges to execute everything the chaos and abort scripts do. For root-level operations (`tc`, `iptables`, `systemctl`), grant `sudo` access (with `NOPASSWD` if needed) or use the root account. The chaos pod does not elevate privileges on its own.
+### Chaos script path
 
----
+Path to the chaos script (the chaos script is used to create the ConfigMap). Tune it by using the `CHAOS_SCRIPT_PATH` environment variable.
 
-## Fault tunables
+The following YAML snippet illustrates the environment variable:
 
-Configure the following fault parameters when you add SSH chaos to an experiment in Chaos Studio. Defaults are shown for reference.
+[embedmd]: # "./static/manifests/ssh-chaos/chaos-script-path.yaml yaml"
 
-**Target host**
-
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `HOST` | DNS name or IP address of the target VM. | (required) |
-| `USERNAME` | SSH user used to log in to `HOST`. | (required) |
-| `SSH_PASSWORD` | Identifier of the **Text Secret in Harness Secret Manager** that contains the SSH password. | (required if no `SSH_KEY`) |
-| `SSH_KEY` | Identifier of the **File Secret in Harness Secret Manager** that contains the SSH private key. | (required if no `SSH_PASSWORD`) |
-
-**Scripts and parameters**
-
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `CHAOS_SCRIPT_PATH` | Absolute path inside the fault pod where the chaos script is mounted. | `/tmp/chaos-script/script.sh` |
-| `ABORT_SCRIPT_PATH` | Absolute path inside the fault pod where the abort (rollback) script is mounted. | `/tmp/abort-script/abort-script.sh` |
-| `CHAOS_PARAMETER` | JSON-encoded parameters passed to the chaos script. Use indicator types (`raw:`, `env:`, `$`) to mix literals, env vars, and references. | `""` |
-| `ABORT_PARAMETER` | JSON-encoded parameters passed to the abort script. Same format as `CHAOS_PARAMETER`. | `""` |
-| `INDICATOR_TYPES` | Comma-separated list overriding the default indicator markers when your scripts use non-standard placeholders (for example `string,environment,&`). | (uses defaults) |
-
-**Chaos parameters**
-
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `RAMP_TIME` | Wait period in seconds before and after the fault. Go to [ramp time](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time) to read how it is applied. | `0` |
-
-Tunables that apply to every fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
-
----
-
-## Sample chaos and abort scripts
-
-A minimal pair of scripts that blocks a port and then unblocks it on rollback:
-
-```bash
-# chaos script (/tmp/chaos-script/script.sh)
-#!/usr/bin/env bash
-set -euo pipefail
-DEST_IP="$1"
-PORT="$2"
-sudo iptables -I OUTPUT -d "$DEST_IP" -p tcp --dport "$PORT" -j DROP
-sleep "$DURATION"
+```yaml
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: load-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: ssh-chaos
+      spec:
+        components:
+          env:
+            - name: CHAOS_SCRIPT_PATH
+              value: /tmp/chaos-script/chaos-script.sh
 ```
 
-```bash
-# abort script (/tmp/abort-script/abort-script.sh)
-#!/usr/bin/env bash
-set -euo pipefail
-DEST_IP="$1"
-PORT="$2"
-sudo iptables -D OUTPUT -d "$DEST_IP" -p tcp --dport "$PORT" -j DROP || true
+### Abort script path
+
+Path to the abort script (the abort script is used to create the ConfigMap). Tune it by using the `ABORT_SCRIPT_PATH` environment variable.
+
+The following YAML snippet illustrates the environment variable:
+
+[embedmd]: # "./static/manifests/ssh-chaos/abort-script-path.yaml yaml"
+
+```yaml
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: load-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: ssh-chaos
+      spec:
+        components:
+          env:
+            - name: ABORT_SCRIPT_PATH
+              value: /tmp/abort-script/abort-script.sh
 ```
 
-Matching `CHAOS_PARAMETER` and `ABORT_PARAMETER`:
+### Chaos parameter
 
-```json
-{"parameters":[{"placeholder":"destination_ip","data_type":"string","value":"10.0.0.10"},{"placeholder":"port","data_type":"int","value":"3258"}]}
+Parameter for the chaos script. Tune it by using the `CHAOS_PARAMETER` environment variable.
+
+The following YAML snippet illustrates the environment variable:
+
+[embedmd]: # "./static/manifests/ssh-chaos/chaos-parameter.yaml yaml"
+
+```yaml
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: load-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: ssh-chaos
+      spec:
+        components:
+          env:
+            - name: CHAOS_PARAMETER
+              value: '{"parameters":[{"placeholder":"destination_ip",
+                "data_type":"string","value":"HOST_IP"},
+                {"placeholder":"port","data_type":"int",
+                "value":"3258"}]}'
 ```
 
-The same JSON is passed to both scripts so the abort script knows which rule to remove.
+### Abort parameter
 
----
+Parameter for the abort script. Tune it by using the `ABORT_PARAMETER` environment variable.
 
-## Fault execution in brief
+The following YAML snippet illustrates the environment variable:
 
-Opens an SSH connection to `HOST` as `USERNAME`, copies the chaos script to the target, runs it with the parameters from `CHAOS_PARAMETER`, waits for the chaos duration declared inside the script, then runs the abort script with the parameters from `ABORT_PARAMETER` and closes the SSH connection.
+[embedmd]: # "./static/manifests/ssh-chaos/abort-parameter.yaml yaml"
 
----
+```yaml
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: load-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: ssh-chaos
+      spec:
+        components:
+          env:
+            - name: ABORT_PARAMETER
+              value: '{"parameters":[{"placeholder":"destination_ip",
+                "data_type":"string","value":"HOST_IP"},
+                {"placeholder":"port","data_type":"int",
+                "value":"3258"}]}'
+```
 
-## Expected behavior during fault execution
+:::tip
+Input parameters can be specified in different formats.
 
-- The target VM runs the chaos script with the privileges of `USERNAME`. Effects on the VM depend entirely on the script.
-- The abort script is invoked at the end of the run (or when the experiment is aborted) to roll back the changes.
-- The chaos pod streams the chaos script's stdout/stderr into its own logs for traceability.
-- After the abort script returns, the SSH connection is closed and the fault exits.
+1. Raw value format: `raw:{value}`. Example:
 
-:::info When the fault ends
-The chaos pod runs the abort script and closes the SSH connection. Recovery on the target VM depends on the abort script returning cleanly.
+```yaml
+- name: CHAOS_PARAMETER
+   value: "raw:{value}"
+```
+
+2. Environment variable format: `env:{$ENV1}`. Example:
+
+```yaml
+- name: CHAOS_PARAMETER
+   value: "env:{$ENV1}"
+```
+
+3. Combination format: `raw:{value},env:{$ENV1}`. Example:
+
+```yaml
+- name: CHAOS_PARAMETER
+   value: "raw:{value},env:{$ENV1}"
+```
+
 :::
 
-### Signals to watch
+### Indicator types
 
-Attach [resilience probes](/docs/resilience-testing/chaos-testing/probes) to assert each layer:
+Comma-separated indicator types that allow for the customisation of parameter indicators. This customisation enhances the flexibility of parameter specification. Tune it by using the `INDICATOR_TYPES` environment variable.
+Customisable indicators include:
 
-- **Outcome on the target:** Use a [command probe](/docs/resilience-testing/chaos-testing/probes/command-probe) that runs a check on the target (for example `ssh user@host 'systemctl is-active <unit>'`) and asserts the expected state during the chaos window.
-- **Application impact:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) on an endpoint served by the workload affected by the script.
-- **Monitoring fidelity:** Use a [Prometheus probe](/docs/resilience-testing/chaos-testing/probes/apm-probes) on whatever metric the script is meant to move.
+1. `raw:` - String parameter
+2. `env:` - Environment variable parameter
+3. `$` - Variable
 
----
+Following are examples of default and customised formats:
 
-## Verify the fault execution effect
+1. The default format is `raw:{HCE,CSV},env:{$OPERATION},raw:{para3}`.
+2. The customised format is `string:{HCE,CSV},environment:{&OPERATION},raw:{para3}`.
 
-1. **Watch the fault pod logs to see script output.**
+To implement a customised format, set the `INDICATOR_TYPES` to `string,environment,&`. This setting allows modifying the indicators for `raw`, `environment`, and `$` values, thereby providing a tailored approach to parameter passing.
 
-   ```bash
-   kubectl logs -n <chaos-infra-namespace> -l name=ssh-chaos -f
-   ```
+![chaos parameters](./static/images/ssh-chaos/chaos-parameter.png)
 
-2. **Inspect the target VM during the chaos window.**
+## Customising ConfigMap and Secret names
 
-   ```bash
-   ssh <USERNAME>@<HOST> "<check command, for example 'sudo iptables -S OUTPUT | head'>"
-   ```
+SSH chaos is equipped to support custom names for ConfigMap and secrets by making a minor modification to the corresponding YAML file.
 
-3. **Confirm the abort script ran.**
+Suppose you wish to name the ConfigMap names as `chaos-cm` and `abort-cm` instead of the default `chaos-script` and `abort-script`, update the section below in the **experiment builder**:
 
-   The fault pod logs should contain the abort script's stdout/stderr at the end of the run.
+```yaml
+configMaps:
+  - name: chaos-script
+    mountPath: /tmp/chaos-script
+  - name: abort-script
+    mountPath: /tmp/abort-script
+```
 
----
+to:
 
-## Recovery and cleanup
+```yaml
+configMaps:
+  - name: chaos-cm
+    mountPath: /tmp/chaos-script
+  - name: abort-cm
+    mountPath: /tmp/abort-script
+```
 
-- **End of duration:** The chaos pod runs the abort script when the chaos script returns or when the experiment duration ends.
-- **Abort the experiment:** Stopping the experiment from Chaos Studio also triggers the abort script.
-- **Manual recovery:** If the abort script fails (logged in the fault pod), SSH into the target VM and run it manually with the same parameters: `bash /path/to/abort-script.sh <args>`.
-- **Workload recovery:** Recovery on the target VM depends entirely on the abort script.
+After you make the above changes, **Save** the updated file and **Run** the updated experiment.
 
----
+### Customizing environment variables
 
-## Limitations
+If you wish to use the default ConfigMap and secret names but the script has a different name, you can update the environment variables (ENV) to align with the correct script by updating the script name in the chaos-script path or abort-script path.
 
-- **Idempotency is on you:** Both scripts must be safe to re-run; the fault does not guarantee an exclusive lock on the target VM.
-- **Single host per run:** Each fault run targets one `HOST`. Use multiple experiments to fan out to many VMs.
-- **No built-in observability:** The chaos pod streams script output to its logs but does not parse it; encode pass/fail signals in the script's exit code.
-- **No mid-flight reconfigure:** Changing the script requires updating the ConfigMap and re-running the experiment.
-- **SSH connectivity:** A network outage on `HOST` mid-run can leave the chaos script partially applied; ensure the abort script can recover from that state on a subsequent run.
-
----
-
-## Troubleshooting
-
-<Troubleshoot
-  issue="SSH chaos fails with permission denied (publickey) in Harness Chaos Engineering"
-  mode="docs"
-  fallback="Verify USERNAME exists on the target VM and that the supplied SSH_KEY (or SSH_PASSWORD) is correct. For SSH_KEY, the File Secret must contain the private key file (not the public key) and the corresponding public key must be in ~/.ssh/authorized_keys on the target VM. Test manually with ssh -i <key> USERNAME@HOST."
-/>
-
-<Troubleshoot
-  issue="Chaos script runs but produces no effect on the target VM"
-  mode="docs"
-  fallback="USERNAME may lack the privileges the script needs (for example sudo, capability to write to a system directory). Either grant sudo access to USERNAME on the target VM, use a privileged account, or simplify the script."
-/>
-
-<Troubleshoot
-  issue="Abort script did not run or did not fully revert the changes"
-  mode="docs"
-  fallback="Check the fault pod logs for the abort script's stdout/stderr. If the abort script did not run, the SSH connection likely failed mid-experiment; re-run the abort script manually on the target VM with the same parameters. If the abort script ran but did not revert, make the script idempotent and re-run it."
-/>
-
-<Troubleshoot
-  issue="Indicator parsing error in CHAOS_PARAMETER"
-  mode="docs"
-  fallback="Validate the JSON in CHAOS_PARAMETER with jq before running. The indicator types (raw:, env:, $) must match INDICATOR_TYPES if you overrode the defaults. The default format is raw:{value},env:{$ENV},raw:{para}."
-/>
-
----
-
-## Related faults
-
-- [Linux fault library](/docs/chaos-engineering/faults/chaos-faults/linux): Use the supported Linux faults instead of writing custom scripts where possible.
-- [Custom faults](/docs/chaos-engineering/faults/custom-faults/): Promote a custom script into a first-class fault for repeated use.
+![customizing env var](./static/images/ssh-chaos/customize-env.png)

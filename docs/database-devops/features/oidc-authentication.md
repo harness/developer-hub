@@ -35,27 +35,10 @@ This topic assumes you have experience with [GCP workload identity providers](ht
 
 ## Prerequisites
 
-- **Workload Identity Pool:** A configured Workload Identity Pool in your GCP project. Go to [Set up the GCP workload identity provider](/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted/#set-up-the-gcp-workload-identity-provider) in the CI documentation to create the pool.
-- **OIDC provider:** An OIDC provider configured with the correct Harness issuer URL for your account cluster. Go to [Set up the GCP workload identity provider](/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted/#set-up-the-gcp-workload-identity-provider) in the CI documentation to configure the provider.
-- **Service account access grant:** The service account must grant access to your Harness account ID via workload identity pool attribute conditions. Go to [Grant access to the service account](/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted/#grant-access-to-the-service-account) in the CI documentation for configuration steps.
-- **Service account IAM roles:** Assign roles to your GCP service account based on the database type you are connecting to:
-
-  **Workload Identity (required for all databases):**
-  - `roles/iam.workloadIdentityUser`: Allow the Workload Identity SA to impersonate the GCP service account.
-
-  **BigQuery:**
-  - `roles/bigquery.admin`: Full access to BigQuery datasets and tables.
-  - `roles/bigquery.jobUser`: Run queries and schema operations.
-  - `roles/iam.serviceAccountTokenCreator`: Required for OIDC token exchange.
-
-  **Cloud Spanner:**
-  - `roles/spanner.databaseUser`: Read/write access to Spanner databases.
-  - `roles/spanner.databaseAdmin`: Schema changes and admin operations.
-
-  **CloudSQL:**
-  - `roles/cloudsql.client`: Connect to CloudSQL instances.
-  - `roles/cloudsql.instanceUser`: IAM database authentication.
-
+- **GCP Workload Identity Federation:** A configured Workload Identity Pool and OIDC provider in your GCP project. Go to [Workload Identity Federation](https://cloud.google.com/iam/docs/workload-identity-federation) to set up federation.
+- **OIDC provider configuration:** The provider must be configured with the correct issuer URL for your Harness account cluster. Go to [Set up the GCP workload identity provider](#set-up-the-gcp-workload-identity-provider) for configuration details.
+- **Service account:** A GCP service account with appropriate database permissions (Cloud Spanner Database User role, CloudSQL IAM user permissions, or BigQuery Data Viewer/Admin role). Go to [Service accounts](https://cloud.google.com/iam/docs/service-account-overview) to create and configure service accounts.
+- **Service account access grant:** The service account must grant access to your Harness account ID via workload identity pool attribute conditions. Go to [Grant access to the service account](#grant-access-to-the-service-account) for configuration steps.
 - **Database instance:** A Cloud Spanner instance, CloudSQL PostgreSQL/MySQL instance with IAM authentication enabled, or BigQuery project with datasets configured.
 - **Harness project access:** Connector creation permissions in your Harness project. Go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) to configure roles.
 - **Required GCP APIs:** The following APIs must be enabled in your GCP project. Go to [Enable required GCP APIs](#enable-required-gcp-apis) for instructions.
@@ -205,9 +188,48 @@ jdbc:bigquery://https://www.googleapis.com/bigquery/v2:443;ProjectId=cd-play;Def
 When using OIDC authentication, the OAuth access token is injected automatically during the connection. Do not include `OAuthType` or `OAuthAccessToken` parameters in the URL. The Simba BigQuery JDBC driver is included in the Harness Database DevOps plugin images.
 :::
 
-## Before you configure OIDC
+## Set up the GCP workload identity provider
 
-Complete the GCP Workload Identity Federation setup before configuring your JDBC connector. Go to [Set up the GCP workload identity provider](/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted/#set-up-the-gcp-workload-identity-provider) in the CI documentation, which covers issuer URLs for all Harness account clusters (Prod-1, Prod-2, Prod-3) and the attribute condition required for both connection tests and pipeline executions. Return to this page after completing those steps.
+Before configuring your JDBC connector, set up a workload identity provider in GCP that trusts Harness as an OIDC issuer.
+
+### Create identity provider and pool
+
+Set up an [identity provider](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#manage-providers) in GCP Workload Identity Federation with the following configuration:
+
+- **Name:** Enter any name for the provider (for example, `harness-oidc-provider`).
+- **Issuer URL:** The Harness OIDC issuer URL depends on your account cluster. Use the format `https://app.harness.io/ng/api/oidc/account/YOUR_HARNESS_ACCOUNT_ID`.
+  
+  You can get your Harness account ID from any Harness URL, such as `https://app.harness.io/ng/#/account/ACCOUNT_ID/home/get-started`.
+
+  If your account is on a different cluster, use the appropriate issuer URL:
+  - **Prod-1 (app.harness.io):** `https://app.harness.io/ng/api/oidc/account/YOUR_ACCOUNT_ID`
+  - **Prod-2 (app.harness.io/gratis):** `https://app.harness.io/gratis/ng/api/oidc/account/YOUR_ACCOUNT_ID`
+  - **Prod-3 (app3.harness.io):** `https://app3.harness.io/ng/api/oidc/account/YOUR_ACCOUNT_ID`
+
+- **Attribute mapping:** Configure the following mappings to extract claims from the Harness OIDC token:
+  - `google.subject = assertion.sub`
+  - `attribute.account_id = assertion.account_id`
+
+Go to [Managing workload identity pools](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#pools) to create the pool and provider.
+
+### Grant access to the service account
+
+After creating the workload identity pool and provider, grant Harness access to the service account that has database permissions:
+
+1. In the GCP Console, go to **IAM & Admin** > **Service Accounts**.
+2. Select the service account that has database permissions (for example, Cloud Spanner Database User role or CloudSQL IAM user permissions).
+3. Select **Permissions** > **Grant Access**.
+4. Under **New principals**, select the workload identity pool.
+5. Under **Add principals matching**, select **Only identities matching the filter**.
+6. Enter the attribute condition: `attribute.account_id = "YOUR_HARNESS_ACCOUNT_ID"`.
+
+This configuration ensures that only OIDC tokens issued by Harness for your account can impersonate the service account.
+
+:::info Important
+The attribute condition should filter by `account_id` only. Do not add conditions that filter by pipeline-specific attributes, as connection test tokens and pipeline execution tokens include different custom attributes. A pool condition that is too restrictive will cause connection tests to succeed but pipeline executions to fail.
+
+Go to [Manage access to service accounts](https://cloud.google.com/iam/docs/manage-access-service-accounts) to configure access grants.
+:::
 
 ## Configure OIDC authentication for Cloud Spanner
 
@@ -222,7 +244,7 @@ Complete the GCP Workload Identity Federation setup before configuring your JDBC
 4. **Configure GCP OIDC details:**
    - **Provider Type:** Select **GCP**.
    - **Project Number:** Enter your GCP project number (numeric identifier, not project ID). Go to the [GCP Console dashboard](https://console.cloud.google.com/home/dashboard) to find the project number.
-   - **Workload Pool ID:** Enter the Workload Identity Pool ID you created in [Set up the GCP workload identity provider](/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted/#set-up-the-gcp-workload-identity-provider). This is the `Pool ID` value shown in the GCP Console under **IAM & Admin** > **Workload Identity Federation**.
+   - **Workload Pool ID:** Enter the Workload Identity Pool ID you created in [Set up the GCP workload identity provider](#set-up-the-gcp-workload-identity-provider). This is the `Pool ID` value shown in the GCP Console under **IAM & Admin** > **Workload Identity Federation**.
    - **Provider ID:** Enter the OIDC provider ID within the pool. This is the `Provider ID` value shown when you select the provider in the GCP Console.
    - **Service Account Email:** Enter the email of the service account that has Spanner Database User permissions (for example, `db-sa@project.iam.gserviceaccount.com`).
 5. **Test the connection:** Select **Test Connection** to verify that the delegate can authenticate and connect to Cloud Spanner.
@@ -258,7 +280,7 @@ Complete the GCP Workload Identity Federation setup before configuring your JDBC
 4. Configure GCP OIDC details:
    - **Provider Type:** Select **GCP**.
    - **Project Number:** Enter your GCP project number (numeric identifier, not project ID). Go to the [GCP Console dashboard](https://console.cloud.google.com/home/dashboard) to find the project number.
-   - **Workload Pool ID:** Enter the Workload Identity Pool ID you created in [Set up the GCP workload identity provider](/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted/#set-up-the-gcp-workload-identity-provider). This is the `Pool ID` value shown in the GCP Console under **IAM & Admin** > **Workload Identity Federation**.
+   - **Workload Pool ID:** Enter the Workload Identity Pool ID you created in [Set up the GCP workload identity provider](#set-up-the-gcp-workload-identity-provider). This is the `Pool ID` value shown in the GCP Console under **IAM & Admin** > **Workload Identity Federation**.
    - **Provider ID:** Enter the OIDC provider ID within the pool. This is the `Provider ID` value shown when you select the provider in the GCP Console.
    - **Service Account Email:** Enter the email of the service account that has CloudSQL IAM user permissions (for example, `db-sa@project.iam.gserviceaccount.com`).
 
@@ -290,7 +312,7 @@ Ensure that a database user with this username exists in your CloudSQL instance 
 4. Configure GCP OIDC details:
    - **Provider Type:** Select **GCP**.
    - **Project Number:** Enter your GCP project number (numeric identifier, not project ID). Go to the [GCP Console dashboard](https://console.cloud.google.com/home/dashboard) to find the project number.
-   - **Workload Pool ID:** Enter the Workload Identity Pool ID you created in [Set up the GCP workload identity provider](/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted/#set-up-the-gcp-workload-identity-provider). This is the `Pool ID` value shown in the GCP Console under **IAM & Admin** > **Workload Identity Federation**.
+   - **Workload Pool ID:** Enter the Workload Identity Pool ID you created in [Set up the GCP workload identity provider](#set-up-the-gcp-workload-identity-provider). This is the `Pool ID` value shown in the GCP Console under **IAM & Admin** > **Workload Identity Federation**.
    - **Provider ID:** Enter the OIDC provider ID within the pool. This is the `Provider ID` value shown when you select the provider in the GCP Console.
    - **Service Account Email:** Enter the email of the service account that has BigQuery permissions (for example, `bigquery-sa@project.iam.gserviceaccount.com`).
 

@@ -2,7 +2,6 @@
 title: Creating Cases and Case Management in ServiceNow
 ---
 
-
 At Armory, we aim to provide world-class support by giving our customers choices for different support options.  To optimize our customer's support experience, please read our guidelines at our [Armory Support explanation page](https://kb.armory.io/s/article/Support). 
 The following article explains the process to create and manage cases.  The information should assist with how to set up cases to allow support to assist users as quickly as possible, and provide the best experience from beginning to end about support cases.
 Before beginning, [users will need to have an active and enabled user account](https://support.armory.io/support/?id=kb_article_view&sysparm_article=KB0010200).  If an account has not yet been activated, please contact the designated Service  Portal Customer Administrators for the account.

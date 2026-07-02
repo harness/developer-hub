@@ -4,21 +4,21 @@ title: Chaos faults for Windows
 redirect_from:
 - /docs/chaos-engineering/technical-reference/chaos-faults/windows
 - /docs/chaos-engineering/chaos-faults/windows
-- /docs/chaos-engineering/faults/chaos-faults/vmware/windows/vmware-windows-service-stop
-- /docs/chaos-engineering/chaos-faults/vmware/windows/vmware-windows-service-stop
-- /docs/chaos-engineering/faults/chaos-faults/vmware/windows/vmware-windows-time-chaos
-- /docs/chaos-engineering/chaos-faults/vmware/windows/vmware-windows-time-chaos
 ---
+
+<!-- Import statement for Custom Components -->
 
 import FaultDetailsCard from "@site/src/components/ChaosEngineering/FaultDetailsCard";
 import ExperimentListSection from "@site/src/components/ChaosEngineering/ExperimentListSection"
 import { experiments } from "./experiments"
 
+<!-- Heading Description -->
+
 <div>
 
 ## Introduction
 
-Windows faults disrupt resources running on a Windows Server VM. All Windows faults run through the Windows chaos agent installed as a service on the target VM. Go to [Windows requirements and security considerations](/docs/chaos-engineering/faults/chaos-faults/windows/windows-chaos-permissions) for prerequisites. Basic faults run as a non-administrator user; Advanced faults (network family, blackhole, disk stress) require the agent to run as administrator.
+Windows faults disrupt the resources running on a Windows OS based machine or VM. This deteriorates the performance of the application for the duration of the chaos experiment. Depending on the type of instance the fault targets, Windows faults are categorized into various types.
 
 <ExperimentListSection experiments={experiments} />
 
@@ -26,115 +26,132 @@ Windows faults disrupt resources running on a Windows Server VM. All Windows fau
 
 ### Windows CPU stress
 
-Windows CPU stress drives CPU utilization to a configurable percentage across a configurable number of cores on a Windows VM for a configurable duration.
+Windows CPU stress applies stress on the CPU resources of Windows OS based machine or VM. It checks the performance of the application running on the VMs.
 
 <Accordion color="green">
 <summary>Use cases</summary>
-Test how a workload behaves when CPU headroom shrinks: whether latency stays inside the SLA, whether the OS scheduler keeps critical processes responsive, and whether monitoring detects CPU saturation.
+This fault helps determine how resilient an application is when stress is applied on the CPU resources of a Windows virtual machine.
 </Accordion>
 
 </FaultDetailsCard>
 
 <FaultDetailsCard category="windows">
+
+### Windows Disk stress
+
+Windows disk stress injects disk stress into a Windows OS based VM, by consuming and exhausting the disk resources on the target Windows machine.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+- Simulates a lack of disk for processes running on the application, causing performance degradation and system slowdowns.
+- Simulates slow application traffic or resource exhaustion, leading to degradation in the performance of processes on the machine.
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="windows">
+
+<!-- please specify category in above tag to generate correct experiment icons and links by itself, if links are broken please contact @Sahil, that's me -->
 
 ### Windows memory stress
 
-Windows memory stress consumes a configurable amount of memory on a Windows VM for a configurable duration.
+Windows memory stress applies stress on the memory resources on Windows OS based machine or VM. It checks the performance of the application running on the VMs.
 
 <Accordion color="green">
 <summary>Use cases</summary>
-Test how a workload behaves when memory headroom shrinks: whether the OS swaps gracefully, whether GC-heavy .NET applications pause, and whether monitoring detects the saturation.
+This fault helps determine how resilient an application is when stress is applied on the memory resources of a Windows virtual machine.
 </Accordion>
 
 </FaultDetailsCard>
 
 <FaultDetailsCard category="windows">
 
-### Windows disk stress
+### Windows Network Blackhole Chaos
 
-Windows disk stress drives disk IO load on a Windows VM for a configurable duration. Requires administrator.
+Windows blackhole chaos blocks traffic to specified IP addresses on Windows OS based VMware VM. It checks the performance of the application running on the VMware VMs.
 
 <Accordion color="green">
 <summary>Use cases</summary>
-Test how a workload behaves when storage throughput saturates: whether IO latency stays inside the SLA, whether databases queue writes correctly, and whether monitoring detects the saturation.
+This fault helps determine how resilient an application is when network access to certain IP addresses is blocked on a Windows virtual machine.
 </Accordion>
 
 </FaultDetailsCard>
 
 <FaultDetailsCard category="windows">
 
-### Windows process kill
+### Windows Network Corruption
 
-Windows process kill terminates one or more processes (by PID or name) on a Windows VM for a configurable duration.
+Windows Network Corruption corrupts network packets on Windows VMs for the target hosts using [Clumsy](https://jagt.github.io/clumsy/). It checks the performance of the application running on the Windows VMs when network packets are corrupted during transmission.
 
 <Accordion color="green">
 <summary>Use cases</summary>
-Test how a workload behaves when a critical process is killed: whether Windows Service Recovery restarts it inside the SLA, whether replicas absorb the load, and whether monitoring detects the regression.
+- Determines the resilience of an application when a network corruption scenario is simulated on a Windows virtual machine.
+- Simulates the situation of network corruption on the application, which degrades their performance.
+- Helps verify the application's ability to handle network failures and its failover mechanisms.
 </Accordion>
 
 </FaultDetailsCard>
 
 <FaultDetailsCard category="windows">
 
-### Windows blackhole chaos
+### Windows Network Duplication
 
-Windows blackhole chaos blocks all network traffic to selected destination hosts or IP addresses from a Windows VM for a configurable duration. Requires administrator.
+Windows network duplication duplicates network packets on Windows VM for the target hosts or IP addresses using [Clumsy](https://jagt.github.io/clumsy/). It checks the performance of the services running on the Windows VMs.
 
 <Accordion color="green">
 <summary>Use cases</summary>
-Test how a workload behaves when a downstream dependency is unreachable: whether retries and timeouts work, whether circuit breakers open correctly, and whether the workload fails over to a backup endpoint.
+- Determines the resilience of an application when a network duplication scenario is simulated on a Windows virtual machine.
+- Simulates the situation of network duplication on the application, which degrades their performance.
+- Helps verify the application's ability to handle network failures and its failover mechanisms.
 </Accordion>
 
 </FaultDetailsCard>
 
 <FaultDetailsCard category="windows">
 
-### Windows network latency
+### Windows Network Latency
 
-Windows network latency adds latency to egress traffic from a Windows VM for a configurable duration. Scope by destination IP, hostname, port, or protocol. Requires administrator.
+Windows Network Latency causes a network packet delay on Windows VMs for the target hosts by causing network packet delay using [Clumsy](https://jagt.github.io/clumsy/). It checks the performance of the application running on the Windows VMs.
 
 <Accordion color="green">
 <summary>Use cases</summary>
-Test how a workload behaves when a downstream dependency becomes slow: whether retries and timeouts work, whether circuit breakers open correctly, and whether monitoring detects the regression.
+- Determines the resilience of an application when a network delay scenario is simulated on a Windows virtual machine.
+- Simulates the situation of network delay for dependent processes and microservices running on the application, which degrades their performance.
+- Helps verify the application's ability to handle network failures and its failover mechanisms.
 </Accordion>
 
 </FaultDetailsCard>
 
 <FaultDetailsCard category="windows">
 
-### Windows network loss
+### Windows Network Loss
 
-Windows network loss drops a configurable percentage of egress packets from a Windows VM for a configurable duration. Requires administrator.
+Windows network loss causes network packet loss on Windows VM for the target hosts or IP addresses using Clumsy. It checks the performance of the services running on the Windows VMs after the disrupted network loss conditions.
 
 <Accordion color="green">
 <summary>Use cases</summary>
-Test how a workload behaves when packet loss spikes: whether TCP retransmits stay within the SLA, whether application-layer retries recover correctly, and whether cluster membership stays healthy.
+- Simulates issues within the host network (or microservice) communication across services in different hosts.
+- Determines the impact of degradation while accessing a microservice.
+- Limits the impact (blast radius) to the traffic that you wish to test by specifying the IP addresses, if the VM stalls or gets corrupted while waiting endlessly for a packet.
+- Simulates degraded network with varied percentages of dropped packets between microservices.
+- Simulates loss of access to specific third party (or dependent) services (or components).
+- Simulates blackhole against traffic to a given availability zone, that is, failure simulation of availability zones.
+- Simulates network partitions (split-brain) between peer replicas for a stateful application.
 </Accordion>
 
 </FaultDetailsCard>
 
 <FaultDetailsCard category="windows">
 
-### Windows network corruption
+### Windows Process Kill
 
-Windows network corruption corrupts a configurable percentage of egress packets from a Windows VM for a configurable duration. Requires administrator.
-
-<Accordion color="green">
-<summary>Use cases</summary>
-Test how a workload behaves when packets are corrupted: whether TCP checksums catch the corruption, whether application retries recover, and whether monitoring detects the regression.
-</Accordion>
-
-</FaultDetailsCard>
-
-<FaultDetailsCard category="windows">
-
-### Windows network duplication
-
-Windows network duplication duplicates a configurable percentage of egress packets from a Windows VM for a configurable duration. Requires administrator.
+Windows process kill kills the target processes that are running as a part of a Windows OS based VM. The services that are disrupted might be running in the VM, and this fault kills their underlying processes or threads. 
 
 <Accordion color="green">
 <summary>Use cases</summary>
-Test how a workload behaves when packets are duplicated: whether TCP de-duplication handles the load, whether UDP receivers handle duplicates correctly, and whether the bandwidth spike triggers alerts.
+- It helps determine the resilience of an application (or process) running on the Windows VMs.
+- Induces process kill using the process IDs and process name on the target Windows machines.
+- Simulates loss of processes, leading to degradation in the performance of application on the machine.
 </Accordion>
 
 </FaultDetailsCard>

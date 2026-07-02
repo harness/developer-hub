@@ -21,33 +21,33 @@ For each resource, the integration collects the following:
 
 The following configurations are needed in Harness and GCP to get the integration running.
 
-### Relevant Harness configurations
+### Relevant Harness Configurations
  
 * Ensure the feature flags `IDP_CATALOG_CD_AUTO_DISCOVERY` and `IDP_INTEGRATIONS` are enabled. Contact [Harness Support](mailto:support@harness.io) to enable them.
 * You have the required RBAC permissions to manage integrations. All integration operations require the `IDP_INTEGRATION_EDIT` permission on the `IDP_INTEGRATION` resource type.
-* A [GCP connector](https://www.youtube.com/watch?v=frNDU4Iv7zM) is configured in Harness using a service account JSON key. Go to [GCP configurations](#relevant-gcp-configurations) below for how to obtain the key.
+* A [GCP connector](https://www.youtube.com/watch?v=frNDU4Iv7zM) is configured in Harness using a service account JSON key. See [GCP configurations](#relevant-gcp-configurations) below for how to obtain the key.
 
-### Relevant GCP configurations
+### Relevant GCP Configurations
  
 * **IAM role**: Grant `roles/cloudasset.viewer` to your service account at the **organization or folder level** (not project level) via [IAM & Admin](https://console.cloud.google.com/iam-admin/iam). For resource-specific access (e.g., Compute, BigQuery), also grant the relevant viewer roles such as `roles/compute.viewer` or `roles/bigquery.metadataViewer` at the same scope.
 * **Service account key**: [Generate a JSON key](https://cloud.google.com/iam/docs/keys-create-delete) for your service account (**Keys** tab → **Add key** → **Create new key** → **JSON**) and upload it when creating the GCP connector in Harness.
 * **Cloud Asset API**: [Enable `cloudasset.googleapis.com`](https://console.cloud.google.com/apis/library/cloudasset.googleapis.com) on the GCP project associated with the service account.
 
 :::info Proxy Configuration
-If your environment blocks outbound third-party traffic and routes it through a proxy, you will need to configure proxy settings on your Harness Delegate. Once configured there, the proxy settings are automatically picked up by IDP integrations. No additional setup is needed on the integration side. 
+If your environment blocks outbound third-party traffic and routes it through a proxy, you'll need to configure proxy settings on your Harness Delegate. Once configured there, the proxy settings are automatically picked up by IDP integrations. No additional setup is needed on the integration side. 
 
-Here is how to set it up: [Configure delegate proxy settings](/docs/platform/delegates/manage-delegates/configure-delegate-proxy-settings)
+Here's how to set it up: [Configure delegate proxy settings](/docs/platform/delegates/manage-delegates/configure-delegate-proxy-settings)
 :::
 
 ---
 
-## Enable the Google Cloud integration
+## Enable the Google Cloud Integration
 
 :::info
 The Google Cloud integration is available at the **Account**, **Organization**, and **Project** levels. Navigate to the appropriate scope of the Internal Developer Portal to add or manage Google Cloud integrations.
 :::
 
-### 1. Navigate to the integrations page
+### 1. Navigate to the Integrations Page
 
 1. In Harness, open the **Internal Developer Portal**.
 
@@ -62,7 +62,7 @@ The Google Cloud integration is available at the **Account**, **Organization**, 
 
 5. Select **Google Cloud** from the integration type picker. You will be taken to the **Auto Discover Google Cloud Integration** page.
 
-### 2. Configure setup & connectivity
+### 2. Configure Setup & Connectivity
 
 This section connects Harness IDP to your Google Cloud Platform.
 
@@ -73,7 +73,7 @@ This section connects Harness IDP to your Google Cloud Platform.
 
 2. Click the **Choose GCP connector** dropdown and select the GCP connector you want to use to pull data into the IDP (e.g., `idp_automation_gcp_manager`).
 
-   :::info Do not have a GCP connector yet?
+   :::info Don't have a GCP connector yet?
    If no connectors appear in the dropdown, you need to first create a GCP connector in Harness. Once saved, it will appear in the dropdown here.
 
    <DocVideo src="https://www.youtube.com/embed/frNDU4Iv7zM" />
@@ -83,7 +83,7 @@ This section connects Harness IDP to your Google Cloud Platform.
    * **Organization ID** *(Default)*: Discovers resources across your entire GCP organization. Enter your numeric GCP Organization ID (e.g., `123456789012`).
    * **Folder ID**: Limits discovery to a specific GCP folder. Enter the numeric Folder ID.
 
-### 3. Configure catalog mapping
+### 3. Configure Catalog Mapping
 
 This section defines which GCP resources are ingested and how they map to IDP catalog entities.
 
@@ -102,7 +102,7 @@ For each resource you select, three fields are configurable:
 
 Once you have made your selections, click **Continue** to return to the main configuration page.
 
-### 4. Configure advanced settings
+### 4. Configure Advanced Settings
 
 The **Advanced Settings** section controls how frequently IDP syncs with GCP.
 
@@ -119,7 +119,7 @@ The integration is now enabled and IDP begins syncing data from GCP. Discovered 
 
 ---
 
-## Discover and import GCP entities
+## Discover and Import GCP Entities
 
 ### Discovered tab
 
@@ -166,13 +166,13 @@ For the full event type reference and detail panel fields, go to [Integration Ev
 
 ---
 
-## View GCP entities in the catalog
+## View GCP Entities in the Catalog
 
 Once imported, GCP entities are available in the **Catalog** section of IDP as standard catalog entities. Each entity's kind and type reflect the selections made during resource configuration.
 
 Open any entity to view GCP-sourced data such as asset type, location, project, and state directly on the entity details page. This data is displayed through two dedicated UI components: a card on the **Overview** tab and a **GCP Integration** tab. Both require a one-time layout configuration, described in the [next section](#layout-for-gcp-components).
 
-### Layout for GCP components
+### Layout for GCP Components
 
 To display GCP data on the [entity details](/docs/internal-developer-portal/catalog/create-entity/entity-details) page, you need to add the two GCP components to the relevant entity layout. This is a one-time configuration per entity kind and type.
 
@@ -205,7 +205,7 @@ To display GCP data on the [entity details](/docs/internal-developer-portal/cata
 5. Click **Save** to apply the layout changes. The GCP components will now appear on all entity detail pages of the selected kind and type that have GCP data.
 
 
-### GCP card in overview tab
+### GCP Card in Overview Tab
 
 After the layout is configured, a card appears in the **Overview** tab of any entity that has GCP data linked to it. The card displays the key GCP metadata ingested for that entity, sourced from the entity's [ingested properties](#ingested-properties).
 
@@ -214,7 +214,7 @@ After the layout is configured, a card appears in the **Overview** tab of any en
 
 If the GCP integration has not been configured for the entity, the card shows a **Not configured** state with a link to the Integrations page. If multiple GCP integrations are active on your account, a dropdown appears at the top of the card to switch between integrations.
 
-### GCP integration tab
+### GCP Integration Tab
 
 The **GCP Integration** tab provides a more complete view of the GCP data for the entity. This tab fetches latest possible data using the integration ID and entity UUID.
 
@@ -229,7 +229,7 @@ The **GCP Integration** tab provides a more complete view of the GCP data for th
 * If multiple GCP integrations are linked to the entity, a dropdown appears above the details to switch between integrations.
 :::
 
-### Ingested properties
+### Ingested Properties
 
 To inspect the raw data ingested from GCP, open the entity and click **View YAML** → **Ingested Properties** in the Entity Inspector.
 
@@ -243,13 +243,13 @@ Ingested properties are stored in two sections of the entity YAML:
 
 ---
 
-## Manage the Google Cloud integration
+## Manage the Google Cloud Integration
 
 ### Edit the integration
 
 To update the integration name, switch the GCP connector, change the scope, or modify resource selections, navigate to the **Integrations** page, find your GCP integration card, and click **View**. From there, click **Configuration** to open the edit screen.
 
-### Suspend auto-discovery
+### Suspend Auto-Discovery
 
 If auto-discovery is suspended, new entities will not appear in the **Discovered** tab. Existing imported entities remain unchanged in the catalog, and the sync between GCP and their corresponding IDP entities will stop.
 

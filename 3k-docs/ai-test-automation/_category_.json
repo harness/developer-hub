@@ -1,0 +1,7 @@
+{
+  "label": "AI Test Automation",
+  "collapsible": "true",
+  "collapsed": "true",
+  "link": { "type": "generated-index", "title": "AI Test Automation", "description": "Get started with Harness AI Test Automation." },
+  "customProps": {}
+}

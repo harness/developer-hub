@@ -8,6 +8,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+:::note Feature availability
+    User Impersonation is a [Beta](/docs/platform/get-started/key-concepts#beta-limited-ga-and-ga-definitions) feature and is currently behind the `PL_ENABLE_USER_IMPERSONATION` feature flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
 User Impersonation allows account administrators to temporarily act as another user in the account, including other admins without needing their password. This feature is especially useful for troubleshooting, and verifying if a user has the intended set of permissions.
 
 By impersonating a user, Account admins can see exactly what that user sees and perform actions on their behalf.

@@ -1,0 +1,14 @@
+{
+    "label": "Advanced CD",
+    "position": "2700",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Advanced CD"
+    },
+    "customProps": {
+        "helpdocs_category_id": "21a052rbi0"
+    }
+}

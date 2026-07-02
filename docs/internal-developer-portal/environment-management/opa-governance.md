@@ -4,6 +4,7 @@ description: Use Harness OPA policies to enforce configuration standards on IDP 
 sidebar_position: 6
 ---
 
+## Introduction
 
 Platform engineers lose visibility when development teams author blueprints. A blueprint that skips TTL, uses a wrong tag, or breaks a naming standard can slip through and affect every environment built from it.
 
@@ -26,7 +27,7 @@ This feature requires the feature flag `IDP_OPA_CATALOG_ENTITY_GOVERNANCE` to be
 
 ## Setup
 
-### Create a policy
+### Create a Policy
 
 ![Figure 1: Policy Creation](./static/opa-policy-create.gif)
 
@@ -44,7 +45,7 @@ This feature requires the feature flag `IDP_OPA_CATALOG_ENTITY_GOVERNANCE` to be
 * Use the **Testing Terminal** tab to test your policy against a sample entity payload before enforcing it. Paste a JSON representation of your entity under **Input** and click **Test**.
 :::
 
-### Create a policy set
+### Create a Policy Set
 
 :::info Difference between 'Policy' and 'Policy Set'
 A policy is a single Rego rule that defines one check. A policy set groups one or more policies together and defines what entity type they apply to, when they run, and what to do when a check fails. A policy works only after adding it to a policy set.
@@ -77,7 +78,7 @@ A policy is a single Rego rule that defines one check. A policy set groups one o
 To enforce the policy set, make sure the **Enforced** toggle is enabled on the Policy Sets list page. When the toggle is off, the policy set is created but not evaluated.
 :::
 
-### Policy enforcement at runtime
+### Policy Enforcement at Runtime
 
 ![Figure 3: PolicySet Evaluation](./static/policyset-eval.gif)
 
@@ -85,7 +86,7 @@ Once the policy set is active, enforcement happens automatically. Now in IDP, wh
 
 ---
 
-## Policy input schema
+## Policy Input Schema
 
 Policies receive the full catalog entity payload as `input.idpEntity`. The following fields are available:
 
@@ -109,9 +110,9 @@ The `ttl_default_hours`, `ttl_max_hours`, and `ttl_hours` fields are **computed 
 
 ---
 
-## Example policies
+## Example Policies
 
-### Require TTL on all blueprints
+### Require TTL on All Blueprints
 
 Deny any blueprint that uses the `none` TTL mode. 
 
@@ -125,7 +126,7 @@ deny[msg] {
 }
 ```
 
-### Enforce a maximum TTL on blueprints
+### Enforce a Maximum TTL on Blueprints
 
 Deny blueprints whose default TTL exceeds 7 days (168 hours).
 
@@ -142,7 +143,7 @@ deny[msg] {
 }
 ```
 
-### Enforce a maximum TTL on environments
+### Enforce a Maximum TTL on Environments
 
 Deny environments whose TTL exceeds 7 days (168 hours).
 
@@ -159,7 +160,7 @@ deny[msg] {
 }
 ```
 
-### Warn when blueprint TTL exceeds 3 days
+### Warn When Blueprint TTL Exceeds 3 Days
 
 Warn (but allow) when a blueprint's default TTL exceeds 72 hours. Use this as a soft limit before enforcing a hard deny.
 
@@ -178,7 +179,7 @@ warn[msg] {
 
 ---
 
-## Policy scope
+## Policy Scope
 
 Policies can be scoped at **account**, **org**, or **project** level. The scope determines which entities the policy set applies to:
 

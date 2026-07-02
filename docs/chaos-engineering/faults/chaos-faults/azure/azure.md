@@ -6,65 +6,86 @@ redirect_from:
 - /docs/chaos-engineering/chaos-faults/azure
 ---
 
+<!-- Import statement for Custom Components -->
+
 import FaultDetailsCard from "@site/src/components/ChaosEngineering/FaultDetailsCard";
 import ExperimentListSection from "@site/src/components/ChaosEngineering/ExperimentListSection"
 import { experiments } from "./experiments"
 
+<!-- Heading Description -->
+
 ## Introduction
 
-Azure faults disrupt resources that run on Microsoft Azure: Virtual Machines (standalone or VMSS), Azure Kubernetes Service (AKS) node pools, managed disks, App Service web apps, and Service Bus queues. Each fault calls the Azure Resource Manager API to inject the disruption, then reverses it cleanly at the end of the configured duration. Go to [Azure authentication methods](/docs/chaos-engineering/faults/chaos-faults/azure/security-configurations/azure-authentication-methods) to set up service principals, workload identity, or managed identity, and to [Azure fault permissions](/docs/chaos-engineering/faults/chaos-faults/azure/security-configurations/fault-permissions) to grant the right RBAC roles.
+Azure faults disrupt the resources running on a Azure cluster. They can be categorized into different types depending on the target resource. 
 
 <ExperimentListSection experiments={experiments} />
 
 <FaultDetailsCard category="azure">
 
-### Azure AKS node down
+### Azure disk loss
 
-Azure AKS node down resolves the VMSS instances backing an AKS cluster (filtered by `TARGET_NODE_POOL_NAMES` and `TARGET_ZONES`), picks `NODE_AFFECTED_PERCENTAGE` of them, deallocates them for `TOTAL_CHAOS_DURATION` seconds, then starts them again.
+Azure disk loss detaches the virtual disk from an Azure instance. 
+- After a specific duration, the virtual disk is re-attached to the instance. 
+- This fault checks the performance of the application (or process) running on the instance.
 
-<Accordion color="green">
+<accordion color="green">
 <summary>Use cases</summary>
 
-- Test that the scheduler reschedules pods inside the SLA when a percentage of AKS nodes disappear.
-- Validate PodDisruptionBudgets across a node-down window.
-- Test cluster autoscaler reaction time when pods become unschedulable.
-- Simulate zone-level failures by targeting a single zone.
+- Determines the resilience of an application to unexpected disk detachment. 
+- Determines how quickly the Azure instance recovers from such failures. 
 
-</Accordion>
+</accordion>
 
 </FaultDetailsCard>
 
 <FaultDetailsCard category="azure">
 
-### Azure disk loss
+### Azure AKS node down
 
-Azure disk loss detaches one or more managed data disks (`VIRTUAL_DISK_NAMES`) from their attached VMs for `TOTAL_CHAOS_DURATION` seconds, then reattaches them on the same LUN. OS disks are excluded by design.
+Azure AKS node down deallocates nodes in an Azure Kubernetes Service (AKS) cluster for a certain chaos duration.
+- It helps to check the resilience of your applications when AKS nodes become unavailable.
+- It targets VMSS (Virtual Machine Scale Set) instances in the AKS node pools and temporarily deallocates them.
+- You can filter target nodes by node pool name, availability zone, and percentage of nodes to affect.
 
-<Accordion color="green">
+<accordion color="green">
 <summary>Use cases</summary>
 
-- Test how stateful workloads (databases, file servers) handle a brief storage outage.
-- Validate that filesystems remount cleanly when the disk returns.
-- Confirm DR snapshot strategies cover sudden volume loss.
+- Determines the resilience of applications when AKS cluster nodes become unavailable.
+- Validates that workloads are properly distributed across nodes and can handle node failures gracefully.
+- Tests the behavior of Kubernetes scheduling and auto-scaling when nodes are deallocated.
+- Simulates availability zone (AZ) failures by targeting nodes in specific zones.
+- Verifies that critical applications have proper pod disruption budgets and replica counts.
+- Validates monitoring and alerting systems properly detect node failures.
+- Ensures that stateful applications handle node loss without data corruption.
 
-</Accordion>
+</accordion>
 
 </FaultDetailsCard>
+
 
 <FaultDetailsCard category="azure">
 
 ### Azure instance CPU hog
 
-Azure instance CPU hog drives CPU utilization to `CPU_LOAD` percent (or saturates `CPU_CORES` cores) on the target VMs for `TOTAL_CHAOS_DURATION` seconds via the Azure VM run-command extension.
+Azure instance CPU hog disrupts the state of infrastructure resources. 
+- It induces stress on the Azure instance using the Azure `Run` command. The Azure `Run` command is executed using the in-built bash scripts within the fault.
+- It utilizes excess amounts of CPU on the Azure instance using the bash script for a specific duration.
 
-<Accordion color="green">
+
+<accordion color="green">
 <summary>Use cases</summary>
 
-- Test that application latency stays inside the SLA when compute headroom shrinks.
-- Validate VMSS autoscale, AKS HPA, or App Service autoscale reaction time.
-- Confirm critical processes keep getting CPU time during saturation.
+- Determines the resilience of an Azure instance and the application deployed on the instance during unexpected excessive utilization of the CPU resources. 
+- Determines how Azure scales the CPU resources to maintain the application when it is under stress. 
+- Causes CPU stress on the Azure instance(s). 
+- Simulates the situation of lack of CPU for processes running on the application, which degrades their performance. 
+- Verifies metrics-based horizontal pod autoscaling.
+- Verifies vertical autoscale, that is, demand based CPU addition. 
+- Facilitates the scalability of nodes based on growth beyond budgeted pods. 
+- Verifies the autopilot functionality of cloud managed clusters. 
+- Verifies multi-tenant load issues. When the load on one container increases, the fault checks for any downtime in other containers. 
 
-</Accordion>
+</accordion>
 
 </FaultDetailsCard>
 
@@ -72,82 +93,84 @@ Azure instance CPU hog drives CPU utilization to `CPU_LOAD` percent (or saturate
 
 ### Azure instance IO stress
 
-Azure instance IO stress drives sustained disk read/write IO on the volume mounted at `VOLUME_MOUNT_PATH` of the target VMs for `TOTAL_CHAOS_DURATION` seconds via the Azure VM run-command extension.
+Azure instance I/O stress disrupts the state of infra resources. 
+- This fault induces stress on the Azure instance using the Azure `Run` command. The Azure `Run` command is executed using the in-built bash scripts within the fault.
+- It causes I/O stress on the Azure Instance using the bash script for a specific duration.
 
-<Accordion color="green">
+
+<accordion color="green">
 <summary>Use cases</summary>
 
-- Test that application latency degrades gracefully when storage is saturated.
-- Validate Premium SSD burst credit and write-path back-off behavior.
-- Confirm monitoring alerts on disk metrics fire inside the SLA.
+- Determines the resilience of an Azure instance when unexpected stress is applied on the I/O sources. 
+- Determines how Azure scales the resources to maintain the application under stress. 
+- Simulates slower disk operations by the application.
+- Simulates noisy neighbour problems by hogging the disk bandwidth. 
+- Verifies the disk performance on increasing I/O threads and varying I/O block sizes. 
+- Checks whether or not the application functions under high disk latency conditions.
+- Checks whether or not the application functions under high I/O traffic, and large I/O blocks.
+- Checks if other services monopolize the I/O disks during stress. 
 
-</Accordion>
+</accordion>
 
 </FaultDetailsCard>
+
 
 <FaultDetailsCard category="azure">
 
+
 ### Azure instance memory hog
 
-Azure instance memory hog consumes `MEMORY_CONSUMPTION` MB (or `MEMORY_PERCENTAGE` percent of RAM) through `NUMBER_OF_WORKERS` workers on the target VMs for `TOTAL_CHAOS_DURATION` seconds via the Azure VM run-command extension.
+Azure instance memory hog disrupts the state of infrastructure resources. 
+- It induces stress on the Azure Instance using the Azure `Run` command. The Azure `Run` command is executed using the in-built bash scripts within the fault.
+- It utilizes memory in excess on the Azure Instance using the bash script for a specific duration.
 
-<Accordion color="green">
-<summary>Use cases</summary>
+<accordion color="green">
+<summary>Fault usage</summary>
 
-- Test that the OOM killer targets the right process under memory pressure.
-- Validate GC pause behavior on JVM/CLR workloads.
-- Confirm VMSS autoscale reaction time on memory metrics.
+- Determines the resilience of an Azure instance when memory resources are unexpectedly utilized in excess. 
+- Determines how Azure scales the memory to maintain the application when resources are consumed heavily. 
+- Simulates the situation of memory leaks in the deployment of microservices.
+- Simulates a slowed application caused by lack of memory.
+- Simulates noisy neighbour problems due to hogging. 
+- Verifies pod priority and QoS setting for eviction purposes. 
+- Verifies application restarts on OOM (out of memory) kills.
 
-</Accordion>
+</accordion>
 
 </FaultDetailsCard>
+
 
 <FaultDetailsCard category="azure">
 
 ### Azure instance stop
 
-Azure instance stop deallocates one or more VMs listed in `AZURE_INSTANCE_NAMES` (or VMSS instance IDs when `SCALE_SET=enable`) for `TOTAL_CHAOS_DURATION` seconds, then starts them again.
+Azure instance stop powers off from an Azure instance during a specific duration. It checks the performance of the application or process running on the instance.
 
-<Accordion color="green">
+
+<accordion color="green">
 <summary>Use cases</summary>
 
-- Test how the workload behaves when a VM disappears.
-- Validate VMSS auto-healing and AKS node-down handling.
+- Determines the resilience of an application to unexpected power off of the Azure instances. 
+- Determines how the application handles the requests and how quickly it recovers from such failures.
 
-</Accordion>
+</accordion>
 
 </FaultDetailsCard>
 
-<FaultDetailsCard category="azure">
-
-### Azure Service Bus queue state change
-
-Azure Service Bus queue state change sets the status of one or more queues to `disabled`, `sendDisabled`, or `receiveDisabled` (via `ACTION`) for `TOTAL_CHAOS_DURATION` seconds, then restores `Active`.
-
-<Accordion color="green">
-<summary>Use cases</summary>
-
-- Test that producers retry cleanly when sends are disabled.
-- Validate consumer behavior when receives are disabled and the queue builds up.
-- Confirm dead-letter handling under sustained chaos.
-
-</Accordion>
-
-</FaultDetailsCard>
 
 <FaultDetailsCard category="azure">
+
 
 ### Azure web app access restrict
 
-Azure web app access restrict adds an Access Restriction rule (`RULE_NAME`) to one or more App Service web apps with `ACTION` against `IP_ADDRESS_BLOCK` for `TOTAL_CHAOS_DURATION` seconds, then removes the rule.
+Azure web app access restrict causes a split brain condition by restricting the access to an application service instance.
+- This fault checks if the requests have been serviced and recovery is automated after the restrictions have been lifted.
+- It checks the performance of the application (or process) running on the instance.
 
-<Accordion color="green">
+<accordion color="green">
 <summary>Use cases</summary>
-
-- Test that Traffic Manager / Front Door reroute traffic when an Access Restriction blocks the web app.
-- Validate runbooks for removing a stale or misconfigured Access Restriction.
-
-</Accordion>
+Azure web app access restrict determines the resilience of an application when access to a specific application service instance is restricted.
+</accordion>
 
 </FaultDetailsCard>
 
@@ -155,15 +178,16 @@ Azure web app access restrict adds an Access Restriction rule (`RULE_NAME`) to o
 
 ### Azure web app stop
 
-Azure web app stop calls the App Service `stop` API on one or more web apps for `TOTAL_CHAOS_DURATION` seconds, then starts them again.
+Azure web app stop shuts down the application. It checks whether the requests have been re-routed to another instance on the application service.
 
-<Accordion color="green">
+
+<accordion color="green">
 <summary>Use cases</summary>
 
-- Test how clients behave when an App Service web app is unavailable.
-- Validate Traffic Manager / Front Door failover SLA.
-- Confirm dependent services degrade gracefully and recover.
+- Determines the resilience of a web application to unplanned halts (or stops). 
+- Determines the resilience based on how quickly and efficiently the application recovers from the failure by re-routing the traffic to a different instance on the same application service.
 
-</Accordion>
+</accordion>
 
 </FaultDetailsCard>
+

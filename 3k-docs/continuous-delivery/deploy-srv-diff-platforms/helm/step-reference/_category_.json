@@ -1,0 +1,11 @@
+{
+    "label": "Helm Step Reference",
+    "position": "600",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Helm"
+    }
+  }

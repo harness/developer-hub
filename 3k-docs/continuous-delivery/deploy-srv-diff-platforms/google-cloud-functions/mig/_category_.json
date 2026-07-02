@@ -1,0 +1,13 @@
+{
+  "label": "Managed Instance Group Deployments",
+  "position": 4,
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+      "type": "generated-index",
+      "title": "Google Managed Instance Groups",
+      "description": "Deploy and manage Google Cloud MIGs with Harness using Blue-Green strategies.",
+      "slug": "/continuous-delivery/deploy-srv-diff-platforms/google-cloud-functions/mig"
+  }
+}
+

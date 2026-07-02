@@ -40,6 +40,7 @@ Click **SMTP Configuration** and then click **Setup**.
 The SMTP Configuration settings appear.
 
 ![](../static/add-smtp-configuration-01.png)
+
 ### Step 2: Details
 
 Enter **Name** for your SMTP Configuration.

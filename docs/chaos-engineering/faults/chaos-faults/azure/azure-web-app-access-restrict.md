@@ -1,219 +1,247 @@
 ---
 id: azure-web-app-access-restrict
 title: Azure web app access restrict
-sidebar_label: Azure Web App Access Restrict
-description: Add an Access Restriction rule to one or more Azure App Service web apps for a configurable duration so you can test how clients behave when traffic to the web app is blocked.
-keywords:
-  - chaos engineering
-  - azure web app access restrict
-  - azure fault
-  - app service
-tags:
-  - chaos-engineering
-  - azure-faults
 redirect_from:
 - /docs/chaos-engineering/technical-reference/chaos-faults/azure/azure-web-app-access-restrict
 - /docs/chaos-engineering/chaos-faults/azure/azure-web-app-access-restrict
 ---
+Azure web app access restrict causes a split brain condition by restricting the access to an application service instance.
+- This fault checks if the requests have been serviced and recovery is automated after the restrictions have been lifted.
+- It checks the performance of the application (or process) running on the instance.
 
-import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
-
-Azure web app access restrict is an Azure chaos fault that adds an Access Restriction rule (`RULE_NAME`) to one or more App Service web apps listed in `AZURE_WEB_APP_NAMES` (in `RESOURCE_GROUP`, subscription `AZURE_SUBSCRIPTION_ID`) with `ACTION` against `IP_ADDRESS_BLOCK` at priority `PRIORITY` for `TOTAL_CHAOS_DURATION` seconds, then removes the rule. With the defaults (`Deny` against `0.0.0.0/0`), the web app rejects every inbound request from the front-end with `403 Forbidden` while the rule is in effect.
-
-Use this fault to test how clients behave when traffic to an App Service web app is blocked without the app being stopped: whether Traffic Manager / Front Door reroute traffic, whether dependent services degrade gracefully, and whether monitoring detects the outage within the alerting SLA.
-
-:::info Run your first experiment
-If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
-:::
-
----
+![Azure Web App Access Restrict](./static/images/azure-web-app-access-restrict.png)
 
 ## Use cases
 
-Run this fault when you want to answer concrete questions like:
+Azure web app access restrict determines the resilience of an application when access to a specific application service instance is restricted.
 
-- **Web app blocked at the front-end:** When the Access Restriction returns 403 to every caller, do Traffic Manager / Front Door route around the web app inside the failover SLA?
-- **Subset blocked:** Set `IP_ADDRESS_BLOCK` to a specific subnet to simulate blocking a single caller (for example, the API gateway).
-- **Monitoring fidelity:** Do alerts on `Http4xx` or `Http403` fire inside the alerting SLA?
-- **Recovery rehearsal:** Validate the runbook for removing an Access Restriction in case one is left over from a misconfiguration.
+### Prerequisites
+- Kubernetes >= 1.17
+- Azure authentication configured for chaos faults. Refer to [Azure authentication methods](/docs/chaos-engineering/faults/chaos-faults/azure/security-configurations/azure-authentication-methods) for setup instructions.
+- The target Azure web application should be in the running state.
 
----
+### Mandatory tunables
+   <table>
+        <tr>
+            <th> Tunable </th>
+            <th> Description </th>
+            <th> Notes </th>
+        </tr>
+        <tr> 
+            <td> AZURE_WEB_APP_NAMES </td>
+            <td> Name of Athe zure web app services to target.</td>
+            <td> Comma-separated names of the web applications. For more information, go to <a href="#web-app-access-restrict-by-name"> restrict by name.</a></td>
+        </tr>
+        <tr>
+            <td> RESOURCE_GROUP </td>
+            <td> The name of the resource group for the target web app</td>
+            <td> For example, <code>TeamDevops</code>. For more information, go to <a href="#web-app-access-restrict-by-name"> resource group field in the YAML file.</a></td>
+        </tr> 
+    </table>
 
-## Prerequisites
+### Optional tunables
+  <table>
+        <tr>
+            <th> Tunable </th>
+            <th> Description </th>
+            <th> Notes </th>
+        </tr>
+        <tr>
+            <td> RULE_NAME </td>
+            <td> Rule name that is added as a part of the chaos injection. </td>
+            <td> If this is not provided, the fault uses the default name, i.e. <code>litmus-experiment-rule</code>. For more information, go to <a href="#access-restrict-with-custom-rule-name"> restrict with custom rule. </a></td>
+        </tr>
+        <tr>
+            <td> IP_ADDRESS_BLOCK </td>
+            <td> IP address (or CIDR range) for the rule. </td>
+            <td>  Defaults to <code>0.0.0.0/0</code>. For more information, go to <a href="#access-restrict-for-a-certain-cidr-range"> restrict for a CIDR range. </a></td>
+        </tr>
+        <tr>
+            <td> ACTION </td>
+            <td> Action you wish to perfrom with the rule. </td>
+            <td> Defaults to <code>deny</code>. Also supports <code>allow</code> action. For more information, go to <a href="#access-restrict-with-action"> restrict with action. </a></td>
+        </tr>
+        <tr>
+            <td> PRIORITY </td>
+            <td> Priority of the rule, wherein lower the number, higher is the priority and vice-versa. </td>
+            <td> Defaults to 300. For more information, refer <a href="#access-restrict-with-priority"> restrict with priority.</a></td>
+        </tr>
+        <tr> 
+            <td> TOTAL_CHAOS_DURATION </td>
+            <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+            <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos.</a></td>
+        </tr>
+        <tr>
+        <td> DEFAULT_HEALTH_CHECK </td>
+        <td> Determines if you wish to run the default health check which is present inside the fault. </td>
+        <td> Default: 'true'. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
+        </tr>
+        <tr> 
+            <td> CHAOS_INTERVAL </td>
+            <td> Time interval between two successive instance power offs (in seconds).</td>
+            <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
+        </tr>
+        <tr>
+            <td> SEQUENCE </td>
+            <td> Sequence of chaos execution for multiple instances. </td>
+        <td> Defaults to <code>parallel</code>. Also supports <code>serial</code> sequence. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
+        </tr>
+        <tr>
+            <td> RAMP_TIME </td>
+            <td> Period to wait before and after injecting chaos (in seconds). </td>
+            <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
+        </tr>
+    </table>
 
-- **Kubernetes version:** 1.21 or later for the chaos infrastructure cluster.
-- **Target web apps reachable:** Each entry in `AZURE_WEB_APP_NAMES` exists in `RESOURCE_GROUP`.
-- **Azure credentials available:** Service principal File Secret, workload identity, or managed identity.
-- **RBAC granted:** The principal includes the role listed below.
 
----
+### Web app access restrict by name
 
-## Supported environments
+It specifies a comma-separated list of web application names subject to chaos. Tune it by using the `AZURE_WEB_APP_NAMES` environment variable.
 
-| Platform | Support status |
-| --- | --- |
-| App Service (Windows or Linux plans) | Supported |
-| Function Apps | Supported (same `Microsoft.Web/sites/config` actions apply) |
-| App Service Environment (ASE) v3 | Supported |
+Use the following example to tune it:
 
----
-
-## Permissions required
-
-The Azure principal used by the chaos pod needs the following role on the target resource group or subscription.
-
-**Recommended built-in role:** `Website Contributor`
-
-**Custom role (minimum actions):**
-
-```json
-{
-  "Name": "Harness Chaos Web App Access Restrict",
-  "Actions": [
-    "Microsoft.Web/sites/read",
-    "Microsoft.Web/sites/config/read",
-    "Microsoft.Web/sites/config/write"
-  ],
-  "AssignableScopes": ["/subscriptions/<SUBSCRIPTION_ID>"]
-}
+[embedmd]:# (./static/manifests/azure-web-access-restrict/azure-web-app-name.yaml yaml)
+```yaml
+# access restrict on target web app by their names
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: azure-web-access-restrict
+    spec:
+      components:
+        env:
+        # comma separated names of the target web apps
+        - name: AZURE_WEB_APP_NAMES
+          value: 'webApp-01,webApp-02'
+        # name of the resource group
+        - name: RESOURCE_GROUP
+          value: 'chaos-rg'
+        - name: TOTAL_CHAOS_DURATION
+          VALUE: '60'
 ```
 
-Go to [Azure fault permissions](/docs/chaos-engineering/faults/chaos-faults/azure/security-configurations/fault-permissions) to read the full permission catalog.
 
----
+### Access restrict for a certain CIDR range
 
-## Authentication
+It specifies a CIDR range used in the rule. Tune it by using the `IP_ADDRESS_BLOCK` environment variable.
 
-Go to [Azure authentication methods](/docs/chaos-engineering/faults/chaos-faults/azure/security-configurations/azure-authentication-methods) to set up Service principal, Workload identity, or Managed identity.
+Use the following example to tune it:
 
----
+[embedmd]:# (./static/manifests/azure-web-access-restrict/ip-address-block.yaml yaml)
+```yaml
+# restrict the web app for a certain 
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: azure-web-access-restrict
+    spec:
+      components:
+        env:
+        # provide the value of ip address/CIDR Range
+        - name: IP_ADDRESS_BLOCK
+          value: '0.0.0.0/0'
+        # name of the resource group
+        - name: RESOURCE_GROUP
+          value: 'chaos-rg'
+        - name: TOTAL_CHAOS_DURATION
+          VALUE: '60'
+```
 
-## Fault tunables
+### Access restrict with action
 
-Configure the following fault parameters when you add Azure web app access restrict to an experiment in Chaos Studio. Defaults are shown for reference.
+It specifies whether to allow or deny the traffic for the rule provided. Tune it by using the `ACTION` environment variable. By default, it is set to `deny`.
 
-**Required parameters**
+Use the following example to tune it:
 
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `AZURE_WEB_APP_NAMES` | Comma-separated list of web app names. | (required) |
-| `RESOURCE_GROUP` | Resource group that contains the web apps. | (required) |
+[embedmd]:# (./static/manifests/azure-web-access-restrict/action.yaml yaml)
+```yaml
+# defines the action for the given network rule
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: azure-web-access-restrict
+    spec:
+      components:
+        env:
+        # Provide the action for a rule
+        - name: ACTION
+          value: 'deny'
+         # duration for the chaos execution
+        - name: TOTAL_CHAOS_DURATION
+          VALUE: '60'
+```
 
-**Rule parameters**
+### Access restrict with priority
 
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `RULE_NAME` | Name of the Access Restriction rule the fault creates. | `chaos-experiment-rule` |
-| `ACTION` | Rule action: `Deny` (block) or `Allow` (whitelist). | `Deny` |
-| `PRIORITY` | Priority of the rule (lower numbers take precedence). | `300` |
-| `IP_ADDRESS_BLOCK` | CIDR block that the rule applies to. | `0.0.0.0/0` |
+It specifies the priority of the network rule created by the fault. Tune it by using the `PRIORITY` environment variable. By default, it is set to 300.
 
-**Chaos parameters**
+Use the following example to tune it:
 
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `TOTAL_CHAOS_DURATION` | Total duration of the fault in seconds. The rule stays in effect for this period. | `60` |
-| `CHAOS_INTERVAL` | Delay in seconds between successive iterations when running for more than one cycle. | `60` |
-| `RAMP_TIME` | Wait period in seconds before and after the fault. Go to [ramp time](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time) to read how it is applied. | `0` |
+[embedmd]:# (./static/manifests/azure-web-access-restrict/priority.yaml yaml)
+```yaml
+# defines the priority for the network rule
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: azure-web-access-restrict
+    spec:
+      components:
+        env:
+        # Provide the priority for a rule
+        - name: PRIORITY
+          value: '300'
+         # duration for the chaos execution
+        - name: TOTAL_CHAOS_DURATION
+          VALUE: '60'
+```
 
-**Authentication**
+### Access restrict with custom rule name
 
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `AZURE_SUBSCRIPTION_ID` | Target Azure subscription ID. | `""` |
-| `AZURE_CLIENT_ID` | Client ID of a user-assigned managed identity. | `""` |
-| `AZURE_AUTHENTICATION_SECRET` | Identifier of the **File Secret in Harness Secret Manager** that contains the service principal JSON. | `""` |
+It specifies a custom rule name for the chaos. Tune it by using the `RULE_NAME` environment variable.
 
-Tunables that apply to every fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
+Use the following example to tune it:
 
----
-
-## Fault execution in brief
-
-Updates the `ipSecurityRestrictions` of each web app in `AZURE_WEB_APP_NAMES` to add an entry named `RULE_NAME` with action `ACTION`, priority `PRIORITY`, applied to `IP_ADDRESS_BLOCK`. Waits for `TOTAL_CHAOS_DURATION`, then removes the rule and writes back the config.
-
----
-
-## Expected behavior during fault execution
-
-- The web app's front-end immediately enforces the new rule; matching traffic receives `403 Forbidden` (Deny) or non-matching traffic receives `403 Forbidden` (Allow with a narrow IP block).
-- Existing connections may stay open briefly before the front-end recycles them.
-- Azure Monitor shows a spike in `Http4xx` / `Http403` on the affected web apps.
-- After the duration ends, the rule is removed and the web app accepts traffic normally again.
-
-:::info When the fault ends
-The chaos pod removes the rule from `ipSecurityRestrictions` and writes back the config. Front-end enforcement reverts within seconds.
-:::
-
-### Signals to watch
-
-- **External availability:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) from a caller in the affected IP range and assert `403` during the chaos window.
-- **Failover:** If Traffic Manager / Front Door is in front, use an HTTP probe on the public endpoint and assert it stays available.
-
----
-
-## Verify the fault execution effect
-
-1. **Inspect the Access Restrictions on the web app.**
-
-   ```bash
-   az webapp config access-restriction show \
-     --resource-group <rg> \
-     --name <webapp>
-   ```
-
-   You should see an entry named `RULE_NAME` during the chaos window and none after.
-
-2. **Hit the web app URL from a caller in the blocked range.**
-
-   ```bash
-   curl -i https://<webapp>.azurewebsites.net
-   ```
-
-   Expect `403 Forbidden` during the chaos window.
-
----
-
-## Recovery and cleanup
-
-- **End of duration:** The chaos pod removes the `RULE_NAME` rule from each web app's `ipSecurityRestrictions`.
-- **Abort the experiment:** Stopping the experiment from Chaos Studio also removes the rule.
-- **Manual recovery:** Run `az webapp config access-restriction remove --resource-group <rg> --name <webapp> --rule-name <RULE_NAME>` for any web app that still has the rule.
-
----
-
-## Limitations
-
-- **Front-end enforcement:** Access Restrictions are enforced at the App Service front-end; in-region private endpoints may bypass them depending on configuration.
-- **Same-subscription targeting:** A single experiment targets one `AZURE_SUBSCRIPTION_ID`.
-- **Rule name collision:** If a rule named `RULE_NAME` already exists, the API call fails. Override `RULE_NAME` per experiment.
-- **PRIORITY collisions:** If `PRIORITY` collides with an existing rule, the API call fails; pick an unused priority (300 is the default).
-
----
-
-## Troubleshooting
-
-<Troubleshoot
-  issue="Azure web app access restrict fails with rule already exists in Harness Chaos Engineering"
-  mode="docs"
-  fallback="A rule named RULE_NAME (default chaos-experiment-rule) already exists on the web app. Remove it with az webapp config access-restriction remove -g <rg> -n <webapp> --rule-name <name>, or set RULE_NAME to a unique value."
-/>
-
-<Troubleshoot
-  issue="Azure web app access restrict fails with AuthorizationFailed"
-  mode="docs"
-  fallback="The Azure principal is missing Microsoft.Web/sites/config/write. Assign Website Contributor (or a custom role with the listed actions) on the target resource group or subscription."
-/>
-
-<Troubleshoot
-  issue="Rule was not removed after the experiment ended"
-  mode="docs"
-  fallback="If the chaos pod exited before cleanup, run az webapp config access-restriction remove --resource-group <rg> --name <webapp> --rule-name <RULE_NAME>. Inspect the chaos pod logs to root-cause why cleanup failed."
-/>
-
----
-
-## Related faults
-
-- [Azure web app stop](/docs/chaos-engineering/faults/chaos-faults/azure/azure-web-app-stop): Stop the web app entirely instead of blocking traffic with a rule.
-- [Azure instance stop](/docs/chaos-engineering/faults/chaos-faults/azure/azure-instance-stop): Stop a VM hosting the workload instead of an App Service web app.
+[embedmd]:# (./static/manifests/azure-web-access-restrict/rule-name.yaml yaml)
+```yaml
+# defines the rule name for the network rule created
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: azure-web-access-restrict
+    spec:
+      components:
+        env:
+        # Provide the name of the rule
+        - name: RULE_NAME
+          value: 'chaos-rule'
+```

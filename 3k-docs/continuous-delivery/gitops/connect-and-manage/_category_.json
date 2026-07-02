@@ -1,0 +1,12 @@
+{
+  "label": "Manage Argo",
+  "position": "700",
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "description": "Manage and use Argo applications and Argo specific features",
+  "link": {
+      "type": "generated-index",
+      "title": "Manage Argo"
+  }
+}

@@ -6,7 +6,6 @@ redirect_from:
   - /docs/service-reliability-management/getting-started/create-first-slo
 ---
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

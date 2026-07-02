@@ -4,7 +4,6 @@ description: Learn about SLO downtime and how it can benefit you.
 sidebar_position: 10
 ---
 
-
 # SLO downtime overview
 
 SLO downtime lets you schedule a maintenance window during which your service can undergo updates without impacting the SLO.

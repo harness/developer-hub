@@ -1,0 +1,11 @@
+{
+    "label":"Azure DevOps",
+    "position": 16,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"default",
+    "link":{
+       "type":"generated-index",
+       "title":"Azure DevOps"
+    }
+ }

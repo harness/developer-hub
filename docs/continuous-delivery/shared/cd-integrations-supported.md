@@ -22,7 +22,7 @@ import PlatformList from '/docs/continuous-delivery/shared/platform-support.md'
 
 - **Overview:**
   - [Kubernetes](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview)
-  - [Helm charts](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart) (v3)
+  - [Helm charts](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart) (v2 and v3)
   - [Kustomize](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-quickstart)
   - Local ([Harness Community Edition](/docs/continuous-delivery/deploy-srv-diff-platforms/community-ed/harness-community-edition-overview))
 
@@ -61,11 +61,11 @@ import PlatformList from '/docs/continuous-delivery/shared/platform-support.md'
   - Tooling:
     - OpenShift - oc client binary
     - Kustomize - kustomize binary
-    - Helm - Helm v3.15.4 (shipped); Helm v3 versions up to v3.21.1 are supported
+    - Helm - Helm 3.12 (default) and 2.8 binary
+    - Helm 3.8 supported via feature flag `CDS_HELM_VERSION_3_8_0`
 - **Limitations:**
   - Helm:
     - Helm Hooks are not supported for this swimlane. Harness manages and orchestrates the manifests and their release.
-    - There is a known open Helm issue ([helm/helm#10748](https://github.com/helm/helm/issues/10748)) where Helm does not remove a resource on upgrade if another resource with the same `Kind` but a different `apiVersion` exists in the same release. Helm merged a fix but subsequently reverted it due to a regression, and the issue remains unresolved.
     - Kustomize:
       - Kustomize Patches are only supported in YAML, not JSON
       - Kustomize Containerized Plugins are not supported
@@ -139,52 +139,14 @@ The following versions are tested and supported for Kubernetes Canary, Rolling, 
 - 1.30.10
 - 1.31.8
 - 1.33.4
-- 1.34.0
 
-Go to [Delegate-required SDKs](/docs/platform/delegates/delegate-reference/delegate-required-sdks) to view other tools and versions included in Harness.
+For details on other tools and versions included in Harness, see [Delegate-required SDKs](/docs/platform/delegates/delegate-reference/delegate-required-sdks).
 
 Guidelines:
 
 - Harness will officially support 3 previous versions from the last stable release. For example, the current most recent stable release is 1.25.6, and so Harness supports 1.24, 1.23, and 1.22.
 - Harness supports any other versions of Kubernetes you are using on a best effort basis.
 - Harness commits to support new minor versions within 3 months of the first stable release. For example, if the stable release of 1.25.6 occurs on April 15th, we will support it for compatibility by July 15th.
-
-#### Kubernetes Java client compatibility
-
-Harness uses the Kubernetes Java client (`io.kubernetes:client-java`) version **22.0.1**, which is generated from the Kubernetes **1.31** OpenAPI specification. This client is compatible with Kubernetes API servers across multiple versions due to Kubernetes API backward and forward compatibility guarantees.
-
-:::warning Kubernetes 1.33 approaching end of life
-Kubernetes 1.33 is approaching end of life (EOL) in July 2026. Harness supports Kubernetes 1.34 to ensure customers can upgrade before 1.33 reaches EOL. A future upgrade to Kubernetes Java client 25.x is planned to provide full support for Kubernetes 1.34 and newer versions.
-:::
-
-**Compatibility matrix:**
-
-| Kubernetes API Server Version | Harness Client Support Status | Notes |
-|------------------------------|-------------------------------|-------|
-| 1.13 - 1.31 | Fully Supported | All features tested and certified |
-| 1.32 - 1.34 | Partially Supported | Deployments work; manifests using fields added after 1.31 cause validation errors (see limitations below) |
-| 1.35 and later | Partially Supported | Deployments work; manifests using fields added after 1.31 cause validation errors (see limitations below) |
-
-**Important notes:**
-
-When deploying to Kubernetes clusters running versions 1.32 and above, be aware of the following limitations:
-
-- **New API fields:** Kubernetes versions after 1.31 introduce new optional fields in core resource types (Pod, Deployment, DaemonSet, StatefulSet, Job, CronJob).
-- **Validation behavior:** If your manifests contain fields that were added in Kubernetes versions 1.32 and later, Harness will throw a `KubernetesYamlException` during manifest validation.
-- **Affected fields:** The following fields added between Kubernetes 1.31 and 1.35 are not recognized by the current client:
-  - `spec.hostnameOverride`, `spec.resources`, `spec.workloadRef` (in PodSpec)
-  - `containers[].restartPolicyRules` (in Container and EphemeralContainer)
-  - `containers[].lifecycle.stopSignal` (in Lifecycle)
-  - `spec.securityContext.seLinuxChangePolicy` (in PodSecurityContext)
-  - `spec.volumes[].projected.sources[].podCertificate` (in VolumeProjection)
-  - `containers[].env[].valueFrom.fileKeyRef` (in EnvVarSource)
-
-**Workaround:**
-
-If you encounter validation errors when using these newer fields, you have two options:
-
-1. **Remove the new fields:** Remove any Kubernetes 1.32+ fields from your manifests. These fields are optional additions and your deployments will work without them on supported Kubernetes versions.
-2. **Use kubectl apply:** Use the Harness **Apply** step instead of the standard deployment steps. The Apply step uses kubectl directly and bypasses the Java client validation, allowing newer fields to pass through to your cluster.
 
 ### Helm notes
 
@@ -230,14 +192,15 @@ To use an AKS cluster for deployment, the AKS cluster parameter `disableLocalAcc
   - AWS Elastic Kubernetes Service
   - Red Hat OpenShift
 - **Versions and tooling support:**
-  - Helm Client Versions: Harness ships Helm v3.15.4; Helm v3 versions up to v3.21.1 are supported
+  - Helm Client Versions: 2.8 - 3.8
   - We support what each of the Cloud Providers support, we recommend users to keep their binary versions up to date
+  - By default Harness ships with helm client 3.12.
   - Tooling:
     - OpenShift - oc client binary
     - Kustomize - kustomize binary
-    - Helm - Helm v3.15.4 (shipped)
+    - Helm - Helm 3.12 & 2.8 binary. Helm 3.8 can be supported via feature flag.
 - **Limitations:**
-  - Helm v2 is not supported. Only Helm v3 is supported.
+  - Helm 2 is deprecated so there is limited support for Helm 2.
   - Helm 3 is now the default for Harness Helm Chart Deployments.
   - Helm Plugins are not supported
   - Only Basic Deployment Strategy supported (No Canary or Blue-Green Support Out of the box)

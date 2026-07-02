@@ -4,7 +4,6 @@ description: Configure your Harness pipelines to build, test, and deploy code fr
 sidebar_position: 10
 ---
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

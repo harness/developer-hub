@@ -2,7 +2,6 @@
 title: Applying Custom Sizes to Services
 ---
 
-
 *Note: This guide assumes you’re deploying Spinnaker on Kubernetes using the [Distributed](https://www.spinnaker.io/setup/install/environment/#distributed-installation) deployment type with Halyard.*
 You may find the need to apply custom limits and requests to some of the Spinnaker services – doing so can provide more stable behavior of the services while also preventing extreme bursts of CPU activity or the allocation of more memory than is available (and thus being OOM Killed).
 Custom Sizing in Hal Config

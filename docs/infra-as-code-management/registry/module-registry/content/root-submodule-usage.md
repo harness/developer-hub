@@ -16,6 +16,7 @@ Set the variable to a [Harness personal access token (PAT)](/docs/platform/autom
 
 ```bash
 export TF_TOKEN_app_harness_io=<your_harness_pat>
+export TF_TOKEN_app_harness_io=<your_harness_pat>
 tofu init
 # or: terraform init
 ```
@@ -26,7 +27,6 @@ If your organization runs Harness on a custom domain (for example `registry.exam
 ```bash
 export TF_TOKEN_registry_example_com=<your_harness_pat>
 tofu init   # or: terraform init
-```
 :::
 
 Once the variable is set, subsequent `tofu validate`, `tofu plan`, and equivalent Terraform commands work without further configuration for the duration of your shell session. To persist the token across sessions, add the `export` line to your shell profile (for example `~/.zshrc` or `~/.bashrc`). Alternatively, store credentials in the OpenTofu or Terraform credentials file (`~/.tofurc` or `~/.terraform.d/credentials.tfrc.json`) to avoid environment variable management.
@@ -90,62 +90,4 @@ module "native-submodule" {
 
 :::info submodule versions
 **Submodules cannot have a version included**, as Git tags do not apply to anything beyond the root level.
-:::
-
-## Non-standard folder structures
-
-By default, the Module Registry expects the root module (`main.tf`) at the repository root and submodules inside a `modules` folder. If your repository uses a different layout, use the **Folder Path** property to tell Harness where the root module lives. The **Folder Path** field in the UI maps to the `repository_path` argument on the `harness_platform_infra_module` Terraform resource, which is defined as the path to the module within the repository.
-
-### Root module in a subdirectory
-
-When `main.tf` is not at the repository root, for example in a monorepo that holds several modules, set **Folder Path** to the directory that contains the root module. Harness then treats that directory as the module root.
-
-Example repository where the root module lives in `terraform/infrastructure`:
-
-```
-.
-├── README.md
-├── terraform/
-│   ├── infrastructure/
-│   │   ├── main.tf
-│   │   ├── variables.tf
-│   │   ├── outputs.tf
-│   │   ├── modules/
-│   │   │   ├── submoduleA/
-│   │   │   │   ├── main.tf
-```
-
-Set the **Folder Path** when you register the module:
-
-1. In the **New Module** wizard, configure the module name, provider, connector, and repository.
-2. In the **Folder Path** field, enter the path from the repository root to the directory that contains the root module, for example `terraform/infrastructure`.
-3. Complete the remaining fields and save.
-
-Set the equivalent `repository_path` argument when you register the module with the Harness OpenTofu or Terraform provider:
-
-```hcl
-resource "harness_platform_infra_module" "example" {
-  name                 = "my-module"
-  system               = "provider"
-  repository           = "tf-aws-vpc"
-  repository_branch    = "main"
-  repository_path      = "terraform/infrastructure"
-  repository_connector = "account.mygithub"
-}
-```
-
-### Submodules outside the root modules folder
-
-After you set **Folder Path**, the `modules` folder is resolved relative to the configured root module, not the repository root. In the example above, Harness collects submodule metadata from `terraform/infrastructure/modules`. Submodule metadata is still only collected from a folder named `modules` at the configured root, so keep submodules whose metadata you want surfaced in the registry inside that folder.
-
-Referencing a submodule in your code is independent of metadata collection. Use the `//` subpath syntax in the `source` argument to point at a submodule at any path within the module:
-
-```hcl
-module "native-submodule" {
-  source = "app.harness.io/<account-id>/native-module//modules/native-submodule"
-}
-```
-
-:::tip
-If submodules do not appear on the registered module, confirm that **Folder Path** points at the directory that contains `main.tf` and that the submodules sit in a `modules` folder directly under that path. Metadata collection is one level deep, so deeply nested submodules are not surfaced even though they remain usable through the `//` subpath syntax.
 :::

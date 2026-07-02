@@ -1,7 +1,7 @@
 ---
 title: Pull Request Validation Error - File not Found (Module)
 redirect_from:
-  - /docs/continuous-delivery/armory/general/pull-request-validation-error---file-not-found-module
+  - /docs/continuous-delivery/armory/general/pull-request-validation-errorfile-not-found-module
 ---
 
 ## Issue

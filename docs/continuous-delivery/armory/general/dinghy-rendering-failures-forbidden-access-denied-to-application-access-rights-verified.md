@@ -1,7 +1,7 @@
 ---
 title: Dinghy rendering failures - Forbidden- Access denied to application (Access Rights Verified)
 redirect_from:
-  - /docs/continuous-delivery/armory/general/dinghy-rendering-failures---forbidden--access-denied-to-application-access-rights-verified
+  - /docs/continuous-delivery/armory/general/dinghy-rendering-failuresforbidden--access-denied-to-application-access-rights-verified
 ---
 
 ## Issue

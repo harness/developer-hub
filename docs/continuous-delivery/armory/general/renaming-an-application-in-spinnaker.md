@@ -2,7 +2,6 @@
 title: Renaming An Application in Spinnaker
 ---
 
-
 Question:
 Can I Rename An Application in Spinnaker?
 Answer:

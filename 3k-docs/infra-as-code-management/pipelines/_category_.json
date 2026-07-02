@@ -1,0 +1,15 @@
+{
+    "label":"Pipelines",
+    "position": 60,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"default",
+    "link":{
+       "type":"generated-index",
+       "title":"Pipelines",
+       "slug":"/category/iacm-pipelines"
+    },
+    "customProps":{
+       "helpdocs_category_id":""
+    }
+ }

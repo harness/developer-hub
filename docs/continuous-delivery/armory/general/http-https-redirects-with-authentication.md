@@ -2,7 +2,6 @@
 title: HTTP/HTTPS Redirects with Authentication
 ---
 
-
 Troubleshooting HTTP/HTTPS Redirects
 When setting up TLS encryption for Deck and Gate (the UI and API) for Spinnaker, if you have a load balancer (service, ingress, etc.) in front of your Deck/Gate that are terminating TLS and forwarding communications insecure to the Spinnaker microservices, sometimes the authentication process will redirect to the incorrect path.
 For example, if you have LDAP set up and the following flow:

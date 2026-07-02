@@ -1266,7 +1266,7 @@ aside.theme-doc-sidebar-container > div {
   height: 32px;
   min-width: 32px;
   margin-right: 12px;
-  background-image: url('/img/icon_ssca.svg');
+  background-image: url('/img/home/security-test.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -1878,630 +1878,74 @@ html[data-theme='dark'] .navbar__search_kapa kbd {
 .menu {
   margin-bottom: 0px !important;
 }
-/* collapseSidebarButton hidden via sidebar styling above */
+
+/* ── Shared base: sizing/spacing for ALL sidebar icon classes ── */
+.sidebar-ai > div > a::before,
+.sidebar-ai > a::before,
 .sidebar-platform > div > a::before,
-.sidebar-platform > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/logo.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
+.sidebar-platform > a::before,
 .sidebar-cr > div > a::before,
-.sidebar-cr > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/icon_code.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
+.sidebar-cr > a::before,
 .sidebar-ci > div > a::before,
-.sidebar-ci > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/icon_ci.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
+.sidebar-ci > a::before,
 .sidebar-ar > div > a::before,
-.sidebar-ar > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/icon_artifact_registry.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
+.sidebar-ar > a::before,
 .sidebar-ata > div > a::before,
-.sidebar-ata > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/logo-ata.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
+.sidebar-ata > a::before,
 .sidebar-cd > div > a::before,
-.sidebar-cd > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/icon_cd.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
+.sidebar-cd > a::before,
 .sidebar-cde > div > a::before,
-.sidebar-cde > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/cde_icon.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
+.sidebar-cde > a::before,
 .sidebar-iacm > div > a::before,
-.sidebar-iacm > a::before {
-  content: ' ';
-  display: inline-block;
-  min-height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/icon_iacm.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-/* API Reference page - align with docs height from navbar */
-main:has([class*='apiRefPageWrapper']) {
-  margin-top: 0 !important;
-  padding-top: 0.5rem !important;
-}
-main:has([class*='apiRefPageWrapper']) > [class*='apiRefPageWrapper'] {
-  margin-top: 0;
-  padding-top: 0;
-}
-
-/* API Reference sidebar - items transparent like Documentation sidebar (no boxes/borders) */
-[data-api-ref-sidebar] .menu__link,
-[data-api-ref-sidebar] .menu__list-item,
-[data-api-ref-sidebar] .menu__list-item-collapsible {
-  background: transparent;
-  border: none;
-}
-
-[data-api-ref-sidebar] .menu__list-item-collapsible:hover {
-  background: var(--gray-100);
-}
-
-/* Category rows - match .horizontal-bar: spacing, 14px, 700, and colors */
-[data-api-ref-sidebar] .menu__list-item:has(> .menu__list-item-collapsible) {
-  margin-top: 15px;
-}
-
-[data-api-ref-sidebar] .menu__list-item:has(> .menu__list-item-collapsible):first-child {
-  margin-top: 0;
-}
-
-[data-api-ref-sidebar] button.menu__link.menu__link--sublist {
-  appearance: none;
-  -webkit-appearance: none;
-  background: none;
-  border: none;
-  border-radius: 6px;
-  border-left: 3px solid transparent;
-  color: var(--gray-900);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  font-family: var(--harness-font-family) !important;
-  font-size: 14px !important;
-  font-weight: 700 !important;
-  letter-spacing: normal;
-  line-height: 1.4;
-  padding: var(--ifm-menu-link-padding-vertical) var(--ifm-menu-link-padding-horizontal);
-  text-align: left;
-  width: 100%;
-}
-
-[data-api-ref-sidebar] button.menu__link.menu__link--sublist:hover {
-  background: var(--gray-100);
-}
-
-/* Toggle arrow on the right */
-[data-api-ref-sidebar] .menu__link--sublist-caret::after {
-  margin-left: auto;
-  flex-shrink: 0;
-}
-
-html[data-theme='dark'] [data-api-ref-sidebar] button.menu__link.menu__link--sublist {
-  color: #ffffff;
-  font-weight: 700;
-  opacity: 1;
-}
-
-html[data-theme='dark'] [data-api-ref-sidebar] button.menu__link.menu__link--sublist:hover {
-  background: rgba(255, 255, 255, 0.08);
-}
-
-/* API Reference sidebar module name block - same icons as docs, 32px to match .moduleNameImg */
-[data-api-ref-sidebar] .moduleNameBlock.sidebar-cr::before {
-  content: ' ';
-  display: inline-block;
-  height: 32px;
-  min-width: 32px;
-  margin-right: 12px;
-  background-image: url('/img/icon_code.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-[data-api-ref-sidebar] .moduleNameBlock.sidebar-platform::before {
-  content: ' ';
-  display: inline-block;
-  height: 32px;
-  min-width: 32px;
-  margin-right: 12px;
-  background-image: url('/img/icon_platform.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-[data-api-ref-sidebar] .moduleNameBlock.sidebar-ci::before {
-  content: ' ';
-  display: inline-block;
-  height: 32px;
-  min-width: 32px;
-  margin-right: 12px;
-  background-image: url('/img/icon_ci.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-[data-api-ref-sidebar] .moduleNameBlock.sidebar-iacm::before {
-  content: ' ';
-  display: inline-block;
-  flex-shrink: 0;
-  height: 32px;
-  min-width: 32px;
-  margin-right: 12px;
-  background-image: url('/img/iacm-icon.svg');
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
+.sidebar-iacm > a::before,
 .sidebar-ff > div > a::before,
-.sidebar-ff > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/icon_ff.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
+.sidebar-ff > a::before,
 .sidebar-fme > div > a::before,
-.sidebar-fme > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/icon_fme.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.sidebar-dbdevops > div > a::before,
-.sidebar-dbdevops > a::before {
-  content: ' ';
-  display: inline-block;
-  min-height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/icon_dbdevops.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
+.sidebar-fme > a::before,
 .sidebar-ccm > div > a::before,
-.sidebar-ccm > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/icon_ccm.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.sidebar-aisec > div > a::before,
-.sidebar-aisec > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/icon-ai-security.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.sidebar-asp > div > a::before,
-.sidebar-asp > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/icon-api-security-posture.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.sidebar-arp > div > a::before,
-.sidebar-arp > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/icon-api-runtime-protection.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.sidebar-ast > div > a::before,
-.sidebar-ast > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/icon-api-security-testing.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.sidebar-asp > div > a::before,
-.sidebar-qwietai > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/icon-qwietai.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
+.sidebar-ccm > a::before,
 .sidebar-sto > div > a::before,
-.sidebar-sto > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/icon_sto.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.sidebar-ssca > div > a::before,
-.sidebar-ssca > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/icon_ssca.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.sidebar-ce > div > a::before,
-.sidebar-ce > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/icon_ce.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.sidebar-aisre > div > a::before,
-.sidebar-aisre > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/icon-ai-sre.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.sidebar-srm > div > a::before,
-.sidebar-srm > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/icon_srm.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.sidebar-cet > div > a::before,
-.sidebar-cet > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/icon_cet.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.sidebar-idp > div > a::before,
-.sidebar-idp > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/icon_idp.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
+.sidebar-sto > a::before,
 .sidebar-sei > div > a::before,
-.sidebar-sei > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/icon_sei.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
+.sidebar-sei > a::before,
+.sidebar-idp > div > a::before,
+.sidebar-idp > a::before,
+.sidebar-dbdevops > div > a::before,
+.sidebar-dbdevops > a::before,
+.sidebar-rm > div > a::before,
+.sidebar-rm > a::before,
+.sidebar-srm > div > a::before,
+.sidebar-srm > a::before,
+.sidebar-ssca > div > a::before,
+.sidebar-ssca > a::before,
+.sidebar-cet > div > a::before,
+.sidebar-cet > a::before,
+.sidebar-cv > div > a::before,
+.sidebar-cv > a::before,
+.sidebar-harness > div > a::before,
+.sidebar-harness > a::before,
+.sidebar-aisre > div > a::before,
+.sidebar-aisre > a::before,
+.sidebar-rt > div > a::before,
+.sidebar-rt > a::before,
+.sidebar-asp > div > a::before,
+.sidebar-asp > a::before,
+.sidebar-aisec > div > a::before,
+.sidebar-aisec > a::before,
 .sidebar-smp > div > a::before,
-.sidebar-smp > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/logo.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
+.sidebar-smp > a::before,
+.sidebar-adra > div > a::before,
+.sidebar-adra > a::before,
+.sidebar-arp > div > a::before,
+.sidebar-arp > a::before,
+.sidebar-ast > div > a::before,
+.sidebar-ast > a::before,
 .sidebar-hsf > div > a::before,
-.sidebar-hsf > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/icon_platform.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.sidebar-harness-firstGen > div > a::before,
-.sidebar-harness-firstGen > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/Harness_FirstGen_Logo.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.sidebar-troubleshooting > div > a::before,
-.sidebar-troubleshooting > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/Troubleshooting_Logo.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.sidebar-API_Reference > div > a::before,
-.sidebar-API_Reference > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/API_Reference_Logo.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.sidebar-Release_Notes > div > a::before,
-.sidebar-Release_Notes > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/Release_Notes_Logo.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.sidebar-Cloud_Operations > div > a::before,
-.sidebar-Cloud_Operations > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/Cloud_Operations_Logo.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.sidebar-faqs > div > a::before,
-.sidebar-faqs > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/faqs_Logo.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.sidebar-all_docs > div > a::before,
-.sidebar-all_docs > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/All_Docs_Logo.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.sidebar-armory > div > a::before,
-.sidebar-armory > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/armory.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.sidebar-reference-arch > div > a::before,
-.sidebar-reference-arch > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/reference_architectures_icon.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
+.sidebar-hsf > a::before,
+.sidebar-qwietai > div > a::before,
+.sidebar-qwietai > a::before,
 .sidebar-opensource > div > a::before,
-.sidebar-opensource > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-html[data-theme='light'] .sidebar-opensource > div > a::before,
-html[data-theme='light'] .sidebar-opensource > a::before {
-  background-image: url('/img/icon_platform.svg');
-}
-
-html[data-theme='dark'] .sidebar-opensource > div > a::before,
-html[data-theme='dark'] .sidebar-opensource > a::before {
-  background-image: url('/img/icon_platform.svg');
-}
-
-.sidebar-roadmap > div > a::before,
-.sidebar-roadmap > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/roadmap_icon.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.sidebar-university > div > a::before,
-.sidebar-university > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/university_icon.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.sidebar-ilt-instructions > div > a::before,
-.sidebar-ilt-instructions > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/ilt_instructions_icon.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.sidebar-hsf > div > a::before,
-.sidebar-hsf > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/icon-hsf.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.sidebar-vilt-cal > div > a::before,
-.sidebar-vilt-cal > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/virtual_instructor_led_calendar_icon.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.sidebar-back > div > a::before,
-.sidebar-back > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/back_icon.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.sidebar-allkb > div > a::before,
-.sidebar-allkb > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/show_all_kb_icon.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
+.sidebar-opensource > a::before,
 .sidebar-univ > div > a::before,
 .sidebar-univ > a::before {
   content: ' ';
@@ -2509,88 +1953,314 @@ html[data-theme='dark'] .sidebar-opensource > a::before {
   height: 24px;
   min-width: 24px;
   margin-right: 8px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* ── Icons identical in both variants ── */
+
+.sidebar-cde > div > a::before,
+.sidebar-cde > a::before {
+  background-image: url('/img/icon_cloud_development_environments.svg');
+}
+
+.sidebar-srm > div > a::before,
+.sidebar-srm > a::before {
+  background-image: url('/img/icon_srm.svg');
+}
+
+.sidebar-cet > div > a::before,
+.sidebar-cet > a::before {
+  background-image: url('/img/icon_cet.svg');
+}
+
+.sidebar-cv > div > a::before,
+.sidebar-cv > a::before {
+  background-image: url('/img/icon_cv.svg');
+}
+
+.sidebar-opensource > div > a::before,
+.sidebar-opensource > a::before {
+  background-image: url('/img/icon_opensource.svg');
+}
+
+.sidebar-univ > div > a::before,
+.sidebar-univ > a::before {
   background-image: url('/img/university_icon.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
 }
 
-.sidebar-ce-new > div > a::before,
-.sidebar-ce-new > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/icon_ce.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.sidebar-rt > div > a::before,
-.sidebar-rt > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/icon_ce.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.sidebar-application-api-protection > div > a::before,
-.sidebar-application-api-protection > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/icon-arp.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.sidebar-application-api-security-testing > div > a::before,
-.sidebar-application-api-security-testing > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/icon-ast.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.sidebar-application-api-posture-management > div > a::before,
-.sidebar-application-api-posture-management > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/icon-adra.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-.sidebar-tbh > div > a::before,
-.sidebar-tbh > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
-  background-image: url('/img/icon_tbh.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
+/* ── 3k-docs icons (/home/ modern variants) ── */
+
+nav[data-docs-variant="3k"] .sidebar-ai > div > a::before,
+nav[data-docs-variant="3k"] .sidebar-ai > a::before {
+  background-image: url('/img/home/ai.svg');
 }
 
-.sidebar-rm > div > a::before,
-.sidebar-rm > a::before {
-  content: ' ';
-  display: inline-block;
-  height: 24px;
-  min-width: 24px;
-  margin-right: 8px;
+nav[data-docs-variant="3k"] .sidebar-platform > div > a::before,
+nav[data-docs-variant="3k"] .sidebar-platform > a::before {
+  background-image: url('/img/home/platform.svg');
+}
+
+nav[data-docs-variant="3k"] .sidebar-cr > div > a::before,
+nav[data-docs-variant="3k"] .sidebar-cr > a::before {
+  background-image: url('/img/home/code.svg');
+}
+
+nav[data-docs-variant="3k"] .sidebar-ci > div > a::before,
+nav[data-docs-variant="3k"] .sidebar-ci > a::before {
+  background-image: url('/img/home/build.svg');
+}
+
+nav[data-docs-variant="3k"] .sidebar-ar > div > a::before,
+nav[data-docs-variant="3k"] .sidebar-ar > a::before {
+  background-image: url('/img/home/artifact.svg');
+}
+
+nav[data-docs-variant="3k"] .sidebar-ata > div > a::before,
+nav[data-docs-variant="3k"] .sidebar-ata > a::before {
+  background-image: url('/img/home/ui-test.svg');
+}
+
+nav[data-docs-variant="3k"] .sidebar-cd > div > a::before,
+nav[data-docs-variant="3k"] .sidebar-cd > a::before {
+  background-image: url('/img/home/deployment.svg');
+}
+
+nav[data-docs-variant="3k"] .sidebar-iacm > div > a::before,
+nav[data-docs-variant="3k"] .sidebar-iacm > a::before {
+  background-image: url('/img/home/infrastructure.svg');
+}
+
+nav[data-docs-variant="3k"] .sidebar-ff > div > a::before,
+nav[data-docs-variant="3k"] .sidebar-ff > a::before {
+  background-image: url('/img/home/feature.svg');
+}
+
+nav[data-docs-variant="3k"] .sidebar-fme > div > a::before,
+nav[data-docs-variant="3k"] .sidebar-fme > a::before {
+  background-image: url('/img/home/feature.svg');
+}
+
+nav[data-docs-variant="3k"] .sidebar-ccm > div > a::before,
+nav[data-docs-variant="3k"] .sidebar-ccm > a::before {
+  background-image: url('/img/home/cloud-cost.svg');
+}
+
+nav[data-docs-variant="3k"] .sidebar-sto > div > a::before,
+nav[data-docs-variant="3k"] .sidebar-sto > a::before {
+  background-image: url('/img/home/security-test.svg');
+}
+
+nav[data-docs-variant="3k"] .sidebar-sei > div > a::before,
+nav[data-docs-variant="3k"] .sidebar-sei > a::before {
+  background-image: url('/img/home/engineering-insights-classic.svg');
+}
+
+nav[data-docs-variant="3k"] .sidebar-idp > div > a::before,
+nav[data-docs-variant="3k"] .sidebar-idp > a::before {
+  background-image: url('/img/home/portal.svg');
+}
+
+nav[data-docs-variant="3k"] .sidebar-dbdevops > div > a::before,
+nav[data-docs-variant="3k"] .sidebar-dbdevops > a::before {
+  background-image: url('/img/home/database.svg');
+}
+
+nav[data-docs-variant="3k"] .sidebar-rm > div > a::before,
+nav[data-docs-variant="3k"] .sidebar-rm > a::before {
+  background-image: url('/img/home/release.svg');
+}
+
+nav[data-docs-variant="3k"] .sidebar-ssca > div > a::before,
+nav[data-docs-variant="3k"] .sidebar-ssca > a::before {
+  background-image: url('/img/home/supply-chain.svg');
+}
+
+nav[data-docs-variant="3k"] .sidebar-harness > div > a::before,
+nav[data-docs-variant="3k"] .sidebar-harness > a::before {
+  background-image: url('/img/home/harness.svg');
+}
+
+nav[data-docs-variant="3k"] .sidebar-aisre > div > a::before,
+nav[data-docs-variant="3k"] .sidebar-aisre > a::before {
+  background-image: url('/img/home/incident.svg');
+}
+
+nav[data-docs-variant="3k"] .sidebar-rt > div > a::before,
+nav[data-docs-variant="3k"] .sidebar-rt > a::before {
+  background-image: url('/img/home/resilience-test.svg');
+}
+
+nav[data-docs-variant="3k"] .sidebar-asp > div > a::before,
+nav[data-docs-variant="3k"] .sidebar-asp > a::before {
+  background-image: url('/img/home/security-test.svg');
+}
+
+nav[data-docs-variant="3k"] .sidebar-adra > div > a::before,
+nav[data-docs-variant="3k"] .sidebar-adra > a::before {
+  background-image: url('/img/home/security-test.svg');
+}
+
+nav[data-docs-variant="3k"] .sidebar-arp > div > a::before,
+nav[data-docs-variant="3k"] .sidebar-arp > a::before {
+  background-image: url('/img/home/runtime.svg');
+}
+
+nav[data-docs-variant="3k"] .sidebar-ast > div > a::before,
+nav[data-docs-variant="3k"] .sidebar-ast > a::before {
+  background-image: url('/img/home/app-sec.svg');
+}
+
+nav[data-docs-variant="3k"] .sidebar-aisec > div > a::before,
+nav[data-docs-variant="3k"] .sidebar-aisec > a::before {
+  background-image: url('/img/home/ai-security.svg');
+}
+
+nav[data-docs-variant="3k"] .sidebar-hsf > div > a::before,
+nav[data-docs-variant="3k"] .sidebar-hsf > a::before {
+  background-image: url('/img/home/harness.svg');
+}
+
+nav[data-docs-variant="3k"] .sidebar-qwietai > div > a::before,
+nav[data-docs-variant="3k"] .sidebar-qwietai > a::before {
+  background-image: url('/img/home/qwiet.svg');
+}
+
+/* ── Legacy docs icons (icon_ originals) ── */
+
+nav[data-docs-variant="legacy"] .sidebar-platform > div > a::before,
+nav[data-docs-variant="legacy"] .sidebar-platform > a::before {
+  background-image: url('/img/icon_platform.svg');
+}
+
+nav[data-docs-variant="legacy"] .sidebar-cr > div > a::before,
+nav[data-docs-variant="legacy"] .sidebar-cr > a::before {
+  background-image: url('/img/icon_code.svg');
+}
+
+nav[data-docs-variant="legacy"] .sidebar-ci > div > a::before,
+nav[data-docs-variant="legacy"] .sidebar-ci > a::before {
+  background-image: url('/img/icon_ci.svg');
+}
+
+nav[data-docs-variant="legacy"] .sidebar-ar > div > a::before,
+nav[data-docs-variant="legacy"] .sidebar-ar > a::before {
+  background-image: url('/img/icon_artifact_registry.svg');
+}
+
+nav[data-docs-variant="legacy"] .sidebar-cd > div > a::before,
+nav[data-docs-variant="legacy"] .sidebar-cd > a::before {
+  background-image: url('/img/icon_cd.svg');
+}
+
+nav[data-docs-variant="legacy"] .sidebar-iacm > div > a::before,
+nav[data-docs-variant="legacy"] .sidebar-iacm > a::before {
+  background-image: url('/img/iacm-icon.svg');
+}
+
+nav[data-docs-variant="legacy"] .sidebar-ata > div > a::before,
+nav[data-docs-variant="legacy"] .sidebar-ata > a::before {
+  background-image: url('/img/icon-aita.svg');
+}
+
+nav[data-docs-variant="legacy"] .sidebar-ff > div > a::before,
+nav[data-docs-variant="legacy"] .sidebar-ff > a::before {
+  background-image: url('/img/icon_ff.svg');
+}
+
+nav[data-docs-variant="legacy"] .sidebar-fme > div > a::before,
+nav[data-docs-variant="legacy"] .sidebar-fme > a::before {
+  background-image: url('/img/icon_fme.svg');
+}
+
+nav[data-docs-variant="legacy"] .sidebar-ccm > div > a::before,
+nav[data-docs-variant="legacy"] .sidebar-ccm > a::before {
+  background-image: url('/img/icon_ccm.svg');
+}
+
+nav[data-docs-variant="legacy"] .sidebar-sto > div > a::before,
+nav[data-docs-variant="legacy"] .sidebar-sto > a::before {
+  background-image: url('/img/icon_sto.svg');
+}
+
+nav[data-docs-variant="legacy"] .sidebar-sei > div > a::before,
+nav[data-docs-variant="legacy"] .sidebar-sei > a::before {
+  background-image: url('/img/icon_sei.svg');
+}
+
+nav[data-docs-variant="legacy"] .sidebar-idp > div > a::before,
+nav[data-docs-variant="legacy"] .sidebar-idp > a::before {
+  background-image: url('/img/icon_idp.svg');
+}
+
+nav[data-docs-variant="legacy"] .sidebar-dbdevops > div > a::before,
+nav[data-docs-variant="legacy"] .sidebar-dbdevops > a::before {
+  background-image: url('/img/icon_dbdevops.svg');
+}
+
+nav[data-docs-variant="legacy"] .sidebar-rm > div > a::before,
+nav[data-docs-variant="legacy"] .sidebar-rm > a::before {
   background-image: url('/img/icon-rm.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
+}
+
+nav[data-docs-variant="legacy"] .sidebar-ssca > div > a::before,
+nav[data-docs-variant="legacy"] .sidebar-ssca > a::before {
+  background-image: url('/img/icon_ssca.svg');
+}
+
+nav[data-docs-variant="legacy"] .sidebar-harness > div > a::before,
+nav[data-docs-variant="legacy"] .sidebar-harness > a::before {
+  background-image: url('/img/icon_harness.svg');
+}
+
+nav[data-docs-variant="legacy"] .sidebar-aisre > div > a::before,
+nav[data-docs-variant="legacy"] .sidebar-aisre > a::before {
+  background-image: url('/img/icon-ai-sre.svg');
+}
+
+nav[data-docs-variant="legacy"] .sidebar-rt > div > a::before,
+nav[data-docs-variant="legacy"] .sidebar-rt > a::before {
+  background-image: url('/img/icon_ce.svg');
+}
+
+nav[data-docs-variant="legacy"] .sidebar-asp > div > a::before,
+nav[data-docs-variant="legacy"] .sidebar-asp > a::before {
+  background-image: url('/img/icon-adra.svg');
+}
+
+nav[data-docs-variant="legacy"] .sidebar-adra > div > a::before,
+nav[data-docs-variant="legacy"] .sidebar-adra > a::before {
+  background-image: url('/img/icon-adra.svg');
+}
+
+nav[data-docs-variant="legacy"] .sidebar-arp > div > a::before,
+nav[data-docs-variant="legacy"] .sidebar-arp > a::before {
+  background-image: url('/img/icon-arp.svg');
+}
+
+nav[data-docs-variant="legacy"] .sidebar-ast > div > a::before,
+nav[data-docs-variant="legacy"] .sidebar-ast > a::before {
+  background-image: url('/img/icon-ast.svg');
+}
+
+nav[data-docs-variant="legacy"] .sidebar-aisec > div > a::before,
+nav[data-docs-variant="legacy"] .sidebar-aisec > a::before {
+  background-image: url('/img/icon-ai-security.svg');
+}
+
+nav[data-docs-variant="legacy"] .sidebar-hsf > div > a::before,
+nav[data-docs-variant="legacy"] .sidebar-hsf > a::before {
+  background-image: url('/img/icon-hsf.svg');
+}
+
+nav[data-docs-variant="legacy"] .sidebar-qwietai > div > a::before,
+nav[data-docs-variant="legacy"] .sidebar-qwietai > a::before {
+  background-image: url('/img/icon-qwietai.svg');
+}
+
+nav[data-docs-variant="legacy"] .sidebar-smp > div > a::before,
+nav[data-docs-variant="legacy"] .sidebar-smp > a::before {
+  background-image: url('/img/icon_harness.svg');
 }
 
 /*******************sidebar logo css end*******************/

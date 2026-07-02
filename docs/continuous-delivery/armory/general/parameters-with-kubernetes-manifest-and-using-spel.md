@@ -4,7 +4,6 @@ redirect_from:
   - /docs/continuous-delivery/armory/general/parameters-with-kubernetes-manifest-&-using-spel
 ---
 
-
 Question:
 How do I dynamically promote a build with parameters in a manifest file in Spinnaker using Kubernetes?
 Answer:

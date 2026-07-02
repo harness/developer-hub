@@ -4,64 +4,64 @@ export const experiments: ExperimentDetails[] = [
   {
     name: "Windows CPU stress",
     description:
-      "Drive CPU utilization to a configurable percentage across a configurable number of cores on a Windows VM for a configurable duration.",
+      "Windows CPU stress applies stress on the CPU resources of Windows OS VM.",
     tags: ["cpu"],
     category: "windows",
   },
   {
-    name: "Windows memory stress",
+    name: "Windows Disk stress",
     description:
-      "Consume a configurable amount of memory on a Windows VM for a configurable duration so you can test how the workload behaves when memory headroom shrinks.",
-    tags: ["memory"],
-    category: "windows",
-  },
-  {
-    name: "Windows disk stress",
-    description:
-      "Drive disk IO load on a Windows VM for a configurable duration so you can test how the workload behaves when storage throughput is saturated.",
+      "Windows disk stress injects disk stress into a Windows OS based VM, by consuming and exhausting the disk resources on the target Windows machine.",
     tags: ["disk"],
     category: "windows",
   },
   {
-    name: "Windows process kill",
+    name: "Windows Memory stress",
     description:
-      "Terminate one or more processes (by PID or name) on a Windows VM for a configurable duration.",
-    tags: ["process", "kill"],
+      "Windows memory stress applies stress on the memory resources of a Windows OS based VM.",
+    tags: ["memory"],
     category: "windows",
   },
   {
-    name: "Windows blackhole chaos",
+    name: "Windows Network Blackhole Chaos",
     description:
-      "Block all network traffic to selected destination hosts or IP addresses from a Windows VM for a configurable duration.",
-    tags: ["network", "blackhole"],
+      "Windows network blackhole chaos simulates a network blackhole scenario on Windows OS based VM.",
+    tags: ["network"],
     category: "windows",
   },
   {
-    name: "Windows network latency",
+    name: "Windows Network Corruption",
     description:
-      "Add latency to egress traffic from a Windows VM for a configurable duration. Scope by destination IP, hostname, port, or protocol.",
-    tags: ["network", "latency"],
-    category: "windows",
-  },
-  {
-    name: "Windows network loss",
-    description:
-      "Drop a configurable percentage of egress packets from a Windows VM for a configurable duration.",
-    tags: ["network", "loss"],
-    category: "windows",
-  },
-  {
-    name: "Windows network corruption",
-    description:
-      "Corrupt a configurable percentage of egress packets from a Windows VM for a configurable duration.",
+      "Windows Network Corruption corrupts network packets on Windows VMs for the target hosts using Clumsy. It checks the performance of the application running on the Windows VMs when network packets are corrupted during transmission.",
     tags: ["network", "corruption"],
     category: "windows",
   },
   {
-    name: "Windows network duplication",
+    name: "Windows Network Duplication",
     description:
-      "Duplicate a configurable percentage of egress packets from a Windows VM for a configurable duration.",
+      "Windows network duplication duplicates network packets on Windows VM for the target hosts or IP addresses using Clumsy. It checks the performance of the services running on the Windows VMs.",
     tags: ["network", "duplication"],
+    category: "windows",
+  },
+  {
+    name: "Windows Network Latency",
+    description:
+      "Windows Network Latency causes a network packet delay on Windows VMs for the target hosts by causing network packet delay using Clumsy.",
+    tags: ["network", "latency"],
+    category: "windows",
+  },
+  {
+    name: "Windows Network Loss",
+    description:
+      "Windows network loss causes a network packet loss on Windows VM for the target hosts or IP addresses using Clumsy.",
+    tags: ["network", "loss"],
+    category: "windows",
+  },
+  {
+    name: "Windows Process Kill",
+    description:
+      "Windows process kill kills the target processes that are running as a part of a Windows OS based VM. The services that are disrupted might be running in the VM, and this fault kills their underlying processes or threads.",
+    tags: ["process", "kill"],
     category: "windows",
   },
 ];

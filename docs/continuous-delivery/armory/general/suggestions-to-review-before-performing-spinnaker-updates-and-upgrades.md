@@ -2,7 +2,6 @@
 title: Suggestions to Review before Performing Spinnaker Updates and Upgrades
 ---
 
-
 The following is a list of articles and suggestions to review when exploring an upgrade path to a Spinnaker environment.  These are general directions to help admins make their upgrade process as painless as possible, but it is by no means meant to be a final checklist of an upgrade process.  It is intended for guidance for our customers to help mitigate some of the risks associated when seeking to upgrade the environment. 
 The [actual settings for upgrading Spinnaker is fairly straightforward](https://docs.armory.io/armory-enterprise/installation/armory-operator/op-manage-spinnaker/), but ensuring the best experience for users may be more complicated depending on the environment structure and design. 
 Some of the best practices listed are general best practices that may also apply to testing plugins and connectivity with external-to-Spinnaker resources.

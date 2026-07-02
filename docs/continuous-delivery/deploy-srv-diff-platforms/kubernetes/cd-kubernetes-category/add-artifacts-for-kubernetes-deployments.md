@@ -576,12 +576,12 @@ spec:
 * Harness uses Go template version 0.4.5. If you are used to Helm templating, you can download Go template and try it out locally to find out if your manifests will work. This can help you avoid issues when adding your manifests to Harness.
 * You can install Go template version 0.4.5 locally to test your manifests. 
   + Mac OS: 
-    + AMD64: `curl -O https://app.harness.io/public/shared/tools/go-template/release/v0.4.15/bin/darwin/amd64/go-template` 
-    + ARM64: `curl -O https://app.harness.io/public/shared/tools/go-template/release/v0.4.15/bin/darwin/arm64/go-template`
+    + AMD64: `curl -O https://app.harness.io/public/shared/tools/go-template/release/v0.4.5/bin/darwin/amd64/go-template` 
+    + ARM64: `curl -O https://app.harness.io/public/shared/tools/go-template/release/v0.4.5/bin/darwin/arm64/go-template`
   + Linux: 
-    + AMD64: `curl -O https://app.harness.io/public/shared/tools/go-template/release/v0.4.15/bin/linux/amd64/go-template`
-    + ARM64: `curl -O https://app.harness.io/public/shared/tools/go-template/release/v0.4.15/bin/linux/arm64/go-template`
-  + Windows: `curl -O https://app.harness.io/public/shared/tools/go-template/release/v0.4.15/bin/windows/amd64/go-template.exe`
+    + AMD64: `curl -O https://app.harness.io/public/shared/tools/go-template/release/v0.4.5/bin/linux/amd64/go-template`
+    + ARM64: `curl -O https://app.harness.io/public/shared/tools/go-template/release/v0.4.5/bin/linux/arm64/go-template`
+  + Windows: `curl -O https://app.harness.io/public/shared/tools/go-template/release/v0.4.5/bin/windows/amd64/go-template.exe`
   
     After installing Go template, you can run the `./go-template` command from your local machine to view the template usage. Here's a sample output:  
   

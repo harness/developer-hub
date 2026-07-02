@@ -1,0 +1,14 @@
+{
+    "label": "Ticketing Systems",
+    "position": "800",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Ticketing Systems"
+    },
+    "customProps": {
+        "helpdocs_category_id": "qd6woyznd7"
+    }
+}

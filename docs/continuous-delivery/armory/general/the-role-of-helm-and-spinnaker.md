@@ -2,7 +2,6 @@
 title: The Role of HELM and Spinnaker
 ---
 
-
 Question:
 *This is a Q&A pulled from the Spinnaker Community Slack team, which [we encourage you to join here](http://join.spinnaker.io/).*
 Thank you for helping me understand the roles of Helm and Spinnaker.

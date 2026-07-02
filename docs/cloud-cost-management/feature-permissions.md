@@ -114,7 +114,6 @@ HarnessEventsMonitoringPolicy:
               - "rds:DescribeDBInstances"
               - "rds:DescribeDBClusters"
               - "rds:DescribeDBSnapshotAttributes"
-              - "account:ListRegions"
           "Resource": "*"
     "Roles":
       - "!Ref HarnessCloudFormationRole"

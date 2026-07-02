@@ -14,15 +14,15 @@ import TabItem from '@theme/TabItem';
 
 Self-service workflows in Harness IDP are powered by **Harness Pipelines**. Each workflow’s backend is configured using Actions and Harness Pipelines. Below is a detailed guide to setting this up in Harness IDP.
 
-## Harness pipelines: Backend orchestration
+## Harness Pipelines: Backend Orchestration
 Harness Pipeline acts as a robust orchestration engine for self-service workflows in Harness IDP. It is directly connected to executing specific tasks in your workflow via defined actions and pipelines.
 
-### Connect inputs, actions and Harness pipelines
+### Connecting Inputs, Actions and Harness Pipelines
 When a workflow is executed, users provide input details required for pipeline execution. These inputs are passed into the pipeline through a workflow action, which triggers specific steps in the pipeline. These steps can perform tasks such as launching a CI/CD process, registering a service in the catalog, setting up infrastructure, etc. 
 
 The action accepts the **Harness Pipeline URL** as input, along with an authentication token that is automatically inserted into the parameters section. This seamless integration is enabled by Harness IDP being part of the broader Harness SaaS ecosystem. Users can also manage workflows via pipelines’ RBAC.
 
-### IDP stage
+### IDP Stage
 Harness IDP includes a native IDP Stage where all IDP-specific tasks required for pipeline execution are pre-configured as pipeline steps within the stage. This enables quick and efficient creation of self-service workflows. 
 
 The IDP Stage provides built-in support for:
@@ -38,7 +38,7 @@ Currently, Harness-specific workflow actions support:
 - Custom Stage (Available with Harness CD License or Free Tier)
 - Codebase-disabled CI Stage with Run Step (Available with Harness CI License)
 
-## Create a Harness pipeline from Harness IDP
+## Creating a Harness Pipeline from Harness IDP
 To create a Harness Pipeline using the IDP Stage, follow these steps:
 1. In your Harness IDP, go to **Configure** → **Select Project**.
 2. Now start with **Create a Pipeline**.
@@ -47,17 +47,17 @@ To create a Harness Pipeline using the IDP Stage, follow these steps:
 3. Add a **Name**, select the type as **Inline** and **Continue**.
 ![](../static/name-pipeline.png)
 
-4. Now **Select Stage Type** as **Developer Portal** and add a [name for your stage](/docs/platform/pipelines/add-a-stage#stage-names) to **Set Up Stage**.
+4. Now **Select Stage Type** as **Developer Portal** and add a [name for your stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#stage-names) to **Set Up Stage**.
 ![](../static/dev-portal-stage-selection.png)
 ![](../static/set-up-stage.png)
 
 ### Infrastructure
 
-Under **Infrastructure** tab, Harness recommends [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#use-harness-cloud), but you can also use a [Kubernetes cluster](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure), [local runner](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) or [self-managed AWS/GCP/Azure VM](/docs/category/set-up-vm-build-infrastructures) build infrastructure.
+Under **Infrastructure** tab, Harness recommends [Harness Cloud](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#use-harness-cloud), but you can also use a [Kubernetes cluster](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure), [local runner](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) or [self-managed AWS/GCP/Azure VM](/docs/category/set-up-vm-build-infrastructures) build infrastructure.
 
 ![](../static/infrastructure.png)
 
-### Pipeline variables 
+### Pipeline Variables 
 Before adding the execution steps, we need to create some pipeline variables with runtime inputs, which will be used as expression inputs in various steps during execution.
 
 To add pipeline variables:
@@ -68,7 +68,7 @@ To add pipeline variables:
 3. Assign a name to the variable and set the input type to **Runtime**.
 ![](../static/add-variable.png)
 
-### Pass inputs
+### Passing Inputs
 The ```spec.parameters``` field in ```workflow.yaml``` contains the inputs required for the configuration. The keys under ```properties``` represent unique IDs for various input fields. These keys correspond to the pipeline variables that must be set as runtime inputs when configuring the pipeline. These inputs are designed to prompt the developer to provide necessary details when creating a new application.
 
 The ```spec.steps``` field specifies a single action: triggering a Harness pipeline. This action requires mainly three inputs:
@@ -111,7 +111,7 @@ spec:
           template_type: ${{ parameters.template_type }} ## SUPPORTED
 ...
 ```
-### Fetch outputs
+### Fetching Outputs
 You can configure your workflows to fetch output from the **Harness Pipeline** and display pipeline output variables using `workflow.yaml`. Here’s how you can do it:  
 
 1. In your `workflow.yaml`, under the `steps` property field, set `showOutputVariables` to `true`.  
@@ -167,7 +167,7 @@ output:
 ```
 
 :::info
-Note that while **user-defined output variables** are allowed for the above use-case, you can also use **system-generated variables** by assigning them as a new variable under the **Shell Script** step, as shown below. 
+Please note that while **user-defined output variables** are allowed for the above use-case, you can also use **system-generated variables** by assigning them as a new variable under the **Shell Script** step, as shown below.  
 
 For example, if a system-generated output variable is **`jira_id`**, you can define it as a **user-defined output variable** under **Optional Configuration** by assigning it to a new variable, such as `test-var`. This newly defined variable (`test-var`) can then be displayed as output in the **IDP workflows**.
 
@@ -175,12 +175,12 @@ For example, if a system-generated output variable is **`jira_id`**, you can def
 :::
 
 
-### Execution steps
+### Execution Steps
 You can add various **execution steps** (pre-included with the **IDP stage**) under the **Execution** tab. Refer to the detailed guide below for step-by-step instructions on adding and implementing **IDP stage execution steps**. 
 
 ![](../static/execution-pipeline.png)
 
-## IDP stage 
+## IDP Stage 
 The self-service flow in IDP is powered by the Harness Pipelines. A stage is a part of a pipeline that contains the logic to perform a major segment of a larger workflow defined in a pipeline. Stages are often based on the different workflow milestones, such as building, approving, and delivering.
 
 The process of adding a stage to a pipeline is the same for all Harness modules. When you add a stage to a pipeline, you select the stage type, such as **Developer Portal** for IDP or **Build** for CI or **Deploy** for CD. The available stage settings are determined by the stage type, and, if applicable, the module associated with the selected stage type.
@@ -195,16 +195,16 @@ This functionality is limited to the modules and settings that you have access t
 
 <DocImage path={require('../static/git-clone-not.png')} width="40%" height="40%" title="Click to view full size image" />
 
-- [Looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) (Parallelism, Matrix, Repeat) are not supported for the IDP stage.
+- [Looping strategies](https://developer.harness.io/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) (Parallelism, Matrix, Repeat) are not supported for the IDP stage.
 
 :::
 
-### 1. Git clone 
+### 1. Git Clone 
 *(Ignore this step if your repository containing the cookiecutter template is public)*
 
 Add a Git Clone step to clone a repository into the Developer Portal stage's workspace. By cloning the repository, you gain access to the necessary code, scripts, or configurations, enabling various actions.
 
-The Git Clone step uses a containerized step group. For more information, go to [Containerize Step Groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/).
+The Git Clone step uses a containerized step group. For more information, refer to [Containerize Step Groups](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/).
 
 <Tabs>
 <TabItem value="Pipeline Studio" label="Pipeline Studio" default>
@@ -222,22 +222,22 @@ The Git Clone step uses a containerized step group. For more information, go to 
 :::info
 - For authentication, **Username-Password** and **GitHub App** methods are supported. The connection type ``ssh`` is currently not supported for Connectors.
 
-- You can use a **GitHub App** to authenticate the Harness GitHub connector. Refer to this [detailed guide](/docs/platform/connectors/code-repositories/git-hub-app-support/) on how to use a GitHub App with a GitHub connector in the IDP stage.
+- You can use a **GitHub App** to authenticate the Harness GitHub connector. Refer to this [detailed guide](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support/) on how to use a GitHub App with a GitHub connector in the IDP stage.
 
-- The [Bitbucket connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference#credentials-settings) supports both **Access Token** and **API Token** authentication modes. For more details, see the reference documentation on [Access Token mode](/release-notes/internal-developer-portal#new-feature-support-for-bitbucket-access-token-authentication-mode) and [API Token mode](/release-notes/internal-developer-portal#new-feature-increased-bitbucket-api-rate-limits).
+- The [Bitbucket connector](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference#credentials-settings) supports both **Access Token** and **API Token** authentication modes. For more details, see the reference documentation on [Access Token mode](/release-notes/internal-developer-portal#new-feature-support-for-bitbucket-access-token-authentication-mode) and [API Token mode](/release-notes/internal-developer-portal#new-feature-increased-bitbucket-api-rate-limits).
 
-**Note**: Ensure that you have **admin permissions** on a GitHub repository within your GitHub organization and that you are able to install **GitHub Apps** in that repository.
+**Note**: Please ensure that you have **admin permissions** on a GitHub repository within your GitHub organization and that you are able to install **GitHub Apps** in that repository.
 This setup is only supported for **organization accounts**, not personal GitHub accounts.
 :::
 
 You can refer to the following resources for more information on creating code repo connectors:
-- Azure Repos: [Connect to Azure Repos](/docs/platform/connectors/code-repositories/connect-to-a-azure-repo)
-- Bitbucket: [Bitbucket Connector Settings Reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
-- GitHub: [GitHub Connector Settings Reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
-- GitLab: [GitLab Connector Settings Reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
+- Azure Repos: [Connect to Azure Repos](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-a-azure-repo)
+- Bitbucket: [Bitbucket Connector Settings Reference](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
+- GitHub: [GitHub Connector Settings Reference](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
+- GitLab: [GitLab Connector Settings Reference](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
 - Other Git Providers: 
-    - [Git Connector Settings Reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference)
-    - [Connect to an AWS CodeCommit Repo](/docs/platform/connectors/code-repositories/connect-to-code-repo)
+    - [Git Connector Settings Reference](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference)
+    - [Connect to an AWS CodeCommit Repo](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo)
 
 3. **Repository Name**:
 - If the connector's URL Type is set to **Repository**, the Repository Name is automatically populated based on the connector's configuration.
@@ -285,7 +285,7 @@ Cookiecutter step is used to take inputs for the cookiecutter template.
 
 :::warning
 
-In the example provided for this step we have used pipeline variables as input for many fields, make sure you have the corresponding pipeline variable created with proper value [as described under pipeline variables](/docs/internal-developer-portal/flows/idp-stage#pipeline-variables). 
+In the example provided for this step we have used pipeline variables as input for many fields, make sure you have the corresponding pipeline variable created with proper value [as described under pipeline variables](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#pipeline-variables). 
 
 :::
 
@@ -296,13 +296,13 @@ In the example provided for this step we have used pipeline variables as input f
 
 ![](../static/cookicutter.png)
 
-#### Repository type
+#### Repository Type
 
 Select the repository type in which your template is stored, which could be public or private git repository. 
 
 :::info
 
-In case it is **Private** make sure you have added the **gitclone step** and the **path for template** should be the **Clone Directory** added in **gitclone step**
+In case it's **Private** make sure you have added the **gitclone step** and the **path for template** should be the **Clone Directory** added in **gitclone step**
 
 In case of public templates you just need to add the public URL of the template path stored in your git provider. eg `https://github.com/devesh-harness/test-cookicutter`
 
@@ -330,7 +330,7 @@ Beyond that, you can have whatever files/directories you want.
 
 :::info
  
-Cookiecutter runs only on the **Project Template** and use values mentioned in `cookiecutter.json`, hence when you add it on git it is suggested to have **one cookiecutter template per repository** with the `cookiecutter.json` on the root. Also in case you do not want to render a file on the execution of cookiecuuter template, but that file is inside your Project Template, add it under `_copy_without_render` key in your `cookiecutter.json` 
+Cookiecutter runs only on the **Project Template** and use values mentioned in `cookiecutter.json`, hence when you add it on git it's suggested to have **one cookiecutter template per repository** with the `cookiecutter.json` on the root. Also in case you don't want to render a file on the execution of cookiecuuter template, but that file is inside your Project Template, add it under `_copy_without_render` key in your `cookiecutter.json` 
 
 ```json
 {
@@ -345,17 +345,17 @@ Cookiecutter runs only on the **Project Template** and use values mentioned in `
 
 :::
 
-#### Path for template 
+#### Path for Template 
 
-First select the type of the input it could be a [Fixed Value](/docs/platform/variables-and-expressions/runtime-inputs#fixed-values), [Runtime input](/docs/platform/variables-and-expressions/runtime-inputs#runtime-inputs) or [Expression](/docs/platform/variables-and-expressions/runtime-inputs#expressions)
+First select the type of the input it could be a [Fixed Value](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values), [Runtime input](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) or [Expression](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#expressions)
 
 In case of **Fixed Value** provide the absolute value of template URL, for e.g. `https://github.com/devesh-harness/test-cookicutter`
 
 In case of **Runtime Input** provide the absolute value of the template URL after you run the pipeline. 
 
-In case of **Expression** provide the pipeline variable in JEXL format which takes the template URL as an input, this is widely used while implementing the [self-service flow](/docs/internal-developer-portal/tutorials/service-onboarding-pipeline#manage-variables-in-the-pipeline).
+In case of **Expression** provide the pipeline variable in JEXL format which takes the template URL as an input, this is widely used while implementing the [self-service flow](/docs/internal-developer-portal/tutorials/service-onboarding-pipeline.md#manage-variables-in-the-pipeline).
 
-#### Configure template
+#### Configure Template
 
 Provide the input required the template in terms of key value pairs in this step. 
 
@@ -384,19 +384,19 @@ Provide the input required the template in terms of key value pairs in this step
 
 
 
-### 3. Create repo
+### 3. Create Repo
 
 This step is to create the repository in your git provider which will be later used to add the service/app created using cookiecutter step along with the catalog which will be created in the **Create Catalog** step. 
 
 :::warning
 
-In the example provided for this step we have used pipeline variables as input for many fields, make sure you have the corresponding pipeline variable created with proper value [as described under pipeline variables](/docs/internal-developer-portal/flows/idp-stage#pipeline-variables). 
+In the example provided for this step we have used pipeline variables as input for many fields, make sure you have the corresponding pipeline variable created with proper value [as described under pipeline variables](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#pipeline-variables). 
 
 :::
 
 :::info
 
-The git connector used under **[Connectors Page](/docs/internal-developer-portal/get-started/onboarding-guide#connector-setup)** in IDP Admin should have fetch access to the repository getting created in this step. 
+The git connector used under **[Connectors Page](https://developer.harness.io/docs/internal-developer-portal/get-started/onboarding-guide#connector-setup)** in IDP Admin should have fetch access to the repository getting created in this step. 
 
 :::
 
@@ -405,7 +405,7 @@ The git connector used under **[Connectors Page](/docs/internal-developer-portal
 
 ![](../static/create-repo.png)
 
-#### Repository type
+#### Repository Type
 
 Select the repository type you want to create, which could be public or private.
 
@@ -414,12 +414,12 @@ Select the repository type you want to create, which could be public or private.
 :::info
 - For authentication, **Username-Password** and **GitHub App** methods are supported. The connection type ``ssh`` is currently not supported for Connectors. 
 
-- You can use a **GitHub App** to authenticate the Harness GitHub connector. Refer to this [detailed guide](/docs/platform/connectors/code-repositories/git-hub-app-support/) on how to use a GitHub App with a GitHub connector in the IDP stage.
+- You can use a **GitHub App** to authenticate the Harness GitHub connector. Refer to this [detailed guide](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support/) on how to use a GitHub App with a GitHub connector in the IDP stage.
 
-- The [Bitbucket connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference#credentials-settings) supports only **API Token** authentication mode for this step. This is due to a known [Bitbucket bug](https://jira.atlassian.com/browse/BCLOUD-22568) where repository creation is not supported with access tokens. For more details, see the reference documentation for [API Token mode](/release-notes/internal-developer-portal#new-feature-increased-bitbucket-api-rate-limits).
+- The [Bitbucket connector](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference#credentials-settings) supports only **API Token** authentication mode for this step. This is due to a known [Bitbucket bug](https://jira.atlassian.com/browse/BCLOUD-22568) where repository creation is not supported with access tokens. For more details, see the reference documentation for [API Token mode](/release-notes/internal-developer-portal#new-feature-increased-bitbucket-api-rate-limits).
 
 
-**Note**: Ensure that you have **admin permissions** on a GitHub repository within your GitHub organization and that you are able to install **GitHub Apps** in that repository.
+**Note**: Please ensure that you have **admin permissions** on a GitHub repository within your GitHub organization and that you are able to install **GitHub Apps** in that repository.
 This setup is only supported for **organization accounts**, not personal GitHub accounts.
 
 ![](../static/github-app-1.png)
@@ -435,11 +435,11 @@ The following topics provide more information about creating code repo connector
 * GitHub: [GitHub connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
 * GitLab: [GitLab Connector Settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
 
-#### Org, repo, description, default branch
+#### Org, Repo, Description, Default Branch
 
 :::info
 
-For GitLab integration, you need to add the [group](https://docs.gitlab.com/ee/user/group/) path as well, in case it is not a personal account
+For GitLab integration, you need to add the [group](https://docs.gitlab.com/ee/user/group/) path as well, in case it's not a personal account
 
 ![](../static/group-path-create-repo.png)
 
@@ -477,19 +477,19 @@ These output variable could be viewed under the output tab in
 ![](../static/output-createrepo.png)
 
 
-### 4. Create catalog
+### 4. Create Catalog
 
 This step is used to create the `catalog-info.yaml/idp.yaml` to be ued to register the software component we have created in previous step in our IDP catalog. 
 
 :::warning
 
-In the example provided for this step we have used pipeline variables as input for many fields, make sure you have the corresponding pipeline variable created with proper value [as described under pipeline variables](/docs/internal-developer-portal/flows/idp-stage#pipeline-variables). 
+In the example provided for this step we have used pipeline variables as input for many fields, make sure you have the corresponding pipeline variable created with proper value [as described under pipeline variables](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#pipeline-variables). 
 
 :::
 
 :::info
 
-The git connector used under **[Connectors Page](/docs/internal-developer-portal/get-started/onboarding-guide#connector-setup)** in IDP Admin should have fetch access to the repository the `catalog-info.yaml` is getting published to, for it to be registered in the catalog. 
+The git connector used under **[Connectors Page](https://developer.harness.io/docs/internal-developer-portal/get-started/onboarding-guide#connector-setup)** in IDP Admin should have fetch access to the repository the `catalog-info.yaml` is getting published to, for it to be registered in the catalog. 
 
 :::
 
@@ -498,10 +498,10 @@ The git connector used under **[Connectors Page](/docs/internal-developer-portal
 
 ![](../static/create-catalog.png)
 
-#### File name, path
-Name the `catalog-info.yaml` followed by providing a path if you do not want to register in the root of the repo created in the `Create Repo` step. 
+#### File Name, Path
+Name the `catalog-info.yaml` followed by providing a path if you don't want to register in the root of the repo created in the `Create Repo` step. 
 
-#### File content
+#### File Content
 
 Add the YAML content to be added in your `catalog-info.yaml` file, For eg.,
 
@@ -518,7 +518,7 @@ spec:
   owner: test
   lifecycle: experimental
 ```
-> Ensure your `identifier` follows [naming rules](/docs/platform/references/entity-identifier-reference#identifier-naming-rules). Invalid identifiers may lead to entity registration errors.
+> Ensure your `identifier` follows [naming rules](https://developer.harness.io/docs/platform/references/entity-identifier-reference/#identifier-naming-rules). Invalid identifiers may lead to entity registration errors.
 
 </TabItem>
 <TabItem value="YAML" label="YAML">
@@ -557,14 +557,14 @@ Following is the output variable of this step.
 These output variable could be viewed under the output tab in 
 ![](../static/output-createcatalog.png)
 
-### 5. Direct push
+### 5. Direct Push
 
 This step is used to push the `service/application` created using Cookiecutter step along with the `catalog-info.yaml` in the repo you created in previous step. 
 
 :::warning
 You can only push the `service/application` created above to repositories within the same project where the **Direct Push** step is being executed.
 
-In the example provided for this step, we have used pipeline variables as input for multiple fields. Ensure that the corresponding pipeline variables are created with the appropriate values, as described in the [Pipeline Variables](/docs/internal-developer-portal/flows/idp-stage#pipeline-variables) documentation.
+In the example provided for this step, we have used pipeline variables as input for multiple fields. Ensure that the corresponding pipeline variables are created with the appropriate values, as described in the [Pipeline Variables](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#pipeline-variables) documentation.
 :::
 
 <Tabs>
@@ -578,11 +578,11 @@ In the example provided for this step, we have used pipeline variables as input 
 
 - For authentication, **Username-Password** and **GitHub App** methods are supported. The connection type ``ssh`` is currently not supported for Connectors. 
 
-- You can use a **GitHub App** to authenticate the Harness GitHub connector. Refer to this [detailed guide](/docs/platform/connectors/code-repositories/git-hub-app-support/) on how to use a GitHub App with a GitHub connector in the IDP stage.
+- You can use a **GitHub App** to authenticate the Harness GitHub connector. Refer to this [detailed guide](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support/) on how to use a GitHub App with a GitHub connector in the IDP stage.
 
-- The [Bitbucket connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference#credentials-settings) supports both **Access Token** and **API Token** authentication modes. For more details, see the reference documentation on [Access Token mode](/release-notes/internal-developer-portal#new-feature-support-for-bitbucket-access-token-authentication-mode) and [API Token mode](/release-notes/internal-developer-portal#new-feature-increased-bitbucket-api-rate-limits).
+- The [Bitbucket connector](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference#credentials-settings) supports both **Access Token** and **API Token** authentication modes. For more details, see the reference documentation on [Access Token mode](/release-notes/internal-developer-portal#new-feature-support-for-bitbucket-access-token-authentication-mode) and [API Token mode](/release-notes/internal-developer-portal#new-feature-increased-bitbucket-api-rate-limits).
 
-**Note**: Ensure that you have **admin permissions** on a GitHub repository within your GitHub organization and that you are able to install **GitHub Apps** in that repository.
+**Note**: Please ensure that you have **admin permissions** on a GitHub repository within your GitHub organization and that you are able to install **GitHub Apps** in that repository.
 This setup is only supported for **organization accounts**, not personal GitHub accounts.
 
 ![](../static/github-app-1.png)
@@ -599,7 +599,7 @@ The following topics provide more information about creating code repo connector
 * GitLab: [GitLab Connector Settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
 
 
-#### Org, repo, code directory, branch
+#### Org, Repo, Code Directory, Branch
 
 :::info
 
@@ -609,7 +609,7 @@ For GitLab integration, you need to add the [group](https://docs.gitlab.com/ee/u
 
 Add the Org, Repo Name, Repo Description and Branch Name where you want to push the code.
 
-#### Allow force push
+#### Allow Force Push
 
 This when enabled or set to `true`, will be able to overwrite the changes to **Default branch** set in the **Create Repo** step. 
 
@@ -634,13 +634,13 @@ This when enabled or set to `true`, will be able to overwrite the changes to **D
 </TabItem>
 </Tabs>
 
-### 6. Register catalog
+### 6. Register Catalog
 
 This step is used to register the software component created in the Catalog of Harness IDP using `catalog-info.yaml`. 
 
 :::warning
 
-In the example provided for this step we have used pipeline variables as input for many fields, make sure you have the corresponding pipeline variable created with proper value [as described under pipeline variables](/docs/internal-developer-portal/flows/idp-stage#pipeline-variables). 
+In the example provided for this step we have used pipeline variables as input for many fields, make sure you have the corresponding pipeline variable created with proper value [as described under pipeline variables](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#pipeline-variables). 
 
 :::
 
@@ -654,11 +654,11 @@ In the example provided for this step we have used pipeline variables as input f
 :::info
 - For authentication, **Username-Password** and **GitHub App** methods are supported. The connection type ``ssh`` is currently not supported for Connectors. 
 
-- You can use a **GitHub App** to authenticate the Harness GitHub connector. Refer to this [detailed guide](/docs/platform/connectors/code-repositories/git-hub-app-support/) on how to use a GitHub App with a GitHub connector in the IDP stage.
+- You can use a **GitHub App** to authenticate the Harness GitHub connector. Refer to this [detailed guide](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support/) on how to use a GitHub App with a GitHub connector in the IDP stage.
 
-- The [Bitbucket connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference#credentials-settings) supports both **Access Token** and **API Token** authentication modes. For more details, see the reference documentation on [Access Token mode](/release-notes/internal-developer-portal#new-feature-support-for-bitbucket-access-token-authentication-mode) and [API Token mode](/release-notes/internal-developer-portal#new-feature-increased-bitbucket-api-rate-limits).
+- The [Bitbucket connector](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference#credentials-settings) supports both **Access Token** and **API Token** authentication modes. For more details, see the reference documentation on [Access Token mode](/release-notes/internal-developer-portal#new-feature-support-for-bitbucket-access-token-authentication-mode) and [API Token mode](/release-notes/internal-developer-portal#new-feature-increased-bitbucket-api-rate-limits).
 
-**Note**: Ensure that you have **admin permissions** on a GitHub repository within your GitHub organization and that you are able to install **GitHub Apps** in that repository.
+**Note**: Please ensure that you have **admin permissions** on a GitHub repository within your GitHub organization and that you are able to install **GitHub Apps** in that repository.
 This setup is only supported for **organization accounts**, not personal GitHub accounts.
 
 ![](../static/github-app-1.png)
@@ -673,7 +673,7 @@ The following topics provide more information about creating code repo connector
 * GitHub: [GitHub connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
 * GitLab: [GitLab Connector Settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
 
-#### Org, repo, branch, file path
+#### Org, Repo, Branch, File Path
 
 :::info
 
@@ -703,7 +703,7 @@ Add the Org, Repo Name, Branch and the File path relative to the root of the rep
 </TabItem>
 </Tabs>
 
-#### API key support
+#### API Key Support
 Harness IDP now supports the use of a **Harness API Key** in the **Register Catalog** step.
 
 With this feature, users can configure the **API Key** by selecting the **"API Token"** field in the Harness UI. This option is available under **Advanced Settings** in the **Pipelines** tab. Enabling this ensures that the API Key is utilized for catalog registration in IDP.
@@ -714,7 +714,7 @@ By integrating the API Key, the pipeline execution remains seamless, ensuring it
 
 This step is optional. You can proceed with executing your pipeline without an API key. In that case, the user context will be used for catalog registration.
 
-#### Output variable
+#### Output Variable
 
 Following is the output variable of this step.
 
@@ -724,13 +724,13 @@ These output variable could be viewed under the output tab in
 ![](../static/register-catalog.png)
 
 
-### 7. Slack notify
+### 7. Slack Notify
 
 This step is used to notify individual developers once the pipeline is executed successfully and your Software component is registered successfully in your Software Catalog. 
 
 :::warning
 
-In the example provided for this step we have used pipeline variables as input for many fields, make sure you have the corresponding pipeline variable created with proper value [as described under pipeline variables](/docs/internal-developer-portal/flows/idp-stage#pipeline-variables). 
+In the example provided for this step we have used pipeline variables as input for many fields, make sure you have the corresponding pipeline variable created with proper value [as described under pipeline variables](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#pipeline-variables). 
 
 :::
 
@@ -765,7 +765,7 @@ The output of the steps like **Create Repo**, **Register Catalog** in the `JEXL`
 </TabItem>
 </Tabs>
 
-#### Slack email ID
+#### Slack Email ID
 
 Use the email ID you have used to register in Slack. 
 
@@ -784,7 +784,7 @@ Read more on [how to create bot-tokens](https://api.slack.com/start/quickstart#s
 
 1. Now create a new secret and add this as a **Secret** under the **Slack Secret Key**.
 
-### 8. Create resource
+### 8. Create Resource
 
 This step in developer portal stage allows you to **execute only OpenTofu (Open Source Terraform) module related to [Harness Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs)** to create or update resources. You can use this step to create Harness entities like projects, users, connectors, pipelines, secrets, etc.
 
@@ -837,9 +837,9 @@ This step in developer portal stage allows you to **execute only OpenTofu (Open 
         }
       xApiKey: Harness PAT for the account you want to create the pipeline
 ```
-This step comes with a sample **Resource Definition** to create a Harness Pipeline with a Run Step. This contains dummy values, hence will not work consider replacing it with the resource definition of yours. Also go to [Harness Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs) to help you with Harness Resource definitions.
+This step comes with a sample **Resource Definition** to create a Harness Pipeline with a Run Step. This contains dummy values, hence won't work consider replacing it with the resource definition of yours. Also refer to [Harness Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs) to help you with Harness Resource definitions.
 
-The `xApiKey` is the [Harness PAT](/docs/platform/automation/api/add-and-manage-api-keys/) for the account where you want to create the pipeline.
+The `xApiKey` is the [Harness PAT](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys/) for the account where you want to create the pipeline.
 
 </TabItem>
 <TabItem value="Pipeline Studio" label="Pipeline Studio" default>
@@ -848,14 +848,14 @@ The `xApiKey` is the [Harness PAT](/docs/platform/automation/api/add-and-manage-
 
 ![](../static/create-resourcesl.png)
 
-- You can add a **Name** to the step followed by adding the **Resource Definition** and create a Harness Entity using Resources supported by our [Harness Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs). Likewise, you will find an already existing sample **Resource Definition** by default, that can create a Harness Pipeline with a **Run Step**.  
+- You can add a **Name** to the step followed by adding the **Resource Definition** and create a Harness Entity using Resources supported by our [Harness Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs). Likewise, you'll find an already existing sample **Resource Definition** by default, that can create a Harness Pipeline with a **Run Step**.  
 
 ![](../static/create-resource-step.png)
 
 </TabItem>
 </Tabs>
 
-### 9. Update catalog property
+### 9. Update Catalog Property
 
 This step is used to update the catalog metadata for your entities. For example, you want to add the latest build version for your service in your catalog using this step in your CI pipeline and update the data in your catalog. 
 
@@ -867,7 +867,7 @@ This step is used to update the catalog metadata for your entities. For example,
   - Update single Catalog Entity
   - Update multiple catalog Entities
 
-- **Permission:** For anyone to update catalog property need to have [edit catalog permission](/docs/internal-developer-portal/rbac/scopes#permissions--resources-idp-20). 
+- **Permission:** For anyone to update catalog property need to have [edit catalog permission](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles#catalog-access-policies). 
 
 <Tabs>
 <TabItem value="Update a single Catalog Entity" label="Update a single Catalog Entity">
@@ -900,19 +900,19 @@ This step is used to update the catalog metadata for your entities. For example,
 </TabItem>
 </Tabs>
 
-### 10. Run step
+### 10. Run Step
 You can use the **Run step** to run commands or scripts in your Harness Pipeline. 
 
 In order for the Run step to execute your commands, the build environment must have the necessary binaries for those commands. Depending on the stage's build infrastructure, Run steps can use binaries that exist in the build environment or pull an image, such as a public or private Docker image, that contains the required binaries.
 
-Refer to detailed steps and settings here to understand this step in detail: [Run Step Settings](/docs/continuous-integration/use-ci/run-step-settings#run-step-settings)
+Please refer to detailed steps and settings here to understand this step in detail: [Run Step Settings](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings#run-step-settings)
 
-### 11. Plugin step
+### 11. Plugin Step
 You can use the **Plugin step** to run different plugins in your Harness Pipeline. 
 
-Refer to detailed steps and settings here to understand this step in detail: [Plugin Step Settings](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference/)
+Please refer to detailed steps and settings here to understand this step in detail: [Plugin Step Settings](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference/)
 
-## Example pipeline
+## Example Pipeline
 <Tabs>
 <TabItem value="YAML" label="YAML" default>
 
@@ -1078,7 +1078,7 @@ pipeline:
 </TabItem>
 </Tabs>
 
-## Specify the Harness IDP images used in your pipeline
+## Specify the Harness IDP Images used in your Pipeline
 
 You can use the Harness IDP `execution-config` API to specify or update the Harness IDP images used in your infrastructure by specifying image tags.
 
@@ -1088,7 +1088,7 @@ Certain steps are common across different stages in Harness Pipeline, but the im
 
 :::
 
-Here is a list of Harness IDP images used in the IDP stage: 
+Here's a list of Harness IDP images used in the IDP stage: 
 1. [``cookieCutter``](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness/cookiecutter): Used to take inputs for the cookiecutter template.
 2. [``createRepo``](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness/createrepo): Used to create the repository in your git provider
 3. [``directPush``](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness/directpush): Used to push the service/application created using Cookiecutter step along with the catalog-info.yaml in the repo you created in previous step.
@@ -1101,7 +1101,7 @@ Here is a list of Harness IDP images used in the IDP stage:
 10. [``createCatalog``](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness/createcatalog)
 
 
-API key authentication is required. For more information about API keys, go to [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys). For more information about authentication, go to the [Harness API documentation](https://apidocs.harness.io#section/Introduction/Authentication).
+API key authentication is required. For more information about API keys, go to [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys). For more information about authentication, go to the [Harness API documentation](https://apidocs.harness.io/#section/Introduction/Authentication).
 
 1. Send a `get-default-config` request to get a list of the latest Harness IDP Workflows executed. You can use the `infra` parameter to get `k8` images or `VM` images.
 

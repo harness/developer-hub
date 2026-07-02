@@ -5,7 +5,6 @@ sidebar_label: Configure Custom Dashboards
 sidebar_position: 20
 ---
 
-
 ### Prerequisites  
 
 :::info

@@ -21,7 +21,7 @@ description: Create incidents in Rootly and browse their respective incident his
 
 ### Secrets
 
-### Create an Rootly API key
+### Creating an Rootly API key
 
 Because of the features provided by the plugin, an API key with full access to your Rootly domain is required.
 
@@ -64,7 +64,7 @@ The following configuration is recommended:
 ```yaml
 rootly.com/service-id: 7a328a08-6701-445e-a1ad-ca2fb913ed1e # Use service-id or service-slug. Not both.
 rootly.com/service-slug: elasticsearch-staging # Use service-id or service-slug. Not both.
-rootly.com/service-auto-import: enabled # This will auto import the entity as a rootly service if we do not find any.
+rootly.com/service-auto-import: enabled # This will auto import the entity as a rootly service if we don't find any.
 ```
 
 [Read more](https://github.com/rootlyhq/backstage-plugin?tab=readme-ov-file#annotations)

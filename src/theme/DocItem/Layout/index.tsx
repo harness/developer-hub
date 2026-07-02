@@ -12,6 +12,7 @@ import DocItemContent from '@theme/DocItem/Content';
 import DocBreadcrumbs from '@theme/DocBreadcrumbs';
 import ContentVisibility from '@theme/ContentVisibility';
 import type {Props} from '@theme/DocItem/Layout';
+import ThreeDocsBanner from '@site/src/components/ThreeDocsBanner';
 import ChaosDocsBanner from '@site/src/components/ChaosDocsBanner';
 import FfDocsBanner from '@site/src/components/FfDocsBanner';
 import FmeKapaAssistant from '@site/src/components/FmeKapaAssistant';
@@ -54,6 +55,7 @@ export default function DocItemLayout({children}: Props): ReactNode {
         <div className={styles.docItemContainer}>
           <article>
             <DocBreadcrumbs />
+            <ThreeDocsBanner />
             <ChaosDocsBanner />
             <FfDocsBanner />
             <DocVersionBadge />

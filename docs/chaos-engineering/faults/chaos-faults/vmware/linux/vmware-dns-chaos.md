@@ -1,194 +1,283 @@
 ---
 id: vmware-dns-chaos
 title: VMware DNS chaos
-sidebar_label: VMware DNS Chaos
-description: Force DNS resolution failures for specific hostnames inside a Linux VMware VM so you can test how the workload behaves when DNS is unhealthy.
-keywords:
-  - chaos engineering
-  - vmware dns chaos
-  - vmware fault
-  - dns resilience
-tags:
-  - chaos-engineering
-  - vmware-faults
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/linux/vmware-dns-chaos
-- /docs/chaos-engineering/chaos-faults/vmware/linux/vmware-dns-chaos
+- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-dns-chaos
+- /docs/chaos-engineering/chaos-faults/vmware/vmware-dns-chaos
 ---
+VMware DNS chaos causes DNS errors in the VMware VMs which results in the DNS server being unavailable or malfunctioning for a specific duration. It checks the performance of the application (or process) running on the VMware VMs.
 
-import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-VMware DNS chaos is a VMware chaos fault that intercepts DNS queries on the Linux VM `VM_NAME` and returns errors for hostnames matching `TARGET_HOSTNAMES` (compared via `MATCH_SCHEME`) for `TOTAL_CHAOS_DURATION` seconds, then restores normal resolution. Non-matching queries are forwarded to `UPSTREAM_SERVER` (or the guest's existing resolver when empty). The fault listens on `PORT` and uses VMware Tools (Guest Operations API) to act inside the guest as `VM_USER_NAME`.
+![VMware DNS Chaos](./static/images/vmware-dns-chaos.png)
 
-Use this fault to test how a workload on a VMware-hosted VM behaves when DNS resolution fails for a specific dependency: whether the caller retries correctly, whether circuit breakers trip, whether monitoring detects the regression within the alerting SLA, and whether on-call alerts fire correctly.
-
-:::info Run your first experiment
-If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
+:::info note
+HCE doesn't support injecting VMWare Windows faults on Bare metal server.
 :::
-
----
 
 ## Use cases
 
-- **DNS-driven dependency outage:** When DNS fails for one dependency, does the caller honour its timeout and circuit breaker?
-- **Caching behavior:** Does the workload's local DNS cache absorb short blips, or does it fail on the first failure?
-- **Alert fidelity:** Do downstream alerts fire when DNS resolution starts failing?
+- VMware DNS chaos causes DNS errors on the target VMs which results in unavailability (or distorted) network connectivity from the VM to the target hosts.
+- It provides a hypothesis wherein certain services of an application could be unreachable from the VM.
+- It determines how DNS errors impact the infrastructure and standalone tasks in the application.
+- It simulates unavailability of DNS server, that is, loss of access to any external domain from a given microservice.
+- It simulates malfunctioning of DNS server, that is, loss of access to specific domains from a given microservice, loss of access to cloud provider dependencies, and loss of access to specific third party services.
 
----
+### Prerequisites
+- Kubernetes > 1.16 is required to execute this fault.
+- Execution plane should be connected to vCenter and host vCenter on port 443.
+- VMware tool should be installed on the target VM with remote execution enabled.
+- The VM should be in a healthy state before and after injecting chaos.
+- Appropriate vCenter permissions should be provided to access the hosts and the VMs.
+- Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. VM credentials can be passed as secrets or as a `ChaosEngine` environment variable. Below is a sample secret file:
 
-## Prerequisites
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: vcenter-secret
+  namespace: litmus
+type: Opaque
+stringData:
+    VCENTERSERVER: XXXXXXXXXXX
+    VCENTERUSER: XXXXXXXXXXXXX
+    VCENTERPASS: XXXXXXXXXXXXX
+```
 
-- **Kubernetes version:** 1.21 or later for the chaos infrastructure cluster.
-- **VMware Tools running on the guest:** Verify with `vmware-toolbox-cmd -v`.
-- **DNS chaos binary installed inside the guest:** Go to [VMware Linux binary installation](/docs/chaos-engineering/faults/chaos-faults/vmware/linux/binary-installation) to install the DNS interceptor prerequisite.
-- **Resolver configuration on the guest:** The workload's DNS resolver on the VM is configured to query `127.0.0.1:<PORT>` (or the interceptor sits on the guest's default DNS port). Without that, the interceptor cannot affect the workload.
-- **Capability for the port:** `VM_USER_NAME` can bind `PORT` (ports below 1024 require `sudo` or `CAP_NET_BIND_SERVICE`).
-- **vCenter chaos role:** `GOVC_USERNAME` is mapped to the chaos role per [VMware permissions](/docs/chaos-engineering/faults/chaos-faults/vmware/permissions).
+### Mandatory tunables
 
----
+   <table>
+      <tr>
+        <th> Tunable </th>
+        <th> Description </th>
+        <th> Notes </th>
+      </tr>
+      <tr>
+        <td> VM_NAME </td>
+        <td> Name of the target VM(s).</td>
+        <td> Multiple comma-separated names can be provided. For example, <code>vm-1,vm-2</code>.</td>
+      </tr>
+      <tr>
+        <td> VM_USER_NAME </td>
+        <td> Username of the target VM(s).</td>
+        <td> Multiple usernames can be provided as comma-separated values (when there are multiple VMs subject to chaos). It also helps run the govc command. </td>
+      </tr>
+      <tr>
+        <td> VM_PASSWORD </td>
+        <td> Password for the target VM(s).</td>
+        <td> It helps run the govc command. </td>
+      </tr>
+      <tr>
+        <td> PORT </td>
+        <td> DNS Port</td>
+        <td> Defaults to 54. For more information, go to <a href="#run-dns-chaos-with-port"> DNS chaos with port.</a> </td>
+      </tr>
+    </table>
 
-## Supported environments
+### Optional tunables
 
-| Platform | Support status |
-| --- | --- |
-| Linux VMs hosted on vSphere / vCenter (any distro with VMware Tools) | Supported |
-| Windows VMs | Not supported |
+   <table>
+      <tr>
+        <th> Tunable </th>
+        <th> Description </th>
+        <th> Notes </th>
+      </tr>
+      <tr>
+        <td> TOTAL_CHAOS_DURATION </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
+        <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
+      </tr>
+      <tr>
+        <td> CHAOS_INTERVAL </td>
+        <td> Time interval between two successive instance terminations (in seconds). </td>
+        <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval. </a></td>
+      </tr>
+      <tr>
+        <td> SEQUENCE </td>
+        <td> Sequence of chaos execution for multiple instances. </td>
+        <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
+      </tr>
+      <tr>
+        <td> RAMP_TIME </td>
+        <td> Period to wait before and after injecting chaos (in seconds).</td>
+        <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
+      </tr>
+      <tr>
+        <td> TARGET_HOSTNAMES </td>
+        <td> List of the target host names. If it is not provided, all host names (or domains) are targeted. </td>
+        <td> For example, '["litmuschaos","chaosnative.com"]'. For more information, go to <a href="#run-dns-chaos-with-target-host-names"> target host names. </a></td>
+      </tr>
+      <tr>
+        <td> MATCH_SCHEME </td>
+        <td> Determines whether the DNS query should exactly match the targets or can be a substring. </td>
+        <td> Defaults to exact. For more information, go to <a href="#run-dns-chaos-with-match-scheme"> DNS chaos with match scheme. </a></td>
+      </tr>
+      <tr>
+        <td> UPSTREAM_SERVER </td>
+        <td> Custom upstream server to which the intercepted DNS requests will be forwarded. </td>
+        <td> Defaults to the server mentioned in <code>resolv.conf</code> file. For more information, go to <a href="#run-dns-chaos-with-upstream-server"> DNS chaos with upstream server. </a></td>
+      </tr>
+      <tr>
+      <td>DEFAULT_HEALTH_CHECK</td>
+      <td>Determines if you wish to run the default health check which is present inside the fault. </td>
+      <td> Default: 'true'. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
+      </tr>
+    </table>
 
----
+### Secret tunables
+   <table>
+      <tr>
+        <th> Tunable </th>
+        <th> Description </th>
+        <th> Notes </th>
+      </tr>
+      <tr>
+        <td> GOVC_URL </td>
+        <td> vCenter server URL used to perform API calls using the govc command.</td>
+        <td> It is derived from a secret. </td>
+      </tr>
+      <tr>
+        <td> GOVC_USERNAME </td>
+        <td> Username of the vCenter server used for authentication purposes. </td>
+        <td> It can be set up using a secret. </td>
+      </tr>
+      <tr>
+        <td> GOVC_PASSWORD </td>
+        <td> Password of the vCenter server used for authentication purposes. </td>
+        <td> It can be set up using a secret. </td>
+      </tr>
+      <tr>
+        <td> GOVC_INSECURE </td>
+        <td> Runs the govc command in insecure mode. It is set to <code>true</code>. </td>
+        <td> It can be set up using a secret. </td>
+      </tr>
+     </table>
 
-## Permissions required
 
-**On vCenter.** Map `GOVC_USERNAME` to the chaos role described in [VMware permissions](/docs/chaos-engineering/faults/chaos-faults/vmware/permissions). The role needs Guest Operations (Program execution, Modifications, Queries).
+### Run DNS chaos with port
 
-**On the guest OS.** `VM_USER_NAME` must be able to launch the DNS chaos binary, bind `PORT`, and update the resolver configuration (`/etc/resolv.conf`) if required.
+It specifies the DNS port where DNS chaos is injected. Tune it by using the `PORT` environment variable.
 
----
+Use the following example to tune it:
 
-## Authentication
+[embedmd]:# (./static/manifests/vmware-dns-chaos/vmware-dns-port.yaml yaml)
+```yaml
+# induces DNS chaos on the VMware VM
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: VMware-engine
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: VMware-DNS-chaos
+    spec:
+      components:
+        env:
+        - name: PORT
+          value: '54'
+        - name: VM_NAME
+          value: 'vm-1,vm-2'
+        - name: VM_USER_NAME
+          value: 'ubuntu,debian'
+        - name: VM_PASSWORD
+          value: '123,123'
+```
 
-| Layer | Tunables |
-| --- | --- |
-| vCenter | `GOVC_URL`, `GOVC_USERNAME`, `GOVC_PASSWORD`, `GOVC_INSECURE` |
-| Guest OS | `VM_USER_NAME`, `VM_PASSWORD` |
+### Run DNS chaos with target host names
 
-Store each credential as a text secret in [Harness Secret Manager](/docs/platform/secrets/add-use-text-secrets) and reference the secret identifier when configuring the experiment.
+It specifies the list of the target host names into which DNS chaos is injected. Tune it by using the `TARGET_HOSTNAMES` environment variable.
 
----
+Use the following example to tune it:
 
-## Fault tunables
+[embedmd]:# (./static/manifests/vmware-dns-chaos/vmware-dns-target-hostnames.yaml yaml)
+```yaml
+# induces DNS chaos on the VMware VMs
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: VMware-DNS-chaos
+    spec:
+      components:
+        env:
+        # list of target host names
+        - name: TARGET_HOSTNAMES
+          value: '["litmuschaos","chaosnative.com"]'
+        - name: VM_NAME
+          value: 'vm-1,vm-2'
+        - name: VM_USER_NAME
+          value: 'ubuntu,debian'
+        - name: VM_PASSWORD
+          value: '123,123'
+```
 
-**Required parameters**
 
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `VM_NAME` | Name of the target VM as it appears in vCenter. | (required) |
-| `VM_USER_NAME` | OS user account on the target VM. | (required) |
-| `VM_PASSWORD` | Password for `VM_USER_NAME`. | (required) |
+### Run DNS chaos with match scheme
 
-**DNS chaos parameters**
+It specifies whether the DNS query should exactly match the targets or can be a substring. Tune it by using the `MATCH_SCHEME` environment variable.
 
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `TARGET_HOSTNAMES` | Comma-separated list of hostnames to fail. Empty means fail every query. | `""` |
-| `MATCH_SCHEME` | Matching scheme: `exact` or `substring`. | `substring` |
-| `UPSTREAM_SERVER` | DNS server (IP) to forward unmatched queries to. Empty uses the guest's existing resolver. | `""` |
-| `PORT` | UDP port the DNS interceptor binds to on the guest. | `54` |
+Use the following example to tune it:
 
-**Chaos parameters**
+[embedmd]:# (./static/manifests/vmware-dns-chaos/vmware-dns-match-scheme.yaml yaml)
+```yaml
+# induces DNS chaos on the VMware VMs
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: VMware-DNS-chaos
+    spec:
+      components:
+        env:
+        # match scheme type
+        - name: MATCH_SCHEME
+          value: 'exact'
+        - name: VM_NAME
+          value: 'vm-1,vm-2'
+        - name: VM_USER_NAME
+          value: 'ubuntu,debian'
+        - name: VM_PASSWORD
+          value: '123,123'
+```
 
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `TOTAL_CHAOS_DURATION` | Total duration of the fault in seconds. | `30` |
-| `CHAOS_INTERVAL` | Delay in seconds between iterations. | `10` |
-| `SEQUENCE` | `parallel` or `serial`. | `parallel` |
-| `RAMP_TIME` | Wait period in seconds before and after the fault. | `0` |
 
-**vCenter authentication**
+### Run DNS chaos with upstream server
 
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `GOVC_URL` | vCenter server URL. | `""` |
-| `GOVC_USERNAME` | vCenter user mapped to the chaos role. | `""` |
-| `GOVC_PASSWORD` | Password for `GOVC_USERNAME`. | `""` |
-| `GOVC_INSECURE` | Skip SSL certificate verification when set to `true`. | `true` |
+It specifies the custom upstream server to which the intercepted DNS requests are forwarded. It defaults to the server mentioned in the `resolv.conf` file. Tune it by using the `UPSTREAM_SERVER` environment variable.
 
-Tunables that apply to every fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
+Use the following example to tune it:
 
----
-
-## Fault execution in brief
-
-Authenticates to vCenter, opens a Guest Operations session on `VM_NAME` as `VM_USER_NAME`, runs a DNS interceptor on `PORT` that fails queries matching `TARGET_HOSTNAMES` (per `MATCH_SCHEME`) and forwards the rest to `UPSTREAM_SERVER`, for `TOTAL_CHAOS_DURATION` seconds, then stops the interceptor.
-
----
-
-## Expected behavior during fault execution
-
-- DNS queries for `TARGET_HOSTNAMES` fail (NXDOMAIN or SERVFAIL).
-- Workloads that resolve those names get connection failures; callers may retry or trip circuit breakers.
-- After the duration ends, the interceptor is stopped and normal DNS resolution resumes.
-
-:::info When the fault ends
-The chaos pod stops the DNS interceptor via Guest Operations. DNS resolution returns to baseline within seconds.
-:::
-
-### Signals to watch
-
-- **DNS failure rate:** Use a Prometheus probe on your DNS metrics (CoreDNS, BIND) or a [command probe](/docs/resilience-testing/chaos-testing/probes/command-probe) running `dig <hostname>` and asserting `NOERROR`.
-- **Workload:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) and assert error budget is respected.
-
----
-
-## Verify the fault execution effect
-
-1. **From inside the VM, query a target hostname.**
-
-   ```bash
-   dig <hostname> @127.0.0.1 -p <PORT>
-   ```
-
-   For names in `TARGET_HOSTNAMES`, expect a failure status. For other names, expect `NOERROR`.
-
-2. **After the fault ends, repeat the query.**
-
-   All queries should resolve normally.
-
----
-
-## Recovery and cleanup
-
-- **End of duration:** The chaos pod stops the interceptor via Guest Operations.
-- **Abort:** Stopping the experiment also stops the interceptor.
-- **Manual recovery:** If the interceptor survived, SSH into the VM, find the listening process on `PORT` (`sudo ss -lnup`), and kill it.
-
----
-
-## Limitations
-
-- **Resolver configuration:** The workload must use the DNS interceptor's port for the fault to take effect. If the workload uses an external DNS server directly, the fault has no impact.
-- **`MATCH_SCHEME` semantics:** `substring` matches any hostname that contains the target string; use `exact` for stricter matching.
-- **VMware Tools required:** Without VMware Tools, the fault cannot run.
-- **Single VM per run:** Each fault run targets one `VM_NAME`.
-
----
-
-## Troubleshooting
-
-<Troubleshoot
-  issue="VMware DNS chaos has no effect on the workload in Harness Chaos Engineering"
-  mode="docs"
-  fallback="Confirm the workload uses the DNS interceptor. If the workload caches DNS or uses its own resolver, update /etc/resolv.conf inside the VM to point to 127.0.0.1:<PORT>, or run the interceptor on the system DNS port (53) with appropriate capability."
-/>
-
-<Troubleshoot
-  issue="VMware DNS chaos fails with bind permission denied"
-  mode="docs"
-  fallback="Binding to ports below 1024 requires sudo or CAP_NET_BIND_SERVICE. Either run the interceptor as root or use a port >= 1024 (default 54)."
-/>
-
----
-
-## Related faults
-
-- [VMware HTTP latency](/docs/chaos-engineering/faults/chaos-faults/vmware/linux/vmware-http-latency): Inject HTTP-level latency instead of breaking DNS.
-- [VMware network loss](/docs/chaos-engineering/faults/chaos-faults/vmware/linux/vmware-network-loss): Drop packets at the network layer instead of failing DNS.
+[embedmd]:# (./static/manifests/vmware-dns-chaos/vmware-dns-upstream-server.yaml yaml)
+```yaml
+# induces DNS chaos on the VMware VMs
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: VMware-DNS-chaos
+    spec:
+      components:
+        env:
+        # name of the upstream server
+        - name: UPSTREAM_SERVER
+          value: '8.8.8.8'
+        - name: VM_NAME
+          value: 'vm-1,vm-2'
+        - name: VM_USER_NAME
+          value: 'ubuntu,debian'
+        - name: VM_PASSWORD
+          value: '123,123'
+```

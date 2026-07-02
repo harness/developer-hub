@@ -1,0 +1,11 @@
+{
+    "label": "Cluster Orchestrator for AWS EKS clusters (Beta)",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "position": 3,
+    "link": {
+        "type": "generated-index",
+        "title": "Cluster Orchestrator for AWS EKS clusters"
+    }
+}

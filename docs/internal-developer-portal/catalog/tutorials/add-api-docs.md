@@ -18,7 +18,7 @@ The Harness IDP Software Catalog provides comprehensive support for defining and
 
 ---
 
-## Supported API types
+## Supported API Types
 
 Harness IDP supports the following API specification formats:
 
@@ -29,7 +29,7 @@ Harness IDP supports the following API specification formats:
 
 ---
 
-## Before you begin
+## Prerequisites
 
 To fetch API specifications from external sources, you must configure the URL Allow List.
 
@@ -53,9 +53,9 @@ Ensure your API spec host or path is included in this list for successful import
 
 ---
 
-## Add API entities
+## Add API Entities
 
-### OpenAPI specifications
+### OpenAPI Specifications
 
 ```YAML
 apiVersion: harness.io/v1
@@ -73,7 +73,7 @@ metadata:
 ```
 
 :::info
-In the above example we import all the API specs in `json` format as a `$text` embedding, and it is a suggested hack to import multiple APIs in openapi format. 
+In the above example we import all the API specs in `json` format as a `$text` embedding, and it's a suggested hack to import multiple APIs in openapi format. 
 :::
 
 :::note Backend URL Allow List
@@ -167,20 +167,20 @@ The above-mentioned `catalog-info.yaml` when registered in the catalog would dis
 
 ![](../integrate-tools/techdocs/static/spotify-api.png)
 
-## Create an API entity 
+## Creating an API entity 
 
 There are two ways to add and create a new API entity in your catalog:
 
-- **[Create an entity via the Harness IDP UI](/docs/internal-developer-portal/catalog/create-entity/create-manually)**: Use the Harness UI to create entities directly, no YAML required. This method offers a streamlined, code-free experience for adding entities.
+- **[Create an entity via the Harness IDP UI](/docs/internal-developer-portal/catalog/create-entity/create-manually)**: Use the Harness UI to create entities directly—no YAML required. This method offers a streamlined, code-free experience for adding entities.
 - **[Create an entity using your catalog YAML](/docs/internal-developer-portal/catalog/create-entity/create-manually)**: You can still create entities using your existing catalog YAML files. Harness will automatically convert legacy Backstage YAML into the new Harness Catalog Entity Model and register the corresponding entity.
 
 ![](../integrate-tools/techdocs/static/create-entity-1.png)
 
-## Define an API entity
+## Defining an API Entity
 
-Go to the [entity definition format](/docs/internal-developer-portal/catalog/catalog-yaml#common-to-all-kinds-the-envelope-idp-20) to review the common envelope: 
+You can refer to the entity definition format [here](/docs/internal-developer-portal/catalog/catalog-yaml.md#common-to-all-kinds-the-envelope-idp-20). Here's the common envelope: 
 
-1. `apiVersion`: With IDP 2.0, we have introduced a Harness-native entity schema. As part of this change, all entities now use an apiVersion prefixed with `harness.io/`.
+1. `apiVersion`: With IDP 2.0, we've introduced a Harness-native entity schema. As part of this change, all entities now use an apiVersion prefixed with `harness.io/`.
 2. `kind`: The kind field defines the high-level type of entity being described in the YAML file. For API, `kind` is `API`. 
 3. `identifier`: The `identifier` field is a unique, machine-readable reference for the entity. It serves as the primary key for identifying and interacting with the entity.
 4. `name`: The `name` field represents the display name of the entity shown in the UI.
@@ -192,12 +192,12 @@ Go to the [entity definition format](/docs/internal-developer-portal/catalog/cat
 10. `spec`: Defines the actual specification data that describes the entity. This is the core configuration and varies depending on the kind.
 
 
-## API specification
+## API Specification
 
 ### Kind: API  
 An **API** describes an interface that can be exposed by a component. APIs can be defined using formats such as OpenAPI, AsyncAPI, GraphQL, gRPC, or others.
 
-#### Entity structure  
+#### Entity Structure  
 All the fields mentioned below are the mandatory parameters required to define an API:
 
 | **Field** | **Value** |
@@ -208,7 +208,7 @@ All the fields mentioned below are the mandatory parameters required to define a
 | `spec.lifecycle` | You can find out more about the `lifecycle` key here. |
 | `spec.definition` | You can find out more about the `definition` key here. |
 
-#### `type` definition  
+#### `type` Definition  
 The type of the `API` definition as a string (e.g., `openapi`):
 
 1. `openapi` – A definition in YAML or JSON based on OpenAPI v2 or v3.
@@ -242,7 +242,7 @@ metadata:
     - rest
 ```
 
-## Substitutions in descriptor
+## Substitutions in Descriptor
 1. Supports `$text`, `$json`, `$yaml` for embedding external content.
 2. Useful for loading API definitions from external sources.
 
@@ -273,12 +273,12 @@ metadata:
     - rest
 ```
 
-## gRPC docs
+## gRPC Docs
 
 You can render gRPC documentation by using the [protoc-gen-doc plugin](https://github.com/backstage/backstage/tree/master/plugins/api-docs-module-protoc-gen-doc), which contains `ApiDefinitionWidgets` for [grpc-docs](https://github.com/gendocu-com/grpc-docs) to enable Swagger UI for gRPC APIs. 
 
 
-### JSON format
+### JSON Format
 
 :::info
 
@@ -303,7 +303,7 @@ spec:
 
 ```
 
-#### Rendered output for JSON format
+#### Rendered Output for JSON Format
 
 ![](../integrate-tools/techdocs/static/json-format.png)
 
@@ -326,11 +326,11 @@ spec:
     $text: https://github.com/pseudomuto/protoc-gen-doc/blob/master/examples/doc/example.json
 ```
 
-#### Rendered output for JSON format
+#### Rendered Output for JSON Format
 
 ![](../integrate-tools/techdocs/static/grpc.gif)
 
-### proto file format
+### proto file Format
 
 ```YAML
 ## Example
@@ -356,7 +356,7 @@ metadata:
   description: helloworld unary gRPC
 ```
 
-#### Rendered output for proto file
+#### Rendered Output for proto file
 
 ![](../integrate-tools/techdocs/static/non-json-render.png)
 

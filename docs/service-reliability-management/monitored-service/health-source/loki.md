@@ -5,7 +5,6 @@ description: Add Grafana Loki health source to a monitored service.
 sidebar_position: 8
 ---
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

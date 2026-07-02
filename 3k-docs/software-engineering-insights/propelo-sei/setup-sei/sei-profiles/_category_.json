@@ -1,0 +1,11 @@
+{
+   "label":"Create & manage profiles",
+   "position": 30,
+   "collapsible":"true",
+   "collapsed":"true",
+   "className":"default",
+   "link":{
+      "type":"generated-index",
+      "title":"Create & manage profiles"
+   }
+}

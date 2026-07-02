@@ -11,7 +11,7 @@ Working with TechDocs locally allows you to preview changes, test plugins, and t
 
 ---
 
-## Before you begin
+## Prerequisites
 
 Before working with TechDocs locally, ensure you have the following installed:
 
@@ -21,7 +21,7 @@ Before working with TechDocs locally, ensure you have the following installed:
 pip install mkdocs
 ```
 
-### 2. Install TechDocs core plugin
+### 2. Install TechDocs Core Plugin
 
 Install the `techdocs-core` plugin which includes all essential plugins:
 
@@ -31,7 +31,7 @@ pip install mkdocs-techdocs-core
 
 For additional plugins, see the [TechDocs Plugins Overview](/docs/internal-developer-portal/catalog/integrate-tools/techdocs/techdocs-plugins-overview).
 
-### 3. Install TechDocs CLI (recommended)
+### 3. Install TechDocs CLI (Recommended)
 
 The [TechDocs CLI](https://backstage.io/docs/features/techdocs/cli) helps you build and serve documentation locally, mimicking the Harness IDP environment:
 
@@ -41,9 +41,9 @@ npm install -g @techdocs/cli
 
 ---
 
-## Local development workflow
+## Local Development Workflow
 
-### Step 1: Navigate to documentation directory
+### Step 1: Navigate to Documentation Directory
 
 Navigate to the directory containing your documentation files:
 
@@ -53,11 +53,11 @@ cd /path/to/docs
 
 ---
 
-### Step 2: Serve documentation locally
+### Step 2: Serve Documentation Locally
 
 You have two options for serving documentation locally:
 
-#### Option 1: Using MkDocs (basic)
+#### Option 1: Using MkDocs (Basic)
 
 Serve your documentation using the standard MkDocs server:
 
@@ -73,7 +73,7 @@ This command requires an `mkdocs.yml` file in your documentation directory.
 
 ---
 
-#### Option 2: Using TechDocs CLI (recommended)
+#### Option 2: Using TechDocs CLI (Recommended)
 
 Use the TechDocs CLI to mimic the Harness IDP build process:
 
@@ -103,7 +103,7 @@ To customize your documentation (add plugins, modify structure, etc.), create an
 
 ---
 
-### Step 3: Iterate and test
+### Step 3: Iterate and Test
 
 1. **Edit** your Markdown files
 2. **Refresh** your browser to see changes in real-time
@@ -114,7 +114,7 @@ To customize your documentation (add plugins, modify structure, etc.), create an
 
 ## Troubleshooting
 
-### Plugin errors
+### Plugin Errors
 
 **Symptoms:**
 - "Plugin not found" or "Plugin not installed" errors
@@ -124,11 +124,11 @@ To customize your documentation (add plugins, modify structure, etc.), create an
 - Ensure all required plugins are installed: `pip install mkdocs-techdocs-core`
 - Verify plugin compatibility with your MkDocs version
 - Check that plugins are correctly listed in your `mkdocs.yml`
-- Use `techdocs-core` instead of individual plugins (go to [TechDocs Plugins](/docs/internal-developer-portal/catalog/integrate-tools/techdocs/techdocs-plugins-overview))
+- Use `techdocs-core` instead of individual plugins (see [TechDocs Plugins](/docs/internal-developer-portal/catalog/integrate-tools/techdocs/techdocs-plugins-overview))
 
 ---
 
-### Render issues
+### Rendering Issues
 
 **Symptoms:**
 - Content not displaying correctly
@@ -143,11 +143,11 @@ To customize your documentation (add plugins, modify structure, etc.), create an
 
 ---
 
-### Build warnings and errors
+### Build Warnings and Errors
 
 **Symptoms:**
 - Build fails or produces warnings
-- Documentation does not generate properly
+- Documentation doesn't generate properly
 
 **Solutions:**
 

@@ -6,6 +6,7 @@ redirect_from:
   - /docs/internal-developer-portal/get-started/custom-dashboards
 ---
 
+## Introduction
 
 Dashboards is a Harness Platform Feature, that allows you to visualize key metrics and data related to your module. You can customize the dashboards to show specific metrics and data relevant to your needs, and access them from a central location. The Harness Dashboards provide actionable insights out of your IDP, so you can enable good developer experience in your org. Dashboards also allow you to set up scheduled delivery of reporting and alerts for your executives and stakeholders.
 
@@ -17,19 +18,19 @@ Dashboards is a Harness Platform Feature, that allows you to visualize key metri
 
 :::
 
-## Navigate to dashboards
+## Navigate to Dashboards
 
 To view and access dashboards, select **DASHBOARDS** from the left navigation in your Harness account. You can filter the data on the dashboards for IDP module by selecting the module name from the top of the page. 
 
-#### Old left nav
+#### Old Left Nav
 
 ![](./static/old-nav.png)
 
-#### New left nav
+#### New Left Nav
 
 ![](./static/new-nav.png)
 
-### Out of the box dashboards
+### Out of the Box Dashboards
 
 At present, we provide 3 out of the box dashboards for IDP. 
 
@@ -57,8 +58,8 @@ At present, we provide 3 out of the box dashboards for IDP.
 ![](./static/workflows-dashboard.png)
 
 
-## Create dashboard
-It is recommended to refer [this documentation](/docs/platform/dashboards/create-dashboards) first to get a basic overview on how to create dashboards.
+## Create Dashboard
+It is recommended to refer [this documentation](https://developer.harness.io/docs/platform/dashboards/create-dashboards) first to get a basic overview on how to create dashboards.
 
 ### Explore
 
@@ -68,10 +69,10 @@ An Explore is a starting point for a query that is designed to explore a particu
 2. IDP Plugins
 3. IDP Workflow Executions 
 
-Follow this [documentation](/docs/platform/dashboards/create-visualizations-and-graphs) to create visualizations and graphs
+Follow this [documentation](https://developer.harness.io/docs/platform/dashboards/create-visualizations-and-graphs) to create visualizations and graphs
 
-## Dashboard best practices
+## Dashboard Best Practices
 
-Follow this [documentation](/docs/platform/dashboards/dashboard-best-practices) to know more. 
+Follow this [documentation](https://developer.harness.io/docs/platform/dashboards/dashboard-best-practices) to know more. 
 
 

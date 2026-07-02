@@ -5,11 +5,11 @@ description: Learn how you can customize the Sidebar Navigation of Harness IDP
 sidebar_position: 20
 ---
 
-In Harness IDP, you as a platform admin can customize the sidebar navigation to ensure the end-users see what is important for them. This can be used to add new plugins, reorder existing items based on priority, add custom links to different tools for quick access, etc. The Sidenav changes are reflected for everyone using Harness IDP and does not affect any other Harness modules.
+In Harness IDP, you as a platform admin can customize the sidebar navigation to ensure the end-users see what's important for them. This can be used to add new plugins, reorder existing items based on priority, add custom links to different tools for quick access, etc. The Sidenav changes are reflected for everyone using Harness IDP and does not affect any other Harness modules.
 
 ![](./static/customizable-sidenav.png)
 
-## The layout editor
+## The Layout Editor
 
 You can access the Sidenav Layout editor by navigating to Harness IDP and choosing **Configure** from the sidebar.
 
@@ -52,9 +52,9 @@ page:
 
 </details>
 
-## Add a new link in the sidenav
+## Add a new Link in the Sidenav
 
-Let us take an example of how you can add a new Custom Link to let us say your internal Sonarqube instance. This will open the link in a new tab.
+Let's take an example of how you can add a new Custom Link to let's say your internal Sonarqube instance. This will open the link in a new tab.
 
 ```yaml
 - name: SidebarItem
@@ -63,9 +63,9 @@ Let us take an example of how you can add a new Custom Link to let us say your i
     text: Sonarqube
 ```
 
-## Change the default catalog landing page
+## Change the default Catalog landing page
 
-You can also update existing Sidenav links to change the default landing behavior for users. Let us say you want users to see **Systems** by default when they click on **Catalog**. You can update the Catalog item with the following -
+You can also update existing Sidenav links to change the default landing behavior for users. Let's say you want users to see **Systems** by default when they click on **Catalog**. You can update the Catalog item with the following -
 
 ```yaml
 - name: SidebarItem
@@ -74,7 +74,7 @@ You can also update existing Sidenav links to change the default landing behavio
     text: Catalog
 ```
 
-## Custom plugins
+## Custom Plugins
 
 If you have built a [Custom Plugin](/docs/internal-developer-portal/plugins/custom-plugins/overview) inside IDP and are exporting a full page component, you can link to the plugin from the Sidenav as well.
 
@@ -85,7 +85,7 @@ If you have built a [Custom Plugin](/docs/internal-developer-portal/plugins/cust
     text: MyPlugin
 ```
 
-## Embed an iframe
+## Embedding an Iframe
 
 :::caution Limited Support
 Iframe embedding via the sidebar has limited support now. Due to Content Security Policy (CSP) enforcement on the Harness platform, iframes will be blocked from rendering content from domains that are not explicitly whitelisted. If your target URL's domain is not on the CSP allowlist, the iframe will fail to load. Contact your Harness administrator to verify whether your domain is whitelisted before using this feature.
@@ -95,7 +95,7 @@ You can embed an iframe inside the sidenav layout to display external web conten
 
 ![](./static/iframe-embedd.png)
 
-#### Steps to add an iframe
+#### Steps to Add an Iframe
 
 1. Navigate to the sidenav layout page.
 2. Add a YAML block similar to the example below:

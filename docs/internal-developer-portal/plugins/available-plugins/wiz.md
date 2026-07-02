@@ -15,7 +15,7 @@ description: See Wiz issue status in your Harness IDP.
 
 ## Configuration
 
-### Before you begin
+### Prerequisites
 Here are the prerequisites required to configure this plugin: 
 - Wiz API URL (API Endpoint URL)
 - Wiz Token URL
@@ -27,7 +27,7 @@ The Wiz GraphQL API uses a single endpoint format:
 ``https://api.<TENANT_DATA_CENTER>.app.wiz.io/graphql``. 
 Here, ``<TENANT_DATA_CENTER>`` refers to your Wiz **regional data center** (e.g., us1, us2, eu1, or eu2).
 
-### Application configuration YAML
+### Application Configuration YAML
 Under the **"Plugins"** tab in your **"Configure"** settings, navigate to the ``app-config.yaml`` file and click **Edit YAML** to begin configuring the plugin.
 
 You can use the following ``YAML`` snippet as the application configuration for this plugin:

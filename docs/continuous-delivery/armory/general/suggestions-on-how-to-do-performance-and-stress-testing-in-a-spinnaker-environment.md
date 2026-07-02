@@ -2,7 +2,6 @@
 title: Suggestions on how to do Performance and Stress Testing in a Spinnaker Environment
 ---
 
-
 This document talks about the steps taken to test the performance and the behavior of Orca and Spinnaker UI and arrives at the size and the number of stages the pipeline can have. It provides an example of testing that can be used to determine the limits of the environment.
 ### What this document serves to do
 This document provides some guidance on how to accomplish performance testing for a customer's Cloud Engineers. It shows how to develop the scaling and sizing guidelines DevOps Engineers can provide to developers.

@@ -412,8 +412,7 @@ These options are available under the `Advanced` property of the main configurat
 | SegmentQueueSize | Number of segments that can be queued for update (set to something greater than the number of segments your org has) | 500 |
 | SegmentWorkers | Number of background tasks for updating segments. Set in conjunction with `SegmentQueueSize` based on the number of segments you have defined. | 10 |
 | ImpressionListener | Custom implementation of impression listener interface. | nil |
-| EventsBulkSize  | Number of events to send per post. | 5000 |
-| ImpressionsBulkSize | Number of impressions to send per post. | 5000 |
+| EventsBulkSize  | Number of events to send per post. | 1000 |
 | EventsQueueSize | Max number of events in the queue. Only in memory mode. | 10000 |
 | ImpressionsQueueSize | Max number of impressions in the queue. Only in memory mode. | 10000 |
 | StreamingEnabled | Boolean flag to enable the streaming service as default synchronization mechanism. In the event of an issue with streaming, the SDK will fallback to the polling mechanism. If false, the SDK will poll for changes as usual without attempting to use streaming. | true |
@@ -490,11 +489,7 @@ This configuration structure can be used to change the execution period of each 
 
 | **Field name(s)** | **Description** | **Default value** |
 | --- | --- | --- | 
-| SplitSync | Time (in seconds) to wait between subsequent executions of the feature flag sync task. | 60 |
-| SegmentSync | Time (in seconds) to wait between subsequent executions of the segment sync task. | 60 |
-| ImpressionSync | Time (in seconds) to wait between subsequent executions of the impressions post task. | 300 |
-| EventsSync | Time (in seconds) to wait between subsequent executions of the events post task. | 60 |
-| TelemetrySync | Time (in seconds) to wait between subsequent executions of the telemetry post task. | 3600 |
+| *&nbsp;SplitSync<br />*&nbsp;SegmentSync<br />*&nbsp;ImpressionSync<br />*&nbsp;GaugeSync<br />*&nbsp;CounterSync<br />*&nbsp;LatencySync<br />*&nbsp;EventsSync | All of these parameters change the time to wait between subsequent executions of each task. | 30 | 
 
 ## Localhost mode
 
@@ -1021,7 +1016,7 @@ To resolve the issue, follow these steps:
 
 1. Increase the size of the impressions queue by updating the `Advanced.ImpressionsQueueSize` parameter. Default is 10k, increasing it to 20k might improve results.
 1. Increase the bulk size of the impressions post to Harness servers by updating the `Advanced.ImpressionsBulkSize` parameter. Default is 5k. 10k would be a logical next step.
-1. Decrease the period at which the SDK sends impressions to the Harness servers by adjusting the `TaskPeriods.ImpressionSync` parameter. The default is 300 seconds. Something along the lines of 5-10 seconds should help.
+1. Decrease the period at which the SDK sends impressions to the Harness servers by adjusting the `TaskPeriods.ImpressionSync` parameter. The default is 30 seconds which is on the low end if you're sending a huge number of impressions. Something along the lines of 5-10 seconds should help.
 
 :::info
 These changes will slightly increase the memory usage of the SDK as well as the network traffic.

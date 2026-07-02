@@ -16,7 +16,7 @@ Your users (developers) must perform a sequence of tasks to create the applicati
 
 ![](./static/service-onboarding-user-flow.png)
 
-## Before you begin
+## Prerequisites
 
 Before you begin this tutorial, make sure that you fulfil the following requirements:
 
@@ -27,7 +27,7 @@ Before you begin this tutorial, make sure that you fulfil the following requirem
 
 Begin by creating a pipeline for onboarding the service.
 
-### Create a build or custom stage
+### Create a Build or Custom stage
 
 To create a Build or Custom stage, perform the following steps:
 
@@ -75,7 +75,7 @@ In the CI or Build stage type, container step is named Run, and it has the same 
    Depending upon our operation, we might have to adjust the memory limit of the container. If required, you can change Limit Memory from `500Mi` to `4000Mi`.
    :::
 
-### Cookiecutter scripts based on your SCM
+### Cookiecutter Scripts Based on your SCM
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -134,7 +134,7 @@ import TabItem from '@theme/TabItem';
 - `<+pipeline.variables.github_org>`
 - `<+pipeline.variables.github_repo>`
 
-Except for the secrets all the variables should have a [runtime input type](/docs/platform/variables-and-expressions/runtime-inputs#runtime-inputs) and the variable name should match with the parameter name used in the template as the values would be pre-populated from the values entered as input in the below IDP template.
+Except for the secrets all the variables should have a [runtime input type](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) and the variable name should match with the parameter name used in the template as the values would be pre-populated from the values entered as input in the below IDP template.
 
 For eg: `<+pipeline.variables.project_name>` variable is pre-populated by `project_name: ${{ parameters.project_name }}` under `input set:` in the below given template.
 
@@ -147,7 +147,7 @@ For eg: `<+pipeline.variables.project_name>` variable is pre-populated by `proje
 
    1. Generates a basic Next.js app.
 
-   2. Creates a repository with the contents. The sample code used in the command is available [here](https://github.com/harness-community/idp-samples/tree/main/idp-pipelines/cookiecutter-react-app), whichand it is essentially is a [cookiecutter project](https://cookiecutter.readthedocs.io/en/stable/tutorials/tutorial2.html). You can choose from available [cookiecutter projects](https://www.cookiecutter.io/templates) or create your own project from scratch.
+   2. Creates a repository with the contents. The sample code used in the command is available [here](https://github.com/harness-community/idp-samples/tree/main/idp-pipelines/cookiecutter-react-app), whichand it's essentially is a [cookiecutter project](https://cookiecutter.readthedocs.io/en/stable/tutorials/tutorial2.html). You can choose from available [cookiecutter projects](https://www.cookiecutter.io/templates) or create your own project from scratch.
 
    ```sh
    # Testing path
@@ -192,7 +192,7 @@ For eg: `<+pipeline.variables.project_name>` variable is pre-populated by `proje
 - `<+pipeline.variables.gitlab_org>`
 - `<+pipeline.variables.gitlab_repo>`
 
-Except for the secrets all the variables should have a [runtime input type](/docs/platform/variables-and-expressions/runtime-inputs#runtime-inputs) and the variable name should match with the parameter name used in the template as the values would be pre-populated from the values entered as input in the below IDP template.
+Except for the secrets all the variables should have a [runtime input type](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) and the variable name should match with the parameter name used in the template as the values would be pre-populated from the values entered as input in the below IDP template.
 
 For eg: `<+pipeline.variables.project_name>` variable is pre-populated by `project_name: ${{ parameters.project_name }}` under `input set:` in the below given template.
 
@@ -209,7 +209,7 @@ Variables such as project name and GitHub repository are runtime inputs. They ar
 
 ### Create a software template definition in IDP
 
-Now that our pipeline is ready to execute when a project name and a GitHub repository name are provided, let us create the UI counterpart of it in IDP. Create a `workflow.yaml` file anywhere in your Git repository. Usually, that would be the same place as your skeleton hello world code. We use the [react-jsonschema-form playground](https://rjsf-team.github.io/react-jsonschema-form/) to build the template. [Nunjucks](https://mozilla.github.io/nunjucks/) is templating engine for the IDP templates.  
+Now that our pipeline is ready to execute when a project name and a GitHub repository name are provided, let's create the UI counterpart of it in IDP. Create a `workflow.yaml` file anywhere in your Git repository. Usually, that would be the same place as your skeleton hello world code. We use the [react-jsonschema-form playground](https://rjsf-team.github.io/react-jsonschema-form/) to build the template. [Nunjucks](https://mozilla.github.io/nunjucks/) is templating engine for the IDP templates.  
 
 <Tabs>
 <TabItem value="GitHub">
@@ -398,7 +398,7 @@ This YAML code is governed by Backstage. You can change the name and description
 ![](./static/template-2.png)
 ![](./static/template-3.png)
 
-Let us take a look at the inputs that the template expects from a developer. The inputs are written in the `spec.parameters` field. It has two parts, but you can combine them. The keys in `properties` are the unique IDs of fields (for example, `github_repo` and `project_name`). If you recall, they are the pipeline variables that we set as runtime inputs earlier. This is what we want the developer to enter when creating their new application.
+Let's take a look at the inputs that the template expects from a developer. The inputs are written in the `spec.parameters` field. It has two parts, but you can combine them. The keys in `properties` are the unique IDs of fields (for example, `github_repo` and `project_name`). If you recall, they are the pipeline variables that we set as runtime inputs earlier. This is what we want the developer to enter when creating their new application.
 
 The YAML definition includes fields such as cloud provider and database choice. They are for demonstration purposes only and are not used in this tutorial.
 
@@ -435,7 +435,7 @@ This is a custom component we created to authenticate the call to execute the pi
 
 :::info
 
-The template actions currently supports only [custom stage](/docs/platform/pipelines/add-a-stage#add-a-custom-stage) and codebase disabled [CI stage with Run step](/docs/continuous-integration/use-ci/run-step-settings#add-the-run-step), also all input, except for [pipeline input as variables](/docs/platform/variables-and-expressions/harness-variables#pipeline-expressions), must be of [fixed value](/docs/platform/variables-and-expressions/runtime-inputs#fixed-values).
+The template actions currently supports only [custom stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) and codebase disabled [CI stage with Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings/#add-the-run-step), also all input, except for [pipeline input as variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline-expressions), must be of [fixed value](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values).
 
 ![](./static/pipeline-varialbles-idp-implementation.png)
 
@@ -443,7 +443,7 @@ The template actions currently supports only [custom stage](/docs/platform/pipel
 
 The `spec.steps` field contains only one action, and that is to trigger a Harness pipeline. Update the `url` and replace it with the URL of your service onboarding pipeline. Also, ensure that the `inputset` is correct and it contains all the runtime input variables that the pipeline needs.
 
-### Conditional inputs in templates
+### Conditional Inputs in Templates
 
 1. One Of: Helps you create a dropdown in the template, where only one of all the options available could be selected. 
 
@@ -478,7 +478,7 @@ allOf:
     ipsum:
       type: string
 ```
-3. Any Of: Helps you to select from multiple properties where both cannot be selected together at once. 
+3. Any Of: Helps you to select from multiple properties where both can't be selected together at once. 
 
 ```YAML
 type: object
@@ -545,7 +545,7 @@ properties:
     title: Single File with Accept attribute
 ```
 
-### How to use arrays as Harness pipeline inputs
+### How to use arrays as Harness Pipeline inputs
 
 Harness Pipelines variables can only be 3 types, string, number and secrets, in case you want to add multiple strings and comma separated values you need to [join](https://mozilla.github.io/nunjucks/templating.html#join) them and send as single input parameters. 
 
@@ -583,13 +583,13 @@ As you could see in the example below under `inputset`, `exampleVar` takes input
         apikey: ${{ parameters.token }}
 ```
 
-### Register the workflow
+### Register the Workflow
 
 Use the URL to the `workflow.yaml` created above and register it by using the same process for [registering a new software component](/docs/internal-developer-portal/get-started).
 
 Now navigate to the **Create** page in IDP. You will see the newly created Workflow appear. Try it out!
 
-### Unregister/Delete workflow
+### Unregister/Delete Workflow
 
 1. Navigate to the **Catalog** page, and select **Template** under Kind.
 

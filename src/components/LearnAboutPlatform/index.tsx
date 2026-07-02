@@ -1,173 +1,253 @@
-import React, { useState } from "react";
+import React from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import ModuleTiles from "./Modules";
 import styles from "./styles.module.scss";
 import { useColorMode } from "@docusaurus/theme-common";
-// harness-platform.svg | secret-mgmt.svg
+
+// ─── Types ────────────────────────────────────────────────────────────────────
+
+interface TileItem {
+  title: string;
+  description: string;
+  href: string;
+  iconLight?: string;
+  iconDark?: string;
+}
+
+// ─── Data ────────────────────────────────────────────────────────────────────
+
+const RESOURCES: TileItem[] = [
+  {
+    title: "Pipelines",
+    description: "Build automation workflows using stages, steps, and triggers",
+    href: "/3k-docs/category/pipelines",
+    iconLight: "img/home/pipeline.svg",
+    iconDark: "img/home/pipeline.svg",
+  },
+  {
+    title: "AI Agents",
+    description: "Build and deploy AI agents to automate engineering workflows",
+    href: "/3k-docs/category/harness-ai",
+    iconLight: "img/home/agent.svg",
+    iconDark: "img/home/agent.svg",
+  },
+  {
+    title: "Services",
+    description: "Define and manage the services that make up your applications",
+    href: "3k-docs/platform/service-discovery",
+    iconLight: "img/home/service.svg",
+    iconDark: "img/home/service.svg",
+  },
+  {
+    title: "Environments",
+    description: "Manage deployment targets and configuration overrides",
+    href: "/3k-docs/continuous-delivery/x-platform-cd-features/environments/environment-overview",
+    iconLight: "img/home/environment.svg",
+    iconDark: "img/home/environment.svg",
+  },
+  {
+    title: "Repositories",
+    description: "Host, review, and collaborate on code with Git and pipelines",
+    href: "/3k-docs/code-repository",
+    iconLight: "img/home/repository.svg",
+    iconDark: "img/home/repository.svg",
+  },
+  {
+    title: "Delegates",
+    description: "Run tasks securely in your own infrastructure",
+    href: "/3k-docs/category/delegate",
+    iconLight: "img/home/delegate.svg",
+    iconDark: "img/home/delegate.svg",
+  },
+  {
+    title: "Connectors",
+    description: "Connect to cloud providers, source control, registries, and more",
+    href: "/3k-docs/category/connectors",
+    iconLight: "img/home/connector.svg",
+    iconDark: "img/home/connector-dark.svg",
+  },
+  {
+    title: "Secrets",
+    description: "Securely store and reference API keys, passwords, and tokens",
+    href: "/3k-docs/category/secrets",
+    iconLight: "img/home/secret.svg",
+    iconDark: "img/home/secret.svg",
+  },
+  {
+    title: "Access Control",
+    description: "Control access using roles, resource groups, and user groups",
+    href: "/3k-docs/category/platform-access-control",
+    iconLight: "img/home/access.svg",
+    iconDark: "img/home/access.svg",
+  },
+  {
+    title: "Authentication",
+    description: "Configure SSO, SAML, OAuth, and LDAP for secure user access",
+    href: "/3k-docs/category/authentication",
+    iconLight: "img/home/authentication.svg",
+    iconDark: "img/home/authentication.svg",
+  },
+  {
+    title: "Organizations & Projects",
+    description: "Organize your account into teams and projects",
+    href: "/3k-docs/category/organizations--projects",
+    iconLight: "img/home/organization.svg",
+    iconDark: "img/home/organization.svg",
+  },
+  {
+    title: "Triggers",
+    description: "Kick off pipelines from Git events, schedules, or webhooks",
+    href: "/3k-docs/category/triggers",
+    iconLight: "img/home/trigger.svg",
+    iconDark: "img/home/trigger.svg",
+  },
+  {
+    title: "Approvals",
+    description: "Gate pipelines with approvals, Jira tickets, or custom conditions",
+    href: "/3k-docs/category/approvals",
+    iconLight: "img/home/approve.svg",
+    iconDark: "img/home/approve-dark.svg",
+  },
+  {
+    title: "Git Experience",
+    description: "Store and sync pipelines and entities in your Git repos",
+    href: "/3k-docs/category/git-experience",
+    iconLight: "img/home/git.svg",
+    iconDark: "img/home/git.svg",
+  },
+  {
+    title: "Audit Trail",
+    description: "Track every config change and action across your account",
+    href: "/3k-docs/platform/governance/audit-trail",
+    iconLight: "img/home/log.svg",
+    iconDark: "img/home/log.svg",
+  },
+  {
+    title: "Service Discovery",
+    description: "Discover and map services running across your environments",
+    href: "/3k-docs/platform/service-discovery/",
+    iconLight: "img/home/service-discover.svg",
+    iconDark: "img/home/service-discover.svg",
+  },
+  {
+    title: "Automation",
+    description: "Automate config and management with the CLI, API, and Terraform",
+    href: "/3k-docs/category/automation",
+    iconLight: "img/home/automation.svg",
+    iconDark: "img/home/automation.svg",
+  },
+  {
+    title: "REST API",
+    description: "Integrate and extend Harness with REST API clients",
+    href: "/3k-docs/platform/automation/api/api-quickstart",
+    iconLight: "img/home/api.svg",
+    iconDark: "img/home/api.svg",
+  },
+  {
+    title: "Dashboards",
+    description: "Build and share dashboards to visualize metrics across your org",
+    href: "/3k-docs/category/harness-dashboards",
+    iconLight: "img/home/templates.svg",
+    iconDark: "img/home/templates.svg",
+  },
+  {
+    title: "Templates",
+    description: "Create reusable pipeline, step, and stage templates",
+    href: "/3k-docs/category/templates",
+    iconLight: "img/home/templates.svg",
+    iconDark: "img/home/templates.svg",
+  },
+  {
+    title: "Policies",
+    description: "Enforce governance rules across pipelines using OPA policies",
+    href: "/3k-docs/category/policy-as-code",
+    iconLight: "img/home/shield.svg",
+    iconDark: "img/home/shield.svg",
+  },
+  {
+    title: "Variables",
+    description: "Manage account-level variables shared across pipelines",
+    href: "/3k-docs/category/variables--expressions",
+    iconLight: "img/home/variable.svg",
+    iconDark: "img/home/variable.svg",
+  },
+  {
+    title: "Webhooks",
+    description: "Trigger pipelines and notify systems using webhook events",
+    href: "/3k-docs/platform/git-experience/gitexp-bidir-sync-setup",
+    iconLight: "img/home/webhook.svg",
+    iconDark: "img/home/webhook.svg",
+  },
+  {
+    title: "Notifications",
+    description: "Send alerts to Slack, PagerDuty, and email on pipeline events",
+    href: "/3k-docs/category/notifications--banners",
+    iconLight: "img/home/notification.svg",
+    iconDark: "img/home/notification.svg",
+  },
+  {
+    title: "General Settings",
+    description: "Configure account-wide defaults, preferences, and behavior",
+    href: "/3k-docs/platform/settings/default-settings",
+    iconLight: "img/home/settings.svg",
+    iconDark: "img/home/settings-dark.svg",
+  },
+];
+
+// ─── Shared tile renderer ─────────────────────────────────────────────────────
+
+function TileIcon({
+  item,
+  baseUrl,
+  colorMode,
+}: {
+  item: TileItem;
+  baseUrl: string;
+  colorMode: string;
+}): JSX.Element | null {
+  if (!item.iconLight && !item.iconDark) return null;
+  return (
+    <img
+      src={
+        colorMode === "light"
+          ? `${baseUrl}${item.iconLight}`
+          : `${baseUrl}${item.iconDark}`
+      }
+      alt=""
+      aria-hidden="true"
+    />
+  );
+}
+
+// ─── Component ───────────────────────────────────────────────────────────────
+
 export default function LearnAboutPlatform(): JSX.Element {
   const { colorMode } = useColorMode();
-
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
-  const [showMore, setShowMore] = useState(false);
-  const [showMoreRelease, setShowMoreRelease] = useState(false);
-  const toggleShowMore = () => {
-    setShowMore(!showMore);
-  };
-  const toggleShowMoreRelease = () => {
-    setShowMoreRelease(!showMoreRelease);
-  };
+
   return (
     <section className={styles.learnAboutPlatform}>
-      <h2>Learn More</h2>
-      <div className={styles.platform}>
+      {/* ── Resources ────────────────────────────────────────────────────── */}
+      <div className={styles.sectionHeader}>
+        <img
+          src={`img/home/harness.svg`}
+          alt=""
+          aria-hidden="true"
+          className={styles.sectionHeaderIcon}
+        />
+        <h3>Resources</h3>
       </div>
 
-      <div className={styles.subSectionName}>
-        <h3>Platform</h3>
-      </div>
-      <ul className={styles.platformList}>
-        <a href="/docs/category/pipelines">
-          <li>
-            <img
-              src={
-                colorMode === "light"
-                  ? `${baseUrl}img/automated-pipeline.svg`
-                  : `${baseUrl}img/Pipelines_dark_mode.svg`
-              }
-            />
-
-            {/* <img src={`${baseUrl}img/automated-pipeline.svg`} /> */}
-            <h4>Pipelines</h4>
-            <p>
-              Run CI, CD, STO, FF and custom stages in an automated pipeline
-            </p>
+      <ul className={styles.resourceGrid}>
+        {RESOURCES.map((resource) => (
+          <li key={resource.title}>
+            <a href={resource.href}>
+              <TileIcon item={resource} baseUrl={baseUrl} colorMode={colorMode} />
+              <h4>{resource.title}</h4>
+              <p>{resource.description}</p>
+            </a>
           </li>
-        </a>
-        <a href="/docs/category/templates">
-          <li>
-            {/* <img src={`${baseUrl}img/templates.svg`} /> */}
-            <img
-              src={
-                colorMode === "light"
-                  ? `${baseUrl}img/templates.svg`
-                  : `${baseUrl}img/Templates_dark_mode.svg`
-              }
-            />
-            <h4>Templates</h4>
-            <p>
-              Share organizational best practices for Pipelines, Steps, Stages,
-              Services, Infrastructure
-            </p>
-          </li>
-        </a>
-        <a href="/docs/category/delegates">
-          <li>
-            {/* <img src={`${baseUrl}img/delegates.svg`} /> */}
-            <img
-              src={
-                colorMode === "light"
-                  ? `${baseUrl}img/delegates.svg`
-                  : `${baseUrl}img/Delegates_dark_mode.svg`
-              }
-            />
-            <h4>Delegates</h4>
-            <p>
-              Install, configure, secure, monitor, upgrade Delegates running on
-              your own infrastructure
-            </p>
-          </li>
-        </a>
-        <a href="/docs/platform/secrets/secrets-management/harness-secret-manager-overview">
-          <li>
-            <img
-              src={
-                colorMode === "light"
-                  ? `${baseUrl}img/secret-mgmt.svg`
-                  : `${baseUrl}img/Secrets_management_dark_mode.svg`
-              }
-            />
-            <h4>Secrets Managment</h4>
-            <p>
-              Secure your secrets using popular Secret Managers and Key
-              Management Systems
-            </p>
-          </li>
-        </a>
+        ))}
       </ul>
-      {showMore && (
-        <ul className={styles.platformListMore}>
-          <li>
-            <a href="/docs/category/organizations--projects">
-              <h4>Organizations &amp; Projects</h4>
-              <p>Structure your development teams &amp; applications</p>
-            </a>
-          </li>
-          <li>
-            <a href="/docs/category/authentication">
-              <h4>User Management</h4>
-              <p>Use OAuth/SAML/SSO/LDAP providers for authentication</p>
-            </a>
-          </li>
-          <li>
-            <a href="/docs/category/platform-access-control">
-              <h4>Role-Based Access Control</h4>
-              <p>Use Roles &amp; User Groups for authorization</p>
-            </a>
-          </li>
-          <li>
-            <a href="/docs/category/audit-trail">
-              <h4>Audit Trail</h4>
-              <p>Review every important change to your Harness account</p>
-            </a>
-          </li>
-          <li>
-            <a href="/docs/category/harness-dashboards">
-              <h4>Dashboards &amp; Reports</h4>
-              <p>
-                Create &amp; share Dashboards as well as schedule &amp; download
-                Reports
-              </p>
-            </a>
-          </li>
-          <li>
-            <a href="/docs/category/policy-as-code">
-              <h4>Policy as Code</h4>
-              <p>Define &amp; enforce Governance Policies</p>
-            </a>
-          </li>
-          <li>
-            <a href="/docs/category/terraform-provider">
-              <h4>Terraform Provider</h4>
-              <p>Automate configuration and initial setup</p>
-            </a>
-          </li>
-          <li>
-            <a href="/docs/category/api">
-              <h4>REST API</h4>
-              <p>
-                Integrate with your ecosystem using REST API clients written in
-                the language of your choice
-              </p>
-            </a>
-          </li>
-          <li>
-            <a href="/docs/self-managed-enterprise-edition">
-              <h4>Self-Managed Enterprise Edition</h4>
-              <p>
-                Install, configure, secure, upgrade Harness Platform on your own
-                Kubernetes infrastructure
-              </p>
-            </a>
-          </li>
-        </ul>
-      )}
-      <div className={styles.btnShowMore}>
-        <button onClick={toggleShowMore}>
-          See {showMore ? "Less △" : "All Platform Features▽"}
-        </button>
-      </div>
-
-      
     </section>
   );
 }

@@ -12,7 +12,6 @@ tags:
 sidebar_position: 1
 ---
 
-
 In many scenarios, your test data doesn't live inside the test tool itself, but can be present in databases. The **DB Query** action in Harness AI Test Automation (AIT) allows you to fetch live data directly from your database during test execution.
 
 

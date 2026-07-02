@@ -1,200 +1,373 @@
 ---
 id: vmware-network-latency
 title: VMware network latency
-sidebar_label: VMware Network Latency
-description: Inject network latency on egress traffic from a Linux VMware VM for a configurable duration so you can test how the workload behaves under slow networks.
-keywords:
-  - chaos engineering
-  - vmware network latency
-  - vmware fault
-  - network chaos
-tags:
-  - chaos-engineering
-  - vmware-faults
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/linux/vmware-network-latency
-- /docs/chaos-engineering/chaos-faults/vmware/linux/vmware-network-latency
+- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-network-latency
+- /docs/chaos-engineering/chaos-faults/vmware/vmware-network-latency
 ---
+VMware network latency injects network packet latency from the VMware VM(s) into the application (or service).
+- It results in flaky access to the application.
+- It causes network degradation without the VM being marked as unhealthy (or unworthy) of traffic.
+- It checks the performance of the application (or process) running on the VMware VM(s).
 
-import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
+![VMware Network Latency](./static/images/vmware-network-latency.png)
 
-VMware network latency is a VMware chaos fault that adds `NETWORK_LATENCY` milliseconds (with optional `JITTER`) of latency to egress traffic on the network interface `NETWORK_INTERFACE` of the Linux VM `VM_NAME` for `TOTAL_CHAOS_DURATION` seconds, then removes the latency rule. You can scope the impact to specific destinations via `DESTINATION_IPS` or `DESTINATION_HOSTS` and to specific ports via `SOURCE_PORTS`/`DESTINATION_PORTS`. The fault uses VMware Tools (Guest Operations API) to apply the rule inside the guest as `VM_USER_NAME`.
-
-Use this fault to test how a workload on a VMware-hosted VM behaves when a downstream dependency becomes slow: whether retries and timeouts work, whether circuit breakers open correctly, and whether monitoring detects the regression within the alerting SLA.
-
-:::info Run your first experiment
-If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
+:::info note
+HCE doesn't support injecting VMWare Windows faults on Bare metal server.
 :::
-
----
 
 ## Use cases
+VMware network latency:
+- Simulates issues within the VM network (or microservice) communication across services in different hosts.
+- Determines the impact of degradation while accessing a microservice.
+- Limits the impact (blast radius) to the traffic that you wish to test by specifying the IP addresses, if the VM stalls or gets corrupted while waiting endlessly for a packet.
+- Simulates a consistently slow network connection between microservices, for example, cross-region connectivity between active-active peers of a given service or across services or poor cni-performance in the inter-pod-communication network.
+- Simulates jittery connection with transient latency spikes between microservices.
+- Simulates slow response on specific third party (or dependent) components (or services).
+- Simulates degraded data-plane of service-mesh infrastructure.
 
-Run this fault when you want to answer concrete questions like:
+### Prerequisites
+- Kubernetes > 1.16 is required to execute this fault.
+- Appropriate vCenter permissions should be provided to start and stop the VMs.
+- The VM should be in a healthy state before and after injecting chaos.
+- Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. VM credentials can be passed as secrets or as a `ChaosEngine` environment variable. Below is a sample secret file:
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: vcenter-secret
+  namespace: litmus
+type: Opaque
+stringData:
+    VCENTERSERVER: XXXXXXXXXXX
+    VCENTERUSER: XXXXXXXXXXXXX
+    VCENTERPASS: XXXXXXXXXXXXX
+```
 
-- **Slow downstream:** When latency to a specific dependency spikes, does the caller honor its timeout and circuit-breaker policy?
-- **End-to-end SLO:** Does the end-user SLO degrade gracefully or breach when the network slows?
-- **Retry storms:** Does retry logic amplify load when the dependency is slow?
+### Mandatory tunables
 
----
+   <table>
+      <tr>
+        <th> Tunable </th>
+        <th> Description </th>
+        <th> Notes </th>
+      </tr>
+      <tr>
+        <td> VM_NAMES </td>
+        <td> Names of the target VMs as comma-separated values.</td>
+        <td> For example, <code> vm-1,vm-2</code>. </td>
+      </tr>
+      <tr>
+        <td> VM_USER_NAME </td>
+        <td> Username of the target VM(s).</td>
+        <td> Multiple usernames can be provided as comma-separated values which corresponds to more than one VM under chaos. It is used to run the govc command. </td>
+      </tr>
+      <tr>
+        <td> VM_PASSWORD </td>
+        <td> Password for the target VM(s).</td>
+        <td> It is used to run the govc command. </td>
+      </tr>
+    </table>
 
-## Prerequisites
+### Optional tunables
 
-- **Kubernetes version:** 1.21 or later for the chaos infrastructure cluster.
-- **VMware Tools running on the guest:** Verify with `vmware-toolbox-cmd -v`.
-- **Linux `tc` (iproute2) installed inside the guest:** Go to [VMware Linux binary installation](/docs/chaos-engineering/faults/chaos-faults/vmware/linux/binary-installation).
-- **Sudo or capability for `tc`:** `VM_USER_NAME` can run `tc qdisc` (typically requires `sudo` or `CAP_NET_ADMIN`).
-- **vCenter chaos role:** `GOVC_USERNAME` is mapped to the chaos role per [VMware permissions](/docs/chaos-engineering/faults/chaos-faults/vmware/permissions).
+   <table>
+      <tr>
+        <th> Tunable </th>
+        <th> Description </th>
+        <th> Notes </th>
+      </tr>
+      <tr>
+        <td> TOTAL_CHAOS_DURATION </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
+      </tr>
+      <tr>
+        <td> CHAOS_INTERVAL </td>
+        <td> Time interval between two successive instance terminations (in seconds). </td>
+        <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval. </a></td>
+      </tr>
+      <tr>
+        <td> NETWORK_LATENCY </td>
+        <td> Delay (in milliseconds). Provide numeric value only.</td>
+        <td> Defaults to 2000 ms. For more information, go to <a href="#network-packet-latency"> network packet latency.</a></td>
+      </tr>
+      <tr>
+        <td> JITTER </td>
+        <td> Network jitter (in milliseconds). Provide numeric value only.</td>
+        <td> Defaults to 0. For more information, go to <a href="#run-with-jitter"> run with jitter.</a></td>
+      </tr>
+      <tr>
+        <td> DESTINATION_IPS </td>
+        <td> IP addresses of the services or pods whose accessibility you want to affect. You can also specify a CIDR block. </td>
+        <td> Comma-separated IPs (or CIDRs) can be provided. If it has not been provided, network chaos is induced on all IPs (or destinations). For more information, go to <a href="#run-with-destination-ips-and-destination-hosts"> run with destination IPs. </a></td>
+      </tr>
+      <tr>
+        <td> DESTINATION_HOSTS </td>
+        <td> DNS names (or FQDN names) of the services whose accessibility is affected. </td>
+        <td> If it has not been provided, network chaos is induced on all IPs (or destinations). For more information, go to <a href="#run-with-destination-ips-and-destination-hosts"> run with destination hosts. </a></td>
+      </tr>
+      <tr>
+        <td> SOURCE_PORTS </td>
+        <td> Comma-separated ports of the target application whose accessibility is impacted. If not provided, network chaos is induced on all ports. For example, <code>5000,8080</code>. </td>
+        <td> Alternatively, the source ports to be exempted from the chaos can be provided by prepending a <code>!</code> to the list of ports. For example, <code>!5000,8080</code>. For more information, go to <a href="#source-and-destination-ports"> source ports. </a></td>
+      </tr>
+      <tr>
+        <td> DESTINATION_PORTS </td>
+        <td> Ports of the destination services or pods or the CIDR blocks(range of IPs) whose accessibility is impacted. If not provided, network chaos is induced on all ports. For example, <code>5000,8080</code>. </td>
+        <td> Alternatively, the destination ports to be exempted from the chaos can be provided by prepending a <code>!</code> to the list of ports. For example, <code>!5000,8080</code>. For more information, go to <a href="#source-and-destination-ports"> destination ports. </a></td>
+      </tr>
+      <tr>
+        <td> SEQUENCE </td>
+        <td> Sequence of chaos execution for multiple instances. </td>
+        <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
+      </tr>
+      <tr>
+        <td> RAMP_TIME </td>
+        <td> Period to wait before and after injecting chaos (in seconds). </td>
+        <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
+      </tr>
+      <tr>
+      <td>DEFAULT_HEALTH_CHECK</td>
+      <td>Determines if you wish to run the default health check which is present inside the fault. </td>
+      <td> Default: 'true'. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
+      </tr>
+    </table>
 
----
+### Secret tunables
+   <table>
+      <tr>
+        <th> Tunable </th>
+        <th> Description </th>
+        <th> Notes </th>
+      </tr>
+      <tr>
+        <td> GOVC_URL </td>
+        <td> vCenter server URL used to perform API calls using the govc command. </td>
+        <td> It is derived from a secret. </td>
+      </tr>
+        <tr>
+        <td> GOVC_USERNAME </td>
+        <td> Username of the vCenter server used for authentication purposes. </td>
+        <td> It can be set up using a secret. </td>
+      </tr>
+      <tr>
+        <td> GOVC_PASSWORD </td>
+        <td> Password of the vCenter server used for authentication purposes. </td>
+        <td> It can be set up using a secret. </td>
+      </tr>
+      <tr>
+        <td> GOVC_INSECURE </td>
+        <td> Runs the govc command in insecure mode. It is set to <code>true</code>. </td>
+        <td> It can be set up using a secret. </td>
+      </tr>
+     </table>
 
-## Supported environments
-
-| Platform | Support status |
-| --- | --- |
-| Linux VMs hosted on vSphere / vCenter (any distro with VMware Tools and `tc`) | Supported |
-| Windows VMs | Not supported (use [VMware Windows network latency](/docs/chaos-engineering/faults/chaos-faults/windows/windows-network-latency)) |
-
----
-
-## Permissions required
-
-**On vCenter.** Map `GOVC_USERNAME` to the chaos role described in [VMware permissions](/docs/chaos-engineering/faults/chaos-faults/vmware/permissions). The role needs Guest Operations (Program execution, Modifications, Queries).
-
-**On the guest OS.** `VM_USER_NAME` must be able to run `tc qdisc` on `NETWORK_INTERFACE`.
-
----
-
-## Authentication
-
-| Layer | Tunables |
-| --- | --- |
-| vCenter | `GOVC_URL`, `GOVC_USERNAME`, `GOVC_PASSWORD`, `GOVC_INSECURE` |
-| Guest OS | `VM_USER_NAME`, `VM_PASSWORD` |
-
-Store each credential as a text secret in [Harness Secret Manager](/docs/platform/secrets/add-use-text-secrets) and reference the secret identifier when configuring the experiment.
-
----
-
-## Fault tunables
-
-Configure the following fault parameters when you add VMware network latency to an experiment in Chaos Studio. Defaults are shown for reference.
-
-**Required parameters**
-
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `VM_NAME` | Name of the target VM as it appears in vCenter. | (required) |
-| `VM_USER_NAME` | OS user account on the target VM. | (required) |
-| `VM_PASSWORD` | Password for `VM_USER_NAME`. | (required) |
-
-**Network chaos parameters**
-
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `NETWORK_INTERFACE` | Name of the interface to apply the latency rule to (for example `eth0`). | `eth0` |
-| `NETWORK_LATENCY` | Network latency to inject in milliseconds. | `2000` |
-| `JITTER` | Jitter to add to the latency, in milliseconds. | `0` |
-| `DESTINATION_IPS` | Comma-separated list of destination IPv4/IPv6/CIDR ranges to affect. Empty means all destinations. | `""` |
-| `DESTINATION_HOSTS` | Comma-separated list of destination DNS names to affect. Resolved at fault start. | `""` |
-| `SOURCE_PORTS` | Comma-separated list of source ports to filter on. | `""` |
-| `DESTINATION_PORTS` | Comma-separated list of destination ports to filter on. | `""` |
-
-**Chaos parameters**
-
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `TOTAL_CHAOS_DURATION` | Total duration of the fault in seconds. | `30` |
-| `CHAOS_INTERVAL` | Delay in seconds between iterations. | `10` |
-| `SEQUENCE` | Order in which multiple targets are stressed: `parallel` or `serial`. | `parallel` |
-| `RAMP_TIME` | Wait period in seconds before and after the fault. Go to [ramp time](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time) to read how it is applied. | `0` |
-
-**vCenter authentication**
-
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `GOVC_URL` | vCenter server URL. | `""` |
-| `GOVC_USERNAME` | vCenter user mapped to the chaos role. | `""` |
-| `GOVC_PASSWORD` | Password for `GOVC_USERNAME`. | `""` |
-| `GOVC_INSECURE` | Skip SSL certificate verification when set to `true`. | `true` |
-
-Tunables that apply to every fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
-
----
-
-## Fault execution in brief
-
-Authenticates to vCenter, opens a Guest Operations session on `VM_NAME` as `VM_USER_NAME`, installs a queueing discipline on `NETWORK_INTERFACE` that delays egress packets matching `DESTINATION_IPS` / `DESTINATION_HOSTS` / `SOURCE_PORTS` / `DESTINATION_PORTS` by `NETWORK_LATENCY` ms (+/- `JITTER` ms) for `TOTAL_CHAOS_DURATION` seconds, then removes the rule.
-
----
-
-## Expected behavior during fault execution
-
-- Egress latency from `VM_NAME` to the matched destinations rises by `NETWORK_LATENCY` ms.
-- Upstream callers see higher round-trip latency; SLO-sensitive paths may breach.
-- After the duration ends, the `tc` rule is removed and latency returns to baseline.
-
-:::info When the fault ends
-The chaos pod removes the `tc qdisc` rule from `NETWORK_INTERFACE`. Latency returns to baseline within seconds.
+:::tip
+If the environment variables `DESTINATION_HOSTS` or `DESTINATION_IPS` are left empty, the default behaviour is to target all hosts. To limit the impact on all the hosts, you can specify the IP addresses of the service (use commas to separate multiple values) or the DNS or the FQDN names of the services in `DESTINATION_HOSTS`.
 :::
 
-### Signals to watch
+### Network packet latency
 
-- **End-to-end latency:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) from outside the VM.
-- **Caller behavior:** Use a Prometheus probe on caller-side timeout and circuit-breaker metrics.
+Network packet latency injected into the VM. Tune it by using the `NETWORK_LATENCY` environment variable.
 
----
+The following YAML snippet illustrates the use of this environment variable:
 
-## Verify the fault execution effect
+[embedmd]:# (./static/manifests/vmware-network-latency/network-latency.yaml yaml)
+```yaml
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: VMware-engine
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: VMware-network-latency
+    spec:
+      components:
+        env:
+        # network packet latency
+        - name: NETWORK_LATENCY
+          value: '2000'
+        - name: VM_NAME
+          value: 'vm-1,vm-2'
+        - name: VM_USER_NAME
+          value: 'ubuntu,debian'
+        - name: VM_PASSWORD
+          value: '123,123'
+```
 
-1. **SSH into the VM and inspect the qdisc.**
+### Run with jitter
 
-   ```bash
-   sudo tc qdisc show dev eth0
-   ```
+Parameter that introduces network delay variation (in milliseconds). Tune it by using the `JITTER` environment variable. Its default value is 0.
 
-   You should see the `netem` rule with the configured delay during the chaos window, and it should be removed afterwards.
+The following YAML snippet illustrates the use of this environment variable:
 
-2. **Ping the target from outside the VM.**
+[embedmd]:# (./static/manifests/vmware-network-latency/network-latency-with-jitter.yaml yaml)
+```yaml
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: VMware-engine
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: VMware-network-latency
+    spec:
+      components:
+        env:
+        # value of the network latency jitter (in ms)
+        - name: JITTER
+          value: '200'
+        - name: NETWORK_LATENCY
+          value: '2000'
+        - name: VM_NAME
+          value: 'vm-1,vm-2'
+        - name: VM_USER_NAME
+          value: 'ubuntu,debian'
+        - name: VM_PASSWORD
+          value: '123,123'
+```
 
-   Round-trip should rise by `NETWORK_LATENCY` during the chaos window.
+### Run with destination IPs and destination hosts
 
----
+IPs/hosts that interrupt traffic by default. Tune it by using the `DESTINATION_IPS` and `DESTINATION_HOSTS` environment variables, respectively.
 
-## Recovery and cleanup
+`DESTINATION_IPS`: IP addresses of the services or the CIDR blocks (range of IPs) whose accessibility is impacted.
+`DESTINATION_HOSTS`: DNS names of the services whose accessibility is impacted.
 
-- **End of duration:** The chaos pod removes the `tc qdisc` rule via Guest Operations.
-- **Abort the experiment:** Stopping the experiment also removes the rule.
-- **Manual recovery:** SSH into the VM and run `sudo tc qdisc del dev <NETWORK_INTERFACE> root` to clear lingering rules.
+The following YAML snippet illustrates the use of this environment variable:
 
----
+[embedmd]:# (./static/manifests/vmware-network-latency/destination-host-and-ip.yaml yaml)
+```yaml
+## it injects the chaos for the ingress/egress traffic for specific ips/hosts
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: VMware-engine
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: VMware-network-latency
+    spec:
+      components:
+        env:
+        # supports comma separated destination ips
+        - name: DESTINATION_IPS
+          value: '8.8.8.8,192.168.5.6'
+        # supports comma separated destination hosts
+        - name: DESTINATION_HOSTS
+          value: 'google.com'
+        - name: VM_NAME
+          value: 'vm-1,vm-2'
+        - name: VM_USER_NAME
+          value: 'ubuntu,debian'
+        - name: VM_PASSWORD
+          value: '123,123'
+```
 
-## Limitations
+### Source and destination ports
 
-- **Egress only:** The rule affects egress traffic from the VM. Ingress is not slowed (peer egress is unaffected).
-- **Single interface per run:** Each fault run scopes one `NETWORK_INTERFACE`. Repeat the fault for additional interfaces.
-- **`tc` required:** Without `tc` (iproute2) and the netem kernel module, the fault cannot run.
-- **DNS at start time:** `DESTINATION_HOSTS` is resolved once at fault start. DNS changes during the chaos window are not picked up.
+By default, the network experiments disrupt traffic for all the source and destination ports. Tune the interruption of specific port(s) using the `SOURCE_PORTS` and `DESTINATION_PORTS` environment variables, respectively.
 
----
+- `SOURCE_PORTS`: Ports of the target application whose accessibility is impacted.
+- `DESTINATION_PORTS`: Ports of the destination services or pods or the CIDR blocks(range of IPs) whose accessibility is impacted.
 
-## Troubleshooting
+The following YAML snippet illustrates the use of this environment variable:
 
-<Troubleshoot
-  issue="VMware network latency has no effect in Harness Chaos Engineering"
-  mode="docs"
-  fallback="Verify NETWORK_INTERFACE matches the active interface (run ip a inside the VM). Verify VM_USER_NAME has sudo for tc. Verify DESTINATION_IPS / DESTINATION_HOSTS actually match the traffic you are measuring."
-/>
+[embedmd]:# (./static/manifests/vmware-network-latency/source-and-destination-ports.yaml yaml)
+```yaml
+# it inject the chaos for the ingress/egress traffic for specific ports
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: VMware-engine
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: vmware-network-latency
+    spec:
+      components:
+        env:
+        # supports comma separated source ports
+        - name: SOURCE_PORTS
+          value: '80'
+        # supports comma separated destination ports
+        - name: DESTINATION_PORTS
+          value: '8080,9000'
+        - name: TOTAL_CHAOS_DURATION
+          value: '60'
+```
 
-<Troubleshoot
-  issue="tc qdisc rule left behind after experiment in HCE"
-  mode="docs"
-  fallback="Run sudo tc qdisc del dev <NETWORK_INTERFACE> root inside the guest to remove lingering rules. This can happen if VMware Tools or the chaos pod was killed mid-run."
-/>
+### Ignore source and destination ports
 
----
+By default, the network experiments disrupt traffic for all the source and destination ports. Ignore specific port(s) using the `SOURCE_PORTS` and `DESTINATION_PORTS` environment variables, respectively.
 
-## Related faults
+- `SOURCE_PORTS`: Source ports that are not subject to chaos as comma-separated values preceded by `!`.
 
-- [VMware network loss](/docs/chaos-engineering/faults/chaos-faults/vmware/linux/vmware-network-loss): Drop packets instead of delaying them.
-- [VMware network rate limit](/docs/chaos-engineering/faults/chaos-faults/vmware/linux/vmware-network-rate-limit): Cap bandwidth instead of injecting latency.
+- `DESTINATION_PORTS`: Destination ports that are not subject to chaos as comma-separated values preceded by `!`.
+
+The following YAML snippet illustrates the use of this environment variable:
+
+[embedmd]:# (./static/manifests/vmware-network-latency/ignore-source-and-destination-ports.yaml yaml)
+```yaml
+# ignore the source and destination ports
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: vmware-network-latency
+    spec:
+      components:
+        env:
+        # it will ignore 80 and 8080 source ports
+        - name: SOURCE_PORTS
+          value: '!80,8080'
+        # it will ignore 8080 and 9000 destination ports
+        - name: DESTINATION_PORTS
+          value: '!8080,9000'
+        - name: TOTAL_CHAOS_DURATION
+          value: '60'
+```
+
+###  Network interface
+
+Name of the ethernet interface that shapes the traffic. Tune it by using the `NETWORK_INTERFACE` environment variable. Its default value is `eth0`.
+
+The following YAML snippet illustrates the use of this environment variable:
+
+[embedmd]:# (./static/manifests/vmware-network-latency/network-interface.yaml yaml)
+```yaml
+## it injects the chaos for the ingress/egress traffic for specific ips/hosts
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: VMware-engine
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: VMware-network-latency
+    spec:
+      components:
+        env:
+        # name of the network interface
+        - name: NETWORK_INTERFACE
+          value: 'eth0'
+        - name: VM_NAME
+          value: 'vm-1,vm-2'
+        - name: VM_USER_NAME
+          value: 'ubuntu,debian'
+        - name: VM_PASSWORD
+          value: '123,123'
+```

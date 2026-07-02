@@ -83,7 +83,7 @@ This topic describes the binaries to be installed before executing the Linux OS 
         </tr>
         <tr>
             <td><ol><li><a href="https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/vmware/linux/vmware-http-latency">VMware HTTP Latency</a></li>
-            <li><a href="/docs/chaos-engineering/faults/chaos-faults/vmware/linux/vmware-http-response-modify"> VMware HTTP Response Modify</a></li>
+            <li><a href="https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/vmware/linux/vmware-http-modify-response"> VMware HTTP Modify Response</a></li>
             <li><a href="https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/vmware/linux/vmware-http-reset-peer"> VMware HTTP Reset Peer</a></li></ol></td>
             <td>
                 <ul>

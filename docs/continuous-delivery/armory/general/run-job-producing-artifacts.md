@@ -1,7 +1,7 @@
 ---
 title: Run Job - Producing Artifacts
 redirect_from:
-  - /docs/continuous-delivery/armory/general/run-job---producing-artifacts
+  - /docs/continuous-delivery/armory/general/run-jobproducing-artifacts
 ---
 
 ## Introduction

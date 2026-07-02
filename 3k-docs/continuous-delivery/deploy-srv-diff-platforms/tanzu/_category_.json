@@ -1,0 +1,11 @@
+{
+  "label": "Tanzu Application Services",
+  "position": "1100",
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+      "type": "generated-index",
+      "title": "Tanzu Application Services"
+  }
+}

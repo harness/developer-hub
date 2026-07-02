@@ -34,29 +34,6 @@
       ]
     },
     {
-      "id": "fme.release-monitoring.alert",
-      "term": "alert",
-      "definition": "A notification triggered when a metric threshold is exceeded during a rollout or experiment. Alerts are centrally defined once and automatically applied to every future rollout, so safety monitoring is on by default rather than configured per flag.",
-      "slug": "alert",
-      "module": "fme",
-      "category": "release-monitoring",
-      "letter": "A",
-      "related": [
-        {
-          "term": "guardrail metric",
-          "slug": "guardrail-metric"
-        },
-        {
-          "term": "key metric",
-          "slug": "key-metric"
-        },
-        {
-          "term": "metric",
-          "slug": "metric"
-        }
-      ]
-    },
-    {
       "id": "cacm.concepts.anomaly",
       "term": "anomaly",
       "definition": "An unexpected spike or deviation in cloud spend detected by Harness CACM using historical patterns and machine learning.",
@@ -392,12 +369,12 @@
           "slug": "default-treatment"
         },
         {
-          "term": "environment",
-          "slug": "environment"
+          "term": "flag dependency",
+          "slug": "flag-dependency"
         },
         {
-          "term": "event",
-          "slug": "event"
+          "term": "flag lifecycle",
+          "slug": "flag-lifecycle"
         }
       ]
     },
@@ -862,52 +839,6 @@
       ]
     },
     {
-      "id": "fme.sdks-and-infrastructure.cdn",
-      "term": "cdn",
-      "definition": "A content delivery network used by the FME SDK to retrieve and cache targeting rules close to your application. Rules are fetched from the nearest CDN node on SDK initialization and updated in real time via streaming.",
-      "slug": "cdn",
-      "module": "fme",
-      "category": "sdks-and-infrastructure",
-      "letter": "C",
-      "related": [
-        {
-          "term": "sdk",
-          "slug": "sdk"
-        },
-        {
-          "term": "split evaluator",
-          "slug": "split-evaluator"
-        },
-        {
-          "term": "streaming architecture",
-          "slug": "streaming-architecture"
-        }
-      ]
-    },
-    {
-      "id": "cd.verification.change-source",
-      "term": "change source",
-      "definition": "An integration that reports deployment, infrastructure, or incident changes to Harness SRM so they can be correlated with service health data.",
-      "slug": "change-source",
-      "module": "cd",
-      "category": "verification",
-      "letter": "C",
-      "related": [
-        {
-          "term": "continuous verification",
-          "slug": "continuous-verification"
-        },
-        {
-          "term": "error budget",
-          "slug": "error-budget"
-        },
-        {
-          "term": "health source",
-          "slug": "health-source"
-        }
-      ]
-    },
-    {
       "id": "dbdevops.concepts.changeset",
       "term": "changeset",
       "definition": "A versioned unit of database schema change (table creation, column alteration, index addition) applied through Harness Database DevOps.",
@@ -1253,29 +1184,6 @@
       ]
     },
     {
-      "id": "platform.pipelines.conditional-execution",
-      "term": "conditional execution",
-      "definition": "A rule attached to a stage or step that determines whether it runs based on JEXL expressions, previous stage status, or runtime inputs.",
-      "slug": "conditional-execution",
-      "module": "platform",
-      "category": "pipelines",
-      "letter": "C",
-      "related": [
-        {
-          "term": "custom stage",
-          "slug": "custom-stage"
-        },
-        {
-          "term": "matrix",
-          "slug": "matrix"
-        },
-        {
-          "term": "output variable",
-          "slug": "output-variable"
-        }
-      ]
-    },
-    {
       "id": "platform.concepts.connector",
       "term": "connector",
       "definition": "A configuration object that stores connection details (URLs, credentials, authentication) for external systems such as cloud providers, Git repos, artifact registries, and monitoring tools.",
@@ -1331,16 +1239,16 @@
       "letter": "C",
       "related": [
         {
-          "term": "change source",
-          "slug": "change-source"
-        },
-        {
-          "term": "error budget",
-          "slug": "error-budget"
-        },
-        {
           "term": "health source",
           "slug": "health-source"
+        },
+        {
+          "term": "sensitivity",
+          "slug": "sensitivity"
+        },
+        {
+          "term": "verification type",
+          "slug": "verification-type"
         }
       ]
     },
@@ -1492,16 +1400,16 @@
       "letter": "C",
       "related": [
         {
-          "term": "conditional execution",
-          "slug": "conditional-execution"
+          "term": "pipeline",
+          "slug": "pipeline"
         },
         {
-          "term": "matrix",
-          "slug": "matrix"
+          "term": "pipeline template",
+          "slug": "pipeline-template"
         },
         {
-          "term": "output variable",
-          "slug": "output-variable"
+          "term": "stage",
+          "slug": "stage"
         }
       ]
     },
@@ -1634,12 +1542,12 @@
           "slug": "attribute"
         },
         {
-          "term": "environment",
-          "slug": "environment"
+          "term": "flag dependency",
+          "slug": "flag-dependency"
         },
         {
-          "term": "event",
-          "slug": "event"
+          "term": "flag lifecycle",
+          "slug": "flag-lifecycle"
         }
       ]
     },
@@ -1851,29 +1759,6 @@
       ]
     },
     {
-      "id": "fme.feature-management.environment",
-      "term": "environment",
-      "definition": "A scoped context within a project (such as development, staging, or production) where targeting rules for feature flags and segments are independently managed.",
-      "slug": "environment",
-      "module": "fme",
-      "category": "feature-management",
-      "letter": "E",
-      "related": [
-        {
-          "term": "attribute",
-          "slug": "attribute"
-        },
-        {
-          "term": "default treatment",
-          "slug": "default-treatment"
-        },
-        {
-          "term": "event",
-          "slug": "event"
-        }
-      ]
-    },
-    {
       "id": "cd.concepts.environment",
       "term": "environment",
       "definition": "A target destination where services are deployed, such as development, staging, QA, or production. Environments define infrastructure and configuration overrides.",
@@ -1943,29 +1828,6 @@
       ]
     },
     {
-      "id": "cd.verification.error-budget",
-      "term": "error budget",
-      "definition": "The allowed margin of SLO violation before alerts or policy actions trigger. It represents the difference between perfect reliability and the SLO target.",
-      "slug": "error-budget",
-      "module": "cd",
-      "category": "verification",
-      "letter": "E",
-      "related": [
-        {
-          "term": "change source",
-          "slug": "change-source"
-        },
-        {
-          "term": "continuous verification",
-          "slug": "continuous-verification"
-        },
-        {
-          "term": "health source",
-          "slug": "health-source"
-        }
-      ]
-    },
-    {
       "id": "fme.openfeature.evaluation-api",
       "term": "evaluation api",
       "definition": "The Evaluation API is the main interface developers use to interact with feature flags. It enables applications to evaluate feature flags and adapt behavior based on the results, while supporting customization and integration with additional tools.",
@@ -1979,12 +1841,12 @@
           "slug": "evaluation-context"
         },
         {
-          "term": "hook",
-          "slug": "hook"
+          "term": "events",
+          "slug": "events"
         },
         {
-          "term": "provider",
-          "slug": "provider"
+          "term": "feature flag",
+          "slug": "feature-flag"
         }
       ]
     },
@@ -2002,35 +1864,35 @@
           "slug": "evaluation-api"
         },
         {
-          "term": "hook",
-          "slug": "hook"
+          "term": "events",
+          "slug": "events"
         },
         {
-          "term": "provider",
-          "slug": "provider"
+          "term": "feature flag",
+          "slug": "feature-flag"
         }
       ]
     },
     {
-      "id": "fme.feature-management.event",
-      "term": "event",
-      "definition": "A record of user or system behavior (such as a page visit, button click, or transaction) associated with a unique key and timestamp. Events are not tied to a specific flag; FME's attribution engine links them to flag evaluations after the fact.",
-      "slug": "event",
+      "id": "fme.openfeature.events",
+      "term": "events",
+      "definition": "Events allow your application to respond to changes in provider state or flag configuration, such as readiness changes, errors, or updates to flag values.",
+      "slug": "events",
       "module": "fme",
-      "category": "feature-management",
+      "category": "openfeature",
       "letter": "E",
       "related": [
         {
-          "term": "attribute",
-          "slug": "attribute"
+          "term": "evaluation api",
+          "slug": "evaluation-api"
         },
         {
-          "term": "default treatment",
-          "slug": "default-treatment"
+          "term": "evaluation context",
+          "slug": "evaluation-context"
         },
         {
-          "term": "environment",
-          "slug": "environment"
+          "term": "feature flag",
+          "slug": "feature-flag"
         }
       ]
     },
@@ -2150,25 +2012,25 @@
       ]
     },
     {
-      "id": "fme.feature-management.feature-flag",
+      "id": "fme.openfeature.feature-flag",
       "term": "feature flag",
-      "definition": "A conditional toggle that wraps a section of code, enabling it to be selectively turned on or off remotely (down to an individual user) without a new code deployment. Feature flags decouple deploys from releases and support canary rollouts, A/B testing, and instant kill switches.",
+      "definition": "A feature flag is a conditional toggle in Harness FME that enables or disables specific functionality without deploying new code. It allows for controlled feature rollouts, A/B testing, and quick rollbacks if issues arise.",
       "slug": "feature-flag",
       "module": "fme",
-      "category": "feature-management",
+      "category": "openfeature",
       "letter": "F",
       "related": [
         {
-          "term": "attribute",
-          "slug": "attribute"
+          "term": "evaluation api",
+          "slug": "evaluation-api"
         },
         {
-          "term": "default treatment",
-          "slug": "default-treatment"
+          "term": "evaluation context",
+          "slug": "evaluation-context"
         },
         {
-          "term": "environment",
-          "slug": "environment"
+          "term": "events",
+          "slug": "events"
         }
       ]
     },
@@ -2190,8 +2052,8 @@
           "slug": "default-treatment"
         },
         {
-          "term": "environment",
-          "slug": "environment"
+          "term": "flag lifecycle",
+          "slug": "flag-lifecycle"
         }
       ]
     },
@@ -2213,31 +2075,8 @@
           "slug": "default-treatment"
         },
         {
-          "term": "environment",
-          "slug": "environment"
-        }
-      ]
-    },
-    {
-      "id": "fme.feature-management.flag-status",
-      "term": "flag status",
-      "definition": "A team-defined indicator of which stage of a release a feature flag is in (e.g., in development, ready for review, launched). Used to filter and communicate rollout progress across teammates.",
-      "slug": "flag-status",
-      "module": "fme",
-      "category": "feature-management",
-      "letter": "F",
-      "related": [
-        {
-          "term": "attribute",
-          "slug": "attribute"
-        },
-        {
-          "term": "default treatment",
-          "slug": "default-treatment"
-        },
-        {
-          "term": "environment",
-          "slug": "environment"
+          "term": "flag dependency",
+          "slug": "flag-dependency"
         }
       ]
     },
@@ -2504,16 +2343,16 @@
       "letter": "G",
       "related": [
         {
-          "term": "alert",
-          "slug": "alert"
-        },
-        {
           "term": "key metric",
           "slug": "key-metric"
         },
         {
           "term": "metric",
           "slug": "metric"
+        },
+        {
+          "term": "metric alert",
+          "slug": "metric-alert"
         }
       ]
     },
@@ -2550,16 +2389,16 @@
       "letter": "H",
       "related": [
         {
-          "term": "change source",
-          "slug": "change-source"
-        },
-        {
           "term": "continuous verification",
           "slug": "continuous-verification"
         },
         {
-          "term": "error budget",
-          "slug": "error-budget"
+          "term": "sensitivity",
+          "slug": "sensitivity"
+        },
+        {
+          "term": "verification type",
+          "slug": "verification-type"
         }
       ]
     },
@@ -2581,8 +2420,8 @@
           "slug": "evaluation-context"
         },
         {
-          "term": "provider",
-          "slug": "provider"
+          "term": "events",
+          "slug": "events"
         }
       ]
     },
@@ -2627,8 +2466,8 @@
           "slug": "default-treatment"
         },
         {
-          "term": "environment",
-          "slug": "environment"
+          "term": "flag dependency",
+          "slug": "flag-dependency"
         }
       ]
     },
@@ -2698,29 +2537,6 @@
         {
           "term": "api key",
           "slug": "api-key"
-        }
-      ]
-    },
-    {
-      "id": "fme.feature-management.impression",
-      "term": "impression",
-      "definition": "A record created automatically each time a feature flag is evaluated. It captures the unique key targeted, the treatment served, the targeting rule that drove the decision, and a timestamp. Impressions are used to attribute downstream events to flag evaluations.",
-      "slug": "impression",
-      "module": "fme",
-      "category": "feature-management",
-      "letter": "I",
-      "related": [
-        {
-          "term": "attribute",
-          "slug": "attribute"
-        },
-        {
-          "term": "default treatment",
-          "slug": "default-treatment"
-        },
-        {
-          "term": "environment",
-          "slug": "environment"
         }
       ]
     },
@@ -2941,16 +2757,16 @@
       "letter": "K",
       "related": [
         {
-          "term": "alert",
-          "slug": "alert"
-        },
-        {
           "term": "guardrail metric",
           "slug": "guardrail-metric"
         },
         {
           "term": "metric",
           "slug": "metric"
+        },
+        {
+          "term": "metric alert",
+          "slug": "metric-alert"
         }
       ]
     },
@@ -2972,8 +2788,8 @@
           "slug": "default-treatment"
         },
         {
-          "term": "environment",
-          "slug": "environment"
+          "term": "flag dependency",
+          "slug": "flag-dependency"
         }
       ]
     },
@@ -3070,41 +2886,14 @@
       ]
     },
     {
-      "id": "platform.pipelines.matrix",
-      "term": "matrix",
-      "definition": "A looping strategy that fans out a stage or step across multiple combinations of dimension values, enabling parallel execution of parameterized workloads.",
-      "slug": "matrix",
-      "module": "platform",
-      "category": "pipelines",
-      "letter": "M",
-      "related": [
-        {
-          "term": "conditional execution",
-          "slug": "conditional-execution"
-        },
-        {
-          "term": "custom stage",
-          "slug": "custom-stage"
-        },
-        {
-          "term": "output variable",
-          "slug": "output-variable"
-        }
-      ]
-    },
-    {
       "id": "fme.release-monitoring.metric",
       "term": "metric",
-      "definition": "A metric measures events that are sent to Harness FME and can count the occurrence of events, measure event values, or measure event properties. Metrics are defined centrally and calculated across all flags automatically to surface unexpected impacts.",
+      "definition": "A metric measures events that are sent to Harness FME and can count the occurrence of events, measure event values, or measure event properties. Metrics are used to evaluate the impact of feature flags and experiments on user behavior and system performance.",
       "slug": "metric",
       "module": "fme",
       "category": "release-monitoring",
       "letter": "M",
       "related": [
-        {
-          "term": "alert",
-          "slug": "alert"
-        },
         {
           "term": "guardrail metric",
           "slug": "guardrail-metric"
@@ -3112,6 +2901,10 @@
         {
           "term": "key metric",
           "slug": "key-metric"
+        },
+        {
+          "term": "metric alert",
+          "slug": "metric-alert"
         }
       ]
     },
@@ -3148,16 +2941,16 @@
       "letter": "M",
       "related": [
         {
-          "term": "alert",
-          "slug": "alert"
-        },
-        {
           "term": "guardrail metric",
           "slug": "guardrail-metric"
         },
         {
           "term": "key metric",
           "slug": "key-metric"
+        },
+        {
+          "term": "metric",
+          "slug": "metric"
         }
       ]
     },
@@ -3185,52 +2978,6 @@
       ]
     },
     {
-      "id": "platform.concepts.module",
-      "term": "module",
-      "definition": "A discrete product capability within the Harness platform such as CI, CD, Feature Flags, Cloud Cost Management, or Security Testing Orchestration.",
-      "slug": "module",
-      "module": "platform",
-      "category": "concepts",
-      "letter": "M",
-      "related": [
-        {
-          "term": "ai sre",
-          "slug": "ai-sre"
-        },
-        {
-          "term": "anomaly",
-          "slug": "anomaly"
-        },
-        {
-          "term": "api key",
-          "slug": "api-key"
-        }
-      ]
-    },
-    {
-      "id": "cd.verification.monitored-service",
-      "term": "monitored service",
-      "definition": "A service and environment pair tracked by Harness SRM for health monitoring, change tracking, and continuous verification.",
-      "slug": "monitored-service",
-      "module": "cd",
-      "category": "verification",
-      "letter": "M",
-      "related": [
-        {
-          "term": "change source",
-          "slug": "change-source"
-        },
-        {
-          "term": "continuous verification",
-          "slug": "continuous-verification"
-        },
-        {
-          "term": "error budget",
-          "slug": "error-budget"
-        }
-      ]
-    },
-    {
       "id": "iacm.provider-registry.multiple-platforms",
       "term": "multiple platforms",
       "definition": "Supported platforms include Darwin/macOS (arm64, amd64), Linux (amd64), and Windows (amd64).",
@@ -3254,56 +3001,10 @@
       ]
     },
     {
-      "id": "cacm.concepts.node-pool",
-      "term": "node pool",
-      "definition": "A group of compute nodes with shared configuration managed by Cluster Orchestrator for autoscaling and cost-optimized workload placement.",
-      "slug": "node-pool",
-      "module": "cacm",
-      "category": "concepts",
-      "letter": "N",
-      "related": [
-        {
-          "term": "ai sre",
-          "slug": "ai-sre"
-        },
-        {
-          "term": "anomaly",
-          "slug": "anomaly"
-        },
-        {
-          "term": "api key",
-          "slug": "api-key"
-        }
-      ]
-    },
-    {
       "id": "platform.concepts.notification",
       "term": "notification",
       "definition": "A message sent to users or channels (email, Slack, PagerDuty, Microsoft Teams) when a pipeline event occurs, such as stage completion, failure, or approval request.",
       "slug": "notification",
-      "module": "platform",
-      "category": "concepts",
-      "letter": "N",
-      "related": [
-        {
-          "term": "ai sre",
-          "slug": "ai-sre"
-        },
-        {
-          "term": "anomaly",
-          "slug": "anomaly"
-        },
-        {
-          "term": "api key",
-          "slug": "api-key"
-        }
-      ]
-    },
-    {
-      "id": "platform.concepts.notification-rule",
-      "term": "notification rule",
-      "definition": "A configured alert in Harness that fires on specific events such as pipeline failures, SLO breaches, governance violations, or approval requests.",
-      "slug": "notification-rule",
       "module": "platform",
       "category": "concepts",
       "letter": "N",
@@ -3379,29 +3080,6 @@
       "related": []
     },
     {
-      "id": "platform.pipelines.output-variable",
-      "term": "output variable",
-      "definition": "A variable published by a step or stage during pipeline execution that can be referenced by downstream steps using Harness expressions.",
-      "slug": "output-variable",
-      "module": "platform",
-      "category": "pipelines",
-      "letter": "O",
-      "related": [
-        {
-          "term": "conditional execution",
-          "slug": "conditional-execution"
-        },
-        {
-          "term": "custom stage",
-          "slug": "custom-stage"
-        },
-        {
-          "term": "matrix",
-          "slug": "matrix"
-        }
-      ]
-    },
-    {
       "id": "platform.concepts.overlay-input-set",
       "term": "overlay input set",
       "definition": "A layered input set in Harness that merges values from multiple input sets, allowing teams to compose runtime inputs from shared and team-specific configurations.",
@@ -3409,29 +3087,6 @@
       "module": "platform",
       "category": "concepts",
       "letter": "O",
-      "related": [
-        {
-          "term": "ai sre",
-          "slug": "ai-sre"
-        },
-        {
-          "term": "anomaly",
-          "slug": "anomaly"
-        },
-        {
-          "term": "api key",
-          "slug": "api-key"
-        }
-      ]
-    },
-    {
-      "id": "platform.concepts.permission",
-      "term": "permission",
-      "definition": "A specific action such as view, create, edit, or delete that can be granted on a resource type within a role in Harness RBAC.",
-      "slug": "permission",
-      "module": "platform",
-      "category": "concepts",
-      "letter": "P",
       "related": [
         {
           "term": "ai sre",
@@ -3503,16 +3158,16 @@
       "letter": "P",
       "related": [
         {
-          "term": "conditional execution",
-          "slug": "conditional-execution"
-        },
-        {
           "term": "custom stage",
           "slug": "custom-stage"
         },
         {
-          "term": "matrix",
-          "slug": "matrix"
+          "term": "pipeline template",
+          "slug": "pipeline-template"
+        },
+        {
+          "term": "stage",
+          "slug": "stage"
         }
       ]
     },
@@ -3586,29 +3241,6 @@
       ]
     },
     {
-      "id": "platform.pipelines.pipeline-studio",
-      "term": "pipeline studio",
-      "definition": "The visual editor in Harness for building, configuring, and debugging pipelines using a drag-and-drop interface alongside YAML.",
-      "slug": "pipeline-studio",
-      "module": "platform",
-      "category": "pipelines",
-      "letter": "P",
-      "related": [
-        {
-          "term": "conditional execution",
-          "slug": "conditional-execution"
-        },
-        {
-          "term": "custom stage",
-          "slug": "custom-stage"
-        },
-        {
-          "term": "matrix",
-          "slug": "matrix"
-        }
-      ]
-    },
-    {
       "id": "fme.pipelines.pipeline-template",
       "term": "pipeline template",
       "definition": "A reusable end-to-end workflow that discovers eligible feature flags, lets you select a cleanup candidate, and generates a pull request with the proposed code changes.",
@@ -3618,16 +3250,16 @@
       "letter": "P",
       "related": [
         {
-          "term": "conditional execution",
-          "slug": "conditional-execution"
-        },
-        {
           "term": "custom stage",
           "slug": "custom-stage"
         },
         {
-          "term": "matrix",
-          "slug": "matrix"
+          "term": "pipeline",
+          "slug": "pipeline"
+        },
+        {
+          "term": "stage",
+          "slug": "stage"
         }
       ]
     },
@@ -3793,52 +3425,6 @@
       ]
     },
     {
-      "id": "platform.concepts.principal",
-      "term": "principal",
-      "definition": "The entity that performs actions in Harness. A principal can be a user, service account, or API key and is the subject to which role bindings are attached.",
-      "slug": "principal",
-      "module": "platform",
-      "category": "concepts",
-      "letter": "P",
-      "related": [
-        {
-          "term": "ai sre",
-          "slug": "ai-sre"
-        },
-        {
-          "term": "anomaly",
-          "slug": "anomaly"
-        },
-        {
-          "term": "api key",
-          "slug": "api-key"
-        }
-      ]
-    },
-    {
-      "id": "fme.feature-management.project",
-      "term": "project",
-      "definition": "A top-level container within a Harness account that partitions the work of different teams, product lines, or areas. Objects such as flags, segments, and metrics are not shared across projects.",
-      "slug": "project",
-      "module": "fme",
-      "category": "feature-management",
-      "letter": "P",
-      "related": [
-        {
-          "term": "attribute",
-          "slug": "attribute"
-        },
-        {
-          "term": "default treatment",
-          "slug": "default-treatment"
-        },
-        {
-          "term": "environment",
-          "slug": "environment"
-        }
-      ]
-    },
-    {
       "id": "platform.project",
       "term": "project",
       "definition": "A project is a shared workspace within an organization where teams manage their users, pipelines, and resources needed to build, deploy, and operate their applications in the Harness platform.",
@@ -3866,8 +3452,8 @@
           "slug": "evaluation-context"
         },
         {
-          "term": "hook",
-          "slug": "hook"
+          "term": "events",
+          "slug": "events"
         }
       ]
     },
@@ -3992,29 +3578,6 @@
       "definition": "A container in Harness Artifact Registry that stores and manages versioned artifacts such as Docker images, Helm charts, and generic packages.",
       "slug": "registry",
       "module": "ar",
-      "category": "concepts",
-      "letter": "R",
-      "related": [
-        {
-          "term": "ai sre",
-          "slug": "ai-sre"
-        },
-        {
-          "term": "anomaly",
-          "slug": "anomaly"
-        },
-        {
-          "term": "api key",
-          "slug": "api-key"
-        }
-      ]
-    },
-    {
-      "id": "scs.concepts.remediation-tracker",
-      "term": "remediation tracker",
-      "definition": "A tool in Harness SCS that tracks the lifecycle of vulnerability findings from detection through remediation, with assignees, deadlines, and status.",
-      "slug": "remediation-tracker",
-      "module": "scs",
       "category": "concepts",
       "letter": "R",
       "related": [
@@ -4257,8 +3820,8 @@
           "slug": "default-treatment"
         },
         {
-          "term": "environment",
-          "slug": "environment"
+          "term": "flag dependency",
+          "slug": "flag-dependency"
         }
       ]
     },
@@ -4364,16 +3927,16 @@
       "letter": "S",
       "related": [
         {
-          "term": "alert",
-          "slug": "alert"
-        },
-        {
           "term": "guardrail metric",
           "slug": "guardrail-metric"
         },
         {
           "term": "key metric",
           "slug": "key-metric"
+        },
+        {
+          "term": "metric",
+          "slug": "metric"
         }
       ]
     },
@@ -4562,29 +4125,6 @@
       ]
     },
     {
-      "id": "fme.sdks-and-infrastructure.sdk",
-      "term": "sdk",
-      "definition": "A language-specific library you include and initialize in your application to evaluate feature flags locally. On initialization, the SDK retrieves targeting rules from a nearby CDN node, caches them in memory, and keeps them current via a streaming architecture, so flag evaluations are instant with no network call required at evaluation time.",
-      "slug": "sdk",
-      "module": "fme",
-      "category": "sdks-and-infrastructure",
-      "letter": "S",
-      "related": [
-        {
-          "term": "cdn",
-          "slug": "cdn"
-        },
-        {
-          "term": "split evaluator",
-          "slug": "split-evaluator"
-        },
-        {
-          "term": "streaming architecture",
-          "slug": "streaming-architecture"
-        }
-      ]
-    },
-    {
       "id": "platform.concepts.secret",
       "term": "secret",
       "definition": "A securely stored credential (password, token, SSH key, or certificate) managed by Harness and referenced by connectors, pipelines, and other configurations without exposing the raw value.",
@@ -4671,8 +4211,8 @@
           "slug": "default-treatment"
         },
         {
-          "term": "environment",
-          "slug": "environment"
+          "term": "flag dependency",
+          "slug": "flag-dependency"
         }
       ]
     },
@@ -4709,16 +4249,16 @@
       "letter": "S",
       "related": [
         {
-          "term": "change source",
-          "slug": "change-source"
-        },
-        {
           "term": "continuous verification",
           "slug": "continuous-verification"
         },
         {
-          "term": "error budget",
-          "slug": "error-budget"
+          "term": "health source",
+          "slug": "health-source"
+        },
+        {
+          "term": "verification type",
+          "slug": "verification-type"
         }
       ]
     },
@@ -4985,62 +4525,16 @@
       "letter": "S",
       "related": [
         {
-          "term": "alert",
-          "slug": "alert"
-        },
-        {
           "term": "guardrail metric",
           "slug": "guardrail-metric"
         },
         {
           "term": "key metric",
           "slug": "key-metric"
-        }
-      ]
-    },
-    {
-      "id": "cd.verification.sli",
-      "term": "sli",
-      "definition": "A Service Level Indicator is a quantitative metric used to measure whether a Service Level Objective is being met, such as latency, error rate, or throughput.",
-      "slug": "sli",
-      "module": "cd",
-      "category": "verification",
-      "letter": "S",
-      "related": [
-        {
-          "term": "change source",
-          "slug": "change-source"
         },
         {
-          "term": "continuous verification",
-          "slug": "continuous-verification"
-        },
-        {
-          "term": "error budget",
-          "slug": "error-budget"
-        }
-      ]
-    },
-    {
-      "id": "cd.verification.slo",
-      "term": "slo",
-      "definition": "A Service Level Objective that defines a reliability target for a monitored service, expressed as a percentage of good requests or uptime over a rolling or calendar window.",
-      "slug": "slo",
-      "module": "cd",
-      "category": "verification",
-      "letter": "S",
-      "related": [
-        {
-          "term": "change source",
-          "slug": "change-source"
-        },
-        {
-          "term": "continuous verification",
-          "slug": "continuous-verification"
-        },
-        {
-          "term": "error budget",
-          "slug": "error-budget"
+          "term": "metric",
+          "slug": "metric"
         }
       ]
     },
@@ -5114,29 +4608,6 @@
       ]
     },
     {
-      "id": "fme.sdks-and-infrastructure.split-evaluator",
-      "term": "split evaluator",
-      "definition": "A customer-hosted service that exposes flag evaluation as a REST API. It is an alternative to embedding an FME SDK directly and is intended for environments or languages that do not have a published FME SDK. Like the SDK, the Split Evaluator never sends private user data to the Harness network.",
-      "slug": "split-evaluator",
-      "module": "fme",
-      "category": "sdks-and-infrastructure",
-      "letter": "S",
-      "related": [
-        {
-          "term": "cdn",
-          "slug": "cdn"
-        },
-        {
-          "term": "sdk",
-          "slug": "sdk"
-        },
-        {
-          "term": "streaming architecture",
-          "slug": "streaming-architecture"
-        }
-      ]
-    },
-    {
       "id": "sei.concepts.sprint-metrics",
       "term": "sprint metrics",
       "definition": "Metrics in Harness SEI that track sprint health including velocity, scope creep, done-to-commit ratio, and average ticket age.",
@@ -5169,16 +4640,16 @@
       "letter": "S",
       "related": [
         {
-          "term": "conditional execution",
-          "slug": "conditional-execution"
-        },
-        {
           "term": "custom stage",
           "slug": "custom-stage"
         },
         {
-          "term": "matrix",
-          "slug": "matrix"
+          "term": "pipeline",
+          "slug": "pipeline"
+        },
+        {
+          "term": "pipeline template",
+          "slug": "pipeline-template"
         }
       ]
     },
@@ -5192,16 +4663,16 @@
       "letter": "S",
       "related": [
         {
-          "term": "conditional execution",
-          "slug": "conditional-execution"
-        },
-        {
           "term": "custom stage",
           "slug": "custom-stage"
         },
         {
-          "term": "matrix",
-          "slug": "matrix"
+          "term": "pipeline",
+          "slug": "pipeline"
+        },
+        {
+          "term": "pipeline template",
+          "slug": "pipeline-template"
         }
       ]
     },
@@ -5246,8 +4717,8 @@
           "slug": "default-treatment"
         },
         {
-          "term": "environment",
-          "slug": "environment"
+          "term": "flag dependency",
+          "slug": "flag-dependency"
         }
       ]
     },
@@ -5284,16 +4755,16 @@
       "letter": "S",
       "related": [
         {
-          "term": "alert",
-          "slug": "alert"
-        },
-        {
           "term": "guardrail metric",
           "slug": "guardrail-metric"
         },
         {
           "term": "key metric",
           "slug": "key-metric"
+        },
+        {
+          "term": "metric",
+          "slug": "metric"
         }
       ]
     },
@@ -5307,16 +4778,16 @@
       "letter": "S",
       "related": [
         {
-          "term": "conditional execution",
-          "slug": "conditional-execution"
-        },
-        {
           "term": "custom stage",
           "slug": "custom-stage"
         },
         {
-          "term": "matrix",
-          "slug": "matrix"
+          "term": "pipeline",
+          "slug": "pipeline"
+        },
+        {
+          "term": "pipeline template",
+          "slug": "pipeline-template"
         }
       ]
     },
@@ -5326,52 +4797,6 @@
       "definition": "A collection of steps in a CI pipeline that share the same execution context (container image, resources) and can run sequentially or in parallel.",
       "slug": "step-group",
       "module": "ci",
-      "category": "concepts",
-      "letter": "S",
-      "related": [
-        {
-          "term": "ai sre",
-          "slug": "ai-sre"
-        },
-        {
-          "term": "anomaly",
-          "slug": "anomaly"
-        },
-        {
-          "term": "api key",
-          "slug": "api-key"
-        }
-      ]
-    },
-    {
-      "id": "fme.sdks-and-infrastructure.streaming-architecture",
-      "term": "streaming architecture",
-      "definition": "The mechanism by which FME SDKs receive real-time updates to targeting rules in milliseconds, without polling. Changes made in the Harness UI propagate to all SDK instances automatically.",
-      "slug": "streaming-architecture",
-      "module": "fme",
-      "category": "sdks-and-infrastructure",
-      "letter": "S",
-      "related": [
-        {
-          "term": "cdn",
-          "slug": "cdn"
-        },
-        {
-          "term": "sdk",
-          "slug": "sdk"
-        },
-        {
-          "term": "split evaluator",
-          "slug": "split-evaluator"
-        }
-      ]
-    },
-    {
-      "id": "platform.concepts.subscription",
-      "term": "subscription",
-      "definition": "The license tier and entitlements that govern which modules, features, and usage limits an account can access in Harness.",
-      "slug": "subscription",
-      "module": "platform",
       "category": "concepts",
       "letter": "S",
       "related": [
@@ -5409,29 +4834,6 @@
         {
           "term": "gitops agent",
           "slug": "gitops-agent"
-        }
-      ]
-    },
-    {
-      "id": "fme.feature-management.tag",
-      "term": "tag",
-      "definition": "A label used to organize and filter feature flags, segments, and metrics across the Harness FME interface. Tags can represent teams, epics, system layers, or any other grouping.",
-      "slug": "tag",
-      "module": "fme",
-      "category": "feature-management",
-      "letter": "T",
-      "related": [
-        {
-          "term": "attribute",
-          "slug": "attribute"
-        },
-        {
-          "term": "default treatment",
-          "slug": "default-treatment"
-        },
-        {
-          "term": "environment",
-          "slug": "environment"
         }
       ]
     },
@@ -5522,15 +4924,15 @@
           "slug": "evaluation-context"
         },
         {
-          "term": "hook",
-          "slug": "hook"
+          "term": "events",
+          "slug": "events"
         }
       ]
     },
     {
       "id": "fme.feature-management.targeting-rule",
       "term": "targeting rule",
-      "definition": "A rule that determines which treatment a user receives based on attributes, segments, or percentage-based rollouts. Rules are managed at the environment level, so staging and production can have independent configurations.",
+      "definition": "A rule that determines which treatment a user receives based on attributes, segments, or percentage-based rollouts.",
       "slug": "targeting-rule",
       "module": "fme",
       "category": "feature-management",
@@ -5545,8 +4947,8 @@
           "slug": "default-treatment"
         },
         {
-          "term": "environment",
-          "slug": "environment"
+          "term": "flag dependency",
+          "slug": "flag-dependency"
         }
       ]
     },
@@ -5643,29 +5045,6 @@
       ]
     },
     {
-      "id": "fme.feature-management.traffic-type",
-      "term": "traffic type",
-      "definition": "A category of unique key used for targeting decisions, such as user, account, device, or anonymous. Each project supports up to ten traffic types. The traffic type on a flag determines which key FME uses when making and observing targeting decisions.",
-      "slug": "traffic-type",
-      "module": "fme",
-      "category": "feature-management",
-      "letter": "T",
-      "related": [
-        {
-          "term": "attribute",
-          "slug": "attribute"
-        },
-        {
-          "term": "default treatment",
-          "slug": "default-treatment"
-        },
-        {
-          "term": "environment",
-          "slug": "environment"
-        }
-      ]
-    },
-    {
       "id": "fme.feature-management.treatment",
       "term": "treatment",
       "definition": "A specific variation or value that a feature flag serves to a user. Each flag can have multiple treatments representing different behaviors or configurations.",
@@ -5683,8 +5062,8 @@
           "slug": "default-treatment"
         },
         {
-          "term": "environment",
-          "slug": "environment"
+          "term": "flag dependency",
+          "slug": "flag-dependency"
         }
       ]
     },
@@ -5786,29 +5165,6 @@
       "definition": "A configuration in Harness Artifact Registry that caches artifacts from external registries (Docker Hub, Maven Central, npm) and serves them to your builds.",
       "slug": "upstream-proxy",
       "module": "ar",
-      "category": "concepts",
-      "letter": "U",
-      "related": [
-        {
-          "term": "ai sre",
-          "slug": "ai-sre"
-        },
-        {
-          "term": "anomaly",
-          "slug": "anomaly"
-        },
-        {
-          "term": "api key",
-          "slug": "api-key"
-        }
-      ]
-    },
-    {
-      "id": "platform.concepts.user",
-      "term": "user",
-      "definition": "An individual identity that authenticates and interacts with the Harness platform. Users are assigned to user groups, hold role bindings, and can be provisioned via SCIM or SAML.",
-      "slug": "user",
-      "module": "platform",
       "category": "concepts",
       "letter": "U",
       "related": [
@@ -5951,16 +5307,16 @@
       "letter": "V",
       "related": [
         {
-          "term": "change source",
-          "slug": "change-source"
-        },
-        {
           "term": "continuous verification",
           "slug": "continuous-verification"
         },
         {
-          "term": "error budget",
-          "slug": "error-budget"
+          "term": "health source",
+          "slug": "health-source"
+        },
+        {
+          "term": "sensitivity",
+          "slug": "sensitivity"
         }
       ]
     },
@@ -6080,29 +5436,6 @@
       ]
     },
     {
-      "id": "cacm.concepts.workload",
-      "term": "workload",
-      "definition": "A running application such as a Kubernetes pod or deployment tracked by Cluster Orchestrator for right-sizing recommendations and cost optimization.",
-      "slug": "workload",
-      "module": "cacm",
-      "category": "concepts",
-      "letter": "W",
-      "related": [
-        {
-          "term": "ai sre",
-          "slug": "ai-sre"
-        },
-        {
-          "term": "anomaly",
-          "slug": "anomaly"
-        },
-        {
-          "term": "api key",
-          "slug": "api-key"
-        }
-      ]
-    },
-    {
       "id": "iacm.workspace",
       "term": "workspace",
       "definition": "A workspace is a one-to-one mapping of your infrastructure state. It is used to store and manage your infrastructure state in Harness IaCM.",
@@ -6191,29 +5524,6 @@
           {
             "term": "approval",
             "slug": "approval"
-          }
-        ]
-      },
-      {
-        "id": "fme.release-monitoring.alert",
-        "term": "alert",
-        "definition": "A notification triggered when a metric threshold is exceeded during a rollout or experiment. Alerts are centrally defined once and automatically applied to every future rollout, so safety monitoring is on by default rather than configured per flag.",
-        "slug": "alert",
-        "module": "fme",
-        "category": "release-monitoring",
-        "letter": "A",
-        "related": [
-          {
-            "term": "guardrail metric",
-            "slug": "guardrail-metric"
-          },
-          {
-            "term": "key metric",
-            "slug": "key-metric"
-          },
-          {
-            "term": "metric",
-            "slug": "metric"
           }
         ]
       },
@@ -6553,12 +5863,12 @@
             "slug": "default-treatment"
           },
           {
-            "term": "environment",
-            "slug": "environment"
+            "term": "flag dependency",
+            "slug": "flag-dependency"
           },
           {
-            "term": "event",
-            "slug": "event"
+            "term": "flag lifecycle",
+            "slug": "flag-lifecycle"
           }
         ]
       },
@@ -7027,52 +6337,6 @@
         ]
       },
       {
-        "id": "fme.sdks-and-infrastructure.cdn",
-        "term": "cdn",
-        "definition": "A content delivery network used by the FME SDK to retrieve and cache targeting rules close to your application. Rules are fetched from the nearest CDN node on SDK initialization and updated in real time via streaming.",
-        "slug": "cdn",
-        "module": "fme",
-        "category": "sdks-and-infrastructure",
-        "letter": "C",
-        "related": [
-          {
-            "term": "sdk",
-            "slug": "sdk"
-          },
-          {
-            "term": "split evaluator",
-            "slug": "split-evaluator"
-          },
-          {
-            "term": "streaming architecture",
-            "slug": "streaming-architecture"
-          }
-        ]
-      },
-      {
-        "id": "cd.verification.change-source",
-        "term": "change source",
-        "definition": "An integration that reports deployment, infrastructure, or incident changes to Harness SRM so they can be correlated with service health data.",
-        "slug": "change-source",
-        "module": "cd",
-        "category": "verification",
-        "letter": "C",
-        "related": [
-          {
-            "term": "continuous verification",
-            "slug": "continuous-verification"
-          },
-          {
-            "term": "error budget",
-            "slug": "error-budget"
-          },
-          {
-            "term": "health source",
-            "slug": "health-source"
-          }
-        ]
-      },
-      {
         "id": "dbdevops.concepts.changeset",
         "term": "changeset",
         "definition": "A versioned unit of database schema change (table creation, column alteration, index addition) applied through Harness Database DevOps.",
@@ -7418,29 +6682,6 @@
         ]
       },
       {
-        "id": "platform.pipelines.conditional-execution",
-        "term": "conditional execution",
-        "definition": "A rule attached to a stage or step that determines whether it runs based on JEXL expressions, previous stage status, or runtime inputs.",
-        "slug": "conditional-execution",
-        "module": "platform",
-        "category": "pipelines",
-        "letter": "C",
-        "related": [
-          {
-            "term": "custom stage",
-            "slug": "custom-stage"
-          },
-          {
-            "term": "matrix",
-            "slug": "matrix"
-          },
-          {
-            "term": "output variable",
-            "slug": "output-variable"
-          }
-        ]
-      },
-      {
         "id": "platform.concepts.connector",
         "term": "connector",
         "definition": "A configuration object that stores connection details (URLs, credentials, authentication) for external systems such as cloud providers, Git repos, artifact registries, and monitoring tools.",
@@ -7496,16 +6737,16 @@
         "letter": "C",
         "related": [
           {
-            "term": "change source",
-            "slug": "change-source"
-          },
-          {
-            "term": "error budget",
-            "slug": "error-budget"
-          },
-          {
             "term": "health source",
             "slug": "health-source"
+          },
+          {
+            "term": "sensitivity",
+            "slug": "sensitivity"
+          },
+          {
+            "term": "verification type",
+            "slug": "verification-type"
           }
         ]
       },
@@ -7657,16 +6898,16 @@
         "letter": "C",
         "related": [
           {
-            "term": "conditional execution",
-            "slug": "conditional-execution"
+            "term": "pipeline",
+            "slug": "pipeline"
           },
           {
-            "term": "matrix",
-            "slug": "matrix"
+            "term": "pipeline template",
+            "slug": "pipeline-template"
           },
           {
-            "term": "output variable",
-            "slug": "output-variable"
+            "term": "stage",
+            "slug": "stage"
           }
         ]
       },
@@ -7801,12 +7042,12 @@
             "slug": "attribute"
           },
           {
-            "term": "environment",
-            "slug": "environment"
+            "term": "flag dependency",
+            "slug": "flag-dependency"
           },
           {
-            "term": "event",
-            "slug": "event"
+            "term": "flag lifecycle",
+            "slug": "flag-lifecycle"
           }
         ]
       },
@@ -8020,29 +7261,6 @@
     ],
     "E": [
       {
-        "id": "fme.feature-management.environment",
-        "term": "environment",
-        "definition": "A scoped context within a project (such as development, staging, or production) where targeting rules for feature flags and segments are independently managed.",
-        "slug": "environment",
-        "module": "fme",
-        "category": "feature-management",
-        "letter": "E",
-        "related": [
-          {
-            "term": "attribute",
-            "slug": "attribute"
-          },
-          {
-            "term": "default treatment",
-            "slug": "default-treatment"
-          },
-          {
-            "term": "event",
-            "slug": "event"
-          }
-        ]
-      },
-      {
         "id": "cd.concepts.environment",
         "term": "environment",
         "definition": "A target destination where services are deployed, such as development, staging, QA, or production. Environments define infrastructure and configuration overrides.",
@@ -8112,29 +7330,6 @@
         ]
       },
       {
-        "id": "cd.verification.error-budget",
-        "term": "error budget",
-        "definition": "The allowed margin of SLO violation before alerts or policy actions trigger. It represents the difference between perfect reliability and the SLO target.",
-        "slug": "error-budget",
-        "module": "cd",
-        "category": "verification",
-        "letter": "E",
-        "related": [
-          {
-            "term": "change source",
-            "slug": "change-source"
-          },
-          {
-            "term": "continuous verification",
-            "slug": "continuous-verification"
-          },
-          {
-            "term": "health source",
-            "slug": "health-source"
-          }
-        ]
-      },
-      {
         "id": "fme.openfeature.evaluation-api",
         "term": "evaluation api",
         "definition": "The Evaluation API is the main interface developers use to interact with feature flags. It enables applications to evaluate feature flags and adapt behavior based on the results, while supporting customization and integration with additional tools.",
@@ -8148,12 +7343,12 @@
             "slug": "evaluation-context"
           },
           {
-            "term": "hook",
-            "slug": "hook"
+            "term": "events",
+            "slug": "events"
           },
           {
-            "term": "provider",
-            "slug": "provider"
+            "term": "feature flag",
+            "slug": "feature-flag"
           }
         ]
       },
@@ -8171,35 +7366,35 @@
             "slug": "evaluation-api"
           },
           {
-            "term": "hook",
-            "slug": "hook"
+            "term": "events",
+            "slug": "events"
           },
           {
-            "term": "provider",
-            "slug": "provider"
+            "term": "feature flag",
+            "slug": "feature-flag"
           }
         ]
       },
       {
-        "id": "fme.feature-management.event",
-        "term": "event",
-        "definition": "A record of user or system behavior (such as a page visit, button click, or transaction) associated with a unique key and timestamp. Events are not tied to a specific flag; FME's attribution engine links them to flag evaluations after the fact.",
-        "slug": "event",
+        "id": "fme.openfeature.events",
+        "term": "events",
+        "definition": "Events allow your application to respond to changes in provider state or flag configuration, such as readiness changes, errors, or updates to flag values.",
+        "slug": "events",
         "module": "fme",
-        "category": "feature-management",
+        "category": "openfeature",
         "letter": "E",
         "related": [
           {
-            "term": "attribute",
-            "slug": "attribute"
+            "term": "evaluation api",
+            "slug": "evaluation-api"
           },
           {
-            "term": "default treatment",
-            "slug": "default-treatment"
+            "term": "evaluation context",
+            "slug": "evaluation-context"
           },
           {
-            "term": "environment",
-            "slug": "environment"
+            "term": "feature flag",
+            "slug": "feature-flag"
           }
         ]
       },
@@ -8321,25 +7516,25 @@
         ]
       },
       {
-        "id": "fme.feature-management.feature-flag",
+        "id": "fme.openfeature.feature-flag",
         "term": "feature flag",
-        "definition": "A conditional toggle that wraps a section of code, enabling it to be selectively turned on or off remotely (down to an individual user) without a new code deployment. Feature flags decouple deploys from releases and support canary rollouts, A/B testing, and instant kill switches.",
+        "definition": "A feature flag is a conditional toggle in Harness FME that enables or disables specific functionality without deploying new code. It allows for controlled feature rollouts, A/B testing, and quick rollbacks if issues arise.",
         "slug": "feature-flag",
         "module": "fme",
-        "category": "feature-management",
+        "category": "openfeature",
         "letter": "F",
         "related": [
           {
-            "term": "attribute",
-            "slug": "attribute"
+            "term": "evaluation api",
+            "slug": "evaluation-api"
           },
           {
-            "term": "default treatment",
-            "slug": "default-treatment"
+            "term": "evaluation context",
+            "slug": "evaluation-context"
           },
           {
-            "term": "environment",
-            "slug": "environment"
+            "term": "events",
+            "slug": "events"
           }
         ]
       },
@@ -8361,8 +7556,8 @@
             "slug": "default-treatment"
           },
           {
-            "term": "environment",
-            "slug": "environment"
+            "term": "flag lifecycle",
+            "slug": "flag-lifecycle"
           }
         ]
       },
@@ -8384,31 +7579,8 @@
             "slug": "default-treatment"
           },
           {
-            "term": "environment",
-            "slug": "environment"
-          }
-        ]
-      },
-      {
-        "id": "fme.feature-management.flag-status",
-        "term": "flag status",
-        "definition": "A team-defined indicator of which stage of a release a feature flag is in (e.g., in development, ready for review, launched). Used to filter and communicate rollout progress across teammates.",
-        "slug": "flag-status",
-        "module": "fme",
-        "category": "feature-management",
-        "letter": "F",
-        "related": [
-          {
-            "term": "attribute",
-            "slug": "attribute"
-          },
-          {
-            "term": "default treatment",
-            "slug": "default-treatment"
-          },
-          {
-            "term": "environment",
-            "slug": "environment"
+            "term": "flag dependency",
+            "slug": "flag-dependency"
           }
         ]
       },
@@ -8677,16 +7849,16 @@
         "letter": "G",
         "related": [
           {
-            "term": "alert",
-            "slug": "alert"
-          },
-          {
             "term": "key metric",
             "slug": "key-metric"
           },
           {
             "term": "metric",
             "slug": "metric"
+          },
+          {
+            "term": "metric alert",
+            "slug": "metric-alert"
           }
         ]
       }
@@ -8725,16 +7897,16 @@
         "letter": "H",
         "related": [
           {
-            "term": "change source",
-            "slug": "change-source"
-          },
-          {
             "term": "continuous verification",
             "slug": "continuous-verification"
           },
           {
-            "term": "error budget",
-            "slug": "error-budget"
+            "term": "sensitivity",
+            "slug": "sensitivity"
+          },
+          {
+            "term": "verification type",
+            "slug": "verification-type"
           }
         ]
       },
@@ -8756,8 +7928,8 @@
             "slug": "evaluation-context"
           },
           {
-            "term": "provider",
-            "slug": "provider"
+            "term": "events",
+            "slug": "events"
           }
         ]
       },
@@ -8804,8 +7976,8 @@
             "slug": "default-treatment"
           },
           {
-            "term": "environment",
-            "slug": "environment"
+            "term": "flag dependency",
+            "slug": "flag-dependency"
           }
         ]
       },
@@ -8875,29 +8047,6 @@
           {
             "term": "api key",
             "slug": "api-key"
-          }
-        ]
-      },
-      {
-        "id": "fme.feature-management.impression",
-        "term": "impression",
-        "definition": "A record created automatically each time a feature flag is evaluated. It captures the unique key targeted, the treatment served, the targeting rule that drove the decision, and a timestamp. Impressions are used to attribute downstream events to flag evaluations.",
-        "slug": "impression",
-        "module": "fme",
-        "category": "feature-management",
-        "letter": "I",
-        "related": [
-          {
-            "term": "attribute",
-            "slug": "attribute"
-          },
-          {
-            "term": "default treatment",
-            "slug": "default-treatment"
-          },
-          {
-            "term": "environment",
-            "slug": "environment"
           }
         ]
       },
@@ -9120,16 +8269,16 @@
         "letter": "K",
         "related": [
           {
-            "term": "alert",
-            "slug": "alert"
-          },
-          {
             "term": "guardrail metric",
             "slug": "guardrail-metric"
           },
           {
             "term": "metric",
             "slug": "metric"
+          },
+          {
+            "term": "metric alert",
+            "slug": "metric-alert"
           }
         ]
       },
@@ -9151,8 +8300,8 @@
             "slug": "default-treatment"
           },
           {
-            "term": "environment",
-            "slug": "environment"
+            "term": "flag dependency",
+            "slug": "flag-dependency"
           }
         ]
       }
@@ -9253,41 +8402,14 @@
         ]
       },
       {
-        "id": "platform.pipelines.matrix",
-        "term": "matrix",
-        "definition": "A looping strategy that fans out a stage or step across multiple combinations of dimension values, enabling parallel execution of parameterized workloads.",
-        "slug": "matrix",
-        "module": "platform",
-        "category": "pipelines",
-        "letter": "M",
-        "related": [
-          {
-            "term": "conditional execution",
-            "slug": "conditional-execution"
-          },
-          {
-            "term": "custom stage",
-            "slug": "custom-stage"
-          },
-          {
-            "term": "output variable",
-            "slug": "output-variable"
-          }
-        ]
-      },
-      {
         "id": "fme.release-monitoring.metric",
         "term": "metric",
-        "definition": "A metric measures events that are sent to Harness FME and can count the occurrence of events, measure event values, or measure event properties. Metrics are defined centrally and calculated across all flags automatically to surface unexpected impacts.",
+        "definition": "A metric measures events that are sent to Harness FME and can count the occurrence of events, measure event values, or measure event properties. Metrics are used to evaluate the impact of feature flags and experiments on user behavior and system performance.",
         "slug": "metric",
         "module": "fme",
         "category": "release-monitoring",
         "letter": "M",
         "related": [
-          {
-            "term": "alert",
-            "slug": "alert"
-          },
           {
             "term": "guardrail metric",
             "slug": "guardrail-metric"
@@ -9295,6 +8417,10 @@
           {
             "term": "key metric",
             "slug": "key-metric"
+          },
+          {
+            "term": "metric alert",
+            "slug": "metric-alert"
           }
         ]
       },
@@ -9331,16 +8457,16 @@
         "letter": "M",
         "related": [
           {
-            "term": "alert",
-            "slug": "alert"
-          },
-          {
             "term": "guardrail metric",
             "slug": "guardrail-metric"
           },
           {
             "term": "key metric",
             "slug": "key-metric"
+          },
+          {
+            "term": "metric",
+            "slug": "metric"
           }
         ]
       },
@@ -9364,52 +8490,6 @@
           {
             "term": "data warehouse",
             "slug": "data-warehouse"
-          }
-        ]
-      },
-      {
-        "id": "platform.concepts.module",
-        "term": "module",
-        "definition": "A discrete product capability within the Harness platform such as CI, CD, Feature Flags, Cloud Cost Management, or Security Testing Orchestration.",
-        "slug": "module",
-        "module": "platform",
-        "category": "concepts",
-        "letter": "M",
-        "related": [
-          {
-            "term": "ai sre",
-            "slug": "ai-sre"
-          },
-          {
-            "term": "anomaly",
-            "slug": "anomaly"
-          },
-          {
-            "term": "api key",
-            "slug": "api-key"
-          }
-        ]
-      },
-      {
-        "id": "cd.verification.monitored-service",
-        "term": "monitored service",
-        "definition": "A service and environment pair tracked by Harness SRM for health monitoring, change tracking, and continuous verification.",
-        "slug": "monitored-service",
-        "module": "cd",
-        "category": "verification",
-        "letter": "M",
-        "related": [
-          {
-            "term": "change source",
-            "slug": "change-source"
-          },
-          {
-            "term": "continuous verification",
-            "slug": "continuous-verification"
-          },
-          {
-            "term": "error budget",
-            "slug": "error-budget"
           }
         ]
       },
@@ -9439,56 +8519,10 @@
     ],
     "N": [
       {
-        "id": "cacm.concepts.node-pool",
-        "term": "node pool",
-        "definition": "A group of compute nodes with shared configuration managed by Cluster Orchestrator for autoscaling and cost-optimized workload placement.",
-        "slug": "node-pool",
-        "module": "cacm",
-        "category": "concepts",
-        "letter": "N",
-        "related": [
-          {
-            "term": "ai sre",
-            "slug": "ai-sre"
-          },
-          {
-            "term": "anomaly",
-            "slug": "anomaly"
-          },
-          {
-            "term": "api key",
-            "slug": "api-key"
-          }
-        ]
-      },
-      {
         "id": "platform.concepts.notification",
         "term": "notification",
         "definition": "A message sent to users or channels (email, Slack, PagerDuty, Microsoft Teams) when a pipeline event occurs, such as stage completion, failure, or approval request.",
         "slug": "notification",
-        "module": "platform",
-        "category": "concepts",
-        "letter": "N",
-        "related": [
-          {
-            "term": "ai sre",
-            "slug": "ai-sre"
-          },
-          {
-            "term": "anomaly",
-            "slug": "anomaly"
-          },
-          {
-            "term": "api key",
-            "slug": "api-key"
-          }
-        ]
-      },
-      {
-        "id": "platform.concepts.notification-rule",
-        "term": "notification rule",
-        "definition": "A configured alert in Harness that fires on specific events such as pipeline failures, SLO breaches, governance violations, or approval requests.",
-        "slug": "notification-rule",
         "module": "platform",
         "category": "concepts",
         "letter": "N",
@@ -9566,29 +8600,6 @@
         "related": []
       },
       {
-        "id": "platform.pipelines.output-variable",
-        "term": "output variable",
-        "definition": "A variable published by a step or stage during pipeline execution that can be referenced by downstream steps using Harness expressions.",
-        "slug": "output-variable",
-        "module": "platform",
-        "category": "pipelines",
-        "letter": "O",
-        "related": [
-          {
-            "term": "conditional execution",
-            "slug": "conditional-execution"
-          },
-          {
-            "term": "custom stage",
-            "slug": "custom-stage"
-          },
-          {
-            "term": "matrix",
-            "slug": "matrix"
-          }
-        ]
-      },
-      {
         "id": "platform.concepts.overlay-input-set",
         "term": "overlay input set",
         "definition": "A layered input set in Harness that merges values from multiple input sets, allowing teams to compose runtime inputs from shared and team-specific configurations.",
@@ -9613,29 +8624,6 @@
       }
     ],
     "P": [
-      {
-        "id": "platform.concepts.permission",
-        "term": "permission",
-        "definition": "A specific action such as view, create, edit, or delete that can be granted on a resource type within a role in Harness RBAC.",
-        "slug": "permission",
-        "module": "platform",
-        "category": "concepts",
-        "letter": "P",
-        "related": [
-          {
-            "term": "ai sre",
-            "slug": "ai-sre"
-          },
-          {
-            "term": "anomaly",
-            "slug": "anomaly"
-          },
-          {
-            "term": "api key",
-            "slug": "api-key"
-          }
-        ]
-      },
       {
         "id": "platform.authentication.personal-access-token",
         "term": "personal access token",
@@ -9692,16 +8680,16 @@
         "letter": "P",
         "related": [
           {
-            "term": "conditional execution",
-            "slug": "conditional-execution"
-          },
-          {
             "term": "custom stage",
             "slug": "custom-stage"
           },
           {
-            "term": "matrix",
-            "slug": "matrix"
+            "term": "pipeline template",
+            "slug": "pipeline-template"
+          },
+          {
+            "term": "stage",
+            "slug": "stage"
           }
         ]
       },
@@ -9775,29 +8763,6 @@
         ]
       },
       {
-        "id": "platform.pipelines.pipeline-studio",
-        "term": "pipeline studio",
-        "definition": "The visual editor in Harness for building, configuring, and debugging pipelines using a drag-and-drop interface alongside YAML.",
-        "slug": "pipeline-studio",
-        "module": "platform",
-        "category": "pipelines",
-        "letter": "P",
-        "related": [
-          {
-            "term": "conditional execution",
-            "slug": "conditional-execution"
-          },
-          {
-            "term": "custom stage",
-            "slug": "custom-stage"
-          },
-          {
-            "term": "matrix",
-            "slug": "matrix"
-          }
-        ]
-      },
-      {
         "id": "fme.pipelines.pipeline-template",
         "term": "pipeline template",
         "definition": "A reusable end-to-end workflow that discovers eligible feature flags, lets you select a cleanup candidate, and generates a pull request with the proposed code changes.",
@@ -9807,16 +8772,16 @@
         "letter": "P",
         "related": [
           {
-            "term": "conditional execution",
-            "slug": "conditional-execution"
-          },
-          {
             "term": "custom stage",
             "slug": "custom-stage"
           },
           {
-            "term": "matrix",
-            "slug": "matrix"
+            "term": "pipeline",
+            "slug": "pipeline"
+          },
+          {
+            "term": "stage",
+            "slug": "stage"
           }
         ]
       },
@@ -9982,52 +8947,6 @@
         ]
       },
       {
-        "id": "platform.concepts.principal",
-        "term": "principal",
-        "definition": "The entity that performs actions in Harness. A principal can be a user, service account, or API key and is the subject to which role bindings are attached.",
-        "slug": "principal",
-        "module": "platform",
-        "category": "concepts",
-        "letter": "P",
-        "related": [
-          {
-            "term": "ai sre",
-            "slug": "ai-sre"
-          },
-          {
-            "term": "anomaly",
-            "slug": "anomaly"
-          },
-          {
-            "term": "api key",
-            "slug": "api-key"
-          }
-        ]
-      },
-      {
-        "id": "fme.feature-management.project",
-        "term": "project",
-        "definition": "A top-level container within a Harness account that partitions the work of different teams, product lines, or areas. Objects such as flags, segments, and metrics are not shared across projects.",
-        "slug": "project",
-        "module": "fme",
-        "category": "feature-management",
-        "letter": "P",
-        "related": [
-          {
-            "term": "attribute",
-            "slug": "attribute"
-          },
-          {
-            "term": "default treatment",
-            "slug": "default-treatment"
-          },
-          {
-            "term": "environment",
-            "slug": "environment"
-          }
-        ]
-      },
-      {
         "id": "platform.project",
         "term": "project",
         "definition": "A project is a shared workspace within an organization where teams manage their users, pipelines, and resources needed to build, deploy, and operate their applications in the Harness platform.",
@@ -10055,8 +8974,8 @@
             "slug": "evaluation-context"
           },
           {
-            "term": "hook",
-            "slug": "hook"
+            "term": "events",
+            "slug": "events"
           }
         ]
       },
@@ -10185,29 +9104,6 @@
         "definition": "A container in Harness Artifact Registry that stores and manages versioned artifacts such as Docker images, Helm charts, and generic packages.",
         "slug": "registry",
         "module": "ar",
-        "category": "concepts",
-        "letter": "R",
-        "related": [
-          {
-            "term": "ai sre",
-            "slug": "ai-sre"
-          },
-          {
-            "term": "anomaly",
-            "slug": "anomaly"
-          },
-          {
-            "term": "api key",
-            "slug": "api-key"
-          }
-        ]
-      },
-      {
-        "id": "scs.concepts.remediation-tracker",
-        "term": "remediation tracker",
-        "definition": "A tool in Harness SCS that tracks the lifecycle of vulnerability findings from detection through remediation, with assignees, deadlines, and status.",
-        "slug": "remediation-tracker",
-        "module": "scs",
         "category": "concepts",
         "letter": "R",
         "related": [
@@ -10450,8 +9346,8 @@
             "slug": "default-treatment"
           },
           {
-            "term": "environment",
-            "slug": "environment"
+            "term": "flag dependency",
+            "slug": "flag-dependency"
           }
         ]
       },
@@ -10559,16 +9455,16 @@
         "letter": "S",
         "related": [
           {
-            "term": "alert",
-            "slug": "alert"
-          },
-          {
             "term": "guardrail metric",
             "slug": "guardrail-metric"
           },
           {
             "term": "key metric",
             "slug": "key-metric"
+          },
+          {
+            "term": "metric",
+            "slug": "metric"
           }
         ]
       },
@@ -10757,29 +9653,6 @@
         ]
       },
       {
-        "id": "fme.sdks-and-infrastructure.sdk",
-        "term": "sdk",
-        "definition": "A language-specific library you include and initialize in your application to evaluate feature flags locally. On initialization, the SDK retrieves targeting rules from a nearby CDN node, caches them in memory, and keeps them current via a streaming architecture, so flag evaluations are instant with no network call required at evaluation time.",
-        "slug": "sdk",
-        "module": "fme",
-        "category": "sdks-and-infrastructure",
-        "letter": "S",
-        "related": [
-          {
-            "term": "cdn",
-            "slug": "cdn"
-          },
-          {
-            "term": "split evaluator",
-            "slug": "split-evaluator"
-          },
-          {
-            "term": "streaming architecture",
-            "slug": "streaming-architecture"
-          }
-        ]
-      },
-      {
         "id": "platform.concepts.secret",
         "term": "secret",
         "definition": "A securely stored credential (password, token, SSH key, or certificate) managed by Harness and referenced by connectors, pipelines, and other configurations without exposing the raw value.",
@@ -10866,8 +9739,8 @@
             "slug": "default-treatment"
           },
           {
-            "term": "environment",
-            "slug": "environment"
+            "term": "flag dependency",
+            "slug": "flag-dependency"
           }
         ]
       },
@@ -10904,16 +9777,16 @@
         "letter": "S",
         "related": [
           {
-            "term": "change source",
-            "slug": "change-source"
-          },
-          {
             "term": "continuous verification",
             "slug": "continuous-verification"
           },
           {
-            "term": "error budget",
-            "slug": "error-budget"
+            "term": "health source",
+            "slug": "health-source"
+          },
+          {
+            "term": "verification type",
+            "slug": "verification-type"
           }
         ]
       },
@@ -11180,62 +10053,16 @@
         "letter": "S",
         "related": [
           {
-            "term": "alert",
-            "slug": "alert"
-          },
-          {
             "term": "guardrail metric",
             "slug": "guardrail-metric"
           },
           {
             "term": "key metric",
             "slug": "key-metric"
-          }
-        ]
-      },
-      {
-        "id": "cd.verification.sli",
-        "term": "sli",
-        "definition": "A Service Level Indicator is a quantitative metric used to measure whether a Service Level Objective is being met, such as latency, error rate, or throughput.",
-        "slug": "sli",
-        "module": "cd",
-        "category": "verification",
-        "letter": "S",
-        "related": [
-          {
-            "term": "change source",
-            "slug": "change-source"
           },
           {
-            "term": "continuous verification",
-            "slug": "continuous-verification"
-          },
-          {
-            "term": "error budget",
-            "slug": "error-budget"
-          }
-        ]
-      },
-      {
-        "id": "cd.verification.slo",
-        "term": "slo",
-        "definition": "A Service Level Objective that defines a reliability target for a monitored service, expressed as a percentage of good requests or uptime over a rolling or calendar window.",
-        "slug": "slo",
-        "module": "cd",
-        "category": "verification",
-        "letter": "S",
-        "related": [
-          {
-            "term": "change source",
-            "slug": "change-source"
-          },
-          {
-            "term": "continuous verification",
-            "slug": "continuous-verification"
-          },
-          {
-            "term": "error budget",
-            "slug": "error-budget"
+            "term": "metric",
+            "slug": "metric"
           }
         ]
       },
@@ -11309,29 +10136,6 @@
         ]
       },
       {
-        "id": "fme.sdks-and-infrastructure.split-evaluator",
-        "term": "split evaluator",
-        "definition": "A customer-hosted service that exposes flag evaluation as a REST API. It is an alternative to embedding an FME SDK directly and is intended for environments or languages that do not have a published FME SDK. Like the SDK, the Split Evaluator never sends private user data to the Harness network.",
-        "slug": "split-evaluator",
-        "module": "fme",
-        "category": "sdks-and-infrastructure",
-        "letter": "S",
-        "related": [
-          {
-            "term": "cdn",
-            "slug": "cdn"
-          },
-          {
-            "term": "sdk",
-            "slug": "sdk"
-          },
-          {
-            "term": "streaming architecture",
-            "slug": "streaming-architecture"
-          }
-        ]
-      },
-      {
         "id": "sei.concepts.sprint-metrics",
         "term": "sprint metrics",
         "definition": "Metrics in Harness SEI that track sprint health including velocity, scope creep, done-to-commit ratio, and average ticket age.",
@@ -11364,16 +10168,16 @@
         "letter": "S",
         "related": [
           {
-            "term": "conditional execution",
-            "slug": "conditional-execution"
-          },
-          {
             "term": "custom stage",
             "slug": "custom-stage"
           },
           {
-            "term": "matrix",
-            "slug": "matrix"
+            "term": "pipeline",
+            "slug": "pipeline"
+          },
+          {
+            "term": "pipeline template",
+            "slug": "pipeline-template"
           }
         ]
       },
@@ -11387,16 +10191,16 @@
         "letter": "S",
         "related": [
           {
-            "term": "conditional execution",
-            "slug": "conditional-execution"
-          },
-          {
             "term": "custom stage",
             "slug": "custom-stage"
           },
           {
-            "term": "matrix",
-            "slug": "matrix"
+            "term": "pipeline",
+            "slug": "pipeline"
+          },
+          {
+            "term": "pipeline template",
+            "slug": "pipeline-template"
           }
         ]
       },
@@ -11441,8 +10245,8 @@
             "slug": "default-treatment"
           },
           {
-            "term": "environment",
-            "slug": "environment"
+            "term": "flag dependency",
+            "slug": "flag-dependency"
           }
         ]
       },
@@ -11479,16 +10283,16 @@
         "letter": "S",
         "related": [
           {
-            "term": "alert",
-            "slug": "alert"
-          },
-          {
             "term": "guardrail metric",
             "slug": "guardrail-metric"
           },
           {
             "term": "key metric",
             "slug": "key-metric"
+          },
+          {
+            "term": "metric",
+            "slug": "metric"
           }
         ]
       },
@@ -11502,16 +10306,16 @@
         "letter": "S",
         "related": [
           {
-            "term": "conditional execution",
-            "slug": "conditional-execution"
-          },
-          {
             "term": "custom stage",
             "slug": "custom-stage"
           },
           {
-            "term": "matrix",
-            "slug": "matrix"
+            "term": "pipeline",
+            "slug": "pipeline"
+          },
+          {
+            "term": "pipeline template",
+            "slug": "pipeline-template"
           }
         ]
       },
@@ -11521,52 +10325,6 @@
         "definition": "A collection of steps in a CI pipeline that share the same execution context (container image, resources) and can run sequentially or in parallel.",
         "slug": "step-group",
         "module": "ci",
-        "category": "concepts",
-        "letter": "S",
-        "related": [
-          {
-            "term": "ai sre",
-            "slug": "ai-sre"
-          },
-          {
-            "term": "anomaly",
-            "slug": "anomaly"
-          },
-          {
-            "term": "api key",
-            "slug": "api-key"
-          }
-        ]
-      },
-      {
-        "id": "fme.sdks-and-infrastructure.streaming-architecture",
-        "term": "streaming architecture",
-        "definition": "The mechanism by which FME SDKs receive real-time updates to targeting rules in milliseconds, without polling. Changes made in the Harness UI propagate to all SDK instances automatically.",
-        "slug": "streaming-architecture",
-        "module": "fme",
-        "category": "sdks-and-infrastructure",
-        "letter": "S",
-        "related": [
-          {
-            "term": "cdn",
-            "slug": "cdn"
-          },
-          {
-            "term": "sdk",
-            "slug": "sdk"
-          },
-          {
-            "term": "split evaluator",
-            "slug": "split-evaluator"
-          }
-        ]
-      },
-      {
-        "id": "platform.concepts.subscription",
-        "term": "subscription",
-        "definition": "The license tier and entitlements that govern which modules, features, and usage limits an account can access in Harness.",
-        "slug": "subscription",
-        "module": "platform",
         "category": "concepts",
         "letter": "S",
         "related": [
@@ -11609,29 +10367,6 @@
       }
     ],
     "T": [
-      {
-        "id": "fme.feature-management.tag",
-        "term": "tag",
-        "definition": "A label used to organize and filter feature flags, segments, and metrics across the Harness FME interface. Tags can represent teams, epics, system layers, or any other grouping.",
-        "slug": "tag",
-        "module": "fme",
-        "category": "feature-management",
-        "letter": "T",
-        "related": [
-          {
-            "term": "attribute",
-            "slug": "attribute"
-          },
-          {
-            "term": "default treatment",
-            "slug": "default-treatment"
-          },
-          {
-            "term": "environment",
-            "slug": "environment"
-          }
-        ]
-      },
       {
         "id": "platform.concepts.tag",
         "term": "tag",
@@ -11719,15 +10454,15 @@
             "slug": "evaluation-context"
           },
           {
-            "term": "hook",
-            "slug": "hook"
+            "term": "events",
+            "slug": "events"
           }
         ]
       },
       {
         "id": "fme.feature-management.targeting-rule",
         "term": "targeting rule",
-        "definition": "A rule that determines which treatment a user receives based on attributes, segments, or percentage-based rollouts. Rules are managed at the environment level, so staging and production can have independent configurations.",
+        "definition": "A rule that determines which treatment a user receives based on attributes, segments, or percentage-based rollouts.",
         "slug": "targeting-rule",
         "module": "fme",
         "category": "feature-management",
@@ -11742,8 +10477,8 @@
             "slug": "default-treatment"
           },
           {
-            "term": "environment",
-            "slug": "environment"
+            "term": "flag dependency",
+            "slug": "flag-dependency"
           }
         ]
       },
@@ -11840,29 +10575,6 @@
         ]
       },
       {
-        "id": "fme.feature-management.traffic-type",
-        "term": "traffic type",
-        "definition": "A category of unique key used for targeting decisions, such as user, account, device, or anonymous. Each project supports up to ten traffic types. The traffic type on a flag determines which key FME uses when making and observing targeting decisions.",
-        "slug": "traffic-type",
-        "module": "fme",
-        "category": "feature-management",
-        "letter": "T",
-        "related": [
-          {
-            "term": "attribute",
-            "slug": "attribute"
-          },
-          {
-            "term": "default treatment",
-            "slug": "default-treatment"
-          },
-          {
-            "term": "environment",
-            "slug": "environment"
-          }
-        ]
-      },
-      {
         "id": "fme.feature-management.treatment",
         "term": "treatment",
         "definition": "A specific variation or value that a feature flag serves to a user. Each flag can have multiple treatments representing different behaviors or configurations.",
@@ -11880,8 +10592,8 @@
             "slug": "default-treatment"
           },
           {
-            "term": "environment",
-            "slug": "environment"
+            "term": "flag dependency",
+            "slug": "flag-dependency"
           }
         ]
       },
@@ -11985,29 +10697,6 @@
         "definition": "A configuration in Harness Artifact Registry that caches artifacts from external registries (Docker Hub, Maven Central, npm) and serves them to your builds.",
         "slug": "upstream-proxy",
         "module": "ar",
-        "category": "concepts",
-        "letter": "U",
-        "related": [
-          {
-            "term": "ai sre",
-            "slug": "ai-sre"
-          },
-          {
-            "term": "anomaly",
-            "slug": "anomaly"
-          },
-          {
-            "term": "api key",
-            "slug": "api-key"
-          }
-        ]
-      },
-      {
-        "id": "platform.concepts.user",
-        "term": "user",
-        "definition": "An individual identity that authenticates and interacts with the Harness platform. Users are assigned to user groups, hold role bindings, and can be provisioned via SCIM or SAML.",
-        "slug": "user",
-        "module": "platform",
         "category": "concepts",
         "letter": "U",
         "related": [
@@ -12152,16 +10841,16 @@
         "letter": "V",
         "related": [
           {
-            "term": "change source",
-            "slug": "change-source"
-          },
-          {
             "term": "continuous verification",
             "slug": "continuous-verification"
           },
           {
-            "term": "error budget",
-            "slug": "error-budget"
+            "term": "health source",
+            "slug": "health-source"
+          },
+          {
+            "term": "sensitivity",
+            "slug": "sensitivity"
           }
         ]
       },
@@ -12265,29 +10954,6 @@
         "definition": "A self-service automation in Harness IDP that developers use to perform common tasks like creating a new service, onboarding a repo, or provisioning infrastructure.",
         "slug": "workflow",
         "module": "idp",
-        "category": "concepts",
-        "letter": "W",
-        "related": [
-          {
-            "term": "ai sre",
-            "slug": "ai-sre"
-          },
-          {
-            "term": "anomaly",
-            "slug": "anomaly"
-          },
-          {
-            "term": "api key",
-            "slug": "api-key"
-          }
-        ]
-      },
-      {
-        "id": "cacm.concepts.workload",
-        "term": "workload",
-        "definition": "A running application such as a Kubernetes pod or deployment tracked by Cluster Orchestrator for right-sizing recommendations and cost optimization.",
-        "slug": "workload",
-        "module": "cacm",
         "category": "concepts",
         "letter": "W",
         "related": [

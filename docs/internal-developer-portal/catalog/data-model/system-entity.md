@@ -24,7 +24,7 @@ tags:
 
 # System Entity
 
-A **System** in Harness Internal Developer Portal (IDP) is a high-level catalog entity used to logically group related software components, APIs, and infrastructure resources. It represents a functional or domain-specific boundary such as a module, platform area, or business unit, and enables teams to organize and manage complex software ecosystems more effectively.
+A **System** in Harness Internal Developer Portal (IDP) is a high-level catalog entity used to logically group related software components, APIs, and infrastructure resources. It represents a functional or domain-specific boundary such as a module, platform area, or business unit—and enables teams to organize and manage complex software ecosystems more effectively.
 
 While Projects and Organizations help separate teams structurally, they often fall short in large environments where multiple teams share the same project. Systems provide an additional layer of organization by allowing you to group related entities based on ownership or functionality. You can define a System at the Project, Organization, or Account level, and assign catalog entities to one or more Systems for better clarity and governance.
 
@@ -40,7 +40,7 @@ Use Systems to:
 
 ---
 
-## Create a system entity
+## Create a System Entity
 
 In Harness IDP, a **System** represents a logical grouping of related services, APIs, and resources. Systems help improve catalog visibility, support governance across scopes, and make it easier for teams to discover and manage what they own.
 
@@ -50,7 +50,7 @@ Systems can be created through:
 
 They can exist at **Project**, **Organization**, or **Account** scope, based on how broadly you want to apply grouping logic.
 
-#### Create via the IDP UI
+#### Creating via the IDP UI
 
 To create a System from the IDP UI:
 
@@ -69,7 +69,7 @@ The System will appear in the Catalog and can be used to group other entities ei
 
 ![System Entity](../static/catalog-service.png)
 
-#### Example: System entity YAML
+#### Example: System Entity YAML
 
 ```yaml
 apiVersion: harness.io/v1
@@ -87,10 +87,10 @@ metadata:
     - java
 ```
 
-Systems in Harness IDP are standalone entities visible in the Software Catalog, similar to services or APIs. Unlike traditional scopes that are tightly bound to Projects or Organizations, Systems can be defined at any level, Account, Org, or Project, giving teams flexibility based on how they work.
+Systems in Harness IDP are standalone entities visible in the Software Catalog, similar to services or APIs. Unlike traditional scopes that are tightly bound to Projects or Organizations, Systems can be defined at any level — Account, Org, or Project — giving teams flexibility based on how they work.
 
 
-### Configure the system layout in catalog entities
+### Configure the System Layout in Catalog Entities
 
 After defining a **System Entity** in Harness IDP, you can configure how its details appear in the Software Catalog.
 
@@ -193,7 +193,7 @@ page:
 
 > Existing customers can update their System layout by applying the above YAML in the **System** section under **Catalog Entities - Layout**. This ensures the same structured layout and features available to new accounts.
 
-#### Understand the entities tab in system layout
+#### Understanding the Entities Tab in System Layout
 
 The **Entities** tab provides a comprehensive view of all components, APIs, resources, and other entities that belong to a System. This tab is configured in the layout as follows:
 
@@ -219,7 +219,7 @@ The Entities tab serves as the primary navigation hub for exploring all componen
 
 ---
 
-## Associate entities with a system
+## Associate Entities with a System
 
 In Harness IDP, once a System is defined, you can associate services, APIs, and other catalog entities with that System by updating their YAML definitions. This helps structure the catalog meaningfully and improves visibility, especially in large organizations with many components.
 
@@ -235,7 +235,7 @@ To associate an entity with a System:
 * Use the `system` field in the entity's YAML
 * Optionally use the `partOf` field if you want to express semantic relationships across systems or domains
 
-#### Example: Component associated with multiple systems
+#### Example: Component associated with multiple Systems
 
 ```yaml
 apiVersion: harness.io/v1
@@ -280,13 +280,13 @@ Once a System is defined, you do not need to modify the System's YAML to reflect
 Only the systems created at the scope of the entity can be chosen.
 :::
 
-#### Entity part of systems
+#### Entity part of Systems
 
 ![Entity-System Relations](../static/entity-system-relations.png)
 
 When viewing an **Entity** (such as a Component, API, or Resource) in the Catalog, the UI highlights which System(s) this Entity is a part of. The diagram above shows this relationship: the Entity detail page features a section that lists all Systems the Entity belongs to. Each System is typically presented as a clickable link or chip, enabling users to quickly navigate to the System's overview. This helps users understand the broader context, governance, and ownership of the Entity within the organization's architecture.
 
-#### Systems part of entities
+#### Systems part of Entities
 
 ![System-Entity Relations](../static/system-entity-relations.png)
 
@@ -308,7 +308,7 @@ System entities from IDP 1.0 are migrated into 2.0 at the **Account scope** by d
 * These are created at the account level to ensure broad visibility and continuity across teams.
 * No user action is required for the System definitions themselves to appear in the new Catalog.
 
-#### Notes on associations
+#### Notes on Associations
 
 While System entities themselves are migrated automatically, associations between Systems and Components are **not included** in the conversion. To re-establish those relationships:
 

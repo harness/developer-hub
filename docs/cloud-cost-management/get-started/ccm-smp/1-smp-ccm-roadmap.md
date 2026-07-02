@@ -6,7 +6,6 @@ redirect_from:
   - /docs/cloud-cost-management/getting-started-ccm/ccm-smp/smp-ccm-roadmap
 ---
 
-
 # Self-Managed Enterprise Edition - Roadmap and feature availability
 The Harness Self-Managed Enterprise Edition of Cloud & AI Cost Management is a comprehensive solution designed to optimize your cloud resources and minimize expenses. It provides granular insights into your cloud expenses, including detailed breakdowns and cost allocation. By leveraging the cost reporting features like perspectives and dashboards, CACM empowers you to make informed business decisions that align with your strategic objectives. 
 

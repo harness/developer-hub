@@ -2,7 +2,6 @@
 title: Primary and Secondary Contacts and Customer Service Portal Administrators
 ---
 
-
 Primary and Secondary Contacts are the users that are listed within a [customer account](https://armory.service-now.com/customer_account_list.do?sysparm_userpref_module=25f7d04cc322310015519f2974d3ae43&sysparm_view=case&sysparm_query=customer%3Dtrue%5EEQ&sysparm_clear_stack=true) (ServiceNow Admin access required).  These are the contacts outlined by the company as their main administrators, and points of contact for Armory.  We will use these contacts for any communications such as for NPS surveys and any other issues that we must contact them about (e.g. security items/alerts)
 Customer accounts can have more than 2 administrators as long a user is a part of the ```[Armory - Customer Administration](https://armory.service-now.com/sys_user_group.do?sys_id=f552d87edb86281079f53ec8f4961979&sysparm_record_target=sys_user_group&sysparm_record_row=4&sysparm_record_rows=24&sysparm_record_list=ORDERBYname) ```group.  
 ### What are Customer Service Portal Administrators?

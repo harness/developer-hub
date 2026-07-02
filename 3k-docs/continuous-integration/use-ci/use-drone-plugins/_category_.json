@@ -1,0 +1,14 @@
+{
+    "label": "Use plugins", 
+    "position": 90,
+    "collapsible": "true", 
+    "collapsed": "true", 
+    "className": "red", 
+    "link": {
+        "type": "generated-index", 
+        "title": "Use plugins"
+    }, 
+    "customProps": {
+        "helpdocs_category_id": "ei5fgqxb0j"
+    }
+}

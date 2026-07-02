@@ -19,7 +19,7 @@ This plugin was part of IDP 1.0. It is deprecated and no longer available in the
 
 ### Application configuration YAML
 
-This plugin enables you to configure rules based on which the entity definition files (for example, `catalog-info.yaml`) can be auto-discovered from your GitHub organizations and repositories. Once you have configured rules, you no longer need to manually register all the catalog information YAML files. Any new files created will also be automatically registered with the catalog.
+This plugin enables you to configure rules based on which the entity definition files (for example, `catalog-info.yaml`) can be auto-discovered from your GitHub organizations and repositories. Once you've configured rules, you no longer need to manually register all the catalog information YAML files. Any new files created will also be automatically registered with the catalog.
 
 Go to the [official documentation](https://backstage.io/docs/integrations/github/discovery#configuration) to understand the YAML configuration for this plugin. Here is an example:
 
@@ -103,11 +103,11 @@ This plugin does not need any catalog-info.yaml annotations to work.
 
 - To solve this we would recommend you to use the following scripts which would register separate locations for all the matching catalog-info.yaml files and hence would be synchronized separately.
 
-### [Registered locations](https://github.com/harness-community/idp-samples/blob/main/catalog-scripts/register_discovered_locations.py)
+### [Registered Locations](https://github.com/harness-community/idp-samples/blob/main/catalog-scripts/register_discovered_locations.py)
 
 - Discover `catalog-info.yaml` matching the regex filter and register under the catalog provided in `apiurl`. This would separate locations for all the matching catalog-info.yaml files and hence would be synchronized separately.
 
-### [Create services](https://github.com/harness-community/idp-samples/blob/main/catalog-scripts/create_services.py)
+### [Create Services](https://github.com/harness-community/idp-samples/blob/main/catalog-scripts/create_services.py)
 
 - Generates a monorepo with the following file structure, assigning random English names.
 
@@ -122,7 +122,7 @@ repo
         - catalog-info.yaml
 ```
 
-### [Delete services](https://github.com/harness-community/idp-samples/blob/main/catalog-scripts/delete_services.py)
+### [Delete Services](https://github.com/harness-community/idp-samples/blob/main/catalog-scripts/delete_services.py)
 
 - Will clean up the services already created.
 

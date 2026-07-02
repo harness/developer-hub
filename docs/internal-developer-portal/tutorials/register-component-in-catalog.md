@@ -14,7 +14,7 @@ redirect_from:
 
 The **IDP YAML** is a crucial descriptor file that provides metadata about the software components you register within our IDP. It serves as a blueprint, detailing essential information about each component, such as its name, description, owner, and other related metadata. This file ensures that our portal accurately represents and organizes the software components, making it easier for teams to discover and understand the tools and services available.
 
-Although it is possible to name catalog entity descriptor files however you wish, we recommend that you name them `idp.yaml`.
+Although it's possible to name catalog entity descriptor files however you wish, we recommend that you name them `idp.yaml`.
 
 :::info
 
@@ -26,11 +26,11 @@ Although it is possible to name catalog entity descriptor files however you wish
 
 Begin your YAML file with the basic entity information, this contains the `kind` which could be any of the following:
 
-1. [Component](https://backstage.io/docs/features/software-catalog/descriptor-format#kind-component)
-2. [Template](https://backstage.io/docs/features/software-catalog/descriptor-format#kind-template)
-3. [API](https://backstage.io/docs/features/software-catalog/descriptor-format#kind-api)
-4. [Resource](https://backstage.io/docs/features/software-catalog/descriptor-format#kind-resource)
-5. [Location](https://backstage.io/docs/features/software-catalog/descriptor-format#kind-location)
+1. [Component](https://backstage.io/docs/features/software-catalog/descriptor-format/#kind-component)
+2. [Template](https://backstage.io/docs/features/software-catalog/descriptor-format/#kind-template)
+3. [API](https://backstage.io/docs/features/software-catalog/descriptor-format/#kind-api)
+4. [Resource](https://backstage.io/docs/features/software-catalog/descriptor-format/#kind-resource)
+5. [Location](https://backstage.io/docs/features/software-catalog/descriptor-format/#kind-location)
 
 and few others.
 
@@ -51,7 +51,7 @@ metadata:
   description: The place to be, for great artists
 ```
 
-### Add labels (optional)
+### Add labels (Optional)
 
 You can add key/value pairs as labels to classify the component:
 
@@ -60,7 +60,7 @@ labels:
   example.com/custom: custom_label_value
 ```
 
-### Add annotations (optional)
+### Add annotations (Optional)
 
 Annotations are used to reference external systems or provide additional non-identifying metadata:
 
@@ -70,7 +70,7 @@ annotations:
   github.com/project-slug: github/example-org/artist-website
 ```
 
-### Include tags (optional)
+### Include tags (Optional)
 
 Tags are single-valued strings used to classify entities:
 
@@ -79,20 +79,20 @@ tags:
   - java
 ```
 
-### Provide external links (optional)
+### Provide external links (Optional)
 
 External hyperlinks related to the entity can be added for contextual information:
 
 :::warning Allow External URLs
 
-If you are referencing external URLs in your `IDP.yaml` file, such as Swagger documentation links, ensure that these URLs are allowed within the Harness Internal Developer Portal. This is a crucial step to ensure that the portal can access and display content from these external sources.
+If you're referencing external URLs in your `IDP.yaml` file, such as Swagger documentation links, please ensure that these URLs are allowed within the Harness Internal Developer Portal. This is a crucial step to ensure that the portal can access and display content from these external sources.
 
 To allow external URLs:
 
 - Navigate to **Configure** in the Harness Internal Developer Portal.
 - Go to **URL Allow List**.
 - Click on **+Add Host**.
-- In the provided field, enter the URL pattern you wish to allow. For example, to allow all URLs from Swagger, you would enter `*.swagger.com`.
+- In the provided field, enter the URL pattern you wish to allow. For example, to allow all URLs from Swagger, you'd enter `*.swagger.com`.
 - Confirm and save your changes.
 
 By following the above steps, you ensure that the portal can safely and correctly access the external content referenced in your IDP.yaml file.
@@ -120,7 +120,7 @@ The current set of well-known and common values for this field is:
 
 #### Spec owner
 
-In the Harness Internal Developer Portal, the owner of a component is identified by the [Harness User Group ID](/docs/platform/role-based-access-control/add-user-groups). This User Group ID represents the collective entity that holds ultimate responsibility for the component and possesses the authority and capability to develop and maintain it. Should any issues arise or if there are requests for features, this User Group will serve as the primary point of contact. The primary purpose of this field in the Harness IDP is for display, ensuring that individuals accessing catalog items can easily identify the responsible User Group for a given component.
+In the Harness Internal Developer Portal, the owner of a component is identified by the [Harness User Group ID](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups). This User Group ID represents the collective entity that holds ultimate responsibility for the component and possesses the authority and capability to develop and maintain it. Should any issues arise or if there are requests for features, this User Group will serve as the primary point of contact. The primary purpose of this field in the Harness IDP is for display, ensuring that individuals accessing catalog items can easily identify the responsible User Group for a given component.
 
 <details>
 <summary>How to get the Harness User Group ID</summary>
@@ -128,8 +128,8 @@ In the Harness Internal Developer Portal, the owner of a component is identified
 - Navigate to the **bottom left** of the Harness dashboard and select **Account settings**.
 - From the Account settings menu, select **Access Control**.
 - Once in the Access Control section, look to the **top right** of the page and click on **User Groups**.
-- You will see a **search bar** at the top. Use this to search for the specific user group you are interested in.
-- Once you have located the desired user group, you will find the **User Group ID** listed. Simply **copy** this ID for your reference.
+- You'll see a **search bar** at the top. Use this to search for the specific user group you're interested in.
+- Once you've located the desired user group, you'll find the **User Group ID** listed. Simply **copy** this ID for your reference.
 
 ![](./static/user-group.png)
 
@@ -214,7 +214,7 @@ spec:
 
 ## Register with Harness IDP:
 
-To register this component with Harness IDP, you will need to submit this YAML file to the appropriate **API** endpoint or Register the existing component using **UI**.
+To register this component with Harness IDP, you'll need to submit this YAML file to the appropriate **API** endpoint or Register the existing component using **UI**.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -245,7 +245,7 @@ Follow the steps below to register components in the Harness Platform UI:
 
 Follow these steps to register components using the Harness Catalog API endpoint:
 
-- Generate a Harness API Key as described in [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys)
+- Generate a Harness API Key as described in [Manage API keys](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys)
 - Follow the following cURL command with the request body to register your component. The body takes two input at present `type` and `target`.
 
 ```cURL
@@ -261,15 +261,15 @@ The new component is available in your catalog.
 
 ![](./static/imported-entity.png)
 
-## Further reading
+## Further Reading
 
 For those looking to expand their knowledge and explore more advanced methods of registering software components on Harness IDP, consider the following:
 
-### GitHub auto-discovery plugin
+### GitHub Auto-Discovery Plugin
 
-If you are aiming to register multiple components in the software catalog concurrently, the [GitHub auto-discovery plugin](/docs/internal-developer-portal/plugins/available-plugins/github-catalog-discovery/) is a valuable tool. This plugin automates the discovery and registration of components, with all the idp yamls located in single repo.
+If you're aiming to register multiple components in the software catalog concurrently, the [GitHub auto-discovery plugin](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/github-catalog-discovery/) is a valuable tool. This plugin automates the discovery and registration of components, with all the idp yamls located in single repo.
 
-### Use the catalog API
+### Using the Catalog API
 
 Another effective approach is leveraging the catalog API. By running a custom script as shown in the example below, you can automate the registration of components, providing a more programmatic method for bulk registrations.
 

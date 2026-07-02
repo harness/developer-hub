@@ -2,7 +2,6 @@
 title: Impersonate a User for ServiceNow Troubleshooting (ServiceNow Admins)
 ---
 
-
 To help assist customers or Armory Users and ensure that they have roles set properly, it may be necessary to impersonate a user. This provides access to see the portal via the account's access.
 
 ## Impersonate a User

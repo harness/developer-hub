@@ -31,7 +31,7 @@ If a metadata field does not exist on a given entity, that entity is skipped dur
 
 ---
 
-## Create a metric aggregation rule
+## Create a Metric Aggregation Rule
 
 ### Step 1: Confirm the field exists on your source entities
 
@@ -64,7 +64,7 @@ Navigate to **Configure** → **Aggregation Rules** and click **+ New Aggregatio
 | **Aggregation Property Name** | Yes | Name of the new property written to hierarchy entities, e.g. `avg_deployment_time` |
 | **Description** | No | Write a brief description about the rule you create |
 
-#### Roll-up scope
+#### Roll-up Scope
 
 Select the hierarchy levels where the aggregated value should be stored. You can select multiple levels simultaneously.
 
@@ -81,7 +81,7 @@ Select the hierarchy levels where the aggregated value should be stored. You can
 Each level is computed independently from the source entities. The account value is never derived by averaging project values. It is always computed fresh from source entities directly.
 :::
 
-#### Configure entities to aggregate from
+#### Configure Entities to Aggregate From
 
 All filters are combined with AND logic.
 
@@ -145,9 +145,9 @@ Save the layout. The aggregated value now appears as a card on the hierarchy ent
 
 ---
 
-## Use cases
+## Use Cases
 
-### Use case 1: DORA metrics from CD integration
+### Use Case 1: DORA Metrics from CD Integration
 
 ```yaml
 Aggregation Type: Metric
@@ -161,7 +161,7 @@ Type: service
 
 **Result:** `metadata.Max Change Failure Rate` is available on project, organization, and account entities.
 
-### Use case 2: Custom ingested properties
+### Use Case 2: Custom Ingested Properties
 
 Aggregate any custom property ingested via the [Catalog Ingestion API](/docs/internal-developer-portal/catalog/integrate-tools/catalog-ingestion-api).
 
@@ -177,7 +177,7 @@ Type: service
 
 **Result:** `metadata.max_MTTR` is available on project and organization entities.
 
-### Use case 3: Hierarchical aggregation
+### Use Case 3: Hierarchical Aggregation
 
 ```yaml
 Aggregation Type: Metric
@@ -193,7 +193,7 @@ Type: project
 
 ---
 
-## Frequently asked questions
+## Frequently Asked Questions
 
 <details>
 <summary>My metric field is not showing up in the aggregated value. Why?</summary>

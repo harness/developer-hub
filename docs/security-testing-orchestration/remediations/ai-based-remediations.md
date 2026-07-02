@@ -7,7 +7,6 @@ redirect_from:
   - /docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations
 ---
 
-
 <!-- import Intro from '/docs/security-testing-orchestration/use-sto/shared/sto-aida-overview-partial.md'; -->
 
 import Notes from '/docs/security-testing-orchestration/use-sto/shared/sto-aida-notes-partial.md';

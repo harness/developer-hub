@@ -104,7 +104,7 @@ Also, you could add a conditional like `isJfrogArtifactAvailable` which is met w
       jfrog.com/artifactory-packaging: 'aar' #optional string, eg. `aar`
 ```
 
-The version of a package is shown only when it has a release version (one which follows Semantic Versioning). And that is it! The plugin should now be integrated into your Harness IDP, and you should see the Artifact card when you navigate to the entity page where it is included.
+The version of a package is shown only when it has a release version (one which follows Semantic Versioning). And that's it! The plugin should now be integrated into your Harness IDP, and you should see the Artifact card when you navigate to the entity page where it's included.
 
 - For a docker image you define repository and artifact name. Both formats are supported:
 

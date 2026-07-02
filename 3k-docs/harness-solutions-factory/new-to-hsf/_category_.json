@@ -1,0 +1,14 @@
+{
+    "label":"Get started with HSF",
+    "position": 20,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"default",
+    "link":{
+       "type":"generated-index",
+       "title":"Get started with Harness HSF"
+    },
+    "customProps":{
+       "helpdocs_category_id":""
+    }
+ }

@@ -2,7 +2,6 @@
 title: App Engine Deployments
 ---
 
-
 To deploy to App Engine using different repositories for code and ```app.yaml``` file you need to configure the Git Repository Url pointing to your code repository.
 ## Using Artifacts:
 Then for config files you need to create a new artifact using for example the github artifact file type. Point it to your ```app.yaml``` file with the configuration of your application and click Done. Then make sure to click Save. 

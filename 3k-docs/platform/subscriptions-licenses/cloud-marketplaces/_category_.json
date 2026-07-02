@@ -1,0 +1,10 @@
+{
+   "label":"Cloud Marketplace",
+   "collapsible":"true",
+   "collapsed":"true",
+   "className":"default",
+   "link":{
+      "type":"generated-index",
+      "title":"Cloud Marketplace"
+   }
+}

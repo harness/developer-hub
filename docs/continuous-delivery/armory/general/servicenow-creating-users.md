@@ -1,9 +1,8 @@
 ---
 title: ServiceNow - Creating Users
 redirect_from:
-  - /docs/continuous-delivery/armory/general/servicenow---creating-users
+  - /docs/continuous-delivery/armory/general/servicenowcreating-users
 ---
-
 
 **Note: **Do not click on the New button at the ```Users``` table to create a new user.  This will create a user under the ```Users``` table, but the user needs to be created under the ```Contact``` table instead.
 #### Check if the User Exists

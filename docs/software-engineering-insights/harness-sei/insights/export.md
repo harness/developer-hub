@@ -1,7 +1,7 @@
 ---
-title: Export Metrics in AI DLC Insights
+title: Export Insights in AI DLC Insights
 description: Learn how to share dashboard widgets and export insights in Harness AIDI.
-sidebar_label: Export Metrics
+sidebar_label: Export AI DLC Insights
 sidebar_position: 5
 redirect_from:
 - /docs/software-engineering-insights/harness-sei/analytics-and-reporting/export

@@ -216,7 +216,7 @@ While the experiment is running, confirm loss is reaching the node:
 This fault is not appropriate in the following scenarios:
 
 - **Serverless Kubernetes (EKS Fargate, ACI virtual nodes):** These platforms do not expose real nodes or allow the privileged access this fault needs. GKE Autopilot is supported once the one-time setup in [Chaos on GKE Autopilot](/docs/resilience-testing/chaos-testing/gke-autopilot) is in place.
-- **Windows nodes:** This fault is supported on Linux nodes only. Use the equivalent [Windows network loss](/docs/chaos-engineering/faults/chaos-faults/windows/windows-network-loss) on Windows-only workloads.
+- **Windows nodes:** This fault is supported on Linux nodes only. Use the equivalent [Windows network fault](/docs/chaos-engineering/faults/chaos-faults/windows/windows-network-blackhole-chaos) on Windows-only workloads.
 - **Single-node clusters or co-located chaos infrastructure:** If the chaos infrastructure pods live on the node you are about to partition, the experiment loses observability and may fail to roll back. Schedule chaos infrastructure on a node outside the blast radius.
 - **Pods using `hostNetwork: true`:** These bypass per-pod network namespaces. Loss is still applied to the node, but observed behavior depends on how the pod uses the host stack.
 - **Hardened or stripped kernels:** Some custom distribution kernels omit the networking modules this fault depends on, and the fault fails immediately on those nodes. On RHEL-family hosts, install `kernel-modules-extra` and reboot to restore the missing modules.

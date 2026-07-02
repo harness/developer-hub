@@ -1,9 +1,8 @@
 ---
 title: ServiceNow - Allowing Customers to See Tickets Across Organization Divisions
 redirect_from:
-  - /docs/continuous-delivery/armory/general/servicenow---allowing-customers-to-see-tickets-across-organization-divisions
+  - /docs/continuous-delivery/armory/general/servicenowallowing-customers-to-see-tickets-across-organization-divisions
 ---
-
 
 Customers (e.g. Apple) may want their team to be able to see all tickets that are opened across the entire Apple Organization when they are logged in and looking at their (ServiceNow) Company's tickets. 
 In Apple's case, they have quite a few divisions:

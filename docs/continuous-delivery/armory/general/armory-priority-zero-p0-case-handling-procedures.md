@@ -2,7 +2,6 @@
 title: Armory Priority Zero (P0) Case Handling Procedures
 ---
 
-
 Armory Customers with a Support Service agreement may be required to open a case with the Armory Support team to track production outages within their production environment.  Depending on the severity of the issue, customers are encouraged to open a Priority Zero (P0) level case with our Support team for assistance
 
 ## Table of Contents

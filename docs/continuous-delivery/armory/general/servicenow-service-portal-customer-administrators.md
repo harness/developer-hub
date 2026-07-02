@@ -2,7 +2,6 @@
 title: ServiceNow Service Portal Customer Administrators
 ---
 
-
 Customer Administrators are privileged customer users who have been granted additional access and management rights to the ServiceNow Portal. Customers should inform Support or the designated TAM about any changes that need to happen with regards to their assigned administrator. Because the administrator has additional privileges, please be aware of the following information when assigning administrators. 
 Add a User
 * Go to the ServiceNow service portal ([https://support.armory.io](https://support.armory.io/))* Log in with your credentials* Click on Manage Accounts on the side menu → Click on Users List* Click on the "Create User" button. Fill in all information about the new user* Click on Submit user. The user will now be created, and the person can now log in or reset their password to access the support portal

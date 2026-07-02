@@ -1,0 +1,12 @@
+{
+  "label": "Step References",
+  "position": 5,
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "title": "MIG Step References",
+    "description": "Reference documentation for Google MIG deployment steps.",
+    "slug": "/continuous-delivery/deploy-srv-diff-platforms/google-cloud-functions/mig/step-references"
+  }
+}

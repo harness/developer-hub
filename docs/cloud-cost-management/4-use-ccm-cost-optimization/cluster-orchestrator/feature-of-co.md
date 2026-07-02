@@ -8,7 +8,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-
 <DocImage path={require('./static/cluster-one.png')} width="80%" height="80%" title="Click to view full size image" />
 
 ### Enable Commitment Context (Integration with Commitment Orchestrator)

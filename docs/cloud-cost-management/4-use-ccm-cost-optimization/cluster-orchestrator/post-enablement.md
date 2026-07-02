@@ -8,7 +8,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-
 ## Monitoring Your Cluster After Enablement
 
 After successfully setting up Cluster Orchestrator, you gain access to monitoring screens and dashboards that provide real-time insights into your cluster's performance, cost, and optimization opportunities. These dashboards are designed to help you track the effectiveness of your optimization settings and make data-driven decisions about your infrastructure.

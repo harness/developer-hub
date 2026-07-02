@@ -6,7 +6,7 @@ Harness IDP 2.0 marks a significant evolution of the Internal Developer Portal, 
 
 ---
 
-## Quick reference: Entity YAML examples
+## Quick Reference: Entity YAML Examples
 
 <details>
 <summary>Component YAML Example</summary>
@@ -135,12 +135,12 @@ metadata:
 </details>
 
 :::info
-Ensure that **no entity YAML files** are stored in **Git in IDP 2.0** until the [Git Experience](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path#native-harness-git-experience) feature is released. You can track its release and other updates in the **[IDP 2.0 Features Status](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path)** table
+Please ensure that **no entity YAML files** are stored in **Git in IDP 2.0** until the [Git Experience](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path.md#native-harness-git-experience) feature is released. You can track its release and other updates in the **[IDP 2.0 Features Status](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path.md)** table
 :::
 
 ---
 
-## What is new in IDP 2.0?
+## What's new in IDP 2.0?
 IDP 2.0 implements a **Harness-native entity schema** featuring targeted adjustments to previous Backstage-style YAML configurations. These changes primarily introduce scope concepts (project, organization, or account) while enhancing readability based on user feedback.
 
 JSON Schemas for all Catalog entities are available through our API.
@@ -177,7 +177,7 @@ These fields define the entity's scope. For project-scoped entities, both fields
 
 ---
 
-## Common to all kinds: The envelope
+## Common to All Kinds: The Envelope
 
 The root object of your **Catalog YAML** file follows a standard structure. Below are the core properties that can be included in your Catalog YAML, as defined in **IDP 2.0**:
 
@@ -185,7 +185,7 @@ The root object of your **Catalog YAML** file follows a standard structure. Belo
 
 The `apiVersion` field specifies the **version of the specification format** that the entity conforms to. It plays a critical role in ensuring compatibility and evolution of the entity schema over time. This field is **mandatory** for every entity definition, as it allows the parser to correctly interpret the structure and content of the entity.
 
-With IDP 2.0, we have introduced a Harness-native entity schema. As part of this change, all entities now use an `apiVersion` prefixed with `harness.io/`.
+With IDP 2.0, we've introduced a Harness-native entity schema. As part of this change, all entities now use an `apiVersion` prefixed with `harness.io/`.
 
 Use the following **default value** for your catalog entities:
 
@@ -209,20 +209,20 @@ With **IDP 2.0**, you can define the following `kind` types in your Catalog YAML
 * `kind: Group`
 
 Each kind represents a different type of entity within the Harness-native data model.
-[Read more about the different entity kinds here.](/docs/internal-developer-portal/catalog/catalog-yaml#entity-kinds)
+[Read more about the different entity kinds here.](/docs/internal-developer-portal/catalog/catalog-yaml.md#entity-kinds)
 
 ---
 
 ### `identifier`
 
-The `identifier` field is a **unique, machine-readable** reference for the entity. It serves as the primary key for identifying and interacting with the entity. Ensure your `identifier` follows [naming rules](/docs/platform/references/entity-identifier-reference#identifier-naming-rules). Invalid identifiers may lead to entity registration errors.
+The `identifier` field is a **unique, machine-readable** reference for the entity. It serves as the primary key for identifying and interacting with the entity. Ensure your `identifier` follows [naming rules](https://developer.harness.io/docs/platform/references/entity-identifier-reference/#identifier-naming-rules). Invalid identifiers may lead to entity registration errors.
 
 | **Property**            | **Description**                                                                                       |
 |------------------------|-------------------------------------------------------------------------------------------------------|
 | **Uniqueness**         | Must be **unique** per `kind` (case-sensitive).                                                      |
 | **Required**           | ✅ Yes, this field is **mandatory** for all entities.                                                 |
 
-This field can be reused after an entity is deleted. It must adhere to the format defined in the [identifier naming rules](/docs/platform/references/entity-identifier-reference#identifier-naming-rules).
+This field can be reused after an entity is deleted. It must adhere to the format defined [here](https://developer.harness.io/docs/platform/references/entity-identifier-reference/#identifier-naming-rules).
 
 All entity references across the platform use the `identifier`.
 
@@ -336,7 +336,7 @@ The `spec.owner` field supports multiple formats for defining ownership:
 
 A container for auxiliary data that is not part of the entity’s specification. Additional metadata helps enhance platform-level processing or categorization. See individual entity kind sections for specific structure guidelines. 
 
-Go to the [``metadata`` descriptor format](https://backstage.io/docs/features/software-catalog/descriptor-format#common-to-all-kinds-the-metadata) to learn more. 
+Please refer to this guide to learn more about [``metadata``](https://backstage.io/docs/features/software-catalog/descriptor-format#common-to-all-kinds-the-metadata). 
 
 ---
 
@@ -346,12 +346,12 @@ Defines the actual specification data that describes the entity. This is the cor
 
 ---
 
-## Entity kinds 
+## Entity Kinds 
 
 ### Kind: Component  
 A **Component** describes a software component. It is typically closely tied to the source code that constitutes the component and is what a developer would typically consider a “unit of software,” usually with a distinct deployable or linkable artifact.
 
-#### Entity structure  
+#### Entity Structure  
 All the fields mentioned below are the mandatory parameters required to define a Component:
 
 | **Field** | **Value** |
@@ -395,9 +395,9 @@ metadata:
 ---
 
 ### Kind: System
-A **System** is a high-level catalog entity used to logically group related software components, APIs, and infrastructure resources. It represents a functional or domain-specific boundary such as a module, platform area, or business unit, enabling teams to organize and manage complex software ecosystems more effectively.
+A **System** is a high-level catalog entity used to logically group related software components, APIs, and infrastructure resources. It represents a functional or domain-specific boundary such as a module, platform area, or business unit—enabling teams to organize and manage complex software ecosystems more effectively.
 
-#### Entity structure  
+#### Entity Structure  
 All the fields mentioned below are the mandatory parameters required to define a System:
 
 | **Field** | **Value** |
@@ -429,7 +429,7 @@ metadata:
 ### Kind: API  
 An **API** describes an interface that can be exposed by a component. APIs can be defined using formats such as OpenAPI, AsyncAPI, GraphQL, gRPC, or others.
 
-#### Entity structure  
+#### Entity Structure  
 All the fields mentioned below are the mandatory parameters required to define an API:
 
 | **Field** | **Value** |
@@ -440,7 +440,7 @@ All the fields mentioned below are the mandatory parameters required to define a
 | `spec.lifecycle` | You can find out more about the `lifecycle` key here. |
 | `spec.definition` | You can find out more about the `definition` key here. |
 
-#### `type` definition  
+#### `type` Definition  
 The type of the `API` definition as a string (e.g., `openapi`):
 
 1. `openapi` – A definition in YAML or JSON based on OpenAPI v2 or v3.
@@ -477,9 +477,9 @@ metadata:
 ---
 
 ### Kind: Resource  
-A **Resource** describes infrastructure components that a system needs to operate, like BigTable databases, Pub/Sub topics, S3 buckets, or CDNs. Modeling them alongside components and systems helps visualize infrastructure footprint and enables tooling around them.
+A **Resource** describes infrastructure components that a system needs to operate—like BigTable databases, Pub/Sub topics, S3 buckets, or CDNs. Modeling them alongside components and systems helps visualize infrastructure footprint and enables tooling around them.
 
-#### Entity structure  
+#### Entity Structure  
 All the fields mentioned below are the mandatory parameters required to define a Resource:
 
 | **Field** | **Value** |
@@ -488,7 +488,7 @@ All the fields mentioned below are the mandatory parameters required to define a
 | `kind` | **Resource** |
 | `type` | You can find out more about the `type` key here. |
 
-#### `type` definition  
+#### `type` Definition  
 The type of the `Resource` as a string (e.g., `database`). This field is required. There is no enforced list of values; each organization can define names that suit their tech stack.
 
 Common examples include:
@@ -516,7 +516,7 @@ metadata:
 
 Unlike platform user groups which are synchronized from an identity provider (LDAP, SCIM, SSO), custom user groups are created and managed entirely within IDP, allowing for richer metadata and context.
 
-#### Entity structure
+#### Entity Structure
 All the fields mentioned below are the parameters required to define a Group:
 
 | **Field** | **Value** |
@@ -527,7 +527,7 @@ All the fields mentioned below are the parameters required to define a Group:
 | `identifier` | Unique identifier for the group |
 | `type` | Common values include `department`, `engineering` |
 
-#### Special spec fields
+#### Special Spec Fields
 
 | **Field** | **Description** |
 | --------- | --------------- |
@@ -569,7 +569,7 @@ metadata:
 
 Workflows are stored in the catalog using `kind: Workflow`.
 
-#### Entity structure  
+#### Entity Structure  
 All the fields mentioned below are the mandatory parameters required to define a Workflow:
 
 | **Field** | **Value** |
@@ -662,13 +662,13 @@ metadata:
 
 ---
 
-### [Deprecated] kind: Location  
+### [Deprecated] Kind: Location  
 The **Location** entity served as a reference to a YAML path that produced other entities.  
 However, with Harness IDP 2.0 managing all entities internally, this entity type is no longer required and has been **deprecated**.
 
 ---
 
-## Placeholder resolution
+## Placeholder Resolution
 
 Harness IDP supports substitutions and placeholder resolutions in Catalog entity YAMLs using `$text`, `$json`, and `$yaml`. These placeholders let you dynamically reference and embed external content into your entity YAML definitions.
 
@@ -682,9 +682,9 @@ Placeholders like `$json: https://example.com/entity.json` are substituted by th
 
 Harness IDP supports three placeholder types:
 
-* **`$text`**: Interprets the referenced file as plain text and embeds it as a string.
-* **`$json`**: Interprets the referenced file as JSON and embeds the parsed structure.
-* **`$yaml`**: Interprets the referenced file as YAML and embeds the parsed structure.
+* **`$text`** — Interprets the referenced file as plain text and embeds it as a string.
+* **`$json`** — Interprets the referenced file as JSON and embeds the parsed structure.
+* **`$yaml`** — Interprets the referenced file as YAML and embeds the parsed structure.
 
 ### Implementation
 

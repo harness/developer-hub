@@ -45,7 +45,6 @@ By the end of this topic, you will be able to:
 - [Configure Harness to use Okta](#okta-saml-metadata-file) as a SAML SSO provider.
 - [Enable and test](#enable-sso-with-okta) SSO Okta login.
 - Set up [SAML authorization](#saml-authorization-with-okta) using Okta.
-- [Use Just-in-Time (JIT) provisioning](#just-in-time-jit-provisioning) to automatically create users on first login.
 
 ---
 
@@ -343,12 +342,6 @@ To test the SAML authorization configuration, log into Harness through a differe
    2. In your other browser window (where you are logged in to your admin account), make sure the user appears in the Harness user group. Go to **Account Settings**, select **Access Control**, select **User Groups** in the header, select the user group you linked to Okta, and make sure the user you just logged in with is listed as a member.
 
     By being a member of this user group, the user receives the permissions and access granted to that group. For more information about this, go to <a href="/docs/platform/role-based-access-control/rbac-in-harness" target="_blank">RBAC in Harness</a>.
-
----
-
-## Just-In-Time (JIT) provisioning
-
-Harness supports SAML configuration <a href="/docs/platform/authentication/single-sign-on-saml/#just-in-time-jit-provisioning" target="_blank"> with or without JIT user provisioning</a>. Go to <a href="/docs/platform/role-based-access-control/provision-use-jit" target="_blank">Just-in-Time (JIT) user provisioning</a> to understand how Harness creates users on first SAML login when JIT is enabled.
 
 ---
 

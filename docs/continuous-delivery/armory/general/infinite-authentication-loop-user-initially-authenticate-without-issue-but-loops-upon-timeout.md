@@ -1,7 +1,7 @@
 ---
 title: Infinite Authentication Loop - User Initially Authenticate WIthout Issue, but Loops upon Timeout
 redirect_from:
-  - /docs/continuous-delivery/armory/general/infinite-authentication-loop---user-initially-authenticate-without-issue,-but-loops-upon-timeout
+  - /docs/continuous-delivery/armory/general/infinite-authentication-loopuser-initially-authenticate-without-issue,-but-loops-upon-timeout
 ---
 
 ## Issue

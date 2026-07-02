@@ -1,0 +1,14 @@
+{
+    "label": "Share and cache CI data",
+    "position": 80,
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Share and cache CI data"
+    },
+    "customProps": {
+        "helpdocs_category_id": "01tyeraya4"
+    }
+}

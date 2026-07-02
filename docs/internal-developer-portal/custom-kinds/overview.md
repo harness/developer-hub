@@ -5,6 +5,7 @@ sidebar_label: Overview
 sidebar_position: 1
 ---
 
+## Introduction
 
 Harness IDP includes a set of built-in entity kinds such as:
 * `Component`
@@ -17,7 +18,7 @@ Harness IDP includes a set of built-in entity kinds such as:
 * `Workflow`
 * `User`
 
-While these cover most standard catalog use cases, teams might want to model objects that do not fit into any of the above kinds.
+While these cover most standard catalog use cases, teams might want to model objects that don't fit into any of the above kinds.
 
 Therefore, **Custom Entity Kinds** let you define your own entity kinds in the IDP Catalog. Each custom kind has:
 
@@ -32,7 +33,7 @@ Therefore, **Custom Entity Kinds** let you define your own entity kinds in the I
 
 Once a custom kind is created, entities of that kind behave identically to entities of any built-in kind. They appear in catalog search and filters, layouts, aggregation rules, support relations and dependency graphs. Moreover, they work with scorecards and plugins, and can be ingested via the Catalog Ingestion API.
 
-## Next steps
+## Next Steps
 
 * [Create a Custom Entity Kind](./create-custom-kind.md)
 * [Manage a Custom Entity Kind](./manage-custom-kind.md)

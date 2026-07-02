@@ -6,7 +6,6 @@ redirect_from:
   - /docs/service-reliability-management/getting-started/service-reliability-management-basics
 ---
 
-
 # SRM concepts
 
 Harness Service Reliability Management (SRM) module helps engineering and DevOps teams to balance feature velocity and bug fixes along with the stability and reliability needs in a production environment.

@@ -8,7 +8,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-
 <div style={{
   backgroundColor: '#fff3cd',
   border: '1px solid #ffeaa7',
@@ -30,7 +29,6 @@ helpdocs_is_published: true
 |Till `0.6.0`| 1.32 | 1.2.4|
 |`0.7.0`| 1.33 | 1.7.3|
 |`beta-0.7.0`| 1.34 | 1.8.0|
-|`0.9.0`| 1.34 | 1.8.2|
 
 
 ## Operator

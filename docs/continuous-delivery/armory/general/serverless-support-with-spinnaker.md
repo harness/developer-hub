@@ -2,7 +2,6 @@
 title: Serverless Support with Spinnaker
 ---
 
-
 Question:
 Does Spinnaker support Serverless or other FAAS technologies?
 Answer:

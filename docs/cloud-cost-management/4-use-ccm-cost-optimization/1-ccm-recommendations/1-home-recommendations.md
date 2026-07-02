@@ -120,41 +120,16 @@ Marking a recommendation as "Applied" assumes all resources are actioned and ful
 <TabItem value="preferences" label="Preferences">
   <DocImage path={require('./static/preferences.png')} width="80%" height="80%" title="Click to view full size image" />
     - **General Preferences:**
-      - **Automatically detect when recommendations are applied** - Enables auto-detection of applied recommendations in your infrastructure.
-      - **Show Recommendations on Parent Resources** - Display recommendations on Nodepool/EC2/ECS Services.
-      - **Show Recommendations on Child Resources** - Display recommendations on workloads.
-      - **Show Recommendations on Resources added to the IgnoreList** - Display recommendations for resources in the ignore list.
-    - **Resource Specific Preferences for Harness Generated Recommendations:** Recommendation Preferences for Harness Generated Recommendations (node pool and workload)
-    <DocImage path={require('./static/account-specific.png')} width="50%" height="50%" title="Click to view full size image" />
-    - **Account-specific Resource Preferences for Cloud Provider Recommendations**: Account-Specific Resource Preferences allow you to customize recommendation calculation parameters for individual AWS cloud accounts. Instead of using a single set of recommendation parameters across all accounts, you can define different tuning parameters (presets) for specific accounts based on their unique requirements. For each resource type (Workload, Node Pool, ECS Service, EC2 Instance):
-        1. Click **View Details** to open the account overrides drawer
-        2. You'll see:
-           - **Default Preset**: The preset applied to all accounts by default
-           - **Account-Specific Presets**: Custom presets assigned to specific accounts
-          
-        **Adding an Account Override**
-        1. Click **View Details** for a resource type
-        2. In the "Account-Specific Presets" section, click **Add Account-Specific Preset**
-        3. In the modal:
-           - **Select Accounts**: Choose one or more AWS accounts
-           - **Select Preset**: Choose the preset to apply to these accounts
-           - Optionally click **Create Preset** to create a new preset
-        4. Click **Apply** to add the override
-        5. Click **Save Changes** to persist your changes
+      - **Automatically Detect when recommendations are applied**: When enabled, Harness will analyze billing data to automatically identify when recommendations are applied, without having to manually mark them as applied.
+      - **Show Recommendations on Parent Resources** - Enables recommendations for parent-level resources such as Nodepool, EC2, and ECS Services. This ensures users receive optimization suggestions for high-level infrastructure components.
+      - **Show Recommendations on Child Resources** - Displays recommendations for individual workloads, allowing users to optimize specific application components rather than just the underlying infrastructure.
+      - **Show Recommendations on Resources Added to the Ignore List** - If enabled, recommendations will still be displayed for resources that have been manually marked as ignored. 
+    - **Resource Specific Preferences:** Over here, users can select the presets for each resource type and also set the default time range. 
 
-      <DocImage path={require('./static/set-preset.png')} width="50%" height="50%" title="Click to view full size image" />
-
-
-
-  :::info
-  
-  New Recommendation Preferences may take up to 24 hours to fully update across the platform because preferences are applied during the next scheduled batch processing job. However, changes will be reflected immediately on the drill-down page, while the Overview page may take additional time to reflect updates.
-  :::
-
+    New Recommendation Preferences may take up to 24 hours to fully update across the platform because preferences are applied during the next scheduled batch processing job. However, changes will be reflected immediately on the drill-down page, while the Overview page may take additional time to reflect updates.
 </TabItem>
 <TabItem value="manage-presets" label="Manage Presets">
   <DocImage path={require('./static/manage-presets.png')} width="80%" height="80%" title="Click to view full size image" />
-  
     This helps users to create and save customized configurations for their recommendations. These presets capture specific user preferences, such as tuning parameters for resource types like workloads, nodepools, ECS, and EC2 instances.  
 
     Users can fine-tune recommendations for different resource types by configuring specific tuning parameters and save presets. By default, Harness CACM has default presets for all resources but users can tune recommendations using custom values. To set custom values, click on the recommendation and expand the "Tune Recommendations" section to configure the tuning parameters. 
@@ -192,7 +167,7 @@ Marking a recommendation as "Applied" assumes all resources are actioned and ful
       </TabItem>
     </Tabs>
 </TabItem>
-<TabItem value="status-mapping" label="Jira Settings">
+<TabItem value="status-mapping" label="Ticketing Tool Mapping">
 
       <DocImage path={require('./static/ticketing-tool-mapping.png')} width="80%" height="80%" title="Click to view full size image" />
 
@@ -213,15 +188,8 @@ Marking a recommendation as "Applied" assumes all resources are actioned and ful
       - Regardless of automatic status updates, users can still manually move recommendations to either the Applied or Ignore List at any time.
       - Changes will apply to all future status updates.
       :::
-
-      **2. Actual Savings Field Mapping**
-      Map Jira custom fields to capture actual savings from applied recommendation tickets. When tickets reach the statuses configured in Section 1, the savings values from your Jira custom fields are synced to CACM. For each mapping, you need to specify:
-      - **Jira Project**: Select one or more Jira projects where this mapping applies
-      - **Issue Type**: Select one or more issue types (e.g., "Story", "Task", "Bug")
-      - **Savings Field**: Select the numeric custom field that contains actual savings values
-
       
-      **3. Default Jira Projects for Cost Categories**
+      **2. Default Jira Projects for Cost Categories**
 
       Set default Jira projects for cost recommendations. When creating tickets, the project is auto-selected based on the resource's first matching cost category below. You may change the project during ticket creation.
       
@@ -229,19 +197,14 @@ Marking a recommendation as "Applied" assumes all resources are actioned and ful
       
       To configure this feature, click on **+Add mapping** to add a new mapping, then select the cost category, cost bucket, and Jira project.
 
-       <DocImage path={require('./static/cc.png')} width="80%" height="80%" title="Click to view full size image" />
-
 </TabItem>
 <TabItem value="cost-settings" label="Cost Settings">
 
-  Users can choose to see AWS costs as per their preferences.These settings inherit from your Account Settings defaults. You can override them to apply only to this feature. This setting is managed in your cloud Console. Changes made in your cloud provider's consp;e will be reflected in Harness CACM after the next scheduled sync.
+  Users can choose to see AWS costs as per their preferences.These settings inherit from your Account Settings defaults. You can override them to apply only to this feature. This setting is managed in your AWS Console. Changes made in AWS will be reflected in Harness CACM after the next scheduled sync.
 
-  CACM shows:
-  - AWS: Passthrough recommendation costs for EC2, Nodepool recommendation costs, ECS recommendation costs
-  - GCP: Nodepool recommendation costs (List or Actual), Savings Programs (Spend-based CUD discounts, Legacy spend-based CUD credits, Resource-based CUD credits, Invoice Level Charges), Tax, Other Savings (Promotional credits, Sustained use discounts (SUDs), Spending-based discounts, Subscription credits, Negotiated savings)
-  - Azure: Passthrough recommendation costs (VM, VMSS), Nodepool recommendation costs
+  AWS Docs: https://docs.aws.amazon.com/cost-management/latest/userguide/coh-preferences.html#coh-savings-estimation. 
 
-  <DocImage path={require('./static/cost-settings.png')} width="50%" height="50%" title="Click to view full size image" />
+  <DocImage path={require('./static/cost-settings.png')} width="80%" height="80%" title="Click to view full size image" />
 
 </TabItem>
 </Tabs>

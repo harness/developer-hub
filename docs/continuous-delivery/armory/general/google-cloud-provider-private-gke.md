@@ -1,7 +1,7 @@
 ---
 title: Google Cloud Provider - Private GKE
 redirect_from:
-  - /docs/continuous-delivery/armory/general/google-cloud-provider---private-gke
+  - /docs/continuous-delivery/armory/general/google-cloud-providerprivate-gke
 ---
 
 ## Introduction

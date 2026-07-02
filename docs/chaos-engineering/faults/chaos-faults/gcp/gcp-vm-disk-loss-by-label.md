@@ -1,224 +1,150 @@
 ---
 id: gcp-vm-disk-loss-by-label
 title: GCP VM disk loss by label
-sidebar_label: GCP VM Disk Loss By Label
-description: Detach a percentage of non-boot persistent disks selected by label from GCP VM instances for a configurable duration, then reattach them, so you can test how the workload behaves when a labeled subset of storage disappears.
-keywords:
-  - chaos engineering
-  - gcp vm disk loss by label
-  - gcp fault
-  - persistent disk
-tags:
-  - chaos-engineering
-  - gcp-faults
 redirect_from:
 - /docs/chaos-engineering/technical-reference/chaos-faults/gcp/gcp-vm-disk-loss-by-label
 - /docs/chaos-engineering/chaos-faults/gcp/gcp-vm-disk-loss-by-label
 ---
+GCP VM disk loss by label disrupts the state of GCP persistent disk volume filtered using a label by detaching it from its VM instance for a specific duration.
 
-import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
-
-GCP VM disk loss by label is a GCP chaos fault that resolves the set of non-boot persistent disks matching `DISK_VOLUME_LABEL` in the zones listed in `ZONES` (project `GCP_PROJECT_ID`), selects `DISK_AFFECTED_PERCENTAGE` of them, detaches them from their attached VMs for `TOTAL_CHAOS_DURATION` seconds, then reattaches them.
-
-Use this fault to test how a workload behaves when a labeled subset of storage volumes disappears: whether the application surfaces clean `EIO` errors, whether stateful workloads recover, whether DR procedures kick in, and whether monitoring detects the volume loss within the alerting SLA.
-
-:::info Run your first experiment
-If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
-:::
-
----
+![GCP VM Disk Loss By Label](./static/images/gcp-vm-disk-loss-by-label.png)
 
 ## Use cases
 
-Run this fault when you want to answer concrete questions like:
+GCP VM disk loss by label fault:
+- Determines the resilience of the GKE infrastructure.
+- Determines how quickly a node can recover when a persistent disk volume is detached from the VM instance associated with it.
 
-- **Tagged subset disk loss:** When `DISK_AFFECTED_PERCENTAGE` of disks labeled `DISK_VOLUME_LABEL` disappear, do dependents handle the failure cleanly?
-- **Stateful workload resilience:** Do replicated stateful workloads (Cassandra, Postgres replicas) survive losing a labeled subset of storage?
-- **DR rehearsal:** Validate the recovery procedure for losing a tagged subset of disks across zones.
-- **Monitoring fidelity:** Do alerts on disk I/O and application errors fire within the alerting SLA?
-
----
-
-## Prerequisites
-
-- **Kubernetes version:** 1.21 or later for the chaos infrastructure cluster.
-- **Label exists on at least one disk:** `DISK_VOLUME_LABEL` (formatted `key:value`) matches at least one non-boot disk in `ZONES`/`GCP_PROJECT_ID`.
-- **Disks are non-boot:** Boot disks are rejected by design.
-- **GCP credentials available:** Either a Google service account JSON key uploaded as a **File Secret in Harness Secret Manager** (referenced via `GCP_AUTHENTICATION_SECRET`) or Workload Identity bound to the chaos infrastructure service account.
-- **IAM permissions granted:** The service account includes the permissions listed below.
-
----
-
-## Supported environments
-
-| Platform | Support status |
-| --- | --- |
-| Compute Engine VMs with non-boot persistent disks | Supported |
-| Regional persistent disks | Supported |
-| Local SSD | Not supported (cannot be detached) |
-| Boot disks | Not supported |
-| Multi-zone targeting in a single run | Supported via comma-separated `ZONES` |
-
----
-
-## Permissions required
-
-The Google service account used by the chaos pod needs the following IAM permissions on the target project.
-
-```json
-{
-  "permissions": [
-    "compute.disks.get",
-    "compute.disks.list",
-    "compute.instances.get",
-    "compute.instances.attachDisk",
-    "compute.instances.detachDisk"
-  ]
-}
+### Prerequisites
+- Kubernetes > 1.16
+- Service account should have editor access (or owner access) to the GCP project.
+- Target disk volume should not be a boot disk of any VM instance.
+- Disk volumes with the target label should be attached to their respective instances.
+- Kubernetes secret should have the GCP service account credentials in the default namespace. Refer [generate the necessary credentials in order to authenticate your identity with the Google Cloud Platform (GCP)](/docs/chaos-engineering/faults/chaos-faults/gcp/security-configurations/prepare-secret-for-gcp) docs for more information.
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cloud-secret
+type: Opaque
+stringData:
+  type: "service_account"
+  project_id: "<PROJECT_ID>"
+  private_key_id: "<PRIVATE_KEY_ID>"
+  private_key: <PRIVATE_KEY>
+  client_email: "<CLIENT_EMAIL>"
+  client_id: "<CLIENT_ID>"
+  auth_uri: "https://accounts.google.com/o/oauth2/auth"
+  token_uri: "https://oauth2.googleapis.com/token"
+  auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs"
+  client_x509_cert_url: "<CLIENT_X509_CERT_URL>"
+  universe_domain: "googleapis.com"
 ```
 
-Granting `roles/compute.instanceAdmin.v1` is the simplest setup.
+### Mandatory tunables
+   <table>
+      <tr>
+        <th> Tunable </th>
+        <th> Description </th>
+        <th> Notes </th>
+      </tr>
+      <tr>
+        <td> GCP_PROJECT_ID </td>
+        <td> Id of the GCP project containing the disk volumes. </td>
+        <td> All the target disk volumes should belong to a single GCP project. For more information, go to <a href="#detach-volumes-by-label"> GCP project ID.</a></td>
+      </tr>
+      <tr>
+        <td> DISK_VOLUME_LABEL </td>
+        <td>Label of the target non-boot persistent disk volume. </td>
+        <td> This value is provided as a <code>key:value</code> pair or as a <code>key</code> if the corresponding value is empty. For example, <code>disk:target-disk</code>. For more information, go to <a href="#detach-volumes-by-label">detach volumes by label.</a></td>
+      </tr>
+      <tr>
+        <td> ZONES </td>
+        <td> The zone of the target disk volumes. </td>
+        <td> Only one zone is provided, which indicates that all target disks reside in the same zone. For more information, go to <a href="#detach-volumes-by-label">zones.</a></td>
+      </tr>
+    </table>
 
----
+### Optional tunables
+   <table>
+      <tr>
+        <th> Tunable </th>
+        <th> Description </th>
+        <th> Notes </th>
+      </tr>
+      <tr>
+        <td> TOTAL_CHAOS_DURATION </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos.</a></td>
+      </tr>
+       <tr>
+        <td> CHAOS_INTERVAL </td>
+        <td> Time interval between two successive chaos iterations (in seconds). </td>
+        <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#chaos-interval">chaos interval.</a></td>
+      </tr>
+      <tr>
+        <td> DISK_AFFECTED_PERC </td>
+        <td> Percentage of total disks that are filtered using the target label (specify numeric values only). </td>
+        <td> Defaults to 0 (that corresponds to 1 disk).</td>
+      </tr>
+      <tr>
+        <td> SEQUENCE </td>
+        <td> Sequence of chaos execution for multiple target disks. </td>
+        <td> Defaults to parallel. It supports serial sequence as well. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution. </a></td>
+      </tr>
+      <tr>
+        <td> RAMP_TIME </td>
+        <td> Period to wait before and after injecting chaos (in seconds).</td>
+        <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time. </a></td>
+      </tr>
+      <tr>
+      <td>DEFAULT_HEALTH_CHECK</td>
+      <td>Determines if you wish to run the default health check which is present inside the fault. </td>
+      <td> Default: 'true'. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
+      </tr>
+    </table>
 
-## Authentication
+### IAM permissions
 
-The fault supports two credential delivery models.
+Listed below are the IAM permissions leveraged by the fault:
+- `compute.disks.get`
+- `compute.instances.attachDisk`
+- `compute.instances.detachDisk`
+- `compute.disks.list`
+- `compute.instances.get`
 
-| Method | When to use it | How to configure |
-| --- | --- | --- |
-| Harness Secret Manager File Secret | Chaos infrastructure runs outside GKE, or you want explicit static credentials | Upload the GCP service account JSON key as a **File Secret** in Harness Secret Manager and reference its identifier via `GCP_AUTHENTICATION_SECRET` |
-| Workload Identity | Chaos infrastructure runs on GKE with Workload Identity enabled | Bind a Google service account to the chaos infra Kubernetes service account; no tunable changes required |
+### Detach volumes by label
 
-Go to [Creating secrets for GCP experiments](/docs/chaos-engineering/faults/chaos-faults/gcp/security-configurations/prepare-secret-for-gcp) to read the secret format.
+The label of disk volumes subject to disk loss. It detaches all the disks with the `DISK_VOLUME_LABEL` label in the `ZONES` zone within the `GCP_PROJECT_ID` project. It re-attaches the disk volume after waiting for the duration specified by `TOTAL_CHAOS_DURATION` environment variable.
 
----
+**GCP project ID**: The project ID which is a unique identifier for a GCP project. Tune it by using the `GCP_PROJECT_ID` environment variable.
 
-## Fault tunables
+**Zones**: The zone of the disk volumes subject to the fault. Tune it by using the `ZONES` environment variable.
 
-Configure the following fault parameters when you add GCP VM disk loss by label to an experiment in Chaos Studio. Defaults are shown for reference.
+**Note:** The `DISK_VOLUME_LABEL` accepts only one label and `ZONES` accepts only one zone name. Therefore, all the disks must reside in the same zone.
 
-**Required parameters**
+The following YAML snippet illustrates the use of this environment variable:
 
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `GCP_PROJECT_ID` | ID of the GCP project that contains the disks. | (required) |
-| `ZONES` | Comma-separated list of zones to scan for the label. | (required) |
-| `DISK_VOLUME_LABEL` | Label that selects the target disks (format `key:value`, for example `tier:data`). | (required) |
-
-**Chaos parameters**
-
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `TOTAL_CHAOS_DURATION` | Total duration of the fault in seconds. The disks stay detached for this period. | `30` |
-| `CHAOS_INTERVAL` | Delay in seconds between successive iterations when running for more than one cycle. | `30` |
-| `DISK_AFFECTED_PERCENTAGE` | Percentage of label-matching disks to detach (0-100). Empty defaults to all matches. | `""` |
-| `SEQUENCE` | Order in which selected disks are detached: `parallel` or `serial`. | `parallel` |
-| `RAMP_TIME` | Wait period in seconds before and after the fault. Go to [ramp time](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time) to read how it is applied. | `0` |
-
-**Authentication**
-
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `GCP_AUTHENTICATION_SECRET` | Identifier of the **File Secret in Harness Secret Manager** that contains the GCP service account JSON key. Not required when using Workload Identity. | `""` |
-
-Tunables that apply to every fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
-
----
-
-## Fault execution in brief
-
-Lists non-boot Compute Engine disks across `ZONES` (in `GCP_PROJECT_ID`) that match `DISK_VOLUME_LABEL`, picks `DISK_AFFECTED_PERCENTAGE` of them, calls `instances.detachDisk` for each on its attached VM, waits for `TOTAL_CHAOS_DURATION`, then calls `instances.attachDisk` to reattach with the same device path.
-
----
-
-## Expected behavior during fault execution
-
-- Each affected VM loses the matching disk for the duration; the device entry disappears under `/dev/disk/by-id/`.
-- Filesystems mounted from the detached disk go into an I/O error state; processes accessing them block or return `EIO`.
-- After the duration ends, the disks reattach with the same device name.
-- Cloud Monitoring metrics (`disk/read_ops_count`, `disk/write_ops_count`) drop to zero on the affected devices for the duration.
-
-:::info When the fault ends
-The chaos pod reattaches each disk to its original VM on the same device path. Whether the filesystem remounts automatically depends on fstab options and application I/O retry behavior.
-:::
-
-### Signals to watch
-
-Attach [resilience probes](/docs/resilience-testing/chaos-testing/probes) to assert each layer:
-
-- **Disk count by label:** Use a [command probe](/docs/resilience-testing/chaos-testing/probes/command-probe) running `gcloud compute disks list --filter='labels.<key>=<value>' --format='value(users)'` and assert some had an empty `users` field during the chaos window.
-- **Application I/O errors:** Use a [Prometheus probe](/docs/resilience-testing/chaos-testing/probes/apm-probes) on application error counters.
-- **End-to-end availability:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) on a user-visible endpoint that exercises a write path.
-
----
-
-## Verify the fault execution effect
-
-1. **List affected disks.**
-
-   ```bash
-   gcloud compute disks list \
-     --filter="labels.<key>=<value>" \
-     --format="table(name,zone,users)"
-   ```
-
-   You should see empty `users` rows during the chaos window and populated `users` rows afterwards.
-
-2. **Inspect Cloud Monitoring.**
-
-   Use the Cloud Console to confirm `disk/read_ops_count` dropped on the affected devices.
-
-3. **Inspect audit logs.**
-
-   ```bash
-   gcloud logging read 'protoPayload.methodName=v1.compute.instances.detachDisk' --limit=20
-   ```
-
----
-
-## Recovery and cleanup
-
-- **End of duration:** The chaos pod calls `instances.attachDisk` to reattach every detached disk.
-- **Abort the experiment:** Stopping the experiment from Chaos Studio also reattaches the disks.
-- **Manual recovery:** Run `gcloud compute instances attach-disk <vm-name> --disk=<disk-name> --device-name=<device-name> --zone=<zone>` for any disk that stayed detached.
-- **Workload recovery:** Filesystems may need `mount -a` or an application restart depending on retry behavior.
-
----
-
-## Limitations
-
-- **Non-boot only:** Boot disks are not supported.
-- **Same-project targeting:** A single experiment targets one `GCP_PROJECT_ID`.
-- **Label scoped to listed zones:** Disks in zones not listed in `ZONES` are not considered.
-- **Percentage rounding:** `DISK_AFFECTED_PERCENTAGE` rounds down; empty selects all matches.
-- **No mid-flight retarget:** Label or percentage cannot be changed during the chaos window.
-
----
-
-## Troubleshooting
-
-<Troubleshoot
-  issue="GCP VM disk loss by label fails with no matching disks in Harness Chaos Engineering"
-  mode="docs"
-  fallback="Confirm DISK_VOLUME_LABEL is formatted key:value and the zones in ZONES contain non-boot disks with that label. List them with gcloud compute disks list --filter='labels.<key>=<value>' --format='table(name,zone,users)'."
-/>
-
-<Troubleshoot
-  issue="GCP VM disk loss by label fails with PermissionDenied"
-  mode="docs"
-  fallback="The service account used by the chaos pod is missing compute.disks.list, compute.instances.attachDisk, or compute.instances.detachDisk. Grant roles/compute.instanceAdmin.v1 on the target project."
-/>
-
-<Troubleshoot
-  issue="Disks reattached but filesystems did not remount"
-  mode="docs"
-  fallback="The filesystem may not auto-remount depending on fstab options. SSH into each affected VM and run sudo mount -a (or remount the specific device). For application-level recovery, restart the dependent service."
-/>
-
----
-
-## Related faults
-
-- [GCP VM disk loss](/docs/chaos-engineering/faults/chaos-faults/gcp/gcp-vm-disk-loss): Detach named disks instead of label-selected ones.
-- [GCP VM instance stop by label](/docs/chaos-engineering/faults/chaos-faults/gcp/gcp-vm-instance-stop-by-label): Stop the VMs instead of detaching disks.
+[embedmd]:# (./static/manifests/gcp-vm-disk-loss-by-label/gcp-disk-loss.yaml yaml)
+```yaml
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: gcp-vm-disk-loss-by-label
+    spec:
+      components:
+        env:
+        - name: DISK_VOLUME_LABEL
+          value: 'disk:target-disk'
+        - name: ZONES
+          value: 'us-east1-b'
+        - name: GCP_PROJECT_ID
+          value: 'my-project-4513'
+        - name: TOTAL_CHAOS_DURATION
+          VALUE: '60'
+```

@@ -9,176 +9,6 @@ import styles from "./styles.module.css";
 
 type Props = WrapperProps<typeof NavbarType>;
 
-const docDropdownItems = [
-  // Unlisted
-  { to: "/docs/platform", label: "Platform", icon: "/img/icon_platform.svg" },
-  {
-    to: "/docs/code-repository",
-    label: "Code Repository",
-    icon: "/img/icon_code.svg",
-  },
-  // DevOps & Automation
-  { type: "header", label: "DevOps & Automation" },
-  {
-    to: "/docs/continuous-delivery",
-    label: "Continuous Delivery & GitOps",
-    icon: "/img/icon_cd.svg",
-  },
-  {
-    to: "/docs/release-orchestration",
-    label: "Release Orchestration",
-    icon: "/img/icon-rm.svg",
-  },
-  {
-    to: "/docs/continuous-integration",
-    label: "Continuous Integration",
-    icon: "/img/icon_ci.svg",
-  },
-  {
-    to: "/docs/internal-developer-portal",
-    label: "Internal Developer Portal",
-    icon: "/img/icon_idp.svg",
-  },
-  {
-    to: "/docs/infrastructure-as-code-management",
-    label: "Infrastructure as Code Management",
-    icon: "/img/icon_iacm.svg",
-  },
-  {
-    to: "/docs/database-devops",
-    label: "Database DevOps",
-    icon: "/img/icon_dbdevops.svg",
-  },
-  {
-    to: "/docs/artifact-registry",
-    label: "Artifact Registry",
-    icon: "/img/icon-ar.svg",
-  },
-  // Cloud Development Environments hidden from navigation (HDH-542)
-  // {
-  //   to: "/docs/cloud-development-environments",
-  //   label: "Cloud Development Environments",
-  //   icon: "/img/icon-cde.svg",
-  // },
-  // Testing & Resilience
-  { type: "header", label: "Testing & Resilience" },
-  {
-    to: "/docs/feature-management-experimentation",
-    label: "Feature Management & Experimentation",
-    icon: "/img/icon_fme.svg",
-  },
-  {
-    to: "/docs/feature-flags",
-    label: "Feature Flags",
-    icon: "/img/icon_ff.svg",
-  },
-  {
-    to: "/docs/resilience-testing",
-    label: "Resilience Testing",
-    icon: "/img/icon_ce.svg",
-  },
-  // {
-  //   to: "/docs/chaos-engineering",
-  //   label: "Chaos Engineering",
-  //   icon: "/img/icon_ce.svg",
-  // },
-  {
-    to: "/docs/ai-test-automation",
-    label: "AI Test Automation",
-    icon: "/img/logo-ata.svg",
-  },
-  { to: "/docs/ai-sre", label: "AI SRE", icon: "/img/icon-ai-sre.svg" },
-  {
-    to: "/docs/service-reliability-management",
-    label: "Service Reliability Management",
-    icon: "/img/icon_srm.svg",
-  },
-  // Security & Compliance
-  { type: "header", label: "Security & Compliance" },
-  {
-    to: "/docs/ai-security",
-    label: "AI Security",
-    icon: "/img/icon-ai-security.svg",
-  },
-  {
-    to: "/docs/appsec-discovery",
-    label: "API & Application Discovery",
-    icon: "/img/icon-api-security-posture.svg",
-  },
-  {
-    to: "/docs/appsec-runtime-protection",
-    label: "Application & API Runtime Protection",
-    icon: "/img/icon-api-runtime-protection.svg",
-  },
-  {
-    to: "/docs/appsec-security-testing",
-    label: "Application & API Security Testing",
-    icon: "/img/icon-api-security-testing.svg",
-  },
-  {
-    to: "/docs/security-testing-orchestration",
-    label: "Security Testing Orchestration",
-    icon: "/img/icon_sto.svg",
-  },
-  {
-    to: "/docs/software-supply-chain-assurance",
-    label: "Supply Chain Security",
-    icon: "/img/icon_ssca.svg",
-  },
-  {
-    to: "/docs/sast-and-sca",
-    label: "SAST and SCA",
-    icon: "/img/icon-qwietai.svg",
-  },
-  // Cost & Optimization
-  { type: "header", label: "Cost & Optimization" },
-  {
-    to: "/docs/cloud-cost-management",
-    label: "Cloud & AI Cost Management",
-    icon: "/img/icon_ccm.svg",
-  },
-  {
-    to: "/docs/software-engineering-insights",
-    label: "AI DLC Insights",
-    icon: "/img/icon_sei.svg",
-  },
-  // Resources & Support
-  { type: "header", label: "Resources & Support" },
-  {
-    to: "/university",
-    label: "Harness University",
-    icon: "/img/university-icon.svg",
-  },
-  {
-    to: "/docs/harness-solutions-factory",
-    label: "Harness Solutions Factory",
-    icon: "/img/icon-hsf.svg",
-  },
-  {
-    to: "/glossary",
-    label: "Harness Glossary",
-    icon: "/img/icon_release_notes.svg",
-  },
-  {
-    to: "/docs/self-managed-enterprise-edition",
-    label: "Self-Managed Enterprise Edition",
-  },
-  { to: "/docs/open-source", label: "Open Source" },
-  { to: "/docs/faqs", label: "FAQs" },
-  { to: "/docs/troubleshooting", label: "Troubleshooting" },
-  { to: "/docs/harness-cloud-operations", label: "Harness Cloud Operations" },
-];
-
-const secondaryNavItems = [
-  { to: "/", label: "Home" },
-  { to: "/docs", label: "Documentation", isDropdown: true },
-  { to: "https://apidocs.harness.io/", label: "API Reference", external: true },
-  { to: "/roadmap", label: "Roadmap" },
-  { to: "/release-notes", label: "Release Notes"},
-  { to: "/university", label: "University" },
-  { to: "/glossary", label: "Glossary" },
-];
-
 export default function NavbarWrapper(props: Props): ReactNode {
   const location = useLocation();
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -186,17 +16,38 @@ export default function NavbarWrapper(props: Props): ReactNode {
   const [scrollProgress, setScrollProgress] = useState(0);
   const { colorMode } = useColorMode();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      // Fade navbar gradient to white over 400px of scroll (matches page gradient fade)
-      const progress = Math.min(window.scrollY / 400, 1);
-      setScrollProgress(progress);
-    };
+  const is3kDocs = location.pathname.startsWith("/3k-docs");
+  const isLegacyDocs = location.pathname.startsWith("/docs");
 
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  // Persist the last-visited docs version so links stay correct on non-docs pages
+  const [docsVersionPref, setDocsVersionPref] = useState<"3k-docs" | "docs">(
+    () => {
+      if (typeof window !== "undefined") {
+        return (localStorage.getItem("harnessDocsVersion") as "3k-docs" | "docs") ?? "docs";
+      }
+      return "docs";
+    }
+  );
+
+  useEffect(() => {
+    if (is3kDocs) {
+      setDocsVersionPref("3k-docs");
+      localStorage.setItem("harnessDocsVersion", "3k-docs");
+    } else if (isLegacyDocs) {
+      setDocsVersionPref("docs");
+      localStorage.setItem("harnessDocsVersion", "docs");
+    }
+  }, [is3kDocs, isLegacyDocs]);
+
+  // On docs pages use the actual path; everywhere else fall back to the stored preference
+  const docsBase = is3kDocs ? "/3k-docs" : isLegacyDocs ? "/docs" : `/${docsVersionPref}`;
+
+  // True when we're showing (or linking to) the legacy /docs tree
+  const isLegacyMode = docsBase === "/docs";
+
+  // Resolve a dropdown item's href: use legacyTo when in legacy mode, otherwise to
+  const resolveLink = (to: string, legacyTo?: string) =>
+    isLegacyMode && legacyTo ? legacyTo : to;
 
   const isActive = (path: string) => {
     const current = location.pathname;
@@ -218,9 +69,23 @@ export default function NavbarWrapper(props: Props): ReactNode {
     return isChildRoute;
   };
 
-  /* Documentation stays active (underlined/bold) when viewing API Reference */
+  /* Documentation stays active (underlined/bold) when viewing API Reference or either docs root */
   const isDocumentationActive =
-    location.pathname.startsWith("/docs") || location.pathname.startsWith("/api-reference");
+    location.pathname.startsWith("/docs") ||
+    location.pathname.startsWith("/3k-docs") ||
+    location.pathname.startsWith("/api-reference");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Fade navbar gradient to white over 400px of scroll (matches page gradient fade)
+      const progress = Math.min(window.scrollY / 400, 1);
+      setScrollProgress(progress);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Blend colors toward white based on scroll
   const blendToWhite = (r: number, g: number, b: number) => {
@@ -229,7 +94,6 @@ export default function NavbarWrapper(props: Props): ReactNode {
     )}, ${Math.round(b + (255 - b) * scrollProgress)})`;
   };
 
-  // Light mode: gradient that fades to white on scroll, dark mode uses theme background
   const gradientStyle =
     colorMode === "light"
       ? {
@@ -241,9 +105,71 @@ export default function NavbarWrapper(props: Props): ReactNode {
         }
       : {};
 
+  const docDropdownItems = [
+    { to: `${docsBase}/ai`, legacyTo: "/docs/category/harness-ai", label: "Harness AI", icon: "/img/home/ai.svg" },
+    { to: `${docsBase}/platform`, label: "Harness Platform", icon: "/img/home/platform.svg" },
+    { to: `${docsBase}/code-repository`, label: "Code Repository", icon: "/img/home/code.svg" },
+
+    { type: "header", label: "DevOps" },
+    { to: `${docsBase}/continuous-delivery`, label: "Continuous Deployment", icon: "/img/home/deployment.svg" },
+    { to: `${docsBase}/continuous-integration`, label: "Continuous Integration", icon: "/img/home/build.svg" },
+    { to: `${docsBase}/feature-management-experimentation`, label: "Feature Releases", icon: "/img/home/feature.svg" },
+    { to: `${docsBase}/infrastructure-as-code-management`, label: "Infrastructure Automation", icon: "/img/home/infrastructure.svg" },
+    { to: `${docsBase}/database-devops`, label: "Database DevOps", icon: "/img/home/database.svg" },
+    { to: `${docsBase}/artifact-registry`, label: "Artifact Registry", icon: "/img/home/artifact.svg" },
+    { to: `${docsBase}/release-orchestration`, label: "Release Orchestration", icon: "/img/home/release.svg" },
+
+    { type: "header", label: "Testing" },
+    { to: `${docsBase}/ai-test-automation`, label: "AI Test Automation", icon: "/img/home/ui-test.svg" },
+    { to: `${docsBase}/resilience-testing`, label: "Resilience Testing", icon: "/img/home/resilience-test.svg" },
+
+    // Application Security Testing
+    { type: "header", label: "Application Security Testing", className: "dropdown-subheader" },
+    { to: `${docsBase}/appsec-security-testing`, label: "Overview", icon: "/img/home/security-test.svg" },
+    { to: `${docsBase}/sast-and-sca`, label: "SAST & SCA", icon: "/img/home/qwiet.svg" },
+    { to: `${docsBase}/software-supply-chain-assurance`, label: "Supply Chain Security", icon: "/img/home/supply-chain.svg" },
+    { to: `${docsBase}/security-testing-orchestration`, label: "Security Testing Orchestration", icon: "/img/home/security-test.svg" },
+    
+    // Web App & API Protection
+    { type: "header", label: "Web Application & API Protection", className: "dropdown-subheader" },
+    { to: `${docsBase}/appsec-runtime-protection`, label: "Overview", icon: "/img/home/runtime.svg" },
+    { to: `${docsBase}/appsec-discovery`, label: "API Discovery", icon: "/img/home/security-test.svg" },
+    
+    // AI Security
+    { type: "header", label: "AI Security", className: "dropdown-subheader" },
+    { to: `${docsBase}/ai-security`, label: "AI Security", icon: "/img/home/security-test.svg" },
+
+    { type: "header", label: "Operations" },
+    { to: `${docsBase}/cloud-cost-management`, label: "AI Cost Management", icon: "/img/home/cloud-cost.svg" },
+    { to: `${docsBase}/software-engineering-insights`, label: "AI DLC Insights", icon: "/img/home/engineering-insights-classic.svg" },
+    { to: `${docsBase}/ai-sre`, label: "AI SRE", icon: "/img/home/incident.svg" },
+    { to: `${docsBase}/internal-developer-portal`, label: "Internal Developer Portal", icon: "/img/home/portal.svg" },
+
+    { type: "header", label: "Resources & Support" },
+    { to: `/university`, label: "Harness University", icon: "/img/home/university.svg" },
+    { to: `${docsBase}/harness-solutions-factory`, label: "Harness Solutions Factory", icon: "/img/home/harness.svg" },
+    { to: `/glossary`, label: "Harness Glossary", icon: "/img/icon_release_notes.svg" },
+    { to: `${docsBase}/self-managed-enterprise-edition`, label: "Self-Managed Enterprise Edition" },
+    { to: `${docsBase}/open-source`, label: "Open Source" },
+    { to: `${docsBase}/faqs`, label: "FAQs" },
+    { to: `${docsBase}/troubleshooting`, label: "Troubleshooting" },
+    { to: `${docsBase}/harness-cloud-operations`, label: "Harness Cloud Operations" },
+  ];
+
+  const secondaryNavItems = [
+    { to: "/", label: "Home" },
+    { to: `${docsBase}`, label: "Documentation", isDropdown: true },
+    { to: "https://apidocs.harness.io/", label: "API Reference", external: true },
+    { to: `/roadmap`, label: "Roadmap" },
+    { to: `/release-notes`, label: "Release Notes" },
+    { to: `/university`, label: "University" },
+    { to: `/glossary`, label: "Glossary" },
+  ];
+
   return (
     <div className={styles.navbarContainer} style={gradientStyle}>
       <Navbar {...props} />
+
       <nav className={styles.secondaryNav}>
         <div className={styles.secondaryNavInner}>
           {secondaryNavItems.map((item) =>
@@ -257,12 +183,13 @@ export default function NavbarWrapper(props: Props): ReactNode {
                 <Link
                   to={item.to}
                   className={`${styles.secondaryNavItem} ${
-                    item.to === "/docs" ? (isDocumentationActive ? styles.active : "") : isActive(item.to) ? styles.active : ""
+                    isDocumentationActive ? styles.active : ""
                   }`}
                 >
                   {item.label}
                   <span className={styles.dropdownArrow}>▾</span>
                 </Link>
+
                 {dropdownOpen && (
                   <div className={styles.dropdownMenu}>
                     {docDropdownItems.map((dropItem, idx) =>
@@ -273,15 +200,11 @@ export default function NavbarWrapper(props: Props): ReactNode {
                       ) : (
                         <Link
                           key={dropItem.to}
-                          to={dropItem.to}
+                          to={resolveLink(dropItem.to, dropItem.legacyTo)}
                           className={styles.dropdownItem}
                         >
                           {dropItem.icon && (
-                            <img
-                              src={dropItem.icon}
-                              alt=""
-                              className={styles.dropdownIcon}
-                            />
+                            <img src={dropItem.icon} alt="" className={styles.dropdownIcon} />
                           )}
                           {dropItem.label}
                         </Link>
@@ -290,7 +213,7 @@ export default function NavbarWrapper(props: Props): ReactNode {
                   </div>
                 )}
               </div>
-          ) : (
+            ) : (
               <Link
                 key={item.to}
                 to={item.to}

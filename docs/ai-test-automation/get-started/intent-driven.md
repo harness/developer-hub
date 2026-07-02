@@ -12,7 +12,6 @@ keywords:
   - AI Test Automation
 ---
 
-
 # AI-Powered Intent Testing
 
 Harness AI in the Test Automation redefines how tests are designed, executed, and maintained. Moving beyond static scripts, **AI-Powered Intent Testing** brings together Generative AI, agentic workflows, and adaptive test intelligence to automate end-to-end (E2E) testing in a way that mirrors real user intent.

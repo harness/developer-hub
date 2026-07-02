@@ -2,7 +2,6 @@
 title: Escalating a Case
 ---
 
-
 Case escalations can be a powerful tool to advise our Support Team of a change to the issue that was raised. The purpose of this ability is to allow customers to advise Support about certain changes
 To ensure that a consistent experience is provided to all customers, we ask that case escalations be used sporadically and only when they are **absolutely necessary** because of a one-off situation where there is a specific need/business use-case.  
 We ask that escalations be limited to the following reasons, and we would like to advise that the support team does reserve the right to decline any requests that may be raised, although we will give our best effort to meet most requests

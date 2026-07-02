@@ -1,0 +1,14 @@
+{
+    "label": "Scanner Configurations",
+    "position": 40,
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+       "type": "generated-index",
+       "title": "Scanner Configurations"
+    },
+    "customProps": {
+      "helpdocs_category_id": "m01pu2ubai"
+   }
+ }

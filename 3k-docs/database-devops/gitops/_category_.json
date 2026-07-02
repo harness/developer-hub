@@ -1,0 +1,12 @@
+{
+    "label":"GitOps as Services",
+    "collapsible":"true",
+    "collapsed":"true",
+    "link":{
+       "type":"generated-index",
+       "title":"GitOps as Services"
+    },
+    "customProps":{
+      "description": "Learn how to use GitOps as a service in Harness Database DevOps to manage database changes and deployments through Git workflows."
+    }
+ }

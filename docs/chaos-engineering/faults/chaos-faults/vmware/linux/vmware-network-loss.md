@@ -1,197 +1,331 @@
 ---
 id: vmware-network-loss
 title: VMware network loss
-sidebar_label: VMware Network Loss
-description: Drop a configurable percentage of egress packets on a Linux VMware VM so you can test how the workload behaves when packet loss spikes.
-keywords:
-  - chaos engineering
-  - vmware network loss
-  - vmware fault
-  - packet loss
-tags:
-  - chaos-engineering
-  - vmware-faults
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/linux/vmware-network-loss
-- /docs/chaos-engineering/chaos-faults/vmware/linux/vmware-network-loss
+- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-network-loss
+- /docs/chaos-engineering/chaos-faults/vmware/vmware-network-loss
 ---
+VMware network loss injects network packet loss from the VMware VM(s) into the application (or service). This results in flaky access to the application. It checks the performance of the application (or process) running on the VMware VM(s).
 
-import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
+![VMware Network Loss](./static/images/vmware-network-loss.png)
 
-VMware network loss is a VMware chaos fault that drops `NETWORK_PACKET_LOSS_PERCENTAGE` percent of egress packets on the network interface `NETWORK_INTERFACE` of the Linux VM `VM_NAME` for `TOTAL_CHAOS_DURATION` seconds, then removes the loss rule. You can scope the impact to specific destinations via `DESTINATION_IPS` or `DESTINATION_HOSTS` and to specific ports via `SOURCE_PORTS`/`DESTINATION_PORTS`. The fault uses VMware Tools (Guest Operations API) to apply the rule inside the guest as `VM_USER_NAME`.
-
-Use this fault to test how a workload on a VMware-hosted VM behaves when packet loss spikes: whether TCP retransmits stay within the SLA, whether application-layer retries recover correctly, and whether monitoring detects the regression within the alerting SLA.
-
-:::info Run your first experiment
-If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
+:::info note
+HCE doesn't support injecting VMWare Windows faults on Bare metal server.
 :::
-
----
 
 ## Use cases
+VMware network loss:
+- Simulates issues within the VM network (or microservice) communication across services in different hosts.
+- Determines the impact of degradation while accessing a microservice.
+- Limits the impact (blast radius) to the traffic that you wish to test by specifying the IP addresses, if the VM stalls or gets corrupted while waiting endlessly for a packet.
+- Simulates degraded network with varied percentages of dropped packets between microservices.
+- Simulates loss of access to specific third party (or dependent) services (or components).
+- Simulates blackhole against traffic to a given availability zone, that is, failure simulation of availability zones.
+- Simulates network partitions (split-brain) between peer replicas for a stateful application.
 
-Run this fault when you want to answer concrete questions like:
+### Prerequisites
+- Kubernetes > 1.16 is required to execute this fault.
+- Appropriate vCenter permissions should be provided to start and stop the VMs.
+- The VM should be in a healthy state before and after injecting chaos.
+- Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. VM credentials can be passed as secrets or as a `ChaosEngine` environment variable. Below is a sample secret file:
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: vcenter-secret
+  namespace: litmus
+type: Opaque
+stringData:
+    VCENTERSERVER: XXXXXXXXXXX
+    VCENTERUSER: XXXXXXXXXXXXX
+    VCENTERPASS: XXXXXXXXXXXXX
+```
 
-- **Lossy network:** When packet loss spikes, do TCP retransmits and application retries recover the request inside the SLA?
-- **Heartbeat fragility:** Does cluster membership stay healthy when heartbeats lose a percentage of packets?
-- **Real-time workloads:** Does media or voice quality degrade gracefully under loss?
+### Mandatory tunables
 
----
+   <table>
+      <tr>
+        <th> Tunable </th>
+        <th> Description </th>
+        <th> Notes </th>
+      </tr>
+      <tr>
+        <td> VM_NAMES </td>
+        <td> Names of the target VMs as comma-separated values.</td>
+        <td> For example, <code> vm-1,vm-2</code>. </td>
+      </tr>
+      <tr>
+        <td> VM_USER_NAME </td>
+        <td> Username of the target VM(s).</td>
+        <td> Multiple usernames can be provided as comma-separated values which corresponds to more than one VM under chaos. It is used to run the govc command. </td>
+      </tr>
+      <tr>
+        <td> VM_PASSWORD </td>
+        <td> Password for the target VM(s).</td>
+        <td> It is used to run the govc command. </td>
+      </tr>
+    </table>
 
-## Prerequisites
+### Optional tunables
 
-- **Kubernetes version:** 1.21 or later for the chaos infrastructure cluster.
-- **VMware Tools running on the guest:** Verify with `vmware-toolbox-cmd -v`.
-- **Linux `tc` (iproute2) installed inside the guest:** Go to [VMware Linux binary installation](/docs/chaos-engineering/faults/chaos-faults/vmware/linux/binary-installation).
-- **Sudo for `tc`:** `VM_USER_NAME` can run `tc qdisc` (typically requires `sudo` or `CAP_NET_ADMIN`).
-- **vCenter chaos role:** `GOVC_USERNAME` is mapped to the chaos role per [VMware permissions](/docs/chaos-engineering/faults/chaos-faults/vmware/permissions).
+   <table>
+      <tr>
+        <th> Tunable </th>
+        <th> Description </th>
+        <th> Notes </th>
+      </tr>
+      <tr>
+        <td> TOTAL_CHAOS_DURATION </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
+      </tr>
+      <tr>
+        <td> CHAOS_INTERVAL </td>
+        <td> Time interval between two successive instance terminations (in seconds). </td>
+        <td> Default: 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval. </a></td>
+      </tr>
+      <tr>
+        <td> NETWORK_PACKET_LOSS_PERCENTAGE </td>
+        <td> Packets lost during transmission (in percent).</td>
+        <td> Default: 100%. For more information, go to <a href="#network-packet-loss"> network packet loss. </a></td>
+      </tr>
+      <tr>
+        <td> DESTINATION_IPS </td>
+        <td> IP addresses of the services or pods whose accessibility you want to affect. You can also specify a CIDR block. </td>
+        <td> Comma-separated IPs (or CIDRs) can be provided. If it has not been provided, network chaos is induced on all IPs (or destinations). For more information, go to <a href="#run-with-destination-ips-and-destination-hosts"> run with destination IPs.</a></td>
+      </tr>
+      <tr>
+        <td> DESTINATION_HOSTS </td>
+        <td> DNS names (or FQDN names) of the services whose accessibility is affected. </td>
+        <td> If it has not been provided, network chaos is induced on all IPs (or destinations). For more information, go to <a href="#run-with-destination-ips-and-destination-hosts"> run with destination hosts. </a></td>
+      </tr>
+       <tr>
+        <td> SOURCE_PORTS </td>
+        <td> Comma-separated ports of the target application, the accessibility to which is impacted. If not provided, it will induce network chaos for all ports. For Example: <code>5000,8080</code> </td>
+        <td> Alternatively, the source ports that should be exempted from the chaos can also be provided by prepending a <code>!</code> before the list of ports. For example: <code>!5000,8080</code>. For more information, go to <a href="#source-and-destination-ports"> source ports. </a></td>
+      </tr>
+      <tr>
+        <td> DESTINATION_PORTS </td>
+        <td> Ports of the destination services or pods or the CIDR blocks(range of IPs) whose accessibility is impacted. If not provided, network chaos is induced on all ports. For example, <code>5000,8080</code>. </td>
+        <td> Alternatively, the destination ports to be exempted from the chaos can be provided by prepending a <code>!</code> to the list of ports. For example, <code>!5000,8080</code>. For more information, go to <a href="#source-and-destination-ports"> destination ports. </a></td>
+      </tr>
+      <tr>
+        <td> SEQUENCE </td>
+        <td> Sequence of chaos execution for multiple instances. </td>
+        <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
+      </tr>
+      <tr>
+        <td> RAMP_TIME </td>
+        <td> Period to wait before and after injecting chaos (in seconds). </td>
+        <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
+      </tr>
+      <tr>
+      <td>DEFAULT_HEALTH_CHECK</td>
+      <td>Determines if you wish to run the default health check which is present inside the fault. </td>
+      <td> Default: 'true'. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
+      </tr>
+    </table>
 
----
+### Secret tunables
+   <table>
+      <tr>
+        <th> Tunable </th>
+        <th> Description </th>
+        <th> Notes </th>
+      </tr>
+      <tr>
+        <td> GOVC_URL </td>
+        <td> vCenter server URL used to perform API calls using the govc command. </td>
+        <td> It is derived from a secret. </td>
+      </tr>
+        <tr>
+        <td> GOVC_USERNAME </td>
+        <td> Username of the vCenter server used for authentication purposes. </td>
+        <td> It can be set up using a secret. </td>
+      </tr>
+      <tr>
+        <td> GOVC_PASSWORD </td>
+        <td> Password of the vCenter server used for authentication purposes. </td>
+        <td> It can be set up using a secret. </td>
+      </tr>
+      <tr>
+        <td> GOVC_INSECURE </td>
+        <td> Runs the govc command in insecure mode. It is set to <code>true</code>. </td>
+        <td> It can be set up using a secret. </td>
+      </tr>
+     </table>
 
-## Supported environments
-
-| Platform | Support status |
-| --- | --- |
-| Linux VMs hosted on vSphere / vCenter (any distro with VMware Tools and `tc`) | Supported |
-| Windows VMs | Not supported (use [VMware Windows network loss](/docs/chaos-engineering/faults/chaos-faults/windows/windows-network-loss)) |
-
----
-
-## Permissions required
-
-**On vCenter.** Map `GOVC_USERNAME` to the chaos role described in [VMware permissions](/docs/chaos-engineering/faults/chaos-faults/vmware/permissions). The role needs Guest Operations (Program execution, Modifications, Queries).
-
-**On the guest OS.** `VM_USER_NAME` must be able to run `tc qdisc` on `NETWORK_INTERFACE`.
-
----
-
-## Authentication
-
-| Layer | Tunables |
-| --- | --- |
-| vCenter | `GOVC_URL`, `GOVC_USERNAME`, `GOVC_PASSWORD`, `GOVC_INSECURE` |
-| Guest OS | `VM_USER_NAME`, `VM_PASSWORD` |
-
-Store each credential as a text secret in [Harness Secret Manager](/docs/platform/secrets/add-use-text-secrets) and reference the secret identifier when configuring the experiment.
-
----
-
-## Fault tunables
-
-**Required parameters**
-
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `VM_NAME` | Name of the target VM as it appears in vCenter. | (required) |
-| `VM_USER_NAME` | OS user account on the target VM. | (required) |
-| `VM_PASSWORD` | Password for `VM_USER_NAME`. | (required) |
-
-**Network chaos parameters**
-
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `NETWORK_INTERFACE` | Name of the interface to apply the loss rule to (for example `eth0`). | `eth0` |
-| `NETWORK_PACKET_LOSS_PERCENTAGE` | Percentage of egress packets to drop (0-100). | `100` |
-| `DESTINATION_IPS` | Comma-separated list of destination IPv4/IPv6/CIDR ranges to affect. Empty means all. | `""` |
-| `DESTINATION_HOSTS` | Comma-separated list of destination DNS names to affect. Resolved at fault start. | `""` |
-| `SOURCE_PORTS` | Comma-separated list of source ports to filter on. | `""` |
-| `DESTINATION_PORTS` | Comma-separated list of destination ports to filter on. | `""` |
-
-**Chaos parameters**
-
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `TOTAL_CHAOS_DURATION` | Total duration of the fault in seconds. | `30` |
-| `CHAOS_INTERVAL` | Delay in seconds between iterations. | `10` |
-| `SEQUENCE` | `parallel` or `serial`. | `parallel` |
-| `RAMP_TIME` | Wait period in seconds before and after the fault. | `0` |
-
-**vCenter authentication**
-
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `GOVC_URL` | vCenter server URL. | `""` |
-| `GOVC_USERNAME` | vCenter user mapped to the chaos role. | `""` |
-| `GOVC_PASSWORD` | Password for `GOVC_USERNAME`. | `""` |
-| `GOVC_INSECURE` | Skip SSL certificate verification when set to `true`. | `true` |
-
-Tunables that apply to every fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
-
----
-
-## Fault execution in brief
-
-Authenticates to vCenter, opens a Guest Operations session on `VM_NAME` as `VM_USER_NAME`, installs a queueing discipline on `NETWORK_INTERFACE` that drops `NETWORK_PACKET_LOSS_PERCENTAGE` percent of egress packets matching the destination/port filters for `TOTAL_CHAOS_DURATION` seconds, then removes the rule.
-
----
-
-## Expected behavior during fault execution
-
-- A configurable share of egress packets are dropped on `NETWORK_INTERFACE`.
-- TCP retransmits rise; throughput drops.
-- Application-layer error rates may rise; retry budgets may be consumed.
-- After the duration ends, the rule is removed and loss returns to baseline.
-
-:::info When the fault ends
-The chaos pod removes the `tc qdisc` rule from `NETWORK_INTERFACE`. Packet loss returns to baseline within seconds.
+:::tip
+If the environment variables `DESTINATION_HOSTS` or `DESTINATION_IPS` are left empty, the default behaviour is to target all hosts. To limit the impact on all the hosts, you can specify the IP addresses of the service (use commas to separate multiple values) or the DNS or the FQDN names of the services in `DESTINATION_HOSTS`.
 :::
 
-### Signals to watch
+### Network packet loss
 
-- **TCP retransmits:** Use a Prometheus probe on `node_netstat_Tcp_RetransSegs`.
-- **Application:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) and assert error budget is respected.
+Network packet loss (in percentage) injected to the VM. Tune it by using the `NETWORK_PACKET_LOSS_PERCENTAGE` environment variable.
 
----
+The following YAML snippet illustrates the use of this environment variable:
 
-## Verify the fault execution effect
+[embedmd]:# (./static/manifests/vmware-network-loss/network-packet-loss-percentage.yaml yaml)
+```yaml
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: VMware-engine
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: VMware-network-loss
+    spec:
+      components:
+        env:
+        # network packet loss percentage
+        - name: NETWORK_PACKET_LOSS_PERCENTAGE
+          value: '100'
+        - name: VM_NAME
+          value: 'vm-1,vm-2'
+        - name: VM_USER_NAME
+          value: 'ubuntu,debian'
+        - name: VM_PASSWORD
+          value: '123,123'
+```
 
-1. **Inspect the qdisc on the guest.**
+### Run with destination IPs and destination hosts
 
-   ```bash
-   sudo tc qdisc show dev eth0
-   ```
+IPs or hosts that interrupt traffic by default. Tune them by using the `DESTINATION_IPS` and `DESTINATION_HOSTS` environment variables, respectively.
 
-   Look for a `netem` rule with `loss <percentage>%`.
+`DESTINATION_IPS`: IP addresses of the services or the CIDR blocks (range of IPs) whose accessibility is impacted.
+`DESTINATION_HOSTS`: DNS names of the services whose accessibility is impacted.
 
-2. **Ping the target from outside the VM.**
+The following YAML snippet illustrates the use of this environment variable:
 
-   Packet loss percentage should match `NETWORK_PACKET_LOSS_PERCENTAGE` during the window.
+[embedmd]:# (./static/manifests/vmware-network-loss/destination-host-and-ip.yaml yaml)
+```yaml
+## it injects the chaos for the ingress/egress traffic for specific ips/hosts
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: VMware-engine
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: VMware-network-loss
+    spec:
+      components:
+        env:
+        # supports comma separated destination ips
+        - name: DESTINATION_IPS
+          value: '8.8.8.8,192.168.5.6'
+        # supports comma separated destination hosts
+        - name: DESTINATION_HOSTS
+          value: 'google.com'
+        - name: VM_NAME
+          value: 'vm-1,vm-2'
+        - name: VM_USER_NAME
+          value: 'ubuntu,debian'
+        - name: VM_PASSWORD
+          value: '123,123'
+```
 
----
+### Source and destination ports
 
-## Recovery and cleanup
+By default, the network experiments disrupt traffic for all the source and destination ports. Interrupt the specific port(s) using the `SOURCE_PORTS` and `DESTINATION_PORTS` environment variables, respectively.
 
-- **End of duration:** The chaos pod removes the rule.
-- **Abort:** Stopping the experiment also removes the rule.
-- **Manual recovery:** `sudo tc qdisc del dev <NETWORK_INTERFACE> root`.
+- `SOURCE_PORTS`: Ports of the target application whose accessibility is impacted.
+- `DESTINATION_PORTS`: Ports of the destination services or pods or the CIDR blocks(range of IPs) whose accessibility is impacted.
 
----
+The following YAML snippet illustrates the use of this environment variable:
 
-## Limitations
+[embedmd]:# (./static/manifests/vmware-network-loss/source-and-destination-ports.yaml yaml)
+```yaml
+# it inject the chaos for the ingress/egress traffic for specific ports
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: VMware-engine
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: vmware-network-loss
+    spec:
+      components:
+        env:
+        # supports comma separated source ports
+        - name: SOURCE_PORTS
+          value: '80'
+        # supports comma separated destination ports
+        - name: DESTINATION_PORTS
+          value: '8080,9000'
+        - name: TOTAL_CHAOS_DURATION
+          value: '60'
+```
 
-- **Egress only:** The rule affects egress packets only.
-- **Single interface per run:** Repeat the fault for additional interfaces.
-- **`tc` required:** Without `tc` and netem, the fault cannot run.
+### Ignore source and destination ports
 
----
+By default, the network experiments disrupt traffic for all the source and destination ports. Ignore the specific ports using the `SOURCE_PORTS` and `DESTINATION_PORTS` environment variables, respectively.
 
-## Troubleshooting
+- `SOURCE_PORTS`: Source ports that are not subject to chaos as comma-separated values preceded by `!`.
+- `DESTINATION_PORTS`: Destination ports that are not subject to chaos as comma-separated values preceded by `!`.
 
-<Troubleshoot
-  issue="VMware network loss has no effect in Harness Chaos Engineering"
-  mode="docs"
-  fallback="Verify NETWORK_INTERFACE matches the active interface (ip a). Verify VM_USER_NAME can run tc with sudo. Verify DESTINATION_IPS or DESTINATION_HOSTS match the traffic you are measuring."
-/>
+The following YAML snippet illustrates the use of this environment variable:
 
-<Troubleshoot
-  issue="tc qdisc rule left behind after experiment in HCE"
-  mode="docs"
-  fallback="Run sudo tc qdisc del dev <NETWORK_INTERFACE> root inside the guest to remove lingering rules."
-/>
+[embedmd]:# (./static/manifests/vmware-network-loss/ignore-source-and-destination-ports.yaml yaml)
+```yaml
+# ignore the source and destination ports
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: vmware-network-loss
+    spec:
+      components:
+        env:
+        # it will ignore 80 and 8080 source ports
+        - name: SOURCE_PORTS
+          value: '!80,8080'
+        # it will ignore 8080 and 9000 destination ports
+        - name: DESTINATION_PORTS
+          value: '!8080,9000'
+        - name: TOTAL_CHAOS_DURATION
+          value: '60'
+```
 
----
+###  Network interface
 
-## Related faults
+Name of the ethernet interface that shapes the traffic. Tune it by using the `NETWORK_INTERFACE` environment variable. Its default value is `eth0`.
 
-- [VMware network latency](/docs/chaos-engineering/faults/chaos-faults/vmware/linux/vmware-network-latency): Add latency instead of loss.
-- [VMware network rate limit](/docs/chaos-engineering/faults/chaos-faults/vmware/linux/vmware-network-rate-limit): Cap bandwidth instead of loss.
+The following YAML snippet illustrates the use of this environment variable:
+
+[embedmd]:# (./static/manifests/vmware-network-loss/network-interface.yaml yaml)
+```yaml
+## it injects the chaos for the ingress/egress traffic for specific ips/hosts
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: VMware-engine
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: VMware-network-loss
+    spec:
+      components:
+        env:
+        # name of the network interface
+        - name: NETWORK_INTERFACE
+          value: 'eth0'
+        - name: VM_NAME
+          value: 'vm-1,vm-2'
+        - name: VM_USER_NAME
+          value: 'ubuntu,debian'
+        - name: VM_PASSWORD
+          value: '123,123'
+```

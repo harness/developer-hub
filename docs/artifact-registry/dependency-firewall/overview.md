@@ -189,39 +189,6 @@ Harness provides five built-in policy templates specifically for Dependency Fire
 
 Go to [Built-in Policy Templates](/docs/artifact-registry/dependency-firewall/built-in-policy-templates) for full details on each template, detection methodology, recommended configuration, and how to combine them. Go to [Configure Policies and Policy Sets](/docs/artifact-registry/dependency-firewall/configure-policies) to create and enforce policy sets.
 
----
-
-## Dependency Firewall audit dashboard
-
-Harness provides a dedicated **Artifact Registry Dependency Firewall Dashboard** in Harness Dashboards that records every blocked artifact event across your upstream proxy registries. Use it to track which packages were blocked, the requesting user and client IP, the block reason, and when the block occurred.
-
-### Dashboard navigation
-
-1. In the left navigation, go to **Dashboards**.
-2. In the top-left mode toggle, make sure you are in **Standard** mode.
-3. Search for **Artifact Registry Dependency Firewall Dashboard**. It is owned by `system` and tagged **By Harness**, **Harness**, and **AR**.
-
-<DocImage path={require('./static/dependency-firewall-dashboards-list.png')} alt="Harness Dashboards list showing the Artifact Registry Dependency Firewall Dashboard owned by system" title="Dependency Firewall Dashboard in the Dashboards list" width="100%" />
-
-4. Select the dashboard name to open it.
-
-### What the dashboard shows
-
-The dashboard opens with a **Time Range** selector (defaults to **Last 1 Month**) and six filters: **Organization Identifier**, **Project Identifier**, **Registry Name**, **Package Name**, **Version Name**, and **Package Type**. Every widget reacts to these filters.
-
-<DocImage path={require('./static/dependency-firewall-dashboard.png')} alt="Artifact Registry Dependency Firewall Dashboard showing Blocked Artifact Data table and Total Blocked Events per Package Type donut chart" title="Dependency Firewall Dashboard" width="100%" />
-
-Two widgets make up the page:
-
-| Widget | What it shows | Use it to |
-|---|---|---|
-| **Blocked Artifact Data** | A paginated table of `FIREWALL_BLOCKED` events: Action, Registry Name, Package Name, Package Type, Version Name, Username, Client IP, Block Reason, Policy Sets, and Timestamp Hour. | Trace exactly which packages were blocked, who attempted the pull, and which policy sets triggered the block. |
-| **Total Blocked Events per Package Type** | A donut chart showing the total blocked event count broken down by package type (NPM, Maven, Python, etc.). | Identify which ecosystems generate the most firewall blocks. |
-
-Go to [Artifact Registry audit dashboard](/docs/artifact-registry/manage-artifacts/audit-dashboard) to learn about the separate upload and download audit dashboard.
-
----
-
 ## Troubleshooting
 
 <Troubleshoot

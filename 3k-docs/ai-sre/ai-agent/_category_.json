@@ -1,0 +1,8 @@
+{
+  "label": "AI Agents",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "description": "Learn about AI agents in Harness AI SRE, including the AI Scribe Agent that automates incident documentation and the RCA Change Agent that identifies root causes."
+  }
+}

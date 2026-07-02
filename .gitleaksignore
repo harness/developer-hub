@@ -70,3 +70,8 @@ docs/software-engineering-insights/shared/integrations/jira-data-center.mdx:curl
 docs/software-engineering-insights/shared/integrations/jira-data-center.mdx:curl-auth-user:175
 docs/feature-management-experimentation/getting-started/static/boxes.htm:jwt:148
 c6425a7a2317fd85981f0c4c4e8895307aeceea1:docs/resilience-testing/chaos-testing/infrastructure/types/ddcr/installation.md:generic-api-key:161
+137925c9a02f596a80560dc36278d82c5034f654:3k-docs/platform/getting-started/secrets/types.md:github-pat:31
+137925c9a02f596a80560dc36278d82c5034f654:3k-docs/platform/getting-started/secrets/types.md:private-key:48
+137925c9a02f596a80560dc36278d82c5034f654:3k-docs/platform/getting-started/secrets/types.md:generic-api-key:128
+fd44d338464a5e6bbfa499b7493875eadc17b46f:release-notes/static/ff-ga-feed.json:generic-api-key:178
+fd44d338464a5e6bbfa499b7493875eadc17b46f:release-notes/static/ff-ga-feed.json:generic-api-key:626

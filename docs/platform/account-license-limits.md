@@ -37,23 +37,6 @@ Harness account limits for different license types are specified below:
 | Data Sinks                                                                                                    | DATA_SINK                   | N/A    | 1          | 10         |
 | [Triggers](/docs/platform/triggers/triggers-overview)                                                         | MAX_TRIGGER_CREATION_LIMIT  | 10,000 | 10,000   | 10,000     |
 
----
-
-## Resource group constraints
-
-Resource groups have additional constraints that apply regardless of license type. These are hard limits that cannot be increased, as they impact overall platform stability.
-
-| Constraint                                                                                     | Limit | Notes                                                                                                                                                      |
-|------------------------------------------------------------------------------------------------|-------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Resource identifiers per resource type in a ResourceGroup        | 1,300 | Maximum number of identifiers allowed for each individual resource type within a ResourceGroup. Exceeding this limit will result in an error during creation. |
-| Scopes per resource group (specific organization and project selection)                        | 75    | Maximum number of scopes (organization/project combinations) that can be defined when creating a resource group with specific org and project selections.          |
-
-These resource group limits are fixed and cannot be adjusted. If you need to include more resources:
-
-- **For resource type identifiers:** Use the "All" option for resource selection, or split resources across multiple resource groups.
-- **For scopes:** Use broader selections (such as "All Organizations" or "All Projects") instead of specifying individual scopes, or create multiple resource groups with different scope combinations.
-
----
 
 ## Limit increase requests
 
@@ -67,6 +50,6 @@ If your usage patterns require higher limits than the defaults, contact [Harness
 
 Harness will review your request and respond.
 
-:::info Note 
+:::info important 
 Harness reserves the right to modify these limits at any time to ensure platform stability and resource management. 
 :::

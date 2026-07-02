@@ -25,7 +25,7 @@ Couple things to note about this token:
 
 That being said, the best practice is still to hide such tokens to be displayed on the screen in case the screen is being recorded or someone else is able to see and copy it from their screen.
 
-## What is the issue
+## What is the Issue
 
 An issue occurs when we use the `token` field when defining an IDP Workflow that has more than 1 "pages". A page in a workflow is the array item under the `spec.parameters` field. Here is an example of multi-page workflow definition
 
@@ -59,13 +59,13 @@ spec:
 
 In this case, if the `token` field is defined anywhere outside of Page 1 (e.g. under Page 2's properties), the `ui:widget: password` property is not evaluated and the token is displayed to the user at the "Review" step of the workflow.
 
-## 👉🏻 How to solve the issue (action required)
+## 👉🏻 How to Solve the Issue (Action Required)
 
-**move your `token` field in the IDP Workflow YAML definition to the first page instead of later pages. This will ensure that the user session token is not displayed on the Review screen to the user.**
+**Please move your `token` field in the IDP Workflow YAML definition to the first page instead of later pages. This will ensure that the user session token is not displayed on the Review screen to the user.**
 
 ## Context on why it happened
 
-As part of the recent release we upgraded our Backstage version from `v1.22` to `v1.28`. We noticed a warning on this topic which said **sometimes the secrets are displayed on the UI**. We tested ourselves but could not reproduce the situation. But it looks like we missed the case when there are multiple pages and the `token` field is defined in the later pages
+As part of the recent release we upgraded our Backstage version from `v1.22` to `v1.28`. We noticed a warning on this topic which said **sometimes the secrets are displayed on the UI**. We tested ourselves but couldn't reproduce the situation. But it looks like we missed the case when there are multiple pages and the `token` field is defined in the later pages
 
 ## Next steps for us
 

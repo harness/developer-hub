@@ -1,0 +1,11 @@
+{
+  "label": "AWS ECS",
+  "position": "2",
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+      "type": "generated-index",
+      "title": "AWS ECS"
+  }
+}

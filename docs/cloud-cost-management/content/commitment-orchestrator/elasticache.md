@@ -71,7 +71,7 @@ HarnessCommitmentElastiCachePolicy:
     Please note, even if **"Commitment Orchestrator"** is enabled in Connector Set Up for any other Account except for **Master**, it will not be visible in the connector list in Commitment Orchestrator Setup since Commitment Orchestrator requires **Master Account connector**.
 
 
-<DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/managing-commitments-static/ec-step-one.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/ec-step-one.png')} width="100%" height="100%" title="Click to view full size image" />
 
 </TabItem>
 <TabItem value="step2" label="Orchestrator Exclusions (Optional)">
@@ -82,7 +82,7 @@ Commitment Orchestrator provides you with an option to exclude Accounts, Regions
 
 -   **Region Exclusions**: You can include or exclude specific regions from the orchestration. All the regions are shown with their coverage and compute spend for making an informed decision
 
-<DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/managing-commitments-static/ec-step-two.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/ec-step-two.png')} width="100%" height="100%" title="Click to view full size image" />
 
 :::important note 
 The purchases will happen only at master account level and thus will be in turn applicable for child accounts as well. The exclusion list will only be considered for the compute spend calulations and actual RI/SP may be used against the instances if they are part of child accounts.
@@ -99,7 +99,7 @@ The purchases will happen only at master account level and thus will be in turn 
 
     - **Manual**: All commitment purchases require explicit manual approval before execution, giving you complete control over the process. All the recommendations are visible in the **Actions** tab on the dashboard.
 
-<DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/managing-commitments-static/ec-step-three.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/ec-step-three.png')} width="100%" height="100%" title="Click to view full size image" />
 
 - **Notifications**: Configure alerts to stay informed about commitment activities:
     - **Purchase Notifications**: Get notified about successful RI/SP purchases made by Harness.
@@ -107,7 +107,7 @@ The purchases will happen only at master account level and thus will be in turn 
     - **Savings Plans Expiry Notifications**: Receive notifications for existing Savings Plans that will expire within a specified timeframe.
     - **Daily Summary Delivery**: Set your preferred timezone and email recipients for daily summary reports.
 
-<DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/managing-commitments-static/ec-step-four.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/ec-step-four.png')} width="100%" height="100%" title="Click to view full size image" />
 
 </TabItem>
 <TabItem value="step4" label="Review & Complete">
@@ -115,7 +115,7 @@ The purchases will happen only at master account level and thus will be in turn 
 
 After all the set-up steps, you can review and finalise your inputs.
 
-<DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/managing-commitments-static/ec-step-five.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/ec-step-five.png')} width="100%" height="100%" title="Click to view full size image" />
 
 
 </TabItem>
@@ -127,7 +127,7 @@ After all the set-up steps, you can review and finalise your inputs.
 
 The Orchestration Setup page displays a comprehensive list of all Master Accounts with Commitment Orchestrator connector permissions. From this page, users can enable new orchestration setups and view key metrics including Last 30 Days Coverage, Savings, and the current status of each Orchestrator configuration.
 
-<DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/managing-commitments-static/overview.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/overview.png')} width="100%" height="100%" title="Click to view full size image" />
 
 ------
 
@@ -139,9 +139,9 @@ Disabling the Commitment Orchestrator will:
 - Stop all automated commitment management for the selected orchestrator
 - Remove existing orchestration configurations
 
-    <DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/managing-commitments-static/disable.png')} width="50%" height="50%" title="Click to view full size image" />
+    <DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/disable.png')} width="50%" height="50%" title="Click to view full size image" />
 
 
-    <DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/managing-commitments-static/disable-two.png')} width="50%" height="50%" title="Click to view full size image" />
+    <DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/disable-two.png')} width="50%" height="50%" title="Click to view full size image" />
 
 -------

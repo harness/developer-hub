@@ -16,6 +16,7 @@ function usePrefersReducedMotion(): boolean {
 const EXAMPLE_QUESTIONS = [
   'How do I update Harness delegate?',
   'Can I save my filter settings?',
+  'What is Harness 3.0?',
   'How do I set up a CI pipeline?',
   'How do I configure GitOps?',
 ];

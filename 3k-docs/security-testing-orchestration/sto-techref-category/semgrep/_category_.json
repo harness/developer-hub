@@ -1,0 +1,14 @@
+{
+    "label": "Semgrep",
+    "position": 360,
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+       "type": "generated-index",
+       "title": "Semgrep"
+    },
+    "customProps": {
+       "helpdocs_category_id": "NA"
+    }
+ }

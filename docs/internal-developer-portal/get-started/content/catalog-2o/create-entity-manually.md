@@ -7,11 +7,11 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import DocVideo from '@site/src/components/DocVideo';
 
-## Create entities manually
+## Create Entities Manually
 
 In IDP 2.0, entity creation is simplified with full UI support and optional YAML-based creation. Entities are now "inline," which means their entire lifecycle can be managed through the UI or API, without Git integration.
 
-You can create entities directly via the **Harness IDP UI**, no YAML required for a streamlined, code-free experience. Alternatively, you can use your **existing catalog YAML** files, and Harness will automatically convert **legacy Backstage YAML** into the new Harness Catalog Entity Model.
+You can create entities directly via the **Harness IDP UI**—no YAML required for a streamlined, code-free experience. Alternatively, you can use your **existing catalog YAML** files, and Harness will automatically convert **legacy Backstage YAML** into the new Harness Catalog Entity Model.
 
 <Tabs>
 <TabItem value="Interactive Guide">
@@ -21,18 +21,18 @@ You can create entities directly via the **Harness IDP UI**, no YAML required fo
 </TabItem>
 <TabItem value="Step-by-Step">
 
-Let us walk through creating a **Component** entity using both the Visual View and YAML View methods.
+Let's walk through creating a **Component** entity using both the Visual View and YAML View methods.
 
-#### Method 1: Visual view
+#### Method 1: Visual View
 
 ##### Step 1: Navigate to Create
 
 1. Navigate to the Harness IDP portal and click **"Create"** in the sidebar.
 2. Select **Component** from the available options.
-3. You will enter the **Visual View**, where you can fill out entity details interactively.
+3. You'll enter the **Visual View**, where you can fill out entity details interactively.
 
 :::note
-Ensure your `identifier` follows [naming rules](/docs/platform/references/entity-identifier-reference#identifier-naming-rules). Invalid identifiers may lead to entity registration errors. The **identifier** is a unique key for your entity and cannot be changed after creation.
+Ensure your `identifier` follows [naming rules](https://developer.harness.io/docs/platform/references/entity-identifier-reference/#identifier-naming-rules). Invalid identifiers may lead to entity registration errors. The **identifier** is a unique key for your entity and cannot be changed after creation.
 :::
 
 ---
@@ -76,7 +76,7 @@ Click **Save** to create your entity.
 
 ---
 
-#### Method 2: YAML view
+#### Method 2: YAML View
 
 ##### Step 1: Navigate to Create
 

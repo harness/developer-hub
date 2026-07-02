@@ -29,17 +29,12 @@ In the future, Harness will allow you to modify the severity of a rule or even s
 
 ## Supported Standards and Rules
 
-Harness supports the following standards:
+Harness supports the following standards.
 
-* [CIS Benchmarks for GitHub](/docs/software-supply-chain-assurance/manage-risk-and-compliance/standards-and-rule-definitions#cis-benchmarks)
-* [OWASP Top 10 CI/CD Security Risks for GitHub](/docs/software-supply-chain-assurance/manage-risk-and-compliance/standards-and-rule-definitions#owasp-top-10-cicd-security-risks)
-* [Harness Standards](/docs/software-supply-chain-assurance/manage-risk-and-compliance/standards-and-rule-definitions#oss-top-10-risks)
+* CIS Benchmarks for GitHub
+* OWASP Top 10 CI/CD Security Risks for GitHub
+* Harness Standards
 
-:::note
-
-For GitHub code repositories, Harness evaluates repository, organization, and enterprise-level settings during compliance assessment. If a more restrictive control is configured at the organization or enterprise level, Harness uses that setting when evaluating applicable repository-level rules. Evaluating organization-level and enterprise-level controls requires GitHub Organization Admin or Enterprise Admin permissions, respectively. Some GitHub compliance rules are available only at the organization or enterprise level and do not have a repository-level equivalent.
-
-:::
 
 ### CIS Benchmarks
 

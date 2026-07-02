@@ -1,0 +1,13 @@
+{
+  "label": "Configure Verification",
+  "position": 40,
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "default",
+  "link": {
+    "type": "generated-index",
+    "title": "Configure Verification",
+    "slug": "/category/configure-cv",
+    "description": "Configure the Verify step in your pipelines, set up health sources, define thresholds, and customize verification behavior for your deployments."
+  }
+}

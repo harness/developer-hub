@@ -4,7 +4,6 @@ description: Learn how to define custom thresholds for service health analysis.
 sidebar_position: 2
 ---
 
-
 # Custom thresholds for service health analysis
 
 In addition to utilizing AI/ML for service health analysis of monitored services, you use the custom threshold feature to set up rules that can change how service health behaves. You can create the following rules:

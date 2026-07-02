@@ -11,11 +11,11 @@ TechDocs supports a variety of MkDocs plugins to enhance your documentation. Thi
 
 ---
 
-## TechDocs core plugin
+## TechDocs Core Plugin
 
 The `techdocs-core` plugin is an all-in-one solution that bundles multiple essential plugins for generating high-quality documentation. It eliminates the need to configure individual plugins separately.
 
-### Included plugins
+### Included Plugins
 
 The `techdocs-core` plugin includes:
 
@@ -41,7 +41,7 @@ plugins:
 
 ---
 
-## Additional supported plugins
+## Additional Supported Plugins
 
 ### mkdocs-video
 

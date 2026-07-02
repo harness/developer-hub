@@ -7,7 +7,7 @@ description: Integrate OpenFeature with Harness FME in your Java applications to
 
 Integrate your Java applications with Harness FME using the <Tooltip id="fme.openfeature.provider">Java OpenFeature Provider</Tooltip>, a standardized, vendor-agnostic feature flagging API. This provider implements the OpenFeature specification and bridges the OpenFeature SDK with the Harness FME Java SDK.
 
-This page walks you through installing, configuring, and using the Java OpenFeature provider to evaluate <Tooltip id="fme.feature-management.feature-flag">feature flags</Tooltip> in your Java applications.
+This page walks you through installing, configuring, and using the Java OpenFeature provider to evaluate <Tooltip id="fme.openfeature.feature-flag">feature flags</Tooltip> in your Java applications.
 
 ### Before you begin
 
@@ -113,7 +113,7 @@ String jsonConfig = details.getFlagMetadata().getString("config"); // ← Split 
 
 ## Track events
 
-The Harness FME OpenFeature provider supports tracking user actions or conversion <Tooltip id="fme.feature-management.event">events</Tooltip> directly from your Java application.
+The Harness FME OpenFeature provider supports tracking user actions or conversion <Tooltip id="fme.openfeature.events">events</Tooltip> directly from your Java application.
 
 To enable event tracking, your evaluation context must include the following:
 

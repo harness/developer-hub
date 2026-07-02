@@ -1,0 +1,15 @@
+{
+    "label": "Notifications and Banners",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "position": "14",
+    "link": {
+        "type": "generated-index",
+        "title": "Notifications and Banners"
+    },
+    "customProps": {
+       
+        "helpdocs_category_id": "y9pmm3ig37"
+    }
+}

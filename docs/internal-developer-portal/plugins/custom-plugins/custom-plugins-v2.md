@@ -17,7 +17,7 @@ Custom Plugins V2 is a new approach to building custom plugins in Harness IDP. Y
 
 The SDK handles communication between your plugin and the IDP host. It provides the entity context your plugin renders on, and it proxies all outbound API calls through the configured [Backend Proxy Plugin](/docs/internal-developer-portal/plugins/delegate-proxy) so your plugin never handles secrets or makes direct network requests.
 
-## Before you begin
+## Prerequisites
 
 - Node.js and npm installed locally.
 - Access to IDP Admin in your Harness account with the `IDP_ENABLE_CUSTOM_PLUGINS_V2` feature flag enabled.
@@ -66,7 +66,7 @@ The ['custom-plugins-v2'](https://github.com/harness/custom-plugins-v2) GitHub r
 
 4. Fill in the basic info fields (icon, name, description). Skip the HTML upload field for now; you will return to it after the build step.
 
-### Step 2: Preview with dev mode
+### Step 2: Preview with Dev Mode
 
 1. In the **Preview** section, select the catalog entity you want to render the plugin on.
 
@@ -94,7 +94,7 @@ The ['custom-plugins-v2'](https://github.com/harness/custom-plugins-v2) GitHub r
 A Custom Plugin V2 can be placed in your layout [as a **Tab**](#as-a-tab) or [as a **SideNav**](#as-a-sidenav-item) item. Placing it as a card is currently not supported.
 :::
 
-#### As a tab
+#### As a Tab
 
 1. In IDP, go to **Configure** and select **Layout**.
 2. Select **Catalog Entities**.
@@ -145,11 +145,11 @@ A Custom Plugin V2 can be placed in your layout [as a **Tab**](#as-a-tab) or [as
 
 ---
 
-## SDK usage guide
+## SDK Usage Guide
 
 The `@harnessio/idp-plugins-sdk` package is already included in the boilerplate. The sections below explain the key APIs it provides.
 
-### App setup
+### App Setup
 
 Wrap your app with `PluginContextProvider` and `PluginRouter`, then call `PluginAPI.init()` after the component mounts. The boilerplate `main.tsx` does this for you.
 
@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 ```
 
-### Use context
+### Using Context
 
 After initialization, the IDP host sends your plugin the context for the entity it is rendering on. Access it with the `usePluginContext` hook.
 
@@ -200,7 +200,7 @@ function MyComponent() {
 
 The `entity` object is the standard Harness Entity Object. You can read entity annotations to drive plugin behavior. For example, reading `github.com/project-slug` tells your plugin which GitHub repository to fetch data from.
 
-### Make proxy fetch calls
+### Making Proxy Fetch Calls
 
 Plugins cannot make direct network requests because the production environment blocks them via CSP. Use `PluginAPI.proxyFetch()` to route all API calls through the IDP host instead.
 

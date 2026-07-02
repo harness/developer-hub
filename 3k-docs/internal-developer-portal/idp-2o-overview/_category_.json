@@ -1,0 +1,12 @@
+{
+    "label": "Harness IDP 2.0 Overview",
+    "collapsible": "true",
+    "collapsed": "true",
+    "position": 4,
+    "link": {
+      "type": "generated-index",
+      "title": "Get Started with Harness IDP 2.0"
+    },
+    "customProps": {}
+  }
+  

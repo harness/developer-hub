@@ -1,10 +1,10 @@
 Custom User Groups in Harness IDP extend the catalog model to include organizational teams and hierarchies as **first-class entities**. These groups allow companies to represent real-world structures such as teams, departments, or cross-functional squads, directly inside the developer portal.
 
-Unlike **[platform user groups](/docs/platform/role-based-access-control/add-user-groups)** which are typically synchronized from an identity provider (LDAP, SCIM, SSO), **custom user groups** are created and managed entirely within IDP. This distinction matters because it allows engineering and platform teams to enrich group definitions with metadata that may not exist in the identity provider but is valuable for context inside IDP.
+Unlike **[platform user groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/)** which are typically synchronized from an identity provider (LDAP, SCIM, SSO), **custom user groups** are created and managed entirely within IDP. This distinction matters because it allows engineering and platform teams to enrich group definitions with metadata that may not exist in the identity provider but is valuable for context inside IDP.
 
 ---
 
-## Key concepts
+## Key Concepts
 
 **1. Group Entity**
 
@@ -32,7 +32,7 @@ Unlike **[platform user groups](/docs/platform/role-based-access-control/add-use
 
 ---
 
-## Create custom user groups
+## Create Custom User Groups
 
 ![create-usergroup](./static/create-usergroup.png)
 There are two ways to create a group:
@@ -66,13 +66,13 @@ metadata:
 
 This example defines a **Cloud Infrastructure Team** team, scoped at the account level, with two members, a parent group (`techco`), and rich metadata including tags and a description.
 
-3. **Through the API** – Groups can be created and managed programmatically by crafting YAML definitions with the `kind` set as `Group` and utilizing the [Entity API](https://apidocs.harness.io/entities) for creating and updating Group entities.
+3. **Through the API** – Groups can be created and managed programmatically by crafting YAML definitions with the `kind` set as `Group` and utilizing the [Entity API](https://developer.harness.io/docs/platform/api/entity-api) for creating and updating Group entities.
 
 :::note 
 At present, the User Group entity can only be created at the account level.
 :::
 
-#### Key attributes in group YAML
+#### Key Attributes in Group YAML
 
 * **apiVersion / kind** – Always `harness.io/v1` and `Group`
 * **identifier and name** – Unique reference and display name for the group
@@ -85,11 +85,11 @@ Groups can be created with **zero members**, making it possible to scaffold team
 
 ---
 
-## Relationships and hierarchies
+## Relationships and Hierarchies
 
 ![child-parent](./static/child-parent.png)
 
-### Parent and child groups
+### Parent and Child Groups
 
 Groups can be linked together through **hierarchical relationships**. In YAML, the creator specifies only the `parent` field. The IDP ingestion process then automatically generates the inverse relationships (`childOf` and `parentOf`) so that hierarchies are consistent and visible in the Catalog Graph.
 
@@ -118,7 +118,7 @@ In this setup:
 
 This ensures that users see a **two-way relationship** in the Catalog Graph without having to manually declare `children`.
 
-### User relationships
+### User Relationships
 
 Groups connect to users through **membership relationships**. These are expressed in YAML under `spec.members`.
 
@@ -138,7 +138,7 @@ This creates:
 
 These relationships are also surfaced in the Catalog Graph, enabling visual exploration of who belongs to which group.
 
-### Ownership mapping
+### Ownership Mapping
 
 Groups are first-class entities for **owning other Catalog entities**. Ownership is established when a group is referenced in another entity's YAML.
 
@@ -175,7 +175,7 @@ When both types of User Groups exist, the following conflict resolution rules ap
   1. IDP User Groups (directly created)
   2. Platform User Groups (synced from Harness Platform)
 
-This approach ensures that any custom metadata, relationships, and configurations you have invested time in creating for IDP User Groups are preserved and not overwritten during platform synchronization.
+This approach ensures that any custom metadata, relationships, and configurations you've invested time in creating for IDP User Groups are preserved and not overwritten during platform synchronization.
 :::
 :::note
 Information about conflicts may be available in the audit trail. Platform user groups with the same ID as existing IDP User Groups will not be synced, while all other platform groups will continue to be synchronized normally.
@@ -183,7 +183,7 @@ Information about conflicts may be available in the audit trail. Platform user g
 
 ---
 
-## Find user groups in the catalog
+## Find User Groups in the Catalog
 
 Once created, User Groups are fully discoverable inside the IDP Catalog. You can look them up directly by name or identifier using the catalog search bar. For example, searching for **Cloud Infrastructure Team** quickly brings up the corresponding group entity.
 
@@ -204,7 +204,7 @@ This layout makes it easy for developers, platform engineers, and admins to unde
 
 ---
 
-## Metadata enrichment 
+## Metadata Enrichment 
 
 Custom User Groups in IDP are not limited to listing members. They can carry **rich metadata** that makes them more useful for discovery, reporting, and ownership tracking. This metadata sits under the `metadata` field in the entity YAML and can include fields such as:
 
@@ -245,11 +245,11 @@ metadata:
 This metadata can be surfaced in **catalog cards**, **dashboards**, and **reporting views**, giving platform engineers and leadership more context about each group.
 For example: a sales engineer could quickly find the right **geo-aligned team**, or a developer could identify the **team lead** directly from the group's catalog page.
 
-### Additional infocard
+### Additional Infocard
 
 The `EntityAdditionalInfoCard` component provides a powerful way to surface important metadata from your Custom User Groups directly on their entity pages. This component allows you to selectively display key information about the group in a structured, visually appealing card format.
 
-Here is how to configure an Additional Infocard that displays leadership and organizational information:
+Here's how to configure an Additional Infocard that displays leadership and organizational information:
 
 ```yaml
 - component: EntityAdditionalInfoCard
@@ -296,9 +296,9 @@ This approach makes important information about the group immediately visible wi
 
 ---
 
-## Configure the custom group layout in group entities
+## Configure the Custom Group Layout in Group Entities
 
-By default, you will not see any layout for the  Custom Group entities, but you can duplicate the layout of the Group entities, IDP provides a standard view for all **Group entities**, showing the profile, members, and graph. However, administrators can customize the layout to highlight the metadata that matters most to their organization.
+By default, you won't see any layout for the  Custom Group entities, but you can duplicate the layout of the Group entities, IDP provides a standard view for all **Group entities**, showing the profile, members, and graph. However, administrators can customize the layout to highlight the metadata that matters most to their organization.
 
 You can configure layouts from:
 `Configure → Layout → Group Entities`

@@ -5,7 +5,6 @@ description: Add Elasticsearch health source to a monitored service.
 sidebar_position: 6
 ---
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

@@ -1,191 +1,171 @@
 ---
 id: vmware-service-stop
 title: VMware service stop
-sidebar_label: VMware Service Stop
-description: Stop one or more services inside a Linux VMware VM for a configurable duration so you can test how the workload behaves when a managed service is down.
-keywords:
-  - chaos engineering
-  - vmware service stop
-  - vmware fault
-  - service resilience
-tags:
-  - chaos-engineering
-  - vmware-faults
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/linux/vmware-service-stop
-- /docs/chaos-engineering/chaos-faults/vmware/linux/vmware-service-stop
+- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-service-stop
+- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/service-stop
+- /docs/chaos-engineering/chaos-faults/vmware/vmware-service-stop
 ---
+VMware service stop stops the target system services running on a Linux OS based VMware VM. It determines the performance and resilience of the application (or service) running on the VMware VMs.
 
-import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
+![VMware ServiceStop](./static/images/vmware-service-stop.png)
 
-VMware service stop is a VMware chaos fault that stops the services listed in `SERVICE_NAME` (comma-separated systemd unit names) on the Linux VM `VM_NAME` for `TOTAL_CHAOS_DURATION` seconds, then optionally restarts them based on `SELF_HEALING_SERVICES`. Use `SERVICE_EXIT_TYPE=graceful` for a normal stop or `forceful` for a hard kill. The fault uses VMware Tools (Guest Operations API) to act inside the guest as `VM_USER_NAME`.
-
-Use this fault to test how a workload on a VMware-hosted VM behaves when a critical service is down: whether dependent services degrade gracefully, whether load balancers route around the outage, whether monitoring detects the regression within the alerting SLA, and whether on-call alerts fire correctly.
-
-:::info Run your first experiment
-If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
+:::info note
+HCE doesn't support injecting VMWare Windows faults on Bare metal server.
 :::
-
----
 
 ## Use cases
+VMware service stop:
+- Determines the resilience of an application to random halts.
+- Determines how efficiently an application recovers and restarts the services.
 
-- **Service outage:** When the service is stopped, does the workload route around the outage inside the SLO?
-- **Health-check fidelity:** Do health checks fail correctly when the service is down?
-- **Recovery time:** When the service is restarted, how long until the workload is healthy again?
+### Prerequisites
+- Kubernetes > 1.16 is required to execute this fault.
+- Execution plane should be connected to vCenter and host vCenter on port 443.
+- The VM should be in a healthy state before and after injecting chaos.
+- VMware tool should be installed on the target VM with remote execution enabled.
+- The target processes should exist within the VM.
+- Appropriate vCenter permissions should be provided to access the hosts and the VMs.
+- Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. VM credentials can be passed as secrets or as a `ChaosEngine` environment variable. Below is a sample secret file:
 
----
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: vcenter-secret
+  namespace: litmus
+type: Opaque
+stringData:
+    VCENTERSERVER: XXXXXXXXXXX
+    VCENTERUSER: XXXXXXXXXXXXX
+    VCENTERPASS: XXXXXXXXXXXXX
+```
 
-## Prerequisites
+### Mandatory tunables
 
-- **Kubernetes version:** 1.21 or later for the chaos infrastructure cluster.
-- **vCenter reachable:** The chaos infrastructure can reach `GOVC_URL` over port 443.
-- **VMware Tools running on the guest:** Verify with `vmware-toolbox-cmd -v`.
-- **Service management permissions:** `VM_USER_NAME` can stop and start `SERVICE_NAME` (typically requires `sudo systemctl stop|start <unit>`).
-- **vCenter chaos role:** `GOVC_USERNAME` is mapped to the chaos role per [VMware permissions](/docs/chaos-engineering/faults/chaos-faults/vmware/permissions).
+   <table>
+      <tr>
+        <th> Tunable </th>
+        <th> Description </th>
+        <th> Notes </th>
+      </tr>
+      <tr>
+        <td> VM_NAME </td>
+        <td> Name of the VM where the target processes reside. </td>
+        <td> For example, <code>ubuntu-vm-1</code>. </td>
+      </tr>
+      <tr>
+          <td> VM_USER_NAME </td>
+          <td> Username of the target VM.</td>
+          <td> For example, <code>vm-user</code>. </td>
+      </tr>
+      <tr>
+          <td> VM_PASSWORD </td>
+          <td> User password for the target VM. </td>
+          <td> For example, <code>1234</code>. Note: You can take the password from secret as well. </td>
+      </tr>
+      <tr>
+        <td> SERVICE_NAMES </td>
+        <td> Name of the target service. </td>
+        <td> For example, <code>nginx</code>. For more information, go to <a href="#service-name"> service name.</a></td>
+      </tr>
+    </table>
 
----
+### Optional tunables
 
-## Supported environments
+   <table>
+      <tr>
+        <th> Tunable </th>
+        <th> Description </th>
+        <th> Notes </th>
+      </tr>
+      <tr>
+        <td> SELF_HEALING_SERVICES </td>
+        <td> Set to <code>enable</code> if the target service is self-healing. </td>
+        <td> Defaults to <code>disable</code>. For more information, go to <a href="#self-healing-services"> self-healing services.</a></td>
+      </tr>
+      <tr>
+        <td> TOTAL_CHAOS_DURATION </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
+      </tr>
+      <tr>
+        <td> CHAOS_INTERVAL </td>
+        <td> Time interval between two successive instance terminations (in seconds). </td>
+        <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval. </a></td>
+      </tr>
+      <tr>
+        <td> SEQUENCE </td>
+        <td> Sequence of chaos execution for multiple instances. </td>
+        <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
+      </tr>
+      <tr>
+        <td> RAMP_TIME </td>
+        <td> Period to wait before and after injecting chaos (in seconds). </td>
+        <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
+      </tr>
+      <tr>
+      <td>DEFAULT_HEALTH_CHECK</td>
+      <td>Determines if you wish to run the default health check which is present inside the fault. </td>
+      <td> Default: 'true'. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
+      </tr>
+    </table>
 
-| Platform | Support status |
-| --- | --- |
-| Linux VMs with `systemd` (any distro with VMware Tools) | Supported |
-| Linux VMs with other init systems (`upstart`, `sysvinit`) | Partial: the fault uses `systemctl` by default; adapt to your environment |
-| Windows VMs | Not supported (use [Windows service stop](/docs/chaos-engineering/faults/chaos-faults/windows/windows-process-kill)) |
+### Self-healing services
+It specifies whether the target service has the ability to self-heal. It is self-healing if it is set to `enable`. Its default value is `disable`. Tune it by using the `SELF_HEALING_SERVICES` environment variable.
 
----
+Use the following example to tune this:
 
-## Permissions required
+[embedmd]:# (./static/manifests/vmware-service-stop/vmware-service-stop-self-healing.yaml yaml)
+```yaml
+# Service Stop in the VMware VM
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: VMware-service-stop
+      spec:
+        components:
+          env:
+            # Name of the VM
+            - name: VM_NAME
+              value: 'test-vm-01'
+            # Name of service
+            - name: SERVICE_NAME
+              value: 'nginx'
+            # Self-heling ability
+            - name: SELF_HEALING_SERVICES
+              value: 'enable'
+```
 
-**On vCenter.** Map `GOVC_USERNAME` to the chaos role described in [VMware permissions](/docs/chaos-engineering/faults/chaos-faults/vmware/permissions). The role needs Guest Operations (Program execution, Modifications, Queries).
+### Service name
+It specifies the name of the target service running on a particular VM. Tune it by using the `SERVICE_NAME` environment variable.
 
-**On the guest OS.** `VM_USER_NAME` must be able to run `systemctl stop <unit>` and `systemctl start <unit>`.
+Use the following example to tune this:
 
----
-
-## Authentication
-
-| Layer | Tunables |
-| --- | --- |
-| vCenter | `GOVC_URL`, `GOVC_USERNAME`, `GOVC_PASSWORD`, `GOVC_INSECURE` |
-| Guest OS | `VM_USER_NAME`, `VM_PASSWORD` |
-
-Store each credential as a text secret in [Harness Secret Manager](/docs/platform/secrets/add-use-text-secrets) and reference the secret identifier when configuring the experiment.
-
----
-
-## Fault tunables
-
-**Required parameters**
-
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `VM_NAME` | Name of the target VM as it appears in vCenter. | (required) |
-| `VM_USER_NAME` | OS user account on the target VM. | (required) |
-| `VM_PASSWORD` | Password for `VM_USER_NAME`. | (required) |
-| `SERVICE_NAME` | Comma-separated list of systemd unit names to stop. | (required) |
-
-**Chaos parameters**
-
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `SERVICE_EXIT_TYPE` | `graceful` (normal stop) or `forceful` (hard kill). | `graceful` |
-| `SELF_HEALING_SERVICES` | If `enable`, the fault explicitly restarts the service at the end. Set to `disable` when an external supervisor restarts it. | `disable` |
-| `TOTAL_CHAOS_DURATION` | Total duration of the fault in seconds. | `30` |
-| `CHAOS_INTERVAL` | Delay in seconds between iterations. | `10` |
-| `SEQUENCE` | `parallel` or `serial` when multiple services are targeted. | `parallel` |
-| `RAMP_TIME` | Wait period in seconds before and after the fault. | `0` |
-
-**vCenter authentication**
-
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `GOVC_URL` | vCenter server URL. | `""` |
-| `GOVC_USERNAME` | vCenter user mapped to the chaos role. | `""` |
-| `GOVC_PASSWORD` | Password for `GOVC_USERNAME`. | `""` |
-| `GOVC_INSECURE` | Skip SSL certificate verification when set to `true`. | `true` |
-
-Tunables that apply to every fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
-
----
-
-## Fault execution in brief
-
-Authenticates to vCenter, opens a Guest Operations session on `VM_NAME` as `VM_USER_NAME`, runs `systemctl stop <SERVICE_NAME>` (or a forceful equivalent when `SERVICE_EXIT_TYPE=forceful`), waits `TOTAL_CHAOS_DURATION` seconds, and starts the service again when `SELF_HEALING_SERVICES=enable`.
-
----
-
-## Expected behavior during fault execution
-
-- The targeted service is stopped on `VM_NAME` for the chaos window.
-- Dependent workloads see connection failures or unhealthy health checks.
-- After the duration ends, the service is restarted (either by the fault when `SELF_HEALING_SERVICES=enable`, or by an external supervisor).
-
-:::info When the fault ends
-If `SELF_HEALING_SERVICES=enable`, the chaos pod runs `systemctl start <SERVICE_NAME>` to restore the service. Otherwise, recovery depends on an external supervisor or the user.
-:::
-
-### Signals to watch
-
-- **Service up:** Use a [command probe](/docs/resilience-testing/chaos-testing/probes/command-probe) running `systemctl is-active <unit>` and assert the service returns to `active`.
-- **Workload health:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) on a user-visible endpoint.
-
----
-
-## Verify the fault execution effect
-
-1. **SSH into the VM during the chaos window.**
-
-   ```bash
-   systemctl status <SERVICE_NAME>
-   ```
-
-   The service should be `inactive (dead)` during the window.
-
-2. **After the fault ends, confirm recovery.**
-
-   ```bash
-   systemctl status <SERVICE_NAME>
-   ```
-
-   The service should be back to `active (running)`.
-
----
-
-## Recovery and cleanup
-
-- **Auto-restart:** With `SELF_HEALING_SERVICES=enable`, the chaos pod restarts the service.
-- **Abort:** Stopping the experiment from Chaos Studio also triggers the restart when `SELF_HEALING_SERVICES=enable`.
-- **Manual recovery:** SSH into the VM and run `sudo systemctl start <SERVICE_NAME>` if the service is still stopped.
-
----
-
-## Limitations
-
-- **Systemd-centric:** The fault expects `systemctl`. Non-systemd init systems may need a custom approach.
-- **VMware Tools required:** Without VMware Tools, the fault cannot run.
-- **No mid-flight resize:** Adjusting `SERVICE_NAME` or `SERVICE_EXIT_TYPE` mid-run is not supported; abort and re-run.
-- **Single VM per run:** Each fault run targets one `VM_NAME`.
-
----
-
-## Troubleshooting
-
-<Troubleshoot
-  issue="VMware service stop fails with unit not found in Harness Chaos Engineering"
-  mode="docs"
-  fallback="Verify the exact systemd unit name with systemctl list-units --type=service inside the VM. SERVICE_NAME must match the unit name (with or without .service suffix as systemctl accepts both)."
-/>
-
-<Troubleshoot
-  issue="Service did not restart after fault ended"
-  mode="docs"
-  fallback="If SELF_HEALING_SERVICES=disable, the fault relies on an external supervisor to restart the service. Either set SELF_HEALING_SERVICES=enable or restart the service manually with sudo systemctl start <SERVICE_NAME>."
-/>
-
----
-
-## Related faults
-
-- [VMware process kill](/docs/chaos-engineering/faults/chaos-faults/vmware/linux/vmware-process-kill): Kill a process by PID instead of stopping a systemd unit.
+[embedmd]:# (./static/manifests/vmware-service-stop/vmware-service-stop.yaml yaml)
+```yaml
+# Service Stop in the VMware VM
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: VMware-service-stop
+      spec:
+        components:
+          env:
+            # Name of the VM
+            - name: VM_NAME
+              value: 'test-vm-01'
+            # Name of service
+            - name: SERVICE_NAME
+              value: 'nginx'
+```

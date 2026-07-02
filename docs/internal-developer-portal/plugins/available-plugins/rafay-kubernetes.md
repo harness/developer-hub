@@ -7,7 +7,7 @@ description: Deploy and view clusters, namespaces, workloads and more using Rafa
 | -------------- | ------------------------------------------------------------------------------- |
 | **Created by** | Rafay Systems                                                                         |
 | **Category**   | Monitoring                                                                      |
-| **Source**     | [GitHub](https://docs.rafay.co/backstage/overview#backstage-plugin) |
+| **Source**     | [GitHub](https://docs.rafay.co/backstage/overview/#backstage-plugin) |
 | **Type**       | Open-source plugin                                                              |
 
 ## Configuration
@@ -31,7 +31,7 @@ In the above YAML, replace `<rafay_console_url>` with the real console URL e.g.,
 
 ### Secrets
 
-Since the `X-RAFAY-API-KEYID` variable is used in the application configuration, you must generate a RAFAY API key and set it as the value of variable `X-RAFAY-API-KEYID`. For information about how to generate an API key, go to the [instructions](https://docs.rafay.co/security/rbac/users#api-keys).
+Since the `X-RAFAY-API-KEYID` variable is used in the application configuration, you must generate a RAFAY API key and set it as the value of variable `X-RAFAY-API-KEYID`. For information about how to generate an API key, go to the [instructions](https://docs.rafay.co/security/rbac/users/#api-keys).
 
 ![](./static/rafay-variable.png)
 

@@ -51,79 +51,6 @@ function Card({
   children,
 }: CardItem) {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
-  const hasChildren = children && children.length > 0;
-
-  const inner = (
-    <div>
-      {time && (
-        <h6>
-          {icon ? (
-            <img src={baseUrl + icon} />
-          ) : (
-            <img src={baseUrl + MODULE_ICON[module]} />
-          )}
-          {time}
-        </h6>
-      )}
-      {newDoc && (
-        <div className={styles.newDoc}>
-          <img src={`${baseUrl}img/new.svg`} />
-        </div>
-      )}
-      <h4>{title}</h4>
-      <p>{description}</p>
-      {hasChildren && (
-        <ul className={styles.subCategories}>
-          {children.map((sub) => (
-            <li key={sub.link} title={sub.description.toString()}>
-              <Link to={sub.link}>{sub.title}</Link>
-            </li>
-          ))}
-        </ul>
-      )}
-      {type && (
-        <div className={styles.tags}>
-          <ul className={styles.docTypes}>
-            {type.map((props) => (
-              <li key={props}>
-                <Tooltip placement="top" overlay={props}>
-                  <img
-                    src={`${baseUrl}img/icon_doctype_${props}.svg`}
-                    alt={props}
-                  />
-                </Tooltip>
-              </li>
-            ))}
-          </ul>
-          {difficulty ? (
-            <div className={styles.difficulty}>
-              Difficulty |
-              {[...new Array(3)].map((star, idx) => (
-                <i
-                  className={clsx("fa-solid", "fa-square", {
-                    [styles.lit]: difficulty > idx,
-                  })}
-                ></i>
-              ))}
-            </div>
-          ) : null}
-        </div>
-      )}
-    </div>
-  );
-
-  if (hasChildren) {
-    return (
-      <div
-        className={`${styles.tutorialCard} ${
-          featuredCard ? styles.featuredCard : ""
-        } ${styles[module]}`}
-      >
-        {inner}
-      </div>
-    );
-  }
-
   return (
     <Link
       to={link}
@@ -131,7 +58,62 @@ function Card({
         featuredCard ? styles.featuredCard : ""
       } ${styles[module]}`}
     >
-      {inner}
+      <div>
+        {time && (
+          <h6>
+            {icon ? (
+              <img src={baseUrl + icon} />
+            ) : (
+              <img src={baseUrl + MODULE_ICON[module]} />
+            )}
+            {time}
+          </h6>
+        )}
+        {newDoc && (
+          <div className={styles.newDoc}>
+            <img src={`${baseUrl}img/new.svg`} />
+          </div>
+        )}
+        <h4>{title}</h4>
+        <p>{description}</p>
+        {children && children.length > 0 && (
+          <ul className={styles.subCategories}>
+            {children.map((sub) => (
+              <li key={sub.link} title={sub.description.toString()}>
+                <Link to={sub.link}>{sub.title}</Link>
+              </li>
+            ))}
+          </ul>
+        )}
+        {type && (
+          <div className={styles.tags}>
+            <ul className={styles.docTypes}>
+              {type.map((props) => (
+                <li key={props}>
+                  <Tooltip placement="top" overlay={props}>
+                    <img
+                      src={`${baseUrl}img/icon_doctype_${props}.svg`}
+                      alt={props}
+                    />
+                  </Tooltip>
+                </li>
+              ))}
+            </ul>
+            {difficulty ? (
+              <div className={styles.difficulty}>
+                Difficulty |
+                {[...new Array(3)].map((star, idx) => (
+                  <i
+                    className={clsx("fa-solid", "fa-square", {
+                      [styles.lit]: difficulty > idx,
+                    })}
+                  ></i>
+                ))}
+              </div>
+            ) : null}
+          </div>
+        )}
+      </div>
     </Link>
   );
 }

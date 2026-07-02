@@ -13,11 +13,6 @@ For [Kubernetes Helm](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/d
 | `<+manifests.MANIFEST_ID.helm.metadata.bucketName>` | Helm Chart bucket name, available only for GCS and S3.                                                                |
 | `<+manifests.MANIFEST_ID.helm.metadata.commitId>`   | Store commit Id, available only when manifest is stored in a Git repo and Harness is configured to use latest commit. |
 | `<+manifests.MANIFEST_ID.helm.metadata.branch>`     | Store branch name, available only when manifest is stored in a Git repo and Harness is configured to use a branch.    |
-| `<+manifests.MANIFEST_ID.spec.chartName>`           | The chart name specified in the manifest configuration.                                                               |
-| `<+manifests.MANIFEST_ID.spec.chartVersion>`        | The chart version specified in the manifest configuration.                                                            |
-| `<+manifests.MANIFEST_ID.spec.subChartPath>`        | The sub-chart path specified in the manifest configuration.                                                           |
-| `<+manifests.MANIFEST_ID.spec.store>`               | The store configuration for the manifest (for example, HTTP, Git, OCI).                                               |
-| `<+manifests.MANIFEST_ID.spec.valuesPaths>`         | The values file paths specified in the manifest configuration.                                                        |
 
 Select **Fetch Helm Chart Metadata** in the **Manifest Details** page's **Advanced** section to enable this functionality.
 
@@ -52,22 +47,4 @@ service:
 
 ```
 
-It can also be fetched using the expression `<+manifestConfig.primaryManifestId>`. This expression is supported in multiple Helm chart manifest configurations.
-
-### Using primary manifest ID in expressions
-
-When you have multiple manifests configured in a service, you can reference the primary manifest dynamically using `<+manifestConfig.primaryManifestId>`. This is useful when you need to construct expressions without hardcoding the manifest identifier.
-
-For example, instead of using a hardcoded manifest ID:
-
-```
-<+manifests.myHelmChart.spec.chartName>
-```
-
-You can use the primary manifest ID dynamically:
-
-```
-<+manifests.<+manifestConfig.primaryManifestId>.spec.chartName>
-```
-
-This approach allows your expressions to work regardless of the specific manifest identifier used in the service configuration.
+It can be also be fetched using the expression `<+manifestConfig.primaryManifestId>`. This expression is supported in multiple Helm chart manifest configuration.

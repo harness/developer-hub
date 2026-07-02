@@ -1,7 +1,7 @@
 ---
 title: Dinghy Slack Notifications not working - java.lang.NoSuchMethodError- void org.jsoup
 redirect_from:
-  - /docs/continuous-delivery/armory/general/dinghy-slack-notifications-not-working---java.lang.nosuchmethoderror--void-org.jsoup
+  - /docs/continuous-delivery/armory/general/dinghy-slack-notifications-not-workingjava.lang.nosuchmethoderror--void-org.jsoup
 ---
 
 ## Issue

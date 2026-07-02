@@ -1,0 +1,10 @@
+{
+    "label":"Supply Chain Security",
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"default",
+    "link":{
+       "type":"generated-index",
+       "title":"Software Supply Chain Assurance"
+    }
+ }

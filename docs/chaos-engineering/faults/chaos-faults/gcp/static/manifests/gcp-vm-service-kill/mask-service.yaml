@@ -1,0 +1,18 @@
+# mask a service before stopping it
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: gcp-vm-service-kill
+    spec:
+      components:
+        env:
+        - name: MASK
+          value: 'enable'
+        - name: SERVICE_NAME
+          VALUE: 'containerd'

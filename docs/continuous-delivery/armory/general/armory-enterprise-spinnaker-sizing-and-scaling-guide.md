@@ -2,7 +2,6 @@
 title: Armory Enterprise (Spinnaker) Sizing and Scaling Guide
 ---
 
-
 ## Introduction
 
 This guide describes the general architecture considerations you want to make for Armory Enterprise as a whole.

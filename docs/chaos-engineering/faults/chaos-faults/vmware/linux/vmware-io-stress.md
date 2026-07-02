@@ -1,199 +1,246 @@
 ---
 id: vmware-io-stress
 title: VMware IO stress
-sidebar_label: VMware IO Stress
-description: Drive disk IO load on a Linux VMware VM for a configurable duration so you can test how the workload behaves when storage throughput is saturated.
-keywords:
-  - chaos engineering
-  - vmware io stress
-  - vmware fault
-  - disk stress
-tags:
-  - chaos-engineering
-  - vmware-faults
 redirect_from:
-- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/linux/vmware-io-stress
-- /docs/chaos-engineering/chaos-faults/vmware/linux/vmware-io-stress
+- /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-io-stress
+- /docs/chaos-engineering/chaos-faults/vmware/vmware-io-stress
 ---
 
-import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
+VMware IO stress causes disk stress on the target VMware VMs. It aims to verify the resilience of applications that share this disk resource with the VM.
 
-VMware IO stress is a VMware chaos fault that drives disk IO on the Linux VM `VM_NAME` by running `NUMBER_OF_WORKERS` IO worker processes that each consume `FILESYSTEM_UTILIZATION_PERCENTAGE` percent of available filesystem (or `FILESYSTEM_UTILIZATION_BYTES` GB when set) for `TOTAL_CHAOS_DURATION` seconds, then stops the workers. The fault uses VMware Tools (Guest Operations API) to run the stress workload inside the guest as `VM_USER_NAME`.
+![VMware IO Stress](./static/images/vmware-io-stress.png)
 
-Use this fault to test how a workload on a VMware-hosted VM behaves when storage throughput is saturated: whether IO latency stays inside the SLA, whether databases queue writes correctly, whether vSphere DRS reacts to datastore latency, and whether monitoring detects the saturation within the alerting SLA.
-
-:::info Run your first experiment
-If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
+:::info note
+HCE doesn't support injecting VMWare Windows faults on Bare metal server.
 :::
-
----
 
 ## Use cases
 
-Run this fault when you want to answer concrete questions like:
+- VMware IO stress determines the resilience of an application to unexpected spikes in resources.
+- It determines how well an application handles unexpected I/O stress.
+- It simulates slower disk operations by the application.
+- It simulates noisy neighbour problems by hogging the disk bandwidth.
+- It verifies the disk performance on increasing I/O threads and varying I/O block sizes.
+- It checks whether the application functions well under high disk latency conditions.
+- It checks for high I/O traffic that includes large I/O blocks, and in what cases other services monopolize the I/O disks.
 
-- **IO pressure on a vSphere VM:** When disk throughput saturates, does application latency stay inside the SLA?
-- **Database resilience:** Does the database queue writes correctly when fsync latency spikes?
-- **Datastore impact:** Do co-tenant VMs on the same datastore degrade?
-- **Monitoring fidelity:** Do vCenter datastore counters fire alerts inside the SLA?
+### Prerequisites
+- Kubernetes > 1.16 is required to execute this fault.
+- Execution plane should be connected to vCenter and host vCenter on port 443.
+- The VM should be in a healthy state before and after injecting chaos.
+- VMware tool should be installed on the target VM with remote execution enabled.
+- Appropriate vCenter permissions should be provided to access the hosts and the VMs.
+- Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. VM credentials can be passed as secrets or as a `ChaosEngine` environment variable. Below is a sample secret file:
 
----
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: vcenter-secret
+  namespace: litmus
+type: Opaque
+stringData:
+    VCENTERSERVER: XXXXXXXXXXX
+    VCENTERUSER: XXXXXXXXXXXXX
+    VCENTERPASS: XXXXXXXXXXXXX
+```
 
-## Prerequisites
+### Mandatory tunables
 
-- **Kubernetes version:** 1.21 or later for the chaos infrastructure cluster.
-- **vCenter reachable:** The chaos infrastructure can reach `GOVC_URL` over port 443.
-- **VMware Tools running on the guest:** Verify with `vmware-toolbox-cmd -v` inside the VM.
-- **Stress binary installed inside the guest:** Go to [VMware Linux binary installation](/docs/chaos-engineering/faults/chaos-faults/vmware/linux/binary-installation) to install the IO stress prerequisite.
-- **Free space in the target filesystem:** The guest filesystem has enough free space to absorb `FILESYSTEM_UTILIZATION_BYTES` or `FILESYSTEM_UTILIZATION_PERCENTAGE` worth of writes.
-- **vCenter chaos role:** `GOVC_USERNAME` is mapped to the chaos role described in [VMware permissions](/docs/chaos-engineering/faults/chaos-faults/vmware/permissions).
+   <table>
+      <tr>
+        <th> Tunable </th>
+        <th> Description </th>
+        <th> Notes </th>
+      </tr>
+      <tr>
+        <td> VM_NAME </td>
+        <td> Name of the target VM. </td>
+        <td> For example, <code>ubuntu-vm-1</code>. </td>
+      </tr>
+      <tr>
+          <td> VM_USER_NAME </td>
+          <td> Username of the target VM.</td>
+          <td> For example, <code>vm-user</code>. </td>
+      </tr>
+      <tr>
+          <td> VM_PASSWORD </td>
+          <td> User password for the target VM. </td>
+          <td> For example, <code>1234</code>. Note: You can take the password from secret as well. </td>
+      </tr>
+    </table>
 
----
+### Optional tunables
 
-## Supported environments
+   <table>
+      <tr>
+        <th> Tunable </th>
+        <th> Description </th>
+        <th> Notes </th>
+      </tr>
+       <tr>
+        <td> FILESYSTEM_UTILIZATION_PERCENTAGE </td>
+        <td> Specify the size as a percentage of free space on the file system. </td>
+        <td> For example, <code>40</code>. For more information, go to <a href="#filesystem-utilization-percentage"> file system utilization percentage.</a></td>
+      </tr>
+       <tr>
+        <td> FILESYSTEM_UTILIZATION_BYTES </td>
+        <td> Specify the size in gigabytes(GB). FILESYSTEM_UTILIZATION_PERCENTAGE and FILESYSTEM_UTILIZATION_BYTES environment variables are mutually exclusive. If both are provided, FILESYSTEM_UTILIZATION_PERCENTAGE takes precedence. </td>
+        <td> For example, <code>100</code>. For more information, go to <a href="#filesystem-utilization-bytes"> file system utilization bytes. </a></td>
+      </tr>
+       <tr>
+        <td> NUMBER_OF_WORKERS </td>
+        <td> Number of I/O workers involved in I/O disk stress. </td>
+        <td> Defaults to 4. For more information, go to <a href="#workers-for-stress"> workers for stress. </a> </td>
+      </tr>
+       <tr>
+        <td> VOLUME_MOUNT_PATH </td>
+        <td> Location that points to the volume mount path used in I/O stress. </td>
+        <td> For example, <code>/Users/admin/disk-02</code>. For more information, go to <a href="#mount-path"> mount path.</a></td>
+      </tr>
+      <tr>
+        <td> CPU_CORES </td>
+        <td> Number of CPU cores that are subject to CPU stress.</td>
+        <td> Defaults to 1. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/faults/chaos-faults/vmware/linux/vmware-cpu-hog/#cpu_cores"> CPU cores. </a></td>
+        </tr>
+      <tr>
+        <td> TOTAL_CHAOS_DURATION </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
+      </tr>
+      <tr>
+        <td> CHAOS_INTERVAL </td>
+        <td> Time interval between two successive instance terminations (in seconds). </td>
+        <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval. </a></td>
+      </tr>
+      <tr>
+        <td> SEQUENCE </td>
+       <td> Sequence of chaos execution for multiple instances. </td>
+        <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
+      </tr>
+      <tr>
+        <td> RAMP_TIME </td>
+        <td> Period to wait before and after injecting chaos (in seconds). </td>
+        <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
+      </tr>
+      <tr>
+      <td>DEFAULT_HEALTH_CHECK</td>
+      <td>Determines if you wish to run the default health check which is present inside the fault. </td>
+      <td> Default: 'true'. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
+      </tr>
+    </table>
 
-| Platform | Support status |
-| --- | --- |
-| Linux VMs hosted on vSphere / vCenter (any distro with VMware Tools) | Supported |
-| Linux VMs without VMware Tools | Not supported |
-| Windows VMs | Not supported (use [VMware Windows disk stress](/docs/chaos-engineering/faults/chaos-faults/windows/windows-disk-stress)) |
 
----
+### Filesystem utilization percentage
+It specifies the size as a percentage of free space on the file system. Tune it by using the `FILESYSTEM_UTILIZATION_PERCENTAGE` environment variable.
 
-## Permissions required
+Use the following example to tune it:
 
-**On vCenter.** Map `GOVC_USERNAME` to the chaos role described in [VMware permissions](/docs/chaos-engineering/faults/chaos-faults/vmware/permissions). The role needs:
+[embedmd]:# (./static/manifests/vmware-io-stress/vm-io-stress-filesystem-utilization-percentage.yaml yaml)
+```yaml
+# io-stress in the VMware VM
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: VMware-io-stress
+    spec:
+      components:
+        env:
+        # Name of the VM
+        - name: VM_NAME
+          value: 'test-vm-01'
+        # percentage of free space of file system, need to be stressed
+        - name: FILESYSTEM_UTILIZATION_PERCENTAGE
+          value: '10'
+```
 
-- Virtual machine → Guest operations → Program execution, Modifications, Queries.
+### Filesystem utilization bytes
+It specifies the amount of free space on the file system in gigabytes(GB). Tune it by using the `FILESYSTEM_UTILIZATION_BYTES` environment variable. `FILESYSTEM_UTILIZATION_BYTES` is mutually exclusive with the `FILESYSTEM_UTILIZATION_PERCENTAGE` environment variable. If both `FILESYSTEM_UTILIZATION_PERCENTAGE` and `FILESYSTEM_UTILIZATION_BYTES` environment variables are set, `FILESYSTEM_UTILIZATION_PERCENTAGE` takes precedence.
 
-**On the guest OS.** `VM_USER_NAME` must be able to execute the IO stress binary and write into the working directory.
+Use the following example to tune it:
 
----
+[embedmd]:# (./static/manifests/vmware-io-stress/vm-io-stress-filesystem-utilization-bytes.yaml yaml)
+```yaml
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: VMware-io-stress
+    spec:
+      components:
+        env:
+        # Name of the VM
+        - name: VM_NAME
+          value: 'test-vm-01'
+        # size of io to be stressed
+        - name: FILESYSTEM_UTILIZATION_BYTES
+          value: '1' #in GB
+```
+### Mount path
+It specifies the location that points to the volume mount path used in I/O stress. Tune it by using the  `VOLUME_MOUNT_PATH` environment variable.
 
-## Authentication
+Use the following example to tune it:
 
-| Layer | Tunables |
-| --- | --- |
-| vCenter | `GOVC_URL`, `GOVC_USERNAME`, `GOVC_PASSWORD`, `GOVC_INSECURE` |
-| Guest OS | `VM_USER_NAME`, `VM_PASSWORD` |
+[embedmd]:# (./static/manifests/vmware-io-stress/vm-io-stress-filesystem-mount-path.yaml yaml)
+```yaml
+# io-stress in the VMware VM
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: VMware-io-stress
+    spec:
+      components:
+        env:
+        # Name of the VM
+        - name: VM_NAME
+          value: 'test-vm-01'
+        # path need to be stressed/filled
+        - name: VOLUME_MOUNT_PATH
+          value: '/some-dir-in-container'
+        # size of io to be stressed
+        - name: FILESYSTEM_UTILIZATION_BYTES
+          value: '1' #in GB
+```
+### Workers for stress
+It specifies the worker's count for stress. Tune it by using the `NUMBER_OF_WORKERS` environment variable.
+Use the following example to tune it:
 
-Store each credential as a text secret in [Harness Secret Manager](/docs/platform/secrets/add-use-text-secrets) and reference the secret identifier when configuring the experiment.
-
----
-
-## Fault tunables
-
-Configure the following fault parameters when you add VMware IO stress to an experiment in Chaos Studio. Defaults are shown for reference.
-
-**Required parameters**
-
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `VM_NAME` | Name of the target VM as it appears in vCenter. | (required) |
-| `VM_USER_NAME` | OS user account on the target VM. | (required) |
-| `VM_PASSWORD` | Password for `VM_USER_NAME`. | (required) |
-
-**Stress parameters**
-
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `FILESYSTEM_UTILIZATION_PERCENTAGE` | Percentage of available filesystem to write to. Ignored when `FILESYSTEM_UTILIZATION_BYTES` is set. | `10` |
-| `FILESYSTEM_UTILIZATION_BYTES` | Amount of data to write in GB. Takes precedence over `FILESYSTEM_UTILIZATION_PERCENTAGE` when set. | `""` |
-| `NUMBER_OF_WORKERS` | Number of IO worker processes. | `4` |
-| `VOLUME_MOUNT_PATH` | Filesystem path on the guest where the workers write. | `""` (defaults to the working dir of the stress process) |
-
-**Chaos parameters**
-
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `TOTAL_CHAOS_DURATION` | Total duration of the fault in seconds. | `30` |
-| `CHAOS_INTERVAL` | Delay in seconds between iterations. | `10` |
-| `SEQUENCE` | Order in which multiple targets are stressed: `parallel` or `serial`. | `parallel` |
-| `RAMP_TIME` | Wait period in seconds before and after the fault. Go to [ramp time](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time) to read how it is applied. | `0` |
-
-**vCenter authentication**
-
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `GOVC_URL` | vCenter server URL. | `""` |
-| `GOVC_USERNAME` | vCenter user mapped to the chaos role. | `""` |
-| `GOVC_PASSWORD` | Password for `GOVC_USERNAME`. | `""` |
-| `GOVC_INSECURE` | Skip SSL certificate verification when set to `true`. | `true` |
-
-Tunables that apply to every fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
-
----
-
-## Fault execution in brief
-
-Authenticates to vCenter, opens a Guest Operations session on `VM_NAME` as `VM_USER_NAME`, launches `NUMBER_OF_WORKERS` IO workers that write `FILESYSTEM_UTILIZATION_PERCENTAGE` percent of the filesystem (or `FILESYSTEM_UTILIZATION_BYTES` GB) under `VOLUME_MOUNT_PATH` for `TOTAL_CHAOS_DURATION` seconds, then stops the workers and removes the scratch files.
-
----
-
-## Expected behavior during fault execution
-
-- Disk read/write throughput on `VM_NAME` saturates the underlying datastore.
-- Application IO latency may rise.
-- vCenter datastore counters (`datastore.totalWriteLatency.average`, `datastore.numberWriteAveraged.average`) reflect the activity.
-- After the duration ends, the workers exit and IO returns to baseline.
-
-:::info When the fault ends
-The chaos pod stops the IO workers via Guest Operations and removes the scratch files. IO latency and datastore activity return to baseline within seconds.
-:::
-
-### Signals to watch
-
-- **Disk IO:** Use a [Prometheus probe](/docs/resilience-testing/chaos-testing/probes/apm-probes) on `node_disk_io_time_seconds_total` from a node exporter inside the VM.
-- **Application:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) and assert latency stays inside the SLA.
-
----
-
-## Verify the fault execution effect
-
-1. **Inspect vCenter datastore performance.**
-
-   In vCenter UI, open Datastore → Monitor → Performance for the datastore backing the VM.
-
-2. **SSH and run `iostat -x 1`.**
-
-   Throughput on the target disk should spike during the chaos window.
-
----
-
-## Recovery and cleanup
-
-- **End of duration:** The chaos pod stops the workers and removes scratch files via Guest Operations.
-- **Abort the experiment:** Stopping the experiment also stops the workers.
-- **Manual recovery:** SSH and `sudo pkill -f stress-ng`, then `rm -rf` any leftover scratch files under `VOLUME_MOUNT_PATH`.
-
----
-
-## Limitations
-
-- **Disk full risk:** Setting `FILESYSTEM_UTILIZATION_PERCENTAGE` close to 100 can fill the filesystem before the fault ends.
-- **VMware Tools required:** Without VMware Tools, the fault cannot run.
-- **Datastore contention:** Stressing IO can affect co-tenant VMs on the same datastore.
-- **Single VM per run:** Each fault run targets one `VM_NAME`.
-
----
-
-## Troubleshooting
-
-<Troubleshoot
-  issue="VMware IO stress fails with no space left on device in Harness Chaos Engineering"
-  mode="docs"
-  fallback="The chosen VOLUME_MOUNT_PATH does not have enough free space for FILESYSTEM_UTILIZATION_BYTES or FILESYSTEM_UTILIZATION_PERCENTAGE. Use df -h inside the guest to check free space, then either point VOLUME_MOUNT_PATH at a roomier filesystem or reduce the request."
-/>
-
-<Troubleshoot
-  issue="VMware IO stress fails with VMware Tools not running"
-  mode="docs"
-  fallback="The Guest Operations API requires VMware Tools to be installed and running on the target VM. Install or restart open-vm-tools / VMware Tools on the guest and retry."
-/>
-
----
-
-## Related faults
-
-- [VMware CPU hog](/docs/chaos-engineering/faults/chaos-faults/vmware/linux/vmware-cpu-hog): Stress CPU instead of disk IO.
-- [VMware memory hog](/docs/chaos-engineering/faults/chaos-faults/vmware/linux/vmware-memory-hog): Stress memory instead of disk IO.
+[embedmd]:# (./static/manifests/vmware-io-stress/vm-io-stress-filesystem-worker.yaml yaml)
+```yaml
+# io-stress in the VMware VM
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: VMware-io-stress
+    spec:
+      components:
+        env:
+        # Name of the VM
+        - name: VM_NAME
+          value: 'test-vm-01'
+        # number of io workers
+        - name: NUMBER_OF_WORKERS
+          value: '4'
+        # size of io to be stressed
+        - name: FILESYSTEM_UTILIZATION_BYTES
+          value: '1' #in GB
+```

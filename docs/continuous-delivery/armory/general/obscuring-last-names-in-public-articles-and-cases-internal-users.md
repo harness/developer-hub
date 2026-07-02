@@ -1,9 +1,8 @@
 ---
 title: Obscuring Last Names in Public Articles and Cases - Internal Users
 redirect_from:
-  - /docs/continuous-delivery/armory/general/obscuring-last-names-in-public-articles-and-cases---internal-users
+  - /docs/continuous-delivery/armory/general/obscuring-last-names-in-public-articles-and-casesinternal-users
 ---
-
 
 To help with providing privacy options for Armory Employees, Support has added an option to obscure last names and how they are displayed.  This is to give options to employees so that their full names are not available publicly to be scraped from the site, in public articles.
 This is a global change that will affect cases and articles all at once.  It cannot be changed just for KB articles and not for cases and vice versa.  

@@ -2,7 +2,6 @@
 title: Critical Technical Notifications
 ---
 
-
 As a part of being an Armory customer, our crew would like to make sure our customers are well informed of any issues discovered about Armory's products and services.
 At Armory, we have implemented a **Critical Technical Notifications** mailing list.
 This mailing list will provide a direct line of communication with your **Armory Enterprise Environment Administrative team(s)** and advise them about **future discovered critical issues.**

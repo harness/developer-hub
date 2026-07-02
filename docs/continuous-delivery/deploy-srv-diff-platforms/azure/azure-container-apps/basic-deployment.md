@@ -378,7 +378,6 @@ pipeline:
 
 ## Related resources
 
-- [Azure Container Apps Sample Repository](https://github.com/harness-community/harnesscd-example-apps/tree/master/azure-container-apps) - Complete working example with automated setup
 - [Canary Deployment Strategy](canary-deployment.md)
 - [Azure Container Apps Revisions](https://learn.microsoft.com/en-us/azure/container-apps/revisions)
 - [Configure Service and Environment](configure-service-environment.md)

@@ -7,6 +7,7 @@ sidebar_position: 40
 
 <DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
 
+## Introduction 
 
 A Backstage Plugin adds functionality to Backstage. In this tutorial we will be using the backstage monorepo to build out frontend plugins. 
 
@@ -18,8 +19,8 @@ A Backstage Plugin adds functionality to Backstage. In this tutorial we will be 
 
 3. Ensure your plugin uses **React version 17.0.2**, **React DOM version 17.0.2**, and **React Router v6** for compatibility with Harness IDP.
 
-## Create a plugin
-To create a new frontend plugin, make sure you have run `yarn install` and installed dependencies, then run the following on your command line (a shortcut to invoking the [backstage-cli new --select plugin](https://backstage.io/docs/local-dev/cli-commands#new)) from the root of your project.
+## Create a Plugin
+To create a new frontend plugin, make sure you've run `yarn install` and installed dependencies, then run the following on your command line (a shortcut to invoking the [backstage-cli new --select plugin](https://backstage.io/docs/local-dev/cli-commands#new)) from the root of your project.
 
 ```sh
 yarn new --select plugin
@@ -37,15 +38,15 @@ yarn workspace @backstage/plugin-my-plugin start # Also supports --check
 
 This method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads. It is only meant for local development, and the setup for it can be found inside the plugin's `dev/` directory.
 
-## Other plugin library package types
+## Other Plugin Library Package Types
 
-There are other plugin library package types that you can choose from. To be able to select the type when you create a new plugin just run: `yarn new`. You will then be asked what type of plugin you wish to create like this:
+There are other plugin library package types that you can choose from. To be able to select the type when you create a new plugin just run: `yarn new`. You'll then be asked what type of plugin you wish to create like this:
 
-##  Plugin development
+##  Plugin Development
 
 Each plugin is treated as a self-contained web app and can include almost any type of content. Plugins all use a common set of platform APIs and reusable UI components. Plugins can fetch data from external sources using the regular browser APIs or by depending on external modules to do the work.
 
-## Develop guidelines
+## Developing guidelines
 - Consider writing plugins in TypeScript.
 - Plan the directory structure of your plugin so that it becomes easy to manage.
 - Prefer using the [Backstage components](https://backstage.io/storybook), otherwise go with Material UI.
@@ -53,7 +54,7 @@ Each plugin is treated as a self-contained web app and can include almost any ty
 
 ## Plugin concepts / API
 
-### Route
+### Routing
 
 Each plugin can export routable extensions, which are then imported into the app and mounted at a path.
 
@@ -65,7 +66,7 @@ It is best to place these in a separate top-level `src/routes.ts` file, in order
 /* src/routes.ts */
 import { createRouteRef } from '@backstage/core-plugin-api';
 
-// Note: This route ref is for internal use only, do not export it from the plugin
+// Note: This route ref is for internal use only, don't export it from the plugin
 export const rootRouteRef = createRouteRef({
   id: 'Example Page',
 });
@@ -91,7 +92,7 @@ export const examplePlugin = createPlugin({
 export const ExamplePage = examplePlugin.provide(
   createRoutableExtension({
     name: 'ExamplePage',
-    // The component needs to be lazy-loaded. It is what will actually be rendered in the end.
+    // The component needs to be lazy-loaded. It's what will actually be rendered in the end.
     component: () =>
       import('./components/ExampleComponent').then(m => m.ExampleComponent),
     // This binds the extension to this route ref, which allows for routing within and across plugin extensions
@@ -106,9 +107,9 @@ This extension can then be imported and used in the app as follows, typically pl
 <Route path="/any-path" element={<ExamplePage />} />
 ```
 
-## Structure of a plugin
+## Structure of a Plugin
 
-Nice, you have a new plugin! We will soon see how we can develop it into doing great things. But first off, let us look at what we get out of the box.
+Nice, you have a new plugin! We'll soon see how we can develop it into doing great things. But first off, let's look at what we get out of the box.
 
 ### Folder structure
 
@@ -140,7 +141,7 @@ new-plugin/
 ```
 You might note a thing or two. Yes, a plugin looks like a mini project on its own with a `package.json` and a `src` folder. And this is because we want plugins to be separate packages. This makes it possible to ship plugins on NPM and it lets you work on a plugin in isolation, without loading all the other plugins in a potentially big Backstage app.
 
-The `index.ts` files are there to let us import from the folder path and not specific files. It is a way to have control over the exports in one file per folder.
+The `index.ts` files are there to let us import from the folder path and not specific files. It's a way to have control over the exports in one file per folder.
 
 ## Base files
 You get a readme to populate with info about your plugin and a package.json to declare the plugin dependencies, metadata and scripts.
@@ -183,7 +184,7 @@ We have the `ExampleComponent` to show an example Backstage page component. The 
 
 You may tweak these components, rename them and/or replace them completely.
 
-## Connect the plugin to the Backstage app
+## Connecting the plugin to the Backstage app
 
 There are two things needed for a Backstage app to start making use of a plugin.
 
@@ -192,6 +193,6 @@ There are two things needed for a Backstage app to start making use of a plugin.
 
 Luckily both of these steps happen automatically when you create a plugin with the Backstage CLI.
 
-## Talk to the outside world
+## Talking to the outside world
 
 If your plugin needs to communicate with services outside the Backstage environment you will probably face challenges like CORS policies and/or backend-side authorization. To smooth this process out you can use proxy. [Read more](https://backstage.io/docs/plugins/proxying/)

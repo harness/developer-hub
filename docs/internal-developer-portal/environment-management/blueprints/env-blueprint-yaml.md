@@ -9,13 +9,13 @@ toc_max_heading_level: 3
 
 This page covers the complete YAML schema for defining an Environment Blueprint. For a conceptual overview, go to [Overview & Key Concepts](/docs/internal-developer-portal/environment-management/overview). To create a blueprint through the UI, go to [Create an Environment Blueprint](/docs/internal-developer-portal/environment-management/blueprints/create-environment-blueprint).
 
-## Environment blueprint YAML
+## Environment Blueprint YAML
 
 An Environment Blueprint is defined using a **declarative YAML format**. The YAML structure defines infrastructure templates, services, dependencies, and lifecycle management for environments. 
 
 ---
 
-### Core components
+### Core Components
 An environment blueprint YAML has the following core components: 
 
 **1. API Definition**
@@ -43,19 +43,19 @@ spec:
 
 ---
 
-### Entity specification
+### Entity Specification
 
 Each entity in an Environment Blueprint represents a component (infrastructure or service) that will be provisioned or deployed. Entities are the building blocks that define what gets created and how they interact with each other.
 
 ---
 
-#### Entity structure
+#### Entity Structure
 
 Each entity in the blueprint is composed of **2 main parts**:
 
 **1. Backend** - Describes the lifecycle implementation of the entity
 - Defines **how** the entity is provisioned, deployed, or managed
-- Specifies the **backend type** (`HarnessIACM` for infrastructure, `Catalog` or `HarnessCD` for services). Go to [Backend Types](/docs/internal-developer-portal/environment-management/blueprints/env-blueprint-yaml#backend-types) to learn more.
+- Specifies the **backend type** (`HarnessIACM` for infrastructure, `Catalog` for services). Go to [Backend Types](/docs/internal-developer-portal/environment-management/blueprints/env-blueprint-yaml#backend-types) to learn more.
 - Contains configuration values and operational steps
 
 **2. Interface** - Defines how the entity relates to other entities specified in the blueprint
@@ -70,14 +70,14 @@ entities:
     dependencies: []      # List of entities this depends on
     inputs: {}           # User-configurable parameters
   backend:                # Lifecycle implementation
-    type: <backend-type>  # HarnessIACM, Catalog, or HarnessCD
+    type: <backend-type>  # HarnessIACM or Catalog
     values: {}           # Configuration and settings
     steps: {}            # Operational steps (for IaCM)
 ```
 
 ---
 
-#### Entity parameters
+#### Entity Parameters
 
 | Parameter | Type | Description | Example |
 |-----------|------|-----------|---------|
@@ -96,19 +96,19 @@ entities:
 
 | Parameter | Type | Description | Example |
 |-----------|------|-----------|---------|
-| `type` | string | Backend type for entity provisioning | `HarnessIACM`, `Catalog`, `HarnessCD` |
+| `type` | string | Backend type for entity provisioning | `HarnessIACM`, `Catalog` |
 | `values` | object | Configuration settings specific to the backend type | Varies by backend type |
 | `steps` | object | Operational steps for lifecycle management **(IaCM only)** | `{"create": {"template": "MyTemplate"}}` |
 
 ---
 
-### Backend types
+### Backend Types
 
-Environment Blueprints support three main **backend types**:
+Environment Blueprints support two main **backend types**:
 
 ---
 
-#### 1. HarnessIACM backend (infrastructure)
+#### 1. HarnessIACM Backend (Infrastructure)
 
 Used for provisioning infrastructure resources using Infrastructure as Code Management. 
 
@@ -193,7 +193,7 @@ Resources must respect the Harness organizational hierarchy. A project-level env
 
 ---
 
-#### 2. Catalog backend (services)
+#### 2. Catalog Backend (Services)
 
 Used for deploying application services from the IDP catalog.
 
@@ -241,13 +241,6 @@ entities:
 | `variables` | object | Input variables passed to the component | `{"replicas": "${{entity.config.replicas}}"}` |
 | `environment` | object | Target deployment environment specification | See environment parameters below |
 
-:::caution
-The `values.variables` field maps to service-level variables on the Harness Service, not pipeline-level variables. If your deployment pipeline defines variables at the pipeline level (for example, `pipeline.variables.COMMIT_SHA`), those variables cannot be resolved through `values.variables`. Use the [HarnessCD backend](#3-harnesscd-backend-services) instead and pass pipeline variables under `steps.apply.variables`.
-:::
-
-**Environment Parameters (`backend.values.environment`)**
-
-
 **Environment Parameters (`backend.values.environment`)**
 
 | Parameter | Type | Description | Example |
@@ -270,84 +263,13 @@ The `values.variables` field maps to service-level variables on the Harness Serv
 
 ---
 
-#### 3. HarnessCD backend (services)
-
-Used for deploying application services when your deployment pipelines use pipeline-level variables. Unlike the `Catalog` backend type, where `values.variables` maps to service-level variables on the Harness Service, the `HarnessCD` backend type lets you define pipeline variables (for example, `COMMIT_SHA`) directly under `steps.apply.variables`.
-
-In this definition, `backend.type` is set to `HarnessCD`.
-
-**YAML Structure**
-
-```yaml {7}
-entities:
-- identifier: backend
-  interface:
-    dependencies:
-    - identifier: namespace
-  backend:
-    type: HarnessCD
-    values:
-      service: ssem           # Harness CD service identifier
-      variables:                  # Service-level variables (not pipeline-level)
-      environment:
-        identifier: mycluster
-        infra:
-          identifier: ssemteam
-          namespace: my-app-${{env.config.namespace}}
-    steps:
-      apply:
-        pipeline: Deploy
-        variables:                # Pipeline-level variables
-          COMMIT_SHA: ${{env.config.COMMIT_SHA}}
-      destroy:
-        pipeline: Uninstall
-```
-
-**HarnessCD Backend (`backend.values`)**
-
-| Parameter | Type | Description | Example |
-|-----------|------|-------------|---------|
-| `service` | string | Harness CD service identifier | `frontend`, `backend` |
-| `variables` | object | Service-level input variables passed to the Harness Service | `{"IMAGE_TAG": "${{env.config.IMAGE_TAG}}"}` |
-| `environment` | object | Target CD environment specification | See Environment Parameters below |
-
-**Environment Parameters (`backend.values.environment`)**
-
-| Parameter | Type | Description | Example |
-|-----------|------|-------------|---------|
-| `identifier` | string | CD Service Environment identifier where the service will be deployed | `mycluster` |
-| `infra` | object | Infrastructure specification within the environment | See infra parameters below |
-
-**Infrastructure Parameters (`backend.values.environment.infra`)**
-
-| Parameter | Type | Description | Example |
-|-----------|------|-------------|---------|
-| `identifier` | string | Infrastructure identifier | `ssemteam` |
-| `namespace` | string | Kubernetes namespace for the deployment (supports templating) | `my-app-${{env.config.name}}` |
-
-**HarnessCD Backend Steps (`backend.steps`)**
-
-| Step | Required | Description | Parameters |
-|------|----------|-------------|------------|
-| `apply` | Yes | Deploys the service using the specified pipeline | `pipeline`, `variables` |
-| `destroy` | Yes | Removes the deployed service using the specified pipeline | `pipeline` |
-
-**Step Parameters (`backend.steps.apply`)**
-
-| Parameter | Type | Description | Example |
-|-----------|------|-------------|---------|
-| `pipeline` | string | Deploy pipeline identifier | `Deploy` |
-| `variables` | object | Pipeline-level variables passed directly to the pipeline at execution time | `{"COMMIT_SHA": "${{env.config.COMMIT_SHA}}"}` |
-
----
-
 ### Configure TTL (time-to-live)
 
 You can configure TTL for environments in the environment blueprint. Defining a TTL specifies how long an environment can run before it is **automatically paused**. This helps control costs and prevents lingering environments.
 
-Based on the TTL specification, there are two environment types: **Ephemeral** and **Long-lived**. Go to [Types of Environments](/docs/internal-developer-portal/environment-management/environments#types-of-environments) to learn more.
+Based on the TTL specification, there are two environment types: **Ephemeral** and **Long-lived**. Go to [Types of Environments](/docs/internal-developer-portal/environment-management/environments.md#types-of-environments) to learn more.
 
-#### Set TTL in an environment blueprint
+#### Set TTL in an Environment Blueprint
 
 To define a TTL, add the `spec.ttl` field to the environment blueprint YAML. The `ttl` field is specified as follows:
 
@@ -412,7 +334,7 @@ Platform engineers can use Harness OPA governance to enforce TTL requirements ac
 
 ---
 
-### Blueprint outputs
+### Blueprint Outputs
 
 A blueprint can define an `outputs` block under `spec` to expose values from its entities once the environment is provisioned. These values appear in the **Outputs** tab of the environment detail page and can be referenced by other environments using cross-environment output syntax.
 
@@ -464,11 +386,11 @@ For IaCM entities, output values are sourced from Terraform outputs of the works
 ---
 
 
-### YAML templating system
+### YAML Templating System
 
 Environment Blueprints use a powerful templating system for dynamic configuration:
 
-#### Template variables
+#### Template Variables
 
 | Variable Type | Format | Description |
 |---|---|---|
@@ -477,7 +399,7 @@ Environment Blueprints use a powerful templating system for dynamic configuratio
 | Entity Output | `${{entity.<id>.output.<path>}}` | Reference an output from an entity in this blueprint. For a specific pipeline stage and step: `${{entity.<id>.<stage>.<step>.output.<path>}}` |
 | Dependency Output | `${{dependencies.<id>.output.<path>}}` | Reference an output from a dependent entity. For a specific pipeline stage and step: `${{dependencies.<id>.<stage>.<step>.output.<path>}}` |
 
-#### Example usage
+#### Example Usage
 
 ```yaml
 # Dynamic workspace naming
@@ -496,7 +418,7 @@ Output values are populated once environment entities finish provisioning (IaCM 
 
 ---
 
-### Scope & hierarchy
+### Scope & Hierarchy
 Environment Blueprints can be created at the **account**, **organization**, or **project** scope. The scope is determined by the `orgIdentifier` and `projectIdentifier` fields in the blueprint YAML:
 
 - A blueprint with no `orgIdentifier` or `projectIdentifier` is created at the **account scope**.
@@ -506,7 +428,7 @@ Environment Blueprints can be created at the **account**, **organization**, or *
 Environments are currently created at the **project scope**. However, an environment can reference a blueprint from its own project scope, its parent org scope, or the account scope.
 
 
-#### Reference blueprints from environments
+#### Reference Blueprints from Environments
 
 When an environment references a blueprint, the blueprint identifier uses a scope prefix to indicate which scope the blueprint belongs to:
 
@@ -520,7 +442,7 @@ Existing environments that referenced blueprints without a scope prefix have bee
 
 In an environment blueprint, all the entities, workspace templates, pipelines, etc. are also created at the **project scope**.
 
-#### Environment management RBAC
+#### Environment Management RBAC
 
 Harness IDP provides granular Role-Based Access Control (RBAC) for environment management, allowing you to control who can view, create, edit, or delete environment blueprints and environments. The RBAC model follows the Harness platform hierarchy with different scopes for blueprints and environments.
 
@@ -557,12 +479,12 @@ To configure access control for environment management:
    - Assign the role and resource group to users or user groups
 
 :::tip
-For more information on configuring RBAC in Harness, refer to the [RBAC documentation](/docs/platform/role-based-access-control/rbac-in-harness).
+For more information on configuring RBAC in Harness, refer to the [RBAC documentation](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness).
 :::  
 
 ---
 
-### Example blueprint YAML
+### Example Blueprint YAML
 
 ```yaml
 apiVersion: harness.io/v1
@@ -662,7 +584,7 @@ spec:
 
 ---
 
-## Create environment blueprints
+## Create Environment Blueprints
 
 For a step-by-step UI walkthrough of the blueprint creation flow, go to [Create an Environment Blueprint](/docs/internal-developer-portal/environment-management/blueprints/create-environment-blueprint).
 

@@ -13,6 +13,7 @@ tags:
   - aggregation
 ---
 
+## Introduction
 
 Aggregation rules roll up data from lower-level entities (such as services and components) to higher levels in your organizational hierarchy: project, organization, account, or system. The result is ingested as a new metadata property on the target hierarchy entity, which you can surface using a [StatsCard](/docs/internal-developer-portal/layout-and-appearance/catalog#statscard) in the catalog layout.
 
@@ -24,7 +25,7 @@ This feature requires the **`IDP_AGGREGATION_RULES`** feature flag to be enabled
 
 ---
 
-## Aggregation types
+## Aggregation Types
 
 ![Aggregate Values Shown as StatCards](./static/aggregate-cards.png)
 
@@ -37,7 +38,7 @@ If you are tracking a specific engineering measurement, use Metric. If a scoreca
 
 ---
 
-## System-of-Systems hierarchy
+## System-of-Systems Hierarchy
 
 When you select **System** as a roll-up scope and the entities being aggregated are themselves systems (not just components), the aggregation supports **system-of-systems** hierarchies.
 
@@ -57,15 +58,15 @@ Always configure your system-of-systems hierarchy as a directed acyclic graph. I
 
 ---
 
-## Manage aggregation rules
+## Manage Aggregation Rules
 
 Navigate to **Configure** → **Aggregation Rules** to view, edit, and manage all rules.
 
-### Compute on demand
+### Compute on Demand
 
 Click the **⋮** menu next to a rule and select **Compute** to trigger a manual recomputation. This is useful before a demo or review when you want the latest values without waiting for the next automatic run.
 
-### Edit a rule
+### Edit a Rule
 
 1. Click **⋮** → **Edit**.
 2. Make your changes.
@@ -73,7 +74,7 @@ Click the **⋮** menu next to a rule and select **Compute** to trigger a manual
 
 The rule recomputes automatically after saving.
 
-### Delete a rule
+### Delete a Rule
 
 1. Click **⋮** → **Delete**.
 2. Confirm the deletion.
@@ -84,7 +85,7 @@ Deleting an aggregation rule removes all aggregated values that rule created fro
 
 ---
 
-## Frequently asked questions
+## Frequently Asked Questions
 
 <details>
 <summary>Where does the aggregated value actually live?</summary>

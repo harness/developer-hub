@@ -2,7 +2,6 @@
 title: Compliance and Auditing
 ---
 
-
 Question:
 How can Spinnaker help me with Compliance and Auditing around my deployments?
 Answer:

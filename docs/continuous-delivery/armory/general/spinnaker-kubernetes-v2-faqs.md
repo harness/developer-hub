@@ -2,7 +2,6 @@
 title: Spinnaker Kubernetes V2 FAQs
 ---
 
-
 How to Create a Pipeline in Kubernetes V2 with Spinnaker?
 Generally speaking, to create a Kubernetes V2 pipeline, you would create a ‘deployment’ manifest for your server group. You can store it in either GitHub, S3, or GCS. In the pipeline you can configure it to trigger when there is a change. Details to each can be found in the OSS docs.
 You can find more details [here](https://www.spinnaker.io/reference/providers/kubernetes-v2/#using-externally-stored-manifests).

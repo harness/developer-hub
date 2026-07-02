@@ -8,7 +8,6 @@ redirect_from:
   - /docs/security-testing-orchestration/get-started/key-concepts/output-variables
 ---
 
-
 import StoConceptOutputVariables from '/docs/security-testing-orchestration/get-started/shared/output-variables.md';
 
 

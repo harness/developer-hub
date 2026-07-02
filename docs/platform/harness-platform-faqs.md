@@ -512,6 +512,12 @@ Yes, Harness provides support for Okta and Azure OneLogin out of the box, but yo
 
 Perform a sync within Okta to resolve the user limit error during Harness provisioning.
 
+### Why do I get an error for my Jit-provisioned user when I try to update via SCIM?
+
+If you're utilizing SCIM, Harness recommends that you provision your users exclusively through SCIM rather than Just-In-Time (JIT) provisioning. This is because when a user is initially provisioned, their fields are updated according to the method of initial provisioning.
+
+To resolve the issue, remove and then re-add the user, ensuring that they are now managed by SCIM.
+
 ### What could be the potential reasons for encountering errors when utilizing a Harness-created user group Single Sign-On (SSO) link, particularly when the identical group is pushed from SCIM?
 
 This is expected behavior because the user group is linked to an SSO group through group authorization, making it unmanageable via SCIM.
@@ -631,6 +637,18 @@ If you have multiple Harness instances and use the Azure SAML app, it is possibl
 
 To prevent this, make sure to specify the Entity ID below the Authorization when creating the SAML app integration in the Harness UI. This is especially important if you have both sandbox and production Harness instances.
 
+### How does JIT provisioning work for SAML SSO users?
+
+Harness supports Just-in-Time (JIT) provisioning, automatically provisioning new users when they sign in with their SAML SSO credentials for the first time. To use JIT provisioning, ensure the feature flag `PL_ENABLE_JIT_USER_PROVISION` is enabled for the account. For more information, go to [Just-in-time user provisioning](https://developer.harness.io/docs/platform/role-based-access-control/provision-use-jit/).
+
+### Do user permissions in Harness with JIT provisioning and SAML authentication inherit from the SAML provider, or do they require separate configuration in the Harness Account?
+
+No, user permissions in Harness with JIT provisioning and SAML authentication do not inherit from the SAML provider. Permissions need to be explicitly configured in the Harness Account. The JIT provisioning process ensures that users are dynamically created in Harness based on SAML authentication, but their permissions within Harness need to be set up independently.
+
+### Does Harness support permission mapping or inheritance from external systems in any Single Sign-On (SSO) model?
+
+No, Harness does not support permission mapping or inheritance from external systems, including in various Single Sign-On (SSO) models. User permissions must be explicitly configured within the Harness Account, and as of now, there is no support for permission discovery or synchronization from external systems. All permissions need to be manually configured within the Harness Account.
+
 ### When I switch my Harness account, I get a login prompt, captcha, and the message "too many invalid login attempts, account blocked" despite having no invalid login attempts. Why does this happen?
 
 This issue may arise due to several reasons:
@@ -639,6 +657,18 @@ This issue may arise due to several reasons:
 - Resetting Password: It is possible that when you attempt to reset your password, it only affects the login attempt value in one cluster and not the other one. This discrepancy in the reset process can lead to login issues.
 
 Ensure you are properly authenticated when switching accounts.
+
+### Why can't users log in the first time  after adding Just in time (JIT) user provisioning?
+
+The issue occurs after a user is set up via JIT the first time and tries to sign in via the Harness URL (`app.harness.io`) directly.
+
+First, the user needs to go to the SAML SSO app and select the Harness icon tile. This provisions the user in the Harness UI.
+
+For more information, go to [Just-in-time user provisioning](/docs/platform/role-based-access-control/provision-use-jit/).
+
+### Why does a user lose access to user groups when they sign in to Harness using SAML?
+
+This situation can occur with SAML-based linked user groups because the SAML-based user group synchronization always occurs when the user logs in. Therefore, if there were any changes made from the SAML SSO Group Claims or if the group was removed from the app, the synchronization will take place at the next login.
 
 ### If a user is blocked because entry wasn't cleared for their prod2 account from gateway, how can the user log in?
 
@@ -2265,6 +2295,14 @@ Enabling the flags (`PL_HIDE_PROJECT_LEVEL_MANAGED_ROLE` and `PL_HIDE_ORGANIZATI
 
 Yes, this feature is currently behind the feature flags `PL_HIDE_PROJECT_LEVEL_MANAGED_ROLE` and `PL_HIDE_ORGANIZATION_LEVEL_MANAGED_ROLE`. Contact[Harness Support](mailto:support@harness.io) to enable the feature.
 
+### What is Just-in-time (JIT) user provisioning?
+
+Automated provisioning eliminates repetitive tasks related to manual provisioning and simplifies user management.
+
+Just-in-time (JIT) provisioning in Harness lets you provision users automatically when they first sign-in to Harness through SAML SSO. Harness supports JIT provisioning only for new users logging in through an IdP, such as Okta.
+
+JIT is currently behind the feature flag `PL_ENABLE_JIT_USER_PROVISION`.
+
 ### Is way to find the enabled and all available feature flags in the UI?
 
 This feature will be available in an upcoming release.
@@ -2940,6 +2978,10 @@ This will restore the original multi-line format. For more details, refer to the
 
 ## Security
 
+### Does JIT provisioning still initiate an email to the user for confirmation or password creation?
+
+No, the JIT provisioning feature does not send emails for confirmation or password creation. The sign up process is completed without the need for an invite.
+
 ### How is data stored between different tenants/accounts in Harness?
 
 Data between different tenants/accounts in Harness is stored in isolated data stores, ensuring that each tenant's/account's data remains separate and secure. The multi-tenant architecture of Harness provides this isolation. Furthermore, data is encrypted at rest, meaning that the databases encrypt the data at the disk level to enhance security. This encryption ensures that even if physical access to the storage is obtained, the data would still be protected.
@@ -2949,6 +2991,10 @@ Regarding the handling of secrets, they are evaluated at runtime within the dele
 ### In network security policies, which Harness IPs do I need to allowlist to connect to Harness?
 
 For a list of Harness IPs to allow, go to [Allowlist Harness domains and IPs](https://developer.harness.io/docs/platform/references/allowlist-harness-domains-and-ips).
+
+### What should we put (if anything) in the "JIT Validation Key" and "JIT Validation Value" fields when JIT provisioning is enabled in SAML?
+
+You have the option to leave this field blank since it's not mandatory. Alternatively, you can specify a Key (also known as a SAML attribute) along with its expected value. This flexibility allows for selective user provisioning via JIT authentication, accommodating users who may or may not provide this defined attribute.
 
 ### What is the default entityID (audience restriction) the Service Provider endpoint (ACS URL) uses when not defined?
 

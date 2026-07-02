@@ -1,9 +1,8 @@
 ---
 title: ServiceNow - Attaching KB Articles
 redirect_from:
-  - /docs/continuous-delivery/armory/general/servicenow---attaching-kb-articles
+  - /docs/continuous-delivery/armory/general/servicenowattaching-kb-articles
 ---
-
 
 Attaching KB Articles to a Case (newly created or old)
 Attaching KB articles advises about how useful our KBs are currently. This can be done at any time during the case, but definitely needs to be reviewed and completed at the end of a case

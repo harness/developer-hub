@@ -1,0 +1,13 @@
+{
+    "label": "Tutorials and Use Cases",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Dashboards"
+    },
+    "customProps": {
+        "position": "To position the category, enter a number and move this to the root level."
+    }
+}

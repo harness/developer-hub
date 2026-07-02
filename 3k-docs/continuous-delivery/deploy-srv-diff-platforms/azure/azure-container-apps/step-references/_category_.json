@@ -1,0 +1,8 @@
+{
+  "label": "Step References",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "description": "Step references for Azure Container Apps deployment steps."
+  }
+}

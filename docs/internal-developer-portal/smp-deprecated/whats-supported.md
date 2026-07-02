@@ -1,24 +1,24 @@
 ---
-title: Overview & What is Supported
+title: Overview & What's Supported
 sidebar_position: 1
-sidebar_label: Overview & What is Supported
+sidebar_label: Overview & What's Supported
 description: Guide for configuring and deploying Harness IDP in Self Managed Platform environments
 unlisted: true
 ---
 
 :::info Harness IDP SMP Edition [BETA]
-Harness IDP Self-Managed Platform (SMP) Edition is currently in **BETA**. Refer to the [Harness IDP Release Notes](/release-notes/internal-developer-portal) to keep track of new feature updates and improvements.
+Harness IDP Self-Managed Platform (SMP) Edition is currently in **BETA**. Please refer to the [Harness IDP Release Notes](/release-notes/internal-developer-portal) to keep track of new feature updates and improvements.
 :::
 
-## Harness IDP SMP edition
-[Harness Self-Managed Enterprise Edition](/docs/self-managed-enterprise-edition/smp-overview) is an on-premises solution that allows you to install and run Harness on your own infrastructure. It gives you full control over data, security, and compliance while leveraging Harness’s software delivery capabilities. **Harness IDP** is available for the **Self-Managed Enterprise Edition**. This means you can use Harness IDP with the SMP version on your own infrastructure.
+## Harness IDP SMP Edition
+[Harness Self-Managed Enterprise Edition](https://developer.harness.io/docs/self-managed-enterprise-edition/smp-overview) is an on-premises solution that allows you to install and run Harness on your own infrastructure. It gives you full control over data, security, and compliance while leveraging Harness’s software delivery capabilities. **Harness IDP** is available for the **Self-Managed Enterprise Edition**. This means you can use Harness IDP with the SMP version on your own infrastructure.
 
 
 ### Architecture 
 
 ![](./static/smp-release-1.png)
 
-#### PostgreSQL databases created by IDP
+#### PostgreSQL Databases created by IDP
 
 IDP creates multiple **per-plugin databases** in PostgreSQL. Each database name is **prefixed with your Harness account ID**.
 
@@ -38,10 +38,10 @@ IDP creates multiple **per-plugin databases** in PostgreSQL. Each database name 
 
 > **Note:** The exact set can vary based on which plugins are enabled. Some plugins may create their **own additional databases**.
 
-#### PostgreSQL configuration
+#### PostgreSQL Configuration
 - If `postgresql.enabled` is `true` in your setup, IDP will reuse the **in-cluster PostgreSQL instance** and default chart credentials will be used automatically.
 - If `postgresql.enabled` is `false`, provide external PostgreSQL credentials in the following format:
-```yaml
+```
 postgres:
   ## - protocol to use for connection
   protocol: ''
@@ -70,7 +70,7 @@ postgres:
 
 ---
 
-## Supported infrastructure
+## Supported Infrastructure
 :::warning GKE Cluster Required
 Harness IDP SMP Beta is **only supported on Google Kubernetes Engine (GKE)** clusters.
 :::
@@ -96,7 +96,7 @@ If your setup integrates with third-party SaaS products (for example, PagerDuty,
 
 ---
 
-## Supported features
+## Supported Features
 
 The following features are supported for Harness IDP SMP Edition:
 
@@ -114,5 +114,5 @@ The following features are supported for Harness IDP SMP Edition:
 
 ---
 
-## Next steps
+## Next Steps
 Go to [Onboarding Guide](/docs/internal-developer-portal/smp-deprecated/idp-onboarding.md) to learn how to deploy Harness IDP on SMP.

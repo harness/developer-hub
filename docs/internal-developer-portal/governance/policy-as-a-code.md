@@ -6,20 +6,21 @@ sidebar_position: 20
 
 ## Before you begin
 
-1. [Harness Governance Overview](/docs/platform/governance/policy-as-code/harness-governance-overview)
-2. [Harness Governance Quickstart](/docs/platform/governance/policy-as-code/harness-governance-quickstart)
+1. [Harness Governance Overview](https://developer.harness.io/docs/platform/governance/policy-as-code/harness-governance-overview)
+2. [Harness Governance Quickstart](https://developer.harness.io/docs/platform/governance/policy-as-code/harness-governance-quickstart)
 3. Policies use OPA authoring language **Rego**. For more information, go to [OPA Policy Authoring](https://academy.styra.com/courses/opa-rego).
 
+## Introduction
 
 Harness Policy As Code uses [Open Policy Agent (OPA)](https://www.openpolicyagent.org/) as the central service to store and enforce policies for the different entities and processes across the Harness platform.
 
 You can centrally define and store policies and then select where (which entities) and when (which events) they will be applied.
 
-## Examples with Harness OPA using scorecards
+## Examples with Harness OPA using Scorecards
 
 Presently we support two set of OPA Policies that could be applied to any CD pipeline. 
 
-### Example A: Pipeline > on save (policy used: IDP scorecard)
+### Example A: Pipeline > On Save (Policy Used: IDP Scorecard)
 
 When a Pipeline is saved, the service used in the pipeline should have a score more than the set limit, before being able to save the pipeline.
 
@@ -49,7 +50,7 @@ In the REGO script we use `stage.spec.idpScorecard.orderService[_]` to fetch the
 
 #### Success: 
 
-Check the Score for the service you are using in your pipeline to be above the set limit so that when you save the Pipeline, the policy rule is evaluated and returns success.
+Check the Score for the service you're using in your pipeline to be above the set limit so that when you save the Pipeline, the policy rule is evaluated and returns success.
 
 #### Warning: 
 
@@ -59,7 +60,7 @@ A warning message appears: Your Score for the service used needs to be more than
 
 You configure a Pipeline with a Deploy stage that deploys to a prod environment with a service having Score less than the set limit. When you save the Pipeline, Harness throws an error message indicating the rule was enforced and the Pipeline fails validation.
 
-### Example B: Pipeline > on run (policy used: IDP scorecard for multi service )
+### Example B: Pipeline > On Run (Policy Used: IDP Scorecard For Multi Service )
 
 On deployment, I need all the services used in my pipeline to have a Score above 50.
 

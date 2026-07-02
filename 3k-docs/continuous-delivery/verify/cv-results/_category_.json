@@ -1,0 +1,11 @@
+{
+  "label": "Understand Verification Results",
+  "position": 50,
+  "collapsible": "true",
+  "collapsed": "true",
+  "link": {
+    "type": "generated-index",
+    "title": "Understand Verification Results",
+    "description": "Learn how to interpret verification results, analyze metrics and logs, understand the verification dashboard, and provide feedback to improve future verifications."
+  }
+}

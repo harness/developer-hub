@@ -12,10 +12,10 @@ The frontend of **Harness IDP workflows** can be customized to accept different 
 
 A well-structured frontend improves the user experience by ensuring the right input types and validations. There are various input types and validation use cases. Let’s explore them in detail.
 
-## Define workflow inputs
-You can define workflow inputs using the `spec.parameters` property in your `workflow.yaml`. Parameters are specified at the beginning of a workflow YAML file and define the inputs required from the user. These inputs allow users to pass values, such as repository names, versions, or other configurable items, that can be referenced throughout the workflow.
+## Defining Workflow Inputs
+You can define workflow inputs using the `spec.parameters` property in your `workflow.yaml`. Parameters are specified at the beginning of a workflow YAML file and define the inputs required from the user. These inputs allow users to pass values—such as repository names, versions, or other configurable items—that can be referenced throughout the workflow.
 
-### YAML syntax
+### YAML Syntax
 
 #### Example YAML
 ```YAML
@@ -40,7 +40,7 @@ parameters:
           - production
         description: The environment for deployment
 ```
-#### YAML breakdown
+#### YAML Breakdown
 - **`parameters`**: This key holds an array of parameter definitions. Each parameter is defined as an object that specifies its title, type, and additional details, such as whether it is required or has specific options like enums (choices).  
 
   - **`title`**: The title of the input form displayed in the frontend when prompting the user for input.  
@@ -55,11 +55,11 @@ parameters:
     - **`enum`**: A list of predefined options the user can choose from, useful for fields like deployment environments (e.g., dev, staging, production).  
     - **`ui:widget`**: Specifies the UI element used for input (e.g., text field, dropdown).  
 
-## Customize workflow header and button text
+## Customizing Workflow Header and Button Text
 
 You can customize the workflow's header title, subtitle, and the create button text to provide a more personalized and context-specific experience for users. This is done using the `spec.presentation` property in your `workflow.yaml`.
 
-### YAML syntax
+### YAML Syntax
 
 ```YAML
 spec:
@@ -69,7 +69,7 @@ spec:
     customCreateButtonText: Deploy Now
 ```
 
-### Configuration options
+### Configuration Options
 
 - **`customTitle`**: Customizes the main title/header displayed at the top of the workflow form. This replaces the default workflow title.
 - **`customSubTitle`**: Adds a descriptive subtitle below the main title to provide additional context about the workflow's purpose.
@@ -79,10 +79,10 @@ These customizations help make your workflows more user-friendly and aligned wit
 
 ![](../static/workflow-cta.png)
 
-## Input types
+## Input Types
 Here are the different ways to design form inputs in IDP workflows:
 
-### Static inputs
+### Static Inputs
 **Static inputs** are fields where users manually enter their details as defined in the frontend. These inputs come in various types:
 
 - `string` – Single-line text input
@@ -94,7 +94,7 @@ Here are the different ways to design form inputs in IDP workflows:
 - `object` – Key-value pair inputs
 - `password` – Masked input for sensitive values
 
-### Dynamic inputs
+### Dynamic Inputs
 **Dynamic inputs** are fields that automatically retrieve data from external sources or runtime context, eliminating the need for manual entry.
 
 1. **[Harness-Specific UI Pickers](/docs/internal-developer-portal/flows/create-workflow/flows-input#harness-specific-ui-pickers)**
@@ -114,7 +114,7 @@ Here are the different ways to design form inputs in IDP workflows:
     - `Dynamic API Picker` – Fetch options dynamically via an API request
     - `Autocomplete Fields` – Suggestions based on previous inputs or external data fetched using Dynamic API Picker. 
 
-## Workflows playground
+## Workflows Playground
 :::caution
 The Workflows Playground **does not render accurate previews** for **advanced user inputs** and **complex use cases** such as conditional fields or complex input formats. It is recommended to use the editor only for **lightweight input previews**. For accurate validation of **advanced inputs**, test the Workflow Form Inputs in an **actual Workflow execution**.
 :::
@@ -125,11 +125,11 @@ Harness IDP also provides a **built-in editor** to help you build your **Workflo
 
 For more information on **accessing the Workflow Playground**, check out the details [here](/docs/internal-developer-portal/flows/workflowyaml).
 
-## Input examples
+## Input Examples
 
 ### Simple text input
 
-#### Basic input
+#### Basic Input
 
 Basic form inputs allow users to enter structured data while ensuring it meets predefined rules. You can enforce limits such as character counts, patterns, and UI hints to guide users in filling out the form accurately.
 
@@ -221,7 +221,7 @@ Example [`workflows.yaml`](https://github.com/harness-community/idp-samples/blob
 
 #### Array with distinct values
 
-Values mentioned under `enum` needs to be distinct, duplicate values are not allowed under `enum`.
+Values mentioned under `enum` needs to be distinct, duplicate values aren't allowed under `enum`.
 
 <details>
 <summary>Example YAML</summary>
@@ -325,7 +325,7 @@ parameters:
 
 ![](../static/multi-option-arrays.png)
 
-#### Array with custom objects
+#### Array with Custom Objects
 
 This allows users to enter an **array of complex objects**, each containing multiple fields. It supports adding, removing, and reordering objects dynamically.
 
@@ -377,7 +377,7 @@ parameters:
 ![](../static/template-arrays-multipleobjects.png)
 
 
-### Comparison table of array input types  
+### Comparison Table of Array Input Types  
 
 The table compares array input types based on key features:
 
@@ -396,7 +396,7 @@ The table compares array input types based on key features:
 | **User-friendly Labels** (`enumNames`) | ❌ | ✅ | ❌ | ✅ |
 
 
-#### Pass an array of inputs to a Harness pipeline 
+#### Pass an Array of Inputs to a Harness Pipeline 
 
 Harness Pipelines only support three variable types:
 
@@ -449,7 +449,7 @@ You want users to select multiple values from a `enum` list, and then pass those
 
 Boolean inputs allow users to select between true/false or yes/no values in forms. These inputs are useful for enabling/disabling features, selecting configuration options, and making binary choices.
 
-#### Basic boolean (checkbox input)
+#### Basic Boolean (Checkbox Input)
 
 A simple **checkbox** allows users to toggle a setting on/off.
 
@@ -464,7 +464,7 @@ parameters:
 
 ![](../static/template-checkbox-boolean.png)
 
-#### Boolean yes or no options (radio button)
+#### Boolean Yes or No options (Radio Button)
 
 Instead of a checkbox, you can use radio buttons for a clearer Yes/No selection.
 
@@ -508,7 +508,7 @@ parameters:
 
 ![](../static/template-boolean-multiselect.png)
 
-#### When to use each boolean input type
+#### When to Use Each Boolean Input Type
 
 | **Input Type**            | **Best Use Case**           | **Example Scenario**                |
 |---------------------------|----------------------------|--------------------------------------|
@@ -516,15 +516,15 @@ parameters:
 | **Radio Button Boolean**   | Explicit Yes/No choice     | Confirming a deletion               |
 | **Multi-Select Boolean**   | Selecting multiple options | Enable multiple monitoring features |
 
-## Workflow UI pickers
+## Workflow UI Pickers
 
 User input is a crucial aspect of Workflows. However, built-in components and fields may not always meet specific requirements, and at times, you may want to enhance the form with more intuitive and tailored inputs.  
 
 This is where **Workflow UI Pickers** come in.
 
-### Harness specific UI pickers
+### Harness Specific UI Pickers
 
-### 1. `EntityFieldPicker` (fetch values from catalog)
+### 1. `EntityFieldPicker` (Fetch values from catalog)
 
 The `EntityFieldPicker` can be used to fetch information for workflows that are already defined in the catalog, such as data under `metadata.annotations`. 
 
@@ -794,7 +794,7 @@ userGroup:
     includeChildScopes: true
 ```
 
-#### Dependencies with organization and Project pickers
+#### Dependencies with Organization and Project Pickers
 
 The user group list updates automatically when the user selects an organization or project using `dependencies`:
 
@@ -908,7 +908,7 @@ owner:
 
 #### `defaultNamespace`
 
-Default namespace for entities. Entities in this namespace will not show namespace prefix.
+Default namespace for entities. Entities in this namespace won't show namespace prefix.
 
 ```yaml
 owner:
@@ -920,7 +920,7 @@ owner:
     defaultNamespace: default
 ```
 
-### Other UI pickers
+### Other UI Pickers
 
 ### 1. `OwnerPicker`
 
@@ -1233,7 +1233,7 @@ entity:
     defaultNamespace: payment
 ```
 
-### Repository picker
+### Repository Picker
 
 To simplify working with repository providers, we’ve built a custom picker that can be used by overriding the `ui:field` option in the `uiSchema` for a `string` field. Instead of displaying a standard text input, this picker renders a custom component that allows users to easily select a repository provider and enter details like project/owner and repository name.  
 
@@ -1281,11 +1281,11 @@ specific set of repository names. A full example could look like this:
           - backstage
 ```
 
-For a list of all possible `ui:options` input props for `RepoUrlPicker`, visit [here](https://backstage.io/docs/features/software-templates/ui-options-examples/).
+For a list of all possible `ui:options` input props for `RepoUrlPicker`, please visit [here](https://backstage.io/docs/features/software-templates/ui-options-examples/).
 
-#### Use the users `oauth` token
+#### Using the Users `oauth` token
 
-There is a little extra magic that you get out of the box when using the
+There's a little extra magic that you get out of the box when using the
 `RepoUrlPicker` as a field input. You can provide some additional options under
 `ui:options` to allow the `RepoUrlPicker` to grab a `oauth` token for the user
 for the required `repository`.
@@ -1321,7 +1321,7 @@ spec:
           type: string
           ui:field: RepoUrlPicker
           ui:options:
-            # Here is the option you can pass to the RepoUrlPicker
+            # Here's the option you can pass to the RepoUrlPicker
             requestUserCredentials:
               secretsKey: USER_OAUTH_TOKEN
               additionalScopes:
@@ -1341,7 +1341,7 @@ spec:
         allowedHosts: ['github.com']
         description: This is ${{ parameters.name }}
         repoUrl: ${{ parameters.repoUrl }}
-        # here is where the secret can be used
+        # here's where the secret can be used
         token: ${{ secrets.USER_OAUTH_TOKEN }}
 
     ...
@@ -1357,12 +1357,12 @@ will see that there is an additional `input` field into the `publish:github`
 action called `token`, in which you can use the `secret` like so:
 `token: ${{ secrets.USER_OAUTH_TOKEN }}`.
 
-There is also the ability to pass additional scopes when requesting the `oauth`
+There's also the ability to pass additional scopes when requesting the `oauth`
 token from the user, which you can do on a per-provider basis, in case your Workflow can be published to multiple providers.
 
 Note, that you will need to configure a **connector** for your source code management (SCM) service to make this feature work.
 
-## Conditional inputs
+## Conditional Inputs
 
 Workflows support dynamic parameter handling using conditional logic. You can control how inputs are assigned based on specific conditions, allowing for greater flexibility in user selections and workflow execution.
 
@@ -1487,7 +1487,7 @@ allOf:
 
 ![](../static/template-conditional-all-of.png)
 
-3. **`Any Of`**: Helps you to select from multiple properties where both cannot be selected together at once.
+3. **`Any Of`**: Helps you to select from multiple properties where both can't be selected together at once.
 
 Example [`workflows.yaml`](https://github.com/harness-community/idp-samples/blob/4215c82f933af1d3c1675b89baa2f042e83a60a2/workflow-examples/conditional-any-of.yaml#L31-L46)
 
@@ -1647,10 +1647,10 @@ dependencies:
 What Happens Here?
 - If a user selects `s3` or `vpc`, then `Operationtype` must also be provided.
 - The `dependencies` field ensures `Operationtype` is only required when `resource_type` is `s3` or `vpc`.
-- The use of `$ref: "#/myregion/operation"` allows referencing another part of the YAML file, ensuring DRY (Do not Repeat Yourself) principles.
+- The use of `$ref: "#/myregion/operation"` allows referencing another part of the YAML file, ensuring DRY (Don't Repeat Yourself) principles.
 - Users only see the relevant fields based on their selections.
 
-#### Understand dependencies usage and indentations
+#### Understanding dependencies usage and indentations
 
 The `dependencies` keyword specifies conditional relationships between fields. When a field depends on another, its presence or properties change based on the value of the controlling field.
 
@@ -1691,9 +1691,9 @@ Things to take care of:
 
 For more such references and validate your conditional steps take a look at the [react-json schema project](https://rjsf-team.github.io/react-jsonschema-form/).
 
-## Advanced input configurations
+## Advanced Input Configurations
 
-### Upload a file using workflows
+### Upload a file using Workflows
 
 Workflow supports a limited form of file types as input, in the sense that it will parse the file contents to Workflow inputs as [data-urls](https://developer.mozilla.org/en-US/docs/Web/URI/Schemes/data).
 
@@ -1703,7 +1703,7 @@ There are 3 types of file upload.
 2. Multiple Files: Multiple files selectors are supported by defining an `array` of strings having `data-url` as a format. 
 3. Single File with Accept Attribute: You can use the `accept` attribute to specify a filter for what file types the user can upload.
 
-#### Large file upload support
+#### Large File Upload Support
 
 IDP Workflows support uploading files up to **16MB** in size. This allows you to upload larger configuration files, datasets, or other resources that your workflow may need to process. Files larger than 16MB cannot be uploaded and will be rejected by the system.
 
@@ -1737,7 +1737,7 @@ properties:
 </details>
 
 
-### Hide the uploaded file contents in workflow review page
+### Hide the uploaded file contents in Workflow review page
 
 When you upload a file in Workflows, you can see the base-64 encoded content of the file on the review page, to hide them you can use `ui:backstage`. 
 
@@ -1770,11 +1770,11 @@ Files uploaded to workflows are automatically encoded in **base64** format. To u
 
 **Without decoding, the uploaded file contents cannot be directly used.** 
 
-Here is an [example](https://github.com/harness-community/idp-samples/blob/main/idp-pipelines/parse-base64-file.yaml) harness pipeline that uses [PowerShell](https://github.com/harness-community/idp-samples/blob/32845bbeca9d5219c5a71622043a66652904ff7d/idp-pipelines/parse-base64-file.yaml#L27-L84) in run step to decode the content of the file uploaded to Workflows. 
+Here's an [example](https://github.com/harness-community/idp-samples/blob/main/idp-pipelines/parse-base64-file.yaml) harness pipeline that uses [PowerShell](https://github.com/harness-community/idp-samples/blob/32845bbeca9d5219c5a71622043a66652904ff7d/idp-pipelines/parse-base64-file.yaml#L27-L84) in run step to decode the content of the file uploaded to Workflows. 
 
 ![](../static/demo-pwsh-process-json.png)
 
-### Use secrets
+### Using Secrets
 
 You may want to mark things as secret and make sure that these values are protected and not available through REST endpoints. You can do this by using the built-in `ui:field: Secret` and `ui:widget: password`.
 
@@ -1854,18 +1854,18 @@ spec:
 
 </details>
 
-### Pre-fill workflows with URL params
+### Pre-fill workflows with URL Params
 
 We can now automatically load IDP Workflow forms pre-filled using the `formData` URL query parameter. e.g.: `https://app.harness.io/ng/account/account_id/module/idp/create/templates/default/a-python-lambda?formData=%7B%22project_name%22%3A%22auto%20filled%22%7D`
 
-The query parameters `?formData=%7B%22project_name%22%3A%22auto%20filled%22%7D` in the end of the URL allow you to automatically fill in values of the form. See the below table for explanation of individual tokens in the query param.
+The query parameters `?formData=%7B%22project_name%22%3A%22auto%20filled%22%7D` in the end of the URL allow you to automatically fill in values of the form. Please see the below table for explanation of individual tokens in the query param.
 
 | Item                | Example Value                           | Explanation                                                                                      |
 | ------------------- | --------------------------------------- | ------------------------------------------------------------------------------------------------ |
 | `formData`          | `formData`                              | Key of the query param.`formData` object is used to fill out IDP Workflow forms.                 |
 | `{"key"%3A"value"}` | `{"title"%3A"Title from query params"}` | Value of the query param. A JSON object with invalid URL characters encoded.`:` encodes to `%3A` |
 
-### Add read only fields
+### Add Read only Fields
 
 Using automatically filled out values is handy when wanting to direct users to use IDP Workflows with known good values. This also allows automation to be constructed around the Workflows, where the automation can provide fully constructed IDP URLs to the user. You can also prevent user from modifying the form values inserted from query params by making the form fields `readonly`. See below example of a minimal form which would be filled using query params defined in the above explanation.
 
@@ -1912,5 +1912,5 @@ spec:
 
 </details>
 
-## For use cases not listed here  
+## For Use Cases Not Listed Here  
 For scenarios not covered in this guide, it is recommended to use the [react-jsonschema-form playground](https://rjsf-team.github.io/react-jsonschema-form/) to design the UI for input fields. Additionally, [Nunjucks](https://mozilla.github.io/nunjucks/) serves as the templating engine for Self-Service Workflows.

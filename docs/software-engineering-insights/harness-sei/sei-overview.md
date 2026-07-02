@@ -1,78 +1,52 @@
 ---
 title: AI DLC Insights
-description: Learn how to measure AI coding agent adoption, efficiency, and impact from prompt to production in Harness AI DLC Insights.
+description: The new experience for measuring engineering insights in Harness AI DLC Insights.
 sidebar_label: Overview
 sidebar_position: 1
 ---
 
-AI DLC Insights gives engineering leaders a complete view of how AI coding agents are being adopted, what code they produce, and what they cost. It connects agent-level telemetry (sessions, token spend, ship rates, and commit attribution) to the delivery metrics that reveal what is happening downstream.
+Welcome to AI DLC Insights, the next generation of engineering insights at Harness. We've reimagined how organizations understand developer productivity, delivery health, and business impact. Built from the ground up on a modern, high-performance architecture, AI DLC Insights brings flexibility, scale, and trust to your software engineering data.
 
-![](./static/ai-dlc-insights-banner.png)
+Whether you're a 50-person startup or a global engineering org with 5,000+ developers, AI DLC Insights is built to meet you where you are and grow as you grow.
 
-## Measure AI adoption
+## What’s New in AI DLC Insights
 
-Understand which AI coding tools engineers rely on to produce committed code, and track how adoption changes over time.
+### Built on a Modern, Scalable Architecture
 
-With AI adoption metrics, you can: 
+AI DLC Insights is architected to handle massive scale without compromising speed or reliability. From initial setup to generating insights, the new system is developed to scale and essentially give you insights you can trust.
 
-- See what percentage of committed code was AI-generated, broken down by developer, team, or repository.
-- Track the percentage of merged PRs and commits containing AI-attributed code.
-- Identify which agents (Cursor, Claude Code, Windsurf, Copilot) are actively used versus licensed but unused.
-- Surface power users with high AI commit velocity to understand winning patterns and scale them across the org.
+### Pre-Built Dashboards: Ready Out of the Box
 
-## Track token spend and efficiency
+Get started instantly with pre-built dashboards designed around industry-proven metrics:
 
-Know how much AI spend produced shipped code versus how much was wasted on uncommitted sessions, wrong model choices, and missed cache opportunities.
- 
-With efficiency metrics, you can:
- 
-- Identify wasted spend: tokens burned in sessions where no code was committed.
-- Spot optimizable spend: expensive model choices for simple tasks, low cache hit rates, and high turn counts on basic prompts.
-- Calculate cost per work item by correlating session costs with your issue tracker.
-- Compare spend by developer, team, agent, and repository.
+* Delivery Efficiency
+  * DORA
+  * Sprint Insights
+* Developer Productivity
+* Business Alignment
 
-## Measure impact on delivery
- 
-Connect AI activity to the delivery metrics that reveal whether AI adoption is improving how your organization ships.
- 
-With impact metrics, you can:
- 
-- Compare PR velocity and lead time across AI-assisted and non-AI developers.
-- Track features delivered and backlog reduction at different levels of AI adoption.
-- Monitor DORA metrics — deployment frequency, change failure rate, lead time, and MTTR — to ensure AI adoption correlates with delivery health.
-- Map engineering output to business priorities to demonstrate ROI.
+### Org Trees & Team Structures That Reflect Reality
 
-## Create an Org Tree
- 
-AI DLC Insights introduces Org Trees, a flexible, scalable way to model your organization as it operates. You can build org structures that reflect reporting lines, business units, or regions by uploading a CSV that defines your organization structure.
- 
-On day one, you get an organization-level view of all activity across your developer fleet with no additional configuration required. Create an **Org Tree** to slice metrics by team or manager hierarchy.
- 
+AI DLC Insights introduces Org Trees: a flexible, scalable way to model your organization as it actually operates. You can build org structures that reflect reporting lines, business units, regions, or any combination of the above by uploading a CSV that defines your organization structure.
+
 ![](./static/org-tree-preview.png)
- 
-Go to [Org Trees](/docs/software-engineering-insights/harness-sei/setup-sei/setup-org-tree) to set up your organization structure.
 
-## Configure integrations
- 
-AI DLC Insights includes a redesigned integrations framework with built-in diagnostics, proactive health monitoring, and advanced retry mechanisms to reduce maintenance overhead and keep your insights pipeline accurate.
- 
+### Integrations 2.0: Easier. Smarter. More Resilient.
+
+AI DLC Insights introduces a redesigned integrations framework focused on reliability, observability, and ease of maintenance.
+
+* Built-in diagnostics enable faster troubleshooting with clear visibility into integration errors and data flow issues.
+* Proactive health monitoring provides continuous feedback on the operational status of your data sources.
+* Advanced retry mechanisms ensure that transient failures or API limits don’t disrupt your insights pipeline.
+
+These enhancements significantly reduce integration maintenance overhead, giving teams confidence in the accuracy and completeness of their engineering data.
+
 ![](./static/integrations.png)
 
-Go to [Integrations](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations) to integrate your software delivery lifecycle with AI DLC Insights.
+### Decentralized Administration
 
-## Explore pre-built dashboards
- 
-Start analyzing your AI engineering insight dashboards designed around industry-proven metrics, including the following:
+AI DLC Insights supports scalable, role-based access controls that allow organizations to manage developer and team configurations in a distributed yet governed manner.
 
-![](./static/ai-engineering.png)
-
-- **AI Engineering**: Adoption, efficiency, and impact for AI coding agents.
-- **Delivery Efficiency:** DORA metrics and Sprint Insights.
-- **Developer Productivity:** Output and throughput per developer.
-- **Business Alignment:** Engineering output mapped to business priorities.
-
-## Next steps
-
-- [Set up an Org Tree](/docs/software-engineering-insights/harness-sei/setup-sei/setup-org-tree): Model your organization to slice metrics by team or manager.
-- [Introducing AI DLC Insights to Prove the ROI of Your AI Engineering Investment](https://www.harness.io/blog/introducing-ai-dlc-insights-to-prove-the-roi-of-your-ai-engineering-investment): Read the launch blog for the full story behind AI DLC Insights.
-- [Harness Launches Products to Give Visibility into ROI of AI Spend](https://www.harness.io/blog/harness-launches-products-give-visibility-into-roi-of-ai-spend): Learn more about how Harness approaches AI spend visibility.
+* Assign ownership of specific teams, org trees, or projects to designated admins.
+* Reduce dependency on central administrators while maintaining enterprise-grade oversight.
+* Empower functional teams to manage their own setup and insights — without compromising security or consistency.

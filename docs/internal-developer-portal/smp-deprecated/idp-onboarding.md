@@ -9,7 +9,7 @@ unlisted: true
 # IDP Onboarding to SMP Environments
 
 :::info Harness IDP SMP Edition [BETA]
-Harness IDP Self-Managed Platform (SMP) Edition is currently in **BETA**. Refer to the [Harness IDP Release Notes](/release-notes/internal-developer-portal) to keep track of new feature updates and improvements.
+Harness IDP Self-Managed Platform (SMP) Edition is currently in **BETA**. Please refer to the [Harness IDP Release Notes](/release-notes/internal-developer-portal) to keep track of new feature updates and improvements.
 :::
 
 This guide provides detailed instructions for deploying the Harness Internal Developer Portal (IDP) to your Self Managed Platform (SMP) environment. Following these configuration steps will help you establish a properly functioning IDP implementation integrated with your SMP infrastructure.
@@ -23,7 +23,7 @@ Harness IDP SMP Beta is **only supported on Google Kubernetes Engine (GKE)** clu
 
 ## Overview
 
-## Infrastructure requirements
+## Infrastructure Requirements
 
 Before proceeding with the IDP deployment to SMP, ensure the following prerequisites are met:
 
@@ -31,7 +31,7 @@ Before proceeding with the IDP deployment to SMP, ensure the following prerequis
    Workload Identity allows your Kubernetes workloads to securely access Google Cloud services with fine-grained IAM permissions. [Configure Workload Identity in your GKE cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) following Google's [security best practices](https://cloud.google.com/blog/products/containers-kubernetes/introducing-workload-identity-better-authentication-for-your-gke-applications).
 
 2. **Kubernetes Service Account (KSA)** with developer-level permissions
-    Create a [Kubernetes Service Account](https://kubernetes.io/docs/concepts/security/service-accounts/) that will be linked to your Google Service Account with the Kubernetes Engine Developer role. For GKE-specific guidance, go to [Managing Service Accounts](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
+    Create a [Kubernetes Service Account](https://kubernetes.io/docs/concepts/security/service-accounts/) that will be linked to your Google Service Account with the Kubernetes Engine Developer role. For GKE-specific guidance, see [Managing Service Accounts](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
 
 3. **Service Account token** for TechDocs integration :
    The TechDocs component requires a service account token to access and render documentation properly.
@@ -44,7 +44,7 @@ If your setup integrates with third-party SaaS products (for example, PagerDuty,
 - **Protocol/Ports:** `tcp:80`, `tcp:443`
 :::
    
-### Identity configuration
+### Identity Configuration
 
 **Step 1: Bind the KSA to the GSA**
 
@@ -73,11 +73,11 @@ kubectl annotate serviceaccount <KSA_NAME> \
 For more detailed information about Workload Identity, refer to Google's [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity).
 :::
 
-## IDP configuration process
+## IDP Configuration Process
 
 Follow these steps to configure and deploy IDP in your SMP environment. Each step includes example configurations that should be adapted to your specific environment.
 
-### Step 1: Enable IDP globally
+### Step 1: Enable IDP Globally
 
 Update the `harness-values.yaml` file to enable IDP at the global configuration level:
 
@@ -88,7 +88,7 @@ global:
     enabled: true
 ```
 
-### Step 2: Configure next-gen UI integration
+### Step 2: Configure Next-Gen UI Integration
 
 Configure the Next-Gen UI to connect with your IDP service by adding the following to your `harness-values.yaml`:
 
@@ -104,7 +104,7 @@ platform:
 Document the loadbalancer IP address as it will be required for subsequent configuration steps and potential troubleshooting.
 :::
 
-### Step 3: Configure the IDP app UI
+### Step 3: Configure the IDP App UI
 
 Update the `idp-app-ui` section in the `harness-values.yaml` file with the appropriate values for your environment:
 
@@ -149,7 +149,7 @@ idp:
 URLs must be precisely configured as mismatches are a common source of deployment issues. Verify all URL paths and formats before applying the configuration.
 :::
 
-### Step 4: Configure IDP service backend
+### Step 4: Configure IDP Service Backend
 
 Configure the IDP service backend components with the following settings in your `harness-values.yaml`:
 
@@ -183,7 +183,7 @@ The IDP service will leverage the Workload Identity configuration from earlier s
 
 If you encounter issues during the deployment process, use these troubleshooting approaches to identify and resolve common problems.
 
-#### 403 Error in idp-service logs
+#### 403 Error in idp-service Logs
 
 This error indicates missing permissions or incorrect service account configuration:
 
@@ -193,7 +193,7 @@ java.io.IOException: Unexpected Error code 403 trying to get security access tok
 
 **Resolution:** Verify the service account bindings and annotations from the identity configuration steps. Common causes include typographical errors in project IDs or namespaces.
 
-#### Environment configuration verification
+#### Environment Configuration Verification
 
 Verify proper environment configuration by examining the `idp-service` logs for expected values:
 
@@ -205,7 +205,7 @@ Env: SMP DevSpaceDefaultBackstageNamespace: envSpecific DevSpaceDefaultAccountId
 
 These values should align with your intended configuration. Mismatches indicate configuration issues that need correction.
 
-#### Database configuration validation
+#### Database Configuration Validation
 
 In the idp-service database, confirm that:
 
@@ -215,7 +215,7 @@ In the idp-service database, confirm that:
 
 Discrepancies in these values can cause operational issues with your IDP deployment.
 
-#### Master URL verification
+#### Master URL Verification
 
 Check the Master URL values in the `idp-service` logs:
 

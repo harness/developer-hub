@@ -4,7 +4,6 @@ description: Use step groups to run health checks on separate background service
 sidebar_position: 36
 ---
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

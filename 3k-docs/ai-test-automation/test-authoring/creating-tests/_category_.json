@@ -1,0 +1,8 @@
+{
+  "label": "Create Tests",
+  "collapsible": "true",
+  "collapsed": "true",
+  "link": { "type": "doc", "id": "ai-test-automation/test-authoring/creating-tests/create-tests-doc" },
+  "customProps": {},
+  "position": 20
+}

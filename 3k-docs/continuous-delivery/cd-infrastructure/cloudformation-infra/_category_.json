@@ -1,0 +1,15 @@
+{
+    "label": "CloudFormation",
+    "position": "2",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "CloudFormation"
+    },
+    "customProps": {
+        "position": "2",
+        "helpdocs_category_id": "mlqlmg0tww"
+    }
+}

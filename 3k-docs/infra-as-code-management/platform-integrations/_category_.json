@@ -1,0 +1,12 @@
+{
+   "label":"Platform Integrations",
+   "collapsible": true,
+   "collapsed": true,
+   "link":{
+      "type":"generated-index",
+      "title":"Platform Integrations",
+      "description":"Connect IaCM with other Harness modules and third-party platforms"
+   },
+   "customProps":{
+   }
+}

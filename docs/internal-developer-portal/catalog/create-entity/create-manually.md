@@ -16,17 +16,17 @@ You can create entities directly via the **Harness IDP UI**; no YAML required fo
 
 ---
 
-### Before you begin
+### Prerequisites
 
 Before creating entities manually, ensure:
 
 - You have the necessary permissions to create entities at your desired scope (Account, Organization, or Project)
-- You are familiar with the [Catalog Data Model](/docs/internal-developer-portal/catalog/data-model#idp2.0) and entity types
+- You are familiar with the [Catalog Data Model](/docs/internal-developer-portal/catalog/data-model/#idp2.0) and entity types
 - IDP 2.0 is enabled behind the `IDP_2_0` Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable it on your account.
 
 ---
 
-## Method 1: Visual view (UI-Based creation)
+## Method 1: Visual View (UI-Based Creation)
 
 The Visual View provides an intuitive interface for creating entities without writing YAML.
 
@@ -38,11 +38,11 @@ The Visual View provides an intuitive interface for creating entities without wr
 </TabItem>
 <TabItem value="Step-by-Step">
 
-### Create entity manually via UI
+### Create Entity Manually via UI
 To create a new entity, navigate to the Harness IDP portal and click on **"Create"** from the side-bar menu. Choose the desired entity type, and follow these steps:
-  1. You will be redirected to the **"Visual View"**, where you can input entity details and begin the creation process.
+  1. You'll be redirected to the **"Visual View"**, where you can input entity details and begin the creation process.
   2. Enter the required entity information. The **Visual view** is synced in real-time with the **YAML view** for full transparency.
-  3. Define the **entity scope**, choose whether the entity should reside at the Account, Project, or Organization level. Read more about Catalog RBAC.
+  3. Define the **entity scope** — choose whether the entity should reside at the Account, Project, or Organization level. Read more about Catalog RBAC.
   4. **Associate with System Entities**
      Systems in Harness IDP are high-level catalog entities used to logically group related components, APIs, and resources. Associating your component with one or more Systems helps organize the catalog and improves visibility. [Learn more about System entities](/docs/internal-developer-portal/catalog/data-model/system-entity.md).
 
@@ -63,7 +63,7 @@ To create a new entity, navigate to the Harness IDP portal and click on **"Creat
 
 
      :::info
-      For authentication with the [Bitbucket connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference#credentials-settings), both **Access Token** and **API Token** authentication modes are supported. For more details, see the reference documentation on [Access Token mode](/release-notes/internal-developer-portal#new-feature-support-for-bitbucket-access-token-authentication-mode) and [API Token mode](/release-notes/internal-developer-portal#new-feature-increased-bitbucket-api-rate-limits).
+      For authentication with the [Bitbucket connector](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference#credentials-settings), both **Access Token** and **API Token** authentication modes are supported. For more details, see the reference documentation on [Access Token mode](/release-notes/internal-developer-portal#new-feature-support-for-bitbucket-access-token-authentication-mode) and [API Token mode](/release-notes/internal-developer-portal#new-feature-increased-bitbucket-api-rate-limits).
       :::
 
      You also get the option to connect mono repository (monorepo) is a single repository that contains multiple projects or services, often organized in subdirectories.
@@ -74,7 +74,7 @@ To create a new entity, navigate to the Harness IDP portal and click on **"Creat
      This field is **optional**, but strongly recommended if your component is tied to a Git-based workflow or needs source-aware plugins. 
      For Harness Code Repo, note that the source code repository link is scoped to the same level as the entity itself (Account, Organization, or Project).
      :::info
-     When configuring Link to Source Code, ensure that the selected Git connector has permissions matching the scope at which the entity is created (Account, Organization, or Project). For example, if the entity is created at the Project level, the Git connector must have access to all three scopes. The same applies to the Harness Code Repository, it should be configured with access rights that align with the selected scope.
+     When configuring Link to Source Code, ensure that the selected Git connector has permissions matching the scope at which the entity is created (Account, Organization, or Project). For example, if the entity is created at the Project level, the Git connector must have access to all three scopes. The same applies to the Harness Code Repository — it should be configured with access rights that align with the selected scope.
      :::
      > Harness IDP also auto-generates the legacy `backstage.io/source-location` annotation for backwards compatibility.
   
@@ -83,17 +83,17 @@ To create a new entity, navigate to the Harness IDP portal and click on **"Creat
     * **Remote:** Choose to store your entity YAML in a Git repository for version control, collaboration, and change tracking.
     You can either use a **Harness Code Repository** or connect to a **Third-party Git provider** like GitHub or GitLab by selecting a Git connector, repository, branch, and YAML path.
     > The Git Experience is ideal for teams who prefer to manage entities as code. Learn more in the [Git Experience Journey](/docs/internal-developer-portal/git-experience/gitx-journey).
-  7. Click on **"Review YAML"** to view the auto-generated YAML. Since there is a live sync between the Visual and YAML views, changes in one will reflect in the other.
+  7. Click on **"Review YAML"** to view the auto-generated YAML. Since there's a live sync between the Visual and YAML views, changes in one will reflect in the other.
     :::info
      **YAML validation** is performed to ensure compatibility with the **Harness-native Catalog YAML** model. Any errors will be shown in the Validation logs.
-    Ensure your `identifier` follows [naming rules](/docs/platform/references/entity-identifier-reference#identifier-naming-rules). Invalid identifiers may lead to entity registration errors.
+    Ensure your `identifier` follows [naming rules](https://developer.harness.io/docs/platform/references/entity-identifier-reference/#identifier-naming-rules). Invalid identifiers may lead to entity registration errors.
     :::
   8. If needed, **configure a plugin** by referring to its documentation and adding the required annotations in the Catalog YAML.
   9. Once everything is set, click **"Create Component"** to finalize and create the entity.
  
 ---
 
-### Catalog with Git experience (GitX)
+### Catalog with Git Experience (GitX)
 
 When you choose to manage your entity YAML via a Git repository (Remote mode), Harness IDP enables full Git integration through GitX.
 
@@ -115,7 +115,7 @@ While you can view and edit entity YAML across multiple Git branches, the entity
 
 ---
 
-## Method 2: YAML view
+## Method 2: YAML View
 
 You can also use the [Catalog YAML](/docs/internal-developer-portal/catalog/catalog-yaml) to create entities in Harness IDP. With IDP 2.0, you are required to follow the new Harness-native Data Model and structure when defining entities in Catalog YAML. Learn more about the new data model here. To create a new entity, navigate to the Harness IDP portal and click **"Create"** from the side-bar menu.
 
@@ -128,17 +128,17 @@ You can also use the [Catalog YAML](/docs/internal-developer-portal/catalog/cata
 </TabItem>
 <TabItem value="Step-by-Step">
 
-1. You will be redirected to the **Visual View**. You can switch to the **YAML View** using the toggle at the top of the screen. This allows you to directly edit the entity's YAML definition.
+1. You'll be redirected to the **Visual View**. You can switch to the **YAML View** using the toggle at the top of the screen. This allows you to directly edit the entity's YAML definition.
 <DocImage path={require('../static/yaml-way.png')} />
-2. If you are using a **legacy Backstage YAML**, paste it into the YAML view. Harness will convert it into the **Harness-native format** automatically. You can then proceed to finalize and create the entity. Since the Visual and YAML views are **live-synced**, changes made in one view will reflect in the other.
+2. If you're using a **legacy Backstage YAML**, paste it into the YAML view. Harness will convert it into the **Harness-native format** automatically. You can then proceed to finalize and create the entity. Since the Visual and YAML views are **live-synced**, changes made in one view will reflect in the other.
 <DocImage path={require('../static/yaml-conversion.png')} />
 
 :::info
-Note: **YAML validation** is automatically performed to ensure compatibility with the **Harness-native Catalog YAML model**. Any validation errors will be displayed in the Validation Logs. Ensure your `identifier` follows [naming rules](/docs/platform/references/entity-identifier-reference#identifier-naming-rules). Invalid identifiers may lead to entity registration errors.
+Note: **YAML validation** is automatically performed to ensure compatibility with the **Harness-native Catalog YAML model**. Any validation errors will be displayed in the Validation Logs. Ensure your `identifier` follows [naming rules](https://developer.harness.io/docs/platform/references/entity-identifier-reference/#identifier-naming-rules). Invalid identifiers may lead to entity registration errors.
 <DocImage path={require('../static/yaml-validation.png')} />
 :::
 
-3. You can define the **scope** of the entity in two ways: either switch to the Visual View and select the desired scope, or specify the **[projectIdentifier](/docs/internal-developer-portal/catalog/catalog-yaml#projectidentifier)** or **[orgIdentifier](/docs/internal-developer-portal/catalog/catalog-yaml#orgidentifier)** directly in the YAML to set the project or organization scope.
+3. You can define the **scope** of the entity in two ways: either switch to the Visual View and select the desired scope, or specify the **[projectIdentifier](/docs/internal-developer-portal/catalog/catalog-yaml.md#projectidentifier)** or **[orgIdentifier](/docs/internal-developer-portal/catalog/catalog-yaml.md#orgidentifier)** directly in the YAML to set the project or organization scope.
 <DocImage path={require('../static/scope-entity.png')} />
 4. To **associate your entity with System Entities** in YAML, add the `system` field to the `spec` section. You can specify multiple Systems by providing an array of System entity references:
 
@@ -172,7 +172,7 @@ spec:
     connectorRef: account.ShibamDhar // Empty in case of Harness Code Repository
 ```
 
-#### Supported repository providers in YAML
+#### Supported Repository Providers in YAML
 
 The `provider` field defines the Git-based source hosting service. Harness IDP supports:
 
@@ -187,9 +187,9 @@ provider: AzureRepo     # Azure DevOps Repositories
 You should select the correct provider according to where your code is hosted. The `connectorRef` should point to a valid Harness Connector for that provider.
 
 :::info
-When configuring Link to Source Code, ensure that the selected Git connector has permissions matching the scope at which the entity is created (Account, Organization, or Project). For example, if the entity is created at the Project level, the Git connector must have access to all three scopes. The same applies to the Harness Code Repository, it should be configured with access rights that align with the selected scope.
+When configuring Link to Source Code, ensure that the selected Git connector has permissions matching the scope at which the entity is created (Account, Organization, or Project). For example, if the entity is created at the Project level, the Git connector must have access to all three scopes. The same applies to the Harness Code Repository — it should be configured with access rights that align with the selected scope.
 :::
-#### Mono repository setup in YAML
+#### Mono Repository Setup in YAML
 
 A **mono repository (monorepo)** contains multiple projects or services in separate subdirectories within the same repository. This is useful for organizations managing many services in a unified repository.
 
@@ -224,7 +224,7 @@ spec:
 
 ---
 
-## YAML template examples
+## YAML Template Examples
 
 <details>
 <summary>Component YAML Example</summary>
@@ -310,7 +310,7 @@ metadata:
 
 ---
 
-## Next steps
+## Next Steps
 
 After creating your entities manually, you can refer to: 
 - [Manage Catalog](/docs/internal-developer-portal/catalog/manage-catalog)

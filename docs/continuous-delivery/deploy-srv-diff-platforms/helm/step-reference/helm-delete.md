@@ -72,7 +72,7 @@ Harness Delegate version `85400` or later is required for this step.
 
   - Navigate to the **Service Configuration**.
   - Go to the **Manifests** tab.
-  - In the **Advanced** section, select the **Command Type** as `Uninstall`.
+  - In the **Advanced** section, select the **Command Type** as `Uninstall` for Helm v3 or `Delete` for Helm v2.
   - Add the required Helm flags under **Flags**.
 
     When the **Helm Delete Step** is used in a **Deploy stage**, both **service-level** and **step-level** command flags are supported. However, **step-level flags take precedence** over service-level flags during execution.

@@ -1,9 +1,8 @@
 ---
 title: Technical Support Engineers - Creating Internal Cases to Track Project Work
 redirect_from:
-  - /docs/continuous-delivery/armory/general/technical-support-engineers---creating-internal-cases-to-track-project-work
+  - /docs/continuous-delivery/armory/general/technical-support-engineerscreating-internal-cases-to-track-project-work
 ---
-
 
 To properly ascertain and track internal project work, Armory Technical Support Engineers are encouraged to open cases to register their work with pre-sales customers and any internal or cross-departmental collaboration projects that may occur.
  

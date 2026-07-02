@@ -157,27 +157,6 @@ The Azure Container Apps feature currently has the following limitations:
 
 - **Azure Authentication**: While both OIDC and Service Principal authentication methods are supported, we recommend using Azure OIDC for production environments to eliminate credential management overhead.
 
-## Sample repository
-
-Harness provides a complete Azure Container Apps deployment example in the [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps/tree/master/azure-container-apps) repository. This example includes:
-
-- **Ready-to-use YAML files** for service, environment, infrastructure, and pipeline configuration
-- **Automated setup script** that creates all Azure resources and credentials with a single command
-- **Comprehensive connector setup guide** with both automated and manual approaches
-- **Traffic management strategies** including standard, blue-green, and canary deployment patterns
-- **Troubleshooting guide** covering common issues and their solutions
-- **Cost estimation** and free tier information
-
-The example is production-ready and follows Azure best practices. You can clone it, customize the runtime inputs for your environment, and have a working deployment in under 20 minutes.
-
-**Quick start:**
-```bash
-git clone https://github.com/harness-community/harnesscd-example-apps.git
-cd harnesscd-example-apps/azure-container-apps
-```
-
-Start with the `CONNECTOR_SETUP.md` for automated Azure resource creation, then follow `Description.md` for the complete deployment guide.
-
 ## Next steps
 
 To get started with Azure Container Apps deployments in Harness:

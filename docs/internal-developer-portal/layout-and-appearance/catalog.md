@@ -9,22 +9,23 @@ redirect_from:
 sidebar_position: 10
 ---
 
+## Introduction
 
 Every page that exists in the Software Catalog e.g. service, API, library, system etc. is uniquely designed to show the most relevant information to the developer for the particular type of application they are viewing. The views are powered by out-of-the-box components like the About card, Scorecard as well as the [Plugins](/docs/internal-developer-portal/plugins/overview) that are configured.
 
 Once you enable a plugin or create a [custom plugin](/docs/internal-developer-portal/plugins/custom-plugins/overview), you can decide where to show the components exported the plugin by changing the Layout of the Catalog entity of the particular type. For example, if you enable the Grafana plugin, you might want to add a Tab called "Performance" and render the Grafana plugin in there.
 
-Note that when you enable a plugin, we auto-update the default layouts, but you can always make changes by looking at what UI components are exported by that particular plugin. You can find this information under each and every plugin's documentation. [See an example for Dynatrace](/docs/internal-developer-portal/plugins/available-plugins/dynatrace#layout).
+Note that when you enable a plugin, we auto-update the default layouts, but you can always make changes by looking at what UI components are exported by that particular plugin. You can find this information under each and every plugin's documentation. [See an example for Dynatrace](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/dynatrace#layout).
 
 ![](./static/custom-card-and-tab.png)
 
-## Understand catalog entity kinds and types
+## Understand Catalog Entity Kinds and Types
 
 Every Catalog Layout is uniquely designed for a particular **Kind** and **Type** of application. For example, the most common catalog layout is for a microservice and is often represented as `Kind: Component` and `spec.type: service`. You can learn more about the [available kinds in the Catalog YAML docs](/docs/internal-developer-portal/catalog/catalog-yaml.md) and its [System Model](/docs/internal-developer-portal/catalog/data-model) to understand the different use-cases.
 
-The `kind` of entities are fixed to those available out of the box (Component, API, Resource, etc.), however you can create any arbitrary `type` for these kinds of entities. Let us say you use the word "micro-frontends" to represent internal websites in your organization. In order to create this new type of Component, you can use `microfrontend` in the `spec.type` field of the Catalog Definition YAML and then create a unique layout for those types of applications.
+The `kind` of entities are fixed to those available out of the box (Component, API, Resource, etc.), however you can create any arbitrary `type` for these kinds of entities. Let's say you use the word "micro-frontends" to represent internal websites in your organization. In order to create this new type of Component, you can use `microfrontend` in the `spec.type` field of the Catalog Definition YAML and then create a unique layout for those types of applications.
 
-## Layout editor
+## Layout Editor
 
 You can access the layout of the Catalog Pages by going to the **Configure** section of IDP and navigating to the **Layout** section.
 
@@ -34,19 +35,19 @@ You can access the layout of the Catalog Pages by going to the **Configure** sec
 
 The Layouts are grouped by the `kind` of the Catalog entities and their use-cases in the sidebar. As you can see there are a number of layouts possible for a particular `kind`. For example, the first layout in the screen will match any Catalog entity with `kind: Component` and `spec.type: service`. Similarly, there is a different layout for `spec.type: website`. At the end, there is a catch-all layout which will be used for any other `type` which has not been explicitly created above.
 
-### Create a new layout
+### Create a new Layout
 
 You can create a new Layout for a new type of application by either duplicating an existing layout or clicking on the "New Catalog Layout" button above.
 
 ![](./static/layout-duplicate.png)
 
-Enter a unique `type` that this layout will be applicable to. In this example, we are creating one for `library` to represent internal software libraries.
+Enter a unique `type` that this layout will be applicable to. In this example, we're creating one for `library` to represent internal software libraries.
 
 ![](./static/create-new-layout.png)
 
 And voilà! Your new Layout is created which will specifically render for entities with `kind: Component` and `spec.type: library`.
 
-## Layout YAML reference
+## Layout YAML Reference
 
 Entity Page Layouts are defined in a hierarchical structure starting with the "page" key, representing the entity page. Each page consists of "tabs," an array that controls the rendered tabs for the entity page. Within each tab, there is a "contents" array responsible for rendering the contents within that specific tab.
 
@@ -175,7 +176,7 @@ page:
 </details>
 
 
-## Create a new entity type
+## Create a new Entity type
 
 You can create any entity type by simply defining those in the Catalog Definition YAML (e.g. catalog-info.yaml) for the application. For example, if you are defining a new LLM Model and want to declare a new type `llm`, you can define this in the `catalog-info.yaml` under `spec.type` field and the new type will be available for you to use in Catalog filters as well as Layouts. Here is an example -
 
@@ -200,7 +201,7 @@ spec:
 
 Read more on how to [register a Software Component in the Catalog](/docs/internal-developer-portal/get-started).
 
-## Resize a card in overview page
+## Resize a card in Overview page
 
 The Catalog pages use a 12-column grid system for responsive layouts. Where `md` is the recommended unit, and `md: 1` stands for 1/12th of the grid. See other possible breakpoints on [Material UI docs](https://mui.com/material-ui/react-grid/).
 
@@ -219,7 +220,7 @@ Example -
 ```
 
 
-## Add an additional info card \{#additional-info-card}
+## Add an additional Info Card \{#additional-info-card}
 
 In case you want to display the same information you have ingested on your Overview page as an additional card, follow the steps below.
 
@@ -248,7 +249,7 @@ In case you want to display the same information you have ingested on your Overv
 
 ![](./static/add-additional-info-card.png)
 
-3. Now go to the **Warehouse** Software Component in the **Catalog**, and you will find an additional info card populated with information we ingested using the API above. You can read more about [additional info card](/docs/internal-developer-portal/catalog/manage-catalog#idp2.0--add-an-additional-info-card)
+3. Now go to the **Warehouse** Software Component in the **Catalog**, and you'll find an additional info card populated with information we ingested using the API above. You can read more about [additional info card](/docs/internal-developer-portal/catalog/manage-catalog#idp2.0--add-an-additional-info-card)
 
 ![](./static/additional-info-card-new.png)
 
@@ -283,7 +284,7 @@ Follow the given steps:
           title: "API Docs"
 ```
 
-### Use entity metadata
+### Use Entity Metadata
 
 You can also reference an entity annotation (`docs`) for the URL:
 
@@ -316,7 +317,7 @@ spec:
           title: "Docs"
 ```
 
-## Entity relations components
+## Entity Relations Components
 
 IDP provides two built-in components for visualizing entity relationships and exploring system graphs interactively.
 
@@ -358,7 +359,7 @@ page:
 :::
 
 
-## Hierarchy entity layouts
+## Hierarchy Entity Layouts
 
 Hierarchy entities (created by [Platform Integration](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/platform-cd)) use specialized layouts to display organizational structure and aggregated metrics. You can customize layouts for each hierarchy type: **account**, **organization**, and **project**.
 

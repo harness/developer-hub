@@ -1,0 +1,14 @@
+{
+    "label": "Deployments",
+    "position": "2500",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Deployments"
+    },
+    "customProps": {
+        "helpdocs_category_id": "etz0u5kujd"
+    }
+}

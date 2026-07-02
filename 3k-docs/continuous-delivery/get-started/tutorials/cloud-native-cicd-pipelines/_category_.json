@@ -1,0 +1,9 @@
+{
+  "label": "Cloud-Native CI/CD Pipelines",
+  "position": 2,
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index"
+  }
+}

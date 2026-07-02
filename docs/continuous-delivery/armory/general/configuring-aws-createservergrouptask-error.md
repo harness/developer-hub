@@ -1,7 +1,7 @@
 ---
 title: Configuring AWS account using EAP - error running CreateServerGroupTask for pipeline Credentials not found*"
 redirect_from:
-  - /docs/continuous-delivery/armory/general/configuring-aws-account-using-eap---error-running-createservergrouptask-for-pipeline-credentials-not-found
+  - /docs/continuous-delivery/armory/general/configuring-aws-account-using-eaperror-running-createservergrouptask-for-pipeline-credentials-not-found
 ---
 
 ## Issue

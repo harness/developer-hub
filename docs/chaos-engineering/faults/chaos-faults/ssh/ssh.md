@@ -6,13 +6,17 @@ redirect_from:
 - /docs/chaos-engineering/chaos-faults/ssh
 ---
 
+<!-- Import statement for Custom Components -->
+
 import FaultDetailsCard from "@site/src/components/ChaosEngineering/FaultDetailsCard";
 import ExperimentListSection from "@site/src/components/ChaosEngineering/ExperimentListSection"
 import { experiments } from "./experiments"
 
+<!-- Heading Description -->
+
 ## Introduction
 
-SSH chaos injects user-defined chaos on a remote VM by executing custom scripts (inject and rollback) over SSH. Use it when the chaos you want to run is not covered by a first-class fault, when you need to run a pre-built script that already exists in your operations toolkit, or when you want a portable framework for the long tail of one-off resilience tests.
+SSH chaos injects chaos on the target host using SSH connections by passing custom chaos logic through a ConfigMap.
 
 <ExperimentListSection experiments={experiments} />
 
@@ -20,11 +24,15 @@ SSH chaos injects user-defined chaos on a remote VM by executing custom scripts 
 
 ### SSH chaos
 
-SSH chaos runs a user-supplied inject script on a remote host over SSH for a configurable duration and runs a rollback script when the duration ends or the experiment is aborted. Scripts are passed through a ConfigMap; SSH credentials (`SSH_PASSWORD` and `SSH_KEY`) are referenced from Harness Secret Manager.
+SSH chaos injects chaos on the target host using SSH connections by passing custom chaos logic through a ConfigMap. These scripts are executed using SSH credentials, which are securely referenced in the ConfigMap. This enables direct fault injection on the target host. This experiment offers customisation for the chaos injection logic, providing flexibility and control over chaos experiments.
 
 <Accordion color="green">
-<summary>Use cases</summary>
-Use as a customizable framework when the long-tail chaos you need (custom network rules, custom service restarts, custom database failovers) is not covered by a first-class fault. The rollback script ensures the target host returns to baseline on completion or abort.
+    <summary>Use cases</summary>
+
+- SSH chaos can be used with custom chaos logic and transferred to a target VM (to execute network chaos experiments, power off, and so on).
+- This serves as a framework which can be customised to perform other chaos experiments, such as network stress, HTTP, DNS, restart service and so on.
+- This framework can be used to rollback to the orignal state of an abort event.
+
 </Accordion>
 
 </FaultDetailsCard>

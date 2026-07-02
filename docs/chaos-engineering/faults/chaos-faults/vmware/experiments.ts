@@ -4,99 +4,183 @@ export const experiments: ExperimentDetails[] = [
   {
     name: "VMware CPU hog",
     description:
-      "Drive CPU utilization to a configurable percentage across a configurable number of cores on a Linux VMware VM for a configurable duration.",
+      "VMware CPU hog applies stress on the CPU resources on Linux OS based VMware VM.",
     tags: ["CPU", "stress"],
     category: "vmware",
   },
   {
-    name: "VMware memory hog",
+    name: "VMware disk loss",
     description:
-      "Consume a configurable amount of RAM on a Linux VMware VM for a configurable duration so you can test how the workload behaves when memory headroom shrinks.",
-    tags: ["memory", "stress"],
+      "VMware disk loss detaches the disks that are attached to a Linux OS based VMware VM.",
+    tags: ["disk", "loss"],
+    category: "vmware",
+  },
+  {
+    name: "VMware DNS chaos",
+    description:
+      "VMware DNS chaos causes DNS errors in the VMware VMs for a specific duration.",
+    tags: ["DNS", "stress"],
+    category: "vmware",
+  },
+  {
+    name: "VMware host reboot",
+    description:
+      "VMware host reboot reboots a VMware host that is attached to the Vcenter.",
+    tags: ["reboot"],
+    category: "vmware",
+  },
+  {
+    name: "VMware HTTP latency",
+    description:
+      "VMware HTTP latency injects HTTP response latency into the service. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.",
+    tags: ["http", "latency"],
+    category: "vmware",
+  },
+  {
+    name: "VMware HTTP modify response",
+    description:
+      "VMware HTTP modify response injects HTTP chaos by modifying the status code, body or the headers, which affects the request (or response).",
+    tags: ["http", "modify", "response"],
+    category: "vmware",
+  },
+  {
+    name: "VMware HTTP reset peer",
+    description:
+      "VMware HTTP reset peer injects HTTP reset chaos that stops the outgoing HTTP requests by resetting the TCP connection for the requests.",
+    tags: ["http", "reset", '"peer'],
     category: "vmware",
   },
   {
     name: "VMware IO stress",
     description:
-      "Drive disk IO load on a Linux VMware VM for a configurable duration so you can test how the workload behaves when storage throughput is saturated.",
+      "VMware IO stress causes disk stress on the target VMware VMs. It aims to verify the resilience of applications that share this disk resource with the VM.",
     tags: ["io", "stress"],
+    category: "vmware",
+  },
+  {
+    name: "VMware memory hog",
+    description:
+      "VMware memory hog fault consumes excessive memory resources on Linux OS based VMware VMs.",
+    tags: ["memory", "stress"],
     category: "vmware",
   },
   {
     name: "VMware network latency",
     description:
-      "Add latency to egress traffic from a Linux VMware VM for a configurable duration. Scope by destination IP, hostname, or port.",
+      "VMware network latency injects network packet latency from the VMware VM(s) into the application (or service).",
     tags: ["network", "latency"],
     category: "vmware",
   },
   {
     name: "VMware network loss",
     description:
-      "Drop a configurable percentage of egress packets from a Linux VMware VM for a configurable duration.",
+      "VMware network loss injects network packet loss from the VMware VM(s) into the application (or service).",
     tags: ["network", "loss"],
     category: "vmware",
   },
   {
     name: "VMware network rate limit",
     description:
-      "Cap egress bandwidth on a Linux VMware VM for a configurable duration.",
+      "VMware network rate limit fault injects network rate limit from the VMware VM(s) into the application (or service).",
     tags: ["network", "rate", "limit"],
-    category: "vmware",
-  },
-  {
-    name: "VMware DNS chaos",
-    description:
-      "Force DNS resolution failures for specific hostnames on a Linux VMware VM for a configurable duration.",
-    tags: ["DNS", "stress"],
-    category: "vmware",
-  },
-  {
-    name: "VMware HTTP latency",
-    description:
-      "Inject HTTP response latency at a target service running inside a Linux VMware VM for a configurable duration.",
-    tags: ["http", "latency"],
-    category: "vmware",
-  },
-  {
-    name: "VMware HTTP reset peer",
-    description:
-      "Reset TCP connections to an HTTP service running inside a Linux VMware VM for a configurable duration.",
-    tags: ["http", "reset", "peer"],
-    category: "vmware",
-  },
-  {
-    name: "VMware HTTP response modify",
-    description:
-      "Rewrite HTTP responses (status code, body, headers) from a service running inside a Linux VMware VM for a configurable duration.",
-    tags: ["http", "modify", "response"],
     category: "vmware",
   },
   {
     name: "VMware process kill",
     description:
-      "Terminate one or more processes by PID inside a Linux VMware VM for a configurable duration.",
+      "VMware process kill kills the target processes that are running as a part of a Linux OS based VMware VM.",
     tags: ["kill", "process"],
     category: "vmware",
   },
   {
     name: "VMware service stop",
     description:
-      "Stop one or more systemd services inside a Linux VMware VM for a configurable duration.",
+      "VMware service stop stops the target system services running on a Linux OS based VMware VM.",
     tags: ["stop", "service"],
     category: "vmware",
   },
   {
-    name: "VMware VM poweroff",
+    name: "VMware VM power off",
     description:
-      "Power off one or more VMware VMs (identified by Managed Object ID) for a configurable duration, then power them back on.",
-    tags: ["power", "off", "moid"],
+      "VMware VM power off stops (or powers off) the VMware VMs for a specific duration.",
+    tags: ["power", "off"],
     category: "vmware",
   },
   {
-    name: "VMware VM poweroff by name",
+    name: "VMware Windows blackhole chaos",
     description:
-      "Power off one or more VMware VMs (identified by name) for a configurable duration, then power them back on.",
-    tags: ["power", "off", "name"],
+      "VMware Windows blackhole chaos simulates a network blackhole scenario on Windows OS based VMware VM.",
+    tags: ["blackhole", "network"],
+    category: "vmware",
+  },
+  {
+    name: "VMware Windows CPU hog",
+    description:
+      "VMware Windows CPU hog simulates a CPU hog scenario on Windows OS based VMware VM.",
+    tags: ["cpu", "windows", "stress"],
+    category: "vmware",
+  },
+  {
+    name: "VMware Windows disk stress",
+    description:
+      "VMware Windows disk stress fills the disk space on Windows OS based VMware VM.",
+    tags: ["disk", "windows", "stress"],
+    category: "vmware",
+  },
+  {
+    name: "VMware Windows memory hog",
+    description:
+      "VMware Windows memory hog simulates a memory hog scenario on Windows OS based VMware VM.",
+    tags: ["memory", "windows", "stress"],
+    category: "vmware",
+  },
+  {
+    name: "VMware Windows network corruption",
+    description:
+      "VMware Windows network corruption corrupts network packets on Windows OS based VMware VM.",
+    tags: ["network", "windows", "corruption"],
+    category: "vmware",
+  },
+  {
+    name: "VMware Windows network duplication",
+    description:
+      "VMware Windows network duplication duplicates network packets on Windows OS based VMware VM.",
+    tags: ["network", "windows", "duplication"],
+    category: "vmware",
+  },
+  {
+    name: "VMware Windows network latency",
+    description:
+      "VMware Windows network latency injects network latency on Windows OS based VMware VM.",
+    tags: ["network", "windows", "latency"],
+    category: "vmware",
+  },
+  {
+    name: "VMware Windows network loss",
+    description:
+      "VMware Windows network loss injects network packet loss on Windows OS based VMware VM.",
+    tags: ["network", "loss", "windows"],
+    category: "vmware",
+  },
+  {
+    name: "VMware Windows process kill",
+    description:
+      "VMware Windows process kill kills the target processes that are running as a part of a Windows OS based VMware VM.",
+    tags: ["kill", "windows", "process"],
+    category: "vmware",
+  },
+  {
+    name: "VMware Windows service stop",
+    description:
+      "VMware Windows service stop stops the target system services running on a Windows OS based VMware VM.",
+    tags: ["stop", "service", "windows"],
+    category: "vmware",
+  },
+  {
+    name: "VMware Windows time chaos",
+    description:
+      "VMware Windows time chaos simulates a time skew scenario on Windows OS based VMware VM.",
+    tags: ["time", "windows"],
     category: "vmware",
   },
 ];

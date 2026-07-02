@@ -7,7 +7,6 @@ redirect_from:
   - /docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/cag-aida/gen-ai-overview
 ---
 
-
 import Intro from '/docs/cloud-cost-management/shared/ccm-aida-overview-partial.md';
 
 

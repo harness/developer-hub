@@ -4,7 +4,6 @@ description: Reference for VM images on Harness Cloud Machines
 sidebar_position: 4
 ---
 
-
 Harness provides preconfigured virtual machine (VM) images to run your pipeline stages in Harness Cloud. These images come with common build tools and dependencies preinstalled, so you can focus on building and testing your code without worrying about setup.
 
 Every stage runs on a fresh VM, ensuring clean, isolated executions.

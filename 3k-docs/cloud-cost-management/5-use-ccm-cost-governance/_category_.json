@@ -1,0 +1,12 @@
+{
+    "label":"Cost governance",
+    "position": 5,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"default",
+    "link":{
+       "type":"generated-index",
+       "title":"Cost governance"
+    }
+    }
+ 

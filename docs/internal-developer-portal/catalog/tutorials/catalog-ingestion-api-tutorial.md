@@ -9,8 +9,9 @@ redirect_from:
 
 <DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
 
+## Introduction
 
-In this tutorial we will be using the catalog metadata ingestion APIs to add additional metadata for the software components in the catalog, display them in the component overview page using [additional info card](/docs/internal-developer-portal/catalog/manage-catalog#idp2.0--add-an-additional-info-card) and track the values ingested using [Scorecard](/docs/internal-developer-portal/scorecards/create-scorecards/data-sources#custom-data-sources).
+In this tutorial we will be using the catalog metadata ingestion APIs to add additional metadata for the software components in the catalog, display them in the component overview page using [additional info card](/docs/internal-developer-portal/catalog/manage-catalog#idp2.0--add-an-additional-info-card) and track the values ingested using [Scorecard](https://developer.harness.io/docs/internal-developer-portal/scorecards/custom-data-sources).
 
 <DocImage path={require('../integrate-tools/catalog-ingestion/static/ccp-usecase.png')} />
 
@@ -18,11 +19,11 @@ In this tutorial we will be using the catalog metadata ingestion APIs to add add
 
 ## Before you begin
 
-1. You must have components registered in your software catalog. If you do not have any components registered, follow this [tutorial](/docs/internal-developer-portal/catalog/manage-catalog) to register one. We recommend you to register [this software component](https://github.com/harness-community/idp-samples/blob/main/example-catalog-info/tutorial-catalog-ingestion.yaml) for this tutorial.
+1. You must have components registered in your software catalog. If you don't have any components registered, follow this [tutorial](/docs/internal-developer-portal/catalog/manage-catalog) to register one. We recommend you to register [this software component](https://github.com/harness-community/idp-samples/blob/main/example-catalog-info/tutorial-catalog-ingestion.yaml) for this tutorial.
 
 ## Add a new metadata
 
-### Use cURL command
+### Using cURL Command
 
 - Use the following command to add a new metadata `codeCoverageScore` to the `warehouse` component.
 
@@ -39,13 +40,13 @@ curl --location 'https://app.harness.io/gateway/v1/catalog/custom-properties/ent
 
 **OR**
 
-### Use the python script
+### Using the Python Script
 
 - You can use the [python script](https://github.com/harness-community/idp-samples/blob/main/sample-python-script.py), to auto-update the `<+metadata.codeCoverageScore>`
 
 **OR**
 
-### Use Harness pipeline
+### Using Harness Pipeline
 
 - We recommend the use of following Harness Pipeline to add a new metadata `codeCoverageScore` to the `warehouse` component. While using the following pipeline YAML make sure to add the `x-api-key` as pipeline variable of type secret and name `apikey`.
 
@@ -145,11 +146,11 @@ pipeline:
 
 ![](../integrate-tools/catalog-ingestion/static/add-secret.png)
 
-## Schedule a cron to update the catalog metadata
+## Schedule a Cron to Update the Catalog Metadata
 
 - If you use the cURL command or the python script to auto-update the metadata on regular intervals you need to configure a cron job.
 
-- In case you are using Harness Pipeline use a trigger to update the data ingested on regular intervals. Create a pipeline trigger of type **Cron** to schedule an hourly trigger.
+- In case you're using Harness Pipeline use a trigger to update the data ingested on regular intervals. Create a pipeline trigger of type **Cron** to schedule an hourly trigger.
 
 ![](../integrate-tools/catalog-ingestion/static/code-coverage-score.gif)
 
@@ -159,7 +160,7 @@ import TabItem from '@theme/TabItem';
 <!-- <Tabs queryString="use-metadata-info">
 <TabItem value="scorecard" label="Code Coverage Scorecard"> -->
 
-## Code coverage scorecard \{#code-coverage-scorecard}
+## Code Coverage Scorecard \{#code-coverage-scorecard}
 
 In case you want to track the information you have ingested using Scorecards, follow the steps below.
 
@@ -175,14 +176,14 @@ In case you want to track the information you have ingested using Scorecards, fo
 
 ![](../integrate-tools/catalog-ingestion/static/create-score-card.gif)
 
-2. Now go to the **Warehouse** Software Component in the **Catalog**, and you will find the Code Coverage Scorecard under the Scorecards tab and on the overview page. Go to [Scorecards custom data sources](/docs/internal-developer-portal/scorecards/create-scorecards/data-sources#custom-data-sources) to read more.
+2. Now go to the **Warehouse** Software Component in the **Catalog**, and you'll find the Code Coverage Scorecard under Scorecards tab and on the overview page. You can read more about it [here](https://developer.harness.io/docs/internal-developer-portal/scorecards/custom-data-sources)
 
 ![](../integrate-tools/catalog-ingestion/static/code-coverage-score-tab.png)
 
 <!-- </TabItem>
 <TabItem value="card" label="Additional Info Card"> -->
 
-## Additional info card \{#additional-info-card}
+## Additional Info Card \{#additional-info-card}
 
 In case you want to display the same information you have ingested on your Overview page as an additional card, follow the steps below.
 
@@ -211,11 +212,11 @@ In case you want to display the same information you have ingested on your Overv
 
 ![](../integrate-tools/catalog-ingestion/static/add-additional-info-card.png)
 
-2. Now go to the **Warehouse** Software Component in the **Catalog**, and you will find an additional info card populated with information we ingested using the API above. You can read more about [additional info card](/docs/internal-developer-portal/catalog/manage-catalog#idp2.0--add-an-additional-info-card)
+2. Now go to the **Warehouse** Software Component in the **Catalog**, and you'll find an additional info card populated with information we ingested using the API above. You can read more about [additional info card](/docs/internal-developer-portal/catalog/manage-catalog#idp2.0--add-an-additional-info-card)
 
 ![](../integrate-tools/catalog-ingestion/static/additional-info-card-new.png)
 
-> **Note:** For detailed instructions on adding an Additional Info Card to display custom information on your entity's Overview page, see the [Additional Info Card](/docs/internal-developer-portal/layout-and-appearance/catalog#additional-info-card) section in the Catalog Layout documentation.
+> **Note:** For detailed instructions on adding an Additional Info Card to display custom information on your entity's Overview page, see the [Additional Info Card](/docs/internal-developer-portal/layout-and-appearance/catalog.md#additional-info-card) section in the Catalog Layout documentation.
 
 <!-- </TabItem>
 </Tabs> -->

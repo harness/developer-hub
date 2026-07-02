@@ -24,7 +24,7 @@ You need an active [scorecard](/docs/internal-developer-portal/scorecards/scorec
 
 ---
 
-## Create a scorecard aggregation rule
+## Create a Scorecard Aggregation Rule
 
 ### Step 1: Confirm your scorecard is active and has run
 
@@ -50,7 +50,7 @@ Navigate to **Configure** → **Aggregation Rules** and click **+ New Aggregatio
 
 ![Create aggregation rule form with SCORECARD type selected](./static/agg-create-scorecard-type.gif)
 
-#### Roll-up scope
+#### Roll-up Scope
 
 Select the hierarchy levels where the aggregated value should be stored. You can select multiple levels simultaneously.
 
@@ -67,7 +67,7 @@ Select the hierarchy levels where the aggregated value should be stored. You can
 Each level is computed independently from the source entities. The account value is never derived by averaging project values. It is always computed fresh from source entities directly.
 :::
 
-#### Configure entities to aggregate from
+#### Configure Entities to Aggregate From
 
 All filters are combined with AND logic.
 
@@ -130,9 +130,9 @@ This is intentional. Harness IDP gives you control over which values appear on w
 
 ---
 
-## Use cases
+## Use Cases
 
-### Use case 1: Service maturity roll-up
+### Use Case 1: Service Maturity Roll-up
 
 ```yaml
 Aggregation Type: Scorecard
@@ -146,7 +146,7 @@ Type: service
 
 **Result:** `metadata.service_maturity` is available on organization and account entities.
 
-### Use case 2: Compliance posture across projects
+### Use Case 2: Compliance Posture Across Projects
 
 ```yaml
 Aggregation Type: Scorecard
@@ -160,7 +160,7 @@ Type: service
 
 **Result:** `metadata.avg_compliance_score` is available on project and organization entities.
 
-### Use case 3: Production readiness by system
+### Use Case 3: Production Readiness by System
 
 ```yaml
 Aggregation Type: Scorecard
@@ -176,7 +176,7 @@ Type: service
 
 ---
 
-## Frequently asked questions
+## Frequently Asked Questions
 
 <details>
 <summary>The scorecard score is visible on the entity's Scorecard tab but the aggregation rule writes nothing. Why?</summary>
@@ -188,7 +188,7 @@ The aggregation engine reads from **Ingested Properties**, not from the Scorecar
 </details>
 
 <details>
-<summary>The scorecard score has not updated. Why?</summary>
+<summary>The scorecard score hasn't updated. Why?</summary>
 <div>
 
 Scorecard checks run twice a day. If you need a fresh value before the next automatic run, navigate to **Configure** → **Scorecards**, open the scorecard, go to an entity it covers, and click **Rerun Checks** on the Scorecard tab. Then return to **Aggregation Rules** and click **⋮** → **Compute** on the rule.

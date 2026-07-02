@@ -2,12 +2,13 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import React from 'react';
 import { TutorialCards } from '@site/src/components/TutorialCard/TutorialCard';
-import ModuleLandingPageAnimation from '@site/src/components/ModuleLandingPageAnimation/ModuleLandingPageAnimation';
-import { iacmConfig } from '@site/src/components/ModuleLandingPageAnimation/configs';
 import styles from './styles.module.scss';
+// Define the cards in "***Data.ts"
+import { useColorMode } from '@docusaurus/theme-common';
 import { docsCards } from './data/iacmData';
 
 export default function Iacm() {
+  const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = '/' } = {} } = useDocusaurusContext();
   return (
     <div className="container">
@@ -29,18 +30,23 @@ export default function Iacm() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Harness Infrastructure as Code Management lets you define, deploy,
-              and manage infrastructure across environments with built-in
-              compliance and control. Key features include cost estimation,
-              approval steps, PR automation, policy enforcement, drift detection,
-              and configuration management with Ansible.
+              Harness Infrastructure as Code allows you to define, deploy, and
+              manage infrastructure across environments, ensuring compliance and
+              control. Key features include cost estimation, approval steps, PR
+              automation, policy enforcement, and drift detection, which can
+              integrate seamlessly with other Harness modules and third-party
+              services, enhancing your DevOps lifecycle.
             </p>
-            <ModuleLandingPageAnimation
-              sequences={iacmConfig.sequences}
-              color={iacmConfig.color}
-              startInset={32}
-              endInset={32}
-            />
+            <div className={styles.illustrationContainer}>
+              <img
+                className={styles.illustration}
+                src={
+                  colorMode === 'light'
+                    ? `${baseUrl}img/iacm_landing.png`
+                    : `${baseUrl}img/iacm_landing dark.png`
+                }
+              />
+            </div>
           </div>
         </div>
       </div>

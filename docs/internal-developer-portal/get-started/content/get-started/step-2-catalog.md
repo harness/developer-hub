@@ -7,13 +7,13 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelector/DynamicMarkdownSelector';
 
-The **Software Catalog** is a centralized registry of all your software assets, including components, services, websites, libraries, data pipelines, and more. Think of it as a curated directory of your **entities**, helping you efficiently track ownership, metadata, and dependencies across your software ecosystem.
+The **Software Catalog** is a centralized registry of all your software assets — including components, services, websites, libraries, data pipelines, and more. Think of it as a curated directory of your **entities**, helping you efficiently track ownership, metadata, and dependencies across your software ecosystem.
 
 This guide walks you through the detailed steps to setup Catalog in IDP 2.0 and explains how to navigate the Catalog by creating and managing entities.
 
 ---
 
-## Before you begin
+## Prerequisites
 
 Before using the Software Catalog in IDP 2.0, ensure:
 * You have reviewed the **[IDP 2.0 Overview](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path)** and **[Upgrading to IDP 2.0](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o)** guide. 
@@ -22,7 +22,7 @@ Before using the Software Catalog in IDP 2.0, ensure:
 
 ---
 
-## Populate your catalog
+## Populate your Catalog
 
 Once you have enabled the IDP module, there are three ways to populate your Software Catalog in IDP 2.0:
 
@@ -48,7 +48,7 @@ Once you have enabled the IDP module, there are three ways to populate your Soft
 
 ## Next steps
 
-Now that you have created your first entity, explore these next steps:
+Now that you've created your first entity, explore these next steps:
 * [Create Workflows](/docs/internal-developer-portal/get-started) to automate common development tasks.
 * [Configure Plugins](/docs/internal-developer-portal/plugins/overview) to enhance your entities with additional capabilities.
 * [Set up Scorecards](/docs/internal-developer-portal/scorecards/scorecard-quickstart) to track entity quality and compliance.

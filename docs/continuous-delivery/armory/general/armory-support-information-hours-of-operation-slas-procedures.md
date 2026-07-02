@@ -2,7 +2,6 @@
 title: Armory Support Information (Hours of Operation/SLAs/Procedures)
 ---
 
-
 ## Information
 Armory offers a variety of support options depending on your needs. With the resources below, customers should be able to find answers to any questions regarding their support contract and what kind of service-level agreements to be expected as a customer of Armory. There are many ways to contact support, but our first suggestion is always to check our documentation at [docs.armory.io](http://docs.armory.io/) or our [kb.armory.io](https://kb.armory.io) as we constantly seek to improve our customers’ self-service experience.
 

@@ -1,81 +1,110 @@
 ---
 id: k6-loadgen
 title: K6 loadgen
-sidebar_label: K6 Loadgen
-description: Generate a configurable load against a target endpoint with a k6 script for a configurable duration so you can test how the workload behaves under sustained traffic.
-keywords:
-  - chaos engineering
-  - k6 loadgen
-  - load chaos
-  - load testing
-tags:
-  - chaos-engineering
-  - load-faults
 redirect_from:
   - /docs/chaos-engineering/chaos-faults/load/k6-loadgen
 ---
 
-import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
+K6 loadgen fault simulates load generation on the target hosts for a specific chaos duration. This fault:
 
-K6 loadgen is a chaos fault that runs a [k6](https://k6.io) load-test script against a target endpoint from a helper pod inside the chaos infrastructure cluster for `TOTAL_CHAOS_DURATION` seconds, then stops. The script is read from a Kubernetes secret (`SCRIPT_SECRET_NAME`/`SCRIPT_SECRET_KEY`) and run by the official Grafana k6 runner image (`LOAD_IMAGE`), so the load profile (smoke, spike, stress, soak) is fully driven by the script.
+- Slows down or makes the target host unavailable due to heavy load.
+- Checks the performance of the application or process running on the instance.
+- Supports [various](https://grafana.com/docs/k6/latest/testing-guides/test-types/) types of load testing (ex. spike, smoke, stress)
 
-Use this fault to test how a target workload behaves under sustained synthetic load: whether application latency stays inside the SLA, whether autoscaling kicks in, whether circuit breakers and rate limiters work as expected, and whether monitoring detects the saturation within the alerting SLA.
-
-:::info Run your first experiment
-If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
-:::
-
----
+![k6 Loadgen Chaos](./static/images/k6-loadgen.png)
 
 ## Use cases
 
-Run this fault when you want to answer concrete questions like:
+- Simulate high traffic to test the performance and reliability of RESTful APIs.
+- Automate performance testing in CI/CD pipelines to catch regressions early.
+- Evaluate the behavior of web applications under heavy user loads.
+- Continuously monitor cloud infrastructure performance by generating synthetic traffic.
 
-- **API latency under load:** When the script drives `N` virtual users against a REST endpoint, does p95/p99 stay inside the SLA?
-- **Autoscaling fidelity:** Does HPA, KEDA, or a custom autoscaler add capacity inside the alerting SLA?
-- **Rate limiting:** Does the rate limiter return `429`s correctly under sustained burst traffic without leaking errors downstream?
-- **Continuous validation in pipelines:** Catch performance regressions early by running k6 scripts as part of a CI/CD pipeline.
+### Prerequisites
 
----
+- Kubernetes > 1.17 is required to execute this fault.
+- The target host should be accessible.
+- Ensure to create a Kubernetes secret that contains the javascript (JS) file within the Chaos Infrastructure's namespace. The easiest way to create a secret object is as follows::
 
-## Prerequisites
+An example of the JS file is as follows:
 
-- **Kubernetes version:** 1.21 or later for the cluster running the chaos infrastructure.
-- **k6 script secret:** A Kubernetes secret in the chaos infrastructure namespace containing the k6 JavaScript file. The default key is `script.js`. Create it with:
+```javascript
+import http from "k6/http";
+import { check, sleep } from "k6";
 
-  ```bash
-  kubectl create secret generic k6-script \
-    --from-file=script.js=<path-to-script>.js \
-    -n <chaos-infrastructure-namespace>
-  ```
+export default function () {
+  let res = http.get("https://google.com");
 
-- **Target endpoint reachable:** The endpoint addressed in the k6 script (`http.get('https://...')`) is reachable from the chaos infrastructure cluster.
-- **Image accessible:** `LOAD_IMAGE` (default `ghcr.io/grafana/k6-operator:latest-runner`) is pullable from the cluster, or mirror it to your own registry and override the tunable.
+  check(res, { "status is 200": (r) => r.status === 200 });
 
----
+  sleep(0.3);
+}
+```
 
-## Supported environments
+```bash
+kubectl create secret generic k6-script \
+--from-file=<<script-path>> -n <<chaos_infrastructure_namespace>>
+```
 
-| Platform | Support status |
-| --- | --- |
-| Self-hosted Kubernetes (1.21+) | Supported |
-| Managed Kubernetes (EKS, GKE, AKS, OKE) | Supported |
-| OpenShift | Supported |
-| Targets running on AWS, Azure, GCP, or any reachable endpoint | Supported |
+### Mandatory tunables
 
----
+   <table>
+        <tr>
+            <th> Tunable </th>
+            <th> Description </th>
+            <th> Notes </th>
+        </tr>
+        <tr>
+            <td> SCRIPT_SECRET_NAME </td>
+            <td> Provide the k8s secret name of the JS script to run k6. </td>
+            <td> Default to k6-script. For more information, go to <a href="#k6-secret"> k6 secret</a></td>
+        </tr>
+        <tr>
+            <td> SCRIPT_SECRET_KEY </td>
+            <td> Provide the key of the k8s secret named SCRIPT_SECRET_NAME </td>
+            <td> Default to script.js. For more information, go to <a href="#k6-secret"> k6 secret</a></td>
+        </tr>
+    </table>
 
-## Permissions required
+### Optional tunables
 
-This fault is classified as a **Basic** Load fault. The chaos service account needs the following Kubernetes RBAC permissions.
+   <table>
+        <tr>
+            <th> Tunable </th>
+            <th> Description </th>
+            <th> Notes </th>
+        </tr>
+        <tr>
+            <td> TOTAL_CHAOS_DURATION </td>
+            <td> The time duration for chaos injection (in seconds). </td>
+            <td> Default: 60s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a>.</td>
+        </tr>
+        <tr>
+            <td> LOAD_IMAGE </td>
+            <td> Image used in helper pod that contains the chaos injection logic. </td>
+            <td> Default: <code>ghcr.io/grafana/k6-operator:latest-runner</code>. For more information, go to <a href="#custom-load-image"> custom load image.</a></td>
+        </tr>
+        <tr>
+            <td> RAMP_TIME </td>
+            <td> Wait period before and after injecting chaos (in seconds). </td>
+            <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
+        </tr>
+    </table>
 
-```yaml
+### Permissions required
+
+Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+
+```
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   namespace: hce
   name: k6-loadgen
-rules:
+spec:
+  definition:
+    scope: Namespaced # Supports "Cluster" mode too
+permissions:
   - apiGroups: [""]
     resources: ["pods"]
     verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
@@ -85,11 +114,11 @@ rules:
   - apiGroups: [""]
     resources: ["pods/log"]
     verbs: ["get", "list", "watch"]
-  - apiGroups: ["apps"]
+  - apiGroups: [""]
     resources: ["deployments"]
     verbs: ["get", "list"]
-  - apiGroups: ["litmuschaos.io"]
-    resources: ["chaosengines", "chaosexperiments", "chaosresults"]
+  - apiGroups: [""]
+    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
     verbs: ["create", "delete", "get", "list", "patch", "update"]
   - apiGroups: ["batch"]
     resources: ["jobs"]
@@ -99,155 +128,55 @@ rules:
     verbs: ["get", "list", "watch"]
 ```
 
----
+### K6 Secret
 
-## Fault tunables
+It defines the secret and key names for the k6 load generation script. You can adjust them using the `SCRIPT_SECRET_NAME` and `SCRIPT_SECRET_KEY` environment variables, respectively..
 
-Configure the following fault parameters when you add K6 loadgen to an experiment in Chaos Studio. Defaults are shown for reference.
+The following YAML snippet illustrates the use of this environment variable:
 
-**Required parameters**
+[embedmd]: # "./static/manifests/k6-loadgen-chaos/k6-secret.yaml yaml"
 
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `SCRIPT_SECRET_NAME` | Name of the Kubernetes secret in the chaos infrastructure namespace that holds the k6 JavaScript file. | (required) |
-| `SCRIPT_SECRET_KEY` | Key inside the secret that points to the k6 script (for example `script.js`). | (required) |
-
-**Chaos parameters**
-
-| Tunable | Description | Default |
-| --- | --- | --- |
-| `TOTAL_CHAOS_DURATION` | Total duration of the fault, in seconds. k6 runs for this period regardless of the duration declared inside the script. | `60` |
-| `LOAD_IMAGE` | Container image used to run k6 inside the helper pod. | `ghcr.io/grafana/k6-operator:latest-runner` |
-| `RAMP_TIME` | Wait period in seconds before and after the fault. Go to [ramp time](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time) to read how it is applied. | `0` |
-
-Tunables that apply to every fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
-
----
-
-## Sample k6 script
-
-The contents of the secret are passed straight to k6. Any script supported by the runner image works.
-
-```javascript
-import http from "k6/http";
-import { check, sleep } from "k6";
-
-export const options = {
-  vus: 50,
-  duration: "60s",
-};
-
-export default function () {
-  const res = http.get("https://api.example.com/health");
-  check(res, { "status is 200": (r) => r.status === 200 });
-  sleep(0.3);
-}
+```yaml
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: load-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: k6-load-generator
+      spec:
+        components:
+          env:
+            - name: SCRIPT_SECRET_NAME
+              value: "k6-script"
+            - name: SCRIPT_SECRET_KEY
+              value: "script.js"
 ```
 
-Go to the [k6 documentation](https://grafana.com/docs/k6/latest/) to read the script reference and the [test-type catalog](https://grafana.com/docs/k6/latest/testing-guides/test-types/) (smoke, load, stress, spike, soak).
+### Custom load image
 
----
+Image of the k6 load generator. Tune it by using the `LOAD_IMAGE` environment variable.
 
-## Fault execution in brief
+The following YAML snippet illustrates the use of this environment variable:
 
-Reads the k6 script from `SCRIPT_SECRET_NAME`/`SCRIPT_SECRET_KEY`, mounts it into a helper pod that runs `LOAD_IMAGE`, executes `k6 run` for `TOTAL_CHAOS_DURATION` seconds, then tears the helper pod down.
+[embedmd]: # "./static/manifests/k6-loadgen-chaos/load-image.yaml yaml"
 
----
-
-## Expected behavior during fault execution
-
-- The target endpoint sees sustained synthetic traffic for `TOTAL_CHAOS_DURATION` seconds at the rate driven by the script's `vus` and `duration` settings.
-- Application metrics on the target (latency, throughput, error rate) shift in line with the load profile.
-- Autoscalers (HPA, KEDA) may add capacity if CPU/RPS thresholds are reached.
-- After the duration ends, the helper pod is deleted; traffic from the fault stops within seconds.
-
-:::info When the fault ends
-The chaos pod stops `k6 run` and deletes the helper pod when `TOTAL_CHAOS_DURATION` elapses. Synthetic traffic stops within seconds; in-flight requests complete naturally.
-:::
-
-### Signals to watch
-
-Attach [resilience probes](/docs/resilience-testing/chaos-testing/probes) to assert each layer:
-
-- **Application latency:** Use a [Prometheus probe](/docs/resilience-testing/chaos-testing/probes/apm-probes) on the application's request-duration histogram and assert p95/p99 stays inside the SLA.
-- **Error rate:** Use a Prometheus probe on the application's 5xx counter and assert it stays below threshold.
-- **Autoscaling reaction:** Use a [command probe](/docs/resilience-testing/chaos-testing/probes/command-probe) running `kubectl get hpa <name>` to assert replicas grew.
-
----
-
-## Verify the fault execution effect
-
-1. **Watch the helper pod logs for k6 output.**
-
-   ```bash
-   kubectl logs -n <chaos-infra-namespace> -l name=k6-load-generator -f
-   ```
-
-   You should see k6's checks-passed / failed lines and the final summary table.
-
-2. **Inspect target metrics.**
-
-   Use your APM tool (Prometheus, Datadog, New Relic) to confirm RPS and latency rose during the chaos window and recovered afterwards.
-
-3. **Confirm the helper pod was cleaned up.**
-
-   ```bash
-   kubectl get pods -n <chaos-infra-namespace> -l name=k6-load-generator
-   ```
-
-   The pod should be gone after the experiment ends.
-
----
-
-## Recovery and cleanup
-
-- **End of duration:** The chaos pod stops k6 and deletes the helper pod when `TOTAL_CHAOS_DURATION` elapses.
-- **Abort the experiment:** Stopping the experiment from Chaos Studio also stops k6 and cleans up the helper pod.
-- **Manual recovery:** If the helper pod survives an abort, delete it with `kubectl delete pods -n <chaos-infra-namespace> -l name=k6-load-generator`.
-- **Workload recovery:** Application metrics recover as soon as synthetic traffic stops; HPA-driven replicas scale back in over the autoscaler cooldown.
-
----
-
-## Limitations
-
-- **Single endpoint per script:** The script controls the targets; running k6 against many endpoints requires that the script address them.
-- **Cluster network egress:** Synthetic traffic leaves the chaos infrastructure cluster; egress costs and per-host rate limits apply.
-- **No mid-flight reconfigure:** Script changes require re-uploading the secret and re-running the experiment.
-- **Image hosted on GHCR:** The default `LOAD_IMAGE` pulls from `ghcr.io`. If your cluster cannot reach GHCR, mirror the image to your own registry and override `LOAD_IMAGE`.
-- **Script-driven duration:** If the script declares a longer `duration` than `TOTAL_CHAOS_DURATION`, the fault still terminates at `TOTAL_CHAOS_DURATION`; align both for accurate reporting.
-
----
-
-## Troubleshooting
-
-<Troubleshoot
-  issue="K6 loadgen secret not found in Harness Chaos Engineering"
-  mode="docs"
-  fallback="The secret SCRIPT_SECRET_NAME must exist in the chaos infrastructure namespace (the namespace where the chaos infra runs). Create it with kubectl create secret generic <name> --from-file=script.js=<path> -n <namespace>."
-/>
-
-<Troubleshoot
-  issue="K6 helper pod stuck in ImagePullBackOff"
-  mode="docs"
-  fallback="LOAD_IMAGE defaults to ghcr.io/grafana/k6-operator:latest-runner. If your cluster cannot reach ghcr.io, mirror the image to a registry you can reach and set LOAD_IMAGE to that path."
-/>
-
-<Troubleshoot
-  issue="Target endpoint not reachable from the chaos infrastructure cluster"
-  mode="docs"
-  fallback="Confirm the URL inside the k6 script is reachable from inside the cluster: kubectl run debug --image=alpine --rm -it -- wget <url>. Adjust network policies, security groups, or egress rules to allow traffic from the chaos infra namespace."
-/>
-
-<Troubleshoot
-  issue="K6 exited with 'unknown protocol'"
-  mode="docs"
-  fallback="The script must use a supported k6 module (k6/http, k6/grpc, k6/ws). Validate the script locally with k6 run script.js before pushing it as a secret."
-/>
-
----
-
-## Related faults
-
-- [Locust loadgen](/docs/chaos-engineering/faults/chaos-faults/load/locust-loadgen): Generate load with Locust (Python-based) instead of k6.
-- [Pod HTTP latency](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-http-latency): Inject latency on the server side instead of driving load from outside.
-- [Pod CPU hog](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-cpu-hog): Stress server CPU instead of driving traffic.
+```yaml
+# provid a custom image for load generation
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: load-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: k6-load-generator
+      spec:
+        components:
+          env:
+            - name: LOAD_IMAGE
+              value: ghcr.io/grafana/k6-operator:latest-runner
+```

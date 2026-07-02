@@ -1,0 +1,11 @@
+{
+  "label": "Containerized Steps",
+  "position": "600",
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+      "type": "generated-index",
+      "title": "Containerized Steps"
+  }
+}

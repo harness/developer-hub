@@ -2,7 +2,6 @@
 title: Armory Continous Deployment Managed High Availability and Disaster Recovery SLA Information
 ---
 
-
 ### Support SLA's
 Support SLA's are defined [here](http://go.armory.io/sla). This document does not intend to change or alter the support response or resolution times.
 The goal of this document is to provide Armory Legal with the information they need to build the contract language required for ***Availability SLA's***, along with providing support with the correct information to publish on Armory's support page.

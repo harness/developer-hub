@@ -10,7 +10,6 @@ redirect_from:
     - /docs/cloud-cost-management/use-ccm-cost-optimization/cluster-orchestrator/setting-up-co
 ---
 
-
 # Harness Cluster Orchestrator Installation Guide
 
 This guide covers the installation and setup of Harness Cluster Orchestrator for AWS EKS clusters using the enablement script.
@@ -65,11 +64,6 @@ Your kubectl context must have cluster-admin permissions or equivalent to:
 ---
 
 ## Installation Methods
-
-**Link to Operator:** https://hub.docker.com/r/harness/cluster-orchestrator/tags
-
-**Link to Helm Chart:** https://app.harness.io/ng/account/6NTMT--yR7ORXKPqwLDioA/module/code/repos/Helm
-
 
 ### Helm Installation 
 

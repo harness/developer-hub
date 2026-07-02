@@ -1,0 +1,11 @@
+{
+    "label": "IDP tutorials",
+    "collapsible": "true",
+    "collapsed": "true",
+    "position": 1000,
+    "link": {
+      "type": "generated-index",
+      "title": "IDP tutorials"
+    },
+    "customProps": {}
+  }

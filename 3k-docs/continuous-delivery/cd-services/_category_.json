@@ -1,0 +1,14 @@
+{
+    "label": "Services",
+    "position": "2300",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Services"
+    },
+    "customProps": {
+        "helpdocs_category_id": "mdzd29q3u9"
+    }
+}

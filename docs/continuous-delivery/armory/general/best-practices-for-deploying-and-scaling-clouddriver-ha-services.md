@@ -2,7 +2,6 @@
 title: Best practices for deploying and scaling Clouddriver HA services
 ---
 
-
 When Spinnaker turns on Clouddriver HA mode, Clouddriver will split and get deployed as four different services, each only performing a subset of the base Clouddriver’s operations: 
 * [```clouddriver-caching```](https://spinnaker.io/reference/halyard/high-availability/#clouddriver-caching)* [```clouddriver-rw```](https://spinnaker.io/reference/halyard/high-availability/#clouddriver-rw)* [```clouddriver-ro```](https://spinnaker.io/reference/halyard/high-availability/#clouddriver-ro)* [```clouddriver-ro-deck```](https://spinnaker.io/reference/halyard/high-availability/#clouddriver-ro-deck)
 Customers looking to utilize Clouddriver's HA mode should do so for more granular control over Clouddriver resource allocation.  However, before customers do so, they should consider a number of considerations:

@@ -1,11 +1,11 @@
 {
-   "label":"Get started with Software Engineering Insights",
+   "label":"Get started with AI DLC Insights",
    "position": 10,
    "collapsible":"true",
    "collapsed":"true",
    "className":"default",
    "link":{
       "type":"generated-index",
-      "title":"Get started with Software Engineering Insights"
+      "title":"Get started with AI DLC Insights"
    }
 }

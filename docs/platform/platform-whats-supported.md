@@ -31,7 +31,7 @@ For more information about **What's Supported** for other Harness modules, see t
    * [Chaos Engineering](/docs/chaos-engineering/whats-supported)
    * [Continuous Error Tracking](/docs/continuous-error-tracking/whats-supported)
    * [Feature Flags](/docs/feature-flags/ff-supported-platforms)
-   * [Feature Management Experimentation](/docs/feature-management-experimentation/whats-supported)
+   * [Feature Management Experimentation](/docs/feature-management-experimentation/getting-started/whats-supported)
    * [Infrastructure As Code Management](/docs/infra-as-code-management/whats-supported)
    * [Internal Developer Portal](/docs/internal-developer-portal/whats-supported)
    * [Security Testing Orchestration](/docs/security-testing-orchestration/whats-supported/sto-deployments)

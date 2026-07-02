@@ -2,7 +2,6 @@
 title: Enable Basic Form Authentication for Spinnaker via Halyard
 ---
 
-
 If you want to enable Simple Auth for Spinnaker using Halyard: Create/update the ```.hal//profiles/gate-local.yml``` file, with these contents:
 ```
 security.basicform.enabled: true

@@ -1,0 +1,8 @@
+{
+  "label": "Azure Container Apps Deployments",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "description": "Deploy and manage Azure Container Apps with Harness using Basic and Canary deployment strategies."
+  }
+}

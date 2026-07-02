@@ -2,7 +2,6 @@
 title: How to Provide Feature Request Feedback
 ---
 
-
 Communication with our customers is an important part to making Armory Spinnaker a success, and we welcome feedback at all times.  
 * Is the feature request with regards to a **feature which is not behaving as intended**?
 * Is the feature request with regards to a **new feature or idea which has no work around, and is therefore blocking the success of the environment**? 

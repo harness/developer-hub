@@ -1,0 +1,11 @@
+{
+    "label":"Set up SEI",
+    "position": 11,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"default",
+    "link":{
+       "type":"generated-index",
+       "title":"Set up SEI"
+    }
+ }

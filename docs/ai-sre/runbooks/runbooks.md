@@ -7,7 +7,6 @@ redirect_from:
 - /docs/incident-response/runbooks/runbooks
 ---
 
-
 Harness AI SRE allows teams to **automate incident resolution** by leveraging **Runbook automation**. Runbooks provide predefined workflows that execute **automated actions** based on specific triggers.
 
 ## Key Features

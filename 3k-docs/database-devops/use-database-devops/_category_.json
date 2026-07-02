@@ -1,0 +1,13 @@
+{
+    "label":"Use DB DevOps",
+    "collapsible":"true",
+    "collapsed":"true",
+    "link":{
+       "type":"generated-index",
+       "title":"Use DB DevOps"
+    },
+    "customProps":{
+      "description":"Learn how to use Harness Database DevOps to manage your database changes, automate deployments, and ensure compliance with governance policies."
+    },
+    "position": 12
+ }

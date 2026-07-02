@@ -1,0 +1,12 @@
+{
+    "label": "Create Workflow YAML",
+    "collapsible": "true",
+    "collapsed": "true",
+    "position": 3,
+    "link": {
+      "type": "generated-index",
+      "title": "Create Workflow YAML"
+    },
+    "customProps": {}
+  }
+  

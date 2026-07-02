@@ -4,8 +4,6 @@ description: Use Harness expressions in ArgoCD manifests to inject service varia
 sidebar_position: 31
 ---
 
-
-
 Harness GitOps supports using Harness expressions directly in your ArgoCD application manifests. This allows you to inject dynamic values from your service and environment configurations into Kubernetes manifests during the manifest generation phase, before deployment.
 
 Instead of maintaining separate manifest files for each environment or hardcoding values, you can use expressions to reference variables defined in Harness services and environments. This provides a single source of truth for your configurations and makes it easier to manage deployments across multiple environments.

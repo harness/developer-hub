@@ -8,23 +8,23 @@ import TabItem from '@theme/TabItem';
 
 This tutorial shows you how to create a self-service GitHub repository onboarding workflow using Harness IDP. The workflow allows developers to create and configure new GitHub repositories automatically through a simple UI form interface. This eliminates manual repository setup and ensures consistency across all projects.
 
-## Goals of the workflow
+## Goals of the Workflow
 
-By the end of this tutorial, you will have a working workflow that delivers:
+By the end of this tutorial, you'll have a working workflow that delivers:
 - **Automated Repository Creation**: New GitHub repositories are created instantly with proper configuration
 - **Automated Creation of Branch and Files**: New branches and files are created and pushed to the repository automatically without any manual intervention.
 - **Security Best Practices**: Branch protection rules are automatically applied to enforce code reviews
 - **CI/CD Integration**: Webhooks are configured to trigger automated pipelines on specific changes
 - **Self-Service Experience**: Developers can create repositories without platform team intervention
 
-## Workflow components
+## Workflow Components
 
 The GitHub repository onboarding workflow consists of two main components that work together:
 
-### 1. Harness pipeline
+### 1. Harness Pipeline
 This orchestration pipeline contains all the automation logic and executes the actual repository creation steps. This Harness IDP pipeline serves as the **orchestration backend** for our GitHub repository onboarding workflow. Think of it as the engine that powers the automation - when a developer fills out the workflow form (the UI part), this pipeline executes all the technical steps needed to create and configure a GitHub repository.
 
-### 2. Harness IDP workflow 
+### 2. Harness IDP Workflow 
 The Workflow provides a user-friendly interface where developers input the following details and can create a repository without any intervention and runs the above orchestration pipeline in backend to execute the final actions of the Workflow. The Workflow includes validation to ensure proper input format and triggers the above pipeline execution to ensure all the steps are executed successfully.
 
 The following input details are required for the Workflow: 
@@ -33,21 +33,21 @@ The following input details are required for the Workflow:
 - Feature branch name
 
 
-## Before you begin
+## Prerequisites
 
 - **Harness IDP enabled for your Account**: Ensure you have access to Harness with the Internal Developer Portal (IDP) module enabled. 
 
-- **GitHub Connector**: A GitHub connector must be set up and configured to authenticate with your GitHub organization. This connector is used by the `CreateRepo` and `DirectPush` steps to interact with GitHub APIs securely. Go to [GitHub Connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference/) to learn more.
+- **GitHub Connector**: A GitHub connector must be set up and configured to authenticate with your GitHub organization. This connector is used by the `CreateRepo` and `DirectPush` steps to interact with GitHub APIs securely. Go to [GitHub Connector](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference/) to learn more.
 
 - **GitHub PAT Token**: A Personal Access Token (PAT) with appropriate permissions (`repo`, `admin:repo_hook`, `admin:org_hook`) is needed for GitHub API operations. The pipeline uses this token in the `Run` steps to execute GitHub API calls for branch creation, branch protection setup, and webhook configuration. Go to [GitHub PAT](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) to learn more.
 
 - **Workflow YAML & Harness IDP Pipeline configuration**: Basic familiarity with Workflow YAML syntax and Harness pipeline configuration is recommended. Understanding YAML structure helps in configuring pipeline variables and step parameters correctly. Go to [Workflow YAML](/docs/internal-developer-portal/flows/workflowyaml) and [Harness IDP Pipeline](/docs/internal-developer-portal/flows/create-workflow/harness-pipeline) to learn more.
 
-## Create the GitHub repository onboarding pipeline
+## Create the GitHub Repository Onboarding Pipeline
 
-This Harness IDP pipeline serves as the **orchestration backend** for our GitHub repository onboarding workflow. In this section, we will go through all the steps required to develop this orchestration pipeline for this Workflow.
+This Harness IDP pipeline serves as the **orchestration backend** for our GitHub repository onboarding workflow. In this section, we'll go through all the steps required to develop this orchestration pipeline for this Workflow.
 
-### Pipeline design
+### Pipeline Design
 
 **Steps involved in this Pipeline:**
 
@@ -64,11 +64,11 @@ The following steps will be executed in this pipeline:
 
 The pipeline is triggered automatically when a developer submits the IDP workflow form. The workflow acts as the user interface, collecting input parameters, while this pipeline handles the backend automation. For more detailed information about Harness IDP pipelines, refer to the [Harness IDP Pipeline Documentation](/docs/internal-developer-portal/flows/create-workflow/harness-pipeline).
 
-### Get started
+### Get Started
 
-Let us walk through setting up this pipeline step by step:
+Let's walk through setting up this pipeline step by step:
 
-#### Step 1: Create a new pipeline
+#### Step 1: Create a New Pipeline
 1. Navigate to your Harness project. 
 2. Go to **Pipelines** in the left sidebar from Harness IDP.
 3. Click **+ Create a Pipeline**
@@ -80,9 +80,9 @@ Let us walk through setting up this pipeline step by step:
 <DocVideo src="https://app.tango.us/app/embed/7fa815f9-bcf4-440b-81a8-353f81bcbcfd" title="Create a New Pipeline" />
 ---
 
-#### Step 2: Add a developer portal stage
+#### Step 2: Add a Developer Portal Stage
 
-Once you are inside the pipeline editor:
+Once you're inside the pipeline editor:
 
 - Click **+ Add Stage**.
 - Select **Developer Portal** as the stage type.  
@@ -93,7 +93,7 @@ Here’s what you’ll do in each tab:
 ##### 1. Overview
 
 Give your stage a name (for example, `GitHub Repo Onboarding`).  
-You can also add a brief description to explain what this stage handles, such as generating code and registering the service.
+You can also add a brief description to explain what this stage handles — such as generating code and registering the service.
 
 ##### 2. Infrastructure
 
@@ -104,7 +104,7 @@ Next, choose where the pipeline should run.
 
 ##### 3. Execution
 
-This is where you will define the main orchestration logic for the pipeline. You can add execution steps directly in this section. 
+This is where you'll define the main orchestration logic for the pipeline. You can add execution steps directly in this section. 
 
 You don’t need to configure this yet; we’ll walk through each of these steps in the next section.
 
@@ -147,7 +147,7 @@ pipeline:
 
 ---
 
-#### Step 3: Configure pipeline variables
+#### Step 3: Configure Pipeline Variables
 
 Pipeline variables are essential components that make your pipeline reusable and dynamic. These variables serve as inputs to the onboarding pipeline; some will come from the developer via the workflow form, while others are fixed or derived values used internally by the pipeline.
 
@@ -172,13 +172,13 @@ In Harness pipelines, every variable is assigned one of the following types, bas
 2. **Runtime Input** - These values are left as `<+input>` and are filled in by the developer through the IDP Workflow form when the onboarding process is triggered.  
 3. **Expression** - These values are computed dynamically during pipeline execution using expressions. They may reference other variables, pipeline context, or system values.  
 
-These variables will be referenced in your pipeline steps using the `<+pipeline.variables.variable_name>` syntax, and they ensure flexibility while keeping your pipeline reusable across multiple onboarding requests. Go to [Variables & Expressions](/docs/platform/variables-and-expressions/runtime-inputs) to learn more. 
+These variables will be referenced in your pipeline steps using the `<+pipeline.variables.variable_name>` syntax, and they ensure flexibility while keeping your pipeline reusable across multiple onboarding requests. Go to [Variables & Expressions](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs) to learn more. 
 
 **Runtime Inputs in our Workflow:**
 
 In our GitHub Repository Onboarding workflow, most of the pipeline variables are configured as **runtime inputs** (`<+input>`) because they originate from **user inputs** collected through the **IDP workflow** form. 
 
-When a developer executes the workflow, they provide specific details like repository name, organization name, branch name, and webhook URL through the user interface. These user-provided values are then passed to the pipeline as runtime inputs, making each pipeline execution unique and tailored to the developer's requirements. Only the GitHub token remains as a fixed secret value since it is pre-configured in Harness for security purposes. 
+When a developer executes the workflow, they provide specific details like repository name, organization name, branch name, and webhook URL through the user interface. These user-provided values are then passed to the pipeline as runtime inputs, making each pipeline execution unique and tailored to the developer's requirements. Only the GitHub token remains as a fixed secret value since it's pre-configured in Harness for security purposes. 
 
 **Configuring Pipeline Variables:**
 
@@ -187,7 +187,7 @@ Follow these steps to add the required pipeline variables:
 2. For each variable, set the **Type** and **Description**
 3. In the **Value** field, enter `<+input>` for user-provided values
 4. For secrets, reference the secret name (e.g., `account.github-token`)
-5. Mark variables as **Required** if they are essential for pipeline execution
+5. Mark variables as **Required** if they're essential for pipeline execution
 
 :::info Fixed Values
 Note that `token` and `webhook_url` are fixed values since they are pre-configured. Provide the value of `webhook_url` in the variable input as a **fixed value**. For `token` configuration, select the variable type as **secret** and configure the secret from your secret manager. Check out the interactive guide below for detailed steps. 
@@ -238,7 +238,7 @@ variables:
 </TabItem>
 </Tabs>
 
-### Step 1: Create repository
+### Step 1: Create Repository
 
 **Purpose**: This pipeline step **creates a new GitHub repository** in the specified organization with the provided repository name and description.
 
@@ -247,13 +247,13 @@ This step will do the following:
 - Set up the repository with the provided name and description
 
 **Prerequisites for this Step:**
-- **GitHub connector** configured in Harness with proper authentication. Go to [GitHub Connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference/) to learn more. 
+- **GitHub connector** configured in Harness with proper authentication. Go to [GitHub Connector](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference/) to learn more. 
 - **GitHub organization access** with repository creation permissions. 
 - Pipeline variables configured (`repo_name`, `org_name`, `repo_desc`)
 
 **Step Creation Instructions:**
 1. In the IDP stage, click **+ Add Step**. 
-2. Select **CreateRepo** from the step library. A **CreateRepo** step is used to create a repository with the preferred Git provider. Go to [Create Repo Step](/docs/internal-developer-portal/flows/harness-pipeline#3-create-repo) to learn more about its configuration. 
+2. Select **CreateRepo** from the step library. A **CreateRepo** step is used to create a repository with the preferred Git provider. Go to [Create Repo Step](https://developer.harness.io/docs/internal-developer-portal/flows/harness-pipeline#3-create-repo) to learn more about its configuration. 
 3. Configure the step:
    - **Step Name**: `Create Repository`
    - **Identifier**: `create_repo`
@@ -270,8 +270,8 @@ This step will do the following:
    - **Default Branch**: `main`
 
 4. **Advanced Settings (Optional):**
-   - **Initialize with README**: Leave unchecked (we will create our own)
-   - **Add .gitignore**: Leave unchecked (we will create a custom one)
+   - **Initialize with README**: Leave unchecked (we'll create our own)
+   - **Add .gitignore**: Leave unchecked (we'll create a custom one)
    - **Add License**: Leave unchecked
 
 <Tabs>
@@ -301,7 +301,7 @@ This step will do the following:
 
 ---
 
-### Step 2: Create feature branch
+### Step 2: Create Feature Branch
 
 **Purpose**: This step creates a feature branch from the main branch for initial development work and it runs a custom script to do the following: 
 
@@ -312,26 +312,26 @@ This step will do the following:
 
 **Prerequisites for this Step:**
 - Previous steps completed successfully
-- **GitHub PAT token** with `repo` permissions. Go to [GitHub PAT](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference/) to learn more. 
+- **GitHub PAT token** with `repo` permissions. Go to [GitHub PAT](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference/) to learn more. 
 - Pipeline variables configured (  `repo_branch_name`, `org_name`, `repo_name`, `token`)
 
 **Step Creation Instructions:**
 
 1. **Add the Step:**
    - Click **+ Add Step** after the `CreateRepo` step
-   - Select **Run** from the step library. A **Run** step is used here run scripts in a Pipeline. Go to [Run Step Settings](/docs/continuous-integration/use-ci/run-step-settings#run-step-settings) to learn more about the same. 
+   - Select **Run** from the step library. A **Run** step is used here run scripts in a Pipeline. Go to [Run Step Settings](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings/#run-step-settings) to learn more about the same. 
 
 2. **Configure Basic Settings:**
    - **Step Name**: `Create Feature Branch`
    - **Identifier**: `create_branch`
    - **Description**: `Creates a feature branch for initial development`
 
-3. **Configure Container Settings:** Container Registry and Image ensure that the build environment has the binaries necessary to execute the commands that you want to run in this step. Go to [Container Registry and Image](/docs/continuous-integration/use-ci/run-step-settings#container-registry-and-image) to learn more. 
+3. **Configure Container Settings:** Container Registry and Image ensure that the build environment has the binaries necessary to execute the commands that you want to run in this step. Go to [Container Registry and Image](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings/#container-registry-and-image) to learn more. 
    - **Container Registry**: Select your container registry connector (e.g., `account.harnessImage`)
    - **Image**: `node:18` (provides `curl` and `bash` utilities)
    - **Shell**: `Bash`
 
-4. **Configure the Script:** This script automates the creation of a feature branch from the `main` branch using GitHub's REST API. Here is what it does:
+4. **Configure the Script:** This script automates the creation of a feature branch from the `main` branch using GitHub's REST API. Here's what it does:
 
     - **Validates inputs**: Ensures all required variables (branch name, owner, repo, token) are provided
     - **Retrieves default branch**: Gets the repository's default branch name (main/master)
@@ -424,7 +424,7 @@ echo "✅ Branch '$BRANCH_NAME' created in $OWNER/$REPO"
 
 ---
 
-### Step 3: Create directory
+### Step 3: Create Directory
 
 **Purpose**: This step creates a project directory structure for organizing files before pushing to the repository.
 
@@ -486,7 +486,7 @@ echo "📁 Directory '<+pipeline.variables.repo_name>' created successfully"
 
 ---
 
-### Step 4: Generate Project files
+### Step 4: Generate Project Files
 
 **Purpose**: This step creates standard project files to provide a consistent starting point for all repositories, it runs a custom script to do the following: 
 
@@ -517,7 +517,7 @@ echo "📁 Directory '<+pipeline.variables.repo_name>' created successfully"
 
 4. **Configure the Script:**
 
-This script creates three essential project files that provide a standardized foundation for every repository. Here is what each part does:
+This script creates three essential project files that provide a standardized foundation for every repository. Here's what each part does:
 
 **Script Overview:**
 - **Sets up error handling** with `set -e` to exit on any command failure
@@ -957,7 +957,7 @@ ls -la $REPO_NAME/
 
 ---
 
-### Step 5: Push files to repository
+### Step 5: Push Files to Repository
 
 **Purpose**: This step commits and pushes the generated files to the **feature branch** in the GitHub repository.
 
@@ -968,14 +968,14 @@ ls -la $REPO_NAME/
 
 **Prerequisites for this Step:**
 - Project files generated (Step 4 completed)
-- **GitHub connector** with `push` permissions. Go to [GitHub Connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference/) to learn more.
+- **GitHub connector** with `push` permissions. Go to [GitHub Connector](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference/) to learn more.
 - Pipeline variables configured (`org_name`, `repo_name`, `repo_branch_name`)
 
 **Step Creation Instructions:**
 
 1. **Add the Step:**
    - Click **+ Add Step** after the Generate Project Files step
-   - Select **DirectPush** from the step library under "Git Repository Setup". This step will push all the generated files to the new feature branch. Go to [Direct Push Step](/docs/internal-developer-portal/flows/harness-pipeline#5-direct-push) to learn more.  
+   - Select **DirectPush** from the step library under "Git Repository Setup". This step will push all the generated files to the new feature branch. Go to [Direct Push Step](https://developer.harness.io/docs/internal-developer-portal/flows/harness-pipeline#5-direct-push) to learn more.  
 
 2. **Configure Basic Settings:**
    - **Step Name**: `Push Files to Repository`
@@ -1022,7 +1022,7 @@ ls -la $REPO_NAME/
 
 ---
 
-### Step 6: Configure branch protection
+### Step 6: Configure Branch Protection
 
 **Purpose**: This step applies security rules to the main branch to enforce code review and CI/CD requirements. 
 - Protects the `main` branch from direct pushes
@@ -1052,7 +1052,7 @@ ls -la $REPO_NAME/
    - **Image**: `node:18`
    - **Shell**: `Bash`
 
-4. **Configure the Script:** This script configures branch protection rules on the `main` branch using GitHub's REST API to enforce security and code quality standards. Here is what each part does:
+4. **Configure the Script:** This script configures branch protection rules on the `main` branch using GitHub's REST API to enforce security and code quality standards. Here's what each part does:
 
 **Script Overview:**
 - **Sets up error handling** with `set -e` to exit on any command failure
@@ -1288,7 +1288,7 @@ fi
 
 ---
 
-### Step 7: Setup webhook
+### Step 7: Setup Webhook
 
 **Purpose**: This step configures a webhook to trigger CI/CD pipelines when code changes occur in the repository.
 
@@ -1323,7 +1323,7 @@ Ensure that the `webhook_url` variable is configured as a **fixed value** in the
    - **Image**: `node:18`
    - **Shell**: `Bash`
 
-4. **Configure the Script:** This script configures a webhook to automatically trigger CI/CD pipelines when code changes occur in the repository. Here is what each part does:
+4. **Configure the Script:** This script configures a webhook to automatically trigger CI/CD pipelines when code changes occur in the repository. Here's what each part does:
 
 **Complete Script:**
 <details>
@@ -1428,7 +1428,7 @@ echo "📡 Webhook URL: $WEBHOOK_URL"
 **2. Repository Verification:**
 - Queries GitHub API to confirm repository exists
 - Exits with error if repository is not found
-- Ensures webhook creation will not fail due to missing repository
+- Ensures webhook creation won't fail due to missing repository
 
 ```bash
 # Verify repository exists first
@@ -1609,7 +1609,7 @@ fi
 
 ---
 
-### Pipeline YAML configuration
+### Pipeline YAML Configuration
 
 Below is the complete pipeline YAML configuration that you can copy and paste directly into your Harness pipeline. Make sure to replace the placeholder values with your specific configuration details.
 
@@ -2029,7 +2029,7 @@ pipeline:
 
 ---
 
-### Pipeline completion
+### Pipeline Completion
 
 After completing all 7 steps, your pipeline will:
 
@@ -2044,11 +2044,11 @@ After completing all 7 steps, your pipeline will:
 ---
 ---
 
-## Build the Harness IDP workflow
+## Build the Harness IDP Workflow
 
 Now that we have created the pipeline, we need to create the IDP Workflow that will serve as the user interface. This workflow will collect input from developers and trigger our GitHub Repository Onboarding pipeline.
 
-### Before you begin
+### Prerequisites
 
 Before creating the workflow, ensure you have:
 
@@ -2057,7 +2057,7 @@ Before creating the workflow, ensure you have:
 - **Harness Account Access**: Permissions to create workflows in your Harness project. 
 - **Project Details**: Your account ID, organization ID, and project ID. 
 
-### Workflow overview
+### Workflow Overview
 
 **🔤 Inputs Required:**
 - **Repository Information**: Organization name, repository name, and description
@@ -2072,15 +2072,15 @@ Before creating the workflow, ensure you have:
 - **Execution Tracking**: Direct link to monitor pipeline progress in real-time
 - **Status Updates**: Immediate feedback on workflow submission and pipeline initiation
 
-### Create the workflow
+### Creating the Workflow
 
-#### Step 1: Navigate to IDP workflows
+#### Step 1: Navigate to IDP Workflows
 
 1. **Go to Harness IDP** in your Harness account
 2. **Navigate to Workflows** in the left sidebar
 3. **Click "Create Workflow"** to start creating a new workflow
 
-#### Step 2: Configure basic workflow settings
+#### Step 2: Configure Basic Workflow Settings
 
 1. **Workflow Name**: `GitHub Repository Onboarding`
 2. **Identifier**: `GitHub_Repository_Onboarding`
@@ -2089,7 +2089,7 @@ Before creating the workflow, ensure you have:
 
 ![](./static/workflow-2.png)
 
-#### Step 3: Configure the workflow YAML
+#### Step 3: Configure the Workflow YAML
 
 Use the following YAML configuration for your workflow:
 
@@ -2149,9 +2149,9 @@ spec:
         apikey: ${{ parameters.token }}
 ```
 
-### Understand the workflow configuration
+### Understanding the Workflow Configuration
 
-#### 1️⃣ Input parameters section
+#### 1️⃣ Input Parameters Section
 
 The `parameters` section in the Workflow YAML defines the form fields that developers will fill out:
 
@@ -2166,7 +2166,7 @@ The `parameters` section in the Workflow YAML defines the form fields that devel
 **Authentication:**
 - **token**: Harness API token for pipeline execution (automatically handled)
 
-#### 2️⃣ Steps section
+#### 2️⃣ Steps Section
 
 The Workflow contains one main step:
 
@@ -2175,12 +2175,12 @@ The Workflow contains one main step:
 - **Action**: `trigger:harness-custom-pipeline`
 - **Input Mapping**: Maps input form parameters to pipeline variables
 
-#### 3️⃣ Output section
+#### 3️⃣ Output Section
 
 **Pipeline Details Link:**
 - Provides a direct link to view the pipeline execution
 
-### Workflow YAML configuration
+### Workflow YAML Configuration
 
 <details>
 <summary>Workflow YAML Configuration</summary>
@@ -2245,18 +2245,18 @@ spec:
 ---
 ---
 
-## Tutorial outcome
+## Tutorial Outcome
 
-This tutorial creates a complete **self-service GitHub repository onboarding system**. Here is what happens when a developer uses your workflow:
+This tutorial creates a complete **self-service GitHub repository onboarding system**. Here's what happens when a developer uses your workflow:
 
-#### **🚀 Developer experience (in a nutshell)**
+#### **🚀 Developer Experience (In a Nutshell)**
 
 1. **Developer Action**: Fills out a simple form in Harness IDP with repository details
 2. **Workflow Execution**: Submits the form and receives immediate confirmation
 3. **Pipeline Automation**: 7-step pipeline executes automatically in the background
 4. **Repository Ready**: Fully configured repository appears in your GitHub organization
 
-#### **Automated outcomes in your GitHub organization**
+#### **Automated Outcomes in Your GitHub Organization**
 
 When the pipeline completes successfully, the following will be automatically created and configured in your GitHub organization:
 
@@ -2281,5 +2281,5 @@ When the pipeline completes successfully, the following will be automatically cr
   - Monitors `push`, `pull_request` and `release` events
   - Sends JSON payloads to your specified webhook URL
 
-#### **End result**
+#### **End Result**
 Developers can now create production-ready repositories in minutes instead of hours, with all security and CI/CD configurations applied automatically. The platform team maintains control over standards while enabling developer self-service at scale.

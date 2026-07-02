@@ -5,7 +5,7 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-**Service and Infrastructure onboarding** in today's world is slow, manual and tedious. Developers often spend days, or even weeks, setting up new software and completing Day-2 operations. This inefficiency arises from either waiting for ticket resolutions (TicketOps) or manually handling repetitive tasks, which results in a poor developer experience and decreased productivity.
+**Service and Infrastructure onboarding** in today's world is slow, manual and tedious. Developers often spend days—or even weeks—setting up new software and completing Day-2 operations. This inefficiency arises from either waiting for ticket resolutions (TicketOps) or manually handling repetitive tasks, which results in a poor developer experience and decreased productivity.
 
 Harness IDP addresses these challenges with **Self-Service Workflows**.
 
@@ -18,20 +18,20 @@ This guide will take you through the journey of creating, configuring and execut
 
 ---
 
-## Before you begin
+## Prerequisites
 
 Before getting started with **Workflows** in IDP 2.0, ensure you have the following prerequisites: 
 * You have reviewed the **[IDP 2.0 Overview](/docs/internal-developer-portal/idp-2o-overview/2-0-overview-and-upgrade-path)** and **[Upgrading to IDP 2.0](/docs/internal-developer-portal/idp-2o-overview/migrating-idp-2o)** guide. 
 * **IDP 2.0** is enabled behind the `IDP_2_0` Feature Flag. Contact **[Harness Support](https://support.harness.io)** to enable it on your account.
 * You should have a clear understanding of **[Managing Workflows](/docs/internal-developer-portal/flows/manage-workflow-2o)** and **[Workflow YAML](/docs/internal-developer-portal/flows/workflowyaml)** to effectively configure and use the components of a Workflow.
-* It is recommended to have a **Harness Pipeline** in place, which acts as the orchestrator for Self-Service Workflows.
+* It's recommended to have a **Harness Pipeline** in place, which acts as the orchestrator for Self-Service Workflows.
   Learn more about **[setting up Harness IDP Pipelines here](/docs/internal-developer-portal/flows/create-workflow/harness-pipeline)**.
 
 ---
 
-## Create a workflow
+## Create a Workflow
 
-In this guide, you will create a **"Hello World" Workflow** that:
+In this guide, you'll create a **"Hello World" Workflow** that:
 - **Input**: Collects developer information through a simple form
 - **Process**: Triggers a **Harness Pipeline** to process the information
 - **Output**: Generates a personalized welcome message
@@ -40,16 +40,16 @@ This example showcases the fundamental workflow pattern: **Input → Process →
 
 ---
 
-### Step 1: Understanding workflow components
+### Step 1: Understanding Workflow Components
 
-Before creating your workflow, it is important to understand the key components that make up a Self-Service Workflow. A Workflow is defined through a **YAML configuration file** that contains all the Workflow's metadata and logic. Go to [Workflow YAML](/docs/internal-developer-portal/flows/workflowyaml) to learn more.
+Before creating your workflow, it's important to understand the key components that make up a Self-Service Workflow. A Workflow is defined through a **YAML configuration file** that contains all the Workflow's metadata and logic. Go to [Workflow YAML](/docs/internal-developer-portal/flows/workflowyaml) to learn more.
 
 This YAML has **three main components** that work together to facilitate Workflow automation:
 
-#### **1. Workflow frontend (parameters)**
+#### **1. Workflow Frontend (Parameters)**
 The **Workflow Frontend** serves as the entry point where users fill in necessary details to execute the Workflow. This component configures the **input fields** required for the Workflow. This includes form fields, validation rules, and user interface elements that collect information from users. 
 
-**In our example**: We will create a form to collect developer information with validation and default values. The `spec.parameters` field defines the input form structure, with each parameter representing a form page or section.
+**In our example**: We'll create a form to collect developer information with validation and default values. The `spec.parameters` field defines the input form structure, with each parameter representing a form page or section.
 
 Go to [Workflow Frontend](/docs/internal-developer-portal/flows/workflowyaml#workflow-frontend) to learn more.
 
@@ -88,10 +88,10 @@ spec:
 ```
 </details>
 
-#### **2. Workflow backend (steps)**
+#### **2. Workflow Backend (Steps)**
 The **Workflow Backend** is the "brain" of your Workflow - it takes user inputs from the frontend and performs the desired automation tasks. This component configures the **actions** to be triggered and the **orchestration pipelines** to be executed. This includes the core execution units that define the Workflow logic.
 
-**In our example**: We will trigger a Harness Pipeline that processes the developer information and generates a welcome message. The `steps` field defines the automation actions, with each step having an `id`, `name`, `action`, and `input` configuration.
+**In our example**: We'll trigger a Harness Pipeline that processes the developer information and generates a welcome message. The `steps` field defines the automation actions, with each step having an `id`, `name`, `action`, and `input` configuration.
 
 Go to [Workflow Backend](/docs/internal-developer-portal/flows/workflowyaml#workflow-backend) to learn more.
 
@@ -113,10 +113,10 @@ steps:
 ```
 </details>
 
-#### **3. Workflow outputs**
+#### **3. Workflow Outputs**
 **Workflow Outputs** configure **output variables** to be used after backend execution. This includes links to created resources, status messages, and feedback for users.
 
-**In our example**: We will display a success message and provide a link to view the pipeline execution. The `output` field defines what users see after completion, with `links` for navigation and `text` for messages.
+**In our example**: We'll display a success message and provide a link to view the pipeline execution. The `output` field defines what users see after completion, with `links` for navigation and `text` for messages.
 
 Go to [Workflow Outputs](/docs/internal-developer-portal/flows/workflowyaml#workflow-outputs) to learn more.
 
@@ -140,10 +140,10 @@ output:
 ```
 </details>
 
-#### **Workflow metadata**
+#### **Workflow Metadata**
 **Workflow Metadata** provides **information** about the Workflow itself, including name, description, tags, and ownership details for catalog discovery.
 
-**In our example**: We will define basic metadata to make our workflow discoverable and understandable. The `metadata` section contains the workflow's identity, while the `spec` section defines ownership and type.
+**In our example**: We'll define basic metadata to make our workflow discoverable and understandable. The `metadata` section contains the workflow's identity, while the `spec` section defines ownership and type.
 
 Go to [Workflow YAML Structure](/docs/internal-developer-portal/flows/workflowyaml) to learn more.
 
@@ -245,7 +245,7 @@ metadata:
 
 </details>
 
-### Step 2: Create the supporting Harness IDP pipeline
+### Step 2: Create the supporting Harness IDP Pipeline
 
 Harness IDP Workflows can trigger Harness Pipelines to perform the actual automation. This is used to handle the backend orchestration of the Workflow. First, create a simple pipeline that will process your workflow inputs.
 
@@ -335,7 +335,7 @@ echo "Workflow completed successfully!"
 
 ---
 
-### Step 3: Create the workflow
+### Step 3: Create the Workflow
 
 Now create the workflow that will collect user inputs and trigger your pipeline.
 
@@ -365,7 +365,7 @@ Now create the workflow that will collect user inputs and trigger your pipeline.
 
 ---
 
-### Step 4: Execute your workflow
+### Step 4: Execute your Workflow
 
 Once created, execute your workflow to ensure it works correctly.
 
@@ -381,9 +381,9 @@ Once created, execute your workflow to ensure it works correctly.
 
 ---
 
-## Next steps
+## Next Steps
 
-Now that you have learned how to create and manage a Workflow, here is what to explore next:
+Now that you've learned how to create and manage a Workflow, here's what to explore next:
 1. Deep dive into the [Workflow YAML](/docs/internal-developer-portal/flows/workflowyaml)
 2. Learn how to configure [Inputs](/docs/internal-developer-portal/flows/create-workflow/flows-input), [Actions](/docs/internal-developer-portal/flows/create-workflow/custom-actions) and [Outputs](/docs/internal-developer-portal/flows/create-workflow/outputs) in a Workflow. 
 3. Explore how to [setup a Harness IDP Pipeline](/docs/internal-developer-portal/flows/create-workflow/harness-pipeline).

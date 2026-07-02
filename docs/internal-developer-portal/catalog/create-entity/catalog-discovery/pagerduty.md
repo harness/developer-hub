@@ -25,20 +25,20 @@ The following are needed to get the integration running:
 * A [PagerDuty connector](https://youtu.be/QE8dFDeK8Vs) is configured in Harness with the credentials needed to access your PagerDuty account. You can also add the connector during the setup of PagerDuty Integration.
 
 :::info Proxy Configuration
-If your environment blocks outbound third-party traffic and routes it through a proxy, you will need to configure proxy settings on your Harness Delegate. Once configured there, the proxy settings are automatically picked up by IDP integrations. No additional setup is needed on the integration side. 
+If your environment blocks outbound third-party traffic and routes it through a proxy, you'll need to configure proxy settings on your Harness Delegate. Once configured there, the proxy settings are automatically picked up by IDP integrations. No additional setup is needed on the integration side. 
 
-Here is how to set it up: [Configure delegate proxy settings](/docs/platform/delegates/manage-delegates/configure-delegate-proxy-settings)
+Here's how to set it up: [Configure delegate proxy settings](/docs/platform/delegates/manage-delegates/configure-delegate-proxy-settings)
 :::
 
 ---
 
-## Enable the PagerDuty integration
+## Enable the PagerDuty Integration
 
 :::info
 The PagerDuty integration is currently available at the **Account** level only. Navigate to the Account scope of the Internal Developer Portal to add or manage PagerDuty integrations.
 :::
 
-### 1. Navigate to the integrations page
+### 1. Navigate to the Integrations Page
 
 1. In Harness, open the **Internal Developer Portal**.
 
@@ -53,7 +53,7 @@ The PagerDuty integration is currently available at the **Account** level only. 
 
 5. Select **PagerDuty** from the integration type picker. You will be taken to the **Auto Discover PagerDuty Integration** page.
 
-### 2. Configure setup & connectivity
+### 2. Configure Setup & Connectivity
 
 This section connects Harness IDP to your PagerDuty account.
 
@@ -61,13 +61,13 @@ This section connects Harness IDP to your PagerDuty account.
 
 2. Click the **Choose PagerDuty connector** dropdown and select the PagerDuty connector you want to use to pull data into the IDP.
 
-   :::info Do not have a PagerDuty connector yet?
+   :::info Don't have a PagerDuty connector yet?
    If no connectors appear in the dropdown, you need to first create a PagerDuty connector in Harness. Navigate to **Account Settings** → **Connectors** and create a new PagerDuty connector by providing your PagerDuty API key. Once saved, it will appear in the dropdown here.
 
    <DocVideo src="https://www.youtube.com/embed/QE8dFDeK8Vs" />
    :::
 
-### 3. Configure mapping & correlation
+### 3. Configure Mapping & Correlation
 
 This section defines how PagerDuty entities are mapped to IDP catalog entities and how they are correlated with existing records.
 
@@ -76,7 +76,7 @@ The integration supports two entity types: **Service Entity** and **Team Entity*
 ![](./static/pagerduty-entities.png)
 <center>Figure 2: Available Entities - Service and Team</center>
 
-#### Service entity
+#### Service Entity
 
 The Service Entity mapping imports PagerDuty services as catalog components.
 
@@ -116,7 +116,7 @@ The Service Entity mapping imports PagerDuty services as catalog components.
    | `teams` | The PagerDuty teams associated with the service, including team URLs and metadata. |
    | `ownedBy` | Maps to the catalog `ownedBy` field, linking the service to its owning team entity. |
 
-#### Team entity
+#### Team Entity
 
 The Team Entity mapping imports PagerDuty teams as catalog group entities.
 
@@ -146,7 +146,7 @@ The Team Entity mapping imports PagerDuty teams as catalog group entities.
    | `defaultRole` | The default role assigned to team members. |
    | `name` | Maps to the catalog `name` field, setting the team entity's display name. |
 
-### 4. Configure advanced settings
+### 4. Configure Advanced Settings
 
 The **Advanced Settings** section controls how frequently IDP syncs with PagerDuty and how far back historical data is pulled.
 
@@ -165,7 +165,7 @@ The integration is now enabled and IDP begins syncing data from PagerDuty. Disco
 
 ---
 
-## Discover and import PagerDuty entities
+## Discover and Import PagerDuty Entities
 
 This section covers how to view the PagerDuty entities discovered by the integration and import them into your IDP Catalog.
 
@@ -216,7 +216,7 @@ For the full event type reference and detail panel fields, go to [Integration Ev
 
 ---
 
-## View PagerDuty entities in the catalog
+## View PagerDuty Entities in the Catalog
 
 Once imported, PagerDuty entities are available in the **Catalog** section of IDP as standard catalog entities.
 
@@ -234,7 +234,7 @@ Similarly, each imported PagerDuty team is registered with:
 
 Open any entity to view PagerDuty-sourced data directly on the entity details page. This data is displayed through two dedicated UI components: a card on the **Overview** tab and an **Incidents** tab. Both require a one-time layout configuration, described in the [next section](#layout-for-pagerduty-components).
 
-### Layout for PagerDuty components
+### Layout for PagerDuty Components
 
 To display PagerDuty data on the [entity details](/docs/internal-developer-portal/catalog/create-entity/entity-details) page, you need to add the two PagerDuty components to the relevant entity layout. This is a one-time configuration per entity kind and type.
 
@@ -267,7 +267,7 @@ To display PagerDuty data on the [entity details](/docs/internal-developer-porta
 5. Click **Save** to apply the layout changes. The PagerDuty components will now appear on all entity detail pages of the selected kind and type that have PagerDuty data.
 
 
-### Cards in overview tab
+### Cards in Overview Tab
 
 After the layout is configured, two cards `Incidents` and `On-Call` appear in the **Overview** tab of any entity that has PagerDuty data linked to it. The card displays the key PagerDuty metadata ingested for that entity, sourced from the entity's [ingested properties](#ingested-properties).
 
@@ -276,7 +276,7 @@ After the layout is configured, two cards `Incidents` and `On-Call` appear in th
 
 If the PagerDuty integration has not been configured for the entity, the card shows a **Not configured** state with a link to the Integrations page. 
 
-### Incidents tab
+### Incidents Tab
 
 The **Incidents** tab provides a more complete view of the PagerDuty data for the entity. This tab fetches latest possible data using the integration ID and entity UUID.
 
@@ -291,7 +291,7 @@ The **Incidents** tab provides a more complete view of the PagerDuty data for th
 * 'Incidents' card lists all incidents (resolved, triggered, acknowledged) from 30 days before the integration was created. Incidents are retained for 6 months from their last update.
 :::
 
-### Ingested properties
+### Ingested Properties
 
 To inspect the raw data ingested from PagerDuty, open the entity and click **View YAML** → **Ingested Properties** in the Entity Inspector.
 
@@ -308,13 +308,13 @@ Ingested properties are stored in two sections of the entity YAML:
 
 ---
 
-## Manage the PagerDuty integration
+## Manage the PagerDuty Integration
 
 ### Edit the integration
 
 To update the integration name, switch the PagerDuty connector, or change the mapping and correlation settings, navigate to **Integrations** page, find your PagerDuty integration card, and click **View**. From there, click **Configuration** to open the edit screen.
 
-### Suspend auto-discovery
+### Suspend Auto-Discovery
 
 If auto-discovery is suspended, new entities will not appear in the **Discovered** tab. Existing imported entities remain unchanged in the catalog and the sync between PagerDuty and their corresponding IDP entities will stop.
 

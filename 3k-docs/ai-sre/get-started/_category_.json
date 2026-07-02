@@ -1,0 +1,12 @@
+{
+    "label":"Get Started with AI SRE",
+    "collapsible":"true",
+    "collapsed":"true",
+    "link":{
+       "type":"generated-index",
+       "title":"Get Started with AI SRE"
+    },
+    "customProps":{
+    },
+   "position": 10
+}
