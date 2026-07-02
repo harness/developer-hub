@@ -32,6 +32,7 @@ Make sure you have the following:
 - **Harness account** with both Artifact Registry and Continuous Delivery modules enabled.
 - **Artifacts stored in HAR:** Go to [Create a registry](/docs/artifact-registry/manage-registries/create-registry) to set up your registry and push artifacts.
 - **CD pipeline:** Go to [CD overview](/docs/continuous-delivery/get-started/cd-pipeline-basics) to understand pipeline fundamentals.
+- **Kubernetes Cluster connector** (only required for the Containerized Step Group flow described below): Go to [Kubernetes Cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector) to add one.
 
 ---
 
@@ -60,6 +61,26 @@ Go to [Use artifacts from Harness Artifact Registry](/docs/continuous-delivery/x
 Once your CD service is configured with Harness Artifact Registry, the deployment pipeline automatically authenticates with HAR, pulls the specified artifact version, and deploys it to your target environment.
 
 <DocImage path={require('./static/cd-deploy.png')} />
+
+---
+
+## Add a Run step inside a Containerized Step Group
+
+Reference container images stored in Harness Artifact Registry directly from a CD **Run** step, without a Docker connector. This is available when the Run step is inside a **Step Group** with container-based execution enabled.
+
+1. In your CD pipeline stage, go to **Execution** and add a **Step Group**.
+2. In the Step Group configuration, enable **Container based execution**.
+3. In **Kubernetes Cluster**, select a Harness Kubernetes Cluster connector for the cluster where the step containers should run.
+4. Select **Apply Changes** to save the Step Group configuration.
+5. Inside the Step Group, select **+ Add Step** and add a **Run** step.
+6. In the Run step, set **Registry Type** to **Artifact Registry**.
+7. In **Container Registry**, select the Harness Artifact Registry that hosts the image, and in **Image**, enter the image reference (for example, `myapp:1.2.3`).
+
+:::tip
+Choose **Third-Party Artifact Registry** instead when you want to pull the image from an external Docker registry through a Harness Docker connector.
+:::
+
+Go to [Containerized Step Groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups) to review the full Step Group configuration reference and Kubernetes cluster options.
 
 ---
 
