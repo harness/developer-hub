@@ -277,7 +277,7 @@ environment: "{{webhook.context.datacenter}}"
 ## Next steps
 
 - Go to [Use CEL in Webhooks](/docs/ai-sre/alerts/webhooks/use-cel-webhooks) for webhook filtering with CEL expressions
-- Go to [Configure Webhooks](/docs/ai-sre/alerts/webhooks/overview) to learn about webhook setup
-- Go to [Configure Alert Integrations](/docs/ai-sre/alerts/alerts/integrations/overview) for native integration options
+- Go to [Ingest Alerts](/docs/ai-sre/alerts/webhooks/overview) to learn about webhook setup
+- Go to [Configure Ingest Alerts](/docs/ai-sre/alerts/webhooks/templates/overview) for native integration options
 
 <NeedHelpFooter />

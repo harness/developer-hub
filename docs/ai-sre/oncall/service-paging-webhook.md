@@ -390,5 +390,5 @@ The Service Directory UI includes a **Debug Drawer** that shows:
 
 - Go to [Integrate with the Service Directory](/docs/ai-sre/oncall/integrate-service-directory) to configure service-to-team mappings.
 - Go to [Define Escalation Policies](/docs/ai-sre/oncall/define-escalation-policies) to set up on-call routing.
-- Go to [Configure Alert Rules](/docs/ai-sre/oncall/configure-alert-rules) to create advanced alert routing logic.
+- Go to [Route Alerts](/docs/ai-sre/oncall/configure-alert-rules) to create advanced alert routing logic.
 - Go to [Configure Webhooks](/docs/ai-sre/alerts/webhooks/overview) for general webhook configuration beyond service paging.

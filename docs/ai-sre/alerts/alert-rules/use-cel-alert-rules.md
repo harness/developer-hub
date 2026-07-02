@@ -2,11 +2,11 @@
 title: Use CEL Expressions in Alert Rules
 sidebar_label: Use CEL in Alert Rules
 sidebar_position: 3
-description: Learn how to use CEL expressions to write dynamic conditions for alert rules in Harness AI SRE.
+description: Learn how to use CEL expressions to write dynamic conditions to route alerts in Harness AI SRE.
 keywords:
   - cel
   - expressions
-  - alert rules
+  - route alerts
   - conditions
 tags:
   - expressions
@@ -16,7 +16,7 @@ tags:
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 import NeedHelpFooter from '../../_snippets/need-help-footer.mdx';
 
-# Use CEL Expressions in Alert Rules
+# Use CEL Expressions to Route Alerts
 
 CEL (Common Expression Language) expressions provide advanced conditional logic for alert rule conditions beyond simple field comparisons.
 
@@ -26,7 +26,7 @@ CEL expressions cannot be tested or previewed before they execute. Syntax valida
 CEL expression mode requires the `IR_CEL_CONDITIONS` feature flag. Contact your Harness account team to enable this feature.
 :::
 
-## When to use CEL expressions in alert rules
+## When to use CEL expressions to route alerts
 
 Use CEL expressions when you need:
 - **Regex pattern matching**: Filter alerts by service name patterns
@@ -107,7 +107,7 @@ alert.affected_users > 1000
 
 ---
 
-## CEL operators for alert rules
+## CEL operators to route alerts
 
 **Comparison**:
 ```cel
@@ -167,7 +167,7 @@ alert.severity == "critical" && alert.environment == "production"
 
 ---
 
-## Best practices for CEL alert rules
+## Best practices for CEL in alert rules
 
 **1. Keep expressions simple and readable**:
 ```cel
@@ -208,7 +208,7 @@ alert.priority == "p1_critical" || alert.priority == "p2_error"
 
 ---
 
-## Troubleshooting CEL alert rules
+## Troubleshooting CEL in alert rules
 
 <Troubleshoot
   issue="Expression syntax errors when saving alert rule"
@@ -247,7 +247,7 @@ alert.priority == "p1_critical" || alert.priority == "p2_error"
 
 - Go to [Create Dynamic Content](/docs/ai-sre/get-started/onboarding/expression-languages) for complete CEL syntax
   reference, additional operators, and advanced patterns
-- Go to [Configure Alert Rules](/docs/ai-sre/alerts/alert-rules/overview) to learn about alert rule configuration
-- Go to [Configure Webhooks](/docs/ai-sre/alerts/webhooks/overview) to set up incoming alert sources
+- Go to [Route Alerts](/docs/ai-sre/alerts/alert-rules/overview) to learn about alert rule configuration
+- Go to [Ingest Alerts](/docs/ai-sre/alerts/webhooks/overview) to set up incoming alert sources
 
 <NeedHelpFooter />

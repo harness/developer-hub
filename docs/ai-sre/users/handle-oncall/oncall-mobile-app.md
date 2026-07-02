@@ -70,7 +70,7 @@ Before using the Harness AI SRE mobile app, ensure you have:
 
 ### **Integration Setup**
 Ensure your AI SRE platform is configured with:
-- [Alert integrations](/docs/ai-sre/alerts/alerts/integrations/overview) from monitoring tools
+- [Alert integrations](/docs/ai-sre/alerts/webhooks/templates/overview) from monitoring tools
 - [Incident types](/docs/ai-sre/incidents/incident-templates) and severity levels
 - [On-call schedules](/docs/ai-sre/oncall) and escalation policies
 - [Runbook automation](/docs/ai-sre/runbooks) for incident response
@@ -371,7 +371,7 @@ Customize your alert experience:
 ## Next Steps
 
 ### **Optimize Your Setup**
-- **Configure Alert Rules**: Set up intelligent filtering in your AI SRE web dashboard
+- **Route Alerts**: Set up intelligent filtering in your AI SRE web dashboard
 - **Create Runbooks**: Build automated response procedures for common incidents
 - **Set Up Integrations**: Connect monitoring tools and communication platforms
 - **Train Your Team**: Ensure all team members understand mobile response procedures

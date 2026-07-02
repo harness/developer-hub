@@ -187,11 +187,11 @@ Slack presents a form where you can:
 2. Fill in fields interactively
 3. Create the incident without leaving Slack
 
-### Alert Rules Auto-Create Incidents
+### Route Alerts Auto-Create Incidents
 
-Configure alert rules to automatically create incidents of a specific type:
+Configure route alerts to automatically create incidents of a specific type:
 
-1. Navigate to **Alerts** → **Alert Rules**
+1. Navigate to **Alerts** → **Route Alerts**
 2. Create or edit an alert rule
 3. Under **Actions**, select **Create Incident**
 4. Choose the incident type
@@ -229,7 +229,7 @@ AI SRE tracks incident type versions:
 
 **Warning**: You cannot delete incident types that:
 - Have active incidents
-- Are referenced in alert rules
+- Are referenced in route alerts
 - Are referenced in runbook triggers
 
 ---
@@ -249,7 +249,7 @@ AI SRE tracks incident type versions:
 ### Enable Automation
 - Pin runbooks that are almost always needed for this incident type
 - Use consistent field names across types (e.g., always call the service field "Service")
-- Create alert rules that map to incident types automatically
+- Create route alerts that map to incident types automatically
 
 ### Review and Iterate
 - Monitor which fields are actually used
@@ -263,5 +263,5 @@ AI SRE tracks incident type versions:
 
 - [Incident Fields Reference](./incident-fields.md) - Standard fields available on all incidents
 - [Create Incidents](../users/create-incidents.md) - User guide for creating incidents
-- [Alert Rules](../alerts/alert-rules/overview.md) - Configure alerts to auto-create incidents
+- [Route Alerts](../alerts/alert-rules/overview.md) - Configure alerts to auto-create incidents
 - [Create a Runbook](../runbooks/create-runbook.md) - Build runbooks to pin to incident types

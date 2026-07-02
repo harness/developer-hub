@@ -75,4 +75,4 @@ Use connectors to integrate with Teams, Slack, ServiceNow, and other monitoring 
 ## Next Steps
 
 - Go to [Set Up Incident Types](./setup-incident-types.md) to define incident types and severity levels.
-- Go to [Alert Integrations](/docs/ai-sre/alerts/alerts/integrations/overview) to view all available monitoring tool integrations.
+- Go to [Ingest Alerts](/docs/ai-sre/alerts/webhooks/templates/overview) to view all available monitoring tool integrations.

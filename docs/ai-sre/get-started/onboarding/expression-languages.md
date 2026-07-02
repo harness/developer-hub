@@ -61,7 +61,7 @@ Filter incoming alerts before creating incidents.
 alert.severity == "critical" && alert.source.matches("prod-.*")
 ```
 
-Go to [Use CEL in Alert Rules](/docs/ai-sre/alerts/alert-rules/use-cel-alert-rules) to learn more.
+Go to [Use CEL in Route Alerts](/docs/ai-sre/alerts/alert-rules/use-cel-alert-rules) to learn more.
 
 ### 2. Runbook Trigger Conditions
 Control when runbooks automatically execute.
@@ -312,7 +312,7 @@ Link: {{incident.url}}
 - [CEL Language Definition](https://github.com/google/cel-spec/blob/master/doc/langdef.md), Complete syntax reference
 
 ### Harness AI SRE Guides
-- [Use CEL in Alert Rules](/docs/ai-sre/alerts/alert-rules/use-cel-alert-rules)
+- [Use CEL in Route Alerts](/docs/ai-sre/alerts/alert-rules/use-cel-alert-rules)
 - [Use CEL in Runbook Triggers](/docs/ai-sre/runbooks/triggers/use-cel-triggers)
 - [Use CEL in Webhooks](/docs/ai-sre/alerts/webhooks/use-cel-webhooks)
 - [Use CEL in Runbook Actions](/docs/ai-sre/runbooks/workflows/use-cel-runbook-actions)

@@ -1,0 +1,9 @@
+{
+  "label": "Browse Webhook Templates",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "title": "Browse Webhook Templates",
+    "description": "Pre-configured webhook templates for popular monitoring, CI/CD, and ITSM tools with field mappings already set up"
+  }
+}

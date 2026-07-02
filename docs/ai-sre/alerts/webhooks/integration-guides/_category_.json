@@ -1,0 +1,9 @@
+{
+  "label": "Set Up External Systems",
+  "position": 6,
+  "link": {
+    "type": "generated-index",
+    "title": "Configure External Systems",
+    "description": "Set up third-party monitoring and alerting tools to send webhooks to Harness AI SRE"
+  }
+}

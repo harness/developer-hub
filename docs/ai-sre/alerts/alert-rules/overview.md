@@ -1,11 +1,11 @@
 ---
-title: Configure Alert Rules
+title: Route Alerts
 description: Learn how to configure alert rules in Harness AI SRE to route, filter, and enrich incoming alerts.
 sidebar_label: Overview
 sidebar_position: 1
 ---
 
-# Configure Alert Rules
+# Route Alerts
 
 Alert Rules define how incoming alerts are processed and when incidents should be created.
 
@@ -38,7 +38,7 @@ Write advanced boolean expressions for complex filtering:
 - String operations and numeric comparisons
 - More concise than multiple field-based conditions
 
-Go to [Use CEL in Alert Rules](./use-cel-alert-rules.md) to learn about CEL expression mode.
+Go to [Use CEL to Route Alerts](./use-cel-alert-rules.md) to learn about CEL expression mode.
 
 ### Incident Creation
 
@@ -84,6 +84,6 @@ Go to [Create an Alert Rule](./create-alert-rule.md) for step-by-step configurat
 ## Next Steps
 
 - Go to [Create an Alert Rule](./create-alert-rule.md) to configure your first alert rule.
-- Go to [Use CEL in Alert Rules](./use-cel-alert-rules.md) to learn advanced conditional logic.
-- Go to [Configure Webhooks](../webhooks/overview.md) to receive alerts from any monitoring system.
+- Go to [Use CEL to Route Alerts](./use-cel-alert-rules.md) to learn advanced conditional logic.
+- Go to [Ingest Alerts](../webhooks/overview.md) to receive alerts from any monitoring system.
 - Go to [Create Runbooks](../../runbooks/create-runbook.md) to automate alert responses.

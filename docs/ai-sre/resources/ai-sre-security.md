@@ -143,9 +143,9 @@ Alert rules define the conditions that turn raw signals into alerts — for exam
 
 | Action | What it lets the user do |
 |---|---|
-| Create | Define new alert rules. |
+| Create | Define new route alerts. |
 | Edit | Modify the conditions, routing, or behavior of an existing alert rule. |
-| Delete | Remove alert rules. |
+| Delete | Remove route alerts. |
 
 #### Service Directory
 

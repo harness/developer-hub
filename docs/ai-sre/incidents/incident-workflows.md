@@ -15,8 +15,8 @@ Learn how to automate incident response workflows in Harness AI SRE using runboo
 
 AI SRE automates incident workflows through:
 - **Runbooks** - Sequences of automated actions (notifications, API calls, scripts)
-- **Triggers** - Conditions that automatically execute runbooks (alert rules, incident events, status changes)
-- **Alert Rules** - Route alerts to on-call teams and auto-create incidents
+- **Triggers** - Conditions that automatically execute runbooks (route alerts, incident events, status changes)
+- **Route Alerts** - Route alerts to on-call teams and auto-create incidents
 - **Integrations** - Connect to Slack, Jira, ServiceNow, Zoom, PagerDuty, and more
 
 Workflow automation in AI SRE uses **form-based UI configuration with Mustache templates**, not YAML files. Actions are configured through forms where you can:
@@ -35,7 +35,7 @@ Workflow automation in AI SRE uses **form-based UI configuration with Mustache t
 
 **How to configure**:
 
-1. Navigate to **Alerts** → **Alert Rules**
+1. Navigate to **Alerts** → **Route Alerts**
 2. Click **Create Alert Rule**
 3. Configure the rule:
    - **Name**: "P1/P2 Alerts Auto-Create Incidents"
@@ -268,7 +268,7 @@ Runbooks can be triggered:
 - Runs when specific fields change
 
 **Alert Rule Match**
-- Configured in alert rules
+- Configured in route alerts
 - Runs when alerts meet routing criteria
 
 **Scheduled**
@@ -421,6 +421,6 @@ Go to [RCA Change Agent](../ai-agent/rca-change-agent.md) for more details.
 
 - [Create a Runbook](../runbooks/create-runbook.md) - Detailed runbook creation guide
 - [Runbook Triggers](../runbooks/triggers/create-trigger.md) - Configure automatic execution
-- [Alert Rules](../alerts/alert-rules/overview.md) - Route alerts and auto-create incidents
+- [Route Alerts](../alerts/alert-rules/overview.md) - Route alerts and auto-create incidents
 - [Slack Integration](../runbooks/integrations/collaboration/slack.md) - Slack action reference
 - [Jira Integration](../runbooks/integrations/ticketing/jira.md) - Jira action reference

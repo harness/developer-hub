@@ -122,7 +122,7 @@ After completing the initial sync:
 2. **Review schedules**: Check rotation patterns and time zones
 3. **Test escalation policies**: Verify escalation rules work as expected
 4. **Update service ownership**: Assign teams to services in the Service Directory
-5. **Configure alert rules**: Route alerts to imported escalation policies
+5. **Configure route alerts**: Route alerts to imported escalation policies
 
 ---
 

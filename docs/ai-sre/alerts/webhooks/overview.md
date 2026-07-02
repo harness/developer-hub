@@ -1,5 +1,5 @@
 ---
-title: Configure Webhooks
+title: Ingest Alerts
 description: Learn how to configure webhooks in Harness AI SRE to receive alerts from any monitoring system or custom application.
 sidebar_label: Overview
 sidebar_position: 1
@@ -10,7 +10,7 @@ redirect_from:
 
 import DocImage from '@site/src/components/DocImage';
 
-# Configure Webhooks
+# Ingest Alerts
 
 Harness AI SRE webhooks receive alerts from any system that can send HTTP requests.
 
@@ -54,7 +54,16 @@ Go to [Use Mustache in Webhooks](./use-mustache-webhooks.md) for details.
 
 ## Getting Started
 
-Go to [Create a Webhook](./create-webhook.md) for step-by-step configuration instructions and payload examples.
+### Step 1: Choose your integration approach
+
+Select the integration method that fits your use case:
+
+- **Use a webhook template** — Pre-configured templates for popular monitoring tools with field mappings already set up. Go to [Webhook Templates](./templates/overview.md) for Datadog, PagerDuty, Grafana, and other supported tools.
+- **Create a custom webhook** — Configure your own webhook for any tool that can send HTTP requests. Go to [Create a Webhook](./create-webhook.md) for step-by-step instructions.
+
+### Step 2: Configure the external system
+
+After creating your webhook in Harness, configure the external monitoring tool to send alerts to your webhook URL. Go to [External System Setup](./integration-guides/overview.md) for detailed guides on configuring Datadog, PagerDuty, Splunk, and other tools.
 
 :::tip Service Paging Webhooks
 For services that need dedicated on-call paging from external systems, use **Service Paging Webhooks** instead. Service paging webhooks automatically create alerts and page the on-call team via HTTP POST or email. Go to [Service Paging Webhook](/docs/ai-sre/oncall/service-paging-webhook) to learn more.
@@ -64,7 +73,8 @@ For services that need dedicated on-call paging from external systems, use **Ser
 
 ## Next Steps
 
+- Go to [Create a Webhook](./create-webhook.md) to set up your webhook endpoint.
+- Go to [External System Setup](./integration-guides/overview.md) to configure Datadog, PagerDuty, Splunk, and other tools to send webhooks to Harness.
 - Go to [Use CEL in Webhooks](./use-cel-webhooks.md) to filter webhook payloads with conditional logic.
 - Go to [Use Mustache in Webhooks](./use-mustache-webhooks.md) to map webhook fields to alert properties.
-- Go to [Configure Alert Rules](../alert-rules/overview.md) to route and process incoming alerts.
-- Go to [Alert Integrations](../alerts/integrations/overview.md) for native monitoring tool integrations.
+- Go to [Route Alerts](../alert-rules/overview.md) to route and process incoming alerts.

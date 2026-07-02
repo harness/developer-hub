@@ -228,7 +228,7 @@ These tips help the AI Scribe capture your intent more accurately. The Scribe us
 ### Related Resources
 - [Incident Management Overview](/docs/ai-sre/incidents/)
 - [Runbook Automation](/docs/ai-sre/runbooks/)
-- [Alert Integration](/docs/ai-sre/alerts/alerts/integrations/overview)
+- [Alert Integration](/docs/ai-sre/alerts/webhooks/templates/overview)
 - [RCA Change Agent](/docs/ai-sre/ai-agent/rca-change-agent)
 
 ---

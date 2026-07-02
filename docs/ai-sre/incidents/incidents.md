@@ -223,7 +223,7 @@ Follow this interactive guide to create and manage incidents with AI-powered ass
 
 ### Getting Started
 - [Configure Incident Types](./incident-types.md) to standardize incident classification
-- [Set Up Alert Rules](../alerts/alert-rules/overview.md) to automatically create incidents from monitoring alerts
+- [Set Up Route Alerts](../alerts/alert-rules/overview.md) to automatically create incidents from monitoring alerts
 - [Configure On-Call Schedules](../oncall/oncall.md) for proper incident assignment and escalation
 
 ### Advanced Configuration
@@ -231,7 +231,7 @@ Follow this interactive guide to create and manage incidents with AI-powered ass
 - [Set Up Incident Workflows](./incident-workflows.md) for advanced automation
 - [Configure Incident Templates](./incident-templates.md) for consistent incident creation
 - [Configure Status Updates](./status-updates.md) for stakeholder communication
-- [Integrate Monitoring Tools](../alerts/alerts/integrations/overview.md) for automatic incident generation
+- [Integrate Monitoring Tools](../alerts/webhooks/templates/overview.md) for automatic incident generation
 
 ### Best Practices Resources
 - [AI SRE Best Practices Guide](../resources/ai-sre-best-practices.md)

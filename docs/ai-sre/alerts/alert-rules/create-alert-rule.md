@@ -49,7 +49,7 @@ This guide walks you through creating alert rules that define how incoming alert
    - Use AND/OR operators to combine multiple conditions as needed
 4. **For CEL expressions**:
    - Toggle to **CEL mode** in the conditions section
-   - Go to [Use CEL in Alert Rules](./use-cel-alert-rules.md) for detailed examples and configuration instructions
+   - Go to [Use CEL to Route Alerts](./use-cel-alert-rules.md) for detailed examples and configuration instructions
 
 ### Step 3: Configure Incident Creation (Optional)
 
@@ -97,7 +97,7 @@ This guide walks you through creating alert rules that define how incoming alert
   </TabItem>
   <TabItem value="interactive-guide" label="Interactive Guide">
 
-<DocVideo src="https://app.tango.us/app/embed/a683fd0e-3783-4716-accb-304075677df1?skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Configure Alert Rules in Harness AI SRE" />
+<DocVideo src="https://app.tango.us/app/embed/a683fd0e-3783-4716-accb-304075677df1?skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Route Alerts in Harness AI SRE" />
 
 Follow this interactive guide to configure alert rules that automatically create incidents and page on-call teams.
 
@@ -118,6 +118,6 @@ Follow this interactive guide to configure alert rules that automatically create
 
 ## Next Steps
 
-- Go to [Use CEL in Alert Rules](./use-cel-alert-rules.md) to learn advanced conditional logic.
-- Go to [Configure Webhooks](../webhooks/overview.md) to receive alerts from any monitoring system.
+- Go to [Use CEL to Route Alerts](./use-cel-alert-rules.md) to learn advanced conditional logic.
+- Go to [Ingest Alerts](../webhooks/overview.md) to receive alerts from any monitoring system.
 - Go to [Create Runbooks](../../runbooks/create-runbook.md) to automate alert responses.

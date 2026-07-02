@@ -370,4 +370,4 @@ Now that your Deploy Change Investigator is configured:
 
 - Learn how the [AI Agent uses change detection during incidents](/docs/ai-sre/ai-agent/rca-change-agent)
 - Explore [incident management workflows](/docs/ai-sre/incidents)
-- Configure [alert rules and integrations](/docs/ai-sre/alerts/alert-rules/overview)
+- Configure [route alerts and integrations](/docs/ai-sre/alerts/alert-rules/overview)

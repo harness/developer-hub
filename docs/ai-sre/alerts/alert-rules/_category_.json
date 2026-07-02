@@ -1,6 +1,6 @@
 {
-  "label": "Configure Alert Rules",
-  "position": 2,
+  "label": "Route Alerts",
+  "position": 3,
   "collapsible": true,
   "collapsed": true
 }

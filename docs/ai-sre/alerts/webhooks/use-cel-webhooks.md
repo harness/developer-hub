@@ -1,7 +1,7 @@
 ---
 title: Use CEL Expressions in Webhooks
 sidebar_label: Use CEL in Webhooks
-sidebar_position: 3
+sidebar_position: 5
 description: Learn how to use CEL expressions for advanced webhook filtering and conditional mapping in Harness AI SRE.
 keywords:
   - cel
@@ -441,9 +441,9 @@ regex.replace(Webhook.message, r"\s+", " ")
 
 - Go to [Create Dynamic Content](/docs/ai-sre/get-started/onboarding/expression-languages) for complete CEL syntax
   reference and advanced patterns
-- Go to [Configure Webhooks](/docs/ai-sre/alerts/webhooks/overview) to learn about webhook setup and
+- Go to [Ingest Alerts](/docs/ai-sre/alerts/webhooks/overview) to learn about webhook setup and
   configuration
-- Go to [Configure Alert Rules](/docs/ai-sre/alerts/alert-rules/overview) to learn about post-webhook alert
+- Go to [Route Alerts](/docs/ai-sre/alerts/alert-rules/overview) to learn about post-webhook alert
   processing
 
 <NeedHelpFooter />

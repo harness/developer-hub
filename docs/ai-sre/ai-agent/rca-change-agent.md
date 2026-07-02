@@ -219,7 +219,7 @@ The RCA Change Agent automatically analyzes:
 
 ### Quick Setup
 - [AI Scribe Agent](/docs/ai-sre/ai-agent/)
-- [Alert Integration](/docs/ai-sre/alerts/alerts/integrations/overview)
+- [Alert Integration](/docs/ai-sre/alerts/webhooks/templates/overview)
 - [Runbook Automation](/docs/ai-sre/runbooks/)
 
 ### Related Resources

@@ -289,4 +289,4 @@ resolve_incident:
 
 ### Related Topics
 - [Configure Fields](../runbooks/workflows/overview.md)
-- [Alert Rules](../alerts/alert-rules/overview.md)
+- [Route Alerts](../alerts/alert-rules/overview.md)

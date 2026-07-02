@@ -126,7 +126,7 @@ Custom labels appear throughout AI SRE:
 - Email notifications
 
 **API and Integration Usage:**  
-When using the API or configuring alert rules, always use the original ID values (`p1_critical`, `p2_error`, `p3_warning`, `p4_info`), not the custom labels.
+When using the API or configuring route alerts, always use the original ID values (`p1_critical`, `p2_error`, `p3_warning`, `p4_info`), not the custom labels.
 
 ```yaml
 # Alert rule example
@@ -245,7 +245,7 @@ SEV4 → "No Customer Impact"
 ### Documentation
 - [Configure Incident Fields](./incident-fields.md)
 - [Incident Types](./incident-types.md)
-- [Alert Rules](../alerts/alert-rules/overview.md)
+- [Route Alerts](../alerts/alert-rules/overview.md)
 
 ### Related Topics
 - [Incident Workflows](./incident-workflows.md)

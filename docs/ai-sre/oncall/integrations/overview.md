@@ -127,7 +127,7 @@ After synchronizing data from an external platform:
 3. **Test escalation policies**: Trigger test pages to verify escalation chains work as expected
 4. **Assign services**: Link imported teams to services in the Service Directory
 5. **Configure notifications**: Set up notification preferences for users who were imported
-6. **Update alert rules**: Route alerts to imported escalation policies
+6. **Update route alerts**: Route alerts to imported escalation policies
 
 ---
 
@@ -187,4 +187,4 @@ After synchronizing data from an external platform:
 
 - Go to [Create On-Call Schedules](/docs/ai-sre/oncall/create-oncall-schedules) to manage synchronized schedules.
 - Go to [Define Escalation Policies](/docs/ai-sre/oncall/define-escalation-policies) to configure imported escalation chains.
-- Go to [Configure Alert Rules](/docs/ai-sre/oncall/configure-alert-rules) to route alerts to imported on-call teams.
+- Go to [Route Alerts](/docs/ai-sre/oncall/configure-alert-rules) to route alerts to imported on-call teams.

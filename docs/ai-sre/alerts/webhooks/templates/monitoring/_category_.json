@@ -1,0 +1,11 @@
+{
+  "label": "Monitoring & Observability",
+  "position": 2,
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "title": "Monitoring & Observability Templates",
+    "description": "Pre-configured webhook templates for monitoring and observability tools"
+  }
+}

@@ -38,7 +38,7 @@ Incident Types help you:
 - Set default values and custom fields to streamline incident creation
 - Configure field validation and requirements (required vs optional) per incident type
 - Associate runbooks with specific incident types for automated response procedures
-- Integrate with monitoring tools and alert rules for automatic incident creation
+- Integrate with monitoring tools and route alerts for automatic incident creation
 - Create standardized workflows combining custom fields and runbook automation
 
 ### Template Management
@@ -125,7 +125,7 @@ Follow this interactive guide to create and configure incident types with custom
 3. The incident type will be available for:
    - Manual incident creation
    - Automated incident generation from alerts
-   - Integration with monitoring tools and alert rules
+   - Integration with monitoring tools and route alerts
 
   </TabItem>
 </Tabs>
@@ -153,7 +153,7 @@ Follow this interactive guide to create and configure incident types with custom
 - Document runbook usage and maintenance procedures
 
 ### Workflow Integration
-- Align incident types with your alert rules and monitoring setup
+- Align incident types with your route alerts and monitoring setup
 - Configure automatic incident creation for critical alerts
 - Test incident type configurations with sample scenarios
 - Train teams on proper incident type selection and usage
@@ -197,7 +197,7 @@ Follow this interactive guide to create and configure incident types with custom
 
 ## Next Steps
 
-- [Configure Alert Rules](../alerts/alert-rules/overview.md) to automatically create incidents
+- [Route Alerts](../alerts/alert-rules/overview.md) to automatically create incidents
 - [Create Runbooks](../runbooks/create-runbook.md) for automated response procedures
 - [Set Up Incident Workflows](./incident-workflows.md) for advanced automation
 - [Configure Custom Fields](./incident-fields.md) for specialized data collection
