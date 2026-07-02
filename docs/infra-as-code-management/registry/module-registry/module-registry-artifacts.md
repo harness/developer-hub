@@ -18,6 +18,9 @@ tags:
 - registry
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 <CTABanner
 buttonText="Learn more"
 title="Coming soon!"
@@ -150,9 +153,568 @@ If you do not enable auto-sync, you can still trigger a sync manually by selecti
 
 </details>
 
-## Next Steps
+## Migrate existing modules to onboarding pipeline
 
-You've added a module using the storage type you selected. Workspaces can reference the module according to that mode (artifact fetch or Git reference).
+If you have modules that were registered before the onboarding pipeline flow was available, use the `migrate-onboarding-pipeline.sh` script to bulk-assign a pipeline to them.
 
-- [Register a module](/docs/infra-as-code-management/registry/module-registry)
-- [Test module versions](/docs/infra-as-code-management/registry/module-registry/module-registry-testing)
+:::warning Validate in the UI first
+Before running this script, manually onboard one module through the Harness UI. Go to [Module onboarding](#module-onboarding) above to register a test module, configure its onboarding pipeline (choosing the Org and Project), and verify the pipeline execution completes successfully. This confirms the pipeline is correctly set up and you have the correct Org and Project values for the script.
+:::
+
+### Prerequisites
+
+- **bash** (macOS or Linux), **curl**, and **jq** installed (`brew install jq` on macOS).
+- **Harness API key** (Personal Access Token) with module registry edit permissions.
+- **Account ID** for the target Harness account.
+- **Org and Project** where the onboarding pipeline lives (or will be created).
+
+### Script options
+
+| Option | Required | Description |
+|--------|----------|-------------|
+| `--base-url` | Yes | Base URL of the IaCM server (for example, `https://app.harness.io/gateway/iacm`). |
+| `--api-key` | Yes | Harness Personal Access Token (PAT). |
+| `--account` | Yes | Harness account identifier. |
+| `--pipeline-org` | Yes | Org where the onboarding pipeline lives. |
+| `--pipeline-project` | Yes | Project where the onboarding pipeline lives. |
+| `--pipeline-id` | No | Pipeline identifier. Defaults to `iacm_auto_generated_onboarding_pipeline`. |
+| `--autosync` | No | Enable auto-sync (`true` or `false`). Default: `true`. |
+| `--all` | One of `--all` or `--module-ids` required | Target all modules without an onboarding pipeline. |
+| `--module-ids` | One of `--all` or `--module-ids` required | Comma-separated list of specific module IDs to update (for example, `12,34,56`). |
+| `--limit` | No | Max number of modules to update (only applies with `--all`). |
+| `--dry-run` | No | Preview which modules would be updated without making changes. |
+
+:::info Mutually exclusive targeting
+`--all` and `--module-ids` cannot be used together. Use `--all` for bulk migration or `--module-ids` to target specific modules.
+:::
+
+### Run the migration
+
+Follow the steps below in order. Do not skip the dry run or verification steps.
+
+#### Step 1: Preview changes with a dry run
+
+Always start with a dry run to see which modules the script would update:
+
+```bash
+./migrate-onboarding-pipeline.sh \
+  --base-url https://app.harness.io/gateway/iacm \
+  --account <ACCOUNT_ID> \
+  --api-key <API_KEY> \
+  --pipeline-org <ORG> \
+  --pipeline-project <PROJECT> \
+  --all \
+  --dry-run
+```
+
+Review the listed modules and total count.
+
+#### Step 2: Start with a small batch
+
+Do not migrate all modules at once. Start with a small batch (5 to 10 modules) to verify everything works:
+
+<Tabs>
+<TabItem value="limit" label="Using --limit" default>
+
+```bash
+./migrate-onboarding-pipeline.sh \
+  --base-url https://app.harness.io/gateway/iacm \
+  --account <ACCOUNT_ID> \
+  --api-key <API_KEY> \
+  --pipeline-org <ORG> \
+  --pipeline-project <PROJECT> \
+  --all \
+  --limit 5
+```
+
+</TabItem>
+<TabItem value="ids" label="Using --module-ids">
+
+```bash
+./migrate-onboarding-pipeline.sh \
+  --base-url https://app.harness.io/gateway/iacm \
+  --account <ACCOUNT_ID> \
+  --api-key <API_KEY> \
+  --pipeline-org <ORG> \
+  --pipeline-project <PROJECT> \
+  --module-ids 101,102,103
+```
+
+</TabItem>
+</Tabs>
+
+#### Step 3: Verify pipeline executions
+
+After each batch, verify the onboarding pipeline executions before proceeding:
+
+1. In the Harness UI, go to **Pipelines** > **Executions** in the Org and Project where the onboarding pipeline lives.
+2. Confirm that the onboarding pipeline was triggered for each updated module.
+3. Verify every execution completed successfully (green status on all stages).
+4. Spot-check a few modules in the Module Registry to confirm versions synced and metadata populated.
+
+:::warning Do not proceed until verified
+Do not run the next batch until all executions from the current batch succeed. If any executions fail, investigate the cause before continuing. Retry failed modules individually using `--module-ids`.
+:::
+
+#### Step 4: Increase batch size
+
+Once you are confident the migration is working, increase the batch size gradually (for example, 5, then 25, then 50, then 100). Continue verifying pipeline executions after each run.
+
+The script automatically skips modules that already have an onboarding pipeline, so re-running with `--all` is safe and only picks up remaining un-migrated modules.
+
+```bash
+./migrate-onboarding-pipeline.sh \
+  --base-url https://app.harness.io/gateway/iacm \
+  --account <ACCOUNT_ID> \
+  --api-key <API_KEY> \
+  --pipeline-org <ORG> \
+  --pipeline-project <PROJECT> \
+  --all \
+  --limit 25
+```
+
+#### Step 5: Migrate all remaining modules
+
+When you are confident everything is working, run without `--limit` to migrate all remaining modules:
+
+```bash
+./migrate-onboarding-pipeline.sh \
+  --base-url https://app.harness.io/gateway/iacm \
+  --account <ACCOUNT_ID> \
+  --api-key <API_KEY> \
+  --pipeline-org <ORG> \
+  --pipeline-project <PROJECT> \
+  --all
+```
+
+After the final run, check all pipeline executions one more time to confirm the full migration was successful.
+
+### What the script does
+
+For each module being updated, the script:
+
+1. **Fetches modules** from the account, either by specific IDs (`--module-ids`) or all modules (`--all`).
+2. **Filters** modules that do not have an existing onboarding pipeline (when using `--all`). The `--limit` option caps the number processed.
+3. **Ensures the onboarding pipeline exists** by calling the create endpoint (no-op if the pipeline already exists).
+4. **Updates each module** with the pipeline identifier, org, project, and auto-sync flag.
+5. **Reports** success and failure counts and lists any failed modules.
+
+### Migration troubleshooting
+
+| Issue | Solution |
+|-------|----------|
+| `HTTP 401` error | Verify your `--api-key` and `--account` values are not swapped. The account is the short ID, the API key is the long PAT token. |
+| `HTTP 403` error | Ensure your API key has module registry edit permissions. |
+| Module ID not found | Double-check the module ID exists in the account. Use `--dry-run` with `--all` to list available modules. |
+| Pipeline creation fails | Verify the Org and Project exist and that you have pipeline creation permissions in them. |
+| Some modules fail to update | Check the error message in the output. Re-run the script with the failed `--module-ids` to retry. |
+| Auto-sync does not trigger after migration | Confirm the webhook trigger was created on the onboarding pipeline. Go to the pipeline Triggers tab and verify the trigger is active. |
+
+### Safety notes
+
+- **`--dry-run` is your friend.** Always preview before making changes.
+- **Go in small batches.** This lets you catch issues early before they affect many modules.
+- **Verify pipeline executions after every run.** Check the Harness UI to confirm all modules were successfully onboarded before proceeding to the next batch.
+- **Re-running is safe.** The script skips already-onboarded modules when using `--all`.
+- **The script preserves existing module data.** It only adds onboarding pipeline fields; all other module properties remain unchanged.
+- **Org and Project-scoped Git connectors:** If your modules use a Git connector scoped to a specific Org and Project, the onboarding pipeline must be created within that same Org and Project. The pipeline needs access to the Git connector to function correctly, so `--pipeline-org` and `--pipeline-project` values must match the connector scope.
+
+### The script
+
+<details>
+<summary>migrate-onboarding-pipeline.sh</summary>
+
+```bash
+#!/usr/bin/env bash
+#
+# migrate-onboarding-pipeline.sh
+#
+# Migrates existing modules to use an onboarding pipeline.
+# For modules that don't have an onboarding pipeline specified,
+# this script will set the pipeline configuration.
+#
+# Usage:
+#   ./migrate-onboarding-pipeline.sh \
+#     --base-url https://app.harness.io/gateway/iacm \
+#     --api-key <HARNESS_API_KEY> \
+#     --account <ACCOUNT_ID> \
+#     --pipeline-org <ORG> \
+#     --pipeline-project <PROJECT> \
+#     [--pipeline-id <PIPELINE_ID>] \
+#     [--autosync true|false] \
+#     [--dry-run] \
+#     --all | --module-ids <ID1,ID2,...>
+
+set -euo pipefail
+
+# Defaults
+DEFAULT_PIPELINE_ID="iacm_auto_generated_onboarding_pipeline"
+PAGE_SIZE=100
+AUTOSYNC="true"
+DRY_RUN=false
+PIPELINE_ID=""
+MODULE_IDS=""
+SELECT_ALL=false
+MAX_LIMIT=0
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+CYAN='\033[0;36m'
+NC='\033[0m'
+
+# Parse arguments
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --base-url)       BASE_URL="$2"; shift 2 ;;
+    --api-key)        API_KEY="$2"; shift 2 ;;
+    --account)        ACCOUNT="$2"; shift 2 ;;
+    --pipeline-org)   PIPELINE_ORG="$2"; shift 2 ;;
+    --pipeline-project) PIPELINE_PROJECT="$2"; shift 2 ;;
+    --pipeline-id)    PIPELINE_ID="$2"; shift 2 ;;
+    --autosync)       AUTOSYNC="$2"; shift 2 ;;
+    --module-ids)     MODULE_IDS="$2"; shift 2 ;;
+    --all)            SELECT_ALL=true; shift ;;
+    --limit)          MAX_LIMIT="$2"; shift 2 ;;
+    --dry-run)        DRY_RUN=true; shift ;;
+    -h|--help)
+      head -40 "$0" | tail -35
+      exit 0
+      ;;
+    *)
+      echo -e "${RED}Unknown option: $1${NC}" >&2
+      exit 1
+      ;;
+  esac
+done
+
+# Validate required arguments
+missing=()
+[[ -z "${BASE_URL:-}" ]]         && missing+=("--base-url")
+[[ -z "${API_KEY:-}" ]]          && missing+=("--api-key")
+[[ -z "${ACCOUNT:-}" ]]          && missing+=("--account")
+[[ -z "${PIPELINE_ORG:-}" ]]     && missing+=("--pipeline-org")
+[[ -z "${PIPELINE_PROJECT:-}" ]] && missing+=("--pipeline-project")
+
+if [[ ${#missing[@]} -gt 0 ]]; then
+  echo -e "${RED}Error: Missing required arguments: ${missing[*]}${NC}" >&2
+  echo "Run with --help for usage." >&2
+  exit 1
+fi
+
+if [[ "$SELECT_ALL" == false ]] && [[ -z "$MODULE_IDS" ]]; then
+  echo -e "${RED}Error: You must specify either --all or --module-ids <ID1,ID2,...>${NC}" >&2
+  exit 1
+fi
+
+if [[ "$SELECT_ALL" == true ]] && [[ -n "$MODULE_IDS" ]]; then
+  echo -e "${RED}Error: --all and --module-ids are mutually exclusive.${NC}" >&2
+  exit 1
+fi
+
+# Check dependencies
+for cmd in curl jq; do
+  if ! command -v "$cmd" &> /dev/null; then
+    echo -e "${RED}Error: '$cmd' is required but not installed.${NC}" >&2
+    exit 1
+  fi
+done
+
+# Resolve pipeline ID
+if [[ -z "$PIPELINE_ID" ]]; then
+  PIPELINE_ID="$DEFAULT_PIPELINE_ID"
+fi
+
+# Convert autosync to boolean for JSON
+if [[ "$AUTOSYNC" == "true" ]]; then
+  AUTOSYNC_JSON=true
+else
+  AUTOSYNC_JSON=false
+fi
+
+# Strip trailing slash from base URL
+BASE_URL="${BASE_URL%/}"
+
+# Helper: make authenticated API call
+api_call() {
+  local method="$1"
+  local url="$2"
+  local data="${3:-}"
+  local extra_args=()
+
+  if [[ -n "$data" ]]; then
+    extra_args+=(-d "$data")
+  fi
+
+  curl -s -w "\n%{http_code}" \
+    -X "$method" \
+    -H "Content-Type: application/json" \
+    -H "Harness-Account: ${ACCOUNT}" \
+    -H "x-api-key: ${API_KEY}" \
+    ${extra_args[@]+"${extra_args[@]}"} \
+    "$url"
+}
+
+# Same as api_call but also captures response headers
+api_call_with_headers() {
+  local method="$1"
+  local url="$2"
+  local header_file="$3"
+  local data="${4:-}"
+  local extra_args=()
+
+  if [[ -n "$data" ]]; then
+    extra_args+=(-d "$data")
+  fi
+
+  curl -s -w "\n%{http_code}" \
+    -X "$method" \
+    -D "$header_file" \
+    -H "Content-Type: application/json" \
+    -H "Harness-Account: ${ACCOUNT}" \
+    -H "x-api-key: ${API_KEY}" \
+    ${extra_args[@]+"${extra_args[@]}"} \
+    "$url"
+}
+
+# Step 1: Fetch modules
+echo -e "${CYAN}════════════════════════════════════════════════════════════${NC}"
+echo -e "${CYAN}  Module Onboarding Pipeline Migration Script${NC}"
+echo -e "${CYAN}════════════════════════════════════════════════════════════${NC}"
+echo ""
+echo -e "  Account:          ${YELLOW}${ACCOUNT}${NC}"
+echo -e "  Pipeline Org:     ${YELLOW}${PIPELINE_ORG}${NC}"
+echo -e "  Pipeline Project: ${YELLOW}${PIPELINE_PROJECT}${NC}"
+echo -e "  Pipeline ID:      ${YELLOW}${PIPELINE_ID}${NC}"
+echo -e "  Auto-sync:        ${YELLOW}${AUTOSYNC}${NC}"
+if [[ -n "$MODULE_IDS" ]]; then
+  echo -e "  Module IDs:       ${YELLOW}${MODULE_IDS}${NC}"
+else
+  echo -e "  Target:           ${YELLOW}ALL modules without onboarding pipeline${NC}"
+fi
+if [[ "$DRY_RUN" == true ]]; then
+  echo -e "  Mode:             ${YELLOW}DRY RUN${NC}"
+fi
+echo ""
+echo -e "${CYAN}Fetching modules...${NC}"
+
+if [[ -n "$MODULE_IDS" ]]; then
+  MODULES_TO_UPDATE="[]"
+  IFS=',' read -ra requested_ids <<< "$MODULE_IDS"
+  for rid in "${requested_ids[@]}"; do
+    rid=$(echo "$rid" | xargs)
+    echo -ne "  Fetching module ${rid}... "
+
+    response=$(api_call "GET" "${BASE_URL}/api/modules/${rid}")
+    http_code=$(echo "$response" | tail -n1)
+    body=$(echo "$response" | sed '$d')
+
+    if [[ "$http_code" == "200" ]]; then
+      MODULES_TO_UPDATE=$(echo "$MODULES_TO_UPDATE" | jq --argjson mod "$body" '. + [$mod]')
+      echo -e "${GREEN}OK${NC}"
+    else
+      echo -e "${YELLOW}NOT FOUND (HTTP ${http_code})${NC}"
+    fi
+  done
+  echo ""
+else
+  ALL_MODULES="[]"
+  page=1
+  total_fetched=0
+
+  while true; do
+    query="limit=${PAGE_SIZE}&page=${page}"
+
+    header_file=$(mktemp)
+    response=$(api_call_with_headers "GET" "${BASE_URL}/api/modules?${query}" "$header_file")
+
+    http_code=$(echo "$response" | tail -n1)
+    body=$(echo "$response" | sed '$d')
+
+    if [[ "$http_code" != "200" ]]; then
+      echo -e "${RED}Error: Failed to list modules (HTTP ${http_code})${NC}" >&2
+      echo "$body" >&2
+      rm -f "$header_file"
+      exit 1
+    fi
+
+    total_items=$(grep -i "X-Total-Items" "$header_file" | tr -d '\r' | awk '{print $2}')
+    total_pages=$(grep -i "X-Total-Pages" "$header_file" | tr -d '\r' | awk '{print $2}')
+    rm -f "$header_file"
+
+    page_count=$(echo "$body" | jq 'length')
+    if [[ "$page_count" == "0" ]] || [[ "$page_count" == "null" ]]; then
+      break
+    fi
+
+    ALL_MODULES=$(echo "$ALL_MODULES" "$body" | jq -s '.[0] + .[1]')
+    total_fetched=$((total_fetched + page_count))
+
+    echo -e "  Fetched page ${page}/${total_pages:-?} (${total_fetched}/${total_items:-?} modules)"
+
+    if [[ -n "$total_pages" ]] && [[ "$page" -ge "$total_pages" ]]; then
+      break
+    fi
+
+    page=$((page + 1))
+  done
+
+  total_modules=$(echo "$ALL_MODULES" | jq 'length')
+  echo -e "${GREEN}Total modules fetched: ${total_modules}${NC}"
+  echo ""
+
+  MODULES_TO_UPDATE=$(echo "$ALL_MODULES" | jq '[.[] | select(
+    (.onboarding_pipeline == null or .onboarding_pipeline == "") and
+    (.onboarding_pipeline_org == null or .onboarding_pipeline_org == "") and
+    (.onboarding_pipeline_project == null or .onboarding_pipeline_project == "")
+  )]')
+
+  if [[ "$MAX_LIMIT" -gt 0 ]]; then
+    MODULES_TO_UPDATE=$(echo "$MODULES_TO_UPDATE" | jq --argjson limit "$MAX_LIMIT" '.[:$limit]')
+  fi
+fi
+
+update_count=$(echo "$MODULES_TO_UPDATE" | jq 'length')
+
+echo -e "${CYAN}────────────────────────────────────────────────────────────${NC}"
+echo -e "${CYAN}  Summary${NC}"
+echo -e "${CYAN}────────────────────────────────────────────────────────────${NC}"
+if [[ -z "$MODULE_IDS" ]]; then
+  echo -e "  Total modules in account:     ${YELLOW}${total_modules}${NC}"
+fi
+echo -e "  Modules to update:            ${YELLOW}${update_count}${NC}"
+if [[ "$MAX_LIMIT" -gt 0 ]]; then
+  echo -e "  (limited to ${MAX_LIMIT})"
+fi
+echo ""
+
+if [[ "$update_count" -eq 0 ]]; then
+  echo -e "${GREEN}All modules already have onboarding pipeline configured. Nothing to do.${NC}"
+  exit 0
+fi
+
+echo -e "${CYAN}Modules to be updated:${NC}"
+echo "$MODULES_TO_UPDATE" | jq -r '.[] | "  - [\(.id)] \(.name) (system: \(.system), scope_org: \(.scope_org // "N/A"), scope_project: \(.scope_project // "N/A"))"'
+echo ""
+
+if [[ "$DRY_RUN" == true ]]; then
+  echo -e "${YELLOW}DRY RUN: No changes will be made.${NC}"
+  exit 0
+fi
+
+# Ensure onboarding pipeline exists
+echo -e "${CYAN}Ensuring onboarding pipeline exists in ${PIPELINE_ORG}/${PIPELINE_PROJECT}...${NC}"
+
+create_pipeline_body=$(jq -n \
+  --arg org "$PIPELINE_ORG" \
+  --arg project "$PIPELINE_PROJECT" \
+  '{org: $org, project: $project}')
+
+pipeline_url="${BASE_URL}/api/modules/pipeline/onboarding"
+
+response=$(api_call "POST" "$pipeline_url" "$create_pipeline_body")
+http_code=$(echo "$response" | tail -n1)
+body=$(echo "$response" | sed '$d')
+
+if [[ "$http_code" == "200" ]] || [[ "$http_code" == "201" ]] || [[ "$http_code" == "204" ]]; then
+  echo -e "${GREEN}  Onboarding pipeline ready (created or already exists).${NC}"
+elif [[ "$http_code" == "409" ]]; then
+  echo -e "${GREEN}  Onboarding pipeline already exists.${NC}"
+else
+  echo -e "${RED}  Warning: Pipeline creation returned HTTP ${http_code}.${NC}"
+  echo -e "${RED}  Response: ${body}${NC}"
+  read -rp "Continue anyway? (y/N): " continue_confirm
+  if [[ "$continue_confirm" != "y" && "$continue_confirm" != "Y" ]]; then
+    echo -e "${YELLOW}Aborted by user.${NC}"
+    exit 1
+  fi
+fi
+echo ""
+
+# Update modules one by one
+echo -e "${CYAN}════════════════════════════════════════════════════════════${NC}"
+echo -e "${CYAN}  Updating modules...${NC}"
+echo -e "${CYAN}════════════════════════════════════════════════════════════${NC}"
+
+success_count=0
+fail_count=0
+failed_modules=()
+
+for i in $(seq 0 $((update_count - 1))); do
+  module=$(echo "$MODULES_TO_UPDATE" | jq ".[$i]")
+  mod_id=$(echo "$module" | jq -r '.id')
+  mod_name=$(echo "$module" | jq -r '.name')
+  mod_system=$(echo "$module" | jq -r '.system')
+  progress="[$((i + 1))/${update_count}]"
+  echo -ne "${CYAN}${progress}${NC} Updating module ${YELLOW}${mod_name}${NC} (id: ${mod_id})... "
+
+  update_body=$(echo "$module" | jq \
+    --arg pipeline_id "$PIPELINE_ID" \
+    --arg pipeline_org "$PIPELINE_ORG" \
+    --arg pipeline_project "$PIPELINE_PROJECT" \
+    --argjson autosync "$AUTOSYNC_JSON" \
+    '{
+      name: .name,
+      system: .system,
+      onboarding_pipeline: $pipeline_id,
+      onboarding_pipeline_org: $pipeline_org,
+      onboarding_pipeline_project: $pipeline_project,
+      onboarding_pipeline_sync: $autosync
+    }
+    + (if .description then {description: .description} else {} end)
+    + (if .repository then {repository: .repository} else {} end)
+    + (if .repository_branch then {repository_branch: .repository_branch} else {} end)
+    + (if .repository_commit then {repository_commit: .repository_commit} else {} end)
+    + (if .repository_connector then {repository_connector: .repository_connector} else {} end)
+    + (if .repository_path then {repository_path: .repository_path} else {} end)
+    + (if .git_tag_style then {git_tag_style: .git_tag_style} else {} end)
+    + (if .storage_type then {storage_type: .storage_type} else {} end)
+    + (if .tags then {tags: .tags} else {} end)
+    + (if .org then {org: .org} else {} end)
+    + (if .project then {project: .project} else {} end)')
+
+  update_url="${BASE_URL}/api/modules/${mod_id}"
+
+  response=$(api_call "PUT" "$update_url" "$update_body")
+  http_code=$(echo "$response" | tail -n1)
+  body=$(echo "$response" | sed '$d')
+
+  if [[ "$http_code" == "200" ]] || [[ "$http_code" == "204" ]]; then
+    echo -e "${GREEN}OK${NC}"
+    success_count=$((success_count + 1))
+  else
+    echo -e "${RED}FAILED (HTTP ${http_code})${NC}"
+    echo -e "    ${RED}Response: $(echo "$body" | jq -r '.message // .' 2>/dev/null || echo "$body")${NC}"
+    fail_count=$((fail_count + 1))
+    failed_modules+=("${mod_id}:${mod_name}")
+  fi
+done
+
+# Final report
+echo ""
+echo -e "${CYAN}════════════════════════════════════════════════════════════${NC}"
+echo -e "${CYAN}  Migration Complete${NC}"
+echo -e "${CYAN}════════════════════════════════════════════════════════════${NC}"
+echo -e "  Total processed:  ${YELLOW}${update_count}${NC}"
+echo -e "  Successful:       ${GREEN}${success_count}${NC}"
+echo -e "  Failed:           ${RED}${fail_count}${NC}"
+
+if [[ ${#failed_modules[@]} -gt 0 ]]; then
+  echo ""
+  echo -e "${RED}Failed modules:${NC}"
+  for fm in "${failed_modules[@]}"; do
+    echo -e "  - ${fm}"
+  done
+fi
+echo ""
+```
+
+</details>
+
+---
+
+## Next steps
+
+- [Register a module](/docs/infra-as-code-management/registry/module-registry): Register modules using the original Git reference flow.
+- [Test module versions](/docs/infra-as-code-management/registry/module-registry/module-registry-testing): Set up automated testing for your modules.
