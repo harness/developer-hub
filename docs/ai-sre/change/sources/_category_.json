@@ -1,0 +1,11 @@
+{
+  "label": "Configure Sources of Change",
+  "position": 3,
+  "collapsible": true,
+  "collapsed": false,
+  "link": {
+    "type": "generated-index",
+    "title": "Configure Sources of Change",
+    "description": "Learn how to configure your CI/CD tools to send build and deployment data to the Deploy Change Investigator."
+  }
+}
