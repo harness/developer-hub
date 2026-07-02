@@ -25,15 +25,23 @@ self-managed VM, or Local/Docker build infrastructures.
 
 ## When the support bundle is collected
 
-The collector only runs when **both** of the following are true:
+The collector runs when **either** of the following is true:
 
 1. The account-level feature flag `CI_SUPPORT_BUNDLE_COLLECTION` is enabled
    for your account by Harness.
 2. The stage-level pipeline variable `HARNESS_CI_SUPPORT_BUNDLE_ENABLED` is
    set to `true` on the specific stage you want diagnostics for.
 
-If either gate is disabled, **no data is collected** and the rest of this page
-does not apply.
+In practice this means:
+
+- When the account-level feature flag is **on**, diagnostics are collected for
+  **every** failing Kubernetes stage in your account, whether or not the stage
+  sets `HARNESS_CI_SUPPORT_BUNDLE_ENABLED`.
+- When the account-level feature flag is **off**, diagnostics are collected
+  only for the specific stages that set `HARNESS_CI_SUPPORT_BUNDLE_ENABLED=true`.
+
+If **both** gates are disabled, **no data is collected** and the rest of this
+page does not apply.
 
 When collection is active for a stage, the build pod's step log output
 includes a clearly visible line at the start of the stage so you can confirm
@@ -95,9 +103,13 @@ logs. Go to [Who can access the bundle](#who-can-access-the-bundle) to review
 access controls. It does, however, give Harness Support an additional analysis
 path against the same content.
 
-If you want to ensure no log content is captured, **do not enable**
-`HARNESS_CI_SUPPORT_BUNDLE_ENABLED` on stages that print sensitive values.
-Go to [How to disable collection](#how-to-disable-collection) to opt out.
+If you want to ensure no log content is captured from a stage that prints
+sensitive values, that stage must not be collected from. Because collection is
+enabled when **either** gate is on, this means the stage must not set
+`HARNESS_CI_SUPPORT_BUNDLE_ENABLED=true` **and** the account-level feature flag
+`CI_SUPPORT_BUNDLE_COLLECTION` must be off for your account. While the account
+flag is on, all failing stages are collected. Go to
+[How to disable collection](#how-to-disable-collection) to opt out.
 :::
 
 ### What is **never** collected
@@ -208,8 +220,15 @@ separate, broader access channel.
 
 ## How to disable collection
 
-You can disable support bundle collection at either of two layers. Either
-layer is sufficient to stop collection.
+Because collection is enabled when **either** gate is on, stopping collection
+means turning off **every** gate that is currently enabled:
+
+- While the account-level feature flag is on, every failing stage is collected,
+  regardless of the stage variable. Go to
+  [Disable for the entire account](#disable-for-the-entire-account) to turn the flag off.
+- Any stage that sets `HARNESS_CI_SUPPORT_BUNDLE_ENABLED=true` is collected even
+  when the account flag is off, so the variable must also be removed or set to
+  `false`.
 
 ### Disable for a specific stage
 
@@ -228,16 +247,21 @@ stages:
             value: "false"   # or simply omit this variable entirely
 ```
 
-Stages without `HARNESS_CI_SUPPORT_BUNDLE_ENABLED=true` set are never
-collected from, regardless of the account-level feature flag.
+Removing the stage variable stops collection for that stage **only if the
+account-level feature flag is also off**. While the account flag is on, the
+stage is still collected on failure even without the variable. To stop it in
+that case, go to [Disable for the entire account](#disable-for-the-entire-account).
 
 ### Disable for the entire account
 
 Contact [Harness Support](mailto:support@harness.io) and request that the
 `CI_SUPPORT_BUNDLE_COLLECTION` feature flag be turned off for your account.
 
-When the account-level feature flag is off, the collector does not run for
-**any** stage in your account, regardless of stage variables.
+Turning off the account-level feature flag stops account-wide collection.
+However, any individual stage that explicitly sets
+`HARNESS_CI_SUPPORT_BUNDLE_ENABLED=true` will **still** be collected on failure.
+To fully disable collection, turn off the feature flag **and** ensure no stage
+sets the variable to `true`.
 
 ### Verify collection is off
 
@@ -251,10 +275,14 @@ occurred.
 
 ## Recommended practices
 
-1. **Enable collection per stage, not blanket-on**. Treat the
-   `HARNESS_CI_SUPPORT_BUNDLE_ENABLED` variable as something you turn on for
-   stages you actively want diagnostics from. These are typically stages that
-   have been failing intermittently and are hard to triage from logs alone.
+1. **Scope collection to what you need**. When the account-level feature flag
+   is off, use the `HARNESS_CI_SUPPORT_BUNDLE_ENABLED` variable to turn
+   collection on only for stages you actively want diagnostics from, typically
+   stages that have been failing intermittently and are hard to triage from
+   logs alone. Keep in mind that when the account-level flag is on, collection
+   applies to **all** failing Kubernetes stages in the account, so if you need
+   stage-level control, request that the account flag stay off and rely on the
+   stage variable.
 2. **Avoid printing secrets to stdout**. Container logs are included in the
    bundle without content sanitization. If a build step would echo a
    sensitive value to stdout, redirect or mask it the same way you would for
