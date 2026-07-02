@@ -171,6 +171,14 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## June 2026
 
+### Version 26.06.89501 <!-- June 30, 2026 -->
+
+#### Fixed issues
+
+- Fixed `GLIBC_2.34` dependency error in Serverless Lambda go-template tool. The issue occurred when the go-template binary in the Lambda execution environment required `GLIBC_2.34`, which was not available in the runtime, causing deployments to fail with library version errors. The fix updates the go-template binary version from `1.4.0-beta` to `1.6.0-beta`, which is compatible with the Lambda runtime environment. [CDS-126017]
+- Fixed Salesforce execution API not honoring changeset ID parameter. The issue occurred during QA testing when certain Salesforce deployment steps did not respect the specified changeset ID due to missing parameters in the backend. The fix ensures all Salesforce APIs and steps properly handle changeset ID parameters. [CDS-125836]
+- Fixed GitOps Update Release Repo step intermittently hanging under high concurrency. The issue occurred when many concurrent Update Release Repo steps triggered the GitHub token lock mechanism, causing steps to wait for the lock and appear stuck for 3 to 25 minutes. The fix enables the `disableGitRestraint` flag to bypass the GitHub token lock mechanism and adds a new command unit for git restraint logs. [CDS-125451]
+
 ### Version 26.06.89405 <!-- June 26, 2026 -->
 
 #### Fixed issues
