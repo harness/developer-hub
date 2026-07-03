@@ -5,6 +5,7 @@ sidebar_position: 10
 ---
 
 import DocImage from '@site/src/components/DocImage';
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
 
 All artifact operations start with the **Setup Client** page found inside your registry at the top right. 
@@ -126,6 +127,16 @@ The **Copy** link in the **Download command** column only copies that command te
 **Permissions:** You need read access on the source registry and write access on the target. Details can vary by registry type.
 
 Go to [Copy artifacts in the Harness CLI](/docs/artifact-registry/artifact-registry-cli/manage-artifacts-registries#copy-artifacts) to copy versions from the command line or from automation.
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="curl or wget download from a public Harness Artifact Registry fails with 401 or prompts for an API key"
+  mode="docs"
+  fallback="Public registries do not require the x-api-key header on downloads. Remove the --header 'x-api-key: &lt;API_KEY&gt;' line from your curl or wget command. The x-api-key header is only required for virtual or private registries. The copy-to-clipboard curl command in the UI file view is generated for the authenticated path, so trim the header when you download from a public registry."
+/>
 
 ## See Also
 
