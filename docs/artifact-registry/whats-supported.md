@@ -1,12 +1,33 @@
 ---
 title: What's Supported with Artifact Registries
-sidebar_position: 1
 sidebar_label: What's Supported
+description: The registry types, platform integrations, and regional capabilities available in Harness Artifact Registry.
+sidebar_position: 1
+keywords:
+  - artifact registry
+  - supported registry types
+  - platform integrations
+  - multi-region replication
+tags:
+  - artifact-registry
+  - reference
 ---
 
-:::info 
+import { FAQ } from '@site/src/components/AdaptiveAIContent';
+
+:::info
 To enable Harness Artifact Registry in your account, contact your sales representative or reach out to the team at [ar-interest@harness.io](mailto:ar-interest@harness.io).
 :::
+
+---
+
+## What you will learn
+
+- **Supported registry types:** The current list of registry formats you can create in Harness Artifact Registry.
+- **Platform integrations:** How Artifact Registry works with RBAC, CI, CD, Dependency Firewall, and the Harness CLI.
+- **Storage and replication:** How multi-region replication works and which regions are supported.
+
+---
 
 ## Registries
 Harness Artifact Registry supports a variety of registry types, and new ones are often added. We currently support the registry types listed below.
@@ -30,15 +51,18 @@ These are the currently supported registry types.
 - **Go:** Support for Go modules.
 - **Cargo:** Rust package management.
 - **Hugging Face:** Machine learning models and datasets.
-- **Conda:** To support your Python and R packages.
+- **Conda:** Python and R packages with Anaconda-compatible workflows.
+- **Puppet:** Puppet Forge-compatible modules with `r10k` support.
 
-### Coming Soon
+### Coming soon
 
 - **Alpine:** Alpine Linux packages.
 - **RubyGems:** Ruby packages.
 - **Conan:** C/C++ packages.
 
-## Platform Support
+---
+
+## Platform support
 Harness Artifact Registry (HAR) is seamlessly integrated with the Harness Platform, offering you robust features and capabilities.
 
 ### Role-based Access Control (RBAC)
@@ -78,3 +102,23 @@ When you push an artifact, Harness stores it in your primary region and eagerly 
 Supported regions: US-West, US-East, EU-West, EU-East, Asia-Pacific, and Oceania. Proximity detection and regional routing are handled automatically based on client IP; no additional registry configuration is required.
 
 Read requests automatically fail over to the disaster recovery bucket if primary storage becomes unavailable. Write operations require primary storage availability.
+
+---
+
+## Frequently asked questions
+
+<FAQ
+  question="Does Harness Artifact Registry support Zarf packages or other non-container OCI artifacts?"
+  mode="fallback-only"
+  fallback="Zarf packages push and pull successfully through a Harness Artifact Registry Docker registry using the Zarf CLI. The artifact type displays as `undefined` in the Artifact Registry UI because the UI is optimized for container images, but push and pull operations work as expected. Harness has not formally validated support for non-container OCI artifacts other than Zarf. If you plan to use a different tool or artifact type, go to [Harness Support](mailto:support@harness.io) to confirm compatibility."
+/>
+
+---
+
+## Related concepts
+
+- Go to [Get Started](/docs/artifact-registry/get-started/overview) to understand Artifact Registry fundamentals.
+- Go to [Quickstart](/docs/artifact-registry/get-started/quickstart) to create your first registry.
+- Go to [Artifact Registry and Continuous Delivery](/docs/artifact-registry/platform-integrations/cd-ar-integrations) to consume Artifact Registry artifacts in CD pipelines.
+- Go to [Artifact Registry and Continuous Integration](/docs/artifact-registry/platform-integrations/ci-ar-integrations) to push and pull artifacts from CI pipelines.
+- Go to [Dependency Firewall](/docs/artifact-registry/dependency-firewall/overview) to apply supply-chain policy to upstream artifacts.
