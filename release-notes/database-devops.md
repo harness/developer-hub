@@ -49,7 +49,12 @@ No customer-facing updates were introduced in this release.
 
 ### Release 1.101.x
 
-No customer-facing updates were introduced in this release.
+The `1.101.x` release expands Git-based deployment capabilities by introducing version-aware database schema instances.
+
+#### Key Highlights
+
+* **Feature Enhancements**
+  - Teams can now configure DB Schema instances and pipeline executions to use a specific Git tag or commit SHA, making database deployments reproducible, simplifying rollback scenarios, and improving release traceability.
 
 #### Image Upgrades
 
