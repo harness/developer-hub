@@ -230,13 +230,19 @@ The following deprecated API endpoints are longer supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
-## June 2026
+## July 2026
 
-### Version 1.154.x <!--June 29, 2026-->
+### Version 1.155.x <!--July 02, 2026-->
 
 #### New features and enhancements
 - Added the ability to clone an existing **Resource Group** directly from the UI, enabling faster RBAC configuration by reusing existing resource selections and scope as a baseline. [PL-72549]
 - Added the ability to clone an existing **Access Control role** directly from the UI, so new roles can start with the same permissions as an existing role. [PL-72530]
+
+## June 2026
+
+### Version 1.154.x <!--June 29, 2026-->
+
+No enhancements or fixes were released in this cycle.
 
 ### Version 1.153.x <!--June 17, 2026-->
 
