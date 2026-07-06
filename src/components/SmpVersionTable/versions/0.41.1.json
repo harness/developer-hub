@@ -1,0 +1,128 @@
+[
+  {
+    "module": "Continuous Integration",
+    "services": [
+      { "name": "CI Manager", "version": "1.130.7", "releasesLinks": [{"text": "1.130.x", "href": "/release-notes/continuous-integration#version-11300"}, {"text": "1.129.x", "href": "/release-notes/continuous-integration#version-11290"}, {"text": "1.128.x", "href": "/release-notes/continuous-integration#version-11280"}] },
+      { "name": "Log Service", "version": "1.45.3" }
+    ]
+  },
+  {
+    "module": "DB Devops",
+    "services": [
+      { "name": "DB Devops Service", "version": "1.88.0", "releasesLinks": [{"text": "1.88.x", "href": "/release-notes/database-devops#release-188x"}, {"text": "1.87.x", "href": "/release-notes/database-devops#release-187x"}, {"text": "1.86.x", "href": "/release-notes/database-devops#release-186x"}, {"text": "1.85.x", "href": "/release-notes/database-devops#release-185x"}] }
+    ]
+  },
+  {
+    "module": "GitOps",
+    "services": [
+      { "name": "GitOps Service", "version": "1.55.7", "releasesLinks": [{"text": "1.55.x", "href": "/release-notes/continuous-delivery#gitops-service-1557-gitops-agent-01150"}, {"text": "1.54.x", "href": "/release-notes/continuous-delivery#gitops-service-1543-gitops-agent-01142"}] }
+    ]
+  },
+  {
+    "module": "STO",
+    "services": [
+      { "name": "STO Core", "version": "1.188.3", "releasesLinks": [{"text": "1.187.x", "href": "/release-notes/security-testing-orchestration#version-11872"}] }
+    ]
+  },
+  {
+    "module": "CCM",
+    "services": [
+      { "name": "CE Nextgen", "version": "1.86.20", "releasesLinks": [{"text": "1.86.15", "href": "/release-notes/cloud-cost-management#april-2026---version-18615"}, {"text": "1.84.4", "href": "/release-notes/cloud-cost-management#march-2026---version-1844"}, {"text": "1.83.1", "href": "/release-notes/cloud-cost-management#march-2026---version-1831"}] },
+      { "name": "Batch Processing", "version": "1.84.11" },
+      { "name": "NG CE UI", "version": "1.83.7" },
+      { "name": "Anomaly Detection", "version": "1.26.1" },
+      { "name": "Telescopes", "version": "1.7.2" }
+    ]
+  },
+  {
+    "module": "Feature Flags",
+    "services": [
+      { "name": "Feature Flag Service", "version": "1.1181.0", "releasesLinks": [{"text": "1.1181.x", "href": "/release-notes/feature-flags#april-2026"}] },
+      { "name": "Feature Flag Pushpin Service", "version": "1.1139.0" }
+    ]
+  },
+  {
+    "module": "IaCM",
+    "services": [
+      { "name": "IACM Manager", "version": "1.138.1", "releasesLinks": [{"text": "1.138.x", "href": "/release-notes/infrastructure-as-code-management#april-2026"}] },
+      { "name": "IAC Server", "version": "1.370.0" },
+      { "name": "Ticket Service", "version": "1.8.0" }
+    ]
+  },
+  {
+    "module": "Code Repository",
+    "services": [
+      { "name": "Code API", "version": "1.81.4", "releasesLinks": [{"text": "1.80.x", "href": "/release-notes/code-repository#version-180x"}] },
+      { "name": "Code GitRPC", "version": "1.81.1" },
+      { "name": "Code GitHA", "version": "1.81.0" },
+      { "name": "Code Search", "version": "1.81.0" }
+    ]
+  },
+  {
+    "module": "SSCA",
+    "services": [
+      { "name": "SSCA Manager", "version": "1.58.8", "releasesLinks": [{"text": "1.57.x", "href": "/release-notes/software-supply-chain-assurance#version-v1570--plugin-version-v0570"}] },
+      { "name": "Component Analysis Service", "version": "1.7.0" },
+      { "name": "Component Service", "version": "1.11.3" },
+      { "name": "SSCA UI", "version": "0.45.2" }
+    ]
+  },
+  {
+    "module": "Platform",
+    "services": [
+      { "name": "Platform Service", "version": "1.117.0", "releasesLinks": [{"text": "1.117.x", "href": "/release-notes/platform#version-1117x-"}, {"text": "1.116.x", "href": "/release-notes/platform#version-1116x-"}, {"text": "1.115.x", "href": "/release-notes/platform#version-1115x-"}] },
+      { "name": "Access Control", "version": "1.240.0" },
+      { "name": "Audit Event Streaming", "version": "1.84.0" },
+      { "name": "Gateway Service", "version": "1.62.5" },
+      { "name": "NG Auth UI", "version": "1.39.0" },
+      { "name": "NG Dashboard Aggregator", "version": "1.103.0" },
+      { "name": "Policy Management", "version": "1.46.1" },
+      { "name": "Service Discovery Manager", "version": "0.63.1" }
+    ]
+  },
+  {
+    "module": "Resilience testing",
+    "services": [
+      { "name": "Chaos Manager", "version": "1.83.5", "releasesLinks": [{"text": "1.83.x", "href": "/release-notes/chaos-engineering#version-1834"}, {"text": "1.82.x", "href": "/release-notes/chaos-engineering#version-1821"}, {"text": "1.81.x", "href": "/release-notes/chaos-engineering#version-1810"}] },
+      { "name": "Chaos CRD", "version": "1.82.0" },
+      { "name": "Chaos K8s IFS", "version": "1.83.0" },
+      { "name": "Chaos Linux IFC", "version": "1.83.0" },
+      { "name": "Chaos Linux IFS", "version": "1.83.0" },
+      { "name": "Chaos Machine IFS", "version": "1.83.0" },
+      { "name": "Chaos Machine IFC", "version": "1.83.0" },
+      { "name": "Chaos Web", "version": "1.83.2" }
+    ]
+  },
+  {
+    "module": "Continuous Delivery",
+    "services": [
+      { "name": "NG Manager", "version": "1.139.3", "releasesLinks": [{"text": "1.139.x", "href": "/release-notes/continuous-delivery#version-11393"}, {"text": "1.138.x", "href": "/release-notes/continuous-delivery#version-11385"}, {"text": "1.137.x", "href": "/release-notes/continuous-delivery#version-11370"}] },
+      { "name": "NG Custom Dashboards", "version": "1.105.0" },
+      { "name": "Pipeline Service", "version": "1.179.3" },
+      { "name": "Harness Manager", "version": "1.138.4" },
+      { "name": "Template Service", "version": "1.141.2" },
+      { "name": "Queue Service", "version": "1.9.0" },
+      { "name": "Debezium Service", "version": "1.25.3" },
+      { "name": "Delegate Proxy", "version": "1.9.0" },
+      { "name": "Delegate Version (Immutable)", "version": "26.04.88902" }
+    ]
+  },
+  {
+    "module": "Others",
+    "services": [
+      { "name": "Helm Chart", "version": "0.41.1", "link": "https://github.com/harness/helm-charts/releases/tag/harness-0.41.1" },
+      { "name": "Air Gap Bundle", "version": "0.41.1", "link": "https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.41.1" },
+      { "name": "Bootstrap", "version": "1.71.1" },
+      { "name": "Change Data Capture", "version": "1.52.1" },
+      { "name": "Event Service", "version": "1.15.2" },
+      { "name": "Looker", "version": "1.14.1" },
+      { "name": "Test Intelligence Service", "version": "1.65.1" },
+      { "name": "UI", "version": "1.36.0" },
+      { "name": "SCM Service", "version": "1.45.1" },
+      { "name": "Next Gen UI", "version": "1.126.2" },
+      { "name": "CV Nextgen", "version": "1.61.1" },
+      { "name": "LE Nextgen", "version": "1.18.0" },
+      { "name": "SRM UI", "version": "1.16.2" }
+    ]
+  }
+]

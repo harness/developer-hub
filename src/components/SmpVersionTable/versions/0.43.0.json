@@ -1,0 +1,135 @@
+[
+  {
+    "module": "Continuous Integration",
+    "services": [
+      { "name": "CI Manager", "version": "1.144.0" },
+      { "name": "Log Service", "version": "1.48.3" }
+    ]
+  },
+  {
+    "module": "DB Devops",
+    "services": [
+      { "name": "DB Devops Service", "version": "1.100.0" }
+    ]
+  },
+  {
+    "module": "GitOps",
+    "services": [
+      { "name": "GitOps Service", "version": "1.60.1" }
+    ]
+  },
+  {
+    "module": "STO",
+    "services": [
+      { "name": "STO Core", "version": "1.198.3" }
+    ]
+  },
+  {
+    "module": "CCM",
+    "services": [
+      { "name": "CE Nextgen", "version": "1.93.7" },
+      { "name": "Batch Processing", "version": "1.91.10" },
+      { "name": "NG CE UI", "version": "1.89.8" },
+      { "name": "Anomaly Detection", "version": "1.30.0" },
+      { "name": "Telescopes", "version": "1.7.2" }
+    ]
+  },
+  {
+    "module": "Feature Flags",
+    "services": [
+      { "name": "Feature Flag Service", "version": "1.1207.0" },
+      { "name": "Feature Flag Pushpin Service", "version": "1.1139.0" }
+    ]
+  },
+  {
+    "module": "IaCM",
+    "services": [
+      { "name": "IACM Manager", "version": "1.161.1" },
+      { "name": "IAC Server", "version": "1.404.0" },
+      { "name": "Ticket Service", "version": "1.14.0" }
+    ]
+  },
+  {
+    "module": "Code Repository",
+    "services": [
+      { "name": "Code API", "version": "1.89.0" },
+      { "name": "Code GitRPC", "version": "1.89.0" },
+      { "name": "Code GitHA", "version": "1.89.0" },
+      { "name": "Code Search", "version": "1.89.1" }
+    ]
+  },
+  {
+    "module": "SSCA",
+    "services": [
+      { "name": "SSCA Manager", "version": "1.62.8" },
+      { "name": "Component Analysis Service", "version": "1.11.0" },
+      { "name": "Component Service", "version": "1.15.0" },
+      { "name": "SSCA UI", "version": "0.49.1" }
+    ]
+  },
+  {
+    "module": "Platform",
+    "services": [
+      { "name": "Platform Service", "version": "1.135.0" },
+      { "name": "Access Control", "version": "1.285.0" },
+      { "name": "Audit Event Streaming", "version": "1.100.0" },
+      { "name": "Gateway Service", "version": "1.68.0" },
+      { "name": "NG Auth UI", "version": "1.39.0" },
+      { "name": "NG Dashboard Aggregator", "version": "1.119.0" },
+      { "name": "Policy Management", "version": "1.55.0" },
+      { "name": "Service Discovery Manager", "version": "0.70.0" }
+    ]
+  },
+  {
+    "module": "Resilience testing",
+    "services": [
+      { "name": "Chaos Manager", "version": "1.90.5" },
+      { "name": "Chaos CRD", "version": "1.82.0" },
+      { "name": "Chaos K8s IFS", "version": "1.90.0" },
+      { "name": "Chaos Linux IFC", "version": "1.90.0" },
+      { "name": "Chaos Linux IFS", "version": "1.90.0" },
+      { "name": "Chaos Machine IFS", "version": "1.90.0" },
+      { "name": "Chaos Machine IFC", "version": "1.90.0" },
+      { "name": "Chaos Web", "version": "1.90.4" }
+    ]
+  },
+  {
+    "module": "Continuous Delivery",
+    "services": [
+      { "name": "NG Manager", "version": "1.153.6" },
+      { "name": "NG Custom Dashboards", "version": "1.119.0" },
+      { "name": "Pipeline Service", "version": "1.193.3" },
+      { "name": "Harness Manager", "version": "1.152.4" },
+      { "name": "Template Service", "version": "1.155.2" },
+      { "name": "Queue Service", "version": "1.11.0" },
+      { "name": "Debezium Service", "version": "1.27.0" },
+      { "name": "Delegate Proxy", "version": "1.9.0" },
+      { "name": "Delegate Version (Immutable)", "version": "26.06.89303" }
+    ]
+  },
+  {
+    "module": "IDP",
+    "services": [
+      { "name": "Load Test Manager", "version": "1.13.1" },
+      { "name": "Cloud Info", "version": "1.17.1" }
+    ]
+  },
+  {
+    "module": "Others",
+    "services": [
+      { "name": "Helm Chart", "version": "0.43.0", "link": "https://github.com/harness/helm-charts/releases/tag/harness-0.43.0" },
+      { "name": "Air Gap Bundle", "version": "0.43.0", "link": "https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.43.0" },
+      { "name": "Bootstrap", "version": "1.74.1" },
+      { "name": "Change Data Capture", "version": "1.59.0" },
+      { "name": "Event Service", "version": "1.18.1" },
+      { "name": "Looker", "version": "1.18.1" },
+      { "name": "Test Intelligence Service", "version": "1.74.1" },
+      { "name": "UI", "version": "1.36.0" },
+      { "name": "SCM Service", "version": "1.53.0" },
+      { "name": "Next Gen UI", "version": "1.140.6" },
+      { "name": "CV Nextgen", "version": "1.66.0" },
+      { "name": "LE Nextgen", "version": "1.19.0" },
+      { "name": "SRM UI", "version": "1.16.2" }
+    ]
+  }
+]
