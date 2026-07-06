@@ -127,26 +127,42 @@ Harness supports the following Helm OCI chart registries in **Direct Connection*
 
 ### Cloud Provider
 
-Harness supports ECR only via the **Cloud Provider** option. 
+Harness supports ECR and Google Artifact Registry (GAR) via the **Cloud Provider** option. 
 
-Cloud Provider is specifically designed for AWS ECR to help you overcome the limitation of having to regenerate the ECR registry authentication token every 12 hours. This option uses an AWS connector. The credentials for this connector generate the authentication token used to access the ECR registry.
+The Cloud Provider option is designed to help you overcome authentication limitations. For AWS ECR, this eliminates the need to regenerate the registry authentication token every 12 hours. For Google Artifact Registry, this option provides seamless authentication using GCP connectors. This option uses the cloud provider connector you select, and the connector credentials generate the authentication token used to access the registry.
 
-The Cloud Provider option does not depend on OCI, but uses the official ECR APIs to fetch the chart and chart version. The OCI URL is not required.
+The Cloud Provider option does not depend on OCI URLs, but uses the official cloud provider APIs to fetch the chart and chart version. The OCI URL is not required.
 
-Harness supports all the AWS authentication types to fetch the Helm chart from ECR. 
+Harness supports all the authentication types available for AWS and GCP connectors to fetch Helm charts from their respective registries. 
 
-For steps on configuring the AWS connector, go to [Add an AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector/). For the required AWS policies, go to [AWS connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#aws-elastic-container-registry-ecr-policies-and-permissions).
+For steps on configuring cloud provider connectors, go to [Add an AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector/) or [Add a Google Cloud Platform (GCP) connector](/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp/). For the required AWS policies, go to [AWS connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#aws-elastic-container-registry-ecr-policies-and-permissions). For the required GCP IAM permissions, go to [Google Artifact Registry manifest details](#google-artifact-registry-manifest-details).
 
-### Manifest details for ECR
+### Manifest details for ECR and Google Artifact Registry
 
-After you select the **Cloud Provider** option, you can configure the manifest details for fetching the chart from ECR:
+After you select the **Cloud Provider** option, you can configure the manifest details based on your chosen registry type.
 
-1. In **Manifest Identifier**, enter a unique identify for the manifest.
+#### ECR manifest details
+
+For AWS ECR, configure the following manifest details:
+
+1. In **Manifest Identifier**, enter a unique identifier for the manifest.
 2. In **Base Path**, enter the path to the chart folder. The default is `/`.
 3. In **Chart Name**, enter the ECR repository name.
 4. In **Region**, enter the AWS region of the ECR repository.
 5. In **Registry Id**, enter the AWS account Id.
 6. In **Chart Version**, enter the version number. This option only works when **Chart Name** and **Region** are configured.
+
+#### Google Artifact Registry manifest details
+
+For Google Artifact Registry, you can fetch Helm charts stored in GAR using GCP connectors with manual credentials or OIDC authentication. Configure the following manifest details:
+
+1. In **Manifest Identifier**, enter a unique identifier for the manifest.
+2. In **Base Path**, enter the path to the chart folder within the repository. The default is `/`.
+3. In **Region**, select the Google Cloud region where your Artifact Registry repository is located (for example, `us-central1`, `europe-west1`). This is a dropdown field.
+4. In **Project Id**, enter your Google Cloud project ID that contains the Artifact Registry repository.
+5. In **Repository Name**, select the name of your GAR repository that stores the Helm charts. This dropdown dynamically populates based on the selected region and project ID.
+6. In **Chart Name**, enter the name of the Helm chart in GAR.
+7. In **Chart Version**, select the version number of the chart you want to deploy. This dropdown dynamically populates based on the region, project ID, repository name, and chart name you configured.
 
 ### Important notes
 

@@ -442,8 +442,9 @@ Enable the **Ignore Release History Failed Status** option to have Harness ignor
 The options avialable to you to specify a Helm chart store depend on whether or not specific feature flags are enabled on your account. Options available without any feature flags or with specific feature flags enabled are described here: 
 
 - **Direct Connection**. Contains the OCI Helm Registry Connector option (shortened to **OCI Helm**), which you can use with any OCI-based registry.
-- **Via Cloud Provider**. Contains the ECR connector option. This connector is specifically designed for AWS ECR to help you overcome the limitation of having to regenerate the ECR registry authentication token every 12 hours. The ECR connector option uses an AWS connector and regenerates the required authentication token if the token has expired.
-  - For details on using different authentication types (access key, delegate IAM, and IRSA), go to [Add an AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector).
+- **Via Cloud Provider**. Contains connector options for AWS ECR and Google Artifact Registry (GAR). These connectors help you overcome authentication limitations specific to each registry: token expiry for ECR and credential management for GAR. The connector option uses cloud provider connectors and regenerates the required authentication token if the token has expired.
+  - For details on using different AWS authentication types (access key, delegate IAM, and IRSA), go to [Add an AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector).
+  - For details on using Google Artifact Registry with GCP connectors (manual credentials or OIDC), go to [Add a Google Cloud Platform (GCP) connector](/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp/) and [Deploy Helm charts](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts#google-artifact-registry-manifest-details).
 
 :::info
 
