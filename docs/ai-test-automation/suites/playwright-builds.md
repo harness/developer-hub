@@ -93,7 +93,7 @@ The **New Playwright Test** wizard has three steps: **About Test Suite**, **GIT*
 
 
 
-4. Click **Next**, then in Step 3: **Environment**, add the first application environment for this suite. At minimum, enter an **Environment Name**, an **Environment URL**, and a **Test execution mode** (use **Execution Alias** with the alias left blank to run all tests). The fields here are the same as the **Environments** tab covered in the next section, where you can also add more environments or edit existing ones.
+4. Click **Next**, then in Step 3: **Environment**, add the first application environment for this suite. At minimum, enter an **Environment Name**, an **Environment URL**, and a **Test execution mode** (use **Execution Alias** with the alias left blank to run all tests). If your `playwright.config.*` file sits in a different directory from `package.json`, also select **Playwright config is in a different directory from package.json** and enter the **Config base path**. The fields here are the same as the **Environments** tab covered in the next section, where you can also add more environments or edit existing ones.
 5. Click **Save** to finish creating the suite. You can add more environments or edit this one later from the **Environments** tab.
 
 ---
@@ -163,6 +163,7 @@ On the **Environments** tab, define the application environments this suite can 
      - **Execution Alias:** Run a named script defined in your project's `package.json` (the value you enter in the **Execution alias** field below maps to that script name). Leave the alias field blank to run **all tests** the suite discovers; this is what the row shows as **All Tests** in the Environments list.
      - **Test Target:** Run a specific test target instead of a `package.json` script.
    - **Execution alias** (when **Execution Alias** is selected): Enter the script name from `package.json` (for example `test:smoke`). Leave it blank to run all tests.
+   - **Config base path** (optional): Use this when your `playwright.config.*` file sits in a different directory from `package.json`. Select the checkbox labelled **Playwright config is in a different directory from package.json**, then enter the path to the Playwright config file, or its directory, relative to the project root (for example `packages/web` or `configs/playwright.ts`). Leave the checkbox cleared if `playwright.config.*` sits next to `package.json`.
 3. Click **Create Environment** to save. Repeat to add more environments (for example a `staging` and a `production` entry).
 
 Use the **⋮** action on a row to edit or remove an environment. The same list is what appears in the **Environment** dropdown of the [Run Configuration](#run-playwright-tests) modal, so anything you add here becomes a target you can pick when launching a run.
@@ -197,10 +198,14 @@ On the **Run History** tab:
 ## Run Playwright tests
 
 1. From the suite list or the suite details page, click **Run**.
-2. In **Run Configuration**, choose **Environment** (for example Default).
-3. Under **Override**, adjust any fields you need. All override fields are optional. If you leave them unset, Harness uses the defaults from your Playwright config in the repository.
+2. In **Run Configuration**, choose **Environment** (for example Default). The selected environment determines the base URL, execution mode, and Playwright config path used for the run.
+3. Expand any of the following sections to adjust settings for this run only. Every section is optional. Harness resolves each field in this order: the value you set here for this run, then the saved suite or environment value, then the value in your `playwright.config.*` file in the repository.
 
-   Typical overrides include Number of Retries, Delay, Worker, Navigation timeout, Overall timeout, Action timeout, Report pattern, and Tunnel (for example Harness Cloud). Use the info icons next to labels for field-level help.
+   - **Environment Configuration:** Override the **Execution alias** or **Test Target** and the **Config base path** for this run only. Use this when you want to run a different `package.json` script or a different test target, or load a Playwright config from a different directory. The saved environment is unchanged.
+   - **Environment Variables:** Override or add environment variables for this run only. Use this to pass a one-off token, feature flag, or debug value without editing the saved suite or environment variables. Values set here take precedence over the corresponding saved variables for this run.
+   - **Git Configuration:** Override the **Git fetch type**, **Git branch**, **Commit SHA**, or **Git tag** for this run. The saved repository and provider stay the same; only the revision changes. Use this when you want to verify a fix on a feature branch, replay a failing build at a specific commit, or test against a tagged release.
+   - **Override:** Adjust Playwright execution settings such as **Number of Retries**, **Delay**, **Worker count**, **Navigation timeout**, **Overall timeout**, **Action timeout**, **Report pattern**, and **Tunnel** (for example Harness Cloud). Any field you leave blank falls back to your `playwright.config.*` defaults.
+   - **Environments:** When the suite has multiple environments, confirm which environment is active and review its details before you click **Run**. This section is read-only.
 
 4. Click **Run** to start execution.
 

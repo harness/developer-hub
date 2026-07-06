@@ -79,7 +79,7 @@ The following video provides a walkthrough of the AI Test Automation interface:
 
 The AI Test Automation interface is organized into the following areas:
 
-- **Overview:** Displays information about tests being performed, recent test runs, and project status.
+- **Overview:** A unified landing view that surfaces activity from both AI Test Automation and Playwright sources, including running test suites, recent runs, pass/fail charts, AI token consumption, and overall project status.
 - **Tests:** Create tests, view test lists, and see detailed execution information including pass/fail counts. Provides options to edit, validate, and add to test suites.
 - **Test Suites:** Group tests together for batch execution. View suite summaries including last run results.
 - **Test Runs:** View information about previous test runs, including duration and associated test suites.
