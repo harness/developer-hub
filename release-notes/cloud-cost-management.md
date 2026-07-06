@@ -25,6 +25,35 @@ We've migrated to LabelsV2, which preserves your original label keys while drama
 
 [Instructions to Update](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/key-concepts/#how-to-migrate)
 
+--- 
+
+## June 2026 - Version 1.95.0
+#### Deployment Date: July 4, 2026 (Prod-1)
+
+### New Features and Enhancements
+
+- **AI Telemetry setup paths:** We have updated the AI Cost telemetry setup to show both integration options side by side. The available OpenTelemetry (OTel) path is ready to use, and the Harness SDK option is now visible and marked as **Coming Soon**. Your existing OTel configuration is unaffected. [CCM-33791]
+
+- **Cloud Service Provider filter in Cost Explorer now correctly applies to anomalies:** We have fixed an issue where anomalies in Cost Explorer ignored your Cloud Service Provider filter and showed results from all providers. The filter now applies correctly. [CCM-33651]
+
+- **Cost Explorer navigation links now work correctly:** We have fixed broken navigation links in the following locations: [CCM-33651]
+
+  * **View Details** in the Cluster Orchestrator workloads tab
+  * **View Details** in the Cluster Orchestrator nodes tab
+  * **Cluster** link in the Recommendations list
+  * **Perspective** link in Anomalies details
+  * **Perspective** icon in Cloud Integrations
+  * **View Costs** in the Kubernetes Clusters tab
+
+- **Filters are now preserved when you open a shared Perspective link in Cost Explorer:** We have fixed an issue where opening a shared Perspective link in Cost Explorer dropped the applied filters, Group By settings, and time range. The view now opens exactly as it was shared. [CCM-33822]
+
+- **Governance and perspective API endpoints now return proper validation errors:** We have fixed an issue where the create and update endpoints for governance rules and perspectives returned a `500` server error instead of a `400` validation error when required fields were missing from the request. [CCM-33673]
+
+- **Routing Info popover now shows all routes for multi-route workloads:** We have fixed an issue where the Routing Info popover displayed only the first route for workloads with multiple routes. All routes are now shown, including host, port, path, and ingress/namespace for each. [CCM-33784]
+
+- **AutoStopping rule creation now provides clearer workload guidance:** We have improved the AutoStopping rule creation flow to make workload selection easier. The interface now highlights workloads already linked to existing rules, provides clearer guidance when selecting a workload, and indicates that the **Network map** is currently read-only. [CCM-33855]
+
+---
 
 ## June 2026 - Version 1.94.12
 #### Deployment Date: June 26, 2026 (Prod-1)
