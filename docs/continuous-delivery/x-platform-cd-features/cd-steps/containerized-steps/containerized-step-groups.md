@@ -22,16 +22,17 @@ When you use deployment types that support containerized step groups (for exampl
 When you manually add a step group, you can enable containerized step groups by selecting the **Enable container based execution** option.
  
 <div style={{textAlign: 'center'}}>
-  <DocImage path={require('./static/step-group-k8s-vm.png')} width="50%" height="50%" title="Click to view full size image" />
+  <DocImage path={require('./static/step-group-k8s-vm-ecs.png')} width="50%" height="50%" title="Click to view full size image" />
 </div>
 This option is disabled for deployment types that do not support containerized step groups.
 
 ### Infrastructure Options
 
-When you enable container based execution, you can choose between two infrastructure types:
+When you enable container based execution, you can choose between three infrastructure types:
 
 - **Kubernetes**: Run steps in containers on a Kubernetes cluster.
 - **VMs**: Run steps in containers on virtual machines.
+- **Amazon ECS**: Run steps in containers on AWS ECS Fargate.
 
 ## Important notes
 - CD containerized step groups are supported in Deploy and Custom stages.
@@ -52,7 +53,7 @@ Here are the steps for adding a containerized step group manually:
 
 1. In your Deploy (CD) stage, in **Execution**, select **Add Step**, and then select **Add Step Group**.
 2. To configure a step group as containerized, enable the **Enable container based execution** setting.
-3. Select your infrastructure type: **Kubernetes** or **VMs**.
+3. Select your infrastructure type: **Kubernetes**, **VMs**, or **Amazon ECS**.
 4. Configure the settings based on your selected infrastructure type.
 
 ## VM Infrastructure
@@ -112,7 +113,73 @@ When using VM infrastructure, only the following steps are supported:
 **Source Control Steps:**
 - Git Clone
 
+## Amazon ECS Infrastructure
+
+:::note
+Amazon ECS support for containerized step groups is currently behind the feature flag `CDS_ENABLE_ECS_CONTAINER_STEP_GROUP_INFRA`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+When you select **Amazon ECS** as your infrastructure type, the containerized step group will run on AWS ECS Fargate infrastructure. This allows you to execute containerized CD steps such as AWS CDK deployments without requiring a Kubernetes cluster, providing consistency for teams already operating in ECS environments.
+
+### AWS Cloud Provider
+
+Select or add a Harness AWS connector configured with the necessary ECS permissions, VPC settings, cluster information, and IAM roles. The connector configuration includes all the necessary settings for ECS Fargate execution, including region, cluster, VPC, subnets, security groups, and IAM roles.
+
+Go to [Add an AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector) to configure a connector.
+
+### Supported Steps
+
+When using Amazon ECS infrastructure, only the following steps are supported:
+
+**SBOM Steps:**
+- SBOM Orchestration
+- SBOM Policy Enforcement
+- SLSA Verification
+
+**AWS CDK Steps:**
+- AWS CDK Bootstrap
+- AWS CDK Deploy
+- AWS CDK Rollback
+- AWS CDK Destroy
+
+**Serverless AWS Lambda Steps:**
+- Serverless AWS Lambda Prepare
+- Serverless AWS Lambda Package
+- Serverless AWS Lambda Deploy V2
+- Serverless AWS Lambda Rollback
+
+**Download Steps:**
+- Download AWS S3
+- Download Harness Store
+
+**Source Control Steps:**
+- Git Clone
+
+---
+
 ## Kubernetes Infrastructure
+
+:::note ECS Fargate delegate support
+Kubernetes infrastructure for containerized step groups supports ECS Fargate-based delegates. You can use delegates running on AWS ECS Fargate to orchestrate containerized step execution on your Kubernetes cluster. In most configurations, this removes the need for Kubernetes-based delegates when your delegate infrastructure is on ECS.
+
+To use ECS Fargate delegates with Kubernetes containerized step groups, contact [Harness Support](mailto:support@harness.io) to enable the following feature flags:
+
+**Required for all ECS Fargate delegate configurations:**
+
+- **`CDS_INIT_CONTAINER_V2_ASYNC_STEP`:** Uses `AsyncExecutable` for the `InitContainerV2` step, allowing it to submit a delegate task and return a callback ID for asynchronous execution without blocking pipeline progress.
+
+- **`CDS_CONTAINER_STEP_DELEGATE_SELECTOR_PRECEDENCE`:** Ensures delegate selectors follow proper precedence rules when routing containerized step tasks to prevent conflicts when using a mix of Delegate 1.0 and Delegate 3.x.
+
+**Required for Kubernetes infrastructure with Delegate 3.x:**
+
+- **`CDS_CONTAINER_STEP_USE_SINGLE_STEP_TASK`:** Enables single task-based execution for Kubernetes containerized step groups on Delegate 3.x, streamlining the task execution flow.
+
+- **`CDS_CONTAINER_STEP_GROUP_STEPS_USE_RUNNER`:** Switches to runner-based execution for CD container step group steps, allowing containerized steps to leverage the new runner architecture.
+
+- **`PL_RUNNER_K8S_INFRA_USE_SCHEDULED_TASK_API`:** Routes containerized step execution to the new Runner Scheduled Task API for Kubernetes infrastructure.
+
+Go to [Install a delegate on Amazon ECS or AWS Fargate](/docs/platform/delegates-v2/install-a-delegate/install-delegate-ecs-fargate) to set up an ECS Fargate delegate.
+:::
 
 When you select **Kubernetes** as your infrastructure type, configure the following settings:
 
