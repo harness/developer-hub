@@ -347,7 +347,7 @@ upgrades:
 :::warning Important
 Harness Self-Managed Enterprise Edition **0.43.0** introduces support for PostgreSQL 16.
 
-If your deployment uses PostgreSQL 14, follow [this guide to upgrade to PostgreSQL 16](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/postgresql/upgrade-postgresql-14-to-16). PostgreSQL 14 will be deprecated and removed in a future release.
+If your deployment uses PostgreSQL 14, follow [this guide to upgrade to PostgreSQL 16](/docs/self-managed-enterprise-edition/advanced-configurations/upgrade-postgresql-14-to-16). PostgreSQL 14 will be deprecated and removed in a future release.
 :::
 
 This table lists the module, its components, its version and the release notes versions associated with it.
