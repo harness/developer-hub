@@ -22,6 +22,16 @@ import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
 You ran your first provision in the [OpenTofu quickstart](/docs/infra-as-code-management/get-started#opentofu). Now add production-ready features like approval gates, cost estimation, and variable management. By the end, your provisioner will be ready to safely manage infrastructure changes.
 
+This section guides you through working with OpenTofu in Harness IaCM. After completing this topic, continue through the following topics in order:
+
+1. **Set up your OpenTofu provisioner** (this topic): Add production features to your first workspace.
+2. [**State management for OpenTofu**](/docs/infra-as-code-management/iac-provisioners/opentofu/state-management): Learn how Harness stores and manages OpenTofu state.
+3. [**Default pipelines for OpenTofu**](/docs/infra-as-code-management/iac-provisioners/opentofu/default-pipelines): Configure reusable pipelines for common OpenTofu operations.
+4. [**OpenTofu plugin commands**](/docs/infra-as-code-management/iac-provisioners/opentofu/plugin-commands): Understand what each OpenTofu command does during pipeline execution.
+5. [**Local CLI plan for OpenTofu**](/docs/infra-as-code-management/iac-provisioners/opentofu/local-cli-plan): Speed up development by running plans from your local machine.
+6. [**Remove and import resources with OpenTofu**](/docs/infra-as-code-management/iac-provisioners/opentofu/remove-import-resources): Transfer resource ownership between workspaces without downtime.
+7. [**Custom images for OpenTofu**](/docs/infra-as-code-management/iac-provisioners/opentofu/custom-images): Build custom images for air-gapped environments or private providers.
+
 ---
 
 ## Before you begin
@@ -258,8 +268,6 @@ To test your complete setup, do the following:
 
 ## Next steps
 
-Your OpenTofu provisioner is now set up for production use.
+Your OpenTofu provisioner is now configured with production-ready features. Next, learn how Harness stores and manages OpenTofu state across your workspaces.
 
-- Go to [Remote Backends](/docs/infra-as-code-management/remote-backends/use-backends) to migrate existing infrastructure state into Harness IaCM.
-- Go to [Workspace cost estimation](/docs/infra-as-code-management/workspaces/cost-estimation) to review supported resources and providers for cost visibility.
-- Go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) to configure approval user groups and permissions.
+Go to [State management for OpenTofu](/docs/infra-as-code-management/iac-provisioners/opentofu/state-management) to understand how state works with OpenTofu in Harness.

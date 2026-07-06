@@ -181,8 +181,8 @@ Keep the HTTP backend block in a local file that is in your `.gitignore` file so
 
 ---
 
-## Related concepts
+## Next steps
 
-- [Provision a Workspace](/docs/infra-as-code-management/workspaces/provision-workspace): Learn how to run provision pipelines.
-- [Create a Workspace](/docs/infra-as-code-management/workspaces/create-workspace): Learn how to create and configure workspaces.
-- [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness): Understand how state access is controlled.
+Now that you understand how Harness manages OpenTofu state, learn how to configure default pipelines that execute OpenTofu commands automatically.
+
+Go to [Default pipelines for OpenTofu](/docs/infra-as-code-management/iac-provisioners/opentofu/default-pipelines) to configure reusable pipelines for common OpenTofu operations.

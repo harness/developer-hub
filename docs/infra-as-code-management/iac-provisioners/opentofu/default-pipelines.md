@@ -67,8 +67,8 @@ Go to [What is supported](/docs/infra-as-code-management/whats-supported) to rev
 
 ---
 
-## Related concepts
+## Next steps
 
-- [Default Pipelines](/docs/infra-as-code-management/pipelines/default-pipelines): Full configuration steps for setting up default pipelines at the project and workspace levels.
-- [OpenTofu plugin commands](/docs/infra-as-code-management/iac-provisioners/opentofu/plugin-commands): Reference for all OpenTofu commands available in Harness pipelines.
-- [Create a workspace](/docs/infra-as-code-management/workspaces/create-workspace): Learn how to create OpenTofu workspaces and select the OpenTofu version.
+After configuring your default pipelines, learn what each OpenTofu command does during pipeline execution and which OpenTofu versions support each command.
+
+Go to [OpenTofu plugin commands](/docs/infra-as-code-management/iac-provisioners/opentofu/plugin-commands) to understand the OpenTofu commands available in Harness pipelines.

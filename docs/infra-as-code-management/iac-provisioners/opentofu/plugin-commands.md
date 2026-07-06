@@ -170,8 +170,8 @@ Go to [OpenTofu fmt documentation](https://opentofu.org/docs/cli/commands/fmt/) 
 
 ---
 
-## Related concepts
+## Next steps
 
-- [Default pipelines for OpenTofu](/docs/infra-as-code-management/iac-provisioners/opentofu/default-pipelines): Learn how default pipelines use these commands.
-- [Custom Images](/docs/infra-as-code-management/pipelines/plugin-images): Build custom OpenTofu plugin images for air-gapped environments or specific tool requirements.
-- [Tofu/Terraform Plugin Commands](/docs/infra-as-code-management/cli-commands/terraform-plugins): Full command details, permissions requirements, and advanced options like resource targeting.
+Once you are familiar with OpenTofu plugin commands and pipeline execution, you can speed up your development workflow by running plans from your local machine.
+
+Go to [Local CLI plan for OpenTofu](/docs/infra-as-code-management/iac-provisioners/opentofu/local-cli-plan) to learn how to validate OpenTofu changes locally using the Harness CLI.
