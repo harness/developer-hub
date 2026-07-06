@@ -101,12 +101,8 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Enables the use of stored cost categories in Perspectives</td>
     </tr>
     <tr>
-        <td>CCM_COMMORCH_RDS</td>
-        <td>Enables RDS support in commitment orchestration</td>
-    </tr>
-    <tr>
         <td>PL_ENABLE_USER_IMPERSONATION</td>
-        <td>Enables user impersonation for platform. By user impersonation, you can run stimulated the platform as another user.</td>
+        <td>Enables user impersonation for platform. By user impersonation, you can simulate the platform as another user.</td>
     </tr>
     <tr>
         <td>CCM_ANOMALIES_CONDITIONAL_DRILL_DOWN</td>
@@ -171,5 +167,17 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     <tr>
         <td>CCM_WORKLOAD_RECOMMENDATIONS_V2</td>
         <td>Enables workload recommendations V2</td>
+    </tr>
+    <tr>
+        <td>CCM_INVENTORY_V2</td>
+        <td>Enables cloud asset inventory for AWS resources in Asset Governance</td>
+    </tr>
+    <tr>
+        <td>CCM_GCP_INVENTORY_V2</td>
+        <td>Enables cloud asset inventory for GCP resources in Asset Governance</td>
+    </tr>
+    <tr>
+        <td>CCM_AZURE_INVENTORY_V2</td>
+        <td>Enables cloud asset inventory for Azure resources in Asset Governance</td>
     </tr>
 </table>
