@@ -154,7 +154,13 @@ For AWS ECR, configure the following manifest details:
 
 #### Google Artifact Registry manifest details
 
-For Google Artifact Registry, you can fetch Helm charts stored in GAR using GCP connectors with manual credentials or OIDC authentication. Configure the following manifest details:
+For Google Artifact Registry, you can fetch Helm charts stored in GAR using GCP connectors with manual credentials or OIDC authentication.
+
+:::info note
+Google Artifact Registry Helm chart support requires Harness Delegate version 26.06.89311 or later.
+:::
+
+Configure the following manifest details:
 
 1. In **Manifest Identifier**, enter a unique identifier for the manifest.
 2. In **Base Path**, enter the path to the chart folder within the repository. The default is `/`.
