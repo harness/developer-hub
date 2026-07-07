@@ -51,7 +51,7 @@ We've migrated to LabelsV2, which preserves your original label keys while drama
 
 - **Routing Info popover now shows all routes for multi-route workloads:** We have fixed an issue where the Routing Info popover displayed only the first route for workloads with multiple routes. All routes are now shown, including host, port, path, and ingress/namespace for each. [CCM-33784]
 
-- **AutoStopping rule creation now provides clearer workload guidance:** We have improved the AutoStopping rule creation flow to make workload selection easier. The interface now highlights workloads already linked to existing rules, provides clearer guidance when selecting a workload, and indicates that the **Network map** is currently read-only. [CCM-33855]
+- **AutoStopping rule creation for Kubernetes workloads now provides clearer workload guidance:** We have made workload selection easier when creating AutoStopping rules for Kubernetes workloads. The interface now highlights Kubernetes workloads already linked to existing rules, provides clearer guidance when selecting a Kubernetes workload, and indicates that the **Network map** is currently read-only. [CCM-33855]
 
 ---
 
