@@ -152,27 +152,27 @@ Any user with download permission at the current scope can modify a pending requ
 ## Troubleshooting
 
 <Troubleshoot
-  issue="Request Exemption is missing from the row overflow on the Policy Violations tab."
-  mode="docs"
+  issue="Request Exemption is missing from the row overflow on the Policy Violations tab"
+  mode="fallback-only"
   fallback="Confirm Dependency Firewall is enabled for the upstream proxy that produced the violation, and that the violation status is Warning or Blocked. Passed versions cannot be exempted because they are not violations."
 />
 
 <Troubleshoot
-  issue="My exemption was approved but the dependency still appears as Blocked when fetched."
-  mode="docs"
+  issue="My exemption was approved but the dependency still appears as Blocked when fetched"
+  mode="fallback-only"
   fallback="Confirm the exemption covers the exact version you are requesting (versions are matched precisely), the upstream proxy on the exemption matches the proxy you are pulling through, and the exemption status on the Exemptions tab is APPROVED rather than EXPIRED."
 />
 
 <Troubleshoot
-  issue="An approved exemption has expired and the dependency is blocked again."
-  mode="docs"
+  issue="An approved exemption has expired and the dependency is blocked again"
+  mode="fallback-only"
   fallback="Expired exemptions are not auto-renewed. Open the Policy Violations tab, choose Request Exemption on the dependency again, and submit a fresh request with an updated remediation plan."
 />
 
 <Troubleshoot
-  issue="Approvers did not receive a notification when an exemption was submitted."
-  mode="docs"
-  fallback="Approver notifications are not sent by default. Configure a Centralised Notification rule for Artifact Registry on the Dependency Firewall Exemption Requested event and route it to the channel of your choice. See /docs/platform/notifications/centralised-notification#artifact-registry-notifications."
+  issue="Approvers did not receive a notification when an exemption was submitted"
+  mode="fallback-only"
+  fallback="Approver notifications are not sent by default. Configure a Centralised Notification rule for Artifact Registry on the Dependency Firewall Exemption Requested event and route it to the channel of your choice. Go to [Artifact Registry Notifications](/docs/platform/notifications/centralised-notification#artifact-registry-notifications) to walk through the rule wizard."
 />
 
 ## Next steps
