@@ -33,12 +33,12 @@ Currently, this feature is behind the feature flag `PIE_TAG_BASED_ACCESS_TO_PIPE
 
 ## What will you learn in this topic?
 
-By the end of this topic, you will know how to:
+By the end of this topic, you will be able to:
 
 - [Apply tags to pipelines](#step-1-apply-tags-to-pipelines) to categorize them by environment, criticality, or other attributes.
-- [Create resource groups that grant access to pipelines based on tags rather than explicit pipeline selection.
+- [Create resource groups that grant access to pipelines based on tags](#step-2-configure-the-resource-group-to-use-tag-based-access) rather than explicit pipeline selection.
 - [Automatically include new pipelines in resource groups](#step-4-assign-the-resource-group-to-a-user-group) by applying the appropriate tags.
-- [Streamline permission management](#tag-behavior-with-git-stored-pipelines) for developers, DevOps admins, and other roles.
+- [Understand tag behavior with Git-stored pipelines](#tag-behavior-with-git-stored-pipelines) and how it impacts resource group membership.
 
 ---
 
