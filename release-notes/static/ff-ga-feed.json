@@ -1867,6 +1867,111 @@
     "gaStartDate": "2026-06-26",
     "module": "AI DLC Insights",
     "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "ENABLE_CANARY_UI",
+    "description": "Enables an early-access version of the redesigned Harness UI.",
+    "gaStartDate": "2026-07-06",
+    "module": "Platform",
+    "lifecycleState": "Beta"
+  },
+  {
+    "flagKey": "ENABLE_SIDE_NAV_V3",
+    "description": "Enables the redesigned side navigation in Harness, providing a refreshed layout and improved discoverability of modules and settings.",
+    "gaStartDate": "2026-07-06",
+    "module": "Platform",
+    "lifecycleState": "Beta"
+  },
+  {
+    "flagKey": "ENABLE_CANARY_CONNECTORS",
+    "description": "Enables the redesigned Connectors experience in Harness, providing a refreshed interface for managing connectors.",
+    "gaStartDate": "2026-07-06",
+    "module": "Platform",
+    "lifecycleState": "Beta"
+  },
+  {
+    "flagKey": "ENABLE_CANARY_CCM_CONNECTORS",
+    "description": "Enables the redesigned CCM Connectors experience in Harness, providing a refreshed interface for managing CCM connectors.",
+    "gaStartDate": "2026-07-06",
+    "module": "Platform",
+    "lifecycleState": "Beta"
+  },
+  {
+    "flagKey": "ENABLE_CANARY_PIPELINES_LIST",
+    "description": "Enables the redesigned Pipelines List experience in Harness, providing a refreshed layout and improved discoverability of pipelines.",
+    "gaStartDate": "2026-07-06",
+    "module": "Platform",
+    "lifecycleState": "Beta"
+  },
+  {
+    "flagKey": "ENABLE_CANARY_SECRETS",
+    "description": "Enables the redesigned secrets management experience in Harness, providing a refreshed interface for managing secrets.",
+    "gaStartDate": "2026-07-06",
+    "module": "Platform",
+    "lifecycleState": "Beta"
+  },
+  {
+    "flagKey": "ENABLE_CANARY_PIPELINES",
+    "description": "Enables the redesigned Pipelines experience in Harness, providing a refreshed interface for managing pipelines.",
+    "gaStartDate": "2026-07-06",
+    "module": "Platform",
+    "lifecycleState": "Beta"
+  },
+  {
+    "flagKey": "ENABLE_CANARY_DELEGATE_V2",
+    "description": "Enables the redesigned Delegate V2 experience in Harness, providing a refreshed interface for managing delegates.",
+    "gaStartDate": "2026-07-06",
+    "module": "Platform",
+    "lifecycleState": "Beta"
+  },
+  {
+    "flagKey": "ENABLE_CANARY_DELEGATE_UI",
+    "description": "Enables the redesigned Delegate UI experience in Harness, providing a refreshed interface for managing delegates.",
+    "gaStartDate": "2026-07-06",
+    "module": "Platform",
+    "lifecycleState": "Beta"
+  },
+  {
+    "flagKey": "ENABLE_CANARY_PIPELINE_SETTINGS",
+    "description": "Enables the redesigned Pipeline Settings experience in Harness, providing a refreshed interface for managing pipeline settings.",
+    "gaStartDate": "2026-07-06",
+    "module": "Platform",
+    "lifecycleState": "Beta"
+  },
+  {
+    "flagKey": "ENABLE_CANARY_HOMEPAGE",
+    "description": "Enables the redesigned home page experience in Harness, providing a refreshed interface for the main dashboard.",
+    "gaStartDate": "2026-07-06",
+    "module": "Platform",
+    "lifecycleState": "Beta"
+  },
+  {
+    "flagKey": "ENABLE_CANARY_VULNERABILITIES",
+    "description": "Enables the redesigned Vulnerabilities experience in Harness, providing an updated interface for viewing and triaging security vulnerabilities.",
+    "gaStartDate": "2026-07-06",
+    "module": "Security Test Orchestration",
+    "lifecycleState": "Beta"
+  },
+  {
+    "flagKey": "ENABLE_CANARY_EXECUTIONS",
+    "description": "Enables the redesigned Executions experience in Harness, providing a refreshed interface for managing executions.",
+    "gaStartDate": "2026-07-06",
+    "module": "Platform",
+    "lifecycleState": "Beta"
+  },
+  {
+    "flagKey": "ENABLE_CANARY_ENVIRONMENTS",
+    "description": "Enables the redesigned Environments experience in Harness, providing a refreshed interface for managing environments.",
+    "gaStartDate": "2026-07-06",
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
+  },
+  {
+    "flagKey": "ENABLE_CANARY_EXECUTION_SSCA",
+    "description": "Enables the redesigned Execution SSCA experience in Harness, providing a refreshed interface for managing software supply chain assurance.",
+    "gaStartDate": "2026-07-06",
+    "module": "Software Supply Chain Assurance",
+    "lifecycleState": "Beta"
   }
 ]
 
