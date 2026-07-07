@@ -92,7 +92,7 @@ const DOCS_LEGACY_ICON_MAP: Record<string, string> = {
   'sidebar-aisec':      '/img/icon-adra.svg',
   'sidebar-aisre':      '/img/icon-ai-sre.svg',
   'sidebar-rt':         '/img/icon_ce.svg',
-  'sidebar-smp':        '/img/home_cert_bg.svg',
+  'sidebar-smp':        '/img/icon_harness.svg',
   'sidebar-arp':        '/img/icon-arp.svg',
   'sidebar-ast':        '/img/icon-ast.svg',
   'sidebar-hsf':        '/img/icon-hsf.svg',
