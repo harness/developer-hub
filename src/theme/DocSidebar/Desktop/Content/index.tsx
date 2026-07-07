@@ -63,7 +63,7 @@ const DOCS_3K_ICON_MAP: Record<string, string> = {
   'sidebar-hsf':          '/img/home/harness.svg',
   'sidebar-qwietai':      '/img/home/qwiet.svg',
   'sidebar-opensource':   '/img/icon_opensource.svg',       // no /home/ version yet
-  'sidebar-univ':         '/img/university_icon.svg',
+  'sidebar-univ':         '/img/home/university.svg',
 };
 
 const DOCS_LEGACY_ICON_MAP: Record<string, string> = {
@@ -98,7 +98,13 @@ const DOCS_LEGACY_ICON_MAP: Record<string, string> = {
   'sidebar-hsf':        '/img/icon-hsf.svg',
   'sidebar-qwietai':    '/img/icon-qwietai.svg',
   'sidebar-opensource': '/img/icon_opensource.svg',
-  'sidebar-univ':       '/img/university_icon.svg',
+  'sidebar-univ':       '/img/home/university.svg',
+};
+
+// University uses 3k-style icons + sidebar-ce which isn't in either shared map
+const UNIVERSITY_ICON_MAP: Record<string, string> = {
+  ...DOCS_3K_ICON_MAP,
+  'sidebar-ce': '/img/home/resilience-test.svg',
 };
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
@@ -141,7 +147,8 @@ export default function DocSidebarDesktopContent({
 
   // Pick the icon map based on which docs version we're in
   const is3kDocs = pathname.startsWith('/3k-docs');
-  const DOCS_ICON_MAP = is3kDocs ? DOCS_3K_ICON_MAP : DOCS_LEGACY_ICON_MAP;
+  const isUniversity = pathname.startsWith('/university');
+  const DOCS_ICON_MAP = isUniversity ? UNIVERSITY_ICON_MAP : is3kDocs ? DOCS_3K_ICON_MAP : DOCS_LEGACY_ICON_MAP;
 
   // Prefer module id from sidebar (if this sidebar has an API Reference link); else from URL/path
   const apiRefModuleIdFromSidebar = getApiRefModuleIdFromSidebarItems(sidebar);
@@ -181,7 +188,7 @@ export default function DocSidebarDesktopContent({
   return (
     <nav
       data-doc-sidebar-menu
-      data-docs-variant={is3kDocs ? '3k' : 'legacy'}
+      data-docs-variant={is3kDocs || isUniversity ? '3k' : 'legacy'}
       aria-label={translate({
         id: 'theme.docs.sidebar.navAriaLabel',
         message: 'Docs sidebar',

@@ -1928,6 +1928,8 @@ html[data-theme='dark'] .navbar__search_kapa kbd {
 .sidebar-aisre > a::before,
 .sidebar-rt > div > a::before,
 .sidebar-rt > a::before,
+.sidebar-ce > div > a::before,
+.sidebar-ce > a::before,
 .sidebar-asp > div > a::before,
 .sidebar-asp > a::before,
 .sidebar-aisec > div > a::before,
@@ -1986,7 +1988,7 @@ html[data-theme='dark'] .navbar__search_kapa kbd {
 
 .sidebar-univ > div > a::before,
 .sidebar-univ > a::before {
-  background-image: url('/img/university_icon.svg');
+  background-image: url('/img/home/university.svg');
 }
 
 /* ── 3k-docs icons (/home/ modern variants) ── */
@@ -2088,6 +2090,11 @@ nav[data-docs-variant="3k"] .sidebar-aisre > a::before {
 
 nav[data-docs-variant="3k"] .sidebar-rt > div > a::before,
 nav[data-docs-variant="3k"] .sidebar-rt > a::before {
+  background-image: url('/img/home/resilience-test.svg');
+}
+
+nav[data-docs-variant="3k"] .sidebar-ce > div > a::before,
+nav[data-docs-variant="3k"] .sidebar-ce > a::before {
   background-image: url('/img/home/resilience-test.svg');
 }
 
