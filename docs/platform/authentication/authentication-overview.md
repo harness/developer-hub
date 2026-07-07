@@ -168,10 +168,9 @@ Harness supports multiple identity providers (IdPs) for user authentication usin
 You can configure a variety of SAML providers and enable or disable them for user authentication.
 
 :::note
-Currently, this feature is behind the feature flag `PL_ENABLE_MULTIPLE_IDP_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, this feature is behind the feature flag `PL_ENABLE_MULTIPLE_IDP_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable it.
 :::
 
-:::tip Before you begin
 Before configuring your SAML provider in Harness, you must first set up the integration on the provider side and download the **Identity Provider metadata XML** file. You will upload this file into Harness in step 3c below.
 
 Follow the setup guide for your provider:
@@ -179,7 +178,7 @@ Follow the setup guide for your provider:
 - <a href="/docs/platform/authentication/single-sign-on-saml/ms-entra-id" target="_blank">SAML SSO with Microsoft Entra ID</a>
 - <a href="/docs/platform/authentication/single-sign-on-saml/saml-sso-with-onelogin" target="_blank">SAML SSO with OneLogin</a>
 - <a href="/docs/platform/authentication/single-sign-on-saml/keycloak" target="_blank">SAML SSO with Keycloak</a>
-:::
+
 
 To configure multiple SAML providers in Harness, follow the steps below:
 
@@ -214,18 +213,11 @@ To configure multiple SAML providers in Harness, follow the steps below:
     <DocImage path={require('./static/name-description.png')} width="80%" height="40%" title="Click to view full size image" />
     </div>
 
-    Harness supports the following SAML providers:
+    Harness supports the following SAML providers. Based on the SAML provider you select, refer to one of the following:
       - <a href="/docs/platform/authentication/single-sign-on-saml/okta"target="_blank" >SAML SSO with Okta</a>
       - <a href="/docs/platform/authentication/single-sign-on-saml/ms-entra-id"target="_blank" >SAML SSO with Microsoft Entra ID</a>
       - <a href="/docs/platform/authentication/single-sign-on-saml/saml-sso-with-onelogin"target="_blank" >SAML SSO with OneLogin</a> 
       - <a href="/docs/platform/authentication/single-sign-on-saml/keycloak"target="_blank" >SAML SSO with Keycloak</a>
-
-
-    Based on the SAML provider you select, refer to one of the following:
-      - <a href="/docs/platform/authentication/single-sign-on-saml/saml-sso-with-okta"target="_blank" >SAML SSO with Okta</a>
-      - <a href="/docs/platform/authentication/single-sign-on-saml/saml-sso-with-ms-entra-id"target="_blank" >SAML SSO with Microsoft Entra ID</a>
-      - <a href="/docs/platform/authentication/single-sign-on-saml/saml-sso-with-onelogin"target="_blank" >SAML SSO with OneLogin</a>
-     - <a href="/docs/platform/authentication/single-sign-on-saml/saml-sso-with-keycloak"target="_blank" >SAML SSO with Keycloak</a>
 
 The SAML provider is now listed under **Login via SAML**.
 
