@@ -148,7 +148,7 @@ import { MODULES } from "@site/src/constants";
         module: MODULES.ce,
         description:
           "Visualize important metrics and data associated with your experiment runs.",
-        link: "/docs/chaos-engineering/use-harness-ce/dashboards/",
+        link: "/docs/resilience-testing/chaos-testing/dashboards/custom-dashboards",
       },
     {
       title: "Resilience Probes",

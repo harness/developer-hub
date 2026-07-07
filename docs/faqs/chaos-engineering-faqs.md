@@ -86,7 +86,7 @@ Yes, you can use [SSH chaos](/docs/chaos-engineering/faults/chaos-faults/ssh/ssh
 No, Harness CE helps identify the failures in your application by injecting failures intentionally. This way, you can identify the failures and use other methods to address the issues identified using Harness CE.
 
 #### What kind of Reporting is provided by the tool?
-Once you execute your chaos experiments, you can download the reports that describe the experiment details such as runs, infrastructure, resilience score, and so on. For more information, go to [resilience probes](/docs/chaos-engineering/guides/probes/), [alerts](/docs/chaos-engineering/guides/chaos-experiments/alert-integration) and [chaos dashboard](/docs/chaos-engineering/guides/dashboards/).
+Once you execute your chaos experiments, you can download the reports that describe the experiment details such as runs, infrastructure, resilience score, and so on. For more information, go to [resilience probes](/docs/chaos-engineering/guides/probes/), [alerts](/docs/chaos-engineering/guides/chaos-experiments/alert-integration) and [chaos dashboard](/docs/resilience-testing/chaos-testing/dashboards/custom-dashboards).
 
 
 #### Can I deploy chaos infrastructure on an Openshift Cluster?

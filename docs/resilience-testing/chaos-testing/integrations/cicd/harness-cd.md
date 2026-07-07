@@ -112,6 +112,68 @@ Pipelines are organized into stages, each of which handles a major segment of th
 
 1. Select **Apply Changes** to save this step in the pipeline, and then select **Save** to save changes to the pipeline.
 
+#### Use runtime inputs in chaos experiments
+
+When your chaos experiment has runtime inputs configured, those inputs appear in the **Experiment Inputs** section when you add the chaos step to your pipeline. You can then set each input as a pipeline runtime input, so you provide values when the pipeline runs.
+
+Use runtime inputs to:
+
+- Reuse the same chaos experiment across multiple pipelines with different configurations.
+- Provide experiment parameters at pipeline execution time.
+- Customize chaos validation based on the deployment context.
+
+To use runtime inputs with a chaos experiment:
+
+1. Configure the experiment with runtime inputs. When you create or edit the experiment, select **Runtime Input** instead of **Fixed value** for fault parameters. Go to [Templates](/docs/resilience-testing/chaos-testing/templates) to review runtime variable support.
+1. Add the chaos step to your pipeline. When you select the experiment, the **Experiment Inputs** section displays all runtime inputs configured in the experiment.
+1. Configure each input. Select **Runtime input** to be prompted for a value when the pipeline runs, or select **Fixed value** to provide a static value for this pipeline.
+
+When you run the pipeline, Harness prompts you for all runtime input values before the chaos experiment runs.
+
+#### Use templates in chaos steps
+
+You can add reusable, pre-configured templates to your CD pipeline as chaos steps. This promotes standardization and reduces configuration time across pipelines. The chaos step supports these step-level template types:
+
+- **Experiment templates:** Run a complete chaos experiment from a template.
+- **ChaosProbe templates:** Run a probe from a template.
+- **ChaosFault templates:** Run a fault from a template.
+- **ChaosAction templates:** Run an action from a template.
+
+To use a template as a chaos step:
+
+1. In your pipeline's **Execution** tab, select the **+** icon to add a step.
+1. Select **Use template**.
+
+	![Use template](./static/harness-cd/use-template.png)
+
+1. In the **Templates** modal, browse the available step and step group templates. Filter by **Scope** (All, Project, Organization, Account), search for a template, and view its version, scope, and inputs.
+1. Select the template you want to use, then select **Use Template**.
+
+	![Use template](./static/harness-cd/use-template-two.png)
+
+1. In the **Configure Chaos Experiment** screen, configure the template. For an experiment template, you see:
+   - **Template Inputs:** All inputs defined in the template.
+   - **Select Chaos Infrastructure:** The infrastructure that runs the experiment.
+   - **Expected Resilience Score:** The passing criteria.
+   - **Experiment Inputs:** Runtime inputs configured in the experiment, if any.
+
+   Provide a **Fixed value**, a **Runtime input**, or an **Expression** for each input.
+
+	![Use template](./static/harness-cd/use-template-three.png)
+
+1. Select **Apply Changes** to add the chaos step to your pipeline.
+
+When you select a **ChaosProbe**, **ChaosFault**, or **ChaosAction** template, the configure screen shows that template's own inputs instead of the experiment settings. Provide fixed values, runtime inputs, or expressions for each input the same way, then select **Apply Changes**.
+
+Templates give you:
+
+- **Consistency:** Standardized, tested chaos steps across all pipelines.
+- **Efficiency:** Less time configuring chaos steps.
+- **Reusability:** Shared configurations across teams and projects.
+- **Flexibility:** Combine template inputs with experiment runtime inputs.
+
+Go to [Templates](/docs/resilience-testing/chaos-testing/templates) to create and manage chaos experiment, probe, fault, and action templates.
+
 ### Step 3: Choose a failure strategy
 
 [A failure strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps.md) specifies the actions to take if pipeline stages or steps fail due to different conditions. You can configure a failure strategy against each chaos step (experiment) in the pipeline, or through a shell script step at the end of the execution of all chaos steps. Below are examples showing these two options.

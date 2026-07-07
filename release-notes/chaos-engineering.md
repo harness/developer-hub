@@ -20,6 +20,43 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 :::
 
+## July 2026
+
+### New features and enhancements
+
+#### Version 1.92.0
+
+<details open>
+<summary>Required images</summary>
+
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
+
+- harness/chaos-ddcr:1.92.0
+- harness/chaos-ddcr-faults:1.92.0
+- harness/chaos-log-watcher:1.92.0
+- harness/service-discovery-collector:0.72.0
+
+</details>
+
+- Added k6 support for load testing, including the k6 Studio form for script, image, and UI configuration, k6 support on the load test list page and the details and execution views, and k6 load-test schema and manifest mapping
+- Added load-test templates in the Local Chaos Hub, including a template authoring studio, a templates catalog, a template details drawer with inputs and script tabs, template revisioning, and the ability to create a load test from a template
+- Added load-test variables management, a YAML view and builder for load tests and templates, and a run load test modal with resolved inputs and variables
+- Added a metadata-driven refactor of the Load Test Studio using SchemaForm and EditableTable
+- Added runtime input support for load tests in a pipeline
+- Added ChaosProbe, ChaosFault, and ChaosAction template support to the Chaos pipeline step
+- Added runtime values support to remote probes and actions
+- Added an abort trigger when a remote resource times out
+
+### Fixed issues
+
+#### Version 1.92.0
+
+- Fixed a permanent loader in the chaos experiment selection reference field
+- Fixed a Contentful error for the help panel in QA and other environments
+- Fixed K8s load tests remaining stuck in Pending when a delegate task failed
+- Fixed the dropdown menu disappearing for discovered namespaces, deployment names, label selectors, and deployment kind in experiment input sets
+- Fixed inaccurate ChaosGuard condition match messages shown for blocked experiments
+
 ## June 2026
 
 ### New features and enhancements
@@ -2419,7 +2456,7 @@ To upgrade chaos infrastructures and experiments:
 
 ##### Early access features
 
-* Introduction of [Chaos dashboards](/docs/chaos-engineering/guides/dashboards/).
+* Introduction of [Chaos dashboards](/docs/resilience-testing/chaos-testing/dashboards/custom-dashboards).
     * Two new dashboards include number of experiments and number of infrastructures by user, as well as statistics of the chaos faults that were executed.
     * This feature is currently behind a feature flag named `CHAOS_DASHBOARD_ENABLED`. Contact Harness support to enable this feature.
 
