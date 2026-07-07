@@ -652,6 +652,7 @@ const config: Config = {
     path.join(__dirname, '/plugins/feature-flags-rss-plugin'),
   ],
   clientModules: [
+    path.join(__dirname, '/client-modules/mixpanelInit'),
     path.join(__dirname, '/client-modules/searchBar'),
     path.join(__dirname, '/client-modules/iframeEmbed'),
     path.join(__dirname, '/client-modules/dmsContentRedirect'),
@@ -661,6 +662,12 @@ const config: Config = {
     // path.join(__dirname, '/client-modules/chatbot'),
   ],
   headTags: [
+    // Inject Mixpanel token as a global variable before any scripts run
+    {
+      tagName: 'script',
+      attributes: {},
+      innerHTML: `window.__MIXPANEL_TOKEN__ = ${JSON.stringify(process.env.MIXPANEL_TOKEN || '')};`,
+    },
     // Queue `Kapa('open', …)` until `kapa-widget.bundle.js` finishes loading — same pattern as
     // https://docs.kapa.ai/integrations/website-widget/javascript-api/preinitialize
     {
