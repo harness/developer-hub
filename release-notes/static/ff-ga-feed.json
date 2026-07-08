@@ -14,6 +14,13 @@
     "lifecycleState": "Beta"
   },
   {
+    "flagKey": "GITXWEBHOOKS_RBAC_PERMISSIONS",
+    "description": "Enforces RBAC permissions on GitX Webhook APIs, ensuring that only users with the appropriate roles can trigger or manage webhooks.",
+    "gaStartDate": "2026-07-07",
+    "module": "Pipeline",
+    "lifecycleState": "Limited GA"
+  },
+  {
     "flagKey": "USE_ORIGINAL_YAML_FOR_EXECUTION",
     "description": "Enables Rerun with Original Pipeline YAML: when the feature flag and the allow_original_yaml_on_rerun setting are on, a rerun can use the pipeline definition and inputs stored from the original execution (including chained child pipelines), instead of the current Pipeline in Harness or Git. Without the feature flag, that path is blocked and reruns always use the latest Pipeline YAML, even if the Pipeline has changed since the original run.",
     "gaStartDate": "2026-06-09",
