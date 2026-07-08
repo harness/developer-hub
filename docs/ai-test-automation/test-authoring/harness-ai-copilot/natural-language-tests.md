@@ -149,4 +149,4 @@ This format clarifies the starting state, the action to perform, and the expecte
 
 - Learn about [Simple Steps - AI Actions](/docs/ai-test-automation/test-authoring/harness-ai-copilot/simple-step) for single, focused actions.
 - Explore [Assertions and Validations](/docs/ai-test-automation/test-authoring/harness-ai-copilot/ai-assertions) to express business-level checks.
-- Review the [Harness AI documentation category](/docs/category/harness-ai-1) for deeper capabilities.
+- Review the [Harness AI documentation](/docs/platform/harness-ai/overview) for deeper capabilities.

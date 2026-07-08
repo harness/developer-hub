@@ -86,4 +86,4 @@ This demonstrates how simple steps work together to create intelligent, self-doc
 
 - Learn about [Complex Steps](/docs/ai-test-automation/test-authoring/harness-ai-copilot/natural-language-tests) for multi-action scenarios
 - Explore [Assertions and Validations](/docs/ai-test-automation/test-authoring/harness-ai-copilot/ai-assertions) for comprehensive testing
-- Understand [AI Copilot capabilities](/docs/category/harness-ai-1) in depth
+- Understand [Harness AI capabilities](/docs/platform/harness-ai/overview) in depth

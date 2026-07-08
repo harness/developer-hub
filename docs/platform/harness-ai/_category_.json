@@ -5,10 +5,10 @@
     "className": "red",
     "position": "3",
     "link": {
-        "type": "generated-index",
-        "title": "Harness AI"
+        "type": "doc",
+        "id": "platform/harness-ai/overview"
     },
     "customProps": {
-        
+
     }
 }

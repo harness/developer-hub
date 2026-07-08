@@ -73,4 +73,4 @@ The parameter is now available for use in any subsequent test steps as `{balance
 - Learn about [Simple Steps - AI Actions](/docs/ai-test-automation/test-authoring/harness-ai-copilot/simple-step) for basic interactions
 - Explore [Multi-Step AI Tasks](/docs/ai-test-automation/test-authoring/harness-ai-copilot/natural-language-tests) for complex workflows
 - Understand [AI Assertions](/docs/ai-test-automation/test-authoring/harness-ai-copilot/ai-assertions) to validate extracted parameters
-- Review the [Harness AI documentation category](/docs/category/harness-ai-1) for comprehensive capabilities
+- Review the [Harness AI documentation](/docs/platform/harness-ai/overview) for comprehensive capabilities
