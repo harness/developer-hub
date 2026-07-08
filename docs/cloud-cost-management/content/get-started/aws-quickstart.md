@@ -6,10 +6,7 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 
 :::important
 
-CACM has launched support for CUR2.0 which requires migration. Read the steps below to migrate. The following CACM features are not yet supported with CUR 2.0:
-- AutoStopping
-- Commitments
-- Cluster Orchestrator
+AWS **CUR 2.0** (Data Exports) is now supported and recommended for new connectors. It currently supports **Cost Visibility**, **Asset Governance**, and **Recommendations**. If you need **AutoStopping**, **Commitments**, or **Cluster Orchestrator**, use **CUR 1.0**, which remains fully supported and covers all CACM features.
 
 :::
 
@@ -22,38 +19,46 @@ To ensure a smooth and error-free setup experience, complete the following steps
 | **Cost and Usage Report (CUR)**  | AWS Console → Billing → Cost & Usage Reports | Harness uses this to ingest detailed billing data. |
 | **S3 Bucket Name**               | AWS Console → S3 | Stores the CUR files for Harness to access. |
 
-### Set Up CUR2.0
+### Set up the Cost and Usage Report
+
+<Tabs queryString="cur">
+<TabItem value="cur2" label="CUR 2.0 (recommended)" default>
+
+#### CUR 2.0 setup
+
+:::info
+This feature is behind the feature flag `CCM_AWS_NEW_CUR`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+:::
+
+1. In the AWS console, navigate to **Billing and Cost Management** → **Data Exports** → **Create export**.
+2. Under **Report details**, select all four options:
+   - Include resource IDs
+   - Split cost allocation data
+   - Include caller identity (IAM principal) allocation data
+   - Include capacity reservation columns and granularity
+3. Under **Delivery options**, configure the following:
+
+| Setting | Required Value |
+|---------|----------------|
+| **Compression type** | Parquet |
+| **S3 bucket** | Select or create a bucket. Copy the bucket name, as you will need it for the Harness connector. |
+| **S3 path prefix** | Enter any prefix. |
+
+4. Do not uncheck any columns.
+5. Review and create the export. Copy the export name, as you will need it for the Harness connector.
 
 <DocImage path={require('./static/cur-aws.png')} width="70%" height="70%" title="Click to view full size image" />
 
-- Navigate to AWS Billing & Cost Management → [Data Exports](https://us-east-1.console.aws.amazon.com/costmanagement/home?region=us-east-1#/bcm-data-exports).
-- Click Create Export → Standard Data Export.
-- Under Data table content, select CUR 2.0.
-- Under Additional export content, select all available options.
-- Set Time granularity to Hourly.
-- Under File versioning, select Overwrite existing data export file.
-- Under Compression type and file format → parquet (only parquet format is supported for CUR 2.0 in CACM).
-- Select the destination S3 bucket and prefix.
-- Under Data export storage settings → this account (preferred).
-- Review and create.
+</TabItem>
+<TabItem value="cur1" label="Legacy CUR">
 
-
----
-
-
-
-<details>
-<summary>Set Up the Cost and Usage Report - Legacy CUR</summary>
-
-Below are the steps for **Legacy CUR**
-
-**Required CUR Settings**
+#### Legacy CUR setup
 
 When creating a Legacy CUR report in AWS, configure the following settings:
 
 | Setting | Required Value | Notes |
 |---------|----------------|-------|
-| **Report Type** | Legacy CUR export | -  |
+| **Report Type** | Legacy CUR export | - |
 | **Include Resource IDs** | ✅ Enabled | Must be checked in "Additional report details" |
 | **Time Granularity** | Hourly | Required for accurate cost tracking |
 | **Compression** | GZIP | Required format |
@@ -62,7 +67,7 @@ When creating a Legacy CUR report in AWS, configure the following settings:
 
 **Connector Configuration**
 
-When setting up an AWS CACM connector in Harness with **Legacy CUR**, you need to provide:
+When setting up an AWS CACM connector in Harness with Legacy CUR, provide:
 
 | Field | Description | Required |
 |-------|-------------|----------|
@@ -71,69 +76,29 @@ When setting up an AWS CACM connector in Harness with **Legacy CUR**, you need t
 | `region` | AWS region of the S3 bucket | No (defaults to us-east-1) |
 | `s3Prefix` | S3 prefix path for the report | No |
 
-For **CUR 2.0**, enable the CUR 2.0 option during connector creation instead — see [Step 2: Select or Create a Cost and Usage Report](#step-2-select-or-create-a-cost-and-usage-report).
+**Step-by-step setup**
 
-**Troubleshooting**
-
-**"CUR report setting is not found"**
-- The report name doesn't exist or the connector doesn't have permission to access it
-- Verify the report name matches exactly (case-sensitive)
-
-**"Compression is not GZIP"**
-- The CUR report is configured with a different compression type
-- Recreate the report with GZIP compression
-
-**"Time Granularity is not Hourly"**
-- The report is set to Daily or Monthly granularity
-- Recreate the report with Hourly granularity
-
-**"Include resource IDs is not enabled"**
-- The report was created without resource ID tracking
-- Recreate the report with "Include resource IDs" checked
-
-**"No CUR file found"**
-- Files haven't been delivered yet (can take up to 24 hours for new reports)
-- S3 path prefix mismatch between connector and actual report location
-
-**Step-by-Step Setup Guide**
-
-**Create Legacy CUR in AWS**
-
-1. Go to AWS Billing Console → Cost & Usage Reports
-2. Click "Create report"
-3. **Important**: If you specifically need Legacy CUR, select "Legacy CUR export". Otherwise, use CUR 2.0 (recommended) — see the [Set Up CUR2.0](#set-up-cur20) section above.
+1. Go to AWS Billing Console → **Cost & Usage Reports**.
+2. Click **Create report**.
+3. Select **Legacy CUR export**.
 4. Configure:
    - Report name: Choose a descriptive name
    - Include resource IDs: Check this box
-   - Time granularity: Select "Hourly"
-   - Report versioning: "Create new report version"
+   - Time granularity: Select **Hourly**
+   - Report versioning: **Create new report version**
 5. Configure S3 delivery:
    - S3 bucket: Select or create a bucket
    - S3 path prefix: Optional, but note it if you set one
-   - Compression: Select "GZIP"
-6. Review and create
+   - Compression: Select **GZIP**
+6. Review and create.
 
-**2. Wait for Report Delivery**
+</TabItem>
+</Tabs>
 
-- AWS delivers the first CUR file within 24 hours
-- Subsequent updates occur multiple times per day
-
-**3. Configure Harness Connector**
-
-1. In Harness, go to Connectors → New Connector → AWS Cloud Cost
-2. Enter the Cross-Account Role ARN and External ID
-3. In CUR settings:
-   - Report Name: Enter the exact report name from AWS
-   - S3 Bucket: Enter the bucket name
-   - S3 Prefix: Enter if you configured one in AWS
-   - Region: Enter the bucket's region
-
-#### Related Documentation
+#### Related documentation
 
 - [AWS CUR User Guide](https://docs.aws.amazon.com/cur/latest/userguide/what-is-cur.html)
 - [Legacy CUR vs CUR 2.0](https://docs.aws.amazon.com/cur/latest/userguide/table-dictionary-cur2.html)
-
-</details>
 
 ---
 
@@ -169,46 +134,76 @@ Once you've gathered the required AWS details, follow these steps in the Harness
 
 #### Step 2: Select or Create a Cost and Usage Report
 
-If your Cost and Usage Report (CUR) already exists, select it from the list. We support CUR2.0 now. CUR 2.0 (Data Exports) is recommended for new connectors. Use CUR 1.0 if you have existing reports or downstream dependencies on the legacy format. To see Legacy CUR options, follow the steps in the [Before You Start](#before-you-start) section to create one. For CUR2.0, during connector creation, enable the CUR 2.0 option.
+<Tabs>
+<TabItem value="new" label="New connector" default>
 
-If you already have an AWS billing connector configured with CUR 1.0:
+In the connector wizard, select the report type based on the features you need:
 
-- Edit the existing AWS billing connector.
-- Enable the CUR 2.0 option.
-- Create a new Cross-Account Role using the updated CloudFormation template, or update the existing IAM role with the required permissions.
-- The role must include the following permissions:
+| Report type | Supported features | Recommended for |
+|---|---|---|
+| **CUR 2.0 (recommended)** | Cost Visibility, Asset Governance, Recommendations | New connectors, AI cost attribution (e.g. Amazon Bedrock), organizations that do not need AutoStopping, Commitments, or Cluster Orchestrator |
+| **CUR 1.0 (legacy)** | Cost Visibility, Asset Governance, Recommendations, AutoStopping, Commitments, Cluster Orchestrator | Existing connectors that rely on AutoStopping, Commitments, or Cluster Orchestrator |
 
-  ```json
-  {
-    "Action": [
-      "cur:DescribeReportDefinitions",
-      "bcm-data-exports:GetExport",
-      "bcm-data-exports:ListExports",
-      "organizations:Describe*",
-      "organizations:List*"
-    ]
-  }
-  ```
+<Tabs queryString="cur-version">
+<TabItem value="cur2" label="CUR 2.0 (recommended)" default>
 
-- Additionally, ensure the role has the required S3 bucket permissions and resource-level access for the Data Export location.
-
-After migrating to CUR 2.0, AWS will only generate data in the new format going forward.
-If you would like historical billing data to be available in CUR 2.0 format, AWS Support can backfill up to 36 months of historical data into the new export format.
-We recommend requesting a backfill for at least the current year (2026) to maintain reporting continuity.
-For additional details, see:
-[Migration to CUR 2.0 - Cloud Intelligence Dashboards on AWS](https://docs.aws.amazon.com/guidance/latest/cloud-intelligence-dashboards/migration-to-cur.html)
-
-
-Once the CUR 2.0 export is created and the AWS billing connector is updated, Harness CACM will automatically begin ingesting data from the new export.
+1. In the connector wizard, select the **CUR 2.0 (recommended)** tab.
+2. Click **Launch AWS console** and follow the [CUR 2.0 setup steps](?cur=cur2#set-up-the-cost-and-usage-report) to create a Data Export if you have not done so already.
+3. Enter the **Data Export Name** and **S3 Bucket Name** in the fields provided.
+4. Click **Continue**.
 
 <DocImage path={require('./static/curtwo.png')} width="100%" height="100%" title="Click to view full size image" />
 
-Select the CUR from the list and click **Continue**.
+</TabItem>
+<TabItem value="cur1" label="CUR 1.0 (legacy)">
+
+1. In the connector wizard, select the **CUR 1.0 (legacy)** tab.
+2. Click **Launch AWS console** and follow the [Legacy CUR setup](?cur=cur1#legacy-cur-setup) steps to create a report if you have not done so already.
+3. Enter the **Cost and Usage Report Name** and **S3 Bucket Name** in the fields provided.
+4. Click **Continue**.
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+<TabItem value="migrate" label="Migrating from CUR 1.0">
+
+If you already have an AWS billing connector configured with **CUR 1.0** and want to migrate to **CUR 2.0**:
+
+1. Edit the existing AWS billing connector.
+2. In the **Cost and Usage Report** step, select the **CUR 2.0 (recommended)** tab.
+3. Update the Cross Account IAM role with the required **CUR 2.0** permissions using one of the following methods:
+   - **CloudFormation template (recommended):** Re-run the [CloudFormation template](https://continuous-efficiency.s3.us-east-2.amazonaws.com/setup/v1/ng/HarnessAWSTemplate.yaml), which includes all required permissions for both **CUR 1.0** and **CUR 2.0**.
+   - **Manual:** Add the following permissions directly to the existing Cross Account IAM role:
+
+```json
+{
+  "Action": [
+    "cur:DescribeReportDefinitions",
+    "bcm-data-exports:GetExport",
+    "bcm-data-exports:ListExports",
+    "organizations:Describe*",
+    "organizations:List*"
+  ]
+}
+```
+
+4. Ensure the role also has the required S3 bucket permissions and resource-level access for the Data Export location.
+
+:::note
+After you migrate, AWS generates all new billing data in **CUR 2.0** format. Keep the following in mind:
+
+- **Historical data:** Data from before the migration remains in **CUR 1.0** format and is not automatically converted.
+- **Backfill:** If you need pre-migration data in **CUR 2.0** format, contact AWS Support. AWS can backfill up to 36 months. Harness recommends requesting at least the current year to maintain uninterrupted reporting in Harness CCM.
+
+Go to [Migration to CUR 2.0 - Cloud Intelligence Dashboards on AWS](https://docs.aws.amazon.com/guidance/latest/cloud-intelligence-dashboards/migration-to-cur.html) to understand the full impact of migrating.
+:::
+
+</TabItem>
+</Tabs>
 
 :::info
 Review [Feature Permissions](/docs/cloud-cost-management/feature-permissions) for CACM to understand the minimum IAM roles or policies needed for every CACM feature.
-
-
 :::
 ---
 
@@ -239,10 +234,12 @@ You can enable authentication for your AWS account via
 ----
 
 #### Step 5: Enter Cross Account Role Details
-1. Paste the **Cross Account Role ARN** you created via the CloudFormation stack.
-   - You can find this under **CloudFormation → Stacks → Outputs tab** in AWS.
-   - **CUR 2.0 users**: Make sure the role was created using the updated CloudFormation template (or that you've updated the existing IAM role with the [CUR 2.0 permissions](#step-2-select-or-create-a-cost-and-usage-report)) before pasting the ARN here.
-2. The **External ID** will be pre-filled — leave it as is.
+1. Paste the **Cross Account Role ARN** you created via the [CloudFormation template](https://continuous-efficiency.s3.us-east-2.amazonaws.com/setup/v1/ng/HarnessAWSTemplate.yaml). You can find it under **CloudFormation → Stacks → Outputs tab** in AWS.
+
+:::note
+If you are using **CUR 2.0**, ensure the Cross Account IAM role has been updated with the **CUR 2.0** permissions by re-running the [CloudFormation template](https://continuous-efficiency.s3.us-east-2.amazonaws.com/setup/v1/ng/HarnessAWSTemplate.yaml) or manually adding them as described in the [Migrating from CUR 1.0](#step-2-select-or-create-a-cost-and-usage-report) tab above.
+:::
+2. The **External ID** will be pre-filled. Leave it as is.
 3. Click **Save and Continue**.
 
 ---
