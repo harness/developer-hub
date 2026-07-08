@@ -59,25 +59,13 @@ helm list  --filter ^release-75d461a29efd32e5d22b01dc0f93aa5275e2f003$
 helm rollback  release-1d0bcdea6247c9f82cc9204b1d81593e7b985651
 ```
 
-### Helm 2 in Native Helm
+### Helm version support
 
-Helm 2 was deprecated by the Helm community in November 2020 and is no longer supported by Helm. If you continue to maintain the Helm 2 binary on your delegate, it might introduce high and critical vulnerabilities and put your infrastructure at risk.
-  
-To safeguard your operations and protect against potential security vulnerabilities, Harness deprecated the Helm 2 binary from delegates with an immutable image type (image tag `yy.mm.xxxxx`). For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
+Harness ships Helm v3.15.4 and supports Helm v3 versions up to v3.21.1. Helm v2 is no longer shipped or supported. If your pipelines referenced Helm v2, update them to use Helm v3.
 
-If your delegate is set to auto-upgrade, Harness will automatically remove the binary from your delegate. This will result in pipeline and workflow failures for services deployed via Helm 2. 
-
-:::info note
-If your development team still uses Helm 2, you can reintroduce the binary on the delegate. Harness is not responsible for any vulnerabilities or risks that might result from reintroducing the Helm 2 binary.
+:::caution Known Helm issue with multiple API versions for the same Kind
+There is an outstanding Helm bug ([helm/helm#10748](https://github.com/helm/helm/issues/10748)) where Helm does not remove a resource during an upgrade if another resource with the same `Kind` but a different `apiVersion` exists in the same release. Helm merged a fix but subsequently reverted it due to a regression, and the issue remains unresolved.
 :::
-
-For more information about updating your delegates to reintroduce Helm 2, go to:
-
-- [Delegate automatic upgrades and expiration policy](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/)
-
-- [Install a delegate with third-party tool custom binaries](/docs/platform/delegates/install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries/)
-
-Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 
 ## Deployment requirements
@@ -138,7 +126,6 @@ To add a Helm chart in this example, we will add a Harness connector to the HTTP
     For steps on installing a delegate, go to [Delegate installation overview](/docs/platform/delegates/install-delegates/overview).
 
     When you are done, the Connector is tested. If it fails, your Delegate might not be able to connect to `https://charts.bitnami.com/bitnami`. Review its network connectivity and ensure it can connect.  
-    If you are using Helm v2, you will need to install Helm v2 and Tiller on the delegate pod. For steps on installing software on the delegate, go to [Build custom delegate images with third-party tools](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
 10. In **Manifest Details**, enter the following settings can select **Submit**.
    * **Manifest Identifier**: enter **nginx**.
    * **Chart Name**: enter **nginx**.
@@ -417,7 +404,7 @@ Once enabled, you’ll see a new checkbox titled **Use Upgrade with Install** in
 This option:
 
 - Supports fixed values, runtime inputs, and expressions.
-- Works with both Helm v2 and Helm v3.
+- Works with Helm v3.
 - Continues to support custom CLI flags.
 
 This checkbox is available for **Native Helm deployment steps**, including **Rolling Deploy**, **Canary**, and **Blue-Green** deployments.

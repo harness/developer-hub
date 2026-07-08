@@ -5,6 +5,7 @@ redirect_from:
   - /docs/continuous-delivery/kb-articles/articles/create-cascading-fields-jira
 ---
 
+
 This article talks about using the HTTP step to set the fields that are not supported by Harness using an example. 
 
 By default, Harness doesn't support cascading lists and other custom field types. For the list of supported Jira fields, go to [Add issue fields](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-jira-issues-in-cd-stages/#add-issue-fields).

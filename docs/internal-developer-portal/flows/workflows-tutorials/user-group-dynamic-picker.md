@@ -27,9 +27,8 @@ import DocImage from '@site/src/components/DocImage';
 
 # Get User Group with Backend Proxy
 
-## Introduction
 
-In this tutorial, you'll learn how to create a workflow form with a dynamic dropdown that fetches data from an external API using Harness IDP's backend proxy feature. Specifically, you'll build:
+In this tutorial, you will learn how to create a workflow form with a dynamic dropdown that fetches data from an external API using Harness IDP's backend proxy feature. Specifically, you will build:
 
 - A workflow form with a dynamic dropdown menu for selecting User Groups
 - A backend proxy configuration that securely connects to the Harness API
@@ -40,7 +39,7 @@ In this tutorial, you'll learn how to create a workflow form with a dynamic drop
 This approach allows you to present users with real-time data from your systems, creating more dynamic and powerful self-service experiences in your Internal Developer Portal.
 
 
-### Prerequisites
+### Before you begin
 
 Before starting, ensure you have the following:
 
@@ -49,7 +48,7 @@ Before starting, ensure you have the following:
   In this example, we will use the [Get User Groups API](https://apidocs.harness.io/tag/User-Group#operation/getUserGroupList), which returns a list of user groups within a given project and organization.
 
 
-## Explore the API and Set Up the Backend Proxy
+## Explore the API and set up the backend proxy
 
 To power your dynamic dropdown, you will use Harness’s public API to fetch user groups for a given project and organization. This data will be used to populate the options in your Workflow form.
 
@@ -63,9 +62,9 @@ GET /ng/api/user-groups?accountIdentifier=<account>&orgIdentifier=<org>&projectI
 
 This endpoint returns a list of user groups associated with the provided account, org, and project identifiers. You can try this API via [Harness API Explorer](https://apidocs.harness.io/tag/User-Group#operation/getUserGroupList) to see the expected response format and query parameters.
 
-But here's the thing — Workflows cannot directly call external APIs from the UI. That's where **backend proxies** come in.
+But here is the thing, Workflows cannot directly call external APIs from the UI. That is where **backend proxies** come in.
 
-#### Set Up the Backend Proxy
+#### Set up the backend proxy
 
 To safely expose this API to your Workflow UI, you need to define a backend proxy. Here’s how you can do it:
 
@@ -94,7 +93,7 @@ Let’s break this down:
 ![proxy](./static/proxy-setting.png)
 Once saved, this proxy will become accessible from your Workflow form logic. It ensures the API is securely routed through the backend while keeping your tokens safe and abstracted from the frontend.
 
-## Create the Workflow and Add the Dynamic Picker
+## Create the workflow and add the dynamic picker
 
 With the backend proxy in place, you can now build a Workflow that uses it to fetch user groups dynamically. Start by going to **IDP** → **Workflows** and clicking **Create Workflow**. In the UI, fill in basic information like the name, identifier, type (`harness_project`), and owner. Once saved, switch to **YAML View** to define the form parameters and logic.
 
@@ -174,4 +173,4 @@ spec:
 
 <!-- ![](./static/user-group-workflow.png) -->
 
-When you run this Workflow, the experience is fully dynamic. After selecting a project, the org field auto-fills, and the user group dropdown fetches data from your proxy in real-time. It displays the group names and passes their identifiers under the hood — exactly what you want for automation or pipeline inputs.
+When you run this Workflow, the experience is fully dynamic. After selecting a project, the org field auto-fills, and the user group dropdown fetches data from your proxy in real-time. It displays the group names and passes their identifiers under the hood, exactly what you want for automation or pipeline inputs.

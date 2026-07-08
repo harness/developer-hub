@@ -5,7 +5,7 @@ sidebar_label: Start FME in Harness
 sidebar_position: 3
 ---
 
-import Fme from '@site/docs/feature-management-experimentation/getting-started/split-and-harness.md';
+import Fme from '@site/docs/feature-management-experimentation/split-and-harness.md';
 
 <Fme />
 

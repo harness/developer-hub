@@ -410,10 +410,10 @@ pipeline:
                                 cat >> Dockerfile << EOF
 
 
-                            RUN wget -O /opt/harness/client-tools/go-template https://app.harness.io/public/shared/tools/go-template/release/v0.4.5/bin/linux/amd64/go-template && \
+                            RUN wget -O /opt/harness/client-tools/go-template https://app.harness.io/public/shared/tools/go-template/release/v0.4.15/bin/linux/amd64/go-template && \
                                 chmod +x /opt/harness/client-tools/go-template || \
                                 (echo "Primary download failed, trying alternative..." && \
-                                curl -L -o /opt/harness/client-tools/go-template https://github.com/harness/go-template/releases/download/v0.4.5/go-template_linux_amd64 && \
+                                curl -L -o /opt/harness/client-tools/go-template https://github.com/harness/go-template/releases/download/v0.4.15/go-template_linux_amd64 && \
                                 chmod +x /opt/harness/client-tools/go-template) || \
                                 (echo "Creating fallback stub for go-template..." && \
                                 echo '#!/bin/bash' > /opt/harness/client-tools/go-template && \

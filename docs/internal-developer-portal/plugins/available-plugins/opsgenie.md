@@ -98,7 +98,7 @@ In the above annotation, you need to add the `tag` for your alerts and the `team
 
 ![](./static/ca-og.png)
 
-[Read more](https://github.com/K-Phoen/backstage-plugin-opsgenie/blob/master/docs/index.md#usage)
+[Read more](https://github.com/K-Phoen/backstage-plugin-opsgenie/blob/master/docs/index#usage)
 
 ## Support
 

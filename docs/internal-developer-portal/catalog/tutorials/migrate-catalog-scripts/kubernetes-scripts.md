@@ -20,9 +20,10 @@ tags:
   - population
 ---
 
+
 In modern cloud-native environments, applications run across dozens of Kubernetes namespaces, each hosting multiple Deployments, Services, and other resources. Manually onboarding these Kubernetes workloads into the Harness Software Catalog quickly becomes error-prone and unsustainable.
 
-This script helps you discover and add your Kubernetes resources to the Harness Internal Developer Portal catalog automatically. It's especially useful when you have many Kubernetes resources across multiple namespaces that would be time-consuming to add manually.
+This script helps you discover and add your Kubernetes resources to the Harness Internal Developer Portal catalog automatically. It is especially useful when you have many Kubernetes resources across multiple namespaces that would be time-consuming to add manually.
 
 The script follows a comprehensive workflow:
 
@@ -35,7 +36,7 @@ This workflow ensures you have version control for all your catalog entities and
 
 By automatically analyzing Deployments, Services, and their interdependencies, the script ensures the catalog reflects a near real-time view of your cluster without requiring manual intervention.
 
-### Script Source
+### Script source
 
 [Source Code](https://github.com/harness-community/idp-samples/blob/main/IDP-2.0-Samples/catalog-scripts/kubernetes-harness-idp-catalog-sync.py)
 
@@ -45,9 +46,9 @@ curl -o kubernetes-harness-idp-catalog-sync.py https://raw.githubusercontent.com
 
 ### Before you begin
 
-#### Local Environment
+#### Local environment
 
-This script is designed to run on your local machine or in a CI/CD pipeline with access to both your Kubernetes cluster and GitHub. You'll need:
+This script is designed to run on your local machine or in a CI/CD pipeline with access to both your Kubernetes cluster and GitHub. You will need:
 
 * [Python 3](https://www.python.org/downloads/) with the following libraries installed:
 
@@ -55,11 +56,11 @@ This script is designed to run on your local machine or in a CI/CD pipeline with
   pip install requests python-dotenv kubernetes
   ```
 
-#### Kubernetes Access
+#### Kubernetes access
 
 * Access to your Kubernetes cluster via properly configured `kubectl` and kubeconfig
 * Permissions to list and get deployments, services, and other resources
-* For local use, make sure you're connected to the right cluster context:
+* For local use, make sure you are connected to the right cluster context:
 
   ```bash
   kubectl config current-context
@@ -97,7 +98,7 @@ Options:
 * `--resource-kind` (optional): Filter by resource type (`Deployment`, `Service`, `Pod`). Defaults to Deployments and Services.
 * `--analyze-dependencies` (flag): Enables detection of service-to-deployment dependencies based on selectors and environment variables.
 
-### What the Script Does
+### What the script does
 
 1. Connects to your Kubernetes cluster using kubeconfig
 2. Discovers Deployments, Services (and optionally Pods)
@@ -106,7 +107,7 @@ Options:
 5. Registers the entity in Harness IDP via the Entities API
 
 
-#### Resource Discovery Logic
+#### Resource discovery logic
 
 The script intelligently discovers Kubernetes resources using the official Kubernetes Python client:
 
@@ -126,7 +127,7 @@ Each resource is extracted with its complete metadata including:
 - Labels and selectors
 - Environment variables (for Deployments)
 
-#### Dependency Detection Mechanism
+#### Dependency detection mechanism
 
 The script employs two sophisticated methods to detect dependencies between resources:
 
@@ -151,7 +152,7 @@ The script employs two sophisticated methods to detect dependencies between reso
    ```
    This detects when one resource references another via environment variables, revealing implicit dependencies.
 
-#### YAML Generation and Entity Creation
+#### YAML generation and entity creation
 
 The script dynamically generates Harness-compatible entity definitions with these key features:
 
@@ -183,7 +184,7 @@ The script dynamically generates Harness-compatible entity definitions with thes
    ```
    Maps the discovered dependencies into Harness relationship format.
 
-#### GitHub Integration
+#### GitHub integration
 
 The script interfaces with GitHub's API to store entity definitions:
 
@@ -204,7 +205,7 @@ The script interfaces with GitHub's API to store entity definitions:
    ```
    Checks if files already exist before creating or updating them.
 
-#### Harness Catalog Registration
+#### Harness catalog registration
 
 The script registers entities with Harness using the Entities API:
 
@@ -232,7 +233,7 @@ The script registers entities with Harness using the Entities API:
    ```
    The script automatically retries with UPSERT mode if entities already exist.
 
-### Output Structure
+### Output structure
 
 The GitHub repo will store files in the following format:
 
@@ -271,7 +272,7 @@ metadata:
     - deployment
 ```
 
-### Logs & Troubleshooting
+### Logs & troubleshooting
 
 * Logs are printed to stdout for each resource:
 

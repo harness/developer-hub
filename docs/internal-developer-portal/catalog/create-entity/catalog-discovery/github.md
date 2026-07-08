@@ -27,17 +27,17 @@ The following are needed to get the integration running:
 * For each GitHub org, user has to maintain one integration.
 
 :::info Proxy Configuration
-If your environment blocks outbound third-party traffic and routes it through a proxy, you'll need to configure proxy settings on your Harness Delegate. Once configured there, the proxy settings are automatically picked up by IDP integrations. No additional setup is needed on the integration side. 
+If your environment blocks outbound third-party traffic and routes it through a proxy, you will need to configure proxy settings on your Harness Delegate. Once configured there, the proxy settings are automatically picked up by IDP integrations. No additional setup is needed on the integration side. 
 
-Here's how to set it up: [Configure delegate proxy settings](/docs/platform/delegates/manage-delegates/configure-delegate-proxy-settings)
+Here is how to set it up: [Configure delegate proxy settings](/docs/platform/delegates/manage-delegates/configure-delegate-proxy-settings)
 :::
 
 
 ---
 
-## Enable the GitHub Integration
+## Enable the GitHub integration
 
-### 1. Navigate to the Integrations Page
+### 1. Navigate to the integrations page
 
 1. In Harness, open the **Internal Developer Portal**.
 
@@ -52,7 +52,7 @@ Here's how to set it up: [Configure delegate proxy settings](/docs/platform/dele
 
 5. Select **GitHub** from the integration type picker. You will be taken to the **Auto Discover GitHub Integration** page.
 
-### 2. Configure Setup & Connectivity
+### 2. Configure setup & connectivity
 
 This section connects Harness IDP to your GitHub organization.
 
@@ -67,13 +67,13 @@ This section connects Harness IDP to your GitHub organization.
    The GitHub integration performs org-level queries to discover repositories and teams across your organization. Ensure the GitHub connector you select has org-level permissions on your GitHub.
    :::
 
-   :::info Don't have a GitHub connector yet?
+   :::info Do not have a GitHub connector yet?
    If no connectors appear in the dropdown, you need to first create a GitHub connector in Harness. Once saved, it will appear in the dropdown here.
 
    <DocVideo src="https://www.youtube.com/embed/67r7gXk-UcU" />
    :::
 
-### 3. Configure Mapping & Correlation
+### 3. Configure mapping & correlation
 
 This section defines how GitHub entities are mapped to IDP catalog entities and how they are correlated with existing records.
 
@@ -82,7 +82,7 @@ The integration supports three entity types: **Repository Entity**, **Team Entit
 ![](./static/gh-entities.png)
 <center>Figure 3: Available Entities - Repository, Team, and AI Assets</center>
 
-#### Repository Entity
+#### Repository entity
 
 The Repository Entity mapping imports GitHub repositories as catalog entities, with configurable `Kind` or `Type`.
 
@@ -135,10 +135,10 @@ The Repository Entity mapping imports GitHub repositories as catalog entities, w
    :::
 
    :::info Where does this data appear?
-   Secondary kinds data is surfaced on the [Entity Details](https://developer.harness.io/docs/internal-developer-portal/catalog/create-entity/entity-details) page for each repository. It does not appear in the **Ingested Properties** YAML in the Entity Inspector.
+   Secondary kinds data is surfaced on the [Entity Details](/docs/internal-developer-portal/catalog/create-entity/entity-details) page for each repository. It does not appear in the **Ingested Properties** YAML in the Entity Inspector.
    :::
 
-#### Team Entity
+#### Team entity
 
 The Team Entity mapping imports GitHub teams as catalog entities, with configurable `Kind` or `Type`.
 
@@ -165,7 +165,7 @@ The Team Entity mapping imports GitHub teams as catalog entities, with configura
 The catalog only surfaces repositories for which the GitHub team has Admin permission. Repositories with lower-level access will not show up in the [Ingested Properties](#ingested-properties).
 :::
 
-#### AI Assets Entity
+#### AI assets entity
 
 The AI Assets Entity mapping discovers and imports AI/ML assets found in your GitHub repositories through manifest-level, API-based scanning. No repository cloning is required. 
 
@@ -192,7 +192,7 @@ The current implementation scans for plugin manifests and `.claude/` directories
 This asset class is registered in the IDP Catalog under `AIAsset` kind with its respective types, and is browsable under the **AI Assets** tab in the [Catalog](../../../catalog/overview)
 :::
 
-#### View AI Asset Instructions
+#### View AI asset instructions
  
 When AI assets of type `skill` or `agent` are imported, IDP automatically fetches their corresponding instruction file (for example, `SKILL.md`) from GitHub and stores it along with the entity. This powers the **Instructions** tab on the entity page as shown below. 
 
@@ -230,7 +230,7 @@ The Instructions tab is currently supported for `skill` and `agent` type AI asse
 :::
 
 
-### 4. Configure Advanced Settings
+### 4. Configure advanced settings
 
 The **Advanced Settings** section controls how frequently IDP syncs with GitHub and how far back historical data is pulled.
 
@@ -253,7 +253,7 @@ The integration is now enabled and IDP begins syncing data from GitHub. Discover
 
 ---
 
-## Discover and Import GitHub Entities
+## Discover and import GitHub entities
 
 This section covers how to view the GitHub entities discovered by the integration and import them into your IDP Catalog.
 
@@ -304,7 +304,7 @@ For the full event type reference and detail panel fields, go to [Integration Ev
 
 ---
 
-## View GitHub Entities in the Catalog
+## View GitHub entities in the catalog
 
 Once imported, GitHub entities are available in the **Catalog** section of IDP as standard catalog entities.
 
@@ -327,7 +327,7 @@ Each imported AI asset is registered with:
 
 Open any entity to view GitHub-sourced data directly on the entity details page. This data is displayed through two dedicated UI components: a card on the **Overview** tab and a **Source Code** tab. Both require a one-time layout configuration, described in the [next section](#layout-for-github-components).
 
-### Layout for GitHub Components
+### Layout for GitHub components
 
 To display GitHub data on the [entity details](/docs/internal-developer-portal/catalog/create-entity/entity-details) page, you need to add the two GitHub components to the relevant entity layout. This is a one-time configuration per entity kind and type.
 
@@ -360,7 +360,7 @@ To display GitHub data on the [entity details](/docs/internal-developer-portal/c
 5. Click **Save** to apply the layout changes. The GitHub components will now appear on all entity detail pages of the selected kind and type that have GitHub data.
 
 
-### Cards in Overview Tab
+### Cards in overview tab
 
 After the layout is configured, a `Source Control Management` card appears in the **Overview** tab of any entity that has GitHub data linked to it. The card displays the key GitHub metadata ingested for that entity, sourced from the entity's [ingested properties](#ingested-properties).
 
@@ -369,7 +369,7 @@ After the layout is configured, a `Source Control Management` card appears in th
 
 If the GitHub integration has not been configured for the entity, the card shows a **Not configured** state with a link to the Integrations page. 
 
-### Source Code Tab
+### Source code tab
 
 The **Source Code** tab provides a more complete view of the GitHub data for the entity. This tab fetches the latest possible data using the integration ID and entity UUID.
 
@@ -382,7 +382,7 @@ The **Source Code** tab provides a more complete view of the GitHub data for the
 * The Open and Merged PR numbers and the Pull Requests table shows PRs updated since 30 days before integration setup, limited to the 1000 most recently updated PRs.
 :::
 
-### Ingested Properties
+### Ingested properties
 
 To inspect the raw data ingested from GitHub, open the entity and click **View YAML** → **Ingested Properties** in the Entity Inspector.
 
@@ -396,13 +396,13 @@ Ingested properties are stored in two sections of the entity YAML:
 
 ---
 
-## Manage the GitHub Integration
+## Manage the GitHub integration
 
-### Edit the Integration
+### Edit the integration
 
 To update the integration name, switch the GitHub connector, or change the mapping and correlation settings, navigate to the **Integrations** page, find your GitHub integration card, and click **View**. From there, click **Configuration** to open the edit screen.
 
-### Suspend Auto-Discovery
+### Suspend auto-discovery
 
 If auto-discovery is suspended, new entities will not appear in the **Discovered** tab. Existing imported entities remain unchanged in the catalog and the sync between GitHub and their corresponding IDP entities will stop.
 
@@ -417,7 +417,7 @@ You may re-enable it at any time by following the same steps.
 
 ---
 
-## GitHub Permissions
+## GitHub permissions
 
 The GitHub Integration connector supports three credential types. The table below summarizes the minimum permissions required for each. Detailed breakdowns follow.
 
@@ -427,7 +427,7 @@ The GitHub Integration connector supports three credential types. The table belo
 | Fine-Grained Personal Access Token | Repository: Metadata (Read-only), Organization: Members (Read-only) |
 | GitHub App | Repository: Metadata (Read-only), Organization: Members (Read-only) |
 
-### Classic Personal Access Token
+### Classic personal access token
 
 The following scopes are required for IDP to perform org-level discovery of repositories and teams:
    * `repo` - Required to read private repository information. Classic PATs on GitHub do not offer a read-only scope for private repositories, so this broader scope is necessary even though IDP only reads repository data.
@@ -442,7 +442,7 @@ To authorize, navigate to your token on the GitHub tokens page, click **Configur
 
 ![Configure SSO dialog showing organizations available to authorize](./static/repo-perm2.png)
 
-### Fine-Grained Personal Access Token
+### Fine-Grained personal access token
 
 * **Repository access** must be set to **All repositories** so that IDP can discover all repositories in the organization. 
 
@@ -463,7 +463,7 @@ To authorize, navigate to your token on the GitHub tokens page, click **Configur
 
 The **Resource owner** must be set to the **organization**, not a personal account. Fine-grained tokens are scoped to a single resource owner, so one token covers one organization. If you need to connect multiple GitHub organizations, create a separate token and a separate Harness connector for each.
 
-### GitHub App
+### GitHub app
 
 * When configuring the app, the **Permissions** section should have the required permissions configured under both **Repository permissions** and **Organization permissions**.
 

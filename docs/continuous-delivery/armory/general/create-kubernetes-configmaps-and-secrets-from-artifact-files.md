@@ -2,6 +2,7 @@
 title: Create Kubernetes Configmaps and Secrets from Artifact Files
 ---
 
+
 Inject Artifact File into Pipeline Context
 Spinnaker has the concept of [artifacts](https://www.spinnaker.io/reference/artifacts/), making it possible to reference files stored in GitHub, Bitbucket, S3, GCS and others in the pipeline. You need to have [enabled and configured](https://www.spinnaker.io/setup/artifacts/) first the artifact type you need. For example for fetching files from GitHub you need to add a GitHub account to Spinnaker configuration, where you provide access credentials.
 

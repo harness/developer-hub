@@ -38,7 +38,7 @@ Containerized step groups cannot have nested step groups, but you can put groups
 The steps **in** each group run in parallel but each group runs serially.
 :::
 
-For more information, go to [Containerize step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups.md).
+For more information, go to [Containerize step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups).
 
 ## Visual summary
 

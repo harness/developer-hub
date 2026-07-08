@@ -4,6 +4,7 @@ redirect_from:
   - /docs/continuous-delivery/armory/general/capturing-spinnaker-configurations-with-armory's-support-bundle-w--automated-script
 ---
 
+
 For a full detailed of the manual process this script is automating, [please refer to KB0010398](https://support.armory.io/support?id=kb_article_view&sysparm_article=KB0010398)
 ### Introduction
 Troubleshooting a Spinnaker issue may require customers to manually pull the configurations from their environment. At times, the configurations may be incomplete which would require customers pull the details again, causing a delay in actual issue resolution time.

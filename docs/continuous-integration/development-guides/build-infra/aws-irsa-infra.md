@@ -4,6 +4,7 @@ description: Set up an Amazon Elastic Kubernetes Service (EKS) cluster with IAM 
 sidebar_position: 3
 ---
 
+
 In this tutorial, we’ll walk through the process of setting up an Amazon Elastic Kubernetes Service (EKS) cluster with IAM Roles for Service Accounts (IRSA) for cross-account integration. Additionally, we will deploy a Harness Kubernetes Delegate to manage the Kubernetes workloads.
 
 ## Introduction

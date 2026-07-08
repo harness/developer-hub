@@ -2,6 +2,7 @@
 title: Capacity Provider Concepts
 ---
 
+
 #### Capacity provider concepts and setup
 [Capacity providers](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-capacity-providers.html#capacity-providers-concepts) define the kinds of capacity available to an ECS cluster, and the [capacity provider strategy](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_CreateService.html#ECS-CreateService-request-capacityProviderStrategy) of the service determines how its tasks are spread across this capacity.
 * Info on how to [set up an ECS cluster with FARGATE & FARGATE_SPOT](https://aws.amazon.com/blogs/aws/aws-fargate-spot-now-generally-available/) capacity providers.* Use the [DescribeClusters API](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeClusters.html#API_DescribeClusters_RequestSyntax) to determine which capacity providers are available on a given cluster.

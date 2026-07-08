@@ -278,10 +278,9 @@ It will be feasible for them to consider adding a line at the top of their manif
 While it's not officially supported, you can obtain all Helm flags used in the Service step. Here's an example of how to retrieve them: `<+pipeline.stages.deploy.spec.manifests.Helm_hello_world.commandFlags>`
 
 
-### What recommendation can be made if a service's chart is currently on V3?
+### What recommendation can be made if a service's chart is currently on v3?
 
-Yes, If the chart is v3 in service should be same.
-Note! If your development team still uses Helm 2, you can reintroduce the binary on the delegate. Harness is not responsible for any vulnerabilities or risks that might result from reintroducing the Helm 2 binary. Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/Helm/deploy-Helm-charts/#important-notes)
+If the chart is v3, the service should be configured for v3 as well. Harness no longer ships Helm v2; only Helm v3 is supported.
 
 
 ### What is the default release name used for k8s/Helm deployment done via Harness pipeline?
@@ -364,23 +363,6 @@ We do not have any built in plugin support for Helm deployments however we do ha
 ### When Helm step runs install and upgrade command?
 
 For any Helm deployment it first tries to check if there is any existing Helm release, if it does not find any release it treats the deployment as first deployment and runs the Helm install command. If it finds the existing release it runs Helm upgrade command.
-
-
-###  Is there a variable available to indicate the Helm v2 path for installation on the delegate ?
-
-Below following could be the required solution for the same :
-
-- One needs to install path via the INIT_SCRIPT field
-```yaml
-name: INIT_SCRIPT
-          value: ""
-```
-
-- After the installation of the binary, export it to PATH
-- Variables are not present for Helm2 and Helm3 for immutable delegates
-**Note : One can’t have the same delegate using v2 and v3 for Helm**
-
-Please read more on Helm2 in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/Helm/native-Helm-quickstart/#Helm-2-in-native-Helm)
 
 
 ### Is it normal for the k8s delete step with the release name option to delete only specific entities, unlike Helm uninstall, when the chart was initially deployed using the native Helm option?

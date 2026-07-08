@@ -22,6 +22,26 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 
+## May 2026
+
+### Version 1.197.0
+
+#### New Features and Enhancements
+
+- [Enhanced Jira ticket metadata](/docs/security-testing-orchestration/jira-integrations#jira-ticket-metadata) with vulnerability summary and relevant occurrence details directly in Jira ticket. This feature is behind the feature flag `STO_JIRA_ENHANCED_TICKET_METADATA`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+- Added support for [creating Jira tickets for non-baseline variants](/docs/security-testing-orchestration/jira-integrations#enable-ticket-creation-for-issues-found-in-non-baseline-targets), such as feature branches and pull requests. This feature is behind the feature flag `STO_NON_BASELINE_TICKETING`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+
+<DocImage path={require('./static/non-baseline.png')} width="70%" height="70%" title="Click to view full size image" />
+- Introduced [Override Exemption duration](/docs/security-testing-orchestration/exemptions/manage-exemptions#approve-an-exemption-request), providing approvers with greater control and flexibility when reviewing exemption requests and added custom duration time at the requester and approver level.
+
+<DocImage path={require('./static/approver.png')} width="70%" height="70%" title="Click to view full size image" />
+
+#### Fixed Issues
+
+- Fixed an issue where search by Issue ID did not work for remediated and exempted issues on the Issues page (STO-11441)
+- Fixed an issue where the stage name did not appear against the step name in the filter on the **Vulnerabilities** tab (STO-11429).
+
+<DocImage path={require('./static/steps.png')} width="70%" height="70%" title="Click to view full size image" />
 
 
 ## April 2026

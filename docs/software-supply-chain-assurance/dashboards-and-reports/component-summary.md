@@ -14,6 +14,7 @@ tags:
 
 ---
 
+
 The Component Summary Dashboard displays all unique components across artifacts and repositories within your account. It provides a centralized view, eliminating the search across projects, and offers a single point of access, especially useful during zero-day attacks.
 
 

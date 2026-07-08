@@ -4,7 +4,7 @@ description: Learn about IaCM workspace status
 sidebar_position: 70
 ---
 
-import Iacm from '@site/docs/infra-as-code-management/workspaces/worksace-statuses.md';
+import Iacm from '@site/docs/infra-as-code-management/workspaces/workspace-statuses.md';
 
 <Iacm />
 

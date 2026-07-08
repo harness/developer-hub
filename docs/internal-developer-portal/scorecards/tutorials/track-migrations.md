@@ -8,18 +8,18 @@ sidebar_position: 6
 
 <DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
 
-In this tutorial, you'll learn how to use [Scorecards](https://developer.harness.io/docs/internal-developer-portal/scorecards/scorecard) to track and drive migrations. You'll build custom checks using data points to track library and language versions from metadata file contents.
+In this tutorial, you will learn how to use [Scorecards](/docs/internal-developer-portal/scorecards/scorecard) to track and drive migrations. You will build custom checks using data points to track library and language versions from metadata file contents.
 
-## Prerequisites
+## Before you begin
 
-- Before starting, ensure you have access to your Git provider through Git Integrations in the IDP admin section with API access enabled. Follow the [connector creation steps](https://developer.harness.io/docs/category/code-repo-connectors) to set up your connector.
+- Before starting, ensure you have access to your Git provider through Git Integrations in the IDP admin section with API access enabled. Follow the [connector creation steps](/docs/category/code-repo-connectors) to set up your connector.
 ![](../static/git-integrations.png)
 
 - A [registered software component](/docs/internal-developer-portal/tutorials/register-component-in-catalog) for which you want to track migration.
 
 ---
 
-## Scorecard Checks
+## Scorecard checks
 
 Harness IDP provides data points for Git-based data sources (GitHub, GitLab, etc.) that you can use to create custom checks in Scorecards. These checks can match and extract specific string patterns from any file in your source code. To learn more about creating checks, go to [Scorecard Checks](/docs/internal-developer-portal/scorecards/create-scorecards/checks.md). 
 
@@ -32,7 +32,7 @@ This feature is particularly useful for tracking versions in various files, such
 
 ---
 
-## Create a Custom Check
+## Create a custom check
 
 Follow these steps to create a custom check for tracking migrations:
 
@@ -67,9 +67,9 @@ Follow these steps to create a custom check for tracking migrations:
 
 ---
 
-## Create a Scorecard
+## Create a scorecard
 
-Once you've created the checks, follow these steps to add them to a new Scorecard:
+Once you have created the checks, follow these steps to add them to a new Scorecard:
 
 1. **Navigate to Scorecards**
    - Go to **Configure** → **Scorecards**
@@ -100,7 +100,7 @@ Once you've created the checks, follow these steps to add them to a new Scorecar
 
 ---
 
-## View Scorecard Results
+## View scorecard results
 
 Once your scorecard is published, you can view the results:
 
@@ -112,13 +112,13 @@ Once your scorecard is published, you can view the results:
 
 ## Troubleshooting
 
-#### Incorrect File Path
+#### Incorrect file path
 
 Ensure the file path is relative to the root folder of the repository.
 
-#### Pattern Matching Errors
+#### Pattern matching errors
 
-Verify the accuracy of the pattern you're trying to match. Use [regex101](http://regex101.com/) to test your regex pattern. Also, ensure you've properly grouped the string you're trying to match using parentheses `()`.
+Verify the accuracy of the pattern you are trying to match. Use [regex101](http://regex101.com/) to test your regex pattern. Also, ensure you have properly grouped the string you are trying to match using parentheses `()`.
 
 ---
 
@@ -126,4 +126,4 @@ Verify the accuracy of the pattern you're trying to match. Use [regex101](http:/
 
 In this tutorial, you learned how to use Scorecards in Harness IDP to track and drive migrations. This powerful feature helps you maintain up-to-date information on various aspects of your software projects, such as dependency versions, language versions, and tool configurations.
 
-For more detailed information and support, refer to the [Harness IDP documentation](https://developer.harness.io/docs/internal-developer-portal) and [community forums](https://join-community-slack.harness.io/).
+For more detailed information and support, refer to the [Harness IDP documentation](/docs/internal-developer-portal) and [community forums](https://join-community-slack.harness.io/).

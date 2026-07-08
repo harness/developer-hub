@@ -2,6 +2,7 @@
 title: Technical Support Case Statuses
 ---
 
+
 ### Overview:
 During the Case Management workflow, there are several statuses that the Case will go through prior to closure.
 ### Status Definitions:

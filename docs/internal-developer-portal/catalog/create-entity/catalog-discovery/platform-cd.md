@@ -32,7 +32,7 @@ Platform Integration synchronizes your entire Harness Platform hierarchy into th
 - **Read-only entities** - Imported entities cannot be deleted from the catalog
 - **Continuous sync** - Keeps catalog entities up-to-date with Platform changes
 
-## Enabling Platform Integration
+## Enable platform integration
 
 To enable Platform Integration:
 
@@ -44,16 +44,16 @@ To enable Platform Integration:
 <DocImage path={require('./static/enable-pl-int.png')} alt="Enable Platform Integration" title="Click to view full size image" />
 
 :::info
-Once you import entities using Platform Integration, you won't be able to delete them from the catalog. They are managed by the Platform Integration sync process.
+Once you import entities using Platform Integration, you will not be able to delete them from the catalog. They are managed by the Platform Integration sync process.
 :::
 
 After enabling, all scope-level entities (accounts, organizations, and projects) from the Harness Platform will be automatically imported into the IDP catalog.
 
-## Viewing Imported Entities
+## View imported entities
 
 Once the import is complete, you can view all imported entities in two ways:
 
-#### From Platform Integration Page
+#### From platform integration page
 
 Navigate to **Configure** → **Integrations** → **Platform Integration** to view the imported entities table:
 
@@ -62,13 +62,13 @@ Navigate to **Configure** → **Integrations** → **Platform Integration** to v
 
 Clicking on an entity in this table will navigate you to the IDP catalog entity details page.
 
-#### From IDP Catalog
+#### From IDP catalog
 
 Navigate to **Catalog** and filter by **Kind: hierarchy** to view all hierarchical entities. You can then select the specific type (account, organization, or project) to view entities at that level.
 
 <DocImage path={require('./static/hierarchy.png')} alt="Hierarchy entities" title="Click to view full size image" />
 
-## Hierarchy Entity Structure
+## Hierarchy entity structure
 
 Platform Integration creates entities with `Kind: hierarchy`, which represents the organizational structure of your Harness Platform. These entities have different types based on their level in the hierarchy:
 
@@ -125,18 +125,18 @@ When you view a project entity:
 </TabItem>
 </Tabs>
 
-## Customizing Hierarchy Entity Views
+## Customize hierarchy entity views
 
 Beyond the default hierarchical relationships, you can customize the Overview tab of hierarchy entities to display additional metrics and insights using **Aggregation Rules** and **Layout Configuration**.
 
 <DocImage path={require('./static/layout.png')} alt="Layout" title="Click to view full size image" />
 
-#### What You Can Add
+#### What you can add
 
 - **Stats Cards** - Display aggregated metrics from child entities (e.g., average test coverage, deployment frequency)
 - **Aggregation Tables** - Show breakdowns of metrics with individual values from child entities
 
-#### How It Works
+#### How it works
 
 1. **Create Aggregation Rules** - Define how to roll up metrics from lower-level entities (e.g., from components to projects, from projects to organizations)
 2. **Configure Layouts** - Add stats cards and tables to display the aggregated metrics on hierarchy entities
@@ -146,7 +146,7 @@ Beyond the default hierarchical relationships, you can customize the Overview ta
 
 For example, you can aggregate DORA metrics from service components to project entities, then roll up test coverage from projects to organizations, and display these as cards on the Overview tab.
 
-## Next Steps
+## Next steps
 
 - Learn about [Aggregation Rules](/docs/internal-developer-portal/catalog/aggregation-rules) to roll up metrics across hierarchy levels
 - Explore [Layout Configuration](/docs/internal-developer-portal/layout-and-appearance/catalog) to customize hierarchy entity views

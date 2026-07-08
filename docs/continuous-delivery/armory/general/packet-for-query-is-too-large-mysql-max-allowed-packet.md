@@ -1,7 +1,7 @@
 ---
 title: Packet for query is too large - MySQL (max_allowed_packet)
 redirect_from:
-  - /docs/continuous-delivery/armory/general/packet-for-query-is-too-largemysql-max_allowed_packet
+  - /docs/continuous-delivery/armory/general/packet-for-query-is-too-large---mysql-max_allowed_packet
 ---
 
 ## Issue

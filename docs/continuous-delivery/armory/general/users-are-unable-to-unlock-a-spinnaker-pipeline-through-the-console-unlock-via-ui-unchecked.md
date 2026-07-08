@@ -1,7 +1,7 @@
 ---
 title: Users are Unable to Unlock a Spinnaker Pipeline through the Console - Unlock via UI unchecked
 redirect_from:
-  - /docs/continuous-delivery/armory/general/users-are-unable-to-unlock-a-spinnaker-pipeline-through-the-consoleunlock-via-ui-unchecked
+  - /docs/continuous-delivery/armory/general/users-are-unable-to-unlock-a-spinnaker-pipeline-through-the-console---unlock-via-ui-unchecked
 ---
 
 ## Issue

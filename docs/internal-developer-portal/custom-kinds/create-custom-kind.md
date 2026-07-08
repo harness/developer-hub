@@ -9,7 +9,7 @@ sidebar_position: 2
 Custom Entity Kinds are managed from the **Configure** section by the Admin. Navigate to **Configure** → **Custom Kinds** in the left sidebar.
 :::
 
-## Navigate to Custom Entity Kinds
+## Navigate to custom entity kinds
 
 1. In Harness, open the **Internal Developer Portal**.
 
@@ -26,7 +26,7 @@ Custom Entity Kinds are managed from the **Configure** section by the Admin. Nav
 
 ---
 
-## Configure the Kind
+## Configure the kind
 
 The **Configuration** section captures the kind's identity.
 
@@ -44,7 +44,7 @@ The **Configuration** section captures the kind's identity.
 3. Under **Icon**, a default icon is pre-selected. Click **Change Icon** to open the icon picker and select a different one.
 
 
-### Define the Schema
+### Define the schema
 
 The **Schema** section defines the structure and validation rules for entities of this kind. It uses [JSON Schema (Draft-07)](https://json-schema.org/specification-links#draft-7).
 
@@ -81,7 +81,7 @@ For example, to add a `tier` property to `metadata` and make it mandatory, updat
 
 ---
 
-## Validate and Create
+## Validate and create
 
 1. Once you have configured the schema, click **Validate Schema**.
 
@@ -94,7 +94,7 @@ For example, to add a `tier` property to `metadata` and make it mandatory, updat
 
 ---
 
-## Next Steps
+## Next steps
 
 * [Configure a layout or update the schema](./manage-custom-kind.md)
 * [Create entities of your new custom kind](./create-entities.md)

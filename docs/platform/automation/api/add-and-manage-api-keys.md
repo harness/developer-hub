@@ -11,6 +11,7 @@ redirect_from:
   - /docs/platform/automation/api/add-and-manage-api-keys
 ---
 
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import TokenExpiry from './static/token-expiry.png';

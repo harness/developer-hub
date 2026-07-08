@@ -6,7 +6,7 @@ redirect_from:
   - /docs/internal-developer-portal/flows/workflows-tutorials/add-docs-for-components
 ---
 
-## How to add the documentation setup to your Workflows
+## How to add the documentation setup to your workflows
 
 The purpose of this how-to guide is to walk you through how to add the required configuration and some default markdown files to your new Workflows. You can use the [react-ssr-workflow](https://github.com/backstage/software-templates/tree/main/scaffolder-templates/react-ssr-template) as a reference when walking through the steps.
 

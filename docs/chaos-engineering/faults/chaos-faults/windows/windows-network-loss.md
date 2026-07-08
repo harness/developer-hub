@@ -1,153 +1,158 @@
 ---
 id: windows-network-loss
-title: Windows Network Loss
+title: Windows network loss
+sidebar_label: Windows Network Loss
+description: Drop a configurable percentage of egress packets from a Windows VM so you can test how the workload behaves when packet loss spikes.
+keywords:
+  - chaos engineering
+  - windows network loss
+  - windows fault
+  - packet loss
+tags:
+  - chaos-engineering
+  - windows-faults
+redirect_from:
+- /docs/chaos-engineering/technical-reference/chaos-faults/windows/windows-network-loss
+- /docs/chaos-engineering/chaos-faults/windows/windows-network-loss
+- /docs/chaos-engineering/faults/chaos-faults/vmware/windows/vmware-windows-network-loss
+- /docs/chaos-engineering/chaos-faults/vmware/windows/vmware-windows-network-loss
 ---
 
-Windows network loss causes network packet loss on Windows VM for the target hosts or IP addresses using [Clumsy](https://jagt.github.io/clumsy/). It checks the performance of the services running on the Windows VMs after the disrupted network loss conditions.
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-![Windows Network Loss](./static/images/windows-network-loss.png)
+Windows network loss is a Windows chaos fault that drops `NETWORK_PACKET_LOSS_PERCENTAGE` percent of egress packets from the target Windows VM to destinations listed in `DESTINATION_HOSTS`/`DESTINATION_IPS` on ports `DESTINATION_PORTS` and protocols `NETWORK_PROTOCOLS` for `DURATION`, then removes the filter. The fault runs through the Windows chaos agent installed as a service on the target VM. Use the `NETWORK_WHITELIST_*` tunables to spare specific destinations from the loss.
 
-:::tip
-When Clumsy is downloaded, the path is exported which is used while executing the experiment. 
+Use this fault to test how a workload on a Windows VM behaves when packet loss spikes: whether TCP retransmits stay within the SLA, whether application-layer retries recover correctly, and whether monitoring detects the regression within the alerting SLA.
+
+:::info Run your first experiment
+If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
 :::
+
+---
 
 ## Use cases
 
-Windows network loss:
-- Simulates issues within the host network (or microservice) communication across services in different hosts.
-- Determines the impact of degradation while accessing a microservice.
-- Limits the impact (blast radius) to the traffic that you wish to test by specifying the IP addresses, if the VM stalls or gets corrupted while waiting endlessly for a packet.
-- Simulates degraded network with varied percentages of dropped packets between microservices.
-- Simulates loss of access to specific third party (or dependent) services (or components).
-- Simulates blackhole against traffic to a given availability zone, that is, failure simulation of availability zones.
-- Simulates network partitions (split-brain) between peer replicas for a stateful application.
+- **Lossy network:** When packet loss spikes, do TCP retransmits and application retries recover the request inside the SLA?
+- **Cluster membership:** Does Windows Failover Cluster stay healthy when heartbeats lose a percentage of packets?
+- **Real-time workloads:** Does media or voice quality degrade gracefully under loss?
+
+---
 
 ## Prerequisites
-- Ensure that the [prerequisites](/docs/chaos-engineering/faults/chaos-faults/windows/prerequisites) are fulfilled before executing the experiment.
-- Verify that [Clumsy](https://app.harness.io/public/shared/tools/chaos/windows/clumsy-0.3-win64-a.zip) is installed on the Windows VM.
 
-### Mandatory tunables
+- **Windows chaos infrastructure:** Install the chaos agent on the target VM. Go to [Windows requirements and security considerations](/docs/chaos-engineering/faults/chaos-faults/windows/windows-chaos-permissions).
+- **Administrator privileges:** Network loss is an Advanced fault and requires the agent to run as administrator.
 
-   <table>
-      <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> NETWORK_PACKET_LOSS_PERCENTAGE </td>
-        <td> The percentage of data packets lost during transmission. </td>
-        <td> For example, 100. For more information, go to <a href="#network-packet-loss"> network packet loss. </a></td>
-      </tr>
-      <tr>
-          <td> DESTINATION_HOSTS </td>
-          <td> DNS or FQDN names of services whose access is affected. You can specify multiple inputs as comma-separated values. </td>
-          <td> For example, "abc.com,github.com". It is mutually exclusive with <code>DESTINATION_IPS</code> variable. For more information, go to <a href="#destination-hosts"> destination hosts. </a></td>
-      </tr>
-      <tr>
-        <td> DESTINATION_IPS </td>
-        <td> IP addresses of the target destination services. You can specify multiple inputs as comma-separated values.</td>
-        <td> It is mutually exclusive with <code>DESTINATION_HOSTS</code> variable. For example, '0.8.0.8,192.168.5.6'. For more information, go to <a href="#destination-ips"> destination IPs. </a></td>
-      </tr>
-    </table>
+---
 
-### Optional tunables
-   <table>
-      <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> DURATION </td>
-        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
-        <td> Default: 60s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
-      </tr>
-      <tr>
-        <td> RAMP_TIME </td>
-        <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
-      </tr>
-    </table>
+## Supported environments
 
-### Network packet loss
+| Platform | Support status |
+| --- | --- |
+| Windows Server VMs with the Windows chaos agent installed | Supported |
+| Linux VMs | Not supported (use [VMware network loss](/docs/chaos-engineering/faults/chaos-faults/vmware/linux/vmware-network-loss)) |
 
-The `NETWORK_PACKET_LOSS_PERCENTAGE` environment variable specifies the percentage of data packets lost during transmission.
+---
 
-Use the following example to specify network packet loss:
+## Permissions required
 
-[embedmd]:# (./static/manifests/windows-network-loss/network-packet-loss.yaml yaml)
-```yaml
-apiVersion: litmuschaos.io/v1alpha1
-kind: MachineChaosExperiment
-metadata:
-  name: windows-network-loss
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    infraType: windows
-    steps:
-      - - name: windows-network-loss
-    tasks:
-    - definition:
-        chaos:
-          env:
-            - name: NETWORK_PACKET_LOSS_PERCENTAGE
-              value: "100"
-```
+This fault is classified as **Advanced** and requires the chaos agent to run as administrator on the target VM.
 
-### Destination hosts
-The `DESTINATION_HOSTS` environment variable specifies the destination hosts to induce network loss on the target Windows VM. You can provide multiple values using comma-separated list. 
-`DESTINATION_HOSTS` and `DESTINATION_IPS` environment variables are mutually exclusive.
+---
 
-Use the following example to specify destination hosts:
+## Fault tunables
 
-[embedmd]:# (./static/manifests/windows-network-loss/destination-hosts.yaml yaml)
-```yaml
-apiVersion: litmuschaos.io/v1alpha1
-kind: MachineChaosExperiment
-metadata:
-  name: windows-network-loss
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    infraType: windows
-    steps:
-      - - name: windows-network-loss
-    tasks:
-    - definition:
-        chaos:
-          env:
-            - name: DESTINATION_HOSTS
-              value: "aws.amazon.com,github.com"
-```
+**Chaos parameters**
 
-### Destination IPS
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `DURATION` | Total duration of the fault as a Go duration string (for example `30s`). | `30s` |
+| `NETWORK_PACKET_LOSS_PERCENTAGE` | Percentage of egress packets to drop (0-100). | `100` |
+| `DESTINATION_HOSTS` | Comma-separated destination hostnames. | `""` |
+| `DESTINATION_IPS` | Comma-separated destination IPs/CIDRs. | `""` |
+| `DESTINATION_PORTS` | Comma-separated destination ports. | `""` |
+| `NETWORK_PROTOCOLS` | Comma-separated protocols (`tcp`, `udp`, `icmp`). | `""` |
+| `NETWORK_WHITELIST_DESTINATION_HOSTS` | Hostnames excluded from loss. | `""` |
+| `NETWORK_WHITELIST_DESTINATION_IPS` | IPs/CIDRs excluded from loss. | `""` |
+| `NETWORK_WHITELIST_DESTINATION_PORTS` | Ports excluded from loss. | `""` |
+| `RAMP_TIME` | Wait period in seconds before and after the fault. | `0` |
 
-The `DESTINATION_IPS` environment variable specifies the IP addresses of target destination services. You can specify multiple inputs as comma-separated values. 
-`DESTINATION_IPS` and `DESTINATION_HOSTS` environment variables are mutually exclusive.
+Tunables that apply to every fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
 
-Use the following example to specify destination IPS:
+---
 
-[embedmd]:# (./static/manifests/windows-network-loss/destination-ips.yaml yaml)
-```yaml
-apiVersion: litmuschaos.io/v1alpha1
-kind: MachineChaosExperiment
-metadata:
-  name: windows-network-loss
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    infraType: windows
-    steps:
-      - - name: windows-network-loss
-    tasks:
-    - definition:
-        chaos:
-          env:
-            - name: DESTINATION_IPS
-              value: '0.8.0.8,192.168.5.6'
-```
+## Fault execution in brief
+
+The Windows chaos agent on the target VM installs a network filter that drops `NETWORK_PACKET_LOSS_PERCENTAGE` percent of egress packets matching the destination/port/protocol filters (minus the whitelist) for `DURATION`, then removes the filter.
+
+---
+
+## Expected behavior during fault execution
+
+- A configurable share of egress packets are dropped.
+- TCP retransmits rise; throughput drops.
+- Application-layer error rates may rise; retry budgets may be consumed.
+- After the duration ends, the filter is removed and packet loss returns to baseline.
+
+:::info When the fault ends
+The chaos agent removes the network filter. Packet loss returns to baseline within seconds.
+:::
+
+### Signals to watch
+
+- **Connectivity:** Use a [command probe](/docs/resilience-testing/chaos-testing/probes/command-probe) running `Test-NetConnection <host> -InformationLevel Detailed`.
+- **Workload:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) and assert error budget is respected.
+
+---
+
+## Verify the fault execution effect
+
+1. **Ping a target host from the VM during the chaos window.**
+
+   ```powershell
+   ping <DESTINATION_HOSTS_entry> -n 100
+   ```
+
+   Loss percentage should match `NETWORK_PACKET_LOSS_PERCENTAGE`.
+
+2. **Run a quick HTTP call from a peer machine.**
+
+   Error rate should reflect the loss.
+
+---
+
+## Recovery and cleanup
+
+- **End of duration:** The chaos agent removes the filter.
+- **Abort:** Stopping the experiment also removes the filter.
+- **Manual recovery:** Restart the chaos agent service if filters survive.
+
+---
+
+## Limitations
+
+- **Egress only:** The rule affects egress packets only.
+- **Administrator required:** This is an Advanced fault and requires the agent to run as administrator.
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="Windows network loss has no observable effect in Harness Chaos Engineering"
+  mode="docs"
+  fallback="Verify DESTINATION_HOSTS or DESTINATION_IPS match the traffic you are measuring. Confirm the agent is running as administrator. If the workload uses a proxy or VPN, the rule may not match the real egress path."
+/>
+
+<Troubleshoot
+  issue="Windows network loss fails with access denied"
+  mode="docs"
+  fallback="The chaos agent must run as administrator to install network filters. Reinstall the agent as administrator and retry."
+/>
+
+---
+
+## Related faults
+
+- [Windows network latency](/docs/chaos-engineering/faults/chaos-faults/windows/windows-network-latency): Add latency instead of dropping packets.
+- [Windows blackhole chaos](/docs/chaos-engineering/faults/chaos-faults/windows/windows-blackhole-chaos): Block traffic entirely instead of dropping a percentage.

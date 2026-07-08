@@ -4,6 +4,7 @@ description: Test your manifests before deployment.
 sidebar_position: 9
 ---
 
+
 This topic discusses how to set up the Dry Run step for a Kubernetes deployment.
 
 The Dry Run step fetches the Kubernetes manifests or Helm charts in a stage and performs a dry run of those resources. This is the same as running a `kubectl apply --filename=manifests.yaml --dry-run`.

@@ -1,7 +1,7 @@
 ---
 title: GCP- Exception ( Wait For Server Group Disabled ) - Error while querying target pool instance health
 redirect_from:
-  - /docs/continuous-delivery/armory/general/gcp--exception--wait-for-server-group-disabled-error-while-querying-target-pool-instance-health
+  - /docs/continuous-delivery/armory/general/gcp--exception--wait-for-server-group-disabled----error-while-querying-target-pool-instance-health
 ---
 
 ## Issue

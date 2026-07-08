@@ -5,6 +5,7 @@ redirect_from:
   -  /kb/continuous-delivery/articles/Linear.app-with-Custom%20Approval
 ---
 
+
 Linear.app is a powerful project management tool designed to streamline collaboration and enhance productivity. Offering a sleek and intuitive interface, Linear.app empowers teams to organize tasks, track progress, and prioritise projects seamlessly. With its emphasis on simplicity and flexibility, Linear.app provides a centralised hub for teams to coordinate efforts, making it an ideal solution for harnessing the full potential of linear workflows.
 
 Despite the absence of a native integration, Harness excels in seamlessly integrating with Linear, showcasing its adaptability and customisation capabilities. A standout feature is Harness's ability to create custom approval steps, leveraging the robust functionality of Linear's GraphQL API. This allows for tailored checks on the status of created issues, enabling the smooth and automated orchestration of workflows. By harnessing these customisable capabilities, teams can enhance collaboration and efficiency, underscoring that even without a pre-built connection, Harness excels in crafting bespoke integrations with Linear.

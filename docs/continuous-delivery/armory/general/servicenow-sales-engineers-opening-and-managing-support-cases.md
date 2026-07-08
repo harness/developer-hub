@@ -1,8 +1,9 @@
 ---
 title: ServiceNow - Sales Engineers - Opening and Managing Support Cases
 redirect_from:
-  - /docs/continuous-delivery/armory/general/servicenowsales-engineersopening-and-managing-support-cases
+  - /docs/continuous-delivery/armory/general/servicenow---sales-engineers---opening-and-managing-support-cases
 ---
+
 
 For further information about Sales Engineers opening Support Cases, [please check out the slab doc](https://armory.slab.com/posts/sales-engineering-opening-service-now-cases-gqo9yxu5)
 ### Opening Cases on Behalf of Customers

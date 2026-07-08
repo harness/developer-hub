@@ -1,8 +1,9 @@
 ---
 title: ServiceNow - Navigation of the Backend Site
 redirect_from:
-  - /docs/continuous-delivery/armory/general/servicenownavigation-of-the-backend-site
+  - /docs/continuous-delivery/armory/general/servicenow---navigation-of-the-backend-site
 ---
+
 
 Sites in ServiceNow
 ServiceNow Navigation works with a front end and backend. For all Armory users, all that they will need to do is log in to the website at [https://support.armory.io](https://support.armory.io). To reach the backend, click on ```Home``` on the navigation bar. Non Armory users, will only be brought back to the homepage, when clicking ```Home```

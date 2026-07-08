@@ -7,9 +7,8 @@ redirect_from:
   - /docs/internal-developer-portal/get-started/enable-a-new-plugin 
 ---
 
-## Introduction
 
-Plugins are often used to show additional metadata about a software component in the software catalog. For example, plugins show information about CI/CD pipelines, alerts, incidents, and project status. [Read More](https://developer.harness.io/docs/internal-developer-portal/plugins/overview)
+Plugins are often used to show additional metadata about a software component in the software catalog. For example, plugins show information about CI/CD pipelines, alerts, incidents, and project status. [Read More](/docs/internal-developer-portal/plugins/overview)
 
 Now that you have [populated your Catalog with Software Components](/docs/internal-developer-portal/get-started), you can use plugins to extend the functionality of Harness IDP and to customize IDP to suit your needs. This document provides step-by-step instructions on how to enable a plugin in Harness IDP.
 
@@ -24,13 +23,13 @@ Before you enable a new plugin, ensure that the following prerequisites are met:
 
 Harness IDP offers a set of curated plugins that you can enable. Here are some plugin types that you can consider:
 
-- A card in the software catalog. For example, [PagerDuty](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/pagerduty).
-- A plugin with a tab in the catalog. For example, [GitHub Insights](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/github-insights).
+- A card in the software catalog. For example, [PagerDuty](/docs/internal-developer-portal/plugins/available-plugins/pagerduty).
+- A plugin with a tab in the catalog. For example, [GitHub Insights](/docs/internal-developer-portal/plugins/available-plugins/github-insights).
 - A plugin with both cards and tabs (multiple components).
-- (Optional) A plugin with both UI and backend with server-side logic to fetch, process, and display data from external systems. For example, [Jenkins](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/jenkins) 
+- (Optional) A plugin with both UI and backend with server-side logic to fetch, process, and display data from external systems. For example, [Jenkins](/docs/internal-developer-portal/plugins/available-plugins/jenkins) 
 - A plugin with both UI and backend parts and a database. For example, a [TODO plugin](https://github.com/backstage/community-plugins/tree/main/workspaces/todo/plugins/todo#backstage-communityplugin-todo).
 - A full page plugin. For example, [GraphQL](https://github.com/backstage/community-plugins/tree/main/workspaces/graphiql/plugins/graphiql#backstage-communityplugin-graphiql).
-- [Custom Plugins](https://developer.harness.io/docs/category/custom-plugins): Users can create their own [frontend Backstage plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/build-a-frontend-plugin) and add them to the IDP.
+- [Custom Plugins](/docs/category/custom-plugins): Users can create their own [frontend Backstage plugins](/docs/internal-developer-portal/plugins/build-a-frontend-plugin) and add them to the IDP.
 
 These are just a few examples of plugin types available in Harness IDP. Depending on your requirements, you can choose the plugin type that best aligns with your needs and enables the desired functionality.
 
@@ -69,7 +68,7 @@ The **Plugin details** page is displayed. The page provides information such as 
 
 :::info
 
-The [layout management](https://developer.harness.io/docs/internal-developer-portal/layout-and-appearance/catalog) is handled by default once you enable the plugin. In case you want to modify the elements that are exported from the plugin according to your need you can **edit the layout** for **Service** by going to **Configure** → **Layout** → **Catalog Entities**. The elements might include cards, tabs, and pages.
+The [layout management](/docs/internal-developer-portal/layout-and-appearance/catalog) is handled by default once you enable the plugin. In case you want to modify the elements that are exported from the plugin according to your need you can **edit the layout** for **Service** by going to **Configure** → **Layout** → **Catalog Entities**. The elements might include cards, tabs, and pages.
 
 For instance, if the [PagerDuty](http://localhost:3001/docs/internal-developer-portal/plugins/available-plugins/pagerduty) plugin exports one tab, in order to be displayed in your catalog entity, the layout is updated with elements as displayed below.
 
@@ -79,7 +78,7 @@ For instance, if the [PagerDuty](http://localhost:3001/docs/internal-developer-p
 
 ### Update the `catalog.info.yaml`
 
-1. Once you've enabled the plugin, you need to add the corresponding `annotations` in your `catalog-info.yaml` file.
+1. Once you have enabled the plugin, you need to add the corresponding `annotations` in your `catalog-info.yaml` file.
 
 ```YAML
 apiVersion: backstage.io/v1alpha1

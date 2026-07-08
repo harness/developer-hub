@@ -1,8 +1,9 @@
 ---
 title: ServiceNow - Notifications on Case Comments
 redirect_from:
-  - /docs/continuous-delivery/armory/general/servicenownotifications-on-case-comments
+  - /docs/continuous-delivery/armory/general/servicenow---notifications-on-case-comments
 ---
+
 
 Armory Technical Support Engineers receive notifications on case updates based on a workflow designed to send DMs to the Support Engineers.  The following explains how to manage the notifications and what the icons mean 
 If the TSE receives a Slack DM from the Slackbot with icon  , it will be a full notification with comment information because it came from the customer

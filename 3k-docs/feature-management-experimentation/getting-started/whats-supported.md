@@ -5,7 +5,7 @@ sidebar_label: What's supported
 sidebar_position: 1
 ---
 
-import Fme from '@site/docs/feature-management-experimentation/getting-started/whats-supported.md';
+import Fme from '@site/docs/feature-management-experimentation/whats-supported.md';
 
 <Fme />
 

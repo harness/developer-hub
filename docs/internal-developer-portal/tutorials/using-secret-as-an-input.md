@@ -10,7 +10,7 @@ redirect_from:
 
 Sometimes, as a platform engineer, you might want your developers to enter their credentials when using a Workflow in IDP. This is useful when, for example, you want to use developers' GitHub credentials in a pipeline and create a repository on their behalf. This is a good approach because it ensures that developers create repositories that they can access and that you do not have to provide a superuser token for such tasks. This tutorial explains how you can configure such a workflow and the corresponding pipeline.
 
-## Prerequisites
+## Before you begin
 
 * Make sure that you have created a [basic service onboarding pipeline](/docs/internal-developer-portal/tutorials/service-onboarding-pipeline). 
 * All account users who want to trigger pipelines and create secrets should have access to the project that contains the service onboarding pipeline.
@@ -30,7 +30,7 @@ Use the following workflow to update the `workflow.yaml` file that you registere
 3. Use the secret ID to trigger the Harness pipeline.
 4. Delete the secret after the pipeline is triggered.
 
-### 1. Create an input field in the Workflow
+### 1. Create an input field in the workflow
 
 Inside the `spec.parameters[0].properties` field of your `workflow.yaml` file, add the following property. This property generates the input field in which users can enter their credentials:
 

@@ -7,7 +7,7 @@ sidebar_label: Versioning
 
 Proper versioning of blueprints and templates is essential for systematically rolling out improvements across your development lifecycle. Version control enables you to track changes resulting from organizational policy updates, migrations, or patch fixes. Harness IDP Environment Management provides comprehensive versioning capabilities, allowing you to introduce new blueprint versions, deprecate outdated ones, and empower developers to select from active versions when creating environments.
 
-## Understanding blueprint versioning
+## Understand blueprint versioning
 
 Blueprint versioning provides a structured approach to managing infrastructure templates over time. Each version represents a specific configuration state, enabling teams to:
 
@@ -18,7 +18,7 @@ Blueprint versioning provides a structured approach to managing infrastructure t
 
 <!-- When you publish a new stable version, environments running on older versions are automatically notified, encouraging teams to adopt the latest improvements whilst maintaining control over when updates occur. -->
 
-## Creating a new blueprint version
+## Create a new blueprint version
 
 When you create a new blueprint version, environments running on older versions receive notifications about the availability of updates, prompting teams to consider upgrading.
 
@@ -40,15 +40,15 @@ To create a new version:
 Whenever a new stable version is published, all environments running older versions of that blueprint receive notifications, ensuring teams remain informed about available updates.
 ::: -->
 
-## Editing an existing blueprint version
+## Edit an existing blueprint version
 
 You can modify any existing blueprint version by following the steps above (1-3) and selecting **Save** to update the version in place. This approach is useful for correcting minor issues without creating a new version number.
 
-## Viewing all blueprint versions
+## View all blueprint versions
 
 All versions of a blueprint are accessible through the **Versions** tab within each blueprint view. This centralized location provides an overview of the version history, including version numbers, descriptions, stability status, and creation dates.
 
-## Deprecating or deleting blueprint versions
+## Deprecate or delete blueprint versions
 
 Version lifecycle management allows you to control which versions remain available for new environment creation:
 
@@ -61,7 +61,7 @@ To deprecate or delete a version:
 2. Locate the version you wish to manage
 3. Open the **Actions** menu and choose either **Deprecate** or **Delete**
 
-## Comparing blueprint versions
+## Compare blueprint versions
 
 <DocImage
   path={require("./static/compare-version.png")}
@@ -78,7 +78,7 @@ To compare versions:
 
 The comparison view highlights differences in the YAML configuration, helping you make informed decisions about version adoption.
 
-## Creating environments with specific blueprint versions
+## Create environments with specific blueprint versions
 
 When creating a new environment, you can select any active (non-deprecated) version of a blueprint, providing flexibility to use either the latest stable version or a specific earlier version that meets your requirements.
 

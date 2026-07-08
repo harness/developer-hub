@@ -257,3 +257,25 @@
   .categoryColumns { display: none; }
   .mobileOnly { display: block; }
 }
+
+@keyframes subgroupPulse {
+  0%, 100% { background: rgba(0, 173, 228, 0.05); }
+  50%       { background: rgba(0, 173, 228, 0.15); }
+}
+
+.subgroupDivider {
+  list-style: none;
+  margin: 8px 0 4px;
+  padding: 5px 16px;
+  animation: subgroupPulse 3s ease-in-out infinite;
+  text-align: center;
+  &:first-child { margin-top: -8px; }
+}
+
+.subgroupLabel {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--ifm-font-color-base);
+}

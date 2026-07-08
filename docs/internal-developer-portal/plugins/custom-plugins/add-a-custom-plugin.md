@@ -8,13 +8,12 @@ sidebar_position: 2
 
 :::info
 
-This feature is in **BETA** and is available behind the feature flag `IDP_ENABLE_CUSTOM_PLUGINS`. If you want to try out this feature, please reach out to the IDP team. We would love to work with you and take feedback.
+This feature is in **BETA** and is available behind the feature flag `IDP_ENABLE_CUSTOM_PLUGINS`. If you want to try out this feature, reach out to the IDP team. We would love to work with you and take feedback.
 
 :::
 
 <DocVideo src="https://www.youtube.com/embed/6ab9xQY7kSE?si=zbG2ZUnZZQNJrlfS"/>
 
-## Introduction
 
 In IDP we allow addition of, backstage frontend plugins, created by you as a custom plugin. Following are the step-by-step instructions to add your custom plugins in IDP.
 
@@ -26,12 +25,12 @@ In IDP we allow addition of, backstage frontend plugins, created by you as a cus
 
 :::info
 
-As the feature is in beta we don't have proper error handling in place yet, so for all the steps below please make sure all your entries are correct for the plugin.
+As the feature is in beta we do not have proper error handling in place yet, so for all the steps below make sure all your entries are correct for the plugin.
 
 :::
 
 
-## Add/Upload a New Plugin
+## Add/Upload a new plugin
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -48,7 +47,7 @@ eg,. `https://www.npmjs.com/package/@parsifal-m/plugin-dev-quotes-homepage`, `ht
 </TabItem>
 <TabItem value="Upload Zip file">
 
-4. You can as well pack your backstage frontend plugins using **[yarn pack](https://classic.yarnpkg.com/lang/en/docs/cli/pack/#toc-yarn-pack)** and upload the resulting `package.tgz` file
+4. You can as well pack your backstage frontend plugins using **[yarn pack](https://classic.yarnpkg.com/lang/en/docs/cli/pack#toc-yarn-pack)** and upload the resulting `package.tgz` file
 
 :::warning
 
@@ -61,7 +60,7 @@ Only files packaged using `yarn pack` is to be used while uploading the zip file
 <details open>
 <summary>How to create and pack your front end Plugin</summary>
     
-1. Install backstage following this [documentation](https://backstage.io/docs/getting-started/#create-your-backstage-app) 
+1. Install backstage following this [documentation](https://backstage.io/docs/getting-started#create-your-backstage-app) 
 2. Give your app a name.
 3. Now `cd <your-app-name>`.
 4. Now create a scaffolder for frontend plugin using `yarn new --select plugin`
@@ -94,9 +93,9 @@ new-plugin/
 
 6. Follow the steps mentioned [here](https://backstage.io/docs/plugins/plugin-development) to build on top of it. 
 7. Once you have the plugin ready, run `yarn tsc` at the root of the backstage app.
-8. **Now cd into your plugin directory and run `yarn build` followed by `yarn pack`. You'll have a `package.tgz` file generated, this file could be used to upload your plugin into IDP.** 
+8. **Now cd into your plugin directory and run `yarn build` followed by `yarn pack`. You will have a `package.tgz` file generated, this file could be used to upload your plugin into IDP.** 
 
-Make sure you have the `dist` folder generated after you do `yarn pack` without that the package can't be read by IDP when uploaded. The `yarn pack` command looks something like this.
+Make sure you have the `dist` folder generated after you do `yarn pack` without that the package cannot be read by IDP when uploaded. The `yarn pack` command looks something like this.
 
 ```sh
 dev % yarn build
@@ -149,16 +148,16 @@ new-plugin/
 </TabItem>
 </Tabs>
 
-## Plugin Metadata
+## Plugin metadata
 
 5. Now Click Next and start adding the **Plugin Metadata**. You have to fill the following fields 
     
     - **Plugin Name** : Add a name for your Plugin
-    - **Package name** : This will be same as your plugin package present in your plugin's `package.json` file. Make sure the name is exactly similar to what's mentioned in the `package.json` including `@`, e.g.: `@parsifal-m/plugin-dev-quotes-homepage`
+    - **Package name** : This will be same as your plugin package present in your plugin's `package.json` file. Make sure the name is exactly similar to what is mentioned in the `package.json` including `@`, e.g.: `@parsifal-m/plugin-dev-quotes-homepage`
     - **Description** : Add an apt description for your plugin, especially the function of the plugin.
     - **Category** : Add an functional category for your plugin like `Monitoring`, `Observability`, `CI/CD` etc.
-    - **Created By** : Add the [User Group](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/#built-in-user-groups) you belong to from the dropdown. 
-    - **Plugin applies to entity** : Add the software components to which your plugin applies to usually it's **Service**. 
+    - **Created By** : Add the [User Group](/docs/platform/role-based-access-control/add-user-groups#built-in-user-groups) you belong to from the dropdown. 
+    - **Plugin applies to entity** : Add the software components to which your plugin applies to usually it is **Service**. 
     - **Add Plugin Screenshots (optional)** : Not available yet
     - **Additional fields** : Fill it as shown in the image below. 
     ![](./static/additional-fields.png)
@@ -171,18 +170,18 @@ new-plugin/
 
 ![](./static//layout.png)
 
-- **Card**: Here's an [example](https://github.com/harness/backstage-plugins/blob/cd70f9c03ed52917d8f409c2ceb7b7fc874c97de/packages/app/src/components/catalog/EntityPage.tsx#L192) `EntityLinksCard` of Links card on **Overview** page.
+- **Card**: Here is an [example](https://github.com/harness/backstage-plugins/blob/cd70f9c03ed52917d8f409c2ceb7b7fc874c97de/packages/app/src/components/catalog/EntityPage.tsx#L192) `EntityLinksCard` of Links card on **Overview** page.
 
 ![](./static/links-card.png)
 
-- **Tab**: Here's an [example](https://github.com/harness/backstage-plugins/blob/cd70f9c03ed52917d8f409c2ceb7b7fc874c97de/packages/app/src/components/catalog/EntityPage.tsx#L87) `EntityHarnessCiCdContent` of Harness CI/CD tab. 
+- **Tab**: Here is an [example](https://github.com/harness/backstage-plugins/blob/cd70f9c03ed52917d8f409c2ceb7b7fc874c97de/packages/app/src/components/catalog/EntityPage.tsx#L87) `EntityHarnessCiCdContent` of Harness CI/CD tab. 
 
 ![](./static/ci-cd-tab.png)
 
-- **Menu Item in SideNav**: Here's an example of TODO plugin in side nav. 
+- **Menu Item in SideNav**: Here is an example of TODO plugin in side nav. 
 ![](./static/to-do-plugin.png)
 
-- **Conditional**: Here's an [example](https://github.com/harness/backstage-plugins/blob/cd70f9c03ed52917d8f409c2ceb7b7fc874c97de/packages/app/src/components/catalog/EntityPage.tsx#L86C33-L86C33) of the Harness CI/CD plugin, also conditional is required if you want to check for the annotations in `catalog-info.yaml` in case of absence of adequate annotation required the plugin won't show up for the particular software component. 
+- **Conditional**: Here is an [example](https://github.com/harness/backstage-plugins/blob/cd70f9c03ed52917d8f409c2ceb7b7fc874c97de/packages/app/src/components/catalog/EntityPage.tsx#L86C33-L86C33) of the Harness CI/CD plugin, also conditional is required if you want to check for the annotations in `catalog-info.yaml` in case of absence of adequate annotation required the plugin will not show up for the particular software component. 
 
 ## Configurations
 
@@ -192,7 +191,7 @@ Due to Content Security Policy (CSP) enforcement, direct calls to external endpo
 
 7. Now Click Next and go to the Configurations Page by default configuration is disabled.
 
-8. If your plugin doesn't require any configuration settings like **Proxy** or authentication for **API** you can go ahead and enable the plugin directly. 
+8. If your plugin does not require any configuration settings like **Proxy** or authentication for **API** you can go ahead and enable the plugin directly. 
 
 9. If you require `app-config.yaml` for your plugin, then **enable configuration**. 
 
@@ -245,7 +244,7 @@ When a request is made to `https://idp.harness.io/<ACCOUNT_ID>/idp/api/proxy/git
 
 ![](./static/new-secret.png)
 
-12. You can as well access any private URLs/PORT if required by your plugin and that is behind any firewalls using [Harness Delegate](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/#install-a-delegate).
+12. You can as well access any private URLs/PORT if required by your plugin and that is behind any firewalls using [Harness Delegate](/docs/platform/delegates/delegate-concepts/delegate-overview#install-a-delegate).
 
 ![](./static/delegate.png)
 
@@ -287,7 +286,7 @@ page:
 ![](static/plugin-layout.png)
 
 
-## Edit/Delete Plugin
+## Edit/Delete plugin
 
 Once your Plugin is enabled you can find the plugin under Enabled Plugin tab as well as under Custom Plugin tab with `Enabled` tag, but you can edit or delete plugin only under custom plugins tab. Now click on the 3 dots at top of the Plugin card to edit or delete plugin. 
 

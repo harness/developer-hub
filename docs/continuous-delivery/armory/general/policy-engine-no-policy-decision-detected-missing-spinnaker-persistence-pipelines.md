@@ -1,7 +1,7 @@
 ---
 title: Policy Engine - No Policy Decision Detected, missing spinnaker.persistence.pipelines
 redirect_from:
-  - /docs/continuous-delivery/armory/general/policy-engineno-policy-decision-detected,-missing-spinnaker.persistence.pipelines
+  - /docs/continuous-delivery/armory/general/policy-engine---no-policy-decision-detected,-missing-spinnaker.persistence.pipelines
 ---
 
 ## Issue

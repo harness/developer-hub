@@ -9,7 +9,7 @@ unlisted: true
 This is relevant only to `IDP 1.0`; it won’t work with `IDP 2.0`.
 :::
 
-### Using the Catalog API
+### Use the catalog API
 
 Another effective approach is leveraging the catalog API. By running a custom script as shown in the example below, you can automate the registration of components, providing a more programmatic method for bulk registrations.
 

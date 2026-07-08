@@ -2,6 +2,7 @@
 title: How to Find the TAM/Account Executive/Sales Engineer/Solutions Architect for an Account
 ---
 
+
 You may need to contact the Technical Account Manager for any of the customers at Armory.  This can be because they are the official liaison for the company, or they have better visibility with the contacts in the company.
 
 To get the record of truth with regards to which TAM is servicing a customer first use Salesforce.  If all else fails, you can either contact @tams or go to the appropriate Slack Channel for the Company [+How are Armory’s Slack Channels Organized?](https://paper.dropbox.com/doc/71hfYqPYoBiyNRq9QMsic) 

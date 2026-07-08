@@ -1,148 +1,151 @@
 ---
 id: windows-network-corruption
-title: Windows Network Corruption
+title: Windows network corruption
+sidebar_label: Windows Network Corruption
+description: Corrupt a configurable percentage of egress packets from a Windows VM so you can test how the workload behaves when packets arrive damaged.
+keywords:
+  - chaos engineering
+  - windows network corruption
+  - windows fault
+  - packet corruption
+tags:
+  - chaos-engineering
+  - windows-faults
+redirect_from:
+- /docs/chaos-engineering/technical-reference/chaos-faults/windows/windows-network-corruption
+- /docs/chaos-engineering/chaos-faults/windows/windows-network-corruption
+- /docs/chaos-engineering/faults/chaos-faults/vmware/windows/vmware-windows-network-corruption
+- /docs/chaos-engineering/chaos-faults/vmware/windows/vmware-windows-network-corruption
 ---
 
-Windows Network Corruption corrupts network packets on Windows VMs for the target hosts using [Clumsy](https://jagt.github.io/clumsy/). It checks the performance of the application running on the Windows VMs when network packets are corrupted during transmission.
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-:::tip
-When Clumsy is downloaded, the path is exported and is used while executing the experiment. 
+Windows network corruption is a Windows chaos fault that corrupts `NETWORK_PACKET_CORRUPTION_PERCENTAGE` percent of egress packets from the target Windows VM to destinations listed in `DESTINATION_HOSTS`/`DESTINATION_IPS` on ports `DESTINATION_PORTS` and protocols `NETWORK_PROTOCOLS` for `DURATION`, then removes the filter. The fault runs through the Windows chaos agent installed as a service on the target VM. Use the `NETWORK_WHITELIST_*` tunables to spare specific destinations.
+
+Use this fault to test how a workload on a Windows VM behaves when packets are corrupted: whether TCP checksums catch the corruption, whether application retries recover, whether monitoring detects the regression within the alerting SLA, and whether on-call alerts fire correctly.
+
+:::info Run your first experiment
+If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
 :::
 
-![Windows Network Corruption](./static/images/windows-network-corruption.png)
+---
 
 ## Use cases
-Windows network corruption:
-- Determines the resilience of an application when a network corruption scenario is simulated on a Windows virtual machine.
-- Simulates the situation of network corruption on the application, which degrades their performance.
-- Helps verify the application's ability to handle network failures and its failover mechanisms.
+
+- **Corrupted packets on the wire:** When packet payloads are corrupted, does TCP detect the corruption and retransmit?
+- **UDP workloads:** Does the application detect and recover from corrupted UDP packets?
+- **Cluster heartbeat fragility:** Does cluster membership stay healthy when heartbeat packets are corrupted?
+
+---
 
 ## Prerequisites
-- Ensure that the [prerequisites](/docs/chaos-engineering/faults/chaos-faults/windows/prerequisites) are fulfilled before executing the experiment.
-- Verify that [Clumsy](https://app.harness.io/public/shared/tools/chaos/windows/clumsy-0.3-win64-a.zip) is installed on the Windows VM.
 
-### Mandatory tunables
+- **Windows chaos infrastructure:** Install the chaos agent on the target VM. Go to [Windows requirements and security considerations](/docs/chaos-engineering/faults/chaos-faults/windows/windows-chaos-permissions).
+- **Administrator privileges:** Network corruption is an Advanced fault and requires the agent to run as administrator.
 
-   <table>
-      <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> NETWORK_PACKET_CORRUPTION_PERCENTAGE </td>
-        <td> The percentage of packets corrupted during transmission. </td>
-        <td> For example, 100. For more information, go to <a href="#network-packet-corruption"> network packet corruption. </a></td>
-      </tr>
-      <tr>
-          <td> DESTINATION_HOSTS </td>
-          <td> DNS or FQDN names of services whose access is affected. You can specify multiple inputs as comma-separated values. </td>
-          <td>  `DESTINATION_HOSTS` and `DESTINATION_IPS` are mutually exclusive, which means you can specify one of the values at a given time. For example, "abc.com,github.com". For more information, go to <a href="#destination-hosts"> destination hosts. </a></td>
-      </tr>
-      <tr>
-        <td> DESTINATION_IPS </td>
-        <td> IP addresses of the target destination services. You can specify multiple inputs as comma-separated values. </td>
-        <td> `DESTINATION_HOSTS` and `DESTINATION_IPS` are mutually exclusive, which means you can specify one of the values at a given time. For more information, go to <a href="#destination-ips"> destination IPs. </a></td>
-      </tr>
-    </table>
+---
 
-### Optional tunables
-   <table>
-      <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> DURATION </td>
-        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
-        <td> Default: 60s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
-      </tr>
-      <tr>
-        <td> RAMP_TIME </td>
-        <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
-      </tr>
-    </table>
+## Supported environments
 
+| Platform | Support status |
+| --- | --- |
+| Windows Server VMs with the Windows chaos agent installed | Supported |
+| Linux VMs | Not supported (use [Linux network corruption](/docs/chaos-engineering/faults/chaos-faults/linux/linux-network-corruption)) |
 
-### Network packet corruption
+---
 
-The `NETWORK_PACKET_CORRUPTION_PERCENTAGE` environment variable specifies the percentage of packets corrupted during transmission.
+## Permissions required
 
-Use the following example to specify network packet corruption:
+This fault is classified as **Advanced** and requires the chaos agent to run as administrator on the target VM.
 
-[embedmd]:# (./static/manifests/windows-network-corruption/network-packet-corruption.yaml yaml)
-```yaml
-apiVersion: litmuschaos.io/v1alpha1
-kind: MachineChaosExperiment
-metadata:
-  name: windows-network-corruption
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    infraType: windows
-    steps:
-      - - name: windows-network-corruption
-    tasks:
-    - definition:
-        chaos:
-          env:
-            - name: NETWORK_PACKET_CORRUPTION_PERCENTAGE
-              value: "100"
-```
+---
 
-### Destination hosts
+## Fault tunables
 
-The `DESTINATION_HOSTS` environment variable specifies the destination hosts to induce latency on the target Windows VM.
+**Chaos parameters**
 
-Use the following example to specify destination hosts:
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `DURATION` | Total duration of the fault as a Go duration string (for example `30s`). | `30s` |
+| `NETWORK_PACKET_CORRUPTION_PERCENTAGE` | Percentage of egress packets to corrupt (0-100). | `100` |
+| `DESTINATION_HOSTS` | Comma-separated destination hostnames. | `""` |
+| `DESTINATION_IPS` | Comma-separated destination IPs/CIDRs. | `""` |
+| `DESTINATION_PORTS` | Comma-separated destination ports. | `""` |
+| `NETWORK_PROTOCOLS` | Comma-separated protocols (`tcp`, `udp`, `icmp`). | `""` |
+| `NETWORK_WHITELIST_DESTINATION_HOSTS` | Hostnames excluded from corruption. | `""` |
+| `NETWORK_WHITELIST_DESTINATION_IPS` | IPs/CIDRs excluded from corruption. | `""` |
+| `NETWORK_WHITELIST_DESTINATION_PORTS` | Ports excluded from corruption. | `""` |
+| `RAMP_TIME` | Wait period in seconds before and after the fault. | `0` |
 
-[embedmd]:# (./static/manifests/windows-network-corruption/destination-hosts.yaml yaml)
-```yaml
-apiVersion: litmuschaos.io/v1alpha1
-kind: MachineChaosExperiment
-metadata:
-  name: windows-network-corruption
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    infraType: windows
-    steps:
-      - - name: windows-network-corruption
-    tasks:
-    - definition:
-        chaos:
-          env:
-            - name: DESTINATION_HOSTS
-              value: "aws.amazon.com,github.com"
-```
+Tunables that apply to every fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
 
-### Destination IPs
+---
 
-The `DESTINATION_IPS` environment variable specifies the IP addresses of target destination services. You can specify multiple inputs as comma-separated values. `DESTINATION_IPS` and `DESTINATION_HOSTS` environment variables are mutually exclusive.
+## Fault execution in brief
 
-Use the following example to specify destination IPS:
+The Windows chaos agent on the target VM installs a network filter that corrupts `NETWORK_PACKET_CORRUPTION_PERCENTAGE` percent of egress packets matching the destination/port/protocol filters (minus the whitelist) for `DURATION`, then removes the filter.
 
-[embedmd]:# (./static/manifests/windows-network-corruption/destination-ips.yaml yaml)
-```yaml
-apiVersion: litmuschaos.io/v1alpha1
-kind: MachineChaosExperiment
-metadata:
-  name: windows-network-corruption
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-    infraType: windows
-    steps:
-      - - name: windows-network-corruption
-    tasks:
-    - definition:
-        chaos:
-          env:
-            - name: DESTINATION_IPS
-              value: '0.8.0.8,192.168.5.6'
-```
+---
+
+## Expected behavior during fault execution
+
+- A configurable share of egress packets have their payload corrupted.
+- TCP receivers detect bad checksums and discard the packets; retransmits follow.
+- UDP receivers either drop or process garbled payloads depending on the workload's checksum behavior.
+- After the duration ends, the filter is removed and traffic returns to baseline.
+
+:::info When the fault ends
+The chaos agent removes the network filter. Packet integrity returns to baseline within seconds.
+:::
+
+### Signals to watch
+
+- **TCP retransmits:** Use a [Prometheus probe](/docs/resilience-testing/chaos-testing/probes/apm-probes) on Windows Exporter `windows_net_*` TCP retransmit counters.
+- **Workload:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) and assert error budget is respected.
+
+---
+
+## Verify the fault execution effect
+
+1. **From a peer machine, observe TCP retransmits to the target VM during the chaos window.**
+
+   ```bash
+   tcpdump host <vm-ip> | grep retransmission
+   ```
+
+2. **Run a quick HTTP transfer from the VM.**
+
+   Throughput should drop because of retransmits.
+
+---
+
+## Recovery and cleanup
+
+- **End of duration:** The chaos agent removes the filter.
+- **Abort:** Stopping the experiment also removes the filter.
+- **Manual recovery:** Restart the chaos agent service if filters survive.
+
+---
+
+## Limitations
+
+- **Egress only:** The rule affects egress packets only.
+- **TCP often masks corruption:** TCP receivers discard corrupted packets and trigger retransmits, so the visible effect is throughput loss, not data corruption at the app layer.
+- **Administrator required:** This is an Advanced fault and requires the agent to run as administrator.
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="Windows network corruption has no observable effect in Harness Chaos Engineering"
+  mode="docs"
+  fallback="TCP recovers from corruption with retransmits, so the most visible signal is throughput drop. Verify with packet capture that retransmits are happening. For UDP workloads, the workload itself must detect and handle the corruption."
+/>
+
+---
+
+## Related faults
+
+- [Windows network latency](/docs/chaos-engineering/faults/chaos-faults/windows/windows-network-latency): Add latency instead of corrupting packets.
+- [Windows network loss](/docs/chaos-engineering/faults/chaos-faults/windows/windows-network-loss): Drop packets instead of corrupting them.

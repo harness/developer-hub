@@ -4,6 +4,7 @@ redirect_from:
   - /docs/continuous-delivery/armory/general/initiated-login-does-not-work-with-saml-2.0
 ---
 
+
 If you’ve set up SAML 2.0 authentication for your Spinnaker cluster and are able to login when your Identity Provider (iDP, ADFS/okta/etc.), but aren’t able to login when the Service Provider (SP, Spinnaker) initiates the login, try the following:y
 ```keytool -export -keystore saml.jks -alias saml -file spinnaker-saml.cer```
 Then import/configure the exported ```spinnaker-saml.cer``` in your iDP for the SAML application you created.

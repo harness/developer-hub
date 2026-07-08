@@ -1,7 +1,7 @@
 ---
 title: Splunk AMI Issues - IO WAIT Warning, Connection Lost/Splunk Crashed with Splunk Service
 redirect_from:
-  - /docs/continuous-delivery/armory/general/splunk-ami-issuesio-wait-warning,-connection-lost-splunk-crashed-with-splunk-service
+  - /docs/continuous-delivery/armory/general/splunk-ami-issues---io-wait-warning,-connection-lost-splunk-crashed-with-splunk-service
 ---
 
 ## Issue

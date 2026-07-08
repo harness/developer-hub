@@ -138,6 +138,35 @@ function FallbackImg({
   );
 }
 
+/* ----- shared tile renderer ----- */
+function ColTileItem({ item, baseUrl, moduleIconMap, colorMode }: {
+  item: CatItem;
+  baseUrl: string;
+  moduleIconMap: Map<string, string>;
+  colorMode: string;
+}) {
+  return (
+    <li className={styles.colTileItem}>
+      <Link to={item.href} className={styles.colTile} aria-label={`${item.name} documentation`}>
+        <div className={styles.colTileHead}>
+          <div className={styles.iconWrap} aria-hidden="true">
+            <FallbackImg
+              baseUrl={baseUrl}
+              candidates={buildIconCandidates(item, moduleIconMap, colorMode)}
+              className={styles.featureSvg}
+            />
+          </div>
+          <span className={styles.tileTitle}>{item.name}</span>
+          {item.badge && (
+            <span className={clsx(styles.badge, styles[`badge_${item.badge}`])}>{item.badge}</span>
+          )}
+        </div>
+        {item.description && <p className={styles.tileDescription}>{item.description}</p>}
+      </Link>
+    </li>
+  );
+}
+
 /* ----- main ----- */
 export default function CategoryGrid({
   categories,
@@ -178,41 +207,56 @@ export default function CategoryGrid({
                   )}
                 </summary>
                 <ul className={styles.tileList} role="list">
-                  {cat.items.map((item) => (
-                    <li key={item.name} className={styles.tileListItem}>
-                      <Link
-                        to={item.href}
-                        className={styles.tileRow}
-                        aria-label={`${item.name} documentation`}
-                      >
-                        <div className={styles.tileRowHead}>
-                          <div className={styles.iconWrap} aria-hidden="true">
-                            <FallbackImg
-                              baseUrl={baseUrl}
-                              candidates={buildIconCandidates(item, moduleIconMap, colorMode)}
-                              className={styles.featureSvg}
-                            />
-                          </div>
-                          <span className={styles.tileTitle}>{item.name}</span>
-                          {item.badge && (
-                            <span
-                              className={clsx(
-                                styles.badge,
-                                styles[`badge_${item.badge}`]
+                  {cat.subgroups ? (
+                    cat.subgroups.map((sg, index) => (
+                      <React.Fragment key={sg.subgroupTitle}>
+                        <li
+                          className={styles.subgroupDivider}
+                          role="presentation"
+                          style={{ animationDelay: `${index * 1}s` }}
+                        >
+                          <span className={styles.subgroupLabel}>{sg.subgroupTitle}</span>
+                        </li>
+                        {sg.items.map((item) => (
+                          <li key={item.name} className={styles.tileListItem}>
+                            <Link to={item.href} className={styles.tileRow} aria-label={`${item.name} documentation`}>
+                              <div className={styles.tileRowHead}>
+                                <div className={styles.iconWrap} aria-hidden="true">
+                                  <FallbackImg baseUrl={baseUrl} candidates={buildIconCandidates(item, moduleIconMap, colorMode)} className={styles.featureSvg} />
+                                </div>
+                                <span className={styles.tileTitle}>{item.name}</span>
+                                {item.badge && (
+                                  <span className={clsx(styles.badge, styles[`badge_${item.badge}`])}>{item.badge}</span>
+                                )}
+                              </div>
+                              {item.description && (
+                                <span className={styles.tileDescriptionMobile}>{item.description}</span>
                               )}
-                            >
-                              {item.badge}
-                            </span>
+                            </Link>
+                          </li>
+                        ))}
+                      </React.Fragment>
+                    ))
+                  ) : (
+                    (cat.items ?? []).map((item) => (
+                      <li key={item.name} className={styles.tileListItem}>
+                        <Link to={item.href} className={styles.tileRow} aria-label={`${item.name} documentation`}>
+                          <div className={styles.tileRowHead}>
+                            <div className={styles.iconWrap} aria-hidden="true">
+                              <FallbackImg baseUrl={baseUrl} candidates={buildIconCandidates(item, moduleIconMap, colorMode)} className={styles.featureSvg} />
+                            </div>
+                            <span className={styles.tileTitle}>{item.name}</span>
+                            {item.badge && (
+                              <span className={clsx(styles.badge, styles[`badge_${item.badge}`])}>{item.badge}</span>
+                            )}
+                          </div>
+                          {item.description && (
+                            <span className={styles.tileDescriptionMobile}>{item.description}</span>
                           )}
-                        </div>
-                        {item.description && (
-                          <span className={styles.tileDescriptionMobile}>
-                            {item.description}
-                          </span>
-                        )}
-                      </Link>
-                    </li>
-                  ))}
+                        </Link>
+                      </li>
+                    ))
+                  )}
                 </ul>
               </details>
             ))}
@@ -249,41 +293,26 @@ export default function CategoryGrid({
                 </header>
 
                 <ul className={styles.colTiles} role="list">
-                  {cat.items.map((item) => (
-                    <li key={item.name} className={styles.colTileItem}>
-                      <Link
-                        to={item.href}
-                        className={styles.colTile}
-                        aria-label={`${item.name} documentation`}
-                      >
-                        <div className={styles.colTileHead}>
-                          <div className={styles.iconWrap} aria-hidden="true">
-                            <FallbackImg
-                              baseUrl={baseUrl}
-                              candidates={buildIconCandidates(item, moduleIconMap, colorMode)}
-                              className={styles.featureSvg}
-                            />
-                          </div>
-                          <span className={styles.tileTitle}>{item.name}</span>
-                          {item.badge && (
-                            <span
-                              className={clsx(
-                                styles.badge,
-                                styles[`badge_${item.badge}`]
-                              )}
-                            >
-                              {item.badge}
-                            </span>
-                          )}
-                        </div>
-                        {item.description && (
-                          <p className={styles.tileDescription}>
-                            {item.description}
-                          </p>
-                        )}
-                      </Link>
-                    </li>
-                  ))}
+                  {cat.subgroups ? (
+                    cat.subgroups.map((sg, index) => (
+                      <React.Fragment key={sg.subgroupTitle}>
+                        <li
+                          className={styles.subgroupDivider}
+                          role="presentation"
+                          style={{ animationDelay: `${index * 1}s` }}
+                        >
+                          <span className={styles.subgroupLabel}>{sg.subgroupTitle}</span>
+                        </li>
+                        {sg.items.map((item) => (
+                          <ColTileItem key={item.name} item={item} baseUrl={baseUrl} moduleIconMap={moduleIconMap} colorMode={colorMode} />
+                        ))}
+                      </React.Fragment>
+                    ))
+                  ) : (
+                    (cat.items ?? []).map((item) => (
+                      <ColTileItem key={item.name} item={item} baseUrl={baseUrl} moduleIconMap={moduleIconMap} colorMode={colorMode} />
+                    ))
+                  )}
                 </ul>
               </div>
             ))}

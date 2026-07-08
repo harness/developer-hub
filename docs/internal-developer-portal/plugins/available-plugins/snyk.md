@@ -41,7 +41,7 @@ proxy:
 
 ### Delegate proxy
 
-- If Snyk is behind a firewall, `snyk.mycompany.io` will not be accessible from outside, so a delegate proxy has to be selected. Please ensure you have [Harness Delegate installed](https://developer.harness.io/docs/platform/delegates/install-delegates/overview) for the same. 
+- If Snyk is behind a firewall, `snyk.mycompany.io` will not be accessible from outside, so a delegate proxy has to be selected. Ensure you have [Harness Delegate installed](/docs/platform/delegates/install-delegates/overview) for the same. 
 
 ## Layout
 

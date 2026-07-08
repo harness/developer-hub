@@ -11,7 +11,7 @@ Environment Management in Harness IDP enables developers and platform engineers 
 
 ---
 
-### Impact and Benefits
+### Impact and benefits
 
 In modern software delivery, environments sit at the very core of every developer’s workflow. Maintaining the right balance between **governance, consistency, and accessibility** is critical. Without environment management, setup becomes slow, inconsistent, and difficult to track - leaving developers dependent on other teams, while driving up costs and risks.
 
@@ -23,7 +23,7 @@ Harness IDP Environment Management solves this by making environments **easy to 
 
 ---
 
-### Environment Management Stack
+### Environment management stack
 Environment Management is a core feature of Harness IDP. It gives developers a self-service way to create and manage environments, while platform engineers define the standards behind them.
 
 **Harness IDP** is the control center for this feature, but it works closely with other Harness modules to make it powerful:
@@ -37,7 +37,7 @@ Together, these modules ensure every environment is consistent, secure, and easy
 
 ---
 
-### Key Features
+### Key features
 Environment Management in Harness IDP brings together various features to make environments easy to create, manage, and operate.
 
 1. **Environment Blueprints:**
@@ -53,26 +53,26 @@ Environment Management in Harness IDP brings together various features to make e
 
 ---
 
-### Key Concepts
+### Key concepts
 
-#### Environment Blueprint
+#### Environment blueprint
 An Environment Blueprint is a collection of infrastructure templates, services, their configurations and lifecycle management details of each. When a blueprint is instantiated, it generates running instances of Environments. Blueprints are typically owned and maintained by the Platform Engineering team. Go to [Environment Blueprints](/docs/internal-developer-portal/environment-management/blueprints/env-blueprint-yaml) to learn more. 
 
 #### Environment
 An Environment is instantiated using an Environment Blueprint and represents the deployed infrastructure and services, as defined in the blueprint. It is a collection of software services deployed using CD tools and executed on infrastructure provisioned through IaCM tools. Go to [Environments](/docs/internal-developer-portal/environment-management/environments.md) to learn more.
 
-#### Service (IDP Component)
+#### Service (IDP component)
 A Component in IDP Catalog represents a service or any other type of software component. For Environment Management use-cases, an IDP Component represents the service being deployed using CD. Go to [Catalog Entities](/docs/internal-developer-portal/catalog/data-model#harness-idp-entities-idp-20) to learn more.
 
 #### Workspace
 IaCM Workspace is a container for your infrastructure resources. It integrates IaC code, variables, cloud provider connections, state files, and workflows. In Terraform, each workspace has its own state file, which tracks the status of its managed resources. Go to [Workspaces](/docs/category/workspaces) to learn more.
 
-#### Workspace Templates
+#### Workspace templates
 With IaCM Workspace Templates, you can standardize workspace configurations across your projects by predefining essential variables, configuration settings, and other workspace options. Go to [Workspace Templates](/docs/infra-as-code-management/workspaces/workspace-templates) to learn more.
 
 ---
 
-### RBAC for Environment Management
+### RBAC for environment management
 
 Harness IDP provides granular Role-Based Access Control (RBAC) for environment management, allowing you to control access to environment blueprints and environments. The RBAC model follows the Harness platform hierarchy with different scopes:
 

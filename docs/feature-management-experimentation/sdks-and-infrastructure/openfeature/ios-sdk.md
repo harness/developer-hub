@@ -7,7 +7,7 @@ description: Integrate OpenFeature with Harness FME in your iOS applications to 
 
 Integrate your iOS applications with Harness FME using the <Tooltip id="fme.openfeature.provider">iOS OpenFeature Provider</Tooltip>, a standardized, vendor-agnostic feature flagging API. This provider implements the OpenFeature specification and bridges the OpenFeature SDK with the Harness FME iOS SDK.
 
-This page walks you through installing, configuring, and using the iOS OpenFeature provider to evaluate <Tooltip id="fme.openfeature.feature-flag">feature flags</Tooltip> in your iOS applications.
+This page walks you through installing, configuring, and using the iOS OpenFeature provider to evaluate <Tooltip id="fme.feature-management.feature-flag">feature flags</Tooltip> in your iOS applications.
 
 ### Before you begin
 
@@ -105,7 +105,7 @@ OpenFeatureAPI.setEvaluationContext(newContext)
 
 ## Observe provider events
 
-The Harness FME OpenFeature provider emits <Tooltip id="fme.openfeature.events">events</Tooltip> when provider state changes (for example, when flags update, configuration changes, or errors) occur. You can observe these events to update your application's behavior in real time.
+The Harness FME OpenFeature provider emits <Tooltip id="fme.feature-management.event">events</Tooltip> when provider state changes (for example, when flags update, configuration changes, or errors) occur. You can observe these events to update your application's behavior in real time.
 
 You can enable your application to:
 

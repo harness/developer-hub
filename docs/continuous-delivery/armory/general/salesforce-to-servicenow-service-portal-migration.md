@@ -2,6 +2,8 @@
 title: Salesforce to ServiceNow Service Portal Migration
 ---
 
+
+
 In the end of February, we will be migrating all of our Support Issues, Knowledge Base, and Customers from Salesforce to ServiceNow. We will be re-routing our URLs (e.g. [https://kb.armory.io](https://kb.armory.io/), [https://portal.armory.io,](https://portal.armory.io%2C/) [https://registration.armory.io](https://registration.armory.io/)) to the ServiceNow portal on our go-live date, **March 1st, 2021**
 ## **The following are useful articles for our Customers to help them get started**
 * [Support Portal User Registration](https://support.armory.io/support?id=kb_article&sysparm_article=KB0010200)* [Password Resets](https://support.armory.io/support?id=kb_article&sysparm_article=KB0010247)* [Creating Cases and Case Management in ServiceNow](https://support.armory.io/support?id=kb_article&sysparm_article=KB0010136)* [Creating Change Requests in ServiceNow](https://support.armory.io/support?id=kb_article&sysparm_article=KB0010267)* [ServiceNow Service Portal Customer Administrators](https://support.armory.io/support?id=kb_article_view&sysparm_article=KB0010240)* [Global Technical Support - Case Statuses](https://support.armory.io/support?id=kb_article_view&sysparm_article=KB0010011)* [Case Escalations](https://armory.service-now.com/support?id=kb_article&sysparm_article=KB0010203)

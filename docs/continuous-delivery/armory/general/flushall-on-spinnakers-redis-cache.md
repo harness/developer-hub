@@ -4,6 +4,7 @@ redirect_from:
   - /docs/continuous-delivery/armory/general/flushall-on-spinnaker's-redis-cache
 ---
 
+
 Question:
 Should I do a Redis ```flushall``` on my Redis database?
 Answer:

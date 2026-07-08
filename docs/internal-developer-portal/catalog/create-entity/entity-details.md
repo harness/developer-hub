@@ -8,7 +8,6 @@ sidebar_label: View Entity Details
 import DocImage from '@site/src/components/DocImage';
 import DocVideo from '@site/src/components/DocVideo';
 
-## Introduction
 
 An entity in Harness IDP is any software component, service, API, resource, or team that has been registered in the [Catalog](/docs/internal-developer-portal/catalog/manage-catalog). Each entity is described by a YAML definition that captures its metadata, ownership, lifecycle, and relationships. Clicking an entity opens a comprehensive view of that entity.
 
@@ -18,7 +17,7 @@ Every entity details page has a [header](#entity-header) along with several [tab
 
 ---
 
-## Entity Header
+## Entity header
  
 The entity header appears at the top of every entity page. In IDP, core identity and classification fields are in the header so they are always visible regardless of which [tab](#tabs-available-in-entity-details) you are on.
 
@@ -47,7 +46,7 @@ The header also provides the following actions in the top-right corner:
 
 ---
 
-## Tabs Available in Entity Details
+## Tabs available in entity details
 
 :::info Visibility of Tabs depends on Your Layout
 The tabs visible on an entity page depend on the [layout configured](#configure-tabs-and-layout) for that entity's kind and type, as well as which integrations are configured for your account.
@@ -108,7 +107,7 @@ Currently, the arrangement of data within the `IntegrationsContent` card cannot 
 
 ---
 
-### Code Quality tab
+### Code quality tab
 
 The **Code Quality** tab provides a full, paginated view of code quality data from the connected [SonarQube](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/sonarqube) integration. It shows everything in the Overview summary, plus:
 
@@ -127,7 +126,7 @@ The [Code Quality tab](#code-quality-tab), [Source Code tab](#source-code-tab), 
 <DocImage path={require('../static/add-tabs.png')} />
 :::
 
-### Source Code tab
+### Source code tab
 
 The **Source Code** tab provides a full view of source control activity from the connected SCM integration such as [GitHub](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/github). It shows the same pull request summary as the Integration Content card, plus a detailed, paginated list of individual pull requests.
 
@@ -159,17 +158,17 @@ Here are a few examples of the tabs available for a specific kind and type. If r
 |-----|-------------|
 | **Relations** | Full interactive relationship graph showing all `dependsOn`, `partOf`, `ownedBy`, and `hasPart` links to other catalog entities. |
 | **API** | API definitions the entity provides or consumes, as defined by `providesApis` and `consumesApis` in the entity YAML. Renders OpenAPI, AsyncAPI, GraphQL, and gRPC specs inline. |
-| **Docs** | TechDocs site for this entity, generated from Markdown files stored in Git. See [Enable Docs](/docs/internal-developer-portal/catalog/integrate-tools/techdocs/enable-docs). |
+| **Docs** | TechDocs site for this entity, generated from Markdown files stored in Git. Go to [Enable Docs](/docs/internal-developer-portal/catalog/integrate-tools/techdocs/enable-docs). |
 | **IACM** | Harness IACM workspace data including state, resource counts, and recent runs. |
-| **Scorecard** | Full scorecard report across all configured scorecards, including overall score, tier, and per-check pass/fail breakdown. See [Scorecards](/docs/internal-developer-portal/scorecards/scorecard). |
+| **Scorecard** | Full scorecard report across all configured scorecards, including overall score, tier, and per-check pass/fail breakdown. Go to [Scorecards](/docs/internal-developer-portal/scorecards/scorecard). |
 | **Dependencies** | Package-level dependency graph. Distinct from the catalog-level Relations tab. |
 | **Cloud Costs** | Cloud cost data from Harness CCM including spend trends and anomaly alerts. |
-| **Custom Plugin** | Custom frontend plugin tabs that can display any data relevant to your organization. See [Custom Plugins](/docs/internal-developer-portal/plugins/custom-plugins/overview). |
+| **Custom Plugin** | Custom frontend plugin tabs that can display any data relevant to your organization. Go to [Custom Plugins](/docs/internal-developer-portal/plugins/custom-plugins/overview). |
 | **HarnessCICD** | Pipeline run history from Harness CI and Harness CD, including run status, trigger type, and environment. Requires the Harness pipeline annotation on the entity. |
 
 ---
 
-## Configure Tabs and Layout
+## Configure tabs and layout
 
 The tabs and cards shown on an entity details page are controlled by the [Layout configuration](/docs/internal-developer-portal/layout-and-appearance/catalog) for that entity's kind and type. You can add, remove, reorder, and resize cards and tabs using the Layout editor.
 
@@ -184,14 +183,14 @@ When you create a new layout type, it comes pre-filled with a default set of car
 
 ---
 
-## Frequently Asked Questions
+## Frequently asked questions
 
 <details>
 <summary>Why is my integration data not showing on the Overview tab?</summary>
 <div>
 The Integration Content card only shows data for integrations that are configured for your account and linked to the entity. If a section shows **Not configured**, navigate to **Configure** → **Integrations** and set up the relevant integration. Once configured, the data will appear after the next sync.
  
-If the integration is configured but data is still missing, check the **last synced** timestamp on the card. If it hasn't synced recently, go to the integration page and trigger a manual sync.
+If the integration is configured but data is still missing, check the **last synced** timestamp on the card. If it has not synced recently, go to the integration page and trigger a manual sync.
  
 </div>
 </details>

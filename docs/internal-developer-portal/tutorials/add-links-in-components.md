@@ -8,14 +8,13 @@ redirect_from:
 
 <DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
 
-## Introduction
 In this tutorial we will explore how to add links associated with the Software Components which could be dashboards, support pages, runbooks, email groups, Slack channels, etc. Each link is an arbitrary name and URL pair, which can be accompanied by an icon for visual representation.
 
 Once you register a Software Component in the Catalog this is a sample of how your overview section would look based on your IDP yaml. 
 
 ![](./static/link-card.png)
 
-In the depicted image, you'll notice a **Links Card** that serves as a navigational tool. These links can be anything. Here are some examples -
+In the depicted image, you will notice a **Links Card** that serves as a navigational tool. These links can be anything. Here are some examples -
 
 - User and Group Management
 - Infrastructure and Cloud
@@ -28,7 +27,7 @@ and many more which would function as a quick bookmark for the developers corres
 
 Follow the steps below to effectively integrate such links into your software components in the catalog.
 
-## Steps to add Links
+## Steps to add links
  
  1. Click on the edit icon on the overview page, which will redirect you to the IDP yaml.
  
@@ -39,7 +38,7 @@ Follow the steps below to effectively integrate such links into your software co
 <details>
 <summary>Link Attributes</summary>
 
-- **url:** This is the actual web address or URL that the link points to. It's the destination users will be directed to when they click on the link.
+- **url:** This is the actual web address or URL that the link points to. It is the destination users will be directed to when they click on the link.
 
 - **title:** This serves as the display name or label for the link. It gives users a brief idea of what to expect when they click on the link or where it might lead them.
 
@@ -90,4 +89,4 @@ spec:
  ```
 ## Conclusion
 
- Together, the attributes under link not only provide essential information but also enhance the user experience by making navigation more intuitive and visually appealing. By categorizing and visually representing links, users can quickly find and access the resources they're interested in.
+ Together, the attributes under link not only provide essential information but also enhance the user experience by making navigation more intuitive and visually appealing. By categorizing and visually representing links, users can quickly find and access the resources they are interested in.

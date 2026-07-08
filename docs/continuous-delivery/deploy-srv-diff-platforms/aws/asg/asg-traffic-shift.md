@@ -4,6 +4,7 @@ description: ASG Blue-Green deployment strategy with native support for phased t
 sidebar_position: 5
 ---
 
+
 In the **ASG Blue-Green Traffic Shifting Step**, you define the production and stage listener ports and rules that the ASG Blue Green Deploy step uses. Then, the ASG Swap Services step shifts all traffic from the stage target group back to production.
 
 A Blue/Green deployment ensures reliable updates by running both the new and existing ASGs behind an Application Load Balancer (ALB). The ALB uses two listeners—**stage** and **prod**—each forwarding to its corresponding target group, where the new and existing ASGs handle traffic.

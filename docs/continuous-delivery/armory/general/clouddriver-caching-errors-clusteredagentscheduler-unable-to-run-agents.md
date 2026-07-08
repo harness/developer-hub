@@ -1,7 +1,7 @@
 ---
 title: clouddriver-caching errors | ClusteredAgentScheduler - Unable to run agents
 redirect_from:
-  - /docs/continuous-delivery/armory/general/clouddriver-caching-errors--clusteredagentschedulerunable-to-run-agents
+  - /docs/continuous-delivery/armory/general/clouddriver-caching-errors--clusteredagentscheduler---unable-to-run-agents
 ---
 
 ## Issue

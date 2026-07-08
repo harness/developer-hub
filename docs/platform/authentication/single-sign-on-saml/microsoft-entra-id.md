@@ -20,6 +20,9 @@ keywords:
   - federation metadata
   - Azure enterprise application
   - Microsoft authentication
+  - JIT provisioning
+  - just-in-time provisioning
+  - automatic user creation
 tags:
   - Authentication
   - SAML
@@ -42,6 +45,7 @@ By the end of this topic, you will be able to:
 - [Configure Microsoft Entra ID as a SAML SSO provider in Harness](#endpoint-url-for-azure).
 - [Set up authentication and user attribute mapping](#user-attributes-and-claims).
 - [Enable and test SAML authorization with Azure](#enable-and-test-sso-with-azure).
+- [Use Just-in-Time (JIT) provisioning](#just-in-time-jit-provisioning) to automatically create users on first login.
 
 ---
 

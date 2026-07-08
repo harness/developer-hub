@@ -25,7 +25,7 @@ If you're not familiar with RBAC, check out this blog post on [User and Role Man
 
 Before configuring RBAC in Harness, you should have an understanding of:
 
-- [Harness' key concepts](/docs/platform/get-started/key-concepts.md).
+- [Harness' key concepts](/docs/platform/get-started/overview).
 - [Creating organizations and projects](/docs/platform/get-started#create-an-organization).
 - The functionality of the modules in your Harness account.
 

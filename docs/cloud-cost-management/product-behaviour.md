@@ -6,6 +6,8 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+
+
 Harness offers two primary licensing tiers for Cloud & AI Cost Management: **Free Forever** and **Enterprise**. 
 
 :::info

@@ -1,8 +1,10 @@
 ---
 title: ServiceNow - Finding a Resource (Case, Change Request, etc...)
 redirect_from:
-  - /docs/continuous-delivery/armory/general/servicenowfinding-a-resource-case,-change-request,-etc...
+  - /docs/continuous-delivery/armory/general/servicenow---finding-a-resource-case,-change-request,-etc...
 ---
+
+
 
 If you are looking to find Cases or Change requests, there are several ways to go about doing so.
 * Navigate to the ServiceNow Backend* In the upper right corner of the interface, click on the magnifying glass and put the case number in there, and hit enter

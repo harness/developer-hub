@@ -56,7 +56,7 @@ proxy:
 
 This plugin requires a Split API token for authentication. The token is referenced as `${SPLIT_API_TOKEN}` in the proxy configuration.
 
-To obtain and manage your API tokens, refer to the [Harness Feature Management API Keys documentation](https://developer.harness.io/docs/feature-management-experimentation/management-and-administration/account-settings/api-keys/).
+To obtain and manage your API tokens, refer to the [Harness Feature Management API Keys documentation](/docs/feature-management-experimentation/management-and-administration/account-settings/api-keys/).
 
 ### Delegate proxy
 

@@ -2,6 +2,7 @@
 title: An Explanation of MySQl/PostGres Tables Involved in Armory Agent for Kubernetes
 ---
 
+
 Armory Agent for Kubernetes requires an SQL-based database (MySQL/Postgres).
 ### Before starting
 Please refer to the following instructions before installing the Agent plugin and the Agent:[https://docs.armory.io/armory-enterprise/armory-agent/armory-agent-install/#before-you-begin](https://docs.armory.io/armory-enterprise/armory-agent/armory-agent-install/#before-you-begin) 

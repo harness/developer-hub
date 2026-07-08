@@ -1,8 +1,9 @@
 ---
 title: ServiceNow - All About Change Requests, Navigation and Anatomy
 redirect_from:
-  - /docs/continuous-delivery/armory/general/servicenowall-about-change-requests,-navigation-and-anatomy
+  - /docs/continuous-delivery/armory/general/servicenow---all-about-change-requests,-navigation-and-anatomy
 ---
+
 
 Change requests have a numbering scheme that starts with ```ACHG```
 They are located in their own section called ```Armory Change Requests``` that can be searched using the Sidebar Navigator

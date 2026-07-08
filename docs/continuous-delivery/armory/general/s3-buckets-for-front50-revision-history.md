@@ -2,6 +2,7 @@
 title: S3 buckets for Front50, revision history
 ---
 
+
 ## Question:
 If we are using S3 buckets for front50, can we have revision history?
 

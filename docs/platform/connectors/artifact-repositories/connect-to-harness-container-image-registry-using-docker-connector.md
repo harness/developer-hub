@@ -52,7 +52,7 @@ If you don't want to change the behavior for your entire account, follow the ste
 
    - If you plan to use this connector with [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md), you must select **Connect through Harness Platform**.
    - If you select **Connect through a Harness Delegate**, you can allow Harness to use any available delegate or specify delegates based on tags. For more information about how Harness selects delegates, go to [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md) and [Use delegates selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md).
-   - For delegate installation instructions, go to [Delegate installation overview](../../delegates/install-delegates/overview).
+   - For delegate installation instructions, go to [Delegate installation overview](/docs/platform/delegates/install-delegates/overview).
 
 8. Select **Save and Continue**, wait for the connectivity test to run, and then select **Finish**.
 
@@ -84,7 +84,7 @@ If you don't want to change the behavior for your entire account, you can [Use c
 
    - If you plan to use this connector with [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md), you must select **Connect through Harness Platform**.
    - If you select **Connect through a Harness Delegate**, you can allow Harness to use any available delegate or specify delegates based on tags. For more information about how Harness selects delegates, go to [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md) and [Use delegates selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md).
-   - For delegate installation instructions, go to [Delegate installation overview](../../delegates/install-delegates/overview).
+   - For delegate installation instructions, go to [Delegate installation overview](/docs/platform/delegates/install-delegates/overview).
 
 8. Select **Save and Continue**, wait for the connectivity test to run, and then select **Finish**.
 
@@ -122,7 +122,7 @@ If you want to change the behavior for your entire account, you can [configure H
 
    - If you plan to use this connector with [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md), you must select **Connect through Harness Platform**.
    - If you select **Connect through a Harness Delegate**, you can allow Harness to use any available delegate or specify delegates based on tags. For more information about how Harness selects delegates, go to [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md) and [Use delegates selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md).
-   - For delegate installation instructions, go to [Delegate installation overview](../../delegates/install-delegates/overview).
+   - For delegate installation instructions, go to [Delegate installation overview](/docs/platform/delegates/install-delegates/overview).
 
 8. Select **Save and Continue**, wait for the connectivity test to run, and then select **Finish**.
 

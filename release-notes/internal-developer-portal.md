@@ -30,9 +30,54 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 | **Version** | **prod0** | **prod1** | **prod2** | **prod3** | **prod4** | **prodeu1** |
 | ----------- | --------- | --------- | --------- | --------- | --------- | ----------- |
+| [2026.6.v1](/release-notes/internal-developer-portal#june---20266v1)  | ✅        | ✅         | ✅           | TBA        | TBA         | TBA         |
 | [2026.5.v2](/release-notes/internal-developer-portal#may---20265v2)   | ✅        | ✅         | ✅           | ✅        | ✅         | ✅         |
 | [2026.5.v1](/release-notes/internal-developer-portal#may---20265v1)   | ✅        | ✅         | ✅           | ✅        | ✅         | ✅         |
-| [2026.4.v1](/release-notes/internal-developer-portal#april---20264v1) | ✅        | ✅         | ✅           | ✅        | ✅         | ✅         |
+
+## June - [2026.6.v1]
+
+---
+
+### New Features
+
+#### Bitbucket Cloud: Entity Detail Page | [Read Doc](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/bitbucket-cloud#view-bitbucket-entities-in-the-catalog)
+
+Bitbucket Cloud entities imported into the IDP Catalog now show repository activity data directly on the entity detail page. Pull request history and commit data synced as secondary kinds during integration setup are now surfaced on the entity page, giving developers a view of recent repository activity without leaving IDP.
+
+<DocImage path={require('../docs/internal-developer-portal/catalog/create-entity/catalog-discovery/static/bitbucket-cloud-tab.png')} />
+
+---
+
+#### Dynatrace: Entity Detail Page | [Read Doc](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/dynatrace#view-dynatrace-entities-in-the-catalog)
+
+Dynatrace entities imported into the IDP Catalog now show observability data (Monitors and SLO data) directly on the entity detail page via two configurable layout components.
+
+<DocImage path={require('../docs/internal-developer-portal/catalog/create-entity/catalog-discovery/static/dynatrace-tab.png')} />
+
+---
+
+### Enhancements & Bug Fixes
+
+#### Environment States | [Read Doc](/docs/internal-developer-portal/environment-management/environments#environment-states)
+
+Environment Management now displays an easy-to-understand environment state for every environment, giving platform engineers clearer visibility into what is actually happening with a given environment at any point.
+
+It consists of:
+
+- A high-level operational state: `Online`, `Offline`, or `Paused`.
+- A sub-state that provides additional context: `Updating`, `Starting`, `Stopping`, `Failed`, `Partially Failed`, `Aborted`, or `TTL Expired`.
+
+Both appear in the **STATE** column on the environments listing page and in the **Environment State** field in each environment detail page.
+
+<DocImage path={require('../docs/internal-developer-portal/environment-management/static/env-states.gif')} />
+
+#### Fixes
+
+- Retrying an IDP workflow would submit stale parameter values from the previous execution instead of the current form values. This is now fixed, and conditional form validation continues to work correctly. [IDP-9705]
+- Scorecard aggregation was not computing results for newly created scorecards due to an incorrect time window being used during score fetching. [IDP-9570]
+- The merge entity dropdown in the Discovered tab of configured integration was closing automatically every 10-20 seconds due to integration config polling triggering a re-render. [IDP-9749]
+
+---
 
 ## May - [2026.5.v2]
 

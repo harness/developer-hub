@@ -46,7 +46,7 @@ const ThreeKDocsBanner: React.FC = () => {
         <div className="threek-docs-banner-text">
           <strong>
             {is3kDocs
-              ? "👀 You're viewing the 3K Docs preview experience"
+              ? "👀 You're on the Harness 3.0 Documentation experience."
               : "📣 Harness 3.0 Documentation is in preview!"}
           </strong>
 

@@ -30,7 +30,7 @@ proxy:
 
 ### Secrets
 
-Since the `CIRCLECI_AUTH_TOKEN` variable is used in the application configuration, you must generate a CircleCI API token and set it as the value of `CIRCLECI_AUTH_TOKEN`. For information about how to create a CircleCI API token, go to the [instructions](https://circleci.com/docs/api/#add-an-api-token).
+Since the `CIRCLECI_AUTH_TOKEN` variable is used in the application configuration, you must generate a CircleCI API token and set it as the value of `CIRCLECI_AUTH_TOKEN`. For information about how to create a CircleCI API token, go to the [instructions](https://circleci.com/docs/api#add-an-api-token).
 
 ### Delegate proxy
 

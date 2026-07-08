@@ -8,6 +8,7 @@ redirect_from:
   - docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-scans-using-github-action
 ---
 
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

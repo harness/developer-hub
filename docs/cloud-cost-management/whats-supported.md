@@ -5,6 +5,8 @@ sidebar_label: What's supported
 sidebar_position: 1
 ---
 
+
+
 import Ccm from '/docs/cloud-cost-management/shared/ccm-supported-platforms.md';
 
 <Ccm />

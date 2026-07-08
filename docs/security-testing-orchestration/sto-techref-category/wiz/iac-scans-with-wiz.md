@@ -7,6 +7,7 @@ sidebar_position: 30
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import DocImage from '@site/src/components/DocImage';
 
 import StoDinDNoIntro from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step-setup.md';
 
@@ -33,6 +34,16 @@ CLI version `0.x` will continue to work with existing credentials, while CLI ver
 
 - You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using custom certificates. For more information, go to [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
 
+- If you use Wiz for Gov or GovCloud on Linux/macOS, configure `WIZ_ENV` environment variable in your wiz stage settings.
+  - For `app.wiz.us` (Wiz for Gov, FedRAMP), set `WIZ_ENV=fedramp`.
+  - For `gov.wiz.io` (GovCloud), set `WIZ_ENV=gov`.
+
+<DocImage
+  path={require('./static/wiz-fedramp.png')}
+  alt="Configure WIZ_ENV in stage settings for Wiz for Gov and GovCloud"
+  title="Click to view full size"
+  width="65%"
+/>
 
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/more-information.md';
 

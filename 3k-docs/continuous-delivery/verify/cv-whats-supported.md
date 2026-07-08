@@ -30,7 +30,7 @@ If needed, you can request an increase in the rate limit from DataDog to accommo
 
 To learn how to add a health source, go to [Configure verification](/docs/category/configure-cv).
 
-For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/platform/platform-whats-supported.md).
+For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/platform/platform-whats-supported).
 
 
 

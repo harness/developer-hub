@@ -11,13 +11,13 @@ Instead of using an API to retrieve JSON data with a backend proxy, we can store
 
 ## Setup
 
-First enable the `Configure Backend Proxies` [plugin](https://developer.harness.io/docs/internal-developer-portal/plugins/overview) in your IDP instance.
+First enable the `Configure Backend Proxies` [plugin](/docs/internal-developer-portal/plugins/overview) in your IDP instance.
 
 Once enabled, go to the plugins page and select the `Configure Backend Proxies` plugin to view its configuration.
 
 The following is a proxy definition to resolve raw files from GitHub:
 
-```
+```yaml
 proxy:
   endpoints:
     /github-raw:
@@ -47,7 +47,7 @@ Now that we have the proxy defined, we can use it in a workflow definition to re
 
 Before, you might have had a parameter with the following hard-coded list of options:
 
-```
+```yaml
 properties:
   some-property:
     type: string
@@ -59,7 +59,7 @@ properties:
 
 Now with our custom backend for GitHub raw files, we can query GitHub to get our JSON and pull out the relevant keys to show as options in our picker:
 
-```
+```yaml
 properties:
   some-property:
     type: string
@@ -76,11 +76,11 @@ The above is if your JSON is a simple list of values:
 ["item1", "item2"]
 ```
 
-If you have complex JSON you can follow the usage pattern [described here](https://developer.harness.io/docs/internal-developer-portal/flows/dynamic-picker/#parsing-api-response-using-filters).
+If you have complex JSON you can follow the usage pattern [described here](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker#parsing-api-response-using-filters).
 
-## Alternative Configurations
+## Alternative configurations
 
-If you don't want to have to pass the organization and project identifier in every workflow, or you want to lock the proxy down to a specific org or repo, we can just add more of the URL to the proxy config, and pass less in the picker path.
+If you do not want to have to pass the organization and project identifier in every workflow, or you want to lock the proxy down to a specific org or repo, we can just add more of the URL to the proxy config, and pass less in the picker path.
 
 ### Organization specific
 
@@ -95,7 +95,7 @@ proxy:
 
 Usage:
 
-```
+```yaml
 properties:
   some-property:
     type: string
@@ -119,7 +119,7 @@ proxy:
 
 Usage:
 
-```
+```yaml
 properties:
   some-property:
     type: string

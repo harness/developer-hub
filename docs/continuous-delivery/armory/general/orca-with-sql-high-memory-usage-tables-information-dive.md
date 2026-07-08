@@ -1,8 +1,9 @@
 ---
 title: Orca with SQL high memory usage / Tables information dive
 redirect_from:
-  - /docs/continuous-delivery/armory/general/orca-with-sql-high-memory-usagetables-information-dive
+  - /docs/continuous-delivery/armory/general/orca-with-sql-high-memory-usage---tables-information-dive
 ---
+
 
 What:Spinnaker executions fails to show.Spinnaker ui is very slow to load pipeline view with executions.Orca consumes a lot of memory.Orca dies after SSL hand shake error.Why:This error can be because the data in SQL of Orca executions is too big and Orca can't load the data.Can happen because 2 factors, but basically too much data.1) One of Orca rows has reached over the max_allowed_packet size you have defined or over the max (1Gb)2) A pipeline execution in sum has reached over this maximum.How to fix this?
 Clean the data.Clear the tables pipelines, pipeline_stages, orchestrations and orchestration_stages.Note: Data can be plenty and deleting it may take a while. Hence this script creates a tmp table to store id's and then deletes from here. No risk in you query dying in the middle.Note1: Always perform a DB snapshot before deleting data in clients Prod Env.

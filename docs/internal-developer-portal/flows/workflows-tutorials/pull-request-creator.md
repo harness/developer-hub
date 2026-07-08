@@ -19,10 +19,10 @@ The primary goal of this tutorial is to help you understand the following concep
 
 These features allow users to dynamically filter results based on previous inputs and make customizable API requests with real-time validation. 
 
-## Pull Request Creator Workflow
+## Pull request creator workflow
 For new hires and developers, the onboarding process can be complex and overwhelming. It often takes days for developers to become familiar with the system and start contributing effectively.
 
-This tutorial demonstrates how to build a **GitHub Pull Request Creator Workflow** that significantly reduces the time required for a developer's first pull request—from days to just a few minutes. This tutorial aims to provide a detailed understanding of the various features of Dynamic Pickers.
+This tutorial demonstrates how to build a **GitHub Pull Request Creator Workflow** that significantly reduces the time required for a developer's first pull request, from days to just a few minutes. This tutorial aims to provide a detailed understanding of the various features of Dynamic Pickers.
 
 The workflow enables developers to:
 - **Select a repository** where they want to contribute.
@@ -34,21 +34,21 @@ The workflow enables developers to:
 ## Before you begin
 Before starting, ensure you meet the following requirements: 
 - **Harness IDP is enabled** for your account. Refer to this guide for setup instructions.
-- You have [**IDP Admin Role access**](https://developer.harness.io/docs/internal-developer-portal/rbac/resources-roles/?_gl=1*1h45u39*_gcl_au*MTM1MTQwNTM4MS4xNzM5ODU0OTEy*_ga*NTc0NTQ1NDY5LjE3Mzk4NTQ5MTI.*_ga_46758J5H8P*MTc0MDM5NTIwOS44LjEuMTc0MDM5NTIxMC41OS4wLjA.#1-idp-admin) or a role with full access to IDP resources.
+- You have [**IDP Admin Role access**](/docs/internal-developer-portal/rbac/scopes#idp-admin-role) or a role with full access to IDP resources.
 - [**Git Integration**](/docs/internal-developer-portal/get-started) is configured and setup for your Harness IDP account.
 - A [**GitHub token**](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) is stored as a secret in Harness IDP for API authentication. You can add the token as a secret directly while creating a [Backend Proxy](/docs/internal-developer-portal/flows/workflows-tutorials/pull-request-creator#defining-a-backend-proxy).
 
-## Creating the Workflow
+## Create the workflow
 The workflow is built in the following steps:
 1. [**Define a Backend Proxy**](/docs/internal-developer-portal/flows/workflows-tutorials/pull-request-creator#defining-a-backend-proxy): Establish authentication for API requests from the workflow frontend to the third-party provider (GitHub).
 2. [**Create a Repository Picker**](/docs/internal-developer-portal/flows/workflows-tutorials/pull-request-creator#creating-a-repository-picker): Implement a dynamic picker field in the workflow frontend to fetch available GitHub repositories.
 3. [**Auto-update Repository Details**](/docs/internal-developer-portal/flows/workflows-tutorials/pull-request-creator#auto-updating-repository-details): Fetch and store context data (e.g., repository name, branch, and type) and display it for user validation.
 4. [**Add Live User Validation**](/docs/internal-developer-portal/flows/workflows-tutorials/pull-request-creator#adding-live-user-validation): Allow users to enter additional details and validate auto-updated information before creating a pull request.
 
-## Defining a Backend Proxy
+## Define a backend proxy
 To enable the workflow frontend to make **authenticated API requests** to **GitHub**, a Backend Proxy is required. **Read more about configuring a Backend Proxy [here](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker#creating-a-dynamic-workflow-picker).**
 
-### Adding the Backend Proxy Configuration
+### Add the backend proxy configuration
 1. Navigate to Harness IDP and click **"Configure"** from the main menu.
 ![](./static/backend-proxy-1.png)
 
@@ -56,7 +56,7 @@ To enable the workflow frontend to make **authenticated API requests** to **GitH
 ![](./static/backend-proxy-2.png)
 
 3. Add the following configuration in ``app-config.yaml`` under the **"Configurations"** tab:
-```
+```yaml
 proxy:
   endpoints:
     /github-api:
@@ -68,18 +68,18 @@ proxy:
 
 ```
 
-#### Configuration Details
+#### Configuration details
 - ``github-api``: Unique endpoint name for the backend proxy.
 - ``target``: Points to the API base URL (GitHub).
 - ``pathRewrite``: Ensures proper API request routing.
 - ``headers``: Includes the GitHub authentication token (stored as a secret in Harness IDP).
 ![](./static/backend-proxy-3.png)
 
-#### Important Notes
+#### Important notes
 - Use a **unique token** name. Avoid system-defined names like GITHUB_TOKEN, as these might conflict with system variables.
 - The token name itself does not matter, as long as a **corresponding secret** is set up in Harness IDP.
 
-### Saving and Verifying the Configuration
+### Save and verifying the configuration
 1. Click **"Save Configurations"** to apply the backend proxy setup.
 2. To verify, make a request to the proxy endpoint:
 ``
@@ -94,20 +94,20 @@ mirrors the GitHub API base URL (https://api.github.com/), allowing you to use a
 
 Once verified, the backend proxy is ready to authenticate API requests within the workflow. 
 
-## Creating a Repository Picker
-Now, let's define the [**Workflow Frontend**](/docs/internal-developer-portal/flows/workflowyaml#workflow-frontend) in the Workflow YAML configuration. A **Repository Picker** dynamically fetches GitHub repositories based on the provided GitHub username. This feature is based on conditional API requests in self service workflows. 
+## Create a repository picker
+Now, let us define the [**Workflow Frontend**](/docs/internal-developer-portal/flows/workflowyaml#workflow-frontend) in the Workflow YAML configuration. A **Repository Picker** dynamically fetches GitHub repositories based on the provided GitHub username. This feature is based on conditional API requests in self service workflows. 
 
 **Read more about conditional API requests in Dynamic Pickers [here](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker#conditional-api-requests).** 
 
-### Required Fields
+### Required fields
 - **GitHub Username**: A text field that accepts a **GitHub username** as input.
 - **Choose Repository**: A **Dynamic Picker field** that fetches and displays repositories based on the entered username.
 
 :::info
-Please ensure that this workflow is configured to accept the end user's **GitHub username** as input, rather than the **organization's name**. For more details on this request, refer to the [GitHub API documentation](https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repositories-for-the-authenticated-user).
+Ensure that this workflow is configured to accept the end user's **GitHub username** as input, rather than the **organization's name**. For more details on this request, refer to the [GitHub API documentation](https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repositories-for-the-authenticated-user).
 :::
 
-### YAML Configuration
+### YAML configuration
 <Tabs>
 <TabItem value="YAML" label="YAML" default>
 
@@ -137,11 +137,11 @@ parameters:
 </TabItem>
 </Tabs>
 
-### YAML Breakdown
+### YAML breakdown
 - ``gitUsername``: A simple text input field that accepts a **GitHub username** as a string. This input is required to fetch repositories associated with the user.
 - ``repoPicker``: A Dynamic Picker field that **retrieves and displays repositories** based on the GitHub username input.
 
-#### Key Attributes
+#### Key attributes
 - ``ui:field``: Must be set to ``SelectFieldFromApi`` to enable dynamic selection.
 - ``title``, ``description``, and ``placeholder``: Text fields that guide the user on what information to enter.
 - ``path``: Specifies the API endpoint format:
@@ -149,24 +149,24 @@ parameters:
 
 Here, endpoint-name is ``github-api``, as defined in the backend proxy.
 
-#### Dynamic Path Reference
+#### Dynamic path reference
 The ``gitUsername`` variable is referenced in the Dynamic Picker field path, ensuring that when a user enters a GitHub username, the picker dynamically fetches and displays all associated repositories.
 
 **``path``:** ``proxy/github-api/users/{{ parameters.gitUsername }}/repos``
 
 This setup ensures that the repository list updates dynamically based on the entered username.
 
-## Auto-updating Repository Details
+## Auto-update repository details
 Once a repository is selected, the workflow should **automatically fetch and display repository details**. 
 
 **Read more about auto-updating input fields in Workflows [here](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker#updating-fields-using-form-context).**
 
-### Required Fields
+### Required fields
 - **Repository Name**: Name of the repsoitory, Auto-fetched, read-only.
 - **Repository Branch**: Origin Branch of the repository, Auto-fetched, but editable.
 - **Repository Type**: Visibility of the repository, Auto-fetched, read-only.
 
-### YAML Configuration
+### YAML configuration
 <Tabs>
 <TabItem value="YAML" label="YAML" default>
 
@@ -225,16 +225,16 @@ parameters:
 </TabItem>
 </Tabs>
 
-### YAML Breakdown
+### YAML breakdown
 To make the workflow more dynamic, repository details such as **name, branch, and type** need to be fetched and displayed automatically.
 
-#### Data Fields Stored in Form Context
+#### Data fields stored in form context
 The following values are retrieved and stored in **form context**:
 - ``repoName``: Repository name
 - ``branch``: Default branch
 - ``type``: Repository visibility (Public/Private)
 
-#### Defining Context Data
+#### Define context data
 Context data is stored in the ``ui:options`` section within the Dynamic Picker field using the ``setContextData``property:
 ```YAML {1}
 setContextData: 
@@ -243,7 +243,7 @@ setContextData:
     type: visibility   
 ```
 
-#### Auto-updating Input Fields
+#### Auto-update input fields
 Once context data is set, we use ``getContextData`` to auto-update the input fields dynamically.
 - **repositoryName** and **typeName** are **read-only** (using the ```readonly``` tag) fields (users cannot modify them)
 - **originBranchName** remains **editable** so users can specify a branch if required.
@@ -260,17 +260,17 @@ originBranchName:
 - ``originBranchName`` is the frontend input field.
 - ``formContext.branch`` retrieves and automatically updates this field based on the GitHub API response.
 
-## Adding Live User Validation
+## Add live user validation
 Before creating a pull request, users should validate auto-updated details and provide additional inputs. 
 
 **Read more about adding live user validation in Workflows [here](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker#live-user-validation-using-api-requests).** 
 
-### Required Fields
+### Required fields
 - **PR Title**: User input for the Pull Request title.
 - **New Branch**: User input for the branch name where changes are implemented.
 - **Custom Button**: Triggers GitHub API call for validation and PR creation.
 
-### YAML Configuration
+### YAML configuration
 <Tabs>
 <TabItem value="YAML" label="YAML" default>
 
@@ -316,14 +316,14 @@ parameters:
 </Tabs>
 
 
-### YAML Breakdown
+### YAML breakdown
 To finalize the workflow, we need a **validation button** that allows users to verify auto-fetched details and create a pull request.
 
-#### Custom Validation Button
+#### Custom validation button
 - ``customValidate``: The **custom button field** for validation and PR creation.
 - ``ui:field``: Must be set to **ValidateAndFetch** to trigger validation and API calls.
 
-#### Configurable Options in ``ui:options``
+#### Configurable options in ``ui:options``
 - ``button``: Defines and adds the "Create a Pull Request" button.
 - ``path``: Specifies the API endpoint for the PR creation request.
 - ``setContextData``: Stores additional context data upon API request execution.
@@ -334,7 +334,7 @@ setContextData:
 - ``prUrl``: A workflow variable that stores the pull request URL.
 - ``html_url``: The API response field containing the PR URL.
 
-#### Defining the API Request
+#### Define the API request
 The **GitHub API request** is structured as a **POST request**, containing the necessary fields for PR creation. [Read more about making a POST API request here](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker#post-method-support)
 ```YAML {2,5}
 request: 
@@ -351,7 +351,7 @@ request:
 - ``head``: The **changes source branch**, retrieved from ``newBranch``.
 - ``base``: The destination branch (default branch of the repository).
 
-#### Show Form Context Live
+#### Show form context live
 At any time, if you need to display the **Form Context** live in your Workflow Frontend for debugging purposes, you can use the following format:  
 
 ```YAML {7}
@@ -367,7 +367,7 @@ formContext:
 Read more about the syntax [here](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker#4-show-form-context-live-in-the-workflow-frontend). 
 
 ## Workflow YAML
-#### Additional Notes
+#### Additional notes
 - Added a new field in the frontend that **retrieves and displays** the **"Pull Request URL"** stored in the **Form Context**.  
 - No specific **Action** has been added for this tutorial, as its primary purpose is to help users **understand the features and concepts**.
 

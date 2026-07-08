@@ -2,6 +2,7 @@
 title: Prometheus Canary Integration
 ---
 
+
 In this example we are using the prometheus K8s operator
 ## Enable and Configure Kayenta and Metrics:
 hal config canary enable

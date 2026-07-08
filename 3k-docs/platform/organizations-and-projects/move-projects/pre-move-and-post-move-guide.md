@@ -13,9 +13,12 @@ tags:
   - post-move Remediation
 ---
 
-import Platform from '@site/docs/platform/organizations-and-projects/move-projects/pre-move-and-post-move-guide.md';
+import PlatformPreMove from '@site/docs/platform/organizations-and-projects/move-projects/pre-move-guide.md';
+import PlatformPostMove from '@site/docs/platform/organizations-and-projects/move-projects/post-move-guide.md';
 
-<Platform />
+<PlatformPreMove />
+
+<PlatformPostMove />
 
 
 

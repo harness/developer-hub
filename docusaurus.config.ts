@@ -156,8 +156,8 @@ const config: Config = {
     'Learn intelligent software delivery skills at your own pace and in one place. Step-by-step tutorials, videos, and reference docs to help you create and deliver software.',
   url: 'https://developer.harness.io',
   baseUrl: BASE_URL,
-  onBrokenLinks: 'warn',
-  onBrokenAnchors: 'warn',
+  onBrokenLinks: 'throw',
+  onBrokenAnchors: 'ignore',
   favicon: 'img/hdh_fav_icon_grey.ico',
   customFields: {
     SEGMENT_API_KEY: process.env.SEGMENT_API_KEY,

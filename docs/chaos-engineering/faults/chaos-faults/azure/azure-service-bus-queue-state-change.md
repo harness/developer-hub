@@ -1,157 +1,215 @@
 ---
 id: azure-service-bus-queue-state-change
 title: Azure Service Bus queue state change
+sidebar_label: Azure Service Bus Queue State Change
+description: Change the operational status of one or more Azure Service Bus queues (Disabled, SendDisabled, ReceiveDisabled) for a configurable duration so you can test how producers and consumers handle queue-state disruptions.
+keywords:
+  - chaos engineering
+  - azure service bus
+  - azure fault
+  - messaging
+tags:
+  - chaos-engineering
+  - azure-faults
+redirect_from:
+- /docs/chaos-engineering/technical-reference/chaos-faults/azure/azure-service-bus-queue-state-change
+- /docs/chaos-engineering/chaos-faults/azure/azure-service-bus-queue-state-change
 ---
 
-Azure Service Bus queue state change modifies the status of Azure Service Bus queues for a specific chaos duration. 
-- It validates the resilience of applications that depend on Azure Service Bus messaging by testing how they handle queue disruptions.
-- The fault can change queue statuses to disabled, send-disabled, or receive-disabled states.
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-## Use cases
-Azure Service Bus queue state change:
-- Determines the resilience of applications when Service Bus queues become unavailable or have restricted operations.
-- Validates that message processing systems properly handle queue disruptions and implement appropriate retry mechanisms.
-- Tests the behavior of distributed systems when message queues are disabled, ensuring graceful degradation.
-- Verifies monitoring and alerting systems properly detect Service Bus queue state changes.
+Azure Service Bus queue state change is an Azure chaos fault that changes the status of one or more Service Bus queues listed in `QUEUE_NAMES` (in `AZURE_NAMESPACE_NAME`, resource group `RESOURCE_GROUP`, subscription `AZURE_SUBSCRIPTION_ID`) to the value of `ACTION` (`disabled`, `sendDisabled`, or `receiveDisabled`) for `TOTAL_CHAOS_DURATION` seconds, then restores the queue to `Active`.
 
-### Prerequisites
-- Kubernetes >= 1.17
-- Appropriate Azure access to manage Service Bus queues (read and write permissions on Service Bus namespace and queues).
-- Azure Service Bus queues should be in an **Active** state before chaos injection.
-- Use Azure [file-based authentication](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect to Azure using the Azure Go SDK. To generate the auth file, run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
-- Kubernetes secret should contain the auth file created in the previous step in the `CHAOS_NAMESPACE`. Below is a sample secret file:
+Use this fault to test how producers and consumers handle Service Bus queue state disruptions: whether producers retry on `SendDisabled`, whether consumers stop polling on `ReceiveDisabled`, whether retry/backoff logic recovers cleanly when the queue returns to `Active`, and whether monitoring detects the state change within the alerting SLA.
 
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: cloud-secret
-type: Opaque
-stringData:
-  azure.auth: |-
-    {
-      "clientId": "XXXXXXXXX",
-      "clientSecret": "XXXXXXXXX",
-      "subscriptionId": "XXXXXXXXX",
-      "tenantId": "XXXXXXXXX",
-      "activeDirectoryEndpointUrl": "XXXXXXXXX",
-      "resourceManagerEndpointUrl": "XXXXXXXXX",
-      "activeDirectoryGraphResourceId": "XXXXXXXXX",
-      "sqlManagementEndpointUrl": "XXXXXXXXX",
-      "galleryEndpointUrl": "XXXXXXXXX",
-      "managementEndpointUrl": "XXXXXXXXX"
-    }
-```
-
-:::tip
-If you change the secret key name from `azure.auth` to a new name, ensure that you update the `AZURE_AUTH_LOCATION` environment variable in the chaos experiment with the new name.
+:::info Run your first experiment
+If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
 :::
 
-#### Required Azure permissions
+---
 
-The service principal needs the following permissions:
-- **Azure Service Bus Data Owner** or **Azure Service Bus Data Contributor** role on the target namespace
-- Or custom role with these permissions:
-  - `Microsoft.ServiceBus/namespaces/queues/read` 
-  - `Microsoft.ServiceBus/namespaces/queues/write` 
+## Use cases
 
-### Mandatory tunables
-   <table>
-        <tr>
-            <th> Tunable </th>
-            <th> Description </th>
-            <th> Notes </th>
-        </tr>
-        <tr>
-            <td> RESOURCE_GROUP </td>
-            <td> Name of the Azure resource group where the Service Bus namespace exists. </td>
-            <td> For example, <code>rg-azure-servicebus</code>. For more information, go to <a href="#change-queue-state-by-name"> resource group field in the YAML file.</a></td>
-        </tr>
-        <tr>
-            <td> AZURE_NAMESPACE_NAME </td>
-            <td> Name of the Azure Service Bus namespace. </td>
-            <td> For example, <code>my-servicebus-namespace</code>. For more information, go to <a href="#change-queue-state-by-name"> Azure namespace name.</a></td>
-        </tr>
-        <tr>
-            <td> QUEUE_NAMES </td>
-            <td> Comma-separated list of Service Bus queue names to target. </td>
-            <td> For example, <code>queue-1,queue-2,queue-3</code>. For more information, go to <a href="#change-queue-state-by-name"> queue names.</a></td>
-        </tr>
-        <tr>
-            <td> ACTION </td>
-            <td> Target status to set for the queue(s). </td>
-            <td> Supported values: <code>disabled</code>, <code>senddisabled</code>, <code>receivedisabled</code>. Defaults to <code>disabled</code>. For more information, go to <a href="#change-queue-state-by-name"> action.</a></td>
-        </tr>
-    </table>
+Run this fault when you want to answer concrete questions like:
 
-### Optional tunables
-   <table>
-        <tr>
-            <th> Tunable </th>
-            <th> Description </th>
-            <th> Notes </th>
-        </tr>
-        <tr>
-            <td> TOTAL_CHAOS_DURATION </td>
-            <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
-            <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos.</a></td>
-        </tr>
-        <tr>
-            <td> CHAOS_INTERVAL </td>
-            <td> Time interval between successive chaos iterations (in seconds). </td>
-            <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
-        </tr>
-        <tr>
-            <td> SEQUENCE </td>
-            <td> Sequence of chaos execution for multiple queues. </td>
-            <td> Defaults to <code>parallel</code>. Also supports <code>serial</code> sequence. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
-        </tr>
-        <tr>
-            <td> RAMP_TIME </td>
-            <td> Period to wait before and after injecting chaos (in seconds). </td>
-            <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
-        </tr>
-        <tr>
-            <td> DEFAULT_HEALTH_CHECK </td>
-            <td> Determines if you wish to run the default health check which is present inside the fault. </td>
-            <td> Default: 'true'. Validates queues are in Active state before chaos. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
-        </tr>
-    </table>
+- **Producer behavior:** When `ACTION=sendDisabled`, do producers fail messages cleanly with a clear error and retry inside the SLA?
+- **Consumer behavior:** When `ACTION=receiveDisabled`, do consumers stop polling and resume cleanly when the queue is restored?
+- **Full outage:** When `ACTION=disabled`, do dependent services degrade gracefully and recover?
+- **Dead-letter behavior:** Do messages move to the DLQ correctly when delivery counts are exceeded during the chaos window?
+- **Monitoring fidelity:** Do alerts on `Microsoft.ServiceBus/namespaces/queues/Status` and producer/consumer error counters fire inside the alerting SLA?
 
-### Change queue state by name
+---
 
-It specifies a comma-separated list of Service Bus queue names subject to state change. Tune it by using the `QUEUE_NAMES`, `AZURE_NAMESPACE_NAME`, `RESOURCE_GROUP`, and `ACTION` environment variables.
+## Prerequisites
 
-Use the following example to tune it:
+- **Kubernetes version:** 1.21 or later for the chaos infrastructure cluster.
+- **Target queues reachable:** Each entry in `QUEUE_NAMES` exists in the namespace `AZURE_NAMESPACE_NAME` inside `RESOURCE_GROUP`.
+- **Queues in `Active` state:** The fault skips queues that are already disabled.
+- **Azure credentials available:** Service principal File Secret, workload identity, or managed identity.
+- **RBAC granted:** The principal includes the role listed below.
 
-[embedmd]:# (./static/manifests/azure-service-bus-queue-state-change/queue-state-change.yaml yaml)
-```yaml
-# change state of Azure Service Bus queues for a certain chaos duration
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: azure-service-bus-queue-state-change
-    spec:
-      components:
-        env:
-        # comma-separated names of the Azure Service Bus queues
-        - name: QUEUE_NAMES
-          value: 'queue-1,queue-2'
-        # name of the Azure Service Bus namespace
-        - name: AZURE_NAMESPACE_NAME
-          value: 'my-servicebus-namespace'
-        # name of the resource group
-        - name: RESOURCE_GROUP
-          value: 'rg-azure-servicebus'
-        # target state for the queues
-        - name: ACTION
-          value: 'disabled'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
+---
+
+## Supported environments
+
+| Platform | Support status |
+| --- | --- |
+| Azure Service Bus Standard | Supported |
+| Azure Service Bus Premium | Supported |
+| Service Bus Basic | Not supported (queues only; no topics/subscriptions, no partitioning) |
+| Topics and subscriptions | Not supported by this fault (only queues) |
+
+---
+
+## Permissions required
+
+The Azure principal used by the chaos pod needs the following role on the Service Bus namespace.
+
+**Recommended built-in role:** `Azure Service Bus Data Owner` plus `Contributor` on the namespace (to change queue status), or a custom role with the actions below.
+
+**Custom role (minimum actions):**
+
+```json
+{
+  "Name": "Harness Chaos Service Bus Queue State Change",
+  "Actions": [
+    "Microsoft.ServiceBus/namespaces/read",
+    "Microsoft.ServiceBus/namespaces/queues/read",
+    "Microsoft.ServiceBus/namespaces/queues/write"
+  ],
+  "AssignableScopes": ["/subscriptions/<SUBSCRIPTION_ID>"]
+}
 ```
+
+Go to [Azure fault permissions](/docs/chaos-engineering/faults/chaos-faults/azure/security-configurations/fault-permissions) to read the full permission catalog.
+
+---
+
+## Authentication
+
+Go to [Azure authentication methods](/docs/chaos-engineering/faults/chaos-faults/azure/security-configurations/azure-authentication-methods) to set up Service principal, Workload identity, or Managed identity.
+
+---
+
+## Fault tunables
+
+Configure the following fault parameters when you add Azure Service Bus queue state change to an experiment in Chaos Studio. Defaults are shown for reference.
+
+**Required parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `AZURE_NAMESPACE_NAME` | Name of the Service Bus namespace that contains the queues. | (required) |
+| `QUEUE_NAMES` | Comma-separated list of Service Bus queue names. | (required) |
+| `RESOURCE_GROUP` | Resource group that contains the Service Bus namespace. | (required) |
+
+**Chaos parameters**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `ACTION` | New queue status: `disabled`, `sendDisabled`, or `receiveDisabled`. | `disabled` |
+| `TOTAL_CHAOS_DURATION` | Total duration of the fault in seconds. The queue stays in the requested state for this period. | `30` |
+| `CHAOS_INTERVAL` | Delay in seconds between successive iterations when running for more than one cycle. | `30` |
+| `SEQUENCE` | Order in which multiple queues are changed: `parallel` or `serial`. | `parallel` |
+| `RAMP_TIME` | Wait period in seconds before and after the fault. Go to [ramp time](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time) to read how it is applied. | `0` |
+
+**Authentication**
+
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `AZURE_SUBSCRIPTION_ID` | Target Azure subscription ID. | `""` |
+| `AZURE_CLIENT_ID` | Client ID of a user-assigned managed identity. | `""` |
+| `AZURE_AUTHENTICATION_SECRET` | Identifier of the **File Secret in Harness Secret Manager** that contains the service principal JSON. | `""` |
+
+Tunables that apply to every fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
+
+---
+
+## Fault execution in brief
+
+Calls the Service Bus management API to set the `status` of each queue in `QUEUE_NAMES` to the value of `ACTION`, waits for `TOTAL_CHAOS_DURATION` seconds, then sets the status back to `Active`.
+
+---
+
+## Expected behavior during fault execution
+
+- **`ACTION=disabled`:** Producers receive `MessagingEntityDisabled` errors on send, consumers receive the same on receive. The queue is fully unavailable.
+- **`ACTION=sendDisabled`:** Producers receive `MessagingEntityDisabled` on send; consumers continue to drain the queue.
+- **`ACTION=receiveDisabled`:** Producers continue to enqueue; consumers receive `MessagingEntityDisabled` on receive (queue depth grows).
+- After the duration ends, the queue returns to `Active` and producers/consumers resume.
+
+:::info When the fault ends
+The chaos pod sets `status` back to `Active` on every targeted queue. Producers and consumers resume immediately, though clients may still need to recreate stale connections.
+:::
+
+### Signals to watch
+
+- **Queue state:** Use a [command probe](/docs/resilience-testing/chaos-testing/probes/command-probe) running `az servicebus queue show -g <rg> --namespace-name <ns> --name <q> --query status`.
+- **Producer error rate:** Use a [Prometheus probe](/docs/resilience-testing/chaos-testing/probes/apm-probes) on the producer's send-error counter.
+- **Consumer lag:** Use a Prometheus probe on the consumer's queue-depth metric (or Azure Monitor `ActiveMessages`).
+
+---
+
+## Verify the fault execution effect
+
+1. **Inspect queue status.**
+
+   ```bash
+   az servicebus queue show \
+     --resource-group <rg> \
+     --namespace-name <namespace> \
+     --name <queue> \
+     --query status
+   ```
+
+   The status should match `ACTION` during the chaos window and `Active` afterwards.
+
+2. **Inspect Azure Monitor.**
+
+   `Microsoft.ServiceBus/namespaces/queues/ActiveMessages` and producer/consumer error counters should shift in the expected direction.
+
+---
+
+## Recovery and cleanup
+
+- **End of duration:** The chaos pod sets `status` back to `Active` on every queue.
+- **Abort the experiment:** Stopping the experiment from Chaos Studio also restores the queues.
+- **Manual recovery:** Run `az servicebus queue update --resource-group <rg> --namespace-name <namespace> --name <queue> --status Active` for any queue still in a non-Active state.
+
+---
+
+## Limitations
+
+- **Queues only:** Topics and subscriptions are not supported by this fault.
+- **Same-namespace targeting:** All queues in `QUEUE_NAMES` must belong to `AZURE_NAMESPACE_NAME`.
+- **Same-subscription targeting:** A single experiment targets one `AZURE_SUBSCRIPTION_ID`.
+- **Client connection lifecycle:** Some client SDKs hold connections that may need to be recreated when the queue is re-enabled.
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="Azure Service Bus queue state change fails with AuthorizationFailed in Harness Chaos Engineering"
+  mode="docs"
+  fallback="The Azure principal is missing Microsoft.ServiceBus/namespaces/queues/write. Assign Contributor on the Service Bus namespace (or a custom role with the listed actions)."
+/>
+
+<Troubleshoot
+  issue="Producer/consumer continued to work during the chaos window"
+  mode="docs"
+  fallback="Verify the queue status actually changed with az servicebus queue show --query status. The fault skips queues that are already disabled. Also check the client SDK is reading the status; some older SDKs cache the queue handle."
+/>
+
+<Troubleshoot
+  issue="Queue stayed disabled after the experiment ended"
+  mode="docs"
+  fallback="Run az servicebus queue update --resource-group <rg> --namespace-name <ns> --name <queue> --status Active to restore manually. Check the chaos pod logs to root-cause why cleanup failed."
+/>
+
+---
+
+## Related faults
+
+- [Azure web app stop](/docs/chaos-engineering/faults/chaos-faults/azure/azure-web-app-stop): Stop the consumer web app instead of disabling the queue.
+- [Azure instance stop](/docs/chaos-engineering/faults/chaos-faults/azure/azure-instance-stop): Stop the VM running the producer or consumer.

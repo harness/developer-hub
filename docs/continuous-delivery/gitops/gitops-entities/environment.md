@@ -104,7 +104,7 @@ When using environment variables in PR pipelines:
 - Environment variables override service variables
 - Service variables have the lowest priority
 
-For more information on override priority, see [Service Overrides](/docs/continuous-delivery/x-platform-cd-features/environments/service-overrides.md#override-priority).
+For more information on override priority, see [Service Overrides](/docs/continuous-delivery/x-platform-cd-features/environments/service-overrides#override-priority).
 
 ## Using GitOps Environments
 

@@ -425,6 +425,7 @@ Specify the credentials that enable Harness to connect your AWS account. There a
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import DocImage from '@site/src/components/DocImage';
 
 <Tabs>
 <TabItem value="iam" label="Assume IAM Role on Delegate" default>
@@ -461,6 +462,80 @@ We also support JET (JWT-based Enterprise Token) identity tokens for authenticat
 To obtain a JET identity token, authenticate with your identity provider using your credentials and request a token through their API.
 
 Additionally, this option requires Harness Delegate version 24.09.84100 or later.
+
+#### JSON secret mapping
+
+You can store multiple AWS credential fields (`access key`, `secret key`, `session token`) in a single JSON-formatted secret and map individual fields using JSONPath dot notation. This is useful for AWS STS temporary credentials or external credential management systems that export credentials as JSON.
+
+**Delegate support**: This option requires Harness Delegate version 894xx or later.
+
+:::note Feature Availability
+- This feature is currently behind the feature flag `PL_CONNECTOR_JSON_CREDENTIAL_MAPPING`. Contact <a href="mailto:support@harness.io">Harness Support</a> to enable this feature for your account.
+:::
+
+**JSON secret formats**
+
+<Tabs>
+<TabItem value="flat" label="Flat JSON">
+
+```json
+{
+  "access_key": "AKIAIOSFODNN7EXXXXX",
+  "secret_key": "wJalrXUtnFXXXSDFRGXXXXxRfiCYEXAMPLEKEY",
+  "session_token": "FwoGZXIvYXdXXXXXDH..."
+}
+```
+
+**Field mappings**
+- Access Key Mapping: `access_key`
+- Secret Key Mapping: `secret_key`
+- Session Token Mapping: `session_token`
+
+</TabItem>
+<TabItem value="nested" label="Nested JSON (AWS STS format)">
+
+```json
+{
+  "Credentials": {
+    "AccessKeyId": "AKIAIOSFODNN7EXXXXX",
+    "SecretAccessKey": "wJalrXUtnFXXXSDFRGXXXXxRfiCYEXAMPLEKEY",
+    "SessionToken": "FwoGZXIvYXdXXXXXDH...",
+    "Expiration": "2024-12-31T23:59:59Z"
+  }
+}
+```
+
+**Field mappings (JSONPath dot notation)**
+- Access Key Mapping: `Credentials.AccessKeyId`
+- Secret Key Mapping: `Credentials.SecretAccessKey`
+- Session Token Mapping: `Credentials.SessionToken`
+
+</TabItem>
+</Tabs>
+
+**Configuration steps**
+
+Create a secret in your secret manager with your AWS credentials in JSON format:
+
+1. In Harness, go to **Project Settings** → **Secrets** and [create a new text secret](/docs/platform/secrets/add-use-text-secrets#add-a-text-secret).
+2. When configuring the AWS connector, select **JSON Secret** as the **Authentication** method.
+3. Select your **JSON secret**.
+4. Configure the JSONPath mappings for `access key`, `secret key`, and optionally `session token` based on your JSON structure.
+5. Click **Continue**.
+
+**JSONPath dot notation**
+
+Use dots (`.`) to navigate nested JSON structures:
+- Simple key: `username` → accesses `{"username": "value"}`
+- Nested path: `parent.child` → accesses `{"parent": {"child": "value"}}`
+- Deep nesting: `a.b.c` → accesses `{"a": {"b": {"c": "value"}}}`
+
+
+:::warning Avoid literal dots in JSON key names
+
+Do not use literal dots in JSON key names (for example, `"aws.key"`). The JSONPath parser treats dots as path separators. Use underscores (`aws_key`) or camelCase (`awsKey`) instead.
+
+:::
 
 </TabItem>
 <TabItem value="irsa" label="Use IRSA">
@@ -1071,6 +1146,344 @@ You can match only the aud or sub. To map to a particular organization and proje
 
 </details>
 
+
+### OIDC session tags for AWS
+
+:::info Feature flag
+
+The feature flag `CDS_OIDC_AWS_SESSION_TAGS` controls this behavior. Contact [Harness Support](mailto:support@harness.io) to enable it on your account.
+
+:::
+
+You can configure AWS connectors with OIDC authentication to include selected execution context attributes as AWS session tags in OIDC tokens. This enables you to enforce AWS IAM policies based on pipeline execution context, allowing fine-grained access control for AWS resources and secrets.
+
+When you configure an AWS connector with OIDC and the feature flag is enabled, Harness includes your selected attributes in the OIDC token as AWS principal tags using the format `https://aws.amazon.com/tags/principal_tags/<attribute-name>`. AWS converts these into session tags when assuming the IAM role, and you can reference them in IAM policies using `aws:PrincipalTag/<attribute-name>` conditions.
+
+This capability enables granular access control based on execution context. For example, you can ensure that production secrets are only accessible during production environment executions, or restrict resource access based on specific pipelines, projects, or services.
+
+#### Available session tag attributes
+
+You can select any combination of the following attributes to include as session tags:
+
+- **account_id:** Harness account identifier
+- **organization_id:** Organization identifier
+- **project_id:** Project identifier
+- **pipeline_id:** Pipeline identifier
+- **environment_id:** Environment identifier
+- **environment_type:** Environment type (Production, PreProduction, etc.)
+- **connector_id:** Connector identifier
+- **connector_name:** Connector name
+- **service_id:** Service identifier
+- **service_name:** Service name
+- **triggered_by_name:** Name of the user or trigger that initiated the execution
+- **trigger_by_email:** Email of the user who triggered the execution
+- **stage_type:** Stage type in the pipeline
+- **step_type:** Step type in the pipeline
+- **delegate_selectors:** Delegate selectors used for execution
+- **context:** Additional context information
+
+#### Configure OIDC session tags in connectors
+
+When you create or edit an AWS connector with OIDC authentication, you can select which attributes to include as session tags:
+
+1. In the connector credentials step, select **Use OIDC** as the authentication method
+2. Enter your **IAM Role** ARN
+3. In the **OIDC Session Tags** field, select the attributes you want to include
+
+<div style={{textAlign: 'center'}}>
+  <DocImage path={require('../static/aws-oidc-session-tags-dropdown.png')} width="50%" height="50%" title="Click to view full size image" />
+</div>
+
+The selected attributes appear as chips below the field. You can add or remove attributes as needed.
+
+<div style={{textAlign: 'center'}}>
+  <DocImage path={require('../static/aws-oidc-session-tags-selected.png')} width="50%" height="50%" title="Click to view full size image" />
+</div>
+
+#### Connector YAML configuration
+
+The connector YAML includes the selected session tag attributes in the `oidcSessionTagKeys` field:
+
+<details>
+<summary>AWS connector YAML with OIDC session tags</summary>
+
+```yaml
+connector:
+  name: aws-test-oidc
+  identifier: testoidc
+  type: Aws
+  spec:
+    credential:
+      type: OidcAuthentication
+      spec:
+        iamRoleArn: arn:aws:iam::806630305776:role/test-automation
+        oidcSessionTagKeys:
+          - environment_id
+          - environment_type
+          - connector_name
+          - delegate_selectors
+    region: us-east-1
+    delegateSelectors:
+      - aws
+    executeOnDelegate: true
+```
+
+</details>
+
+<details>
+<summary>AWS Secrets Manager connector YAML with OIDC session tags</summary>
+
+```yaml
+connector:
+  name: aws-sm-oidc
+  identifier: awssmoidc
+  type: AwsSecretManager
+  spec:
+    credential:
+      type: OidcAuthentication
+      spec:
+        iamRoleArn: arn:aws:iam::806630305776:role/test-automation
+        oidcSessionTagKeys:
+          - account_id
+          - delegate_selectors
+          - triggered_by_name
+          - pipeline_id
+    region: us-east-1
+    delegateSelectors:
+      - aws
+    executeOnDelegate: true
+```
+
+</details>
+
+<details>
+<summary>AWS KMS connector YAML with OIDC session tags</summary>
+
+```yaml
+connector:
+  name: aws-kms-oidc
+  identifier: testkms2
+  type: AwsKms
+  spec:
+    credential:
+      type: OidcAuthentication
+      spec:
+        iamRoleArn: arn:aws:iam::806630305776:role/test-automation
+        oidcSessionTagKeys:
+          - account_id
+          - delegate_selectors
+          - pipeline_id
+          - connector_id
+    kmsArnInPlainText: arn:aws:kms:us-east-1:806630305776:key/019d3436-6083-42a2-81cf-cfbd678742d6
+    region: us-east-1
+    delegateSelectors:
+      - aws
+    executeOnDelegate: true
+```
+
+</details>
+
+#### Use cases
+
+OIDC session tags enable fine-grained access control based on execution context:
+
+- **Environment-based isolation:** Restrict access to production secrets only during production environment executions, and development secrets only during development executions.
+- **Pipeline-specific access:** Grant access to specific AWS resources only when particular pipelines execute.
+- **Project-level separation:** Enforce project-level access boundaries for AWS resources based on the project context.
+- **Service-specific permissions:** Restrict resource access based on which service is being deployed.
+- **Delegate selector policies:** Enforce IAM policies based on which delegates execute tasks (requires `CDS_OIDC_AWS_SESSION_TAG_DELEGATE_SELECTORS` feature flag).
+- **Compliance requirements:** Meet regulatory requirements that mandate context-based access separation for sensitive data and resources.
+
+#### How it works
+
+When your pipeline executes and uses an AWS connector with OIDC authentication, Harness and AWS perform these steps:
+
+1. Harness generates an OIDC ID token that includes your selected attributes from the pipeline execution context
+2. The ID token includes claims formatted as `"https://aws.amazon.com/tags/principal_tags/<attribute>": "<value>"`
+3. Harness presents the ID token to AWS STS via `AssumeRoleWithWebIdentity`
+4. AWS validates the token and converts the principal tags into session tags
+5. IAM policies evaluate the `aws:PrincipalTag/<attribute>` conditions to enforce access control
+
+Session tags are only included for attributes that have values in the execution context. If a selected attribute is not available (for example, `environment_id` when no environment is specified), that tag is not included in the token.
+
+#### IAM trust policy configuration
+
+To use OIDC session tags, add the `sts:TagSession` permission to your IAM role's trust policy. This permission allows AWS STS to apply session tags from the OIDC token when assuming the role.
+
+<details>
+<summary>Trust policy with sts:TagSession permission</summary>
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Federated": "arn:aws:iam::806630305776:oidc-provider/app.harness.io/ng/api/oidc/account/YOUR_ACCOUNT_ID"
+      },
+      "Action": [
+        "sts:AssumeRoleWithWebIdentity",
+        "sts:TagSession"
+      ],
+      "Condition": {
+        "StringEquals": {
+          "app.harness.io/ng/api/oidc/account/YOUR_ACCOUNT_ID:aud": "sts.amazonaws.com"
+        }
+      }
+    }
+  ]
+}
+```
+
+</details>
+
+You can add conditions to the trust policy to validate specific session tag values during role assumption:
+
+<details>
+<summary>Trust policy with session tag validation</summary>
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Federated": "arn:aws:iam::806630305776:oidc-provider/qa.harness.io/ng/api/oidc/account/YOUR_ACCOUNT_ID"
+      },
+      "Action": [
+        "sts:AssumeRoleWithWebIdentity",
+        "sts:TagSession"
+      ],
+      "Condition": {
+        "StringEquals": {
+          "qa.harness.io/ng/api/oidc/account/YOUR_ACCOUNT_ID:aud": "sts.amazonaws.com"
+        },
+        "StringLike": {
+          "aws:RequestTag/delegate_selectors": "*aws*",
+          "aws:RequestTag/pipeline_id": "*deploy-prod*"
+        }
+      }
+    }
+  ]
+}
+```
+
+</details>
+
+The trust policy above validates that the `delegate_selectors` tag contains "aws" and the `pipeline_id` tag contains "deploy-prod" during role assumption. If these conditions are not met, role assumption fails.
+
+**Trust policy components:**
+
+- **`sts:TagSession`:** Grants permission to apply session tags from the OIDC token
+- **`aws:RequestTag/<attribute>`:** Validates that the session tag matches the specified value or pattern during role assumption
+
+:::info
+The `aws:RequestTag` condition in the trust policy validates session tags during role assumption. If the session tags in the OIDC token do not match the trust policy conditions, role assumption fails.
+:::
+
+#### IAM policy conditions for attribute-based access control
+
+After you configure the trust policy, update your IAM policies to enforce attribute-based access using the `aws:PrincipalTag` condition. This ensures that resources can only be accessed when the session tags match your requirements.
+
+<details>
+<summary>Example: Environment-based secret access control</summary>
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "secretsmanager:GetSecretValue",
+        "secretsmanager:DescribeSecret"
+      ],
+      "Resource": "arn:aws:secretsmanager:us-east-1:123456789012:secret:prod/*",
+      "Condition": {
+        "StringEquals": {
+          "aws:PrincipalTag/environment_type": "Production"
+        }
+      }
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "secretsmanager:GetSecretValue",
+        "secretsmanager:DescribeSecret"
+      ],
+      "Resource": "arn:aws:secretsmanager:us-east-1:123456789012:secret:dev/*",
+      "Condition": {
+        "StringEquals": {
+          "aws:PrincipalTag/environment_type": "PreProduction"
+        }
+      }
+    }
+  ]
+}
+```
+
+This policy restricts access to production secrets only when `environment_type` is "Production", and development secrets only when it is "PreProduction".
+
+</details>
+
+**Key IAM policy components:**
+
+- **`aws:PrincipalTag/<attribute>`:** Evaluates the session tag passed through the OIDC token
+- **Resource ARN patterns:** Use path-based or tag-based patterns to organize resources by context
+- **Variable substitution:** Match session tags to resource tags using `${aws:ResourceTag/tagname}` syntax
+
+#### OIDC token structure
+
+The OIDC token payload includes your selected attributes as AWS principal tags:
+
+<details>
+<summary>OIDC token payload example</summary>
+
+```json
+{
+  "sub": "account_identifier",
+  "aud": "sts.amazonaws.com",
+  "iss": "https://app.harness.io/ng/api/oidc/account/YOUR_ACCOUNT_ID",
+  "exp": 1234567890,
+  "iat": 1234567890,
+  "https://aws.amazon.com/tags/principal_tags/environment_id": "prod_environment",
+  "https://aws.amazon.com/tags/principal_tags/environment_type": "Production",
+  "https://aws.amazon.com/tags/principal_tags/pipeline_id": "deploy_prod",
+  "https://aws.amazon.com/tags/principal_tags/delegate_selectors": "+aws+prod+"
+}
+```
+
+</details>
+
+Each selected attribute appears as a claim with the prefix `https://aws.amazon.com/tags/principal_tags/` followed by the attribute name.
+
+#### Delegate selectors behavior
+
+The `delegate_selectors` attribute has special behavior governed by two different feature flags:
+
+- **When `CDS_OIDC_AWS_SESSION_TAG_DELEGATE_SELECTORS` is enabled:** Harness automatically includes `delegate_selectors` in the OIDC token regardless of whether you selected it in the connector's OIDC session tags field.
+- **When `CDS_OIDC_AWS_SESSION_TAGS` is enabled:** You can select any attributes you want, including `delegate_selectors`, through the connector configuration. All selected attributes are included in the OIDC token.
+
+The two feature flags work independently. If both are enabled, `delegate_selectors` will be included in the token regardless of your selection.
+
+Multiple delegate selectors are encoded using the `+` delimiter (for example, `+selector1+selector2+`). Harness resolves delegate selectors following the precedence: Step > StepGroup > Stage > Pipeline (first match wins). Connector-level delegate selectors are always combined with the resolved selector.
+
+:::info Configuration requirements and behavior
+
+- **Feature flag:** The `CDS_OIDC_AWS_SESSION_TAGS` feature flag must be enabled at the account level. Contact [Harness Support](mailto:support@harness.io) to enable it.
+- **Attribute selection:** You must select at least one attribute in the connector's OIDC session tags field for tags to be included in the token.
+- **Attribute availability:** Session tags are only included for attributes with values in the execution context. If an attribute is unavailable (for example, `service_id` in a non-deployment pipeline), that tag is omitted from the token.
+- **IAM propagation:** Changes to IAM trust policies and permissions policies can take up to five minutes to propagate in AWS. Allow time for propagation before testing.
+- **Session tag format:** AWS requires session tags to use the flattened claim format `https://aws.amazon.com/tags/principal_tags/<tag-name>`. Harness automatically formats claims correctly.
+- **Trust policy validation:** If your IAM role trust policy includes conditions on `aws:RequestTag/<attribute>`, ensure the values match your pipeline execution attributes. Mismatches cause role assumption to fail.
+
+For more information about AWS session tags, go to [AWS IAM session tags documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_session-tags.html).
+
+:::
+
+
 </TabItem>
 <TabItem value="broker" label="Custom (Credential Broker)">
 
@@ -1180,7 +1593,6 @@ Finally, it is possible to create a connector with a non-existent delegate. This
 
 :::
 
-*End of Credentials* 
 
 ### Enable cross-account access (STS Role)
 
@@ -1271,7 +1683,6 @@ Here's list of throttled error codes where equal jitter strategy is applied:
 ```
 
 For more strategies, go to [Exponential Backoff And Jitter](https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/) from AWS.
-
 
 ### Connector Limitations
 

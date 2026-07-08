@@ -178,7 +178,7 @@ export default function ThreeKHome() {
             Create your first feature flag
           </Link>
 
-          <Link href="/3k-docs/continuous-delivery">
+          <Link href="/3k-docs/continuous-delivery/getting-started">
             Deploy with GitOps
           </Link>
 
@@ -214,21 +214,21 @@ export default function ThreeKHome() {
               </div>
               <p>New YAML v1 model for stages, services, and environments.</p>
             </Link>
-            <Link href="/3k-docs/platform/connectors" className={styles.overviewTile}>
+            <Link href="/3k-docs/platform/getting-started/connectors" className={styles.overviewTile}>
               <div className={styles.overviewTileHeader}>
                 <span className={styles.overviewTileIcon}>🔌</span>
                 <h3>Connectors</h3>
               </div>
               <p>Integrations for Git, cloud, artifacts, and observability.</p>
             </Link>
-            <Link href="/3k-docs/platform/secrets" className={styles.overviewTile}>
+            <Link href="/3k-docs/platform/getting-started/secrets" className={styles.overviewTile}>
               <div className={styles.overviewTileHeader}>
                 <span className={styles.overviewTileIcon}>🔐</span>
                 <h3>Secrets Management</h3>
               </div>
               <p>Secure credential storage and retrieval systems.</p>
             </Link>
-            <Link href="/3k-docs/platform/navigation" className={styles.overviewTile}>
+            <Link href="/3k-docs/platform/getting-started/navigation" className={styles.overviewTile}>
               <div className={styles.overviewTileHeader}>
                 <span className={styles.overviewTileIcon}>🧭</span>
                 <h3>Platform &amp; Navigation</h3>

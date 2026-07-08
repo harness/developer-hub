@@ -9,14 +9,14 @@ Harness IDP leverages AI to enhance discoverability and developer productivity a
 
 ---
 
-## AI-Powered Search in IDP
+## AI-Powered search in IDP
 
 ### Overview
 The AI Search feature in Harness IDP enables users to query and interact with existing IDP data such as Catalog entities, Scorecards, and Self-Service Workflows using natural language. This capability integrates with various Harness modules (CI, CD, STO, etc.) to deliver correlated insights from across the developer ecosystem.
 
 ![](./static/ai-search-idp.png)
 
-### Key Features
+### Key features
 1. **Entity-Aware Querying**:
 
 Users can ask direct questions about any service or entity registered in the IDP Catalog:
@@ -49,12 +49,12 @@ The feature leverages the existing IDP documentation corpus for accurate respons
 
 ---
 
-## AI Semantic Search in TechDocs
+## AI semantic search in TechDocs
 
 ### Overview
 Harness IDP extends its search capability with semantic understanding across all documentation sources integrated through TechDocs. This feature enables natural language querying of technical documents related to any entity in the Catalog, powered by embedding-based semantic retrieval.
 
-### Core Functionality
+### Core functionality
 Users can ask high-level or contextual questions such as:
 - “How do I configure OAuth in Service X? Help me understand this using TechDocs”
 - “What are the best practices for writing a Scorecard check? Help me understand this using TechDocs”
@@ -64,7 +64,7 @@ The search uses **vector embeddings** to retrieve conceptually similar informati
 
 ---
 
-## Example Queries & Use Scenarios
+## Example queries & use scenarios
 
 | Use Case | Example Query | Response Type |
 |----------|---------------|---------------|
@@ -78,8 +78,8 @@ The search uses **vector embeddings** to retrieve conceptually similar informati
 
 ## Implementation
 
-### Prerequisites
-The TechDocs semantic search feature is gated behind a feature flag (FF). Ensure the FF (`IDP_TECH_DOCS_SEMANTIC_SEARCH`) is enabled on your account. If it’s not, please contact Harness Support to enable it.
+### Before you begin
+The TechDocs semantic search feature is gated behind a feature flag (FF). Ensure the FF (`IDP_TECH_DOCS_SEMANTIC_SEARCH`) is enabled on your account. If it’s not, contact Harness Support to enable it.
 
 ### Steps
 1. A **Harness AI** chat icon appears at the bottom-right of the IDP interface.

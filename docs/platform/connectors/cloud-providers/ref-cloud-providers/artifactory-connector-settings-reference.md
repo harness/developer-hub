@@ -94,9 +94,52 @@ You can also select your repo in your JFrog instance, select **Set Me Up**, and 
 
 For more information, go to the JFrog documentation on [Repository Management](https://www.jfrog.com/confluence/display/JFROG/Repository+Management) and [Configuring Docker Repositories](https://www.jfrog.com/confluence/display/RTF/Docker+Registry#DockerRegistry-ConfiguringDockerRepositories).
 
-### Username and Password
+### Authentication
+
+The Artifactory connector supports three authentication methods. Select one from the **Authentication** dropdown.
+
+#### Username and Password
 
 Enter the **Username** for the Artifactory account user, and select or create a [Harness encrypted text secret](/docs/platform/secrets/add-use-text-secrets) containing the corresponding **Password**.
+
+#### Anonymous (no credentials required)
+
+Use this option for public Artifactory repositories that do not require authentication. No credentials are needed.
+
+#### OIDC Authentication
+
+:::note
+This feature is behind the feature flag `CDS_ARTIFACTORY_OIDC_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+OIDC authentication enables credential-free, federated authentication with JFrog Artifactory. Harness acts as an OIDC Identity Provider and generates short-lived JWT tokens that Artifactory exchanges for access tokens.
+
+Before using OIDC authentication, you must configure Harness as an OIDC provider in your JFrog Artifactory instance. For more information, go to the JFrog documentation on [OpenID Connect Integration](https://jfrog.com/help/r/jfrog-platform-administration-documentation/openid-connect-integration).
+
+When you select OIDC Authentication, configure the following fields:
+
+* **Provider Name**: Enter the OIDC provider name you configured in JFrog Artifactory (for example, `harness-oidc-provider`). This value must match the provider name exactly (case-sensitive).
+
+* **Audience** (optional): Enter the audience value if you specified one when creating the OIDC provider in Artifactory. The audience value is included in the JWT token `aud` claim and must match the expected audience configured in JFrog.
+
+* **JFrog Project Key** (optional): Enter the JFrog project key if your Artifactory resources are scoped to a specific project. This field is required when accessing project-scoped repositories or artifacts.
+
+### Connectivity Mode
+
+Select how you want the connector to connect to your Artifactory instance:
+
+
+* **Connect through Harness Delegate**: The connector uses a Harness Delegate installed in your environment to connect to Artifactory. The delegate securely connects to the Harness Platform and performs tasks using your repositories. This option is required for on-premise Artifactory instances or when your Artifactory instance is behind a corporate firewall.
+
+* **Connect through Harness Platform**: The connector connects directly from the Harness Platform to your Artifactory instance. All credentials are encrypted and stored in the Secret Manager configured in Harness. A Harness Delegate is still used for deployment operations, even if this option is selected.
+
+### Delegates Setup
+
+If you selected **Connect through Harness Delegate** in the connectivity mode, specify which delegates the connector should use:
+
+* **Use any available Delegate**: The connector can use any delegate that is available.
+
+* **Only use Delegates with all of the following tags**: The connector only uses delegates that have all the specified tags. Enter or select delegate tags to filter which delegates can be used.
 
 ### Additional artifact details
 
@@ -112,11 +155,5 @@ These settings are for Artifactory deployments.
 The [Artifactory user account](#username-and-password) you use in the Harness Artifact connector requires [basic authentication](https://www.jfrog.com/confluence/display/JFROG/Access+Tokens#AccessTokens-BasicAuthentication) to fetch the **Artifact/Image Path** and **Tag**.
 
 ![](./static/artifactory-connector-settings-reference-11.png)
-
-:::
-
-:::info Limitation
-
-The Artifactory connector currently does not support OpenID Connect (OIDC) for authentication, limiting integration with OIDC-compliant identity providers
 
 :::

@@ -2,6 +2,7 @@
 title: System recommendations for Kubernetes Deployments
 ---
 
+
 As the number of applications and the Kubernetes accounts scale, the resource requirements for the Spinnaker services would change.  Below is the table containing the resource requirements for base deployment of Spinnaker targets organizations with 
 * 50 applications with 50 Kubernetes accounts* 250 deployments per day over 5 hour window* 30 req/s coming from browser sessions or tools* 10x burst for both pipelines and API calls.
 In addition, these are the considerations taken into account

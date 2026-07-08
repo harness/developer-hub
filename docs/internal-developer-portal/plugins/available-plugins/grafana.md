@@ -35,7 +35,7 @@ grafana:
 
 ### Secrets
 
-Since the `GRAFANA_TOKEN` variable is used in the application configuration, you must generate a Grafana API key and set it as the value of `GRAFANA_TOKEN`. For instructions on how to create a Grafana API key, [read the instructions](https://grafana.com/docs/grafana/latest/developers/http_api/auth/#create-api-token).
+Since the `GRAFANA_TOKEN` variable is used in the application configuration, you must generate a Grafana API key and set it as the value of `GRAFANA_TOKEN`. For instructions on how to create a Grafana API key, [read the instructions](https://grafana.com/docs/grafana/latest/developers/http_api/auth#create-api-token).
 
 ![](./static/grafana-secret.png)
 

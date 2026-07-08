@@ -2,7 +2,7 @@ The **Metrics** page in Harness Feature Management & Experimentation (FME) provi
 
 ![](../static/metrics.png)
 
-Metric results are calculated per treatment for <Tooltip id="fme.openfeature.feature-flag">feature flags</Tooltip> that share the same traffic type and use percentage-based targeting rules, allowing you to compare impact between a baseline and comparison treatment.
+Metric results are calculated per treatment for <Tooltip id="fme.feature-management.feature-flag">feature flags</Tooltip> that share the same traffic type and use percentage-based targeting rules, allowing you to compare impact between a baseline and comparison treatment.
 
 ## Search and manage metrics
 

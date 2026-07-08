@@ -7,11 +7,12 @@ toc_min_heading_level: 2
 toc_max_heading_level: 3
 ---
 
+
 ## Overview
 
-This tutorial shows you how to eliminate PR testing bottlenecks by building a self-service ephemeral environment system. Instead of developers struggling over shared staging environments and manual cleanups, you'll create automated environments that provision in 5 minutes and delete themselves after 24 hours.
+This tutorial shows you how to eliminate PR testing bottlenecks by building a self-service ephemeral environment system. Instead of developers struggling over shared staging environments and manual cleanups, you will create automated environments that provision in 5 minutes and delete themselves after 24 hours.
 
-### The Problem Scenario
+### The problem scenario
 
 Your development team of 12 engineers ships a web application with 30+ pull requests per week. Currently, PR testing is painful:
 
@@ -21,7 +22,7 @@ Your development team of 12 engineers ships a web application with 30+ pull requ
 * **Inconsistent setup** → each developer configures differently ("works on my machine")
 * **QA bottleneck** → QA team can only test 1-2 PRs at a time
 
-### The End Result
+### The end result
 
 A complete self-service environment system where developers can:
 
@@ -31,7 +32,7 @@ A complete self-service environment system where developers can:
 
 ---
 
-## What You'll Build
+## What you will build
 
 * IaCM workspace templates for Kubernetes namespace provisioning
 * Provision and destroy pipelines for infrastructure lifecycle
@@ -41,17 +42,17 @@ A complete self-service environment system where developers can:
 
 ![](./static/target-objective.png)
 
-## Prerequisites
+## Before you begin
 :::caution Make Sure You Fulfill The Requirements
 
-Before proceeding with the tutorial steps, ensure you have completed the [prerequisites outlined](../get-started.md#before-you-begin) in the [**Get Started with Environment Management**](../get-started.md) guide:
+Before proceeding with the tutorial steps, ensure you have completed the [prerequisites outlined](../get-started#before-you-begin) in the [**Get Started with Environment Management**](../get-started.md) guide:
 
 * ☑ Required modules and feature flags enabled
 * ☑ Connector and delegate configured
 * ☑ Infrastructure requirements met
 * ☑ Permissions set across IDP, CD, and platform resources
 
-### Knowledge Prerequisites
+### Knowledge prerequisites
 
 * ☑ Basic understanding of Kubernetes concepts (namespaces, deployments)
 * ☑ Familiarity with Harness CD services and pipelines
@@ -60,7 +61,7 @@ Before proceeding with the tutorial steps, ensure you have completed the [prereq
 
 ---
 
-## Component Breakdown
+## Component breakdown
 
 1. **IaCM Workspace Template** - Defines reusable infrastructure patterns. Here we use it for Kubernetes namespaces, in principle this can be used for any infrastructure resource using Terraform/OpenTofu
 2. **CD Services** - Define the applications to deploy (frontend + backend)
@@ -70,7 +71,7 @@ Before proceeding with the tutorial steps, ensure you have completed the [prereq
 
 ---
 
-## Who Benefits
+## Who benefits
 
 * **Developers** - Focus completely on coding instant test environments, no manual cleanup
 * **Platform Team** - Consistent environment configurations with clear audit trail (who created what, when)
@@ -79,15 +80,15 @@ Before proceeding with the tutorial steps, ensure you have completed the [prereq
 
 ---
 
-## Step-by-Step Walkthrough
+## Step-by-Step walkthrough
 
 :::info
 Update variables (marked as `<your-*>`) in code snippets with relevant reference to your set up
 :::
 
-### Step 1: Create the Namespace Terraform Module
+### Step 1: Create the namespace Terraform module
 
-Create the Terraform code that the workspace will use. You can use an existing git repository or create a new one. Here we'll use an existing repository in Harness Code Repository. In your Git repository at `terraform/k8s-namespace/`, create the following files:
+Create the Terraform code that the workspace will use. You can use an existing git repository or create a new one. Here we will use an existing repository in Harness Code Repository. In your Git repository at `terraform/k8s-namespace/`, create the following files:
 
 ```hcl title="File: main.tf"
 provider "google" {
@@ -140,7 +141,7 @@ output "name" {
 Commit and push these files to your Git repository.
 
 
-### Step 2: Create the IaCM Workspace Template
+### Step 2: Create the IaCM workspace template
 
 The workspace template defines the infrastructure pattern for creating Kubernetes namespaces.
 
@@ -171,10 +172,10 @@ Note the identifiers:
 - **Template Name:** `k8s-namespace-template`
 - **Template Version:** `v1`
 
-You'll need these in [Step 10](#step-10-create-the-environment-blueprint) when creating the Environment Blueprint.
+You will need these in [Step 10](#step-10-create-the-environment-blueprint) when creating the Environment Blueprint.
 
 
-### Step 3: Create the IaCM Provision Pipeline
+### Step 3: Create the IaCM provision pipeline
 
 This pipeline creates the namespace when an environment is provisioned. In principle, you can use the pipeline to create workspaces for any resource, so long as the template has its terraform code.
 
@@ -242,7 +243,7 @@ Note the identifier:
 - **Pipeline identifier:** `provision_namespace_pipeline`
 
 
-### Step 4: Create the Destroy Pipeline
+### Step 4: Create the destroy pipeline
 
 This pipeline cleans up the namespace when the environment is deleted or TTL expires.
 
@@ -302,11 +303,11 @@ Note the identifier:
 - **Pipeline identifier:** `destroy_namespace_pipeline`
 
 
-### Step 5: Create CD Services
+### Step 5: Create CD services
 
-Now we'll create two CD services for our sample application with the help of 2 toy nginx helm charts available here.
+Now we will create two CD services for our sample application with the help of 2 toy nginx helm charts available here.
 
-#### Frontend Service
+#### Frontend service
 
 1. Navigate to **Continuous Delivery** → **Services**
 
@@ -334,7 +335,7 @@ Now we'll create two CD services for our sample application with the help of 2 t
 
 6. Click **Save** to create the frontend service
 
-#### Backend Service
+#### Backend service
 
 1. Create another service named `ephemeral-backend` and follow the same steps as above.
 2. **Service Definition:**
@@ -355,11 +356,11 @@ Note the identifiers:
 - **Backend service:** `ephemeral-backend`
 
 
-### Step 6: Create a CD Environment and Infrastructure Definition
+### Step 6: Create a CD environment and infrastructure definition
 
-The CD environment defines where your services will be deployed. We'll create an environment with an infrastructure definition pointing to your Kubernetes cluster.
+The CD environment defines where your services will be deployed. We will create an environment with an infrastructure definition pointing to your Kubernetes cluster.
 
-#### Create the Environment:
+#### Create the environment
 
 1. Navigate to **Continuous Delivery** → **Environments**
 2. Click **+ New Environment**
@@ -370,14 +371,14 @@ The CD environment defines where your services will be deployed. We'll create an
 4. Choose **Inline** as the store type
 5. Click **Save** to create the environment
 
-#### Create the Infrastructure Definition:
+#### Create the infrastructure definition
 
 1. In the newly created environment, switch to the **Infrastructure Definitions** tab
 2. Click **+ Infrastructure Definition**
 3. Configure the infrastructure:
    - **Name:** `ephemeral-infra`
    - **Deployment Type:** Select `Native Helm`
-4. Under **Infrastructure Type**, choose based on your cloud provider. In our example, we'll use **Direct Connection** for vendor-agnostic Kubernetes
+4. Under **Infrastructure Type**, choose based on your cloud provider. In our example, we will use **Direct Connection** for vendor-agnostic Kubernetes
 5. Configure the cluster details:
    - **Connector:** Select your Kubernetes or cloud provider connector (or create a new one)
    - **Namespace:** Mark as runtime input.
@@ -388,10 +389,10 @@ Note the identifiers:
 - **Environment identifier:** `ephemeral_env`
 - **Infrastructure definition identifier:** `ephemeral_infra`
 
-You'll need these identifiers in [Step 10](#step-10-create-the-environment-blueprint) when creating the Environment Blueprint.
+You will need these identifiers in [Step 10](#step-10-create-the-environment-blueprint) when creating the Environment Blueprint.
 
 
-### Step 7: Create Service Deployment and Delete Pipelines
+### Step 7: Create service deployment and delete pipelines
 
 Create deployment and delete pipelines for both services. Note that you can update this pipeline based on your needs or even use your existing pipelines here.
 
@@ -498,15 +499,15 @@ Note the identifiers:
 - **Deploy pipeline:** `deploy_service`
 - **Delete pipeline:** `delete_service`
 
-You'll need these in Step 9 when updating the Catalog entities.
+You will need these in Step 9 when updating the Catalog entities.
 
 
-### Step 8: Enable CD Auto-discovery to Register Catalog entities
+### Step 8: Enable CD auto-discovery to register catalog entities
 
-CD Auto-discovery will automatically discover and import CD services as Catalog components in IDP. For more information on how to do this, refer to [Catalog Auto-Discovery with Harness CD Services](https://developer.harness.io/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/harness-cd/)
+CD Auto-discovery will automatically discover and import CD services as Catalog components in IDP. For more information on how to do this, go to [Catalog Auto-Discovery with Harness CD Services](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/harness-cd/)
 
 
-### Step 9: Update Catalog entities with deployment pipelines
+### Step 9: Update catalog entities with deployment pipelines
 
 Catalog entities should have the necessary deployment pipelines in the Catalog Info YAML.
 
@@ -522,9 +523,9 @@ deploymentPipelines:
 ```
 
 
-### Step 10: Create the Environment Blueprint
+### Step 10: Create the environment blueprint
 
-Now we'll assemble all components into an environment blueprint that developers can use.
+Now we will assemble all components into an environment blueprint that developers can use.
 
 1. Navigate to **Internal Developer Portal** → **Environments**
 2. Click **Create** → **Environment Blueprint**
@@ -622,9 +623,9 @@ spec:
 5. Click **Save Blueprint**
 
 
-### Step 11: Provision an Ephemeral Environment
+### Step 11: Provision an ephemeral environment
 
-Now let's create an environment instance from the blueprint.
+Now let us create an environment instance from the blueprint.
 
 1. Navigate to **Internal Developer Portal** → **Environments**
 
@@ -649,13 +650,13 @@ Now let's create an environment instance from the blueprint.
    - **Frontend Deployment:** CD deploys the frontend service
    - **Backend Deployment:** CD deploys the backend service
 
-7. Once complete, you'll see the environment dashboard with **Environment status:** `Online`
+7. Once complete, you will see the environment dashboard with **Environment status:** `Online`
 
-**Congratulations! You've successfully created an ephemeral environment system.**
+**Congratulations! You have successfully created an ephemeral environment system.**
 
 ---
 
-## Recommended Reading
+## Recommended reading
 
 * [Environment Management Overview | Harness Developer Hub](/docs/internal-developer-portal/environment-management/overview)
 * [Get Started with Environment Management | Harness Developer Hub](/docs/internal-developer-portal/environment-management/get-started/)

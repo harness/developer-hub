@@ -2,6 +2,7 @@
 title: Migrating from one cluster to another
 ---
 
+
 ## Migrating pipelines:
 Follow this steps for moving all your pipelines and applications from one Spinnaker to another.The first thing to check is if you have applications with the same name on both spinnaker, if so you need to answer one question.  
 1) I want to keep pipelines separated  

@@ -20,6 +20,9 @@ keywords:
   - OneLogin setup
   - OneLogin IdP
   - SAML assertion
+  - JIT provisioning
+  - just-in-time provisioning
+  - automatic user creation
 tags:
   - Authentication
   - SAML
@@ -47,6 +50,7 @@ By the end of this topic, you will be able to:
 - [Enable SSO authentication](#enable-onelogin-as-a-harness-sso-provider).
 - [Configure OneLogin roles and parameters to sync user permissions with Harness user groups](#assign-roles-to-users).
 - [Test and verify OneLogin authentication and authorization](#test-the-integration).
+- [Use Just-in-Time (JIT) provisioning](#just-in-time-jit-provisioning) to automatically create users on first login.
 
 ---
 

@@ -13,11 +13,11 @@ TechDocs leverages **MkDocs** to convert Markdown files into static documentatio
 
 ---
 
-## Documentation Site Structure
+## Documentation site structure
 
-### Single-Page Documentation
+### Single-Page documentation
 
-Single-page documentation is ideal for quick-start guides, FAQs, or standalone documentation that doesn't require complex navigation.
+Single-page documentation is ideal for quick-start guides, FAQs, or standalone documentation that does not require complex navigation.
 
 **When to use:**
 - Simple project documentation
@@ -35,13 +35,13 @@ TechDocs will automatically render the content without additional configuration.
 
 ---
 
-### Multi-Page Documentation
+### Multi-Page documentation
 
 For comprehensive documentation requiring hierarchical navigation and better content organization, use multi-page sites.
 
-#### Option 1: Auto-Generated Navigation
+#### Option 1: Auto-Generated navigation
 
-MkDocs automatically generates navigation based on your folder and file structure—no configuration required.
+MkDocs automatically generates navigation based on your folder and file structure, no configuration required.
 
 **Example directory structure:**
 
@@ -77,7 +77,7 @@ With auto-generated navigation, you can include an `mkdocs.yml` file for site co
 
 ---
 
-#### Option 2: Custom Navigation
+#### Option 2: Custom navigation
 
 For precise control over navigation structure and ordering, define a `nav` section in your `mkdocs.yml` file.
 
@@ -106,11 +106,11 @@ Always include the `techdocs-core` plugin for compatibility with TechDocs. See t
 
 ---
 
-## Add Diagrams and Images
+## Add diagrams and images
 
 Visual elements like diagrams and images enhance documentation clarity and understanding.
 
-### Static Images (PNG, JPG, SVG)
+### Static images (PNG, JPG, SVG)
 
 **Directory structure:**
 
@@ -140,11 +140,11 @@ Store images in the `docs` folder or a subdirectory (commonly `docs/static`):
 
 ---
 
-### Diagrams as Code
+### Diagrams as code
 
 Create diagrams directly in Markdown using diagram-as-code tools. TechDocs supports multiple diagram formats through the `techdocs-core` plugin.
 
-#### Mermaid Diagrams
+#### Mermaid diagrams
 
 Mermaid is supported out of the box and ideal for flowcharts, sequence diagrams, Gantt charts, and more.
 
@@ -194,7 +194,7 @@ PlantUML is ideal for more detailed and customizable diagrams, such as class dia
 - In your Markdown file:
 
 ```sh
-### Deployment Diagram
+### Deployment diagram
 
 ```plantuml
 @startuml

@@ -10,6 +10,8 @@ redirect_from:
   - /docs/platform/delegates/install-delegates/gke-workload-identity
 ---
 
+
+
 **Workload Identity** allows a Kubernetes service account in your GKE cluster to act as a Google IAM Service account. Pods that use the configured KSA automatically authenticate as the IAM service account when accessing Google Cloud APIs.
 
 To learn more about **Workload Identity** check out the [blog](https://dev.to/kameshsampath/applying-workload-identity-with-a-demo-1bf9) that explains it with an example.

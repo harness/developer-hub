@@ -376,6 +376,7 @@ When using Blank Canvas, follow these steps:
 
 ## Related resources
 
+- [Azure Container Apps Sample Repository](https://github.com/harness-community/harnesscd-example-apps/tree/master/azure-container-apps) - Complete service and environment configuration examples
 - [Create an Azure Connector](/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector)
 - [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store)
 - [Azure Container Apps documentation](https://learn.microsoft.com/en-us/azure/container-apps/)

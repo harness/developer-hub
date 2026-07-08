@@ -2,6 +2,7 @@
 title: Database recommendations for running spinnaker
 ---
 
+
 Services within spinnaker such as Clouddriver, Front50 and Orca can be configured to use databases such as MySQL, PostgreSQL or Redis as their datastore. The databases can be configured by following the steps mentioned on the below docs
 * **Clouddriver:** [https://docs.armory.io/docs/armory-admin/clouddriver-sql-configure/](https://docs.armory.io/docs/armory-admin/clouddriver-sql-configure/)* **Orca: **[https://docs.armory.io/docs/armory-admin/orca-sql-configure/](https://docs.armory.io/docs/armory-admin/orca-sql-configure/)* **Front50: **[https://spinnaker.io/docs/setup/productionize/persistence/front50-sql/](https://spinnaker.io/docs/setup/productionize/persistence/front50-sql/) 
 The recommendations around using MySQL and Redis for better scalability are outlined below

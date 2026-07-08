@@ -12,7 +12,7 @@ Checks are the building blocks of scorecards. A check is a query performed again
 
 ---
 
-## Create Custom Checks
+## Create custom checks
 
 You can create custom checks to evaluate data points from different data sources and use them in your scorecards.
 
@@ -22,7 +22,7 @@ You can create custom checks to evaluate data points from different data sources
    - **Name**: A descriptive name for your check
    - **Description**: Explain what the check validates
    - **Tags** (optional): Add tags for better organization
-4. Under **Rules Configuration**, configure your rules using either **Basic** or **Advanced** mode (see [Rules Configuration](#rules-configuration) for details)
+4. Under **Rules Configuration**, configure your rules using either **Basic** or **Advanced** mode (go to [Rules Configuration](#rules-configuration) for details)
 5. (Optional) Add a **Rule Description** for each rule to provide context and clarify what the rule validates
 6. Click **Save changes** to save the check and its rule configuration
 
@@ -30,11 +30,11 @@ You can create custom checks to evaluate data points from different data sources
 
 ---
 
-## Rules Configuration
+## Rules configuration
 
 Harness IDP provides two modes for configuring rules in your custom checks: **Basic** and **Advanced**. Each mode is designed to cater to different levels of complexity.
 
-### Basic Rules Configuration
+### Basic rules configuration
 
 The **Basic** mode offers a user-friendly interface for creating simple rule expressions without requiring technical expertise.
 
@@ -58,7 +58,7 @@ Each rule in Basic mode consists of four components:
 
 **Example:**
 
-Let's create a simple check to ensure a repository has branch protection enabled:
+Let us create a simple check to ensure a repository has branch protection enabled:
 
 1. **Operation Between Rules**: Select **All Of** (AND operation)
 2. **Rule Configuration**:
@@ -72,7 +72,7 @@ This basic rule checks if the main branch has protection enabled in Bitbucket.
 
 ---
 
-### Advanced Rules Configuration
+### Advanced rules configuration
 
 The **Advanced** mode provides a powerful Rules Expression Editor that allows you to write complex rule expressions using **JEXL** (Java Expression Language).
 
@@ -93,7 +93,7 @@ The **Advanced** mode provides a powerful Rules Expression Editor that allows yo
 
 **Example:**
 
-Here's a complex check that validates multiple conditions across different data sources:
+Here is a complex check that validates multiple conditions across different data sources:
 
 ```jexl
 catalog.pagerdutyAnnotationExists == true && 
@@ -128,7 +128,7 @@ This advanced rule checks if:
 
 ---
 
-## Supported Operators
+## Supported operators
 
 The following operators are available for all data points:
 
@@ -139,16 +139,16 @@ The following operators are available for all data points:
 5. **Equal to** (`==`)
 6. **Not equal to** (`!=`)
 7. **In or Match**: Checks if a value exists in a list or matches a pattern
-8. **Not-In or Not-Match**: Checks if a value does not exist in a list or doesn't match a pattern
+8. **Not-In or Not-Match**: Checks if a value does not exist in a list or does not match a pattern
 9. **Starts With**: Checks if a string starts with a specific value
 
 ![](./static/operators.png)
 
 ---
 
-## Use YAML Metadata as Inputs
+## Use YAML metadata as inputs
 
-You can use entity definitions from your entity YAML file or from additional properties [ingested using APIs](https://developer.harness.io/docs/internal-developer-portal/catalog/custom-catalog-properties) as input variables in Scorecard Checks.
+You can use entity definitions from your entity YAML file or from additional properties [ingested using APIs](/docs/internal-developer-portal/catalog/custom-catalog-properties) as input variables in Scorecard Checks.
 
 **JEXL Format Examples:**
 - `<+metadata.testCoverageScore>`
@@ -180,7 +180,7 @@ Some data sources like **PagerDuty** and **Kubernetes** depend on plugins to fet
 
 ---
 
-## Next Steps
+## Next steps
 
 - Explore available [data sources](/docs/internal-developer-portal/scorecards/create-scorecards/data-sources) and their data points
 - Learn how to [manage and monitor](/docs/internal-developer-portal/scorecards/manage-scorecards) your scorecards and checks

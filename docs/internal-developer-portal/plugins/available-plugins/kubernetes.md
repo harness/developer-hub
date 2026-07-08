@@ -57,7 +57,7 @@ In both cases, replace `<your-base-url>` with the base URL of the target cluster
 
 If you are using a service account to authenticate, ensure that a secret variable `K8S_SA_TOKEN` is set with the Kubernetes service account key.
 
-Please make sure, the `Service Account` token generated above must have a `ClusterRole` with permissions as mentioned below in the example reference YAML.
+Make sure, the `Service Account` token generated above must have a `ClusterRole` with permissions as mentioned below in the example reference YAML.
 
 ```YAML
 apiVersion: rbac.authorization.k8s.io/v1
@@ -123,7 +123,7 @@ This plugin exports a UI tab that you can use as a new **Kubernetes** tab for a 
 
 There are several annotations supported by the Kubernetes plugin, and you can use them in your service's `catalog-info.yaml` descriptor file to link to a Kubernetes entity. For details, go to the [plugin docs](https://backstage.io/docs/features/kubernetes/configuration#surfacing-your-kubernetes-components-as-part-of-an-entity).
 
-### Adding the entity annotation
+### Add the entity annotation
 
 In order for IDP to detect that an entity has Kubernetes components, the following annotation should be added to the entity's `catalog-info.yaml`:
 
@@ -131,7 +131,7 @@ In order for IDP to detect that an entity has Kubernetes components, the followi
 annotations:
   'backstage.io/kubernetes-id': dice-roller
 ```
-### Adding the namespace annotation
+### Add the namespace annotation
 Entities can have the `backstage.io/kubernetes-namespace` annotation, this will cause the entity's Kubernetes resources to by looked up via that namespace.
 
 ```YAML
@@ -154,7 +154,7 @@ You can write your own custom label selector query that Backstage will use to lo
 ```
 ## Troubleshooting
 
-### Kubernetes is not showing up on Service Entities
+### Kubernetes is not showing up on service entities
 
 This can be debugged by checking if the Service Account token has appropriate permissions or not. 
 
@@ -182,7 +182,7 @@ annotations:
   backstage.io/kubernetes-label-selector: '<label-selector>'
 ```
 
-## Use of K8s Plugin
+## Use of K8s plugin
 
 The Plugin displays the information on your cluster and health of the pods under these clusters, including information on namespace and CPU and Memory usage. 
 

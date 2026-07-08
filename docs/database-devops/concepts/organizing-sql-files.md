@@ -113,6 +113,24 @@ Notice:
 Using space in author name is not recommended. Prefer to use dot/dash separated names.
 :::
 
+### SQL statement formatting
+
+When `splitStatements` is set to `false` in your changeset, avoid trailing semicolons on individual SQL statements.
+
+With `splitStatements: false`, some JDBC drivers treat a trailing semicolon as an additional empty statement, which can cause migration failures. When `splitStatements: true` (the default), Liquibase uses the semicolon as the statement delimiter, so semicolons are required.
+
+```sql
+-- splitStatements: false — trailing semicolon causes an empty-statement error
+CREATE TABLE customer (
+  customer_id VARCHAR(36) NOT NULL
+);
+
+-- splitStatements: false — omit the trailing semicolon
+CREATE TABLE customer (
+  customer_id VARCHAR(36) NOT NULL
+)
+```
+
 ### include and includeAll tags
 Liquibase provides two primary tags for referencing other changelog files in your root changelog: include and includeAll. The `include` tag allows you to include a single SQL file in your changelog: 
 

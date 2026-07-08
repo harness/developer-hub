@@ -29,25 +29,25 @@ Fully integrated with the Harness platform, Harness IDP boosts **developer produ
 
 An Internal Developer Portal (IDP) is a centralized platform that brings together all the tools, services, and knowledge developers need to build and ship software efficiently. It serves as the **single source of truth** for your organization's software ecosystem.
 
-To read more about the Harness IDP core product pillars, go to [Product Pillars](/docs/internal-developer-portal/overview.md#product-pillars). 
+To read more about the Harness IDP core product pillars, go to [Product Pillars](/docs/internal-developer-portal/overview#product-pillars). 
 
-Here's a quick overview of **how Harness IDP works**:
+Here is a quick overview of **how Harness IDP works**:
 ![](./static/overview-page-flow.png)
 
-Here's how Harness IDP boosts developer productivity and reduce overhead toil for platform engineers:
+Here is how Harness IDP boosts developer productivity and reduce overhead toil for platform engineers:
 
 - **For Platform Engineers:** Automate developer workflows with built-in standards and guardrails. Build *golden paths* that free your team from repetitive tasks, enforce best practices across all services, and scale your platform; all while maintaining control and governance.
 - **For Developers:** Get productive faster with *self-service access* to everything you need. Create new services in minutes using pre-approved templates, discover any API or documentation instantly, and access all your tools from one unified interface; no more context switching or waiting on tickets.
 ---
 
-## Product Pillars
+## Product pillars
 
-Harness IDP is built on some core pillars that work together to deliver a complete and productive developer experience. Here's how each pillar helps you:
+Harness IDP is built on some core pillars that work together to deliver a complete and productive developer experience. Here is how each pillar helps you:
 
 <Tabs>
 <TabItem value="catalog" label="Software Catalog" default>
 
-#### Your Single Source of Truth for All Software Assets
+#### Your single source of truth for all software assets
 
 The Software Catalog provides a **centralized registry** of all your services, APIs, libraries, and infrastructure components. Track ownership, dependencies, and metadata in **one searchable location**.
 
@@ -65,7 +65,7 @@ The Software Catalog provides a **centralized registry** of all your services, A
 
 <TabItem value="workflows" label="Workflows">
 
-#### Automate Service Onboarding and Day-2 operations
+#### Automate service onboarding and Day-2 operations
 
 Self-Service Workflows eliminate repetitive tasks by providing developers with **golden path templates** for common operations. Platform engineers build the workflows once, and developers use them repeatedly.
 
@@ -83,7 +83,7 @@ Self-Service Workflows eliminate repetitive tasks by providing developers with *
 
 <TabItem value="scorecards" label="Scorecards">
 
-#### Measure and enforce Software Quality standards
+#### Measure and enforce software quality standards
 
 Scorecards help you **define, track, and improve Software Quality** across your organization. Set standards for security, reliability, documentation, and DevOps maturity, then measure compliance automatically. Get **automated visibility** into which services meet your standards and which need improvement.
 
@@ -117,7 +117,7 @@ Environment Management enables developers and platform engineers to **create, co
 
 <TabItem value="plugins" label="Plugins">
 
-#### Enrich your Software Catalog with contextual metadata
+#### Enrich your software catalog with contextual metadata
 
 Plugins display additional **metadata** about software components and entities **directly in the catalog**, showing information like CI/CD pipelines, alerts, incidents, and more; all without leaving the portal.
 
@@ -133,7 +133,7 @@ Plugins display additional **metadata** about software components and entities *
 
 <TabItem value="techdocs" label="TechDocs">
 
-#### Documentation that lives with your Code
+#### Documentation that lives with your code
 
 TechDocs enables a docs-as-code approach where documentation lives alongside your source code in Git. Write docs in **Markdown**, commit them alongside your source code, and publish automatically. Your team can discover and access documentation instantly through the **Docs tab** in the Catalog, no more outdated wikis or scattered knowledge.
 
@@ -150,7 +150,7 @@ TechDocs enables a docs-as-code approach where documentation lives alongside you
 
 ---
 
-## Video Overview
+## Video overview
 
 Watch this video to learn more about Harness IDP:
 
@@ -158,7 +158,7 @@ Watch this video to learn more about Harness IDP:
 
 ---
 
-## Get Started
+## Get started
 
 Ready to get started with Harness IDP? Follow these simple steps:
 

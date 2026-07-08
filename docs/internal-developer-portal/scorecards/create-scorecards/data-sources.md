@@ -20,13 +20,13 @@ A **Data Sources** tab is available on the **Scorecards** page where you can vie
 
 ---
 
-## Data Sources
+## Data sources
 
 ### GitHub
 
 The following data points are available for the GitHub data source.
 
-#### 1. Branch Protection
+#### 1. Branch protection
 
 **Objective:** Ensure that branch protection rules disallow force push and delete.
 
@@ -52,7 +52,7 @@ spec:
     ...
 ```
 
-#### 2. File Existence
+#### 2. File existence
 
 **Objective:** Verify the existence of a specified file in the repository.
 
@@ -76,7 +76,7 @@ spec:
     ...
 ```
 
-#### 3. Mean Time to Merge Pull Request
+#### 3. Mean time to merge pull request
 
 **Objective:** Calculate the average time taken to merge the last 100 pull requests.
 
@@ -102,7 +102,7 @@ spec:
     ...
 ```
 
-#### 4. Average Time to Complete Successful Workflow Runs (in minutes)
+#### 4. Average time to complete successful workflow runs (in minutes)
 
 **Objective:** Calculate the average time taken to complete **successful** workflow runs (in minutes).
 
@@ -112,7 +112,7 @@ spec:
 - Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source GitHub repository
 - Make sure to mention the workflow ID or filename in the conditional input field
 
-#### 5. Average Time to Complete Workflow Runs (in minutes)
+#### 5. Average time to complete workflow runs (in minutes)
 
 **Objective:** Calculate the average time taken to complete workflow runs (in minutes).
 
@@ -122,7 +122,7 @@ spec:
 - Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source GitHub repository
 - Make sure to mention the workflow ID or filename in the conditional input field
 
-#### 6. Workflow Success Rate
+#### 6. Workflow success rate
 
 **Objective:** Calculates success rate for the given workflow.
 
@@ -132,7 +132,7 @@ spec:
 - Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source GitHub repository
 - Make sure to mention the workflow ID or filename in the conditional input field
 
-#### 7. Workflows Count
+#### 7. Workflows count
 
 **Objective:** Calculates total number of workflows.
 
@@ -140,7 +140,7 @@ spec:
 
 **Prerequisites:** Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source GitHub repository.
 
-#### 8. Open Code Scanning Alerts
+#### 8. Open code scanning alerts
 
 **Objective:** Calculates the total number of open alerts reported in code scanning for the given severity.
 
@@ -151,7 +151,7 @@ spec:
 - Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source GitHub repository
 - Make sure to mention the severity type in the conditional input field
 
-#### 9. Open Dependabot Alerts
+#### 9. Open dependabot alerts
 
 **Objective:** Calculates the total number of open alerts reported by Dependabot for the given severity.
 
@@ -161,7 +161,7 @@ spec:
 - Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source GitHub repository
 - Make sure to mention the severity type in the conditional input field
 
-#### 10. Open Secret Scanning Alerts
+#### 10. Open secret scanning alerts
 
 **Objective:** Calculates the total number of open alerts reported in secret scanning.
 
@@ -171,7 +171,7 @@ spec:
 - GitHub Connector with read access for secret scanning alerts
 - Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source GitHub repository
 
-#### 11. Open Pull Requests by Account
+#### 11. Open pull requests by Account
 
 **Objective:** Calculates the total number of open pull requests raised by the given account.
 
@@ -181,24 +181,24 @@ spec:
 - Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source GitHub repository
 - Make sure to mention the username in the conditional input field
 
-#### 12. Extract String from a File
+#### 12. Extract string from a file
 
 **Objective:** Gets the string matching the pattern from given file from the branch.
 
 **Calculation Method:** If a branch name is specified, it is utilized. However, if no branch name is provided, the system retrieves information from the catalog YAML file using the `backstage.io/source-location` annotation to determine the branch name and repository details. It is essential to specify the filename with its extension or provide the relative path from the root folder (e.g., README.md or docs/README.md) in the conditional input field. The filename can also be provided as a regex pattern. For example, for a file path `/backstage/blob/master/scripts/log-20240105.anyextension`, the regex would be `/backstage/blob/master/scripts/log-20240105\..*`. After fetching the file, the designated pattern is then searched within the file contents, and its value is extracted and returned.
 
 :::info
-#### URL Priority for Branch Name Field
+#### URL priority for branch name field
 
-In some data points, we take `branchName` as input. It's an optional field if the branch is mentioned in `source-location` in your entity YAML. It is suggested to provide a branchName if you want to use the same for all repositories; otherwise, we use the branch name mentioned in the `source-location`.
+In some data points, we take `branchName` as input. It is an optional field if the branch is mentioned in `source-location` in your entity YAML. It is suggested to provide a branchName if you want to use the same for all repositories; otherwise, we use the branch name mentioned in the `source-location`.
 
 ![](../static/source-location.png)
 
-If you mention the `branchName` field as a check config other than what's present in the `source-location`, the priority order conditions are:
+If you mention the `branchName` field as a check config other than what is present in the `source-location`, the priority order conditions are:
 
-1. If it's in both, the check configuration will take precedence
-2. If it's in only one, we'll use that value
-3. If it's in neither, the check will fail
+1. If it is in both, the check configuration will take precedence
+2. If it is in only one, we will use that value
+3. If it is in neither, the check will fail
 
 ![](../static/checks-field.png)
 :::
@@ -207,24 +207,24 @@ If you mention the `branchName` field as a check config other than what's presen
 
 ![](../static/extract-github.png)
 
-#### 13. Match String in a File
+#### 13. Match string in a file
 
 **Objective:** Matches the pattern in the given file from the branch.
 
 **Calculation Method:** If a branch name is specified, it is utilized. However, if no branch name is provided, the system retrieves information from the catalog YAML file using the `backstage.io/source-location` annotation to determine the branch name and repository details. It is essential to specify the filename with its extension or provide the relative path from the root folder (e.g., README.md or docs/README.md) in the conditional input field. After fetching the file, the contents are examined to find the pattern. Returns true/false based on whether the pattern was found or not.
 
 :::info
-#### URL Priority for Branch Name Field
+#### URL priority for branch name field
 
-In some data points, we take `branchName` as input. It's an optional field if the branch is mentioned in `source-location` in **catalog-info.yaml**. It is suggested to provide a branchName if you want to use the same for all repositories; otherwise, we use the branch name mentioned in the `source-location`.
+In some data points, we take `branchName` as input. It is an optional field if the branch is mentioned in `source-location` in **catalog-info.yaml**. It is suggested to provide a branchName if you want to use the same for all repositories; otherwise, we use the branch name mentioned in the `source-location`.
 
 ![](../static/source-location.png)
 
-If you mention the `branchName` field as a check config other than what's present in the `source-location`, the priority order conditions are:
+If you mention the `branchName` field as a check config other than what is present in the `source-location`, the priority order conditions are:
 
-1. If it's in both, the check configuration will take precedence
-2. If it's in only one, we'll use that value
-3. If it's in neither, the check will fail
+1. If it is in both, the check configuration will take precedence
+2. If it is in only one, we will use that value
+3. If it is in neither, the check will fail
 
 ![](../static/checks-field.png)
 :::
@@ -239,7 +239,7 @@ If you mention the `branchName` field as a check config other than what's presen
 
 The following data points are available for the GitLab data source.
 
-#### 1. Branch Protection
+#### 1. Branch protection
 
 **Objective:** Ensure that branch protection rules disallow force push and delete.
 
@@ -265,7 +265,7 @@ spec:
     ...
 ```
 
-#### 2. File Existence
+#### 2. File existence
 
 **Objective:** Verify the existence of a specified file in the repository.
 
@@ -289,7 +289,7 @@ spec:
     ...
 ```
 
-#### 3. Mean Time to Merge Pull Request
+#### 3. Mean time to merge pull request
 
 **Objective:** Calculate the average time taken to merge the last 100 pull requests.
 
@@ -315,48 +315,48 @@ spec:
     ...
 ```
 
-#### 4. Extract String from a File
+#### 4. Extract string from a file
 
 **Objective:** Gets the string matching the pattern from given file from the branch.
 
 **Calculation Method:** If a branch name is specified, it is utilized. However, if no branch name is provided, the system retrieves information from the catalog YAML file using the `backstage.io/source-location` annotation to determine the branch name and repository details. It is essential to specify the filename with its extension or provide the relative path from the root folder (e.g., README.md or docs/README.md) in the conditional input field. After fetching the file, the designated pattern is then searched within the file contents, and its value is extracted and returned.
 
 :::info
-#### URL Priority for Branch Name Field
+#### URL priority for branch name field
 
-In some data points, we take `branchName` as input. It's an optional field if the branch is mentioned in `source-location` in **catalog-info.yaml**. It is suggested to provide a branchName if you want to use the same for all repositories; otherwise, we use the branch name mentioned in the `source-location`.
+In some data points, we take `branchName` as input. It is an optional field if the branch is mentioned in `source-location` in **catalog-info.yaml**. It is suggested to provide a branchName if you want to use the same for all repositories; otherwise, we use the branch name mentioned in the `source-location`.
 
 ![](../static/source-location.png)
 
-If you mention the `branchName` field as a check config other than what's present in the `source-location`, the priority order conditions are:
+If you mention the `branchName` field as a check config other than what is present in the `source-location`, the priority order conditions are:
 
-1. If it's in both, the check configuration will take precedence
-2. If it's in only one, we'll use that value
-3. If it's in neither, the check will fail
+1. If it is in both, the check configuration will take precedence
+2. If it is in only one, we will use that value
+3. If it is in neither, the check will fail
 
 ![](../static/checks-field.png)
 :::
 
 **Prerequisites:** Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source GitLab repository.
 
-#### 5. Match String in a File
+#### 5. Match string in a file
 
 **Objective:** Matches the pattern in the given file from the branch.
 
 **Calculation Method:** If a branch name is specified, it is utilized. However, if no branch name is provided, the system retrieves information from the catalog YAML file using the `backstage.io/source-location` annotation to determine the branch name and repository details. It is essential to specify the filename with its extension or provide the relative path from the root folder (e.g., README.md or docs/README.md) in the conditional input field. After fetching the file, the contents are examined to find the pattern. Returns true/false based on whether the pattern was found or not.
 
 :::info
-#### URL Priority for Branch Name Field
+#### URL priority for branch name field
 
-In some data points, we take `branchName` as input. It's an optional field if the branch is mentioned in `source-location` in **catalog-info.yaml**. It is suggested to provide a branchName if you want to use the same for all repositories; otherwise, we use the branch name mentioned in the `source-location`.
+In some data points, we take `branchName` as input. It is an optional field if the branch is mentioned in `source-location` in **catalog-info.yaml**. It is suggested to provide a branchName if you want to use the same for all repositories; otherwise, we use the branch name mentioned in the `source-location`.
 
 ![](../static/source-location.png)
 
-If you mention the `branchName` field as a check config other than what's present in the `source-location`, the priority order conditions are:
+If you mention the `branchName` field as a check config other than what is present in the `source-location`, the priority order conditions are:
 
-1. If it's in both, the check configuration will take precedence
-2. If it's in only one, we'll use that value
-3. If it's in neither, the check will fail
+1. If it is in both, the check configuration will take precedence
+2. If it is in only one, we will use that value
+3. If it is in neither, the check will fail
 
 ![](../static/checks-field.png)
 :::
@@ -369,7 +369,7 @@ If you mention the `branchName` field as a check config other than what's presen
 
 The following data points are available for the Bitbucket data source. All data points follow similar patterns to GitHub and GitLab, requiring the `backstage.io/source-location` annotation for repository identification.
 
-#### Available Data Points:
+#### Available data points:
 1. [Branch Protection](#1-branch-protection) - See GitHub section for detailed description.
 >This check works with repository-level branch restrictions. Bitbucket Cloud allows branch restrictions to be configured at both the repository and project levels. However, Bitbucket Cloud's REST API only exposes repository-level branch restrictions. Project-level restrictions, while enforced by Bitbucket across all repositories in a project, are not accessible via the API and therefore cannot be detected programmatically by any tool. To ensure this check works as expected, configure branch restrictions at the repository level. 
 2. [File Existence](#2-file-existence) - See GitHub section for detailed description
@@ -378,12 +378,12 @@ The following data points are available for the Bitbucket data source. All data 
 5. [Match String in a File](#13-match-string-in-a-file) - See GitHub section for detailed description
 
 :::info
-#### URL Priority for Branch Name Field
+#### URL priority for branch name field
 
 For Bitbucket data points that require a branch name, the same priority rules apply as mentioned in the [GitHub URL Priority section](#url-priority-for-branch-name-field) above.
 :::
 
-#### Prerequisites for Bitbucket Connector
+#### Prerequisites for Bitbucket connector
 
 Configure the Bitbucket connector using **Email and API Token** authentication to ensure Scorecards can fetch Bitbucket data without permission-related issues.
 
@@ -412,7 +412,7 @@ The API token must include the following scopes:
 
 The Harness data source provides insights into your CI/CD pipelines and deployments.
 
-#### Prerequisites
+#### Before you begin
 
 To use Harness as a data source for Scorecards, you need to:
 
@@ -431,7 +431,7 @@ metadata:
 https://app.harness.io/ng/account/<ACCOUNT_ID>/module/ci/orgs/<ORG_ID>/projects/<PROJECT_ID>/pipelines/<PIPELINE_ID>/
 ```
 
-#### Available Data Points:
+#### Available data points:
 
 1. **Deployment Frequency (Per Day)**
    - Calculates the average number of deployments per day over the last 30 days
@@ -454,13 +454,13 @@ https://app.harness.io/ng/account/<ACCOUNT_ID>/module/ci/orgs/<ORG_ID>/projects/
 7. **CI Pipeline Success Rate (Last 30 Days)**
    - Percentage of successful CI pipeline executions in the past 30 days
 
-#### Error Scenarios
+#### Error scenarios
 
 **Missing Harness Annotation:**
 If the `harness.io/pipelines` annotation is missing from the catalog-info.yaml file, the check will fail with an appropriate error message indicating that the annotation is required.
 
 **Invalid Pipeline URL:**
-If the pipeline URL format is incorrect or the pipeline doesn't exist, the check will fail with an error message.
+If the pipeline URL format is incorrect or the pipeline does not exist, the check will fail with an error message.
 
 ---
 
@@ -468,7 +468,7 @@ If the pipeline URL format is incorrect or the pipeline doesn't exist, the check
 
 The Catalog data source allows you to create checks based on the entity definitions in your Catalog entity YAML file.
 
-#### Available Data Points:
+#### Available data points:
 
 1. **Annotation Exists**
    - Checks if a specific annotation exists in the catalog entity
@@ -486,7 +486,7 @@ The Catalog data source allows you to create checks based on the entity definiti
    - Access any custom metadata fields defined in your catalog
    - Example: `catalog.metadata.testCoverageScore`
 
-#### Example Usage
+#### Example usage
 
 ```jexl
 catalog.annotationExists."jira/project-key" == true && 
@@ -519,7 +519,7 @@ spec:
 
 The Kubernetes data source provides insights into your Kubernetes deployments and resources.
 
-#### Prerequisites
+#### Before you begin
 
 1. **Enable Kubernetes Plugin:**
    - The Kubernetes plugin must be enabled in your IDP
@@ -534,7 +534,7 @@ metadata:
     backstage.io/kubernetes-id: my-service
 ```
 
-#### Available Data Points:
+#### Available data points:
 
 1. **Pod Count**
    - Returns the number of pods running for the service
@@ -554,7 +554,7 @@ metadata:
 
 The Jira data source provides insights into your project management and issue tracking.
 
-#### Available Data Points:
+#### Available data points:
 
 1. **Open Issues Count**
    - Calculates the total number of open issues for a project
@@ -586,7 +586,7 @@ metadata:
 ### PagerDuty
 The PagerDuty data source provides insights into your incident management and on-call schedules.
 
-#### Prerequisites
+#### Before you begin
 
 1. **Enable PagerDuty Plugin:**
    - The PagerDuty plugin must be enabled in your IDP
@@ -600,7 +600,7 @@ metadata:
     pagerduty.com/integration-key: <your-integration-key>
 ```
 
-#### Available Data Points:
+#### Available data points:
 
 1. **Open Incidents Count**
    - Returns the number of currently open incidents
@@ -617,7 +617,7 @@ metadata:
 5. **On-Call Schedule Status**
    - Checks if an on-call schedule is configured
 
-#### Error Scenarios
+#### Error scenarios
 
 **Missing PagerDuty Annotation:**
 If the PagerDuty annotation is missing from the catalog-info.yaml file, the check will fail with an error message indicating that the annotation is required.
@@ -626,7 +626,7 @@ If the PagerDuty annotation is missing from the catalog-info.yaml file, the chec
 
 ---
 
-## Custom Data Sources
+## Custom data sources
 
 Custom data sources enable you to extend Harness IDP's scorecard capabilities beyond the out-of-the-box integrations. This is particularly useful when you want to build scorecards for tools that aren’t natively supported or when you need to enrich existing catalog entities with additional metadata.
 
@@ -635,7 +635,7 @@ There are two primary approaches to working with data sources in Harness IDP:
 1. **Out-of-the-Box Data Sources**: Native integrations (GitHub, GitLab, Jira, PagerDuty, etc.) that automatically fetch data from connected tools
 2. **Custom Data Sources**: User-defined data ingested via the Catalog Ingestion API, allowing you to bring in data from any source
 
-#### When to Use Custom Data Sources
+#### When to use custom data sources
 
 Consider using custom data sources when:
 
@@ -663,7 +663,7 @@ Watch [this video](https://youtu.be/MB-IWGoYjOo?si=J5GgmUItG1TQ-0M1) to see a wo
 
 ---
 
-## Next Steps
+## Next steps
 
 - Learn how to [create custom checks](/docs/internal-developer-portal/scorecards/create-scorecards/checks) using these data sources
 - Explore scorecard tutorials for advanced use cases:

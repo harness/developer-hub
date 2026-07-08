@@ -2,6 +2,7 @@
 title: Shared Configuration Repository
 ---
 
+
 Question:
 How do you use the same or multiple Spinnaker installations to deploy to multiple AWS accounts while sharing a single configuration repository?
 Answer:

@@ -152,7 +152,6 @@ The Events List tab provides an alternative view showing all events with health 
 
 The Details tab shows standard execution information like start time, duration, and timeout configuration. The Input and Output tabs display the step's configuration parameters and execution outputs respectively.
 
-
 ## Write the YAML configuration
 
 You can configure the AI Verify (v2) step directly in YAML if you prefer editing pipelines as code. The step type is `AIVerifyNG` and must be inside a **stepGroup** with **stepGroupInfra** configuration.

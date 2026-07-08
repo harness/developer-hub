@@ -12,7 +12,7 @@ Before HSF 2.3 everything that was created through the HSF existed as workspaces
 
 1. Go into the `Harness Solutions Factory` workspace and set `enable_hsf_mini_factory` to `true`
 2. Run `Deploy Solutions Factory`
-3. Re-run the "Register Offical IDP Templates" and "Register Custom IDP Templates" pipelines
+3. Re-run the `Register Custom IDP Templates` pipelines
 
 Once enabled, when you create a new organization a factory floor will be created. A **Factory Floor** consists of 6 pipelines: 
 

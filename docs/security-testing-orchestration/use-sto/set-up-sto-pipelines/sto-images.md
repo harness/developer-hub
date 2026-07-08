@@ -4,6 +4,7 @@ description: How STO pulls the images it needs, and how to update images in a pr
 sidebar_position: 20
 ---
 
+
 This topic describes how Harness updates and maintains supported STO images and how to update these images yourself if you use a private registry. 
 
 :::note Important Notes

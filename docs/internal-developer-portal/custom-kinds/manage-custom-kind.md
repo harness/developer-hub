@@ -12,7 +12,7 @@ To manage an existing custom kind, go to **Custom Kinds**, find the kind in the 
 
 ---
 
-## Edit the Schema or Icon
+## Edit the schema or icon
 
 1. To change the icon, click **Change Icon** and select a new one from the picker.
 
@@ -29,7 +29,7 @@ To manage an existing custom kind, go to **Custom Kinds**, find the kind in the 
 
 ---
 
-## Configure a Layout
+## Configure a layout
 
 By default, entities of a custom kind use the IDP default catalog layout. The **Default layout in use** notice on the Manage page shows this status.
 
@@ -56,11 +56,11 @@ By default, entities of a custom kind use the IDP default catalog layout. The **
    Entity type is case-insensitive and comes from `spec.type` in the catalog entity YAML. Leave this field empty to apply the layout to all types of this kind.
    :::
 
-5. Click **Continue** to open the [layout editor](/docs/internal-developer-portal/layout-and-appearance/catalog.md#layout-editor) and build your layout.
+5. Click **Continue** to open the [layout editor](/docs/internal-developer-portal/layout-and-appearance/catalog#layout-editor) and build your layout.
 
 ---
 
-## Delete a Kind
+## Delete a kind
 
 :::danger
 Deleting a kind permanently removes it from the catalog along with all its entities, layout configuration, scorecard configurations, and related settings. This action cannot be undone.

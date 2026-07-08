@@ -1,8 +1,9 @@
 ---
 title: ServiceNow - Escalation Response for Support Engineers
 redirect_from:
-  - /docs/continuous-delivery/armory/general/servicenowescalation-response-for-support-engineers
+  - /docs/continuous-delivery/armory/general/servicenow---escalation-response-for-support-engineers
 ---
+
 
 The following outlines what happens after an escalation is sent from a customer. 
 The customer side of the process can be found in the following article:[https://support.armory.io/support?id=kb_article&sysparm_article=KB0010203](https://support.armory.io/support?id=kb_article&sysparm_article=KB0010203)

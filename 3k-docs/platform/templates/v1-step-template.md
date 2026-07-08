@@ -18,8 +18,8 @@ A step template captures one reusable step that you can drop into any V1 pipelin
 
 ## Before you begin
 
-- **V1 pipeline access:** A project with V1 pipelines enabled. Go to the [V1 pipelines overview](/docs/platform/pipelines) to enable V1 in your project.
-- **Connector for the runtime image:** A container connector for the image your step uses (for example, `docker_hub_anonymous`). Go to the [connectors reference](/docs/platform/connectors) to configure one.
+- **V1 pipeline access:** A project with V1 pipelines enabled. Go to the [V1 pipelines overview](/3k-docs/platform/getting-started/pipeline) to enable V1 in your project.
+- **Connector for the runtime image:** A container connector for the image your step uses (for example, `docker_hub_anonymous`). Go to the [connectors reference](/3k-docs/platform/getting-started/connectors) to configure one.
 - **Permissions:** Create and Edit on Templates. Go to the [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) to configure roles.
 
 ---
@@ -65,7 +65,7 @@ Choose where the template is versioned.
 - **Harness-managed:** Save the template in the Harness platform. Versions are created and promoted in Harness.
 - **Git-stored:** Commit the template to a Git repository. The Git tag, branch, or commit determines the resolved version.
 
-Go to the [V1 Template Library overview](/docs/platform/templates/v1-template-library-overview) to compare storage modes.
+Go to the [V1 Template Library overview](/3k-docs/platform/templates/v1-template-library-overview) to compare storage modes.
 
 ---
 
@@ -102,4 +102,4 @@ pipeline:
 
 ## Next steps
 
-A step template solves the single-step case. When several steps always run together, group them into one reusable unit instead. Go to the [step group template guide](/docs/platform/templates/v1-step-group-template) to bundle multiple steps. Go to the [stage template guide](/docs/platform/templates/v1-stage-template) to standardize a complete stage.
+A step template solves the single-step case. When several steps always run together, group them into one reusable unit instead. Go to the [step group template guide](/3k-docs/platform/templates/v1-step-group-template) to bundle multiple steps. Go to the [stage template guide](/3k-docs/platform/templates/v1-stage-template) to standardize a complete stage.

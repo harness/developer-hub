@@ -252,7 +252,7 @@ You can also use a local Helm chart if you are deploying the same Helm chart and
 - **Chart Version**: Enter the version of the chart you want to deploy. This is found in the Chart.yaml `version` label in your chart. You can list all available versions of a chart using the `search repo` command with the `--versions` option. See [helm search repo](https://helm.sh/docs/helm/helm_search_repo) from Helm.
   - If you leave **Chart Version** empty Harness gets the latest chart.
   - If you are going to use a Harness trigger to run this pipeline when a new version is added to your chart repo, select the **Runtime Input** option. When you set up the trigger, you will select this chart and Harness will listen on the repo for new versions. See [Trigger Pipelines on New Helm Chart](/docs/platform/triggers/trigger-pipelines-on-new-helm-chart). For example, `1.4.1`.
-- **Helm Version**: Select the version of Helm used in your chart. See [Helm Version Support Policy](https://helm.sh/docs/topics/version_skew/) from Helm. For example, `Version 2`.
+- **Helm Version**: Select the version of Helm used in your chart. See [Helm Version Support Policy](https://helm.sh/docs/topics/version_skew/) from Helm. Only Helm v3 is supported; select `Version 3`.
 - **Values YAML**: Your chart will have a default values.yaml file in its root folder.
 
   - If you do not enter a values.yaml in **Values YAML**, Harness uses the default values.yaml file in the root of the chart.
@@ -328,7 +328,7 @@ Here is a sample of how the manifest would look when this checkbox is enabled. T
 - **Helm Command Flags**: You can use Helm command flags to extend the Helm commands that Harness runs when deploying your Helm chart. Harness will run Helm-specific Helm commands and their flags as part of preprocessing. All the commands you select are run before `helm install/upgrade`.
 - **Command Type**: Select the Helm command type you want to use. For example:
   - [Template](https://v2.helm.sh/docs/helm/#helm-template): `helm template` to render the helm template files.
-  - [Pull](https://helm.sh/docs/helm/helm_pull/): `helm pull` (v2) to get the Helm chart.
+  - [Pull](https://helm.sh/docs/helm/helm_pull/): `helm pull` to get the Helm chart.
 - **Flag**: Add any options for the command. Ex: `--verify`.
 
 Here's an example:
@@ -845,10 +845,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     <tr>
         <td>CDS_HELM_STEADY_STATE_CHECK_1_16</td>
         <td>Enables steady state check for Helm deployments on Kubernetes clusters using 1.16 or higher. </td>
-    </tr>
-    <tr>
-        <td>CDS_HELM_VERSION_3_8_0</td>
-        <td>Sets the default version of Helm to 3.8 when using the Harness Helm delegate.</td>
     </tr>
     <tr>
         <td>CDS_DISABLE_HELM_REPO_YAML_CACHE</td>

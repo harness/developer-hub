@@ -18,8 +18,8 @@ A step group template bundles an ordered set of steps into a single reusable uni
 
 ## Before you begin
 
-- **V1 pipeline access:** A project with V1 pipelines enabled. Go to the [V1 pipelines overview](/docs/platform/pipelines) to enable V1 in your project.
-- **Connector for the runtime image:** A container connector for each image referenced in the group. Go to the [connectors reference](/docs/platform/connectors) to configure one.
+- **V1 pipeline access:** A project with V1 pipelines enabled. Go to the [V1 pipelines overview](/3k-docs/platform/getting-started/pipeline) to enable V1 in your project.
+- **Connector for the runtime image:** A container connector for each image referenced in the group. Go to the [connectors reference](/3k-docs/platform/getting-started/connectors) to configure one.
 - **Permissions:** Create and Edit on Templates. Go to the [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) to configure roles.
 
 ---
@@ -78,7 +78,7 @@ Choose where the template is versioned.
 - **Harness-managed:** Save the template in the Harness platform. Versions are created and promoted in Harness.
 - **Git-stored:** Commit the template to a Git repository. The Git tag, branch, or commit determines the resolved version.
 
-Go to the [V1 Template Library overview](/docs/platform/templates/v1-template-library-overview) to compare storage modes.
+Go to the [V1 Template Library overview](/3k-docs/platform/templates/v1-template-library-overview) to compare storage modes.
 
 ---
 
@@ -102,4 +102,4 @@ If you omit the version suffix, the pipeline resolves to the latest stable versi
 
 ## Next steps
 
-A step group template covers a fixed sequence of steps inside a stage. When you also want to standardize stage-level settings (such as inputs, environment, or failure strategy), use a stage template instead. Go to the [stage template guide](/docs/platform/templates/v1-stage-template) to author a stage template.
+A step group template covers a fixed sequence of steps inside a stage. When you also want to standardize stage-level settings (such as inputs, environment, or failure strategy), use a stage template instead. Go to the [stage template guide](/3k-docs/platform/templates/v1-stage-template) to author a stage template.

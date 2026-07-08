@@ -17,12 +17,12 @@ The **DX plugin** is designed to enhance the overall developer experience and st
 
 ## Configuration
 
-### Prerequisites
+### Before you begin
 Here are the prerequisites required to configure this plugin: 
 1. **DX_HOST_URL**: You can get your **DX Host URL** from https://app.getdx.com/datacloud/api_keys
 2. **DX_API_TOKEN**: **Token** can be found at https://app.getdx.com/datacloud/api_keys
 
-### Application Configuration YAML
+### Application configuration YAML
 Under the **"Plugins"** tab in your **"Configure"** settings, navigate to the ``app-config.yaml`` file and click **Edit YAML** to begin configuring the plugin.
 
 You can use the following ``YAML`` snippet as the application configuration for this plugin:
@@ -78,7 +78,7 @@ This plugin exports:
 
 ```
 
-#### Configuring DxDataChartCard
+#### Configure DxDataChartCard
 
 - Example of Table chart
 
@@ -131,7 +131,7 @@ This plugin exports:
 ```
 ## Annotations
 
-As of now you don't really need annotations to configure the plugin.
+As of now you do not really need annotations to configure the plugin.
 
 Although make sure that the Entity identifier of DX should match with the `Identifier` of IDP 2.0.
 

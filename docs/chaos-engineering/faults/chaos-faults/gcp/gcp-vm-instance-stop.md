@@ -1,225 +1,232 @@
 ---
 id: gcp-vm-instance-stop
 title: GCP VM instance stop
+sidebar_label: GCP VM Instance Stop
+description: Stop one or more GCP Compute Engine VM instances by name for a configurable duration, then start them again, so you can test how the workload behaves when a VM disappears.
+keywords:
+  - chaos engineering
+  - gcp vm instance stop
+  - gcp fault
+  - compute engine
+tags:
+  - chaos-engineering
+  - gcp-faults
 redirect_from:
 - /docs/chaos-engineering/technical-reference/chaos-faults/gcp/gcp-vm-instance-stop
 - /docs/chaos-engineering/chaos-faults/gcp/gcp-vm-instance-stop
 ---
 
-GCP VM instance stop powers off from a GCP VM instance using the instance name (or a list of instance names) before for a specific duration.
-- This fault checks the performance of the application (or process) running on the VM instance.
-- When the `MANAGED_INSTANCE_GROUP` environment variable is set to `enable`, the fault does not start the instances after chaos. Instead, the fault checks the instance group for new instances.
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-![GCP VM Instance Stop](./static/images/gcp-vm-instance-stop.png)
+GCP VM instance stop is a GCP chaos fault that stops one or more Compute Engine VM instances listed in `VM_INSTANCE_NAMES` (in `ZONES`, project `GCP_PROJECT_ID`) for `TOTAL_CHAOS_DURATION` seconds, then starts them again. When `MANAGED_INSTANCE_GROUP=enable`, the fault does not start the stopped instances; it relies on the managed instance group (MIG) auto-healer to recreate them.
+
+Use this fault to test how a workload behaves when a VM disappears: whether managed instance groups recreate the VM inside the alerting SLA, whether clients fail over cleanly, whether GKE node-down handling kicks in (if the VM is a GKE node), and whether monitoring detects the outage within the alerting SLA.
+
+:::info Run your first experiment
+If you have not configured the chaos infrastructure yet, go to [Quickstart](/docs/chaos-engineering/quickstart) to install the chaos infrastructure and run an experiment end to end.
+:::
+
+---
 
 ## Use cases
 
-GCP VM instance stop fault determines the resilience of an application that runs on a VM instance when a VM instance unexpectedly stops (or fails).
+Run this fault when you want to answer concrete questions like:
 
-### Prerequisites
-- Kubernetes > 1.16
-- Adequate GCP permissions to stop and start the GCP VM instances.
-- The VM instances should be in a healthy state.
-- Kubernetes secret should have the GCP service account credentials in the default namespace. Refer [generate the necessary credentials in order to authenticate your identity with the Google Cloud Platform (GCP)](/docs/chaos-engineering/faults/chaos-faults/gcp/security-configurations/prepare-secret-for-gcp) docs for more information.
+- **VM disappears:** When the target VM stops, do dependents (load balancers, MIGs, GKE) recover inside the SLA?
+- **MIG auto-healing:** Does the managed instance group recreate the VM with the expected boot time?
+- **GKE node-down handling:** If the VM is a GKE node, does the cluster drain pods and reschedule them on healthy nodes?
+- **Client failover:** Do clients connected to the stopped VM fail over to surviving instances cleanly?
+- **Monitoring fidelity:** Do alerts on `compute.googleapis.com/instance/uptime`, instance count, and end-to-end availability fire within the alerting SLA?
 
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: cloud-secret
-type: Opaque
-stringData:
-  type: "service_account"
-  project_id: "<PROJECT_ID>"
-  private_key_id: "<PRIVATE_KEY_ID>"
-  private_key: <PRIVATE_KEY>
-  client_email: "<CLIENT_EMAIL>"
-  client_id: "<CLIENT_ID>"
-  auth_uri: "https://accounts.google.com/o/oauth2/auth"
-  token_uri: "https://oauth2.googleapis.com/token"
-  auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs"
-  client_x509_cert_url: "<CLIENT_X509_CERT_URL>"
-  universe_domain: "googleapis.com"
+---
+
+## Prerequisites
+
+- **Kubernetes version:** 1.21 or later for the chaos infrastructure cluster.
+- **Target VMs reachable:** Each entry in `VM_INSTANCE_NAMES` exists in the corresponding zone in `ZONES` and `GCP_PROJECT_ID`.
+- **VM in `RUNNING` state:** The fault refuses to stop a VM that is already `TERMINATED` or `STOPPING`.
+- **GCP credentials available:** Either a Google service account JSON key uploaded as a **File Secret in Harness Secret Manager** (referenced via `GCP_AUTHENTICATION_SECRET`) or Workload Identity for chaos infrastructure running on GKE.
+- **IAM permissions granted:** The service account includes the permissions listed below.
+
+---
+
+## Supported environments
+
+| Platform | Support status |
+| --- | --- |
+| Compute Engine VMs (any machine type) | Supported |
+| GKE worker nodes (Compute Engine MIGs) | Supported |
+| GKE Autopilot nodes | Not supported (nodes are managed by GCP) |
+| Spot/Preemptible VMs | Supported (note: GCP may not start them back automatically) |
+| Multi-zone targeting in a single run | Supported via comma-separated `ZONES` matching the order of `VM_INSTANCE_NAMES` |
+
+---
+
+## Permissions required
+
+The Google service account used by the chaos pod (delivered through `GCP_AUTHENTICATION_SECRET` or Workload Identity) needs the following IAM permissions on the target project.
+
+```json
+{
+  "permissions": [
+    "compute.instances.get",
+    "compute.instances.start",
+    "compute.instances.stop",
+    "compute.instances.list"
+  ]
+}
 ```
 
-### Mandatory tunables
-   <table>
-      <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> GCP_PROJECT_ID </td>
-        <td> Id of the GCP project that belong to the VM instances. </td>
-        <td> All the VM instances must belong to a single GCP project. For more information, go to <a href="#target-gcp-instances">GCP project ID. </a></td>
-      </tr>
-      <tr>
-        <td> VM_INSTANCE_NAMES </td>
-        <td> Name of the target VM instances. </td>
-        <td> Multiple instance names can be provided as instance1,instance2,... and so on. For more information, go to <a href="#target-gcp-instances">target GCP instances. </a></td>
-      </tr>
-      <tr>
-        <td> ZONES </td>
-        <td> The zones of the target VM instances. </td>
-        <td> Zone for every instance name is provided as zone1,zone2,... and so on, in the same order as <code>VM_INSTANCE_NAMES</code>. For more information, go to <a href="#target-gcp-instances">zones. </a></td>
-      </tr>
-    </table>
+Granting the predefined role `roles/compute.instanceAdmin.v1` covers these and is the simplest setup.
 
-### Optional tunables
-  <table>
-      <tr>
-        <th> Tunable </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> TOTAL_CHAOS_DURATION </td>
-        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos. </a></td>
-      </tr>
-       <tr>
-        <td> CHAOS_INTERVAL </td>
-        <td> Time interval between two successive instance terminations (in seconds). </td>
-        <td> Defaults to 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#chaos-interval">chaos interval.</a></td>
-      </tr>
-      <tr>
-        <td> MANAGED_INSTANCE_GROUP </td>
-        <td> It is set to <code>enable</code> if the target instance is a part of the managed instance group. </td>
-        <td> Defaults to <code>disable</code>. For more information, go to <a href="#managed-instance-group">managed instance group.</a></td>
-      </tr>
-      <tr>
-        <td> SEQUENCE </td>
-        <td> Sequence of chaos execution for multiple target instances. </td>
-        <td> Defaults to parallel. It supports serial sequence as well. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution.</a></td>
-      </tr>
-      <tr>
-        <td> RAMP_TIME </td>
-        <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
-      </tr><tr>
-      <td>DEFAULT_HEALTH_CHECK</td>
-      <td>Determines if you wish to run the default health check which is present inside the fault. </td>
-      <td> Default: 'true'. For more information, go to <a href="/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#default-health-check"> default health check.</a></td>
-      </tr>
-    </table>
+Go to [GCP IAM integration](/docs/chaos-engineering/faults/chaos-faults/gcp/security-configurations/gcp-iam-integration) to use Workload Identity instead of a service account key.
 
-### IAM permissions
+---
 
-Listed below are the IAM permissions leveraged by the fault:
-- `compute.instances.get`
-- `compute.instances.stop`
-- `compute.instances.start`
+## Authentication
 
-### Target GCP instances
-It stops all the instances with the `VM_INSTANCE_NAMES` instance names in the `ZONES` zone in the `GCP_PROJECT_ID` project.
+The fault supports two credential delivery models. Pick one based on how your chaos infrastructure is deployed.
 
-**GCP project ID**: The project ID which is a unique identifier for a GCP project. Tune it by using the `GCP_PROJECT_ID` environment variable.
+| Method | When to use it | How to configure |
+| --- | --- | --- |
+| Harness Secret Manager File Secret | Chaos infrastructure runs outside GKE, or you want explicit static credentials | Upload the GCP service account JSON key as a **File Secret** in Harness Secret Manager and reference its identifier via `GCP_AUTHENTICATION_SECRET` |
+| Workload Identity | Chaos infrastructure runs on GKE with Workload Identity enabled | Bind a Google service account to the chaos infra Kubernetes service account; no tunable changes required |
 
-**Zones**: The zone of the disk volumes subject to the fault. Tune it by using the `ZONES` environment variable.
+Go to [Creating secrets for GCP experiments](/docs/chaos-engineering/faults/chaos-faults/gcp/security-configurations/prepare-secret-for-gcp) to read the secret format. Go to [GCP IAM integration](/docs/chaos-engineering/faults/chaos-faults/gcp/security-configurations/gcp-iam-integration) for Workload Identity.
 
-**Note:** `VM_INSTANCE_NAMES` environment variable contains multiple comma-separated VM instances. The comma-separated zone names should be provided in the same order as the instance names.
+---
 
-The following YAML snippet illustrates the use of this environment variable:
+## Fault tunables
 
-[embedmd]:# (./static/manifests/gcp-vm-instance-stop/gcp-instance.yaml yaml)
-```yaml
-## details of the GCP instance
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: gcp-vm-instance-stop
-    spec:
-      components:
-        env:
-        # comma-separated list of vm instance names
-        - name: VM_INSTANCE_NAMES
-          value: 'instance-01,instance-02'
-        # comma-separated list of zone names corresponds to the VM_INSTANCE_NAMES
-        # it should be provided in same order of VM_INSTANCE_NAMES
-        - name: ZONES
-          value: 'zone-01,zone-02'
-        # GCP project ID to which vm instance belongs
-        - name: GCP_PROJECT_ID
-          value: 'project-id'
-```
+Configure the following fault parameters when you add GCP VM instance stop to an experiment in Chaos Studio. Defaults are shown for reference.
 
-### Managed instance group
+**Required parameters**
 
-Check if the VM instances belong to a managed instance group. If so, set the `MANAGED_INSTANCE_GROUP` environment variable to `enable` , else `disable`. Its default value is `disable`.
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `GCP_PROJECT_ID` | ID of the GCP project that contains the VM instances. | (required) |
+| `VM_INSTANCE_NAMES` | Comma-separated list of VM instance names to stop (for example `vm-1,vm-2`). | (required) |
+| `ZONES` | Comma-separated list of zones in the same order as `VM_INSTANCE_NAMES` (for example `us-central1-a,us-central1-b`). | (required) |
 
-The following YAML snippet illustrates the use of this environment variable:
+**Chaos parameters**
 
-[embedmd]:# (./static/manifests/gcp-vm-instance-stop/managed-instance-group.yaml yaml)
-```yaml
-## scale up and down to maintain the available instance counts
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: gcp-vm-instance-stop
-    spec:
-      components:
-        env:
-        # tells if instances are part of managed instance group
-        # supports: enable, disable. default: disable
-        - name: MANAGED_INSTANCE_GROUP
-          value: 'enable'
-        # comma-separated list of vm instance names
-        - name: VM_INSTANCE_NAMES
-          value: 'instance-01,instance-02'
-        # comma-separated list of zone names corresponds to the VM_INSTANCE_NAMES
-        # it should be provided in same order of VM_INSTANCE_NAMES
-        - name: ZONES
-          value: 'zone-01,zone-02'
-        # GCP project ID to which vm instance belongs
-        - name: GCP_PROJECT_ID
-          value: 'project-id'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
-```
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `TOTAL_CHAOS_DURATION` | Total duration of the fault in seconds. The VMs stay stopped for this period. | `60` |
+| `CHAOS_INTERVAL` | Delay in seconds between successive iterations when running for more than one cycle. | `60` |
+| `MANAGED_INSTANCE_GROUP` | When `enable`, the fault does not start the instances after the chaos; the MIG auto-healer recreates them. | `disable` |
+| `SEQUENCE` | Order in which multiple instances are stopped: `parallel` stops all at once; `serial` stops them one at a time. | `parallel` |
+| `RAMP_TIME` | Wait period in seconds before and after the fault. Go to [ramp time](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults#ramp-time) to read how it is applied. | `0` |
 
-### Multiple iterations of chaos
+**Authentication**
 
-The delay between every chaos iteration. Tune the different iterations using the `CHAOS_INTERVAL` environment variable.
+| Tunable | Description | Default |
+| --- | --- | --- |
+| `GCP_AUTHENTICATION_SECRET` | Identifier of the **File Secret in Harness Secret Manager** that contains the GCP service account JSON key. Not required when using Workload Identity. | `""` |
 
-The following YAML snippet illustrates the use of this environment variable:
+Tunables that apply to every fault are documented in [common tunables for all faults](/docs/chaos-engineering/faults/chaos-faults/common-tunables-for-all-faults).
 
-[embedmd]:# (./static/manifests/gcp-vm-instance-stop/chaos-interval.yaml yaml)
-```yaml
-# defines delay between each successive iteration of the chaos
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  chaosServiceAccount: gcp-vm-instance-stop-sa
-  experiments:
-  - name: gcp-vm-instance-stop
-    spec:
-      components:
-        env:
-        # delay between each iteration of chaos
-        - name: CHAOS_INTERVAL
-          value: '15'
-        # duration for the chaos execution
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
-        - name: VM_INSTANCE_NAMES
-          value: 'instance-01,instance-02'
-        - name: ZONES
-          value: 'zone-01,zone-02'
-        - name: GCP_PROJECT_ID
-          value: 'project-id'
-```
+---
+
+## Fault execution in brief
+
+Calls the Compute Engine API to stop each VM in `VM_INSTANCE_NAMES` (in the matching zone from `ZONES`), waits for `TOTAL_CHAOS_DURATION` seconds, then starts the VMs again (unless `MANAGED_INSTANCE_GROUP=enable`).
+
+---
+
+## Expected behavior during fault execution
+
+- The target VMs transition `RUNNING` → `STOPPING` → `TERMINATED` and stay there for `TOTAL_CHAOS_DURATION`.
+- For GKE worker nodes: pods on the node go to `NotReady`/`Unknown`, then the scheduler reschedules them onto healthy nodes.
+- For VMs behind a load balancer: health checks on the affected backends start to fail and traffic shifts to healthy backends.
+- When `MANAGED_INSTANCE_GROUP=enable`: the MIG auto-healer launches a replacement VM with a new instance ID.
+- After the duration ends (and `MANAGED_INSTANCE_GROUP=disable`), the VMs transition back to `RUNNING`.
+
+:::info When the fault ends
+The chaos pod calls `instances.start` on every targeted VM unless `MANAGED_INSTANCE_GROUP=enable`. Boot time depends on the machine image and startup scripts.
+:::
+
+### Signals to watch
+
+Attach [resilience probes](/docs/resilience-testing/chaos-testing/probes) to assert each layer:
+
+- **Instance state:** Use a [command probe](/docs/resilience-testing/chaos-testing/probes/command-probe) running `gcloud compute instances describe <vm> --zone=<zone> --format='value(status)'` and assert the state changed.
+- **Application availability:** Use an [HTTP probe](/docs/resilience-testing/chaos-testing/probes/http-probe) on the user-visible endpoint behind the load balancer.
+- **MIG health:** Use a command probe running `gcloud compute instance-groups managed describe <mig>` to confirm the auto-healer recreated the VM.
+
+---
+
+## Verify the fault execution effect
+
+While the experiment is running, confirm the VM stopped and then restarted:
+
+1. **Inspect VM state with gcloud.**
+
+   ```bash
+   gcloud compute instances describe <vm-name> \
+     --zone=<zone> \
+     --format="value(status)"
+   ```
+
+   The status should be `STOPPING`/`TERMINATED` during the chaos window and `RUNNING` afterwards.
+
+2. **Inspect Cloud Monitoring metrics.**
+
+   Use the Cloud Console to inspect `compute.googleapis.com/instance/uptime` and confirm the gap during the chaos window.
+
+3. **Inspect Compute Engine audit logs.**
+
+   ```bash
+   gcloud logging read 'resource.type=gce_instance AND protoPayload.methodName=v1.compute.instances.stop' --limit=10
+   ```
+
+   The `stop` call from the chaos pod's service account should appear.
+
+---
+
+## Recovery and cleanup
+
+- **End of duration:** The chaos pod calls `instances.start` on every targeted VM (unless `MANAGED_INSTANCE_GROUP=enable`).
+- **Abort the experiment:** Stopping the experiment from Chaos Studio also calls `instances.start`.
+- **Manual recovery:** If the chaos pod exited before restarting the VM, run `gcloud compute instances start <vm-name> --zone=<zone>` manually.
+- **Workload recovery:** Boot time depends on the machine image and startup scripts; GKE node `Ready` transitions usually complete within 2-3 minutes.
+
+---
+
+## Limitations
+
+- **Same-project targeting:** A single experiment targets one `GCP_PROJECT_ID`. Use multiple experiments for cross-project scope.
+- **Zone alignment:** `ZONES` must match `VM_INSTANCE_NAMES` positionally; mismatches return an `Instance not found` error.
+- **Spot/preemptible behavior:** GCP may not start preempted Spot VMs back automatically; combine with `MANAGED_INSTANCE_GROUP=enable` for MIG-managed VMs.
+- **GKE Autopilot:** Not supported because GCP manages the underlying nodes.
+- **MIG mode skips restart:** When `MANAGED_INSTANCE_GROUP=enable`, recovery is fully driven by the MIG auto-healer; the fault does not call `instances.start`.
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="GCP VM instance stop fails with PermissionDenied in Harness Chaos Engineering"
+  mode="docs"
+  fallback="The service account used by the chaos pod does not have compute.instances.stop and compute.instances.start. Grant roles/compute.instanceAdmin.v1 (or the four permissions listed above) on the target project and re-run."
+/>
+
+<Troubleshoot
+  issue="GCP VM instance stop fails with Instance not found"
+  mode="docs"
+  fallback="VM_INSTANCE_NAMES and ZONES must align positionally. Confirm with gcloud compute instances list --filter='name=<vm>' --format='value(zone)' that the zone is correct. Also confirm GCP_PROJECT_ID matches the project that owns the VMs."
+/>
+
+<Troubleshoot
+  issue="VMs stayed STOPPED after the experiment ended"
+  mode="docs"
+  fallback="If MANAGED_INSTANCE_GROUP=disable and the chaos pod exited before restart, run gcloud compute instances start <vm-name> --zone=<zone> manually. If MANAGED_INSTANCE_GROUP=enable, check the MIG auto-healer (gcloud compute instance-groups managed describe <mig>) and confirm it created a replacement."
+/>
+
+---
+
+## Related faults
+
+- [GCP VM instance stop by label](/docs/chaos-engineering/faults/chaos-faults/gcp/gcp-vm-instance-stop-by-label): Stop a percentage of VMs selected by label instead of named ones.
+- [GCP VM disk loss](/docs/chaos-engineering/faults/chaos-faults/gcp/gcp-vm-disk-loss): Detach disks instead of stopping VMs.
+- [GCP SQL instance failover](/docs/chaos-engineering/faults/chaos-faults/gcp/gcp-sql-instance-failover): Failover a Cloud SQL instance.

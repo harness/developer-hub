@@ -1,6 +1,6 @@
 ---
 title: Export Efficiency (DORA Metrics)
-description: Learn how to export Efficiency (DORA) metrics using the Harness SEI Reports API.
+description: Learn how to export Efficiency (DORA) metrics using the Harness AIDI Reports API.
 sidebar_label: Export Efficiency Metrics
 sidebar_position: 1
 ---
@@ -8,7 +8,7 @@ sidebar_position: 1
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-SEI 2.0 provides APIs to export [Efficiency (DORA metrics)](/docs/software-engineering-insights/harness-sei/insights/efficiency#dora-metrics) in CSV format for teams and organization trees. There are two available APIs:
+Harness AIDI provides APIs to export [Efficiency (DORA metrics)](/docs/software-engineering-insights/harness-sei/insights/efficiency#dora-metrics) in CSV format for teams and organization trees. There are two available APIs:
 
 - **V2 Efficiency Export API (recommended)**: Asynchronous export API for scalable DORA metric exports. 
 - **Legacy Reports API**: Synchronous CSV export API maintained for backward compatibility. 

@@ -1,6 +1,6 @@
 ---
 title: Scale contributors
-description: Steps to scaling your teams in SEI 1.0
+description: Steps to scaling your teams in SEI.
 sidebar_label: Scale contributors
 sidebar_position: 2
 redirect_from:

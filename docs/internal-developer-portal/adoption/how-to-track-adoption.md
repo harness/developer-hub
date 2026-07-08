@@ -7,9 +7,9 @@ redirect_from:
   - docs/internal-developer-portal/get-started/how-to-track-adoption
 ---
 
-We provide an out-of-the-box adoption dashboard to help you with tracking Harness IDP adoption inside your organization. You can find this Dashboard under [Custom Dashboards](https://developer.harness.io/docs/category/harness-dashboards). 
+We provide an out-of-the-box adoption dashboard to help you with tracking Harness IDP adoption inside your organization. You can find this Dashboard under [Custom Dashboards](/docs/category/harness-dashboards). 
 
-## Navigate to Dashboards
+## Navigate to dashboards
 
 To view and access dashboards, select **DASHBOARDS** from the left navigation in your Harness account. You can filter the data on the dashboards for IDP module by selecting the module name from the top of the page. 
 
@@ -17,7 +17,7 @@ To view and access dashboards, select **DASHBOARDS** from the left navigation in
 ![](./static/new-nav.png)
 
 
-## Adoption Dashboard
+## Adoption dashboard
 
 This Dashboard let you view activities on your IDP for a given **Aggregation Period**.
 
@@ -35,4 +35,4 @@ This Dashboard let you view activities on your IDP for a given **Aggregation Per
 
   ![](./static/scorecards.png)
 
-You can [download](https://developer.harness.io/docs/platform/dashboards/download-dashboard-data) the dashboard data and share it with your teams, executive or anyone who's not yet started with IDP yet to help them understand the usage of Harness IDP in your engineering organization.
+You can [download](/docs/platform/dashboards/download-dashboard-data) the dashboard data and share it with your teams, executive or anyone who is not yet started with IDP yet to help them understand the usage of Harness IDP in your engineering organization.

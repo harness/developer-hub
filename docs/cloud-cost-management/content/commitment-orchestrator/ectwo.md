@@ -12,7 +12,7 @@ To setup Commitment Orchestrator in Harness CACM, you need:
 
 - A master account with the right permissions to be added via AWS connector on which you want to enable orchestration. Select the services for which you want to enable orchestration (permissions can be limited to specific service).
 
-<DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/permissions.png')} width="80%" height="80%" title="Click to view full size image" />
+<DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/managing-commitments-static/permissions.png')} width="80%" height="80%" title="Click to view full size image" />
 
 Available permissions for EC2:
 
@@ -88,7 +88,7 @@ savingsplans:CreateSavingsPlan
 - Specify the Master Account Connector. You need to select the master account with the right permissions to be added via connector on which you want to enable orchestration.  You can either select an existing connector for your master account or create one. Please note, even if "Commitment Orchestrator" is enabled in Connector Set Up for any other Account except for Master, it will not be visible in the connector list in Commitment Orchestrator Setup since Commitment Orchestrator requires Master Account connector.
 
 
-<DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/stepone-copy.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/managing-commitments-static/stepone-copy.png')} width="100%" height="100%" title="Click to view full size image" />
 
 </TabItem>
 <TabItem value="step2" label="Orchestrator Exclusions (Optional)">
@@ -97,16 +97,16 @@ Commitment Orchestrator provides you with an option to exclude Accounts, Regions
 
 -   Account Exclusions: You can include or exclude specific accounts from the orchestration. The accounts marked as included will be considered for RI Orchestration.
 
-<DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/steptwo-copy.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/managing-commitments-static/steptwo-copy.png')} width="100%" height="100%" title="Click to view full size image" />
 
 -   Region Exclusions: You can include or exclude specific regions from the orchestration. All the regions are shown with their coverage and compute spend for making an informed decision
 
-<DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/stepthree-copy.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/managing-commitments-static/stepthree-copy.png')} width="100%" height="100%" title="Click to view full size image" />
 
 -   Instance Exclusions: You can include or exclude specific instances from the orchestration. 
 
 
-<DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/stepfour-copy.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/managing-commitments-static/stepfour-copy.png')} width="100%" height="100%" title="Click to view full size image" />
 
 :::important note 
 The purchases will happen only at master account level and thus will be in turn applicable for child accounts as well. The exclusion list will only be considered for the compute spend calulations and actual RI/SP may be used against the instances if they are part of child accounts.
@@ -130,7 +130,7 @@ The purchases will happen only at master account level and thus will be in turn 
     - **Risk management**: Minimizes commitment risk through monthly expiring Atom RIs, allowing for better adaptation to changing usage patterns.
     - **Balanced flexibility**: Maintains cost savings while introducing more flexibility into your commitment portfolio through a mix of SPs and RIs
 
-    <DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/sp-rolldown.png')} width="100%" height="100%" title="Click to view full size image" />
+    <DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/managing-commitments-static/sp-rolldown.png')} width="100%" height="100%" title="Click to view full size image" />
 
 - **Orchestration Mode:** Select how the orchestrator executes recommended commitment purchases:
 
@@ -138,7 +138,7 @@ The purchases will happen only at master account level and thus will be in turn 
 
     - **Manual**: All commitment purchases require explicit manual approval before execution, giving you complete control over the process. All the recommendations are visible in the **Actions** tab on the dashboard.
 
-    <DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/stepsix.png')} width="100%" height="100%" title="Click to view full size image" />
+    <DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/managing-commitments-static/stepsix.png')} width="100%" height="100%" title="Click to view full size image" />
 
 - **(Optional) Notifications:** Configure alerts to stay informed about commitment-related activities. You can set up the following notification types:
 
@@ -150,7 +150,7 @@ The purchases will happen only at master account level and thus will be in turn 
 
     - **Email Recipients:** Specify the email addresses that should receive these notifications. You can add multiple recipients by separating email addresses with commas. Notifications can also be configured to be sent to specific teams or distribution lists.
 
-    <DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/notifications.png')} width="100%" height="100%" title="Click to view full size image" />
+    <DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/managing-commitments-static/notifications.png')} width="100%" height="100%" title="Click to view full size image" />
 
 
 </TabItem>
@@ -160,7 +160,7 @@ The purchases will happen only at master account level and thus will be in turn 
 
 After all the set-up steps, you can review and finalise your inputs.
 
-<DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/stepseven.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/managing-commitments-static/stepseven.png')} width="100%" height="100%" title="Click to view full size image" />
 
 </TabItem>
 </Tabs>
@@ -172,7 +172,7 @@ After all the set-up steps, you can review and finalise your inputs.
 
 The Orchestration Setup page displays a comprehensive list of all Master Accounts with Commitment Orchestrator connector permissions. From this page, users can enable new orchestration setups and view key metrics including Last 30 Days Coverage, Savings, and the current status of each Orchestrator configuration.
 
-<DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/overview.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/managing-commitments-static/overview.png')} width="100%" height="100%" title="Click to view full size image" />
 
 ------
 
@@ -184,10 +184,10 @@ Disabling the Commitment Orchestrator will:
 - Stop all automated commitment management for the selected orchestrator
 - Remove existing orchestration configurations
 
-    <DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/disable.png')} width="50%" height="50%" title="Click to view full size image" />
+    <DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/managing-commitments-static/disable.png')} width="50%" height="50%" title="Click to view full size image" />
 
 
-    <DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/disable-two.png')} width="50%" height="50%" title="Click to view full size image" />
+    <DocImage path={require('../../4-use-ccm-cost-optimization/commitment-orch-docs/managing-commitments-static/disable-two.png')} width="50%" height="50%" title="Click to view full size image" />
 
 
 ------

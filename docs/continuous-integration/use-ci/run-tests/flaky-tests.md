@@ -5,6 +5,8 @@ sidebar_position: 92
 canonical_url: https://www.harness.io/blog/continuous-integration-testing
 ---
 
+
+
 ## Manage Flaky Tests
 
 The [Test Analysis Plugin](https://github.com/harness-community/parse-test-reports/blob/main/README.md) is designed to enhance test reporting capabilities within the Harness CI pipeline. It processes JUnit XML test reports, allowing for the management of flaky tests through a quarantine list. By leveraging the `fail_on_quarantine` setting, the plugin can determine whether to fail the pipeline based on tests that are not present in a specified quarantine list.

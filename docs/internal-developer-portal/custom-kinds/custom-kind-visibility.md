@@ -25,7 +25,7 @@ You can define a dedicated catalog layout for each custom kind and scope it furt
 ![](./static/layout-custom-entity.gif)
 <center>Figure 2: Layout for Custom Kind and its Entities</center>
 
-To configure a layout for your custom kind, see [Manage a Custom Kind](./manage-custom-kind.md#configure-a-layout).
+To configure a layout for your custom kind, go to [Manage a Custom Kind](./manage-custom-kind#configure-a-layout).
 
 ---
 
@@ -38,9 +38,9 @@ Custom kind entities are fully supported in Scorecards. When creating a scorecar
 
 ---
 
-## Plugins and Ingestion APIs
+## Plugins and ingestion APIs
 
 [Plugins](/docs/internal-developer-portal/plugins/overview.md) that render on entity pages work with custom kind entities through the same annotation-driven approach used for built-in kinds. Add the relevant annotations to the entity's `metadata` block, then configure the plugin's visibility rules to include your custom kind.
 
-Custom kind entities can be created and updated programmatically via the [Harness IDP Catalog Ingestion API](/docs/internal-developer-portal/catalog/integrate-tools/catalog-ingestion-api.md). The payload follows the same structure as any other entity. Just set `kind` to your custom kind name. Entities that don't conform to the kind's schema are rejected at ingestion time.
+Custom kind entities can be created and updated programmatically via the [Harness IDP Catalog Ingestion API](/docs/internal-developer-portal/catalog/integrate-tools/catalog-ingestion-api.md). The payload follows the same structure as any other entity. Just set `kind` to your custom kind name. Entities that do not conform to the kind's schema are rejected at ingestion time.
 

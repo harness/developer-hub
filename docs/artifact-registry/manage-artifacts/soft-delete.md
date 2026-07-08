@@ -11,7 +11,7 @@ import { FAQ } from '@site/src/components/AdaptiveAIContent';
 This feature is behind the feature flag `HAR_SOFT_DELETE_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable it.
 :::
 
-Soft-deleted packages and versions stay recoverable until the retention window allows them to be purged. During the retention window, soft-deleted packages remain downloadable by pipelines and clients. To block downloads immediately, select **Permanently delete** in the delete confirmation dialog.
+Soft-deleted packages and versions stay recoverable until the retention window allows them to be purged. During the retention window, soft-deleted packages and versions are **not** downloadable. Pipelines and clients that attempt to pull a soft-deleted version receive an error. To permanently remove the artifact immediately and skip the retention window, select **Permanently delete** in the delete confirmation dialog.
 
 For upstream proxy registries, deleting a cached artifact removes it from the local cache only. If a client requests the artifact again, the registry re-fetches it from the remote source and re-caches it.
 

@@ -1,8 +1,9 @@
 ---
 title: ServiceNow - Using Lists and Views
 redirect_from:
-  - /docs/continuous-delivery/armory/general/servicenowusing-lists-and-views
+  - /docs/continuous-delivery/armory/general/servicenow---using-lists-and-views
 ---
+
 
 Using Lists and Views
 A lot of the information in ServiceNow is presented in lists. Lists are powerful, and allow users to sort through reams of information, extract that information, and create custom **personal** views and filters that can be saved.

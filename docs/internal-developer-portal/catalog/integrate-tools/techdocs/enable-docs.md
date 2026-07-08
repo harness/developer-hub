@@ -21,7 +21,7 @@ This document will take you through detailed steps to enable and publish Markdow
 
 TechDocs is powered by the [TechDocs Backstage Plugin](https://backstage.io/docs/features/techdocs/) and uses **MkDocs** as the static site generator to transform your Markdown files into beautiful, searchable documentation.
 
-### Key Benefits
+### Key benefits
 
 - **Docs-as-code**: Version control your documentation alongside source code
 - **Automatic publishing**: Documentation updates automatically when you commit changes
@@ -31,8 +31,8 @@ TechDocs is powered by the [TechDocs Backstage Plugin](https://backstage.io/docs
 
 ---
 
-## Setup TechDocs for Catalog
-To enable TechDocs for your component, you'll need to:
+## Setup TechDocs for catalog
+To enable TechDocs for your component, you will need to:
 
 1. **Enable the TechDocs plugin** for your entity in your catalog entity's YAML file
 2. **Create documentation** in Markdown format with an `mkdocs.yml` file
@@ -46,7 +46,7 @@ Your documentation files must be in **Markdown format** with an `mkdocs.yml` fil
 
 ---
 
-## Documentation Location Options
+## Documentation location options
 
 You can add documentation for your component in two ways:
 
@@ -56,11 +56,11 @@ You can add documentation for your component in two ways:
 <Tabs queryString="enable-docs-location">
 <TabItem value="docs-available-in-root" label="Co-located with Source Code">
 
-## Option 1: Co-located with Source Code
+## Option 1: Co-located with source code
 
 When your documentation lives in the same repository as your component's source code:
 
-### Step 1: Create Documentation Structure
+### Step 1: Create documentation structure
 
 Create a `docs` directory next to your `catalog-info.yaml` file:
 
@@ -70,9 +70,9 @@ Create a `docs` directory next to your `catalog-info.yaml` file:
     └── index.md
 ```
 
-### Step 2: Create Documentation Content
+### Step 2: Create documentation content
 
-Inside the `docs` directory, create an `index.md` file with your documentation content. Here's a basic example:
+Inside the `docs` directory, create an `index.md` file with your documentation content. Here is a basic example:
 ```
 # Welcome!
 
@@ -109,7 +109,7 @@ You can also learn more about how to configure and set up this documentation in 
 
 ## Table example
 
-While this documentation isn't comprehensive, in the future it should cover the following
+While this documentation is not comprehensive, in the future it should cover the following
 topics outlined in this example table:
 
 | Topic   | Description                                                  |
@@ -123,7 +123,7 @@ topics outlined in this example table:
 TechDocs uses MkDocs as the static site generator. Visit https://www.mkdocs.org for more information about MkDocs.
 ```
 
-### Step 3: Add TechDocs Annotation
+### Step 3: Add TechDocs annotation
 
 Edit your `catalog-info.yaml` and add the TechDocs annotation in the `metadata.annotations` field:
 
@@ -142,11 +142,11 @@ The `dir:.` annotation indicates that:
 </TabItem>
 <TabItem value="docs-not-in-root" label="Separate Location">
 
-## Option 2: Separate Location
+## Option 2: Separate location
 
 When your TechDocs source content is managed in a location separate from your `catalog-info.yaml`, specify a URL location reference using the `url:` prefix instead of `dir:`. Ensure the specified path contains the `mkdocs.yml` file.
 
-### Supported Git Providers
+### Supported Git providers
 
 **Harness Code Repository:**
 - Account scope: `url:https://app.harness.io/ng/account/account_id/module/code/repos/repo_name/~/`
@@ -154,10 +154,10 @@ When your TechDocs source content is managed in a location separate from your `c
 - Project scope: `url:https://app.harness.io/ng/account/account_id/module/code/orgs/org_id/projects/project_id/repos/repo_name/~/`
 
 :::note URL Formatting
-If you are copying the URL directly from the browser and adding it in `techdocs-ref`, please ensure to reformat the URL and add `~` at the end of the path (before any file paths).
+If you are copying the URL directly from the browser and adding it in `techdocs-ref`, ensure to reformat the URL and add `~` at the end of the path (before any file paths).
 :::
 
-#### Examples for Different Scenarios
+#### Examples for different scenarios
 
 **Monorepo (docs in subdirectory):**
 
@@ -208,7 +208,7 @@ You can provide a path to a non-root directory inside the repository that contai
 Example: `url:https://github.com/backstage/backstage/tree/master/plugins/techdocs-backend/examples/documented-component`
 :::
 
-### Add TechDocs Annotation
+### Add TechDocs annotation
 
 Edit your `catalog-info.yaml` and add the TechDocs annotation with the URL reference:
 

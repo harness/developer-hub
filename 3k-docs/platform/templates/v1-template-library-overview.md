@@ -162,7 +162,7 @@ template:
 
 Pipelines supply input values through `with`. Values are validated against the declared type and constraints when the template is resolved.
 
-Supported input types include `string`, `number`, `boolean`, `array`, `duration`, `secret`, and `object`. Go to the [V1 pipeline input reference](/docs/platform/pipelines) to review the full list of supported types and constraints.
+Supported input types include `string`, `number`, `boolean`, `array`, `duration`, `secret`, and `object`. Go to the [V1 pipeline input reference](/3k-docs/platform/getting-started/pipeline) to review the full list of supported types and constraints.
 
 ---
 
@@ -208,6 +208,6 @@ Use account or organization scope for templates that should be shared across tea
 
 ## Related concepts
 
-- Go to the [step template guide](/docs/platform/templates/v1-step-template) to author a single-step template.
-- Go to the [step group template guide](/docs/platform/templates/v1-step-group-template) to bundle several steps into one reusable unit.
-- Go to the [stage template guide](/docs/platform/templates/v1-stage-template) to standardize a complete stage with inputs.
+- Go to the [step template guide](/3k-docs/platform/templates/v1-step-template) to author a single-step template.
+- Go to the [step group template guide](/3k-docs/platform/templates/v1-step-group-template) to bundle several steps into one reusable unit.
+- Go to the [stage template guide](/3k-docs/platform/templates/v1-stage-template) to standardize a complete stage with inputs.

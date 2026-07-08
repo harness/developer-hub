@@ -14,10 +14,30 @@ export type ModuleLink = {
   badge?: 'NEW' | 'EA' | 'GA';
 };
 
+export type CatItem = {
+  name: string;
+  href: string;
+  module?: string;
+  icon?: string;
+  iconLight?: string;
+  iconDark?: string;
+  description?: string;
+  badge?: string;
+};
+
+export type SubGroup = {
+  subgroupTitle: string;
+  items: CatItem[];
+};
+
 export type Category = {
   title: string;
   blurb?: string;
-  items: ModuleLink[];
+  items?: ModuleLink[];
+  subgroups?: {
+    subgroupTitle: string;
+    items: ModuleLink[];
+  }[];
 };
 
 export const categories: Category[] = [
@@ -27,7 +47,7 @@ export const categories: Category[] = [
     items: [
       {
         name: "Deployments",
-        href: "/3k-docs/continuous-delivery",
+        href: "/docs/continuous-delivery",
         module: "cd",
         iconLight: "img/home/deployment.svg",
         iconDark: "img/home/deployment.svg",
@@ -35,7 +55,7 @@ export const categories: Category[] = [
       },
       {
         name: "Builds",
-        href: "/3k-docs/continuous-integration",
+        href: "/docs/continuous-integration",
         module: "ci",
         iconLight: "img/home/build.svg",
         iconDark: "img/home/build.svg",
@@ -43,15 +63,15 @@ export const categories: Category[] = [
       },
       {
         name: "Feature Releases",
-        href: "/3k-docs/feature-management-experimentation",
+        href: "/docs/feature-management-experimentation",
         module: "ff",
         iconLight: "img/home/feature.svg",
         iconDark: "img/home/feature.svg",
         description: "Roll out features safely with flags and progressive delivery."
       },
       {
-        name: "Databases",
-        href: "/3k-docs/database-devops",
+        name: "Database DevOps",
+        href: "/docs/database-devops",
         module: "db-devops",
         iconLight: "img/home/database.svg",
         iconDark: "img/home/database.svg",
@@ -59,7 +79,7 @@ export const categories: Category[] = [
       },
       {
         name: "Infrastructure",
-        href: "/3k-docs/infrastructure-as-code-management",
+        href: "/docs/infrastructure-as-code-management",
         module: "iacm",
         iconLight: "img/home/infrastructure.svg",
         iconDark: "img/home/infrastructure.svg",
@@ -67,7 +87,7 @@ export const categories: Category[] = [
       },
       {
         name: "Artifacts",
-        href: "/3k-docs/artifact-registry",
+        href: "/docs/artifact-registry",
         module: "ar",
         iconLight: "img/home/artifact.svg",
         iconDark: "img/home/artifact.svg",
@@ -81,7 +101,7 @@ export const categories: Category[] = [
     items: [
       {
         name: "Resilience Tests",
-        href: "/3k-docs/resilience-testing",
+        href: "/docs/resilience-testing",
         module: "rt",
         iconLight: "img/home/resilience-test.svg",
         iconDark: "img/home/resilience-test.svg",
@@ -89,7 +109,7 @@ export const categories: Category[] = [
       },
       {
         name: "UI Tests",
-        href: "/3k-docs/ai-test-automation",
+        href: "/docs/ai-test-automation",
         module: "aita",
         iconLight: "img/home/ui-test.svg",
         iconDark: "img/home/ui-test.svg",
@@ -97,7 +117,7 @@ export const categories: Category[] = [
       },
       {
         name: "AI Evals",
-        href: "/3k-docs/ai-test-automation",
+        href: "/docs/ai-test-automation",
         module: "aida",
         iconLight: "img/home/ai-code.svg",
         iconDark: "img/home/ai-code.svg",
@@ -105,7 +125,7 @@ export const categories: Category[] = [
       },
       {
         name: "AI Code Review",
-        href: "/3k-docs/ai-test-automation",
+        href: "/docs/ai-test-automation",
         module: "aida",
         iconLight: "img/home/ai-code.svg",
         iconDark: "img/home/ai-code.svg",
@@ -116,32 +136,30 @@ export const categories: Category[] = [
   {
     title: "Security",
     blurb: "",
-    items: [
+    subgroups: [
       {
-        name: "Security Tests",
-        href: "/3k-docs/security-testing-orchestration",
-        module: "armory",
-        iconLight: "img/home/security-test.svg",
-        iconDark: "img/home/security-test.svg",
-        description: "Scan and remediate vulnerabilities across your pipeline."
+        subgroupTitle: "Application Security Testing",
+        items: [
+          { name: "App Security Testing", href: "/docs/appsec-security-testing", module: "ast", iconLight: "img/home/app-sec.svg", iconDark: "img/home/app-sec.svg", description: "Identify issues early and validate API security." },
+          { name: "SAST & SCA", href: "/docs/sast-and-sca", module: "sto", iconLight: "img/home/security-test.svg", iconDark: "img/home/security-test.svg", description: "Scan code and dependencies for vulnerabilities." },
+          { name: "Supply Chain Security", href: "/docs/software-supply-chain-assurance", module: "ssca", iconLight: "img/home/supply-chain.svg", iconDark: "img/home/supply-chain.svg", description: "Secure your software supply chain end to end." },
+          { name: "Security Tests", href: "/docs/security-testing-orchestration", module: "armory", iconLight: "img/home/security-test.svg", iconDark: "img/home/security-test.svg", description: "Scan and remediate vulnerabilities across your pipeline." },
+        ]
       },
       {
-        name: "Runtime Protection",
-        href: "/3k-docs/appsec-runtime-protection",
-        module: "ast",
-        iconLight: "img/home/runtime.svg",
-        iconDark: "img/home/runtime.svg",
-        description: "Detect and block threats to your apps and APIs at runtime."
+        subgroupTitle: "Web Application & API Protection",
+        items: [
+          { name: "Runtime Protection", href: "/docs/appsec-runtime-protection", module: "ast", iconLight: "img/home/runtime.svg", iconDark: "img/home/runtime.svg", description: "Detect and block threats to your apps and APIs at runtime." },
+          { name: "API Discovery", href: "/docs/appsec-discovery", module: "asp", iconLight: "img/home/security-test.svg", iconDark: "img/home/security-test.svg", description: "Complete visibility into your API ecosystem." },
+        ]
       },
       {
-        name: "AI Security",
-        href: "/3k-docs/ai-security",
-        module: "aisec",
-        iconLight: "img/home/shield.svg",
-        iconDark: "img/home/shield.svg",
-        description: "Discover AI assets, monitor threats, and test AI endpoints."
-      },
-    ],
+        subgroupTitle: "AI Security",
+        items: [
+          { name: "AI Security", href: "/docs/ai-security", module: "aisec", iconLight: "img/home/ai-security.svg", iconDark: "img/home/ai-security.svg", description: "Discover AI assets, monitor threats, and test AI endpoints." },
+        ]
+      }
+    ]
   },
   {
     title: "Operations",
@@ -149,7 +167,7 @@ export const categories: Category[] = [
     items: [
       {
         name: "Developer Portal",
-        href: "/3k-docs/internal-developer-portal",
+        href: "/docs/internal-developer-portal",
         module: "idp",
         iconLight: "img/home/portal.svg",
         iconDark: "img/home/portal.svg",
@@ -157,7 +175,7 @@ export const categories: Category[] = [
       },
       {
         name: "Cloud Costs",
-        href: "/3k-docs/cloud-cost-management",
+        href: "/docs/cloud-cost-management",
         module: "ccm",
         iconLight: "img/home/cloud-cost.svg",
         iconDark: "img/home/cloud-cost.svg",
@@ -165,7 +183,7 @@ export const categories: Category[] = [
       },
       {
         name: "Incidents",
-        href: "/3k-docs/ai-sre",
+        href: "/docs/ai-sre",
         module: "inc",
         iconLight: "img/home/incident.svg",
         iconDark: "img/home/incident.svg",
@@ -173,7 +191,7 @@ export const categories: Category[] = [
       },
       {
         name: "Engineering Insights",
-        href: "/3k-docs/software-engineering-insights/harness-sei/sei-overview",
+        href: "/docs/software-engineering-insights/harness-sei/sei-overview",
         module: "sei",
         iconLight: "img/home/engineering-insights-classic.svg",
         iconDark: "img/home/engineering-insights-classic.svg",
@@ -181,7 +199,7 @@ export const categories: Category[] = [
       },
       {
         name: "Engineering Insights Classic",
-        href: "/3k-docs/software-engineering-insights/propelo-sei/get-started/overview",
+        href: "/docs/software-engineering-insights/propelo-sei/get-started/overview",
         module: "sei",
         iconLight: "img/home/engineering-insights-classic.svg",
         iconDark: "img/home/engineering-insights-classic.svg",

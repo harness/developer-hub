@@ -33,7 +33,7 @@ The **My Integrations** tab displays a list of your configured integrations whic
 
 ## Integration Mapping
 
-Integration mapping refers to the process of associating existing or new integrations with your current project. After creating the project, you can proceed to set up and map integrations to it. It's important to associate the integrations correctly with the project in order to ensure that the widgets on the Insights 2.0 page display accurate data.
+Integration mapping refers to the process of associating existing or new integrations with your current project. After creating the project, you can proceed to set up and map integrations to it. It's important to associate the integrations correctly with the project in order to ensure that the widgets on the Insights page display accurate data.
 
 1. To map integrations, go to **Integration Mapping** in your Harness project within the AI DLC Insights module.
    

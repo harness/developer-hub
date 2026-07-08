@@ -188,5 +188,5 @@ find error_events
 ```
 
 :::info Full HQL Reference
-For the complete HQL language guide including all operations, functions, CTEs, joins, and best practices, see the [Harness Query Language (HQL) Reference](./hql-reference).
+For the complete HQL language guide including all operations, functions, CTEs, joins, and best practices, see the [Harness Query Language (HQL) Reference](/3k-docs/platform/getting-started/dashboards/hql).
 :::

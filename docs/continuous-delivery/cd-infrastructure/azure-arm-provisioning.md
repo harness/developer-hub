@@ -5,6 +5,7 @@ sidebar_position: 6
 canonical_url: https://www.harness.io/blog/arm-templates-pt1
 ---
 
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

@@ -4,7 +4,7 @@ export const experiments: ExperimentDetails[] = [
   {
     name: "Kubelet density",
     description:
-      "Kubelet density determines the resilience of the kubelet by creating pods on a specific node.",
+      "Create a configurable number of pods on a target Kubernetes node so you can test how the node, kubelet, and workload behave during a sudden pod-storm.",
     tags: ["kubelet", "density"],
     category: "kube-resilience",
   },

@@ -136,7 +136,7 @@ No, Harness CE helps identify the failures in your application by injecting fail
 <details>
 <summary><strong>What kind of Reporting is provided by the tool?</strong></summary>
 
-Once you execute your chaos experiments, you can download the reports that describe the experiment details such as runs, infrastructure, resilience score, and so on. For more information, go to [resilience probes](../chaos-testing/probes), alerts (see Experiments documentation) and [chaos dashboard](../chaos-testing/dashboards).
+Once you execute your chaos experiments, you can download the reports that describe the experiment details such as runs, infrastructure, resilience score, and so on. For more information, go to [resilience probes](/docs/resilience-testing/chaos-testing/probes), alerts (see Experiments documentation) and [chaos dashboard](/docs/resilience-testing/chaos-testing/dashboards/custom-dashboards).
 </details>
 
 <details>

@@ -341,7 +341,7 @@ You can use a Kubernetes cluster connector for AWS EKS by selecting the [Inherit
 To use the platform-agnostic Kubernetes cluster connector with your AWS EKS infrastructure:
 
 1. Install a Harness Kubernetes delegate in your EKS cluster. You must be logged in as an admin user when you run the `kubectl apply -f harness-delegate.yaml` command.
-2. Give it a name that you can recognize as an EKS cluster delegate. For information on installing a Kubernetes delegate, go to [Install a Kubernetes delegate](../../../delegates/install-delegates/overview.md).
+2. Give it a name that you can recognize as an EKS cluster delegate. For information on installing a Kubernetes delegate, go to [Install a Kubernetes delegate](/docs/platform/delegates/install-delegates/overview).
 3. In the connector settings, select to connect through the delegate that you installed in your cluster.
 4. When setting up the EKS cluster as build infrastructure or the target infrastructure for a deployment, select your Kubernetes cluster connector.
 

@@ -8,6 +8,7 @@ redirect_from:
   - /docs/internal-developer-portal/adoption/thinking-about-workflows
 ---
 
+
 **Workflows** turn Harness pipelines into self-service actions in the Internal Developer Portal. This page outlines repeatable patterns many platform teams automate (onboarding, infrastructure, feature flags, secrets, and Kubernetes operations), with example inputs, typical pipeline steps, and links to the Harness docs that define each step.
 
 For rollout and adoption context, see the [IDP adoption playbook](/docs/internal-developer-portal/adoption/adoption-playbook). For hands-on setup, see the [Self-Service Workflows overview](/docs/internal-developer-portal/flows/overview), [configure the Harness pipeline backend](/docs/internal-developer-portal/flows/create-workflow/harness-pipeline), the [Workflow YAML reference](/docs/internal-developer-portal/flows/worflowyaml), and [Managing workflows](/docs/internal-developer-portal/flows/manage-workflow-2o).
@@ -115,11 +116,11 @@ A typical flow creates a change ticket, runs Terraform through **IaCM**, gates o
 
 These are smaller, frequent operations that benefit from the same guardrails: [workflow RBAC](/docs/internal-developer-portal/rbac/workflow-rbac), approvals, and a single place to see execution history.
 
-### Flipping a feature flag
+### Flip a feature flag
 
 Changing a feature flag or its targeting is simple in the UI, but you may still want an auditable path: OPA on save, workflow RBAC, and pipeline checks so only allowed users change production targeting.
 
-Harness [Feature Management & Experimentation (FME)](/docs/feature-management-experimentation/getting-started/overview) provides first-class pipeline steps for flag operations; combine them with a [`Policy`](/docs/platform/governance/policy-as-code/add-a-governance-policy-step-to-a-pipeline) step when you need to validate workflow inputs. See [FME and Harness pipelines](/docs/feature-management-experimentation/pipelines).
+Harness [Feature Management & Experimentation (FME)](/docs/feature-management-experimentation/getting-started/overview) provides first-class pipeline steps for flag operations; combine them with a [`Policy`](/docs/platform/governance/policy-as-code/add-a-governance-policy-step-to-a-pipeline) step when you need to validate workflow inputs. Go to [FME and Harness pipelines](/docs/feature-management-experimentation/pipelines).
 
 ![Feature flag governance and targeting flow](./static/feature-flag-flip.png)
 
@@ -150,7 +151,7 @@ Harness [Feature Management & Experimentation (FME)](/docs/feature-management-ex
 
 **Related documentation:** [FME overview](/docs/feature-management-experimentation/getting-started/overview), [Feature flags and pipelines](/docs/feature-management-experimentation/pipelines), [Targeting](/docs/feature-management-experimentation/feature-management/targeting), [Policy as Code for FME](/docs/platform/governance/policy-as-code/using-harness-policy-engine-for-fme), and [FME policies](/docs/feature-management-experimentation/policies).
 
-### Rotating a token
+### Rotate a token
 
 Token rotation fits the same pattern: an approval, an [`Http`](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step) call to your identity or API provider, then another HTTP call (or script) to store the new value in Harness [secrets](/docs/platform/secrets/add-use-text-secrets).
 
@@ -188,7 +189,7 @@ Using Harness HTTP steps you can mirror the feature-flag workflow: wrap sensitiv
 
 **Related documentation:** [Using a short-lived secret to trigger a workflow](/docs/internal-developer-portal/tutorials/using-secret-as-an-input), [HTTP step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step), and [Add and use text secrets](/docs/platform/secrets/add-use-text-secrets).
 
-### Rolling back a deployment
+### Roll back a deployment
 
 When deployments are frequent, teams need a controlled rollback path. IDP can expose rollback to the right people with approvals and full execution history instead of ad hoc `kubectl` or UI-only changes.
 
@@ -217,7 +218,7 @@ When deployments are frequent, teams need a controlled rollback path. IDP can ex
 
 **Related documentation:** [Rollback deployments](/docs/continuous-delivery/manage-deployments/rollback-deployments) and [Kubernetes rollback](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback).
 
-### Scaling for traffic
+### Scale for traffic
 
 Scaling workloads is another good workflow candidate: one standard pipeline, RBAC on who can run it, and traceability for every change.
 
@@ -248,7 +249,7 @@ Scaling workloads is another good workflow candidate: one standard pipeline, RBA
 
 **Related documentation:** [Scale Kubernetes replicas](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/scale-kubernetes-replicas).
 
-### Restarting a service
+### Restart a service
 
 Restarting is similar to scaling: approval plus a Kubernetes step that refreshes pods without a full redeploy.
 

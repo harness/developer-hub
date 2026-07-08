@@ -1,8 +1,9 @@
 ---
 title: ServiceNow - All About Support Cases, Navigation and Anatomy
 redirect_from:
-  - /docs/continuous-delivery/armory/general/servicenowall-about-support-cases,-navigation-and-anatomy
+  - /docs/continuous-delivery/armory/general/servicenow---all-about-support-cases,-navigation-and-anatomy
 ---
+
 
 Support cases begin with ```CS``` and are located in the Cases section that can be searched using the Sidebar Navigator
 

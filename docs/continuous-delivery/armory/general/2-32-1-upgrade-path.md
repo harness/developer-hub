@@ -4,6 +4,7 @@ redirect_from:
   - /docs/continuous-delivery/armory/general/2.32.1-upgrade-path
 ---
 
+
 The most important change introduced in Armory version 2.32 is artifact storage. This moves artifacts out of Orca database into the s3 bucket. This change will potentially reduce Orca database load and the execution context coming from the database.
  
 ## How to enable the artifact storage

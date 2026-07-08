@@ -8,7 +8,7 @@ sidebar_label: Understand Dynamic Workflow Picker
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-It is quite common to create a UI field in [IDP Workflow](http://developer.harness.io/docs/internal-developer-portal/flows/service-onboarding-pipelines#specparameters---formstep--formstep) forms which shows a static list options to the user. For example -
+It is quite common to create a UI field in [IDP Workflow](/docs/internal-developer-portal/flows/service-onboarding-pipelines#specparameters---formstep--formstep) forms which shows a static list options to the user. For example -
 
 ```yaml
 properties:
@@ -34,28 +34,28 @@ However, often times a static list does not provide much value to the user. Here
 
 As a creator of the workflow, you want to provide real-time options for these input fields for a better user experience. This would also allow you to expect the results in a consistent format and leave no room for user formatting errors.
 
-This is where our Dynamic Workflow Picker comes into play. Let's see how it works.
+This is where our Dynamic Workflow Picker comes into play. Let us see how it works.
 
 ![](../static/dynamic-picker-architecture-diagram.png)
 
-The Workflow UI makes a request to our [Backend Proxy](https://developer.harness.io/docs/internal-developer-portal/plugins/delegate-proxy/) which you can configure as a way to securely make requests to third party APIs and get a response. The UI Picker allows you to customize the response a bit and present it as a list in the dropdown.
+The Workflow UI makes a request to our [Backend Proxy](/docs/internal-developer-portal/plugins/delegate-proxy/) which you can configure as a way to securely make requests to third party APIs and get a response. The UI Picker allows you to customize the response a bit and present it as a list in the dropdown.
 
-## Creating a Dynamic Workflow Picker
+## Create a dynamic workflow picker
 
 There are two steps to adding a dynamic workflow picker in Harness IDP.
 
 1. **Define a Backend Proxy** so that requests from the UI can be populated with authorization headers and forwarded to the third party APIs.
 2. **Create the dynamic field in the workflow form**, consuming the backend proxy and the API response.
 
-### Step 1: Create a Backend Proxy
+### Step 1: Create a backend proxy
 
-The first step is to declare a new Backend Proxy so that the Workflow forms UI can make authenticated requests to our third party provider. Let's assume you are trying to make requests to GitHub.
+The first step is to declare a new Backend Proxy so that the Workflow forms UI can make authenticated requests to our third party provider. Let us assume you are trying to make requests to GitHub.
 
 In IDP, go to **Configure** → **Plugins**. Find the plugin called "Configure Backend Proxies".
 
 ![](../static/config-backend-proxies-plugin.png)
 
-Inside the plugin, you get three options (like any other [IDP plugin configuration](https://developer.harness.io/docs/internal-developer-portal/plugins/overview)).
+Inside the plugin, you get three options (like any other [IDP plugin configuration](/docs/internal-developer-portal/plugins/overview)).
 
 1. Declare a Backend Proxy (HTTP Proxy) endpoint and headers
 2. Configure necessary secrets
@@ -102,7 +102,7 @@ https://idp.harness.io/<ACCOUNT_ID>/idp/api/proxy/github-api/user
 
 Here `https://idp.harness.io/<ACCOUNT_ID>/idp/api/proxy/github-api/` can be seen exactly as `https://api.github.com/`. So all the endpoint paths on the GitHub API can be used after the proxy endpoint URL. You can learn more about how to consume Harness IDP APIs on our [API Docs](/docs/internal-developer-portal/api-references/public-api).
 
-### Step 2: Create the Dropdown Picker in Workflows Form
+### Step 2: Create the dropdown picker in workflows form
 
 Now that our Backend proxy is ready, it is time to create that dropdown picker. Here is a small example to start with
 
@@ -130,28 +130,28 @@ Let us understand these properties in detail -
 - `path` - This is the most important field and has to be of the format `proxy/<endpoint-name>/<API-path>`. Here the `endpoint-name` is `github-api` as we have defined above. And `users/OrkoHunter/repos` is the API endpoint path on `api.github.com`.
 - `valueSelector` - This is an optional field. If the response of the API is an array of strings, then you do not need this field. If the response is an array of objects/map, then `valueSelector` can be used to point to the key in the object/map that needs to be used for the dropdown.
 
-And that's it! We now have a Workflow dropdown where results are coming from an external API response.
+And that is it! We now have a Workflow dropdown where results are coming from an external API response.
 
 ![](../static/dynamic-picker-example.png)
 
-## Conditional API Requests
+## Conditional API requests
 
 **Dynamic Pickers** allow users to interact with input form fields and receive real-time options, ensuring validation for workflow creators. Users can dynamically select input values, making workflows more interactive.
 
 In the background, Dynamic Pickers make an **API request** to fetch relevant data. However, there was a limitation:
 - The **API URL was fixed**, meaning no query parameters could be used to filter results dynamically.
-- Some use cases require **user inputs** to refine results, which wasn't previously possible.
+- Some use cases require **user inputs** to refine results, which was not previously possible.
 
-#### Introducing Conditional API Requests
+#### Introduce conditional API requests
 Workflow Dynamic Pickers now support **conditional API requests**, where one field's values depend on another. This enables:
 - ✔ **Interactive workflows** – Users can dynamically filter results based on prior inputs.
 - ✔ **Customizable API requests** – API URLs can now include query parameters derived from user input.
 
 
-### Without vs. With Conditional API Requests
+### Without vs. with conditional API requests
 
-#### Without Conditional API Requests
-Since **query parameters** couldn't be used in the **API URL**, input fields were independent of each other.
+#### Without conditional API requests
+Since **query parameters** could not be used in the **API URL**, input fields were independent of each other.
 
 **For example**, consider a GitHub repository picker in a Harness IDP workflow. The repository picker consists of:
 - **UI Picker** – Displays the list of repositories.
@@ -176,7 +176,7 @@ parameters:
 - The **``path``** field ``(proxy/github-api/orgs/harness/repos)`` is fixed to fetch repositories only from the **harness org**.
 - Users **cannot filter** repositories based on **different organizations or projects**.
 
-#### With Conditional API Requests
+#### With conditional API requests
 By enabling conditional API requests, users can create dependencies between input fields.
 - API URLs can now include **dynamic query parameters** derived from user input.
 - Users can **interactively** use Workflows.
@@ -205,9 +205,9 @@ parameters:
 - ✔ Enables **interactive and responsive workflows**.
 
 
-Let's deep dive into the details of how this feature can be implemented.
+Let us deep dive into the details of how this feature can be implemented.
 
-### Implementing Conditional API Requests
+### Implement conditional API requests
 When a user selects or provides input in a form field, the **Form Context** updates with the relevant data. Other fields, typically read-only, can subscribe to this context and automatically update based on the latest information.
 
 #### Implementation
@@ -220,7 +220,7 @@ When a user selects or provides input in a form field, the **Form Context** upda
 - This enables **dynamic values** in the ``path`` field of the Dynamic Picker, where variables retrieve values from other input fields.
 
 :::info
-You can also use conditional API requests across **multiple pages** using the **same format and references**. Please note these references only work with values provided through Dynamic UI pickers.
+You can also use conditional API requests across **multiple pages** using the **same format and references**. Note these references only work with values provided through Dynamic UI pickers.
 :::
 
 ### Example YAML
@@ -263,7 +263,7 @@ Below is the YAML configuration for this setup:
         url: ${{ steps.trigger.output.PipelineUrl }}
 ```
 
-#### YAML Breakdown
+#### YAML breakdown
 - In the above YAML, we have referenced the ```gitusername``` variable in the ``path`` of the dynamic picker field.
 - This helps the dynamic picker field retrieve the input value to the ``gitusername`` field and show all the repositories associated with that username.
 
@@ -273,36 +273,36 @@ Below is the YAML configuration for this setup:
 ![](../static/dynamic-picker-2.png)
 
 
-## Updating Fields using Form Context
+## Update fields using form context
 
 :::info
-Please note that this feature is not supported in your [Workflow Playground Editor](/docs/internal-developer-portal/flows/workflowyaml#workflows-playground). You won't be able to implement or test this feature in the playground.
+Note that this feature is not supported in your [Workflow Playground Editor](/docs/internal-developer-portal/flows/workflowyaml#workflows-playground). You will not be able to implement or test this feature in the playground.
 :::
 
 With conditional API requests in **Dynamic Pickers**, you can create a **Workflow** with dependent input fields. This also allows you to configure a **Workflow** with a **Dynamic Picker** to automatically update other data fields in your **Workflow's frontend** based on previous input. All relevant information in your **Workflow's frontend** can be auto-filled from third-party sources based on your selection/input.
 
 This functionality is powered by a global [**Form Context**](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker#understanding-form-context). This global Form Context is **active per Workflow session**.
-When a user selects or provides input in a form field, the **Form Context** updates with the relevant data. Other fields—typically read-only—can subscribe to this context and automatically update based on the latest information.
+When a user selects or provides input in a form field, the **Form Context** updates with the relevant data. Other fields, typically read-only, can subscribe to this context and automatically update based on the latest information.
 
 This release also includes a comprehensive **tutorial** designed to help you understand and **implement these features** effectively. Check it out here: [**Use Dynamic Pickers for a Pull Request Creator Workflow**](/docs/internal-developer-portal/flows/workflows-tutorials/pull-request-creator.md)
 
 #### Example
 If you are using a [**Repository Picker Workflow**](/docs/internal-developer-portal/flows/workflows-tutorials/dynamic-picker#example-yaml-1) and enter your **GitHub Username**, the form dynamically fetches and displays all repositories linked to that username. Once entered, other dependent fields in the form can be auto-updated based on this selection.
 
-### Understanding Form Context
+### Understand form context
 
 1. Whenever you use a **Dynamic Picker**, an API call runs in the background to fetch relevant data. This data (returned in the **API Picker response**) is displayed in the form as picker dropdown options.
 2. The **Form Context** is then updated with all the required data retrieved from the **API Picker Response Object**. You can configure which fields should be stored in **Form Context** from the API Picker response in the **Workflow YAML**.
 3. The input fields in the **Workflow frontend** can then be auto-updated using **Form Context**.
 
-### Implementing Form Context
+### Implement form context
 
 You can follow these steps to implement **Form Context**:
 
-#### 1. Choose Data Fields to Store in Form Context
+#### 1. Choose data fields to store in form context
 Decide which API response fields should be stored in **Form Context** for your **Dynamic Picker field**. For instance, in a repository picker workflow, we need to extract the **repository name** and **branch** from the API response object. Based on this [API](https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28#list-repositories-for-the-authenticated-user), we will define these values in the form context as retrieved from the API response: ``name`` and ``default_branch``.
 
-#### 2. Set Context Data in Your Workflow YAML
+#### 2. Set context data in your workflow YAML
 You can define **Form Context** in the ``ui:options`` section using the ```setContextData``` field within the **Dynamic Picker field definition** in **Workflow YAML**:
 
 ```YAML {5}
@@ -316,13 +316,13 @@ dynamic-picker-name:
       ...
 ```
 
-#### **Syntax Breakdown**
+#### **Syntax breakdown**
 - Define a **Dynamic Picker** using: ```ui:field: SelectFieldFromApi```
 - ```repoName``` and ```branchName``` are identifiers in **Form Context** referring to API field values from the API Picker response.
 - ```name``` and ```default_branch``` represent actual API response object field values.
 - ```setContextData``` is used to define and store certain API response object fields in **Form Context**.
 
-#### 3. Auto-Update Input Fields Using `getContextData`
+#### 3. Auto-Update input fields using `getContextData`
 Once **Context Data** is set, define **input fields** and use ```getContextData``` to auto-update these fields with values from the API response based on user input.
 
 ```YAML {12}
@@ -349,13 +349,13 @@ originBranchName:
 We can make certain fields **non-editable** by adding `readonly: true` in their field definition, just like `repositoryName`. Conversely, to make fields **editable**, we simply omit this property, as seen with `originBranchName`. This allows users to validate the auto-fetched data, edit it if needed, and update the form context with the modified values.
 :::
 
-#### **Syntax Breakdown**
+#### **Syntax breakdown**
 - ```repositoryName``` and ```originBranchName``` are input field names in the **Workflow frontend**.
 - Define **Form Context** for these fields using: ```ui:field: ContextViewer```
 - ```getContextData``` retrieves and auto-updates the input field with data from the API response.
 - Reference values stored in **Form Context** using: ```formContext.repoName```
 
-#### 4. Show Form Context Live in the Workflow Frontend
+#### 4. Show form context live in the workflow frontend
 At any time, if you need to display the **Form Context** live in your Workflow Frontend for debugging purposes, you can use the following format:
 
 ```YAML {7}
@@ -368,7 +368,7 @@ formContext:
     getContextData: {{formContext}}
 ```
 
-#### **Syntax Breakdown**
+#### **Syntax breakdown**
 - `formContext` is the **field name** used to define the Form Context in your YAML.
 - `ui:field` for this field should be set to `ContextViewer`.
 - To display the Form Context **live in your frontend**, use `getContextData: {{formContext}}` under the `ui:options` property.
@@ -440,7 +440,7 @@ parameters:
 </Tabs>
 
 
-## Passing User Information to Dynamic Pickers
+## Pass user information to dynamic pickers
 
 When working with dynamic pickers that call APIs, you may need to pass information about the **currently logged-in user** to the API endpoint. This is useful for scenarios where you want to:
 
@@ -453,7 +453,7 @@ Harness IDP allows you to automatically append user information (such as email, 
 
 ![](./static/dynamic-userinfo.png)
 
-### Configuring User Field Mapping
+### Configure user field mapping
 
 First, you need to define which user fields should be made available for your workflow. This is done using the `userFieldMapping` specification at the workflow level.
 
@@ -470,9 +470,9 @@ spec:
 - **`name`**: Maps the user's display name to a field named `name`
 - The system also provides `uid` (user ID) by default
 
-### Appending User Data to API Requests
+### Append user data to API requests
 
-Once you've configured the user field mapping, you can use the `appendUser` option in your dynamic picker configuration to send this information to your API endpoint.
+Once you have configured the user field mapping, you can use the `appendUser` option in your dynamic picker configuration to send this information to your API endpoint.
 
 ```YAML
 properties:
@@ -504,9 +504,9 @@ properties:
     - `header` - Sends data as HTTP headers
     - `body` - Sends data in the request body (for POST API requests)
 
-### Location Options
+### Location options
 
-#### Sending User Data as Query Parameters
+#### Send user data as query parameters
 
 When you specify `location: query`, the user information is appended to the API URL as query parameters.
 
@@ -524,7 +524,7 @@ appendUser:
 /catalog/entities?userEmail=john.doe@example.com&name=John%20Doe
 ```
 
-#### Sending User Data as Headers
+#### Send user data as headers
 
 When you specify `location: header`, the user information is sent as HTTP headers in the API request.
 
@@ -543,7 +543,7 @@ userEmail: john.doe@example.com
 name: John Doe
 ```
 
-#### Sending User Data in Request Body
+#### Send user data in request body
 
 When you specify `location: body`, the user information is sent in the request body. This is useful for POST API requests.
 
@@ -570,7 +570,7 @@ You can specify multiple locations simultaneously. For example, using `location:
 
 ### Example YAML
 
-Here's a complete workflow example that demonstrates passing user context to a dynamic picker:
+Here is a complete workflow example that demonstrates passing user context to a dynamic picker:
 
 ```YAML {11,38,39,40,41,42,43,44}
 apiVersion: harness.io/v1
@@ -653,10 +653,10 @@ spec:
 :::
 
 
-## Live User Validation using API Requests
+## Live user validation using API requests
 
 :::info
-Please note that this feature is not supported in your [Workflow Playground Editor](/docs/internal-developer-portal/flows/workflowyaml#workflows-playground). You won't be able to implement or test this feature in the playground.
+Note that this feature is not supported in your [Workflow Playground Editor](/docs/internal-developer-portal/flows/workflowyaml#workflows-playground). You will not be able to implement or test this feature in the playground.
 :::
 
 You can configure Workflows to enable **user validation** for input form fields. If you want users to manually enter details and validate them instead of selecting from a drop-down, you can use this feature in your Workflow.
@@ -675,11 +675,11 @@ In a [**Pull Request Creator Workflow**](/docs/internal-developer-portal/flows/w
 
 To achieve this, you can add a **button** (e.g., "Create a PR"). When clicked, this button triggers an API call in the background using the user-provided branch details, stores additional data from the API response object in the Form Context, and sends a POST request to create a pull request. This helps users **validate their details** for the given use case.
 
-### Implementing User Validation
+### Implement user validation
 
 You can implement user validation by adding a custom button using the following steps:
 
-#### 1. Define the Button
+#### 1. Define the button
 
 A custom button allows users to manually enter their input details and validate them by clicking the button. You can define this button in your `workflow.yaml` as follows:
 
@@ -697,7 +697,7 @@ customValidationName:
       fieldname: value
 ```
 
-#### 2. Configuration Details
+#### 2. Configuration details
 
 1. **`ui:field`**
   For this feature, `ui:field` must be set to `ValidateAndFetch`.
@@ -782,9 +782,9 @@ parameters:
 </TabItem>
 </Tabs>
 
-## Supported Filters to parse API response
+## Supported filters to parse API response
 
-### `SelectFieldFromApi` Field
+### `SelectFieldFromApi` field
 
 Here is an elaborate example of what all properties are possible with the `SelectFieldFromApi` field, showcasing how to parse values from an API response.
 
@@ -824,11 +824,11 @@ properties:
 
 You can find the detailed docs on the [project's README](https://github.com/RoadieHQ/roadie-backstage-plugins/tree/main/plugins/scaffolder-field-extensions/scaffolder-frontend-module-http-request-field).
 
-#### Handling Object Responses
+#### Handle object responses
 
 The `SelectFieldFromApi` field can handle API responses in **object form**, not just arrays. This allows you to use different selectors to extract values from object responses. When the API returns an object instead of an array, you can use `arraySelector` to navigate to nested arrays within the object, or directly use `valueSelector` and `labelSelector` on object properties.
 
-#### Example: Object Response Handling
+#### Example: Object response handling
 
 ```yaml
 parameters:
@@ -874,7 +874,7 @@ In the example above:
 - The **`relations`** field also receives an object response, but uses `arraySelector: relations` to navigate to a nested array within that object
 - Both fields use `valueSelector` and `labelSelector` to extract the appropriate values from the object structure
 
-### POST and PUT Method Support
+### POST and PUT method support
 
 The **POST/PUT method** can be configured for Dynamic API Pickers, enabling users to interact with external APIs by sending data in the request body. This is particularly useful for fetching data via **GraphQL APIs**, invoking **Lambda functions**, etc. 
 
@@ -882,15 +882,15 @@ The **POST/PUT method** can be configured for Dynamic API Pickers, enabling user
 Kindly note that there are no restrictions on **HTTP methods**, except for the **DELETE** method, which is currently unsupported.
 :::
 
-#### Key Elements:
+#### Key elements:
 - **`method` field** - Used to specify the **POST** or **PUT** request method. 
 - **`headers` field - `Content-Type`**: Specifies the request body's type.
   - In case of structured data (e.g., JSON) - `application/json` is used.
   - In case of plain text - `text/plain` is used.
 - **`body` field**: Contains the data sent to the API.
 
-#### POST Method Example: 
-Here's how the **POST method** is used to fetch and populate dynamic pickers within forms:
+#### POST method example: 
+Here is how the **POST method** is used to fetch and populate dynamic pickers within forms:
 
 ```YAML {10}
 custom1:
@@ -909,7 +909,7 @@ custom1:
         secret: "{{parameters.formdata}}"
 ```
 
-#### PUT Method Example: 
+#### PUT method example: 
 ```YAML {10}
 custom1:
   title: Repository Topics
@@ -935,9 +935,9 @@ custom1:
 
 Using these methods is particularly beneficial when transmitting complex or sensitive data, such as **API tokens, authentication headers, or data that triggers server-side actions** (e.g., filtering or updating records).
 
-### Parsing API Response using filters
+### Parse API response using filters
 
-Let's look at some different types of API responses and how to create a picker based on that using the `arraySelector`, `valueSelector` and `labelSelector` filters.
+Let us look at some different types of API responses and how to create a picker based on that using the `arraySelector`, `valueSelector` and `labelSelector` filters.
 
 #### Case 1: The response is an array
 
@@ -1042,9 +1042,9 @@ properties:
 
 If the filters here are not sufficient for your use case, and you require additional data processing of the response, then we recommend you setting up a Lambda function in your cloud provider or a lightweight backend to do this job. You can use your Backend Proxy and Delegate Proxy to communicate to your custom Lambda/Backend.
 
-## Example Usage
+## Example usage
 
-### Fetch the list of Harness Services in Workflows
+### Fetch the list of Harness services in workflows
 
 1. Configure the [Backend Proxy](#step-1-create-a-backend-proxy)
 
@@ -1064,7 +1064,7 @@ proxy:
 - `/harness-api-endpoint`: Proxy path for the Harness API.
 - `x-api-key`: Add your Harness Personal Access Token as an environment variable(covered in the next step)..
 
-2. Add the [Harness Personal Access Token](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys/#create-personal-api-keys-and-tokens) as a variable. Save the token as an environment variable named `PROXY_HARNESS_TOKEN`.
+2. Add the [Harness Personal Access Token](/docs/platform/automation/api/add-and-manage-api-keys#create-personal-api-keys-and-tokens) as a variable. Save the token as an environment variable named `PROXY_HARNESS_TOKEN`.
 
 3. Update your Workflow definition YAML to include a dropdown for fetching the list of services.
 

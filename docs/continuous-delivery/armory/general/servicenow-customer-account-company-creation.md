@@ -1,8 +1,9 @@
 ---
 title: ServiceNow - Customer Account/Company Creation
 redirect_from:
-  - /docs/continuous-delivery/armory/general/servicenowcustomer-account-company-creation
+  - /docs/continuous-delivery/armory/general/servicenow---customer-account-company-creation
 ---
+
 
 To create an account, you will need to add the organization account both in ServiceNow and in Jira.  This is so that case, when created, will refer to the correct organization when synchronizing across both systems.
  

@@ -4,6 +4,7 @@ redirect_from:
   - /docs/continuous-delivery/armory/general/determine-or-check-the-environment's-spinnaker-version
 ---
 
+
 ### Question:
 How to find out the version of Spinnaker that the environment is running at? 
 Answer:

@@ -5,7 +5,7 @@ description: Learn how to use this visualization tool to help you explore the ef
 sidebar_position: 3
 ---
 
-import Fme from '@site/docs/feature-management-experimentation/getting-started/overview/boxes-demo.md';
+import Fme from '@site/docs/feature-management-experimentation/getting-started/boxes-demo.md';
 
 <Fme />
 

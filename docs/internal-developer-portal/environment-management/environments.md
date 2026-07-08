@@ -13,11 +13,11 @@ An **Environment** is instantiated using an **Environment Blueprint**, consider 
 
 ---
 
-## Types of Environments
+## Types of environments
 
 Based on the time-to-live (TTL) duration, Harness IDP environment management supports two types of environments:
 
-* **Ephemeral environments**: Short-lived environments that are created and paused on demand. They run only for a specific time interval configured by the user. When the TTL expires, the environment is automatically paused and the **Last Known Execution** column on the environments list shows **TTL Expired**.
+* **Ephemeral environments**: Short-lived environments that are created and paused on demand. They run only for a specific time interval configured by the user. When the TTL expires, the environment moves to an `Offline | TTL Expired` state automatically. Go to [Environment states](#environment-states) to view all possible states.
 * **Long-lived environments**: Environments that run indefinitely and are not paused automatically. They are paused only when the user explicitly does so.
 
 Go to [Configure TTL](/docs/internal-developer-portal/environment-management/blueprints/env-blueprint-yaml#configure-ttl-time-to-live) to learn more. 
@@ -26,7 +26,7 @@ Go to [Configure TTL](/docs/internal-developer-portal/environment-management/blu
 
 ---
 
-## Create Environments
+## Create environments
 Using the [Environment Blueprint](/docs/internal-developer-portal/environment-management/blueprints/env-blueprint-yaml) we can now create and spin up an ephemeral environment. 
 
 1. In Harness IDP (Environments), click **+ Create** in the right corner, then select **Environment**.
@@ -59,7 +59,7 @@ The Environment should now be creating, and you can follow the progress by viewi
 
 ---
 
-## The Environment Detail Page
+## The environment detail page
 
 When you open an environment, you land on its detail page. Understanding this page is essential for both monitoring your environment and taking action on it.
 
@@ -69,14 +69,27 @@ To the right of the main content, a **Properties** panel shows the **Environment
 
 ### Environment states
 
-The environment state reflects the combined status of all entities defined in its blueprint.
+The environment state reflects the current health and operational status of your environment. It appears in the **STATE** column on the environments list and in the **Environment State** field on the environment detail page.
 
-| State | What it means |
-|---|---|
-| **Online** | All entities are provisioned and running. |
-| **Online (Partially Failed)** | Some entities provisioned successfully and others failed. Check the **Components** and **Resources** tabs to identify which entities failed. An error banner on the detail page names the failed entities and provides **View Pipeline** and **Retry** options. |
-| **Paused** | The environment has been explicitly stopped. Infrastructure and service resources are wound down but the environment record is retained so it can be started again. |
-| **Offline** | The environment is fully offline. This occurs when the TTL expires on an ephemeral environment or when Stop Environment has fully completed. |
+![Animation showing environment state transitions across Online, Offline, and Paused statuses](./static/env-states.gif)
+
+* **Environment Status:** High-level operational state (online, offline, paused)
+* **Environment State:** Sub-state providing additional context (updating, stopping, starting, failed, partially_failed, aborted, ttl_expired, or empty)
+
+| Environment Status | Environment State | When It Appears | Description |
+|---|---|---|---|
+| **Online** | (empty) | All instances running, no operations in progress | All resources and services are running. No operations are in progress. |
+| **Online** | *Updating* | Environment is running and an update operation is in progress | Changes are being applied to the environment. Some services may restart during this process. |
+| **Online** | *Stopping* | Environment is running and a destroy/stop operation is in progress | The environment is stopping. Running services will shut down shortly. |
+| **Online** | *Partially Failed* | Environment is running but some instances failed | The environment is running, but some services failed and may be unavailable. |
+| **Online** | *Aborted* | Environment is running but last operation was aborted | The environment is running, but the last operation was interrupted before completion. Some changes may not have been applied. |
+| **Offline** | (empty) | All instances inactive, no operations in progress | No resources or services are running. It can be resumed. |
+| **Offline** | *Updating* | Environment is offline and an update is being applied | Changes are being applied to the environment. |
+| **Offline** | *Starting* | Environment is being provisioned or resumed | The environment is starting up. |
+| **Offline** | *Failed* | Environment failed to start or update failed | The environment is stopped due to a failed update. Review logs to identify the issue. |
+| **Offline** | *Aborted* | Environment is stopped, last operation was interrupted | The environment is stopped. The last operation was interrupted before completion. |
+| **Offline** | *TTL Expired* | Environment was automatically paused due to TTL expiry | The environment is paused because the TTL expired. Services are not active. |
+| **Paused** | (empty) | Environment was manually paused by a user | The environment is paused. Services are not active. |
 
 ### Action buttons and menus
 
@@ -106,7 +119,7 @@ The six tabs on the detail page give you different lenses on your running enviro
 
 ---
 
-## Environment Actions
+## Environment actions
 
 Since environments are treated as managed entities, platform teams and developers can control their lifecycle directly from the platform. This includes stopping, starting, updating, and deleting environments as needed.
 
@@ -121,7 +134,7 @@ The exact steps that execute during each action are defined in the blueprint as 
 * [Delete Environment](#delete-environments)
 
 
-### Edit Environment Configuration
+### Edit environment configuration
 
 If you wish to make changes to your environment, go to your environment and click **Edit Configuration**. In the dialog that opens, you can:
 
@@ -136,10 +149,10 @@ When done, click **Update Environment**.
 Depending on the scope of the change, this may trigger a full environment update or only update the affected resources and components.
 
 :::info
-When you update an environment’s configuration, the environment is **re-provisioned** and the TTL is **reset**. The new TTL countdown starts from the time of the update.
+When you update an environment’s configuration, the environment is re-provisioned and the TTL is reset. The new TTL countdown starts from the time of the update.
 :::
 
-### Drift Detection
+### Drift detection
 
 Drift detection helps you identify when your environment's actual infrastructure state has diverged from its intended configuration. This feature is essential for maintaining infrastructure consistency, improving security by identifying unauthorized changes, and enabling compliance tracking across your environments.
 
@@ -149,7 +162,7 @@ Before you can detect drift, each workspace must have an available drift detecti
 - **Workspace template level**: Define a drift detection pipeline in the workspace template
 - **Project level**: Set a default drift detection pipeline at the project level
 
-Learn how to [create a drift detection pipeline in IaCM](https://developer.harness.io/docs/infra-as-code-management/pipelines/operations/drift-detection/#detect-drift).
+Learn how to [create a drift detection pipeline in IaCM](/docs/infra-as-code-management/pipelines/operations/drift-detection#detect-drift).
 :::
 
 To detect drift, navigate to your environment in Harness IDP, and from the kebab menu (**:**) at the top right, click **Check for Drift**. Alternatively, this option is also available under the **Drift Detection** tab of your selected environment. 
@@ -159,13 +172,13 @@ The system chains and dynamically executes drift detection pipelines for each wo
 
 :::tip How to resolve drift
 When drift is detected, you can resolve it by:
-- Following the drift resolution workflows in IaCM (see [IaCM Drift Detection documentation](https://developer.harness.io/docs/infra-as-code-management/pipelines/operations/drift-detection/))
+- Go to [IaCM Drift Detection documentation](/docs/infra-as-code-management/pipelines/operations/drift-detection/) to follow the drift resolution workflows in IaCM.
 - Triggering an environment update, which will re-provision all workspaces and bring them back in sync with the desired configuration
 :::
 
 To review results after running drift detection, open the **Drift Detection** tab on the environment detail page. The tab shows the Last Drift Status, a count of Resources Changed, and a resource list. Select any resource to see whether drift was detected and which attributes have diverged.
 
-### Stop Environments
+### Stop environments
 
 If you wish to temporarily suspend the activity of an environment, you may stop it. This triggers the pipelines defined in the `destroy` step of IaCM resources and `delete` step of CD components.
 
@@ -173,7 +186,7 @@ If you wish to temporarily suspend the activity of an environment, you may stop 
 
 Go to your environment, and from the kebab menu (**:**) at the top right, click **Stop Environment**. It will fully wind down an environment while retaining the ability to bring it back later.
 
-### Start Environments
+### Start environments
 
 You may start an environment if you wish to bring it back online from a stopped state. This runs the `create` step defined in the blueprint for each resource and `apply` step for each component.
 
@@ -185,7 +198,7 @@ Go to your environment, and from the kebab menu (**:**) at the top right, click 
 Both [Start Environment](#start-environments) and [Apply Updates](#apply-updates) use delta-only re-provisioning. Rather than re-running every entity, the system compares the previously applied blueprint against the latest version and only re-provisions entities where actual differences are detected. Unchanged entities are left untouched. This makes updates faster, safer, and minimizes disruption to running workloads.
 :::
 
-### Apply Updates
+### Apply updates
 
 When updates are available for a running environment, a banner appears on the environment detail page prompting you to apply them. There are two scenarios which will trigger this banner:
 
@@ -200,7 +213,7 @@ When updates are available for a running environment, a banner appears on the en
 You can also trigger updates for an individual component or resource. Updating an entity will automatically update any downstream entities connected to it. For example, updating a namespace will also update the backend and frontend components deployed within it.
 :::
 
-### Dependency Change Notifications
+### Dependency change notifications
 
 Your environment may depend on external entities such as IaCM workspace templates, CD services, pipelines, and other environments. If any of these are updated, a notification banner appears at the top of the environment detail page showing what was updated. The same applies if any of these become unavailable.
 
@@ -266,7 +279,7 @@ Once you have reviewed the changes and are ready to proceed, click **Update** in
 Closing the panel without clicking **Update** does not clear the notification permanently. For all cases except a referenced environment coming back online, the banner reappears on the next page load as long as the dependency issue remains.
 
 
-### Delete Environments
+### Delete environments
 
 You can decommission the environment and clean up all associated services and infrastructure resources when you no longer need the environment. This corresponds to the `delete` definition in the blueprint yaml of IACM entities.
 
@@ -276,7 +289,7 @@ Go to your environment, and from the kebab menu (**:**) at the top right, click 
 
 ---
 
-## Cross-Environment Output References
+## Cross-Environment output references
 
 An environment can consume output values from another environment in the same project. This lets you build layered environments where one environment provides shared infrastructure and other environments depend on it.
 
@@ -310,12 +323,12 @@ Cross-environment references currently work within the same project only. Cross-
 
 ---
 
-## Use Pipeline Approvals in Environments
+## Use pipeline approvals in environments
 
-Environment management in Harness IDP enables integration with **[Harness Pipeline Approvals](https://developer.harness.io/docs/platform/approvals/approvals-tutorial)**.
+Environment management in Harness IDP enables integration with **[Harness Pipeline Approvals](/docs/platform/approvals/approvals-tutorial)**.
 This feature allows you to add approvers in the CD service pipeline and control the environment creation process through pipeline approvals and rejections.
 
-1. Ensure that you have an **approval step/stage** added in your CD service pipeline. Refer to [Approvals](https://developer.harness.io/docs/platform/approvals/approvals-tutorial) for more details.
+1. Ensure that you have an **approval step/stage** added in your CD service pipeline. Go to [Approvals](/docs/platform/approvals/approvals-tutorial) for more details.
 2. Use the same pipeline details in your environment blueprint steps `apply` and `destroy` for your [CD services](/docs/internal-developer-portal/environment-management/blueprints/env-blueprint-yaml#2-catalog-backend-services).
 3. Create a new environment using the same environment blueprint. You will be prompted to approve the pipeline deployment for your service instances.
 ![](./static/approval-prompt1.png)

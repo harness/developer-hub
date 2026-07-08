@@ -61,5 +61,136 @@ Harness Cloud & AI Cost Management (CACM) is a full-featured FinOps platform des
 - **Proven ROI**: Organizations typically see 20-30% reduction in overall cloud & AI spend, with non-production savings of 60-70% through AutoStopping alone.
 ---
 
-## Next Steps
-- [Get Started with Cloud & AI Cost Management](/docs/cloud-cost-management/get-started/#aws)
+## The NEW Overview Experience
+
+<DocImage path={require('./static/newoverview.png')} width="100%" title="CACM Overview" />
+
+:::note
+The new Overview Experience is behind a feature flag. Please reach out to your Harness account team to enable this feature.
+:::
+
+#### Summary Section
+
+Displays your key cost metrics at a glance:
+
+- **Total Spend**: Your total cloud costs for the selected time period
+  - Shows trend vs. previous period (up, down, or stable)
+  - Breaks down costs by cloud provider and LLM Services
+
+- **Anomalies**: Unusual cost patterns detected automatically
+  - Alerts you to unexpected spending changes
+  - Shows impact of anomalies
+  - Click to investigate and set rules
+
+#### Top Spenders Section
+
+Identifies what's costing you the most money. Switch between three views:
+
+- **By Service**: Top services costing you money (EC2, RDS, S3, Lambda, etc.)
+  - Helps identify which services to optimize
+  - Shows breakdown by cloud provider and LLM providers for each service
+  - Click to drill down into details in Cost Explorer
+
+- **By Region**: Top regions with highest costs (us-east-1, eu-west-1, etc.)
+  - Helps identify regional cost concentrations
+  - Useful for understanding geographic spending
+  - Shows which regions need attention
+
+- **By Cloud Account**: Top cloud accounts with highest spending
+  - Useful for chargeback and cost allocation
+  - Shows spending by team or department
+  - Helps identify accounts that need optimization
+
+Each view shows the top 7 items with cost trends and provider breakdown.  
+
+#### Service Breakdown Section
+
+Visual breakdown of your costs across all cloud services using an interactive treemap chart.
+
+**What you see**:
+- Each service shown as a tile
+- Larger tiles = higher costs
+- Color indicates cloud provider (AWS, Azure, GCP)
+- Service name and cost amount on each tile
+- Cost trend indicator (up/down/stable)
+
+Hover over tiles to see exact costs and percentages, click tiles to drill down into service details, click "View Full Breakdown" to open Cost Explorer for detailed analysis and identify which services are costing the most at a glance
+
+<DocImage path={require('./static/parttwo.png')} width="100%" title="CACM Overview" />
+
+#### Starred Views Section
+
+Quick access to your favorite custom cost views (Cost Explorer).
+
+**What you see**:
+- Cards for each of your starred perspectives
+- Each card shows View name and summary
+- Direct links to view full perspective details
+
+**What you can do**:
+- Click any card to open that View in Cost Explorer
+- Star Views in Cost Explorer to add them here
+- Unstar Views to remove them
+- Create custom Views for specific analysis needs
+
+#### Optimization Impact Section
+
+Shows how much money you're saving (or could save) through optimization features.
+
+- **Recommendations**: Savings realized and potential savings opportunities
+- **AutoStopping Savings**: Savings from automatically stopping idle resources
+- **Asset Governance Savings**: Cost impact of enforced governance policies and compliance rules
+- **Commitment Savings**: Savings from optimized Reserved Instances and Savings Plans coverage
+- **Cluster Orchestrator Savings**: Savings from intelligent Kubernetes resource optimization and autoscaling
+
+---
+
+### Customizing Your View
+
+#### Cost Type Selection
+
+You can customize how costs are displayed to match your needs.
+
+<DocImage path={require('./static/costtypes.png')} width="100%" title="CACM Overview" />
+
+**AWS**:
+
+**Cost Types Available**:
+- **Amortized**: Upfront costs spread evenly over time
+- **Net Amortized**: Amortized cost minus discounts
+- **Unblended**: Raw cost before any adjustments
+- **Blended**: Weighted average cost across accounts
+- **Effective**: Actual cost after all adjustments
+- **List**: Standard pricing before discounts
+
+**Cost Adjustments** (include or exclude):
+- Discounts (volume discounts, reserved instance discounts, etc.)
+- Credits (promotional credits, service credits, etc.)
+- Refunds (returned charges, corrections, etc.)
+- Taxes (sales tax, VAT, etc.)
+
+**GCP**:
+
+**Cost Types Available**:
+- **Cost**: Actual cost after all discounts and credits
+- **List**: Standard pricing before discounts
+
+**Cost Adjustments**:
+- **Spend-based CUD discounts**: Discounts based on spending commitments
+- **Legacy spend-based CUD credits**: Historical commitment credits
+- **Resource-based CUD credits**: Commitment credits tied to specific resources
+- **Sustained use discounts (SUDs)**: Automatic discounts for consistent usage
+- **Spending-based discounts**: Volume-based pricing reductions
+- **Subscription credits**: Pre-purchased credit packages
+- **Negotiated savings**: Custom negotiated rates
+- **Promotional credits**: Time-limited promotional offers
+- **Tax**: Sales tax and VAT
+
+**Azure**:
+
+**Cost Types Available**:
+- **Actual**: Real cost incurred
+- **Amortized**: Upfront costs spread evenly over time
+- **List Actual**: Standard pricing before discounts
+- **List Amortised**: Standard pricing spread over time
+---

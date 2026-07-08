@@ -30,6 +30,39 @@ AI Verify (v1) (the legacy Verify step) and AI Verify (v2) take fundamentally di
 | **False positives** | Common with brittle thresholds | Reduced by understanding context and relationships between signals |
 | **Setup time** | Hours per service | Minutes per service |
 
+## Feature parity with traditional Verify step
+
+Harness is actively developing AI Verify to reach feature parity with the traditional Verify step. The following table shows which capabilities are currently available and which are planned for future releases.
+
+| Feature | Traditional Verify | AI Verify | Status |
+|---------|-------------------|-----------|---------|
+| **Core verification** | ✓ | ✓ | Available |
+| **Metrics analysis** | ✓ | ✓ | Available |
+| **Logs analysis** | ✓ | ✓ | Available |
+| **Variable support in health sources** | ✓ | ✗ | Planned for Q2 2026 |
+| **Multi-query support** | ✓ | ✗ | Planned for Q2 2026 |
+| **User feedback on logs** | ✓ | ✗ | Planned for Q2 2026 |
+| **Configurable start time** | ✓ | ✗ | Future release |
+| **Sub-task webhook notifications** | ✓ | ✗ | Future release |
+| **Pinned baseline** | ✓ | ✗ | Future release |
+| **Multiple verification types** | ✓ | N/A | AI Verify uses single approach |
+
+### Features planned for Q2 2026
+
+**Variable support for health sources**
+
+Variable support for health sources lets you use Harness variables in health source queries to parameterize them dynamically based on deployment context. Health sources will have inline variable support with a new field to create variables. These variables can be used inside health source queries like `<+healthSourceVariables.var1>`. You can also use other pipeline, stage, and service variables along with health source variables.
+
+**Multi-query support**
+
+Multi-query support lets you analyze multiple queries configured in a single health source and introduces an aggregated UI of all the queries analysis done by AI Verify. Currently, AI-assisted health sources can create multiple queries, but all queries are not being analyzed, and there is no aggregated summary view of results.
+
+**User feedback on logs**
+
+User feedback on log analysis allows you to provide feedback on the log analysis for better analysis based on your domain knowledge. This feature helps improve the accuracy of log anomaly detection.
+
+For questions about the AI Verify roadmap or to request prioritization of specific features, go to [Harness Community](https://community.harness.io/) or contact [Harness Support](mailto:support@harness.io).
+
 ## How AI-powered verification works
 
 ### Phase 1: Health source configuration

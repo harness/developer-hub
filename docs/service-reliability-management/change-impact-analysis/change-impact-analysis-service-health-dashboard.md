@@ -4,6 +4,7 @@ description: Observe and track the impact of changes on the health of a monitore
 sidebar_position: 20
 ---
 
+
 The Change Impact dashboard enables you to observe and track the health of monitored services.
 
 The Change Impact dashboard helps you:

@@ -12,6 +12,9 @@ tags:
   - harness-ai
 ---
 
+
+
+
 The AppSec Chatbot in Harness SCS lets you explore SCS data using natural language. Instead of navigating multiple dashboards or applying several filters, you can simply ask questions like "*Show me all scanned artifacts and code repositories*".
 
 The AppSec chatbot retrieves the relevant information from SCS and responds in an easy-to-read format.

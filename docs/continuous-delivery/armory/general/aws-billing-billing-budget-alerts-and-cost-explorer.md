@@ -2,6 +2,7 @@
 title: AWS Billing - Billing, Budget Alerts and Cost Explorer
 ---
 
+
 The following is quick information about work that Technical Support Engineering have done in Budgets and Cost Explorer, and how to use both to review billing in AWS
 
 A quick aside, in order to get billing access, the admin will need to make sure that billing access is provided to the IAM Account as a policy, Console access is provided, and most importantly, as the root in the main account, a[ selection needs to be made in the account preferences to allow IAM users to have access to the billing](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html#ControllingAccessWebsite-Activate).  If your account doesn’t have this access, you will probably need to talk to @Black Mountain. Black Mountain

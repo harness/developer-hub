@@ -1,5 +1,5 @@
 
-<DocImage path={require('../../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/homepage.png')} width="100%" height="100%" title="Click to view full size image" />
+<DocImage path={require('../../../4-use-ccm-cost-optimization/commitment-orch-docs/managing-commitments-static/homepage.png')} width="100%" height="100%" title="Click to view full size image" />
 
 ## View insights of an orchestrator 
 
@@ -17,19 +17,19 @@ The dashboard will show:
 
      Both net amortized and unblended costs are now displayed, allowing you to view your spend in the format that best suits your needs.
 
-    <DocImage path={require('../../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/spend-breakdown.png')} width="100%" height="100%" title="Click to view full size image" />
+    <DocImage path={require('../../../4-use-ccm-cost-optimization/commitment-orch-docs/managing-commitments-static/spend-breakdown.png')} width="100%" height="100%" title="Click to view full size image" />
 
 ------
 
 - **Compute Coverage**: This represents the percentage of your EC2 compute usage covered by Reserved Instances or Savings Plans. It shows coverage by cost and displays how much you've spent on-demand as the total average coverage. It also shows average coverage by purchase options (On-Demand, Savings Plans, Reserved Instances, and Spot Instances) along with a graph for trends and breakdown. You can view compute coverage either by cost or by hours. When viewing by hours, it shows you the commitment hours and the coverage by purchase option in hours.
 
-    <DocImage path={require('../../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/compute-coverage.png')} width="100%" height="100%" title="Click to view full size image" />
+    <DocImage path={require('../../../4-use-ccm-cost-optimization/commitment-orch-docs/managing-commitments-static/compute-coverage.png')} width="100%" height="100%" title="Click to view full size image" />
 
 ------
 
 - **Commitment Utilization**: This represents the percentage of your purchased Reserved Instances and Savings Plans that are actively being used. It shows the commitment utilization by purchase options. You can view utilization for all your commitments, including Savings Plans and Reserved Instances, as well as the utilization orchestrated by Harness. A graph displays the trend and details for compute utilization and variance over time.
 
-    <DocImage path={require('../../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/utilization.png')} width="100%" height="100%" title="Click to view full size image" />
+    <DocImage path={require('../../../4-use-ccm-cost-optimization/commitment-orch-docs/managing-commitments-static/utilization.png')} width="100%" height="100%" title="Click to view full size image" />
 
 ------
 
@@ -47,7 +47,7 @@ The dashboard will show:
 
         - **Queued**: The action is in the queue and waiting to be processed.
     
-    <DocImage path={require('../../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/action-state.png')} width="100%" height="100%" title="Click to view full size image" />
+    <DocImage path={require('../../../4-use-ccm-cost-optimization/commitment-orch-docs/managing-commitments-static/action-state.png')} width="100%" height="100%" title="Click to view full size image" />
 
 ------
 
@@ -62,7 +62,7 @@ The dashboard will show:
     - **Term**: Filter by commitment duration (1-year or 3-year terms).
     - **RI Type**: Filter by Reserved Instance type (Standard or Convertible).
 
-    <DocImage path={require('../../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/inventory-ri.png')} width="100%" height="100%" title="Click to view full size image" />
+    <DocImage path={require('../../../4-use-ccm-cost-optimization/commitment-orch-docs/managing-commitments-static/inventory-ri.png')} width="100%" height="100%" title="Click to view full size image" />
 
     **Inventory for SP**: Includes details about Savings Plans purchased and plans managed by Harness along with their status. You can filter by status and apply additional filters for deeper analysis. The supporting filters are:
 
@@ -72,13 +72,13 @@ The dashboard will show:
 
     The inventory table shows you all the details about the ID of the Savings Plan or RI, type, region, commitment amount, start date, and expiry date.
 
-    <DocImage path={require('../../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/inventory-sp.png')} width="100%" height="100%" title="Click to view full size image" />
+    <DocImage path={require('../../../4-use-ccm-cost-optimization/commitment-orch-docs/managing-commitments-static/inventory-sp.png')} width="100%" height="100%" title="Click to view full size image" />
 
 ------
 
 - **Logs**: The Log History section provides a comprehensive audit trail of all Commitment Orchestrator activities, including date, connector name, type (RI Event and SP Event), and description of purchases. You also have the ability to export the logs as a CSV file.
 
-    <DocImage path={require('../../../4-use-ccm-cost-optimization/commitment-orch-docs/version-two/aws/static/logs.png')} width="100%" height="100%" title="Click to view full size image" />
+    <DocImage path={require('../../../4-use-ccm-cost-optimization/commitment-orch-docs/managing-commitments-static/logs.png')} width="100%" height="100%" title="Click to view full size image" />
 
 -----
 

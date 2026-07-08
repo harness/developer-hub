@@ -4,6 +4,7 @@ description: Learn how to use Terraform output variables in the pipeline
 sidebar_position: 50
 ---
 
+
 Terraform allows the declaration of output values, which will be returned after the 'apply' step has been completed. An example of a terraform output value can be found here:
 
 ```json

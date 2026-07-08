@@ -130,7 +130,7 @@ const sidebars: SidebarsConfig = {
         // Feature Flags Landing Page
         {
           type: 'link',
-          href: '/3k-docs/feature-flags',
+          href: '/docs/feature-flags',
           label: 'Feature Releases Classic',
           className: 'sidebar-ff',
 
@@ -4137,7 +4137,7 @@ internaldeveloperportal: [
       type: 'link',
       label: 'Release Notes',
       className: 'sidebar-Release_Notes',
-      href: '/release-notes/software-engineering-insights',
+      href: '/release-notes/ai-dlc-insights',
       customProps: {
         description: 'Learn about recent changes to Harness products.',
       },

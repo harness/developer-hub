@@ -75,3 +75,34 @@ Both the NodePool and IRSA authentication styles allow you to specify a seperate
 When the stage executes, the steps will call the STS `AssumeRole` service to assume the second IAM role defined in the connector, and that is the role that will be used when running the IaCM steps. This role can be in a separate AWS account, allowing the IaCM stage running in centralized infrastructure to reach any number of target accounts.
 
 ![Connector with STS AssumeRole](./static/iacm-aws-sts-assume.png)
+
+## IaCM plugin environment variables (PLUGIN_ prefix)
+
+IaCM plugin steps run inside a containerized environment that uses a `PLUGIN_` prefix convention for environment variables. Standard AWS environment variables (like `AWS_REGION`) are not recognized by the IaCM plugin. You must use the `PLUGIN_` prefixed versions instead.
+
+:::warning use PLUGIN_ prefixed variables instead of standard AWS variables
+Standard AWS environment variables like `AWS_REGION` or `AWS_DEFAULT_REGION` don't apply in the IaCM plugin context. If your Terraform operations target the wrong AWS region or fail with STS endpoint errors, make sure you are setting `PLUGIN_AWS_REGION` rather than `AWS_REGION`.
+:::
+
+### Commonly used PLUGIN_ variables
+
+Set these as **stage variables** or **step environment variables** in your IaCM pipeline:
+
+| Variable | Description | Example value |
+|----------|-------------|---------------|
+| `PLUGIN_AWS_REGION` | AWS region for STS regional endpoint routing and provider configuration | `us-west-2` |
+| `PLUGIN_AWS_SESSION_DURATION` | Duration for AWS session tokens (default: `15m`) | `30m` |
+| `PLUGIN_CONNECTOR_REF` | Override the connector reference at the step level | `account.myAwsConnector` |
+| `PLUGIN_TF_VERSION` | Override the Terraform version for the step | `1.5.7` |
+
+### Example: set PLUGIN_AWS_REGION as a stage variable
+
+```yaml
+stage:
+  variables:
+    - name: PLUGIN_AWS_REGION
+      type: String
+      value: us-west-2
+```
+
+This ensures the IaCM plugin uses the correct regional STS endpoint when assuming roles or making AWS API calls.

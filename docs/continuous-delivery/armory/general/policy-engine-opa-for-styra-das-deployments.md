@@ -1,7 +1,7 @@
 ---
 title: Policy Engine - OPA for STYRA DAS Deployments
 redirect_from:
-  - /docs/continuous-delivery/armory/general/policy-engineopa-for-styra-das-deployments
+  - /docs/continuous-delivery/armory/general/policy-engine---opa-for-styra-das-deployments
 ---
 
 ## Issue

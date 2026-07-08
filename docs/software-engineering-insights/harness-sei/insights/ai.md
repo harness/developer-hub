@@ -2,19 +2,14 @@
 title: AI Insights
 description: Understand AI assistant adoption and correlate it with productivity and quality outcomes in AI DLC Insights.
 sidebar_label: AI Insights
-sidebar_position: 4
+sidebar_position: 3
 redirect_from:
 - /docs/software-engineering-insights/harness-sei/analytics-and-reporting/ai
 ---
 
-<CTABanner
-  buttonText="Request Access"
-  title="AI Insights is in beta!"
-  tagline="Enable AI Insights to measure AI adoption and impact on productivity and quality across your teams, with AI-generated summaries and actionable recommendations. Available now in beta!"
-  link="https://developer.harness.io/docs/software-engineering-insights/sei-support"
-  closable={true}
-  target="_self"
-/>
+:::warning[This experience is being sunset]
+AI Insights is being deprecated and this functionality will be merged into **AI Engineering**. Go to [AI Engineering](/docs/software-engineering-insights/harness-sei/insights/ai-engineering) to use the updated experience.
+:::
 
 AI Insights in AI DLC Insights provide visibility into how AI coding assistants are adopted and how they impact engineering performance. The out-of-the-box dashboard on the **Insights** page compares adoption and performance across AI coding assistants, including Cursor and Windsurf.
 

@@ -21,7 +21,7 @@ Jira is a proprietary issue-tracking product that allows bug tracking and agile 
 Before you configure the SEI Jira integration, [create a classic API token without scopes](https://id.atlassian.com/manage-profile/security/api-tokens) for a Jira Cloud user account. For more information, see the [official Jira documentation](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/).
 
 :::tip Use a Jira user account
-The user creating the token must have the **Browse Projects**, **View Aggregated Data**, **Browse Users**, and **User Picker** [permissions](https://support.atlassian.com/jira/kb/how-to-determine-project-visibility-in-jira-cloud-using-user-permissions/) for all projects that you want SEI 2.0 to track and search issues within relevant projects.
+The user creating the token must have the **Browse Projects**, **View Aggregated Data**, **Browse Users**, and **User Picker** [permissions](https://support.atlassian.com/jira/kb/how-to-determine-project-visibility-in-jira-cloud-using-user-permissions/) for all projects that you want Harness AIDI to track and search issues within relevant projects.
 
 Use a Jira user account with a classic API token without scopes. Scoped API tokens are not supported.
 
@@ -40,7 +40,7 @@ To ensure your integration can work correctly, refer to the list of [Harness Pla
 
 ## Add the Jira by Atlassian integration
 
-To integrate with Jira Cloud in SEI 2.0:
+To integrate with Jira Cloud in Harness AIDI:
 
 1. From the SEI navigation menu, navigate to **Account Management** > **Integrations** under **Data Settings**.
 1. Navigate to the **Available Integrations** tab, locate the **Jira by Atlassian** integration, and click **Add Integration**.
@@ -51,7 +51,7 @@ To integrate with Jira Cloud in SEI 2.0:
 1. If you select **Jira Software Cloud**, you can click **Using Jira API Token** or **Using Jira Connect App** (deprecated).
    
    :::info Using Jira API Token
-   Harness recommends using token-based authentication to integrate Jira Cloud with SEI 2.0. The Jira Connect App–based integration has been deprecated and should only be used for existing setups.
+   Harness recommends using token-based authentication to integrate Jira Cloud with Harness AIDI. The Jira Connect App–based integration has been deprecated and should only be used for existing setups.
    :::
    
    <br />
@@ -63,7 +63,7 @@ To integrate with Jira Cloud in SEI 2.0:
 :::warning Reauthenticate Jira Cloud Using a Token-based Integration
 The **Using Jira Connect App** method is no longer supported. You can re-authenticate the Jira Cloud integration by using a [classic unscoped API token](#authenticate-with-jira). Scoped API tokens are not supported.
 
-The token must be created for a Jira user account. The user account must have the **Browse Projects**, **View Aggregated Data**, **Browse Users**, and **User Picker** [permissions](https://support.atlassian.com/jira/kb/how-to-determine-project-visibility-in-jira-cloud-using-user-permissions/) to be able to read/search issues and access all Jira projects you want SEI 2.0 to track. Service accounts are not supported.
+The token must be created for a Jira user account. The user account must have the **Browse Projects**, **View Aggregated Data**, **Browse Users**, and **User Picker** [permissions](https://support.atlassian.com/jira/kb/how-to-determine-project-visibility-in-jira-cloud-using-user-permissions/) to be able to read/search issues and access all Jira projects you want Harness AIDI to track. Service accounts are not supported.
 :::
 
 To set up the integration using a Jira API token:

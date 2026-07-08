@@ -4,6 +4,7 @@ description: Run dependent services and DinD in your CD stages.
 sidebar_position: 2
 ---
 
+
 Background steps run dependent services needed for the entire lifetime of a CD step group or stage. For example, you can set up your stage to run multiple background services that implement a local, multi-service app.
 
 :::note

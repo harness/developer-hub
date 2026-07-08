@@ -9,6 +9,7 @@ helpdocs_is_published: true
 canonical_url: https://www.harness.io/blog/harness-source-code-manager-scm
 ---
 
+
 :::note
 Currently, this feature is in Beta and behind a Feature Flag. Contact [Harness Support](https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=support@harness.io) to enable the feature. Feature Flags can only be removed for Harness Professional and Essentials editions. Once the feature is released to a general audience, it is available for Trial and Community Editions.
 

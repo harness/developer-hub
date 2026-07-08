@@ -5,11 +5,11 @@ sidebar_position: 3
 sidebar_label: Manage Scorecards
 ---
 
-Once you've created [Scorecards](/docs/internal-developer-portal/scorecards/create-scorecards/create-scorecard.md) and [Checks](/docs/internal-developer-portal/scorecards/create-scorecards/checks.md), you can monitor their performance, track trends, refresh evaluations, and view detailed check results. This guide covers all aspects of managing your scorecards effectively.
+Once you have created [Scorecards](/docs/internal-developer-portal/scorecards/create-scorecards/create-scorecard.md) and [Checks](/docs/internal-developer-portal/scorecards/create-scorecards/checks.md), you can monitor their performance, track trends, refresh evaluations, and view detailed check results. This guide covers all aspects of managing your scorecards effectively.
 
 ---
 
-## Update Scorecards
+## Update scorecards
 
 You can update a Scorecard's configuration by editing the Scorecard in the admin view of Harness IDP.
 
@@ -22,7 +22,7 @@ You can update a Scorecard's configuration by editing the Scorecard in the admin
 
 ---
 
-## Refresh Scorecards
+## Refresh scorecards
 
 You can manually refresh a component's Scorecard evaluation from the Harness IDP UI, triggering an on-demand evaluation and updating the component's score in real time.
 
@@ -39,21 +39,21 @@ This will manually trigger a refresh, updating the component's score immediately
 
 ---
 
-## View Check Details
+## View check details
 
 You can view detailed information about each check's execution status directly from the entity's Scorecard view. This helps you understand why a check passed or failed and take appropriate action.
 
-#### Access Check Details
+#### Access check details
 
 1. Navigate to the entity details view in the Catalog
 2. Click on **Scorecard** from the navigation bar
 3. Click on any **Check** to view its detailed execution results
 
-#### Passed Checks
+#### Passed checks
 
-When a check passes, you'll see a "Passed" status with a confirmation message.
+When a check passes, you will see a "Passed" status with a confirmation message.
 
-**What You'll See:**
+**What You will See:**
 - **About the check**: Description of what the check validates
 - **Rule Expression**: Toggle between two views:
   - **JQL View**: Shows the JEXL expression that was evaluated
@@ -64,11 +64,11 @@ When a check passes, you'll see a "Passed" status with a confirmation message.
   
   ![](./static/passed-check-visual.png)
 
-#### Failed Checks
+#### Failed checks
 
-When a check fails, you'll see a "Failed" status with an **AI-powered explanation** of why the check failed and what needs to be fixed.
+When a check fails, you will see a "Failed" status with an **AI-powered explanation** of why the check failed and what needs to be fixed.
 
-**What You'll See:**
+**What You will See:**
 - **About the check**: Description of what the check validates
 - **Rule Expression**: Toggle between two views:
   - **JQL View**: Shows the JEXL expression that was evaluated
@@ -79,20 +79,20 @@ When a check fails, you'll see a "Failed" status with an **AI-powered explanatio
   
   ![](./static/failed-check-visual.png)
 
-The Visual view is particularly helpful for failed checks as it shows you exactly which data points didn't meet the expected criteria, making it easier to troubleshoot and resolve issues.
+The Visual view is particularly helpful for failed checks as it shows you exactly which data points did not meet the expected criteria, making it easier to troubleshoot and resolve issues.
 
 ---
 
-## Disable Scorecards
+## Disable scorecards
 
 If you need to temporarily or permanently disable scorecards, follow these steps:
 
-#### Remove Scorecard Components from Catalog Pages
+#### Remove scorecard components from catalog pages
 
 1. Navigate to the **Layout** section in IDP **Configure**
 2. Comment out the Scorecard-related lines you added under **Layout** pages to remove the Scorecard components from the Catalog pages
 
-#### Change Scorecard Status to Draft
+#### Change scorecard status to draft
 
 Additionally, you can change the status of all your Scorecards to "draft". This ensures that:
 - Scorecard computations will not run
@@ -102,7 +102,7 @@ Additionally, you can change the status of all your Scorecards to "draft". This 
 
 ---
 
-## Delete Scorecards
+## Delete scorecards
 
 To delete a Scorecard, follow these steps:
 
@@ -114,21 +114,21 @@ To delete a Scorecard, follow these steps:
 
 ---
 
-## Scorecard Execution Schedule
+## Scorecard execution schedule
 
 Understanding when scorecards and checks run helps you plan your evaluations and troubleshooting.
 
-#### Scorecard Trends Dashboard Updates
+#### Scorecard trends dashboard updates
 - The Trends Dashboard updates **every 24 hours**
 - Newly created Scorecards (or Checks) will appear in the dashboard after the next update at **12:00 AM UTC**
 
-#### Scorecard Check Jobs
+#### Scorecard check jobs
 - Check jobs run **twice a day** with a **12-hour interval** between each run
 - If you manually run a check now, the next automatic run will occur after 12 hours
 
 ---
 
-## Next Steps
+## Next steps
 
 - Learn how to [create custom checks](/docs/internal-developer-portal/scorecards/create-scorecards/checks) for your scorecards
 - Explore available [data sources](/docs/internal-developer-portal/scorecards/create-scorecards/data-sources) for your checks
