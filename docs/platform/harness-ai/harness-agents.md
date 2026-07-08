@@ -394,7 +394,7 @@ Worker Agents execute inside Docker containers in isolated VMs, whether on Harne
 
 ### Scoped token behavior
 
-The scoped token operates with the same credentials as the user who authored the agent when the agent was configured. This means the agent can access only the resources, connectors, and secrets that the authoring user has permissions for within the pipeline execution context.
+The scoped token grants the agent access based on the `permissions` block declared on the stage or Containerized Step Group that contains the Agent step, evaluated against the RBAC of the principal that invokes the pipeline. An agent's effective permission is the intersection of the two: the declared grant can only narrow what the invoking principal is already allowed to do, never expand it. Go to [Configure permissions for Worker Agents](#configure-permissions-for-worker-agents) to review the permission grammar and supported resources.
 
 ### Isolation model
 
@@ -404,67 +404,68 @@ The scoped token operates with the same credentials as the user who authored the
 
 ---
 
-## Agent permissions (pipeline-level)
+## Configure permissions for Worker Agents
 
 :::info Feature flag
 This feature is behind the feature flag `HARNESS_TOKEN_INJECT`. Contact [Harness Support](mailto:support@harness.io) to enable it on your account.
 :::
 
-Agent permissions allow you to define explicit resource-level permissions for a Worker Agent directly in the pipeline stage YAML. When configured, the agent uses its own scoped permissions to access Harness entities during execution, rather than relying on a user's configured permissions via an MCP Connector.
+Worker Agents act on Harness resources on your behalf, running pipelines, syncing GitOps apps, executing chaos experiments, and more. Agent Permissions let you control exactly which actions an agent can take, scoped down to a specific resource type and verb, so every agent runs with least privilege.
 
-This provides fine-grained control over what the agent can do at runtime without requiring a separate user identity or connector-level permission grants.
+This section covers how the permission grammar works, which resources and actions are supported, and how to configure a permission set for the stage or step group that runs an Agent step.
 
-### Configure agent permissions
+### How it works
 
-The placement of the `permissions` block differs by stage type. Select your stage below.
+Each Agent step declares the permissions it needs as a set of `resource: verb` pairs. Harness evaluates this grant against two things before an agent can act:
+
+- **The declared grant:** the resource/verb pairs you list in the pipeline YAML.
+- **The invoking principal's RBAC:** the effective permissions of the user or service account that triggers the pipeline, at that pipeline's account, org, or project scope.
+
+:::note Effective permission is an intersection
+An agent's effective permission is the intersection of the two. A declared grant can only narrow what the agent can do; it can never grant an agent more access than the invoking principal already has. This uses your existing RBAC scopes and resource groups. It is not a separate permission system to manage.
+:::
+
+Permissions are declared **per stage (CI, STO, SCS, IaCM) or per Containerized Step Group (CD, Custom)**, not pipeline-wide, so agents in different stages or step groups can carry different, narrowly scoped access. The scoped token applies to every step in the stage or step group where the block is declared.
+
+### Declare permissions on an Agent step
+
+The placement of the `permissions` block differs by stage type. Select your stage below. Each resource key accepts a pipe-separated (`|`) list of verbs. Harness builds one permission per pair in the form `module_resource_verb` and intersects it with the invoking principal's RBAC when the pipeline runs.
+
+Two rules govern what is accepted:
+
+- **Resource keys are validated.** Only the keys listed under [Supported resources by module](#supported-resources-by-module) are recognized. An unrecognized key is dropped, so no permission is granted for it.
+- **Verbs are not checked against a fixed enum.** Harness concatenates whatever verb you list into the permission key. The verb must match a real RBAC action for that resource (for example `view`, `edit`, `execute`, `access`), otherwise the resulting key matches nothing and the grant resolves to no access.
 
 <Tabs>
 <TabItem value="ci" label="CI, STO, SCS, IaCM (Stage Level)" default>
 
-In CI, STO, SCS, and IaCM stages, the Agent step runs directly in the stage. Add a `permissions` block under `spec` in the stage definition:
+In CI, STO, SCS, and IaCM stages, the Agent step runs directly in the stage. Add a `permissions` block under `spec` in the stage that runs the Agent step:
 
 ```yaml
-stages:
-  - stage:
-      name: Agent
-      identifier: Agent
-      description: ""
-      type: CI
-      spec:
-        permissions:
-          pipeline: view|edit|create|delete|execute|abort
-          code_repository: view|edit|create|delete|push|review
-          artifact_registry: view|edit|delete|uploadartifact|downloadartifact|deleteartifact|quarantineartifact|firewallexceptionapprove
-          user: view|manage|invite|impersonate
+spec:
+  permissions:
+    <resource_type>: <verb>|<verb>|...
 ```
 
 </TabItem>
 <TabItem value="cd" label="CD, Custom (Step Group Level)">
 
-Add the `permissions` block to the Containerized Step Group, not the stage. The scoped token is injected into every step in the group and exposed as the `HARNESS_TOKEN` and `HARNESS_BASE_URL` environment variables, which steps read to authenticate with Harness APIs.
+In CD and Custom stages, the Agent step runs inside a [Containerized Step Group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups). Add the `permissions` block to the step group, not the stage. The scoped token applies to every step in the group.
 
 ```yaml
 - stepGroup:
     name: Container
     identifier: Container
     permissions:
-      pipeline: execute|view
-      code_repository: view
-      artifact_registry: view|downloadartifact
+      <resource_type>: <verb>|<verb>|...
     steps:
       - step:
-          type: Run
-          name: Run_1
-          identifier: Run_1
+          type: Agent
+          name: Deploy & Reconcile
+          identifier: Deploy_Reconcile
           spec:
-            connectorRef: account.your_docker_connector
-            image: busybox
-            shell: Sh
-            command: |-
-              # Do not run 'env' in production. It dumps all environment
-              # variables, including HARNESS_TOKEN, to the build log.
-              echo "HARNESS_TOKEN: $HARNESS_TOKEN"
-              echo "HARNESS_BASE_URL: $HARNESS_BASE_URL"
+            agentName: ca_deploy_reconcile_agent
+            llmConnector: connector_Anthropic_112e
     stepGroupInfra:
       type: KubernetesDirect
       spec:
@@ -472,37 +473,226 @@ Add the `permissions` block to the Containerized Step Group, not the stage. The 
         namespace: your-delegate-namespace
 ```
 
-The token is scoped to exactly the permissions declared on the step group. In the example above, every step in the `Container` group can execute and view pipelines, view code repositories, and view or download artifacts. No other actions are permitted, even if the agent author holds broader permissions.
-
 </TabItem>
 </Tabs>
 
-### Supported permissions
+:::note llmConnector access
+If an Agent step references an `llmConnector`, grant `connector: view|access` for that connector ID. Connector access is governed by this same grammar.
+:::
 
-The following table lists the supported entities and their available permission values. Separate multiple permissions with the pipe (`|`) character.
+#### Example: least-privilege "deploy and reconcile" agent
 
-| Entity | Available permissions |
-|---|---|
-| `pipeline` | `view`, `edit`, `create`, `delete`, `execute`, `abort`. The `view` permission also grants access to pipeline execution data. |
-| `code_repository` | `view`, `edit`, `create`, `delete`, `push`, `review` |
-| `artifact_registry` | `view`, `edit`, `delete`, `uploadartifact`, `downloadartifact`, `deleteartifact`, `quarantineartifact`, `firewallexceptionapprove` |
-| `user` | `view`, `manage`, `invite`, `impersonate` |
+Because this agent rolls back deployments and syncs GitOps apps, it runs in a CD stage, so the `permissions` block sits on the Containerized Step Group:
 
-### How agent permissions work
+```yaml
+- stepGroup:
+    name: Deploy & Reconcile
+    identifier: Deploy_Reconcile
+    permissions:
+      pipeline:           view|execute
+      environment:        view|access|rollback
+      service:            view|access
+      gitops_application: view|sync
+      gitops_cluster:     view
+      connector:          view|access
+      secret:             view|access
+    steps:
+      - step:
+          type: Agent
+          name: Deploy & Reconcile
+          identifier: Deploy_Reconcile
+          spec:
+            agentName: ca_deploy_reconcile_agent
+            llmConnector: connector_Anthropic_112e
+    stepGroupInfra:
+      type: KubernetesDirect
+      spec:
+        connectorRef: account.your_k8s_connector
+        namespace: your-delegate-namespace
+```
 
-- The `permissions` block scopes the agent's access token down to only the specified entities and actions. The token cannot perform any action you do not list, even if the agent author holds broader permissions.
-- The agent receives a runtime token with these permissions injected, independent of the pipeline author's personal permissions.
-- This replaces the default behavior where the agent inherits the authoring user's credentials via an MCP Connector for Harness.
-- Permissions are evaluated at pipeline execution time and apply for the duration of the agent step.
+This agent can run and roll back deployments and sync GitOps apps. It cannot create, edit, or delete any resource, because those verbs were never granted.
 
-### Current limitations
+### Verbs
 
-The agent permission token currently supports access to the following Harness entities only:
+Verbs are not drawn from a fixed list. Whatever you type is concatenated into the permission key `module_resource_verb`, so a verb only takes effect when it matches a real RBAC action for that resource. Use the same action names Harness RBAC uses. The table below groups the actions you will reach for most often.
 
-- **Pipelines** (including execution data)
-- **Code Repositories**
+| Class | Common verbs | Use |
+| --- | --- | --- |
+| CRUD | `view`, `create`, `edit`, `delete` | Standard object lifecycle |
+| Lifecycle / execution | `execute`, `abort`, `rollback`, `sync`, `toggle` | Runtime actions; higher blast radius |
+| Usage | `access` | Reference or use a resource at runtime (secrets, connectors, templates, services) |
+| Review / approval | `approve`, `reject`, `review`, `reportstatuscheck` | Approval workflows |
+| Admin | `manage`, `invite`, `impersonate` | Administrative actions; use sparingly |
 
-Fetching data from the following modules is **not supported** with the agent permission token at this time: CI, CD, CCM, STO, SCS, and IaCM. For access to these modules, continue using user-configured permissions via an MCP Connector.
+Because there is no verb enum, a mistyped or unsupported verb does not raise an error. It produces a permission key that matches nothing, so the agent silently gets no access for that pair. Confirm the exact action names against the resource's RBAC permissions before relying on them. Go to the [permissions reference](/docs/platform/role-based-access-control/permissions-reference) to review the actions each resource supports.
+
+Treat high blast-radius verbs, including `delete`, `execute`, `abort`, `rollback`, and any admin-class verb, as opt-in. Declare them explicitly only on the resource keys where the agent needs them.
+
+### Supported resources by module
+
+These are the resource keys each module recognizes. A key not listed here is dropped when the token is built, so it grants nothing. Pair any recognized key with a verb that matches a real RBAC action for that resource (see [Verbs](#verbs)). Expand a module to review its keys.
+
+<details>
+<summary>Core (Platform)</summary>
+
+`pipeline`, `user`, `secret`, `connector`, `service`, `environment`, `environment_group`, `template`, `variable`, `setting`, `delegate`, `organization`, `project`, `usergroup`, `role`, `resourcegroup`, `serviceaccount`, `inputset`, `gitxwebhooks`, `deploymentfreeze`, `dashboards`, `audit`
+
+</details>
+
+<details>
+<summary>Artifact Registry</summary>
+
+`artifact_registry`
+
+</details>
+
+<details>
+<summary>Code Repository</summary>
+
+`code_repository`
+
+</details>
+
+<details>
+<summary>Harness AI</summary>
+
+`ai_rules`, `ai_llm_gateway`
+
+</details>
+
+<details>
+<summary>Continuous Delivery and GitOps</summary>
+
+`gitops_agent`, `gitops_application`, `gitops_repository`, `gitops_cluster`, `gitops_gpgkey`, `gitops_cert`, `gitops_applicationset`, `gitops_argoproject`
+
+</details>
+
+<details>
+<summary>Infrastructure as Code Management (IaCM)</summary>
+
+`iac_workspace`, `iac_registry`, `iac_provider_registry`, `iac_variable_set`, `iac_inventory`, `iac_playbook`
+
+</details>
+
+<details>
+<summary>Database DevOps</summary>
+
+`db_instance`, `db_schema`
+
+</details>
+
+<details>
+<summary>Feature Flags</summary>
+
+`feature_flag`, `ff_environment`, `ff_target_group`, `ff_target`, `ff_proxy_api_key`
+
+</details>
+
+<details>
+<summary>Feature Management and Experimentation (FME)</summary>
+
+`fme_environment`, `fme_traffic_type`, `fme_feature_flag`, `fme_segment`, `fme_large_segment`, `fme_metric`, `fme_experiment`
+
+</details>
+
+<details>
+<summary>Chaos Engineering</summary>
+
+`chaos_hub`, `chaos_infrastructure`, `chaos_experiment`, `chaos_gameday`, `chaos_image_registry`, `chaos_probe`, `chaos_fault`, `chaos_action`, `chaos_security_governance`, `dr_test`
+
+</details>
+
+<details>
+<summary>Security Testing Orchestration (STO)</summary>
+
+`sto_test_target`, `sto_exemption`, `sto_issue`, `sto_scan`, `sto_ticket`
+
+</details>
+
+<details>
+<summary>Supply Chain Security (SCS)</summary>
+
+`ssca_remediation_tracker`, `ssca_enforcement_exemption`, `scs_integration`, `scs_external_ticket`, `scs_configuration`, `scs_pr_creation`, `scs_evidence_vault`
+
+</details>
+
+<details>
+<summary>Cloud Cost Management (CCM)</summary>
+
+`ccm_perspective`, `ccm_budget`, `ccm_cost_category`, `ccm_autostopping_rule`, `ccm_folder`, `ccm_unit_cost`, `ccm_currency_preference`, `ccm_governance_rule`, `ccm_governance_rule_set`, `ccm_governance_enforcement`, `ccm_anomalies`, `ccm_recommendations`
+
+</details>
+
+<details>
+<summary>Internal Developer Portal (IDP)</summary>
+
+`idp_catalog`, `idp_workflow`, `idp_plugin`, `idp_scorecard`, `idp_layout`, `idp_catalog_access_policy`, `idp_integration`, `idp_advanced_configuration`, `idp_environment`, `idp_environment_blueprint`, `idp_aggregation_rule`
+
+</details>
+
+<details>
+<summary>Incident Response (IRO)</summary>
+
+`iro_manager`, `iro_metric_source`, `iro_alert`, `iro_alert_rule`, `iro_incident`, `iro_runbook`, `iro_escalation_policy`, `iro_schedule`, `iro_schedule_override`, `iro_service_directory`, `iro_third_party_integrations`
+
+</details>
+
+<details>
+<summary>Software Engineering Insights (SEI)</summary>
+
+`sei_data_settings`, `sei_developers`, `sei_integrations`, `sei_teams`, `sei_canvas`, `sei_profiles`, `sei_goals`, `sei_insights_category`
+
+</details>
+
+<details>
+<summary>Monitoring and Service Discovery</summary>
+
+`monitoring_agent`, `network_map`
+
+</details>
+
+### Default permissions
+
+If a stage or step group has no `permissions` block, Harness injects a small read-only default so the agent can still resolve common context. Most modules inject nothing; only the modules below define a default.
+
+| Module | Default permission key |
+| --- | --- |
+| Core | `core_pipeline_view`, `core_user_view`, `core_service_view`, `core_environment_view`, `core_environmentgroup_view`, `core_connector_view`, `core_usergroup_view`, `core_inputset_view` |
+| Artifact Registry | `artifact_artregistry_view` |
+| Code Repository | `code_repo_view` |
+| Harness AI | `ai_rules_view` |
+| CCM | `ccm_perspective_view` |
+| FME | `fme_fmefeatureflag_view` |
+| IaCM | `iac_workspace_view` |
+| IRO | `iro_incident_view` |
+| STO | `sto_scan_view` |
+
+Modules not listed (Chaos, Database DevOps, Feature Flags, GitOps, IDP, Monitoring, SEI, Service Discovery, SCS) inject no default. To grant an agent any access in those modules, declare an explicit `permissions` block. Once you declare a block, only the keys you list apply. The defaults are not merged in.
+
+### What happens when a permission is missing
+
+An agent gets no access for a pair when any of these is true:
+
+- The pair is not in the declared grant.
+- The verb exceeds the invoking principal's own RBAC, so the intersection removes it.
+- The resource key is not recognized, or the verb does not match a real RBAC action, so the built permission key matches nothing.
+
+The first two cases surface as a permission-denied error when the agent calls the corresponding Harness API. The third is silent, since the invalid key or verb is simply dropped when the token is built. If an agent cannot perform an action you expected, confirm the resource key is listed under [Supported resources by module](#supported-resources-by-module), confirm the verb matches the resource's RBAC action, then add or correct the pair and re-run.
+
+### Best practices
+
+- Grant only the resource types and verbs the agent's task requires. Start narrow and add verbs as needed rather than granting broadly.
+- Avoid `manage` where an atomic verb (`view`, `create`, `edit`, `delete`) covers the same action. Reserve `manage` for resources that do not expose atomic verbs.
+- Treat `delete*`, `impersonate`, and other admin-class verbs as opt-in only, and review them explicitly during pipeline review.
+- Remember the grant is a ceiling, not a guarantee. An agent's actual access still depends on the invoking principal's RBAC at that pipeline's scope.
+
+### Limitations
+
+- **Trigger-initiated runs:** Agents run by a pipeline trigger do not currently have a scoped token injected, so declared permissions cannot be resolved against an invoking principal for those runs. This permission model applies to manually and API-triggered runs where a principal is available. Trigger support is on the roadmap.
+- **Verbs are unvalidated:** There is no verb enum, so a mistyped or unsupported verb fails silently rather than raising an error. Confirm every verb against the resource's RBAC actions.
+- **Resource keys not listed above are dropped:** Any key outside [Supported resources by module](#supported-resources-by-module) grants nothing. New keys are added as modules onboard to the scoped-token model.
+- **`scs_evidence_vault` (Beta):** Requires the corresponding feature flag.
 
 ---
 
