@@ -121,3 +121,20 @@ Harness AIT allows a user to archive a test if they want to remove it from a lis
 />
 
 Archiving gives you the option to restore a test if needed. However, you need to reach out to Harness support to restore the test back. The tests are permanently deleted once the TTL policy kicks in.
+
+## Export test summaries
+
+Export plain-English summaries of one or more tests as a ZIP file. Useful for sharing coverage with reviewers, product managers, or auditors who do not work in the Harness UI.
+
+1. In the left navigation, select **Tests**.
+2. Select the checkbox next to each test you want to include. The bulk action bar at the bottom of the page updates as you select.
+3. Click **Export Test Summaries (N)** in the bulk action bar, where **N** is the number of selected tests.
+4. Harness generates a natural-language summary for each selected test and bundles them into a single ZIP file that downloads through your browser.
+
+<DocImage
+  path={require('./static/export-test-summaries-bulk-action-bar.png')}
+  alt="Tests list with two tests selected and the bulk action bar visible at the bottom showing the Export Test Summaries (2) action"
+  title="Click to view full size image"
+/>
+
+Each summary describes the test's steps and expected behavior in plain English.
