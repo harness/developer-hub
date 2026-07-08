@@ -155,6 +155,33 @@ When using Azure Blob Storage with any Harness CI Intelligence caching feature (
 :::
 
 
+#### Kubernetes Infrastructure Advanced Settings
+
+Set default Kubernetes infrastructure settings for CI stages. Container Security Context applies default security options to generated build and step containers, such as user, group, privileges, capabilities, and proc mount. Pod Spec Overlay provides supported Kubernetes PodSpec YAML for advanced pod-level customization.
+
+These settings are available at Account, Organization, and Project scopes. Scope inheritance follows Project > Organization > Account precedence, controlled by the [Allow Overrides](#allow-overrides) toggle. Stage-level infrastructure settings in the pipeline YAML always override the resolved default, regardless of the Allow Overrides configuration. Leave a field empty to not apply it to pods.
+
+* **Run As User:** Specifies the user ID (UID) that all container processes run as. Use this to enforce non-root execution across CI builds. Maps to Kubernetes `securityContext.runAsUser`.
+
+* **Run As Group:** Specifies the primary group ID (GID) for all container processes. Files created by the container will be owned by this group. Maps to `securityContext.runAsGroup`.
+
+* **Run As Non Root:** When set to `true`, Kubernetes validates that the container does not run as root (UID 0). The pod will fail to start if the container image attempts to run as root.
+
+* **Privileged Mode:** When set to `true`, grants the container all Linux capabilities and access to host devices, equivalent to running as root on the host.
+
+* **Allow Privilege Escalation:** Controls whether a child process can gain more privileges than its parent. Setting this to `false` ensures the `no_new_privs` flag is set on the container, preventing privilege escalation via setuid binaries or file capabilities.
+
+* **Read Only Root Filesystem:** When set to `true`, mounts the container's root filesystem as read-only, preventing any writes to the filesystem. This hardens the container against tampering but may break builds that write to temporary directories outside of mounted volumes.
+
+* **Add Capabilities:** A comma-separated list of Linux capabilities to add beyond the default set. Use this when your build steps require specific kernel-level permissions, such as network configuration or clock manipulation.
+
+* **Drop Capabilities:** A comma-separated list of Linux capabilities to drop from the container's default set.
+
+* **Proc Mount:** Controls the proc filesystem mount type for the container. Set to `Default` for the standard masked `/proc`, or `Unmasked` to expose the full `/proc` filesystem.
+
+* **Pod Spec Overlay:** Free-form YAML content that is applied as an overlay to the pod specification. Use this to configure pod-level settings such as topology spread constraints, tolerations, or node affinity at a default level.
+
+
 #### Upload Logs Via Harness
 
 When set to `True`, CI step execution logs will route  through Harness' log service instead of getting uploaded directly to the object store (GCS bucket). This is useful if your network settings do not allow direct access to the object store. 
