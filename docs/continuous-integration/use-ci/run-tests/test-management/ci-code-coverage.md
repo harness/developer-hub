@@ -192,8 +192,8 @@ hcli cov upload --file=<coverage-file>
 | Parameter | Required | Description |
 |-----------|----------|-------------|
 | `--file` | Yes | Path to coverage file (LCOV `.info` or Go `.out`). Can be specified multiple times |
-| `--base-branch` | No | Base branch for diff coverage tracking (e.g., `main`, `origin/main`) |
-| `--patch` | No | Only include coverage for lines changed in the diff (requires `--base-branch`) |
+| `--base` | No | Base branch for diff coverage tracking (e.g., `main`, `origin/main`) |
+| `--patch` | No | Only include coverage for lines changed in the diff (requires `--base`) |
 | `--tags` | No | Tags to apply to the uploaded coverage report (can be specified multiple times) |
 | `--verbose` | No | Enable verbose output for debugging (`true` or `false`) |
 | `--log-level` | No | Set log level: `debug`, `info`, `warn`, `error` (default: `info`) |
