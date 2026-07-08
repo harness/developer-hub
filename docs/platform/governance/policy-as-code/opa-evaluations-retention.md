@@ -34,6 +34,29 @@ To download evaluation data:
 2. Download the evaluation data through the Harness UI.
 3. Schedule regular downloads (at least once every 6 months) to maintain historical records.
 
+## How evaluation data is stored
+
+Harness stores policy evaluation data in two locations to optimize database performance and support larger policy inputs:
+
+- **Evaluation input:** The JSON of the entity being evaluated (pipeline YAML, Terraform plans, etc.).
+- **Evaluation results and metadata:** Stored in the database. This includes policy evaluation outcomes, status information, account ID, organization, project, and timestamps.
+
+The input is a field within the evaluation data. For larger evaluations it is not returned inline in the standard API responses (find, find-by-ids, list) and is instead delivered through the input signed-URL API.
+
+### Why input is stored separately
+
+Evaluation inputs can be very large (10 KB to 30+ MB for infrastructure-as-code modules). To support larger inputs without impacting database performance, we have offloaded the input to the new API.
+
+### Accessing evaluation input
+
+When you view evaluation results in the Harness UI, Harness automatically retrieves the input when needed. If you use the Harness API to retrieve evaluations, for some evaluations the input is included inline in `evaluation_data.input`. If the field is null, call the new API:
+
+```http
+GET /api/v1/evaluations/evaluation-input-signed-url/{evaluation_id}
+```
+
+This endpoint returns a signed URL that you can use to download the input JSON directly from cloud storage. The validity of the URL comes in the Expires field.
+
 ## Contact support
 
 For questions about data retention policies or to request a custom retention period, contact [Harness Support](mailto:support@harness.io).

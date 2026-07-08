@@ -149,13 +149,17 @@ Refer to the [traffic routing documentation](/docs/continuous-delivery/deploy-sr
 
 ## June 2026
 
-### Version 1.155.0
+### Version 1.155.6
 
 #### New features and enhancements
 
-- Harness Approval steps can now be added inside Container Step Groups in CD pipelines. When stage timeout exceeds 24 hours, pod TTL automatically extends to support longer approval response times. This feature requires the feature flag `CDS_CONTAINER_STEP_GROUP_STAGE_TIMEOUT`. Contact [Harness Support](mailto:support@harness.io) to enable.
+- Harness now supports **adding Approval steps inside Container Step Groups** in CD pipelines. When stage timeout exceeds 24 hours, pod TTL automatically extends to support longer approval response times. This feature requires the feature flag `CDS_CONTAINER_STEP_GROUP_STAGE_TIMEOUT`. Contact [Harness Support](mailto:support@harness.io) to enable.
 
-- AWS CDK Deploy steps automatically skip execution when no infrastructure changes are detected by a preceding CDK Diff step, reducing deployment time. This feature requires the feature flag `CDS_SKIP_CDK_DEPLOY_IF_NO_DIFF`. Contact [Harness Support](mailto:support@harness.io) to enable.
+- Harness now supports **automatic skipping of AWS CDK Deploy steps** when no infrastructure changes are detected by a preceding CDK Diff step, reducing deployment time. This feature requires the feature flag `CDS_SKIP_CDK_DEPLOY_IF_NO_DIFF`. Contact [Harness Support](mailto:support@harness.io) to enable.
+
+- Harness now supports **storing Policy as Code evaluation input payloads in cloud storage** (GCS/S3) to optimize database performance and support larger inputs. Evaluation input data (pipeline YAML, Terraform plans, IaCM stacks) is stored in cloud storage, while evaluation results and metadata remain in the database for fast access. A new signed URL API endpoint (`GET /api/v1/evaluations/evaluation-input-signed-url/{id}`) allows you to retrieve input data from cloud storage. Go to [Policy evaluations retention](/docs/platform/governance/policy-as-code/opa-evaluations-retention#how-evaluation-data-is-stored) to understand how evaluation data is stored and retrieved. (**PIPE-34221**)
+
+- Harness now supports **6-month retention for Policy as Code evaluation data**. Policy evaluation data is retained for a default period of 6 months. If your account has a pipeline data retention policy that exceeds 6 months, your Policy as Code evaluations retention automatically aligns with your pipeline retention window. Go to [Policy evaluations retention](/docs/platform/governance/policy-as-code/opa-evaluations-retention) to download evaluations for compliance or to request a custom retention period. (**PIPE-34221**)
 
 #### Fixed issues
 
@@ -170,10 +174,6 @@ Refer to the [traffic routing documentation](/docs/continuous-delivery/deploy-sr
 - Fixed an issue where reconcile errors persist for failure strategies after successful save. (**PIPE-35111**, **ZD-116644**)
 
 ### Version 1.154.7
-
-:::info Product Update
-The AI-powered verification steps have been renamed for clarity. The classic Verify step is now **AI Verify (v1)**, and the newer "Configure verify step with AI" is now **AI Verify (v2)**. These new names make it easier to distinguish between the two versions in your pipelines. No changes to your existing pipelines or configurations are required. (**CDS-125595**)
-:::
 
 #### New features and enhancements
 
