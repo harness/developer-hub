@@ -53,6 +53,18 @@ Please reach out to your support team to get these flag enabled.
 Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud-vm-images/) for details.
 :::
 
+## July 2026
+
+### Version 1.147.0
+
+<!-- July 2026 -->
+
+#### Fixed Issues
+
+- Fixed an issue where secret retrieval from Hashicorp vault was failing. (CI-23109)
+
+- Improved harnesssecure/kaniko security by resolving vulnerabilities in the container image. (CI-23227)
+
 ## June 2026
 
 ### Version 1.146.0
