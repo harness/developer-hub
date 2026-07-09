@@ -147,6 +147,29 @@ SMI was used as a traffic routing provider for advanced deployment strategies li
 Refer to the [traffic routing documentation](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/traffic-shifting-step/) for supported alternatives and migration guidance.
 :::
 
+## July 2026
+
+### Version 1.157.4
+
+#### New features and enhancements
+
+- AWS Auto Scaling Group (ASG) deployments now support **MixedInstancesPolicy** for optimizing cost and improving availability. You can configure a MixedInstancesPolicy in the ASG configuration JSON to allow AWS to select from multiple instance types, enabling spot instance usage and automatic fallback during capacity constraints. Harness automatically detects and updates the launch template version within the MixedInstancesPolicy configuration during deployments. (**CDS-109802**)
+
+- Kubernetes Blue Green deployments now support **automatic scale-up during rollback** to restore the previous deployment to its original replica count. When a deployment fails and triggers a rollback, the system automatically scales up the previous (stable) deployment after swapping services, ensuring traffic routes to active pods instead of scaled-down deployments. (**CDS-107483**)
+
+#### Fixed issues
+
+- Fixed an issue where deployments failed due to freeze even though there were no active freeze windows. The retry execution helper did not consider freeze-failed stages as failures, so it never reran those stages. The system now correctly reruns freeze-failed stages. (**CDS-126767**, **ZD-117787**)
+- Fixed an issue where links redirected to the IDP view in the Harness UI. Added priority handling in one of the flows behind a feature flag. This fix requires the feature flag `PIPE_HONOR_PIPELINE_SDK_PRIORITY_IN_EXECUTION_URL`. Contact [Harness Support](mailto:support@harness.io) to enable. (**PIPE-33955**, **ZD-114059**)
+- Fixed an issue where the values displayed under **Input Sets Applied** did not match the actual values consumed by the input set. (**PIPE-35102**, **ZD-115611**)
+- Fixed an issue where the **Insert Stage** functionality behaved inconsistently. This fix requires the feature flag `PIPE_INSERT_STAGE_EXTENDED_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable. (**PIPE-35108**, **ZD-116644**)
+- Fixed an issue where pipelines failed to deserialize `ExecutionWrapperConfig` step nodes during plan creation for CI stages using flexible templates with insert nodes. The issue did not reproduce when the pipeline was loaded from saved YAML. (**PIPE-35174**, **ZD-117029**)
+- Fixed an issue where the retention period was not taking effect for the `cacheentities` collection. The conditional logic was not handled properly after the introduction of the `CDS_CUSTOMIZE_PIPELINE_TTL` feature flag. The flow has been corrected. (**PIPE-35283**, **ZD-114524**)
+- Fixed an issue where pressing Enter in the body field of an Email step configured as a runtime input triggered pipeline execution instead of inserting a newline. (**PIPE-35407**, **ZD-117195**)
+- Fixed an issue where the Pipeline Studio became unresponsive, and keyboard controls (arrow and number keys) in the execution view stopped working. This issue affected multiple CDK users. (**PIPE-35436**, **ZD-117645**)
+- Fixed an issue where re-running a CI pipeline threw platform `ClassCastException` errors during orchestration. The system now prevents pipelines with identity plan nodes from being saved and added validation checks to avoid the "IdentityPlanNode cannot be cast to PlanNode" error. (**PIPE-35450**, **ZD-117853**)
+- Fixed an issue where the pipeline template creation page continuously refreshed or flickered and did not load. (**PIPE-35504**, **ZD-117915**)
+
 ## June 2026
 
 ### Version 1.155.6
