@@ -57,7 +57,20 @@ When you create the connector, set the following:
 
 ## Harness-managed connector
 
-If you do not have access to a model provider, Harness offers a managed LLM connector you can use instead.
+If you do not have access to a model provider, use a Harness-managed LLM connector instead of configuring your own credentials. Harness auto-provisions a managed OpenAI connector (`harnessOpenAI`) at the account level. This connector routes requests through the Harness **LLM Gateway**, so you do not supply an OpenAI API key.
+
+The managed connector is **view-only**. Inspect it under **Account Settings** > **Account Resources** > **Connectors**, but you cannot edit or delete it.
+
+### Enable or disable managed LLM connectors
+
+Managed LLM connectors are controlled by an account-level default setting.
+
+1. Navigate to **Account Settings**.
+2. Under **General**, select **Default Settings**.
+3. Select the **Harness AI** tile.
+4. Toggle **Enable Harness Managed LLM Connectors** on or off.
+
+Worker Agents authenticate to the LLM Gateway through the `ML_HARNESS_MANAGED_LLM_CONNECTORS` permission, which is included in the agent scoped token by default. If you define an explicit agent permission block (which requires the `HARNESS_TOKEN_INJECT` feature flag), the scoped token grants only the permissions you list, so add `ai_llm_gateway: access` explicitly or the agent loses LLM Gateway access. Go to [Configure permissions for Worker Agents](/docs/platform/harness-ai/harness-agents#configure-permissions-for-worker-agents) to configure permission blocks.
 
 :::note Managed connector billing
 Until August 2026, usage of the Harness-managed LLM connector is included in your Harness subscription at no additional cost. After August 2026, Harness bills managed LLM connector usage separately, in addition to your Harness subscription.

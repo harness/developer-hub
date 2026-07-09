@@ -369,7 +369,9 @@ Harness supports the following Model Connectors:
 - **Anthropic Model Connector:** Run agents on Claude models through direct Anthropic or AWS Bedrock endpoints. Go to [Anthropic Model Connector](/docs/platform/harness-ai/anthropic-model-connector) to review supported models and setup options.
 - **OpenAI Model Connector:** Run agents on GPT-5.5 with configurable reasoning effort. Go to [OpenAI Model Connector](/docs/platform/harness-ai/openai-model-connector) to review supported models, effort levels, and setup options.
 
-If you do not have access to a model provider, Harness offers a managed LLM connector you can use instead.
+If you do not have access to a model provider, use a Harness-managed LLM connector instead of configuring your own credentials. Harness auto-provisions view-only managed connectors at the account level, `harnessAnthropic` for Claude models and `harnessOpenAI` for GPT models, that route requests through the Harness **LLM Gateway**. Inspect them under **Account Settings** > **Account Resources** > **Connectors**; you cannot edit or delete them.
+
+Managed LLM connectors are controlled by the **Enable Harness Managed LLM Connectors** default setting under **Account Settings** > **General** > **Default Settings** > **Harness AI**. Worker Agents authenticate to the LLM Gateway through the `ML_HARNESS_MANAGED_LLM_CONNECTORS` permission, which is included in the agent scoped token by default. If you define an explicit [agent permission block](#configure-permissions-for-worker-agents), add `ai_llm_gateway: access` to retain LLM Gateway access.
 
 :::note Managed connector billing
 Until August 2026, usage of the Harness-managed LLM connector is included in your Harness subscription at no additional cost. After August 2026, Harness bills managed LLM connector usage separately, in addition to your Harness subscription.
@@ -478,6 +480,19 @@ In CD and Custom stages, the Agent step runs inside a [Containerized Step Group]
 
 :::note llmConnector access
 If an Agent step references an `llmConnector`, grant `connector: view|access` for that connector ID. Connector access is governed by this same grammar.
+:::
+
+:::warning LLM Gateway access and scoped token gotcha
+When you use a [Harness-managed LLM connector](#configure-model-connectors), the agent authenticates to the LLM Gateway through the `ML_HARNESS_MANAGED_LLM_CONNECTORS` permission. This permission is included in the scoped token by default, so an agent that does **not** declare a `permissions` block has LLM Gateway access automatically.
+
+Because a declared `permissions` block grants **only** the pairs you list, you must add `ai_llm_gateway: access` explicitly when you use a managed connector. Omit it and the scoped token no longer carries LLM Gateway access, so the agent cannot reach the managed connector.
+
+```yaml
+permissions:
+  ai_llm_gateway: access
+  pipeline: view|execute
+  code_repository: view
+```
 :::
 
 #### Example: least-privilege "deploy and reconcile" agent
