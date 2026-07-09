@@ -84,7 +84,7 @@ The Specification step has two panels:
 Write your blueprint YAML in the editor. The blueprint defines:
 
 - Infrastructure entities using the `HarnessIACM` backend type
-- Service entities using the `Catalog` or `HarnessCD` backend type
+- Service entities using the `Catalog` backend type or `HarnessCD` backend type
 - Dependencies between entities
 - Blueprint-level and entity-level user inputs
 - TTL configuration (for ephemeral environments)

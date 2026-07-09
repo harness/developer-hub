@@ -33,7 +33,7 @@ const RESOURCES: TileItem[] = [
   {
     title: "Services",
     description: "Define and manage the services that make up your applications",
-    href: "docs/platform/service-discovery",
+    href: "/docs/platform/service-discovery",
     iconLight: "img/home/service.svg",
     iconDark: "img/home/service.svg",
   },

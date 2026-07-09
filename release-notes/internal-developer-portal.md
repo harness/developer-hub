@@ -34,6 +34,7 @@ Review the notes below for details about recent changes to Harness Internal Deve
 | [2026.5.v2](/release-notes/internal-developer-portal#may---20265v2)   | ✅        | ✅         | ✅           | ✅        | ✅         | ✅         |
 | [2026.5.v1](/release-notes/internal-developer-portal#may---20265v1)   | ✅        | ✅         | ✅           | ✅        | ✅         | ✅         |
 
+
 ## June - [2026.6.v1]
 
 ---
@@ -76,7 +77,6 @@ Both appear in the **STATE** column on the environments listing page and in the 
 - Retrying an IDP workflow would submit stale parameter values from the previous execution instead of the current form values. This is now fixed, and conditional form validation continues to work correctly. [IDP-9705]
 - Scorecard aggregation was not computing results for newly created scorecards due to an incorrect time window being used during score fetching. [IDP-9570]
 - The merge entity dropdown in the Discovered tab of configured integration was closing automatically every 10-20 seconds due to integration config polling triggering a re-render. [IDP-9749]
-
 ---
 
 ## May - [2026.5.v2]

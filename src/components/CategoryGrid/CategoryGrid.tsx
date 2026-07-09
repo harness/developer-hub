@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import Link from "@docusaurus/Link";
 import clsx from "clsx";
 import styles from "./CategoryGrid.module.scss";
-import type { Category } from "./categories.data";
+import type { Category, CatItem, ModuleLink } from "./categories.data";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { useColorMode } from "@docusaurus/theme-common";
 import { moduleList } from "@site/src/components/LearnAboutPlatform/data/moduleListData";
@@ -57,7 +57,7 @@ function useModuleIconMap() {
 }
 
 function buildIconCandidates(
-  item: Category["items"][number],
+  item: ModuleLink | CatItem,
   moduleIconMap: Map<string, string>,
   colorMode = "light"
 ) {
@@ -140,7 +140,7 @@ function FallbackImg({
 
 /* ----- shared tile renderer ----- */
 function ColTileItem({ item, baseUrl, moduleIconMap, colorMode }: {
-  item: CatItem;
+  item: ModuleLink | CatItem;
   baseUrl: string;
   moduleIconMap: Map<string, string>;
   colorMode: string;
@@ -213,7 +213,7 @@ export default function CategoryGrid({
                         <li
                           className={styles.subgroupDivider}
                           role="presentation"
-                          style={{ animationDelay: `${index * 1}s` }}
+                          style={{ animationDelay: `${index * 0.5}s` }}
                         >
                           <span className={styles.subgroupLabel}>{sg.subgroupTitle}</span>
                         </li>
@@ -299,7 +299,7 @@ export default function CategoryGrid({
                         <li
                           className={styles.subgroupDivider}
                           role="presentation"
-                          style={{ animationDelay: `${index * 1}s` }}
+                          style={{ animationDelay: `${index * 0.5}s` }}
                         >
                           <span className={styles.subgroupLabel}>{sg.subgroupTitle}</span>
                         </li>

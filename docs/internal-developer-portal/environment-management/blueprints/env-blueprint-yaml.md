@@ -247,9 +247,6 @@ The `values.variables` field maps to service-level variables on the Harness Serv
 
 **Environment Parameters (`backend.values.environment`)**
 
-
-**Environment Parameters (`backend.values.environment`)**
-
 | Parameter | Type | Description | Example |
 |-----------|------|-------------|----------|
 | `identifier` | string | CD Service Environment identifier where services will be deployed | `mycluster` |
@@ -268,9 +265,7 @@ The `values.variables` field maps to service-level variables on the Harness Serv
 | `apply` | Yes | Deploys the service using the specified pipeline | `pipeline` |
 | `destroy` | Yes | Removes the deployed service using the specified pipeline | `pipeline` |
 
----
-
-#### 3. HarnessCD backend (services)
+#### 3. HarnessCD Backend (Services)
 
 Used for deploying application services when your deployment pipelines use pipeline-level variables. Unlike the `Catalog` backend type, where `values.variables` maps to service-level variables on the Harness Service, the `HarnessCD` backend type lets you define pipeline variables (for example, `COMMIT_SHA`) directly under `steps.apply.variables`.
 
@@ -338,8 +333,6 @@ entities:
 |-----------|------|-------------|---------|
 | `pipeline` | string | Deploy pipeline identifier | `Deploy` |
 | `variables` | object | Pipeline-level variables passed directly to the pipeline at execution time | `{"COMMIT_SHA": "${{env.config.COMMIT_SHA}}"}` |
-
----
 
 ### Configure TTL (time-to-live)
 

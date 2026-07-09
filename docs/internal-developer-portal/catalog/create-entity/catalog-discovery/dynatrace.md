@@ -245,8 +245,6 @@ The **Dynatrace** tab provides a more complete view of the Dynatrace data for th
 ![Dynatrace tab showing full resource details](./static/dynatrace-tab.png)
 <center>Figure 10: Tab showing full Dynatrace resource details</center>
 
-
-
 ### Ingested properties
 
 To inspect the raw data ingested from Dynatrace, open the entity and click **View YAML**, then select **Ingested Properties** in the Entity Inspector.

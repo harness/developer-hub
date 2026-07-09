@@ -34,10 +34,7 @@ export type Category = {
   title: string;
   blurb?: string;
   items?: ModuleLink[];
-  subgroups?: {
-    subgroupTitle: string;
-    items: ModuleLink[];
-  }[];
+  subgroups?: SubGroup[];
 };
 
 export const categories: Category[] = [
@@ -46,7 +43,7 @@ export const categories: Category[] = [
     blurb: "",
     items: [
       {
-        name: "Deployments",
+        name: "Continuous Delivery",
         href: "/docs/continuous-delivery",
         module: "cd",
         iconLight: "img/home/deployment.svg",
@@ -54,7 +51,7 @@ export const categories: Category[] = [
         description: "Deploy to any environment using pipelines or GitOps workflows."
       },
       {
-        name: "Builds",
+        name: "Continuous Integration",
         href: "/docs/continuous-integration",
         module: "ci",
         iconLight: "img/home/build.svg",
@@ -62,7 +59,7 @@ export const categories: Category[] = [
         description: "Build, test, and publish code with scalable CI pipelines."
       },
       {
-        name: "Feature Releases",
+        name: "Feature Management & Experimentation",
         href: "/docs/feature-management-experimentation",
         module: "ff",
         iconLight: "img/home/feature.svg",
@@ -78,7 +75,7 @@ export const categories: Category[] = [
         description: "Automate schema migrations within your delivery pipeline."
       },
       {
-        name: "Infrastructure",
+        name: "Infrastructure as Code Management",
         href: "/docs/infrastructure-as-code-management",
         module: "iacm",
         iconLight: "img/home/infrastructure.svg",
@@ -86,7 +83,7 @@ export const categories: Category[] = [
         description: "Provision infrastructure as code with drift detection."
       },
       {
-        name: "Artifacts",
+        name: "Artifact Registry",
         href: "/docs/artifact-registry",
         module: "ar",
         iconLight: "img/home/artifact.svg",
@@ -100,7 +97,7 @@ export const categories: Category[] = [
     blurb: "",
     items: [
       {
-        name: "Resilience Tests",
+        name: "Resilience Testing",
         href: "/docs/resilience-testing",
         module: "rt",
         iconLight: "img/home/resilience-test.svg",
@@ -108,28 +105,12 @@ export const categories: Category[] = [
         description: "Run chaos experiments to uncover weaknesses before outages."
       },
       {
-        name: "UI Tests",
+        name: "AI Test Automation",
         href: "/docs/ai-test-automation",
         module: "aita",
         iconLight: "img/home/ui-test.svg",
         iconDark: "img/home/ui-test.svg",
         description: "Generate and run browser and end-to-end tests with AI."
-      },
-      {
-        name: "AI Evals",
-        href: "/docs/ai-test-automation",
-        module: "aida",
-        iconLight: "img/home/ai-code.svg",
-        iconDark: "img/home/ai-code.svg",
-        description: "Evaluate the quality, accuracy, and safety of your AI apps."
-      },
-      {
-        name: "AI Code Review",
-        href: "/docs/ai-test-automation",
-        module: "aida",
-        iconLight: "img/home/ai-code.svg",
-        iconDark: "img/home/ai-code.svg",
-        description: "Review code with AI to catch issues before merge."
       },
     ],
   },
@@ -140,17 +121,17 @@ export const categories: Category[] = [
       {
         subgroupTitle: "Application Security Testing",
         items: [
-          { name: "App Security Testing", href: "/docs/appsec-security-testing", module: "ast", iconLight: "img/home/app-sec.svg", iconDark: "img/home/app-sec.svg", description: "Identify issues early and validate API security." },
-          { name: "SAST & SCA", href: "/docs/sast-and-sca", module: "sto", iconLight: "img/home/security-test.svg", iconDark: "img/home/security-test.svg", description: "Scan code and dependencies for vulnerabilities." },
+          { name: "Security Testing Orchestration", href: "/docs/security-testing-orchestration", module: "armory", iconLight: "img/home/security-test.svg", iconDark: "img/home/security-test.svg", description: "Scan and remediate vulnerabilities across your pipeline." },
           { name: "Supply Chain Security", href: "/docs/software-supply-chain-assurance", module: "ssca", iconLight: "img/home/supply-chain.svg", iconDark: "img/home/supply-chain.svg", description: "Secure your software supply chain end to end." },
-          { name: "Security Tests", href: "/docs/security-testing-orchestration", module: "armory", iconLight: "img/home/security-test.svg", iconDark: "img/home/security-test.svg", description: "Scan and remediate vulnerabilities across your pipeline." },
+          { name: "SAST & SCA", href: "/docs/sast-and-sca", module: "sto", iconLight: "img/home/security-test.svg", iconDark: "img/home/security-test.svg", description: "Scan code and dependencies for vulnerabilities." },
         ]
       },
       {
         subgroupTitle: "Web Application & API Protection",
         items: [
-          { name: "Runtime Protection", href: "/docs/appsec-runtime-protection", module: "ast", iconLight: "img/home/runtime.svg", iconDark: "img/home/runtime.svg", description: "Detect and block threats to your apps and APIs at runtime." },
-          { name: "API Discovery", href: "/docs/appsec-discovery", module: "asp", iconLight: "img/home/security-test.svg", iconDark: "img/home/security-test.svg", description: "Complete visibility into your API ecosystem." },
+          { name: "Application & API Security Testing", href: "/docs/appsec-security-testing", module: "ast", iconLight: "img/home/app-sec.svg", iconDark: "img/home/app-sec.svg", description: "Identify issues early and validate API security." },
+          { name: "Application & API Runtime Protection", href: "/docs/appsec-runtime-protection", module: "ast", iconLight: "img/home/runtime.svg", iconDark: "img/home/runtime.svg", description: "Detect and block threats to your apps and APIs at runtime." },
+          { name: "Application & API Discovery", href: "/docs/appsec-discovery", module: "asp", iconLight: "img/home/security-test.svg", iconDark: "img/home/security-test.svg", description: "Complete visibility into your API ecosystem." },
         ]
       },
       {
@@ -166,7 +147,7 @@ export const categories: Category[] = [
     blurb: "",
     items: [
       {
-        name: "Developer Portal",
+        name: "Internal Developer Portal",
         href: "/docs/internal-developer-portal",
         module: "idp",
         iconLight: "img/home/portal.svg",
@@ -174,7 +155,7 @@ export const categories: Category[] = [
         description: "Give developers a self-service portal for services and workflows."
       },
       {
-        name: "Cloud Costs",
+        name: "Cloud & AI Cost Management",
         href: "/docs/cloud-cost-management",
         module: "ccm",
         iconLight: "img/home/cloud-cost.svg",
@@ -182,7 +163,7 @@ export const categories: Category[] = [
         description: "Gain visibility into cloud spend and reduce waste with AI."
       },
       {
-        name: "Incidents",
+        name: "AI SRE",
         href: "/docs/ai-sre",
         module: "inc",
         iconLight: "img/home/incident.svg",
@@ -190,7 +171,7 @@ export const categories: Category[] = [
         description: "Detect incidents and automate root cause analysis to cut MTTR."
       },
       {
-        name: "Engineering Insights",
+        name: "AI DLC Insights",
         href: "/docs/software-engineering-insights/harness-sei/sei-overview",
         module: "sei",
         iconLight: "img/home/engineering-insights-classic.svg",
@@ -198,7 +179,7 @@ export const categories: Category[] = [
         description: "Measure AI adoption, optimize token spend, and prove engineering impact."
       },
       {
-        name: "Engineering Insights Classic",
+        name: "Software Engineering Insights",
         href: "/docs/software-engineering-insights/propelo-sei/get-started/overview",
         module: "sei",
         iconLight: "img/home/engineering-insights-classic.svg",

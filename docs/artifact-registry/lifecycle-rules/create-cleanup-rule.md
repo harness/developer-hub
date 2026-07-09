@@ -75,9 +75,7 @@ Optionally restrict which packages and versions the rule evaluates:
 You must select at least one criterion.
 
 :::note AND logic
-
 When multiple criteria are enabled, **all** conditions must be true for a version to be deleted. For example, "Keep last 10" and "Older than 30 days" means a version is only deleted if it is beyond the 10 most recent **and** older than 30 days.
-
 :::
 
 - **Keep last N versions:** Retain the most recent N versions on the package. Versions beyond this count become deletion candidates.
@@ -111,7 +109,6 @@ Define when the rule executes.
 The cleanup rule is created and executes as per the cron schedule. You can verify the rule on the Lifecycle Rules tab, where it shows the criteria summary, last run, and next run time.
 
 :::tip
-
 Use Dry Run from the rule actions menu (**⋮**) before the first scheduled execution to verify which artifacts would be affected.
 
 :::

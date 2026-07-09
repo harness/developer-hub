@@ -25,9 +25,7 @@ tags:
 Lifecycle rules automate artifact retention and cleanup in Harness Artifact Registry. You define policy-based rules that identify stale or unused artifact versions and soft-delete them on a recurring schedule, reducing storage costs without manual intervention.
 
 :::info Feature availability
-
 This feature is behind the feature flag `HAR_ARTIFACT_LIFECYCLE_POLICY`. Contact [Harness Support](mailto:support@harness.io) to enable it.
-
 :::
 
 ---
@@ -54,9 +52,7 @@ At the start of a cleanup rule execution run, the system:
 5. Records the execution result with a complete audit trail.
 
 :::tip All deletions are soft deletes
-
 There is no hard-delete option in lifecycle rules. Deleted artifacts remain recoverable for the recovery period set in **Default Settings** > **Artifact Registry** at the account level. Go to <a href="/docs/artifact-registry/manage-artifacts/soft-delete" target="_blank">Delete Artifacts</a> to understand how soft-delete and recovery work.
-
 :::
 
 ---
@@ -85,15 +81,11 @@ Go to **Artifact Registry** > **Registries Settings** > **Lifecycle Rules** and 
 - **Schedule:** Cleanup rules run on a cron schedule (daily, monthly, yearly, or custom). Retention rules do not have a schedule; they are evaluated passively whenever a cleanup rule runs.
 
 :::warning Immutability does not prevent deletion
-
 If a registry has a Prevent Overwrite (immutability) policy, lifecycle cleanup rules can still delete artifacts from that registry. Immutability prevents content from being replaced, not removed. Use a retention rule to protect specific artifacts from cleanup.
-
 :::
 
 :::note Upstream proxy cache expiry is separate
-
 Lifecycle rules apply to artifacts published to your registries. Upstream proxy cache expiry (TTL-based cleanup of cached artifacts from upstream sources) is configured per-registry in the upstream proxy settings and operates independently.
-
 :::
 
 ---
@@ -105,9 +97,7 @@ Lifecycle rules apply to artifacts published to your registries. Upstream proxy 
 Each rule has a toggle switch in the rules list. Use it to pause a rule without deleting it. A disabled rule retains its configuration and attachment but does not execute on schedule. Toggle it back on to resume scheduled executions.
 
 :::note Retention rules cannot be disabled
-
 Retention rules do not have a toggle switch. To stop a retention rule from protecting artifacts, you must delete it.
-
 :::
 
 ### Edit or delete a rule
@@ -167,9 +157,7 @@ Use the toolbar filters to narrow the view:
 ## Preview and dry run
 
 :::tip Run a dry run before activating any cleanup rule
-
 A dry run shows exactly which artifacts would be deleted without making any changes. This helps you validate that your criteria and filters are correct before the rule executes on schedule.
-
 :::
 
 Use **Dry Run** from the rule actions menu. Dry run results appear in the **Lifecycle Rule Executions** tab alongside scheduled executions. The dry run detail view displays:
@@ -215,13 +203,11 @@ Select **Show executions from parent policies** to include executions from rules
   width="100%"
 />
 
-
 ---
 
 ## Notifications
 
 You can receive alerts when lifecycle rule executions complete. Artifact Registry supports two notification events:
-
 - **Lifecycle Policy Execution Completed:** Triggers when a scheduled cleanup rule finishes executing.
 - **Lifecycle Policy Dry Run Execution Completed:** Triggers when a dry run finishes.
 

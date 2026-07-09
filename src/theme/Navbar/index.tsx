@@ -106,15 +106,15 @@ export default function NavbarWrapper(props: Props): ReactNode {
       : {};
 
   const docDropdownItems = [
-    { to: `${docsBase}/ai`, legacyTo: "/docs/category/harness-ai", label: "Harness AI", icon: "/img/home/ai.svg" },
+    { to: `${docsBase}/ai`, legacyTo: "/docs/platform/harness-ai/overview", label: "Harness AI", icon: "/img/home/ai.svg" },
     { to: `${docsBase}/platform`, label: "Harness Platform", icon: "/img/home/platform.svg" },
     { to: `${docsBase}/code-repository`, label: "Code Repository", icon: "/img/home/code.svg" },
 
     { type: "header", label: "DevOps" },
     { to: `${docsBase}/continuous-delivery`, label: "Continuous Deployment", icon: "/img/home/deployment.svg" },
     { to: `${docsBase}/continuous-integration`, label: "Continuous Integration", icon: "/img/home/build.svg" },
-    { to: `${docsBase}/feature-management-experimentation`, label: "Feature Releases", icon: "/img/home/feature.svg" },
-    { to: `${docsBase}/infrastructure-as-code-management`, label: "Infrastructure Automation", icon: "/img/home/infrastructure.svg" },
+    { to: `${docsBase}/feature-management-experimentation`, label: "Feature Management & Experimentation", icon: "/img/home/feature.svg" },
+    { to: `${docsBase}/infrastructure-as-code-management`, label: "Infrastructure as Code Management", icon: "/img/home/infrastructure.svg" },
     { to: `${docsBase}/database-devops`, label: "Database DevOps", icon: "/img/home/database.svg" },
     { to: `${docsBase}/artifact-registry`, label: "Artifact Registry", icon: "/img/home/artifact.svg" },
     { to: `${docsBase}/release-orchestration`, label: "Release Orchestration", icon: "/img/home/release.svg" },
@@ -125,22 +125,22 @@ export default function NavbarWrapper(props: Props): ReactNode {
 
     // Application Security Testing
     { type: "header", label: "Application Security Testing", className: "dropdown-subheader" },
-    { to: `${docsBase}/appsec-security-testing`, label: "Overview", icon: "/img/home/security-test.svg" },
-    { to: `${docsBase}/sast-and-sca`, label: "SAST & SCA", icon: "/img/home/qwiet.svg" },
-    { to: `${docsBase}/software-supply-chain-assurance`, label: "Supply Chain Security", icon: "/img/home/supply-chain.svg" },
     { to: `${docsBase}/security-testing-orchestration`, label: "Security Testing Orchestration", icon: "/img/home/security-test.svg" },
+    { to: `${docsBase}/software-supply-chain-assurance`, label: "Supply Chain Security", icon: "/img/home/supply-chain.svg" },
+    { to: `${docsBase}/sast-and-sca`, label: "SAST & SCA", icon: "/img/home/qwiet.svg" },
     
     // Web App & API Protection
     { type: "header", label: "Web Application & API Protection", className: "dropdown-subheader" },
-    { to: `${docsBase}/appsec-runtime-protection`, label: "Overview", icon: "/img/home/runtime.svg" },
-    { to: `${docsBase}/appsec-discovery`, label: "API Discovery", icon: "/img/home/security-test.svg" },
+    { to: `${docsBase}/appsec-security-testing`, label: "Application & API Security Testing", icon: "/img/home/security-test.svg" },
+    { to: `${docsBase}/appsec-runtime-protection`, label: "Application & API Runtime Protection", icon: "/img/home/runtime.svg" },
+    { to: `${docsBase}/appsec-discovery`, label: "Application & API Discovery", icon: "/img/home/security-test.svg" },
     
     // AI Security
     { type: "header", label: "AI Security", className: "dropdown-subheader" },
     { to: `${docsBase}/ai-security`, label: "AI Security", icon: "/img/home/security-test.svg" },
 
     { type: "header", label: "Operations" },
-    { to: `${docsBase}/cloud-cost-management`, label: "AI Cost Management", icon: "/img/home/cloud-cost.svg" },
+    { to: `${docsBase}/cloud-cost-management`, label: "Cloud & AI Cost Management", icon: "/img/home/cloud-cost.svg" },
     { to: `${docsBase}/software-engineering-insights`, label: "AI DLC Insights", icon: "/img/home/engineering-insights-classic.svg" },
     { to: `${docsBase}/ai-sre`, label: "AI SRE", icon: "/img/home/incident.svg" },
     { to: `${docsBase}/internal-developer-portal`, label: "Internal Developer Portal", icon: "/img/home/portal.svg" },

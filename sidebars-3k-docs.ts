@@ -26,7 +26,7 @@ const sidebars: SidebarsConfig = {
           type: 'link',
           label: 'Platform',
           className: 'sidebar-platform',
-          href: '/3k-docs/platform',
+          href: '/docs/platform',
           customProps: {
             description: 'Learn how to manage Harness features that integrate with all modules.',
           },
@@ -36,7 +36,7 @@ const sidebars: SidebarsConfig = {
           type: 'link',
           label: 'Repositories',
           className: 'sidebar-cr',
-          href: '/3k-docs/code-repository',
+          href: '/docs/code-repository',
           customProps: {
             description:
               'Manage code in Harness, and accelerate development with security at scale. (Beta)',
@@ -47,7 +47,7 @@ const sidebars: SidebarsConfig = {
           type: 'link',
           label: 'Builds',
           className: 'sidebar-ci',
-          href: '/3k-docs/continuous-integration',
+          href: '/docs/continuous-integration',
           customProps: {
             description: 'Learn how you can build faster and be more productive.',
           },
@@ -57,7 +57,7 @@ const sidebars: SidebarsConfig = {
           type: 'link',
           label: 'Artifacts',
           className: 'sidebar-ar',
-          href: '/3k-docs/artifact-registry',
+          href: '/docs/artifact-registry',
           customProps: {
             description: 'Store your artifacts natively with Harness.',
           },
@@ -65,9 +65,9 @@ const sidebars: SidebarsConfig = {
         // AI Test Automation landing page
         {
           type: 'link',
-          label: 'UI Tests',
+          label: 'AI Test Automation',
           className: 'sidebar-ata',
-          href: '/3k-docs/ai-test-automation',
+          href: '/docs/ai-test-automation',
           customProps: {
             description: 'Store your AI Test Automation natively with Harness.',
           },
@@ -77,7 +77,7 @@ const sidebars: SidebarsConfig = {
           type: 'link',
           label: 'Deployments',
           className: 'sidebar-cd',
-          href: '/3k-docs/continuous-delivery',
+          href: '/docs/continuous-delivery',
           customProps: {
             description: 'Learn how to make your software releases more efficient and reliable.',
           },
@@ -85,7 +85,7 @@ const sidebars: SidebarsConfig = {
         // Release Orchestration Landing Page
         {
           type: 'link',
-          href: '/3k-docs/release-orchestration',
+          href: '/docs/release-orchestration',
           label: 'Release Orchestration',
           className: 'sidebar-rm',
 
@@ -97,7 +97,7 @@ const sidebars: SidebarsConfig = {
         // Database DevOps Landing Page
         {
           type: 'link',
-          href: '/3k-docs/database-devops',
+          href: '/docs/database-devops',
           label: 'Databases',
           className: 'sidebar-dbdevops',
 
@@ -108,7 +108,7 @@ const sidebars: SidebarsConfig = {
         // Infrastructure as Code Landing Page
         {
           type: 'link',
-          href: '/3k-docs/infrastructure-as-code-management',
+          href: '/docs/infrastructure-as-code-management',
           label: 'Infrastructure',
           className: 'sidebar-iacm',
 
@@ -119,8 +119,8 @@ const sidebars: SidebarsConfig = {
         // Feature Management & Experimentation Landing Page
         {
           type: 'link',
-          href: '/3k-docs/feature-management-experimentation',
-          label: 'Feature Releases',
+          href: '/docs/feature-management-experimentation',
+          label: 'Feature Management & Experimentation',
           className: 'sidebar-fme',
 
           customProps: {
@@ -131,7 +131,7 @@ const sidebars: SidebarsConfig = {
         {
           type: 'link',
           href: '/docs/feature-flags',
-          label: 'Feature Releases Classic',
+          label: 'Feature Flags',
           className: 'sidebar-ff',
 
           customProps: {
@@ -142,7 +142,7 @@ const sidebars: SidebarsConfig = {
         // Cloud Cost Management Landing Page
         {
           type: 'link',
-          href: '/3k-docs/cloud-cost-management',
+          href: '/docs/cloud-cost-management',
           label: 'Cloud Costs',
           className: 'sidebar-ccm',
 
@@ -153,7 +153,7 @@ const sidebars: SidebarsConfig = {
         // AI Security Landing Page
         {
           type: 'link',
-          href: '/3k-docs/ai-security',
+          href: '/docs/ai-security',
           label: 'AI Security',
           className: 'sidebar-aisec',
 
@@ -164,7 +164,7 @@ const sidebars: SidebarsConfig = {
         // API and Application Discovery Page
         {
           type: "link",
-          href: "/3k-docs/appsec-discovery",
+          href: "/docs/appsec-discovery",
           label: "API & Application Discovery",
           className: "sidebar-asp",
 
@@ -175,7 +175,7 @@ const sidebars: SidebarsConfig = {
         // Application and API Runtime Protection Page
         {
           type: "link",
-          href: "/3k-docs/appsec-runtime-protection",
+          href: "/docs/appsec-runtime-protection",
           label: "Runtime Protection",
           className: "sidebar-arp",
 
@@ -186,7 +186,7 @@ const sidebars: SidebarsConfig = {
         // Application and API Security Testing Page
         {
           type: "link",
-          href: "/3k-docs/appsec-security-testing",
+          href: "/docs/appsec-security-testing",
           label: "Application & API Security Testing",
           className: "sidebar-ast",
 
@@ -197,7 +197,7 @@ const sidebars: SidebarsConfig = {
         // Security Testing Orchestration Landing Page
         {
           type: 'link',
-          href: '/3k-docs/security-testing-orchestration',
+          href: '/docs/security-testing-orchestration',
           label: 'Security Tests',
           className: 'sidebar-sto',
 
@@ -208,7 +208,7 @@ const sidebars: SidebarsConfig = {
         // SCS
         {
           type: 'link',
-          href: '/3k-docs/software-supply-chain-assurance',
+          href: '/docs/software-supply-chain-assurance',
           label: 'Supply Chain Security',
           className: 'sidebar-ssca',
 
@@ -218,7 +218,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'link',
-          href: '/3k-docs/sast-and-sca',
+          href: '/docs/sast-and-sca',
           label: 'SAST and SCA',
           className: 'sidebar-qwietai',
 
@@ -228,7 +228,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'link',
-          href: '/3k-docs/resilience-testing',
+          href: '/docs/resilience-testing',
           label: 'Resilience Tests',
           className: 'sidebar-rt',
           customProps: {
@@ -247,8 +247,8 @@ const sidebars: SidebarsConfig = {
         // AI SRE Landing Page
         {
           type: 'link',
-          href: '/3k-docs/ai-sre',
-          label: 'Incidents',
+          href: '/docs/ai-sre',
+          label: 'AI SRE',
           className: 'sidebar-aisre',
           customProps: {
             description: 'Get started with Harness AI SRE',
@@ -257,7 +257,7 @@ const sidebars: SidebarsConfig = {
         // SCS
         {
           type: 'link',
-          href: '/3k-docs/internal-developer-portal',
+          href: '/docs/internal-developer-portal',
           label: 'Developer Portal',
           className: 'sidebar-idp',
 
@@ -268,7 +268,7 @@ const sidebars: SidebarsConfig = {
         // SEI
         {
           type: 'link',
-          href: '/3k-docs/software-engineering-insights',
+          href: '/docs/software-engineering-insights',
           label: 'Engineering Insights',
           className: 'sidebar-sei',
 
@@ -280,7 +280,7 @@ const sidebars: SidebarsConfig = {
         // Harness Solutions Factory Landing Page
         {
           type: 'link',
-          href: '/3k-docs/harness-solutions-factory',
+          href: '/docs/harness-solutions-factory',
           label: 'Harness Solutions Factory',
           className: 'sidebar-hsf',
 
@@ -1345,7 +1345,7 @@ const sidebars: SidebarsConfig = {
   aitestautomation: [
     {
       type: 'category',
-      label: 'UI Tests',
+      label: 'AI Test Automation',
       className: 'sidebar-ata',
       link: {
         type: 'doc',

@@ -8,9 +8,7 @@ sidebar_position: 3
 A retention rule protects matching artifacts from all deletion types, including cleanup rules, manual soft delete, and manual hard delete. Retention rules are always evaluated first, regardless of rule order.
 
 :::warning Protection applies to all deletion types
-
 Any artifact that matches a retention rule cannot be deleted by any method. This includes scheduled cleanup rules, manual soft delete from the UI, and manual hard delete. To delete a protected artifact, you must first remove or disable the retention rule protecting it.
-
 :::
 
 ---

@@ -199,7 +199,6 @@ Each imported Bitbucket repository is registered with:
 * **Type:** `service`
 * **Scope:** The Harness account the integration belongs to
 
-
 Open any entity to view Bitbucket-sourced data directly on the entity details page. This data is displayed through two dedicated UI components: one on the **Overview** tab and a **Bitbucket Cloud** tab. Both require a one-time layout configuration, described in the [next section](#layout-for-bitbucket-cloud-components).
 
 <DocImage path={require('./static/bb-catalog-entity.gif')} />
