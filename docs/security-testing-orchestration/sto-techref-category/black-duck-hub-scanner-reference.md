@@ -19,11 +19,11 @@ You can scan your repositories and container images using [Black Duck Hub](https
 
 ## Important notes for running Black Duck Hub scans in STO
 
+- **Container image scans:** Black Duck container scans require a [Docker-in-Docker background step](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#configuring-docker-in-docker-dind-for-your-pipeline) when you run them on Kubernetes or Docker build infrastructures.
+  - **DinD image:** Set the Background step image to `docker:24-dind`. Black Duck Detect Docker Inspector aligns its parser with Docker versions 20.0.x through 24.0.x. Go to [Supported image formats](https://docs.blackduck.com/r/detect/11.5.0/black-duck-detect/supported-image-formats.html) in the Black Duck Detect documentation to review image format requirements and Docker version compatibility.
+  - **Tar file scans:** If you scan a local OCI or Docker archive (`.tar`), create the archive with Docker 24.0.x or another version in the 20.0.x through 24.0.x range.
 
-- You need to add a [Docker-in-Docker background step](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#configuring-docker-in-docker-dind-for-your-pipeline) to scan container images on Kubernetes or Docker build infrastructures. 
-  - Blackduck only supports scanning older images, so the Docker-in-Docker step must be compatible with the version mentioned in the [BDH support](https://community.synopsys.com/s/article/Black-Duck-docker-inspector-scan-Exception-thrown-while-getting-image-packages-null). If scanning a tar file, ensure it is generated using a Docker version that is compatible with this requirement.
-
-- You can utilize custom STO scan images and pipelines to run scans as a non-root user. For more details, refer [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry).
+- You can utilize custom STO scan images and pipelines to run scans as a non-root user. Go to [Configure your pipeline to use STO images from private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/configure-pipeline-to-use-sto-images-from-private-registry) for setup instructions.
 - STO supports three different approaches for loading self-signed certificates. For more information, refer [Run STO scans with custom SSL certificates](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/ssl-setup-in-sto/#supported-workflows-for-adding-custom-ssl-certificates).
 
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/more-information.md';
