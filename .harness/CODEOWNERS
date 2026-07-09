@@ -168,8 +168,9 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io richard.black@harness.io a
 /docs/platform/approvals/ vishal.vishwaroop@harness.io @anshul-harness navaneeth.kn@harness.io mohit.garg@harness.io @rohitk-h prasad.satam@harness.io @navaneeth akshit.madan@harness.io
 /docs/platform/connectors/ vishal.vishwaroop@harness.io @anshul-harness navaneeth.kn@harness.io mohit.garg@harness.io @rohitk-h prasad.satam@harness.io @navaneeth akshit.madan@harness.io
 
-# AI DevOps Docs
-/docs/platform/harness-ai/ prateek.mittal@harness.io rohan.gupta@harness.iovikram.sahu@harness.io abhishek.thamman@harness.io vishal.vishwaroop@harness.io
+# Harness AI Docs
+/docs/platform/harness-ai/ prateek.mittal@harness.io rohan.gupta@harness.io vikram.sahu@harness.io abhishek.thamman@harness.io vishal.vishwaroop@harness.io austin.lai@harness.io
+/3k-docs/ai/ prateek.mittal@harness.io rohan.gupta@harness.io vikram.sahu@harness.io abhishek.thamman@harness.io vishal.vishwaroop@harness.io austin.lai@harness.io
 
 # IDP Docs
 /docs/internal-developer-portal/ shibam.dhar@harness.io vikyath.harekal@harness.io rashmi.hegde@harness.io sandeepa.kv@harness.io ashok.nayak@harness.io
