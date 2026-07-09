@@ -78,10 +78,9 @@ Once you have created an account, you can begin creating organizations and proje
 
     The new organization settings appear.
 
-<div style={{textAlign: 'center'}}>
-  <DocImage path={require('./static/acc-3.png')} width="80%" height="60%" title="Click to view full size image" /> </div>
 
-3. In **Name**, enter a name for your organization. Enter **Description**, and <a href="/docs/platform/references/tags-reference" target="_blank">tags</a> for your new org. Click **Save and Continue**.
+3. In **Name**, enter a name for your organization. Enter **Description**, and <a href="/docs/platform/references/tags-reference" target="_blank">Tags</a> for your new org.
+Click **Save and Continue**.
 
     The organization is created and you can now invite collaborators.
 
@@ -101,7 +100,8 @@ The org and any projects added to the org are used by their members only.
   <DocImage path={require('./static/invite-collab.png')} width="80%" height="60%" title="Click to view full size image" /> </div>
 
 2. Select **Invite People to Collaborate**, type a member's name and select it.
-3. In **Role**, select the role the member will have in this org, such as Organization Admin or Organization Member.
+3. In **Role**, select the role the member will have in this org, such as Organization Admin or Organization Member.  
+You can select multiple people and assign **Role**.
 
 <div style={{textAlign: 'center'}}>
   <DocImage path={require('./static/create-an-organization-02.png')} width="80%" height="60%" title="Click to view full size image" /> </div>
@@ -116,28 +116,25 @@ The org and any projects added to the org are used by their members only.
 
     The org is added to the list under **Organizations**.
 
-<div style={{textAlign: 'center'}}>
-  <DocImage path={require('./static/projects-and-organizations-05.png')} width="80%" height="60%" title="Click to view full size image" /> </div>
 
 
 #### Create a project
 
 You can create projects from the **Projects** section or from within the organization. You will set up user permissions in the next step.
 
-The following steps show you how to create a project from the **Projects** section.
+The following steps show you how to create a project from the **Project** section:
 
-1. In Harness, go to **Home** and click **Projects**.
-2. Click **+Project**.
-3. Name the project, and select a color. Harness automatically generates the project ID. See <a href="/docs/platform/references/harness-entity-reference" target="_blank">Harness Entity Reference</a>.
+1. Click Projects and click **+New Project**.
+
+2. Name the project, and select a color(default-blue). Harness automatically generates the project ID. See <a href="/docs/platform/references/harness-entity-reference" target="_blank">Harness Entity Reference</a>.
 4. In **Organization**, select the org you created.
-5. Add a description and tags, and then click **Save and Continue** to create the project.
+5. Add a Description and Tags if required.
+6. Click **Save and Continue**.
 
 To invite collaborators, follow the steps from [Invite Collaborators](#invite-collaborators).
 
-The project you created will be listed under **Projects**.
+The project will be listed under **Projects**.
 
-<div style={{textAlign: 'center'}}>
-  <DocImage path={require('./static/projects-and-organizations-06.png')} width="80%" height="60%" title="Click to view full size image" /> </div>
 
 You can create additional organizations and projects to represent your business units and product development initiatives.
 
