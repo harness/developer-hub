@@ -200,6 +200,14 @@ When using tests splitting, Intelligence Mode must be enabled.
 
 :::
 
+:::warning Matrix looping strategy not supported
+
+The Test step does not support the [matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism). Using the Test step inside a matrix produces undefined behavior and is not a supported configuration.
+
+If you need matrix looping to run different services or modules in parallel, use the [Run step](/docs/continuous-integration/use-ci/run-step-settings) instead.
+
+:::
+
 For example:
 
 ```yaml
