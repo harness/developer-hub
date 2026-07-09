@@ -175,6 +175,10 @@ Pipelines fails if a variable's default value starts with `*`. This includes run
 
 Use allowed values to provide a fixed range of acceptable values for a runtime input.
 
+:::info note
+By design, Harness applies validation (such as allowed values or regex) only when you provide a value, not when you leave a runtime input empty. This allows you to skip non-required inputs. To enforce a non-empty value, go to [Add a Variable](/docs/platform/variables-and-expressions/add-a-variable) to define a variable and mark it as required.
+:::
+
 <Tabs>
   <TabItem value="Visual" label="Visual" default>
 
