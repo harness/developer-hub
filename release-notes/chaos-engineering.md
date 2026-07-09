@@ -24,9 +24,31 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 ### New features and enhancements
 
-#### Version 1.92.0
+#### Version 1.93.0
 
 <details open>
+<summary>Required images</summary>
+
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
+
+- harness/chaos-ddcr:1.93.0
+- harness/chaos-ddcr-faults:1.93.0
+- harness/chaos-log-watcher:1.93.0
+- harness/service-discovery-collector:0.73.0
+
+</details>
+
+- Added variables and expression support for load tests, so you can parameterize a load test with variables and reference them through expressions instead of hardcoding values. This makes a single load test reusable across environments and workloads.
+- Added a Composite Load Test stage in the pipeline, with UI updates that let you configure and run multiple load tests together as part of a single stage.
+- Simplified the Load Test Studio to reduce the number of steps needed to author a load test, with a clearer form layout for configuring the framework, script, image, and workload.
+- Updated the built-in Locust and k6 sample load tests so the starting examples reflect current script and configuration formats.
+- Added a recommendation agent that suggests relevant chaos experiments and next actions based on your services and past runs.
+- Added bulk service onboarding, including a new API to onboard multiple services in a single request and the frontend to drive it. You can now onboard many services at once instead of one at a time.
+- Updated the service onboarding APIs to respect the `CHAOS_RISK_SERVICES_ENABLED` feature flag, so risk service onboarding is enabled only for accounts that have the flag turned on.
+
+#### Version 1.92.0
+
+<details>
 <summary>Required images</summary>
 
 Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
@@ -48,6 +70,11 @@ Listed below are the images to download to use [image registry with Harness Dele
 - Added an abort trigger when a remote resource times out
 
 ### Fixed issues
+
+#### Version 1.93.0
+
+- Fixed critical and high severity vulnerabilities in `golang.org/x/crypto/ssh` and `golang.org/x/crypto/ssh/agent` used by chaos-manager
+- Upgraded chaos-manager, hce-saas, machine-chaos, linux-chaos, chaos-ddcr, and chaos-ddcr-faults to Go 1.26 to pick up the latest runtime and security fixes
 
 #### Version 1.92.0
 
