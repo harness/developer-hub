@@ -40,6 +40,16 @@ These release notes describe recent changes to Harness Infrastructure as Code Ma
 </HarnessApiData>
 ::: -->
 
+## July 2026
+
+### New features and enhancements
+
+- **[Module Version Lifecycle Management](/docs/infra-as-code-management/registry/module-registry/module-version-lifecycle-management) (Beta):** Previously, all module versions in the IaCM Module Registry were treated as supported with no enforcement. You can now configure a lifecycle rule on a module that automatically classifies each version as **Supported**, **Update Required**, or **Deprecated** based on how recent it is. To configure a rule, select a module in the IaCM Module Registry and open the **Lifecycle Management** tab. Contact [Harness Support](mailto:support@harness.io) to enable it.
+
+  ![Lifecycle Management tab](./static/iacm-version-lifecycle-management.png)
+
+---
+
 ## April 2026
 
 ### New features and enhancements

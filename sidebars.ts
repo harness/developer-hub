@@ -1839,6 +1839,7 @@ const sidebars: SidebarsConfig = {
               className: 'sidebar-item-beta',
             },
             'infra-as-code-management/registry/module-registry/module-registry-testing',
+            'infra-as-code-management/registry/module-registry/module-version-lifecycle-management',
           ],
         },
         "infra-as-code-management/registry/provider-registry",
