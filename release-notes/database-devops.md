@@ -152,6 +152,7 @@ The `1.97.x` release improves usability and consistency across database change e
 
 * **Feature Enhancements**
   - Enhanced tagging behavior for database changesets, improving consistency and traceability during migration workflows.
+  - Added `DBOPS_PLUGIN_LARGE_LOGS_SUPPORT` flag, this has no impact on normal execution, but without it certain failure scenarios may occur due to an intermittent limitation with output environment variables. When enabled, step responses are sent via API instead of output environment variables, and the dependency on parsing plugin step logs is removed, allowing you to enable fine or debug logging on the Drone plugin.
   - Added `DBOPS_LIQUIBASE_CONSOLIDATED_EXECUTION` flag that runs multiple commands inside the same container during execution of the apply step. From an end-user standpoint this will result in the Apply step having 3 containers running liquibase (pre apply, apply, and post-apply) instead of 7+. 
 
     :::info
