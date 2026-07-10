@@ -1,7 +1,7 @@
 ---
 title: Example Ansible Use Cases
 description: Apply Harness IaCM Ansible integration to web fleets, database patching, multi-environment configuration, Kubernetes node bootstrap, and compliance hardening.
-sidebar_label: Example Use Cases
+sidebar_label: Use Cases
 keywords:
   - ansible
   - IaCM
@@ -12,7 +12,9 @@ tags:
   - iacm
   - ansible
   - configuration
-sidebar_position: 30
+sidebar_position: 10
+redirect_from:
+  - /docs/infra-as-code-management/configuration-management/ansible/example-use-cases
 ---
 
 import { FAQ } from '@site/src/components/AdaptiveAIContent';

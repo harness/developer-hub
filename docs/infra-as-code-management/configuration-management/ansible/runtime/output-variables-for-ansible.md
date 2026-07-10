@@ -10,7 +10,9 @@ keywords:
 tags:
   - Configuration Management
   - Ansible
-sidebar_position: 80
+sidebar_position: 20
+redirect_from:
+  - /docs/infra-as-code-management/configuration-management/ansible/output-variables-for-ansible
 ---
 
 Output variables allow you to export data from Ansible playbook execution to other steps in the stage or anywhere in the pipeline. This page explains how to configure output variables for Ansible playbooks in Harness.
@@ -125,4 +127,4 @@ After running the playbook above, you can reference the `REMOTE_OS` variable in 
 
 ## Related concepts
 
-- [Managing large outputs](/docs/infra-as-code-management/configuration-management/ansible/managing-large-outputs): Understand output truncation and file export.
+- [Managing large outputs](/docs/infra-as-code-management/configuration-management/ansible/runtime/managing-large-outputs): Understand output truncation and file export.

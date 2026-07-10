@@ -1,7 +1,9 @@
 ---
 title: Managing large Ansible outputs
-sidebar_label: Managing Large Outputs
+sidebar_label: Manage Large Outputs
 description: Understand how the Ansible plugin manages large playbook outputs through truncation and file export.
+
+sidebar_position: 100
 
 tags:
   - ansible
@@ -13,7 +15,7 @@ tags:
   - Ansible
 ---
 
-import Iacm from '@site/docs/infra-as-code-management/configuration-management/ansible/managing-large-outputs.md';
+import Iacm from '@site/docs/infra-as-code-management/configuration-management/ansible/runtime/managing-large-outputs.md';
 
 <Iacm />
 

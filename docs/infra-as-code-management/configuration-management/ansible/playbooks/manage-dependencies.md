@@ -15,10 +15,11 @@ tags:
   - iacm
   - ansible
   - python
-sidebar_position: 50
+sidebar_position: 20
 redirect_from:
   - /docs/infra-as-code-management/configuration-management/ansible/python-requirements
   - /docs/infra-as-code-management/configuration-management/ansible/custom-images
+  - /docs/infra-as-code-management/configuration-management/ansible/manage-dependencies
 ---
 
 import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelector/DynamicMarkdownSelector';
@@ -98,6 +99,6 @@ Before you begin, make sure the following are in place:
 
 You now understand how to provide dependencies to Ansible playbooks in Harness IaCM. You can install packages at runtime using requirements.txt for flexibility, or pre-install them in a custom image for faster execution.
 
-- Go to [Example Ansible use cases](/docs/infra-as-code-management/configuration-management/ansible/example-use-cases) to apply these patterns to web fleets, rolling patches, and multi-environment configurations.
-- Go to [Managing large outputs](/docs/infra-as-code-management/configuration-management/ansible/managing-large-outputs) to handle verbose Ansible output.
-- Go to [Variable files](/docs/infra-as-code-management/configuration-management/ansible/variable-files) to organize configuration by environment, host group, or role.
+- Go to [Example Ansible use cases](/docs/infra-as-code-management/configuration-management/ansible/examples/example-use-cases) to apply these patterns to web fleets, rolling patches, and multi-environment configurations.
+- Go to [Managing large outputs](/docs/infra-as-code-management/configuration-management/ansible/runtime/managing-large-outputs) to handle verbose Ansible output.
+- Go to [Variable files](/docs/infra-as-code-management/configuration-management/ansible/examples/variable-files) to organize configuration by environment, host group, or role.

@@ -11,7 +11,9 @@ keywords:
 tags:
   - Configuration Management
   - Ansible
-sidebar_position: 70
+sidebar_position: 10
+redirect_from:
+  - /docs/infra-as-code-management/configuration-management/ansible/managing-large-outputs
 ---
 
 import { FAQ } from '@site/src/components/AdaptiveAIContent';
@@ -29,7 +31,7 @@ Ansible execution results are available in multiple locations:
 - **Playbook/Inventory Activity History:** Historical execution data
 - **Host View:** Per-host task results and status
 - **Custom Export:** Full output to file. Go to [Export full output to file](#export-full-output-to-file) to configure file-based output.
-- **Output Variables:** Export data for use in subsequent pipeline steps. Go to [Output variables for Ansible](/docs/infra-as-code-management/configuration-management/ansible/output-variables-for-ansible) to configure output variables.
+- **Output Variables:** Export data for use in subsequent pipeline steps. Go to [Output variables for Ansible](/docs/infra-as-code-management/configuration-management/ansible/runtime/output-variables-for-ansible) to configure output variables.
 
 ---
 
@@ -218,4 +220,4 @@ Summary payload size: 82.45 KB (original: 25.80 MB)
 
 ## Related concepts
 
-- [Output variables for Ansible](/docs/infra-as-code-management/configuration-management/ansible/output-variables-for-ansible): Export data from playbooks to other pipeline steps.
+- [Output variables for Ansible](/docs/infra-as-code-management/configuration-management/ansible/runtime/output-variables-for-ansible): Export data from playbooks to other pipeline steps.

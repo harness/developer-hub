@@ -1,0 +1,14 @@
+{
+  "label": "Inventories",
+  "position": 30,
+  "collapsible": true,
+  "collapsed": true,
+  "className": "default",
+  "link": {
+    "type": "doc",
+    "id": "infra-as-code-management/configuration-management/ansible/inventories/inventories"
+  },
+  "customProps": {
+    "helpdocs_category_id": ""
+  }
+}

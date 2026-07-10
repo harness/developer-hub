@@ -28,7 +28,7 @@ This guide walks you through registering an inventory, attaching a Git-backed pl
 - **Playbooks:** Register a playbook from Git so Harness can fetch it at pipeline run time.
 - **Pipelines:** Add the `IACMAnsiblePlugin` step to an **IACM** stage with your playbooks and inventories.
 
-For step-by-step patterns such as web fleet configuration or rolling patches, continue to [Example Ansible use cases](/docs/infra-as-code-management/configuration-management/ansible/example-use-cases) after you finish this guide.
+For step-by-step patterns such as web fleet configuration or rolling patches, continue to [Example Ansible use cases](/docs/infra-as-code-management/configuration-management/ansible/examples/example-use-cases) after you finish this guide.
 
 ---
 
@@ -64,13 +64,13 @@ To create a new inventory, do the following:
 
 1. In the Harness UI, navigate to the **IaCM** module.
 2. In the left sidebar under **Configuration**, select **Inventories**.
-3. Click **+ New Inventory**. The **Create an Inventory** dialog opens.
+3. Select **+ New Inventory**. The **New Inventory** dialog opens.
 4. Enter a **Name** for your inventory. An Id is auto-generated.
 5. Under **How do you want to set up the inventory?**, select one of the three types:
-   - **Static** — Define a list of hosts manually.
-   - **Dynamic** — Derive hosts dynamically from different sources (for example, a Terraform or OpenTofu workspace).
-   - **Plugin** — Use Ansible inventory plugins to populate hosts.
-6. Click **Save**.
+   - **Static**: Define a list of hosts and groups manually.
+   - **Dynamic**: Derive hosts dynamically from different sources (for example, a Terraform or OpenTofu workspace).
+   - **Plugin**: Use an Ansible plugin to fetch hosts from a provider. This adds **Source** and **Provider** steps to the dialog. Go to [Create Ansible inventories](/docs/infra-as-code-management/configuration-management/ansible/inventories) to complete the plugin steps.
+6. Select **Create**.
 
 After saving, you land directly on the inventory's **Hosts** tab.
 
@@ -78,29 +78,46 @@ After saving, you land directly on the inventory's **Hosts** tab.
 Choose **Dynamic** when your infrastructure is provisioned by Terraform or OpenTofu — Harness will automatically resolve hosts from workspace outputs, so you never need to manually update host lists as your infrastructure scales. Choose **Plugin** when you want to use an existing Ansible inventory plugin (for example, `aws_ec2` or `azure_rm`) that your team already maintains.
 :::
 
+#### Step 1.1: Define SSH credentials as variables
+
+Harness authenticates to your hosts with the connection credentials you define as inventory variables. Without them, the playbook run reaches the host but cannot log in to execute tasks.
+
+To define SSH credentials, do the following:
+
+1. On the inventory's **Variables** tab, click **+ Variables**.
+2. Add a **String** variable with the key `ansible_user` and the login user as the value (for example, `ubuntu` or `ec2-user`).
+3. Add a **Secret** variable with the key `ansible_ssh_private_key_file` and select the [Harness secret](/docs/platform/secrets/add-use-text-secrets) that holds your SSH private key. Harness resolves the secret at run time and wires the key to Ansible; the private key never appears in logs.
+4. Click **Save Changes**.
+
+Variables defined at the inventory level apply to every host in the inventory. To use different credentials for one machine or tier, define the same keys as host or group variables instead; they take precedence. Go to [Manage hosts and groups](/docs/infra-as-code-management/configuration-management/ansible/inventories/hosts) for variable precedence.
+
+:::info
+Windows hosts authenticate over WinRM instead of SSH. Go to [Connect Windows hosts over WinRM](/docs/infra-as-code-management/configuration-management/ansible/examples/example-use-cases#use-case-7-connect-windows-hosts-over-winrm) for the connection variables.
+:::
+
 ---
 
 ### Step 2: Configure an inventory
 
-Once created, you configure your inventory using three tabs: **Hosts**, **Variables**, and **Activity History**.
+Once created, you configure your inventory using four tabs: **Hosts**, **Variables**, **Activity History**, and **Configuration**. Go to [Manage hosts and groups](/docs/infra-as-code-management/configuration-management/ansible/inventories/hosts) to explore the full host and group workflow.
 
-#### Add groups and hosts
+#### Add hosts and groups
 
-The **Hosts** tab uses a two-column layout: groups appear in the left panel, and the hosts belonging to the selected group appear on the right. You can add groups and hosts in any order.
-
-Groups let you target multiple hosts with a single playbook directive. To add a group, do the following:
-
-1. In the **Hosts** tab, click **+ New Group**. A **Group Configuration** panel slides in from the right.
-2. Enter a **Group name**.
-3. Optionally, select any existing hosts that belong to this group using the **Select hosts that belong to this group** search.
-4. Click **Apply Changes**.
+The **Hosts** tab uses a two-column layout: groups appear in the left panel, and the hosts belonging to the selected group appear on the right. You can add hosts and groups in any order.
 
 Hosts are the individual machines your playbooks will configure. To add a host, do the following:
 
-1. Click **+ New Host**. A **Host Configuration** panel slides in from the right.
+1. In the **Hosts** tab, select **+ New Host**. A **Host Configuration** panel slides in from the right.
 2. Enter the **Host Address** (for example, `web1.example.com` or `10.0.1.25`).
 3. Optionally, use **Select groups (optional)** to assign the host to one or more existing groups.
-4. Click **Apply Changes**.
+4. Select **Apply Changes**.
+
+Groups let you target multiple hosts with a single playbook directive. To add a group, do the following:
+
+1. Select **+ New Group**. A **Group Configuration** panel slides in from the right.
+2. Enter a **Group name**.
+3. Optionally, select any existing hosts that belong to this group using the **Select hosts that belong to this group** search.
+4. Select **Apply Changes**.
 
 :::info
 For **Static** inventories, you enter host addresses manually. For **Dynamic** inventories, hosts are populated automatically from linked sources. You can still add groups and variables manually for dynamic inventories. For **Plugin** inventories, host population is driven by the plugin configuration.
@@ -130,24 +147,23 @@ These are immediately usable in your playbook tasks without any manual configura
 
 #### Filter hosts in dynamic inventories
 
-When using a dynamic inventory, you can filter which hosts are included based on attribute values. This is useful when you only want to target a subset of provisioned infrastructure — for example, only production web servers in a specific region.
+When using a dynamic inventory, you can filter which resources become hosts based on attribute values. This is useful when you only want to target a subset of provisioned infrastructure, for example, only production web servers in a specific region.
 
-From a host's **Configuration** tab, you can add filters with the following logic:
-
-- **Contains:** Include hosts where a field contains a specific string.
-- **Does not contain:** Exclude hosts where a field contains a specific string.
+From a source's **Source Configuration** panel, select **Add Filter** and build conditions from an attribute, an operator, and a value. The supported operators are **equals**, **not equals**, **contains**, **does not contain**, **starts with**, and **ends with**. Multiple filters combine with AND logic.
 
 Some common filter examples are:
 
-- **Environment filter:** Only include hosts where `Name` contains `prod` (for example, `prod-web1`, `prod-db1`).
-- **Role filter:** Exclude hosts where the `tags` field does not contain `webserver`.
-- **Region filter:** Only include hosts where `availability_zone` contains `us-east-1`.
+- **Environment filter:** Only include hosts where `tags.Name` contains `prod` (for example, `prod-web1`, `prod-db1`).
+- **Role filter:** Only include hosts where `tags.Role` equals `webserver`.
+- **Region filter:** Only include hosts where `availability_zone` starts with `us-east-1`.
+
+Go to [Create Ansible inventories](/docs/infra-as-code-management/configuration-management/ansible/inventories) to configure dynamic sources and filters in full.
 
 #### Add variables
 
 Variables let you pass configuration values into your playbooks at runtime. In the **Variables** tab, variables are added as inline rows. Do the following:
 
-1. Click **+ Add Variable**. A new row appears.
+1. Click **+ Variables**. A new variable row appears.
 2. In the first column, select the variable type from the dropdown: **string** (for plain-text values) or **secret** (for sensitive values like passwords and tokens).
 3. Enter the variable **key** in the second column.
 4. Enter the variable **value** in the third column.
@@ -161,7 +177,7 @@ Variables defined here are available directly in your playbook tasks. For exampl
 
 #### View activity history
 
-The **Activity History** tab shows a log of all past executions against this inventory — including which playbook ran, when it ran, and whether it succeeded or failed. Use this for auditing and debugging.
+The **Activity History** tab shows a log of all past executions against this inventory, including which playbook ran, when it ran, and whether it succeeded or failed. Use this for auditing and debugging.
 
 ---
 
@@ -172,17 +188,17 @@ A playbook describes the automation tasks to apply to your inventory. Playbooks 
 To create a new playbook, do the following:
 
 1. In the **IaCM** module, navigate to **Playbooks** in the left sidebar under **Configuration**.
-2. Click **+ New Playbook**. The **Create Playbook** dialog opens.
+2. Select **+ New Playbook**. The **Create Playbook** dialog opens.
 3. Enter a **Name** for the playbook.
 4. Under **Repository**, configure the Git source:
    - **Select Git Provider:** Choose **Harness Code Repository** or **Third-party Git provider**.
    - **Git Connector:** Select the connector with access to your repository.
    - **Git Fetch Type:** Select how to fetch the code — for example, **Latest from Branch**.
    - **Git Branch:** Select or type the branch name.
-   - **Folder Path (optional):** Enter a path within the repository if your playbook is not in the root.
+   - **File Path:** Enter the path to the playbook file within the repository, for example `site.yml`.
 5. Click **Save**.
 
-Your playbook is now registered in Harness and ready to be used in a pipeline.
+Your playbook is now registered in Harness and ready to be used in a pipeline. Go to [Create Ansible playbooks](/docs/infra-as-code-management/configuration-management/ansible/playbooks) to add playbook variables and install Ansible Galaxy dependencies from a requirements file.
 
 :::info
 Harness does not store or modify playbook content — it reads directly from your Git repository at pipeline execution time. This means your playbooks follow your standard Git workflows: pull requests, code review, and versioned releases.
@@ -254,26 +270,33 @@ web1.example.com : ok=5    changed=3    unreachable=0    failed=0
 
 ### Step 4: Integrate Ansible with a pipeline
 
-Harness pipelines connect inventories and playbooks so you can run Ansible automation as part of your CI/CD workflows. The `IACMAnsiblePlugin` step handles execution — it runs your Ansible container, resolves the inventory, fetches the playbook from Git, and streams output to the pipeline logs.
+Harness pipelines connect inventories and playbooks so you can run Ansible automation as part of your CI/CD workflows. The `IACMAnsiblePlugin` step handles execution: it runs your Ansible container, resolves the inventory, fetches the playbook from Git, and streams output to the pipeline logs.
+
+Use the **Step-by-step** tab to add Ansible to a pipeline stage in the UI, or the **YAML** tab to define the stage in pipeline YAML.
+
+<Tabs>
+<TabItem value="step-by-step" label="Step-by-step" default>
 
 To add Ansible to a pipeline stage, do the following:
 
 1. Navigate to **Pipelines** in the left sidebar.
-2. Open an existing pipeline or click **+ New Pipeline**.
-3. Add a new stage of type **IACM**.
-4. Under **Infrastructure**, select **Kubernetes Direct** and choose your delegate connector and namespace.
-5. In the **Execution** tab, click **Add Step**.
-6. Select the step type **IACMAnsiblePlugin**.
-7. Configure the step with the following fields:
-   - **Name:** A descriptive label (for example, `Run Ansible Configuration`).
-   - **Command:** Set to `run`.
-   - **Playbooks:** Select one or more registered playbooks to run.
-   - **Inventories:** Select one or more registered inventories to target.
+2. Open an existing pipeline or click **+ Create Pipeline**.
+3. Add a new stage of type **IACM**. The stage wizard has five tabs: **Overview**, **Infrastructure**, **Input**, **Execution**, and **Advanced**.
+4. On the **Infrastructure** tab, select **Kubernetes**, then select the operating system, your **Kubernetes Cluster** connector, and the namespace.
+5. On the **Input** tab, select the **Configure Infrastructure** (Ansible) card, then select the **Playbooks** and **Inventory** to run. Playbooks and inventories belong to the stage, not to the step.
+6. On the **Execution** tab, click **Add Step** and select **IACM Ansible Plugin**.
+7. Configure the step parameters:
+   - **Name:** A descriptive label (for example, `Run Playbook`).
+   - **Timeout:** Increase for long-running playbooks (for example, `1h`).
+   - **Command:** Select **Run**.
 
-   Optional overrides (defaults apply if you leave them unchanged): container **image**, **image pull policy**, and **timeout**.
+   To run with a custom container image, set `image` and `connectorRef` on the step in the pipeline YAML. Go to [Manage playbook dependencies](/docs/infra-as-code-management/configuration-management/ansible/playbooks/manage-dependencies) to build and reference custom images.
 8. Click **Apply Changes**, then **Save** the pipeline.
 
-**Full pipeline YAML example:**
+</TabItem>
+<TabItem value="yaml" label="YAML">
+
+Add an **IACM** stage with the `IACMAnsiblePlugin` step, playbooks, and inventories:
 
 ```yaml
 - stage:
@@ -306,12 +329,18 @@ To add Ansible to a pipeline stage, do the following:
               identifier: Run
               spec:
                 command: run
-              playbooks:
-                - test-playbook
-              inventories:
-                - test-inventory
+                timeout: 1h
+      playbooks:
+        - test-playbook
+      inventories:
+        - test-inventory
     tags: {}
 ```
+
+To run with a custom container image, set `image` and `connectorRef` on the step. Go to [Manage playbook dependencies](/docs/infra-as-code-management/configuration-management/ansible/playbooks/manage-dependencies) to build and reference custom images.
+
+</TabItem>
+</Tabs>
 
 **How it works:**
 
@@ -359,7 +388,7 @@ To run Ansible configuration immediately after a Terraform/OpenTofu apply, chain
 
 :::info Limitations
 - Dynamic inventories support Terraform and OpenTofu workspaces. Other inventory plugin types (AWS EC2, Azure, GCP) require the Plugin inventory type.
-- Pipeline step timeout defaults to 30 minutes. Long-running playbooks may require a custom timeout value.
+- Long-running playbooks may require a higher **Timeout** value on the `IACMAnsiblePlugin` step (for example, `1h`).
 - The delegate must have network connectivity to all target hosts on the ports your playbooks require (typically SSH port 22).
 :::
 
@@ -369,7 +398,7 @@ To run Ansible configuration immediately after a Terraform/OpenTofu apply, chain
 
 You've connected Ansible inventories and playbooks to your Harness IaCM pipelines and can now automate configuration management as a first-class step in your CI/CD workflows.
 
-- **[Example Ansible use cases](/docs/infra-as-code-management/configuration-management/ansible/example-use-cases)** — Apply these patterns to web fleets, rolling patches, multi-environment configs, Kubernetes worker bootstrap, and compliance hardening.
+- **[Example Ansible use cases](/docs/infra-as-code-management/configuration-management/ansible/examples/example-use-cases)** — Apply these patterns to web fleets, rolling patches, multi-environment configs, Kubernetes worker bootstrap, and compliance hardening.
 - [IaCM Best Practices](/docs/infra-as-code-management/iacm-best-practices/) — Learn recommended patterns for structuring workspaces, pipelines, and configuration at scale.
 - [IaCM Module Registry](/docs/infra-as-code-management/registry/module-registry/module-registry-overview) — Package and reuse your Terraform and OpenTofu modules across projects.
 - [Harness IaCM Upcoming Features](/docs/infra-as-code-management/whats-supported/) — See what's coming next for IaCM, including expanded Ansible support.

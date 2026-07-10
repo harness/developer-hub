@@ -1,5 +1,6 @@
 ---
 title: Overview
+sidebar_label: Overview
 description: Understand how Ansible fits into Harness IaCM, core concepts for newcomers, and how inventories, playbooks, and pipelines work together.
 
 sidebar_position: 10

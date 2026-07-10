@@ -1706,9 +1706,52 @@ const sidebars: SidebarsConfig = {
               items: [
                 'infra-as-code-management/configuration-management/ansible/overview',
                 'infra-as-code-management/configuration-management/ansible/get-started',
-                'infra-as-code-management/configuration-management/ansible/example-use-cases',
-                'infra-as-code-management/configuration-management/ansible/output-variables-for-ansible',
-                'infra-as-code-management/configuration-management/ansible/managing-large-outputs',
+                {
+                  type: 'category',
+                  label: 'Inventories',
+                  link: {
+                    type: 'doc',
+                    id: 'infra-as-code-management/configuration-management/ansible/inventories',
+                  },
+                  collapsed: true,
+                  items: [
+                    'infra-as-code-management/configuration-management/ansible/inventories',
+                    'infra-as-code-management/configuration-management/ansible/hosts',
+                  ],
+                },
+                {
+                  type: 'category',
+                  label: 'Playbooks',
+                  link: {
+                    type: 'doc',
+                    id: 'infra-as-code-management/configuration-management/ansible/playbooks',
+                  },
+                  collapsed: true,
+                  items: [
+                    'infra-as-code-management/configuration-management/ansible/playbooks',
+                    'infra-as-code-management/configuration-management/ansible/manage-dependencies',
+                    'infra-as-code-management/configuration-management/ansible/authenticate-private-collections',
+                  ],
+                },
+                {
+                  type: 'category',
+                  label: 'Examples & Use Cases',
+                  collapsed: true,
+                  items: [
+                    'infra-as-code-management/configuration-management/ansible/example-use-cases',
+                    'infra-as-code-management/configuration-management/ansible/variable-files',
+                  ],
+                },
+                'infra-as-code-management/configuration-management/ansible/opa-policies',
+                {
+                  type: 'category',
+                  label: 'Runtime',
+                  collapsed: true,
+                  items: [
+                    'infra-as-code-management/configuration-management/ansible/managing-large-outputs',
+                    'infra-as-code-management/configuration-management/ansible/output-variables-for-ansible',
+                  ],
+                },
               ],
             },
           ],

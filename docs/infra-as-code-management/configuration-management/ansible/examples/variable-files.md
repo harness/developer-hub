@@ -15,7 +15,9 @@ tags:
   - iacm
   - ansible
   - configuration
-sidebar_position: 40
+sidebar_position: 20
+redirect_from:
+  - /docs/infra-as-code-management/configuration-management/ansible/variable-files
 ---
 
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
@@ -344,6 +346,6 @@ log_level: info
 
 You now understand the three approaches for providing variable files to Ansible playbooks in Harness IaCM. You can store variables alongside your playbook code, alongside dynamic inventory configurations, or maintain them in a dedicated repository.
 
-- Go to [Example Ansible use cases](/docs/infra-as-code-management/configuration-management/ansible/example-use-cases) to apply these patterns to web fleets, rolling patches, and multi-environment configurations.
+- Go to [Example Ansible use cases](/docs/infra-as-code-management/configuration-management/ansible/examples/example-use-cases) to apply these patterns to web fleets, rolling patches, and multi-environment configurations.
 - Go to [Ansible variable precedence documentation](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable) to understand how Ansible resolves conflicts when the same variable is defined in multiple sources.
 - Go to [Ansible inventory guide](https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html) to learn more about organizing host and group variables.

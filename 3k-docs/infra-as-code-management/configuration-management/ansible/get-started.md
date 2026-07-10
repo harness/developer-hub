@@ -1,5 +1,6 @@
 ---
 title: Get Started with Ansible
+sidebar_label: Get Started
 description: Create inventories and playbooks, then run Ansible from an IaCM pipeline using the IACMAnsiblePlugin step.
 
 sidebar_position: 20

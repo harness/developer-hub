@@ -16,7 +16,9 @@ tags:
   - iacm
   - ansible
   - configuration
-sidebar_position: 60
+sidebar_position: 30
+redirect_from:
+  - /docs/infra-as-code-management/configuration-management/ansible/authenticate-private-collections
 ---
 
 import Tabs from '@theme/Tabs';
@@ -491,8 +493,8 @@ ANSIBLE_NETRC=<path-to-existing-.netrc>     # treated as a path, not contents
 
 Explore these related topics to expand your Ansible automation capabilities in Harness IaCM:
 
-- [Manage Playbook Dependencies](/docs/infra-as-code-management/configuration-management/ansible/manage-dependencies): Install Ansible collections and Python packages for your playbooks.
+- [Manage Playbook Dependencies](/docs/infra-as-code-management/configuration-management/ansible/playbooks/manage-dependencies): Install Ansible collections and Python packages for your playbooks.
 - [Get started with Ansible](/docs/infra-as-code-management/configuration-management/ansible/get-started): Configure your first Ansible pipeline in Harness IaCM.
-- [Use Variable Files with Ansible](/docs/infra-as-code-management/configuration-management/ansible/variable-files): Organize configuration by environment, host group, or role.
+- [Use Variable Files with Ansible](/docs/infra-as-code-management/configuration-management/ansible/examples/variable-files): Organize configuration by environment, host group, or role.
 - [Add and reference text secrets](/docs/platform/secrets/add-use-text-secrets): Create and manage secrets in Harness Platform.
 - [Harness secrets management](/docs/platform/secrets/secrets-management/harness-secret-manager-overview): Understand Harness Platform secrets architecture and capabilities.

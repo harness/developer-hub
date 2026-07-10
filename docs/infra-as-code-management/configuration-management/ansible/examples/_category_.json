@@ -1,0 +1,14 @@
+{
+  "label": "Examples & Use Cases",
+  "position": 60,
+  "collapsible": true,
+  "collapsed": true,
+  "className": "default",
+  "link": {
+    "type": "generated-index",
+    "title": "Ansible Examples & Use Cases"
+  },
+  "customProps": {
+    "helpdocs_category_id": ""
+  }
+}
