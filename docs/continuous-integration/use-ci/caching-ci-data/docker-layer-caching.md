@@ -69,6 +69,12 @@ We suggest that you consider setting bucket level retention policy for efficient
 </Tabs>
 
 
+### Build engine
+
+When you enable Docker Layer Caching on a **Build and Push** step, the step uses [BuildKit / Buildx](https://docs.docker.com/build/buildkit/) to build the image and store the cache, instead of the default plugin (Kaniko on Kubernetes cluster build infrastructure, or drone-docker on other infrastructures).
+
+DLC stores cached layers in Harness-managed storage on Harness CI Cloud or in object storage on self-managed build infrastructure. Go to [Object Store for Self-Managed Build Infrastructure](/docs/platform/settings/default-settings#object-store-for-self-managed-build-infrastructure) to configure storage for self-managed infrastructures. This switch happens automatically whenever `caching: true` is set on the step. For self-managed Kubernetes, Buildx requires *privileged mode* on the cluster.
+
 ### Enable Docker Layer Caching
 
 1. If you are *not* using Harness Cloud build infrastructure, you must [configure default object storage (Azure Blob Storage, GCP Cloud Storage, AWS S3, or any S3-compatible storage)](/docs/platform/settings/default-settings.md#continuous-integration) that Harness can use to store and manage caches.

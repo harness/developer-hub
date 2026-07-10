@@ -173,7 +173,11 @@ The [Docker target build stage](https://docs.docker.com/engine/reference/command
 ### Docker layer caching and Remote cache image
 
 There are two ways in which you can leverage Docker Layer Caching:
-**Enable Docker layer caching** (_'caching'_ property) or **Remote cache image** (_'remoteCacheRepo'_ property). Refer to [Enable Docker layer caching for your build](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching.md) to learn more.
+**Enable Docker layer caching** (_'caching'_ property) or **Remote cache image** (_'remoteCacheRepo'_ property). Go to [Enable Docker layer caching for your build](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching.md) to configure either option.
+
+:::info Build engine switch
+When **Enable Docker layer caching** is set on this step, the build switches from the default plugin (Kaniko on Kubernetes cluster build infrastructure, or drone-docker on other infrastructures) to [BuildKit / Buildx](https://docs.docker.com/build/buildkit/). DLC stores the layer cache in Harness-managed storage or your configured object storage. Kaniko-only or drone-docker-only flags are not used while DLC is enabled. Go to [Build engine](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching#build-engine) to review the implications.
+:::
 
 ### Environment Variables (plugin runtime flags)
 
