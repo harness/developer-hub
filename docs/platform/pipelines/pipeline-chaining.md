@@ -22,9 +22,8 @@ Chaining pipelines in Harness offers the following benefits:
 - You need read permissions for the child (chained) pipeline and edit permissions for the parent (primary) pipeline to add a chained pipeline (a pipeline stage) to a pipeline.
 - To manually run chain pipelines, you need execute permissions for the parent and child pipelines to ensure successful execution.
 - If you change the runtime inputs in a chained pipeline, select **Inputs** in the parent pipeline to see the changes.
-- When manually running a pipeline, the pre-flight checks don't validate child pipelines.
-- Pipeline stages (chained pipelines) don't support matrix strategies.
-- Pipeline stages don't support auto-suggested expressions in **Outputs**.
+- When manually running a pipeline, the pre-flight checks do not validate child pipelines.
+- Pipeline stages do not support auto-suggested expressions in **Outputs**.
 - Artifacts, test results, and other output produced by chained pipelines are available in the execution details for the chained pipeline that produced those outputs. This information is not stored in the parent pipeline's execution details.
 - Nested pipeline chaining is not supported. When the referred pipeline invokes a child pipeline, it cannot be included within another pipeline.
 
@@ -32,7 +31,7 @@ Chaining pipelines in Harness offers the following benefits:
 
 To chain pipelines in Harness:
 
-1. Create each [pipeline](../pipelines/add-a-stage.md#step-1-create-a-pipeline) that you want to chain together, including a parent pipeline where you'll link the child pipelines.
+1. Create each [pipeline](../pipelines/add-a-stage.md#step-1-create-a-pipeline) that you want to chain together, including a parent pipeline where you will link the child pipelines.
 2. To chain pipelines, go to the parent pipeline, select **Add Stage**, and then select **Pipeline**.
 
    ![](./static/pipeline-chain-option.png)
@@ -44,6 +43,137 @@ To chain pipelines in Harness:
    In the final chained pipeline stage, you can add concluding steps, such as a **Deploy** step if you need to deploy an application.
 
 6. Harness recommends running the pipeline in a development environment to test it before executing it in production.
+
+---
+
+## Use looping strategies with chained pipelines
+
+You can apply looping strategies (matrix, repeat, and parallelism) to pipeline stages that reference child pipelines. This allows you to run the same child pipeline multiple times with different inputs or configurations in a single parent pipeline execution.
+
+:::note
+
+This feature requires two feature flags to be enabled:
+- `PIPE_ENABLE_STRATEGY_FOR_CHAINED_PIPELINES` - Enables looping strategies for pipeline stages
+- `PIPE_POPULATE_STEP_DETAILS_IN_RUNTIME_ID_FOR_STRATEGY_CHILD_NODES` - Required for UI rendering when a pipeline stage has a loop strategy
+
+Contact [Harness Support](mailto:support@harness.io) to enable these feature flags.
+
+:::
+
+Looping strategies for chained pipelines enable workflows such as:
+
+- Deploying the same application to multiple environments (dev, staging, production) using a matrix strategy
+- Running integration tests across multiple configurations or data sets using a repeat strategy
+- Executing parallel build pipelines for different platforms or versions
+
+### Configure looping strategies for pipeline stages
+
+To add a looping strategy to a pipeline stage that references a child pipeline:
+
+1. In the parent pipeline, select the pipeline stage that references your child pipeline.
+2. In the stage configuration, select the **Advanced** tab.
+3. Under **Looping Strategy**, select the type of strategy you want to apply:
+   - **Matrix**: Run the child pipeline multiple times with different combinations of input values
+   - **Repeat**: Run the child pipeline multiple times iterating over a list of values
+   - **Parallelism**: Run multiple instances of the child pipeline concurrently
+
+4. Configure the strategy parameters based on your selection.
+5. Use expressions to reference the loop variables in the child pipeline inputs.
+
+When you run the parent pipeline, Harness creates multiple instances of the child pipeline stage according to your looping strategy configuration and executes them based on the strategy type.
+
+### Matrix strategy example
+
+The following example shows a parent pipeline that runs a build stage, followed by a deployment pipeline stage with a matrix strategy. The child deployment pipeline runs multiple times across different environments and regions.
+
+<details>
+<summary>Parent pipeline with matrix strategy on pipeline stage</summary>
+
+```yaml
+pipeline:
+  name: build-and-deploy
+  identifier: buildanddeploy
+  projectIdentifier: MyProject
+  orgIdentifier: default
+  stages:
+    - stage:
+        name: build
+        identifier: build
+        description: Build and test application
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - stepGroup:
+                  name: build_steps
+                  identifier: build_steps
+                  steps:
+                    - step:
+                        type: Run
+                        name: run_tests
+                        identifier: run_tests
+                        spec:
+                          connectorRef: account.harnessImage
+                          image: maven:3.8-jdk-11
+                          shell: Sh
+                          command: |
+                            echo "Running unit tests"
+                            mvn clean test
+                            echo "Tests passed"
+                  stepGroupInfra:
+                    type: KubernetesDirect
+                    spec:
+                      connectorRef: build_cluster
+            rollbackSteps: []
+        tags: {}
+    - stage:
+        name: deploy
+        identifier: deploy
+        description: Deploy to multiple environments and regions
+        type: Pipeline
+        spec:
+          org: default
+          project: MyProject
+          pipeline: deployment_pipeline
+          inputs:
+            identifier: deployment_pipeline
+            variables:
+              - name: environment
+                type: String
+                value: <+matrix.env>
+              - name: region
+                type: String
+                value: <+matrix.region>
+        strategy:
+          matrix:
+            env:
+              - dev
+              - staging
+              - prod
+            region:
+              - us-east-1
+              - eu-west-1
+          maxConcurrency: 3
+```
+
+</details>
+
+In this example, the child deployment pipeline runs nine times (three environments × three regions). The `maxConcurrency` setting limits execution to three concurrent instances at a time. Each iteration receives different values for the `environment` and `region` variables through the `<+matrix.env>` and `<+matrix.region>` expressions.
+
+You can use similar approaches with repeat strategies (`<+repeat.item>`) or parallelism strategies (`<+strategy.iteration>`) to run child pipelines multiple times with different configurations.
+
+### View execution details for looped pipeline stages
+
+When you run a parent pipeline with a looping strategy on a pipeline stage, the execution view shows all iterations of the child pipeline:
+
+- Each iteration appears as a separate execution instance with its own execution ID
+- You can expand each iteration to view the complete execution graph for that instance of the child pipeline
+- The parent pipeline execution summary shows the overall status across all iterations
+- Failed iterations are highlighted, and you can retry individual iterations or re-run from a failed iteration
+
+The execution details for each child pipeline instance (artifacts, logs, test results) remain available in the child pipeline's own execution history, just as with standard chained pipelines.
+
+---
 
 ## Use parent output in child pipelines
 
