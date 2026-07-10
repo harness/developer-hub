@@ -335,7 +335,7 @@ We also have added new filters to the recommendations page to help you manage au
 
 :::note Important
 
-- Currently, Auto Inferences supports AWS EC2 instances, Azure Virtual Machines, and Governance recommendations. Support for additional cloud providers and resource types is planned for future releases.
+- Currently, Auto Inferences supports AWS EC2 instances and Azure Virtual Machines recommendations. Support for additional cloud providers and resource types is planned for future releases.
 
 - Manual actions take precedence. Once you manually mark a recommendation as applied or ignored, Auto Inferences will not override your action.
 
