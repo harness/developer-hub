@@ -171,6 +171,11 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## June 2026
 
+### Version 26.06.89502 <!-- July 10, 2026 -->
+
+#### Fixed issues
+- Resolved CVE-2026-39821, CVE-2026-39830, CVE-2026-39831, CVE-2026-39832, CVE-2026-39833, CVE-2026-39834, CVE-2026-42508, CVE-2026-46595 in golang.org/x/crypto and golang.org/x/net. [DEL-10405]
+
 ### Version 26.06.89501 <!-- June 30, 2026 -->
 
 #### Fixed issues
