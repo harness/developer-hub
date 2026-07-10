@@ -20,6 +20,7 @@ tags:
   - ide
 redirect_from:
   - /docs/platform/harness-ai/code-agent
+  - /docs/platform/harness-ai/vscode-extension
   - /docs/platform/harness-aida/code-assistant
   - /docs/platform/harness-aida/code-agent
 ---

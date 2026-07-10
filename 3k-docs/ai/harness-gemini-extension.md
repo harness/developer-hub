@@ -4,7 +4,7 @@ description: Leverage Gemini CLI with Harness AI MCP Server to unleash your deve
 sidebar_position: 12
 ---
 
-import Platform from '@site/docs/platform/harness-ai/harness-gemini-extension.md';
+import Platform from '@site/docs/platform/harness-ai/core-capabilities/in-your-ide/harness-gemini-extension.md';
 
 <Platform />
 

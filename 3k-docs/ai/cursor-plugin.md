@@ -5,7 +5,7 @@ sidebar_label: Cursor Plugin
 sidebar_position: 11
 ---
 
-import Platform from '@site/docs/platform/harness-ai/cursor-plugin.md';
+import Platform from '@site/docs/platform/harness-ai/core-capabilities/in-your-ide/cursor-plugin.md';
 
 <Platform />
 

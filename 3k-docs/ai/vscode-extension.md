@@ -16,6 +16,6 @@ tags:
   - ide
 ---
 
-import Ai from '@site/docs/platform/harness-ai/vscode-extension.md';
+import Ai from '@site/docs/platform/harness-ai/core-capabilities/in-your-ide/vscode-extension.md';
 
 <Ai />
