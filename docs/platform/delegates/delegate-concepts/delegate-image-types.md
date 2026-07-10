@@ -44,7 +44,7 @@ Harness Delegate images are multi-architecture under the same tag. If you naviga
   | kubectl | 1.13.2, 1.19.2 | 1.28.7 |
   | go-template | 0.4, 0.4.1 | 0.4.5 |
   | harness-pywinrm | 0.4-dev | 0.4-dev |
-  | Helm | 3.1.2, 3.8.0 | 3.12.0 |
+  | Helm | 3.1.2, 3.8.0 | 3.15.4 |
   | chartmuseum | 0.8.2, 0.12.0 | 0.15.0 |
   | tf-config-inspect | 1.0, 1.1 | 1.2 |
   | oc | 4.2.16 | 4.13.32 |
