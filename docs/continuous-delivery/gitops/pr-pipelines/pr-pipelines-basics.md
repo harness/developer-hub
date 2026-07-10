@@ -144,6 +144,7 @@ To prevent a specific service or environment override from being written to your
   :::
 
 - **Allow Empty Commit:** When `true`, the step commits even if no file changes are detected instead of failing. Requires Harness Delegate version 84600 or later.
+- **Succeed if no files changed:** When enabled, the step succeeds if the service, environment, and step variables already match the values in the release repo files. Harness does not create a branch, commit, or pull request, and the step `PR URL` output remains empty. Use this option to make PR pipeline reruns idempotent when the desired artifact version has not changed. Existing PR pipelines keep the current behavior unless you enable this option. In YAML, set `AllowNoFilesChanged` to `true` or `false`.
 - **Disable Git Restraint:** When `true`, removes the Git locking mechanism so multiple pipelines can modify the same repository concurrently through a single connector.
 
 ![Update Release Repo step configuration](./static/update-release-repo.png)
@@ -151,6 +152,8 @@ To prevent a specific service or environment override from being written to your
 ### Merge PR
 
 Merges the pull request created by the Update Release Repo step.
+
+If the Update Release Repo step has 'Succeed if no files changed' enabled and its `PR URL` output is empty, the Merge PR step also passes. This lets a rerun with no manifest changes complete without a conditional skip. If 'Succeed if no files changed' is not enabled, the existing behavior continues, and you must add your own condition if you want to skip Merge PR when the PR URL is empty.
 
 **Step parameters:**
 

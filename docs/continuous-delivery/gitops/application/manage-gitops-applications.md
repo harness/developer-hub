@@ -41,9 +41,9 @@ Each application will display various helpful information such as the applicatio
 
 Each tile will have 3 vertical dots. Clicking this will allow you to manually **Sync**, **Refresh**, or **Delete** the application. 
 
-See the following to learn more about some of these operations:
-- [Sync Applications](/docs/continuous-delivery/gitops/application/sync-gitops-applications)
-- [Refresh Applications](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics#refresh)
+- Go to [Sync GitOps applications](/docs/continuous-delivery/gitops/application/sync-gitops-applications) to sync applications from the UI or a pipeline.
+- Go to [Update GitOps Apps in a Pipeline](/docs/continuous-delivery/gitops/application/update-gitops-app-in-pipelines) to update application source settings from a pipeline.
+- Go to [GitOps refresh](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics#refresh) to refresh an application.
 
 ## Filter Applications
 
