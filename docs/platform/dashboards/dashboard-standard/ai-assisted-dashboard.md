@@ -7,19 +7,42 @@ keywords:
   - AI
   - natural language
   - dashboard intelligence
+  - ai chat
+  - harness ai
 tags:
-  - Dashboards
+  - dashboards
+  - harness-ai
 ---
 
-import DocImage from '@site/src/components/DocImage';
+Harness Dashboards include an AI chat assistant that generates dashboards and widgets from natural language descriptions. Describe what metrics you need and the assistant creates the widgets, queries, and layout based on your request. The AI chat panel appears on the left side of the page and is ready to use as soon as you navigate to **Dashboards**.
 
-## Overview
+---
 
-Harness Dashboards include an AI chat assistant that helps you create dashboards and widgets using natural language. Instead of manually configuring every widget, you can describe what you need and let the assistant generate it for you.
+## What will you learn in this topic?
 
-The AI chat panel appears on the left side of the page and is ready to use as soon as you navigate to **Dashboards**.
+By the end of this topic, you will be able to:
+
+- <a href="#ai-chat-panel">Understand the AI chat panel interface and controls</a>.
+- <a href="#ai-chat-history">Access and manage your chat history</a>.
+- <a href="#ai-chat-settings">Configure AI assistant behavior with rules and memories</a>.
+- <a href="#generate-a-dashboard-with-ai-chat">Generate complete dashboards using natural language</a>.
+- <a href="#create-a-widget-with-ai">Add individual widgets to existing dashboards</a>.
+
+---
+
+## Before you begin
+
+Before you use AI-assisted dashboards, ensure you have the following:
+
+- **Harness AI enabled**: Harness AI must be active for your account. Go to <a href="/docs/platform/harness-ai/overview#enable-ai" target="_blank">Overview</a> for more information on activating Harness AI.
+- **Dashboard access**: Permission to view and create dashboards in your Harness project. Go to <a href="/docs/platform/role-based-access-control/rbac-in-harness" target="_blank">RBAC in Harness</a> for more information on permissions.
+- **Supported data sources**: AI-assisted dashboards support CI, CD, STO, Pipeline, and Artifact Registry (AR) modules as data sources. Ensure you have access to at least one of these modules to generate dashboards.
+
+---
 
 ## AI chat panel
+
+Use the AI chat panel to generate dashboards and widgets through natural language conversations.
 
 <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden' }}>
   <iframe
@@ -38,9 +61,9 @@ The AI chat panel includes the following elements:
 - **Text input field:** A text box at the bottom of the panel with the placeholder "What would you like to know?" Type your request here.
 
 - **Quick-action buttons:** Pre-built actions that let you get started without typing a query. The available quick actions are:
-  - **List pipelines** — View a list of pipelines in your account.
-  - **Ask a support question** — Ask a general question about Harness features or configuration.
-  - **Analyze Pipeline Errors** — Get a summary of recent pipeline failures and their causes.
+  - **List pipelines** : View a list of pipelines in your account.
+  - **Ask a support question** : Ask a general question about Harness features or configuration.
+  - **Analyze Pipeline Errors** : Get a summary of recent pipeline failures and their causes.
 
 - **Send button:** Select the blue arrow icon to submit your request.
 
@@ -48,10 +71,14 @@ The AI chat panel includes the following elements:
 
 The top of the AI chat panel also includes the following controls:
 
-- **New Chat** (edit icon) — Start a new conversation. This clears the current chat and opens a fresh session.
-- **More options** (three-dot menu **...**) — Access additional features such as [History](#chat-history) and [Settings](#settings).
+- **New Chat** (edit icon) : Start a new conversation. This clears the current chat and opens a fresh session.
+- **More options** (three-dot menu **...**) : Access additional features such as [History](#chat-history) and [Settings](#settings).
+
+---
 
 ## AI Chat history
+
+Access previous conversations to continue where you left off or review past dashboard generation sessions.
 
 <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden' }}>
   <iframe
@@ -80,9 +107,13 @@ You can perform the following actions on each conversation:
 
 Use the **Search your chats...** bar at the top of the History panel to find a specific conversation by name.
 
+---
+
 ## AI Chat Settings
 
-The Settings panel lets you configure how the AI assistant behaves. To open Settings:
+Configure how the AI assistant behaves with rules and memory settings.
+
+To open Settings:
 
 1. Select the three-dot menu (**...**) at the top of the AI chat panel.
 2. Select **Settings**.
@@ -101,7 +132,11 @@ Memories allow the AI assistant to remember context from your previous conversat
 
 When Memories is enabled, the AI assistant learns your preferences and applies them to future conversations without you needing to repeat yourself.
 
-## Generate a dashboard with AI Chat 
+---
+
+## Generate a dashboard with AI Chat
+
+Create complete dashboards with multiple widgets using natural language descriptions. 
 
 <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden' }}>
   <iframe
@@ -117,13 +152,17 @@ When Memories is enabled, the AI assistant learns your preferences and applies t
 
 To generate a dashboard using the AI assistant:
 
-1. Go to **Dashboards**.
+1. Navigate to **Dashboards**.
 2. In the AI chat panel on the left, type a description of the dashboard you want in the text input field. For example: "Show me a dashboard with daily deployment counts and failure rates for the last 30 days."
-3. Select the send button (blue arrow) to submit your request.
-4. The AI creates a dashboard with widgets, queries, and layout based on your description.
-5. Review the results generated by the AI chat. While it is designed to get you most of the way there, you may need to make additional adjustments to achieve your exact requirements. If the dashboard doesn’t match your expectations, refine it using the builder or send a follow-up message in the chat.
+3. Click the send button (blue arrow) to submit your request.
+4. Review the generated dashboard with widgets, queries, and layout based on your description.
+5. Refine the dashboard if needed. The AI is designed to get you most of the way there, but you may need to make additional adjustments to achieve your exact requirements. Send a follow-up message in the chat or use the dashboard builder to refine the results.
+
+---
 
 ## Create a widget with AI
+
+Add individual widgets to existing dashboards through natural language requests.
 
 <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0, overflow: 'hidden' }}>
   <iframe
@@ -137,15 +176,19 @@ To generate a dashboard using the AI assistant:
   />
 </div> <br> </br>
 
-You can also use the AI assistant to add individual widgets to an existing dashboard.
+Add individual widgets to existing dashboards using natural language requests.
 
-1. Open the Dashboard where you want to add the widget.
-2. Enter your request in natural language, including the widget’s description, type, and module. For example: "Create a widget for total builds over time for the last 30 days."
-3. The AI generates the widget. Review it and click "Add Widget" to save it to your dashboard.
-4. To add more widgets, enter another request.
+1. Open the dashboard where you want to add the widget.
+2. Enter your request in natural language, including the widget description, type, and module. For example: "Create a widget for total builds over time for the last 30 days."
+3. Review the generated widget and click **Add Widget** to save it to your dashboard.
+4. Enter another request to add more widgets.
 
+
+---
 
 ## Supported visualization types
+
+Request specific chart types in your natural language descriptions to control how data is visualized.
 
 The AI assistant selects the most appropriate visualization type based on your request. To choose a specific type, include it in your description. For example: "What is my monthly deployment count? Filter for the past 12 months. Make this a line chart."
 
@@ -163,8 +206,10 @@ The following visualization types are supported:
 The AI assistant does not support customizing visualization styles such as titles or colors within the request itself. You can adjust these settings manually after the widget is created.
 :::
 
+---
+
 ## Next steps
 
-- [Dashboards overview](./overview.md) — Learn how to browse and manage dashboards.
-- [Create widgets](./create-widgets.md) — Manually configure widgets and queries.
-- [Overview of Harness AI](/docs/platform/harness-ai/overview) — Learn about AI features across Harness.
+- <a href="./overview" target="_blank">Dashboards overview</a>: Browse and manage dashboards.
+- <a href="./create-widgets" target="_blank">Create widgets</a>: Manually configure widgets and queries.
+- <a href="/docs/platform/harness-ai/overview" target="_blank">Overview of Harness AI</a>: Explore AI features across Harness.
