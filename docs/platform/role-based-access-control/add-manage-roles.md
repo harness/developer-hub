@@ -27,11 +27,11 @@ This page explains how to view built-in roles, create custom roles, and assign p
 
 By the end of this page, you will understand how to:
 
-- View built-in roles in Harness.
-- Create custom roles with specific permissions.
-- Edit and delete existing roles.
-- Assign roles to users, user groups, and service accounts across different scopes.
-- Reuse roles across account, organization, and project scopes.
+- View [built-in roles](#built-in-roles) in Harness.
+- Create [custom roles](#create-a-role) with specific permissions.
+- [Edit](#edit-a-role) and [delete](#delete-a-role) existing roles.
+- [Assign roles to users, user groups, and service accounts](#assign-the-role-to-users-at-the-organization-scope) across different scopes.
+- [Reuse roles](#reuse-roles-across-scopes) across account, organization, and project scopes.
 
 ---
 

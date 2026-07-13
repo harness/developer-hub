@@ -11,13 +11,13 @@ Role-based access control (RBAC) in Harness controls who can access your resourc
 
 ## What will you learn in this topic?
 
-By the end of this page, you will understand how to:
+By the end of this topic, you will be able to:
 
-- Set up the required permissions to configure RBAC in Harness
-- Follow the complete RBAC configuration workflow in the correct order
-- Create roles, resource groups, and user groups for different scenarios
-- Assign roles and resource groups to users, user groups, and service accounts
-- Use automated provisioning to import users and groups from your identity provider
+- <a href="#before-you-begin">Set up the required permissions to configure RBAC in Harness</a>.
+- <a href="#rbac-configuration-workflow">Follow the complete RBAC configuration workflow in the correct order</a>.
+- <a href="#rbac-workflow-examples">Create roles, resource groups, and user groups for different scenarios</a>.
+- <a href="#rbac-workflow-examples">Assign roles and resource groups to users, user groups, and service accounts</a>.
+- <a href="#rbac-configuration-workflow">Use automated provisioning to import users and groups from your identity provider</a>.
 
 ---
 
