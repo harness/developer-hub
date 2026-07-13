@@ -17,7 +17,7 @@ Security Tests policies let you enforce governance on scan results produced by [
 - Blocking pipelines when critical or high-severity vulnerabilities are found
 - Warning or blocking based on specific CVE reference IDs
 - Enforcing code coverage thresholds
-- Filtering vulnerabilities by age, EPSS score, or reachability
+- Filtering vulnerabilities by age, EPSS score, CISA KEV count, or reachability
 
 For more details, see the [Harness Governance Quickstart](/docs/platform/governance/policy-as-code/harness-governance-quickstart).
 
@@ -54,6 +54,7 @@ For more details, see the [Harness Governance Quickstart](/docs/platform/governa
    | **Security Tests – Severity found in App Layer** | Blocks based on severity values (Critical, High) found in application layer |
    | **Security Tests – Severity found in Base Image** | Blocks based on severity values (Critical, High) found in base image |
    | **Security Tests – EPSS score found in issues** | Blocks based on the EPSS score provided |
+   | **Security Tests – CISA Known Exploited Vulnerabilities** | Blocks when the count of CISA KEV issues exceeds the configured threshold |
    | **Security Tests – Static Reachability of an Issue** | Blocks based on the reachability status of an issue/vulnerability |
 
    For the full Rego code of each sample policy, see [Security Tests policy samples](/docs/platform/governance/policy-as-code/sample-policy-use-case#security-tests-policy-samples).

@@ -5,7 +5,9 @@ sidebar_label: EPSS Score
 sidebar_position: 5
 --- 
 
-Harness STO helps you identify security issues early in the pipeline by shifting vulnerability management left. However, identifying vulnerabilities alone is not sufficient - prioritizing them based on risk is equally important.
+Harness STO helps you identify security issues early in the pipeline by shifting vulnerability management left. However, identifying vulnerabilities alone is not sufficient. Prioritizing them based on risk is equally important.
+
+STO also surfaces [CISA KEV](/docs/security-testing-orchestration/risk-and-priortization/cisa-kev) status for CVE-associated issues. EPSS predicts exploitation likelihood; CISA KEV confirms whether CISA has documented active exploitation. Use both signals together when you prioritize remediation.
 
 ## What is EPSS score?
 

@@ -20,6 +20,7 @@ The Harness Policy Library includes the following [policy samples](/docs/platfor
 - [Warn or Block vulnerabilities from application layers of your container image](#warn-or-block-vulnerabilities-from-application-layers-of-your-container-image)
 - [Warn or Block vulnerabilities from base image of your container image](#warn-or-block-vulnerabilities-from-base-image-of-your-container-image)
 - [Warn or Block vulnerabilities based on the EPSS score](#warn-or-block-vulnerabilities-based-on-the-epss-score)
+- [Warn or Block vulnerabilities based on CISA KEV count](#warn-or-block-vulnerabilities-based-on-cisa-kev-count)
 - [Warn or Block Reachable or Exploitable Vulnerabilities reported by the Harness Scanner](#warn-or-block-reachable-or-exploitable-vulnerabilities-reported-by-the-harness-scanner)
 
 
@@ -528,6 +529,60 @@ fill_defaults(obj) := list {
         "epssPercentile": {"value": null, "operator": null},
     }
     list :=  [x | x := object.union(defaults, obj[_])]      
+}
+
+```
+
+#### Warn or Block vulnerabilities based on CISA KEV count
+<br/>
+
+Apply a policy to the scan step to warn or block the pipeline when the number of issues on the [CISA Known Exploited Vulnerabilities (KEV) catalog](/docs/security-testing-orchestration/risk-and-priortization/cisa-kev) exceeds your threshold. You can use the sample policy **Security Tests – CISA Known Exploited Vulnerabilities**. Below is a sample policy for reference:
+
+
+```
+package securityTests
+
+import future.keywords.if
+
+# maxCISAKnownExploitedIssues: maximum allowed count of CISA KEV issues
+deny_list := fill_defaults([
+  {
+    "maxCISAKnownExploitedIssues": {"value": 0, "operator": ">"},
+  }
+])
+
+#### DO NOT CHANGE THE FOLLOWING SCRIPT ####
+
+deny[msg] {
+    input[i].name == "securityTestData"
+    issues := input[i].outcome.issues
+    rule := deny_list[_]
+
+    kev_issues := [issue |
+        issue := issues[_]
+        issue.details.inKev == true
+    ]
+    matched_count := count(kev_issues)
+
+    num_compare(matched_count, rule.maxCISAKnownExploitedIssues.operator, rule.maxCISAKnownExploitedIssues.value)
+
+    msg := sprintf("Too many CISA KEV vulnerabilities detected! Found %d issue(s) on the CISA KEV catalog, maximum allowed is %d",
+        [matched_count, rule.maxCISAKnownExploitedIssues.value])
+}
+
+num_compare(a, "==", b) := a == b
+num_compare(a, "<=", b) := a <= b
+num_compare(a, ">=", b) := a >= b
+num_compare(a, "<", b) := a < b
+num_compare(a, ">", b) := a > b
+num_compare(a, null, b) := a == b if { b != null}
+num_compare(a, null, null) := true
+
+fill_defaults(obj) := list {
+    defaults := {
+        "maxCISAKnownExploitedIssues": {"value": null, "operator": null},
+    }
+    list := [x | x := object.union(defaults, obj[_])]
 }
 
 ```

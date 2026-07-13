@@ -72,6 +72,7 @@ This topic provides sample policies you can use in policy steps and pipeline-lev
 	    - [Exclude vulnerabilities by CVE age](#exclude-vulnerabilities-by-cve-age)
 	    - [Exclude vulnerabilities using STO output variables](#exclude-vulnerabilities-using-sto-output-variables)
 		- [Block the pipeline based on the code coverage results](#block-the-pipeline-based-on-the-code-coverage-results)
+		- [Warn or Block vulnerabilities based on CISA KEV count](#warn-or-block-vulnerabilities-based-on-cisa-kev-count)
 
 ## Policy samples
 
