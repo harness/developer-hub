@@ -24,8 +24,7 @@ This page explains what gets extracted, how to configure the entity definition s
 
 ## Before you begin
 
-- **Enable Feature Flag**: This feature is gated behind the `IDP_API_ENDPOINT_EXTRACTION` feature flag. Contact [Harness Support](https://www.harness.io/company/contact-sales) to enable it for your account.
-- **Harness API Key**: Go to the [Request format](#request-format) section to review the required headers.
+This feature is gated behind the `IDP_API_ENDPOINT_EXTRACTION` feature flag. Contact [Harness Support](https://www.harness.io/company/contact-sales) to enable it for your account.
 
 ---
 
