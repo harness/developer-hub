@@ -135,11 +135,6 @@ To manage roles in Harness, you need a role, such as **Account Admin**, that has
 3. Enter a **Name** for the role. **Description** and **Tags** are optional.
 4. Click **Save**.
 5. Select [permissions](/docs/platform/role-based-access-control/permissions-reference) for the role.
-
-   <div style={{textAlign: 'center'}}>
-   <DocImage path={require('./static/add-manage-roles-19.png')} width="80%" height="40%" title="Click to view full size image" />
-   </div>
-
 6. Click **Apply Changes**.
 
 ### Edit a role
@@ -194,10 +189,6 @@ The example below walks through reusing a role across scopes. The role is create
    
 6. Click **Apply Selected**.
 7. Click **Save**.
-
-<div style={{textAlign: 'center'}}>
-   <DocImage path={require('./static/add-manage-roles-21.png')} width="80%" height="40%" title="Click to view full size image" />
-   </div>
 
 ---
 

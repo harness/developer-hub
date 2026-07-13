@@ -300,17 +300,7 @@ Follow these steps to create a resource group at the account, organization, or p
    </div>
 
 6. If you selected **Specified Organization** or **Specified Projects**, click **Edit** and select the specific organizations or projects.
-
-   <div style={{textAlign: 'center'}}>
-      <DocImage path={require('./static/add-resource-groups-41.png')} width="80%" height="60%" title="Click to view full size image" />
-   </div>
-
 7. For **Resources**, select **All** or **Specified**.
-
-   <div style={{textAlign: 'center'}}>
-      <DocImage path={require('./static/set-up-rbac-pipelines-42.png')} width="80%" height="60%" title="Click to view full size image" />
-   </div>
-
 8. If you selected **Specified**, select the resource types to include.
 
    Depending on the scope where you created the resource group, you can further refine your selection by:
