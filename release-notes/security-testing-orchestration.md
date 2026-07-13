@@ -22,6 +22,29 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 
+
+## June 2026
+
+### Version 1.200.2
+
+#### New Features and Enhancements
+
+- Added support for [Cortex Cloud integration](/docs/security-testing-orchestration/sto-techref-category/cortex-cloud-scanner-reference). This feature is behind the feature flag `STO_STEP_PALETTE_CORTEX_CLOUD`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+- Added [CISA KEV](/docs/security-testing-orchestration/view-security-test-results/cisa-kev) support to surface CISA Known Exploited Vulnerabilities status on the Issues page and Vulnerabilities tab, and introduced an [OPA policy](/docs/security-testing-orchestration/policies/create-opa-policies#warn-or-block-vulnerabilities-based-on-cisa-kev-count) to warn or block pipelines based on CISA KEV issue count. This feature is behind the feature flag `STO_ISSUE_KEV`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+
+<DocImage path={require('/docs/security-testing-orchestration/risk-and-priortization/static/cisa-kev.png')} width="70%" height="70%" title="Click to view full size image" />
+
+- Added [custom exemption duration](/docs/security-testing-orchestration/exemptions/exemption-workflows#for-how-long) when submitting exemption requests and also approvers can now [override the requested duration](/docs/security-testing-orchestration/exemptions/manage-exemptions#approve-an-exemption-request) when reviewing exemption requests.
+
+<DocImage path={require('/docs/security-testing-orchestration/exemptions/static/approve-exemption.png')} width="70%" height="70%" title="Click to view full size image" />
+
+
+#### Fixed Issues
+
+- Fixed an issue where remediations were not being recorded for scanners that leave subproduct as NULL (e.g. Aqua Trivy, Anchore, Grype), which also blocked auto closure of tickets for those scanners. (STO-11696)
+- Fixed an issue where Harness SCA remediation and Auto PR suggested incorrect dependency upgrade versions, and **Create Pull Request** was unavailable when scan results included only a file name. (STO-11887)
+
+
 ## May 2026
 
 ### Version 1.197.0
