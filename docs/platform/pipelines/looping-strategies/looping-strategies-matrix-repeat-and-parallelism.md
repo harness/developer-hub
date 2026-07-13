@@ -192,7 +192,7 @@ Harness recommends avoiding hyphens and periods in matrix tag/dimension names, s
 
 However, if you need to reference a matrix dimension name that includes a period or hyphen/dash, you must wrap the tag in double quotes and use the `get()` method in the expression, such as `<+stage.matrix.get("python-version")>`.
 
-If a dimension with a hyphen/dash or period is not referenced correctly, the expression resolves as null and doesn't throw an error.
+If a dimension with a hyphen/dash or period is not referenced correctly, the expression resolves as null and does not throw an error.
 
 ### Matrix expressions in multi-layer matrix strategies
 
@@ -216,16 +216,16 @@ echo "Current os for step: <+matrix.os>"
 
 Use the `exclude` keyword to filter out combinations that you don't want to iterate over.
 
-The following YAML example exclude two specific combinations from the matrix:
+The following YAML example excludes two specific combinations from the matrix:
 
 ```yaml
 matrix:
   service: [svc1, svc2, svc3]
   env: [env1, env2]
-  exclude: ## Specify combinations that you don't want to iterate over.
-    - service: svc1 ## Don't run svc1 with env1.
+  exclude: ## Specify combinations that you do not want to iterate over.
+    - service: svc1 ## Do not run svc1 with env1.
       env: env1
-    - service: svc3 ## Don't run svc3 with env2.
+    - service: svc3 ## Do not run svc3 with env2.
       env: env2
 ```
 
@@ -238,6 +238,44 @@ matrix:
   exclude:
     - os: macos
 ```
+
+#### Skip execution when all combinations are excluded
+
+Matrix exclude lists are evaluated upfront at the beginning of the loop. When all matrix combinations are removed by the `exclude` list, the stage or step is skipped gracefully without failing the pipeline.
+
+:::note
+This feature is behind the feature flag `PIPE_SKIP_MATRIX_LOOP_ON_ZERO_ITERATIONS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+Harness determines the final iteration count before starting the loop. When zero iterations remain after applying exclusions, the matrix step or stage simply skips execution. This allows conditional workflow patterns where all matrix iterations might be filtered out based on runtime conditions.
+
+For example, the following configuration would skip execution without error when all combinations are excluded:
+
+<details>
+<summary>Matrix with all combinations excluded</summary>
+
+```yaml
+matrix:
+  service: [svc1, svc2, svc3]
+  env: [env1, env2]
+  exclude:
+    - service: svc1
+      env: env1
+    - service: svc1
+      env: env2
+    - service: svc2
+      env: env1
+    - service: svc2
+      env: env2
+    - service: svc3
+      env: env1
+    - service: svc3
+      env: env2
+```
+
+</details>
+
+This is particularly useful when using runtime inputs or expressions in the `exclude` list, where the number of excluded combinations depends on pipeline execution context and might result in zero remaining iterations.
 
 ### Limit resource usage
 
@@ -294,7 +332,7 @@ You can use `repeat` as an alternative to `parallelism` or one-dimensional `matr
 
 ### Repeat a set number of times
 
-Use `times` to specify a number of times to repeat a step or stage. You can use `maxConcurrency` to prevent overtaxtion of pipeline resources by limiting the number of repeated instances that run at once.
+Use `times` to specify a number of times to repeat a step or stage. You can use `maxConcurrency` to prevent overtaxation of pipeline resources by limiting the number of repeated instances that run at once.
 
 ```yaml
 repeat:
@@ -434,13 +472,13 @@ When creating a CI pipeline where both stage and step uses looping strategy and 
 
 You can configure stage, step, and step group looping strategies as [runtime input](/docs/platform/variables-and-expressions/runtime-inputs) in your pipelines and templates.
 
-When you configure looping strategies as runtime input, you select the strategy and provide the strategy specifications at pipeline runtime. This means you can run s pipeline with a `parallelism` strategy and then run the same pipeline with a `matrix` strategy by providing different runtime input.
+When you configure looping strategies as runtime input, you select the strategy and provide the strategy specifications at pipeline runtime. This means you can run a pipeline with a `parallelism` strategy and then run the same pipeline with a `matrix` strategy by providing different runtime input.
 
 To do this, go to the **Looping Strategy** settings where you want to configure the looping strategy to be specified at runtime, select the **Thumbtack** icon, and change the input type to **Runtime Input**.
 
 ![Selecting runtime input for the looping strategy.](./static/looping-runtime-input.png)
 
-When you run the pipeline, you'll be prompted to define the looping strategy configuration ([parallelism](#parallelism-strategies), [matrix](#matrix-strategies), or [repeat](#repeat-strategies)) for that run.
+When you run the pipeline, you will be prompted to define the looping strategy configuration ([parallelism](#parallelism-strategies), [matrix](#matrix-strategies), or [repeat](#repeat-strategies)) for that run.
 
 Due to the potential complexity of looping strategies, [input sets](/docs/platform/pipelines/input-sets) are useful for looping strategies as runtime input. Input sets contain pre-defined runtime inputs that you select at runtime. This eliminates the need to manually enter the entire looping strategy each time.
 
@@ -481,7 +519,7 @@ echo <+strategy.node.get("ShellScript_1").currentStatus>
 
 Possible statuses for nodes (stages/steps) using a looping strategy are `RUNNING`, `FAILED`, or `SUCCESS`.
 
-Because stages and steps can't have the same identifier, the index value of the [iteration count](#iteration-counts) is appended to the base stage/step identifier to create unique identifiers for each stage/step instance created by the looping strategy. For more information about this, go to [Indexed identifiers in looping strategies](#indexed-identifiers-in-looping-strategies).
+Because stages and steps cannot have the same identifier, the index value of the [iteration count](#iteration-counts) is appended to the base stage/step identifier to create unique identifiers for each stage/step instance created by the looping strategy. For more information about this, go to [Indexed identifiers in looping strategies](#indexed-identifiers-in-looping-strategies).
 
 ### Iteration counts
 
@@ -492,9 +530,9 @@ Use the following expressions to access the index values for each iteration of a
 
 ### Indexed identifiers in looping strategies
 
-Because stages and steps can't have the same identifier, the index value of the [iteration count](#iteration-counts) is appended to the base stage/step identifier to create unique identifiers for each stage/step instance created by the looping strategy. If you need to use an expression that references the identifier of a stage/step instance in a looping strategy, you must use the identifier with the appended index value.
+Because stages and steps cannot have the same identifier, the index value of the [iteration count](#iteration-counts) is appended to the base stage/step identifier to create unique identifiers for each stage/step instance created by the looping strategy. If you need to use an expression that references the identifier of a stage/step instance in a looping strategy, you must use the identifier with the appended index value.
 
-For example, assume a looping strategy is applied to a stage with the identifier `my_build_stage`. The expression `<+pipeline.stages.my_build_stage.variables>` won't work. Instead, you must append the index value to the identifier in the expression, such as: `<+pipeline.stages.my_build_stage_0.variables>`.
+For example, assume a looping strategy is applied to a stage with the identifier `my_build_stage`. The expression `<+pipeline.stages.my_build_stage.variables>` will not work. Instead, you must append the index value to the identifier in the expression, such as: `<+pipeline.stages.my_build_stage_0.variables>`.
 
 ### identifierPostFix expressions
 
@@ -554,12 +592,12 @@ strategy:
 
 The status of a stage with looping strategy is based on the highest priority execution status among its child stages:
 
-* Negative statuses takes precedence over positive status.
+* Negative statuses take precedence over positive status.
 * If _any one_ child stage has negative status, then the parent stage takes that negative status.
 * If _multiple_ child stages have negative statuses, the parent stage takes the negative status with the highest priority.
 * If _all_ child stages have a positive status, the parent stage takes the positive status with the highest priority.
 
-Negative status are prioritized as follows, from highest to lowest:
+Negative statuses are prioritized as follows, from highest to lowest:
 
 1. Aborted
 2. Failed
@@ -576,4 +614,4 @@ Here are some examples of the looping strategy status logic:
 
 * If one child stage is `Failed` and another child stage is `Expired`, then the parent becomes `Failed` because `Failed` has higher priority than `Expired`.
 * If one child stage is `Ignore failed` and another child stage is `Succeeded`, then the parent becomes `Ignore failed` because `Ignore failed` has higher priority than `Succeeded`.
-* If one child stageis `Expired` and all other child stages  are `Succeeded`, then the parent becomes `Expired` because negative statuses take priority over positive statuses, even if only one child stage has a negative status.
+* If one child stage is `Expired` and all other child stages are `Succeeded`, then the parent becomes `Expired` because negative statuses take priority over positive statuses, even if only one child stage has a negative status.
