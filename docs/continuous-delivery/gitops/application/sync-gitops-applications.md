@@ -1,6 +1,6 @@
 ---
 title: Sync GitOps applications
-description: This topic describes how to sync GitOps applications.
+description: Sync GitOps applications from the Applications page or a GitOps Sync pipeline step, including optional resource-type filters.
 sidebar_position: 2
 redirect_from:
   - /docs/continuous-delivery/gitops/sync-gitops-applications
@@ -53,15 +53,61 @@ To sync applications using the **GitOpsSync** step:
    :::
 
 6. In **Advanced Configuration**, select the application you want to sync and configure the sync options.
-      You can either choose an application or applications manually, or you can match up to 1000 applications using a regex filter. The regex field uses **Go (Golang) regex syntax** — not JEXL. You can test your patterns at [regex101](https://regex101.com/) with the **Golang** flavor selected.
+      You can either choose an application or applications manually, or you can match up to 1000 applications using a regex filter. The regex field uses **Go (Golang) regex syntax**, not JEXL. You can test your patterns at [regex101](https://regex101.com/) with the **Golang** flavor selected.
 
-    ![](./static/gitopssync-step-regex.png)    
+    ![](./static/gitopssync-step-regex.png)
+
+   To sync only specific resource types instead of the entire application, select 'Application Name' and go to [Sync specific resource types in the GitOps Sync step](#sync-specific-resource-types-in-the-gitops-sync-step).
  
-7. Select **Apply Changes**.
+7. Select 'Apply Changes'.
 
 Here is how the resources would look in Harness after the sync process is complete.
 
 ![](./static/harness-git-ops-application-set-tutorial-40.png)
+
+---
+
+## Sync specific resource types in the GitOps Sync step
+
+By default, the GitOps Sync step synchronizes every resource in a GitOps application. Use the 'Configure Resources' filter to limit sync to specific Kubernetes resource types, such as `ConfigMap`, `Deployment`, or `ReplicaSet`.
+
+This does not let you cherry-pick individual resources from a list. You select resource types in **Kind**, and optionally narrow the sync with **Group**, **Name**, and **Namespace** patterns. Harness synchronizes all resources in the application that match your filters.
+
+:::info Minimum versions
+
+This feature requires ng-manager v1.154.0 and next-gen-ui v1.141.0.
+
+:::
+
+### Before you begin
+
+- **Manual application selection:** Select 'Application Name' in the GitOps Sync step. Resource filters are not available when you target applications with 'Application Regex', 'Application Labels', or 'Fetch Linked Apps'.
+- **Argo CD behavior:** Resource filtering uses the same capabilities Argo CD provides for selective sync. Any limitation in Argo CD also applies in Harness.
+
+### Configure resource filters
+
+1. In your pipeline, open the GitOps Sync step.
+2. In **Advanced Configuration**, under **Application Selection**, select 'Application Name'.
+3. Select the GitOps application you want to sync.
+4. Select 'Configure Resources'.
+5. In the **Resource Selection** dialog, set filters for each application row:
+   - **Group:** Filter by API group. For example, `apps` or `.*` to match all groups.
+   - **Kind:** Select one or more Kubernetes resource types to sync, such as `Deployment`, `ConfigMap`, or `ReplicaSet`. All resources of the selected kinds in the application are synchronized.
+   - **Name:** Filter by resource name pattern. For example, `my-app` or `.*`.
+   - **Namespace:** Filter by namespace pattern. For example, `default` or `.*`.
+6. Select 'Save', then select 'Apply Changes' on the step.
+
+![](./static/gitopssync-configure-resources.png)
+
+After the pipeline runs, only resources that match your filters are synchronized. Resources outside the selected kinds or filter patterns remain unchanged by this sync step.
+
+:::info Supported application selection modes
+
+Resource filters are available only when you select applications by name. They do not work with 'Application Regex', 'Application Labels', or 'Fetch Linked Apps'.
+
+:::
+
+---
 
 ## Sync for  Multiple Sources application
 
