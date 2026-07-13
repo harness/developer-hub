@@ -13,10 +13,6 @@ Harness sends these platform alerts automatically for events such as:
 
 Unlike platform alerts, <a href="/docs/platform/notifications/centralised-notification">notifications</a> are configured based on rules for resources such as pipelines, delegates, and GitOps applications.
 
-:::note Feature Availability
-Currently, the platform alerts feature is behind the feature flag `PL_ENABLE_IN_APP_ALERTS`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
-:::
-
 ---
 
 ## What will you learn by the end of this topic?
