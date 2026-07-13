@@ -4,6 +4,10 @@
     "collapsed": "true",
     "className": "red",
     "position": "6",
+    "link": {
+        "type": "doc",
+        "id": "platform/harness-ai/core-capabilities/core-capabilities"
+    },
     "customProps": {
 
 

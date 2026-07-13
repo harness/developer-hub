@@ -187,7 +187,7 @@ The Support Agent follows the same data privacy policies as all Harness AI featu
 - **Ephemeral processing** - Questions are processed in real-time and not stored
 - **Documentation-only responses** - Answers are sourced from public Harness documentation
 
-For complete data privacy information, refer to [Data Storage and Privacy Policies](/docs/platform/harness-ai/devops-agent#data-storage-and-privacy-policies).
+For complete data privacy information, refer to [Data Storage and Privacy Policies](/docs/platform/harness-ai/core-capabilities/#data-storage-and-privacy-policies).
 
 ## Limitations
 

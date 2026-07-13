@@ -5,7 +5,7 @@ sidebar_label: DevOps Agent
 sidebar_position: 8
 ---
 
-import Platform from '@site/docs/platform/harness-ai/devops-agent.md';
+import Platform from '@site/docs/platform/harness-ai/core-capabilities/in-harness-ui/devops-agent.md';
 
 <Platform />
 

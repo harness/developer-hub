@@ -6,7 +6,7 @@ sidebar_position: 4
 canonical_url: https://www.harness.io/blog/elevating-aida-harness-unveils-7-new-innovative-capabilities
 ---
 
-import Platform from '@site/docs/platform/harness-ai/ccm-agent.md';
+import Platform from '@site/docs/platform/harness-ai/core-capabilities/in-harness-ui/ccm-agent.md';
 
 <Platform />
 
