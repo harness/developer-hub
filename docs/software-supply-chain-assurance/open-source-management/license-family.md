@@ -1,7 +1,7 @@
 ---
 title: License Family
 description: Categorize individual licenses into standard families to quickly understand their impact and risk.
-sidebar_position: 25
+sidebar_position: 26
 
 tags:
   - harness-scs
