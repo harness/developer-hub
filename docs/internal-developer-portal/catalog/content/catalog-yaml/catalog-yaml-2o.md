@@ -427,7 +427,7 @@ metadata:
 ---
 
 ### Kind: API  
-An **API** describes an interface that can be exposed by a component. APIs can be defined using formats such as OpenAPI, AsyncAPI, GraphQL, gRPC, or others.
+An **API** describes an interface that can be exposed by a component. APIs can be defined using formats such as OpenAPI, AsyncAPI, GraphQL, gRPC, or others. For `type: openapi` entities, Harness IDP automatically extracts individual endpoints from the spec and stores them in Ingested Properties, where they can be enriched with custom metadata. See [API endpoint extraction and enrichment](/docs/internal-developer-portal/catalog/integrate-tools/api-endpoint-enrichments).
 
 #### Entity structure  
 All the fields mentioned below are the mandatory parameters required to define an API:
@@ -473,6 +473,10 @@ metadata:
     - store
     - rest
 ```
+
+:::info
+For `type: openapi` entities, Harness IDP automatically extracts endpoints from `spec.definition` and stores them in Ingested Properties under `metadata.apis`. You can enrich those endpoints with custom metadata using the Catalog Custom Properties API. See [API endpoint extraction and enrichment](/docs/internal-developer-portal/catalog/integrate-tools/api-endpoint-enrichments).
+:::
 
 ---
 

@@ -14,7 +14,9 @@ import TabItem from '@theme/TabItem';
 
 <DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
 
-The Harness IDP Software Catalog provides comprehensive support for defining and managing API entities. This guide shows you how to add API specifications in various formats to your catalog.
+The Harness IDP Software Catalog provides comprehensive support for defining and managing API entities. This guide shows you how to add API specifications in various formats to your catalog. 
+
+For `type: openapi` entities, Harness IDP also automatically extracts individual endpoints from the spec and makes them available for enrichment with custom metadata. See [API endpoint extraction and enrichment](/docs/internal-developer-portal/catalog/integrate-tools/api-endpoint-enrichments).
 
 ---
 
@@ -90,7 +92,7 @@ Make sure the host or path for your OpenAPI spec is included in this list to all
 
 
 :::caution
-In IDP 2.0, API entity creation now supports OpenAPI specifications referenced via both **absolute URLs** (e.g., `https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml`) and **relative paths** (e.g., `./openapi.yaml`) in the `spec.definition.$text` field. 
+In IDP, API entity creation supports OpenAPI specifications referenced via both **absolute URLs** (e.g., `https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml`) and **relative paths** (e.g., `./openapi.yaml`) in the `spec.definition.$text` field. 
 These paths are interpreted relative to the location specified by the `backstage.io/managed-by-location` annotation. This typically aligns with the path of your entity YAML file. When not explicitly set, `managed-by-location` is automatically derived from the `backstage.io/source-location` annotation, ensuring correct resolution even for inline or centrally managed entities.
 
 For external URLs, ensure the domain is included in the **Backend URL Allow List** under **Configure** → **URL Allow List** to enable proper API documentation rendering.
@@ -166,6 +168,8 @@ metadata:
 The above-mentioned `catalog-info.yaml` when registered in the catalog would display all the APIs in the following format.
 
 ![](../integrate-tools/techdocs/static/spotify-api.png)
+
+---
 
 ## Create an API entity 
 
@@ -243,35 +247,52 @@ metadata:
 ```
 
 ## Substitutions in descriptor
-1. Supports `$text`, `$json`, `$yaml` for embedding external content.
-2. Useful for loading API definitions from external sources.
 
-### Example
+Use a substitution placeholder in `spec.definition` to reference a Git-hosted spec rather than embedding it inline. The placeholder tells IDP what file format to expect when it fetches the content:
 
-```YAML
+| Placeholder | Use when the spec file is |
+|---|---|
+| `$yaml` | A YAML file (`.yaml` or `.yml`) |
+| `$json` | A JSON file (`.json`) |
+| `$text` | Any other text format |
+
+```yaml
 apiVersion: harness.io/v1
 kind: API
 type: openapi
-identifier: petstore
-name: petstore
-owner: Harness_Partners
+identifier: payment-service
+name: payment-service
+owner: payments-team
 spec:
-  lifecycle: dev
+  lifecycle: production
   definition:
-    $text: https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml
+    # Replace $yaml with $json or $text to match your spec file format.
+    # Only Git-based URLs (GitHub, GitLab, Bitbucket, Azure Repo) are supported here.
+    # For public HTTP URLs, put the URL directly as the definition value. No $ prefix.
+    $yaml: https://github.com/your-org/your-repo/blob/main/openapi.yaml
 metadata:
-  description: The petstore API
-  links:
-    - url: https://github.com/swagger-api/swagger-petstore
-      title: GitHub Repo
-      icon: github
-    - url: https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml
-      title: API Spec
-      icon: code
-  tags:
-    - store
-    - rest
+  description: Payment service API
+  annotations:
+    # Required for private repositories so IDP resolves the correct Git credentials.
+    # Remove this annotation if your repository is public.
+    backstage.io/source-location: url:https://github.com/your-org/your-repo/tree/main
 ```
+
+:::caution
+Placeholders in Harness IDP support only Git-based URLs (GitHub, GitLab, Bitbucket, Azure Repo). Arbitrary public HTTP URLs do not work in placeholder syntax. For specs hosted at a non-Git public URL, put the URL directly as the `spec.definition` value without a `$` prefix. Add the domain to **Configure** → **URL Allow List** if you want the spec to render in the UI.
+:::
+
+For private Git repositories, you also need a Git Integration configured at **Configure** → **Git Integrations** and a `backstage.io/source-location` annotation pointing to the repository root. For public Git repositories, the Git Integration alone is sufficient. See [API endpoint extraction and enrichment](/docs/internal-developer-portal/catalog/integrate-tools/api-endpoint-enrichments) for setup steps.
+
+---
+
+## Endpoint extraction and enrichment
+
+When your API entity has `type: openapi`, Harness IDP automatically extracts endpoints from the spec and stores a trimmed, operable representation in Ingested Properties under `metadata.apis`. You can enrich individual endpoints with custom metadata from external tools using the Catalog Custom Properties API.
+
+See [API endpoint extraction and enrichment](/docs/internal-developer-portal/catalog/integrate-tools/api-endpoint-enrichments).
+
+---
 
 ## gRPC docs
 
@@ -359,4 +380,3 @@ metadata:
 #### Rendered output for proto file
 
 ![](../integrate-tools/techdocs/static/non-json-render.png)
-

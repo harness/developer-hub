@@ -537,6 +537,8 @@ We need to add escape character for any field has an additional `DOT` in the pat
 
 **Error Handling**: We validate the body of the API and certain fields like `kind`, `metadata`, `metadata.name`, `metadata.namespace`, are uneditable and if you try to change these, the endpoint returns an Error Code 400. Also make sure your metadata updates adhere to the [backstage schema](https://github.com/backstage/backstage/tree/master/packages/catalog-model/src/schema)
 
+For `kind: API` entities with `type: openapi`, the `metadata.apis` subtree is additionally system-managed: writes to any path under `metadata.apis` other than `metadata.apis.paths."<endpoint>".enrichments.*` also return HTTP 400. See [API endpoint extraction and enrichment](/docs/internal-developer-portal/catalog/integrate-tools/api-endpoint-enrichments).
+
 :::
 
 <details>
