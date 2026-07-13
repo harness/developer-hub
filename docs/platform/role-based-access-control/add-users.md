@@ -160,8 +160,6 @@ To manage users in Harness, you need a role, such as **Account Admin**, that has
 
    The **Assigned At** column indicates the scope at which the assignment was made. If assigned at an organization or project scope, the organization and project name are listed.
 
-   ![](./static/add-users-16.png)
-
 ### Edit direct assignments
 
 Use these steps to manage directly assigned role bindings.
@@ -185,11 +183,6 @@ To edit group membership through a user's profile:
 
 1. Follow the steps to [view role bindings](#view-role-bindings).
 2. Switch to the **Group Memberships** tab.
-
-   <!-- ![](./static/add-users-14.png) -->
-
-   <DocImage path={require('./static/add-users-14.png')} />
-
 3. Select a **[Scope](/docs/category/platform-access-control/rbac-in-harness#permissions-hierarchy-scopes)**.
 
    * **All**: List groups across all scopes.

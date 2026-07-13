@@ -34,8 +34,6 @@ By impersonating a user, Account admins can see exactly what that user sees and 
         Once impersonation is initiated, an email will be sent to alert the user being impersonated.
         :::
 
-    ![impersonate-reason](./static/reason-impersonate.png)
-
 4. The impersonation session lasts 30 minutes. A banner at the top of the screen shows the remaining time for the session.
 
     ![impersonate-popup](./static/session-popup.png)
@@ -43,8 +41,6 @@ By impersonating a user, Account admins can see exactly what that user sees and 
 5. To end the impersonation session midway, click the **End Session** button on the top banner. 
 
 6. When the session ends, a prompt appears giving you the option to either **Restart Session** or **Quit**.
-
-    ![end-impersonate-session](./static/end-impersonate.png)
 
 ### View impersonated user info 
 
