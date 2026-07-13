@@ -3,6 +3,8 @@ title: Anthropic Harness Connector
 description: Connect Harness to Claude.ai and Claude Desktop using the Anthropic Harness Connector with OAuth authentication.
 sidebar_label: Anthropic Connector
 sidebar_position: 12
+redirect_from:
+  - /docs/platform/harness-ai/anthropic-harness-connector
 ---
 
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';

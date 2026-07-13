@@ -5,6 +5,6 @@ sidebar_label: Anthropic Connector
 sidebar_position: 12
 ---
 
-import Ai from '@site/docs/platform/harness-ai/anthropic-harness-connector.md';
+import Ai from '@site/docs/platform/harness-ai/model-connector/anthropic-harness-connector.md';
 
 <Ai />

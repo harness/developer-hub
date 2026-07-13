@@ -1,0 +1,15 @@
+{
+    "label": "Model connector",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "position": "4",
+    "link": {
+        "type": "doc",
+        "id": "platform/harness-ai/model-connector/model-connector"
+    },
+    "customProps": {
+
+
+    }
+}
