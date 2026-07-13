@@ -2,6 +2,9 @@
 title: Run Initialization Scripts Before Delegate Startup
 description: Learn how to run custom initialization scripts before Delegate 3.x registers with Harness
 sidebar_position: 3
+slug: /platform/delegates-v3/configure-init-script
+redirect_from:
+    - /docs/platform/delegates-v2/configure-init-script
 ---
 
 When deploying the Harness Delegate, you often need to prepare the environment before the delegate starts processing tasks. Initialization scripts address this need by allowing you to run custom setup commands that execute before the delegate registers with Harness.

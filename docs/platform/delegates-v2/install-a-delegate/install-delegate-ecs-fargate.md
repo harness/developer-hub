@@ -2,15 +2,18 @@
 title: Install a Delegate on Amazon ECS or AWS Fargate
 description: Learn how to install Delegate 3.x on Amazon ECS or AWS Fargate clusters
 sidebar_position: 5
+slug: /platform/delegates-v3/install-a-delegate/install-delegate-ecs-fargate
+redirect_from:
+    - /docs/platform/delegates-v2/install-a-delegate/install-delegate-ecs-fargate
 ---
 
 :::warning Closed Beta
 
-Delegate 3.x is currently in closed beta and available only to select users. Access is determined by the product team. See [Feature Parity](/docs/platform/delegates-v2/feature-parity) for current supported use cases.
+Delegate 3.x is currently in closed beta and available only to select users. Access is determined by the product team. See [Feature Parity](/docs/platform/delegates-v3/feature-parity) for current supported use cases.
 
 :::
 
-This guide walks you through installing Delegate 3.x on Amazon Elastic Container Service (ECS) or AWS Fargate. The delegate runs as a container in your ECS cluster and connects to Harness to execute CI builds and other tasks. For supported connectors, CI steps, secret managers, and module support by deployment type, see the [Feature Parity](/docs/platform/delegates-v2/feature-parity) page.
+This guide walks you through installing Delegate 3.x on Amazon Elastic Container Service (ECS) or AWS Fargate. The delegate runs as a container in your ECS cluster and connects to Harness to execute CI builds and other tasks. For supported connectors, CI steps, secret managers, and module support by deployment type, see the [Feature Parity](/docs/platform/delegates-v3/feature-parity) page.
 
 :::info
 To learn more about Delegate 3.x, including architecture and how it compares to the legacy delegate, see the [Delegate 3.x Overview](../delegate-overview).
@@ -20,7 +23,7 @@ To learn more about Delegate 3.x, including architecture and how it compares to 
 
 Before deploying the delegate on ECS or Fargate, review the following information:
 
-- **Feature parity with Kubernetes:** Delegate 3.x on ECS targets the same capabilities as Kubernetes delegates, including CI builds, CD deployments, and Database DevOps tasks. Go to the [Feature Parity](/docs/platform/delegates-v2/feature-parity) page to verify support for your specific connectors and pipeline steps.
+- **Feature parity with Kubernetes:** Delegate 3.x on ECS targets the same capabilities as Kubernetes delegates, including CI builds, CD deployments, and Database DevOps tasks. Go to the [Feature Parity](/docs/platform/delegates-v3/feature-parity) page to verify support for your specific connectors and pipeline steps.
 - **Manual updates required:** Delegates deployed on ECS do not auto-update. You must manually update the delegate by deploying a new task definition with the latest image. Harness recommends updating every 3 to 6 months to balance security and feature updates.
 - **Infrastructure limits on Fargate:** When using AWS Fargate, tasks that exceed the specified CPU or memory limits will be terminated by AWS. This is a limitation of Fargate infrastructure. If you need more flexibility with resource limits, consider using ECS on EC2 instances or a Kubernetes-based deployment.
 - **Docker image compatibility:** Delegate 3.x uses a different Docker image than legacy delegates. Ensure you use the correct image format for Delegate 3.x deployments.

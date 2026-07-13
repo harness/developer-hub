@@ -3,6 +3,9 @@ title: Feature Parity
 description: Detailed comparison of features between Delegate 3.x and the legacy delegate
 sidebar_position: 1
 sidebar_label: Feature Parity
+slug: /platform/delegates-v3/feature-parity
+redirect_from:
+    - /docs/platform/delegates-v2/feature-parity
 ---
 
 :::warning Closed Beta

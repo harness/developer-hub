@@ -3,11 +3,14 @@ title: Capacity-Based Stage Queuing
 description: Control concurrent stage execution on Delegate 3.x using MAX_STAGES and server-side queuing.
 sidebar_position: 4
 sidebar_label: Capacity-Based Stage Queuing
+slug: /platform/delegates-v3/capacity-based-stage-queuing
+redirect_from:
+    - /docs/platform/delegates-v2/capacity-based-stage-queuing
 ---
 
 :::warning Closed Beta
 
-Delegate 3.x is currently in closed beta and available only to select users. The product team determines access based on current supported use cases. See [Feature Parity](/docs/platform/delegates-v2/feature-parity) for the latest details.
+Delegate 3.x is currently in closed beta and available only to select users. The product team determines access based on current supported use cases. See [Feature Parity](/docs/platform/delegates-v3/feature-parity) for the latest details.
 
 :::
 
@@ -36,7 +39,7 @@ This configuration allows the delegate to execute only one Local (Docker) Infra 
 
 If `MAX_STAGES` is not set, the number of concurrent stage executions is unbounded.
 
-For full installation and configuration details, go to [Delegate Configuration Reference](/docs/platform/delegates-v2/install-a-delegate/configure-delegate#set-max-stage-capacity).
+For full installation and configuration details, go to [Delegate Configuration Reference](/docs/platform/delegates-v3/install-a-delegate/configure-delegate#set-max-stage-capacity).
 
 ### Queued stage visibility
 
@@ -379,6 +382,6 @@ Users only see stages from projects they have access to based on their RBAC conf
 
 ## Next steps
 
-- **[Install Harness Delegate](/docs/platform/delegates-v2/install-a-delegate/install-delegate-macos):** Set up Delegate 3.x and configure `MAX_STAGES`.
-- **[Delegate overview](/docs/platform/delegates-v2/delegate-overview):** Learn about the transactional execution model and architecture.
-- **[Feature parity](/docs/platform/delegates-v2/feature-parity):** Compare supported features between the new and legacy delegates.
+- **[Install Harness Delegate](/docs/platform/delegates-v3/install-a-delegate/install-delegate-macos):** Set up Delegate 3.x and configure `MAX_STAGES`.
+- **[Delegate overview](/docs/platform/delegates-v3/delegate-overview):** Learn about the transactional execution model and architecture.
+- **[Feature parity](/docs/platform/delegates-v3/feature-parity):** Compare supported features between the new and legacy delegates.

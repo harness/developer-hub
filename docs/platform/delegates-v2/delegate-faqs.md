@@ -2,6 +2,9 @@
 title: Delegate 3.x FAQs
 sidebar_label: Delegate 3.x FAQs
 description: Frequently asked questions about Delegate 3.x
+slug: /platform/delegates-v3/delegate-faqs
+redirect_from:
+    - /docs/platform/delegates-v2/delegate-faqs
 keywords:
   - delegate
   - certificates
@@ -159,4 +162,4 @@ import requests
 requests.get('https://internal.example.com', verify='/opt/harness/certs/custom-ca.crt')
 ```
 
-Go to [Configure Custom Certificates and mTLS](/docs/platform/delegates-v2/custom-certs-and-mtls) to configure Java truststore settings for delegate-to-Harness communication.
+Go to [Configure Custom Certificates and mTLS](/docs/platform/delegates-v3/custom-certs-and-mtls) to configure Java truststore settings for delegate-to-Harness communication.

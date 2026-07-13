@@ -2,6 +2,9 @@
 title: Disaster Recovery Strategy
 description: Design a resilient multi-region delegate architecture with automatic failover
 sidebar_position: 5
+slug: /platform/delegates-v3/disaster-recovery-strategy
+redirect_from:
+    - /docs/platform/delegates-v2/disaster-recovery-strategy
 keywords:
   - disaster recovery
   - delegate

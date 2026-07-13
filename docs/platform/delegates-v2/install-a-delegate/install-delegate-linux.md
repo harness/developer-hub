@@ -2,13 +2,16 @@
 title: Install a Local Delegate on Linux
 description: Learn how to install and configure Delegate 3.x on a Linux machine
 sidebar_position: 2
+slug: /platform/delegates-v3/install-a-delegate/install-delegate-linux
+redirect_from:
+    - /docs/platform/delegates-v2/install-a-delegate/install-delegate-linux
 ---
 
 :::warning Closed Beta
-Delegate 3.x is currently in closed beta and available only to select users. Access is determined by the product team. See [Feature Parity](/docs/platform/delegates-v2/feature-parity) for current supported use cases.
+Delegate 3.x is currently in closed beta and available only to select users. Access is determined by the product team. See [Feature Parity](/docs/platform/delegates-v3/feature-parity) for current supported use cases.
 :::
 
-This guide walks you through installing Delegate 3.x on a Linux machine. Skip to the [End-to-End Demo](#end-to-end-demo) to watch video instructions instead. For supported connectors, CI steps, secret managers, and module support by deployment type, see the [Feature Parity](/docs/platform/delegates-v2/feature-parity) page — that's the single source of truth, kept up to date as support expands.
+This guide walks you through installing Delegate 3.x on a Linux machine. Skip to the [End-to-End Demo](#end-to-end-demo) to watch video instructions instead. For supported connectors, CI steps, secret managers, and module support by deployment type, see the [Feature Parity](/docs/platform/delegates-v3/feature-parity) page — that's the single source of truth, kept up to date as support expands.
 
 :::info
 To learn more about Delegate 3.x, including architecture and how it compares to the legacy delegate, see the [Delegate 3.x Overview](../delegate-overview).

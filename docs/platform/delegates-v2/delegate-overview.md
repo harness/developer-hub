@@ -3,13 +3,15 @@ title: Overview
 description: Learn about Delegate 3.x
 sidebar_position: 0
 sidebar_label: Overview
+slug: /platform/delegates-v3/delegate-overview
 redirect_from:
+    - /docs/platform/delegates-v2/delegate-overview
     - /docs/platform/delegates-v2/install-delegate-2-0/delegate-overview
 ---
 
 :::warning Closed Beta
 
-Delegate 3.x is currently in closed beta and available only to select users. The product team determines access based on current supported use cases. See [Feature Parity](/docs/platform/delegates-v2/feature-parity) for the latest details.
+Delegate 3.x is currently in closed beta and available only to select users. The product team determines access based on current supported use cases. See [Feature Parity](/docs/platform/delegates-v3/feature-parity) for the latest details.
 
 :::
 
@@ -75,7 +77,7 @@ Task cancellation is supported for local (Docker) infrastructure, allowing runni
 
 ![Queuing](./static/queuing.png)
 
-For details on configuring capacity limits, use cases, and how stages are distributed across delegates, go to [Capacity-Based Stage Queuing](/docs/platform/delegates-v2/capacity-based-stage-queuing).
+For details on configuring capacity limits, use cases, and how stages are distributed across delegates, go to [Capacity-Based Stage Queuing](/docs/platform/delegates-v3/capacity-based-stage-queuing).
 
 ## Standalone tasks
 
@@ -115,10 +117,10 @@ Several capabilities are planned for future releases:
 
 ## Installation and configuration
 
-For detailed installation instructions and configuration options, go to [Install Harness Delegate](/docs/platform/delegates-v2/install-a-delegate/install-delegate-macos).
+For detailed installation instructions and configuration options, go to [Install Harness Delegate](/docs/platform/delegates-v3/install-a-delegate/install-delegate-macos).
 
 ## Feature comparison
 
-For a detailed comparison with the legacy delegate, current support status, and the development roadmap, go to [Feature Parity](/docs/platform/delegates-v2/feature-parity).
+For a detailed comparison with the legacy delegate, current support status, and the development roadmap, go to [Feature Parity](/docs/platform/delegates-v3/feature-parity).
 
 For information about the legacy delegate, go to [Legacy delegate documentation](/docs/platform/delegates/delegate-concepts/delegate-overview).

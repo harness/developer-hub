@@ -2,7 +2,9 @@
 title: Install a Local Delegate on macOS
 description: Learn how to install and configure Delegate 3.x on a macOS machine
 sidebar_position: 1
+slug: /platform/delegates-v3/install-a-delegate/install-delegate-macos
 redirect_from:
+  - /docs/platform/delegates-v2/install-a-delegate/install-delegate-macos
   - /docs/continuous-integration/use-ci/set-up-build-infrastructure/install-delegate-2-0
   - /docs/platform/delegates/delegate-v2/install-delegate-2-0
   - /docs/platform/delegates-v2/install-delegate-2-0
@@ -13,10 +15,10 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 :::warning Closed Beta
-Delegate 3.x is currently in closed beta and available only to select users. Access is determined by the product team. See [Feature Parity](/docs/platform/delegates-v2/feature-parity) for current supported use cases.
+Delegate 3.x is currently in closed beta and available only to select users. Access is determined by the product team. See [Feature Parity](/docs/platform/delegates-v3/feature-parity) for current supported use cases.
 :::
 
-This guide walks you through installing the Harness Delegate on a macOS machine. For other platforms, see the [Linux](./install-delegate-linux) and [Windows](./install-delegate-windows) installation guides. For supported connectors, CI steps, secret managers, and module support by deployment type, see the [Feature Parity](/docs/platform/delegates-v2/feature-parity) page — that's the single source of truth, kept up to date as support expands.
+This guide walks you through installing the Harness Delegate on a macOS machine. For other platforms, see the [Linux](./install-delegate-linux) and [Windows](./install-delegate-windows) installation guides. For supported connectors, CI steps, secret managers, and module support by deployment type, see the [Feature Parity](/docs/platform/delegates-v3/feature-parity) page — that's the single source of truth, kept up to date as support expands.
 
 :::info
 To learn more about Delegate 3.x, including architecture and how it compares to the legacy delegate, see the [Delegate 3.x Overview](../delegate-overview).

@@ -2,18 +2,20 @@
 title: Install a Delegate on Kubernetes
 description: Learn how to install Delegate 3.x in a Kubernetes cluster
 sidebar_position: 4
+slug: /platform/delegates-v3/install-a-delegate/install-kubernetes-delegate
 redirect_from:
+  - /docs/platform/delegates-v2/install-a-delegate/install-kubernetes-delegate
   - /docs/platform/delegates/delegate-v2/install-kubernetes-delegate-2-0
   - /docs/platform/delegates-v2/install-kubernetes-delegate-2-0
 ---
 
 :::warning Closed Beta
 
-Delegate 3.x is currently in closed beta and available only to select users. Access is determined by the product team. See [Feature Parity](/docs/platform/delegates-v2/feature-parity) for current supported use cases.
+Delegate 3.x is currently in closed beta and available only to select users. Access is determined by the product team. See [Feature Parity](/docs/platform/delegates-v3/feature-parity) for current supported use cases.
 
 :::
 
-This guide describes how to install Delegate 3.x in a Kubernetes cluster. The Kubernetes delegate runs as a deployment in your cluster and can execute CI builds and other Harness tasks. For supported connectors, CI steps, secret managers, and module support by deployment type, see the [Feature Parity](/docs/platform/delegates-v2/feature-parity) page — that's the single source of truth, kept up to date as support expands.
+This guide describes how to install Delegate 3.x in a Kubernetes cluster. The Kubernetes delegate runs as a deployment in your cluster and can execute CI builds and other Harness tasks. For supported connectors, CI steps, secret managers, and module support by deployment type, see the [Feature Parity](/docs/platform/delegates-v3/feature-parity) page — that's the single source of truth, kept up to date as support expands.
 
 :::info
 To learn more about Delegate 3.x, including architecture and how it compares to the legacy delegate, see the [Delegate 3.x Overview](../delegate-overview).
@@ -318,7 +320,7 @@ To use Delegate 3.x for connector connectivity tests and secret manager operatio
 3. The delegate will automatically be used for connector tests and secret manager operations when the tags match.
 
 :::info
-For the full list of connectors supported by Delegate 3.x, see [Connector support](/docs/platform/delegates-v2/feature-parity#connector-support) on the Feature Parity page.
+For the full list of connectors supported by Delegate 3.x, see [Connector support](/docs/platform/delegates-v3/feature-parity#connector-support) on the Feature Parity page.
 :::
 
 

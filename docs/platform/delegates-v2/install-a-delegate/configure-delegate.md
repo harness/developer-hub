@@ -2,6 +2,9 @@
 title: Delegate Configuration Reference
 description: Common configuration options for Delegate 3.x across all platforms
 sidebar_position: 5
+slug: /platform/delegates-v3/install-a-delegate/configure-delegate
+redirect_from:
+    - /docs/platform/delegates-v2/install-a-delegate/configure-delegate
 ---
 
 This page covers the configuration options that apply to Delegate 3.x regardless of which operating system it runs on. For OS-specific installation and setup instructions, see the individual guides:
@@ -116,7 +119,7 @@ For complete documentation on configuring and using init scripts, including comm
 
 Delegate 3.x supports custom certificate authorities (CAs) and mutual TLS (mTLS) authentication for secure communication in enterprise environments with self-signed certificates or strict security requirements. This capability is available starting with Delegate 3.x version 1.40.2.
 
-Go to [Configure Custom Certificates and mTLS](/docs/platform/delegates-v2/custom-certs-and-mtls) to find detailed configuration instructions, including environment variables and Kubernetes deployment examples.
+Go to [Configure Custom Certificates and mTLS](/docs/platform/delegates-v3/custom-certs-and-mtls) to find detailed configuration instructions, including environment variables and Kubernetes deployment examples.
 
 ## Log File Configuration
 

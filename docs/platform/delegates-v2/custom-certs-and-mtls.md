@@ -2,6 +2,9 @@
 title: Configure Custom Certificates and mTLS
 description: Learn how to configure custom certificates and mutual TLS (mTLS) for Harness Delegate 3.x
 sidebar_position: 4
+slug: /platform/delegates-v3/custom-certs-and-mtls
+redirect_from:
+    - /docs/platform/delegates-v2/custom-certs-and-mtls
 ---
 
 Harness Delegate 3.x supports custom certificate authorities (CAs) and mutual TLS (mTLS) authentication, enabling secure communication in enterprise environments with self-signed certificates or strict security requirements. These features became available starting with Delegate 3.x version 1.40.2.
