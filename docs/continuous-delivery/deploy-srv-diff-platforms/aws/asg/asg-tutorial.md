@@ -524,6 +524,117 @@ However, the AWS CLI [create-auto-scaling-group](https://docs.aws.amazon.com/cli
 </details>
 
 
+### Use MixedInstancesPolicy for cost optimization and resilience
+
+:::note
+This feature is behind the feature flag `CDS_ASG_MIXED_INSTANCES_POLICY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+AWS MixedInstancesPolicy allows your Auto Scaling Group to use multiple instance types and purchase options (On-Demand and Spot instances), enabling capacity resilience against stock-outs and cost optimization by letting AWS select from the cheapest available instance types at any moment.
+
+When you enable MixedInstancesPolicy for your ASG, Harness automatically detects the configuration and manages the launch template appropriately. Supported operations include create, update, health check, instance refresh, and rollback across all deployment strategies (rolling, blue-green, canary, setup).
+
+#### Configure MixedInstancesPolicy in your ASG configuration file
+
+Add a `mixedInstancesPolicy` section to your ASG configuration JSON file. Do not include a `launchTemplateSpecification` field inside `mixedInstancesPolicy.launchTemplate`; Harness manages the launch template reference and injects it automatically. You configure all other MixedInstancesPolicy settings, including instance type overrides and purchase options.
+
+<details>
+<summary>ASG configuration with MixedInstancesPolicy example</summary>
+
+```json
+{
+  "autoScalingGroupName": "my-asg",
+  "minSize": 1,
+  "maxSize": 10,
+  "desiredCapacity": 2,
+  "mixedInstancesPolicy": {
+    "launchTemplate": {
+      "overrides": [
+        { "instanceType": "t3.medium" },
+        { "instanceType": "t3.large" },
+        { "instanceType": "m5.large" }
+      ]
+    },
+    "instancesDistribution": {
+      "onDemandBaseCapacity": 1,
+      "onDemandPercentageAboveBaseCapacity": 0,
+      "spotAllocationStrategy": "price-capacity-optimized"
+    }
+  }
+}
+```
+</details>
+
+The example above configures an ASG with three instance type options. AWS will start with one On-Demand instance (`onDemandBaseCapacity: 1`) and use Spot instances for all capacity above that base (`onDemandPercentageAboveBaseCapacity: 0`), selecting from the cheapest available instance type among the three overrides at any moment.
+
+#### Manage launch templates with MixedInstancesPolicy
+
+When MixedInstancesPolicy is present in your configuration, the launch template reference in AWS moves from the top-level `LaunchTemplate` field to `MixedInstancesPolicy.LaunchTemplate.LaunchTemplateSpecification`. Harness detects this automatically and routes all launch template operations (create, update, version tracking) to the correct location.
+
+During ASG creation or updates, Harness will inject the launch template specification into the nested `MixedInstancesPolicy.LaunchTemplate.LaunchTemplateSpecification` path instead of the top-level field. All existing deployment strategies continue to work without changes.
+
+#### Switch between regular and MixedInstancesPolicy configurations
+
+You can convert an existing ASG between regular and MixedInstancesPolicy configurations by updating your ASG configuration JSON file and running a deployment:
+
+- **Regular to MixedInstancesPolicy**: Add the `mixedInstancesPolicy` section to your configuration JSON. On the next deployment, Harness will create or update the ASG with MixedInstancesPolicy enabled.
+- **MixedInstancesPolicy to Regular**: Remove the `mixedInstancesPolicy` section from your configuration JSON. On the next deployment, Harness will convert the ASG back to a regular configuration with a top-level launch template reference.
+
+The conversion is automatic. AWS allows only one mode at a time (either top-level `LaunchTemplate` or `MixedInstancesPolicy`), and Harness handles the transition based on what is present in your configuration file.
+
+#### Configure MixedInstancesPolicy options
+
+You can configure the following MixedInstancesPolicy settings in your ASG configuration JSON. All AWS-supported options are available except `launchTemplateSpecification` (which Harness manages).
+
+#### Instance type overrides
+
+Define multiple instance types from which AWS can choose. AWS will select based on availability and cost optimization according to your `spotAllocationStrategy`. You can specify up to 40 instance types in overrides.
+
+You can optionally specify `weightedCapacity` on each override to define how much capacity each instance type contributes toward the ASG's desired capacity. When weighted capacity is configured, Harness evaluates steady state based on total capacity targets rather than raw instance count. For example, if `desiredCapacity` is 4 and an instance type has `weightedCapacity: "2"`, two such instances satisfy the target.
+
+<details>
+<summary>Instance type overrides example</summary>
+
+```json
+"launchTemplate": {
+  "overrides": [
+    { "instanceType": "t3.medium" },
+    { "instanceType": "t3.large" },
+    { "instanceType": "m5.large", "weightedCapacity": "2" }
+  ]
+}
+```
+</details>
+
+#### Instances distribution settings
+
+Control the balance between On-Demand and Spot instances, and how AWS selects instance types.
+
+<details>
+<summary>Instance distribution configuration example</summary>
+
+```json
+"instancesDistribution": {
+  "onDemandAllocationStrategy": "prioritized",
+  "onDemandBaseCapacity": 2,
+  "onDemandPercentageAboveBaseCapacity": 20,
+  "spotAllocationStrategy": "price-capacity-optimized",
+  "spotMaxPrice": "0.05"
+}
+```
+</details>
+
+- **`onDemandBaseCapacity`**: The minimum number of On-Demand instances. AWS launches this many On-Demand instances before considering Spot instances.
+- **`onDemandPercentageAboveBaseCapacity`**: Percentage of capacity above the base that should be On-Demand instances (0-100). For example, if you set this to 20 and have 10 instances above the base, 2 will be On-Demand and 8 will be Spot.
+- **`onDemandAllocationStrategy`**: How AWS selects On-Demand instance types from your overrides. Use `prioritized` to prefer instance types in the order you list them.
+- **`spotAllocationStrategy`**: How AWS selects Spot instance types. Use `price-capacity-optimized` (recommended) to balance cost and capacity availability, or `lowest-price` to minimize cost.
+- **`spotInstancePools`**: Number of Spot instance pools to use when `spotAllocationStrategy` is `lowest-price`. AWS divides Spot capacity across this many pools to reduce interruption risk. This setting is ignored when `spotAllocationStrategy` is `price-capacity-optimized`.
+- **`spotMaxPrice`**: Maximum price per hour you are willing to pay for a Spot instance. If not specified, defaults to the On-Demand price.
+
+Go to [AWS MixedInstancesPolicy documentation](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-mixed-instances-groups.html) to review all configuration options and best practices.
+
+---
+
 ### ASG Additional Configuration
 
 ![](../static/asg-additional-configuration.png)
