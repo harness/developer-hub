@@ -84,10 +84,6 @@ Click **Save and Continue**.
 
     The organization is created and you can now invite collaborators.
 
-<div style={{textAlign: 'center'}}>
-  <DocImage path={require('./static/create-an-organization-01.png')} width="80%" height="60%" title="Click to view full size image" /> </div>
-
-
 #### Invite collaborators
 
 You do not have to add the same members to an org and its projects. You can add org-level members, and then add project-level members later when you set up or edit a project.
@@ -102,10 +98,6 @@ The org and any projects added to the org are used by their members only.
 2. Select **Invite People to Collaborate**, type a member's name and select it.
 3. In **Role**, select the role the member will have in this org, such as Organization Admin or Organization Member.  
 You can select multiple people and assign **Role**.
-
-<div style={{textAlign: 'center'}}>
-  <DocImage path={require('./static/create-an-organization-02.png')} width="80%" height="60%" title="Click to view full size image" /> </div>
-
 4. Click **Add**.
    
    Members receive invites via their email addresses.
