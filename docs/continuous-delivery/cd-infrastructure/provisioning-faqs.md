@@ -1,508 +1,558 @@
 ---
 title: Infrastructure Provisioning FAQs
-description: Frequently asked questions about provisioning.
+sidebar_label: Provisioning FAQs
+description: Answers to common questions about infrastructure provisioning in Harness CD.
 sidebar_position: 10
+tags:
+  - faq
+  - continuous-delivery
+  - cd-infrastructure
 ---
 
-This article addresses some frequently asked questions about Harness provisioning.
+This topic answers common questions about infrastructure provisioning in Harness Continuous Delivery (CD).
 
-### What if I have a custom provisioning tool, how can Harness support this?
+Go to the [provisioning overview](/docs/continuous-delivery/cd-infrastructure/provisioning-overview) to understand how provisioning works.
 
-Harness has first-class support for Terraform, Terragrunt, AWS CloudFormation, Azure ARM, and Blueprint provisioners, but to support different provisioners, or your existing shell script implementations, Harness includes Shell Script provisioning.
-More details here [here](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/shell-script-provisioning).
+---
 
-### Does Harness support Database Orchestration?
+## Supported provisioners and integrations
 
-Yes, Harness supports Database Orchestration with Database DevOps. You can use Database DevOps to orchestrate database changes alongside your application deployments. With Database DevOps, you can create pipelines that include steps for deploying database changes which are similar Liquibase and Flyway, as well as custom SQL scripts. This allows you to manage database changes in a controlled and automated manner, ensuring that your database schema is always in sync with your application code.
+### Does Harness support a custom provisioning tool?
 
-More details can be found here for our [Database DevOps](/docs/database-devops/overview) module.
+Harness supports Terraform, Terragrunt, AWS CloudFormation, Azure ARM, and Azure Blueprint provisioners. To support other provisioners or your existing shell script implementations, Harness includes Shell Script provisioning.
+
+Go to [Shell Script provisioning](/docs/continuous-delivery/cd-infrastructure/shell-script-provisioning) to configure it.
+
+### Does Harness support database orchestration?
+
+Yes. Harness supports database orchestration with Database DevOps. You can create pipelines that include steps for deploying database changes, similar to Liquibase and Flyway, as well as custom SQL scripts. This keeps your database schema in sync with your application code in a controlled, automated manner.
+
+Go to [Database DevOps](/docs/database-devops/overview) to orchestrate database changes alongside your deployments.
 
 ### Does Harness support Cosmos DB?
 
-To orchestrate the SQL Changes to the database, you need to customize our functionality using the following:
+To orchestrate SQL changes to the database, customize the functionality using the following:
 
 - [Container step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/container-step)
-- [Container step group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups) 
-- [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) 
-- [Shell Script Provisioner](/docs/continuous-delivery/cd-infrastructure/shell-script-provisioning) 
+- [Container step group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups)
+- [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step)
+- [Shell Script Provisioner](/docs/continuous-delivery/cd-infrastructure/shell-script-provisioning)
 
-To create a Cosmos DB, we support the creation via:
+To create a Cosmos DB, Harness supports creation through:
 
-- [Azure ARM](/docs/continuous-delivery/cd-infrastructure/azure-arm-provisioning) 
-- [Azure Blueprint](/docs/continuous-delivery/cd-infrastructure/azure-blueprint-provisioning) 
+- [Azure ARM](/docs/continuous-delivery/cd-infrastructure/azure-arm-provisioning)
+- [Azure Blueprint](/docs/continuous-delivery/cd-infrastructure/azure-blueprint-provisioning)
 - [Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness)
 
 ### Does Harness support Azure Cache?
 
-Azure Cache is not an application that a user deploys. It’s a managed Redis service by Azure. Harness can assist in spinning up Azure Cache by our infrastructure provisioning capabilities:
+Azure Cache is not an application that you deploy. It is a managed Redis service by Azure. Harness can help spin up Azure Cache through its infrastructure provisioning capabilities:
 
-- [Azure ARM](/docs/continuous-delivery/cd-infrastructure/azure-arm-provisioning) 
-- [Azure Blueprint](/docs/continuous-delivery/cd-infrastructure/azure-blueprint-provisioning) 
-- [Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness) 
+- [Azure ARM](/docs/continuous-delivery/cd-infrastructure/azure-arm-provisioning)
+- [Azure Blueprint](/docs/continuous-delivery/cd-infrastructure/azure-blueprint-provisioning)
+- [Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness)
 
 ### Does Harness support Azure App Services?
 
-No, we do not support Azure App Services as a native swimlane like Azure Web Apps.
+No. Harness does not support Azure App Services as a native deployment type like Azure Web Apps.
 
-We do support [deployment templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom/custom-deployment-tutorial) to achieve the use case.
+Harness supports [deployment templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom/custom-deployment-tutorial) to achieve this use case. Alternatively, you can orchestrate the release through:
 
-Or you can orchestrate the release via: 
-
-- [Azure ARM](/docs/continuous-delivery/cd-infrastructure/azure-arm-provisioning) 
-- [Azure Blueprint](/docs/continuous-delivery/cd-infrastructure/azure-blueprint-provisioning) 
+- [Azure ARM](/docs/continuous-delivery/cd-infrastructure/azure-arm-provisioning)
+- [Azure Blueprint](/docs/continuous-delivery/cd-infrastructure/azure-blueprint-provisioning)
 - [Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness)
 
-### Does Shell Script provisioning step has built in output variables?
+### Can Harness connect to a Databricks cluster?
 
-Shell Script Provisioning step does not have script output variables similar to Shell Script step. Their variable configuration step only have option for input variables.
+No. Harness does not have a native integration. If you use Terraform, define the access block by following the [Databricks Terraform provider documentation](https://registry.terraform.io/providers/databricks/databricks/latest/docs#authentication). Wherever the delegate is hosted, it needs network access to reach and communicate with Databricks.
 
-### How to access output variables from Shell Script Provisioning step?
+---
 
-The Shell Script Provisioning step expects the output to be put to a json form inside the file `$PROVISIONER_OUTPUT_PATH`. This is then subsequently accessed in next step with Instance variable like below:
- 
-`<+pipeline.stages.shellscriptprovision.spec.execution.steps.shell1.output.Instances>`
+## Shell Script provisioning
 
-### To store my shell script when I use Harness File Store I don't see any option like Bitbucket, or GitHub.
+### Does the Shell Script Provisioning step have built-in output variables?
 
-As of today, we have only two options to select the shell script provision script. That is inline and Harness file store.
+The Shell Script Provisioning step does not have script output variables like the Shell Script step. Its variable configuration only provides input variables.
 
+### How do I access output variables from the Shell Script Provisioning step?
 
-### Do we have predefined rollback step while using Shell Script provisioning?
+The Shell Script Provisioning step expects the output to be written in JSON to the file `$PROVISIONER_OUTPUT_PATH`. You then access it in a subsequent step with an instance variable, for example:
 
-No, Out for the box Rollback step is not available and you need to add your own scripts under Rollback section of the stage Environment.
-
-### Why can't I deploy an ARM template?
-
-If you are getting the below error when attempting to deploy ARM templates, it might be because `$schema` and `contentVersion` parameters have not been removed from the Parameters File yet. This is due to a limitation in the Azure Java SDK and REST API.
-
+```text
+<+pipeline.stages.shellscriptprovision.spec.execution.steps.shell1.output.Instances>
 ```
+
+### Why do I not see Bitbucket or GitHub options when storing my shell script in the Harness File Store?
+
+Currently, there are only two options to select the shell script provisioning script: inline and the Harness File Store.
+
+### Is there a predefined rollback step for Shell Script provisioning?
+
+No. An out-of-the-box rollback step is not available. Add your own scripts under the **Rollback** section of the stage **Environment**.
+
+---
+
+## CloudFormation provisioning
+
+### Is there a way to simulate CloudFormation changes without applying them?
+
+Yes. Use the change set feature. First, create a change set to preview the changes. Once you are satisfied with the preview, execute the change set using the [aws cloudformation execute-change-set](https://docs.aws.amazon.com/cli/latest/reference/cloudformation/execute-change-set.html) command. This lets you assess the impact of the changes before applying them.
+
+### How do I use CloudFormation with Harness?
+
+You can use CloudFormation with Harness in two ways:
+
+- **Dynamic infrastructure provisioning:** Provision the target infrastructure for a deployment as part of the stage **Environment** settings, then deploy to that provisioned infrastructure in the same stage.
+- **Ad hoc provisioning:** Provision resources other than the target infrastructure for the deployment.
+
+---
+
+## Azure provisioning
+
+### Why can I not deploy an ARM template?
+
+If you get the following error when deploying ARM templates, the `$schema` and `contentVersion` parameters might not have been removed from the parameters file. This is due to a limitation in the Azure Java SDK and REST API.
+
+```text
 Status code 400, "{"error":{"code":"InvalidRequestContent","message":"The request content was invalid and could not be deserialized: 'Error converting value \"https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#\" to type 'Azure.Deployments.Core.Definitions.DeploymentParameterDefinition'. Path 'properties.parameters.$schema', line 1, position 6636.'."}}"
 ```
 
-For an example of a valid Parameters File, go to [ARM parameter file](/docs/continuous-delivery/cd-infrastructure/azure-arm-provisioning/#arm-parameter-file).
+Go to [ARM parameter file](/docs/continuous-delivery/cd-infrastructure/azure-arm-provisioning#arm-parameter-file) to review a valid example.
 
-### Is there a method to simulate CloudFormation changes without actually applying them?
+---
 
-Yes, you can achieve this by utilizing the Change Set Feature. First, create a change set to preview the changes that will be made. Once you are satisfied with the preview, you can execute the change set using the command: [aws cloudformation execute-change-set](https://docs.aws.amazon.com/cli/latest/reference/cloudformation/execute-change-set.html). This allows you to assess the impact of the changes before applying them.
+## AWS CDK provisioning
 
-### How can you use CloudFormation with Harness?
+### How do I use AWS CDK infrastructure provisioning in Harness?
 
-You can use Harness with CloudFormation in two ways:
-Dynamic infrastructure provisioning: you can provision the target infrastructure for a deployment as part of the stage's Environment settings, and then deploy to that provisioned infrastructure in the same stage.
-Ad hoc provisioning: provision any resources other than the target infrastructure for the deployment.
+Harness lets you run AWS CDK workloads through container-based steps.
+
+Go to [AWS CDK provisioning](/docs/continuous-delivery/cd-infrastructure/aws-cdk) to learn more.
+
+### Does AWS CDK still require feature flags to use?
+
+No. AWS CDK is generally available and does not require any feature flags to enable and use.
+
+Go to [AWS CDK provisioning](/docs/continuous-delivery/cd-infrastructure/aws-cdk) to learn more.
+
+### What is the current and future support for CDK, including zipped files and CDK as a deployment type?
+
+CDK currently supports containerized images but not zipped files. CDK is not a deployment type; it functions similarly to CloudFormation. Support for zipped files is planned. Native canary and blue-green deployments are not possible with CDK due to its black-box nature.
+
+### How do I resolve a ModuleNotFoundError for aws_cdk in a CDK step?
+
+The `ModuleNotFoundError` for `aws_cdk` occurs because the required Python packages are not installed in the CDK Synth step container. Add a `pip install` command within the step.
+
+---
+
+## Terraform provisioning and configuration
 
 ### How does Harness support Terraform?
 
-Harness lets you use Terraform to provision infrastructure as part of your deployment process. Harness can provision any resource that is supported by a Terraform [provider or plugin](https://www.terraform.io/docs/configuration/providers.html).
+Harness lets you use Terraform to provision infrastructure as part of your deployment process. Harness can provision any resource supported by a Terraform [provider or plugin](https://www.terraform.io/docs/configuration/providers.html).
 
-For an overview of the process see [Terraform provisioning with Harness](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness). 
-
-### How can I ensure the state file is properly saved in the Terraform Enterprise (TFE) workspace when running a Terraform apply script locally on the Harness delegate?
-
-One thing to check is whether the Harness delegate has the necessary permissions to write to the `dev-workflow-aws-harness` workspace. If the delegate lacks the required permissions, the state file won't be uploaded to the TFE workspace.
+Go to [Terraform provisioning with Harness](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness) to review the process.
 
 ### Do I need to deploy an application to use Terraform?
 
 No. You do not need to deploy artifacts through Harness services to use Terraform provisioning in a workflow. You can use Terraform to provision infrastructure without deploying any artifact.
 
-### Are Harness service instances counted with Terraform provisioning?
-
-Harness service instances (SIs) are not consumed and no additional licensing is required when a Harness pipeline uses Terraform to provision resources. When Harness deploys artifacts through Harness services to the provisioned infrastructure in the same pipeline, SI licensing is consumed.
-
 ### What deployment strategies can I use Terraform with?
 
-You can use Terraform with all strategies.
+You can use Terraform with all deployment strategies.
 
 ### Can I perform a Terraform dry run?
 
-Yes. The Terraform Plan and Terraform Apply steps can be executed as a dry run, just like running the [terraform plan](https://www.terraform.io/docs/commands/plan.html) command.
+Yes. The Terraform Plan and Terraform Apply steps can run as a dry run, just like the [terraform plan](https://www.terraform.io/docs/commands/plan.html) command.
 
-First, you add the Terraform Plan step and define the Terraform script for it to use.
+First, add the Terraform Plan step and define the Terraform script for it to use. Next, add the Terraform Apply step, select **Inherit from Plan** in **Configuration Type**, and reference the Terraform Plan step using the same **Provisioner Identifier**.
 
-Next, you add the Terraform Apply step, select **Inherit from Plan** in **Configuration Type**, and reference the Terraform Plan step using the same **Provisioner Identifier.**
-
-![](./static/continuous-delivery-faqs-05.png)
+<div style={{ textAlign: 'center' }}>
+  <DocImage path={require('./static/continuous-delivery-faqs-05.png')} alt="Terraform Apply step configured to inherit from the Terraform Plan step" width="80%" height="80%" title="Click to view full size image" />
+</div>
 
 ### Can I remove resources provisioned with Terraform?
 
-Yes. You can add a **Terraform Destroy** step to remove any provisioned infrastructure, just like running the `terraform destroy` command. See [destroy](https://www.terraform.io/docs/commands/destroy.html) from Terraform.
+Yes. Add a **Terraform Destroy** step to remove any provisioned infrastructure, just like the `terraform destroy` command. Go to the Terraform [destroy](https://www.terraform.io/docs/commands/destroy.html) documentation to review the command.
 
-See [Remove provisioned infrastructure with the Terraform Destroy step](/docs/continuous-delivery/cd-infrastructure/terraform-infra/remove-provisioned-infra-with-terraform-destroy.md).
+Go to [Remove provisioned infrastructure with the Terraform Destroy step](/docs/continuous-delivery/cd-infrastructure/terraform-infra/remove-provisioned-infra-with-terraform-destroy) to configure it in Harness.
 
-### Can Terraform vars in Terraform step contain hyphen ?
+### Can Terraform vars in a Terraform step contain a hyphen?
 
-Terraform vars are exported as shell environment variables. The shell variables itself has a restriction in their naming coonvention that it should not contain hyphen and hence this is not supported.
+No. Terraform vars are exported as shell environment variables. Shell variable names cannot contain a hyphen, so this is not supported.
 
-### How can we assign Terraform output (e.g. VPC CIDR) to harness Pipeline or stage variable?
+### Why is my Terraform script directory initializing with a null value in the path?
 
-We have implemented a feature for capturing the the output of the Apply step.
-You can use something like this to copy the json output in a file - 
-```echo "<+pipeline.stages.EC2_deploy.spec.execution.steps.TerraformApply_1.output.TF_JSON_OUTPUT_ENCRYPTED>" > /opt/harness-delegate/aaabbb.txt```
+The Terraform script directory on the delegate is based on default values such as org and project, and it also includes the provisioner identifier in the path. If you use the provisioner identifier with an expression and the expression resolves to null, you see a null value in the initialized path.
 
-Doc for reference - [here](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/Terraform-infra/run-a-Terraform-plan-with-the-Terraform-apply-step/#encrypt-the-Terraform-apply-json-outputs)
+### Does the Terraform step keep the working directory persistent?
 
+No. In both the Plan and Apply steps, Harness cleans up the Terraform directories.
 
-### What is the correct way to specify org or account level connectors in Terraform resources ?
-We should always prefix the scope of the connector ref before providing them in the resource file. For example if it is a org level conncetor the correct way to specify it is `org.myconnectorref`
+### How do I access files created during the Terraform Plan step in the Apply step?
 
+The workspace is cleaned after every run of the Plan or Apply step. Use version control to store these files and reference them later.
 
-### Why do we get error in Terraform provider that a project level resource can not be used at org level?
-We have a top down hierarchy of the resources which goes account > org > project . You can refer any parent level resource at the child level but the reverse is not true. SO you should be able to reference a account level resource while creating a project level resource but not a project level resource while creating an account level resource.
+### Is there a way to persist the Terraform steps working directory?
 
+No. By design, Harness always cleans the working directory on each Terraform step, and the working directory cannot be persisted.
 
-### Can we use Terraform plan from one stage in apply step in another stage ?
+### If a Terraform Apply step is inside a stage with a matrix or loop, is the repo cloned every time the step runs?
 
-The inherit from plan option for the Terraform apply step can be used only within same stage. It is not possible to run plan step in one stage and then use inherit from plan option for apply step in another stage.
+Yes. The underlying repo is cloned for each run of the step in the loop.
 
+### Are there access permissions or restrictions affecting the execution of Python commands within Terraform?
 
-### What is the recommended way to save the state file for Terraform pipelines?
+No. There are no restrictions on running Python in Terraform.
 
-For testing scenarios you can run the Terraform without remote backend for saving the Terraform state file however for prodcution runs it is always recommended to start with a remote backend configured from first run.
+### In Terraform, how do I return a null value from a for_each?
+
+In Terraform, you can return a null value from a `for_each` expression by using the `null` literal directly. For example:
+
+```hcl
+variable "my_map" {
+  type = map(any)
+  default = {
+    key1 = "value1"
+    key2 = null
+  }
+}
+
+resource "aws_instance" "my_instances" {
+  for_each = var.my_map
+
+  # Other resource attributes...
+}
+```
+
+`key2` in the `my_map` variable is set to a `null` value, so Terraform does not create an instance for that key when using `for_each`.
+
+### How do I get a file from a different source and use it in a Terraform step at runtime?
+
+Use a Shell Script step to fetch the file from your source and store it on the delegate at a specific path, then reference that path in your Terraform config. Ensure that your Plan and Apply steps run on the same delegate.
+
+Go to [Run all pipeline steps in one pod](/docs/platform/delegates/manage-delegates/run-all-pipeline-steps-in-one-pod) to keep steps on the same delegate.
+
+### How do I use a custom stage to run the Terraform Cloud Run step?
+
+The Run step is only supported in CI and CD stages. For a custom stage, use the Shell Script step.
+
+### Why is my environment variable not working in Terraform Plan or Apply?
+
+Some environment variables are exclusive to Terraform Enterprise or Terraform Cloud. For example, `TFE_PARALLELISM` is a Terraform Enterprise environment variable that is not supported by the Terraform CLI. To use these environment variables, use either Terraform Enterprise or Terraform Cloud.
+
+### How do I handle a Terraform pipeline secret in the tfvar file?
+
+Multi-line secrets might not render correctly. Using Terraform's `heredoc` syntax (`<<EOF ... EOF`) can help retain formatting.
+
+### How do I dynamically select infrastructure in my deployment?
+
+Use runtime expressions to dynamically select infrastructure based on environment conditions. This requires predefined mappings of environment-to-infrastructure variables.
+
+### Should I create my Terraform pipeline in the CI or CD module?
+
+The decision depends on your use case and deployment strategy.
+
+If your goal is to automate the deployment of infrastructure whenever your code changes, and you use Terraform for provisioning, create the pipeline in the CD module. This keeps your application infrastructure current with code changes and provides automated deployment.
+
+If your use of Terraform is focused on provisioning infrastructure for your CI/CD pipeline itself, create the pipeline in the CI module. This automates the provisioning of your pipeline infrastructure and keeps it up to date.
+
+In general, the CI module builds and tests code, while the CD module deploys code to production. Your specific use case and deployment strategy guide the decision. You can also incorporate both types of processes within a single pipeline, depending on your requirements.
+
+### Can I define optional tfvar files in Terraform?
+
+Yes. Harness supports optional Terraform var files.
+
+Go to [Optional Terraform var files](/docs/continuous-delivery/cd-infrastructure/terraform-infra/optional-tf-var-files) to configure them.
+
+---
+
+## Terraform versions, caching, and delegates
 
 ### Is there a way to cache Terraform plugins in delegates?
 
-Yes, one can try to set this environment variable `TF_PLUGIN_CACHE_DIR` . Also refer the following [Documentation](https://developer.hashicorp.com/Terraform/cli/config/config-file#provider-plugin-cache).
+Yes. Set the `TF_PLUGIN_CACHE_DIR` environment variable.
 
-
-###  I am working on overrides creation using Terraform. As I see according to the latest update overrides were moved from the Environments tab to a separate tab. We have a use case where I must create all the 3 types provided under service-specific overrides. How to get YAML representation for all 3 types of override
-
-You can get the the detail under the example usage [here](https://registry.Terraform.io/providers/harness/harness/latest/docs/resources/platform_service_overrides_v2).
-
-
-### How can I deploy infrastructure using a scripted method as part of my CD Stage?
-
-One method is to use the Harness Terraform Provider. 
-More information about this can be found at this link: [here](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/Terraform-infra/Terraform-provisioning-with-harness)
-
-
-### I am getting "Backend not initialised error" when running terragrunt plan with specific module?
-
-When dealing with specific modules, we don't initiate Terraform init directly; instead, we use the terragrunt terragrunt-info command. 
-To initialize the backend properly, you need to run Terraform init, and this initialization process is triggered automatically when you select the "All modules" option.
-
-### Does Terraform step keep the working directory persistence?
-In the both plan and apply step we clean up the directories of Terraform.
- 
-
-### How do I access files created during plan step of Terraform for Apply step?
-Workspace gets cleaned after every run of Plan or Apply step.
-version control can be used to store these files and later reference them.
-
-
-### Is there a way persist Terraform steps working directory?
-This is by design we always clean the working directory on each Terraform step and working directory cannot be persisted.
-
+Go to the [Terraform provider plugin cache](https://developer.hashicorp.com/terraform/cli/config/config-file#provider-plugin-cache) documentation to review the configuration.
 
 ### Is there a way to cache Terraform plugins for Harness Terraform pipeline executions?
 
-We can use the caching functionality provided by Terraform for this purpose. We need to set the below environment variable for the Terraform pipelines:
+Yes. Use the caching functionality provided by Terraform. Set the following environment variable for the Terraform pipelines:
 
-```
+```bash
 TF_PLUGIN_CACHE_DIR=/opt/harness-delegate/<plugincachedirectory>
 ```
 
+### Can I run a Terraform step with a specific Terraform version and another pipeline with a different version?
 
-### How can one utilize outputs from the Terraform/Terragrunt apply steps effectively?
+Yes. Use two different delegates with the required Terraform version installed on each.
 
-utilizing outputs from Terraform/Terragrunt apply steps follows a similar approach. After executing the Terraform/Terragrunt apply step, the outputs are accessible in the 'Step Output' section. These outputs can be accessed using expressions. For instance, one can access an output using `<+pipeline.stages.stag1.spec.execution.steps.TerraformApply_4.output.get("test-output-name2")>`
-Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/Terraform-infra/run-a-Terraform-plan-with-the-Terraform-apply-step).
+### How many versions of Terraform does Harness support?
 
+Harness does not include Terraform on the Harness Delegate. You must install Terraform on the delegate when you use Terraform in Harness. Harness supports the following Terraform versions: `v1.3.5`, `v1.1.9`, `v1.0.0`, `v0.15.5`, `v0.15.0`, and `v0.14.0`. Some Harness features might require specific Terraform versions.
 
+Go to [CD integrations and supported technologies](/docs/continuous-delivery/cd-integrations#terraform-version-support) to review the current supported versions.
 
-### Do we allow rotation of harness_platform_token in Terraform resource management?
+### Can I run multiple Terraform pipelines concurrently?
 
-No, we don't. Please refer more on this in the Terraform-Harness[Documentation](https://registry.Terraform.io/providers/harness/harness/latest/docs/resources/platform_token).
+The `terraform init` command does not work if you run init for the same working directory in parallel. Such concurrent execution fails with the error `Failed to Install Provider`.
 
+### Which certificate does Harness use to validate connectivity to the Terraform Cloud endpoint?
 
-### How can one fetch the provisioner Id in a pipeline using Terraform with an expression?
+The Terraform Cloud connector uses the delegate to test connectivity, and for any task run by the delegate, it uses the JVM trustStore for SSL validation. If the Terraform Cloud endpoint uses a self-signed certificate, update the delegate trustStore with the certificate details.
 
-One can fetch the provisioner Id in a pipeline using expression `<+stage.pipeline.variables.HARNESS_PROVISIONER_ID>`.
-Please read more on how to provision target deployment infrastructure dynamically with Terraform in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/Terraform-infra/provision-infra-dynamically-with-Terraform/)
+### Is there a way to switch AWS accounts while using the native Terraform step?
 
+Yes. Harness supports an AWS connector so the Terraform Plan and Apply steps can assume a role to provision infrastructure.
 
-### Can we use our vault for storing Terraform Apply step output?
+Go to [AWS connector](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step#aws-connector) to configure role-based authentication.
+
+---
+
+## Terraform outputs, secrets, and state
+
+### How do I assign a Terraform output to a Harness pipeline or stage variable?
+
+Harness captures the output of the Apply step. Use the following to copy the JSON output to a file:
+
+```bash
+echo "<+pipeline.stages.EC2_deploy.spec.execution.steps.TerraformApply_1.output.TF_JSON_OUTPUT_ENCRYPTED>" > /opt/harness-delegate/aaabbb.txt
+```
+
+Go to [Encrypt the Terraform Apply JSON outputs](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step#encrypt-json-outputs) to review the output encryption steps.
+
+### Can I use a Terraform plan from one stage in the Apply step of another stage?
+
+No. The **Inherit from Plan** option for the Terraform Apply step works only within the same stage. You cannot run the Plan step in one stage and use **Inherit from Plan** for the Apply step in another stage.
+
+### What is the recommended way to save the state file for Terraform pipelines?
+
+For testing scenarios, you can run Terraform without a remote backend for saving the state file. For production runs, always start with a remote backend configured from the first run.
+
+### How do I ensure the state file is saved in the Terraform Enterprise (TFE) workspace when running a Terraform apply locally on the delegate?
+
+Check whether the Harness delegate has the permissions to write to the target workspace. If the delegate lacks the required permissions, the state file is not uploaded to the TFE workspace.
+
+### Is the state file uniquely identified by the combination of provisioner ID and workspace name?
+
+Yes. State files are uniquely identified using the provisioner ID and workspace name, which is why the provisioner ID should always be unique.
+
+### How do I use outputs from the Terraform or Terragrunt Apply steps?
+
+You access outputs from Terraform or Terragrunt Apply steps the same way. After the Apply step runs, the outputs are available in the Step Output section and are accessed using expressions. For example:
+
+```text
+<+pipeline.stages.stag1.spec.execution.steps.TerraformApply_4.output.get("test-output-name2")>
+```
+
+Go to [Run a Terraform Plan with the Terraform Apply step](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step) to review output usage.
+
+### Can I use my own vault to store the Terraform Apply step output?
 
 Currently, only the Harness secret manager is supported.
 
+### How do I encrypt my Terraform output?
 
-### How do I encrypt for my Terraform output?
+Terraform output can be encrypted once you configure a secret manager for the **Encrypt JSON output** field under the optional configuration of the Terraform Apply step.
 
-Terraform output can be encrypted once you configure a secret manager for the "Encrypt JSON output" field under the optional configuration of Terraform apply step.
+### How does the Encrypt JSON output setting work in the Terraform Apply step?
 
+This setting temporarily creates a secret that stores the Terraform output JSON. The secret is created using the Harness Secret Manager provider and is available during pipeline execution. The secret is deleted at the end of the execution.
 
-### Can you please provide the info on how long the secret created from the Terraform Apply step stays in place and how it gets overridden?
+Go to [Encrypt the Terraform Apply JSON outputs](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step#encrypt-json-outputs) to learn more.
 
-The secret will be always unique but the expression of it is the same depending on the Terraform Apply step. It is stored in the secrets at the project level. The secret exists till the pipeline is not finished.
-Once the pipeline failed|passed|aborted… it means the pipeline finished the execution and we clean the secret.
-There is no way to control how long it is kept.
+### How do I retrieve encrypted Terraform output data from a Terraform Apply step?
 
+Find the `TF_JSON_OUTPUT_ENCRYPTED` output variable and reference it using a Harness expression. For example:
+
+```text
+<+pipeline.stages.stage1.spec.execution.steps.TerraformApply_1.output.TF_JSON_OUTPUT_ENCRYPTED>
+```
+
+The value is encrypted in the Harness UI, but the values are available in downstream steps and stages.
+
+Go to [Encrypt the Terraform Apply JSON outputs](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step#encrypt-json-outputs) to learn more.
+
+### How long does the secret created from the Terraform Apply step stay in place, and how is it overridden?
+
+The secret is always unique, but its expression stays the same for a given Terraform Apply step. It is stored in the secrets at the project level and exists until the pipeline finishes. Once the pipeline finishes execution (passed, failed, or aborted), Harness cleans up the secret. There is no way to control how long it is kept.
+
+### Does Harness support storing the Terraform plan on the delegate temporarily?
+
+Yes. You can store the Terraform plan on the delegate and use it in the Apply step. This bypasses the restriction to store the plan in a secrets manager and lets you store it locally. Harness Delegate version `24.04.82705` or later is required.
+
+Go to [Store plan on Harness Delegate](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step#store-plan-on-harness-delegate) to configure this.
 
 ### Are there any limitations to Terraform rollback?
-There are limitations to rollbacks. If, for example, modules 1 and 2 were successfully deployed, and module 3 failed, the rollback will only revert to the successful state of modules 1 and 2. However, if module 3 succeeds, and the subsequent deployment fails, the rollback will only include the state with module 3 deployed, excluding modules 1 and 2. Additionally, rollback is not possible if the Terraform Apply step is run with the Skip state storage option enabled and no Terraform backend is configured in the Terraform files. In such a scenario, using the Rollback step would be incorrectly set up and could lead to unexpected results.
 
+Yes. Rollback reverts to the last successful state. For example, if modules 1 and 2 deployed successfully and module 3 failed, the rollback reverts to the successful state of modules 1 and 2. If module 3 succeeds and the subsequent deployment fails, the rollback includes only the state with module 3 deployed, excluding modules 1 and 2.
 
-### Can one define an optional tfvar files in Terraform support ?
+Rollback is not possible if the Terraform Apply step runs with the **Skip state storage** option enabled and no Terraform backend is configured in the Terraform files. In that scenario, the Rollback step would be incorrectly set up and could lead to unexpected results.
 
-Yes, with minimal delegate version requested `816xx` one can do so. Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/Terraform-infra/optional-tf-var-files)
+---
 
+## Harness Terraform Provider and resource management
 
-### How to fetch API status for adding any automation based on API result?
+### What is the correct way to specify org-level or account-level connectors in Terraform resources?
 
-For example, delegate token creation API :
+Always prefix the scope of the connector reference before providing it in the resource file. For example, for an org-level connector, the correct way to specify it is `org.myconnectorref`.
 
-```
-curl -i -X POST 'https://app.harness.io/ng/api/delegate-token-ng?accountIdentifier=xxxxxxxxxxxxxxxxxxx&orgIdentifier=string&projectIdentifier=string&tokenName=tokendelnew&revokeAfter=0' 
+### Why do I get an error that a project-level resource cannot be used at the org level?
+
+Harness has a top-down hierarchy of resources: account, org, and then project. You can reference a parent-level resource at the child level, but not the reverse. You can reference an account-level resource while creating a project-level resource, but not a project-level resource while creating an account-level resource.
+
+### How do I get the YAML for all three service-specific override types using the Terraform provider?
+
+Go to the example usage in the [Harness Terraform provider platform_service_overrides_v2 resource](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service_overrides_v2) to review the YAML for all three override types.
+
+### How do I deploy infrastructure using a scripted method as part of my CD stage?
+
+Use the Harness Terraform Provider.
+
+Go to [Terraform provisioning with Harness](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness) to configure it.
+
+### Does Harness allow rotation of harness_platform_token in Terraform resource management?
+
+No.
+
+Go to the [Harness Terraform provider platform_token resource](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_token) to review token management.
+
+### How do I fetch the provisioner ID in a pipeline using Terraform with an expression?
+
+Fetch the provisioner ID in a pipeline using the expression `<+stage.pipeline.variables.HARNESS_PROVISIONER_ID>`.
+
+Go to [Provision infrastructure dynamically with Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/provision-infra-dynamically-with-terraform) to learn more.
+
+### Why does the Terraform provider not allow changing the pipeline name in an input set created using the Terraform provider?
+
+The input set is associated with specific pipelines. Once it is created, it cannot be associated with other pipelines. That is why changing the pipeline identifier returns an error.
+
+You can change the other attributes of the input set in the YAML, such as the variables and their values, but not the tagged pipeline.
+
+### How do I create a Harness project from Terraform?
+
+Prepare a Terraform script of the resources you want to create in your project. If you want to create a project with Terraform in an org, first set up all the required resources using the Terraform provider script. You can reference the Terraform resources from the [Harness Terraform Provider API documentation](https://registry.terraform.io/providers/harness/harness/latest/docs).
+
+### How do I migrate a service to a higher scope?
+
+Currently, there is no built-in way to move or upgrade services to higher scopes. When sharing a service, it needs a scope at either the organization or account level. You can use the Terraform provider to recreate those services at a higher level.
+
+Go to [Onboard with the Terraform provider](/docs/platform/get-started/tutorials/onboard-terraform-provider) to learn how.
+
+### What are the best ways to create Harness deployment secrets, connectors, and pipelines?
+
+Creating resources depends on your requirements. Harness provides three ways to create resources:
+
+- Terraform
+- UI
+- API
+
+Choose the option that best suits your needs:
+
+- [API docs](https://apidocs.harness.io/)
+- [Terraform provider](https://registry.terraform.io/providers/harness/harness/latest/docs)
+- [Harness docs](/docs/continuous-delivery)
+
+### What happens when I use V1 YAML with Terraform or the API to create entities?
+
+There is no automated upgrade path from V1 to V2 YAML schemas. You must manually update your YAML to V2. Harness does not automatically convert V1 YAML to V2.
+
+### How do I handle a cyclical dependency that Terraform's linear dependency graph cannot resolve?
+
+A cyclical dependency can occur when you use Terraform to manage pipelines. Review the pipeline definitions carefully to identify and break the cycle.
+
+Go to the [Terraform documentation](https://www.terraform.io/) to review dependency management.
+
+### How do I fetch the API status to build automation based on the result?
+
+For example, for the delegate token creation API:
+
+```bash
+curl -i -X POST 'https://app.harness.io/ng/api/delegate-token-ng?accountIdentifier=xxxxxxxxxxxxxxxxxxx&orgIdentifier=string&projectIdentifier=string&tokenName=tokendelnew&revokeAfter=0' \
 -H 'x-api-key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 ```
 
-We get the output as : 
-```
+The output is:
+
+```json
 {
-"metaData": { },
-"resource": {
-"uuid": null,
-"accountId": "jxxxxxxxxxxxxxhg",
-"name": "tokendelnew",
-"createdBy": null,
-"createdByNgUser": {
-"type": "SERVICE_ACCOUNT",
-"name": "Terraformrpoviderusheer",
-"email": "terrio",
-"username": "Terraformrpoviderusheer",
-"accountId": "jxxxxxxxxxxxxxxxx_hg",
-"jwtclaims": {}
-},
-"createdAt": 17xxxxxxxxxxx,
-"status": "ACTIVE",
-"value": "OTxxxxxxxxxxxxxxxxxxxxxxxg=",
-"ownerIdentifier": null,
-"revokeAfter": 0
-},
-"responseMessages": [ ]
+  "metaData": {},
+  "resource": {
+    "uuid": null,
+    "accountId": "jxxxxxxxxxxxxxhg",
+    "name": "tokendelnew",
+    "createdBy": null,
+    "createdByNgUser": {
+      "type": "SERVICE_ACCOUNT",
+      "name": "Terraformrpoviderusheer",
+      "email": "terrio",
+      "username": "Terraformrpoviderusheer",
+      "accountId": "jxxxxxxxxxxxxxxxx_hg",
+      "jwtclaims": {}
+    },
+    "createdAt": 17xxxxxxxxxxx,
+    "status": "ACTIVE",
+    "value": "OTxxxxxxxxxxxxxxxxxxxxxxxg=",
+    "ownerIdentifier": null,
+    "revokeAfter": 0
+  },
+  "responseMessages": []
 }
 ```
 
-We can use use the status from the above output, in case of failure it will be "ERROR", we can also use the HTTP output codes such as `200` for success and `400` for failure.
+Use the status from the output. In case of failure, it is `ERROR`. You can also use the HTTP output codes, such as `200` for success and `400` for failure.
 
-### I have a Terraform code which I will need to use to deploy resources for a Fastly service. And, I would like to know should I create a pipeline in CI or CD module and what's the reasoning behind it?
+---
 
-The decision on whether to create your pipeline in the Continuous Deployment (CD) module or Continuous Integration (CI) module depends on your specific use case and deployment strategy.
+## Deployment and provisioning issues
 
-If your goal is to automate the deployment of infrastructure whenever there are changes in your code, and you are using Terraform for provisioning, it is advisable to create a pipeline in the CD module. This ensures that your application's infrastructure stays current with any code modifications, providing seamless and automated deployment.
+### Why do I get a "Backend not initialised" error when running terragrunt plan with a specific module?
 
-Alternatively, if your use of Terraform is focused on provisioning infrastructure for your CI/CD pipeline itself, it is recommended to establish a pipeline in the CI module. This allows you to automate the provisioning of your pipeline infrastructure, ensuring its availability and keeping it up-to-date.
+When dealing with specific modules, Harness does not run `terraform init` directly; instead, it uses the `terragrunt terragrunt-info` command. To initialize the backend properly, run `terraform init`. This initialization is triggered automatically when you select the **All modules** option.
 
-In broad terms, the CI module is typically dedicated to building and testing code, while the CD module is designed for deploying code to production. However, the specific use case and deployment strategy will guide your decision on where to create your pipeline.
+### Why does my CloudFormation create stack operation fail with an InsufficientDataHealthStatus validation error?
 
-It's worth noting that you also have the option to incorporate both types of processes within a single pipeline, depending on your requirements and preferences.
+The parameter value `InsufficientDataHealthStatus` is not within the allowed values per the AWS documentation. The full error looks like this:
 
-
-### We would like to run Terraform step in a pipeline with specific version of Terraform and another pipelines Terraform step with different version of Terraform.
-
-To achieve this use case you will need to use two different delegates with the required Terraform version installed.
-
-
-### Why Terraform script file is initializing with null value in the path?
-
-Terraform script directory on delegate is based on some default values like org project however it also has the provisioner identifier in the path. If we are using provisioner identifier with an expression and for some reason the expression resolves to null, we will see a null in the path initialized as well.
-
-
-### Why Terraform provider does not allow to change pipeline name in the input set created using Terraform provider?
-
-The input set is associated with specific pipelines. So once it is created it can not be associated with other pipelines. That is why when you are changing the pipeline identifier it is giving you the corresponding error. I can see the same error at my end also if I try to change the pipeline identifier.
-
-The other attributes of input set you can change in the yaml like what are the variables and their value but not the pipeline tagged.
-
-### Which certificate harness uses to validate connectivity to Terraform Cloud end point while using Terraform cloud provider?
-
-The Terraform cloud connector will use the delegate to test the connectivity and for any task run by delegate itself it will be utilizing the jvm trustStore for ssl validation of the connection. So if the Terraform cloud endpoint is using a self-signed cert we need to update the delegate trustStore with the cert detail for the same.
-
-
-### Can I run multiple Terraform pipeline concurrently?
-
-Terraform init command does not work if we run init for the same work directory in parallel. Hence such concurrent execution will fail with the error 'Failed to Install Provider'.
-
-
-### How many versions of Terraform does Harness support ?
-
-Harness supports the following Terraform versions: `v1.3.5, v1.1.9, v1.0.0, v0.15.5, v0.15.0 and v0.14.0`
-Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/cd-integrations#Terraform-version-support)
-
-### What are the best possible ways to create harness deployment secrets, connectors, pipelines, etc?
-
-Creating resources is totally up to the customer's requirement, we provide all three ways to create harness resources -
-* Via Terraform
-* Via UI
-* Via API
-
-The docs for API and Terraform resource provider and harness docs. Please go through it and choose the one which best suits your needs -
-* [API docs](https://apidocs.harness.io/)
-* [Terraform provider](https://registry.Terraform.io/providers/harness/harness/latest/docs)
-* [Harness docs](https://developer.harness.io/docs/continuous-delivery)
-
-
-### Can we connect to a Databricks cluster?
-
-No, we do not have a native integration. If one is using Terraform, they need to define the access block by following the [Terraform Docs](https://registry.Terraform.io/providers/databricks/databricks/0.2.4/docs#authentication)
-Wherever the delegate is hosted it needs network access to reach out and communicate to databricks.
-
-
-### I have a Terraform Apply step inside a stage with matrix or loop, I want to know if that means the underlying repo will be cloned every time the step runs for each matrix/loop item?
-
-Yes, the underlying repo will be cloned for each run of the step in looping.
-
-### How can one migrate a service to a higher scope (if available at project level)?
-
-Currently, there's no built-in way to move or upgrade services to higher levels. When sharing a service, it needs to have a scope at either the organizational or account level. Fortunately, you can always use the Terraform provider to recreate those services at a higher level.
-Please read more on how to use Terraform provider in the following [Documentation](https://developer.harness.io/docs/platform/get-started/tutorials/onboard-Terraform-provider).
-
-
-### Is there a way to switch AWS accounts while using native Terraform step?
-
-Yes, Harness supports an AWS Connector to have the Terraform plan and apply step assume a role to perform the provisioning of infrastructure.
-Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/Terraform-infra/run-a-Terraform-plan-with-the-Terraform-apply-step/#aws-connector-provider-credential-authentication-for-Terraform-plan-and-apply-steps).
-
-### Are there any access permissions or restrictions that might be affecting the execution of Python commands within Terraform?
-
-No We don't have any restrictions on running the python in Terraform.
-
-
-### How to create a Harness project from Terraform?
-
-You need to prepare a Terraform script of the resources you want to create in your project. Before that, if you want to create a project with Terraform in an org then you need to set up all the required resources using the Terraform Provider script.  You can reference the Terraform resources from the [Harness Terraform Provider API documentation](https://registry.Terraform.io/providers/harness/harness/latest/docs).
-
-
-### In Terraform, how do you return a null value from a for_each?
-
-In Terraform, you can return a null value from a `for_each` expression by using the `null` function or the `null` literal directly.
-Here's an example of how you can use both approaches:
-
-Using the `null` function:
-```
-variable "my_map" {
-  type = map(any)
-  default = {
-    key1 = "value1"
-    key2 = null
-  }
-}
-
-resource "aws_instance" "my_instances" {
-  for_each = var.my_map
-
-  # Other resource attributes...
-}
+```text
+Exception: Invalid request: Parameter 'InsufficientDataHealthStatus' must be one of AllowedValues (Service: AmazonCloudFormation; Status Code: 400; Error Code: ValidationError; Request ID: ...; Proxy: null) while creating stack: HarnessStack-route53
 ```
 
-Using the `null` literal directly:
-```
-variable "my_map" {
-  type = map(any)
-  default = {
-    key1 = "value1"
-    key2 = null
-  }
-}
+The allowed values are:
 
-resource "aws_instance" "my_instances" {
-  for_each = var.my_map
-
-  # Other resource attributes...
-}
-```
-Both approaches will result in `key2` in the `my_map` variable being set to a `null` value, causing Terraform to not create an instance for that key when using `for_each`.
-
-
-### How does the Encrypt JSON output setting work in the Terraform Apply stage?
-
-This setting will temporarily create a secret that stores the Terraform output JSON. The secret will be created using the Harness Secret Manager provider and will be available for use during the pipeline execution. The secret is then deleted at the end of the execution. For more information, go to [Encrypt the Terraform Apply JSON outputs](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/Terraform-infra/run-a-Terraform-plan-with-the-Terraform-apply-step/#encrypt-the-Terraform-apply-json-outputs).
-
-
-### How do I retrieve encrypted Terraform Output data from a Terraform Apply stage?
-
-To retrieve encrypted Terraform Output data, find the `TF_JSON_OUTPUT_ENCRYPTED` output variable and reference it using a Harness expression. For example, `<+pipeline.stages.stage1.spec.execution.steps.TerraformApply_1.output.TF_JSON_OUTPUT_ENCRYPTED>`. The value will be encrypted in the Harness UI but, the values will be available in downstream steps and stages. For more information, go to [Encrypt the Terraform Apply JSON outputs](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/Terraform-infra/run-a-Terraform-plan-with-the-Terraform-apply-step/#encrypt-the-Terraform-apply-json-outputs).
-
-
-### Does Harness support storing the Terraform Plan on the Harness Delegate temporarily?
-
-Yes, users can now store the Terraform plan on the delegate and leverage it in the apply step. This now bypasses the restriction to store the plan in a secrets manager and let users store it locally.
-Harness Delegate version 827xx or later is required for this feature.
-Go to [Store Terraform Plan on Harness Delegate](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/Terraform-infra/run-a-Terraform-plan-with-the-Terraform-plan-step/#store-Terraform-plan-on-harness-delegate) and [Demo Video](https://www.loom.com/share/bc5a4f382d584b228b4ea2c82eb94a7c?sid=b9fac5c3-c11b-4f50-acff-f4fd2b3cc83a) for more information.
-
-
-### How do I get a file from a different source and use it in a Terraform step during runtime?
-
-You can have a shell script step in which you fetch the file from your corresponding source and have it stored on the delegate at any specific path and refer that path in your Terraform config. You just need to ensure that your plan and apply runs on the same delegate. For more details, go to [Run all pipeline steps in one pod](https://developer.harness.io/docs/platform/delegates/manage-delegates/run-all-pipeline-steps-in-one-pod/).
-
-### How do I use a custom stage to do the Terraform Cloud Run step?
-
-The Run step is only supported in the CI and CD stages. For the custom stage, please use the Shell Script step.
-
-### Is the state file fully and uniquely identified by the combination of "provisioner ID" and "workspace name"?
-
-Yes, State files are uniquely identifiable using "provisionerID" and "Workspace Name" that is why the provisioner ID should always be unique.
-
-### How can one use `AWS CDK Infra Provisioning Support` on Harness?
-
-Harness lets users run AWS CDK Workloads via the Container Based Steps.
-Please follow more on this [Documentation](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/aws-cdk/)
-
-
-### Why isn't my environment variable working in Terraform Plan or Apply?
-
-Some environment variables are exclusive to Terraform Enterprise or Terraform Cloud. For example, `TFE_PARALLLELISM` is a Terraform Enterprise environment variable that is not supported by the Terraform CLI. In order to use these environment variables, please make sure to use either Terraform Enterprise or Terraform Cloud.
-
-### Does AWS CDK still require feature flags to be set in order to use?
-
-AWS CDK is globally available and does not require any feature flags to enable and use. For more information, please go to [AWS CDK Provisioning](/docs/continuous-delivery/cd-infrastructure/aws-cdk/).
-
-### Why is my CloudFormation create stack operation failing with the error **Exception: Invalid request: Parameter 'InsufficientDataHealthStatus' must be one of AllowedValues (Service: AmazonCloudFormation; Status Code: 400; Error Code: ValidationError; Request ID: ...; Proxy: null) while creating stack: HarnessStack-route53**?
-
-So it looks like the parameter value InsufficientDataHealthStatus is not below the allowed values as per the Amazon document:
-```
+```text
 Healthy: Route 53 considers the health check to be healthy.
 Unhealthy: Route 53 considers the health check to be unhealthy.
 LastKnownStatus: Route 53 uses the status of the health check from the last time that CloudWatch had sufficient data to determine the alarm state. For new health checks that have no last known status, the default status for the health check is healthy.
 ```
-https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53-healthcheck-healthcheckconfig.html﻿
 
-#### Why is the Resource Constraint holding the deployment for two pipelines with different infrastructures but the same service?
+Go to the [AWS Route 53 health check configuration reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53-healthcheck-healthcheckconfig.html) to review the allowed values.
 
-The deployment might being held because the infrastructure key is created from the service ID + environment ID + connector ID. Since the connector ID is missing, the infrastructure key remains the same for both pipelines.
+### Why is the resource constraint holding the deployment for two pipelines with different infrastructures but the same service?
 
-To resolve such issues and allow simultaneous deployment, you can:
+The deployment might be held because the infrastructure key is created from the service ID, environment ID, and connector ID. If the connector ID is missing, the infrastructure key remains the same for both pipelines.
 
-- Add a Connector: In the "Select Host" field, specify a connector.
-- Change the Secret Identifier: Ensure the secret ID is different for each pipeline.
+To resolve this and allow simultaneous deployment, you can:
+
+- **Add a connector:** In the **Select Host** field, specify a connector.
+- **Change the secret identifier:** Ensure the secret ID is different for each pipeline.
 
 This approach prevents parallel deployments when a pipeline is triggered both from the API and manually at the same time.
 
-#### How can I configure and use custom runners with specific resource requirements in Harness for specific pipelines?
+### How do I configure and use custom runners with specific resource requirements for specific pipelines?
+
 You can select infrastructure per pipeline in Harness. For Harness Cloud, you can scale resources as needed. Alternatively, if you run builds on your own EKS cluster, you can define CPU and memory requirements within the pipeline.
 
-For more details on setting up build resources in your Kubernetes cluster for Harness builds, refer to [our documentation](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/).
-
-### What is the current and future support for CDK, including support for zipped files and CDK as a deployment type?
-
-CDK currently supports containerized images but not zipped files.  CDK is not a deployment type; it functions similarly to CloudFormation.  Adding support for zipped files is planned.  Native canary/blue-green deployments are not possible with CDK due to its black-box nature.
-
-### How can I resolve a `ModuleNotFoundError` for `aws_cdk` in a CDK step?
-
-The `ModuleNotFoundError` for `aws_cdk` is because the required Python packages are not installed in the CDK Synth step container.  A `pip install` command is needed within the step.
-
-### What happens when users use V1 YAML with Terraform or the API to create entities?
-
-There is no automated upgrade path from V1 to V2 YAML schemas.  Users must manually update their YAML to V2.  Harness does not automatically convert V1 YAML to V2.
-
-### How can a user handle the cyclical dependency that Terraform's linear dependency graph cannot resolve?
-
-The user is experiencing a cyclical dependency when using Terraform to manage pipelines.  This requires careful review of the pipeline definitions to identify and break the cycle.  Relevant documentation on managing dependencies in Terraform can be found on the Terraform website ([https://www.terraform.io/](https://www.terraform.io/)).
+Go to [Set up a Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure) to configure build resources.
 
 ### Why is my Terraform plan failing in a pipeline?
-Terraform plans may fail due to incorrect configurations, missing credentials, or conflicts with existing resources.
 
-### How to handle the Terraform pipeline secret in the `tfvar` file?
-Multi-line secrets may not render correctly. Using Terraform’s `heredoc` syntax (`<<EOF ... EOF`) may help retain formatting.
+Terraform plans can fail due to incorrect configurations, missing credentials, or conflicts with existing resources.
 
-### How can I dynamically select infrastructure in my deployment?
-Users can use runtime expressions to dynamically select infrastructure based on environment conditions. This requires pre-defined mappings of environment-to-infrastructure variables.
+---
+
+## Service instances and licensing
+
+### Are Harness service instances counted with Terraform provisioning?
+
+Harness service instances (SIs) are not consumed and no additional licensing is required when a Harness pipeline uses Terraform to provision resources. When Harness deploys artifacts through Harness services to the provisioned infrastructure in the same pipeline, SI licensing is consumed.
