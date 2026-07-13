@@ -17,6 +17,7 @@ keywords:
   - merge pr
   - gitops sync
   - wait for pr merge
+  - ignore missing files
   - promotion workflow
   - gitops promotion
 ---
@@ -146,6 +147,25 @@ To prevent a specific service or environment override from being written to your
 - **Allow Empty Commit:** When `true`, the step commits even if no file changes are detected instead of failing. Requires Harness Delegate version 84600 or later.
 - **Succeed if no files changed:** When enabled, the step succeeds if the service, environment, and step variables already match the values in the release repo files. Harness does not create a branch, commit, or pull request, and the step `PR URL` output remains empty. Use this option to make PR pipeline reruns idempotent when the desired artifact version has not changed. Existing PR pipelines keep the current behavior unless you enable this option. In YAML, set `AllowNoFilesChanged` to `true` or `false`.
 - **Disable Git Restraint:** When `true`, removes the Git locking mechanism so multiple pipelines can modify the same repository concurrently through a single connector.
+- **Ignore missing files:** When `true`, the step skips updates when the target config file does not exist in the release repository. The step continues instead of failing or creating a new file. Use this when the same pipeline promotes across environments or services where the Release Repository file path may not exist in every target branch or repository layout.
+
+**YAML example with optional configuration:**
+
+```yaml
+- step:
+      type: GitOpsUpdateReleaseRepo
+      name: Modify Git
+      identifier: Modify_Git
+      timeout: 10m
+      spec:
+      variables:
+            - name: replicas[0].count
+            type: String
+            value: <+pipeline.variables.replica>
+            rTitle: Update Replica Count
+      allowEmptyCommit: true
+      ignoreMissingFiles: true
+```
 
 ![Update Release Repo step configuration](./static/update-release-repo.png)
 
