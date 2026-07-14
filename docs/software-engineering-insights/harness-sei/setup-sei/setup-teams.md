@@ -12,55 +12,82 @@ import TabItem from '@theme/TabItem';
 
 Teams are the core unit of measurement in AI DLC Insights. Each team represents a leaf node in your [Org Tree](/docs/software-engineering-insights/harness-sei/setup-sei/setup-org-tree) and serves as the foundation for calculating metrics and surfacing insights across Efficiency, Productivity, and Business Alignment dashboards.
 
-The **Teams** page provides a centralized view of all teams derived from your Org Tree and their configurations. You can search teams by selecting `By Name`, `By Manager Name`, or `By Org Tree Name` in the **Search Teams** dropdown menu.
+* **Deployment Frequency** and **Change Failure Rate** requires a continuous deployment integration.
+
+In this situation, a team manager must select and save both issue management and continuous deployment integrations to proceed on the **Teams** page or in **Team Settings**.
+
+- **Teams**: A list of all teams and their current configurations.
+- **Definitions**: A library of reusable team definition templates that can be applied across multiple teams.
+
+## Search and manage teams
+
+The **Teams** tab lists all teams derived from your Org Tree. You can search teams by selecting `By Name`, `By Manager Name`, or `By Org Tree Name` in the **Search Teams** dropdown menu.
 
 ![](../static/teams-1.png)
 
-You can see the following details for each team in the **Teams** list:
+You can see the following details for each team in the list:
 
 | Column              | Description                                       |
 | ------------------- | ------------------------------------------------- |
-| **Name**            | Team name                                         |
-| **Org Tree Name**   | Corresponding leaf node in the Org Tree           |
-| **Developers**      | Number of developers mapped to the team           |
-| **Team Managers**   | Assigned team managers                            |
-| **Integrations**    | Connected tools used by the team                  |
-| **Last Updated On** | Timestamp of the most recent configuration change |
-| **Last Updated By** | User who last modified the team                   |
+| **Name**            | Team name.                                         |
+| **Org Tree Name**   | Corresponding leaf node in the Org Tree.           |
+| **Developers**      | Number of developers mapped to the team.           |
+| **Team Managers**   | Assigned team managers.                            |
+| **Integrations**    | Connected tools used by the team.                  |
+| **Last Updated On** | Timestamp of the most recent configuration change. |
+| **Last Updated By** | User who last modified the team.                   |
 
 While teams are automatically derived from your organization's hierarchy, they must be configured to ensure data is attributed correctly and metrics accurately reflect how each team delivers software in AI DLC Insights. To access the **Team Settings** side panel, click on a team in the list.
 
 ![](../static/teams-2.png)
+*Update a team name on the **Details** tab in Team Settings.*
 
 Optionally, you can access the **Team Settings** side panel by navigating to a leaf node (team) in the Org Tree and clicking the **Team Settings** icon on the **Insights** page. Each team has its own configuration that determines how Insight metrics are calculated. 
 
 You can configure multiple source code management (SCM) integrations per team, enabling more accurate insights and metrics across all repositories your team contributes to. This is useful for teams working across GitHub, GitLab, Azure DevOps, Bitbucket, and other supported SCMs.
 
-## Configure integrations for a team
+## Search and manage team definitions
 
-Select the tools your team uses for issue management, source code management, and continuous deployment on the **Integrations** tab in **Team Settings**. These integrations power how AI DLC Insights attributes data and calculates metrics for the team.
+The **Definitions** tab provides a library of reusable team definition templates. Instead of configuring each team individually, you can create a definition once and apply it to multiple teams across your Org Tree. This is helpful for standardizing metric configuration across teams that share the same tools, workflows, or operational context.
 
-:::tip
-Selecting and saving integrations is required before completing the rest of the team configuration.
-:::
+![](../static/teams-20.png)
+ 
+You can see the following details for each definition in the list:
+ 
+| Column                   | Description                                              |
+| ------------------------ | -------------------------------------------------------- |
+| **Name**                 | Definition template name.                                 |
+| **Org Tree Mapped**      | The Org Tree the definition is associated with.           |
+| **Associated Teams**     | Number of teams currently using this definition.          |
+| **Created On**           | Timestamp when the definition was created.                |
+| **Last Updated On**      | Timestamp of the most recent change.                      |
+| **Updated By**           | User who last modified the definition.                    |
+| **Created By**           | User who originally created the definition.               |
+| **Actions**              | Available actions for the definition.        |
+ 
+Each definition in the list includes the following actions:
+ 
+- **Edit**: Open the definition and modify its configuration.
+- **Copy**: Duplicate the definition to use as a starting point for a new one.
+- **Associate**: Open the **Associate Definitions to Teams** modal, where you can select one or more teams from your Org Tree to apply the definition to. Search for teams by name, select individual or multiple teams, then click **Apply and Save**.
+- **Delete**: Permanently remove the definition.
 
-The integrations available are determined by the profile applied to the team. For example, an [Efficiency profile](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/efficiency-profile) that measures: 
+### Create a team definition
+ 
+To create a new definition:
+ 
+1. On the **Definitions** tab, click **+ New Definition**.
+1. In the dropdown menu, select the **Org Tree** the definition should apply to.
+1. Configure the following settings:
+   - **Integrations**: Select the integrations (Issue Management, Source Code Management, Continuous Deployment, Security, Incident Management, and Code Quality) that apply to teams using this definition.
+   - **Developer Settings**: Choose which SEI metrics should apply developer filters when computing insights. Available metrics include **Lead Time for Changes**, **Mean Time to Restore (MTTR)**, **Productivity**, and **AI Insights**.
+   - **Issue Management**: Define filter sets for project scope, incident tickets, new features, bugs, active work status, and completed work status.
+   - **CD Pipelines**: Define filter sets for pipelines and services, successful deployments, and production failures.
+1. Click **Next** to proceed to team association.
+1. In the Org Tree, select the teams you want to associate with this definition. You can search for individual teams or select multiple at once.
+1. Click **Apply and Save**.
 
-* **Lead Time to Change (LTTC)** and **Mean Time to Restore (MTTR)** requires an issue management tool.
-* **Deployment Frequency** and **Change Failure Rate** requires a continuous deployment integration.
-
-In this situation, a team manager must select and save both issue management and continuous deployment integrations to proceed on the **Teams** page or in **Team Settings**.
-
-To select and save integrations:
-
-1. Navigate to the **Integrations** tab in **Team Settings**.
-1. Select integrations from the following sections: **Issue Management**, **Source Code Management**, **Continuous Deployment**, **Security**, **Incident Management**, and **Code Quality**. You can select multiple SCM integrations per team.
-
-   ![](../static/teams-13.png)
-
-1. Click **Save Integrations**.
-
-Once saved, AI DLC Insights aggregates developer activity across all connected SCMs for **Efficiency** and **Productivity** insights, providing a complete picture of team work.
+The definition is now saved and applied to all associated teams. To update which teams use a definition later, use the **Associate** action from the Definitions list.
 
 ## Review and update developer identifiers
 
@@ -173,9 +200,46 @@ To configure metric-level developer filtering:
 
 1. Click **Save** to apply your changes.
 
-## Configure team tool settings
+## Configure integrations for a team
+ 
+Select the tools your team uses for issue management, source code management, and continuous deployment in the **Integrations** section of the **Team Definition** tab in **Team Settings**. These integrations power how AI DLC Insights attributes data and calculates metrics for the team.
+ 
+:::tip
+Selecting and saving integrations is required before completing the rest of the team configuration.
+:::
+ 
+The integrations available are determined by the profile applied to the team. For example, an [Efficiency profile](/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/efficiency-profile) that measures:
+ 
+* **Lead Time to Change (LTTC)** and **Mean Time to Restore (MTTR)** requires an issue management tool.
+* **Deployment Frequency** and **Change Failure Rate** requires a continuous deployment integration.
+In this situation, a team manager must select and save both issue management and continuous deployment integrations to proceed on the **Teams** page or in **Team Settings**.
+ 
+To select integrations:
+ 
+1. Go to **Team Settings** and open the **Team Definition** tab.
+1. In the left-side table of contents (TOC), select **Integrations**.
+1. Select integrations from the available categories: **Issue Management**, **Source Code Management**, **Continuous Deployment**, **Security**, **Incident Management**, and **Code Quality**. You can select multiple SCM integrations per team.
+  
+   ![](../static/teams-21.png)
 
-After selecting your team's integrations and mapping developer identities, configure tool-specific settings to control how AI DLC Insights interprets data from each system. Proper configuration ensures that metrics on the **Insights** page accurately reflect your team's workflows, tools, and operational context.
+1. Click **Next**.
+
+Once saved, AI DLC Insights aggregates developer activity across all connected SCMs for **Efficiency** and **Productivity** insights, providing a complete picture of team work.
+ 
+## Configure team tool settings
+ 
+After selecting your team's integrations and mapping developer identities, configure tool-specific settings in the **Developer Settings** section of the **Team Definition** tab. These settings control how AI DLC Insights interprets data from each connected system. Proper configuration ensures that metrics on the **Insights** page accurately reflect your team's workflows, tools, and operational context.
+
+The **Team Definition** tab consolidates all team configuration into a single page, with a left-side table of contents (TOC) for navigation between sections.
+ 
+You can use the following dropdown menus on the upper-right corner to focus on relevant sections:
+ 
+- **Filter by Metrics**: Show only sections related to a specific metric, for example: Lead Time for Change, Deployment Frequency, Mean Time to Restore, Change Failure Rate, Work Completed, or PR Velocity.
+- **Filter by Insights**: Show only sections for a specific insight category, for example: DORA, Sprints, Productivity, Security, or Business Alignment.
+ 
+Each configuration section includes a **Use definition from [Template name]** checkbox on the upper-right corner. When enabled, the section inherits its configuration from a template. Uncheck it to apply a team-specific override.
+
+![](../static/teams-22.png)
 
 AI DLC Insights uses a filter set model to determine which work items should be included and how they are classified. Each filter set consists of:
 
@@ -480,7 +544,9 @@ Correct change request identification ensures AI DLC Insights accurately calcula
 After configuring filters, click **Save ITSM Settings** to apply the configuration.
 
 </TabItem>
-<TabItem value="custom-variable" label="Custom Variables">
+</Tabs>
+
+## Configure team-specific custom variables
 
 :::tip
 Studio is in beta. To request access, contact [Harness Support](/docs/software-engineering-insights/sei-support).
@@ -507,9 +573,6 @@ To override a variable:
 :::info
 If no override is provided, the default value defined in Studio is used. Overrides apply only to the selected team, and changes affect how metrics are calculated in Studio dashboards.
 :::
-
-</TabItem>
-</Tabs>
 
 ## Access insights
 

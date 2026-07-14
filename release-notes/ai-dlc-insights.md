@@ -1,7 +1,7 @@
 ---
 title: AI DLC Insights release notes
 sidebar_label: AI DLC Insights
-date: 2026-06-17T10:00:10
+date: 2026-06-30T10:00:10
 sidebar_position: 15
 ---
 
@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 
 These release notes describe recent changes to Harness AI-Driven Development Lifecycle Insights (AIDI).
 
-#### Last updated: June 17, 2026
+#### Last updated: June 30, 2026
 
 :::info About Harness Release Notes
 * **Progressive deployment:** Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview** page in Harness. In the new UI, go to **Account Settings**, **Account Details**, **General**, **Account Details**, and then **Platform Service Versions**.
@@ -21,6 +21,32 @@ These release notes describe recent changes to Harness AI-Driven Development Lif
 :::
 
 ## June 2026
+
+### Team definitions and definition templates in Team Settings
+----
+#### 2026-06-30
+
+Team Settings in AI DLC Insights now consolidates all team configuration under a **Team Definition** tab, replacing the previous multi-tab layout with a single view. Existing team configurations are preserved and are accessible from the Team Definition tab.
+
+You can use the **Filter by Metrics** and **Filter by Insights** dropdown menus to focus the view on the sections most relevant to your team's profile. Each section also includes a **Use definition from [Template name]** checkbox to inherit configuration from the associated Org Tree, reducing redundant setup across related teams.
+
+![](./static/sei/use-definition.png)
+
+The **Teams** page now includes a **Definitions** tab alongside the Teams list, providing a library of reusable team configuration templates. Click **+ New Definition** to create a definition and apply it to multiple teams sharing the same tools and workflows, then manage associations, copy templates, or update configurations directly from the **Definitions** tab.
+
+![](./static/sei/team-definition.png)
+
+With definition templates and the **Definitions** tab in Team Settings, teams can:
+
+- Centralize all team configuration (integrations, issue management, CD pipelines, SCM, security, and incident management) in a single, navigable view
+- Inherit shared configuration from a definition template using the **Use definition from [Template name]** checkbox, reducing repetitive setup across teams in the same hierarchy
+- Use **Filter by Metrics** and **Filter by Insights** dropdowns to quickly locate settings that affect specific metrics or insight categories
+- Create reusable definition templates from the **Definitions** tab and apply them to multiple teams at once
+- Copy, edit, and re-associate definitions as teams, tools, and workflows evolve without reconfiguring each team individually
+
+#### Related documentation
+ 
+- [Configure Teams](/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams)
 
 ### AI Engineering Insights is in beta
 ----

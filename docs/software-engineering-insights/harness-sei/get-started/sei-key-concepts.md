@@ -91,17 +91,20 @@ Multi-level groupings based on custom attributes (e.g., Department → Function 
 
 Teams are the core unit of measurement in AI DLC Insights. Every leaf node in the Org Tree is treated as a Team, making it the fundamental grouping for surfacing insights, applying goals, and driving accountability.
 
-Each Team represents a group of developers working together within the organizational hierarchy and is automatically derived from the Org Tree structure.
+Each Team represents a group of developers working together within the organizational hierarchy and is automatically derived from the Org Tree structure. Team configuration is managed through **Team Settings**, which consolidates all setup (integrations, issue management, CD pipelines, SCM, security, and incident management) under a **Team Definition** tab.
 
-![](../static/sei-teams.png)
+![](../static/teams-22.png)
+
+Teams can be configured individually or through reusable definition templates. A definition template captures a common configuration and can be applied to multiple teams at once, so teams sharing the same tools and workflows don't need to be set up separately. Teams can also inherit configuration from a template using the **Use definition from [Template name]** checkbox, and override individual sections as needed.
 
 #### Key Characteristics
 
 * **Auto-derived:** Every leaf node in the Org Tree is automatically considered a Team.
-* **Configurable:** Each Team has its own configuration to define how metrics are calculated and displayed.
-* **Contextualized and metric specific settings:** Teams include metadata such as associated integrations, relevant services, repositories, destination branches, pipelines, environments, etc.
+* **Configurable:** Each Team has its own configuration, managed through the **Team Definition** tab in Team Settings, to define how metrics are calculated and displayed.
+* **Template-driven:** Teams can inherit configuration from reusable definition templates, reducing repetitive setup and standardizing configuration across teams in the same hierarchy.
+* **Contextualized and metric-specific settings:** Teams include metadata such as associated integrations, relevant services, repositories, destination branches, pipelines, environments, and more.
 
-This configuration layer adds precision to how metrics like Deployment Frequency, Lead Time, MTTR, and others are calculated, which ensures each metric reflects the real scope, velocity, and complexity of the team's delivery lifecycle.
+This configuration layer adds precision to how metrics like Deployment Frequency, Lead Time, MTTR, and others are calculated, ensuring each metric reflects the real scope, velocity, and complexity of the team's delivery lifecycle.
 
 ### Profiles
 
