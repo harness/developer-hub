@@ -7,12 +7,12 @@ description: Learn how to use the Admin API to build custom integrations and dev
 
 ## Overview
 
-You can use the [Split Admin API](https://docs.split.io/reference/introduction) to:
+You can use the [Harness FME Admin API](https://docs.split.io/reference/introduction) to:
 
-* Push data into Split
-* Get data out of Split
+* Push data into Harness FME
+* Get data out of Harness FME
 * Build custom integrations
-* Build on top of the Split platform
+* Build on top of Harness FME
 
 ## Identify users
 
@@ -22,9 +22,9 @@ Customer attributes stored using the methods discussed here aren't used for targ
 Learn more about [targeting based on custom attributes](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes/).
 :::
 
-You can use the [Identities REST API](https://docs.split.io/reference/identities-overview) to identify your keys in Split, making them available when writing targeting rules in the user interface and enriching autocomplete functionality throughout the user interface. Identifying your keys is useful if you want to pre-populate the user interface for your team and provide customer data when setting up your rollouts and analyzing [impression data](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions/).
+You can use the [Identities REST API](https://docs.split.io/reference/identities-overview) to identify your keys in Harness FME, making them available when writing targeting rules in the user interface and enriching autocomplete functionality throughout the user interface. Identifying your keys is useful if you want to pre-populate the user interface for your team and provide customer data when setting up your rollouts and analyzing [impression data](/docs/feature-management-experimentation/feature-management/monitoring-analysis/impressions/).
 
-Split offers both an Identities API and [client-specific API wrappers](/docs/feature-management-experimentation/api/wrappers/python-admin-api) to use when sending to Split attributes on your keys. As an administrator in Split, you can see the attributes that your team is sending to Split and the last time an update is received.
+Harness FME provides an Identities API for sending identity attributes associated with your keys. You can also use the  [identity upload helper utility tool](/docs/feature-management-experimentation/feature-management/targeting/target-with-custom-attributes/#create-identity-attributes) to bulk upload identity data using this API.
 
 To manage your accounts's attributes:
 
@@ -37,7 +37,7 @@ To manage your accounts's attributes:
 1. Optionally, edit the display name, description, and attribute type.
 1. Click **Save**. The attribute has been updated.
 
-You can view a customer's attribute data on the third tab of the customer dashboard which is populated from the attribute data you send using Split's API. To navigate to this dashboard, click on a unique key when you view impression data or use the search bar on the left navigation panel.
+You can view a customer's attribute data on the third tab of the customer dashboard which is populated from the attribute data you send using the Harness FME API. To navigate to this dashboard, click on a unique key when you view impression data or use the search bar on the left navigation panel.
 
 ## Fetching feature flag definitions without using the Admin API key
 
@@ -183,21 +183,21 @@ The request returns a JSON payload (`gzipped`) containing all feature flag defin
 
 ## Admin API specifications
 
-The [Split Admin API documentation](https://docs.split.io/reference/introduction) provides specifications for all public API endpoints, along with details on [authentication](https://docs.split.io/reference/authentication) and [rate limiting](https://docs.split.io/reference/rate-limiting). You can also access the [Postman collection](https://github.com/splitio/public-api-postman) containing all Split Admin API endpoints.
+The [Harness FME Admin API documentation](https://docs.split.io/reference/introduction) provides specifications for all public API endpoints, along with details on [authentication](https://docs.split.io/reference/authentication) and [rate limiting](https://docs.split.io/reference/rate-limiting). You can also access the [Postman collection](https://github.com/splitio/public-api-postman) containing all Harness FME Admin API endpoints.
 
 ## Admin API wrappers
 
-Admin API wrappers are available for Java, Node, PHP, Python, and Ruby. Learn more in the [Admin API wrappers documentation](/docs/feature-management-experimentation/api/wrappers/python-admin-api).
+You can interact with the Admin API using the Python PyPi Library or the Command-Line Interface (CLI). Learn more in the [Admin API wrappers documentation](/docs/feature-management-experimentation/api/wrappers/python-admin-api).
 
 ## Admin API examples
 
-Working examples that call the Split Admin API to accomplish typical tasks are available in the [Admin API examples documentation](/docs/feature-management-experimentation/api/examples/).
+Explore working examples that call the Harness FME Admin API to accomplish typical tasks in the [Admin API examples documentation](/docs/feature-management-experimentation/api/examples/).
 
 ## Admin API webhooks
 
-Webhook integrations are available to send real-time event payloads to Split. Each integration allows you to automate workflows and capture important event data externally.
+Webhook integrations are available to send real-time event payloads to Harness FME. Each integration allows you to automate workflows and capture important event data externally.
 
-- [Audit Logs](/docs/feature-management-experimentation/api/webhooks/audit-logs) allow you to stream audit log events from your Split organization.
+- [Audit Logs](/docs/feature-management-experimentation/api/webhooks/audit-logs) allow you to stream audit log events from your Harness FME organization.
 - [Admin Audit Logs](/docs/feature-management-experimentation/api/webhooks/admin-audit-logs) allow you to send admin-level audit log events to your endpoint.
 - [Impressions](/docs/feature-management-experimentation/api/webhooks/impressions) allow you to send impression data for treatments served to users.
 - [Metric Alerts](/docs/feature-management-experimentation/api/webhooks/metric-alerts) allow you to send metric alert and significance events to your endpoint.
@@ -206,6 +206,6 @@ The standard webhook integration automatically compresses the POST body request 
 
 ## Troubleshooting
 
-When using Azure Logic Apps as the target, there is a compatibility issue between the way Split uses the `gzip` library and how Azure Logic Apps decodes the payload. 
+When using Azure Logic Apps as the target, there is a compatibility issue between the way Harness FME uses the `gzip` library and how Azure Logic Apps decodes the payload. 
 
 To resolve this, disable `gzip` by appending the following parameter to the end of the Azure Logic App Webhook URL: `&gzip=false`.
