@@ -157,6 +157,7 @@ The `1.97.x` release improves usability and consistency across database change e
 
     :::info
     This feature flag should only be enabled if running Drone plugin versions `1.30.1` or higher, as older Drone plugins do not support this container consolidation.
+    `DBOPS_PLUGIN_LARGE_LOGS_SUPPORT` should also be enabled to avoid failure scenarios and issues with large logs.
     :::
 
 | **Image Name**                    |  **Current Version**   | **Past Version**             |
