@@ -19,18 +19,21 @@ import TabItem from '@theme/TabItem';
 
 Use this guide to set up Harness Platform so your teams can start using any Harness module.
 
-## What will you learn in this topic?
+## By the end of this topic, you will be able to:
 
-- How to [access a Harness account](#step-1-access-your-harness-account).
-- How to [create organization](#create-an-organization), [projects](#create-a-project) and [invite collaborators](#invite-collaborators).
-- How to [manage users](#step-3-manage-users) and [shared resources](#step-4-manage-shared-resources).
-- How to become a [Harness certified expert](#become-a-harness-certified-expert).
+- [Access a Harness account](#step-1-access-your-harness-account).
+- [Create organization](#create-an-organization), [projects](#create-a-project) and [invite collaborators](#invite-collaborators).
+- [Manage users](#step-3-manage-users) and [shared resources](#step-4-manage-shared-resources).
+- Understand the path to become a [Harness certified expert](#become-a-harness-certified-expert).
 
 ---
 
 ## Before you begin
-- <a href="/docs/platform/get-started/overview" target="_blank">Harness Platform overview</a>
-- <a href="/docs/platform/get-started/harness-ui-overview" target="_blank">Harness UI overview</a>
+
+Before you set up Harness Platform, ensure you have an understanding of the following:
+
+- <a href="/docs/platform/get-started/overview" target="_blank">Harness Platform overview: The foundation layer on top of which all modules are built.</a>
+- <a href="/docs/platform/get-started/harness-ui-overview" target="_blank">Harness UI overview: The interaction layer between Harness Platform and you.</a>
 
 ---
 
