@@ -102,6 +102,17 @@ export const spt: IltCardItem[] = [
     cardType: cardType.SPT,
   },
   {
+    title: "Introduction to Custom Plugins in CD Steps",
+    module: MODULES.cd,
+    type: type.user,
+    description:
+      "Self-paced tidbit introducing Custom Plugins in CD Steps.",
+    version: "Harness CD & GitOps Free Plans",
+    link: "https://university-registration.harness.io/self-paced-training-tidbit-harness-custom-plugins-in-cd-steps",
+    tileType: tileType.normal,
+    cardType: cardType.SPT,
+  },
+  {
     title: "Continuous Integration",
     module: MODULES.ci,
     type: type.user,
