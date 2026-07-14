@@ -166,7 +166,7 @@ const sidebars: SidebarsConfig = {
           type: "link",
           href: "/docs/appsec-discovery",
           label: "API & Application Discovery",
-          className: "sidebar-asp",
+          className: "sidebar-adra",
 
           customProps: {
             description: "Learn how API & Application Discovery gives you complete visibility into your API ecosystem.",

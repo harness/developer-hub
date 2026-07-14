@@ -110,6 +110,14 @@
   ul.resourceGrid {
     @extend %tileList;
   }
+
+  // ── Dark mode: recolor /img/home/ icons for visibility ──
+  html[data-theme='dark'] & {
+    .sectionHeaderIcon,
+    ul.resourceGrid img {
+      filter: brightness(0) invert(1) opacity(0.9);
+    }
+  }
 }
 
 // ── Modules component (./Modules) — unchanged ─────────────────────────────────

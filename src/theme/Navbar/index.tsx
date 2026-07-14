@@ -131,13 +131,13 @@ export default function NavbarWrapper(props: Props): ReactNode {
     
     // Web App & API Protection
     { type: "header", label: "Web Application & API Protection", className: "dropdown-subheader" },
-    { to: `${docsBase}/appsec-security-testing`, label: "Application & API Security Testing", icon: "/img/home/security-test.svg" },
+    { to: `${docsBase}/appsec-security-testing`, label: "Application & API Security Testing", icon: "/img/home/app-sec.svg" },
     { to: `${docsBase}/appsec-runtime-protection`, label: "Application & API Runtime Protection", icon: "/img/home/runtime.svg" },
-    { to: `${docsBase}/appsec-discovery`, label: "Application & API Discovery", icon: "/img/home/security-test.svg" },
+    { to: `${docsBase}/appsec-discovery`, label: "Application & API Discovery", icon: "/img/home/app-discovery.svg" },
     
     // AI Security
     { type: "header", label: "AI Security", className: "dropdown-subheader" },
-    { to: `${docsBase}/ai-security`, label: "AI Security", icon: "/img/home/security-test.svg" },
+    { to: `${docsBase}/ai-security`, label: "AI Security", icon: "/img/home/ai-security.svg" },
 
     { type: "header", label: "Operations" },
     { to: `${docsBase}/cloud-cost-management`, label: "Cloud & AI Cost Management", icon: "/img/home/cloud-cost.svg" },

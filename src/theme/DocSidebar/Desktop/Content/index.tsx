@@ -56,7 +56,7 @@ const DOCS_3K_ICON_MAP: Record<string, string> = {
   'sidebar-aisre':        '/img/home/incident.svg',
   'sidebar-rt':           '/img/home/resilience-test.svg',
   'sidebar-asp':          '/img/home/security-test.svg',
-  'sidebar-adra':         '/img/home/security-test.svg',    // API & Application Discovery
+  'sidebar-adra':         '/img/home/app-discovery.svg',    // API & Application Discovery
   'sidebar-arp':          '/img/home/runtime.svg',          // Runtime Protection / WAAP
   'sidebar-ast':          '/img/home/app-sec.svg',          // Application Security Testing
   'sidebar-aisec':        '/img/home/ai-security.svg',      // AI Security
@@ -89,7 +89,7 @@ const DOCS_LEGACY_ICON_MAP: Record<string, string> = {
   'sidebar-cv':         '/img/icon_cv.svg',
   'sidebar-harness':    '/img/icon_harness.svg',
   'sidebar-ata':        '/img/icon-aita.svg',
-  'sidebar-aisec':      '/img/icon-adra.svg',
+  'sidebar-aisec':      '/img/icon-ai-security.svg',
   'sidebar-aisre':      '/img/icon-ai-sre.svg',
   'sidebar-rt':         '/img/icon_ce.svg',
   'sidebar-smp':        '/img/icon_harness.svg',

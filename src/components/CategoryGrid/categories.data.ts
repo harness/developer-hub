@@ -123,7 +123,7 @@ export const categories: Category[] = [
         items: [
           { name: "Security Testing Orchestration", href: "/docs/security-testing-orchestration", module: "armory", iconLight: "img/home/security-test.svg", iconDark: "img/home/security-test.svg", description: "Scan and remediate vulnerabilities across your pipeline." },
           { name: "Supply Chain Security", href: "/docs/software-supply-chain-assurance", module: "ssca", iconLight: "img/home/supply-chain.svg", iconDark: "img/home/supply-chain.svg", description: "Secure your software supply chain end to end." },
-          { name: "SAST & SCA", href: "/docs/sast-and-sca", module: "sto", iconLight: "img/home/security-test.svg", iconDark: "img/home/security-test.svg", description: "Scan code and dependencies for vulnerabilities." },
+          { name: "SAST & SCA", href: "/docs/sast-and-sca", module: "sto", iconLight: "img/home/qwiet.svg", iconDark: "img/home/qwiet.svg", description: "Scan code and dependencies for vulnerabilities." },
         ]
       },
       {
@@ -131,7 +131,7 @@ export const categories: Category[] = [
         items: [
           { name: "Application & API Security Testing", href: "/docs/appsec-security-testing", module: "ast", iconLight: "img/home/app-sec.svg", iconDark: "img/home/app-sec.svg", description: "Identify issues early and validate API security." },
           { name: "Application & API Runtime Protection", href: "/docs/appsec-runtime-protection", module: "ast", iconLight: "img/home/runtime.svg", iconDark: "img/home/runtime.svg", description: "Detect and block threats to your apps and APIs at runtime." },
-          { name: "Application & API Discovery", href: "/docs/appsec-discovery", module: "asp", iconLight: "img/home/security-test.svg", iconDark: "img/home/security-test.svg", description: "Complete visibility into your API ecosystem." },
+          { name: "Application & API Discovery", href: "/docs/appsec-discovery", module: "asp", iconLight: "img/home/app-discovery.svg", iconDark: "img/home/app-discovery.svg", description: "Complete visibility into your API ecosystem." },
         ]
       },
       {

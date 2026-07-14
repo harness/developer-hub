@@ -2105,7 +2105,7 @@ nav[data-docs-variant="3k"] .sidebar-asp > a::before {
 
 nav[data-docs-variant="3k"] .sidebar-adra > div > a::before,
 nav[data-docs-variant="3k"] .sidebar-adra > a::before {
-  background-image: url('/img/home/security-test.svg');
+  background-image: url('/img/home/app-discovery.svg');
 }
 
 nav[data-docs-variant="3k"] .sidebar-arp > div > a::before,
@@ -2131,6 +2131,70 @@ nav[data-docs-variant="3k"] .sidebar-hsf > a::before {
 nav[data-docs-variant="3k"] .sidebar-qwietai > div > a::before,
 nav[data-docs-variant="3k"] .sidebar-qwietai > a::before {
   background-image: url('/img/home/qwiet.svg');
+}
+
+/* ── Dark mode: recolor /img/home/ sidebar icons for visibility ── */
+html[data-theme='dark'] .sidebar-univ > div > a::before,
+html[data-theme='dark'] .sidebar-univ > a::before,
+html[data-theme='dark'] .sidebar-module-title-block .menu__link.sidebar-module-title-block__link.sidebar-scs::before,
+html[data-theme='dark'] .sidebar-module-title-block .sidebar-module-title-block__link.sidebar-scs::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-ai > div > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-ai > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-platform > div > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-platform > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-cr > div > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-cr > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-ci > div > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-ci > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-ar > div > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-ar > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-ata > div > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-ata > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-cd > div > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-cd > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-iacm > div > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-iacm > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-ff > div > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-ff > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-fme > div > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-fme > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-ccm > div > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-ccm > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-sto > div > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-sto > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-sei > div > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-sei > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-idp > div > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-idp > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-dbdevops > div > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-dbdevops > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-rm > div > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-rm > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-ssca > div > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-ssca > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-harness > div > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-harness > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-aisre > div > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-aisre > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-rt > div > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-rt > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-ce > div > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-ce > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-asp > div > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-asp > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-adra > div > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-adra > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-arp > div > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-arp > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-ast > div > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-ast > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-aisec > div > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-aisec > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-hsf > div > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-hsf > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-qwietai > div > a::before,
+html[data-theme='dark'] nav[data-docs-variant="3k"] .sidebar-qwietai > a::before {
+  filter: brightness(0) invert(1) opacity(0.9);
 }
 
 /* ── Legacy docs icons (icon_ originals) ── */

@@ -201,6 +201,14 @@
   display: block;
 }
 
+/* ── Dark mode: recolor /img/home/ icons for visibility ── */
+html[data-theme='dark'] {
+  .sectionHeaderIcon,
+  .iconWrap img.featureSvg {
+    filter: brightness(0) invert(1) opacity(0.9);
+  }
+}
+
 .tileTitle {
   font-size: 0.9rem;
   font-weight: 600;

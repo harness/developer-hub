@@ -179,6 +179,11 @@ html[data-theme='dark'] .dropdownItem:hover {
   color: #fff;
 }
 
+/* Dark mode: recolor /img/home/ dropdown icons for visibility. */
+html[data-theme='dark'] .dropdownIcon {
+  filter: brightness(0) invert(1) opacity(0.9);
+}
+
 /* Responsive - reduce margins on smaller screens */
 @media (max-width: 1200px) {
   .navbarContainer :global(.navbar) {
