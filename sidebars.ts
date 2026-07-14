@@ -2742,6 +2742,7 @@ const sidebars: SidebarsConfig = {
         },
         'cloud-cost-management/get-started/key-concepts',
         'cloud-cost-management/get-started/data-job-status',
+        'cloud-cost-management/ask-ai',
         {
           type: 'html',
           value: 'Cost Reporting',
