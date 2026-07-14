@@ -26,7 +26,7 @@ const MODULES = [
     id: 'software-supply-chain-assurance',
     localPath: 'src/components/ApiReference/modules/software-supply-chain-assurance/openapi.yaml',
   },
-  { id: 'release-management', specUrl: 'https://app.harness.io/prod1/rmg/swagger/doc.json' },
+  // { id: 'release-management', specUrl: 'https://app.harness.io/prod1/rmg/swagger/doc.json' },
   { 
     id: 'database-devops',
     specUrl: 'https://app.harness.io/prod1/dbops/swagger.json' 
