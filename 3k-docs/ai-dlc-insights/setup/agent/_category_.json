@@ -1,0 +1,11 @@
+{
+    "label":"Harness AI DLC Agent",
+    "collapsible":"true",
+    "position": 7,
+    "collapsed":"true",
+    "className":"sidebar-item-beta",
+    "link":{
+       "type":"generated-index",
+       "title":"Harness AI DLC Agent"
+    }
+ }

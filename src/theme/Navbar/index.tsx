@@ -141,7 +141,7 @@ export default function NavbarWrapper(props: Props): ReactNode {
 
     { type: "header", label: "Operations" },
     { to: `${docsBase}/cloud-cost-management`, label: "Cloud & AI Cost Management", icon: "/img/home/cloud-cost.svg" },
-    { to: `${docsBase}/software-engineering-insights`, label: "AI DLC Insights", icon: "/img/home/engineering-insights-classic.svg" },
+    { to: `${docsBase}/ai-dlc-insights`, label: "AI DLC Insights", icon: "/img/home/engineering-insights-classic.svg" },
     { to: `${docsBase}/ai-sre`, label: "AI SRE", icon: "/img/home/incident.svg" },
     { to: `${docsBase}/internal-developer-portal`, label: "Internal Developer Portal", icon: "/img/home/portal.svg" },
 

@@ -172,15 +172,15 @@ export const categories: Category[] = [
       },
       {
         name: "AI DLC Insights",
-        href: "/docs/software-engineering-insights/harness-sei/sei-overview",
-        module: "sei",
+        href: "/docs/ai-dlc-insights",
+        module: "aidi",
         iconLight: "img/home/engineering-insights-classic.svg",
         iconDark: "img/home/engineering-insights-classic.svg",
         description: "Measure AI adoption, optimize token spend, and prove engineering impact."
       },
       {
         name: "Software Engineering Insights",
-        href: "/docs/software-engineering-insights/propelo-sei/get-started/overview",
+        href: "/docs/software-engineering-insights",
         module: "sei",
         iconLight: "img/home/engineering-insights-classic.svg",
         iconDark: "img/home/engineering-insights-classic.svg",

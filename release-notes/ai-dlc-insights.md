@@ -292,7 +292,7 @@ This feature provides a comprehensive view of team activity across multiple repo
 ----
 #### 2026-01-30
 
-[AI Insights](/docs/software-engineering-insights/harness-sei/insights/ai) now includes [AI-generated summaries and recommendations](/docs/software-engineering-insights/harness-sei/insights/ai#ai-summaries-and-recommendations), providing prescriptive interpretations of AI adoption, productivity, and code quality metrics in the **AI Insights** dashboard.
+[AI Insights](/docs/software-engineering-insights/harness-sei/insights/ai-engineering) now includes AI-generated summaries and recommendations, providing prescriptive interpretations of AI adoption, productivity, and code quality metrics in the **AI Insights** dashboard.
 
 ![](./static/sei/ai-summary-org.png)
 

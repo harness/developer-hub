@@ -15,6 +15,7 @@ import type {Props} from '@theme/DocItem/Layout';
 import ThreeDocsBanner from '@site/src/components/ThreeDocsBanner';
 import ChaosDocsBanner from '@site/src/components/ChaosDocsBanner';
 import FfDocsBanner from '@site/src/components/FfDocsBanner';
+import SeiDocsBanner from '@site/src/components/SeiDocsBanner';
 import FmeKapaAssistant from '@site/src/components/FmeKapaAssistant';
 
 import styles from './styles.module.css';
@@ -58,6 +59,7 @@ export default function DocItemLayout({children}: Props): ReactNode {
             <ThreeDocsBanner />
             <ChaosDocsBanner />
             <FfDocsBanner />
+            <SeiDocsBanner />
             <DocVersionBadge />
             {docTOC.mobile}
             <DocItemContent>{children}</DocItemContent>

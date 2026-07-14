@@ -24,9 +24,9 @@ const sidebars: SidebarsConfig = {
         // Platform Landing Page
         {
           type: 'link',
-          label: 'Platform',
+          label: 'Harness Platform',
           className: 'sidebar-platform',
-          href: '/docs/platform',
+          href: '/3k-docs/platform',
           customProps: {
             description: 'Learn how to manage Harness features that integrate with all modules.',
           },
@@ -34,9 +34,9 @@ const sidebars: SidebarsConfig = {
         // Code Repository Landing Page
         {
           type: 'link',
-          label: 'Repositories',
+          label: 'Code Repository',
           className: 'sidebar-cr',
-          href: '/docs/code-repository',
+          href: '/3k-docs/code-repository',
           customProps: {
             description:
               'Manage code in Harness, and accelerate development with security at scale. (Beta)',
@@ -45,9 +45,9 @@ const sidebars: SidebarsConfig = {
         // Continuous Integration landing page
         {
           type: 'link',
-          label: 'Builds',
+          label: 'Continuous Integration',
           className: 'sidebar-ci',
-          href: '/docs/continuous-integration',
+          href: '/3k-docs/continuous-integration',
           customProps: {
             description: 'Learn how you can build faster and be more productive.',
           },
@@ -55,9 +55,9 @@ const sidebars: SidebarsConfig = {
         // Artifact Registry landing page
         {
           type: 'link',
-          label: 'Artifacts',
+          label: 'Artifact Registry',
           className: 'sidebar-ar',
-          href: '/docs/artifact-registry',
+          href: '/3k-docs/artifact-registry',
           customProps: {
             description: 'Store your artifacts natively with Harness.',
           },
@@ -67,7 +67,7 @@ const sidebars: SidebarsConfig = {
           type: 'link',
           label: 'AI Test Automation',
           className: 'sidebar-ata',
-          href: '/docs/ai-test-automation',
+          href: '/3k-docs/ai-test-automation',
           customProps: {
             description: 'Store your AI Test Automation natively with Harness.',
           },
@@ -75,9 +75,9 @@ const sidebars: SidebarsConfig = {
         // Continuous Delivery Landing Page
         {
           type: 'link',
-          label: 'Deployments',
+          label: 'Continuous Delivery',
           className: 'sidebar-cd',
-          href: '/docs/continuous-delivery',
+          href: '/3k-docs/continuous-delivery',
           customProps: {
             description: 'Learn how to make your software releases more efficient and reliable.',
           },
@@ -85,7 +85,7 @@ const sidebars: SidebarsConfig = {
         // Release Orchestration Landing Page
         {
           type: 'link',
-          href: '/docs/release-orchestration',
+          href: '/3k-docs/release-orchestration',
           label: 'Release Orchestration',
           className: 'sidebar-rm',
 
@@ -97,8 +97,8 @@ const sidebars: SidebarsConfig = {
         // Database DevOps Landing Page
         {
           type: 'link',
-          href: '/docs/database-devops',
-          label: 'Databases',
+          href: '/3k-docs/database-devops',
+          label: 'Database DevOps',
           className: 'sidebar-dbdevops',
 
           customProps: {
@@ -108,8 +108,8 @@ const sidebars: SidebarsConfig = {
         // Infrastructure as Code Landing Page
         {
           type: 'link',
-          href: '/docs/infrastructure-as-code-management',
-          label: 'Infrastructure',
+          href: '/3k-docs/infrastructure-as-code-management',
+          label: 'Infrastructure as Code Management',
           className: 'sidebar-iacm',
 
           customProps: {
@@ -119,7 +119,7 @@ const sidebars: SidebarsConfig = {
         // Feature Management & Experimentation Landing Page
         {
           type: 'link',
-          href: '/docs/feature-management-experimentation',
+          href: '/3k-docs/feature-management-experimentation',
           label: 'Feature Management & Experimentation',
           className: 'sidebar-fme',
 
@@ -142,8 +142,8 @@ const sidebars: SidebarsConfig = {
         // Cloud Cost Management Landing Page
         {
           type: 'link',
-          href: '/docs/cloud-cost-management',
-          label: 'Cloud Costs',
+          href: '/3k-docs/cloud-cost-management',
+          label: 'Cloud & AI Cost Management',
           className: 'sidebar-ccm',
 
           customProps: {
@@ -153,7 +153,7 @@ const sidebars: SidebarsConfig = {
         // AI Security Landing Page
         {
           type: 'link',
-          href: '/docs/ai-security',
+          href: '/3k-docs/ai-security',
           label: 'AI Security',
           className: 'sidebar-aisec',
 
@@ -176,7 +176,7 @@ const sidebars: SidebarsConfig = {
         {
           type: "link",
           href: "/docs/appsec-runtime-protection",
-          label: "Runtime Protection",
+          label: "Application & API Runtime Protection",
           className: "sidebar-arp",
 
           customProps: {
@@ -197,7 +197,7 @@ const sidebars: SidebarsConfig = {
         // Security Testing Orchestration Landing Page
         {
           type: 'link',
-          href: '/docs/security-testing-orchestration',
+          href: '/3k-docs/security-testing-orchestration',
           label: 'Security Tests',
           className: 'sidebar-sto',
 
@@ -208,7 +208,7 @@ const sidebars: SidebarsConfig = {
         // SCS
         {
           type: 'link',
-          href: '/docs/software-supply-chain-assurance',
+          href: '/3k-docs/software-supply-chain-assurance',
           label: 'Supply Chain Security',
           className: 'sidebar-ssca',
 
@@ -218,7 +218,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'link',
-          href: '/docs/sast-and-sca',
+          href: '/3k-docs/sast-and-sca',
           label: 'SAST and SCA',
           className: 'sidebar-qwietai',
 
@@ -228,8 +228,8 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'link',
-          href: '/docs/resilience-testing',
-          label: 'Resilience Tests',
+          href: '/3k-docs/resilience-testing',
+          label: 'Resilience Testing',
           className: 'sidebar-rt',
           customProps: {
             description: 'Test system resilience with Chaos, Load, and DR Testing.',
@@ -247,18 +247,18 @@ const sidebars: SidebarsConfig = {
         // AI SRE Landing Page
         {
           type: 'link',
-          href: '/docs/ai-sre',
+          href: '/3k-docs/ai-sre',
           label: 'AI SRE',
           className: 'sidebar-aisre',
           customProps: {
             description: 'Get started with Harness AI SRE',
           },
         },
-        // SCS
+        // IDP
         {
           type: 'link',
-          href: '/docs/internal-developer-portal',
-          label: 'Developer Portal',
+          href: '/3k-docs/internal-developer-portal',
+          label: 'Internal Developer Portal',
           className: 'sidebar-idp',
 
           customProps: {
@@ -268,10 +268,9 @@ const sidebars: SidebarsConfig = {
         // SEI
         {
           type: 'link',
-          href: '/docs/software-engineering-insights',
-          label: 'Engineering Insights',
-          className: 'sidebar-sei',
-
+          href: '/3k-docs/ai-dlc-insights',
+          label: 'AI DLC Insights',
+          className: 'sidebar-aidi',
           customProps: {
             description:
               'Learn how data-led insights can remove bottlenecks and improve productivity.',
@@ -280,7 +279,7 @@ const sidebars: SidebarsConfig = {
         // Harness Solutions Factory Landing Page
         {
           type: 'link',
-          href: '/docs/harness-solutions-factory',
+          href: '/3k-docs/harness-solutions-factory',
           label: 'Harness Solutions Factory',
           className: 'sidebar-hsf',
 
@@ -2534,7 +2533,7 @@ const sidebars: SidebarsConfig = {
     // Cloud Cost Management Landing Page
     {
       type: 'category',
-      label: 'Cloud Costs',
+      label: 'Cloud & AI Cost Management',
       className: 'sidebar-ccm',
       link: {
         type: 'doc',
@@ -2875,7 +2874,7 @@ const sidebars: SidebarsConfig = {
   securitytestingorchestration: [
     {
       type: 'category',
-      label: 'Security Tests',
+      label: 'Security Testing Orchestration',
       className: 'sidebar-sto',
       link: {
         type: 'doc',
@@ -3324,7 +3323,7 @@ const sidebars: SidebarsConfig = {
   resiliencetesting: [
     {
       type: 'category',
-      label: 'Resilience Tests',
+      label: 'Resilience Testing',
       className: 'sidebar-rt',
       link: {
         type: 'doc',
@@ -4016,111 +4015,118 @@ internaldeveloperportal: [
       },
     },
   ],
-  softwareengineeringinsights: [
-    {
-      type: 'category',
-      label: 'Engineering Insights',
-      className: 'sidebar-sei',
-      link: {
-        type: 'doc',
-        id: 'software-engineering-insights',
+  aidlcinsights: [
+  {
+    type: 'category',
+    label: 'AI DLC Insights',
+    className: 'sidebar-aidi',
+    link: {
+      type: 'doc',
+      id: 'ai-dlc-insights',
+    },
+    customProps: {
+      description:
+        'Track AI adoption, optimize spend efficiency, and measure delivery impact across your engineering organization.',
+    },
+    collapsed: true,
+    items: [
+      // ------------------------------------------------------------------
+      // New to AI DLC Insights?
+      // ------------------------------------------------------------------
+      {
+        type: 'html',
+        value: 'New to AI DLC Insights?',
+        className: 'horizontal-bar',
       },
-      customProps: {
-        description: 'Learn how data-led insights can remove bottlenecks and improve productivity.',
-      },
-      collapsed: true,
-      items: [
-        {
-          type: "html",
-          value: "New to Harness SEI?",
-          className: "horizontal-bar",
-        },
-        'software-engineering-insights/harness-sei/sei-overview',
-        'software-engineering-insights/harness-sei/get-started/sei-key-concepts',
-        'software-engineering-insights/harness-sei/transition',
-        {
-          type: 'html',
-          value: 'Use SEI 2.0',
-          className: 'horizontal-bar',
-        },
-       {
+      'ai-dlc-insights/overview',
+      'ai-dlc-insights/key-concepts',
+      {
         type: 'category',
-        label: 'Get started with SEI 2.0',
+        label: 'Get Started',
         items: [
-          { type: 'autogenerated', dirName: 'software-engineering-insights/harness-sei/get-started' },
+          {
+            type: 'autogenerated',
+            dirName: 'ai-dlc-insights/get-started',
+          },
         ],
+      },
+
+      // ------------------------------------------------------------------
+      // Use AI DLC Insights
+      // ------------------------------------------------------------------
+      {
+        type: 'html',
+        value: 'Use AI DLC Insights',
+        className: 'horizontal-bar',
       },
       {
         type: 'category',
-        label: 'Set up SEI 2.0',
-        link: { 
-            type: 'doc', 
-            id: 'software-engineering-insights/harness-sei/setup-sei/index' 
+        label: 'Setup',
+        link: {
+          type: 'doc',
+          id: 'ai-dlc-insights/setup/index',
         },
         items: [
           {
             type: 'autogenerated',
-            dirName: 'software-engineering-insights/harness-sei/setup-sei',
+            dirName: 'ai-dlc-insights/setup',
           },
         ],
       },
       {
         type: 'category',
-        label: 'Manage SEI 2.0',
+        label: 'View Insights',
+        link: {
+          type: 'doc',
+          id: 'ai-dlc-insights/insights/index',
+        },
         items: [
-          { type: 'autogenerated', dirName: 'software-engineering-insights/harness-sei/manage' },
-        ],
-      },
-      {
-        type: 'category',
-        label: 'Insights',
-        items: [
-          { 
-            type: 'doc', 
-            id: 'software-engineering-insights/harness-sei/insights/efficiency',
-            label: 'Efficiency Insights',
-          },
-          { 
-            type: 'doc', 
-            id: 'software-engineering-insights/harness-sei/insights/productivity',
-            label: 'Productivity Insights',
-          },
-          { 
-            type: 'doc', 
-            id: 'software-engineering-insights/harness-sei/insights/ai',
-            label: 'AI Insights',
+          {
+            type: 'doc',
+            id: 'ai-dlc-insights/insights/ai-engineering',
+            label: 'AI Engineering',
             className: 'sidebar-item-beta',
           },
-          { 
-            type: 'doc', 
-            id: 'software-engineering-insights/harness-sei/insights/business-alignment',
-            label: 'Business Alignment Insights',
-          },
-          { 
-            type: 'doc', 
-            id: 'software-engineering-insights/harness-sei/insights/security',
+          {
+            type: 'doc',
+            id: 'ai-dlc-insights/insights/security',
             label: 'Security Insights',
             className: 'sidebar-item-beta',
           },
           {
             type: 'doc',
-            id: 'software-engineering-insights/harness-sei/insights/export',
-            label: 'Export SEI 2.0 Insights',
+            id: 'ai-dlc-insights/insights/efficiency',
+            label: 'Efficiency Insights',
+          },
+          {
+            type: 'doc',
+            id: 'ai-dlc-insights/insights/productivity',
+            label: 'Productivity Insights',
+          },
+          {
+            type: 'doc',
+            id: 'ai-dlc-insights/insights/business-alignment',
+            label: 'Business Alignment Insights',
+          },
+          {
+            type: 'doc',
+            id: 'ai-dlc-insights/insights/export',
+            label: 'Export Metrics',
           },
         ],
       },
       {
         type: 'category',
-        label: 'Canvas',
+        label: 'Studio',
         className: 'sidebar-item-beta',
-        link: { 
-            type: 'doc', 
-            id: 'software-engineering-insights/harness-sei/canvas/index', 
+        link: {
+          type: 'doc',
+          id: 'ai-dlc-insights/canvas/index',
         },
         items: [
           {
             type: 'autogenerated',
-            dirName: 'software-engineering-insights/harness-sei/canvas',
+            dirName: 'ai-dlc-insights/canvas',
           },
         ],
       },
@@ -4128,104 +4134,93 @@ internaldeveloperportal: [
         type: 'category',
         label: 'API',
         items: [
-          { type: 'autogenerated', dirName: 'software-engineering-insights/harness-sei/api' },
-        ],
-      },
-      {
-        type: 'html',
-        value: 'Use SEI 1.0',
-        className: 'horizontal-bar',
-      },
-      {
-        type: 'category',
-        label: 'SEI 1.0 (Legacy)',
-        link: {
-          type: 'generated-index',
-          slug: '/category/sei-current',
-        },
-        items: [
           {
             type: 'autogenerated',
-            dirName: 'software-engineering-insights/propelo-sei',
+            dirName: 'ai-dlc-insights/api',
           },
         ],
       },
+
+      // ------------------------------------------------------------------
+      // Management & Administration
+      // ------------------------------------------------------------------
+      {
+        type: 'html',
+        value: 'Management & Administration',
+        className: 'horizontal-bar',
+      },
+      {
+        type: 'autogenerated',
+        dirName: 'ai-dlc-insights/manage',
+      },
+
+      // ------------------------------------------------------------------
+      // Troubleshooting & Resources
+      // ------------------------------------------------------------------
       {
         type: 'html',
         value: 'Troubleshooting & Resources',
         className: 'horizontal-bar',
       },
-      'software-engineering-insights/sei-supported-platforms',
-      {
-        type: 'category',
-        label: 'Troubleshooting',
-        link: {
-          type: 'generated-index',
-          slug: '/category/sei-troubleshooting',
-        },
-        items: [
-          {
-            type: 'autogenerated',
-            dirName: 'software-engineering-insights/troubleshoot-sei',
-          },
-        ],
-      },
-      {
-        type: 'doc',
-        id: 'software-engineering-insights/sei-support',
-        label: 'Harness Support',
-      },
+      'ai-dlc-insights/troubleshooting',
     ],
-    }, // Release Notes
-    {
-      type: 'link',
-      label: 'Release Notes',
-      className: 'sidebar-Release_Notes',
-      href: '/release-notes/ai-dlc-insights',
-      customProps: {
-        description: 'Learn about recent changes to Harness products.',
-      },
+  },
+
+  // Release Notes
+  {
+    type: 'link',
+    label: 'Release Notes',
+    className: 'sidebar-Release_Notes',
+    href: '/release-notes/ai-dlc-insights',
+    customProps: {
+      description: 'Learn about recent changes to Harness products.',
     },
-    // Roadmap
-    {
-      type: 'link',
-      label: 'Roadmap',
-      className: 'sidebar-roadmap',
-      href: '/roadmap/#sei',
-      customProps: {
-        description: 'Learn about recent changes to Harness products.',
-      },
+  },
+
+  // Roadmap
+  {
+    type: 'link',
+    label: 'Roadmap',
+    className: 'sidebar-roadmap',
+    href: '/roadmap/#aidi',
+    customProps: {
+      description: 'Learn about upcoming product capabilities.',
     },
-    // API Docs
-    {
-      type: 'link',
-      label: 'API Reference',
-      className: 'sidebar-API_Reference',
-      href: 'https://apidocs.harness.io/',
-      customProps: {
-        description: 'Harness API Docs.',
-      },
+  },
+
+  // API Reference
+  {
+    type: 'link',
+    label: 'API Reference',
+    className: 'sidebar-API_Reference',
+    href: 'https://apidocs.harness.io/',
+    customProps: {
+      description: 'Harness API documentation.',
     },
-    // University
-    {
-      type: "link",
-      label: "Certifications & Training",
-      className: "sidebar-university",
-      href: '/university/sei',
-      customProps: {
-        description: 'Get certified and learn in Harness Software Engineering Insights from our training programs.',
-      },
+  },
+
+  // Certifications & Training
+  {
+    type: 'link',
+    label: 'Certifications & Training',
+    className: 'sidebar-university',
+    href: '/university/sei',
+    customProps: {
+      description:
+        'Get certified and learn AI DLC Insights with Harness University.',
     },
-    // All Docs
-    {
-      type: 'link',
-      label: 'Show All Docs',
-      className: 'sidebar-all_docs',
-      href: '/docs',
-      customProps: {
-        description: 'All Docs.',
-      },
+  },
+
+  // All Docs
+  {
+    type: 'link',
+    label: 'Show All Docs',
+    className: 'sidebar-all_docs',
+    href: '/docs',
+    customProps: {
+      description: 'Browse all Harness documentation.',
     },
+  },
   ],
   harnesssolutionsfactory: [
     {

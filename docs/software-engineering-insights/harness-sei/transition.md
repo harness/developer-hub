@@ -1,7 +1,7 @@
 ---
-title: Software Engineering Insights to AI DLC Insights Transition
-description: Learn how to transition from Software Engineering Insights to AI DLC Insights in Harness.
-sidebar_label: Software Engineering Insights to AI DLC Insights Transition
+title: Engineering Insights Classic to Engineering Insights Transition
+description: Learn how to transition from Engineering Insights Classic to Engineering Insights in Harness.
+sidebar_label: Engineering Insights Classic to Engineering Insights
 sidebar_position: 2
 ---
 

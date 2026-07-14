@@ -3,7 +3,7 @@ import type { ModuleTheme } from "./roadmapPalette";
 
 export const seiModuleTheme: ModuleTheme = {
   moduleKey: "sei",
-  moduleTitle: "AI DLC Insights",
+  moduleTitle: "Software Engineering Insights",
   palette: {
     light: { bg: "#F6FFF2", text: "#30841F" },
     dark: { bg: "#1E3320", text: "#8ED982" },

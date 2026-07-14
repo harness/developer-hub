@@ -26,7 +26,7 @@ export default function SEI() {
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img src={`${baseUrl}img/icon_sei.svg`} />
-            <h1>AI DLC Insights</h1>
+            <h1>Software Engineering Insights</h1>
           </div>
           <div className={styles.btnContainer}>
             <Link href="/release-notes/ai-dlc-insights">
@@ -41,7 +41,7 @@ export default function SEI() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              AI DLC Insights gives engineering leaders a unified view of AI adoption, spend efficiency, and delivery impact across coding agents, teams, and workflows. Track how AI-generated work moves through the development lifecycle, and understand whether your AI investment is helping your teams ship better software faster.
+              Harness SEI enables engineering leaders to make data-driven decisions that improve engineering productivity, efficiency, alignment, planning, and execution. It provides actionable insights into software delivery and workflows across teams, processes, and systems to improve software quality, enhance developer experience, and accelerate time to value.
             </p>
             <div className={styles.illustrationContainer}>
               <img

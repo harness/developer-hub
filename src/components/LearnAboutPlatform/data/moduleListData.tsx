@@ -160,6 +160,13 @@ export const moduleList: CardItem[] = [
   // },
   {
     title: 'AI DLC Insights',
+    module: MODULES.aidi,
+    icon: "img/icon_sei.svg",
+    description: <>Measure AI adoption, optimize AI investment, and improve engineering outcomes.</>,
+    link: 'docs/ai-dlc-insights',
+  },
+  {
+    title: 'Software Engineering Insights',
     module: MODULES.sei,
     icon: "img/icon_sei.svg",
     description: <>Use data-led insights to remove bottlenecks and improve productivity.</>,

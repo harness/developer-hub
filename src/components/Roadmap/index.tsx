@@ -46,7 +46,7 @@ const Roadmap = () => {
     { value: 'ce', name: 'Resilience Testing', icon: 'icon_ce.svg' },
     { value: 'idp', name: 'Internal Developer Portal', icon: 'icon_idp.svg' },
     {
-      value: 'sei',
+      value: 'aidi',
       name: 'AI DLC Insights',
       icon: 'icon_sei.svg',
     },

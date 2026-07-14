@@ -153,6 +153,13 @@ export const featureList: CardItem[] = [
   //   link: "docs/cloud-development-environments",
   // },
   {
+    title: "Measure AI Engineering Performance",
+    module: MODULES.aidi,
+    icon: "img/icon_sei.svg",
+    description: <>Track AI adoption, optimize spend efficiency, and improve software delivery.</>,
+    link: '/docs/ai-dlc-insights',
+  },
+  {
     title: "Measure Software Engineering Processes",
     module: MODULES.sei,
     icon: "img/icon_sei.svg",

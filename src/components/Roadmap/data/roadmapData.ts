@@ -9,6 +9,7 @@ import { SscaData, sscaModuleTheme } from "./sscaData";
 import { CeData, ceModuleTheme } from "./ceData";
 import { IdpData, idpModuleTheme } from "./idpData";
 import { SeiData, seiModuleTheme } from "./seiData";
+import { AidiData, aidiModuleTheme } from "./aidiData";
 import { IacmData, iacmModuleTheme } from "./iacmData";
 import { platformData, platformModuleTheme } from "./platformData";
 import { aidaData, aidaModuleTheme } from "./aidaData";
@@ -138,6 +139,14 @@ const ModuleData: ModuleData[] = [
   },
   {
     title: "AI DLC Insights",
+    description:
+      "SaaS release status: GA",
+    module: MODULES.aidi,
+    horizon: AidiData,
+    moduleTheme: aidiModuleTheme,
+  },
+  {
+    title: "Software Engineering Insights",
     description:
       "SaaS release status: GA, SMP release status: Not yet planned",
     module: MODULES.sei,

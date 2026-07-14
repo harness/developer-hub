@@ -8,10 +8,6 @@ redirect_from:
 
 This page includes FAQs and troubleshooting information for SEI widgets.
 
-:::danger SEI Version Notice
-The following FAQs reflect SEI behavior. If you are using AI DLC Insights, see the [AI DLC Insights documentation](/docs/software-engineering-insights/harness-sei/sei-overview/).
-:::
-
 ### What is the purpose of the OU UNIT OVERRIDES field in widget settings?
 
 The **OU UNIT OVERRIDES** field allows you to override filters applied at the Collection level, ensuring that the report only reflects the filters set within the report itself.

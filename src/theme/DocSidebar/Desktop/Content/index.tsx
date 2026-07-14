@@ -42,6 +42,7 @@ const DOCS_3K_ICON_MAP: Record<string, string> = {
   'sidebar-ar':           '/img/home/artifact.svg',
   'sidebar-ccm':          '/img/home/cloud-cost.svg',
   'sidebar-sto':          '/img/home/security-test.svg',
+  'sidebar-aidi':         '/img/home/engineering-insights-classic.svg',                    // AI DLC Insights
   'sidebar-sei':          '/img/home/engineering-insights-classic.svg',              // no /home/ version yet
   'sidebar-idp':          '/img/home/portal.svg',              // no /home/ version yet
   'sidebar-cde':          '/img/icon_cloud_development_environments.svg',
@@ -78,6 +79,7 @@ const DOCS_LEGACY_ICON_MAP: Record<string, string> = {
   'sidebar-ccm':        '/img/icon_ccm.svg',
   'sidebar-sto':        '/img/icon_sto.svg',
   'sidebar-sei':        '/img/icon_sei.svg',
+  'sidebar-aidi':       '/img/icon_sei.svg',                    // AI DLC Insights
   'sidebar-idp':        '/img/icon_idp.svg',
   'sidebar-cde':        '/img/icon_cloud_development_environments.svg',
   'sidebar-platform':   '/img/icon_platform.svg',

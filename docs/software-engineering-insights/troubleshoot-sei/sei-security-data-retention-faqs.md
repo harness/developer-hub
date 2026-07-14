@@ -1,41 +1,14 @@
 ---
 title: Security & data retention FAQs
-description: Frequently asked questions related to AI DLC Insights security and data retention policies.
+description: Frequently asked questions related to Software Engineering Insights security and data retention policies.
 sidebar_position: 50
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
-This page includes FAQs and troubleshooting information for the AI DLC Insights module.
+This page includes FAQs and troubleshooting information for the Software Engineering Insights module.
 
 ### How long does SEI store data and for what time period can we go back in history in the widgets?
-
-<Tabs queryString="platform-experience">
-<TabItem value="aidi" label="AI DLC Insights">
-  
-The default historical data backfill duration depends on the integration:  
-  
-  - Jira supports up to **1 year** of historical data.  
-  - GitLab and GitHub support up to **14 days** of historical data.  
-  - HarnessNG supports up to **30 days** of historical data.  
-  
-Requests for extended historical backfill beyond these default durations are handled manually on demand.  
-  
-Data retention periods vary by data source:  
-  
-  - Instant Messages (IMs): **1 year and 3 months**  
-  - Source Code Management (SCM): **No limit**  
-  - Continuous Integration / Continuous Deployment (CI/CD): **No limit**
-  
-</TabItem>
-<TabItem value="sei" label="Software Engineering Insights">
   
 The default historical data backfill is **3 months** when a new integration is created.  
-  
-</TabItem>
-</Tabs>
-
 
 ### What is the idle session timeout, and is there a non-idle session timeout?
 

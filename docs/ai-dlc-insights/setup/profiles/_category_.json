@@ -1,0 +1,11 @@
+{
+    "label":"Configure Profiles",
+    "collapsible":"true",
+    "position": 8,
+    "collapsed":"true",
+    "className":"sidebar-item",
+    "link":{
+       "type":"generated-index",
+       "title":"Configure Profiles"
+    }
+ }

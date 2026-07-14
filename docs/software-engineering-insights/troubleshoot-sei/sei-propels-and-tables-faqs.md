@@ -8,10 +8,6 @@ redirect_from:
 
 This page includes FAQs and troubleshooting information for SEI propels and tables.
 
-:::danger SEI Version Notice
-The following FAQs reflect SEI behavior. If you are using AI DLC Insights, see the [AI DLC Insights documentation](/docs/software-engineering-insights/harness-sei/sei-overview/).
-:::
-
 ### How can I delete all rows in a table?
 
 To delete all rows in a table within SEI, you can follow these steps:

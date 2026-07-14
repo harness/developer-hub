@@ -50,8 +50,8 @@ The following metrics and widgets were impacted during the **affected window onl
 
 | SEI Version | Impacted Metrics and Widgets |
 |------------|-----------------------------|
-| [**SEI**](/docs/category/sei-current/) | - SCM Commits Report<br />- SCM Commits (Single Stat)<br />- SCM Rework Report<br />- Trellis (Individual Raw Stats)<br />- Trellis Scores<br />- SCM Coding Days Report<br />- SCM Coding Days (Single Stat)<br />- SCM Committers Report |
-| [**AIDI**](/docs/software-engineering-insights/harness-sei/sei-overview/) | - DORA (Lead Time for Changes): commit-based correlations may be incomplete<br />- Coding Days metrics<br />- Code Rework |
+| [**SEI**](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/github/sei-github-integration) | - SCM Commits Report<br />- SCM Commits (Single Stat)<br />- SCM Rework Report<br />- Trellis (Individual Raw Stats)<br />- Trellis Scores<br />- SCM Coding Days Report<br />- SCM Coding Days (Single Stat)<br />- SCM Committers Report |
+| [**AIDI**](/docs/ai-dlc-insights/setup/integrations/github/) | - DORA (Lead Time for Changes): commit-based correlations may be incomplete<br />- Coding Days metrics<br />- Code Rework |
 
 ## FAQs
 

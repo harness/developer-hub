@@ -1,7 +1,7 @@
 ---
-title: SEI to AIDI Transition
-description: Learn about the transition from SEI to AIDI in Harness.
-sidebar_label: SEI to AIDI Transition
+title: Engineering Insights Classic to Engineering Insights Transition
+description: Learn about the transition from Engineering Insights Classic to Engineering Insights in Harness.
+sidebar_label: Engineering Insights Classic to Engineering Insights
 sidebar_position: 1
 ---
 

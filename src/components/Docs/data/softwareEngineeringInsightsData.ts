@@ -13,31 +13,31 @@ import { MODULES } from "@site/src/constants";
           "",
         list: [
           {
-            title: "Get started with AI DLC Insights",
+            title: "Get started with Software Engineering Insights",
             module: MODULES.sei,
             description:
-              "Learn about Harness AI DLC Insights and how to get started.",
-            link: "/docs/software-engineering-insights/harness-sei/sei-overview",
+              "Learn about Harness Software Engineering Insights and how to get started.",
+            link: "/docs/software-engineering-insights/propelo-sei/get-started/overview",
           },
           {
             title: "What's supported",
             module: MODULES.sei,
             description:
-              "AI DLC Insights integrates with a number of third-party providers to provide a centralized visibility on engineering work.",
+              "Software Engineering Insights integrates with a number of third-party providers to provide a centralized visibility on engineering work.",
             link: "/docs/software-engineering-insights/sei-supported-platforms",
           },
           {
             title: "Key concepts",
             module: MODULES.sei,
             description:
-              "This topic outlines the core concepts that power AI DLC Insights.",
-            link: "/docs/software-engineering-insights/harness-sei/get-started/sei-key-concepts",
+              "This topic outlines the core concepts that power Software Engineering Insights.",
+            link: "/docs/software-engineering-insights/propelo-sei/get-started/sei-key-concepts",
           },
         ],
       },
 
       {
-        name: "Set up AI DLC Insights",
+        name: "Set up Software Engineering Insights",
         description:
           "",
         list: [
@@ -45,79 +45,65 @@ import { MODULES } from "@site/src/constants";
             title: "Configure Integrations",
             module: MODULES.sei,
             description:
-              "AI DLC Insights uses integrations to ingest data from your SDLC tools.",
-            link: "/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/",
+              "Software Engineering Insights uses integrations to ingest data from your SDLC tools.",
+            link: "/docs/category/configure-integrations",
           },
           {
-            title: "Set up Profiles",
+            title: "Set up the Ingestion Satellite",
             module: MODULES.sei,
             description:
-              "Profiles aggregate data for Efficiency, Productivity metrics, and more.",
-            link: "/docs/software-engineering-insights/harness-sei/setup-sei/setup-profiles/",
+              "Deploy and configure the Ingestion Satellite to securely collect data from your environment.",
+            link: "/docs/category/ingestion-satellite",
           },
           {
-            title: "Set up Org Trees",
+            title: "Manage Contributors",
             module: MODULES.sei,
             description:
-              "Setup the org tree to group developers for performance visibility.",
-            link: "/docs/software-engineering-insights/harness-sei/setup-sei/setup-org-tree",
+              "Map and manage developer identities across your integrated tools.",
+            link: "/docs/category/contributors",
           },
           {
-            title: "Set up & Manage Teams",
+            title: "Projects & Collections",
             module: MODULES.sei,
             description:
-              "Setup Teams that represents a group of developers working together within the organizational hierarchy",
-            link: "/docs/software-engineering-insights/harness-sei/setup-sei/setup-teams",
-          },
-          {
-            title: "API",
-            module: MODULES.sei,
-            description:
-              "Programmatically manage developer identities and export productivity and efficiency metrics using the AI DLC Insights API.",
-            link: "/docs/software-engineering-insights/harness-sei/api/developer-records",
+              "Organize repositories and engineering work into projects and collections for reporting.",
+            link: "/docs/category/projects-and-collections",
           },
         ],
       },
 
       {
-        name: "View AI DLC Insights",
+        name: "Configure Software Engineering Insights",
         description:
           "",
         list: [
           {
-            title: "Measure Engineering Efficiency",
+            title: "Create Profiles",
             module: MODULES.sei,
             description:
-              "Use the efficiency dashboard to measure key DORA and sprint-based metrics for your team.",
-            link: "/docs/software-engineering-insights/harness-sei/insights/efficiency",
+              "Configure Profiles to define the engineering groups and metrics you want to analyze.",
+            link: "/docs/category/create--manage-profiles",
           },
           {
-            title: "Measure Developer Productivity",
+            title: "Manage Dashboards",
             module: MODULES.sei,
             description:
-              "Use the productivity dashboard to measure the key productivity metrics for your developers.",
-            link: "/docs/software-engineering-insights/harness-sei/insights/productivity",
+              "Use dashboards to visualize engineering metrics and trends.",
+            link: "/docs/category/analytics--reporting",
           },
           {
-            title: "Analyze AI Insights",
+            title: "Workflow Automation",
             module: MODULES.sei,
             description:
-              "Understand how AI coding assistants impact developer productivity.",
-            link: "/docs/software-engineering-insights/harness-sei/insights/ai",
+              "Automate repetitive tasks and streamline your development workflow.",
+            link: "/docs/category/workflow-automation",
           },
           {
-            title: "Measure Business Alignment",
+            title: "Access Control",
             module: MODULES.sei,
             description:
-              "Track and analyze how engineering initiatives contribute to business outcomes.",
-            link: "/docs/software-engineering-insights/harness-sei/insights/business-alignment",
-          },
-          {
-            title: "Analyze Security Insights",
-            module: MODULES.sei,
-            description:
-              "Identify and analyze security hotspots and trends across your engineering organization.",
-            link: "/docs/software-engineering-insights/harness-sei/insights/security",
+              "Manage and control access to your engineering resources and data.",
+            link: "/docs/category/access-control-for-sei",
           },
         ],
       },
@@ -131,14 +117,14 @@ import { MODULES } from "@site/src/constants";
             title: "Harness Support",
             module: MODULES.sei,
             description:
-              "If you believe you have found a bug in Harness AI DLC Insights, please create a Zendesk Support ticket.",
+              "If you believe you have found a bug in Harness Software Engineering Insights, please create a Zendesk Support ticket.",
             link: "/docs/software-engineering-insights/sei-support",
           },
           {
             title: "Troubleshooting and FAQs",
             module: MODULES.sei,
             description:
-              "Use this for troubleshooting guidelines on Harness AI DLC Insights",
+              "Use this for troubleshooting guidelines on Harness Software Engineering Insights",
             link: "/docs/category/sei-troubleshooting",
           },
         ],

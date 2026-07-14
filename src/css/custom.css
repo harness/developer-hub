@@ -1908,6 +1908,8 @@ html[data-theme='dark'] .navbar__search_kapa kbd {
 .sidebar-sto > a::before,
 .sidebar-sei > div > a::before,
 .sidebar-sei > a::before,
+.sidebar-aidi > div > a::before,
+.sidebar-aidi > a::before,
 .sidebar-idp > div > a::before,
 .sidebar-idp > a::before,
 .sidebar-dbdevops > div > a::before,
@@ -2055,6 +2057,11 @@ nav[data-docs-variant="3k"] .sidebar-sto > a::before {
 
 nav[data-docs-variant="3k"] .sidebar-sei > div > a::before,
 nav[data-docs-variant="3k"] .sidebar-sei > a::before {
+  background-image: url('/img/home/engineering-insights-classic.svg');
+}
+
+nav[data-docs-variant="3k"] .sidebar-aidi > div > a::before,
+nav[data-docs-variant="3k"] .sidebar-aidi > a::before {
   background-image: url('/img/home/engineering-insights-classic.svg');
 }
 

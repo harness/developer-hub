@@ -1,6 +1,6 @@
 ---
-title: AI DLC Insights Troubleshooting
-description: Learn how to troubleshoot common AI DLC Insights issues.
+title: Software Engineering Insights Troubleshooting
+description: Learn how to troubleshoot common Software Engineering Insights issues.
 sidebar_label: Overview
 sidebar_position: 5
 redirect_from:
@@ -8,92 +8,7 @@ redirect_from:
   - /docs/software-engineering-insights/troubleshoot-sei/sei-troubleshooting-faqs
 ---
 
-This page provides information to help you troubleshoot issues with AI DLC Insights. If you need additional help, contact [Harness Support](/docs/software-engineering-insights/sei-support) or visit the [Harness Community](https://developer.harness.io/community/).
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
-<Tabs queryString="platform-experience">
-<TabItem value="aidi" label="AI DLC Insights">
-
-## What are the out-of-the-box roles in AI DLC Insights?
-
-AI DLC Insights includes three pre-defined roles:
-
-- SEI Admin: Full control over SEI data, settings, and configurations.
-- SEI Team Manager: Manage teams and developer records at the project level.
-- SEI Viewer: Read-only access to SEI data and dashboards.
-
-## What can an SEI Team Manager do?
-
-An SEI Team Manager can:
-
-- Manage team settings and developer records at the project level.
-- View integrations and profiles.
-- Access insights in read-only mode.
-
-## Can I create custom SEI roles in AI DLC Insights?
-
-Yes. Account Admins can create custom roles with specific AI DLC Insights permissions such as View, Edit, Create, or Delete—depending on the needs of the organization.
-
-## What is a Team in AI DLC Insights?
-
-Team represents a group of developers working together within your organization’s hierarchy. Every **leaf node** in the Org Tree automatically becomes a Team in SEI, making it the fundamental unit for insights, goals, and accountability.
-
-## How are Teams created in AI DLC Insights?
-
-Teams are auto-derived from your organization’s hierarchy (Org Tree). You don’t have to manually create them — SEI automatically identifies every leaf node as a Team.
-
-## Why do Team settings matter?
-
-While SEI auto-builds teams, each must be contextualized through configuration. Correct settings ensure that metrics like Deployment Frequency, Lead Time, MTTR, and Change Failure Rate accurately reflect your team’s real workflow and delivery lifecycle.
-
-## Is selecting integrations mandatory?
-
-Yes. You must select and save integrations before you can continue configuring other team settings. This ensures SEI knows where to pull data from.
-
-## Why do I need to update developer identifiers?
-
-To measure metrics like coding days and PR activity, SEI must know which developer performed which action in each system.
-
-## How do I update developer identifiers?
-
-Team managers manually update each developer’s system-specific user identifiers.
-
-## What is Business Alignment in SEI?
-
-Business Alignment maps work items to high-level organizational categories, such as **Strategic Work**, **Tech Debt**, and **Customer Commitments**, to illustrate how engineering effort supports business priorities.
-
-## What happens after I save my team configuration?
-
-Once saved:
-
-- SEI starts attributing data to your team based on the filters and identifiers you defined.
-- Metrics are automatically calculated.
-- Team dashboards update to reflect accurate insights.
-
-## How long does it take for dashboards to update?
-
-Typically, dashboards update automatically within minutes after configurations are saved; however, large data syncs may take longer, depending on the system size.
-
-## Why does a Jira issue appear under a developer in **Work Completed Per Developer** even if the issue is currently unassigned?
-
-In the Productivity Insights dashboard, the **Work Completed Per Developer** widget does not attribute work to the issue’s current Jira assignee; instead, it attributes work to historical assignments during configured development statuses from the **Issue Management** tab in Team Settings.
-
-A Jira issue may still appear under a developer even if it is currently unassigned (or assigned to someone else) because SEI attributes completed work using the person who owned the issue while it was in an active development state, not in its final state.
-
-An issue is attributed to a developer if:
-
-- The developer was assigned to the issue at any point during its lifecycle, and
-- The issue was in a status configured as a development status (for example, `In Progress` or `Inbox`), and
-- The issue eventually transitions into a terminal status (for example, `Done`, `Closed`, or `Merged`).
-
-For example, if `Inbox` is configured as a development status and `Closed` is configured as a terminal status, a developer is assigned to the issue while it is in `Inbox`, and the issue is unassigned or reassigned before it is moved to `Closed`.
-
-The original developer will still receive credit in **Work Completed Per Developer**, even if they are not the current assignee.
-
-</TabItem>
-<TabItem value="sei" label="Software Engineering Insights">
+This page provides information to help you troubleshoot issues with Software Engineering Insights. If you need additional help, contact [Harness Support](/docs/software-engineering-insights/sei-support) or visit the [Harness Community](https://developer.harness.io/community/).
 
 ## Can we track on how long was an issue open before it got delivered (Ticket, Story, Epic, etc.)?
 
@@ -182,8 +97,5 @@ Specifically:
 - No commit message references the Jira ticket ID.
 
 To enable mapping, ensure that the Jira issue ID is included in at least one of the locations described above.
-
-</TabItem>
-</Tabs>
 
 For troubleshooting guidance about the Harness platform, secrets, or other modules, go to the [Platform Knowledge Base](/docs/category/knowledge-base/) or [Troubleshooting Harness](/docs/troubleshooting/troubleshooting-nextgen).
