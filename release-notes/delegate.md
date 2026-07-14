@@ -169,6 +169,13 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## Delegate image release notes
 
+## July 2026
+
+### Version 26.07.89601 <!-- July 27, 2026 -->
+
+#### Fixed issues
+- Updated scm delegate binary [PIPE-35742]
+
 ## June 2026
 
 ### Version 26.06.89502 <!-- July 10, 2026 -->
