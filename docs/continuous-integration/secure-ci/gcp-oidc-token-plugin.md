@@ -52,6 +52,12 @@ You can use variable expressions for plugin settings. For example, `registry_use
 
 The GCP OIDC plugin outputs the GCP token to the variable `GCLOUD_ACCESS_TOKEN`. You can reference this output variable in subsequent pipeline steps to control Google Cloud Services through API (cURL) or the gcloud CLI.
 
+:::info
+
+`GCLOUD_ACCESS_TOKEN` is minted with the default `https://www.googleapis.com/auth/cloud-platform` OAuth scope. It works for Google Cloud APIs such as Cloud Storage, BigQuery, Artifact Registry, and Cloud Run. It does **not** work for Google Workspace APIs such as Sheets, Drive, Gmail, or Admin SDK. Calls to those endpoints return `401 Unauthorized`. Go to [Access Google Workspace APIs](#access-google-workspace-apis-sheets-drive-gmail) to mint a scope-specific token instead.
+
+:::
+
 To reference this variable, use an expression such as `<+steps.STEP_ID.output.outputVariables.GCLOUD_ACCESS_TOKEN>`. Replace `STEP_ID` with the ID of the GCP OIDC plugin step, such as `<+steps.generate_gcp_token.output.outputVariables.GCLOUD_ACCESS_TOKEN>`.
 
 Here's a YAML example of a Plugin step generating a GCP token and a Run step using that token.
@@ -92,6 +98,54 @@ gcloud config config-helper --format="json(credential)"
 ```
 
 The first line authenticates and the second line generates the access token.
+
+---
+
+## Access Google Workspace APIs (Sheets, Drive, Gmail)
+
+The `GCLOUD_ACCESS_TOKEN` output variable is scoped to `cloud-platform`, which covers Google Cloud APIs only. To call Google Workspace APIs such as Sheets, Drive, Gmail, Calendar, Docs etc, you need a token minted with a Workspace scope. Use the ADC (Application Default Credentials) file that the plugin writes, then mint a fresh scoped token from it.
+
+### Configure the plugin to write the ADC file
+
+Set `create_application_credentials_file` to `true`. The plugin writes the ADC JSON file inside the stage workspace and exports its path as the `GOOGLE_APPLICATION_CREDENTIALS` environment variable.
+
+```yaml
+              - step:
+                  type: Plugin
+                  name: generate-sheets-token-example
+                  identifier: generate_sheets_token_example
+                  spec:
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
+                    image: plugins/gcp-oidc
+                    settings:
+                      project_id: "357844043395"
+                      pool_id: my-pool
+                      provider_id: my-provider
+                      service_account_email_id: my-service-account@my-project.iam.gserviceaccount.com
+                      duration: "600"
+                      create_application_credentials_file: "true"
+```
+
+### Mint a scoped token
+
+Call `gcloud auth application-default print-access-token` with the Workspace scope you need. This command reads the ADC file the plugin wrote and mints a new short-lived token restricted to that scope. Keep this step in the **same stage** as the Plugin step so that the ADC file and `$GOOGLE_APPLICATION_CREDENTIALS` are available.
+
+```yaml
+              - step:
+                  type: Run
+                  name: access-spreadsheet
+                  identifier: access_spreadsheet
+                  spec:
+                    shell: Sh
+                    command: |-
+                      set -e
+
+                      SHEETS_TOKEN=$(gcloud auth application-default print-access-token \
+                        --scopes=https://www.googleapis.com/auth/spreadsheets.readonly)
+
+                      curl -sS -H "Authorization: Bearer ${SHEETS_TOKEN}" \
+                        'https://sheets.googleapis.com/v4/spreadsheets/SPREADSHEET_ID/values/Sheet1'
+```
 
 ## Related Links
 
