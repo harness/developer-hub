@@ -6,7 +6,7 @@ sidebar_position: 100
 
 This article addresses some frequently asked questions about AWS deployments in Harness.
 
-### Where does Harness publish it's images for AWS SAM Build and Deploy?
+### Where does Harness publish its images for AWS SAM Build and Deploy?
 
 - We publish these images in Harness' DockerHub Registry for user's to reference in their SAM Build or SAM Deploy Steps
 - For SAM Build: https://hub.docker.com/r/harnessdev/sam-build
@@ -86,10 +86,10 @@ In the Step YAML
 
 ### How to access the SAM Build Step Outputs?
 
-- SAM build creates a “.aws-sam" directory in the same directory where your template.yml exists.
+- SAM build creates a ".aws-sam" directory in the same directory where your template.yml exists.
 
 - By default, Download Manifests Step downloads your repo in `/harness/MANIFEST_IDENTIFIER/` path which should be `/harness/dev/` in this case.
-- If you have customized the step and the SAM template.yaml exits in the root level directly, AWS SAM outputs won't be available in the root path. You need to make sure `.aws-sam` should be present `/harness/dev/` path.
+- If you have customized the step and the SAM template.yaml exists in the root level directory, AWS SAM outputs won't be available in the root path. You need to make sure `.aws-sam` should be present `/harness/dev/` path.
 
 ### How do I pass in the SAM Template path as an environment variable?
 
