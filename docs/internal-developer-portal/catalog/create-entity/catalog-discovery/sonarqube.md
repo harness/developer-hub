@@ -24,7 +24,7 @@ For each project, the integration collects the following:
 
 The following are needed to get the integration running:
 
-* Ensure the feature flags `IDP_CATALOG_CD_AUTO_DISCOVERY` and `IDP_INTEGRATIONS` are enabled. Contact [Harness Support](mailto:support@harness.io) to enable them.
+* Ensure the feature flag `IDP_INTEGRATIONS` is enabled. Contact [Harness Support](mailto:support@harness.io) to enable them.
 * You have the required RBAC permissions to manage integrations. All integration operations require the `IDP_INTEGRATION_EDIT` permission on the `IDP_INTEGRATION` resource type.
 * A SonarQube user token with global-level `Browse` privileges is available. Generate it via **My Account** → **Security** → **Generate Tokens** in SonarQube.
 

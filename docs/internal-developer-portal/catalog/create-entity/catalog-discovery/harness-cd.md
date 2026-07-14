@@ -18,9 +18,8 @@ For each service, the integration collects the following:
 ## Before you begin
 Make sure the following prerequisites are met:
 
-1. The feature flag **`IDP_CATALOG_CD_AUTO_DISCOVERY`** is enabled. Contact [Harness Support](mailto:support@harness.io) to enable it.
-2. **Harness CD** is enabled for your account. This must be the **same account** you use for Harness IDP.
-3. You have the required **RBAC permissions** to manage integrations. All operations for CD and Platform integrations require the **IDP Integration Edit** permission (`IDP_INTEGRATION_EDIT`) on the **IDP Integration** resource type (`IDP_INTEGRATION`).
+1. **Harness CD** is enabled for your account. This must be the **same account** you use for Harness IDP.
+2. You have the required **RBAC permissions** to manage integrations. All operations for CD and Platform integrations require the **IDP Integration Edit** permission (`IDP_INTEGRATION_EDIT`) on the **IDP Integration** resource type (`IDP_INTEGRATION`).
 
 ---
 

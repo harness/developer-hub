@@ -21,7 +21,7 @@ For each entity type, the integration collects the following:
 
 The following are needed to get the integration running:
 
-* Ensure the feature flags `IDP_CATALOG_CD_AUTO_DISCOVERY` and `IDP_INTEGRATIONS` are enabled. Contact [Harness Support](mailto:support@harness.io) to enable them.
+* Ensure the feature flag `IDP_INTEGRATIONS` is enabled. Contact [Harness Support](mailto:support@harness.io) to enable them.
 * You have the required RBAC permissions to manage integrations. All integration operations require the `IDP_INTEGRATION_EDIT` permission on the `IDP_INTEGRATION` resource type.
 * A [GitHub PAT Connector](https://www.youtube.com/watch?v=67r7gXk-UcU) or [GitHub App Connector](/docs/platform/connectors/code-repositories/git-hub-app-support) is configured in Harness with the credentials needed to access your GitHub organization. Ensure that the connector has the [necessary permissions on your GitHub](#github-permissions). You can create a new connector directly during the integration setup. 
 * For each GitHub org, user has to maintain one integration.

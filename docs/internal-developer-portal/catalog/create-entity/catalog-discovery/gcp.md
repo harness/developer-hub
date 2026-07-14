@@ -23,7 +23,7 @@ The following configurations are needed in Harness and GCP to get the integratio
 
 ### Relevant Harness configurations
  
-* Ensure the feature flags `IDP_CATALOG_CD_AUTO_DISCOVERY` and `IDP_INTEGRATIONS` are enabled. Contact [Harness Support](mailto:support@harness.io) to enable them.
+* Ensure the feature flag `IDP_INTEGRATIONS` is enabled. Contact [Harness Support](mailto:support@harness.io) to enable them.
 * You have the required RBAC permissions to manage integrations. All integration operations require the `IDP_INTEGRATION_EDIT` permission on the `IDP_INTEGRATION` resource type.
 * A [GCP connector](https://www.youtube.com/watch?v=frNDU4Iv7zM) is configured in Harness using a service account JSON key. Go to [GCP configurations](#relevant-gcp-configurations) below for how to obtain the key.
 
