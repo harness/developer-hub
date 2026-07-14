@@ -25,7 +25,7 @@ Harness FME experimentation advisors are prepared to assist our customers in set
 
 ## Creating mutually exclusive experiments 
 
-In this guide, we will divide our user traffic to create  mutually exclusive experiments. A parent feature flag divides the user traffic. The experiments are controlled and measured using dependent feature flags.
+In this guide, we will divide our user traffic to create mutually exclusive experiments. A parent feature flag divides the user traffic. The experiments are controlled and measured using dependent feature flags.
 
 ## Setting up the parent feature flag 
 

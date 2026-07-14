@@ -4,6 +4,7 @@ id: index
 slug: /feature-management-experimentation/getting-started
 description: How to make Feature Management & Experimentation work for you.
 sidebar_position: 1
+sidebar_label: Overview
 redirect_from:
   - /docs/feature-management-experimentation/feature-management/best-practices/o-reilly-book
   - /docs/feature-management-experimentation/getting-started/overview
