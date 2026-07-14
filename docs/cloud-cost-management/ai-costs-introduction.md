@@ -33,6 +33,27 @@ This beta release introduces end-to-end AI cost visibility across eight areas:
 
 ---
 
+## Supported Connectors
+
+Harness ingests AI cost data through two categories of connectors:
+
+### Native AI Connectors
+
+- **OpenAI**: Direct API spend, ingested via an OpenAI Admin API key with read-only access.
+- **Anthropic**: Direct API spend, ingested via an Anthropic Admin API key.
+
+Coming soon: Cursor.
+
+### Cloud Provider Connectors
+
+For managed AI services, your existing cloud provider connector captures AI costs automatically as long as billing is enabled. No separate AI connector is required.
+
+- **AWS Bedrock**: Captured through your AWS connector when billing is enabled.
+- **Google Vertex AI**: Captured through your GCP connector when billing is enabled.
+- **Azure AI Foundry**: Captured through your Azure connector when billing is enabled.
+
+---
+
 ## Getting Started
 
 :::note
