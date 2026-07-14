@@ -1,0 +1,7 @@
+myconfig: |-
+{
+  \"authConfig\": {
+    \"tenant\": \"OIDP\",
+    \"loginApiUrl\": \"ksdn\"
+  }
+}
