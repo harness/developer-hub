@@ -212,6 +212,12 @@ export const experiments: ExperimentDetails[] = [
     category: "kubernetes",
   },
   {
+    name: "Pod JVM memory stress",
+    description:"Pod JVM memory stress injects JVM memory stress for a Java process executing in a Kubernetes pod by consuming excessive memory resources of the JVM.",
+    tags: ["pod", "jvm", "memory"],
+    category: "kubernetes",
+  },
+  {
     name: "Pod JVM modify return",
     description:"Pod JVM modify return overrides the return value of a specific Java method in a target JVM so you can test how callers behave when a method silently returns wrong data.",
     tags: ["pod", "jvm"],

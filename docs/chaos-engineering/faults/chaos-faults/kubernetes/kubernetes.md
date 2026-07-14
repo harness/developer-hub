@@ -567,6 +567,24 @@ Pod JVM CPU stress drives a configurable number of CPU cores inside a target JVM
 
 <FaultDetailsCard category="kubernetes" subCategory="pod">
 
+### Pod JVM memory stress
+
+Pod JVM memory stress injects JVM memory stress for a Java process executing in a Kubernetes pod by consuming excessive memory resources of the JVM. This sometimes results in an OOM kill (Out-of-memory).
+
+<Accordion color="green">
+<summary>Use cases</summary>
+- Tests the system's ability to handle high payloads.
+- Evaluates the application's behavior in high-stress cases.
+- Induces memory consumption and exhaustion on the target Java process JVM executing in a K8s pod.
+- Simulates a lack of memory for processes running on the application, which degrades their performance.
+- Simulates application slowness due to memory starvation, and noisy neighbour problems due to excessive consumption of memory.
+
+</Accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
 ### Pod JVM method exception
 
 Pod JVM method exception causes a specific Java method in a target JVM to throw a configurable exception on every invocation so you can test how callers handle the failure.

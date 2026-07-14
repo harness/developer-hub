@@ -162,6 +162,7 @@ These experiments work seamlessly on GKE Autopilot as they operate within contai
 
 #### **JVM-Specific Chaos (Java Applications)**
 - **[Pod JVM CPU Stress](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-jvm-cpu-stress)**: Consumes excessive CPU threads in Java applications
+- **[Pod JVM Memory Stress](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-jvm-memory-stress)**: Consumes excessive heap or stack memory in Java applications
 - **[Pod JVM Method Exception](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-jvm-method-exception)**: Invokes exceptions in Java method calls
 - **[Pod JVM Method Latency](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-jvm-method-latency)**: Introduces delays in Java method execution
 - **[Pod JVM Modify Return](/docs/chaos-engineering/faults/chaos-faults/kubernetes/pod/pod-jvm-modify-return)**: Modifies return values of Java methods
