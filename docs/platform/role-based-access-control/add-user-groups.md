@@ -105,11 +105,6 @@ To inherit user groups in Harness, you need the following [permissions](/docs/pl
 
 2. Select **User Groups** in the header, and then select **Assign Roles** next to **New User Group**.
 3. In **User Group(s)**, select the groups to inherit. If you don't see a particular group, it either exists at a lower scope or you don't have permission to view it.
-
-   <div style={{textAlign: 'center'}}>
-   <DocImage path={require('./static/add-user-groups-54.png')} width="80%" height="60%" title="Click to view full size image" />
-   </div>
-
 4. Select **Apply Selected**.
 5. Select **Add** to [assign a role and resource group](#assign-roles-and-resource-groups) to the inherited group at the inherited scope. This determines the group's permissions and access at the inherited scope. If the group doesn't already have sufficient permissions/access from the original scope, you need to add the additional necessary permissions/access here.
 6. Select **Apply**.
