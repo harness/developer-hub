@@ -216,6 +216,54 @@ Make sure to follow the prompts to finish creating the key. For more information
 
 You must enable API access to use Git-based triggers, manage webhooks, or update Git statuses with this connector. If you are using the Harness Git Experience, this setting is required. API access allows authentication via multiple methods.
 
+#### HTTP API Base URL for SSH connectors with context paths
+
+When you use an SSH connector to connect to a Bitbucket Data Center server that has a context path, you may need to provide the HTTP API Base URL explicitly. A context path is a URL segment that appears between the hostname and the repository path, such as `/bitbucket` in `https://example.com/bitbucket/scm/project/repo.git`.
+
+SSH URLs (such as `ssh://git@example.com:7999/project/repo.git`) do not contain context path information. Without this information, Harness cannot construct the correct HTTP URL for API calls.
+
+The **HTTP API Base URL** field appears when you enable **API access**. You can leave this field empty for most connector configurations. You must provide a value only when all of the following are true:
+
+- You are connecting to **Bitbucket Data Center (On-Prem)** (not Bitbucket Cloud)
+- You select **SSH** as the **Connection Type**
+- Your Bitbucket server uses a context path in its HTTP URLs
+
+Bitbucket Cloud does not use context paths. Bitbucket Data Center (On-Prem) HTTP connectors already contain the context path in their connection URL.
+
+In the **HTTP API Base URL** field, enter the complete HTTP base URL including the context path. Do not include `/scm/` or repository-specific paths. Provide only the base URL up to and including the context path.
+
+**URL format**: `https://HOST/CONTEXT-PATH`
+
+**Example**: If your Bitbucket server is accessible at `https://example.com/bitbucket`, enter `https://example.com/bitbucket` in the HTTP API Base URL field.
+
+<details>
+<summary>Example configuration for an SSH connector with a context path</summary>
+
+Suppose your Bitbucket Data Center installation has the following configuration:
+
+- SSH clone URL: `ssh://git@example.com:7999/myproject/myrepo.git`
+- HTTP clone URL: `https://example.com/bitbucket/scm/myproject/myrepo.git`
+- Context path: `/bitbucket`
+
+To enable API access for this connector:
+
+1. In the **Bitbucket Repository URL** field, enter: `ssh://git@example.com:7999/myproject/myrepo.git`
+2. Select **SSH** as the **Connection Type**
+3. Configure SSH key authentication
+4. Enable **API access**
+5. In the **HTTP API Base URL** field, enter: `https://example.com/bitbucket`
+6. Configure your API access credentials (Access Token or Username and Token)
+
+Harness uses the HTTP API Base URL as the foundation for all API requests, appending the appropriate Bitbucket REST API endpoints automatically (for example, `/rest/api/1.0/projects`).
+
+</details>
+
+:::note
+
+If you do not provide the HTTP API Base URL for an SSH connector on a Bitbucket server with a context path, the connection test may pass for SSH operations (clone, fetch, push) but fail for API operations (webhooks, triggers, status updates).
+
+:::
+
 <Tabs>
 <TabItem value="email-api-token" label="Email and API Token (Bitbucket Cloud only)" default>
 
@@ -410,3 +458,11 @@ There are two potential causes for this:
 ### Some API functions fail for On-Prem repos
 
 If your On-Prem repo URL has an extra segment before the project ID or a multi-segment project ID, such as `bitbucket.myorg.com/scm/DESCRIPTOR/PROJECT-ID/REPO-NAME.git`, some API functionality can fail if you use the full URL. To fix this, remove the extra segment from the [Bitbucket Repository URL](#bitbucket-accountrepository-url).
+
+### Connection test fails for SSH connectors with API access enabled on servers with context paths
+
+If you are using an SSH connector with API access enabled and your Bitbucket Data Center server uses a context path (for example, `/bitbucket`), the connection test may fail even though SSH Git operations work correctly.
+
+SSH URLs (such as `ssh://git@example.com:7999/project/repo.git`) do not include the context path that appears in HTTP URLs (such as `https://example.com/bitbucket`). Without the context path, Harness cannot construct the correct API URL.
+
+To resolve this, provide the **HTTP API Base URL** in the API access configuration. Go to [HTTP API Base URL](#http-api-base-url-for-ssh-connectors-with-context-paths) to review detailed instructions.
