@@ -232,6 +232,15 @@ The following deprecated API endpoints are longer supported:
 
 ## July 2026
 
+### Version 1.157.x <!--July 09, 2026-->
+
+#### New features and enhancements
+- Added support for project IDs in dynamic `gcpsecretsmanager://` JEXL expressions, enabling cross-project access to Google Cloud Secret Manager secrets. You can now reference secrets using the format: `<+secrets.getValue('gcpsecretsmanager://account.<connector>/<project-id>/<secret-name>/latest')>`. [PL-72546]
+
+### Version 1.156.x <!--July 07, 2026-->
+
+No enhancements or fixes were released in this cycle.
+
 ### Version 1.155.x <!--July 02, 2026-->
 
 #### New features and enhancements
