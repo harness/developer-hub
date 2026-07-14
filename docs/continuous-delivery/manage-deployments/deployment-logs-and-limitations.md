@@ -68,3 +68,8 @@ To work effectively with log display behavior:
 * Consider breaking down steps that generate excessive logs into smaller tasks
 * Add identifiers or markers to log lines to make them easily searchable
 * If you notice missing logs during real-time monitoring, refresh the page after step completion to view the full output
+
+## Pipeline YAML size limitation
+Harness enforces a hard limit on the total rendered pipeline YAML size of 3MB (3,145,728 code points). This includes all referenced templates and nested templates/groups. If a pipeline exceeds this limit, execution may not start. 
+Recommended mitigations include reducing nested template complexity and moving large inline scripts to File Store.
+For details and troubleshooting steps, go to [The incoming YAML document exceeds the limit: 3145728 code points](/docs/troubleshooting/troubleshooting-nextgen/#the-incoming-yaml-document-exceeds-the-limit-3145728-code-points).
