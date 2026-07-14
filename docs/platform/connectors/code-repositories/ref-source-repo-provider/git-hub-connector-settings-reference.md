@@ -271,6 +271,15 @@ If your codebase connector allows API access and connects through a Harness Dele
 
 ## Important notes
 
+### Branch listing and search
+
+When selecting branches in the Harness UI (for example, when configuring a pipeline to use a specific branch), you can search for branches and load additional results:
+
+- **Prefix-based search**: As you type in the branch selection field, Harness searches for branches that match your search term as a prefix. This uses the v2 list branches API to find branches beyond the initially loaded set.
+- **Load more**: If your repository has more than 100 branches, you can scroll down in the branch selection dropdown to load additional pages of branches. This infinite scroll capability ensures that all branches in your repository are eventually available for selection.
+
+These improvements are available with go-scm library version 1.42.9 or later and Harness Delegate version 26.06.89500 or later.
+
 ### File size limitation
 
 The GitHub Contents API, which Harness uses to fetch files from repositories, has a 1 MB file size limit. If you attempt to fetch a file larger than 1 MB (such as a large Kubernetes manifest or Custom Resource Definition), the operation will fail.
