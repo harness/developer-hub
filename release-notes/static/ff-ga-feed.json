@@ -1993,13 +1993,6 @@
     "gaStartDate": "2026-07-06",
     "module": "Software Supply Chain Assurance",
     "lifecycleState": "Beta"
-  },
-  {
-    "flagKey": "SSCA_AIBOM_ORCHESTRATION_ENABLED",
-    "description": "Enables the AIBOM Orchestration step in Harness pipelines, allowing users to generate AIBOMs for AI components in their repositories.",
-    "gaStartDate": "2026-07-02",
-    "module": "Supply Chain Security",
-    "lifecycleState": "Limited GA"
   }
 ]
 
