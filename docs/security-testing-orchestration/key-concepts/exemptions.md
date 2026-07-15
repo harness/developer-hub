@@ -8,7 +8,7 @@ redirect_from:
   - /docs/security-testing-orchestration/get-started/key-concepts/exemptions
 ---
 
-You can set up an STO step to fail if a scan detects vulnerabilities that match the failure criteria specified for that step. You can also create exemptions for specific vulnerabilities to allow the pipeline to proceed even if they're detected.
+You can set up an STO step to fail if a scan detects vulnerabilities that match the failure criteria specified for that step. You can also create exemptions for specific vulnerabilities to allow the pipeline to proceed even if they are detected. Request exemptions for individual issues, selected occurrences, or multiple issues at once from the **Vulnerabilities** tab.
 
  STO supports two methods for specifying failure criteria: 
 

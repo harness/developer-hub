@@ -29,8 +29,8 @@ STO supports Open Policy Agent (OPA) policies to enforce security standards. Pol
 **5.⁠ ⁠Dashboards and Reporting**
 STO provides dashboards to visualize scan data, track trends, and generate reports to inform your security strategy. [View scan results in dashboards](/docs/security-testing-orchestration/dashboards/security-testing-dashboard).
 
-**6.⁠ ⁠Issue Exemptions**
-Control which issues are flagged during policy enforcement by creating exemptions. This allows you to manage vulnerability exemptions and false positives to streamline your remediation efforts. Learn more about managing issue exemptions in our [Exempt Issues documentation](/docs/security-testing-orchestration/exemptions/exemption-workflows).
+**6. Issue Exemptions**
+Control which issues are flagged during policy enforcement by creating exemptions. Request exemptions for individual issues or submit bulk exemption requests for multiple issues from the **Vulnerabilities** tab. Go to [Request issue exemption](/docs/security-testing-orchestration/exemptions/exemption-workflows) to learn more.
 
 **7.⁠ ⁠Create Jira Tickets**
 STO allows creating Jira tickets for detected security issues directly from the UI. Refer to create [Jira tickets documentation](/docs/security-testing-orchestration/jira-integrations).

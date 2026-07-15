@@ -13,9 +13,10 @@ import baseline_not_defined from '../use-sto/static/exemption-workflows-no-basel
 
 Issue exemptions help unblock pipelines by allowing security teams to temporarily bypass specific security issues that would otherwise fail the build. To understand how exemptions fit into your security workflow, refer to the [issue exemptions workflow](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow).
 
-You can create exemption requests either for the entire issue or for specific occurrences within an issue:
-- [**Create Exemption Request for an Issue**](#create-exemption-request-for-an-issue): When creating an exemption request for an entire issue, you can set the exemption scope at the [Project](#where-do-you-want-this-issue-to-be-exempted), [Pipeline](#where-do-you-want-this-issue-to-be-exempted), or [Target](#where-do-you-want-this-issue-to-be-exempted) level. Refer to this section for detailed instructions.
-- [**Create Exemption Request for Occurrences within Issue**](#create-exemption-request-for-occurrences-within-issue): When creating exemption request for selected occurrences of an issue, the exemption scope is limited to the [Target](#where-do-you-want-this-issue-to-be-exempted) level. Refer to this section for step-by-step guidance.
+You can create exemption requests in three ways:
+- [**Create exemption request for an issue**](#create-exemption-request-for-an-issue): Request an exemption for a single issue from the **Issue Details** pane. Set the exemption scope at the [Project](#where-do-you-want-this-issue-to-be-exempted), [Pipeline](#where-do-you-want-this-issue-to-be-exempted), or [Target](#where-do-you-want-this-issue-to-be-exempted) level.
+- [**Create bulk exemption requests**](#create-bulk-exemption-requests): Select multiple issues on the **Vulnerabilities** tab and submit pending exemption requests for all selected issues using the same scope, duration, and reason.
+- [**Create exemption request for occurrences within an issue**](#create-exemption-request-for-occurrences-within-issue): Request an exemption for selected occurrences of a single issue. The exemption scope is limited to the [Target](#where-do-you-want-this-issue-to-be-exempted) level.
 
 Reviewers have the flexibility to approve exemption requests either at the requested scope or extend the scope to the **Organization** or **Account** level during the review process. For more details, refer to [Manage Issue Exemptions](/docs/security-testing-orchestration/exemptions/manage-exemptions). To view submitted requests, refer to [View Issue Exemptions](#view-issue-exemptions).
 
@@ -105,6 +106,32 @@ If you select **all** occurrences of the issue:
     - If any occurrences in the list are already exempted, this option will be disabled to prevent conflicts. To enable it, cancel the existing exemption requests for those occurrences. Once done, select all occurrences again and recreate the exemption request, the option should now be available to check or uncheck.
 
 Follow the steps in the [Submit Exemption Request](#submit-exemption-request) section to complete and submit your request.
+
+---
+
+## Create bulk exemption requests
+
+:::note
+Bulk exemption requests are behind the feature flag `STO_ENABLE_BULK_EXEMPTION`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+:::
+
+You can create a bulk exemption request when multiple issues need the same exemption scope, duration, and reason. Harness creates a separate pending exemption request for each selected issue.
+
+
+1. In the pipeline [**Vulnerabilities**](/docs/security-testing-orchestration/view-security-test-results/view-scan-results#navigate-to-security-test-results) tab, select the issues you want to exempt:
+   - **Row checkboxes:** Select individual issues.
+   - **Header checkbox:** Select all issues on the current page.
+   - **Existing exemptions:** You cannot select an issue that already has an exemption. The row checkbox is disabled, and a tooltip on the checkbox shows **An exemption for this issue already exists**. When you use the header checkbox, issues with an existing exemption are excluded from the selection count.
+2. Verify the yellow selection banner shows how many issues are selected, for example 'All 17 issues in this page are selected'.
+3. Click **'Action'** on the top right, then select 'Request Exemption (17)' (the number matches your selection count).
+
+4. Complete the **Request Exemption for Issue** form. Provide the scope, duration, reason, description, and URL reference you enter apply to every selected issue. Go to [Submit exemption request](#submit-exemption-request) for field descriptions.
+
+5. Select 'Send Request' to submit a separate pending exemption request for each selected issue.
+
+<DocImage path={require('./static/bulk-exemptions.png')} alt="Action menu on the Vulnerabilities tab with Request Exemption (19) highlighted" title="Open Request Exemption from the Action menu" width="100%" />
+
+---
 
 ## Filters in Exemption Section
 

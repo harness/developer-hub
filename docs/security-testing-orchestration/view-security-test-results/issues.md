@@ -12,7 +12,7 @@ The **[Issues](/docs/security-testing-orchestration/view-security-test-results/i
 - [Identify impacted targets](#target-details)
 - [Inspect occurrences of issues](#occurrence-details)
 - [Create Jira tickets at Issues and Target level](/docs/security-testing-orchestration/jira-integrations)
-- [Create Issue Exemption Request with Project and Target scope](/docs/security-testing-orchestration/exemptions/exemption-workflows)
+- [Create issue exemption request with Project and Target scope](/docs/security-testing-orchestration/exemptions/exemption-workflows)
 - [Approve/Reject Exemption Requests](#exemption-status)
 
 <DocVideo src="https://youtu.be/CLqFqmZh2YM" title="Navigating the Issues section" />
@@ -20,6 +20,7 @@ The **[Issues](/docs/security-testing-orchestration/view-security-test-results/i
 :::info
 - The **Issues** section displays only the issues impacting your project's [baselines](https://developer.harness.io/docs/security-testing-orchestration/key-concepts/targets-and-baselines/). If your project has no targets or baselines configured, this page will not present the issues, even if scans have been executed against non-baseline targets.
 - To see detected issues in a non-baseline variant, such as a feature or developer branch, go to a pipeline execution where the variant was scanned and then go to [**Vulnerabilities tab**](/docs/security-testing-orchestration/view-security-test-results/view-scan-results).
+- To request exemptions for multiple issues at once, go to the **Vulnerabilities** tab for a pipeline execution. Go to [Create bulk exemption requests](/docs/security-testing-orchestration/exemptions/exemption-workflows#create-bulk-exemption-requests) for the workflow.
 :::
 
 ## Issues overview

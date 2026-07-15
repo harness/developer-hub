@@ -116,7 +116,9 @@ If an exemption applies or was requested for an issue, the **Exemption Status** 
 <DocImage path={require('./static/exemption-details-in-issue-details.png')} width="100%" height="100%" title="Click to view full size image" />
 
 :::tip
-From the **Issue Details** pane, you can create Jira tickets using the **Create Ticket** button (see [Create Jira tickets](/docs/security-testing-orchestration/jira-integrations)) or request issue exemptions using the **Request Exemption** button (see [Issue Exemption Workflow](/docs/security-testing-orchestration/exemptions/exemption-workflows)).
+From the **Issue Details** pane, you can create Jira tickets using the **Create Ticket** button (see [Create Jira tickets](/docs/security-testing-orchestration/jira-integrations)) or request issue exemptions using the **Request Exemption** button (see [Request issue exemption](/docs/security-testing-orchestration/exemptions/exemption-workflows)).
+
+To request exemptions for multiple issues at once, select issues using the row checkboxes on the **Vulnerabilities** tab, then select **Action** and **Request Exemption**. Go to [Create bulk exemption requests](/docs/security-testing-orchestration/exemptions/exemption-workflows#create-bulk-exemption-requests) for the full workflow.
 :::
 
 ### Overview tab

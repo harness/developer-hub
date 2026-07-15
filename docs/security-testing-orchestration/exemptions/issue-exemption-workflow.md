@@ -12,7 +12,7 @@ Issue Exemptions in STO provide developers and security teams a controlled metho
 
 The issue exemption workflow typically includes two stages:
 
-- **Requesting an Exemption**: Developers initiate exemption requests by providing relevant details, including justification and intended exemption duration. Refer to [Request Issue Exemption](/docs/security-testing-orchestration/exemptions/exemption-workflows).
+- **Requesting an Exemption**: Developers initiate exemption requests by providing relevant details, including justification and intended exemption duration. You can request an exemption for a single issue, for selected occurrences, or for multiple issues at once from the **Vulnerabilities** tab. Go to [Request issue exemption](/docs/security-testing-orchestration/exemptions/exemption-workflows) for step-by-step instructions.
 - **Managing Exemptions(Approve/Reject)**: Security teams review exemption requests and choose to approve or reject. Refer to [Manage Issue Exemption](/docs/security-testing-orchestration/exemptions/manage-exemptions).
 
 To stay informed about these events, you can [set up notifications](/docs/security-testing-orchestration/notifications/exemption-notifications) for exemption requests and status changes.
