@@ -8,7 +8,7 @@ import allModuleAnimationDark from "./assets/hdh_hero-dark.json";
 import allModuleAnimation from "./assets/hdh_hero.json";
 import LearnAboutPlatform from "@site/src/components/LearnAboutPlatform";
 import HomepageUniversity from "@site/src/components/HomepageUniversity";
-import Feedback from "@site/src/components/Feedback";
+import FeedbackWidget from "@site/src/components/FeedbackWidget";
 import styles from "./index.module.scss";
 import { useColorMode } from "@docusaurus/theme-common";
 
@@ -68,7 +68,7 @@ export default function Home(): JSX.Element {
             </div>
 
             {/* Keep Feedback widget as-is */}
-            <Feedback />
+            <FeedbackWidget source="docs" />
           </main>
           <hr className={styles.sectionDivider} />
           <div className="container">

@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect } from "react";
 import Layout from "@theme/Layout";
 import { useHistory, useLocation } from "@docusaurus/router";
-import Feedback from "@site/src/components/Feedback";
+import FeedbackWidget from "@site/src/components/FeedbackWidget";
 import glossaryData from "@site/src/data/glossary.json";
 import "@site/src/css/glossary.css";
 
@@ -371,7 +371,7 @@ export default function GlossaryPage() {
             )}
 
             {/* Feedback widget */}
-              <Feedback />
+              <FeedbackWidget source="docs" />
 
             {/* Back to top */}
             {showBackToTop && (

@@ -64,7 +64,6 @@
     "react-modal": "^3.16.1",
     "react-router-dom": "^6.26.0",
     "redux": "^5.0.1",
-    "refiner-js": "^1.1.7",
     "rehype-katex": "7",
     "remark-math": "6",
     "sass": "^1.81.0",

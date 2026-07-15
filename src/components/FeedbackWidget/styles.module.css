@@ -1,0 +1,379 @@
+/* Feedback modal - restyled to match the Docs 3.0 visual language observed
+   live on developer.harness.io/3k-docs (HDH-876), rather than inheriting the
+   Refiner-survey look (tinted lavender inputs, heavy drop shadow) from
+   earlier in this branch's history.
+
+   Reference points pulled from the real 3.0 site:
+   - Cards: white background, thin var(--gray-200) border, 8-16px radius,
+     a distinct blue border on the highlighted/active card (seen on the
+     "Code Repository" module card).
+   - Inputs/search: clean white fields with a gray-200 border, not tinted.
+   - Numbered progress: solid circular badges with a light-to-dark blue
+     progression (seen on the "1 / 2 / 3" onboarding steps).
+   - CTAs: solid primary-7 pill buttons (matches the navbar "Sign up"
+     button), soft gradient pills reserved for secondary/informational
+     chips (matches ThreeDocsBanner). */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 11, 13, 0.45);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.card {
+  position: relative;
+  width: 420px;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  background: var(--gray-0);
+  border: 1px solid var(--gray-200);
+  border-radius: 16px;
+  box-shadow: 0 16px 40px rgba(11, 11, 13, 0.16);
+  padding: 24px;
+  font-family: var(--harness-font-family);
+  box-sizing: border-box;
+}
+
+.badgeRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--primary-6);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.closeButton {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  border: none;
+  background: none;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--gray-400);
+  padding: 4px;
+  border-radius: 6px;
+}
+
+.closeButton:hover {
+  color: var(--gray-900);
+  background: var(--gray-100);
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--gray-500);
+  padding: 4px;
+  margin-left: -4px;
+  border-radius: 6px;
+}
+
+.backButton:hover {
+  color: var(--gray-900);
+  background: var(--gray-100);
+}
+
+.title {
+  margin: 0 0 6px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--gray-900);
+}
+
+.subtitle {
+  margin: 0 0 16px;
+  font-size: 13px;
+  color: var(--gray-600);
+}
+
+/* Feedback-type chips - one-click categorization, no typing required. */
+.typeRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.typeChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--gray-200);
+  background: var(--gray-0);
+  color: var(--gray-700);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.typeChip:hover {
+  border-color: var(--primary-4);
+}
+
+.typeChipActive {
+  border-color: var(--primary-6);
+  background: var(--primary-1);
+  color: var(--primary-8);
+  font-weight: 600;
+}
+
+/* Line icon inside a type chip - inherits currentColor from .typeChip /
+   .typeChipActive, so no colour rule needed here. */
+.typeIcon {
+  flex-shrink: 0;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 110px;
+  resize: vertical;
+  border: 1px solid var(--gray-200);
+  background: var(--gray-0);
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--gray-900);
+  box-sizing: border-box;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.textarea:focus,
+.input:focus {
+  outline: none;
+  border-color: var(--primary-6);
+  box-shadow: 0 0 0 3px var(--primary-1);
+}
+
+.counter {
+  text-align: right;
+  font-size: 12px;
+  color: var(--gray-400);
+  margin-top: 4px;
+}
+
+/* Sits just above the submit buttons on the contact step, explaining what
+   "Submit and Ask AI" does before the reader picks a button. */
+.askAINote {
+  margin-top: 14px;
+  font-size: 12px;
+  color: var(--gray-500);
+  line-height: 1.5;
+}
+
+.label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--gray-600);
+  margin: 14px 0 6px;
+}
+
+.required {
+  color: #e5484d;
+}
+
+.input {
+  width: 100%;
+  border: 1px solid var(--gray-200);
+  background: var(--gray-0);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--gray-900);
+  box-sizing: border-box;
+}
+
+.replyToggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--gray-800);
+  cursor: pointer;
+  margin-bottom: 4px;
+}
+
+.replyFields {
+  margin-top: 4px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--gray-200);
+}
+
+.disclaimer {
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--gray-400);
+  margin: 16px 0 0;
+  text-align: center;
+}
+
+.disclaimer a {
+  color: var(--gray-500);
+  text-decoration: underline;
+}
+
+.disclaimer a:hover {
+  color: var(--primary-7);
+}
+
+.checkboxRow input {
+  margin-top: 2px;
+}
+
+.error {
+  color: #e5484d;
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+.actionsRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Primary - highest emphasis, the default expected action (Submit feedback). */
+.primaryButton {
+  background: var(--primary-7);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.primaryButton:hover:not(:disabled) {
+  background: var(--primary-8);
+}
+
+.primaryButton:disabled {
+  background: var(--primary-3);
+  cursor: not-allowed;
+}
+
+/* Secondary - a real, inviting alternative action (Submit and Ask AI), tinted
+   in the same brand blue but visually lighter than the solid primary button
+   so the two don't compete for attention. */
+.secondaryButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--primary-1);
+  color: var(--primary-8);
+  border: 1px solid var(--primary-4);
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.secondaryButton:hover:not(:disabled) {
+  background: var(--primary-2);
+  border-color: var(--primary-5);
+}
+
+.secondaryButton:disabled {
+  background: var(--gray-50);
+  color: var(--gray-400);
+  border-color: var(--gray-200);
+  cursor: not-allowed;
+}
+
+.progress {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.progressDot {
+  height: 3px;
+  width: 32px;
+  border-radius: 3px;
+  background: var(--primary-2);
+}
+
+.progressDotActive {
+  background: var(--primary-6);
+}
+
+.doneIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--primary-1);
+  color: var(--primary-7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+/* Shown on the thank-you step only for the Submit and Ask AI path, so the
+   wait for Kapa's widget to open doesn't look like nothing is happening. */
+.askAIOpening {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--gray-500);
+}
+
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--gray-200);
+  border-top-color: var(--primary-6);
+  border-radius: 50%;
+  animation: feedbackWidgetSpin 0.8s linear infinite;
+}
+
+@keyframes feedbackWidgetSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}

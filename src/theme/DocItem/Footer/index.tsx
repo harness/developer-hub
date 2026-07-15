@@ -2,23 +2,24 @@ import React, {type ReactNode} from 'react';
 import clsx from 'clsx';
 import {ThemeClassNames} from '@docusaurus/theme-common';
 import {useDoc} from '@docusaurus/plugin-content-docs/client';
+import {useLocation} from '@docusaurus/router';
 import TagsListInline from '@theme/TagsListInline';
 
 import EditMetaRow from '@theme/EditMetaRow';
+import FeedbackWidget from '@site/src/components/FeedbackWidget';
 
 export default function DocItemFooter(): ReactNode {
   const {metadata} = useDoc();
   const {editUrl, lastUpdatedAt, lastUpdatedBy, tags} = metadata;
+  const {pathname} = useLocation();
 
   const canDisplayTagsRow = tags.length > 0;
   const canDisplayEditMetaRow = !!(editUrl || lastUpdatedAt || lastUpdatedBy);
 
-  const canDisplayFooter = canDisplayTagsRow || canDisplayEditMetaRow;
-
-  if (!canDisplayFooter) {
-    return null;
-  }
-
+  // The footer now always renders (previously it could return null when a
+  // page had neither tags nor last-updated metadata) - HDH-876 requires the
+  // Feedback widget on every doc/University page, and this row is the only
+  // one no longer gated on those Docusaurus-provided fields.
   return (
     <footer
       className={clsx(ThemeClassNames.docs.docFooter, 'docusaurus-mt-lg')}>
@@ -33,17 +34,25 @@ export default function DocItemFooter(): ReactNode {
           </div>
         </div>
       )}
-      {canDisplayEditMetaRow && (
-        <EditMetaRow
-          className={clsx(
-            'margin-top--sm',
-            ThemeClassNames.docs.docFooterEditMetaRow,
+      <div
+        className={clsx(
+          'row margin-top--sm align-items-center',
+          ThemeClassNames.docs.docFooterEditMetaRow,
+        )}>
+        <div className="col">
+          {canDisplayEditMetaRow && (
+            <EditMetaRow
+              className="margin-top--none"
+              editUrl={editUrl}
+              lastUpdatedAt={lastUpdatedAt}
+              lastUpdatedBy={lastUpdatedBy}
+            />
           )}
-          editUrl={editUrl}
-          lastUpdatedAt={lastUpdatedAt}
-          lastUpdatedBy={lastUpdatedBy}
-        />
-      )}
+        </div>
+        <div className="col" style={{textAlign: 'right'}}>
+          <FeedbackWidget source={pathname.startsWith('/university') ? 'university' : 'docs'} />
+        </div>
+      </div>
     </footer>
   );
 }

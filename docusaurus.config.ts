@@ -495,7 +495,8 @@ const config: Config = {
         routeBasePath: 'release-notes',
         exclude: ['**/shared/**', '**/static/**', '**/content/**'],
         sidebarPath: require.resolve('./sidebars-release-notes.js'),
-        editUrl: 'https://github.com/harness/developer-hub/tree/main',
+        // editUrl intentionally omitted (HDH-876): we no longer host on GitHub and
+        // do not want to invite public contributions via "Edit this page".
         async sidebarItemsGenerator({ defaultSidebarItemsGenerator, ...args }) {
           const sidebarItems = await defaultSidebarItemsGenerator(args);
           const sidebarItemsWithoutIndex = hideIndexFromSidebarItems(sidebarItems);
@@ -513,7 +514,8 @@ const config: Config = {
         routeBasePath: 'university',
         exclude: ['**/shared/**', '**/static/**'],
         sidebarPath: require.resolve('./sidebars-university.js'),
-        editUrl: 'https://github.com/harness/developer-hub/tree/main',
+        // editUrl intentionally omitted (HDH-876): we no longer host on GitHub and
+        // do not want to invite public contributions via "Edit this page".
         showLastUpdateTime: true,
         // ... other options
       },
@@ -524,7 +526,8 @@ const config: Config = {
         id: 'docs1',
         path: 'docs',
         sidebarPath: require.resolve('./sidebars.js'),
-        editUrl: 'https://github.com/harness/developer-hub/tree/main', // /tree/main/packages/create-docusaurus/templates/shared/
+        // editUrl intentionally omitted (HDH-876): we no longer host on GitHub and
+        // do not want to invite public contributions via "Edit this page".
         // include: ["tutorials/**/*.{md, mdx}", "docs/**/*.{md, mdx}"],
         // content/ included so those docs are built and indexable by search; hidden from sidebar via sidebarItemsGenerator
         exclude: ['**/shared/**', '**/static/**'],
@@ -558,7 +561,8 @@ const config: Config = {
         id: 'docs3k',
         path: '3k-docs',
         sidebarPath: require.resolve('./sidebars-3k-docs.js'),
-        editUrl: 'https://github.com/harness/developer-hub/tree/main', // /tree/main/packages/create-docusaurus/templates/shared/
+        // editUrl intentionally omitted (HDH-876): we no longer host on GitHub and
+        // do not want to invite public contributions via "Edit this page".
         // include: ["tutorials/**/*.{md, mdx}", "docs/**/*.{md, mdx}"],
         // content/ included so those docs are built and indexable by search; hidden from sidebar via sidebarItemsGenerator
         exclude: ['**/shared/**', '**/static/**'],
@@ -592,7 +596,8 @@ const config: Config = {
         id: 'roadmap',
         path: 'roadmap',
         sidebarPath: false,
-        editUrl: 'https://github.com/harness/developer-hub/tree/main', // /tree/main/packages/create-docusaurus/templates/shared/
+        // editUrl intentionally omitted (HDH-876): we no longer host on GitHub and
+        // do not want to invite public contributions via "Edit this page".
         // include: ["tutorials/**/*.{md, mdx}", "docs/**/*.{md, mdx}"],
         exclude: ['**/shared/**', '**/static/**'],
         routeBasePath: 'roadmap', //CHANGE HERE
@@ -657,7 +662,10 @@ const config: Config = {
     path.join(__dirname, '/client-modules/iframeEmbed'),
     path.join(__dirname, '/client-modules/dmsContentRedirect'),
     path.join(__dirname, '/client-modules/focusOnAnchor'),
-    path.join(__dirname, '/client-modules/feedbackFooter'),
+    // feedbackFooter client module removed (HDH-876): the Feedback button/modal
+    // is now a React component (src/components/FeedbackWidget) rendered
+    // directly in src/theme/DocItem/Footer, replacing the old Refiner-hosted
+    // widget and the DOM-mutation-observer hack that injected it.
     path.join(__dirname, '/client-modules/relyanceConsent'),
     // path.join(__dirname, '/client-modules/chatbot'),
   ],
