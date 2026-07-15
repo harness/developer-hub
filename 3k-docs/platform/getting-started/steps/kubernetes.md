@@ -2,6 +2,7 @@
 title: Kubernetes & Helm Steps
 sidebar_label: Kubernetes & Helm
 description: Reference for all Kubernetes and Helm step templates in Harness 3.0 — rolling, blue-green, canary deployments, plus utility operations for scaling, patching, and traffic routing.
+sidebar_position: 3
 ---
 
 Harness 3.0 provides 36+ Kubernetes steps and 9+ Helm steps for comprehensive container orchestration. This reference covers rolling, blue-green, and canary deployment strategies, plus utility operations for scaling, patching, traffic routing, and manifest management.
@@ -12,7 +13,7 @@ Kubernetes and Helm steps automatically inherit infrastructure settings (kubecon
 
 ---
 
-## Kubernetes Rolling Deploy
+## Kubernetes rolling deploy
 
 **Template:** `k8sRollingDeployStep@1.0.0`
 
@@ -51,7 +52,7 @@ For rollback, use `k8sRollingRollbackStep` to revert a rolling deployment to its
 
 ---
 
-## Kubernetes Blue-Green Deploy
+## Kubernetes blue-green deploy
 
 Blue-green deployment maintains two identical environments. The new version is deployed to the inactive ("stage") environment, tested, and then traffic is switched over by swapping service selectors. This strategy provides instant rollback by simply swapping selectors back.
 
@@ -83,7 +84,7 @@ steps:
 
 ---
 
-## Kubernetes Canary Deploy
+## Kubernetes canary deploy
 
 Canary deployment gradually rolls out changes by first deploying a small subset of pods with the new version. This allows you to monitor metrics and health before promoting the change to the full fleet or rolling it back.
 
@@ -112,11 +113,11 @@ steps:
 
 ---
 
-## K8s Apply & Delete
+## K8s apply & delete
 
 These steps provide direct control over applying and removing Kubernetes resources, outside of a managed deployment strategy.
 
-### k8sApplyStep
+### `k8sApplyStep`
 
 Apply manifests directly to the cluster. Supports dry run, pruning, server-side apply, and manifest printing for debugging.
 
@@ -145,7 +146,7 @@ steps:
       print_manifests: true
 ```
 
-### k8sDeleteStep
+### `k8sDeleteStep`
 
 Delete Kubernetes resources by name, manifest path, or release name. Useful for cleaning up resources during teardown or rollback workflows.
 
@@ -168,11 +169,11 @@ steps:
 
 ---
 
-## K8s Scale & Patch
+## K8s scale & patch
 
 These steps allow you to modify existing Kubernetes workloads by scaling replica counts or patching resource specifications without redeploying the full manifest.
 
-### k8sScaleStep
+### `k8sScaleStep`
 
 Scale Kubernetes workloads up or down by setting the desired replica count on a Deployment, StatefulSet, or other scalable resource.
 
@@ -192,7 +193,7 @@ steps:
       replicas: 2
 ```
 
-### k8sPatchStep
+### `k8sPatchStep`
 
 Patch workload resources using strategic merge patch, JSON merge patch, or JSON patch operations. Useful for updating specific fields without a full redeployment.
 
@@ -216,7 +217,7 @@ steps:
 
 ---
 
-## K8s Traffic Routing
+## K8s traffic routing
 
 **Template:** `k8sTrafficRoutingStep`
 
@@ -249,7 +250,7 @@ steps:
 
 ---
 
-## Kubernetes Utility Steps
+## Kubernetes utility steps
 
 Harness provides several utility steps for inspecting, validating, and debugging Kubernetes resources without modifying the cluster state.
 
@@ -289,7 +290,7 @@ steps:
 
 ---
 
-## Helm Deploy Basic
+## Helm deploy basic
 
 **Template:** `helmDeployBasicStep@1.0.0`
 
@@ -325,7 +326,7 @@ steps:
 
 ---
 
-## Helm Blue-Green
+## Helm blue-green
 
 Helm blue-green deployment uses Helm releases to maintain two environments. The new version is deployed as a separate Helm release, tested, and then traffic is swapped to the new release.
 
@@ -352,7 +353,7 @@ steps:
 
 ---
 
-## Helm Canary
+## Helm canary
 
 Helm canary deployment installs a canary Helm release with a subset of traffic routed to it. After validation, the canary is either promoted to full deployment or rolled back.
 
@@ -376,11 +377,11 @@ steps:
 
 ---
 
-## Helm Rollback & Delete
+## Helm rollback & delete
 
 These steps provide lifecycle management for Helm releases, allowing you to revert to a previous revision or completely uninstall a release.
 
-### helmRollbackStep
+### `helmRollbackStep`
 
 Roll back a Helm release to a previous revision. Harness automatically determines the previous healthy revision, or you can specify a target revision explicitly.
 
@@ -400,7 +401,7 @@ steps:
       revision: 3
 ```
 
-### helmDeleteStep
+### `helmDeleteStep`
 
 Uninstall a Helm release and remove all associated Kubernetes resources from the cluster.
 

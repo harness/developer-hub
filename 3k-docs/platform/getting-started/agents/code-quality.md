@@ -2,6 +2,7 @@
 title: Code Quality Agents
 sidebar_label: Code Quality
 description: AI-powered agents for code review, test coverage, and CI failure remediation, powered by Claude AI and integrated into your Harness pipelines.
+sidebar_position: 2
 ---
 
 Harness provides three AI-powered agents focused on code quality: Code Review for intelligent PR feedback, Code Coverage for automated test generation, and Autofix for automatic CI failure remediation. These agents use Claude AI to analyze code, generate improvements, and submit changes via pull requests.
@@ -12,13 +13,13 @@ Harness provides three AI-powered agents focused on code quality: Code Review fo
 
 The Code Review agent automatically reviews code changes in pull requests and posts intelligent feedback directly to the PR. It uses a three-stage process for comprehensive analysis.
 
-### How It Works
+### How it works
 
 1. **Review Prompt Generation** — An analysis agent examines the PR diff and generates a targeted review prompt
 2. **AI Code Review** — Claude AI (up to 50 iterations) performs comprehensive code review following the generated prompt
 3. **Comment Posting** — Review comments are posted directly to the PR via Harness SCM
 
-### Key Inputs
+### Key inputs
 
 | Input | Type | Description |
 |---|---|---|
@@ -27,7 +28,7 @@ The Code Review agent automatically reviews code changes in pull requests and po
 | `repo` | string | Repository name |
 | `pullReq` | string | Pull request number |
 
-### Pipeline Configuration
+### Pipeline configuration
 
 ```yaml title="pipeline.yaml"
 pipeline:
@@ -99,7 +100,7 @@ The Code Review agent uses a deep clone depth (1000 commits) to provide better c
 
 The Code Coverage agent analyzes codebases and generates comprehensive unit tests to achieve 90%+ code coverage. It creates a detailed COVERAGE.md report, pushes changes to a new branch, and posts coverage results as a PR comment.
 
-### How It Works
+### How it works
 
 1. **Codebase Analysis** — Scans source files and identifies coverage gaps
 2. **Test Generation** — Claude AI (up to 300 iterations) generates comprehensive unit tests
@@ -107,14 +108,14 @@ The Code Coverage agent analyzes codebases and generates comprehensive unit test
 4. **Report Generation** — Creates a COVERAGE.md with per-file coverage breakdown
 5. **PR Creation** — Pushes to a unique branch and creates a PR with coverage report as a comment
 
-### Coverage Targets
+### Coverage targets
 
 - 90% overall code coverage target
 - 80% minimum per-file coverage
 - Auto-posted coverage reports on PR
 - Go language support with verification enabled
 
-### Key Inputs
+### Key inputs
 
 | Input | Type | Description |
 |---|---|---|
@@ -124,7 +125,7 @@ The Code Coverage agent analyzes codebases and generates comprehensive unit test
 | `repo` | string | Repository name |
 | `branch` | string | Target branch |
 
-### Pipeline Configuration
+### Pipeline configuration
 
 ```yaml title="pipeline.yaml"
 pipeline:
@@ -231,19 +232,19 @@ The Code Coverage agent uses up to 300 AI iterations, making it one of the most 
 
 The Autofix agent automatically diagnoses and fixes CI pipeline failures. When a CI build fails, the agent analyzes execution logs, generates a diagnosis, applies code fixes using Claude AI, and creates a PR with the solution.
 
-### How It Works
+### How it works
 
 1. **Log Analysis** — Fetches execution logs from the failed CI pipeline
 2. **Diagnosis** — A remediation agent analyzes the failure and identifies the root cause
 3. **Fix Generation** — A coding agent (Claude AI, up to 50 iterations) applies code changes to fix the issue
 4. **Branch & PR** — Pushes fixes to an `ai-autofix` branch and creates a pull request
 
-### Two-Stage AI Process
+### Two-stage AI process
 
 - **Remediation Agent** — Specializes in diagnosing CI failures from logs and error messages
 - **Coding Agent** — Takes the diagnosis and applies targeted code fixes
 
-### Key Inputs
+### Key inputs
 
 | Input | Type | Description |
 |---|---|---|
@@ -254,7 +255,7 @@ The Autofix agent automatically diagnoses and fixes CI pipeline failures. When a
 | `branch` | string | Target branch |
 | `executionId` | string | Failed pipeline execution ID |
 
-### Pipeline Configuration
+### Pipeline configuration
 
 ```yaml title="pipeline.yaml"
 pipeline:

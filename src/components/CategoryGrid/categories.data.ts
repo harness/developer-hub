@@ -178,14 +178,6 @@ export const categories: Category[] = [
         iconDark: "img/home/engineering-insights-classic.svg",
         description: "Measure AI adoption, optimize token spend, and prove engineering impact."
       },
-      {
-        name: "Software Engineering Insights",
-        href: "/docs/software-engineering-insights",
-        module: "sei",
-        iconLight: "img/home/engineering-insights-classic.svg",
-        iconDark: "img/home/engineering-insights-classic.svg",
-        description: "Measure productivity, track DORA metrics, and surface bottlenecks."
-      },
     ],
   },
 ];

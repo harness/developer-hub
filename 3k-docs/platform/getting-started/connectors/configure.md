@@ -2,17 +2,18 @@
 title: Connector Configuration Reference
 sidebar_label: Configuration Reference
 description: Complete configuration examples for common connector types, including YAML definitions, Terraform HCL, and REST API endpoints.
+sidebar_position: 4
 ---
 
 Complete configuration examples for common connector types, including YAML definitions, Terraform HCL, and REST API endpoints.
 
 ---
 
-## Credential Reference
+## Credential reference
 
 Connectors reference secrets stored in the Harness Secret Manager (or an external vault). Secret references follow a scoped naming convention that determines where the secret is resolved from.
 
-### Secret Reference Format
+### Secret reference format
 
 | Format | Scope | Example |
 |---|---|---|
@@ -20,7 +21,7 @@ Connectors reference secrets stored in the Harness Secret Manager (or an externa
 | `org.SecretName` | Organization-level secret | `org.aws_access_key` |
 | `SecretName` | Project-level secret (default) | `docker_password` |
 
-### Authentication Methods
+### Authentication methods
 
 | Method | Description |
 |---|---|
@@ -31,7 +32,7 @@ Connectors reference secrets stored in the Harness Secret Manager (or an externa
 | Service Account Key (GCP) | A JSON key file for a GCP service account, stored as a Harness file secret. |
 | Inherit from Delegate | Use the credentials available on the delegate host (e.g., instance profile, workload identity). |
 
-### Delegate Selectors
+### Delegate selectors
 
 Delegate selectors route connector operations to specific delegates. This is required when the target service is in a private network or when specific delegates have the necessary network access or credentials.
 
@@ -51,11 +52,11 @@ connector:
 
 ---
 
-## GitHub Connector Examples
+## GitHub connector examples
 
 The following examples demonstrate GitHub connector configuration using both HTTP and SSH connection types.
 
-### GitHub HTTP Connector
+### GitHub HTTP connector
 
 ```yaml title="github-http-connector.yaml"
 connector:
@@ -80,7 +81,7 @@ connector:
     type: Account
 ```
 
-### GitLab SSH Connector
+### GitLab SSH connector
 
 ```yaml title="gitlab-ssh-connector.yaml"
 connector:
@@ -108,7 +109,7 @@ The `type: Account` field at the end of the spec indicates that the URL points t
 
 ---
 
-## AWS Connector Example
+## AWS connector example
 
 AWS connectors support multiple credential types including access keys, IAM roles, and delegate-inherited credentials. The following example uses IAM role-based authentication with cross-account access.
 
@@ -131,7 +132,7 @@ connector:
       - aws-delegate-us-east
 ```
 
-### AWS IAM Role (Inherit from Delegate)
+### AWS IAM role (Inherit from Delegate)
 
 ```yaml title="aws-delegate-connector.yaml"
 connector:
@@ -155,7 +156,7 @@ When running delegates on AWS (EC2 or EKS), prefer the "Inherit from Delegate" c
 
 ---
 
-## Kubernetes Connector Example
+## Kubernetes connector example
 
 Kubernetes connectors provide access to K8s clusters for deployment operations. The following example uses a service account token for authentication.
 
@@ -178,7 +179,7 @@ connector:
       - k8s-delegate-prod
 ```
 
-### Kubernetes via Delegate (In-Cluster)
+### Kubernetes via Delegate (In-cluster)
 
 ```yaml title="k8s-in-cluster-connector.yaml"
 connector:
@@ -199,7 +200,7 @@ When the Harness Delegate runs inside the target Kubernetes cluster, use the "In
 
 ---
 
-## HashiCorp Vault Connector Example
+## HashiCorp Vault connector example
 
 The Vault connector integrates with HashiCorp Vault for centralized secrets management. The following example configures Vault with token authentication and the KV v2 secrets engine.
 
@@ -299,7 +300,7 @@ resource "harness_platform_connector_aws" "example" {
 
 ---
 
-## API Reference
+## API reference
 
 Connectors can be managed programmatically through the Harness REST API. The following endpoints are available for connector CRUD operations.
 

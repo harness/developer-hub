@@ -2,13 +2,14 @@
 title: Secrets Best Practices
 sidebar_label: Best Practices
 description: Best practices for creating, storing, rotating, auditing, and maintaining compliance for secrets in Harness 3.0 — covering access control, rotation schedules, monitoring, and compliance standards.
+sidebar_position: 4
 ---
 
 Follow these best practices to ensure your secrets are secure, well-organized, compliant, and easy to manage at scale. These guidelines cover creation, access control, rotation, monitoring, and compliance.
 
 ---
 
-## Creation and Storage
+## Creation and storage
 
 How you create and store secrets directly impacts the security posture of your CI/CD pipelines.
 
@@ -28,11 +29,11 @@ Adopt a consistent naming convention for secrets. For example: `{service}_{envir
 
 ---
 
-## Access Control
+## Access control
 
 Implement the principle of least privilege for secret access. Grant only the minimum permissions required for each role and regularly review access grants.
 
-### RBAC Permission Levels
+### RBAC permission levels
 
 | Permission | Description | Grants |
 |---|---|---|
@@ -42,7 +43,7 @@ Implement the principle of least privilege for secret access. Grant only the min
 | Delete | Remove secrets permanently. | Permanently delete secrets from the secret manager. |
 | Access | Use the secret in pipelines and connectors. | Reference the secret in runtime expressions. Required for pipeline execution. |
 
-### Recommended Roles
+### Recommended roles
 
 | Role | Permissions | Typical Users |
 |---|---|---|
@@ -59,7 +60,7 @@ Do not grant Delete permissions to users who only need to reference secrets in p
 
 ---
 
-## Rotation Schedule
+## Rotation schedule
 
 Regular rotation reduces the window of exposure if a credential is compromised. Establish rotation schedules based on the sensitivity and risk level of each secret.
 
@@ -69,7 +70,7 @@ Regular rotation reduces the window of exposure if a credential is compromised. 
 | Medium | Every 90 days | API tokens, service account keys, artifact registry credentials |
 | Low | Every 180 days | Development environment credentials, internal tool API keys, non-production certificates |
 
-### Manual Rotation Process
+### Manual rotation process
 
 1. Generate a new credential value in the source system.
 2. Update the secret value in Harness (or the external secret manager).
@@ -77,11 +78,11 @@ Regular rotation reduces the window of exposure if a credential is compromised. 
 4. Revoke the old credential in the source system.
 5. Update the rotation timestamp in your tracking system.
 
-### Automated Rotation
+### Automated rotation
 
 External secret managers such as AWS Secrets Manager and HashiCorp Vault support automated rotation through rotation lambdas and dynamic secrets respectively. When automated rotation is configured, Harness automatically retrieves the latest value at pipeline execution time with no manual intervention required.
 
-### Emergency Rotation
+### Emergency rotation
 
 In the event of a credential compromise:
 
@@ -93,7 +94,7 @@ In the event of a credential compromise:
 
 ---
 
-## Monitoring and Auditing
+## Monitoring and auditing
 
 Continuous monitoring and auditing of secret usage is essential for maintaining a strong security posture.
 
@@ -115,11 +116,11 @@ Harness retains audit logs based on your account plan. For compliance purposes, 
 
 Organizations operating in regulated industries need to ensure their secrets management practices meet compliance requirements.
 
-### Data Residency
+### Data residency
 
 When using external secret managers, secret values remain in the region and infrastructure where your secret manager is deployed. This allows you to meet data residency requirements by choosing a secret manager in the appropriate geographic region. The Harness platform stores only a reference to the secret path, not the value itself.
 
-### Encryption Standards
+### Encryption standards
 
 | Standard | Implementation |
 |---|---|
@@ -127,7 +128,7 @@ When using external secret managers, secret values remain in the region and infr
 | Encryption in transit | TLS 1.2 or higher for all communication between Harness, Delegates, and external secret managers. |
 | Key management | Built-in manager uses Harness-managed keys. External managers use customer-managed keys (CMK/BYOK). |
 
-### Secret Exposure Prevention
+### Secret exposure prevention
 
 Harness implements multiple layers of protection to prevent secret exposure:
 
@@ -137,7 +138,7 @@ Harness implements multiple layers of protection to prevent secret exposure:
 - **Configuration protection** — Secret expressions in pipeline YAML reference the secret by ID, not by value. The value is resolved only at runtime.
 - **Output protection** — Pipeline output variables that contain secret values are automatically masked in subsequent stages and the execution UI.
 
-### Compliance Reporting
+### Compliance reporting
 
 Use the following data sources to support compliance audits and reporting: audit logs (complete history of all secret operations with timestamps, users, and IP addresses), secret references (which pipelines and services use each secret), rotation history (when each secret was last rotated through the activity log), and RBAC configuration (role bindings and permission grants demonstrating least-privilege access controls).
 

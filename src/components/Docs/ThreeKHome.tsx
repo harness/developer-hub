@@ -22,10 +22,59 @@ export default function ThreeKHome() {
   const [charIndex, setCharIndex] = useState(0);
   const [deleting, setDeleting] = useState(false);
 
+  // ── Onboarding journeys: auto-rotating, pausable on hover, click to jump ──
+  const onboardingSteps = [
+    {
+      title: "Start with Harness AI",
+      description:
+        "Ask questions, generate setup steps, and troubleshoot issues instantly using your documentation context.",
+      linkLabel: "Ask Harness Docs AI →",
+      linkHref: "/",
+      icon: "img/home/ai.svg",
+    },
+    {
+      title: "Understand the Harness Platform",
+      description:
+        "Explore core platform concepts including authentication, access management, services, and integrations.",
+      linkLabel: "Getting Started with Harness →",
+      linkHref: "/3k-docs/platform/get-started",
+      icon: "img/home/platform.svg",
+    },
+    {
+      title: "Start Deploying with Harness CD",
+      description:
+        "Build pipelines, deploy services, and manage releases using Harness Continuous Delivery.",
+      linkLabel: "Getting Started with Harness CD →",
+      linkHref: "/3k-docs/continuous-delivery/getting-started",
+      icon: "img/home/deployment.svg",
+    },
+  ];
+
+  const [activeStep, setActiveStep] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (isPaused) return;
+
+    // Respect reduced-motion preference: no auto-rotation, tabs still work manually
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return;
+    }
+
+    const rotationTimer = setTimeout(() => {
+      setActiveStep((prev) => (prev + 1) % onboardingSteps.length);
+    }, 7500);
+
+    return () => clearTimeout(rotationTimer);
+  }, [activeStep, isPaused, onboardingSteps.length]);
+
   useEffect(() => {
     const currentPrompt = prompts[promptIndex];
 
-    const speed = deleting ? 30 : 60;
+    const speed = deleting ? 60 : 110;
 
     const timeout = setTimeout(() => {
       if (!deleting) {
@@ -34,7 +83,7 @@ export default function ThreeKHome() {
         setCharIndex(charIndex + 1);
 
         if (charIndex + 1 === currentPrompt.length) {
-          setTimeout(() => setDeleting(true), 1200);
+          setTimeout(() => setDeleting(true), 2000);
         }
       } else {
         // deleting
@@ -52,12 +101,31 @@ export default function ThreeKHome() {
   }, [charIndex, deleting, promptIndex]);
 
   const openKapa = () => {
+    (document.activeElement as HTMLElement)?.blur?.();
+
+    const w = window as Window & { Kapa?: (cmd: string, ...args: unknown[]) => void };
+    const query = question.trim();
+
+    if (typeof w.Kapa === "function") {
+      try {
+        // Carry over whatever the visitor typed into our search bar so it
+        // lands directly in Kapa's own input (replacing its placeholder)
+        // instead of being lost when the modal takes over.
+        if (query) {
+          w.Kapa("open", { query, submitQuery: true });
+        } else {
+          w.Kapa("open");
+        }
+        return;
+      } catch {
+        /* fall through to click */
+      }
+    }
+
     const kapaButton = document.querySelector(
       ".navbar__search_kapa"
     ) as HTMLElement | null;
-
     kapaButton?.click();
-    (document.activeElement as HTMLElement)?.blur?.();
   };
 
   return (
@@ -111,80 +179,67 @@ export default function ThreeKHome() {
         </div>
       </section>
 
-      {/* Section divider */}
-      <hr className={styles.sectionDivider} />
-
-      {/* ONBOARDING STEPS */}
-      <section className={styles.onboardingBox}>
-        <div className={styles.step}>
-          <div className={`${styles.stepNumber} ${styles.stepNumber1}`}>1</div>
-          <div className={styles.stepContent}>
-            <h3>Start with Harness AI</h3>
-            <p>
-              Ask questions, generate setup steps, and troubleshoot issues instantly
-              using your documentation context.
-            </p>
-            <Link className={styles.stepLink} href="/">
-              Ask Harness Docs AI →
-            </Link>
-          </div>
-        </div>
-
-        <div className={styles.separator}></div>
-
-        <div className={styles.step}>
-          <div className={`${styles.stepNumber} ${styles.stepNumber2}`}>2</div>
-          <div className={styles.stepContent}>
-            <h3>Understand the Harness Platform</h3>
-            <p>
-              Explore core platform concepts including authentication, access management,
-              services, and integrations.
-            </p>
-            <Link className={styles.stepLink} href="/3k-docs/platform/get-started">
-              Getting Started with Harness →
-            </Link>
-          </div>
-        </div>
-
-        <div className={styles.separator}></div>
-
-        <div className={styles.step}>
-          <div className={`${styles.stepNumber} ${styles.stepNumber3}`}>3</div>
-          <div className={styles.stepContent}>
-            <h3>Start Deploying with Harness CD</h3>
-            <p>
-              Build pipelines, deploy services, and manage releases using Harness Continuous Delivery.
-            </p>
-            <Link
-              className={styles.stepLink}
-              href="/3k-docs/continuous-delivery/getting-started"
+      {/* ONBOARDING STEPS: auto-rotating journey panel */}
+      <section
+        className={styles.onboardingBox}
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
+        <div className={styles.onboardingTabs} role="tablist" aria-label="Onboarding journeys">
+          {onboardingSteps.map((step, index) => (
+            <button
+              key={step.title}
+              type="button"
+              role="tab"
+              aria-selected={index === activeStep}
+              aria-label={`Step ${index + 1}: ${step.title}`}
+              className={`${styles.stepNumber} ${styles[`stepNumber${index + 1}`]} ${
+                index === activeStep ? styles.stepNumberActive : ""
+              }`}
+              onClick={() => setActiveStep(index)}
             >
-              Getting Started with Harness CD →
+              {index + 1}
+            </button>
+          ))}
+        </div>
+
+        <div className={styles.step} key={activeStep} role="tabpanel">
+          <div className={styles.stepContent}>
+            <img
+              src={`${baseUrl}${onboardingSteps[activeStep].icon}`}
+              alt=""
+              aria-hidden="true"
+              className={styles.stepIcon}
+            />
+            <h3>{onboardingSteps[activeStep].title}</h3>
+            <p>{onboardingSteps[activeStep].description}</p>
+            <Link className={styles.stepLink} href={onboardingSteps[activeStep].linkHref}>
+              {onboardingSteps[activeStep].linkLabel}
             </Link>
           </div>
         </div>
-      </section>
 
-      {/* QUICK STARTS */}
-      <section className={styles.quickStarts}>
-        <h2>Popular starting points</h2>
+        {/* QUICK STARTS: folded into the same card as the onboarding tabs */}
+        <div className={styles.quickStartsInline}>
+          <h4 className={styles.quickStartsHeading}>Popular starting points</h4>
 
-        <div className={styles.quickGrid}>
-          <Link href="/3k-docs/continuous-integration/get-started/onboarding-guide">
-            Set up a CI pipeline
-          </Link>
+          <div className={styles.quickGrid}>
+            <Link href="/3k-docs/continuous-integration/get-started/onboarding-guide">
+              Set up a CI pipeline
+            </Link>
 
-          <Link href="/3k-docs/feature-management-experimentation/feature-management/setup/create-a-feature-flag/">
-            Create your first feature flag
-          </Link>
+            <Link href="/3k-docs/feature-management-experimentation/feature-management/setup/create-a-feature-flag/">
+              Create your first feature flag
+            </Link>
 
-          <Link href="/3k-docs/continuous-delivery/getting-started">
-            Deploy with GitOps
-          </Link>
+            <Link href="/3k-docs/continuous-delivery/getting-started">
+              Deploy with GitOps
+            </Link>
 
-          <Link href="/3k-docs/appsec-security-testing">
-            Run security scans in CI
-          </Link>
+            <Link href="/3k-docs/appsec-security-testing">
+              Run security scans in CI
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -200,46 +255,34 @@ export default function ThreeKHome() {
           <summary>Overview</summary>
 
           <div className={styles.overviewGrid}>
-            <Link href="/3k-docs/platform" className={styles.overviewTile}>
-              <div className={styles.overviewTileHeader}>
-                <span className={styles.overviewTileIcon}>🚀</span>
-                <h3>What's New in 3.0</h3>
-              </div>
+            <Link href="/3k-docs/platform/getting-started" className={styles.overviewTile}>
+              <span className={styles.overviewTileIcon}>🚀</span>
+              <h3>What's New in 3.0</h3>
               <p>Simplified YAML, unified execution, and AI workflows.</p>
             </Link>
-            <Link href="/3k-docs/continuous-delivery" className={styles.overviewTile}>
-              <div className={styles.overviewTileHeader}>
-                <span className={styles.overviewTileIcon}>📋</span>
-                <h3>Pipeline Specification</h3>
-              </div>
+            <Link href="/3k-docs/platform/getting-started/pipeline" className={styles.overviewTile}>
+              <span className={styles.overviewTileIcon}>📋</span>
+              <h3>Pipeline Specification</h3>
               <p>New YAML v1 model for stages, services, and environments.</p>
             </Link>
             <Link href="/3k-docs/platform/getting-started/connectors" className={styles.overviewTile}>
-              <div className={styles.overviewTileHeader}>
-                <span className={styles.overviewTileIcon}>🔌</span>
-                <h3>Connectors</h3>
-              </div>
+              <span className={styles.overviewTileIcon}>🔌</span>
+              <h3>Connectors</h3>
               <p>Integrations for Git, cloud, artifacts, and observability.</p>
             </Link>
             <Link href="/3k-docs/platform/getting-started/secrets" className={styles.overviewTile}>
-              <div className={styles.overviewTileHeader}>
-                <span className={styles.overviewTileIcon}>🔐</span>
-                <h3>Secrets Management</h3>
-              </div>
+              <span className={styles.overviewTileIcon}>🔐</span>
+              <h3>Secrets Management</h3>
               <p>Secure credential storage and retrieval systems.</p>
             </Link>
             <Link href="/3k-docs/platform/getting-started/navigation" className={styles.overviewTile}>
-              <div className={styles.overviewTileHeader}>
-                <span className={styles.overviewTileIcon}>🧭</span>
-                <h3>Platform &amp; Navigation</h3>
-              </div>
+              <span className={styles.overviewTileIcon}>🧭</span>
+              <h3>Platform &amp; Navigation</h3>
               <p>Enhanced platform experience and navigation.</p>
             </Link>
-            <Link href="/3k-docs/category/dashboard-v30-closed-beta" className={styles.overviewTile}>
-              <div className={styles.overviewTileHeader}>
-                <span className={styles.overviewTileIcon}>📊</span>
-                <h3>Dashboards 3.0</h3>
-              </div>
+            <Link href="/3k-docs/platform/getting-started/dashboards" className={styles.overviewTile}>
+              <span className={styles.overviewTileIcon}>📊</span>
+              <h3>Dashboards 3.0</h3>
               <p>AI-powered dashboards built on unified data models.</p>
             </Link>
 
@@ -296,11 +339,11 @@ pipeline:
         - run: kubectl apply -f k8s/`}</pre>
                 </div>
               </div>
-              <div className={styles.calloutInfo}>
+              <p className={styles.backwardCompatNote}>
                 <strong>Backward Compatibility</strong>: Existing NG pipelines continue to
                 work without modification. Both v0 and v1 YAML are supported so teams can
                 migrate at their own pace.
-              </div>
+              </p>
             </div>
             {/* ── Templates ── */}
             <div className={styles.detailsItem}>

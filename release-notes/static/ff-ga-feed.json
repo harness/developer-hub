@@ -1368,7 +1368,7 @@
     "flagKey": "LICENSE_FAMILY_CLASSIFICATION",
     "description": "Enables license family classification in SBOMs to classify open-source licenses by their family type for better license compliance management.",
     "gaStartDate": "2026-05-11",
-    "module": "Software Supply Chain Assurance",
+    "module": "Supply Chain Security",
     "lifecycleState": "Limited GA"
   },
   {
@@ -1991,7 +1991,7 @@
     "flagKey": "ENABLE_CANARY_EXECUTION_SSCA",
     "description": "Enables the redesigned Execution SSCA experience in Harness, providing a refreshed interface for managing software supply chain assurance.",
     "gaStartDate": "2026-07-06",
-    "module": "Software Supply Chain Assurance",
+    "module": "Supply Chain Security",
     "lifecycleState": "Beta"
   }
 ]

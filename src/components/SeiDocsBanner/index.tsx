@@ -56,8 +56,9 @@ const SeiDocsBanner: React.FC = () => {
             <div className="sei-docs-banner-text">
               <strong>Looking for Software Engineering Insights?</strong>
               <span>
-                You're viewing the new AI DLC Insights documentation. Looking
-                for the Engineering Insights Classic docs?
+                You're viewing the latest AI DLC Insights documentation. 
+                
+                For the previous Software Engineering Insights experience, visit the Software Engineering Insights docs.
               </span>
             </div>
 
@@ -65,7 +66,7 @@ const SeiDocsBanner: React.FC = () => {
               to="/docs/software-engineering-insights"
               className="sei-docs-banner-link"
             >
-              View Software Engineering Insights →
+              View Software Engineering Insights Docs →
             </Link>
           </>
         ) : (
@@ -73,8 +74,10 @@ const SeiDocsBanner: React.FC = () => {
             <div className="sei-docs-banner-text">
               <strong>AI DLC Insights is now available!</strong>
               <span>
-                Harness AI DLC is Harness' engineering insights experience with AI
+                Harness AI DLC Insights is Harness' engineering insights experience with AI
                 engineering analytics and enhanced delivery insights.
+
+                To learn more about the new experience, visit the AI DLC Insights docs.
               </span>
             </div>
 
@@ -82,7 +85,7 @@ const SeiDocsBanner: React.FC = () => {
               to="/docs/ai-dlc-insights"
               className="sei-docs-banner-link"
             >
-              View AI DLC Insights →
+              View AI DLC Insights Docs →
             </Link>
           </>
         )}

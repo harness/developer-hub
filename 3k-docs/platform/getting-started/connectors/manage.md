@@ -2,13 +2,14 @@
 title: Managing Connectors
 sidebar_label: Managing Connectors
 description: Step-by-step instructions for creating, viewing, testing, editing, and deleting connectors in Harness 3.0, along with best practices for organization and security.
+sidebar_position: 3
 ---
 
 Step-by-step instructions for creating, viewing, testing, editing, and deleting connectors in Harness 3.0, along with best practices for organization and security.
 
 ---
 
-## Creating Connectors
+## Creating connectors
 
 To create a new connector, follow the steps below. The exact fields vary based on the connector type, but the general workflow is consistent across all types.
 
@@ -36,7 +37,7 @@ You can also create connectors using YAML definitions, the Harness REST API, or 
 
 ---
 
-## Viewing and Searching Connectors
+## Viewing and searching connectors
 
 The Connectors list page displays all connectors available at the current scope. The table includes the following columns:
 
@@ -49,7 +50,7 @@ The Connectors list page displays all connectors available at the current scope.
 | Updated | Date of the most recent modification. |
 | Actions | Context menu with Edit, Delete, Test Connection, and Copy Identifier options. |
 
-### Search and Filter
+### Search and filter
 
 Use the toolbar above the connector list to find specific connectors:
 
@@ -59,7 +60,7 @@ Use the toolbar above the connector list to find specific connectors:
 
 ---
 
-## Testing Connectors
+## Testing connectors
 
 Testing a connector verifies that the credentials are valid, the endpoint is reachable, and the required permissions are in place. There are two ways to test a connector:
 
@@ -73,13 +74,13 @@ The test connection feature validates basic connectivity and credentials. Howeve
 
 ---
 
-## Editing and Deleting Connectors
+## Editing and deleting connectors
 
-### Editing a Connector
+### Editing a connector
 
 To edit a connector, open it from the connector list or use the three-dot menu and select **Edit**. You can modify any field except the identifier, which is immutable after creation. After making changes, click **Save and Test** to validate the updated configuration.
 
-### Deleting a Connector
+### Deleting a connector
 
 To delete a connector, use the three-dot menu on the connector row and select **Delete**. A confirmation dialog will appear before the connector is permanently removed.
 
@@ -89,11 +90,11 @@ Deleting a connector will break any pipelines, triggers, or other resources that
 
 ---
 
-## Best Practices
+## Best practices
 
 Follow these best practices to keep your connectors organized, secure, and maintainable as your organization scales.
 
-### Naming Conventions
+### Naming conventions
 
 Use a consistent naming pattern that includes the provider and purpose, such as `aws_prod_deploy` or `github_ci_readonly`. Include the environment in the name when creating environment-specific connectors (e.g., `k8s_staging`, `k8s_production`). Avoid special characters in identifiers — use underscores or camelCase for readability.
 

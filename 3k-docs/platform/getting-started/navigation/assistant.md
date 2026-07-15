@@ -2,6 +2,7 @@
 title: AI Assistant
 sidebar_label: AI Assistant
 description: Learn how to use the Harness AI Assistant to ask questions, generate pipeline configurations, troubleshoot failures, and perform actions directly from the navigation header.
+sidebar_position: 4
 ---
 
 import Tabs from '@theme/Tabs';

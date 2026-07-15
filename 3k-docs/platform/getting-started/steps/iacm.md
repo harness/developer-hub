@@ -1,12 +1,13 @@
 ---
 title: Infrastructure as Code Steps
 sidebar_label: IaCM Steps
-description: Reference for IaCM step templates in Harness 3.0 — Terraform, OpenTofu, TFLint, and Tofu Module Test for full infrastructure lifecycle management within pipelines.
+description: Reference for IaCM step templates in Harness 3.0; Terraform, OpenTofu, TFLint, and Tofu Module Test for full infrastructure lifecycle management within pipelines.
+sidebar_position: 5
 ---
 
 Harness 3.0 provides native IaCM steps for Terraform and OpenTofu, enabling infrastructure provisioning directly within pipelines. These steps support the full lifecycle of infrastructure management — from planning and validation to deployment and teardown.
 
-## Available IaCM Steps
+## Available IaCM steps
 
 | Step | Template ID | Description |
 |---|---|---|
@@ -17,13 +18,13 @@ Harness 3.0 provides native IaCM steps for Terraform and OpenTofu, enabling infr
 
 ---
 
-## Terraform Step
+## Terraform step
 
 **Template:** `terraformStep@1.0.0` · Module: IaCM
 
 Execute Terraform commands within your pipeline. Supports the full Terraform lifecycle including init, plan, apply, destroy, and more. Runs in the `plugins/harness_terraform_vm` container image.
 
-### Supported Commands
+### Supported commands
 
 | Command | Description |
 |---|---|
@@ -49,7 +50,7 @@ Execute Terraform commands within your pipeline. Supports the full Terraform lif
 | `import` | list (grid) | No | Import resources with ID and Address (visible when `command=import`) |
 | `image` | string | No | Plugin image (default: `plugins/harness_terraform_vm`) |
 
-### Provider Authentication
+### Provider authentication
 
 The Terraform step automatically handles authentication for major cloud providers:
 
@@ -105,7 +106,7 @@ steps:
 
 ---
 
-## OpenTofu Step
+## OpenTofu step
 
 **Template:** `openTofuStep@1.0.0` · Module: IaCM
 
@@ -131,7 +132,7 @@ OpenTofu and Terraform steps share the same interface. Migrating between them re
 
 ---
 
-## TFLint Step
+## TFLint step
 
 **Template:** `tfLintStep@1.0.0` · Module: IaCM
 
@@ -145,7 +146,7 @@ steps:
 
 ---
 
-## Tofu Module Test Step
+## Tofu module test step
 
 **Template:** `tofuModuleTestStep@1.0.0` · Module: IaCM
 
@@ -159,7 +160,7 @@ steps:
 
 ---
 
-## Complete IaCM Pipeline Example
+## Complete IaCM pipeline example
 
 A typical IaCM pipeline follows the pattern: **Lint → Plan → Approve → Apply**. Use the TFLint step first, then Terraform/OpenTofu plan, add an approval gate, and finally apply.
 

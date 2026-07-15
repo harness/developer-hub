@@ -2,10 +2,11 @@
 id: index
 title: Harness Agents
 sidebar_label: Harness Agents
-description: Bring AI automation directly into your pipelines with Harness Agents — governed by RBAC, OPA policies, audit logs, and GitX versioning.
+description: Bring AI automation directly into your pipelines with Harness Agents; governed by RBAC, OPA policies, audit logs, and GitX versioning.
+sidebar_position: 1
 ---
 
-Harness Agents let you bring powerful AI automation directly into your pipelines — without losing control, security, or governance. Using your own models (OpenAI, Anthropic, Gemini) or Harness AI, agents analyze, fix, refactor, and optimize code and configs within the same guardrails you already trust for CI/CD. Each agent is a reusable template governed by RBAC, OPA policies, audit logs, and GitX versioning.
+Harness Agents let you bring powerful AI automation directly into your pipelines without losing control, security, or governance. Using your own models (OpenAI, Anthropic, Gemini) or Harness AI, agents analyze, fix, refactor, and optimize code and configs within the same guardrails you already trust for CI/CD. Each agent is a reusable template governed by RBAC, OPA policies, audit logs, and GitX versioning.
 
 | Stat | Label | Details |
 |---|---|---|
@@ -16,24 +17,24 @@ Harness Agents let you bring powerful AI automation directly into your pipelines
 
 ---
 
-## How Agents Work
+## How Agents work
 
 Agents follow a consistent execution flow from trigger to pull request. Every agent adheres to this lifecycle regardless of its specific task.
 
-1. **Trigger** — An agent is triggered from the Harness UI, API, or automatically in response to events (e.g., CI failure, new PR).
-2. **Clone** — The agent clones the target repository using configured SCM credentials.
-3. **Analyze** — AI analyzes the codebase, logs, or PR diff to understand context.
-4. **Execute** — The coding agent performs the task — writing code, generating tests, or creating fixes.
-5. **Review** — Changes are pushed to a new branch and a pull request is created for human review.
-6. **No Auto-Merge** — All agent-generated changes require human approval before merging.
+1. **Trigger**: An agent is triggered from the Harness UI, API, or automatically in response to events (e.g., CI failure, new PR).
+2. **Clone**: The agent clones the target repository using configured SCM credentials.
+3. **Analyze**: AI analyzes the codebase, logs, or PR diff to understand context.
+4. **Execute**: The coding agent performs the task; writing code, generating tests, or creating fixes.
+5. **Review**: Changes are pushed to a new branch and a pull request is created for human review.
+6. **No Auto-Merge**: All agent-generated changes require human approval before merging.
 
 :::warning PR-Based Workflow
-Agents follow a strict PR-based workflow. No changes are ever auto-merged — every modification goes through your team's standard review process.
+Agents follow a strict PR-based workflow. No changes are ever auto-merged; every modification goes through your team's standard review process.
 :::
 
 ---
 
-## AI Model Connectors (Bring Your Own Model)
+## AI Model connectors (Bring Your Own Model)
 
 Agents use `AIModel` connectors to communicate with LLMs. You can connect SaaS providers, self-hosted endpoints, or MCP servers. Each connector respects Harness RBAC and scoping (Account / Org / Project) and can run on Delegates (inside your network) or on the Harness Platform.
 
@@ -72,7 +73,7 @@ connector:
     endpoint: https://anthropic.mycompany.internal/v1
 ```
 
-### Connector Scoping
+### Connector scoping
 
 `AIModel` connectors follow the same scoping rules as all Harness connectors. Define them at Account, Org, or Project level depending on your team's access needs. Once created, a connector can be passed as an `llm` input to any agent.
 
@@ -97,7 +98,7 @@ You can fork any System Agent to create a Custom Agent that you fully control. T
 
 ---
 
-## Template Architecture
+## Template architecture
 
 Each agent template is a directory under `templates/` containing the files that define the agent's identity, pipeline logic, and documentation.
 
@@ -142,7 +143,7 @@ pipeline:
 
 ---
 
-## Agent Catalog
+## Agent catalog
 
 Harness provides a growing catalog of pre-built agents spanning code quality, security, developer productivity, and library upgrades. Each agent is a self-contained template that can be configured, triggered independently, or forked and customized.
 
@@ -156,15 +157,15 @@ Harness provides a growing catalog of pre-built agents spanning code quality, se
 | Feature Flag Cleanup | Productivity | Removes stale feature flags from codebases | AI-powered flag reference detection and removal |
 | React Upgrade | Productivity | Automates React upgrades and code modifications | Accepts custom prompts for any upgrade task |
 | Onboarding | Productivity | Imports repos into Harness and auto-generates CI pipelines | Uses Sonnet for analysis, Opus for pipeline generation |
-| Library Upgrade — Java | Upgrades | Scans Maven/Gradle projects for outdated dependencies | Updates `pom.xml` / `build.gradle` with optional test runs |
-| Library Upgrade — Python | Upgrades | Reviews Python dependencies (requirements/Poetry/Pipenv) | Regenerates lockfiles and opens a PR |
+| Library Upgrade (Java) | Upgrades | Scans Maven/Gradle projects for outdated dependencies | Updates `pom.xml` / `build.gradle` with optional test runs |
+| Library Upgrade (Python) | Upgrades | Reviews Python dependencies (requirements/Poetry/Pipenv) | Regenerates lockfiles and opens a PR |
 | Helm Chart Autofix | Security | Troubleshoots failed Helm releases and diagnoses misconfigurations | Proposes fixed templates and values as a PR |
 | Unified Agent | Orchestration | Central orchestration agent for services, environments, connectors, secrets, and pipelines | Can create and update pipelines in-line |
 | Vulnerability Remediation | Security | Takes SAST/SCA scan results and generates targeted fixes | Wires fixes back to the failing pipeline |
 
 ---
 
-## Input Types
+## Input types
 
 Agents use three standardized input types to accept configuration values. These types ensure consistent handling of plain text, encrypted credentials, and platform integrations across all agent templates.
 
@@ -199,11 +200,11 @@ Inputs are referenced in pipeline YAML via expression syntax. Use `<+inputs.inpu
 
 ---
 
-## Using Agents in Pipelines
+## Using Agents in pipelines
 
 Agents appear in the Step Palette under an **Agents / AI** section. When you add an Agent step to a pipeline, you choose the agent (System or Custom), configure its inputs (LLM connector, prompt, repo details), and optionally add approval steps before the agent applies changes.
 
-### Agent Template Definition
+### Agent template definition
 
 An agent template declares its inputs including the LLM connector, repository details, and a prompt. The `oneof` field constrains which connector types are valid.
 
@@ -226,7 +227,7 @@ agent:
       oneof: [GitHub]
 ```
 
-### Referencing an Agent in a Pipeline
+### Reference an Agent in a pipeline
 
 Reference an agent by name and template from within any pipeline stage. Agent inputs can be fixed in YAML or provided at runtime.
 
@@ -242,7 +243,7 @@ pipeline:
           strategy: always-run
 ```
 
-### Agent Steps
+### Agent steps
 
 Agents are built from reusable AI steps implemented as containers (similar to Drone plugins). Step types include `ai-code-review`, `ai-autofix`, `ai-dep-upgrade`, `ai-error-analyzer`, and `ai-ff-cleanup`. Each step receives LLM credentials, repo context, and task-specific inputs. These steps can be used directly or composed into higher-level agents.
 
@@ -267,11 +268,11 @@ Two input patterns exist across agents: newer agents use connector-based inputs 
 
 ---
 
-## Governance, RBAC & Security
+## Governance, RBAC, and security
 
-Agents respect all the controls you already expect from Harness. Every AI action is a pipeline step — fully auditable, subject to OPA policies, and eligible for template approval workflows.
+Agents respect all the controls you already expect from Harness. Every AI action is a pipeline step; fully auditable, subject to OPA policies, and eligible for template approval workflows.
 
-### RBAC Permissions
+### RBAC permissions
 
 | Permission | Description |
 |---|---|
@@ -289,14 +290,14 @@ Agents respect all the controls you already expect from Harness. Every AI action
 | Org | Shared across all projects in an organization |
 | Project | Visible only within that project |
 
-### Security Principles
+### Security principles
 
-- **No hardcoded secrets** — All credentials are passed via Harness secrets or connectors
-- **PR-based review** — All changes go through pull requests; no direct commits to main branches
-- **No auto-merge** — Agent-generated PRs always require human approval
-- **OPA policy enforcement** — Agent steps are subject to OPA policies like any other pipeline step
-- **Full audit trail** — Every agent execution is logged with inputs, outputs, and user context
-- **Container isolation** — Each agent step runs in an isolated container with no persistent state
+- **No hardcoded secrets**: All credentials are passed via Harness secrets or connectors
+- **PR-based review**: All changes go through pull requests; no direct commits to main branches
+- **No auto-merge**: Agent-generated PRs always require human approval
+- **OPA policy enforcement**: Agent steps are subject to OPA policies like any other pipeline step
+- **Full audit trail**: Every agent execution is logged with inputs, outputs, and user context
+- **Container isolation**: Each agent step runs in an isolated container with no persistent state
 
 :::warning Secret Management
 Never commit API keys or secrets directly in agent templates. Always use Harness secrets (`type: secret`) or connectors (`type: connector`) for sensitive values.
@@ -304,17 +305,17 @@ Never commit API keys or secrets directly in agent templates. Always use Harness
 
 ---
 
-## Calling Agents via API
+## Call Agents using the API
 
 In addition to using agents from the UI or YAML, you can invoke agents programmatically via the Harness API. Since agents are pipelines with AI steps, they use the same API surface as standard pipeline executions.
 
-- **Trigger an agent run** — Start an agent execution with specified inputs
-- **Pass inputs** — Provide connector, repo, prompt, and other parameters
-- **Track execution** — Monitor status and outputs like any other pipeline
+- **Trigger an agent run**: Start an agent execution with specified inputs
+- **Pass inputs**: Provide connector, repo, prompt, and other parameters
+- **Track execution**: Monitor status and outputs like any other pipeline
 
 ---
 
-## Getting Started
+## Get started
 
 1. Create an `AIModel` connector for your LLM provider
 2. Explore System Agents in the Step Palette

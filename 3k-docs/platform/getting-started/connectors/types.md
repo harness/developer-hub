@@ -2,13 +2,14 @@
 title: Connector Types
 sidebar_label: Connector Types
 description: Reference for all connector types in Harness 3.0 — code repositories, artifact registries, cloud providers, secret managers, infrastructure, monitoring, ticketing, and more.
+sidebar_position: 2
 ---
 
 Harness 3.0 supports a wide range of connector types organized into categories. Each category serves a specific integration purpose within the platform.
 
 ---
 
-## Code Repositories
+## Code repositories
 
 Code repository connectors provide access to source code, manifests, and configuration files stored in version control systems. These connectors are used during the CI build stage, for fetching Kubernetes manifests, Helm charts, and Terraform modules.
 
@@ -27,7 +28,7 @@ Code repository connectors provide access to source code, manifests, and configu
 
 ---
 
-## Artifact Repositories
+## Artifact repositories
 
 Artifact repository connectors integrate with registries and build servers to retrieve container images, Helm charts, and binary packages for deployment.
 
@@ -45,7 +46,7 @@ Artifact repository connectors integrate with registries and build servers to re
 
 ---
 
-## Cloud Providers
+## Cloud providers
 
 Cloud provider connectors authenticate and interact with major cloud platforms for infrastructure provisioning, deployment, and resource management.
 
@@ -64,7 +65,7 @@ Cloud provider connectors authenticate and interact with major cloud platforms f
 
 ---
 
-## Secret Managers
+## Secret managers
 
 Secret manager connectors integrate with external vaults and key management services to store and retrieve sensitive data such as passwords, tokens, certificates, and encryption keys.
 
@@ -105,7 +106,7 @@ Infrastructure connectors provide access to container orchestration platforms an
 
 ---
 
-## Monitoring and Observability
+## Monitoring and observability
 
 Monitoring connectors integrate with observability platforms for deployment verification, health checks, and automated rollback decisions based on real-time metrics and logs.
 
@@ -123,7 +124,7 @@ Monitoring connectors integrate with observability platforms for deployment veri
 
 ---
 
-## Ticketing Systems
+## Ticketing systems
 
 Ticketing connectors integrate with issue tracking and IT service management platforms for change management, approval workflows, and deployment tracking.
 
@@ -158,7 +159,7 @@ Communication connectors integrate with messaging and collaboration platforms to
 
 ---
 
-## Other Connectors
+## Other connectors
 
 Additional connector types that serve specialized integration needs within the Harness platform.
 
@@ -170,7 +171,7 @@ JDBC connectors enable direct database connectivity for data validation steps, d
 
 Confluence connectors allow pipelines to read from or publish to Confluence pages, enabling automated documentation updates as part of the release process.
 
-### Cloud Cost
+### Cloud cost
 
 Cloud cost connectors for AWS, GCP, and Azure enable the Cloud Cost Management (CCM) module to ingest billing data, resource utilization metrics, and cost allocation tags.
 

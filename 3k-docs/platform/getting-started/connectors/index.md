@@ -4,13 +4,14 @@ slug: /platform/getting-started/connectors
 title: Connectors Overview
 sidebar_label: Connectors Overview
 description: Connectors are integration endpoints that enable pipelines and other Harness resources to communicate with external services — a secure, reusable abstraction for credentials and connection details.
+sidebar_position: 1
 ---
 
 Connectors are integration endpoints that enable pipelines and other Harness resources to communicate with external services. They provide a secure, reusable abstraction for credentials and connection details across your organization.
 
 ---
 
-## What Are Connectors?
+## What are connectors?
 
 A connector encapsulates all the information Harness needs to integrate with an external system — the endpoint URL, authentication credentials, and connection parameters. Once created, a connector can be referenced by any pipeline, trigger, or platform feature that needs to interact with that system.
 
@@ -42,11 +43,11 @@ Connectors cover six major integration categories:
 
 ---
 
-## Key Concepts
+## Key concepts
 
 Understanding the anatomy and lifecycle of a connector is essential for effective management and troubleshooting.
 
-### Connector Anatomy
+### Connector anatomy
 
 Every connector consists of the following components:
 
@@ -60,7 +61,7 @@ Every connector consists of the following components:
 | Status | Current connection health (`Active`, `Failed`, or `Unconfigured`). |
 | Metadata | Created date, last modified date, tags, and description. |
 
-### Connector Lifecycle
+### Connector lifecycle
 
 Connectors transition through the following states:
 
@@ -72,7 +73,7 @@ Connectors transition through the following states:
 
 ---
 
-## Connector Scope
+## Connector scope
 
 Connectors in Harness 3.0 can be created at three hierarchical levels. The scope determines visibility and where the connector can be referenced.
 
@@ -82,13 +83,13 @@ Connectors in Harness 3.0 can be created at three hierarchical levels. The scope
 | Organization | Available to all projects within the organization. | Team-level artifact registries, department-specific monitoring integrations. |
 | Project | Available only within the specific project. | Application-specific service accounts, project-scoped tokens, environment-specific connectors. |
 
-### Referencing Across Scopes
+### Referencing across scopes
 
 When referencing a connector from a higher scope, use the scope prefix in the identifier. Use `account.my_connector` for account-level connectors or `org.my_connector` for organization-level connectors. Project-level connectors are referenced by their identifier alone.
 
 ---
 
-## Connection Types
+## Connection types
 
 Connectors support several connection and authentication mechanisms depending on the external service being integrated.
 
@@ -102,7 +103,7 @@ Connectors support several connection and authentication mechanisms depending on
 
 ---
 
-## Integration Architecture
+## Integration architecture
 
 Understanding how connectors interact with the Harness platform during pipeline execution is critical for troubleshooting and performance optimization. The following sequence describes the connector lifecycle during a pipeline run.
 
@@ -118,7 +119,7 @@ Understanding how connectors interact with the Harness platform during pipeline 
 
 6. **Monitoring** — The connection status, latency, and operation result are recorded for observability. Failed connections update the connector status and can trigger alerts.
 
-### Loose Coupling by Design
+### Loose coupling by design
 
 Connectors decouple pipeline logic from infrastructure details. A pipeline does not need to know the specific credentials, endpoints, or authentication mechanism — it only needs the connector identifier. This means you can rotate credentials, change endpoints, or swap providers without modifying any pipeline YAML. The same pipeline can target different environments simply by referencing different connectors at runtime.
 

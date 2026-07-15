@@ -1,67 +1,53 @@
-// ── Shared tile styles ────────────────────────────────────────────────────────
+// ── Shared tile styles (each resource card in a horizontal row) ────────────
 
-%tileList {
+%tileCard {
+  box-sizing: border-box;
   display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 24px;
-  padding-left: 0;
-  list-style: none;
-  margin: 8px 0 0 0;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  padding: 24px 16px;
+  width: 220px;
+  min-height: 120px;
+  flex: 0 0 auto;
+  border: 2px solid #a3e9ff;
+  border-radius: 8px;
+  scroll-snap-align: start;
 
-  a:hover {
-    color: unset;
-    text-decoration: none;
+  &:hover {
+    box-shadow: 0px 0px 2px rgba(40, 41, 61, 0.04),
+      0px 4px 8px rgba(96, 97, 112, 0.16);
   }
 
-  li {
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    text-align: center;
-    padding: 24px 16px;
-    width: 220px;
-    min-height: 120px;
-    border: 2px solid #a3e9ff;
-    border-radius: 8px;
+  img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+  }
 
-    &:hover {
-      box-shadow: 0px 0px 2px rgba(40, 41, 61, 0.04),
-        0px 4px 8px rgba(96, 97, 112, 0.16);
-    }
+  h4 {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 10px 0 4px 0;
+    color: var(--text-color);
+  }
 
-    img {
-      width: 36px;
-      height: 36px;
-      object-fit: contain;
-    }
+  img ~ h4 {
+    margin-top: 10px;
+  }
 
-    h4 {
-      font-weight: 600;
-      font-size: 14px;
-      line-height: 20px;
-      margin: 10px 0 4px 0;
-      color: var(--text-color);
-    }
+  h4:first-child {
+    margin-top: 0;
+  }
 
-    img ~ h4 {
-      margin-top: 10px;
-    }
-
-    h4:first-child {
-      margin-top: 0;
-    }
-
-    p {
-      margin: 0;
-      font-weight: 500;
-      font-size: 11px;
-      line-height: 16px;
-      color: var(--text-color);
-    }
+  p {
+    margin: 0;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 16px;
+    color: var(--text-color);
   }
 }
 
@@ -105,16 +91,121 @@
     margin-right: 8px;
   }
 
-  // ── Resources ────────────────────────────────────────────────────────────
+  // ── Resources: grouped, horizontally scrollable rows ─────────────────────
 
-  ul.resourceGrid {
-    @extend %tileList;
+  .resourceGroup {
+    margin-top: 28px;
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+  }
+
+  .resourceGroupLabel {
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    text-align: center;
+    opacity: 0.7;
+    margin: 0 0 16px 0;
+    color: var(--text-color);
+  }
+
+  // ── Carousel: reel of tiles that slides one at a time, dot pagination ────
+
+  .carouselViewport {
+    overflow: hidden;
+    // Cap the viewport to exactly 4 tiles + 3 gaps so the reel shows 4 at a
+    // time instead of however many happen to fit the full container width.
+    max-width: calc(4 * 220px + 3 * 20px);
+    margin: 0 auto;
+  }
+
+  ul.carouselTrack {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 4px 4px 8px 4px;
+    margin: 0;
+    list-style: none;
+    transition: transform 0.4s ease;
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+
+    a:hover {
+      color: unset;
+      text-decoration: none;
+    }
+
+    li {
+      @extend %tileCard;
+    }
+  }
+
+  .carouselControls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  .carouselArrow {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    border-radius: 999px;
+    border: 1px solid var(--ifm-color-emphasis-300);
+    background: var(--ifm-background-surface-color);
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s ease, border-color 0.15s ease;
+
+    &:hover {
+      border-color: #00ade4;
+      background: rgba(0, 173, 228, 0.08);
+    }
+  }
+
+  .carouselDots {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .carouselDot {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: none;
+    border-radius: 999px;
+    background: var(--ifm-color-emphasis-300);
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.15s ease;
+
+    &:hover {
+      background: #00ade4;
+    }
+  }
+
+  .carouselDotActive {
+    background: #00ade4;
+    transform: scale(1.3);
   }
 
   // ── Dark mode: recolor /img/home/ icons for visibility ──
   html[data-theme='dark'] & {
     .sectionHeaderIcon,
-    ul.resourceGrid img {
+    ul.carouselTrack img {
       filter: brightness(0) invert(1) opacity(0.9);
     }
   }
@@ -202,9 +293,15 @@
 // ── Responsive ────────────────────────────────────────────────────────────────
 
 @media screen and (max-width: 768px) {
-  .learnAboutPlatform ul.resourceGrid li {
-    width: 190px;
-    min-height: 110px;
+  .learnAboutPlatform {
+    .carouselViewport {
+      max-width: calc(4 * 190px + 3 * 20px);
+    }
+
+    ul.carouselTrack li {
+      width: 190px;
+      min-height: 110px;
+    }
   }
 
   .modules h2 {
@@ -219,8 +316,16 @@
       line-height: 150%;
     }
 
-    ul.resourceGrid li {
+    .carouselViewport {
+      max-width: calc(4 * 165px + 3 * 20px);
+    }
+
+    ul.carouselTrack li {
       width: 165px;
+    }
+
+    .carouselArrow {
+      display: none;
     }
   }
 

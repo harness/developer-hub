@@ -2,13 +2,14 @@
 title: Harness Query Language (HQL) Reference
 sidebar_label: HQL Reference
 description: Complete reference for Harness Query Language (HQL), a domain-specific language for querying events, entities, metrics, and views across the Harness Data Platform.
+sidebar_position: 2
 ---
 
 HQL is a domain-specific query language for querying heterogeneous data sources in the Harness Data Platform. It provides a unified interface for querying events, entities, metrics, and views across multiple database backends (StarRocks, AlloyDB, BigQuery, PostgreSQL, MySQL) with pipe-based operations and automatic SQL generation.
 
 ---
 
-## Data Sources
+## Data sources
 
 HQL supports four types of data sources. Type identifiers can be unquoted for simple names or quoted for names with special characters (like colons).
 
@@ -33,7 +34,7 @@ find entity "pipeline:pipeline_execution"
 find metric "ccm:cost_metrics"
 ```
 
-### Table Aliases
+### Table aliases
 
 Assign aliases to data sources for use in joins and field references.
 
@@ -118,7 +119,7 @@ find entity event e
 | select { e.tags->env, e.user->profile->name }
 ```
 
-### Group By
+### Group by
 
 Groups rows by specified expressions. All non-aggregated fields in `select` must be included in `group_by`.
 
@@ -139,7 +140,7 @@ find entity "pipeline:pipeline_execution"
 | aggregate { sum(count) as total }
 ```
 
-### Order By, Limit, Offset, Distinct
+### Order by, limit, offset, distinct
 
 ```sql
 find entity "pipeline:pipeline_execution"
@@ -159,7 +160,7 @@ find event span
 
 ## Functions
 
-### Aggregation Functions
+### Aggregation functions
 
 | Function | Description |
 |---|---|
@@ -171,7 +172,7 @@ find event span
 | `max(expr)` | Maximum value |
 | `approx_count_distinct(expr)` | Approximate distinct count |
 
-### String Functions
+### String functions
 
 | Function | Description |
 |---|---|
@@ -183,7 +184,7 @@ find event span
 | `length(str)` | String length |
 | `replace(str, from, to)` | Replace occurrences |
 
-### Math Functions
+### Math functions
 
 | Function | Description |
 |---|---|
@@ -195,7 +196,7 @@ find event span
 | `sqrt(n)` | Square root |
 | `pow(n, e)` | Raise to power |
 
-### Time Functions
+### Time functions
 
 | Function | Description |
 |---|---|
@@ -216,7 +217,7 @@ find event "ccm:unified_table"
 | group_by date_trunc('day', startTime)
 ```
 
-### Conditional Expressions (CASE WHEN)
+### Conditional expressions (CASE WHEN)
 
 ```sql
 find entity "pipeline:pipeline_execution"
@@ -245,7 +246,7 @@ find entity "pipeline:pipeline_execution"
 | group_by pipeline_id
 ```
 
-### Cast and Interval Expressions
+### Cast and interval expressions
 
 ```sql
 -- Cast
@@ -259,7 +260,7 @@ find entity "pipeline:pipeline_execution"
 
 ---
 
-## Common Table Expressions (CTEs)
+## Common table expressions (CTEs)
 
 CTEs let you define named subqueries that can be referenced in the main query. They are useful for breaking down complex queries, reusing subqueries, and improving readability. CTEs cannot be nested (no CTEs inside CTE definitions).
 
@@ -336,7 +337,7 @@ find pipeline_exec
 
 ## Examples
 
-### Cost Analysis by Region
+### Cost analysis by region
 
 ```sql
 find event "ccm:unified_table"
@@ -352,7 +353,7 @@ find event "ccm:unified_table"
 | limit 20
 ```
 
-### Pipeline Execution Statistics
+### Pipeline execution statistics
 
 ```sql
 find entity "pipeline:pipeline_execution"
@@ -367,7 +368,7 @@ find entity "pipeline:pipeline_execution"
 | order_by day desc, execution_count desc
 ```
 
-### Top API Endpoints by Latency
+### Top API endpoints by latency
 
 ```sql
 find event span
@@ -384,7 +385,7 @@ find event span
 | limit 20
 ```
 
-### Conditional Aggregation (Success Rate)
+### Conditional aggregation (success rate)
 
 ```sql
 find entity "pipeline:pipeline_execution"
@@ -402,7 +403,7 @@ find entity "pipeline:pipeline_execution"
 | order_by success_rate asc
 ```
 
-### Nested Field Access
+### Nested field access
 
 ```sql
 find entity event e
@@ -415,7 +416,7 @@ find entity event e
 | limit 100
 ```
 
-### Time-Series Analysis
+### Time-series analysis
 
 ```sql
 find event "ccm:unified_table"
@@ -430,7 +431,7 @@ find event "ccm:unified_table"
 | order_by week desc, weekly_cost desc
 ```
 
-### Error Rate with CTEs
+### Error rate with CTEs
 
 ```sql
 with error_events as (
@@ -453,9 +454,9 @@ find error_events
 
 ---
 
-## Best Practices
+## Best practices
 
-### 1. Use Aliases for Clarity
+### 1. Use aliases for clarity
 
 ```sql
 -- Good: aliased source makes join references unambiguous
@@ -464,7 +465,7 @@ find entity "pipeline:pipeline_execution" p
 | select { p.pipeline_id, a.tag, p.status }
 ```
 
-### 2. Filter Early
+### 2. Filter early
 
 Apply filters as early as possible to reduce data processing.
 
@@ -482,7 +483,7 @@ find event "ccm:unified_table"
 | filter sum(cost) > 1000
 ```
 
-### 3. Use CTEs for Complex Queries
+### 3. Use CTEs for complex queries
 
 ```sql
 with recent_failures as (
@@ -500,7 +501,7 @@ find failure_summary
 | limit 10
 ```
 
-### 4. Group By All Non-Aggregated Fields
+### 4. Group by all non-aggregated fields
 
 All fields in `select` that are not wrapped in an aggregation function must appear in `group_by`.
 
@@ -516,7 +517,7 @@ find event "ccm:unified_table"
 | group_by region
 ```
 
-### 5. Quote Type Identifiers with Special Characters
+### 5. Quote type identifiers with special characters
 
 ```sql
 -- Unquoted (simple names only)
@@ -527,7 +528,7 @@ find entity "ccm:unified_table"
 find entity "pipeline:pipeline_execution"
 ```
 
-### 6. Always Limit Result Sets
+### 6. Always limit result sets
 
 Use `limit` for queries that might return large result sets to avoid performance issues.
 
@@ -542,7 +543,7 @@ find entity "pipeline:pipeline_execution"
 
 ## Reference
 
-### Operation Precedence
+### Operation precedence
 
 Operations are applied in the order they appear in the query.
 
@@ -556,7 +557,7 @@ Operations are applied in the order they appear in the query.
 | 6 | `order_by` |
 | 7 | `limit` / `offset` |
 
-### Expression Precedence
+### Expression precedence
 
 | Priority | Operator |
 |---|---|
@@ -567,7 +568,7 @@ Operations are applied in the order they appear in the query.
 | 5 | Logical `AND` |
 | 6 (lowest) | Logical `OR` |
 
-### Data Type Mapping
+### Data type mapping
 
 | HQL Type | PostgreSQL | StarRocks |
 |---|---|---|
@@ -578,7 +579,7 @@ Operations are applied in the order they appear in the query.
 | `bool` | `BOOLEAN` | `BOOLEAN` |
 | `timestamp` | `TIMESTAMP` | `DATETIME` |
 
-### Reserved Keywords
+### Reserved keywords
 
 The following keywords are reserved but can be used as field names in qualified references (e.g., `alias.select`).
 

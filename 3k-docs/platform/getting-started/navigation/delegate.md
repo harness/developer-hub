@@ -2,6 +2,7 @@
 title: Delegate 2.0
 sidebar_label: Delegate 2.0
 description: Learn about Delegate 2.0, a unified lightweight agent that serves all Harness products from a single installation, replacing separate per-product delegates.
+sidebar_position: 5
 ---
 
 Delegate 2.0 is a unified, lightweight agent that serves all Harness products from a single installation. It replaces the previous model of separate delegates per product with a single binary that runs across all supported platforms. For the latest documentation, installation guides, and release notes, see the [Delegate (Closed Beta) documentation](https://developer.harness.io/docs/category/delegate-closed-beta).

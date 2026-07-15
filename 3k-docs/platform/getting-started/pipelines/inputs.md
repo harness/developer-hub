@@ -2,13 +2,14 @@
 title: Inputs & Variables
 sidebar_label: Inputs & Variables
 description: Typed pipeline inputs, expression syntax, and output variables for building dynamic, reusable Harness 3.0 pipelines.
+sidebar_position: 6
 ---
 
 Harness 3.0 introduces a fully typed input system that replaces the runtime inputs of previous versions. Inputs are declared at the pipeline level with explicit types, default values, validation rules, and descriptions. Combined with a powerful expression syntax, inputs and variables enable dynamic, reusable pipelines.
 
 ---
 
-## Input Types
+## Input types
 
 | Type | Description | Example Value |
 |---|---|---|
@@ -25,7 +26,7 @@ Harness 3.0 introduces a fully typed input system that replaces the runtime inpu
 
 ---
 
-## Input Schema
+## Input schema
 
 ```typescript title="input-schema.ts"
 interface Input {
@@ -56,7 +57,7 @@ interface Input {
 
 ---
 
-## Complete Input Examples
+## Complete input examples
 
 ```yaml title="input-examples.yaml"
 pipeline:
@@ -137,11 +138,11 @@ pipeline:
 
 ---
 
-## Expression Syntax
+## Expression syntax
 
 Expressions use the `${{ }}` syntax to dynamically resolve values at runtime. Harness 3.0 supports variables from multiple contexts and built-in functions.
 
-### Variable Contexts
+### Variable contexts
 
 | Expression | Description |
 |---|---|
@@ -161,7 +162,7 @@ Expressions use the `${{ }}` syntax to dynamically resolve values at runtime. Ha
 | `${{ service.name }}` | Current service name in multi-service stages. |
 | `${{ environment.name }}` | Current environment name. |
 
-### Built-in Functions
+### Built-in functions
 
 ```yaml title="expression-functions.yaml"
 # Hash files for cache keys
@@ -208,7 +209,7 @@ Expressions are evaluated at runtime, just before the step or stage executes. If
 
 Steps and stages can produce output variables that are consumed by subsequent steps or stages. Outputs are the primary mechanism for passing data between pipeline components.
 
-### Step Outputs with HARNESS_OUTPUT
+### Step outputs with `HARNESS_OUTPUT`
 
 Write key-value pairs to the `$HARNESS_OUTPUT` file to create output variables.
 
@@ -236,7 +237,7 @@ stages:
               .
 ```
 
-### Stage Outputs
+### Stage outputs
 
 Step outputs are promoted to stage outputs and can be referenced from subsequent stages.
 
@@ -258,7 +259,7 @@ stages:
               app=${{ stages.build.output.IMAGE_TAG }}
 ```
 
-### Declaring Outputs Explicitly
+### Declaring outputs explicitly
 
 Use the `outputs` property to explicitly declare which variables a step will produce. This improves documentation and enables validation.
 

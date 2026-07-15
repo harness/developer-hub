@@ -1,7 +1,8 @@
 ---
 title: Stages & Stage Groups
 sidebar_label: Stages & Stage Groups
-description: Stages are the major execution blocks of a Harness 3.0 pipeline — each with its own runtime, caching, failure strategies, and steps. Supports sequential, parallel, matrix, and grouped execution.
+description: Stages are the major execution blocks of a Harness 3.0 pipeline, each with its own runtime, caching, failure strategies, and steps. Supports sequential, parallel, matrix, and grouped execution.
+sidebar_position: 2
 ---
 
 A Stage is a major execution block within a pipeline. Each stage has its own runtime environment, caching configuration, failure strategies, and execution steps. Stages run sequentially by default, but can be configured for parallel execution or matrix-based fan-out.
@@ -12,7 +13,7 @@ In Harness 3.0, stages no longer require explicit type declarations like CI or D
 
 ---
 
-## Stage Schema
+## Stage schema
 
 The `Stage` interface defines the complete structure of a stage in a v1 pipeline. Execution types (`steps`, `approval`, `group`, `parallel`, `template`, `chain`) are mutually exclusive — each stage uses exactly one.
 
@@ -75,7 +76,7 @@ interface Stage {
 
 ---
 
-## Properties Reference
+## Properties reference
 
 | Property | Type | Description |
 |---|---|---|
@@ -114,7 +115,7 @@ interface Stage {
 
 ---
 
-## Stage Types
+## Stage types
 
 There are six functional patterns for stages. The execution types are mutually exclusive — each stage uses exactly one of `steps`, `approval`, `template`, `chain`, `group`, or `parallel`.
 
@@ -212,11 +213,11 @@ stages:
 
 ---
 
-## Stage Groups
+## Stage groups
 
 Stage groups organize related stages together and allow shared configuration like failure strategies or conditionals to apply to all stages in the group.
 
-### Basic Group
+### Basic group
 
 ```yaml title="stage-group.yaml"
 stages:
@@ -234,7 +235,7 @@ stages:
             - run: npm run test:perf
 ```
 
-### Conditional Group
+### Conditional group
 
 Apply a condition to an entire group. When the condition evaluates to `false`, all stages in the group are skipped.
 
@@ -255,7 +256,7 @@ stages:
             - run: ./deploy.sh production
 ```
 
-### Group with Shared Failure Strategy
+### Group with a shared failure strategy
 
 Apply a failure strategy to the entire group so all substages inherit the same behavior.
 
@@ -282,7 +283,7 @@ stages:
 
 ---
 
-## Parallel Execution
+## Parallel execution
 
 Use the `parallel:` keyword to run multiple stages concurrently. All stages in a parallel block start simultaneously, and the pipeline waits for all to complete before continuing.
 
@@ -333,7 +334,7 @@ stages:
 
 ---
 
-## Matrix Strategy
+## Matrix strategy
 
 The `strategy` field supports three looping patterns: `matrix`, `for`, and `while`.
 
@@ -363,7 +364,7 @@ stages:
 
 Use `max-parallel` to limit concurrency and `fail-fast` to cancel remaining instances on the first failure.
 
-### For Loop
+### For loop
 
 Iterate a stage a fixed number of times. Access the current iteration index via `${{ for.iteration }}`.
 
@@ -377,7 +378,7 @@ stages:
       - run: echo "Iteration ${{ for.iteration }}"
 ```
 
-### While Loop
+### While loop
 
 Repeat a stage while a condition evaluates to `true`. Set `iterations` as a safety bound on maximum repetitions.
 
@@ -395,9 +396,9 @@ stages:
 
 ---
 
-## Conditional Execution
+## Conditional execution
 
-### Expression-Based Conditions
+### Expression-based conditions
 
 ```yaml title="conditional-stages.yaml"
 stages:
@@ -420,7 +421,7 @@ stages:
 
 Use `always()` to run a stage regardless of previous outcomes, `failure()` to run only when a previous stage failed, and `success()` (the default) to run only when all previous stages succeeded.
 
-### Disabled Stage
+### Disabled stage
 
 Set `disabled: true` to skip a stage without removing it from the YAML. Useful for debugging or temporary suppression.
 
@@ -437,11 +438,11 @@ stages:
 
 ---
 
-## Failure Strategies
+## Failure strategies
 
 Define how a stage handles failures using the `on-failure` property. Strategies can match specific error types and define actions including retry, manual intervention, and rollback.
 
-### Error Types
+### Error types
 
 | Error Type | Description |
 |---|---|
@@ -455,7 +456,7 @@ Define how a stage handles failures using the `on-failure` property. Strategies 
 | `verification` | Verification step failure |
 | `unknown` | Unknown error type |
 
-### Action Types
+### Action types
 
 | Action | Description |
 |---|---|
@@ -468,14 +469,14 @@ Define how a stage handles failures using the `on-failure` property. Strategies 
 | `pipeline-rollback` | Rollback the entire pipeline |
 | `success` | Mark as success despite failure |
 
-### Ignore Failures
+### Ignore failures
 
 ```yaml title="ignore-failure.yaml"
 on-failure:
   action: ignore
 ```
 
-### Retry with Configuration
+### Retry with configuration
 
 ```yaml title="retry-config.yaml"
 on-failure:
@@ -492,7 +493,7 @@ on-failure:
       failure-action: abort
 ```
 
-### Manual Intervention
+### Manual intervention
 
 ```yaml title="manual-intervention.yaml"
 on-failure:
@@ -502,7 +503,7 @@ on-failure:
       timeout-action: abort
 ```
 
-### Match Specific Exit Codes
+### Match specific exit codes
 
 ```yaml title="exitcode-failure.yaml"
 on-failure:

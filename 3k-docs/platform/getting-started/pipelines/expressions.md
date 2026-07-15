@@ -2,13 +2,14 @@
 title: Expression Mapping
 sidebar_label: Expression Mapping
 description: Complete reference mapping built-in expressions from Harness NG to Harness 3.0 — new ${{ }} syntax, snake_case naming, and all expression contexts.
+sidebar_position: 7
 ---
 
 This guide provides a comprehensive mapping of built-in expressions between Harness NG and Harness 3.0 (Unified Pipeline). Use this reference when migrating your pipelines to the new expression syntax.
 
 ---
 
-## Key Syntax Changes
+## Key syntax changes
 
 | Aspect | Harness NG | Harness 3.0 |
 |---|---|---|
@@ -21,7 +22,7 @@ When migrating pipelines from NG to 3.0, use find-and-replace to update the expr
 
 ---
 
-## Pipeline Expressions
+## Pipeline expressions
 
 | Description | Harness NG | Harness 3.0 |
 |---|---|---|
@@ -45,7 +46,7 @@ When migrating pipelines from NG to 3.0, use find-and-replace to update the expr
 
 ---
 
-## Stage Expressions
+## Stage expressions
 
 | Description | Harness NG | Harness 3.0 |
 |---|---|---|
@@ -61,7 +62,7 @@ When migrating pipelines from NG to 3.0, use find-and-replace to update the expr
 
 ---
 
-## Step Expressions
+## Step expressions
 
 | Description | Harness NG | Harness 3.0 |
 |---|---|---|
@@ -73,7 +74,7 @@ When migrating pipelines from NG to 3.0, use find-and-replace to update the expr
 
 ---
 
-## Step Group Expressions
+## Step group expressions
 
 | Description | Harness NG | Harness 3.0 |
 |---|---|---|
@@ -83,7 +84,7 @@ When migrating pipelines from NG to 3.0, use find-and-replace to update the expr
 
 ---
 
-## Service Expressions
+## Service expressions
 
 | Description | Harness NG | Harness 3.0 |
 |---|---|---|
@@ -98,7 +99,7 @@ When migrating pipelines from NG to 3.0, use find-and-replace to update the expr
 
 ---
 
-## Environment Expressions
+## Environment expressions
 
 | Description | Harness NG | Harness 3.0 |
 |---|---|---|
@@ -109,7 +110,7 @@ When migrating pipelines from NG to 3.0, use find-and-replace to update the expr
 
 ---
 
-## Infrastructure Expressions
+## Infrastructure expressions
 
 | Description | Harness NG | Harness 3.0 |
 |---|---|---|
@@ -121,7 +122,7 @@ When migrating pipelines from NG to 3.0, use find-and-replace to update the expr
 
 ---
 
-## Artifact Expressions
+## Artifact expressions
 
 | Description | Harness NG | Harness 3.0 |
 |---|---|---|
@@ -141,7 +142,7 @@ When migrating pipelines from NG to 3.0, use find-and-replace to update the expr
 
 ---
 
-## Sidecar Expressions
+## Sidecar expressions
 
 | Description | Harness NG | Harness 3.0 |
 |---|---|---|
@@ -153,7 +154,7 @@ When migrating pipelines from NG to 3.0, use find-and-replace to update the expr
 
 ---
 
-## Manifest Expressions
+## Manifest expressions
 
 | Description | Harness NG | Harness 3.0 |
 |---|---|---|
@@ -174,7 +175,7 @@ When migrating pipelines from NG to 3.0, use find-and-replace to update the expr
 
 ---
 
-## Config File Expressions
+## Config file expressions
 
 | Description | Harness NG | Harness 3.0 |
 |---|---|---|
@@ -183,7 +184,7 @@ When migrating pipelines from NG to 3.0, use find-and-replace to update the expr
 
 ---
 
-## Secret Expressions
+## Secret expressions
 
 | Description | Harness NG | Harness 3.0 |
 |---|---|---|
@@ -191,7 +192,7 @@ When migrating pipelines from NG to 3.0, use find-and-replace to update the expr
 
 ---
 
-## Trigger Expressions
+## Trigger expressions
 
 | Description | Harness NG | Harness 3.0 |
 |---|---|---|
@@ -211,7 +212,7 @@ When migrating pipelines from NG to 3.0, use find-and-replace to update the expr
 
 ---
 
-## Codebase Expressions
+## Codebase expressions
 
 | Description | Harness NG | Harness 3.0 |
 |---|---|---|
@@ -239,7 +240,7 @@ When migrating pipelines from NG to 3.0, use find-and-replace to update the expr
 
 ---
 
-## Variable Expressions
+## Variable expressions
 
 | Description | Harness NG | Harness 3.0 |
 |---|---|---|

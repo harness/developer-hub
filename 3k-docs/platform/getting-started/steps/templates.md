@@ -2,26 +2,27 @@
 title: Step Template Guide
 sidebar_label: Step Templates
 description: A comprehensive guide for adding new step templates to the Harness Template Library — from non-technical overview to full technical schema reference.
+sidebar_position: 7
 ---
 
 A comprehensive guide for adding new step templates to the Harness Template Library. Covers everything from high-level concepts for non-technical stakeholders to the full technical schema reference for engineers, professional services, CX engineers, and sales engineers.
 
 ---
 
-## Part 1: Non-Technical Guide
+## Part 1: Non-technical guide
 
-### What Is a Step Template?
+### What is a step template?
 
 A step template is a reusable building block in Harness pipelines. Think of it like a recipe card: it defines a single action that a pipeline can perform, such as deploying to AWS, sending a Slack notification, or running a security scan. Each step template creates a form in the Harness UI where users fill in the required information, and the step handles the rest automatically.
 
-### When to Create a New Step Template
+### When to create a new step template
 
 - You have a repeatable action that multiple teams or pipelines need to perform.
 - You want to standardize how a specific tool or service is used across your organization.
 - You need to wrap a container plugin into a user-friendly form.
 - An existing step template doesn't cover your use case.
 
-### What You Need Before Starting
+### What you need before starting
 
 | Question | Example Answer |
 |---|---|
@@ -32,7 +33,7 @@ A step template is a reusable building block in Harness pipelines. Think of it l
 | What category does this belong to? | Deployment (`cd`) or Build (`ci`) |
 | What icon should represent it? | `aws`, `kubernetes`, `docker`, etc. |
 
-### How to Request a New Step Template
+### How to request a new step template
 
 If you are a PM or non-technical stakeholder, provide the following to your engineering team:
 
@@ -54,13 +55,13 @@ Container Image: [Image name and version, e.g., harnessdev/plugin:1.0.0]
 
 ---
 
-## Part 2: Engineer Guide
+## Part 2: Engineer guide
 
 Step-by-step instructions for engineers to create a new step template from scratch.
 
 **Prerequisites:** Access to the template-library Git repository, familiarity with YAML syntax, and knowledge of the container image your step will execute (image name, expected environment variables).
 
-### Step 1: Create the Directory Structure
+### Step 1: Create the directory structure
 
 Every template lives in the `.harness/` directory with the following structure:
 
@@ -74,7 +75,7 @@ Every template lives in the `.harness/` directory with the following structure:
 
 The directory name must be camelCase (e.g., `ecsRunTaskStep`, `buildAndPushToDocker`, `slackNotificationStep`).
 
-### Step 2: Create config.yaml
+### Step 2: Create `config.yaml`
 
 Create `config.yaml` in the template root directory. This file tracks versions and metadata.
 
@@ -115,7 +116,7 @@ metadata:
     - step
 ```
 
-### Step 3: Create template.yaml
+### Step 3: Create `template.yaml`
 
 Create `template.yaml` inside the version directory (e.g., `1.0.0/template.yaml`). The file has four top-level sections inside `template:`:
 
@@ -138,7 +139,7 @@ template:
     # ...
 ```
 
-### Step 4: Define Inputs
+### Step 4: Define inputs
 
 Inputs define the form fields that users interact with. Each input has a type, label, and UI configuration.
 
@@ -256,7 +257,7 @@ client_cert:
     tooltip: Enter the client certificate for authentication.
 ```
 
-### Step 5: Organize the Layout
+### Step 5: Organize the layout
 
 The `layout` section controls how fields appear in the UI form.
 
@@ -305,7 +306,7 @@ layout:
       - log_level
 ```
 
-### Step 6: Set Template Metadata
+### Step 6: Set template metadata
 
 ```yaml title="metadata"
   id: slackNotificationStep        # camelCase, unique identifier
@@ -328,7 +329,7 @@ layout:
 | `module` | Array of module codes | `- cd` |
 | `alias` | Short, lowercase | `run-task` |
 
-### Step 7: Define Step Execution
+### Step 7: Define step execution
 
 The `step:` section defines what actually runs when the step executes.
 
@@ -428,7 +429,7 @@ env:
   PLUGIN_URL: ${{${{inputs.connector}}.url}}
 ```
 
-### Step 8: Validate Your Template
+### Step 8: Validate your template
 
 Before submitting, verify:
 
@@ -447,7 +448,7 @@ Before submitting, verify:
 - Environment variables correctly reference inputs with `${{inputs.field_name}}`
 - YAML syntax is valid (proper indentation, no tabs)
 
-### Step 9: Version Your Template
+### Step 9: Version your template
 
 When updating an existing template, create a new version folder, copy `template.yaml` from the previous version, make changes, and update `config.yaml`:
 
@@ -470,9 +471,9 @@ metadata:
 
 ---
 
-## Part 3: Full Schema Reference
+## Part 3: Full schema reference
 
-### config.yaml Schema
+### `config.yaml` schema
 
 ```yaml title="config.yaml schema"
 stable: <version>                    # Required. Current stable version (e.g., "1.0.0")
@@ -489,7 +490,7 @@ metadata:                            # Required
     - step | strategy | pipeline
 ```
 
-### template.yaml Schema
+### `template.yaml` schema
 
 ```yaml title="template.yaml schema"
 template:
@@ -545,7 +546,7 @@ template:
               <param>: <expression>
 ```
 
-### Input Field Types
+### Input field types
 
 | Type | Description | UI Component |
 |---|---|---|
@@ -558,7 +559,7 @@ template:
 | `number` | Numeric input | `number` |
 | `secret` | Sensitive value | Secret input |
 
-### UI Components
+### UI components
 
 | Component | Used With | Description |
 |---|---|---|
@@ -579,7 +580,7 @@ template:
 `boolean-card-select` and `boolean-card-switch` must **NOT** be used.
 :::
 
-### Connector Types
+### Connector types
 
 Use these values in the `oneof` field for connector inputs:
 
@@ -596,7 +597,7 @@ Use these values in the `oneof` field for connector inputs:
 | `GitlabConnector` | GitLab |
 | `kubernetes` | Kubernetes cluster |
 
-### Step Execution Patterns
+### Step execution patterns
 
 | Pattern | When to Use | Key Fields |
 |---|---|---|
@@ -606,7 +607,7 @@ Use these values in the `oneof` field for connector inputs:
 | Conditional (`if`) | Different behavior based on inputs | `if` expression on step |
 | Direct run | Simple single-step execution | `step.run` without `group` |
 
-### Conditional Visibility
+### Conditional visibility
 
 Fields can be shown or hidden based on other field values:
 
@@ -624,7 +625,7 @@ field_name:
 | Not equals | `${{field != 'value'}}` |
 | Boolean check | `${{field == true}}` |
 
-### Expression Syntax
+### Expression syntax
 
 | Syntax | Usage | Example |
 |---|---|---|
@@ -637,9 +638,9 @@ field_name:
 
 ---
 
-## Part 4: Rules and Standards
+## Part 4: Rules and standards
 
-### Naming Conventions
+### Naming conventions
 
 | Element | Convention | Correct | Incorrect |
 |---|---|---|---|
@@ -655,11 +656,11 @@ field_name:
 | Icon name | Lowercase | `kubernetes` | `Kubernetes` |
 | Alias | Lowercase, short | `run-task` | `RunTask` |
 
-### Technology Name Standards
+### Technology name standards
 
 Write Kubernetes not k8s, Elastic Container Service not just ECS, Elastic Compute Cloud not just EC2, Auto Scaling Group not just ASG.
 
-### Boolean Input Rules
+### Boolean input rules
 
 :::warning Boolean Rules
 Never use `component: boolean-card-select` or `component: boolean-card-switch`. Boolean inputs use the default component — do not specify any `component` value. Labels must **NOT** start with "Is".
@@ -686,7 +687,7 @@ is_openshift:
     tooltip: Flag to mark if this is OpenShift deployment
 ```
 
-### Tooltip Standards
+### Tooltip standards
 
 All tooltips must start with an action verb: `Select`, `Enter`, `Enable`, `Specify`, `Add`, `Set`, `Configure`, `Provide`. Use complete sentences with proper punctuation, spell out acronyms, and keep them concise (1–2 sentences).
 
@@ -699,17 +700,17 @@ All tooltips must start with an action verb: `Select`, `Enter`, `Enable`, `Speci
 | Array | `"Add one or more tags for the Docker image."` |
 | File path | `"Specify the path to the file containing the task definition."` |
 
-### Description Standards
+### Description standards
 
 Descriptions must be a maximum of one sentence, use plain language that non-technical users can understand, and spell out technology names in full.
 
 ---
 
-## Part 5: Complete Examples
+## Part 5: Complete examples
 
 Four complete, production-ready step template examples demonstrating different patterns.
 
-### Example 1: Simple Step Template (Email Notification)
+### Example 1: Simple step template (Email notification)
 
 A minimal step template with basic string and select inputs.
 
@@ -793,7 +794,7 @@ template:
               PLUGIN_LOG_LEVEL: ${{inputs.log_level}}
 ```
 
-### Example 2: Step Template with Connector (S3 Upload)
+### Example 2: Step template with connector (S3 Upload)
 
 A template that uses a connector input for authentication.
 
@@ -904,7 +905,7 @@ template:
               PLUGIN_LOG_LEVEL: ${{inputs.log_level}}
 ```
 
-### Example 3: Step Template with Conditional Fields (Terraform)
+### Example 3: Step template with conditional fields (Terraform)
 
 A template where certain fields appear or hide based on another field's value.
 
@@ -983,7 +984,7 @@ template:
               PLUGIN_LOG_LEVEL: ${{inputs.log_level}}
 ```
 
-### Example 4: Step Template with Nested Layout (API Request)
+### Example 4: Step template with nested layout (API request)
 
 A template with grouped optional fields using nested subsections.
 
@@ -1023,7 +1024,7 @@ A template with grouped optional fields using nested subsections.
 
 ---
 
-## Part 6: Validation Checklist
+## Part 6: Validation checklist
 
 Use this checklist before submitting a pull request with a new or updated step template.
 
@@ -1089,7 +1090,7 @@ Use this checklist before submitting a pull request with a new or updated step t
 
 ---
 
-## Appendix: Available Icons
+## Appendix: Available icons
 
 These icon names have been used in existing templates. Use lowercase values for the `icon-name` field.
 
@@ -1128,7 +1129,7 @@ These icon names have been used in existing templates. Use lowercase values for 
 
 ---
 
-## Appendix: Available Modules
+## Appendix: Available modules
 
 | Module | Description | Examples |
 |---|---|---|

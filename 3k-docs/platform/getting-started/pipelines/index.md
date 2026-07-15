@@ -4,6 +4,7 @@ sidebar_label: Pipeline YAML v1
 id: index
 slug: /platform/getting-started/pipeline
 description: The v1 YAML specification for Harness 3.0 pipelines — reduced boilerplate, expression-based conditionals, typed inputs, and compatibility with GitHub Actions and Drone workflows.
+sidebar_position: 1
 ---
 
 A Pipeline is the top-level execution unit in Harness 3.0. It defines a sequence of stages, their execution order, triggers, inputs, and runtime configuration. The v1 YAML specification is a ground-up redesign that reduces boilerplate, improves readability, and introduces compatibility with GitHub Actions and Drone workflows.

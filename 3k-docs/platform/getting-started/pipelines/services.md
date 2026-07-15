@@ -2,6 +2,7 @@
 title: Services & Environments
 sidebar_label: Services & Environments
 description: Services define what you are deploying; environments define where. Together they configure the deployment target for a Harness 3.0 pipeline stage.
+sidebar_position: 4
 ---
 
 Services and Environments are core deployment concepts in Harness 3.0. A Service defines what you are deploying (application, container, function), and an Environment defines where you are deploying (dev, staging, production). Together they configure the deployment target for a pipeline stage.
@@ -12,7 +13,7 @@ Services and Environments are core deployment concepts in Harness 3.0. A Service
 
 A Service represents the application or workload being deployed. It includes artifact references, manifests, configuration files, and variables that define the deployment payload.
 
-### Service Schema
+### Service schema
 
 ```typescript title="service-schema.ts"
 interface Service {
@@ -35,7 +36,7 @@ interface Service {
 }
 ```
 
-### Service Definition
+### Service definition
 
 Define a service inline within the pipeline or reference a pre-configured service entity.
 
@@ -67,7 +68,7 @@ stages:
       - run: echo "Deploying ${{ service.name }}"
 ```
 
-### Single Service Reference
+### Single service reference
 
 Reference a service defined at the project, organization, or account level. Service and environment can be specified at either the pipeline level or the stage level.
 
@@ -83,7 +84,7 @@ pipeline:
     - run: echo "Deploying service"
 ```
 
-### Multiple Service References
+### Multiple service references
 
 Deploy multiple services in a single pipeline. By default, services are deployed in parallel.
 
@@ -100,7 +101,7 @@ pipeline:
     - run: echo "Deploying ${{ service.name }}"
 ```
 
-### Sequential Service Deployment
+### Sequential service deployment
 
 Deploy services one at a time in a defined order using the `sequential` flag.
 
@@ -128,7 +129,7 @@ Each service can define its own variables accessible within the stage using `${{
 
 An Environment represents a deployment target such as development, staging, or production. Environments define infrastructure mappings, overrides, and governance policies.
 
-### Environment Schema
+### Environment schema
 
 ```typescript title="environment-schema.ts"
 interface Environment {
@@ -152,14 +153,14 @@ interface Environment {
 }
 ```
 
-### Environment Types
+### Environment types
 
 | Type | Description | Governance |
 |---|---|---|
 | `production` | Live customer-facing environments. Requires approvals and freeze window compliance. | Approval gates, freeze windows, audit logging enforced. |
 | `non-production` | Development, testing, and staging environments. Lighter governance requirements. | Optional approvals, no freeze window enforcement by default. |
 
-### Environment Definition
+### Environment definition
 
 Reference an environment by name and specify the infrastructure to deploy to using the `deploy-to` field.
 
@@ -177,11 +178,11 @@ pipeline:
 
 ---
 
-## Multi-Service Deployment
+## Multi-service deployment
 
 Deploy multiple services to the same environment in a single stage. Services can be deployed in parallel (default) or sequentially.
 
-### Parallel Service Deployment
+### Parallel service deployment
 
 All services deploy simultaneously, reducing total deployment time. This is the default behavior when using `items`.
 
@@ -205,7 +206,7 @@ pipeline:
 When multiple services are specified, the stage steps execute once for each service. Use `${{ service.name }}` and `${{ service.ref }}` to reference the current service in expressions.
 :::
 
-### Sequential Service Deployment
+### Sequential service deployment
 
 Deploy services one after another, useful when services have startup order dependencies.
 
@@ -228,11 +229,11 @@ pipeline:
 
 ---
 
-## Multi-Environment Deployment
+## Multi-environment deployment
 
 Deploy the same service across multiple environments, such as promoting a release from staging to production through a sequence of environment targets.
 
-### Sequential Environment Deployment
+### Sequential environment deployment
 
 Promote a release through multiple environments sequentially. Use `sequential: true` on the environment and the `deploy-to` field to specify infrastructure targets per environment.
 
@@ -255,7 +256,7 @@ pipeline:
     - run: ./deploy.sh ${{ environment.name }}
 ```
 
-### Complete Multi-Service, Multi-Environment Deployment
+### Complete multi-service, multi-environment deployment
 
 A comprehensive example combining multiple services and environments in a single pipeline.
 

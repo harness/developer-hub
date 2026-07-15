@@ -2,6 +2,7 @@
 title: Migration Guide
 sidebar_label: Migration Guide
 description: Learn how to migrate from Harness NextGen (NG) to Harness 3.0. 
+sidebar_position: 2
 ---
 
 import Tabs from '@theme/Tabs';
@@ -33,7 +34,7 @@ Follow these eight steps to migrate from Harness NG to Harness 3.0. Each step ca
 
 1. **Use Harness AI**: Leverage the reimagined AI Assistant to accelerate your migration. It can help create new v1 pipelines, explain configuration differences, and troubleshoot issues during the transition.
 
-## YAML Migration
+## YAML migration
 
 The following example shows a side-by-side comparison of the same pipeline expressed in the NG format and the 3.0 v1 format. The v1 format is significantly shorter and easier to read.
 
@@ -97,7 +98,7 @@ pipeline:
 The v1 format removes `projectIdentifier`, `orgIdentifier`, and `identifier` fields (inferred from context), flattens the stage and step hierarchy, and replaces nested `serviceRef` / `environmentRef` with top-level service and environment fields.
 :::
 
-## Backwards Compatibility
+## Backward compatibility
 
 All existing NG resources are fully compatible with Harness 3.0. No modifications are required to continue using your existing configurations.
 
@@ -111,7 +112,7 @@ All existing NG resources are fully compatible with Harness 3.0. No modification
 | Templates            | Fully compatible     |
 | Expressions          | Fully compatible     |
 
-## When to Use Pipeline v1
+## When to use Pipeline v1
 
 The v1 pipeline format is optional. Use the following guidance to decide when to adopt it versus continuing with existing NG pipelines.
 

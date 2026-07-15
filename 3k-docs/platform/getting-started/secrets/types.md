@@ -2,13 +2,14 @@
 title: Secret Types
 sidebar_label: Secret Types
 description: Harness supports two types of secrets — Text Secrets for inline string values and File Secrets for uploaded file content. Both are encrypted and can be stored in the built-in or any external secret manager.
+sidebar_position: 2
 ---
 
 Harness supports two types of secrets: Text Secrets for inline string values and File Secrets for uploaded file content. Both types are encrypted and can be stored in the built-in or any external secret manager.
 
 ---
 
-## Text Secrets
+## Text secrets
 
 Text secrets store inline string values such as passwords, tokens, and API keys. The value is provided directly as a string when creating the secret.
 
@@ -66,7 +67,7 @@ Text secrets store inline string values such as passwords, tokens, and API keys.
 
 ---
 
-## File Secrets
+## File secrets
 
 File secrets store the content of uploaded files. The file is read, base64-encoded, and stored as an encrypted value. At runtime, the file content is decoded and made available to the pipeline execution.
 
@@ -141,11 +142,11 @@ MIIEowIBAAKCAQEA2a2rwplBQLzHPZe...
 
 ---
 
-## External Secret Managers
+## External secret managers
 
 Harness integrates with external secret management platforms, allowing you to leverage your existing secrets infrastructure. When an external secret manager is configured, Harness stores only a reference to the secret path — the actual value remains in your infrastructure.
 
-### Supported Platforms
+### Supported platforms
 
 | Platform | Authentication Methods | Features |
 |---|---|---|
@@ -155,7 +156,7 @@ Harness integrates with external secret management platforms, allowing you to le
 | Azure Key Vault | Client Secret, Managed Identity | HSM-backed keys, soft-delete, purge protection |
 | Custom | Shell script on Delegate | Any secret manager accessible from the Delegate |
 
-### Configuration Steps
+### Configuration steps
 
 1. Navigate to **Account Settings → Connectors → Secret Managers**.
 2. Select the external secret manager type you want to configure.

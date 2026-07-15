@@ -2,35 +2,36 @@
 title: Managing Secrets
 sidebar_label: Managing Secrets
 description: Create, use, rotate, and manage secrets throughout their lifecycle — including UI workflows, pipeline usage, API access, and Terraform automation.
+sidebar_position: 3
 ---
 
 Create, use, rotate, and manage secrets throughout their lifecycle. This guide covers the complete set of operations for working with secrets in Harness 3.0, including UI workflows, pipeline usage, API access, and Terraform automation.
 
 ---
 
-## Creating Secrets
+## Create secrets
 
 Secrets can be created at the Account, Organization, or Project scope depending on your navigation context.
 
-1. **Navigate to Secrets** — Go to your Project, Organization, or Account settings. Select **Secrets** from the left navigation menu.
+1. **Navigate to Secrets**: Go to your Project, Organization, or Account settings. Select **Secrets** from the left navigation menu.
 
-2. **Choose Secret Type** — Click **+ New Secret** and select either **Text** or **File** based on the type of credential you need to store.
+2. **Choose Secret Type**: Click **+ New Secret** and select either **Text** or **File** based on the type of credential you need to store.
 
-3. **Configure Details** — Provide a **Name** for the secret. The **Identifier** is auto-generated from the name but can be customized. Enter the secret **Value** (for text secrets) or upload the **File** (for file secrets).
+3. **Configure Details**: Provide a **Name** for the secret. The **Identifier** is auto-generated from the name but can be customized. Enter the secret **Value** (for text secrets) or upload the **File** (for file secrets).
 
-4. **Advanced Configuration** — Select the **Secret Manager** to use for storing the encrypted value. The Harness built-in manager is selected by default. Choose an external manager if your organization requires it.
+4. **Advanced Configuration**: Select the **Secret Manager** to use for storing the encrypted value. The Harness built-in manager is selected by default. Choose an external manager if your organization requires it.
 
-5. **Optional Metadata** — Add optional **Tags** to organize and filter secrets (e.g., `env:prod`, `team:platform`). Add an optional **Description** for documentation purposes.
+5. **Optional Metadata**: Add optional **Tags** to organize and filter secrets (e.g., `env:prod`, `team:platform`). Add an optional **Description** for documentation purposes.
 
-6. **Save** — Click **Save** to create the secret. The value is encrypted and stored in the selected secret manager. The secret is now available for use in pipelines and connectors within its scope.
+6. **Save**: Click **Save** to create the secret. The value is encrypted and stored in the selected secret manager. The secret is now available for use in pipelines and connectors within its scope.
 
 ---
 
-## Using Secrets in Pipelines
+## Use secrets in pipelines
 
 Secrets can be referenced in multiple contexts within your pipeline configuration. The secret value is resolved at runtime and automatically masked in execution logs.
 
-### In Connector Configuration
+### In connector configuration
 
 ```yaml title="connector-secret.yaml"
 version: 1
@@ -47,7 +48,7 @@ spec:
         password: <+secrets.getValue("dockerhub_password")>
 ```
 
-### In Pipeline Variables
+### In pipeline variables
 
 ```yaml title="pipeline-variables.yaml"
 pipeline:
@@ -69,7 +70,7 @@ pipeline:
           deploy-to: production
 ```
 
-### In Shell Scripts
+### In shell scripts
 
 ```bash title="shell-script-step.sh"
 #!/bin/bash
@@ -87,7 +88,7 @@ psql "host=$DB_HOST user=deploy password=$DB_PASS dbname=app" \
   -c "SELECT version();"
 ```
 
-### In Service Definitions
+### In service definitions
 
 ```yaml title="service-definition.yaml"
 version: 1
@@ -116,7 +117,7 @@ spec:
         value: <+secrets.getValue("jwt_signing_key")>
 ```
 
-### Using File Secrets
+### Use file secrets
 
 File secrets require base64 decoding when used in shell scripts:
 
@@ -145,11 +146,11 @@ File secrets are stored as base64-encoded content. Always pipe the secret value 
 
 ---
 
-## Rotating Secrets
+## Rotate secrets
 
 Regular secret rotation reduces the impact of credential compromise. Harness supports both manual rotation through the UI and automated rotation through external secret managers.
 
-### Manual Rotation
+### Manual rotation
 
 1. Generate the new credential value in the source system (e.g., create a new API token in GitHub).
 2. Navigate to the secret in Harness and click **Edit**.
@@ -157,19 +158,19 @@ Regular secret rotation reduces the impact of credential compromise. Harness sup
 4. Verify that existing pipelines and connectors work correctly with the new value by running a test execution.
 5. Revoke the old credential value in the source system once the new value is confirmed working.
 
-### Automated Rotation with External Managers
+### Automated rotation with external managers
 
 When using an external secret manager with automated rotation (such as AWS Secrets Manager rotation lambdas or Vault dynamic secrets), Harness automatically retrieves the latest value at pipeline execution time. No manual intervention is required in Harness.
 
-### Emergency Rotation
+### Emergency rotation
 
 If a secret is compromised: (1) Update the secret value in Harness or your external secret manager. (2) Revoke the compromised credential in the source system. (3) Review audit logs to identify any unauthorized access. (4) Run affected pipelines to verify the new credential works. (5) Report the incident per your organization's security policy.
 
 ---
 
-## Viewing and Searching Secrets
+## View and search for secrets
 
-### List View Columns
+### List view columns
 
 | Column | Description |
 |---|---|
@@ -181,13 +182,13 @@ If a secret is compromised: (1) Update the secret value in Harness or your exter
 | Last Modified | Timestamp of the last update |
 | References | Count of pipelines, connectors, and services using this secret |
 
-### Search and Filters
+### Search and filters
 
 Use the search bar to find secrets by name or identifier. Apply filters to narrow results by Secret Manager, Scope (Account/Org/Project), Tags, Type (SecretText/SecretFile), or Usage (in use vs. unused).
 
 Sort the secrets list by Name, Last Modified, Type, or References count. Click a column header to toggle ascending and descending order.
 
-### Secret Details View
+### Secret details view
 
 Click on a secret to open its details view. The details page has three tabs:
 
@@ -197,7 +198,7 @@ Click on a secret to open its details view. The details page has three tabs:
 
 ---
 
-## Deleting Secrets
+## Deleting secrets
 
 Before deleting a secret, verify that it is not referenced by any active pipeline, connector, or service. Deleting a secret that is in use will cause pipeline failures.
 
@@ -212,7 +213,7 @@ Always check the **References** tab before deleting a secret. Harness will warn 
 
 ---
 
-## API and Automation
+## API and automation
 
 Harness provides a REST API and Terraform provider for automating secret management.
 

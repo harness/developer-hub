@@ -269,3 +269,30 @@ npm install
 This improves syntax highlighting and accessibility.
 
 ---
+
+### Docusaurus code block metadata
+
+Language tags can be combined with Docusaurus code block metadata such as `title` or other supported attributes.
+
+✅ Valid examples:
+
+````markdown
+```yaml title="pipeline.yaml"
+pipeline:
+  stages: []
+```
+````
+
+````markdown
+```bash title="install.sh"
+npm install
+```
+````
+
+````markdown
+```json title="config.json"
+{
+  "name": "example"
+}
+```
+````

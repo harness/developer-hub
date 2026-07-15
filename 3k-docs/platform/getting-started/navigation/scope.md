@@ -2,6 +2,7 @@
 title: Scope Selector in Harness 3.0
 sidebar_label: Scope & Project Selector
 description: Learn how the Harness 3.0 scope selector works, including the scope hierarchy, project selector dialog, and pinning behavior.
+sidebar_position: 2
 ---
 
 :::tip New in 3.0

@@ -2,13 +2,14 @@
 title: CI Steps Reference
 sidebar_label: CI Steps
 description: Reference for all Harness CI step templates — building, testing, scanning, caching, and publishing artifacts within CI pipelines.
+sidebar_position: 2
 ---
 
 Harness CI steps provide purpose-built actions for building, testing, scanning, and publishing artifacts within your pipelines. Each step is a versioned template referenced using the `uses:` keyword with a set of typed inputs.
 
 ---
 
-## Build & Push to Docker
+## Build & push to Docker
 
 **Template:** `buildAndPushToDocker@1.0.0` · Module: CI
 
@@ -52,7 +53,7 @@ When caching is enabled, the step uses buildx with layer caching for faster buil
 
 ---
 
-## Build & Push to ECR
+## Build & push to ECR
 
 **Template:** `buildAndPushToECR@1.0.0` · Module: CI
 
@@ -87,7 +88,7 @@ steps:
 
 ---
 
-## Build & Push to GAR
+## Build & push to GAR
 
 **Template:** `buildAndPushToGAR@1.0.0` · Module: CI
 
@@ -114,7 +115,7 @@ steps:
 
 ---
 
-## Build & Push to Harness Artifact Registry
+## Build & push to Harness Artifact Registry
 
 **Template:** `buildAndPushToHarness@1.0.0` · Module: CI
 
@@ -162,7 +163,7 @@ Build Intelligence runs as a background service. Add it at the beginning of your
 
 ---
 
-## Git Clone
+## Git clone
 
 **Template:** `gitCloneStep@1.0.0` · Module: CI
 
@@ -189,7 +190,7 @@ steps:
 
 ---
 
-## Run Step (v2)
+## Run step (v2)
 
 **Template:** `run_v2@1.0.1` · Module: CI
 
@@ -207,7 +208,7 @@ steps:
 
 ---
 
-## Cache Management Steps
+## Cache management steps
 
 Six steps for saving and restoring caches across pipeline runs, supporting AWS S3, Google Cloud Storage, and Harness-managed storage.
 
@@ -239,7 +240,7 @@ steps:
 
 ---
 
-## Artifact Upload Steps
+## Artifact upload steps
 
 Three steps for uploading build artifacts to external storage providers.
 
@@ -262,17 +263,17 @@ steps:
 
 ---
 
-## Security Scanning Steps
+## Security scanning steps
 
 Integrate security scanning directly into your CI pipelines to detect vulnerabilities and hardcoded secrets early in the development lifecycle.
 
-### Bandit Security Scan
+### Bandit security scan
 
 **Template:** `banditStep@1.0.0`
 
 Performs Python security vulnerability scanning using Bandit static analysis. Supports orchestrated scan and manual upload modes. Target types include repository scanning with auto or manual target and variant detection.
 
-### Gitleaks Security Scan
+### Gitleaks security scan
 
 **Template:** `gitleaksStep@1.0.0`
 
@@ -296,7 +297,7 @@ steps:
 
 ---
 
-## SBOM Orchestration
+## SBOM orchestration
 
 **Template:** `sbomOrchestrationStep@1.0.0` · Module: CI
 

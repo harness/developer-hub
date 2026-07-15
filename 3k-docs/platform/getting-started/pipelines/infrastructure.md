@@ -2,6 +2,7 @@
 title: Infrastructure & Runtimes
 sidebar_label: Infrastructure & Runtimes
 description: Configure the compute resources where Harness 3.0 pipeline stages execute — Cloud, Kubernetes, Shell, and VM runtimes with platform and machine size options.
+sidebar_position: 5
 ---
 
 Infrastructure defines the compute resources where pipeline stages execute. Harness 3.0 supports multiple runtime types — Cloud (Harness-hosted), Kubernetes, Shell (bare-metal or VM), and VM runtimes. The runtime determines how steps are isolated, what resources are available, and how networking is configured.
@@ -30,11 +31,11 @@ interface Platform {
 
 ---
 
-## Cloud Runtime
+## Cloud runtime
 
 The Cloud runtime uses Harness-hosted infrastructure. No delegate or cluster configuration is required — Harness manages compute, scaling, and cleanup automatically.
 
-### Short Configuration
+### Short configuration
 
 ```yaml title="cloud-short.yaml"
 stages:
@@ -45,7 +46,7 @@ stages:
       - run: npm run build
 ```
 
-### Full Configuration
+### Full configuration
 
 ```yaml title="cloud-full.yaml"
 stages:
@@ -69,7 +70,7 @@ When no runtime is specified, Harness defaults to Cloud runtime with `size: flex
 
 ---
 
-## Kubernetes Runtime
+## Kubernetes runtime
 
 The Kubernetes runtime executes pipeline stages as pods in your own Kubernetes cluster. This provides full control over the execution environment, network access, and resource allocation.
 
@@ -107,7 +108,7 @@ Set resource requests and limits to ensure consistent performance and prevent no
 
 ---
 
-## Shell Runtime
+## Shell runtime
 
 The Shell runtime executes steps directly on the host machine where the Harness delegate is running. No containerization is involved. This is useful for on-premise environments, legacy systems, or workloads that require direct access to host resources.
 
@@ -134,7 +135,7 @@ Shell runtime steps execute with the same permissions as the Harness delegate pr
 
 ---
 
-## VM Runtime
+## VM runtime
 
 The VM runtime provisions a dedicated virtual machine for each stage execution. This provides full machine isolation, root access, and the ability to install arbitrary software. VMs are provisioned on demand and destroyed after the stage completes.
 
@@ -159,7 +160,7 @@ stages:
 
 ---
 
-## Platform Configuration
+## Platform configuration
 
 The platform configuration specifies the operating system, CPU architecture, variant, version, and feature requirements for the runtime environment.
 
@@ -199,7 +200,7 @@ stages:
 
 ---
 
-## Machine Sizes
+## Machine sizes
 
 Machine sizes control the CPU and memory allocated to Cloud and VM runtimes.
 
@@ -218,7 +219,7 @@ Use `flex` size for most workloads. Harness Cloud automatically scales resources
 
 ---
 
-## Multi-Platform Build Example
+## Multi-platform build example
 
 Build the same application on multiple platforms simultaneously using matrix strategy with platform configuration.
 

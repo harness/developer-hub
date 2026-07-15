@@ -110,8 +110,8 @@ export default function NavbarWrapper(props: Props): ReactNode {
     { to: `${docsBase}/platform`, label: "Harness Platform", icon: "/img/home/platform.svg" },
     { to: `${docsBase}/code-repository`, label: "Code Repository", icon: "/img/home/code.svg" },
 
-    { type: "header", label: "DevOps" },
-    { to: `${docsBase}/continuous-delivery`, label: "Continuous Deployment", icon: "/img/home/deployment.svg" },
+    { type: "header", label: "Delivery" },
+    { to: `${docsBase}/continuous-delivery`, label: "Continuous Delivery", icon: "/img/home/deployment.svg" },
     { to: `${docsBase}/continuous-integration`, label: "Continuous Integration", icon: "/img/home/build.svg" },
     { to: `${docsBase}/feature-management-experimentation`, label: "Feature Management & Experimentation", icon: "/img/home/feature.svg" },
     { to: `${docsBase}/infrastructure-as-code-management`, label: "Infrastructure as Code Management", icon: "/img/home/infrastructure.svg" },
@@ -119,7 +119,7 @@ export default function NavbarWrapper(props: Props): ReactNode {
     { to: `${docsBase}/artifact-registry`, label: "Artifact Registry", icon: "/img/home/artifact.svg" },
     { to: `${docsBase}/release-orchestration`, label: "Release Orchestration", icon: "/img/home/release.svg" },
 
-    { type: "header", label: "Testing" },
+    { type: "header", label: "Quality" },
     { to: `${docsBase}/ai-test-automation`, label: "AI Test Automation", icon: "/img/home/ui-test.svg" },
     { to: `${docsBase}/resilience-testing`, label: "Resilience Testing", icon: "/img/home/resilience-test.svg" },
 

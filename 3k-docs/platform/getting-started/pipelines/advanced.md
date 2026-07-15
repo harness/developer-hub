@@ -2,6 +2,7 @@
 title: Advanced Configuration
 sidebar_label: Advanced Configuration
 description: Advanced Harness 3.0 pipeline capabilities — caching, volumes, failure strategies, execution strategies, concurrency control, container configuration, clone settings, permissions, and test reporting.
+sidebar_position: 8
 ---
 
 This section covers advanced pipeline capabilities including caching, volumes, failure strategies, execution strategies, concurrency control, container configuration, clone settings, permissions, and test reporting.
@@ -25,7 +26,7 @@ interface CacheConfig {
 }
 ```
 
-### Node.js Cache
+### Node.js cache
 
 ```yaml title="cache-node.yaml"
 stages:
@@ -43,7 +44,7 @@ stages:
       - run: npm test
 ```
 
-### Multi-Language Cache
+### Multi-language cache
 
 ```yaml title="cache-multi.yaml"
 stages:
@@ -91,7 +92,7 @@ interface VolumeConfig {
 }
 ```
 
-### Temporary Volume
+### Temporary volume
 
 ```yaml title="volume-temp.yaml"
 stages:
@@ -110,7 +111,7 @@ stages:
         container: node:20
 ```
 
-### Host Volume
+### Host volume
 
 ```yaml title="volume-host.yaml"
 stages:
@@ -126,7 +127,7 @@ stages:
       - run: docker build -t my-app .
 ```
 
-### Persistent Volume Claim
+### Persistent volume claim
 
 ```yaml title="volume-pvc.yaml"
 stages:
@@ -150,7 +151,7 @@ stages:
 
 ---
 
-## Failure Strategies
+## Failure strategies
 
 Failure strategies define how the pipeline responds to errors at the step, stage, or pipeline level. Strategies can be simple actions or complex chains with escalation paths.
 
@@ -182,7 +183,7 @@ interface FailureStrategy {
 }
 ```
 
-### Error-Specific Strategies
+### Error-specific strategies
 
 ```yaml title="failure-error-specific.yaml"
 stages:
@@ -207,7 +208,7 @@ stages:
       - run: ./deploy.sh production
 ```
 
-### Rollback Strategy
+### Rollback strategy
 
 ```yaml title="failure-rollback.yaml"
 stages:
@@ -229,7 +230,7 @@ stages:
 
 ---
 
-## Strategy (Matrix & Loops)
+## Strategy (matrix & loops)
 
 Execution strategies control how stages or steps are repeated. Harness 3.0 supports matrix expansion, for loops, and while loops.
 
@@ -259,7 +260,7 @@ interface StrategyConfig {
 }
 ```
 
-### Matrix with Fail-Fast
+### Matrix with fail-fast
 
 ```yaml title="strategy-matrix-failfast.yaml"
 stages:
@@ -276,7 +277,7 @@ stages:
           npm test
 ```
 
-### For Loop with Concurrency
+### For loop with concurrency
 
 ```yaml title="strategy-for-concurrent.yaml"
 stages:
@@ -301,7 +302,7 @@ stages:
 
 ---
 
-## Concurrency Control
+## Concurrency control
 
 Concurrency control limits how many instances of a pipeline or stage can run simultaneously. This prevents resource contention and ensures orderly deployments.
 
@@ -316,7 +317,7 @@ interface ConcurrencyConfig {
 }
 ```
 
-### Pipeline-Level Concurrency
+### Pipeline-level concurrency
 
 ```yaml title="concurrency-pipeline.yaml"
 pipeline:
@@ -330,7 +331,7 @@ pipeline:
         - run: ./deploy.sh
 ```
 
-### Stage-Level Concurrency
+### Stage-level concurrency
 
 ```yaml title="concurrency-stage.yaml"
 stages:
@@ -350,7 +351,7 @@ stages:
 
 ---
 
-## Container Configuration
+## Container configuration
 
 Steps can run inside specific container images with custom configuration for pull policies, credentials, resource limits, and entry points.
 
@@ -383,7 +384,7 @@ interface ContainerConfig {
 }
 ```
 
-### Full Container Configuration
+### Full container configuration
 
 ```yaml title="container-full.yaml"
 steps:
@@ -408,7 +409,7 @@ steps:
       CGO_ENABLED: "0"
 ```
 
-### Privileged Container (Docker-in-Docker)
+### Privileged container (Docker-in-Docker)
 
 ```yaml title="container-dind.yaml"
 steps:
@@ -425,7 +426,7 @@ steps:
 
 ---
 
-## Clone Configuration
+## Clone configuration
 
 Configure how and whether the pipeline repository is cloned at the pipeline or stage level.
 
@@ -448,7 +449,7 @@ interface CloneConfig {
 }
 ```
 
-### Disable Clone
+### Disable clone
 
 ```yaml title="clone-disable.yaml"
 # Pipeline-level: disable clone for all stages
@@ -460,7 +461,7 @@ pipeline:
         - run: curl -X POST https://api.example.com/notify
 ```
 
-### Custom Clone Configuration
+### Custom clone configuration
 
 ```yaml title="clone-custom.yaml"
 pipeline:
@@ -475,7 +476,7 @@ pipeline:
         - run: make build
 ```
 
-### Stage-Level Clone Override
+### Stage-level clone override
 
 ```yaml title="clone-stage-override.yaml"
 stages:
@@ -533,7 +534,7 @@ Always apply the principle of least privilege. Grant only the permissions that a
 
 ---
 
-## Test Reports
+## Test reports
 
 Test reports collect and display test results in the Harness UI. Harness 3.0 supports JUnit and NUnit report formats with automatic parsing, trend analysis, and flaky test detection.
 
@@ -548,7 +549,7 @@ interface ReportConfig {
 }
 ```
 
-### JUnit Reports
+### JUnit reports
 
 ```yaml title="reports-junit.yaml"
 steps:
@@ -566,7 +567,7 @@ steps:
         - "report.xml"
 ```
 
-### NUnit Reports
+### NUnit reports
 
 ```yaml title="reports-nunit.yaml"
 steps:
@@ -579,7 +580,7 @@ steps:
       fail_on_missing: true
 ```
 
-### Wildcard Report Paths
+### Wildcard report paths
 
 ```yaml title="reports-wildcard.yaml"
 steps:
@@ -599,7 +600,7 @@ When multiple report files match the glob patterns, Harness automatically aggreg
 
 ---
 
-## Complete Pipeline Example
+## Complete pipeline example
 
 The following example demonstrates many advanced features combined in a single production-grade pipeline: typed inputs, caching, matrix testing, container steps, concurrency control, failure strategies, approvals, and multi-environment deployment.
 

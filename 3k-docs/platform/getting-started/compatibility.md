@@ -1,6 +1,7 @@
 ---
-title: Backwards Compatibility
-sidebar_label: Backwards Compatibility
+title: Backward Compatibility
+sidebar_label: Backward Compatibility
+sidebar_position: 3
 ---
 
 import Tabs from '@theme/Tabs';
@@ -12,7 +13,7 @@ Harness 3.0 provides full backwards compatibility with existing Harness NG resou
 Harness 3.0 is designed as a non-breaking upgrade. Every NG resource type continues to function exactly as it did before. The 3.0 platform adds new capabilities on top of the existing foundation without removing or modifying existing behavior.
 :::
 
-## Compatible Resources
+## Compatible resources
 
 The following table provides a detailed breakdown of compatibility for each resource type. All resources created in Harness NG are fully operational in the 3.0 environment.
 
@@ -26,7 +27,7 @@ The following table provides a detailed breakdown of compatibility for each reso
 | Templates            | Fully compatible | Pipeline templates, stage templates, and step templates created in NG continue to work. Templates can be used in both v0 and v1 pipelines.                                            |
 | Expressions          | Fully compatible | All Harness expressions (`<+...>` syntax) are fully supported. The v1 format also introduces a new `${{ }}` expression syntax that can be used alongside the existing format.         |
 
-## Pipeline Converter
+## Pipeline converter
 
 While existing NG pipelines work without modification, teams that want to take advantage of the v1 YAML format can use the upcoming automatic pipeline converter to transform their configurations.
 

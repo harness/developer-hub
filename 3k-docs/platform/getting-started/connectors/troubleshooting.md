@@ -2,13 +2,14 @@
 title: Connector Troubleshooting
 sidebar_label: Troubleshooting
 description: Common connector issues, root causes, and step-by-step solutions for diagnosing and resolving connectivity problems in Harness 3.0.
+sidebar_position: 5
 ---
 
 Common connector issues, root causes, and step-by-step solutions for diagnosing and resolving connectivity problems in Harness 3.0.
 
 ---
 
-## Failed Connection
+## Failed connection
 
 A "Failed" status on a connector indicates that the most recent connection test did not succeed. The following are the most common root causes and their solutions.
 
@@ -76,7 +77,7 @@ Connection timeouts occur when the delegate cannot establish a connection to the
 
 ---
 
-## Pipeline vs Test Failures
+## Pipeline vs test failures
 
 In some cases, a connector test succeeds in the UI but fails during pipeline execution (or vice versa). This discrepancy can occur for several reasons.
 
@@ -118,7 +119,7 @@ The external service may impose concurrent connection limits. A standalone test 
 
 ---
 
-## Not Found Errors
+## Not found errors
 
 A "Connector not found" error during pipeline execution indicates that the referenced connector cannot be resolved.
 
@@ -143,7 +144,7 @@ A "Connector not found" error during pipeline execution indicates that the refer
 
 ---
 
-## Rate Limiting
+## Rate limiting
 
 External services like GitHub and GitLab impose API rate limits that can affect connector operations, especially during periods of high pipeline activity.
 
@@ -166,7 +167,7 @@ External services like GitHub and GitLab impose API rate limits that can affect 
 
 ---
 
-## Kubernetes Issues
+## Kubernetes issues
 
 Kubernetes connector issues are among the most common troubleshooting scenarios.
 
@@ -241,7 +242,7 @@ roleRef:
 
 ---
 
-## Cloud Authentication Failures
+## Cloud authentication failures
 
 <details>
 <summary>AWS — IAM Trust Policy</summary>
@@ -308,7 +309,7 @@ Check the service principal in **Azure AD > App Registrations**. Verify the clie
 
 ---
 
-## Diagnostic Steps
+## Diagnostic steps
 
 When troubleshooting connector issues, follow these steps in order to systematically identify and resolve the problem.
 

@@ -2,6 +2,7 @@
 title: Security Agents
 sidebar_label: Security
 description: AI-powered agents for vulnerability remediation and deployment failure analysis — Zero Day Remediation for CVE-based fixes across repos, and Manifest Remediator for Kubernetes and Helm deployment failures.
+sidebar_position: 3
 ---
 
 Harness Security agents help teams identify and remediate vulnerabilities and deployment failures using AI. The Zero Day Remediation agent scans for and fixes critical CVEs across multiple repositories, while the Manifest Remediator analyzes Kubernetes and Helm deployment failures to generate remediation YAML.
@@ -21,7 +22,7 @@ The Zero Day Remediation agent identifies and remediates critical vulnerabilitie
 - Creates fix PRs with version updates to safe releases
 - Requires Harness Supply Chain Security module
 
-### Key Inputs
+### Key inputs
 
 | Input | Type | Description |
 |---|---|---|
@@ -41,7 +42,7 @@ The Zero Day Remediation agent identifies and remediates critical vulnerabilitie
 | `authorEmail` | string | Git author email for commits (default: `ai-workflow@harness.io`) |
 | `search` | string | Filter repositories by name pattern |
 
-### Pipeline Configuration
+### Pipeline configuration
 
 ```yaml title="pipeline.yaml"
 pipeline:
@@ -129,7 +130,7 @@ pipeline:
       description: Filter repositories by name pattern
 ```
 
-### Supported Languages
+### Supported languages
 
 | Language | Package Manager | File |
 |---|---|---|
@@ -150,20 +151,20 @@ The Zero Day Remediation agent requires the Harness Supply Chain Security module
 
 The Manifest Remediator agent analyzes Kubernetes and Helm deployment failures by examining execution logs from failed pipelines. It uses AI to identify root causes and generates a `manifest_remediation_results.yaml` file with specific fixes and step-by-step remediation instructions.
 
-### How It Works
+### How it works
 
 1. **Fetch Logs** — Retrieves execution logs from the failed `K8sRollingDeploy` or `HelmDeploy` steps via the Harness API
 2. **AI Analysis** — Claude AI analyzes the logs to identify the root cause of the deployment failure
 3. **Generate Remediation** — Produces a structured YAML file with root cause analysis, recommended fixes, and configuration updates
 
-### Unique Characteristics
+### Unique characteristics
 
 - Does **not** clone a repository — works purely from pipeline execution logs
 - Outputs a YAML file with structured remediation guidance
 - Supports `K8sRollingDeploy` and `HelmDeploy` failure types
 - Uses Harness API to fetch pipeline execution details
 
-### Key Inputs
+### Key inputs
 
 | Input | Type | Description |
 |---|---|---|
@@ -176,7 +177,7 @@ The Manifest Remediator agent analyzes Kubernetes and Helm deployment failures b
 | `harnessOrgId` | string | Harness organization identifier |
 | `harnessAccountId` | string | Harness account identifier |
 
-### Pipeline Configuration
+### Pipeline configuration
 
 ```yaml title="pipeline.yaml"
 pipeline:
@@ -240,7 +241,7 @@ pipeline:
       type: string
 ```
 
-### Example Output
+### Example output
 
 ```yaml title="manifest_remediation_results.yaml"
 root_cause:

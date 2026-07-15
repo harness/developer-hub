@@ -2,13 +2,14 @@
 title: Secrets Troubleshooting
 sidebar_label: Troubleshooting
 description: Diagnose and resolve common issues with secrets in Harness 3.0 — secret not found, external manager connection failures, stale cached values, and file decode errors.
+sidebar_position: 5
 ---
 
 Diagnose and resolve common issues with secrets in Harness 3.0. This guide covers the most frequently encountered problems, their root causes, and step-by-step resolution procedures.
 
 ---
 
-## Secret Not Found
+## Secret not found
 
 Pipeline execution fails with an error indicating the referenced secret cannot be found.
 
@@ -66,7 +67,7 @@ The pipeline is running in a different project or organization than where the se
 
 ---
 
-## Connection Failed to External Secret Manager
+## Connection failed to external secret manager
 
 Pipeline execution fails because Harness cannot connect to the external secret manager to retrieve the secret value.
 
@@ -108,7 +109,7 @@ The Harness Delegate responsible for retrieving the secret is offline, unhealthy
 
 ---
 
-## Secret Value Not Updating
+## Secret value not updating
 
 You have updated a secret value but pipeline executions continue to use the old value.
 
@@ -145,7 +146,7 @@ If you have secrets with similar names at different scopes, you may have updated
 
 ---
 
-## File Secret Decode Issues
+## File secret decode issues
 
 File secrets are stored as base64-encoded content. Common issues arise when the decoded output is not handled correctly in pipeline steps.
 
@@ -196,7 +197,7 @@ Always validate decoded file secrets before use. For JSON files, use `python3 -m
 
 ---
 
-## Diagnostic Steps
+## Diagnostic steps
 
 Follow this five-step process to systematically identify and resolve secret-related issues.
 

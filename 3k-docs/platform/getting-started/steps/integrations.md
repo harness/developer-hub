@@ -2,13 +2,14 @@
 title: Integration Steps Reference
 sidebar_label: Integration Steps
 description: Reference for integration step templates in Harness 3.0 — HTTP, email, Jira, ServiceNow, Jenkins, Bamboo, SSH, WinRM, and AI Verify.
+sidebar_position: 6
 ---
 
 Harness 3.0 provides integration steps for HTTP requests, notifications, ticketing systems, CI tools, remote execution, and AI-based verification. These steps enable pipelines to interact with external systems and services.
 
 ---
 
-## HTTP Step
+## HTTP step
 
 **Template:** `httpStep@1.0.0` · Module: CD/Custom
 
@@ -72,7 +73,7 @@ steps:
 
 ---
 
-## Email Step
+## Email step
 
 **Template:** `email@1.0.0` · Module: CD
 
@@ -105,7 +106,7 @@ steps:
 
 ---
 
-## Jira Integration Steps
+## Jira integration steps
 
 Three integration steps for creating, updating, and approving via Jira issues.
 
@@ -151,7 +152,7 @@ steps:
 
 ---
 
-## ServiceNow Integration Steps
+## ServiceNow integration steps
 
 Four integration steps for creating, updating, approving, and importing records via ServiceNow.
 
@@ -177,7 +178,7 @@ steps:
 
 ---
 
-## Jenkins Build
+## Jenkins build
 
 **Template:** `jenkinsBuild@1.0.0` · Module: CI
 
@@ -203,7 +204,7 @@ steps:
 
 ---
 
-## Bamboo Build
+## Bamboo build
 
 **Template:** `bambooBuild@1.0.0` · Module: CI
 
@@ -226,7 +227,7 @@ steps:
 
 ---
 
-## SSH Step
+## SSH step
 
 **Template:** `ssh@1.0.0` · Module: CD
 
@@ -264,7 +265,7 @@ steps:
 
 ---
 
-## WinRM Step
+## WinRM step
 
 **Template:** `winrm@1.0.0` · Module: CD
 
@@ -294,7 +295,7 @@ steps:
 
 ---
 
-## AI Verify Step
+## AI Verify step
 
 **Template:** `aiVerifyStep@2.0.0` · Module: CV
 

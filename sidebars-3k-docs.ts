@@ -163,42 +163,42 @@ const sidebars: SidebarsConfig = {
         },
         // API and Application Discovery Page
         {
-          type: "link",
-          href: "/docs/appsec-discovery",
-          label: "API & Application Discovery",
-          className: "sidebar-adra",
+          type: 'link',
+          href: '/3k-docs/appsec-discovery',
+          label: 'Application & API Discovery',
+          className: 'sidebar-adra',
 
           customProps: {
-            description: "Learn how API & Application Discovery gives you complete visibility into your API ecosystem.",
+            description: 'Learn how API & Application Discovery gives you complete visibility into your API ecosystem.',
           },
         },
         // Application and API Runtime Protection Page
         {
-          type: "link",
-          href: "/docs/appsec-runtime-protection",
-          label: "Application & API Runtime Protection",
-          className: "sidebar-arp",
+          type: 'link',
+          href: '/3k-docs/appsec-runtime-protection',
+          label: 'Application & API Runtime Protection',
+          className: 'sidebar-arp',
 
           customProps: {
-            description: "Learn how Application & API Runtime Protection detects and blocks attacks, safeguarding your applications.",
+            description: 'Learn how Application & API Runtime Protection detects and blocks attacks, safeguarding your applications.',
           },
         },
         // Application and API Security Testing Page
         {
-          type: "link",
-          href: "/docs/appsec-security-testing",
-          label: "Application & API Security Testing",
-          className: "sidebar-ast",
+          type: 'link',
+          href: '/3k-docs/appsec-security-testing',
+          label: 'Application & API Security Testing',
+          className: 'sidebar-ast',
 
           customProps: {
-            description: "Learn how Application & API Security Testing help you identify issues early and validate API security.",
+            description: 'Learn how Application & API Security Testing help you identify issues early and validate API security.',
           },
         },
         // Security Testing Orchestration Landing Page
         {
           type: 'link',
           href: '/3k-docs/security-testing-orchestration',
-          label: 'Security Tests',
+          label: 'Security Test Orchestration',
           className: 'sidebar-sto',
 
           customProps: {
@@ -265,7 +265,7 @@ const sidebars: SidebarsConfig = {
             description: 'Get started with Harness Internal Developer Portal',
           },
         },
-        // SEI
+        // AIDI
         {
           type: 'link',
           href: '/3k-docs/ai-dlc-insights',
@@ -625,8 +625,8 @@ const sidebars: SidebarsConfig = {
             id: 'platform/getting-started/index',
           },
           items: [
-            'platform/getting-started/compatibility',
             'platform/getting-started/migration',
+            'platform/getting-started/compatibility',
           ],
         },
         {

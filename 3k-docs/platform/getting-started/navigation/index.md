@@ -3,6 +3,7 @@ title: Navigation in Harness 3.0
 sidebar_label: Navigation Overview
 slug: /platform/getting-started/navigation
 description: Learn how the Harness 3.0 navigation system works, including the sidebar, More menu, recent items, and keyboard shortcuts.
+sidebar_position: 1
 ---
 
 import Tabs from '@theme/Tabs';

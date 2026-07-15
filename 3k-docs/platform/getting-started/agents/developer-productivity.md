@@ -2,6 +2,7 @@
 title: Developer Productivity Agents
 sidebar_label: Developer Productivity
 description: AI-powered agents for feature flag cleanup, framework upgrades, and repository onboarding — automating common engineering workflows that are tedious and time-consuming.
+sidebar_position: 4
 ---
 
 Harness Developer Productivity agents automate common engineering workflows that are tedious and time-consuming. The Feature Flag Cleanup agent removes stale flags from codebases, the React Upgrade agent handles framework upgrades with custom prompts, and the Onboarding agent imports repositories and auto-generates CI pipelines.
@@ -12,7 +13,7 @@ Harness Developer Productivity agents automate common engineering workflows that
 
 The Feature Flag Cleanup agent removes stale feature flags from codebases. Given a feature flag name and the desired treatment (e.g., `on` or `off`), it uses Claude AI to find all flag references, remove evaluations while keeping only the selected treatment's code path, and clean up unused imports and variables.
 
-### How It Works
+### How it works
 
 1. **Task Generation** — Generates a detailed cleanup prompt based on the flag name and desired treatment
 2. **Code Analysis** — Claude AI (up to 50 iterations) scans the codebase for all flag references
@@ -20,7 +21,7 @@ The Feature Flag Cleanup agent removes stale feature flags from codebases. Given
 4. **Cleanup** — Removes unused imports, variables, and dead code left by flag removal
 5. **Draft PR** — Pushes changes and creates a draft PR via the Harness Code API
 
-### Key Inputs
+### Key inputs
 
 | Input | Type | Description |
 |---|---|---|
@@ -31,14 +32,14 @@ The Feature Flag Cleanup agent removes stale feature flags from codebases. Given
 | `repo` | string | Repository name |
 | `branch` | string | Target branch |
 
-### Output Artifacts
+### Output artifacts
 
 - `branch.txt` — Name of the created branch
 - `commit.txt` — Commit SHA of the changes
 - `pr_title.txt` — AI-generated PR title
 - `pr_description.txt` — AI-generated PR description
 
-### Pipeline Configuration
+### Pipeline configuration
 
 ```yaml title="pipeline.yaml"
 pipeline:
@@ -120,7 +121,7 @@ The Feature Flag Cleanup agent creates draft PRs so your team can review the cha
 
 The React Upgrade agent automates React version upgrades and code modifications using custom prompts. Despite its name, it's the most flexible agent — it accepts any free-form prompt, making it suitable for framework upgrades, refactoring, dependency updates, and performance optimization.
 
-### Use Cases
+### Use cases
 
 - Upgrade React from version 17 to 18
 - Refactor class components to functional components with hooks
@@ -128,7 +129,7 @@ The React Upgrade agent automates React version upgrades and code modifications 
 - Migrate from one state management library to another
 - Apply performance optimizations based on custom criteria
 
-### Key Inputs
+### Key inputs
 
 | Input | Type | Description |
 |---|---|---|
@@ -139,7 +140,7 @@ The React Upgrade agent automates React version upgrades and code modifications 
 | `branch` | string | Target branch |
 | `prompt` | string | Custom prompt describing the upgrade/modification task (required) |
 
-### Pipeline Configuration
+### Pipeline configuration
 
 ```yaml title="pipeline.yaml"
 pipeline:
@@ -232,20 +233,20 @@ The React Upgrade agent uses up to 300 AI iterations and creates branches with t
 
 The Onboarding agent streamlines repository setup in Harness. It imports repositories from GitHub into Harness Code, analyzes the repo structure to detect technologies and build commands, and auto-generates a CI pipeline tailored to the project.
 
-### How It Works
+### How it works
 
 1. **Repository Import** — Clones the source repository from GitHub and imports it into Harness Code
 2. **Technology Detection** — Claude Sonnet analyzes the repo structure (languages, frameworks, build tools, dependencies)
 3. **Pipeline Generation** — Claude Opus generates a complete CI pipeline based on the detected technology stack
 4. **Pipeline Creation** — The generated pipeline is created in Harness via the API
 
-### Unique Architecture
+### Unique architecture
 
 - Uses two different Claude models: Sonnet for fast analysis, Opus for high-quality pipeline generation
 - No clone step in the pipeline — the agent container itself handles repository cloning
 - Runs on `linux/amd64` platform (unlike most agents that use `arm64`)
 
-### Key Inputs
+### Key inputs
 
 | Input | Type | Description |
 |---|---|---|
@@ -256,7 +257,7 @@ The Onboarding agent streamlines repository setup in Harness. It imports reposit
 | `repoName` | string | Source repository name |
 | `connectorRef` | string | Harness connector reference for git operations (optional) |
 
-### Pipeline Configuration
+### Pipeline configuration
 
 ```yaml title="pipeline.yaml"
 pipeline:

@@ -4,13 +4,14 @@ sidebar_label: Secrets Overview
 id: index
 slug: /platform/getting-started/secrets
 description: Harness Secrets provides a secure credential management system for CI/CD pipelines — store, manage, and reference sensitive data with full encryption, access control, and audit trails.
+sidebar_position: 1
 ---
 
 Harness Secrets provides a secure credential management system for CI/CD pipelines. Store, manage, and reference sensitive data such as API keys, passwords, certificates, and tokens with full encryption, access control, and audit trails.
 
 ---
 
-## What Are Secrets?
+## What are secrets?
 
 Secrets in Harness are encrypted values that store sensitive information required by your pipelines, connectors, and services. They are never exposed in plain text through the Harness UI or API responses, and they are masked in pipeline execution logs.
 
@@ -41,11 +42,11 @@ Secrets in Harness are encrypted values that store sensitive information require
 
 ---
 
-## Key Concepts
+## Key concepts
 
 Every secret in Harness is composed of the following attributes. Understanding these attributes is essential for creating, referencing, and managing secrets effectively.
 
-### Secret Anatomy
+### Secret anatomy
 
 | Attribute | Description | Example |
 |---|---|---|
@@ -57,7 +58,7 @@ Every secret in Harness is composed of the following attributes. Understanding t
 | Metadata | Optional tags and description for organization and search. | `env:prod`, `team:backend` |
 | Scope | The hierarchy level at which the secret is defined. | `account` / `org` / `project` |
 
-### Secret Scope
+### Secret scope
 
 Secrets can be created at three levels within the Harness hierarchy. The scope determines which pipelines and services can access the secret. Secrets defined at a higher scope are accessible by all entities within that scope and its children.
 
@@ -73,15 +74,15 @@ Define secrets at the narrowest scope possible. Use project-level secrets for pr
 
 ---
 
-## Secret Managers
+## Secret managers
 
 Harness supports both a built-in secret manager and integration with external secret management platforms. You can configure different secret managers at the account, organization, or project level.
 
-### Harness Built-in Secret Manager
+### Harness built-in secret manager
 
 The default secret manager provided by Harness uses AES-256 encryption to store secrets. It is available out of the box with no additional configuration required. This is suitable for teams that do not have an existing external secret management solution.
 
-### External Secret Managers
+### External secret managers
 
 For organizations with existing secret management infrastructure, Harness integrates with the following external providers:
 
@@ -97,7 +98,7 @@ When you use an external secret manager, the actual secret values never leave yo
 
 ---
 
-## Secret Referencing
+## Secret referencing
 
 Secrets are referenced in pipelines, connectors, and configurations using Harness expressions. The expression syntax resolves the secret value at runtime and injects it into the execution context.
 
@@ -132,7 +133,7 @@ spec:
         token: <+secrets.getValue("github_pat")>
 ```
 
-### Usage in Shell Scripts
+### Usage in shell scripts
 
 In shell script steps, secret expressions are resolved before the script executes. The resolved value is masked in logs:
 

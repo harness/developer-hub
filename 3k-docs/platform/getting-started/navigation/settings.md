@@ -2,6 +2,7 @@
 title: General Settings in Harness 3.0
 sidebar_label: Configuration
 description: Learn how to configure your Harness account using the Settings page, including general settings, account-level resources, access control, and security.
+sidebar_position: 3
 ---
 
 The **Settings** page provides centralized configuration for your Harness account. It is organized using a tabbed navigation structure that groups related settings into logical categories. 

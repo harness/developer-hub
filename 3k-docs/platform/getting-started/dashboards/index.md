@@ -2,12 +2,11 @@
 id: index
 title: Dashboards 3.0
 sidebar_label: Dashboards 3.0
-description: Learn about Dashboards 3.0, a ground-up rebuild of the Harness dashboarding experience powered by an internal engine, Harness Query Language (HQL), and AI-driven dashboard creation.
+description: Learn about Dashboards 3.0, a ground-up rebuild of the Harness dashboards experience powered by an internal engine, Harness Query Language (HQL), and AI-driven dashboard creation.
+sidebar_position: 1
 ---
 
-:::note New in 3.0
 Dashboards 3.0 is a ground-up rebuild of the Harness dashboarding experience. Moving away from Looker and LookML, the new dashboards are powered by an internal dashboarding technology and a unified data platform purpose-built to drive all data-intensive capabilities across the Harness platform.
-:::
 
 | | |
 |---|---|
@@ -18,7 +17,7 @@ Dashboards 3.0 is a ground-up rebuild of the Harness dashboarding experience. Mo
 
 ---
 
-## What Has Changed
+## What has changed
 
 Dashboards 3.0 replaces the previous Looker-based dashboarding system with an internally-built technology. This gives Harness full control over the dashboarding experience, removes external dependencies, and enables deeper integration with the platform's AI capabilities.
 
@@ -34,9 +33,9 @@ Dashboards 3.0 replaces the previous Looker-based dashboarding system with an in
 
 ## Unified Data Platform
 
-Dashboards 3.0 is built on a new unified data platform that Harness has developed to power all data-intensive capabilities across the platform. This platform provides a single interface for querying heterogeneous data sources — events, entities, metrics, and views — across multiple database backends.
+Dashboards 3.0 is built on a new unified data platform that Harness has developed to power all data-intensive capabilities across the platform. This platform provides a single interface for querying heterogeneous data sources (events, entities, metrics, and views) across multiple database backends.
 
-### Data Sources
+### Data sources
 
 | Source Type | Description | Examples |
 |---|---|---|
@@ -45,7 +44,7 @@ Dashboards 3.0 is built on a new unified data platform that Harness has develope
 | `metric` | Aggregated and analytical data | Aggregated cost metrics, performance metrics |
 | `view` | Virtual tables that expand to CTEs at query time | Custom views like `successful_pipelines` |
 
-### Query Architecture
+### Query architecture
 
 HQL queries are parsed, planned, and automatically translated to optimized SQL for the target database backend.
 
@@ -65,23 +64,23 @@ Database Execution
 
 ---
 
-## AI-Powered Dashboard Creation
+## AI-powered dashboard creation
 
-Harness users can create widgets and dashboards manually or using AI. The AI-powered creation flow is powered by the Dashboard Agent and the Knowledge Graph Tool, both exposed via Harness MCP (Model Context Protocol).
+You can create widgets and dashboards manually or using AI. The AI-powered creation flow is powered by the Dashboard Agent and the Knowledge Graph Tool, both exposed via Harness MCP (Model Context Protocol).
 
-**Step 1 — Describe Your Dashboard:** Use the AI Assistant to describe the dashboard or widget you need in natural language. For example: "Show me pipeline failure rates by team over the last 30 days."
-
-**Step 2 — Dashboard Agent Generates HQL:** The Dashboard Agent uses the Knowledge Graph Tool to understand your data model and generates the appropriate HQL query and widget configuration.
-
-**Step 3 — Review and Customize:** Review the generated dashboard, adjust the HQL queries, change widget types, or refine the layout before saving.
+1. **Describe Your Dashboard:** Use the AI Assistant to describe the dashboard or widget you need in natural language. For example: "Show me pipeline failure rates by team over the last 30 days."
+1. **Dashboard Agent Generates HQL:** The Dashboard Agent uses the Knowledge Graph Tool to understand your data model and generates the appropriate HQL query and widget configuration.
+1. **Review and Customize:** Review the generated dashboard, adjust the HQL queries, change widget types, or refine the layout before saving.
 
 :::tip Knowledge Graph and MCP
-The Knowledge Graph Tool exposes the Harness semantic data model via MCP (Model Context Protocol), allowing the Dashboard Agent to understand entity relationships, available fields, and data types across your entire Harness deployment. This enables the AI to generate accurate HQL queries without requiring you to know the underlying schema.
+The Knowledge Graph Tool exposes the Harness semantic data model via MCP (Model Context Protocol), allowing the Dashboard Agent to understand entity relationships, available fields, and data types across your entire Harness deployment. 
+
+This enables the AI to generate accurate HQL queries without requiring you to know the underlying schema.
 :::
 
 ---
 
-## Widget Types
+## Widget types
 
 Dashboards 3.0 supports a wide range of visualization widgets. Each widget is backed by an HQL query and can be created manually or generated by AI.
 
@@ -104,21 +103,16 @@ Dashboards 3.0 supports a wide range of visualization widgets. Each widget is ba
 
 HQL is a domain-specific query language designed for querying the Harness Data Platform. It provides a unified interface for querying events, entities, metrics, and views across multiple database backends with pipe-based operations and SQL-like semantics. HQL queries are automatically translated to optimized SQL for the target database.
 
-### Key Features
+### Key features
 
-**Unified query interface** — Query multiple data sources with a single language.
+- **Unified query interface**: Query multiple data sources with a single language.
+- **Pipe-based operations**: Chain operations using the pipe (`|`) operator.
+- **SQL-like semantics**: Familiar syntax for filtering, grouping, aggregating, and joining.
+- **Type safety**: Strong typing with support for events, entities, metrics, and views.
+- **Automatic SQL generation**: HQL is translated to optimized SQL for StarRocks, AlloyDB, BigQuery, PostgreSQL, and MySQL.
+- **CTE support**: Common Table Expressions for complex, readable queries.
 
-**Pipe-based operations** — Chain operations using the pipe (`|`) operator.
-
-**SQL-like semantics** — Familiar syntax for filtering, grouping, aggregating, and joining.
-
-**Type safety** — Strong typing with support for events, entities, metrics, and views.
-
-**Automatic SQL generation** — HQL is translated to optimized SQL for StarRocks, AlloyDB, BigQuery, PostgreSQL, and MySQL.
-
-**CTE support** — Common Table Expressions for complex, readable queries.
-
-### Basic Syntax
+### Basic syntax
 
 Every HQL query starts with `find` followed by a data source, then pipes operations in sequence.
 

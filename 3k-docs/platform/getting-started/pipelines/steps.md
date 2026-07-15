@@ -2,13 +2,14 @@
 title: Steps Reference
 sidebar_label: Steps
 description: Steps are the smallest executable units in a Harness 3.0 pipeline — run scripts, invoke actions, request approvals, manage background services, and more.
+sidebar_position: 3
 ---
 
 A Step is the smallest executable unit within a pipeline stage. Steps are the building blocks that perform actual work — running scripts, invoking actions, requesting approvals, or managing background services. Harness 3.0 provides multiple step types with a flexible, short-form YAML syntax.
 
 ---
 
-## Step Types
+## Step types
 
 | Step Type | Key | Description |
 |---|---|---|
@@ -26,7 +27,7 @@ A Step is the smallest executable unit within a pipeline stage. Steps are the bu
 
 ---
 
-## Common Step Properties
+## Common step properties
 
 All step types share these common properties in addition to their type-specific fields.
 
@@ -48,7 +49,7 @@ interface StepCommon {
 
 ---
 
-## Run Step
+## Run step
 
 The Run step executes shell commands. It supports multiple syntax variants from single-line shorthand to fully configured forms with containers, environment variables, and test reports.
 
@@ -82,14 +83,14 @@ interface StepRun {
 }
 ```
 
-### Shortest Syntax
+### Shortest syntax
 
 ```yaml title="run-shortest.yaml"
 steps:
   - run: echo "Hello"
 ```
 
-### Named Step
+### Named step
 
 ```yaml title="run-named.yaml"
 steps:
@@ -97,7 +98,7 @@ steps:
     run: npm install
 ```
 
-### Multi-Line Script
+### Multi-line script
 
 ```yaml title="run-multiline.yaml"
 steps:
@@ -110,7 +111,7 @@ steps:
       echo "Build completed at $BUILD_DATE"
 ```
 
-### Array of Commands
+### Array of commands
 
 Each command runs independently. If one fails, subsequent commands are skipped.
 
@@ -124,7 +125,7 @@ steps:
       - npm test
 ```
 
-### With Container
+### With container
 
 Run the step inside a specific container image. Supports both a short-form string and a long-form object with pull policy, credentials, and resource limits.
 
@@ -150,7 +151,7 @@ steps:
         cpu: 2
 ```
 
-### With Environment Variables
+### With environment variables
 
 ```yaml title="run-env.yaml"
 steps:
@@ -164,7 +165,7 @@ steps:
         BUILD_NUMBER: ${{ pipeline.sequenceId }}
 ```
 
-### With Shell Selection
+### With shell selection
 
 Supported values: `sh`, `bash`, `powershell`, `pwsh`, `python`.
 
@@ -192,7 +193,7 @@ steps:
         Get-Process | Select-Object -First 5
 ```
 
-### With Test Reports
+### With test reports
 
 ```yaml title="run-report.yaml"
 steps:
@@ -208,7 +209,7 @@ steps:
 
 ---
 
-## Run-Test Step
+## Run-test step
 
 The Run-Test step extends the Run step with built-in test intelligence, test splitting, and test report collection. Harness analyzes test results, identifies flaky tests, and optimizes execution through intelligent parallelism.
 
@@ -230,7 +231,7 @@ interface StepTest {
 }
 ```
 
-### Basic Test Step
+### Basic test step
 
 ```yaml title="test-basic.yaml"
 steps:
@@ -260,7 +261,7 @@ steps:
           - "target/surefire-reports/*.xml"
 ```
 
-### Test Splitting
+### Test splitting
 
 Distribute tests across parallel instances for faster execution.
 
@@ -281,7 +282,7 @@ steps:
 
 ---
 
-## Action Step
+## Action step
 
 Action steps invoke pre-built integrations and plugins. Harness 3.0 supports GitHub Actions (via `uses:`), Harness plugins, and Drone plugins.
 
@@ -309,7 +310,7 @@ steps:
   - run: npm test
 ```
 
-### Action with Inputs
+### Action with inputs
 
 ```yaml title="action-with-inputs.yaml"
 steps:
@@ -322,7 +323,7 @@ steps:
         retention-days: 5
 ```
 
-### Harness Plugin
+### Harness plugin
 
 ```yaml title="action-plugin.yaml"
 steps:
@@ -347,7 +348,7 @@ Harness 3.0 supports most GitHub Actions out of the box. Actions execute inside 
 
 ---
 
-## Approval Step
+## Approval step
 
 Approval steps pause pipeline execution and wait for human or automated approval. Harness 3.0 supports native Harness approvals, Jira-based approvals, and ServiceNow-based approvals via the `uses:` field.
 
@@ -419,11 +420,11 @@ steps:
 
 ---
 
-## Background Step
+## Background step
 
 Background steps start long-running services that remain active for the duration of the stage. They share the same structure as Run steps but use the `background:` key. Typical uses include databases, caches, and local dev servers needed for integration testing.
 
-### Redis Service
+### Redis service
 
 ```yaml title="background-redis.yaml"
 steps:
@@ -437,7 +438,7 @@ steps:
         REDIS_URL: redis://redis:6379
 ```
 
-### PostgreSQL Service
+### PostgreSQL service
 
 ```yaml title="background-postgres.yaml"
 steps:
@@ -464,7 +465,7 @@ steps:
         DATABASE_URL: postgres://testuser:testpass@postgres:5432/testdb
 ```
 
-### Local Dev Server
+### Local dev server
 
 ```yaml title="background-dev-server.yaml"
 steps:
@@ -488,7 +489,7 @@ Background services may take time to initialize. Use readiness probes or add an 
 
 ---
 
-## Barrier Step
+## Barrier step
 
 Barrier steps synchronize execution across parallel stages. When a barrier is reached, the stage pauses until all other stages referencing the same barrier name also reach it. Barrier names must be declared in the `pipeline.barriers` list.
 
@@ -498,7 +499,7 @@ interface StepBarrier {
 }
 ```
 
-### Synchronizing Parallel Stages
+### Synchronizing parallel stages
 
 ```yaml title="barrier-step.yaml"
 pipeline:
@@ -533,7 +534,7 @@ Barriers are scoped to the current pipeline execution. All parallel stages refer
 
 ---
 
-## Clone Step
+## Clone step
 
 The Clone step checks out source code from a repository. By default, Harness automatically clones the pipeline repository, but the Clone step allows full customization of depth, submodules, sparse checkout, and more.
 
@@ -572,7 +573,7 @@ interface StepClone {
 | `strategy` | `string` | `source-branch` or `merge` |
 | `ref` | `string \| object` | Branch, tag, SHA, or structured ref object |
 
-### Shallow Clone
+### Shallow clone
 
 ```yaml title="clone-shallow.yaml"
 steps:
@@ -580,7 +581,7 @@ steps:
       depth: 1
 ```
 
-### With Submodules
+### With submodules
 
 ```yaml title="clone-submodules.yaml"
 steps:
@@ -590,7 +591,7 @@ steps:
       tags: true
 ```
 
-### Clone a Specific Repository
+### Clone a specific repository
 
 ```yaml title="clone-specific-repo.yaml"
 steps:
@@ -602,7 +603,7 @@ steps:
       depth: 1
 ```
 
-### PR Clone Ref
+### PR clone ref
 
 ```yaml title="clone-pr-ref.yaml"
 steps:
@@ -615,7 +616,7 @@ steps:
       depth: 10
 ```
 
-### Sparse Checkout
+### Sparse checkout
 
 Clone only specific directories from a large monorepo.
 
@@ -635,11 +636,11 @@ If no Clone step is defined and `clone: disabled` is not set at the stage or pip
 
 ---
 
-## Group & Parallel Steps
+## Group & parallel steps
 
 Steps can be organized into sequential groups or run in parallel within a stage. Both `group:` and `parallel:` accept nested step lists and support conditionals, failure strategies, and other common step properties.
 
-### Sequential Group
+### Sequential group
 
 ```yaml title="step-group.yaml"
 steps:
@@ -657,7 +658,7 @@ steps:
         - run: ./verify.sh staging
 ```
 
-### Parallel Steps
+### Parallel steps
 
 All parallel steps must complete before the next step begins.
 
@@ -675,7 +676,7 @@ steps:
   - run: npm run build
 ```
 
-### Group with Failure Strategy
+### Group with failure strategy
 
 ```yaml title="group-failure.yaml"
 steps:
@@ -695,7 +696,7 @@ Parallel steps share the same filesystem within a stage but execute concurrently
 
 ---
 
-## Template Step
+## Template step
 
 Template steps reference reusable step templates stored in the Harness template library. The `uses:` field follows the pattern `account.name@version`.
 
@@ -707,7 +708,7 @@ interface StepTemplate {
 }
 ```
 
-### Basic Template Reference
+### Basic template reference
 
 ```yaml title="template-basic.yaml"
 steps:
@@ -720,7 +721,7 @@ steps:
         image: my-app:${{ pipeline.sequenceId }}
 ```
 
-### Template with Version Pinning
+### Template with version pinning
 
 ```yaml title="template-versioned.yaml"
 steps:
@@ -740,7 +741,7 @@ steps:
         tag: ${{ inputs.version }}
 ```
 
-### Template with Inputs and Env
+### Template with inputs and env
 
 ```yaml title="template-inputs-env.yaml"
 steps:

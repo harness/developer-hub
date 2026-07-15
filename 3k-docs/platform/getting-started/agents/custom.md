@@ -1,10 +1,11 @@
 ---
 title: Building Custom Agents
 sidebar_label: Custom Agents
-description: Build, package, and register your own AI-powered agent plugins for Harness using the Drone plugin architecture — Go binaries in Docker containers, registered as pipeline templates.
+description: Build, package, and register your own AI-powered agent plugins for Harness using the Drone plugin architecture; Go binaries in Docker containers, registered as pipeline templates.
+sidebar_position: 5
 ---
 
-Harness agent plugins follow the [Drone plugin architecture](https://github.com/thisrohangupta/agents/tree/main) — a Go-based pattern where each plugin is a Docker container that receives configuration via environment variables and executes autonomous workflows. This guide covers the full development lifecycle from project setup to registration in the Harness Agents catalog.
+Harness agent plugins follow the [Drone plugin architecture](https://github.com/thisrohangupta/agents/tree/main), a Go-based pattern where each plugin is a Docker container that receives configuration via environment variables and executes autonomous workflows. This guide covers the full development lifecycle from project setup to registration in the Harness Agents catalog.
 
 | | |
 |---|---|
@@ -15,16 +16,16 @@ Harness agent plugins follow the [Drone plugin architecture](https://github.com/
 
 ---
 
-## Plugin Architecture
+## Plugin architecture
 
 Each plugin is a Go binary that runs inside a Docker container. Configuration is passed via environment variables with a `PLUGIN_` prefix, and the plugin implements a `Plugin` struct with an `Exec()` method.
 
-### Core Components
+### Core components
 
-- **CLI Framework (`main.go`)** — Uses `urfave/cli` for command-line argument parsing. Defines flags that map to `PLUGIN_` prefixed environment variables.
-- **Business Logic (`plugin.go`)** — Contains the `Plugin` struct with all configuration fields and the `Exec()` method that implements the agent's core workflow.
-- **Agent Binaries (`bin/`)** — Pre-compiled AI agent binaries (e.g., `ai-code-agent`, `remediation-agent`) that the plugin orchestrates.
-- **Docker Container** — Multi-stage Dockerfile that builds the Go binary and packages it with runtime dependencies.
+- **CLI Framework (`main.go`)**: Uses `urfave/cli` for command-line argument parsing. Defines flags that map to `PLUGIN_` prefixed environment variables.
+- **Business Logic (`plugin.go`)**: Contains the `Plugin` struct with all configuration fields and the `Exec()` method that implements the agent's core workflow.
+- **Agent Binaries (`bin/`)**: Pre-compiled AI agent binaries (e.g., `ai-code-agent`, `remediation-agent`) that the plugin orchestrates.
+- **Docker Container**: Multi-stage Dockerfile that builds the Go binary and packages it with runtime dependencies.
 
 ```go title="plugin.go"
 package main
@@ -90,7 +91,7 @@ The Drone plugin architecture is the standard pattern for all Harness CI plugins
 
 ---
 
-## Project Structure
+## Project structure
 
 ```bash
 my-agent-plugin/
@@ -171,9 +172,9 @@ func run(c *cli.Context) error {
 
 ---
 
-## Building the Plugin
+## Build the plugin
 
-### Required Dependencies
+### Required dependencies
 
 ```go title="go.mod"
 module my-agent-plugin
@@ -188,7 +189,7 @@ require (
 )
 ```
 
-### Environment Variable Mapping
+### Map environment variables
 
 Each CLI flag maps to a `PLUGIN_` prefixed environment variable. Harness also auto-populates platform context variables at runtime.
 
@@ -231,7 +232,7 @@ Harness auto-populates `HARNESS_ACCOUNT_ID`, `HARNESS_ORG_ID`, `HARNESS_PROJECT_
 
 ---
 
-## Docker Packaging
+## Docker package
 
 Agent plugins use a multi-stage Docker build. The first stage compiles the Go binary; the second creates a minimal runtime image.
 
@@ -272,7 +273,7 @@ Always use multi-stage Docker builds. Never include Go toolchain, source code, o
 
 ---
 
-## Harness API Integration
+## Harness API integration
 
 Plugins can integrate with the Harness API to fetch pipeline execution data and retrieve logs from failed steps.
 
@@ -321,11 +322,11 @@ The Harness API key is passed as the `x-api-key` header. Ensure your API key has
 
 ---
 
-## Template Registration
+## Template registration
 
 Once your plugin image is pushed, register it as a Harness Agent by creating a template in the [agents repository](https://github.com/thisrohangupta/agents/tree/main).
 
-### Step 1: Create Template Directory
+### Step 1: Create a template directory
 
 ```bash
 templates/my-custom-agent/
@@ -335,7 +336,7 @@ templates/my-custom-agent/
 └── logo.svg         # Optional: icon for the Harness UI
 ```
 
-### Step 2: Define metadata.json
+### Step 2: Define `metadata.json`
 
 ```json title="metadata.json"
 {
@@ -345,7 +346,7 @@ templates/my-custom-agent/
 }
 ```
 
-### Step 3: Define pipeline.yaml
+### Step 3: Define `pipeline.yaml`
 
 ```yaml title="pipeline.yaml"
 pipeline:
@@ -394,7 +395,7 @@ pipeline:
       default: main
 ```
 
-### Step 4: Write wiki.MD
+### Step 4: Write `wiki.MD`
 
 ```markdown title="wiki.MD"
 # My Custom Agent
@@ -421,7 +422,7 @@ intelligent modifications using Claude AI.
 - Verify the Harness API key has project-level permissions
 ```
 
-### Metadata Validation Rules
+### Metadata validation rules
 
 - Directory names: lowercase with hyphens (e.g., `my-custom-agent`)
 - Metadata name: lowercase with spaces (e.g., `"my custom agent"`)
@@ -434,9 +435,9 @@ Submit your template as a pull request to the agents repository. Automated Claud
 
 ---
 
-## Testing & Deployment
+## Testing & deployment
 
-### Local Testing
+### Local testing
 
 ```bash
 # Build the plugin binary
@@ -452,7 +453,7 @@ export PLUGIN_DETAILED_LOGGING="true"
 ./my-agent-plugin
 ```
 
-### Docker Testing
+### Docker testing
 
 ```bash
 make build-docker
@@ -464,7 +465,7 @@ docker run --rm \
   yourdockerhub/my-agent-plugin:latest
 ```
 
-### Pipeline Testing
+### Pipeline testing
 
 ```yaml title="test-pipeline.yaml"
 pipeline:
@@ -487,7 +488,7 @@ pipeline:
         arch: arm64
 ```
 
-### Deployment Checklist
+### Deployment checklist
 
 - Plugin binary builds without errors
 - Docker image builds and runs successfully
@@ -503,9 +504,9 @@ Always mask sensitive values in your plugin logging. Use logrus field masking or
 
 ---
 
-## Plugin Composition Patterns
+## Plugin composition patterns
 
-### Pattern 1: Two-Stage Analysis + Fix
+### Pattern 1: Two-stage analysis + fix
 
 ```yaml title="two-stage-pattern.yaml"
 steps:
@@ -535,7 +536,7 @@ steps:
         HARNESS_KEY: <+inputs.harnessKey>
 ```
 
-### Pattern 2: Standalone with Custom Prompt
+### Pattern 2: Standalone with custom prompt
 
 ```yaml title="standalone-pattern.yaml"
 steps:
@@ -551,7 +552,7 @@ steps:
         ANTHROPIC_API_KEY: <+inputs.anthropicKey>
 ```
 
-### Pattern 3: Multi-Model Pipeline
+### Pattern 3: Multi-model pipeline
 
 ```yaml title="multi-model-pattern.yaml"
 steps:
@@ -580,7 +581,7 @@ steps:
         # High-quality code generation
 ```
 
-### Shared Containers
+### Shared containers
 
 | Container | Purpose | Used By |
 |---|---|---|

@@ -212,18 +212,8 @@
   }
 }
 .hero {
-  margin-top: 2rem;
-  padding: 2.5rem;
-  border-radius: 16px;
-
-  background: linear-gradient(
-    135deg,
-    rgba(2, 120, 213, 0.07),
-    rgba(90, 0, 204, 0.03)
-  );
-
-  border: 1px solid rgba(2, 120, 213, 0.12);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  margin-top: 0;
+  padding: 0.5rem 0 2.5rem;
 }
 
 .heroContent {
@@ -233,12 +223,13 @@
 
 .hero h1 {
   font-size: 2.2rem;
-  margin-top: 1rem;
+  margin: 0;
 }
 
 .hero p {
   font-size: 1.1rem;
   opacity: 0.8;
+  margin-top: 1rem;
 }
 
 /* Harness icon inline left of the h1 */
@@ -390,9 +381,9 @@
 
 .onboardingBox {
   display: flex;
-  align-items: stretch;
-  justify-content: center;
-  gap: 0.75rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 
   padding: 1.5rem;
   border-radius: 16px;
@@ -401,20 +392,48 @@
   background: var(--ifm-background-surface-color);
 }
 
+/* Tab strip of number chips: click to jump to a journey */
+.onboardingTabs {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
 .step {
   display: flex;
+  justify-content: center;
+  text-align: center;
   gap: 0.75rem;
   padding: 0.75rem;
   border-radius: 10px;
   background: transparent;
   border: 1px solid transparent;
-  flex: 1;
-  min-width: 0;
+  width: 100%;
+  max-width: 480px;
+  animation: onboardingFadeIn 0.3s ease;
+}
+
+@keyframes onboardingFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .step {
+    animation: none;
+  }
 }
 
 .stepNumber {
   width: 36px;
   height: 36px;
+  flex: 0 0 auto;
   border-radius: 999px;
   background: var(--ifm-color-primary-lightest);
   color: var(--ifm-color-primary);
@@ -422,9 +441,22 @@
   align-items: center;
   justify-content: center;
   font-weight: 600;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+  opacity: 0.45;
+
+  &:hover {
+    opacity: 0.75;
+  }
 }
 
-/* TEXT */
+.stepNumberActive {
+  opacity: 1;
+  transform: scale(1.12);
+  box-shadow: 0 0 0 2px var(--ifm-background-surface-color), 0 0 0 4px currentColor;
+}
+
 /* Step number color variants: light → medium → dark blue */
 .stepNumber1 {
   background-color: #a3e9ff;
@@ -440,10 +472,18 @@
 }
 
 .stepContent {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   flex: 1;
   min-height: 0;
+}
+
+.stepIcon {
+  width: 35px;
+  height: 35px;
+  margin-bottom: 0.5rem;
+  object-fit: contain;
 }
 
 .stepContent h3 {
@@ -470,21 +510,25 @@
   text-decoration: underline;
 }
 
-/* ARROWS BETWEEN STEPS */
-.separator {
-  flex: 0 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  line-height: 1;
-  opacity: 0.3;
-  padding: 0 0.25rem;
-  user-select: none;
-}
-
 .quickStarts {
   margin-top: 3rem;
+}
+
+/* Folded into the onboarding card: no extra top margin, just a light rule to
+   separate it from the active step above */
+.quickStartsInline {
+  width: 100%;
+  margin-top: 0.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.quickStartsHeading {
+  margin: 0 0 0.25rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: center;
+  opacity: 0.85;
 }
 
 .quickGrid {
@@ -541,7 +585,7 @@
 }
 
 .learnSections {
-  margin-top: 5rem;
+  margin-top: 2rem;
 }
 
 .learnSections h2 {
@@ -638,8 +682,10 @@
 .overviewTile {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   gap: 0.4rem;
-  padding: 1rem 1.1rem;
+  padding: 1.25rem 1.1rem;
   border-radius: 12px;
   background: rgba(2, 120, 213, 0.04);
   border: 1px solid rgba(2, 120, 213, 0.1);
@@ -772,16 +818,8 @@
   margin: 1rem 0 0.4rem 0;
   color: var(--ifm-heading-color);
 }
-/* Info callout */
-.calloutInfo {
+.backwardCompatNote {
   margin-top: 1rem;
-  padding: 0.85rem 1rem;
-  border-radius: 10px;
-  background: rgba(2, 120, 213, 0.06);
-  border-left: 3px solid rgba(2, 120, 213, 0.5);
-  font-size: 0.88rem;
-  line-height: 1.55;
-  color: var(--ifm-font-color-base);
 }
 /* Delegate comparison table */
 .delegateTable {
@@ -910,5 +948,9 @@
 
   .codeCompare pre {
     background: rgba(255, 255, 255, 0.03);
+  }
+
+  .stepIcon {
+    filter: brightness(0) invert(1) opacity(0.9);
   }
 }
