@@ -27,9 +27,7 @@ To create a new version:
 1. Navigate to **Environments** → **Environment Blueprints**
 2. Select the existing blueprint you wish to version
 
-    <DocVideo src="https://app.tango.us/app/embed/bf57cad5-882c-4b2e-855d-93091fe02ef5? 
-      skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Save 
-        Stable Environment Blueprint Version" />
+    <DocVideo src="https://app.tango.us/app/embed/bf57cad5-882c-4b2e-855d-93091fe02ef5?skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Save Stable Environment Blueprint Version" />
 
 3. Choose the version you want to modify and make the necessary changes to the blueprint YAML
 4. Select **Save as new version** to preserve the changes as a distinct version
