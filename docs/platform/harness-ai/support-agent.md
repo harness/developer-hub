@@ -195,7 +195,7 @@ The Support Agent is designed to answer questions based on Harness documentation
 
 - **Documentation scope** - Can only answer questions covered in the official documentation
 - **No account access** - Cannot view or access your specific account configurations
-- **No action execution** - Cannot create or modify resources (use the [DevOps Agent](/docs/platform/harness-ai/devops-agent) for that)
+- **No action execution** - Cannot create or modify resources (use the [DevOps Agent](/docs/platform/harness-ai/core-capabilities/in-harness-ui/devops-agent) for that)
 - **Public documentation only** - Does not have access to internal or private documentation
 
 ## FAQ

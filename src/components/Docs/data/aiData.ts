@@ -47,7 +47,7 @@ export const docsCards: CardSections = [
         title: "DevOps Agent",
         module: MODULES.platform,
         description: "Harness AI DevOps Agent unlocks your pipeline productivity.",
-        link: "/docs/platform/harness-ai/devops-agent",
+        link: "/docs/platform/harness-ai/core-capabilities/in-harness-ui/devops-agent",
       },
       {
         title: "Worker Agents",
@@ -61,7 +61,7 @@ export const docsCards: CardSections = [
         module: MODULES.platform,
         description:
           "Release features confidently with data and feature operations like deploying, targeting, and managing flags with the Harness AI Release Agent.",
-        link: "/docs/platform/harness-ai/release-agent",
+        link: "/docs/platform/harness-ai/core-capabilities/in-your-pipelines/release-agent",
       },
       {
         title: "Support Agent",
@@ -80,19 +80,19 @@ export const docsCards: CardSections = [
         title: "Troubleshoot Builds and Deployments",
         module: MODULES.platform,
         description: "Troubleshoot builds and deployments with Harness AI.",
-        link: "/docs/platform/harness-ai/ci-agent",
+        link: "/docs/platform/harness-ai/core-capabilities/in-harness-ui/ci-agent",
       },
       {
         title: "Optimize Cloud Costs",
         module: MODULES.platform,
         description: "Learn how to use Harness AI for cloud asset governance.",
-        link: "/docs/platform/harness-ai/ccm-agent",
+        link: "/docs/platform/harness-ai/core-capabilities/in-harness-ui/ccm-agent",
       },
       {
         title: "Fix Security Vulnerabilities",
         module: MODULES.platform,
         description: "Enhanced remediation using Harness AI.",
-        link: "/docs/platform/harness-ai/sto-agent",
+        link: "/docs/platform/harness-ai/core-capabilities/in-harness-ui/sto-agent",
       },
     ],
   },
@@ -112,14 +112,14 @@ export const docsCards: CardSections = [
         module: MODULES.platform,
         description:
           "Install the Harness VS Code Extension to monitor pipelines, view logs, manage approvals, and use AI-assisted debugging directly in Visual Studio Code.",
-        link: "/docs/platform/harness-ai/vscode-extension",
+        link: "/docs/platform/harness-ai/core-capabilities/in-your-ide/vscode-extension",
       },
       {
         title: "Cursor Plugin",
         module: MODULES.platform,
         description:
           "Install the Harness AI plugin for Cursor to manage pipelines, debug deployments, and interact with Harness using natural language directly from your IDE.",
-        link: "/docs/platform/harness-ai/cursor-plugin",
+        link: "/docs/platform/harness-ai/core-capabilities/in-your-ide/cursor-plugin",
       },
       {
         title: "Skills",
@@ -133,14 +133,14 @@ export const docsCards: CardSections = [
         module: MODULES.platform,
         description:
           "Connect Harness to Claude.ai and Claude Desktop using the Anthropic Harness Connector with OAuth authentication.",
-        link: "/docs/platform/harness-ai/anthropic-harness-connector",
+        link: "/docs/platform/harness-ai/model-connector/anthropic-harness-connector",
       },
       {
         title: "Harness AI × Gemini CLI Extension",
         module: MODULES.platform,
         description:
           "Leverage Gemini CLI with Harness AI MCP Server to unleash your developer workflows.",
-        link: "/docs/platform/harness-ai/harness-gemini-extension",
+        link: "/docs/platform/harness-ai/core-capabilities/in-your-ide/harness-gemini-extension",
       },
     ],
   },

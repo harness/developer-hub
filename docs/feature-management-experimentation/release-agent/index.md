@@ -5,17 +5,52 @@ id: index
 slug: /feature-management-experimentation/release-agent
 sidebar_position: 1
 sidebar_label: Overview
+keywords:
+  - release agent
+  - feature flags
+  - experimentation
+  - ai chatbot
+  - fme
+  - ai summarize
+  - a/b testing
+tags:
+  - harness-ai
+  - feature-management
+  - experimentation
 ---
 
-Release Agent is an in-app AI chatbot designed to streamline the use of Harness FME. It offers multilingual support, rapid responses, and knowledge-based assistance by utilizing our public documentation and blogs. 
+Release Agent is an in-app AI chatbot designed to streamline the use of Harness Feature Management and Experimentation (FME). It offers multilingual support, rapid responses, and knowledge-based assistance by using Harness public documentation and blogs. Release Agent makes it easy for all developers to get the help they need without leaving the Harness interface.
 
-Release Agent makes it easy for all developers to get the help they need, without ever leaving the Harness interface. This documentation provides technical details and guidelines for developers to work with Release Agent effectively.
+---
+
+## What will you learn in this topic?
+
+By the end of this topic, you will be able to:
+
+- <a href="#ask-release-agent">Ask Release Agent questions about FME features and configuration</a>.
+- <a href="#ai-summarize">Use AI Summarize to analyze feature flag and experiment metrics</a>.
+- <a href="#enable-release-agent-for-your-team">Enable or disable Release Agent for your team</a>.
+- <a href="#your-data-usage">Understand how Release Agent handles your data and privacy</a>.
+
+---
+
+## Before you begin
+
+Before you use Release Agent, ensure you have the following:
+
+- **Harness FME access**: Access to the Feature Management and Experimentation module.
+- **Admin permissions**: Admin role to enable or disable Release Agent for your team (required only for configuration).
+- **Active feature flags or experiments**: At least one feature flag or experiment configured to use AI Summarize features (optional for Ask Release Agent).
+
+---
 
 ## Ask Release Agent
 
-From the FME navigation menu, click **Ask Release Agent** to open the chat modal.
+Ask Release Agent provides conversational assistance for FME tasks and workflows. Navigate to the FME navigation menu and click **Ask Release Agent** to open the chat modal.
 
 ### Example questions
+
+Release Agent can answer questions across setup, configuration, best practices, and troubleshooting:
 
 * How do I set up a JavaScript SDK in my codebase?
 * How do I create and manage feature flags in FME?
@@ -33,63 +68,76 @@ From the FME navigation menu, click **Ask Release Agent** to open the chat modal
 * How does Harness FME handle data privacy and security?
 * What are best practices for cleaning up old flags and technical debt?
 
+---
+
 ## AI Summarize
 
-The Release Agent can summarize metric results on a feature flag's Metric details page and experiment results on an experiments' Metric details page.
+AI Summarize analyzes and summarizes metric results on feature flags and experiments. This feature helps you understand performance data and experiment outcomes without manual analysis.
 
 ### Feature flag metrics
 
-To use the **AI Summarize** button on a feature flag's metric, drill into a metric tile on a feature flag's Metrics impact dashboard and click **Summarize**.
+To use AI Summarize on a feature flag metric, drill into a metric tile on a feature flag's Metrics impact dashboard and click **Summarize**.
 
-![](./static/metric.png)
+<DocImage path={require('./static/metric.png')} width="80%" height="80%" title="Click to view full size image" />
 
 ### Experiment results and metrics
 
-To use the **AI Summarize** button on an experiment's results, drill into a metric on an experiment's Metrics dashboard and click **Summarize**.
+AI Summarize works on both individual experiment metrics and overall experiment results.
 
-![](./static/experiment-metric-summarize.png)
+To summarize an experiment metric, drill into a metric on an experiment's Metrics dashboard and click **Summarize**.
+
+<DocImage path={require('./static/experiment-metric-summarize.png')} width="80%" height="80%" title="Click to view full size image" />
 
 To summarize an experiment's overall results, select an experiment on the **Experiments** page and click **Summarize**.
 
-![](./static/experiment-summarize.png)
+<DocImage path={require('./static/experiment-summarize.png')} width="80%" height="80%" title="Click to view full size image" />
 
-For more information, see [Viewing experiment results](/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/#use-ai-summarize).
+Go to <a href="/docs/feature-management-experimentation/experimentation/experiment-results/viewing-experiment-results/#use-ai-summarize" target="_blank">Viewing experiment results</a> for more information on AI Summarize.
+
+---
 
 ## Enable Release Agent for your team
 
-Admins can enable or disable Release Agent in **Admin settings**. 
+Admins can enable or disable Release Agent and control experimentation data processing through FME settings.
 
-![](./static/ai-settings.png)
+<DocImage path={require('./static/ai-settings.png')} width="80%" height="80%" title="Click to view full size image" />
 
 1. Navigate to **FME Settings** > **AI settings**.
-1. Select the **Enable Release Agent** toggle and **Enable processing of experimentation data** toggle to turn these features on or off for your team. When you enable processing of experimentation data, the data is protected by the privacy protections described below.
-1. Click **Save**.
+2. Select the **Enable Release Agent** toggle to turn the chatbot on or off for your team.
+3. Select the **Enable processing of experimentation data** toggle to enable or disable AI Summarize features. When you enable processing of experimentation data, the data is protected by the privacy policies described in the <a href="#privacy">Privacy section</a>.
+4. Click **Save**.
 
-## How your data is used
+---
+
+## Your data usage
+
+Release Agent processes data with accuracy and privacy standards to ensure secure and reliable AI assistance.
 
 ### Accuracy
 
-While we strive to provide accurate information, we cannot guarantee the accuracy, completeness, or timeliness of the information provided by the chatbot. For example, LLMs can struggle with precision and context of numerical information. 
+While Release Agent strives to provide accurate information, it cannot guarantee the accuracy, completeness, or timeliness of all information. Large Language Models (LLMs) can struggle with precision and context of numerical information.
 
-You can always reach out to support@split.io if you have questions or require additional help.
+You can reach out to <a href="mailto:support@split.io" target="_blank">support@split.io</a> if you have questions or require additional help.
 
 ### Privacy
 
-Your data is protected by the [Harness privacy policy](https://www.harness.io/legal/privacy), which has been agreed on by using the product. Release Agent uses OpenAI as a data subprocessor for the data summarization feature, so your data is additionally protected by the [OpenAI Enterprise privacy policy](https://openai.com/enterprise-privacy/). 
+Your data is protected by the <a href="https://www.harness.io/legal/privacy" target="_blank">Harness privacy policy</a>, which applies when you use the product. Release Agent uses OpenAI as a data subprocessor for the data summarization feature, so your data is additionally protected by the <a href="https://openai.com/enterprise-privacy/" target="_blank">OpenAI Enterprise privacy policy</a>. 
 
 Additional ways that your privacy is protected:
 
-* Your data will not be used for training. Neither by Harness nor by OpenAI.
-* Harness will send OpenAI the minimal necessary information required to create data summarization.
+- **No training on your data**: Neither Harness nor OpenAI uses your data for model training.
+- **Minimal data sharing**: Harness sends OpenAI only the minimal necessary information required to create data summarization.
+
+---
 
 ## Feedback and support
 
-For support inquiries or to report issues with Release Agent, submit a request via support@split.io. 
+Submit support inquiries or report issues with Release Agent via <a href="mailto:support@split.io" target="_blank">support@split.io</a>.
 
 Provide detailed descriptions and reproduction steps for issues to facilitate expedited troubleshooting. Your feedback is instrumental for the iterative enhancement of Release Agent.
 
-## Further Reading
+---
 
-Additional documentation, blog links, and articles:
+## Next steps
 
-- [AI-Native Software Delivery: Proven Practices to Produce High-Quality Software Faster](https://www.harness.io/resources/ai-native-software-delivery-proven-practices-to-produce-high-quality-software-faster)
+- <a href="https://www.harness.io/resources/ai-native-software-delivery-proven-practices-to-produce-high-quality-software-faster" target="_blank">AI-Native Software Delivery: Proven Practices to Produce High-Quality Software Faster</a>

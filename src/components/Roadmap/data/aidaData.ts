@@ -156,19 +156,19 @@ export const aidaData: Horizon = {
         tag: [],
         title: "Step Creation",
         description: "Introduces the functionality for creating and managing pipeline steps.",
-        link: "https://developer.harness.io/docs/platform/harness-ai/devops-agent#step-management",
+        link: "https://developer.harness.io/docs/platform/harness-ai/core-capabilities/in-harness-ui/devops-agent#step-management",
       },
       {
         tag: [],
         title: "Stage Creation",
         description: "Extends or refines stage creation features, building on initial stage-creation functionality.",
-        link: "https://developer.harness.io/docs/platform/harness-ai/devops-agent#stage-configuration",
+        link: "https://developer.harness.io/docs/platform/harness-ai/core-capabilities/in-harness-ui/devops-agent#stage-configuration",
       },
       {
         tag: [],
         title: "Pipeline Creation",
         description: "Enables creation and configuration of new pipelines for DevOps workflows.",
-        link: "https://developer.harness.io/docs/platform/harness-ai/devops-agent#pipeline-orchestration",
+        link: "https://developer.harness.io/docs/platform/harness-ai/core-capabilities/in-harness-ui/devops-agent#pipeline-orchestration",
       },
       {
         tag: [],

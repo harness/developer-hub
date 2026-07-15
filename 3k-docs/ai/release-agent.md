@@ -5,7 +5,7 @@ sidebar_label: Release Agent
 sidebar_position: 9
 ---
 
-import Platform from '@site/docs/platform/harness-ai/release-agent.md';
+import Platform from '@site/docs/platform/harness-ai/core-capabilities/in-your-pipelines/release-agent.md';
 
 <Platform />
 

@@ -54,4 +54,4 @@ import View from '/docs/cloud-cost-management/shared/ccm-aida-view-rule-partial.
 - <a href="/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/asset-governance-overview" target="_blank">Asset Governance overview</a>: Cloud asset governance capabilities.
 - <a href="/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/cag-ai/gen-ai-use" target="_blank">Create rules with Harness AI</a>: Use AI to create governance rules.
 - <a href="/docs/platform/harness-ai/overview" target="_blank">Harness AI overview</a>: AI capabilities across Harness modules.
-- Go to <a href="https://www.harness.io/legal/harness-ai-data-privacy" target="_blank">Harness AI Data Privacy</a>: Data privacy policies.
+- <a href="https://www.harness.io/legal/harness-ai-data-privacy" target="_blank">Harness AI Data Privacy</a>: Data privacy policies.

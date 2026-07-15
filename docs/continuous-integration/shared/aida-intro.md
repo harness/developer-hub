@@ -1,4 +1,4 @@
-[Harness AI](https://harness.io/products/harness-ai) can analyze log files and correlate error messages with known issues. This feature enables developers to troubleshoot and resolve deployment failures quickly, saving them from sifting through millions of log lines.  Harness AI also suggests fixes and predicts potential errors in the code even before the build is initiated. This feature is designed to work across Harness's CI and CD offerings.
+<a href="https://harness.io/products/harness-ai" target="_blank">Harness AI</a> analyzes log files and correlates error messages with known issues. This feature enables developers to troubleshoot and resolve deployment failures quickly, saving them from sifting through millions of log lines. Harness AI also suggests fixes and predicts potential errors in the code before the build is initiated. This feature works across Harness CI and CD modules.
 
 <!-- Harness AI helps you understand and fix pipeline failures by analyzing errors and providing troubleshooting suggestions.
 

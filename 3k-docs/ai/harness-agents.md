@@ -5,7 +5,7 @@ sidebar_label: Agents
 sidebar_position: 6
 ---
 
-import Platform from '@site/docs/platform/harness-ai/harness-agents.md';
+import Platform from '@site/docs/platform/harness-ai/core-capabilities/in-your-pipelines/harness-agents.md';
 
 <Platform />
 

@@ -7,12 +7,11 @@ redirect_from:
   - /docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/cag-aida/gen-ai-use
 ---
 
-This topic explains how to create rules and view rule descriptions by using Harness AI.
+This topic explains how to use Harness AI to create rules and view rule descriptions.
 
 You must [enable Harness AI in your Harness account](/docs/platform/harness-ai/overview#enable-ai) to access this functionality.
 
-## Create a rule by using Harness AI
-
+## Use Harness AI to create a rule
 
 import Create from '/docs/cloud-cost-management/shared/ccm-aida-create-rule-partial.md';
 import View from '/docs/cloud-cost-management/shared/ccm-aida-view-rule-partial.md';
@@ -23,3 +22,5 @@ import View from '/docs/cloud-cost-management/shared/ccm-aida-view-rule-partial.
 ## View rule description by using Harness AI
 
 <View />
+
+## Related articles

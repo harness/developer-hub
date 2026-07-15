@@ -196,5 +196,5 @@ Use Harness AI Rules to keep AI output aligned to team standards before users sa
 
 - **Harness AI:** Go to [Overview of Harness AI](/docs/platform/harness-ai/overview) to review available AI features.
 - **Prompt quality:** Go to [Effective Prompting with Harness AI](/docs/platform/harness-ai/effective-prompting-ai) to write prompts that produce better output.
-- **DevOps Agent:** Go to [Harness AI DevOps Agent](/docs/platform/harness-ai/devops-agent) to create and update pipelines with AI.
+- **DevOps Agent:** Go to [Harness AI DevOps Agent](/docs/platform/harness-ai/core-capabilities/in-harness-ui/devops-agent) to create and update pipelines with AI.
 - **Policy enforcement:** Go to [Harness Policy As Code overview](/docs/platform/governance/policy-as-code/harness-governance-overview) to enforce resource and pipeline policy gates.

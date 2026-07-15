@@ -15,6 +15,7 @@ tags:
   - pipelines
 redirect_from:
   - /docs/platform/harness-aida/harness-agents
+  - /docs/platform/harness-ai/harness-agents
 ---
 
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
@@ -39,12 +40,12 @@ Worker Agents are AI-powered automation units that execute tasks inside Harness 
 - **Pipeline permissions:** You need **View**, **Create/Edit**, and **Execute** for [Pipelines](/docs/platform/role-based-access-control/permissions-reference#pipelines). An administrator must assign you a role that includes them. Go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) to configure roles.
 - **Connector permissions:** You need **View**, **Create/Edit**, and **Delete** for [Connectors](/docs/platform/role-based-access-control/permissions-reference#connectors) to create and manage the Model Provider Connector and MCP Connector.
 - **Secret permissions:** You need **View** and **Access** (reference) for [Secrets](/docs/platform/role-based-access-control/permissions-reference#secrets) at a minimum, since both the Model Provider Connector and MCP Connector reference secrets for authentication.
-- **Model Connector:** An Anthropic or OpenAI Model Connector configured with a default model. Go to [Configure Model Connectors](#configure-model-connectors) to review supported providers, models, and setup options.
+- **Model Connector:** An Anthropic or OpenAI Model Connector configured with a default model. Go to [Model Connectors](/docs/platform/harness-ai/model-connector/) to review supported providers, models, and setup options.
 - **MCP Connector (optional):** An MCP Server Connector with a valid hosted MCP URL and API key. Go to [Harness MCP Server](/docs/platform/harness-ai/harness-mcp-server) to set up MCP access.
 
 ---
 
-## Navigate to Worker Agents
+## View Worker Agents
 
 1. From any Harness module, open the **Module Selector** in the left navigation bar.
 2. Locate the **AI** section.
@@ -64,7 +65,7 @@ Custom agents appear in the **Custom** tab of the Worker Agent Catalog. These ar
 To create a new custom agent:
 
 1. In the Worker Agent Catalog, select **+ Create**.
-2. Complete all required fields in the **Create Agent** form. Go to the [field reference](#worker-agent-form-field-reference) below to review details on each field.
+2. Complete all required fields in the **Create Agent** form including Agent name, Instructions, Model provider, and optional MCP connectors.
 3. Select **Save agent** to publish the agent to your catalog.
 
 <DocImage path={require('./static/create-agent-form.png')} alt="Create Agent form showing fields for Agent name, Description, Instructions, Model provider, Model name, MCP connectors, Inputs, and Environment variables" title="Click to view full size" />
@@ -131,6 +132,128 @@ By default, your account includes **Harness Managed** agents. These agents are r
 You can submit your own Worker Agents to the **Community** category so other Harness users can discover and use them. Go to [Agent categories](#agent-categories) to understand how Community agents differ from Harness Certified and Harness Managed agents.
 
 Go to the [Worker Agent submission form](https://docs.google.com/forms/d/e/1FAIpQLSezpouRTRs3pOl9r6svUmf5L98dQZGgxIQl0FUOkgnCLvcPOg/viewform) to submit your agent for review. Include the agent name, a clear description, the agent definition YAML, and the use case it solves. The Harness team reviews each submission before publishing it to the Marketplace. If you do not receive a response within 10 business days, contact [Harness Support](mailto:support@harness.io).
+
+---
+
+### Use a custom container image
+
+The `run.container.image` field defaults to the Harness-managed agent image (`pkg.harness.io/vrvdt5ius7uwygso8s0bia/harness-agents/harness-ai-agent:latest`). You can override this value to point to your own container registry if you need to add customizations on top of the base image.
+
+Common reasons to use a custom image:
+
+- Install additional CLI tools or language runtimes the agent needs at runtime.
+- Bundle internal certificates or proxy configuration for air-gapped environments.
+- Pin a specific image tag for reproducibility instead of using `latest`.
+
+To use a custom image, pull the Harness base image, extend it with your changes, publish it to your own registry, and update the `image` field:
+
+```yaml
+run:
+  container:
+    image: your-registry.example.com/your-org/harness-ai-agent-custom:1.0.0
+```
+
+Alternatively, if you prefer to pull the image from the Harness DockerHub registry instead of the default Harness private registry, use the following image reference (requires a Docker connector configured in your pipeline):
+
+```yaml
+run:
+  container:
+    image: harness/harness-ai-agent:0.1.40
+```
+
+The custom image must be accessible from your Harness delegate or Harness Cloud network at pipeline execution time.
+
+### Example: Pipeline Discovery Agent
+
+The following complete agent definition lists and summarizes pipelines in a Harness account using Harness MCP Server tools:
+
+```yaml
+version: 1
+agent:
+  step:
+    group:
+      steps:
+        - name: Agent
+          if: <+Always>
+          id: agent
+          run:
+            container:
+              image: pkg.harness.io/vrvdt5ius7uwygso8s0bia/harness-agents/harness-ai-agent:latest
+            env:
+              PLUGIN_MAX_TURNS: 150
+              # You can also reference built-in Harness environment variables in the prompt:
+              # $HARNESS_ACCOUNT_ID, $HARNESS_ORG_ID, $HARNESS_PROJECT_ID
+              # These are automatically available at runtime without defining them as inputs.
+              PLUGIN_TASK: |
+                You are a Harness Pipeline Discovery Agent. Your job is to list and summarize
+                pipelines and list and summarize their executions in a Harness account using
+                the Harness MCP Server tools.
+
+                ## Harness context:
+                $HARNESS_ACCOUNT_ID
+                $HARNESS_ORG_ID
+                $HARNESS_PROJECT_ID
+
+                ## Tool usage rules
+                - Use the Harness MCP pipeline tools (e.g., list_pipelines) for all pipeline data.
+                  Never fabricate pipeline names, IDs, or metadata.
+                  configurations return unreliable or truncated results.
+                - Default to account-level scope. If the user specifies an org or project,
+                  narrow scope using orgIdentifier / projectIdentifier parameters.
+                - If results are paginated, retrieve all pages before responding unless the
+                  user asks for a sample or top-N.
+
+                ## Scoping behavior
+                - If the user's request is ambiguous (e.g., "show me pipelines"), list at the
+                  account level and note the scope in your response.
+                - If a specified org/project returns zero results, confirm the identifiers are
+                  correct and suggest listing available orgs/projects rather than returning
+                  an empty answer.
+
+                ## Output format
+                - Return results as a table: Pipeline Name | Identifier | Project | Org |
+                  Last Modified | Status (if available).
+                - Lead with a one-line summary (e.g., "Found 42 pipelines across 6 projects").
+                - If >25 results, group by project and offer to filter.
+
+                ## Error handling
+                - On auth or permission errors: report the failure plainly, state which scope
+                  failed, and suggest verifying API key permissions — do not retry silently
+                  more than once.
+                - On empty results: state scope searched and parameters used so the user can
+                  verify, never imply pipelines don't exist without confirming scope.
+
+                ## Constraints
+                - Read-only: never create, update, delete, or execute pipelines.
+                - Do not expose API keys, tokens, or full request payloads in responses.
+              PLUGIN_HARNESS_CONNECTOR: ${{inputs.llmConnector.id}}
+              PLUGIN_MCP_FORMAT: harness
+              PLUGIN_MCP_SERVERS: <+connectorInputs.resolveList(<+inputs.mcpConnectors>)>
+  inputs:
+    llmConnector:
+      type: connector
+      required: true
+      default: connector_Anthropic_112e
+      ui:
+        connectorCategories:
+          - AI
+    mcpConnectors:
+      type: array
+      default:
+        - connector_Mcp_66c8
+      ui:
+        component: array
+        input:
+          inputType: connector
+          inputConfig:
+            connectorTypes:
+              - Mcp
+  layout:
+    - title: Agent Configuration
+      items:
+        - llmConnector
+        - mcpConnectors
+```
 
 ---
 
@@ -339,6 +462,7 @@ agent:
 
 ---
 
+
 ## Supported stage types
 
 The **Agent** step can be added to any of the following Harness stage types:
@@ -366,8 +490,8 @@ The Model Connector defines the LLM provider and default model for your Worker A
 
 Harness supports the following Model Connectors:
 
-- **Anthropic Model Connector:** Run agents on Claude models through direct Anthropic or AWS Bedrock endpoints. Go to [Anthropic Model Connector](/docs/platform/harness-ai/anthropic-model-connector) to review supported models and setup options.
-- **OpenAI Model Connector:** Run agents on GPT-5.5 with configurable reasoning effort. Go to [OpenAI Model Connector](/docs/platform/harness-ai/openai-model-connector) to review supported models, effort levels, and setup options.
+- **Anthropic Model Connector:** Run agents on Claude models through direct Anthropic or AWS Bedrock endpoints. Go to [Anthropic Model Connector](/docs/platform/harness-ai/model-connector/anthropic-model-connector) to review supported models and setup options.
+- **OpenAI Model Connector:** Run agents on GPT-5.5 with configurable reasoning effort. Go to [OpenAI Model Connector](/docs/platform/harness-ai/model-connector/openai-model-connector) to review supported models, effort levels, and setup options.
 
 If you do not have access to a model provider, use a Harness-managed LLM connector instead of configuring your own credentials. Harness auto-provisions view-only managed connectors at the account level, `harnessAnthropic` for Claude models and `harnessOpenAI` for GPT models, that route requests through the Harness **LLM Gateway**. Inspect them under **Account Settings** > **Account Resources** > **Connectors**; you cannot edit or delete them.
 
@@ -378,6 +502,7 @@ Until August 2026, usage of the Harness-managed LLM connector is included in you
 :::
 
 ---
+
 
 ## Infrastructure and execution
 
@@ -734,6 +859,7 @@ Worker Agents have dedicated RBAC permissions in Harness. Administrators can con
 Go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) to learn about role-based access control. Go to [Manage roles](/docs/platform/role-based-access-control/add-manage-roles) to create and assign roles.
 
 ---
+
 
 ## Configure instructions and Harness expressions
 
@@ -1444,7 +1570,7 @@ output:
 | Field | Description |
 |---|---|
 | `name` | The key the agent writes to `$HARNESS_OUTPUT`/`$DRONE_OUTPUT`. Must match the key in the shell `printf` commands in the agent instructions. |
-| `alias` | The name exposed as a step output variable. Downstream steps reference this value using `<+steps.<agent_step_id>.steps.<inner_step_name>.output.outputVariables.<alias>>`. Go to [Agent step expands to a step group at runtime](#agent-step-expands-to-a-step-group-at-runtime) to find the inner step name. |
+| `alias` | The name exposed as a step output variable. Downstream steps reference this value using `<+steps.<agent_step_id>.steps.<inner_step_name>.output.outputVariables.<alias>>`. Go to [Agent step expands to a step group at runtime](/docs/platform/harness-ai/core-capabilities/in-your-pipelines/harness-agents#agent-step-expands-to-a-step-group-at-runtime) to find the inner step name. |
 
 ### How output variables flow end-to-end
 
@@ -2025,6 +2151,7 @@ pipeline:
 
 ---
 
+
 ## Use a Worker Agent in a pipeline
 
 Worker Agents are referenced in pipeline YAML using the `Agent` step type. The step specifies the agent by name and version (`agentName: <name>@<version>`) and inherits all inputs and environment variables from the agent definition.
@@ -2277,7 +2404,7 @@ with:
 
 Without this declaration, the agent can still write to `$HARNESS_OUTPUT` and `$DRONE_OUTPUT`, but the keys are not surfaced as named output variables on the step. Declaring them makes the outputs visible in the pipeline execution UI and referenceable by downstream steps.
 
-Go to [Example: IaC Plan Safety Agent with output variables](#example-iac-plan-safety-agent-with-output-variables) to see a complete agent definition with output declarations.
+Go to [Example: IaC Plan Safety Agent with output variables](/docs/platform/harness-ai/core-capabilities/in-your-pipelines/harness-agents#example-iac-plan-safety-agent-with-output-variables) to see a complete agent definition with output declarations.
 
 ### How outputs work
 
@@ -2477,8 +2604,6 @@ Replace the `value` with your cluster's base URL (for example, `https://app3.har
 ---
 
 ## Next steps
-
-You have learned how to create, configure, and run Worker Agents inside Harness pipelines. You can now build custom agents for code review, incident response, compliance checks, and other intelligent workflows.
 
 - [Harness MCP Server](/docs/platform/harness-ai/harness-mcp-server): Set up MCP access for your agents.
 - [Triggers overview](/docs/platform/triggers/triggers-overview): Configure triggers to automate agent execution on PR events, schedules, or artifacts.

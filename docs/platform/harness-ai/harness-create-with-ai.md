@@ -259,7 +259,7 @@ Create a Pipeline with the Golden K8s Pipeline Template
 
 ### GitOps operations
 
-Harness AI can manage 13 <a href="/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics" target="_blank">GitOps</a> resource types, including agents, applications, clusters, repositories, ApplicationSets, and more. You can query status, trigger syncs, create and update resources, inspect events and logs, and generate pipeline snippets. Go to <a href="/docs/platform/harness-ai/devops-agent#gitops-operations" target="_blank">GitOps operations</a> for more information on all supported resource types and operations.
+Harness AI can manage 13 <a href="/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics" target="_blank">GitOps</a> resource types, including agents, applications, clusters, repositories, ApplicationSets, and more. You can query status, trigger syncs, create and update resources, inspect events and logs, and generate pipeline snippets. Go to <a href="/docs/platform/harness-ai/core-capabilities/in-harness-ui/devops-agent#gitops-operations" target="_blank">GitOps operations</a> for more information on all supported resource types and operations.
 
 **Use case:** List agents and check their health.
 
@@ -373,5 +373,5 @@ Could you create a Cost Perspective rules based on Team/Department costs?
 
 ## Next steps
 
-- <a href="/docs/platform/harness-ai/devops-agent" target="_blank">Harness AI DevOps Agent</a>: Create and manage Harness resources with AI. 
+- <a href="/docs/platform/harness-ai/core-capabilities/in-harness-ui/devops-agent" target="_blank">Harness AI DevOps Agent</a>: Create and manage Harness resources with AI. 
 - <a href="/docs/platform/harness-ai/effective-prompting-ai" target="_blank">Effective prompting</a>: Write better prompts for Harness AI.
