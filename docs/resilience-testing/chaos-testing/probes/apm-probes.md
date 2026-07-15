@@ -1,7 +1,7 @@
 ---
 title: APM Probes
 sidebar_position: 6
-description: Configure APM probes to validate metrics from Prometheus, Datadog, Dynatrace, New Relic, Splunk Observability, Splunk Enterprise, AppDynamics, and GCP Cloud Monitoring
+description: Configure APM probes to validate metrics from Prometheus, Datadog (v1 and v2 timeseries), Dynatrace, New Relic, Splunk Observability, Splunk Enterprise, AppDynamics, and GCP Cloud Monitoring
 ---
 
 import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelector/DynamicMarkdownSelector';
