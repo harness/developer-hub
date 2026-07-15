@@ -33,8 +33,28 @@ From the configuration page you can:
 
 - Change your registry **Description**.
 - Add a label under **Labels**.
+- Change the registry **Visibility** between Private and Public.
 - Manage configuration options relative to your registry type such as setting a security scanner for Docker registries.
 - Manage **Advanced** settings which includes setting an upstream proxy.
+
+---
+
+## Change registry visibility
+
+An existing registry can be switched between **Private** and **Public** from its configuration page. The visibility toggle is the same field shown on the Create Registry form.
+
+- **Private:** Only users or service accounts with the required permissions or tokens can view repository contents and pull artifacts.
+- **Public:** Anyone can view repository contents and pull artifacts without authentication.
+
+To change visibility:
+
+1. Go to the registry and select **Configuration**.
+2. Under **Visibility**, select **Private** or **Public**.
+3. Save the change.
+
+:::note Feature flag requirement
+The **Public** option is gated by the `PL_ALLOW_TO_SET_PUBLIC_ACCESS` feature flag. If the option is missing on the visibility control, the flag is not enabled for your account. Go to [Create an Artifact Registry](/docs/artifact-registry/manage-registries/create-registry) to review the enablement steps.
+:::
 
 ---
 

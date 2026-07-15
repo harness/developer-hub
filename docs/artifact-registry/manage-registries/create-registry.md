@@ -28,8 +28,14 @@ To create an artifact registry, follow these steps:
     :::info
     Public registries allow anyone to view repository contents and pull images. Private registries restrict both visibility and image pulls to users or service accounts with the required permissions or tokens. 
     :::
-    :::note Feature Flag Requirement
-    To create a public artifact registry, the feature flag `PL_ALLOW_TO_SET_PUBLIC_ACCESS` must be enabled. Contact [Harness Support](mailto:support@harness.io) to activate it. Then, in your Harness account, go to **Account Settings > Authentication** and turn on **Allow public resources** to make the registry publicly accessible.
+    :::note Feature flag requirement
+    Public registry visibility is gated by the `PL_ALLOW_TO_SET_PUBLIC_ACCESS` feature flag. The same flag controls both creating a new public registry and switching an existing registry's visibility from Private to Public. If the **Public** option is missing on the Create Registry form (or on the visibility control of an existing registry), the flag is not enabled for your account.
+
+    To enable public registry visibility:
+    1. Contact [Harness Support](mailto:support@harness.io) to activate the `PL_ALLOW_TO_SET_PUBLIC_ACCESS` feature flag for your account.
+    2. In your Harness account, go to **Account Settings > Authentication** and turn on **Allow public resources**.
+
+    Both steps are required. Go to [Change registry visibility](/docs/artifact-registry/manage-registries/configure-registry#change-registry-visibility) to switch an existing registry between Private and Public after the flag is enabled.
     :::
 
 
