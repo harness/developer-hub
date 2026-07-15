@@ -27,6 +27,41 @@ We've migrated to LabelsV2, which preserves your original label keys while drama
 
 --- 
 
+## July 2026 - Version 1.96.0
+#### Deployment Date: July 13, 2026 (Prod-1)
+
+### New Features and Enhancements
+
+- **Database Savings Plans support for RDS:** Commitment Orchestration now supports the Database Savings Plan purchase event type for RDS across the **Actions**, **Approvals**, and **Inventory** views. This lets you track and approve RDS Database Savings Plan purchases alongside your other commitments. [CCM-33856]
+
+- **Perspectives now identify external data sources:** Perspectives now display clearer data source badges, with distinct icons, readable tooltips, and separate styling for AI and external data sources. This makes sources such as Snowflake easy to identify at a glance. [CCM-32950]
+
+### Fixed Issues
+
+- **Perspectives with OR filters now show consistent costs in Cost Explorer:** We have fixed an issue where opening a Perspective that used an **OR** filter as a Cost Explorer View could show fewer costs than the original Perspective. Both views now display the same results. [CCM-34060]
+
+- **Missing cluster data in the Perspective grid is now fixed:** We have fixed an issue where some cluster data was missing from the Perspective grid in the Cluster view of Cost Explorer. All of your cluster information now displays correctly. [CCM-34054]
+
+- **Left navigation now updates between Cost Explorer and Perspective:** We have fixed an issue where the left navigation did not update when you switched between the Cost Explorer and Perspective experiences. The navigation now refreshes to match the screen you are on. [CCM-34050]
+
+- **Unit cost chart no longer exaggerates tiny cost changes:** We have fixed an issue where very small cost changes appeared as large swings on the unit cost line chart. The chart now applies a minimum range so that minor variations display accurately. [CCM-34044]
+
+- **[BEHIND A FEATURE FLAG] Service breakdown now handles negative costs correctly:** We have fixed an issue where services with negative costs caused incorrect coloring in the Service Breakdown treemap. Services with negative costs are now excluded so that colors stay consistent and accurate. [CCM-34026]
+
+- **Account ID null handling in inventory:** We have fixed an issue where an account ID was returned as an empty string instead of null. Null values are now handled correctly. [CCM-34018]
+
+- **Derived metrics now respect the Follow view filters setting:** We have fixed an issue where derived metrics kept applying your view filters even after you unchecked **Follow view filters**. Derived metrics now follow that setting correctly. [CCM-33979]
+
+- **`Go to this perspective` link in report emails now works:** We have fixed an issue where the **Go to this perspective** link in a report sent using **Send now** pointed to an invalid address and did not open. The link now takes you to the correct Perspective. [CCM-33889]
+
+- **Scheduled reports are back in new Views:** We have fixed an issue where the option to create a scheduled report was missing from newly created Views. The **Reports and Alerts** menu now appears even when the Perspective Reports feature flag is off, and selecting **Create Scheduled Report** opens the report creation flow. [CCM-33881]
+
+- **Filters no longer break when you navigate back:** We have fixed an issue on the Cloud Integration page where filters appeared applied but were not actually filtering results after you navigated into a connector and pressed the browser back button. Your filters are now applied correctly when you navigate back. [CCM-27673]
+
+- **Saving GenAI cost Views with a custom unit cost now works:** We have fixed an issue where "Save as new" failed for Views whose unit cost used a derived metric in the denominator. You can now save these Views without errors. [CCM-33974]
+
+---
+
 ## June 2026 - Version 1.95.0
 #### Deployment Date: July 4, 2026 (Prod-1)
 
