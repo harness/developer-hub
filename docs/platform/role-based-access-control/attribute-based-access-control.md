@@ -53,15 +53,7 @@ To configure ABAC in Harness, you must be an **Admin** for the relevant account,
 
    For **Environments**, you can choose **Production** or **Non-Production**.
 
-   <!-- ![](./static/attribute-based-access-control-06.png) -->
-
-   <DocImage path={require('./static/attribute-based-access-control-06.png')} />
-
    For **Connectors**, you can choose one or more of the following Harness connector types: **Artifact Repositories**, **Cloud Costs**, **Cloud Providers**, **Code Repositories**, **Monitoring and Logging Systems**, **Secret Managers**, and **Ticketing Systems**.
-
-   <!-- ![](./static/attribute-based-access-control-07.png) -->
-
-   <DocImage path={require('./static/attribute-based-access-control-07.png')} />
 
 6. Select **Save**.
 
@@ -70,9 +62,5 @@ To configure ABAC in Harness, you must be an **Admin** for the relevant account,
 Creating resource groups with ABAC is one part of [configuring RBAC in Harness](/docs/category/platform-access-control/rbac-in-harness#configure-rbac-in-harness).
 
 [Roles](./add-manage-roles.md), which grant permissions, work alongside resource groups and ABAC, which grant access. Because ABAC applies to environments and connectors, the role you choose to accompany your ABAC-enhanced resource group should include permissions relevant to environments or connectors.
-
-<!-- ![](./static/attribute-based-access-control-08.png) -->
-
-<DocImage path={require('./static/attribute-based-access-control-08.png')} />
 
 After configuring roles and resource group, you assign them to [users](./add-users.md), [user groups](./add-user-groups.md), and [service accounts](./add-and-manage-service-account.md).
