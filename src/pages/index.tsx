@@ -8,7 +8,6 @@ import allModuleAnimationDark from "./assets/hdh_hero-dark.json";
 import allModuleAnimation from "./assets/hdh_hero.json";
 import LearnAboutPlatform from "@site/src/components/LearnAboutPlatform";
 import HomepageUniversity from "@site/src/components/HomepageUniversity";
-import FeedbackWidget from "@site/src/components/FeedbackWidget";
 import styles from "./index.module.scss";
 import { useColorMode } from "@docusaurus/theme-common";
 
@@ -66,9 +65,6 @@ export default function Home(): JSX.Element {
               {/* NEW: Category grid (desktop: hover-expand; mobile: collapsible) */}
               <CategoryGrid categories={categories} />
             </div>
-
-            {/* Keep Feedback widget as-is */}
-            <FeedbackWidget source="docs" />
           </main>
           <hr className={styles.sectionDivider} />
           <div className="container">

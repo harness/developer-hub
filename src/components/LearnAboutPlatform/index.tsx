@@ -343,7 +343,10 @@ function ResourceCarouselGroup({
           className={styles.carouselTrack}
           ref={trackRef}
           style={{
-            transform: `translateX(-${(frame * 100) / extended.length}%)`,
+            // Pixel-exact shift of `frame` tiles, tied to the same
+            // --tile-width/--tile-gap custom properties the viewport crop
+            // uses. 
+            transform: `translateX(calc(-${frame} * (var(--tile-width, 220px) + var(--tile-gap, 20px))))`,
             transition: skipTransition ? "none" : undefined,
           }}
         >

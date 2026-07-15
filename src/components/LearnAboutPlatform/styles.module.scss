@@ -8,7 +8,7 @@
   align-items: center;
   text-align: center;
   padding: 24px 16px;
-  width: 220px;
+  width: var(--tile-width, 220px);
   min-height: 120px;
   flex: 0 0 auto;
   border: 2px solid #a3e9ff;
@@ -62,6 +62,12 @@
 
 .learnAboutPlatform {
   padding: 0 0 4rem 0;
+
+  // Single source of truth for tile width, read by both the viewport crop
+  // below and the inline translateX calc in index.tsx. 
+  // out of sync).
+  --tile-width: 220px;
+  --tile-gap: 20px;
 
   // ── Section header (RESOURCES) ───────────────────────────────────────────
 
@@ -118,7 +124,7 @@
     overflow: hidden;
     // Cap the viewport to exactly 4 tiles + 3 gaps so the reel shows 4 at a
     // time instead of however many happen to fit the full container width.
-    max-width: calc(4 * 220px + 3 * 20px);
+    max-width: calc(4 * var(--tile-width) + 3 * var(--tile-gap) + 8px);
     margin: 0 auto;
   }
 
@@ -126,7 +132,7 @@
     display: flex;
     flex-flow: row nowrap;
     align-items: flex-start;
-    gap: 20px;
+    gap: var(--tile-gap);
     padding: 4px 4px 8px 4px;
     margin: 0;
     list-style: none;
@@ -294,12 +300,9 @@
 
 @media screen and (max-width: 768px) {
   .learnAboutPlatform {
-    .carouselViewport {
-      max-width: calc(4 * 190px + 3 * 20px);
-    }
+    --tile-width: 190px;
 
     ul.carouselTrack li {
-      width: 190px;
       min-height: 110px;
     }
   }
@@ -311,17 +314,11 @@
 
 @media screen and (max-width: 393px) {
   .learnAboutPlatform {
+    --tile-width: 165px;
+
     .sectionHeader h3 {
       font-size: 14px;
       line-height: 150%;
-    }
-
-    .carouselViewport {
-      max-width: calc(4 * 165px + 3 * 20px);
-    }
-
-    ul.carouselTrack li {
-      width: 165px;
     }
 
     .carouselArrow {
