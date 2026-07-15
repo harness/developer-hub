@@ -107,6 +107,8 @@ The **Affected Pipelines** tab shows which CI/CD pipelines use blocked dependenc
 
 Go to [Affected Pipelines](/docs/artifact-registry/dependency-firewall/affected-pipelines) to understand the tab, dependency tracking, and how to set up your pipelines.
 
+To audit dependencies locally or in CI before deployment, use `hc registry fw audit`. Go to [Audit dependencies with Dependency Firewall](/docs/artifact-registry/artifact-registry-cli/manage-artifacts-registries#audit-dependencies-with-dependency-firewall) for manifest vs lock file scope, examples, and best practices.
+
 ---
 
 ## View violation details
@@ -240,5 +242,23 @@ Go to [Artifact Registry audit dashboard](/docs/artifact-registry/manage-artifac
   question="Does Dependency Firewall require an STO or SCS license?"
   mode="fallback-only"
   fallback="No. Dependency Firewall is included with Harness Artifact Registry and does not require a separate STO (Security Testing Orchestration) or SCS (Supply Chain Security) license. It is a standalone feature available to all Artifact Registry users."
+/>
+
+<FAQ
+  question="Can I run a Firewall Audit without a lock file?"
+  mode="fallback-only"
+  fallback="Yes. Run hc registry fw audit --file package.json --registry <npm-proxy> to evaluate direct dependencies against your firewall policies. Harness evaluates the packages listed in package.json. Go to /docs/artifact-registry/artifact-registry-cli/manage-artifacts-registries#audit-dependencies-with-dependency-firewall for examples and scope details."
+/>
+
+<FAQ
+  question="Can transitive dependencies be audited from package.json?"
+  mode="fallback-only"
+  fallback="For transitive dependencies, pass a resolved lock file such as package-lock.json, yarn.lock, or pnpm-lock.yaml to --file. Generate one with npm install --package-lock-only (or your package manager equivalent) if lock files are not in source control, then rerun hc registry fw audit."
+/>
+
+<FAQ
+  question="Is there an API for Firewall Audit?"
+  mode="fallback-only"
+  fallback="Run Firewall Audit with hc registry fw audit from the Harness CLI. To check firewall status for a specific artifact version already in your registry, use hc registry fw explain. Go to /docs/artifact-registry/artifact-registry-cli/manage-artifacts-registries for command reference and examples."
 />
 

@@ -248,9 +248,9 @@ Deleting a registry will remove all artifacts stored within it. This action cann
 
 ---
 
-### Audit Dependencies from Lock Files
+### Audit dependencies with Dependency Firewall
 
-The `hc registry fw audit` (or `hc registry firewall audit`) command parses and evaluates dependencies from package manager lock files against your registry's firewall policies to identify which packages are allowed, blocked, or flagged with warnings.
+The `hc registry fw audit` (or `hc registry firewall audit`) command evaluates dependencies from a manifest or lock file against your registry's firewall policies to identify which packages are allowed, blocked, or flagged with warnings. Use it to audit dependencies locally or in CI before deployment.
 
 ```bash
 hc registry fw audit [flags]
@@ -263,11 +263,47 @@ hc registry fw audit [flags]
   - **Python**: requirements.txt, pyproject.toml, Pipfile.lock, poetry.lock
 - `--registry string`: Registry name
 
-**Example:**
+**Audit scope by input file:**
+
+| Input file | Audit scope |
+|---|---|
+| `package.json` | Direct dependencies |
+| `package-lock.json`, `yarn.lock`, `pnpm-lock.yaml` | Direct and transitive dependencies |
+| `pom.xml`, `build.gradle`, `requirements.txt`, and other manifests | Per package manager resolution |
+
+:::info Audit scope
+Pass `package.json` to evaluate the direct dependencies listed under `dependencies` and `devDependencies`. Pass a lock file to include the full resolved graph, including transitive dependencies.
+:::
+
+**Example: audit direct dependencies without a lock file**
+
+```bash
+hc registry fw audit --file package.json --registry npmproxy --org Devrel --project sd1
+```
+
+**Example: audit the full dependency graph with a lock file**
 
 ```bash
 hc registry fw audit --file package-lock.json --registry npmproxy --org Devrel --project sd1
 ```
+
+:::tip Generate a lock file for audit only
+If lock files are not stored in source control, generate one locally or in CI before you run a full audit. You can use the file for the audit without committing it to the repository.
+
+```bash
+npm install --package-lock-only
+hc registry fw audit --file package-lock.json --registry npmproxy --org Devrel --project sd1
+```
+
+For other package managers, generate the lock file with your native tool (`yarn install`, `pnpm install --lockfile-only`) and pass the resulting `yarn.lock` or `pnpm-lock.yaml` to `--file`.
+:::
+
+:::info Audit best practices for manifest-only repositories
+- **PR checks:** Run `hc registry fw audit --file package.json` to review direct dependencies before merge.
+- **CI full audit:** Generate a lock file in the pipeline job, run the audit, and keep it in the job workspace without adding it to source control.
+- **Reproducible audits:** Store lock files in source control when your team policy supports it so every audit resolves the same transitive graph.
+- **Pipeline tracking:** Use `hc artifact npm install` (or the equivalent for your package type) in Harness CI to populate the **Affected Pipelines** tab with dependency graph data.
+:::
 
 **Sample output:**
 
@@ -834,13 +870,16 @@ hc registry list --project dev-project
 hc registry list --project prod-project
 ```
 
-**6. Audit Dependencies for Security**
+**6. Audit dependencies for security**
 
-Use firewall audit to check your dependencies before deployment:
+Use firewall audit to check dependencies before deployment. Pass `package.json` for direct dependencies only, or a lock file for full transitive analysis:
 
 ```bash
+hc registry fw audit --file package.json --registry npmproxy
 hc registry fw audit --file package-lock.json --registry npmproxy
 ```
+
+Go to [Audit dependencies with Dependency Firewall](#audit-dependencies-with-dependency-firewall) for audit scope, lock file generation, and best practices.
 
 **7. Configure Package Managers Once**
 

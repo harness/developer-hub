@@ -242,4 +242,5 @@ The pipeline execution appears in the **Affected Pipelines** tab even if the ins
 
 - Go to [Configure Policies and Policy Sets](/docs/artifact-registry/dependency-firewall/configure-policies) to adjust the policies causing violations.
 - Go to [Dependency Exemptions](/docs/artifact-registry/dependency-firewall/exemptions) to request temporary access to a blocked package while you plan remediation.
+- Go to [Audit dependencies with Dependency Firewall](/docs/artifact-registry/artifact-registry-cli/manage-artifacts-registries#audit-dependencies-with-dependency-firewall) to audit a manifest or lock file before your pipeline runs.
 - Go to [Manage artifacts and registries with the CLI](/docs/artifact-registry/artifact-registry-cli/manage-artifacts-registries#install-packages-with-dependency-tracking) for full CLI reference.
