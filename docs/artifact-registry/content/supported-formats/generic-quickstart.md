@@ -2,8 +2,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-Use a Generic repository to store raw files like `zip`, `war` and `tar` files, test reports and configuration files.
-While it is not necessarily used for binaries, you can store binaries as well.
+Use a Generic repository to store raw files of any type. Common file types include archives (`.zip`, `.war`, `.tar`), Windows binaries (`.exe`, `.dll`, `.msi`), PowerShell scripts, JARs, test reports, configuration files, and plain binaries. Generic repositories accept arbitrary files, so you can also store binaries and any other artifact type that does not fit a language-specific registry.
 
 ## Prerequisites
 - Access to a Harness account with appropriate permissions to create registries and connectors.

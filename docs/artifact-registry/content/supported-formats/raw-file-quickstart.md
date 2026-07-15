@@ -1,7 +1,7 @@
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Use a Raw File registry to store and retrieve arbitrary files by path (for example, archives, reports, or configuration files). You upload, download, inspect, and delete files with HTTP requests and `curl`.
+Use a Raw File registry to store and retrieve arbitrary files by path. Common file types include archives (`.zip`, `.tar`, `.tar.gz`), Windows binaries (`.exe`, `.dll`, `.msi`), PowerShell scripts, JARs, test reports, configuration files, and plain binaries. You upload, download, inspect, and delete files with HTTP requests and `curl`.
 
 :::info Feature Flag
 This feature is behind the feature flag `HAR_RAW_PACKAGE`. Contact [Harness Support](mailto:support@harness.io) to enable it.
