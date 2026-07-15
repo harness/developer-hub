@@ -1,0 +1,11 @@
+{
+  "label": "Harness CLI",
+  "collapsible": true,
+  "collapsed": true,
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "title": "Harness CLI",
+    "description": "Use the Harness CLI to manage pipelines, artifacts, infrastructure, and platform resources from your terminal."
+  }
+}

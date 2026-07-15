@@ -1,0 +1,11 @@
+{
+  "label": "Harness CLI Commands",
+  "collapsible": true,
+  "collapsed": true,
+  "position": 6,
+  "link": {
+    "type": "generated-index",
+    "title": "Harness CLI Commands",
+    "description": "Detailed command usage and examples for Platform, Continuous Delivery, Artifact Registry, Infrastructure as Code Management, Code Repository, AI Evaluations, and Knowledge Graph."
+  }
+}

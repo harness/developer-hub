@@ -6,6 +6,12 @@ sidebar_position: 1
 
 import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelector/DynamicMarkdownSelector';
 
+:::warning
+This version of the Harness CLI is being deprecated and will reach end of life in a future release. We recommend migrating to the new Harness CLI to receive the latest features, improvements, and ongoing support.
+
+For installation and migration guidance, see the new [Harness CLI documentation](/docs/platform/harness-cli/harness-cli-overview).]
+:::
+
 **Harness CLI** serves as your gateway to frictionless interaction with the intelligent Harness Platform directly through the command-line interface, providing you with a powerful and efficient means to manage Harness and its diverse set of resources.
 
 This documentation section will serve as your compass, guiding you through the installation, configuration, and upgrade of the Harness CLI utility.
