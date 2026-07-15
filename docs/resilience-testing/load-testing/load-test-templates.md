@@ -88,7 +88,7 @@ Then select a **Load Test Type**:
 |---|---|
 | **Locust** | Python-based load testing. Runs on Kubernetes or Linux VM. |
 | **K6** | JavaScript-based load testing. Runs on Kubernetes only. |
-| **JMeter** | Coming soon. |
+| **JMeter** | Java-based load testing that runs existing `.jmx` plans. Runs on Kubernetes or Linux VM. |
 
 :::info k6 runs on Kubernetes only
 k6 load tests run on **Kubernetes** infrastructure. To target a Linux VM, use **Locust**.
@@ -102,6 +102,7 @@ On the **Test Configuration** step, define the workload the template runs. The c
 
 - Go to [Locust](./create-load-test/locust) to configure a Python-based workload.
 - Go to [k6](./create-load-test/k6) to configure a JavaScript-based workload with scenarios and thresholds.
+- Go to [JMeter](./create-load-test/jmeter) to configure a Java-based workload from an existing `.jmx` plan.
 
 ### Edit as YAML
 
@@ -153,5 +154,6 @@ Go to [Analyze load test results](./analyze-results) to interpret the run.
 
 - Go to [Locust](./create-load-test/locust) to define a Python-based load test workload.
 - Go to [k6](./create-load-test/k6) to define a JavaScript-based load test workload with thresholds.
+- Go to [JMeter](./create-load-test/jmeter) to define a Java-based load test workload from an existing `.jmx` plan.
 - Go to [ChaosHub](/docs/resilience-testing/chaos-testing/chaoshub) to manage the hub that stores your templates.
 - Go to [Templates](/docs/resilience-testing/chaos-testing/templates) to review fault, experiment, probe, and action templates.

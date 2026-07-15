@@ -24,9 +24,30 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 ### New features and enhancements
 
-#### Version 1.93.0
+#### Version 1.94.4
 
 <details open>
+<summary>Required images</summary>
+
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
+
+- harness/chaos-ddcr:1.94.0
+- harness/chaos-ddcr-faults:1.94.0
+- harness/chaos-log-watcher:1.94.0
+- harness/service-discovery-collector:0.74.0
+
+</details>
+
+- Added an individual service details page, so you can view the configuration, health, and associated infrastructure of a single service on a dedicated page instead of scanning the full service list.
+- Added support for the Pod JVM Heap Memory fault, so you can inject heap memory pressure into JVM-based application pods and validate how they behave under constrained memory.
+- Added a manual onboarding method that distinguishes between network maps and services, so you can select the correct onboarding path for each instead of relying on automatic discovery alone.
+- Added validation of the existing environment ID attached to an infrastructure during single-service onboarding, so an onboarded service cannot be linked to a mismatched environment.
+- Enhanced the Datadog APM probe with improved configuration and validation, so you can define Datadog APM-based health checks more reliably in your experiments.
+- Added DDCR orchestration for JMeter and added JMeter component specifications to the HCE SDK, so you can run JMeter-based load and chaos workloads through the DDCR execution flow.
+
+#### Version 1.93.0
+
+<details>
 <summary>Required images</summary>
 
 Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
@@ -70,6 +91,11 @@ Listed below are the images to download to use [image registry with Harness Dele
 - Added an abort trigger when a remote resource times out
 
 ### Fixed issues
+
+#### Version 1.94.4
+
+- Upgraded the go-redis package in the Machine IFS and Machine IFC infrastructure components to fix CVE-2025-29923.
+- Fixed multiple load-test issues reported against the acceptance criteria, improving the reliability of load-test configuration and execution.
 
 #### Version 1.93.0
 

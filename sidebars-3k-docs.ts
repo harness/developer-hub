@@ -3447,6 +3447,7 @@ const sidebars: SidebarsConfig = {
           items: [
             "resilience-testing/load-testing/create-load-test/locust",
             "resilience-testing/load-testing/create-load-test/k6",
+            "resilience-testing/load-testing/create-load-test/jmeter",
           ],
         },
         "resilience-testing/load-testing/analyze-results",

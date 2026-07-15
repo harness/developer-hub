@@ -46,12 +46,13 @@ Harness Load Testing supports more than one framework so you can match the tool 
 
 - **[Locust](./create-load-test/locust)** is a Python framework that models user behavior as Python classes. It runs on Linux VM and Kubernetes infrastructure and suits Python teams and a simple ramp-up model.
 - **[k6](./create-load-test/k6)** is a JavaScript framework with executors, preset load profiles, and built-in pass/fail thresholds. It runs on Kubernetes infrastructure and suits release gates and precise load shapes such as spike and soak tests.
+- **[JMeter](./create-load-test/jmeter)** is a Java tool that runs existing `.jmx` test plans. It runs on Linux VM and Kubernetes infrastructure and suits teams that want to reuse JMeter plans, override properties at run time, and distribute load across workers.
 
 You select the framework under **Load Test Type** when you create a test.
 
-### Thresholds (k6)
+### Thresholds (k6 and JMeter)
 
-A **threshold** is a pass/fail rule for a metric, such as "the 95th-percentile request duration must stay under 5000 ms." When a k6 test breaches a threshold, the run is marked failed. This turns a load test into a gate you can enforce in continuous integration. Go to [k6](./create-load-test/k6) to configure thresholds.
+A **threshold** is a pass/fail rule for a metric, such as "the 95th-percentile request duration must stay under 5000 ms." When a k6 or JMeter test breaches a threshold, the run is marked failed. This turns a load test into a gate you can enforce in continuous integration. Go to [k6](./create-load-test/k6#gate-a-release-with-passfail-thresholds) or [JMeter](./create-load-test/jmeter#gate-a-release-with-passfail-thresholds) to configure thresholds.
 
 ### Scenarios and executors (k6)
 
@@ -102,13 +103,13 @@ When creating a load test, you select a target type first, and the **Load Test I
 
 ### Test Definition Modes
 
-The available test definition modes depend on the framework and target type you selected. The script type matches the framework: Locust uses Python (`.py`), and k6 uses JavaScript (`.js`).
+The available test definition modes depend on the framework and target type you selected. The artifact you provide matches the framework: Locust uses a Python script (`.py`), k6 uses a JavaScript script (`.js`), and JMeter uses a test plan (`.jmx`, `.xml`, or `.zip`).
 
-| Mode | Locust (Linux VM) | Locust (Kubernetes) | k6 (Kubernetes) | Description |
+| Mode | Locust | k6 | JMeter | Description |
 |---|---|---|---|---|
-| **Define test via UI** | ✅ | ✅ | ✅ | Build HTTP scenarios visually without writing code. Harness generates the script at execution time. |
-| **Upload a script** | ✅ (`.py`) | ✅ (`.py`) | ✅ (`.js`) | Upload a custom script for full control over user behavior. |
-| **Using Image** | — | ✅ | ✅ | Use a prebuilt container image as the load test source. Available on Kubernetes only since the image runs as a pod in the cluster. |
+| **Define test via UI** | ✅ | ✅ | — | Build HTTP scenarios visually without writing code. Harness generates the script at execution time. |
+| **Upload a script or plan** | ✅ (`.py`) | ✅ (`.js`) | ✅ (`.jmx`, `.xml`, `.zip`) | Upload a custom script or test plan for full control over user behavior. |
+| **Using Image** | ✅ | ✅ | ✅ | Use a prebuilt container image as the load test source. For Locust, this mode is available on Kubernetes only since the image runs as a pod in the cluster. |
 
 ## Prerequisites
 
@@ -129,10 +130,11 @@ Click the **+ New Load Test** dropdown and select **Try Sample Test** to instant
 For the complete step-by-step walkthrough, choose your framework:
 - [Locust](./create-load-test/locust): Python-based, runs on Linux VM or Kubernetes
 - [k6](./create-load-test/k6): JavaScript-based with thresholds, runs on Kubernetes
+- [JMeter](./create-load-test/jmeter): Java-based, runs existing `.jmx` plans on Linux VM or Kubernetes
 
 ## Next Steps
 
-- Create a Load Test: [Locust](./create-load-test/locust) · [k6](./create-load-test/k6)
+- Create a Load Test: [Locust](./create-load-test/locust) · [k6](./create-load-test/k6) · [JMeter](./create-load-test/jmeter)
 - [Analyze Results](./analyze-results): Understand and interpret load test execution results
 - [Infrastructure Types](../chaos-testing/infrastructure/types): Set up and manage infrastructure for chaos and load tests
 - [Chaos Testing](../chaos-testing/get-started): Combine load testing with chaos experiments for peak-load resilience validation

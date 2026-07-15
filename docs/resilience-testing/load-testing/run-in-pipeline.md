@@ -24,7 +24,7 @@ Load Testing is currently behind a feature flag (`CHAOS_LOAD_TESTING_ENABLED`). 
 ## Prerequisites
 
 - **Module access:** Access to the Harness Resilience Testing module.
-- **A load test:** An existing load test to reference in the step. Go to [Locust](./create-load-test/locust) or [k6](./create-load-test/k6) to create one.
+- **A load test:** An existing load test to reference in the step. Go to [Locust](./create-load-test/locust), [k6](./create-load-test/k6), or [JMeter](./create-load-test/jmeter) to create one.
 - **A pipeline:** A pipeline with a stage that supports the Load Test step, such as a Deploy or Custom stage.
 
 ---
@@ -50,7 +50,7 @@ You can add more than one Load Test step to a stage to run several tests in sequ
 ## Select the load test
 
 1. In **Load Test Reference**, select **Select Load Test**.
-2. In the **Select Load Test** modal, search for a load test and select its card. Each card shows the engine (Locust or k6), the last run status, and when it was last updated. The **Summary** panel shows the test's users and duration.
+2. In the **Select Load Test** modal, search for a load test and select its card. Each card shows the engine (Locust, k6, or JMeter), the last run status, and when it was last updated. The **Summary** panel shows the test's users and duration.
 3. Select **Add to Pipeline**.
 
 :::tip Create a load test inline

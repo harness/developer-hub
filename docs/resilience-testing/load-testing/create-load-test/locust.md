@@ -162,4 +162,5 @@ The **Load Profile** graph updates in real time as you adjust values. The **Load
 
 - Go to [Analyze load test results](../analyze-results) to interpret throughput, error rate, and response times.
 - Go to [k6](./k6) to run a JavaScript-based test with thresholds on Kubernetes.
+- Go to [JMeter](./jmeter) to run an existing `.jmx` test plan on Linux VM or Kubernetes.
 - Go to [Key concepts](../get-started#key-concepts) to review virtual users, ramp-up, assertions, and load profiles.
