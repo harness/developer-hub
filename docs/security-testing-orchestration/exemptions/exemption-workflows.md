@@ -117,6 +117,14 @@ Bulk exemption requests are behind the feature flag `STO_ENABLE_BULK_EXEMPTION`.
 
 You can create a bulk exemption request when multiple issues need the same exemption scope, duration, and reason. Harness creates a separate pending exemption request for each selected issue.
 
+The **Vulnerabilities** tab displays issues in a flat table. The **Scan** column tags each issue based on how STO compared this scan to the reference scan:
+
+- **Current scan:** The issue appears only in this scan.
+- **Previous/Baseline scan:** The issue was also present in the baseline or previous scan.
+
+STO uses the target baseline as the reference scan when one is defined. If no baseline exists, STO compares against the previous scan of the same variant. Go to [Targets, baselines, and variants in STO](/docs/security-testing-orchestration/key-concepts/targets-and-baselines) to define a baseline for each target.
+
+The **Active Issues** summary card shows the same **Current scan** and **Previous/Baseline scan** counts. Use the **Scan** filter (**All**, **Current scan**, or **Previous/Baseline scan**) to narrow the list before you select issues for bulk exemption.
 
 1. In the pipeline [**Vulnerabilities**](/docs/security-testing-orchestration/view-security-test-results/view-scan-results#navigate-to-security-test-results) tab, select the issues you want to exempt:
    - **Row checkboxes:** Select individual issues.
