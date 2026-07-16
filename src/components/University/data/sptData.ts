@@ -124,6 +124,28 @@ export const spt: IltCardItem[] = [
     cardType: cardType.SPT,
   },
   {
+    title: "Introduction to CI Pipeline Variables",
+    module: MODULES.ci,
+    type: type.user,
+    description:
+      "Self-paced tidbit introducing CI Pipeline Variables.",
+    version: "Harness CI Paid Plans",
+    link: "https://university-registration.harness.io/self-paced-training-tidbit-introduction-to-ci-pipeline-variables",
+    tileType: tileType.normal,
+    cardType: cardType.SPT,
+  },
+  {
+    title: "Introduction to Docker Build and Push",
+    module: MODULES.ci,
+    type: type.user,
+    description:
+      "Self-paced tidbit introducing Docker Build and Push.",
+    version: "Harness CI Paid Plans",
+    link: "https://university-registration.harness.io/self-paced-training-tidbit-harness-docker-build-push",
+    tileType: tileType.normal,
+    cardType: cardType.SPT,
+  },
+  {
     title: "Introduction to Test Intelligence",
     module: MODULES.ci,
     type: type.user,
@@ -153,6 +175,17 @@ export const spt: IltCardItem[] = [
       "Self-paced video course introducing Harness Internal Developer Portal.",
     version: "Harness IDP Paid Plans",
     link: "https://university-registration.harness.io/self-paced-training-harness-internal-developer-portal",
+    tileType: tileType.normal,
+    cardType: cardType.SPT,
+  },
+  {
+    title: "Introduction to IDP Dynamic Pickers",
+    module: MODULES.idp,
+    type: type.user,
+    description:
+      "Self-paced tidbit introducing IDP Dynamic Pickers.",
+    version: "Harness IDP Paid Plans",
+    link: "https://university-registration.harness.io/self-paced-training-tidbit-introduction-to-idp-dynamic-pickers",
     tileType: tileType.normal,
     cardType: cardType.SPT,
   },
