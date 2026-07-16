@@ -342,6 +342,26 @@ upgrades:
 </details>  
 :::
 
+## July 16, 2026, Version 0.43.1 <!-- July 16, 2026 -->
+
+This table lists the module, its components, its version and the release notes versions associated with it.
+
+<SmpVersionTable version="0.43.1" />
+
+**Air-gap bundle download method**
+:::info Note on new airgap bundle structure
+Starting with version 0.38.x, the airgap bundle structure has been redesigned. Components are now grouped into core modules and execution components, allowing you to download exactly what you need using our new interactive scripts.
+:::
+For a comprehensive guide on installing Harness Self-Managed Enterprise Edition in an air-gapped environment, visit the [Install in an air-gapped environment](/docs/self-managed-enterprise-edition/install/install-in-an-air-gapped-environment). Once there, select the Version 0.38.x and later tab. These instructions will walk you through downloading airgap bundles via interactive scripts, organizing modules, and pushing them to your private container registry.
+
+### Fixed issues
+
+#### Harness Platform
+
+- Fixed an issue where Policy Management on the Self-Managed Platform ignored platform feature flags enabled in harness-manager if the Feature Flags service wasn't installed.
+
+Policy Management has been updated to read these enabled flags directly from the harness-manager CG/NG Manager API. To activate this behavior, enable `APP_FEATURE_FLAGS_USE_PLATFORM_ON_SMP` in the policy-mgmt chart. [PIPE-35641]
+
 ## July 9, 2026, Version 0.36.6 <!-- July 9, 2026 -->
 
 :::note Important
