@@ -124,9 +124,10 @@ variables:
 
 Harness now allows mounting Docker build secrets securely in 'Build and Push' steps. This feature enables you to pass sensitive data such as credentials or configuration files during Docker builds, either as environment variables or file-based secrets. It ensures secure handling of secrets, reducing the risk of exposing sensitive information.
 
-:::note
+:::note Use caching and Kubernetes requirements
 
 - This feature is currently configurable only through YAML.
+- On non-Kubernetes build infrastructures (Harness Cloud, self-managed VM, local runner), you must set `caching: true` on the step. With `caching: false` (the default), the step uses the plain docker plugin, which silently drops `envDockerSecrets` and `fileDockerSecrets` without emitting any `--secret` flag. Setting `caching: true` activates the buildx plugin, which supports secret mounts.
 - In Kubernetes, unlike other build infrastructures (e.g., Harness Cloud), "Build and Push" steps default to Kaniko rather than Buildx. To enable this feature in Kubernetes, you must enable the feature flag `CI_USE_BUILDX_ON_K8`. Additionally, note that Kubernetes build infrastructure using Buildx requires privileged access.
   :::
 
