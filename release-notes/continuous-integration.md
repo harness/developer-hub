@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2026-06-29T10:00
+date: 2026-07-16T10:00
 sidebar_position: 10
 ---
 
@@ -54,6 +54,47 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 :::
 
 ## July 2026
+
+### Version 1.148.0
+
+<!-- July 2026 -->
+
+#### New Features and Enhancements
+
+- You can now view CPU and memory usage metrics for pipeline stages running on VM build infrastructure, giving better visibility into resource utilization during CI builds. (CI-22896)
+
+- Reduced initialization time for pipelines running on Kubernetes build infrastructure by optimizing expression resolution during the init phase. This feature is behind the feature flag `CI_DISABLE_INIT_STAGE_EXECUTION_STRIP`. (CI-23660, ZD-118018)
+
+#### Fixed Issues
+
+- Fixed an issue where Sysdig Drift Control blocked the `drone-git` plugin execution, causing database change workflows to fail. (CI-22635, ZD-113405)
+
+- Fixed an issue where the expression `pipeline.sequenceId` returned null when manually running a build using a Harness Code repository with the `CI_ENABLE_BRANCH_SEQUENCE_ID` feature flag enabled. The expression now resolves correctly for both triggered and manual builds. (CI-22819, ZD-114394)
+
+- Fixed a database index build failure related to the pipeline branch sequence feature that occurred due to duplicate data in production. (CI-23050)
+
+- Fixed an issue where secret identifiers were not displayed in error messages during Initialize step failures. Secret names now appear in failure logs, improving troubleshooting visibility. (CI-23116, ZD-116285)
+
+- Fixed an issue where connectors configured in CI Default Settings were parsed even when Test Intelligence features were disabled, causing unnecessary processing overhead. (CI-23314)
+
+- Fixed an issue where Git Clone operations failed in certain advanced configurations. (CI-23523)
+
+- Fixed an intermittent credential issue where the Push to ECR step failed when running multiple Build and Push steps in parallel with different connectors within the same stage. (CI-23591, ZD-118232)
+
+- Fixed an issue where secret values were incorrectly printed as Java object references (e.g., `SecretRefData@77d2ae9e`) in logs instead of being properly masked. (CI-23597)
+
+- Improved CI Manager API security by enforcing stricter account-tenant isolation on API endpoints. (CI-23645)
+
+- Improved `harnesssecure/cache` security by resolving vulnerabilities in the container image. (CI-23240)
+
+- Improved `harnesssecure/artifactory` security by resolving vulnerabilities in the container image. (CI-23241)
+
+#### Harness Images Updates
+
+| Image | Change | Previous Version | New Version |
+|-------|--------|------------------|-------------|
+| `harness/ci-addon` | Version update | 1.18.26 | 1.18.27 |
+| `harness/ci-lite-engine` | Version update | 1.18.26 | 1.18.27 |
 
 ### Version 1.147.0
 
