@@ -596,132 +596,57 @@ t='<+json.format(<+pipeline.stages.stepWithMatrix.spec.execution.steps.ShellScri
 echo $t | jq '(. | to_entries[] | select(.key | startswith("ShellScript_1")) | .value.status)'
 ```
 
-## Write complex expressions using JEXL
+## Write expressions using JEXL
 
-With script support, Harness enables you to define functions, utilize loops, and incorporate `if` conditions in your expressions. This expanded functionality lets your expressions handle more complex logic and perform advanced operations.
-
-### Define functions
-
-Use the `function` keyword in JEXL to define functions. For example, the following expression contains a JEXL script that defines a function called `identityFunction` that takes one parameter. The function returns the value of the key parameter. The entire statement is wrapped in the expression delimiter (`<+...>`).
+Harness evaluates single, self-contained JEXL expressions inside the expression delimiter (`<+...>`). Supported operations include arithmetic, boolean logic, comparisons, and [Java string methods](/docs/platform/variables-and-expressions/expressions-java-methods.md). For example:
 
 ```js
-<+ var identityFunction = function(keyNameInput) {
-     return keyNameInput;
-}
-   var keyName = "keyName";
-   identityFunction(keyName);
-
->
+<+3 + 5>
+<+10 * 2>
+<+true && true>
+<+'test'.length()>
 ```
 
-This example `identityFunction` retrieves the value of a specific key. In the given example, the function is invoked with the argument `keyName`. As a result, the function returns the value `keyName` itself. The `identityFunction` serves as a straightforward identity function where the input value is directly returned as the output.
+:::warning
 
-### Define loops
+Harness does not reliably support multi-statement JEXL scripts. Expressions that declare variables with `var` and reference them in later statements, define named functions, use loops, or use `if` and `else` blocks can return `null`, produce unexpected values, or fail silently.
 
-The following example demonstrates how you can use a loop in JEXL to iterate over an array or perform repetitive operations based on certain conditions. This example uses an array called `numbers` containing several integer values. A variable called sum to 0 is initialized. The `for` loop iterates over each element in the number array. Within the loop, you can add each element to the sum variable after the loop completes. The script outputs the value of sum (the sum of all the numbers in the array).
+To assign variables, iterate over data, or run conditional logic, use a [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step.md) or a Run step instead of a JEXL script.
 
-```js
-<+
-var numbers = [1, 2, 3, 4, 5];
-var sum = 0;
+:::
 
-for (number: numbers) {
-  sum = sum + number;
-}
+### Supported JEXL expressions
 
-sum;
->
+Use JEXL for a single expression that evaluates to one value. Harness supports these operations:
+
+- **Arithmetic:** `<+3 + 5>` returns `8`.
+- **Boolean logic:** `<+true && true>` returns `true`.
+- **String methods:** `<+'test'.length()>` returns `4`.
+- **Comparisons:** `<+'prod' == 'prod'>` returns `true`.
+- **Harness built-in expressions:** `<+pipeline.name>` returns the pipeline name. Go to the [built-in Harness variables reference](/docs/platform/variables-and-expressions/harness-variables.md) to review the available expressions.
+
+### Unsupported JEXL expressions
+
+Harness does not support JEXL scripts that span multiple statements or depend on declared variables. Avoid the following patterns, because they can return `null` or incorrect values:
+
+- **Variable definitions:** `<+var foo = 'abc'; foo>`
+- **User-defined functions:** `<+var identityFunction = function(keyNameInput) { return keyNameInput; } identityFunction('keyName');>`
+- **Loops:** `<+var sum = 0; for (number : numbers) { sum = sum + number; } sum>`
+- **Conditional blocks:** `<+var age = 18; if (age < 18) { 'minor'; } else { 'adult'; }>`
+
+### Shell Script step alternative
+
+To assign variables, loop over data, or branch on conditions, run the logic in a [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step.md). Harness resolves any built-in expressions (for example, `<+pipeline.name>`) before the script body executes, so you can embed them as literal values inside the script.
+
+For example, this Bash script sums an array and prints the result:
+
+```bash
+numbers=(1 2 3 4 5)
+sum=0
+for number in "${numbers[@]}"; do
+  sum=$((sum + number))
+done
+echo "Sum: $sum"
 ```
 
-### Use if conditions
-
-The following example demonstrates how you can use an `if` condition in JEXL to perform different actions or display different results based on certain conditions or criteria. This example uses a variable called `age` with the value `18`. The `if` condition checks whether the age is less than 18. If the condition evaluates to `true`, then the script outputs the string `You are not yet an adult`. Otherwise, it outputs the string `You are an adult`.
-
-```js
-<+var age = 18;
-
-if (age < 18) {
-  "You are not yet an adult";
-} else {
-  "You are an adult";
-}
->
-```
-
-### JEXL examples
-
-Here are some examples of JEXL usage in complex expressions
-
-#### Fetch the status of all combinations of a stage named stageWithMatrix
-
-The following example expression contains a script.
-
-```js
-<+ var traverse = function(key) {
-                      var stages = [...];
-                      for(stage: key.entrySet())
-                      {
-                          if (stage.key.startsWith('stageWithMatrix'))
-                              stages.add(stage.value);
-                      }
-                      var statuses=[...];
-                      for(stage1:stages) {
-                         statuses.add(stage1.status)
-                      }
-                      statuses
-                      };
-
-  traverse(<+pipeline.stages.stageWithMatrix>)>
-```
-
-This script defines a `traverse` function that takes a parameter called `key`. Within the function, there are several operations performed:
-
-* Initialization: The `stages` array is created, which holds the extracted stages. It is initially empty.
-* Loop: The script loops through each entry in the key object using the `for(stage: key.entrySet())` syntax. This loop iterates over each key-value pair in the key object.
-* Condition: Within the loop, there is an IF condition, `if (stage.key.startsWith('stageWithMatrix'))`. It checks if the key of the current stage starts with the string `stageWithMatrix`.
-* Stage extraction: If the condition is TRUE, the current stage value is added to the stages array using `stages.add(stage.value)`.
-* Status extraction: After extracting the relevant stages, a new array called `statuses` is created.
-* Nested loop: The script loops through each stage in the `stages` array using the `for(stage1:stages)` syntax.
-* Status addition: Within the nested loop, the `spec.execution.status` value of each stage is extracted and added to the `statuses` array using `statuses.add(stage1.status)`.
-* Return: Finally, the function returns the `statuses` array.
-
-The script concludes by invoking the traverse function with the argument, `<+pipeline.stages.cStage>`. This argument represents the starting point for the traversal, where the `pipeline.stages.cStage` object is passed as the key.
-
-This script performs a traversal and extraction operation on a data structure represented by the key parameter. It extracts stages that start with `stageWithMatrix` and collects their corresponding `.status` values into the `statuses` array.
-
-#### Fetch the status of all combinations of a step named ShellScript_1
-
-The following example expression contains a script.
-
-```js
-<+ var traverse = function(key) {
-                      var stages = [...];
-                      for(stage: key.entrySet())
-                      {
-                          if (stage.key.startsWith('ShellScript_1'))
-                              stages.add(stage.value);
-                      }
-                      var statuses=[...];
-                      for(stage1:stages) {
-                         statuses.add(stage1.status)
-                      }
-                      statuses
-                      };
-
-  traverse(<+pipeline.stages.stepWithMatrix.spec.execution.steps.ShellScript_1>)>
-```
-
-This script defines a `traverse` function that takes a parameter called `key`. Within the function, there are several operations performed:
-
-* Initialization: The `stages` array is created, which holds the extracted stages. It is initially empty.
-* Loop: The script loops through each entry in the key object using the `for(stage: key.entrySet())` syntax. This loop iterates over each key-value pair in the key object.
-* Condition: Within the loop, there is an IF condition, `if (stage.key.startsWith('stageWithMatrix'))`. It checks if the key of the current stage starts with the string `stageWithMatrix`.
-* Stage extraction: If the condition is TRUE, the current stage value is added to the stages array using `stages.add(stage.value)`.
-* Status extraction: After extracting the relevant stages, a new array called `statuses` is created.
-* Nested loop: The script loops through each stage in the `stages` array using the `for(stage1:stages)` syntax.
-* Status addition: Within the nested loop, the `spec.execution.status` value of each stage is extracted and added to the `statuses` array using `statuses.add(stage1.status)`.
-* Return: Finally, the function returns the `statuses` array.
-
-The script concludes by invoking the traverse function with the argument, `<+pipeline.stages.stepWithMatrix.spec.execution.steps.ShellScript_1>`. This argument represents the starting point for the traversal, where the specific stage `(ShellScript_1)` within the given pipeline structure is passed as the key.
-
-This script performs a traversal and extraction operation on a data structure represented by the key parameter. It filters stages that start with the string `ShellScript_1` and collects their corresponding status values into the statuses array.
+Declare the value as an output variable on the step, and then reference it in later steps with `<+steps.STEP_ID.output.outputVariables.VAR_NAME>`, where `STEP_ID` is the step's **Id** field in the pipeline YAML. Go to the [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step.md) documentation to add the step and configure its output variables.
