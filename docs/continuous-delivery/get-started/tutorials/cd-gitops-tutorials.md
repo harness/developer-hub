@@ -1,60 +1,93 @@
 ---
-title: CD & GitOps Tutorials Overview
-description: Helpful tutorials for using Harness CD and GitOps
-redirect_from:
-  - /docs/continuous-delivery/get-started/tutorials/cd-gitops-tutorials
-  - /docs/continuous-delivery/get-started/cd-tutorials/cd-gitops-tutorials
+title: CD and GitOps Tutorials Overview
+sidebar_label: Tutorials Overview
+description: Browse the Harness Continuous Delivery and GitOps tutorials, grouped by deployment target and platform.
+keywords:
+  - CD tutorials
+  - GitOps tutorials
+  - Harness CD
+  - deployment tutorials
 tags:
   - cd-tutorials
   - cd-gitops-tutorials
-  - cd-tutorials
 sidebar_position: 0
+redirect_from:
+  - /docs/continuous-delivery/get-started/tutorials/cd-gitops-tutorials
+  - /docs/continuous-delivery/get-started/cd-tutorials/cd-gitops-tutorials
 ---
 
-These tutorials and guides showcase some use cases of Harness CD and GitOps.
+This topic lists the tutorials and step-by-step guides for Harness Continuous Delivery (CD) and GitOps, organized by deployment target and platform. Each tutorial walks you through a complete, working example that you can adapt to your own applications.
 
-## Onboarding guides
+:::tip New to Harness CD?
 
-Whether you're new to Harness CD or you're an experienced user, check out the [CD resources & onboarding guides](https://developer.harness.io/docs/category/cd-resources) for useful guides and step-by-step onboarding journeys.
+Go to the <a href="/docs/category/cd-resources" target="_blank" rel="noopener noreferrer">CD resources and onboarding guides</a> for step-by-step onboarding journeys before you start the deployment-specific tutorials below.
 
-## Kubernetes & Container Deployments
+:::
 
-* [Deploy using Helm Chart](/docs/continuous-delivery/get-started/tutorials/kubernetes-container-deployments/helm-chart)
-* [Deploy using Kustomize](/docs/continuous-delivery/get-started/tutorials/kubernetes-container-deployments/kustomize)
-* [Deploy using Kubernetes Manifest](/docs/continuous-delivery/get-started/tutorials/kubernetes-container-deployments/manifest)
-* [Deploy your own microservice application](/docs/continuous-delivery/get-started/tutorials/kubernetes-container-deployments/ownapp)
-* [Unified CI/CD Docker Hub Kubernetes pipeline](/docs/continuous-delivery/get-started/tutorials/kubernetes-container-deployments/e2e-pipeline)
-* [Verify Kubernetes Deployments with Prometheus](/docs/continuous-delivery/get-started/tutorials/kubernetes-container-deployments/prometheus)
+---
 
-## Cloud-Native CI/CD Pipelines
+## Kubernetes and container deployments
 
-* [Unified CI/CD GAR GKE pipeline](/docs/continuous-delivery/get-started/tutorials/cloud-native-cicd-pipelines/gar-gke-pipeline)
-* [Secure Container Image Signing with Cosign and OPA](/docs/continuous-delivery/get-started/tutorials/cloud-native-cicd-pipelines/cosign-opa)
+Deploy containerized workloads to Kubernetes:
 
-## AWS Deployments
+* <a href="/docs/continuous-delivery/get-started/tutorials/kubernetes-container-deployments/helm-chart" target="_blank" rel="noopener noreferrer">Deploy using Helm Chart</a>
+* <a href="/docs/continuous-delivery/get-started/tutorials/kubernetes-container-deployments/kustomize" target="_blank" rel="noopener noreferrer">Deploy using Kustomize</a>
+* <a href="/docs/continuous-delivery/get-started/tutorials/kubernetes-container-deployments/manifest" target="_blank" rel="noopener noreferrer">Deploy using Kubernetes Manifest</a>
+* <a href="/docs/continuous-delivery/get-started/tutorials/kubernetes-container-deployments/ownapp" target="_blank" rel="noopener noreferrer">Deploy your own microservice application</a>
+* <a href="/docs/continuous-delivery/get-started/tutorials/kubernetes-container-deployments/e2e-pipeline" target="_blank" rel="noopener noreferrer">Unified CI/CD Docker Hub Kubernetes pipeline</a>
+* <a href="/docs/continuous-delivery/get-started/tutorials/kubernetes-container-deployments/prometheus" target="_blank" rel="noopener noreferrer">Verify Kubernetes Deployments with Prometheus</a>
 
-* [Deploy a Docker Image to Amazon ECS](/docs/continuous-delivery/get-started/tutorials/aws-deployments/amazon-ecs)
-* [AWS Lambda serverless deployments](/docs/continuous-delivery/get-started/tutorials/aws-deployments/aws-lambda)
-* [Deploy to AWS VMs](/docs/continuous-delivery/get-started/tutorials/aws-deployments/aws)
-* [AWS CloudFormation infrastructure provisioning](/docs/continuous-delivery/get-started/tutorials/aws-deployments/cloudformation)
+---
 
-## Azure Deployments
+## Cloud-native CI/CD pipelines
 
-* [Deploy to Azure VMs](/docs/continuous-delivery/get-started/tutorials/azure-deployments/azure)
+Build and deploy with cloud-native CI/CD pipelines:
 
-## Google Cloud Deployments
+* <a href="/docs/continuous-delivery/get-started/tutorials/cloud-native-cicd-pipelines/gar-gke-pipeline" target="_blank" rel="noopener noreferrer">Unified CI/CD GAR GKE pipeline</a>
+* <a href="/docs/continuous-delivery/get-started/tutorials/cloud-native-cicd-pipelines/cosign-opa" target="_blank" rel="noopener noreferrer">Secure Container Image Signing with Cosign and OPA</a>
 
-* [Google Cloud Functions serverless deployments](/docs/continuous-delivery/get-started/tutorials/google-cloud-deployments/gcp-cloud-func)
+---
 
-## On-Prem & Hybrid Deployments
+## AWS deployments
 
-* [Deploy to a physical data center](/docs/continuous-delivery/get-started/tutorials/on-prem-hybrid-deployments/pdc)
+Deploy to Amazon Web Services (AWS) targets:
+
+* <a href="/docs/continuous-delivery/get-started/tutorials/aws-deployments/amazon-ecs" target="_blank" rel="noopener noreferrer">Deploy a Docker Image to Amazon ECS</a>
+* <a href="/docs/continuous-delivery/get-started/tutorials/aws-deployments/aws-lambda" target="_blank" rel="noopener noreferrer">AWS Lambda serverless deployments</a>
+* <a href="/docs/continuous-delivery/get-started/tutorials/aws-deployments/aws" target="_blank" rel="noopener noreferrer">Deploy to AWS VMs</a>
+* <a href="/docs/continuous-delivery/get-started/tutorials/aws-deployments/cloudformation" target="_blank" rel="noopener noreferrer">AWS CloudFormation infrastructure provisioning</a>
+
+---
+
+## Azure deployments
+
+Deploy to Microsoft Azure targets:
+
+* <a href="/docs/continuous-delivery/get-started/tutorials/azure-deployments/azure" target="_blank" rel="noopener noreferrer">Deploy to Azure VMs</a>
+
+---
+
+## Google Cloud deployments
+
+Deploy to Google Cloud targets:
+
+* <a href="/docs/continuous-delivery/get-started/tutorials/google-cloud-deployments/gcp-cloud-func" target="_blank" rel="noopener noreferrer">Google Cloud Functions serverless deployments</a>
+
+---
+
+## On-prem and hybrid deployments
+
+Deploy to on-premises and hybrid infrastructure:
+
+* <a href="/docs/continuous-delivery/get-started/tutorials/on-prem-hybrid-deployments/pdc" target="_blank" rel="noopener noreferrer">Deploy to a physical data center</a>
+
+---
 
 ## Platform tutorials
 
-Here are some Harness Platform features you might find useful in your CD and GitOps configurations:
+Harness Platform features that are useful in your CD and GitOps configurations:
 
-* [Pipeline triggers tutorial](/docs/platform/triggers/tutorial-cd-trigger)
-* [Variables and expressions tutorial](https://developer.harness.io/docs/platform/variables-and-expressions/add-a-variable#tutorial---add-and-reference-variables-in-a-cd-pipeline)
-* [Notification settings](/docs/platform/notifications/notification-settings)
-* [Create a pipeline template](https://developer.harness.io/docs/platform/templates/create-pipeline-template#create-a-pipeline-template)
+* <a href="/docs/platform/triggers/tutorial-cd-trigger" target="_blank" rel="noopener noreferrer">Pipeline triggers tutorial</a>
+* <a href="/docs/platform/variables-and-expressions/add-a-variable#tutorial---add-and-reference-variables-in-a-cd-pipeline" target="_blank" rel="noopener noreferrer">Variables and expressions tutorial</a>
+* <a href="/docs/platform/notifications/notifications/configure-notifications" target="_blank" rel="noopener noreferrer">Notification settings</a>
+* <a href="/docs/platform/templates/create-pipeline-template#create-a-pipeline-template" target="_blank" rel="noopener noreferrer">Create a pipeline template</a>
