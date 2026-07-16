@@ -320,7 +320,7 @@ export const CdData: Horizon = {
         tag: [{ value: "Pipeline" }],
         title: "DAG Support",
         description: "Users can define steps and their dependencies as a Directed Acyclic Graph (DAG), enabling flexible, non-linear, and parallel pipeline execution.",
-        link: "https://developer.harness.io/docs/platform/pipelines/define-a-failure-strategy-for-pipelines",
+        link: "https://developer.harness.io/docs/platform/pipelines/dag-pipelines",
       },
       {
         tag: [{ value: "Pipeline" }],

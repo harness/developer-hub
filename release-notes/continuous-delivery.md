@@ -149,6 +149,35 @@ Refer to the [traffic routing documentation](/docs/continuous-delivery/deploy-sr
 
 ## July 2026
 
+### Version 1.158.4
+
+#### New features and enhancements
+
+- Harness now supports **DAG (Directed Acyclic Graph) pipelines (Beta)**, which let you define explicit dependencies between stages instead of relying on sequential or parallel stage order. Each stage declares the stages that must complete before it starts through the `dependsOn` field, so independent execution paths progress as soon as their own dependencies finish. This feature is in beta and requires the feature flag `PIPE_ENABLE_DEPENDENCY_BASED_EXECUTION`. Contact [Harness Support](mailto:support@harness.io) to enable. Go to [DAG pipelines](/docs/platform/pipelines/dag-pipelines) to configure dependency-based execution.
+
+- AWS CDK steps now run on ECS-based delegates, so you can execute CDK synth and deploy steps without a Kubernetes delegate runtime. This feature requires feature flags. Contact [Harness Support](mailto:support@harness.io) to enable. Go to [AWS CDK provisioning](/docs/continuous-delivery/cd-infrastructure/aws-cdk/aws-cdk-provisioning) to run CDK steps on ECS delegates.
+
+- Google Cloud Run and GKE deployments now support pause and rollout control, so you can deploy without traffic, shift a percentage of traffic, run validations, and insert a manual approval step before you shift the remaining traffic. This feature requires feature flags. Contact [Harness Support](mailto:support@harness.io) to enable. Go to [Google Cloud Run](/docs/continuous-delivery/deploy-srv-diff-platforms/google-cloud-functions/google-cloud-run) to configure staged rollouts.
+
+- Pipeline chaining now supports looping strategies when a parent pipeline calls a child pipeline, so you can run a child pipeline multiple times across a matrix or repeat configuration. Go to [Pipeline chaining](/docs/platform/pipelines/pipeline-chaining) to run a child pipeline in a loop.
+
+- Matrix looping strategies now evaluate `exclude` conditions at the beginning of the loop, so excluded combinations are removed before iterations start rather than skipped during execution. Go to [Matrix looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) to configure matrix exclusions.
+
+- Harness now supports **Git Experience for monitored services**, so you can store and manage monitored service configurations in your Git repository. Go to [Git Experience for monitored services](/docs/platform/git-experience/gitx-monitored-services) to manage monitored services in Git.
+
+- Harness now documents the Bitbucket on-premise connector configuration for Self-Managed Platform (SMP). Go to [Bitbucket connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference) to configure a Bitbucket on-premise connector.
+
+- Harness now documents the behavior of the GitHub connector when it retrieves branches, including how to work with repositories that contain a large number of branches. Go to [GitHub connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference) to review connector configuration.
+
+#### Fixed issues
+
+- Fixed an issue where the Harness Terraform Provider returned an unclear error when a delegate token name was still reserved by a revoked token. When you reapply a configuration that uses the `harness_platform_delegatetoken` resource with the same token name, the error message now clearly states that the name is reserved by a revoked token. (**CDS-126825**, **ZD-117850**)
+- Fixed an issue where a rollback step failure prevented subsequent rollback steps configured with the `Always` condition from executing in a CD stage. All rollback steps with the `Always` condition now run regardless of a failure in a previous rollback step. (**PIPE-34274**, **PIPE-35612**, **ZD-115229**)
+- Fixed an issue where a stage remained stuck in the running state after its execution failed, which blocked other executions at the resource constraint step. (**PIPE-35548**, **ZD-118196**)
+- Fixed an issue where a Helm rollback ran against the wrong revision when the deploy step failed during pipeline execution. The rollback now targets the correct previous revision instead of the revision before it. (**CDS-124532**)
+- Fixed an issue where failure strategy behavior was incorrect when the `PIPE_CACHE_CURRENT_STATUS` feature flag was enabled. Leaf steps skipped their immediate parent step group when updating cached status, which broke the execution hierarchy and prevented step group failure strategies from managing retries correctly. (**PIPE-35336**)
+- Fixed an issue where remote template responses did not include the `cache_response_metadata` field required to display Git Sync status. Templates now return this field for parity with pipelines. (**PIPE-35685**)
+
 ### Version 1.157.4
 
 #### New features and enhancements
