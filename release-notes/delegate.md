@@ -171,10 +171,14 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## July 2026
 
-### Version 26.07.89601 <!-- July 27, 2026 -->
+### Version 26.07.89601 <!-- July 13, 2026 -->
 
 #### Fixed issues
-- Updated scm delegate binary [PIPE-35742]
+- Updated the SCM (Source Code Management) service binary bundled with the delegate to the latest release. [PIPE-35742]
+- Fixed secret values being printed as object references (for example, `SecretRefData@...`) instead of masked placeholders in step logs. The issue occurred because an output variable resolution fallback overwrote secret outputs, causing the CI Run step to display the object reference and the Shell Script step to display the plaintext variable name instead of `*****`. The fix skips secret-type variables in the CI fallback and restores masked handling for uncaptured Shell Script secrets. [CI-23597]
+- Fixed the `<+pipeline.sequenceId>` expression returning null for manual builds that use a Harness Code repository. The issue occurred with the `CI_ENABLE_BRANCH_SEQUENCE_ID` feature flag enabled, where the expression resolved correctly for trigger-based executions but not for manual builds, unlike GitHub repositories where it resolved for both. The fix ensures the expression resolves for manual builds, matching GitHub repository behavior. [CI-22819]
+- Fixed Terraform Apply and Destroy steps failing when the Terraform plan is stored on the delegate. The issue occurred because the delegate ID that ran the Plan step was not propagated through the inherited plan output, so Apply or Destroy steps dispatched with 'Inherit From Plan' could run on a different delegate that did not have the plan file. The fix propagates the Plan step's delegate ID and uses it to route Apply and Destroy tasks to the same delegate that holds the plan file, removing the need for additional scripts or manual delegate selectors. This fix requires the feature flag `CDS_USE_STORED_TF_PLAN_FROM_SAME_DELEGATE_ID` to be enabled. [CDS-123038]
+- Improved the performance of the aggregate project list API at scale. The issue occurred because project aggregate data was fetched inefficiently, causing latency to degrade as the number of organizations increased. The fix batches the project aggregate data requests to ng-manager, reducing latency at high organization counts. [PL-71702]
 
 ## June 2026
 
