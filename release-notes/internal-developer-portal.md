@@ -30,10 +30,80 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 | **Version** | **prod0** | **prod1** | **prod2** | **prod3** | **prod4** | **prodeu1** |
 | ----------- | --------- | --------- | --------- | --------- | --------- | ----------- |
-| [2026.6.v1](/release-notes/internal-developer-portal#june---20266v1)  | ✅        | ✅         | ✅           | TBA        | TBA         | TBA         |
+| [2026.7.v1](/release-notes/internal-developer-portal#july---20267v1)  | ✅        | ✅         | ✅           | ✅        | ✅         | ✅         |
+| [2026.6.v1](/release-notes/internal-developer-portal#june---20266v1)  | ✅        | ✅         | ✅           | ✅        | ✅         | ✅         |
 | [2026.5.v2](/release-notes/internal-developer-portal#may---20265v2)   | ✅        | ✅         | ✅           | ✅        | ✅         | ✅         |
-| [2026.5.v1](/release-notes/internal-developer-portal#may---20265v1)   | ✅        | ✅         | ✅           | ✅        | ✅         | ✅         |
 
+
+## July - [2026.7.v1]
+
+---
+
+### New Features
+
+#### Kubernetes: Persistent Agent Mode and Entity Detail Page | [Read Doc](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/kubernetes)
+
+The Kubernetes integration now supports two agent modes. The default cron mode syncs resources on a schedule. The new persistent mode runs a long-lived agent that delivers near real-time resource updates, enabled with the `IDP_ENABLE_PERMANENT_SDA` feature flag.
+
+The entity detail page now includes a Kubernetes tab with a resource list across four resource types: Workloads, Pods, Nodes, and Containers. Clicking any resource opens a side drawer with detailed configuration and status for that resource.
+
+<DocImage path={require('../docs/internal-developer-portal/catalog/create-entity/catalog-discovery/static/k8s-drawer.gif')} />
+
+#### API Endpoint Extraction and Enrichment | [Read Doc](/docs/internal-developer-portal/catalog/integrate-tools/api-endpoint-enrichments)
+
+IDP now automatically parses OpenAPI specs from registered API catalog entities and exposes individual endpoints as structured ingested properties under `metadata.apis`. External services can then write custom enrichments (such as risk scores, ownership metadata, or policy tags) to individual endpoints via the Catalog Custom Properties API.
+
+Push enrichments using `entity_ref` in the format `api:account/<identifier>` with the `Harness-Account` header. Only `type: openapi` entities are supported. This feature is gated behind the `IDP_API_ENDPOINT_EXTRACTION` feature flag.
+
+<DocImage path={require('../docs/internal-developer-portal/catalog/integrate-tools/static/enrichment-added2.png')} />
+
+#### Personas Views Customisation
+
+The IDP Overview now shows each user a tab tailored to their role, so developers, platform engineers, and engineering leaders each land on information relevant to their work instead of a one-size-fits-all homepage. Platform admins configure the card layout for each view and assign the Platform and Leadership tabs to the appropriate user groups.
+
+<DocVideo src="https://www.youtube.com/watch?v=jhOXM5hMnZ0" />
+
+#### OPA for All Catalog Entities
+
+OPA policy enforcement in IDP now extends beyond environment blueprints and environments to cover all catalog entities, including components, APIs, resources, groups, and systems. Platform engineers can write Rego policies that automatically block or warn on non-compliant entities at the point of save, enforcing naming conventions, ownership requirements, lifecycle standards, and other catalog hygiene rules across all teams and projects without manual review.
+
+<DocImage path={require('../docs/internal-developer-portal/governance/static/policyset-eval2.gif')} />
+
+#### Catalog Info YAML Integration
+
+Users can now import catalog-info.yaml files from GitHub and Bitbucket repositories. The integration automatically converts Backstage entity definitions into the Harness IDP format, facilitating a seamless onboarding process for organizations already using Backstage.
+
+<DocImage path={require('../docs/internal-developer-portal/catalog/create-entity/catalog-discovery/static/ciy-catalog-entity.gif')} />
+
+---
+
+### Enhancements & Bug Fixes
+
+#### Integration: Merge Recommendations 
+
+When an integration discovers a large number of services, selecting and importing them and choosing an action (Merge or Register) one row at a time is slow. The **Discovered** tab in catalog integrations now includes a smart bulk-selection snackbar. When reviewing discovered services, you can filter the selection to all services where the recommended action is **Merge**, then import the entire group in one click. 
+
+<DocImage path={require('../docs/internal-developer-portal/catalog/create-entity/catalog-discovery/static/bulk-merge-recommend.png')} />
+
+#### Sync Configurations: Vanity URL for Ingestion Stream Endpoint | [Read Doc](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/initial-config)
+
+By default, integration sync data travels through the default endpoint (e.g., accounts.harness.io, app.harness.io, app3.harness.io). This section lets you override that behavior if your network restricts outbound traffic to your account's vanity URL only.
+
+<DocImage path={require('../docs/internal-developer-portal/catalog/create-entity/catalog-discovery/static/sync-configurations.png')} />
+
+#### Fixes
+
+- Workflows were failing with "Token is not valid" errors even when the service account token was valid and had the correct permissions. This is now fixed. [IDP-10083]
+- The IDP home page was showing a TypeError for accounts that had not explicitly configured a home page layout. The portal now loads a default home page in this case. [IDP-10059]
+- Clicking a search result for catalog component documentation was navigating to a broken URL. Search result links now resolve to the correct page. [IDP-10033]
+- Catalog entities were ignoring their configured layouts and falling back to the default layout. Custom layouts now apply correctly. [IDP-9971]
+- Custom entity kinds with purely numeric names could not be created and returned a 405 error. Numeric names are now supported. [IDP-9936]
+- Workflow jobs triggered from IDP templates were taking up to 2 hours to start. Jobs now start without excessive delays. [IDP-9902]
+- Switching tabs on an entity page while data was still loading could show content from the previously selected tab. Tab content now updates correctly when switching. [IDP-9250]
+
+
+
+---
 
 ## June - [2026.6.v1]
 
