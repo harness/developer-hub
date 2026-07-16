@@ -130,6 +130,6 @@ Harness retains alerts in your Inbox for **90 days**. After that, they are no lo
 
 ## Related articles
 
-- <a href="/docs/platform/notifications/notification-settings" target="_blank">Notification settings</a>: Learn how to configure additional notification channels like email and Slack.
+- <a href="/docs/platform/notifications/notifications-overview" target="_blank">Notification settings</a>: Learn how to configure additional notification channels like email and Slack.
 - <a href="/docs/platform/notifications/centralised-notification" target="_blank">Centralised notifications</a>: Understand how to set up event-based rules for pipeline and resource notifications.
 - <a href="/docs/platform/account-license-limits" target="_blank">Account license limits</a>: Understand platform resource limits and avoid hitting them unexpectedly.

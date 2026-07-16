@@ -3,7 +3,7 @@ title: Notifications
 description: Configure notification settings for the account.
 keywords: [Notification Settings, Slack notifications, Microsoft Teams notifications, webhook notifications, PagerDuty notifications]
 sidebar_position: 1
-slug: /docs/platform/notifications/notifications-overview
+slug: /platform/notifications/notifications-overview
 redirect_from:
   - /tutorials/cd-pipelines/notifications
   - /docs/platform/notifications/notification-settings

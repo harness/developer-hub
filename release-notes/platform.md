@@ -411,7 +411,7 @@ No enhancements or fixes were released in this cycle.
 
 #### New features and enhancements
 
-- Introduced [email alerts](/docs/platform/notifications/notification-settings#emails-for-platform-limit-alerts) to notify account admins as the account approaches [platform resource limits](/docs/platform/account-license-limits/). Notifications are triggered at 80%, 95%, and 100% thresholds for key resources, enabling teams to take timely action before limits are reached. [PL-67402]
+- Introduced [email alerts](/docs/platform/notifications/notifications-overview#emails-for-platform-limit-alerts) to notify account admins as the account approaches [platform resource limits](/docs/platform/account-license-limits/). Notifications are triggered at 80%, 95%, and 100% thresholds for key resources, enabling teams to take timely action before limits are reached. [PL-67402]
 
 ### Version 1.127.x <!--January 21,2026-->
 
@@ -2404,7 +2404,7 @@ The List projects API now returns a 404 `ENTITY_NOT_FOUND` response for projects
 
 - To enhance security, Harness has added settings to enable and disable Slack, Microsoft Teams, webhook, and PagerDuty notification channels at the account scope. (PL-39921)
 
-  For more information, go to [Notification settings](/docs/platform/notifications/notification-settings).
+  For more information, go to [Notification settings](/docs/platform/notifications/notifications-overview).
 
 ###### Fixed issues
 

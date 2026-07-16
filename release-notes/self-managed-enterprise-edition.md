@@ -15075,7 +15075,7 @@ gsutil -m cp \
 
 - To enhance security, Harness has added settings to enable and disable Slack, Microsoft Teams, webhook, and PagerDuty notification channels at the account scope. (PL-39921)
 
-  For more information, go to [Notification settings](/docs/platform/notifications/notification-settings).
+  For more information, go to [Notification settings](/docs/platform/notifications/notifications-overview).
 
 - The **Session Timeout** field in Authentication Settings is renamed to **Session Inactivity Timeout**. The field now automatically converts the minutes you enter to higher units of time, and displays the result under the field to simplify usage. For example, if you enter 1440, the UI shows **1 day** below the field. (PL-39982, ZD-47238)
 

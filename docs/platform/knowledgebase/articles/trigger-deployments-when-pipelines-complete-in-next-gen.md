@@ -29,7 +29,7 @@ The solution involves automating the triggering of a pipeline upon the successfu
    - **Webhook Notification:** A webhook is a way for an application to send real-time data to other applications. In this case, when the source pipeline finishes, it sends a webhook notification.
    - **Passing the Custom Trigger URL:** The webhook notification includes the URL of the custom trigger created in the target pipeline. This URL is the endpoint that the webhook will hit to trigger the target pipeline.
    - **Passing Token (if mandatory):** Some systems require authentication for security reasons. If the custom trigger requires authentication, you would pass a token as part of the request header in the webhook. This token is often stored as a secret to keep it secure.
-   - **Webhook Notifications:** https://developer.harness.io/docs/platform/notifications/notification-settings/#configure-pipeline-notifications
+   - **Webhook Notifications:** https://developer.harness.io/docs/platform/notifications/notifications/configure-notifications#configure-pipeline-notifications
 
 ### **Workflow Summary:**
 1. **Setup the Custom Trigger:** In the target pipeline, create a custom trigger that listens for a webhook event.

@@ -27,7 +27,7 @@ You can create custom notification templates at the following [scopes](https://d
 There are two ways to use custom notification templates:
 
 - [**Centralized notifications for pipelines**](/docs/platform/notifications/centralised-notification)
-- [**Pipeline notifications**](/docs/platform/notifications/notification-settings/#get-started-with-notifications)
+- [**Pipeline notifications**](/docs/platform/notifications/notifications/configure-notifications#get-started-with-pipeline-notifications)
 
 ## Setting Up Notifications Template
 
@@ -99,7 +99,7 @@ In this example, we are going to discuss setting up custom notification template
 
 ## Attaching a Custom Notification Template to Pipeline Notifications
 
-Harness supports [adding notification rules to pipelines](/docs/platform/notifications/notification-settings/#add-a-notification-rule). With this enhancement, you can now **attach a custom notification template** to a pipeline notification rule to override the default message format and send custom webhook-based notifications.
+Harness supports [adding notification rules to pipelines](/docs/platform/notifications/notifications/centralised-notification#pipeline-notifications). With this enhancement, you can now **attach a custom notification template** to a pipeline notification rule to override the default message format and send custom webhook-based notifications.
 
 You can also attach templates in [**centralized notification for pipeline events**](/docs/platform/notifications/centralised-notification)
 
@@ -107,7 +107,7 @@ This allows you to replace the default notification message with a tailored stru
 
 ### How to Attach a Template
 
-When configuring a **pipeline-level notification rule**, click **Notify** in the right panel of the Pipeline Studio. Then, follow the steps for [Configure pipeline notifications](/docs/platform/notifications/notification-settings/#get-started-with-notifications) until you reach the **Notification Template** step.
+When configuring a **pipeline-level notification rule**, click **Notify** in the right panel of the Pipeline Studio. Then, follow the steps for [Configure pipeline notifications](/docs/platform/notifications/notifications/configure-notifications#get-started-with-pipeline-notifications) until you reach the **Notification Template** step.
 
 Under the **Notification Template** section:
 

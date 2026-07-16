@@ -26,7 +26,7 @@ For more information, go to [Approvals](/docs/platform/approvals/approvals-tutor
 
 - You can also configure pipelines to receive notifications about various steps that executed or failed in a pipeline. This helps you keep track of the experiment in real-time.
 
-For more information, go to [Notifications](/docs/platform/notifications/notification-settings).
+For more information, go to [Notifications](/docs/platform/notifications/notifications-overview).
 
 ### Permissions required
 

@@ -5,7 +5,7 @@ sidebar_label: Notifications for Exemptions
 sidebar_position: 63
 --- 
 
-The STO module is integrated with the [Harness Platform's notification system](/docs/platform/notifications/notification-settings/) to keep you informed about key events in the lifecycle of an issue exemption. You can configure notification rules to send alerts to individuals or groups via various channels like **Email**, **Microsoft Teams**, **Slack**, **PagerDuty**, or **Webhook**. You can set up notifications for the following events:
+The STO module is integrated with the [Harness Platform's notification system](/docs/platform/notifications/notifications-overview/) to keep you informed about key events in the lifecycle of an issue exemption. You can configure notification rules to send alerts to individuals or groups via various channels like **Email**, **Microsoft Teams**, **Slack**, **PagerDuty**, or **Webhook**. You can set up notifications for the following events:
 
 - [Notify on Exemption Requested](#exemption-requested)
 - [Notify on Exemption Status Changed](#exemption-status-changed)
@@ -24,7 +24,7 @@ Channels are the delivery methods for your notifications. You can use existing c
 2. Select **Notifications Management**.
 3. Go to the **Channels** tab.
 
-For detailed instructions on setting up different channel types, go to the Harness Platform documentation on [Notification Settings](/docs/platform/notifications/notification-settings/#configure-new-channels-to-sent-notification).
+For detailed instructions on setting up different channel types, go to the Harness Platform documentation on [Notification Settings](/docs/platform/notifications/notifications/configure-notifications#configure-new-channels-to-sent-notification).
 
 ### Configure Notification Rules
 

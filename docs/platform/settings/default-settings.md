@@ -202,7 +202,7 @@ For information about these settings, go to [Set up perspective preferences](/do
 
 ### Notifications
 
-For information about these settings, go to [Notification settings](/docs/platform/notifications/notification-settings).
+For information about these settings, go to [Notification settings](/docs/platform/notifications/notifications-overview).
 
 ### Supply Chain Assurance
 

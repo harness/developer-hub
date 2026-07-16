@@ -2,7 +2,7 @@
 title: Chaos Faults
 description: Comprehensive library of pre-built chaos faults for testing system resilience
 sidebar_position: 1
-slug: /docs/chaos-engineering/faults/chaos-faults-reference
+slug: /chaos-engineering/faults/chaos-faults-reference
 redirect_from:
   - /docs/chaos-engineering/use-harness-ce/chaos-faults
 ---

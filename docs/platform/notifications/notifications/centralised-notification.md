@@ -72,7 +72,7 @@ You can also configure the **Waiting for User Action** event in centralized noti
 
 4. **Configure Channels**
    - Select notification channels.
-   - Choose existing channels or [create new ones](/docs/platform/notifications/notification-settings#configure-new-channels-to-sent-notification)
+   - Choose existing channels or [create new ones](/docs/platform/notifications/notifications/configure-notifications#configure-new-channels-to-sent-notification)
    - Click **Submit** to save your configuration
 </TabItem>
 </Tabs>
@@ -135,7 +135,7 @@ These notifications help track delegate disconnection, expiration, and expiring 
 
 4. **Configure Channels**
    - Select notification channels.
-   - Choose existing channels or [create new ones](/docs/platform/notifications/notification-settings#configure-new-channels-to-sent-notification)
+   - Choose existing channels or [create new ones](/docs/platform/notifications/notifications/configure-notifications#configure-new-channels-to-sent-notification)
    - Click **Submit** to save your configuration.
 </TabItem>
 </Tabs>
@@ -194,7 +194,7 @@ For background on the exemption workflow, see <a href="/docs/artifact-registry/d
    />
 
 4. **Configure Channels**
-   - Choose existing channels or [create new ones](/docs/platform/notifications/notification-settings#configure-new-channels-to-sent-notification)
+   - Choose existing channels or [create new ones](/docs/platform/notifications/notifications/configure-notifications#configure-new-channels-to-sent-notification)
    - Toggle **Enable on Save** to activate the rule immediately
    - Click **Submit** to save your configuration
 
@@ -237,7 +237,7 @@ Custom notification templates are not supported for GitOps application notificat
 
 4. **Configure channels**
    - Select notification channels (Slack, Microsoft Teams, email, webhooks, or PagerDuty).
-   - Choose existing channels or [create new ones](/docs/platform/notifications/notification-settings#configure-new-channels-to-sent-notification).
+   - Choose existing channels or [create new ones](/docs/platform/notifications/notifications/configure-notifications#configure-new-channels-to-sent-notification).
    - Select **Submit** to save your configuration.
 
 ---
@@ -310,7 +310,7 @@ You can configure notifications for an existing service account or create a new 
    * **Token Expires in 1–4 weeks:** Choose a timeframe between 1 and 4 weeks before expiration. Notifications are sent daily during the selected week. For example, if you select _4 weeks_, you will receive a daily notification during the fourth week before the token expires.
    * **Token Expires in 1 day:** A final reminder sent one day before expiration.
 
-9. Select an existing channel or [create a new channel](/docs/platform/notifications/notification-settings#configure-new-channels-to-sent-notification) to receive alerts.
+9. Select an existing channel or [create a new channel](/docs/platform/notifications/notifications/configure-notifications#configure-new-channels-to-sent-notification) to receive alerts.
 
 10. Turn on **Enable on Save** to activate the rule immediately after you click **Submit**.
 </TabItem>

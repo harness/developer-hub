@@ -2433,7 +2433,7 @@ When executing the pipeline, don't select the option to notify only me.
 
 Verify that the selected user group selected has a channel (email, Slack, and so on) configured under **Notification Preferences**.
 
-For more information, go to [Notification settings](/docs/platform/notifications/notification-settings/).
+For more information, go to [Notification settings](/docs/platform/notifications/notifications-overview/).
 
 ### What are Harness conditional alerts and notifications?
 

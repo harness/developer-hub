@@ -220,4 +220,4 @@ You have successfully configured a Harness pipeline to run Ansible playbooks usi
 
 - Go to [Harness CD key concepts](/docs/continuous-delivery/get-started/key-concepts) to integrate Ansible with deployment strategies like blue-green and canary deployments.
 - Go to [Approval steps](/docs/platform/approvals/approvals-tutorial) to require manual review before running Ansible playbooks in production environments.
-- Go to [Pipeline notifications](/docs/platform/notifications/notification-settings) to configure alerts when Ansible execution completes or fails.
+- Go to [Pipeline notifications](/docs/platform/notifications/notifications-overview) to configure alerts when Ansible execution completes or fails.

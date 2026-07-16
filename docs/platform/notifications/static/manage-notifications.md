@@ -92,7 +92,7 @@ To delete a delegate event notification, do the following:
 
 ## Manage event notification channels
 
-With notifications management, you can enable or disable notification channels at the account, project, and org scopes. For more information on notification channels, go to [Get started with notifications](/docs/platform/notifications/notification-settings#get-started-with-notifications).
+With notifications management, you can enable or disable notification channels at the account, project, and org scopes. For more information on notification channels, go to [Get started with notifications](/docs/platform/notifications/notifications/configure-notifications#get-started-with-pipeline-notifications).
 
 ### Add a new channel
 

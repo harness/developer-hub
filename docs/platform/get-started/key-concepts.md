@@ -359,7 +359,7 @@ The Harness Platform provides several capabilities that work across all modules.
 - <a href="/docs/platform/settings/default-settings" target="_blank">Global default settings</a>: Set account-wide defaults for timeouts, behaviors, and configurations so every team starts with a consistent baseline.
 - <a href="/docs/category/governance-1" target="_blank">Governance</a>: Enforce policies using Open Policy Agent (OPA) to block non-compliant configurations before they are applied.
 - <a href="/docs/platform/harness-ai/overview" target="_blank">Harness AI</a>: Use AI-assisted features to troubleshoot failures, generate pipelines, and get contextual recommendations directly in the platform.
-- <a href="/docs/platform/notifications/notification-settings" target="_blank">Notifications</a>: Send pipeline and approval alerts to Slack, Microsoft Teams, email, or PagerDuty.
+- <a href="/docs/platform/notifications/notifications-overview" target="_blank">Notifications</a>: Send pipeline and approval alerts to Slack, Microsoft Teams, email, or PagerDuty.
 - <a href="/docs/platform/templates/template" target="_blank">Templates</a>: Define steps, stages, or pipelines once and reuse them across multiple projects.
 - <a href="/docs/platform/triggers/triggers-overview" target="_blank">Triggers</a>: Automatically start pipelines in response to Git events, schedules, or new artifact versions.
 - <a href="/docs/platform/variables-and-expressions/runtime-inputs" target="_blank">Variables, expressions, and runtime input</a>: Pass dynamic values into pipelines at runtime or reference shared values across steps and stages.

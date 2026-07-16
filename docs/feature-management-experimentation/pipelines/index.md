@@ -51,7 +51,7 @@ When you add a <Tooltip id="fme.pipelines.step">step</Tooltip> to a <Tooltip id=
 
 ![](./static/pipeline-steps.png)
 
-Each FME step runs like [any other Harness pipeline step](/docs/platform/pipelines/add-a-stage#steps-available-for-custom-stages) and performs a single, discrete feature flag operation, such as creating a flag, updating metadata, modifying individual targets, or killing a flag. These steps execute in sequence with the rest of your pipeline logic and support standard pipeline capabilities, including [approvals](/docs/platform/approvals/approvals-tutorial), [notifications](/docs/platform/notifications/notification-settings#configure-pipeline-notifications), and [custom failure strategies](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps/).
+Each FME step runs like [any other Harness pipeline step](/docs/platform/pipelines/add-a-stage#steps-available-for-custom-stages) and performs a single, discrete feature flag operation, such as creating a flag, updating metadata, modifying individual targets, or killing a flag. These steps execute in sequence with the rest of your pipeline logic and support standard pipeline capabilities, including [approvals](/docs/platform/approvals/approvals-tutorial), [notifications](/docs/platform/notifications/notifications/configure-notifications#configure-pipeline-notifications), and [custom failure strategies](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps/).
 
 ## How approvals work with FME steps
 

@@ -85,7 +85,7 @@ Approvers are not notified by default when a request is filed. To push exemption
 - `Dependency Firewall Exemption Requested`: fires when a new request is submitted.
 - `Dependency Firewall Exemption Status Changed`: fires on a status transition.
 
-Go to [Artifact Registry Notifications](/docs/platform/notifications/centralised-notification#artifact-registry-notifications) to walk through the rule wizard, and [Notification settings](/docs/platform/notifications/notification-settings) to review the supported channels and account-level controls. Notification rules can be scoped to all organizations or specific organizations.
+Go to [Artifact Registry Notifications](/docs/platform/notifications/centralised-notification#artifact-registry-notifications) to walk through the rule wizard, and [Notification settings](/docs/platform/notifications/notifications-overview) to review the supported channels and account-level controls. Notification rules can be scoped to all organizations or specific organizations.
 :::
 
 ## Review and Decide on a Request

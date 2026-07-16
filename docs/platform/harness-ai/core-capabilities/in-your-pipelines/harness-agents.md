@@ -1073,7 +1073,7 @@ Worker Agent results can be forwarded to Slack using pipeline notifications, use
 3. In **Notification Method**, select `Slack`.
 4. Paste your Slack Incoming Webhook URL, or reference it as a secret: `<+secrets.getValue("slackwebhookURL")>`.
 
-Go to [Configure pipeline notifications](/docs/platform/notifications/notification-settings/#configure-pipeline-notifications) to review the full setup.
+Go to [Configure pipeline notifications](/docs/platform/notifications/notifications/configure-notifications#configure-pipeline-notifications) to review the full setup.
 
 ### User group notifications
 

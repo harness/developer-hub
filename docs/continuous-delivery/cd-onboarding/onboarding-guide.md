@@ -34,7 +34,7 @@ We recommend you use either the [Harness UI](/docs/platform/get-started/harness-
 Now you are ready to learn advanced CD concepts through the following tutorials.
 
 - [Templates](/docs/platform/templates/create-pipeline-template)
-- [Notifications](/docs/platform/notifications/notification-settings)
+- [Notifications](/docs/platform/notifications/notifications-overview)
 - [Approvals](/docs/platform/approvals/approvals-tutorial)
 - [Continuous Verification](/docs/continuous-delivery/get-started/tutorials/kubernetes-container-deployments/prometheus)
 - [Infrastructure Provisioning as part of CD pipeline](/docs/continuous-delivery/get-started/tutorials/aws-deployments/cloudformation)

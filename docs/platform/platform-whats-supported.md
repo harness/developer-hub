@@ -109,8 +109,8 @@ Supported notifications methods and collaboration tools:
    - [Slack](/docs/platform/notifications/send-notifications-using-slack/)
    - [Email](/docs/platform/notifications/add-smtp-configuration)
    - [Microsoft Teams](/docs/platform/notifications/send-notifications-to-microsoft-teams).
-   - [PagerDuty](/docs/platform/notifications/notification-settings)
-   - [Webhook](/docs/platform/notifications/notification-settings)
+   - [PagerDuty](/docs/platform/notifications/notifications-overview)
+   - [Webhook](/docs/platform/notifications/notifications-overview)
 
 Harness supports approvals for these collaboration tools:
    - [Jira](/docs/platform/approvals/adding-jira-approval-stages): Supports on-premise version < 9.0.
