@@ -78,6 +78,11 @@ Select your artifact format below to get started:
       logoWidth: 42,
       logoHeight: 28
     },
+    Debian: {
+      path: "/artifact-registry/content/supported-formats/debian-quickstart.md",
+      logo: "debian-logo.svg",
+      logoSize: 24
+    },
     Cargo: {
       path: "/artifact-registry/content/supported-formats/cargo-quickstart.md",
       logo: "rust-logo.png",
