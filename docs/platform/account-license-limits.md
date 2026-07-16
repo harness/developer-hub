@@ -10,7 +10,7 @@ The Harness Platform enforces limits at account level to ensure optimal performa
 
 - Account limits define the maximum number of specific resources or entities that can be created under a particular account. Once the limits are reached, no additional entities can be created. 
 
-- You can configure alerts to get notified as you approach your usage limits. Harness supports email notifications for platform usage and license limits, allowing you to take action before limits are reached. For more information on setting up these alerts, see [Emails for Platform Limit Alerts](/docs/platform/notifications/notification-settings/#emails-for-platform-limit-alerts).
+- You can configure alerts to get notified as you approach your usage limits. Harness supports email notifications for platform usage and license limits, allowing you to take action before limits are reached. For more information on setting up these alerts, see [Emails for Platform Limit Alerts](/docs/docs/platform/notifications/notifications-overview#emails-for-platform-limit-alerts).
 
 **Note**: The resource limits displayed here represent default platform limits. These are not hard restrictions. If your requirements exceed these defaults, please contact [Harness Support](mailto:support@harness.io) to discuss adjustments tailored to your needs.
 :::
