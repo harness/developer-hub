@@ -81,7 +81,7 @@ File secrets store the content of uploaded files. The file is read, base64-encod
 | Type identifier | `SecretFile` |
 
 :::info Base64 Encoding
-File secrets are automatically converted to base64-encoded text when stored. When you retrieve a file secret in a pipeline, you may need to decode it before use. See the Managing Secrets section for decoding examples.
+Harness converts file secrets to base64-encoded text when storing them. When you retrieve a file secret in a pipeline, you may need to decode it before use. Go to <a href="/3k-docs/platform/getting-started/secrets/manage" target="_blank">Managing Secrets</a> section for decoding examples.
 :::
 
 ### Examples
