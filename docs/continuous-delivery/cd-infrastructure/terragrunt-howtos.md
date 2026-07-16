@@ -54,7 +54,7 @@ Go to [Provisioning overview](/docs/continuous-delivery/cd-infrastructure/provis
 
 Harness can provision any resource that is supported by Terragrunt and the related Terraform Provider or plugin.
 
-If you want to use Terraform without Terragrunt, Harness supports that too. Go to [Terraform how-tos](./terraform-infra/terraform-how-tos) to configure Terraform provisioning without Terragrunt.
+If you want to use Terraform without Terragrunt, Harness supports that too. Go to [Terraform how-tos](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-how-tos) to configure Terraform provisioning without Terragrunt.
 
 We support using Terragrunt provisioning with an **OIDC-enabled AWS connector**, but it requires Delegate version `854xx` or later. Go to [AWS OIDC connector reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference) to configure OIDC authentication.
 
@@ -1044,7 +1044,7 @@ The option to skip stderr logs coloring is behind the feature flag `CDS_TF_TG_SK
 You have configured Terragrunt provisioning in your CD pipeline. You can now provision infrastructure dynamically as part of your deployments.
 
 - Go to [Provisioning overview](/docs/continuous-delivery/cd-infrastructure/provisioning-overview) to learn about other provisioning options in Harness.
-- Go to [Terraform how-tos](./terraform-infra/terraform-how-tos) to configure Terraform provisioning without Terragrunt.
+- Go to [Terraform how-tos](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-how-tos) to configure Terraform provisioning without Terragrunt.
 - Go to [Dynamic infrastructure provisioning](/docs/continuous-delivery/cd-infrastructure/provisioning-overview#dynamic-infrastructure-provisioning) to learn how to provision target environments as part of your deployments.
 
 

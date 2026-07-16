@@ -4,8 +4,6 @@ description: Use service hooks to install helm dependencies.
 sidebar_position: 30
 ---
 
-import ServiceHooks from '/docs/continuous-delivery/shared/service-hooks.md'
+import Cd from '@site/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/service-hooks.md';
 
-<ServiceHooks />
-
-
+<Cd />

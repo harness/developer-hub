@@ -19,7 +19,7 @@ tags:
   - dbops
 ---
 
-import Dbops from '@site/docs/database-devops/use-database-devops/schema-syncronisation.md';
+import Dbops from '@site/docs/database-devops/use-database-devops/schema-synchronization.md';
 
 <Dbops />
 
