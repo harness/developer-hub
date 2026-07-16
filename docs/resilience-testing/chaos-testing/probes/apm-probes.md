@@ -12,6 +12,8 @@ APM (Application Performance Monitoring) probes query metrics from your monitori
 
 Use APM probes when your application is monitored by an APM system and you want to observe how metrics behave under failure conditions. For example, you can track response times in Prometheus while injecting pod-delete faults, or monitor error rates in Datadog during a network disruption.
 
+For pre-built Datadog APM probe templates (CPU, memory, latency, and error rate), go to [Datadog APM Probe Templates](/docs/resilience-testing/chaos-testing/probes/probe-templates/datadog).
+
 ## Configure APM Probes
 
 Select the APM provider to view configuration details:

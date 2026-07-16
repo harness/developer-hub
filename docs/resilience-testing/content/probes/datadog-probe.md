@@ -1,5 +1,7 @@
 Datadog APM probe allows you to query Datadog metrics or run Synthetic tests and compare the results against specified criteria. It supports a legacy single-query metrics path and a **Datadog v2 timeseries** path for structured, multi-query validation.
 
+For pre-built Datadog APM probe templates (CPU, memory, latency, and error rate), go to [Datadog APM Probe Templates](/docs/resilience-testing/chaos-testing/probes/probe-templates/datadog).
+
 ## When to use
 
 - Monitor Datadog metrics (e.g., `system.cpu.user`, `trace.servlet.request.duration`) as steady-state indicators during chaos

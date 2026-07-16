@@ -74,6 +74,10 @@ const getCategoryDetails = (category: string): Record<string, string> => {
       details.icon = `${path}/kubernetes.svg`;
       details.link = `/docs/chaos-engineering/guides/probes/probe-templates/kubernetes`;
       break;
+    case "datadog-probes":
+      details.icon = `${path}/default.svg`;
+      details.link = `/docs/resilience-testing/chaos-testing/probes/probe-templates/datadog`;
+      break;
     case "custom-script-actions":
       details.icon = `${path}/kubernetes.svg`;
       details.link = `/docs/chaos-engineering/guides/actions/action-templates/custom-script`;
@@ -97,6 +101,18 @@ const getFaultDetails = (
     anchorLink: "",
   };
   
+  // Handle action templates - link to individual template pages
+  if (faultName && (
+    faultName.includes("Grafana Chaos Annotation") || 
+    faultName.includes("Datadog Chaos Event")
+  )) {
+    details.icon = `${path}/kubernetes.svg`;
+    // Use the category directly for action templates
+    details.link = `/docs/resilience-testing/chaos-testing/actions/action-templates/${category}/${normaliseForURL(faultName)}/`;
+    details.anchorLink = `${normaliseForURL(faultName)}`;
+    return details;
+  }
+  
   // Handle probe templates - link to individual template pages
   if (faultName && (
     faultName.includes("Status Check") || 
@@ -106,27 +122,17 @@ const getFaultDetails = (
     faultName.includes("Startup Time") ||
     faultName.includes("Warnings Check") ||
     faultName.includes("AZ Check") ||
-    faultName.includes("Rule Check")
+    faultName.includes("Rule Check") ||
+    (faultName.startsWith("Datadog") && category === "datadog")
   )) {
-    details.icon = `${path}/${category}.svg`;
+    details.icon = category === "datadog" ? `${path}/default.svg` : `${path}/${category}.svg`;
     // Generate full path based on category
     let categoryPath = "";
     if (category === "aws") categoryPath = "aws";
     else if (category === "gcp") categoryPath = "gcp";
     else if (category === "kubernetes") categoryPath = "kubernetes";
+    else if (category === "datadog") categoryPath = "datadog";
     details.link = `/docs/resilience-testing/chaos-testing/probes/probe-templates/${categoryPath}/${normaliseForURL(faultName)}/`;
-    details.anchorLink = `${normaliseForURL(faultName)}`;
-    return details;
-  }
-  
-  // Handle action templates - link to individual template pages
-  if (faultName && (
-    faultName.includes("Grafana Chaos Annotation") || 
-    faultName.includes("Datadog Chaos Event")
-  )) {
-    details.icon = `${path}/kubernetes.svg`;
-    // Use the category directly for action templates
-    details.link = `/docs/resilience-testing/chaos-testing/actions/action-templates/${category}/${normaliseForURL(faultName)}/`;
     details.anchorLink = `${normaliseForURL(faultName)}`;
     return details;
   }

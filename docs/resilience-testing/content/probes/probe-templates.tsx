@@ -26,4 +26,12 @@ export const probeTemplateCategories: FaultCardItem[] = [
     category: "kubernetes-probes",
     link: "/docs/resilience-testing/chaos-testing/probes/probe-templates/kubernetes",
   },
+  {
+    title: "Datadog",
+    description: <>Datadog APM Probe templates for CPU, memory, latency, and error rate</>,
+    faults: 6,
+    faultLabel: "templates",
+    category: "datadog-probes",
+    link: "/docs/resilience-testing/chaos-testing/probes/probe-templates/datadog",
+  },
 ];

@@ -17,6 +17,8 @@ import { awsProbeTemplates } from "../probes/probe-templates/aws/templates";
 import { gcpProbeTemplates } from "../probes/probe-templates/gcp/templates";
 import { kubernetesProbeTemplates } from "../probes/probe-templates/kubernetes/templates";
 
+import { datadogProbeTemplates } from "../probes/probe-templates/datadog/templates";
+
 import { customScriptActionTemplates } from "../actions/action-templates/custom-script/templates";
 
 const FAULTS = "/docs/chaos-engineering/faults/chaos-faults";
@@ -41,6 +43,7 @@ export const probeTemplateDrill: DrillCategory[] = [
   { title: "AWS", category: "aws-probes", description: <>Probe templates for AWS</>, items: awsProbeTemplates, itemLinkBase: `${PROBES}/aws`, itemLabel: "templates" },
   { title: "GCP", category: "gcp-probes", description: <>Probe templates for GCP</>, items: gcpProbeTemplates, itemLinkBase: `${PROBES}/gcp`, itemLabel: "templates" },
   { title: "Kubernetes", category: "kubernetes-probes", description: <>Probe templates for Kubernetes</>, items: kubernetesProbeTemplates, itemLinkBase: `${PROBES}/kubernetes`, itemLabel: "templates" },
+  { title: "Datadog", category: "datadog-probes", description: <>Probe templates for Datadog APM metrics</>, items: datadogProbeTemplates, itemLinkBase: `${PROBES}/datadog`, itemLabel: "templates" },
 ];
 
 export const actionTemplateDrill: DrillCategory[] = [
