@@ -37,7 +37,7 @@ export const featureList: CardItem[] = [
     module: MODULES.dbdevops,
     icon: "img/icon_dbdevops.svg",
     description: <>Accelerate deployment with an integrated pipeline for all database changes.</>,
-    link: "docs/category/get-started-with-database-devops",
+    link: "/docs/database-devops/get-started",
   },
   {
     title: "Manage Infrastructure as Code",

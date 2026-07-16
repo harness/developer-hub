@@ -108,3 +108,16 @@ Examples include:
 - Audit logging and deployment visibility  
 
 These capabilities help teams introduce **controlled, repeatable database deployment processes** across environments.
+
+## Can Harness Database DevOps be used to migrate databases from Azure SQL to Google Cloud SQL (or across any cloud providers)?
+
+Partially. Harness Database DevOps is an **orchestration layer**, not a data migration or replication tool. It does not move data between databases or cloud providers.
+
+For a cross-cloud database move (for example, Azure SQL to Google Cloud SQL), you need two separate tools working together:
+
+- **Data transfer tool:** Use a dedicated service such as Azure Database Migration Service, `pg_dump`/`pg_restore`, or a cloud-native replication tool to copy the existing data to the target database.
+- **Harness DB DevOps:** Once the target database exists, Harness orchestrates the **schema migration** portion. It applies your Liquibase or Flyway changelogs to the target, manages approval gates, sequences the rollout across environments, and records the full deployment audit trail.
+
+Harness connects to any database reachable from your network through the Harness Delegate. You configure a database connector pointing at the target (Google Cloud SQL in this example), and Harness runs the migration pipeline against it exactly as it would in any other environment.
+
+In short, use your cloud provider's data migration service to transfer data, and use Harness to deploy and govern the schema on the new database.

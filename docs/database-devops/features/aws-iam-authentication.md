@@ -2,6 +2,7 @@
 title: Configure AWS IAM Authentication for Aurora and RDS
 sidebar_label: AWS IAM Authentication
 description: Configure IAM-based authentication for AWS Aurora and RDS databases in Harness Database DevOps to eliminate static passwords and enable secure, token-based database access.
+unlisted: true
 sidebar_position: 8
 keywords:
   - aws iam authentication

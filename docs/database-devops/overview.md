@@ -189,3 +189,19 @@ Harness DBOps images are stored in a public container registry. If you don't wan
 ### How to Override LiteEngine or CIAddOn Image in DBOps?
 Refer to the [section](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci#harness-ci-image-updates) to override using CI Apis
 For Using private registry for the above images, override the default harnessImage connector at AccountLevel, refer to [section](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/#configure-harness-to-always-use-credentials-to-pull-harness-images)
+
+## Harness Database DevOps vs Liquibase and Flyway
+
+Harness Database DevOps is a pipeline-native orchestration layer built on top of migration tools like Liquibase and Flyway — not a replacement for them. It adds governance, approval gates, drift detection, and full CI/CD integration that standalone tools do not provide.
+
+Go to [Harness Database DevOps vs Liquibase vs Flyway](https://www.harness.io/blog/harness-database-devops-vs-liquibase-vs-flyway) to understand how Harness extends these tools with enterprise-grade delivery capabilities.
+
+---
+
+## Frequently asked questions
+
+<FAQ
+  question="Can Harness Database DevOps be used to migrate databases from Azure SQL to Google Cloud SQL (or across any cloud providers)?"
+  mode="docs"
+  fallback="Partially. Harness Database DevOps is an orchestration layer, not a data migration or replication tool — it does not move data between databases or cloud providers. For a cross-cloud move, use a dedicated data migration service (such as Azure Database Migration Service or pg_dump/pg_restore) to transfer the existing data to the target. Harness DB DevOps then orchestrates the schema migration portion: it applies your Liquibase or Flyway changelogs to the target database, manages approval gates, sequences the rollout across environments, and records the deployment audit trail. The two tools are complementary — the migration service handles data transfer, and Harness handles the controlled schema deployment on the target."
+/>

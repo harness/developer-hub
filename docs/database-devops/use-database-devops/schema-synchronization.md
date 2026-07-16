@@ -17,6 +17,9 @@ tags:
   - schema-management
   - database-baseline
   - dbops
+redirect_from: 
+  - /docs/database-devops/use-database-devops/schema-syncronization
+  - /docs/database-devops/use-database-devops/schema-syncronisation
 ---
 Harness Database DevOps supports the use of Liquibase’s `changelog-sync` command to help teams baseline database environments and align changelog state without deploying changes to the database. This is particularly useful when introducing Liquibase to existing databases or when multiple environments have intentionally divergent objects.
 

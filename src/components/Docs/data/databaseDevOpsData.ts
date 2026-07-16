@@ -17,14 +17,14 @@ import { MODULES } from "@site/src/constants";
           module: MODULES.dbdevops,
           description:
             "Learn the basics of Harness Database DevOps.",
-          link: "/docs/category/get-started-with-database-devops",
+          link: "/docs/database-devops/get-started",
         },
         {
           title: "Build with Database DevOps",
           module: MODULES.dbdevops,
           description:
             "Learn how to use the different elements of Harness Database DevOps.",
-          link: "/docs/category/use-db-devops",
+          link: "/docs/database-devops/get-started/get-started-with-changelogs",
         },
         // {
         //   title: "Third Module to add",

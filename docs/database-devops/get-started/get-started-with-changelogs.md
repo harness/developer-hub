@@ -4,6 +4,8 @@ description: Learn how to define changelogs for SQL and MongoDB in Harness Datab
 sidebar_position: 3
 sidebar_label: Get Started with Changelogs
 hide_table_of_contents: true
+redirect_from:
+  - /docs/category/use-db-devops
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
