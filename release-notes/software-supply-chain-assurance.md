@@ -17,6 +17,14 @@ These release notes describe recent changes to Harness Supply Chain Security.
 
 :::
 
+## June 2026
+
+### Version: v1.64.0 , Plugin Version: v0.63.0
+
+#### New Features and Enhancements
+
+- Added support for [evaluating security settings inherited from GitHub organizations and accounts](/docs/software-supply-chain-assurance/manage-risk-and-compliance/standards-and-rule-definitions#supported-standards-and-rules) during Repository Security Posture Management (RSPM) compliance scans, reducing false positives in repository compliance results.
+
 ## May 2026
 
 ### Version: v1.62.3 , Plugin Version: v0.61.0
@@ -40,7 +48,7 @@ These release notes describe recent changes to Harness Supply Chain Security.
 
 - With the general availability of [Role-Based Access Control (RBAC) for Supply Chain Security](/docs/software-supply-chain-assurance/settings/rbac), users assigned view-only roles can no longer perform write operations on SCS resources unless explicitly granted the required permissions.
 
-### Fixed Issues
+#### Fixed Issues
 
 - Fixed an issue where SBOM orchestration steps could fail during SBOM upload when custom configuration settings were not applied correctly, resulting in connectivity issues ([ZD-112588](https://harnesssupport.zendesk.com/agent/tickets/112588)).
 
