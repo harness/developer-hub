@@ -72,7 +72,7 @@ The Windows command probe extends the standard command probe to support Windows 
 
 ### Prerequisites
 
-- [Setup Windows chaos infrastructure](/docs/resilience-testing/chaos-testing/infrastructure/types/legacy-infra/windows)
+- [Setup Windows chaos infrastructure](/docs/resilience-testing/chaos-testing/infrastructure/windows)
 - [Windows chaos faults](/docs/chaos-engineering/faults/chaos-faults/windows/)
 
 ### Steps to configure

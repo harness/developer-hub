@@ -1,5 +1,5 @@
 ---
-title: Chaos Experiments
+title: Chaos Faults
 sidebar_position: 1
 description: Comprehensive library of pre-built chaos faults for testing system resilience
 ---

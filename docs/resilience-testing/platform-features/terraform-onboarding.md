@@ -8,7 +8,7 @@ This guide walks you through integrating Resilience Testing into your infrastruc
 ## Overview
 Harness simplifies chaos engineering with Terraform integration that enables you to:
 
-- **Do Chaos Engineering across your environments** - Automate the setup of chaos environments and infrastructures. See [Infrastructure documentation](/docs/resilience-testing/chaos-testing/infrastructure/infrastructures).
+- **Do Chaos Engineering across your environments** - Automate the setup of chaos environments and infrastructures. Go to [Infrastructure documentation](/docs/resilience-testing/chaos-testing/infrastructure) to set up chaos environments.
 - **Discover Services** - Automatically detect services for chaos experiments. See [Service Discovery documentation](/docs/resilience-testing/chaos-testing/service-discovery).
 - **Setup custom Image Registry** - Configure custom image registries for Harness Chaos Engineering workloads. See [Image Registry documentation](/docs/resilience-testing/chaos-testing/image-registry).
 - **Enforce Security** - Implement granular access controls and governance policies via Chaos Guard. See [Chaos Guard documentation](/docs/resilience-testing/chaos-testing/governance/governance-in-execution).
