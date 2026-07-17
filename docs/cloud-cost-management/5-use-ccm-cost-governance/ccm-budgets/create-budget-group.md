@@ -5,21 +5,6 @@ description: This topic describes how to create a new budget group.
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-<div style={{
-  backgroundColor: '#fff3cd',
-  border: '1px solid #ffeaa7',
-  borderRadius: '8px',
-  padding: '16px',
-  margin: '20px 0'
-}}>
-  <p style={{margin: 0}}>
-    <img src="/img/icon_ff.svg" alt="Feature Flag" width="18" style={{marginRight: '0.4rem', verticalAlign: 'middle'}}/> <strong>Behind a Feature Flag</strong>
-
-    Budget Groups are currently behind a feature flag `CCM_BUDGET_CASCADES`. Contact Harness Support to have the flag enabled for your account.
-  </p>
-</div>
-
-
 Budget Groups aggregate related budgets and budget groups into one consolidated entity, giving you a unified view of spend. **A given Budget Group can contain _either_ Budgets _or_ Budget Groups.**
 
 **With Budget Groups, you can:**

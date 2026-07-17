@@ -1,5 +1,5 @@
 ---
-title: External Cost Data Ingestion (Beta)
+title: External Cost Data Ingestion
 description: This topic describes how to set up External Cost Data Sources
 # sidebar_position: 2
 helpdocs_is_private: false
@@ -9,10 +9,6 @@ helpdocs_is_published: true
 External Cost Data Ingestion allows users to bring cost data from third-party vendors  such as Mongo, Snowflake, etc., into Harness Cloud & AI Cost Management (CACM). This allows users to see unified visibility and analysis across their cloud and external spend. Instead of managing these costs in spreadsheets or siloed tools, users can now consolidate them in Harness CACM for a single source of truth across all the cloud and non-cloud spend.
 
 Harness provides a standard CSV-based ingestion format, called [FOCUS](https://focus.finops.org/what-is-focus/), which allows you to map any third-party billing data into a consistent structure. Once uploaded, Harness ingests, validates, and processes the data, automatically generating default Perspective so you can immediately begin analyzing costs, tracking budgets, and organizing spend by teams, business units, or environments.
-
-:::info
-Note: This feature is currently in early access and behind  `CCM_EXTERNAL_DATA_INGESTION` feature flag. Please reach out to our support team to enable it.
-:::
 
 ## Why Use External Cost Data Ingestion?
 
@@ -96,14 +92,6 @@ The following table details all mandatory fields required for External Data Inge
 For complete FOCUS specification details, see: [FOCUSv1 Specification](https://focus.finops.org/wp-content/uploads/2024/11/FOCUS-spec-v1_1.pdf)
 :::
 ### FAQs:
-Q: Which FeatureFlag needs to be enabled ?
-
-A: `CCM_EXTERNAL_DATA_INGESTION``
-
-Q: When will this feature be generally available?
-
-A: This feature is currently in Beta. General availability timeline has not been confirmed yet.
-
 Q: Are there default perspectives for this ?
 
 A: Yes. The perspectives are created right after user clicks on finish and ingestion is completed. Reducing the time to value to few minutes.

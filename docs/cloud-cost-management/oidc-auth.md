@@ -8,10 +8,6 @@ helpdocs_is_published: true
 
 ## AWS OIDC Authentication
 
-:::info 
-This feature is behind a Feature Flag `CCM_ENABLE_OIDC_AUTH_AWS`. Contact [Harness Support](mailto:support@harness.io) to enable it.
-:::
-
 <DocImage path={require('./static/oidc-aws.png')} width="100%" height="100%" title="Click to view full size image" />
 
 OIDC authentication allows secure access your billing data and perform cost optimization without storing credentials. 
@@ -32,10 +28,6 @@ Follow the steps on the **Authentication** page to complete OIDC authentication:
 
 
 ## GCP OIDC Authentication
-
-:::info 
-This feature is behind a Feature Flag `CCM_ENABLE_OIDC_AUTH_GCP`. Contact [Harness Support](mailto:support@harness.io) to enable it.
-:::
 
 <DocImage path={require('./static/oidc-gcp.png')} width="100%" height="100%" title="Click to view full size image" />
 

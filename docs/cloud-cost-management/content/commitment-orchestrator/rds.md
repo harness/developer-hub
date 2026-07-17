@@ -5,21 +5,6 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 <RedirectIfStandalone label="AWS" targetPage="/docs/cloud-cost-management/get-started/dynamic-get-started" />
 
 
-<div style={{
-   backgroundColor: '#fff3cd',
-   border: '1px solid #ffeaa7',
-   borderRadius: '8px',
-   padding: '16px',
-   margin: '20px 0'
- }}>
-   <p style={{margin: 0}}>
-     <img src="/img/icon_ff.svg" alt="Feature Flag" width="18" style={{marginRight: '0.4rem', verticalAlign: 'middle'}}/> <strong>Behind a Feature Flag</strong>
-     
-     Commitment Orchestrator for RDS is currently behind a [Feature Flag](/docs/cloud-cost-management/whats-supported#ccm-feature-flags). Contact [Harness Support](mailto:support@harness.io) to have the flag enabled for your account.
-   </p>
- </div>
- 
-
 ### Before You Begin
 
 To setup Commitment Orchestrator in Harness CACM, you need:

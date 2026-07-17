@@ -2655,7 +2655,7 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'category',
-          label: 'Cluster Orchestrator for AWS EKS clusters (Beta)',
+          label: 'Cluster Orchestrator for AWS EKS clusters',
           link: {
             type: 'generated-index',
           },

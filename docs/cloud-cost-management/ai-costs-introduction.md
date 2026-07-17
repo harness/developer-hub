@@ -1,14 +1,10 @@
 ---
 title: AI Costs Management [NEW]
-description: Currently, this feature is behind the feature flag AUDIT_TRAIL_WEB_INTERFACE. Contact Harness Support to enable the feature. Your Harness account Audit Trail includes events for CACM changes. CACM Even…
+description: Harness AI Cost Management brings AI spend into the same FinOps platform you already use for cloud cost visibility, optimization, and governance.
 sidebar_position: 7
 ---
 
 #  AI Costs Management [NEW]
-
-**Beta Release | Feature Flag Required**
-
-> **This feature is currently in beta and available behind a feature flag. Contact your Harness account team to enable it for your account.**
 
 ---
 
@@ -22,7 +18,7 @@ At the center is unit economics. Every dollar of AI spent is tied to the agent, 
 
 ## What's New
 
-This beta release introduces end-to-end AI cost visibility across eight areas:
+This release introduces end-to-end AI cost visibility across eight areas:
 
 - **AI Dimensions** : Cost attribution across Team, Application, Component, and Tenant.
 - **Perspectives Integration**: Unified view of AI provider costs (OpenAI, Anthropic) alongside cloud costs.
@@ -55,10 +51,6 @@ For managed AI services, your existing cloud provider connector captures AI cost
 ---
 
 ## Getting Started
-
-:::note
-AI Cost Management is gated behind a feature flag. Contact your Harness account team.
-:::
 
 AI cost data lives in several places, and each one tells you something different. Harness supports three ingestion paths so customers can match the depth of attribution to what they actually need:
 

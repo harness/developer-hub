@@ -8,21 +8,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-
-<div style={{
-  backgroundColor: '#fff3cd',
-  border: '1px solid #ffeaa7',
-  borderRadius: '8px',
-  padding: '16px',
-  margin: '20px 0'
-}}>
-  <p style={{margin: 0}}>
-    <img src="/img/icon_ff.svg" alt="Feature Flag" width="18" style={{marginRight: '0.4rem', verticalAlign: 'middle'}}/> <strong>Behind a Feature Flag</strong>
-
-    Currently, this early access feature is behind a feature flag . Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-  </p>
-</div>
-
 ## Compatibility Matrix
 
 |Cluster Orchestrator Version| Kubernetes | Karpenter |
@@ -39,12 +24,12 @@ Link: https://hub.docker.com/r/harness/cluster-orchestrator/tags
 
 | Version        |      Release Date         |       Change Log |
 |-----------------|-------------------|------------------|
-| <span style={{backgroundColor: '#28a745', color: 'white', padding: '2px 6px', borderRadius: '4px', fontSize: '0.8em', marginLeft: '8px'}}>LATEST</span>  `0.9.0` | April 28, 2026 | <br/>- Upgraded Karpenter dependency to v1.8.2. Operator now emits events to the platform on schedule, Start and End.  <br/>-Thread-safe logging in Reconcilers; CCM Taint-related noise suppressed in the operator. <br/>-Fixed pod scheduled status check to use node assignment instead of pod phase. <br/>-Removed unnecessary/noisy error log lines from the operator. <br/> Stabilised Cluster Schedules (Beta)  |
+| <span style={{backgroundColor: '#28a745', color: 'white', padding: '2px 6px', borderRadius: '4px', fontSize: '0.8em', marginLeft: '8px'}}>LATEST</span>  `0.9.0` | April 28, 2026 | <br/>- Upgraded Karpenter dependency to v1.8.2. Operator now emits events to the platform on schedule, Start and End.  <br/>-Thread-safe logging in Reconcilers; CCM Taint-related noise suppressed in the operator. <br/>-Fixed pod scheduled status check to use node assignment instead of pod phase. <br/>-Removed unnecessary/noisy error log lines from the operator. <br/> Stabilised Cluster Schedules  |
 | `0.8.2` | Mar 6, 2026 | Complete redesign of bin-packing to work seamlessly with Karpenter consolidation, delivering better cost savings with zero conflicts: <br/>-Uses pod resource requests (matching Karpenter's logic) to eliminate evict-and-reprovision churn. <br/>-Only consolidates Karpenter-managed nodes that have been stable for ConsolidateAfter duration. <br/>-Cordons nodes immediately after eviction to prevent reschedule races. <br/>-Respects karpenter.sh/do-not-disrupt annotation at pod and node levels<br/>- Skips nodes already being disrupted by Karpenter<br/>- Protects system-critical pods, single replicas, and PDBs<br/>- Configurable eviction caps (default: 20 pods) to prevent storms<br/>- Rich platform events with CPU/Memory utilization data<br/>- Non-blocking async execution<br/>- Azure Karpenter Support (Preview)<br/>- Integrated Azure Karpenter provider for AKS support<br/>- Multi-cloud providerID parsing (AWS, Azure, GCP)<br/>- Configurable Azure Karpenter version support |
 | `0.8.1` | Feb 23, 2026 | - Upgraded to VPA 1.5.1 with support for in-place pod resizing (eliminates pod restarts during resource adjustments)<br/>- Added real-time scaling event tracking for VPA operations<br/>- Enhanced security with AWS IMDSv2 support and Rapidfort hardened container images<br/>- Performance improvements with Go 1.25 runtime upgrade |
 |  `0.8.0`  | Feb 3, 2026  | - Introducing a new distributor component (currently under a **FF DISTRIBUTIONV2_ENABLED**)<br/> - This component works with a checkpoint to ensure the distribution of spot and on-demand is as per the distribution rules <br/> - Faster distribution: faster placement and reconciliation for eventual consistency of the split <br/> - Bug fix: Editing the config, disabling the harness managed nodepools <br/> - Suppressed client-go logs (available under log level TRACE) <br/> - Adding Default Consolidation on Harness created default nodepools  <br/> - Enabling Nodepools and Nodeclasses sync by default  |
 | `0.7.0`  | Dec 12, 2025  | - Cluster Orchestrator supports Karpenter 1.7.3 features. Users must [re-run the enablement script or Terraform template](/docs/cloud-cost-management/use-ccm-cost-optimization/cluster-orchestrator/enablement-methods/setting-up-co-helm#step-1-set-up-required-infrastructure-with-terraform) and perform a Helm upgrade to add new permissions for Cluster Orchestrator related to Karpenter 1.7.3. <br/>- Supports Kubernetes (EKS) version 1.33; previously supported only 1.32 <br/>- New major Karpenter features (from 1.2.4 to 1.7.3) for non-Karpenter customers: Support for ODCRs ([on-demand capacity reservations](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-capacity-reservations.html)), SSM Parameter support for AMI selection, Improved [IAM instance profile management](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html) and Bug fixes and performance improvements <br/>- Auto-Discovery Support for Instance Profile and Node Role ARN Environment Variables. Environment Variables with Auto-Discovery Support: `AWS_DEFAULT_INSTANCE_PROFILE`, `AWS_NODE_ROLE_ARN`. Previously, these environment variables were required to be explicitly defined in the deployment configuration. Now, the Cluster Orchestrator automatically discovers these values on startup. |
-| `0.6.0`  | Nov 26, 2025  | - Support for Vertical Pod AutoScaling (VPA automatically adjusts CPU and memory resource requests for pods based on their usage patterns). This is behind a feature flag, please reach out to support@harness.io to enable it<br/>- New CRD and deployments added<br/>- Support for [Disabling and Deleting Cluster Orchestrator](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/cluster-orchestrator/enablement-methods/delete) |
+| `0.6.0`  | Nov 26, 2025  | - Support for Vertical Pod AutoScaling (VPA automatically adjusts CPU and memory resource requests for pods based on their usage patterns).<br/>- New CRD and deployments added<br/>- Support for [Disabling and Deleting Cluster Orchestrator](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/cluster-orchestrator/enablement-methods/delete) |
 | `0.5.2`      |     Oct 3, 2025  | - Support for Disabling Cluster Orchestrator via Config CRD<br/>-Support for configuring Cluster Level Nodepool limits via Config CRD <br/>-Improved validation of the Replacement window <br/>-Handling lease locks gracefully<br/>- Handling finalizer errors gracefully |
 | `0.5.1` | Sep 3, 2025  | - Support for **Robust Distribution mode** in Bin Packing. **Robust Distribution Mode** is an enhancement to the default Cluster Orchestrator scheduling flow which gets automatically enabled when bin packing is enabled. Using the Kubernetes Descheduler's policy `RemovePodsViolatingNodeTaints`, it automatically evicts pods from incompatible nodes and reschedules them to nodes that match your configured distribution. |
 | `beta-0.5.0`  | Aug 6, 2025  | - Support for Kubernetes version 1.32 (Karpenter version 1.2)<br/>- New CRD `ClusterOrchestratorConfig` enabling Kubernetes-native configuration of Cluster Orchestrator directly within the cluster - allows users to declaratively define nodepool settings, spot/on-demand distribution, bin-packing parameters, and workload scheduling policies as standard Kubernetes resources<br/>- Fixed the bug where 100% On demand configuration was creating spot nodes under heavy load |
@@ -79,7 +64,7 @@ Link: https://app.harness.io/ng/account/6NTMT--yR7ORXKPqwLDioA/module/code/repos
 
 
 
-## Cluster Orchestrator Beta Release
+## Cluster Orchestrator Preview Release
 
 
 | Version | Release Date | Changes |

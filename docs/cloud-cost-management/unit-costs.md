@@ -7,12 +7,6 @@ helpdocs_is_published: true
 ---
 
 ## Overview
-:::important
-
-The Unit Cost Metrics feature is controlled by the feature flag: `CCM_UNIT_COST_METRICS`
-
-Contact your Harness account team to enable this feature.
-:::
 
 Unit Cost Metrics is a feature in Harness Cloud & AI Cost Management (CACM) that allows you to track and analyze custom business metrics over time. These metrics help you correlate cloud costs with business drivers like headcount, transactions, users, or any other quantifiable measure that's meaningful to your organization.
 

@@ -9,20 +9,6 @@ helpdocs_is_published: true
 ---
 # Getting Started
 
-<div style={{
-   backgroundColor: '#fff3cd',
-   border: '1px solid #ffeaa7',
-   borderRadius: '8px',
-   padding: '16px',
-   margin: '20px 0'
- }}>
-   <p style={{margin: 0}}>
-     <img src="/img/icon_ff.svg" alt="Feature Flag" width="18" style={{marginRight: '0.4rem', verticalAlign: 'middle'}}/> <strong>Behind a Feature Flag</strong>
-     
-     Cluster Orchestrator is currently behind a [Feature Flag](/docs/cloud-cost-management/whats-supported#ccm-feature-flags). Contact [Harness Support](mailto:support@harness.io) to have the flag enabled for your account.
-   </p>
- </div>
-
 Cluster Orchestrator is designed for quick implementation with minimal configuration. You can be up and running in just three simple steps:
 
 1. **Connect** your AWS EKS cluster

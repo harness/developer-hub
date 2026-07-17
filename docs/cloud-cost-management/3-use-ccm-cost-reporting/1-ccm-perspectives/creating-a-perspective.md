@@ -37,7 +37,7 @@ Before getting started with Perspectives, ensure you have:
   * **Azure** - [Complete Azure Connector Setup Guide](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure)
   * **GCP** - [Complete GCP Connector Setup Guide](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp)
   * **Kubernetes** - [Complete Kubernetes Connector Setup Guide](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes)
-  * **External Data** (Beta) - [External Cost Data Ingestion Guide](/docs/cloud-cost-management/get-started/onboarding-guide/external-data-ingestion)
+  * **External Data** - [External Cost Data Ingestion Guide](/docs/cloud-cost-management/get-started/onboarding-guide/external-data-ingestion)
 
 
 ## Creating a Perspective

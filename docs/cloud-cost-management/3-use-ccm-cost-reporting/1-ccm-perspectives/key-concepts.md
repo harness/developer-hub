@@ -247,22 +247,6 @@ To view only the costs that appear as "No [GroupBy]", use the **IS NULL** filter
 
 :::
 
-## Features behind Feature Flag
-
-<div style={{
-  backgroundColor: '#fff3cd',
-  border: '1px solid #ffeaa7',
-  borderRadius: '8px',
-  padding: '16px',
-  margin: '20px 0'
-}}>
-  <p style={{margin: 0}}>
-    <img src="/img/icon_ff.svg" alt="Feature Flag" width="18" style={{marginRight: '0.4rem', verticalAlign: 'middle'}}/> <strong>Behind a Feature Flag</strong>
-
-    The below listed features are behind a feature flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature for usage. 
-  </p>
-</div>
-
 ### Dynamic Perspective Reports
 
 **What are Dynamic Perspective Reports?**
@@ -295,10 +279,6 @@ Dynamic Perspective Reports are a new capability that allows you to generate, sc
 
 :::important 
 
--  When the Dynamic Perspective Reports feature flag is enabled for your account, CACM will disable the legacy report creation method from the Perspective Creation workflow.
-
-<DocImage  path={require('./static/enabled-ff.png')} width="80%" height="80%" title="Click to view full size image" />
-
 - For previously created reports where **Group By settings, time range, or granularity were not available for reports, CACM automatically takes these parameters from the perspective. In these cases, the maximum export row limit defaults to 10,000 rows.
 
 :::
@@ -328,7 +308,6 @@ The Saved Reports page provides a comprehensive view of all your configured repo
 -----
 
 ### Dynamic Cost Categories Toggle
-**Feature Flag Name: `CCM_COST_CATEGORY_STAMPED_DATA`**
 
 <DocImage  path={require('./static/dynamic-toggle.png')} width="100%" height="100%" title="Click to view full size image" />
 

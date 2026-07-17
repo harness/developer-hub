@@ -141,9 +141,6 @@ You can enable authentication for your GCP account via
 
 #### OIDC Authentication
 
-:::info 
-This feature is behind a Feature Flag `CCM_ENABLE_OIDC_AUTH_GCP`. Contact [Harness Support](mailto:support@harness.io) to enable it.
-:::
 
 OIDC authentication allows secure access your billing data and perform cost optimization without storing credentials. 
 

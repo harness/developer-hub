@@ -132,14 +132,13 @@ Review [Feature Permissions](/docs/cloud-cost-management/feature-permissions) fo
 Harness CACM can trigger Azure Cost Management exports on demand to provide fresher billing data. By default, Azure only updates cost exports once per day. With on-demand triggering enabled, Harness can request new export files multiple times per day, allowing more fresher billing data for current month.
 
 :::info Availability
-This feature requires **Enterprise** edition and the `CCM_TRIGGER_AZURE_COST_EXPORT` feature flag enabled for your account.
+This feature requires **Enterprise** edition. Contact your Harness account team to enable it.
 :::
 
 ### Prerequisites
 
 - **Harness CACM Enterprise plan**
 - Azure connector configured with billing export
-- `CCM_TRIGGER_AZURE_COST_EXPORT` feature flag enabled for your account
 
 ### Assigning the Role via Azure CLI
 
@@ -167,7 +166,7 @@ Replace:
 
 ### Connector Setup
 
-When creating or editing an Azure CACM connector with billing enabled, the setup wizard automatically displays the required CLI commands. For Enterprise accounts with the feature flag enabled, you'll see an additional command for the Cost Management Contributor role:
+When creating or editing an Azure CACM connector with billing enabled, the setup wizard automatically displays the required CLI commands. For Enterprise accounts, you'll see an additional command for the Cost Management Contributor role:
 
 ```bash
 # Register the Harness app

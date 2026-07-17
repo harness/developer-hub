@@ -85,9 +85,9 @@ Detected anomalies are automatically classified by severity:
 
 When anomalies are detected, [alerts](/docs/cloud-cost-management/use-ccm-cost-reporting/anomaly-detection/getting-started-with-ccm-anomaly-detection#anomaly-alerts) are sent through configured channels (email and Slack)
 
-:::info Event-Driven Anomaly Detection (Behind Feature Flag)
+:::info Event-Driven Anomaly Detection
         
-        CACM also offers an advanced feature under a feature flag for AWS, GCP, and Azure that enables real-time anomaly detection:
+        CACM also offers an advanced feature for AWS, GCP, and Azure that enables real-time anomaly detection:
         
         - Anomaly detection runs immediately when cost data is ingested, without waiting for the next day
         - Works with partial cost data as it becomes available throughout the day
@@ -129,9 +129,6 @@ With Anomaly Lookback Support we now have:
 - Dynamic Criticality Updates
     - Anomaly severity (Critical/High/Medium) is automatically recalculated
     - Example: A "Critical" anomaly might be downgraded to "Medium" after billing corrections
-
-#### Feature Flags
-This feature is controlled by two feature flags: `CCM_ANOMALIES_COST_TYPES_CALCULATION`. Contact your Harness account team to enable this feature.
 
 ------
 

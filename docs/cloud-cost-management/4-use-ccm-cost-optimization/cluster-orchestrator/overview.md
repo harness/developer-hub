@@ -8,14 +8,8 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::note
-
-Currently, this early access feature is behind a feature flag . Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 Harness’ Cloud & AI Cost Management (CACM) is built on three pillars: **Cost Visibility**, **Cost Optimization**, and **Cost Governance**.
-Within the Cost Optimization pillar, **Cluster Orchestrator for Amazon EKS (Beta)** adds Karpenter-based autoscaling that balances cost and performance across Spot, On-Demand, and committed capacity.
+Within the Cost Optimization pillar, **Cluster Orchestrator for Amazon EKS** adds Karpenter-based autoscaling that balances cost and performance across Spot, On-Demand, and committed capacity.
 
 ## Harness CACM Cluster Orchestrator for Amazon Elastic Kubernetes Service (EKS)
 

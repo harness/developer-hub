@@ -6,9 +6,6 @@ sidebar_label: Data Job Status
 ---
 
 ## Overview
-:::info Behind a Feature Flag
-Currently, this early access feature is behind a feature flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
 
 The Data Job Status feature provides real-time visibility into the status of data ingestion and processing jobs across your cloud cost data pipeline in Harness Cloud & AI Cost Management (CACM). It enables you to monitor, track, and troubleshoot data jobs that ingest billing data from cloud providers (AWS, Azure, GCP) into Harness.
 

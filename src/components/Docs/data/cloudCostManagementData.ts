@@ -80,8 +80,8 @@ import { MODULES } from "@site/src/constants";
             title: "Cluster Orchestrator",
             module: MODULES.ccm,
             description:
-              "Cluster Orchestrator for EKS (Beta) to enhance workload-driven autoscaling and intelligent management of AWS Spot instances, contributing to overall cost efficiency.",
-            link: "/docs/category/cluster-orchestrator-for-aws-eks-clusters-beta",
+              "Cluster Orchestrator for EKS to enhance workload-driven autoscaling and intelligent management of AWS Spot instances, contributing to overall cost efficiency.",
+            link: "/docs/category/cluster-orchestrator-for-aws-eks-clusters",
           },
           {
             title: "Perspectives",

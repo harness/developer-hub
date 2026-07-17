@@ -40,7 +40,7 @@ Harness Cloud & AI Cost Management (CACM) is a full-featured FinOps platform des
 
 - [Commitment Orchestration](/docs/category/commitment-orchestrator): Automate AWS Reserved Instance and Savings Plan management. Analyze coverage and utilization, track savings vs. on-demand pricing, and let Harness automatically purchase optimal commitments or use manual approval mode.
 
-- [Cluster Orchestrator](/docs/category/cluster-orchestrator-for-aws-eks-clusters-beta): Intelligent Kubernetes cluster management that automatically optimizes node pools, manages spot instances, and handles workload bin-packing. Reduces cluster costs while maintaining performance and availability SLAs.
+- [Cluster Orchestrator](/docs/category/cluster-orchestrator-for-aws-eks-clusters): Intelligent Kubernetes cluster management that automatically optimizes node pools, manages spot instances, and handles workload bin-packing. Reduces cluster costs while maintaining performance and availability SLAs.
 
 ---
 
@@ -64,10 +64,6 @@ Harness Cloud & AI Cost Management (CACM) is a full-featured FinOps platform des
 ## The NEW Overview Experience
 
 <DocImage path={require('./static/newoverview.png')} width="100%" title="CACM Overview" />
-
-:::note
-The new Overview Experience is behind a feature flag. Please reach out to your Harness account team to enable this feature.
-:::
 
 #### Summary Section
 

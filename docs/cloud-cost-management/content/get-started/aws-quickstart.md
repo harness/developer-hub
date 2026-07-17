@@ -26,9 +26,6 @@ To ensure a smooth and error-free setup experience, complete the following steps
 
 #### CUR 2.0 setup
 
-:::info
-This feature is behind the feature flag `CCM_AWS_NEW_CUR`. Contact [Harness Support](mailto:support@harness.io) to enable it.
-:::
 
 1. In the AWS console, navigate to **Billing and Cost Management** → **Data Exports** → **Create export**.
 2. Under **Report details**, select all four options:

@@ -611,6 +611,14 @@ const config: Config = {
       {
         redirects: [
           {
+            from: '/docs/category/cluster-orchestrator-for-aws-eks-clusters-beta',
+            to: '/docs/category/cluster-orchestrator-for-aws-eks-clusters',
+          },
+          {
+            from: '/docs/category/aws-rds-beta',
+            to: '/docs/category/aws-rds',
+          },
+          {
             from: '/docs/infra-as-code-management/content/get-started/opentofu-quickstart',
             to: '/docs/infra-as-code-management/get-started#opentofu',
           },

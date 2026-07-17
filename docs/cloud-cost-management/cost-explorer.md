@@ -14,10 +14,6 @@ Cost Explorer is built on top of the existing Perspectives infrastructure but of
 
 To switch and use, jump directly to [Switching between Cost Explorer and Perspectives](/docs/cloud-cost-management/cost-explorer#switching-between-cost-explorer-and-perspectives).
 
-:::note
-Cost Explorer is enabled via the `CCM_PERSPECTIVES_V2` feature flag. When enabled, users can switch between the new Cost Explorer and the classic Perspectives interface.
-:::
-
 ## Drilldown 
 
 ### View-Based Navigation
