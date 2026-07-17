@@ -104,6 +104,29 @@ Harness IaCM supports resource targeting and replacement as part of the `plan` s
 
 For example, set `target=tfcode.bucket1` to target a specific resource.
 
+#### Control plan flags with PLUGIN_ environment variables
+
+The `plan` step builds its OpenTofu/Terraform command line from `PLUGIN_` prefixed environment variables, not from the standard `TF_CLI_ARGS_plan` convention. Set these as **workspace variables** or **step environment variables** to override the corresponding CLI flag:
+
+| Environment variable | CLI flag | Default | Description |
+| --- | --- | --- | --- |
+| `PLUGIN_LOCK` | `-lock=` | `true` | Disable or enable state locking during the operation. |
+| `PLUGIN_LOCK_TIMEOUT` | `-lock-timeout=` | unset | Duration to retry acquiring a lock before giving up. |
+| `PLUGIN_PLAN_REFRESH` | `-refresh=` | `true` | Update state before planning to detect drift. Set to `false` to skip the refresh. |
+| `PLUGIN_PLAN_REFRESH_ONLY` | `-refresh-only` | `false` | Plan only refreshes state and makes no infrastructure changes. |
+| `PLUGIN_PLAN_REPLACE` | `-replace=` | `[]` | Force replacement of a resource by address prefix. Accepts multiple prefixes. |
+| `PLUGIN_PLAN_TARGET` | `-target=` | `[]` | Limit the plan to specific resources by address prefix. Accepts multiple prefixes. |
+| `PLUGIN_PLAN_DESTROY` | `-destroy` | `false` | Generate a plan to destroy all managed resources. |
+| `PLUGIN_OUT` | `-out=` | unset | Path to save the generated plan file. |
+| `PLUGIN_STATE` | `-state=` | unset | Path to a Terraform state file to use for the plan. |
+| `PLUGIN_ALLOW_DEFERRAL` | `-allow-deferral` | unset | Allow deferred changes in the plan output. |
+
+The `target` and `replace` optional configuration parameters described above set `PLUGIN_PLAN_TARGET` and `PLUGIN_PLAN_REPLACE` respectively.
+
+:::warning TF_CLI_ARGS_plan has no effect on this step
+The `plan` step does not read `TF_CLI_ARGS_plan` or any other `TF_CLI_ARGS_*` variable except `TF_CLI_ARGS_fmt` (see [Fmt](#fmt)). Setting `TF_CLI_ARGS_plan` is silently ignored, the step still runs with its default flags. Use the `PLUGIN_` prefixed variable from the table above instead, for example `PLUGIN_PLAN_REFRESH=false` to disable the state refresh.
+:::
+
 :::info target use case
 Suppose you want to run multiple pipelines in sequence, each targeting a different resource. In this case, you can use the `target` parameter to specify which resource each pipeline should focus on.
 
