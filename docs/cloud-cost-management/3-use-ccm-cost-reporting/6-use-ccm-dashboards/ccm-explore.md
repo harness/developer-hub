@@ -18,6 +18,10 @@ redirect_from:
 
 CACM provides different Explore options with dimensions and measures for each cloud provider. Below is a comprehensive list of available data fields for each provider.
 
+:::note
+Account-level tags (AWS `accountTag/`, GCP `projectLabels/`, and Azure inherited subscription tags) are also available as fields you can filter and group by in BI Dashboards. Go to [Account tags in CACM](/docs/cloud-cost-management/account-level-tags) to understand how each provider surfaces them.
+:::
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

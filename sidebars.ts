@@ -3047,6 +3047,7 @@ const sidebars: SidebarsConfig = {
         'cloud-cost-management/feature-permissions',
         'cloud-cost-management/oidc-auth',
         'cloud-cost-management/product-behaviour',
+        'cloud-cost-management/account-level-tags',
         {
           type: 'category',
           label: 'Self-Managed Enterprise Edition',

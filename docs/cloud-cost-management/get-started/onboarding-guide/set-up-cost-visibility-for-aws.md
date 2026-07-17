@@ -479,7 +479,7 @@ If the `cur:DescribeReportDefinitions`, `organizations:Describe`, and `organizat
 ```
 
 - `organizations:ListAccounts`: fetches a list of all the accounts present in the organization, and also fetches the accountID to Account Name mapping.
-- `organizations:ListTagsForResource`: fetches the AWS Account level tags. Harness supports account tags within CACM that can be used for reporting and analysis.
+- `organizations:ListTagsForResource`: fetches the AWS Account level tags. Harness supports account tags within CACM that can be used for reporting and analysis. Go to [Account tags in CACM](/docs/cloud-cost-management/account-level-tags) to understand how account tags appear under `Label V2` and how to use them in Perspectives, Cost Categories, and BI Dashboards.
 
 ## 2. Resource Inventory Management Permissions
 

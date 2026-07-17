@@ -351,6 +351,10 @@ Harness CACM is transitioning from the traditional Label system to the enhanced 
 
 After Label V2, AWS labels are stored as-is without any normalization.
 
+:::note
+**Account-level tags** appear only under **Label V2**. Because Label V2 preserves the original tag structure, account-level tags such as AWS `accountTag/`, GCP `projectLabels/`, and Azure inherited subscription tags show up as keys you can group by or filter on. They do not exist under the legacy Label system. Go to [Account tags in CACM](/docs/cloud-cost-management/account-level-tags) to understand how each provider surfaces them.
+:::
+
 ### Who Needs to Migrate?
 
 <div style={{

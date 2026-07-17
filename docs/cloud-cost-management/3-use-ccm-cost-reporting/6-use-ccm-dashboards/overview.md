@@ -173,5 +173,7 @@ Read more about [FOCUS](https://focus.finops.org/focus-specification/v1-1/).
 1. Navigate to **BI Dashboards** → **+Dashboard**
 2. Click on **Add Widget** and choose **Unified**
 3. Use all the listed fields in filters, group-bys, or as columns in your reports
+
+Account-level tags (AWS `accountTag/`, GCP `projectLabels/`, Azure inherited subscription tags) are also available as fields here. Go to [Account tags in CACM](/docs/cloud-cost-management/account-level-tags) to understand how each provider surfaces them.
 </details>
 

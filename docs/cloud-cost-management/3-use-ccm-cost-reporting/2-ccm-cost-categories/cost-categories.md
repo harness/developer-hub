@@ -216,6 +216,10 @@ A cost category is composed of one or more buckets. Each bucket contains filters
   </div>
 </div>
 
+:::note
+**Account-level tags** are available as operands too. When you select **AWS**, **GCP**, or **Azure** as the operand, account-level tags appear alongside resource-level tags as `Label V2` keys: AWS uses the `accountTag/` prefix, GCP uses `projectLabels/`, and Azure uses a plain key (only when tag inheritance is enabled). This lets you build a bucket from a tag applied to an entire account, project, or subscription, without tagging individual resources. Go to [Account tags in CACM](/docs/cloud-cost-management/account-level-tags) to understand the key formats and setup for each provider.
+:::
+
 After configuring all your cost buckets, click on "Continue"
 
 :::info
@@ -307,7 +311,7 @@ Cost Categories can be used across multiple Harness CACM features. The table bel
 
 | Feature | Perspectives | Dashboards | Recommendations |
 |---------|-------------|------------|----------------|
-| **Usage Methods** | • Rules for filtering<br/>• Group By dimension<br/>• Filter panel selection | • Dimension for analysis<br/>• Filter for data selection | • Filter for recommendations<br/>• **Important:** Governance Recommendations do not support labels. Therefore, cost categories that use labels will not work with this feature. |
+| **Usage Methods** | • Rules for filtering<br/>• Group By dimension<br/>• Filter panel selection | • Dimension for analysis<br/>• Filter for data selection | • Filter for recommendations, including Governance Recommendations. Cost categories that use labels are supported. |
 | **Shared Cost Buckets** | ✅ **Supported**<br/>Costs allocated per sharing strategy | ❌ **Not Supported** | ❌ **Not Supported** |
 | **Nested Categories** | ✅ **Supported** | ✅ **Supported** | ✅ **Supported** |
 | **Cluster Data** | ✅ **Supported**<br/>Can create categories with cluster rules | ✅ **Supported** | ✅ **Supported** |
@@ -411,7 +415,7 @@ You can filter CACM Recommendations using Cost Categories to focus on specific b
 :::info 
 - Since recommendations operate at the resource level, all resources included in your selected cost buckets will appear in the filtered recommendations view. 
 
-- **Important:** Governance Recommendations do not support labels. Therefore, cost categories that use labels will not work with this feature.
+- Governance Recommendations support labels, so cost categories that use labels also work when filtering Governance Recommendations.
 :::
 
 To filter recommendations using cost categories:

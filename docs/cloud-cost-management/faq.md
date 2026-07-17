@@ -344,6 +344,13 @@ More information can be found [here](https://developer.harness.io/docs/cloud-cos
 </details>
 
 <details>
+<summary><strong>Can I use account-level tags (AWS account tags, GCP project labels, Azure subscription tags) in CACM?</strong></summary>
+
+Yes. Tags applied at the account, project, or subscription level are ingested into `Label V2` and available in Perspectives, Cost Categories, and BI Dashboards, just like resource-level tags. AWS account tags use the `accountTag/` prefix, GCP project labels use `projectLabels/`, and Azure subscription tags appear as plain keys once tag inheritance is enabled. Go to [Account tags in CACM](/docs/cloud-cost-management/account-level-tags) to understand the key formats and setup for each provider.
+
+</details>
+
+<details>
 <summary><strong>Why does the dropdown in the GPU cost tracking perspective only show instance types that have already been used, and not all available GPU instance types across clouds?</strong></summary>
 
 The dropdown in the GPU cost tracking perspective fetches instance values from the billing report dynamically. It is not a static list of all available instance types. Only the instance types that have been used in the account will appear in the perspective rule builder/filter dropdown.
