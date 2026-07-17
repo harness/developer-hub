@@ -63,7 +63,7 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 
 - You can now view CPU and memory usage metrics for pipeline stages running on VM build infrastructure, giving better visibility into resource utilization during CI builds. (CI-22896)
 
-- Reduced initialization time for pipelines running on Kubernetes build infrastructure by optimizing expression resolution during the init phase. This feature is behind the feature flag `CI_DISABLE_INIT_STAGE_EXECUTION_STRIP`. (CI-23660, ZD-118018)
+- Reduced initialization time for CI pipelines by removing the redundant execution graph copy from the initialization payload. This optimization is enabled by default for all V0 YAML pipelines across all build infrastructure types (Kubernetes, VMs, Harness Cloud, and others) and does not require a feature flag to activate. If you experience unexpected behavior, you can get this optimization disabled by enabling the kill-switch feature flag `CI_DISABLE_INIT_STAGE_EXECUTION_STRIP` for your account, which restores the previous full-copy behavior. (CI-23660, ZD-118018)
 
 #### Fixed Issues
 
