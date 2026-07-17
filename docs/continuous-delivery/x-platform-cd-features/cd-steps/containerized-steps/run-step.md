@@ -1,6 +1,13 @@
 ---
 title: Run step
+sidebar_label: Run Step
 description: Run scripts in containerized step groups.
+keywords:
+  - run step
+  - containerized step group
+  - registry type
+tags:
+  - continuous-delivery
 sidebar_position: 5
 ---
 
@@ -9,46 +16,70 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-The Run step allows you to run scripts using specific container images and shells. 
+The **Run** step allows you to run scripts using specific container images and shells. 
 
-The Run step can be used for operations such as running configuration scripts that apply configuration settings specific to the deployment environment, or running database migration scripts that handle database schema changes or migrations required for the deployment.
+The **Run** step can be used for operations such as running configuration scripts that apply configuration settings specific to the deployment environment, or running database migration scripts that handle database schema changes or migrations required for the deployment.
 
-Harness CD also includes a general scripting step, the [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step, but the Shell Script step is simply a Bash/PowerShell scripting step and does not let you select a container.
+Harness CD also includes a general scripting step, the [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step, but the Shell Script step is a Bash or PowerShell scripting step and does not let you select a container.
 
-The Run step settings are described below.
+This topic describes the **Run** step settings.
 
-## Important notes
+:::note
+When you run a **Run** step within a [Containerized Step Group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups), go to [Harness permissions inheritance logic](/docs/continuous-delivery/kb-articles/articles/configuration-inheritance-stepgroup-step) to review how permissions are inherited.
+:::
 
-- Customers running a Run Step within a [Containerized Step Group](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/) may want to review the [Harness permissions inheritance logic](https://developer.harness.io/docs/continuous-delivery/kb-articles/articles/configuration-inheritance-stepgroup-step/)
+---
+
+## What will you learn in this topic?
+
+- How to set the [container registry and image](#container-registry-and-image) for the step.
+- How to define the [shell and command](#shell-and-command) to run.
+- How to configure [environment variables](#environment-variables) and [output variables](#output-variables).
+- How to set the [privileged](#privileged) mode, [image pull policy](#image-pull-policy), and [container resources](#set-container-resources).
+
+---
 
 ## Container Registry and Image
 
-**Container Registry** is a Harness Docker registry connector for the image that you want Harness to run commands on, such as Docker Hub.
+The **Run** step runs your commands inside a container image. When the **Run** step is inside a [Containerized Step Group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups) with container-based execution enabled, the **Registry Type** setting controls where Harness pulls the container image from. Two options are supported:
 
-The **Image** is the FQN (fully-qualified name) or artifact name of the Docker image to use when this step runs commands, for example `us.gcr.io/playground-123/quickstart-image`. The image name should include the tag. If you don't include a tag, Harness uses the `latest` tag.
+- **Artifact Registry**: Pull the image directly from a Harness Artifact Registry, without a Docker connector.
+- **Third-Party Artifact Registry**: Pull the image from an external Docker registry through a Harness Docker connector. This is the default option.
 
-You can use any Docker image from any Docker registry, including Docker images from private registries. Different container registries require different name formats:
+### Artifact Registry
 
-* **Docker Registry:** Input the name of the artifact you want to use, such as `library/tomcat`. Wildcards aren't supported. FQN is required for images in private container registries.
-* **ECR:** Input the FQN (fully-qualified name) of the artifact you want to use. Images in repos must reference a path, for example: `40000005317.dkr.ecr.us-east-1.amazonaws.com/todolist:0.2`.
-* **GCR:** Input the FQN of the artifact you want to use. Images in repos must reference a path starting with the project ID that the artifact is in, for example: `us.gcr.io/playground-243019/quickstart-image:latest`.
+Select **Artifact Registry** as the **Registry Type** to pull the image directly from a Harness Artifact Registry. You do not need a Docker connector.
 
-   <figure>
+- In **Container Registry**, select the Harness Artifact Registry that hosts the image.
+- In **Image**, enter the image reference in the `imageName:tag` format, such as `myapp:1.2.3`.
 
-  ![picture 0](static/659f371c3e8d30d831642c9fef9dbf652dca4c5fd050f0dc68b128f0b04101d9.png)  
+### Third-Party Container Registry
 
-  <figcaption>Configuring GCR Container Registry and Image settings.</figcaption>
-  </figure>
+**Container Registry** field is a Harness Docker registry connector for the image that you want Harness to run commands in, such as an image hosted on Docker Hub.
+
+The **Image** field is the Fully-qualified name (FQN) or artifact name of the Docker image to use when this step runs commands. For example `us.gcr.io/playground-123/quickstart-image`. The image name should include the tag. If you do not include a tag, Harness uses the `latest` tag.
+
+You can use any Docker image from any Docker registry, including private registries. Different container registries require different name formats:
+
+* **Docker Registry**: Enter the name of the artifact you want to use, such as `library/tomcat`. Wildcards are not supported. An FQN is required for images in private container registries.
+* **ECR**: Enter the fully qualified name (FQN) of the artifact that you want to use. Images stored in repositories must reference a path. For example: `40000005317.dkr.ecr.us-east-1.amazonaws.com/todolist:0.2`.
+* **GCR**: Enter the fully qualified name (FQN) of the artifact that you want to use. Images stored in repositories must reference a path that starts with the project ID where the artifact is stored. For example: `us.gcr.io/playground-243019/quickstart-image:latest`.
+
+<div align="center">
+  <DocImage path={require('./static/659f371c3e8d30d831642c9fef9dbf652dca4c5fd050f0dc68b128f0b04101d9.png')} alt="GCR Container Registry and Image settings" width="80%" />
+</div>
 
 :::warning
-Google Container Registry (GCR) is being deprecated. For more details, refer to the [Deprecation Notice](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#google-container-registry-gcr).
+Google Container Registry (GCR) is being deprecated. Go to the [Deprecation Notice](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#google-container-registry-gcr) to review the details.
 :::
+
+---
 
 ## Shell and Command
 
 Use **Shell** and **Command** to define the commands that you need to run in this step.
 
-For **Shell**, select the shell script type. Options include: **Bash**, **PowerShell**, **Pwsh**, **Sh**, and **Python**. If the step includes commands that aren't supported for the selected shell type, the step fails. 
+For **Shell**, select the shell script type. Options include: **Bash**, **PowerShell**, **Pwsh**, **Sh**, and **Python**. If the step includes commands that are not supported for the selected shell type, the step fails. 
 
 The binaries required by the script must be available on the infrastructure running the step or the image specified in **Container Registry** and **Image**.
 
@@ -56,14 +87,9 @@ In **Command**, enter [POSIX](https://en.wikipedia.org/wiki/POSIX) shell script 
 
 :::tip
 
-You can reference services started in CD [Background steps](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/background-step.md) by using the Background step's **Id** in your Run step's **Command**. For example, a cURL command could call `STEPGROUPID_BACKGROUNDSTEPID:5000` where it might otherwise call `localhost:5000`.
+You can reference services started in CD [Background steps](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/background-step.md) by using the Background step's **Id** in your **Run** step's **Command**. For example, a cURL command could call `STEPGROUPID_BACKGROUNDSTEPID:5000` where it might otherwise call `localhost:5000`.
 
-<figure>
-
-![picture 0](static/1d52c641a8b442054d83fc2b8bacc1917371f53c7100a0fcf0a7b6666342ce2e.png)
-
-<figcaption>The Background step Id, <code>pythonscript</code>, is used in a cURL command in a Run step.</figcaption>
-</figure>
+![The Background step Id, pythonscript, used in a cURL command in a Run step](static/1d52c641a8b442054d83fc2b8bacc1917371f53c7100a0fcf0a7b6666342ce2e.png)
 
 You must include step group Id, such as `curl STEPGROUPID_BACKGROUNDSTEPID:5000`, even if both steps are in the same step group.
 
@@ -72,7 +98,7 @@ You must include step group Id, such as `curl STEPGROUPID_BACKGROUNDSTEPID:5000`
 Select each tab below to view examples for each shell type.
 
 
-<Tabs>
+<Tabs className="tabs--block">
   <TabItem value="bash" label="Bash">
 
 
@@ -137,7 +163,7 @@ You can run PowerShell Core commands in pods or containers that have `pwsh` inst
   <TabItem value="sh" label="Sh">
 
 
-In this example, the pulls a `python` image and executes a shell script (`Sh`) that runs `pytest` with code coverage.
+In this example, Harness pulls a `python` image and executes a shell script (`Sh`) that runs `pytest` with code coverage.
 
 ```yaml
               - step:
@@ -165,7 +191,7 @@ If the `shell` is `Python`, supply Python commands directly in `command`.
 
 This example uses a basic `print` command.
 
-```
+```yaml
             steps:
               - step:
                   ...
@@ -179,9 +205,9 @@ This example uses a basic `print` command.
 </Tabs>
 
 
-:::info
+:::note
 
-If your script produces an output variable, you must declare the output variable in the Run step's [Output Variables](#output-variables). For example, the following step runs a `python` script that defines an output variable called `OS_VAR`, and `OS_VAR` is also declared in the `outputVariables`.
+If your script produces an output variable, you must declare the output variable in the **Run** step's [Output Variables](#output-variables). For example, the following step runs a `python` script that defines an output variable called `OS_VAR`, and `OS_VAR` is also declared in the `outputVariables`.
 
 ```yaml
               - step:
@@ -199,16 +225,21 @@ If your script produces an output variable, you must declare the output variable
 
 :::
 
+---
+
 ## Privileged
 
 Enable this option to run the container with escalated privileges. This is equivalent to running a container with the Docker `--privileged` flag.
 
-## Report Paths
+---
+
+## Report paths
 
 Specify one or more paths to files that store information in JUnit XML format. You can add multiple paths. If you specify multiple paths, make sure the files contain unique information to avoid duplicates. [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
 
+---
 
-## Environment Variables
+## Environment variables
 
 You can inject environment variables into a container and use them in the **Command** script. You must input a **Name** and **Value** for each variable.
 
@@ -216,8 +247,9 @@ You can reference environment variables in the **Command** script by their name.
 
 Variable values can be [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/variables-and-expressions/runtime-inputs). For example, if the value type is expression, you can input a value that references the value of some other setting in the stage or pipeline. 
 
-## Output Variables
+---
 
+## Output variables
 
 Output variables expose values for use by other, subsequent steps or stages in the pipeline.
 
@@ -262,7 +294,7 @@ For information about best practices for using secrets in pipelines, go to the [
 
 ### Create an output variable
 
-To create an output variable, do the following in the step where the output variable originates:
+Perform the following steps to create an output variable in the step where it originates:
 
 1. In **Command**, export the output variable. For example, the following command exports a variable called `myVar` with a value of `varValue`:
 
@@ -295,21 +327,25 @@ To reference an output variable in a stage other than the one where the output v
 
 To prevent variable name conflicts, you can use **Publish Variable Names (Alias)** to scope output variables to different entities.
 
-1. **Export the variables:** Use **Output Variables** to export the variables.
-2. **Define an alias:** In **Publish Variable Names (Alias)**, enter an alias to use to reference the exported output variables.
-3. **Select a scope:** In **Scope**, select the scope for the exported output variable.
+1. **Export the variables**: Use **Output Variables** to export the variables.
+2. **Define an alias**: In **Publish Variable Names (Alias)**, enter an alias to use to reference the exported output variables.
+3. **Select a scope**: In **Scope**, select the scope for the exported output variable.
 
 The following screenshot shows the output alias configured with **Stage** scope:
 
-![Stage-scoped output alias configuration](./static/stage-output-vars.png)
+<div align="center">
+  <DocImage path={require('./static/stage-output-vars.png')} alt="Stage-scoped output alias configuration" width="80%" />
+</div>
 
 The following screenshot shows the output alias configured with **Pipeline** scope:
 
-![Pipeline-scoped output alias configuration](./static/pipeline-output-vars.png)
+<div align="center">
+  <DocImage path={require('./static/pipeline-output-vars.png')} alt="Pipeline-scoped output alias configuration" width="80%" />
+</div>
 
 You can scope output variables to the following entities:
 
-- **Step group:**
+- **Step group**:
   - The output variable must be used in the same step group, including nested child step groups.
   - The format for referencing an exported step group output variable using its alias is:
 
@@ -317,7 +353,7 @@ You can scope output variables to the following entities:
     <+exportedVariables.getValue("stepGroup.ALIAS_NAME.OUTPUT_VARIABLE_NAME")>
     ```
 
-- **Stage:**
+- **Stage**:
   - The output variable can be used anywhere in the same stage, including step groups in the same stage. It cannot be used outside of the same stage.
   - The format for referencing an exported stage output variable using its alias is:
 
@@ -325,7 +361,7 @@ You can scope output variables to the following entities:
     <+exportedVariables.getValue("stage.ALIAS_NAME.OUTPUT_VARIABLE_NAME")>
     ```
 
-- **Pipeline:**
+- **Pipeline**:
   - The output variable can be used anywhere in the same pipeline but not in a [chained pipeline](/docs/platform/pipelines/pipeline-chaining).
   - The format for referencing an exported pipeline output variable using its alias is:
 
@@ -335,7 +371,7 @@ You can scope output variables to the following entities:
 
 To reference a map of exported output variables, reference the alias in the format `<+exportedVariables.getValue("SCOPE.ALIAS_NAME")>`, like `<+exportedVariables.getValue("stepGroup.info")>`.
 
-:::info Important notes
+:::note Important notes
 
 - Exported variables are immutable.
 - Variables cannot be exported in looping strategies.
@@ -407,9 +443,11 @@ pipeline:
 
 </details>
 
-For more information, go to [Scoping output variables using aliases](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step#scoping-output-variables-using-aliases) in the Shell Script step documentation.
+Go to [Scoping output variables using aliases](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step#scoping-output-variables-using-aliases) in the Shell Script step documentation to review more examples.
 
-## Image Pull Policy
+---
+
+## Image pull policy
 
 Select an option to set the pull policy for the image.
 
@@ -417,42 +455,72 @@ Select an option to set the pull policy for the image.
 * **If Not Present**: The image is pulled only if it is not already present locally.
 * **Never**: The image is assumed to exist locally. No attempt is made to pull the image.
 
-## Run as User
-Customers can now define the UID to run all policies within the pod.  Please note both information about [Security Context for a Pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod) and review the [Harness permissions inheritance logic](https://developer.harness.io/docs/continuous-delivery/kb-articles/articles/configuration-inheritance-stepgroup-step/) when using Containerized Step Groups
+---
+
+## Run as user
+
+You can define the UID to run all policies within the pod. Go to [Security Context for a Pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod) to review the Kubernetes security context, and go to [Harness permissions inheritance logic](/docs/continuous-delivery/kb-articles/articles/configuration-inheritance-stepgroup-step) to review permission inheritance when you use Containerized Step Groups.
 
 
-## Set Container Resources
+---
 
-Set the resource limits and requests for the container's CPU and memory. To learn more about this, go to [Manage Resource Containers](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-requests-and-limits-of-pod-and-container).
+## Set container resources
 
-:::info
-The ability to set resource requests is behind the feature flag `CI_SUPPORT_RESOURCE_REQUESTS`. To enable it, contact [Harness Support](mailto:support@harness.io)
+Set the resource limits and requests for the container's CPU and memory. Go to [Manage Resource Containers](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-requests-and-limits-of-pod-and-container) to review CPU and memory limits and requests.
+
+:::note
+The ability to set resource requests is behind the feature flag `CI_SUPPORT_RESOURCE_REQUESTS`. To enable it, contact [Harness Support](mailto:support@harness.io).
 :::
 
-Define the resource limits and requests by using the units defined by Kubernetes found here: [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
+Define the resource limits and requests by using the units defined by Kubernetes. Go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes) to review the units.
 
-In the case of utilizing a Run Step in a Step Group, please note that if you are defining resources with variables, they must be at the Stage or Pipeline level.  Step Group variables will not be evaluated at the correct time when the resource is launched. 
+If you use a **Run** step in a Step Group and define resources with variables, the variables must be at the Stage or Pipeline level. Step Group variables are not evaluated at the correct time when the resource is launched.
 
-## Hidden/Invisible Characters
-An issue customers may experience are unexplained phenomenon within their scripts due to hidden or invisible characters. These characters often appear when pasting from non-plain text resources, and can cause errors in how the script operates.   Harness has a function to display invisible characters which is enabled by default.
+---
 
-End users should see a highlighted space within their scripts, if an invisible character is contained:
-![](./static/invisiblechr-01.png)
+## Hidden or invisible characters
 
-They can then manage and see what character is contained by hovering over the highlight and selecting to `adjust settings`
-![](./static/invisiblechr-hover.png)
+You might experience unexplained behavior in your scripts due to hidden or invisible characters. These characters often appear when you paste from non-plain-text resources, and can cause errors in how the script operates. Harness has a function to display invisible characters, which is enabled by default.
 
-If a selection was accidentally made, the person can then make adjustments by right-clicking within the script space and selecting the `Command Palette`.
-![](./static/invisiblechr-cmdplt.png)
+You see a highlighted space within your scripts when an invisible character is present:
 
-A dialog box will appear, allowing the user to search for the ability to toggle how the highlighting will be set.
-![](./static/invisiblechr-toggle.png)
+<div align="center">
+  <DocImage path={require('./static/invisiblechr-01.png')} alt="Highlighted invisible character in a script" width="80%" />
+</div>
+
+To see which character is present, hover over the highlight and select `adjust settings`:
+
+<div align="center">
+  <DocImage path={require('./static/invisiblechr-hover.png')} alt="Hover over the highlight to view the invisible character" width="80%" />
+</div>
+
+If you make a selection accidentally, right-click within the script space and select the `Command Palette` to make adjustments:
+
+<div align="center">
+  <DocImage path={require('./static/invisiblechr-cmdplt.png')} alt="Open the Command Palette from the script space" width="80%" />
+</div>
+
+A dialog box appears where you can search for the option to toggle how the highlighting is set:
+
+<div align="center">
+  <DocImage path={require('./static/invisiblechr-toggle.png')} alt="Toggle invisible character highlighting settings" width="80%" />
+</div>
+
+---
 
 ## Advanced settings
 
-In **Advanced**, you can use the following options:
+On the **Advanced** tab, you can use the following options:
 
 * [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
 * [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
+
+---
+
+## Next steps
+
+- [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step): Run a Bash or PowerShell script without selecting a container.
+- [Background step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/background-step): Start a service that your **Run** step can reference.
+- [Containerized Step Groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups): Configure the step group that runs the **Run** step in a container.
