@@ -15,6 +15,24 @@ export const CcmData: Horizon = {
     description: "What has been released",
     feature: [
       {
+        tag: [{value: "AI Cost Management"}],
+        title: "AI Cost Management",
+        description: "One attribution model for AI costs. Production AI maps to session and interaction, developer AI maps to PR, commit, and ticket, and both roll up into unit costs.",
+        backgroundColor: "var(--green-100)",
+      },
+      {
+        tag: [{value: "Cost Visibility"}],
+        title: "Unit Economics",
+        description: "Track cost per customer, transaction, or feature so finance, product, and engineering can tie spend to business outcomes.",
+        backgroundColor: "var(--green-100)",
+      },
+      {
+        tag: [{value: "Commitment Orchestrator"}],
+        title: "Commitment Orchestrator Expanded Support",
+        description: "Automatically purchase, renew, exchange, and rebalance RIs and SPs as usage shifts, now with extended support for RDS, ElastiCache, and OpenSearch.",
+        backgroundColor: "var(--green-100)",
+      },
+      {
         tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
         title: "Auto-Inference of Savings",
         description: "Auto-inference of savings (partially realized) in Recommendations.",
@@ -199,6 +217,24 @@ export const CcmData: Horizon = {
     feature: [
       {
         tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
+        title: "Unified infrastructure-as-code shift-left cost governance",
+        description: "Cloud and infrastructure cost automation in one connected workflow, running cost controls in the same pipeline as your code and auto-applying right-sizing recommendations at the source.",
+        backgroundColor: "var(--yellow-50)",
+      },
+      {
+        tag: [{value: "AI Cost Management"}],
+        title: "AI Cost Optimization & Governance",
+        description: "Actively optimize AI spend with intelligent model routing, context window optimization, and AI spend commitments, backed by user-level budgets, approval workflows, and spend limits per provider, product, and model.",
+        backgroundColor: "var(--yellow-50)",
+      },
+      {
+        tag: [{value: "AI in CACM"}],
+        title: "Chat-first AI FinOps across Visibility, Optimization, and Governance",
+        description: "A single conversational interface for FinOps that lets you get cloud and AI cost insights in natural language, discover and act on optimization opportunities with reports and alerts, and govern spend by setting budgets, catching anomalies, and enforcing policies.",
+        backgroundColor: "var(--yellow-50)",
+      },
+      {
+        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
         title: "Anomaly FinOps AI Assistant ",
         description: "AI-powered insights to help FinOps teams analyze anomalies and notify the right stakeholders.",
         backgroundColor: "var(--yellow-50)",
@@ -223,20 +259,8 @@ export const CcmData: Horizon = {
       },
       {
         tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
-        title: "Show impact of applied recommendations using perspectives or reports",
-        description: "Show impact of applied recommendations using perspectives and reports.",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
         title: "Whitelisting of RI, SP, Services for anomalies",
         description: "Whitelisting of Reserved Instances, Savings Plans, and Services to exclude them while generating anomalies.",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
-        title: "Split anomalies into active/ongoing and one-time",
-        description: "Split anomalies into 'active/ongoing' (spike still in effect) and 'one-time' (spike happened and spend came back down).",
         backgroundColor: "var(--yellow-50)",
       },
       {
@@ -249,12 +273,6 @@ export const CcmData: Horizon = {
         tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
         title: "Global cost preferences for all recommendation types",
         description: "Global cost preferences needed for all recommendation types (particularly Net Amortized, and list cost) for Azure and GCP.",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
-        title: "Include utilization metrics for all recommendations",
-        description: "Include utilization metrics for all recommendations and additional metadata for pass-through recommendations.",
         backgroundColor: "var(--yellow-50)",
       },
       {
@@ -283,20 +301,8 @@ export const CcmData: Horizon = {
       },
       {
         tag: [{value: "Cluster Orchestrator"}],
-        title: "RBAC for Cluster Orchestrator",
-        description: "Role-based access control to enhance security and governance in Cluster Orchestrator.",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "Cluster Orchestrator"}],
         title: "Cluster Orchestrator for AKS",
         description: "Cluster Orchestrator support for Azure Kubernetes Service (AKS) including Discovery, Scale up and down, Spot Handling (Interruption, Fallback, Reverse Fallback, Schedule window), Karpenter with Azure Latest version, Nodepool and Nodeclass, Setup.",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "Cluster Orchestrator"}],
-        title: "Cluster Orchestrator Terraform Module",
-        description: "Terraform module support for Cluster Orchestrator deployment and configuration.",
         backgroundColor: "var(--yellow-50)",
       },
       {
@@ -337,12 +343,6 @@ export const CcmData: Horizon = {
       },
       {
         tag: [{value: "Commitment Orchestrator"}],
-        title: "Azure support in Commitment Orchestrator",
-        description: "Azure support in Commitment Orchestrator including Utilization, Savings, Coverage, and Permissions visibility.",
-        backgroundColor: "var(--yellow-50)",
-      },
-      {
-        tag: [{value: "Commitment Orchestrator"}],
         title: "AWS Savings Plan Database Discovery/Support",
         description: "Discovery and support for AWS Savings Plans for RDS and ElastiCache databases.",
         backgroundColor: "var(--yellow-50)",
@@ -355,7 +355,7 @@ export const CcmData: Horizon = {
       },
       {
         tag: [{value: "Commitment Orchestrator"}],
-        title: "Elasticache Dashboard Support",
+        title: "ElastiCache Commitment Support",
         description: "Commitment Orchestrator will be able to purchase RI's for your Elasticache usage",
         backgroundColor: "var(--yellow-50)",
       },
@@ -433,6 +433,31 @@ Later:{
         tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
         title: "Recommendations OPA Policy - CD integration",
         description: "Recommendations OPA Policy with CD integration ",
+      },
+      {
+        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
+        title: "Show impact of applied recommendations using perspectives or reports",
+        description: "Show impact of applied recommendations using perspectives and reports.",
+      },
+      {
+        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
+        title: "Split anomalies into active/ongoing and one-time",
+        description: "Split anomalies into 'active/ongoing' (spike still in effect) and 'one-time' (spike happened and spend came back down).",
+      },
+      {
+        tag: [{value: "BAR (Budgets, Anomalies, Recommendations)"}],
+        title: "Include utilization metrics for all recommendations",
+        description: "Include utilization metrics for all recommendations and additional metadata for pass-through recommendations.",
+      },
+      {
+        tag: [{value: "Cluster Orchestrator"}],
+        title: "Cluster Orchestrator Terraform Module",
+        description: "Terraform module support for Cluster Orchestrator deployment and configuration.",
+      },
+      {
+        tag: [{value: "Commitment Orchestrator"}],
+        title: "Azure support in Commitment Orchestrator",
+        description: "Azure support in Commitment Orchestrator including Utilization, Savings, Coverage, and Permissions visibility.",
       },
     ],
   }
