@@ -1993,6 +1993,27 @@
     "gaStartDate": "2026-07-06",
     "module": "Supply Chain Security",
     "lifecycleState": "Beta"
+  },
+  {
+    "flagKey": "INVENTORY_V2",
+    "description": "Enables cloud asset inventory for AWS resources in Asset Governance.",
+    "gaStartDate": "2026-07-01",
+    "module": "Cloud & AI Cost Management",
+    "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "GCP_INVENTORY_V2",
+    "description": "Enables cloud asset inventory for GCP resources in Asset Governance.",
+    "gaStartDate": "2026-07-01",
+    "module": "Cloud & AI Cost Management",
+    "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "AZURE_INVENTORY_V2",
+    "description": "Enables cloud asset inventory for Azure resources in Asset Governance.",
+    "gaStartDate": "2026-07-01",
+    "module": "Cloud & AI Cost Management",
+    "lifecycleState": "Limited GA"
   }
 ]
 
