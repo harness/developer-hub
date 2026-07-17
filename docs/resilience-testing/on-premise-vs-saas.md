@@ -24,7 +24,7 @@ Harness Resilience Testing can be deployed in two ways to meet your organization
 ### Getting Started
 1. [Sign up for Harness](https://app.harness.io/auth/#/signup)
 2. Create your first project
-3. [Install chaos infrastructure](./chaos-testing/infrastructure/types)
+3. [Install chaos infrastructure](./chaos-testing/infrastructure)
 4. [Run your first chaos experiment](./chaos-testing/get-started)
 
 ## On-Premise (Self-Managed Platform)
@@ -46,7 +46,7 @@ Harness Resilience Testing can be deployed in two ways to meet your organization
 ### Getting Started
 1. Review [SMP installation guide](/docs/self-managed-enterprise-edition/install/install-using-helm)
 2. Install Harness Platform in your environment
-3. Configure [chaos infrastructure](./chaos-testing/infrastructure/types)
+3. Configure [chaos infrastructure](./chaos-testing/infrastructure)
 4. [Run your first chaos experiment](./chaos-testing/get-started)
 
 For more information about SMP, see [Self-Managed Platform documentation](./chaos-testing/on-premises-smp).

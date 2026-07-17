@@ -99,7 +99,7 @@ Load tests run on infrastructure managed by the Harness chaos agent. Two **targe
 | **Linux VM** | The agent on a Linux host runs the Locust process locally and streams results back to Harness. | Simple setups, on-premises hosts, direct network access to internal services. |
 | **Kubernetes** | The agent orchestrates a master pod and optional worker pods inside a Kubernetes cluster. Requires **v1.85.3+**. Load testing is enabled by default — no additional configuration needed. | Scalable distributed testing, cloud-native environments, high-concurrency workloads. |
 
-When creating a load test, you select a target type first, and the **Load Test Infrastructure** dropdown filters to show only infrastructure matching that type. See [Infrastructure Types](../chaos-testing/infrastructure/types) for setup instructions.
+When creating a load test, you select a target type first, and the **Load Test Infrastructure** dropdown filters to show only infrastructure matching that type. See [Infrastructure](../chaos-testing/infrastructure) for setup instructions.
 
 ### Test Definition Modes
 
@@ -114,7 +114,7 @@ The available test definition modes depend on the framework and target type you 
 ## Prerequisites
 
 - Access to the Harness Resilience Testing module
-- A [chaos infrastructure](../chaos-testing/infrastructure/types) configured in your project (Linux VM or Kubernetes)
+- A [chaos infrastructure](../chaos-testing/infrastructure) configured in your project (Linux VM or Kubernetes)
 - An environment created in your project for the infrastructure
 - Target application endpoints accessible from the test infrastructure
 
@@ -136,5 +136,5 @@ For the complete step-by-step walkthrough, choose your framework:
 
 - Create a Load Test: [Locust](./create-load-test/locust) · [k6](./create-load-test/k6) · [JMeter](./create-load-test/jmeter)
 - [Analyze Results](./analyze-results): Understand and interpret load test execution results
-- [Infrastructure Types](../chaos-testing/infrastructure/types): Set up and manage infrastructure for chaos and load tests
+- [Infrastructure](../chaos-testing/infrastructure): Set up and manage infrastructure for chaos and load tests
 - [Chaos Testing](../chaos-testing/get-started): Combine load testing with chaos experiments for peak-load resilience validation

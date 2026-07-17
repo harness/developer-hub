@@ -34,7 +34,7 @@ Load Testing is currently behind a feature flag (`CHAOS_LOAD_TESTING_ENABLED`). 
 
 - **Module access:** Access to the Harness Resilience Testing module.
 - **ChaosHub:** A ChaosHub in the scope where you want the template available. Go to [ChaosHub](/docs/resilience-testing/chaos-testing/chaoshub) to add or manage a hub.
-- **Infrastructure:** A [chaos infrastructure](/docs/resilience-testing/chaos-testing/infrastructure/types) that matches the target type you plan to use (Kubernetes or Linux VM).
+- **Infrastructure:** A [chaos infrastructure](/docs/resilience-testing/chaos-testing/infrastructure) that matches the target type you plan to use (Kubernetes or Linux VM).
 
 ---
 

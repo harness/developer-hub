@@ -35,7 +35,7 @@ import DocImage from '@site/src/components/DocImage';
 ## Prerequisites
 
 - **Module access:** Access to the Harness Resilience Testing module.
-- **Infrastructure:** A chaos infrastructure with load testing enabled, either a [Linux Chaos Infrastructure](/docs/resilience-testing/chaos-testing/infrastructure/types/legacy-infra/linux) or a [Kubernetes Chaos Infrastructure](/docs/resilience-testing/chaos-testing/infrastructure/types/legacy-infra/kubernetes) (v1.85.3 or later).
+- **Infrastructure:** A chaos infrastructure with load testing enabled, either a [Linux Chaos Infrastructure](/docs/resilience-testing/chaos-testing/infrastructure/linux) or a [Kubernetes Chaos Infrastructure](/docs/resilience-testing/chaos-testing/infrastructure/kubernetes) (v1.85.3 or later).
 - **Environment:** An environment created in your project for the infrastructure.
 - **Reachable target:** Target application endpoints accessible from the test infrastructure.
 
@@ -62,7 +62,7 @@ Select **Linux VM** as the target type, then select a Linux Chaos Infrastructure
 The Harness chaos agent on the VM runs the Locust process locally and streams results back to Harness.
 
 - Best for simple setups, on-premises hosts, or direct network access to internal services.
-- Go to [Linux Infrastructure](/docs/resilience-testing/chaos-testing/infrastructure/types/legacy-infra/linux) for setup instructions.
+- Go to [Linux Infrastructure](/docs/resilience-testing/chaos-testing/infrastructure/linux) for setup instructions.
 
 </TabItem>
 <TabItem value="kubernetes" label="Kubernetes">
@@ -72,7 +72,7 @@ Select **Kubernetes** as the target type, then select a Kubernetes Chaos Infrast
 The agent in the cluster orchestrates a master pod and optional worker pods for load generation.
 
 - Best for scalable, distributed load generation and cloud-native environments.
-- Go to [Kubernetes Infrastructure](/docs/resilience-testing/chaos-testing/infrastructure/types/legacy-infra/kubernetes) for setup instructions.
+- Go to [Kubernetes Infrastructure](/docs/resilience-testing/chaos-testing/infrastructure/kubernetes) for setup instructions.
 
 </TabItem>
 </Tabs>

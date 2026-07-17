@@ -27,7 +27,7 @@ Further sections provide a quick summary of the internal security controls and p
 
 You must connect your Kubernetes infrastructure (clusters or namespaces) to HCE (Harness Chaos Engineering) to discover the microservices and execute chaos experiments on them. The connection between your Kubernetes infrastructure and HCE is enabled by a set of deployments on the Kubernetes cluster. The deployments comprise a relay (subscriber) that communicates with the HCE control plane and custom controllers, which carry out the chaos experiment business logic.
 
-This group of deployments (known as the execution plane) is referred to as the [chaos infrastructure](../chaos-testing/infrastructure/types).
+This group of deployments (known as the execution plane) is referred to as the [chaos infrastructure](../chaos-testing/infrastructure).
 
 The chaos infrastructure connects to the control plane by making outbound requests over HTTPS (port number 443) to claim and perform chaos tasks. The connections don't require you to create rules for inbound traffic. A unique ID, named cluster ID, is assigned to the chaos infrastructure. The chaos infrastructure shares a dedicated key, named access-key, with the control plane. Both cluster ID and access key are generated during installation. Every API request made to the control plane includes these identifiers for authentication purposes.
 
@@ -83,7 +83,7 @@ This is useful when you already manage credentials in your own secret manager an
 
 How it works:
 
-- Chaos experiments that run through [Harness Delegate](/docs/resilience-testing/chaos-testing/infrastructure/types/ddcr) use a dedicated chaos delegate task to decrypt secrets at runtime.
+- Chaos experiments that run through [Harness Delegate](/docs/resilience-testing/chaos-testing/infrastructure/kubernetes) use a dedicated chaos delegate task to decrypt secrets at runtime.
 - The delegate resolves each referenced secret from whichever secret manager you configured for it, whether that is the Harness Secret Manager or an external one.
 
 :::info Feature flag

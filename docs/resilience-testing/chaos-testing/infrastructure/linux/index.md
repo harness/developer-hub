@@ -83,7 +83,7 @@ Every field on this step is optional. The defaults (5-second intervals, 5 retrie
 Notes:
 
 - **Retry behavior.** If **Update retries** is exhausted while sending **status**, the fault aborts (errors logged for each attempt) and the result is then attempted. If it is exhausted while sending the **result**, no result is sent, but every attempt is logged.
-- **Load Test toggle.** Turn on **Enable Load Test** when the host should also act as a [Load Testing](/docs/resilience-testing/load-testing) target.
+- **Load Test toggle.** Turn on **Enable Load Test** when the host should also act as a [Load Testing](/docs/resilience-testing/load-testing/get-started) target.
 - **Proxy.** For restricted networks, use **HTTP Proxy**, **HTTPS Proxy**, and **No Proxy**. Hover the info icon on each field for the variable it sets.
 
 Click **Next** to continue.

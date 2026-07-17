@@ -116,7 +116,7 @@ A [ChaosHub](./chaos-testing/chaoshub) was a centralized repository for reusable
 
 #### Chaos Infrastructure
 
-[Chaos infrastructure](./chaos-testing/infrastructure/infrastructures) represents the target environment where chaos experiments execute:
+[Chaos infrastructure](./chaos-testing/infrastructure) represents the target environment where chaos experiments execute:
 
 #### Deployment Models
 - **Agent-Based**: Deploy chaos agents on Linux or Windows hosts
@@ -163,7 +163,7 @@ The infrastructure where load tests execute. Two target types are supported:
 - **Linux VM**: A Linux host with the Harness chaos agent and load testing enabled. The agent runs the Locust process locally and streams metrics back to Harness.
 - **Kubernetes**: A Kubernetes cluster with the Harness chaos agent (v1.85.3 or later). Load testing is enabled by default. The agent orchestrates a master pod and optional worker pods for scalable, distributed load generation.
 
-See [Infrastructure Types](./chaos-testing/infrastructure/types) for setup instructions.
+See [Infrastructure](./chaos-testing/infrastructure) for setup instructions.
 
 ## Disaster Recovery Testing
 

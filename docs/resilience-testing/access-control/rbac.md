@@ -68,7 +68,7 @@ Harness registers the following resources for RBAC under the **Resilience** modu
 | Resource | Permissions | Description |
 |---|---|---|
 | Chaos Experiment | <ul><li>View</li><li>Create / Edit</li><li>Delete</li><li>Execute</li></ul> | Run, edit, and manage [experiments](/docs/resilience-testing/chaos-testing/experiments). The **Execute** permission covers running an experiment directly and as a step inside a Harness pipeline. |
-| Chaos Infrastructure | <ul><li>View</li><li>Create / Edit</li><li>Delete</li></ul> | Connect and manage the [infrastructure](/docs/resilience-testing/chaos-testing/infrastructure/types) where experiments run. |
+| Chaos Infrastructure | <ul><li>View</li><li>Create / Edit</li><li>Delete</li></ul> | Connect and manage the [infrastructure](/docs/resilience-testing/chaos-testing/infrastructure) where experiments run. |
 | ChaosHub | <ul><li>View</li><li>Create / Edit</li><li>Delete</li><li>Access</li><li>Manage</li></ul> | Manage [ChaosHubs](/docs/resilience-testing/chaos-testing/chaoshub) that store reusable resilience artifacts. |
 | Chaos Faults | <ul><li>View</li><li>Create / Edit</li><li>Delete</li></ul> | Manage the fault definitions available to experiments. |
 | Chaos Actions | <ul><li>View</li><li>Create / Edit</li><li>Delete</li></ul> | Manage [actions](/docs/resilience-testing/chaos-testing/actions) that run custom tasks within experiments. |

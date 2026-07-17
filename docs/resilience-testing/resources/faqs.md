@@ -161,7 +161,7 @@ For example, to execute the network loss fault,
 ## Harness Delegate
 
 :::tip
-The FAQs below are based on Harness CE entities using [Harness Delegate](../chaos-testing/infrastructure/types/ddcr).
+The FAQs below are based on Harness CE entities using [Harness Delegate](../chaos-testing/infrastructure/kubernetes).
 :::
 
 <details>
@@ -179,7 +179,7 @@ Harness CE uses the Harness Delegate to execute chaos experiments, which you can
 - Better control over chaos experiments by facilitating advanced tunables.
 - Gain insights into application-level resilience scores.
 
-Go to [Harness Delegate](../chaos-testing/infrastructure/types/ddcr) for more information.
+Go to [Harness Delegate](../chaos-testing/infrastructure/kubernetes) for more information.
 </details>
 
 <details>
@@ -330,7 +330,7 @@ If the experiment format is old, you may see `litmus-checker` and `chaos-k8s` im
 <details>
 <summary><strong>Why can't I create a new experiment from the UI?</strong></summary>
 
-To create a new experiment, you need to have at least one infrastructure in version 1.38.x or higher. Hence, you can either [connect a new infrastructure](../chaos-testing/infrastructure/types) or [upgrade an existing one](../chaos-testing/infrastructure/upgrade-infra).
+To create a new experiment, you need to have at least one infrastructure in version 1.38.x or higher. Hence, you can either [connect a new infrastructure](../chaos-testing/infrastructure) or [upgrade an existing one](../chaos-testing/infrastructure/linux/upgrade).
 </details>
 
 <details>
