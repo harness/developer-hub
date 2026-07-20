@@ -247,7 +247,7 @@ Go to [Artifact Registry audit dashboard](/docs/artifact-registry/manage-artifac
 <FAQ
   question="Can I run a Firewall Audit without a lock file?"
   mode="fallback-only"
-  fallback="Yes. Run hc registry fw audit --file package.json --registry <npm-proxy> to evaluate direct dependencies against your firewall policies. Harness evaluates the packages listed in package.json. Go to /docs/artifact-registry/artifact-registry-cli/manage-artifacts-registries#audit-dependencies-with-dependency-firewall for examples and scope details."
+  fallback="Yes. Run hc registry fw audit --file package.json --registry <REGISTRY_NAME> to evaluate direct dependencies against your firewall policies. Harness evaluates the packages listed in package.json. Go to /docs/artifact-registry/artifact-registry-cli/manage-artifacts-registries#audit-dependencies-with-dependency-firewall for examples and scope details."
 />
 
 <FAQ
@@ -261,4 +261,5 @@ Go to [Artifact Registry audit dashboard](/docs/artifact-registry/manage-artifac
   mode="fallback-only"
   fallback="Run Firewall Audit with hc registry fw audit from the Harness CLI. To check firewall status for a specific artifact version already in your registry, use hc registry fw explain. Go to /docs/artifact-registry/artifact-registry-cli/manage-artifacts-registries for command reference and examples."
 />
+
 

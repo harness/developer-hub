@@ -18,6 +18,9 @@ tags:
   - security
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 This guide covers the essential commands for working with the Artifact Registry from the command line.
 This will require installation of the [Harness CLI](/docs/platform/automation/cli/install) and authentication to your Harness account.
 
@@ -263,6 +266,8 @@ hc registry fw audit [flags]
   - **Python**: requirements.txt, pyproject.toml, Pipfile.lock, poetry.lock
 - `--registry string`: Registry name
 
+Add `--org` and `--project` when your CLI session is not already scoped to the target Harness org and project.
+
 **Audit scope by input file:**
 
 | Input file | Audit scope |
@@ -278,21 +283,43 @@ Pass `package.json` to evaluate the direct dependencies listed under `dependenci
 **Example: audit direct dependencies without a lock file**
 
 ```bash
-hc registry fw audit --file package.json --registry npmproxy --org Devrel --project sd1
+hc registry fw audit --file package.json --registry <REGISTRY_NAME> --org <ORG> --project <PROJECT>
 ```
 
 **Example: audit the full dependency graph with a lock file**
 
+Pass the lock file your project uses. The audit scope is the same for each format: Harness parses the resolved dependency graph and evaluates every listed package version.
+
+<Tabs>
+<TabItem value="npm-lock" label="npm" default>
+
 ```bash
-hc registry fw audit --file package-lock.json --registry npmproxy --org Devrel --project sd1
+hc registry fw audit --file package-lock.json --registry <REGISTRY_NAME> --org <ORG> --project <PROJECT>
 ```
+
+</TabItem>
+<TabItem value="yarn-lock" label="Yarn">
+
+```bash
+hc registry fw audit --file yarn.lock --registry <REGISTRY_NAME> --org <ORG> --project <PROJECT>
+```
+
+</TabItem>
+<TabItem value="pnpm-lock" label="pnpm">
+
+```bash
+hc registry fw audit --file pnpm-lock.yaml --registry <REGISTRY_NAME> --org <ORG> --project <PROJECT>
+```
+
+</TabItem>
+</Tabs>
 
 :::tip Generate a lock file for audit only
 If lock files are not stored in source control, generate one locally or in CI before you run a full audit. You can use the file for the audit without committing it to the repository.
 
 ```bash
 npm install --package-lock-only
-hc registry fw audit --file package-lock.json --registry npmproxy --org Devrel --project sd1
+hc registry fw audit --file package-lock.json --registry <REGISTRY_NAME> --org <ORG> --project <PROJECT>
 ```
 
 For other package managers, generate the lock file with your native tool (`yarn install`, `pnpm install --lockfile-only`) and pass the resulting `yarn.lock` or `pnpm-lock.yaml` to `--file`.
@@ -875,8 +902,8 @@ hc registry list --project prod-project
 Use firewall audit to check dependencies before deployment. Pass `package.json` for direct dependencies only, or a lock file for full transitive analysis:
 
 ```bash
-hc registry fw audit --file package.json --registry npmproxy
-hc registry fw audit --file package-lock.json --registry npmproxy
+hc registry fw audit --file package.json --registry <REGISTRY_NAME>
+hc registry fw audit --file package-lock.json --registry <REGISTRY_NAME>
 ```
 
 Go to [Audit dependencies with Dependency Firewall](#audit-dependencies-with-dependency-firewall) for audit scope, lock file generation, and best practices.
