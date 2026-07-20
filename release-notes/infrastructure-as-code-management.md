@@ -48,6 +48,11 @@ These release notes describe recent changes to Harness Infrastructure as Code Ma
 
   ![Lifecycle Management tab](./static/iacm-version-lifecycle-management.png)
 
+
+### Bug fixes and improvements
+
+- **Provisioner downloads behind a TLS-intercepting proxy:** Previously, the IaCM plugin could not download provisioner binaries through a corporate proxy that re-signs TLS certificates with an internal CA. As a result, the **Installing provisioner** step failed. You can now set the `PLUGIN_CA_CERT_PATH` environment variable to the path of a mounted corporate CA bundle so the plugin trusts the proxy and downloads the provisioner binaries successfully. Go to [IaCM plugins](/docs/infra-as-code-management/configuration/connectors-and-variables/iacm-plugins#plugin-ca-cert-path) to configure the plugin.
+
 ---
 
 ## April 2026
