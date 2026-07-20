@@ -1,7 +1,7 @@
 ---
 title: Artifact Registry Release Notes
 sidebar_label: Artifact Registry
-date: 2026-06-04T12:00
+date: 2026-07-20T12:00
 sidebar_position: 1
 # toc_max_heading_level: 4
 ---
@@ -28,6 +28,36 @@ The release notes describe recent changes to Harness Artifact Registry.
 **Progressive deployment:** Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to your **Account Overview** page in Harness. In the new UI, go to **Account Settings**, **Account Details**, **General**, **Account Details**, and then **Platform Service Versions**.
 
 ## July 2026
+
+### 2026.7.v2
+
+#### New Features
+
+**Debian Registry Support**
+
+Harness Artifact Registry now supports **Debian packages** for Debian and Ubuntu systems. Host private `.deb` packages, configure upstream proxies against external Debian mirrors, and install packages with standard APT workflows.
+
+Go to the [Debian quickstart](/docs/artifact-registry/content/supported-formats/debian-quickstart) to create a Debian registry and publish your first package.
+
+**Raw File artifacts for WinRM CD deployments**
+
+Harness Continuous Delivery now supports **Raw File** artifacts from Harness Artifact Registry as a service artifact source for **WinRM** deployments. Deploy `.zip` packages and other files stored in a Raw File registry to Windows targets without a third-party artifact connector.
+
+Go to [Use artifacts from Harness Artifact Registry](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#harness-artifact-registry) to configure a Raw File artifact source, or go to the [WinRM tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial) for a full deployment walkthrough.
+
+#### Enhancements & Fixes
+
+**Dependency Firewall audit from manifest files**
+
+The Harness CLI `hc registry fw audit` command now supports auditing dependencies from `package.json` without a lock file in source control. Pass `package.json` to evaluate direct dependencies only, or generate a lock file in CI for a full transitive audit with `package-lock.json`, `yarn.lock`, or `pnpm-lock.yaml`.
+
+Go to [Audit dependencies with Dependency Firewall](/docs/artifact-registry/artifact-registry-cli/manage-artifacts-registries#audit-dependencies-with-dependency-firewall) for input file scope and examples.
+
+**Webhooks for RPM registries**
+
+Artifact Creation and Artifact Deletion webhook events now fire for **RPM** registries. Webhooks are supported for all Artifact Registry package types other than **Raw**.
+
+Go to [Webhooks](/docs/artifact-registry/manage-registries/ar-webhooks) to configure triggers.
 
 ### 2026.7.v1
 
