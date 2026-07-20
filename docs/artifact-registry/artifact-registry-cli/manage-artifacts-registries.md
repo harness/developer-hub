@@ -507,7 +507,16 @@ Pick the appropriate command based on your package type. Use the `-h` flag to ge
 hc artifact push go my-go-registry v1.2.3
 ```
 
+:::info Upload integrity (checksum validation)
+When you push supported single-file artifacts with the Harness CLI, the CLI automatically sends checksum digests with the upload request. The registry verifies that the received bytes match before the artifact is stored.
 
+- **No configuration required:** You do not need to add flags or settings to your push commands.
+- **Supported uploads:** Single-file (octet-stream) uploads, including Generic, Composer, Conan, RPM, Python, Dart, and Debian packages.
+- **Excluded uploads:** Multipart form uploads where multiple parts are sent in one request (for example `hc artifact push go`), and Maven uploads that send multiple files in a single deployment.
+- **On failure:** The registry returns **409 Conflict** if the uploaded content does not match the declared digest.
+
+This check validates upload integrity only. It is not the same as package-manager checksum verification at install time.
+:::
 
 ---
 
