@@ -217,7 +217,6 @@ Certain Harness Partner Tiers have access to Admin/Architect exams.
 ### What formats are Instructor-Led Trainings available in?
 Instructor-Led Trainings [e.g ILTs] are available in the following formats:
 * Dedicated. Either virtual or on-site. 
-* Shared-Virtual [e.g vILT]. This is per a [shared virtual calendar](https://university-registration.harness.io/calendar). 
 
 ---
 

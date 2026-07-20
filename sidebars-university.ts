@@ -120,13 +120,6 @@ const sidebars: SidebarsConfig = {
           className: "sidebar-sei"
         },
  
-        //vILT
-        {
-          type: "link",
-          label: "Virtual Instructor-Led Calendar",
-          href: "https://university-registration.harness.io/calendar",
-          className: "sidebar-vilt-cal",
-        },
         // Instructions
         {
           type: "doc",

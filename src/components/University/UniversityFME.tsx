@@ -490,16 +490,7 @@ export default function CertificationsFME() {
           <h2>Instructor-Led Training</h2>
           <p>
             Intensive two-day courses are designed for engineers looking to
-            deepen their understanding and expertise in Harness. Can be delivered
-            in a dedicated or{" "}
-            <a
-              href="https://university-registration.harness.io/calendar"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              shared virtual
-            </a>{" "}
-            format.
+            deepen their understanding and expertise in Harness.
           </p>
 
           <div className={clsx(styles.tabContent, styles.active)}>
