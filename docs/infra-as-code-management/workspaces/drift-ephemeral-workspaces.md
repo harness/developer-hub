@@ -275,6 +275,10 @@ The destroy operation uses your configured Destroy default pipeline (workspace-l
 5. Optionally, select **Delete Workspace after destroying** and configure the delete delay.
 6. Select **Save Changes**.
 
+:::info 
+A scheduled destroy only applies to workspaces that have been in the Active state at least once. If an ephemeral workspace is not destroyed at its scheduled time, run any pipeline on the workspace once to transition it to the Active state. Future scheduled destroys will then execute as expected, even if the workspace later becomes Inactive.
+:::
+
 </TabItem>
 <TabItem value="api" label="REST API">
 
