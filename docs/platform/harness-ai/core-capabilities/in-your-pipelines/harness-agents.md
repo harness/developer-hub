@@ -19,7 +19,6 @@ redirect_from:
 ---
 
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
-import DocImage from '@site/src/components/DocImage';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -29,7 +28,7 @@ Worker Agents are AI-powered automation units that execute tasks inside Harness 
 
 ## Prerequisites
 
-- **Harness account with AI Agents enabled:** You need **AI Agents** under the **AI** section in the Harness module selector. Go to [Getting started with Harness Platform](/docs/platform/get-started/onboarding-guide) to access or create a Harness account.
+- **Harness account with AI Agents enabled:** You need **AI Agents** under the **AI** section in the Harness module selector. Go to <a href="/docs/platform/get-started/onboarding-guide" target="_blank">Getting started with Harness Platform</a> to access or create a Harness account.
 
     :::info Contact Harness support
 
@@ -37,11 +36,11 @@ Worker Agents are AI-powered automation units that execute tasks inside Harness 
 
     :::
 
-- **Pipeline permissions:** You need **View**, **Create/Edit**, and **Execute** for [Pipelines](/docs/platform/role-based-access-control/permissions-reference#pipelines). An administrator must assign you a role that includes them. Go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) to configure roles.
-- **Connector permissions:** You need **View**, **Create/Edit**, and **Delete** for [Connectors](/docs/platform/role-based-access-control/permissions-reference#connectors) to create and manage the Model Provider Connector and MCP Connector.
-- **Secret permissions:** You need **View** and **Access** (reference) for [Secrets](/docs/platform/role-based-access-control/permissions-reference#secrets) at a minimum, since both the Model Provider Connector and MCP Connector reference secrets for authentication.
-- **Model Connector:** An Anthropic or OpenAI Model Connector configured with a default model. Go to [Model Connectors](/docs/platform/harness-ai/model-connector/) to review supported providers, models, and setup options.
-- **MCP Connector (optional):** An MCP Server Connector with a valid hosted MCP URL and API key. Go to [Harness MCP Server](/docs/platform/harness-ai/harness-mcp-server) to set up MCP access.
+- **Pipeline permissions:** You need **View**, **Create/Edit**, and **Execute** for <a href="/docs/platform/role-based-access-control/permissions-reference#pipelines" target="_blank">Pipelines</a>. An administrator must assign you a role that includes them. Go to <a href="/docs/platform/role-based-access-control/rbac-in-harness" target="_blank">RBAC in Harness</a> to configure roles.
+- **Connector permissions:** You need **View**, **Create/Edit**, and **Delete** for <a href="/docs/platform/role-based-access-control/permissions-reference#connectors" target="_blank">Connectors</a> to create and manage the Model Provider Connector and MCP Connector.
+- **Secret permissions:** You need **View** and **Access** (reference) for <a href="/docs/platform/role-based-access-control/permissions-reference#secrets" target="_blank">Secrets</a> at a minimum, since both the Model Provider Connector and MCP Connector reference secrets for authentication.
+- **Model Connector:** An Anthropic or OpenAI Model Connector configured with a default model. Go to <a href="#configure-model-connectors">Configure Model Connectors</a> to review supported providers, models, and setup options.
+- **MCP Connector (optional):** An MCP Server Connector with a valid hosted MCP URL and API key. Go to <a href="/docs/platform/harness-ai/harness-mcp-server" target="_blank">Harness MCP Server</a> to set up MCP access.
 
 ---
 
@@ -65,7 +64,7 @@ Custom agents appear in the **Custom** tab of the Worker Agent Catalog. These ar
 To create a new custom agent:
 
 1. In the Worker Agent Catalog, select **+ Create**.
-2. Complete all required fields in the **Create Agent** form including Agent name, Instructions, Model provider, and optional MCP connectors.
+2. Complete all required fields in the **Create Agent** form, including Agent name, Instructions, Model provider, and optional MCP connectors. Go to the <a href="#worker-agent-form-field-reference">field reference</a> below to review details on each field.
 3. Select **Save agent** to publish the agent to your catalog.
 
 <DocImage path={require('./static/create-agent-form.png')} alt="Create Agent form showing fields for Agent name, Description, Instructions, Model provider, Model name, MCP connectors, Inputs, and Environment variables" title="Click to view full size" />
@@ -97,14 +96,14 @@ This approach is useful for quickly scaffolding agents and pipelines using natur
 
 ### IDE and terminal (via Harness MCP)
 
-You can also create and manage Worker Agents from any IDE or terminal that supports MCP, including Cursor, Windsurf, VS Code (Copilot), and Claude Code. With the [Harness MCP Server](/docs/platform/harness-ai/harness-mcp-server) installed, your IDE gains access to `agent` and `agent_run` resource types, enabling you to:
+You can also create and manage Worker Agents from any IDE or terminal that supports MCP, including Cursor, Windsurf, VS Code (Copilot), and Claude Code. With the <a href="/docs/platform/harness-ai/harness-mcp-server" target="_blank">Harness MCP Server</a> installed, your IDE gains access to `agent` and `agent_run` resource types, enabling you to:
 
 - **List existing agents:** View all agents in your project.
 - **Create new agents:** Provide the agent YAML spec to create an agent.
 - **Update agent configurations:** Modify instructions, inputs, and environment variables.
 - **Trigger agent runs:** Execute agents and inspect outputs.
 
-Go to [Harness MCP Server](/docs/platform/harness-ai/harness-mcp-server) to install and configure the MCP Server for your IDE or terminal.
+Go to <a href="/docs/platform/harness-ai/harness-mcp-server" target="_blank">Harness MCP Server</a> to install and configure the MCP Server for your IDE or terminal.
 
 ---
 
@@ -129,9 +128,9 @@ By default, your account includes **Harness Managed** agents. These agents are r
 
 ### Contribute a Worker Agent to the Marketplace
 
-You can submit your own Worker Agents to the **Community** category so other Harness users can discover and use them. Go to [Agent categories](#agent-categories) to understand how Community agents differ from Harness Certified and Harness Managed agents.
+You can submit your own Worker Agents to the **Community** category so other Harness users can discover and use them. Go to <a href="#agent-categories">Agent categories</a> to understand how Community agents differ from Harness Certified and Harness Managed agents.
 
-Go to the [Worker Agent submission form](https://docs.google.com/forms/d/e/1FAIpQLSezpouRTRs3pOl9r6svUmf5L98dQZGgxIQl0FUOkgnCLvcPOg/viewform) to submit your agent for review. Include the agent name, a clear description, the agent definition YAML, and the use case it solves. The Harness team reviews each submission before publishing it to the Marketplace. If you do not receive a response within 10 business days, contact [Harness Support](mailto:support@harness.io).
+Go to the <a href="https://docs.google.com/forms/d/e/1FAIpQLSezpouRTRs3pOl9r6svUmf5L98dQZGgxIQl0FUOkgnCLvcPOg/viewform" target="_blank">Worker Agent submission form</a> to submit your agent for review. Include the agent name, a clear description, the agent definition YAML, and the use case it solves. The Harness team reviews each submission before publishing it to the Marketplace. If you do not receive a response within 10 business days, contact [Harness Support](mailto:support@harness.io).
 
 ---
 
@@ -265,8 +264,8 @@ The following fields define a Worker Agent. Required fields are marked in the **
 |---|---|---|---|
 | **Name** | Yes | Human-readable identifier displayed in the catalog and pipeline step picker. | `PR Reviewer Agent` |
 | **Description** | No | Free-text summary of what the agent does. Helps teams discover and reuse agents from the catalog. | `Reviews PRs for security, schema, and architectural issues.` |
-| **Instructions** | Yes | The system prompt sent to the model at runtime. Supports Harness variable expressions for dynamic context injection. Go to [Configure instructions and Harness expressions](#configure-instructions-and-harness-expressions) to review dynamic context injection. | Example below |
-| **Model Connector** | Yes | The LLM provider connector. When you configure the connector, you select a default model. Go to [Configure Model Connectors](#configure-model-connectors) for supported providers and models. | `anthropic_bedrock_99cf4be5` |
+| **Instructions** | Yes | The system prompt sent to the model at runtime. Supports Harness variable expressions for dynamic context injection. Go to <a href="#configure-instructions-and-harness-expressions">Configure instructions and Harness expressions</a> to review dynamic context injection. | Example below |
+| **Model Connector** | Yes | The LLM provider connector. When you configure the connector, you select a default model. Go to <a href="#configure-model-connectors">Configure Model Connectors</a> for supported providers and models. | `anthropic_bedrock_99cf4be5` |
 | **Model Name** | No | Optional override for the model used at runtime. If not specified, the agent uses the default model configured on the Model Connector. Accepts an AWS Bedrock inference profile ARN for Anthropic connectors. | `arn:aws:bedrock:us-east-1:123456789012:application-inference-profile/a1b2c3d4e5f6` |
 | **MCP Connectors** | No | One or more MCP server connectors granting the agent access to Harness platform data and external services (such as GitHub). Each connector requires a URL and API key. | `harness_hosted_mcp` |
 | **Inputs** | No | Named parameters the agent accepts at runtime. Populated from pipeline step outputs, triggers, or manual values. Injected into the agent prompt as context. | `llmConnector`, `modelName`, `mcpConnectors` |
@@ -479,7 +478,7 @@ The **Agent** step can be added to any of the following Harness stage types:
 This means a Worker Agent can be embedded as a step in any pipeline stage where you want AI-driven automation, from PR review in CI to compliance checks in SCS.
 
 :::info CD and Custom stages
-For CD and Custom stages, the Agent step must be placed inside a **Containerized Step Group**. Go to [Containerized step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups) to set up container-based execution in these stage types.
+For CD and Custom stages, the Agent step must be placed inside a **Containerized Step Group**. Go to <a href="/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups" target="_blank">Containerized step groups</a> to set up container-based execution in these stage types.
 :::
 
 ---
@@ -490,8 +489,8 @@ The Model Connector defines the LLM provider and default model for your Worker A
 
 Harness supports the following Model Connectors:
 
-- **Anthropic Model Connector:** Run agents on Claude models through direct Anthropic or AWS Bedrock endpoints. Go to [Anthropic Model Connector](/docs/platform/harness-ai/model-connector/anthropic-model-connector) to review supported models and setup options.
-- **OpenAI Model Connector:** Run agents on GPT-5.5 with configurable reasoning effort. Go to [OpenAI Model Connector](/docs/platform/harness-ai/model-connector/openai-model-connector) to review supported models, effort levels, and setup options.
+- **Anthropic Model Connector:** Run agents on Claude models through direct Anthropic or AWS Bedrock endpoints. Go to <a href="/docs/platform/harness-ai/model-connector/anthropic-model-connector" target="_blank">Anthropic Model Connector</a> to review supported models and setup options.
+- **OpenAI Model Connector:** Run agents on GPT-5.5 with configurable reasoning effort. Go to <a href="/docs/platform/harness-ai/model-connector/openai-model-connector" target="_blank">OpenAI Model Connector</a> to review supported models, effort levels, and setup options.
 
 If you do not have access to a model provider, use a Harness-managed LLM connector instead of configuring your own credentials. Harness auto-provisions view-only managed connectors at the account level, `harnessAnthropic` for Claude models and `harnessOpenAI` for GPT models, that route requests through the Harness **LLM Gateway**. Inspect them under **Account Settings** > **Account Resources** > **Connectors**; you cannot edit or delete them.
 
@@ -511,7 +510,7 @@ Worker Agents run inside Docker containers in an isolated VM. You can run agents
 - **Harness Cloud:** Harness manages the compute infrastructure. Select `Cloud` as the runtime type in your pipeline stage configuration. Available for CI, STO, SCS, and IACM stages.
 - **Self-hosted infrastructure:** Run agents on your own Kubernetes cluster using a Harness Delegate. The agent container executes in an isolated VM on your infrastructure, giving you full control over networking, data residency, and compute resources.
 
-For CD and Custom stages, the Agent step requires a [Containerized Step Group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups) to provide the container execution environment.
+For CD and Custom stages, the Agent step requires a <a href="/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups" target="_blank">Containerized Step Group</a> to provide the container execution environment.
 
 ---
 
@@ -521,7 +520,7 @@ Worker Agents execute inside Docker containers in isolated VMs, whether on Harne
 
 ### Scoped token behavior
 
-The scoped token grants the agent access based on the `permissions` block declared on the stage or Containerized Step Group that contains the Agent step, evaluated against the RBAC of the principal that invokes the pipeline. An agent's effective permission is the intersection of the two: the declared grant can only narrow what the invoking principal is already allowed to do, never expand it. Go to [Configure permissions for Worker Agents](#configure-permissions-for-worker-agents) to review the permission grammar and supported resources.
+The scoped token grants the agent access based on the `permissions` block declared on the stage or Containerized Step Group that contains the Agent step, evaluated against the RBAC of the principal that invokes the pipeline. An agent's effective permission is the intersection of the two: the declared grant can only narrow what the invoking principal is already allowed to do, never expand it. Go to <a href="#configure-permissions-for-worker-agents">Configure permissions for Worker Agents</a> to review the permission grammar and supported resources.
 
 ### Isolation model
 
@@ -560,7 +559,7 @@ The placement of the `permissions` block differs by stage type. Select your stag
 
 Two rules govern what is accepted:
 
-- **Resource keys are validated.** Only the keys listed under [Supported resources by module](#supported-resources-by-module) are recognized. An unrecognized key is dropped, so no permission is granted for it.
+- **Resource keys are validated.** Only the keys listed under <a href="#supported-resources-by-module">Supported resources by module</a> are recognized. An unrecognized key is dropped, so no permission is granted for it.
 - **Verbs are not checked against a fixed enum.** Harness concatenates whatever verb you list into the permission key. The verb must match a real RBAC action for that resource (for example `view`, `edit`, `execute`, `access`), otherwise the resulting key matches nothing and the grant resolves to no access.
 
 <Tabs>
@@ -577,7 +576,7 @@ spec:
 </TabItem>
 <TabItem value="cd" label="CD, Custom (Step Group Level)">
 
-In CD and Custom stages, the Agent step runs inside a [Containerized Step Group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups). Add the `permissions` block to the step group, not the stage. The scoped token applies to every step in the group.
+In CD and Custom stages, the Agent step runs inside a <a href="/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups" target="_blank">Containerized Step Group</a>. Add the `permissions` block to the step group, not the stage. The scoped token applies to every step in the group.
 
 ```yaml
 - stepGroup:
@@ -665,13 +664,13 @@ Verbs are not drawn from a fixed list. Whatever you type is concatenated into th
 | Review / approval | `approve`, `reject`, `review`, `reportstatuscheck` | Approval workflows |
 | Admin | `manage`, `invite`, `impersonate` | Administrative actions; use sparingly |
 
-Because there is no verb enum, a mistyped or unsupported verb does not raise an error. It produces a permission key that matches nothing, so the agent silently gets no access for that pair. Confirm the exact action names against the resource's RBAC permissions before relying on them. Go to the [permissions reference](/docs/platform/role-based-access-control/permissions-reference) to review the actions each resource supports.
+Because there is no verb enum, a mistyped or unsupported verb does not raise an error. It produces a permission key that matches nothing, so the agent silently gets no access for that pair. Confirm the exact action names against the resource's RBAC permissions before relying on them. Go to the <a href="/docs/platform/role-based-access-control/permissions-reference" target="_blank">permissions reference</a> to review the actions each resource supports.
 
 Treat high blast-radius verbs, including `delete`, `execute`, `abort`, `rollback`, and any admin-class verb, as opt-in. Declare them explicitly only on the resource keys where the agent needs them.
 
 ### Supported resources by module
 
-These are the resource keys each module recognizes. A key not listed here is dropped when the token is built, so it grants nothing. Pair any recognized key with a verb that matches a real RBAC action for that resource (see [Verbs](#verbs)). Expand a module to review its keys.
+These are the resource keys each module recognizes. A key not listed here is dropped when the token is built, so it grants nothing. Pair any recognized key with a verb that matches a real RBAC action for that resource (see <a href="#verbs">Verbs</a>). Expand a module to review its keys.
 
 <details>
 <summary>Core (Platform)</summary>
@@ -818,7 +817,7 @@ An agent gets no access for a pair when any of these is true:
 - The verb exceeds the invoking principal's own RBAC, so the intersection removes it.
 - The resource key is not recognized, or the verb does not match a real RBAC action, so the built permission key matches nothing.
 
-The first two cases surface as a permission-denied error when the agent calls the corresponding Harness API. The third is silent, since the invalid key or verb is simply dropped when the token is built. If an agent cannot perform an action you expected, confirm the resource key is listed under [Supported resources by module](#supported-resources-by-module), confirm the verb matches the resource's RBAC action, then add or correct the pair and re-run.
+The first two cases surface as a permission-denied error when the agent calls the corresponding Harness API. The third is silent, since the invalid key or verb is simply dropped when the token is built. If an agent cannot perform an action you expected, confirm the resource key is listed under <a href="#supported-resources-by-module">Supported resources by module</a>, confirm the verb matches the resource's RBAC action, then add or correct the pair and re-run.
 
 ### Best practices
 
@@ -831,7 +830,7 @@ The first two cases surface as a permission-denied error when the agent calls th
 
 - **Trigger-initiated runs:** Agents run by a pipeline trigger do not currently have a scoped token injected, so declared permissions cannot be resolved against an invoking principal for those runs. This permission model applies to manually and API-triggered runs where a principal is available. Trigger support is on the roadmap.
 - **Verbs are unvalidated:** There is no verb enum, so a mistyped or unsupported verb fails silently rather than raising an error. Confirm every verb against the resource's RBAC actions.
-- **Resource keys not listed above are dropped:** Any key outside [Supported resources by module](#supported-resources-by-module) grants nothing. New keys are added as modules onboard to the scoped-token model.
+- **Resource keys not listed above are dropped:** Any key outside <a href="#supported-resources-by-module">Supported resources by module</a> grants nothing. New keys are added as modules onboard to the scoped-token model.
 - **`scs_evidence_vault` (Beta):** Requires the corresponding feature flag.
 
 ---
@@ -856,7 +855,7 @@ Worker Agents have dedicated RBAC permissions in Harness. Administrators can con
 3. Under the **AI Agents** resource, enable the permissions you want to grant (**View**, **Create**, **Edit**, **Delete**).
 4. Assign the role to the appropriate users or user groups.
 
-Go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) to learn about role-based access control. Go to [Manage roles](/docs/platform/role-based-access-control/add-manage-roles) to create and assign roles.
+Go to <a href="/docs/platform/role-based-access-control/rbac-in-harness" target="_blank">RBAC in Harness</a> to learn about role-based access control. Go to <a href="/docs/platform/role-based-access-control/add-manage-roles" target="_blank">Manage roles</a> to create and assign roles.
 
 ---
 
@@ -873,9 +872,9 @@ Use agent **Inputs** (such as `<+inputs.repoName>` or `<+inputs.planFile>`) to m
 
 The table below lists expressions commonly used in Worker Agent instructions. For the full list of available variables and expressions, go to:
 
-- [Add a variable](/docs/platform/variables-and-expressions/add-a-variable): Create custom pipeline, stage, and service variables.
-- [Built-in and custom Harness variables reference](/docs/platform/variables-and-expressions/harness-variables): Complete reference for all built-in variables including pipeline, stage, step, trigger, and deployment variables.
-- [Harness expressions reference](/docs/platform/variables-and-expressions/harness-expressions-reference): Syntax, usage patterns, and methods for working with expressions.
+- <a href="/docs/platform/variables-and-expressions/add-a-variable" target="_blank">Add a variable</a>: Create custom pipeline, stage, and service variables.
+- <a href="/docs/platform/variables-and-expressions/harness-variables" target="_blank">Built-in and custom Harness variables reference</a>: Complete reference for all built-in variables including pipeline, stage, step, trigger, and deployment variables.
+- <a href="/docs/platform/variables-and-expressions/harness-expressions-reference" target="_blank">Harness expressions reference</a>: Syntax, usage patterns, and methods for working with expressions.
 
 ### Supported expressions
 
@@ -1058,7 +1057,7 @@ Worker Agents support all standard Harness pipeline trigger types, including web
 <DocImage path={require('./static/pipeline-triggers.png')} alt="Harness pipeline trigger catalog showing webhook, artifact, manifest, and scheduled trigger options" title="Click to view full size" />
 <p align="center"><em>All Harness pipeline trigger types are supported for Worker Agent pipelines</em></p>
 
-Go to [Triggers overview](/docs/platform/triggers/triggers-overview) to learn about the full range of available trigger types.
+Go to <a href="/docs/platform/triggers/triggers-overview" target="_blank">Triggers overview</a> to learn about the full range of available trigger types.
 
 ---
 
@@ -1073,7 +1072,7 @@ Worker Agent results can be forwarded to Slack using pipeline notifications, use
 3. In **Notification Method**, select `Slack`.
 4. Paste your Slack Incoming Webhook URL, or reference it as a secret: `<+secrets.getValue("slackwebhookURL")>`.
 
-Go to [Configure pipeline notifications](/docs/platform/notifications/notifications/configure-notifications#configure-pipeline-notifications) to review the full setup.
+Go to <a href="/docs/platform/notifications/notifications/configure-notifications#configure-pipeline-notifications" target="_blank">Configure pipeline notifications</a> to review the full setup.
 
 ### User group notifications
 
@@ -1081,7 +1080,7 @@ Go to [Configure pipeline notifications](/docs/platform/notifications/notificati
 2. Select a User Group and go to **Notification Preferences**.
 3. Select **Slack Webhook URL** and paste your webhook.
 
-Go to [Send notifications using Slack](/docs/platform/notifications/send-notifications-using-slack/) to review the full setup.
+Go to <a href="/docs/platform/notifications/send-notifications-using-slack/" target="_blank">Send notifications using Slack</a> to review the full setup.
 
 ### Slack Notify step (CD pipelines)
 
@@ -1116,7 +1115,7 @@ curl -X POST -H 'Content-type: application/json' --data '{
 ```
 
 :::tip
-Always store your Slack webhook URL as an encrypted text secret in Harness and reference it via `<+secrets.getValue("your-secret-id")>`. Go to [Add and use text secrets](/docs/platform/secrets/add-use-text-secrets) to set up encrypted secrets.
+Always store your Slack webhook URL as an encrypted text secret in Harness and reference it via `<+secrets.getValue("your-secret-id")>`. Go to <a href="/docs/platform/secrets/add-use-text-secrets" target="_blank">Add and use text secrets</a> to set up encrypted secrets.
 :::
 
 ---
@@ -1570,7 +1569,7 @@ output:
 | Field | Description |
 |---|---|
 | `name` | The key the agent writes to `$HARNESS_OUTPUT`/`$DRONE_OUTPUT`. Must match the key in the shell `printf` commands in the agent instructions. |
-| `alias` | The name exposed as a step output variable. Downstream steps reference this value using `<+steps.<agent_step_id>.steps.<inner_step_name>.output.outputVariables.<alias>>`. Go to [Agent step expands to a step group at runtime](/docs/platform/harness-ai/core-capabilities/in-your-pipelines/harness-agents#agent-step-expands-to-a-step-group-at-runtime) to find the inner step name. |
+| `alias` | The name exposed as a step output variable. Downstream steps reference this value using `<+steps.<agent_step_id>.steps.<inner_step_name>.output.outputVariables.<alias>>`. Go to <a href="#agent-step-expands-to-a-step-group-at-runtime">Agent step expands to a step group at runtime</a> to find the inner step name. |
 
 ### How output variables flow end-to-end
 
@@ -1578,7 +1577,7 @@ output:
 2. The `output` array in the agent definition declares which keys to surface as step output variables.
 3. Downstream pipeline steps reference these outputs using Harness expressions such as `<+steps.assess_plan_safety.steps.iacm_plan_safety_agent_1.output.outputVariables.RECOMMENDATION>`.
 
-Go to [Example: IaC plan safety gate with agent outputs](#example-iac-plan-safety-gate-with-agent-outputs) to see a complete pipeline that consumes these output variables in a downstream gating step.
+Go to <a href="#example-iac-plan-safety-gate-with-agent-outputs">Example: IaC plan safety gate with agent outputs</a> to see a complete pipeline that consumes these output variables in a downstream gating step.
 
 ---
 
@@ -2145,7 +2144,7 @@ pipeline:
 ### Customize this workflow
 
 - **Run only spec and plan generation:** Remove the Implementation Agent step for teams that want AI-generated specs and plans but prefer manual implementation.
-- **Gate between agents:** Add an [Approval step](/docs/platform/approvals/approvals-tutorial) between the Plan Generator and Implementation agents so a human reviews the plan before code generation starts.
+- **Gate between agents:** Add an <a href="/docs/platform/approvals/approvals-tutorial" target="_blank">Approval step</a> between the Plan Generator and Implementation agents so a human reviews the plan before code generation starts.
 - **Limit implementation scope:** Set the `maxTasksPerRun` input on the Implementation Agent to control how many tasks are implemented per pipeline run.
 - **Trigger on labels:** Configure the pipeline trigger to fire only when a specific label (such as `agent-implement`) is applied to the PR, so implementation runs on demand rather than on every push.
 
@@ -2404,7 +2403,7 @@ with:
 
 Without this declaration, the agent can still write to `$HARNESS_OUTPUT` and `$DRONE_OUTPUT`, but the keys are not surfaced as named output variables on the step. Declaring them makes the outputs visible in the pipeline execution UI and referenceable by downstream steps.
 
-Go to [Example: IaC Plan Safety Agent with output variables](/docs/platform/harness-ai/core-capabilities/in-your-pipelines/harness-agents#example-iac-plan-safety-agent-with-output-variables) to see a complete agent definition with output declarations.
+Go to <a href="#example-iac-plan-safety-agent-with-output-variables">Example: IaC Plan Safety Agent with output variables</a> to see a complete agent definition with output declarations.
 
 ### How outputs work
 
@@ -2483,7 +2482,7 @@ Policies are evaluated at two points:
 - **On save:** When a user creates or updates a Worker Agent, Harness evaluates the agent configuration against your policies. An agent that violates a policy cannot be saved until the violation is resolved.
 - **On run:** When a pipeline runs an Agent step, Harness evaluates whether the agent is properly configured in the pipeline before execution proceeds.
 
-Go to [Harness Policy As Code overview](/docs/platform/governance/policy-as-code/harness-governance-overview) to learn about OPA-based governance in Harness.
+Go to <a href="/docs/platform/governance/policy-as-code/harness-governance-overview" target="_blank">Harness Policy As Code overview</a> to learn about OPA-based governance in Harness.
 
 ---
 
@@ -2507,82 +2506,307 @@ The following limitations apply to Worker Agents:
 ## Troubleshooting
 
 <Troubleshoot
-  issue="Worker Agent step fails with model connector error in Harness pipeline"
-  mode="docs"
-  fallback="Verify that the Model Connector is an Anthropic Connector backed by AWS Bedrock and that the Model Name is a valid inference profile ARN, not a bare foundation model ID."
+  issue={`Worker Agent step fails with "Model connector not found" error`}
+  mode="fallback-only"
+  fallback={`Here are some checks you can perform for connector-related errors in Harness pipelines:
+- Verify that the Model Connector exists and is accessible in your project scope. Navigate to **Account Settings > Connectors** and confirm the connector ID matches what is configured in your agent definition. If the connector was created at a different scope (organization or account level), ensure your agent has permission to access it.
+
+- General Connector Error Checks
+
+    - Verify that the connector's credentials (API tokens, secrets) are not expired, as expired credentials are a common cause of connector failures. [[Pipeline FAQs](https://developer.harness.io/docs/platform/pipeline-faq#pipeline-executions-and-logs)]
+    - Check that the secret reference syntax is correct: \`<+secrets.getValue("secret_name")>\` [[Investigator Agent Troubleshooting](https://developer.harness.io/docs/ai-sre/ai-agent/investigator-agent-pipelines/#troubleshooting)]
+    - Rotate the API token if it has expired and re-test. [[Investigator Agent Troubleshooting](https://developer.harness.io/docs/ai-sre/ai-agent/investigator-agent-pipelines/#troubleshooting)]
+    - Confirm the secret exists in Harness Secrets Manager. [[Investigator Agent Troubleshooting](https://developer.harness.io/docs/ai-sre/ai-agent/investigator-agent-pipelines/#troubleshooting)]
+
+- Connectivity Mode Checks
+
+    - If using Harness Cloud build infrastructure, ensure the connector is set to **Connect through Harness Platform** (not via delegate), as all connectors must use this mode with Harness Cloud. [[CI FAQs - Connector errors](https://developer.harness.io/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#connector-errors-with-harness-cloud-build-infrastructure)]
+    - To change connectivity mode: go to **Connectors** → select the connector → **Edit Details** → navigate to **Select Connectivity Mode** → select **Connect through Harness Platform**. [[CI FAQs - Connector errors](https://developer.harness.io/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#connector-errors-with-harness-cloud-build-infrastructure)]
+
+- Delegate Checks (if using delegate connectivity)
+
+    - Confirm the delegate is running and has the required permissions. [[Delegate FAQs](https://developer.harness.io/docs/faqs/harness-delegate-faqs/#troubleshooting-the-delegate)]
+    - Verify the delegate can reach the target resource (check network, firewall, and outbound HTTPS 443). [[Delegate can't connect](https://developer.harness.io/docs/troubleshooting/troubleshooting-nextgen/#delegate-cant-connect-to-harness-manager)]
+
+- Viewing Logs
+
+    - In the failed pipeline execution, check if a **View Delegate Tasks Logs** option is available to inspect StackDriver logs for the failing task. [[Pipeline execution failures](https://developer.harness.io/docs/troubleshooting/troubleshooting-nextgen/#pipeline-execution-failures)]
+    - Use **Analyze Error** (Harness AI) on the failed execution for root cause analysis and automated fix recommendations. [[Harness AI Error Analyzer](https://developer.harness.io/docs/platform/harness-ai/devops-agent#error-analyzer)]`}
 />
 
 <Troubleshoot
   issue="Anthropic Connector fails during setup when using AWS Bedrock for Worker Agents"
-  mode="docs"
-  fallback="When configuring the Anthropic Connector for AWS Bedrock, select Amazon Bedrock API Key as the authentication type, not Personal Token. Personal Token is for direct Anthropic API access only. If you are using a provisioned Bedrock endpoint, select Amazon Bedrock API Key, enter the AWS Access Key ID and Secret Access Key, select the correct AWS Region, and choose a model. Using the wrong authentication type causes connection test failures and runtime errors in Agent steps."
+  mode="fallback-only"
+  fallback={`- When configuring the Anthropic Connector for AWS Bedrock, select Amazon Bedrock API Key as the authentication type, not Personal Token. Personal Token is for direct Anthropic API access only. If you are using a provisioned Bedrock endpoint, select Amazon Bedrock API Key, enter the AWS Access Key ID and Secret Access Key, select the correct AWS Region, and choose a model. Using the wrong authentication type causes connection test failures and runtime errors in Agent steps.
+
+- Connector Configuration Checks [[Worker Agents](https://developer.harness.io/docs/platform/harness-ai/harness-agents#configure-model-connectors)]
+
+    - Ensure you select **Amazon Bedrock API Key** as the **Authentication Type** (not Personal Token, which is for direct Anthropic endpoints).
+    - Verify the correct **Region** is selected for your AWS Bedrock endpoint.
+    - Confirm a valid default **Model Name** is chosen from the supported list: Claude Sonnet 4.6, Claude Opus 4.6, Claude Sonnet 4.5, or Claude Opus 4.5.
+
+- Model Name Override Check [[Constraints](https://developer.harness.io/docs/platform/harness-ai/harness-agents#constraints-and-known-limitations)]
+
+    - If overriding the default model via the **Model Name** field, you **must** provide a full AWS Bedrock inference profile ARN in the format: \`arn:aws:bedrock:<region>:<account-id>:application-inference-profile/<profile-id>\`
+    - Bare model IDs (e.g., \`claude-opus-4-6\`) are **not** supported as overrides.
+
+- Credentials & Secrets Checks [[Troubleshooting](https://developer.harness.io/docs/platform/harness-ai/harness-agents#troubleshooting)]
+
+    - Confirm the API key/secret referenced in the connector has not expired.
+    - Verify the secret exists in Harness Secrets Manager and the reference syntax is correct.
+    - Ensure you have **View** and **Access** permissions for the secret being referenced.
+
+- Connectivity Mode Checks [[Troubleshooting](https://developer.harness.io/docs/platform/harness-ai/harness-agents#troubleshooting)]
+
+    - If using Harness Cloud build infrastructure, set the connector to **Connect through Harness Platform**.
+    - If using delegate connectivity, confirm the delegate is running, reachable, and has outbound HTTPS (port 443) access.
+    - Verify the connector exists at the correct scope (account, org, or project).
+
+- Permissions Check [[Worker Agents](https://developer.harness.io/docs/platform/harness-ai/harness-agents)]
+
+    - Ensure you have **View**, **Create/Edit**, and **Delete** permissions for Connectors in Harness RBAC.`}
 />
 
 <Troubleshoot
-  issue="MCP connector connection test fails for Worker Agent in Harness"
-  mode="docs"
-  fallback="Ensure the MCP Server URL matches your cluster endpoint from the Harness Hosted MCP endpoints table and that the API key is stored as a Harness secret with the header name set to X-Api-Key."
+  issue={`MCP connector returns "Authentication failed" during agent execution`}
+  mode="fallback-only"
+  fallback={`Here are the relevant checks you can perform:
+- Ensure the MCP Server URL matches your cluster endpoint from the Harness Hosted MCP endpoints table and that the API key is stored as a Harness secret with the header name set to X-Api-Key."
+
+- General Connector Connection Test Troubleshooting
+
+    - Check Delegate Task Logs: If \`executeOnDelegate\` is set to \`true\`, a View Delegate Tasks Logs option appears on the Connector Details page. Use it to inspect Google StackDriver logs for the failing task. [[Connector troubleshooting](https://developer.harness.io/docs/troubleshooting/troubleshooting-nextgen/#connectors)]
+
+    - Verify credentials and permissions: Confirm that the credentials (API key, token, username/password) used in the connector are correct, have not expired, and have the required permissions/scopes for the target service.
+
+    - Check connector scope: Ensure the connector exists at the correct scope (account, org, or project) and that the referenced resource has not been deleted. [[Connector troubleshooting](https://developer.harness.io/docs/troubleshooting/troubleshooting-nextgen/#connectors)]
+
+- Check network connectivity from the Delegate host:
+
+    - Use ping and traceroute to app.harness.io to verify network reachability.
+    - Use nslookup to confirm DNS resolution is working.
+    - Ensure outbound HTTPS (port 443) is allowed in security groups or firewall rules. [[Delegate connectivity](https://developer.harness.io/docs/troubleshooting/troubleshooting-nextgen/#delegate-cant-connect-to-harness-manager)]
+
+- Skip preflight checks if network restrictions are the cause: If the connection test fails due to proxy, split DNS, or firewall policies but the connector works at runtime, you can:
+
+    - Contact [Harness Support](mailto:support@harness.io) to enable the \`CI_IGNORE_TEST_CONNECTION\` feature flag.
+    - Add \`ignoreTestConnection: true\` to the connector's YAML. [[Skip preflight checks](https://developer.harness.io/docs/platform/connectors/create-a-connector-using-yaml/#optional-skip-connector-preflight-checks)]
+
+- Use the Test Connection API to programmatically diagnose the failure and review the \`errors\` and \`error_summary\` fields in the response. [[API docs](https://apidocs.harness.io/)]`}
 />
 
 <Troubleshoot
   issue="Harness expressions not resolving in Worker Agent Instructions"
-  mode="docs"
-  fallback="Expressions such as <+trigger.repoName> resolve at pipeline execution time, not when the agent is saved. Verify that a pipeline trigger is configured and that the pipeline is executed via that trigger."
+  mode="fallback-only"
+  fallback={`- Expressions such as \`<+trigger.repoName>\` resolve at pipeline execution time, not when the agent is saved. Verify that a pipeline trigger is configured and that the pipeline is executed via that trigger.
+
+- Verify the expression exists and is correctly scoped
+
+    - Confirm the variable exists in the Harness UI (Service → Variables or Environment → Variables)
+    - Check that the variable name matches exactly (expressions are case-sensitive)
+    - Ensure you're using the correct scope (e.g., \`<+serviceVariables.*>\` vs \`<+env.variables.*>\`) [[Expression troubleshooting](https://developer.harness.io/docs/continuous-delivery/gitops/application/harness-expressions-in-gitops-applications/#troubleshoot-common-issues)]
+
+- Check expression syntax
+
+    - No extra spaces or special characters inside \`<+...>\`
+    - Correct format, e.g., \`<+serviceVariables.variableName>\` or \`<+env.variables.varName>\` [[Expression troubleshooting](https://developer.harness.io/docs/continuous-delivery/gitops/application/harness-expressions-in-gitops-applications/#troubleshoot-common-issues)]
+
+- Ensure the expression is used only after its value is available
+
+    - Expressions referencing a step/stage output cannot be used before that step/stage has executed [[Expression usage](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#use-expressions-only-after-they-can-be-resolved)]
+
+- Check for undefined variables
+
+    - In Harness NG, undefined variables cause pipeline failures (unlike FirstGen where they default to \`null\`) [[Expression evaluation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#expression-evaluation)]
+
+- For GitOps / ArgoCD contexts specifically:
+
+    - Verify the ArgoCD Harness Plugin is enabled on your GitOps agent (minimum agent version \`v0.105.x\`) [[GitOps expressions](https://developer.harness.io/docs/continuous-delivery/gitops/application/harness-expressions-in-gitops-applications/)]
+    - For existing agent installations, run the patch script to configure the plugin [[GitOps expressions](https://developer.harness.io/docs/continuous-delivery/gitops/application/harness-expressions-in-gitops-applications/)]
+    - Perform a hard refresh of the application to invalidate cache [[Expression troubleshooting](https://developer.harness.io/docs/continuous-delivery/gitops/application/harness-expressions-in-gitops-applications/#troubleshoot-common-issues)]
+
+- For numeric variables appearing as strings:
+
+    - Ensure the variable type is set to Number, not String [[Expression troubleshooting](https://developer.harness.io/docs/continuous-delivery/gitops/application/harness-expressions-in-gitops-applications/#troubleshoot-common-issues)]
+
+- For Kubernetes build infrastructure (CI):
+
+    - Step-level variables may resolve as null during pod initialization — promote them to stage or pipeline variables if needed [[CI FAQs](https://developer.harness.io/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#pipeline-initialization-and-harness-ci-images)]
+
+- Use Compiled Mode for debugging:
+    
+    - In Pipeline Studio, open Variables and enable View in Compiled Mode to see resolved values and identify broken expressions [[Debugging expressions](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#troubleshooting-expressions)]`}
 />
 
 <Troubleshoot
   issue="Agent output variable expression is unresolved or shows as an input field in the Run step"
-  mode="docs"
-  fallback="The Agent step expands to a step group at runtime, so the expression path must include both the outer Agent step identifier and the inner step name. Use the format <+steps.<agent_step_id>.steps.<agent_name_version>.output.outputVariables.<KEY>>. Run the pipeline once and expand the Agent step group in the execution view to find the inner step name."
+  mode="fallback-only"
+  fallback={`The Agent step expands to a step group at runtime, so the expression path must include both the outer Agent step identifier and the inner step name. Use the format \`<+steps.<agent_step_id>.steps.<agent_name_version>.output.outputVariables.<KEY>>\`. Run the pipeline once and expand the Agent step group in the execution view to find the inner step name.
+
+Here are the key checks and steps to resolve an agent output variable expression that is unresolved or appears as an input field in a downstream Run step:
+
+- Verify the expression syntax is correct. Within the same stage, use:
+
+\`<+steps.<step_identifier>.output.outputVariables.VAR_NAME>\`
+\`<+execution.steps.<step_identifier>.output.outputVariables.VAR_NAME>\`
+
+Across stages, use:
+
+\`<+stages.<stageID>.spec.execution.steps.<stepID>.output.outputVariables.VAR_NAME>\`
+\`<+pipeline.stages.<stageID>.spec.execution.steps.<stepID>.output.outputVariables.VAR_NAME>\`
+[[Reference output variable](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings#reference-an-output-variable)]
+
+- Confirm the agent has published the output. The agent must write \`KEY=value\` lines to \`$HARNESS_OUTPUT\` or \`$DRONE_OUTPUT\` during execution. If the agent step failed or the output file was never written to, the variable will be empty. [[Configure agent outputs](https://developer.harness.io/docs/platform/harness-ai/harness-agents#configure-agent-outputs)]
+
+- Ensure the agent step has already completed before the referencing step runs. Expressions can only be resolved after the step that produces them has finished. Do not reference an output variable in a step that runs before or in parallel with the agent step. [[Expression usage](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#use-expressions-only-after-they-can-be-resolved)]
+
+- Check if the step is inside a step group. If the agent step is inside a step group, include the step group ID in the expression:
+
+\`<+execution.steps.STEP_GROUP_ID.steps.STEP_ID.output.outputVariables.VAR_NAME>\`
+[[Reference output variable](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings#reference-an-output-variable)]
+
+- Check for exit statements in the agent instructions. If the script uses \`exit 0\` or any explicit exit call, output variables will not be available — the output will be empty. Let the script complete naturally without explicit exit calls. [[Run step settings](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings#output-variables)]
+
+- Check for looping strategies. If the agent step uses a looping strategy, append the iteration index to the step identifier (e.g., \`my_agent_step_0\` instead of \`my_agent_step\`). [[Troubleshooting](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/aws-cdk/aws-cdk-provisioning#troubleshooting)]
+
+- Check variable name case sensitivity. Expression variable names are case-sensitive. Confirm the key name in the expression exactly matches what the agent wrote to the output file. [[Harness Agents](https://developer.harness.io/docs/platform/harness-ai/harness-agents)]
+
+- Check output variable length. Output variables exceeding 64KB can cause steps to fail or truncate output. Keep values concise (summaries should be 500 characters or fewer). [[Output Variables](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings#output-variables)]
+
+- Use execution details to copy the correct expression. In the pipeline execution UI, select the agent step → Output tab, and use the Copy icon next to the variable name to get the exact, correct expression path. [[Input and output variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#input-and-output-variables)]
+
+- For Kubernetes build infrastructure specifically: Step-level variables may resolve as \`null\` during pod initialization. If this is the case, generate the output in a prior stage and reference it using a cross-stage expression. [[CI FAQs](https://developer.harness.io/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#pipeline-initialization-and-harness-ci-images)]`}
 />
 
 <Troubleshoot
   issue="Cannot find Agent YAML for instructions, inputs, or output variable configuration"
-  mode="docs"
-  fallback="The pipeline YAML only contains a reference to the agent (agentName: name@version). The full agent definition with instructions, outputs, inputs, and environment variables is stored in the Worker Agent Catalog. Go to AI > Worker Agents, select the agent, and switch to the YAML tab to view or edit the full configuration."
+  mode="fallback-only"
+  fallback={`The pipeline YAML only contains a reference to the agent (\`agentName: name@version\`). The full agent definition with instructions, outputs, inputs, and environment variables is stored in the Worker Agent Catalog. Go to **AI > Worker Agents**, select the agent, and switch to the **YAML** tab to view or edit the full configuration.
+
+Here are the key steps and checks for finding and working with Worker Agent YAML configuration for instructions, inputs, and output variables:
+
+- Finding the Agent YAML
+    - In the Worker Agent Catalog, open your agent and switch to the YAML tab to view the full agent configuration, including container image, instructions, inputs, and environment variables. [[Create a Worker Agent](https://developer.harness.io/docs/platform/harness-ai/harness-agents#create-a-worker-agent)]
+
+- Instructions Configuration
+    - The Instructions field is the agent's system prompt and supports Harness variable expressions (e.g., \`<+trigger.repoName>\`, \`<+trigger.prNumber>\`). [[Configure instructions](https://developer.harness.io/docs/platform/harness-ai/harness-agents#configure-instructions-and-harness-expressions)]
+    - Expressions are resolved at pipeline execution time, not when you save the agent — verify expressions are only used after their values are available.
+    - Check that expression syntax has no extra spaces or special characters inside \`<+...>\` and that variable names match exactly (case-sensitive).
+
+- Inputs Configuration
+    - Inputs are defined in the agent YAML under the inputs key. Supported types are string, connector, and array. [[Configure inputs](https://developer.harness.io/docs/platform/harness-ai/harness-agents#configure-inputs)]
+    - Example YAML:
+    \`\`\`
+      inputs:
+        llmConnector:
+          type: connector
+          required: true
+          default: anthropic_bedrock_99cf4be5
+        modelName:
+          type: string
+          required: true
+        mcpConnectors:
+          type: array
+          default:
+            - rohan_hosted_mcp
+      \`\`\`
+
+- Output Variable Configuration
+    - Outputs are published by writing KEY=value lines to the $HARNESS_OUTPUT or $DRONE_OUTPUT files during agent execution. [[Configure agent outputs](https://developer.harness.io/docs/platform/harness-ai/harness-agents#configure-agent-outputs)]
+    - Reference outputs in downstream steps using:
+    \`<+steps.<step_identifier>.output.outputVariables.KEY_NAME>\`
+    - Write to both output files ($HARNESS_OUTPUT and $DRONE_OUTPUT), but check if they point to the same path to avoid duplicates.
+    - Keep output values concise (500 characters or fewer for strings).
+
+- Agent Step YAML in a Pipeline
+    - Reference the agent in a pipeline using the Agent step type with agentName: \`<name>@<version>\` format. [[Use a Worker Agent](https://developer.harness.io/docs/platform/harness-ai/harness-agents#use-a-worker-agent-in-a-pipeline)]
+    - Example: YAML
+    \`\`\`
+      step:
+        type: Agent
+        name: PR Review Agent
+        identifier: pr_review_agent
+        spec:
+          agentName: pr_review_agent@1.0.6
+          agentSettings:
+    \`\`\``}
 />
 
 <Troubleshoot
   issue="Where do I configure the prompt for my Worker Agent, in the pipeline step or the agent definition?"
-  mode="docs"
-  fallback="Configure the prompt in the agent definition (AI > Worker Agents > select the agent > Instructions field). The pipeline Agent step references the agent by name and version and does not contain a separate prompt field. Use agent Inputs to make the instructions dynamic across pipelines without duplicating the agent."
+  mode="fallback-only"
+  fallback={`Configure the prompt in the agent definition (**AI > Worker Agents** > select the agent > **Instructions** field). The pipeline Agent step references the agent by name and version and does not contain a separate prompt field. Use agent Inputs to make the instructions dynamic across pipelines without duplicating the agent.
+
+The prompt for a Worker Agent is configured in the agent definition, not the pipeline step. Here's a summary:
+
+- The Instructions field in the agent definition serves as the system prompt sent to the model at runtime. [[Worker Agent fields](https://developer.harness.io/docs/platform/harness-ai/harness-agents#worker-agent-form-field-reference)]
+- To configure it, go to the Worker Agent Catalog → select or create an agent → fill in the Instructions field in the Create Agent (or Edit Agent) form. [[Create a Worker Agent](https://developer.harness.io/docs/platform/harness-ai/harness-agents#create-a-worker-agent)]
+- The Instructions field supports Harness variable expressions (e.g., \`<+trigger.repoName>\`, \`<+trigger.prNumber>\`) so the prompt can be dynamic at runtime without changing the agent definition each time. [[Configure instructions](https://developer.harness.io/docs/platform/harness-ai/harness-agents#configure-instructions-and-harness-expressions)]
+- Expressions in the Instructions field are resolved at pipeline execution time, not when you save the agent.
+- The pipeline step (Agent step) only specifies which agent to use (by name and version) and supplies runtime input values - it does not define the prompt itself. [[Use a Worker Agent](https://developer.harness.io/docs/platform/harness-ai/harness-agents#use-a-worker-agent-in-a-pipeline)]`}
 />
 
 <Troubleshoot
   issue="Do I set up the LLM Connector in the agent definition or in the pipeline Agent step?"
-  mode="docs"
-  fallback="Configure the Model Connector in the agent definition (AI > Worker Agents > select the agent). The LLM Connector field on the pipeline Agent step is an optional override. Leave it empty to use the connector configured on the agent. Use the pipeline-level override only when a specific pipeline needs a different connector or model than the agent default."
+  mode="fallback-only"
+  fallback={`Configure the Model Connector in the agent definition (**AI > Worker Agents** > select the agent). The **LLM Connector** field on the pipeline Agent step is an optional override. Leave it empty to use the connector configured on the agent. Use the pipeline-level override only when a specific pipeline needs a different connector or model than the agent default.
+
+The LLM Connector (Model Connector) is set up in both the agent definition and referenced in the pipeline Agent step. Here's how each part works:
+
+In the Agent Definition:
+
+- Go to **Worker Agents** in the AI section of the Harness module selector. [[Worker Agents](https://developer.harness.io/docs/platform/harness-ai/harness-agents)]
+- Create or select a **Model Connector** (the currently supported provider), configuring:
+    - Authentication type (Personal Token for direct Anthropic, or Amazon Bedrock API Key)
+    - Region
+    - Default Model Name (e.g., Claude Sonnet 4.6, Claude Opus 4.6, etc.)
+- Set the **Model Connector** field on the agent — this is a required field. [[Model Connectors](https://developer.harness.io/docs/platform/harness-ai/harness-agents#configure-model-connectors)]
+- Optionally define an \`llmConnector\` input (type: \`connector\`) so the connector can be overridden at the pipeline step level. [[Configure inputs](https://developer.harness.io/docs/platform/harness-ai/harness-agents#configure-inputs)]
+
+In the Pipeline Agent Step:
+
+- When adding the Agent step to your pipeline, fill in the \`llmConnector\` input field (if defined on the agent) to supply or override the connector at runtime. [[Use a Worker Agent](https://developer.harness.io/docs/platform/harness-ai/harness-agents#use-a-worker-agent-in-a-pipeline)]
+- The connector ID is typically passed via an environment variable like \`PLUGIN_HARNESS_CONNECTOR: <+inputs.llmConnector.id>\`. [[Configure environment variables](https://developer.harness.io/docs/platform/harness-ai/harness-agents#configure-environment-variables)]
+If no override is provided in the step, the agent uses the default Model Connector configured in the agent definition.
+
+Summary check:
+
+- Model Connector is required on the agent definition.
+- It can optionally be overridden per pipeline step via an llmConnector input.
+- If no override is set in the step, the agent falls back to the connector defined in the agent definition.`}
 />
 
 <Troubleshoot
   issue="Connect a Worker Agent pipeline on Harness Cloud to a local MCP server"
-  mode="general"
-  fallback="Worker Agents on Harness Cloud cannot reach localhost directly. Use a tunneling tool such as ngrok to expose your local MCP server (for example, `npx harness-mcp-v2 http --port 8080`) and use the resulting public URL as the MCP Server URL in your MCP Connector. Note: if your organization uses Zscaler, ngrok URLs may be blocked under the Anonymizer category (error D22, policy HAR-ISMS-1001). If this occurs, escalate to your network or IT team to allowlist the URL, or use an alternative tunneling tool."
+  mode="fallback-only"
+  fallback={`Worker Agents on Harness Cloud cannot reach localhost directly. Use a tunneling tool such as ngrok to expose your local MCP server (for example, \`npx harness-mcp-v2 http --port 8080\`) and use the resulting public URL as the MCP Server URL in your MCP Connector.
+
+**Note**: If your organization uses Zscaler, ngrok URLs may be blocked under the Anonymizer category (error D22, policy HAR-ISMS-1001). If this occurs, escalate to your network or IT team to allowlist the URL, or use an alternative tunneling tool.
+
+Here are the troubleshooting steps to resolve the connectivity issue between your Harness Cloud pipeline and your local MCP (Model Context Protocol) server:
+
+- **Expose the local server via tunnel**: Establish a secure public tunnel using a tool like ngrok or Cloudflare Tunnel to expose your local MCP server's port to the internet, as Harness Cloud cannot directly access your local network.
+- **Use a Self-Hosted Delegate**: Alternatively, switch from Harness Cloud to a Self-Hosted Harness Delegate running on your local machine or private network to allow direct local network access to the MCP server without internet exposure.
+- **Configure SSE transport**: Ensure your local MCP server is configured to use the SSE (Server-Sent Events) transport protocol over HTTP/HTTPS, as the default stdio (Standard I/O) transport is not compatible with remote cloud executions.
+- **Secure the connection with secrets**: Secure your exposed MCP endpoint with an API key or token, and pass these credentials securely to your Harness pipeline using Harness Secrets.`}
 />
 
 <Troubleshoot
   issue="Worker Agent creation fails with Internal Server Error"
   mode="fallback-only"
-  fallback="Agent names cannot contain special characters. Use only alphanumeric characters, hyphens, and underscores. Remove any special characters from the agent name and try saving again."
+  fallback={`Agent names cannot contain special characters. Use only alphanumeric characters, hyphens, and underscores. Remove any special characters from the agent name and try saving again.`}
 />
 
 <Troubleshoot
   issue="Worker Agent cannot connect to Harness APIs because BASE_URL is not set correctly"
   mode="fallback-only"
-  fallback="If the agent fails to reach Harness APIs because the base URL is not being resolved correctly at runtime, add a HARNESS_BASE_URL stage variable as a workaround. In your stage definition, add a variables block with the correct base URL for your cluster (for example, https://app.harness.io or your vanity domain). This workaround only applies to CI stage types. For CD and Custom stages, configure an MCP Connector for Harness MCP instead. See the YAML snippet in the section below."
-/>
+  fallback={`If the agent fails to reach Harness APIs because the \`HARNESS_BASE_URL\` is not being resolved correctly at runtime, add it as an explicit stage variable. The \`HARNESS_BASE_URL\` variable allows the agent to get the base URL of the account to authenticate with MCP at runtime.
 
-### Workaround: HARNESS_BASE_URL not set correctly
-
-If the `HARNESS_BASE_URL` is not being resolved correctly at the stage level, add it as an explicit stage variable. The `HARNESS_BASE_URL` variable allows the agent to get the base URL of the account to authenticate with MCP at runtime.
-
-:::warning CI stage type only
 This stage variable workaround only works for **CI** stage types. For **CD** and **Custom** stages, you must configure an MCP Connector for Harness MCP instead. Go to [Configure MCP connectors](#configure-mcp-connectors) to set up the connector.
-:::
 
-Add the following `variables` block to your stage definition:
+Add the following \`variables\` block to your stage definition:
 
-```yaml
+\`\`\`yaml
 stages:
   - stage:
       name: Agent
@@ -2597,14 +2821,17 @@ stages:
           description: ""
           required: false
           value: https://app.harness.io
-```
+\`\`\`
 
-Replace the `value` with your cluster's base URL (for example, `https://app3.harness.io`, `https://accounts.eu.harness.io`, or your vanity domain such as `https://customer-hackathon.harness.io`).
+Replace the \`value\` with your cluster's base URL (for example, \`https://app3.harness.io\`, \`https://accounts.eu.harness.io\`, or your vanity domain such as \`https://customer-hackathon.harness.io\`).`}
+/>
 
 ---
 
 ## Next steps
 
-- [Harness MCP Server](/docs/platform/harness-ai/harness-mcp-server): Set up MCP access for your agents.
-- [Triggers overview](/docs/platform/triggers/triggers-overview): Configure triggers to automate agent execution on PR events, schedules, or artifacts.
-- [Harness AI overview](/docs/platform/harness-ai/overview): Explore other AI-powered capabilities in the Harness platform.
+You have learned how to create, configure, and run Worker Agents inside Harness pipelines. You can now build custom agents for code review, incident response, compliance checks, and other intelligent workflows.
+
+- <a href="/docs/platform/harness-ai/harness-mcp-server" target="_blank">Harness MCP Server</a>: Set up MCP access for your agents.
+- <a href="/docs/platform/triggers/triggers-overview" target="_blank">Triggers overview</a>: Configure triggers to automate agent execution on PR events, schedules, or artifacts.
+- <a href="/docs/platform/harness-ai/overview" target="_blank">Harness AI overview</a>: Explore other AI-powered capabilities in the Harness platform.
