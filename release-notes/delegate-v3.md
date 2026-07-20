@@ -8,7 +8,7 @@ sidebar_position: 5
 
 import ReleaseNotesSearch from '@site/src/components/ReleaseNotesSearch';
 
-<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/delegate-v2/rss.xml" />
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/delegate-v3/rss.xml" />
 
 These release notes describe changes to Delegate 3.x, currently in closed beta. Delegate 3.x is a lightweight, binary-based runner optimized for CI workloads on local machines (macOS, Linux, and Windows).
 

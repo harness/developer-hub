@@ -630,6 +630,10 @@ const config: Config = {
             from: '/docs/infra-as-code-management/content/get-started/terragrunt-quickstart',
             to: '/docs/infra-as-code-management/get-started#terragrunt',
           },
+          {
+            from: '/release-notes/delegate-v2',
+            to: '/release-notes/delegate-v3',
+          },
         ],
         // Register redirect_from frontmatter URLs and canonical→repo redirects. Only return redirect_from when existingPath has no trailing slash so the plugin doesn't create duplicate "from" entries (same from → to vs to/).
         createRedirects(existingPath) {

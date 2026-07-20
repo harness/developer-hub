@@ -16,7 +16,7 @@ const sidebars: SidebarsConfig = {
     "delegate",
     {
       type: 'doc',
-      id: 'delegate-v2',
+      id: 'delegate-v3',
       className: 'sidebar-item-new',
     },
     "code-repository",

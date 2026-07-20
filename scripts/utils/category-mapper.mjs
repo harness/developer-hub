@@ -3,7 +3,7 @@ import fs from 'fs-extra';
 const MODULE_NAMES = {
   platform: 'Platform',
   delegate: 'Delegate',
-  'delegate-v2': 'Delegate (Closed Beta)',
+  'delegate-v3': 'Delegate (Closed Beta)',
   'self-managed-enterprise-edition': 'Self-Managed Enterprise Edition',
   'harness-solutions-factory': 'Harness Solutions Factory',
   'continuous-delivery': 'Continuous Delivery & GitOps',
