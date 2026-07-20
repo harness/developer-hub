@@ -29,14 +29,25 @@ The steps in each stage execute on the stage's dedicated VM. This allows the sta
 
 :::
 
-## Billing and Cloud Credits
+## What you will learn
+
+- The platforms, VM images, and machine sizes available on Harness Cloud.
+- How to configure a pipeline stage to run on Harness Cloud.
+- The connector and secret manager requirements for Harness Cloud.
+- How to access privately hosted resources and apply Harness Cloud best practices.
+
+## Before you begin
+
+- Ensure you have a Harness CI project and the required connector and secret manager configuration. Go to [Requirements for connectors and secrets](#requirements-for-connectors-and-secrets) to review access requirements.
+
+## Billing and Cloud credits
 
 Free plans get 2000 free Harness Cloud credits each month.
-If you're using a paid CI plan, you can purchase build credit packages.
+If you are using a paid CI plan, you can purchase build credit packages.
 
 Harness can invoice in arrears for overages. For more information about Harness Cloud billing and build credit consumption, go to [Subscriptions and licenses](/docs/continuous-integration/get-started/ci-subscription-mgmt.md#harness-cloud-billing-and-cloud-credits).
 
-Free plans require credit card validation to use Harness Cloud. If you don't want to provide a credit card, consider using [local runner build infrastructure](./define-a-docker-build-infrastructure).
+Free plans require credit card validation to use Harness Cloud. If you do not want to provide a credit card, consider using [local runner build infrastructure](./define-a-docker-build-infrastructure).
 
 ## Platforms and image specifications
 
@@ -46,7 +57,7 @@ The VM image defines:
 1. The **operating system** (for example, Ubuntu 22.04, Ubuntu 24.04, macOS, or Windows)
 2. A **curated set of pre-installed tools** maintained and updated by Harness
 
-For more information about image components and preinstalled software, see [Harness Cloud VM Images](/docs/platform/references/harness-cloud-vm-images).
+Go to [Harness Cloud VM Images](/docs/platform/references/harness-cloud-vm-images) to review image components and preinstalled software.
 
 After selecting a base VM image, you can **customize the build environment at pipeline execution time** by:
 
@@ -56,7 +67,7 @@ After selecting a base VM image, you can **customize the build environment at pi
 
 These customizations are applied **on top of the selected VM image**, are re-applied on each run, and **do not modify the underlying image**. [Learn more](/docs/platform/references/harness-cloud-vm-images#pre-installed-software-version-management)
 
-You can also use **Bring Your Own Image (BYOI)** to create fully custom VM images with your tools and dependencies pre-installed, eliminating the need to install them at pipeline runtime. For details, see [Harness Cloud BYOI](/docs/platform/references/harness-cloud-byoi) and [BYOI on Harness Cloud VM Images](/docs/platform/references/harness-cloud-vm-images#bring-your-own-image-byoi).
+You can also use **Bring Your Own Image (BYOI)** to create fully custom VM images with your tools and dependencies pre-installed, eliminating the need to install them at pipeline runtime. Go to [Harness Cloud BYOI](/docs/platform/references/harness-cloud-byoi) and [BYOI on Harness Cloud VM Images](/docs/platform/references/harness-cloud-vm-images#bring-your-own-image-byoi) to build custom VM images.
 
 :::tip
 To enable Windows and macOS for Harness Cloud, contact [Harness Support](mailto:support@harness.io).
@@ -64,9 +75,19 @@ To enable Windows and macOS for Harness Cloud, contact [Harness Support](mailto:
 
 ## Requirements for connectors and secrets
 
+Harness Cloud resolves connectors and secrets through the Harness Platform, not through a delegate. This determines which authentication methods and secret managers you can use.
+
+### Connectors
+
 - All connectors must connect through the Harness Platform, not a delegate.
-- AWS connectors can't use IRSA or AssumeRole.
-- GCP and Azure connectors can't use authentication that inherits credentials from the delegate.
+- AWS connectors cannot use IRSA or AssumeRole.
+- GCP and Azure connectors cannot use authentication that inherits credentials from the delegate.
+
+### Secret managers
+
+:::note
+On Harness Cloud, the Harness Built-in Secret Manager is supported. HashiCorp Vault is supported using OIDC, and AWS Secrets Manager and Google Cloud Secret Manager are supported using OIDC or static credentials. Go to [Secret resolution on Harness Cloud build infrastructure](/docs/platform/secrets/secrets-management/harness-secret-manager-overview#secret-resolution-on-harness-cloud-build-infrastructure) to review the supported secret managers.
+:::
 
 ## Use Harness Cloud
 
@@ -146,16 +167,16 @@ pipeline:
 </TabItem>
 </Tabs>
 
-### Using Resource Classes
+### Use resource classes
 
-You can use the yaml editor to change the cloud machine size.
+You can use the YAML editor to change the cloud machine size.
 
 :::note
-Resource Classes support is now Generally Available (GA).
-If this feature is not yet enabled in your account, please reach out to [Harness Support](mailto:support@harness.io) for assistance.
+Resource class support is now Generally Available (GA).
+If this feature is not yet enabled in your account, reach out to [Harness Support](mailto:support@harness.io) for assistance.
 :::
 
-To select a resource class size, please set the desired size as value for `size` property in the CI stge cloud infrastructure runtime configuration. For example:
+To select a resource class size, set the desired size as the value for the `size` property in the CI stage cloud infrastructure runtime configuration. For example:
 
 ```yaml
 platform:
@@ -167,9 +188,9 @@ runtime:
     size: xlarge # optional
 ```
 
-To learn more about all available resource classes in Harness Cloud, please visit [Harness Cloud billing and cloud credits](/docs/continuous-integration/get-started/ci-subscription-mgmt.md#harness-cloud-billing-and-cloud-credits).
+Go to [Harness Cloud billing and cloud credits](/docs/continuous-integration/get-started/ci-subscription-mgmt.md#harness-cloud-billing-and-cloud-credits) to review all available resource classes in Harness Cloud.
 
-### Hardware Acceleration
+### Hardware acceleration
 
 Harness supports hardware acceleration using nested virtualization on Linux/AMD Cloud machines.
 
@@ -200,7 +221,7 @@ To enable this feature, set the `nestedVirtualization` property to `true` as sho
           size: xlarge # optional
 ```
 
-## Accessing privately hosted resources
+## Access privately hosted resources
 
 When running builds on Harness Cloud, you may need to access internal resources that are not publicly accessible, such as:
 
@@ -218,21 +239,21 @@ Harness supports multiple approaches to enable secure communication between Harn
 
 Your networking or security team can allowlist the IP ranges used by Harness Cloud to permit traffic from Harness-managed build infrastructure to your private resources.
 
-To retrieve allowlisted IPs for Harness Cloud via API, see [Retrieve allowlisted IPs for Harness Cloud](/docs/platform/references/allowlist-harness-domains-and-ips#retrieve-allowlisted-ips-for-hosted-ci-via-api).
+Go to [Retrieve allowlisted IPs for Harness Cloud](/docs/platform/references/allowlist-harness-domains-and-ips#retrieve-allowlisted-ips-for-hosted-ci-via-api) to retrieve allowlisted IPs via API.
 
-For comprehensive information about IP allowlisting, see [Allowlist Harness domains and IPs](/docs/platform/references/allowlist-harness-domains-and-ips) or [contact Harness Support](https://support.harness.io/).
+Go to [Allowlist Harness domains and IPs](/docs/platform/references/allowlist-harness-domains-and-ips) to review IP allowlisting in detail, or [contact Harness Support](https://support.harness.io/).
 
 ### Private network connectivity (Enterprise)
 
 For enterprise customers with strict compliance and security requirements, you can use cloud provider private networking solutions for enhanced security without exposing traffic to the public internet.
 
-For detailed information about private network connectivity options, including AWS PrivateLink and GCP Private Service Connect, see [Private network connectivity options](/docs/platform/references/private-network-connectivity).
+Go to [Private network connectivity options](/docs/platform/references/private-network-connectivity) to review private network connectivity, including AWS PrivateLink and GCP Private Service Connect.
 
 ## Harness Cloud best practices
 
-- Don't hardcode system environment variables. Instead, use references like `$HOME` or `$USER`.
-- Don't hardcode the number of processors/threads. Instead, use commands like `nproc` to specify threads/jobs in your build and test commands.
-- Don't use tools that only run on a specific cloud environment, such as `gcloud`. Harness Cloud sources its build VMs from a variety of cloud providers. It is impossible to predict which specific cloud provider hosts the Harness Cloud VM that your build uses during any single execution. Therefore, avoid using tools (such as gsutil or gcloud) that require a specific cloud provider's environment.
+- Do not hardcode system environment variables. Instead, use references like `$HOME` or `$USER`.
+- Do not hardcode the number of processors/threads. Instead, use commands like `nproc` to specify threads/jobs in your build and test commands.
+- Do not use tools that only run on a specific cloud environment, such as `gcloud`. Harness Cloud sources its build VMs from a variety of cloud providers. It is impossible to predict which specific cloud provider hosts the Harness Cloud VM that your build uses during any single execution. Therefore, avoid using tools (such as gsutil or gcloud) that require a specific cloud provider's environment.
 - Know the [requirements for connectors and secrets](#requirements-for-connectors-and-secrets).
 - Know that Harness Cloud machine images can change. If your pipeline relies on a specific version of a software, tool, or environment, make sure you [lock versions](/docs/platform/references/harness-cloud-vm-images#lock-versions-or-install-additional-tools) to prevent your pipeline from failing when the image changes.
 - Know that you can add steps to your pipeline to [specify versions of tools](/docs/platform/references/harness-cloud-vm-images#specify-versions) and [lock versions, set up environments, or install additional tools](/docs/platform/references/harness-cloud-vm-images#lock-versions-or-install-additional-tools).
@@ -263,10 +284,10 @@ If you're using a Docker build infrastructure, you also have resource limits per
 Go to the [CI Knowledge Base](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs) for questions and issues related to Harness Cloud build infrastructure, including:
 
 - [Account verification error with Harness Cloud on Free plan.](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#account-verification-error-with-harness-cloud-on-free-plan)
-- [Can't use STO steps with Harness Cloud macOS runners.](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#cant-use-sto-steps-with-harness-cloud-macos-runners)
+- [Cannot use STO steps with Harness Cloud macOS runners.](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#cant-use-sto-steps-with-harness-cloud-macos-runners)
 - [Is Harness Cloud compatible with tools like gsutil or gcloud?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#does-gsutil-work-with-harness-cloud)
 - [Connector or delegate errors when using Harness Cloud.](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#connector-errors-with-harness-cloud-build-infrastructure)
-- [Built-in Harness Docker Connector isn't working with Harness Cloud build infrastructure.](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#built-in-harness-docker-connector-doesnt-work-with-harness-cloud-build-infrastructure)
+- [Built-in Harness Docker Connector is not working with Harness Cloud build infrastructure.](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#built-in-harness-docker-connector-doesnt-work-with-harness-cloud-build-infrastructure)
 - [Can I use xcode for a MacOS build with Harness Cloud?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#can-i-use-xcode-for-a-macos-build-with-harness-cloud)
 - [Can I get logs for a service running on Harness Cloud when a specific Run step is executing?](/docs/continuous-integration/ci-articles-faqs/continuous-integration-faqs#can-i-get-logs-for-a-service-running-on-harness-cloud-when-a-specific-run-step-is-executing)
 
@@ -282,7 +303,7 @@ This can cause errors when installing Cocoapods. If your build installs Cocoapod
 
 Due to a [BitBucket Cloud issue](https://jira.atlassian.com/browse/BCLOUD-23158), specific versions of BitBucket Cloud could fail to clone repos on Windows platforms running Git version 2.44.
 
-Atlassian released a fix for this issue; however, if you use a Harness Cloud Windows platform and your build is unable to clone your BitBucket Cloud repo, do the folloiwng:
+Atlassian released a fix for this issue; however, if you use a Harness Cloud Windows platform and your build is unable to clone your BitBucket Cloud repo, do the following:
 
 1. [Disable Clone Codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md#disable-clone-codebase-for-specific-stages).
 2. At the beginning of your build stage, add a a [Run step](/docs/continuous-integration/use-ci/run-step-settings) that uses the `harness/drone-git` image and Git commands to clone your BitBucket cloud repo.

@@ -106,3 +106,11 @@ Decrypting a secret sometimes requires its metadata. When you edit a secret, its
 
 This issue does not occur with secret managers that do not use a KMS. In such secret managers. secrets are inline, and no metadata is used to retrieve the value.
 
+### Secret resolution on Harness Cloud build infrastructure
+
+[Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) supports the following secret managers:
+
+- **Harness Built-in Secret Manager.**
+- **HashiCorp Vault**, using OIDC.
+- **AWS Secrets Manager and Google Cloud Secret Manager**, using OIDC or static credentials. When you use static credentials, store them in the Harness Built-in Secret Manager.
+

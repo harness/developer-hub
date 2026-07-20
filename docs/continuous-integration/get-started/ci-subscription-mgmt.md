@@ -90,7 +90,7 @@ Examples for credit consumption, based on the values in the table above:
 * 1,000 minutes on a Windows, 4-core (small) machine = 6,000 cloud credits (1,000 minutes × 6).
 * 1,000 minutes on a macOS, 6-core (small) machine = 60,000 cloud credits (1,000 minutes × 60).
 
-To learn how to select a resource class, please see [Using resource classes](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#using-resource-classes)
+Go to [Use resource classes](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#use-resource-classes) to learn how to select a resource class.
 
 ### Credit allowance by plan tier
 
