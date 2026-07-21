@@ -24,6 +24,7 @@ The following are needed to get the integration running:
 * Ensure the feature flag `IDP_INTEGRATIONS` is enabled. Contact [Harness Support](mailto:support@harness.io) to enable them.
 * You have the required RBAC permissions to manage integrations. All integration operations require the `IDP_INTEGRATION_EDIT` permission on the `IDP_INTEGRATION` resource type.
 * A [GitHub PAT Connector](https://www.youtube.com/watch?v=67r7gXk-UcU) or [GitHub App Connector](/docs/platform/connectors/code-repositories/git-hub-app-support) is configured in Harness with the credentials needed to access your GitHub organization. Ensure that the connector has the [necessary permissions on your GitHub](#github-permissions). You can create a new connector directly during the integration setup. 
+* The connector's **URL Type** is set to **Account**, and the **GitHub Account URL** specifies your GitHub organization (for example, `https://github.com/YOUR_ORG_NAME/`). The integration requires an organization to run its org-level discovery queries against. Go to the [GitHub connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference) to configure the **URL Type** and **Account URL** fields.
 * For each GitHub org, user has to maintain one integration.
 
 :::info Proxy Configuration
@@ -64,7 +65,7 @@ This section connects Harness IDP to your GitHub organization.
 2. Click the **Choose GitHub connector** dropdown and select the GitHub connector you want to use to pull data into the IDP.
 
    :::caution Connector requires org-level permissions
-   The GitHub integration performs org-level queries to discover repositories and teams across your organization. Ensure the GitHub connector you select has org-level permissions on your GitHub.
+   The GitHub integration performs org-level queries to discover repositories and teams across your organization. Ensure the GitHub connector you select has org-level permissions on your GitHub, and that its **URL Type** is **Account** with the **GitHub Account URL** set to your organization (for example, `https://github.com/YOUR_ORG_NAME/`).
    :::
 
    :::info Do not have a GitHub connector yet?
