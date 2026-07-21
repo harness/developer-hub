@@ -11,15 +11,18 @@ This section provides a clear overview of the Supported features, integrations, 
 
 ### Supported Modules 
 
-* [Chaos Engineering](/docs/chaos-engineering/whats-supported)
-* [Cloud Cost Management (Beta)](/docs/cloud-cost-management/get-started/ccm-smp/smp-ccm-roadmap)
+* [Cloud & AI Cost Management](/docs/cloud-cost-management/whats-supported)
+* [Chaos Engineering](/docs/resilience-testing/whats-supported)
 * [Continuous Delivery and GitOps](/docs/continuous-delivery/cd-integrations)
-* [Continuous Integration](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me/#feature-compatibility-matrix)
-* [Custom Dashboards](/docs/platform/dashboards/cdb-whats-supported)
+* [Continuous Integration](/docs/continuous-integration/ci-supported-platforms)
+* [Code Repository](/docs/code-repository/code-supported)
+* [Database DevOps](/docs/database-devops/dbdevops-supported-platforms)
+* [Feature Management & Experimentation](/docs/feature-management-experimentation/whats-supported)
+* [Infrastructure as Code Management](/docs/infra-as-code-management/whats-supported)
+* [Platform (core services and databases)](/docs/platform/platform-whats-supported)
+* [Software Supply Chain Security](/docs/software-supply-chain-assurance/get-started/ssca-supported)
 * [Security Test Orchestration](/docs/security-testing-orchestration/whats-supported/sto-deployments)
-* [Supply Chain Security](/docs/software-supply-chain-assurance/ssca-supported)
-* [Code Repository](/docs/code-repository)
-* [Database DevOps](/docs/database-devops/dbdevops-supported-platforms.md)
+
 
 For more details on the supported features of other Harness modules, visit [Harness Supported platforms and technologies](/docs/platform/platform-whats-supported.md).
 
