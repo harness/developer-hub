@@ -1788,7 +1788,6 @@ const sidebars: SidebarsConfig = {
         {
           type: 'category',
           label: 'Connectors & Variables',
-          className: 'sidebar-item-new',
           link: {
             type: 'generated-index',
             slug: '/category/iacm-connectors-variables',

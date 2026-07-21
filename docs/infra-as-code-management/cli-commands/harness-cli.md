@@ -47,7 +47,7 @@ The earlier `harness iacm` plugin commands and the standalone install steps in [
 Run the canonical install one-liner. It downloads the latest release for your platform and installs the `harness` binary to `~/.local/bin`.
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/harness/harness-unified-cli/main/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/harness/cli/main/install.sh | sh
 ```
 
 The installer downloads the binaries, optionally adds `~/.local/bin` to your `PATH`, and optionally enables shell completions.
@@ -57,7 +57,7 @@ When you pass flags through a pipe, use `sh -s --` so the shell forwards the fla
 
 ```bash
 # Install only the core harness binary, non-interactively, to a custom directory
-curl -fsSL https://raw.githubusercontent.com/harness/harness-unified-cli/main/install.sh | sh -s -- --core --non-interactive --install-dir /usr/local/bin
+curl -fsSL https://raw.githubusercontent.com/harness/cli/main/install.sh | sh -s -- --core --non-interactive --install-dir /usr/local/bin
 ```
 :::
 
