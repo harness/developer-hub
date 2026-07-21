@@ -30,7 +30,21 @@ import Smp from '/docs/self-managed-enterprise-edition/shared/smp-supported-plat
 <Smp />
 
 ## Supported functionality
+
 * [Self-signed certificates](/docs/self-managed-enterprise-edition/install/install-using-helm/#use-self-signed-certificates-with-helm-based-installations)
+* [Air-gap mode](/docs/self-managed-enterprise-edition/install/install-in-an-air-gapped-environment)
+* Infrastructure monitoring
+    - [Prometheus](/docs/self-managed-enterprise-edition/monitoring/install-prometheus).
+     - [Grafana](/docs/self-managed-enterprise-edition/monitoring/install-grafana)
+* [Backup and restore](/docs/self-managed-enterprise-edition/back-up-and-restore-helm)
+* [External Database](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/configure-external-databases)
+* [Disaster Recovery](/docs/self-managed-enterprise-edition/advanced-configurations/set-up-disaster-recovery)
+
+## Kubernetes Networking 
+
+* Istio supported version: 1.15.3 to 1.24.2
+* NGINX supported version: v1.3.0
+
 
 ## Terms of support
 
