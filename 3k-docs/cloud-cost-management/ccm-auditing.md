@@ -1,6 +1,6 @@
 ---
 title: Audit trail
-description: Currently, this feature is behind the feature flag AUDIT_TRAIL_WEB_INTERFACE. Contact Harness Support to enable the feature. Your Harness account Audit Trail includes events for CCM changes. CCM Even…
+description: Your Harness account Audit Trail includes events for CACM changes, giving you a complete record of who changed what and when.
 sidebar_position: 7
 canonical_url: https://www.harness.io/blog/audit-trails
 ---

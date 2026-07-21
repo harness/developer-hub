@@ -1,5 +1,5 @@
 ---
-title: External Cost Data Ingestion (Beta)
+title: External Cost Data Ingestion
 description: This topic describes how to set up External Cost Data Sources
 # sidebar_position: 2
 ---
