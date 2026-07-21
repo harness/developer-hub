@@ -131,7 +131,7 @@ After the integration runs, all GCP resources detected appear in the **Discovere
 For each discovered entity, you can see its name, the recommended catalog action, kind, type, and the date it was detected. All discovered GCP resources default to the **Register** action, which creates a new catalog entity populated with the GCP metadata.
 
 :::tip Bulk Import and Auto Import Options
-* **Bulk Import**: Select multiple entities using the checkboxes and click **Import selected entities** at the bottom of the page to import them all at once.
+* **Bulk Import**: Select services using the checkboxes, or use the snackbar at the bottom of the page to select all services at once, then click **Import selected services**.
 * **Auto Import**: Toggle **Auto-import future discovered entities** in the top right of the Discovered tab to automatically import all future entities without manual review.
 :::
 

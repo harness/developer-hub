@@ -150,11 +150,11 @@ After the integration runs, all Bitbucket repositories detected appear in the **
 
 For each discovered entity, you can see its name, the recommended catalog action, kind, type, and the date it was detected. You can choose how to bring entities into the catalog using one of the following actions:
 
-* **Register** *(shown as Recommended when no matching catalog entity exists)* - Creates a new catalog entity populated with the Bitbucket metadata. `Type` is editable by the user.
+* **Register** *(typically used when no matching catalog entity exists)* - Creates a new catalog entity populated with the Bitbucket metadata. `Type` is editable by the user.
 * **Merge** *(shown as Recommended when a matching catalog entity is found)* - Links the discovered entity to an existing catalog entity, enriching it with Bitbucket data. The suggested matching entity is shown automatically and can be changed.
 
 :::tip Bulk Import and Auto Import options
-* **Bulk Import** - Select multiple entities using the checkboxes and click **Import selected entities** at the bottom of the page to import them all at once.
+* **Bulk Import** - Select services individually using the checkboxes, or use the snackbar at the bottom of the page to bulk-select by action type. Open the dropdown to choose **All services**, **Register**, or **Merge (Recommended)**, then click **Import selected services**.
 * **Auto Import** - Toggle **Auto-import future discovered entities** in the top right of the Discovered tab to automatically import all future entities without manual review. You can change this preference at any time.
 :::
 

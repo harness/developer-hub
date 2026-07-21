@@ -141,11 +141,11 @@ After the integration runs, all Dynatrace services detected appear in the **Disc
 
 Once discovery completes, each discovered service appears with its name, recommended catalog action, kind, type, and detection date. You can bring entities into the catalog using one of the following actions:
 
-- **Register** *(shown as Recommended when no matching catalog entity exists)* - Creates a new catalog entity populated with Dynatrace metadata.
-- **Merge** - Links the discovered entity to an existing catalog entity, enriching it with Dynatrace data. If IDP finds a catalog entity with a matching name, **Merge** is pre-selected and the suggested entity is shown automatically.
+- **Register** *(typically used when no matching catalog entity exists)* - Creates a new catalog entity populated with Dynatrace metadata.
+- **Merge** *(shown as Recommended when a matching catalog entity is found)* - Links the discovered entity to an existing catalog entity, enriching it with Dynatrace data. If IDP finds a catalog entity with a matching name, **Merge** is pre-selected and the suggested entity is shown automatically.
 
 :::tip Bulk Import
-Select multiple entities using the checkboxes and click **Import selected entities** at the bottom of the page to import them all at once.
+Select services individually using the checkboxes, or use the snackbar at the bottom of the page to bulk-select by action type. Open the dropdown to choose **All services**, **Register**, or **Merge (Recommended)**, then click **Import selected services**.
 :::
 
 ### Imported tab

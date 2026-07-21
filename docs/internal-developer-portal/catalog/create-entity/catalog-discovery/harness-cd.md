@@ -144,7 +144,7 @@ The CD Auto-Discovery workflow becomes more comprehensive with new capabilities:
 
 **Entity sync behavior:** CD services sync the same fields as before (name, identifier, description, tags), but with the enhanced workflow you get more visibility into the sync process. If an entity with the same CD service ID already exists, the system performs a merge operation automatically. You can view which entities are linked to which CD services in the Imported tab.
 
-**Flexible import options:** You can import services one at a time or select multiple services for bulk import. There is also an **Auto-import toggle** that automatically imports all future discovered services, giving you the choice between manual curation and automatic syncing.
+**Flexible import options:** You can import services one at a time or select multiple services for bulk import. The snackbar at the bottom of the Discovered tab lets you bulk-select by action type: open the dropdown to choose **All services**, **Register**, or **Merge (Recommended)**, then click **Import selected services**. There is also an **Auto-import toggle** that automatically imports all future discovered services, giving you the choice between manual curation and automatic syncing.
 
 <DocImage path={require('./static/import-toggle.png')} alt="Import Toggle" title="Click to view full size image" />
 

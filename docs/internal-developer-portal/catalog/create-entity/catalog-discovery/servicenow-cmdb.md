@@ -85,14 +85,19 @@ Any CMDB field can be mapped to a standard catalog field or to a custom property
 
 After the integration runs, discovered CMDB records appear in the **Discovered** tab.
 
+![ServiceNow CMDB Discovered tab](./static/snow-discovered-tab.png)
+
 If a correlation field is configured, matching catalog entities are automatically suggested as merge targets. For example, if your catalog already contains an entity named "IDP Service" (created via the Harness CD integration) and the ServiceNow CMDB also has a record named "IDP Service," the integration will automatically suggest merging the CMDB data into the existing entity.
 
 For each discovered record:
 
-- **Register**: Creates a new catalog entity populated with the mapped CMDB fields.
-- **Merge**: Enriches an existing catalog entity with the mapped CMDB fields (for example, adding `lifecycle`, `owner`, and custom properties like `mttr`).
+- **Register** *(typically used when no matching catalog entity exists)* - Creates a new catalog entity populated with the mapped CMDB fields.
+- **Merge** *(shown as Recommended when a matching catalog entity is found)* - Enriches an existing catalog entity with the mapped CMDB fields (for example, adding `lifecycle`, `owner`, and custom properties like `mttr`). The suggested matching entity is shown automatically and can be changed.
 
-You have the option of turning on **Auto-import** for integrations. This will automatically import all discovered entities without needing the manual effort of reviewing discovered entities.
+:::tip Bulk Import and Auto Import
+* **Bulk Import** - Select services individually using the checkboxes, or use the snackbar at the bottom of the page to bulk-select by action type. Open the dropdown to choose **All services**, **Register**, or **Merge (Recommended)**, then click **Import selected services**.
+* **Auto Import** - Toggle **Auto-import** to automatically import all future discovered entities without manual review.
+:::
 
 ### Events tab
 

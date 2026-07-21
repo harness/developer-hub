@@ -178,11 +178,11 @@ After the integration runs, all PagerDuty services and teams detected appear in 
 
 For each discovered entity, you can see its name, the recommended catalog action, kind, type, and the date it was detected. You can choose how to bring entities into the catalog using one of the following actions:
 
-* **Register** *(shown as Recommended when no matching catalog entity exists)* - Creates a new catalog entity populated with the PagerDuty metadata.
-* **Merge** - Links the discovered entity to an existing catalog entity, enriching it with PagerDuty data. If IDP finds a catalog entity with a matching name, the **Merge** option is pre-selected and the suggested entity is shown automatically.
+* **Register** *(typically used when no matching catalog entity exists)* - Creates a new catalog entity populated with the PagerDuty metadata.
+* **Merge** *(shown as Recommended when a matching catalog entity is found)* - Links the discovered entity to an existing catalog entity, enriching it with PagerDuty data. If IDP finds a catalog entity with a matching name, **Merge** is pre-selected and the suggested entity is shown automatically.
 
 :::tip Bulk Import and Auto Import Options
-* **Bulk Import** - Select multiple entities using the checkboxes and click **Import selected entities** at the bottom of the page to import them all at once. The selection widget shows a count of selected entities.
+* **Bulk Import** - Select services individually using the checkboxes, or use the snackbar at the bottom of the page to bulk-select by action type. Open the dropdown to choose **All services**, **Register**, or **Merge (Recommended)**, then click **Import selected services**.
 * **Auto Import** - Toggle **Auto-import future discovered services** in the top right of the Discovered tab to automatically import all future entities without manual review. You can change this preference at any time.
 :::
 
