@@ -50,6 +50,7 @@ These are the currently supported registry types.
 - **PHP Composer:** Private Composer packages with Packagist-compatible workflows.
 - **Go:** Support for Go modules.
 - **Cargo:** Rust package management.
+- **Conan:** C and C++ package management with Conan CLI workflows.
 - **Hugging Face:** Machine learning models and datasets.
 - **Conda:** Python and R packages with Anaconda-compatible workflows.
 - **Puppet:** Puppet Forge-compatible modules with `r10k` support.
@@ -58,7 +59,6 @@ These are the currently supported registry types.
 
 - **Alpine:** Alpine Linux packages.
 - **RubyGems:** Ruby packages.
-- **Conan:** C/C++ packages.
 
 ---
 

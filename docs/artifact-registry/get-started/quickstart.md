@@ -88,6 +88,11 @@ Select your artifact format below to get started:
       logo: "rust-logo.png",
       logoSize: 24
     },
+    Conan: {
+      path: "/artifact-registry/content/supported-formats/conan-quickstart.md",
+      logo: "conan-logo.svg",
+      logoSize: 24
+    },
     Go: {
       path: "/artifact-registry/content/supported-formats/go-quickstart.md",
       logo: "go-logo.svg",
