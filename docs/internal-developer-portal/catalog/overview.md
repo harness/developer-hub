@@ -20,7 +20,7 @@ The catalog helps you:
 - **Visualize dependencies** and relationships between services
 - **Maintain metadata** such as lifecycle stage, tech stack, and documentation
 - **Enable self-service** for developers to find and use existing services
-- **Improve governance** with centralized visibility and control
+- **Improve governance** with centralized visibility and [OPA policy enforcement](/docs/internal-developer-portal/governance/opa-governance)
 
 ![](./static/catalog-ui-new.png)
 
@@ -95,3 +95,4 @@ Ready to get started with the Software Catalog? Here are some recommended next s
 3. **Set Up Auto-Discovery**: Automate entity registration with [catalog auto-discovery](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/harness-cd.md)
 4. **Customize Your Catalog**: Configure the [catalog UI](/docs/internal-developer-portal/catalog/manage-catalog#idp2.0--manage-catalog-ui) to match your team's needs
 5. **Write Catalog YAML**: Learn the [YAML schema](/docs/internal-developer-portal/catalog/catalog-yaml) for defining entities
+6. **Enforce Governance Policies**: Block or warn on non-compliant entities at save time using [Centralized Policy Governance](/docs/internal-developer-portal/governance/opa-governance)

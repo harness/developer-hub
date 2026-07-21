@@ -112,7 +112,7 @@ Validating your blueprint before saving helps catch unresolved entity references
 :::
 
 :::caution OPA Policy Enforcement
-If your account has OPA governance policies enforced for blueprints, clicking **Create Environment Blueprint** will trigger a **Policy Set Evaluations** modal. If a policy fails, the blueprint will not be saved. For example, a common policy requirement is that blueprints must define a TTL. In that case, setting `ttl.kind: none` in your blueprint YAML will fail such a policy. Update the TTL configuration before saving. Go to [Centralized Policy Governance](/docs/internal-developer-portal/environment-management/opa-governance) to learn more.
+If your account has OPA governance policies enforced for blueprints, clicking **Create Environment Blueprint** will trigger a **Policy Set Evaluations** modal. If a policy fails, the blueprint will not be saved. For example, a common policy requirement is that blueprints must define a TTL. In that case, setting `ttl.kind: none` in your blueprint YAML will fail such a policy. Update the TTL configuration before saving. Go to [Centralized Policy Governance](/docs/internal-developer-portal/governance/opa-governance) to learn more.
 :::
 
 ---
@@ -151,4 +151,4 @@ From here you can:
 
 - [Create an Environment](/docs/internal-developer-portal/environment-management/environments#create-environments) using your new blueprint.
 - [Manage blueprint versions](/docs/internal-developer-portal/environment-management/blueprints/versioning) to roll out changes to your blueprint over time.
-- [Set up governance policies](/docs/internal-developer-portal/environment-management/opa-governance) to enforce blueprint standards using Harness OPA.
+- [Set up governance policies](/docs/internal-developer-portal/governance/opa-governance) to enforce blueprint standards using Harness OPA.

@@ -77,3 +77,4 @@ For more advanced Git Experience features and workflows, refer to:
 - [Git Experience Journey](/docs/internal-developer-portal/git-experience/gitx-journey)
 - [Manage Catalog](/docs/internal-developer-portal/catalog/manage-catalog)
 - [Catalog YAML Reference](/docs/internal-developer-portal/catalog/catalog-yaml)
+- [Centralized Policy Governance](/docs/internal-developer-portal/governance/opa-governance)
