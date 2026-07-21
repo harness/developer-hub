@@ -1,0 +1,12 @@
+{
+    "label":"SLSA using GitLab CI/CD",
+    "position": 58,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"default",
+    "description": "Generate and Verify SLSA Provenance using Harness GitLab CI/CD",
+    "link":{
+       "type":"generated-index",
+       "title":"SLSA using GitLab CI/CD"
+    }
+ }

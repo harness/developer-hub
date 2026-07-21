@@ -2049,6 +2049,13 @@
     "gaStartDate": "2026-07-01",
     "module": "Cloud & AI Cost Management",
     "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "SCS_GITLAB_SUPPORT",
+    "description": "Enables GitLab CI/CD support for Harness Software Supply Chain Security (SCS), including SBOM generation, SBOM ingestion, policy enforcement, SLSA provenance, artifact signing, and artifact verification.",
+    "gaStartDate": "2026-07-21",
+    "module": "Supply Chain Security",
+    "lifecycleState": "Limited GA"
   }
 ]
 

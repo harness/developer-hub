@@ -1,0 +1,12 @@
+{
+    "label":"Artifact Signing and Verification using GitLab CI/CD",
+    "position": 18,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"default",
+    "description": "Sign and Verify Artifacts using Harness GitLab CI/CD",
+    "link":{
+       "type":"generated-index",
+       "title":"Artifact Signing and Verification using GitLab CI/CD"
+    }
+ }

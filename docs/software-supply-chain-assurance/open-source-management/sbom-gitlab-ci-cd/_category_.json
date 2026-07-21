@@ -1,0 +1,12 @@
+{
+    "label":"SBOM using GitLab CI/CD",
+    "position": 48,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"default",
+    "description": "Generate and Attest SBOM with Harness GitLab CI/CD",
+    "link":{
+       "type":"generated-index",
+       "title":"SBOM using GitLab CI/CD"
+    }
+ }
