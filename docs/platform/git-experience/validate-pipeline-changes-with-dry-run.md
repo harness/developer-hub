@@ -1,10 +1,19 @@
 ---
 title: Validate pipeline changes with dry run
+sidebar_label: Validate pipeline changes with dry run
 description: Use the dry run validation endpoint to validate pipeline YAML before committing to Git.
 sidebar_position: 9
 ---
 
 The dry run validation endpoint allows you to validate pipeline YAML changes while editing files in Git. This helps catch configuration errors before you commit changes to your repository.
+
+---
+
+## What will you learn in this topic?
+
+- How to [use the dry run validation endpoint](#use-the-api-endpoint) to validate pipeline YAML.
+- How to [read the validation response](#response-format) for valid and invalid pipelines.
+- How to recognize the [limitations](#limitations) of dry run validation.
 
 ---
 
@@ -14,9 +23,9 @@ Dry run validation is an API endpoint that validates pipeline YAML without execu
 
 The validation performs:
 
-- **YAML schema validation** - Verifies the pipeline structure and syntax
-- **Template expansion** - Validates template references and expands templates during validation
-- **Policy evaluation** - Evaluates OPA policies for pipeline on save or on run
+- **YAML schema validation**: Verifies the pipeline structure and syntax.
+- **Template expansion**: Validates template references and expands templates during validation.
+- **Policy evaluation**: Evaluates OPA policies for pipeline on save or on run.
 
 ---
 
@@ -24,7 +33,7 @@ The validation performs:
 
 ### Endpoint
 
-```
+```text
 POST /pipeline/api/v1/orgs/{org}/projects/{project}/dry-run
 ```
 
@@ -32,23 +41,19 @@ POST /pipeline/api/v1/orgs/{org}/projects/{project}/dry-run
 
 ```json
 {
-  "accountIdentifier": "string",
-  "orgIdentifier": "string",
-  "projectIdentifier": "string",
-  "pipelineYaml": "string",
-  "pipelineIdentifier": "string",
+  "pipeline_identifier": "string",
+  "pipeline_yaml": "string",
   "branch": "string"
 }
 ```
 
 | Parameter | Required | Description |
 |-----------|----------|-------------|
-| `pipelineYaml` | Yes | Complete pipeline YAML as a string |
-| `pipelineIdentifier` | Yes | Unique identifier of the pipeline |
-| `branch` | Yes | Git branch where the pipeline is stored |
-| `accountIdentifier` | Yes | Harness account identifier |
-| `orgIdentifier` | Yes | Organization identifier |
-| `projectIdentifier` | Yes | Project identifier |
+| `pipeline_yaml` | Yes | Complete pipeline YAML as a string |
+| `pipeline_identifier` | Yes | Unique identifier of the pipeline |
+| `branch` | No | Git branch where the pipeline is stored. Optional for an inline pipeline; include it for a Git-backed pipeline |
+
+The account, organization, and project identifiers are supplied in the URL path (`org`, `project`) and the `Harness-Account` header, not in the request body.
 
 ### Example request
 
@@ -58,11 +63,8 @@ curl --location 'https://app.harness.io/pipeline/api/v1/orgs/default/projects/My
 --header 'Content-Type: application/json' \
 --header 'Harness-Account: <account-id>' \
 --data '{
-  "accountIdentifier": "<account-id>",
-  "orgIdentifier": "default",
-  "projectIdentifier": "MyProject",
-  "pipelineYaml": "pipeline:\n  name: my-pipeline\n  identifier: mypipeline\n  ...",
-  "pipelineIdentifier": "mypipeline",
+  "pipeline_identifier": "mypipeline",
+  "pipeline_yaml": "pipeline:\n  name: my-pipeline\n  identifier: mypipeline\n  ...",
   "branch": "main"
 }'
 ```
@@ -77,9 +79,8 @@ When the pipeline YAML is valid, the endpoint returns a success response:
 
 ```json
 {
-  "validationIdentifier": "uuid",
-  "valid": true,
-  "validationResults": []
+  "is_valid": true,
+  "validation": []
 }
 ```
 
@@ -89,36 +90,20 @@ When validation fails, the response includes specific error messages indicating 
 
 ```json
 {
-  "validationIdentifier": "uuid",
-  "valid": false,
-  "validationResults": [
+  "is_valid": false,
+  "validation": [
     {
-      "type": "SCHEMA",
-      "severity": "ERROR",
-      "message": "Invalid YAML syntax at line 15",
-      "location": {
-        "stageIdentifier": "deploy",
-        "stepIdentifier": "deployStep",
-        "yamlPath": "pipeline.stages[0].spec.service"
-      }
+      "validation_type": "string",
+      "entity_type": "string",
+      "entity_identifier": "string",
+      "error_message": "Following yaml paths could not be parsed: ...",
+      "hint": "string"
     }
   ]
 }
 ```
 
-**Validation result types:**
-- `SCHEMA` - YAML structure and syntax errors
-- `ENTITY_REFERENCE` - Invalid or non-existent entity references
-- `PERMISSION` - RBAC permission violations
-- `OPA_POLICY` - Policy evaluation failures
-
-**Severity levels:**
-- `ERROR` - Validation failure that prevents pipeline execution
-- `WARNING` - Issues that should be reviewed but don't block execution
-
-:::note
-YAML schema validation (`SCHEMA`) always runs and cannot be excluded. Multiple errors within the same stage may be returned in the `validationResults` array.
-:::
+Each entry in the `validation` array describes one validation result. The endpoint returns a `validation_type` and `entity_type` for each entry.
 
 ---
 
@@ -126,19 +111,17 @@ YAML schema validation (`SCHEMA`) always runs and cannot be excluded. Multiple e
 
 The dry run validation cannot validate:
 
-- **Expressions** - Pipeline expressions are not validated by the dry run endpoint
-- **Delegate availability** - Whether delegates are available for execution
-- **Cloud provider credentials** - Validity of credentials at execution time
-- **Artifact connectivity** - Whether artifact sources are accessible
-- **Service manifests** - Internal validity of Kubernetes manifests or other service definitions
+- **Expressions**: Pipeline expressions are not validated by the dry run endpoint.
+- **Delegate availability**: Whether delegates are available for execution.
+- **Cloud provider credentials**: Validity of credentials at execution time.
+- **Artifact connectivity**: Whether artifact sources are accessible.
+- **Service manifests**: Internal validity of Kubernetes manifests or other service definitions.
 
 ---
 
-
 ## Next steps
 
-Dry run validation helps you catch pipeline errors before they reach Git. Explore related topics to build on this workflow.
+You have validated pipeline YAML with the dry run endpoint. Continue with the following:
 
-Go to [Pipeline YAML quickstart](/docs/platform/pipelines/harness-yaml-quickstart) to learn the pipeline YAML schema.
-
-Go to [Input sets and overlays](/docs/platform/pipelines/input-sets) to manage runtime inputs for your pipelines.
+- [Pipeline YAML quickstart](/docs/platform/pipelines/harness-yaml-quickstart): Learn the pipeline YAML schema.
+- [Input sets and overlays](/docs/platform/pipelines/input-sets): Manage runtime inputs for your pipelines.
