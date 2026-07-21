@@ -73,6 +73,14 @@ Displays your key cost metrics at a glance:
   - Shows trend vs. previous period (up, down, or stable)
   - Breaks down costs by cloud provider and LLM Services
 
+:::note What is Total Cloud Spend Managed?
+**Total Cloud Spend Managed** is the cloud spend Harness CACM actively manages, calculated by subtracting EDP (Enterprise Discount Program) discounts and marketplace spend from your total unblended cloud spend.
+
+```
+Total Cloud Spend Managed = Total Unblended Spend - EDP Discounts - Marketplace Spend
+```
+:::
+
 - **Anomalies**: Unusual cost patterns detected automatically
   - Alerts you to unexpected spending changes
   - Shows impact of anomalies

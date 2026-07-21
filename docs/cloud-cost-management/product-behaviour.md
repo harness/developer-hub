@@ -116,6 +116,14 @@ Navigate to the **Account Settings** -> **Subscriptions**. Your subscription det
 
 - **Usage vs Subscribed Limit:** For each purchased SKU, you'll see your current usage metrics compared to your subscription limits on an yearly basis. 
 
+:::info Total Cloud Spend Managed
+Usage for CACM SKUs is measured against your **Total Cloud Spend Managed** — the cloud spend Harness CACM actively manages. It is calculated by subtracting EDP (Enterprise Discount Program) discounts and marketplace spend from your total unblended cloud spend.
+
+```
+Total Cloud Spend Managed = Total Unblended Spend - EDP Discounts - Marketplace Spend
+```
+:::
+
 :::info
 Features that are not included in your current subscription will be clearly marked with a lock icon (🔒) in the UI. You can click on these locked features to learn more about their benefits and how to add them to your subscription.
 
