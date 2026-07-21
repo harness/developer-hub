@@ -171,6 +171,11 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## July 2026
 
+### Version 26.06.89503 <!-- July 21, 2026 -->
+
+#### Fixed issues
+- Resolved CVE-2026-49875, CVE-2026-33186 in `org.apache.cxf_cxf-core`. [CDS-126083]
+
 ### Version 26.07.89601 <!-- July 13, 2026 -->
 
 #### Fixed issues
