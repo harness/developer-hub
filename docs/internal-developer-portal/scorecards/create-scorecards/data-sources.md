@@ -22,6 +22,86 @@ A **Data Sources** tab is available on the **Scorecards** page where you can vie
 
 ## Data sources
 
+### Bitbucket
+
+The following data points are available for the Bitbucket data source. All data points follow similar patterns to GitHub and GitLab, requiring the `backstage.io/source-location` annotation for repository identification.
+
+#### Available data points:
+1. [Branch Protection](#1-branch-protection) - See GitHub section for detailed description.
+>This check works with repository-level branch restrictions. Bitbucket Cloud allows branch restrictions to be configured at both the repository and project levels. However, Bitbucket Cloud's REST API only exposes repository-level branch restrictions. Project-level restrictions, while enforced by Bitbucket across all repositories in a project, are not accessible via the API and therefore cannot be detected programmatically by any tool. To ensure this check works as expected, configure branch restrictions at the repository level. 
+2. [File Existence](#2-file-existence) - See GitHub section for detailed description
+3. [Mean Time to Merge Pull Request](#3-mean-time-to-merge-pull-request) - See GitHub section for detailed description
+4. [Extract String from a File](#12-extract-string-from-a-file) - See GitHub section for detailed description
+5. [Match String in a File](#13-match-string-in-a-file) - See GitHub section for detailed description
+
+:::info
+#### URL priority for branch name field
+
+For Bitbucket data points that require a branch name, the same priority rules apply as mentioned in the [GitHub URL Priority section](#url-priority-for-branch-name-field) above.
+:::
+
+#### Prerequisites for Bitbucket connector
+
+Configure the Bitbucket connector using **Email and API Token** authentication to ensure Scorecards can fetch Bitbucket data without permission-related issues.
+
+<DocImage path={require('./static/bb-authentication.png')} />
+
+Use the following credentials when setting up the connector:
+
+- **Email**: Your Bitbucket account email address
+- **API Token**: A Bitbucket API token with the required scopes
+
+To create an API token, go to [Atlassian account security settings](https://id.atlassian.com/manage-profile/security/api-tokens).
+
+The API token must include the following scopes:
+
+- `read:repository:bitbucket`
+- `read:project:bitbucket`
+- `read:pullrequest:bitbucket`
+- `read:workspace:bitbucket`
+- `admin:project:bitbucket`
+- `admin:repository:bitbucket`
+- `admin:workspace:bitbucket`
+
+---
+
+
+
+### Catalog Info YAML
+
+The Catalog Info YAML data source evaluates fields stored directly in an entity's `catalog-info.yaml`. It provides general entity checks available for any catalog entity kind, and [four structural checks](#aiasset-checks) specific to **AIAsset** entities.
+
+**Available data points**:
+
+| Check | Type | Description |
+|---|---|---|
+| `Annotation exists` | Boolean | Checks if the catalog YAML file has the given annotation configured or not. |
+| `Evaluate expression (JEXL)` | String | Evaluates a JEXL expression on the catalog YAML file. |
+| `Pagerduty is set` | Boolean | Checks if the catalog YAML file has the annotation `pagerduty.com/service-id` configured or not. |
+| `Owner is defined and is not unknown` | Boolean | Checks if the catalog YAML file has the owner configured or not. |
+| `System is defined and it exists` | Boolean | Checks if your component has `spec.system` defined and whether or not it is a valid entry in the catalog. |
+| `Documentation exists` | Boolean | Checks if the catalog YAML file has the annotation `backstage.io/techdocs-ref` configured or not. |
+| [AIAsset checks](#aiasset-checks) | Boolean, Number | Four structural checks for AIAsset entities covering discovery recency, asset ID prefix, provider, and source file path conventions. |
+
+#### AIAsset checks
+
+The AIAsset checks from **Catalog Info YAML** data source currently support assets discovered via the [IDP GitHub integration](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/github) only. The following example shows an AIAsset scorecard with all four checks applied to a plugin entity.
+
+<DocImage path={require('../static/scorecard-results-aiassets.png')} />
+
+<DocImage path={require('../static/scorecard-checks-aiassets.png')} />
+
+**Available data points**:
+
+| Check | Type | Description |
+|---|---|---|
+| `Days passed since last discovered (AIAsset)` | Number | Fetches the number of days since the AI asset was last rediscovered by the integration. Use this check with a threshold condition (for example, `<= 30`) to confirm the asset is still being actively indexed in its source system. |
+| `Asset Id Prefix Match (AIAsset)` | Boolean | Checks whether `metadata.integration_properties.GitHub.asset_id` in the catalog YAML begins with the expected prefix for the asset's type: <br/><br/> Plugin → `p_` <br/> Skill → `s_` <br/> Command → `c_` <br/> Agent → `a_` |
+| `Provider is set (AIAsset)` | Boolean | Checks whether the `metadata.integration_properties.GitHub.provider` field is configured in the catalog YAML. The field must be set to a recognized provider value (e.g., `OpenAI` or `Anthropic`) for the check to pass. |
+| `Source File Pattern Match (AIAsset)` | Boolean | Checks whether the `metadata.integration_properties.GitHub.source_file` path in the catalog YAML follows the structural convention for the asset's type: <br/><br/> Skill → `**/skills/<name>/SKILL.md` <br/> Command → `**/commands/<name>.md` <br/> Agent → `**/agents/<name>.md` <br/> Plugin (definition) → `**/.claude-plugin/plugin.json` |
+
+---
+
 ### GitHub
 
 The following data points are available for the GitHub data source.
@@ -365,48 +445,6 @@ If you mention the `branchName` field as a check config other than what is prese
 
 ---
 
-### Bitbucket
-
-The following data points are available for the Bitbucket data source. All data points follow similar patterns to GitHub and GitLab, requiring the `backstage.io/source-location` annotation for repository identification.
-
-#### Available data points:
-1. [Branch Protection](#1-branch-protection) - See GitHub section for detailed description.
->This check works with repository-level branch restrictions. Bitbucket Cloud allows branch restrictions to be configured at both the repository and project levels. However, Bitbucket Cloud's REST API only exposes repository-level branch restrictions. Project-level restrictions, while enforced by Bitbucket across all repositories in a project, are not accessible via the API and therefore cannot be detected programmatically by any tool. To ensure this check works as expected, configure branch restrictions at the repository level. 
-2. [File Existence](#2-file-existence) - See GitHub section for detailed description
-3. [Mean Time to Merge Pull Request](#3-mean-time-to-merge-pull-request) - See GitHub section for detailed description
-4. [Extract String from a File](#12-extract-string-from-a-file) - See GitHub section for detailed description
-5. [Match String in a File](#13-match-string-in-a-file) - See GitHub section for detailed description
-
-:::info
-#### URL priority for branch name field
-
-For Bitbucket data points that require a branch name, the same priority rules apply as mentioned in the [GitHub URL Priority section](#url-priority-for-branch-name-field) above.
-:::
-
-#### Prerequisites for Bitbucket connector
-
-Configure the Bitbucket connector using **Email and API Token** authentication to ensure Scorecards can fetch Bitbucket data without permission-related issues.
-
-<DocImage path={require('./static/bb-authentication.png')} />
-
-Use the following credentials when setting up the connector:
-
-- **Email**: Your Bitbucket account email address
-- **API Token**: A Bitbucket API token with the required scopes
-
-To create an API token, go to [Atlassian account security settings](https://id.atlassian.com/manage-profile/security/api-tokens).
-
-The API token must include the following scopes:
-
-- `read:repository:bitbucket`
-- `read:project:bitbucket`
-- `read:pullrequest:bitbucket`
-- `read:workspace:bitbucket`
-- `admin:project:bitbucket`
-- `admin:repository:bitbucket`
-- `admin:workspace:bitbucket`
-
----
 
 ### Harness
 
@@ -464,53 +502,35 @@ If the pipeline URL format is incorrect or the pipeline does not exist, the chec
 
 ---
 
-### Catalog
+### Jira
 
-The Catalog data source allows you to create checks based on the entity definitions in your Catalog entity YAML file.
+The Jira data source provides insights into your project management and issue tracking.
 
 #### Available data points:
 
-1. **Annotation Exists**
-   - Checks if a specific annotation exists in the catalog entity
-   - Example: `catalog.annotationExists."jira/project-key"`
+1. **Open Issues Count**
+   - Calculates the total number of open issues for a project
 
-2. **PagerDuty Annotation Exists**
-   - Checks if the PagerDuty annotation exists
-   - Example: `catalog.pagerdutyAnnotationExists`
+2. **Issues by Priority**
+   - Counts issues based on priority (High, Medium, Low)
 
-3. **Kubernetes Annotation Exists**
-   - Checks if Kubernetes-related annotations exist
-   - Example: `catalog.annotationExists."backstage.io/kubernetes-id"`
+3. **Issues by Status**
+   - Counts issues based on status (To Do, In Progress, Done)
 
-4. **Custom Metadata Fields**
-   - Access any custom metadata fields defined in your catalog
-   - Example: `catalog.metadata.testCoverageScore`
+4. **Average Time to Close Issues**
+   - Calculates the average time taken to close issues
 
-#### Example usage
+5. **Overdue Issues Count**
+   - Counts the number of issues past their due date
 
-```jexl
-catalog.annotationExists."jira/project-key" == true && 
-catalog.annotationExists."backstage.io/techdocs-ref" == true
-```
+#### Prerequisites:
 
-#### Example catalog-info.yaml
+- Add the Jira project key annotation in your `catalog-info.yaml`:
 
 ```yaml
-apiVersion: backstage.io/v1alpha1
-kind: Component
 metadata:
-  name: my-service
-  description: My awesome service
   annotations:
     jira/project-key: MYPROJ
-    backstage.io/techdocs-ref: dir:.
-    backstage.io/kubernetes-id: my-service
-    pagerduty.com/integration-key: abc123
-  testCoverageScore: 85
-spec:
-  type: service
-  lifecycle: production
-  owner: team-a
 ```
 
 ---
@@ -550,38 +570,6 @@ metadata:
 
 ---
 
-### Jira
-
-The Jira data source provides insights into your project management and issue tracking.
-
-#### Available data points:
-
-1. **Open Issues Count**
-   - Calculates the total number of open issues for a project
-
-2. **Issues by Priority**
-   - Counts issues based on priority (High, Medium, Low)
-
-3. **Issues by Status**
-   - Counts issues based on status (To Do, In Progress, Done)
-
-4. **Average Time to Close Issues**
-   - Calculates the average time taken to close issues
-
-5. **Overdue Issues Count**
-   - Counts the number of issues past their due date
-
-#### Prerequisites:
-
-- Add the Jira project key annotation in your `catalog-info.yaml`:
-
-```yaml
-metadata:
-  annotations:
-    jira/project-key: MYPROJ
-```
-
----
 
 ### PagerDuty
 The PagerDuty data source provides insights into your incident management and on-call schedules.
@@ -625,6 +613,7 @@ If the PagerDuty annotation is missing from the catalog-info.yaml file, the chec
 ![](../static/es2-pd.png)
 
 ---
+
 
 ## Custom data sources
 

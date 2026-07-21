@@ -192,6 +192,10 @@ The current implementation scans for plugin manifests and `.claude/` directories
 This asset class is registered in the IDP Catalog under `AIAsset` kind with its respective types, and is browsable under the **AI Assets** tab in the [Catalog](../../../catalog/overview)
 :::
 
+:::tip
+Harness IDP includes out-of-the-box scorecard checks for AIAsset entities discovered through this integration. See [Catalog Info YAML data source](/docs/internal-developer-portal/scorecards/create-scorecards/data-sources#catalog-info-yaml).
+:::
+
 #### View AI asset instructions
  
 When AI assets of type `skill` or `agent` are imported, IDP automatically fetches their corresponding instruction file (for example, `SKILL.md`) from GitHub and stores it along with the entity. This powers the **Instructions** tab on the entity page as shown below. 
