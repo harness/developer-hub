@@ -12,12 +12,6 @@ redirect_from:
   - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-general-sdk/how-do-i-find-out-what-changed-in-an-sdk
 ---
 
-## Overview
-
-import SDKGrid from '@site/src/components/Docs/data/fmeSDKSData';
-
-<SDKGrid />
-
 :::info Tracking SDK changes
 To find out what's new or updated in any Harness FME SDK release, visit the SDK's GitHub repository. The `CHANGES.txt` file provides detailed information about updates and the dates they were made.
 :::

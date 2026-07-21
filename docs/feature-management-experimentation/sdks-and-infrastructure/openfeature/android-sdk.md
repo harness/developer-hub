@@ -9,7 +9,7 @@ Integrate your Android applications with Harness FME using the <Tooltip id="fme.
 
 This page walks you through installing, configuring, and using the Android OpenFeature provider to evaluate <Tooltip id="fme.feature-management.feature-flag">feature flags</Tooltip> in your Android applications.
 
-### Before you begin
+## Before you begin
 
 Before you begin, ensure you have the following:
 
@@ -17,7 +17,7 @@ Before you begin, ensure you have the following:
 - An Android project targeting API Level 21 (Android 5.0 Lollipop) or later
 - Access to your project's `build.gradle` or `build.gradle.kts` file to add the provider dependency
 
-### Version compatibility
+## Version compatibility
 
 | Component                         | Minimum Version                     |
 | --------------------------------- | ----------------------------------- |

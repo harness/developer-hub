@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2026-06-24T10:00:00
+date: 2026-07-15T10:00:00
 tags: ["fme", "feature management experimentation"]
 sidebar_position: 11
 ---
@@ -14,7 +14,7 @@ import TabItem from '@theme/TabItem';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: June 26, 2026
+#### Last updated: July 15, 2026
 
 ## June 2026
 
@@ -714,7 +714,7 @@ This feature is valuable for organizations that want to:
 - Reduce vendor lock-in by enabling flexible provider implementations
 - Integrate feature flags across multiple languages and platforms
 
-Harness FME offers providers for Android, iOS, Web, Angular, React, Java, Node.js, Python, and .NET SDKs. Your application can integrate with either the Harness FME SDK or OpenFeature providers, depending on your organization’s requirements.
+Harness FME offers providers for Android, iOS, Web, Angular, React, Java, Node.js, Python, .NET, and Go SDKs. Your application can integrate with either the Harness FME SDK or OpenFeature providers, depending on your organization’s requirements.
 
 #### Related documentation
 
@@ -728,6 +728,7 @@ Harness FME offers providers for Android, iOS, Web, Angular, React, Java, Node.j
 - [Node.js SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/nodejs-sdk)
 - [Python SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/python-sdk)
 - [.NET SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/net-sdk)
+- [Go SDK](/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/go-sdk)
 
 ### Warehouse Native Experimentation in Beta
 ----

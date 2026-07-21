@@ -5,7 +5,7 @@ id: index
 slug: /feature-management-experimentation/sdks-and-infrastructure
 ---
 
-import Fme from '@site/docs/feature-management-experimentation/sdks-and-infrastructure/index.mdx';
+import Fme from '@site/docs/feature-management-experimentation/sdks-and-infrastructure/index.md';
 
 <Fme />
 

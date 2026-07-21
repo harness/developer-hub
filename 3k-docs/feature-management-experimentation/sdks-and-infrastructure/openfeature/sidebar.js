@@ -8,4 +8,5 @@ module.exports = [
   "feature-management-experimentation/sdks-and-infrastructure/openfeature/nodejs-sdk",
   "feature-management-experimentation/sdks-and-infrastructure/openfeature/python-sdk",
   "feature-management-experimentation/sdks-and-infrastructure/openfeature/net-sdk",
+  "feature-management-experimentation/sdks-and-infrastructure/openfeature/go-sdk",
 ];

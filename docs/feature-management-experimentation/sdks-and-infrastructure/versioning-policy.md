@@ -332,4 +332,12 @@ import TabItem from '@theme/TabItem';
 | `2.0.0`   | 2023-11-12  | Actively supported  |
 
 </TabItem>
+
+<TabItem value="Go" label="Go SDK">
+
+| Version   | GA Date     | Support End Date  |
+|-----------|-------------|-------------------|
+| `2.0.0`   | 2026-03-20  | Actively supported  |
+
+</TabItem>
 </Tabs>

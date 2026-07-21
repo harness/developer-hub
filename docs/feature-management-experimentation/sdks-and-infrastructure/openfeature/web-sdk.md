@@ -9,7 +9,7 @@ Integrate your web applications with Harness FME using the <Tooltip id="fme.open
 
 This page walks you through installing, configuring, and using the Web OpenFeature provider to evaluate <Tooltip id="fme.feature-management.feature-flag">feature flags</Tooltip> in your web applications.
 
-### Before you begin
+## Before you begin
 
 Before you begin, ensure you have the following:
 
@@ -17,7 +17,7 @@ Before you begin, ensure you have the following:
 - A modern browser environment that supports ES6 modules  
 - Access to `npm` or `yarn` to install dependencies  
 
-### Version compatibility
+## Version compatibility
 
 | Component                                      | Minimum Version |
 | ---------------------------------------------- | ---------------- |

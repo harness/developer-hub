@@ -9,7 +9,7 @@ Integrate your iOS applications with Harness FME using the <Tooltip id="fme.open
 
 This page walks you through installing, configuring, and using the iOS OpenFeature provider to evaluate <Tooltip id="fme.feature-management.feature-flag">feature flags</Tooltip> in your iOS applications.
 
-### Before you begin
+## Before you begin
 
 Before you begin, ensure you have the following:
 
@@ -17,7 +17,7 @@ Before you begin, ensure you have the following:
 - An iOS project (Xcode 14+)
 - Access to your project's `Package.swift` file or Xcode project to add the provider dependency
 
-### Version compatibility
+## Version compatibility
 
 | Component                         | Minimum Version                     |
 | --------------------------------- | ----------------------------------- |

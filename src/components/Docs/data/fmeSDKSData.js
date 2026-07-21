@@ -229,6 +229,11 @@ export const openfeatureProviders = [
     img: '/provider-logos/dotnet-logo.svg',
     link: '/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/net-sdk',
   },
+  {
+    name: 'Go SDK',
+    img: '/provider-logos/go-logo.svg',
+    link: '/docs/feature-management-experimentation/sdks-and-infrastructure/openfeature/go-sdk',
+  }
 ];
 
 // Helper to chunk items into rows of 4
