@@ -1,5 +1,40 @@
 [
   {
+    "flagKey": "QUEUED_PIPELINE_OBSERVABILITY",
+    "description": "Enables account-level APIs to list queued, waiting, and running pipeline executions, and to bulk-abort queued executions.",
+    "gaStartDate": "2026-07-20",
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "EXPRESSION_ENGINE_USE_FALLBACK_FOR_CONCURRENT_MODIFICATION",
+    "description": "Enables nested map and collection expression evaluation to fall back to a safer retry path instead of failing on iteration errors such as ConcurrentModificationException.",
+    "gaStartDate": "2026-07-20",
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
+  },
+  {
+    "flagKey": "SET_ADVISORS_PROCESSED",
+    "description": "Ensures that stage and pipeline status waits until a step's failure strategy advisers are fully processed before rolling up the step's outcome.",
+    "gaStartDate": "2026-07-20",
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "MARK_RETRIED_STEP_GROUP_CHILDREN_RETRIED",
+    "description": "Ensures that retrying a step group marks the step group and all its nested children as retried, so execution graphs and status calculations reflect only the latest retry attempt.",
+    "gaStartDate": "2026-07-20",
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "GET_PARENT_STEP_GROUP_SUPPORT",
+    "description": "Enables nested step groups to resolve variables and outcomes from a parent step group using <+group.getParentStepGroup.*> expressions, including v1 service variable inheritance from outer groups.",
+    "gaStartDate": "2026-07-20",
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
+  },
+  {
     "flagKey": "ENABLE_IN_APP_ALERTS",
     "description": "Adds an in-app alerts center accessible from the Harness UI so users can see important events in the product itself.",
     "gaStartDate": "2026-06-15",
