@@ -448,3 +448,24 @@ Follow these steps for a demo of secrets sanitization in logs.
 ![](./static/secret-log.png)
 
 When a text secret is displayed in a deployment log, Harness substitutes the text secret value with asterisks (`*`) so that the secret value is never displayed. For more information, go to [secrets and log-sanitization](/docs/platform/secrets/secrets-management/secrets-and-log-sanitization). The only exception is output variables. If an output variable value contains a secret, be aware that the secret will be visible in the build details. For more information, go to [output variables](/docs/continuous-integration/use-ci/run-step-settings/#output-variables).
+
+## Secret reference expressions in logs
+
+During execution, Harness does not place secret values into your pipeline. Instead, it inserts a secret reference expression that the Harness Delegate resolves securely at runtime. You might see this expression in execution logs or YAML in one of the following forms:
+
+```
+${ngSecretManager.obtain("hashicorpvault://<engine>/<path>#<key>", -1675754213)}
+```
+
+The expression has two parts:
+
+- **Secret reference:** The quoted string, such as `hashicorpvault://<engine>/<path>#<key>`, identifies which secret to resolve. It points to the secret location, not the secret value.
+- **Expression functor token:** The trailing number, such as `-1675754213`, is a per-execution security token. Harness generates a new token for each pipeline execution.
+
+### Token composition
+
+The expression functor token is a randomly generated value. Harness produces it from a random UUID that is hashed and represented as a 32-bit integer, which is why the value is often negative. The token contains no encoded information. It does not include a timestamp, the secret value, an account or environment identifier, or any other data, and it cannot be reverse-engineered or decoded to reveal anything sensitive.
+
+### Token purpose
+
+The token protects against data exfiltration through expression-injection attacks. Because each execution has its own token, a secret reference expression only resolves when it carries the correct token for that execution. If a malicious user injects or copies a secret expression with an incorrect token, resolution fails and no secret value is returned. The token is safe to appear in logs, because on its own it exposes no sensitive information.
