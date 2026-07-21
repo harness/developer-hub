@@ -232,6 +232,11 @@ The following deprecated API endpoints are longer supported:
 
 ## July 2026
 
+### Version 1.158.x <!--July 15, 2026-->
+
+#### Fixed issues
+- Fixed an issue where editing notification rules displayed incorrect project-scoped service account identifiers. Project-scoped service accounts now use the same identifier format in both create and edit flows, ensuring service account names and links are rendered correctly across all scopes. [PL-71149]
+
 ### Version 1.157.x <!--July 09, 2026-->
 
 #### New features and enhancements
