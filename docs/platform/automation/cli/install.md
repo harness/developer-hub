@@ -4,35 +4,24 @@ description: This topic shows how to get started with the Harness CLI.
 sidebar_position: 1
 ---
 
-import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelector/DynamicMarkdownSelector';
+import V1Install from '/docs/platform/automation/cli/content/versions/v1.md';
 
-:::warning
-This version of the Harness CLI is being deprecated and will reach end of life in a future release. We recommend migrating to the new Harness CLI to receive the latest features, improvements, and ongoing support.
+:::danger Deprecation Notice
 
-For installation and migration guidance, see the new [Harness CLI documentation](/docs/platform/harness-cli/harness-cli-overview).]
+**Harness CLI (`hc`) v1.x.x will be deprecated and will reach end of life in a future release**. 
+
+We recommend migrating to the new version of [**Harness CLI**](/docs/platform/harness-cli/harness-cli-overview) to continue receiving the latest features, improvements, and official support.
 :::
 
-**Harness CLI** serves as your gateway to frictionless interaction with the intelligent Harness Platform directly through the command-line interface, providing you with a powerful and efficient means to manage Harness and its diverse set of resources.
+:::warning Important Note
+`hc` v1.x.x CLI is specific to Artifact Registry workflows only. 
 
-This documentation section will serve as your compass, guiding you through the installation, configuration, and upgrade of the Harness CLI utility.
-
-:::info CLI Versions
-Harness offers two versions of the CLI:
-- **v0 (`harness`)**: This will be deprecated in the future. Use v1.0.0 (`hc`) instead.
-- **v1.0.0 (`hc`)**: The new unified CLI with enhanced features and improved user experience
-
-Select your preferred version below to get started.
+For a unified CLI experience across the Harness platform, use the new [**Harness CLI**](/docs/platform/harness-cli/harness-cli-overview), which supports automation, resource management, and extensibility across all Harness modules.
 :::
 
-<DynamicMarkdownSelector
-  options={{
-    "v1.0.0 - hc": {
-      path: "/platform/automation/cli/content/versions/v1.md",
-      label: "v1.0.0 - New CLI"
-    },  "v0 - harness": {
-      path: "/platform/automation/cli/content/versions/v0.md",
-      label: "v0 - Original CLI"
-    },
-  }} disableSort={true}
-  toc = {toc}
-/>
+
+**Harness CLI (`hc`) v1.x.x** is a command-line interface that only works with **Harness Artifact Registry** workflows. It enables you to manage artifact registry resources and automate common artifact management tasks directly from your terminal.
+
+This section covers installation, configuration, and upgrade of the Harness CLI for Artifact Registry workflows.
+
+<V1Install />

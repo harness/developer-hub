@@ -4,32 +4,16 @@ description: Reference doc for all the commands and options available in Harness
 sidebar_position: 3
 ---
 
-import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelector/DynamicMarkdownSelector';
+import V1Reference from '/docs/platform/automation/cli/content/reference/v1.md';
 
-:::info CLI Versions
-Harness offers two versions of the CLI:
-- **v0 (`harness`)**: This will be deprecated in the future. Use v1.0.0 (`hc`) instead.
-- **v1.0.0 (`hc`)**: The new unified CLI with enhanced features and improved user experience
+:::danger Deprecation Notice
 
-Select your preferred version below to get started.
+**Harness CLI (`hc`) v1.x.x will be deprecated and will reach end of life in a future release**. 
+
+We recommend migrating to the new version of [**Harness CLI**](/docs/platform/harness-cli/harness-cli-overview) to continue receiving the latest features, improvements, and official support.
 :::
 
-Select your CLI version to view the complete command reference:
-
-<DynamicMarkdownSelector
-  options={{
-    "v1.0.0 - hc": {
-      path: "/platform/automation/cli/content/reference/v1.md",
-      label: "v1.0.0 - New CLI Reference"
-    },
-    "v0 - harness": {
-      path: "/platform/automation/cli/content/reference/v0.md",
-      label: "v0 - Original CLI Reference"
-    }
-  }}
-  disableSort={true}
-  toc={toc}
-/>
+<V1Reference />
 
 <!-- Legacy content below - kept for reference
 
