@@ -19,7 +19,9 @@ import TabItem from '@theme/TabItem';
 
 Use this guide to set up Harness Platform so your teams can start using any Harness module.
 
-## By the end of this topic, you will be able to:
+## What will you learn in this topic?
+
+By the end of this topic, you will be able to:
 
 - [Access a Harness account](#step-1-access-your-harness-account).
 - [Create organization](#create-an-organization), [projects](#create-a-project) and [invite collaborators](#invite-collaborators).
