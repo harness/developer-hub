@@ -146,6 +146,17 @@ export const spt: IltCardItem[] = [
     cardType: cardType.SPT,
   },
   {
+    title: "Introduction to Secure Repo Cloning",
+    module: MODULES.ci,
+    type: type.user,
+    description:
+      "Self-paced tidbit introducing Secure Repo Cloning.",
+    version: "Harness CI Paid Plans",
+    link: "https://university-registration.harness.io/self-paced-training-tidbit-introducing-secure-repo-cloning",
+    tileType: tileType.normal,
+    cardType: cardType.SPT,
+  },
+  {
     title: "Introduction to Docker Build and Push",
     module: MODULES.ci,
     type: type.user,
@@ -197,6 +208,17 @@ export const spt: IltCardItem[] = [
       "Self-paced tidbit introducing IDP Dynamic Pickers.",
     version: "Harness IDP Paid Plans",
     link: "https://university-registration.harness.io/self-paced-training-tidbit-introduction-to-idp-dynamic-pickers",
+    tileType: tileType.normal,
+    cardType: cardType.SPT,
+  },
+  {
+    title: "Introduction to IDP Catalog Ingestion API",
+    module: MODULES.idp,
+    type: type.user,
+    description:
+      "Self-paced tidbit introducing IDP Catalog Ingestion API.",
+    version: "Harness IDP Paid Plans",
+    link: "https://university-registration.harness.io/self-paced-training-tidbit-introduction-to-idp-catalog-ingestion-api",
     tileType: tileType.normal,
     cardType: cardType.SPT,
   },
@@ -298,6 +320,17 @@ export const spt: IltCardItem[] = [
       "Self-paced video course introducing Harness Cloud & AI Cost Management.",
     version: "Harness CACM Free Plans",
     link: "https://university-registration.harness.io/self-paced-training-harness-cloud-cost-management",
+    tileType: tileType.normal,
+    cardType: cardType.SPT,
+  },
+  {
+    title: "Introduction to Building Nested Cost Categories",
+    module: MODULES.ccm,
+    type: type.user,
+    description:
+      "Self-paced tidbit introducing Building Nested Cost Categories.",
+    version: "Harness CACM Free Plans",
+    link: "https://university-registration.harness.io/self-paced-training-tidbit-introducing-building-nested-cost-categories",
     tileType: tileType.normal,
     cardType: cardType.SPT,
   },
