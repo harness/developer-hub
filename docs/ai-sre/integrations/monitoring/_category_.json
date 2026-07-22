@@ -1,0 +1,11 @@
+{
+  "label": "Monitoring and Observability",
+  "position": 1,
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "title": "Monitoring and Observability Integrations",
+    "description": "Connect monitoring and observability tools to Harness AI SRE to ingest alerts and trigger incidents."
+  }
+}

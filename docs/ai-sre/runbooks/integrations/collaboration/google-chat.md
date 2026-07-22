@@ -41,7 +41,7 @@ Before using Google Chat actions in runbooks, configure the organization-level G
 5. Test the connection with a Space ID.
 6. Click **Save**.
 
-Go to [Google Chat Integration](/docs/ai-sre/integrations/google-chat) for complete setup instructions, including GCP Pub/Sub configuration.
+Go to [Google Chat Integration](/docs/ai-sre/integrations/communication/google-chat) for complete setup instructions, including GCP Pub/Sub configuration.
 
 ---
 
@@ -246,6 +246,6 @@ These permissions are requested during the OAuth authorization flow.
 
 ## Next Steps
 
-- Go to [Google Chat Integration](/docs/ai-sre/integrations/google-chat) to set up the organization-level integration.
+- Go to [Google Chat Integration](/docs/ai-sre/integrations/communication/google-chat) to set up the organization-level integration.
 - Go to [Create a Runbook](/docs/ai-sre/runbooks/create-runbook) to learn how to build automated response workflows.
 - Go to [AI Scribe Agent](/docs/ai-sre/ai-agent) to enable automatic capture of key events from Google Chat conversations.

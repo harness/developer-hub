@@ -3,8 +3,18 @@ title: Configure GitLab CI for Deploy Change Investigator
 description: Send build and deployment webhooks from GitLab CI/CD pipelines to track changes in Harness AI SRE
 sidebar_label: GitLab CI
 sidebar_position: 6
+keywords:
+  - ai-sre
+  - change detection
+  - gitlab ci
+  - build webhooks
+  - deployment tracking
+tags:
+  - change-management
+  - integrations
 ---
 
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
 Send build and deployment data from GitLab CI/CD pipelines to the Deploy Change Investigator using webhook jobs.
 
@@ -202,6 +212,10 @@ notify-deploy-failure:
   when: on_failure
 ```
 
+:::note Deploy status is recorded as success
+The stock Harness Deployment template records every deploy activity as `success`. Sending a `FAILURE` status is accepted but does not create a failed-deployment record. Keep the failure job if you want the deploy event captured, but do not rely on the status value to distinguish failed deploys.
+:::
+
 ---
 
 ## Job execution conditions
@@ -387,57 +401,29 @@ After sending both webhooks:
 
 ## Troubleshooting
 
-### Webhook not received
+<Troubleshoot
+  issue="GitLab CI webhook not received in AI SRE"
+  mode="docs"
+  fallback="Confirm the CI/CD variable AISRE_BUILD_WEBHOOK_URL or AISRE_DEPLOY_WEBHOOK_URL is configured, verify the curl command runs in the job logs, ensure GitLab runners allow outbound HTTPS, and check the JSON payload for syntax errors. Test manually with curl -v -X POST against the webhook URL."
+/>
 
-**Check:**
-- CI/CD variable `AISRE_BUILD_WEBHOOK_URL` or `AISRE_DEPLOY_WEBHOOK_URL` is configured
-- Curl command executed in job logs
-- Network allows outbound HTTPS from GitLab runners
-- JSON payload has no syntax errors
+<Troubleshoot
+  issue="GitLab CI deployments not linked to builds in AI SRE"
+  mode="docs"
+  fallback="Ensure services[].service in the deploy webhook exactly matches service.name in the build webhook, and services[].version exactly matches the build webhook version. Confirm both webhooks were sent successfully by checking the Debug view."
+/>
 
-**Test manually:**
-```bash
-curl -v -X POST "$AISRE_BUILD_WEBHOOK_URL" \
-  -H "Content-Type: application/json" \
-  -d '{"test": "payload"}'
-```
+<Troubleshoot
+  issue="GitLab CI shell variable interpolation issues in webhook JSON"
+  mode="docs"
+  fallback={"Shell variables may not expand in JSON. Use the quote pattern \"'\"$VARIABLE\"'\" for proper JSON escaping, for example \"service\": \"'\"$CI_PROJECT_NAME\"'\"."}
+/>
 
-### Deployments not linked to builds
-
-**Verify:**
-- `services[].service` in deploy webhook matches `service.name` in build webhook exactly
-- `services[].version` in deploy webhook matches build webhook version exactly
-- Both webhooks sent successfully (check Debug view)
-
-### Variable interpolation issues
-
-**Problem:** Shell variables not expanding in JSON
-
-**Solution:** Use proper quoting for variable expansion:
-
-```yaml
-script:
-  - |
-    curl -d '{
-      "service": "'"$CI_PROJECT_NAME"'",
-      "version": "'"$CI_COMMIT_SHORT_SHA"'"
-    }' $WEBHOOK_URL
-```
-
-Note the quote pattern: `"'"$VARIABLE"'"` for proper JSON escaping.
-
-### Job fails with protected variable
-
-**Issue:** Protected variables only available on protected branches
-
-**Solution:** Either unprotect the variable or run webhook jobs only on protected branches:
-
-```yaml
-notify-build:
-  only:
-    - main
-    - /^release\/.*$/
-```
+<Troubleshoot
+  issue="GitLab CI job fails with a protected variable when sending webhooks"
+  mode="docs"
+  fallback={"Protected variables are only available on protected branches. Either unprotect the variable or restrict webhook jobs to protected branches using an only clause such as main or /^release\\/.*$/."}
+/>
 
 ---
 

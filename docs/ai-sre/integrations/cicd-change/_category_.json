@@ -1,0 +1,11 @@
+{
+  "label": "CI/CD and Change Sources",
+  "position": 2,
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "title": "CI/CD and Change Source Integrations",
+    "description": "Connect CI/CD tools and source control to Harness AI SRE to track builds, deployments, and code changes."
+  }
+}

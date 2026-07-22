@@ -2,9 +2,19 @@
 title: Configure GitHub Actions for Deploy Change Investigator
 description: Configure GitHub Actions workflows to send build and deployment webhooks to Harness AI SRE
 sidebar_label: GitHub Actions
-sidebar_position: 3
+sidebar_position: 5
+keywords:
+  - ai-sre
+  - change detection
+  - github actions
+  - build webhooks
+  - deployment tracking
+tags:
+  - change-management
+  - integrations
 ---
 
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
 Configure GitHub Actions workflows to send build and deployment data to the Deploy Change Investigator.
 
@@ -212,6 +222,10 @@ jobs:
               "deployTimestamp": "'$(date -u +%Y-%m-%dT%H:%M:%SZ)'"
             }'
 ```
+
+:::note Deploy status is recorded as success
+The stock Harness Deployment template records every deploy activity as `success`. Sending `"status": "FAILURE"` is accepted but does not create a failed-deployment record. Keep the failure webhook if you want the deploy event captured, but do not rely on the status value to distinguish failed deploys.
+:::
 
 ### Multi-service deployments
 
@@ -440,27 +454,23 @@ jobs:
 
 ## Troubleshooting
 
-### Build webhook not received
+<Troubleshoot
+  issue="GitHub Actions build webhook not received in AI SRE"
+  mode="docs"
+  fallback="Confirm the webhook URL secret is configured correctly in repository settings, verify the curl command runs in the workflow logs, ensure GitHub Actions runners allow outbound HTTPS, and check the JSON payload for syntax errors."
+/>
 
-**Check:**
-- Webhook URL secret is correctly configured in repository settings
-- Curl command is executed (check workflow logs)
-- Network connectivity allows outbound HTTPS from GitHub Actions runners
-- JSON payload has no syntax errors
+<Troubleshoot
+  issue="GitHub Actions deploy webhook received but changes not showing in AI SRE"
+  mode="docs"
+  fallback="Ensure services[].service in the deploy webhook exactly matches service.name in the build webhook, and services[].version exactly matches artifact.version or service.version. Confirm both webhooks were sent by checking the Debug view for both integrations."
+/>
 
-### Deploy webhook received but changes not showing
-
-**Verify:**
-- `services[].service` in deploy webhook exactly matches `service.name` in build webhook
-- `services[].version` in deploy webhook exactly matches `artifact.version` or `service.version` in build webhook
-- Both webhooks have been sent (check Debug view for both integrations)
-
-### Workflow fails at webhook step
-
-**Common causes:**
-- Secret not configured or misspelled
-- JSON syntax error in curl payload
-- Date command not available (use `date -u +%Y-%m-%dT%H:%M:%SZ`)
+<Troubleshoot
+  issue="GitHub Actions workflow fails at the AI SRE webhook step"
+  mode="docs"
+  fallback="Check that the secret is configured and spelled correctly, fix any JSON syntax error in the curl payload, and confirm the date command is available using date -u +%Y-%m-%dT%H:%M:%SZ."
+/>
 
 ---
 
@@ -468,4 +478,4 @@ jobs:
 
 - Go to [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) for the complete setup guide.
 - Go to [AI Agent RCA](/docs/ai-sre/ai-agent/rca-change-agent) to learn how change detection works during incidents.
-- Go to [Configure Jenkins](#) for webhook setup in Jenkins pipelines.
+- Go to [Configure Jenkins](/docs/ai-sre/change/sources/jenkins) for webhook setup in Jenkins pipelines.

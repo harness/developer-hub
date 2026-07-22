@@ -2,9 +2,19 @@
 title: Configure Terraform for Deploy Change Investigator
 description: Send Terraform infrastructure changes as deployment webhooks to track in Harness AI SRE
 sidebar_label: Terraform
-sidebar_position: 5
+sidebar_position: 11
+keywords:
+  - ai-sre
+  - change detection
+  - terraform
+  - build webhooks
+  - deployment tracking
+tags:
+  - change-management
+  - integrations
 ---
 
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
 Track Terraform infrastructure changes by sending deployment webhooks when `terraform apply` completes.
 
@@ -320,29 +330,23 @@ provisioner "local-exec" {
 
 ## Troubleshooting
 
-### Provisioner fails silently
+<Troubleshoot
+  issue="Terraform local-exec provisioner fails silently when sending AI SRE webhooks"
+  mode="docs"
+  fallback="A local-exec provisioner does not fail the apply when curl fails. Add error checking in the provisioner command, for example capture the HTTP status code and exit 1 when it is not 200."
+/>
 
-**Issue:** `local-exec` does not fail apply if curl fails
+<Troubleshoot
+  issue="Terraform webhook sent on destroy to AI SRE"
+  mode="docs"
+  fallback="The provisioner was configured with when = destroy, so it runs during terraform destroy. Remove the when = destroy argument. A local-exec provisioner runs at create time by default, and create is not a valid value for when in current Terraform."
+/>
 
-**Solution:** Add error checking in provisioner command (see Error handling above)
-
-### Webhook sent on destroy
-
-**Issue:** Provisioner sends webhook when destroying resources
-
-**Solution:** Use `when = create` to run only on resource creation
-
-### Variable interpolation errors
-
-**Issue:** Variables not expanding in provisioner command
-
-**Solution:** Use proper HCL string interpolation:
-
-```hcl
-command = <<-EOT
-  curl ... -d '{"service": "${var.service_name}"}'
-EOT
-```
+<Troubleshoot
+  issue="Terraform variable interpolation errors in AI SRE webhook commands"
+  mode="docs"
+  fallback={"Variables may not expand in the provisioner command. Use proper HCL string interpolation, for example command = <<-EOT curl ... -d '{\"service\": \"${var.service_name}\"}' EOT."}
+/>
 
 ---
 

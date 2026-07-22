@@ -1,0 +1,11 @@
+{
+  "label": "Ticketing and ITSM",
+  "position": 3,
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "title": "Ticketing and ITSM Integrations",
+    "description": "Connect ticketing and ITSM tools to Harness AI SRE to track change records and automate ticket actions."
+  }
+}

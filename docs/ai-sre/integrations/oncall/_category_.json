@@ -1,0 +1,11 @@
+{
+  "label": "On-Call and Escalation",
+  "position": 5,
+  "collapsible": true,
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "title": "On-Call and Escalation Integrations",
+    "description": "Connect on-call and escalation tools to Harness AI SRE to synchronize schedules and page responders."
+  }
+}

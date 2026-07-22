@@ -1,13 +1,13 @@
 ---
 title: Google Chat Integration
-sidebar_label: Google Chat Integration
-sidebar_position: 2
+sidebar_label: Google Chat
+sidebar_position: 3
 description: Set up Google Chat integration for incident collaboration in Harness AI SRE using GCP Pub/Sub for real-time message delivery.
+redirect_from:
+  - /docs/ai-sre/integrations/google-chat
 ---
 
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
-
-# Google Chat Integration
 
 Harness AI SRE integrates with Google Chat at the organization level, enabling teams using Google Workspace to collaborate on incidents using Google Chat spaces. The integration uses GCP Pub/Sub for reliable two-way message delivery.
 
@@ -86,9 +86,9 @@ You will need your GCP Project ID in the next step. Find it in the Google Cloud 
 
 1. Navigate to **Organization Settings** → **Third-Party Integrations (AI SRE)**.
 2. Locate **Google Chat** and click **Connect**.
-![Connect to Google](./static/google-chat-01.png)
+![Connect to Google](../static/google-chat-01.png)
 3. Complete the OAuth authorization flow, as outlined below.
-![Connect to Google](./static/google-chat-02.png)
+![Connect to Google](../static/google-chat-02.png)
 4. Configure the integration:
    - **Google Chat Connector**: Select your Google chat connector, sign in with your Google Workspace account, and grant the requested permissions when prompted. The authorization popup closes automatically on success.
    - **GCP Project ID**: Enter your Google Cloud project ID (e.g., `my-project-12345`)
@@ -266,6 +266,6 @@ The Pub/Sub subscription is deleted, but the organization-level Google Chat inte
 
 ## Next Steps
 
-- Go to [Google Chat Post Message Runbook Action](/docs/ai-sre/runbooks/integrations/google-chat) to learn how to send automated messages to Google Chat spaces.
+- Go to [Google Chat Post Message Runbook Action](/docs/ai-sre/runbooks/integrations/collaboration/google-chat) to learn how to send automated messages to Google Chat spaces.
 - Go to [AI Scribe Agent](/docs/ai-sre/ai-agent) to enable automatic capture of key events from Google Chat conversations.
 - Go to [Acknowledge and Triage Incidents](/docs/ai-sre/users/manage-incidents/acknowledge-and-triage) to learn how incident responders use collaboration tools during incidents.

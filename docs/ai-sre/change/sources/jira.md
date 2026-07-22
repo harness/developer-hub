@@ -2,9 +2,19 @@
 title: Configure Jira for Deploy Change Investigator
 description: Track Jira issue deployments by sending webhooks when issues transition to deployment states
 sidebar_label: Jira
-sidebar_position: 4
+sidebar_position: 9
+keywords:
+  - ai-sre
+  - change detection
+  - jira
+  - build webhooks
+  - deployment tracking
+tags:
+  - change-management
+  - integrations
 ---
 
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
 Track Jira issue deployments by sending deployment webhooks when issues are released or deployed.
 
@@ -194,43 +204,29 @@ Or map to standardized names using conditions in your automation rule.
 
 ## Troubleshooting
 
-### Webhook not received
+<Troubleshoot
+  issue="Jira automation webhook not received in AI SRE"
+  mode="docs"
+  fallback="Confirm the automation rule is turned on, verify the webhook URL matches the AI SRE integration, and check that the rule execution appears in the automation audit log. Ensure Jira Cloud allows outbound HTTPS, and open the audit log to find the failed execution and its error message."
+/>
 
-**Check:**
-- Automation rule is enabled (turned on)
-- Webhook URL is correct (copy from AI SRE integrations)
-- Rule execution appears in automation audit log
-- Network allows outbound HTTPS from Jira Cloud
+<Troubleshoot
+  issue="Jira deployments not showing in AI SRE Change Management"
+  mode="docs"
+  fallback="Ensure the issue has a Fix Version set before the transition, keep services[].service and services[].version consistent across deployments, and confirm the webhook payload is valid JSON by checking the automation audit log."
+/>
 
-**Debug in Jira:**
-1. Go to automation rule **Audit log**
-2. Find failed execution
-3. Check error message for details
+<Troubleshoot
+  issue="Jira Smart Values returning empty in AI SRE webhook payloads"
+  mode="docs"
+  fallback={"Empty Smart Values are usually caused by a missing Fix Version, an unassigned component, or an empty or misnamed custom field. Add a condition to check the field is not empty before sending the webhook, or use fallback values such as {{issue.fixVersions.first.name.or(\"unknown\")}}."}
+/>
 
-### Deployments not showing in Change Management
-
-**Verify:**
-- Issue has Fix Version set before transition
-- `services[].service` value is consistent across deployments
-- `services[].version` value is consistent
-- Webhook payload is valid JSON (check audit log)
-
-### Smart Values returning empty
-
-**Common causes:**
-- Fix Version not set on issue
-- Component not assigned to issue
-- Custom field empty or wrong field name
-
-**Solution:**
-- Add condition to check field is not empty before sending webhook
-- Use fallback values: `{{issue.fixVersions.first.name.or("unknown")}}`
-
-### Timestamp format issues
-
-**Use:**
-- `{{now.jiraDateTime}}` for ISO 8601 format (recommended for APIs)
-- Avoid `{{now}}` alone (returns Unix timestamp in milliseconds)
+<Troubleshoot
+  issue="Jira timestamp format issues in AI SRE deploy webhooks"
+  mode="docs"
+  fallback="Use {{now.jiraDateTime}} for ISO 8601 format, which is recommended for APIs. Avoid using {{now}} alone because it returns a Unix timestamp in milliseconds."
+/>
 
 ---
 

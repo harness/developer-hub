@@ -2,9 +2,19 @@
 title: Configure CircleCI for Deploy Change Investigator
 description: Send build and deployment webhooks from CircleCI workflows to track changes in Harness AI SRE
 sidebar_label: CircleCI
-sidebar_position: 7
+sidebar_position: 3
+keywords:
+  - ai-sre
+  - change detection
+  - circleci
+  - build webhooks
+  - deployment tracking
+tags:
+  - change-management
+  - integrations
 ---
 
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
 Send build and deployment data from CircleCI workflows to the Deploy Change Investigator using webhook steps.
 
@@ -199,7 +209,13 @@ jobs:
                 "deployedBy": "'"$CIRCLE_USERNAME"'",
                 "deployTimestamp": "'$(date -u +%Y-%m-%dT%H:%M:%SZ)'"
               }'
+```
 
+:::note Deploy status is recorded as success
+The stock Harness Deployment template records every deploy activity as `success`. Sending a `FAILURE` status is accepted but does not create a failed-deployment record. Keep the failure webhook if you want the deploy event captured, but do not rely on the status value to distinguish failed deploys.
+:::
+
+```yaml
 workflows:
   version: 2
   build-and-deploy:
@@ -447,43 +463,23 @@ After sending both webhooks:
 
 ## Troubleshooting
 
-### Webhook not received
+<Troubleshoot
+  issue="CircleCI webhook not received in AI SRE"
+  mode="docs"
+  fallback="Confirm the environment variable AISRE_BUILD_WEBHOOK_URL or AISRE_DEPLOY_WEBHOOK_URL is configured, verify the curl command runs in the job logs, ensure CircleCI executors allow outbound HTTPS, and check the JSON payload for syntax errors. Test manually with curl -v -X POST against the webhook URL."
+/>
 
-**Check:**
-- Environment variable `AISRE_BUILD_WEBHOOK_URL` or `AISRE_DEPLOY_WEBHOOK_URL` is configured
-- Curl command executed in job logs
-- Network allows outbound HTTPS from CircleCI executors
-- JSON payload has no syntax errors
+<Troubleshoot
+  issue="CircleCI deployments not linked to builds in AI SRE"
+  mode="docs"
+  fallback="Ensure services[].service in the deploy webhook exactly matches service.name in the build webhook, and services[].version exactly matches the build webhook version. Confirm both webhooks were sent successfully by checking the Debug view."
+/>
 
-**Test manually:**
-```bash
-curl -v -X POST "$AISRE_BUILD_WEBHOOK_URL" \
-  -H "Content-Type: application/json" \
-  -d '{"test": "payload"}'
-```
-
-### Deployments not linked to builds
-
-**Verify:**
-- `services[].service` in deploy webhook matches `service.name` in build webhook exactly
-- `services[].version` in deploy webhook matches build webhook version exactly
-- Both webhooks sent successfully (check Debug view)
-
-### Variable interpolation issues
-
-**Problem:** Shell variables not expanding in JSON
-
-**Solution:** Use proper quoting for variable expansion:
-
-```yaml
-command: |
-  curl -d '{
-    "service": "'"$CIRCLE_PROJECT_REPONAME"'",
-    "version": "'"$CIRCLE_SHA1"'"
-  }' $WEBHOOK_URL
-```
-
-Note the quote pattern: `"'"$VARIABLE"'"` for proper JSON escaping.
+<Troubleshoot
+  issue="CircleCI shell variable interpolation issues in webhook JSON"
+  mode="docs"
+  fallback={"Shell variables may not expand in JSON. Use the quote pattern \"'\"$VARIABLE\"'\" for proper JSON escaping, for example \"service\": \"'\"$CIRCLE_PROJECT_REPONAME\"'\"."}
+/>
 
 ---
 

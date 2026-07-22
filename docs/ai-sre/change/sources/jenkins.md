@@ -2,8 +2,19 @@
 title: Configure Jenkins for Deploy Change Investigator
 description: Configure Jenkins pipelines to send build and deployment webhooks to Harness AI SRE
 sidebar_label: Jenkins
-sidebar_position: 2
+sidebar_position: 8
+keywords:
+  - ai-sre
+  - change detection
+  - jenkins
+  - build webhooks
+  - deployment tracking
+tags:
+  - change-management
+  - integrations
 ---
+
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
 Configure Jenkins pipelines to send build and deployment data to the Deploy Change Investigator using shell scripts.
 
@@ -193,6 +204,10 @@ pipeline {
 }
 ```
 
+:::note Deploy status is recorded as success
+The stock Harness Deployment template records every deploy activity as `success`. Sending a `FAILURE` status is accepted but does not create a failed-deployment record. Keep the failure webhook if you want the deploy event captured, but do not rely on the status value to distinguish failed deploys.
+:::
+
 ### Multi-service deployments
 
 For deployments that update multiple services:
@@ -299,30 +314,23 @@ After sending both build and deploy webhooks:
 
 ## Troubleshooting
 
-### Build webhook not received
+<Troubleshoot
+  issue="Jenkins build webhook not received in AI SRE"
+  mode="docs"
+  fallback="Confirm the curl command runs in the Jenkins console log, verify the webhook URL credential is correct, ensure Jenkins agents allow outbound HTTPS, and check the JSON payload for syntax errors using the -v flag on curl."
+/>
 
-**Check:**
-- Curl command is executed (visible in Jenkins console log)
-- Webhook URL is correct (check credentials)
-- Network connectivity allows outbound HTTPS from Jenkins agents
-- JSON payload has no syntax errors (test with `-v` flag on curl)
+<Troubleshoot
+  issue="Jenkins deploy webhook received but changes not showing in AI SRE"
+  mode="docs"
+  fallback="Ensure services[].service in the deploy webhook exactly matches service.name in the build webhook, and services[].version exactly matches artifact.version or service.version. Confirm both webhooks were sent by checking the Debug view for both integrations."
+/>
 
-### Deploy webhook received but changes not showing
-
-**Verify:**
-- `services[].service` in deploy webhook exactly matches `service.name` in build webhook
-- `services[].version` in deploy webhook exactly matches `artifact.version` or `service.version` in build webhook
-- Both webhooks have been sent (check Debug view for both integrations)
-
-### Getting BUILD_USER variable
-
-Jenkins does not provide `BUILD_USER` by default. Install the [Build User Vars Plugin](https://plugins.jenkins.io/build-user-vars-plugin/) to get:
-
-- **BUILD_USER** - Username of build initiator
-- **BUILD_USER_EMAIL** - Email of build initiator
-- **BUILD_USER_ID** - User ID
-
-Alternatively, use `${BUILD_CAUSE}` or hardcode a service account name.
+<Troubleshoot
+  issue="Getting the BUILD_USER variable in Jenkins for AI SRE deploy webhooks"
+  mode="docs"
+  fallback="Jenkins does not provide BUILD_USER by default. Install the Build User Vars Plugin to expose BUILD_USER, BUILD_USER_EMAIL, and BUILD_USER_ID, or use ${BUILD_CAUSE} or hardcode a service account name."
+/>
 
 ---
 
@@ -402,4 +410,4 @@ pipeline {
 
 - Go to [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) for the complete setup guide.
 - Go to [AI Agent RCA](/docs/ai-sre/ai-agent/rca-change-agent) to learn how change detection works during incidents.
-- Go to [Configure GitHub Actions](#) for webhook setup in GitHub Actions workflows.
+- Go to [Configure GitHub Actions](/docs/ai-sre/change/sources/github-actions) for webhook setup in GitHub Actions workflows.

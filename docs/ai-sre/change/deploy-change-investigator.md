@@ -55,19 +55,34 @@ Before starting, ensure you have:
 ## Set up source control connector
 
 :::tip Start here
-Set up your connector first. When you test your build webhook later, AI SRE will automatically create a PR ingestion job for your repository.
+Set up your connector first. When you test your build webhook later, AI SRE automatically creates a PR ingestion job for your repository.
 :::
 
 **Skip this step if:** you are using Harness Code (it is already integrated).
 
-### If you already have a platform connector
+For GitHub or Bitbucket:
 
-1. Navigate to **Project Settings** (bottom left gear icon)
-2. Go to **Third Party Integrations** → **AI SRE**
-3. Select your GitHub or Bitbucket connector from the dropdown or create a new one
-4. Click **Save**
+1. Create a Harness connector for your repository. Go to [Connect to a code repo](/docs/platform/connectors/code-repositories/connect-to-code-repo) to create one.
+2. In the left navigation, click **Project Settings** (gear icon).
+3. Under **Project-level resources**, select **Third Party Integrations (AI SRE)**.
+4. On the **Third-Party Integrations for AI SRE** page, find the **Github** or **Bitbucket** row and select your connector from the dropdown.
 
-When you send your first build webhook, AI SRE will use this connector to automatically create a PR ingestion job for your repository's main branch.
+![Third-Party Integrations for AI SRE page with a connector selected for each source](static/third-party-integrations-ai-sre.png)
+
+When you send your first build webhook that includes a `source.repository_url`, AI SRE automatically creates a PR ingestion job for your repository's main branch.
+
+### Create a PR ingestion manually
+
+To create the ingestion without waiting for a build webhook:
+
+1. In the AI SRE left navigation, go to **Integrations**.
+2. Open the **PR Ingestions** tab.
+3. Click **+ New PR Ingestion**.
+4. In the **Create New PR Ingestion** dialog, under **Select Git Provider**, choose **Harness Code**, **GitHub**, or **Bitbucket**.
+5. Enter the **Repository URL** of the repository to track.
+6. Click **Create**.
+
+![Create New PR Ingestion dialog showing Harness Code, GitHub, and Bitbucket as Git provider options with a repository URL field](static/create-pr-ingestion.png)
 
 ---
 
@@ -341,7 +356,7 @@ At this point, you should have:
 <Troubleshoot
   issue="PR ingestion job not auto-created after sending build webhooks"
   mode="docs"
-  fallback="Verify: (1) You have a GitHub or Bitbucket connector at Project Settings → Connectors, (2) The connector is selected in Project Settings → Third Party Integrations → AI SRE, (3) Build webhook payloads include the source.repository_url field. If all are correct, contact Harness support as a feature flag may need to be enabled."
+  fallback="Verify: (1) You have a GitHub or Bitbucket connector at Project Settings → Connectors, (2) Build webhook payloads include the source.repository_url field, (3) The repository is reachable. You can also create the ingestion manually under Integrations → PR Ingestions → New PR Ingestion. If all are correct, contact Harness support as a feature flag may need to be enabled."
 />
 
 <Troubleshoot
