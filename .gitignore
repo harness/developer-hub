@@ -44,6 +44,10 @@ static/llms-full.txt
 llms.txt
 llms-full.txt
 yarn.lock
+
+# Transient output of scripts/check-3k-docs-drift.mjs -- non-blocking
+# content-parity reminders for the current CI run only, never committed
+.3k-docs-parity-warnings.txt
 .claude/skills/doc-section-audit/audits/
 .claude/skills/doc-audit/audits/
 .claude/skills/doc-audit-check/audits/

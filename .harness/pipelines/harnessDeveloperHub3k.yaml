@@ -1,0 +1,103 @@
+pipeline:
+  name: harnessDeveloperHub3k
+  identifier: harnessDeveloperHub3k
+  projectIdentifier: Harness_Commons
+  orgIdentifier: PROD
+  description: Isolated test pipeline for the 3k-docs drift check step only (safety/testing copy, not the real HDH build/preview pipeline).
+  tags:
+    TicketID: HDH-386
+    BT-14506: ""
+    Owner: HDH
+  stages:
+    - stage:
+        name: Build
+        identifier: build
+        description: Runs only the 3k-docs drift check step in isolation for testing.
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec:
+              size: xlarge
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: 3k-docs Drift Check (warn-only trial)
+                  identifier: ThreeK_Docs_Drift_Check
+                  timeout: 3m
+                  spec:
+                    connectorRef: dockerhub_harness_jenkins
+                    image: node:22
+                    shell: Sh
+                    command: |-
+                      Red='\033[0;31m'
+                      Green='\033[0;32m'
+                      Yellow='\033[0;33m'
+                      Blue='\033[0;34m'
+                      Reset='\033[0m'
+
+                      # TRIAL PERIOD: this step is warn-only and always exits 0, even when
+                      # unresolved drift is found. It still auto-fixes and pushes clean renames.
+                      # Once we've watched it run for a while with no false positives, flip
+                      # the DRIFT_EXIT branch below back to `exit 1` to make it a real gate.
+
+                      # Never let git block waiting on a credential prompt (HTTPS username/
+                      # password, or SSH host-key confirmation) -- if the connector doesn't
+                      # have push rights, fail fast instead of hanging the build forever.
+                      export GIT_TERMINAL_PROMPT=0
+                      export GIT_SSH_COMMAND="ssh -o BatchMode=yes -o StrictHostKeyChecking=no -o ConnectTimeout=10"
+
+                      echo -e "${Blue}Checking docs/ <-> 3k-docs content-reuse imports and sidebars-3k-docs.ts for drift...${Reset}"
+
+                      # Don't let a nonzero exit from the drift script kill the shell before
+                      # we've had a chance to inspect/commit any fixes it applied.
+                      set +e
+                      timeout 60 node scripts/check-3k-docs-drift.mjs --fix
+                      DRIFT_EXIT=$?
+                      set -e
+
+                      if git diff --quiet -- 3k-docs sidebars-3k-docs.ts; then
+                        echo -e "${Green}No 3k-docs import paths or sidebar references needed fixing.${Reset}"
+                      else
+                        echo -e "${Yellow}Auto-fixed 3k-docs import path(s) and/or sidebars-3k-docs.ts entries for this build.${Reset}"
+                        echo -e "${Yellow}Attempting to push the fix back to the branch so future builds don't repeat it...${Reset}"
+                        git config user.email "hdh-bot@harness.io"
+                        git config user.name "HDH Drift Bot"
+                        git add 3k-docs sidebars-3k-docs.ts
+                        git commit -m "chore: auto-sync 3k-docs content-reuse imports and sidebar references [skip ci]"
+                        timeout 20 git push origin HEAD:<+codebase.branch> || echo -e "${Yellow}Could not push the auto-fix back to the branch (check push permissions on the codebase connector, or it timed out). The fix is applied for THIS build only -- run 'node scripts/check-3k-docs-drift.mjs --fix' locally and commit it so it sticks.${Reset}"
+                      fi
+
+                      # Non-blocking reminder: docs/ pages changed in this PR for a module
+                      # listed as "rewritten" in 3k-docs-module-status.json (e.g. Continuous
+                      # Delivery), where the hand-authored 3k-docs/ counterpart exists but
+                      # wasn't touched in the same PR. This never affects DRIFT_EXIT --
+                      # divergence between docs/ and a rewritten module's 3k-docs copy is
+                      # expected by design, this is just a nudge to double-check.
+                      if [ -f .3k-docs-parity-warnings.txt ]; then
+                        echo -e "${Yellow}Content-parity reminder (non-blocking) -- confirm these hand-authored${Reset}"
+                        echo -e "${Yellow}3k-docs pages don't also need the change made to their docs/ counterpart:${Reset}"
+                        cat .3k-docs-parity-warnings.txt
+                      fi
+
+                      if [ "$DRIFT_EXIT" -ne 0 ]; then
+                        echo -e "${Red}Unresolved 3k-docs drift detected (see above) -- these need a manual import fix, not just a path rename.${Reset}"
+                        echo -e "${Red}REVIEWERS: a green build does NOT mean this is safe to merge -- this step is warn-only during its trial period, and the drift above will break 'yarn build' on main once merged.${Reset}"
+                      fi
+
+                      exit 0
+                  when:
+                    stageStatus: Success
+                    condition: <+trigger.event>.equals("PR") && <+trigger.branch>!~"/^main$/"
+  properties:
+    ci:
+      codebase:
+        repoName: developer-hub
+        build: <+input>
+        sparseCheckout: []
+        depth: 0
