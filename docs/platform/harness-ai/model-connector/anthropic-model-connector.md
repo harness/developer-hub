@@ -17,7 +17,7 @@ redirect_from:
   - /docs/platform/harness-ai/anthropic-model-connector
 ---
 
-The Anthropic Model Connector defines Claude as the LLM provider and default model for your <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/harness-agents" target="_blank">Worker Agents</a>. It supports both direct Anthropic endpoints and AWS Bedrock endpoints.
+The Anthropic Model Connector defines Claude as the LLM provider and default model for your <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/worker-agent" target="_blank">Worker Agents</a>. It supports both direct Anthropic endpoints and AWS Bedrock endpoints.
 
 ---
 
@@ -81,5 +81,5 @@ Each Worker Agent uses the default model configured on the connector unless you 
 
 ## Next steps
 
-- Go to <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/harness-agents" target="_blank">Worker Agents</a> for more information on creating and configuring agents that use this connector.
+- Go to <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/worker-agent" target="_blank">Worker Agents</a> for more information on creating and configuring agents that use this connector.
 - Go to <a href="/docs/platform/harness-ai/model-connector/openai-model-connector" target="_blank">OpenAI Model Connector</a> for more information on configuring OpenAI as your model provider.

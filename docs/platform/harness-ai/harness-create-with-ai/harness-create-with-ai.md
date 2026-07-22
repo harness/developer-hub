@@ -1,7 +1,7 @@
 ---
-title: Getting Started with Harness AI
+title: Getting Started with Harness AI Prompts
 description: Use these example prompts to create pipelines, services, environments, connectors, and other Harness resources with Harness AI.
-sidebar_label: Get Started
+sidebar_label: Harness AI Prompts
 sidebar_position: 2
 keywords:
   - harness ai prompts
@@ -23,9 +23,9 @@ Harness AI lets you generate Harness platform resources like <a href="/docs/cont
 
 By the end of this topic, you will be able to:
 
-- <a href="#example-prompts-for-devops">Use example prompts to create DevOps resources</a>.
-- <a href="#example-prompts-for-efficiency-and-cost">Use example prompts to create Cloud Cost Management perspectives</a>.
-- <a href="#how-to-use-these-prompts">Understand how to customize prompts for your environment</a>.
+- [Use example prompts to create DevOps resources](#example-prompts-for-devops).
+- [Use example prompts to create Cloud Cost Management perspectives](#example-prompts-for-efficiency-and-cost).
+- [Understand how to customize prompts for your environment](#how-to-use-these-prompts).
 
 ---
 
@@ -374,4 +374,4 @@ Could you create a Cost Perspective rules based on Team/Department costs?
 ## Next steps
 
 - <a href="/docs/platform/harness-ai/core-capabilities/in-harness-ui/devops-agent" target="_blank">Harness AI DevOps Agent</a>: Create and manage Harness resources with AI. 
-- <a href="/docs/platform/harness-ai/effective-prompting-ai" target="_blank">Effective prompting</a>: Write better prompts for Harness AI.
+- <a href="/docs/platform/harness-ai/harness-create-with-ai/effective-prompting-ai" target="_blank">Effective prompting</a>: Write better prompts for Harness AI.

@@ -5,7 +5,7 @@ sidebar_label: Support Agent
 sidebar_position: 9
 ---
 
-import Platform from '@site/docs/platform/harness-ai/support-agent.md';
+import Platform from '@site/docs/platform/harness-ai/core-capabilities/in-harness-ui/support-agent.md';
 
 <Platform />
 

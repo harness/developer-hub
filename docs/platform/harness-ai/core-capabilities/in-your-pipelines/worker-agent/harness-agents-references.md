@@ -2,12 +2,26 @@
 title: Harness Agents reference
 description: Harness Agents Reference
 sidebar_label: Harness Agents reference
-sidebar_position: 7
+sidebar_position: 11
+keywords:
+  - harness ai
+  - worker agents
+  - ai agents
+  - agent configuration
+  - yaml reference
+  - agent definition
+  - mcp connectors
+tags:
+  - Harness AI
+  - Worker Agents
+  - Reference
 redirect_from:
   - /docs/platform/harness-ai/harness-agents#worker-agent-form-field-reference
   - /docs/platform/harness-ai/harness-agents#agent-definition-yaml-reference
   - /docs/platform/harness-ai/harness-agents#yaml-field-reference
 ---
+
+## Worker Agent form field reference
 
 The following fields define a Worker Agent. Required fields are marked in the **Required** column.
 
@@ -15,8 +29,8 @@ The following fields define a Worker Agent. Required fields are marked in the **
 |---|---|---|---|
 | **Name** | Yes | Human-readable identifier displayed in the catalog and pipeline step picker. | `PR Reviewer Agent` |
 | **Description** | No | Free-text summary of what the agent does. Helps teams discover and reuse agents from the catalog. | `Reviews PRs for security, schema, and architectural issues.` |
-| **Instructions** | Yes | The system prompt sent to the model at runtime. Supports Harness variable expressions for dynamic context injection. Go to [Configure instructions and Harness expressions](/docs/platform/harness-ai/core-capabilities/in-your-pipelines/harness-agents#configure-instructions-and-harness-expressions) to review dynamic context injection. | Example below |
-| **Model Connector** | Yes | The LLM provider connector. When you configure the connector, you select a default model. Go to [Configure Model Connectors](/docs/platform/harness-ai/core-capabilities/in-your-pipelines/harness-agents#configure-model-connectors) for supported providers and models. | `anthropic_bedrock_99cf4be5` |
+| **Instructions** | Yes | The system prompt sent to the model at runtime. Supports Harness variable expressions for dynamic context injection. Go to <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/configuration#configure-instructions-and-harness-expressions" target="_blank">Configure instructions and Harness expressions</a> to review dynamic context injection. | Example below |
+| **Model Connector** | Yes | The LLM provider connector. When you configure the connector, you select a default model. Go to <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/configuration#configure-model-connectors" target="_blank">Configure Model Connectors</a> for supported providers and models. | `anthropic_bedrock_99cf4be5` |
 | **Model Name** | No | Optional override for the model used at runtime. If not specified, the agent uses the default model configured on the Model Connector. Accepts an AWS Bedrock inference profile ARN for Anthropic connectors. | `arn:aws:bedrock:us-east-1:123456789012:application-inference-profile/a1b2c3d4e5f6` |
 | **MCP Connectors** | No | One or more MCP server connectors granting the agent access to Harness platform data and external services (such as GitHub). Each connector requires a URL and API key. | `harness_hosted_mcp` |
 | **Inputs** | No | Named parameters the agent accepts at runtime. Populated from pipeline step outputs, triggers, or manual values. Injected into the agent prompt as context. | `llmConnector`, `modelName`, `mcpConnectors` |

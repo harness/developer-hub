@@ -1,15 +1,56 @@
 ---
-title: Agent examples
-description: Agent examples
+title: Worker Agent examples
+description: Explore Worker Agent examples including PR review, IaC plan safety, spec-driven development, and implementation agents.
 sidebar_label: Agent examples
 sidebar_position: 7
+keywords:
+  - harness ai
+  - worker agents
+  - ai agents
+  - agent examples
+  - pr review agent
+  - iac plan safety
+  - spec driven development
+  - implementation agent
+tags:
+  - harness-ai
+  - worker-agents
+  - examples
 redirect_from:
   - /docs/platform/harness-ai/core-capabilities/in-your-pipelines/harness-agents
+  - /docs/platform/harness-ai/harness-agents
+---
+
+Worker Agent examples demonstrate real-world patterns for PR review, infrastructure plan safety, spec-driven development, and code generation. Each example includes the complete agent definition YAML and explains the agent instructions, input parameters, MCP connectors, and output variables. Use these examples as templates when building your own Worker Agents for CI and CD pipelines.
+
+---
+
+## What will you learn in this topic?
+
+By the end of this topic, you will be able to:
+
+- [Use a Staff Engineer PR Review Agent for architecture-sensitive reviews](#example-staff-engineer-pr-review-agent).
+- [Use a Diff-Scoped PR Reviewer for high-frequency PR pipelines](#example-diff-scoped-pr-reviewer).
+- [Gate deployments with IaC Plan Safety Agent output variables](#example-iac-plan-safety-agent-with-output-variables).
+- [Chain multiple agents for spec-driven development workflows](#example-spec-driven-development-with-chained-agents).
+- [Generate code with an Implementation Agent](#agent-3-implementation-agent).
+
+---
+
+## Before you begin
+
+Before you explore these examples, ensure you have the following:
+
+- **Worker Agents enabled**: Harness AI and Worker Agents must be enabled in your account. Go to <a href="/docs/platform/harness-ai/overview#enable-ai" target="_blank">Enable Harness AI</a> for instructions.
+- **Model Connector configured**: At least one Anthropic or OpenAI connector. Go to <a href="/docs/platform/harness-ai/model-connector/model-connector" target="_blank">Model Connectors</a> for setup instructions.
+- **MCP Connector configured**: Harness Hosted MCP connector for platform data access. Go to <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/configuration#configure-mcp-connectors" target="_blank">Configure MCP connectors</a> for setup instructions.
+- **Pipeline access**: Permission to create and edit pipelines in your Harness project.
+
 ---
 
 ## Example: Staff Engineer PR Review Agent
 
-This agent acts as a Principal-level Staff Engineer and Security Architect. It performs deep, opinionated review across four domains: Security, Compliance, Schema/Architecture, and Engineering Judgment. It is suited for high-risk or architecture-sensitive changes.
+This agent acts as a Principal-level Staff Engineer and Security Architect. It performs deep, opinionated review across four domains: Security, Compliance, Schema/Architecture, and Engineering Judgment. Use this agent for high-risk or architecture-sensitive changes that require thorough technical scrutiny.
 
 <details>
 <summary>Staff Engineer PR Review Agent definition (full YAML)</summary>
@@ -71,7 +112,7 @@ agent:
 
 ## Example: Diff-scoped PR Reviewer
 
-This agent is trigger-aware and diff-scoped. It retrieves the exact PR and diff identified by the pipeline trigger context, including PR number, source/target branch, and commit SHAs, and reviews only the changed lines. It avoids broad architectural commentary not caused by the diff, making it well-suited for high-frequency PR pipelines where precision and low noise matter.
+This agent is trigger-aware and diff-scoped. It retrieves the exact PR and diff identified by the pipeline trigger context, including PR number, source/target branch, and commit SHAs, and reviews only the changed lines. It avoids broad architectural commentary not caused by the diff. Use this agent for high-frequency PR pipelines where precision and low noise matter.
 
 Key differences from the Staff Engineer example:
 
@@ -157,7 +198,7 @@ agent:
 
 ## Example: IaC Plan Safety Agent with output variables
 
-This agent inspects a Terraform/OpenTofu JSON plan file and produces a structured risk assessment with a clear `APPROVE`, `REVIEW`, or `REJECT` recommendation. It demonstrates how to define **output variables** on an agent so downstream pipeline steps can consume the results for gating, notifications, or conditional logic.
+This agent inspects a Terraform or OpenTofu JSON plan file and produces a structured risk assessment with a clear `APPROVE`, `REVIEW`, or `REJECT` recommendation. It demonstrates how to define output variables on an agent so downstream pipeline steps can consume the results for gating, notifications, or conditional logic.
 
 Key features of this example:
 
@@ -456,7 +497,7 @@ output:
 | Field | Description |
 |---|---|
 | `name` | The key the agent writes to `$HARNESS_OUTPUT`/`$DRONE_OUTPUT`. Must match the key in the shell `printf` commands in the agent instructions. |
-| `alias` | The name exposed as a step output variable. Downstream steps reference this value using `<+steps.<agent_step_id>.steps.<inner_step_name>.output.outputVariables.<alias>>`. Go to [Agent step expands to a step group at runtime](#agent-step-expands-to-a-step-group-at-runtime) to find the inner step name. |
+| `alias` | The name exposed as a step output variable. Downstream steps reference this value using `<+steps.<agent_step_id>.steps.<inner_step_name>.output.outputVariables.<alias>>`. Go to <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/worker-agent-in-pipeline#agent-step-expands-to-a-step-group-at-runtime" target="_blank">Agent step expands to a step group at runtime</a> to find the inner step name. |
 
 ### How output variables flow end-to-end
 
@@ -464,7 +505,7 @@ output:
 2. The `output` array in the agent definition declares which keys to surface as step output variables.
 3. Downstream pipeline steps reference these outputs using Harness expressions such as `<+steps.assess_plan_safety.steps.iacm_plan_safety_agent_1.output.outputVariables.RECOMMENDATION>`.
 
-Go to [Example: IaC plan safety gate with agent outputs](#example-iac-plan-safety-agent-with-output-variables) to see a complete pipeline that consumes these output variables in a downstream gating step.
+Go to <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/example-agents#example-iac-plan-safety-agent-with-output-variables" target="_blank">Example: IaC plan safety gate with agent outputs</a> to see a complete pipeline that consumes these output variables in a downstream gating step.
 
 ---
 
@@ -1031,8 +1072,14 @@ pipeline:
 ### Customize this workflow
 
 - **Run only spec and plan generation:** Remove the Implementation Agent step for teams that want AI-generated specs and plans but prefer manual implementation.
-- **Gate between agents:** Add an [Approval step](/docs/platform/approvals/approvals-tutorial) between the Plan Generator and Implementation agents so a human reviews the plan before code generation starts.
+- **Gate between agents:** Add an <a href="/docs/platform/approvals/approvals-tutorial" target="_blank">Approval step</a> between the Plan Generator and Implementation agents so a human reviews the plan before code generation starts.
 - **Limit implementation scope:** Set the `maxTasksPerRun` input on the Implementation Agent to control how many tasks are implemented per pipeline run.
 - **Trigger on labels:** Configure the pipeline trigger to fire only when a specific label (such as `agent-implement`) is applied to the PR, so implementation runs on demand rather than on every push.
 
 ---
+
+## Next steps
+
+- <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/worker-agent" target="_blank">Worker Agents overview</a>: Learn how to create and manage Worker Agents.
+- <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/configuration" target="_blank">Worker Agent configuration</a>: Configure instructions, MCP connectors, inputs, and environment variables.
+- <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/worker-agent-in-pipeline" target="_blank">Use Worker Agents in pipelines</a>: Add Worker Agent steps to pipelines and reference agent outputs.

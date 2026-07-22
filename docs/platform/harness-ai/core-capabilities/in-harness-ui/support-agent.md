@@ -5,9 +5,8 @@ sidebar_label: Support Agent
 sidebar_position: 9
 redirect_from:
   - /docs/platform/harness-aida/support-agent
+  - /docs/platform/harness-ai/support-agent
 ---
-
-# Harness AI Support Agent
 
 The **Harness AI Support Agent** serves as your first line of support within the Harness platform. By leveraging Harness documentation and knowledge base content, the Support Agent provides instant answers to product questions, troubleshooting guidance, and contextual examples directly from the official documentation.
 
@@ -17,10 +16,6 @@ The Support Agent uses **OpenAI GPT-4o** to process your questions and retrieve 
 
 :::
 
-## Overview
-
-The Support Agent is designed to help developers and platform users quickly find answers without leaving their workflow. Instead of searching through documentation manually, you can ask natural language questions and receive accurate, contextual responses with links to relevant documentation.
-
 **Key benefits:**
 
 - **Instant answers** - Get responses to product questions in seconds
@@ -28,6 +23,8 @@ The Support Agent is designed to help developers and platform users quickly find
 - **Contextual examples** - Receive code snippets, YAML examples, and configuration samples from the docs
 - **Session memory** - The agent remembers context from earlier in your conversation for follow-up questions
 - **Always current** - Pulls from the latest published documentation
+
+---
 
 ## Installation and Setup
 
@@ -44,7 +41,7 @@ Once enabled, the Support Agent is accessible through the Harness AI assistant i
 
 Access the Support Agent through the Harness AI chat interface. The agent automatically identifies documentation-related questions and retrieves relevant content.
 
-### Asking Questions
+### Ask questions
 
 You can ask the Support Agent any question related to Harness products, features, or configurations. The agent searches the documentation knowledge base and returns relevant information.
 
@@ -101,7 +98,7 @@ When you encounter errors or issues, the Support Agent can help you find relevan
 
 ### Natural Language Queries
 
-The Support Agent understands natural language questions and interprets your intent to find the most relevant documentation. You don't need to use specific keywords or exact terminology.
+The Support Agent understands natural language questions and interprets your intent to find the most relevant documentation. You do not need to use specific keywords or exact terminology.
 
 **How it works:**
 
@@ -214,7 +211,7 @@ The Support Agent pulls from the latest published Harness documentation. Documen
 
 ### Can I use the Support Agent for issues not covered in documentation?
 
-For issues not covered in documentation, please contact [Harness Support](mailto:support@harness.io) directly. You can also submit feedback through the UI by selecting **Help** > **Give us feedback**.
+Go to [Harness Support](mailto:support@harness.io) for issues not covered in the documentation. You can also submit feedback through the UI by selecting **Help** > **Give us feedback**.
 
 ### Does the Support Agent remember previous sessions?
 

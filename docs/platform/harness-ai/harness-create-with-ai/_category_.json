@@ -1,0 +1,14 @@
+{
+    "label": "Get Started",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "position": "3",
+    "link": {
+        "type": "doc",
+        "id": "platform/harness-ai/harness-create-with-ai/harness-create-with-ai"
+    },
+    "customProps": {
+
+    }
+}

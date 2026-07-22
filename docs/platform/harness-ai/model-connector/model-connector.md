@@ -175,5 +175,5 @@ Until August 2026, usage of the Harness-managed LLM connector is included in you
 
 ## Next steps
 
-- Go to <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/harness-agents" target="_blank">Worker Agents</a> for more information on creating AI-powered agents that use your configured model connector.
+- Go to <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/worker-agent" target="_blank">Worker Agents</a> for more information on creating AI-powered agents that use your configured model connector.
 - Go to <a href="/docs/platform/harness-ai/core-capabilities/in-harness-ui/devops-agent" target="_blank">DevOps Agent</a> for more information on using AI to create and manage pipelines.

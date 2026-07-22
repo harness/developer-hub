@@ -558,5 +558,5 @@ You can initiate GitOps operations directly from the AI chat.
 ## Next steps
 
 - <a href="/docs/platform/harness-ai/core-capabilities/#data-storage-and-privacy-policies" target="_blank">Core Capabilities Overview</a>: Data storage and privacy policies.
-- <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/harness-agents" target="_blank">Worker Agents</a>: Run autonomous AI agents inside pipeline steps.
+- <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/worker-agent" target="_blank">Worker Agents</a>: Run autonomous AI agents inside pipeline steps.
 - <a href="/docs/platform/harness-ai/model-connector" target="_blank">Choose Model Connector</a>: Configure model providers for Worker Agents.

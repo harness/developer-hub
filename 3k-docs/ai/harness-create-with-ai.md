@@ -5,7 +5,7 @@ sidebar_label: Get Started
 sidebar_position: 2
 ---
 
-import Platform from '@site/docs/platform/harness-ai/harness-create-with-ai.md';
+import Platform from '@site/docs/platform/harness-ai/harness-create-with-ai/harness-create-with-ai.md';
 
 <Platform />
 

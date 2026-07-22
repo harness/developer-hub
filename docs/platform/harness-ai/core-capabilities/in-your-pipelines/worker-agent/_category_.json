@@ -1,0 +1,15 @@
+{
+    "label": "Worker Agent",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "position": "4",
+    "link": {
+        "type": "doc",
+        "id": "platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/worker-agent"
+    },
+    "customProps": {
+
+
+    }
+}
