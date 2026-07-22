@@ -44,6 +44,11 @@ These release notes describe recent changes to Harness Infrastructure as Code Ma
 
 ### New features and enhancements
 
+- **[AWS CDK Phase 2](/docs/infra-as-code-management/iac-provisioners/cdk/overview) (Beta):** CDK provisioner support is expanded with the following additions:
+  - **Destroy and Drift steps:** Destroy deletes the [CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html) stacks managed by a workspace without deleting the workspace itself; Drift uses the [CloudFormation drift detection API](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html) to report resources modified outside of CDK. 
+  - **IaCM Approval step:** Gate a CDK deploy on a human review of the diff output by inserting the IaCM Approval step between diff and deploy.
+  - **Expanded language support:** CDK workspaces now support Java, JavaScript, and Go in addition to Python and TypeScript. Go to [Set up the AWS CDK provisioner](/docs/infra-as-code-management/iac-provisioners/cdk/overview) for the full setup guide and [CDK pipeline steps](/docs/infra-as-code-management/iac-provisioners/cdk/cdk-pipeline-steps) for the step reference.
+
 - **[Module Version Lifecycle Management](/docs/infra-as-code-management/registry/module-registry/module-version-lifecycle-management) (Beta):** Previously, all module versions in the IaCM Module Registry were treated as supported with no enforcement. You can now configure a lifecycle rule on a module that automatically classifies each version as **Supported**, **Update Required**, or **Deprecated** based on how recent it is. To configure a rule, select a module in the IaCM Module Registry and open the **Lifecycle Management** tab. Contact [Harness Support](mailto:support@harness.io) to enable it.
 
   ![Lifecycle Management tab](./static/iacm-version-lifecycle-management.png)

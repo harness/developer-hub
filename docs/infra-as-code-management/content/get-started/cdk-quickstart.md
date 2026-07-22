@@ -140,7 +140,7 @@ Once you have configured your connectors, create a workspace and select those co
 - **Connector:** Select the AWS connector you created in the previous step.
 - **Workspace Type:** Select **AWS CDK**.
 - **AWS CDK version:** Select the CDK version to use.
-- **Programming Language:** Select the programming language for your CDK app (**Python** or **TypeScript**).
+- **Programming Language:** Select the programming language for your CDK app (**Python**, **TypeScript**, **JavaScript**, **Java**, or **Go**).
 - **Language Version:** Select the language runtime version to use.
 - **Package Manager:** Select your package manager (for example, **Pip** for Python).
 - **Package Manager Version:** Select the package manager version.
@@ -163,10 +163,10 @@ CDK workspaces come with a default deploy pipeline that runs the four CDK lifecy
 
 Before you run the pipeline, set environment variables the CDK plugin expects:
 
-- **`PLUGIN_AWS_REGION` (required):** AWS Region where resources should be deployed (for example `us-east-1`). You always need this set explicitly—for example as a **MANUAL** row under **Environment Variables** on the workspace **Connectors and Variables** tab, or as stage, pipeline, or step variables.
+- **`PLUGIN_AWS_REGION` (required):** AWS Region where resources should be deployed (for example `us-east-1`). You always need this set explicitly, for example as a **MANUAL** row under **Environment Variables** on the workspace **Connectors and Variables** tab, or as stage, pipeline, or step variables.
 - **`PLUGIN_AWSCDK_STACKS` (optional):** Comma-separated logical stack IDs only when you want this pipeline run to target specific stacks (for example `s3bucket` or `SQSStack,S3Stack`). If you omit it, every stack in the app is processed. Harness is working on a more seamless experience for stack selection.
 
-Add them as **stage** or **pipeline** variables, on the workspace **Environment Variables** table, or under **Environment Variables** on the CDK steps. Go to [Connector Authentication](/docs/infra-as-code-management/manage-projects/iacm-aws-connectors) to review how other IaCM steps use the `PLUGIN_*` pattern. Go to [AWS CDK overview](/docs/infra-as-code-management/iac-provisioners/cdk/overview) for the CDK lifecycle and stacks.
+Add them as **stage** or **pipeline** variables, on the workspace **Environment Variables** table, or under **Environment Variables** on the CDK steps. Go to [AWS Connector Authentication](/docs/infra-as-code-management/configuration/connectors-and-variables/aws-connector-auth) to review how other IaCM steps use the `PLUGIN_*` pattern. Go to [Set up the AWS CDK provisioner](/docs/infra-as-code-management/iac-provisioners/cdk/set-up-cdk-provisioner) to understand the CDK lifecycle and stacks.
 
 <Tabs>
 <TabItem value="Step-by-step">
@@ -195,7 +195,7 @@ The pipeline runs four steps:
 If your CDK app defines multiple stacks, you can target a single stack for deployment rather than running against the full app. Set the **Stack Path** field on your pipeline steps to the identifier of the stack you want to deploy.
 
 :::tip When to use stack targeting
-Use stack targeting when you have a monorepo CDK app with independent stacks per environment or service and you want to deploy only one at a time. Go to [AWS CDK overview](/docs/infra-as-code-management/iac-provisioners/cdk/overview) to understand how stacks relate to CDK apps.
+Use stack targeting when you have a monorepo CDK app with independent stacks per environment or service and you want to deploy only one at a time. Go to [Set up the AWS CDK provisioner](/docs/infra-as-code-management/iac-provisioners/cdk/set-up-cdk-provisioner) to understand how stacks relate to CDK apps.
 :::
 
 ---

@@ -1,0 +1,15 @@
+{
+  "label": "IaC Provisioners",
+  "position": 55,
+  "collapsible": true,
+  "collapsed": true,
+  "className": "default",
+  "link": {
+    "type": "generated-index",
+    "title": "IaC Provisioners",
+    "slug": "/category/iacm-provisioners"
+  },
+  "customProps": {
+    "helpdocs_category_id": ""
+  }
+}

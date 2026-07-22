@@ -30,7 +30,7 @@ Harness offers a [hosted execution environment](/docs/continuous-integration/ci-
 If you are using this environment, you can use Access Keys or OIDC in a Harness AWS connector to connect. It is recommended that you use OIDC over access keys as keys have to be rotated whereas OIDC uses a trust between Harness and your AWS account to do "serverless" authentication.
 
 ## Kubernetes (self-hosted)
-The other option for executing IaCM pipelines is to use a Kubernetes environment to launch a pod that will execute the steps defined in your pipeline. This requires a cluster, delegate, and if the delegate is not installed into the target cluster, a service account token. Follow [this guide](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference/) for configuration of the connector.
+The other option for executing IaCM pipelines is to use a Kubernetes environment to launch a pod that will execute the steps defined in your pipeline. This requires a cluster, delegate, and if the delegate is not installed into the target cluster, a service account token. Go to [Kubernetes cluster connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference) to configure the connector.
 
 ### "Serverless" Auth
 If you are using this environment, you can still use Access Keys or OIDC in a Harness AWS connector to connect. It is recommended that you use OIDC over access keys as keys have to be rotated whereas OIDC uses a trust between Harness and your AWS account to do "serverless" authentication.
@@ -43,16 +43,16 @@ The first option is to use the "node role" or the instance profile of the Kubern
 
 ![IAM Role on Delegate selected](./static/iacm-aws-connector-node-role.png)
 
-You will have to select some delegate for the connector to be tied to. This selection does not matter as it will be ignored when used in an IaCM workspace. Select and delegate and save the connector. The healthcheck for this connector may fail if the delegate selected doesn't have an AWS instance profile associated with it so it may be helpful to select a delegate that does.
+You will have to select some delegate for the connector to be tied to. This selection does not matter as it will be ignored when used in an IaCM workspace. Select a delegate and save the connector. The healthcheck for this connector may fail if the delegate selected does not have an AWS instance profile associated with it, so it may be helpful to select a delegate that does.
 
 This does not require EKS to be used as the cluster type and could be ran on any self-hosted cluster using EC2 instances for the nodes, when there are instance profiles used.
 
-For details on how to use a second role in the connector with STS AssumeRole, see [below](#using-sts-assumerole)
+Go to [Using STS AssumeRole](#using-sts-assumerole) to use a second role in the connector.
 
 #### IRSA
-The second option would be using an IRSA configuration on the build pod to assume an IAM Role. To leverage this authentication scheme you will need to set up an OIDC provider for your cluster and a role [as described in this guide](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html).
+The second option uses an IRSA configuration on the build pod to assume an IAM role. To use this authentication method, set up an OIDC provider for your cluster and a role. Go to [IAM roles for service accounts](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) to configure both.
 
-Next, we can create a Harness AWS Connector that uses the "IRSA" method. You will have to select some delegate for the connector to be tied to. This selection does not matter as it will be ignored when used in an IaCM workspace. Select and delegate and save the connector. The healthcheck for this connector may fail if the delegate selected doesn't have an AWS instance profile associated with it so it may be helpful to select a delegate that does.
+Next, create a Harness AWS Connector that uses the "IRSA" method. You will have to select some delegate for the connector to be tied to. This selection does not matter as it will be ignored when used in an IaCM workspace. Select a delegate and save the connector. The healthcheck for this connector may fail if the delegate selected does not have an AWS instance profile associated with it, so it may be helpful to select a delegate that does.
 
 ![IRSA selected](./static/iacm-aws-connector-irsa.png)
 
@@ -67,10 +67,10 @@ Finally, in your IaCM stage you will need to add the namespace and service accou
 
 ![SAAnnotations](./static/iacm-aws-connector-irsa-sa-anno.png)
 
-For details on how to use a second role in the connector with STS AssumeRole, see [below](#using-sts-assumerole)
+Go to [Using STS AssumeRole](#using-sts-assumerole) to use a second role in the connector.
 
 #### Using STS AssumeRole
-Both the NodePool and IRSA authentication styles allow you to specify a seperate role in the connector to use for the IaCM steps. The role specified here will be used by the IaCM stage during execution.
+Both the NodePool and IRSA authentication styles allow you to specify a separate role in the connector to use for the IaCM steps. The role specified here will be used by the IaCM stage during execution.
 
 When the stage executes, the steps will call the STS `AssumeRole` service to assume the second IAM role defined in the connector, and that is the role that will be used when running the IaCM steps. This role can be in a separate AWS account, allowing the IaCM stage running in centralized infrastructure to reach any number of target accounts.
 
@@ -81,7 +81,7 @@ When the stage executes, the steps will call the STS `AssumeRole` service to ass
 IaCM plugin steps run inside a containerized environment that uses a `PLUGIN_` prefix convention for environment variables. Standard AWS environment variables (like `AWS_REGION`) are not recognized by the IaCM plugin. You must use the `PLUGIN_` prefixed versions instead.
 
 :::warning use PLUGIN_ prefixed variables instead of standard AWS variables
-Standard AWS environment variables like `AWS_REGION` or `AWS_DEFAULT_REGION` don't apply in the IaCM plugin context. If your Terraform operations target the wrong AWS region or fail with STS endpoint errors, make sure you are setting `PLUGIN_AWS_REGION` rather than `AWS_REGION`.
+Standard AWS environment variables like `AWS_REGION` or `AWS_DEFAULT_REGION` do not apply in the IaCM plugin context. If your Terraform operations target the wrong AWS region or fail with STS endpoint errors, confirm that you are setting `PLUGIN_AWS_REGION` rather than `AWS_REGION`.
 :::
 
 ### Commonly used PLUGIN_ variables
