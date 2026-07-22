@@ -165,7 +165,7 @@ export const FmeData: Horizon = {
       {
         tag: [{ "value": "SDK" }],
         title: "Additional OpenFeature Provider support",
-        description: "Expand multi-language support for vendor-agnostic feature management, including Ruby and Go.",
+        description: "Expand multi-language support for vendor-agnostic feature management, including Ruby.",
       },
     ],
   },
@@ -189,13 +189,13 @@ export const FmeData: Horizon = {
         title: "Additional data warehouse support",
         description:
           "Extend Warehouse Native Experimentation to support Google BigQuery.",
-        link: "https://developer.harness.io/release-notes/feature-management-experimentation#new-feature-google-bigquery-support-in-warehouse-native-experimentation",
+        link: "https://developer.harness.io/release-notes/feature-management-experimentation#google-bigquery-support-in-warehouse-native-experimentation",
       },
       {
         tag: [{ value: "Experimentation" }],
         title: "Warehouse Native Experimentation",
         description: "Run experiments directly in your data warehouse with Warehouse Native Experimentation, now generally available.",
-        link: "https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-warehouse-native-experimentation-is-ga",
+        link: "https://developer.harness.io/release-notes/feature-management-experimentation/#warehouse-native-experimentation-is-ga",
       },
       {
         tag: [{ value: "Better Together" }],
@@ -209,114 +209,114 @@ export const FmeData: Horizon = {
         title: "OpenFeature provider updates",
         description:
           "Ongoing support for OpenFeature providers in .NET, Python, React, and Angular.",
-        link: "https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-openfeature-providers"
+        link: "https://developer.harness.io/release-notes/feature-management-experimentation/#openfeature-providers"
       },
       {
         tag: [{ value: "Better Together" }],
         title: "Granular permissions in RBAC",
         description:
           "Migrate permission management for FME object and environment-level permissions to Harness RBAC. Previously titled, Split integration into Harness, Part 2.",
-        link: "https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-environment-level-rbac-governance-in-fme",
+        link: "https://developer.harness.io/release-notes/feature-management-experimentation/#environment-level-rbac-governance-in-fme",
       },
       {
         tag: [{ value: "Monitoring" }],
         title: "Alert webhook",
         description: "Automate downstream processes based on FME data with alert webhooks.",
-        link: "https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-metric-alert-webhook-integration",
+        link: "https://developer.harness.io/release-notes/feature-management-experimentation/#metric-alert-webhook-integration",
       },
       {
         tag: [{ value: "Monitoring" }, {value: "Experimentation"}],
         title: "Flag impressions properties bag",
         description: "Decorate impression records with properties to use in downstream processing. Support for the following SDKs and Split Proxy / Synchronizer is coming this quarter: Go, PHP Thin Client (via SplitD), .NET, and Flutter.",
-        link: "https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-append-impression-properties",
+        link: "https://developer.harness.io/release-notes/feature-management-experimentation/#append-impression-properties",
       },
       {
         tag: [{ value: "SDK" }],
         title: "OpenFeature provider updates",
-        description: "Ongoing support for OpenFeature providers in Java, Node.js, and Browser SDKs.",
-        link: "https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-openfeature-providers",
+        description: "Ongoing support for OpenFeature providers in Android, iOS, Web, Angular, React, Java, Node.js, Python, .NET, and Go SDKs.",
+        link: "https://developer.harness.io/release-notes/feature-management-experimentation/#openfeature-providers",
       },
       {
         tag: [{ value: "SDK" }],
         title: "Harness Forward proxy for FME",
         description: "Centralize traffic going outside of a customer's cloud. Unlike the current Split Proxy, it does not require environment-specific configuration.",
-        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-harness-proxy",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#harness-proxy",
       },
       {
         tag: [{ value: "Experimentation" }],
         title: "Experiment entry event filter",
         description: "Define an entry event at the experiment level to filter exposures, ensuring sample sizes only reflect users who were exposed to your experiment.",
-        link: "https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-experiment-entry-event-filter",
+        link: "https://developer.harness.io/release-notes/feature-management-experimentation/#experiment-entry-event-filter",
       },
       {
         tag: [{value: "Targeting"}],
         title: "Fallback treatments",
         description:
           "A configuration option that lets you define a default treatment and optional configuration to be returned instead of the standard control.",
-        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-fallback-treatments",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#fallback-treatments",
       },
       {
         tag: [{value: "Targeting"}, {value: "Better Together"}],
         title: "Rule-based segments",
         description:
           "Assign feature availability for user groups based on different conditions, with all the power of FME targeting.",
-        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-support-for-rule-based-segments",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#support-for-rule-based-segments",
       },
       {
         tag: [{ value: "Targeting" }],
         title: "Client side SDKs cache expiration",
         description:
           "Control when local cache on device expires.",
-        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-control-cache-expiration-for-client-side-sdks"
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#control-cache-expiration-for-client-side-sdks"
       },
       {
         tag: [{ value: "Targeting" }],
         title: "Flag impressions toggle",
         description: "Disable the flow of impressions for individual flags.",
-        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-feature-flag-impression-toggle",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#feature-flag-impression-toggle",
       },
       {
         tag: [{ value: "Experimentation" }],
         title: "Reimagined experimentation design",
         description: "New workflow for designing experiments, decoupling experimentation analysis from flag monitoring use cases.",
-        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-experiments-dashboard",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#experiments-dashboard",
       },
       {
         tag: [{ value: "Experimentation" }],
         title: "Reimagined experimentation dashboard",
         description: "Tabular experiment results dashboard + new features like comparison of multiple treatments & sample size visualization.",
-        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-experiments-dashboard",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#experiments-dashboard",
       },
       {
         tag: [{ value: "Experimentation" }],
         title: "Experiment sample population chart",
         description: "See accumulation of sample population over time. Identify unexpected assignment or traffic level changes.",
-        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-experiments-dashboard",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#experiments-dashboard",
       },
       {
         tag: [{ value: "SDK" }],
         title: "Flag impressions properties bag",
         description: "Decorate impression records with properties to use in downstream processing. Supported in Browser, Android, iOS, JavaScript, React, React Native, Redux, Node.js, and Java SDKs.",
-        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-append-impression-properties",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#append-impression-properties",
       },
       {
         tag: [{ value: "SDK" }],
         title: "Elixir SDK",
         description: "First of new SDKs to be added after joining Harness.",
-        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#new-sdk-elixir-sdk",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#elixir-sdk",
       },
       {        
         tag: [{value: "AI Agents"}],
         title: "AI results interpretation conversation",
         description:
           "AI-generated metric results summary can be asked follow-up questions.",
-        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-release-agent-ai-chatbot",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#release-agent-ai-chatbot",
       },
       {
         tag: [{ value: "Targeting" }],
         title: "Large segments",
         description: "New segment type enabling large-scale audience targeting up to 1M keys. Even higher limits available by request.",
-        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#new-feature-targeting---large-segments",
+        link:"https://developer.harness.io/release-notes/feature-management-experimentation/#targeting---large-segments",
       },
       {
         tag: [{ value: "Better Together" }],
