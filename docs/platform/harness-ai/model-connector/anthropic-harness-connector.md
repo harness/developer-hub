@@ -9,7 +9,7 @@ redirect_from:
 
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-The Anthropic Harness Connector is an integration available on the [Anthropic integrations directory](https://www.anthropic.com/integrations) that brings Harness platform context directly into Claude.ai and Claude Desktop. Once connected, you can query pipelines, deployments, services, and other Harness resources through natural language conversations without leaving Claude.
+The Anthropic Harness Connector is an integration available in the [Claude connectors directory](https://claude.com/connectors/harness) that brings Harness platform context directly into Claude.ai and Claude Desktop. Once connected, you can query pipelines, deployments, services, and other Harness resources through natural language conversations without leaving Claude.
 
 The connector is backed by the [Harness Hosted MCP Server](/docs/platform/harness-ai/harness-mcp-server), which provides 11 consolidated tools and 139 resource types across the Harness platform. It uses OAuth to authenticate with your Harness account, so no API keys or PATs are required.
 
