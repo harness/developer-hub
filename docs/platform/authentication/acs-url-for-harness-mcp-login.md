@@ -73,7 +73,7 @@ Before you update your Identity Provider, retrieve the MCP ACS URL from your Har
 2. Go to **Account Settings** > **Security and Governance** > **Authentication**.
 3. Locate your SAML provider.
 4. Select **⋮** > **Edit**.
-5. Copy the value from **Enter this SAML Endpoint URL as your Harness SAML Provider application's ACS URL**.
+5. Copy the value from **Additional Reply URL for MCP (Optional)**.
 
 </TabItem>
 <TabItem value="interactive" label="Interactive">
