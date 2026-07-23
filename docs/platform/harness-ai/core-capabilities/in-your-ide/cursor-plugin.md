@@ -226,4 +226,4 @@ Without these variables, governance hooks fail open and the plugin continues to 
 
 - Go to [Harness Skills](/docs/platform/harness-ai/harness-skills) to explore the full skill catalog.
 - Go to [Harness MCP Server](/docs/platform/harness-ai/harness-mcp-server) to review advanced MCP configuration and deployment options.
-- Go to [Effective Prompting](/docs/platform/harness-ai/effective-prompting-ai) to learn prompt patterns that produce better results with Harness AI.
+- Go to [Effective Prompting](/docs/platform/harness-ai/harness-create-with-ai/effective-prompting-ai) to learn prompt patterns that produce better results with Harness AI.

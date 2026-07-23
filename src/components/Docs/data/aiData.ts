@@ -29,7 +29,7 @@ export const docsCards: CardSections = [
         title: "Effective Prompting",
         module: MODULES.platform,
         description: "How to write good prompts for Harness AI.",
-        link: "/docs/platform/harness-ai/effective-prompting-ai",
+        link: "/docs/platform/harness-ai/harness-create-with-ai/effective-prompting-ai",
       },
       {
         title: "Harness AI Chat Use Cases",

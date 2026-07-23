@@ -230,4 +230,4 @@ Attach MCP connectors to give Harness AI chat the tools it needs for your workfl
 - **Configure a connector:** Go to [Configure MCP connectors](/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/configuration#configure-mcp-connectors) to set up an MCP Server connector, including server URL, authentication, and connector YAML.
 - **Harness MCP Server:** Go to [Harness MCP Server](/docs/platform/harness-ai/harness-mcp-server) to review Harness-native MCP tools and resource types.
 - **Rules:** Go to [Harness AI Rules](/docs/platform/harness-ai/harness-ai-rules) to constrain AI output before Harness resources change.
-- **Prompt quality:** Go to [Effective Prompting with Harness AI](/docs/platform/harness-ai/effective-prompting-ai) to write prompts that produce better tool calls.
+- **Prompt quality:** Go to [Effective Prompting with Harness AI](/docs/platform/harness-ai/harness-create-with-ai/effective-prompting-ai) to write prompts that produce better tool calls.
