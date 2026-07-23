@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2026-07-16T10:00
+date: 2026-07-21T10:00
 sidebar_position: 10
 ---
 
@@ -54,6 +54,30 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 :::
 
 ## July 2026
+
+### Version 1.149.0
+
+<!-- July 2026 -->
+
+#### New Features and Enhancements
+
+- Added support for `HARNESS_CA_PATH` in Docker and Buildx plugins, enabling builds behind TLS-intercepting egress proxies. The Docker plugin installs the CA into the host trust store before starting the daemon. The Buildx plugin forwards proxy environment variables and the CA path to the BuildKit container, resolving `x509: certificate signed by unknown authority` errors for base-image pulls. (CI-23743, CI-23744)
+
+- Added Windows Server 2025 support for Cache, GCS, S3, Artifactory, and Buildx plugins. You can now run these plugins on Windows 2025 build infrastructure. (CI-23758, CI-23733, CI-23661)
+
+- You can now opt in to CI init reduction time at the stage level by setting the stage variable `CI_INIT_REQUIRED_FIELDS_ONLY` to `true`. This reduces init time for stages with large step configurations without requiring the account-level feature flag `CI_INIT_REQUIRED_FIELDS_ONLY` to be enabled. This allows individual teams to adopt the optimization per project after upgrading their delegate. Requires delegate version 26.06.89309 or later. (CI-23664)
+
+- Improved Build and Push step performance on Kubernetes by eliminating double tar serialization in the Buildx plugin. Build + Scan + Push workflows now output images directly without intermediate tar load/save steps. (CI-22998)
+
+#### Harness Images Updates
+
+- Upgraded Drone Git from 1.7.19 to 1.7.23.
+- Upgraded Drone Docker plugins from 21.3.0 to 21.3.2 with `HARNESS_CA_PATH` and proxy support. (CI-23743)
+- Upgraded Buildx plugins from 1.3.20 to 1.3.22 with proxy forwarding and CA trust for BuildKit. (CI-23744)
+- Upgraded Buildkit to 1.5.2. (CI-23733)
+- Upgraded Cache Plugin from 1.6.10 to 1.6.12. (CI-23733)
+
+---
 
 ### Version 1.148.0
 
