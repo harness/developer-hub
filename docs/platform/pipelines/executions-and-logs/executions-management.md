@@ -1,96 +1,126 @@
 ---
 title: Executions Management
-description: View and manage queued pipeline executions across your account
+description: View and manage queued and running pipeline executions across your account.
 sidebar_position: 6
 keywords:
   - executions
   - pipeline queue
   - queued pipelines
+  - running pipelines
 tags:
   - pipelines
 ---
 
-The Executions Management page gives you account-level visibility into all queued pipeline executions. When pipelines are waiting to run, you can see exactly where they are in the queue and abort executions that are no longer needed.
+The **Executions Management** page gives you account-level visibility into all queued and running pipeline executions. You can see where queued executions sit in the queue, monitor executions that are currently running, and abort executions that are no longer needed.
 
-:::info Feature Flag
-This feature is behind the feature flag `PIPE_QUEUED_PIPELINE_OBSERVABILITY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::note Feature flag
+This feature is behind the feature flag `PIPE_QUEUED_PIPELINE_OBSERVABILITY`. Contact [Harness Support](mailto:support@harness.io) to enable it.
 :::
 
-## What queued executions are
+---
 
-When you trigger multiple pipelines simultaneously, Harness queues some executions based on resource constraints and concurrency limits you have configured. Instead of failing or rejecting new executions, the system holds them in a queue and runs them in order when resources become available.
+## What will you learn in this topic?
 
-Executions sit in the queue for three main reasons: the pipeline has resource constraints configured, the maximum concurrent executions limit has been reached, or the pipeline is waiting for another pipeline to release a lock it needs.
+- How to [access Executions Management](#access-executions-management) and what queued and running executions represent.
+- How to read the [queue behavior](#queue-behavior), including execution status.
+- How to [filter executions](#filter-executions).
+- How to [abort executions](#abort-executions).
 
-## Accessing the Executions Management page
+---
 
-To view queued executions, navigate to **Account Settings** and select **Security and Governance**. You will find **Executions Management** among the available options.
+## Access Executions Management
 
-<div style={{textAlign: 'center'}}>
-  <DocImage path={require('./static/executions-management-location.png')} width="60%" height="60%" title="Click to view full size image" />
-</div>
+Go to **Account Settings**, select **Security and Governance**, and then select **Executions Management**.
 
-:::info Account Admin Required
-Only users with Account Admin permissions can access the Executions Management page. This is an account-level view showing queued pipelines across all organizations and projects.
+<div align="center"><DocImage path={require('./static/executions-management-location.png')} alt="Executions Management location in Account Settings under Security and Governance" width="100%" /></div>
+
+:::note Account Admin required
+Only users with Account Admin permissions can access the **Executions Management** page. This is an account-level view showing queued and running pipelines across all organizations and projects.
 :::
+
+The **Executions Management** page lists two kinds of executions across your entire account:
+
+- **Queued**: Executions that are waiting to run.
+- **Running**: Executions that are currently running.
+
+When you trigger multiple pipelines simultaneously, Harness queues some executions based on the resource constraints and concurrency limits you have configured. Instead of failing or rejecting new executions, Harness holds them in a queue and runs them in order when resources become available.
+
+Executions sit in the queue for three main reasons: the pipeline has resource constraints configured, the maximum concurrent executions limit is reached, or the pipeline is waiting for another pipeline to release a lock it needs.
+
+---
 
 ## Queue behavior
 
-Each row in the table represents a pipeline waiting to execute. The queue position shows where that pipeline sits in the global account queue - position 1 means it is next to run, position 2 is after that, and so on.
+Each row represents a queued or running execution. The table shows the following information:
 
-<div style={{textAlign: 'center'}}>
-  <DocImage path={require('./static/executions-management-table.png')} width="80%" height="80%" title="Click to view full size image" />
-</div>
+- **Queue No**: The execution's position in the global account queue, where position 1 is next to run. Running executions show a dash (`-`) because they are no longer in the queue.
+- **Pipeline Name**: The pipeline name and its execution ID.
+- **Status**: The execution state, such as **RUNNING** or a queued reason.
+- **Project** and **Organization**: The project and organization the execution belongs to.
+- **Trigger Summary**: The way the execution started, such as a manual run, a cron schedule, or a webhook.
+- **Executed By**: The user or system that initiated the run.
 
-The table shows you the essential information about each queued execution. You will see the pipeline name and which project and organization it belongs to. The trigger summary tells you how the execution started - whether someone ran it manually, a cron schedule triggered it, or a webhook fired. The "Executed By" column shows who or what initiated the run.
+<div align="center"><DocImage path={require('./static/executions-management-table.png')} alt="Executions Management table showing running executions with the Status column" width="100%" /></div>
 
-:::note Queue Position
-Queue positions are calculated globally across your entire account. When you apply filters to narrow down the list, the queue numbers stay the same - you might see positions 5, 240, and 1320 with gaps in between. Those gaps represent pipelines that are still in the queue but hidden by your current filters.
+:::note Queue position
+Queue positions are calculated globally across your entire account. When you apply filters to narrow the list, the queue numbers stay the same. You might see positions such as 5, 240, and 1320 with gaps in between. Those gaps represent executions that are still queued but hidden by your current filters.
 :::
 
-## Filter queued pipelines
+---
 
-The filter panel helps you narrow down the list when you have many queued executions. You can filter by organization to see only pipelines from specific orgs. The project filter works together with the organization filter - when you select organizations, the project dropdown updates to show only projects within those orgs.
+## Filter executions
 
-Priority filtering lets you focus on high, medium, or low priority executions. The status filter breaks down why pipelines are queued - whether they are in the standard queue, waiting due to concurrency limits, paused, waiting for an async operation, or waiting for a task to complete.
+Use the **Filter** option to narrow the list. The available filters include:
 
-The timeframe filter helps you find pipelines queued during a specific period. You can choose Last 7 days, Last 30 days, Last 90 days, or set a custom date range. The search box at the top lets you find pipelines by name or identifier.
+- **Search**: Find executions by pipeline name or identifier.
+- **Organization** and **Project**: Show executions from specific organizations and projects. The project filter updates to show only projects within the selected organizations.
+- **Status**: Filter by execution state, including **Queued Execution Concurrency Reached**, **Queued Plan Creation**, and **Running**.
+- **Priority**: Focus on high, medium, or low priority executions.
+- **Trigger Type**: Filter by how the execution was triggered, such as a manual run, a cron schedule, or a webhook.
+- **Pipeline Tags**: Filter by the tags applied to pipelines.
+- **Timeframe**: Show executions from a specific period, such as the last 7, 30, or 90 days, or a custom range.
 
-## Abort queued executions
+Select **Add Filter** to apply more filters. Select **Save** to keep a filter set, or **Reset** to clear all filters.
 
-Aborting a queued execution removes it from the queue before it starts running. You might need to abort executions when you have triggered the wrong pipeline, or when newer changes make an older deployment unnecessary.
+---
 
-### Abort a single execution
+## Abort executions
 
-To abort a single execution, click the more actions menu (**⋮**) next to that pipeline and select **Abort**. Confirm the abort and the execution will be removed from the queue immediately.
+You can abort both queued and running executions. Aborting a queued execution removes it from the queue before it starts. Aborting a running execution stops it. You might abort executions when you triggered the wrong pipeline, or when newer changes make an older execution unnecessary.
 
-### Bulk abort multiple executions
+Perform the following steps to abort executions:
 
-For multiple executions, use the checkboxes to select the ones you want to abort. Once you have selected at least one, the **Bulk Abort** button becomes active at the top of the list. Click it, review your selections, and confirm.
+1. Select one or more executions using the checkboxes.
+2. Select **Abort** at the top of the list. The button shows how many executions are selected.
+3. Review your selection and confirm.
 
-The system will attempt to abort each selected execution. Some aborts might fail if an execution has already started running or completed while you were making your selection. The bulk abort results will show you which ones succeeded and which ones could not be aborted.
+Harness attempts to abort each selected execution. Some aborts might fail if an execution completed while you were making your selection. The results show which aborts succeeded and which could not be completed.
 
-:::warning Abort is immediate
-Once you abort an execution, it is removed from the queue permanently. There is no way to resume it - you will need to trigger the pipeline again if you want it to run.
+:::warning Abort is permanent
+Once you abort an execution, there is no way to resume it. Trigger the pipeline again if you want it to run.
 :::
+
+---
 
 ## Common scenarios
 
 ### Abort outdated deployments
 
-When multiple deployment pipelines queue up for the same service during active development, you often only need the latest one. Filter by the relevant project, select the older deployments in the queue, and bulk abort them to keep just the most recent one.
+When multiple deployment pipelines queue up for the same service during active development, you often need only the latest one. Filter by the relevant project, select the older executions, and abort them to keep just the most recent one.
 
 ### Clean up test executions
 
-If you are developing or testing pipelines and have accumulated many test runs in the queue, filter by your test project and bulk abort them. This frees up the queue for production pipelines that need to run.
+If you are developing or testing pipelines and have accumulated many test runs, filter by your test project and abort them. This frees up capacity for production pipelines that need to run.
 
 ### Identify bottlenecks
 
-When you notice pipelines with very high queue positions (100+), it indicates a bottleneck. Look at the types of pipelines queued and their resource constraints. You might need to adjust concurrency limits, optimize pipeline execution time, or review resource constraint settings to reduce queue buildup.
+When you notice executions with very high queue positions (100+), it indicates a bottleneck. Look at the types of pipelines queued and their resource constraints. You might need to adjust concurrency limits, optimize pipeline execution time, or review resource constraint settings to reduce queue buildup.
+
+---
 
 ## Limitations
 
-The Executions Management page only shows queued executions. For running or completed pipelines, use the [Pipeline Execution History](/docs/platform/pipelines/executions-and-logs/view-and-compare-pipeline-executions) view instead.
+The **Executions Management** page shows queued and running executions. For completed pipelines, use the <a href="/docs/platform/pipelines/executions-and-logs/view-and-compare-pipeline-executions" target="_blank" rel="noopener noreferrer">Pipeline Execution History</a> view instead.
 
 You cannot reorder the execution queue or change priorities from this page. The queue order is determined by when executions were created and their configured priority settings.
 
@@ -98,8 +128,10 @@ Queue positions are calculated when the page loads. As executions complete and n
 
 The table displays a maximum of 100 executions per page.
 
-## Related pages
+---
 
-- [View and compare pipeline executions](/docs/platform/pipelines/executions-and-logs/view-and-compare-pipeline-executions)
-- [Pipeline execution graph](/docs/platform/pipelines/pipeline-execution-graph)
-- [Barriers](/docs/platform/pipelines/barriers)
+## Next steps
+
+- <a href="/docs/platform/pipelines/executions-and-logs/view-and-compare-pipeline-executions" target="_blank" rel="noopener noreferrer">View and compare pipeline executions</a>: Review completed executions and compare their details.
+- <a href="/docs/platform/pipelines/pipeline-execution-graph" target="_blank" rel="noopener noreferrer">Pipeline execution graph</a>: Understand how an execution is visualized.
+- <a href="/docs/platform/pipelines/barriers" target="_blank" rel="noopener noreferrer">Barriers</a>: Synchronize stages that run in parallel.
