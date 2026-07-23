@@ -80,7 +80,11 @@ Here's an example of the cURL command:
 Custom triggers such as Git triggers are part of the pipeline entity and therefore have the account, organization, or project IDs included in the webhook URL.
 
 ```
-curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://app.harness.io/gateway/pipeline/api/webhook/custom/{customWebhookToken}/v3?accountIdentifier=H5W8iol5TNWc4G9h5A2MXg&orgIdentifier=default&projectIdentifier=CD_Docs&pipelineIdentifier=Custom&triggerIdentifier=Custom' -d '{"sample_key": "sample_value"}'
+curl -X POST \
+ -H 'content-type: application/json' \
+ -H 'X-Api-Key: sample_api_key' \
+ --url 'https://app.harness.io/gateway/pipeline/api/webhook/custom/{customWebhookToken}/v3?accountIdentifier=H5W8iol5TNWc4G9h5A2MXg&orgIdentifier=default&projectIdentifier=CD_Docs&pipelineIdentifier=Custom&triggerIdentifier=Custom' \
+ -d '{"sample_key": "sample_value"}'
 ```
 
 :::note
@@ -359,7 +363,11 @@ You can use [Harness API keys](/docs/platform/automation/api/add-and-manage-api-
 You can see the `-H 'X-Api-Key: sample_api_key'` parameter in the cURL command you copy from Harness.
 
 ```
-curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://app.harness.io/gateway/pipeline/api/webhook/custom/v2?accountIdentifier=px7xd_BFRCi-pfWPYXVjvw&orgIdentifier=default&projectIdentifier=Docs&pipelineIdentifier=Custom&triggerIdentifier=Custom' -d '{"sample_key": "sample_value"}'
+curl -X POST \
+ -H 'content-type: application/json' \
+ -H 'X-Api-Key: sample_api_key' \
+ --url 'https://app.harness.io/gateway/pipeline/api/webhook/custom/v2?accountIdentifier=px7xd_BFRCi-pfWPYXVjvw&orgIdentifier=default&projectIdentifier=Docs&pipelineIdentifier=Custom&triggerIdentifier=Custom' \
+ -d '{"sample_key": "sample_value"}'
 ```
 
 You can use this parameter with a Harness API key in your cURL command to authorize the execution of a trigger. You can also enforce the use of API keys for all custom triggers.
@@ -377,17 +385,35 @@ To skip authorization omit the `-H 'X-Api-Key: sample_api_key'` parameter.
 3. Copy the cURL command for your custom trigger. For example:
 
    ```
-   curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://app.harness.io/gateway/pipeline/api/webhook/custom/{customWebhookToken}/v3?accountIdentifier=px7xd_BFRCi-pfWPYXVjvw&orgIdentifier=default&projectIdentifier=Docs&pipelineIdentifier=Custom&triggerIdentifier=Custom' -d '{"sample_key": "sample_value"}'
+   curl -X POST \
+    -H 'content-type: application/json' \
+    -H 'X-Api-Key: sample_api_key' \
+    --url 'https://app.harness.io/gateway/pipeline/api/webhook/custom/{customWebhookToken}/v3?accountIdentifier=px7xd_BFRCi-pfWPYXVjvw&orgIdentifier=default&projectIdentifier=Docs&pipelineIdentifier=Custom&triggerIdentifier=Custom' \
+    -d '{"sample_key": "sample_value"}'
    ```
 4. Replace `sample_api_key` with the API key you created. For example:
 
    ```
-   curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: pat.<YOUR_PAT>' --url 'https://app.harness.io/gateway/pipeline/api/webhook/custom/{customWebhookToken}/v3?accountIdentifier=px7xd_BFRCi-pfWPYXVjvw&orgIdentifier=default&projectIdentifier=Docs&pipelineIdentifier=Custom&triggerIdentifier=Custom' -d '{"sample_key": "sample_value"}'
+   curl -X POST \
+    -H 'content-type: application/json' \
+    -H 'X-Api-Key: pat.<YOUR_PAT>' \
+    --url 'https://app.harness.io/gateway/pipeline/api/webhook/custom/{customWebhookToken}/v3?accountIdentifier=px7xd_BFRCi-pfWPYXVjvw&orgIdentifier=default&projectIdentifier=Docs&pipelineIdentifier=Custom&triggerIdentifier=Custom' \
+    -d '{"sample_key": "sample_value"}'
    ```
 5. Use the cURL command. A `SUCCESS` status will look something like this:
 
    ```
-   {"status":"SUCCESS","data":{"eventCorrelationId":"63bc6fe5ffaf786364414258","apiUrl":"https://app.harness.io/gateway/pipeline/api/webhook/triggerExecutionDetails/63bc6fe5ffaf786364414258?accountIdentifier=px7xd_BFRCi-pfWPYXVjvw","uiUrl":"https://app.harness.io/ng/#/account/px7xd_BFRCi-pfWPYXVjvw/cd/orgs/default/projects/Docs/deployments?pipelineIdentifier=Custom&page=0","uiSetupUrl":"https://app.harness.io/ng/#/account/px7xd_BFRCi-pfWPYXVjvw/cd/orgs/default/projects/Docs/pipelines/Custom/pipeline-studio/"},"metaData":null,"correlationId":"ef3da895-bd19-4187-be25-e813af14408b"}
+   {
+     "status": "SUCCESS",
+     "data": {
+       "eventCorrelationId": "63bc6fe5ffaf786364414258",
+       "apiUrl": "https://app.harness.io/gateway/pipeline/api/webhook/triggerExecutionDetails/63bc6fe5ffaf786364414258?accountIdentifier=px7xd_BFRCi-pfWPYXVjvw",
+       "uiUrl": "https://app.harness.io/ng/#/account/px7xd_BFRCi-pfWPYXVjvw/cd/orgs/default/projects/Docs/deployments?pipelineIdentifier=Custom&page=0",
+       "uiSetupUrl": "https://app.harness.io/ng/#/account/px7xd_BFRCi-pfWPYXVjvw/cd/orgs/default/projects/Docs/pipelines/Custom/pipeline-studio/"
+     },
+     "metaData": null,
+     "correlationId": "ef3da895-bd19-4187-be25-e813af14408b"
+   }
    ```
 
 :::tip
@@ -399,7 +425,23 @@ Adding authorization is only supported for `/v3` webhook endpoints. For that rea
 You may **Mandate Authorization for Custom Webhook Triggers**. Doing this will mandate the use of an API key token in the header of all the custom webhooks in your account. If the setting is turned on, and an API token isn't provided, then the following error will occur:
 
 ```
-{"status":"ERROR","code":"INVALID_REQUEST","message":"Invalid request: Authorization is mandatory for custom triggers in px7xd_BFRCi-pfWPYXVjvw:default:Docs. Please add X-Api-Key header in the request","correlationId":"465d6463-152b-4211-8cb5-6bcc2538afa8","detailedMessage":null,"responseMessages":[{"code":"INVALID_REQUEST","level":"ERROR","message":"Invalid request: Authorization is mandatory for custom triggers in px7xd_BFRCi-pfWPYXVjvw:default:Docs. Please add X-Api-Key header in the request","exception":null,"failureTypes":[]}],"metadata":null}
+{
+  "status": "ERROR",
+  "code": "INVALID_REQUEST",
+  "message": "Invalid request: Authorization is mandatory for custom triggers in px7xd_BFRCi-pfWPYXVjvw:default:Docs. Please add X-Api-Key header in the request",
+  "correlationId": "465d6463-152b-4211-8cb5-6bcc2538afa8",
+  "detailedMessage": null,
+  "responseMessages": [
+    {
+      "code": "INVALID_REQUEST",
+      "level": "ERROR",
+      "message": "Invalid request: Authorization is mandatory for custom triggers in px7xd_BFRCi-pfWPYXVjvw:default:Docs. Please add X-Api-Key header in the request",
+      "exception": null,
+      "failureTypes": []
+    }
+  ],
+  "metadata": null
+}
 ```
 
 If RBAC is required on the triggers in your environment, please review the [Harness Documentation on enforcing Authorization via RBAC](https://developer.harness.io/docs/platform/triggers/triggers-enforcerbac/)
@@ -410,6 +452,6 @@ If RBAC is required on the triggers in your environment, please review the [Harn
 Currently this feature is behing the Feature Flag `PIPE_FILTER_EXECUTIONS_BY_GIT_EVENTS`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. 
 :::
 
- **My Executions** filter on the listing page displays both manual executions and those triggered automatically by custom trigger i.e execution executed by custom trigger/curl command and manually execution pipeline execution will appear in the My Execution list. 
+ **My Executions** filter on the listing page displays both manual executions and those triggered automatically by custom trigger i.e execution executed by custom trigger/curl command and manually execution pipeline execution will appear in the **My Execution** list. 
  
-But to display execution triggered by custom webhook trigger it must have a authorization i.e X-API-key should be present
+But to display execution triggered by custom webhook trigger it must have a authorization i.e `X-API-key` should be present
