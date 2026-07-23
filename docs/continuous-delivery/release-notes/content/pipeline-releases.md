@@ -1,5 +1,21 @@
 ## July 2026
 
+### Pipeline service 1.198.0
+
+#### New features and enhancements
+
+- Harness now detects **barrier reference cycles** and enforces unique barrier references within a stage or step group, preventing circular barrier dependencies that could deadlock a pipeline. The Barrier step documentation has also been revamped, including guidance on using multiple barriers and barriers within looping strategies. This validation is behind the feature flag `PIPE_DETECT_BARRIER_CYCLES`. Contact [Harness Support](mailto:support@harness.io) to enable. Go to [Synchronize deployments using barriers](/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/synchronize-deployments-using-barriers) to configure barriers. (**PIPE-34524**)
+
+- Harness now provides an **Executions Management page** with account-level visibility into all queued and running pipeline executions. You can see where queued executions sit in the queue, monitor running executions through the **Status** column, and abort executions you no longer need. This feature requires the feature flag `PIPE_QUEUED_PIPELINE_OBSERVABILITY`. Contact [Harness Support](mailto:support@harness.io) to enable. Go to [Executions Management](/docs/platform/pipelines/executions-and-logs/executions-management) to learn more. (**PIPE-34977**)
+
+#### Fixed issues
+
+- Fixed an issue where a Kubernetes deployment pipeline timed out after the Apply step because the wait-for-steady-state task progress was not shown in the UI. The progress display could stall when the Apply step's command unit progress update arrived after the wait-for-steady-state update, due to network delays and a race in the underlying database updates. Harness now adds timestamps to the delegate messages so task progress is reported correctly. (**PIPE-34973**, **ZD-112099**)
+- Fixed an issue where the Policy tile did not appear under account-level Security and Governance settings, which prevented users from enabling policies. (**PIPE-35694**, **ZD-118733**)
+- Fixed an issue where changes made to a pipeline YAML in a Bitbucket repository were not reflected in Harness because the cached copy did not refresh. This fix requires the feature flag `PIPE_DISABLE_BITBUCKET_SERVER_GITX_WEBHOOK_GIT_SUFFIX_MATCH`. Contact [Harness Support](mailto:support@harness.io) to enable. (**PIPE-35731**, **ZD-118862**)
+- Fixed an issue where a pipeline execution ID that began with a hyphen was interpreted as a command-line flag and caused evidence upload commands to fail. Harness now ensures execution IDs do not start with a hyphen. (**PIPE-35734**)
+- Fixed an issue where steps in a matrix strategy displayed logs from only a single iteration. This fix is behind the feature flag `PIPE_ENABLE_STRATEGY_FOR_CHAINED_PIPELINE`. Contact [Harness Support](mailto:support@harness.io) to enable. (**PIPE-35726**)
+
 ### Pipeline service 1.197.1
 
 #### New features and enhancements

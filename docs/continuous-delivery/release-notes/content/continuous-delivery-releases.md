@@ -1,5 +1,23 @@
 ## July 2026
 
+### Version 1.159.1
+
+#### New features and enhancements
+
+- Harness now supports **progressive canary deployments for Kubernetes**, a sub-type of the Canary strategy that rolls out a new version in percentage-based phases (for example, 25%, 50%, and 100%) while keeping the total pod count within a fixed budget. Harness maintains two Deployments and shifts replicas between them, with verification or approval gates between phases. This feature requires the feature flag `CDS_K8S_PROGRESSIVE_CANARY`. Contact [Harness Support](mailto:support@harness.io) to enable. (**CDS-123216**)
+
+- The Shell Script step now supports **Harness ID tokens**. You can declare one or more named identities on the step, and Harness generates an independent OIDC ID token for each and injects it into the script at runtime as an environment variable, so a script can authenticate as the workload itself instead of through a connector. This feature requires the feature flag `PIPE_PIPELINE_IDENTITY`. Contact [Harness Support](mailto:support@harness.io) to enable. Go to [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) to configure named identities. (**CDS-125872**)
+
+- AWS Auto Scaling Group (ASG) redeployments now **preserve unchanged properties** instead of deleting and recreating them. Harness compares lifecycle hooks, scaling policies, scheduled actions, load balancers, and target groups against your configuration and updates only what changed, keeping in-flight instances and their lifecycle hooks intact. This feature requires the feature flag `CDS_ASG_SKIP_UNCHANGED_PROPERTIES` and a delegate version that includes this behavior. Contact [Harness Support](mailto:support@harness.io) to enable. Go to [ASG deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg/asg-tutorial) to learn more. (**CDS-124833**)
+
+- Harness now supports **bulk post-production rollback across multiple infrastructures**. From the service dashboard you can select multiple infrastructures where a service is deployed and roll them back together, choosing the target execution for each infrastructure before you confirm. This feature requires the feature flag `CDS_BULK_POST_PROD_ROLLBACK`, with `CDC_SERVICE_DASHBOARD_REVAMP_NG` as a prerequisite. Contact [Harness Support](mailto:support@harness.io) to enable. Go to [Rollback deployments](/docs/continuous-delivery/manage-deployments/rollback-deployments) to learn more. (**CDS-125628**)
+
+#### Fixed issues
+
+- Fixed an issue where disabling the artifact in a stage still enforced a primary artifact reference, which prevented affected pipelines from running. (**CDS-125804**, **ZD-116383**)
+- Fixed an issue where secret override references generated a malformed URL when opened from the secrets page in the unified view. The links resolved correctly in the Continuous Delivery module but broke in the unified view. (**CDS-127486**, **ZD-118858**)
+- Fixed an issue where saving or cloning a service or environment to Git failed because the dialog closed unexpectedly, which also prevented moving these entities from inline to Git. (**CDS-127728**, **ZD-119243**)
+
 ### Version 1.158.4
 
 #### New features and enhancements
