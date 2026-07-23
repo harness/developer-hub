@@ -27,14 +27,14 @@ Older SDK versions will return the control treatment for flags using rule-based 
 <TabItem value="Ruby">
 
 ```ruby
-gem install splitclient-rb -v '~> 8.11.0'
+gem install splitclient-rb -v '~> 8.11.1'
 ```
 
 </TabItem>
 <TabItem value="JRuby">
 
 ```ruby
-gem install splitclient-rb -v '~> 8.11.0'
+gem install splitclient-rb -v '~> 8.11.1'
 ```
 
 </TabItem>
