@@ -78,9 +78,12 @@ The `pg-upgrade.sh` script performs the following actions:
 
 ### Run the script
 
+The upgrade and backup scripts are in the `scripts` directory of the Harness Helm chart. Run them from that directory:
+
 ```bash
 ./pg-upgrade.sh <namespace>
 ```
+
 
 ### Image configuration
 
@@ -174,12 +177,27 @@ If the upgrade fails after the `--link` step:
    kubectl delete pvc data-postgres-0 -n <namespace>
    ```
 
-3. Restore the PostgreSQL data volume by using the same backup method you selected in [Backup and restore options](#backup-and-restore-options).
+3. Restore PostgreSQL using the same backup method you selected in [Backup and restore options](#backup-and-restore-options).
 
-4. Set the image back to PG14 and scale up:
+   The exact restore steps depend on the method:
+
+   - **VolumeSnapshot or cloud disk snapshot:** Recreate the `data-postgres-0` PVC from your snapshot (see the restore steps for that method), then set the image back to PostgreSQL 14 and scale up (step 4).
+   - **`pg_dump` with the provided script:** Set the image back to PostgreSQL 14, scale up so Kubernetes recreates an empty PVC and starts the pod, then restore into the running database. For example:
+
+     ```bash
+     # Update the image path for your registry if needed
+     kubectl set image sts/postgres -n <namespace> postgresql=docker.io/harnesssecure/postgresql:14.20-debian
+     kubectl scale sts -n <namespace> postgres --replicas=1
+     kubectl wait --for=condition=ready pod/postgres-0 -n <namespace> --timeout=300s
+
+     ./pg-backup-restore.sh <namespace> restore pg_backup_<timestamp>
+     ```
+
+4. If you restored from a VolumeSnapshot or cloud disk snapshot (and have not already done so), set the image back to PostgreSQL 14 and scale up:
 
    ```bash
-   kubectl set image sts/postgres -n <namespace> postgresql=<original-pg14-image>
+   # Update the image path for your registry if needed
+   kubectl set image sts/postgres -n <namespace> postgresql=docker.io/harnesssecure/postgresql:14.20-debian
    kubectl scale sts -n <namespace> postgres --replicas=1
    kubectl wait --for=condition=ready pod/postgres-0 -n <namespace> --timeout=300s
    ```
@@ -517,6 +535,8 @@ For other cloud providers, the disk create command differs per provider. The PV/
 ---
 
 ## Included scripts
+
+These scripts are in the `scripts` directory of the Harness Helm chart:
 
 | File | Description |
 | --- | --- |
