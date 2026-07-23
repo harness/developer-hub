@@ -35,6 +35,7 @@ Currently, this feature is behind the feature flag `ML_ENABLE_CHAT_MCP_SETTINGS`
 - **Connector purpose:** How third-party MCP connectors add tools to Harness AI chat.
 - **Connector scope:** How account, organization, and project connectors apply.
 - **Connector management:** How to add, pin, edit, and remove connectors from chat settings.
+- **Tool permissions:** How to control which MCP tools Harness AI can call, and when it needs approval.
 - **Tool usage:** How Harness AI calls MCP tools during a chat.
 - **Supported servers:** Which third-party MCP servers you can connect, such as GitHub, GitLab, and Jira.
 
@@ -131,6 +132,29 @@ MCP Server connectors require both a valid server URL and a valid credential. A 
 :::
 
 To create a connector outside of chat, or to review the full connector YAML, go to [Configure MCP connectors](/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/configuration#configure-mcp-connectors).
+
+---
+
+## Manage tool permissions
+
+An MCP server exposes a set of tools, and each tool can read or change data in the connected system. The **Tools** step of the MCP Server Connector controls how Harness AI can invoke each tool, so you can allow safe read operations while gating anything that writes. Set these permissions when you create the connector, or open an existing connector and go to the **Tools** step to change them.
+
+Each tool supports three permission levels:
+
+- **Always allow:** Harness AI can call the tool without confirmation. Use this for low-risk, read-only tools, such as listing repositories or reading issues.
+- **Blocked:** Harness AI cannot call the tool. Use this to hide tools you do not want available in chat.
+- **Needs approval:** Harness AI must request your confirmation before it calls the tool. Use this for tools that create, update, or delete data, such as opening a pull request or commenting on an issue.
+
+Use the **Set all tools to** selector at the top of the step to apply one permission level to every tool at once, then adjust individual tools as needed. The per-tool rows show the tool name and description so you can decide the right level for each one.
+
+<DocImage path={require('./static/ai-mcp-tool-permissions.png')} alt="MCP Server Connector Tools step showing the Set all tools to selector and per-tool Always allow, Blocked, and Needs approval radio buttons" title="Click to view full size" />
+<p align="center"><em>The Tools step sets a permission level for each tool the MCP server exposes, with a bulk selector to set all tools at once.</em></p>
+
+Select **Save** to apply tool permissions. Harness AI enforces these permissions in every chat that uses the connector.
+
+:::tip Start restrictive for write tools
+Set write tools to **Needs approval** or **Blocked** until you trust a connector in chat. You can loosen permissions later without recreating the connector.
+:::
 
 ---
 
