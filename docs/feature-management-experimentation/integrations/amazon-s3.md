@@ -425,7 +425,6 @@ To connect your AWS S3 bucket to Harness FME, you need:
 * Schema: 
   
   * key: [String] Identifier for the user or system triggering or associated with the impression
-  * bucketingKey: [String, Nullable] Optional bucketing key used for hash calculations when provided by the SDK
   * label: [String] Label associated with the impression
   * treatment: [String] The treatment shown for this impression
   * splitName: [String] Name of the feature flag
@@ -439,6 +438,7 @@ To connect your AWS S3 bucket to Harness FME, you need:
   * machineIp: [String, Nullable] IP of the machine sending the impression
   * timestamp: [Long] The time when the impression occurred, in milliseconds past epoch
   * receptionTimestamp: [Long] Timestamp when the impression was received by Harness FME
+  * bucketingKey: [String, Nullable] Optional bucketing key used for hash calculations when provided by the SDK
 
 :::info[Matching keys and bucketing keys]
 The `key` field represents the matching key used for targeting and evaluation. When SDKs provide a separate bucketing key, outbound impression exports also include a `bucketingKey` field.

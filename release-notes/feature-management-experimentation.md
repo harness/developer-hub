@@ -1,7 +1,7 @@
 ---
 title: Feature Management & Experimentation release notes
 sidebar_label: Feature Management & Experimentation
-date: 2026-07-15T10:00:00
+date: 2026-07-21T10:00:00
 tags: ["fme", "feature management experimentation"]
 sidebar_position: 11
 ---
@@ -14,7 +14,29 @@ import TabItem from '@theme/TabItem';
 
 These release notes describe recent changes to Harness Feature Management & Experimentation (FME).
 
-#### Last updated: July 15, 2026
+#### Last updated: July 21, 2026
+
+## July 2026
+
+### Bucketing keys in Amazon S3 Exports
+----
+#### 2026-07-21
+
+Harness FME now includes a `bucketingKey` column in Amazon S3 impression exports. When your SDK provides a bucketing key for feature flag evaluations, that value appears in the `bucketingKey` column of the exported CSV. This makes it easier to analyze account-level rollouts, validate consistent treatment assignment across users, and support multi-tenant experimentation workflows.
+
+```csv title="Example S3 impression export Parquet file"
+key,label,treatment,splitName,splitVersion,properties,environmentId,trafficTypeId,sdk,sdkVersion,machineName,machineIp,timestamp,receptionTimestamp,bucketingKey
+user_alice,default rule,on,new-dashboard,42,,prod,user,ruby,8.3.1,app-server-1,10.0.0.15,1783065571253,1783065598653,acct_abc123
+user_bob,default rule,on,new-dashboard,42,,prod,user,ruby,8.3.1,app-server-1,10.0.0.15,1783065588095,1783065598653,acct_abc123
+user_charlie,default rule,off,new-dashboard,42,,prod,user,ruby,8.3.1,app-server-2,10.0.0.16,1783065592000,1783065600000,
+```
+
+The `bucketingKey` column is optional and remains empty for SDK evaluations that do not provide a bucketing key.
+
+#### Related documentation
+
+- [Amazon S3 Integration](/docs/feature-management-experimentation/integrations/amazon-s3/)
+- [How Bucketing Works](/docs/feature-management-experimentation/feature-management#ensuring-a-consistent-user-experience)
 
 ## June 2026
 
@@ -38,7 +60,7 @@ Standard SDKs with local evaluation remain the recommended default for most appl
 - [Client-side Standard SDKs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks)
 - [Client-side Thin SDKs](/docs/feature-management-experimentation/sdks-and-infrastructure/client-side-sdks/thin-sdks)
 
-### [New Enhancement] Update Feature Flag Definitions in Harness Pipelines
+### Update Feature Flag Definitions in Harness Pipelines
 ----
 #### 2026-06-24
 
