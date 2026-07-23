@@ -81,7 +81,7 @@ These integrations eliminate context switching by bringing pipeline status, exec
 
 Deploy autonomous AI agents as pipeline steps to handle complex tasks like building, testing, reviewing code, and remediating security issues.
 
-<a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/worker-agent" target="_blank">Worker Agents</a> run inside your pipelines as containerized steps, performing multi-step workflows autonomously:
+<a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/" target="_blank">Worker Agents</a> run inside your pipelines as containerized steps, performing multi-step workflows autonomously:
 - Build and deploy applications with natural language instructions
 - Review pull requests for code quality, security, and best practices
 - Remediate security vulnerabilities identified in scans
@@ -194,5 +194,5 @@ Submit feedback by emailing <a href="mailto:support@harness.io" target="_blank">
 ## Next steps
 
 - <a href="/docs/platform/harness-ai/core-capabilities/in-harness-ui/devops-agent" target="_blank">DevOps Agent</a>: Create pipelines and resources with AI in the Harness UI.
-- <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/worker-agent" target="_blank">Worker Agents</a>: Run autonomous AI agents inside your pipeline steps.
+- <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/" target="_blank">Worker Agents</a>: Run autonomous AI agents inside your pipeline steps.
 - <a href="/docs/platform/harness-ai/core-capabilities/in-your-ide/vscode-extension" target="_blank">VS Code Extension</a>: Integrate Harness into your development environment.

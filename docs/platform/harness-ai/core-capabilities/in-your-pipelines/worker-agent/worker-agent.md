@@ -54,7 +54,7 @@ Before you create a Worker Agent, ensure you have the following:
 - **Pipeline permissions**: **View**, **Create/Edit**, and **Execute** permissions for <a href="/docs/platform/role-based-access-control/permissions-reference#pipelines" target="_blank">Pipelines</a>. Go to <a href="/docs/platform/role-based-access-control/rbac-in-harness" target="_blank">RBAC in Harness</a> to configure roles.
 - **Connector permissions**: **View**, **Create/Edit**, and **Delete** permissions for <a href="/docs/platform/role-based-access-control/permissions-reference#connectors" target="_blank">Connectors</a> to create and manage the Model Provider Connector and MCP Connector.
 - **Secret permissions**: **View** and **Access** (reference) permissions for <a href="/docs/platform/role-based-access-control/permissions-reference#secrets" target="_blank">Secrets</a> at a minimum, since both the Model Provider Connector and MCP Connector reference secrets for authentication.
-- **Model Connector**: An Anthropic or OpenAI Model Connector configured with a default model. Go to <a href="/docs/platform/harness-ai/model-connector/model-connector" target="_blank">Model Connectors</a> to review supported providers, models, and setup options.
+- **Model Connector**: An Anthropic or OpenAI Model Connector configured with a default model. Go to <a href="/docs/platform/harness-ai/model-connector/" target="_blank">Model Connectors</a> to review supported providers, models, and setup options.
 - **MCP Connector (optional)**: An MCP Server Connector with a valid hosted MCP URL and API key. Go to <a href="/docs/platform/harness-ai/harness-mcp-server" target="_blank">Harness MCP Server</a> to set up MCP access.
 
 ---

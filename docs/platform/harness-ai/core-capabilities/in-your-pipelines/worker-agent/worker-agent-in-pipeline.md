@@ -39,8 +39,8 @@ By the end of this topic, you will be able to:
 
 Before you add a Worker Agent to a pipeline, ensure you have the following:
 
-- **Worker Agent created**: A Worker Agent must exist in your account. Go to <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/worker-agent" target="_blank">Worker Agents overview</a> to create one.
-- **Model Connector configured**: At least one Anthropic or OpenAI connector. Go to <a href="/docs/platform/harness-ai/model-connector/model-connector" target="_blank">Model Connectors</a> for setup instructions.
+- **Worker Agent created**: A Worker Agent must exist in your account. Go to <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/" target="_blank">Worker Agents overview</a> to create one.
+- **Model Connector configured**: At least one Anthropic or OpenAI connector. Go to <a href="/docs/platform/harness-ai/model-connector/" target="_blank">Model Connectors</a> for setup instructions.
 - **Pipeline access**: Permission to create and edit pipelines in your Harness project.
 
 
@@ -297,4 +297,4 @@ This pipeline follows three steps:
 
 - <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/configuration" target="_blank">Worker Agent configuration</a>: Configure instructions, MCP connectors, inputs, and environment variables.
 - <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/permissions" target="_blank">Worker Agent permissions</a>: Understand RBAC requirements for Worker Agents.
-- <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/worker-agent" target="_blank">Worker Agents overview</a>: Learn how to create and manage Worker Agents.
+- <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/" target="_blank">Worker Agents overview</a>: Learn how to create and manage Worker Agents.

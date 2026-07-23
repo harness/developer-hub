@@ -65,7 +65,7 @@ Harness AI provides capabilities across platform, code repository, and module-sp
 
 | Module | Feature | Description | Availability |
 |---|---|---|---|
-| **Platform** | <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/worker-agent" target="_blank">Harness Agents</a> | Autonomous AI agents that run inside pipelines, building, deploying, testing, remediating, and optimizing the software delivery lifecycle from commit to production. | Generally available |
+| **Platform** | <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/" target="_blank">Harness Agents</a> | Autonomous AI agents that run inside pipelines, building, deploying, testing, remediating, and optimizing the software delivery lifecycle from commit to production. | Generally available |
 | **Platform** | <a href="/docs/platform/harness-ai/core-capabilities/in-harness-ui/devops-agent" target="_blank">DevOps Agent</a> | Agentic AI assistant that creates and manages pipelines, stages, steps, services, environments, connectors, and secrets through natural language prompts. | Generally available |
 | **Platform** | <a href="/docs/platform/harness-ai/core-capabilities/in-harness-ui/devops-agent#error-analyzer" target="_blank">DevOps Agent (Error Analyzer)</a> | AI-powered root cause analysis for pipeline failures with automated fix recommendations and YAML auto-repair. | Generally available |
 | **Platform** | <a href="/docs/platform/harness-ai/core-capabilities/in-harness-ui/devops-agent#policy-generation-and-integration" target="_blank">DevOps Agent (Policy Generation)</a> | Generate and integrate <a href="/docs/platform/governance/policy-as-code/harness-governance-overview" target="_blank">Open Policy Agent</a> (OPA) Rego policies to meet compliance standards. | Generally available |
@@ -218,5 +218,5 @@ Harness AI supports comprehensive multi-modal debugging:
 ## Next steps
 
 - <a href="/docs/platform/harness-ai/core-capabilities/in-harness-ui/devops-agent" target="_blank">DevOps Agent</a>: Create pipelines with natural language. 
-- <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/worker-agent" target="_blank">Worker Agents</a>: Build autonomous AI that runs inside pipeline steps. 
+- <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/" target="_blank">Worker Agents</a>: Build autonomous AI that runs inside pipeline steps. 
 - <a href="/docs/platform/harness-ai/harness-ai-rules" target="_blank">Harness AI Rules</a>: Tailor AI output to your enterprise standards.

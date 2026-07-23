@@ -42,7 +42,7 @@ By the end of this topic, you will be able to:
 Before you explore these examples, ensure you have the following:
 
 - **Worker Agents enabled**: Harness AI and Worker Agents must be enabled in your account. Go to <a href="/docs/platform/harness-ai/overview#enable-ai" target="_blank">Enable Harness AI</a> for instructions.
-- **Model Connector configured**: At least one Anthropic or OpenAI connector. Go to <a href="/docs/platform/harness-ai/model-connector/model-connector" target="_blank">Model Connectors</a> for setup instructions.
+- **Model Connector configured**: At least one Anthropic or OpenAI connector. Go to <a href="/docs/platform/harness-ai/model-connector/" target="_blank">Model Connectors</a> for setup instructions.
 - **MCP Connector configured**: Harness Hosted MCP connector for platform data access. Go to <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/configuration#configure-mcp-connectors" target="_blank">Configure MCP connectors</a> for setup instructions.
 - **Pipeline access**: Permission to create and edit pipelines in your Harness project.
 
@@ -1080,6 +1080,6 @@ pipeline:
 
 ## Next steps
 
-- <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/worker-agent" target="_blank">Worker Agents overview</a>: Learn how to create and manage Worker Agents.
+- <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/" target="_blank">Worker Agents overview</a>: Learn how to create and manage Worker Agents.
 - <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/configuration" target="_blank">Worker Agent configuration</a>: Configure instructions, MCP connectors, inputs, and environment variables.
 - <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/worker-agent-in-pipeline" target="_blank">Use Worker Agents in pipelines</a>: Add Worker Agent steps to pipelines and reference agent outputs.

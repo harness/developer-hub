@@ -38,7 +38,7 @@ By the end of this topic, you will be able to:
 
 Before you configure agent permissions, ensure you have the following:
 
-- **Worker Agent created**: At least one Worker Agent configured in your project. Go to <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/worker-agent" target="_blank">Worker Agents</a> for more information on creating agents.
+- **Worker Agent created**: At least one Worker Agent configured in your project. Go to <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/" target="_blank">Worker Agents</a> for more information on creating agents.
 - **Admin or RBAC permissions**: Access to configure roles and permissions in your Harness account.
 - **Pipeline edit access**: Permissions to edit pipeline YAML if configuring pipeline-level agent permissions.
 
