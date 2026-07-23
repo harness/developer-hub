@@ -24,6 +24,87 @@ These release notes describe recent changes to Harness Self-Managed Enterprise E
 
 <ReleaseNotesSearch />
 
+:::warning Announcement 
+
+### JEXL 3.5 expression compatibility changes (SMP 0.43.0 and later)
+
+As part of improving the security posture of the platform, Harness is upgrading JEXL from version 3.0 to 3.5. This change introduces restrictions on JEXL expressions including: blocked reflection-based expressions, rewritten nested subscript expressions, disallowed global variable assignments (use `==` instead of `=` for comparisons), and ternary expressions followed by `[` must be rewritten.
+
+Monitor pipeline executions and contact Harness Support if any issues are encountered or remediation assistance is required.
+
+<details>
+<summary>View detailed migration guidance</summary>
+
+- **Reflection-based expressions are blocked.** Any JEXL expression that uses reflection to access classes, methods, or fields will be rejected. For example, expressions such as `<+''.getClass().forName("java.lang.Runtime")>` will no longer execute.
+
+- **Nested subscript expressions must be rewritten.** Expressions that nest one subscript (square bracket) accessor directly inside another needs to be rewritten in a different format. For example, the following expression will fail:
+
+  ```
+  <+pipeline.variables[<+stage.variables['test']>]>
+  ```
+
+  Rewrite it as:
+
+  ```
+  <+pipeline.variables["<+stage.variables['test']>"]>
+  ```
+
+- **JEXL global variable assignments are disallowed.** Expressions that declare global variables will fail to execute. In JEXL, the single `=` operator performs an assignment, not an equality check. Any expression that uses `=` between a variable reference and a value is treated as a global variable assignment and will be rejected in JEXL 3.5.
+
+  For example, the following expression is no longer supported:
+
+  ```
+  ENVIRONMENT=<+env.identifier>,
+  REGION=<+pipeline.variables.region>
+  ```
+
+  Rewrite the expression using local variables (prefixed with `var`) instead. For example:
+
+  ```
+  var ENVIRONMENT=<+env.identifier>,
+  var REGION=<+pipeline.variables.region>
+  ```
+
+  This restriction also affects expressions used to compare values in `when` conditions, such as:
+
+  ```yaml
+  when:
+    stageStatus: Success
+    condition: <+stage.variables.shouldRun="Yes">
+  ```
+
+  When `<+stage.variables.shouldRun="Yes">` is used in a `when` condition, JEXL does not interpret this as an equality check. It is parsed as a global assignment, and the expression evaluates to the assigned value (`"Yes"`). The `when` condition then coerces this value to a boolean, which is `true` for any non-empty, non-null string, so the condition appears to pass regardless of the variable's actual value. In JEXL 3.5, because global assignments are disabled, this expression fails with an error.
+
+  Replace `=` with `==` to perform an equality check:
+
+  ```yaml
+  when:
+    stageStatus: Success
+    condition: <+stage.variables.shouldRun == "Yes">
+  ```
+
+- **Ternary expressions followed immediately by `[` must be rewritten.** JEXL 3.5 treats `?[` as the null-safe array access operator, so the parser consumes `?[...]` as a single token and fails to evaluate the ternary. For example, the following expression will fail:
+
+  ```
+  <+pipeline.variables.BUILD_ENVS=="dev"?[""]:"qa">
+  ```
+
+  Rewrite it by adding a space after `?` so the parser treats the ternary and the array literal as separate tokens:
+
+  ```
+  <+pipeline.variables.BUILD_ENVS=="dev"? [""]:"qa">
+  ```
+
+  Or wrap the array in parentheses to disambiguate:
+
+  ```
+  <+pipeline.variables.BUILD_ENVS=="QAdf"?([""]):"abcds">
+  ```
+
+</details>
+
+:::
+
 :::warning Important: Harness Self-Managed Platform v0.36.0 is transitioning from TimescaleDB to PostgreSQL
 
 Harness Self-Managed Platform [v0.36.0](#february-09-2026-version-0360) is transitioning from TimescaleDB to PostgreSQL. This change is designed to improve reliability, scalability, and long-term maintainability of the platform.
@@ -489,10 +570,11 @@ Ensure that the `smp-airgap-bundles/` directory exists before running the comman
 
 ## July 03, 2026, Version 0.43.0 <!-- July 03, 2026 -->
 
-:::warning Important
-Harness Self-Managed Enterprise Edition **0.43.0** introduces support for PostgreSQL 16.
+:::warning Important Announcement
 
-If your deployment uses PostgreSQL 14, follow [this guide to upgrade to PostgreSQL 16](/docs/self-managed-enterprise-edition/advanced-configurations/upgrade-postgresql-14-to-16). PostgreSQL 14 will be deprecated and removed in a future release.
+1. **PostgreSQL 16 support:** Harness Self-Managed Enterprise Edition **0.43.0** introduces support for PostgreSQL 16. If your deployment uses PostgreSQL 14, follow the [PostgreSQL 14 to 16 upgrade guide](/docs/self-managed-enterprise-edition/advanced-configurations/upgrade-postgresql-14-to-16). PostgreSQL 14 will be deprecated and removed in a future release.
+
+2. **JEXL 3.5 upgrade:** Starting with Harness Self-Managed Enterprise Edition **0.43.0**, Harness upgrades JEXL from version 3.0 to 3.5 to improve platform security. This update introduces stricter validation for JEXL expressions, including restrictions on reflection-based expressions, global variable assignments, nested subscript expressions, and certain ternary expression patterns. Review the [JEXL 3.5 migration guidance](/release-notes/self-managed-enterprise-edition#jexl-35-upgrade-smp-0430) before upgrading.
 :::
 
 This table lists the module, its components, its version and the release notes versions associated with it.
