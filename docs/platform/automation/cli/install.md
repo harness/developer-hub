@@ -1,6 +1,6 @@
 ---
-title: Install and Configure Harness CLI
-description: This topic shows how to get started with the Harness CLI.
+title: Install and Configure Harness CLI (hc)
+description: Install, configure, and upgrade Harness CLI (hc) v1.x.x for Artifact Registry workflows.
 sidebar_position: 1
 ---
 

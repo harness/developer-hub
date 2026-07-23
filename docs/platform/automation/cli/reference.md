@@ -1,5 +1,5 @@
 ---
-title: Harness CLI Reference
+title: Harness CLI (hc) Reference
 description: Reference doc for all the commands and options available in Harness CLI.
 sidebar_position: 3
 ---

@@ -1,5 +1,5 @@
 ---
-title: Harness CLI Examples
+title: Harness CLI (hc) Examples
 description: Examples of various use cases of Harness CLI.
 sidebar_position: 2
 ---
