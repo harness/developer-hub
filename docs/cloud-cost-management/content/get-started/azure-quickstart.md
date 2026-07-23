@@ -51,15 +51,15 @@ In the meantime, explore the optional requirements and feature integrations avai
 
 ---
 
-## Cloud Connector Wizard
-Once you've gathered the required Azure details, follow these steps in the Harness setup wizard to connect your Azure account and enable cost visibility.
+## Interactive Guide
 
-### Interactive Guide
+Connect your Azure account to Harness using the connector wizard. Watch the walkthrough below, or follow the [Step-by-Step Guide](#step-by-step-guide) for the full detail on each step.
+
 <DocVideo src="https://app.tango.us/app/embed/e313dd8b-99ad-4fb0-a7f3-459d3a3ca5f6?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Add Azure Cloud Cost Connector in Harness"  />
 
-### Step-by-Step Guide
+## Step-by-Step Guide
 
-#### Step 1: Overview
+### Step 1: Overview
 1. Launch the wizard and select **Azure** as the cloud provider.
 2. Provide the following required information:
    - **Name**: Enter a descriptive name for your connector
@@ -68,9 +68,7 @@ Once you've gathered the required Azure details, follow these steps in the Harne
    - (Optional)**Description**: Add a description for your connector
 3. Click **Continue** to proceed to the next step.
 
----
-
-#### Step 2: Azure Billing Exports
+### Step 2: Azure Billing Exports
 1. If you have not created a Billing Export,  follow the [instructions to create a Billing Export](https://learn.microsoft.com/en-us/azure/cost-management-billing/costs/tutorial-export-acm-data).
 2. Enter the following:
 
@@ -84,11 +82,7 @@ Once you've gathered the required Azure details, follow these steps in the Harne
    * `Actual` or `Amortised`
 5. Click **Continue**.
 
-
-
----
-
-#### Step 3: Choose Requirements
+### Step 3: Choose Requirements
 1. **Cost Visibility** is selected by default.
 2. (Optional) You can enable any of the following features (they can also be added later):
    - Resource Inventory Management
@@ -96,9 +90,7 @@ Once you've gathered the required Azure details, follow these steps in the Harne
    - Cloud Governance
 3. Click **Continue**.
 
----
-
-#### Step 4: Create Service Principal
+### Step 4: Create Service Principal
 
 Harness uses a multi-tenant application to securely access your billing data and enable the features you selected.
 
@@ -113,9 +105,8 @@ The displayed commands are dependent on your specific feature selections. Always
 :::info
 Review [Feature Permissions](/docs/cloud-cost-management/feature-permissions) for CACM to understand the minimum roles or permissions needed for every CACM feature.
 :::
----
 
-#### Step 5: Verify the Connection
+### Step 5: Verify the Connection
 1. Harness will attempt to validate the connection using your inputs.
 2. If this step fails, it's usually because Azure has not yet delivered the first billing export.
    - Wait up to **24 hours** after setting up the billing export before trying again.

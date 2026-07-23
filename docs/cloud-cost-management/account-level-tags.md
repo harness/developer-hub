@@ -112,7 +112,7 @@ AWS and GCP add a prefix so you can tell an account tag apart from a resource ta
 **Prerequisites:**
 
 - **AWS Organizations:** Account tags apply only to member accounts in an AWS Organization. Standalone accounts do not have account-level tags.
-- **CUR 2.0 connector:** Go to [Set up cost visibility for AWS](/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws?tab-number=1) to configure or migrate your connector for consolidated billing.
+- **CUR 2.0 connector:** Account tags require a **CUR 2.0** connector. Legacy CUR (CUR 1.0) does not expose the `resource_tags` field that Harness uses to ingest account-level tags. Go to [Set up cost visibility for AWS](/docs/cloud-cost-management/get-started/#aws) to configure or migrate your connector to CUR 2.0.
 - **Who can apply:** An AWS Organizations administrator applies tags to member accounts from the management account.
 
 When you tag an AWS Organization member account, that tag flows into Harness and appears under `Label V2` with the prefix `accountTag/{key}`.

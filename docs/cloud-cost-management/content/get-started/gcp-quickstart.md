@@ -57,31 +57,27 @@ In the meantime, explore the optional requirements and feature integrations avai
 
 ---
 
-## Cloud Connector Wizard
-Once you've gathered the required GCP details, follow these steps in the Harness setup wizard to connect your GCP account and enable cost visibility.
+## Interactive Guide
 
-### Interactive Guide
+Connect your GCP account to Harness using the connector wizard. Watch the walkthrough below, or follow the [Step-by-Step Guide](#step-by-step-guide) for the full detail on each step.
+
 <DocVideo src="https://app.tango.us/app/embed/3eb1eed3-85aa-4b1a-b4e6-d249989e7ce5?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Add GCP Cloud Cost Connector in Harness" />
 
-### Step-by-Step Guide
+## Step-by-Step Guide
 
-#### Step 1: Add GCP Account Details
+### Step 1: Add GCP Account Details
 1. In the wizard, enter a name for your connector (e.g., `gcp-demo-prod`).
 2. Specify **Project ID**.
 3. (Optional) Add a description and tags to help identify this connector later.
 4. Click **Continue**.
 
----
-
-#### Step 2: Select or Create a Billing Export
+### Step 2: Select or Create a Billing Export
 Cloud Billing export to BigQuery enables you to export detailed Google Cloud billing data (such as usage and cost estimate data) automatically throughout the day to a BigQuery dataset that you specify.
 1. If your Billing Export already exists, select it from the list.
 2. If not, return to GCP and follow the steps in the [Before You Start](#before-you-start) section to create one. 
 3. Once the Billing Export appears in the list, select it and click **Continue**.
 
----
-
-#### Step 3: Choose Requirements
+### Step 3: Choose Requirements
 1. **Cost Visibility** is selected by default and is required.
 2. (Optional) You can enable any of the following features (they can also be added later):
    - Resource Inventory Management
@@ -89,9 +85,7 @@ Cloud Billing export to BigQuery enables you to export detailed Google Cloud bil
    - Cloud Governance
 3. Click **Continue**.
 
----
-
-#### Step 4: Authentication (Conditional)
+### Step 4: Authentication (Conditional)
 
 If you have selected **Optimization by AutoStopping** or **Cloud Governance**, in previous step, you can set up Authentication. If not selected, this step will not be prompted.
 
@@ -100,9 +94,7 @@ You can enable authentication for your GCP account via
 - Service Account with Custom Role: Created with [custom permissions](/docs/cloud-cost-management/feature-permissions)
 - [OIDC Authentication](/docs/cloud-cost-management/oidc-auth): Federated access with no stored credentials
 
------
-
-#### Step 5: Grant Permissions
+### Step 5: Grant Permissions
 
 Based on what you selected in **Step 3 - Choose Requirements**, you will be prompted to grant permissions to your service account alongwith the steps to be followed.
 
@@ -110,9 +102,7 @@ Based on what you selected in **Step 3 - Choose Requirements**, you will be prom
 Review [Feature Permissions](/docs/cloud-cost-management/feature-permissions) for CACM to understand the minimum roles or permissions needed for every CACM feature.
 :::
 
----
-
-#### Step 6: Verify the Connection
+### Step 6: Verify the Connection
 1. Harness will attempt to validate the connection using your inputs.
 2. If this step fails, it's usually because GCP has not yet delivered the first billing export.
    - Wait up to **24 hours** after setting up the billing export before trying again.

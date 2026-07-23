@@ -6,9 +6,11 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 
 :::important
 
-AWS **CUR 2.0** (Data Exports) is now supported and recommended for new connectors. It currently supports **Cost Visibility**, **Asset Governance**, and **Recommendations**. If you need **AutoStopping**, **Commitments**, or **Cluster Orchestrator**, use **CUR 1.0**, which remains fully supported and covers all CACM features.
+AWS **CUR 2.0** (Data Exports) is now supported and recommended for new connectors. It covers all CACM features. **CUR 1.0 (Legacy CUR)** remains fully supported for existing connectors.
 
 :::
+
+---
 
 ## Before You Start
 To ensure a smooth and error-free setup experience, complete the following steps in your **AWS console** before launching the Harness wizard. This will allow you to progress through the setup without delays or missing prerequisites.
@@ -19,13 +21,12 @@ To ensure a smooth and error-free setup experience, complete the following steps
 | **Cost and Usage Report (CUR)**  | AWS Console → Billing → Cost & Usage Reports | Harness uses this to ingest detailed billing data. |
 | **S3 Bucket Name**               | AWS Console → S3 | Stores the CUR files for Harness to access. |
 
-### Set up the Cost and Usage Report
+### Set Up the Cost and Usage Report
+
+Create the report in your AWS console, then use its name and S3 bucket when you configure the Harness connector. Choose **CUR 2.0** for new connectors, or **Legacy CUR** for existing ones:
 
 <Tabs queryString="cur">
 <TabItem value="cur2" label="CUR 2.0 (recommended)" default>
-
-#### CUR 2.0 setup
-
 
 1. In the AWS console, navigate to **Billing and Cost Management** → **Data Exports** → **Create export**.
 2. Under **Report details**, select all four options:
@@ -35,64 +36,46 @@ To ensure a smooth and error-free setup experience, complete the following steps
    - Include capacity reservation columns and granularity
 3. Under **Delivery options**, configure the following:
 
-| Setting | Required Value |
-|---------|----------------|
-| **Compression type** | Parquet |
-| **S3 bucket** | Select or create a bucket. Copy the bucket name, as you will need it for the Harness connector. |
-| **S3 path prefix** | Enter any prefix. |
+   | Setting | Required Value |
+   |---------|----------------|
+   | **Compression type** | Parquet |
+   | **S3 bucket** | Select or create a bucket. Copy the bucket name, as you will need it for the Harness connector. |
+   | **S3 path prefix** | Enter any prefix. |
 
 4. Do not uncheck any columns.
 5. Review and create the export. Copy the export name, as you will need it for the Harness connector.
 
-<DocImage path={require('./static/cur-aws.png')} width="70%" height="70%" title="Click to view full size image" />
+   <DocImage path={require('./static/aws-cur-2-0.png')} width="100%" height="100%" title="Click to view full size image" />
 
 </TabItem>
 <TabItem value="cur1" label="Legacy CUR">
 
-#### Legacy CUR setup
+1. In the AWS console, go to **Billing → Cost & Usage Reports** and click **Create report**.
+2. Select **Legacy CUR export** and give the report a descriptive name. Copy this name, as you will need it for the Harness connector.
+3. Under **Report details**, configure the following:
 
-When creating a Legacy CUR report in AWS, configure the following settings:
+   | Setting | Required Value | Notes |
+   |---------|----------------|-------|
+   | **Include Resource IDs** | ✅ Enabled | Must be checked in "Additional report details" |
+   | **Time Granularity** | Hourly | Required for accurate cost tracking |
+   | **Report versioning** | Create new report version | - |
 
-| Setting | Required Value | Notes |
-|---------|----------------|-------|
-| **Report Type** | Legacy CUR export | - |
-| **Include Resource IDs** | ✅ Enabled | Must be checked in "Additional report details" |
-| **Time Granularity** | Hourly | Required for accurate cost tracking |
-| **Compression** | GZIP | Required format |
-| **Data Refresh Settings** | Automatic | Enable "Automatically refresh" |
-| **File Format** | CSV | Parquet is not supported |
+4. Under **Delivery options**, configure the following:
 
-**Connector Configuration**
+   | Setting | Required Value | Notes |
+   |---------|----------------|-------|
+   | **S3 bucket** | Select or create a bucket | Copy the bucket name for the Harness connector |
+   | **S3 path prefix** | Enter any prefix | Note it if you set one |
+   | **Compression** | GZIP | Required format |
+   | **File Format** | CSV | Parquet is not supported |
+   | **Data Refresh Settings** | Automatic | Enable "Automatically refresh" |
 
-When setting up an AWS CACM connector in Harness with Legacy CUR, provide:
-
-| Field | Description | Required |
-|-------|-------------|----------|
-| `reportName` | The exact name of your CUR report in AWS | Yes |
-| `s3BucketName` | The S3 bucket where CUR files are delivered | Yes |
-| `region` | AWS region of the S3 bucket | No (defaults to us-east-1) |
-| `s3Prefix` | S3 prefix path for the report | No |
-
-**Step-by-step setup**
-
-1. Go to AWS Billing Console → **Cost & Usage Reports**.
-2. Click **Create report**.
-3. Select **Legacy CUR export**.
-4. Configure:
-   - Report name: Choose a descriptive name
-   - Include resource IDs: Check this box
-   - Time granularity: Select **Hourly**
-   - Report versioning: **Create new report version**
-5. Configure S3 delivery:
-   - S3 bucket: Select or create a bucket
-   - S3 path prefix: Optional, but note it if you set one
-   - Compression: Select **GZIP**
-6. Review and create.
+5. Review and create the report.
 
 </TabItem>
 </Tabs>
 
-#### Related documentation
+#### Related Documentation
 
 - [AWS CUR User Guide](https://docs.aws.amazon.com/cur/latest/userguide/what-is-cur.html)
 - [Legacy CUR vs CUR 2.0](https://docs.aws.amazon.com/cur/latest/userguide/table-dictionary-cur2.html)
@@ -112,27 +95,22 @@ In the meantime, explore the optional requirements and feature integrations avai
 
 ---
 
-## Cloud Connector Wizard
-Once you've gathered the required AWS details, follow these steps in the Harness setup wizard to connect your AWS account and enable cost visibility.
+## Interactive Guide
 
-### Interactive Guide 
-<DocVideo src="https://app.tango.us/app/embed/f48937b7-996f-45f1-9fd9-b387d2570561?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Add AWS Cloud Cost Connector in Harness" />
+Connect your AWS account to Harness using the connector wizard. Watch the walkthrough below, or follow the [Step-by-Step](#step-by-step) instructions for the full detail on each step.
 
-### Step-by-Step
+<DocVideo src="https://app.tango.us/app/embed/3bcd4491-b41a-434f-8598-3bf6ca4674b5?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Add AWS Cloud Cost Connector in Harness" />
 
-#### Step 1: Add AWS Account Details
+## Step-by-Step
+
+### Step 1: Add AWS Account Details
 1. In the wizard, enter a name for your connector (e.g., `ccm-aws-prod`).
 2. Enter your **12-digit AWS Account ID**.
 3. (Optional) Add a description and tags to help identify this connector later.
 4. If you're using a GovCloud account, select **Yes**; otherwise, leave the default.
 5. Click **Continue**.
 
----
-
-#### Step 2: Select or Create a Cost and Usage Report
-
-<Tabs>
-<TabItem value="new" label="New connector" default>
+### Step 2: Select or Create a Cost and Usage Report
 
 In the connector wizard, select the report type based on the features you need:
 
@@ -162,49 +140,11 @@ In the connector wizard, select the report type based on the features you need:
 </TabItem>
 </Tabs>
 
-</TabItem>
-<TabItem value="migrate" label="Migrating from CUR 1.0">
-
-If you already have an AWS billing connector configured with **CUR 1.0** and want to migrate to **CUR 2.0**:
-
-1. Edit the existing AWS billing connector.
-2. In the **Cost and Usage Report** step, select the **CUR 2.0 (recommended)** tab.
-3. Update the Cross Account IAM role with the required **CUR 2.0** permissions using one of the following methods:
-   - **CloudFormation template (recommended):** Re-run the [CloudFormation template](https://continuous-efficiency.s3.us-east-2.amazonaws.com/setup/v1/ng/HarnessAWSTemplate.yaml), which includes all required permissions for both **CUR 1.0** and **CUR 2.0**.
-   - **Manual:** Add the following permissions directly to the existing Cross Account IAM role:
-
-```json
-{
-  "Action": [
-    "cur:DescribeReportDefinitions",
-    "bcm-data-exports:GetExport",
-    "bcm-data-exports:ListExports",
-    "organizations:Describe*",
-    "organizations:List*"
-  ]
-}
-```
-
-4. Ensure the role also has the required S3 bucket permissions and resource-level access for the Data Export location.
-
-:::note
-After you migrate, AWS generates all new billing data in **CUR 2.0** format. Keep the following in mind:
-
-- **Historical data:** Data from before the migration remains in **CUR 1.0** format and is not automatically converted.
-- **Backfill:** If you need pre-migration data in **CUR 2.0** format, contact AWS Support. AWS can backfill up to 36 months. Harness recommends requesting at least the current year to maintain uninterrupted reporting in Harness CCM.
-
-Go to [Migration to CUR 2.0 - Cloud Intelligence Dashboards on AWS](https://docs.aws.amazon.com/guidance/latest/cloud-intelligence-dashboards/migration-to-cur.html) to understand the full impact of migrating.
-:::
-
-</TabItem>
-</Tabs>
-
 :::info
 Review [Feature Permissions](/docs/cloud-cost-management/feature-permissions) for CACM to understand the minimum IAM roles or policies needed for every CACM feature.
 :::
----
 
-#### Step 3: Choose Requirements
+### Step 3: Choose Requirements
 1. **Cost Visibility** is selected by default and is required, leave it checked.
 2. (Optional) You can enable any of the following features (they can also be added later):
    - Resource Inventory Management
@@ -217,9 +157,7 @@ Review [Feature Permissions](/docs/cloud-cost-management/feature-permissions) fo
 Not sure which options to choose? [Learn more about each feature](#before-you-start).
 :::
 
----
-
-#### Step 4: Authentication (Conditional)
+### Step 4: Authentication (Conditional)
 
 If you have selected **Optimization by AutoStopping**, **Cloud Governance** or **Commitment Orchestration**, in previous step, you can set up Authentication using OIDC. If not selected, this step will not be prompted.
 
@@ -228,20 +166,16 @@ You can enable authentication for your AWS account via
 - Cross Account Role: Created with [custom permissions](/docs/cloud-cost-management/feature-permissions)
 - [OIDC Authentication](/docs/cloud-cost-management/oidc-auth): Federated access with no stored credentials
 
-----
-
-#### Step 5: Enter Cross Account Role Details
+### Step 5: Enter Cross Account Role Details
 1. Paste the **Cross Account Role ARN** you created via the [CloudFormation template](https://continuous-efficiency.s3.us-east-2.amazonaws.com/setup/v1/ng/HarnessAWSTemplate.yaml). You can find it under **CloudFormation → Stacks → Outputs tab** in AWS.
 
 :::note
-If you are using **CUR 2.0**, ensure the Cross Account IAM role has been updated with the **CUR 2.0** permissions by re-running the [CloudFormation template](https://continuous-efficiency.s3.us-east-2.amazonaws.com/setup/v1/ng/HarnessAWSTemplate.yaml) or manually adding them as described in the [Migrating from CUR 1.0](#step-2-select-or-create-a-cost-and-usage-report) tab above.
+If you are using **CUR 2.0**, ensure the Cross Account IAM role has been updated with the **CUR 2.0** permissions by re-running the [CloudFormation template](https://continuous-efficiency.s3.us-east-2.amazonaws.com/setup/v1/ng/HarnessAWSTemplate.yaml) or manually adding them as described in the [Migrating from CUR 1.0](#migrating-from-cur-10) section.
 :::
 2. The **External ID** will be pre-filled. Leave it as is.
 3. Click **Save and Continue**.
 
----
-
-#### Step 6: Verify the Connection
+### Step 6: Verify the Connection
 1. Harness will attempt to validate the connection using your inputs.
 2. If this step fails, it's usually because AWS has not yet delivered the first CUR file.
    - Wait up to **24 hours** after setting up the CUR before trying again.
@@ -250,6 +184,41 @@ If you are using **CUR 2.0**, ensure the Cross Account IAM role has been updated
 ---
 
 🎉 You’ve now connected your AWS account and enabled cost visibility in Harness.
+
+---
+
+## Migrating from CUR 1.0
+
+If you already have an AWS billing connector configured with **CUR 1.0** and want to migrate to **CUR 2.0**:
+
+1. Edit the existing AWS billing connector.
+2. In the **Cost and Usage Report** step, select the **CUR 2.0 (recommended)** tab.
+3. Update the Cross Account IAM role with the required **CUR 2.0** permissions using one of the following methods:
+   - **CloudFormation template (recommended):** Re-run the [CloudFormation template](https://continuous-efficiency.s3.us-east-2.amazonaws.com/setup/v1/ng/HarnessAWSTemplate.yaml), which includes all required permissions for both **CUR 1.0** and **CUR 2.0**.
+   - **Manual:** Add the following permissions directly to the existing Cross Account IAM role:
+
+     ```json
+     {
+       "Action": [
+         "cur:DescribeReportDefinitions",
+         "bcm-data-exports:GetExport",
+         "bcm-data-exports:ListExports",
+         "organizations:Describe*",
+         "organizations:List*"
+       ]
+     }
+     ```
+
+4. Ensure the role also has the required S3 bucket permissions and resource-level access for the Data Export location.
+
+:::note
+After you migrate, AWS generates all new billing data in **CUR 2.0** format. Keep the following in mind:
+
+- **Historical data:** Data from before the migration remains in **CUR 1.0** format and is not automatically converted.
+- **Backfill:** If you need pre-migration data in **CUR 2.0** format, contact AWS Support. AWS can backfill up to 36 months. Harness recommends requesting at least the current year to maintain uninterrupted reporting in Harness CCM.
+
+Go to [Migration to CUR 2.0 - Cloud Intelligence Dashboards on AWS](https://docs.aws.amazon.com/guidance/latest/cloud-intelligence-dashboards/migration-to-cur.html) to understand the full impact of migrating.
+:::
 
 ---
 
