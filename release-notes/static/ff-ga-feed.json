@@ -1,5 +1,12 @@
 [
   {
+    "flagKey": "STO_ISSUE_KEV",
+    "description": "Surfaces CISA Known Exploited Vulnerabilities (KEV) status on the Issues page and Vulnerabilities tab for CVE-associated security issues, and enables OPA policies to warn or block pipelines based on CISA KEV issue count.",
+    "gaStartDate": "2026-07-23",
+    "module": "Security Test Orchestration",
+    "lifecycleState": "Limited GA"
+  },
+  {
     "flagKey": "QUEUED_PIPELINE_OBSERVABILITY",
     "description": "Enables account-level APIs to list queued, waiting, and running pipeline executions, and to bulk-abort queued executions.",
     "gaStartDate": "2026-07-20",
