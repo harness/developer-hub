@@ -1,6 +1,6 @@
 ## July 2026
 
-### Version 1.159.1
+### Version 1.159.3
 
 #### New features and enhancements
 
@@ -11,6 +11,8 @@
 - AWS Auto Scaling Group (ASG) redeployments now **preserve unchanged properties** instead of deleting and recreating them. Harness compares lifecycle hooks, scaling policies, scheduled actions, load balancers, and target groups against your configuration and updates only what changed, keeping in-flight instances and their lifecycle hooks intact. This feature requires the feature flag `CDS_ASG_SKIP_UNCHANGED_PROPERTIES` and a delegate version that includes this behavior. Contact [Harness Support](mailto:support@harness.io) to enable. Go to [ASG deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg/asg-tutorial) to learn more. (**CDS-124833**)
 
 - Harness now supports **bulk post-production rollback across multiple infrastructures**. From the service dashboard you can select multiple infrastructures where a service is deployed and roll them back together, choosing the target execution for each infrastructure before you confirm. This feature requires the feature flag `CDS_BULK_POST_PROD_ROLLBACK`, with `CDC_SERVICE_DASHBOARD_REVAMP_NG` as a prerequisite. Contact [Harness Support](mailto:support@harness.io) to enable. Go to [Rollback deployments](/docs/continuous-delivery/manage-deployments/rollback-deployments) to learn more. (**CDS-125628**)
+
+- The Kubernetes cluster connector now supports the **client credentials** OIDC grant type. In addition to the existing password grant type, you can authenticate to a cluster with a client ID and client secret alone, without a user username or password, which suits machine-to-machine access such as an Azure Kubernetes Service (AKS) cluster fronted by Microsoft Entra ID. Select the grant type when you configure OpenID Connect authentication on the connector. Existing connectors are unaffected and continue to use the password grant type by default. (**CDS-122829**)
 
 #### Fixed issues
 
