@@ -426,6 +426,7 @@ Specify the credentials that enable Harness to connect your AWS account. There a
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import DocImage from '@site/src/components/DocImage';
+import IssuerURI from '/docs/continuous-integration/shared/issueruri.md';
 
 <Tabs>
 <TabItem value="iam" label="Assume IAM Role on Delegate" default>
@@ -808,8 +809,10 @@ To do this, you need to create an [OIDC identity provider](https://docs.aws.amaz
 
 Use the following Harness OIDC provider endpoint and OIDC audience settings to create your OIDC identity provider:
 
-* Harness OIDC provider endpoint: `https://app.harness.io/ng/api/oidc/account/<ACCOUNT_ID>`
+* Harness OIDC provider endpoint: `https://<HOSTNAME>/ng/api/oidc/account/<ACCOUNT_ID>`. The hostname depends on the cluster your account resides in. Go to the table below to determine the correct hostname.
 * OIDC audience: `sts.amazonaws.com`
+
+<IssuerURI />
 
 #### Supported Swimlanes
 
