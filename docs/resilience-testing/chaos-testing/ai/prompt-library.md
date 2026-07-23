@@ -18,6 +18,7 @@ This page is a curated library of natural-language prompts for the Harness MCP s
 
 <PromptLibraryProvider datasetId="resilience-testing">
 
+
 ### Resilience coverage map
 
 <PromptCard promptId="coverage-map" />
@@ -30,9 +31,11 @@ This page is a curated library of natural-language prompts for the Harness MCP s
 
 <PromptCard promptId="resilience-risk" />
 
+
 ### Pod failure experiment design
 
 <PromptCard promptId="pod-failure" />
+
 
 </PromptLibraryProvider>
 

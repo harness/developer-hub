@@ -26,6 +26,8 @@ export const placeholderTooltips: Record<string, string> = {
 
   ENVIRONMENT:
     'Which environment to act in: staging, pre-prod, prod, etc. Most flows should target staging unless you have explicit ChaosGuard rules allowing production.',
+  INFRASTRUCTURE_TYPE:
+    'The chaos infrastructure type. For the pod failure prompt this must be Kubernetes; other prompts may also accept Linux or Windows.',
   RESTRICTED_NAMESPACES:
     'Kubernetes namespaces that chaos experiments must never touch (e.g. payments-prod, database-prod). Used to build a hard ChaosGuard denylist.',
 

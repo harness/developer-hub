@@ -20,21 +20,21 @@ export const prompts: Prompt[] = [
     tags: ['audit', 'coverage', 'risk'],
     useCases: [
       'Find services with zero chaos coverage before a sprint or quarterly review.',
-      'Rank high-risk services that need experiments based on Harness risk scores.',
+      'Rank services that need experiments based on coverage, run recency, and last-run results.',
     ],
-    prompt: `I want a full resilience coverage audit for this project.
+    prompt: `I want a full resilience coverage audit for the [ORGANIZATION] organization and [PROJECT] project.
 
 1. List all chaos experiments in the project and group them by the service they target.
 2. For each service that has experiments, show the experiment names and the last time any of them were run.
 3. Identify any services registered in the project that have no chaos experiments at all.
-4. Pull the chaos_risk data and highlight the top 5 services with the highest unmitigated risk score.
+4. Build a risk-priority ranking of services using the data available from experiments and their runs. Rank a service higher when it has no experiments at all, experiments that have never been run or have not run recently, or a failing last run or low resilience score. Show me the top 5 services that most need attention.
 
 Give me the output as a summary table, then a prioritized list of services that need experiments created.`,
     expectedOutput:
-      'A table with columns: Service Name, Experiment Count, Last Run Date, Risk Score. Below it, a ranked list of services with no coverage or high risk and no recent runs.',
-    resourceTypes: ['chaos_experiment', 'chaos_experiment_run', 'chaos_risk'],
+      'A table with columns: Service Name, Experiment Count, Last Run Date, Last Run Result / Resilience Score. Below it, a ranked list of the top 5 services with no coverage, stale runs, or failing results.',
+    resourceTypes: ['chaos_experiment', 'chaos_experiment_run'],
     notes:
-      'If your project has many services, the agent may need to paginate. You can scope this to a specific environment by adding "filter to the production environment only" to the prompt.',
+      'Replace `[ORGANIZATION]` and `[PROJECT]` with your Harness organization and project before running. If your project has many services, the agent may need to paginate. You can scope this to a specific environment by adding "filter to the production environment only" to the prompt.',
   },
   {
     id: 'fault-catalog',
@@ -49,7 +49,7 @@ Give me the output as a summary table, then a prioritized list of services that 
       'Discover what faults are available in your ChaosHubs across platforms and targets.',
       'Compare fault tunables side-by-side to pick the right one for your experiment.',
     ],
-    prompt: `I need to understand what chaos faults are available before I design an experiment.
+    prompt: `I need to understand what chaos faults are available in the [ORGANIZATION] organization and [PROJECT] project before I design an experiment.
 
 1. List all available chaos hubs connected to this project.
 2. From the enterprise ChaosHub, show me all faults organized by category: Kubernetes, AWS, GCP, Azure, Network, JVM, and Linux.
@@ -61,7 +61,7 @@ Give me enough detail to decide which fault to use in my experiment.`,
       'A grouped list of faults by platform/category. For each fault: name, what it injects, key tunables (duration, affected targets, intensity), and any prerequisites for using it.',
     resourceTypes: ['chaos_hub', 'chaos_fault'],
     notes:
-      'Replace `[FILL IN: ...]` with the specific target you care about. If you are working with a custom ChaosHub or a private fork, the agent will discover that hub too as long as it is connected to your Harness project.',
+      'Replace `[ORGANIZATION]`, `[PROJECT]`, and `[FILL IN: ...]` with your Harness organization, project, and the specific target you care about. If you are working with a custom ChaosHub or a private fork, the agent will discover that hub too as long as it is connected to your Harness project.',
   },
   {
     id: 'resilience-risk',
@@ -73,22 +73,22 @@ Give me enough detail to decide which fault to use in my experiment.`,
       'Rank every service by unmitigated resilience risk and surface AI-generated experiment recommendations you have not acted on yet.',
     tags: ['risk', 'prioritization', 'recommendations'],
     useCases: [
-      'Prioritize a backlog of new experiments based on real, data-driven risk scores.',
+      'Prioritize a backlog of new experiments based on coverage, run recency, and last-run results.',
       'Surface pending AI recommendations for the highest-risk services in your project.',
     ],
-    prompt: `Pull the resilience risk data for all services in this project.
+    prompt: `I want to prioritize which services to test next in the [ORGANIZATION] organization and [PROJECT] project.
 
-1. List every service with a risk score, sorted from highest to lowest.
+1. List every service and derive a resilience risk ranking from experiment coverage and run history. Rank a service higher when it has no experiments, untested faults, no probe coverage, no recent runs, or a failing last run or low resilience score. Sort from highest risk to lowest.
 2. For each high-risk service, tell me what the contributing risk factors are - is it untested faults, no probe coverage, no recent runs, or something else?
 3. Cross-reference with chaos_recommendation data - are there any AI-generated experiment recommendations for the high-risk services that we haven't acted on yet?
-4. Flag any service that has been high-risk for more than 30 days with no new experiments created.
+4. Flag any service that has had no new experiments created or run in the last 30 days.
 
 I want to use this to build a prioritized sprint backlog for the resilience testing team.`,
     expectedOutput:
-      'A ranked list of services with their risk score, top risk factors, and any pending recommendations. A separate flag list of services that have been stale for 30+ days with no new resilience testing.',
-    resourceTypes: ['chaos_risk', 'chaos_recommendation', 'chaos_experiment_run'],
+      'A ranked list of services with their derived risk ranking, top risk factors, and any pending recommendations. A separate flag list of services that have been stale for 30+ days with no new resilience testing.',
+    resourceTypes: ['chaos_recommendation', 'chaos_experiment', 'chaos_experiment_run'],
     notes:
-      'This is the right prompt to run at the start of a quarterly business review or before planning a GameDay. The recommendations data surfaces faults that Harness has identified as relevant but not yet tested against a service.',
+      'Replace `[ORGANIZATION]` and `[PROJECT]` with your Harness organization and project before running. This is the right prompt to run at the start of a quarterly business review or before planning a GameDay. The recommendations data surfaces faults that Harness has identified as relevant but not yet tested against a service.',
   },
   {
     id: 'pod-failure',
@@ -103,23 +103,31 @@ I want to use this to build a prioritized sprint backlog for the resilience test
       'Validate that a Kubernetes service recovers within tolerance after pod deletion.',
       'Confirm probes and alerts fire correctly during a pod crash scenario.',
     ],
-    prompt: `Design and create a chaos experiment to test pod failure for the [SERVICE_NAME] service in the [ENVIRONMENT] environment.
+    prompt: `Create and run a pod-delete chaos experiment in Harness
+organization [ORGANIZATION] / project [PROJECT].
 
-Here is what I want to validate:
-- The service recovers within 60 seconds after a pod is deleted
-- The HTTP endpoint at [ENDPOINT_PATH] returns 200 within 90 seconds of recovery
-- No more than [N] replicas are deleted at once (blast radius limit)
-- Alerts fire in our monitoring system within 30 seconds of the pod going down
+Scope:
+- Environment: [ENVIRONMENT]
+- Infrastructure: [INFRASTRUCTURE] (infrastructure type: [INFRASTRUCTURE_TYPE])
+- Target: Deployment "[TARGET_DEPLOYMENT]" in namespace "[NAMESPACE]" 
 
-Steps I want you to take:
-1. Check what chaos infrastructure is available and healthy in the [ENVIRONMENT] environment
-2. Look up the pod-delete fault in the enterprise ChaosHub and show me its tunables
-3. Create an HTTP probe that checks [ENDPOINT_PATH] for a 200 response
-4. Create a Prometheus probe that validates the alert fired
-5. Create the experiment with both probes attached, targeting the [SERVICE_NAME] deployment, deleting [N] pods, with a chaos duration of 60 seconds
-6. Show me the experiment configuration before saving it so I can review it`,
+Goal: confirm the [NAMESPACE] "[TARGET_DEPLOYMENT]" deployment recovers after a pod delete, using one HTTP health probe to validate steady state.
+
+Steps:
+1. Confirm [INFRASTRUCTURE] in [ENVIRONMENT] is ACTIVE and chaos-enabled before
+   proceeding. Confirm the discovered "[TARGET_DEPLOYMENT]" service exists in namespace
+   "[NAMESPACE]" and report its in-cluster ClusterIP:port — do not proceed if it's missing.
+2. Create an HTTP probe 
+   - URL: the [NAMESPACE]/[TARGET_DEPLOYMENT] service's ClusterIP:port from step 1
+   - Method: GET, expected response code 200
+   - Timeout 5s, interval 5s, 3 retries
+3. Create a pod-delete experiment targeting the [INFRASTRUCTURE] infrastructure in the [ENVIRONMENT] environment
+   - Target: deployment [TARGET_DEPLOYMENT], namespace [NAMESPACE],
+   - Attach the HTTP probe from step 2 in continuous mode
+4. Show me the full experiment configuration and wait for my confirmation before saving.
+5. After I confirm, run the experiment and report the resilience score, probe result, and recovery time.`,
     expectedOutput:
-      'The experiment configuration showing: target workload, fault type and tunables, attached probes with their check intervals, chaos duration, and the infrastructure it will run on. Agent will prompt for confirmation before saving.',
+      'The experiment configuration showing: target deployment and namespace, pod-delete fault, the attached HTTP probe running in continuous mode to validate steady state, and the infrastructure it will run on. Agent will prompt for confirmation before saving, then report resilience score, probe result, and recovery time after the run.',
     resourceTypes: [
       'chaos_infrastructure',
       'chaos_fault',
@@ -127,7 +135,7 @@ Steps I want you to take:
       'chaos_experiment',
     ],
     notes:
-      'Replace `[SERVICE_NAME]`, `[ENVIRONMENT]`, `[ENDPOINT_PATH]`, and `[N]` with your actual values before running this prompt. A good starting value for `[N]` is 1 for a first run. Increase it only after confirming the service recovers correctly from single-pod deletion.',
+      'Replace `[ORGANIZATION]`, `[PROJECT]`, `[ENVIRONMENT]`, `[INFRASTRUCTURE]`, `[INFRASTRUCTURE_TYPE]`, `[TARGET_DEPLOYMENT]`, and `[NAMESPACE]` with your actual values before running this prompt. This experiment deletes a single pod and uses one HTTP probe in continuous mode to validate steady state and measure recovery. Confirm the target infrastructure is ACTIVE and chaos-enabled before running.',
   },
   {
     id: 'network-latency',
