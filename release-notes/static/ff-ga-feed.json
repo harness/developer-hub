@@ -2063,6 +2063,13 @@
     "gaStartDate": "2026-07-21",
     "module": "Supply Chain Security",
     "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "SEND_SECRET_REF_FOR_SHELLSCRIPT_VARIABLES",
+    "description": "Enables the ShellScript step to receive secret references when secrets are used as step variables, so secret values are resolved securely at runtime instead of being passed as plain text.",
+    "gaStartDate": "2026-07-23",
+    "module": "Continuous Delivery",
+    "lifecycleState": "Limited GA"
   }
 ]
 
