@@ -17,6 +17,12 @@ The release notes describe recent changes to Harness AI SRE.
 
 :::
 
+## July 2026
+
+#### New Features and Enhancements
+
+- **Worker Agent and Pipeline Outputs in Root Cause Analysis:** Extend the data the AI Investigator reasons over during root-cause analysis. A runbook flagged as exposed to AI runs during an investigation, either triggered automatically or executed with a human in the loop, and the output of its actions is fed into the RCA interpretation. Within a runbook you compose out-of-the-box actions and Harness Pipeline executions, including worker agents, so if a task can run in a pipeline, such as pulling logs, querying an internal service, or reading source to trace an error, its results can enrich the investigation. This is an Early Access feature; contact your Harness representative to enable it. Go to [Use Investigator Agent Pipelines](/docs/ai-sre/ai-agent/investigator-agent-pipelines) to configure a runbook exposed to the AI Investigator.
+
 ## June 2026
 
 #### New Features and Enhancements
