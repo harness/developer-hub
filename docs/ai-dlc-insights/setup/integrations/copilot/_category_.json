@@ -1,0 +1,11 @@
+{
+    "label":"GitHub Copilot",
+    "position": 5,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className": "sidebar-item-beta",
+    "link":{
+       "type":"generated-index",
+       "title":"GitHub Copilot"
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "label":"Windsurf",
+    "position": 4,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className": "sidebar-item-beta",
+    "link":{
+       "type":"generated-index",
+       "title":"Windsurf"
+    }
+}

@@ -67,16 +67,6 @@ Harness AIDI supports a variety of platforms, repos, tools, and related technolo
 * [Azure DevOps Pipelines](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/azure-devops/)
 * [GitHub Actions](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/github-actions/sei-github-actions)
 
-### Beta integrations
-
-* [ArmorCode](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/armorcode/)
-* [SonarQube](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/beta-integrations/sonarqube/sei-integration-sonarqube)
-* [PagerDuty](/docs/software-engineering-insights/propelo-sei/setup-sei/configure-integrations/beta-integrations/sei-integration-pagerduty)
-* [ServiceNow](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/servicenow/)
-* [Cursor](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/cursor/)
-* [Windsurf](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/windsurf/)
-* [GitHub Copilot](/docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/copilot/)
-
 Use the [Ingestion Satellites](/docs/software-engineering-insights/propelo-sei/setup-sei/sei-ingestion-satellite/satellite-overview) service within your local network or VPC to connect your artifacts, issue management, collaboration tools, source code managers, and other providers to Harness AIDI.
 
 :::info

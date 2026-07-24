@@ -1,6 +1,6 @@
 {
     "label":"Jira",
-    "position": 2,
+    "position": 6,
     "collapsible":"true",
     "collapsed":"true",
     "className":"default",

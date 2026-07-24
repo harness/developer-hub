@@ -1,6 +1,6 @@
 {
     "label":"Jenkins",
-    "position": 9,
+    "position": 11,
     "collapsible":"true",
     "collapsed":"true",
     "className":"default",

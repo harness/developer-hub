@@ -1,11 +1,11 @@
 {
-    "label":"Bitbucket",
-    "position": 8,
+    "label":"Cursor",
+    "position": 3,
     "collapsible":"true",
     "collapsed":"true",
-    "className":"default",
+    "className": "sidebar-item-beta",
     "link":{
        "type":"generated-index",
-       "title":"Bitbucket"
+       "title":"Cursor"
     }
 }
