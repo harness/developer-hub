@@ -1,0 +1,49 @@
+## Objective
+
+Outline the steps that need to be taken to gather logs needed for various troubleshooting scenarios. Each deployment method will require slightly different steps.
+
+---
+
+## Process
+
+### Kubernetes:
+
+1. **Find the pod that the platform agent is running on:**
+
+    ```bash
+    $ kubectl get pods -n tracebableai
+    NAME                            READY STATUS  RESTARTS AGE
+    traceable-agent-d659d966b-djnvg 1/1   Running 0        16d
+    ```
+
+2. **Copy the pod name and get logs from the pod:**
+
+    ```bash
+    $ kubectl logs traceable-agent-d659d966b-djnvg -n traceableai
+    ```
+
+3. **Save the logs to a text file and send to the Traceable support team** (optional):
+
+    ```bash
+    $ kubectl logs traceable-agent-d659d966b-djnvg -n traceableai >> platform_agent.log
+    ```
+
+4. **Send the file to: [support@traceable.ai](mailto:support@traceable.ai)**
+
+---
+
+### Virtual Machine:
+
+1. **Find the log with the latest timestamp:**
+
+    ```bash
+    $ ls /var/traceable/log/
+    ```
+
+2. **View the desired log file:**
+
+    ```bash
+    $ cat /var/traceable/log/traceable.<TIMESTAMP>.log
+    ```
+
+3. **Send to [support@traceable.ai](mailto:support@traceable.ai)** or create a ticket and describe the issue. (optional)
