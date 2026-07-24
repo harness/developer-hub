@@ -27,7 +27,7 @@ Harness account limits for different license types are specified below:
 | [Service Accounts](/docs/platform/role-based-access-control/add-and-manage-service-account)                   | MULTIPLE_SERVICE_ACCOUNTS   | 100  | 6,000      | 6,000      |
 | [Variables](/docs/platform/variables-and-expressions/add-a-variable)                                          | MULTIPLE_VARIABLES          | 100  | 90,000     | 90,000     |
 | [API Keys](/docs/platform/automation/api/add-and-manage-api-keys/)                                            | MULTIPLE_API_KEYS           | 100  | 6,000      | 6,000      |
-| [API Tokens](/docs/platform/automation/api/add-and-manage-api-keys/)                                          | MULTIPLE_API_TOKENS         | 100  | 6,000      | 6,000      |
+| [API Tokens](/docs/platform/automation/api/add-and-manage-api-keys/)                                          | MULTIPLE_API_TOKENS         | 100  | 20,000     | 20,000     |
 | [Connectors](/docs/platform/connectors/create-a-connector-using-yaml)                                         | MULTIPLE_CONNECTORS         | 100  | 75,000     | 75,000     |
 | [Secret Managers](/docs/platform/secrets/secrets-management/harness-secret-manager-overview)                  | SECRET_MANAGERS             | N/A    | 16,000     | 16,000     |
 | [Roles](/docs/platform/role-based-access-control/add-manage-roles)                                            | CUSTOM_ROLES                | N/A    | 5          | 21,000     |
