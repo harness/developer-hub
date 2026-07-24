@@ -168,6 +168,17 @@ export const spt: IltCardItem[] = [
     cardType: cardType.SPT,
   },
   {
+    title: "Introduction to CI Security Scan",
+    module: MODULES.ci,
+    type: type.user,
+    description:
+      "Self-paced tidbit introducing CI Security Scan.",
+    version: "Harness CI Paid Plans",
+    link: "https://university-registration.harness.io/self-paced-training-tidbit-introduction-to-ci-security-scan",
+    tileType: tileType.normal,
+    cardType: cardType.SPT,
+  },
+  {
     title: "Introduction to Test Intelligence",
     module: MODULES.ci,
     type: type.user,
