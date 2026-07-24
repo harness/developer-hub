@@ -114,6 +114,34 @@ To perform a Post-Deployment Rollback, the user must have the following permissi
 
 A user will only be allowed to execute rollbacks on any instance if they possess these two permissions for the pipeline and environment through which the deployment occurred. Otherwise, they will see the following message when attempting to click Rollback.
 
+## Roll back multiple infrastructures in a single action
+
+:::note
+This feature is behind the feature flag `CDS_BULK_POST_PROD_ROLLBACK`. The feature flag `CDC_SERVICE_DASHBOARD_REVAMP_NG` is also required as a prerequisite. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+A single service is often deployed to several environments and infrastructures at the same time. When you need to revert that service across all of them, rolling back one infrastructure at a time is slow. Bulk rollback lets you select multiple infrastructures from the service dashboard and trigger the rollback for all of them in one action.
+
+Harness processes each selected infrastructure independently. If the rollback for one infrastructure fails, the remaining infrastructures still roll back, and Harness reports the outcome for each target separately.
+
+### Roll back multiple infrastructures
+
+To roll back a service across multiple infrastructures at once, do the following:
+
+1. Open your [services dashboard](/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments#individual-service-dashboards) and select the service you want to roll back.
+2. In **Summary**, select the **instances** link to open the **Bulk Rollback - Instance details** view. This view lists every environment and infrastructure where the service is currently deployed, along with the environment type, infrastructure, chart version, artifact, and instance count for each row.
+3. Select the checkbox next to each infrastructure you want to roll back. You can use the search bar to filter the list when the service is deployed to many infrastructures.
+4. To review the deployed instances for a row before you select it, select the view icon in the **Action** column. The **Instance Details** panel shows the pod, artifact, container list, namespace, release name, and deployment metadata for that infrastructure.
+5. Select **Rollback selected**.
+6. In the **Confirm Rollback** dialog, review each infrastructure and its current artifact. For every infrastructure, select the execution to use for the rollback under **Select Execution to Use for Rollback**. Each execution card shows the instances, artifact, infrastructure, and deployment details for that execution, so you can confirm the target state before you proceed.
+7. Select **Confirm Rollback**.
+
+Harness triggers a rollback execution for each selected infrastructure and reports how many rollbacks were triggered and how many failed. You can track the progress of each rollback from its pipeline execution view.
+
+### Permissions required for bulk rollback
+
+The permissions for bulk rollback are the same as for a single post deployment rollback. For every infrastructure you select, you need Pipeline **Execute** permission for the pipeline that performed the deployment and Environment **Rollback** permission for the target environment. Harness skips any infrastructure for which you do not have both permissions and reports it as a failed target in the response.
+
 ## Pipeline-Level Service Rollback
 
 :::note
@@ -196,3 +224,5 @@ The rollback execution will begin immediately, and you can track its progress in
 ## Rollback Using API
 
 You can roll back deployments programmatically using Harness APIs. For more information, go to [Harness API Documentation](https://apidocs.harness.io/tag/Rollback).
+
+To roll back multiple service, environment, and infrastructure targets in a single request, go to the [batch rollback API reference](https://apidocs.harness.io/rollback/triggerrollbackv3).
