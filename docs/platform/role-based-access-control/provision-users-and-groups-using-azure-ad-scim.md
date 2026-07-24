@@ -24,9 +24,9 @@ You need an understanding of:
 * [Harness' key concepts](/docs/platform/get-started/key-concepts.md).
 * [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
 
-You must be an Administrator in your Microsoft Entra ID account, and you must be an **Account Admin** in Harness.
+You must be an Administrator in your Microsoft Entra ID account, and you must have atleast the permissions to 'manage' and 'create/edit' account level service accounts and 'create/edit' account roles in Harness in order to perform all the steps necessary to provide an API key to Entra for provisioning. Generally, the steps below are handled by a Harness Admin.
 
-You need a Harness [API key and unexpired token](/docs/platform/automation/api/add-and-manage-api-keys) that has all **Users** and **User Groups** [permissions](/docs/platform/automation/api/api-permissions-reference). API keys inherit permissions from the user they are associated with. If you use an API key for a [service account](./add-and-manage-service-account.md), make sure the service account has all **Users** and **User Groups** permissions.
+You need to create a Harness [API key and unexpired token](/docs/platform/automation/api/add-and-manage-api-keys) that has all (view+manage+invite) **Users** and **User Groups** [permissions](/docs/platform/automation/api/api-permissions-reference). API keys inherit permissions from the user they are associated with. It is recommended that a separate service account is created for SCIM. Similar to a user API key, if you create an API key for a [service account](./add-and-manage-service-account.md), make sure the service account is binded with a role containg all (view+manage+invite) **Users** and **User Groups** permissions.
 
 ## Add Harness in Microsoft Entra ID
 
