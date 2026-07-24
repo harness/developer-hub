@@ -24,9 +24,38 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 ### New features and enhancements
 
-#### Version 1.94.4
+#### Version 1.95.2
 
 <details open>
+<summary>Required images</summary>
+
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
+
+- harness/chaos-ddcr:1.95.0
+- harness/chaos-ddcr-faults:1.95.0
+- harness/chaos-log-watcher:1.95.0
+- harness/service-discovery-collector:0.75.0
+
+</details>
+
+- Added support for custom service agent based services. You can now onboard and manage services that run their own chaos service agent instead of relying only on discovery-based onboarding.
+- Added infrastructure type selection during service onboarding, which associates a service with the correct infrastructure from the start.
+- Probe tuning in the experiment studio now inherits probe inputs from the linked Chaos Service, so inputs are pre-populated instead of re-entered. This behavior is gated by the `CHAOS_RISK_SERVICES_ENABLED` feature flag.
+- Added service linking for load tests. You can now associate a load test with a service directly from the UI.
+- Added image registry support for load testing across the frontend, backend, and DDCR, so load test runs can pull images from your configured registry at runtime.
+- Added load profile enforcement for JMeter load tests. The number of users, duration, and ramp-up are now surfaced and applied consistently across script, zip, and custom-image modes.
+- Added Datadog probe templates to the Enterprise ChaosHub, giving you ready-made Datadog health-check probes to start from.
+- Added an API to list all services associated with a probe identity, which shows where a probe is used across your services.
+- Added support for `serviceId` inside `probeRef` in the experiment YAML. A probe reference can now point to a specific service.
+- Moved Chaos away from embedded dashboards. Dashboards now render natively instead of through an embedded view.
+- Added list and details views for pipeline scans, letting you review scan results directly in the UI.
+- Added scanned risks pages that display the risks identified during scans.
+- Added a template-based flow for load tests. The load step, composite load stage, and pipeline now use templates instead of inline steps.
+- Removed the redundant check when confirming network map and service creation, reducing duplicate validations during onboarding.
+
+#### Version 1.94.4
+
+<details>
 <summary>Required images</summary>
 
 Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
@@ -91,6 +120,12 @@ Listed below are the images to download to use [image registry with Harness Dele
 - Added an abort trigger when a remote resource times out
 
 ### Fixed issues
+
+#### Version 1.95.2
+
+- Fixed an issue where adding a fault, probe, or action step template did not show variables or runtime inputs at the account and organization scope.
+- Fixed a sync issue with action and probe templates.
+- Upgraded the go-redis package in the Linux IFC infrastructure component to fix CVE-2025-29923.
 
 #### Version 1.94.4
 
