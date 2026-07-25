@@ -1,0 +1,11 @@
+{
+  "label": "AI Agents Deployment",
+  "position": "8",
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "AI Agents Deployment"
+  }
+}
