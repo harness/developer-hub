@@ -513,6 +513,11 @@ You can override the default by setting the environment variable on your delegat
 
 ## January 2026
 
+### Version 26.01.88306 <!--January 29, 2026-->
+
+#### Fixed issues
+- Improved error handling for the manager file upload API. [CDS-128314]
+
 ### Version 26.01.88303 <!--January 29, 2026-->
 
 :::note
