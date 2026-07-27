@@ -339,6 +339,25 @@ The following expressions reference information about a pipeline run, such as th
 * `<+pipeline.branch>`: For remote pipelines, the expression resolves to the Git branch where the pipeline exists. For inline pipelines, the expression resolves to `null`.
 * `<pipeline.orgIdentifier`>: The [identifier](../references/entity-identifier-reference.md) of an organization in your Harness account. The referenced organization is the pipeline's organization. 
 
+### Input set expressions
+
+When a pipeline execution uses one or more input sets, Harness exposes metadata about those input sets as runtime expressions. You can use these expressions anywhere in your pipeline to reference input set details. For example, you can include an input set name in an Artifactory repository path or log which input sets were applied during a run.
+
+Input set expressions use a zero-based array index. If multiple input sets are applied to an execution, use the index to reference each one: `<+inputSet.details[0].name>` for the first, `<+inputSet.details[1].name>` for the second, and so on.
+
+| Expression | Description |
+|---|---|
+| `<+inputSet.details[0].identifier>` | The identifier of the input set. |
+| `<+inputSet.details[0].name>` | The name of the input set. |
+| `<+inputSet.details[0].description>` | The description of the input set. |
+| `<+inputSet.details[0].inputSetType>` | The type of the input set: `INPUT_SET` or `OVERLAY_INPUT_SET`. |
+| `<+inputSet.details[0].tags>` | The [tags](/docs/platform/references/tags-reference) on the input set. |
+| `<+inputSet.details[0].orgIdentifier>` | The identifier of the organization the input set belongs to. |
+| `<+inputSet.details[0].projectIdentifier>` | The identifier of the project the input set belongs to. |
+| `<+inputSet.details[0].pipelineIdentifier>` | The identifier of the pipeline the input set is associated with. |
+
+These expressions resolve at runtime only when the execution was triggered with one or more input sets. If the pipeline was run without any input sets, the `details` array is empty and these expressions resolve to `null`.
+
 ### Secrets expressions
 
 The primary way to reference secrets is with expressions like `<+secrets.getValue("SECRET_ID")>`.
