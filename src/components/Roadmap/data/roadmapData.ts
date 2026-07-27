@@ -132,7 +132,7 @@ const ModuleData: ModuleData[] = [
   },
   {
     title: "Internal Developer Portal",
-    description: "SaaS release status: GA, SMP release status: On Roadmap",
+    description: "SaaS release status: GA",
     module: MODULES.idp,
     horizon: IdpData,
     moduleTheme: idpModuleTheme,
