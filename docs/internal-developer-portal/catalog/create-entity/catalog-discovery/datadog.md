@@ -16,10 +16,6 @@ For each service, the integration collects the following resources from Datadog:
 | **SLO** | Service Level Objective data associated with the service. |
 | **Service Dependency** | Upstream and downstream service relationships, scoped to an environment you configure. |
 
-:::info
-Service dependencies (upstream/downstream) ingested from Datadog are displayed on the entity page but are not used to auto-detect or create relationships between entities in the IDP Catalog.
-:::
-
 ---
 
 ## Before you begin
