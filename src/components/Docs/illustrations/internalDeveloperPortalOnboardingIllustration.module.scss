@@ -1,0 +1,330 @@
+@use "./shared/motion" as motion with (
+  $cycle: 8s,
+  $nodes: 5,
+  $lead: 0.35s
+);
+
+/* ------------------------------------------------------------------ *
+ * ONE CLOCK.
+ *
+ * Everything runs off a single cycle and a single evenly-spaced beat,
+ * so the whole thing reads as one progress pulse travelling the
+ * pipeline - not several independent loops. The clock itself (cycle/
+ * beat/fire), the color-free keyframe shapes, and the shared semantic
+ * colors live in ./shared/_motion.scss.
+ * ------------------------------------------------------------------ */
+
+.illustration {
+  width: 80%;
+  height: auto;
+  overflow: visible;
+}
+
+.paused * {
+  animation-play-state: paused !important;
+}
+
+/* ---------- static / theme-aware styling ---------- */
+
+.nodeBg {
+  fill: #14b8ab;
+  opacity: 0.08;
+}
+
+.nodeBgFade {
+  @include motion.node-bg-fade;
+}
+
+.iconStroke {
+  fill: none;
+  stroke: url(#idpGrad);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.shaftLine {
+  stroke: #14b8ab;
+  stroke-width: 3.5;
+  stroke-linecap: round;
+}
+
+.codeLine {
+  stroke: var(--ifm-color-emphasis-300);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.graphLine {
+  stroke: #14b8ab;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.graphNode {
+  fill: url(#idpGrad);
+}
+
+.squareOutline {
+  fill: none;
+  stroke: var(--ifm-color-emphasis-400);
+  stroke-width: 1.5;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  fill: var(--ifm-color-emphasis-700);
+}
+
+.connectorLine {
+  @include motion.dash-flow(var(--ifm-color-emphasis-300));
+}
+
+/* ---------- motion: the single travelling pulse ---------- */
+
+// Standard 5-node/660px geometry, so the translateX/opacity schedule below
+// is identical to the shared standard `travel` keyframe - only the fill
+// colors differ. IDP has no governance-style approval gate at node 4, so
+// this does not switch to the universal $color-success; it keeps its own
+// neutral-to-brand-teal handoff (matching this file's original design)
+// at the same node-4 beat the standard schedule uses.
+@keyframes travelIdp {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+    fill: motion.$color-travel-neutral;
+  }
+  2% {
+    transform: translateX(0);
+    opacity: 0;
+    fill: motion.$color-travel-neutral;
+  }
+  3% {
+    transform: translateX(15px);
+    opacity: 1;
+    fill: motion.$color-travel-neutral;
+  }
+  17% {
+    transform: translateX(155px);
+    opacity: 1;
+    fill: motion.$color-travel-neutral;
+  }
+  18% {
+    transform: translateX(170px);
+    opacity: 0;
+    fill: motion.$color-travel-neutral;
+  }
+  22% {
+    transform: translateX(170px);
+    opacity: 0;
+    fill: motion.$color-travel-neutral;
+  }
+  23% {
+    transform: translateX(185px);
+    opacity: 1;
+    fill: motion.$color-travel-neutral;
+  }
+  37% {
+    transform: translateX(325px);
+    opacity: 1;
+    fill: motion.$color-travel-neutral;
+  }
+  38% {
+    transform: translateX(340px);
+    opacity: 0;
+    fill: motion.$color-travel-neutral;
+  }
+  42% {
+    transform: translateX(340px);
+    opacity: 0;
+    fill: motion.$color-travel-neutral;
+  }
+  43% {
+    transform: translateX(355px);
+    opacity: 1;
+    fill: motion.$color-travel-neutral;
+  }
+  57% {
+    transform: translateX(485px);
+    opacity: 1;
+    fill: motion.$color-travel-neutral;
+  }
+  58% {
+    transform: translateX(500px);
+    opacity: 0;
+    fill: #14b8ab;
+  }
+  62% {
+    transform: translateX(500px);
+    opacity: 0;
+    fill: #14b8ab;
+  }
+  63% {
+    transform: translateX(515px);
+    opacity: 1;
+    fill: #14b8ab;
+  }
+  77% {
+    transform: translateX(645px);
+    opacity: 1;
+    fill: #14b8ab;
+  }
+  78% {
+    transform: translateX(660px);
+    opacity: 0;
+    fill: #14b8ab;
+  }
+  100% {
+    transform: translateX(660px);
+    opacity: 0;
+    fill: #14b8ab;
+  }
+}
+
+.travelDot {
+  fill: motion.$color-travel-neutral;
+  animation: travelIdp motion.$cycle linear infinite backwards;
+}
+
+.pulseRing {
+  @include motion.pulse-ring(#14b8ab);
+}
+
+@include motion.pulse-delay-classes;
+
+/* Stage exception: "Track service health" is an always-on background
+   activity, so instead of waiting for the travel dot to arrive, this ring
+   pulses continuously from the start and loops independently of the clock. */
+.pulseRingEarly {
+  @include motion.pulse-ring-early(#14b8ab);
+}
+
+.nodeBgFadeEarly {
+  @include motion.node-bg-fade-early;
+}
+
+.catalogBlock {
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation: buildBlock motion.$cycle ease-in-out infinite backwards;
+}
+.catalogBlock1 {
+  animation-delay: motion.fire(1);
+}
+.catalogBlock2 {
+  animation-delay: motion.fire(1) + 0.14s;
+}
+.catalogBlock3 {
+  animation-delay: motion.fire(1) + 0.28s;
+}
+.catalogBlock4 {
+  animation-delay: motion.fire(1) + 0.42s;
+}
+
+.sparklePulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: magnifyPulse motion.$cycle ease-in-out infinite backwards;
+  animation-delay: motion.fire(2);
+}
+
+.heartbeatLine {
+  stroke-dasharray: 115;
+  animation: heartbeatDraw 1.8s ease-in-out infinite;
+}
+
+.statusDot {
+  fill: #249789;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: glowHigh 1.8s ease-in-out infinite;
+}
+
+.magnifyPulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: magnifyPulse motion.$cycle ease-in-out infinite backwards;
+  animation-delay: motion.fire(4);
+}
+
+.teamNode {
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation: buildBlock motion.$cycle ease-in-out infinite backwards;
+}
+.teamNode1 {
+  animation-delay: motion.fire(5);
+}
+.teamNode2 {
+  animation-delay: motion.fire(5) + 0.14s;
+}
+.teamNode3 {
+  animation-delay: motion.fire(5) + 0.28s;
+}
+
+@keyframes heartbeatDraw {
+  0% {
+    stroke-dashoffset: 115;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes glowHigh {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .connectorLine,
+  .travelDot,
+  .pulseRing,
+  .nodeBgFade,
+  .pulseRingEarly,
+  .nodeBgFadeEarly,
+  .catalogBlock,
+  .sparklePulse,
+  .heartbeatLine,
+  .statusDot,
+  .magnifyPulse,
+  .teamNode {
+    animation: none !important;
+  }
+
+  .travelDot {
+    opacity: 0;
+  }
+  .catalogBlock {
+    opacity: 1;
+    transform: none;
+  }
+  .heartbeatLine {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  .statusDot {
+    opacity: 1;
+  }
+  .teamNode {
+    opacity: 1;
+    transform: none;
+  }
+}

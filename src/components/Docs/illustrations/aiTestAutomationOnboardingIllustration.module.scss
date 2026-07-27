@@ -1,0 +1,357 @@
+@use "./shared/motion" as motion with (
+  $cycle: 8s,
+  $nodes: 5,
+  $lead: 0.35s
+);
+
+/* ------------------------------------------------------------------ *
+ * ONE CLOCK. See iacmOnboardingIllustration.module.scss for the full
+ * explanation of the shared timing system - everything here runs off
+ * the same cycle/beat/fire clock from ./shared/_motion.scss.
+ *
+ * This flow has no gate/approval step at node 4 that flips the travel
+ * dot's color, so the travel dot stays a single neutral color for its
+ * whole trip. Stage 2 ("AI generates test cases") is always-on
+ * background work independent of the travel dot, so it keeps the
+ * pulseRingEarly/nodeBgFadeEarly exception instead of the standard
+ * pulseN beat - there is accordingly no pulse2 in use below.
+ * ------------------------------------------------------------------ */
+
+.illustration {
+  width: 80%;
+  height: auto;
+  overflow: visible;
+}
+
+.paused * {
+  animation-play-state: paused !important;
+}
+
+/* ---------- static / theme-aware styling ---------- */
+
+.nodeBg {
+  fill: #b703cc;
+  opacity: 0.08;
+}
+
+.nodeBgFade {
+  @include motion.node-bg-fade;
+}
+
+.nodeBgFadeEarly {
+  @include motion.node-bg-fade-early;
+}
+
+.iconStroke {
+  fill: none;
+  stroke: url(#ataGrad);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.shaftLine {
+  /* solid color, not the gradient: a purely horizontal/vertical line has a
+     zero-height or zero-width bounding box, which makes an
+     objectBoundingBox gradient render invisible in some SVG engines */
+  stroke: #8f02a1;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.squareOutline {
+  fill: none;
+  stroke: var(--ifm-color-emphasis-400);
+  stroke-width: 1.5;
+}
+
+.bubbleOutline {
+  fill: none;
+  stroke: url(#ataGrad);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.typingDot {
+  fill: url(#ataGrad);
+}
+
+/* alert (broken locator) styling: a warm, distinct color so it reads as
+   "problem found" before it fades into the brand fix */
+.alertOutline {
+  fill: rgba(229, 72, 77, 0.08);
+  stroke: #e5484d;
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+.alertStem {
+  /* solid color, not the gradient: a purely vertical line has a zero-width
+     bounding box, which makes an objectBoundingBox gradient render invisible
+     in some SVG engines */
+  stroke: #e5484d;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.alertDot {
+  fill: #e5484d;
+}
+
+.fixRing {
+  fill: none;
+  stroke: url(#ataGrad);
+  stroke-width: 2;
+}
+
+.fixCheck {
+  fill: none;
+  stroke: url(#ataGrad);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  fill: var(--ifm-color-emphasis-700);
+}
+
+.connectorLine {
+  @include motion.dash-flow(var(--ifm-color-emphasis-300));
+}
+
+/* ---------- motion: the single travelling pulse ---------- */
+
+/* single neutral color for the whole trip - see note at the top of this
+   file for why this flow does not use the shared two-tone travel-dot
+   mixin. Percentage/translateX schedule matches the shared standard
+   5-node layout exactly (see shared/_motion.scss travel keyframe). */
+@keyframes travelAiTestAutomation {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  2% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  3% {
+    transform: translateX(15px);
+    opacity: 1;
+  }
+  17% {
+    transform: translateX(155px);
+    opacity: 1;
+  }
+  18% {
+    transform: translateX(170px);
+    opacity: 0;
+  }
+  22% {
+    transform: translateX(170px);
+    opacity: 0;
+  }
+  23% {
+    transform: translateX(185px);
+    opacity: 1;
+  }
+  37% {
+    transform: translateX(325px);
+    opacity: 1;
+  }
+  38% {
+    transform: translateX(340px);
+    opacity: 0;
+  }
+  42% {
+    transform: translateX(340px);
+    opacity: 0;
+  }
+  43% {
+    transform: translateX(355px);
+    opacity: 1;
+  }
+  57% {
+    transform: translateX(485px);
+    opacity: 1;
+  }
+  58% {
+    transform: translateX(500px);
+    opacity: 0;
+  }
+  62% {
+    transform: translateX(500px);
+    opacity: 0;
+  }
+  63% {
+    transform: translateX(515px);
+    opacity: 1;
+  }
+  77% {
+    transform: translateX(645px);
+    opacity: 1;
+  }
+  78% {
+    transform: translateX(660px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(660px);
+    opacity: 0;
+  }
+}
+
+.travelDot {
+  fill: motion.$color-travel-neutral;
+  animation: travelAiTestAutomation motion.$cycle linear infinite backwards;
+}
+
+.pulseRing {
+  @include motion.pulse-ring(#b703cc);
+}
+
+.pulseRingEarly {
+  @include motion.pulse-ring-early(#b703cc);
+}
+
+@include motion.pulse-delay-classes;
+
+/* Stage 1 - Capture the user flow: the click/record magnifier pops once
+   on the beat, reusing the shared burst shape. */
+.magnifyPulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: magnifyPulse motion.$cycle ease-in-out infinite backwards;
+  animation-delay: motion.fire(1);
+}
+
+/* Stage 2 - "AI generates test cases" is always-on background work, so
+   the ring above pulses continuously (pulseRingEarly) instead of
+   waiting on the travel dot. The typing indicator stays independent of
+   the shared clock too, to read as continuous generation. */
+.typingDot {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: typingBlink 1.2s ease-in-out infinite;
+}
+.typing1 {
+  animation-delay: 0s;
+}
+.typing2 {
+  animation-delay: 0.2s;
+}
+.typing3 {
+  animation-delay: 0.4s;
+}
+
+@keyframes typingBlink {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Stage 3 - Self-heal on UI changes: the broken locator flashes then
+   dims, the fix pops in and glows and holds, using the shared decide
+   keyframes - the same "muted vs bright" idiom as a fork's outcome. */
+.alertGroup {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: decideBlocked motion.$cycle ease-out infinite backwards;
+  animation-delay: motion.fire(3);
+}
+
+.fixGroup {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: decideApproved motion.$cycle ease-out infinite backwards;
+  animation-delay: motion.fire(3);
+}
+
+/* Stage 4 - Run across browsers in parallel: the lanes grow in on the
+   beat, reusing the shared barPulse burst shape. */
+.laneBar {
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation: barPulse motion.$cycle ease-in-out infinite backwards;
+}
+.lane1 {
+  animation-delay: motion.fire(4);
+}
+.lane2 {
+  animation-delay: motion.fire(4) + 0.12s;
+}
+.lane3 {
+  animation-delay: motion.fire(4) + 0.24s;
+}
+
+/* Stage 5 - Ship faster with confidence: the forward chevrons are a
+   continuous decorative "moving ahead" accent, independent of the
+   shared clock. */
+.chevron {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: chevronFlow 1.4s ease-in-out infinite;
+}
+.chevronA {
+  animation-delay: 0s;
+}
+.chevronB {
+  animation-delay: 0.25s;
+}
+
+@keyframes chevronFlow {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: translateX(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(4px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .connectorLine,
+  .travelDot,
+  .pulseRing,
+  .nodeBgFade,
+  .pulseRingEarly,
+  .nodeBgFadeEarly,
+  .magnifyPulse,
+  .typingDot,
+  .alertGroup,
+  .fixGroup,
+  .laneBar,
+  .chevron {
+    animation: none !important;
+  }
+
+  .travelDot {
+    opacity: 0;
+  }
+  .magnifyPulse {
+    transform: scale(1);
+  }
+  .alertGroup {
+    opacity: 0.3;
+  }
+  .fixGroup {
+    opacity: 1;
+    transform: none;
+  }
+  .laneBar {
+    transform: scaleY(0.55);
+  }
+  .chevron {
+    opacity: 1;
+    transform: none;
+  }
+}

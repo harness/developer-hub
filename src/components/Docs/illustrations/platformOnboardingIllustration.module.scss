@@ -1,0 +1,386 @@
+@use "./shared/motion" as motion with (
+  $cycle: 8s,
+  $nodes: 5,
+  $lead: 0.35s
+);
+
+/* ------------------------------------------------------------------ *
+ * ONE CLOCK.
+ *
+ * Everything runs off a single cycle and a single evenly-spaced beat,
+ * so the whole thing reads as one progress pulse travelling the
+ * pipeline - not several independent loops. The clock itself (cycle/
+ * beat/fire), the color-free keyframe shapes, and the shared semantic
+ * colors live in ./shared/_motion.scss.
+ * ------------------------------------------------------------------ */
+
+.illustration {
+  width: 80%;
+  height: auto;
+  overflow: visible;
+}
+
+.paused * {
+  animation-play-state: paused !important;
+}
+
+/* ---------- static / theme-aware styling ---------- */
+
+.nodeBg {
+  fill: #00abe4;
+  opacity: 0.08;
+}
+
+.nodeBgFade {
+  @include motion.node-bg-fade;
+}
+
+.lockShackle {
+  fill: none;
+  stroke: url(#platformGrad);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.keyhole {
+  fill: #0074a8;
+}
+
+.keyholeStem {
+  /* solid color, not the gradient: a purely vertical line has a zero-width
+     bounding box, which makes an objectBoundingBox gradient render invisible
+     in some SVG engines */
+  stroke: #0074a8;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.keyHead {
+  fill: none;
+  stroke: url(#platformGrad);
+  stroke-width: 2.5;
+}
+
+.keyShaft {
+  stroke: url(#platformGrad);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.docOutline {
+  fill: rgba(0, 171, 228, 0.08);
+  stroke: url(#platformGrad);
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+.docLine {
+  stroke: var(--ifm-color-emphasis-300);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+.stampCircle {
+  fill: none;
+  stroke: url(#platformGrad);
+  stroke-width: 2;
+}
+
+.stampCheck {
+  fill: none;
+  stroke: #0074a8;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.pipeLine {
+  stroke: var(--ifm-color-emphasis-300);
+  stroke-width: 1.5;
+}
+
+.eyeOutline {
+  fill: rgba(0, 171, 228, 0.08);
+  stroke: url(#platformGrad);
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  fill: var(--ifm-color-emphasis-700);
+}
+
+.subLabel {
+  font-size: 10.5px;
+  fill: var(--ifm-color-emphasis-500);
+}
+
+.connectorLine {
+  @include motion.dash-flow(var(--ifm-color-emphasis-300));
+}
+
+/* ---------- motion: the single travelling pulse ---------- */
+
+// Standard 5-node/660px geometry, so the translateX/opacity schedule below
+// is identical to the shared standard `travel` keyframe - only the fill
+// colors differ. Unlike a governance-style gate at node 4, Platform's
+// checkpoint is node 1 itself ("Manage access"): the request is
+// unauthenticated for only the first instant after leaving node 1, then
+// reads as authenticated/authorized (brand blue) for the rest of the trip.
+@keyframes travelPlatform {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+    fill: motion.$color-travel-neutral;
+  }
+  2% {
+    transform: translateX(0);
+    opacity: 0;
+    fill: motion.$color-travel-neutral;
+  }
+  3% {
+    transform: translateX(15px);
+    opacity: 1;
+    fill: motion.$color-travel-neutral;
+  }
+  17% {
+    transform: translateX(155px);
+    opacity: 1;
+    fill: #00abe4;
+  }
+  18% {
+    transform: translateX(170px);
+    opacity: 0;
+    fill: #00abe4;
+  }
+  22% {
+    transform: translateX(170px);
+    opacity: 0;
+    fill: #00abe4;
+  }
+  23% {
+    transform: translateX(185px);
+    opacity: 1;
+    fill: #00abe4;
+  }
+  37% {
+    transform: translateX(325px);
+    opacity: 1;
+    fill: #00abe4;
+  }
+  38% {
+    transform: translateX(340px);
+    opacity: 0;
+    fill: #00abe4;
+  }
+  42% {
+    transform: translateX(340px);
+    opacity: 0;
+    fill: #00abe4;
+  }
+  43% {
+    transform: translateX(355px);
+    opacity: 1;
+    fill: #00abe4;
+  }
+  57% {
+    transform: translateX(485px);
+    opacity: 1;
+    fill: #00abe4;
+  }
+  58% {
+    transform: translateX(500px);
+    opacity: 0;
+    fill: #00abe4;
+  }
+  62% {
+    transform: translateX(500px);
+    opacity: 0;
+    fill: #00abe4;
+  }
+  63% {
+    transform: translateX(515px);
+    opacity: 1;
+    fill: #00abe4;
+  }
+  77% {
+    transform: translateX(645px);
+    opacity: 1;
+    fill: #00abe4;
+  }
+  78% {
+    transform: translateX(660px);
+    opacity: 0;
+    fill: #00abe4;
+  }
+  100% {
+    transform: translateX(660px);
+    opacity: 0;
+    fill: #00abe4;
+  }
+}
+
+.travelDot {
+  fill: motion.$color-travel-neutral;
+  animation: travelPlatform motion.$cycle linear infinite backwards;
+}
+
+.pulseRing {
+  @include motion.pulse-ring(#00abe4);
+}
+
+@include motion.pulse-delay-classes;
+
+.ssoDot {
+  fill: #00abe4;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ssoPulse 3s ease-in-out infinite;
+}
+
+/* a single turn-and-return burst on the node's beat, then idle - not a
+   continuous fidget - matching the "one clean pulse per cycle" idiom. */
+.keyTurn {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: keyRotate motion.$cycle ease-in-out infinite backwards;
+  animation-delay: motion.fire(2);
+}
+
+.stampDown {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: stampDown motion.$cycle ease-out infinite backwards;
+  animation-delay: motion.fire(3);
+}
+
+.pipeSquare {
+  fill: url(#platformGrad);
+}
+
+.pipeDot {
+  fill: #00abe4;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pipeFlow 2.2s linear infinite;
+}
+
+.eyePupil {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: eyeBlink 4s ease-in-out infinite;
+}
+
+@keyframes ssoPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 1;
+  }
+}
+
+@keyframes keyRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  8% {
+    transform: rotate(-18deg);
+  }
+  16% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/* compressed into the first ~24% of the cycle, then holds a static
+   "stamped" end-state until the next loop - see IaCM's checkDraw/
+   hexBuild for the same one-burst-then-idle idiom. */
+@keyframes stampDown {
+  0% {
+    transform: scale(1.6) translateY(-6px);
+    opacity: 0;
+  }
+  4% {
+    opacity: 1;
+  }
+  11% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+  20% {
+    opacity: 1;
+  }
+  24% {
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 0;
+  }
+}
+
+@keyframes pipeFlow {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  45% {
+    transform: translateX(14px);
+  }
+  55% {
+    transform: translateX(14px);
+  }
+  90% {
+    transform: translateX(28px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(28px);
+    opacity: 0;
+  }
+}
+
+@keyframes eyeBlink {
+  0%,
+  40%,
+  60%,
+  100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .connectorLine,
+  .travelDot,
+  .pulseRing,
+  .nodeBgFade,
+  .ssoDot,
+  .keyTurn,
+  .stampDown,
+  .pipeDot,
+  .eyePupil {
+    animation: none !important;
+  }
+
+  .travelDot {
+    opacity: 0;
+  }
+  .stampDown {
+    opacity: 1;
+    transform: none;
+  }
+}

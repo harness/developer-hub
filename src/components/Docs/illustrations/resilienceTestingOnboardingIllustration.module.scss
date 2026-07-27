@@ -1,0 +1,340 @@
+@use "./shared/motion" as motion with (
+  $cycle: 8s,
+  $nodes: 5,
+  $lead: 0.35s
+);
+
+/* ------------------------------------------------------------------ *
+ * ONE CLOCK. Everything runs off a single cycle and a single evenly-
+ * spaced beat - see ./shared/_motion.scss for the timing math, the
+ * color-free keyframe shapes, and the shared semantic colors.
+ * ------------------------------------------------------------------ */
+
+.illustration {
+  width: 80%;
+  height: auto;
+  overflow: visible;
+}
+
+.paused * {
+  animation-play-state: paused !important;
+}
+
+/* ---------- static / theme-aware styling ---------- */
+
+.nodeBg {
+  fill: #d8005a;
+  opacity: 0.08;
+}
+
+.nodeBgFade {
+  @include motion.node-bg-fade;
+}
+
+.iconStroke {
+  fill: none;
+  stroke: url(#ceGrad);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.rimLine {
+  stroke: #d8005a;
+  stroke-width: 3.5;
+  stroke-linecap: round;
+}
+
+.targetRing {
+  fill: none;
+  stroke: #d8005a;
+  stroke-width: 2;
+  stroke-dasharray: 3 3;
+}
+
+.radarCenter {
+  fill: #d8005a;
+}
+
+/* Ongoing radar sweep, independent of the shared beat - this is
+   continuous background work (the sensor is always scanning), not a
+   one-time arrival event, so it keeps its own short loop rather than
+   syncing to motion.fire(3). */
+.radarRing {
+  fill: none;
+  stroke: url(#ceGrad);
+  stroke-width: 2;
+  stroke-dasharray: 4 4;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: radarPulse 2s ease-out infinite;
+}
+.radar1 { animation-delay: 0s; }
+.radar2 { animation-delay: 0.5s; }
+.radar3 { animation-delay: 1s; }
+
+.loadBar {
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation: barPulse motion.$cycle ease-in-out infinite backwards;
+}
+.loadBar1 { animation-delay: motion.fire(4); }
+.loadBar2 { animation-delay: motion.fire(4) + 0.12s; }
+.loadBar3 { animation-delay: motion.fire(4) + 0.24s; }
+
+.shieldOutline {
+  fill: none;
+  stroke: url(#ceGrad);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+}
+
+@include motion.stroke-draw-flash("checkRecoveryDraw", 24);
+
+.checkMark {
+  fill: none;
+  stroke: #a80047;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 24;
+  animation: checkRecoveryDraw motion.$cycle ease-in-out infinite backwards;
+  animation-delay: motion.fire(5);
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  fill: var(--ifm-color-emphasis-700);
+}
+
+.connectorLine {
+  @include motion.dash-flow(var(--ifm-color-emphasis-300));
+}
+
+/* the fork sits below node 5 (the terminal stage): the muted path
+   fades and the bright path stays a static confirming line, matching
+   the original design (no draw-in animation on either branch). */
+.forkPathMuted {
+  stroke: var(--ifm-color-emphasis-300);
+  stroke-width: 1.5;
+  stroke-dasharray: 3 4;
+}
+
+.forkPathBright {
+  stroke: #d8005a;
+  stroke-width: 1.5;
+}
+
+.tagBgMuted {
+  fill: var(--ifm-color-emphasis-200);
+}
+
+.tagLabelMuted {
+  font-size: 11px;
+  fill: var(--ifm-color-emphasis-600);
+}
+
+.tagLabelBright {
+  font-size: 11px;
+  font-weight: 600;
+  fill: #ffffff;
+}
+
+/* the disaster-recovery outcome resolves on node 5's beat: the detected
+   failure flashes then dims, the recovered pill pops and confirms. */
+.failureTag {
+  animation: decideBlocked motion.$cycle ease-out infinite backwards;
+  animation-delay: motion.fire(5);
+}
+
+.recoveredTag {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: decideApproved motion.$cycle ease-out infinite backwards;
+  animation-delay: motion.fire(5);
+}
+
+/* ---------- motion: the single travelling pulse ---------- */
+
+/* The recovery outcome resolves at node 5 (the final stage), not node 4,
+   so there is no subsequent connector left to show a hand-off color on -
+   the travel dot stays a single neutral color for the whole trip, and
+   the fork/tags below node 5 carry the resolved-outcome color instead. */
+.travelDot {
+  fill: motion.$color-travel-neutral;
+  animation: travelResilienceTesting motion.$cycle linear infinite backwards;
+}
+
+@keyframes travelResilienceTesting {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  2% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  3% {
+    transform: translateX(15px);
+    opacity: 1;
+  }
+  17% {
+    transform: translateX(155px);
+    opacity: 1;
+  }
+  18% {
+    transform: translateX(170px);
+    opacity: 0;
+  }
+  22% {
+    transform: translateX(170px);
+    opacity: 0;
+  }
+  23% {
+    transform: translateX(185px);
+    opacity: 1;
+  }
+  37% {
+    transform: translateX(325px);
+    opacity: 1;
+  }
+  38% {
+    transform: translateX(340px);
+    opacity: 0;
+  }
+  42% {
+    transform: translateX(340px);
+    opacity: 0;
+  }
+  43% {
+    transform: translateX(355px);
+    opacity: 1;
+  }
+  57% {
+    transform: translateX(485px);
+    opacity: 1;
+  }
+  58% {
+    transform: translateX(500px);
+    opacity: 0;
+  }
+  62% {
+    transform: translateX(500px);
+    opacity: 0;
+  }
+  63% {
+    transform: translateX(515px);
+    opacity: 1;
+  }
+  77% {
+    transform: translateX(645px);
+    opacity: 1;
+  }
+  78% {
+    transform: translateX(660px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(660px);
+    opacity: 0;
+  }
+}
+
+.pulseRing {
+  @include motion.pulse-ring(#d8005a);
+}
+
+@include motion.pulse-delay-classes;
+
+/* Stage 1 - bubbles rising out of the flask: rise and fade once on the
+   beat (same rise-then-fade shape as the shared pushUp keyframe, kept
+   local because the small flask needs a much smaller rise distance). */
+@keyframes bubbleRise {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  2% {
+    opacity: 1;
+  }
+  8% {
+    transform: translateY(-14px);
+    opacity: 1;
+  }
+  12% {
+    transform: translateY(-14px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(-14px);
+    opacity: 0;
+  }
+}
+
+.bubble {
+  fill: #d8005a;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: bubbleRise motion.$cycle ease-in infinite backwards;
+}
+.bubble1 { animation-delay: motion.fire(1); }
+.bubble2 { animation-delay: motion.fire(1) + 0.15s; }
+
+/* Stage 2 - impact flash: one strong burst on the beat, then settle back
+   to a dim idle glow until the next loop. */
+@keyframes impactFlash {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  4% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  9% {
+    transform: scale(1.6);
+    opacity: 1;
+  }
+  16% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+}
+
+.impactFlash {
+  fill: #a80047;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: impactFlash motion.$cycle ease-in-out infinite backwards;
+  animation-delay: motion.fire(2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .connectorLine,
+  .travelDot,
+  .pulseRing,
+  .nodeBgFade,
+  .bubble,
+  .impactFlash,
+  .radarRing,
+  .loadBar,
+  .checkMark,
+  .failureTag,
+  .recoveredTag {
+    animation: none !important;
+  }
+
+  .travelDot { opacity: 0; }
+  .bubble { transform: none; opacity: 1; }
+  .impactFlash { transform: none; opacity: 1; }
+  .radarRing { transform: none; opacity: 0.3; }
+  .loadBar { transform: scaleY(1); }
+  .checkMark { stroke-dashoffset: 0; opacity: 1; }
+  .failureTag { opacity: 0.3; }
+  .recoveredTag { opacity: 1; transform: none; }
+}

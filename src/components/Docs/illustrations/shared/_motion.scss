@@ -1,0 +1,468 @@
+@use "sass:math";
+
+/* ------------------------------------------------------------------ *
+ * SHARED ANIMATION SYSTEM for the onboarding illustrations.
+ *
+ * Every illustration used to redefine its own $cycle/beat/fire, its own
+ * copies of pulseRing/dashFlow/travel/etc, and hardcode the same brand
+ * colors over and over. This partial centralizes the pieces that are
+ * genuinely identical across files (timing math, color-free keyframe
+ * shapes, semantic colors) while leaving anything that legitimately
+ * varies per illustration (brand gradients, bespoke icon shapes) where
+ * it belongs: in that illustration's own module.
+ *
+ * Usage in a consuming *.module.scss:
+ *
+ *   @use "./shared/motion" as motion with (
+ *     $cycle: 8s,
+ *     $nodes: 5,
+ *     $lead: 0.35s
+ *   );
+ *
+ *   .pulseRing { @include motion.pulse-ring(#45bd35); }
+ *   .pulse1 { animation-delay: motion.fire(1); }
+ *   // ...or generate all of them at once:
+ *   @include motion.pulse-delay-classes;
+ *
+ * `with (...)` is only needed when a file wants non-default timing or a
+ * non-default node count (e.g. HarnessAI's 3-node layout). Each
+ * .module.scss is compiled as its own independent Sass entry point (the
+ * CSS Modules loader compiles one file at a time), so configuring
+ * $cycle/$nodes/$lead here never leaks between illustrations.
+ * ------------------------------------------------------------------ */
+
+// ---- Timing (override via `with (...)` at the @use site) ----------
+$cycle: 8s !default;
+$nodes: 5 !default;
+$lead: 0.35s !default;
+
+@function beat($i) {
+  @return $cycle * math.div($i - 1, $nodes);
+}
+
+@function fire($i) {
+  @return beat($i) - $lead;
+}
+
+// ---- Shared semantic colors ------------------------------------------
+// Each illustration still has its own brand gradient for icons/strokes;
+// these are the handful of colors that are meant to look the same
+// everywhere they appear (the neutral "in transit" dot, the universal
+// success/approved state, the universal alert state).
+$color-travel-neutral: #b0b1c4;
+$color-success: #45bd35;
+$color-success-dark: #2e9e20;
+$color-alert: #e5484d;
+
+// ---- Color-free shared keyframes -------------------------------------
+// These only touch transform/opacity/stroke-dashoffset, so the exact
+// same keyframe shape is valid regardless of an illustration's brand
+// color - only the *class* that applies the keyframe (defined per file)
+// picks the color.
+
+@keyframes dashFlow {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+
+// One short bloom near the start of the cycle, then idle. Paired with
+// animation-delay: fire($i) so the ring blooms just before the travel
+// dot lands on that node.
+@keyframes pulseRing {
+  0% {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  3% {
+    opacity: 0.55;
+  }
+  12% {
+    transform: scale(1.3);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+}
+
+// Inverse of pulseRing's opacity curve: hides the static node disc for
+// exactly the window pulseRing is visibly blooming (0%-12%), so the two
+// never visually compete, then returns once the ring has faded out.
+@keyframes nodeBgFade {
+  0% {
+    opacity: 0.08;
+  }
+  2% {
+    opacity: 0;
+  }
+  12% {
+    opacity: 0;
+  }
+  14% {
+    opacity: 0.08;
+  }
+  100% {
+    opacity: 0.08;
+  }
+}
+
+// Continuous, independent of the travel dot - for stages that represent
+// ongoing background work (e.g. "AI generates test cases while the rest
+// of the flow proceeds") rather than a one-time arrival event.
+@keyframes pulseRingEarly {
+  0%,
+  100% {
+    transform: scale(0.95);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0;
+  }
+}
+
+@keyframes nodeBgFadeEarly {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.08;
+  }
+}
+
+@keyframes barPulse {
+  0% {
+    transform: scaleY(0.3);
+  }
+  4% {
+    transform: scaleY(0.3);
+  }
+  9% {
+    transform: scaleY(1);
+  }
+  15% {
+    transform: scaleY(0.55);
+  }
+  100% {
+    transform: scaleY(0.55);
+  }
+}
+
+@keyframes magnifyPulse {
+  0% {
+    transform: scale(1);
+  }
+  3% {
+    transform: scale(1);
+  }
+  8% {
+    transform: scale(1.18);
+  }
+  14% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes pushUp {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  2% {
+    opacity: 1;
+  }
+  8% {
+    transform: translateY(-30px);
+    opacity: 1;
+  }
+  12% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+}
+
+// A block rises into place, holds, then fades - generic enough for any
+// "build/assemble" icon (hex blocks, stacked bars, etc), not just IaCM's
+// provisioning hexagon.
+@keyframes buildBlock {
+  0% {
+    transform: translateY(8px) scale(0.6);
+    opacity: 0;
+  }
+  4% {
+    opacity: 1;
+  }
+  11% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  20% {
+    opacity: 1;
+  }
+  24% {
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+}
+
+// A muted branch flashes briefly then settles dim - for a binary
+// outcome's "rejected" side (governance's Blocked tag, or any similar
+// muted/dim resolution).
+@keyframes decideBlocked {
+  0% {
+    opacity: 0.25;
+  }
+  4% {
+    opacity: 0.8;
+  }
+  14% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
+
+// The highlighted branch of a binary outcome pops in and glows to full,
+// then holds - for the "approved"/"success" side.
+@keyframes decideApproved {
+  0% {
+    opacity: 0.35;
+    transform: scale(0.92);
+  }
+  3% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  8% {
+    transform: scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// ---- Standard 5-node / 660px travel path -----------------------------
+// Valid for any illustration using the standard layout: 5 nodes at
+// cx = 110/280/450/610/770 (cy 140, r 38), connectors totalling 660px.
+// The dot stays fully opaque along each connector and only blinks out
+// in a short window right at each node's core, so the fade never shows
+// on the open track. Neutral grey until it clears node 4, then brand
+// green - if an illustration has no "gated/approved" step, use
+// `travel-simple` instead (single color throughout).
+@keyframes travel {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+    fill: $color-travel-neutral;
+  }
+  2% {
+    transform: translateX(0);
+    opacity: 0;
+    fill: $color-travel-neutral;
+  }
+  3% {
+    transform: translateX(15px);
+    opacity: 1;
+    fill: $color-travel-neutral;
+  }
+  17% {
+    transform: translateX(155px);
+    opacity: 1;
+    fill: $color-travel-neutral;
+  }
+  18% {
+    transform: translateX(170px);
+    opacity: 0;
+    fill: $color-travel-neutral;
+  }
+  22% {
+    transform: translateX(170px);
+    opacity: 0;
+    fill: $color-travel-neutral;
+  }
+  23% {
+    transform: translateX(185px);
+    opacity: 1;
+    fill: $color-travel-neutral;
+  }
+  37% {
+    transform: translateX(325px);
+    opacity: 1;
+    fill: $color-travel-neutral;
+  }
+  38% {
+    transform: translateX(340px);
+    opacity: 0;
+    fill: $color-travel-neutral;
+  }
+  42% {
+    transform: translateX(340px);
+    opacity: 0;
+    fill: $color-travel-neutral;
+  }
+  43% {
+    transform: translateX(355px);
+    opacity: 1;
+    fill: $color-travel-neutral;
+  }
+  57% {
+    transform: translateX(485px);
+    opacity: 1;
+    fill: $color-travel-neutral;
+  }
+  58% {
+    transform: translateX(500px);
+    opacity: 0;
+    fill: $color-success;
+  }
+  62% {
+    transform: translateX(500px);
+    opacity: 0;
+    fill: $color-success;
+  }
+  63% {
+    transform: translateX(515px);
+    opacity: 1;
+    fill: $color-success;
+  }
+  77% {
+    transform: translateX(645px);
+    opacity: 1;
+    fill: $color-success;
+  }
+  78% {
+    transform: translateX(660px);
+    opacity: 0;
+    fill: $color-success;
+  }
+  100% {
+    transform: translateX(660px);
+    opacity: 0;
+    fill: $color-success;
+  }
+}
+
+// ---- Mixins: color-free shapes above + a per-file color -------------
+
+@mixin dash-flow($color: var(--ifm-color-emphasis-300), $width: 2, $dash: 6 6, $duration: 1.6s) {
+  stroke: $color;
+  stroke-width: $width;
+  stroke-dasharray: $dash;
+  animation: dashFlow $duration linear infinite;
+}
+
+@mixin pulse-ring($color) {
+  fill: none;
+  stroke: $color;
+  stroke-width: 2;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pulseRing $cycle ease-out infinite backwards;
+}
+
+@mixin node-bg-fade {
+  animation: nodeBgFade $cycle ease-out infinite backwards;
+}
+
+@mixin pulse-ring-early($color) {
+  fill: none;
+  stroke: $color;
+  stroke-width: 2;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pulseRingEarly 1.8s ease-in-out infinite;
+}
+
+@mixin node-bg-fade-early {
+  animation: nodeBgFadeEarly 1.8s ease-in-out infinite;
+}
+
+@mixin travel-dot {
+  fill: $color-travel-neutral;
+  animation: travel $cycle linear infinite backwards;
+}
+
+// Generates .pulse1 { animation-delay: fire(1); } ... .pulse#{$nodes}
+// in one shot, in case a file just wants the standard beat spacing.
+@mixin pulse-delay-classes {
+  @for $i from 1 through $nodes {
+    .pulse#{$i} {
+      animation-delay: fire($i);
+    }
+  }
+}
+
+// ---- Mixins: length-dependent stroke draw-ins ------------------------
+// A checkmark/path's stroke-dashoffset animation is tied to that exact
+// path's length (its stroke-dasharray), so the keyframe itself can't be
+// a single global block the way the transform/opacity-only ones above
+// are. These mixins generate a uniquely-named @keyframes block with the
+// shared, hand-tuned timing curve, parameterized by that one path's
+// length - so the *shape* of the motion stays centralized even though
+// each icon's dash length differs.
+
+// Draws in, holds fully visible briefly, then fades out - for a
+// transient confirmation (e.g. a checkmark that appears then dissolves
+// once the node has moved on).
+@mixin stroke-draw-flash($name, $length, $fade-in: 3%, $draw-end: 11%, $hold-end: 20%, $fade-out: 24%) {
+  @keyframes #{$name} {
+    0% {
+      stroke-dashoffset: $length;
+      opacity: 0;
+    }
+    #{$fade-in} {
+      opacity: 1;
+    }
+    #{$draw-end} {
+      stroke-dashoffset: 0;
+    }
+    #{$hold-end} {
+      opacity: 1;
+    }
+    #{$fade-out} {
+      opacity: 0;
+    }
+    100% {
+      stroke-dashoffset: 0;
+      opacity: 0;
+    }
+  }
+}
+
+// Draws in and then holds solid indefinitely - for a permanent outcome
+// (e.g. the approved branch's checkmark, or a fork path that stays
+// drawn once it resolves).
+@mixin stroke-draw-hold($name, $length, $fade-in: 3%, $draw-end: 13%) {
+  @keyframes #{$name} {
+    0% {
+      stroke-dashoffset: $length;
+      opacity: 0;
+    }
+    #{$fade-in} {
+      opacity: 1;
+    }
+    #{$draw-end} {
+      stroke-dashoffset: 0;
+      opacity: 1;
+    }
+    100% {
+      stroke-dashoffset: 0;
+      opacity: 1;
+    }
+  }
+}

@@ -1,0 +1,261 @@
+@use "./shared/motion" as motion with (
+  $cycle: 8s,
+  $nodes: 5,
+  $lead: 0.35s
+);
+
+/* ------------------------------------------------------------------ *
+ * ONE CLOCK.
+ *
+ * Everything runs off a single cycle and a single evenly-spaced beat,
+ * so the whole thing reads as one progress pulse travelling the
+ * pipeline - not several independent loops. The clock itself (cycle/
+ * beat/fire), the color-free keyframe shapes, and the shared semantic
+ * colors live in ./shared/_motion.scss so every illustration stays in
+ * sync instead of re-defining its own copies.
+ *
+ *   - cycle: overall speed. Configured above via `with (...)`.
+ *   - motion.beat(i): node i's moment, evenly spaced (cycle / nodes).
+ *   - motion.$lead: how far AHEAD of the travel dot each node lights up.
+ *     The ring blooms slightly before the dot arrives, so attention is
+ *     on the node (not on the dot's fade) as the hand-off happens.
+ *   - The dot stays fully opaque along each connector and only blinks
+ *     out in a short window right at the node core, so you do not see
+ *     it fading out on the open track.
+ * ------------------------------------------------------------------ */
+
+.illustration {
+  display: block;
+  width: 100%;
+  max-width: 860px;
+  height: auto;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+.paused * {
+  animation-play-state: paused !important;
+}
+
+/* ---------- static / theme-aware styling ---------- */
+
+.nodeBg {
+  fill: #45bd35;
+  opacity: 0.08;
+}
+
+/* hides the static disc for exactly the window pulseRing is visibly
+   blooming, so the two never overlap - see shared/_motion.scss. */
+.nodeBgFade {
+  @include motion.node-bg-fade;
+}
+
+.iconStroke {
+  fill: none;
+  stroke: url(#iacmGrad);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.shaftLine {
+  stroke: #45bd35;
+  stroke-width: 3.5;
+  stroke-linecap: round;
+}
+
+.codeLine {
+  stroke: var(--ifm-color-emphasis-300);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.diffLine {
+  stroke: #45bd35;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.squareOutline {
+  fill: none;
+  stroke: var(--ifm-color-emphasis-400);
+  stroke-width: 1.5;
+}
+
+.shieldOutline {
+  fill: none;
+  stroke: url(#iacmGrad);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+}
+
+@include motion.stroke-draw-flash("checkDraw", 24);
+
+.checkMark {
+  fill: none;
+  stroke: #2e9e20;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 24;
+  animation: checkDraw motion.$cycle ease-in-out infinite backwards;
+  animation-delay: motion.fire(4);
+}
+
+.hexOutline {
+  fill: rgba(69, 189, 53, 0.08);
+  stroke: url(#iacmGrad);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+}
+
+.dollarSign {
+  font-size: 15px;
+  font-weight: 700;
+  fill: #45bd35;
+  text-anchor: middle;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  fill: var(--ifm-color-emphasis-700);
+}
+
+.connectorLine {
+  @include motion.dash-flow(var(--ifm-color-emphasis-300));
+}
+
+/* The fork sits ABOVE the node row so its lines never cross the node
+   labels below. The blocked branch is a quiet static dash; the approved
+   branch draws itself in on the governance beat. */
+.forkPathMuted {
+  stroke: var(--ifm-color-emphasis-300);
+  stroke-width: 1.5;
+  stroke-dasharray: 3 4;
+}
+
+@include motion.stroke-draw-hold("drawFork", 80, 3%, 13%);
+
+.forkPathBright {
+  stroke: #45bd35;
+  stroke-width: 1.75;
+  fill: none;
+  stroke-dasharray: 80;
+  animation: drawFork motion.$cycle ease-out infinite backwards;
+  animation-delay: motion.fire(4);
+}
+
+@include motion.stroke-draw-hold("approvedCheckDraw", 16, 4%, 13%);
+
+.approvedCheck {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 16;
+  animation: approvedCheckDraw motion.$cycle ease-in-out infinite backwards;
+  animation-delay: motion.fire(4);
+}
+
+.tagBgMuted {
+  fill: var(--ifm-color-emphasis-200);
+}
+
+.tagLabelMuted {
+  font-size: 11px;
+  fill: var(--ifm-color-emphasis-600);
+}
+
+.tagLabelBright {
+  font-size: 11px;
+  font-weight: 600;
+  fill: #ffffff;
+}
+
+/* the governance outcome resolves on node 4's beat: the rejected path
+   flashes then dims, the approved pill pops and confirms, then both hold. */
+.blockedTag {
+  animation: decideBlocked motion.$cycle ease-out infinite backwards;
+  animation-delay: motion.fire(4);
+}
+
+.approvedTag {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: decideApproved motion.$cycle ease-out infinite backwards;
+  animation-delay: motion.fire(4);
+}
+
+/* ---------- motion: the single travelling pulse ---------- */
+
+.travelDot {
+  @include motion.travel-dot;
+}
+
+.pulseRing {
+  @include motion.pulse-ring(#45bd35);
+}
+
+@include motion.pulse-delay-classes;
+
+.commitDot {
+  fill: #2e9e20;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pushUp motion.$cycle ease-in-out infinite backwards;
+  animation-delay: motion.fire(1);
+}
+
+.magnifyPulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: magnifyPulse motion.$cycle ease-in-out infinite backwards;
+  animation-delay: motion.fire(2);
+}
+
+.costBar {
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation: barPulse motion.$cycle ease-in-out infinite backwards;
+}
+.costBar1 { animation-delay: motion.fire(3); }
+.costBar2 { animation-delay: motion.fire(3) + 0.12s; }
+.costBar3 { animation-delay: motion.fire(3) + 0.24s; }
+
+.buildBlock {
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation: buildBlock motion.$cycle ease-in-out infinite backwards;
+}
+.build1 { animation-delay: motion.fire(5); }
+.build2 { animation-delay: motion.fire(5) + 0.14s; }
+.build3 { animation-delay: motion.fire(5) + 0.28s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .connectorLine,
+  .travelDot,
+  .pulseRing,
+  .nodeBgFade,
+  .commitDot,
+  .magnifyPulse,
+  .costBar,
+  .checkMark,
+  .buildBlock,
+  .forkPathBright,
+  .approvedCheck,
+  .blockedTag,
+  .approvedTag {
+    animation: none !important;
+  }
+
+  .travelDot { opacity: 0; }
+  .checkMark { stroke-dashoffset: 0; opacity: 1; }
+  .costBar { transform: scaleY(1); }
+  .buildBlock { opacity: 1; transform: none; }
+  .forkPathBright { stroke-dashoffset: 0; opacity: 1; }
+  .approvedCheck { stroke-dashoffset: 0; opacity: 1; }
+  .blockedTag { opacity: 0.3; }
+  .approvedTag { opacity: 1; transform: none; }
+}

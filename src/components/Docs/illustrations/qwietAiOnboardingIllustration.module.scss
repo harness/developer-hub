@@ -1,0 +1,268 @@
+@use "./shared/motion" as motion with (
+  $cycle: 8s,
+  $nodes: 5,
+  $lead: 0.35s
+);
+
+/* ------------------------------------------------------------------ *
+ * ONE CLOCK.
+ *
+ * Everything runs off a single cycle and a single evenly-spaced beat,
+ * so the whole thing reads as one progress pulse travelling the
+ * pipeline - not several independent loops. The clock itself (cycle/
+ * beat/fire), the color-free keyframe shapes, and the shared semantic
+ * colors live in ./shared/_motion.scss.
+ * ------------------------------------------------------------------ */
+
+.illustration {
+  width: 80%;
+  height: auto;
+  overflow: visible;
+}
+
+.paused * {
+  animation-play-state: paused !important;
+}
+
+/* ---------- static / theme-aware styling ---------- */
+
+.nodeBg {
+  fill: #0e37f6;
+  opacity: 0.08;
+}
+
+.nodeBgFade {
+  @include motion.node-bg-fade;
+}
+
+.iconStroke {
+  fill: none;
+  stroke: url(#qwietGrad);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.shaftLine {
+  stroke: #0e37f6;
+  stroke-width: 3.5;
+  stroke-linecap: round;
+}
+
+.codeLine {
+  stroke: var(--ifm-color-emphasis-300);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.graphLine {
+  stroke: #0e37f6;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.graphNode {
+  fill: url(#qwietGrad);
+}
+
+.squareOutline {
+  fill: none;
+  stroke: var(--ifm-color-emphasis-400);
+  stroke-width: 1.5;
+}
+
+@include motion.stroke-draw-flash("checkDraw", 24);
+
+.checkMark {
+  fill: none;
+  stroke: #2e9e20;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 24;
+  animation: checkDraw motion.$cycle ease-in-out infinite backwards;
+  animation-delay: motion.fire(5);
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  fill: var(--ifm-color-emphasis-700);
+}
+
+.connectorLine {
+  @include motion.dash-flow(var(--ifm-color-emphasis-300));
+}
+
+/* ---------- motion: the single travelling pulse ---------- */
+
+// Standard 5-node/660px geometry, so the translateX/opacity schedule below
+// is identical to the shared standard `travel` keyframe - only the fill
+// colors differ. QwietAI has no governance-style approval gate (the color
+// shift near node 4 is a "getting close" visual cue, not a universal
+// success state), so it keeps its own neutral-to-brand-blue handoff
+// instead of switching to $color-success.
+@keyframes travelQwiet {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+    fill: motion.$color-travel-neutral;
+  }
+  2% {
+    transform: translateX(0);
+    opacity: 0;
+    fill: motion.$color-travel-neutral;
+  }
+  3% {
+    transform: translateX(15px);
+    opacity: 1;
+    fill: motion.$color-travel-neutral;
+  }
+  17% {
+    transform: translateX(155px);
+    opacity: 1;
+    fill: motion.$color-travel-neutral;
+  }
+  18% {
+    transform: translateX(170px);
+    opacity: 0;
+    fill: motion.$color-travel-neutral;
+  }
+  22% {
+    transform: translateX(170px);
+    opacity: 0;
+    fill: motion.$color-travel-neutral;
+  }
+  23% {
+    transform: translateX(185px);
+    opacity: 1;
+    fill: motion.$color-travel-neutral;
+  }
+  37% {
+    transform: translateX(325px);
+    opacity: 1;
+    fill: motion.$color-travel-neutral;
+  }
+  38% {
+    transform: translateX(340px);
+    opacity: 0;
+    fill: motion.$color-travel-neutral;
+  }
+  42% {
+    transform: translateX(340px);
+    opacity: 0;
+    fill: motion.$color-travel-neutral;
+  }
+  43% {
+    transform: translateX(355px);
+    opacity: 1;
+    fill: motion.$color-travel-neutral;
+  }
+  57% {
+    transform: translateX(485px);
+    opacity: 1;
+    fill: motion.$color-travel-neutral;
+  }
+  58% {
+    transform: translateX(500px);
+    opacity: 0;
+    fill: #0e37f6;
+  }
+  62% {
+    transform: translateX(500px);
+    opacity: 0;
+    fill: #0e37f6;
+  }
+  63% {
+    transform: translateX(515px);
+    opacity: 1;
+    fill: #0e37f6;
+  }
+  77% {
+    transform: translateX(645px);
+    opacity: 1;
+    fill: #0e37f6;
+  }
+  78% {
+    transform: translateX(660px);
+    opacity: 0;
+    fill: #0e37f6;
+  }
+  100% {
+    transform: translateX(660px);
+    opacity: 0;
+    fill: #0e37f6;
+  }
+}
+
+.travelDot {
+  fill: motion.$color-travel-neutral;
+  animation: travelQwiet motion.$cycle linear infinite backwards;
+}
+
+.pulseRing {
+  @include motion.pulse-ring(#0e37f6);
+}
+
+@include motion.pulse-delay-classes;
+
+.bugAntenna {
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation: barPulse motion.$cycle ease-in-out infinite backwards;
+}
+.bugAntenna1 {
+  animation-delay: motion.fire(3);
+}
+.bugAntenna2 {
+  animation-delay: motion.fire(3) + 0.12s;
+}
+
+/* the flag flashes attention then settles dim - the rejected/blocked
+   branch shape from the shared governance decide* keyframes fits equally
+   well here as a generic "flag raised, now watch it" cue. */
+.riskFlag {
+  animation: decideBlocked motion.$cycle ease-out infinite backwards;
+  animation-delay: motion.fire(4);
+}
+
+/* the fix glow pops in and holds bright - the approved-branch shape from
+   the shared governance decide* keyframes, reused as a generic "resolved"
+   cue. */
+.fixGlow {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: decideApproved motion.$cycle ease-out infinite backwards;
+  animation-delay: motion.fire(5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .connectorLine,
+  .travelDot,
+  .pulseRing,
+  .nodeBgFade,
+  .bugAntenna,
+  .checkMark,
+  .riskFlag,
+  .fixGlow {
+    animation: none !important;
+  }
+
+  .travelDot {
+    opacity: 0;
+  }
+  .checkMark {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  .bugAntenna {
+    transform: scaleY(0.55);
+  }
+  .riskFlag {
+    opacity: 0.3;
+  }
+  .fixGlow {
+    opacity: 1;
+    transform: none;
+  }
+}

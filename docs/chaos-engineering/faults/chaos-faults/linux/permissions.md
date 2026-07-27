@@ -3,7 +3,7 @@ title: Requirements
 sidebar_position: 1
 description: Requirements to fulfill before executing chaos experiments on Linux OS.
 redirect_from:
-	- /docs/chaos-engineering/chaos-faults/linux/permissions
+  - /docs/chaos-engineering/chaos-faults/linux/permissions
 ---
 
 This topic describes the [resource permissions](#resource-consumption), [fault compatibility matrix](#fault-compatibility-matrix), and the [permissions](#on-premise-vms-vmware-vms) required to execute Linux chaos experiments.

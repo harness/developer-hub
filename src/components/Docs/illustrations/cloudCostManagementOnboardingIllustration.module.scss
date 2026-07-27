@@ -1,0 +1,306 @@
+@use "./shared/motion" as motion with (
+  $cycle: 8s,
+  $nodes: 5,
+  $lead: 0.35s
+);
+
+/* ------------------------------------------------------------------ *
+ * ONE CLOCK. See iacmOnboardingIllustration.module.scss for the full
+ * explanation of the shared timing system - everything here runs off
+ * the same cycle/beat/fire clock from ./shared/_motion.scss.
+ *
+ * This module has no natural fork point (the flow is linear - see the
+ * component docstring), so the travel dot stays a single neutral color
+ * for the whole trip instead of using the shared two-tone travel-dot
+ * mixin.
+ * ------------------------------------------------------------------ */
+
+.illustration {
+  width: 80%;
+  height: auto;
+  overflow: visible;
+}
+
+.paused * {
+  animation-play-state: paused !important;
+}
+
+/* ---------- static / theme-aware styling ---------- */
+
+.nodeBg {
+  fill: #05a660;
+  opacity: 0.08;
+}
+
+.nodeBgFade {
+  @include motion.node-bg-fade;
+}
+
+.nodeBgFadeEarly {
+  @include motion.node-bg-fade-early;
+}
+
+.iconStroke {
+  fill: none;
+  stroke: url(#ccmGrad);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.shaftLine {
+  /* solid color, not the gradient: a purely vertical line has a
+     zero-width bounding box, which makes an objectBoundingBox
+     gradient render invisible in some SVG engines */
+  stroke: #05a660;
+  stroke-width: 3.5;
+  stroke-linecap: round;
+}
+
+.codeLine {
+  /* solid color, not the gradient: a purely horizontal line has a
+     zero-height bounding box, which makes an objectBoundingBox
+     gradient render invisible in some SVG engines */
+  stroke: var(--ifm-color-emphasis-300);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.diffLine {
+  stroke: #05a660;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  fill: var(--ifm-color-emphasis-700);
+}
+
+.connectorLine {
+  @include motion.dash-flow(var(--ifm-color-emphasis-300));
+}
+
+/* ---------- motion: the single travelling pulse ---------- */
+
+/* single neutral color for the whole trip - this flow has no gate/
+   approval step, so there is no meaningful point for a color handoff.
+   Percentage/translateX schedule matches the shared standard 5-node
+   layout exactly (see shared/_motion.scss travel keyframe). */
+@keyframes travelCcm {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  2% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  3% {
+    transform: translateX(15px);
+    opacity: 1;
+  }
+  17% {
+    transform: translateX(155px);
+    opacity: 1;
+  }
+  18% {
+    transform: translateX(170px);
+    opacity: 0;
+  }
+  22% {
+    transform: translateX(170px);
+    opacity: 0;
+  }
+  23% {
+    transform: translateX(185px);
+    opacity: 1;
+  }
+  37% {
+    transform: translateX(325px);
+    opacity: 1;
+  }
+  38% {
+    transform: translateX(340px);
+    opacity: 0;
+  }
+  42% {
+    transform: translateX(340px);
+    opacity: 0;
+  }
+  43% {
+    transform: translateX(355px);
+    opacity: 1;
+  }
+  57% {
+    transform: translateX(485px);
+    opacity: 1;
+  }
+  58% {
+    transform: translateX(500px);
+    opacity: 0;
+  }
+  62% {
+    transform: translateX(500px);
+    opacity: 0;
+  }
+  63% {
+    transform: translateX(515px);
+    opacity: 1;
+  }
+  77% {
+    transform: translateX(645px);
+    opacity: 1;
+  }
+  78% {
+    transform: translateX(660px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(660px);
+    opacity: 0;
+  }
+}
+
+.travelDot {
+  fill: motion.$color-travel-neutral;
+  animation: travelCcm motion.$cycle linear infinite backwards;
+}
+
+.pulseRing {
+  @include motion.pulse-ring(#05a660);
+}
+
+.pulseRingEarly {
+  @include motion.pulse-ring-early(#05a660);
+}
+
+@include motion.pulse-delay-classes;
+
+/* Stage 1 - "Ingest spend data": retimed from a continuous downward
+   flow into a single clean drop on the node's beat (same fade-in/hold/
+   fade-out cadence as the shared pushUp keyframe, just mirrored to
+   travel down into the inbox instead of up). */
+@keyframes flowDown {
+  0% {
+    transform: translateY(-16px);
+    opacity: 0;
+  }
+  2% {
+    opacity: 1;
+  }
+  8% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  12% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+}
+
+.ingestDot {
+  fill: #00cfde;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: flowDown motion.$cycle ease-in infinite backwards;
+  animation-delay: motion.fire(1);
+}
+
+/* Stage 2 - "Visualize costs": the bars reuse the shared barPulse
+   shape (grow-and-settle) on the node's beat, staggered like IaCM's
+   cost bars. */
+.costBar {
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation: barPulse motion.$cycle ease-in-out infinite backwards;
+}
+.costBar1 { animation-delay: motion.fire(2); }
+.costBar2 { animation-delay: motion.fire(2) + 0.12s; }
+.costBar3 { animation-delay: motion.fire(2) + 0.24s; }
+
+/* Stage 3 - "Detect anomalies" is always-on background work, so the
+   ring pulses continuously (pulseRingEarly). The magnifying glass
+   stays continuous too, independent of the shared clock, to match. */
+.magnifyPulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: magnifyPulse 3s ease-in-out infinite;
+}
+
+/* Stage 4 - "Recommend savings": the bulb reuses the shared
+   decideApproved shape (pop to full brightness, then stay lit) on the
+   node's beat. The rays fade in alongside it and hold, staggered
+   slightly per ray. */
+.bulbGlow {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: decideApproved motion.$cycle ease-out infinite backwards;
+  animation-delay: motion.fire(4);
+}
+
+@keyframes rayGlow {
+  0% {
+    opacity: 0;
+  }
+  3% {
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.bulbRay {
+  animation: rayGlow motion.$cycle ease-out infinite backwards;
+}
+.ray1 { animation-delay: motion.fire(4); }
+.ray2 { animation-delay: motion.fire(4) + 0.06s; }
+.ray3 { animation-delay: motion.fire(4) + 0.12s; }
+
+/* Stage 5 - "Track savings over time": the checkmark draws in, holds,
+   then fades - a transient confirmation on the node's beat. */
+@include motion.stroke-draw-flash("savingsCheckDraw", 24);
+
+.checkMark {
+  fill: none;
+  stroke: #05a660;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 24;
+  animation: savingsCheckDraw motion.$cycle ease-in-out infinite backwards;
+  animation-delay: motion.fire(5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .connectorLine,
+  .travelDot,
+  .pulseRing,
+  .nodeBgFade,
+  .pulseRingEarly,
+  .nodeBgFadeEarly,
+  .ingestDot,
+  .costBar,
+  .magnifyPulse,
+  .bulbGlow,
+  .bulbRay,
+  .checkMark {
+    animation: none !important;
+  }
+
+  .travelDot { opacity: 0; }
+  .ingestDot { opacity: 0; }
+  .costBar { transform: scaleY(1); }
+  .bulbGlow { opacity: 1; transform: none; }
+  .bulbRay { opacity: 1; }
+  .checkMark { stroke-dashoffset: 0; opacity: 1; }
+}

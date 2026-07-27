@@ -1,13 +1,17 @@
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { useLocation } from '@docusaurus/router';
 import React from 'react';
 import { TutorialCards } from '@site/src/components/TutorialCard/TutorialCard';
 import styles from './styles.module.scss';
 // Define the cards in "***Data.ts"
 import { docsCards } from './data/softwareSupplyChainAssuranceData';
+import SoftwareSupplyChainAssuranceOnboardingIllustration from './illustrations/SoftwareSupplyChainAssuranceOnboardingIllustration';
 
 export default function SSCA() {
   const { siteConfig: { baseUrl = '/' } = {} } = useDocusaurusContext();
+  const { pathname } = useLocation();
+  const is3kDocs = pathname.startsWith('/3k-docs');
   return (
     <div className="container">
       <div className={styles.topSection}>
@@ -34,7 +38,7 @@ export default function SSCA() {
           </div>
         </div>
         <div className={styles.spaceBetween}>
-          <div className={styles.content}>
+          <div className={styles.content} style={{ width: '100%' }}>
             <p>
               The Harness Supply Chain Security (SCS) module
               addresses the challenges of securing your software supply chain.
@@ -45,10 +49,14 @@ export default function SSCA() {
               to secure your software supply chain.
             </p>
             <div className={styles.illustrationContainer}>
-              <img
-                className={styles.illustration}
-                src={`${baseUrl}img/ssca_Landing_Page.svg`}
-              />
+              {is3kDocs ? (
+                <SoftwareSupplyChainAssuranceOnboardingIllustration />
+              ) : (
+                <img
+                  className={styles.illustration}
+                  src={`${baseUrl}img/ssca_Landing_Page.svg`}
+                />
+              )}
             </div>
           </div>
         </div>

@@ -1,0 +1,458 @@
+@use "./shared/motion" as motion with (
+  $cycle: 8s,
+  $nodes: 5,
+  $lead: 0.35s
+);
+
+/* ------------------------------------------------------------------ *
+ * ONE CLOCK. See iacmOnboardingIllustration.module.scss for the full
+ * explanation of the shared timing system - everything here runs off
+ * the same cycle/beat/fire clock from ./shared/_motion.scss.
+ *
+ * This flow's gate/approval step ("Scan & enforce policy": flagged vs
+ * compliant) sits at node 3, not node 4, so the travel dot uses a local
+ * two-tone keyframe below - same schedule as the shared travel-dot
+ * mixin, but with the neutral -> success color switch moved to node 3's
+ * blink window instead of node 4's.
+ * ------------------------------------------------------------------ */
+
+.illustration {
+  width: 80%;
+  height: auto;
+  overflow: visible;
+}
+
+.paused * {
+  animation-play-state: paused !important;
+}
+
+/* ---------- static / theme-aware styling ---------- */
+
+.nodeBg {
+  fill: #0095f7;
+  opacity: 0.08;
+}
+
+.nodeBgFade {
+  @include motion.node-bg-fade;
+}
+
+.iconStroke {
+  fill: none;
+  stroke: url(#arGrad);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.shaftLine {
+  stroke: #0095f7;
+  stroke-width: 3.5;
+  stroke-linecap: round;
+}
+
+.spokeLine {
+  stroke: var(--ifm-color-emphasis-300);
+  stroke-width: 1.5;
+}
+
+.squareOutline {
+  fill: none;
+  stroke: var(--ifm-color-emphasis-400);
+  stroke-width: 1.5;
+}
+
+.shieldOutline {
+  fill: none;
+  stroke: url(#arGrad);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+}
+
+.chevronArrow {
+  fill: none;
+  stroke: url(#arGrad);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  fill: var(--ifm-color-emphasis-700);
+}
+
+.connectorLine {
+  @include motion.dash-flow(var(--ifm-color-emphasis-300));
+}
+
+.forkPathMuted {
+  stroke: var(--ifm-color-emphasis-300);
+  stroke-width: 1.5;
+  stroke-dasharray: 3 4;
+}
+
+.forkPathBright {
+  stroke: #0095f7;
+  stroke-width: 1.5;
+}
+
+.tagBgMuted {
+  fill: var(--ifm-color-emphasis-200);
+}
+
+.tagLabelMuted {
+  font-size: 11px;
+  fill: var(--ifm-color-emphasis-600);
+}
+
+.tagLabelBright {
+  font-size: 11px;
+  font-weight: 600;
+  fill: #ffffff;
+}
+
+/* ---------- motion: the single travelling pulse ---------- */
+
+/* Local two-tone travel dot: identical percentage/translateX schedule to
+   the shared standard 5-node layout, but the neutral -> success color
+   switch happens at node 3's blink window (38%) instead of node 4's
+   (58%), since this flow's gate is "Scan & enforce policy" at node 3. */
+@keyframes travelArtifactRegistry {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+    fill: motion.$color-travel-neutral;
+  }
+  2% {
+    transform: translateX(0);
+    opacity: 0;
+    fill: motion.$color-travel-neutral;
+  }
+  3% {
+    transform: translateX(15px);
+    opacity: 1;
+    fill: motion.$color-travel-neutral;
+  }
+  17% {
+    transform: translateX(155px);
+    opacity: 1;
+    fill: motion.$color-travel-neutral;
+  }
+  18% {
+    transform: translateX(170px);
+    opacity: 0;
+    fill: motion.$color-travel-neutral;
+  }
+  22% {
+    transform: translateX(170px);
+    opacity: 0;
+    fill: motion.$color-travel-neutral;
+  }
+  23% {
+    transform: translateX(185px);
+    opacity: 1;
+    fill: motion.$color-travel-neutral;
+  }
+  37% {
+    transform: translateX(325px);
+    opacity: 1;
+    fill: motion.$color-travel-neutral;
+  }
+  38% {
+    transform: translateX(340px);
+    opacity: 0;
+    fill: motion.$color-success;
+  }
+  42% {
+    transform: translateX(340px);
+    opacity: 0;
+    fill: motion.$color-success;
+  }
+  43% {
+    transform: translateX(355px);
+    opacity: 1;
+    fill: motion.$color-success;
+  }
+  57% {
+    transform: translateX(485px);
+    opacity: 1;
+    fill: motion.$color-success;
+  }
+  58% {
+    transform: translateX(500px);
+    opacity: 0;
+    fill: motion.$color-success;
+  }
+  62% {
+    transform: translateX(500px);
+    opacity: 0;
+    fill: motion.$color-success;
+  }
+  63% {
+    transform: translateX(515px);
+    opacity: 1;
+    fill: motion.$color-success;
+  }
+  77% {
+    transform: translateX(645px);
+    opacity: 1;
+    fill: motion.$color-success;
+  }
+  78% {
+    transform: translateX(660px);
+    opacity: 0;
+    fill: motion.$color-success;
+  }
+  100% {
+    transform: translateX(660px);
+    opacity: 0;
+    fill: motion.$color-success;
+  }
+}
+
+.travelDot {
+  fill: motion.$color-travel-neutral;
+  animation: travelArtifactRegistry motion.$cycle linear infinite backwards;
+}
+
+.pulseRing {
+  @include motion.pulse-ring(#0095f7);
+}
+
+@include motion.pulse-delay-classes;
+
+/* Stage 1 - Push build artifacts: the commit rises up the shaft on the
+   beat, reusing the shared pushUp burst shape. */
+.riseDot {
+  fill: #0077c4;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pushUp motion.$cycle ease-in infinite backwards;
+  animation-delay: motion.fire(1);
+}
+
+/* Stage 2 - Centralize & organize: each artifact type flows in along its
+   spoke and settles at the hub. */
+@keyframes convergeFlow1 {
+  0% {
+    transform: translate(-22px, -22px);
+    opacity: 0;
+  }
+  3% {
+    opacity: 1;
+  }
+  20% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  24% {
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes convergeFlow2 {
+  0% {
+    transform: translate(22px, -22px);
+    opacity: 0;
+  }
+  3% {
+    opacity: 1;
+  }
+  20% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  24% {
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes convergeFlow3 {
+  0% {
+    transform: translate(0, 22px);
+    opacity: 0;
+  }
+  3% {
+    opacity: 1;
+  }
+  20% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  24% {
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+}
+
+.convergeDot {
+  fill: #0095f7;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.converge1 {
+  animation: convergeFlow1 motion.$cycle ease-in infinite backwards;
+  animation-delay: motion.fire(2);
+}
+.converge2 {
+  animation: convergeFlow2 motion.$cycle ease-in infinite backwards;
+  animation-delay: motion.fire(2) + 0.12s;
+}
+.converge3 {
+  animation: convergeFlow3 motion.$cycle ease-in infinite backwards;
+  animation-delay: motion.fire(2) + 0.24s;
+}
+
+/* Stage 3 - Scan & enforce policy: the magnifier pops once on the beat,
+   reusing the shared burst shape, then the fork resolves vulnerability
+   found (muted) vs compliant (bright) using the shared decide keyframes. */
+.magnifyPulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: magnifyPulse motion.$cycle ease-in-out infinite backwards;
+  animation-delay: motion.fire(3);
+}
+
+.vulnTag {
+  animation: decideBlocked motion.$cycle ease-out infinite backwards;
+  animation-delay: motion.fire(3);
+}
+
+.compliantTag {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: decideApproved motion.$cycle ease-out infinite backwards;
+  animation-delay: motion.fire(3);
+}
+
+/* Stage 4 - Promote across environments: the artifact advances across
+   the tracked environments on the beat. */
+@keyframes workItemMove {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  3% {
+    opacity: 1;
+  }
+  10% {
+    transform: translateX(14.5px);
+  }
+  17% {
+    transform: translateX(29px);
+  }
+  24% {
+    opacity: 1;
+  }
+  28% {
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(29px);
+    opacity: 0;
+  }
+}
+
+.workItem {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: workItemMove motion.$cycle ease-in-out infinite backwards;
+  animation-delay: motion.fire(4);
+}
+
+/* Stage 5 - Pull & deploy anywhere: the artifact drops down out of the
+   registry on the beat. */
+@keyframes dropIn {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  3% {
+    opacity: 1;
+  }
+  11% {
+    transform: translateY(32px);
+    opacity: 1;
+  }
+  20% {
+    opacity: 1;
+  }
+  24% {
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(32px);
+    opacity: 0;
+  }
+}
+
+.dropDot {
+  fill: #0077c4;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: dropIn motion.$cycle ease-in infinite backwards;
+  animation-delay: motion.fire(5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .connectorLine,
+  .travelDot,
+  .pulseRing,
+  .nodeBgFade,
+  .riseDot,
+  .dropDot,
+  .converge1,
+  .converge2,
+  .converge3,
+  .magnifyPulse,
+  .workItem,
+  .vulnTag,
+  .compliantTag {
+    animation: none !important;
+  }
+
+  .travelDot {
+    opacity: 0;
+  }
+  .riseDot {
+    opacity: 1;
+    transform: translateY(-32px);
+  }
+  .dropDot {
+    opacity: 1;
+    transform: translateY(32px);
+  }
+  .converge1,
+  .converge2,
+  .converge3 {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  .magnifyPulse {
+    transform: scale(1);
+  }
+  .workItem {
+    opacity: 1;
+    transform: translateX(29px);
+  }
+  .vulnTag {
+    opacity: 0.3;
+  }
+  .compliantTag {
+    opacity: 1;
+    transform: none;
+  }
+}

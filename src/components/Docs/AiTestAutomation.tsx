@@ -1,14 +1,18 @@
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { useLocation } from '@docusaurus/router';
 import React from 'react';
 import { TutorialCards } from '@site/src/components/TutorialCard/TutorialCard';
 import styles from './styles.module.scss';
 // Define the cards in "***Data.ts"
 import { useColorMode } from '@docusaurus/theme-common';
 import { docsCards } from './data/aiTestAutomationData';
+import AiTestAutomationOnboardingIllustration from './illustrations/AiTestAutomationOnboardingIllustration';
 export default function AR() {
   const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = '/' } = {} } = useDocusaurusContext();
+  const { pathname } = useLocation();
+  const is3kDocs = pathname.startsWith('/3k-docs');
   return (
     <div className="container">
       <div className={styles.topSection}>
@@ -27,7 +31,7 @@ export default function AR() {
           </div>
         </div>
         <div className={styles.spaceBetween}>
-          <div className={styles.content}>
+          <div className={styles.content} style={{ width: '100%' }}>
             <p>
               Harness AI Test Automation is a cutting-edge Generative AI-powered platform that
               revolutionizes software quality. By eliminating the complexity of traditional test
@@ -57,14 +61,7 @@ export default function AR() {
             </ul>
 
             <div className={styles.illustrationContainer}>
-              {/* <img
-                className={styles.illustration}
-                src={
-                  colorMode === "light"
-                    ? `${baseUrl}img/cde_illustration.svg`
-                    : `${baseUrl}img/cde_illustration_dark.svg`
-                }
-              />{" "} */}
+              {is3kDocs && <AiTestAutomationOnboardingIllustration />}
             </div>
           </div>
         </div>

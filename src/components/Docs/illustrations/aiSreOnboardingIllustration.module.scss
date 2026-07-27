@@ -1,0 +1,483 @@
+@use "./shared/motion" as motion with (
+  $cycle: 8s,
+  $nodes: 5,
+  $lead: 0.35s
+);
+
+/* ------------------------------------------------------------------ *
+ * ONE CLOCK. See iacmOnboardingIllustration.module.scss for the full
+ * explanation of the shared timing system - everything here runs off
+ * the same cycle/beat/fire clock from ./shared/_motion.scss.
+ *
+ * This flow has no gate/approval step at node 4 that flips the travel
+ * dot's color - the real decision point ("Detect anomalies": false
+ * positive vs real incident) resolves at node 3, so the travel dot
+ * stays a single neutral color for its whole trip.
+ * ------------------------------------------------------------------ */
+
+.illustration {
+  width: 80%;
+  height: auto;
+  overflow: visible;
+}
+
+.paused * {
+  animation-play-state: paused !important;
+}
+
+/* ---------- static / theme-aware styling ---------- */
+
+.nodeBg {
+  fill: #926ef7;
+  opacity: 0.08;
+}
+
+.nodeBgFade {
+  @include motion.node-bg-fade;
+}
+
+.nodeBgFadeEarly {
+  @include motion.node-bg-fade-early;
+}
+
+.iconStroke {
+  fill: none;
+  stroke: url(#aisreGrad);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.shaftLine {
+  /* solid color, not the gradient: a purely vertical line has a
+     zero-width bounding box, which makes an objectBoundingBox
+     gradient render invisible in some SVG engines */
+  stroke: #926ef7;
+  stroke-width: 3.5;
+  stroke-linecap: round;
+}
+
+.codeLine {
+  stroke: var(--ifm-color-emphasis-300);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.diffLine {
+  stroke: #926ef7;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.graphNode {
+  fill: #926ef7;
+}
+
+.clockFace {
+  fill: rgba(146, 110, 247, 0.08);
+  stroke: url(#aisreGrad);
+  stroke-width: 2.5;
+}
+
+.clockHand {
+  /* solid color: this line is close to horizontal/vertical at small
+     scale; keep it a plain stroke instead of the objectBoundingBox
+     gradient for reliable rendering */
+  stroke: #926ef7;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.alertTriangle {
+  fill: url(#aisreGrad);
+}
+
+.alertStem {
+  /* solid color, not the gradient: a purely vertical line has a
+     zero-width bounding box, which makes an objectBoundingBox
+     gradient render invisible in some SVG engines */
+  stroke: #ffffff;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+.alertDotFill {
+  fill: #ffffff;
+}
+
+.signalDot {
+  fill: url(#aisreGrad);
+}
+
+.converge {
+  fill: #926ef7;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  fill: var(--ifm-color-emphasis-700);
+}
+
+.connectorLine {
+  @include motion.dash-flow(var(--ifm-color-emphasis-300));
+}
+
+.forkPathMuted {
+  stroke: var(--ifm-color-emphasis-300);
+  stroke-width: 1.5;
+  stroke-dasharray: 3 4;
+}
+
+.forkPathBright {
+  stroke: #926ef7;
+  stroke-width: 1.5;
+}
+
+.tagBgMuted {
+  fill: var(--ifm-color-emphasis-200);
+}
+
+.tagLabelMuted {
+  font-size: 11px;
+  fill: var(--ifm-color-emphasis-600);
+}
+
+.tagLabelBright {
+  font-size: 11px;
+  font-weight: 600;
+  fill: #ffffff;
+}
+
+/* ---------- motion: the single travelling pulse ---------- */
+
+/* single neutral color for the whole trip - see note at the top of this
+   file for why this flow does not use the shared two-tone travel-dot
+   mixin. Percentage/translateX schedule matches the shared standard
+   5-node layout exactly (see shared/_motion.scss travel keyframe). */
+@keyframes travelAiSre {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  2% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  3% {
+    transform: translateX(15px);
+    opacity: 1;
+  }
+  17% {
+    transform: translateX(155px);
+    opacity: 1;
+  }
+  18% {
+    transform: translateX(170px);
+    opacity: 0;
+  }
+  22% {
+    transform: translateX(170px);
+    opacity: 0;
+  }
+  23% {
+    transform: translateX(185px);
+    opacity: 1;
+  }
+  37% {
+    transform: translateX(325px);
+    opacity: 1;
+  }
+  38% {
+    transform: translateX(340px);
+    opacity: 0;
+  }
+  42% {
+    transform: translateX(340px);
+    opacity: 0;
+  }
+  43% {
+    transform: translateX(355px);
+    opacity: 1;
+  }
+  57% {
+    transform: translateX(485px);
+    opacity: 1;
+  }
+  58% {
+    transform: translateX(500px);
+    opacity: 0;
+  }
+  62% {
+    transform: translateX(500px);
+    opacity: 0;
+  }
+  63% {
+    transform: translateX(515px);
+    opacity: 1;
+  }
+  77% {
+    transform: translateX(645px);
+    opacity: 1;
+  }
+  78% {
+    transform: translateX(660px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(660px);
+    opacity: 0;
+  }
+}
+
+.travelDot {
+  fill: motion.$color-travel-neutral;
+  animation: travelAiSre motion.$cycle linear infinite backwards;
+}
+
+.pulseRing {
+  @include motion.pulse-ring(#926ef7);
+}
+
+.pulseRingEarly {
+  @include motion.pulse-ring-early(#926ef7);
+}
+
+@include motion.pulse-delay-classes;
+
+/* Stage 1 - "Monitor service health" is always-on background work, so
+   the ring above pulses continuously (pulseRingEarly) instead of
+   waiting on the travel dot. The ECG heartbeat trace scrolls
+   continuously too, independent of the shared clock. */
+.heartbeat {
+  stroke-dasharray: 14 78;
+  animation: heartbeatTravel 2.4s linear infinite;
+}
+
+@keyframes heartbeatTravel {
+  0% {
+    stroke-dashoffset: 92;
+  }
+  100% {
+    stroke-dashoffset: -92;
+  }
+}
+
+/* Stage 2 - Correlate change events: each change source flows in along
+   its spoke and converges on the hub, which then pops to confirm the
+   correlation. */
+@keyframes convergeMove1 {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  3% {
+    opacity: 1;
+  }
+  20% {
+    transform: translate(24px, 22px);
+    opacity: 1;
+  }
+  24% {
+    opacity: 0;
+  }
+  100% {
+    transform: translate(24px, 22px);
+    opacity: 0;
+  }
+}
+
+@keyframes convergeMove2 {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  3% {
+    opacity: 1;
+  }
+  20% {
+    transform: translate(-24px, 22px);
+    opacity: 1;
+  }
+  24% {
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-24px, 22px);
+    opacity: 0;
+  }
+}
+
+@keyframes convergeMove3 {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  3% {
+    opacity: 1;
+  }
+  20% {
+    transform: translate(0, -20px);
+    opacity: 1;
+  }
+  24% {
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0, -20px);
+    opacity: 0;
+  }
+}
+
+.converge1 {
+  animation: convergeMove1 motion.$cycle ease-in infinite backwards;
+  animation-delay: motion.fire(2);
+}
+.converge2 {
+  animation: convergeMove2 motion.$cycle ease-in infinite backwards;
+  animation-delay: motion.fire(2) + 0.12s;
+}
+.converge3 {
+  animation: convergeMove3 motion.$cycle ease-in infinite backwards;
+  animation-delay: motion.fire(2) + 0.24s;
+}
+
+.signalDot {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: magnifyPulse motion.$cycle ease-in-out infinite backwards;
+  animation-delay: motion.fire(2);
+}
+
+/* Stage 3 - Detect anomalies: the alert glyph flags once on the beat
+   and holds, then the fork resolves false positive (muted) vs real
+   incident (bright) using the shared decide keyframes. */
+@keyframes alertGlow {
+  0% {
+    opacity: 0.55;
+  }
+  3% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.alertPulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: alertGlow motion.$cycle ease-out infinite backwards;
+  animation-delay: motion.fire(3);
+}
+
+.blockedTag {
+  animation: decideBlocked motion.$cycle ease-out infinite backwards;
+  animation-delay: motion.fire(3);
+}
+
+.approvedTag {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: decideApproved motion.$cycle ease-out infinite backwards;
+  animation-delay: motion.fire(3);
+}
+
+/* Stage 4 - Diagnose root cause: the magnifying glass pops once on the
+   beat, reusing the shared burst shape. */
+.magnifyPulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: magnifyPulse motion.$cycle ease-in-out infinite backwards;
+  animation-delay: motion.fire(4);
+}
+
+/* Stage 5 - Resolve faster: the clock hand ticks continuously (a clock
+   never stops), while the checkmark draws in once on the beat and
+   holds, since the resolved outcome is permanent. */
+.clockHand {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: clockTick 3s ease-in-out infinite;
+}
+
+@keyframes clockTick {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(45deg);
+  }
+}
+
+@include motion.stroke-draw-hold("checkDrawAiSre", 24);
+
+.checkMark {
+  fill: none;
+  stroke: #926ef7;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 24;
+  animation: checkDrawAiSre motion.$cycle ease-in-out infinite backwards;
+  animation-delay: motion.fire(5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .connectorLine,
+  .travelDot,
+  .pulseRing,
+  .nodeBgFade,
+  .pulseRingEarly,
+  .nodeBgFadeEarly,
+  .heartbeat,
+  .converge1,
+  .converge2,
+  .converge3,
+  .signalDot,
+  .alertPulse,
+  .magnifyPulse,
+  .clockHand,
+  .checkMark,
+  .blockedTag,
+  .approvedTag {
+    animation: none !important;
+  }
+
+  .travelDot {
+    opacity: 0;
+  }
+  .converge1 {
+    opacity: 1;
+    transform: translate(24px, 22px);
+  }
+  .converge2 {
+    opacity: 1;
+    transform: translate(-24px, 22px);
+  }
+  .converge3 {
+    opacity: 1;
+    transform: translate(0, -20px);
+  }
+  .signalDot {
+    transform: scale(1);
+  }
+  .alertPulse {
+    opacity: 1;
+  }
+  .magnifyPulse {
+    transform: scale(1);
+  }
+  .checkMark {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  .blockedTag {
+    opacity: 0.3;
+  }
+  .approvedTag {
+    opacity: 1;
+    transform: none;
+  }
+}

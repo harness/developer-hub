@@ -1,14 +1,18 @@
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import React from 'react';
+import { useLocation } from '@docusaurus/router';
 import { TutorialCards } from '@site/src/components/TutorialCard/TutorialCard';
 import styles from './styles.module.scss';
 // Define the cards in "***Data.ts"
 import { useColorMode } from '@docusaurus/theme-common';
 import { docsCards } from './data/continuousIntegrationData';
+import ContinuousIntegrationOnboardingIllustration from './illustrations/ContinuousIntegrationOnboardingIllustration';
 export default function CI() {
   const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = '/' } = {} } = useDocusaurusContext();
+  const { pathname } = useLocation();
+  const is3kDocs = pathname.startsWith('/3k-docs');
   return (
     <div className="container">
       <div className={styles.topSection}>
@@ -38,14 +42,18 @@ export default function CI() {
               other Harness modules.
             </p>
             <div className={styles.illustrationContainer}>
-              <img
-                className={styles.illustration}
-                src={
-                  colorMode === 'light'
-                    ? `${baseUrl}img/ci.svg`
-                    : `${baseUrl}img/CI_dark_mode.svg`
-                }
-              />{' '}
+              {is3kDocs ? (
+                <ContinuousIntegrationOnboardingIllustration />
+              ) : (
+                <img
+                  className={styles.illustration}
+                  src={
+                    colorMode === 'light'
+                      ? `${baseUrl}img/ci.svg`
+                      : `${baseUrl}img/CI_dark_mode.svg`
+                  }
+                />
+              )}
             </div>
           </div>
         </div>

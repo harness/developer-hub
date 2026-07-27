@@ -1,15 +1,19 @@
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { useLocation } from '@docusaurus/router';
 import React from 'react';
 import { TutorialCards } from '@site/src/components/TutorialCard/TutorialCard';
 import styles from './styles.module.scss';
 // Define the cards in "***Data.ts"
 import { docsCards } from './data/databaseDevOpsData';
+import DatabaseDevOpsOnboardingIllustration from './illustrations/DatabaseDevOpsOnboardingIllustration';
 
 import { useColorMode } from '@docusaurus/theme-common';
 export default function FF() {
   const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = '/' } = {} } = useDocusaurusContext();
+  const { pathname } = useLocation();
+  const is3kDocs = pathname.startsWith('/3k-docs');
   return (
     <div className="container">
       <div className={styles.topSection}>
@@ -37,14 +41,18 @@ export default function FF() {
               and DBAs to collaborate more effectively, reducing bottlenecks and deployment risks.
             </p>
             <div className={styles.illustrationContainer}>
-              <img
-                className={styles.illustration}
-                src={
-                  colorMode === "light"
-                    ? `${baseUrl}img/dbdevops_landing_page_lightmode.svg`
-                    : `${baseUrl}img/dbdevops_landing_page_darkmode.svg`
-                }
-              />{' '}
+              {is3kDocs ? (
+                <DatabaseDevOpsOnboardingIllustration />
+              ) : (
+                <img
+                  className={styles.illustration}
+                  src={
+                    colorMode === "light"
+                      ? `${baseUrl}img/dbdevops_landing_page_lightmode.svg`
+                      : `${baseUrl}img/dbdevops_landing_page_darkmode.svg`
+                  }
+                />
+              )}
             </div>
           </div>
         </div>

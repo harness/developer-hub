@@ -3,7 +3,7 @@ title: Requirements
 sidebar_position: 1
 description: Requirements to fulfill before executing Cloud Foundry chaos experiments.
 redirect_from:
-	- /docs/chaos-engineering/chaos-faults/cloud-foundry/permissions
+  - /docs/chaos-engineering/chaos-faults/cloud-foundry/permissions
 ---
 
 This topic describes the permissions required to execute chaos experiments on the Cloud Foundry platform.

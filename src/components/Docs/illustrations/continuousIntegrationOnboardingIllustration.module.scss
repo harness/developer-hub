@@ -1,0 +1,278 @@
+@use "./shared/motion" as motion with (
+  $cycle: 8s,
+  $nodes: 5,
+  $lead: 0.35s
+);
+
+/* ------------------------------------------------------------------ *
+ * ONE CLOCK.
+ *
+ * Everything runs off a single cycle and a single evenly-spaced beat,
+ * so the whole thing reads as one progress pulse travelling the
+ * pipeline - not several independent loops. The clock itself (cycle/
+ * beat/fire), the color-free keyframe shapes, and the shared semantic
+ * colors live in ./shared/_motion.scss so every illustration stays in
+ * sync instead of re-defining its own copies.
+ *
+ *   - cycle: overall speed. Configured above via `with (...)`.
+ *   - motion.beat(i): node i's moment, evenly spaced (cycle / nodes).
+ *   - motion.$lead: how far AHEAD of the travel dot each node lights up.
+ *     The ring blooms slightly before the dot arrives, so attention is
+ *     on the node (not on the dot's fade) as the hand-off happens.
+ *   - The dot stays fully opaque along each connector and only blinks
+ *     out in a short window right at the node core, so you do not see
+ *     it fading out on the open track.
+ *
+ * CI's flow has no gate/approval step, so the travel dot below keeps a
+ * single brand color the whole trip instead of the shared neutral->
+ * success handoff mixin (which is modeled on a governance checkpoint).
+ * ------------------------------------------------------------------ */
+
+.illustration {
+  width: 80%;
+  height: auto;
+  overflow: visible;
+}
+
+.paused * {
+  animation-play-state: paused !important;
+}
+
+/* ---------- static / theme-aware styling ---------- */
+
+.nodeBg {
+  fill: #0095f7;
+  opacity: 0.08;
+}
+
+/* hides the static disc for exactly the window pulseRing is visibly
+   blooming, so the two never overlap - see shared/_motion.scss. */
+.nodeBgFade {
+  @include motion.node-bg-fade;
+}
+
+.iconStroke {
+  fill: none;
+  stroke: url(#ciGrad);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.shaftLine {
+  /* solid color, not the gradient: a purely vertical line has a
+     zero-width bounding box, which makes an objectBoundingBox
+     gradient render invisible in some SVG engines */
+  stroke: #0095f7;
+  stroke-width: 3.5;
+  stroke-linecap: round;
+}
+
+.codeLine {
+  /* solid color, not the gradient: a purely horizontal line has a
+     zero-height bounding box, which makes an objectBoundingBox
+     gradient render invisible in some SVG engines */
+  stroke: var(--ifm-color-emphasis-300);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.diffLine {
+  stroke: #0095f7;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.squareOutline {
+  fill: none;
+  stroke: var(--ifm-color-emphasis-400);
+  stroke-width: 1.5;
+}
+
+@include motion.stroke-draw-flash("ciCheckDraw", 24);
+
+.checkMark {
+  fill: none;
+  stroke: #0077c4;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 24;
+  animation: ciCheckDraw motion.$cycle ease-in-out infinite backwards;
+  animation-delay: motion.fire(2);
+}
+
+.laneLine {
+  /* purely horizontal lines: solid color, not the gradient */
+  @include motion.dash-flow(var(--ifm-color-emphasis-300), 2.5, 5 4, 1.1s);
+}
+.lane1 { animation-delay: 0s; }
+.lane2 { animation-delay: 0.35s; }
+.lane3 { animation-delay: 0.7s; }
+
+.cacheMidLine {
+  fill: none;
+  stroke: var(--ifm-color-emphasis-400);
+  stroke-width: 1.5;
+  stroke-dasharray: 3 3;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  fill: var(--ifm-color-emphasis-700);
+}
+
+.connectorLine {
+  @include motion.dash-flow(var(--ifm-color-emphasis-300));
+}
+
+/* ---------- motion: the single travelling pulse ---------- */
+
+/* CI's story is a straight build pipeline with no blocked/approved
+   checkpoint, so the dot stays a single brand color the whole trip
+   rather than using the shared mixin's neutral->success handoff. */
+@keyframes travelCi {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  2% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  3% {
+    transform: translateX(15px);
+    opacity: 1;
+  }
+  17% {
+    transform: translateX(155px);
+    opacity: 1;
+  }
+  18% {
+    transform: translateX(170px);
+    opacity: 0;
+  }
+  22% {
+    transform: translateX(170px);
+    opacity: 0;
+  }
+  23% {
+    transform: translateX(185px);
+    opacity: 1;
+  }
+  37% {
+    transform: translateX(325px);
+    opacity: 1;
+  }
+  38% {
+    transform: translateX(340px);
+    opacity: 0;
+  }
+  42% {
+    transform: translateX(340px);
+    opacity: 0;
+  }
+  43% {
+    transform: translateX(355px);
+    opacity: 1;
+  }
+  57% {
+    transform: translateX(485px);
+    opacity: 1;
+  }
+  58% {
+    transform: translateX(500px);
+    opacity: 0;
+  }
+  62% {
+    transform: translateX(500px);
+    opacity: 0;
+  }
+  63% {
+    transform: translateX(515px);
+    opacity: 1;
+  }
+  77% {
+    transform: translateX(645px);
+    opacity: 1;
+  }
+  78% {
+    transform: translateX(660px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(660px);
+    opacity: 0;
+  }
+}
+
+.travelDot {
+  fill: #0095f7;
+  animation: travelCi motion.$cycle linear infinite backwards;
+}
+
+.pulseRing {
+  @include motion.pulse-ring(#0095f7);
+}
+
+@include motion.pulse-delay-classes;
+
+.commitDot {
+  fill: #0077c4;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pushUp motion.$cycle ease-in-out infinite backwards;
+  animation-delay: motion.fire(1);
+}
+
+.magnifyPulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: magnifyPulse motion.$cycle ease-in-out infinite backwards;
+  animation-delay: motion.fire(4);
+}
+
+/* the cache "spark" is depicted as an ambient flicker independent of
+   the node's arrival beat, rather than a one-time burst. */
+.boltFlicker {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: boltFlicker 1.4s ease-in-out infinite;
+}
+
+.publishDot {
+  fill: #0077c4;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pushUp motion.$cycle ease-in-out infinite backwards;
+  animation-delay: motion.fire(5);
+}
+
+@keyframes boltFlicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .connectorLine,
+  .travelDot,
+  .pulseRing,
+  .nodeBgFade,
+  .commitDot,
+  .magnifyPulse,
+  .checkMark,
+  .laneLine,
+  .boltFlicker,
+  .publishDot {
+    animation: none !important;
+  }
+
+  .travelDot { opacity: 0; }
+  .checkMark { stroke-dashoffset: 0; opacity: 1; }
+}

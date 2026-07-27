@@ -1,0 +1,371 @@
+@use "./shared/motion" as motion with (
+  $cycle: 8s,
+  $nodes: 5,
+  $lead: 0.35s
+);
+
+/* ------------------------------------------------------------------ *
+ * ONE CLOCK. See iacmOnboardingIllustration.module.scss for the full
+ * explanation of the shared timing system - everything here runs off
+ * the same cycle/beat/fire clock from ./shared/_motion.scss.
+ *
+ * This flow has a real gate at node 4 ("Track delivery": work is either
+ * human-written or AI-generated), so the travel dot uses the shared
+ * two-tone neutral -> success mixin.
+ * ------------------------------------------------------------------ */
+
+.illustration {
+  width: 80%;
+  height: auto;
+  overflow: visible;
+}
+
+.paused * {
+  animation-play-state: paused !important;
+}
+
+/* ---------- static / theme-aware styling ---------- */
+
+.nodeBg {
+  fill: #45bd35;
+  opacity: 0.08;
+}
+
+.nodeBgFade {
+  @include motion.node-bg-fade;
+}
+
+.iconStroke {
+  fill: none;
+  stroke: url(#dlcGrad);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.shaftLine {
+  stroke: #2e9e20;
+  stroke-width: 3.5;
+  stroke-linecap: round;
+}
+
+.spokeLine {
+  stroke: var(--ifm-color-emphasis-300);
+  stroke-width: 1.5;
+}
+
+.orgLine {
+  stroke: var(--ifm-color-emphasis-300);
+  stroke-width: 1.5;
+}
+
+.squareOutline {
+  fill: none;
+  stroke: var(--ifm-color-emphasis-400);
+  stroke-width: 1.5;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  fill: var(--ifm-color-emphasis-700);
+}
+
+.connectorLine {
+  @include motion.dash-flow(var(--ifm-color-emphasis-300));
+}
+
+.forkPathMuted {
+  stroke: var(--ifm-color-emphasis-300);
+  stroke-width: 1.5;
+  stroke-dasharray: 3 4;
+}
+
+.forkPathBright {
+  stroke: #45bd35;
+  stroke-width: 1.5;
+}
+
+.tagBgMuted {
+  fill: var(--ifm-color-emphasis-200);
+}
+
+.tagLabelMuted {
+  font-size: 11px;
+  fill: var(--ifm-color-emphasis-600);
+}
+
+.tagLabelBright {
+  font-size: 11px;
+  font-weight: 600;
+  fill: #ffffff;
+}
+
+/* ---------- motion: the single travelling pulse ---------- */
+
+.travelDot {
+  @include motion.travel-dot;
+}
+
+.pulseRing {
+  @include motion.pulse-ring(#45bd35);
+}
+
+@include motion.pulse-delay-classes;
+
+/* Stage 1 - Deploy agent: the drop lands from the cloud down into the
+   shaft, on the node's beat. */
+@keyframes dropIn {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  3% {
+    opacity: 1;
+  }
+  11% {
+    transform: translateY(32px);
+    opacity: 1;
+  }
+  20% {
+    opacity: 1;
+  }
+  24% {
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(32px);
+    opacity: 0;
+  }
+}
+
+.dropDot {
+  fill: #2e9e20;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: dropIn motion.$cycle ease-in infinite backwards;
+  animation-delay: motion.fire(1);
+}
+
+/* Stage 2 - Connect sources: each source flows in along its spoke and
+   settles at the hub, then fades once it has "arrived" so it does not
+   visually compete with the hub dot. */
+@keyframes sourceFlow1 {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  3% {
+    opacity: 1;
+  }
+  20% {
+    transform: translate(22px, 22px);
+    opacity: 1;
+  }
+  24% {
+    opacity: 0;
+  }
+  100% {
+    transform: translate(22px, 22px);
+    opacity: 0;
+  }
+}
+
+@keyframes sourceFlow2 {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  3% {
+    opacity: 1;
+  }
+  20% {
+    transform: translate(-22px, 22px);
+    opacity: 1;
+  }
+  24% {
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-22px, 22px);
+    opacity: 0;
+  }
+}
+
+@keyframes sourceFlow3 {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  3% {
+    opacity: 1;
+  }
+  20% {
+    transform: translate(0, -22px);
+    opacity: 1;
+  }
+  24% {
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0, -22px);
+    opacity: 0;
+  }
+}
+
+.sourceDot {
+  fill: #45bd35;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.source1 {
+  animation: sourceFlow1 motion.$cycle ease-in infinite backwards;
+  animation-delay: motion.fire(2);
+}
+.source2 {
+  animation: sourceFlow2 motion.$cycle ease-in infinite backwards;
+  animation-delay: motion.fire(2) + 0.12s;
+}
+.source3 {
+  animation: sourceFlow3 motion.$cycle ease-in infinite backwards;
+  animation-delay: motion.fire(2) + 0.24s;
+}
+
+/* Stage 3 - Set up teams: org-tree dots pop into place on the beat,
+   reusing the shared magnifyPulse burst shape. */
+.teamDot {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: magnifyPulse motion.$cycle ease-in-out infinite backwards;
+}
+.team1 {
+  animation-delay: motion.fire(3);
+}
+.team2 {
+  animation-delay: motion.fire(3) + 0.12s;
+}
+.team3 {
+  animation-delay: motion.fire(3) + 0.24s;
+}
+
+/* Stage 4 - Track delivery: the work item advances across the tracked
+   states, then the fork resolves human-written (muted) vs AI-generated
+   (bright) using the shared decide keyframes. */
+@keyframes workItemMove {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  3% {
+    opacity: 1;
+  }
+  10% {
+    transform: translateX(14.5px);
+  }
+  17% {
+    transform: translateX(29px);
+  }
+  24% {
+    opacity: 1;
+  }
+  28% {
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(29px);
+    opacity: 0;
+  }
+}
+
+.workItem {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: workItemMove motion.$cycle ease-in-out infinite backwards;
+  animation-delay: motion.fire(4);
+}
+
+.humanTag {
+  animation: decideBlocked motion.$cycle ease-out infinite backwards;
+  animation-delay: motion.fire(4);
+}
+
+.aiTag {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: decideApproved motion.$cycle ease-out infinite backwards;
+  animation-delay: motion.fire(4);
+}
+
+/* Stage 5 - View insights: bars grow in on the beat. */
+.bar {
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation: barPulse motion.$cycle ease-in-out infinite backwards;
+}
+.bar1 {
+  animation-delay: motion.fire(5);
+}
+.bar2 {
+  animation-delay: motion.fire(5) + 0.1s;
+}
+.bar3 {
+  animation-delay: motion.fire(5) + 0.2s;
+}
+.bar4 {
+  animation-delay: motion.fire(5) + 0.3s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .connectorLine,
+  .travelDot,
+  .pulseRing,
+  .nodeBgFade,
+  .dropDot,
+  .source1,
+  .source2,
+  .source3,
+  .teamDot,
+  .workItem,
+  .humanTag,
+  .aiTag,
+  .bar {
+    animation: none !important;
+  }
+
+  .travelDot {
+    opacity: 0;
+  }
+  .dropDot {
+    opacity: 1;
+    transform: translateY(32px);
+  }
+  .source1 {
+    opacity: 1;
+    transform: translate(22px, 22px);
+  }
+  .source2 {
+    opacity: 1;
+    transform: translate(-22px, 22px);
+  }
+  .source3 {
+    opacity: 1;
+    transform: translate(0, -22px);
+  }
+  .teamDot {
+    transform: scale(1);
+  }
+  .workItem {
+    opacity: 1;
+    transform: translateX(29px);
+  }
+  .humanTag {
+    opacity: 0.3;
+  }
+  .aiTag {
+    opacity: 1;
+    transform: none;
+  }
+  .bar {
+    transform: scaleY(0.55);
+  }
+}

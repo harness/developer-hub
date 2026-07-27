@@ -3,7 +3,7 @@ title: Export chaos experiment
 sidebar_position: 8
 description: Guide to export chaos experiment
 redirect_from:
-	- /docs/chaos-engineering/configure-chaos-experiments/experiments/export-chaos-experiments
+  - /docs/chaos-engineering/configure-chaos-experiments/experiments/export-chaos-experiments
 ---
 
 This topic describes how to export an experiment by downloading the experiment manifest, uploading a manifest to create an experiment and exporting an experiment for future use.

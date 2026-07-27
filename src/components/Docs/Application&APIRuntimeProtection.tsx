@@ -1,14 +1,18 @@
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { useLocation } from '@docusaurus/router';
 import React from 'react';
 import { TutorialCards } from '@site/src/components/TutorialCard/TutorialCard';
 import styles from './styles.module.scss';
 // Define the cards in "***Data.ts"
 import { useColorMode } from '@docusaurus/theme-common';
 import { docsCards } from './data/application&APIRuntimeProtectionData';
+import ApplicationApiRuntimeProtectionOnboardingIllustration from './illustrations/ApplicationApiRuntimeProtectionOnboardingIllustration';
 export default function ARP() {
   const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = '/' } = {} } = useDocusaurusContext();
+  const { pathname } = useLocation();
+  const is3kDocs = pathname.startsWith('/3k-docs');
   return (
     <div className="container">
       <div className={styles.topSection}>
@@ -28,10 +32,15 @@ export default function ARP() {
           </div>
         </div>
         <div className={styles.spaceBetween}>
-          <div className={styles.content}>
+          <div className={styles.content} style={{ width: '100%' }}>
             <p>
               With Runtime Protection, your application and APIs are defended in near real time against active threats. Protection enables security and operation teams to monitor attacks, block malicious traffic, and safeguard sensitive data in near real time. It provides visibility into threat actors, APIs under attack, bot activity, while enforcing fine-grained policies to minimize risk without disrupting legitimate users. By combining advanced detection, automated defenses, and flexible policy management, Protection ensures that your applications and APIs remain resilient, compliant, and secure in production.
             </p>
+            {is3kDocs && (
+              <div className={styles.illustrationContainer}>
+                <ApplicationApiRuntimeProtectionOnboardingIllustration />
+              </div>
+            )}
           </div>
         </div>
       </div>

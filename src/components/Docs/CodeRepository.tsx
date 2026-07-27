@@ -1,13 +1,19 @@
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { useLocation } from '@docusaurus/router';
 import React from 'react';
 import { TutorialCards } from '@site/src/components/TutorialCard/TutorialCard';
 import styles from './styles.module.scss';
 // Define the cards in "***Data.ts"
 import { docsCards } from './data/codeRepositoryData';
+import CodeRepositoryOnboardingIllustration from './illustrations/CodeRepositoryOnboardingIllustration';
 
 export default function Code() {
   const { siteConfig: { baseUrl = '/' } = {} } = useDocusaurusContext();
+  const { pathname } = useLocation();
+  // The animated onboarding illustration is a 3k-docs-only experiment for
+  // now; /docs keeps the page exactly as it was (static PNG illustration).
+  const is3kDocs = pathname.startsWith('/3k-docs');
   return (
     <div className="container">
       <div className={styles.topSection}>
@@ -27,15 +33,19 @@ export default function Code() {
           </div>
         </div>
         <div className={styles.spaceBetween}>
-          <div className={styles.content}>
+          <div className={styles.content} style={{ width: '100%' }}>
             <p>
               Learn how you can accelerate development with security at scale.
             </p>{' '}
             <div className={styles.illustrationContainer}>
-              <img
-                className={styles.illustration}
-                src={`${baseUrl}img/Code_Repo_Landing_Page.png`}
-              />
+              {is3kDocs ? (
+                <CodeRepositoryOnboardingIllustration />
+              ) : (
+                <img
+                  className={styles.illustration}
+                  src={`${baseUrl}img/Code_Repo_Landing_Page.png`}
+                />
+              )}
             </div>
           </div>
         </div>

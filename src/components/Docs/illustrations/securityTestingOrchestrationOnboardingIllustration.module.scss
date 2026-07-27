@@ -1,0 +1,218 @@
+@use "./shared/motion" as motion with (
+  $cycle: 8s,
+  $nodes: 5,
+  $lead: 0.35s
+);
+
+/* ------------------------------------------------------------------ *
+ * ONE CLOCK. Everything runs off a single cycle and a single evenly-
+ * spaced beat - see ./shared/_motion.scss for the timing math, the
+ * color-free keyframe shapes, and the shared semantic colors.
+ * ------------------------------------------------------------------ */
+
+.illustration {
+  width: 80%;
+  height: auto;
+  overflow: visible;
+}
+
+.paused * {
+  animation-play-state: paused !important;
+}
+
+/* ---------- static / theme-aware styling ---------- */
+
+.nodeBg {
+  fill: #2e1cf3;
+  opacity: 0.08;
+}
+
+.nodeBgFade {
+  @include motion.node-bg-fade;
+}
+
+.iconStroke {
+  fill: none;
+  stroke: url(#stoGrad);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.shaftLine {
+  /* solid color, not the gradient: a purely horizontal/vertical line has a
+     zero-height or zero-width bounding box, which makes an
+     objectBoundingBox gradient render invisible in some SVG engines */
+  stroke: #2e1cf3;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.playIcon {
+  fill: url(#stoGrad);
+}
+
+.mergePathMuted {
+  @include motion.dash-flow(var(--ifm-color-emphasis-300), 2, 4 4);
+}
+
+.mergePathBright {
+  stroke: #2e1cf3;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.riskBarLow {
+  fill: var(--ifm-color-emphasis-300);
+}
+
+.riskBarMed {
+  fill: var(--ifm-color-emphasis-400);
+}
+
+.shieldOutline {
+  fill: none;
+  stroke: url(#stoGrad);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+}
+
+@include motion.stroke-draw-flash("checkGateDraw", 24);
+
+.checkMark {
+  fill: none;
+  stroke: #1b0fb8;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 24;
+  animation: checkGateDraw motion.$cycle ease-in-out infinite backwards;
+  animation-delay: motion.fire(5);
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  fill: var(--ifm-color-emphasis-700);
+}
+
+.connectorLine {
+  @include motion.dash-flow(var(--ifm-color-emphasis-300));
+}
+
+/* the fork sits below node 4: the muted low-risk path fades and the
+   bright critical path stays a static confirming line, matching the
+   original design (no draw-in animation on either branch). */
+.forkPathMuted {
+  stroke: var(--ifm-color-emphasis-300);
+  stroke-width: 1.5;
+  stroke-dasharray: 3 4;
+}
+
+.forkPathBright {
+  stroke: #2e1cf3;
+  stroke-width: 1.5;
+}
+
+.tagBgMuted {
+  fill: var(--ifm-color-emphasis-200);
+}
+
+.tagLabelMuted {
+  font-size: 11px;
+  fill: var(--ifm-color-emphasis-600);
+}
+
+.tagLabelBright {
+  font-size: 11px;
+  font-weight: 600;
+  fill: #ffffff;
+}
+
+/* the risk-prioritization outcome resolves on node 4's beat: the low-risk
+   pill fades, the critical pill pops and confirms, and the tallest risk
+   bar bursts into full prominence and holds bright. */
+.lowRiskTag {
+  animation: decideBlocked motion.$cycle ease-out infinite backwards;
+  animation-delay: motion.fire(4);
+}
+
+.criticalTag {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: decideApproved motion.$cycle ease-out infinite backwards;
+  animation-delay: motion.fire(4);
+}
+
+.riskBarHigh {
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation: decideApproved motion.$cycle ease-out infinite backwards;
+  animation-delay: motion.fire(4);
+}
+
+/* ---------- motion: the single travelling pulse ---------- */
+
+/* The prioritize-by-risk fork genuinely resolves at node 4 (low risk vs
+   critical), matching the standard layout's gated-checkpoint story, so
+   this file uses the shared two-tone neutral -> success travel dot
+   verbatim. */
+.travelDot {
+  @include motion.travel-dot;
+}
+
+.pulseRing {
+  @include motion.pulse-ring(#2e1cf3);
+}
+
+@include motion.pulse-delay-classes;
+
+.triggerPulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: magnifyPulse motion.$cycle ease-in-out infinite backwards;
+  animation-delay: motion.fire(1);
+}
+
+.scanBar {
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation: barPulse motion.$cycle ease-in-out infinite backwards;
+}
+.scanBar1 { animation-delay: motion.fire(2); }
+.scanBar2 { animation-delay: motion.fire(2) + 0.12s; }
+.scanBar3 { animation-delay: motion.fire(2) + 0.24s; }
+
+.mergeDot {
+  fill: #2e1cf3;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: magnifyPulse motion.$cycle ease-in-out infinite backwards;
+  animation-delay: motion.fire(3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .connectorLine,
+  .travelDot,
+  .pulseRing,
+  .nodeBgFade,
+  .triggerPulse,
+  .scanBar,
+  .mergePathMuted,
+  .mergeDot,
+  .riskBarHigh,
+  .checkMark,
+  .lowRiskTag,
+  .criticalTag {
+    animation: none !important;
+  }
+
+  .travelDot { opacity: 0; }
+  .triggerPulse { transform: none; }
+  .scanBar { transform: scaleY(1); }
+  .mergeDot { transform: none; }
+  .riskBarHigh { opacity: 1; transform: none; }
+  .checkMark { stroke-dashoffset: 0; opacity: 1; }
+  .lowRiskTag { opacity: 0.3; }
+  .criticalTag { opacity: 1; transform: none; }
+}

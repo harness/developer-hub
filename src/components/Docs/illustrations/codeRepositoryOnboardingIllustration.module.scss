@@ -1,0 +1,245 @@
+@use "./shared/motion" as motion with (
+  $cycle: 8s,
+  $nodes: 5,
+  $lead: 0.35s
+);
+
+/* ------------------------------------------------------------------ *
+ * ONE CLOCK. See iacmOnboardingIllustration.module.scss for the full
+ * explanation of the shared timing system - everything here runs off
+ * the same cycle/beat/fire clock from ./shared/_motion.scss.
+ *
+ * The gate/approval step in this flow is at node 4 ("Review & merge":
+ * changes requested vs. approved & merged), matching the shared travel
+ * keyframe's assumption, so the travel dot uses the shared two-tone
+ * travel-dot mixin verbatim.
+ * ------------------------------------------------------------------ */
+
+.illustration {
+  width: 80%;
+  height: auto;
+  overflow: visible;
+}
+
+.paused * {
+  animation-play-state: paused !important;
+}
+
+/* ---------- static / theme-aware styling ---------- */
+
+.nodeBg {
+  fill: #0095f7;
+  opacity: 0.08;
+}
+
+.nodeBgFade {
+  @include motion.node-bg-fade;
+}
+
+.folderOutline {
+  fill: rgba(0, 149, 247, 0.08);
+  stroke: url(#codeGrad);
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+.plusStroke {
+  /* solid color, not the gradient: purely vertical/horizontal lines have a
+     zero-width or zero-height bounding box, which makes an
+     objectBoundingBox gradient render invisible in some SVG engines */
+  stroke: #0077c2;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.commitLine {
+  stroke: #0095f7;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.branchLine {
+  stroke: url(#codeGrad);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.commitDotStatic {
+  opacity: 0.9;
+}
+
+.prNode {
+  fill: url(#codeGrad);
+}
+
+.prArrow {
+  stroke: url(#codeGrad);
+  stroke-width: 2;
+}
+
+.prArrowHead {
+  stroke: url(#codeGrad);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.reviewBubble {
+  fill: rgba(0, 149, 247, 0.08);
+  stroke: url(#codeGrad);
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.playIcon {
+  fill: url(#codeGrad);
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  fill: var(--ifm-color-emphasis-700);
+}
+
+.connectorLine {
+  @include motion.dash-flow(var(--ifm-color-emphasis-300));
+}
+
+.forkPathMuted {
+  stroke: var(--ifm-color-emphasis-300);
+  stroke-width: 1.5;
+  stroke-dasharray: 3 4;
+}
+
+.forkPathBright {
+  stroke: #0095f7;
+  stroke-width: 1.5;
+}
+
+.tagBgMuted {
+  fill: var(--ifm-color-emphasis-200);
+}
+
+.tagLabelMuted {
+  font-size: 11px;
+  fill: var(--ifm-color-emphasis-600);
+}
+
+.tagLabelBright {
+  font-size: 11px;
+  font-weight: 600;
+  fill: #ffffff;
+}
+
+/* ---------- motion: the single travelling pulse ---------- */
+
+.travelDot {
+  @include motion.travel-dot;
+}
+
+.pulseRing {
+  @include motion.pulse-ring(#0095f7);
+}
+
+@include motion.pulse-delay-classes;
+
+/* Stage 1 - "Create a repository": the plus icon reuses the shared
+   magnifyPulse shape (a single clean scale burst) on the node's beat
+   instead of pulsing forever. */
+.createPulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: magnifyPulse motion.$cycle ease-in-out infinite backwards;
+  animation-delay: motion.fire(1);
+}
+
+/* Stage 2 - "Push code": commits reuse the shared decideApproved shape
+   (pop in, then hold) since a commit, once made, stays visible rather
+   than fading away. */
+.commitDot {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: decideApproved motion.$cycle ease-out infinite backwards;
+}
+.commit1 { animation-delay: motion.fire(2); }
+.commit2 { animation-delay: motion.fire(2) + 0.15s; }
+
+/* Stage 3 - "Open a pull request": the badge reuses the shared
+   magnifyPulse shape on the node's beat instead of pulsing forever. */
+.prBadge {
+  fill: url(#codeGrad);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: magnifyPulse motion.$cycle ease-in-out infinite backwards;
+  animation-delay: motion.fire(3);
+}
+
+/* Stage 4 - "Review & merge" is the gate for this flow: the fork
+   resolves once on node 4's beat using the shared decide keyframes.
+   The "typing" review dots stay continuous, independent of the shared
+   clock, since review discussion is inherently ongoing. */
+.reviewDot {
+  fill: #0095f7;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: typingBlink 1.2s ease-in-out infinite;
+}
+.reviewDot:nth-of-type(1) { animation-delay: 0s; }
+.reviewDot:nth-of-type(2) { animation-delay: 0.2s; }
+.reviewDot:nth-of-type(3) { animation-delay: 0.4s; }
+
+@keyframes typingBlink {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.requestedTag {
+  animation: decideBlocked motion.$cycle ease-out infinite backwards;
+  animation-delay: motion.fire(4);
+}
+
+.mergedTag {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: decideApproved motion.$cycle ease-out infinite backwards;
+  animation-delay: motion.fire(4);
+}
+
+/* Stage 5 - "Trigger pipeline": the build squares reuse the shared
+   barPulse shape, staggered like IaCM's cost bars. */
+.pipeSquare {
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation: barPulse motion.$cycle ease-in-out infinite backwards;
+}
+.pipe1 { animation-delay: motion.fire(5); }
+.pipe2 { animation-delay: motion.fire(5) + 0.12s; }
+.pipe3 { animation-delay: motion.fire(5) + 0.24s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .connectorLine,
+  .travelDot,
+  .pulseRing,
+  .nodeBgFade,
+  .createPulse,
+  .commitDot,
+  .prBadge,
+  .reviewDot,
+  .requestedTag,
+  .mergedTag,
+  .pipeSquare {
+    animation: none !important;
+  }
+
+  .travelDot { opacity: 0; }
+  .commitDot { opacity: 1; transform: none; }
+  .requestedTag { opacity: 0.3; }
+  .mergedTag { opacity: 1; transform: none; }
+  .pipeSquare { transform: scaleY(1); }
+}

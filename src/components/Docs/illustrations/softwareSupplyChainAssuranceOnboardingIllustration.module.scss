@@ -1,0 +1,330 @@
+@use "./shared/motion" as motion with (
+  $cycle: 8s,
+  $nodes: 5,
+  $lead: 0.35s
+);
+
+/* ------------------------------------------------------------------ *
+ * ONE CLOCK. Everything runs off a single cycle and a single evenly-
+ * spaced beat - see ./shared/_motion.scss for the timing math, the
+ * color-free keyframe shapes, and the shared semantic colors.
+ * ------------------------------------------------------------------ */
+
+.illustration {
+  width: 80%;
+  height: auto;
+  overflow: visible;
+}
+
+.paused * {
+  animation-play-state: paused !important;
+}
+
+/* ---------- static / theme-aware styling ---------- */
+
+.nodeBg {
+  fill: #E62D14;
+  opacity: 0.08;
+}
+
+.nodeBgFade {
+  @include motion.node-bg-fade;
+}
+
+.iconStroke {
+  fill: none;
+  stroke: url(#sscaGrad);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.shaftLine {
+  stroke: #E62D14;
+  stroke-width: 3.5;
+  stroke-linecap: round;
+}
+
+.squareOutline {
+  fill: none;
+  stroke: var(--ifm-color-emphasis-400);
+  stroke-width: 1.5;
+}
+
+.docOutline {
+  fill: rgba(230, 45, 20, 0.08);
+  stroke: url(#sscaGrad);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+}
+
+.listLine {
+  stroke: var(--ifm-color-emphasis-300);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.listLineBright {
+  stroke: #E62D14;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.shieldOutline {
+  fill: none;
+  stroke: url(#sscaGrad);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+}
+
+@include motion.stroke-draw-flash("checkProvenanceDraw", 24);
+
+.checkMark {
+  fill: none;
+  stroke: #2e9e20;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 24;
+  animation: checkProvenanceDraw motion.$cycle ease-in-out infinite backwards;
+  animation-delay: motion.fire(2);
+}
+
+.vulnOutline {
+  fill: rgba(230, 45, 20, 0.15);
+  stroke: url(#sscaGrad);
+  stroke-width: 1.8;
+  stroke-linejoin: round;
+}
+
+.vulnDot {
+  fill: #E62D14;
+}
+
+.postLine {
+  stroke: #E62D14;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.gateArm {
+  stroke: #E62D14;
+  stroke-width: 3.5;
+  stroke-linecap: round;
+}
+
+.sealOutline {
+  fill: rgba(230, 45, 20, 0.08);
+  stroke: url(#sscaGrad);
+  stroke-width: 2.5;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  fill: var(--ifm-color-emphasis-700);
+}
+
+.connectorLine {
+  @include motion.dash-flow(var(--ifm-color-emphasis-300));
+}
+
+/* the fork sits below node 4: the muted blocked path fades and the
+   bright compliant path stays a static confirming line, matching the
+   original design (no draw-in animation on either branch). */
+.forkPathMuted {
+  stroke: var(--ifm-color-emphasis-300);
+  stroke-width: 1.5;
+  stroke-dasharray: 3 4;
+}
+
+.forkPathBright {
+  stroke: #E62D14;
+  stroke-width: 1.5;
+}
+
+.tagBgMuted {
+  fill: var(--ifm-color-emphasis-200);
+}
+
+.tagLabelMuted {
+  font-size: 11px;
+  fill: var(--ifm-color-emphasis-600);
+}
+
+.tagLabelBright {
+  font-size: 11px;
+  font-weight: 600;
+  fill: #ffffff;
+}
+
+/* the compliance outcome resolves on node 4's beat: the blocked pill
+   fades, the compliant pill pops and confirms. */
+.blockedTag {
+  animation: decideBlocked motion.$cycle ease-out infinite backwards;
+  animation-delay: motion.fire(4);
+}
+
+.compliantTag {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: decideApproved motion.$cycle ease-out infinite backwards;
+  animation-delay: motion.fire(4);
+}
+
+/* ---------- motion: the single travelling pulse ---------- */
+
+/* The compliance fork genuinely resolves at node 4 (blocked vs
+   compliant), matching the standard layout's gated-checkpoint story, so
+   this file uses the shared two-tone neutral -> success travel dot
+   verbatim. */
+.travelDot {
+  @include motion.travel-dot;
+}
+
+.pulseRing {
+  @include motion.pulse-ring(#E62D14);
+}
+
+@include motion.pulse-delay-classes;
+
+/* Stage 1 - SBOM list lines: grow in from the left, hold, then fade -
+   the same appear/hold/fade shape as the shared buildBlock keyframe,
+   applied to a horizontal scaleX growth instead of a vertical rise. */
+@keyframes sbomGrow {
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  4% {
+    opacity: 1;
+  }
+  11% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  20% {
+    opacity: 1;
+  }
+  24% {
+    opacity: 0;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 0;
+  }
+}
+
+.sbomLine {
+  transform-box: fill-box;
+  transform-origin: left center;
+  animation: sbomGrow motion.$cycle ease-in-out infinite backwards;
+}
+.sbom1 { animation-delay: motion.fire(1); }
+.sbom2 { animation-delay: motion.fire(1) + 0.12s; }
+.sbom3 { animation-delay: motion.fire(1) + 0.24s; }
+
+.magnifyPulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: magnifyPulse motion.$cycle ease-in-out infinite backwards;
+  animation-delay: motion.fire(3);
+}
+
+/* Stage 4 - the gate arm swings open once on the beat (letting the
+   compliant build through), then closes and holds shut until the next
+   loop, instead of continuously swinging back and forth. */
+@keyframes gateSwing {
+  0% {
+    transform: rotate(0deg);
+  }
+  3% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(-55deg);
+  }
+  20% {
+    transform: rotate(-55deg);
+  }
+  24% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.gateGroup {
+  transform-box: fill-box;
+  /* line's own bbox starts at its left end (the hinge post), so "left"
+     (== 0% 50%) pivots the arm from that post instead of an absolute
+     pixel offset, which fill-box measures from the bbox corner and would
+     land the pivot far outside the illustration */
+  transform-origin: left;
+  animation: gateSwing motion.$cycle ease-in-out infinite backwards;
+  animation-delay: motion.fire(4);
+}
+
+/* Stage 5 - the stamp presses down once on the beat, then returns and
+   holds until the next loop, instead of continuously pressing. */
+@keyframes stampPress {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  4% {
+    transform: translateY(0) scale(1);
+  }
+  11% {
+    transform: translateY(10px) scale(0.94);
+  }
+  16% {
+    transform: translateY(10px) scale(1.02);
+  }
+  24% {
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+.stampGroup {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: stampPress motion.$cycle ease-in-out infinite backwards;
+  animation-delay: motion.fire(5);
+}
+
+@include motion.stroke-draw-flash("checkShipDraw", 16);
+
+.stampGroup .checkMark {
+  stroke-dasharray: 16;
+  animation: checkShipDraw motion.$cycle ease-in-out infinite backwards;
+  animation-delay: motion.fire(5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .connectorLine,
+  .travelDot,
+  .pulseRing,
+  .nodeBgFade,
+  .sbomLine,
+  .magnifyPulse,
+  .checkMark,
+  .gateGroup,
+  .stampGroup,
+  .blockedTag,
+  .compliantTag {
+    animation: none !important;
+  }
+
+  .travelDot { opacity: 0; }
+  .sbomLine { transform: none; opacity: 1; }
+  .magnifyPulse { transform: none; }
+  .checkMark { stroke-dashoffset: 0; opacity: 1; }
+  .gateGroup { transform: none; }
+  .stampGroup { transform: none; }
+  .blockedTag { opacity: 0.3; }
+  .compliantTag { opacity: 1; transform: none; }
+}

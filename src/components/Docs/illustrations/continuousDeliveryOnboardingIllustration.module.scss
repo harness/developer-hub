@@ -1,0 +1,236 @@
+@use "./shared/motion" as motion with (
+  $cycle: 8s,
+  $nodes: 5,
+  $lead: 0.35s
+);
+
+/* ------------------------------------------------------------------ *
+ * ONE CLOCK.
+ *
+ * Everything runs off a single cycle and a single evenly-spaced beat,
+ * so the whole thing reads as one progress pulse travelling the
+ * pipeline - not several independent loops. The clock itself (cycle/
+ * beat/fire), the color-free keyframe shapes, and the shared semantic
+ * colors live in ./shared/_motion.scss so every illustration stays in
+ * sync instead of re-defining its own copies.
+ *
+ *   - cycle: overall speed. Configured above via `with (...)`.
+ *   - motion.beat(i): node i's moment, evenly spaced (cycle / nodes).
+ *   - motion.$lead: how far AHEAD of the travel dot each node lights up.
+ *     The ring blooms slightly before the dot arrives, so attention is
+ *     on the node (not on the dot's fade) as the hand-off happens.
+ *   - The dot stays fully opaque along each connector and only blinks
+ *     out in a short window right at the node core, so you do not see
+ *     it fading out on the open track.
+ * ------------------------------------------------------------------ */
+
+.illustration {
+  width: 80%;
+  height: auto;
+  overflow: visible;
+}
+
+.paused * {
+  animation-play-state: paused !important;
+}
+
+/* ---------- static / theme-aware styling ---------- */
+
+.nodeBg {
+  fill: #45bd35;
+  opacity: 0.08;
+}
+
+/* hides the static disc for exactly the window pulseRing is visibly
+   blooming, so the two never overlap - see shared/_motion.scss. */
+.nodeBgFade {
+  @include motion.node-bg-fade;
+}
+
+.iconStroke {
+  fill: none;
+  stroke: url(#cdGrad);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.shaftLine {
+  stroke: #45bd35;
+  stroke-width: 3.5;
+  stroke-linecap: round;
+}
+
+.envLine {
+  stroke: var(--ifm-color-emphasis-400);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.squareOutline {
+  fill: none;
+  stroke: var(--ifm-color-emphasis-400);
+  stroke-width: 1.5;
+}
+
+.shieldOutline {
+  fill: none;
+  stroke: url(#cdGrad);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+}
+
+@include motion.stroke-draw-flash("cdCheckDraw", 24);
+
+.checkMark {
+  fill: none;
+  stroke: #2e8f1f;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 24;
+  animation: cdCheckDraw motion.$cycle ease-in-out infinite backwards;
+  animation-delay: motion.fire(3);
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  fill: var(--ifm-color-emphasis-700);
+}
+
+.connectorLine {
+  @include motion.dash-flow(var(--ifm-color-emphasis-300));
+}
+
+/* the progressive delivery decision resolves on node 4's beat: the
+   canary branch flashes then dims, the full-rollout branch pops and
+   confirms, then both hold. Fork lines stay static, matching the
+   muted/bright dash pattern used for the other governance-style forks. */
+.forkPathMuted {
+  stroke: var(--ifm-color-emphasis-300);
+  stroke-width: 1.5;
+  stroke-dasharray: 3 4;
+}
+
+.forkPathBright {
+  stroke: #45bd35;
+  stroke-width: 1.5;
+}
+
+.tagBgMuted {
+  fill: var(--ifm-color-emphasis-200);
+}
+
+.tagLabelMuted {
+  font-size: 11px;
+  fill: var(--ifm-color-emphasis-600);
+}
+
+.tagLabelBright {
+  font-size: 11px;
+  font-weight: 600;
+  fill: #ffffff;
+}
+
+/* ---------- motion: the single travelling pulse ---------- */
+
+/* node 4's canary vs. full-rollout fork is a genuine neutral->success
+   handoff, same shape as the governance checkpoint the shared travel
+   keyframe was modeled on, so the shared mixin is used verbatim here. */
+.travelDot {
+  @include motion.travel-dot;
+}
+
+.pulseRing {
+  @include motion.pulse-ring(#45bd35);
+}
+
+@include motion.pulse-delay-classes;
+
+.branchDot {
+  fill: url(#cdGrad);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pushUp motion.$cycle ease-in-out infinite backwards;
+}
+.branchDot1 { animation-delay: motion.fire(1); }
+.branchDot2 { animation-delay: motion.fire(1) + 0.15s; }
+
+.envActive {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: magnifyPulse motion.$cycle ease-in-out infinite backwards;
+  animation-delay: motion.fire(2);
+}
+
+/* the fork's muted/bright dots and the canary/full-rollout tags below
+   resolve together on node 4's beat, reusing the shared binary-outcome
+   shapes (see shared/_motion.scss: decideBlocked / decideApproved). */
+.forkDotMuted {
+  fill: var(--ifm-color-emphasis-400);
+  animation: decideBlocked motion.$cycle ease-out infinite backwards;
+  animation-delay: motion.fire(4);
+}
+
+.forkDotBright {
+  fill: url(#cdGrad);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: decideApproved motion.$cycle ease-out infinite backwards;
+  animation-delay: motion.fire(4);
+}
+
+.canaryTag {
+  animation: decideBlocked motion.$cycle ease-out infinite backwards;
+  animation-delay: motion.fire(4);
+}
+
+.rolloutTag {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: decideApproved motion.$cycle ease-out infinite backwards;
+  animation-delay: motion.fire(4);
+}
+
+/* GitOps continuous sync is depicted as an always-on background
+   process, independent of the node's arrival beat, so the spin keeps
+   turning on its own short loop rather than firing once per cycle. */
+.syncSpin {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: syncSpin 3s linear infinite;
+}
+
+@keyframes syncSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .connectorLine,
+  .travelDot,
+  .pulseRing,
+  .nodeBgFade,
+  .branchDot,
+  .envActive,
+  .checkMark,
+  .forkDotMuted,
+  .forkDotBright,
+  .canaryTag,
+  .rolloutTag,
+  .syncSpin {
+    animation: none !important;
+  }
+
+  .travelDot { opacity: 0; }
+  .checkMark { stroke-dashoffset: 0; opacity: 1; }
+  .forkDotMuted { opacity: 0.3; }
+  .forkDotBright { opacity: 1; transform: none; }
+  .canaryTag { opacity: 0.3; }
+  .rolloutTag { opacity: 1; transform: none; }
+}

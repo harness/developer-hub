@@ -1,0 +1,288 @@
+@use "./shared/motion" as motion with (
+  $cycle: 8s,
+  $nodes: 5,
+  $lead: 0.35s
+);
+
+/* ------------------------------------------------------------------ *
+ * ONE CLOCK. Everything runs off a single cycle and a single evenly-
+ * spaced beat - see ./shared/_motion.scss for the timing math, the
+ * color-free keyframe shapes, and the shared semantic colors.
+ * ------------------------------------------------------------------ */
+
+.illustration {
+  width: 80%;
+  height: auto;
+  overflow: visible;
+}
+
+.paused * {
+  animation-play-state: paused !important;
+}
+
+/* ---------- static / theme-aware styling ---------- */
+
+.nodeBg {
+  fill: #45bd35;
+  opacity: 0.08;
+}
+
+.nodeBgFade {
+  @include motion.node-bg-fade;
+}
+
+.iconStroke {
+  fill: none;
+  stroke: url(#rmGrad);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.tickLine {
+  stroke: #45bd35;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.graphLine {
+  stroke: var(--ifm-color-emphasis-400);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.trainConnector {
+  stroke: var(--ifm-color-emphasis-400);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+@include motion.stroke-draw-flash("checkApprovalDraw", 24);
+
+.checkMark {
+  fill: none;
+  stroke: #2e9e20;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 24;
+  animation: checkApprovalDraw motion.$cycle ease-in-out infinite backwards;
+  animation-delay: motion.fire(3);
+}
+.checkMarkDelay {
+  animation-delay: motion.fire(3) + 0.15s;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  fill: var(--ifm-color-emphasis-700);
+}
+
+.connectorLine {
+  @include motion.dash-flow(var(--ifm-color-emphasis-300));
+}
+
+/* ---------- motion: the single travelling pulse ---------- */
+
+/* No governance/approval fork resolves at node 4 in this flow (approvals
+   happen at node 3, and there is no blocked/approved branch), so the
+   travel dot stays a single neutral color for the whole trip rather than
+   using the shared two-tone motion.travel-dot mixin. */
+.travelDot {
+  fill: motion.$color-travel-neutral;
+  animation: travelReleaseOrchestration motion.$cycle linear infinite backwards;
+}
+
+@keyframes travelReleaseOrchestration {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  2% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  3% {
+    transform: translateX(15px);
+    opacity: 1;
+  }
+  17% {
+    transform: translateX(155px);
+    opacity: 1;
+  }
+  18% {
+    transform: translateX(170px);
+    opacity: 0;
+  }
+  22% {
+    transform: translateX(170px);
+    opacity: 0;
+  }
+  23% {
+    transform: translateX(185px);
+    opacity: 1;
+  }
+  37% {
+    transform: translateX(325px);
+    opacity: 1;
+  }
+  38% {
+    transform: translateX(340px);
+    opacity: 0;
+  }
+  42% {
+    transform: translateX(340px);
+    opacity: 0;
+  }
+  43% {
+    transform: translateX(355px);
+    opacity: 1;
+  }
+  57% {
+    transform: translateX(485px);
+    opacity: 1;
+  }
+  58% {
+    transform: translateX(500px);
+    opacity: 0;
+  }
+  62% {
+    transform: translateX(500px);
+    opacity: 0;
+  }
+  63% {
+    transform: translateX(515px);
+    opacity: 1;
+  }
+  77% {
+    transform: translateX(645px);
+    opacity: 1;
+  }
+  78% {
+    transform: translateX(660px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(660px);
+    opacity: 0;
+  }
+}
+
+.pulseRing {
+  @include motion.pulse-ring(#45bd35);
+}
+
+@include motion.pulse-delay-classes;
+
+/* Stage 1 - checklist ticks: one clean brightening burst on the node's
+   beat, then settle back to a dim idle state until the next loop. */
+@keyframes tickFlash {
+  0% {
+    opacity: 0.4;
+  }
+  4% {
+    opacity: 0.4;
+  }
+  11% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}
+
+.tickLine {
+  animation: tickFlash motion.$cycle ease-in-out infinite backwards;
+}
+.tick1 { animation-delay: motion.fire(1); }
+.tick2 { animation-delay: motion.fire(1) + 0.12s; }
+.tick3 { animation-delay: motion.fire(1) + 0.24s; }
+
+/* Stage 2 - dependency graph nodes: pop to full prominence on the beat,
+   then settle to a dim/small idle baseline (rather than disappearing,
+   since these dots are a persistent part of the mini dependency graph). */
+@keyframes graphNodeAppear {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.6;
+  }
+  4% {
+    transform: scale(0.85);
+    opacity: 0.6;
+  }
+  11% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+  20% {
+    transform: scale(0.85);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(0.85);
+    opacity: 0.6;
+  }
+}
+
+.graphNode {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: graphNodeAppear motion.$cycle ease-in-out infinite backwards;
+}
+.graphNode1 { animation-delay: motion.fire(2); }
+.graphNode2 { animation-delay: motion.fire(2) + 0.1s; }
+.graphNode3 { animation-delay: motion.fire(2) + 0.2s; }
+
+/* Stage 4 - the highlighted middle train car glows continuously while the
+   train is in transit, independent of the exact beat (an ongoing-work
+   indicator, not a one-time arrival event). */
+@keyframes carGlow {
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.trainCarHighlight {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: carGlow 1.8s ease-in-out infinite;
+}
+
+.rolloutBar {
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation: barPulse motion.$cycle ease-in-out infinite backwards;
+}
+.rolloutBar1 { animation-delay: motion.fire(5); }
+.rolloutBar2 { animation-delay: motion.fire(5) + 0.12s; }
+.rolloutBar3 { animation-delay: motion.fire(5) + 0.24s; }
+.rolloutBar4 { animation-delay: motion.fire(5) + 0.36s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .connectorLine,
+  .travelDot,
+  .pulseRing,
+  .nodeBgFade,
+  .tickLine,
+  .graphNode,
+  .checkMark,
+  .trainCarHighlight,
+  .rolloutBar {
+    animation: none !important;
+  }
+
+  .travelDot { opacity: 0; }
+  .tickLine { opacity: 1; }
+  .graphNode { transform: none; opacity: 1; }
+  .checkMark { stroke-dashoffset: 0; opacity: 1; }
+  .trainCarHighlight { opacity: 1; }
+  .rolloutBar { transform: scaleY(1); }
+}

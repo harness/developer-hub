@@ -1,0 +1,283 @@
+@use "./shared/motion" as motion with (
+  $cycle: 8s,
+  $nodes: 3,
+  $lead: 0.35s
+);
+
+/* ------------------------------------------------------------------ *
+ * ONE CLOCK - 3-NODE VARIANT.
+ *
+ * This illustration is NOT the standard 5-node/660px layout (nodes sit
+ * at cx = 140/450/760, a 620px total travel distance), so it cannot use
+ * the shared standard `travel` keyframe / `travel-dot` mixin - those
+ * assume 5 nodes and 660px. Everything else (the clock, pulseRing/
+ * nodeBgFade, pulse-delay-classes, the decide* keyframes, buildBlock)
+ * still comes from ./shared/_motion.scss, just configured for 3 nodes.
+ * ------------------------------------------------------------------ */
+
+.illustration {
+  width: 80%;
+  height: auto;
+  overflow: visible;
+}
+
+.paused * {
+  animation-play-state: paused !important;
+}
+
+/* ---------- static / theme-aware styling ---------- */
+
+.nodeBg {
+  fill: #7c3aed;
+  opacity: 0.08;
+}
+
+.nodeBgFade {
+  @include motion.node-bg-fade;
+}
+
+.bubbleOutline {
+  fill: none;
+  stroke: url(#aiGrad);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.typingDot {
+  fill: url(#aiGrad);
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  fill: var(--ifm-color-emphasis-700);
+}
+
+.subLabel {
+  font-size: 10.5px;
+  fill: var(--ifm-color-emphasis-500);
+}
+
+.connectorLine {
+  @include motion.dash-flow(var(--ifm-color-emphasis-300));
+}
+
+/* alert (diagnosis) styling: a warm, distinct color so it reads as "problem
+   found" before it fades into the brand-purple fix */
+.alertOutline {
+  fill: rgba(229, 72, 77, 0.08);
+  stroke: #e5484d;
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+.alertStem {
+  /* solid color, not the gradient: a purely vertical line has a zero-width
+     bounding box, which makes an objectBoundingBox gradient render invisible
+     in some SVG engines */
+  stroke: #e5484d;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.alertDot {
+  fill: #e5484d;
+}
+
+.fixRing {
+  fill: none;
+  stroke: url(#aiGrad);
+  stroke-width: 2;
+}
+
+.fixCheck {
+  fill: none;
+  stroke: url(#aiGrad);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.mcpSpoke {
+  stroke: var(--ifm-color-emphasis-300);
+  stroke-width: 1.5;
+}
+
+/* ---------- motion: the single travelling pulse (3-node/620px path) --- */
+// Same motion philosophy as the shared standard travel keyframe (dot stays
+// opaque while travelling, blinks to opacity 0 in a short window exactly at
+// each node's center, resumes on the far side) but hand-written for this
+// file's actual geometry: nodes at cx 140/450/760, 310px per leg, 620px
+// total. No node here represents an approval/rejection gate, so a single
+// accent color is used throughout instead of a neutral->success handoff.
+@keyframes travelAi {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  2% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  3% {
+    transform: translateX(20px);
+    opacity: 1;
+  }
+  29% {
+    transform: translateX(290px);
+    opacity: 1;
+  }
+  30% {
+    transform: translateX(310px);
+    opacity: 0;
+  }
+  35% {
+    transform: translateX(310px);
+    opacity: 0;
+  }
+  36% {
+    transform: translateX(330px);
+    opacity: 1;
+  }
+  62% {
+    transform: translateX(600px);
+    opacity: 1;
+  }
+  63% {
+    transform: translateX(620px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(620px);
+    opacity: 0;
+  }
+}
+
+.travelDot {
+  fill: #a652f9;
+  animation: travelAi motion.$cycle linear infinite backwards;
+}
+
+.pulseRing {
+  @include motion.pulse-ring(#7c3aed);
+}
+
+@include motion.pulse-delay-classes;
+
+.typingDot {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: typingBlink 1.2s ease-in-out infinite;
+}
+.typing1 {
+  animation-delay: 0s;
+}
+.typing2 {
+  animation-delay: 0.2s;
+}
+.typing3 {
+  animation-delay: 0.4s;
+}
+
+.pipelineNode {
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation: buildBlock motion.$cycle ease-in-out infinite backwards;
+}
+.pipe1 {
+  animation-delay: motion.fire(1);
+}
+.pipe2 {
+  animation-delay: motion.fire(1) + 0.14s;
+}
+.pipe3 {
+  animation-delay: motion.fire(1) + 0.28s;
+}
+
+/* diagnosis -> fix reads as a binary handoff (problem flagged, then
+   resolved), the same shape as the shared governance decide* keyframes:
+   the alert flashes then dims, the fix pops in and holds bright. */
+.alertGroup {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: decideBlocked motion.$cycle ease-out infinite backwards;
+  animation-delay: motion.fire(2);
+}
+
+.fixGroup {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: decideApproved motion.$cycle ease-out infinite backwards;
+  animation-delay: motion.fire(2);
+}
+
+.toolDot {
+  fill: url(#aiGrad);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: toolPop 3s ease-in-out infinite;
+}
+.tool1 {
+  animation-delay: 0s;
+}
+.tool2 {
+  animation-delay: 0.4s;
+}
+.tool3 {
+  animation-delay: 0.8s;
+}
+.tool4 {
+  animation-delay: 1.2s;
+}
+
+@keyframes typingBlink {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes toolPop {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .connectorLine,
+  .travelDot,
+  .pulseRing,
+  .nodeBgFade,
+  .typingDot,
+  .pipelineNode,
+  .alertGroup,
+  .fixGroup,
+  .toolDot {
+    animation: none !important;
+  }
+
+  .travelDot {
+    opacity: 0;
+  }
+  .pipelineNode {
+    opacity: 1;
+    transform: none;
+  }
+  .alertGroup {
+    opacity: 0.3;
+  }
+  .fixGroup {
+    opacity: 1;
+    transform: none;
+  }
+}

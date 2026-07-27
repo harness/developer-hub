@@ -1,14 +1,18 @@
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { useLocation } from '@docusaurus/router';
 import React from 'react';
 import { TutorialCards } from '@site/src/components/TutorialCard/TutorialCard';
 import styles from './styles.module.scss';
 // Define the cards in "***Data.ts"
 import { useColorMode } from '@docusaurus/theme-common';
 import { docsCards } from './data/qwietaiData';
+import QwietAiOnboardingIllustration from './illustrations/QwietAiOnboardingIllustration';
 export default function ARP() {
   const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = '/' } = {} } = useDocusaurusContext();
+  const { pathname } = useLocation();
+  const is3kDocs = pathname.startsWith('/3k-docs');
   return (
     <div className="container">
       <div className={styles.topSection}>
@@ -28,10 +32,15 @@ export default function ARP() {
           </div>
         </div>
         <div className={styles.spaceBetween}>
-          <div className={styles.content}>
+          <div className={styles.content} style={{ width: '100%' }}>
             <p>
              SAST and SCA use AI-powered static analysis to detect vulnerabilities, exposed secrets, and risky open-source dependencies in application code. Built on a Code Property Graph (CPG), the platform analyzes control flow, data flow, and dependencies together to uncover complex risk scenarios and deliver actionable security insights early in the development lifecycle.
             </p>
+            {is3kDocs && (
+              <div className={styles.illustrationContainer}>
+                <QwietAiOnboardingIllustration />
+              </div>
+            )}
           </div>
         </div>
       </div>

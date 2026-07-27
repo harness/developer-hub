@@ -1,0 +1,385 @@
+@use "./shared/motion" as motion with (
+  $cycle: 8s,
+  $nodes: 5,
+  $lead: 0.35s
+);
+
+/* ------------------------------------------------------------------ *
+ * ONE CLOCK. See iacmOnboardingIllustration.module.scss for the full
+ * explanation of the shared timing system - everything here runs off
+ * the same cycle/beat/fire clock from ./shared/_motion.scss.
+ *
+ * The gate/approval step in this flow sits at node 3 ("Classify
+ * traffic": bot detected vs allowed), not node 4, so the travel dot
+ * uses a local two-tone keyframe that switches color right after node
+ * 3 instead of the shared travel-dot mixin (which assumes the switch
+ * happens at node 4).
+ * ------------------------------------------------------------------ */
+
+.illustration {
+  width: 80%;
+  height: auto;
+  overflow: visible;
+}
+
+.paused * {
+  animation-play-state: paused !important;
+}
+
+/* ---------- static / theme-aware styling ---------- */
+
+.nodeBg {
+  fill: #4d4aff;
+  opacity: 0.08;
+}
+
+.nodeBgFade {
+  @include motion.node-bg-fade;
+}
+
+.nodeBgFadeEarly {
+  @include motion.node-bg-fade-early;
+}
+
+.iconStroke {
+  fill: none;
+  stroke: url(#arpGrad);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.shaftLine {
+  stroke: #4d4aff;
+  stroke-width: 3.5;
+  stroke-linecap: round;
+}
+
+.eyePupil {
+  fill: url(#arpGrad);
+}
+
+.targetRing {
+  fill: none;
+  stroke: url(#arpGrad);
+  stroke-width: 2;
+  stroke-dasharray: 3 3;
+}
+
+.targetDot {
+  fill: #4d4aff;
+}
+
+.trafficDot {
+  fill: #4d4aff;
+}
+
+.shieldOutline {
+  fill: none;
+  stroke: url(#arpGrad);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+}
+
+.lockHole {
+  fill: #4d4aff;
+}
+
+.gearTooth {
+  fill: url(#arpGrad);
+}
+
+.circleOutline {
+  fill: none;
+  stroke: url(#arpGrad);
+  stroke-width: 2.5;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  fill: var(--ifm-color-emphasis-700);
+}
+
+.connectorLine {
+  @include motion.dash-flow(var(--ifm-color-emphasis-300));
+}
+
+.forkPathMuted {
+  stroke: var(--ifm-color-emphasis-300);
+  stroke-width: 1.5;
+  stroke-dasharray: 3 4;
+}
+
+.forkPathBright {
+  stroke: #4d4aff;
+  stroke-width: 1.5;
+}
+
+.tagBgMuted {
+  fill: var(--ifm-color-emphasis-200);
+}
+
+.tagLabelMuted {
+  font-size: 11px;
+  fill: var(--ifm-color-emphasis-600);
+}
+
+.tagLabelBright {
+  font-size: 11px;
+  font-weight: 600;
+  fill: #ffffff;
+}
+
+/* ---------- motion: the single travelling pulse ---------- */
+
+/* two-tone: neutral until it clears node 3 (the classify/gate step),
+   then success green for the rest of the trip. Same percentage/
+   translateX schedule as the shared standard travel keyframe, just
+   with the color switch moved from node 4's blink (58%) to node 3's
+   blink (38%). */
+@keyframes travelApiRuntimeProtection {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+    fill: motion.$color-travel-neutral;
+  }
+  2% {
+    transform: translateX(0);
+    opacity: 0;
+    fill: motion.$color-travel-neutral;
+  }
+  3% {
+    transform: translateX(15px);
+    opacity: 1;
+    fill: motion.$color-travel-neutral;
+  }
+  17% {
+    transform: translateX(155px);
+    opacity: 1;
+    fill: motion.$color-travel-neutral;
+  }
+  18% {
+    transform: translateX(170px);
+    opacity: 0;
+    fill: motion.$color-travel-neutral;
+  }
+  22% {
+    transform: translateX(170px);
+    opacity: 0;
+    fill: motion.$color-travel-neutral;
+  }
+  23% {
+    transform: translateX(185px);
+    opacity: 1;
+    fill: motion.$color-travel-neutral;
+  }
+  37% {
+    transform: translateX(325px);
+    opacity: 1;
+    fill: motion.$color-travel-neutral;
+  }
+  38% {
+    transform: translateX(340px);
+    opacity: 0;
+    fill: motion.$color-success;
+  }
+  42% {
+    transform: translateX(340px);
+    opacity: 0;
+    fill: motion.$color-success;
+  }
+  43% {
+    transform: translateX(355px);
+    opacity: 1;
+    fill: motion.$color-success;
+  }
+  57% {
+    transform: translateX(485px);
+    opacity: 1;
+    fill: motion.$color-success;
+  }
+  58% {
+    transform: translateX(500px);
+    opacity: 0;
+    fill: motion.$color-success;
+  }
+  62% {
+    transform: translateX(500px);
+    opacity: 0;
+    fill: motion.$color-success;
+  }
+  63% {
+    transform: translateX(515px);
+    opacity: 1;
+    fill: motion.$color-success;
+  }
+  77% {
+    transform: translateX(645px);
+    opacity: 1;
+    fill: motion.$color-success;
+  }
+  78% {
+    transform: translateX(660px);
+    opacity: 0;
+    fill: motion.$color-success;
+  }
+  100% {
+    transform: translateX(660px);
+    opacity: 0;
+    fill: motion.$color-success;
+  }
+}
+
+.travelDot {
+  fill: motion.$color-travel-neutral;
+  animation: travelApiRuntimeProtection motion.$cycle linear infinite backwards;
+}
+
+.pulseRing {
+  @include motion.pulse-ring(#4d4aff);
+}
+
+.pulseRingEarly {
+  @include motion.pulse-ring-early(#4d4aff);
+}
+
+@include motion.pulse-delay-classes;
+
+/* Stage 1 - "Monitor traffic live" is always-on background work, so the
+   ring pulses continuously (pulseRingEarly). The eye's scan line stays
+   continuous too, independent of the shared clock. */
+.scanLine {
+  stroke: #4d4aff;
+  stroke-width: 2;
+  stroke-linecap: round;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: scanSweep 2.4s ease-in-out infinite;
+}
+
+@keyframes scanSweep {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(10px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+}
+
+/* Stage 2 - "Detect threat actors": retimed from a continuous pulse
+   into a single lock-on burst on the node's beat, then holds "locked". */
+@keyframes targetLock {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.5;
+  }
+  4% {
+    transform: scale(0.85);
+    opacity: 0.5;
+  }
+  9% {
+    transform: scale(1.3);
+    opacity: 1;
+  }
+  15% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+}
+
+.targetPulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: targetLock motion.$cycle ease-out infinite backwards;
+  animation-delay: motion.fire(2);
+}
+
+/* Stage 3 - "Classify traffic" is the gate for this flow: the fork
+   resolves once on node 3's beat using the shared decide keyframes. */
+.botDetectedTag {
+  animation: decideBlocked motion.$cycle ease-out infinite backwards;
+  animation-delay: motion.fire(3);
+}
+
+.allowedTag {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: decideApproved motion.$cycle ease-out infinite backwards;
+  animation-delay: motion.fire(3);
+}
+
+/* Stage 4 - "Enforce policy": the lock glow pops in and holds engaged
+   on the node's beat (reusing the shared decideApproved shape - it is
+   the same "pop to full and stay" motion). The policy gear keeps
+   turning continuously, independent of the shared clock. */
+.lockGlow {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: decideApproved motion.$cycle ease-out infinite backwards;
+  animation-delay: motion.fire(4);
+}
+
+.gearSpin {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: gearSpin 4s linear infinite;
+}
+
+@keyframes gearSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Stage 5 - "Stay resilient in production": the checkmark draws in,
+   holds, then fades - a transient confirmation on the node's beat. */
+@include motion.stroke-draw-flash("resilientCheckDraw", 24);
+
+.checkMark {
+  fill: none;
+  stroke: #2e9e20;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 24;
+  animation: resilientCheckDraw motion.$cycle ease-in-out infinite backwards;
+  animation-delay: motion.fire(5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .connectorLine,
+  .travelDot,
+  .pulseRing,
+  .nodeBgFade,
+  .pulseRingEarly,
+  .nodeBgFadeEarly,
+  .scanLine,
+  .targetPulse,
+  .gearSpin,
+  .lockGlow,
+  .checkMark,
+  .botDetectedTag,
+  .allowedTag {
+    animation: none !important;
+  }
+
+  .travelDot { opacity: 0; }
+  .checkMark { stroke-dashoffset: 0; opacity: 1; }
+  .lockGlow { opacity: 1; transform: none; }
+  .botDetectedTag { opacity: 0.3; }
+  .allowedTag { opacity: 1; transform: none; }
+}

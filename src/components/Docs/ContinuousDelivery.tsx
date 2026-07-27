@@ -1,5 +1,6 @@
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { useLocation } from '@docusaurus/router';
 import Tooltip from 'rc-tooltip';
 import 'rc-tooltip/assets/bootstrap.css';
 import React from 'react';
@@ -8,9 +9,12 @@ import styles from './styles.module.scss';
 // Define the cards in "***Data.ts"
 import { useColorMode } from '@docusaurus/theme-common';
 import { docsCards } from './data/continuousDeliveryData';
+import ContinuousDeliveryOnboardingIllustration from './illustrations/ContinuousDeliveryOnboardingIllustration';
 export default function CD() {
   const { siteConfig: { baseUrl = '/' } = {} } = useDocusaurusContext();
   const { colorMode } = useColorMode();
+  const { pathname } = useLocation();
+  const is3kDocs = pathname.startsWith('/3k-docs');
   return (
     <div className="container">
       <div className={styles.topSection}>
@@ -59,14 +63,18 @@ export default function CD() {
               GitOps.
             </p>
             <div className={styles.illustrationContainer}>
-              <img
-                className={styles.illustration}
-                src={
-                  colorMode === 'light'
-                    ? `${baseUrl}img/cd.svg`
-                    : `${baseUrl}img/CD_Landing_Page_dark_mode.svg`
-                }
-              />
+              {is3kDocs ? (
+                <ContinuousDeliveryOnboardingIllustration />
+              ) : (
+                <img
+                  className={styles.illustration}
+                  src={
+                    colorMode === 'light'
+                      ? `${baseUrl}img/cd.svg`
+                      : `${baseUrl}img/CD_Landing_Page_dark_mode.svg`
+                  }
+                />
+              )}
             </div>
           </div>
         </div>

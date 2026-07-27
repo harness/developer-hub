@@ -1,14 +1,18 @@
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { useLocation } from '@docusaurus/router';
 import React from 'react';
 import { TutorialCards } from '@site/src/components/TutorialCard/TutorialCard';
 import styles from './styles.module.scss';
 // Define the cards in "***Data.ts"
 import { useColorMode } from '@docusaurus/theme-common';
 import { docsCards } from './data/internalDeveloperPortal';
+import InternalDeveloperPortalOnboardingIllustration from './illustrations/InternalDeveloperPortalOnboardingIllustration';
 export default function IDP() {
   const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = '/' } = {} } = useDocusaurusContext();
+  const { pathname } = useLocation();
+  const is3kDocs = pathname.startsWith('/3k-docs');
   return (
     <div className="container">
       <div className={styles.topSection}>
@@ -33,7 +37,7 @@ export default function IDP() {
           </div>
         </div>
         <div className={styles.spaceBetween}>
-          <div className={styles.content}>
+          <div className={styles.content} style={{ width: '100%' }}>
             <p>
               Harness IDP is a home for developers to create, manage, and
               explore software. It enables you to create new software components
@@ -46,14 +50,7 @@ export default function IDP() {
               collaboration.
             </p>
             <div className={styles.illustrationContainer}>
-              {/* <img
-                className={styles.illustration}
-                src={
-                  colorMode === "light"
-                    ? `${baseUrl}img/idp.svg`
-                    : `${baseUrl}img/IDP_dark _mode.svg`
-                }
-              />{" "} */}
+              {is3kDocs && <InternalDeveloperPortalOnboardingIllustration />}
             </div>
           </div>
         </div>

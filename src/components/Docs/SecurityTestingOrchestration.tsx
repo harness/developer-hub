@@ -1,14 +1,18 @@
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { useLocation } from '@docusaurus/router';
 import React from 'react';
 import { TutorialCards } from '@site/src/components/TutorialCard/TutorialCard';
 import styles from './styles.module.scss';
 // Define the cards in "***Data.ts"
 import { useColorMode } from '@docusaurus/theme-common';
 import { docsCards } from './data/securityTestingOrchestrationData';
+import SecurityTestingOrchestrationOnboardingIllustration from './illustrations/SecurityTestingOrchestrationOnboardingIllustration';
 export default function STO() {
   const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = '/' } = {} } = useDocusaurusContext();
+  const { pathname } = useLocation();
+  const is3kDocs = pathname.startsWith('/3k-docs');
   return (
     <div className="container">
       <div className={styles.topSection}>
@@ -28,7 +32,7 @@ export default function STO() {
           </div>
         </div>
         <div className={styles.spaceBetween}>
-          <div className={styles.content}>
+          <div className={styles.content} style={{ width: '100%' }}>
             <p>
               With Harness Security Testing Orchestration (STO), your pipelines
               can detect security vulnerabilities automatically. Harness STO
@@ -41,14 +45,18 @@ export default function STO() {
               products are ever released.
             </p>
             <div className={styles.illustrationContainer}>
-              <img
-                className={styles.illustration}
-                src={
-                  colorMode === 'light'
-                    ? `${baseUrl}img/sto.svg`
-                    : `${baseUrl}img/STO_Dark.svg`
-                }
-              />{' '}
+              {is3kDocs ? (
+                <SecurityTestingOrchestrationOnboardingIllustration />
+              ) : (
+                <img
+                  className={styles.illustration}
+                  src={
+                    colorMode === 'light'
+                      ? `${baseUrl}img/sto.svg`
+                      : `${baseUrl}img/STO_Dark.svg`
+                  }
+                />
+              )}
             </div>
           </div>
         </div>

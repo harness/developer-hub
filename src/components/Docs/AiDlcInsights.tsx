@@ -1,10 +1,12 @@
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { useLocation } from '@docusaurus/router';
 import React from 'react';
 import { useColorMode } from '@docusaurus/theme-common';
 
 import { TutorialCards } from '../TutorialCard/TutorialCard';
 import { docsCards } from './data/aiDlcInsightsData';
+import AiDlcInsightsOnboardingIllustration from './illustrations/AiDlcInsightsOnboardingIllustration';
 
 import styles from './styles.module.scss';
 
@@ -13,6 +15,10 @@ export default function AiDlcInsights() {
   const {
     siteConfig: { baseUrl = '/' } = {},
   } = useDocusaurusContext();
+  const { pathname } = useLocation();
+  // The animated onboarding illustration is a 3k-docs-only experiment for
+  // now; /docs keeps the page exactly as it was (no illustration).
+  const is3kDocs = pathname.startsWith('/3k-docs');
 
   return (
     <div className="container">
@@ -43,6 +49,11 @@ export default function AiDlcInsights() {
               investment is helping your teams ship better software faster.
             </p>
 
+            {is3kDocs && (
+              <div className={styles.illustrationContainer}>
+                <AiDlcInsightsOnboardingIllustration />
+              </div>
+            )}
           </div>
         </div>
       </div>

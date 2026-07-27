@@ -1,15 +1,19 @@
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { useLocation } from '@docusaurus/router';
 import React from 'react';
 import { TutorialCards } from '@site/src/components/TutorialCard/TutorialCard';
 import styles from './styles.module.scss';
 // Define the cards in "***Data.ts"
 import { docsCards } from './data/cloudCostManagementData';
+import CloudCostManagementOnboardingIllustration from './illustrations/CloudCostManagementOnboardingIllustration';
 
 import { useColorMode } from '@docusaurus/theme-common';
 export default function CCM() {
   const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = '/' } = {} } = useDocusaurusContext();
+  const { pathname } = useLocation();
+  const is3kDocs = pathname.startsWith('/3k-docs');
   return (
     <div className="container">
       <div className={styles.topSection}>
@@ -29,7 +33,7 @@ export default function CCM() {
           </div>
         </div>
         <div className={styles.spaceBetween}>
-          <div className={styles.content}>
+          <div className={styles.content} style={{ width: '100%' }}>
             <p>
               Harness CACM is a cutting-edge cloud and AI cost management solution that
               empowers your FinOps, infrastructure, and engineering teams with
@@ -38,14 +42,18 @@ export default function CCM() {
               cost transparency across teams in your organization.
             </p>
             <div className={styles.illustrationContainer}>
-              <img
-                className={styles.illustration}
-                src={
-                  colorMode === 'light'
-                    ? `${baseUrl}img/ccm.svg`
-                    : `${baseUrl}img/CCM_Landing_Page_dark_mode.svg`
-                }
-              />
+              {is3kDocs ? (
+                <CloudCostManagementOnboardingIllustration />
+              ) : (
+                <img
+                  className={styles.illustration}
+                  src={
+                    colorMode === 'light'
+                      ? `${baseUrl}img/ccm.svg`
+                      : `${baseUrl}img/CCM_Landing_Page_dark_mode.svg`
+                  }
+                />
+              )}
             </div>
           </div>
         </div>

@@ -1,15 +1,21 @@
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { useLocation } from '@docusaurus/router';
 import React from 'react';
 import { TutorialCards } from '@site/src/components/TutorialCard/TutorialCard';
 import styles from './styles.module.scss';
 // Define the cards in "***Data.ts"
 import { useColorMode } from '@docusaurus/theme-common';
 import { docsCards } from './data/iacmData';
+import IacmOnboardingIllustration from './illustrations/IacmOnboardingIllustration';
 
 export default function Iacm() {
   const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = '/' } = {} } = useDocusaurusContext();
+  const { pathname } = useLocation();
+  // The animated onboarding illustration is a 3k-docs-only experiment for
+  // now; /docs keeps the page exactly as it was (static PNG illustration).
+  const is3kDocs = pathname.startsWith('/3k-docs');
   return (
     <div className="container">
       <div className={styles.topSection}>
@@ -38,14 +44,18 @@ export default function Iacm() {
               services, enhancing your DevOps lifecycle.
             </p>
             <div className={styles.illustrationContainer}>
-              <img
-                className={styles.illustration}
-                src={
-                  colorMode === 'light'
-                    ? `${baseUrl}img/iacm_landing.png`
-                    : `${baseUrl}img/iacm_landing dark.png`
-                }
-              />
+              {is3kDocs ? (
+                <IacmOnboardingIllustration />
+              ) : (
+                <img
+                  className={styles.illustration}
+                  src={
+                    colorMode === 'light'
+                      ? `${baseUrl}img/iacm_landing.png`
+                      : `${baseUrl}img/iacm_landing dark.png`
+                  }
+                />
+              )}
             </div>
           </div>
         </div>

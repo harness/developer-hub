@@ -1,0 +1,301 @@
+@use "./shared/motion" as motion with (
+  $cycle: 8s,
+  $nodes: 5,
+  $lead: 0.35s
+);
+
+/* ------------------------------------------------------------------ *
+ * ONE CLOCK. See iacmOnboardingIllustration.module.scss for the full
+ * explanation of the shared timing system - everything here runs off
+ * the same cycle/beat/fire clock from ./shared/_motion.scss.
+ *
+ * The gate/approval step in this flow is at node 4 ("Test for
+ * exposure": exposure found vs secured), matching the shared travel
+ * keyframe's assumption, so the travel dot uses the shared two-tone
+ * travel-dot mixin verbatim.
+ * ------------------------------------------------------------------ */
+
+.illustration {
+  width: 80%;
+  height: auto;
+  overflow: visible;
+}
+
+.paused * {
+  animation-play-state: paused !important;
+}
+
+/* ---------- static / theme-aware styling ---------- */
+
+.nodeBg {
+  fill: #4d4aff;
+  opacity: 0.08;
+}
+
+.nodeBgFade {
+  @include motion.node-bg-fade;
+}
+
+.nodeBgFadeEarly {
+  @include motion.node-bg-fade-early;
+}
+
+.iconStroke {
+  fill: none;
+  stroke: url(#astGrad);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.shaftLine {
+  stroke: #4d4aff;
+  stroke-width: 3.5;
+  stroke-linecap: round;
+}
+
+.trafficLine {
+  stroke: var(--ifm-color-emphasis-300);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.trafficLineActive {
+  stroke: #4d4aff;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.shieldOutline {
+  fill: none;
+  stroke: url(#astGrad);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+}
+
+.lockBody {
+  fill: rgba(77, 74, 255, 0.08);
+  stroke: url(#astGrad);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.lockCrack {
+  fill: none;
+  stroke: #ff4d4f;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.testTubeOutline {
+  fill: rgba(77, 74, 255, 0.08);
+  stroke: url(#astGrad);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.testTubeLiquid {
+  fill: url(#astGrad);
+}
+
+.wrenchOutline {
+  fill: none;
+  stroke: url(#astGrad);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  fill: var(--ifm-color-emphasis-700);
+}
+
+.connectorLine {
+  @include motion.dash-flow(var(--ifm-color-emphasis-300));
+}
+
+.forkPathMuted {
+  stroke: var(--ifm-color-emphasis-300);
+  stroke-width: 1.5;
+  stroke-dasharray: 3 4;
+}
+
+.forkPathBright {
+  stroke: #4d4aff;
+  stroke-width: 1.5;
+}
+
+.tagBgMuted {
+  fill: var(--ifm-color-emphasis-200);
+}
+
+.tagLabelMuted {
+  font-size: 11px;
+  fill: var(--ifm-color-emphasis-600);
+}
+
+.tagLabelBright {
+  font-size: 11px;
+  font-weight: 600;
+  fill: #ffffff;
+}
+
+/* ---------- motion: the single travelling pulse ---------- */
+
+.travelDot {
+  @include motion.travel-dot;
+}
+
+.pulseRing {
+  @include motion.pulse-ring(#4d4aff);
+}
+
+.pulseRingEarly {
+  @include motion.pulse-ring-early(#4d4aff);
+}
+
+@include motion.pulse-delay-classes;
+
+/* Stage 1 - "Monitor API traffic" is always-on background work, so the
+   ring pulses continuously (pulseRingEarly). The three traffic nodes
+   keep pinging continuously too, independent of the shared clock. */
+.trafficPulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: trafficPulse 2s ease-in-out infinite;
+}
+.traffic1 { animation-delay: 0s; }
+.traffic2 { animation-delay: 0.3s; }
+.traffic3 { animation-delay: 0.6s; }
+
+@keyframes trafficPulse {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Stage 2 - "Scan for risks": the magnifying glass reuses the shared
+   magnifyPulse shape on the node's beat instead of pulsing forever. */
+.magnifyPulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: magnifyPulse motion.$cycle ease-in-out infinite backwards;
+  animation-delay: motion.fire(2);
+}
+
+/* Stage 3 - "Detect broken auth": retimed from a continuous flash into
+   a single flash-and-settle on the node's beat, holding the crack
+   visible (rather than fading it away entirely) since the break is a
+   permanent finding once detected. */
+@keyframes crackFlash {
+  0% {
+    opacity: 0.3;
+  }
+  4% {
+    opacity: 0.3;
+  }
+  10% {
+    opacity: 1;
+  }
+  16% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
+
+.crackFlash {
+  animation: crackFlash motion.$cycle ease-in-out infinite backwards;
+  animation-delay: motion.fire(3);
+}
+
+/* Stage 4 - "Test for exposure" is the gate for this flow: the fork
+   resolves once on node 4's beat using the shared decide keyframes.
+   The test tube's rising bubbles stay continuous, independent of the
+   shared clock, since a reaction bubbling is inherently ongoing. */
+.bubbleRise {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: bubbleRise 2.6s ease-in infinite;
+}
+.bubble1 { animation-delay: 0s; }
+.bubble2 { animation-delay: 0.5s; }
+.bubble3 { animation-delay: 1s; }
+
+@keyframes bubbleRise {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-14px);
+    opacity: 0;
+  }
+}
+
+.foundTag {
+  animation: decideBlocked motion.$cycle ease-out infinite backwards;
+  animation-delay: motion.fire(4);
+}
+
+.securedTag {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: decideApproved motion.$cycle ease-out infinite backwards;
+  animation-delay: motion.fire(4);
+}
+
+/* Stage 5 - "Resolve & harden": the checkmark draws in, holds, then
+   fades - a transient confirmation on the node's beat. */
+@include motion.stroke-draw-flash("hardenCheckDraw", 24);
+
+.checkMark {
+  fill: none;
+  stroke: #2e9e20;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 24;
+  animation: hardenCheckDraw motion.$cycle ease-in-out infinite backwards;
+  animation-delay: motion.fire(5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .connectorLine,
+  .travelDot,
+  .pulseRing,
+  .nodeBgFade,
+  .pulseRingEarly,
+  .nodeBgFadeEarly,
+  .magnifyPulse,
+  .trafficPulse,
+  .checkMark,
+  .crackFlash,
+  .bubbleRise,
+  .foundTag,
+  .securedTag {
+    animation: none !important;
+  }
+
+  .travelDot { opacity: 0; }
+  .checkMark { stroke-dashoffset: 0; opacity: 1; }
+  .crackFlash { opacity: 0.7; }
+  .foundTag { opacity: 0.3; }
+  .securedTag { opacity: 1; transform: none; }
+}

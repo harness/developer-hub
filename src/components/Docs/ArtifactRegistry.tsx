@@ -1,14 +1,21 @@
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { useLocation } from '@docusaurus/router';
 import React from 'react';
 import { TutorialCards } from '@site/src/components/TutorialCard/TutorialCard';
 import styles from './styles.module.scss';
 // Define the cards in "***Data.ts"
 import { useColorMode } from '@docusaurus/theme-common';
 import { docsCards } from './data/artifactRegistryData';
+import ArtifactRegistryOnboardingIllustration from './illustrations/ArtifactRegistryOnboardingIllustration';
 export default function AR() {
   const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = '/' } = {} } = useDocusaurusContext();
+  const { pathname } = useLocation();
+  // The animated onboarding illustration is a 3k-docs-only experiment for
+  // now; /docs keeps the page exactly as it was (empty illustration
+  // container).
+  const is3kDocs = pathname.startsWith('/3k-docs');
   return (
     <div className="container">
       <div className={styles.topSection}>
@@ -27,9 +34,9 @@ export default function AR() {
           </div>
         </div>
         <div className={styles.spaceBetween}>
-          <div className={styles.content}>
+          <div className={styles.content} style={{ width: '100%' }}>
             <p>
-            Harness Artifact Registry (AR) is a universal hub for all your artifacts, regardless of type. By centralizing artifact management in one secure location, we're streamlining the process of handling multiple registries across various platforms and tools. 
+            Harness Artifact Registry (AR) is a universal hub for all your artifacts, regardless of type. By centralizing artifact management in one secure location, we're streamlining the process of handling multiple registries across various platforms and tools.
             </p>
             <p>
             Artifact Registry enables developers to centrally store artifacts and build dependencies.
@@ -40,16 +47,9 @@ export default function AR() {
             <li><b>Automate and Accelerate</b>: Effortlessly integrate artifact management into your CI/CD pipelines, speeding up builds and deployments. </li>
             <li><b>Govern and Secure</b>: Ensure compliance, enforce quality standards, and protect your software supply chain. </li>
             </ul>
-           
+
             <div className={styles.illustrationContainer}>
-              {/* <img
-                className={styles.illustration}
-                src={
-                  colorMode === "light"
-                    ? `${baseUrl}img/cde_illustration.svg`
-                    : `${baseUrl}img/cde_illustration_dark.svg`
-                }
-              />{" "} */}
+              {is3kDocs && <ArtifactRegistryOnboardingIllustration />}
             </div>
           </div>
         </div>
