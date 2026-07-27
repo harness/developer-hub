@@ -108,7 +108,7 @@ export default function NavbarWrapper(props: Props): ReactNode {
   const docDropdownItems = [
     { to: `${docsBase}/ai`, legacyTo: "/docs/platform/harness-ai/overview", label: "Harness AI", icon: "/img/home/ai.svg" },
     { to: `${docsBase}/platform`, label: "Harness Platform", icon: "/img/home/platform.svg" },
-    { to: `${docsBase}/code-repository`, label: "Code Repository", icon: "/img/home/code.svg" },
+    { to: `${docsBase}/code-repository`, label: "Code Repository", icon: "/img/home/repository.svg" },
 
     { type: "header", label: "Delivery" },
     { to: `${docsBase}/continuous-delivery`, label: "Continuous Delivery", icon: "/img/home/deployment.svg" },

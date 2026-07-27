@@ -59,6 +59,14 @@ export const categories: Category[] = [
         description: "Build, test, and publish code with scalable CI pipelines."
       },
       {
+        name: "Code Repository",
+        href: "/docs/code-repository",
+        module: "code",
+        iconLight: "img/home/repository.svg",
+        iconDark: "img/home/repository.svg",
+        description: "Host, review, and collaborate on code with Git and pipelines."
+      },
+      {
         name: "Feature Management & Experimentation",
         href: "/docs/feature-management-experimentation",
         module: "ff",
