@@ -1,3 +1,31 @@
+## July 2026
+
+### GitOps Service 1.62.3, GitOps Agent 0.122.0
+
+#### New features and enhancements
+
+- The GitOps agent now bundles ArgoCD 3.4.2. (**CDS-121725**)
+
+- You can now configure source namespaces directly in the AppProject create and edit forms. The new **Source Namespaces** field accepts namespace names, shell-style wildcards (for example, `team-*`), and regex patterns, and maps to `spec.sourceNamespaces` in the AppProject resource. (**CDS-125056**)
+
+- The GitOps agent now supports interactive web terminal sessions. The agent routes `TerminalExec` tasks from the Harness UI to the target pod using `kubectl exec`, enabling terminal access to running containers without leaving the Harness interface. (**CDS-125107**)
+
+- GitOps agent pods now enforce security context restrictions aligned with EKS CIS Benchmark 1.6, improving compliance for clusters running on Amazon EKS. (**CDS-118674**)
+
+- When creating a GitOps application, the service now validates the `metadata.namespace` field to ensure it contains a valid Kubernetes namespace name, and defaults to the agent's install namespace when the field is empty. This change is backward compatible. (**CDS-125050**)
+
+#### Fixed issues
+
+- Fixed an issue where the GitOps service returned a socket timeout when multiple sync pipelines ran against the same sync step in parallel. (**CDS-126736**)
+
+- Fixed an issue where the GitOps overview page did not display applications for users whose access was granted through label-based RBAC, even when those applications appeared correctly in the application list. (**CDS-125748**)
+
+- Fixed an issue where GitOps ApplicationSet validation failed on the `patches[0].target.resId` field, preventing ApplicationSets with valid resource patches from being saved. (**CDS-126249**)
+
+- Fixed an issue where bulk sync and refresh operations failed with a 502 error when using older agents, caused by a key mismatch between the agent and service. (**CDS-127729**)
+
+- Fixed an incorrect service port in the GitOps Helm chart that prevented the service from correctly routing HTTP traffic. (**CDS-127565**)
+
 ## June 2026
 
 ### GitOps Service 1.61.0, GitOps Agent 0.121.0
