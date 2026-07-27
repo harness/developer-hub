@@ -614,6 +614,48 @@ If the PagerDuty annotation is missing from the catalog-info.yaml file, the chec
 
 ---
 
+### Traceable
+
+:::info
+These data points apply only to IDP entities with `kind: API`. They will not appear or evaluate for any other entity kind.
+:::
+
+The Traceable data source provides out-of-the-box data points derived from live API traffic observed by Traceable. These require the `IDP_API_ENDPOINT_EXTRACTION` feature flag to be enabled and the Traceable integration to be configured. See [Traceable integration](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/traceable).
+
+To view available Traceable data points, go to **Configure** → **Scorecards** → **Data Sources** and select **Traceable** from the dropdown.
+
+#### Available data points
+
+The following data points return a value of type **number**. The example use cases below illustrate one way to apply each data point. You can use them in checks however best fits your workflow.
+
+| Data point | Description | Example use case |
+|---|---|---|
+| `Average risk score` | The average Traceable risk score across all endpoints matched to this entity. For example, if an entity has three endpoints with risk scores 6, 8, and 10, this data point returns 8. | Track overall risk exposure for the entity as a single, averaged number. |
+| `Highest open issues on an endpoint` | The highest open issue count among all matched endpoints in this entity. | You could use this to flag entities where a single endpoint exceeds a set number of open issues, even if the overall average looks acceptable. |
+| `Lowest open issues on an endpoint` | The lowest open issue count among all matched endpoints in this entity. | You could use this to check whether at least one endpoint in the entity has fewer open issues than a threshold you define. |
+| `Total open issues` | The sum of all open issues across every matched endpoint. | This can help track the overall security debt of an API and measure improvement over time. |
+
+#### Create a check using Traceable data
+
+1. Go to **Configure** → **Scorecards** → **Checks** and select **Create Custom Check**.
+   <DocImage path={require('./static/custom-check-traceable.png')} />
+
+2. Under **Rules Configuration**, set **Data Source** to **Traceable**.
+   <DocImage path={require('./static/data-source-traceable.png')} />
+
+3. Select a **Data Point** from the dropdown.
+4. Set the **Operator** and **Value** for your condition (for example, Average risk score less than or equal to 7).
+5. Under **Advanced Configuration**, set the default result for missing data. This controls whether a missing data result counts as a pass or a fail. The default is **Fail**.
+6. Save the check.
+
+#### Apply the check to a scorecard
+
+When creating or editing a scorecard, set **Kind** to **APIs** in the entity filter. Traceable data points are only evaluated against API entities and will not produce results if the scorecard targets Components or other kinds.
+
+<DocImage path={require('./static/add-checks-traceable.png')} />
+
+---
+
 
 ## Custom data sources
 

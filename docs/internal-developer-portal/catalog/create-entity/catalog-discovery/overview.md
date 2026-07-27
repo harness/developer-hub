@@ -29,6 +29,14 @@ The following integrations are currently available under the `IDP_INTEGRATIONS` 
 - [**ServiceNow CMDB**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/servicenow-cmdb): Sync CMDB records into the catalog with configurable field mappings.
 - [**SonarQube**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/sonarqube): Auto-discover SonarQube projects and populate the IDP Catalog with code quality metrics, security data, and issue analytics.
 
+---
+
+## Harness integrations
+
+- [**Traceable**](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/traceable): This integration is available under a separate feature flag (`IDP_API_ENDPOINT_EXTRACTION`) and follows a different setup flow from the integrations above. It enriches existing API catalog entities with live security data rather than creating or discovering new entities. Display API security data from Traceable, including per-endpoint risk scores, data type exposure, and open issues, directly on your `kind: API` catalog entities.
+
+---
+
 Each integration follows a common workflow: configure the integration, review discovered entities, and choose whether to **register** them as new catalog entities or **merge** them into existing ones.
 
 :::info

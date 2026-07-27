@@ -20,6 +20,10 @@ When you [register a catalog entity](/docs/internal-developer-portal/catalog/tut
 
 This page explains what gets extracted, how to configure the entity definition so extraction works reliably, and how to write enrichment data to individual endpoints using the Catalog Custom Properties API.
 
+:::info
+If you use Traceable for API security, the [Traceable integration](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/traceable) pushes risk scores, data type exposure, and open issues onto your API entity pages automatically. The CCP API described on this page is for writing your own custom enrichment metadata from any external tool or script.
+:::
+
 ---
 
 ## Before you begin
@@ -36,7 +40,7 @@ After an API entity is saved, IDP parses `spec.definition` and extracts each end
 
 Rather than storing the full specification (which can run to tens of thousands of lines), IDP stores only the operationally relevant fields per endpoint: path, HTTP method, summary, operation ID, and tags. This trimmed representation is stored in the entity's Ingested Properties under `metadata.apis` (explained in the next section).
 
-Extraction runs each time the entity is created or updated in IDP. If the spec file changes at its source after the entity is already registered, re-save the entity in IDP to pick up the latest version.
+Extraction runs each time the entity is created or updated in IDP. For specs provided via a Git placeholder or a bare URL, IDP also re-fetches and re-parses the spec automatically every 6 hours when the source changes. If you use an inline spec, re-save the entity YAML whenever the spec changes to trigger a fresh parse.
 
 ---
 
@@ -196,7 +200,8 @@ The URL Allow List controls which domains the IDP frontend can render. It is not
 Once endpoints are extracted, you can attach custom metadata to any endpoint using the Catalog Custom Properties (CCP) API. Enrichments are stored separately from the extracted spec data and are never written to the entity's `catalog-info.yaml` in Git. Any service or tool that can make an authenticated HTTP request can write enrichments: your own scripts, CI/CD steps, or external integrations.
 
 :::tip
-Enrichment data written to endpoint properties is also available as a data source for [Scorecard](/docs/internal-developer-portal/scorecards/scorecard) rules, allowing you to define and measure API quality checks against enriched values such as risk scores or compliance tags.
+Enrichment data written to endpoint properties is also available as a data source for [Scorecard](/docs/internal-developer-portal/scorecards/scorecard) rules, allowing you to define and measure API quality checks against enriched values such as risk scores or compliance tags. If you use Traceable for API security, the [Traceable integration](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/traceable) displays risk scores and open issues automatically as ready-made scorecard data points without requiring manual enrichment. See [Traceable data points](/docs/internal-developer-portal/scorecards/create-scorecards/data-sources#traceable).
+
 :::
 
 Go to the [Catalog Ingestion API](/docs/internal-developer-portal/catalog/integrate-tools/catalog-ingestion-api) reference to review the general CCP API contract.
@@ -432,3 +437,35 @@ curl -X DELETE 'https://app.harness.io/gateway/v1/catalog/custom-properties/enti
 Enrichments are stored separately from the extracted spec data. When the spec re-fetches and extraction runs again, enrichments for endpoints still present in the spec carry forward unchanged. If an endpoint is removed from the spec, all enrichments for that endpoint are deleted along with it.
 
 Avoid writing to a property path that names a non-existent endpoint key. The request will succeed, but the enrichment will never appear in Ingested Properties because no extraction result exists to attach it to.
+
+---
+
+## Frequently asked questions
+
+<details>
+<summary>When does extraction run, and how do I re-trigger it after a spec change?</summary>
+<div>
+Extraction runs each time the entity is created or updated in IDP. For specs provided via a Git placeholder or a bare URL, IDP also re-fetches and re-parses the spec automatically every 6 hours, so changes at the source are picked up without any action on your part. If you use an inline spec, there is no external source to re-fetch from, so you must re-save the entity YAML whenever the spec changes to trigger a fresh parse.
+</div>
+</details>
+
+<details>
+<summary>Why do I get HTTP 400 when writing to a metadata.apis path?</summary>
+<div>
+All fields under <code>metadata.apis</code> except <code>enrichments</code> are system-managed. You can only write to paths under <code>metadata.apis.paths."&lt;endpoint&gt;".enrichments.*</code>. Writes to any other <code>metadata.apis</code> path, such as <code>metadata.apis.count</code> or <code>metadata.apis.paths."GET /v1/organisations".summary</code>, return HTTP 400.
+</div>
+</details>
+
+<details>
+<summary>The enrichment I wrote is not showing in Ingested Properties. Why?</summary>
+<div>
+The most likely cause is that the endpoint key in the property path does not exactly match the key in <code>metadata.apis.paths</code>. The key includes the HTTP method, a space, and the full path including the server base path prefix from <code>servers.url</code> in the spec. Check Entity Inspector → Ingested Properties for the exact key, then re-run the request with the corrected path.
+</div>
+</details>
+
+<details>
+<summary>What happens to enrichments if an endpoint is removed from the spec?</summary>
+<div>
+If an endpoint is removed from the OpenAPI spec and extraction runs again, all enrichments for that endpoint are deleted along with the endpoint entry. Enrichments for endpoints that remain in the spec carry forward unchanged.
+</div>
+</details>
