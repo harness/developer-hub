@@ -27,6 +27,45 @@ We've migrated to LabelsV2, which preserves your original label keys while drama
 
 --- 
 
+## July 2026 - Version 1.97.0
+#### Deployment Date: July 23, 2026 (Prod-1)
+
+### New Features and Enhancements
+
+- **AI Perspective drill-down now supports Principal and Sub Provider:** When you group an AI Perspective by **Principal**, you can now drill down through **Provider**, **Sub Provider**, **Sub Account ID**, **Model**, and **Token Type** to see where your AI spend originates. [CCM-34317]
+
+- **Filter the Overview page by cost category:** You can now apply a cost category filter on the Overview page. Most tiles respect the filter, so you can focus the overview on a specific cost category. Optimization tiles are not affected by this filter. [CCM-34156]
+
+- **Anomalies and Budgets widgets on the Overview page are enhanced:** The Anomalies widget now includes a time series chart and shows the number of stale anomalies, and the Budgets widget has been updated for a clearer view of your budget status. [CCM-34114]
+
+- **AI chat quick actions now match your current experience:** The AI chat quick action now adapts to where you are in Cloud Cost Management. It shows **Create a View** in Cost Explorer and **Create a Perspective** in the classic Perspectives experience, keeping the terminology consistent with the rest of the UI. [CCM-33996]
+
+- **Cluster schedules now show live status badges:** The Cluster Orchestrator Schedules table now displays a status badge for each schedule, so you can see its current state at a glance. Active schedules, upcoming (Scheduled) schedules, and disabled schedules are clearly marked, and each badge shows a live countdown to the next schedule window. [CCM-33426]
+
+### Fixed Issues
+
+- **Recommendations page no longer crashes when filtering by Cloud Account ID:** We have fixed an issue where the Recommendations page crashed if you added a Cloud Account ID filter, opened a recommendation, returned to the list, and then applied another Cloud Account ID filter. The filter now applies correctly and the list updates without crashing. [CCM-34258]
+
+- **GCP connectors no longer show empty cost data in some cases:** We have fixed an issue where a GCP connector could sync no cost data at all, even when it was set up correctly and reported healthy. Cost data now syncs and displays as expected. [CCM-34238]
+
+- **Saved Reports page no longer crashes when creating a new report:** We have fixed an issue where the page crashed when you scrolled to the bottom of the report Perspective dropdown while creating a new report from the Saved Reports screen. The dropdown now scrolls without crashing. [CCM-34186]
+
+- **Duplicate anomalies are now correctly grouped into multi-day streaks:** We have fixed an issue where the same cost spike could appear as separate anomalies across consecutive days in the UI and notifications, because duplicate anomalies were not always linked to their parent. Duplicate anomalies are now correctly grouped again. [CCM-34182]
+
+- **Anomaly detection no longer fails for accounts using the cost pre-aggregation optimization:** We have fixed an issue where cloud cost anomaly detection could stop running for accounts with our cost pre-aggregation optimization enabled, which meant new anomalies were not detected. Anomaly detection now runs correctly for these accounts. [CCM-34162]
+
+- **Scheduled Perspective reports now generate and deliver reliably:** We have fixed an issue where scheduled Perspective reports and notifications failed to generate, so no emails were delivered on their configured schedule. Scheduled reports now generate and deliver as expected. [CCM-34155]
+
+- **Recommendation ticketing APIs now return a clear error for a missing recommendation ID:** We have fixed an issue where the Jira and ServiceNow recommendation ticketing APIs returned an internal server error when the recommendation ID was missing. They now return a clear validation error. [CCM-34139]
+
+- **Jira recommendation ticket creation now validates the resource type:** We have fixed an issue where the recommendation Jira create API returned an internal server error when the resource type was missing. The resource type is now required, and the API returns a clear validation error if it is not provided. [CCM-34141]
+
+- **Anomaly drill-down no longer shows a misleading 0% change:** We have fixed an issue where a multi-day anomaly with an expected spend of zero displayed the change as **+0%**, even when actual spend was significant. The percentage is now hidden when it cannot be calculated meaningfully. [CCM-30311]
+
+- **Anomaly alert settings filters no longer show a misleading clear icon:** We have fixed an issue in the Anomaly alert settings where a filter displayed a cross icon that suggested you could clear it, but clicking it had no effect. The filter now behaves consistently as a selectable option. [CCM-25072]
+
+---
+
 ## July 2026 - Version 1.96.0
 #### Deployment Date: July 13, 2026 (Prod-1)
 
