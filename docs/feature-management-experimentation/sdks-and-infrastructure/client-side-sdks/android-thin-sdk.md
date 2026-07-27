@@ -32,7 +32,7 @@ Add the SDK as a dependency in your app module's Gradle build script:
 
 ```kotlin title="build.gradle.kts"
 dependencies {
-    implementation("io.split.client:android-thin-client:1.0.0")
+    implementation("io.split.client:android-thin-client:1.0.1")
 }
 ```
 
@@ -41,7 +41,7 @@ dependencies {
 
 ```groovy title="build.gradle"
 dependencies {
-    implementation 'io.split.client:android-thin-client:1.0.0'
+    implementation 'io.split.client:android-thin-client:1.0.1'
 }
 ```
 

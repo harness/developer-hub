@@ -33,7 +33,7 @@ Add the SDK as a Swift Package Manager dependency. In Xcode, choose **File** > *
 
 ```swift title="Package.swift"
 dependencies: [
-    .package(url: "https://github.com/splitio/ios-thin-client.git", from: "1.0.0-beta1"),
+    .package(url: "https://github.com/splitio/ios-thin-client.git", from: "1.0.0"),
 ],
 targets: [
     .target(
