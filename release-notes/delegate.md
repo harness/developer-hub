@@ -171,6 +171,11 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## July 2026
 
+### Version 26.04.88905 <!-- July 27, 2026 -->
+
+#### Fixed issues
+- Improved error handling for the manager file upload API. [CDS-128314]
+
 ### Version 26.06.89503 <!-- July 21, 2026 -->
 
 #### Fixed issues
