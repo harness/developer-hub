@@ -61,9 +61,12 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io richard.black@harness.io a
 /3k-docs/platform/ austin.lai@harness.io richard.black@harness.io vikram.sahu@harness.io rohan.gupta@harness.io prateek.mittal@harness.io ambuj.lal@harness.io smriti.satyanarayana@harness.io 
 /3k-docs/ai/ prateek.mittal@harness.io rohan.gupta@harness.io vikram.sahu@harness.io abhishek.thamman@harness.io vishal.vishwaroop@harness.io austin.lai@harness.io smriti.satyanarayana@harness.io
 /3k-docs/ai-dlc-insights/ austin.lai@harness.io richard.black@harness.io dhrubajyoti.chakraborty@harness.io yashaswini.raghavan@harness.io trevor.stuart@harness.io
+
 # Harness 3.0 Resilience Testing and Chaos Docs
 /3k-docs/resilience-testing/ vedant.shrotria@harness.io karthik.s@harness.io umasankar.mukkara@harness.io ashutosh.bhadauriya@harness.io adarsh.kumar@harness.io abhijeet.sharma1@harness.io
 /3k-docs/chaos-engineering/ vedant.shrotria@harness.io karthik.s@harness.io umasankar.mukkara@harness.io ashutosh.bhadauriya@harness.io adarsh.kumar@harness.io abhijeet.sharma1@harness.io
+
+# Harness 3.0 IDP Docs
 /3k-docs/internal-developer-portal/ rashmi.hegde@harness.io sandeepa.kv@harness.io vikyath.harekal@harness.io ashok.nayak@harness.io
 
 # Continuous Delivery Docs
@@ -181,12 +184,12 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io richard.black@harness.io a
 /docs/platform/harness-ai/ prateek.mittal@harness.io rohan.gupta@harness.io vikram.sahu@harness.io abhishek.thamman@harness.io vishal.vishwaroop@harness.io austin.lai@harness.io
 
 # IDP Docs
-/docs/internal-developer-portal/ shibam.dhar@harness.io vikyath.harekal@harness.io rashmi.hegde@harness.io sandeepa.kv@harness.io ashok.nayak@harness.io
-/release-notes/internal-developer-portal.md shibam.dhar@harness.io vikyath.harekal@harness.io rashmi.hegde@harness.io sandeepa.kv@harness.io ashok.nayak@harness.io
-/release-notes/static/idp/ shibam.dhar@harness.io vikyath.harekal@harness.io rashmi.hegde@harness.io sandeepa.kv@harness.io ashok.nayak@harness.io
-/release-notes/static/internal-developer-portal/ shibam.dhar@harness.io vikyath.harekal@harness.io rashmi.hegde@harness.io sandeepa.kv@harness.io ashok.nayak@harness.io
-/src/components/Roadmap/data/idpData.ts shibam.dhar@harness.io vikyath.harekal@harness.io rashmi.hegde@harness.io sandeepa.kv@harness.io ashok.nayak@harness.io
-/src/components/Docs/data/internalDeveloperPortal.ts shibam.dhar@harness.io vikyath.harekal@harness.io rashmi.hegde@harness.io sandeepa.kv@harness.io ashok.nayak@harness.io
+/docs/internal-developer-portal/ shibam.dhar@harness.io vikyath.harekal@harness.io rashmi.hegde@harness.io sandeepa.kv@harness.io ashok.nayak@harness.io abhijeet.sharma1@harness.io
+/release-notes/internal-developer-portal.md shibam.dhar@harness.io vikyath.harekal@harness.io rashmi.hegde@harness.io sandeepa.kv@harness.io ashok.nayak@harness.io abhijeet.sharma1@harness.io
+/release-notes/static/idp/ shibam.dhar@harness.io vikyath.harekal@harness.io rashmi.hegde@harness.io sandeepa.kv@harness.io ashok.nayak@harness.io abhijeet.sharma1@harness.io
+/release-notes/static/internal-developer-portal/ shibam.dhar@harness.io vikyath.harekal@harness.io rashmi.hegde@harness.io sandeepa.kv@harness.io ashok.nayak@harness.io abhijeet.sharma1@harness.io
+/src/components/Roadmap/data/idpData.ts shibam.dhar@harness.io vikyath.harekal@harness.io rashmi.hegde@harness.io sandeepa.kv@harness.io ashok.nayak@harness.io abhijeet.sharma1@harness.io
+/src/components/Docs/data/internalDeveloperPortal.ts shibam.dhar@harness.io vikyath.harekal@harness.io rashmi.hegde@harness.io sandeepa.kv@harness.io ashok.nayak@harness.io abhijeet.sharma1@harness.io
 
 # SCS Docs
 /docs/software-supply-chain-assurance/  lavakush.biyani@harness.io pranay.shah@harness.io sahil.jugiani@harness.io ambuj.lal@harness.io
