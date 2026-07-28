@@ -925,7 +925,7 @@ Harness introduced a series of user experience improvements to the GitOps Agent 
 
 - Harness now supports native binding of the Tanzu Application Service (TAS) Autoscaler service to your application during rolling deployments. For more information, refer to [TAS Autoscaler Integration](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart#tas-autoscaler-integration). (**CDS-101502**)
 
-- Harness now fetches Terraform Enterprise OPA policy evaluation results and fails the pipeline stage when a policy evaluation fails, ensuring pipelines correctly enforce OPA policy compliance. Currently, this feature is behind the feature flag `CDS_TF_POLICY_EVALUATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.For more information, refer to [Open Policy Agent (OPA) policy support](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-cloud-deployments/#open-policy-agent-opa-policy-support). (**CDS-97468, ZD-63823,75769**)
+- Harness now fetches Terraform Enterprise OPA policy evaluation results and fails the pipeline stage when a policy evaluation fails, ensuring pipelines correctly enforce OPA policy compliance. For more information, refer to [Open Policy Agent (OPA) policy support](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-cloud-deployments/#open-policy-agent-opa-policy-support). (**CDS-97468, ZD-63823,75769**)
 
 ##### Fixed Issues
 
