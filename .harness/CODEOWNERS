@@ -62,8 +62,8 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io richard.black@harness.io a
 /3k-docs/ai/ prateek.mittal@harness.io rohan.gupta@harness.io vikram.sahu@harness.io abhishek.thamman@harness.io vishal.vishwaroop@harness.io austin.lai@harness.io smriti.satyanarayana@harness.io
 /3k-docs/ai-dlc-insights/ austin.lai@harness.io richard.black@harness.io dhrubajyoti.chakraborty@harness.io yashaswini.raghavan@harness.io trevor.stuart@harness.io
 # Harness 3.0 Resilience Testing and Chaos Docs
-/3k-docs/resilience-testing/ vedant.shrotria@harness.io karthik.s@harness.io umasankar.mukkara@harness.io ashutosh.bhadauriya@harness.io adarsh.kumar@harness.io
-/3k-docs/chaos-engineering/ vedant.shrotria@harness.io karthik.s@harness.io umasankar.mukkara@harness.io ashutosh.bhadauriya@harness.io adarsh.kumar@harness.io
+/3k-docs/resilience-testing/ vedant.shrotria@harness.io karthik.s@harness.io umasankar.mukkara@harness.io ashutosh.bhadauriya@harness.io adarsh.kumar@harness.io abhijeet.sharma1@harness.io
+/3k-docs/chaos-engineering/ vedant.shrotria@harness.io karthik.s@harness.io umasankar.mukkara@harness.io ashutosh.bhadauriya@harness.io adarsh.kumar@harness.io abhijeet.sharma1@harness.io
 /3k-docs/internal-developer-portal/ rashmi.hegde@harness.io sandeepa.kv@harness.io vikyath.harekal@harness.io ashok.nayak@harness.io
 
 # Continuous Delivery Docs
@@ -129,22 +129,22 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io richard.black@harness.io a
 /src/components/Docs/data/serviceReliabilityManagementData.ts vasundhara.shukla@harness.io ryan.taylor@harness.io tina.huang@harness.io
 
 # Chaos Docs
-/docs/chaos-engineering/ vedant.shrotria@harness.io karthik.s@harness.io umasankar.mukkara@harness.io ashutosh.bhadauriya@harness.io adarsh.kumar@harness.io
-/release-notes/chaos-engineering.md vedant.shrotria@harness.io ashutosh.bhadauriya@harness.io adarsh.kumar@harness.io karthik.s@harness.io
-/src/components/Roadmap/data/ceData.ts ashutosh.bhadauriya@harness.io @vedant.shrotria@harness.io adarsh.kumar@harness.io
-/src/components/Docs/data/chaosEngineeringData* ashutosh.bhadauriya@harness.io @vedant.shrotria@harness.io adarsh.kumar@harness.io
+/docs/chaos-engineering/ vedant.shrotria@harness.io karthik.s@harness.io umasankar.mukkara@harness.io ashutosh.bhadauriya@harness.io adarsh.kumar@harness.io abhijeet.sharma1@harness.io
+/release-notes/chaos-engineering.md vedant.shrotria@harness.io ashutosh.bhadauriya@harness.io adarsh.kumar@harness.io karthik.s@harness.io abhijeet.sharma1@harness.io
+/src/components/Roadmap/data/ceData.ts ashutosh.bhadauriya@harness.io @vedant.shrotria@harness.io adarsh.kumar@harness.io abhijeet.sharma1@harness.io
+/src/components/Docs/data/chaosEngineeringData* ashutosh.bhadauriya@harness.io @vedant.shrotria@harness.io adarsh.kumar@harness.io abhijeet.sharma1@harness.io
 # Chaos FAQs
-/docs/faqs/chaos-engineering-faqs vedant.shrotria@harness.io karthik.s@harness.io @umasankar.mukkara@harness.io ashutosh.bhadauriya@harness.io adarsh.kumar@harness.io
-/docs/faqs/static vedant.shrotria@harness.io karthik.s@harness.io @umasankar.mukkara@harness.io ashutosh.bhadauriya@harness.io adarsh.kumar@harness.io
-/kb/chaos-engineering/chaos-engineering-faq karthik.s@harness.io @umasankar.mukkara@harness.io ashutosh.bhadauriya@harness.io adarsh.kumar@harness.io
+/docs/faqs/chaos-engineering-faqs vedant.shrotria@harness.io karthik.s@harness.io @umasankar.mukkara@harness.io ashutosh.bhadauriya@harness.io adarsh.kumar@harness.io abhijeet.sharma1@harness.io
+/docs/faqs/static vedant.shrotria@harness.io karthik.s@harness.io @umasankar.mukkara@harness.io ashutosh.bhadauriya@harness.io adarsh.kumar@harness.io abhijeet.sharma1@harness.io
+/kb/chaos-engineering/chaos-engineering-faq karthik.s@harness.io @umasankar.mukkara@harness.io ashutosh.bhadauriya@harness.io adarsh.kumar@harness.io abhijeet.sharma1@harness.io
 
 # Resilience Testing Docs
-/docs/resilience-testing/ vedant.shrotria@harness.io karthik.s@harness.io umasankar.mukkara@harness.io ashutosh.bhadauriya@harness.io adarsh.kumar@harness.io
-/release-notes/resilience-testing.md vedant.shrotria@harness.io ashutosh.bhadauriya@harness.io adarsh.kumar@harness.io karthik.s@harness.io
-/src/components/Roadmap/data/resilienceTestingData.ts ashutosh.bhadauriya@harness.io adarsh.kumar@harness.io
-/src/components/Docs/data/resilienceTestingData* ashutosh.bhadauriya@harness.io @vedant.shrotria@harness.io adarsh.kumar@harness.io
+/docs/resilience-testing/ vedant.shrotria@harness.io karthik.s@harness.io umasankar.mukkara@harness.io ashutosh.bhadauriya@harness.io adarsh.kumar@harness.io abhijeet.sharma1@harness.io
+/release-notes/resilience-testing.md vedant.shrotria@harness.io ashutosh.bhadauriya@harness.io adarsh.kumar@harness.io karthik.s@harness.io abhijeet.sharma1@harness.io
+/src/components/Roadmap/data/resilienceTestingData.ts ashutosh.bhadauriya@harness.io adarsh.kumar@harness.io abhijeet.sharma1@harness.io
+/src/components/Docs/data/resilienceTestingData* ashutosh.bhadauriya@harness.io @vedant.shrotria@harness.io adarsh.kumar@harness.io abhijeet.sharma1@harness.io
 # Resilience Testing FAQs
-/docs/faqs/resilience-testing-faqs vedant.shrotria@harness.io karthik.s@harness.io umasankar.mukkara@harness.io ashutosh.bhadauriya@harness.io adarsh.kumar@harness.io
+/docs/faqs/resilience-testing-faqs vedant.shrotria@harness.io karthik.s@harness.io umasankar.mukkara@harness.io ashutosh.bhadauriya@harness.io adarsh.kumar@harness.io abhijeet.sharma1@harness.io
 
 # Platform Docs
 /docs/platform/ prateek.mittal@harness.io gokul.bansal@harness.io abhishek.thamman@harness.io vikram.sahu@harness.io anshul.goyal@harness.io navaneeth.kn@harness.io mohit.garg@harness.io ambuj.lal@harness.io smriti.satyanarayana@harness.io mohit.suman@harness.io
