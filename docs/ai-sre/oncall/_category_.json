@@ -1,8 +1,9 @@
 {
   "label": "On-Call Management",
+  "description": "Build schedules, escalation policies, and paging for responders.",
   "position": 5,
   "link": {
     "type": "generated-index",
-    "description": "Manage on-call schedules, escalations, and mobile incident response with Harness AI SRE's comprehensive on-call management system."
+    "description": "Manage on-call schedules, escalations, and mobile incident response."
   }
 }

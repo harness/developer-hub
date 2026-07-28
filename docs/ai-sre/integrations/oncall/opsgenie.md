@@ -2,7 +2,7 @@
 title: OpsGenie Integration
 sidebar_label: OpsGenie
 sidebar_position: 1
-description: Connect OpsGenie to Harness AI SRE to sync on-call schedules, ingest alerts, and run incident actions.
+description: Sync on-call schedules, ingest alerts, and page responders from runbooks.
 keywords:
   - ai-sre
   - integrations

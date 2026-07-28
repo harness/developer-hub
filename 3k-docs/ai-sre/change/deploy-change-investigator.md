@@ -1,6 +1,6 @@
 ---
-title: Deploy Change Investigator Setup Guide
-sidebar_label: Deploy Change Investigator
+title: Set up Deploy Change Investigator
+sidebar_label: Set Up Deploy Change Investigator
 description: Set up Deploy Change Investigator to understand what changed during incidents by connecting builds, deployments, and code changes.
 keywords:
   - ai-sre

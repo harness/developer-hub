@@ -2,7 +2,7 @@
 title: Runbook Triggers Overview
 sidebar_label: Overview
 sidebar_position: 1
-description: Learn how to configure triggers for automated runbook execution in Harness AI SRE based on incidents, alerts, and key events.
+description: Configure triggers for automated runbook execution based on incidents, alerts, and key events.
 redirect_from:
 - /docs/incident-response/runbooks/create-trigger
 - /docs/ai-sre/runbooks/create-trigger

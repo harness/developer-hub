@@ -2,7 +2,7 @@
 title: Use CEL Expressions in Runbook Actions
 sidebar_label: Use CEL Expressions
 sidebar_position: 3
-description: Learn how to use inline CEL expressions in runbook actions for dynamic content in Harness AI SRE.
+description: Add conditional logic and transformations to runbook actions with inline CEL.
 keywords:
   - cel
   - expressions
@@ -476,8 +476,8 @@ Incident Response Resources:
   ${{runbook.outputs.zoom_create_meeting.join_url}}
 - Jira Ticket:
   ${{runbook.outputs.jira_create_ticket.ticket_url}}
-- Status:
-  ${{runbook.outputs.statuspage_create_incident.incident_url}}
+- PagerDuty Incident:
+  ${{runbook.outputs.pagerduty_create_incident.incident_url}}
 ```
 
 ---

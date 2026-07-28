@@ -1,8 +1,8 @@
 ---
 title: Dynatrace Integration
 sidebar_label: Dynatrace
-sidebar_position: 4
-description: Connect Dynatrace to Harness AI SRE to ingest problem notifications and trigger incidents.
+sidebar_position: 5
+description: Ingest problem notifications through a webhook to open and enrich incidents.
 keywords:
   - ai-sre
   - integrations

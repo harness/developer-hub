@@ -2,7 +2,7 @@
 title: GitHub Integration
 sidebar_label: GitHub
 sidebar_position: 3
-description: Connect GitHub to Harness AI SRE to ingest pull requests, send build and deploy webhooks, and forward alerts.
+description: Ingest pull requests and build and deploy data as change sources, and run pull request actions from runbooks.
 keywords:
   - ai-sre
   - integrations
@@ -17,7 +17,7 @@ GitHub is a Git-based source control and automation platform for hosting reposit
 
 AI SRE supports GitHub through two mechanisms. It ingests pull requests as a change source and receives alert webhooks that create or update incidents.
 
-- **Pull request ingestion:** AI SRE polls GitHub for pull request activity and records merged pull requests as changes for the Deploy Change Investigator.
+- **Pull request ingestion:** AI SRE polls GitHub for pull request activity and records merged pull requests as changes for the [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator).
 - **Build and deploy webhooks:** GitHub Actions workflows POST build and deploy events to AI SRE as change data.
 - **Alert webhooks:** GitHub POSTs alerts to an AI SRE webhook URL, which creates or updates incidents.
 

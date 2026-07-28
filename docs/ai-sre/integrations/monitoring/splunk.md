@@ -1,8 +1,8 @@
 ---
 title: Splunk Integration
 sidebar_label: Splunk
-sidebar_position: 3
-description: Connect Splunk to Harness AI SRE to ingest alerts and trigger incidents.
+sidebar_position: 12
+description: Ingest alerts through a webhook to open and enrich incidents.
 keywords:
   - ai-sre
   - integrations

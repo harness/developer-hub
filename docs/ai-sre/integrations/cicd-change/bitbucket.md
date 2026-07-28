@@ -2,7 +2,7 @@
 title: Bitbucket Integration
 sidebar_label: Bitbucket
 sidebar_position: 1
-description: Connect Bitbucket to Harness AI SRE to ingest pull requests as a source of change.
+description: Ingest pull requests as a source of change correlated to incidents.
 keywords:
   - ai-sre
   - integrations
@@ -15,7 +15,7 @@ Bitbucket is a Git-based source control platform for hosting repositories and ma
 
 ## How AI SRE supports Bitbucket
 
-AI SRE treats Bitbucket as a change source for the Deploy Change Investigator. It polls Bitbucket Cloud for pull request activity and ingests merged pull requests as code changes, which are then correlated with incidents during investigation.
+AI SRE treats Bitbucket as a change source for the [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator). It polls Bitbucket Cloud for pull request activity and ingests merged pull requests as code changes, which are then correlated with incidents during investigation.
 
 - **Pull request ingestion:** AI SRE polls Bitbucket Cloud on a schedule and records pull request events as changes.
 - **Bitbucket Cloud only:** Pull request ingestion is supported for Bitbucket Cloud, not Bitbucket Data Center or Server.

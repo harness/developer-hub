@@ -1,8 +1,8 @@
 ---
 title: Zoom Integration for Runbooks
 sidebar_label: Zoom
-sidebar_position: 15
-description: Learn how to integrate Zoom with Harness AI SRE Runbooks using the Connector-based approach for automated incident bridges and team collaboration.
+sidebar_position: 4
+description: Create incident bridge meetings from runbooks.
 redirect_from:
 - /docs/ai-sre/runbooks/integrations/zoom
 - /docs/incident-response/runbooks/integrations/zoom

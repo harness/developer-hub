@@ -2,7 +2,7 @@
 title: Use CEL Expressions in Alert Rules
 sidebar_label: Use CEL in Alert Rules
 sidebar_position: 3
-description: Learn how to use CEL expressions to write dynamic conditions to route alerts in Harness AI SRE.
+description: Write dynamic routing conditions with CEL expressions.
 keywords:
   - cel
   - expressions

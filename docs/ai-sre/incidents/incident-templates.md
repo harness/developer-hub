@@ -1,6 +1,6 @@
 ---
 title: Configure Incident Types
-description: Learn how to create and manage incident types in Harness AI SRE.
+description: Create and manage reusable incident templates.
 sidebar_label: Configure Incident Types
 sidebar_position: 4
 redirect_from:

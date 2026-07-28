@@ -1,8 +1,8 @@
 ---
 title: Grafana Integration Guide
-description: Configure Grafana Unified Alerting to send webhooks to Harness AI SRE.
+description: Send unified alerting through webhooks.
 sidebar_label: Grafana
-sidebar_position: 6
+sidebar_position: 3
 ---
 
 import Tabs from '@theme/Tabs';

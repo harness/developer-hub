@@ -1,6 +1,6 @@
 ---
 title: Change Management
-description: Understand and track code changes that impact your incidents using the Deploy Change Investigator
+description: Track code changes that impact your incidents using the Deploy Change Investigator.
 sidebar_label: Overview
 sidebar_position: 1
 redirect_from:
@@ -9,7 +9,7 @@ redirect_from:
 
 # Change Management
 
-Change management in Harness AI SRE helps you understand what code, configuration, and infrastructure changes were deployed when incidents occur. By connecting your CI/CD pipeline data,builds, deployments, and pull requests,you gain precise visibility into what changed and when.
+Change management in Harness AI SRE helps you understand what code, configuration, and infrastructure changes were deployed when incidents occur. By connecting your CI/CD pipeline data, builds, deployments, and pull requests, you gain precise visibility into what changed and when.
 
 ## Key capabilities
 
@@ -22,11 +22,11 @@ Change management in Harness AI SRE helps you understand what code, configuratio
 
 ## How it works
 
-The Deploy Change Investigator connects three data streams from your CI/CD pipeline:
+The [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) connects three data streams from your CI/CD pipeline:
 
-1. **Build webhooks**, Capture artifact versions and commit information when builds complete
-2. **Deploy webhooks**, Track when services are deployed and to which environments
-3. **PR ingestion**, Automatically sync merged pull requests from your repositories
+1. **Build webhooks:** Capture artifact versions and commit information when builds complete
+2. **Deploy webhooks:** Track when services are deployed and to which environments
+3. **PR ingestion:** Automatically sync merged pull requests from your repositories
 
 When an incident occurs, the AI SRE agent uses this data to show you exactly which changes were deployed around the time of the incident, helping you quickly identify potential root causes.
 
@@ -36,8 +36,9 @@ When an incident occurs, the AI SRE agent uses this data to show you exactly whi
 
 To enable change management capabilities:
 
-1. [Set up the Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator), Configure webhooks in your CI/CD pipelines
-2. Learn how the [AI Agent uses change detection](/docs/ai-sre/ai-agent/rca-change-agent) during incident investigation
+1. [Set up the Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator)
+2. [Configure sources of change](/docs/ai-sre/change/sources/overview) to send webhooks from your CI/CD pipelines
+3. Learn how the [AI Agent uses change detection](/docs/ai-sre/ai-agent/rca-change-agent) during incident investigation
 
 ---
 

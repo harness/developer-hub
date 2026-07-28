@@ -1,8 +1,8 @@
 ---
 title: PagerDuty Integration Guide
-description: Configure PagerDuty to send webhooks to Harness AI SRE.
+description: Send incident alerts through webhooks.
 sidebar_label: PagerDuty
-sidebar_position: 3
+sidebar_position: 6
 ---
 
 import Tabs from '@theme/Tabs';

@@ -2,7 +2,7 @@
 title: ServiceNow Integration
 sidebar_label: ServiceNow
 sidebar_position: 4
-description: Connect ServiceNow to Harness AI SRE to ingest change records and automate incident actions.
+description: Ingest change records as a source of change and automate ticket actions from runbooks.
 keywords:
   - ai-sre
   - integrations
@@ -17,7 +17,7 @@ ServiceNow is an ITSM platform for managing change records, incidents, and IT wo
 
 AI SRE supports ServiceNow through two mechanisms. It ingests change records as a change source and automates incident operations through runbook actions.
 
-- **Change source:** When you save a ServiceNow connector, AI SRE automatically ingests change records so the Deploy Change Investigator can correlate ServiceNow changes with incidents.
+- **Change source:** When you save a ServiceNow connector, AI SRE automatically ingests change records so the [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) can correlate ServiceNow changes with incidents.
 - **Runbook actions:** Runbooks create, update, resolve, and comment on ServiceNow incidents during a response.
 
 ## Set up ServiceNow

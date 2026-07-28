@@ -2,7 +2,7 @@
 title: Create Runbooks
 sidebar_label: Create Runbooks
 sidebar_position: 2
-description: Comprehensive guide on creating, configuring, and deploying automated runbooks in Harness AI SRE for incident response and operational workflows.
+description: Build, configure, and deploy automated runbooks for incident response.
 redirect_from:
 - /docs/incident-response/runbooks/create-runbook
 ---
@@ -415,6 +415,6 @@ Once testing is complete, deploy your runbook to production and establish monito
 - **[ServiceNow Integration](./integrations/ticketing/servicenow.md)**: Integrate with enterprise service management.
 
 #### Automation & Pipelines
-- **[Harness Pipelines Integration](./integrations/automation/harness-pipelines.md)**: Execute deployment and remediation pipelines.
+- **[Harness Pipelines Integration](./integrations/source-control/harness-pipelines.md)**: Execute deployment and remediation pipelines.
 
 <NeedHelpFooter />

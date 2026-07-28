@@ -1,6 +1,6 @@
 ---
 title: Use RCA Change Agent
-description: Learn about the RCA Change Agent in Harness AI SRE that analyzes incident timelines and telemetry to identify likely root cause candidates with confidence scores.
+description: Analyze incident timelines and telemetry to identify likely root cause candidates with confidence scores.
 sidebar_label: Use RCA Change Agent
 sidebar_position: 3
 ---
@@ -11,7 +11,7 @@ sidebar_position: 3
 The RCA (Root Cause Analysis) Change Agent is a specialized autonomous component of the Harness AI SRE platform that analyzes incidents to identify potential root causes. It automatically investigates deployments, pull requests, ServiceNow change records, and change events, then generates theories with confidence scores to help engineers focus their investigation efforts.
 :::
 
-The RCA Change Agent operates continuously throughout an incident's lifecycle, automatically re-analyzing when new key events are added by the AI Scribe Agent. 
+The RCA Change Agent operates continuously throughout an incident's lifecycle, automatically re-analyzing when new key events are added by the [AI Scribe Agent](/docs/ai-sre/ai-agent). 
 
 As new information becomes available, it updates theory confidence scores and can add new theories or rule out unlikely candidates, providing engineers with an evolving understanding of potential root causes.
 

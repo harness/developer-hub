@@ -1,4 +1,10 @@
 {
   "label": "Collaboration Tools",
-  "position": 2
+  "position": 2,
+  "description": "Post updates and open bridges in Slack, Microsoft Teams, Google Chat, and Zoom from runbooks so responders collaborate in place.",
+  "link": {
+    "type": "generated-index",
+    "title": "Collaboration Tools",
+    "description": "Post updates and open bridges in Slack, Microsoft Teams, Google Chat, and Zoom from runbooks so responders collaborate in place."
+  }
 }

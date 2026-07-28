@@ -1,6 +1,6 @@
 ---
 title: Jira Integration Webhook Template
-description: Configure Jira integration for Harness AI SRE to receive issue tracking notifications.
+description: Receive issue tracking notifications.
 sidebar_label: Jira Webhook Template
 sidebar_position: 16
 ---

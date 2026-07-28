@@ -2,7 +2,7 @@
 title: Best Practices
 sidebar_label: Best Practices
 sidebar_position: 5
-description: Best practices for using incident fields in runbook actions.
+description: Use incident fields effectively in runbook actions.
 ---
 
 import NeedHelpFooter from '../../_snippets/need-help-footer.mdx';

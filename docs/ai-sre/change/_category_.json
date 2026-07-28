@@ -1,5 +1,6 @@
 {
   "label": "Change Management",
+  "description": "Correlate code changes to incidents with the Deploy Change Investigator.",
   "position": 7,
   "link": {
     "type": "generated-index",

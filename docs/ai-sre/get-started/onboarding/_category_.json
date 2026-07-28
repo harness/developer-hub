@@ -1,6 +1,12 @@
 {
   "label": "Get Started",
+  "description": "Set up webhooks, tools, incident types, and runbooks step by step.",
   "position": 4,
   "collapsible": true,
-  "collapsed": false
+  "collapsed": false,
+  "link": {
+    "type": "generated-index",
+    "title": "Get Started",
+    "description": "Set up webhooks, tools, incident types, and runbooks step by step."
+  }
 }

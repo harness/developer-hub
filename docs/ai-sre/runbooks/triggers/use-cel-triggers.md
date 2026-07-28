@@ -2,7 +2,7 @@
 title: Use CEL Expressions in Runbook Triggers
 sidebar_label: Use CEL in Runbook Triggers
 sidebar_position: 3
-description: Learn how to use CEL expressions to write dynamic trigger conditions for runbooks in Harness AI SRE.
+description: Use CEL expressions to write dynamic trigger conditions for runbooks.
 keywords:
   - cel
   - expressions

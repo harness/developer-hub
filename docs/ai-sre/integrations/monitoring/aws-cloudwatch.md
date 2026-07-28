@@ -1,8 +1,8 @@
 ---
 title: AWS CloudWatch Integration
 sidebar_label: AWS CloudWatch
-sidebar_position: 7
-description: Connect AWS CloudWatch to Harness AI SRE to ingest alarms and trigger incidents.
+sidebar_position: 2
+description: Ingest metric alarms through an SNS webhook to open and enrich incidents.
 keywords:
   - ai-sre
   - integrations

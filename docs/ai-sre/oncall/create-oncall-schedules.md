@@ -1,6 +1,6 @@
 ---
 title: Configure On-Call Schedules
-description: Build and manage on-call rotation schedules in Harness AI SRE, including rotation patterns, overrides, and external imports.
+description: Build rotation patterns, overrides, and external schedule imports.
 sidebar_label: Configure On-Call Schedules
 sidebar_position: 3
 ---

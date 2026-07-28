@@ -1,6 +1,6 @@
 ---
 title: AI SRE Onboarding Guide for Incident Responders
-description: A self-service onboarding guide for responders and engineers using Harness AI SRE.
+description: A self-service onboarding guide for responders and engineers using AI SRE.
 slug: /ai-sre/get-started/onboarding-guide-users/
 sidebar_position: 5
 sidebar_label: Get Started

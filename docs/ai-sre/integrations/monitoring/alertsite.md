@@ -1,8 +1,8 @@
 ---
 title: AlertSite Integration
 sidebar_label: AlertSite
-sidebar_position: 9
-description: Connect AlertSite to Harness AI SRE to ingest monitoring alerts and trigger incidents.
+sidebar_position: 1
+description: Ingest monitoring alerts through a webhook to open and enrich incidents.
 keywords:
   - ai-sre
   - integrations

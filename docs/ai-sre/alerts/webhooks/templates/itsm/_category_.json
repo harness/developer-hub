@@ -1,6 +1,13 @@
 {
   "label": "ITSM & Ticketing",
   "position": 5,
+  "description": "Prebuilt webhook templates for Jira and ServiceNow, with field mappings already set up.",
   "collapsible": true,
-  "collapsed": true
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "title": "ITSM & Ticketing",
+    "slug": "/category/webhook-templates-itsm-ticketing",
+    "description": "Prebuilt webhook templates for Jira and ServiceNow, with field mappings already set up."
+  }
 }

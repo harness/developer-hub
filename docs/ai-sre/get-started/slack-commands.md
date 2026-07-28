@@ -1,6 +1,6 @@
 ---
 title: Use Slack Commands
-description: Manage incidents directly from your Slack workspace with slash commands
+description: Manage incidents directly from your Slack workspace.
 sidebar_position: 8
 ---
 

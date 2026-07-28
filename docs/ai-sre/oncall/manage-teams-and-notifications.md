@@ -1,6 +1,6 @@
 ---
 title: Configure On-Call Teams and Routing
-description: Configure User Groups as on-call teams, assign service ownership, and set up personal notification preferences in Harness AI SRE.
+description: Set up User Groups as teams, assign service ownership, and configure notifications.
 sidebar_label: Configure On-Call Teams and Routing
 sidebar_position: 6
 ---

@@ -2,7 +2,7 @@
 title: Configure External Systems to Send Webhooks
 sidebar_label: Overview
 sidebar_position: 1
-description: Learn how to configure external monitoring tools, CI/CD systems, and cloud platforms to send webhooks to Harness AI SRE.
+description: Configure external monitoring tools, CI/CD systems, and cloud platforms to send webhooks to AI SRE.
 redirect_from:
 - /docs/incident-response/alerts/webhooks/integrations
 - /docs/ai-sre/alerts/webhooks/integrations

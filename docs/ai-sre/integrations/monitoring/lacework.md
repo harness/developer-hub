@@ -1,8 +1,8 @@
 ---
 title: Lacework Integration
 sidebar_label: Lacework
-sidebar_position: 11
-description: Connect Lacework to Harness AI SRE to ingest security alerts and trigger incidents.
+sidebar_position: 8
+description: Ingest security alerts through a webhook to open and enrich incidents.
 keywords:
   - ai-sre
   - integrations

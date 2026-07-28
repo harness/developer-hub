@@ -2,7 +2,7 @@
 title: xMatters Integration
 sidebar_label: xMatters
 sidebar_position: 3
-description: Synchronize on-call schedules, escalation policies, and user information from xMatters to Harness AI SRE.
+description: Synchronize on-call schedules, escalation policies, and user information.
 keywords:
   - xmatters
   - on-call

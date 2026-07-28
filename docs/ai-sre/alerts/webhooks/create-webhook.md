@@ -1,6 +1,6 @@
 ---
 title: Create a Webhook
-description: Step-by-step guide to creating webhooks in Harness AI SRE to receive alerts from any monitoring system.
+description: Receive alerts from any monitoring system.
 sidebar_label: Create a Webhook
 sidebar_position: 3
 ---

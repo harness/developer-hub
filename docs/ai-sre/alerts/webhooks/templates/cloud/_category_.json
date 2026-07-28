@@ -1,6 +1,13 @@
 {
   "label": "Cloud Platforms",
   "position": 4,
+  "description": "Prebuilt webhook template for AWS CloudWatch, with SNS payload field mappings already set up.",
   "collapsible": true,
-  "collapsed": true
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "title": "Cloud Platforms",
+    "slug": "/category/webhook-templates-cloud-platforms",
+    "description": "Prebuilt webhook template for AWS CloudWatch, with SNS payload field mappings already set up."
+  }
 }

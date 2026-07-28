@@ -1,6 +1,6 @@
 ---
 title: Set Up Your First Incident Type
-description: Define incident types to standardize your incident response process.
+description: Standardize your incident response with reusable classifications.
 sidebar_label: Set Up Incident Types
 sidebar_position: 3
 ---

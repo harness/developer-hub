@@ -1,8 +1,8 @@
 ---
 title: Harness SLO Integration
 sidebar_label: Harness SLO
-sidebar_position: 12
-description: Connect Harness Service Reliability Management SLO alerts to AI SRE to trigger incidents.
+sidebar_position: 7
+description: Ingest SLO violation alerts to open and enrich incidents.
 keywords:
   - ai-sre
   - integrations

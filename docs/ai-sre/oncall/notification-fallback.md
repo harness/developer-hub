@@ -1,6 +1,6 @@
 ---
 title: Configure Notification Fallback
-description: Configure multi-channel notification fallback to ensure on-call responders are reached via SMS, push, voice, email, or Slack when primary channels fail.
+description: Reach responders via SMS, push, voice, email, or Slack when primary channels fail.
 sidebar_label: Configure Notification Fallback
 sidebar_position: 7
 ---

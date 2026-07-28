@@ -2,7 +2,7 @@
 title: PagerDuty Integration
 sidebar_label: PagerDuty
 sidebar_position: 10
-description: Configure PagerDuty integration for runbook actions in Harness AI SRE.
+description: Create incidents, page responders, and manage schedules from runbooks.
 keywords:
   - pagerduty
   - incident management

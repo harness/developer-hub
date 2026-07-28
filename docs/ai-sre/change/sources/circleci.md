@@ -1,6 +1,6 @@
 ---
 title: Configure CircleCI for Deploy Change Investigator
-description: Send build and deployment webhooks from CircleCI workflows to track changes in Harness AI SRE
+description: Send build and deployment webhooks to track changes
 sidebar_label: CircleCI
 sidebar_position: 3
 keywords:
@@ -16,7 +16,7 @@ tags:
 
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-Send build and deployment data from CircleCI workflows to the Deploy Change Investigator using webhook steps.
+Send build and deployment data from CircleCI workflows to the [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) using webhook steps.
 
 ## Before you begin
 

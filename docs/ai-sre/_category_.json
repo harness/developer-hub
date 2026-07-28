@@ -1,11 +1,11 @@
 {
-  "label":"AI SRE",
-  "collapsible":"true",
-  "collapsed":"true",
-  "link":{
-     "type":"generated-index",
-     "title":"AI SRE"
+  "label": "AI SRE",
+  "description": "Detect, investigate, and resolve incidents with AI-driven automation.",
+  "collapsible": "true",
+  "collapsed": "true",
+  "link": {
+    "type": "generated-index",
+    "title": "AI SRE"
   },
- "customProps":{
-  }
+  "customProps": {}
 }

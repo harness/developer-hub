@@ -1,8 +1,8 @@
 ---
 title: Grafana Integration Webhook Template
-description: Configure Grafana integration for Harness AI SRE to receive unified alerting from any data source.
+description: Receive unified alerting from any data source.
 sidebar_label: Grafana Webhook Template
-sidebar_position: 7
+sidebar_position: 5
 ---
 
 # Grafana Integration Webhook Template

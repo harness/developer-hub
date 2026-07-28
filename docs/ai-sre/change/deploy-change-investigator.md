@@ -1,7 +1,7 @@
 ---
-title: Deploy Change Investigator Setup Guide
-sidebar_label: Deploy Change Investigator
-description: Set up Deploy Change Investigator to understand what changed during incidents by connecting builds, deployments, and code changes.
+title: Set up Deploy Change Investigator
+sidebar_label: Set Up Deploy Change Investigator
+description: Connect builds, deployments, and code changes to understand what changed during incidents.
 keywords:
   - ai-sre
   - change detection
@@ -15,8 +15,6 @@ sidebar_position: 2
 ---
 
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
-
-# Deploy Change Investigator Setup Guide
 
 The Deploy Change Investigator helps you understand what changed when incidents occur by connecting three critical data streams: builds, deployments, and code changes (PRs).
 

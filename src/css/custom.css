@@ -1010,6 +1010,10 @@ aside.theme-doc-sidebar-container > div {
     padding: 0 var(--doc-layout-inner-gap);
     max-width: 100%;
     width: 100%;
+    /* Allow the 1fr grid column to shrink below its content's intrinsic width
+       so wide code blocks scroll internally instead of pushing the TOC
+       off the right edge of the page. */
+    min-width: 0;
   }
 
   /* Right TOC - outer margin from viewport */

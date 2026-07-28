@@ -1,6 +1,6 @@
 ---
 title: GitHub Integration Guide
-description: Configure GitHub repository webhooks to send events to Harness AI SRE.
+description: Send repository events through webhooks.
 sidebar_label: GitHub
 sidebar_position: 8
 ---

@@ -1,4 +1,10 @@
 {
   "label": "Incident Management & On-Call",
-  "position": 3
+  "position": 3,
+  "description": "Page responders and run incident actions in PagerDuty, OpsGenie, and xMatters from runbooks.",
+  "link": {
+    "type": "generated-index",
+    "title": "Incident Management & On-Call",
+    "description": "Page responders and run incident actions in PagerDuty, OpsGenie, and xMatters from runbooks."
+  }
 }

@@ -1,6 +1,6 @@
 ---
 title: Configure Escalation Policies
-description: Create multi-level escalation policies in Harness AI SRE to ensure incidents always reach a responder.
+description: Ensure incidents always reach a responder with multi-level escalation.
 sidebar_label: Configure Escalation Policies
 sidebar_position: 4
 ---

@@ -1,6 +1,6 @@
 ---
 title: Route Alerts
-description: Learn how to configure alert rules in Harness AI SRE to route, filter, and enrich incoming alerts.
+description: Configure alert rules to route, filter, and enrich incoming alerts.
 sidebar_label: Overview
 sidebar_position: 1
 ---

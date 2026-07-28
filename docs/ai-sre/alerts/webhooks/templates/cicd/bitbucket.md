@@ -1,6 +1,6 @@
 ---
 title: Bitbucket Integration Webhook Template
-description: Configure Bitbucket integration for Harness AI SRE to receive repository event notifications.
+description: Receive repository event notifications.
 sidebar_label: Bitbucket Webhook Template
 sidebar_position: 13
 ---

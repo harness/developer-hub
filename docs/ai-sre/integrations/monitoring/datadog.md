@@ -1,8 +1,8 @@
 ---
 title: Datadog Integration
 sidebar_label: Datadog
-sidebar_position: 1
-description: Connect Datadog to Harness AI SRE to ingest monitor alerts and trigger incidents.
+sidebar_position: 4
+description: Ingest monitor alerts through a webhook to open and enrich incidents.
 keywords:
   - ai-sre
   - integrations

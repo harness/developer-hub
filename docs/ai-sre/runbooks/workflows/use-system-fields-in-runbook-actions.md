@@ -2,7 +2,7 @@
 title: Use System Fields in Runbook Actions
 sidebar_label: Use System Fields
 sidebar_position: 2
-description: Learn about system fields available in runbook actions for dynamic, context-aware automation in Harness AI SRE.
+description: Reference built-in incident and alert data in runbook actions.
 keywords:
   - system fields
   - incident fields

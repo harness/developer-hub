@@ -1,8 +1,8 @@
 ---
 title: Datadog Integration Guide
-description: Configure Datadog monitors to send webhooks to Harness AI SRE.
+description: Send monitor alerts through webhooks.
 sidebar_label: Datadog
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 import Tabs from '@theme/Tabs';

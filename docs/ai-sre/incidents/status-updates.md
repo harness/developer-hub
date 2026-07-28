@@ -1,6 +1,6 @@
 ---
 title: Configure Status Updates and Service Subscribers
-description: Set up stakeholder subscriptions at the service level to enable automated status update delivery during incidents in Harness AI SRE.
+description: Send automated stakeholder updates based on service subscriptions.
 sidebar_label: Configure Status Updates and Service Subscribers
 sidebar_position: 6
 ---

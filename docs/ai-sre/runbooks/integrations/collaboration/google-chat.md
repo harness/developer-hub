@@ -1,8 +1,8 @@
 ---
 title: Google Chat Integration for Runbooks
 sidebar_label: Google Chat
-sidebar_position: 6
-description: Learn how to integrate Google Chat with Harness AI SRE Runbooks for automated incident communication in Google Workspace.
+sidebar_position: 1
+description: Post incident updates to chat spaces from runbooks.
 redirect_from:
 - /docs/ai-sre/runbooks/integrations/google-chat
 ---

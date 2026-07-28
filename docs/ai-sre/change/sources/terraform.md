@@ -1,6 +1,6 @@
 ---
 title: Configure Terraform for Deploy Change Investigator
-description: Send Terraform infrastructure changes as deployment webhooks to track in Harness AI SRE
+description: Send infrastructure changes as deployment webhooks to track them
 sidebar_label: Terraform
 sidebar_position: 11
 keywords:

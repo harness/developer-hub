@@ -1,8 +1,8 @@
 ---
 title: Splunk Integration Guide
-description: Configure Splunk alerts to send webhooks to Harness AI SRE.
+description: Send alerts through webhooks.
 sidebar_label: Splunk
-sidebar_position: 4
+sidebar_position: 8
 ---
 
 import Tabs from '@theme/Tabs';

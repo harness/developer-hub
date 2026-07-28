@@ -2,7 +2,7 @@
 title: Use CEL Expressions in Webhooks
 sidebar_label: Use CEL in Webhooks
 sidebar_position: 5
-description: Learn how to use CEL expressions for advanced webhook filtering and conditional mapping in Harness AI SRE.
+description: Filter and conditionally map webhook payloads with CEL expressions.
 keywords:
   - cel
   - expressions

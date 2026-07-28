@@ -1,8 +1,8 @@
 ---
 title: Prometheus AlertManager Integration Webhook Template
-description: Configure Prometheus AlertManager integration for Harness AI SRE to receive cloud-native monitoring alerts.
+description: Receive cloud-native monitoring alerts.
 sidebar_label: Prometheus AlertManager Webhook Template
-sidebar_position: 10
+sidebar_position: 12
 ---
 
 # Prometheus AlertManager Integration Webhook Template

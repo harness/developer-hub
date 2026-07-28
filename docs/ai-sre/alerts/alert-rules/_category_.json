@@ -1,6 +1,12 @@
 {
   "label": "Route Alerts",
+  "description": "Send incoming alerts to the right incidents with rules and CEL.",
   "position": 3,
   "collapsible": true,
-  "collapsed": true
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "title": "Route Alerts",
+    "description": "Send incoming alerts to the right incidents with rules and CEL."
+  }
 }

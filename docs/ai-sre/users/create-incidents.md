@@ -1,6 +1,6 @@
 ---
 title: Create Incidents
-description: Learn how to create incidents in Harness AI SRE using AI-powered Quick Start, incident types, and manual creation methods.
+description: Open incidents with AI-powered Quick Start, incident types, or manually.
 sidebar_label: Create Incidents
 sidebar_position: 1
 ---

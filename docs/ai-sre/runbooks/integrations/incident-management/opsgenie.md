@@ -2,7 +2,7 @@
 title: OpsGenie Integration
 sidebar_label: OpsGenie
 sidebar_position: 9
-description: Configure OpsGenie integration for runbook actions in Harness AI SRE.
+description: Acknowledge alerts and add responders from runbooks.
 keywords:
   - opsgenie
   - incident management

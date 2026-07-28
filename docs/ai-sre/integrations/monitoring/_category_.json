@@ -1,11 +1,12 @@
 {
   "label": "Monitoring and Observability",
   "position": 1,
+  "description": "Ingest alerts to open and enrich incidents. Receive-only.",
   "collapsible": true,
   "collapsed": true,
   "link": {
     "type": "generated-index",
     "title": "Monitoring and Observability Integrations",
-    "description": "Connect monitoring and observability tools to Harness AI SRE to ingest alerts and trigger incidents."
+    "description": "Ingest alerts to open and enrich incidents. These integrations are receive-only: AI SRE does not act on them."
   }
 }

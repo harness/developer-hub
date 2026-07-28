@@ -1,4 +1,10 @@
 {
   "label": "Ticketing & Documentation",
-  "position": 4
+  "position": 4,
+  "description": "Create and update tickets and pages in Jira, ServiceNow, and Confluence from runbooks during an incident.",
+  "link": {
+    "type": "generated-index",
+    "title": "Ticketing & Documentation",
+    "description": "Create and update tickets and pages in Jira, ServiceNow, and Confluence from runbooks during an incident."
+  }
 }

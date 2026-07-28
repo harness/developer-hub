@@ -2,7 +2,7 @@
 title: Confluence Integration
 sidebar_label: Confluence
 sidebar_position: 1
-description: Connect Confluence to Harness AI SRE to create and update Confluence pages from runbooks.
+description: Create and update pages from runbooks.
 keywords:
   - ai-sre
   - integrations

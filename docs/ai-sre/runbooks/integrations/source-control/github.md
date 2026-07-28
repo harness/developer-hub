@@ -1,8 +1,8 @@
 ---
 title: GitHub Integration
 sidebar_label: GitHub
-sidebar_position: 5
-description: Configure GitHub integration for runbook actions in Harness AI SRE.
+sidebar_position: 1
+description: Create issues, comment on pull requests, and list commits from runbooks.
 keywords:
   - github
   - source control

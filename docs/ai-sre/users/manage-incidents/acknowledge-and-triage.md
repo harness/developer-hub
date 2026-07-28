@@ -1,6 +1,6 @@
 ---
 title: Acknowledge and Triage Incidents
-description: Learn how to respond to an incident notification, review the incident summary, and acknowledge in Harness AI SRE.
+description: Respond to an incident notification, review the incident summary, and acknowledge.
 sidebar_label: Acknowledge & Triage
 sidebar_position: 2
 ---

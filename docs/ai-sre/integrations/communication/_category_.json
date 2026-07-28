@@ -1,11 +1,12 @@
 {
   "label": "Communication",
   "position": 4,
+  "description": "Post updates and open bridges from runbooks. Automation-only.",
   "collapsible": true,
   "collapsed": true,
   "link": {
     "type": "generated-index",
     "title": "Communication Integrations",
-    "description": "Connect communication platforms to Harness AI SRE for incident collaboration and notifications."
+    "description": "Post updates and open bridges from AI SRE runbooks so your team collaborates on incidents in place. These integrations are automation-only: they carry no incident signal into AI SRE."
   }
 }

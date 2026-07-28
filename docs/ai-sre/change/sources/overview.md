@@ -6,7 +6,7 @@ sidebar_position: 1
 ---
 
 
-Configure your CI/CD tools to send build and deployment data to the Deploy Change Investigator for incident correlation.
+Configure your CI/CD tools to send build and deployment data to the [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) for incident correlation.
 
 ## Overview
 
@@ -16,6 +16,8 @@ The Deploy Change Investigator requires two types of webhooks from your CI/CD pi
 2. **Deploy webhooks** - Track when services are deployed to which environments
 
 This section provides configuration guides for popular CI/CD tools and change tracking systems.
+
+The tools on this page act as **ingest** change sources: they send build, deploy, and change data into AI SRE. Some also support automation elsewhere in AI SRE. Harness Pipelines, Jira, ServiceNow, and GitHub can also be acted on by runbooks. Go to [Set Up Integration Management](/docs/ai-sre/integrations) to review the full capability matrix.
 
 ---
 

@@ -1,8 +1,9 @@
 {
   "label": "Incidents",
+  "description": "Create, classify, and drive incidents through workflows to resolution.",
   "position": 2,
   "link": {
     "type": "generated-index",
-    "description": "Learn how to manage incidents in Harness AI SRE, including incident creation, fields, workflows, and integrations."
+    "description": "Manage incidents, including creation, fields, workflows, and integrations."
   }
 }

@@ -1,6 +1,6 @@
 ---
 title: Use the Incident Timeline
-description: Post updates, coordinate with responders, and review automated activity in the Harness AI SRE incident timeline.
+description: Post updates, coordinate with responders, and review automated activity.
 sidebar_label: Use the Incident Timeline
 sidebar_position: 4
 ---

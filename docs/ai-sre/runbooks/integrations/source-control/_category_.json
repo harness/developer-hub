@@ -1,4 +1,10 @@
 {
   "label": "Source Control",
-  "position": 5
+  "position": 5,
+  "description": "Run GitHub actions such as creating pull requests, and trigger Harness Pipelines from runbooks during incident response.",
+  "link": {
+    "type": "generated-index",
+    "title": "Source Control",
+    "description": "Run GitHub actions such as creating pull requests, and trigger Harness Pipelines from runbooks during incident response."
+  }
 }

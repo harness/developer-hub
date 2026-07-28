@@ -1,6 +1,6 @@
 ---
 title: Configure ServiceNow change records as a change source
-description: ServiceNow change records are ingested automatically once a ServiceNow connector exists, with no separate setup
+description: Change records are ingested automatically once a connector exists, with no separate setup
 sidebar_label: ServiceNow
 sidebar_position: 10
 keywords:
@@ -16,7 +16,7 @@ tags:
 
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-ServiceNow change records are ingested automatically as a change source. Once a Harness ServiceNow connector exists, the RCA Change Agent correlates change records with active incidents. No separate ingestion setup is required.
+ServiceNow change records are ingested automatically as a change source. Once a Harness ServiceNow connector exists, the [RCA Change Agent](/docs/ai-sre/ai-agent/rca-change-agent) correlates change records with active incidents. No separate ingestion setup is required.
 
 ## Before you begin
 

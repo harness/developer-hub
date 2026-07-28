@@ -1,7 +1,7 @@
 ---
 title: GitHub Integration
 sidebar_label: GitHub
-sidebar_position: 5
+sidebar_position: 1
 description: Configure GitHub integration for runbook actions in Harness AI SRE.
 keywords:
   - github

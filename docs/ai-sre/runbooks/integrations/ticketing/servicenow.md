@@ -2,7 +2,7 @@
 title: ServiceNow Integration for Runbooks
 sidebar_label: ServiceNow
 sidebar_position: 11
-description: Learn how to integrate ServiceNow with Harness AI SRE Runbooks, including bidirectional synchronization and incident creation.
+description: Create records and synchronize incidents bidirectionally from runbooks.
 redirect_from:
 - /docs/ai-sre/runbooks/integrations/servicenow
 - /docs/incident-response/runbooks/integrations/servicenow

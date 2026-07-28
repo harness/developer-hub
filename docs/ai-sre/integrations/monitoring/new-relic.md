@@ -1,8 +1,8 @@
 ---
 title: New Relic Integration
 sidebar_label: New Relic
-sidebar_position: 2
-description: Connect New Relic to Harness AI SRE to ingest alert conditions and trigger incidents.
+sidebar_position: 9
+description: Ingest alert conditions through a webhook to open and enrich incidents.
 keywords:
   - ai-sre
   - integrations

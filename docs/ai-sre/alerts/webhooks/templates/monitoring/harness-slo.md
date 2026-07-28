@@ -1,8 +1,8 @@
 ---
 title: Harness SLO Integration Webhook Template
-description: Configure Harness SLO integration for Harness AI SRE to receive service level objective violation alerts.
+description: Receive SLO violation alerts.
 sidebar_label: Harness SLO Webhook Template
-sidebar_position: 8
+sidebar_position: 7
 ---
 
 # Harness SLO Integration Webhook Template

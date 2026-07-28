@@ -2,7 +2,7 @@
 title: Troubleshooting Triggers  
 sidebar_label: Troubleshooting
 sidebar_position: 7
-description: Common issues and solutions for runbook triggers in Harness AI SRE.
+description: Common issues and solutions for runbook triggers.
 ---
 
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';

@@ -1,8 +1,8 @@
 ---
 title: BigPanda Integration Webhook Template
-description: Configure BigPanda integration for Harness AI SRE to receive alert aggregation and correlation.
+description: Receive aggregated and correlated alerts.
 sidebar_label: BigPanda Webhook Template
-sidebar_position: 3
+sidebar_position: 2
 ---
 
 # BigPanda Integration Webhook Template

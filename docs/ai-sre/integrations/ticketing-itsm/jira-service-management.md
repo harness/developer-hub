@@ -2,7 +2,7 @@
 title: Jira Service Management Integration
 sidebar_label: Jira Service Management
 sidebar_position: 3
-description: Connect Jira Service Management to Harness AI SRE to create JSM alerts from runbooks.
+description: Create alerts from runbooks.
 keywords:
   - ai-sre
   - integrations

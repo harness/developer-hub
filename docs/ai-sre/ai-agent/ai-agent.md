@@ -1,6 +1,6 @@
 ---
 title: Use AI Scribe Agent
-description: Learn about the specialized AI Scribe Agent in Harness AI SRE that automates incident documentation by capturing and organizing communications from Slack, Zoom, and Microsoft Teams.
+description: Capture communications from Slack, Zoom, and Microsoft Teams to document incidents automatically.
 sidebar_label: Use AI Scribe Agent
 sidebar_position: 2
 redirect_from:

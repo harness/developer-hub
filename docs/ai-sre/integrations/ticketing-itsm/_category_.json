@@ -1,11 +1,12 @@
 {
   "label": "Ticketing and ITSM",
   "position": 3,
+  "description": "Track change records; create and update tickets from runbooks.",
   "collapsible": true,
   "collapsed": true,
   "link": {
     "type": "generated-index",
     "title": "Ticketing and ITSM Integrations",
-    "description": "Connect ticketing and ITSM tools to Harness AI SRE to track change records and automate ticket actions."
+    "description": "Ingest change records as sources of change and create and update tickets from AI SRE runbooks during an incident. Jira and ServiceNow both ingest and automate; Jira Service Management and Confluence are automation-only."
   }
 }

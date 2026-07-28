@@ -2,7 +2,7 @@
 title: Harness Code Integration
 sidebar_label: Harness Code
 sidebar_position: 5
-description: Connect Harness Code to Harness AI SRE to ingest pull requests with no connector required.
+description: Ingest pull requests as a source of change automatically, with no connector required.
 keywords:
   - ai-sre
   - integrations
@@ -15,7 +15,7 @@ Harness Code is the Git-based source control module built into the Harness Platf
 
 ## How AI SRE supports Harness Code
 
-AI SRE treats Harness Code as a change source for the Deploy Change Investigator. Because Harness Code is native to the Harness Platform, AI SRE ingests pull requests automatically without an external connector.
+AI SRE treats Harness Code as a change source for the [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator). Because Harness Code is native to the Harness Platform, AI SRE ingests pull requests automatically without an external connector.
 
 - **Pull request ingestion:** AI SRE records Harness Code pull requests as changes for correlation with incidents.
 - **No connector required:** The integration is internal to the Harness Platform, so no external credentials or connector setup is needed.

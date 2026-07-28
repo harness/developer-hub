@@ -1,6 +1,6 @@
 ---
 title: ServiceNow Integration Webhook Template
-description: Configure ServiceNow integration for Harness AI SRE to receive ITSM event notifications.
+description: Receive ITSM event notifications.
 sidebar_label: ServiceNow Webhook Template
 sidebar_position: 19
 ---

@@ -1,8 +1,8 @@
 ---
 title: BigPanda Integration
 sidebar_label: BigPanda
-sidebar_position: 10
-description: Connect BigPanda to Harness AI SRE to ingest alerts and trigger incidents.
+sidebar_position: 3
+description: Ingest aggregated alerts through a webhook to open and enrich incidents.
 keywords:
   - ai-sre
   - integrations

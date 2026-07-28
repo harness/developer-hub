@@ -1,6 +1,6 @@
 ---
 title: Use Investigator Agent Pipelines
-description: Extend the AI Investigator with custom data sources and analysis logic using pipeline stages to investigate incidents with domain-specific context.
+description: Extend the RCA Change Agent's investigation with custom data sources and analysis logic using pipeline stages to investigate incidents with domain-specific context.
 sidebar_label: Use Investigator Agent Pipelines
 sidebar_position: 4
 ---

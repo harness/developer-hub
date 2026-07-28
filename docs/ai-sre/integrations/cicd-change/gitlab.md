@@ -2,7 +2,7 @@
 title: GitLab Integration
 sidebar_label: GitLab
 sidebar_position: 4
-description: Connect GitLab to Harness AI SRE to send build and deploy data and forward alerts.
+description: Send CI/CD build and deploy data as a source of change correlated to incidents.
 keywords:
   - ai-sre
   - integrations
@@ -17,7 +17,7 @@ GitLab is a DevOps platform for source control, continuous integration, and cont
 
 AI SRE supports GitLab through two mechanisms. GitLab CI sends build and deploy data as a change source, and GitLab forwards alerts that create or update incidents.
 
-- **Build and deploy webhooks:** GitLab CI pipelines POST build and deploy events to AI SRE as change data for the Deploy Change Investigator.
+- **Build and deploy webhooks:** GitLab CI pipelines POST build and deploy events to AI SRE as change data for the [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator).
 - **Alert webhooks:** GitLab POSTs alerts to an AI SRE webhook URL, which creates or updates incidents.
 
 ## Set up GitLab

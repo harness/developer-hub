@@ -2,7 +2,7 @@
 title: Terraform Integration
 sidebar_label: Terraform
 sidebar_position: 9
-description: Connect Terraform to Harness AI SRE to send apply events as deployment data.
+description: Send apply events as deployment data correlated to incidents.
 keywords:
   - ai-sre
   - integrations
@@ -15,7 +15,7 @@ Terraform is an infrastructure-as-code tool for provisioning and managing infras
 
 ## How AI SRE supports Terraform
 
-AI SRE treats Terraform as a change source for the Deploy Change Investigator. Terraform sends apply events to an AI SRE endpoint as deployment data, and AI SRE records them as changes for correlation with incidents.
+AI SRE treats Terraform as a change source for the [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator). Terraform sends apply events to an AI SRE endpoint as deployment data, and AI SRE records them as changes for correlation with incidents.
 
 - **Apply events as deployment data:** Terraform apply events are ingested as deployments.
 - **Change correlation:** AI SRE correlates the ingested apply events with active incidents during investigation.

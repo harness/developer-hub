@@ -1,8 +1,8 @@
 ---
 title: Dynatrace Integration Webhook Template
-description: Configure Dynatrace integration for Harness AI SRE to receive problem detection and monitoring alerts.
+description: Receive problem detection and monitoring alerts.
 sidebar_label: Dynatrace Webhook Template
-sidebar_position: 6
+sidebar_position: 4
 ---
 
 # Dynatrace Integration Webhook Template

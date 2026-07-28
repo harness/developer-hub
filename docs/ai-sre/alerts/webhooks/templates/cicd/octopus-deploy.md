@@ -1,6 +1,6 @@
 ---
 title: Octopus Deploy Integration Webhook Template
-description: Configure Octopus Deploy integration for Harness AI SRE to receive deployment event notifications.
+description: Receive deployment event notifications.
 sidebar_label: Octopus Deploy Webhook Template
 sidebar_position: 17
 ---

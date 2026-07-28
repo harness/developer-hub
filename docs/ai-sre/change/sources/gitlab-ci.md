@@ -1,6 +1,6 @@
 ---
 title: Configure GitLab CI for Deploy Change Investigator
-description: Send build and deployment webhooks from GitLab CI/CD pipelines to track changes in Harness AI SRE
+description: Send build and deployment webhooks to track changes
 sidebar_label: GitLab CI
 sidebar_position: 6
 keywords:
@@ -16,7 +16,7 @@ tags:
 
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-Send build and deployment data from GitLab CI/CD pipelines to the Deploy Change Investigator using webhook jobs.
+Send build and deployment data from GitLab CI/CD pipelines to the [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) using webhook jobs.
 
 ## Before you begin
 

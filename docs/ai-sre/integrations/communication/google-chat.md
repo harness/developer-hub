@@ -1,8 +1,8 @@
 ---
 title: Google Chat Integration
 sidebar_label: Google Chat
-sidebar_position: 3
-description: Set up Google Chat integration for incident collaboration in Harness AI SRE using GCP Pub/Sub for real-time message delivery.
+sidebar_position: 1
+description: Post incident updates and collaborate in chat spaces from runbooks.
 redirect_from:
   - /docs/ai-sre/integrations/google-chat
 ---

@@ -1,8 +1,8 @@
 ---
 title: Slack Integration
 sidebar_label: Slack
-sidebar_position: 1
-description: Connect Slack to Harness AI SRE to collaborate on incidents, run Slack commands, and automate messages.
+sidebar_position: 3
+description: Post updates, run commands, and collaborate on incidents from runbooks.
 keywords:
   - ai-sre
   - integrations

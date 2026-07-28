@@ -1,5 +1,6 @@
 {
   "label": "Browse Webhook Templates",
+  "description": "Prebuilt webhook templates with field mappings already set up.",
   "position": 2,
   "link": {
     "type": "generated-index",

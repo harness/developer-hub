@@ -1,6 +1,6 @@
 ---
 title: Integrate Your First Tool
-description: Connect collaboration and monitoring tools to Harness AI SRE.
+description: Connect collaboration and monitoring tools.
 sidebar_label: Integrate Tools
 sidebar_position: 2
 ---
@@ -53,7 +53,7 @@ Set up additional communication integrations:
 For ServiceNow integration:
 
 1. Configure a ServiceNow connector with read access to the `change_request` table
-2. Once configured, ServiceNow change records automatically flow into RCA Change Agent with no additional setup
+2. Once configured, ServiceNow change records automatically flow into the [RCA Change Agent](/docs/ai-sre/ai-agent/rca-change-agent) with no additional setup
 3. Go to [RCA Change Agent](/docs/ai-sre/ai-agent/rca-change-agent#servicenow-change-integration) to learn how ServiceNow changes appear as root cause theories
 
 :::tip Integration Best Practice

@@ -1,6 +1,13 @@
 {
   "label": "CI/CD & Development",
   "position": 3,
+  "description": "Prebuilt webhook templates for Bitbucket, GitHub, GitLab, Octopus Deploy, and Travis CI, with field mappings already set up.",
   "collapsible": true,
-  "collapsed": true
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "title": "CI/CD & Development",
+    "slug": "/category/webhook-templates-cicd-development",
+    "description": "Prebuilt webhook templates for Bitbucket, GitHub, GitLab, Octopus Deploy, and Travis CI, with field mappings already set up."
+  }
 }

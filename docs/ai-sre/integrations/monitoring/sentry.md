@@ -1,8 +1,8 @@
 ---
 title: Sentry Integration
 sidebar_label: Sentry
-sidebar_position: 8
-description: Connect Sentry to Harness AI SRE to ingest issue alerts and trigger incidents.
+sidebar_position: 11
+description: Ingest issue alerts through a webhook to open and enrich incidents.
 keywords:
   - ai-sre
   - integrations

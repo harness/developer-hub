@@ -2,7 +2,7 @@
 title: xMatters Integration
 sidebar_label: xMatters
 sidebar_position: 11
-description: Configure xMatters integration for on-call synchronization in Harness AI SRE.
+description: Synchronize on-call schedules for responder lookup.
 keywords:
   - xmatters
   - on-call

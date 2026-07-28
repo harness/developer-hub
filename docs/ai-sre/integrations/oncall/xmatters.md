@@ -2,7 +2,7 @@
 title: xMatters Integration
 sidebar_label: xMatters
 sidebar_position: 3
-description: Connect xMatters to Harness AI SRE to sync on-call schedules and identify responders.
+description: Sync on-call schedules to identify responders during an incident.
 keywords:
   - ai-sre
   - integrations

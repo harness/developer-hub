@@ -1,8 +1,8 @@
 ---
 title: OpsGenie Integration Guide
-description: Configure Opsgenie to send webhooks to Harness AI SRE.
+description: Send alerts through webhooks.
 sidebar_label: Opsgenie
-sidebar_position: 9
+sidebar_position: 5
 ---
 
 import Tabs from '@theme/Tabs';

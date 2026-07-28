@@ -2,7 +2,7 @@
 title: OpsGenie Integration
 sidebar_label: OpsGenie
 sidebar_position: 2
-description: Synchronize on-call schedules, escalation policies, and user information from OpsGenie to Harness AI SRE.
+description: Synchronize on-call schedules, escalation policies, and user information.
 keywords:
   - opsgenie
   - on-call

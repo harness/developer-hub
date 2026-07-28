@@ -1,6 +1,6 @@
 ---
 title: GitHub Integration Webhook Template
-description: Configure GitHub integration for Harness AI SRE to receive repository event notifications.
+description: Receive repository event notifications.
 sidebar_label: GitHub Webhook Template
 sidebar_position: 14
 ---

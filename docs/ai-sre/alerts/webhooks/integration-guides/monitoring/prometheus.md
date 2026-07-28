@@ -1,8 +1,8 @@
 ---
 title: Prometheus AlertManager Integration Guide
-description: Configure Prometheus AlertManager to send webhooks to Harness AI SRE.
+description: Send Alertmanager alerts through webhooks.
 sidebar_label: Prometheus AlertManager
-sidebar_position: 5
+sidebar_position: 7
 ---
 
 import Tabs from '@theme/Tabs';

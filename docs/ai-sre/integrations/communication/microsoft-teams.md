@@ -2,7 +2,7 @@
 title: Microsoft Teams Integration
 sidebar_label: Microsoft Teams
 sidebar_position: 2
-description: Connect Microsoft Teams to Harness AI SRE to collaborate on incidents and post messages.
+description: Post incident messages and collaborate in channels from runbooks.
 keywords:
   - ai-sre
   - integrations

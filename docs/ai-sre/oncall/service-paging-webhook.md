@@ -1,6 +1,6 @@
 ---
 title: Configure Service Paging Webhooks
-description: Configure service paging webhooks and email integration to trigger on-call notifications from external monitoring tools and systems.
+description: Trigger on-call notifications from external tools via HTTP POST or email.
 sidebar_label: Configure Service Paging Webhooks
 sidebar_position: 7
 ---

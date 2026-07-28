@@ -2,7 +2,7 @@
 title: CircleCI Integration
 sidebar_label: CircleCI
 sidebar_position: 2
-description: Connect CircleCI to Harness AI SRE to send build and deploy data as a source of change.
+description: Send build and deploy data as a source of change correlated to incidents.
 keywords:
   - ai-sre
   - integrations
@@ -15,7 +15,7 @@ CircleCI is a continuous integration and delivery platform that runs build, test
 
 ## How AI SRE supports CircleCI
 
-AI SRE treats CircleCI as a change source for the Deploy Change Investigator. CircleCI workflows POST build and deploy webhooks to an AI SRE endpoint, which records them as changes for correlation with incidents.
+AI SRE treats CircleCI as a change source for the [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator). CircleCI workflows POST build and deploy webhooks to an AI SRE endpoint, which records them as changes for correlation with incidents.
 
 - **Build and deploy webhooks:** CircleCI workflows send build and deploy events to AI SRE over HTTP.
 - **Change correlation:** AI SRE correlates the ingested builds and deployments with active incidents during investigation.

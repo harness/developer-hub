@@ -1,6 +1,12 @@
 {
   "label": "Monitoring & Observability",
   "position": 2,
+  "description": "Set up Datadog, Dynatrace, Grafana, New Relic, Prometheus, Splunk, and other monitoring tools to send alerts to AI SRE through webhooks.",
   "collapsible": true,
-  "collapsed": true
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "title": "Monitoring & Observability",
+    "description": "Set up Datadog, Dynatrace, Grafana, New Relic, Prometheus, Splunk, and other monitoring tools to send alerts to AI SRE through webhooks."
+  }
 }

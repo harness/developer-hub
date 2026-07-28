@@ -1,6 +1,6 @@
 ---
 title: Create an Alert Rule
-description: Step-by-step guide to creating alert rules in Harness AI SRE.
+description: Route, filter, and enrich incoming alerts with rules.
 sidebar_label: Create an Alert Rule
 sidebar_position: 2
 redirect_from:

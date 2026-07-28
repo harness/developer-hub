@@ -1,8 +1,8 @@
 ---
 title: New Relic Integration Webhook Template
-description: Configure New Relic integration for Harness AI SRE to receive NRQL alerts and APM monitoring.
+description: Receive NRQL alerts and APM monitoring.
 sidebar_label: New Relic Webhook Template
-sidebar_position: 8
+sidebar_position: 9
 ---
 
 # New Relic Integration Webhook Template

@@ -1,6 +1,6 @@
 ---
 title: AI SRE FAQs
-description: Frequently asked questions about Harness AI SRE
+description: Answers to common questions about AI SRE.
 sidebar_position: 100
 sidebar_label: FAQs
 redirect_from:

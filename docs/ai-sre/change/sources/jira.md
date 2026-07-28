@@ -1,6 +1,6 @@
 ---
 title: Configure Jira for Deploy Change Investigator
-description: Track Jira issue deployments by sending webhooks when issues transition to deployment states
+description: Track issue deployments by sending webhooks on status transitions
 sidebar_label: Jira
 sidebar_position: 9
 keywords:

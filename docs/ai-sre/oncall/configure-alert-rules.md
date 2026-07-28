@@ -1,6 +1,6 @@
 ---
 title: Route Alerts
-description: Set up automatic alert routing rules in Harness AI SRE to page the correct on-call team when monitoring alerts fire.
+description: Page the correct on-call team automatically when monitoring alerts fire.
 sidebar_label: Route Alerts
 sidebar_position: 5
 ---

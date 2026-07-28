@@ -1,8 +1,8 @@
 ---
 title: Datadog Integration Webhook Template
-description: Configure Datadog integration for Harness AI SRE to receive monitoring and APM alerts.
+description: Receive monitoring and APM alerts.
 sidebar_label: Datadog Webhook Template
-sidebar_position: 5
+sidebar_position: 3
 ---
 
 # Datadog Integration Webhook Template

@@ -1,6 +1,6 @@
 ---
 title: Update Incident Details
-description: Edit incident fields, change status, and add key events to keep the incident record current in Harness AI SRE.
+description: Edit incident fields, change status, and add key events to keep the incident record current.
 sidebar_label: Update Incident Details
 sidebar_position: 3
 ---

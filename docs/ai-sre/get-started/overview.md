@@ -4,7 +4,7 @@ sidebar_position: 1
 redirect_from:
 - /docs/incident-response/getting-started/
 sidebar_label: Overview and Key Features
-description: Harness AI SRE Overview and Key Features
+description: What AI SRE does and its key capabilities for incident response.
 ---
 
 # Harness AI SRE Module
@@ -35,7 +35,7 @@ No one on the responding team needs to take notes or update a document manually.
 
 ### RCA Change Agent
 
-The RCA Change Agent reads the timeline the Scribe builds and looks for likely root causes. It checks recent deployments, pull requests, and change events, then produces a list of theories with confidence scores.
+The [RCA Change Agent](/docs/ai-sre/ai-agent/rca-change-agent) reads the timeline the Scribe builds and looks for likely root causes. It checks recent deployments, pull requests, and change events, then produces a list of theories with confidence scores.
 
 The scores update as new events come in, so the analysis stays current throughout the incident rather than reflecting only the initial state.
 

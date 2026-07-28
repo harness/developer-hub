@@ -1,8 +1,8 @@
 ---
 title: Sentry Integration Webhook Template
-description: Configure Sentry integration for Harness AI SRE to receive error tracking and performance monitoring alerts.
+description: Receive error tracking and performance monitoring alerts.
 sidebar_label: Sentry Webhook Template
-sidebar_position: 12
+sidebar_position: 13
 ---
 
 # Sentry Integration Webhook Template

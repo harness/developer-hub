@@ -1,8 +1,8 @@
 ---
 title: Opsgenie Integration Webhook Template
-description: Configure Opsgenie integration for Harness AI SRE to receive incident management alerts.
+description: Receive incident management alerts.
 sidebar_label: Opsgenie Webhook Template
-sidebar_position: 8
+sidebar_position: 10
 ---
 
 # Opsgenie Integration Webhook Template

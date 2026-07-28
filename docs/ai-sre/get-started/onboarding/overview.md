@@ -1,6 +1,6 @@
 ---
 title: AI SRE Onboarding Guide for Administrators
-description: Overview of Harness AI SRE onboarding for administrators.
+description: How administrators set up AI SRE for their team.
 sidebar_label: Overview
 sidebar_position: 1
 redirect_from:

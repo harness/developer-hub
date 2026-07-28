@@ -1,6 +1,6 @@
 ---
 title: AWS CloudWatch Integration Guide
-description: Configure AWS CloudWatch alarms to send webhooks to Harness AI SRE via SNS.
+description: Send metric alarms through an SNS webhook.
 sidebar_label: AWS CloudWatch
 sidebar_position: 10
 ---

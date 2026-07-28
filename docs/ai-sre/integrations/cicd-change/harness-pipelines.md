@@ -2,7 +2,7 @@
 title: Harness Pipelines Integration
 sidebar_label: Harness Pipelines
 sidebar_position: 6
-description: Connect Harness Pipelines to Harness AI SRE to send build and deploy data and trigger pipelines from runbooks.
+description: Send build and deploy data as a source of change, and trigger pipelines from runbooks.
 keywords:
   - ai-sre
   - integrations
@@ -17,13 +17,13 @@ Harness Pipelines are the CI/CD pipelines built into the Harness Platform for bu
 
 AI SRE supports Harness Pipelines through two mechanisms. Pipelines send build and deploy data natively as a change source, and runbooks trigger pipelines as an automated response action.
 
-- **Build and deploy data:** Harness Pipelines send build and deploy events to the Deploy Change Investigator as native change data.
+- **Build and deploy data:** Harness Pipelines send build and deploy events to the [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) as native change data.
 - **Runbook actions:** Runbooks trigger Harness Pipelines to automate remediation and response steps during incidents.
 
 ## Set up Harness Pipelines
 
 - Go to [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) to configure build and deploy data from Harness Pipelines.
-- Go to [Harness Pipelines runbook action](/docs/ai-sre/runbooks/integrations/automation/harness-pipelines) to trigger pipelines from runbooks.
+- Go to [Harness Pipelines runbook action](/docs/ai-sre/runbooks/integrations/source-control/harness-pipelines) to trigger pipelines from runbooks.
 
 ## Related integrations
 

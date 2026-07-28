@@ -1,8 +1,8 @@
 ---
 title: Lacework Integration Webhook Template
-description: Configure Lacework integration for Harness AI SRE to receive cloud security alerts.
+description: Receive cloud security alerts.
 sidebar_label: Lacework Webhook Template
-sidebar_position: 7
+sidebar_position: 8
 ---
 
 # Lacework Integration Webhook Template

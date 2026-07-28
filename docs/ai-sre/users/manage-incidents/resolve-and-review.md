@@ -1,6 +1,6 @@
 ---
 title: Resolve and Review Incidents
-description: Close out an incident in Harness AI SRE, review AI Scribe outputs, and contribute to post-incident learning.
+description: Close out an incident, review AI Scribe outputs, and contribute to post-incident learning.
 sidebar_label: Resolve & Review
 sidebar_position: 7
 ---

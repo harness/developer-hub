@@ -2,7 +2,7 @@
 title: Use Mustache Templates in Runbook Actions
 sidebar_label: Use Mustache Templates
 sidebar_position: 4
-description: Learn how to use Mustache templates in runbook actions for dynamic content in Harness AI SRE.
+description: Insert dynamic incident data into runbook actions with Mustache templates.
 keywords:
   - mustache
   - templates

@@ -1,6 +1,6 @@
 ---
 title: AI SRE Security
-description: Learn about security measures applied to Harness AI SRE.
+description: How AI SRE protects your data and controls access.
 sidebar_position: 90
 sidebar_label: Security
 redirect_from:

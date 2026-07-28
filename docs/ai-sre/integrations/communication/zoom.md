@@ -2,7 +2,7 @@
 title: Zoom Integration
 sidebar_label: Zoom
 sidebar_position: 4
-description: Connect Zoom to Harness AI SRE to create meetings and conference bridges from runbooks.
+description: Create meetings and conference bridges from runbooks.
 keywords:
   - ai-sre
   - integrations

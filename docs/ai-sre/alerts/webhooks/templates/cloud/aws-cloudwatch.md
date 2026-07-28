@@ -1,6 +1,6 @@
 ---
 title: AWS CloudWatch Integration Webhook Template
-description: Configure AWS CloudWatch integration for Harness AI SRE to receive metric alarms and monitoring alerts.
+description: Receive metric alarms and monitoring alerts.
 sidebar_label: AWS CloudWatch Webhook Template
 sidebar_position: 3
 ---

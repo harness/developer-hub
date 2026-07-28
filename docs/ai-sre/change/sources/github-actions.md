@@ -1,6 +1,6 @@
 ---
 title: Configure GitHub Actions for Deploy Change Investigator
-description: Configure GitHub Actions workflows to send build and deployment webhooks to Harness AI SRE
+description: Send build and deployment webhooks from your workflows
 sidebar_label: GitHub Actions
 sidebar_position: 5
 keywords:
@@ -16,7 +16,7 @@ tags:
 
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-Configure GitHub Actions workflows to send build and deployment data to the Deploy Change Investigator.
+Configure GitHub Actions workflows to send build and deployment data to the [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator).
 
 ## Before you begin
 

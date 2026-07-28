@@ -1,6 +1,6 @@
 ---
 title: Configure Bitbucket for pull request ingestion
-description: Connect Bitbucket Cloud as a source-control change source so the Deploy Change Investigator ingests merged pull requests
+description: Ingest merged pull requests as a source-control change source
 sidebar_label: Bitbucket
 sidebar_position: 2
 keywords:
@@ -16,7 +16,7 @@ tags:
 
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-Connect Bitbucket Cloud as a source-control change source so the Deploy Change Investigator ingests the pull requests merged into your deploy branch and links them to builds and deployments.
+Connect Bitbucket Cloud as a source-control change source so the [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) ingests the pull requests merged into your deploy branch and links them to builds and deployments.
 
 ## Before you begin
 

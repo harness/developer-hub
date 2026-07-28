@@ -1,6 +1,6 @@
 ---
 title: Use Investigator Agent Pipelines
-description: Extend the AI Investigator with custom data sources and analysis logic using pipeline stages to investigate incidents with domain-specific context.
+description: Extend the RCA Change Agent's investigation with custom data sources and analysis logic to investigate incidents with domain-specific context.
 sidebar_label: Use Investigator Agent Pipelines
 sidebar_position: 4
 ---
@@ -11,11 +11,11 @@ sidebar_position: 4
 Investigator Agent Pipelines are currently in **Early Access**. The core end-to-end flow is functional, but full productionization features (UI pipeline builder, pipeline marketplace, enhanced error handling) are planned for Q2 2026. Contact your Harness representative to enable this feature for your organization.
 :::
 
-Investigator Agent Pipelines enable teams to extend the AI Investigator with custom investigation steps that run alongside the built-in RCA Change Agent. Use pipelines to connect domain-specific data sources, execute custom analysis logic, and enrich incident investigations with context unique to your infrastructure.
+Investigator Agent Pipelines enable teams to extend the [RCA Change Agent](/docs/ai-sre/ai-agent/rca-change-agent)'s investigation with custom investigation steps that run alongside its built-in analysis. Use pipelines to connect domain-specific data sources, execute custom analysis logic, and enrich incident investigations with context unique to your infrastructure.
 
 ## Overview
 
-The AI Investigator analyzes incidents using multiple data sources to identify root cause candidates. While the built-in RCA Change Agent provides out-of-the-box investigation capabilities (deployments, pull requests, ServiceNow changes), many teams have unique infrastructure, internal tools, or domain-specific knowledge that requires custom investigation logic.
+The RCA Change Agent's investigation analyzes incidents using multiple data sources to identify root cause candidates. While the built-in RCA Change Agent provides out-of-the-box investigation capabilities (deployments, pull requests, ServiceNow changes), many teams have unique infrastructure, internal tools, or domain-specific knowledge that requires custom investigation logic.
 
 **Investigator Agent Pipelines solve this by:**
 
@@ -27,12 +27,12 @@ The AI Investigator analyzes incidents using multiple data sources to identify r
 
 ## What Are Agent Pipelines?
 
-Agent pipelines are custom investigation workflows built using Harness pipeline stages. When an incident is created (or manually triggered), the pipeline executes and returns investigation results that appear alongside built-in RCA theories in the Investigator panel.
+Agent pipelines are custom investigation workflows built using Harness pipeline stages. When an incident is created (or manually triggered), the pipeline executes and returns investigation results that appear alongside built-in RCA theories in the RCA Change Agent theories panel.
 
 ### Key Characteristics
 
 - **Build once, run on every incident**: Pipelines run automatically without per-incident manual steps
-- **Appear alongside built-in theories**: Custom pipeline results display in the same Investigator panel as RCA Change Agent theories
+- **Appear alongside built-in theories**: Custom pipeline results display in the same RCA Change Agent theories panel as RCA Change Agent theories
 - **Flexible data sources**: Connect any API, database, or internal tool accessible from Harness pipelines
 - **Domain-specific logic**: Implement analysis specific to your infrastructure (e.g., query deployment canary metrics, check feature flag states, validate compliance)
 
@@ -46,7 +46,7 @@ Agent pipelines are custom investigation workflows built using Harness pipeline 
 2. **Pipeline Triggered**: Configured agent pipelines trigger automatically on incident creation
 3. **Investigation Runs**: Pipeline stages execute custom investigation logic (API calls, data fetches, analysis)
 4. **Results Returned**: Pipeline outputs are captured and formatted as investigation results
-5. **Display in Investigator**: Results appear in the Investigator panel alongside built-in RCA theories
+5. **Display in theories panel**: Results appear in the RCA Change Agent theories panel alongside built-in RCA theories
 
 ### Input Contract
 
@@ -98,7 +98,7 @@ Pipelines return investigation results in a structured format:
 
 **Field Definitions:**
 
-- **title**: Short summary of the theory (shown in Investigator panel)
+- **title**: Short summary of the theory (shown in RCA Change Agent theories panel)
 - **description**: Detailed explanation with supporting evidence
 - **confidence**: Confidence score (0-100) indicating likelihood this is the root cause
 - **evidence**: Array of supporting data points (deployments, metrics, logs, configuration changes)
@@ -327,12 +327,12 @@ Fetch infrastructure metadata:
 
 ## Viewing Investigation Results
 
-### In the Investigator Panel
+### In the RCA Change Agent theories panel
 
-When agent pipelines complete, their results appear in the Investigator panel alongside built-in RCA Change Agent theories:
+When agent pipelines complete, their results appear in the RCA Change Agent theories panel alongside the built-in theories:
 
 1. Open the **Incident Details** page.
-2. Click the **Investigator** tab (or similar panel).
+2. Open the **RCA Change Agent theories** panel.
 3. View theories from multiple sources:
    - **RCA Change Agent**: Deployments, pull requests, ServiceNow changes
    - **Custom Agent Pipelines**: Results from your configured pipelines
@@ -392,7 +392,7 @@ The current Early Access release supports the core end-to-end flow but has these
 
 ✅ Pipeline execution on incident creation  
 ✅ Input/output contracts for investigation data  
-✅ Results display in Investigator panel  
+✅ Results display in RCA Change Agent theories panel  
 ✅ Manual pipeline triggers  
 ✅ Integration with Harness Secrets for authentication  
 
@@ -435,14 +435,14 @@ The current Early Access release supports the core end-to-end flow but has these
 - **Parallelize data fetching**: Use parallel stages to query multiple data sources simultaneously
 - **Cache frequently accessed data**: Store static data (service topology, configuration) in pipeline variables
 - **Limit lookback windows**: Query only relevant time ranges (e.g., 30 minutes before incident start)
-- **Paginate large result sets**: Fetch only the most recent N records to avoid overwhelming the Investigator panel
+- **Paginate large result sets**: Fetch only the most recent N records to avoid overwhelming the RCA Change Agent theories panel
 
 ---
 
 ## Troubleshooting
 
 <details>
-<summary><strong>Pipeline executes but no results appear in Investigator panel</strong></summary>
+<summary><strong>Pipeline executes but no results appear in RCA Change Agent theories panel</strong></summary>
 
 **Possible causes:**
 - Output JSON does not match the expected contract

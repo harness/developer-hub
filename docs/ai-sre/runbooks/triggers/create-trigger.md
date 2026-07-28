@@ -2,7 +2,7 @@
 title: Create Runbook Triggers
 sidebar_label: Create Triggers
 sidebar_position: 2
-description: Step-by-step guide to creating triggers for automated runbook execution in Harness AI SRE.
+description: Define the conditions that start a runbook automatically.
 ---
 
 import Tabs from '@theme/Tabs';

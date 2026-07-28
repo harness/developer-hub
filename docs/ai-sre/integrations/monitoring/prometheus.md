@@ -1,8 +1,8 @@
 ---
 title: Prometheus Integration
 sidebar_label: Prometheus
-sidebar_position: 6
-description: Connect Prometheus to Harness AI SRE to ingest Alertmanager alerts and trigger incidents.
+sidebar_position: 10
+description: Ingest Alertmanager alerts through a webhook to open and enrich incidents.
 keywords:
   - ai-sre
   - integrations

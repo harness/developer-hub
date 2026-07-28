@@ -1,6 +1,6 @@
 ---
 title: Active Incident Management
-description: Overview of the workflows for responding to, updating, and resolving active incidents in Harness AI SRE.
+description: Respond to, update, and resolve active incidents.
 sidebar_label: Overview
 sidebar_position: 1
 ---

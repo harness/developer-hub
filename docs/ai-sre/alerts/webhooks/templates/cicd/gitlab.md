@@ -1,6 +1,6 @@
 ---
 title: GitLab Integration Webhook Template
-description: Configure GitLab integration for Harness AI SRE to receive repository and pipeline event notifications.
+description: Receive repository and pipeline event notifications.
 sidebar_label: GitLab Webhook Template
 sidebar_position: 15
 ---

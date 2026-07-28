@@ -2,7 +2,7 @@
 title: Confluence Integration
 sidebar_label: Confluence
 sidebar_position: 4
-description: Configure Confluence integration for runbook actions in Harness AI SRE.
+description: Create and update documentation pages from runbooks.
 keywords:
   - confluence
   - documentation

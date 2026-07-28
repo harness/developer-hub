@@ -1,8 +1,8 @@
 ---
 title: Slack Integration for Runbooks
 sidebar_label: Slack
-sidebar_position: 1
-description: Learn how to integrate Slack with Harness AI SRE Runbooks for automated incident communication and collaboration.
+sidebar_position: 3
+description: Post messages, create channels, and run commands from runbooks.
 redirect_from:
 - /docs/incident-response/runbooks/integrations/slack
 - /docs/ai-sre/runbooks/integrations/slack

@@ -1,8 +1,8 @@
 ---
 title: AlertSite Integration Webhook Template
-description: Configure AlertSite integration for Harness AI SRE to receive website and API monitoring alerts.
+description: Receive website and API monitoring alerts.
 sidebar_label: AlertSite Webhook Template
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 # AlertSite Integration Webhook Template

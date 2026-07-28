@@ -1,6 +1,6 @@
 ---
 title: Configure Jenkins for Deploy Change Investigator
-description: Configure Jenkins pipelines to send build and deployment webhooks to Harness AI SRE
+description: Send build and deployment webhooks from your pipelines
 sidebar_label: Jenkins
 sidebar_position: 8
 keywords:
@@ -16,7 +16,7 @@ tags:
 
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-Configure Jenkins pipelines to send build and deployment data to the Deploy Change Investigator using shell scripts.
+Configure Jenkins pipelines to send build and deployment data to the [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) using shell scripts.
 
 ## Before you begin
 

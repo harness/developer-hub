@@ -2,7 +2,7 @@
 title: Create Your First Dynamic Content
 sidebar_label: Create Dynamic Content
 sidebar_position: 6
-description: Learn about CEL and Mustache expression languages for dynamic content in Harness AI SRE.
+description: Build dynamic content with CEL and Mustache expression languages.
 keywords:
   - cel
   - mustache

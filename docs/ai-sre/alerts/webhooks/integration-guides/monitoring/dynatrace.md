@@ -1,8 +1,8 @@
 ---
 title: Dynatrace Integration Guide
-description: Configure Dynatrace to send webhooks to Harness AI SRE.
+description: Send problem notifications through webhooks.
 sidebar_label: Dynatrace
-sidebar_position: 12
+sidebar_position: 2
 ---
 
 import Tabs from '@theme/Tabs';

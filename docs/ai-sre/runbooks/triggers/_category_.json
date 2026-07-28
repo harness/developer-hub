@@ -1,8 +1,9 @@
 {
   "label": "Configure Triggers",
+  "description": "Launch runbooks automatically from incidents, alerts, and events.",
   "position": 4,
   "link": {
     "type": "generated-index",
-    "description": "Learn how to configure triggers for automated runbook execution in Harness AI SRE based on incidents, alerts, and key events."
+    "description": "Run runbooks automatically based on incidents, alerts, and key events."
   }
 }

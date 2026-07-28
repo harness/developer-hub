@@ -1,6 +1,6 @@
 ---
 title: GitLab Integration Guide
-description: Configure GitLab webhooks to send events to Harness AI SRE.
+description: Send repository and pipeline events through webhooks.
 sidebar_label: GitLab
 sidebar_position: 11
 ---

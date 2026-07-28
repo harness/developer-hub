@@ -2,7 +2,7 @@
 title: Octopus Deploy Integration
 sidebar_label: Octopus Deploy
 sidebar_position: 8
-description: Connect Octopus Deploy to Harness AI SRE to send deployment data as a source of change.
+description: Send deployment data as a source of change correlated to incidents.
 keywords:
   - ai-sre
   - integrations
@@ -15,7 +15,7 @@ Octopus Deploy is a deployment automation and release management platform for sh
 
 ## How AI SRE supports Octopus Deploy
 
-AI SRE treats Octopus Deploy as a change source for the Deploy Change Investigator. Octopus Deploy POSTs deployment webhooks to an AI SRE endpoint, and AI SRE records them as changes for correlation with incidents.
+AI SRE treats Octopus Deploy as a change source for the [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator). Octopus Deploy POSTs deployment webhooks to an AI SRE endpoint, and AI SRE records them as changes for correlation with incidents.
 
 - **Deployment webhooks:** Octopus Deploy sends deployment events to AI SRE over HTTP.
 - **Change correlation:** AI SRE correlates the ingested deployments with active incidents during investigation.

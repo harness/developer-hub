@@ -1,6 +1,12 @@
 {
   "label": "Ingest Alerts",
+  "description": "Receive alerts from any tool through webhooks and prebuilt templates.",
   "position": 2,
   "collapsible": true,
-  "collapsed": true
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "title": "Ingest Alerts",
+    "description": "Receive alerts from any tool through webhooks and prebuilt templates."
+  }
 }

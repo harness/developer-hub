@@ -2,7 +2,7 @@
 title: Configure Runbook Inputs & Outputs
 sidebar_label: Configure Inputs & Outputs
 sidebar_position: 5
-description: Learn how to configure incident and alert context for your runbooks.
+description: Pass incident and alert context into and out of your runbooks.
 redirect_from:
 - /docs/ai-sre/runbooks/workflows/set-incident-context
 ---

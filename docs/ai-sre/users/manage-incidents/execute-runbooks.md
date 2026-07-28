@@ -1,6 +1,6 @@
 ---
 title: Execute Runbooks
-description: Run automated and manual response procedures during an incident in Harness AI SRE.
+description: Run automated and manual response procedures during an incident.
 sidebar_label: Execute Runbooks
 sidebar_position: 5
 ---

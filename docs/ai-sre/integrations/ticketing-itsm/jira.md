@@ -2,7 +2,7 @@
 title: Jira Integration
 sidebar_label: Jira
 sidebar_position: 2
-description: Connect Jira to Harness AI SRE to track Jira deployments and automate ticket actions.
+description: Ingest deployments as a source of change and automate ticket actions from runbooks.
 keywords:
   - ai-sre
   - integrations
@@ -17,7 +17,7 @@ Jira is Atlassian's issue and project tracking tool for planning work, managing 
 
 AI SRE supports Jira through two mechanisms. It tracks Jira deployments as a change source and automates ticket operations through runbook actions.
 
-- **Change source:** Jira sends deployment activity to AI SRE through webhooks, so the Deploy Change Investigator can correlate Jira deployments with incidents.
+- **Change source:** Jira sends deployment activity to AI SRE through webhooks, so the [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) can correlate Jira deployments with incidents.
 - **Runbook actions:** Runbooks create, update, transition, and comment on Jira tickets during a response.
 
 ## Set up Jira

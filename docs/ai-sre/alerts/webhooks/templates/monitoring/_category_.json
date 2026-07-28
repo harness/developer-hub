@@ -1,11 +1,13 @@
 {
   "label": "Monitoring & Observability",
+  "description": "Prebuilt templates for Datadog, Grafana, Prometheus, and more.",
   "position": 2,
   "collapsible": true,
   "collapsed": true,
   "link": {
     "type": "generated-index",
     "title": "Monitoring & Observability Templates",
-    "description": "Pre-configured webhook templates for monitoring and observability tools"
+    "slug": "/category/webhook-templates-monitoring-observability",
+    "description": "Prebuilt webhook templates with field mappings already set up."
   }
 }

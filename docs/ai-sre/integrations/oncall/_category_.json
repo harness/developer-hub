@@ -1,11 +1,12 @@
 {
   "label": "On-Call and Escalation",
   "position": 5,
+  "description": "Sync on-call schedules and page responders from runbooks.",
   "collapsible": true,
   "collapsed": true,
   "link": {
     "type": "generated-index",
     "title": "On-Call and Escalation Integrations",
-    "description": "Connect on-call and escalation tools to Harness AI SRE to synchronize schedules and page responders."
+    "description": "Sync on-call schedules into AI SRE and page responders from runbooks. PagerDuty and OpsGenie also run incident actions; xMatters is schedule sync only."
   }
 }

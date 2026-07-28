@@ -1,8 +1,8 @@
 ---
 title: New Relic Integration Guide
-description: Configure New Relic Alerts to send webhooks to Harness AI SRE.
+description: Send alert conditions through webhooks.
 sidebar_label: New Relic
-sidebar_position: 7
+sidebar_position: 4
 ---
 
 import Tabs from '@theme/Tabs';

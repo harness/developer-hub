@@ -1,6 +1,6 @@
 ---
 title: On-Call Integrations Overview
-description: Synchronize on-call schedules, escalation policies, and user information from external tools to Harness AI SRE.
+description: Synchronize on-call schedules, escalation policies, and user information from external tools to AI SRE.
 sidebar_label: Overview
 sidebar_position: 0
 ---

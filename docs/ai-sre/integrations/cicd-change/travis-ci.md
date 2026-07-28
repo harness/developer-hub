@@ -2,7 +2,7 @@
 title: Travis CI Integration
 sidebar_label: Travis CI
 sidebar_position: 10
-description: Connect Travis CI to Harness AI SRE to send build and deploy data as a source of change.
+description: Send build and deploy data as a source of change correlated to incidents.
 keywords:
   - ai-sre
   - integrations
@@ -15,7 +15,7 @@ Travis CI is a hosted continuous integration service for building, testing, and 
 
 ## How AI SRE supports Travis CI
 
-AI SRE treats Travis CI as a change source for the Deploy Change Investigator. Travis CI POSTs build and deploy webhooks to an AI SRE endpoint, and AI SRE records them as changes for correlation with incidents.
+AI SRE treats Travis CI as a change source for the [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator). Travis CI POSTs build and deploy webhooks to an AI SRE endpoint, and AI SRE records them as changes for correlation with incidents.
 
 - **Build and deploy webhooks:** Travis CI sends build and deploy events to AI SRE over HTTP.
 - **Change correlation:** AI SRE correlates the ingested builds and deployments with active incidents during investigation.

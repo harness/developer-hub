@@ -1,6 +1,6 @@
 ---
 title: Handle On-Call on Android
-description: Configure Android devices to receive Harness On-Call notifications during Do Not Disturb
+description: Configure Android devices to receive On-Call notifications during Do Not Disturb
 sidebar_label: Handle On-Call on Android
 sidebar_position: 3
 ---

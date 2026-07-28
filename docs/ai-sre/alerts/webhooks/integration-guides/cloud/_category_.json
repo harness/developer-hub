@@ -1,6 +1,12 @@
 {
   "label": "Cloud Platforms",
   "position": 4,
+  "description": "Set up AWS CloudWatch to send cloud infrastructure alarms to AI SRE through an SNS webhook.",
   "collapsible": true,
-  "collapsed": true
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "title": "Cloud Platforms",
+    "description": "Set up AWS CloudWatch to send cloud infrastructure alarms to AI SRE through an SNS webhook."
+  }
 }

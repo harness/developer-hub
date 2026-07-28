@@ -1,6 +1,6 @@
 ---
 title: Runbook Integrations Overview
-description: Configure third-party integrations for runbook actions in Harness AI SRE.
+description: Configure third-party integrations for runbook actions.
 sidebar_label: Overview
 sidebar_position: 1
 redirect_from:
@@ -13,6 +13,8 @@ redirect_from:
 # Runbook Integrations Overview
 
 Harness AI SRE runbooks can integrate with third-party tools to automate incident response workflows.
+
+Most integrations on this page provide **automation**: they let a runbook act on an external tool during a response. The exception is xMatters, which is on-call schedule sync only and runs no runbook actions. Several of these tools also ingest data elsewhere in AI SRE. Go to [Set Up Integration Management](/docs/ai-sre/integrations) to review the full capability matrix.
 
 ## Available Integrations
 
@@ -34,9 +36,7 @@ Harness AI SRE runbooks can integrate with third-party tools to automate inciden
 
 ### Source Control
 - [GitHub](/docs/ai-sre/runbooks/integrations/source-control/github) - Create branches, pull requests, issues
-
-### Automation
-- [Harness Pipelines](/docs/ai-sre/runbooks/integrations/automation/harness-pipelines) - Trigger deployment pipelines, execute automation
+- [Harness Pipelines](/docs/ai-sre/runbooks/integrations/source-control/harness-pipelines) - Trigger deployment pipelines, execute automation
 
 These connectors ensure that actions performed by your runbooks are properly attributed to specific service accounts.
 
@@ -63,7 +63,7 @@ To configure project connectors:
 
 1. Sign in to your Harness account
 2. Go to your project
-3. Go to **Project Settings** → **Third-Party Integrations (IR)**
+3. Go to **Project Settings** → **Third-Party Integrations (AI SRE)**
 4. Select the integration type you want to configure
 
 ---
@@ -80,7 +80,7 @@ When setting up project connectors:
 
 ### Selecting or Creating Connectors
 
-In **Project Settings** → **Third-Party Integrations (IR)**, you can either:
+In **Project Settings** → **Third-Party Integrations (AI SRE)**, you can either:
 
 * Select an existing connector from the list if one is already configured with appropriate permissions
 * Create a new connector if you need a dedicated service account for your project's runbook actions

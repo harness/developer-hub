@@ -1,6 +1,6 @@
 ---
 title: Configure Harness Code for pull request ingestion
-description: Harness Code is ingested automatically as a source-control change source, with no connector setup required
+description: Ingested automatically as a source-control change source, with no connector setup required
 sidebar_label: Harness Code
 sidebar_position: 7
 keywords:

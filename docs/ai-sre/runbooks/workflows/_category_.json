@@ -1,6 +1,12 @@
 {
   "label": "Configure Workflows",
+  "description": "Build runbook actions with CEL, Mustache, and system fields.",
   "position": 3,
   "collapsible": true,
-  "collapsed": true
+  "collapsed": true,
+  "link": {
+    "type": "generated-index",
+    "title": "Configure Workflows",
+    "description": "Build runbook actions with CEL, Mustache, and system fields."
+  }
 }

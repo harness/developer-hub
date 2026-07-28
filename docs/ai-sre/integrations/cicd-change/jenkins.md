@@ -2,7 +2,7 @@
 title: Jenkins Integration
 sidebar_label: Jenkins
 sidebar_position: 7
-description: Connect Jenkins to Harness AI SRE to send build and deploy data as a source of change.
+description: Send build and deploy data as a source of change correlated to incidents.
 keywords:
   - ai-sre
   - integrations
@@ -15,7 +15,7 @@ Jenkins is an open-source automation server for building, testing, and deploying
 
 ## How AI SRE supports Jenkins
 
-AI SRE treats Jenkins as a change source for the Deploy Change Investigator. Jenkins pipelines POST build and deploy webhooks to an AI SRE endpoint using shell scripts, and AI SRE records them as changes for correlation with incidents.
+AI SRE treats Jenkins as a change source for the [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator). Jenkins pipelines POST build and deploy webhooks to an AI SRE endpoint using shell scripts, and AI SRE records them as changes for correlation with incidents.
 
 - **Build and deploy webhooks:** Jenkins pipelines send build and deploy events to AI SRE through shell scripts.
 - **Change correlation:** AI SRE correlates the ingested builds and deployments with active incidents during investigation.

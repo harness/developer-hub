@@ -1,6 +1,6 @@
 ---
 title: Travis CI Integration Webhook Template
-description: Configure Travis CI integration for Harness AI SRE to receive build and deployment notifications.
+description: Receive build and deployment notifications.
 sidebar_label: Travis CI Webhook Template
 sidebar_position: 18
 ---

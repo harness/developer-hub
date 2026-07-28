@@ -2,7 +2,7 @@
 title: Common Use Cases
 sidebar_label: Common Use Cases
 sidebar_position: 6
-description: Common use cases for incident fields in runbook actions.
+description: Real-world examples of incident fields in runbook actions.
 ---
 
 import NeedHelpFooter from '../../_snippets/need-help-footer.mdx';

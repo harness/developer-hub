@@ -1,6 +1,6 @@
 ---
 title: Alert Management
-description: Learn how to receive, route, and respond to alerts from monitoring systems in Harness AI SRE.
+description: Receive, route, and respond to alerts from monitoring systems.
 sidebar_label: Overview
 sidebar_position: 1
 redirect_from:

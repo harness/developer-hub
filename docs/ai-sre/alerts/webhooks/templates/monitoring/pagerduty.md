@@ -1,8 +1,8 @@
 ---
 title: PagerDuty Integration Webhook Template
-description: Configure PagerDuty integration for Harness AI SRE to receive incident management alerts.
+description: Receive incident management alerts.
 sidebar_label: PagerDuty Webhook Template
-sidebar_position: 9
+sidebar_position: 11
 ---
 
 # PagerDuty Integration Webhook Template
