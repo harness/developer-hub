@@ -3,8 +3,6 @@ title: Connect with Jira Cloud
 description: Integrate Harness AIDI with Jira Cloud.
 sidebar_position: 1
 sidebar_label: Jira Cloud
-redirect_from:
-  - /docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/jira/custom-hygiene-misses
 ---
 
 import JiraCustomHygiene from '@site/docs/software-engineering-insights/shared/integrations/jira-hygiene.mdx';

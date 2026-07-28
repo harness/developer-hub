@@ -2,8 +2,6 @@
 title: Installation
 sidebar_position: 20
 description: Steps to install Harness Delegate and enable chaos.
-redirect_from:
-- /docs/chaos-engineering/guides/infrastructures/ddcr/installation
 ---
 
 This topic describes how you can install Harness Delegate and enable chaos on it. You can follow the interactive demo or the steps to install Harness Delegate.

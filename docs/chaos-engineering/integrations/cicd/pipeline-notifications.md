@@ -2,8 +2,6 @@
 title: Integrate experiment pipeline with notifications
 sidebar_position: 6
 description: Guide to execute chaos experiment in a pipeline and receive notifications about experiment execution.
-redirect_from:
-  - /docs/chaos-engineering/integrations/pipeline-exec
 ---
 
 This tutorial describes how you can execute chaos experiment in a pipeline and integrate it with notifications and approvals.

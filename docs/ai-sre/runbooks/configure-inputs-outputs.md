@@ -5,7 +5,6 @@ sidebar_position: 5
 description: Learn how to configure incident and alert context for your runbooks.
 redirect_from:
 - /docs/ai-sre/runbooks/workflows/set-incident-context
-- /docs/ai-sre/runbooks/workflows/set-incident-context
 ---
 
 import NeedHelpFooter from '../_snippets/need-help-footer.mdx';

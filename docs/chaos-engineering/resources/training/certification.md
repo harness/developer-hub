@@ -2,9 +2,6 @@
 title: Chaos Certification
 description: Get Chaos Engineering Certification from Harness University
 sidebar_position: 2
-redirect_from:
-- /docs/chaos-engineering/certifications/developer-certification
-- /docs/chaos-engineering/onboarding/certifications/developer-certification
 ---
 
 This tutorial will guide you through the process of registering for and completing the Harness Chaos Developer exam certification.

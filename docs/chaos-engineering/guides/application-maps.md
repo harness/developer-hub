@@ -2,8 +2,6 @@
 title: Application Maps
 description: Visualize and manage your application dependencies and service relationships in chaos engineering
 sidebar_position: 8
-redirect_from:
-  - /docs/chaos-engineering/guides/application-maps
 ---
 
 ### Before you begin

@@ -9,7 +9,6 @@ redirect_from:
     - /docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/cluster-cost-dashboard
     - /docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/download-dashboard-data-api
     - /docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/gcp-dashboard
-    - /docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/gcp-dashboard
     - /docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/use-multiple-tags-in-aws
     - /docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/view-aws-ec-2-instance-metrics
     - /docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/view-aws-ec-2-inventory-cost-dashboard

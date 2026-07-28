@@ -24,6 +24,9 @@
     "lint:ci": "export NODE_OPTIONS=--max-old-space-size=7296 && npm run lint:eslint",
     "test": "npm run lint:ci",
     "test:dms-redirects": "node scripts/generate-dms-redirect-map.mjs && node scripts/test-dms-redirects.mjs",
+    "test:pr-preview-utils": "node scripts/test-pr-preview-utils.mjs",
+    "generate-pr-preview-list": "node scripts/generate-pr-preview-list.mjs",
+    "pr-sync": "node scripts/pr-sync.mjs",
     "prepare": "husky"
   },
   "dependencies": {

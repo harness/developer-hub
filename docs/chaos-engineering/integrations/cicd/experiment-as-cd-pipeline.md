@@ -2,8 +2,6 @@
 title: Execute chaos experiment as CD pipeline
 sidebar_position: 7
 description: Guide to execute a chaos experiment as CD pipelines
-redirect_from:
-   - /docs/chaos-engineering/integrations/hce-and-cd/experiment-as-cd-pipeline
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

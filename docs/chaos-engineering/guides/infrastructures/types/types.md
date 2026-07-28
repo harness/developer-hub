@@ -1,7 +1,5 @@
 ---
 title: Types of Infrastructure
-redirect_from:
-- /docs/chaos-engineering/guides/infrastructures/enable-disable
 ---
 This topic describes different types of infrastructure, that can be used to execute chaos experiments.
 

@@ -15,8 +15,6 @@ tags:
   - servicenow
   - sei
   - ai-dlc
-redirect_from:
-  - /docs/software-engineering-insights/harness-sei/setup-sei/configure-integrations/beta-integrations/servicenow/
 ---
 
 import Tabs from '@theme/Tabs';

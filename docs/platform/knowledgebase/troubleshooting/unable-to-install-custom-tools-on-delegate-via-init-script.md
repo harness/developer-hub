@@ -3,7 +3,6 @@ title: Unable to install custom binaries on a delegate via an init script or by 
 redirect_from:
    - /kb/platform/articles/Unable-to-Install-Custom-Tools-on-Delegate-via-Init-Script
    - /docs/platform/knowledgebase/articles/Unable-to-Install-Custom-Tools-on-Delegate-via-Init-Script
-   - /docs/platform/knowledgebase/articles/Unable-to-Install-Custom-Tools-on-Delegate-via-Init-Script
 ---
 
 This section resolves the error you encounter when you try to install custom binaries on a delegate via an init script or by manually executing commands.

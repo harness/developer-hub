@@ -2,8 +2,6 @@
 title: Overview
 description: Introduction to Harness Chaos Engineering
 sidebar_position: 1
-redirect_from:
-  - /docs/chaos-engineering
 ---
 
 # Chaos Engineering Overview 

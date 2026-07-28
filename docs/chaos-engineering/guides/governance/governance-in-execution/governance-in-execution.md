@@ -2,17 +2,6 @@
 sidebar_position: 2
 title: Governance in Execution
 description: This topic describes how governance in execution is implemented using ChaosGuard.
-redirect_from:
-- /docs/chaos-engineering/configure-chaos-experiments/chaosguard/introduction-to-chaosguard
-- /docs/chaos-engineering/concepts/explore-concepts/chaosguard
-- /docs/chaos-engineering/features/chaosguard/chaosguard-concepts
-- /docs/category/chaosguard
-- /docs/chaos-engineering/concepts/explore-concepts/chaosguard
-- /docs/chaos-engineering/guides/governance/govern-run
-- /docs/chaos-engineering/configure-chaos-experiments/chaosguard/chaosguard-concepts
-- /docs/chaos-engineering/configure-chaos-experiments/chaosguard/chaosguard-concepts/
-- /docs/chaos-engineering/use-harness-ce/governance
-- /docs/chaos-engineering/use-harness-ce/governance/governance-in-execution/
 ---
 
 This section introduces you to ChaosGuard and describes how Harness enforces security policies during chaos experiments execution.

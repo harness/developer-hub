@@ -7,7 +7,6 @@ redirect_from:
 - /docs/chaos-engineering/concepts/explore-concepts/chaosguard
 - /docs/chaos-engineering/features/chaosguard/chaosguard-concepts
 - /docs/category/chaosguard
-- /docs/chaos-engineering/concepts/explore-concepts/chaosguard
 - /docs/chaos-engineering/guides/governance/govern-run
 - /docs/chaos-engineering/configure-chaos-experiments/chaosguard/chaosguard-concepts
 - /docs/chaos-engineering/configure-chaos-experiments/chaosguard/chaosguard-concepts/

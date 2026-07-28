@@ -1,0 +1,14 @@
+# After push: create or update the Harness Code PR in the background.
+# Skip with: HDH_NO_PR_SYNC=1 git push
+if [ "$HDH_NO_PR_SYNC" = "1" ]; then
+  exit 0
+fi
+
+if command -v node >/dev/null 2>&1; then
+  ROOT="$(git rev-parse --show-toplevel)"
+  LOG="$ROOT/.git/pr-sync.log"
+  nohup node "$ROOT/scripts/pr-sync.mjs" </dev/null >"$LOG" 2>&1 &
+  echo "[pr-sync] launched in background — see .git/pr-sync.log"
+fi
+
+exit 0

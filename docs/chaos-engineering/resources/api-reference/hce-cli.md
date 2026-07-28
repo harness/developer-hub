@@ -2,9 +2,6 @@
 title: HCE CLI
 sidebar_position: 1
 description: Simplify executing complex API commands
-redirect_from:
-    - /docs/chaos-engineering/technical-reference/hce-cli
-    - /docs/chaos-engineering/api-reference/hce-cli
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

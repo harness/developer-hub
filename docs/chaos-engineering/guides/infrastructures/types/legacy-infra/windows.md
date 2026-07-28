@@ -1,8 +1,6 @@
 ---
 title: Windows Chaos Infrastructure
 sidebar_position: 30
-redirect_from:
-- /docs/chaos-engineering/guides/infrastructures/enable-disable#on-linux-infrastructure
 ---
 
 This topic describes Windows Chaos Infrastructure, how you can enable and disable chaos on Windows Infrastructure.

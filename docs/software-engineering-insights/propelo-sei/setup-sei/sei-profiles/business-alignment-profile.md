@@ -5,7 +5,6 @@ sidebar_position: 10
 sidebar_label: Business Alignment profile
 redirect_from:
   - /docs/software-engineering-insights/propelo-sei/setup-sei/sei-profiles/business-alignment-profile
-  - /docs/software-engineering-insights/propelo-sei/setup-sei/sei-profiles/business-alignment-profile
   - /docs/software-engineering-insights/setup-sei/sei-profiles/business-alignment-profile
   - /docs/software-engineering-insights/sei-profiles/investment-profile
 ---

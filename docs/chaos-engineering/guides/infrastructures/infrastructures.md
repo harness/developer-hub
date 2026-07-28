@@ -2,12 +2,6 @@
 title: Overview
 sidebar_position: 1
 canonical_url: https://www.harness.io/blog/chaos-engineering
-redirect_from:
-- /docs/category/chaos-infrastructure
-- /docs/chaos-engineering/features/chaos-infrastructure/windows-chaos-infrastructure/
-- /docs/chaos-engineering/concepts/explore-concepts/infrastructures/
-- /docs/chaos-engineering/use-harness-ce/infrastructures
-- /docs/chaos-engineering/use-harness-ce/infrastructures/enable-disable
 ---
 
 import Tabs from '@theme/Tabs';

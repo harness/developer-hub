@@ -11,7 +11,6 @@ redirect_from:
   - /docs/get-started/tutorials
   - /docs/getting-started/start-for-free
   - /docs/get-started/start-for-free
-  - /docs/platform/organizations-and-projects/create-an-organization
 ---
 
 import Tabs from '@theme/Tabs';

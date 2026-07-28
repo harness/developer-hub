@@ -2,8 +2,6 @@
 title: Dedicated Delegate on Target Cluster
 sidebar_position: 30
 description: Use Dedicated Delegate on Target Cluster
-redirect_from:
-- /docs/chaos-engineering/guides/infrastructures/ddcr/dedicated-delegate
 ---
 
 This topic describes the permissions required to deploy Delegate for each target cluster to execute chaos experiments.

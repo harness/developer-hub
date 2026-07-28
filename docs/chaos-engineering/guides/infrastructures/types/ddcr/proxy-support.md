@@ -2,10 +2,6 @@
 title: Configure Proxy Settings
 sidebar_position: 40
 description: Configure DDCR and Discovery Agent Proxy settings.
-redirect_from:
-- /docs/chaos-engineering/features/chaos-infrastructure/harness-infra/proxy-support
-- /docs/chaos-engineering/concepts/explore-concepts/infrastructures/delegate/proxy-support
-- /docs/chaos-engineering/guides/infrastructures/ddcr/proxy-support
 ---
 
 This topic describes when Harness Network Proxy (HNP) is required, how you can install it, and configure DDCR and discovery HNP settings.

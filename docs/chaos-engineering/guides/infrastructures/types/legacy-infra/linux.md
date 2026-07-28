@@ -1,8 +1,6 @@
 ---
 title: Linux Chaos Infrastructure
 sidebar_position: 10
-redirect_from:
-- /docs/chaos-engineering/guides/infrastructures/enable-disable#on-linux-infrastructure
 ---
 
 This topic describes Linux Chaos Infrastructure (LCI), how to use flags to configure some characteristics of the infrastructure, how to enable, and disable chaos on LCI.

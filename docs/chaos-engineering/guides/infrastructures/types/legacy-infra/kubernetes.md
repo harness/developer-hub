@@ -2,20 +2,7 @@
 title: Kubernetes Chaos Infrastructure
 sidebar_position: 1
 redirect_from:
-- /docs/category/harness-dedicated-infrastructure
-- /docs/chaos-engineering/onboarding/harness-infra
-- /docs/chaos-engineering/technical-reference/architecture/kubernetes
-- /docs/chaos-engineering/onboarding/harness-infra
-- /docs/chaos-engineering/features/chaos-infrastructure/harness-infra/
 - /docs/chaos-engineering/get-started/prerequisites/#chaos-infrastructure-requirements
-- /docs/chaos-engineering/features/chaos-infrastructure/introduction
-- /docs/chaos-engineering/features/chaos-infrastructure/harness-infra/
-- /docs/chaos-engineering/get-started/prerequisites/#chaos-infrastructure-requirements
-- /docs/chaos-engineering/guides/infrastructures/types/legacy-infra/
-- /docs/chaos-engineering/chaos-infrastructure/connect-chaos-infrastructures
-- docs/chaos-engineering/features/chaos-infrastructure/connect-chaos-infrastructures
-- /docs/chaos-engineering/chaos-infrastructure/disconnect-chaos-infrastructure
-- /docs/chaos-engineering/features/chaos-infrastructure/disconnect-chaos-infrastructure
 - /docs/chaos-engineering/guides/infrastructures/enable-disable#use-helm-template-to-install-chaos-infrastructure
 ---
 

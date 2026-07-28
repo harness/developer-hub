@@ -2,11 +2,6 @@
 title: Permissions
 sidebar_position: 1
 description: RBAC permissions required to execute DDCR-based Kubernetes faults.
-redirect_from:
-- /docs/chaos-engineering/onboarding/harness-infra/permissions
-- /docs/chaos-engineering/features/chaos-infrastructure/harness-infra/permissions
-- /docs/chaos-engineering/concepts/explore-concepts/infrastructures/delegate/permissions
-- /docs/chaos-engineering/guides/infrastructures/ddcr/permissions
 ---
 
 This topic lists the RBAC permissions required to execute [DDCR-based](/docs/chaos-engineering/guides/infrastructures/types/ddcr#what-is-ddcr) Kubernetes faults.

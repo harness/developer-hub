@@ -1,9 +1,6 @@
 ---
 title: What's supported
 sidebar_position: 2
-redirect_from:
-  - /docs/chaos-engineering/get-started/whats-supported
-  - /docs/chaos-engineering/whats-supported
 ---
 
 # What's supported

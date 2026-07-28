@@ -2,8 +2,6 @@
 title: HCE Onboard CLI
 sidebar_position: 2
 description: Describes the HCE onboard CLI and its usage.
-redirect_from:
-    - /docs/chaos-engineering/api-reference/hce-onboarding-api
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

@@ -2,8 +2,6 @@
 title: License Consumption 
 sidebar_position: 12
 description: Harness CE services license consumption
-redirect_from:
-  - /docs/chaos-engineering/use-harness-ce/license-consumption/
 ---
 
 Harness Chaos Engineering module uses 'Services' as a key construct in identifying the target resources for chaos experimentation. Harness Chaos Engineering customers license by Developers (Developer 360 model) and receive services as an included entitlement. Licenses are measured over a yearly cycle. More details on the Developer 360 model are available [here](/docs/platform/subscriptions-licenses/subscriptions/). 

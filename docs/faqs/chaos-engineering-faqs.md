@@ -2,8 +2,6 @@
 title: Chaos Engineering (CE) FAQs
 description: This article addresses some frequently asked questions about Harness Chaos Engineering.
 sidebar_position: 1
-redirect_from:
-    - /kb/chaos-engineering/chaos-engineering-faq
 ---
 
 ## General

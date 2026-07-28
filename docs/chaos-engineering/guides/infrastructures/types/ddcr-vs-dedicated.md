@@ -3,7 +3,6 @@ title: Delegate Versus Dedicated Chaos Infrastructure
 sidebar_position: 20
 redirect_from:
 - /docs/chaos-engineering/guides/infrastructures/#dedicated-chaos-infrastructure-versus-harness-delegate-driven-chaos-infrastructure
-- /docs/chaos-engineering/guides/infrastructures/ddcr-vs-dedicated
 ---
 
 This section compares the characteristics of Delegate-Driven Chaos Infrastructure and Dedicated chaos infrastructure (Legacy Kubernetes infrastructure).

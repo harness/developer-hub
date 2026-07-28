@@ -2,11 +2,6 @@
 title: Image Registry
 description: A repository that hosts container images used by chaos experiments.
 sidebar_position: 11
-redirect_from:
-  - /docs/chaos-engineering/configure-chaos-experiments/image-registry
-  - /docs/chaos-engineering/features/image-registry
-  - /docs/chaos-engineering/concepts/explore-concepts/image-registry
-  - /docs/chaos-engineering/guides/image-registry
 ---
 
 import Tabs from '@theme/Tabs';

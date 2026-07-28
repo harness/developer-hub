@@ -1,0 +1,43 @@
+---
+description: Generate PR preview link tables while excluding frontmatter-only doc changes.
+---
+
+# PR preview list generation
+
+When you fill in the **Preview Link(s) & JIRA Ticket** section of a Harness Developer Hub PR, do not list every changed markdown file. Per-page previews are only needed when rendered page content changes.
+
+## Automatic sync on push
+
+If you set up [PR automation](../../CONTRIBUTING.md#pr-automation-optional) (`HARNESS0_API_KEY` in `.env`), `scripts/pr-sync.mjs` runs after every push and applies the same frontmatter-only rules automatically. You do not need to run the commands below unless you are drafting a description by hand.
+
+## Manual commands
+
+```bash
+npm run generate-pr-preview-list
+npm run pr-sync -- --dry-run
+```
+
+## Frontmatter-only changes (exclude from preview list)
+
+Skip per-page preview rows when the diff only touches YAML frontmatter, including:
+
+- `redirect_from`
+- `title`, `sidebar_label`, `description`
+- `sidebar_position`, `slug`, `keywords`, `tags`
+- `feature_flags` and other frontmatter keys
+
+These changes do not alter what readers see on the page body, so one Netlify draft URL is enough.
+
+## Include in preview list
+
+Add a preview row when the markdown body changes, including:
+
+- Prose, headings, steps, tables, code blocks
+- MDX imports or components in the body
+- New doc files with body content
+
+## PR description table
+
+Paste `npm run generate-pr-preview-list` output into the preview section of `.harness/pull_request_template.md`. When every changed doc is frontmatter-only, the script emits a single **Preview URL** row explaining that no per-page previews are needed.
+
+Do not manually enumerate dozens of `Preview: …` rows for redirect or metadata-only PRs.

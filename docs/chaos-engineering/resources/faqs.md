@@ -2,9 +2,6 @@
 title: FAQs
 description: This article addresses some frequently asked questions about Harness Chaos Engineering.
 sidebar_position: 3
-redirect_from: 
-  - /kb/chaos-engineering
-  - /kb/chaos-engineering/chaos-engineering-faq
 ---
 
 ## General
