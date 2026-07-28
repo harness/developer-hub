@@ -440,6 +440,97 @@ Harness securely evaluates the expression at runtime and makes the OIDC token av
 | OIDC Token (Org-level connector) | `<+connectorInputs.get("org.awsoidc").oidcToken>`                          |
 | OIDC Token (Account-level)       | `<+connectorInputs.get("account.awsoidc").oidcToken>`                      |
 
+### Harness ID tokens for the Shell Script step
+
+:::note
+This feature is behind the feature flag `PIPE_PIPELINE_IDENTITY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+The AWS and GCP OIDC token expressions in the previous section pull a token from a connector. When your script needs to authenticate as the workload itself, rather than through a connector, you can declare one or more named identities on the Shell Script step. Each identity produces an independent OIDC ID token that Harness generates through Harness ID and injects into the script at runtime as an environment variable.
+
+This is useful when a script authenticates directly to an external service that trusts Harness as an OIDC identity provider. A single step can declare several identities when it needs to talk to more than one audience, and Harness requests all of the tokens in parallel.
+
+Identities are declared in an `identities` map on the step, alongside `spec`. The map key is the identity name, and that same name becomes the environment variable that holds the generated token. For example, an identity named `AWS_ID_TOKEN` makes its token available to the script as `$AWS_ID_TOKEN`.
+
+```yaml
+              - step:
+                  type: ShellScript
+                  name: Authenticate with Harness ID
+                  identifier: harness_id_step
+                  identities:
+                    AWS_ID_TOKEN:
+                      audience: sts.amazonaws.com
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: |-
+                          # The token is available as an environment variable named after the identity.
+                          echo "Token acquired for AWS: ${AWS_ID_TOKEN}"
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+```
+
+Each identity supports the following fields.
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| `audience` | Yes | The intended audience of the token, such as `sts.amazonaws.com`. An identity with a blank audience is skipped. Supports Harness expressions. |
+| `subjectTemplate` | No | A template for the token subject claim. Supports Harness expressions, which Harness resolves before the token is generated. |
+| `customClaims` | No | A map of additional claims to include in the token. Values support Harness expressions. |
+| `scope` | No | The visibility scope of the identity. Only `STEP` scope is supported in this release. `STAGE` and `PIPELINE` values are accepted but behave as step-scoped. |
+| `tokenMode` | No | The token exchange mode, either `STANDARD` or `CLIENT_ASSERTION`. When unset, Harness ID uses `STANDARD`. |
+| `disabled` | No | When set to `true`, Harness skips this identity and does not generate a token for it. |
+
+The following example declares two identities with custom claims and a subject template, so the script can authenticate to two different audiences in a single step.
+
+<details>
+<summary>Shell Script step with multiple Harness ID tokens</summary>
+
+```yaml
+              - step:
+                  type: ShellScript
+                  name: Multi audience auth
+                  identifier: multi_audience_auth
+                  identities:
+                    AWS_ID_TOKEN:
+                      audience: sts.amazonaws.com
+                      subjectTemplate: <+pipeline.identifier>-<+stage.identifier>
+                      customClaims:
+                        environment: <+env.name>
+                      tokenMode: STANDARD
+                    VAULT_ID_TOKEN:
+                      audience: https://vault.example.com
+                      disabled: false
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: |-
+                          echo "AWS token: ${AWS_ID_TOKEN}"
+                          echo "Vault token: ${VAULT_ID_TOKEN}"
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+```
+
+</details>
+
+:::note
+
+- **Shell Script step only.** The `identities` field is available on the Shell Script step only. Other step types, including CI Run steps and custom steps, do not support it.
+- **Bash only.** Per-identity token injection works for Bash scripts that run on the delegate or connect to a target host over SSH. Token injection for PowerShell steps that run over WinRM is not yet available.
+- **No runtime override.** The `identities` map structure cannot be overridden through input sets, runtime inputs, or parent pipelines — identity names and the map itself must be declared statically in the step YAML. Individual field values within each identity, such as `audience`, support Harness expressions and are resolved at runtime.
+- **No stage or pipeline scope.** The `scope` field accepts `STEP`, `STAGE`, and `PIPELINE` values in the YAML, but only step-level scope is supported in this release. Identities with a broader scope are parsed but behave as step-scoped.
+- **Best-effort token generation.** If Harness cannot generate a token for an identity, for example when the audience resolves to a blank value, Harness skips that identity and the corresponding environment variable is not injected. The step continues to run, so your script must handle the case where an expected token variable is empty.
+
+:::
+
 
 ### Specify input variables
 
