@@ -4,7 +4,7 @@ description: Common Uses cases for Harness AI Chat
 sidebar_position: 15
 ---
 
-import Platform from '@site/docs/platform/harness-ai/harness-ai-chat-guide.md';
+import Platform from '@site/docs/platform/harness-ai/harness-create-with-ai/harness-ai-chat-guide.md';
 
 <Platform />
 
