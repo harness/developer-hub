@@ -2874,7 +2874,16 @@ const sidebars: SidebarsConfig = {
         'cloud-cost-management/get-started/overview',
         'cloud-cost-management/get-started/get-started',
         'cloud-cost-management/get-started/onboarding-guide/external-data-ingestion',
-        'cloud-cost-management/ai-costs-introduction',
+        {
+          type: 'category',
+          label: 'AI Cost Management',
+          collapsed: true,
+          items: [
+            'cloud-cost-management/ai-cost-management/introduction-to-ai-cost-management',
+            'cloud-cost-management/ai-cost-management/set-up-ai-traces',
+            'cloud-cost-management/ai-cost-management/understanding-ai-traces',
+          ],
+        },
         'cloud-cost-management/unit-costs',
         {
           type: 'html',

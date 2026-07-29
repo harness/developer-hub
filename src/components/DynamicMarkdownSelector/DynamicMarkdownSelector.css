@@ -77,6 +77,8 @@
   font-weight: 600;
   min-width: 0;
   justify-content: center;
+  text-align: center;
+  text-wrap: balance;
 }
 
 .selector-entry.no-logo {
