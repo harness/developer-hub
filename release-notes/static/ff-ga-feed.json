@@ -1085,7 +1085,7 @@
     "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "HAR_ARTIFACT_SIGNING_VERIFICATION",
+    "flagKey": "SCS_HAR_ARTIFACT_SIGNING_VERIFICATION",
     "description": "Enables Artifact Registry (AR) integration for artifact signing and verification steps",
     "gaStartDate": "2026-04-10",
     "module": "Supply Chain Security",
