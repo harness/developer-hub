@@ -232,6 +232,11 @@ The following deprecated API endpoints are longer supported:
 
 ## July 2026
 
+### Version 1.159.x <!--July 22, 2026-->
+
+#### Fixed issues
+- The Plans page is no longer discoverable from the Harness UI and has been removed from the navigation. [PL-72987]
+
 ### Version 1.158.x <!--July 15, 2026-->
 
 #### Fixed issues
