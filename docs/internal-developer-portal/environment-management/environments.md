@@ -103,7 +103,7 @@ The detail page kebab menu (⋮) next to the Edit Configuration button provides:
 
 ### Tabs: Explained
 
-The six tabs on the detail page give you different lenses on your running environment. Each tab corresponds directly to how the environment's blueprint is structured.
+The seven tabs on the detail page give you different lenses on your running environment. Each tab corresponds directly to how the environment's blueprint is structured.
 
 1. **Chart** - A visual dependency graph of all entities defined in the blueprint. Each node shows the entity identifier and backend type, and reflects the entity's current state. Use this to understand provisioning order and see at a glance whether all entities are healthy.
 
@@ -116,6 +116,8 @@ The six tabs on the detail page give you different lenses on your running enviro
 5. **Drift Detection** - Shows the drift check results for each HarnessIACM entity. The tab displays Last Drift Status, a count of Resources Changed, and a searchable list of resources. Selecting a resource shows whether drift was detected and which attributes have diverged from the expected state. Use this to identify unauthorized infrastructure changes after an environment has been running.
 
 6. **Activity** - Shows the full execution history of pipeline runs triggered by environment actions (create, update, destroy, and so on). Columns: ID, By, View Pipeline, Started At, Stopped At, State. Use this to audit who triggered what action and when, and to investigate failures by following the View in Pipeline link.
+
+7. **Cost** - Shows infrastructure cost estimation data sourced from IACM workspaces. The table lists each priceable cloud resource, its resource type, and estimated monthly cost. A cost diff is displayed when a change is detected between plan runs. This tab is only populated when cost estimation is enabled on the IACM workspace template. Go to [Cost Estimation for Environments](/docs/internal-developer-portal/environment-management/cost-estimation) to know how cost estimation works.
 
 ---
 
