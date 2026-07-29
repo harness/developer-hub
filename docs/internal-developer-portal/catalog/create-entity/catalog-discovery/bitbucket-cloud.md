@@ -10,6 +10,10 @@ import DocVideo from '@site/src/components/DocVideo';
 
 The Bitbucket Cloud integration automatically discovers repositories from your Bitbucket workspace and brings them into the IDP Catalog. Once discovered, entities can be registered as new catalog entries or merged into existing ones, enriching them with Bitbucket-sourced metadata for service discovery and dependency mapping.
 
+:::info
+This integration does not cater to Bitbucket Server.
+:::
+
 For each repository, the integration collects the following:
 
 | Resource | What it provides |
@@ -26,6 +30,7 @@ The following are needed to get the integration running:
 * You have the required RBAC permissions to manage integrations. All integration operations require the `IDP_INTEGRATION_EDIT` permission on the `IDP_INTEGRATION` resource type.
 * A [Bitbucket Cloud connector](https://www.youtube.com/watch?v=PTfoe7siyGs) is configured in Harness with the credentials needed to access your Bitbucket workspace. Ensure that the connector has the [necessary permissions on your Bitbucket Cloud](#bitbucket-permissions). Go to [Set up a Bitbucket Cloud Connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference/) to review the required settings and scopes. You can create a new connector directly during the integration setup.
 * While setting up the Bitbucket Cloud connector, make sure to select HTTP (not SSH) and authenticate using an access token. Use `x-token-auth` as the username. If you have an API token or App Password, generate a workspace access token instead.
+* The connector's **URL Type** is set to **Account**, and the **Bitbucket Account URL** specifies your Bitbucket workspace (for example, `https://bitbucket.org/YOUR_WORKSPACE/`). The integration requires a workspace to run its discovery queries against.
 * For each Bitbucket workspace, maintain one integration.
 
 :::info Proxy Configuration
