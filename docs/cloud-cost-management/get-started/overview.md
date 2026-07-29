@@ -1,32 +1,43 @@
 ---
-title: Harness Cloud & AI Cost Management (CACM) Overview
+title: Overview
 sidebar_label: Overview
-description: Provides an overview of Harness Cloud & AI Cost Management.
 sidebar_position: 1
-helpdocs_topic_id: rr85306lq8
-helpdocs_category_id: j4adbv9wn7
-helpdocs_is_private: false
-helpdocs_is_published: true
 redirect_from:
   - /docs/cloud-cost-management/getting-started-ccm/continuous-efficiency-overview
 ---
 
-Harness Cloud & AI Cost Management (CACM) is a full-featured FinOps platform designed to help organizations monitor, govern, and optimize their cloud and AI expenditures. It provides deep visibility into spending across major cloud providers: AWS, Azure, and Google Cloud Platform (GCP), as well as AI providers like Anthropic, OpenAI, including managed AI offerings like AWS Bedrock and Google Vertex. Additionally, CACM allows you to integrate external cost data, such as SaaS costs and data center expenses, for a unified view of your organization's total technology spend.
+Harness Cloud & AI Cost Management (CACM) is a FinOps platform that helps you monitor, govern, and optimize **cloud and AI spend in one place**. It provides visibility across AWS, Azure, and Google Cloud Platform (GCP); AI providers like OpenAI and Anthropic, including managed offerings such as AWS Bedrock and GCP Vertex AI; and external sources like SaaS and data center costs, giving you a unified view of your organization's total technology spend.
 
-<DocImage path={require('./static/overview.png')} width="100%" title="CACM Overview" />
+Unlike tools that only show dashboards, CACM also acts on what it finds: AutoStopping shuts down idle resources, Commitment Orchestration buys RIs and Savings Plans, and recommendations right-size workloads, turning insight into savings. Organizations typically see a 20–30% reduction in overall cloud and AI spend.
+
+<DocImage path={require('./static/cacm-overview-hero.png')} width="100%" title="Harness Cloud & AI Cost Management" />
 
 ---
-## The Three Pillars of CACM
+
+## What CACM solves
+
+Cloud and AI spend share the same problem: costs are easy to incur and hard to attribute. CACM closes that gap for both by bringing all spend into a single FinOps workflow.
+
+| Cloud cost challenges | AI cost challenges |
+|---|---|
+| Spend scattered across AWS, Azure, GCP, and SaaS with no unified view | AI spend is invisible until the invoice arrives; provider dashboards show only totals |
+| Idle and oversized resources quietly draining budgets | No way to attribute cost to a team, product, agent, or customer |
+| Manual, error-prone chargeback to teams and products | No measure of ROI per AI outcome (cost per ticket, session, or inference) |
+| Cost spikes discovered only after the invoice arrives | No alerts when AI spend suddenly spikes |
+
+---
+
+## What CACM offers: the three pillars
 
 ### Cost Visibility
 
-- [Perspectives (Now Cost Explorer with Cloud & AI costs)](/docs/category/perspectives): Custom views to analyze cloud and AI costs by provider, service, region, tags, or business units. Organize them into folders, share with teams via RBAC, and use the "Ask AI" feature to create perspectives using natural language. Track spending on AI providers like Anthropic, OpenAI, and managed AI providers like AWS Bedrock and GCP Vertex AI, analyze token usage, and understand AI cost growth patterns.
+- [Perspectives/Views (Now Cost Explorer with Cloud & AI costs)](/docs/category/perspectives): Custom views to analyze cloud and AI costs by provider, service, region, tags, or business units. Organize them into folders, share with teams via RBAC, and use the "Ask AI" feature to create Perspectives/Views using natural language. Track spending on AI providers like Anthropic, OpenAI, and managed AI providers like AWS Bedrock and GCP Vertex AI, analyze token usage, and understand AI cost growth patterns.
 - [BI Dashboards](/docs/category/bi-dashboards): Pre-built and customizable business intelligence dashboards powered by Looker. Visualize cost trends, compare spending across teams or projects, and create executive-level reports. Dashboards can be scheduled, shared, and embedded to keep stakeholders informed without requiring them to log into CACM.
 - [Cost Categories](/docs/category/cost-categories): Define custom cost allocation rules to map cloud and AI spending to your business structure. Group resources by team, product, cost center, or any business dimension. The same rules you've written for cloud chargeback now apply to AI spend.
  
 ### Cost Governance
 
-- [Budgets](/docs/category/budgets): Set daily, weekly, monthly, quarterly, or yearly spending limits tied to perspectives. Configure multiple alert thresholds and receive notifications via email or Slack before costs exceed budget. Available for both cloud & AI costs.
+- [Budgets](/docs/category/budgets): Set daily, weekly, monthly, quarterly, or yearly spending limits tied to Perspectives/Views. Configure multiple alert thresholds and receive notifications via email or Slack before costs exceed budget. Available for both cloud & AI costs.
 
 - [Asset Governance](/docs/category/asset-governance): Enforce cloud policies using policy-as-code. Create rules to identify non-compliant resources (untagged, idle, misconfigured), group them into rule sets, and schedule automatic evaluations with alerts for violations.
 
@@ -44,15 +55,15 @@ Harness Cloud & AI Cost Management (CACM) is a full-featured FinOps platform des
 
 ---
 
-### Why Harness' Cloud & AI Cost Management?
+## How it comes together
 
 - **AI Cost Visibility with Unit Economics**: As AI adoption accelerates, so do costs. CACM tracks spending on AI providers like Anthropic, OpenAI, and Gemini, and managed AI providers like AWS Bedrock and GCP Vertex AI, breaking down costs by model, monitoring token usage, and helping you understand where your AI budget is going. More importantly, CACM ties every dollar of AI spend to the agent, session, and business outcome it produced giving you cost per agent run, cost per session including multi-turn conversations, cost per inference, cost broken down by token type, session, inference and use-case, and agent ROI tied to business outcomes (cost per resolved ticket, cost per completed workflow, cost per customer interaction).
 
-- **Actionable, Not Just Informative**: Unlike tools that only show dashboards, CACM takes action. AutoStopping shuts down idle resources, Cluster Orchestrator optimizes nodes, and Commitment Orchestration purchases RIs automatically—turning insights into savings without manual effort.
+- **Actionable, Not Just Informative**: Unlike tools that only show dashboards, CACM takes action. AutoStopping shuts down idle resources, Cluster Orchestrator optimizes nodes, and Commitment Orchestration purchases RIs automatically, turning insights into savings without manual effort.
 
 - **Built for Modern Infrastructure**: Native support for Kubernetes, containers, serverless, and AI workloads. CACM understands cloud-native architectures, not just VMs and storage buckets.
 
-- **Trace-Level Cost Decomposition for AI**: Cost can be analyzed by agent, by session and conversation, by individual run, and step-by-step within a run—all the way down to the model and tool invoked at each step. Expensive workloads surface, worst-case behavior becomes visible instead of being averaged away, and the same dimensions plug into Cost Categories, Perspectives, and Budgets.
+- **Trace-Level Cost Decomposition for AI**: Cost can be analyzed by agent, by session and conversation, by individual run, and step-by-step within a run, all the way down to the model and tool invoked at each step. Expensive workloads surface, worst-case behavior becomes visible instead of being averaged away, and the same dimensions plug into Cost Categories, Perspectives, and Budgets.
 
 - **Governance at Scale**: Policy-as-code enforcement ensures compliance across hundreds of accounts. Automatically detect untagged resources, idle infrastructure, and security misconfigurations before they become costly problems.
 
@@ -149,52 +160,27 @@ Shows how much money you're saving (or could save) through optimization features
 
 ---
 
-### Customizing Your View
+## Cloud Cost Management
 
-#### Cost Type Selection
+Track, attribute, and optimize spend across AWS, Azure, GCP, and external sources (SaaS, data center) using Perspectives, Cost Categories, budgets, governance policies, and automated optimization such as AutoStopping and Commitment Orchestration.
 
-You can customize how costs are displayed to match your needs.
+**Get started:** [Connect a cloud provider](./get-started.md) for Kubernetes, AWS, GCP, or Azure.
 
-<DocImage path={require('./static/costtypes.png')} width="100%" title="CACM Overview" />
-
-**AWS**:
-
-**Cost Types Available**:
-- **Amortized**: Upfront costs spread evenly over time
-- **Net Amortized**: Amortized cost minus discounts
-- **Unblended**: Raw cost before any adjustments
-- **Blended**: Weighted average cost across accounts
-- **Effective**: Actual cost after all adjustments
-- **List**: Standard pricing before discounts
-
-**Cost Adjustments** (include or exclude):
-- Discounts (volume discounts, reserved instance discounts, etc.)
-- Credits (promotional credits, service credits, etc.)
-- Refunds (returned charges, corrections, etc.)
-- Taxes (sales tax, VAT, etc.)
-
-**GCP**:
-
-**Cost Types Available**:
-- **Cost**: Actual cost after all discounts and credits
-- **List**: Standard pricing before discounts
-
-**Cost Adjustments**:
-- **Spend-based CUD discounts**: Discounts based on spending commitments
-- **Legacy spend-based CUD credits**: Historical commitment credits
-- **Resource-based CUD credits**: Commitment credits tied to specific resources
-- **Sustained use discounts (SUDs)**: Automatic discounts for consistent usage
-- **Spending-based discounts**: Volume-based pricing reductions
-- **Subscription credits**: Pre-purchased credit packages
-- **Negotiated savings**: Custom negotiated rates
-- **Promotional credits**: Time-limited promotional offers
-- **Tax**: Sales tax and VAT
-
-**Azure**:
-
-**Cost Types Available**:
-- **Actual**: Real cost incurred
-- **Amortized**: Upfront costs spread evenly over time
-- **List Actual**: Standard pricing before discounts
-- **List Amortised**: Standard pricing spread over time
 ---
+
+## AI Cost Management
+
+AI Cost Management extends the same platform to LLM providers, managed AI services, and AI applications. It tracks spend from invoice-level totals down to individual agent sessions, attributes cost to teams and products, and measures ROI per AI outcome (cost per resolved ticket, per session, per inference), all in the same Cost Explorer, Cost Categories, and budgets you already use for cloud.
+
+**Get started:** [Connect an AI provider](./get-started.md) and select the **AI** tab, then see [Introduction to AI cost management](../ai-cost-management/introduction-to-ai-cost-management.md) for what you can track and how to set it up, including trace-level attribution for agents, sessions, and requests.
+
+---
+
+## Where to go next
+
+Use these references to move from overview to setup without losing the thread:
+
+- **[Get started](./get-started.md):** Connect a cloud or AI provider. Pick the **AI** tab to start tracking AI spend.
+- **[Introduction to AI cost management](../ai-cost-management/introduction-to-ai-cost-management.md):** What you can track at each level (connector → traces → governance) and how it works.
+- **[Perspectives/Views & Cost Explorer](/docs/category/perspectives):** Analyze and break down cloud and AI spend.
+

@@ -16,7 +16,18 @@ import DynamicMarkdownSelector from '@site/src/components/DynamicMarkdownSelecto
 Select your cloud provider below to get started. You’ll connect your account, review your associated resource costs, and begin your journey to effective Cloud & AI Cost Management with Harness CACM.
 
 <DynamicMarkdownSelector
+  disableSort={true}
   options={{
+    OpenAI: {
+      path: "/cloud-cost-management/content/get-started/openai-quickstart.md",
+      logo: "/cloud-providers/openai-logo.svg",
+      logoSize: 32
+    },
+    Anthropic: {
+      path: "/cloud-cost-management/content/get-started/anthropic-quickstart.md",
+      logo: "/cloud-providers/claude-color.svg",
+      logoSize: 32
+    },
     Kubernetes: {
       path: "/cloud-cost-management/content/get-started/kubernetes-quickstart.md",
       logo: "/cloud-providers/kubernetes-logo.svg",

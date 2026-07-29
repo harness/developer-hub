@@ -2884,12 +2884,12 @@ const sidebars: SidebarsConfig = {
             'cloud-cost-management/ai-cost-management/understanding-ai-traces',
           ],
         },
-        'cloud-cost-management/unit-costs',
         {
           type: 'html',
           value: 'Use CACM',
           className: 'horizontal-bar',
         },
+        'cloud-cost-management/unit-costs',
         'cloud-cost-management/get-started/key-concepts',
         'cloud-cost-management/get-started/data-job-status',
         'cloud-cost-management/ask-ai',
