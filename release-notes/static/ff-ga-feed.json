@@ -1,6 +1,6 @@
 [
   {
-    "flagKey": "STO_ISSUE_KEV",
+    "flagKey": "ISSUE_KEV",
     "description": "Surfaces CISA Known Exploited Vulnerabilities (KEV) status on the Issues page and Vulnerabilities tab for CVE-associated security issues, and enables OPA policies to warn or block pipelines based on CISA KEV issue count.",
     "gaStartDate": "2026-07-23",
     "module": "Security Test Orchestration",
@@ -1085,7 +1085,7 @@
     "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "SCS_HAR_ARTIFACT_SIGNING_VERIFICATION",
+    "flagKey": "ARTIFACT_SIGNING_VERIFICATION",
     "description": "Enables Artifact Registry (AR) integration for artifact signing and verification steps",
     "gaStartDate": "2026-04-10",
     "module": "Supply Chain Security",
@@ -2058,7 +2058,7 @@
     "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "SCS_GITLAB_SUPPORT",
+    "flagKey": "GITLAB_SUPPORT",
     "description": "Enables GitLab CI/CD support for Harness Software Supply Chain Security (SCS), including SBOM generation, SBOM ingestion, policy enforcement, SLSA provenance, artifact signing, and artifact verification.",
     "gaStartDate": "2026-07-21",
     "module": "Supply Chain Security",
