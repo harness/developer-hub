@@ -146,6 +146,17 @@ export const spt: IltCardItem[] = [
     cardType: cardType.SPT,
   },
   {
+    title: "Introduction to Matrix Looping Strategy",
+    module: MODULES.ci,
+    type: type.user,
+    description:
+      "Self-paced tidbit introducing Matrix Looping Strategies.",
+    version: "Harness CI Paid Plans",
+    link: "https://university-registration.harness.io/self-paced-training-tidbit-introduction-to-matrix-looping-strategy",
+    tileType: tileType.normal,
+    cardType: cardType.SPT,
+  },
+  {
     title: "Introduction to Secure Repo Cloning",
     module: MODULES.ci,
     type: type.user,
