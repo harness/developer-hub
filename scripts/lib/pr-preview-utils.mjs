@@ -47,6 +47,10 @@ export function fileToSitePath(relPath, frontmatter) {
 
   let routePart = rest.replace(/\.(md|mdx)$/i, '');
   routePart = routePart.replace(/\/(index|README)$/i, '');
+  // Docusaurus convention: a file whose basename matches its parent folder
+  // (e.g. get-started/get-started.md) routes to the folder itself, same as
+  // index/README — otherwise the built link 404s with the segment doubled.
+  routePart = routePart.replace(/\/([^/]+)\/\1$/, '/$1');
   return `/${base}/${routePart}`.replace(/\/+/g, '/');
 }
 

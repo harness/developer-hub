@@ -92,6 +92,22 @@ check('fileToSitePath: strips a trailing README.md', () => {
   );
 });
 
+check('fileToSitePath: collapses a file whose basename matches its parent folder', () => {
+  // Docusaurus convention: get-started/get-started.md routes to /get-started,
+  // not /get-started/get-started (which 404s).
+  assert.equal(
+    fileToSitePath('docs/infra-as-code-management/get-started/get-started.md', {}),
+    '/docs/infra-as-code-management/get-started',
+  );
+});
+
+check('fileToSitePath: does not collapse a nested doc with a different basename', () => {
+  assert.equal(
+    fileToSitePath('docs/infra-as-code-management/get-started/onboarding.md', {}),
+    '/docs/infra-as-code-management/get-started/onboarding',
+  );
+});
+
 check('fileToSitePath: honors a frontmatter slug override', () => {
   assert.equal(
     fileToSitePath('docs/platform/some-internal-file.md', { slug: '/platform/get-started' }),

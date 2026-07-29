@@ -92,39 +92,23 @@ http://localhost:3000
 
 ```
 
-## PR automation (optional)
+## PR automation
 
-After you copy [`.env.example`](./.env.example) to `.env` and add a Harness PAT, pushing a feature branch can **create or update the Harness Code pull request** for you.
+Pushing a feature branch automatically **creates or updates the Harness Code pull request** for you — this runs server-side in the Harness CI pipeline (see HDH-1049), so there is no local setup required.
 
-**Setup**
-
-1. Copy `.env.example` to `.env` (`.env` is gitignored).
-2. Set **`HARNESS0_API_KEY`** (or **`HARNESS_API_KEY`**) to a PAT for the Harness account that owns this repo's `origin` remote. The script matches the token to the account embedded in the git URL.
-3. Optional: set **`GEMINI_API_KEY`** for an AI-written PR summary. Without it, the script builds a summary from git commit messages and file lists.
-
-**What runs on push**
-
-A **pre-push hook** (`.husky/pre-push`) starts `scripts/pr-sync.mjs` in the background so push is never blocked. Log output: `.git/pr-sync.log`.
-
-On each push the script:
+On each push the pipeline:
 
 1. Builds a conventional-commit PR title from the branch name and latest commit.
 2. Fills [`.harness/pull_request_template.md`](./.harness/pull_request_template.md) with a summary and preview table.
 3. **Skips frontmatter-only doc changes** (`redirect_from`, `title`, etc.) from the per-page preview list.
 4. Creates or updates the open PR on Harness Code.
-5. Waits for the CI Netlify preview URL (first check after 10 minutes, then every 5 minutes, up to ~40 minutes) and rewrites preview links when the build finishes.
+5. Rewrites preview links once the Netlify preview build finishes.
 
-**Manual commands**
+To generate the preview table locally without the API, run:
 
 ```bash
-npm run pr-sync                  # sync once (same logic as the hook)
-npm run pr-sync -- --dry-run     # print title and body without calling the API
-npm run generate-pr-preview-list # preview table only (no API)
+npm run generate-pr-preview-list
 ```
-
-**Opt out for one push:** `HDH_NO_PR_SYNC=1 git push`
-
-If no matching PAT is in `.env`, the hook prints a skip message and does nothing.
 
 ## Navigation and folder structure
 

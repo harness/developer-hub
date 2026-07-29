@@ -6,15 +6,10 @@ description: Generate PR preview link tables while excluding frontmatter-only do
 
 When you fill in the **Preview Link(s) & JIRA Ticket** section of a Harness Developer Hub PR, do not list every changed markdown file. Per-page previews are only needed when rendered page content changes.
 
-## Automatic sync on push
-
-If you set up [PR automation](../../CONTRIBUTING.md#pr-automation-optional) (`HARNESS0_API_KEY` in `.env`), `scripts/pr-sync.mjs` runs after every push and applies the same frontmatter-only rules automatically. You do not need to run the commands below unless you are drafting a description by hand.
-
 ## Manual commands
 
 ```bash
 npm run generate-pr-preview-list
-npm run pr-sync -- --dry-run
 ```
 
 ## Frontmatter-only changes (exclude from preview list)

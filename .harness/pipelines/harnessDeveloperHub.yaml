@@ -152,6 +152,33 @@ pipeline:
                       KAPA_PROJECT_ID: <+pipeline.variables.KAPA_PROJECT_ID>
                       MIXPANEL_TOKEN: <+pipeline.variables.MIXPANEL_TOKEN>
               - step:
+                  type: Run
+                  name: PR-Sync-Create
+                  identifier: PR_Sync_Create
+                  spec:
+                    shell: Sh
+                    command: |-
+                      set +e
+                      OUTPUT=$(node scripts/ci-pr-sync-create.mjs)
+                      echo "$OUTPUT"
+                      PR_NUMBER=$(echo "$OUTPUT" | grep '^PR_NUMBER=' | cut -d'=' -f2)
+                      export PR_NUMBER
+                    envVariables:
+                      commentorToken: <+pipeline.variables.harnessCodeCommentorToken>
+                      GEMINI_API_KEY: <+pipeline.variables.GEMINI_API_KEY>
+                      BRANCH: <+trigger.branch>
+                    outputVariables:
+                      - name: PR_NUMBER
+                  when:
+                    stageStatus: Success
+                    condition: <+trigger.branch>!~"/^main$/"
+              # Runs on every non-main push (first push with no PR yet, and every
+              # subsequent push once a PR exists) — see HDH-1049. Creates the PR on
+              # first push, refreshes title/summary on later pushes. Preview links
+              # start as placeholders here; PR-Sync-Update-Preview below patches in
+              # the real Netlify URL once it's known, gated to the PR-event runs
+              # where Publish-Netlify-Preview actually executes.
+              - step:
                   type: Plugin
                   name: Publish-Netifly-Preview
                   identifier: Publish_Netlify_Preview
@@ -169,18 +196,46 @@ pipeline:
                     condition: <+trigger.event>.equals("PR") && <+trigger.branch>!~"/^main$/"
               - step:
                   type: Run
+                  name: PR-Sync-Update-Preview
+                  identifier: PR_Sync_Update_Preview
+                  spec:
+                    shell: Sh
+                    command: |-
+                      node scripts/ci-pr-sync-preview.mjs
+                    envVariables:
+                      commentorToken: <+pipeline.variables.harnessCodeCommentorToken>
+                      GEMINI_API_KEY: <+pipeline.variables.GEMINI_API_KEY>
+                      BRANCH: <+trigger.branch>
+                      PR_NUMBER: <+execution.steps.PR_Sync_Create.output.outputVariables.PR_NUMBER>
+                      DRAFT_URL: <+execution.steps.Publish_Netlify_Preview.output.outputVariables.DRAFT_URL>
+                  when:
+                    stageStatus: Success
+                    condition: <+trigger.event>.equals("PR") && <+trigger.branch>!~"/^main$/"
+              - step:
+                  type: Run
                   name: Commentor
                   identifier: Run_2
                   spec:
                     shell: Sh
                     command: |-
+                      set +e
+
+                      # codebase.prNumber doesn't always resolve on re-runs — seen it come
+                      # back as the literal string "null", which previously produced a
+                      # pullreq/null/comments URL and a hard 400. Validate before using it,
+                      # and skip non-blocking rather than fail the stage over a comment.
+                      if [ -z "$PR_NUMBER" ] || [ "$PR_NUMBER" = "null" ] || ! echo "$PR_NUMBER" | grep -qE '^[0-9]+$'; then
+                        echo "No valid PR number available (codebase.prNumber='$PR_NUMBER') — skipping Commentor."
+                        exit 0
+                      fi
+
                       echo "Posting PR comment with Netlify preview link"
 
                       RESPONSE=$(curl -s -X POST \
                       -H "Authorization: Bearer $commentorToken" \
                       -H "Content-Type: application/json" \
                       -d '{"text": "Please check the Execution Link of the Pipeline for the Website Draft URL. This is located in the Preview Step behind the Harness VPN and also is available in #hdh_alerts. E.g Website Draft URL: https://unique-id--harness-developer.netlify.app. Current Draft URL is: <+execution.steps.Publish_Netlify_Preview.output.outputVariables.DRAFT_URL>"}' \
-                      "https://harness0.harness.io/gateway/code/api/v1/repos/l7B_kbSEQD2wjrM7PShm5w/PROD/Harness_Commons/developer-hub/+/pullreq/<+codebase.prNumber>/comments")
+                      "https://harness0.harness.io/gateway/code/api/v1/repos/l7B_kbSEQD2wjrM7PShm5w/PROD/Harness_Commons/developer-hub/+/pullreq/$PR_NUMBER/comments")
 
                       echo "Response: $RESPONSE"
 
@@ -189,17 +244,18 @@ pipeline:
                       echo "Extracted COMMENT_ID: $COMMENT_ID"
 
                       if [ -z "$COMMENT_ID" ] || [ "$COMMENT_ID" = "null" ]; then
-                        echo "❌ Failed to create comment"
-                        exit 1
+                        echo "❌ Failed to create comment — continuing, this is non-blocking"
+                        exit 0
                       fi
 
                       curl -X PUT \
                        -H "Authorization: Bearer $commentorToken" \
                        -H "Content-Type: application/json" \
                        -d '{"status":"resolved"}' \
-                       "https://harness0.harness.io/gateway/code/api/v1/repos/l7B_kbSEQD2wjrM7PShm5w/PROD/Harness_Commons/developer-hub/+/pullreq/<+codebase.prNumber>/comments/$COMMENT_ID/status"
+                       "https://harness0.harness.io/gateway/code/api/v1/repos/l7B_kbSEQD2wjrM7PShm5w/PROD/Harness_Commons/developer-hub/+/pullreq/$PR_NUMBER/comments/$COMMENT_ID/status"
                     envVariables:
                       commentorToken: <+pipeline.variables.harnessCodeCommentorToken>
+                      PR_NUMBER: <+codebase.prNumber>
                   when:
                     stageStatus: Success
                     condition: <+trigger.event>.equals("PR") && <+trigger.branch>!~"/^main$/"
