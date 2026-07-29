@@ -6,7 +6,7 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 
 :::important
 
-AWS **CUR 2.0** (Data Exports) is now supported and recommended for new connectors. It covers all CACM features. **CUR 1.0 (Legacy CUR)** remains fully supported for existing connectors.
+We recommend AWS **CUR 2.0** (Data Exports), which covers all CACM features. **CUR 1.0 (Legacy CUR)** is also fully supported.
 
 :::
 
@@ -23,7 +23,7 @@ To ensure a smooth and error-free setup experience, complete the following steps
 
 ### Set Up the Cost and Usage Report
 
-Create the report in your AWS console, then use its name and S3 bucket when you configure the Harness connector. Choose **CUR 2.0** for new connectors, or **Legacy CUR** for existing ones:
+Create the report in your AWS console, then use its name and S3 bucket when you configure the Harness connector. We recommend **CUR 2.0**, but **Legacy CUR** is also fully supported.
 
 <Tabs queryString="cur">
 <TabItem value="cur2" label="CUR 2.0 (recommended)" default>
@@ -112,12 +112,7 @@ Connect your AWS account to Harness using the connector wizard. Watch the walkth
 
 ### Step 2: Select or Create a Cost and Usage Report
 
-In the connector wizard, select the report type based on the features you need:
-
-| Report type | Supported features | Recommended for |
-|---|---|---|
-| **CUR 2.0 (recommended)** | Cost Visibility, Asset Governance, Recommendations | New connectors, AI cost attribution (e.g. Amazon Bedrock), organizations that do not need AutoStopping, Commitments, or Cluster Orchestrator |
-| **CUR 1.0 (legacy)** | Cost Visibility, Asset Governance, Recommendations, AutoStopping, Commitments, Cluster Orchestrator | Existing connectors that rely on AutoStopping, Commitments, or Cluster Orchestrator |
+In the connector wizard, select a report type. We recommend **CUR 2.0**, but **CUR 1.0 (legacy)** is also fully supported.
 
 <Tabs queryString="cur-version">
 <TabItem value="cur2" label="CUR 2.0 (recommended)" default>
