@@ -200,6 +200,39 @@ Even if your pipeline defines up to 256 parallel steps or stages, only the first
 
 This limit exists to ensure fair usage and system stability. It is configurable internally based on your plan tier, but not editable by users via the UI.
 
+### Account-level step concurrency limit
+
+:::note
+This feature is behind the feature flag `PIPE_USE_COUNTER_BASED_STEP_CONCURRENCY_GATE`. Contact [Harness Support](mailto:support@harness.io) to enable it for your account.
+:::
+
+The **per-execution concurrency limit** controls the maximum number of steps or stages that can run simultaneously within a single pipeline execution.
+
+To ensure fair resource allocation and platform stability, Harness also enforces an **account-level step concurrency limit**. This limit caps the total number of concurrently running steps across all pipeline executions in your account. This limit can be overridden for your account by Harness Support.
+
+#### Steps counted toward the concurrency limit
+
+A **step** refers to a **leaf step** that is actively running and appears with the **Running** status in the pipeline execution graph.
+
+The following nodes **count** toward the concurrency limit:
+
+- Running leaf steps
+
+The following nodes **do not count**:
+
+- Pipeline nodes
+- Stage nodes
+- Any step that is not in the **Running** state
+
+#### How the limit is applied
+
+When a step becomes eligible to run, Harness evaluates the account-level concurrency limit.
+
+1. Harness checks whether the account-level step limit has available capacity.
+2. The step starts running only if capacity is available.
+3. If the limit has been reached, the step enters the **Queued** state.
+4. Queued steps automatically start when running steps complete and capacity becomes available.
+
 
 ### Pipeline Timeout and Stage Timeout (execution time limits)
 
