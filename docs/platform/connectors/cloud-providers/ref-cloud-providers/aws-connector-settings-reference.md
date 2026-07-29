@@ -851,305 +851,6 @@ If the feature flag `CDS_ENABLE_PIPELINE_SCOPED_OIDC_SUB` is enabled on top of `
 - For Organization level resources - `"sub":"account/Hue1lBsaSx2APlXjzVEPIg:org/default:project/"`
 - For Account level resources - `"sub":"account/Hue1lBsaSx2APlXjzVEPIg:org/:project/"`
 
-### OIDC claims supported in Harness
-
-**Trusted Claims:**
-
-  - Harness validates the following claims internally to determine if the principal has the required permissions. When configuring trust on the Cloud Provider side, only these specific claims and their exact values should be accepted. Any claims outside this list must be rejected to avoid unauthorized access.
-    * `accountId`
-    * `organizationId`
-    * `projectIdentifier`
-    * `pipelineIdentifier`
-
-  - The following claims are validated for existence in Harness, but do not include an access check:
-    * `environmentIdentifier`
-    * `connectorIdentifier`
-    * `serviceIdentifier`
-
-**Non-Trusted Claims**
-
-  - The following claims are considered non-trusted. They are not validated for existence or access control and are used for informational context only:
-
-    * `environmentType`
-    * `connectorName`
-    * `serviceName`
-    * `triggeredByName`
-    * `triggerByEmail`
-    * `stageType`
-    * `stepType`
-    * `context`
-
-### Custom Parameters 
-
-Here are the custom parameters for the Harness AWS OIDC JWT:
-
-- **account_id**: The account id of your Harness account.
-- **organization_id**: The organization id of your Harness organization.
-- **project_id**: The project id of your Harness project. 
-- **connector_id**: The id of the OIDC-enabled AWS connector that sent this token.
-- **connector_name**: The name of the OIDC-enabled AWS connector that sent this token.
-- **context**: This specifies the Harness context from when this OIDC token is generated. Possible values for this field are:
-  - `CONNECTOR_VALIDATION` - This context is sent when the connector is being setup.
-  - `PIPELINE_CONFIGURATION` - This context is sent when a pipeline configuration is being completed.
-  - `PIPELINE_EXECUTION` - This context is sent when a pipeline configuration is being executed.
-  - `PERPETUAL_TASK` - This context is sent when a perpetual task is executing.
-
-### OIDC delegate selectors for AWS
-
-:::info Feature flag
-
-This behavior is controlled by the feature flag `CDS_OIDC_AWS_SESSION_TAG_DELEGATE_SELECTORS`. Contact [Harness Support](mailto:support@harness.io) to enable it on your account.
-
-:::
-
-You can configure AWS Cloud Provider connectors with OIDC authentication to include delegate selectors as AWS session tags in OIDC tokens. This enables you to enforce AWS IAM policies based on which Harness delegates execute tasks.
-
-When you configure an AWS connector with OIDC, Harness includes delegate selector information in the OIDC token with the `https://aws.amazon.com/tags/principal_tags/delegate_selectors` claim. AWS converts this into a session tag when assuming the IAM role, and you can reference it in IAM policies using `aws:PrincipalTag/delegate_selectors` conditions.
-
-Harness resolves delegate selectors following the precedence: Step > StepGroup > Stage > Pipeline (first match wins). Connector-level delegate selectors are always combined with the resolved selector. Multiple selectors are encoded using the `+` delimiter (for example, `+selector1+selector2+`).
-
-#### IAM trust policy configuration
-
-To use delegate selectors with OIDC, add the `sts:TagSession` permission to your IAM role's trust policy:
-
-<details>
-<summary>Trust policy with sts:TagSession permission</summary>
-
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "Federated": "arn:aws:iam::123456789012:oidc-provider/app.harness.io/ng/api/oidc/account/YOUR_ACCOUNT_ID"
-      },
-      "Action": [
-        "sts:AssumeRoleWithWebIdentity",
-        "sts:TagSession"
-      ],
-      "Condition": {
-        "StringEquals": {
-          "app.harness.io/ng/api/oidc/account/YOUR_ACCOUNT_ID:aud": "sts.amazonaws.com"
-        }
-      }
-    }
-  ]
-}
-```
-
-</details>
-
-#### IAM policy conditions
-
-You can enforce delegate selector requirements using IAM policy conditions.
-
-**Allow specific delegate selector (OR condition):**
-
-<details>
-<summary>IAM policy with OR condition for delegate selectors</summary>
-
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Sid": "AllowS3Access",
-      "Effect": "Allow",
-      "Action": ["s3:*"],
-      "Resource": "*",
-      "Condition": {
-        "StringLike": {
-          "aws:PrincipalTag/delegate_selectors": [
-            "*+delegate-selector-1+*",
-            "*+delegate-selector-2+*"
-          ]
-        }
-      }
-    }
-  ]
-}
-```
-
-</details>
-
-This policy allows S3 access only if the delegate selector matches either of the specified selectors.
-
-**Require multiple delegate selectors (AND condition):**
-
-To enforce that multiple delegate selectors must be present, use DENY rules with DeMorgan's Law (`NOT(NOT A OR NOT B) = A AND B`):
-
-<details>
-<summary>IAM policy with AND condition using DENY rules</summary>
-
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Sid": "AllowS3",
-      "Effect": "Allow",
-      "Action": ["s3:*"],
-      "Resource": "*"
-    },
-    {
-      "Sid": "DenyUnlessDelegateSelector1Present",
-      "Effect": "Deny",
-      "Action": ["s3:*"],
-      "Resource": "*",
-      "Condition": {
-        "StringNotLike": {
-          "aws:PrincipalTag/delegate_selectors": "*+delegate-selector-1+*"
-        }
-      }
-    },
-    {
-      "Sid": "DenyUnlessDelegateSelector2Present",
-      "Effect": "Deny",
-      "Action": ["s3:*"],
-      "Resource": "*",
-      "Condition": {
-        "StringNotLike": {
-          "aws:PrincipalTag/delegate_selectors": "*+delegate-selector-2+*"
-        }
-      }
-    }
-  ]
-}
-```
-
-</details>
-
-This policy allows S3 access by default, but denies access if either delegate selector is NOT present, resulting in access only when BOTH selectors are present.
-
-#### Two-tier policy approach
-
-You can separate connector validation permissions from service operation permissions:
-
-**Tier 1: Allow connector validation**
-
-```json
-{
-  "Sid": "EC2Permissions",
-  "Effect": "Allow",
-  "Action": ["ec2:DescribeRegions"],
-  "Resource": "*"
-}
-```
-
-**Tier 2: Restrict service operations**
-
-```json
-{
-  "Sid": "CloudFormationWithDelegateRestriction",
-  "Effect": "Allow",
-  "Action": ["cloudformation:*"],
-  "Resource": "*",
-  "Condition": {
-    "StringLike": {
-      "aws:PrincipalTag/delegate_selectors": "*+your-delegate-selector+*"
-    }
-  }
-}
-```
-
-This approach allows connector validation to succeed while restricting actual service operations to specific delegates.
-
-:::info Future enhancement
-
-Support for delegate selectors in OIDC tokens is planned for AWS Secret Manager and AWS KMS connectors. For these connectors, only the connector-level delegate selectors will be included (not pipeline or step-level selectors).
-
-:::
-
-For more information about delegate selectors, go to [Select delegates with selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors).
-
-
-#### Examples
-
-<details>
-<summary> JWT sent by a connector at the project scope </summary>
-
-```
-{
-  "header":{
-     "typ":"JWT"
-     "alg":"RS256"
-     "kid":"2xk__q7dWlb0c8qM5iYR_J-Ro9eYd0yOb_J5ooSk94g"
-  }
-"payload":{
-     "sub":"account/Hue1lBsaSx2APlXjzVEPIg:org/default:project/OIDC_Test"
-     "iss":"https://app.harness.io/ng/api/oidc/account/Hue1lBsaSx2APlXjzVEPIg"
-     "aud":"sts.amazonaws.com"
-     "exp":1718132139
-     "iat":1718128539
-     "account_id":"Hue1lBsaSx2APlXjzVEPIg"
-     "organization_id":"default"
-     "project_id":"OIDC_Test"
-     "connector_id":"AWS_OIDC"
-     "connector_name":"AWS_OIDC"
-     "context":"CONNECTOR_VALIDATION"
-   }
-}
-```
-</details>
-
-<details>
-<summary> JWT sent by a connector at the organization scope </summary> 
-
-```
-{
-   "header":{
-      "typ":"JWT"
-      "alg":"RS256"
-      "kid":"2xk__q7dWlb0c8qM5iYR_J-Ro9eYd0yOb_J5ooSk94g"
-    }
-    "payload":{
-       "sub":"account/Hue1lBsaSx2APlXjzVEPIg:org/default:project/"
-        "iss":"https://app.harness.io/ng/api/oidc/account/Hue1lBsaSx2APlXjzVEPIg"
-        "aud":"sts.amazonaws.com"
-        "exp":1718133015
-        "iat":1718129415
-        "account_id":"Hue1lBsaSx2APlXjzVEPIg"
-        "organization_id":"default"
-        "connector_id":"AWS_OIDC_Org"
-        "connector_name":"AWS_OIDC_Org"
-        "context":"CONNECTOR_VALIDATION"
-    }
-}
-```
-
-</details>
-
-<details>
-<summary> Sample IAM policy scoped to a specific project or organization </summary>
-
-This example policy enables scoping to a specific project or organization for authentication through an OIDC provider.
-
-```
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Principal": {
-                "Federated": "arn:aws:iam::156272853481:oidc-provider/app.harness.io/ng/api/oidc/account/Hue1lBsaSx2APlXjzVEPIg"
-            },
-            "Action": "sts:AssumeRoleWithWebIdentity",
-            "Condition": {
-                "StringEquals": {
-                    "app.harness.io/ng/api/oidc/account/Hue1lBsaSx2APlXjzVEPIg:aud": "sts.amazonaws.com",
-                    "app.harness.io/ng/api/oidc/account/Hue1lBsaSx2APlXjzVEPIg:sub": "account/Hue1lBsaSx2APlXjzVEPIg:org/default:project/OIDC_Test"
-                }
-            }
-        }
-    ]
-}
-```
-You can match only the aud or sub. To map to a particular organization and project, you must enable the feature flag `PL_OIDC_ENHANCED_SUBJECT_FIELD` . The subject value will follow the format shown above: `account/Hue1lBsaSx2APlXjzVEPIg:org/default:project/OIDC_Test`.
-
-</details>
-
-
 ### OIDC session tags for AWS
 
 :::info Feature flag
@@ -1182,8 +883,49 @@ You can select any combination of the following attributes to include as session
 - **trigger_by_email:** Email of the user who triggered the execution
 - **stage_type:** Stage type in the pipeline
 - **step_type:** Step type in the pipeline
-- **delegate_selectors:** Delegate selectors used for execution
+- **delegate_selectors:** Delegate selectors resolved for the execution. Harness resolves the effective selector by precedence (Step > StepGroup > Stage > Pipeline); no step-level selector is required. If the resolved level has multiple selectors, all are included, encoded with the `+` delimiter (for example, `+selector1+selector2+`). The connector-level selector is used as a fallback when no selector is found in the precedence chain. Go to [Delegate selectors as session tags](#delegate-selectors-as-session-tags) for IAM policy examples.
 - **context:** Additional context information
+
+#### Claims and custom parameters
+
+Harness includes the following standard claims and custom parameters in the OIDC JWT for AWS connectors.
+
+**Trusted claims** — Harness validates these internally to determine whether the principal has the required permissions. When configuring trust on the AWS side, only accept these claims and their exact values. Reject any claims outside this list to avoid unauthorized access.
+
+- `accountId`
+- `organizationId`
+- `projectIdentifier`
+- `pipelineIdentifier`
+
+The following claims are validated for existence in Harness but do not include an access check:
+
+- `environmentIdentifier`
+- `connectorIdentifier`
+- `serviceIdentifier`
+
+**Non-trusted claims** — these claims are not validated for existence or access control and are included for informational context only:
+
+- `environmentType`
+- `connectorName`
+- `serviceName`
+- `triggeredByName`
+- `triggerByEmail`
+- `stageType`
+- `stepType`
+- `context`
+
+**Custom parameters** — Harness includes the following custom fields in the JWT payload:
+
+- **account_id:** The account identifier of your Harness account.
+- **organization_id:** The organization identifier of your Harness organization.
+- **project_id:** The project identifier of your Harness project.
+- **connector_id:** The identifier of the OIDC-enabled AWS connector that sent this token.
+- **connector_name:** The name of the OIDC-enabled AWS connector that sent this token.
+- **context:** Specifies the Harness context in which this OIDC token was generated. Possible values are:
+  - `CONNECTOR_VALIDATION` — sent when the connector is being set up.
+  - `PIPELINE_CONFIGURATION` — sent when a pipeline configuration is being completed.
+  - `PIPELINE_EXECUTION` — sent when a pipeline is executing.
+  - `PERPETUAL_TASK` — sent when a perpetual task is executing.
 
 #### Configure OIDC session tags in connectors
 
@@ -1294,7 +1036,7 @@ OIDC session tags enable fine-grained access control based on execution context:
 - **Pipeline-specific access:** Grant access to specific AWS resources only when particular pipelines execute.
 - **Project-level separation:** Enforce project-level access boundaries for AWS resources based on the project context.
 - **Service-specific permissions:** Restrict resource access based on which service is being deployed.
-- **Delegate selector policies:** Enforce IAM policies based on which delegates execute tasks (requires `CDS_OIDC_AWS_SESSION_TAG_DELEGATE_SELECTORS` feature flag).
+- **Delegate selector policies:** Enforce IAM policies based on which Harness delegates execute tasks.
 - **Compliance requirements:** Meet regulatory requirements that mandate context-based access separation for sensitive data and resources.
 
 #### How it works
@@ -1462,16 +1204,221 @@ The OIDC token payload includes your selected attributes as AWS principal tags:
 
 Each selected attribute appears as a claim with the prefix `https://aws.amazon.com/tags/principal_tags/` followed by the attribute name.
 
-#### Delegate selectors behavior
+#### Delegate selectors as session tags
 
-The `delegate_selectors` attribute has special behavior governed by two different feature flags:
+The `delegate_selectors` attribute behaves differently from other session tag attributes. Most attributes carry a single string value, but `delegate_selectors` can carry multiple values encoded in a single string using the `+` delimiter (for example, `+prod-delegate+aws-delegate+`). This affects how you write IAM policy conditions for this attribute.
 
-- **When `CDS_OIDC_AWS_SESSION_TAG_DELEGATE_SELECTORS` is enabled:** Harness automatically includes `delegate_selectors` in the OIDC token regardless of whether you selected it in the connector's OIDC session tags field.
-- **When `CDS_OIDC_AWS_SESSION_TAGS` is enabled:** You can select any attributes you want, including `delegate_selectors`, through the connector configuration. All selected attributes are included in the OIDC token.
+Harness resolves delegate selectors by walking the following precedence chain: Step > StepGroup > Stage > Pipeline. The first level in that chain that has a selector configured is used. If only a stage-level selector is configured, that resolved selector is what Harness passes into the OIDC payload. If a stage has multiple selectors (for example, `dev-sel-1` and `dev-sel-2`), all of them are included: `+dev-sel-1+dev-sel-2+`.
 
-The two feature flags work independently. If both are enabled, `delegate_selectors` will be included in the token regardless of your selection.
+The connector-level delegate selector is a fallback. If no selector is found anywhere in the precedence chain (Step, StepGroup, Stage, Pipeline), Harness falls back to the connector's selector. Connector-level selectors are not combined with pipeline-resolved selectors.
 
-Multiple delegate selectors are encoded using the `+` delimiter (for example, `+selector1+selector2+`). Harness resolves delegate selectors following the precedence: Step > StepGroup > Stage > Pipeline (first match wins). Connector-level delegate selectors are always combined with the resolved selector.
+**Filtering on a single-value attribute (`pipeline_id`):**
+
+For attributes that carry a single value, use `StringEquals` for exact matches or `StringLike` for pattern matching.
+
+<details>
+<summary>IAM policy: restrict access to a specific pipeline</summary>
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowDeployProdPipelineOnly",
+      "Effect": "Allow",
+      "Action": ["s3:*"],
+      "Resource": "*",
+      "Condition": {
+        "StringEquals": {
+          "aws:PrincipalTag/pipeline_id": "deploy-prod"
+        }
+      }
+    }
+  ]
+}
+```
+
+</details>
+
+This policy allows S3 access only when the executing pipeline is `deploy-prod`.
+
+**Filtering on `delegate_selectors`: exact single selector (`StringEquals`):**
+
+When you know that exactly one delegate selector will be present (for example, only a connector-level fallback selector is configured), you can match the full encoded value exactly using `StringEquals`. The value must include the surrounding `+` delimiters.
+
+<details>
+<summary>IAM policy: exact match on a single delegate selector</summary>
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowExactDelegateSelector",
+      "Effect": "Allow",
+      "Action": ["s3:*"],
+      "Resource": "*",
+      "Condition": {
+        "StringEquals": {
+          "aws:PrincipalTag/delegate_selectors": "+prod-delegate+"
+        }
+      }
+    }
+  ]
+}
+```
+
+</details>
+
+This only matches if `prod-delegate` is the sole selector in the token. If more selectors are present (for example, the resolved value is `+prod-delegate+aws-delegate+`), the `StringEquals` check fails. Use `StringLike` in that case.
+
+**Filtering on `delegate_selectors`: OR condition (`StringLike`):**
+
+Because `delegate_selectors` uses the `+selector+` encoding, use `StringLike` with wildcard patterns. The following policy allows access if the session carries either of two specified delegate selectors.
+
+<details>
+<summary>IAM policy with OR condition for delegate selectors</summary>
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowIfEitherDelegatePresent",
+      "Effect": "Allow",
+      "Action": ["s3:*"],
+      "Resource": "*",
+      "Condition": {
+        "StringLike": {
+          "aws:PrincipalTag/delegate_selectors": [
+            "*+prod-delegate+*",
+            "*+aws-delegate+*"
+          ]
+        }
+      }
+    }
+  ]
+}
+```
+
+</details>
+
+**Combining delegate selectors with another attribute:**
+
+You can combine conditions on `delegate_selectors` and a single-value attribute to enforce that both must match. The following policy restricts access to production secrets to sessions that use the `prod-delegate` AND are executing the `deploy-prod` pipeline.
+
+<details>
+<summary>IAM policy: delegate selector AND pipeline_id condition</summary>
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowProdDelegateOnDeployProdPipeline",
+      "Effect": "Allow",
+      "Action": [
+        "secretsmanager:GetSecretValue",
+        "secretsmanager:DescribeSecret"
+      ],
+      "Resource": "arn:aws:secretsmanager:us-east-1:123456789012:secret:prod/*",
+      "Condition": {
+        "StringLike": {
+          "aws:PrincipalTag/delegate_selectors": "*+prod-delegate+*"
+        },
+        "StringEquals": {
+          "aws:PrincipalTag/pipeline_id": "deploy-prod"
+        }
+      }
+    }
+  ]
+}
+```
+
+</details>
+
+**Requiring both delegate selectors to be present (AND condition):**
+
+To enforce that multiple delegate selectors must all be present, use DENY rules based on DeMorgan's Law (`NOT(NOT A OR NOT B) = A AND B`):
+
+<details>
+<summary>IAM policy with AND condition using DENY rules</summary>
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowS3",
+      "Effect": "Allow",
+      "Action": ["s3:*"],
+      "Resource": "*"
+    },
+    {
+      "Sid": "DenyUnlessDelegateSelector1Present",
+      "Effect": "Deny",
+      "Action": ["s3:*"],
+      "Resource": "*",
+      "Condition": {
+        "StringNotLike": {
+          "aws:PrincipalTag/delegate_selectors": "*+delegate-selector-1+*"
+        }
+      }
+    },
+    {
+      "Sid": "DenyUnlessDelegateSelector2Present",
+      "Effect": "Deny",
+      "Action": ["s3:*"],
+      "Resource": "*",
+      "Condition": {
+        "StringNotLike": {
+          "aws:PrincipalTag/delegate_selectors": "*+delegate-selector-2+*"
+        }
+      }
+    }
+  ]
+}
+```
+
+</details>
+
+This policy allows S3 access by default, but denies it if either delegate selector is absent, so access is granted only when both selectors are present.
+
+**Two-tier policy approach:**
+
+You can separate connector validation permissions from service operation permissions so that connector setup succeeds while actual service operations are restricted by delegate selector.
+
+<details>
+<summary>Two-tier IAM policy: validation and service operations</summary>
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowConnectorValidation",
+      "Effect": "Allow",
+      "Action": ["ec2:DescribeRegions"],
+      "Resource": "*"
+    },
+    {
+      "Sid": "RestrictDeploymentsByDelegate",
+      "Effect": "Allow",
+      "Action": ["cloudformation:*"],
+      "Resource": "*",
+      "Condition": {
+        "StringLike": {
+          "aws:PrincipalTag/delegate_selectors": "*+your-delegate-selector+*"
+        }
+      }
+    }
+  ]
+}
+```
+
+</details>
+
+For more information about delegate selectors, go to [Select delegates with selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors).
 
 :::info Configuration requirements and behavior
 
@@ -1481,9 +1428,31 @@ Multiple delegate selectors are encoded using the `+` delimiter (for example, `+
 - **IAM propagation:** Changes to IAM trust policies and permissions policies can take up to five minutes to propagate in AWS. Allow time for propagation before testing.
 - **Session tag format:** AWS requires session tags to use the flattened claim format `https://aws.amazon.com/tags/principal_tags/<tag-name>`. Harness automatically formats claims correctly.
 - **Trust policy validation:** If your IAM role trust policy includes conditions on `aws:RequestTag/<attribute>`, ensure the values match your pipeline execution attributes. Mismatches cause role assumption to fail.
-
 For more information about AWS session tags, go to [AWS IAM session tags documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_session-tags.html).
 
+:::
+
+#### Swimlane coverage
+
+The following AWS deployment swimlanes have been tested and support all session tag attributes:
+
+- AWS Serverless Lambda
+- AWS ECS
+- AWS CloudFormation
+- AWS EKS
+- AWS Lambda
+- Container steps with images pulled from ECR
+- Download AWS S3
+
+The following swimlanes have not been tested or are not yet supported:
+
+- Terraform
+- AWS ASG
+- AWS SAM
+- AWS CDK
+
+:::note
+When using containerized step groups with an AWS connector, delegate selector precedence is not applied during the pipeline's init step. The connector-level selector is used for that step regardless of any stage or pipeline overrides.
 :::
 
 
