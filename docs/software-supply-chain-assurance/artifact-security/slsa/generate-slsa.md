@@ -341,6 +341,7 @@ When you run a pipeline with SLSA generation enabled, Harness SCS:
 * Generates an SLSA Provenance for the image created by the Build and Push steps in the Build stage.
 * Generates and signs an attestation using the provided key and password.
 * Stores the SLSA Provenance in Harness and uploads the `.att` file to your container registry alongside the image.
+* Access the generated SLSA Provenance directly from the pipeline output, generated under the default `/harness` working directory and available at `/harness/harness/slsa/{slsa_<slsa_generation_step_execution_id>}.json`.
 
 The signed attestation is stored, as a `.att` file, in the artifact repository along with the image. You can also find the SLSA Provenance on the **Supply Chain** tab on the Pipeline Execution details page in Harness.You can download your SLSA provenance and find the status of the **SLSA verification step**. The overview section presents a cumulative count of all Success and failure cases.
 
