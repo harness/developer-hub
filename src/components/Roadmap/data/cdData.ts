@@ -37,11 +37,6 @@ export const CdData: Horizon = {
       },
       {
         tag: [{ value: "Deployment" }],
-        title: "Kubernetes Cluster Observability Dashboard",
-        description: "Users can visualize and monitor Kubernetes cluster resources with a Lens-like observability tool, providing real-time insights into cluster health, resource utilization, and deployment status.",
-      },
-      {
-        tag: [{ value: "Deployment" }],
         title: "Service Configuration Drift Detection and Reconciliation",
         description: "Users can detect and reconcile configuration drift between deployed services and their desired state, maintaining deployment consistency and preventing configuration mismatches across environments.",
       },
@@ -149,6 +144,11 @@ export const CdData: Horizon = {
         tag: [{ value: "GitOps" }],
         title: "Hosted GitOps",
         description: "Users can leverage fully hosted GitOps agents managed by Harness, eliminating the need for self-managed agent infrastructure.",
+      },
+      {
+        tag: [{ value: "Deployment" }],
+        title: "Kubernetes Cluster Observability Dashboard",
+        description: "Users can visualize and monitor Kubernetes cluster resources with a Lens-like observability tool, providing real-time insights into cluster health, resource utilization, and deployment status.",
       },
       {
         tag: [{ value: "GitOps" }],
