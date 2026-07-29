@@ -152,6 +152,7 @@ spec:
           initialDelaySeconds: 10
           periodSeconds: 10
           failureThreshold: 5
+          timeoutSeconds: 5
         readinessProbe:
           httpGet:
             path: /health
@@ -159,6 +160,7 @@ spec:
           initialDelaySeconds: 5
           periodSeconds: 10
           failureThreshold: 5
+          timeoutSeconds: 5
         envFrom:
         - secretRef:
             name: "PUT_YOUR_DELEGATE_NAME"
