@@ -188,3 +188,4 @@ You can filter triggers based on **Trigger Name**, **Trigger Type**, and **Statu
 - <a href="/docs/platform/triggers/trigger-on-a-new-artifact" target="_blank">Trigger pipelines on a new artifact</a>
 - <a href="/docs/platform/triggers/trigger-pipelines-on-new-helm-chart" target="_blank">Trigger pipelines on new Helm chart</a>
 - <a href="/docs/platform/triggers/schedule-pipelines-using-cron-triggers" target="_blank">Schedule pipelines using triggers</a>
+- [Trigger executor identity](/docs/platform/triggers/trigger-executor-identity): Run trigger-started pipelines under a specific user or service account's RBAC.

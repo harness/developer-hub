@@ -499,7 +499,7 @@ Here's a sample trigger payload:
 ### Important notes when using expressions
 
 * If the value provided for the input set YAML reference is an expression, Harness checks for the key `input_set_refs` in the trigger payload and uses the value provided there.
-* RBAC for input sets cannot be considered in pipelines executed by triggers as Harness won't know which user executed the pipeline using triggers.
+* By default, a trigger-started pipeline runs as the system principal, so RBAC for input sets is not enforced. To make a trigger-started pipeline run under a specific user or service account's RBAC, go to [Trigger executor identity](/docs/platform/triggers/trigger-executor-identity) to attach an executor.
 * Limitation: You cannot pass the stages or inputRefs as an expression in the trigger payload.
 
 
