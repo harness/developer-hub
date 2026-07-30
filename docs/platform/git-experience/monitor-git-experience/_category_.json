@@ -1,0 +1,11 @@
+{
+    "label": "Monitor Git Experience",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "position": "4",
+    "link": {
+        "type": "doc",
+        "id": "platform/git-experience/monitor-git-experience/monitor-git-experience"
+    }
+}

@@ -135,7 +135,7 @@ To view registered webhooks:
 
 ![](./static/webhook_register_page.png)
 
-You can also explore [Git Sync Activity](./git-sync-health-page.md) to track webhook events.
+You can also explore [Monitor Git Experience](/docs/platform/git-experience/monitor-git-experience) to track webhook events.
 
 ### Setup via Webhooks Page
 

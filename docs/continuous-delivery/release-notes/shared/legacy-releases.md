@@ -1935,7 +1935,7 @@ We have introduced a UI component to make the list of infrastructure searchable 
 
 - **Bi-Directional Sync Health Status for Git Sync**
 
-We have introduced a Git Sync status page for Harness NG. Once you have synced your Harness entities with your Git repository, you can view bidirectional activity between Harness and your repository using the Bi-Directional Sync Health Status feature. For each entitiy, you can see file path, commit message, status of the last sync as well as the payload. Refer to Harness [Git Sync health Page](/docs/platform/git-experience/git-sync-health-page) for more information. (PIPE-16865)
+We have introduced a Git Sync status page for Harness NG. Once you have synced your Harness entities with your Git repository, you can view bidirectional activity between Harness and your repository using the Bi-Directional Sync Health Status feature. For each entitiy, you can see file path, commit message, status of the last sync as well as the payload. Refer to Harness [Git Sync health Page](/docs/platform/git-experience/monitor-git-experience) for more information. (PIPE-16865)
 
 - **HTTP support HTTPS Authentication for Terraform and Terragrunt Modules**
 

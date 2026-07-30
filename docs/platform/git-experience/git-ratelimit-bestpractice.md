@@ -1,6 +1,7 @@
 ---
 title: Harness Git Rate Limits Best Practices
 description: Harness Git Experience is a powerful tool, but dealing with Git Rate Limits is often a difficult issue for customers.  Here are some handy suggestions to help you with your Git Experience Journey
+sidebar_position: 5
 ---
 
 Harness Git Experience provides many powerful capabilities, such as integrating Harness with your Git version control and providing an **as-a-code** experience with Harness.  However, users must always be mindful of the possibility of hitting [GitHub Rate Limits](https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api). 
