@@ -12,10 +12,11 @@ Progressive canary is a sub-type of the Kubernetes Canary strategy. Unlike a sta
 
 For a comparison of Kubernetes deployment strategies, go to [Deployment concepts and strategies](/docs/continuous-delivery/manage-deployments/deployment-concepts) to understand when to use each strategy.
 
-:::info Feature availability
-This feature is behind the feature flag `CDS_K8S_PROGRESSIVE_CANARY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
+:::note
+This feature is behind the feature flag `CDS_K8S_PROGRESSIVE_CANARY`. A minimum delegate version 897xx or later is required for this feature.
 
+Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
 ---
 
 ## How progressive canary differs from standard canary
@@ -44,6 +45,7 @@ Use a progressive canary when you want phased, verifiable rollouts without doubl
 Before you create a progressive canary deployment, make sure you have the following:
 
 - **Feature flag enabled:** The `CDS_K8S_PROGRESSIVE_CANARY` flag must be enabled on your account. Contact [Harness Support](mailto:support@harness.io) to enable it.
+- **Minimum delegate version:** Delegate version 897xx or later is required for the progressive canary steps to run. Go to [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview) to check your delegate version.
 - **A CD pipeline stage:** A Deploy stage with a Kubernetes service and infrastructure. Go to [Add Kubernetes manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests) to configure your service.
 - **A single Deployment workload:** Progressive canary supports one Kubernetes Deployment workload per stage, the same as standard canary. Go to [Define your Kubernetes target infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure) to configure your infrastructure.
 
