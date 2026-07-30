@@ -1,6 +1,18 @@
 ---
 title: Attribute-based access control
-description: ABAC is an optional RBAC extension.
+description: Attribute-based access control (ABAC) is an optional RBAC extension that grants access to Harness resources based on connector and environment types.
+keywords:
+  - attribute-based access control
+  - ABAC
+  - RBAC
+  - resource groups
+  - connector type
+  - environment type
+  - access control
+tags:
+  - rbac
+  - governance
+  - access-control
 sidebar_position: 40
 helpdocs_topic_id: uzzjd4fy67
 helpdocs_category_id: w4rzhnf27d
@@ -8,59 +20,93 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-[Role-based access control (RBAC) in Harness](/docs/platform/role-based-access-control/rbac-in-harness) helps you manage who has access to your Harness resources, what they can do with those resources, and in what scope they have access. RBAC is role-based, which means permissions and access to resources are determined by the roles assigned to users, user groups, and service accounts.
+Attribute-based access control (ABAC) grants access to Harness resources based on attributes associated with those resources, such as connector type or environment type. ABAC is an optional extension of <a href="/docs/platform/role-based-access-control/rbac-in-harness" target="_blank">Role-based access control (RBAC)</a> that uses attribute-based rules to grant access in the context of specific actions. Use ABAC to refine <a href="/docs/platform/role-based-access-control/manage-resource-groups" target="_blank">resource groups</a> with an additional dimension of control.
 
-Attribute-based access control (ABAC) grants access to Harness resources based on attributes associated with those resources, such as connector type. ABAC is an optional extension of [RBAC in Harness](/docs/category/platform-access-control/rbac-in-harness) that uses attribute-based rules to grant access in the context of specific actions. ABAC is a way to refine [resource groups](./add-resource-groups.md) by adding another dimension of control.
+---
+
+## What will you learn in this topic?
+
+By the end of this topic, you will be able to:
+
+- Understand [how ABAC works](#how-abac-works) and when to use it to extend RBAC.
+- [Configure ABAC](#configure-abac) on a resource group.
+- Follow the [next steps](#next-steps) to combine roles with ABAC-enhanced resource groups and complete your RBAC setup.
+
+---
+
+## Before you begin
+
+Before you configure ABAC, ensure you have the following:
+
+- **Harness account access**: **Admin** permissions for the account, organization, or project where you configure ABAC.
+- **RBAC knowledge**: Familiarity with roles and resource groups. Go to <a href="/docs/platform/role-based-access-control/rbac-in-harness" target="_blank">RBAC in Harness</a> to know how roles and resource groups grant access.
+- **Existing resource group**: A resource group to refine, or permissions to create one. Go to <a href="/docs/platform/role-based-access-control/manage-resource-groups" target="_blank">Manage resource groups</a> to manage existing resource groups.
+
+---
+
+## How ABAC works
+
+RBAC is role-based, which means permissions and access to resources are determined by the roles assigned to users, user groups, and service accounts. ABAC adds a dimension to this model by granting access based on the type of a resource rather than a specific named resource.
 
 ABAC can help you:
 
-* Simplify management of role bindings at scale.
-* Provide more fine-grained access control.
-* Reduce the number of role bindings you need to manage.
-* Leverage attributes with specific business meanings.
+- **Simplify management**: Manage role bindings at scale with fewer, broader rules.
+- **Refine access**: Provide more fine-grained access control.
+- **Reduce overhead**: Reduce the number of role bindings you need to manage.
+- **Add business meaning**: Leverage attributes with specific business meanings.
 
-ABAC adds the additional dimensions of [connector](/docs/category/connectors) and [environment](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview) types to refine resource groups. For example:
+ABAC adds the dimensions of <a href="/docs/category/connectors" target="_blank">connector</a> and <a href="/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview" target="_blank">environment</a> types to refine resource groups. For example:
 
-* Grant access to manage non-production environments but not other types of environments.
-* Grant access to manage code repo connectors but not other types of connectors.
+- Grant access to manage pre-production environments but not other types of environments.
+- Grant access to manage code repository connectors but not other types of connectors.
+
+---
 
 ## Configure ABAC
 
-To configure ABAC in Harness, you must be an **Admin** for the relevant account, organization, or project.
+Configure ABAC on a resource group to scope access by connector and environment type. You configure ABAC while you create or edit a resource group.
 
-1. [Create or edit a resource group](./add-resource-groups.md).
+1. <a href="/docs/platform/role-based-access-control/manage-resource-groups" target="_blank">Create or edit a resource group</a>.
+
 2. For **Resources**, select **Specified**.
 
-   <!-- ![](./static/set-up-rbac-pipelines-42.png) -->
-
-   <DocImage path={require('./static/set-up-rbac-pipelines-42.png')} />
+   <div style={{textAlign: 'center'}}>
+      <DocImage path={require('./static/set-up-rbac-pipelines-42.png')} width="80%" height="40%" title="Click to view full size image" />
+   </div>
 
 3. Select **Environments** and/or **Connectors**.
 
-   ABAC is available for environments and connectors only. These steps focus on configuring ABAC; however, your resource groups can include other resource categories. For other resources categories and general information about configuring resource groups, go to [Manage resource groups](./add-resource-groups.md).
+   ABAC is available for environments and connectors only. These steps focus on configuring ABAC; however, your resource groups can include other resource categories. Go to <a href="/docs/platform/role-based-access-control/manage-resource-groups" target="_blank">Manage resource groups</a> to configure other resource categories.
 
-   <!-- ![](./static/attribute-based-access-control-05.png) -->
+   <div style={{textAlign: 'center'}}>
+      <DocImage path={require('./static/attribute-based-access-control-05.png')} width="80%" height="40%" title="Click to view full size image" />
+   </div>
 
-   <DocImage path={require('./static/attribute-based-access-control-05.png')} />
+4. To apply ABAC to **Connectors** or **Environments**, select **By Type**, and then click **Add**.
 
-4. To apply ABAC to **Connectors** or **Environments**, select **By Type**, and then select **Add**.
+   For information about the **All** and **Specified** options, go to <a href="/docs/platform/role-based-access-control/manage-resource-groups" target="_blank">Manage resource groups</a>.
 
-   For information about the **All** and **Specified** options, go to [Manage resource groups](./add-resource-groups.md).
+   ABAC is in addition to the **Resource Scope**. For example, if the **Resource Scope** is **Project Only**, and you select connectors **By Type**, then the resource group includes all connectors of the selected types that are in the specified project only. Go to <a href="/docs/platform/role-based-access-control/manage-resource-groups#scopes-and-refinement" target="_blank">scopes and refinement</a> for more information on how scope and ABAC interact.
 
-   ABAC is in addition to the **Resource Scope**. For example, if the **Resource Scope** is **Project Only**, and you select connectors **By Type**, then the resource group includes all connectors of the selected types that are *in the specified project only*. For more information, go to [Manage resource groups: Scopes and refinement](./add-resource-groups.md#scopes-and-refinement).
+5. Select the types to include, and then click **Add**.
 
-5. Select the types to include, and then select **Add**.
+   For **Environments**, you can choose **Production** or **Pre-Production**.
 
-   For **Environments**, you can choose **Production** or **Non-Production**.
+   For **Connectors**, you can choose one or more of the following Harness connector types: **Artifact Repositories**, **Cloud and AI Costs**, **Cloud Providers**, **Code Repositories**, **Communication Tools**, **Documentation**, **Monitoring and Logging Systems**, **Secret Managers**, and **Ticketing Systems**.
 
-   For **Connectors**, you can choose one or more of the following Harness connector types: **Artifact Repositories**, **Cloud Costs**, **Cloud Providers**, **Code Repositories**, **Monitoring and Logging Systems**, **Secret Managers**, and **Ticketing Systems**.
+6. Click **Save**.
 
-6. Select **Save**.
+---
 
-## Continue RBAC configuration
+## Next steps
 
-Creating resource groups with ABAC is one part of [configuring RBAC in Harness](/docs/category/platform-access-control/rbac-in-harness#configure-rbac-in-harness).
+Pair your ABAC resource group with a role, then assign both to your users. Because ABAC applies to environments and connectors, choose a role that includes environment or connector permissions.
 
-[Roles](./add-manage-roles.md), which grant permissions, work alongside resource groups and ABAC, which grant access. Because ABAC applies to environments and connectors, the role you choose to accompany your ABAC-enhanced resource group should include permissions relevant to environments or connectors.
+- <a href="/docs/platform/role-based-access-control/configure-rbac" target="_blank">Configure RBAC in Harness</a>: Complete the end-to-end workflow that ties resource groups, roles, and assignments together.
+- <a href="/docs/platform/role-based-access-control/add-manage-roles" target="_blank">Roles</a>: Create the role that grants the environment and connector permissions your ABAC resource group needs.
 
-After configuring roles and resource group, you assign them to [users](./add-users.md), [user groups](./add-user-groups.md), and [service accounts](./add-and-manage-service-account.md).
+After you configure roles and resource groups, assign them to:
+
+- <a href="/docs/platform/role-based-access-control/add-users" target="_blank">Users</a>
+- <a href="/docs/platform/role-based-access-control/add-user-groups" target="_blank">User groups</a>
+- <a href="/docs/platform/role-based-access-control/add-and-manage-service-account" target="_blank">Service accounts</a>
