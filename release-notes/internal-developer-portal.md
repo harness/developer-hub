@@ -30,9 +30,54 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 | **Version** | **prod0** | **prod1** | **prod2** | **prod3** | **prod4** | **prodeu1** |
 | ----------- | --------- | --------- | --------- | --------- | --------- | ----------- |
+| [2026.7.v2](/release-notes/internal-developer-portal#july---20267v2)  | ✅        | ✅         | ✅           | ⏳        | ⏳         | ⏳         |
 | [2026.7.v1](/release-notes/internal-developer-portal#july---20267v1)  | ✅        | ✅         | ✅           | ✅        | ✅         | ✅         |
 | [2026.6.v1](/release-notes/internal-developer-portal#june---20266v1)  | ✅        | ✅         | ✅           | ✅        | ✅         | ✅         |
-| [2026.5.v2](/release-notes/internal-developer-portal#may---20265v2)   | ✅        | ✅         | ✅           | ✅        | ✅         | ✅         |
+
+
+## July - [2026.7.v2]
+ 
+---
+ 
+### New Features
+ 
+#### Traceable Integration | [Read Doc](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/traceable)
+ 
+IDP now includes a native Traceable integration that connects your Traceable account to the API entities in your catalog. After you configure the integration, IDP runs a daily matching job that compares endpoints Traceable has observed in live traffic against the API entities registered in the catalog. Matched endpoints appear on the entity detail page under a new **Endpoints** tab, showing the HTTP method, path, risk score, and traffic status for each endpoint.
+ 
+This feature is gated behind the `IDP_API_ENDPOINT_EXTRACTION` feature flag.
+ 
+<DocImage path={require('../docs/internal-developer-portal/catalog/create-entity/catalog-discovery/static/traceable.gif')} />
+
+ 
+#### Traceable: Scorecard Data Points | [Read Doc](/docs/internal-developer-portal/scorecards/create-scorecards/data-sources#traceable)
+ 
+Traceable is now available as a data source when creating scorecard checks for API entities. Available data points include average risk score, total open issues, and highest and lowest open issue counts per endpoint.
+ 
+<DocImage path={require('../docs/internal-developer-portal/catalog/create-entity/catalog-discovery/static/traceable-m3.gif')} />
+
+ 
+#### Environment Management: Cost Estimation
+ 
+IDP now surfaces infrastructure cost estimation data from IACM workspaces directly in your environments. When an IACM workspace template has cost estimation enabled, Infracost runs during the Terraform plan stage and computes estimated monthly costs for supported cloud resources across AWS, GCP, and Azure.
+ 
+Estimated costs appear in two places: an estimated cost per month column in the environment listing page and on the blueprint overview page, and a dedicated **Cost** tab on the environment detail page that shows a per-resource cost breakdown.
+
+<DocImage path={require('../docs/internal-developer-portal/environment-management/static/cost-list.png')} />
+ 
+---
+ 
+### Enhancements & Bug Fixes
+ 
+#### Fixes
+ 
+- Workflow templates that reference input sets by name or ref using `inputSetName` and `inputSetRef` were not executing correctly. This is now fixed. [IDP-10328]
+- The Register Catalog Step was failing when triggered from within a Kubernetes-based environment. This is now fixed. [IDP-10262]
+- When the homepage layout had not been configured, the Developer's View tab on the IDP overview was showing an error instead of a default view. The portal now loads a default developer view in this case. [IDP-10401]
+- The Raw YAML definition tab was throwing an error when an API catalog entity used a GitHub-based URL definition with a `$yaml:` placeholder. This is now fixed. [IDP-10355]
+
+ 
+---
 
 
 ## July - [2026.7.v1]
