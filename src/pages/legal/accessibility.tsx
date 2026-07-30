@@ -83,7 +83,7 @@ export default function AccessibilityPage() {
             </p>
             <ul>
               <li>
-                <a href={`/doc/harness-platform-vpat.pdf`} className={styles.link} target="_blank">
+                <a href={`/doc/harness-platform-vpat-report-int-conformance.pdf`} className={styles.link} target="_blank">
                   Platform VPAT Report
                 </a>
               </li>
