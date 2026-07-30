@@ -348,6 +348,34 @@ The following example shows all available `buildIntelligence` properties:
 
 ## Troubleshooting
 
+### Maven deploy plugin skipped when using Build Intelligence
+
+When Build Intelligence restores cached build outputs, Maven deploy plugins (such as `maven-deploy-plugin`) may be skipped, preventing artifacts from being uploaded to Artifactory or other artifact repositories. This is expected behavior because Build Intelligence treats the deploy phase as part of the cached build output.
+
+To ensure artifacts are always uploaded to your repository while still benefiting from Build Intelligence caching for other build phases (compile, test, package), use the `alwaysRunPlugins` flag with your Maven command:
+
+```bash
+mvn package deploy -Dmaven.build.cache.alwaysRunPlugins=maven-deploy-plugin:*
+```
+
+This flag tells the Maven build cache extension to bypass the cache for the specified plugin, ensuring the deploy phase always executes while other phases (build, compile, test) continue to use Build Intelligence caching.
+
+You can also configure this permanently in your `.mvn/maven-build-cache-config.xml` file by adding a `runAlways` section:
+
+```xml
+<configuration>
+  <executionControl>
+    <runAlways>
+      <plugins>
+        <plugin artifactId="maven-deploy-plugin"/>
+      </plugins>
+    </runAlways>
+  </executionControl>
+</configuration>
+```
+
+Go to the [Maven Build Cache Extension documentation](https://maven.apache.org/extensions/maven-build-cache-extension/) to learn more about cache configuration options.
+
 ### License-checking plugins flagging Build Intelligence files
 
 Build Intelligence generates XML configuration files in the `.mvn/` directory of your build workspace. License-compliance plugins — such as [Apache RAT (Release Audit Tool)](https://creadur.apache.org/rat/), [License Maven Plugin](https://www.mojohaus.org/license-maven-plugin/), or similar source-auditing tools — may flag these generated files for missing license headers, causing build failures.
