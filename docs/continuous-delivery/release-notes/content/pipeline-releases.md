@@ -1,5 +1,34 @@
 ## July 2026
 
+### Pipeline service 1.199.0
+
+#### New features and enhancements
+
+- Harness now supports **template overrides**. A template owner can allow specific advanced settings to be overridden, so callers can override only the values they need without editing or duplicating the template. Overrides are supported for step, stage, step group, and pipeline templates that use the v0 YAML version, on both inline and remote templates. This feature is behind the feature flag `PIPE_TEMPLATE_OVERRIDES`. Contact [Harness Support](mailto:support@harness.io) to enable. Go to [Templates](/docs/platform/templates/template) to configure template overrides. (**PIPE-34868**)
+
+- Harness now supports a **trigger executor identity**. You can associate a user or service account with a trigger so that a pipeline started by the trigger runs with that identity and its RBAC permissions, instead of running as the Harness system principal. This ensures a triggered pipeline is subject to the same access controls as pipelines run manually through the UI or API. This feature is behind the feature flag `PIPE_ENFORCE_TRIGGER_EXECUTOR_IDENTITY`. Contact [Harness Support](mailto:support@harness.io) to enable. Go to [Trigger executor identity](/docs/platform/triggers/trigger-executor-identity) to configure an executor identity. (**PIPE-35567**)
+
+- Harness now enforces **onSave OPA policies on Git-backed entities**. When you commit a change directly to a Git-backed entity such as a pipeline or template, Harness evaluates the onSave policy and blocks pipeline execution when the most recent commit fails the policy check, so entities committed directly to Git are governed the same way as entities saved in Harness. This feature is behind the feature flags `PIPE_OPA_GITX_ENFORCEMENT` and `PIPE_ENABLE_OPA_GOVERNANCE_FOR_AUTO_CREATION`. Contact [Harness Support](mailto:support@harness.io) to enable. Go to [Harness governance overview](/docs/platform/governance/policy-as-code/harness-governance-overview) to configure OPA policies. (**PIPE-34841**)
+
+- You can now **refresh the Git cache for remote entities on demand**. Use the **Reload from Git** option in the pipeline, input set, or template studio, or call the refresh API, to pull the latest version from Git and update the cache without waiting for a webhook. Refreshing an entity also reloads the caches of its referenced entities. This feature is behind the feature flag `PIPE_GITX_FORCE_REFRESH`. Contact [Harness Support](mailto:support@harness.io) to enable. Go to [Entity caching with Git Experience](/docs/platform/git-experience/harness-git-cache) to refresh the cache from Git. (**PIPE-34731**)
+
+- Harness now enforces an **account-level step concurrency limit** that caps the total number of concurrently running steps across all pipeline executions in your account, in addition to the existing per-execution limit. When the account limit is reached, new steps enter the **Queued** state and start automatically as capacity frees up. This feature is behind the feature flag `PIPE_USE_COUNTER_BASED_STEP_CONCURRENCY_GATE`. Contact [Harness Support](mailto:support@harness.io) to enable. Go to [Pipeline settings](/docs/platform/pipelines/pipeline-settings) to review concurrency limits. (**PIPE-34390**)
+
+- Harness now exposes **input set expressions** at runtime. When an execution uses one or more input sets, you can reference each input set's identifier, name, description, type, tags, and scope through zero-based expressions such as `<+inputSet.details[0].name>`, for example to include an input set name in an artifact path or to log which input sets were applied. Go to [Built-in variables list](/docs/platform/variables-and-expressions/harness-expressions-reference) to reference input set details. (**PIPE-34829**)
+
+- Harness now provides a **Webhooks monitoring page** for Git Experience. The **Events** tab shows the history of processed webhook events for troubleshooting synchronization, and the **Observability** tab monitors repository synchronization health and Git provider API rate-limit consumption. The observability views are behind the feature flags `PIPE_GITX_RATE_LIMITS_API` and `PIPE_GITX_WEBHOOK_HEALTH_PER_REPO`. Contact [Harness Support](mailto:support@harness.io) to enable. Go to [Git Experience overview](/docs/platform/git-experience/git-experience-overview) to monitor webhook activity. (**PIPE-34743**)
+
+- Harness now supports **multi-line string input for custom variables**. When you enable multi-line input on a pipeline-scoped or stage-scoped string variable, the value field becomes a resizable text area, which makes it easier to enter and read values that span multiple lines such as YAML configuration or a list of IP addresses. The expanded text area appears wherever the variable's value is prompted, including the run pipeline dialog and input sets. This feature is behind the feature flag `PIPE_MULTILINE_VARIABLE_INPUT`. Contact [Harness Support](mailto:support@harness.io) to enable. Go to [Define variables](/docs/platform/variables-and-expressions/add-a-variable) to configure multi-line input. (**PIPE-34821**)
+
+#### Fixed issues
+
+- Fixed an issue where the pipeline dry-run validation API returned an unclear system error instead of a clear validation message when required request fields were missing or sent using camelCase instead of the documented snake_case names. The endpoint now returns clear validation errors, and the response schema matches the documentation. (**PIPE-35414**, **ZD-117700**)
+- Fixed an issue where the Harness pipeline and template pages loaded indefinitely. (**PIPE-35665**, **ZD-118407**)
+- Fixed an issue where a fast-fail (`failAll: true`) rollback action nested under the `onRetryFailure` action of a step-level Retry failure strategy caused pipeline plan creation to fail. Pipeline rollback with fast-fail now works in this configuration. (**PIPE-35748**, **ZD-118300**)
+- Fixed an issue where the entity setup usage API returned incomplete references when filtering by version label for a stable template version. (**PIPE-35753**, **ZD-118292**)
+- Fixed an issue where bulk template reconciliation failed with a null pointer error when a stable-label reference resolved to a null template entity. (**PIPE-35881**, **ZD-119121**, **ZD-119208**)
+- Fixed an issue where pipeline rollback steps were skipped when the `PIPE_CACHE_CURRENT_STATUS` feature flag was enabled and a CD stage with multiple services failed while conditional execution used `currentStatus` expressions. This fix is behind the feature flag `PIPE_CACHE_CURRENT_STATUS`. Contact [Harness Support](mailto:support@harness.io) to enable. (**PIPE-35942**)
+
 ### Pipeline service 1.198.2
 
 #### New features and enhancements

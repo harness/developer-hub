@@ -17,13 +17,9 @@
 #### Fixed issues
 
 - Fixed an issue where the GitOps service returned a socket timeout when multiple sync pipelines ran against the same sync step in parallel. (**CDS-126736**)
-
 - Fixed an issue where the GitOps overview page did not display applications for users whose access was granted through label-based RBAC, even when those applications appeared correctly in the application list. (**CDS-125748**)
-
 - Fixed an issue where GitOps ApplicationSet validation failed on the `patches[0].target.resId` field, preventing ApplicationSets with valid resource patches from being saved. (**CDS-126249**)
-
 - Fixed an issue where bulk sync and refresh operations failed with a 502 error when using older agents, caused by a key mismatch between the agent and service. (**CDS-127729**)
-
 - Fixed an incorrect service port in the GitOps Helm chart that prevented the service from correctly routing HTTP traffic. (**CDS-127565**)
 
 ## June 2026

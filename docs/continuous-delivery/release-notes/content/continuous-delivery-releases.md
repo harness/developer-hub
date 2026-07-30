@@ -1,5 +1,24 @@
 ## July 2026
 
+### Version 1.160.3
+
+#### New features and enhancements
+
+- Harness CD now supports **AI agent deployments** as a first-class deployment type. You define an **Agent Service**, point it at a container image, and deploy it to AWS Bedrock AgentCore or Google Vertex Agent Runtime through the same environment, infrastructure, and pipeline model you use for every other CD deployment, so agents inherit RBAC, secrets management, OPA policies, approval gates, and rollback. This feature requires the feature flag `CDS_AGENT_RUNTIME_DEPLOYMENT`. Contact [Harness Support](mailto:support@harness.io) to enable. Go to [AI Agents Deployment overview](/docs/continuous-delivery/ai-agent-deployments/overview) to deploy an agent. (**CDS-126104**)
+
+- AWS connectors that authenticate with OIDC now support **delegate selectors as session tags**. Harness includes the resolved delegate selectors as a `delegate_selectors` claim in the OIDC token, so you can write AWS IAM policy conditions that restrict access based on which delegates run a task. Harness resolves the effective selector by precedence (step, step group, stage, pipeline), and falls back to the connector-level selector when none is set in that chain. Go to [AWS connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference#delegate-selectors-as-session-tags) to write IAM policies against session tags. (**CDS-126728**)
+
+- The AI Verify (v1) step now supports the **`customVerificationStartTime`** configurable property. You can shift the start of the verification window to an earlier timestamp so that logs recorded by health sources such as Dynatrace at the moment a deployment starts are included in the analysis instead of falling outside the collection window. This feature is behind the feature flag `CDS_CV_INPUT_OUTPUT_VARIABLES_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable. Go to [Configure the AI Verify (v1) step](/docs/continuous-delivery/verify/configure-cv/verify-deployments) to set configurable properties. (**CDS-122347**)
+
+- The CloudWatch health source now supports **`WHERE` and `ORDER BY` clauses** in Metrics Insights queries. You can filter metrics by dimension values, for example to isolate a specific ALB target group or EC2 instance, and sort results when a query returns multiple time series. Go to [CloudWatch health source](/docs/continuous-delivery/verify/configure-cv/health-sources/cloudwatch) to configure Metrics Insights queries. (**CDS-121852**)
+
+- Continuous Verification now supports **per-metric sensitivity override** in the Verify step. Instead of applying a single sensitivity setting to every metric in a health source, you can set the sensitivity (High, Medium, or Low) individually per metric, so a noisy metric can use a more lenient threshold while a critical metric stays strict. The applied per-metric value is shown in the execution details view. This feature is behind the feature flag `CDS_CV_PER_METRIC_SENSITIVITY`. Contact [Harness Support](mailto:support@harness.io) to enable. Go to [Sensitivity](/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step#sensitivity) to configure sensitivity thresholds. (**CDS-122395**)
+
+#### Fixed issues
+
+- Fixed an issue where the notification event type intermittently contained infrastructure metadata instead of the event type in notification templates. The event type now resolves to the type alone, and a separate event details value provides the descriptive information. This fix requires the feature flag `CDS_CLEAN_NOTIFICATION_EVENT_TYPE`. Contact [Harness Support](mailto:support@harness.io) to enable. (**CDS-126015**, **ZD-116200**)
+- Fixed an issue where GitOps sync and related PR pipeline steps failed for applications that were not in the GitOps agent's namespace. Harness now includes the application namespace in the API call, so applications outside the agent's namespace resolve correctly. (**CDS-128210**, **ZD-119891**)
+
 ### Version 1.159.3
 
 #### New features and enhancements
