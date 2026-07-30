@@ -46,6 +46,24 @@ This topic explains how to define and reference variables in Harness. It assumes
    * The **Required** setting is supported for pipeline variables, stage variables, and CD service and environment variables.
    * The **Required** setting is also enforced when the variable is defined in a template and the template is included in a pipeline.
 
+### Multi-line string input for custom variables
+
+:::note
+This feature is behind the feature flag `PIPE_MULTILINE_VARIABLE_INPUT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+By default, string variables accept input as a single line. When you enable multi-line input, the text field expands to a resizable text area, making it easier to enter and read values that span multiple lines.
+
+Multi-line input is useful when your variable needs to hold structured content such as YAML configuration, a list of IP addresses, or any block of text that would otherwise be difficult to read or edit as a single inline string.
+
+You can enable multi-line input on any custom string variable at the pipeline or stage scope. When you define or edit the variable, select the **Multi-line** option. At runtime, Harness displays the expanded text area wherever users are prompted to provide that variable's value, including in the run pipeline dialog and in input sets.
+
+:::info
+
+Multi-line variables are only available for string type variables at the pipeline and stage scopes. Account, org, and project variables do not support this option.
+
+:::
+
 ### Naming conventions
 
 Adhere to the following restrictions and considerations for variable names:
