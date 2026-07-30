@@ -255,11 +255,11 @@ static/  rohan.maharjan@harness.io wei.guo@harness.io richard.black@harness.io a
 /release-notes/static/ait/ shibam.dhar@harness.io debaditya.chatterjee@harness.io sumit.khaitan@harness.io
 
 # Artifact Registry Docs
-/docs/artifact-registry/ ranajoy.roy@harness.io shankar.hariharan@harness.io shivakumar.ningappa@harness.io richard.black@harness.io arvind.choudhary@harness.io shibam.dhar@harness.io
-/release-notes/artifact-registry.md ranajoy.roy@harness.io shankar.hariharan@harness.io shivakumar.ningappa@harness.io richard.black@harness.io arvind.choudhary@harness.io shibam.dhar@harness.io
-/release-notes/static/artifact-registry/ ranajoy.roy@harness.io shankar.hariharan@harness.io shivakumar.ningappa@harness.io shibam.dhar@harness.io
-/src/components/Docs/data/artifactRegistryData.ts ranajoy.roy@harness.io shankar.hariharan@harness.io shivakumar.ningappa@harness.io richard.black@harness.io arvind.choudhary@harness.io shibam.dhar@harness.io
-/src/components/Roadmap/data/artifactRegistryData.ts ranajoy.roy@harness.io shankar.hariharan@harness.io shivakumar.ningappa@harness.io richard.black@harness.io arvind.choudhary@harness.io shibam.dhar@harness.io
+/docs/artifact-registry/ ranajoy.roy@harness.io shankar.hariharan@harness.io shivakumar.ningappa@harness.io richard.black@harness.io arvind.choudhary@harness.io shibam.dhar@harness.io abhijeet.sharma1@harness.io
+/release-notes/artifact-registry.md ranajoy.roy@harness.io shankar.hariharan@harness.io shivakumar.ningappa@harness.io richard.black@harness.io arvind.choudhary@harness.io shibam.dhar@harness.io abhijeet.sharma1@harness.io
+/release-notes/static/artifact-registry/ ranajoy.roy@harness.io shankar.hariharan@harness.io shivakumar.ningappa@harness.io shibam.dhar@harness.io abhijeet.sharma1@harness.io
+/src/components/Docs/data/artifactRegistryData.ts ranajoy.roy@harness.io shankar.hariharan@harness.io shivakumar.ningappa@harness.io richard.black@harness.io arvind.choudhary@harness.io shibam.dhar@harness.io abhijeet.sharma1@harness.io
+/src/components/Roadmap/data/artifactRegistryData.ts ranajoy.roy@harness.io shankar.hariharan@harness.io shivakumar.ningappa@harness.io richard.black@harness.io arvind.choudhary@harness.io shibam.dhar@harness.io abhijeet.sharma1@harness.io
 
 # Open Source Docs
 /docs/open-source/ nofar.bluestein@harness.io rohan.bhaumik@harness.io ompragash.viswanathan@harness.io johannes.batzill@harness.io hitesh.aringa@harness.io atefeh.mohseni-ejiyeh@harness.io ritik.kapoor@harness.io
