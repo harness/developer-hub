@@ -110,29 +110,42 @@ The AI Verify (v1) step supports configurable properties that allow you to custo
 This feature is optional and currently behind the feature flag `CDS_CV_INPUT_OUTPUT_VARIABLES_ENABLED`. Contact [Harness support](mailto:support@harness.io) to enable the feature.
 :::
 
-You can specify a custom start time for the verification process. Adding a start time allows you to control when the verification analysis begins, which helps align verification with specific deployment events or schedules.
+To add a configurable property:
 
-To configure:
-1. In the AI Verify (v1) step configuration, expand the **Optional** section
-2. Under the **Configurable Properties** section, select **deploymentStartTime** from the dropdown for Command type.
-3. Enter the desired start time, which is a UTC zone
+1. In the AI Verify (v1) step configuration, expand the **Optional** section.
+2. Under **Configurable Properties**, select a property from the dropdown.
+3. Enter the value for the selected property.
 
-<div style={{textAlign: 'center'}}>
-  <DocImage path={require('./static/deployment-start-time.png')} width="50%" height="50%" title="Click to view full size image" />
-</div>
+### deploymentStartTime
 
-This time represents the deployment start time, allowing the system to collect pre-deployment data for the configured duration (in minutes) before this specified time.
+Use `deploymentStartTime` to specify when the deployment started. This tells Harness where to anchor the verification window, allowing the system to collect pre-deployment baseline data for the configured duration before this time. Enter the timestamp in UTC using one of the following formats:
 
-Supported formats include:
-- ISO formats (e.g., `2023-03-10T15:30:00Z`)
-- Common date/time formats (e.g., `2023-03-10 15:30:00`)
+- ISO 8601 (e.g., `2023-03-10T15:30:00Z`)
+- Common date/time format (e.g., `2023-03-10 15:30:00`)
 - Unix epoch timestamps (e.g., `1678457400`)
 
-You can use an expression to set the start time based on the deployment start time. For example, you can use the expression `<+pipeline.stages.stage_name.spec.execution.steps.step_name.startTs>` to set the start time of your AI Verify (v1) step to the deployment start time.
+You can also use a pipeline expression to set the value dynamically. For example, `<+pipeline.stages.stage_name.spec.execution.steps.step_name.startTs>` resolves to the start timestamp of another step in your pipeline.
 
-**Limitations**:
+Future timestamps are not supported as fixed or runtime values. If you specify a time that has not yet been reached when the step runs, the verification will fail. If the specified time has already passed when the step executes, it is used as expected.
 
-We don't support adding a future date and time as a fixed value/runtime to set the start time of the verification process. If you specify a future time that hasn't been reached yet, the verification will fail. However, if the specified future time has already been reached when the verification runs, it will work as described above.
+### dataCollectionDuration
+
+Use `dataCollectionDuration` to override the default data collection interval for the verification window. Enter the value as a positive integer representing the number of minutes. The maximum allowed value is 60 minutes.
+
+### customVerificationStartTime
+
+By default, the post-deployment data collection window opens at the exact moment Harness executes the Verify step. CD deployment steps wait for a steady state before completing, which means the Verify step starts after a delay from when your service actually began running. During that delay, your health source may already be recording logs and metrics that fall outside the collection window.
+
+Use `customVerificationStartTime` to shift the window start to an earlier timestamp so that data already recorded by your health source is included in the analysis. Enter a timestamp using any of the formats listed under `deploymentStartTime`. The value must be no earlier than the deployment start time.
+
+If the custom time is earlier than the actual verification start time, Harness uses it as the window start. If the custom time is later than the actual verification start time, Harness ignores it, falls back to the actual verification start time, and logs a warning in the execution console.
+
+For verification durations under 30 minutes, Harness buckets data in one-minute intervals, so a custom start time that falls earlier within a minute expands the collection window by one full minute.
+
+Common use cases for this property include:
+
+- **Capturing head-of-deployment logs**: If your health source (for example, Dynatrace) begins recording immediately when the service starts, set `customVerificationStartTime` to the deployment step start time to avoid missing the earliest entries.
+- **Steps between deployment and verification**: If you have additional steps between your deployment step and the Verify step, metrics and logs generated while those steps run are normally excluded from verification. Setting this property to the deployment step start time includes that data.
 
 ## Sub-Task Notifications
 
