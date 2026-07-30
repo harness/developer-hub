@@ -9,14 +9,12 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import RiskProfile from '/docs/continuous-delivery/verify/shared/risk-profile.md'
- 
-:::important
-Harness supports only the Metrics Insight query language.
-:::
 
 import BeforeYouBegin from '/docs/continuous-delivery/verify/configure-cv/health-sources/static/before-you-begin.md';
 
 <BeforeYouBegin />
+
+---
 
 ## Add Cloudwatch as a health source
 
@@ -24,19 +22,19 @@ This option is available only if you have configured the service and environment
 
 A Health Source is basically a mapping of a Harness Service to the service in a deployment environment monitored by an APM or logging tool.
 
-1. In **Health Sources**, click **Add**. The **Add New Health Source** settings appear.
+1. In **Health Sources**, click **Add**. The **Add New Health Source** settings appear.
    
    ![](./static/verify-deployments-with-cloudwatch-114.png)
 
-2. In **Select health source type**, select **CloudWatch**.
-3. In **Health Source Name**, enter a name for the Health Source.
-4. Under **Connect Health Source**, click **Select Connector**.
-5. In **Connector** settings, you can either choose an existing connector or click **New Connector.**
+2. In **Select health source type**, select **CloudWatch**.
+3. In **Health Source Name**, enter a name for the Health Source.
+4. Under **Connect Health Source**, click **Select Connector**.
+5. In **Connector** settings, you can either choose an existing connector or click **New Connector.**
    
    ![](./static/verify-deployments-with-cloudwatch-115.png)
 
-6. Click **Apply Selected**. The Connector is added to the Health Source.
-7. In **Select Feature**, select the CloudWatch feature:
+6. Click **Apply Selected**. The Connector is added to the Health Source.
+7. In **Select Feature**, select the CloudWatch feature:
    - CloudWatch Metrics
    - CloudWatch Logs
 
@@ -46,7 +44,9 @@ A Health Source is basically a mapping of a Harness Service to the service in a 
 
    :::
 
-8. Click **Next**.
+8. Click **Next**.
+
+---
 
 ### Configuration
 
@@ -58,9 +58,9 @@ Depending on your feature choice, do the following configuration steps.
 1. Select the **AWS Region**.
 2. Click **+ Add Metric**.
 
-You can customize the metrics to map the Harness Service to the monitored environment in **Query Specifications and Mapping** settings.
+You can customize the metrics to map the Harness Service to the monitored environment in **Query Specifications and Mapping** settings.
 
-3. Enter a name for the metric in **Metric Name**.
+3. Enter a name for the metric in **Metric Name**.
 4. Enter a name for the group in **Group Name**.
 5. Select the services you want to apply to the metric under **Assign**. At least one selection is required.
 6. If you select **Continuous Verification** or **Service Health**, you will need to configure a risk profile. Expand the following block to learn more. 
@@ -72,12 +72,44 @@ You can customize the metrics to map the Harness Service to the monitored enviro
 
    </details>
 
-7. Enter the query in the **Query** field. This field can also be a Harness expression or runtime input.
-8. Click **Fetch Records** to retrieve the details.
+7. Enter the query in the **Query** field using [CloudWatch Metrics Insights SQL syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch-metrics-insights-syntax.html). This field can also be a Harness expression or runtime input.
+
+   Harness supports the full Metrics Insights query language, including `WHERE` and `ORDER BY` clauses. Use `WHERE` to filter metrics by dimension values — for example, to isolate metrics for a specific ALB target group or EC2 instance. Use `ORDER BY` to sort results when your query returns multiple time series.
+
+   <details>
+   <summary>CloudWatch Metrics Insights query examples</summary>
+
+   ```sql
+   -- Basic query: average CPU utilization for all EC2 instances
+   SELECT AVG(CPUUtilization) FROM SCHEMA("AWS/EC2", InstanceId)
+   ```
+
+   ```sql
+   -- Query with WHERE clause: filter by a specific ALB target group
+   SELECT AVG(TargetResponseTime)
+   FROM SCHEMA("AWS/ApplicationELB", LoadBalancer, TargetGroup)
+   WHERE TargetGroup = 'targetgroup/tg-new/abc123'
+   ORDER BY AVG() DESC
+   ```
+
+   ```sql
+   -- Query with WHERE clause: filter by EKS cluster and namespace
+   SELECT AVG(pod_cpu_utilization)
+   FROM ContainerInsights
+   WHERE ClusterName = 'my-cluster' AND Namespace = 'production'
+   ```
+
+   </details>
+
+   :::tip
+   When you use Continuous Verification to compare a control group and a test group (for example, comparing two ALB target groups during a custom blue/green deployment), configure separate metric definitions with `WHERE` clauses that target each group's dimension values.
+   :::
+
+8. Click **Fetch Records** to retrieve the details.
    
    ![](./static/verify-deployments-with-cloudwatch-116.png)
    
-9. Click **Submit**. The Health Source is displayed in the AI Verify (v1) step.
+9. Click **Submit**. The Health Source is displayed in the AI Verify (v1) step.
    
    ![](./static/verify-deployments-with-cloudwatch-117.png)
 
@@ -107,7 +139,7 @@ For more information on the prerequisites, configuration steps, and permissions 
 
    ![](./static/field-mapping.png)
 
-9. Click **Submit**. The health source will be displayed in the AI Verify (v1) step!
+9. Click **Submit**. The health source is displayed in the AI Verify (v1) step.
 
 </TabItem>
 </Tabs>
