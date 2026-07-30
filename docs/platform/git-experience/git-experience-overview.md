@@ -197,6 +197,12 @@ If bidirectional sync is not enabled, Git is already the source of truth and thi
 
 For more information on triggers, go to [Set up Git triggers with Git Experience](/docs/platform/triggers/triggers-overview/).
 
+### OPA policy enforcement for Git-backed entities
+
+Harness evaluates **onSave** Open Policy Agent (OPA) policies when you commit a change directly to a Git-backed entity, not just when you save it in Harness. If the latest commit fails policy evaluation, Harness blocks pipeline execution until you commit a change that passes. This keeps entities changed directly in Git governed the same way as entities saved in Harness.
+
+Go to [Enforce onSave policies on Git entities](/docs/platform/governance/policy-as-code/enforce-policies-on-git-backed-entities) to understand how this enforcement works.
+
 ### What can I do with Harness Git Experience?
 
 Harness Git Experience helps you do the following:

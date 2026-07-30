@@ -385,6 +385,10 @@ Review the limitations and special behaviors of Harness Policy As Code, particul
 
 ### Harness On Save policies
 
+:::note
+For Git-backed pipelines and templates, Harness can also evaluate onSave policies on commits made directly in Git and block pipeline execution when the latest commit fails policy evaluation. This enforcement is behind a feature flag. Go to [Enforce onSave policies on Git entities](/docs/platform/governance/policy-as-code/enforce-policies-on-git-backed-entities) to understand this enforcement.
+:::
+
 Harness OPA **On Save** changes will flag and advise customers of a conflict with a policy if the changes are made via UI. However, if changes to the pipeline or environment are performed outside of the UI, for example, utilizing Harness's <a href="https://developer.harness.io/docs/platform/git-experience/configure-git-experience-for-harness-entities/" target="_blank">remote pipelines through Git Experience</a>, or <a href="https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness/" target="_blank">Terraform Provisioning</a>, customers can expect the following behavior:
 
 - **Changes that are in conflict with a policy will not prevent a synchronization**: Harness implements a sync process so customers have the opportunity to resolve these issues from the Harness UI, where there are clear indicators of the issue.
