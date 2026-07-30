@@ -94,3 +94,4 @@ The **Installing provisioner** step downloads the provisioner binary successfull
 
 - Go to [Connectors and variable sources](/docs/infra-as-code-management/configuration/connectors-and-variables/connectors-variables) to configure workspace environment variables.
 - Go to [Custom images for OpenTofu](/docs/infra-as-code-management/iac-provisioners/opentofu/custom-images) to add certificates by building a custom plugin image.
+- Go to [Tofu/Terraform Plugin Commands](/docs/infra-as-code-management/cli-commands/terraform-plugins) to review `PLUGIN_` variables for overriding plan step CLI flags such as `-lock`, `-refresh`, and `-target`.
