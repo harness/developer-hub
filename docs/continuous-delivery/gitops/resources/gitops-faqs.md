@@ -210,7 +210,9 @@ The minimum RBAC requirements depend on the applications and destination cluster
 
 ### How can I sync or delete an application or non-deployment resource?
 
-Each resource in our UI has a three dot "kebab menu" that allows you sync or delete the resource. 
+Each resource in our UI has a three dot "kebab menu" that allows you sync or delete the resource.
+
+If an application is unreachable on Argo CD and cannot be deleted through the standard flow, use **Force delete from Harness** in the **Delete Application** dialog. Go to [Manage GitOps Applications](/docs/continuous-delivery/gitops/application/manage-gitops-applications#force-delete-from-harness) to review when this option appears and how to use it.
 
 ### How to get list of all gitops degraded/suspended gitops applications?
 

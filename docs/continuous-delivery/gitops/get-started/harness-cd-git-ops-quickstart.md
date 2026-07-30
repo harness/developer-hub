@@ -537,6 +537,8 @@ A cascading delete removes both the app and all its resources, rather than only 
 To perform a non-cascade delete, select the **Non-cascading** option.
 Please note that when performing a non-cascading delete, you need to make sure the finalizer is unset/removed and then delete the app. You can check the **Remove any existing finalizer** checkbox for this. However, deleting finalizers is not safe and should be used with caution.
 
+If the application is unreachable on Argo CD and standard delete fails, use **Force delete from Harness** in the **Delete Application** dialog. Go to [Manage GitOps Applications](/docs/continuous-delivery/gitops/application/manage-gitops-applications#force-delete-from-harness) to review when this option appears and how to use it.
+
 ### Deleting a Harness GitOps agent
 
 To delete the Harness GitOps Agent from your Kubernetes cluster, you delete the StatefulSet for the Agent. A StatefulSet ensures that the desired number of pods are running and available at all times. Deleting the pod without deleting the StatefulSet will result in the pod being recreated.

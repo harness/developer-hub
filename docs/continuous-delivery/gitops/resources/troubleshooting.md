@@ -8,6 +8,8 @@ redirect_from:
   - /docs/continuous-delivery/gitops/troubleshooting
 ---
 
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
+
 This documentation lists issues encountered when installing and using Harness GitOps and describes how to resolve them.
 
 ## Installation errors
@@ -96,6 +98,14 @@ Before installing the Harness GitOps Agent, be aware of the following limitation
 **Recommendation:** For vanilla Kubernetes clusters, we recommend using the **Helm Chart** or **Kubernetes YAML** manifest options instead of operator-based manifests.
 
 ## Operational Errors
+
+<Troubleshoot
+  issue="GitOps application shows Unknown status and cannot be synced or deleted in Harness"
+  mode="fallback-only"
+  fallback="When Harness cannot reach the application on Argo CD, open the Delete Application dialog and select Force delete from Harness. This checkbox appears only for unreachable applications."
+/>
+
+Go to [Manage GitOps Applications](/docs/continuous-delivery/gitops/application/manage-gitops-applications#force-delete-from-harness) to review step-by-step instructions, minimum component versions, and Terraform delete options.
 
 ### Error: "Finalizer detected"
 

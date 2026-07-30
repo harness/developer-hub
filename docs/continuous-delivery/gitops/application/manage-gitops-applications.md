@@ -45,6 +45,71 @@ Each tile will have 3 vertical dots. Clicking this will allow you to manually **
 - Go to [Update GitOps Apps in a Pipeline](/docs/continuous-delivery/gitops/application/update-gitops-app-in-pipelines) to update application source settings from a pipeline.
 - Go to [GitOps refresh](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics#refresh) to refresh an application.
 
+---
+
+## Delete GitOps applications
+
+You can delete GitOps applications from the **Applications** dashboard on the GitOps Overview page. Harness sends the delete request to Argo CD through the GitOps Agent, then removes the application from Harness when Argo CD confirms the deletion.
+
+### Standard delete
+
+1. On the GitOps Overview page, open the application tile menu (three vertical dots), or open the application and select **Delete**.
+2. In the **Delete Application** dialog, choose a propagation policy:
+   - **Foreground** (recommended): Deletes the application first, then waits for managed resources to be removed.
+   - **Background**: Deletes the application immediately and removes managed resources asynchronously.
+   - **Non-cascading**: Deletes only the Application CR without removing deployed resources.
+3. Select **Delete** to confirm.
+
+Go to [Delete a Harness GitOps application](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart#delete-a-harness-git-ops-application) to review propagation policy details and finalizer options.
+
+### Force delete from Harness
+
+Some applications become stuck when Harness can no longer reach them on Argo CD. This commonly happens when:
+
+- The Argo CD Application was deleted outside Harness.
+- The GitOps Agent that served the application was removed.
+- A parent ApplicationSet was deleted and Harness still lists the generated application.
+
+These applications often show **Unknown** health or sync status. Standard sync and delete operations fail because Harness cannot communicate with Argo CD.
+
+When Harness detects that an application is unreachable on Argo CD, the **Delete Application** dialog displays a **Force delete from Harness** checkbox. This option does not appear when the application is reachable on Argo CD.
+
+1. In your Harness project, go to **CD** > **GitOps** > **Overview**.
+2. Open the application tile menu (three vertical dots), or open the application and select **Delete**.
+3. In the **Delete Application** dialog, select **Force delete from Harness**.
+4. Select **Delete** to confirm.
+
+![](./static/force-delete-from-harness.png)
+
+:::warning
+Force delete from Harness removes the application record from Harness only. It does not delete cluster resources that may still be running. Use this option only when the Argo CD application no longer exists or the agent is unavailable.
+:::
+
+:::info Minimum versions
+
+| Component | Minimum version |
+|---|---|
+| gitops-service | v1.162.0 |
+| terraform-provider-harness | 0.43.0 |
+
+:::
+
+#### Delete with Terraform
+
+When you manage GitOps applications with Terraform, set `force_delete = true` on the `harness_platform_gitops_applications` resource before you run `terraform destroy`. Harness removes the application from Harness even when the agent cannot reach Argo CD.
+
+```hcl
+resource "harness_platform_gitops_applications" "example" {
+  # ... application configuration ...
+
+  force_delete = true
+}
+```
+
+Go to the [Harness Terraform Provider documentation](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_gitops_applications) to review all delete options for GitOps applications.
+
+---
+
 ## Filter Applications
 
 At the top you can filter your applications using a search bar and application attributes.
