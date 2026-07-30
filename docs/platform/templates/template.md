@@ -225,6 +225,14 @@ You can customize templates using placeholder expressions and [Runtime Inputs](.
 
 Go to [Fixed values, runtime inputs, and expressions](../variables-and-expressions/runtime-inputs.md) for more information.
 
+## Template overrides
+
+Template inputs let callers (the entities that reference a template, such as a pipeline that references a stage template) supply values for the fields you mark as runtime inputs. Template overrides go further: they let you set a common value for an advanced setting (such as conditional execution, failure strategy, or looping strategy) in the template, and allow individual callers to change only that setting when they need a different value, without editing or duplicating the template.
+
+As the template owner, you control which advanced settings callers may override through the template's `allowedOverrides` allow-list. Any setting you do not list cannot be overridden.
+
+Go to [Override template advanced settings](/docs/platform/templates/template-overrides) to understand how to allow and apply template overrides.
+
 ## Template YAML
 
 You can use the Harness visual or YAML editors to create your templates.

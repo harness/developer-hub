@@ -470,6 +470,14 @@ org.<templateIdentifier>
 
 - This option is helpful for the quick configuration of a step, stage, or pipeline without being tied to a specific version of the template.
 
+## Set common defaults and allow overrides instead of duplicating templates
+
+When most callers of a template (the entities that reference it, such as the pipelines that use a stage template) share the same advanced setting (such as conditional execution, failure strategy, or looping strategy) but a few need a different value, set the common value in the template and add only the settings that vary to the template's `allowedOverrides` allow-list. Callers then override just those settings for their instance.
+
+If you instead create a separate template for each variation, every change to the shared logic must be repeated across all copies, and the copies drift apart over time. Keep the setting scoped tightly: list only the settings that genuinely vary in `allowedOverrides`, because any setting you add there becomes editable by every caller.
+
+Go to [Override template advanced settings](/docs/platform/templates/template-overrides) to understand how to allow and apply overrides.
+
 ## Manage templates
 
 You can manage your Harness templates at the account, org, and project scope.

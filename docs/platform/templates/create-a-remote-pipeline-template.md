@@ -160,6 +160,10 @@ To save your remote pipeline template to Git, do the following:
 We have a field `storeType` in YAML inside template that will help distinguish whether a template stored is Inline or Remote. Currently this feature is behind Feature Flag `PIE_USE_OPTIMISED_TEMPLATE_RESOLUTION`. Contact [Harness Support](mailto:support@harness.io) to enable this Feature Flag.
 :::
 
+:::tip
+You can let callers (the pipelines that use this template) override a controlled set of its pipeline-level advanced settings: timeout, stage executions, re-run settings, and delegate selectors. Set the common value in the template and add only the settings that vary to the template's allow-list. Go to [Override template advanced settings](/docs/platform/templates/template-overrides) to configure and apply these overrides.
+:::
+
 ## Next steps
 
 * [Use a template](use-a-template.md)

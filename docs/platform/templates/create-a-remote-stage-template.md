@@ -147,6 +147,10 @@ To add stage parameters, do the following:
 
    ![](./static/create-a-remote-stage-template-95.png)
 
+:::tip
+You can let callers (the pipelines that use this stage template) override a controlled set of its advanced settings, such as conditional execution, execution strategy, failure strategy, looping strategy, and delegate selectors. Set the common value in the template and add only the settings that vary to the template's allow-list. Go to [Override template advanced settings](/docs/platform/templates/template-overrides) to configure and apply these overrides.
+:::
+
 ### Next steps
 
 * [Use a template](use-a-template.md)

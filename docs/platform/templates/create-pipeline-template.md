@@ -271,8 +271,10 @@ spec:
     - your-delegate
 ```
 
-:::info
-When you instantiate pipelines from this template in Pipeline Studio, these four settings appear under the **Advanced** tab as **read-only** (to faithfully reflect your template). Any instance-specific options—such as **Public access** or **Dynamic execution settings**—are shown below in the same tab as editable metadata fields. Don’t overlook those! 
+:::tip
+When you instantiate pipelines from this template in Pipeline Studio, these four settings appear under the **Advanced** tab as read-only (to faithfully reflect your template). Instance-specific options, such as **Public access** or **Dynamic execution settings**, are shown below in the same tab as editable metadata fields.
+
+If you allow a setting to be overridden, callers (the pipelines that use this template) can change that setting for their instance. Go to [Override template advanced settings](/docs/platform/templates/template-overrides) to understand how template overrides work.
 :::
 
 ## Use templates

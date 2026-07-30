@@ -98,14 +98,16 @@ To copy your template to a pipeline, do the following:
 
 ## Advanced Options
 
-When you create or edit a pipeline in Pipeline Studio by selecting a template, the **Advanced** tab now clearly separates template-level settings (read-only) from pipeline-specific metadata (editable):
+When you create or edit a pipeline in Pipeline Studio by selecting a template, the **Advanced** tab separates template-level settings from pipeline-specific metadata (editable):
 
-1. **Template-level settings (read-only)**  
-   These first four fields reflect what was defined under `advanced:` in your template and cannot be modified here:
+1. **Template-level settings**  
+   These first four fields reflect what was defined under `advanced:` in your template:
    - **Pipeline timeout settings**  
    - **Stage execution settings**  
    - **Re-run settings**  
    - **Delegate selector**  
+
+   By default, these fields are read-only and cannot be modified here. If the template owner allows a setting to be overridden, you can change that setting for this pipeline instance. Go to [Override template advanced settings](/docs/platform/templates/template-overrides) to understand how template overrides work.
 
 2. **Pipeline metadata (editable)**  
    Below the read-only block you’ll find the only settings you can change for this pipeline instance:

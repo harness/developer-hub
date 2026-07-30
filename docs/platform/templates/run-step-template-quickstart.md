@@ -58,6 +58,10 @@ To add step parameters, do the following:
 
    **Use Runtime Inputs instead of variable expressions:** when you want to template settings in a Stage or step template, use [Runtime inputs](../variables-and-expressions/runtime-inputs.md) instead of variable expressions. When Harness tries to resolve variable expressions to specific stage-level settings using fully-qualified names, it can cause issues at runtime. Every pipeline where the stage or step template is inserted must utilize the exact same names for fully-qualified name references to operate. With runtime inputs, you can supply values for a setting at deployment runtime.
 
+:::tip
+You can let callers (the pipelines and stages that use this step template) override a controlled set of its advanced settings, such as conditional execution, failure strategy, looping strategy, policy enforcement, and delegate selectors. Set the common value in the template and add only the settings that vary to the template's allow-list. Go to [Override template advanced settings](/docs/platform/templates/template-overrides) to configure and apply these overrides.
+:::
+
 ### Step 3: Add the run step template to a pipeline
 
 To add the run step template to a pipeline, do the following:

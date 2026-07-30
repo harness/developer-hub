@@ -172,6 +172,10 @@ Select one of the following **Looping Strategy** options to run step multiple ti
 
 For more information, go to [Use looping strategies](../pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism.md)
 
+:::tip
+You can let callers (the pipelines and stages that use this step group template) override the step group's conditional execution, failure strategy, looping strategy, and delegate selectors for their own instance. Go to [Override template advanced settings](/docs/platform/templates/template-overrides) to configure and apply these overrides.
+:::
+
 Select **Save**. Enter a comment for the changes, and then select **Save**.
 
 ## Add the step group template to a pipeline

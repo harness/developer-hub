@@ -153,6 +153,10 @@ To add step parameters, do the following:
 
     The changes you made in Git are now applied to Harness.
 
+:::tip
+You can let callers (the pipelines and stages that use this step template) override a controlled set of its advanced settings, such as conditional execution, failure strategy, looping strategy, policy enforcement, and delegate selectors. Set the common value in the template and add only the settings that vary to the template's allow-list. Go to [Override template advanced settings](/docs/platform/templates/template-overrides) to configure and apply these overrides.
+:::
+
 ### Next steps
 
 * [Use a template](use-a-template.md)
