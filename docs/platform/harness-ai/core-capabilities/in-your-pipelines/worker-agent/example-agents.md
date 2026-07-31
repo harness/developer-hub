@@ -18,7 +18,6 @@ tags:
   - examples
 redirect_from:
   - /docs/platform/harness-ai/core-capabilities/in-your-pipelines/harness-agents
-  - /docs/platform/harness-ai/harness-agents
 ---
 
 Worker Agent examples demonstrate real-world patterns for PR review, infrastructure plan safety, spec-driven development, and code generation. Each example includes the complete agent definition YAML and explains the agent instructions, input parameters, MCP connectors, and output variables. Use these examples as templates when building your own Worker Agents for CI and CD pipelines.

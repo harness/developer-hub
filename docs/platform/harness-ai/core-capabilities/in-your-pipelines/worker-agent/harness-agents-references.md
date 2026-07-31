@@ -15,10 +15,6 @@ tags:
   - Harness AI
   - Worker Agents
   - Reference
-redirect_from:
-  - /docs/platform/harness-ai/harness-agents#worker-agent-form-field-reference
-  - /docs/platform/harness-ai/harness-agents#agent-definition-yaml-reference
-  - /docs/platform/harness-ai/harness-agents#yaml-field-reference
 ---
 
 ## Worker Agent form field reference

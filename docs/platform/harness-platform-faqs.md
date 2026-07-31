@@ -5,8 +5,6 @@ sidebar_label: Platform FAQs
 sidebar_position: 2
 redirect_from:
   - /kb/platform/harness-platform-faqs
-  - /kb/platform/articles/delegate-details-api
-  - /docs/platform/knowledgebase/articles/delegate-details-api
 ---
 
 <!--

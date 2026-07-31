@@ -4,7 +4,6 @@ description: Use Harness AI to generate legacy dashboard widgets from natural la
 sidebar_position: 9
 canonical_url: https://www.harness.io/blog/elevating-aida-harness-unveils-7-new-innovative-capabilities
 redirect_from:
-  - /docs/platform/dashboards/use-dashboard-intelligence-by-aida
   - /docs/platform/dashboards/use-dashboard-intelligence-by-ai
 ---
 

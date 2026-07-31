@@ -6,7 +6,6 @@ keywords: [Google, delegate, Terraform, GKE, workload identity]
 sidebar_position: 3
 slug: /platform/tutorials/gke-workload-identity
 redirect_from:
-  - /tutorials/platform/gke-workload-identity
   - /docs/platform/delegates/install-delegates/gke-workload-identity
 ---
 
