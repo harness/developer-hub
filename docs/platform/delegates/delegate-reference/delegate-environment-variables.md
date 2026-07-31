@@ -67,11 +67,11 @@ Tags are displayed on the delegate details page in Harness Manager. Go to <a hre
 
 ### DYNAMIC_REQUEST_HANDLING
 
-Dynamic request handling is designed to prevent delegates from being overloaded. Enabling `DYNAMIC_REQUEST_HANDLING` will stop acquiring new tasks if the CPU default threshold is exceeded. By default, the threshold is set to 80%. You can override this value by configuring the `CPU_USAGE_THRESHOLD` variable. 
-
-:::note
-CPU and memory thresholds are always checked during task acquisition, and the task will not be picked up if they exceed the default limits.
+:::warning
+This option is deprecated as of delegate version `26.07.89601`. Please use `DELEGATE_CPU_THRESHOLD`, `DELEGATE_MEMORY_THRESHOLD` and `DELEGATE_CGROUP_MEMORY_THRESHOLD` to configure resource usage limits individually.
 :::
+
+Dynamic request handling is designed to prevent delegates from being overloaded. Enabling `DYNAMIC_REQUEST_HANDLING` will stop acquiring new tasks if the CPU and Memory default threshold is exceeded. By default, the threshold is set to 80%. You can override this value by configuring the `DELEGATE_CPU_THRESHOLD`, `DELEGATE_MEMORY_THRESHOLD` and `DELEGATE_CGROUP_MEMORY_THRESHOLD` variables.
 
   ```yaml
       - name: DYNAMIC_REQUEST_HANDLING
@@ -80,7 +80,7 @@ CPU and memory thresholds are always checked during task acquisition, and the ta
 
 ### DELEGATE_CPU_THRESHOLD
 
-To configure the delegate resource threshold, set the `DELEGATE_CPU_THRESHOLD` env variable to the CPU threshold in percentages. When the threshold is exceeded, the delegate rejects new tasks. Note that `DYNAMIC_REQUEST_HANDLING` has to be set to true for this to take effect. For more information, go to [Configure delegate metrics and auto scale](/docs/platform/delegates/manage-delegates/delegate-metrics).
+To configure the delegate resource threshold, set the `DELEGATE_CPU_THRESHOLD` env variable to the CPU threshold in percentages. When the threshold is exceeded, the delegate rejects new tasks.
 
    ```yaml
         - name: DELEGATE_CPU_THRESHOLD
@@ -89,10 +89,26 @@ To configure the delegate resource threshold, set the `DELEGATE_CPU_THRESHOLD` e
 
 ### DELEGATE_MEMORY_THRESHOLD
 
-To configure the delegate resource threshold, set the `DELEGATE_MEMORY_THRESHOLD` env variable to the memory threshold in percentages. When the threshold is exceeded, the delegate rejects new tasks. Note that `DYNAMIC_REQUEST_HANDLING` has to be set to true for this to take effect. For more information, go to [Configure delegate metrics and auto scale](/docs/platform/delegates/manage-delegates/delegate-metrics).
+To configure the delegate resource threshold, set the `DELEGATE_MEMORY_THRESHOLD` env variable to the memory threshold in percentages. This option takes two memory calculations into account:
+
+- JVM memory usage: This is the memory used by the Delegate's process. If the JVM memory usage exceeds the threshold, the delegate rejects new tasks.
+- System memory usage: This considers the system memory usage. If the system's memory usage exceeds the threshold, the delegate rejects new tasks.
+
+:::note
+When the `DELEGATE_CGROUP_MEMORY_THRESHOLD` option (see below) is used, the System memory check mentioned here is skipped and is replaced by the cgroup system memory calculation, which is more accurate for systems that are cgroup-compatible.
+:::
 
    ```yaml
         - name: DELEGATE_MEMORY_THRESHOLD
+          value: "80"
+   ```
+
+### DELEGATE_CGROUP_MEMORY_THRESHOLD
+
+To configure the delegate resource threshold, set the `DELEGATE_CGROUP_MEMORY_THRESHOLD` env variable to the memory threshold in percentages. This is the recommended way for setting system-level memory usage threshold for Delegates running in cgroup compatible environments (Linux, container runtimes or Kubernetes nodes).
+
+   ```yaml
+        - name: DELEGATE_CGROUP_MEMORY_THRESHOLD
           value: "80"
    ```
 

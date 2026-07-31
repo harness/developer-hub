@@ -78,7 +78,7 @@ Open **PowerShell as Administrator**:
 - Press **Windows Key + X**
 - Select **"Windows PowerShell (Admin)"** or **"Terminal (Admin)"**
 
-Replace `<VERSION>` with the latest version (e.g., `1.35.0`):
+Replace `<VERSION>` with the latest version (e.g., `3.5.0`):
 
 ```powershell
 Invoke-WebRequest -Uri "https://app.harness.io/public/shared/delegates/<VERSION>/delegate-windows-amd64.exe" -o delegate
