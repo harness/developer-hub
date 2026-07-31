@@ -1,6 +1,6 @@
 ## July 2026
 
-### Pipeline service 1.199.0
+### Pipeline service 1.199.1
 
 #### New features and enhancements
 

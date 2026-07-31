@@ -1,6 +1,6 @@
 ## July 2026
 
-### Version 1.160.3
+### Version 1.160.4
 
 #### New features and enhancements
 
