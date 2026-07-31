@@ -171,6 +171,10 @@
 .sidebarNav {
   flex: 1;
   overflow-y: auto;
+  /* HDH-1071: clip horizontally so the absolutely-positioned .endpointTooltip
+     spans (which extend past the sidebar edge) cannot trigger a horizontal
+     scrollbar. overflow-y:auto otherwise forces overflow-x to compute to auto. */
+  overflow-x: hidden;
   padding: 0;
   min-height: 0;
   animation: sidebarNavFadeIn 0.75s cubic-bezier(0.4, 0, 0.2, 1) forwards;
@@ -190,6 +194,27 @@
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+/* HDH-1071: the category header is a native <button> reusing the docs
+   .menu__link--sublist folder style. Outside .theme-doc-sidebar-container it
+   keeps the browser's default button chrome (grey buttonface fill + 2px outset
+   border), which rendered as dark boxes around each header. Reset it to match
+   the docs sidebar folder headers. The caret (.menu__link--sublist-caret::after)
+   and the shared typography from custom.css are left untouched. */
+.sidebar :global(.menu__link--sublist) {
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  background: transparent;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+  cursor: pointer;
+}
+
+.sidebar :global(.menu__link--sublist:hover) {
+  background: var(--gray-100);
 }
 
 .endpointList {
