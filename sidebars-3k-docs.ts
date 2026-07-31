@@ -408,9 +408,9 @@ const sidebars: SidebarsConfig = {
           type: 'link',
           label: 'Release Notes',
           className: 'sidebar-Release_Notes',
-          href: '/release-notes/platform',
+          href: '/docs/platform/harness-ai/release-updates',
           customProps: {
-            description: 'Learn about recent changes to Harness products.',
+            description: 'Learn about recent changes to Harness AI.',
           },
         },
         // Roadmap
