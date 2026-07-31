@@ -171,6 +171,16 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## July 2026
 
+### Version 26.07.89702 <!-- July 31, 2026 -->
+
+#### Fixed issues
+
+- Fixed the Horizontal Pod Autoscaler (HPA) and Pod Disruption Budget (PDB) not being re-created during the blue-green Scale Up step. The HPA and PDB deleted during the scale down step are now re-created after the deployment workloads scale back up. [CDS-127741]
+- Fixed known-benign Helm stderr messages, such as "release not found" on a fresh install and YAML validation warnings, being logged as errors. These lines are now logged at WARN instead of ERROR to avoid confusion during deployments. [CDS-127468]
+- Fixed ECS blue-green rollback never finishing when the previous version was not downscaled and still had all tasks running. The rollback skipped the upscale but still ran the steady state check, which never completed and timed out. The delegate now skips the steady state check when no update or creation of the old service occurs. [CDS-126974]
+- Fixed session tags, such as pipeline ID and other claims, not being populated for ContainerStepV2 and Run step container-init flows. These flows now populate session tags like the other CD steps. [CDS-125475]
+- Fixed squash and merge failing in PR pipelines for Bitbucket and Azure DevOps when a commit landed on the source branch after the Update Release Repo step. The Merge PR step now fetches the pull request's current concurrency token immediately before merging and refreshes it on a 409 retry, so a later commit no longer causes the merge to fail. [CDS-123246]
+
 ### Version 26.07.89603 <!-- July 28, 2026 -->
 
 #### Fixed issues
