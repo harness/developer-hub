@@ -18,6 +18,7 @@ This document provides an overview of workspace statuses, offering a quick glanc
 - **Apply_Needed:** An `apply` is required to bring the infrastructure in sync with the workspace configuration. 
     - This status appears when changes are detected but not yet applied, such as OpenTofu/Terraform code updates, modified variables or files, or changes to the provisioner version. 
     - It is typically set after a plan step shows pending changes or when configuration is edited directly, helping users identify workspaces that are currently out-of-date.
+- **Rollback_Applied:** The workspace state was rolled back to a previous version from the State tab. Run a plan to reconcile the rolled-back state with your live infrastructure. Go to [Roll back workspace state](/docs/infra-as-code-management/workspaces/state-rollback) to find out more.
 - **Failed:** Workspaces where the last operation did not complete successfully, requiring attention.
 
 <!-- Tango/Interactive guide -->

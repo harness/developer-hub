@@ -97,6 +97,8 @@ The Activity History tab logs actions performed within the workspace, such as 'p
 ### State
 The State tab provides access to your complete infrastructure state file, offering critical insights into your current configuration and dependencies of your resources.
 - **Usage:** Utilize this tab to conduct audits and maintain consistency across your infrastructure setup, ensuring alignment with your desired state.
+- **State versions:** The State tab lists previous versions of your state file. Every run that stores state adds a new version, and all historical versions are retained.
+- **State rollback:** From the State tab, you can roll back to any previous state version. Harness restores the selected version as a new version without modifying your cloud infrastructure. Go to [Roll back workspace state](/docs/infra-as-code-management/workspaces/state-rollback) to restore a previous version.
 
 For detailed instructions on managing your infrastructure state, visit [Provision workspace](https://developer.harness.io/docs/infra-as-code-management/workspaces/provision-workspace).
 
