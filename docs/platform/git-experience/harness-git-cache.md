@@ -9,6 +9,7 @@ Entity caching reduces delays in loading your remote entities on the Harness UI.
 
 Harness caches the following remote entities:
 - Remote pipelines
+- Remote input sets
 - Remote templates
 
 :::note
@@ -17,10 +18,18 @@ The Git cache is only used to render entities faster in the Harness UI, not to i
 
 You can reload the entities from Git and update the cache at any time. 
 
-## Setting Up Caching
-Caching occurs with git entities (GitHub, Bitbucket, etc) where a webhook has been established.  For example, setting up a webhook as a part of [the GitX Bi-directional sync](https://developer.harness.io/docs/platform/git-experience/gitexp-bidir-sync-setup/#setup-via-webhooks-page) or a webhook as a part of [Bitbucket Caching](https://developer.harness.io/docs/continuous-delivery/kb-articles/articles/bitbucket-api-limit/#setting-up-a-webhook-for-caching)
+## What will you learn in this topic?
 
-Please note that caching occurs for each webhook created on a **per repo** basis.  Every repo that is storing entities needs its own webhook in order to establish caching.  
+- How Harness [sets up caching](#set-up-caching) for remote entities.
+- How the cache is [maintained separately for each branch](#caching-entities-saved-on-multiple-branches).
+- The [entity cache life cycle](#entity-cache-life-cycle) and how cache status is shown in the UI.
+- How to [refresh the cache from Git](#refresh-the-cache-from-git), from the UI or through the API.
+- What happens to the cache when you [commit cached changes](#commit-cached-changes).
+
+## Set up caching
+Caching occurs with Git entities (GitHub, Bitbucket, and others) where a webhook has been established. For example, set up a webhook as a part of [the GitX bidirectional sync](/docs/platform/git-experience/gitexp-bidir-sync-setup/#setup-via-webhooks-page) or a webhook as a part of [Bitbucket caching](/docs/continuous-delivery/kb-articles/articles/bitbucket-api-limit/#setting-up-a-webhook-for-caching).
+
+Caching occurs for each webhook created on a **per repo** basis. Every repo that is storing entities needs its own webhook in order to establish caching.
 
 ## Caching entities saved on multiple branches
 
@@ -39,19 +48,13 @@ Harness UI uses the following cache life cycle to render a remote entity:
 
    ![](../git-experience/static/stale-cache.png)
 
-   You can refresh the cache and reload the entities from Git by selecting the **Reload from Git** option. 
-   
-   ![](./static/reload-from-git.png)
+   You can refresh the cache and reload the entity from Git at any time. Go to [Refresh the cache from Git](#refresh-the-cache-from-git) to reload from the UI or through the API.
 
-   The following pop-up appears to confirm reload of the entities from Git.
-
-   ![](../git-experience/static/refreshcache.png)
-  
   The cache status you see in the UI is only indicative of the cache status of the entity being fetched. Entities referenced within the fetched entity may have different cache statuses.
   For example, the cache status in the pipeline studio corresponds to the cache status of the pipeline. It is possible for referenced remote templates within this pipeline to have a different cache status.
-  If you select **Reload from Git**, the caches of all the referenced entities are also retrieved and reloaded from Git.
+  If you refresh the cache, the caches of all the referenced entities are also retrieved and reloaded from Git.
 
-3. Harness clears the cache for any entity that hasn't been fetched from GIT in the previous 30 days. Any subsequent access (whether through API or UI) will fetch the entity from GIT, update the cache, and return the response.
+3. Harness clears the cache for any entity that has not been fetched from Git in the previous 30 days. Any subsequent access (whether through the API or UI) fetches the entity from Git, updates the cache, and returns the response.
 
 4. If the UI utilizes caching, the backend uses cached data and never pulls the latest from Git by default. 
 
@@ -61,10 +64,53 @@ Harness UI uses the following cache life cycle to render a remote entity:
    
 <GitXconnect />
 
-## Committing changes
+## Refresh the cache from Git
+
+The Git cache is used only to render remote entities faster in the Harness UI. When the source in Git changes, refresh the cache to pull the latest version. You can refresh the cache from the UI, or through the API.
+
+Cache refresh is supported for the following **remote** entities:
+
+- Pipelines
+- Input sets
+- Templates
+
+:::note
+Refresh applies to remote entities only. Inline entities are not stored in Git and do not use the Git cache.
+:::
+
+### Reload from Git
+
+Use the **Reload from Git** option to refresh the cache and reload a remote entity from Git in the UI.
+
+1. Open the remote pipeline, input set, or template in its studio.
+2. Select the more options menu (**⋮**) in the top-right corner.
+3. Select **Reload from Git**.
+
+Harness fetches the latest version from the entity's Git branch, updates the cache, and re-renders the entity. The caches of all referenced entities are also reloaded from Git.
+
+<div align="center">
+  <DocImage path={require('./static/reload-from-git-menu.png')} width="90%" height="90%" alt="Reload from Git option in the more options menu of the pipeline studio" title="Click to view full size image" />
+</div>
+
+### Refresh the cache using the API
+
+:::note
+This feature is behind the feature flag `PIPE_GITX_FORCE_REFRESH`, which is disabled by default. Contact [Harness Support](mailto:support@harness.io) to enable it for your account.
+:::
+
+Each entity has a `refresh-and-get` endpoint that clears the cached copy of the entity, fetches the current version from the branch you specify, updates the cache, and returns the refreshed entity in a single call. This is the API equivalent of **Reload from Git**. These endpoints are available for remote pipelines, input sets, and templates.
+
+Note the following when you call these endpoints:
+
+- The `branch` query parameter is required. Harness refreshes the cache for the branch you specify and returns the entity from that branch.
+- You need the same view permission that the UI requires: **View** on pipelines for pipelines and input sets, and **View** on templates for templates.
+
+Go to the [Harness API reference](https://apidocs.harness.io/) to review the request and response schema for each `refresh-and-get` endpoint.
+
+## Commit cached changes
 
 When you commit changes to an entity that has been cached, Harness displays a warning if the cached version of the entity differs from that in Git.
-To view the differences, click **See What Changed**.
+To view the differences, select **See What Changed**.
 
 ![](../git-experience/static/commitcachedentity.png)
 
@@ -74,5 +120,11 @@ You can do one of the following when there are differences:
 
 ![](../git-experience/static/CacheDiff.png)
 
-## Changing Git Repo Name
-For information on the process a team should follow when renaming a Git Repo, please take a look at our [documentation on Repo Renaming and Git Experience Caching](https://developer.harness.io/docs/platform/git-experience/harness-git-cache-rename).
+## Change a Git repo name
+Go to [Repo renaming and Git Experience caching](/docs/platform/git-experience/harness-git-cache-rename) to understand the process a team should follow when renaming a Git repo.
+
+## Next steps
+
+- [Refresh the cache from Git](#refresh-the-cache-from-git): Reload a remote entity from the UI or through the API.
+- [Set up bidirectional sync for Git Experience](/docs/platform/git-experience/gitexp-bidir-sync-setup): Keep Harness and Git in sync automatically through webhooks.
+- [Repo renaming and Git Experience caching](/docs/platform/git-experience/harness-git-cache-rename): Handle the cache correctly when you rename a Git repo.

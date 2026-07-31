@@ -58,6 +58,8 @@ When Harness initiates a push, it operates with the same authority as a user iss
 
 If you're not utilizing bidirectional sync, Harness won't automatically update anything. While execution utilizes the latest version, outside of that, you might encounter outdated pipelines or entities based on the last time they were executed or manually reloaded. However, with bidirectional sync enabled, you'll consistently see the most up-to-date version pulled directly from Git.
 
+To manually pull the latest version of a remote pipeline, input set, or template, go to [Refresh the cache from Git](/docs/platform/git-experience/harness-git-cache#refresh-the-cache-from-git). You can reload from the UI or through the API.
+
 For more information, go to [Set up bidirectional sync for Git Experience](/docs/platform/git-experience/gitexp-bidir-sync-setup/).
 
 ### When I try to open a Git-stored pipeline, why doesn't the branch dropdown display all the branches?

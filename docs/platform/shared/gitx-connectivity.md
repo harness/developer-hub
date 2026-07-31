@@ -2,7 +2,7 @@
 Customers may be naturally curious about what might happen in the event of a potential network outage between Harness and the entity repository provider.  In this case, several scenarios need to be considered.  In general, while the connectivity is broken, Harness will utilize the "locked" cached version of the entity.
 
 ### Updates to remote entities at the remote entity repo
-If autocreation is enabled, new entities will not be created automatically and must be imported manually.  Another option would be for customers to recreate the file once the connectivity is fixed. For existing entities, we provide an option to `Reload from Git` where customers can manually reload from the repository once the connectivity is restored.
+If autocreation is enabled, new entities will not be created automatically and must be imported manually.  Another option would be for customers to recreate the file once the connectivity is fixed. For existing entities, we provide an option to `Reload from Git` where customers can manually reload from the repository once the connectivity is restored. Go to [Refresh the cache from Git](/docs/platform/git-experience/harness-git-cache#refresh-the-cache-from-git) to reload an entity from the UI or through the API.
 
 ![](./static/entitycache-reloadfromgit.png)
 
