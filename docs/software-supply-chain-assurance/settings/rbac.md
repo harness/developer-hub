@@ -22,6 +22,8 @@ The SCS RBAC enhancements described in this topic are enabled by default. Howeve
 
 :::
 
+***
+
 ## What will you learn in this topic?
 
 By the end of this topic, you will be able to understand:
@@ -32,11 +34,15 @@ By the end of this topic, you will be able to understand:
 * How to create and modify roles with custom SCS permissions.
 * How to create and manage resource groups for SCS access control.
 
+***
+
 ## Before you Begin
 
 Make a note of the following before you proceed with configuring RBAC in SCS:
 
 * Understanding of Role-based access control (RBAC) in Harness. Harness RBAC helps you manage user access to specific features, resources, and actions across the platform. For more information on Harness RBAC, see [Role-based Access Control (RBAC)](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/).
+
+***
 
 ## Understand Role-Based Access Control in SCS
 
@@ -50,6 +56,8 @@ The following table provides an overview of why RBAC is important for SCS, when 
 | ------------------- | ------------- | ------------------------ |
 | Helps control access to sensitive SCS operations and workflows. Reduces the risk of unauthorized configuration changes and unintended operations. Helps enforce least-privilege access across SCS resources. | When multiple teams manage integrations, configurations, and remediation workflows within SCS. When you want to restrict create, edit, or delete access for specific users or teams. When managing SCS access across Account, Organization, and Project scopes. | Assign granular SCS permissions based on user responsibilities and operational requirements. Configure resource-specific permissions to control access across different SCS workflows and operations. Configure RBAC permissions through existing Harness managed roles or custom roles. |
 
+***
+
 ## Default Managed Role Access for SCS
 
 SCS RBAC permissions are automatically mapped to selected existing Harness managed roles based on their access level. This helps organizations apply SCS access controls without manually configuring permissions for commonly used administrative and viewer roles.
@@ -61,6 +69,8 @@ The following table shows how the existing Harness managed roles are mapped to S
 | Viewer | Account, Organization, and Project | Provides view-only access to supported SCS resources and workflows. Users cannot perform create, edit, or delete operations. |
 | Admin | Account, Organization, and Project | Provides full access to supported SCS resources and workflows, including configuration and management operations. |
 | Security Testing AppSec | Account, Organization, and Project | Provides access to supported SCS security and remediation workflows, including integrations, external tickets, configurations, and remediation pull requests. |
+
+***
 
 ## Supported SCS Resources and Permissions
 
@@ -151,6 +161,8 @@ SCS RBAC permissions help administrators control access to different SCS resourc
   </tbody>
 </table>
 
+***
+
 ## Configure RBAC for SCS
 
 Configuring RBAC for SCS helps administrators control access to different SCS resources and workflows based on user responsibilities and operational requirements. By assigning granular permissions, organizations can restrict unauthorized actions while ensuring that users have the appropriate level of access required for their tasks.
@@ -159,7 +171,12 @@ You can configure RBAC permissions for SCS at the Account, Organization, and Pro
 
 * [Create a new role with SCS permissions](/docs/software-supply-chain-assurance/settings/rbac#create-a-new-role-with-scs-permissions)
 * [Modify/Delete an existing role](/docs/software-supply-chain-assurance/settings/rbac#modifydelete-an-existing-role)
-* [Create and manage resource groups](/docs/software-supply-chain-assurance/settings/rbac#create-and-manage-resource-groups)
+* [Create a new resource group](/docs/software-supply-chain-assurance/settings/rbac#create-a-new-resource-group)
+* [Modify/Delete an existing resource group](/docs/software-supply-chain-assurance/settings/rbac#modifydelete-an-existing-resource-group)
+
+### Create a new role with SCS permissions
+
+Creating a new role allows administrators to define custom SCS permissions based on specific user responsibilities and access requirements. 
 
 The configuration workflow remains similar across all scopes, with only the navigation path changing based on the selected scope. Use the following navigation paths based on where you want to configure SCS permissions:
 
@@ -169,9 +186,7 @@ The configuration workflow remains similar across all scopes, with only the navi
 | **Organization** | Use the scope selector to select the required Organization scope, and then go to **Organization Settings > Access Control > Roles**. |
 | **Project** | Use the scope selector to select the required Project scope, and then go to **Project Settings > Access Control > Roles**. |
 
-### Create a New Role with SCS Permissions
-
-Creating a new role allows administrators to define custom SCS permissions based on specific user responsibilities and access requirements. To create a new role with SCS permissions, complete the following steps:
+To create a new role with SCS permissions, complete the following steps:
 
 1. Navigate to the appropriate **Roles** page based on your selected scope.
 2. Click the `+ New Role` button on the top left to open the `New Role` dialog.
@@ -187,7 +202,7 @@ Creating a new role allows administrators to define custom SCS permissions based
 
     <DocImage path={require('./static/access-control-permissions.png')} width="100%" height="80%" title="Click to view full size image" />
 
-9. Scroll up to the top of the page and click **Apply Changes**. Once done, the **Permissions updated successfully** toaster message will appear at the top indicating the successful assigning of custom permissions.
+9. Scroll up to the top of the page and click **Apply Changes**. Once done, the **Permissions updated successfully** toaster message will appear at the top, indicating the successful assignment of custom permissions.
 
     :::note
 
@@ -196,11 +211,11 @@ Creating a new role allows administrators to define custom SCS permissions based
     :::
 10. (Optional) After assigning the role to a user, user group, or service account, click the `Assigned To` tab to view the associated users, user groups, and service accounts.
 
-### Modify/Delete an Existing Role
+### Modify/Delete an existing role
 
 Modifying an existing role allows administrators to update the role name, description, tags, and assigned SCS permissions, while deleting an existing role removes it from SCS.
 
-#### Modify SCS Permissions for an Existing Role
+#### Modify SCS permissions for an existing role
 
 To modify the SCS permissions for an existing role, complete the following steps:
 
@@ -210,15 +225,15 @@ To modify the SCS permissions for an existing role, complete the following steps
 4. Select or unselect the checkboxes for the required permissions across different SCS resources based on your access requirements.
 5. Scroll up to the top of the page and click **Apply Changes**. Once done, the **Permissions updated successfully** toaster message will appear at the top indicating the successful modification of custom permissions.
 
-#### Modify the Role Name, Description, or Tags for an Existing Role
+#### Modify the role name, description, or tags for an existing role
 
-Modifying an existing role allows administrators to update the role name, description, or tags to reflect changing organizational and access management requirements. For more information, see [Edit a Role](/docs/platform/role-based-access-control/add-manage-roles#edit-a-role)
+Modifying an existing role allows administrators to update the role name, description, or tags to reflect changing organizational and access management requirements. For more information, see [Edit a Role](/docs/platform/role-based-access-control/add-manage-roles#edit-a-role).
 
 <DocImage path={require('./static/edit-scs-role.png')} width="100%" height="80%" title="Click to view full size image" />
 
 #### Delete an Existing Role
 
-Deleting an existing role allows administrators to remove roles that are no longer required or are no longer used within the organization. For more information, see [Delete a Role](/docs/platform/role-based-access-control/add-manage-roles#delete-a-role) 
+Deleting an existing role allows administrators to remove roles that are no longer required or are no longer used within the organization. For more information, see [Delete a Role](/docs/platform/role-based-access-control/add-manage-roles#delete-a-role). 
 
 :::note
 
@@ -227,28 +242,89 @@ For more information on managing roles, see [Manage Roles](/docs/platform/role-b
 :::
 
 
-### Create and Manage Resource Groups
+### Create a new resource group
 
-Here's how you can create and manage resource groups for the remediation tracker at the account level. Additionally, you can refer to [Manage Resource Groups](https://developer.harness.io/docs/platform/role-based-access-control/add-resource-groups/) document to learn more.
+Resource groups help you manage access to SCS resources. They define which resources users and service accounts can access, making it easier to provide the right level of access.
 
-1. Navigate to **Account Settings** > **Access Control** > **Resource groups** within your Harness Account.
-2. Add a new resource group or select an existing one to modify.
-3. Set the "Resource Scope" accordingly if you are creating one.
-4. Within the Resources, select **Supply Chain Assurance**.
+The configuration workflow remains similar across all scopes, with only the navigation path changing based on the selected scope. Use the following navigation paths based on where you want to configure SCS resource groups:
+
+| Scope | Navigation Path |
+| ------------------- | ------------- |
+| **Account** | Use the scope selector to select the required Account scope, and then go to **Account Settings > Access Control > Resource Groups**. |
+| **Organization** | Use the scope selector to select the required Organization scope, and then go to **Organization Settings > Access Control > Resource Groups**. |
+| **Project** | Use the scope selector to select the required Project scope, and then go to **Project Settings > Access Control > Resource Groups**. |
 
 :::note
 
-* The **Remediation Tracker** resource can be configured within resource groups only at the **Project** scope. It is not available for resource group configuration at the **Account** or **Organization** scopes.
-* You can currently use resource groups only with Remediation Tracker permissions. Support for resource groups with other SCS permissions is not yet available and is planned for a future release.
+SCS resources appear in the resource tree only under the **Project** scope, so a resource group must include **Projects** in its resource scope to grant access to them.
+
+- When creating a resource group at the **Account** scope, select **All (including all Organizations and Projects)** or **Specified Organizations (and their Projects)** as the resource scope. The **Account only** resource scope does not include SCS resources.
+- When creating a resource group at the **Organization** scope, select **All (including all Projects)** or **Specified Projects** as the resource scope. The **Organization only** resource scope does not include SCS resources.
 
 :::
 
-<DocImage path={require('./static/access-control-remediation.png')} width="100%" height="80%" title="Click to view full size image" />
+To create a new resource group with SCS resources, complete the following steps:
 
-For configuring at both the organization and project levels, the navigation process is similar to what was detailed in the previous section.
+1. Navigate to the appropriate **Resource Groups** page based on your selected scope.
+2. Click the `+ New Resource Group` button on the top left to open the `New Resource Group` dialog.
+
+    <DocImage path={require('./static/access-control-resource-group.png')} width="100%" height="100%" title="Click to view full size image" />
+
+3. Specify the **Name** of the resource group, for example, *demo_resource_group*.<br /> Harness automatically generates a resource group ID from the resource group name.
+4. (Optional) Enter a description for the resource group.
+5. (Optional) Specify tags for the resource group by clicking on `+ Add "<tag_name>"`. The option appears automatically as you enter a tag name.
+6. Select a color for the resource group. The default color is _blue_.
+7. After verifying the details, click **Save**. Once saved, you can view the **Resource Group created successfully** toaster message at the top, indicating the successful creation of a new resource group.
+8. By default, the **Resource Scope** is selected to **Project only** for the **Project** scope.
+  * At the **Account** scope, select **All (including all Organizations and Projects)** or **Specified Organizations (and their Projects)** as the resource scope.
+  * At the **Organization** scope, select **All (including all Projects)** or **Specified Projects** as the resource scope.
+9. Scroll down through the different resource types and resources under **Resources** to locate **Supply Chain Security**.
+
+    <DocImage path={require('./static/resource-type-select.png')} width="100%" height="100%" title="Click to view full size image" />
+
+10. Select the **Supply Chain Security** resource type checkbox to include all associated resources, or select individual resource checkboxes to include only specific resources in the resource group.<br /> The available options are **Pull Requests**, **Configurations**, **Remediation Tracker**, **Integrations**, and **External Tickets**. You can also drag across the **Supply Chain Security** resource type to automatically select all associated resources.
+
+    <DocImage path={require('./static/resource-group-selection.png')} width="100%" height="100%" title="Click to view full size image" />
+
+11. Scroll up to the top of the page and click **Save**.<br /> Once done, the **Resource Group updated successfully** toaster message will appear at the top, indicating the successful assignment of resources to the resource group.
+
+:::note
+
+You can assign the newly created resource group to a new or existing user. For more information on assigning users to custom resource groups, see [Assign users to custom resource groups](/docs/platform/role-based-access-control/manage-resource-groups#assign-users-to-custom-resource-groups)
+
+:::
+
+
+### Modify/Delete an existing resource group
+
+Modifying an existing resource group allows administrators to update its name, description, tags, and assigned SCS permissions, while deleting an existing resource group removes it from SCS.
+
+#### Modify SCS resources or resource scope for an existing resource group
+
+Modify the SCS resources or resource scope in an existing resource group to update the resources that users and service accounts can access. You can add or remove SCS resources or update the resource scope as your access requirements change.
+
+Navigate to the Resource Groups page for the scope where the resource group was created. Select the resource group that you want to modify, and then follow the steps in [Create a new resource group](#create-a-new-resource-group) to update the resource scope or SCS resources.
+
+#### Modify the resource group name, description, or tags for an existing resource group
+
+Modifying an existing resource group allows administrators to update its name, description, or tags to reflect changing organizational and access management requirements. For more information, see [Edit a resource group](https://developer.harness.io/docs/platform/role-based-access-control/manage-resource-groups#edit-a-resource-group).
+
+<DocImage path={require('./static/edit-scs-resource-group.png')} width="100%" height="100%" title="Click to view full size image" />
+
+#### Delete an existing resource group
+
+Deleting an existing resource group allows administrators to remove groups that are no longer required or in use within the organization. For more information, see [Delete a resource group](https://developer.harness.io/docs/platform/role-based-access-control/manage-resource-groups#delete-a-resource-group).
+
+:::note
+
+For more information on managing resource groups, see [Manage resource groups](https://developer.harness.io/docs/platform/role-based-access-control/manage-resource-groups).
+
+:::
+
+***
 
 ## Next Steps
 
-* [OSS Risks Remediation](/docs/software-supply-chain-assurance/open-source-management/direct-indirect-dependency)
-* [Remediation Tracker](/docs/software-supply-chain-assurance/open-source-management/remediation-tracker/overview)
-* [Open Source Security and Risk Management](/docs/software-supply-chain-assurance/manage-risk-and-compliance/opensource-security-risk-management)
+* [OSS Risks Remediation](/docs/software-supply-chain-assurance/open-source-management/oss-risks-remediation): Learn how to remediate vulnerabilities and OSS risks in direct dependencies through manual or automated pull requests.
+* [Remediation Tracker](/docs/software-supply-chain-assurance/open-source-management/remediation-tracker/overview): Learn how to track vulnerable artifacts and respond to zero-day exploits across deployed environments and pipelines.
+* [Open Source Security and Risk Management](/docs/software-supply-chain-assurance/manage-risk-and-compliance/opensource-security-risk-management): Learn how to assess SBOM components against OWASP Top 10 OSS risks such as outdated, unmaintained, or malicious packages.
