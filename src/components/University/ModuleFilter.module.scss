@@ -1,0 +1,248 @@
+/* Colors, type sizes, and hover/active treatments here mirror the docs sidebar
+   `.menu__link` rules in `src/css/custom.css` so the filter reads as the same
+   control family as the module nav. */
+.moduleFilter {
+  /* The sidebar hardcodes these in `custom.css`; mirrored here (rather than
+     promoted to shared variables) to avoid restyling the sidebar itself. */
+  --sidebar-active-color: #39abe4;
+  --sidebar-active-border: #90d0ff;
+  --sidebar-active-bg: linear-gradient(
+    90deg,
+    rgba(205, 236, 252, 0.3) 0%,
+    transparent 100%
+  );
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 32px;
+  font-family: var(--harness-font-family);
+
+  /* Matches `.menu__link--sublist` (sidebar category headers). */
+  .label {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    color: var(--gray-800);
+  }
+}
+
+.dropdownContainer {
+  position: relative;
+  width: 360px;
+  max-width: 100%;
+}
+
+.dropdownHeader {
+  width: 100%;
+  min-height: 40px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border: 1px solid var(--gray-200);
+  border-radius: 6px;
+  background-color: var(--background-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  text-align: left;
+  transition: all 0.15s ease;
+
+  /* `custom.css` forces the Cal Sans heading font and extra letter-spacing on
+     every `button` with `!important`, which renders heavier than the sidebar's
+     anchor-based links. Override both so this matches `.menu__link`. */
+  font-family: var(--harness-font-family) !important;
+  letter-spacing: normal;
+
+  &:hover {
+    background: var(--gray-100);
+
+    .optionLabel {
+      color: var(--gray-800);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--sidebar-active-color);
+    outline-offset: 1px;
+  }
+
+  :global {
+    /* Matches the sidebar caret opacity. */
+    .fa-solid {
+      color: var(--gray-700);
+      font-size: 12px;
+      opacity: 0.6;
+    }
+  }
+}
+
+.optionValue {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  min-width: 0;
+
+  img {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+}
+
+/* Matches `.menu__link` (sidebar page links). The font family is restated
+   because this class renders inside both a `button` and an `li`, and the
+   global `button` rule in `custom.css` would otherwise apply Cal Sans. */
+.optionLabel {
+  font-family: var(--harness-font-family) !important;
+  letter-spacing: normal;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--gray-700);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dropdownList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  width: 100%;
+  max-height: 320px;
+  overflow-y: auto;
+  border: 1px solid var(--gray-200);
+  border-radius: 6px;
+  background-color: var(--background-color);
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+
+  li {
+    width: 100%;
+    min-height: 40px;
+    margin: 2px 0;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    cursor: pointer;
+    border-radius: 6px;
+    border-left: 3px solid transparent;
+    transition: all 0.15s ease;
+
+    img {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
+    /* Matches `.menu__link:hover`. Excludes the selected item so hovering it
+       keeps the active cyan label, as the sidebar does. */
+    &:hover,
+    &:focus-visible {
+      background: var(--gray-100);
+      outline: none;
+    }
+
+    &:not(.selected):hover .optionLabel,
+    &:not(.selected):focus-visible .optionLabel {
+      color: var(--gray-800);
+    }
+
+    /* Matches `.menu__link--active`: cyan left border and label. */
+    &.selected {
+      background: var(--sidebar-active-bg);
+      border-left-color: var(--sidebar-active-border);
+
+      .optionLabel {
+        color: var(--sidebar-active-color);
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+.count {
+  margin-left: auto;
+  flex-shrink: 0;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 18px;
+  padding: 0 8px;
+  border-radius: 10px;
+  background-color: var(--gray-50);
+  color: var(--gray-700);
+}
+
+html[data-theme='dark'] .count {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* Dark mode mirrors the `html[data-theme='dark'] .menu__link` rules. */
+html[data-theme='dark'] {
+  .moduleFilter {
+    --sidebar-active-color: #b8e3f5;
+    --sidebar-active-border: #b8e3f5;
+    --sidebar-active-bg: linear-gradient(
+      90deg,
+      rgba(184, 227, 245, 0.15) 0%,
+      transparent 100%
+    );
+
+    .label {
+      color: rgba(255, 255, 255, 0.98);
+    }
+  }
+
+  .optionLabel {
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  .dropdownHeader {
+    :global {
+      .fa-solid {
+        color: rgba(255, 255, 255, 0.92);
+      }
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.08);
+
+      .optionLabel {
+        color: #ffffff;
+      }
+    }
+  }
+
+  .dropdownList li {
+    &:hover,
+    &:focus-visible {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    &:not(.selected):hover .optionLabel,
+    &:not(.selected):focus-visible .optionLabel {
+      color: #ffffff;
+    }
+  }
+
+  /* The /img/home/ module icons are dark line art, so recolor them exactly as
+     custom.css does for the 3k sidebar icons. */
+  .optionValue img,
+  .dropdownList li img {
+    filter: brightness(0) invert(1) opacity(0.9);
+  }
+}
+
+@media screen and (max-width: 599px) {
+  .dropdownContainer {
+    width: 100%;
+  }
+}

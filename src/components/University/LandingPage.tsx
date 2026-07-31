@@ -1,12 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 // import Link from "@docusaurus/Link";
 import { useHistory, useLocation } from "@docusaurus/router";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import clsx from "clsx";
-import IltCard from "./Card";
+import IltCard, { cardType, tileType } from "./Card";
 import CertCard, { certType } from "./CertCard";
+import ModuleFilter from "./ModuleFilter";
 import { university } from "./data/certificationsData";
 import { ilt } from "./data/iltData";
+import {
+  ALL_MODULES,
+  getModuleFilterOptions,
+  matchesModuleFilter,
+} from "./data/moduleFilters";
 import { spt } from "./data/sptData";
 import styles from "./styles.module.scss";
 const devFeatures = ["Based on Free Plans When Available"];
@@ -64,6 +70,61 @@ export default function University() {
   const { pathname = "/", search = "" } = location;
   const searchKey = getCertLevel(search);
   const [tab, setTab] = useState("developer");
+  const [sptModule, setSptModule] = useState<string>(ALL_MODULES);
+  const [iltModule, setIltModule] = useState<string>(ALL_MODULES);
+  const [certModule, setCertModule] = useState<string>(ALL_MODULES);
+
+  // Self-Paced Training renders only free tiles, so the filter counts must be
+  // derived from that same subset rather than from the whole data file.
+  const sptTiles = useMemo(
+    () =>
+      spt.filter(
+        (item) =>
+          item.tileType === tileType.preReq ||
+          (item.cardType === cardType.SPT &&
+            (item.tileType === tileType.normal ||
+              item.tileType === tileType.preReqWAAP))
+      ),
+    []
+  );
+  const iltTiles = useMemo(
+    () =>
+      ilt.filter(
+        (item) =>
+          item.tileType === tileType.preReq ||
+          item.tileType === tileType.normal ||
+          item.tileType === tileType.waap
+      ),
+    []
+  );
+  const certTiles = useMemo(
+    () =>
+      university.filter(
+        (cert) => cert.type === certType[tab as keyof typeof certType]
+      ),
+    [tab]
+  );
+
+  const sptFilterOptions = useMemo(
+    () => getModuleFilterOptions(sptTiles),
+    [sptTiles]
+  );
+  const iltFilterOptions = useMemo(
+    () => getModuleFilterOptions(iltTiles),
+    [iltTiles]
+  );
+  const certFilterOptions = useMemo(
+    () => getModuleFilterOptions(certTiles),
+    [certTiles]
+  );
+
+  // Certification tiles change with the Developer/Administrator/Architect tab,
+  // so reset the module filter whenever the option list no longer offers it.
+  useEffect(() => {
+    if (!certFilterOptions.some((option) => option.value === certModule)) {
+      setCertModule(ALL_MODULES);
+    }
+  }, [certFilterOptions, certModule]);
 
   const handleSwitchTab = (tabKey) => {
     setTab(tabKey);
@@ -264,6 +325,12 @@ export default function University() {
             ))}
           </ul>
 
+          <ModuleFilter
+            options={certFilterOptions}
+            selected={certModule}
+            onChange={setCertModule}
+          />
+
           {/* Developer Tab Content */}
           <div
             className={clsx(
@@ -272,10 +339,10 @@ export default function University() {
             )}
           >
             <div className={styles.cardContainer}>
-              {university
-                .filter((cert) => cert.type === certType.developer)
+              {certTiles
+                .filter((cert) => matchesModuleFilter(cert, certModule))
                 .map((cert) => (
-                  <CertCard {...cert} />
+                  <CertCard key={cert.title} {...cert} />
                 ))}
             </div>
           </div>
@@ -288,10 +355,10 @@ export default function University() {
             )}
           >
             <div className={styles.cardContainer}>
-              {university
-                .filter((cert) => cert.type === certType.administrator)
+              {certTiles
+                .filter((cert) => matchesModuleFilter(cert, certModule))
                 .map((cert) => (
-                  <CertCard {...cert} />
+                  <CertCard key={cert.title} {...cert} />
                 ))}
             </div>
           </div>
@@ -304,10 +371,10 @@ export default function University() {
             )}
           >
             <div className={styles.cardContainer}>
-              {university
-                .filter((cert) => cert.type === certType.architect)
+              {certTiles
+                .filter((cert) => matchesModuleFilter(cert, certModule))
                 .map((cert) => (
-                  <CertCard {...cert} />
+                  <CertCard key={cert.title} {...cert} />
                 ))}
             </div>
           </div>
@@ -508,21 +575,30 @@ export default function University() {
             Intensive two-day courses are designed for engineers looking to
             deepen their understanding and expertise in Harness.
           </p>
+          <ModuleFilter
+            options={iltFilterOptions}
+            selected={iltModule}
+            onChange={setIltModule}
+          />
           <div className={clsx(styles.tabContent, styles.active)}>
             <div className={styles.cardContainer}>
-              {ilt
-                .filter((ilt) => {
-                  return ilt.tileType === "pre requisite";
-                })
-                .map((ilt) => (
-                  <IltCard {...ilt} />
+              {iltTiles
+                .filter(
+                  (item) =>
+                    item.tileType === tileType.preReq &&
+                    matchesModuleFilter(item, iltModule)
+                )
+                .map((item) => (
+                  <IltCard key={item.title} {...item} />
                 ))}
-              {ilt
-                .filter((ilt) => {
-                  return ilt.tileType === "normal" || ilt.tileType === "waap";
-                })
-                .map((ilt) => (
-                  <IltCard {...ilt} />
+              {iltTiles
+                .filter(
+                  (item) =>
+                    item.tileType !== tileType.preReq &&
+                    matchesModuleFilter(item, iltModule)
+                )
+                .map((item) => (
+                  <IltCard key={item.title} {...item} />
                 ))}
             </div>
           </div>
@@ -533,21 +609,30 @@ export default function University() {
         <div className={styles.tabs}>
           <h2>Self-Paced Training</h2>
           <p>Free self-paced courses that you can consume on your own time.</p>
+          <ModuleFilter
+            options={sptFilterOptions}
+            selected={sptModule}
+            onChange={setSptModule}
+          />
           <div className={clsx(styles.tabContent, styles.active)}>
             <div className={styles.cardContainer}>
-              {spt
-                .filter((spt) => {
-                  return spt.tileType === "pre requisite";
-                })
-                .map((spt) => (
-                  <IltCard {...spt} />
+              {sptTiles
+                .filter(
+                  (item) =>
+                    item.tileType === tileType.preReq &&
+                    matchesModuleFilter(item, sptModule)
+                )
+                .map((item) => (
+                  <IltCard key={item.title} {...item} />
                 ))}
-              {spt
-                .filter((spt) => {
-                  return spt.cardType === "FREE" && (spt.tileType === "normal" || spt.tileType === "pre requisite waap");
-                })
-                .map((spt) => (
-                  <IltCard {...spt} />
+              {sptTiles
+                .filter(
+                  (item) =>
+                    item.tileType !== tileType.preReq &&
+                    matchesModuleFilter(item, sptModule)
+                )
+                .map((item) => (
+                  <IltCard key={item.title} {...item} />
                 ))}
             </div>
           </div>
