@@ -100,6 +100,41 @@ The following table shows how sensitivity affects the verification results based
 | Low         | Medium Healthy (With feedback) | Pass   | User feedback aligns with the high tolerance of low sensitivity. |
 | Low         | Unhealthy                      | Fail   | Extreme anomalies exceeding 3σ threshold. For logs: Unknown event clusters that are statistically significant outliers. For metrics: only data points with extreme deviations (>3σ) cause failure. |
 
+### Per-metric sensitivity override
+
+:::note
+This feature is behind the feature flag `CDS_CV_PER_METRIC_SENSITIVITY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+When your Verify step monitors a mix of metric types, a single step-level sensitivity setting often forces a difficult trade-off. Setting sensitivity to **High** catches genuine regressions on error-rate metrics but produces false positives on inherently noisy metrics like latency. Setting it to **Low** eliminates those false positives but risks missing real issues on critical metrics.
+
+The per-metric sensitivity override solves this by letting you set an optional `sensitivity` field on individual metric definitions in a Monitored Service health source through the health source configuration UI. When set, the ML analysis for that specific metric uses the override instead of the step-level sensitivity. Metrics without an override continue to use the step-level setting, so existing configurations are unaffected.
+
+#### Configure a per-metric sensitivity override
+
+In the health source configuration UI, an optional **Sensitivity** dropdown is available per metric definition. Select **High**, **Medium**, or **Low** to override the step-level sensitivity for that metric. When left empty, the metric inherits the step-level sensitivity.
+
+#### How the override is resolved
+
+The resolution follows a simple rule: when the feature flag is enabled and a metric has a `sensitivity` value set, that value is passed to the Learning Engine for that metric's analysis. When the metric has no override, the step-level sensitivity is used as the fallback. If an invalid value is encountered, it falls back to the step-level setting and logs a warning.
+
+The override is snapshotted at deployment start as part of the Monitored Service configuration, so edits to the Monitored Service during an active deployment do not affect in-flight analysis. The next deployment picks up the updated values.
+
+The following table summarizes the resolution behavior:
+
+| Step-level sensitivity | Metric override | Result passed to analysis |
+|------------------------|-----------------|---------------------------|
+| `HIGH` | Not set | `HIGH` |
+| `HIGH` | `LOW` | `LOW` |
+| `MEDIUM` | `HIGH` | `HIGH` |
+| Any | Invalid value | Step-level (with warning logged) |
+
+#### Scope and limitations
+
+Per-metric sensitivity override applies to metric-based health sources only. Log analysis, SLI computation, and Service Guard continuous monitoring do not use this field. Metrics defined in canned metric packs (not user-defined metric definitions) also do not support the override in the current release.
+
+---
+
 ## Duration
 
 Harness uses the data points within this duration for analysis. For instance, if you select 10 minutes, Harness analyzes the first 10 minutes of your log or APM data. Harness recommends choosing 10 minutes for logging providers and 15 minutes for APM and infrastructure providers. This helps you thoroughly analyze and detect issues before releasing the deployment to production.
