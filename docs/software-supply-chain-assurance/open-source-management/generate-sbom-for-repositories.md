@@ -113,6 +113,13 @@ The following flags can help optimize SBOM generation for common use cases:
  *  **Source**: Select the **Source** as a Repository to generate the SBOM for source code.
 
  * **Repository URL:** The Repository URL you've configured for cloning into the workspace.
+
+    :::note
+
+    Ensure that the repository configured as the **Codebase** in the pipeline stage is the repository you want to scan. The **Repository URL** field is used only to associate the generated SBOM with the corresponding repository in SCS and does not determine which repository is scanned.
+
+    :::
+
  * **Source Path:** Leave blank or enter a path (in the repository) for which you want to generate SBOM. Use this setting to generate SBOM for a specific section of your code repo, rather than your entire repo. The path must start with `/`.
    For example, if your repository URL is `https://github.com/username/repo`, and you want to generate SBOM for `https://github.com/username/repo/service-core/source`, then enter `/service-core/source` for **Source Path**.
    To generate an SBOM for the entire repository, leave this field empty.

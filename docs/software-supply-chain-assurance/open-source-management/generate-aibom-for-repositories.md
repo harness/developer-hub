@@ -154,6 +154,13 @@ The repository source configuration defines the repository and branch used by th
 
 1. The **Source** is set to **Repository** by default.<br /> Currently, **Repository** is the only supported source. As a result, this selection cannot be modified.
 2. In the **Repository URL** field, enter the URL of the repository from which you want to generate the AIBOM.
+
+    :::note
+
+    Ensure that the repository configured as the **Codebase** in the pipeline stage is the repository you want to scan. The **Repository URL** field is used only to associate the generated AIBOM with the corresponding repository in SCS and does not determine which repository is scanned.
+
+    :::  
+
 3. (Optional) In the **Source Path** field, enter the path to the directory or file within the repository that you want the AIBOM Orchestration step to analyze.
 4. In the **Git Branch** field, enter the name of the branch containing the repository content that you want to analyze.
 5. (Optional) In the **Workspace** field, enter the path to the workspace directory where the repository is available during pipeline execution. If not specified, the default workspace path is `/harness`.
