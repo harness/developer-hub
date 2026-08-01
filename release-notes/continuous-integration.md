@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2026-07-21T10:00
+date: 2026-07-27T10:00
 sidebar_position: 10
 ---
 
@@ -54,6 +54,29 @@ Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud
 :::
 
 ## July 2026
+
+### Version 1.150.0
+
+<!-- July 2026 -->
+
+#### New Features and Enhancements
+
+- Added global queuing for macOS builds on Harness Cloud. Mac build executions are now queued globally to improve capacity utilization and reduce stockout failures. (CI-23880)
+
+#### Fixed Issues
+
+- Fixed an issue where the Build and Push step failed with Kaniko 1.13.9 due to overly strict symlink validation that rejected valid symbolic links (e.g., `/etc/pki/java/cacerts`) with a "resolves outside destination" error. (CI-23751, ZD-119116, ZD-119213, ZD-120017)
+
+- Fixed an issue where Harness Cloud builds on GCP runners failed with Public ECR rate-limit errors during plugin image pulls. The error message now surfaces actionable guidance to switch to GAR-hosted images. (CI-23169, ZD-115110)
+
+- Improved hcli security by upgrading to v0.21 to resolve high and medium severity CVEs in delegate and CI addon images. (CI-23724)
+
+#### Harness Images Updates
+
+- Upgraded Kaniko plugin images (`kaniko`, `kaniko-ecr`, `kaniko-gcr`, `kaniko-gar`, `kaniko-acr`) from 1.13.9 to 1.13.10. (CI-23751)
+- Upgraded Buildkit image from 1.0.19 to 1.0.20. (CI-23744)
+
+---
 
 ### Version 1.149.0
 
