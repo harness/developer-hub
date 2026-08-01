@@ -154,6 +154,20 @@ Use the **Object Store for Self-Managed Build Infrastructure** settings to conne
 When using Azure Blob Storage with any Harness CI Intelligence caching feature (Build Intelligence, Docker Layer Caching, or Cache Intelligence), authenticate with the Azure connector using **Service Principal** or **OIDC**. Managed Identity authentication is not supported.
 :::
 
+:::note
+### Supported Azure Blob Storage Authentication Methods
+
+Cache Intelligence currently supports the following Azure Blob Storage authentication methods:
+
+| Authentication Method | Required Parameters                                   |
+| --------------------- | ----------------------------------------------------- |
+| **OIDC**              | `OIDCTokenID`, `TenantID`, `ClientID`, `AccountName`  |
+| **Service Principal** | `ClientID`, `ClientSecret`, `TenantID`, `AccountName` |
+| **Shared Key**        | `AccountName`, `AccountKey`                           |
+
+> Only the authentication methods listed above are currently supported for Azure Blob Storage integrations with Cache Intelligence.
+:::
+
 
 #### Kubernetes Infrastructure Advanced Settings
 
