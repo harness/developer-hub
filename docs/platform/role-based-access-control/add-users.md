@@ -111,12 +111,26 @@ The next time the user logs in, they will be redirected to the updated URL.
 
 ### Invitation emails
 
-When you add a user, Harness checks your [authentication method](/docs/platform/authentication/authentication-overview) and email invite preferences to determine if an email invitation should be sent:
+When you add a user, Harness checks your [authentication method](/docs/platform/authentication/authentication-overview) and email invite preferences to determine if an email invitation should be sent
 
 * **Login via a Harness Account or Public OAuth Providers:** The invited user gets an email invitation. The user is listed on **Pending Users** until the user accepts the invitation.
+
+If an email is not received, and is expected to be received, please check the following:
+- Customer Email filters may block or quarantine emails from Harness.  This can happen locally (on the email applciation) or at the server/security level.  For example, security software such as Microsoft Intune, Proofpoint, and Mimecast are examples of software that may potentially block these emails
+- Harness also respects any settings customers may have made to their notification filters.  These filters can be found under Account Settings -> Default Settings -> Notification Section -> Email Filter.  
+   ![](./static/emailfilter.png)
+- Certain configurations for Authentication will also not send out emails.  Please see below
+
+#### Instances where the invitation behavior changes:
 * **SAML**, **LDAP**, or **OAuth** *and* you have enabled the feature flag `PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES`: Harness adds the user directly to the **Active Users** list, and Harness *doesn't* send an email to the user.
-* **SAML**, **LDAP**, or **OAuth** *and* you have enabled the feature flag `AUTO_ACCEPT_SAML_ACCOUNT_INVITES`: Harness adds the user directly to the **Active Users** list, and Harness sends a notification email to the user.
+* **SAML**, **LDAP**, or **OAuth** *and* you have enabled the feature flag `AUTO_ACCEPT_SAML_ACCOUNT_INVITES`: Harness adds the user directly to the **Active Users** list, and Harness sends an account access notification email to the user.
 * **SAML**, **LDAP**, or **OAuth** *and* you have enabled both feature flags: `PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES` takes precedence over `AUTO_ACCEPT_SAML_ACCOUNT_INVITES`. Harness adds users directly to the **Active Users** list, and Harness *doesn't* send invitation emails.
+
+#### Instances where Pending Users appear, after Feature Flags are set
+If customers' `PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES` or `AUTO_ACCEPT_SAML_ACCOUNT_INVITES` are enabled on their account, and users are still moving into a "pending" state, customers should see if they are hitting a limit on their account.  For Synchronization processes, the default user count to be synchronized via SCIM or LDAP is 50,000 users.  
+
+If the account is hitting this limit, customers will see that a list of Pending Users will be growing in their account, and users will not be able to access the account.  Customers should first clear out their users and confirm if the number of users is required. 
+To request a limit increase, please open a [ticket with Harness Support](mailto:support@harness.io) and provide a reason for the need for the increase in users.  
 
 ## Assign roles and resource groups
 
