@@ -18,6 +18,7 @@ keywords:
   - gitops sync
   - wait for pr merge
   - ignore missing files
+  - don't propagate pipeline variables
   - promotion workflow
   - gitops promotion
 ---
@@ -129,11 +130,13 @@ This step fetches your YAML config files (Kubernetes manifests, `kustomization.y
   ```
 - **List value updates:** Target a specific list index, e.g. `spec.template.spec.containers[0].image`. You can update existing list values but cannot add or remove items.
 - **Variable precedence:** If a variable name in this step matches one defined on the service or environment, the step-level value wins.
-- **Automatic service and environment overrides:** In addition to the variables you define in this step, the Update Release Repo step automatically applies service-level and environment-level variable overrides. These overrides come from the GitOps Cluster step output and are merged into the config file. This means keys you did not explicitly add in the step (such as `deploy_file` or `repo_env_path`) may appear in the committed file.
+- **Automatic service and environment overrides:** By default, the Update Release Repo step also applies service-level and environment-level variable overrides. These overrides come from the GitOps Cluster step output and are merged into the config file. Keys you did not explicitly add in the step (such as `deploy_file` or `repo_env_path`) may appear in the committed file. Enable **Don't Propagate Pipeline Variables** to turn this off and write only the variables defined in the step.
 - **Empty values:** A blank variable value is ignored. No update is written for that key.
 
-:::tip Suppressing unwanted overrides
-To prevent a specific service or environment override from being written to your config file, add it as a variable in the Update Release Repo step with a **blank value**. Variables with empty values are ignored and no update is written for that key, effectively suppressing the automatic override.
+:::tip Control which variables reach the release repo
+To write **only** the variables defined in the Update Release Repo step, enable **Don't Propagate Pipeline Variables** in Optional Configuration. Service and environment variables are then excluded from the Release Repository file.
+
+To suppress a **specific** service or environment override and still allow other overrides to apply, add that variable in the step with a **blank value**. Empty values are ignored, so no update is written for that key.
 :::
 
 **Optional configuration:**
@@ -148,6 +151,9 @@ To prevent a specific service or environment override from being written to your
 - **Succeed if no files changed:** When enabled, the step succeeds if the service, environment, and step variables already match the values in the release repo files. Harness does not create a branch, commit, or pull request, and the step `PR URL` output remains empty. Use this option to make PR pipeline reruns idempotent when the desired artifact version has not changed. Existing PR pipelines keep the current behavior unless you enable this option. In YAML, set `AllowNoFilesChanged` to `true` or `false`.
 - **Disable Git Restraint:** When `true`, removes the Git locking mechanism so multiple pipelines can modify the same repository concurrently through a single connector.
 - **Ignore missing files:** When `true`, the step skips updates when the target config file does not exist in the release repository. The step continues instead of failing or creating a new file. Use this when the same pipeline promotes across environments or services where the Release Repository file path may not exist in every target branch or repository layout.
+- **Don't Propagate Pipeline Variables:** When enabled, variables defined on the linked service and environment are not written to the Release Repository file. Only variables you add in the step's **Variables** table are inserted. Use this when the service or environment defines many variables that should not appear in the release repo manifest. Without this option, every new service or environment variable is written to the file unless you suppress it with a blank step-level value.
+
+  ![Don't Propagate Pipeline Variables option in Update Release Repo](./static/dont-propagate-pipeline-variables.png)
 
 **YAML example with optional configuration:**
 

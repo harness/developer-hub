@@ -104,7 +104,9 @@ When using environment variables in PR pipelines:
 - Environment variables override service variables
 - Service variables have the lowest priority
 
-For more information on override priority, see [Service Overrides](/docs/continuous-delivery/x-platform-cd-features/environments/service-overrides#override-priority).
+By default, the Update Release Repo step writes service and environment variables into the Release Repository file. To insert only the variables defined in the step, enable **Don't Propagate Pipeline Variables**. Go to [Update Release Repo](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines-basics#update-release-repo) to configure this option.
+
+For more information on override priority, go to [Service Overrides](/docs/continuous-delivery/x-platform-cd-features/environments/service-overrides#override-priority).
 
 ## Using GitOps Environments
 
