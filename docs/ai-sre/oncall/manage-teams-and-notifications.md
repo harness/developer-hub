@@ -111,12 +111,12 @@ Navigate to **On-Call** → **Contact Settings** to manage your notification cha
 **Phone**
 - Add phone numbers with country code selection
 - Supports voice calls
-- Supported countries: Argentina, Brazil, Canada, China, Costa Rica, Cyprus, Denmark, India, Israel, Mexico, Moldova, Netherlands, Romania, Serbia, Slovenia, United Kingdom, United States
+- Supported countries: United States, Argentina, Brazil, Canada, Costa Rica, Cyprus, Denmark, India, Israel, Mexico, Moldova, Netherlands, Romania, Serbia, Slovenia, United Kingdom
 - Test calls to verify delivery
 
 **SMS**
 - Add mobile numbers for text messaging
-- Supported countries: Argentina, Brazil, Canada, China, Costa Rica, Cyprus, Denmark, India, Israel, Mexico, Moldova, Netherlands, Romania, Serbia, Slovenia, United Kingdom, United States
+- Supported countries: United States, Argentina, Brazil, Canada, Costa Rica, Cyprus, Denmark, India, Israel, Mexico, Moldova, Netherlands, Romania, Serbia, Slovenia, United Kingdom
 - Test SMS to verify delivery
 
 **Slack**
@@ -211,7 +211,7 @@ Go to [On-Call Notification Fallback System](/docs/ai-sre/oncall/notification-fa
 
 ### SMS/Phone Support
 
-- **Supported countries**: Argentina (+54), Brazil (+55), Canada (+1), China (+86), Costa Rica (+506), Cyprus (+357), Denmark (+45), India (+91), Israel (+972), Mexico (+52), Moldova (+373), Netherlands (+31), Romania (+40), Serbia (+381), Slovenia (+386), United Kingdom (+44), United States (+1)
+- **Supported countries**: United States (+1), Argentina (+54), Brazil (+55), Canada (+1), Costa Rica (+506), Cyprus (+357), Denmark (+45), India (+91), Israel (+972), Mexico (+52), Moldova (+373), Netherlands (+31), Romania (+40), Serbia (+381), Slovenia (+386), United Kingdom (+44)
 - Verify country code is correctly selected
 - For additional country support, contact your Harness representative
 
