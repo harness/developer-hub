@@ -24,9 +24,31 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 ### New features and enhancements
 
-#### Version 1.95.2
+#### Version 1.96.1
 
 <details open>
+<summary>Required images</summary>
+
+Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
+
+- harness/chaos-ddcr:1.96.0
+- harness/chaos-ddcr-faults:1.96.0
+- harness/chaos-log-watcher:1.96.0
+- harness/service-discovery-collector:0.76.0
+
+</details>
+
+- Introduced a dedicated Executions tab in the Chaos and Load Testing submodules. Every experiment and load test run now lives in one place, no more hopping between resources.
+- Surfaced experiment executions per service, backed by a new API that lists the execution nodes for a chaos service.
+- Opened up an Advanced Configuration section in the load test UI. Tune worker pod resources and set a cleanup policy for execution plane pods.
+- Wired the Load Test Manager into HCE SaaS through the HCE SDK. It now pulls images from your own registry.
+- Gated load test services behind the `CHAOS_RISK_SERVICES_ENABLED` flag. Risk services appear only when the flag is on.
+- Refreshed the pipeline scan UI with a Scan now popover and a richer Details column.
+- Swapped the Associated Risks step for a Risk Rules step in the probe creation flow. Define rules directly instead of hand-picking risks.
+
+#### Version 1.95.2
+
+<details>
 <summary>Required images</summary>
 
 Listed below are the images to download to use [image registry with Harness Delegate](https://developer.harness.io/docs/chaos-engineering/guides/image-registry).
@@ -120,6 +142,14 @@ Listed below are the images to download to use [image registry with Harness Dele
 - Added an abort trigger when a remote resource times out
 
 ### Fixed issues
+
+#### Version 1.96.1
+
+- Cleared gRPC package vulnerabilities in chaos components.
+- Fixed the DDCR load test image registry bug.
+- Corrected sorting in the list Scan API.
+- Hardened pipeline and infrastructure scans.
+- Stopped the service field from crashing in the load test template step.
 
 #### Version 1.95.2
 
