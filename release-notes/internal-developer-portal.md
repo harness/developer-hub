@@ -30,7 +30,7 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 | **Version** | **prod0** | **prod1** | **prod2** | **prod3** | **prod4** | **prodeu1** |
 | ----------- | --------- | --------- | --------- | --------- | --------- | ----------- |
-| [2026.7.v2](/release-notes/internal-developer-portal#july---20267v2)  | ✅        | ✅         | ✅           | ⏳        | ⏳         | ⏳         |
+| [2026.7.v2](/release-notes/internal-developer-portal#july---20267v2)  | ✅        | ✅         | ✅           | ✅        | ✅         | ✅         |
 | [2026.7.v1](/release-notes/internal-developer-portal#july---20267v1)  | ✅        | ✅         | ✅           | ✅        | ✅         | ✅         |
 | [2026.6.v1](/release-notes/internal-developer-portal#june---20266v1)  | ✅        | ✅         | ✅           | ✅        | ✅         | ✅         |
 
@@ -113,12 +113,6 @@ The IDP Overview now shows each user a tab tailored to their role, so developers
 OPA policy enforcement in IDP now extends beyond environment blueprints and environments to cover all catalog entities, including components, APIs, resources, groups, and systems. Platform engineers can write Rego policies that automatically block or warn on non-compliant entities at the point of save, enforcing naming conventions, ownership requirements, lifecycle standards, and other catalog hygiene rules across all teams and projects without manual review.
 
 <DocImage path={require('../docs/internal-developer-portal/governance/static/policyset-eval2.gif')} />
-
-#### Catalog Info YAML Integration
-
-Users can now import catalog-info.yaml files from GitHub and Bitbucket repositories. The integration automatically converts Backstage entity definitions into the Harness IDP format, facilitating a seamless onboarding process for organizations already using Backstage.
-
-<DocImage path={require('../docs/internal-developer-portal/catalog/create-entity/catalog-discovery/static/ciy-catalog-entity.gif')} />
 
 ---
 
