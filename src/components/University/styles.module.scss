@@ -295,6 +295,10 @@
       row-gap: 32px;
       column-gap: 2.5%;
       // justify-content: space-between;
+
+      /* The pager scrolls the grid back into view on page change; keep the
+         first row clear of the sticky navbar. */
+      scroll-margin-top: calc(var(--ifm-navbar-height) + 24px);
     }
 
     .certCard {

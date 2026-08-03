@@ -1,0 +1,355 @@
+/* Colors, type sizes, and hover/active treatments mirror `ModuleFilter.module.scss`
+   (which in turn mirrors the docs sidebar `.menu__link` rules in
+   `src/css/custom.css`) so the pager reads as the same control family as the
+   module filter above the tiles. */
+.pagination {
+  --sidebar-active-color: #39abe4;
+  --sidebar-active-border: #90d0ff;
+  --sidebar-active-bg: linear-gradient(
+    90deg,
+    rgba(205, 236, 252, 0.3) 0%,
+    transparent 100%
+  );
+
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+  margin-top: 8px;
+  padding-top: 24px;
+  border-top: 1px solid var(--gray-200);
+  font-family: var(--harness-font-family);
+}
+
+/* Matches `.moduleFilter .label`. The 36px height matches the page buttons and
+   the size selector so all three groups center on the same line. */
+.summary {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  min-height: 36px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--gray-700);
+}
+
+/* No `margin-left: auto` here: `.pageSize` already claims the free space, and a
+   second auto margin would split it and separate the two controls. */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* The size selector is a compact version of the `ModuleFilter` dropdown: same
+   border, radius, hover, and selected-option treatment, sized to sit inline
+   with the page-number strip. */
+/* Pushed right so both controls group together, away from the summary text. */
+.pageSize {
+  display: flex;
+  align-items: center;
+  min-height: 36px;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.pageSizeLabel,
+.pageSizeSuffix {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--gray-700);
+  white-space: nowrap;
+}
+
+.pageSizeContainer {
+  position: relative;
+  /* Wide enough for the longest option ("All") plus the caret. */
+  width: 84px;
+}
+
+.pageSizeHeader {
+  width: 100%;
+  height: 36px;
+  cursor: pointer;
+  padding: 0 10px;
+  border: 1px solid var(--gray-200);
+  border-radius: 6px;
+  background-color: var(--background-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  transition: all 0.15s ease;
+
+  font-family: var(--harness-font-family) !important;
+  letter-spacing: normal;
+
+  &:hover {
+    background: var(--gray-100);
+
+    .pageSizeValue {
+      color: var(--gray-800);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--sidebar-active-color);
+    outline-offset: 1px;
+  }
+
+  :global {
+    .fa-solid {
+      color: var(--gray-700);
+      font-size: 12px;
+      opacity: 0.6;
+    }
+  }
+}
+
+.pageSizeValue {
+  font-family: var(--harness-font-family) !important;
+  letter-spacing: normal;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--gray-700);
+}
+
+.pageSizeList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  /* Opens upward: the bar sits at the bottom of the tile grid, so a downward
+     menu would fall below the fold. */
+  bottom: calc(100% + 4px);
+  left: 0;
+  width: 100%;
+  border: 1px solid var(--gray-200);
+  border-radius: 6px;
+  background-color: var(--background-color);
+  box-shadow: 0 -10px 10px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+
+  li {
+    width: 100%;
+    min-height: 36px;
+    margin: 2px 0;
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 6px;
+    border-left: 3px solid transparent;
+    transition: all 0.15s ease;
+
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: var(--gray-700);
+
+    &:hover,
+    &:focus-visible {
+      background: var(--gray-100);
+      outline: none;
+    }
+
+    &:not(.selected):hover,
+    &:not(.selected):focus-visible {
+      color: var(--gray-800);
+    }
+
+    /* Matches `.dropdownList li.selected` in `ModuleFilter.module.scss`. */
+    &.selected {
+      background: var(--sidebar-active-bg);
+      border-left-color: var(--sidebar-active-border);
+      color: var(--sidebar-active-color);
+      font-weight: 600;
+    }
+  }
+}
+
+.pages {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+  margin: 0;
+}
+
+/* `custom.css` forces the Cal Sans heading font and extra letter-spacing on
+   every `button` with `!important`, so both are restated here as in
+   `ModuleFilter.module.scss`. */
+.page,
+.arrow {
+  min-width: 36px;
+  height: 36px;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 1px solid var(--gray-200);
+  border-radius: 6px;
+  background-color: var(--background-color);
+  transition: all 0.15s ease;
+
+  font-family: var(--harness-font-family) !important;
+  letter-spacing: normal;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--gray-700);
+
+  &:hover:not(:disabled) {
+    background: var(--gray-100);
+    color: var(--gray-800);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--sidebar-active-color);
+    outline-offset: 1px;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+  }
+}
+
+/* Matches the `.dropdownList li.selected` treatment: cyan label and border. */
+.page.active {
+  background: var(--sidebar-active-bg);
+  border-color: var(--sidebar-active-border);
+  color: var(--sidebar-active-color);
+  font-weight: 600;
+  cursor: default;
+}
+
+.arrow {
+  :global {
+    /* Matches the filter caret opacity. */
+    .fa-solid {
+      font-size: 12px;
+      opacity: 0.6;
+    }
+  }
+}
+
+.ellipsis {
+  min-width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--gray-500);
+  user-select: none;
+}
+
+html[data-theme='dark'] {
+  .pagination {
+    --sidebar-active-color: #b8e3f5;
+    --sidebar-active-border: #b8e3f5;
+    --sidebar-active-bg: linear-gradient(
+      90deg,
+      rgba(184, 227, 245, 0.15) 0%,
+      transparent 100%
+    );
+
+    border-top-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .summary,
+  .ellipsis,
+  .pageSizeLabel,
+  .pageSizeSuffix,
+  .pageSizeValue {
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  .page,
+  .arrow,
+  .pageSizeHeader,
+  .pageSizeList {
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .page,
+  .arrow {
+    color: rgba(255, 255, 255, 0.92);
+
+    &:hover:not(:disabled) {
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+    }
+  }
+
+  .page.active {
+    border-color: var(--sidebar-active-border);
+    color: var(--sidebar-active-color);
+  }
+
+  .pageSizeHeader {
+    :global {
+      .fa-solid {
+        color: rgba(255, 255, 255, 0.92);
+      }
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.08);
+
+      .pageSizeValue {
+        color: #ffffff;
+      }
+    }
+  }
+
+  .pageSizeList li {
+    color: rgba(255, 255, 255, 0.92);
+
+    &:hover,
+    &:focus-visible {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    &:not(.selected):hover,
+    &:not(.selected):focus-visible {
+      color: #ffffff;
+    }
+
+    &.selected {
+      color: var(--sidebar-active-color);
+    }
+  }
+}
+
+@media screen and (max-width: 899px) {
+  /* Stack the three groups so the summary, size selector, and page strip each
+     get a full row instead of crowding onto one line. */
+  .pagination {
+    justify-content: center;
+  }
+
+  .summary {
+    width: 100%;
+    justify-content: center;
+    min-height: 0;
+  }
+
+  /* Overrides the desktop `margin-left: auto`, which would strand the selector
+     against the right edge once each group has its own row. */
+  .pageSize {
+    margin: 0 auto;
+  }
+
+  .controls {
+    margin: 0 auto;
+  }
+}

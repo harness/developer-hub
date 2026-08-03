@@ -6,6 +6,7 @@ import clsx from "clsx";
 import IltCard, { cardType, tileType } from "./Card";
 import CertCard, { certType } from "./CertCard";
 import ModuleFilter from "./ModuleFilter";
+import Pagination, { usePagination } from "./Pagination";
 import { university } from "./data/certificationsData";
 import { ilt } from "./data/iltData";
 import {
@@ -125,6 +126,37 @@ export default function University() {
       setCertModule(ALL_MODULES);
     }
   }, [certFilterOptions, certModule]);
+
+  // Flatten each section into the single ordered list the pager slices, keeping
+  // the prerequisite-tiles-first order the sections rendered before paging.
+  const visibleSptTiles = useMemo(() => {
+    const matching = sptTiles.filter((item) =>
+      matchesModuleFilter(item, sptModule)
+    );
+    return [
+      ...matching.filter((item) => item.tileType === tileType.preReq),
+      ...matching.filter((item) => item.tileType !== tileType.preReq),
+    ];
+  }, [sptTiles, sptModule]);
+
+  const visibleIltTiles = useMemo(() => {
+    const matching = iltTiles.filter((item) =>
+      matchesModuleFilter(item, iltModule)
+    );
+    return [
+      ...matching.filter((item) => item.tileType === tileType.preReq),
+      ...matching.filter((item) => item.tileType !== tileType.preReq),
+    ];
+  }, [iltTiles, iltModule]);
+
+  const visibleCertTiles = useMemo(
+    () => certTiles.filter((cert) => matchesModuleFilter(cert, certModule)),
+    [certTiles, certModule]
+  );
+
+  const sptPagination = usePagination(visibleSptTiles, sptModule);
+  const iltPagination = usePagination(visibleIltTiles, iltModule);
+  const certPagination = usePagination(visibleCertTiles, `${tab}|${certModule}`);
 
   const handleSwitchTab = (tabKey) => {
     setTab(tabKey);
@@ -331,52 +363,18 @@ export default function University() {
             onChange={setCertModule}
           />
 
-          {/* Developer Tab Content */}
-          <div
-            className={clsx(
-              styles.tabContent,
-              certType[tab] === certType.developer && styles.active
-            )}
-          >
-            <div className={styles.cardContainer}>
-              {certTiles
-                .filter((cert) => matchesModuleFilter(cert, certModule))
-                .map((cert) => (
-                  <CertCard key={cert.title} {...cert} />
-                ))}
+          {/* `certTiles` is already scoped to the active tab, so one content
+              block serves Developer, Administrator, and Architect. */}
+          <div className={clsx(styles.tabContent, styles.active)}>
+            <div
+              className={styles.cardContainer}
+              ref={certPagination.gridRef}
+            >
+              {certPagination.pageItems.map((cert) => (
+                <CertCard key={cert.title} {...cert} />
+              ))}
             </div>
-          </div>
-
-          {/* Administrator Tab Content */}
-          <div
-            className={clsx(
-              styles.tabContent,
-              certType[tab] === certType.administrator && styles.active
-            )}
-          >
-            <div className={styles.cardContainer}>
-              {certTiles
-                .filter((cert) => matchesModuleFilter(cert, certModule))
-                .map((cert) => (
-                  <CertCard key={cert.title} {...cert} />
-                ))}
-            </div>
-          </div>
-
-          {/* Architect Tab Content */}
-          <div
-            className={clsx(
-              styles.tabContent,
-              certType[tab] === certType.architect && styles.active
-            )}
-          >
-            <div className={styles.cardContainer}>
-              {certTiles
-                .filter((cert) => matchesModuleFilter(cert, certModule))
-                .map((cert) => (
-                  <CertCard key={cert.title} {...cert} />
-                ))}
-            </div>
+            <Pagination {...certPagination} itemLabel="certifications" />
           </div>
           <div className={styles.availableCerts}>
             <h3>Which Certification is right for you?</h3>
@@ -581,26 +579,12 @@ export default function University() {
             onChange={setIltModule}
           />
           <div className={clsx(styles.tabContent, styles.active)}>
-            <div className={styles.cardContainer}>
-              {iltTiles
-                .filter(
-                  (item) =>
-                    item.tileType === tileType.preReq &&
-                    matchesModuleFilter(item, iltModule)
-                )
-                .map((item) => (
-                  <IltCard key={item.title} {...item} />
-                ))}
-              {iltTiles
-                .filter(
-                  (item) =>
-                    item.tileType !== tileType.preReq &&
-                    matchesModuleFilter(item, iltModule)
-                )
-                .map((item) => (
-                  <IltCard key={item.title} {...item} />
-                ))}
+            <div className={styles.cardContainer} ref={iltPagination.gridRef}>
+              {iltPagination.pageItems.map((item) => (
+                <IltCard key={item.title} {...item} />
+              ))}
             </div>
+            <Pagination {...iltPagination} itemLabel="courses" />
           </div>
         </div>
       )}
@@ -615,26 +599,12 @@ export default function University() {
             onChange={setSptModule}
           />
           <div className={clsx(styles.tabContent, styles.active)}>
-            <div className={styles.cardContainer}>
-              {sptTiles
-                .filter(
-                  (item) =>
-                    item.tileType === tileType.preReq &&
-                    matchesModuleFilter(item, sptModule)
-                )
-                .map((item) => (
-                  <IltCard key={item.title} {...item} />
-                ))}
-              {sptTiles
-                .filter(
-                  (item) =>
-                    item.tileType !== tileType.preReq &&
-                    matchesModuleFilter(item, sptModule)
-                )
-                .map((item) => (
-                  <IltCard key={item.title} {...item} />
-                ))}
+            <div className={styles.cardContainer} ref={sptPagination.gridRef}>
+              {sptPagination.pageItems.map((item) => (
+                <IltCard key={item.title} {...item} />
+              ))}
             </div>
+            <Pagination {...sptPagination} itemLabel="courses" />
           </div>
         </div>
       )}
