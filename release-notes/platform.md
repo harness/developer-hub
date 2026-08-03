@@ -232,6 +232,11 @@ The following deprecated API endpoints are longer supported:
 
 ## July 2026
 
+### Version 1.160.x <!--July 29, 2026-->
+
+#### Fixed issues
+- Improved SCIM user group provisioning to prevent identifier collisions that could lead to incorrect group membership and access permissions. [PL-71916]
+
 ### Version 1.159.x <!--July 22, 2026-->
 
 #### Fixed issues
