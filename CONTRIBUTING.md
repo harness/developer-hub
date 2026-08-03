@@ -94,21 +94,56 @@ http://localhost:3000
 
 ## PR automation
 
-Pushing a feature branch automatically **creates or updates the Harness Code pull request** for you — this runs server-side in the Harness CI pipeline (see HDH-1049), so there is no local setup required.
+Open your pull request in Harness Code as you normally would. From then on, every push to the branch runs the `harnessDeveloperHub` CI pipeline, which keeps the PR description up to date for you. This runs server-side (see HDH-1049), so there is no local setup, and it behaves the same whether you push from the CLI, an IDE, or the Harness Code web editor.
 
 On each push the pipeline:
 
-1. Builds a conventional-commit PR title from the branch name and latest commit.
-2. Fills [`.harness/pull_request_template.md`](./.harness/pull_request_template.md) with a summary and preview table.
-3. **Skips frontmatter-only doc changes** (`redirect_from`, `title`, etc.) from the per-page preview list.
-4. Creates or updates the open PR on Harness Code.
-5. Rewrites preview links once the Netlify preview build finishes.
+1. Regenerates the PR description from [`.harness/pull_request_template.md`](./.harness/pull_request_template.md) — a summary of the change, the per-page preview table, and the Jira ticket link.
+2. **Skips frontmatter-only doc changes** (`redirect_from`, `title`, etc.) from the per-page preview list.
+3. Rewrites the preview links once the Netlify preview build finishes.
+4. Applies the appropriate content label.
 
 To generate the preview table locally without the API, run:
 
 ```bash
 npm run generate-pr-preview-list
 ```
+
+### Your PR title
+
+A PR title has three parts:
+
+```
+chore: [HDH-1099]: Update the CI pipeline step scripts
+^tag    ^ticket     ^summary
+```
+
+**The pipeline never rewrites your summary.** Harness Code fills it in from your first commit when you open the PR, and after that it changes only when you change it.
+
+**The tag and ticket are filled in for you when they are missing.** A PR titled `Fix broken links` on branch `HDH-1099/fix-links` becomes `chore: [HDH-1099]: Fix broken links` on your next push. Your words are untouched — only the two segments in front of them. When both are already present, nothing is written at all, so a well-formed title stays exactly as it is however many times you push.
+
+What goes in each segment:
+
+- **Tag** — `chore` or `feat`, taken from your commit message and defaulting to `chore`.
+- **Ticket** — taken from your title first, then your commit messages, then your branch name. Both `HDH-1234/my-branch` and `HDH-1234-my-branch` work.
+- If no ticket can be found in any of those, you get a visible `[ticket-id]` placeholder as a reminder to add one. It is replaced automatically once a real ticket turns up.
+- A ticket you wrote yourself is never replaced, even when it differs from the branch name. If you have retargeted a PR to a different ticket, that decision sticks.
+
+### Rewriting your title with `[retitle]`
+
+If your title stops fitting — the scope of the PR changed, or it was named after a single early commit — edit it in the Harness Code UI, or ask the pipeline to write a new one by putting `[retitle]` anywhere in a commit message:
+
+```bash
+git commit -m "add IaCM upgrade steps [retitle]"
+git push
+```
+
+This is the only thing that rewrites your summary, and it only happens when you ask for it.
+
+- The new title is generated from the **whole pull request** — every commit on the branch, the diffstat, and the list of changed files — not from the commit you happened to put the marker in.
+- Only your most recent commit is checked, so the retitle happens once. Your next push leaves the new title alone.
+- The marker is stripped before anything is written, so `[retitle]` never appears in your PR title or description.
+- If a title cannot be generated for any reason, your existing title is left exactly as it is.
 
 ## Navigation and folder structure
 

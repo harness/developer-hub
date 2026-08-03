@@ -1,11 +1,15 @@
 #!/usr/bin/env node
-// CI PR sync — step B (see HDH-1049).
+// CI PR sync — step B (see HDH-1049, HDH-1099).
 //
 // Runs after Publish-Netlify-Preview, once DRAFT_URL is known. Rebuilds the PR
 // description with real per-page preview links (step A left placeholders).
 // Re-derives the same summary/preview-page data as step A rather than passing
 // it across steps, since Harness step output variables are best kept small
 // (a PR number and a URL) rather than a multi-KB rendered description.
+//
+// Description only. This step used to rebuild and PATCH the title as well, which
+// meant it re-reverted the author's title even on runs where step A had already
+// left it alone (HDH-1099). It no longer sends a title at all.
 
 import fs from 'fs';
 import path from 'path';
@@ -13,11 +17,12 @@ import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
 import { classifyChangedDocsFromNameStatus } from './lib/pr-preview-utils.mjs';
 import {
-  buildTitle,
   extractJira,
+  stripRetitleToken,
   deterministicSummary,
   geminiSummary,
   fillTemplate,
+  findOpenPR,
   updatePR,
   ensureBaseRefFetched,
 } from './lib/pr-sync-shared.mjs';
@@ -40,7 +45,10 @@ function collectChangeData(baseRef) {
   let diffstat = '';
   let files = [];
   try {
-    commits = git(`log ${baseRef}..HEAD --pretty=format:%s`).split('\n').filter(Boolean);
+    commits = git(`log ${baseRef}..HEAD --pretty=format:%s`)
+      .split('\n')
+      .map(stripRetitleToken) // the opt-in retitle marker is plumbing, not content
+      .filter(Boolean);
   } catch { /* ignore */ }
   try {
     diffstat = git(`diff --stat ${baseRef}...HEAD`);
@@ -66,8 +74,9 @@ async function main() {
 
   ensureBaseRefFetched('main', REPO_ROOT);
 
-  const latestSubject = git('log -1 --pretty=format:%s');
-  const title = buildTitle({ branch, latestSubject });
+  // The author's own title is the best context for the summary, and it is the only
+  // reason this step looks the PR up. It is never written back.
+  const title = (await findOpenPR({ token, branch }))?.title || '';
   const jira = extractJira(branch);
   const { commits, diffstat, files } = collectChangeData(BASE_REF);
 
@@ -88,7 +97,8 @@ async function main() {
   const template = fs.existsSync(templatePath) ? fs.readFileSync(templatePath, 'utf8') : '';
   const description = fillTemplate({ template, summary, jira, previewPages, previewBase });
 
-  const res = await updatePR({ token, number: prNumber, title, description });
+  // Description only — no title in this payload by design (HDH-1099).
+  const res = await updatePR({ token, number: prNumber, description });
   if (res.status >= 200 && res.status < 300) {
     log(`Preview URLs updated on PR #${prNumber}: ${previewBase}`);
   } else {
