@@ -7,10 +7,12 @@ sidebar_position: 10
 Harness Artifact Registry provides centralized management for Docker, Helm, Maven, NPM, Python, and other artifact types. This guide outlines **naming conventions**, **scope selection**, and **governance strategies** to help you build a scalable registry structure.
 
 ## Why naming matters
-Registry names must be globally unique across your Harness account, regardless of scope (account, org, or project). **Reusing names like `docker-dev` in multiple scopes is not allowed**. Because registry IDs are account-scoped, a pipeline in one project can push or pull artifacts from a registry created in a different project, provided the executing principal has the required permissions on the target registry.
+Registry names must be globally unique across your Harness account, regardless of scope (account, org, or project). **Reusing names like `docker-dev` in multiple scopes is not allowed**.
+
+Registry IDs are unique at the account level, but pipeline push and pull access follows the Harness scope hierarchy. A pipeline can push to or pull from registries in its **current project** and in **parent scopes** (organization and account). A pipeline **cannot** push to or pull from registries in **sibling projects**, even when the executing principal has permissions on those registries.
 
 :::tip naming and scoping benefits
-Following consistent naming and scoping practices avoids registry sprawl and supports better collaboration, access control, and automation.
+Follow consistent naming and scoping practices to avoid registry sprawl and support better collaboration, access control, and automation. Place registries that multiple projects must share at the organization or account level.
 :::
 
 ---
@@ -60,6 +62,8 @@ Your registry name must start with a letter and can only contain lowercase alpha
 | **Account**     | Shared tools, base images, proxies                | Platform/DevOps     |
 | **Organization**| Team-shared libraries, internal components        | Team Leads          |
 | **Project**     | Environment-specific or service-specific builds   | Dev Teams           |
+
+A pipeline can use registries in its current project and in parent scopes only. Place shared artifacts at the organization or account level. If you create a registry in one project, pipelines in sibling projects cannot push to or pull from it.
 
 ---
 
