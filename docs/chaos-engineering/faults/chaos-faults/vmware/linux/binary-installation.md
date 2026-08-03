@@ -95,11 +95,11 @@ This topic describes the binaries to be installed before executing the Linux OS 
             </td>
             <td>
                 <ol>
-                    <li>Download the binary: <code>curl -LO https://litmus-http-proxy.s3.amazonaws.com/server/toxiproxy-server-linux-amd64.tar.gz</code></li>
+                    <li>Download the binary: <code>curl -LO https://app.harness.io/public/shared/tools/chaos/utils/toxiproxy/toxiproxy-server-linux-amd64.tar.gz</code></li>
                     <li>Extract the archive: <code>tar -zxvf toxiproxy-server-linux-amd64.tar.gz</code></li>
                     <li>Make it executable: <code>chmod +x toxiproxy-server</code></li>
                     <li>Move to system path: <code>sudo mv toxiproxy-server /usr/local/bin/</code></li>
-                    <li>Download the binary: <code>curl -LO https://litmus-http-proxy.s3.amazonaws.com/cli/toxiproxy-cli-linux-amd64.tar.gz</code></li>
+                    <li>Download the binary: <code>curl -LO https://app.harness.io/public/shared/tools/chaos/utils/toxiproxy/toxiproxy-cli-linux-amd64.tar.gz</code></li>
 <li>Extract the archive: <code>tar -zxvf toxiproxy-cli-linux-amd64.tar.gz</code></li>
 <li>Make it executable: <code>chmod +x toxiproxy-cli</code></li>
 <li>Move to system path: <code>sudo mv toxiproxy-cli /usr/local/bin/ </code></li>
