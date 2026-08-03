@@ -289,6 +289,17 @@ export const spt: IltCardItem[] = [
     cardType: cardType.SPT,
   },
   {
+    title: "Introduction to Chaos Testing — Viewing a Live Experiment Run",
+    module: MODULES.ce,
+    type: type.user,
+    description:
+      "Self-paced tidbit introducing Chaos Testing — Viewing a Live Experiment Run.",
+    version: "Harness Resilience Testing Free Plans",
+    link: "https://university-registration.harness.io/self-paced-training-tidbit-introduction-to-chaos-testing-viewing-a-live-experiment-run",
+    tileType: tileType.normal,
+    cardType: cardType.SPT,
+  },
+  {
     title: "Traceable by Harness Platform Fundamentals",
     module: MODULES.asp,
     type: type.user,
