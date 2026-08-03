@@ -5,7 +5,7 @@ sidebar_label: Chat History & Memory
 sidebar_position: 16
 ---
 
-import Platform from '@site/docs/platform/harness-ai/memory-chat-history.md';
+import Platform from '@site/docs/platform/harness-ai/context-and-memory/memory-chat-history.md';
 
 <Platform />
 

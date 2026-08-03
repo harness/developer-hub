@@ -14,6 +14,6 @@ tags:
   - personalization
 ---
 
-import Ai from '@site/docs/platform/harness-ai/harness-ai-memories.md';
+import Ai from '@site/docs/platform/harness-ai/context-and-memory/harness-ai-memories.md';
 
 <Ai />

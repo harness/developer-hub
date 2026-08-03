@@ -1,0 +1,151 @@
+---
+title: Harness AI Memories
+sidebar_label: Memories
+description: Use Harness AI Memories to personalize AI responses with context captured from your chats.
+sidebar_position: 5
+keywords:
+  - Harness AI Memories
+  - AI memory
+  - personalization
+  - chat context
+  - private user context
+  - AI settings
+tags:
+  - ai
+  - memories
+  - personalization
+redirect_from:
+- /docs/platform/harness-ai/harness-ai-memories
+---
+
+Harness AI Memories help Harness AI remember useful context from your chats so future responses can better match your preferences, projects, and workflows. Memories are private to you. They are not shared with account, organization, or project users, and they are not visible at those scopes.
+
+---
+
+## What will you learn in this topic?
+
+By the end of this topic, you will be able to:
+
+- [Understand how Memories personalize Harness AI responses](#memory-behavior).
+- [Recognize why Memories are private to each user](#memory-scope).
+- [Identify what context Harness AI captures as Memories](#what-memories-can-include).
+- [Turn Memories on or off from your personal settings](#turn-memories-on-or-off).
+- [Write chats that produce useful Memories](#write-chats-that-create-useful-memories).
+
+---
+
+## Before you begin
+
+Before you turn Harness AI Memories on or off, ensure you have the following:
+
+- **Harness AI access**: Harness AI must be active for your account. Go to <a href="/docs/platform/harness-ai/overview#enable-ai" target="_blank">Overview of Harness AI</a> to enable Harness AI.
+- **Chat access**: Access to Harness AI chat in the module where you work. Go to <a href="/docs/platform/harness-ai/overview" target="_blank">Overview of Harness AI</a> to confirm available modules.
+
+---
+
+## Memory behavior
+
+Harness AI uses Memories to reduce repeated context setup. Instead of asking you to restate the same preferences or project details in every chat, Harness AI can use relevant Memories when it responds.
+
+Memories currently come from Harness AI chat activity. Harness AI can summarize useful details from chats, such as the project you work in, the types of pipelines you create, or the response style you prefer.
+
+Memories help with these tasks:
+
+- **Personalized responses**: Adapt answers to your role, experience level, and preferred level of detail.
+- **Project context**: Recall projects, services, environments, dashboards, and pipelines that appear often in your chats.
+- **Workflow continuity**: Preserve useful context across conversations, such as recent pipeline creation tasks or dashboard requests.
+- **Operational patterns**: Reflect recurring deploy, build, cost, security, or troubleshooting patterns from prior chats.
+
+:::info Personal privacy
+
+Memories are scoped to the individual user. Harness does not expose your Memories at the account, organization, or project level.
+
+:::
+
+---
+
+## Memory scope
+
+Memories define who can use the personalized context Harness AI captures. Memories are personal, so they help Harness AI respond to you, not to your whole team.
+
+| Scope | Memory visibility |
+| --- | --- |
+| **Personal** | You can use Memories to personalize your Harness AI experience. |
+| **Project** | Project users cannot view your Memories. |
+| **Organization** | Organization users cannot view your Memories. |
+| **Account** | Account users cannot view your Memories. |
+
+Harness AI can still use context from the Harness page or resource you are working on, subject to your product access. Memories add personal context from your own AI interactions.
+
+---
+
+## What Memories can include
+
+Memories capture concise context that improves future responses, not full chat transcripts. Harness AI creates a Memory only when a chat contains details worth reusing.
+
+Examples include:
+
+- **User preferences**: Preferred response length, communication style, or level of technical depth.
+- **Frequent resources**: Projects, pipelines, services, environments, and dashboards that appear often in your chats.
+- **DevOps patterns**: Pipeline types you create, deploy strategies you use, or build checks you ask for.
+- **Operational context**: Common failures, recent fixes, or recurring troubleshooting paths discussed in chat.
+- **Security and compliance context**: Standards or guardrails you mention in chat, such as scan requirements or approval expectations.
+
+Harness AI uses relevant Memories when they can improve the response. Not every chat creates a Memory.
+
+---
+
+## Turn Memories on or off
+
+Control whether Harness AI learns preferences from your chats through your personal Harness AI settings. Turn Memories off when you do not want chat-based personalization.
+
+1. Open Harness AI.
+2. Select the more options menu.
+3. Select **Settings**.
+4. Select the **Memories** tab.
+5. Use the **Enable Memories** toggle to turn Memories on or off.
+
+<div style={{textAlign: 'center'}}>
+   <DocImage path={require('./static/ai-settings-memories.png')} width="80%" height="40%" alt="Harness AI Settings Memories tab with the Enable Memories toggle and a list of personal memories" title="Click to view full size image" />
+</div>
+<p align="center"><em>The Memories tab lets you turn Memories on or off and view personal Memories captured from chat.</em></p>
+
+---
+
+## View Memories
+
+Review your Memories to understand what context Harness AI may use for personalization. The **Memories** tab lists personal Memories that Harness AI has captured from your chats, and each Memory appears as a short summary of context that can help future AI responses.
+
+If the list is empty, continue to use Harness AI chat with Memories enabled. Harness AI creates Memories only when a chat contains useful context for future interactions.
+
+---
+
+## Memory and chat history
+
+Memories and chat history both preserve context, but they serve different purposes. Understand the difference so you know what Harness AI stores and how it uses each one.
+
+- **Chat history**: Stores conversations so you can return to previous chats.
+- **Memories**: Stores concise context that helps Harness AI personalize future responses.
+
+For example, chat history can show a prior conversation where you asked Harness AI to create a Go CI pipeline. A Memory can summarize that you often create Go CI pipelines with DockerHub integration.
+
+---
+
+## Write chats that create useful Memories
+
+The quality of your Memories depends on the context in your chats. Provide clear details so Harness AI can capture Memories that improve future responses.
+
+- **Name the resource**: Include the pipeline, service, environment, dashboard, or project.
+- **State your preference**: Tell Harness AI how you want responses structured.
+- **Describe your standard**: Mention deploy, build, security, or cost patterns you use often.
+- **Correct outdated context**: Tell Harness AI when a preference or workflow has changed.
+
+---
+
+## Next steps
+
+Use Harness AI Memories to make chat responses more personal and continuous across your Harness work. Keep Memories enabled when you want Harness AI to learn from your chats, and turn them off when you do not want chat-based personalization.
+
+- **Harness AI**: Go to <a href="/docs/platform/harness-ai/overview" target="_blank">Overview of Harness AI</a> to review available AI features.
+- **Chat history**: Go to <a href="/docs/platform/harness-ai/context-and-memory/memory-chat-history" target="_blank">Chat History and Memory</a> to understand chat history behavior.
+- **Rules**: Go to <a href="/docs/platform/harness-ai/harness-ai-rules" target="_blank">Harness AI Rules</a> to add rule-based guidance for AI output.
