@@ -63,7 +63,7 @@ Include the following feature flags to enable IaCM capabilities. These may becom
 platform:
   harness-manager:
     featureFlags:
-      ADDITIONAL: "IACM_CLONE_SUBMODULES,IACM_WORKSPACE_SHA_CLONE,IACM_ENABLE_SSH_MODULE_REGISTRY,IACM_ENABLE_DEFAULT_PIPELINES,IACM_ENABLE_MODULE_REGISTRY"
+      ADDITIONAL: "IACM_CLONE_SUBMODULES,IACM_WORKSPACE_SHA_CLONE,IACM_ENABLE_DEFAULT_PIPELINES,IACM_ENABLE_MODULE_REGISTRY"
 ```
 
 ### Use a Custom Image for IaCM Steps (Airgapped workaround)
