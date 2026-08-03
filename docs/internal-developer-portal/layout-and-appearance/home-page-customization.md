@@ -1,194 +1,190 @@
 ---
-title: Customize your Homepage
+title: Customize your IDP Homepage
 sidebar_label: Homepage Customization
-description: Learn how you can customize your homepage and add card banners and headers of your choice
+description: Configure the IDP Overview page for developers, platform engineers, and engineering leaders using persona views.
 sidebar_position: 1
 ---
+ 
+import DocImage from '@site/src/components/DocImage';
+import DocVideo from '@site/src/components/DocVideo';
+ 
+Developers need their daily context: recent builds, deployments, incidents, and pull requests for the services they own. Platform engineers need catalog coverage, scorecard compliance, and integration health. Engineering leaders need org-wide delivery metrics, incident trends, and security posture.
+ 
+**Persona View** solves this by giving each role its own tab on the IDP Overview page, pre-loaded with the cards most relevant to their work. Admins configure what each tab shows and assign it to the right user group(s).
 
+<DocImage path={require('./static/overview-persona.png')} />
 
-Homepage of IDP is meant to provide personalized view for developers, serving as a single pane of glass for all the necessary information required across tools and software systems in use, and it differs for different organization as well as different teams in an organization. So to help with varied use-cases, you can customize the homepage, add quick links in the headers, change text on the header, banner and cards according to your engineering org and make it useful for your developers.
+---
 
-## Available customizations
+## Quick tutorial
+ 
+<DocVideo src="https://www.youtube.com/embed/jhOXM5hMnZ0" />
 
-The **Platform Admins** can customize the homepage under Layouts for 3 different categories **Header**, **Banner** and **Cards**. A preview of the changes with sample data is available while customizing the homepage. The cards can be of two width sizes, i.e., medium(6md) and large(12md).
+---
 
+## Before you begin
+ 
+You must have the IDP Admin role or the `IDP_LAYOUT_EDIT` permission.
+
+<DocImage path={require('./static/permission-layout.png')} />
+
+---
+
+## Steps to configure persona view
+ 
+Navigate to **Configure** → **Layout** → **Homepage**. This opens the **Persona View** list. Click any row to open its editor.
+
+* [Configure developer's view](#configure-developers-view)
+* [Configure platform view](#configure-platform-view)
+* [Configure leadership view](#configure-leadership-view)
+
+A live preview with sample data updates on the right side of the editor as you make changes.
+ 
+<DocImage path={require('./static/persona-view-list.png')} />
+ 
+---
+ 
+## Configure developer's view
+ 
+Developer's View is the **Home** tab, visible to every user. You can customize its header, banner, and cards.
+ 
 ### Header
+ 
+Under **Header**, add a personalized welcome message and quick links to pages your developers visit frequently, such as release notes, engineering docs, or a status page.
+ 
+<DocImage path={require('./static/homepage-header.png')} />
+ 
+**Header Text** supports both static and dynamic values:
+ 
+- Static: `Welcome to Harness IDP!`
+- Personalized: `Welcome <+first_name>!`
+- Last name first format: `Welcome <+last_name>, <+first_name>!`
+- With time-aware greeting: `<+greeting> <+first_name>` The `<+greeting>` variable resolves to Good Morning, Good Afternoon, or Good Evening based on the user's timezone.
 
-- Under Header, you could add the personalized welcome message including quick links to important pages like Release Notes, Engineering Docs and Status Page for important service etc. 
-
-![](./static/homepage-header.png)
-
-- For Header Text, enter the values in the field given, which could be dynamic as well as `<+first_name> <+last_name>`. 
-- You can leave the header text static such as - `Welcome to Harness IDP!`
-    - You can make it personalized such as - Welcome `<+first_name>!`
-    - If your users have names of the format "last name, first name", then you can use Welcome `<+last_name>`, `<+first_name>`! Or you can name the portal a unique product name such as - `Welcome to MyPortal!` (maybe, a bit more creative than MyPortal).
-    - There is a special variable called `<+greeting>` which resolves to Good Morning, Good Evening, etc. depending upon the timezone of the user. e.g. `<+greeting> <+first_name>`
-
-- For Quick links you can upload a Custom Icon **(Recommended Size: 128x128px and file size: 200KB)** along with a name and a link. You can also drag and re-arrange the order of the links. It is ideal to add a few links to some central documents that you want your users to go to when they come to your Developer Portal. e.g. Onboarding Docs, Link to Slack, etc.
-
-![](./static/add-quicklinks.png)
-
+**Quick Links** lets you add shortcuts with a custom icon (recommended size: 128x128px, max file size: 200KB), a display name, and a URL. Drag and reorder links to control how they appear. Good candidates are onboarding docs, a Slack channel link, or a status page.
+ 
+<DocImage path={require('./static/add-quicklinks.png')} />
+ 
 ### Banner
+ 
+Under **Banner**, you can replace the default IDP banner with an image or a video, or disable it entirely to give cards more space on the page.
+ 
+- **Image**: Supported types are `.jpg`, `.jpeg`, and `.png`. Recommended size is 756x300px. Maximum file size is 10MB. You can optionally add a hyperlink so users are taken to a URL when they click the banner. A good use: a banner for an upcoming engineering event you want all developers to notice.
+- **Video**: Supported types are public embedded links. Examples: `https://www.youtube.com/embed/sVnI93bCr38?si=zobQ1YJMVVJMccaO` or `https://www.dropbox.com/scl/fo/example/video.jpg?raw=1`. Rendered size is 500x250px.
 
-- You can replace the existing banner on the IDP homepage by either an Image or a Video. You can as well disable the banner to allow more space for cards.
-
-    - Image: Supported Types - `.jpg`, `.jpeg` and `.png`. Recommended Size of the image is 756x300px Maximum file size allowed is 10MB. You can also add a hyperlink to the image as well which will take users to the link when they click the banner. Suggestion - Add a cool banner for an upcoming engineering event that you want developers to be aware of!
-    - Videos: Supported Types - Public Embedded Links e.g.; `https://www.youtube.com/embed/sVnI93bCr38?si=zobQ1YJMVVJMccaO`, `https://www.dropbox.com/scl/fo/5pu6lcznlqushows1gluk/AJtpk6i0ze_7Zr3Xr4xc2DE/distributed-work-with-dropbox.jpg?rlkey=d113ffnzhu8vseecxxe61ddk3&e=1&st=xzuy6mcy&raw=1` ; Rendered Size - `500x250px`. 
-
-![](./static/homepage-banner.png)
-
+<DocImage path={require('./static/homepage-banner.png')} />
+ 
 ### Cards
+ 
+Under the **Cards** tab, click **New Card** and choose the cards you need from the list of pre-created cards or you may add your own card. The ones you choose would be shown in the `Cards Added` list. 
 
-![](./static/homepage-cards.png)
+<DocImage path={require('./static/homepage-cards.png')} />
 
-#### Default cards
+The following card types are available for Developer's View. Go to [Card reference](#card-reference) to know what each card shows and any setup it may require.
+ 
+* **Pre-created by Harness** (no configuration needed to add):
+Recently Visited, Top Visited, Learn More, Starred Entities, Incidents, Recent Builds, Recent Deployments, My Workflow Runs, My Ownership, Jira tasks, GitHub pull requests, Harness Code pull requests
+ 
+* **Custom cards** (you define the content):
+Markdown, Toolkit, Video
 
-- The home page displays the following cards by default, and they can only be removed or rearranged by using drag-drop but cannot be edited.
+You may remove, rearrange, and resize the cards shown on the Home tab. Cards can be medium (6md) or large (12md) width.
 
-1. Recently Visited: The pages on IDP you visited recently.
-2. Top Visited: Most viewed pages in IDP by a user.
-3. Learn More: Important links to learn more on Harness IDP. 
-4. Starred Entities: Your Starred Components, Workflows or TechDocs are displayed here. 
+<DocImage path={require('./static/homepage-cardsize.png')} />
 
-#### Other cards
-
-Apart from these, there are two more cards that can be added, removed or edited according to your requirements. 
-
-### My pull requests card
-
-#### 1. GitHub
-
-![](./static/github-pr-card.png)
-
-This GitHub PR card provides quick access to the pull requests you have created as well as the PRs you have to review. It shows PRs from all repositories you have access to, including both public and private repositories across multiple organizations.
-
-The numbers displayed at the top, such as "15 Created," "1 Review Requests," and "1 Assigned" only reflect open pull requests, even though the card also contains information on closed pull requests, as seen by the "Closed (525)" tab.
-
-- **How To Set up**: The access is configured thorough [OAuth Configurations in IDP](/docs/internal-developer-portal/plugins/oauth-support-for-plugins), once the card is enabled on the Developer's Homepage you will be redirected to GitHub to sign-in to populate this card. 
-
-![](./static/oauth-plugin-config-github.png)
-![](./static/homepage-github-sign-in.png)
-
-- **Access Control Explained**: 
-
-- *IDP Admin Role*:- Set up and manage the organization-wide GitHub OAuth configuration and add the GitHub app credentials in IDP. Enable the My PR card on homepage
-    - Scope: The OAuth App defines the access boundaries for the integration, such as which repositories, pull requests, and organizational resources will be visible.
-
-- *Developers*: Sign-in using the pre-configured OAuth App to access personalized data once the "My PRs card" is available on the homepage. 
-    - Scope: Access is limited to the repositories, pull requests, and issues they have permissions for within GitHub.
-
-
-- **Value Addition**: It will display data across all repositories you have permissions for, making it easy to track your contributions, review requests, and assigned PRs in one place without switching contexts.
-
-- **Limitation**: The real-time data is fetched in case of an event(e.g., updating the org filters, re-loading the homepage), and it does not periodically update the values. 
-
-Currently, the "My PRs" card only supports GitHub as a data source. Support for Harness Code Repository is coming soon. Other platforms, such as GitLab, Azure, and Bitbucket, are not yet supported. Let us know if you’d like to see support for these platforms in the future!
-
-#### 2. Harness code repository
-
-![](./static/pull-request-card-hcr.png)
-
-The Harness Code Repo (HCR) Pull Request Card provides a quick overview of pull requests related to your work. It consolidates PRs from all repositories you have access to, whether public or private, across multiple organizations. Unlike other integrations, the HCR Pull Request Card does not require any additional setup. Once enabled on your Developer Homepage, it seamlessly fetches PR data from the Harness Code Repo without any external sign-in or configuration steps.
-
-The numbers displayed at the top, such as "0 Created" and "1 Review Requests," reflect only open pull requests, although the card also includes information about closed pull requests, as shown under the "Closed" tab.
-
-### My tasks card
-
-#### 1. JIRA
-
-This JIRA card offers a centralized view of your assigned tasks, ensuring easy tracking of work items. It provides a categorized summary of the tickets you are currently working on, tickets assigned for the sprint, including their current status, priority, and associated metadata.
-
-![](./static/my-task-jira.png)
-
-- **Key Features:**
-
-1. Summary Metrics:
-- Total Tickets: The total number of tasks assigned to you.
-- To Do: Tasks that are pending and need to be started.
-- In Progress: Tasks you are actively working on, or any status change has occurred for the ticket
-- New: Tickets recently created(< 1 Week) and awaiting categorization or prioritization.
-
-2. Filters for Better Focus:
-
-- Worked On: Displays all the tickets you have worked on, regardless of their current status. Useful for tracking your progress across projects.
-- Assigned To Me: A focused view of tasks specifically assigned to you.
-- Current Sprint: Highlights tasks that are part of the active sprint.
-
-- Project Filter: You can filter tickets according to the projects you have access to within your organization. 
-
-![](./static/project-filter.png)
-
-2. Each task card displays key details:
-- Ticket ID (e.g., IDP-4205): You can click on this component and this will redirect you to the ticket in JIRA.  
-- Project: The project the task belongs to (e.g., Internal Developer Portal).
-- Title: A short description of the task. You can click on this component and this will redirect you to the ticket in JIRA.
-- Type: Classification such as Question, Story, etc.
-- Priority: Indicates urgency, such as P4 or P3.
-- Created On: The date the ticket was created.
-- Current Status: Clearly indicates if a ticket is in progress or another phase.
-
-- **How to Set Up:**
-Access to this JIRA card is authenticated via [OAuth Configurations in IDP](/docs/internal-developer-portal/plugins/oauth-support-for-plugins). To populate your task list, you need to add your Atlassian OAuth App client secret and ID in the configurations page, then developers can login from the homepage. 
-
-![](./static/oauth-plugin-config.png)
-
-![](./static/homepage-jira-card.png)
-
-- **Access Control Explained**: 
-
-- *IDP Admin Role*: Set up and manage the organization-wide JIRA OAuth configuration. Add the JIRA app credentials in IDP settings. Enable the "My JIRA Tickets" card on the Developer Homepage.
-    - Scope: The OAuth App defines the access boundaries for the integration, such as which JIRA projects, tickets, and associated resources will be visible to developers. Admins configure the integration to ensure organization-wide availability while maintaining security and adherence to permissions.
-
-- *Developer*: Sign in using the pre-configured OAuth App to access personalized data from JIRA. Utilize the "My JIRA Tickets" card on the homepage for real-time updates.
-    - Scope: Access is limited to the JIRA projects, tickets, and associated data they have permissions for within the JIRA system. Developers only see tickets they are assigned to, tickets they created, or those they are mentioned in.
-
-### Markdown card
-
-The Markdown Card is a customizable component that supports full markdown syntax, designed to serve various informational purposes on the IDP Homepage. Here is an example of Engineering Handbook card. 
-
-![](./static/markdown-small.gif)
-
-```markdown
- **📘 Engineering Handbook**
-- [Frontend Engineering Guide](https://example.com/frontend-guide)  
-- [Backend Best Practices](https://example.com/backend-guide)  
-- [CI/CD Pipelines Handbook](https://example.com/cicd-handbook)  
-
----
-Need help? [Contact the DevOps Team](mailto:devops@example.com)
-```
-
-Here are some of the use cases: 
-
-1. Welcome Message
-
-![](./static/md-card-eg-1.png)
-
-2. Announcements
-
-```markdown
-**📢 Announcement**
-- The new IaCM plugin is now live! 🚀  
-- [Read the full release notes here](https://example.com/release-notes).
-
----
-Feedback? Let us know on Slack: #idp-feedback
-```
-
-### Tool kit
-
--  This card acts as a necessary bookmark for all the links visited by the developer quite frequently, e.g; JIRA Sprint Dashboard, QA Environments
-
--  You can add a new toolkit card with multiple links and the associated `custom icon` **(Recommended Size: 128x128px and file size: 200KB)** along with a name and a link.  
-
-### Video
-
-- You can add any videos as a card, and the supported types are public embedded links of the videos. 
-
+ 
 :::info
-
-Make sure to click on **Save Changes** for each time you want to save a new change otherwise the changes would be discarded and we show a dialog box with this warning when you try to exit the page without saving the changes. Also, the right side of the page is dedicated only for preview you cannot edit anything there. 
-
-![](./static/preview-save.png)
-
+Click **Save Changes** every time you want to commit a change. If you try to leave the editor without saving, a warning dialog appears. The right side of the editor is a live preview only and cannot be edited directly.
+ 
+Unlike Platform and Leadership, saving Developer's View does not open a user group assignment dialog. The Home tab is always visible to all users.
+ 
+<DocImage path={require('./static/preview-save.png')} />
 :::
+ 
+---
+ 
+## Configure platform view
+ 
+Platform view gives platform engineers and DevEx teams a day-to-day operating view of catalog coverage, scorecard health, connected integrations, and workflow trends, all in one place instead of scattered across tools.
+ 
+### Default cards
+
+<DocImage path={require('./static/platform-cards.png')} />
+ 
+The following cards are available in Platform view by default. Click the ones you want to add them to your view. You can drag the card to rearrange or remove any of them using (**⋮**).
+ 
+| Card | What it shows |
+|---|---|
+| Entity Distribution & Ownership | Catalog entities broken down by kind, owned vs. unowned |
+| Scorecard Compliance | Compliance tier distribution across scorecards |
+| Top Failing Checks | Scorecard checks failing across the most services |
+| Integrations | Connected integrations and entity enrichment status |
+| Workflows | Workflow executions grouped by environment |
+ 
+The only additional card type you can add to Platform view is **Markdown**.
+ 
+### Set up and assign
+ 
+1. In the view list, click **Platform**.
+2. On the **Header** tab, enter a header text and quick links. Leave it empty and users see the Home tab header instead.
+3. On the **Banner** tab, toggle **Display Banner** on to use a custom image or video. Leave it off and users see the Home tab banner instead.
+4. On the **Cards** tab, drag to reorder, use the three-dot menu to remove a card, or click **New Card** to add a Markdown card.
+5. Click **Save Changes**. The **Assign and Save** dialog opens.
+6. Select one or more Harness user groups and click **Save**. Users in those groups will see the Platform tab on their Overview page.
+ 
+To update the assignment later, open Platform view again, click **Save Changes**, and pick a new set of groups.
+ 
+---
+ 
+## Configure leadership view
+ 
+Leadership view gives engineering leaders an org-wide rollup of catalog ownership, delivery performance, incident trends, and security posture without needing to query multiple tools.
+ 
+### Default cards
+
+<DocImage path={require('./static/leadership-cards.png')} />
+
+The following cards are added to Leadership view by default. Click the ones you want to add them to your view. You can drag the card to rearrange or remove any of them using (**⋮**).
+ 
+| Card | What it shows |
+|---|---|
+| Entity Distribution & Ownership | Catalog entities broken down by kind, owned vs. unowned |
+| Scorecard Compliance | Compliance tier distribution across scorecards |
+| Comparison by Hierarchy | Delivery metrics compared across orgs and projects |
+| Incident Trends | Incident volume trends across all services |
+| STO | STO findings across all services |
+| Security Findings | Open security findings across all services |
+ 
+The only additional card type you can add to Leadership view is **Markdown**.
+ 
+### Set up and assign
+ 
+Follow the same steps as [Platform view](#set-up-and-assign). Open the Leadership row, adjust Header, Banner, and Cards as needed, then click **Save Changes** and assign the appropriate user group(s).
+ 
+:::info
+A user assigned to both Platform and Leadership groups will see all three tabs: **Home**, **Leadership**, and **Platform**.
+:::
+ 
+---
+
+## Card reference
+ 
+The following cards are available for the Home tab. Cards marked **Default** are present when you first open Developer's View and can be removed or rearranged but not edited. All other cards can be added, removed, and rearranged.
+ 
+| Card | What it shows | Setup |
+|---|---|---|
+| GitHub pull requests | Open and closed PRs across all GitHub repositories the user has access to, both public and private across multiple organizations. Counts at the top reflect open PRs only. Data refreshes on page reload or org filter change, not automatically. | Requires [GitHub OAuth configuration](/docs/internal-developer-portal/plugins/oauth-support-for-plugins). IDP Admin sets up org-wide OAuth credentials and enables the card. Developers are then redirected to GitHub to sign in. Developer access is scoped to repositories and PRs they have permissions for in GitHub. |
+| Harness Code pull requests | Open and closed PRs across all Harness Code repositories the user has access to. Fetches data automatically once enabled, no OAuth needed. | None |
+| Incidents | Active incidents for services owned by the signed-in user | Requires an incident integration (e.g., Pagerduty) connected in your account |
+| Jira tasks | Assigned Jira work items with summary metrics (Total, To Do, In Progress, New), filter views (Worked On, Assigned To Me, Current Sprint, Project), and per-ticket detail (ID, title, type, priority, status; all clickable links to Jira). | Requires [Atlassian OAuth configuration](/docs/internal-developer-portal/plugins/oauth-support-for-plugins). IDP Admin adds Atlassian OAuth App credentials in IDP settings and enables the card. Developers sign in from the homepage. Developer access is scoped to tickets they are assigned to, created, or are mentioned in. |
+| Learn More | Important links to learn more about Harness IDP | None |
+| Markdown | Custom content using full Markdown syntax. Use for announcements, handbook links, welcome messages, or any contextual information | None. You author the content |
+| My Ownership | Catalog entities owned by the signed-in user or their team, with scorecard scores | None |
+| My Workflow Runs | Recent workflow executions triggered by the signed-in user | None |
+| Recent Builds | Recent CI pipeline runs for services owned by the signed-in user | None |
+| Recent Deployments | Recent deployment executions for services owned by the signed-in user | None |
+| Recently Visited | IDP pages the signed-in user visited recently | None |
+| Starred Entities | Components, workflows, or TechDocs the user has starred | None |
+| Toolkit | Bookmark links for pages your team visits frequently, each with a custom icon (128x128px, max 200KB), display name, and URL | None. You define the links |
+| Top Visited | Most viewed IDP pages by the signed-in user | None |
+| Video | Embedded video via a public embedded link | None |
