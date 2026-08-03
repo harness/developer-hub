@@ -1,5 +1,12 @@
 [
   {
+    "flagKey": "PIPE_OPA_MOVE_EVAL_DATA_TO_BUCKET",
+    "description": "Stores Policy Management evaluation input in bucket storage.",
+    "gaStartDate": "2026-08-03",
+    "module": "Continuous Delivery",
+    "lifecycleState": "Beta"
+  },
+  {
     "flagKey": "USE_COMPLETE_STEP_GROUP_ID",
     "description": "Uses the full step group hierarchy path as the container and port key for nested containerized step groups, preventing identifier collisions when multiple sibling step groups contain identically-named inner groups.",
     "gaStartDate": "2026-07-31",
