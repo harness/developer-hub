@@ -81,6 +81,12 @@ Complete the following steps to set up Harness GitLab CI/CD:
 
 After setting up Harness GitLab CI/CD, configure the **SLSA Verification** component in your GitLab workflow file. Add the required GitLab CI/CD variables to your GitLab project, configure the component inputs, configure the provenance verification settings, and run the pipeline. During pipeline execution, the component verifies the provenance associated with the specified artifact before allowing the pipeline to proceed. For the authoritative list of component inputs and defaults, see the CI/CD Catalog at [SCS GitLab Plugins](https://gitlab.com/explore/catalog/harness-scs/gitlab-plugins?tab=components#slsa-verification).
 
+:::note
+
+If you're using **GitLab Self-Managed**, mirror the required Harness GitLab CI/CD components to your GitLab instance before configuring your pipeline. After mirroring the components, update the `component` reference in your workflow file to use the mirrored component. For step-by-step instructions, see [Use a GitLab.com component on GitLab Self-Managed](https://docs.gitlab.com/ci/components/#use-a-gitlabcom-component-on-gitlab-self-managed).
+
+:::
+
 Complete the following steps to configure SLSA verification:
 
 1. [Add the required GitLab CI/CD variables](#step-1---add-the-required-gitlab-cicd-variables)

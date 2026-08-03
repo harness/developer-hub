@@ -83,6 +83,12 @@ Complete the following steps to set up Harness GitLab CI/CD:
 
 After setting up Harness GitLab CI/CD, configure the **SBOM Policy Enforcement** component in your GitLab workflow file. Add the required GitLab CI/CD variables to your GitLab project, configure the component inputs, configure the attestation verification settings if required, and run the pipeline. During pipeline execution, the component evaluates the specified artifact against the configured policy set and enforces the policy results. For the authoritative list of component inputs and defaults, see the CI/CD Catalog at [SCS GitLab Plugins](https://gitlab.com/explore/catalog/harness-scs/gitlab-plugins?tab=components#sbom-policy-enforcement).
 
+:::note
+
+If you're using **GitLab Self-Managed**, mirror the required Harness GitLab CI/CD components to your GitLab instance before configuring your pipeline. After mirroring the components, update the `component` reference in your workflow file to use the mirrored component. For step-by-step instructions, see [Use a GitLab.com component on GitLab Self-Managed](https://docs.gitlab.com/ci/components/#use-a-gitlabcom-component-on-gitlab-self-managed).
+
+:::
+
 Complete the following steps to configure SBOM policy enforcement:
 
 1. [Add the required GitLab CI/CD variables](#step-1---add-the-required-gitlab-cicd-variables)

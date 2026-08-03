@@ -85,6 +85,12 @@ Complete the following steps to set up Harness GitLab CI/CD:
 
 After setting up Harness GitLab CI/CD, configure the SBOM Ingestion component in your GitLab workflow file. Add the required GitLab CI/CD variables to your GitLab project, configure the component inputs, the attestation settings, and run the pipeline. During pipeline execution, the component ingests an SBOM for the specified artifact and uploads it to the SCS module. For the authoritative list of component inputs and defaults, see the CI/CD Catalog at [SCS GitLab Plugins](https://gitlab.com/explore/catalog/harness-scs/gitlab-plugins?tab=components#sbom-ingestion).
 
+:::note
+
+If you're using **GitLab Self-Managed**, mirror the required Harness GitLab CI/CD components to your GitLab instance before configuring your pipeline. After mirroring the components, update the `component` reference in your workflow file to use the mirrored component. For step-by-step instructions, see [Use a GitLab.com component on GitLab Self-Managed](https://docs.gitlab.com/ci/components/#use-a-gitlabcom-component-on-gitlab-self-managed).
+
+:::
+
 Complete the following steps to configure SBOM ingestion:
 
 1. [Add the required GitLab CI/CD variables](#step-1---add-the-required-gitlab-cicd-variables)
