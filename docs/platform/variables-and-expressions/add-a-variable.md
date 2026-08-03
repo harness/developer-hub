@@ -52,17 +52,11 @@ This topic explains how to define and reference variables in Harness. It assumes
 This feature is behind the feature flag `PIPE_MULTILINE_VARIABLE_INPUT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-By default, string variables accept input as a single line. When you enable multi-line input, the text field expands to a resizable text area, making it easier to enter and read values that span multiple lines.
+By default, string variable fields accept input as a single line. To expand the field to multiple lines, press `Cmd+Enter` (macOS) or `Ctrl+Enter` (Windows/Linux) while the field is focused. The field grows into a resizable text area, making it easier to enter and read values that span multiple lines.
 
-Multi-line input is useful when your variable needs to hold structured content such as YAML configuration, a list of IP addresses, or any block of text that would otherwise be difficult to read or edit as a single inline string.
+This is useful when your variable needs to hold structured content such as YAML configuration, a list of IP addresses, or any block of text that would otherwise be difficult to read or edit as a single inline string.
 
-You can enable multi-line input on any custom string variable at the pipeline or stage scope. When you define or edit the variable, select the **Multi-line** option. At runtime, Harness displays the expanded text area wherever users are prompted to provide that variable's value, including in the run pipeline dialog and in input sets.
-
-:::info
-
-Multi-line variables are only available for string type variables at the pipeline and stage scopes. Account, org, and project variables do not support this option.
-
-:::
+At runtime, the same keyboard shortcut expands the field wherever users are prompted to provide that variable's value, including in the run pipeline dialog and in input sets.
 
 ### Naming conventions
 
