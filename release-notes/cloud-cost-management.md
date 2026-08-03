@@ -27,6 +27,43 @@ We've migrated to LabelsV2, which preserves your original label keys while drama
 
 --- 
 
+## July 2026 - Version 1.98.0
+#### Deployment Date: July 29, 2026 (Prod-1)
+
+### New Features and Enhancements
+
+- **Token Count column in AI Perspectives:** AI Perspectives now include a Token Count column in the cost grid, so you can view total token usage alongside cost when you analyze AI spend. The column is available in Cost Explorer, Perspective details, and reports. [CCM-34474]
+
+- **Trends and histogram view for AI service traces:** The Service Traces drawer now includes a Trends and Histogram tab. Compare two metrics such as spend, instances, and input, output, or total tokens as trend lines over time, and view a cost histogram with p50, p90, p95, and p99 percentile markers to understand how your AI costs are distributed. [CCM-34322]
+
+- **Cursor connector support for AI cost:** The Cloud Integration page now supports Cursor connectors. Add and manage a Cursor account alongside OpenAI and Anthropic from the AI Cloud Providers tab. [CCM-34185]
+
+- **Service Traces drawer now sorts by cost by default:** The Service Traces drawer now opens with traces sorted from highest to lowest cost, so you can spot the most expensive traces first. [CCM-34442]
+
+### Fixed Issues
+
+- **Manually applied workload recommendations no longer get stuck evaluating:** We have fixed an issue where a manually applied Kubernetes workload recommendation could remain stuck in a pending evaluation state when the cluster resources did not change after you applied it. These recommendations now complete correctly and show their applied configuration and savings. [CCM-34510]
+
+- **Contains filters now work correctly for derived metrics:** We have fixed an issue where a "like" (contains) filter on a derived metric did not match values as expected, so the resulting data was incomplete. These filters now apply correctly and return the expected results. [CCM-34501]
+
+- **Node pool recommendations no longer show empty details:** We have fixed an issue where auto-inferred Kubernetes node pool recommendations appeared with no details in the recommendations list. These recommendations now correctly display their current, recommended, and applied configuration. [CCM-34470]
+
+- **Perspective export now includes all results:** We have fixed an issue where exporting a Perspective only exported the rows shown on the current page instead of the full result set. The export now includes all Perspective results. [CCM-34463]
+
+- **GCP Kubernetes nodes no longer show $0 cost in Perspectives:** We have fixed an issue where some GCP Kubernetes nodes showed $0 CPU and memory cost in a Perspective, which made the total cluster cost lower than your actual GCP spend. Every node now shows its correct cost, and the cluster total matches your GCP billing data. [CCM-34431]
+
+- **Cost category filters with shared buckets no longer break the Top Spenders and heatmap tiles:** We have fixed an issue where filtering by a cost category that included a shared bucket caused the Top Spenders and service breakdown (heatmap) tiles to fail loading. These tiles now load correctly with that filter applied. [CCM-34403]
+
+- **Perspective report emails now send reliably with Send Now:** We have fixed an issue where the Perspective report Send Now action returned a success response but the report email was not delivered. Reports now send and deliver as expected when you use Send Now. [CCM-34327]
+
+- **Unit metric search now returns all matching results:** We have fixed an issue where searching for a unit metric only returned matches from the currently selected page instead of the full result set. Search now resets pagination and returns all metrics that match your search. [CCM-33698]
+
+- **More reliable inventory data collection:** We have improved how inventory collection jobs are scheduled internally to reduce memory spikes and service restarts, so inventory data refreshes more reliably. [CCM-34278]
+
+- **Perspective queries now use monthly rollups as expected:** We have fixed an issue where Perspective time series and grid queries did not use the monthly rollup table even when monthly rollup was enabled, which made these queries slower than expected. These queries now use the monthly rollup correctly and load faster. [CCM-34332]
+
+---
+
 ## July 2026 - Version 1.97.0
 #### Deployment Date: July 23, 2026 (Prod-1)
 
