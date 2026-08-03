@@ -84,6 +84,12 @@ Hover over any day in the uptime bar to view incident details for that date. Onl
 
 **Active Incidents**: If any incidents are currently affecting your services, they appear in this section with the incident title, affected module, status, and reported time.
 
+**Show historical uptime**: Displays daily availability for each service across the selected period, indicating whether the service was fully operational, experienced minor degradation, or was affected by a major incident.
+
+
+<div style={{textAlign: 'center'}}>
+      <DocImage path={require('./static/uptime-history.png')} width="80%" height="40%" title="Click to view full size image" />
+</div>
 
 ---
 
