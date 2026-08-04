@@ -93,6 +93,22 @@ The plugin exports several output variables that you can reference in subsequent
 
 ---
 
+## Settings
+
+Here is the list of supported settings keys. In particular, setting `owner` will allow the user to override the default value and control which organization the github app should generate from. 
+
+| Setting | Description | Required | Default |
+|---------|-------------|----------|---------|
+| `app_id` | GitHub App ID | Yes | |
+| `private_key` | GitHub App private key | Yes | |
+| `owner` | The owner of the GitHub App installation | No | Repository owner from pipeline context |
+| `repositories` | Comma or newline-separated list of repositories to install the GitHub App on | No | Current repository from pipeline context |
+| `skip_token_revoke` | If true, the token will not be revoked when the job completes | No | `false` |
+| `github_api_url` | The URL of the GitHub REST API | No | `https://api.github.com` |
+| `log_level` | Log level for more detailed output (`debug` or `trace`) | No | `info` |
+
+---
+
 ## Permission settings reference
 
 You can specify the permissions to grant the generated token. Each permission field corresponds to a GitHub App permission and accepts a value of `read` or `write` (some accept `admin`).
