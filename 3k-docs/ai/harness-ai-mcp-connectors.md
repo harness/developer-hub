@@ -15,6 +15,6 @@ tags:
   - connectors
 ---
 
-import Platform from '@site/docs/platform/harness-ai/harness-ai-mcp-connectors.md';
+import Platform from '@site/docs/platform/harness-ai/connect-with-ai/harness-ai-mcp-connectors.md';
 
 <Platform />

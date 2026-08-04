@@ -40,7 +40,7 @@ By the end of this topic, you will be able to:
 Before you add a Worker Agent to a pipeline, ensure you have the following:
 
 - **Worker Agent created**: A Worker Agent must exist in your account. Go to <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/" target="_blank">Worker Agents overview</a> to create one.
-- **Model Connector configured**: At least one Anthropic or OpenAI connector. Go to <a href="/docs/platform/harness-ai/model-connector/" target="_blank">Model Connectors</a> for setup instructions.
+- **Model Connector configured**: At least one Anthropic or OpenAI connector. Go to <a href="/docs/platform/harness-ai/connect-with-ai/" target="_blank">Model Connectors</a> for setup instructions.
 - **Pipeline access**: Permission to create and edit pipelines in your Harness project.
 
 

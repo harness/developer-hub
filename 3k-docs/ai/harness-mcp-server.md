@@ -5,7 +5,7 @@ sidebar_label: MCP Server
 sidebar_position: 10
 ---
 
-import Platform from '@site/docs/platform/harness-ai/harness-mcp-server.md';
+import Platform from '@site/docs/platform/harness-ai/connect-with-ai/harness-mcp-server.md';
 
 <Platform />
 

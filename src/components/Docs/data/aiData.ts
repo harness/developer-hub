@@ -133,7 +133,7 @@ export const docsCards: CardSections = [
         module: MODULES.platform,
         description:
           "Connect Harness to Claude.ai and Claude Desktop using the Anthropic Harness Connector with OAuth authentication.",
-        link: "/docs/platform/harness-ai/model-connector/anthropic-harness-connector",
+        link: "/docs/platform/harness-ai/connect-with-ai/anthropic-harness-connector",
       },
       {
         title: "Harness AI × Gemini CLI Extension",

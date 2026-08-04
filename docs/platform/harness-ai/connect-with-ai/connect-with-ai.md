@@ -15,6 +15,8 @@ keywords:
 tags:
   - harness-ai
   - connectors
+redirect_from:
+- /docs/platform/harness-ai/model-connector/
 ---
 
 Model connectors enable Harness AI Worker Agents to access large language models (LLMs) from Anthropic and OpenAI. Choose the connector that matches your AI model provider and configure it to run autonomous agents inside your pipelines.
@@ -60,7 +62,7 @@ Connect to Claude models through direct Anthropic API or AWS Bedrock endpoints.
 
 **Best for:** Teams using Claude models for Worker Agents, especially those with AWS Bedrock infrastructure.
 
-Go to <a href="/docs/platform/harness-ai/model-connector/anthropic-model-connector" target="_blank">Anthropic Model Connector</a> for more information on configuration steps.
+Go to <a href="/docs/platform/harness-ai/connect-with-ai/anthropic-model-connector" target="_blank">Anthropic Model Connector</a> for more information on configuration steps.
 
 
 ### Anthropic Connector (OAuth)
@@ -72,7 +74,7 @@ Connect to Claude.ai using OAuth authentication for direct access to Anthropic h
 
 **Best for:** Teams who prefer OAuth authentication and direct access to Claude.ai without managing API keys.
 
-Go to <a href="/docs/platform/harness-ai/model-connector/anthropic-harness-connector" target="_blank">Anthropic Connector</a> for more information on configuration steps.
+Go to <a href="/docs/platform/harness-ai/connect-with-ai/anthropic-harness-connector" target="_blank">Anthropic Connector</a> for more information on configuration steps.
 
 ### OpenAI Model Connector
 
@@ -88,7 +90,7 @@ Connect to GPT models with configurable reasoning effort levels.
 
 **Best for:** Teams using OpenAI GPT models with specific reasoning requirements for complex tasks.
 
-Go to <a href="/docs/platform/harness-ai/model-connector/openai-model-connector" target="_blank">OpenAI Model Connector</a> for more information on configuration steps.
+Go to <a href="/docs/platform/harness-ai/connect-with-ai/openai-model-connector" target="_blank">OpenAI Model Connector</a> for more information on configuration steps.
 
 ---
 
@@ -131,9 +133,9 @@ Once you have chosen a connector type, follow the configuration steps for your s
 1. Navigate to **Connectors** in your Harness project, organization, or account settings.
 2. Search for your chosen connector type in the connector catalog.
 3. Follow the provider-specific configuration steps:
-   - <a href="/docs/platform/harness-ai/model-connector/anthropic-model-connector" target="_blank">Anthropic Model Connector configuration</a>
-   - <a href="/docs/platform/harness-ai/model-connector/openai-model-connector" target="_blank">OpenAI Model Connector configuration</a>
-   - <a href="/docs/platform/harness-ai/model-connector/anthropic-harness-connector" target="_blank">Anthropic Connector (OAuth) configuration</a>
+   - <a href="/docs/platform/harness-ai/connect-with-ai/anthropic-model-connector" target="_blank">Anthropic Model Connector configuration</a>
+   - <a href="/docs/platform/harness-ai/connect-with-ai/openai-model-connector" target="_blank">OpenAI Model Connector configuration</a>
+   - <a href="/docs/platform/harness-ai/connect-with-ai/anthropic-harness-connector" target="_blank">Anthropic Connector (OAuth) configuration</a>
 
 ### Common configuration elements
 
@@ -151,8 +153,8 @@ The Model Connector defines the LLM provider and default model for your Worker A
 
 Harness supports the following Model Connectors:
 
-- **Anthropic Model Connector:** Run agents on Claude models through direct Anthropic or AWS Bedrock endpoints. Go to [Anthropic Model Connector](/docs/platform/harness-ai/model-connector/anthropic-model-connector) to review supported models and setup options.
-- **OpenAI Model Connector:** Run agents on GPT-5.5 with configurable reasoning effort. Go to [OpenAI Model Connector](/docs/platform/harness-ai/model-connector/openai-model-connector) to review supported models, effort levels, and setup options.
+- **Anthropic Model Connector:** Run agents on Claude models through direct Anthropic or AWS Bedrock endpoints. Go to [Anthropic Model Connector](/docs/platform/harness-ai/connect-with-ai/anthropic-model-connector) to review supported models and setup options.
+- **OpenAI Model Connector:** Run agents on GPT-5.5 with configurable reasoning effort. Go to [OpenAI Model Connector](/docs/platform/harness-ai/connect-with-ai/openai-model-connector) to review supported models, effort levels, and setup options.
 
 If you do not have access to a model provider, Harness offers a managed LLM connector you can use instead.
 

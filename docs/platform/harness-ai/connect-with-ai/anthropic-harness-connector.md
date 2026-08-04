@@ -5,6 +5,7 @@ sidebar_label: Anthropic Connector
 sidebar_position: 12
 redirect_from:
   - /docs/platform/harness-ai/anthropic-harness-connector
+  - /docs/platform/harness-ai/model-connector/anthropic-harness-connector
 ---
 
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';

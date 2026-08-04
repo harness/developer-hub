@@ -15,6 +15,7 @@ tags:
   - connectors
 redirect_from:
   - /docs/platform/harness-ai/openai-model-connector
+  - /docs/platform/harness-ai/model-connector/openai-model-connector
 ---
 
 The OpenAI Model Connector defines OpenAI as the LLM provider and default model for your <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/" target="_blank">Worker Agents</a>.
@@ -79,4 +80,4 @@ When you create the connector, set the following:
 ## Next steps
 
 - Go to <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/" target="_blank">Worker Agents</a> for more information on creating and configuring agents that use this connector.
-- Go to <a href="/docs/platform/harness-ai/model-connector/anthropic-model-connector" target="_blank">Anthropic Model Connector</a> for more information on configuring Claude as your model provider.
+- Go to <a href="/docs/platform/harness-ai/connect-with-ai/anthropic-model-connector" target="_blank">Anthropic Model Connector</a> for more information on configuring Claude as your model provider.

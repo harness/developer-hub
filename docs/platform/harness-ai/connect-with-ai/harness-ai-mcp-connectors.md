@@ -2,7 +2,7 @@
 title: MCP Connectors in Harness AI Chat
 sidebar_label: MCP Connectors
 description: Add third-party MCP connectors to Harness AI chat to give the assistant tools from external services such as GitHub, GitLab, and Jira.
-sidebar_position: 19
+sidebar_position: 20
 keywords:
   - Harness AI MCP connectors
   - MCP connector
@@ -13,6 +13,8 @@ tags:
   - ai
   - mcp
   - connectors
+redirect_from:
+- /docs/platform/harness-ai/harness-ai-mcp-connectors
 ---
 
 import Tabs from '@theme/Tabs';
