@@ -25,12 +25,14 @@ Once you complete a security scan using the scanners in STO, you can access all 
 - **[Create Pull Request](#create-pull-request-from-sto):** You can directly create a pull request with the remediation from STO, [available for supported code repositories and scanners](#configuration-for-code-suggestions-and-create-pull-request-features).
 - **[Make Code Suggestions](#make-code-suggestion-from-sto):** You can incorporate the remediation as code suggestions into an existing pull request, [available for supported code repositories and scanners](#configuration-for-code-suggestions-and-create-pull-request-features).
 
-<DocVideo src="https://youtu.be/h-Obqn2b9o4?si=nLu299rwZUfHODSH" />
+---
 
-## Important notes for Harness AI remediations in STO
+## Before you begin
 
 
 <Notes />
+
+---
 
 ## View AI remediations for security issues
 Harness AI analyzes security issues and provides AI remediation in the **Remediation** tab of the Issue Details pane. This includes an analysis of the issue, remediation concepts, and step-by-step instructions to fix them, along with example code snippets. Additionally, AI remediation details can be found for each occurrence of an issue. You also have the option to make a Code Suggestion or create a Pull Request to apply the suggested remediation.
@@ -39,11 +41,15 @@ Moreover, you can [enhance the AI remediation](#edit-to-enhance-the-ai-remediati
 
 <DocImage path={require('./static/ai-remediation.png')} width="70%" height="70%" title="Click to view full size image" />
 
+---
+
 ## Make Code Suggestion from STO
 
 In the AI Remediation details of a selected issue, STO provides the option to make code suggestions for applying the recommended fixes. To use this feature, simply click on **Suggest Fix**. Once you have created a code suggestion, you can view it by clicking on the **View Fix** button. Make sure to read the [configuration details](#configuration-for-code-suggestions-and-create-pull-request-features) to understand the requirements and what is supported for this feature.
 
 Please note that the **Suggest Fix** option will only be available if there is a match between the file where the issue was found and the files being modified in the pull request. This ensures that the suggested changes are directly committed in the existing PR without the need for a separate PR.
+
+---
 
 ## Create Pull Request from STO
 
@@ -51,24 +57,42 @@ In the AI Remediation details of a selected issue, STO provides the option to cr
 
 The **Create Pull Request** option is available for both branch scanning and PR scanning. However, in the case of PR scanning, this option will only appear if the remediation suggestions apply to code files that were not modified in the PR. These suggestions may address new or existing vulnerabilities identified in the base branch.
 
+---
+
 ## Configuration for Code Suggestions and Create Pull Request features
-These features are currently **supported only** for **Harness Code Repository** and **GitHub**.
+You can use the **Create Pull Request** and **Make Code Suggestions** features with the following code repositories:
 - **Harness Code Repository**: No configuration is needed; these features are enabled by default.
-- **GitHub**: To enable these features, you’ll need to configure your GitHub connector. Follow the steps below to set it up.
+- **GitHub**: Configure your GitHub connector to enable these features. Follow the steps below to set it up.
+- **GitLab**: Configure your GitLab connector to enable these features. Follow the steps below to set it up.
+- **BitBucket**: Configure your Bitbucket connector to enable these features. Follow the steps below to set it up.
 
-Also, these features are currently **supported only** for the scan results from all the [**Secret detection**](/docs/security-testing-orchestration/whats-supported/scanners?view-by=target-type#code-repo-scanners) and [**SAST scanners**](/docs/security-testing-orchestration/whats-supported/scanners?view-by=target-type#code-repo-scanners) including both built-in open-source and commercial scanners.
+These features are available for scan results from **Secret detection** and **SAST scanners**, including both built-in open-source and commercial scanners. For more information, see <a href="https://developer.harness.io/docs/security-testing-orchestration/whats-supported/scanners?view-by=target-type#code-repo-scanners" target="_blank" >Code repo scanners</a>.
 
-To enable code suggestions and create pull requests in GitHub from STO, you need to configure the GitHub connector within STO’s Default Settings. Go to **Account Settings**, select **Default Settings**, and then choose the **Security Testing Orchestration** tile. Locate the **GitHub Connector for Pull Requests** field and set up your GitHub connector. Ensure your GitHub token includes the following permissions:
-- `repo` - Full control of private repositories
-- `write:org` - Read and write org and team membership, read and write org projects
-- `write:discussion` - Read and write team discussions
-- `project` - Full control of projects
+To enable code suggestions and create pull requests from STO, configure the corresponding connector within STO’s Default Settings. To do so, complete the following steps:
 
-You can also configure these settings at the organization or project level, based on your requirements.
+1. From the left navigation pane, click **Account Settings**, and under the **General** section, click **Default Settings**.
+2. Select the **Security Testing Orchestration** tile.
+3. Under **AIDA PULL REQUESTS**, click the field corresponding to **Repository Connector for Pull Requests**.
 
-:::tip
-These features will only appear if the scanner provides the exact vulnerable code snippet. If the code snippet is not provided, you can still use the feature by manually adding context on the vulnerable code. For details on how to do this, refer to [Edit to enhance AI remediations](/docs/security-testing-orchestration/remediations/ai-based-remediations#edit-to-enhance-the-ai-remediations).
+    <DocImage path={require('./static/sto-ai-remediation-repository.png')} width="80%" height="80%" title="Repository Connector Field Selection" />
+
+4. In the **Create or Select an Existing Connector** pop-up window, do one of the following at the *Account*, *Organization*, or *Project* level:
+
+    <DocImage path={require('./static/sto-project-connector-selection.png')} width="70%" height="70%" title="Repository Connector Selection" />
+
+    - Select an existing *GitHub*, *GitLab*, or *BitBucket* connector.
+    - Click **+ New Connector**, in the pop-up window, select the connector according to your requirements, and specify the configurations. For more information on the steps to do this, see <a href="https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference" target="_blank" >GitHub connector settings reference</a>, <a href="https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference" target="_blank" >GitLab connector settings reference</a>, <a href="https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference" target="_blank" >BitBucket connector settings reference</a>.
+
+    :::note
+    The required token or app password permissions are the same as the ones for the connectors.
+    :::
+5. Click **Apply Selected**.
+
+:::note
+These features will only appear if the scanner provides the exact vulnerable code snippet. If the code snippet is not provided, you can still use the feature by manually adding context on the vulnerable code. For more information, see the section below.
 :::
+
+---
 
 ## Edit to enhance the AI remediations
 
