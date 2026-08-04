@@ -2,7 +2,7 @@
 title: Harness AI Rules
 sidebar_label: Rules
 description: Use Harness AI Rules to tailor AI output to enterprise standards before Harness resources are created or changed.
-sidebar_position: 17
+sidebar_position: 5
 keywords:
   - Harness AI Rules
   - AI governance
@@ -12,9 +12,9 @@ tags:
   - ai
   - governance
   - rules
+redirect_from:
+- /docs/platform/harness-ai/harness-ai-rules
 ---
-
-import DocImage from '@site/src/components/DocImage';
 
 Harness AI Rules are reusable instructions that Harness AI uses as context before it creates, edits, or reviews Harness resources. Use rules to encode pipeline standards, security controls, cost limits, code norms, and team workflows so AI output matches your enterprise standards with less manual revision.
 

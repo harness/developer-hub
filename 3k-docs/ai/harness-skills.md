@@ -5,7 +5,7 @@ sidebar_label: Skills
 sidebar_position: 13
 ---
 
-import Platform from '@site/docs/platform/harness-ai/harness-skills.md';
+import Platform from '@site/docs/platform/harness-ai/govern-ai-output/harness-skills.md';
 
 <Platform />
 

@@ -1,0 +1,11 @@
+{
+    "label": "Govern AI Output",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "position": "7",
+    "customProps": {
+
+
+    }
+}

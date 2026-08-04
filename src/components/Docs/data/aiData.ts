@@ -126,7 +126,7 @@ export const docsCards: CardSections = [
         module: MODULES.platform,
         description:
           "Claude Code skills for the Harness CI/CD platform — generate pipeline YAML, manage resources, debug failures, analyze costs, and more from natural language.",
-        link: "/docs/platform/harness-ai/harness-skills",
+        link: "/docs/platform/harness-ai/govern-ai-output/harness-skills",
       },
       {
         title: "Anthropic Connector",

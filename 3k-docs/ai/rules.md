@@ -14,7 +14,7 @@ tags:
   - rules
 ---
 
-import Ai from '@site/docs/platform/harness-ai/harness-ai-rules.md';
+import Ai from '@site/docs/platform/harness-ai/govern-ai-output/harness-ai-rules.md';
 
 <Ai />
 
