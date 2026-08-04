@@ -224,6 +224,30 @@ Go to [Artifact Registry audit dashboard](/docs/artifact-registry/manage-artifac
 
 ---
 
+## Security best practices
+
+### Prevent vulnerable artifacts on first pull
+
+Artifact scanning and policy evaluation happen asynchronously. When a new artifact is pulled from an upstream proxy for the first time, the pull completes immediately before scanning finishes. If the artifact is vulnerable, it is quarantined after that first pull already delivered it. Subsequent pulls are correctly blocked, but the first pull already succeeded.
+
+To close this first-pull vulnerability window, use a staging-registry pattern:
+
+1. Create a **staging upstream proxy registry** for initial artifact pulls.
+2. Configure your pipelines or local development to pull new artifacts from the staging registry first.
+3. Scanning and policy evaluation run on the staging registry. Monitor the Dependency Firewall dashboard for evaluation results.
+4. Once artifacts show a **Passed** status on the Dependency Firewall dashboard, promote them to a **production upstream proxy registry** using Copy Version.
+5. Configure production users and pipelines to pull only from the production registry.
+
+This pattern ensures that production environments never receive an artifact until after it has been scanned and passed all policy checks.
+
+Go to [Copy a version](/docs/artifact-registry/manage-artifacts/artifact-management#copy-a-version) to promote artifacts from staging to production.
+
+:::note Future enhancement
+Harness is planning a registry-level setting to quarantine artifacts by default until scan completes. This will eliminate the first-pull vulnerability window without requiring a staging-registry pattern.
+:::
+
+---
+
 ## Troubleshooting
 
 <Troubleshoot
