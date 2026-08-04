@@ -2,32 +2,32 @@
   {
     "module": "Continuous Integration",
     "services": [
-      { "name": "CI Manager", "version": "1.141.5" },
+      { "name": "CI Manager", "version": "1.141.5", "releasesLinks": [{"text": "1.141.x", "href": "/release-notes/continuous-integration#version-11410"}, {"text": "1.140.x", "href": "/release-notes/continuous-integration#version-11400"}, {"text": "1.139.x", "href": "/release-notes/continuous-integration#version-11390"}, {"text": "1.138.x", "href": "/release-notes/continuous-integration#version-11380"}, {"text": "1.133.x", "href": "/release-notes/continuous-integration#version-11330"}, {"text": "1.132.x", "href": "/release-notes/continuous-integration#version-11320"}] },
       { "name": "Log Service", "version": "1.48.1" }
     ]
   },
   {
     "module": "DB Devops",
     "services": [
-      { "name": "DB Devops Service", "version": "1.97.1" }
+      { "name": "DB Devops Service", "version": "1.97.1", "releasesLinks": [{"text": "1.97.x", "href": "/release-notes/database-devops#release-197x"}, {"text": "1.96.x", "href": "/release-notes/database-devops#release-196x"}, {"text": "1.95.x", "href": "/release-notes/database-devops#release-195x"}, {"text": "1.94.x", "href": "/release-notes/database-devops#release-194x"}, {"text": "1.93.x", "href": "/release-notes/database-devops#release-193x"}, {"text": "1.92.x", "href": "/release-notes/database-devops#release-192x"}, {"text": "1.91.x", "href": "/release-notes/database-devops#release-191x"}, {"text": "1.90.x", "href": "/release-notes/database-devops#release-190x"}, {"text": "1.89.x", "href": "/release-notes/database-devops#release-189x"}] }
     ]
   },
   {
     "module": "GitOps",
     "services": [
-      { "name": "GitOps Service", "version": "1.58.0" }
+      { "name": "GitOps Service", "version": "1.58.0", "releasesLinks": [{"text": "1.58.x", "href": "/release-notes/continuous-delivery#gitops-service-1580-gitops-agent-01180"}, {"text": "1.57.x", "href": "/release-notes/continuous-delivery#gitops-service-1570-gitops-agent-01170"}, {"text": "1.56.x", "href": "/release-notes/continuous-delivery#gitops-service-1561-gitops-agent-01161"}] }
     ]
   },
   {
     "module": "STO",
     "services": [
-      { "name": "STO Core", "version": "1.195.0" }
+      { "name": "STO Core", "version": "1.195.0", "releasesLinks": [{"text": "1.191.x", "href": "/release-notes/security-testing-orchestration#version-11912"}, {"text": "1.190.x", "href": "/release-notes/security-testing-orchestration#version-11900"}] }
     ]
   },
   {
     "module": "CCM",
     "services": [
-      { "name": "CE Nextgen", "version": "1.90.11" },
+      { "name": "CE Nextgen", "version": "1.90.11", "releasesLinks": [{"text": "1.89.6", "href": "/release-notes/cloud-cost-management#may-2026---version-1896"}] },
       { "name": "Batch Processing", "version": "1.88.14" },
       { "name": "NG CE UI", "version": "1.86.5" },
       { "name": "Anomaly Detection", "version": "1.28.5" },
@@ -61,7 +61,7 @@
   {
     "module": "SSCA",
     "services": [
-      { "name": "SSCA Manager", "version": "1.61.13" },
+      { "name": "SSCA Manager", "version": "1.61.13", "releasesLinks": [{"text": "1.59.x", "href": "/release-notes/software-supply-chain-assurance#version-v1590--plugin-version-v0590"}] },
       { "name": "Component Analysis Service", "version": "1.10.0" },
       { "name": "Component Service", "version": "1.14.0" },
       { "name": "SSCA UI", "version": "0.48.5" }
@@ -70,7 +70,7 @@
   {
     "module": "Platform",
     "services": [
-      { "name": "Platform Service", "version": "1.130.1" },
+      { "name": "Platform Service", "version": "1.130.1", "releasesLinks": [{"text": "1.130.x", "href": "/release-notes/platform#version-1130x-"}, {"text": "1.129.x", "href": "/release-notes/platform#version-1129x-"}, {"text": "1.128.x", "href": "/release-notes/platform#version-1128x-"}, {"text": "1.127.x", "href": "/release-notes/platform#version-1127x-"}, {"text": "1.126.x", "href": "/release-notes/platform#version-1126x-"}, {"text": "1.125.x", "href": "/release-notes/platform#version-1125x-"}, {"text": "1.124.x", "href": "/release-notes/platform#version-1124x-"}, {"text": "1.123.x", "href": "/release-notes/platform#version-1123x-"}, {"text": "1.122.x", "href": "/release-notes/platform#version-1122x-"}, {"text": "1.121.x", "href": "/release-notes/platform#version-1121x-"}, {"text": "1.120.x", "href": "/release-notes/platform#version-1120x-"}, {"text": "1.119.x", "href": "/release-notes/platform#version-1119x-"}, {"text": "1.118.x", "href": "/release-notes/platform#version-1118x-"}] },
       { "name": "Access Control", "version": "1.267.0" },
       { "name": "Audit Event Streaming", "version": "1.96.0" },
       { "name": "Gateway Service", "version": "1.66.1" },
@@ -83,7 +83,7 @@
   {
     "module": "Resilience testing",
     "services": [
-      { "name": "Chaos Manager", "version": "1.88.2" },
+      { "name": "Chaos Manager", "version": "1.88.2", "releasesLinks": [{"text": "1.88.x", "href": "/release-notes/chaos-engineering#version-1880"}, {"text": "1.87.x", "href": "/release-notes/chaos-engineering#version-1870"}, {"text": "1.86.x", "href": "/release-notes/chaos-engineering#version-1860"}, {"text": "1.85.x", "href": "/release-notes/chaos-engineering#version-1853"}, {"text": "1.84.x", "href": "/release-notes/chaos-engineering#version-1842"}] },
       { "name": "Chaos CRD", "version": "1.82.0" },
       { "name": "Chaos K8s IFS", "version": "1.88.0" },
       { "name": "Chaos Linux IFC", "version": "1.88.0" },
@@ -96,7 +96,7 @@
   {
     "module": "Continuous Delivery",
     "services": [
-      { "name": "NG Manager", "version": "1.150.5" },
+      { "name": "NG Manager", "version": "1.150.5", "releasesLinks": [{"text": "1.150.x", "href": "/release-notes/continuous-delivery#version-11503"}, {"text": "1.149.x", "href": "/release-notes/continuous-delivery#version-11497"}, {"text": "1.148.x", "href": "/release-notes/continuous-delivery#version-11483"}, {"text": "1.144.x", "href": "/release-notes/continuous-delivery#version-11440"}, {"text": "1.143.x", "href": "/release-notes/continuous-delivery#version-11431"}, {"text": "1.142.x", "href": "/release-notes/continuous-delivery#version-11420"}] },
       { "name": "NG Custom Dashboards", "version": "1.113.0" },
       { "name": "Pipeline Service", "version": "1.190.0" },
       { "name": "Harness Manager", "version": "1.149.4" },
