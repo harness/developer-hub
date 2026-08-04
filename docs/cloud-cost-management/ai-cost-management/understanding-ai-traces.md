@@ -137,7 +137,7 @@ Before choosing a setup path, it helps to separate the three layers involved in 
 
 Generates the model response.
 
-- **Examples:** OpenAI, Anthropic, AWS Bedrock, GCP Vertex AI, Azure OpenAI.
+- **Examples:** OpenAI, Anthropic, AWS Bedrock, GCP Vertex AI, Azure AI Foundry.
 - **Always present:** Every AI application calls a model, even with no framework or orchestration logic.
 
 </div>

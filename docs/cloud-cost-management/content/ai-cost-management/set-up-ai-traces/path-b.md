@@ -196,7 +196,7 @@ print(resp.choices[0].message.content)
 
 1. Run the application with instrumentation enabled.
 2. Trigger an LLM call (via API request, CLI, or test script).
-3. Wait 1–2 minutes for traces to appear.
+3. Wait for traces to appear. They usually show within a few minutes; allow up to about 20 minutes for ingestion and cost enrichment.
 4. Go to **Cloud & AI Cost Management** > **Cost Explorer**.
 5. Select the **AI Traces** view or group by **Service Name**.
 6. Look for the service name (from `HA_SERVICE_NAME` environment variable).

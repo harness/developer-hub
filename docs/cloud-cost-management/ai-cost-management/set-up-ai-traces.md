@@ -158,7 +158,7 @@ For other languages, use the equivalent OpenTelemetry SDK (Go, Java, .NET) and s
 ## Troubleshooting
 
 <Troubleshoot
-  issue="No traces appear in Cost Explorer after 5 minutes"
+  issue="No traces appear in Cost Explorer after 20 minutes"
   mode="docs"
   fallback="Confirm the OTLP endpoint matches your Harness cluster (for example app.harness.io vs app3.harness.io), the service account token is valid, and the application can reach https://app.harness.io/udp-ingest/otel/v1/traces (test with curl from the same environment). Check the application logs for OTLP exporter activity, and for the Harness SDK make sure Agent().instrument() runs before importing AI libraries. Set OTEL_LOG_LEVEL=debug to surface export errors."
 />

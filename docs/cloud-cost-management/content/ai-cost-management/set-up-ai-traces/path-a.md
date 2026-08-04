@@ -110,7 +110,7 @@ After setting the variables, restart the application or gateway so they take eff
 
 ### Step 3: Verify Traces in Cost Explorer
 
-1. Wait 1–2 minutes for traces to flow (telemetry is near real-time).
+1. Wait for traces to flow. Traces usually appear within a few minutes; allow up to about 20 minutes for ingestion and cost enrichment.
 2. Go to **Cloud & AI Cost Management** > **Cost Explorer**.
 3. Select the **AI Traces** view or group by **Service Name**.
 4. Look for the service name (from `service.name` attribute in traces).
@@ -161,4 +161,4 @@ curl --request POST \
 
 **Note:** `startTimeUnixNano` and `endTimeUnixNano` are example nanosecond timestamps (they resolve to a 2026 date). If the test span does not appear, regenerate current values — for example, run `date +%s` and append nine zeros for nanoseconds.
 
-Then open the **AI Traces** view in Cost Explorer and look for `test-service`. It may take 1–2 minutes to appear. <!-- SCREENSHOT NEEDED: Cost Explorer AI Traces view showing the test-service test span -->
+Then open the **AI Traces** view in Cost Explorer and look for `test-service`. It usually appears within a few minutes; allow up to about 20 minutes. <!-- SCREENSHOT NEEDED: Cost Explorer AI Traces view showing the test-service test span -->
