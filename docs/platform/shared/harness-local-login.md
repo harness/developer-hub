@@ -2,6 +2,8 @@ To prevent lockouts or in the event of OAuth downtime, you can use the local log
 
 You can use the local login URL only if you have the admin role assigned on **All Account Level Resources** or **All Resources Including Child Scopes**.
 
+Local login authenticates against a Harness-native username and password, not your SSO identity provider. Your IdP is never contacted for this sign-in, which is why local login continues to work during an OAuth or SAML outage.
+
 import Local from '/docs/platform/shared/local-login-note.md'
 
 <Local />
