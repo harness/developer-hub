@@ -210,20 +210,6 @@ The **per-execution concurrency limit** controls the maximum number of steps or 
 
 To ensure fair resource allocation and platform stability, Harness also enforces an **account-level step concurrency limit**. This limit caps the total number of concurrently running steps across all pipeline executions in your account. This limit can be overridden for your account by Harness Support.
 
-#### Steps counted toward the concurrency limit
-
-A **step** refers to a **leaf step** that is actively running and appears with the **Running** status in the pipeline execution graph.
-
-The following nodes **count** toward the concurrency limit:
-
-- Running leaf steps
-
-The following nodes **do not count**:
-
-- Pipeline nodes
-- Stage nodes
-- Any step that is not in the **Running** state
-
 #### How the limit is applied
 
 When a step becomes eligible to run, Harness evaluates the account-level concurrency limit.
@@ -232,7 +218,6 @@ When a step becomes eligible to run, Harness evaluates the account-level concurr
 2. The step starts running only if capacity is available.
 3. If the limit has been reached, the step enters the **Queued** state.
 4. Queued steps automatically start when running steps complete and capacity becomes available.
-
 
 ### Pipeline Timeout and Stage Timeout (execution time limits)
 
