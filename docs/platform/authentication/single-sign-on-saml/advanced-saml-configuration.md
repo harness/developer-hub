@@ -36,6 +36,7 @@ If you use <a href="/docs/self-managed-enterprise-edition/smp-overview" target="
 By the end of this topic, you will be able to:
 - [Use Harness local login](#harness-local-login) as a fallback when your IdP is unavailable.
 - [Enable encrypted SAML assertions](#use-encrypted-saml) to meet compliance requirements for assertions in transit.
+- [Rotate your IdP signing certificate](#rotate-your-idp-signing-certificate) without a login gap.
 - [Configure the default landing page](#set-the-default-experience) so teams land on relevant product after login.
 
 
@@ -79,6 +80,14 @@ This downloads the Harness encryption certificate required for SAML assertions.
    3. Upload the encrypted certificate file you downloaded from the Harness UI in step 2 above.
 
 When you sign in to Harness via SAML, the operation is completed using encrypted assertions.
+
+---
+
+## Rotate your IdP signing certificate
+
+Harness reads your IdP's signing certificate from the metadata XML file you upload when you [set up your SAML provider](/docs/platform/authentication/single-sign-on-saml/okta). When your IdP rotates its signing certificate, re-upload the current metadata XML to Harness to pick up the new certificate.
+
+To avoid a login gap during rotation, Harness supports uploading metadata that lists more than one signing certificate: it validates a SAML response against any signing certificate present in the metadata. If your IdP's metadata carries both the current and next certificate during an overlap window, you can upload that metadata to Harness ahead of the cutover so logins keep working through the rotation.
 
 ---
 
