@@ -179,14 +179,14 @@ export const docsCards: CardSections = [
         title: "AI Code Search",
         module: MODULES.platform,
         description: "Supercharge your code searches with Harness AI.",
-        link: "/docs/platform/harness-ai/code-search",
+        link: "/docs/platform/harness-ai/core-capabilities/in-code/code-search",
       },
       {
         title: "PR Summaries & Code Review",
         module: MODULES.platform,
         description:
           "Use Harness AI to generate PR summaries, analyze code changes, and facilitate code review.",
-        link: "/docs/platform/harness-ai/code-pr",
+        link: "/docs/platform/harness-ai/core-capabilities/in-code/code-pr",
       },
     ],
   },

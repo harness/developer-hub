@@ -5,7 +5,7 @@ sidebar_label: AI Code Search
 sidebar_position: 50
 ---
 
-import Platform from '@site/docs/platform/harness-ai/code-search.md';
+import Platform from '@site/docs/platform/harness-ai/core-capabilities/in-code/code-search.md';
 
 <Platform />
 

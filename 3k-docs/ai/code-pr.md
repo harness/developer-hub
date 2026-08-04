@@ -5,7 +5,7 @@ sidebar_label: PR Summaries & Code Review
 sidebar_position: 51
 ---
 
-import Platform from '@site/docs/platform/harness-ai/code-pr.md';
+import Platform from '@site/docs/platform/harness-ai/core-capabilities/in-code/code-pr.md';
 
 <Platform />
 
