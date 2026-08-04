@@ -138,6 +138,12 @@ Go to [Copy artifacts in the Harness CLI](/docs/artifact-registry/artifact-regis
   fallback="Public registries do not require the x-api-key header on downloads. Remove the --header 'x-api-key: &lt;API_KEY&gt;' line from your curl or wget command. The x-api-key header is only required for virtual or private registries. The copy-to-clipboard curl command in the UI file view is generated for the authenticated path, so trim the header when you download from a public registry."
 />
 
+<Troubleshoot
+  issue="How can I copy images between Harness registries when the UI Copy Version action is unavailable"
+  mode="fallback-only"
+  fallback="Use external tools like skopeo. Skopeo is a command-line tool that can copy container images between Harness registries or from external registries to Harness without requiring a Docker daemon. Use it when the UI Copy Version action is unavailable, for bulk copy operations, or in automation. Authenticate to Harness registries using identity tokens from Setup Client with username identity. Go to https://github.com/containers/skopeo for installation and usage examples."
+/>
+
 ## See Also
 
 For a more in depth guide on how to pull and push docker artifacts, go to the [Quickstart Guide](/docs/artifact-registry/get-started/quickstart)
