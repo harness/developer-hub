@@ -74,3 +74,9 @@ Account administrators set how long soft-deleted items are kept in Default Setti
   mode="docs"
   fallback="The delete API requires the image digest (SHA), not the tag name. To delete a specific version programmatically, first retrieve the digest from the artifact details, then pass it to the delete endpoint."
 />
+
+<FAQ
+  question="How do I soft delete or permanently delete via API?"
+  mode="fallback-only"
+  fallback="Use the v3 delete APIs with the force query parameter. Set force=false (or omit it) for soft delete, or force=true for permanent delete. Available endpoints: deleteregistryv3, deletepackagev3, and deleteversionv3. Go to the Harness API documentation at https://apidocs.harness.io for complete API reference and authentication details."
+/>
