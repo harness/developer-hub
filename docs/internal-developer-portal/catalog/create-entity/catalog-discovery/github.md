@@ -113,9 +113,9 @@ The Repository Entity mapping imports GitHub repositories as catalog entities, w
    GitHub repository entities include release metadata for the latest 10 releases only (if they exist). Older releases are not ingested into the catalog.
    :::
 
-6. Optionally, click **Configure** next to **Configure Secondary Kinds (optional)** to control which additional data streams are synced for each repository. By default, all secondary kinds are selected.
+6. Optionally, click **Configure** next to **Configure Secondary Kinds (optional)** to control which additional data streams are synced for each repository. By default, pull requests and issues are not selected.
 
-   Secondary kinds enrich each repository entity with development activity data. By surfacing commits, pull requests, issues, and repository statistics, IDP gives teams an instant view of how actively an entity is being developed, how stable it is, and whether it is progressing or at risk, all without leaving the platform.
+   Secondary kinds enrich each repository entity with development activity data. By surfacing pull requests and issues, IDP gives teams an instant view of how actively an entity is being developed, how stable it is, and whether it is progressing or at risk, all without leaving the platform.
 
    ![](./static/gh-secondary-kinds.png)
    <center>Figure 5: Configure Secondary Kinds panel</center>
@@ -124,12 +124,10 @@ The Repository Entity mapping imports GitHub repositories as catalog entities, w
 
    | Secondary Kind | Description |
    |---|---|
-   | **Commits** | Commit history for each repository. The first sync ingests the last 100 commits per repository. |
    | **Issues** | Open and closed issues for each repository. |
-   | **Pull Requests** | Pull request details for each repository. The first sync ingests pull requests from the last 30 days; subsequent syncs backfill all new pull requests incrementally. |
-   | **Repository Stats** | Summary counts for each repository, including open PRs, closed PRs, merged PRs, and open issues. |
+   | **Pull Requests** | Pull request details for each repository. The first sync ingests pull requests from the last 30 days; subsequent syncs backfill all new pull requests incrementally. If not selected, the pull request list on the [Source Code tab](/docs/internal-developer-portal/catalog/create-entity/entity-details#source-code-tab) will not be populated. |
 
-   On the first sync, IDP fetches a limited snapshot per repository. If the total PRs or commits across all repositories exceed their respective per-sync limits (i.e. 5000), the excess is not dropped. Subsequent syncs backfill the remaining PRs and commits and pick up any new ones.
+   On the first sync, IDP fetches a limited snapshot per repository. If the total PRs across all repositories exceed the per-sync limit (i.e. 5000), the excess is not dropped. Subsequent syncs backfill the remaining PRs and pick up any new ones.
 
    :::caution Secondary kinds cannot be changed after setup
    These selections are locked once the integration is created and cannot be modified later. Choose carefully before confirming.

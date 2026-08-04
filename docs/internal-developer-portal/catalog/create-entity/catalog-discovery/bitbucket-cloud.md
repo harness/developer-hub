@@ -102,28 +102,27 @@ The Repository Entity mapping imports Bitbucket repositories as catalog entities
 
 4. Optionally, click **Configure** next to **Configure fields (optional)** to customize which Bitbucket fields are synced to the catalog. Default mappings are preconfigured.
 
-5. Optionally, click **Configure** next to **Configure Secondary Kinds (optional)** to control which additional data streams are synced for each repository. By default, all secondary kinds are selected.
+5. Optionally, click **Configure** next to **Configure Secondary Kinds (optional)** to control which additional data streams are synced for each repository. By default, all secondary kinds are not selected.
 
    Secondary kinds enrich each repository entity with development activity data, giving teams a view of how actively an entity is being developed without leaving the platform.
 
-   <DocImage path={require('./static/bb-secondary-kinds.gif')} />
+   <DocImage path={require('./static/bb-secondary-kinds.png')} />
 
    The following secondary kinds are available:
 
    | Secondary Kind | Description | First sync (per repository) | Limit across all repositories (per sync) |
    |---|---|---|---|
-   | **Pull Requests** | Pull request details, covering open, merged, and declined PRs. | 50 most recently updated PRs | 5,000 PRs |
-   | **Commits** | Commit history on the default branch. | 50 most recent commits | 5,000 commits |
+   | **Pull Requests** | Pull request details, covering open, merged, and declined PRs. If not selected, the pull request list on the [Source Code tab](/docs/internal-developer-portal/catalog/create-entity/entity-details#source-code-tab) will not be populated. | 50 most recently updated PRs | 5,000 PRs |
 
-   On the first sync, IDP fetches a limited snapshot per repository. If the total PRs or commits across all repositories exceed their respective per-sync limits (i.e. 5000), the excess is not dropped. Subsequent syncs backfill the remaining PRs and commits and pick up any new ones.
+   On the first sync, IDP fetches a limited snapshot per repository. If the total PRs across all repositories exceed the per-sync limit (i.e. 5000), the excess is not dropped. Subsequent syncs backfill the remaining PRs and pick up any new ones.
 
    :::caution Secondary kinds cannot be modified after setup
    These selections are locked once the integration is created and cannot be modified later. Choose carefully before confirming.
    :::
 
-   <!-- :::info Where does this data appear?
-   Secondary kinds data is displayed on the [Entity Details](/docs/internal-developer-portal/catalog/create-entity/entity-details) page for each repository under the **Bitbucket** tab. It does not appear in the **Ingested Properties** YAML in the Entity Inspector.
-   ::: -->
+   :::info Where does this data appear?
+   Secondary kinds data is surfaced on the [Entity Details](/docs/internal-developer-portal/catalog/create-entity/entity-details) page for each repository. It does not appear in the **Ingested Properties** YAML in the Entity Inspector.
+   :::
 
 ### 4. Configure advanced settings
 

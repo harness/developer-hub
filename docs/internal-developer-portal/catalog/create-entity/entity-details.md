@@ -128,12 +128,16 @@ The [Code Quality tab](#code-quality-tab), [Source Code tab](#source-code-tab), 
 
 ### Source code tab
 
-The **Source Code** tab provides a full view of source control activity from the connected SCM integration such as [GitHub](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/github). It shows the same pull request summary as the Integration Content card, plus a detailed, paginated list of individual pull requests.
+The **Source Code** tab provides a full view of source control activity from connected SCM integrations such as [GitHub](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/github), [Bitbucket Cloud](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/bitbucket-cloud), or both. It shows the same pull request summary as the Integration Content card, plus a detailed, paginated list of individual pull requests.
 
 Key details:
 
 * PR data covers the last 30 days.
 * **Top Language** shows a single primary language only.
+
+:::info Pull request list requires secondary kind to be enabled
+The pull request list on this tab is only populated if **Pull Requests** is selected as a secondary kind in your [GitHub](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/github) or [Bitbucket Cloud](/docs/internal-developer-portal/catalog/create-entity/catalog-discovery/bitbucket-cloud) integration. If Pull Requests was not enabled during integration setup, this tab will not show any PR data.
+:::
 
 <DocImage path={require('../static/source-code.png')} />
 
