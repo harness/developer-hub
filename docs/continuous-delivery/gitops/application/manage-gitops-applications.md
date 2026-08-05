@@ -172,7 +172,37 @@ After you select an application, you will see the application dashboard:
     </div>
     - **Manifest**: The manifest of the resource.
     - **Diff**: The diff between the source manifest and application if they are out of sync.
+    - **Terminal**: For pod resources, open a web-based shell directly into a running container. Go to [Open a web-based terminal into a pod](#open-a-web-based-terminal-into-a-pod) to learn more.
 
+### Open a web-based terminal into a pod
+
+You can open an interactive shell directly into a running pod from the **Resource View**, without leaving Harness. Use the terminal to debug a crashing container, inspect running processes, test network connectivity from inside the pod, or check the filesystem state. Harness runs `kubectl exec` on the pod through the GitOps Agent, so you do not need to locate a kubeconfig or run `kubectl` manually.
+
+#### Before you begin
+
+- **Exec permission:** Opening a terminal requires the GitOps application **Exec** permission. This is a distinct, privileged permission from **View**, **Edit**, and **Sync**, so a user with view-only access cannot open a terminal. Go to [Manage access for GitOps Applications](/docs/continuous-delivery/gitops/application/manage-permissions) to configure roles.
+- **Agent exec permission:** The GitOps Agent runs `kubectl exec` using its own Kubernetes ServiceAccount, not your user identity. The agent's ClusterRole must allow `create` on `pods/exec`. Enable this when you install or upgrade the agent.
+
+To open a terminal into a pod, do the following:
+
+1. On the **Application Management Dashboard**, select the **Resource View** tab.
+2. Select the pod you want to inspect.
+3. Select the **Terminal** tab.
+4. If the pod runs more than one container, select the container to connect to from the **Containers** list.
+5. Select the shell to use from the **Shell** dropdown. If the selected shell is not present, an error will be thrown.
+
+When the status shows **Connected**, you have an interactive shell into the container. The tab header displays the container status, image, and resource details such as CPU, memory, port, and health probes.
+
+<div align="center">
+  <DocImage path={require('./static/web-terminal.webp')} width="80%" height="80%" title="Click to view full size image" />
+</div>
+
+#### Requirements
+
+To use the web-based terminal feature, ensure you have the following minimum versions:
+
+- **GitOps Agent:** version 0.122.0 or later
+- **Helm:** version 1.2.8 or later
 
 * **App Details:** displays the settings of the Application. You can edit the settings and apply your changes, including the **Sync Options & Policy**.
 * **Sync Status:** displays all of the sync operations performed by the Application.
