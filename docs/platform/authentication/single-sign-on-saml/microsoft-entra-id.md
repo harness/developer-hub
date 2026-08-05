@@ -2,6 +2,8 @@
 title: Microsoft Entra ID
 description: Configure Microsoft Entra ID as a SAML SSO provider in Harness.
 sidebar_position: 3
+redirect_from:
+- /docs/platform/authentication/single-sign-on-saml/ms-entra-id
 keywords:
   - Microsoft Entra ID
   - Azure AD
