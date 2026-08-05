@@ -24,7 +24,7 @@ Remediate risks and vulnerabilities for a direct dependency by using one of the 
 
 * Vulnerability remediation through pull requests is supported only for repositories and not for artifacts.
 
-* Both Manual and Auto PR Remediation will be available for SMP starting with the June release.
+* Both Manual and Auto PR remediation are currently not available for SMP.
 
 :::
 
@@ -101,25 +101,24 @@ To select the recommended version of the dependency:
 
 5. The **Overview tab** of the dependency side panel opens by default. It has the following sections:
   * **Details** - Review the dependency’s current and latest available versions, license, package manager, and associated PURL.
+  * **OSS Risks** - Displays detailed information about the OSS risks associated with the selected dependency, including the total number of identified risks. Each risk is presented in a collapsible section. Click a collapsed section to view its details.
 
-    <DocImage path={require('./static/dependency-overview.png')} width="80%" height="80%" title="Click to view full size image" />
+    <DocImage path={require('./static/dependency-view-overview.png')} width="80%" height="80%" title="Click to view full size image" />
 
   * **Vulnerabilities** - Displays the number of vulnerabilities by severity (Critical, High, Medium, and Low) and their source.
 
     <DocImage path={require('./static/vulnerabilities-dependency-overview.png')} width="80%" height="80%" title="Click to view full size image" />
 
-    * Click View to see detailed vulnerability information in a table under the **Vulnerabilities tab** of the side panel. Each entry includes severity with a vulnerability severity score, upgrade version, and reference identifiers (CVE, GHSA, CWE, and many more).
+    * Click `View` to see detailed vulnerability information in a table under the **Vulnerabilities tab** of the side panel. Each entry includes severity with a vulnerability severity score, upgrade version, and reference identifiers (CVE, GHSA, CWE, and many more).
 
-    :::note
+      :::note
 
-    Vulnerabilities are derived either from the internal database or from the STO scan. If the STO license is not enabled, dependency vulnerabilities are mapped from the Harness internal database. If you have an STO license and want to map the vulnerabilities from the Harness internal database, contact [Harness Support](mailto:support@harness.io) to enable this feature.
-    :::
+      Vulnerabilities are derived either from the internal database or from the STO scan. If the STO license is not enabled, dependency vulnerabilities are mapped from the Harness internal database. If you have an STO license and want to map the vulnerabilities from the Harness internal database, contact [Harness Support](mailto:support@harness.io) to enable this feature.
+      :::
 
       <DocImage path={require('./static/vulnerability-tab-detail.png')} width="80%" height="80%" title="Click to view full size image" />
 
-  * **Remediation** - Provides information related to the remediation of the dependency version.
-
-6. Click on the **Remediation** expandable section if it is not expanded by default. You will see a warning about the current dependency version followed by an AI-generated summary highlighting the improvements that the recommended updated version will bring.
+6. Click the **Remediation tab** to see the remediation details. The tab displays a warning about the current dependency version. It also includes an AI-generated summary that highlights the improvements introduced by the recommended dependency version.
 
 :::note
 
@@ -217,3 +216,10 @@ To set up the Auto PR configuration:
 Below is a pull request summary created through auto PR remediation, highlighting the recommended upgrade, security impact, and affected dependencies.
 
 <DocImage path={require('./static/autopr-overview.png')} width="80%" height="80%" title="Click to view full size image" />
+
+***
+
+## Next steps
+
+* [Repository Security Posture Management](/docs/software-supply-chain-assurance/manage-risk-and-compliance/repository-security-posture-management-rspm): Continuously monitor your repositories for security, compliance, and configuration risks to strengthen your software supply chain posture.
+* [Generate AIBOM for Repositories](/docs/software-supply-chain-assurance/open-source-management/generate-aibom-for-repositories): Generate AI Bill of Materials (AIBOMs) to identify and inventory AI components used across your source code repositories.

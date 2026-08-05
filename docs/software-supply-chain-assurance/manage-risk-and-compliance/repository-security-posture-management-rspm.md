@@ -118,18 +118,25 @@ The SBOM section provides a comprehensive view of your repository’s dependenci
       If multiple risks are present, the first section is expanded by default, while the remaining sections are collapsed. If only one risk is present, its section is expanded by default.
 
       :::
-    * **Vulnerabilities** - Displays the number of vulnerabilities by severity (Critical, High, Medium, and Low) and their source.
-    * **Remediation** - Provides information related to the remediation of the dependency version. For more information, see [OSS Risks Remediation](/docs/software-supply-chain-assurance/open-source-management/oss-risks-remediation).
 
     <DocImage path={require('./static/dependency-view-overview.png')} width="100%" height="100%" title="Click to view full size image" />
 
-  * The **Dependencies tab** displays the total number of direct and indirect dependencies in the form of a detailed table, associated with the selected dependency. For more information, checkout [Direct/Indirect Dependency](/docs/software-supply-chain-assurance/open-source-management/direct-indirect-dependency#filtering-directindirect-dependencies).
+  * The **Dependencies tab** displays the total number of direct and indirect dependencies in the form of a detailed table, associated with the selected dependency. For more information, go to [Direct/Indirect Dependency](/docs/software-supply-chain-assurance/open-source-management/direct-indirect-dependency#filtering-directindirect-dependencies).
 
     <DocImage path={require('./static/dependency-list.png')} width="100%" height="100%" title="Click to view full size image" />
   
   * The **Vulnerabilities tab** displays the total number of vulnerabilities and a detailed list of vulnerability information. Each entry includes severity with a vulnerability severity score, upgrade version, and reference identifiers (CVE, GHSA, CWE, and many more).
 
+    :::note
+
+    Vulnerabilities are derived either from the internal database or from the STO scan. If the STO license is not enabled, dependency vulnerabilities are mapped from the Harness internal database. If you have an STO license and want to map the vulnerabilities from the Harness internal database, contact [Harness Support](mailto:support@harness.io) to enable this feature.
+    :::
+
     <DocImage path={require('./static/vulnerability-tab-detail-rspm.png')} width="100%" height="100%" title="Click to view full size image" />
+  
+  * The **Remediation tab** provides information related to the remediation of the dependency version. For more information, see [OSS Risks Remediation](/docs/software-supply-chain-assurance/open-source-management/oss-risks-remediation).
+
+    <DocImage path={require('./static/remediation-tab-overview.png')} width="100%" height="100%" title="Click to view full size image" />
 
 ## Vulnerabilities Tab
 
