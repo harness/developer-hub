@@ -1,0 +1,11 @@
+{
+  "label": "Knowledge Graph",
+  "collapsible": true,
+  "collapsed": true,
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "title": "Knowledge Graph",
+    "description": "Use Harness Knowledge Graph to manage and query organizational knowledge with AI-powered prompts and context."
+  }
+}
