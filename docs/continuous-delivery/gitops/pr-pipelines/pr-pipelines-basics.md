@@ -109,6 +109,7 @@ Harness provides purpose-built steps for GitOps pipelines. The table below summa
 | [Fetch Linked Apps](#fetch-linked-apps) | Discovers GitOps applications linked to the service and environment (ApplicationSet workflows only) | Deployment Repo manifest or ApplicationSet references |
 | [GitOps Sync](#gitops-sync) | Triggers a hard sync of an ArgoCD application to apply the latest Git state | None |
 | [Update GitOps App](#update-gitops-app) | Updates values files, Helm overrides, or target revision directly on the application | None |
+| [GitOps Rollback](#gitops-rollback) | Rolls an Argo CD application back to a previous deployment revision | None |
 | [GitOps Get App Details](#gitops-get-app-details) | Returns real-time application status as JSON for use in subsequent steps | None |
 | [Revert PR](#revert-pr) | Reverts a previously merged PR - used in rollback scenarios | None |
 | [GitOps Rollout](#gitops-rollout) | Controls Argo Rollouts progressive delivery (pause, resume, abort) | None |
@@ -326,9 +327,17 @@ This feature is behind the feature flag `CDS_GITOPS_ENABLE_UPDATE_GITOPS_APP_ROL
 
 ![Toggle rollback](./static/toggle-rollback.png)
 
+This stage-level rollback for Update GitOps App is different from the [GitOps Rollback](#gitops-rollback) step, which restores a previous Argo CD application deployment revision.
+
 #### Multi-source applications
 
 When enabled, select your multi-source application in the **Application** field to see all sources. Update each source individually the same way you would a single-source application.
+
+### GitOps Rollback
+
+Rolls a GitOps application back to a previous deployment revision. This is the Harness equivalent of the Argo CD `argocd app rollback` operation. Configure the application name, how many revisions to roll back, and optional prune and health-check settings.
+
+Go to [Rollback GitOps applications](/docs/continuous-delivery/gitops/application/rollback-gitops-applications) to configure the History & Rollback UI action or the GitOps Rollback pipeline step.
 
 ### GitOps Get App Details
 

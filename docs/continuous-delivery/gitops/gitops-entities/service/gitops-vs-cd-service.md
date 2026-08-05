@@ -170,6 +170,7 @@ GitOps pipelines manage changes via Git and rely on the agent to apply those upd
 | **Fetch Linked Apps**  | Get the relevant GitOps applications                |
 | **GitOps Sync**        | Manually trigger agent sync (if needed)             |
 | **Update GitOps App**  | Change app config like Helm overrides               |
+| **GitOps Rollback**    | Roll back to a previous application deployment revision |
 | **Revert PR**          | Roll back by reverting a commit and opening a new PR|
 
 **Example PR pipeline:**

@@ -42,6 +42,7 @@ Each application will display various helpful information such as the applicatio
 Each tile will have 3 vertical dots. Clicking this will allow you to manually **Sync**, **Refresh**, or **Delete** the application. 
 
 - Go to [Sync GitOps applications](/docs/continuous-delivery/gitops/application/sync-gitops-applications) to sync applications from the UI or a pipeline.
+- Go to [Rollback GitOps applications](/docs/continuous-delivery/gitops/application/rollback-gitops-applications) to roll back to a previous revision from the UI or a pipeline.
 - Go to [Update GitOps Apps in a Pipeline](/docs/continuous-delivery/gitops/application/update-gitops-app-in-pipelines) to update application source settings from a pipeline.
 - Go to [GitOps refresh](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics#refresh) to refresh an application.
 
@@ -205,7 +206,7 @@ To use the web-based terminal feature, ensure you have the following minimum ver
 - **Helm:** version 1.2.8 or later
 
 * **App Details:** displays the settings of the Application. You can edit the settings and apply your changes, including the **Sync Options & Policy**.
-* **Sync Status:** displays all of the sync operations performed by the Application.
+* **History & Rollback:** displays previous deployment revisions for the Application. Select 'Rollback' on a previous revision to restore that version. The current revision is marked with a **Current** badge and does not include a rollback action. Go to [Rollback GitOps applications](/docs/continuous-delivery/gitops/application/rollback-gitops-applications) to roll back from the UI or a pipeline.
 * **Manifest:** displays the manifest of the Application. This is not the same as the source manifest in the Git source repo.  
 You can edit the manifest in **Manifest** and the changes are synced in the target infrastructure, but when you do a full sync from your source repo the state of the source repo overwrites any changes made in **Manifest**.
 * **App Diff:** displays a diff against the live state in the cluster and desired state in Git. 
