@@ -37,6 +37,8 @@ It performs a test connection using a delegate with a delegate selector or any a
 
 The JDBC connector is used for connecting to your database instance.
 
+<DocVideo src="https://app.tango.us/app/embed/88d2d030-448f-473a-a73f-889de8f0621b?skipCover=false&defaultListView=false&skipBranding=true&makeViewOnly=true&hideAuthorAndDetails=true" title="Create JDBC Connector in Harness"/>
+
 ---
 
 #### URL Examples
