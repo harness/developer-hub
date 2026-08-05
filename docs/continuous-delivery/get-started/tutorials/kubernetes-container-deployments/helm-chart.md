@@ -834,7 +834,7 @@ Follow these steps to deploy your own application using a Harness CD pipeline in
 
 Harness GitOps (built on top of Argo CD) watches the state of your application as defined in a Git repo, and can pull (either automatically or on demand) these changes into your Kubernetes cluster, leading to an application sync.
 
-Harness GitOps supports Argo CD as the GitOps reconciler.
+Harness GitOps supports **Argo CD** as the only GitOps reconciler. Flux is not supported.
 
 Whether you are new to GitOps or already have an Argo CD instance, this tutorial helps you get started with Harness GitOps, both with and without Argo CD.
 

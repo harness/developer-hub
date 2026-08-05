@@ -8,6 +8,8 @@ Harness GitOps has two components:
 - Harness GitOps service: A REST based service to manage the GitOps deployment.
 - Harness GitOps Agent: The worker process responsible for GitOps tasks along with Argo CD components. 
 
+Harness GitOps supports **Argo CD** as the only GitOps reconciler. Flux is not supported. 
+
 ![High-level architecture diagram showing Harness GitOps service in SaaS connecting to GitOps Agent in customer environment, with the Agent managing Git repositories and Kubernetes clusters](static/gitops-agent-architecture.png)
 
 Let's dive deep into the Harness GitOps Agent architecture.

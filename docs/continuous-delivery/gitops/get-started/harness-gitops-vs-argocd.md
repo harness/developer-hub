@@ -9,6 +9,8 @@ helpdocs_is_private: false
 
 Argo CD, an open-source GitOps tool, is widely used for managing application synchronization and deployments. However, enterprises often require additional features like security, compliance, advanced automation, and governance, which is where Harness GitOps excels. As part of the broader Harness platform, Harness GitOps seamlessly integrates with CI/CD, Continuous Verification (CV), security testing, and monitoring, making it a more comprehensive solution for enterprises.
 
+Harness GitOps supports **Argo CD** as the only GitOps reconciler. Flux is not supported.
+
 This comparison dives into the key capabilities of Argo CD vs. Harness GitOps, helping you determine the right GitOps solution for your organization
 
 ## Feature Comparison

@@ -12,7 +12,11 @@ This article addresses some frequently asked questions about Harness GitOps.
 ### What is Harness GitOps?
 
 Harness GitOps lets you perform GitOps deployments in Harness. You define the desired state of the service you want to deploy in your Git manifest, and then use Harness GitOps to sync the state with your live Kubernetes cluster.
-For more details please see [here](https://developer.harness.io/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics/).
+Go to [Harness GitOps basics](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics) to review core concepts.
+
+### Does Harness GitOps support Flux?
+
+No. Harness GitOps supports **Argo CD** as the only GitOps reconciler. Flux is not supported. If you currently manage workloads with Flux, go to [Migrate from Flux to Argo CD](/docs/continuous-delivery/gitops/get-started/migrate-flux-to-argo) to migrate them to Argo CD with Harness GitOps.
 
 ### Can I use Harness GitOps images from a local registry?
 

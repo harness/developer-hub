@@ -44,7 +44,7 @@ The following steps show you how to install a GitOps Agent into an existing Argo
    ![](./static/multiple-argo-to-single-harness-65.png)
 
 5. In **Name**, enter a name for your agent, such as `byoa-agent`.
-6. In **GitOps Operator**, select **Argo**.
+6. In **GitOps Operator**, select **Argo**. Argo CD is the only supported GitOps reconciler. Flux is not supported.
 
 7. In **Namespace**, enter the namespace where Argo CD is hosted. The default is `argocd`.
    

@@ -1,6 +1,6 @@
 ---
-title: Migrate from Flux to ArgoCD with Harness GitOps
-description: Learn how to migrate your Flux applications to ArgoCD using the MTA utility and integrate them with Harness GitOps.
+title: Migrate from Flux to Argo CD with Harness GitOps
+description: Migrate Flux applications to Argo CD using the MTA utility. Harness GitOps supports Argo CD only; Flux is not supported as a reconciler.
 sidebar_position: 15
 sidebar_label: Migrate from Flux
 ---

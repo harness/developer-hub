@@ -35,6 +35,10 @@ This approach provides:
 
 Harness GitOps builds on these principles by integrating Argo CD into the Harness platform, so you can manage GitOps workflows, security, and visibility alongside the rest of your delivery pipelines.
 
+:::info Argo CD only
+Harness GitOps supports **Argo CD** as the only GitOps reconciler. Flux is not supported. If you currently run Flux workloads, go to [Migrate from Flux to Argo CD](/docs/continuous-delivery/gitops/get-started/migrate-flux-to-argo) to move them to Argo CD with Harness GitOps.
+:::
+
 To learn more about related GitOps building blocks, see:
 - [Harness GitOps vs Argo CD](/docs/continuous-delivery/gitops/get-started/harness-gitops-vs-argocd) - Compare Harness GitOps with standalone Argo CD
 - [ApplicationSet basics](/docs/continuous-delivery/gitops/applicationsets/appset-basics) - Learn how to manage multiple applications across clusters and environments using a single template

@@ -694,6 +694,8 @@ Harness GitOps lets you perform GitOps deployments in Harness. You define the de
 
 GitOps supports the following:
 
+- GitOps reconciler:
+  - **Argo CD only.** Flux is not supported. If you run Flux workloads, go to [Migrate from Flux to Argo CD](/docs/continuous-delivery/gitops/get-started/migrate-flux-to-argo) to move them to Argo CD.
 - Argo CD versions supported: 
   - 2.8.2
   - 3.1.8 (Bundled with Helm 3.18.4 and Kustomize 5.7.0)

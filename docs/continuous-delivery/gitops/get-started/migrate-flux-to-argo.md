@@ -1,11 +1,11 @@
 ---
-title: Migrate from Flux to ArgoCD with Harness GitOps
-description: Learn how to migrate your Flux applications to ArgoCD using the MTA utility and integrate them with Harness GitOps.
+title: Migrate from Flux to Argo CD with Harness GitOps
+description: Migrate Flux applications to Argo CD using the MTA utility. Harness GitOps supports Argo CD only; Flux is not supported as a reconciler.
 sidebar_position: 15
 sidebar_label: Migrate from Flux
 ---
 
-If you're currently running Flux and want to move to ArgoCD with Harness GitOps, the MTA (Migrate To ArgoCD) CLI tool can automate most of the heavy lifting for you. This guide walks you through the migration process, from scanning your existing Flux resources to running them successfully on ArgoCD.
+Harness GitOps supports **Argo CD** as the only GitOps reconciler. Flux is not supported. If you currently run Flux and need to move to Argo CD with Harness GitOps, the MTA (Migrate To Argo CD) CLI tool automates most of the migration. This guide walks you through the process, from scanning your existing Flux resources to running them successfully on Argo CD.
 
 ## Before you begin
 
@@ -13,7 +13,7 @@ You'll need a working Flux setup with controllers running in your cluster. This 
 
 ![Flux Controllers Running](./static/mta-flux-controllers-running.png)
 
-You should also have a Harness GitOps agent installed with ArgoCD as the reconciliation engine. For this guide, we're using a namespace called `gitops-agent`, but you can use whatever namespace makes sense for your setup.
+You should also have a Harness GitOps agent installed with Argo CD as the reconciliation engine. Harness GitOps supports Argo CD only; Flux is not available as a GitOps operator. For this guide, we're using a namespace called `gitops-agent`, but you can use whatever namespace makes sense for your setup.
 
 ## Getting the MTA tool
 

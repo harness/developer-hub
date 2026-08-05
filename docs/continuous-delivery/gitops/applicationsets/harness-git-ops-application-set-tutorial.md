@@ -108,7 +108,7 @@ You'll see a list of all ApplicationSets in your project.
 On the **Overview** tab, provide the following details:
 
 - **App Set Name**: Enter a unique name for your ApplicationSet.
-- **GitOps Operator**: Select **Argo** (currently the only supported operator).
+- **GitOps Operator**: Select **Argo**. Argo CD is the only supported GitOps reconciler. Flux is not supported.
 - **GitOps Agent**: Select the GitOps Agent that will manage this ApplicationSet.
 - **Service**: Select the Harness Service associated with this ApplicationSet. This enables PR pipeline integration, service dashboard visibility, and RBAC policies.
 - **Environment**: Select the Harness Environment associated with this ApplicationSet. This enables environment-based filtering and PR pipeline configuration.

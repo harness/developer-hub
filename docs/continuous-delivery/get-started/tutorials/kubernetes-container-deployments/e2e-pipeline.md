@@ -155,7 +155,7 @@ Perform the following steps to install a GitOps agent:
 2. Select **Settings**, and then select **GitOps Agents**.
 3. Select **New GitOps Agent**.
 4. For this workshop, create a new GitOps agent. When prompted with **Do you have any existing Argo CD instances?**, select **No**, and then select **Start** to install the Harness GitOps Agent.
-5. In **GitOps Operator**, select **Argo** to use Argo CD as the GitOps reconciler.
+5. In **GitOps Operator**, select **Argo**. Argo CD is the only supported GitOps reconciler. Flux is not supported.
 6. In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. For this tutorial, use the `default` namespace to install the Agent and deploy applications.
 7. Select **Continue**. The **Download YAML** or **Download Helm Chart** settings appear.
 

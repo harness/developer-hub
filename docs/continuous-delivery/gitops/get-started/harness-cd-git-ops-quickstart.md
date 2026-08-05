@@ -90,7 +90,7 @@ Ensure your Harness Project has the **Continuous Delivery** module enabled.
 
    ![Screenshot of the GitOps Agent creation wizard asking whether you have an existing Argo CD instance](./static/harness-cd-git-ops-quickstart-04.png)
 6. In **Name**, enter the name **example**.
-7. Set **GitOps Operator** to **Argo**.
+7. Set **GitOps Operator** to **Argo**. Argo CD is the only supported GitOps reconciler. Flux is not supported.
 
    :::important
    **Operator-based manifest support varies by cluster type:**
@@ -353,7 +353,7 @@ In the Application setup, you will select the Agent, Repository, and Cluster to 
    ![Screenshot showing the New Application button in the GitOps Applications page](./static/harness-cd-git-ops-quickstart-13.png)
 
 2. In **Application Name**, enter **example**.
-3. In **GitOps Operator**, select **Argo**.
+3. In **GitOps Operator**, select **Argo**. Argo CD is the only supported GitOps reconciler. Flux is not supported.
 4. In **GitOps Agent**, select the Agent you added earlier.
 5. In **Service**, select **New Service**, and name the Service **guestbook**.
 6. In **Environment**, select **New Environment**, name the Environment **example**, and select **Pre-Production**.
