@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 With the Microsoft Azure connector, your Harness pipelines can pull Azure artifacts, provision Azure infrastructure, and deploy your applications to Azure.
 
-The Microsoft Azure connector is for ACR, AKS, ARM, Blueprint, Web Apps, and virtual machines for traditional (SSH/WinRM) deployments.
+The Microsoft Azure connector is for ACR, AKS, ARM, Blueprint, Web Apps, Azure App Service Environments, and virtual machines for traditional (SSH/WinRM) deployments.
 
 Use the Azure Repos connector to [connect to Azure SCM repos](../code-repositories/connect-to-a-azure-repo.md)
 
@@ -632,11 +632,12 @@ If you select **Specify credentials here**, you must provide Microsoft Azure app
 
 <TabItem value="OIDC (Beta)">
 
-:::warning
+:::info
 
-Currently, the Azure OIDC connector enables:
-- Deployment to the Azure Container Registry (ACR)
-- Deployment to Azure Kubernetes Service (AKS)
+The Azure OIDC connector supports:
+- Azure Container Registry (ACR)
+- Azure Kubernetes Service (AKS)
+- Azure Web Apps (including Azure App Service Environments)
 
 :::
 
