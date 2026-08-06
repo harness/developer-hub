@@ -250,6 +250,19 @@ Policy sets are saved at the Harness account, Organization, or Project level, an
 
 A policy set at the account level applies to all entities in the Organizations and Projects in the account. A policy set at the Project level only applies to entities in that Project alone.
 
+### Filter the policy set list
+
+On the **Policy Sets** listing page, you can narrow the list with the **Type** and **Action** filters, alongside the existing name search and sort controls. These filters match the ones on the **Policy Evaluations** page.
+
+<div style={{textAlign: 'center'}}>
+   <DocImage path={require('./static/policy-set-type-action-filters.png')} width="90%" title="Type and Action filters on the Policy Sets listing page" alt="Policy Sets listing page showing the Type and Action filter dropdowns next to the search bar and sort control" />
+</div>
+
+- **Type**: Select one or more entity types to filter policy sets by the entity they apply to. For example, select **Pipeline** to show only the policy sets that apply to pipelines.
+- **Action**: Select the event that triggers evaluation to filter policy sets by their trigger event. For example, select **On Run** to show only the policy sets evaluated when a pipeline runs.
+
+When you apply a filter, Harness immediately updates the list to show only the matching policy sets.
+
 ---
 
 ## Entities and events
