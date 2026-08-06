@@ -133,6 +133,6 @@ Memory is scoped to each user. Harness does not share Memory across projects.
 
 ## Related articles
 
-- **Memories**: Go to <a href="/docs/platform/harness-ai/context-and-memory/harness-ai-memories" target="_blank">Harness AI Memories</a> to manage the personal context Harness AI captures.
-- **Harness AI**: Go to <a href="/docs/platform/harness-ai/overview" target="_blank">Overview of Harness AI</a> to review available AI features.
-- **Rules**: Go to <a href="/docs/platform/harness-ai/harness-ai-rules" target="_blank">Harness AI Rules</a> to add rule-based guidance for AI output.
+- <a href="/docs/platform/harness-ai/context-and-memory/harness-ai-memories" target="_blank">Harness AI Memories</a>: Manage the personal context Harness AI captures.
+- <a href="/docs/platform/harness-ai/overview" target="_blank">Overview of Harness AI</a>: Review available AI features.
+- <a href="/docs/platform/harness-ai/harness-ai-rules" target="_blank">Harness AI Rules</a>: Add rule-based guidance for AI output.

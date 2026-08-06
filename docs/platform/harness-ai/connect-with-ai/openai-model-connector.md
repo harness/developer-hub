@@ -79,5 +79,5 @@ When you create the connector, set the following:
 
 ## Next steps
 
-- Go to <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/" target="_blank">Worker Agents</a> for more information on creating and configuring agents that use this connector.
-- Go to <a href="/docs/platform/harness-ai/connect-with-ai/anthropic-model-connector" target="_blank">Anthropic Model Connector</a> for more information on configuring Claude as your model provider.
+- <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/" target="_blank">Worker Agents</a>: Create and configure agents that use this connector.
+- <a href="/docs/platform/harness-ai/connect-with-ai/anthropic-model-connector" target="_blank">Anthropic Model Connector</a>: Configure Claude as your model provider.

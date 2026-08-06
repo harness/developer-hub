@@ -19,6 +19,7 @@ redirect_from:
 ---
 
 Harness AI Memories help Harness AI remember useful context from your chats so future responses can better match your preferences, projects, and workflows. Memories are private to you. They are not shared with account, organization, or project users, and they are not visible at those scopes.
+To allow Harness AI to learn from your chats, keep Memories enabled, and turn them off when you do not want chat-based personalization.
 
 ---
 
@@ -144,8 +145,6 @@ The quality of your Memories depends on the context in your chats. Provide clear
 
 ## Next steps
 
-Use Harness AI Memories to make chat responses more personal and continuous across your Harness work. Keep Memories enabled when you want Harness AI to learn from your chats, and turn them off when you do not want chat-based personalization.
-
-- **Harness AI**: Go to <a href="/docs/platform/harness-ai/overview" target="_blank">Overview of Harness AI</a> to review available AI features.
-- **Chat history**: Go to <a href="/docs/platform/harness-ai/context-and-memory/memory-chat-history" target="_blank">Chat History and Memory</a> to understand chat history behavior.
-- **Rules**: Go to <a href="/docs/platform/harness-ai/harness-ai-rules" target="_blank">Harness AI Rules</a> to add rule-based guidance for AI output.
+- <a href="/docs/platform/harness-ai/overview" target="_blank">Overview of Harness AI</a>: Review available AI features.
+- <a href="/docs/platform/harness-ai/context-and-memory/memory-chat-history" target="_blank">Chat History and Memory</a>: Understand chat history behavior.
+- <a href="/docs/platform/harness-ai/harness-ai-rules" target="_blank">Harness AI Rules</a>: Add rule-based guidance for AI output.

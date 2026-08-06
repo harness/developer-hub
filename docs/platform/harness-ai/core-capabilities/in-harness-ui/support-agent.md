@@ -3,47 +3,73 @@ title: Harness AI Support Agent
 description: Harness AI Support Agent provides instant answers to product and documentation questions.
 sidebar_label: Support Agent
 sidebar_position: 9
+keywords:
+  - support agent
+  - harness ai
+  - documentation search
+  - troubleshooting
+  - natural language queries
+  - session context
+  - code examples
+tags:
+  - harness-ai
+  - support-agent
+  - troubleshooting
 redirect_from:
   - /docs/platform/harness-aida/support-agent
   - /docs/platform/harness-ai/support-agent
 ---
 
-The **Harness AI Support Agent** serves as your first line of support within the Harness platform. By leveraging Harness documentation and knowledge base content, the Support Agent provides instant answers to product questions, troubleshooting guidance, and contextual examples directly from the official documentation.
+The Harness AI Support Agent is your first line of support inside the Harness platform. It draws on Harness documentation and knowledge base content to answer product questions, offer troubleshooting guidance, and pull contextual examples straight from the official docs, so you get an answer in seconds instead of filing a ticket and waiting.
 
-:::note AI Model
-
+:::note AI model
 The Support Agent uses **OpenAI GPT-4o** to process your questions and retrieve relevant documentation.
-
 :::
-
-**Key benefits:**
-
-- **Instant answers** - Get responses to product questions in seconds
-- **Documentation-backed** - All answers are sourced from official Harness documentation
-- **Contextual examples** - Receive code snippets, YAML examples, and configuration samples from the docs
-- **Session memory** - The agent remembers context from earlier in your conversation for follow-up questions
-- **Always current** - Pulls from the latest published documentation
 
 ---
 
-## Installation and Setup
+## What will you learn in this topic?
 
-The Harness AI Support Agent is enabled as part of the Harness AI feature set. No separate installation is required.
+By the end of this topic, you will be able to:
 
-1. Select **Account Settings** in the left nav.
-2. Under **General**, select [**Default Settings**](/docs/platform/settings/default-settings).
+- [Enable and access the Support Agent](#installation-and-setup).
+- [Ask questions and retrieve documentation examples](#use-the-support-agent).
+- [Understand what the agent can search and remember](#features).
+- [Write questions that return accurate answers](#best-practices).
+- [Recognize what the agent cannot do](#limitations).
+
+---
+
+## Before you begin
+
+Before you use the Support Agent, ensure you have the following:
+
+- **Harness AI enabled**: Harness AI must be active for your account. Go to <a href="/docs/platform/harness-ai/overview" target="_blank">Harness AI overview</a> for more information on activating Harness AI.
+- **Account settings access**: Permission to view and edit default settings if you enable Harness AI yourself. Go to <a href="/docs/platform/role-based-access-control/rbac-in-harness" target="_blank">RBAC in Harness</a> for more information on permissions.
+- **License type**: No specific license tier. The Support Agent is available to all Harness users with Harness AI enabled, regardless of license type.
+
+---
+
+## Installation and setup
+
+The Support Agent ships as part of the Harness AI feature set, so there is nothing separate to install. You only need to turn Harness AI on.
+
+1. Navigate to **Account Settings** in the left navigation.
+2. Under **General**, select <a href="/docs/platform/settings/default-settings" target="_blank">Default Settings</a>.
 3. Find **Harness AI** and enable the **Harness AI** setting.
-4. Optionally, enable **Allow Overrides** to let individual organizations and projects override this setting.
+4. Optional: Enable **Allow Overrides** to let individual **Organizations** and **Projects** override this setting.
 
 Once enabled, the Support Agent is accessible through the Harness AI assistant interface.
 
-## Using the Support Agent
+---
 
-Access the Support Agent through the Harness AI chat interface. The agent automatically identifies documentation-related questions and retrieves relevant content.
+## Use the Support Agent
+
+Access the Support Agent through the Harness AI chat interface. The agent recognizes documentation-related questions on its own and retrieves the relevant content, so you do not need to route your question anywhere special.
 
 ### Ask questions
 
-You can ask the Support Agent any question related to Harness products, features, or configurations. The agent searches the documentation knowledge base and returns relevant information.
+Ask the Support Agent anything about Harness products, features, or configurations. The agent searches the documentation knowledge base and returns the relevant information.
 
 **Example questions:**
 
@@ -53,9 +79,9 @@ You can ask the Support Agent any question related to Harness products, features
 - "How do I configure failure strategies in a pipeline?"
 - "What environment variables are available in CI build steps?"
 
-### Getting Documentation Examples
+### Get documentation examples
 
-The Support Agent can retrieve specific examples from the documentation, including YAML configurations, API examples, and step-by-step guides.
+The Support Agent retrieves specific examples from the documentation, including YAML configurations, API examples, and step-by-step guides.
 
 **Example prompts:**
 
@@ -64,9 +90,9 @@ The Support Agent can retrieve specific examples from the documentation, includi
 - "What does a Terraform connector configuration look like?"
 - "Show me how to configure an approval stage"
 
-### Contextual Follow-up Questions
+### Ask contextual follow-up questions
 
-The Support Agent maintains conversation context within a chat session. This allows you to ask follow-up questions that build on previous responses without repeating context.
+The Support Agent keeps track of your conversation within a chat session, so you can ask follow-up questions without restating what you already told it.
 
 **Example conversation:**
 
@@ -75,9 +101,9 @@ The Support Agent maintains conversation context within a chat session. This all
 3. **You:** "What permissions does it need?"
 4. **Support Agent:** *Provides permissions information specific to Docker connectors, understanding the context from the previous question*
 
-### Troubleshooting Guidance
+### Get troubleshooting guidance
 
-When you encounter errors or issues, the Support Agent can help you find relevant troubleshooting documentation.
+When you hit an error, the Support Agent helps you find the troubleshooting documentation that covers it.
 
 **Example prompts:**
 
@@ -86,28 +112,34 @@ When you encounter errors or issues, the Support Agent can help you find relevan
 - "How do I debug a failed Kubernetes deployment?"
 - "What are common causes for artifact download failures?"
 
+---
+
 ## Features
+
+The Support Agent combines natural language understanding with full documentation coverage and session memory. The following table summarizes what each capability gives you.
 
 | **Feature** | **Description** |
 |-------------|-----------------|
-| **Natural Language Queries** | Ask questions in plain English and receive clear, concise answers. |
-| **Documentation Search** | Searches across all Harness documentation to find relevant content. |
-| **Code Examples** | Retrieves YAML, JSON, and code examples directly from documentation. |
-| **Session Context** | Maintains conversation history for contextual follow-up questions. |
-| **Multi-Module Coverage** | Answers questions across all Harness modules (CI, CD, CCM, STO, etc.). |
+| **Natural language queries** | Ask questions in plain English and receive clear, concise answers. |
+| **Documentation search** | Searches across all Harness documentation to find relevant content. |
+| **Code examples** | Retrieves YAML, JSON, and code examples directly from documentation. |
+| **Session context** | Maintains conversation history for contextual follow-up questions. |
+| **Multi-module coverage** | Answers questions across all Harness modules (CI, CD, CCM, STO, and others). |
 
-### Natural Language Queries
+### Natural language queries
 
-The Support Agent understands natural language questions and interprets your intent to find the most relevant documentation. You do not need to use specific keywords or exact terminology.
+The Support Agent interprets your intent rather than matching keywords, so you do not need to know the exact terminology to find the right page.
 
 **How it works:**
 
-1. You ask a question in natural language
-2. The agent analyzes your question to understand the intent
-3. The agent searches the documentation knowledge base
-4. Relevant sections are retrieved and synthesized into a response
+1. You ask a question in natural language.
+2. The agent analyzes your question to understand the intent.
+3. The agent searches the documentation knowledge base.
+4. Relevant sections are retrieved and synthesized into a response.
 
-### Documentation Search
+The Support Agent supports the same languages as Harness AI, including English, Spanish, French, German, Hindi, Korean, Mandarin, Dutch and more. Go to <a href="/docs/platform/harness-ai/overview" target="_blank">Harness AI overview</a> for more information on supported languages.
+
+### Documentation search
 
 The Support Agent has access to the complete Harness documentation, including:
 
@@ -118,38 +150,44 @@ The Support Agent has access to the complete Harness documentation, including:
 - Troubleshooting guides
 - Best practices and reference architectures
 
-### Code Examples
+The Support Agent pulls from the latest published Harness documentation. Documentation updates are reflected in Support Agent responses after they are published.
 
-When documentation includes code samples, the Support Agent can retrieve and display them in your chat. This includes:
+### Code examples
+
+When documentation includes code samples, the Support Agent retrieves and displays them in your chat. This includes:
 
 - Pipeline YAML configurations
 - Connector definitions
 - Service and environment manifests
-- API request/response examples
+- API request and response examples
 - Shell commands and scripts
 - Terraform and infrastructure code
 
-### Session Context
+### Session context
 
 The Support Agent uses session memory to maintain context throughout your conversation. This enables:
 
-- **Follow-up questions** - Ask clarifying questions without restating context
-- **Progressive learning** - Build understanding through a series of related questions
-- **Refinement** - Ask the agent to elaborate or provide more specific examples
-- **Comparative questions** - Ask how concepts relate to previously discussed topics
+- **Follow-up questions**: Ask clarifying questions without restating context.
+- **Progressive learning**: Build understanding through a series of related questions.
+- **Refinement**: Ask the agent to elaborate or provide more specific examples.
+- **Comparative questions**: Ask how concepts relate to previously discussed topics.
 
-Session context is maintained for the duration of your chat session. Starting a new session clears the context.
+Session context lasts for the duration of your chat session. Starting a new session clears the context, and each new session starts fresh without memory of previous conversations.
 
-## Best Practices
+---
 
-### Writing Effective Questions
+## Best practices
+
+How you phrase a question has a direct effect on how useful the answer is. The following guidance helps you get precise responses instead of general overviews.
+
+### Write effective questions
 
 To get the most accurate responses from the Support Agent:
 
-- **Be specific** - Include relevant details like module names, resource types, or error messages
-- **Provide context** - Mention what you're trying to accomplish
-- **Use follow-ups** - Start broad and narrow down with follow-up questions
-- **Include error messages** - When troubleshooting, include the exact error text
+- **Be specific**: Include relevant details like module names, resource types, or error messages.
+- **Provide context**: Mention what you are trying to accomplish.
+- **Use follow-ups**: Start broad and narrow down with follow-up questions.
+- **Include error messages**: When troubleshooting, include the exact error text.
 
 **Good example:**
 > "How do I configure a GitHub connector with a personal access token for a private repository?"
@@ -157,16 +195,18 @@ To get the most accurate responses from the Support Agent:
 **Less effective example:**
 > "How do connectors work?"
 
-### Using Session Context Effectively
+### Use session context effectively
 
 Take advantage of session memory to have productive conversations:
 
-1. **Start with the main topic** - Ask your primary question first
-2. **Build incrementally** - Ask follow-up questions that build on previous answers
-3. **Reference previous answers** - Use phrases like "In that example..." or "For that connector..."
-4. **Request elaboration** - Ask "Can you explain more about..." when you need details
+1. **Start with the main topic**: Ask your primary question first.
+2. **Build incrementally**: Ask follow-up questions that build on previous answers.
+3. **Reference previous answers**: Use phrases like "In that example..." or "For that connector...".
+4. **Request elaboration**: Ask "Can you explain more about..." when you need details.
 
-### When to Use Support Agent vs. DevOps Agent
+### Choose between the Support Agent and the DevOps Agent
+
+The two agents solve different problems. Use the Support Agent to learn and diagnose, and the <a href="/docs/platform/harness-ai/core-capabilities/in-harness-ui/devops-agent" target="_blank">DevOps Agent</a> to build and change things.
 
 | **Use Support Agent** | **Use DevOps Agent** |
 |-----------------------|----------------------|
@@ -176,47 +216,36 @@ Take advantage of session memory to have productive conversations:
 | Understanding best practices | Automating DevOps tasks |
 | Exploring configuration options | Building and editing resources |
 
-## Data Privacy
+---
+
+## Data privacy
 
 The Support Agent follows the same data privacy policies as all Harness AI features:
 
-- **No training on your data** - Your questions are not used to train AI models
-- **Ephemeral processing** - Questions are processed in real-time and not stored
-- **Documentation-only responses** - Answers are sourced from public Harness documentation
+- **No training on your data**: Your questions are not used to train AI models.
+- **Ephemeral processing**: Questions are processed in real time and not stored.
+- **Documentation-only responses**: Answers are sourced from public Harness documentation.
+- **No account data access**: The Support Agent cannot view your pipelines, configurations, secrets, or any account-specific data.
 
-For complete data privacy information, refer to [Data Storage and Privacy Policies](/docs/platform/harness-ai/core-capabilities/#data-storage-and-privacy-policies).
+For more information, see <a href="/docs/platform/harness-ai/core-capabilities/#data-storage-and-privacy-policies" target="_blank">Data storage and privacy policies</a>.
+
+---
 
 ## Limitations
 
-The Support Agent is designed to answer questions based on Harness documentation. It has the following limitations:
+The Support Agent answers questions based on Harness documentation. Knowing where that boundary sits tells you when to escalate instead of rephrasing.
 
-- **Documentation scope** - Can only answer questions covered in the official documentation
-- **No account access** - Cannot view or access your specific account configurations
-- **No action execution** - Cannot create or modify resources (use the [DevOps Agent](/docs/platform/harness-ai/core-capabilities/in-harness-ui/devops-agent) for that)
-- **Public documentation only** - Does not have access to internal or private documentation
+- **Documentation scope**: Can only answer questions covered in the official documentation.
+- **No account access**: Cannot view or access your specific account configurations, including your pipelines, configurations, and secrets.
+- **No action execution**: Cannot create or modify resources. Use the <a href="/docs/platform/harness-ai/core-capabilities/in-harness-ui/devops-agent" target="_blank">DevOps Agent</a> for that.
+- **Public documentation only**: Does not have access to internal or private documentation.
 
-## FAQ
+For issues not covered in the documentation, go to [Harness Support](mailto:support@harness.io). You can also submit feedback through the UI by selecting **Help** > **Give us feedback**.
 
-### Is the Support Agent available for all license types?
+---
 
-Yes, the Support Agent is available to all Harness users with Harness AI enabled, regardless of license type.
+## Related articles
 
-### Can the Support Agent access my account data?
-
-No, the Support Agent only has access to public Harness documentation. It cannot view your pipelines, configurations, secrets, or any account-specific data.
-
-### How current is the documentation the Support Agent uses?
-
-The Support Agent pulls from the latest published Harness documentation. Documentation updates are reflected in Support Agent responses after they are published.
-
-### Can I use the Support Agent for issues not covered in documentation?
-
-Go to [Harness Support](mailto:support@harness.io) for issues not covered in the documentation. You can also submit feedback through the UI by selecting **Help** > **Give us feedback**.
-
-### Does the Support Agent remember previous sessions?
-
-No, session context is cleared when you start a new chat session. Each new session starts fresh without memory of previous conversations.
-
-### What languages does the Support Agent support?
-
-The Support Agent supports the same languages as Harness AI, including English, Spanish, French, German, Hindi, Korean, Mandarin, and more.
+- <a href="/docs/platform/harness-ai/overview" target="_blank">Harness AI overview</a>: Activate Harness AI and review supported languages and models.
+- <a href="/docs/platform/harness-ai/core-capabilities/in-harness-ui/devops-agent" target="_blank">Harness AI DevOps Agent</a>: Create and edit pipelines, resources, and policies with AI.
+- <a href="/docs/platform/settings/default-settings" target="_blank">Default settings</a>: Manage account, organization, and project level settings.

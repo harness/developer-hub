@@ -82,5 +82,5 @@ Each Worker Agent uses the default model configured on the connector unless you 
 
 ## Next steps
 
-- Go to <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/" target="_blank">Worker Agents</a> for more information on creating and configuring agents that use this connector.
-- Go to <a href="/docs/platform/harness-ai/connect-with-ai/openai-model-connector" target="_blank">OpenAI Model Connector</a> for more information on configuring OpenAI as your model provider.
+- <a href="/docs/platform/harness-ai/core-capabilities/in-your-pipelines/worker-agent/" target="_blank">Worker Agents</a>: Create and configure agents that use this connector.
+- <a href="/docs/platform/harness-ai/connect-with-ai/openai-model-connector" target="_blank">OpenAI Model Connector</a>: Configure OpenAI as your model provider.

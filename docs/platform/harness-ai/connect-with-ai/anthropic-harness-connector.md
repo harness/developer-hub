@@ -110,6 +110,6 @@ This revokes the OAuth token. To reconnect, repeat the connection steps above.
 
 ## Next steps
 
-- Go to [Harness MCP Server](/docs/platform/harness-ai/harness-mcp-server) to integrate Harness with Claude Code and other MCP-compatible tools.
-- Go to [Harness AI Cursor Plugin](/docs/platform/harness-ai/cursor-plugin) to use Harness inside the Cursor IDE.
-- Go to [Harness Skills](/docs/platform/harness-ai/harness-skills) to extend Claude Code with structured Harness workflows.
+- [Harness MCP Server](/docs/platform/harness-ai/harness-mcp-server): Integrate Harness with Claude Code and other MCP-compatible tools.
+- [Harness AI Cursor Plugin](/docs/platform/harness-ai/cursor-plugin): Use Harness inside the Cursor IDE.
+- [Harness Skills](/docs/platform/harness-ai/harness-skills): Extend Claude Code with structured Harness workflows.

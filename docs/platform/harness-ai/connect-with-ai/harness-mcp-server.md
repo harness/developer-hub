@@ -1093,8 +1093,6 @@ The Inspector displays a URL you can open in your browser to inspect tool calls 
 
 ## Next steps
 
-The Harness MCP Server pairs well with [Harness Skills](https://github.com/harness/harness-skills) — a collection of ready-made Claude Code slash commands for common Harness workflows like `/deploy`, `/rollback`, and `/triage`.
-
 - [Model Context Protocol specification](https://modelcontextprotocol.io/introduction)
 - [Harness MCP Server source code](https://github.com/harness/mcp-server)
 - [Manage API Keys](/docs/platform/automation/api/add-and-manage-api-keys/)
