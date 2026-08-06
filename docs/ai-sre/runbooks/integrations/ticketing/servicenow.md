@@ -6,6 +6,7 @@ description: Create records and synchronize incidents bidirectionally from runbo
 redirect_from:
 - /docs/ai-sre/runbooks/integrations/servicenow
 - /docs/incident-response/runbooks/integrations/servicenow
+- /docs/ai-sre/runbooks/runbook-action-integrations/servicenow
 ---
 
 import Tabs from '@theme/Tabs';
