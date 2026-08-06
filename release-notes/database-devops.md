@@ -22,7 +22,64 @@ These release notes describe recent changes to Harness Database DevOps.
 - **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 :::
 
+## August 2026
+
+### Release 1.109.x
+
+No customer-facing updates were introduced in this release.
+
+#### Image Upgrades
+
+| **Image Name**                    |  **Current Version**   | **Past Version**             |
+| --------------------------------- | ---------------------- | ---------------------------- |
+| plugins/download-artifactory      | 1.0.0                  | 1.0.0                        |
+| plugins/drone-liquibase           | 1.36.0-4.33            | 1.35.0-4.33                  |
+| plugins/drone-liquibase-mongo     | 1.36.0-4.33-mongo      | 1.35.0-4.33-mongo            |
+| plugins/drone-liquibase-spanner   | 1.36.0-4.33-spanner    | 1.35.0-4.33-spanner          |
+| plugins/drone-liquibase-snowflake | 1.36.0-4.33-snowflake  | 1.35.0-4.33-snowflake        |
+| plugins/drone-liquibase-percona   | 1.36.0-4.33-percona    | 1.35.0-4.33-percona          |
+| plugins/drone-liquibase-cloudsql  | 1.36.0-4.33-cloudsql   | 1.35.0-4.33-cloudsql         |
+| plugins/drone-liquibase-bigquery  | 1.36.0-4.33-bigquery   | 1.35.0-4.33-bigquery         |
+| plugins/drone-liquibase-db2       | 1.36.0-4.33-db2        | 1.35.0-4.33-db2              |
+| plugins/drone-liquibase-aws-rds   | 1.36.0-4.33-aws-rds    | 1.35.0-4.33-aws-rds          |
+| plugins/drone-liquibase-bigtable  | 1.36.0-4.33-bigtable   | 1.35.0-4.33-bigtable         |
+| plugins/drone-flyway              | 1.3.0-11.11.2          | 1.3.0-11.11.2                |
+| plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
+| harness/drone-git                 | 1.7.16-rootless        | 1.7.16-rootless              |
+
+**Bundled Liquibase version:** 4.33 (Open Source)
+
 ## July 2026
+
+### Release 1.108.x
+
+The `1.108.x` release improves the reliability of AI-assisted database change authoring by addressing validation issues during the Test & Preview workflow.
+
+#### Key Highlights
+
+* **Bug Fixes**
+  - Resolved an issue where Test & Preview could fail when the target changelog was empty or used different YAML indentation, allowing AI-assisted authoring to work more reliably across existing repositories.
+
+#### Image Upgrades
+
+| **Image Name**                    |  **Current Version**   | **Past Version**             |
+| --------------------------------- | ---------------------- | ---------------------------- |
+| plugins/download-artifactory      | 1.0.0                  | 1.0.0                        |
+| plugins/drone-liquibase           | 1.36.0-4.33            | 1.35.0-4.33                  |
+| plugins/drone-liquibase-mongo     | 1.36.0-4.33-mongo      | 1.35.0-4.33-mongo            |
+| plugins/drone-liquibase-spanner   | 1.36.0-4.33-spanner    | 1.35.0-4.33-spanner          |
+| plugins/drone-liquibase-snowflake | 1.36.0-4.33-snowflake  | 1.35.0-4.33-snowflake        |
+| plugins/drone-liquibase-percona   | 1.36.0-4.33-percona    | 1.35.0-4.33-percona          |
+| plugins/drone-liquibase-cloudsql  | 1.36.0-4.33-cloudsql   | 1.35.0-4.33-cloudsql         |
+| plugins/drone-liquibase-bigquery  | 1.36.0-4.33-bigquery   | 1.35.0-4.33-bigquery         |
+| plugins/drone-liquibase-db2       | 1.36.0-4.33-db2        | 1.35.0-4.33-db2              |
+| plugins/drone-liquibase-aws-rds   | 1.36.0-4.33-aws-rds    | 1.35.0-4.33-aws-rds          |
+| plugins/drone-liquibase-bigtable  | 1.36.0-4.33-bigtable   | 1.35.0-4.33-bigtable         |
+| plugins/drone-flyway              | 1.3.0-11.11.2          | 1.3.0-11.11.2                |
+| plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
+| harness/drone-git                 | 1.7.16-rootless        | 1.7.16-rootless              |
+
+**Bundled Liquibase version:** 4.33 (Open Source)
 
 ### Release 1.107.x
 
@@ -41,7 +98,7 @@ No customer-facing updates were introduced in this release.
 | plugins/drone-liquibase-cloudsql  | 1.35.0-4.33-cloudsql   | 1.34.0-4.33-cloudsql         |
 | plugins/drone-liquibase-bigquery  | 1.35.0-4.33-bigquery   | 1.34.0-4.33-bigquery         |
 | plugins/drone-liquibase-db2       | 1.35.0-4.33-db2        | 1.34.0-4.33-db2              |
-| plugins/drone-liquibase-aws-rds   | 1.35.0-4.33-aws-rds    | 1.3.0-4.33-aws-rds           |
+| plugins/drone-liquibase-aws-rds   | 1.35.0-4.33-aws-rds    | 1.34.0-4.33-aws-rds          |
 | plugins/drone-liquibase-bigtable  | 1.35.0-4.33-bigtable   | 1.34.0-4.33-bigtable         |
 | plugins/drone-flyway              | 1.3.0-11.11.2          | 1.3.0-11.11.2                |
 | plugins/drone-flyway-mongo        | 1.3.0-11.11.2-mongo    | 1.3.0-11.11.2-mongo          |
