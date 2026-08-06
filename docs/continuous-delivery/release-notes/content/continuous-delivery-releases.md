@@ -1,3 +1,11 @@
+## August 2026
+
+### Version 1.161.1
+
+#### Fixed issues
+
+- Fixed an issue where GitOps service and environment cluster filtering returned incorrect results when multiple GitOps agents registered clusters under the same cluster identifier. Clusters belonging to some agents could be silently dropped, and tag-based filtering could pull in the wrong agent's cluster. Cluster filtering now resolves the correct agent's cluster in these scenarios. (**CDS-128253**)
+
 ## July 2026
 
 ### Version 1.160.4

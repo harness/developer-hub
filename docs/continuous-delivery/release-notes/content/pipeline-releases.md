@@ -1,3 +1,15 @@
+## August 2026
+
+### Pipeline service 1.200.7
+
+#### New features and enhancements
+
+- The **Policy Sets** listing page now supports **Type** and **Action** filters, so you can narrow the policy sets list to a specific entity type or trigger action. This brings the **Policy Sets** page in line with the filters already available on the **Policy Evaluations** page. Go to [Harness policy sets](/docs/platform/governance/policy-as-code/harness-governance-overview#harness-policy-sets) to filter the policy sets.
+
+#### Fixed issues
+
+- Fixed an issue where a custom webhook trigger reported a successful activation but did not start a pipeline execution, and the trigger activity details did not link to the triggered execution. Harness now handles null payloads and headers in the v1 trigger flow, so the trigger starts the pipeline and records the execution as expected. (**PIPE-35796**)
+
 ## July 2026
 
 ### Pipeline service 1.199.1
