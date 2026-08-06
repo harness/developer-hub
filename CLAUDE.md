@@ -212,6 +212,51 @@ Project-level steps, code, and notes here.
 
 ---
 
+## UI terminology
+
+Use one term per concept when describing the Harness UI. Do not substitute synonyms.
+
+### Action verbs
+
+| Verb | Use for | Do not use for |
+|---|---|---|
+| **click** | Buttons and icons | Choosing from a set of options |
+| **select** | Tabs, dropdowns, radio buttons, cards, type selectors | Pressing a button |
+| **enter** | Text input in a field | n/a |
+| **navigate to** | Moving to a different module or top-level section | In-page navigation (use "select" for tabs) |
+
+**click vs. select:** If the element is a button (has a distinct press action), use **click**. If the element is an option among several choices (tab, dropdown item, radio button, card), use **select**.
+
+### UI element nouns
+
+Use: **panel**, **tab**, **dropdown**, **icon**, **field**, **list**, **module**.
+
+Avoid: window, drawer, slide-in, flyout, pane (use **panel**); drop-down or drop down (use **dropdown**).
+
+Refer to icons by function, not appearance: **Add** icon (not "+ icon"), **Edit** icon (not "pencil icon"), **More** icon (not "kebab icon"), **Delete** icon (not "trash can icon").
+
+### Chaining actions in one step
+
+Chain multiple actions with a comma and **then**. Use the correct verb for each action. Avoid more than two actions per step; if a third is unavoidable, use commas and **and then**.
+
+- ✅ Click **New Workspace**, then select **Start from scratch**.
+- ✅ Click **Save**, then click **Run**.
+- ❌ Click **New Workspace** and **Start from scratch**.
+
+### Terms to avoid
+
+| Avoid | Use instead |
+|---|---|
+| window, slide-in window, drawer, flyout, pane (as UI containers) | panel |
+| drop-down, drop down | dropdown |
+| click on | click |
+| press | click (for UI buttons) |
+| choose | select |
+| type (as a UI action verb) | enter |
+| pencil icon, plus sign icon, kebab icon, trash can icon | Edit icon, Add icon, More icon, Delete icon |
+
+---
+
 ## Link Phrasing — "Go to X to do Y"
 
 Always use **"Go to [link] to [verb phrase]"**. Never use "see", "refer to", "to learn more about", "to find out more", or "for more information".
