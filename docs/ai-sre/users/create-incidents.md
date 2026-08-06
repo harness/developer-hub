@@ -3,24 +3,30 @@ title: Create Incidents
 description: Open incidents with AI-powered Quick Start, incident types, or manually.
 sidebar_label: Create Incidents
 sidebar_position: 1
+keywords:
+  - create incidents
+  - incident types
+  - quick start
+  - Slack
+tags:
+  - ai-sre
+  - incidents
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import DocVideo from '@site/src/components/DocVideo';
 
-# Create Incidents
-
 When you spot a problem, whether from a customer report, degraded performance, or a teammate flagging something, you can declare an incident in Harness AI SRE. 
 
 The AI-powered Quick Start feature analyzes your problem description and auto-populates incident fields, so you can get an incident up and running in seconds.
 
-## Create Incidents from the UI
+## Create incidents from the UI
 
 <Tabs groupId="incident-creation" queryString>
   <TabItem value="step-by-step" label="Step by Step" default>
 
-### Step 1: Access Incident Creation
+### Step 1: Access incident creation
 
 1. Navigate to **Incidents** from the left panel.
 
@@ -30,7 +36,7 @@ The AI-powered Quick Start feature analyzes your problem description and auto-po
    - Click **New Incident** for a blank incident.
    - Select an **Incident Type** from the dropdown next to "New Incident" to use a pre-configured template.
 
-### Step 2: Select Incident Type
+### Step 2: Select incident type
 
 1. Choose the appropriate **Incident Type** from the available options.
 
@@ -39,18 +45,18 @@ The AI-powered Quick Start feature analyzes your problem description and auto-po
 2. This will pre-populate relevant fields and associate appropriate runbooks.
 3. If you are unsure which type to pick, check with your team lead, incident types are configured by your administrator to match your organization's response processes.
 
-### Step 3: Describe the Problem
+### Step 3: Describe the problem
 
 1. Use the **Quick Start** block to describe the problem in plain language.
 2. Provide a clear, concise description including affected services, symptoms, and impact.
 3. The AI system will analyze your description and suggest field values automatically.
 
-### Step 4: Generate Incident Fields
+### Step 4: Generate incident fields
 
 1. Click the **up arrow** to process your description.
 2. AI will automatically populate incident fields (severity, priority, etc.) based on what you wrote.
 
-### Step 5: Review and Customize
+### Step 5: Review and customize
 
 1. Review all auto-generated field values.
 2. Manually adjust anything that needs correction:
@@ -72,32 +78,32 @@ Follow this interactive guide to create an incident with AI-powered assistance.
 
 ---
 
-## Create Incidents from Slack
+## Create incidents from Slack
 
 You can also create incidents directly from Slack using the `/harness new` command. This is especially useful during on-call shifts when you want to stay in your communication tool.
 
 ![Slack incident notification](../get-started/static/slack-incident-notification.png)
 
-Go to [Managing Incidents in Slack](/docs/ai-sre/get-started/slack-commands) for the full command reference.
+Go to [Managing incidents in Slack](/docs/ai-sre/get-started/slack-commands) to review the full command reference.
 
 ---
 
-## Best Practices for Incident Creation
+## Best practices for incident creation
 
-- **Choose the right incident type**, Select the most specific type available to get the right runbooks and field configuration.
-- **Write a clear description**, Good Quick Start descriptions lead to more accurate AI field suggestions. Include what's affected, what you are observing, and when it started.
-- **Verify auto-generated fields**, Always review and adjust AI-suggested values to ensure accuracy.
-- **Set correct severity levels**, Align severity with actual business impact and response time requirements.
+- **Choose the right incident type:** Select the most specific type available to get the right runbooks and field configuration.
+- **Write a clear description:** Good Quick Start descriptions lead to more accurate AI field suggestions. Include what is affected, what you are observing, and when it started.
+- **Verify auto-generated fields:** Always review and adjust AI-suggested values to ensure accuracy.
+- **Set correct severity levels:** Align severity with actual business impact and response time requirements.
 
 ---
 
-## What Happens Next
+## What happens next
 
 Once you save the incident:
 
 - An **incident channel** is automatically created in your communication tool (Slack or Teams).
 - **Relevant team members** are notified based on the incident type's configuration.
 - Any **runbooks** associated with the incident type may be auto-attached.
-- The **Incident Details** page opens, where you'll manage the incident through resolution.
+- The **Incident Details** page opens, where you manage the incident through resolution.
 
-To learn how to work through an active incident, Go to [Managing an Active Incident](./manage-incidents/manage-incidents.md).
+Go to [Active incident management](/docs/ai-sre/users/manage-incidents) to work through an active incident.

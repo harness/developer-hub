@@ -3,6 +3,15 @@ title: AI SRE Security
 description: How AI SRE protects your data and controls access.
 sidebar_position: 90
 sidebar_label: Security
+keywords:
+  - security
+  - RBAC
+  - encryption
+  - audit
+  - compliance
+tags:
+  - ai-sre
+  - security
 redirect_from:
 - /docs/incident-response/resources/ir-security
 ---
@@ -10,9 +19,7 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# AI SRE Security
-
-Harness AI SRE includes security measures to protect incident data, ensuring confidentiality, integrity, and availability. It integrates with the Harness Platform’s security features, including authentication, role-based access control (RBAC), audit trails, and secret management. 
+Harness AI SRE includes security measures to protect incident data, ensuring confidentiality, integrity, and availability. It integrates with the Harness Platform's security features, including authentication, role-based access control (RBAC), audit trails, and secret management.
 
 Security measures include:
 
@@ -21,23 +28,23 @@ Security measures include:
 - Secure API authentication for third-party integrations
 - Audit logging for compliance tracking
 
-## Security Measures
+## Security measures
 
 Harness AI SRE ensures incident security by restricting access, encrypting data, and logging all activities.
 
-- **Access Management**: Supports authentication via SAML, OAuth, and API tokens.
-- **Data Protection**: Encrypts incident metadata, logs, and communication history.
-- **Automation & Runbook Security**: Ensures that only authorized users execute automated actions.
-- **Audit & Compliance**: Logs every action for tracking and compliance reviews.
+- **Access management:** Supports authentication via SAML, OAuth, and API tokens.
+- **Data protection:** Encrypts incident metadata, logs, and communication history.
+- **Automation and runbook security:** Ensures that only authorized users execute automated actions.
+- **Audit and compliance:** Logs every action for tracking and compliance reviews.
 
 ---
 
-## Security Components
+## Security components
 
 <Tabs>
 <TabItem value="Incident Data Storage">
 <div style={{ display: "none" }}>
-### Incident Data Storage
+### Incident data storage
 </div>
 
 Incident data, logs, and automation history are securely stored.
@@ -46,13 +53,13 @@ Incident data, logs, and automation history are securely stored.
 - Access is controlled through RBAC.
 
 :::note Data Retention
-Harness IR retains incident logs and history based on your organization’s settings.
+Harness AI SRE retains incident logs and history based on your organization's settings.
 :::
 
 </TabItem>
 <TabItem value="Secure Automation & Runbooks">
 <div style={{ display: "none" }}>
-### Secure Automation & Runbooks
+### Secure automation and runbooks
 </div>
 
 Runbooks execute predefined automation securely.
@@ -67,10 +74,10 @@ Runbook executions require API keys or OAuth authentication for third-party inte
 </TabItem>
 <TabItem value="Communication & Webhook Security">
 <div style={{ display: "none" }}>
-### Communication & Webhook Security
+### Communication and webhook security
 </div>
 
-Harness IR integrates with communication tools and on-call platforms through secure webhooks and APIs.
+Harness AI SRE integrates with communication tools and on-call platforms through secure webhooks and APIs.
 
 - Incoming webhooks receive incident alerts.
 - Outbound notifications are not permitted.
@@ -80,38 +87,38 @@ Harness IR integrates with communication tools and on-call platforms through sec
 
 ---
 
-## Operational Security
+## Operational security
 
-Harness IR ensures security at every stage:
+Harness AI SRE ensures security at every stage:
 
-1. **Incident Creation & Logging**  
-   - Incidents are created through authenticated sources (UI, API, webhooks).  
+1. **Incident creation and logging:**
+   - Incidents are created through authenticated sources (UI, API, webhooks).
    - Data is encrypted before storage.
 
-2. **Access & Role Management**  
-   - RBAC controls who can access incidents.  
+2. **Access and role management:**
+   - RBAC controls who can access incidents.
    - Authentication via OAuth/SAML is required.
 
-3. **Automation Execution**  
-   - Actions are logged for compliance.  
+3. **Automation execution:**
+   - Actions are logged for compliance.
    - Only approved integrations execute via [Harness Delegate](/docs/platform/delegates/delegate-concepts/delegate-overview).
 
-4. **Audit & Compliance Logging**  
-   - Every action is recorded for compliance audits.  
+4. **Audit and compliance logging:**
+   - Every action is recorded for compliance audits.
    - Logs can be exported for security reviews.
 
-5. **Third-Party Integration Security**  
-   - OAuth tokens, API keys, and access scopes protect integrations.  
+5. **Third-party integration security:**
+   - OAuth tokens, API keys, and access scopes protect integrations.
    - Secure connections use TLS 1.3 encryption.
 
 ---
 
-## Best Practices
+## Best practices
 
-To enhance security in Harness IR:
+To enhance security in Harness AI SRE:
 
-- Use RBAC policies to limit access.  
-- Enable OAuth/SAML authentication.  
-- Review audit logs regularly.  
-- Use API tokens with least privilege.  
-- Encrypt webhook notifications.  
+- Use RBAC policies to limit access.
+- Enable OAuth/SAML authentication.
+- Review audit logs regularly.
+- Use API tokens with least privilege.
+- Encrypt webhook notifications.

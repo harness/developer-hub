@@ -3,64 +3,71 @@ title: Runbook Management
 sidebar_label: Overview
 sidebar_position: 1
 description: Automate incident response with integrations for communication, remediation, and monitoring.
+keywords:
+  - runbooks
+  - incident response
+  - automation
+  - remediation
+tags:
+  - ai-sre
+  - runbooks
 redirect_from:
 - /docs/incident-response/runbooks/runbooks
 ---
 
-
 Harness AI SRE allows teams to **automate incident resolution** by leveraging **Runbook automation**. Runbooks provide predefined workflows that execute **automated actions** based on specific triggers.
 
-## Key Features
+## Key features
 
-### Automated Response Actions
+### Automated response actions
 - Instant incident communication
 - Automated remediation steps
 - Multi-channel notifications
 - Integrated team collaboration
 
-### Integration Ecosystem
-- **Communication Tools**
-  - [Slack](./integrations/collaboration/slack.md) - Channel management and notifications
-  - [Microsoft Teams](./integrations/collaboration/teams.md) - Team collaboration
-  - [Zoom](./integrations/collaboration/zoom.md) - Incident bridges
+### Integration ecosystem
+- **Communication tools**
+  - [Slack](/docs/ai-sre/runbooks/integrations/collaboration/slack): Channel management and notifications
+  - [Microsoft Teams](/docs/ai-sre/runbooks/integrations/collaboration/teams): Team collaboration
+  - [Zoom](/docs/ai-sre/runbooks/integrations/collaboration/zoom): Incident bridges
 
-- **Ticketing Systems**
-  - [Jira](./integrations/ticketing/jira.md) - Issue tracking and updates
-  - [ServiceNow](./integrations/ticketing/servicenow.md) - Incident management
+- **Ticketing systems**
+  - [Jira](/docs/ai-sre/runbooks/integrations/ticketing/jira): Issue tracking and updates
+  - [ServiceNow](/docs/ai-sre/runbooks/integrations/ticketing/servicenow): Incident management
 
 ---
 
-## Getting Started
+## Getting started
 
-1. [Create Your First Runbook](./create-runbook.md)
+1. [Create your first runbook](/docs/ai-sre/runbooks/create-runbook)
    - Design workflows
    - Configure triggers
    - Test and deploy
 
-2. [Configure Authentication](./integrations/overview.md)
+2. [Configure authentication](/docs/ai-sre/runbooks/integrations/overview)
    - Set up integration access
    - Manage permissions
    - Secure your runbooks
 
-3. [Configure Incident Fields](./workflows/overview.md)
+3. [Configure incident fields](/docs/ai-sre/runbooks/workflows/overview)
    - Define custom fields
    - Set up field mapping
    - Configure templates
 
 ---
 
-## Example Runbook Templates
+## Example runbook templates
 
-### 1. High CPU Usage Response
-**Purpose**: Automated response to CPU spikes
+### 1. High CPU usage response
+**Purpose:** Automated response to CPU spikes
 
-**Trigger Configuration**:
+**Trigger configuration:**
 - Alert Type: Datadog
 - Metric: CPU Usage
 - Threshold: > 90%
 - Duration: 5 minutes
 
-**Action Steps**:
+**Action steps:**
 1. **Initial Alert**
    - Action Type: Slack
    - Channel: #sre-alerts
@@ -85,16 +92,16 @@ Harness AI SRE allows teams to **automate incident resolution** by leveraging **
    - Assignee: SRE On-Call
    - Details: "High CPU incident - Scaling pipeline initiated"
 
-### 2. Database Connection Alert
-**Purpose**: Multi-channel incident response coordination
+### 2. Database connection alert
+**Purpose:** Multi-channel incident response coordination
 
-**Trigger Configuration**:
+**Trigger configuration:**
 - Alert Type: Grafana Incident
 - Service: Database
 - Condition: Connection Timeout
 - Priority: High
 
-**Action Steps**:
+**Action steps:**
 1. **Create Teams Channel**
    - Action Type: Microsoft Teams
    - Operation: Create Channel
@@ -120,16 +127,16 @@ Harness AI SRE allows teams to **automate incident resolution** by leveraging **
    - Status: Investigating
    - Note: "Recovery procedures initiated via Jenkins"
 
-### 3. API Error Rate Response
-**Purpose**: Feature management and incident coordination
+### 3. API error rate response
+**Purpose:** Feature management and incident coordination
 
-**Trigger Configuration**:
+**Trigger configuration:**
 - Alert Type: Datadog
 - Metric: Error Rate
 - Threshold: > 5%
 - Time Window: 5 minutes
 
-**Action Steps**:
+**Action steps:**
 1. **Feature Control**
    - Action Type: Split
    - Operation: Disable Feature
@@ -156,18 +163,18 @@ Harness AI SRE allows teams to **automate incident resolution** by leveraging **
 
 ---
 
-## Next Steps
+## Next steps
 
 ### Documentation
-- [Create a Runbook](./create-runbook.md)
-- [Configure Authentication](./integrations/overview.md)
-- [Configure Incident Fields](./workflows/overview.md)
+- [Create a runbook](/docs/ai-sre/runbooks/create-runbook)
+- [Configure authentication](/docs/ai-sre/runbooks/integrations/overview)
+- [Configure incident fields](/docs/ai-sre/runbooks/workflows/overview)
 
-### Integration Guides
-- Communication Tools
-  - [Slack Integration](./integrations/collaboration/slack.md)
-  - [Microsoft Teams Integration](./integrations/collaboration/teams.md)
-  - [Zoom Integration](./integrations/collaboration/zoom.md)
-- Ticketing Systems
-  - [Jira Integration](./integrations/ticketing/jira.md)
-  - [ServiceNow Integration](./integrations/ticketing/servicenow.md)
+### Integration guides
+- Communication tools
+  - [Slack integration](/docs/ai-sre/runbooks/integrations/collaboration/slack)
+  - [Microsoft Teams integration](/docs/ai-sre/runbooks/integrations/collaboration/teams)
+  - [Zoom integration](/docs/ai-sre/runbooks/integrations/collaboration/zoom)
+- Ticketing systems
+  - [Jira integration](/docs/ai-sre/runbooks/integrations/ticketing/jira)
+  - [ServiceNow integration](/docs/ai-sre/runbooks/integrations/ticketing/servicenow)

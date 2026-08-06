@@ -10,14 +10,13 @@ keywords:
   - conditions
   - runbooks
 tags:
+  - ai-sre
   - expressions
   - runbooks
 ---
 
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 import NeedHelpFooter from '../../_snippets/need-help-footer.mdx';
-
-# Use CEL Expressions in Runbook Triggers
 
 CEL (Common Expression Language) expressions provide conditional logic for trigger conditions that go beyond simple field comparisons.
 
@@ -198,11 +197,11 @@ incident.severity == "0" && incident.environment == "production"
 ```
 
 **Rule mode limitations overcome by CEL**:
-- Cannot use regex matching → CEL: `.matches()`
-- Cannot check multiple values efficiently → CEL: `in ["0", "1"]`
-- Cannot perform calculations → CEL: `(errors / total) > 0.05`
-- Cannot check null values → CEL: `owner != null`
-- Limited string operations → CEL: `.contains()`, `.startsWith()`, `.endsWith()`
+- Cannot use regex matching. CEL: `.matches()`
+- Cannot check multiple values efficiently. CEL: `in ["0", "1"]`
+- Cannot perform calculations. CEL: `(errors / total) > 0.05`
+- Cannot check null values. CEL: `owner != null`
+- Limited string operations. CEL: `.contains()`, `.startsWith()`, `.endsWith()`
 
 ---
 
@@ -280,11 +279,8 @@ frequency.
 
 ## Next steps
 
-- Go to [Create Dynamic Content](/docs/ai-sre/get-started/onboarding/expression-languages) for complete CEL syntax
-  reference, additional operators, and advanced patterns
-- Go to [Create Runbook Triggers](/docs/ai-sre/runbooks/triggers/create-trigger) to learn about trigger
-  configuration
-- Go to [Use Mustache Templates in Runbooks](/docs/ai-sre/runbooks/workflows/overview) to learn
-  about accessing incident and alert data in runbook actions
+- Go to [Create dynamic content](/docs/ai-sre/get-started/onboarding/expression-languages) to review the complete CEL syntax reference, additional operators, and advanced patterns.
+- Go to [Create runbook triggers](/docs/ai-sre/runbooks/triggers/create-trigger) to learn about trigger configuration.
+- Go to [Use Mustache templates in runbooks](/docs/ai-sre/runbooks/workflows/overview) to learn about accessing incident and alert data in runbook actions.
 
 <NeedHelpFooter />

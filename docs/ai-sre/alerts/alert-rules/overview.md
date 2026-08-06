@@ -3,11 +3,17 @@ title: Route Alerts
 description: Configure alert rules to route, filter, and enrich incoming alerts.
 sidebar_label: Overview
 sidebar_position: 1
+keywords:
+  - alert rules
+  - routing
+  - conditions
+  - incidents
+tags:
+  - ai-sre
+  - alerts
 ---
 
-# Route Alerts
-
-Alert Rules define how incoming alerts are processed and when incidents should be created.
+Alert rules define how incoming alerts are processed and when incidents should be created.
 
 ## Overview
 
@@ -20,17 +26,17 @@ Alert rules help you:
 
 ---
 
-## Alert Rule Capabilities
+## Alert rule capabilities
 
-### Field-Based Conditions
+### Field-based conditions
 
 The default mode for alert rules uses a visual builder where you can:
 - Select alert fields from your monitoring integrations
-- Choose comparison operators (equals, contains, greater than, etc.)
+- Choose comparison operators (equals, contains, greater than, and others)
 - Combine multiple conditions with AND/OR logic
 - No coding required
 
-### CEL Expression Conditions
+### CEL expression conditions
 
 Write advanced boolean expressions for complex filtering:
 - Regex pattern matching for service names
@@ -38,9 +44,9 @@ Write advanced boolean expressions for complex filtering:
 - String operations and numeric comparisons
 - More concise than multiple field-based conditions
 
-Go to [Use CEL to Route Alerts](./use-cel-alert-rules.md) to learn about CEL expression mode.
+Go to [Use CEL to Route Alerts](/docs/ai-sre/alerts/alert-rules/use-cel-alert-rules) to understand CEL expression mode.
 
-### Incident Creation
+### Incident creation
 
 Automatically create incidents from matching alerts:
 - Map alert fields to incident properties
@@ -48,7 +54,7 @@ Automatically create incidents from matching alerts:
 - Associate services and environments
 - Populate custom fields
 
-### On-Call Paging
+### On-call paging
 
 Page the on-call team when critical alerts arrive:
 - Select impacted services
@@ -56,7 +62,7 @@ Page the on-call team when critical alerts arrive:
 - Choose notification channels
 - Set response time expectations
 
-### Runbook Association
+### Runbook association
 
 Attach automated response procedures:
 - Automatically trigger runbooks on incident creation
@@ -65,13 +71,13 @@ Attach automated response procedures:
 
 ---
 
-## Getting Started
+## Getting started
 
-Go to [Create an Alert Rule](./create-alert-rule.md) for step-by-step configuration instructions.
+Go to [Create an Alert Rule](/docs/ai-sre/alerts/alert-rules/create-alert-rule) for step-by-step configuration instructions.
 
 ---
 
-## Best Practices
+## Best practices
 
 - Create specific rules for different types of alerts
 - Use clear, descriptive names for your rules
@@ -81,9 +87,9 @@ Go to [Create an Alert Rule](./create-alert-rule.md) for step-by-step configurat
 
 ---
 
-## Next Steps
+## Next steps
 
-- Go to [Create an Alert Rule](./create-alert-rule.md) to configure your first alert rule.
-- Go to [Use CEL to Route Alerts](./use-cel-alert-rules.md) to learn advanced conditional logic.
-- Go to [Ingest Alerts](../webhooks/overview.md) to receive alerts from any monitoring system.
-- Go to [Create Runbooks](../../runbooks/create-runbook.md) to automate alert responses.
+- [Create an Alert Rule](/docs/ai-sre/alerts/alert-rules/create-alert-rule): Configure your first alert rule.
+- [Use CEL to Route Alerts](/docs/ai-sre/alerts/alert-rules/use-cel-alert-rules): Apply advanced conditional logic.
+- [Ingest Alerts](/docs/ai-sre/alerts/webhooks/overview): Receive alerts from any monitoring system.
+- [Create Runbooks](/docs/ai-sre/runbooks/create-runbook): Automate alert responses.

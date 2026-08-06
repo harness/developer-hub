@@ -3,11 +3,17 @@ title: Change Management
 description: Track code changes that impact your incidents using the Deploy Change Investigator.
 sidebar_label: Overview
 sidebar_position: 1
+keywords:
+  - ai-sre
+  - change management
+  - deploy change investigator
+  - deployment tracking
+tags:
+  - change-management
+  - integrations
 redirect_from:
 - /docs/incident-response/change/change
 ---
-
-# Change Management
 
 Change management in Harness AI SRE helps you understand what code, configuration, and infrastructure changes were deployed when incidents occur. By connecting your CI/CD pipeline data, builds, deployments, and pull requests, you gain precise visibility into what changed and when.
 
@@ -42,7 +48,7 @@ To enable change management capabilities:
 
 ---
 
-## What's tracked
+## What is tracked
 
 Change management tracks:
 

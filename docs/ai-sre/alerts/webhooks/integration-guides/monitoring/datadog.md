@@ -3,18 +3,26 @@ title: Datadog Integration Guide
 description: Send monitor alerts through webhooks.
 sidebar_label: Datadog
 sidebar_position: 1
+keywords:
+  - Datadog
+  - webhook
+  - AI SRE
+  - integration
+tags:
+  - ai-sre
+  - webhooks
+  - datadog
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
-# Configure Datadog to Send Webhooks
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
 Configure Datadog monitors to send webhook notifications to Harness AI SRE when alerts trigger.
 
 ## Before you begin
 
-- **Harness webhook endpoint**: Create a Datadog webhook in Harness AI SRE using the [Datadog webhook template](../../templates/monitoring/datadog.md).
+- **Harness webhook endpoint**: Create a Datadog webhook in Harness AI SRE using the [Datadog webhook template](/docs/ai-sre/alerts/webhooks/templates/monitoring/datadog).
 - **Datadog permissions**: Access to create or modify monitors and integrations in Datadog.
 - **Webhook URL**: Copy the webhook URL from your Harness webhook configuration.
 - **Datadog webhook documentation**: Go to [Datadog Webhooks Integration](https://docs.datadoghq.com/integrations/webhooks/) to understand Datadog's webhook capabilities.
@@ -26,7 +34,7 @@ Configure Datadog monitors to send webhook notifications to Harness AI SRE when 
 
 ### Navigate to Datadog integrations
 
-1. In Datadog, navigate to **Integrations** → **Integrations**
+1. In Datadog, navigate to **Integrations**, then select **Integrations**
 2. Search for and select **Webhooks**
 3. Go to the **Configuration** tab
 4. Click **New**
@@ -353,60 +361,29 @@ link: webhook.context.snapshot_url
 
 ## Troubleshooting
 
-### Webhook not triggering
+<Troubleshoot
+  issue="Datadog webhook is not triggering for Harness AI SRE"
+  mode="docs"
+  fallback="Verify the webhook appears under Integrations, then Webhooks, confirm the monitor notification includes @webhook-harness-ai-sre, test the notification manually from the monitor page, and review the Datadog Event Explorer for webhook calls."
+/>
 
-**Cause**: Datadog webhook not configured or monitor not firing.
+<Troubleshoot
+  issue="Datadog webhook returns HTTP 4xx errors when calling the Harness AI SRE endpoint"
+  mode="docs"
+  fallback="Verify the webhook URL is correct with no typos in the webhook ID, check that custom headers match the Harness webhook configuration, ensure the Harness webhook is enabled, and test the URL with curl."
+/>
 
-**Solution**:
-- Verify webhook appears in **Integrations** → **Webhooks**
-- Check monitor notification includes `@webhook-harness-ai-sre`
-- Test notification manually from monitor page
-- Review Datadog **Event Explorer** for webhook calls
+<Troubleshoot
+  issue="Datadog webhook variables are not mapping correctly in Harness AI SRE"
+  mode="docs"
+  fallback="Review the actual webhook payload sent by Datadog, ensure field names match exactly (case-sensitive), and use the CEL has() function to check whether fields exist."
+/>
 
-### HTTP 4xx errors
-
-**Cause**: Invalid webhook URL or authentication failure.
-
-**Solution**:
-- Verify webhook URL is correct (no typos in webhook ID)
-- Check custom headers match Harness webhook configuration
-- Ensure Harness webhook is enabled
-- Test webhook URL with `curl`:
-
-```bash
-curl -X POST \
-  -H "Content-Type: application/json" \
-  -d '{"alert_name": "Test", "alert_message": "Test message"}' \
-  https://your-harness-instance/gateway/ai-sre/api/webhooks/<webhook-id>
-```
-
-### Variables not mapping correctly
-
-**Cause**: Field names in Harness configuration do not match Datadog payload.
-
-**Solution**:
-- Review the actual webhook payload sent by Datadog (check Datadog webhook logs)
-- Ensure field names match exactly (case-sensitive)
-- Use CEL `has()` to check if fields exist:
-
-```cel
-filter: has(webhook.service) && webhook.service != ""
-```
-
-### Rate limiting issues
-
-**Cause**: High-frequency Datadog alerts overwhelming Harness.
-
-**Solution**:
-- Configure Datadog monitor to re-notify less frequently
-- Use Harness alert routing rules to deduplicate similar alerts
-- Add debounce logic in Harness webhook CEL:
-
-```cel
-// Only process if not seen in last 5 minutes
-filter: !has(webhook.alert_cycle_key) || 
-        (now - timestamp(webhook.last_updated)) > duration("5m")
-```
+<Troubleshoot
+  issue="High-frequency Datadog alerts are rate limiting the Harness AI SRE webhook"
+  mode="docs"
+  fallback="Configure the Datadog monitor to re-notify less frequently, use Harness alert routing rules to deduplicate similar alerts, and add debounce logic in the Harness webhook CEL."
+/>
 
 ---
 
@@ -479,16 +456,16 @@ Threshold: {{threshold}}
 
 ## Next steps
 
-- Go to [Route Alerts](../../../alert-rules/overview.md) to route and deduplicate Datadog alerts.
-- Go to [Use CEL in Webhooks](../../use-cel-webhooks.md) to add advanced filtering logic.
-- Go to [AI Agent](../../../../ai-agent/ai-agent.md) to enable automated alert investigation.
+- [Route alerts](/docs/ai-sre/alerts/alert-rules/overview): Route and deduplicate Datadog alerts.
+- [Use CEL in webhooks](/docs/ai-sre/alerts/webhooks/use-cel-webhooks): Add advanced filtering logic.
+- [AI agent](/docs/ai-sre/ai-agent): Enable automated alert investigation.
 
 ---
 
 ## Further reading
 
-### Datadog Official Documentation
-- [Webhooks Integration](https://docs.datadoghq.com/integrations/webhooks/) - Complete guide to Datadog webhook integration setup and configuration
-- [Monitor Notifications](https://docs.datadoghq.com/monitors/notify/) - Monitor notification configuration and `@webhook` syntax
-- [Template Variables Reference](https://docs.datadoghq.com/monitors/notify/variables/) - Complete list of available template variables (`$EVENT_TITLE`, `$PRIORITY`, `$SERVICE`, etc.)
-- [Webhook Template Variables](https://docs.datadoghq.com/integrations/webhooks/#template-variables) - Webhook-specific variables and payload customization
+### Datadog official documentation
+- [Webhooks integration](https://docs.datadoghq.com/integrations/webhooks/): Complete guide to Datadog webhook integration setup and configuration.
+- [Monitor notifications](https://docs.datadoghq.com/monitors/notify/): Monitor notification configuration and `@webhook` syntax.
+- [Template variables reference](https://docs.datadoghq.com/monitors/notify/variables/): Complete list of available template variables (`$EVENT_TITLE`, `$PRIORITY`, `$SERVICE`, and others).
+- [Webhook template variables](https://docs.datadoghq.com/integrations/webhooks/#template-variables): Webhook-specific variables and payload customization.

@@ -3,18 +3,26 @@ title: OpsGenie Integration Guide
 description: Send alerts through webhooks.
 sidebar_label: Opsgenie
 sidebar_position: 5
+keywords:
+  - Opsgenie
+  - webhook
+  - AI SRE
+  - integration
+tags:
+  - ai-sre
+  - webhooks
+  - opsgenie
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
-# Configure Opsgenie to Send Webhooks
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
 Configure Opsgenie to send webhook notifications to Harness AI SRE when alerts are created, updated, or closed.
 
 ## Before you begin
 
-- **Harness webhook endpoint**: Create an OpsGenie webhook in Harness AI SRE using the [OpsGenie webhook template](../../templates/monitoring/opsgenie.md).
+- **Harness webhook endpoint**: Create an Opsgenie webhook in Harness AI SRE using the [Opsgenie webhook template](/docs/ai-sre/alerts/webhooks/templates/monitoring/opsgenie).
 - **Opsgenie access**: Admin permissions or integration management permissions.
 - **Webhook URL**: Copy the webhook URL from your Harness webhook configuration.
 - **Outgoing webhook documentation**: Go to [Outgoing Webhook Integration](https://support.atlassian.com/opsgenie/docs/integrate-opsgenie-with-outgoing-webhooks/) for setup guidance.
@@ -26,7 +34,7 @@ Configure Opsgenie to send webhook notifications to Harness AI SRE when alerts a
 
 ### Navigate to integrations
 
-1. In Opsgenie, go to **Settings** → **Integrations**
+1. In Opsgenie, go to **Settings**, then select **Integrations**
 2. Click **Add integration**
 3. Search for **Webhook** or select **Outgoing Webhook**
 
@@ -258,9 +266,9 @@ custom_fields: {
 
 ### Verify webhook triggered
 
-1. Go to **Settings** → **Integrations**
-2. Click on **Harness AI SRE** integration
-3. Check **Activity** or **Logs** tab for webhook delivery
+1. Go to **Settings**, then select **Integrations**
+2. Click the **Harness AI SRE** integration
+3. Check the **Activity** or **Logs** tab for webhook delivery
 
 ### Verify in Harness
 
@@ -361,50 +369,29 @@ message: webhook.alert.message + "\n\n" +
 
 ## Troubleshooting
 
-### Webhook not sending
+<Troubleshoot
+  issue="Opsgenie webhook is not sending alerts to Harness AI SRE"
+  mode="docs"
+  fallback="Verify the integration is Enabled in Opsgenie, check the alert filters by removing them to test, review the integration Activity or Logs for errors, and ensure the webhook URL is accessible from Opsgenie."
+/>
 
-**Cause**: Integration not enabled or filter blocking alerts.
+<Troubleshoot
+  issue="Opsgenie alerts are not appearing in Harness AI SRE"
+  mode="docs"
+  fallback="Check the Harness webhook logs for errors, verify the payload structure in the Opsgenie integration logs, temporarily remove the CEL filter to test, and use the CEL has() function to safely access optional fields."
+/>
 
-**Solution**:
-- Verify integration is **Enabled** in Opsgenie
-- Check alert filters (remove filters to test)
-- Review integration **Activity** or **Logs** for errors
-- Ensure webhook URL is accessible from Opsgenie
+<Troubleshoot
+  issue="Opsgenie is creating duplicate alerts in Harness AI SRE"
+  mode="docs"
+  fallback="Review all Opsgenie webhook integrations, disable unnecessary alert actions in the integration settings, use Harness alert routing rules to deduplicate by alertId or tinyId, and filter by action in CEL."
+/>
 
-### Alerts not appearing in Harness
-
-**Cause**: Field mapping incorrect or CEL filter blocking.
-
-**Solution**:
-- Check Harness webhook logs for errors
-- Verify payload structure in Opsgenie integration logs
-- Temporarily remove CEL filter to test
-- Use CEL `has()` to safely access optional fields
-
-### Duplicate alerts
-
-**Cause**: Multiple Opsgenie integrations or alert actions triggering webhooks.
-
-**Solution**:
-- Review all Opsgenie webhook integrations
-- Disable unnecessary alert actions in integration settings
-- Use Harness alert routing rules to deduplicate by `alertId` or `tinyId`
-- Filter by action in CEL:
-```cel
-filter: webhook.action == "Create"  // Only process Create actions
-```
-
-### Closed alerts not resolving
-
-**Cause**: Close action not enabled or not mapped to resolution.
-
-**Solution**:
-- Enable **Close** action in Opsgenie integration
-- Map Close action in Harness CEL:
-```cel
-severity: webhook.action == "Close" ? "info" :
-          (webhook.alert.priority == "P1" ? "critical" : "high")
-```
+<Troubleshoot
+  issue="Closed Opsgenie alerts are not resolving in Harness AI SRE"
+  mode="docs"
+  fallback="Enable the Close action in the Opsgenie integration, and map the Close action in the Harness CEL severity mapping."
+/>
 
 ---
 
@@ -501,17 +488,17 @@ custom_fields:
 
 ## Next steps
 
-- Go to [Route Alerts](../../../alert-rules/overview.md) to route and deduplicate Opsgenie alerts.
-- Go to [Use CEL in Webhooks](../../use-cel-webhooks.md) to add advanced filtering logic.
-- Go to [AI Agent](../../../../ai-agent/ai-agent.md) to enable automated alert investigation.
-- Go to [Opsgenie Template](../../templates/monitoring/opsgenie.md) for the pre-configured template.
+- [Route alerts](/docs/ai-sre/alerts/alert-rules/overview): Route and deduplicate Opsgenie alerts.
+- [Use CEL in webhooks](/docs/ai-sre/alerts/webhooks/use-cel-webhooks): Add advanced filtering logic.
+- [AI agent](/docs/ai-sre/ai-agent): Enable automated alert investigation.
+- [Opsgenie template](/docs/ai-sre/alerts/webhooks/templates/monitoring/opsgenie): Use the pre-configured template.
 
 ---
 
 ## Further reading
 
-### Ops Genie Official Documentation
-- [Outgoing Webhook Integration](https://support.atlassian.com/opsgenie/docs/integrate-opsgenie-with-outgoing-webhooks/) - Complete guide to webhook integration setup and configuration options
-- [Alert API](https://docs.opsgenie.com/docs/alert-api) - Alert field definitions (`alertId`, `tinyId`, `priority`, `tags`, `details`)
-- [Edge Connector Alert Actions](https://support.atlassian.com/opsgenie/docs/opsgenie-edge-connector-alert-action-data/) - Webhook payload structure and available fields
-- [Integration Actions](https://support.atlassian.com/opsgenie/docs/what-are-integration-actions/) - Available alert actions (Create, Acknowledge, Close, AddNote, etc.)
+### Opsgenie official documentation
+- [Outgoing webhook integration](https://support.atlassian.com/opsgenie/docs/integrate-opsgenie-with-outgoing-webhooks/): Complete guide to webhook integration setup and configuration options.
+- [Alert API](https://docs.opsgenie.com/docs/alert-api): Alert field definitions (`alertId`, `tinyId`, `priority`, `tags`, `details`).
+- [Edge Connector alert actions](https://support.atlassian.com/opsgenie/docs/opsgenie-edge-connector-alert-action-data/): Webhook payload structure and available fields.
+- [Integration actions](https://support.atlassian.com/opsgenie/docs/what-are-integration-actions/): Available alert actions (Create, Acknowledge, Close, AddNote, and others).

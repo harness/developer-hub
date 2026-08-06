@@ -3,22 +3,34 @@ title: Create Your First Runbook
 description: Automate incident response actions and provide step-by-step guidance for responders.
 sidebar_label: Create Runbooks
 sidebar_position: 5
+keywords:
+  - runbook
+  - automation
+  - incident response
+  - onboarding
+tags:
+  - ai-sre
+  - getting-started
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import DocVideo from '@site/src/components/DocVideo';
 
-# Create Your First Runbook
-
 Runbooks automate incident response actions and provide step-by-step guidance for responders.
 
-## Create a Runbook
+## Before you begin
+
+- **AI SRE access:** A Harness project with AI SRE enabled. Go to the [AI SRE onboarding guide](/docs/ai-sre/get-started/onboarding/overview) to review prerequisites.
+- **Integrated tools:** Runbook actions call your connected tools. Go to [Integrate Your First Tool](/docs/ai-sre/get-started/onboarding/integrate-tools) to connect them first.
+- **Incident types:** To attach a runbook to a trigger, define an incident type first. Go to [Set Up Your First Incident Type](/docs/ai-sre/get-started/onboarding/setup-incident-types) to create one.
+
+## Create a runbook
 
 <Tabs groupId="ai-sre-setup" queryString>
   <TabItem value="Step by Step" label="Step by Step" default>
 
-### Create the Runbook
+### Create the runbook
 
 1. Navigate to **Runbooks** from the left pane
 2. Click on **New Runbook**
@@ -26,7 +38,7 @@ Runbooks automate incident response actions and provide step-by-step guidance fo
    - Fill in the runbook details
    - Click on **Save**
 
-### Add First Action
+### Add the first action
 
 1. Click on **New Action**
 2. Select the action from the categories you want to add in your runbook. The actions have been classified into different categories based on the use case
@@ -34,19 +46,19 @@ Runbooks automate incident response actions and provide step-by-step guidance fo
    - Select the action
    - Click on **Select**
 
-### Configure Action
+### Configure the action
 
 1. Fill the details for the selected action
 2. Click on **Save**
 
-### Add More Actions
+### Add more actions
 
 Once saved, you can add more actions:
 
 1. Click on **New Action**
 2. Then, **Select Action** and repeat the steps and save
 
-### Add Triggers (Optional)
+### Add triggers (optional)
 
 Additionally, you can add triggers for your runbooks. Click on **Triggers** (this step is optional).
 
@@ -67,8 +79,8 @@ Automate response actions and guide responders step-by-step during incidents.
 
 ---
 
-## Next Steps
+## Next steps
 
-- Go to [Expression Languages](./expression-languages.md) to learn about CEL and Mustache for dynamic content.
+- Go to [Expression Languages](/docs/ai-sre/get-started/onboarding/expression-languages) to learn about CEL and Mustache for dynamic content.
 - Go to [Create Runbooks](/docs/ai-sre/runbooks/create-runbook) for advanced runbook configuration.
 - Go to [Configure Runbook Triggers](/docs/ai-sre/runbooks/triggers/overview) to automate runbook execution.

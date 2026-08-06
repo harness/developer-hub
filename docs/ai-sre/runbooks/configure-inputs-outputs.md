@@ -3,15 +3,21 @@ title: Configure Runbook Inputs & Outputs
 sidebar_label: Configure Inputs & Outputs
 sidebar_position: 5
 description: Pass incident and alert context into and out of your runbooks.
+keywords:
+  - runbooks
+  - inputs
+  - outputs
+  - incident context
+tags:
+  - ai-sre
+  - runbooks
 redirect_from:
 - /docs/ai-sre/runbooks/workflows/set-incident-context
 ---
 
 import NeedHelpFooter from '../_snippets/need-help-footer.mdx';
 
-# Configure Runbook Inputs & Outputs
-
-## Setting Incident Context
+## Set incident context
 
 To ensure the correct fields are available in the data picker:
 

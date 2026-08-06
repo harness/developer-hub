@@ -3,20 +3,29 @@ title: Opsgenie Integration Webhook Template
 description: Receive incident management alerts.
 sidebar_label: Opsgenie Webhook Template
 sidebar_position: 10
+keywords:
+  - Opsgenie
+  - webhook
+  - template
+  - integration
+  - AI SRE
+  - alerts
+tags:
+  - ai-sre
+  - webhooks
+  - opsgenie
 ---
-
-# Opsgenie Integration Webhook Template
 
 Configure Opsgenie integration to receive incident management alerts in Harness AI SRE.
 
 ## Overview
 
 Opsgenie provides:
-- **Alert management**: Centralized alert routing and escalation
-- **On-call scheduling**: Automatic responder assignment
-- **Incident tracking**: Full incident lifecycle management
-- **Team collaboration**: Coordinated incident response
-- **Integration hub**: Connect multiple monitoring tools
+- **Alert management:** Centralized alert routing and escalation
+- **On-call scheduling:** Automatic responder assignment
+- **Incident tracking:** Full incident lifecycle management
+- **Team collaboration:** Coordinated incident response
+- **Integration hub:** Connect multiple monitoring tools
 
 ---
 
@@ -33,7 +42,7 @@ Opsgenie provides:
 
 ---
 
-## Next Steps
+## Next steps
 
-- Go to [Route Alerts](../../../alert-rules/overview.md) to route Opsgenie alerts.
-- Go to [Ingest Alerts Overview](../overview.md) to view other integrations.
+- [Route alerts](/docs/ai-sre/alerts/alert-rules/overview): Route Opsgenie alerts to the right destinations.
+- [Ingest alerts overview](/docs/ai-sre/alerts/webhooks/templates/overview): View other integrations.

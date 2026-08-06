@@ -10,6 +10,7 @@ keywords:
   - runbook actions
   - runbooks
 tags:
+  - ai-sre
   - expressions
   - runbooks
 redirect_from:
@@ -18,8 +19,6 @@ redirect_from:
 
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 import NeedHelpFooter from '../../_snippets/need-help-footer.mdx';
-
-# Use CEL Expressions in Runbook Actions
 
 CEL (Common Expression Language) expressions provide logic and transformation capabilities beyond simple variable substitution. Use CEL when you need conditional logic, calculations, regex matching, or string transformations.
 
@@ -579,14 +578,14 @@ User impact: ${{
 - Verify field exists in your incident or alert type
 - Check data types match (strings vs. numbers)
 
-Go to [CEL Expressions in AI SRE](/docs/ai-sre/get-started/onboarding/expression-languages) for comprehensive CEL syntax reference, troubleshooting guide, and advanced patterns.
+Go to [CEL expressions in AI SRE](/docs/ai-sre/get-started/onboarding/expression-languages) to review the comprehensive CEL syntax reference, troubleshooting guide, and advanced patterns.
 
 ---
 
 ## Next steps
 
-- Go to [CEL Expressions in AI SRE](/docs/ai-sre/get-started/onboarding/expression-languages) for complete CEL syntax reference.
-- Go to [Use Mustache Templates in Runbook Actions](/docs/ai-sre/runbooks/workflows/use-mustache-runbook-actions) to learn about Mustache templates.
-- Go to [Use System Fields in Runbook Actions](/docs/ai-sre/runbooks/workflows/use-system-fields-in-runbook-actions) to learn about available system fields.
+- Go to [CEL expressions in AI SRE](/docs/ai-sre/get-started/onboarding/expression-languages) to review the complete CEL syntax reference.
+- Go to [Use Mustache templates in runbook actions](/docs/ai-sre/runbooks/workflows/use-mustache-runbook-actions) to learn about Mustache templates.
+- Go to [Use system fields in runbook actions](/docs/ai-sre/runbooks/workflows/use-system-fields-in-runbook-actions) to learn about available system fields.
 
 <NeedHelpFooter />

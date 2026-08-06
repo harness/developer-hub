@@ -9,17 +9,16 @@ keywords:
   - repository
   - runbooks
 tags:
+  - ai-sre
   - integrations
   - github
 redirect_from:
 - /docs/ai-sre/runbooks/integrations/github
 ---
 
-# GitHub Integration
-
 Integrate GitHub with AI SRE runbooks to automate pull request management during incident response.
 
-## Use Cases
+## Use cases
 
 - Create pull requests for hotfixes
 - List open pull requests for incident correlation
@@ -36,28 +35,28 @@ Integrate GitHub with AI SRE runbooks to automate pull request management during
 
 ---
 
-## Configure GitHub Integration
+## Configure the GitHub integration
 
-1. Go to **Project Settings** → **Third-Party Integrations for AI SRE**
+1. Go to **Project Settings**, then **Third-Party Integrations for AI SRE**.
 
    ![Third-Party Integrations for AI SRE](../static/third-party-integrations-connectors.png)
 
-2. Select the connector you want to use or create a new one
+2. Select the connector you want to use or create a new one.
 3. Provide your GitHub credentials:
-   - **Personal Access Token**: Generate from GitHub settings
-   - **Permissions**: repo, read:org (minimum)
-4. Test the connection
-5. Save the integration
+   - **Personal Access Token:** Generate from GitHub settings
+   - **Permissions:** repo, read:org (minimum)
+4. Test the connection.
+5. Save the integration.
 
 ---
 
-## Available Actions
+## Available actions
 
-### Create Pull Request
+### Create pull request
 
 Create a pull request in a GitHub repository.
 
-**Required fields**:
+**Required fields:**
 - Owner: Repository owner (user or organization)
 - Repository: Repository name
 - Source Branch: Branch with changes
@@ -65,36 +64,36 @@ Create a pull request in a GitHub repository.
 - Title: Pull request title
 - Body: Pull request description (optional)
 
-### List Pull Requests
+### List pull requests
 
 List pull requests from a GitHub repository.
 
-**Required fields**:
+**Required fields:**
 - Owner: Repository owner (user or organization)
 - Repository: Repository name
 - State: Filter by state (open, closed, or all)
 
 ---
 
-## Using GitHub Actions in Runbooks
+## Use GitHub actions in runbooks
 
 GitHub actions are configured through the runbook action form in the UI:
 
-1. **In your runbook**, click **New Step** → **Action**
+1. **In your runbook**, click **New Step**, then **Action**.
 
    ![New Step Menu](../static/runbook-new-step-menu.png)
 
-2. In the **Select Action** dialog, go to **Tickets & Code** category
-3. Select **GitHub** from the available actions
+2. In the **Select Action** dialog, go to the **Tickets & Code** category.
+3. Select **GitHub** from the available actions.
 
    ![Select Action Dialog](../static/action-list-github-pull-requests.png)
 
-4. Choose the action type (**Create GitHub Pull Request** or **List GitHub Pull Requests**)
+4. Choose the action type (**Create GitHub Pull Request** or **List GitHub Pull Requests**).
 5. Fill in the form fields using the **Data Picker** to insert dynamic values like `incident.severity`, `incident.title`, etc.
 
 ---
 
-## Available Mustache Variables
+## Available Mustache variables
 
 Use these variables to map AI SRE incident data to GitHub fields:
 
@@ -114,22 +113,22 @@ Use these variables to map AI SRE incident data to GitHub fields:
 
 ---
 
-## Example Runbook Actions
+## Example runbook actions
 
-### Create Pull Request for Fix
+### Create a pull request for a fix
 
-**Use case**: Create a pull request for incident remediation with full context.
+**Use case:** Create a pull request for incident remediation with full context.
 
-**Runbook configuration**:
+**Runbook configuration:**
 
-1. In the runbook editor, add a **Create GitHub Pull Request** action
+1. In the runbook editor, add a **Create GitHub Pull Request** action.
 2. Configure the form fields:
-   - **Owner**: `myorg`
-   - **Repository**: `payment-service`
-   - **Source Branch**: `hotfix/incident-{{Activity.short_id}}`
-   - **Target Branch**: `main`
-   - **Title**: `Fix for incident {{Activity.short_id}}: {{Activity.title}}`
-   - **Body**:
+   - **Owner:** `myorg`
+   - **Repository:** `payment-service`
+   - **Source Branch:** `hotfix/incident-{{Activity.short_id}}`
+   - **Target Branch:** `main`
+   - **Title:** `Fix for incident {{Activity.short_id}}: {{Activity.title}}`
+   - **Body:**
      ```
      ## Incident Fix
      
@@ -145,36 +144,36 @@ Use these variables to map AI SRE incident data to GitHub fields:
      - Incident URL: {{Activity.url}}
      ```
 
-**Result**: Pull request created with title `Fix for incident INC-123: API Gateway Outage` targeting `main` from `hotfix/incident-INC-123`.
+**Result:** Pull request created with title `Fix for incident INC-123: API Gateway Outage` targeting `main` from `hotfix/incident-INC-123`.
 
-### List Open Pull Requests
+### List open pull requests
 
-**Use case**: List all open pull requests to check for existing fixes before creating a new one.
+**Use case:** List all open pull requests to check for existing fixes before creating a new one.
 
-**Runbook configuration**:
+**Runbook configuration:**
 
-1. In the runbook editor, add a **List GitHub Pull Requests** action
+1. In the runbook editor, add a **List GitHub Pull Requests** action.
 2. Configure the form fields:
-   - **Owner**: `myorg`
-   - **Repository**: `payment-service`
-   - **State**: `open`
+   - **Owner:** `myorg`
+   - **Repository:** `payment-service`
+   - **State:** `open`
 
-**Result**: Returns a list of all open pull requests in the repository with details including title, branch, and URL.
+**Result:** Returns a list of all open pull requests in the repository with details including title, branch, and URL.
 
-### Create Hotfix PR with Context
+### Create a hotfix PR with context
 
-**Use case**: Create a pull request with detailed incident context and action items.
+**Use case:** Create a pull request with detailed incident context and action items.
 
-**Runbook configuration**:
+**Runbook configuration:**
 
-1. In the runbook editor, add a **Create GitHub Pull Request** action
+1. In the runbook editor, add a **Create GitHub Pull Request** action.
 2. Configure the form fields:
-   - **Owner**: `myorg`
-   - **Repository**: `payment-service`
-   - **Source Branch**: `hotfix/{{Activity.short_id}}-{{Activity.service}}`
-   - **Target Branch**: `main`
-   - **Title**: `[SEV{{Activity.severity}}] {{Activity.title}}`
-   - **Body**:
+   - **Owner:** `myorg`
+   - **Repository:** `payment-service`
+   - **Source Branch:** `hotfix/{{Activity.short_id}}-{{Activity.service}}`
+   - **Target Branch:** `main`
+   - **Title:** `[SEV{{Activity.severity}}] {{Activity.title}}`
+   - **Body:**
      ```
      ## Hotfix for Incident {{Activity.short_id}}
      
@@ -198,26 +197,26 @@ Use these variables to map AI SRE incident data to GitHub fields:
      cc: {{Activity.owner}}
      ```
 
-**Result**: Pull request created with full incident context and checklist for tracking remediation progress.
+**Result:** Pull request created with full incident context and checklist for tracking remediation progress.
 
 ---
 
-## PR Title Conventions
+## PR title conventions
 
 Use consistent PR title formats for incident-related pull requests:
 
-**By Severity**:
+**By severity:**
 - SEV0/SEV1: `[SEV0] {{Activity.title}}`
 - SEV2+: `Fix: {{Activity.title}}`
 
-**By Type**:
+**By type:**
 - Hotfix: `Hotfix/{{Activity.short_id}}: {{Activity.title}}`
 - Investigation: `Investigation/{{Activity.short_id}}: {{Activity.title}}`
 - Post-incident: `Post-incident/{{Activity.short_id}}: {{Activity.title}}`
 
 ---
 
-## Branch Naming Conventions
+## Branch naming conventions
 
 Use consistent branch naming for incident-related work:
 
@@ -230,10 +229,10 @@ incident/{{Activity.short_id}}-{{Activity.severity}}
 
 ---
 
-## Security Best Practices
+## Security best practices
 
 - Use fine-grained personal access tokens
-- Limit repository access to only what's needed
+- Limit repository access to only what is needed
 - Rotate tokens regularly
 - Use GitHub Apps for organization-wide access
 - Enable two-factor authentication
@@ -241,7 +240,7 @@ incident/{{Activity.short_id}}-{{Activity.severity}}
 
 ---
 
-## Next Steps
+## Next steps
 
-- Go to [Configure Runbook Actions](/docs/ai-sre/runbooks/create-runbook) to add GitHub actions to runbooks.
-- Go to [Runbook Best Practices](/docs/ai-sre/runbooks/workflows/best-practices) for automation patterns.
+- [Configure Runbook Actions](/docs/ai-sre/runbooks/create-runbook): Add GitHub actions to runbooks.
+- [Runbook Best Practices](/docs/ai-sre/runbooks/workflows/best-practices): Review automation patterns.

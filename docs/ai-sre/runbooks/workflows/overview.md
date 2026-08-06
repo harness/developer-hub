@@ -3,14 +3,20 @@ title: Configure Runbook Workflows
 sidebar_label: Overview
 sidebar_position: 1
 description: Use incident fields in runbook workflows for dynamic, context-aware automation with Mustache templates and CEL expressions.
+keywords:
+  - runbooks
+  - workflows
+  - Mustache
+  - CEL
+tags:
+  - ai-sre
+  - runbooks
 redirect_from:
 - /docs/incident-response/runbooks/workflows/overview
 - /docs/ai-sre/runbooks/workflows/overview
 ---
 
 import NeedHelpFooter from '../../_snippets/need-help-footer.mdx';
-
-# Configure Runbook Actions
 
 This guide explains how to use incident and alert fields in your runbook actions to create dynamic, context-aware automation.
 

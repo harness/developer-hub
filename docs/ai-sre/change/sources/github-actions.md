@@ -20,9 +20,9 @@ Configure GitHub Actions workflows to send build and deployment data to the [Dep
 
 ## Before you begin
 
-- **Deploy Change Investigator setup**: Create build and deploy webhook integrations in AI SRE. Go to [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) for setup instructions.
-- **GitHub repository access**: Permission to edit workflows and add secrets.
-- **Webhook URLs**: Copy the build and deploy webhook URLs from your AI SRE integrations.
+- **Deploy Change Investigator setup:** Create build and deploy webhook integrations in AI SRE. Go to [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) to set up the webhook endpoints.
+- **GitHub repository access:** Permission to edit workflows and add secrets.
+- **Webhook URLs:** Copy the build and deploy webhook URLs from your AI SRE integrations.
 
 ---
 
@@ -30,8 +30,8 @@ Configure GitHub Actions workflows to send build and deployment data to the [Dep
 
 Store webhook URLs securely in GitHub:
 
-1. Navigate to your repository **Settings** → **Secrets and variables** → **Actions**
-2. Click **New repository secret**
+1. In your repository, go to **Settings** > **Secrets and variables** > **Actions**.
+2. Click **New repository secret**.
 3. Create two secrets:
    - **Name:** `AISRE_BUILD_WEBHOOK_URL`
    - **Value:** Your build webhook URL from AI SRE
@@ -263,7 +263,7 @@ For workflows that deploy multiple services:
 
 ---
 
-## Using semantic versions
+## Use semantic versions
 
 If you use semantic versioning instead of commit SHAs:
 
@@ -318,36 +318,36 @@ The Deploy Change Investigator requires exact matches between build and deploy d
 | `artifact.version` or `service.version` | `services[].version` | ✅ Yes |
 
 :::danger Common mistakes
-- **Version mismatch**: Build sends commit SHA, deploy sends semantic version → No match
-- **Service name mismatch**: Build sends full repository name `org/repo`, deploy sends just `repo` → No match
-- Use `${{ github.sha }}` in **both** build and deploy webhooks for consistency
+- **Version mismatch:** Build sends commit SHA, deploy sends semantic version, so there is no match.
+- **Service name mismatch:** Build sends full repository name `org/repo`, deploy sends just `repo`, so there is no match.
+- Use `${{ github.sha }}` in **both** build and deploy webhooks for consistency.
 :::
 
 ---
 
-## Testing webhooks
+## Test webhooks
 
 ### Test build webhook
 
-1. Push a commit or create a PR to trigger your build workflow
-2. Check the workflow run logs for the webhook curl command
-3. Navigate to **AI SRE** → **Integrations**
-4. Click the three-dot menu (**...**) on the BUILD integration
-5. Select **Debug** to view received webhook events
+1. Push a commit or create a PR to trigger your build workflow.
+2. Check the workflow run logs for the webhook curl command.
+3. In the AI SRE left navigation, go to **Integrations**.
+4. Click the **More** icon (**...**) on the BUILD integration.
+5. Select **Debug** to view received webhook events.
 
 ### Test deploy webhook
 
-1. Trigger a deployment workflow
-2. Check the workflow logs for webhook execution
-3. Navigate to **AI SRE** → **Integrations** → DEPLOY → **Debug**
-4. Verify the deploy webhook appears with correct payload
+1. Trigger a deployment workflow.
+2. Check the workflow logs for webhook execution.
+3. In the AI SRE left navigation, go to **Integrations** > DEPLOY > **Debug**.
+4. Verify the deploy webhook appears with correct payload.
 
 ### Verify the connection
 
 After sending both build and deploy webhooks:
 
-1. Navigate to **AI SRE** → **Change Management**
-2. You should see deployment records linked to builds
+1. In the AI SRE left navigation, go to **Change Management**.
+2. You should see deployment records linked to builds.
 3. Click into a deployment to see:
    - Artifact versions
    - Commit SHAs

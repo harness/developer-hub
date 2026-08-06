@@ -28,11 +28,9 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import DocVideo from '@site/src/components/DocVideo';
 
-# AI SRE Onboarding Guide for Incident Responders
-
 This guide walks you through the essentials of using Harness AI SRE as a responder or engineer.
 
-You'll learn how to navigate the dashboard, respond to incidents, collaborate with your team, and use runbooks and AI-powered tools to resolve issues faster.
+You will learn how to navigate the dashboard, respond to incidents, collaborate with your team, and use runbooks and AI-powered tools to resolve issues faster.
 
 Your administrator has already configured the integrations and incident types. This guide focuses on what you need to know to be effective as an incident responder from day one.
 
@@ -45,7 +43,7 @@ Before getting started, confirm the following with your administrator:
 | Harness account access | You have been added to your organization's Harness account with appropriate permissions |
 | Collaboration tools connected | The Harness AI SRE bot is installed in your team's Slack workspace or Google Chat |
 | Monitoring tools configured | Your organization's monitoring tools (Datadog, New Relic, Grafana, etc.) are already integrated |
-| On-call schedule (if applicable) | You've been added to your team's on-call rotation in PagerDuty, OpsGenie, or a similar tool |
+| On-call schedule (if applicable) | You have been added to your team's on-call rotation in PagerDuty, OpsGenie, or a similar tool |
 
 :::info Need admin setup first?
 If your organization has not configured AI SRE yet, share the [AI SRE Onboarding Guide for Administrators](/docs/ai-sre/get-started/onboarding/overview) with your platform team to get started.
@@ -61,7 +59,7 @@ If your organization has not configured AI SRE yet, share the [AI SRE Onboarding
 The AI SRE dashboard is your central hub during on-call shifts and day-to-day operations.
 
 1. Log in to your **Harness account**.
-2. Navigate to **AI SRE** from the left navigation panel and click **Overview**.
+2. Navigate to **AI SRE** from the left navigation panel, then click **Overview**.
 
    <img src={require('./static/nav-ai-sre.png').default} alt="Harness left navigation with AI SRE highlighted" width="300" />
    <!-- Screenshot: Left nav with AI SRE module selected -->
@@ -72,9 +70,9 @@ The AI SRE dashboard is your central hub during on-call shifts and day-to-day op
 
    On the dashboard, review the following:
 
-   - **Active Incidents**, Any ongoing incidents that need attention.
-   - **Recent Alerts**, The latest alerts from your monitoring tools.
-   - **Metrics and Trends**, Key reliability metrics like MTTR and incident volume.
+   - **Active Incidents:** Any ongoing incidents that need attention.
+   - **Recent Alerts:** The latest alerts from your monitoring tools.
+   - **Metrics and Trends:** Key reliability metrics like MTTR and incident volume.
 
    <!-- Screenshot: Main dashboard showing active incidents, recent alerts, and metrics panels -->
 
@@ -95,8 +93,8 @@ Get familiar with the dashboard layout, active incidents, alerts, and key metric
 </Tabs>
 
 **Learn more:**
-- [Understanding Incident Types](/docs/ai-sre/incidents), Learn how incident types map to severity levels and responder teams.
-- [Integration Overview](/docs/category/integrations), See which monitoring tools are connected to your environment.
+- Go to [Understanding Incident Types](/docs/ai-sre/incidents) to learn how incident types map to severity levels and responder teams.
+- Go to [Integration Overview](/docs/category/integrations) to see which monitoring tools are connected to your environment.
 
 ---
 
@@ -105,9 +103,9 @@ Get familiar with the dashboard layout, active incidents, alerts, and key metric
 <Tabs groupId="ai-sre-user" queryString>
   <TabItem value="Step by Step" label="Step by Step" default>
 
-When an incident is created, automatically from a monitoring alert or manually by a teammate, here's how to respond.
+When an incident is created, automatically from a monitoring alert or manually by a teammate, here is how to respond.
 
-1. You'll receive a notification via **[Harness On-Call](/docs/category/handle-on-call)**, **Slack**, **Google Chat**, or your on-call tool.
+1. You will receive a notification via **[Harness On-Call](/docs/category/handle-on-call)**, **Slack**, **Google Chat**, or your on-call tool.
 
    ![Slack incident notification](./static/slack-incident-notification.png)
    <!-- Screenshot: Slack message showing an incident notification with a link to the incident -->
@@ -118,11 +116,11 @@ When an incident is created, automatically from a monitoring alert or manually b
    <!-- Screenshot: Full incident detail page showing summary, severity, and timeline -->
 
 3. Review the incident summary:
-   - **Severity** and **incident type**, Understand the scope and priority.
-   - **Timeline**, The sequence of alerts and events that triggered the incident.
-   - **Related alerts**, Correlated monitoring data and affected services.
+   - **Severity** and **incident type:** Understand the scope and priority.
+   - **Timeline:** The sequence of alerts and events that triggered the incident.
+   - **Related alerts:** Correlated monitoring data and affected services.
 
-4. If you've been paged about the incident, **acknowledge** the incident to let your team know you are on it.
+4. If you have been paged about the incident, **acknowledge** the incident to let your team know you are on it.
 
    <!-- ![Acknowledge button on incident detail page](./static/incident-acknowledge.png) -->
    <!-- Screenshot: Incident detail header with the Acknowledge button highlighted -->
@@ -153,8 +151,8 @@ Learn how to acknowledge, triage, and begin working on an incident when you are 
 </Tabs>
 
 **Learn more:**
-- [Slack Commands Reference](/docs/ai-sre/get-started/slack-commands), Manage incidents directly from Slack without switching to the UI.
-- [AI Scribe Agent](/docs/ai-sre/ai-agent), See how the Scribe captures your incident activity automatically.
+- Go to [Slack Commands Reference](/docs/ai-sre/get-started/slack-commands) to manage incidents directly from Slack without switching to the UI.
+- Go to [AI Scribe Agent](/docs/ai-sre/ai-agent) to see how the Scribe captures your incident activity automatically.
 
 ---
 
@@ -169,7 +167,7 @@ Not every incident starts from an automated alert. If you notice a problem, cust
 
    ![Incident list view](./static/incident-list.png)
 
-2. Click **+ New Incident** or select an incident type from the **+ New Incident** drop-down.
+2. Click **New Incident**, or select an incident type from the **New Incident** dropdown.
 
 3. The **Create a New Incident** form appears.
 
@@ -177,9 +175,9 @@ Not every incident starts from an automated alert. If you notice a problem, cust
    <!-- Screenshot: Create incident form with the Incident Type dropdown open -->
 
 4. Fill in the incident details:
-   - **Title**, A clear, concise summary (e.g., "Elevated error rates on checkout API").
-   - **Severity**, Choose the appropriate level based on impact.
-   - **Description**, What you are observing, when it started, and any initial hypotheses.
+   - **Title:** A clear, concise summary (for example, "Elevated error rates on checkout API").
+   - **Severity:** Choose the appropriate level based on impact.
+   - **Description:** What you are observing, when it started, and any initial hypotheses.
    - Any additional **required fields** specific to your incident type.
 
 5. Click **Save**.
@@ -195,14 +193,14 @@ You can also create incidents directly from Slack using the `/harness new` comma
 
 <DocVideo src="https://app.tango.us/app/embed/f14f004b-3405-4384-baae-48a035a8eb12?skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=false&hideAuthorAndDetails=true" title="Create a new incident in Harness AI SRE" />
 
-Sometimes you'll spot an issue before automated monitoring catches it. Learn how to declare an incident manually.
+Sometimes you will spot an issue before automated monitoring catches it. Learn how to declare an incident manually.
 
   </TabItem>
 </Tabs>
 
 **Learn more:**
-- [Slack Commands Reference](/docs/ai-sre/get-started/slack-commands), Use `/harness new` and other commands to create and manage incidents from Slack.
-- [Understanding Incident Types](/docs/ai-sre/incidents), Learn what incident types are available and how they affect notifications and runbooks.
+- Go to [Slack Commands Reference](/docs/ai-sre/get-started/slack-commands) to use `/harness new` and other commands to create and manage incidents from Slack.
+- Go to [Understanding Incident Types](/docs/ai-sre/incidents) to learn what incident types are available and how they affect notifications and runbooks.
 
 ---
 
@@ -239,8 +237,8 @@ Some run automatically when certain conditions are met; others can be triggered 
    <!-- Screenshot: Add Runbook search dialog with results listed -->
 
 6. Work through the runbook step by step:
-   - **Automated steps** will run and report results without any action from you.
-   - **Manual steps** show instructions for you to follow. Mark each one complete as you go.
+   - **Automated steps:** Run and report results without any action from you.
+   - **Manual steps:** Show instructions for you to follow. Mark each one complete as you go.
 
    <!-- ![Runbook execution view showing step progress](./static/runbook-execution.png) -->
    <!-- Screenshot: Runbook execution view with a mix of completed, in-progress, and pending steps -->
@@ -262,8 +260,8 @@ Runbooks guide you through predefined response steps and can automate common act
 </Tabs>
 
 **Learn more:**
-- [Browsing Runbooks](/docs/ai-sre/runbooks/create-runbook), Explore the runbook library to see what playbooks are available to you.
-- [Understanding Incident Types](/docs/ai-sre/incidents), See which runbooks are associated with each incident type.
+- Go to [Browsing Runbooks](/docs/ai-sre/runbooks/create-runbook) to explore the runbook library and see what playbooks are available to you.
+- Go to [Understanding Incident Types](/docs/ai-sre/incidents) to see which runbooks are associated with each incident type.
 
 ---
 
@@ -271,9 +269,9 @@ Runbooks guide you through predefined response steps and can automate common act
 
 The AI Scribe Agent works alongside you during incidents to reduce manual overhead.
 
-- **Automatic summaries**, The Scribe monitors your incident channel and picks out key decisions, actions, and findings as they happen.
-- **Timeline generation**, It builds a structured timeline from channel activity, status changes, and runbook execution.
-- **Post-incident reports**, After resolution, the Scribe drafts a post-incident report from the timeline and channel discussions, giving you a head start on the retrospective.
+- **Automatic summaries:** The Scribe monitors your incident channel and picks out key decisions, actions, and findings as they happen.
+- **Timeline generation:** It builds a structured timeline from channel activity, status changes, and runbook execution.
+- **Post-incident reports:** After resolution, the Scribe drafts a post-incident report from the timeline and channel discussions, giving you a head start on the retrospective.
 
 To access Scribe outputs, open the **Details** page and look for the AI-generated **Incident Summary**.
 
@@ -285,15 +283,15 @@ Also, the **Timeline** tab shows updates generated by the Scribe.
 <!-- Screenshot: Incident detail page showing the AI Summary and Timeline sections populated by the Scribe -->
 
 **Learn more:**
-- [AI Scribe Agent](/docs/ai-sre/ai-agent), Full documentation on how the Scribe works and how to get the most out of it.
-- [RCA Change Agent](/docs/ai-sre/ai-agent/rca-change-agent), See how AI-powered root cause analysis works alongside the Scribe during an incident.
+- Go to [AI Scribe Agent](/docs/ai-sre/ai-agent) to read the full documentation on how the Scribe works and how to get the most out of it.
+- Go to [RCA Change Agent](/docs/ai-sre/ai-agent/rca-change-agent) to see how AI-powered root cause analysis works alongside the Scribe during an incident.
 
 ---
 
 ## Next steps {#ai-sre-user-next-steps}
 
-- **[Slack Commands Reference](/docs/ai-sre/get-started/slack-commands)**, The full set of slash commands for managing incidents from Slack.
-- **[Understanding Incident Types](/docs/ai-sre/incidents)**, How incident types map to severity levels, responder teams, and escalation paths.
-- **[Browsing Runbooks](/docs/ai-sre/runbooks/create-runbook)**, Explore the automated playbooks available to you.
-- **[Integration Overview](/docs/category/integrations)**, Which monitoring, communication, and ITSM tools are connected to your environment.
-- **[AI Scribe Agent](/docs/ai-sre/ai-agent)**, Deeper documentation on AI-powered incident documentation and insights.
+- Go to [Slack Commands Reference](/docs/ai-sre/get-started/slack-commands) for the full set of slash commands for managing incidents from Slack.
+- Go to [Understanding Incident Types](/docs/ai-sre/incidents) to understand how incident types map to severity levels, responder teams, and escalation paths.
+- Go to [Browsing Runbooks](/docs/ai-sre/runbooks/create-runbook) to explore the automated playbooks available to you.
+- Go to [Integration Overview](/docs/category/integrations) to see which monitoring, communication, and ITSM tools are connected to your environment.
+- Go to [AI Scribe Agent](/docs/ai-sre/ai-agent) for deeper documentation on AI-powered incident documentation and insights.

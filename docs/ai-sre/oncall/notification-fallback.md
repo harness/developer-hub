@@ -2,12 +2,10 @@
 title: Configure Notification Fallback
 description: Reach responders via SMS, push, voice, email, or Slack when primary channels fail.
 sidebar_label: Configure Notification Fallback
-sidebar_position: 7
+sidebar_position: 8
 ---
 
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
-
-# Configure Notification Fallback
 
 Configure multi-channel notification fallback to ensure on-call responders are reached via SMS, push, voice, email, or Slack when primary channels fail. Harness AI SRE automatically tries alternative notification methods when primary channels fail, ensuring on-call responders are reliably notified during critical incidents.
 

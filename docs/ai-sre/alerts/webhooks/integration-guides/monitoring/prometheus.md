@@ -3,18 +3,26 @@ title: Prometheus AlertManager Integration Guide
 description: Send Alertmanager alerts through webhooks.
 sidebar_label: Prometheus AlertManager
 sidebar_position: 7
+keywords:
+  - Prometheus
+  - AlertManager
+  - webhook
+  - AI SRE
+tags:
+  - ai-sre
+  - webhooks
+  - prometheus
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
-# Configure Prometheus AlertManager to Send Webhooks
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
 Configure Prometheus AlertManager to send webhook notifications to Harness AI SRE when alerts fire.
 
 ## Before you begin
 
-- **Harness webhook endpoint**: Create a Prometheus webhook in Harness AI SRE using the [Prometheus webhook template](../../templates/monitoring/prometheus.md).
+- **Harness webhook endpoint**: Create a Prometheus webhook in Harness AI SRE using the [Prometheus webhook template](/docs/ai-sre/alerts/webhooks/templates/monitoring/prometheus).
 - **AlertManager access**: Permissions to modify AlertManager configuration.
 - **Webhook URL**: Copy the webhook URL from your Harness webhook configuration.
 - **AlertManager configuration documentation**: Go to [Prometheus AlertManager Configuration](https://prometheus.io/docs/alerting/latest/configuration/) to understand AlertManager setup and routing rules.
@@ -355,57 +363,29 @@ inhibit_rules:
 
 ## Troubleshooting
 
-### Webhook not sending
+<Troubleshoot
+  issue="Prometheus AlertManager webhook is not sending alerts to Harness AI SRE"
+  mode="general"
+  fallback="Check the AlertManager logs, verify the configuration syntax with amtool check-config, and test the webhook URL manually with curl."
+/>
 
-**Cause**: AlertManager configuration error or network issue.
+<Troubleshoot
+  issue="Prometheus AlertManager alerts are not appearing in Harness AI SRE"
+  mode="docs"
+  fallback="Check the Harness webhook logs for errors, verify the CEL filter logic by removing the filter temporarily, and inspect the raw payload in the AlertManager webhook logs."
+/>
 
-**Solution**:
-- Check AlertManager logs: `docker logs alertmanager`
-- Verify configuration syntax: `amtool check-config alertmanager.yml`
-- Test webhook URL manually:
+<Troubleshoot
+  issue="Prometheus AlertManager is creating multiple duplicate alerts in Harness AI SRE"
+  mode="general"
+  fallback="Adjust the AlertManager group_by and group_interval settings, and use Harness alert routing rules to deduplicate by fingerprint."
+/>
 
-```bash
-curl -X POST \
-  -H "Content-Type: application/json" \
-  -d '{"status":"firing","alerts":[{"labels":{"alertname":"Test"}}]}' \
-  https://your-harness-instance/gateway/ai-sre/api/webhooks/<webhook-id>
-```
-
-### Alerts not appearing in Harness
-
-**Cause**: Field mapping incorrect or CEL filter blocking alerts.
-
-**Solution**:
-- Check Harness webhook logs for errors
-- Verify CEL filter logic (remove filter temporarily to test)
-- Inspect raw payload in AlertManager webhook logs
-
-### Multiple duplicate alerts
-
-**Cause**: AlertManager grouping configuration or Harness not deduplicating.
-
-**Solution**:
-- Adjust AlertManager `group_by` and `group_interval`
-- Use Harness alert routing rules to deduplicate by fingerprint:
-
-```cel
-// In Harness CEL
-filter: !has(webhook.alerts[0].fingerprint) || 
-        // Add deduplication logic
-```
-
-### Resolved alerts not clearing
-
-**Cause**: `send_resolved: false` in webhook config.
-
-**Solution**:
-- Set `send_resolved: true` in AlertManager webhook config
-- Handle resolved status in Harness:
-
-```cel
-severity: webhook.status == "resolved" ? "info" : 
-          (webhook.alerts[0].labels.severity == "critical" ? "critical" : "high")
-```
+<Troubleshoot
+  issue="Resolved Prometheus AlertManager alerts are not clearing in Harness AI SRE"
+  mode="general"
+  fallback="Set send_resolved: true in the AlertManager webhook config, and handle the resolved status in the Harness CEL severity mapping."
+/>
 
 ---
 
@@ -504,17 +484,17 @@ custom_fields:
 
 ## Next steps
 
-- Go to [Route Alerts](../../../alert-rules/overview.md) to route and deduplicate Prometheus alerts.
-- Go to [Use CEL in Webhooks](../../use-cel-webhooks.md) to add advanced filtering and batching logic.
-- Go to [AI Agent](../../../../ai-agent/ai-agent.md) to enable automated alert investigation.
-- Go to [Prometheus Template](../../templates/monitoring/prometheus.md) for the pre-configured template.
+- [Route alerts](/docs/ai-sre/alerts/alert-rules/overview): Route and deduplicate Prometheus alerts.
+- [Use CEL in webhooks](/docs/ai-sre/alerts/webhooks/use-cel-webhooks): Add advanced filtering and batching logic.
+- [AI agent](/docs/ai-sre/ai-agent): Enable automated alert investigation.
+- [Prometheus template](/docs/ai-sre/alerts/webhooks/templates/monitoring/prometheus): Use the pre-configured template.
 
 ---
 
 ## Further reading
 
-### Prometheus Official Documentation
-- [AlertManager Configuration](https://prometheus.io/docs/alerting/latest/configuration/) - Complete guide to AlertManager configuration, webhook receivers, and routing rules
-- [Webhook Config](https://prometheus.io/docs/alerting/latest/configuration/#webhook_config) - Webhook receiver configuration options (`url`, `send_resolved`, `max_alerts`, `http_config`)
-- [Notifications](https://prometheus.io/docs/alerting/latest/notifications/) - Webhook payload format, alerts array structure, labels, and annotations
-- [Notification Examples](https://prometheus.io/docs/alerting/latest/notification_examples/) - Example webhook payloads and field names
+### Prometheus official documentation
+- [AlertManager configuration](https://prometheus.io/docs/alerting/latest/configuration/): Complete guide to AlertManager configuration, webhook receivers, and routing rules.
+- [Webhook config](https://prometheus.io/docs/alerting/latest/configuration/#webhook_config): Webhook receiver configuration options (`url`, `send_resolved`, `max_alerts`, `http_config`).
+- [Notifications](https://prometheus.io/docs/alerting/latest/notifications/): Webhook payload format, alerts array structure, labels, and annotations.
+- [Notification examples](https://prometheus.io/docs/alerting/latest/notification_examples/): Example webhook payloads and field names.

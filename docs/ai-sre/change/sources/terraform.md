@@ -20,9 +20,9 @@ Track Terraform infrastructure changes by sending deployment webhooks when `terr
 
 ## Before you begin
 
-- **Deploy Change Investigator setup**: Deploy webhook integration created in AI SRE. Go to [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) to create webhook endpoint.
-- **Terraform access**: Permission to modify Terraform configurations or CI/CD pipelines that run Terraform.
-- **Deploy webhook URL**: Deploy webhook URL from AI SRE integrations page.
+- **Deploy Change Investigator setup:** Deploy webhook integration created in AI SRE. Go to [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) to create the webhook endpoint.
+- **Terraform access:** Permission to modify Terraform configurations or CI/CD pipelines that run Terraform.
+- **Deploy webhook URL:** Deploy webhook URL from the AI SRE integrations page.
 
 ---
 
@@ -30,9 +30,9 @@ Track Terraform infrastructure changes by sending deployment webhooks when `terr
 
 Send Terraform deployment webhooks using one of these methods:
 
-1. **CI/CD wrapper** (recommended) - Send webhooks from CI/CD pipeline after `terraform apply`
-2. **Local provisioner** - Use `local-exec` provisioner in Terraform configuration
-3. **Terraform Cloud** - Use run notifications
+1. **CI/CD wrapper (recommended):** Send webhooks from the CI/CD pipeline after `terraform apply`.
+2. **Local provisioner:** Use the `local-exec` provisioner in your Terraform configuration.
+3. **Terraform Cloud:** Use run notifications.
 
 ---
 
@@ -228,8 +228,8 @@ deploy_webhook_url = "https://app.harness.io/..."
 
 ### Using Terraform Cloud variables
 
-1. Navigate to workspace **Settings** → **Variables**
-2. Add variable:
+1. Navigate to workspace **Settings**, then select **Variables**
+2. Add a variable:
    - **Key:** `deploy_webhook_url`
    - **Value:** Webhook URL
    - **Category:** Terraform variable
@@ -313,18 +313,18 @@ provisioner "local-exec" {
 
 ### Test from CI/CD
 
-1. Run Terraform apply in CI/CD
+1. Run `terraform apply` in CI/CD
 2. Check pipeline logs for webhook execution
-3. Navigate to **AI SRE** → **Integrations**
-4. Click **...** menu on DEPLOY integration
+3. Navigate to **AI SRE**, then select **Integrations**
+4. Click the **More** icon on the DEPLOY integration
 5. Select **Debug**
-6. Verify webhook appears
+6. Verify the webhook appears
 
 ### Test local provisioner
 
 1. Run `terraform apply` locally
-2. Check console output for curl execution
-3. Verify webhook in AI SRE Debug view
+2. Check the console output for curl execution
+3. Verify the webhook in the AI SRE Debug view
 
 ---
 
@@ -352,15 +352,15 @@ provisioner "local-exec" {
 
 ## Best practices
 
-- **Store webhook URLs securely**: Use environment variables, Terraform Cloud sensitive variables, or CI/CD secrets
-- **Use CI/CD wrapper**: More reliable than provisioners for webhook notifications
-- **Separate infrastructure changes**: Track infrastructure deployments separately from application deployments
-- **Version consistently**: Use commit SHA or timestamp for infrastructure change versions
+- **Store webhook URLs securely:** Use environment variables, Terraform Cloud sensitive variables, or CI/CD secrets.
+- **Use the CI/CD wrapper:** It is more reliable than provisioners for webhook notifications.
+- **Separate infrastructure changes:** Track infrastructure deployments separately from application deployments.
+- **Version consistently:** Use the commit SHA or a timestamp for infrastructure change versions.
 
 ---
 
 ## Next steps
 
-- Go to [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) for complete setup instructions.
-- Go to [AI Agent RCA](/docs/ai-sre/ai-agent/rca-change-agent) to learn how the AI agent uses change detection during incidents.
-- Go to [Configure Jenkins](/docs/ai-sre/change/sources/jenkins) for webhook setup in Jenkins pipelines.
+- Go to [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) to complete the setup.
+- Go to [AI Agent RCA](/docs/ai-sre/ai-agent/rca-change-agent) to understand how the AI agent uses change detection during incidents.
+- Go to [Configure Jenkins](/docs/ai-sre/change/sources/jenkins) to set up webhooks in Jenkins pipelines.

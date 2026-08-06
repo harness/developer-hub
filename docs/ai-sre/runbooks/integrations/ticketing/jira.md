@@ -3,14 +3,22 @@ title: Jira Actions for Runbooks
 sidebar_label: Jira
 sidebar_position: 8
 description: Create and update tickets from runbooks with dynamic field mapping.
+keywords:
+  - jira
+  - ticketing
+  - issue tracking
+  - field mapping
+  - runbooks
+tags:
+  - ai-sre
+  - integrations
+  - jira
 redirect_from:
 - /docs/ai-sre/runbooks/integrations/jira
 - /docs/incident-response/runbooks/integrations/jira
 ---
 
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
-
-# Jira Actions for Runbooks
 
 Harness AI SRE integrates with Jira through runbook actions, enabling automated ticket management and incident tracking. Jira actions support dynamic field mapping, automatically discovering and populating any Jira field based on your project configuration.
 
@@ -33,34 +41,34 @@ The dynamic field mapping feature automatically discovers available fields from 
 
 Before using Jira actions in runbooks, ensure you have:
 
-- **Jira connector configured**: Set up a Jira connector in **Project Settings** → **Connectors**. Go to [Configure Project Connectors](/docs/ai-sre/runbooks/configure-project-connectors) to set up your Jira connection.
-- **Jira admin access**: To create API tokens and configure permissions
-- **API credentials**: API token (for Jira Cloud) or username/password (for Jira Server/Data Center)
-- **Harness Project Admin role**: To configure connectors and create runbooks
+- **Jira connector configured:** Set up a Jira connector in **Project Settings**, then **Connectors**. Go to [Configure Project Connectors](/docs/ai-sre/runbooks/configure-project-connectors) to set up your Jira connection.
+- **Jira admin access:** To create API tokens and configure permissions
+- **API credentials:** API token (for Jira Cloud) or username/password (for Jira Server/Data Center)
+- **Harness Project Admin role:** To configure connectors and create runbooks
 
 ### Required Jira permissions
 
 The Jira user account must have these permissions in the target projects:
 
-- **Browse Projects**: View project details and issues
-- **Create Issues**: Create new issues and sub-tasks
-- **Edit Issues**: Update issue fields and descriptions
-- **Transition Issues**: Change issue status through workflows
-- **Add Comments**: Post comments on issues
-- **View Custom Fields**: Access custom field values
+- **Browse Projects:** View project details and issues
+- **Create Issues:** Create new issues and sub-tasks
+- **Edit Issues:** Update issue fields and descriptions
+- **Transition Issues:** Change issue status through workflows
+- **Add Comments:** Post comments on issues
+- **View Custom Fields:** Access custom field values
 
 ---
 
-## Using Jira Actions in Runbooks
+## Use Jira actions in runbooks
 
 Jira actions are configured through the runbook action form in the UI:
 
-1. **In your runbook**, click **New Step** → **Action**
+1. **In your runbook**, click **New Step**, then **Action**.
 
    ![New Step Menu](../static/runbook-new-step-menu.png)
 
-2. In the **Select Action** dialog, go to **Tickets & Code** category
-3. Select the Jira action you need from the available options
+2. In the **Select Action** dialog, go to the **Tickets & Code** category.
+3. Select the Jira action you need from the available options.
 
    ![Select Action Dialog](../static/action-transition-jira-issue.png)
 
@@ -70,7 +78,7 @@ Jira actions are configured through the runbook action form in the UI:
 
 ## Jira actions
 
-### Create Jira Issue
+### Create Jira issue
 
 Creates a new Jira issue with dynamic field mapping. The action automatically discovers available fields from your selected Jira project and issue type.
 
@@ -88,9 +96,9 @@ Creates a new Jira issue with dynamic field mapping. The action automatically di
    - Custom fields (with custom field IDs)
    - Required fields are marked with an asterisk (*)
 5. For each field, enter a value:
-   - **Static value**: Fixed text (e.g., `High`, `production`)
-   - **Mustache variable**: Dynamic value from incident data (e.g., `{{Activity.severity}}`)
-   - **Combined**: Mix static text and variables (e.g., `[{{Activity.severity}}] {{Activity.title}}`)
+   - **Static value:** Fixed text (e.g., `High`, `production`)
+   - **Mustache variable:** Dynamic value from incident data (e.g., `{{Activity.severity}}`)
+   - **Combined:** Mix static text and variables (e.g., `[{{Activity.severity}}] {{Activity.title}}`)
 
 #### Available Mustache variables
 
@@ -111,14 +119,14 @@ Use these variables to map AI SRE incident data to Jira fields:
 
 For custom incident fields, use `{{Activity.custom_field_name}}` where `custom_field_name` is the field identifier from your incident template.
 
-#### Example: Create incident tracking issue
+#### Example: create incident tracking issue
 
 In the runbook editor, configure the Create Jira Issue action:
 
-- **Project Key**: `INCIDENT`
-- **Issue Type**: `Bug`
-- **Summary**: `[{{Activity.severity}}] {{Activity.title}}`
-- **Description**: 
+- **Project Key:** `INCIDENT`
+- **Issue Type:** `Bug`
+- **Summary:** `[{{Activity.severity}}] {{Activity.title}}`
+- **Description:** 
   ```
   Incident Details:
   - Service: {{Activity.service}}
@@ -126,14 +134,14 @@ In the runbook editor, configure the Create Jira Issue action:
   - Status: {{Activity.status}}
   - Incident URL: {{Activity.url}}
   ```
-- **Add Field** → **Priority**: `High`
-- **Add Field** → **Labels**: `incident, {{Activity.service}}, {{Activity.severity}}`
-- **Add Field** → **Assignee**: `{{Activity.owner}}`
-- **Add Field** → **Components**: `{{Activity.service}}`
+- **Add Field**, then **Priority:** `High`
+- **Add Field**, then **Labels:** `incident, {{Activity.service}}, {{Activity.severity}}`
+- **Add Field**, then **Assignee:** `{{Activity.owner}}`
+- **Add Field**, then **Components:** `{{Activity.service}}`
 
 **Result:** Jira issue `INCIDENT-123` created with title `[P1] API Gateway Outage`, high priority, assigned to incident owner, labeled with service and severity.
 
-### Update Jira Issue
+### Update Jira issue
 
 Updates an existing Jira issue with new field values. Like the Create action, this supports dynamic field mapping for any updateable field.
 
@@ -141,23 +149,22 @@ Updates an existing Jira issue with new field values. Like the Create action, th
 
 1. In the runbook editor, add an **Update Jira Issue** action.
 2. Configure the required fields:
-   - **Issue Key**: The Jira issue key to update (e.g., `INCIDENT-123`, supports typeahead search)
+   - **Issue Key:** The Jira issue key to update (e.g., `INCIDENT-123`, supports typeahead search)
 3. Click **Add Field** to select fields to update.
 4. For each field, provide the new value (static or Mustache variable).
 
-#### Example: Update issue when incident resolves
+#### Example: update issue when incident resolves
 
 In the runbook editor, configure the Update Jira Issue action:
 
-- **Issue Key**: `{{Activity.jira_ticket}}`
-- **Issue Key**: `{{Activity.jira_ticket}}`
-- **Add Field** → **Resolution**: `Fixed`
-- **Add Field** → **Custom Field (Resolution Notes)**: `{{Activity.resolution_notes}}`
-- **Add Field** → **Description**: `{{Activity.resolution_notes}}`
+- **Issue Key:** `{{Activity.jira_ticket}}`
+- **Add Field**, then **Resolution:** `Fixed`
+- **Add Field**, then **Custom Field (Resolution Notes):** `{{Activity.resolution_notes}}`
+- **Add Field**, then **Description:** `{{Activity.resolution_notes}}`
 
 **Result:** Jira issue transitions to Done status with resolution notes from the incident.
 
-### Transition Jira Issue
+### Transition Jira issue
 
 Moves a Jira issue through workflow states.
 
@@ -165,17 +172,17 @@ Moves a Jira issue through workflow states.
 
 1. Add a **Transition Jira Issue** action.
 2. Configure:
-   - **Issue Key**: The issue to transition
-   - **Transition Name**: The workflow transition name (e.g., `In Progress`, `Done`)
+   - **Issue Key:** The issue to transition
+   - **Transition Name:** The workflow transition name (e.g., `In Progress`, `Done`)
 
-#### Example: Move issue to In Progress
+#### Example: move issue to In Progress
 
 In the runbook editor, configure the Transition Jira Issue action:
 
-- **Issue Key**: `{{Activity.jira_ticket}}`
-- **Transition Name**: `In Progress`
+- **Issue Key:** `{{Activity.jira_ticket}}`
+- **Transition Name:** `In Progress`
 
-### Add Comment to Jira Issue
+### Add comment to Jira issue
 
 Posts a comment to an existing Jira issue.
 
@@ -183,15 +190,15 @@ Posts a comment to an existing Jira issue.
 
 1. Add an **Add Comment to Jira Issue** action.
 2. Configure:
-   - **Issue Key**: The issue to comment on
-   - **Comment**: The comment text (supports Mustache variables)
+   - **Issue Key:** The issue to comment on
+   - **Comment:** The comment text (supports Mustache variables)
 
-#### Example: Add incident update
+#### Example: add incident update
 
 In the runbook editor, configure the Add Comment to Jira Issue action:
 
-- **Issue Key**: `{{Activity.jira_ticket}}`
-- **Comment**: `Incident status updated to {{Activity.status}} by {{Activity.owner}}`
+- **Issue Key:** `{{Activity.jira_ticket}}`
+- **Comment:** `Incident status updated to {{Activity.status}} by {{Activity.owner}}`
 
 ---
 
@@ -217,7 +224,7 @@ The Jira integration supports all Jira field types with automatic formatting:
 | Field Type | Jira Field Types | Value Format | Example | Notes |
 |------------|------------------|--------------|---------|-------|
 | **Text** | Single Line Text, Paragraph, Text Field | Static text, Mustache variable, or combined | `{{Activity.title}}`<br/>`Incident affecting {{Activity.service}}` | Use for Summary, Description, custom text fields |
-| **Select (single)** | Select List, Priority, Status, Resolution | Value must match allowed option (case-sensitive) | **Priority**: `High`<br/>**Status**: `Open`<br/>**Custom Field**: `{{Activity.severity}}` | Values must match Jira options exactly. For severity mapping, use runbook logic to transform P1 → Critical, P2 → High, etc. |
+| **Select (single)** | Select List, Priority, Status, Resolution | Value must match allowed option (case-sensitive) | **Priority**: `High`<br/>**Status**: `Open`<br/>**Custom Field**: `{{Activity.severity}}` | Values must match Jira options exactly. For severity mapping, use runbook logic to transform P1 to Critical, P2 to High, etc. |
 | **Multi-select** | Labels, Components, Multi-Select, Checkboxes | Comma-separated list | **Labels**: `incident, {{Activity.service}}`<br/>**Components**: `{{Activity.service}}` | For Labels: spaces are treated as separators. Use hyphens: `payment-service` not `payment service` |
 | **User** | User Picker, Assignee, Reporter | Email address, username, or account ID | **Assignee**: `{{Activity.owner}}`<br/>**Reporter**: `sre-bot@company.com` | Email addresses are automatically resolved to Jira users. If no match, field is left empty. Supports typeahead search. |
 | **Date/Datetime** | Date Picker, Date Time Picker | ISO 8601 format:<br/>`YYYY-MM-DD` or `YYYY-MM-DDTHH:MM:SSZ` | **Due Date**: `2026-05-10`<br/>**Custom Field**: `{{Activity.created_at}}` | Use ISO 8601 format for compatibility |
@@ -235,11 +242,11 @@ The Jira integration supports all Jira field types with automatic formatting:
 **Runbook configuration:**
 
 1. **Trigger**: Incident created with severity P1 or P2
-2. **Action**: Create Jira Issue
-   - **Project Key**: `INCIDENT`
-   - **Issue Type**: `Bug`
-   - **Summary**: `[{{Activity.severity}}] {{Activity.title}}`
-   - **Description**: 
+2. **Action:** Create Jira Issue
+   - **Project Key:** `INCIDENT`
+   - **Issue Type:** `Bug`
+   - **Summary:** `[{{Activity.severity}}] {{Activity.title}}`
+   - **Description:** 
      ```
      Incident Details:
      - Service: {{Activity.service}}
@@ -250,10 +257,10 @@ The Jira integration supports all Jira field types with automatic formatting:
      Summary:
      {{Activity.summary}}
      ```
-   - **Add Field** → **Priority**: `High`
-   - **Add Field** → **Labels**: `incident, {{Activity.service}}, {{Activity.severity}}`
-   - **Add Field** → **Assignee**: `{{Activity.owner}}`
-   - **Add Field** → **Components**: `{{Activity.service}}`
+   - **Add Field**, then **Priority:** `High`
+   - **Add Field**, then **Labels:** `incident, {{Activity.service}}, {{Activity.severity}}`
+   - **Add Field**, then **Assignee:** `{{Activity.owner}}`
+   - **Add Field**, then **Components:** `{{Activity.service}}`
 
 ### Pattern 2: Custom field population for compliance
 
@@ -261,20 +268,20 @@ The Jira integration supports all Jira field types with automatic formatting:
 
 **Runbook configuration:**
 
-1. **Action**: Create Jira Issue
-   - **Project Key**: `SRE`
-   - **Issue Type**: `Incident`
-   - **Summary**: `{{Activity.title}}`
-   - **Description**: `{{Activity.summary}}`
-   - **Add Field** → **Priority**: `Critical`
-   - **Add Field** → **Custom Field (Incident ID)**: `{{Activity.id}}`
-   - **Add Field** → **Custom Field (Affected Service)**: `{{Activity.service}}`
-   - **Add Field** → **Custom Field (Environment)**: `{{Activity.environment}}`
-   - **Add Field** → **Custom Field (Start Time)**: `{{Activity.created_at}}`
-   - **Add Field** → **Custom Field (Severity)**: `{{Activity.severity}}`
-   - **Add Field** → **Custom Field (SLA Deadline)**: `{{Activity.sla_deadline}}`
-   - **Add Field** → **Custom Field (Customer Impact)**: `{{Activity.customer_impact}}`
-   - **Add Field** → **Custom Field (Business Unit)**: `{{Activity.business_unit}}`
+1. **Action:** Create Jira Issue
+   - **Project Key:** `SRE`
+   - **Issue Type:** `Incident`
+   - **Summary:** `{{Activity.title}}`
+   - **Description:** `{{Activity.summary}}`
+   - **Add Field**, then **Priority:** `Critical`
+   - **Add Field**, then **Custom Field (Incident ID):** `{{Activity.id}}`
+   - **Add Field**, then **Custom Field (Affected Service):** `{{Activity.service}}`
+   - **Add Field**, then **Custom Field (Environment):** `{{Activity.environment}}`
+   - **Add Field**, then **Custom Field (Start Time):** `{{Activity.created_at}}`
+   - **Add Field**, then **Custom Field (Severity):** `{{Activity.severity}}`
+   - **Add Field**, then **Custom Field (SLA Deadline):** `{{Activity.sla_deadline}}`
+   - **Add Field**, then **Custom Field (Customer Impact):** `{{Activity.customer_impact}}`
+   - **Add Field**, then **Custom Field (Business Unit):** `{{Activity.business_unit}}`
 
 **Result:** Jira issue includes all custom fields needed for compliance reports, SLA tracking, and incident analytics.
 
@@ -284,12 +291,12 @@ The Jira integration supports all Jira field types with automatic formatting:
 
 **Runbook configuration:**
 
-1. **Trigger**: Incident resolved with action items
-2. **Action**: Create Jira Issue
-   - **Project Key**: `PLATFORM`
-   - **Issue Type**: `Story`
-   - **Summary**: `Fix: {{Activity.title}}`
-   - **Description**: 
+1. **Trigger:** Incident resolved with action items
+2. **Action:** Create Jira Issue
+   - **Project Key:** `PLATFORM`
+   - **Issue Type:** `Story`
+   - **Summary:** `Fix: {{Activity.title}}`
+   - **Description:** 
      ```
      Root Cause:
      {{Activity.root_cause}}
@@ -299,13 +306,13 @@ The Jira integration supports all Jira field types with automatic formatting:
      
      Related Incident: {{Activity.url}}
      ```
-   - **Add Field** → **Priority**: `High`
-   - **Add Field** → **Labels**: `tech-debt, incident-followup, {{Activity.service}}`
-   - **Add Field** → **Components**: `{{Activity.service}}`
-   - **Add Field** → **Assignee**: `{{Activity.owner}}`
-   - **Add Field** → **Custom Field (Sprint)**: `Sprint 42`
-   - **Add Field** → **Custom Field (Story Points)**: `5`
-   - **Add Field** → **Custom Field (Epic Link)**: `PLATFORM-123`
+   - **Add Field**, then **Priority:** `High`
+   - **Add Field**, then **Labels:** `tech-debt, incident-followup, {{Activity.service}}`
+   - **Add Field**, then **Components:** `{{Activity.service}}`
+   - **Add Field**, then **Assignee:** `{{Activity.owner}}`
+   - **Add Field**, then **Custom Field (Sprint):** `Sprint 42`
+   - **Add Field**, then **Custom Field (Story Points):** `5`
+   - **Add Field**, then **Custom Field (Epic Link):** `PLATFORM-123`
 
 ### Pattern 4: Bidirectional sync with updates
 
@@ -313,44 +320,41 @@ The Jira integration supports all Jira field types with automatic formatting:
 
 **Runbook 1: Create issue on detection**
 
-1. **Trigger**: Incident created
-2. **Action**: Create Jira Issue
-   - **Project Key**: `INCIDENT`
-   - **Issue Type**: `Bug`
-   - **Summary**: `{{Activity.title}}`
-   - **Description**: `{{Activity.summary}}`
-   - **Add Field** → **Priority**: `High`
-   - **Add Field** → **Status**: `Open`
-   - **Add Field** → **Assignee**: `{{Activity.owner}}`
-3. **Store Output**: Save the Jira issue key (e.g., `{{steps.create_jira_issue.output.key}}`) to incident field `jira_ticket`
+1. **Trigger:** Incident created
+2. **Action:** Create Jira Issue
+   - **Project Key:** `INCIDENT`
+   - **Issue Type:** `Bug`
+   - **Summary:** `{{Activity.title}}`
+   - **Description:** `{{Activity.summary}}`
+   - **Add Field**, then **Priority:** `High`
+   - **Add Field**, then **Status:** `Open`
+   - **Add Field**, then **Assignee:** `{{Activity.owner}}`
+3. **Store Output:** Save the Jira issue key (e.g., `{{steps.create_jira_issue.output.key}}`) to incident field `jira_ticket`
 
 **Runbook 2: Update issue on resolution**
 
-1. **Trigger**: Incident status changes to Resolved
-2. **Action**: Update Jira Issue
-   - **Issue Key**: `{{Activity.jira_ticket}}`
-   - **Issue Key**: `{{Activity.jira_ticket}}`
-   - **Add Field** → **Resolution**: `Fixed`
-   - **Add Field** → **Custom Field (Resolution Notes)**: `{{Activity.resolution_notes}}`
-   - **Add Field** → **Custom Field (Time to Resolve)**: `{{Activity.resolution_time}}`
-   - **Add Field** → **Custom Field (Resolution Notes)**: `{{Activity.resolution_notes}}`
-   - **Add Field** → **Custom Field (Time to Resolve)**: `{{Activity.resolution_time}}`
+1. **Trigger:** Incident status changes to Resolved
+2. **Action:** Update Jira Issue
+   - **Issue Key:** `{{Activity.jira_ticket}}`
+   - **Add Field**, then **Resolution:** `Fixed`
+   - **Add Field**, then **Custom Field (Resolution Notes):** `{{Activity.resolution_notes}}`
+   - **Add Field**, then **Custom Field (Time to Resolve):** `{{Activity.resolution_time}}`
 
 ---
 
-## Advanced Features
+## Advanced features
 
-### Sync Architecture
+### Sync architecture
 <!-- CHANGED (comment #11): The previous :::note said "Bidirectional sync is available by leveraging Harness Pipelines" and listed capabilities as if they were a built-in feature. This framing was misleading, outbound sync (AI SRE → Jira) is native via runbook actions, but inbound sync (Jira → AI SRE) requires the customer to configure a Harness Pipeline with webhooks from Jira. Rewritten to make that distinction explicit. -->
 :::note
-**Outbound sync (AI SRE → Jira) is native** and handled via runbook actions as described above.
+**Outbound sync (AI SRE to Jira) is native** and handled via runbook actions as described above.
 
-**Inbound sync (Jira → AI SRE)** is not a built-in feature. It can be configured using Harness Pipelines as the integration mechanism, you set up a webhook from Jira that triggers a Pipeline, which then updates the corresponding AI SRE incident. This requires customer-side configuration.
+**Inbound sync (Jira to AI SRE)** is not a built-in feature. It can be configured using Harness Pipelines as the integration mechanism. You set up a webhook from Jira that triggers a Pipeline, which then updates the corresponding AI SRE incident. This requires customer-side configuration.
 :::
 
 #### Capabilities
 1. **Status Sync**
-   - Jira → Harness AI SRE status mapping
+   - Jira to Harness AI SRE status mapping
    - Automatic state transitions
    - Custom workflow support
 
@@ -455,7 +459,7 @@ The Jira integration supports all Jira field types with automatic formatting:
 1. **Runbook 1 (Incident created)**: Create Jira issue, store issue key in incident.
 2. **Runbook 2 (Status changed to Investigating)**: Update Jira issue status to In Progress, add comment.
 3. **Runbook 3 (Status changed to Resolved)**: Transition Jira issue to Done, populate resolution fields.
-4. **(Optional) Jira → AI SRE**: Configure a Harness Pipeline triggered by Jira webhooks to update AI SRE incidents when Jira changes.
+4. **(Optional) Jira to AI SRE:** Configure a Harness Pipeline triggered by Jira webhooks to update AI SRE incidents when Jira changes.
 
 **Benefit:** Both systems stay synchronized without manual updates, providing a complete incident record in both platforms.
 

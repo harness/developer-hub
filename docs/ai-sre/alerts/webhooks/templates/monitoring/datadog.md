@@ -3,20 +3,29 @@ title: Datadog Integration Webhook Template
 description: Receive monitoring and APM alerts.
 sidebar_label: Datadog Webhook Template
 sidebar_position: 3
+keywords:
+  - Datadog
+  - webhook
+  - template
+  - integration
+  - AI SRE
+  - alerts
+tags:
+  - ai-sre
+  - webhooks
+  - datadog
 ---
-
-# Datadog Integration Webhook Template
 
 Configure Datadog integration to receive monitoring and APM alerts in Harness AI SRE.
 
 ## Overview
 
 Datadog provides:
-- **Alert ingestion**: Automated alert forwarding from monitors
-- **Metric correlation**: Link alerts to related metrics
-- **Service mapping**: Automatic service discovery
-- **Environment detection**: Production vs staging classification
-- **APM integration**: Application performance monitoring
+- **Alert ingestion:** Automated alert forwarding from monitors
+- **Metric correlation:** Link alerts to related metrics
+- **Service mapping:** Automatic service discovery
+- **Environment detection:** Production vs staging classification
+- **APM integration:** Application performance monitoring
 
 ---
 
@@ -34,11 +43,11 @@ The template automatically configures field mapping to match Datadog alert field
 
 ### In Datadog
 
-Configure Datadog monitors to send webhooks to your Harness webhook URL. Go to [Datadog Webhook Setup](../../integration-guides/monitoring/datadog.md) for complete step-by-step instructions.
+Configure Datadog monitors to send webhooks to your Harness webhook URL. Go to the [Datadog webhook setup guide](/docs/ai-sre/alerts/webhooks/integration-guides/monitoring/datadog) to complete the step-by-step instructions.
 
 ---
 
-## Example Alert Payload
+## Example alert payload
 
 ```json
 {
@@ -68,20 +77,20 @@ Configure Datadog monitors to send webhooks to your Harness webhook URL. Go to [
 
 ---
 
-## Configure Datadog to Send Webhooks
+## Configure Datadog to send webhooks
 
 After creating a webhook from this template in Harness, configure Datadog to send alerts to your webhook URL.
 
-Go to [Datadog Webhook Setup](../../integration-guides/monitoring/datadog.md) for detailed step-by-step instructions including:
-- Creating webhook integrations in Datadog
-- Configuring monitor notifications
-- Customizing payload fields
-- Testing the integration
+Go to the [Datadog webhook setup guide](/docs/ai-sre/alerts/webhooks/integration-guides/monitoring/datadog) to complete detailed step-by-step instructions, including:
+- Create webhook integrations in Datadog
+- Configure monitor notifications
+- Customize payload fields
+- Test the integration
 
 ---
 
-## Next Steps
+## Next steps
 
-- Go to [Route Alerts](../../../alert-rules/overview.md) to route Datadog alerts.
-- Go to [Use CEL in Webhooks](../../use-cel-webhooks.md) to add custom filtering logic.
-- Go to [Webhook Templates Overview](../overview.md) to view other templates.
+- [Route alerts](/docs/ai-sre/alerts/alert-rules/overview): Route Datadog alerts to the right destinations.
+- [Use CEL in webhooks](/docs/ai-sre/alerts/webhooks/use-cel-webhooks): Add custom filtering logic.
+- [Webhook templates overview](/docs/ai-sre/alerts/webhooks/templates/overview): View other templates.

@@ -20,9 +20,9 @@ Connect Bitbucket Cloud as a source-control change source so the [Deploy Change 
 
 ## Before you begin
 
-- **Deploy Change Investigator setup**: Build and deploy webhook integrations created in AI SRE. Go to [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) to set up the webhook endpoints.
-- **A Bitbucket connector**: A Harness Bitbucket connector configured in your project. Go to [Connect to a code repo](/docs/platform/connectors/code-repositories/connect-to-code-repo) to create one.
-- **Connector permissions**: Account, organization, or project **Admin**, or a role with **Manage Connectors**, to create a connector. Go to the [permissions reference](/docs/platform/role-based-access-control/permissions-reference) to review required permissions.
+- **Deploy Change Investigator setup:** Build and deploy webhook integrations created in AI SRE. Go to [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) to set up the webhook endpoints.
+- **A Bitbucket connector:** A Harness Bitbucket connector configured in your project. Go to [Connect to a code repo](/docs/platform/connectors/code-repositories/connect-to-code-repo) to create one.
+- **Connector permissions:** Account, organization, or project **Admin**, or a role with **Manage Connectors**, to create a connector. Go to the [permissions reference](/docs/platform/role-based-access-control/permissions-reference) to review required permissions.
 
 ---
 
@@ -30,10 +30,10 @@ Connect Bitbucket Cloud as a source-control change source so the [Deploy Change 
 
 The Deploy Change Investigator ingests Bitbucket pull requests by **polling**, not through webhooks. You do not paste a webhook URL into Bitbucket. Instead, AI SRE uses your Bitbucket connector to periodically query the Bitbucket API for pull requests that have merged into your deploy branch.
 
-- **Mechanism**: AI SRE polls the Bitbucket Cloud API for merged pull requests on the tracked repository.
-- **Frequency**: The ingestion job runs approximately once per hour.
-- **Lookback**: On first activation, the job backfills merged pull requests from the previous 60 days when it is created automatically from a build webhook, or 90 days when you create it manually. It then syncs incrementally.
-- **Stored data**: Each pull request is stored with its branch, PR number, commit SHA, title, merge timestamp, and author.
+- **Mechanism:** AI SRE polls the Bitbucket Cloud API for merged pull requests on the tracked repository.
+- **Frequency:** The ingestion job runs approximately once per hour.
+- **Lookback:** On first activation, the job backfills merged pull requests from the previous 60 days when it is created automatically from a build webhook, or 90 days when you create it manually. It then syncs incrementally.
+- **Stored data:** Each pull request is stored with its branch, PR number, commit SHA, title, merge timestamp, and author.
 
 :::info Polling, not webhooks
 Unlike the CI/CD build and deploy integrations, source-control change sources do not require a webhook. There is nothing to configure inside Bitbucket beyond the access granted to your Harness connector.
@@ -92,7 +92,7 @@ You do not have to create the ingestion by hand. When you send your first build 
 
 ## Verify pull request ingestion
 
-1. Navigate to **AI SRE** → **PR Ingestions** (tab next to Integrations).
+1. In the AI SRE left navigation, go to **PR Ingestions** (tab next to Integrations).
 2. Confirm an ingestion job exists for your repository with:
    - Repository name
    - Branch being tracked (usually `main`)
@@ -106,7 +106,7 @@ You do not have to create the ingestion by hand. When you send your first build 
 <Troubleshoot
   issue="Bitbucket pull request ingestion job not created after sending build webhooks"
   mode="docs"
-  fallback="Confirm a Bitbucket connector exists at Project Settings → Connectors, that the Bitbucket row is mapped to it under Project Settings → Third Party Integrations (AI SRE), and that your build webhook payload includes the source.repository_url field. AI SRE creates the ingestion job on the first build webhook that identifies a repository. You can also create it manually under Integrations → PR Ingestions → New PR Ingestion."
+  fallback="Confirm a Bitbucket connector exists at Project Settings > Connectors, that the Bitbucket row is mapped to it under Project Settings > Third Party Integrations (AI SRE), and that your build webhook payload includes the source.repository_url field. AI SRE creates the ingestion job on the first build webhook that identifies a repository. You can also create it manually under Integrations > PR Ingestions > New PR Ingestion."
 />
 
 <Troubleshoot

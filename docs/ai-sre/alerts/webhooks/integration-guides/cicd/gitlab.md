@@ -3,18 +3,25 @@ title: GitLab Integration Guide
 description: Send repository and pipeline events through webhooks.
 sidebar_label: GitLab
 sidebar_position: 11
+keywords:
+  - GitLab
+  - webhook
+  - AI SRE
+  - integration
+tags:
+  - ai-sre
+  - webhooks
+  - gitlab
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Configure GitLab to Send Webhooks
-
 Configure GitLab project or group webhooks to send event notifications to Harness AI SRE for deployments, pipelines, and security alerts.
 
 ## Before you begin
 
-- **Harness webhook endpoint**: Create a GitLab webhook in Harness AI SRE using the [GitLab webhook template](../../templates/cicd/gitlab.md).
+- **Harness webhook endpoint**: Create a GitLab webhook in Harness AI SRE using the [GitLab webhook template](/docs/ai-sre/alerts/webhooks/templates/cicd/gitlab).
 - **GitLab permissions**: Maintainer or Owner role for the project/group.
 - **Webhook URL**: Copy the webhook URL from your Harness webhook configuration.
 - **GitLab webhooks documentation**: Go to [Webhooks](https://docs.gitlab.com/ee/user/project/integrations/webhooks.html) for webhook configuration guide.
@@ -30,14 +37,14 @@ Configure GitLab project or group webhooks to send event notifications to Harnes
 <TabItem value="project" label="Project webhook" default>
 
 1. Go to your GitLab project
-2. Click **Settings** → **Webhooks**
+2. Click **Settings**, then click **Webhooks**
 3. Expand **Add new webhook**
 
 </TabItem>
 <TabItem value="group" label="Group webhook">
 
 1. Go to your GitLab group
-2. Click **Settings** → **Webhooks**
+2. Click **Settings**, then click **Webhooks**
 3. Click **Add new webhook**
 
 Group webhooks receive events from all projects in the group.
@@ -91,7 +98,7 @@ Common events for monitoring:
 
 ### Test webhook
 
-Click **Test** → Select event type → Click **Test** button
+Click **Test**, select the event type, then click the **Test** button.
 
 GitLab sends a test payload to verify the webhook is reachable.
 
@@ -322,16 +329,16 @@ filter: webhook.action == "create"
 
 ## Next steps
 
-- Go to [Route Alerts](../../../alert-rules/overview.md) to route GitLab events.
-- Go to [Use CEL in Webhooks](../../use-cel-webhooks.md) for advanced filtering.
-- Go to [GitLab Template](../../templates/cicd/gitlab.md) for the pre-configured template.
+- [Route alerts](/docs/ai-sre/alerts/alert-rules/overview): Route GitLab events.
+- [Use CEL in webhooks](/docs/ai-sre/alerts/webhooks/use-cel-webhooks): Add advanced filtering.
+- [GitLab template](/docs/ai-sre/alerts/webhooks/templates/cicd/gitlab): Use the pre-configured template.
 
 ---
 
 ## Further reading
 
-### GitLab Official Documentation
-- [Webhooks](https://docs.gitlab.com/ee/user/project/integrations/webhooks.html) - Complete guide to GitLab webhook configuration and setup
-- [Webhook Events](https://docs.gitlab.com/ee/user/project/integrations/webhook_events.html) - Event-specific payload structures (pipeline, deployment, release)
-- [Pipeline Events](https://docs.gitlab.com/ee/user/project/integrations/webhook_events.html#pipeline-events) - Pipeline webhook payload structure and build details
-- [Deployment Events](https://docs.gitlab.com/ee/user/project/integrations/webhook_events.html#deployment-events) - Deployment webhook payload and environment information
+### GitLab official documentation
+- [Webhooks](https://docs.gitlab.com/ee/user/project/integrations/webhooks.html): Complete guide to GitLab webhook configuration and setup.
+- [Webhook events](https://docs.gitlab.com/ee/user/project/integrations/webhook_events.html): Event-specific payload structures (pipeline, deployment, release).
+- [Pipeline events](https://docs.gitlab.com/ee/user/project/integrations/webhook_events.html#pipeline-events): Pipeline webhook payload structure and build details.
+- [Deployment events](https://docs.gitlab.com/ee/user/project/integrations/webhook_events.html#deployment-events): Deployment webhook payload and environment information.

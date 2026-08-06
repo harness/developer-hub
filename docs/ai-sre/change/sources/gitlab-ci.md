@@ -20,9 +20,9 @@ Send build and deployment data from GitLab CI/CD pipelines to the [Deploy Change
 
 ## Before you begin
 
-- **Deploy Change Investigator setup**: Build and deploy webhook integrations created in AI SRE. Go to [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) to create webhook endpoints.
-- **GitLab project access**: Maintainer role to edit `.gitlab-ci.yml` and configure CI/CD variables.
-- **Webhook URLs**: Build and deploy webhook URLs from AI SRE integrations page.
+- **Deploy Change Investigator setup:** Build and deploy webhook integrations created in AI SRE. Go to [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) to create webhook endpoints.
+- **GitLab project access:** Maintainer role to edit `.gitlab-ci.yml` and configure CI/CD variables.
+- **Webhook URLs:** Build and deploy webhook URLs from the AI SRE integrations page.
 
 ---
 
@@ -30,9 +30,9 @@ Send build and deployment data from GitLab CI/CD pipelines to the [Deploy Change
 
 Store webhook URLs securely in GitLab CI/CD variables:
 
-1. Navigate to project **Settings** → **CI/CD**
-2. Expand **Variables** section
-3. Click **Add variable**
+1. In your project, go to **Settings** > **CI/CD**.
+2. Expand the **Variables** section.
+3. Click **Add variable**.
 4. Configure build webhook:
    - **Key:** `AISRE_BUILD_WEBHOOK_URL`
    - **Value:** Build webhook URL from AI SRE
@@ -368,34 +368,34 @@ Use the same variable (`$CI_COMMIT_SHORT_SHA`) in both build and deploy webhooks
 
 ---
 
-## Testing webhooks
+## Test webhooks
 
 ### Test build webhook
 
-1. Push a commit or create merge request
-2. Check pipeline job logs for `notify-build` job
-3. Verify curl command executed successfully
-4. Navigate to **AI SRE** → **Integrations**
-5. Click **...** menu on BUILD integration
-6. Select **Debug**
-7. Verify webhook appears with correct payload
+1. Push a commit or create a merge request.
+2. Check the pipeline job logs for the `notify-build` job.
+3. Verify the curl command executed successfully.
+4. In the AI SRE left navigation, go to **Integrations**.
+5. Click the **More** icon (**...**) on the BUILD integration.
+6. Select **Debug**.
+7. Verify the webhook appears with correct payload.
 
 ### Test deploy webhook
 
-1. Trigger deployment pipeline
-2. Check `notify-deploy` job logs
-3. Navigate to **AI SRE** → **Integrations**
-4. Click **...** menu on DEPLOY integration
-5. Select **Debug**
-6. Verify webhook appears
+1. Trigger the deployment pipeline.
+2. Check the `notify-deploy` job logs.
+3. In the AI SRE left navigation, go to **Integrations**.
+4. Click the **More** icon (**...**) on the DEPLOY integration.
+5. Select **Debug**.
+6. Verify the webhook appears.
 
 ### Verify correlation
 
 After sending both webhooks:
 
-1. Navigate to **AI SRE** → **Change Management**
-2. Deployments should appear linked to builds
-3. Click a deployment to see artifact versions and commit information
+1. In the AI SRE left navigation, go to **Change Management**.
+2. Deployments should appear linked to builds.
+3. Click a deployment to see artifact versions and commit information.
 
 ---
 

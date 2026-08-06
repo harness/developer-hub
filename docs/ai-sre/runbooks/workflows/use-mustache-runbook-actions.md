@@ -9,6 +9,7 @@ keywords:
   - runbook actions
   - runbooks
 tags:
+  - ai-sre
   - templates
   - runbooks
 redirect_from:
@@ -17,15 +18,13 @@ redirect_from:
 
 import NeedHelpFooter from '../../_snippets/need-help-footer.mdx';
 
-# Use Mustache Templates in Runbook Actions
-
 Mustache templates provide simple variable substitution in runbook actions. Use Mustache when you need to insert dynamic values from incidents, alerts, or previous action outputs into your runbook actions.
 
 ## How to reference fields
 
 When configuring runbook actions in the UI:
 
-1. Click on an action input field that supports dynamic values (marked with a data picker icon)
+1. Click an action input field that supports dynamic values (marked with a data picker icon)
 2. Click the **data picker button** (looks like a database icon)
 3. Select the field source:
    - **Incident** - Fields from the current incident
@@ -39,7 +38,7 @@ Alternatively, you can type Mustache syntax directly: `{{incident.field_name}}`
 
 ---
 
-## Example: Slack Message with Incident Details
+## Example: Slack message with incident details
 
 **Action**: Slack: Post Message
 
@@ -98,7 +97,7 @@ ${{incident.severity in ["0", "1"] ? "🚨🚨🚨" : "🔥"}}
 
 ---
 
-## Example: Conditional Slack Routing
+## Example: Conditional Slack routing
 
 Use runbook triggers to create conditional behavior based on field values.
 
@@ -113,11 +112,11 @@ Use runbook triggers to create conditional behavior based on field values.
      - Trigger: Alert created with `alert.priority in [p2_error, p3_warning, p4_info]`
      - Action: Slack post to `#incidents`
 
-Go to [Runbook Triggers](/docs/ai-sre/runbooks/triggers/create-trigger) for conditional execution configuration.
+Go to [Create runbook triggers](/docs/ai-sre/runbooks/triggers/create-trigger) to configure conditional execution.
 
 ---
 
-## Example: Jira Ticket with Incident Context
+## Example: Jira ticket with incident context
 
 **Action**: Jira: Create Issue
 
@@ -191,7 +190,7 @@ View in AI SRE: ${{incident.url}}
 
 ---
 
-## Example: HTTP Request with Alert Data
+## Example: HTTP request with alert data
 
 **Action**: HTTP Request
 
@@ -213,7 +212,7 @@ View in AI SRE: ${{incident.url}}
 
 ---
 
-## Example: Reference Previous Action Outputs
+## Example: Reference previous action outputs
 
 Actions can reference outputs from previous actions in the same runbook.
 
@@ -241,8 +240,8 @@ The data picker automatically shows available outputs from previous actions.
 
 ## Next steps
 
-- Go to [Use CEL in Runbook Actions](/docs/ai-sre/runbooks/workflows/use-cel-runbook-actions) to implement conditional logic and transformations.
-- Go to [Use System Fields in Runbook Actions](/docs/ai-sre/runbooks/workflows/use-system-fields-in-runbook-actions) to learn about available system fields.
-- Go to [Best Practices](/docs/ai-sre/runbooks/workflows/best-practices) for field usage guidelines.
+- Go to [Use CEL in runbook actions](/docs/ai-sre/runbooks/workflows/use-cel-runbook-actions) to implement conditional logic and transformations.
+- Go to [Use system fields in runbook actions](/docs/ai-sre/runbooks/workflows/use-system-fields-in-runbook-actions) to learn about available system fields.
+- Go to [Best practices](/docs/ai-sre/runbooks/workflows/best-practices) to review field usage guidelines.
 
 <NeedHelpFooter />

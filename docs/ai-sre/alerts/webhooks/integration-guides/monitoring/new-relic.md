@@ -3,18 +3,26 @@ title: New Relic Integration Guide
 description: Send alert conditions through webhooks.
 sidebar_label: New Relic
 sidebar_position: 4
+keywords:
+  - New Relic
+  - webhook
+  - AI SRE
+  - integration
+tags:
+  - ai-sre
+  - webhooks
+  - new-relic
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
-# Configure New Relic to Send Webhooks
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
 Configure New Relic Alerts to send webhook notifications to Harness AI SRE when issues are created or updated.
 
 ## Before you begin
 
-- **Harness webhook endpoint**: Create a New Relic webhook in Harness AI SRE using the [New Relic webhook template](../../templates/monitoring/new-relic.md).
+- **Harness webhook endpoint**: Create a New Relic webhook in Harness AI SRE using the [New Relic webhook template](/docs/ai-sre/alerts/webhooks/templates/monitoring/new-relic).
 - **New Relic access**: Permissions to create workflows and notification destinations.
 - **Webhook URL**: Copy the webhook URL from your Harness webhook configuration.
 - **New Relic version**: This guide covers New Relic's Applied Intelligence workflows (current notification system).
@@ -27,7 +35,7 @@ Configure New Relic Alerts to send webhook notifications to Harness AI SRE when 
 
 ### Navigate to destinations
 
-1. In New Relic, go to **Alerts & AI** → **Destinations**
+1. In New Relic, go to **Alerts & AI**, then select **Destinations**
 2. Click **Create destination**
 
 ### Configure webhook destination
@@ -103,7 +111,7 @@ Click **Create destination** to save.
 
 ### Navigate to channels
 
-1. Go to **Alerts & AI** → **Channels**
+1. Go to **Alerts & AI**, then select **Channels**
 2. Click **Create channel**
 
 ### Configure channel
@@ -126,7 +134,7 @@ Click **Create channel**.
 
 ### Navigate to workflows
 
-1. Go to **Alerts & AI** → **Workflows**
+1. Go to **Alerts & AI**, then select **Workflows**
 2. Click **Add a workflow**
 
 ### Configure workflow
@@ -287,7 +295,7 @@ custom_fields: {
 
 ### Create test alert condition
 
-1. Go to **Alerts & AI** → **Alert policies**
+1. Go to **Alerts & AI**, then select **Alert policies**
 2. Create a test policy and condition that will fire immediately
 3. Assign the workflow to the policy
 
@@ -297,7 +305,7 @@ Wait for the condition to evaluate and create an issue.
 
 ### Verify in New Relic
 
-1. Go to **Alerts & AI** → **Issues & Activity**
+1. Go to **Alerts & AI**, then select **Issues & Activity**
 2. Verify the issue was created
 3. Check **Workflows** to see notification sent
 
@@ -393,54 +401,29 @@ Add visual context:
 
 ## Troubleshooting
 
-### Webhook not sending
+<Troubleshoot
+  issue="New Relic webhook is not sending notifications to Harness AI SRE"
+  mode="docs"
+  fallback="Test the destination from the Destinations page, verify the workflow is Active, check the workflow filters by removing them to test, and review the New Relic notification logs in the destination details."
+/>
 
-**Cause**: Destination or workflow configuration error.
+<Troubleshoot
+  issue="New Relic alerts are not appearing in Harness AI SRE"
+  mode="docs"
+  fallback="Check the Harness webhook logs for errors, verify the payload structure in the New Relic destination test, temporarily remove the CEL filter to test, and ensure required fields such as issueTitle and priority exist."
+/>
 
-**Solution**:
-- Test destination from **Destinations** page
-- Verify workflow is **Active**
-- Check workflow filters (remove filters to test)
-- Review New Relic notification logs (available in destination details)
+<Troubleshoot
+  issue="New Relic is creating duplicate issues in Harness AI SRE"
+  mode="docs"
+  fallback="Review the workflow filters to avoid overlaps, use Harness alert routing rules to deduplicate by issue_id, and filter by triggerEvent to process only specific events."
+/>
 
-### Alerts not appearing in Harness
-
-**Cause**: Field mapping incorrect or CEL filter blocking.
-
-**Solution**:
-- Check Harness webhook logs for errors
-- Verify payload structure in New Relic destination test
-- Temporarily remove CEL filter to test
-- Ensure required fields exist (issueTitle, priority, etc.)
-
-### Duplicate issues
-
-**Cause**: Multiple workflows or issue updates triggering notifications.
-
-**Solution**:
-- Review workflow filters to avoid overlaps
-- Use Harness alert routing rules to deduplicate by `issue_id`:
-```cel
-// Deduplicate by issue_id
-filter: !has(webhook.issueId) || 
-        // Check if not recently processed
-```
-- Filter by `triggerEvent` to process only specific events:
-```cel
-filter: webhook.triggerEvent == "STATE_CHANGE" && webhook.state == "ACTIVATED"
-```
-
-### Closed issues not resolving
-
-**Cause**: CLOSED state not mapped to resolution.
-
-**Solution**:
-- Ensure workflow sends notifications for **Issue closed** events
-- Map closed state in Harness:
-```cel
-severity: webhook.state == "CLOSED" ? "info" : 
-          (webhook.priority == "CRITICAL" ? "critical" : "high")
-```
+<Troubleshoot
+  issue="Closed New Relic issues are not resolving in Harness AI SRE"
+  mode="docs"
+  fallback="Ensure the workflow sends notifications for 'Issue closed' events, and map the closed state in the Harness CEL severity mapping."
+/>
 
 ---
 
@@ -523,17 +506,17 @@ custom_fields:
 
 ## Next steps
 
-- Go to [Route Alerts](../../../alert-rules/overview.md) to route and deduplicate New Relic issues.
-- Go to [Use CEL in Webhooks](../../use-cel-webhooks.md) to add custom filtering logic.
-- Go to [AI Agent](../../../../ai-agent/ai-agent.md) to enable automated issue investigation.
-- Go to [New Relic Template](../../templates/monitoring/new-relic.md) for the pre-configured template.
+- [Route alerts](/docs/ai-sre/alerts/alert-rules/overview): Route and deduplicate New Relic issues.
+- [Use CEL in webhooks](/docs/ai-sre/alerts/webhooks/use-cel-webhooks): Add custom filtering logic.
+- [AI agent](/docs/ai-sre/ai-agent): Enable automated issue investigation.
+- [New Relic template](/docs/ai-sre/alerts/webhooks/templates/monitoring/new-relic): Use the pre-configured template.
 
 ---
 
 ## Further reading
 
-### New Relic Official Documentation
-- [Applied Intelligence - Workflows](https://docs.newrelic.com/docs/alerts-applied-intelligence/applied-intelligence/incident-workflows/incident-workflows/) - Complete guide to workflow configuration, destinations, and channels
-- [Notification Destinations](https://docs.newrelic.com/docs/alerts-applied-intelligence/notifications/destinations/) - Webhook destination setup and authentication options
-- [Message Templates](https://docs.newrelic.com/docs/alerts-applied-intelligence/notifications/message-templates/) - Available template variables (`{{issueId}}`, `{{priority}}`, `{{entitiesData}}`, etc.)
-- [Customize Webhook Payload](https://docs.newrelic.com/docs/alerts-applied-intelligence/new-relic-alerts/alert-notifications/customize-your-webhook-payload/) - Complete payload structure and issue fields reference
+### New Relic official documentation
+- [Applied Intelligence workflows](https://docs.newrelic.com/docs/alerts-applied-intelligence/applied-intelligence/incident-workflows/incident-workflows/): Complete guide to workflow configuration, destinations, and channels.
+- [Notification destinations](https://docs.newrelic.com/docs/alerts-applied-intelligence/notifications/destinations/): Webhook destination setup and authentication options.
+- [Message templates](https://docs.newrelic.com/docs/alerts-applied-intelligence/notifications/message-templates/): Available template variables (`{{issueId}}`, `{{priority}}`, `{{entitiesData}}`, and others).
+- [Customize webhook payload](https://docs.newrelic.com/docs/alerts-applied-intelligence/new-relic-alerts/alert-notifications/customize-your-webhook-payload/): Complete payload structure and issue fields reference.

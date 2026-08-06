@@ -3,23 +3,28 @@ title: Configure Status Updates and Service Subscribers
 description: Send automated stakeholder updates based on service subscriptions.
 sidebar_label: Configure Status Updates and Service Subscribers
 sidebar_position: 6
+keywords:
+  - status updates
+  - service subscribers
+  - stakeholder communication
+  - notifications
+tags:
+  - ai-sre
 ---
-
-# Configure Status Updates and Service Subscribers
 
 Status updates enable incident commanders to broadcast structured communications to stakeholders during active incidents. Subscribers are configured at the service level, and recipients are resolved dynamically based on the incident's impacted services.
 
 This ensures stakeholders receive updates for incidents affecting services they care about without needing to join the incident war room.
 
-## How Service Subscriptions Work
+## How service subscriptions work
 
-### Subscription Model
+### Subscription model
 
 - **Service-level subscriptions**: Subscribers are configured on individual services in the Service Directory, not on specific incidents.
 - **Dynamic recipient resolution**: When a status update is sent, the system automatically gathers all subscribers from every impacted service on the incident.
 - **Automatic deduplication**: If a stakeholder is subscribed to multiple impacted services, they receive only one copy of the update.
 
-### Subscriber Types
+### Subscriber types
 
 AI SRE supports two types of subscribers:
 
@@ -28,7 +33,7 @@ AI SRE supports two types of subscribers:
 
 ---
 
-## Add Subscribers to a Service
+## Add subscribers to a service
 
 1. Navigate to **Project Settings** → **Service Directory (AI SRE)**.
 2. Select the service you want to configure.
@@ -43,7 +48,7 @@ Repeat this process for each service where you want to configure stakeholder not
 
 ---
 
-## Delivery Channel
+## Delivery channel
 
 - **Email only**: Status updates are delivered via email from `aisre-noreply@harness.io` (sender name: "AI SRE").
 - **Branded format**: Emails include header and footer images and are rendered as HTML with incident context.
@@ -51,13 +56,13 @@ Repeat this process for each service where you want to configure stakeholder not
 
 ---
 
-## Who Can Send Status Updates
+## Who can send status updates
 
 Any user with access to the incident detail page can send a status update. RBAC controls for subscription management (who can add or remove subscribers from services) are planned for a future release.
 
 ---
 
-## Status Update Contents
+## Status update contents
 
 When an incident commander sends a status update, the system pre-populates a default template with:
 
@@ -75,7 +80,7 @@ AI SRE Status update for incident [incident-ID]
 
 ---
 
-## Recipient Preview
+## Recipient preview
 
 Before sending, the UI displays:
 
@@ -86,16 +91,16 @@ This allows the sender to verify the recipient list before delivery.
 
 ---
 
-## Best Practices
+## Best practices
 
-### For Administrators
+### For administrators
 
 - **Map service ownership clearly**: Ensure every production service has a defined owner team so stakeholders know which services to subscribe to.
 - **Use user groups for role-based subscriptions**: Subscribe user groups (e.g., "Platform Leadership", "Customer Success") rather than individual users to reduce maintenance when team membership changes.
 - **Keep subscriptions current**: Review subscriber lists periodically and remove users who no longer need updates.
 - **Align with on-call structure**: Subscribers typically mirror your escalation policies, if a team is on-call for a service, their leadership should be subscribed for status updates.
 
-### For Incident Commanders
+### For incident commanders
 
 - **Send updates at key milestones**: Status changes (Identified → Monitoring), mitigation actions, or significant scope changes are good times to send an update.
 - **Edit the default template**: The pre-populated content is a starting point. Add business context, customer impact, and next steps relevant to your stakeholders.
@@ -103,7 +108,7 @@ This allows the sender to verify the recipient list before delivery.
 
 ---
 
-## Next Steps
+## Next steps
 
-- Go to [Send Status Updates](/docs/ai-sre/users/manage-incidents/update-incident-details#send-status-updates) to learn how incident commanders send updates during active incidents.
+- Go to [Send status updates](/docs/ai-sre/users/manage-incidents/update-incident-details#send-status-updates) to understand how incident commanders send updates during active incidents.
 - Go to [Integrate with the Service Directory](/docs/ai-sre/oncall/integrate-service-directory) to configure service-to-team mappings.

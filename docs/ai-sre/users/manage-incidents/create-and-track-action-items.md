@@ -3,9 +3,15 @@ title: Create and Track Action Items
 description: Capture follow-up tasks during and after incidents, assign owners, and track completion.
 sidebar_label: Action Items
 sidebar_position: 6
+keywords:
+  - action items
+  - follow-up tasks
+  - AI detection
+  - track progress
+tags:
+  - ai-sre
+  - incidents
 ---
-
-# Create and Track Action Items
 
 Action items capture work that needs to happen during or after an incident, things like deploying a permanent fix, updating documentation, adding monitoring coverage, or following up with an affected customer. 
 
@@ -13,25 +19,25 @@ Tracking them inside the incident ensures nothing falls through the cracks.
 
 AI SRE detects action items automatically in real-time from Slack conversations, meeting transcriptions, and incident notes, then surfaces them in the **Action Items** pane with assignee and due date information extracted from context.
 
-## AI-Powered Action Item Detection
+## AI-powered action item detection
 
 AI SRE automatically detects action items in real-time during active incidents from multiple sources:
 
-### Detection Sources
+### Detection sources
 
-- **Slack chat messages**: Conversations in the incident channel where someone commits to a task
-- **Meeting transcriptions**: Zoom and Microsoft Teams meeting recordings where action items are discussed
-- **Incident notes**: Notes added to the incident timeline
+- **Slack chat messages:** Conversations in the incident channel where someone commits to a task
+- **Meeting transcriptions:** Zoom and Microsoft Teams meeting recordings where action items are discussed
+- **Incident notes:** Notes added to the incident timeline
 
-### What Gets Detected
+### What gets detected
 
 Each AI-detected action item includes:
 
-- **Description**: A clear summary of the task extracted from the conversation
-- **Assignee**: The name of the person who committed to the task (extracted from conversation context)
-- **Due date**: When it needs to be done (if mentioned in the conversation)
+- **Description:** A clear summary of the task extracted from the conversation
+- **Assignee:** The name of the person who committed to the task (extracted from conversation context)
+- **Due date:** When it needs to be done (if mentioned in the conversation)
 
-### How It Works
+### How it works
 
 The AI analyzes communications during the incident and identifies when someone explicitly commits to doing something. For example:
 
@@ -55,7 +61,7 @@ Detected action items appear in the **Action Items** pane on the incident detail
 
 ---
 
-## Create an Action Item Manually
+## Create an action item manually
 
 You can also create action items manually when needed:
 
@@ -63,22 +69,22 @@ You can also create action items manually when needed:
 2. Navigate to the **Action Items** tab.
 3. Click **Create Action Item**.
 4. Fill in the details:
-   - **Description**: A clear, specific description of what needs to be done (e.g., "Add connection pool monitoring alert for db-primary-01").
-   - **Assignee**: The person responsible for completing the task.
-   - **Due date**: When it needs to be done.
-5. Click the **check mark** to save.
+   - **Description:** A clear, specific description of what needs to be done (e.g., "Add connection pool monitoring alert for db-primary-01").
+   - **Assignee:** The person responsible for completing the task.
+   - **Due date:** When it needs to be done.
+5. Click the check mark to save.
 
 ---
 
-## Track Progress
+## Track progress
 
 - Action items appear in a list on the **Action Items** tab with their current status.
-- Use the **pencil icon** to update an action item's status, reassign it, or adjust the due date.
+- Use the **Edit** icon to update an action item's status, reassign it, or adjust the due date.
 - Completed action items remain visible in the list for historical reference.
 
 ---
 
-## When to Create Action Items
+## When to create action items
 
 **During the incident:**
 - A workaround is in place but a permanent fix is needed.
@@ -92,9 +98,9 @@ You can also create action items manually when needed:
 
 ---
 
-## Best Practices
+## Best practices
 
-- **Be specific**, "Fix the database" is too vague. "Increase connection pool max from 50 to 200 on db-primary-01 and add a CloudWatch alarm at 80% utilization" is actionable.
-- **Always assign an owner**, Unassigned action items do not get done. Every item needs a name next to it.
-- **Set realistic due dates**, Urgent follow-ups (like deploying a permanent fix for a workaround) should have short deadlines. Process improvements can have longer timelines, but should still have a date.
-- **Review before closing the incident**, Before marking an incident resolved, scan the action items tab. Make sure everything that came up during the incident has been captured.
+- **Be specific:** "Fix the database" is too vague. "Increase connection pool max from 50 to 200 on db-primary-01 and add a CloudWatch alarm at 80% utilization" is actionable.
+- **Always assign an owner:** Unassigned action items do not get done. Every item needs a name next to it.
+- **Set realistic due dates:** Urgent follow-ups (like deploying a permanent fix for a workaround) should have short deadlines. Process improvements can have longer timelines, but should still have a date.
+- **Review before closing the incident:** Before marking an incident resolved, scan the action items tab. Make sure everything that came up during the incident has been captured.

@@ -3,9 +3,16 @@ title: Configure Severity and Priority Labels
 description: Define severity and priority labels for your organization.
 sidebar_label: Configure Severities & Priorities
 sidebar_position: 6
+keywords:
+  - severity
+  - priority
+  - labels
+  - incident classification
+tags:
+  - ai-sre
 ---
 
-# Configure Severity and Priority Labels
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
 Configure severity levels for incidents and priority levels for alerts to match your organization's terminology and classification system.
 
@@ -21,7 +28,7 @@ By default, Harness AI SRE uses standard severity and priority labels. You can c
 
 ---
 
-## Access Custom Options
+## Access custom options
 
 1. Navigate to **Organization Settings**
 2. Under **Settings mainly used in AI SRE**, click **Severities & Statuses for AI SRE**
@@ -31,9 +38,9 @@ By default, Harness AI SRE uses standard severity and priority labels. You can c
 
 ---
 
-## Configure Incident Severity Levels
+## Configure incident severity levels
 
-### Default Severity Labels
+### Default severity labels
 
 | Level | ID  | Default Label     | Description           |
 |-------|-----|-------------------|-----------------------|
@@ -43,7 +50,7 @@ By default, Harness AI SRE uses standard severity and priority labels. You can c
 | SEV3  | `"3"` | SEV3: Minor     | Low severity          |
 | SEV4  | `"4"` | SEV4: Cosmetic  | Lowest severity       |
 
-### Configure Severity Labels
+### Configure severity labels
 
 To configure severity labels:
 
@@ -60,7 +67,7 @@ To configure severity labels:
 - Change "SEV1: Major" to "P1: Production Down"
 - Change "SEV2: Moderate" to "P2: Degraded Service"
 
-### Using Custom Severity in Workflows
+### Use custom severity in workflows
 
 Custom labels appear throughout AI SRE:
 - Incident cards and detail pages
@@ -70,7 +77,7 @@ Custom labels appear throughout AI SRE:
 - Slack notifications
 - Email notifications
 
-**API and Integration Usage:**  
+**API and integration usage:**  
 When using the API or configuring runbook triggers, always use the original ID values (`"0"`, `"1"`, `"2"`, `"3"`, `"4"`), not the custom labels.
 
 ```yaml
@@ -82,13 +89,13 @@ trigger:
     value: "0"  # Use ID, not custom label
 ```
 
-Go to [Incident Fields](./incident-fields.md#severity-field-values) for more information about using severity values in integrations.
+Go to [Incident fields](/docs/ai-sre/incidents/incident-fields#severity-field-values) to understand how to use severity values in integrations.
 
 ---
 
-## Configure Alert Priority Levels
+## Configure alert priority levels
 
-### Default Priority Labels
+### Default priority labels
 
 | Level | ID            | Default Label    | Description        |
 |-------|---------------|------------------|--------------------|
@@ -97,7 +104,7 @@ Go to [Incident Fields](./incident-fields.md#severity-field-values) for more inf
 | P3    | `p3_warning`  | P3: Warning      | Medium priority    |
 | P4    | `p4_info`     | P4: Info         | Low priority       |
 
-### Configure Priority Labels
+### Configure priority labels
 
 To configure priority labels:
 
@@ -115,7 +122,7 @@ To configure priority labels:
 - Change "P3: Warning" to "Medium"
 - Change "P4: Info" to "Low"
 
-### Using Custom Priority in Workflows
+### Use custom priority in workflows
 
 Custom labels appear throughout AI SRE:
 - Alert cards and detail pages
@@ -125,7 +132,7 @@ Custom labels appear throughout AI SRE:
 - Slack notifications
 - Email notifications
 
-**API and Integration Usage:**  
+**API and integration usage:**  
 When using the API or configuring route alerts, always use the original ID values (`p1_critical`, `p2_error`, `p3_warning`, `p4_info`), not the custom labels.
 
 ```yaml
@@ -139,50 +146,50 @@ alert_rule:
 
 ---
 
-## Best Practices
+## Best practices
 
-### Label Design
-- **Keep labels concise** - Maximum 20 characters
-- **Use consistent naming** - Follow a standard pattern (e.g., "P0: Business Critical", "P1: Production Down")
-- **Avoid abbreviations** - Unless universally understood in your organization
-- **Include severity level** - Help users understand the hierarchy at a glance
+### Label design
+- **Keep labels concise:** Maximum 20 characters
+- **Use consistent naming:** Follow a standard pattern (e.g., "P0: Business Critical", "P1: Production Down")
+- **Avoid abbreviations:** Unless universally understood in your organization
+- **Include severity level:** Help users understand the hierarchy at a glance
 
 ### Descriptions
-- **Add context** - Explain when to use each severity/priority level
-- **Define impact** - Describe the typical impact for each level
-- **Provide examples** - Include example scenarios
-- **Update regularly** - Keep descriptions current as processes evolve
+- **Add context:** Explain when to use each severity/priority level
+- **Define impact:** Describe the typical impact for each level
+- **Provide examples:** Include example scenarios
+- **Update regularly:** Keep descriptions current as processes evolve
 
-### Team Alignment
-- **Document changes** - Announce custom labels to your team
-- **Train responders** - Ensure everyone understands the new terminology
-- **Update runbooks** - Reference custom labels in response procedures
-- **Gather feedback** - Periodically review effectiveness with your team
+### Team alignment
+- **Document changes:** Announce custom labels to your team
+- **Train responders:** Ensure everyone understands the new terminology
+- **Update runbooks:** Reference custom labels in response procedures
+- **Gather feedback:** Periodically review effectiveness with your team
 
-### API and Integration Considerations
-- **Test integrations** - Verify external systems work with custom labels
-- **Document mappings** - Create a reference showing ID to label mappings
-- **Update documentation** - Update internal runbooks and procedures
-- **Monitor for issues** - Check that custom labels do not break workflows
+### API and integration considerations
+- **Test integrations:** Verify external systems work with custom labels
+- **Document mappings:** Create a reference showing ID to label mappings
+- **Update documentation:** Update internal runbooks and procedures
+- **Monitor for issues:** Check that custom labels do not break workflows
 
 ---
 
-## Important Notes
+## Important notes
 
-### What Changes
+### What changes
 - Display labels throughout the UI
 - Labels in notifications (Slack, email)
 - Labels in exports and reports
 - Labels in search and filters
 
-### What does not Change
+### What does not change
 - Underlying ID values
 - API request/response formats
 - Integration mappings
 - Historical data
 - Database storage format
 
-### Organization-Wide Impact
+### Organization-wide impact
 Custom severity and priority labels apply to:
 - All projects in the organization
 - All teams and users
@@ -193,25 +200,29 @@ Custom severity and priority labels apply to:
 
 ## Troubleshooting
 
-### Custom labels not appearing
-- Refresh the page after saving changes
-- Check browser cache (try incognito/private mode)
-- Verify you have organization admin permissions
+<Troubleshoot
+  issue="Custom severity or priority labels not appearing in AI SRE"
+  mode="docs"
+  fallback="Refresh the page after saving, clear the browser cache or use a private window, and verify you have organization admin permissions."
+/>
 
-### Integrations sending incorrect severity
-- Integrations send original severity values
-- Custom labels are applied on display only
-- Check integration mappings in [Incident Fields](./incident-fields.md#severity-field-values)
+<Troubleshoot
+  issue="Integrations sending incorrect severity values in Harness AI SRE"
+  mode="docs"
+  fallback="Integrations send original severity ID values, not custom labels. Custom labels are applied on display only. Check integration mappings in the Incident fields reference."
+/>
 
-### API requests failing
-- Always use ID values in API calls, never custom labels
-- Go to [Incident Fields](./incident-fields.md#severity-field-values) to review correct ID values
+<Troubleshoot
+  issue="API requests failing when using custom severity or priority labels in AI SRE"
+  mode="docs"
+  fallback="Always use ID values in API calls, never custom labels. Review the correct ID values in the Incident fields reference."
+/>
 
 ---
 
-## Example Configurations
+## Example configurations
 
-### Enterprise Standard
+### Enterprise standard
 ```
 SEV0 → "P0: Business Critical"
 SEV1 → "P1: Major Incident"  
@@ -220,7 +231,7 @@ SEV3 → "P3: Minor Issue"
 SEV4 → "P4: Informational"
 ```
 
-### SRE Team
+### SRE team
 ```
 SEV0 → "Critical: All hands"
 SEV1 → "High: Oncall + Manager"
@@ -229,7 +240,7 @@ SEV3 → "Low: Best effort"
 SEV4 → "Info: Track only"
 ```
 
-### Customer Impact Based
+### Customer impact based
 ```
 SEV0 → "Total Outage"
 SEV1 → "Major Degradation"
@@ -240,13 +251,13 @@ SEV4 → "No Customer Impact"
 
 ---
 
-## Next Steps
+## Next steps
 
 ### Documentation
-- [Configure Incident Fields](./incident-fields.md)
-- [Incident Types](./incident-types.md)
-- [Route Alerts](../alerts/alert-rules/overview.md)
+- [Configure incident fields](/docs/ai-sre/incidents/incident-fields): Customize fields captured on incidents.
+- [Incident types](/docs/ai-sre/incidents/incident-types): Standardize incident classification.
+- [Route alerts](/docs/ai-sre/alerts/alert-rules/overview): Route alerts to incidents.
 
-### Related Topics
-- [Incident Workflows](./incident-workflows.md)
-- [Status Updates](./status-updates.md)
+### Related topics
+- [Incident workflows](/docs/ai-sre/incidents/incident-workflows): Automate incident response.
+- [Status updates](/docs/ai-sre/incidents/status-updates): Communicate with stakeholders.

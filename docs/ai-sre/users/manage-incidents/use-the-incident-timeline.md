@@ -3,15 +3,21 @@ title: Use the Incident Timeline
 description: Post updates, coordinate with responders, and review automated activity.
 sidebar_label: Use the Incident Timeline
 sidebar_position: 4
+keywords:
+  - incident timeline
+  - post messages
+  - audit trail
+  - incident channel
+tags:
+  - ai-sre
+  - incidents
 ---
-
-# Use the Incident Timeline
 
 The incident timeline is a chronological record of everything that happens during an incident, automated actions, status changes, runbook executions, key events, and messages from responders. 
 
 It serves as both a coordination tool during the incident and a permanent audit trail after resolution.
 
-## View the Timeline
+## View the timeline
 
 1. Open the **Incident Details** page.
 2. Click the **Timeline** tab.
@@ -28,7 +34,7 @@ The timeline automatically captures:
 
 ---
 
-## Post Messages
+## Post messages
 
 Use the timeline to share updates, findings, and coordination notes with other responders.
 
@@ -39,9 +45,9 @@ Timeline messages are visible to everyone with access to the incident and become
 
 ---
 
-## Timeline vs. Incident Channel
+## Timeline versus incident channel
 
-Both the timeline and the auto-created Slack/Teams incident channel serve as communication spaces, but they have different purposes:
+Both the timeline and the auto-created Slack or Teams incident channel serve as communication spaces, but they have different purposes:
 
 | | Timeline | Incident Channel |
 | --- | --- | --- |
@@ -54,8 +60,8 @@ A good rule of thumb: if something is important enough that someone reviewing th
 
 ---
 
-## Best Practices
+## Best practices
 
-- **Post findings as you go**, do not wait until resolution to document what you discovered. Real-time updates help other responders and create a better post-incident record.
-- **Summarize, do not duplicate**, You do not need to copy every Slack message into the timeline. Post concise summaries of key decisions and actions.
-- **Use key events for milestones**, For major turning points (root cause found, mitigation applied, service restored), use [key events](./update-incident-details.md#add-key-events) rather than timeline messages. Key events have higher visibility in summaries and reports.
+- **Post findings as you go:** Do not wait until resolution to document what you discovered. Real-time updates help other responders and create a better post-incident record.
+- **Summarize, do not duplicate:** You do not need to copy every Slack message into the timeline. Post concise summaries of key decisions and actions.
+- **Use key events for milestones:** For major turning points (root cause found, mitigation applied, service restored), use [key events](/docs/ai-sre/users/manage-incidents/update-incident-details#add-key-events) rather than timeline messages. Key events have higher visibility in summaries and reports.

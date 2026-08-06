@@ -3,20 +3,29 @@ title: GitHub Integration Webhook Template
 description: Receive repository event notifications.
 sidebar_label: GitHub Webhook Template
 sidebar_position: 14
+keywords:
+  - GitHub
+  - webhook
+  - template
+  - integration
+  - AI SRE
+  - alerts
+tags:
+  - ai-sre
+  - webhooks
+  - github
 ---
-
-# GitHub Integration Webhook Template
 
 Configure GitHub integration to receive repository event notifications in Harness AI SRE.
 
 ## Overview
 
 GitHub provides:
-- **Repository events**: Push, pull request, and release notifications
-- **Deployment events**: Track deployment status and outcomes
-- **Issue tracking**: Monitor issue creation and updates
-- **Security alerts**: Receive Dependabot and security scanning alerts
-- **Workflow events**: GitHub Actions workflow status
+- **Repository events:** Push, pull request, and release notifications
+- **Deployment events:** Track deployment status and outcomes
+- **Issue tracking:** Monitor issue creation and updates
+- **Security alerts:** Receive Dependabot and security scanning alerts
+- **Workflow events:** GitHub Actions workflow status
 
 ---
 
@@ -33,7 +42,7 @@ GitHub provides:
 
 ---
 
-## Next Steps
+## Next steps
 
-- Go to [Route Alerts](../../../alert-rules/overview.md) to route GitHub alerts.
-- Go to [Ingest Alerts Overview](../overview.md) to view other integrations.
+- [Route alerts](/docs/ai-sre/alerts/alert-rules/overview): Route GitHub alerts to the right destinations.
+- [Ingest alerts overview](/docs/ai-sre/alerts/webhooks/templates/overview): View other integrations.

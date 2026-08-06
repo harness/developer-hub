@@ -3,6 +3,16 @@ title: Slack Integration for Runbooks
 sidebar_label: Slack
 sidebar_position: 3
 description: Post messages, create channels, and run commands from runbooks.
+keywords:
+  - slack
+  - collaboration
+  - notifications
+  - block kit
+  - runbooks
+tags:
+  - ai-sre
+  - integrations
+  - slack
 redirect_from:
 - /docs/incident-response/runbooks/integrations/slack
 - /docs/ai-sre/runbooks/integrations/slack
@@ -21,24 +31,24 @@ Slack integration enables your runbooks to do the following:
 
 ---
 
-## Integration Setup
+## Set up the integration
 
 ### Prerequisites
 - Slack Workspace Admin access
 - Harness Organization Admin role
 
-### Setup Steps
-1. Go to **Organization Settings** → **Third Party Integrations (AI SRE)**
-2. Click **Connect** for Slack
-3. Follow the OAuth flow to authorize Harness
-4. Configure workspace permissions
+### Setup steps
+1. Go to **Organization Settings**, then **Third Party Integrations (AI SRE)**.
+2. Click **Connect** for Slack.
+3. Follow the OAuth flow to authorize Harness.
+4. Configure workspace permissions.
 
-### Required Slack Permissions
+### Required Slack permissions
 The Harness Slack bot requires these permissions:
-- `channels:manage` - Create and manage channels
-- `chat:write` - Send messages
-- `groups:write` - Manage private channels
-- `im:write` - Send direct messages
+- `channels:manage`: Create and manage channels
+- `chat:write`: Send messages
+- `groups:write`: Manage private channels
+- `im:write`: Send direct messages
 
 ### Features
 - Global Slack workspace access across all projects
@@ -48,16 +58,16 @@ The Harness Slack bot requires these permissions:
 
 ---
 
-## Using Slack Actions in Runbooks
+## Use Slack actions in runbooks
 
 Slack actions are configured through the runbook action form in the UI:
 
-1. **In your runbook**, click **New Step** → **Action**
+1. **In your runbook**, click **New Step**, then **Action**.
 
    ![New Step Menu](../static/runbook-new-step-menu.png)
 
-2. In the **Select Action** dialog, go to **Communication** category
-3. Select the Slack action you need from the available options
+2. In the **Select Action** dialog, go to the **Communication** category.
+3. Select the Slack action you need from the available options.
 
    ![Select Action Dialog](../static/action-create-slack-channel.png)
 
@@ -65,45 +75,45 @@ Slack actions are configured through the runbook action form in the UI:
 
 ---
 
-## Slack Actions in Runbooks
+## Slack actions in runbooks
 
-### Send Slack Message Action
+### Send Slack message action
 
 Sends a message to a specified Slack channel.
 
-**Form Fields:**
-- **Channel**: Channel name or ID (e.g., `#incidents` or `{{Activity.slack_channel}}`)
-- **Message**: Message text to send
+**Form fields:**
+- **Channel:** Channel name or ID (e.g., `#incidents` or `{{Activity.slack_channel}}`)
+- **Message:** Message text to send
   - Supports Mustache variables: `{{Activity.title}}`, `{{Activity.summary}}`
   - Can include Slack markdown formatting (bold, italics, links)
-  - Supports Block Kit JSON format for rich message layouts. Go to [Block Kit Formatting](#block-kit-formatting) for examples.
+  - Supports Block Kit JSON format for rich message layouts. Go to [Block Kit formatting](#block-kit-formatting) to review examples.
 
-### Create Slack Channel Action
+### Create Slack channel action
 
 Creates a new Slack channel for incident coordination.
 
-**Form Fields:**
-- **Channel Name**: Name for the new channel (must follow Slack naming rules)
+**Form fields:**
+- **Channel Name:** Name for the new channel (must follow Slack naming rules)
   - Example: `incident-{{Activity.id}}`
-- **Description**: Channel topic/description
-- **Is Private**: Whether to create a private channel
+- **Description:** Channel topic/description
+- **Is Private:** Whether to create a private channel
 
-**Available Mustache Variables:**
-- `{{Activity.title}}` - AI SRE incident title
-- `{{Activity.id}}` - AI SRE incident ID
-- `{{Activity.severity}}` - AI SRE incident severity
-- `{{Activity.severity.id}}` - AI SRE incident severity ID (e.g., 1, 2, 3)
-- `{{Activity.status}}` - AI SRE incident status
-- `{{Activity.summary}}` - AI SRE incident summary
+**Available Mustache variables:**
+- `{{Activity.title}}`: AI SRE incident title
+- `{{Activity.id}}`: AI SRE incident ID
+- `{{Activity.severity}}`: AI SRE incident severity
+- `{{Activity.severity.id}}`: AI SRE incident severity ID (e.g., 1, 2, 3)
+- `{{Activity.status}}`: AI SRE incident status
+- `{{Activity.summary}}`: AI SRE incident summary
 - Any custom incident fields configured in your incident template
 
 ---
 
-## Block Kit Formatting
+## Block Kit formatting
 
 Harness AI SRE supports Slack's Block Kit JSON for rich layouts, including varied text sizes, colors, and formatting beyond basic markdown.
 
-### When to Use Block Kit
+### When to use Block Kit
 
 Use Block Kit when you need:
 - Visually distinct severity indicators
@@ -117,7 +127,7 @@ Use simple text when you need:
 - Plain status updates
 - Messages with only basic markdown
 
-### Format Overview
+### Format overview
 
 Block Kit messages are JSON arrays of block objects, each with a `type`. The Message field accepts plain text or Block Kit JSON.
 
@@ -127,11 +137,11 @@ The Message field is parsed as **strict JSON**. A string cannot span lines, so u
 To keep the source readable, split content across multiple blocks or a section's `fields` array so each string stays short. The examples below use that approach.
 :::
 
-### Section Block
+### Section block
 
 Use Section blocks for standard text with markdown, ideal for primary incident info and announcements.
 
-**Example: Incident Alert with Severity**
+**Example: Incident alert with severity**
 
 ```json
 [
@@ -155,7 +165,7 @@ Use Section blocks for standard text with markdown, ideal for primary incident i
 - Black text on white background
 - Suitable for primary content
 
-**With Multiple Variables:**
+**With multiple variables:**
 
 A header section carries the title; a `fields` section holds metadata as label/value pairs, keeping each string short.
 Use Context blocks for small, compact gray text, ideal for metadata or instructions that should be de-emphasized.
@@ -196,11 +206,11 @@ To stack values in one column instead, use a single section's `text` with `\n` s
 ```
 :::
 
-### Context Block
+### Context block
 
 Use Context blocks for small, compact gray text, ideal for metadata or instructions that should be de-emphasized.
 
-**Example: Supplementary Instructions**
+**Example: Supplementary instructions**
 
 ```json
 [
@@ -226,16 +236,16 @@ Use Context blocks for small, compact gray text, ideal for metadata or instructi
 - Markdown support in each element
 - Suitable for secondary information
 
-**Key Difference from Section Block:**
+**Key difference from Section block:**
 - Context blocks use an `elements` array (can contain multiple text elements)
 - Section blocks use a single `text` object
 - Context blocks render in a more compact, muted style
 
-### Combining Blocks
+### Combine blocks
 
 Create rich, multi-section messages by combining block types. Blocks are rendered in array order.
 
-**Example: Incident Notification with Details and Instructions**
+**Example: Incident notification with details and instructions**
 
 Metadata goes in a `fields` section; the link sits in its own context block.
 
@@ -272,7 +282,7 @@ Metadata goes in a `fields` section; the link sits in its own context block.
 
 ![Incident notification with details and instructions rendered in Slack](../static/block-kit-combined-blocks.svg)
 
-### Divider Blocks
+### Divider blocks
 
 Add visual separation between sections using divider blocks.
 
@@ -298,36 +308,36 @@ Add visual separation between sections using divider blocks.
 ]
 ```
 
-### Markdown Formatting
+### Markdown formatting
 
 Within `mrkdwn` text fields, you can use:
-- **Bold**: `*text*`
-- **Italics**: `_text_`
-- **Strikethrough**: `~text~`
-- **Code**: `` `code` ``
-- **Code block**: `` ```code block``` ``
-- **Links**: `<URL|link text>`
-- **User mentions**: `<@USER_ID>`
-- **Channel mentions**: `<!channel>`, `<!here>`, `<#CHANNEL_ID>`
-- **Emoji**: `:emoji_name:`
-- **Line breaks**: `\n`
+- **Bold:** `*text*`
+- **Italics:** `_text_`
+- **Strikethrough:** `~text~`
+- **Code:** `` `code` ``
+- **Code block:** `` ```code block``` ``
+- **Links:** `<URL|link text>`
+- **User mentions:** `<@USER_ID>`
+- **Channel mentions:** `<!channel>`, `<!here>`, `<#CHANNEL_ID>`
+- **Emoji:** `:emoji_name:`
+- **Line breaks:** `\n`
 
-### Variable Interpolation
+### Variable interpolation
 
 Mustache variables work seamlessly within Block Kit JSON. Variables are replaced before the JSON is sent to Slack.
 
 **Examples:**
-- `{{Activity.severity.id}}` → `1`, `2`, `3`
-- `{{Activity.title}}` → `Database Connection Failure`
-- `{{Activity.status}}` → `Investigating`, `Resolved`
+- `{{Activity.severity.id}}` renders as `1`, `2`, `3`
+- `{{Activity.title}}` renders as `Database Connection Failure`
+- `{{Activity.status}}` renders as `Investigating`, `Resolved`
 
 The examples below link with `{{Activity.url}}` and `{{Activity.postmortem_url}}`, which are example custom fields holding the incident and post-mortem links. Use whatever link fields your incident template provides, or a full URL.
 
 **Important:** Variables are auto-escaped, but ensure values contain no characters that break JSON (quotes, newlines).
 
-### Common Templates
+### Common templates
 
-#### High Severity Incident Alert
+#### High-severity incident alert
 
 ```json
 [
@@ -371,7 +381,7 @@ The examples below link with `{{Activity.url}}` and `{{Activity.postmortem_url}}
 
 ![Critical high-severity incident alert rendered in Slack](../static/block-kit-high-severity-example.svg)
 
-#### Status Update Notification
+#### Status update notification
 
 ```json
 [
@@ -405,7 +415,7 @@ The examples below link with `{{Activity.url}}` and `{{Activity.postmortem_url}}
 
 ![Incident status update notification rendered in Slack](../static/block-kit-status-update-example.svg)
 
-#### Resolution Notification
+#### Resolution notification
 
 ```json
 [
@@ -453,26 +463,27 @@ When using Block Kit in Harness AI SRE, be aware of these constraints:
 - **Interactive elements**: Buttons and menus display but are not interactive from AI SRE runbooks, they do not trigger callbacks.
 - **Variable escaping**: Variables are auto-escaped, but ensure incident data has no malformed JSON characters.
 
-### Testing Messages
+### Test messages
 
 Before deploying runbooks with Block Kit messages:
 
-1. **Use Block Kit Builder**: Preview your JSON at [api.slack.com/block-kit](https://api.slack.com/block-kit/building).
-2. **Test with static data**: Replace Mustache variables with example values to validate JSON syntax.
-3. **Run in a test channel**: Execute the runbook in a non-production Slack channel first.
-4. **Verify variable rendering**: Check that all `{{Activity.*}}` variables are replaced correctly in the execution logs.
+1. **Use Block Kit Builder:** Preview your JSON at [api.slack.com/block-kit](https://api.slack.com/block-kit/building).
+2. **Test with static data:** Replace Mustache variables with example values to validate JSON syntax.
+3. **Run in a test channel:** Execute the runbook in a non-production Slack channel first.
+4. **Verify variable rendering:** Check that all `{{Activity.*}}` variables are replaced correctly in the execution logs.
 
-### Migrating from Plain Text
+### Migrate from plain text
 
 If you have existing runbooks with plain text messages, you can migrate them to Block Kit:
 
-**Before (Plain Text):**
+**Before (plain text):**
 ```
 ⚠️ New SEV{{Activity.severity.id}} incident: {{Activity.title}}
 Status: {{Activity.status}}
 ```
 
 **After (Block Kit):**
+
 ```json
 [
   {
@@ -503,41 +514,41 @@ Status: {{Activity.status}}
 
 ---
 
-## Best Practices
+## Best practices
 
-### Channel Naming
+### Channel naming
 - Use consistent prefixes: `incident-`, `alert-`, `sev1-`
 - Include incident IDs: `incident-{{Activity.id}}-api`
 - Keep names descriptive: `sev{{Activity.severity.id}}-{{Activity.service}}`
 - Follow workspace conventions: lowercase, hyphens, no spaces
 - Document naming patterns in runbook descriptions
 
-### Message Structure
-- **Use clear formatting**: Structure messages with headers, sections, and spacing
-- **Include severity indicators**: Use emoji (🔴, ⚠️, ℹ️) or text prefixes (SEV1, SEV2)
-- **Link to relevant resources**: Dashboards, runbooks, incident details, monitoring tools
-- **Mention appropriate teams**: Use `<!channel>`, `<!here>`, or `<@USER_ID>` for targeted notifications
-- **Prioritize readability**: Use Block Kit for complex messages, plain text for simple updates
-- **Keep messages concise**: Slack messages should be scannable; avoid large blocks of text
+### Message structure
+- **Use clear formatting:** Structure messages with headers, sections, and spacing
+- **Include severity indicators:** Use emoji (🔴, ⚠️, ℹ️) or text prefixes (SEV1, SEV2)
+- **Link to relevant resources:** Dashboards, runbooks, incident details, monitoring tools
+- **Mention appropriate teams:** Use `<!channel>`, `<!here>`, or `<@USER_ID>` for targeted notifications
+- **Prioritize readability:** Use Block Kit for complex messages, plain text for simple updates
+- **Keep messages concise:** Slack messages should be scannable; avoid large blocks of text
 
-### Block Kit Tips
-- **Test before deploying**: Always preview Block Kit messages in Slack Block Kit Builder
-- **Use Section blocks for primary content**: Main incident information, alerts, announcements
-- **Use Context blocks for metadata**: Timestamps, IDs, supplementary instructions
-- **Use `fields` for label/value pairs**: Keeps strings short and renders metadata in a tidy two-column grid
-- **Add dividers for visual separation**: Break up long messages into logical sections
-- **Validate JSON syntax**: Use a JSON validator before saving runbook actions
-- **Use `\n` for line breaks**: Only the `\n` escape produces a line break, never a real newline or trailing backslash
-- **Limit block count**: Keep messages under 20 blocks for best performance
-- **Store templates**: Save common Block Kit patterns as runbook templates for reuse
-- **Consider accessibility**: Ensure emoji and formatting convey meaning even without color
+### Block Kit tips
+- **Test before deploying:** Always preview Block Kit messages in Slack Block Kit Builder
+- **Use Section blocks for primary content:** Main incident information, alerts, announcements
+- **Use Context blocks for metadata:** Timestamps, IDs, supplementary instructions
+- **Use `fields` for label/value pairs:** Keeps strings short and renders metadata in a tidy two-column grid
+- **Add dividers for visual separation:** Break up long messages into logical sections
+- **Validate JSON syntax:** Use a JSON validator before saving runbook actions
+- **Use `\n` for line breaks:** Only the `\n` escape produces a line break, never a real newline or trailing backslash
+- **Limit block count:** Keep messages under 20 blocks for best performance
+- **Store templates:** Save common Block Kit patterns as runbook templates for reuse
+- **Consider accessibility:** Ensure emoji and formatting convey meaning even without color
 
-### Variable Usage
-- **Validate variable names**: Ensure custom fields exist before using in messages
-- **Use consistent naming**: Match variable names exactly (case-sensitive)
-- **Provide context**: Include labels with variables (`*Severity:* {{Activity.severity.id}}`)
-- **Test with sample data**: Replace variables with realistic values during testing
-- **Handle missing data**: Consider what happens if a custom field is empty
+### Variable usage
+- **Validate variable names:** Ensure custom fields exist before using in messages
+- **Use consistent naming:** Match variable names exactly (case-sensitive)
+- **Provide context:** Include labels with variables (`*Severity:* {{Activity.severity.id}}`)
+- **Test with sample data:** Replace variables with realistic values during testing
+- **Handle missing data:** Consider what happens if a custom field is empty
 
 ### Permissions
 - Use least privilege access: Only grant permissions needed for specific actions
@@ -548,9 +559,9 @@ Status: {{Activity.status}}
 
 ---
 
-## Common Use Cases
+## Common use cases
 
-### Incident Coordination
+### Incident coordination
 
 **Workflow:**
 1. Create incident-specific channel
@@ -558,18 +569,18 @@ Status: {{Activity.status}}
 3. Share initial assessment and runbook
 4. Track response actions in threaded conversations
 
-**Example Runbook Actions:**
+**Example runbook actions:**
 
-**Action 1: Create Channel**
-- **Action Type**: Create Slack Channel
-- **Channel Name**: `incident-{{Activity.id}}-{{Activity.service}}`
-- **Description**: `SEV{{Activity.severity.id}} - {{Activity.title}}`
-- **Is Private**: False
+**Action 1: Create channel**
+- **Action Type:** Create Slack Channel
+- **Channel Name:** `incident-{{Activity.id}}-{{Activity.service}}`
+- **Description:** `SEV{{Activity.severity.id}} - {{Activity.title}}`
+- **Is Private:** False
 
-**Action 2: Notify Team (Block Kit)**
-- **Action Type**: Send Slack Message
-- **Channel**: `#incidents`
-- **Message**:
+**Action 2: Notify team (Block Kit)**
+- **Action Type:** Send Slack Message
+- **Channel:** `#incidents`
+- **Message:**
 ```json
 [
   {
@@ -613,7 +624,7 @@ Status: {{Activity.status}}
 
 ![Incident coordination team notification rendered in Slack](../static/block-kit-coordination-example.svg)
 
-### Status Updates
+### Status updates
 
 **Workflow:**
 1. Send periodic updates to incident channel
@@ -621,12 +632,12 @@ Status: {{Activity.status}}
 3. Share metrics, graphs, and monitoring links
 4. Document action items and next steps
 
-**Example Runbook Action:**
+**Example runbook action:**
 
-**Action: Status Update (Block Kit)**
-- **Action Type**: Send Slack Message
-- **Channel**: `#incident-{{Activity.id}}-{{Activity.service}}`
-- **Message**:
+**Action: Status update (Block Kit)**
+- **Action Type:** Send Slack Message
+- **Channel:** `#incident-{{Activity.id}}-{{Activity.service}}`
+- **Message:**
 ```json
 [
   {
@@ -672,7 +683,7 @@ Status: {{Activity.status}}
 
 ![Incident status update with progress and next steps rendered in Slack](../static/block-kit-status-update-usecase-example.svg)
 
-### Post-Incident Communication
+### Post-incident communication
 
 **Workflow:**
 1. Send resolution notification
@@ -681,12 +692,12 @@ Status: {{Activity.status}}
 4. Archive incident channel
 5. Document lessons learned
 
-**Example Runbook Actions:**
+**Example runbook actions:**
 
-**Action 1: Resolution Notice (Block Kit)**
-- **Action Type**: Send Slack Message
-- **Channel**: `#incident-{{Activity.id}}-{{Activity.service}}`
-- **Message**:
+**Action 1: Resolution notice (Block Kit)**
+- **Action Type:** Send Slack Message
+- **Channel:** `#incident-{{Activity.id}}-{{Activity.service}}`
+- **Message:**
 ```json
 [
   {
@@ -746,18 +757,18 @@ Status: {{Activity.status}}
 
 ![Post-incident resolution notice with root cause rendered in Slack](../static/block-kit-resolution-usecase-example.svg)
 
-**Action 2: Archive Channel**
-- **Action Type**: Archive Slack Channel
-- **Channel**: `incident-{{Activity.id}}-{{Activity.service}}`
+**Action 2: Archive channel**
+- **Action Type:** Archive Slack Channel
+- **Channel:** `incident-{{Activity.id}}-{{Activity.service}}`
 
-### Maintenance Notifications
+### Maintenance notifications
 
-**Example Runbook Action:**
+**Example runbook action:**
 
-**Action: Maintenance Alert (Block Kit)**
-- **Action Type**: Send Slack Message
-- **Channel**: `#engineering`
-- **Message**:
+**Action: Maintenance alert (Block Kit)**
+- **Action Type:** Send Slack Message
+- **Channel:** `#engineering`
+- **Message:**
 ```json
 [
   {
@@ -904,7 +915,7 @@ To narrow the source, split content across multiple blocks or a `fields` array r
 
 **Resolution:**
 
-1. Verify OAuth tokens in **Organization Settings** → **Third Party Integrations (AI SRE)**
+1. Verify OAuth tokens in **Organization Settings**, then **Third Party Integrations (AI SRE)**
 2. Check permission scopes match required permissions
 3. Confirm workspace access for the authorized user
 4. Re-authorize the Slack integration if necessary
@@ -949,9 +960,9 @@ To narrow the source, split content across multiple blocks or a `fields` array r
 
 ---
 
-## Quick Reference
+## Quick reference
 
-### Structure Comparison
+### Structure comparison
 
 | Feature | Section Block | Context Block |
 |---------|--------------|---------------|
@@ -961,9 +972,9 @@ To narrow the source, split content across multiple blocks or a `fields` array r
 | **Structure** | Single `text` object | Array of `elements` |
 | **Markdown** | ✅ Supported | ✅ Supported |
 
-### Common Patterns
+### Common patterns
 
-**Simple Alert:**
+**Simple alert:**
 ```json
 [
   {
@@ -973,7 +984,7 @@ To narrow the source, split content across multiple blocks or a `fields` array r
 ]
 ```
 
-**Alert with Metadata:**
+**Alert with metadata:**
 ```json
 [
   {
@@ -989,7 +1000,7 @@ To narrow the source, split content across multiple blocks or a `fields` array r
 ]
 ```
 
-**Multi-Section with Divider:**
+**Multi-section with divider:**
 ```json
 [
   {
@@ -1004,7 +1015,7 @@ To narrow the source, split content across multiple blocks or a `fields` array r
 ]
 ```
 
-**Label/Value Metadata (two-column):**
+**Label/value metadata (two-column):**
 ```json
 [
   {
@@ -1017,7 +1028,7 @@ To narrow the source, split content across multiple blocks or a `fields` array r
 ]
 ```
 
-### Essential Variables
+### Essential variables
 
 | Variable | Description | Example Output |
 |----------|-------------|----------------|
@@ -1027,7 +1038,7 @@ To narrow the source, split content across multiple blocks or a `fields` array r
 | `{{Activity.status}}` | Current status | `Investigating`, `Resolved` |
 | `{{Activity.service}}` | Affected service | `api-gateway` |
 
-### Slack Markdown
+### Slack markdown
 
 | Format | Syntax | Example |
 |--------|--------|---------|
@@ -1041,16 +1052,16 @@ To narrow the source, split content across multiple blocks or a `fields` array r
 
 ### Resources
 
-- **Slack Block Kit Builder**: [api.slack.com/block-kit/building](https://api.slack.com/block-kit/building)
-- **Block Kit Reference**: [api.slack.com/reference/block-kit](https://api.slack.com/reference/block-kit)
-- **Slack Markdown Reference**: [api.slack.com/reference/surfaces/formatting](https://api.slack.com/reference/surfaces/formatting)
-- **JSON Validator**: [jsonlint.com](https://jsonlint.com)
+- **Slack Block Kit Builder:** [api.slack.com/block-kit/building](https://api.slack.com/block-kit/building)
+- **Block Kit Reference:** [api.slack.com/reference/block-kit](https://api.slack.com/reference/block-kit)
+- **Slack Markdown Reference:** [api.slack.com/reference/surfaces/formatting](https://api.slack.com/reference/surfaces/formatting)
+- **JSON Validator:** [jsonlint.com](https://jsonlint.com)
 
 ---
 
-## Next Steps
+## Next steps
 
-- Go to [Slack Commands](/docs/ai-sre/get-started/slack-commands) to learn about Slack slash commands for incident management.
-- Go to [Configure Microsoft Teams Integration](./teams.md) to set up Microsoft Teams notifications.
-- Go to [Configure Zoom Integration](./zoom.md) to create incident war rooms.
-- Go to [Create a Runbook](../../create-runbook) to build automated response workflows.
+- [Slack Commands](/docs/ai-sre/get-started/slack-commands): Use Slack slash commands for incident management.
+- [Microsoft Teams Integration](/docs/ai-sre/runbooks/integrations/collaboration/teams): Set up Microsoft Teams notifications.
+- [Zoom Integration](/docs/ai-sre/runbooks/integrations/collaboration/zoom): Create incident war rooms.
+- [Create a Runbook](/docs/ai-sre/runbooks/create-runbook): Build automated response workflows.

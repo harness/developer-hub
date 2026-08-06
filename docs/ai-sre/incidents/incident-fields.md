@@ -3,11 +3,16 @@ title: Configure Incident Fields
 description: Add and customize the fields captured on every incident.
 sidebar_label: Configure Incident Fields
 sidebar_position: 2
+keywords:
+  - incident fields
+  - custom fields
+  - severity
+  - field validation
+tags:
+  - ai-sre
 redirect_from:
 - /docs/incident-response/incidents/incident-fields
 ---
-
-# Configure Incident Fields
 
 Learn how to configure and customize fields for incidents in Harness AI SRE.
 
@@ -22,11 +27,11 @@ Incident fields help you:
 
 ---
 
-## Field Types
+## Field types
 
-### Required Fields
+### Required fields
 
-#### Basic Information
+#### Basic information
 ```yaml
 field_definitions:
   title:
@@ -43,7 +48,7 @@ field_definitions:
     required: true
 ```
 
-#### Severity Field Values
+#### Severity field values
 
 The severity field uses numeric string values internally. When configuring runbook triggers or API integrations, use these exact values:
 
@@ -57,7 +62,7 @@ The severity field uses numeric string values internally. When configuring runbo
 
 **Important:** Severity is stored as a string, not a number. When using severity in runbook triggers or API calls, always use the string format (for example, `"0"` not `0`).
 
-**Customize severity labels:** You can customize the display labels for severity levels to match your organization's terminology. Go to [Customize Severity and Priority Labels](./severities-priorities.md) to learn how to configure custom labels while maintaining compatibility with integrations and APIs.
+**Customize severity labels:** You can customize the display labels for severity levels to match your organization's terminology. Go to [Customize severity and priority labels](/docs/ai-sre/incidents/severities-priorities) to configure custom labels while maintaining compatibility with integrations and APIs.
 
 **Alternative severity names:** The system accepts alternative severity names from external integrations and maps them automatically:
 
@@ -67,9 +72,9 @@ The severity field uses numeric string values internally. When configuring runbo
 - **Maps to "3":** `SEV3`, `INTERNAL-NONPROD`, `MAINTENANCE`
 - **Maps to "4":** Any other value
 
-Go to [Configure Runbook Triggers](/docs/ai-sre/runbooks/triggers/create-trigger#severity-field) to learn how to use severity values in trigger conditions.
+Go to [Configure runbook triggers](/docs/ai-sre/runbooks/triggers/create-trigger#severity-field-values) to use severity values in trigger conditions.
 
-#### Service Context
+#### Service context
 ```yaml
 field_definitions:
   service:
@@ -86,9 +91,9 @@ field_definitions:
     source: team_directory
 ```
 
-### Optional Fields
+### Optional fields
 
-#### Impact Assessment
+#### Impact assessment
 ```yaml
 field_definitions:
   affected_users:
@@ -104,7 +109,7 @@ field_definitions:
       source: region_list
 ```
 
-#### Timeline Data
+#### Timeline data
 ```yaml
 field_definitions:
   detected_at:
@@ -121,9 +126,9 @@ field_definitions:
 
 ---
 
-## Field Configuration
+## Field configuration
 
-### Custom Fields
+### Custom fields
 ```yaml
 custom_fields:
   customer_impact:
@@ -144,7 +149,7 @@ custom_fields:
         due_date: timestamp
 ```
 
-### Field Dependencies
+### Field dependencies
 ```yaml
 dependencies:
   - if:
@@ -157,7 +162,7 @@ dependencies:
       required: [resolution_summary, follow_up]
 ```
 
-### Field Validation
+### Field validation
 ```yaml
 validation:
   title:
@@ -174,9 +179,9 @@ validation:
 
 ---
 
-## Field Templates
+## Field templates
 
-### Service Incident
+### Service incident
 ```yaml
 template:
   name: "Service Incident"
@@ -189,7 +194,7 @@ template:
     description: "Service degradation detected in [service]"
 ```
 
-### Security Incident
+### Security incident
 ```yaml
 template:
   name: "Security Incident"
@@ -202,7 +207,7 @@ template:
     description: "Security incident detected in [service]"
 ```
 
-### Infrastructure Incident
+### Infrastructure incident
 ```yaml
 template:
   name: "Infrastructure Incident"
@@ -217,9 +222,9 @@ template:
 
 ---
 
-## Field Usage
+## Field usage
 
-### Incident Creation
+### Incident creation
 ```yaml
 create_incident:
   template: "Service Incident"
@@ -230,7 +235,7 @@ create_incident:
     team: [team]
 ```
 
-### Status Updates
+### Status updates
 ```yaml
 update_status:
   status: investigating
@@ -254,9 +259,9 @@ resolve_incident:
 
 ---
 
-## Best Practices
+## Best practices
 
-### Field Design
+### Field design
 - Use clear names
 - Add descriptions
 - Set validations
@@ -270,7 +275,7 @@ resolve_incident:
 - Document usage
 - Review periodically
 
-### Field Management
+### Field management
 - Audit field usage
 - Clean unused fields
 - Update validations
@@ -279,14 +284,14 @@ resolve_incident:
 
 ---
 
-## Next Steps
+## Next steps
 
 ### Documentation
-- [Incident Overview](./incidents.md)
-- [Incident Workflows](./incident-workflows.md)
-- [Incident Templates](./incident-templates.md)
-- [Severity & Priority Labels](./severities-priorities.md)
+- [Incident overview](/docs/ai-sre/incidents): Understand the incident lifecycle.
+- [Incident workflows](/docs/ai-sre/incidents/incident-workflows): Automate incident response.
+- [Incident templates](/docs/ai-sre/incidents/incident-templates): Standardize incident creation.
+- [Severity and priority labels](/docs/ai-sre/incidents/severities-priorities): Configure severity and priority.
 
-### Related Topics
-- [Configure Fields](../runbooks/workflows/overview.md)
-- [Route Alerts](../alerts/alert-rules/overview.md)
+### Related topics
+- [Configure fields](/docs/ai-sre/runbooks/workflows/overview): Build workflow actions.
+- [Route alerts](/docs/ai-sre/alerts/alert-rules/overview): Route alerts to incidents.

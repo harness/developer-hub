@@ -3,18 +3,26 @@ title: Dynatrace Integration Guide
 description: Send problem notifications through webhooks.
 sidebar_label: Dynatrace
 sidebar_position: 2
+keywords:
+  - Dynatrace
+  - webhook
+  - AI SRE
+  - integration
+tags:
+  - ai-sre
+  - webhooks
+  - dynatrace
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
-# Configure Dynatrace to Send Webhooks
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
 Configure Dynatrace to send webhook notifications to Harness AI SRE when problems are detected.
 
 ## Before you begin
 
-- **Harness webhook endpoint**: Create a Dynatrace webhook in Harness AI SRE using the [Dynatrace webhook template](../../templates/monitoring/dynatrace.md).
+- **Harness webhook endpoint**: Create a Dynatrace webhook in Harness AI SRE using the [Dynatrace webhook template](/docs/ai-sre/alerts/webhooks/templates/monitoring/dynatrace).
 - **Dynatrace permissions**: Access to configure problem notifications and integrations.
 - **Webhook URL**: Copy the webhook URL from your Harness webhook configuration.
 - **Dynatrace webhook documentation**: Go to [Problem Notifications](https://www.dynatrace.com/support/help/observe-and-explore/notifications-and-alerting/problem-notifications) to understand notification configuration.
@@ -26,7 +34,7 @@ Configure Dynatrace to send webhook notifications to Harness AI SRE when problem
 
 ### Navigate to notifications
 
-1. In Dynatrace, go to **Settings** → **Integration** → **Problem notifications**
+1. In Dynatrace, go to **Settings**, then **Integration**, then **Problem notifications**
 2. Click **Add notification**
 3. Select **Custom integration**
 
@@ -138,49 +146,38 @@ filter: webhook.ImpactedEntity.contains("SERVICE")
 
 ## Troubleshooting
 
-### Webhook not triggering
+<Troubleshoot
+  issue="Dynatrace webhook is not triggering for Harness AI SRE"
+  mode="docs"
+  fallback="Verify the notification is enabled in Dynatrace, check that the problem severity matches your filter criteria, use 'Send test notification' to verify the webhook URL, and review the Dynatrace notification logs."
+/>
 
-**Cause**: Notification not configured or problem not matching filters.
+<Troubleshoot
+  issue="Dynatrace problems are not creating alerts in Harness AI SRE"
+  mode="docs"
+  fallback="Check that the CEL filter expressions allow the problem through, verify required fields (title, message) are mapped, test with a simpler payload first, and review the Harness webhook logs for errors."
+/>
 
-**Solution**:
-- Verify notification is enabled in Dynatrace
-- Check that problem severity matches your filter criteria
-- Use "Send test notification" to verify webhook URL
-- Review Dynatrace notification logs
-
-### Problems not creating alerts
-
-**Cause**: Field mapping mismatch or filtering rules blocking alerts.
-
-**Solution**:
-- Check CEL filter expressions allow the problem through
-- Verify required fields (title, message) are mapped
-- Test with a simpler payload first
-- Review Harness webhook logs for errors
-
-### Duplicate alerts for same problem
-
-**Cause**: Multiple problem state changes triggering separate webhooks.
-
-**Solution**:
-- Use problem ID for deduplication in route alerts
-- Configure Dynatrace to only send "Open problems" notifications
-- Add CEL filter: `webhook.State == "OPEN"`
+<Troubleshoot
+  issue="Dynatrace is creating duplicate alerts for the same problem in Harness AI SRE"
+  mode="docs"
+  fallback="Use the problem ID for deduplication in route alerts, configure Dynatrace to only send 'Open problems' notifications, and add the CEL filter webhook.State == 'OPEN'."
+/>
 
 ---
 
 ## Next steps
 
-- Go to [Route Alerts](../../../alert-rules/overview.md) to route Dynatrace problems.
-- Go to [Use CEL in Webhooks](../../use-cel-webhooks.md) for advanced filtering.
-- Go to [Dynatrace Webhook Template](../../templates/monitoring/dynatrace.md) for template details.
+- [Route alerts](/docs/ai-sre/alerts/alert-rules/overview): Route Dynatrace problems.
+- [Use CEL in webhooks](/docs/ai-sre/alerts/webhooks/use-cel-webhooks): Add advanced filtering.
+- [Dynatrace webhook template](/docs/ai-sre/alerts/webhooks/templates/monitoring/dynatrace): Review template details.
 
 ---
 
 ## Further reading
 
-### Dynatrace Official Documentation
-- [Problem Notifications](https://www.dynatrace.com/support/help/observe-and-explore/notifications-and-alerting/problem-notifications) - Complete guide to problem notification configuration
-- [Webhook Integration](https://www.dynatrace.com/support/help/observe-and-explore/notifications-and-alerting/problem-notifications/webhook-integration) - Webhook-specific setup and payload structure
-- [Problem API](https://www.dynatrace.com/support/help/dynatrace-api/environment-api/problems-v2) - Problem object structure and field definitions
-- [Placeholder Reference](https://www.dynatrace.com/support/help/observe-and-explore/notifications-and-alerting/problem-notifications/webhook-integration#placeholder-reference) - Available placeholder variables for custom payloads
+### Dynatrace official documentation
+- [Problem notifications](https://www.dynatrace.com/support/help/observe-and-explore/notifications-and-alerting/problem-notifications): Complete guide to problem notification configuration.
+- [Webhook integration](https://www.dynatrace.com/support/help/observe-and-explore/notifications-and-alerting/problem-notifications/webhook-integration): Webhook-specific setup and payload structure.
+- [Problem API](https://www.dynatrace.com/support/help/dynatrace-api/environment-api/problems-v2): Problem object structure and field definitions.
+- [Placeholder reference](https://www.dynatrace.com/support/help/observe-and-explore/notifications-and-alerting/problem-notifications/webhook-integration#placeholder-reference): Available placeholder variables for custom payloads.

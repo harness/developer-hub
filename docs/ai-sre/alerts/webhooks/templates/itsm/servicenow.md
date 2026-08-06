@@ -3,20 +3,29 @@ title: ServiceNow Integration Webhook Template
 description: Receive ITSM event notifications.
 sidebar_label: ServiceNow Webhook Template
 sidebar_position: 19
+keywords:
+  - ServiceNow
+  - webhook
+  - template
+  - integration
+  - AI SRE
+  - alerts
+tags:
+  - ai-sre
+  - webhooks
+  - servicenow
 ---
-
-# ServiceNow Integration Webhook Template
 
 Configure ServiceNow integration to receive ITSM event notifications in Harness AI SRE.
 
 ## Overview
 
 ServiceNow provides:
-- **Incident management**: Track ServiceNow incidents
-- **Change management**: Monitor change requests
-- **Problem management**: Receive problem ticket notifications
-- **Service catalog**: Track service requests
-- **CMDB events**: Configuration item change notifications
+- **Incident management:** Track ServiceNow incidents
+- **Change management:** Monitor change requests
+- **Problem management:** Receive problem ticket notifications
+- **Service catalog:** Track service requests
+- **CMDB events:** Configuration item change notifications
 
 ---
 
@@ -33,7 +42,7 @@ ServiceNow provides:
 
 ---
 
-## Next Steps
+## Next steps
 
-- Go to [Route Alerts](../../../alert-rules/overview.md) to route ServiceNow alerts.
-- Go to [Ingest Alerts Overview](../overview.md) to view other integrations.
+- [Route alerts](/docs/ai-sre/alerts/alert-rules/overview): Route ServiceNow alerts to the right destinations.
+- [Ingest alerts overview](/docs/ai-sre/alerts/webhooks/templates/overview): View other integrations.

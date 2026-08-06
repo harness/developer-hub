@@ -20,10 +20,10 @@ Track Jira issue deployments by sending deployment webhooks when issues are rele
 
 ## Before you begin
 
-- **Deploy Change Investigator setup**: Deploy webhook integration created in AI SRE. Go to [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) to create webhook endpoint.
-- **Jira Cloud access**: Administrator permissions to create automation rules.
-- **Deploy webhook URL**: Deploy webhook URL from AI SRE integrations page.
-- **Deployment workflow**: Status workflow that includes deployment states (for example, "In Production", "Deployed").
+- **Deploy Change Investigator setup:** Deploy webhook integration created in AI SRE. Go to [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) to create the webhook endpoint.
+- **Jira Cloud access:** Administrator permissions to create automation rules.
+- **Deploy webhook URL:** Deploy webhook URL from the AI SRE integrations page.
+- **Deployment workflow:** Status workflow that includes deployment states (for example, "In Production" or "Deployed").
 
 ---
 
@@ -35,22 +35,22 @@ Use Jira automation rules to send webhooks when issues transition to deployment 
 
 Send a webhook when issues move to deployment statuses.
 
-1. Navigate to **Project settings** → **Automation**
+1. Navigate to **Project settings**, then select **Automation**
 2. Click **Create rule**
-3. Configure trigger:
+3. Configure the trigger:
    - **When:** Issue transitioned
    - **From status:** Any status
-   - **To status:** Select deployment statuses (for example, "In Production", "Deployed to Staging")
-4. Click **New condition** → **Issue fields condition**:
+   - **To status:** Select deployment statuses (for example, "In Production" or "Deployed to Staging")
+4. Click **New condition**, then select **Issue fields condition**:
    - **Field:** Fix Version/s
    - **Condition:** is not empty
-5. Click **New action** → **Send web request**
-6. Configure webhook:
-   - **Webhook URL:** Paste deploy webhook URL from AI SRE
+5. Click **New action**, then select **Send web request**
+6. Configure the webhook:
+   - **Webhook URL:** Paste the deploy webhook URL from AI SRE
    - **HTTP method:** POST
    - **Headers:** Add `Content-Type: application/json`
    - **Webhook body:** Custom data
-7. Paste webhook payload (see below)
+7. Paste the webhook payload described in the following sections
 8. Click **Turn it on**
 
 ---
@@ -186,18 +186,18 @@ Or map to standardized names using conditions in your automation rule.
 
 1. Create or select a test issue
 2. Add a Fix Version to the issue
-3. Transition issue to deployment status (for example, "In Production")
-4. Navigate to **AI SRE** → **Integrations**
-5. Click **...** menu on DEPLOY integration
+3. Transition the issue to a deployment status (for example, "In Production")
+4. Navigate to **AI SRE**, then select **Integrations**
+5. Click the **More** icon on the DEPLOY integration
 6. Select **Debug**
-7. Verify webhook appears with correct payload
+7. Verify the webhook appears with the correct payload
 
 ### Verify automation execution
 
-1. Navigate to **Project settings** → **Automation**
-2. Click on your automation rule
-3. Select **Audit log** tab
-4. Verify rule executed and webhook was sent
+1. Navigate to **Project settings**, then select **Automation**
+2. Click your automation rule
+3. Select the **Audit log** tab
+4. Verify the rule executed and the webhook was sent
 5. Check for any error messages
 
 ---
@@ -253,15 +253,15 @@ For releases that deploy multiple services, create separate webhook calls or con
 
 ## Best practices
 
-- **Set Fix Version before deployment**: Ensure issues have Fix Version set before transitioning to deployment statuses
-- **Use consistent service names**: Keep service identifiers consistent across issues and deployments
-- **Test with real issues**: Verify automation rule works with actual project data before enabling
-- **Monitor audit logs**: Regularly check automation audit logs for failures
+- **Set Fix Version before deployment:** Ensure issues have a Fix Version set before transitioning to deployment statuses.
+- **Use consistent service names:** Keep service identifiers consistent across issues and deployments.
+- **Test with real issues:** Verify the automation rule works with actual project data before you enable it.
+- **Monitor audit logs:** Regularly check automation audit logs for failures.
 
 ---
 
 ## Next steps
 
-- Go to [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) for complete setup instructions.
-- Go to [AI Agent RCA](/docs/ai-sre/ai-agent/rca-change-agent) to learn how the AI agent uses change detection during incidents.
-- Go to [Configure Jenkins](/docs/ai-sre/change/sources/jenkins) for webhook setup in Jenkins pipelines.
+- Go to [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) to complete the setup.
+- Go to [AI Agent RCA](/docs/ai-sre/ai-agent/rca-change-agent) to understand how the AI agent uses change detection during incidents.
+- Go to [Configure Jenkins](/docs/ai-sre/change/sources/jenkins) to set up webhooks in Jenkins pipelines.

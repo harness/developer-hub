@@ -3,14 +3,21 @@ title: Troubleshooting Triggers
 sidebar_label: Troubleshooting
 sidebar_position: 7
 description: Common issues and solutions for runbook triggers.
+keywords:
+  - triggers
+  - runbooks
+  - troubleshooting
+  - CEL
+tags:
+  - ai-sre
+  - triggers
+  - runbooks
 ---
 
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 import NeedHelpFooter from '../../_snippets/need-help-footer.mdx';
 
-# Troubleshooting Triggers
-
-## Troubleshooting Triggers
+## Troubleshooting triggers
 
 <Troubleshoot
   issue="Trigger not activating for severity-based conditions"
@@ -58,8 +65,8 @@ import NeedHelpFooter from '../../_snippets/need-help-footer.mdx';
 
 ## Next steps
 
-- Go to [Create Dynamic Content](/docs/ai-sre/get-started/onboarding/expression-languages) for complete CEL syntax and troubleshooting
-- Go to [Create Runbook Triggers](/docs/ai-sre/runbooks/triggers/create-trigger) to review trigger configuration basics
-- Go to [Overview](/docs/ai-sre/runbooks/triggers/overview) to understand trigger fundamentals
+- Go to [Create dynamic content](/docs/ai-sre/get-started/onboarding/expression-languages) to review complete CEL syntax and troubleshooting.
+- Go to [Create runbook triggers](/docs/ai-sre/runbooks/triggers/create-trigger) to review trigger configuration basics.
+- Go to [Trigger overview](/docs/ai-sre/runbooks/triggers/overview) to understand trigger fundamentals.
 
 <NeedHelpFooter />

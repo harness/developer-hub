@@ -3,37 +3,45 @@ title: Dynatrace Integration Webhook Template
 description: Receive problem detection and monitoring alerts.
 sidebar_label: Dynatrace Webhook Template
 sidebar_position: 4
+keywords:
+  - Dynatrace
+  - webhook
+  - monitoring
+  - alerts
+  - AI SRE
+tags:
+  - ai-sre
+  - webhooks
+  - monitoring
 ---
-
-# Dynatrace Integration Webhook Template
 
 Configure Dynatrace integration to receive problem detection and monitoring alerts in Harness AI SRE.
 
 ## Overview
 
 Dynatrace provides:
-- **Problem detection**: AI-powered issue identification
-- **Service monitoring**: Full-stack observability
-- **Infrastructure monitoring**: Host and container tracking
-- **Application insights**: User experience monitoring
-- **Root cause analysis**: Automated impact analysis
+- **Problem detection:** AI-powered issue identification
+- **Service monitoring:** Full-stack observability
+- **Infrastructure monitoring:** Host and container tracking
+- **Application insights:** User experience monitoring
+- **Root cause analysis:** Automated impact analysis
 
 ---
 
 ## Set up Dynatrace integration
 
-1. Navigate to **Integrations** in the main menu
-2. Click **New Integration**
-3. Select **Dynatrace** from the template options
-4. Enter a name and generate an ID
-5. Copy the generated webhook URL
-6. In your Dynatrace environment, configure a problem notification integration pointing to the copied URL
-7. Configure payload mapping to match Dynatrace problem fields to Harness AI SRE fields
-8. Set up route alerts to route and filter incoming Dynatrace problems
+1. Navigate to **Integrations** in the main menu.
+2. Click **New Integration**.
+3. Select **Dynatrace** from the template options.
+4. Enter a name and generate an ID.
+5. Copy the generated webhook URL.
+6. In your Dynatrace environment, configure a problem notification integration pointing to the copied URL.
+7. Configure payload mapping to match Dynatrace problem fields to Harness AI SRE fields.
+8. Set up route alerts to route and filter incoming Dynatrace problems.
 
 ---
 
-## Example Alert Payload
+## Example alert payload
 
 ```json
 {
@@ -61,7 +69,7 @@ Dynatrace provides:
 
 ---
 
-## Next Steps
+## Next steps
 
-- Go to [Route Alerts](../../../alert-rules/overview.md) to route Dynatrace alerts.
-- Go to [Ingest Alerts Overview](../overview.md) to view other integrations.
+- Go to [Route Alerts](/docs/ai-sre/alerts/alert-rules/overview) to route Dynatrace alerts.
+- Go to [Ingest Alerts Overview](/docs/ai-sre/alerts/webhooks/templates/overview) to view other integrations.

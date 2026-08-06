@@ -3,18 +3,27 @@ title: AWS CloudWatch Integration Guide
 description: Send metric alarms through an SNS webhook.
 sidebar_label: AWS CloudWatch
 sidebar_position: 10
+keywords:
+  - AWS
+  - CloudWatch
+  - SNS
+  - webhook
+  - AI SRE
+tags:
+  - ai-sre
+  - webhooks
+  - aws-cloudwatch
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
-# Configure AWS CloudWatch to Send Webhooks
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
 Configure AWS CloudWatch alarms to send webhook notifications to Harness AI SRE using Amazon SNS with HTTPS subscription.
 
 ## Before you begin
 
-- **Harness webhook endpoint**: Create an AWS CloudWatch webhook in Harness AI SRE using the [AWS CloudWatch webhook template](../../templates/cloud/aws-cloudwatch.md).
+- **Harness webhook endpoint**: Create an AWS CloudWatch webhook in Harness AI SRE using the [AWS CloudWatch webhook template](/docs/ai-sre/alerts/webhooks/templates/cloud/aws-cloudwatch).
 - **AWS permissions**: Access to create SNS topics, CloudWatch alarms, and manage subscriptions.
 - **Webhook URL**: Copy the webhook URL from your Harness webhook configuration.
 - **CloudWatch alarms documentation**: Go to [CloudWatch Alarms](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html) to understand alarm configuration.
@@ -24,7 +33,7 @@ Configure AWS CloudWatch alarms to send webhook notifications to Harness AI SRE 
 
 ## Architecture overview
 
-CloudWatch alarms → SNS Topic → HTTPS Subscription → Harness Webhook
+CloudWatch alarms to SNS topic to HTTPS subscription to Harness webhook.
 
 CloudWatch does not send webhooks directly. Use Amazon SNS as an intermediary:
 
@@ -40,7 +49,7 @@ CloudWatch does not send webhooks directly. Use Amazon SNS as an intermediary:
 ### Navigate to SNS
 
 1. Open AWS Console and go to **Simple Notification Service (SNS)**
-2. Click **Topics** → **Create topic**
+2. Click **Topics**, then click **Create topic**
 
 ### Configure topic
 
@@ -126,7 +135,7 @@ This filters to only production alarms in ALARM state.
 ### Navigate to CloudWatch
 
 1. Open AWS Console and go to **CloudWatch**
-2. Click **Alarms** → **Create alarm**
+2. Click **Alarms**, then click **Create alarm**
 
 ### Select metric
 
@@ -134,7 +143,7 @@ This filters to only production alarms in ALARM state.
 <TabItem value="ec2-cpu" label="EC2 CPU usage" default>
 
 1. Click **Select metric**
-2. Choose **EC2** → **Per-Instance Metrics**
+2. Select **EC2**, then select **Per-Instance Metrics**
 3. Select **CPUUtilization** for your instance
 4. Click **Select metric**
 
@@ -147,7 +156,7 @@ This filters to only production alarms in ALARM state.
 <TabItem value="rds-connections" label="RDS connections">
 
 1. Click **Select metric**
-2. Choose **RDS** → **Per-Database Metrics**
+2. Select **RDS**, then select **Per-Database Metrics**
 3. Select **DatabaseConnections** for your DB instance
 4. Click **Select metric**
 
@@ -160,7 +169,7 @@ This filters to only production alarms in ALARM state.
 <TabItem value="lambda-errors" label="Lambda errors">
 
 1. Click **Select metric**
-2. Choose **Lambda** → **Per-Function Metrics**
+2. Select **Lambda**, then select **Per-Function Metrics**
 3. Select **Errors** for your function
 4. Click **Select metric**
 
@@ -287,10 +296,10 @@ custom_fields: {
 
 ### Test with CloudWatch console
 
-1. Go to **CloudWatch** → **Alarms**
+1. Go to **CloudWatch**, then select **Alarms**
 2. Select your alarm
-3. Click **Actions** → **Set alarm state**
-4. Choose **In alarm**
+3. Click **Actions**, then click **Set alarm state**
+4. Select **In alarm**
 5. Click **Confirm**
 
 This manually triggers the alarm to test the integration.
@@ -398,53 +407,29 @@ message: "**CloudWatch Alarm**: " + parsed_message.AlarmName + "\n\n" +
 
 ## Troubleshooting
 
-### SNS subscription not confirming
+<Troubleshoot
+  issue="SNS subscription is not confirming for the Harness AI SRE webhook"
+  mode="general"
+  fallback="Check the Harness webhook logs for SubscribeURL in the payload, configure Harness to automatically confirm subscriptions, or manually confirm the subscription in the AWS Console under SNS Subscriptions."
+/>
 
-**Cause**: Harness webhook not responding to subscription confirmation request.
+<Troubleshoot
+  issue="CloudWatch SNS Message field is not parsing in Harness AI SRE"
+  mode="docs"
+  fallback="Check the raw webhook payload in the Harness logs, verify the Message is a JSON string parsed with webhook.Message.parseJson(), and handle parsing errors before accessing nested fields."
+/>
 
-**Solution**:
-- Check Harness webhook logs for `SubscribeURL` in payload
-- Configure Harness to automatically confirm subscriptions:
-```cel
-// Detect SNS subscription confirmation
-filter: webhook.Type != "SubscriptionConfirmation"
+<Troubleshoot
+  issue="CloudWatch alarms are not triggering the SNS webhook"
+  mode="general"
+  fallback="Edit the alarm in CloudWatch, add a notification action with your SNS topic ARN, and ensure the alarm state matches the trigger (In alarm, OK, or Insufficient data)."
+/>
 
-// Or handle it separately by fetching SubscribeURL
-```
-- Manually confirm via AWS Console: SNS → Subscriptions → Confirm
-
-### Message field not parsing
-
-**Cause**: Message is double-encoded or in unexpected format.
-
-**Solution**:
-- Check raw webhook payload in Harness logs
-- Verify Message is a JSON string: `webhook.Message.parseJson()`
-- Handle parsing errors:
-```cel
-parsed_message: webhook.Message.parseJson()
-
-title: has(parsed_message.AlarmName) ? parsed_message.AlarmName : webhook.Subject
-```
-
-### Alarms not triggering
-
-**Cause**: CloudWatch alarm not configured with SNS topic.
-
-**Solution**:
-- Edit alarm in CloudWatch
-- Go to **Actions** section
-- Add notification action with your SNS topic ARN
-- Ensure alarm state matches trigger (In alarm, OK, Insufficient data)
-
-### Signature verification failing
-
-**Cause**: SNS message signature verification issues.
-
-**Solution**:
-- SNS signs all messages with certificates
-- Verify signature using AWS SDK or certificate URL
-- Or accept messages without verification if within VPC/private network
+<Troubleshoot
+  issue="SNS message signature verification is failing"
+  mode="general"
+  fallback="SNS signs all messages with certificates. Verify the signature using the AWS SDK or the certificate URL, or accept messages without verification within a VPC or private network."
+/>
 
 ---
 
@@ -462,7 +447,7 @@ title: has(parsed_message.AlarmName) ? parsed_message.AlarmName : webhook.Subjec
 ### CloudWatch alarm
 
 - **Name**: `Production-RDS-HighConnections`
-- **Metric**: `AWS/RDS` → `DatabaseConnections`
+- **Metric**: `DatabaseConnections` in the `AWS/RDS` namespace
 - **Condition**: Greater than 100 for 3 out of 5 datapoints
 - **Actions**: Notify `harness-ai-sre-alerts` when in ALARM state
 
@@ -527,17 +512,17 @@ custom_fields:
 
 ## Next steps
 
-- Go to [Route Alerts](../../../alert-rules/overview.md) to route and deduplicate CloudWatch alarms.
-- Go to [Use CEL in Webhooks](../../use-cel-webhooks.md) for JSON parsing and filtering.
-- Go to [AI Agent](../../../../ai-agent/ai-agent.md) to enable automated alarm investigation.
-- Go to [AWS CloudWatch Template](../../templates/cloud/aws-cloudwatch.md) for the pre-configured template.
+- [Route alerts](/docs/ai-sre/alerts/alert-rules/overview): Route and deduplicate CloudWatch alarms.
+- [Use CEL in webhooks](/docs/ai-sre/alerts/webhooks/use-cel-webhooks): Add JSON parsing and filtering.
+- [AI agent](/docs/ai-sre/ai-agent): Enable automated alarm investigation.
+- [AWS CloudWatch template](/docs/ai-sre/alerts/webhooks/templates/cloud/aws-cloudwatch): Use the pre-configured template.
 
 ---
 
 ## Further reading
 
-### AWS Official Documentation
-- [CloudWatch Alarms](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html) - Complete guide to CloudWatch alarm configuration and SNS integration
-- [SNS HTTPS Subscriptions](https://docs.aws.amazon.com/sns/latest/dg/sns-http-https-endpoint-as-subscriber.html) - HTTPS subscription setup and subscription confirmation process
-- [CloudWatch and EventBridge](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch-and-eventbridge.html) - CloudWatch alarm message format and payload structure
-- [SNS Message Formats](https://docs.aws.amazon.com/sns/latest/dg/sns-message-and-json-formats.html) - SNS notification wrapper and Message field structure
+### AWS official documentation
+- [CloudWatch alarms](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html): Complete guide to CloudWatch alarm configuration and SNS integration.
+- [SNS HTTPS subscriptions](https://docs.aws.amazon.com/sns/latest/dg/sns-http-https-endpoint-as-subscriber.html): HTTPS subscription setup and subscription confirmation process.
+- [CloudWatch and EventBridge](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch-and-eventbridge.html): CloudWatch alarm message format and payload structure.
+- [SNS message formats](https://docs.aws.amazon.com/sns/latest/dg/sns-message-and-json-formats.html): SNS notification wrapper and Message field structure.

@@ -3,6 +3,16 @@ title: ServiceNow Integration for Runbooks
 sidebar_label: ServiceNow
 sidebar_position: 11
 description: Create records and synchronize incidents bidirectionally from runbooks.
+keywords:
+  - servicenow
+  - ticketing
+  - incident management
+  - bidirectional sync
+  - runbooks
+tags:
+  - ai-sre
+  - integrations
+  - servicenow
 redirect_from:
 - /docs/ai-sre/runbooks/integrations/servicenow
 - /docs/incident-response/runbooks/integrations/servicenow
@@ -26,7 +36,7 @@ ServiceNow integration enables your runbooks to:
 
 ---
 
-## Integration Setup
+## Integration setup
 
 ### Prerequisites
 - ServiceNow admin access
@@ -34,19 +44,19 @@ ServiceNow integration enables your runbooks to:
 - Service account credentials
 - Harness Project Admin role
 
-### Configure ServiceNow Connector
-1. Go to **Project Settings** → **Third Party Integrations (AI SRE)**
+### Configure the ServiceNow connector
+1. Go to **Project Settings**, then **Third Party Integrations (AI SRE)**.
 
    ![Third-Party Integrations for AI SRE](../static/third-party-integrations-connectors.png)
 
-2. Select **ServiceNow** from the available integrations
+2. Select **ServiceNow** from the available integrations.
 3. Configure authentication:
    - Instance URL
    - Username
    - Password/OAuth credentials
-4. Test connection
+4. Test the connection.
 
-### Required Permissions
+### Required permissions
 - incident_manager role
 - itil role
 - rest_service role
@@ -54,46 +64,46 @@ ServiceNow integration enables your runbooks to:
 
 ---
 
-## Using ServiceNow Actions in Runbooks
+## Use ServiceNow actions in runbooks
 
 ServiceNow actions are configured through the runbook action form in the UI:
 
-1. **In your runbook**, click **New Step** → **Action**
+1. **In your runbook**, click **New Step**, then **Action**.
 
    ![New Step Menu](../static/runbook-new-step-menu.png)
 
-2. In the **Select Action** dialog, go to **Tickets & Code** category
-3. Select the ServiceNow action you need from the available options
+2. In the **Select Action** dialog, go to the **Tickets & Code** category.
+3. Select the ServiceNow action you need from the available options.
 
    ![Select Action Dialog](../static/action-create-servicenow-incident.png)
 
-4. Configure the action through a form-based interface with the following fields:
+4. Configure the action through a form-based interface with the following fields.
 
-### Create ServiceNow Incident Action
+### Create ServiceNow Incident action
 
-The "Create ServiceNow Incident" action creates a new incident in ServiceNow and automatically updates the AI SRE incident's `service_now_ticket` field with the ServiceNow incident number.
+The Create ServiceNow Incident action creates a new incident in ServiceNow and automatically updates the AI SRE incident's `service_now_ticket` field with the ServiceNow incident number.
 
-**Form Fields:**
-- **Short Description**: Brief title for the ServiceNow incident
+**Form fields:**
+- **Short Description:** Brief title for the ServiceNow incident
   - Example: `{{Activity.title}}`
-- **Description**: Detailed description of the incident
+- **Description:** Detailed description of the incident
   - Example: `{{Activity.summary}}`
-- **Urgency**: Urgency level (High, Medium, Low)
-- **Impact**: Impact level (High, Medium, Low)
-- **Assigned To (optional)**: ServiceNow user sys_id or username to assign the incident to
+- **Urgency:** Urgency level (High, Medium, Low)
+- **Impact:** Impact level (High, Medium, Low)
+- **Assigned To (optional):** ServiceNow user sys_id or username to assign the incident to
 
-**Available Mustache Variables:**
-- `{{Activity.title}}` - AI SRE incident title
-- `{{Activity.summary}}` - AI SRE incident summary
-- `{{Activity.severity}}` - AI SRE incident severity
-- `{{Activity.status}}` - AI SRE incident status
+**Available Mustache variables:**
+- `{{Activity.title}}`: AI SRE incident title
+- `{{Activity.summary}}`: AI SRE incident summary
+- `{{Activity.severity}}`: AI SRE incident severity
+- `{{Activity.status}}`: AI SRE incident status
 - Any custom incident fields configured in your incident template
 
-### Field Change Triggers
+### Field change triggers
 
 You can configure runbooks to trigger when specific AI SRE incident fields change, enabling automatic updates to ServiceNow:
 
-**Supported Trigger Types:**
+**Supported trigger types:**
 - State changes
 - Priority updates
 - Severity modifications
@@ -103,43 +113,43 @@ When a field changes in AI SRE, the runbook can execute ServiceNow actions to ke
 
 ---
 
-## Advanced Features
+## Advanced features
 
-### Sync Architecture
+### Sync architecture
 <!-- CHANGED (comment #11): The previous :::note said "Bidirectional sync is available by leveraging Harness Pipelines" and listed capabilities as if this were a built-in feature. This was misleading, outbound sync (AI SRE → ServiceNow) is native via runbook actions, but inbound sync (ServiceNow → AI SRE) is not built-in. It requires the customer to configure a ServiceNow Business Rule that fires a webhook into a Harness Pipeline, which then updates AI SRE. The detailed setup instructions for this pattern appear in the sections below. Rewritten to make the distinction explicit upfront. -->
 :::note
-**Outbound sync (AI SRE → ServiceNow) is native** and handled via runbook actions as described above.
+**Outbound sync (AI SRE to ServiceNow) is native** and handled via runbook actions as described above.
 
-**Inbound sync (ServiceNow → AI SRE)** is not a built-in feature. It can be configured using Harness Pipelines as the integration mechanism, you create a ServiceNow Business Rule that sends a webhook to a Harness Pipeline, which then updates the corresponding AI SRE incident. See the [Creating Webhooks in ServiceNow](#creating-webhooks-in-servicenow) section below for setup instructions.
+**Inbound sync (ServiceNow to AI SRE)** is not a built-in feature. It can be configured using Harness Pipelines as the integration mechanism. You create a ServiceNow Business Rule that sends a webhook to a Harness Pipeline, which then updates the corresponding AI SRE incident. Go to [Create webhooks in ServiceNow](#create-webhooks-in-servicenow) to review the setup instructions.
 :::
 
 #### Capabilities
-1. **Incident Sync**
-   - ServiceNow → Harness AI SRE status mapping
+1. **Incident sync**
+   - ServiceNow to Harness AI SRE status mapping
    - Automatic state transitions
    - Priority synchronization
 
-2. **Work Notes Sync**
+2. **Work notes sync**
    - Bidirectional updates flow
    - Attachment synchronization
    - User mapping
 
 ---
 
-## Best Practices
+## Best practices
 
-### Incident Management
+### Incident management
 - Use standard categorization
 - Include business impact
 - Maintain SLA tracking
 
-### Workflow Integration
+### Workflow integration
 - Define clear state mappings
 - Document transition rules
 - Set up appropriate triggers
 - Monitor sync status
 
-### Field Configuration
+### Field configuration
 - Map essential fields
 - Use custom fields appropriately
 - Document field purposes
@@ -147,15 +157,15 @@ When a field changes in AI SRE, the runbook can execute ServiceNow actions to ke
 
 ---
 
-## Common Use Cases
+## Common use cases
 
-### Major Incident Management
+### Major incident management
 1. Create ServiceNow incident
 2. Assign response teams
 3. Track resolution progress
 4. Update stakeholders
 
-### SLA Compliance
+### SLA compliance
 1. Monitor response times
 2. Track resolution progress
 3. Generate reports
@@ -165,44 +175,44 @@ When a field changes in AI SRE, the runbook can execute ServiceNow actions to ke
 
 ## Troubleshooting
 
-### Common Issues
-1. **Authentication Failures**
+### Common issues
+1. **Authentication failures**
    - Verify credentials
    - Check roles/permissions
    - Confirm instance access
 
-2. **Field Update Errors**
+2. **Field update errors**
    - Validate field names
    - Check required fields
    - Verify field formats
 
-3. **State Transition Issues**
+3. **State transition issues**
    - Check workflow rules
    - Verify state mappings
    - Confirm permissions
 
 ---
 
-## Creating Incidents in AI SRE from ServiceNow
+## Create incidents in AI SRE from ServiceNow
 
-This section walks you through setting up an integration in Harness AI SRE to receive incident data from ServiceNow. By following these steps, you'll be able to automatically create incidents in Harness AI SRE based on ServiceNow incidents.
+This section walks you through setting up an integration in Harness AI SRE to receive incident data from ServiceNow. By following these steps, you can automatically create incidents in Harness AI SRE based on ServiceNow incidents.
 
-### Integration Setup Process
+### Integration setup process
 
-#### 1. Create the Integration in AI SRE
+#### 1. Create the integration in AI SRE
 
 1. Go to **Integrations** in AI SRE.
 2. Click **New Integration**.
 3. Set the following values:
-   - **Name**: ServiceNow Incidents
-   - **Type**: Incident
-   - **Template**: ServiceNow Incident
+   - **Name:** ServiceNow Incidents
+   - **Type:** Incident
+   - **Template:** ServiceNow Incident
 
 <img src={CreateIntegration} width="600"/>
 
 4. Copy the generated **Webhook URL**.
 
-#### 2. Test the Integration with cURL
+#### 2. Test the integration with cURL
 
 Use the following curl command to test sending incident data from ServiceNow. Replace `YOUR_URL` with the URL you copied from AI SRE.
 
@@ -231,7 +241,7 @@ curl -X 'POST' 'YOUR_URL' \
   }'
 ```
 
-#### 3. Configure Payload in AI SRE
+#### 3. Configure the payload in AI SRE
 
 1. In AI SRE, go to the newly created **ServiceNow Incidents** integration.
 2. Click **Payload Configuration**.
@@ -244,10 +254,10 @@ curl -X 'POST' 'YOUR_URL' \
 If custom ServiceNow fields are not showing up, update your ServiceNow Business Rule to include those fields in the payload.
 :::
 
-### Data Mapping: ServiceNow to AI SRE
+### Data mapping: ServiceNow to AI SRE
 
 <Tabs>
-<TabItem value="state-mapping" label="State → Status Mapping">
+<TabItem value="state-mapping" label="State to Status Mapping">
 
 | ServiceNow Value | ServiceNow Label | AI SRE Status |
 |-----------------|------------------|---------------|
@@ -259,7 +269,7 @@ If custom ServiceNow fields are not showing up, update your ServiceNow Business 
 | 6               | Canceled         | Closed        |
 
 </TabItem>
-<TabItem value="priority-mapping" label="Priority → Severity Mapping">
+<TabItem value="priority-mapping" label="Priority to Severity Mapping">
 
 | ServiceNow Value | ServiceNow Label | AI SRE Severity |
 |-----------------|------------------|----------------|
@@ -278,15 +288,15 @@ Use these mappings when parsing state and priority from the webhook payload to t
 
 ---
 
-## Creating Webhooks in ServiceNow
+## Create webhooks in ServiceNow
 
 Send data from ServiceNow to Harness AI SRE using a Business Rule and RESTMessageV2. This integration enables automatic incident creation and updates in Harness AI SRE when ServiceNow incidents are created or modified.
 
-### Setup Instructions
+### Setup instructions
 
 1. **Go to Business Rules**
-   - Go to **System Definition** > **Business Rules**
-   - Click **New**
+   - Go to **System Definition** > **Business Rules**.
+   - Click **New**.
 
 2. **Configure the Business Rule**
    - Name: `Send Incident to Harness AI SRE`
@@ -294,13 +304,13 @@ Send data from ServiceNow to Harness AI SRE using a Business Rule and RESTMessag
    - Active: ✅
    - Advanced: ✅
 
-3. **Set When to Run**
+3. **Set when to run**
    - When: `After`
    - Insert: ✅
    - Update: ✅
    - (Optional) Add filter conditions to limit which incidents trigger the webhook
 
-4. **Add Script**
+4. **Add the script**
    - Go to the **Advanced** tab and paste the following:
 
 ```javascript
@@ -363,19 +373,19 @@ Send data from ServiceNow to Harness AI SRE using a Business Rule and RESTMessag
 })(current, previous);
 ```
 
-### Testing the Integration
+### Test the integration
 
-1. **Create a Test Incident**
-   - Create a new incident in ServiceNow to trigger the business rule
+1. **Create a test incident**
+   - Create a new incident in ServiceNow to trigger the business rule.
 
-2. **Check System Logs**
-   - Go to **System Logs** > **All**
-   - Confirm log output containing "AI SRE webhook payload" and response information
+2. **Check system logs**
+   - Go to **System Logs** > **All**.
+   - Confirm log output containing "AI SRE webhook payload" and response information.
 
 3. **Verify in Harness AI SRE**
-   - Log into your Harness AI SRE account
-   - Go to the Incidents section
-   - Confirm the incident was created with the correct data
+   - Log in to your Harness AI SRE account.
+   - Go to the Incidents section.
+   - Confirm the incident was created with the correct data.
 
 :::info important fields
 Ensure that all required fields are included in the webhook payload. The minimum fields needed for proper incident creation are: `number`, `short_description`, `state`, and `priority`.
@@ -383,19 +393,19 @@ Ensure that all required fields are included in the webhook payload. The minimum
 
 ---
 
-## Syncing from ServiceNow to AI SRE
+## Sync from ServiceNow to AI SRE
 
-To enable bidirectional synchronization where ServiceNow comments and work notes are automatically sent to AI SRE, you'll need to create an additional Business Rule that triggers when journal entries are added to incidents.
+To enable bidirectional synchronization where ServiceNow comments and work notes are automatically sent to AI SRE, create an additional Business Rule that triggers when journal entries are added to incidents.
 
-### Creating the Journal Entry Business Rule
+### Create the journal entry Business Rule
 
-This Business Rule will automatically push comments and work notes from ServiceNow to AI SRE, ensuring both systems stay synchronized even when updates are made directly in ServiceNow.
+This Business Rule automatically pushes comments and work notes from ServiceNow to AI SRE, ensuring both systems stay synchronized even when updates are made directly in ServiceNow.
 
-#### Setup Instructions
+#### Setup instructions
 
 1. **Go to Business Rules**
-   - Go to **System Definition** > **Business Rules**
-   - Click **New**
+   - Go to **System Definition** > **Business Rules**.
+   - Click **New**.
 
 2. **Configure the Business Rule**
    - Name: `Sync Comments to Harness AI SRE`
@@ -403,12 +413,12 @@ This Business Rule will automatically push comments and work notes from ServiceN
    - Active: ✅
    - Advanced: ✅
 
-3. **Set When to Run**
+3. **Set when to run**
    - When: `After`
    - Insert: ✅
    - (Optional) Add filter conditions to limit to specific journal types
 
-4. **Add the Script**
+4. **Add the script**
    - Go to the **Advanced** tab and paste the following script:
 
 ```javascript
@@ -488,11 +498,11 @@ This Business Rule will automatically push comments and work notes from ServiceN
 })(current);
 ```
 
-#### Configuration Notes
+#### Configuration notes
 
-1. **Optional Filtering**
-   - The script includes commented lines that filter for only `work_notes` and `comments`
-   - Uncomment these lines (remove `//`) if you want to limit synchronization to these specific journal types:
+1. **Optional filtering**
+   - The script includes commented lines that filter for only `work_notes` and `comments`.
+   - Uncomment these lines (remove `//`) to limit synchronization to these specific journal types:
    ```javascript
    if (type !== "work_notes" && type !== "comments") {
      gs.info("[Harness IR] Skipped (not a supported journal type)");
@@ -500,12 +510,12 @@ This Business Rule will automatically push comments and work notes from ServiceN
    }
    ```
 
-2. **Table Configuration**
-   - This Business Rule must be created on the `sys_journal_field` table
-   - It triggers when journal entries (comments, work notes, etc.) are added to any record
-   - The script filters for incident-related entries automatically
+2. **Table configuration**
+   - This Business Rule must be created on the `sys_journal_field` table.
+   - It triggers when journal entries (comments, work notes, etc.) are added to any record.
+   - The script filters for incident-related entries automatically.
 
-#### Endpoint Substitution Guide
+#### Endpoint substitution guide
 
 Use this guide to correctly substitute the placeholders in the webhook endpoint used by the Business Rule. The full path is one URL; it is shown across lines here only for readability:
 
@@ -518,14 +528,14 @@ https://app.harness.io/ir/tp/api/v1/mc
   /servicenow/webhook
 ```
 
-- **`<ACCOUNT_ID>`**: Your Harness account identifier.
-- **`<ORG_ID>`**: The organization identifier in which AI SRE is configured.
-- **`<PROJECT_ID>`**: The project identifier that contains your AI SRE runbooks/incidents.
-- **`<TEMPLATE_ID>`**: The incident template identifier used for this ServiceNow sync.
+- **`<ACCOUNT_ID>`:** Your Harness account identifier.
+- **`<ORG_ID>`:** The organization identifier in which AI SRE is configured.
+- **`<PROJECT_ID>`:** The project identifier that contains your AI SRE runbooks/incidents.
+- **`<TEMPLATE_ID>`:** The incident template identifier used for this ServiceNow sync.
 
 Recommended ways to obtain values:
-- **Copy from AI SRE**: In AI SRE, open the relevant integration/template and copy the generated webhook URL. It already includes all identifiers. Paste it into `r.setEndpoint(...)`.
-- **From UI URLs/settings**: When viewing your org or project in Harness, the URL path shows `orgs/<ORG_ID>/projects/<PROJECT_ID>`. Account ID is available in account settings. The template ID is visible in the incident template details or within the generated webhook URL.
+- **Copy from AI SRE:** In AI SRE, open the relevant integration/template and copy the generated webhook URL. It already includes all identifiers. Paste it into `r.setEndpoint(...)`.
+- **From UI URLs/settings:** When viewing your org or project in Harness, the URL path shows `orgs/<ORG_ID>/projects/<PROJECT_ID>`. Account ID is available in account settings. The template ID is visible in the incident template details or within the generated webhook URL.
 
 Example (for illustration only; the real value is a single line):
 
@@ -538,33 +548,33 @@ https://app.harness.io/ir/tp/api/v1/mc
   /servicenow/webhook
 ```
 
-#### Testing the Integration
+#### Test the integration
 
-1. **Create a Test Comment**
-   - Open an existing incident in ServiceNow
-   - Add a comment or work note
-   - Check the system logs for webhook activity
+1. **Create a test comment**
+   - Open an existing incident in ServiceNow.
+   - Add a comment or work note.
+   - Check the system logs for webhook activity.
 
-2. **Verify System Logs**
-   - Go to **System Logs** > **All**
-   - Look for entries containing "[Harness IR]" to track the webhook execution
-   - Confirm successful HTTP 200 responses
+2. **Verify system logs**
+   - Go to **System Logs** > **All**.
+   - Look for entries containing "[Harness IR]" to track the webhook execution.
+   - Confirm successful HTTP 200 responses.
 
 3. **Check AI SRE**
-   - Go to the corresponding incident in AI SRE
-   - Verify that the comment or work note appears in the incident timeline
+   - Go to the corresponding incident in AI SRE.
+   - Verify that the comment or work note appears in the incident timeline.
 
 :::tip best practices
-- Test the integration in a development environment first
-- Monitor system logs regularly to ensure webhook reliability
-- Consider adding additional filtering based on your organization's needs
-- Document any custom fields or modifications for future reference
+- Test the integration in a development environment first.
+- Monitor system logs regularly to ensure webhook reliability.
+- Consider adding additional filtering based on your organization's needs.
+- Document any custom fields or modifications for future reference.
 :::
 
 ---
 
-## Next Steps
+## Next steps
 
-- [Configure Jira Integration](./jira.md)
-- [Configure Teams Integration](../collaboration/teams.md)
-- [Return to Runbook Overview](../../runbooks.md)
+- [Jira Integration](/docs/ai-sre/runbooks/integrations/ticketing/jira): Configure Jira actions for runbooks.
+- [Microsoft Teams Integration](/docs/ai-sre/runbooks/integrations/collaboration/teams): Send incident notifications to Teams.
+- [Runbooks Overview](/docs/ai-sre/runbooks): Return to the runbooks overview.

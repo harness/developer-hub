@@ -3,37 +3,46 @@ title: New Relic Integration Webhook Template
 description: Receive NRQL alerts and APM monitoring.
 sidebar_label: New Relic Webhook Template
 sidebar_position: 9
+keywords:
+  - New Relic
+  - webhook
+  - monitoring
+  - alerts
+  - AI SRE
+  - NRQL
+tags:
+  - ai-sre
+  - webhooks
+  - monitoring
 ---
-
-# New Relic Integration Webhook Template
 
 Configure New Relic integration to receive NRQL alerts and APM monitoring in Harness AI SRE.
 
 ## Overview
 
 New Relic provides:
-- **NRQL alerts**: Query-based alerting on any data
-- **Entity correlation**: Link alerts to monitored entities
-- **Service mapping**: Automatic service discovery
-- **Golden signals**: Pre-built SLI monitoring
-- **APM integration**: Application performance tracking
+- **NRQL alerts:** Query-based alerting on any data
+- **Entity correlation:** Link alerts to monitored entities
+- **Service mapping:** Automatic service discovery
+- **Golden signals:** Pre-built SLI monitoring
+- **APM integration:** Application performance tracking
 
 ---
 
 ## Set up New Relic integration
 
-1. Navigate to **Integrations** in the main menu
-2. Click **New Integration**
-3. Select **New Relic** from the template options
-4. Enter a name and generate an ID
-5. Copy the generated webhook URL
-6. In your New Relic account, configure a webhook notification channel pointing to the copied URL
-7. Configure payload mapping to match New Relic incident fields to Harness AI SRE fields
-8. Set up route alerts to route and filter incoming New Relic incidents
+1. Navigate to **Integrations** in the main menu.
+2. Click **New Integration**.
+3. Select **New Relic** from the template options.
+4. Enter a name and generate an ID.
+5. Copy the generated webhook URL.
+6. In your New Relic account, configure a webhook notification channel pointing to the copied URL.
+7. Configure payload mapping to match New Relic incident fields to Harness AI SRE fields.
+8. Set up route alerts to route and filter incoming New Relic incidents.
 
 ---
 
-## Example Alert Payload
+## Example alert payload
 
 ```json
 {
@@ -68,7 +77,7 @@ New Relic provides:
 
 ---
 
-## Next Steps
+## Next steps
 
-- Go to [Route Alerts](../../../alert-rules/overview.md) to route New Relic alerts.
-- Go to [Ingest Alerts Overview](../overview.md) to view other integrations.
+- Go to [Route Alerts](/docs/ai-sre/alerts/alert-rules/overview) to route New Relic alerts.
+- Go to [Ingest Alerts Overview](/docs/ai-sre/alerts/webhooks/templates/overview) to view other integrations.

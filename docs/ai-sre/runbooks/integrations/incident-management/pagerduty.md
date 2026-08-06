@@ -9,17 +9,16 @@ keywords:
   - on-call
   - runbooks
 tags:
+  - ai-sre
   - integrations
   - pagerduty
 redirect_from:
 - /docs/ai-sre/runbooks/integrations/pagerduty
 ---
 
-# PagerDuty Integration
-
 Integrate PagerDuty with AI SRE runbooks to automate incident management and on-call operations during incident response.
 
-## Use Cases
+## Use cases
 
 - Create incidents in PagerDuty
 - Add notes to existing incidents
@@ -38,32 +37,32 @@ Integrate PagerDuty with AI SRE runbooks to automate incident management and on-
 
 ---
 
-## Configure PagerDuty Integration
+## Configure the PagerDuty integration
 
-1. Go to **Project Settings** → **Third-Party Integrations for AI SRE**
+1. Go to **Project Settings**, then **Third-Party Integrations for AI SRE**.
 
    ![Third-Party Integrations for AI SRE](../static/third-party-integrations-connectors.png)
 
-2. Select the connector you want to use or create a new one
+2. Select the connector you want to use or create a new one.
 3. Provide your PagerDuty credentials:
-   - **API Key**: Generate from PagerDuty API Access Keys
-   - **Subdomain**: Your PagerDuty subdomain
-4. Test the connection
-5. Save the integration
+   - **API Key:** Generate from PagerDuty API Access Keys
+   - **Subdomain:** Your PagerDuty subdomain
+4. Test the connection.
+5. Save the integration.
 
-:::tip Alternative: On-Call Sync Approach
-You can also configure PagerDuty directly in the **On-Call** section for schedule synchronization. Go to **On-Call** → **Sync from 3rd Party** tab, select **PagerDuty**, and follow the sync wizard to import schedules and on-call groups. This approach is specifically designed for bulk importing on-call data. Both approaches use the same connector but the On-Call sync provides a guided workflow for importing schedules, escalation policies, teams, and users.
+:::tip Alternative: on-call sync approach
+You can also configure PagerDuty directly in the **On-Call** section for schedule synchronization. Go to the **On-Call** section, select the **Sync from 3rd Party** tab, select **PagerDuty**, and follow the sync wizard to import schedules and on-call groups. This approach is specifically designed for bulk importing on-call data. Both approaches use the same connector but the On-Call sync provides a guided workflow for importing schedules, escalation policies, teams, and users.
 :::
 
 ---
 
-## Available Actions
+## Available actions
 
-### Create Incident
+### Create incident
 
 Create a new incident in PagerDuty with specified details and optionally assign responders.
 
-**Required fields**:
+**Required fields:**
 - From: Email address of user creating the incident
 - Title: Incident title
 - Summary: Incident description/summary
@@ -71,47 +70,47 @@ Create a new incident in PagerDuty with specified details and optionally assign 
 - Service ID: PagerDuty service identifier
 - Responder ID: Optional responder to assign (user or escalation policy)
 
-### Add Responder
+### Add responder
 
 Add a responder to an existing PagerDuty incident.
 
-**Required fields**:
+**Required fields:**
 - From: Email address of user adding the responder
 - Incident ID: PagerDuty incident identifier
 - Responder ID: User or escalation policy ID to add
 - Requester ID: User requesting the responder addition
 - Message: Optional message to include with the request
 
-### Resolve Incident
+### Resolve incident
 
 Resolve an existing PagerDuty incident.
 
-**Required fields**:
+**Required fields:**
 - From: Email address of user resolving the incident
 - Incident ID: PagerDuty incident identifier
 - Resolution: Optional resolution description
 
 ---
 
-## Using PagerDuty Actions in Runbooks
+## Use PagerDuty actions in runbooks
 
 PagerDuty actions are configured through the runbook action form in the UI:
 
-1. **In your runbook**, click **New Step** → **Action**
+1. **In your runbook**, click **New Step**, then **Action**.
 
    ![New Step Menu](../static/runbook-new-step-menu.png)
 
-2. In the **Select Action** dialog, go to **On-Call** category
-3. Select **PagerDuty** from the available actions
+2. In the **Select Action** dialog, go to the **On-Call** category.
+3. Select **PagerDuty** from the available actions.
 
    ![Select Action Dialog](../static/action-create-pagerduty-incident.png)
 
-4. Choose the action type (**Create PagerDuty Incident**, **Add Responder to PagerDuty Incident**, or **Resolve PagerDuty Incident**)
+4. Choose the action type (**Create PagerDuty Incident**, **Add Responder to PagerDuty Incident**, or **Resolve PagerDuty Incident**).
 5. Fill in the form fields using the **Data Picker** to insert dynamic values like `incident.severity`, `incident.title`, etc.
 
 ---
 
-## Available Mustache Variables
+## Available Mustache variables
 
 Use these variables to map AI SRE incident data to PagerDuty fields:
 
@@ -132,19 +131,19 @@ Use these variables to map AI SRE incident data to PagerDuty fields:
 
 ---
 
-## Example Runbook Actions
+## Example runbook actions
 
-### Create PagerDuty Incident
+### Create PagerDuty incident
 
-**Use case**: Create a PagerDuty incident when a critical incident is detected in AI SRE.
+**Use case:** Create a PagerDuty incident when a critical incident is detected in AI SRE.
 
-**Runbook configuration**:
+**Runbook configuration:**
 
-1. In the runbook editor, add a **Create Incident** action from PagerDuty
+1. In the runbook editor, add a **Create Incident** action from PagerDuty.
 2. Configure the form fields:
-   - **Service**: Select your PagerDuty service ID (e.g., `P1234AB`)
-   - **Title**: `SEV{{Activity.severity}}: {{Activity.title}}`
-   - **Body**:
+   - **Service:** Select your PagerDuty service ID (e.g., `P1234AB`)
+   - **Title:** `SEV{{Activity.severity}}: {{Activity.title}}`
+   - **Body:**
      ```
      AI SRE Incident: {{Activity.short_id}}
      Service: {{Activity.service}}
@@ -155,65 +154,65 @@ Use these variables to map AI SRE incident data to PagerDuty fields:
      
      View in AI SRE: {{Activity.url}}
      ```
-   - **Urgency**: `high` for SEV0/SEV1, `low` for SEV2+
-   - **Incident Key**: `ai-sre-{{Activity.id}}`
+   - **Urgency:** `high` for SEV0/SEV1, `low` for SEV2+
+   - **Incident Key:** `ai-sre-{{Activity.id}}`
 
-**Result**: PagerDuty incident created with title `SEV0: API Gateway Outage`, high urgency, linked to AI SRE incident.
+**Result:** PagerDuty incident created with title `SEV0: API Gateway Outage`, high urgency, linked to AI SRE incident.
 
-### Add Responder to Incident
+### Add responder to incident
 
-**Use case**: Add additional responders to an escalating PagerDuty incident.
+**Use case:** Add additional responders to an escalating PagerDuty incident.
 
-**Runbook configuration**:
+**Runbook configuration:**
 
-1. In the runbook editor, add an **Add Responder to PagerDuty Incident** action
+1. In the runbook editor, add an **Add Responder to PagerDuty Incident** action.
 2. Configure the form fields:
-   - **From**: `{{Activity.owner}}`
-   - **Incident ID**: Enter PagerDuty incident ID
-   - **Responder ID**: Enter user or escalation policy ID
-   - **Requester ID**: `{{Activity.owner}}`
-   - **Message**: `Additional responder needed for SEV{{Activity.severity}} incident`
+   - **From:** `{{Activity.owner}}`
+   - **Incident ID:** Enter PagerDuty incident ID
+   - **Responder ID:** Enter user or escalation policy ID
+   - **Requester ID:** `{{Activity.owner}}`
+   - **Message:** `Additional responder needed for SEV{{Activity.severity}} incident`
 
-**Result**: Responder added to PagerDuty incident with notification.
+**Result:** Responder added to PagerDuty incident with notification.
 
-### Resolve on Incident Closure
+### Resolve on incident closure
 
-**Use case**: Automatically resolve PagerDuty incident when AI SRE incident is resolved.
+**Use case:** Automatically resolve PagerDuty incident when AI SRE incident is resolved.
 
-**Runbook configuration**:
+**Runbook configuration:**
 
-1. In the runbook editor, add a **Resolve Incident** action from PagerDuty
+1. In the runbook editor, add a **Resolve Incident** action from PagerDuty.
 2. Configure the form fields:
-   - **Incident ID**: Enter PagerDuty incident ID
-   - **Resolution Note**:
+   - **Incident ID:** Enter PagerDuty incident ID
+   - **Resolution Note:**
      ```
      Incident {{Activity.short_id}} resolved in AI SRE
      
      Resolved at: {{Activity.resolved_at}}
      ```
 
-**Result**: PagerDuty incident resolved with resolution note from AI SRE.
+**Result:** PagerDuty incident resolved with resolution note from AI SRE.
 
-### Create Incident with Responder
+### Create incident with responder
 
-**Use case**: Create a PagerDuty incident and immediately assign it to a specific responder.
+**Use case:** Create a PagerDuty incident and immediately assign it to a specific responder.
 
-**Runbook configuration**:
+**Runbook configuration:**
 
-1. In the runbook editor, add a **Create PagerDuty Incident** action
+1. In the runbook editor, add a **Create PagerDuty Incident** action.
 2. Configure the form fields:
-   - **From**: `{{Activity.owner}}`
-   - **Title**: `SEV{{Activity.severity}}: {{Activity.title}}`
-   - **Summary**: `{{Activity.summary}}`
-   - **URL**: `{{Activity.url}}`
-   - **Service ID**: Enter your PagerDuty service ID
-   - **Responder ID**: Enter escalation policy or user ID to assign
+   - **From:** `{{Activity.owner}}`
+   - **Title:** `SEV{{Activity.severity}}: {{Activity.title}}`
+   - **Summary:** `{{Activity.summary}}`
+   - **URL:** `{{Activity.url}}`
+   - **Service ID:** Enter your PagerDuty service ID
+   - **Responder ID:** Enter escalation policy or user ID to assign
 
-**Result**: PagerDuty incident created and assigned to the specified responder.
+**Result:** PagerDuty incident created and assigned to the specified responder.
 
 ---
 
-## Urgency Mapping
+## Urgency mapping
 
 Map AI SRE incident severity to PagerDuty urgency:
 
@@ -227,9 +226,9 @@ Map AI SRE incident severity to PagerDuty urgency:
 
 ---
 
-## Integration Best Practices
+## Integration best practices
 
-### Incident Key for Deduplication
+### Incident key for deduplication
 
 Use consistent incident keys to prevent duplicate PagerDuty incidents:
 
@@ -242,7 +241,7 @@ This ensures:
 - Updates are properly correlated to the same incident
 - Incident resolution is correctly tracked
 
-### Service Mapping
+### Service mapping
 
 Map AI SRE services to PagerDuty services:
 
@@ -256,7 +255,7 @@ service: ${{
 
 ---
 
-## Security Best Practices
+## Security best practices
 
 - Use API keys with minimum required permissions
 - Rotate API keys regularly
@@ -267,7 +266,7 @@ service: ${{
 
 ---
 
-## Next Steps
+## Next steps
 
-- Go to [Configure Runbook Actions](/docs/ai-sre/runbooks/create-runbook) to add PagerDuty actions to runbooks.
-- Go to [Runbook Best Practices](/docs/ai-sre/runbooks/workflows/best-practices) for automation patterns.
+- [Configure Runbook Actions](/docs/ai-sre/runbooks/create-runbook): Add PagerDuty actions to runbooks.
+- [Runbook Best Practices](/docs/ai-sre/runbooks/workflows/best-practices): Review automation patterns.

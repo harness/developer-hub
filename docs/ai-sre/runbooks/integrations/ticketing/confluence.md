@@ -9,17 +9,16 @@ keywords:
   - knowledge base
   - runbooks
 tags:
+  - ai-sre
   - integrations
   - confluence
 redirect_from:
 - /docs/ai-sre/runbooks/integrations/confluence
 ---
 
-# Confluence Integration
-
 Integrate Confluence with AI SRE runbooks to automate documentation and knowledge base updates during incident response.
 
-## Use Cases
+## Use cases
 
 - Create incident postmortem pages
 - Update runbook documentation
@@ -37,53 +36,53 @@ Integrate Confluence with AI SRE runbooks to automate documentation and knowledg
 
 ---
 
-## Configure Confluence Integration
+## Configure the Confluence integration
 
-1. Go to **Project Settings** → **Third-Party Integrations for AI SRE**
+1. Go to **Project Settings**, then **Third-Party Integrations for AI SRE**.
 
    ![Third-Party Integrations for AI SRE](../static/third-party-integrations-connectors.png)
 
-2. Select the connector you want to use or create a new one
+2. Select the connector you want to use or create a new one.
 3. Provide your Confluence credentials:
-   - **Site URL**: Your Confluence site URL (e.g., `https://yoursite.atlassian.net/wiki`)
-   - **Email**: Your Atlassian account email
-   - **API Token**: Generate from Atlassian account settings
-4. Test the connection
-5. Save the integration
+   - **Site URL:** Your Confluence site URL (e.g., `https://yoursite.atlassian.net/wiki`)
+   - **Email:** Your Atlassian account email
+   - **API Token:** Generate from Atlassian account settings
+4. Test the connection.
+5. Save the integration.
 
 ---
 
-## Available Actions
+## Available actions
 
-### Post Content to Confluence
+### Post content to Confluence
 
 Create a new page or update an existing page in Confluence with specified content.
 
-**Required fields**:
+**Required fields:**
 - Space Key: Confluence space identifier where the page will be created or updated
 - Page Title: Title of the Confluence page
 - Content: Page content in Confluence storage format (HTML)
 
-**Optional fields**:
+**Optional fields:**
 - Page ID: ID of existing page to update. If not provided, a new page will be created
 
-**Outputs**:
+**Outputs:**
 - Page ID: ID of the created or updated page
 - Page URL: URL to access the page
 - Version: Version number of the page
 
 ---
 
-## Using Confluence Actions in Runbooks
+## Use Confluence actions in runbooks
 
 Confluence actions are configured through the runbook action form in the UI:
 
-1. **In your runbook**, click **New Step** → **Action**
+1. **In your runbook**, click **New Step**, then **Action**.
 
    ![New Step Menu](../static/runbook-new-step-menu.png)
 
-2. In the **Select Action** dialog, go to **Communication** category
-3. Select **Post Content to Confluence** from the available actions
+2. In the **Select Action** dialog, go to the **Communication** category.
+3. Select **Post Content to Confluence** from the available actions.
 
    ![Select Action Dialog](../static/runbook-select-action-dialog.png)
 
@@ -91,7 +90,7 @@ Confluence actions are configured through the runbook action form in the UI:
 
 ---
 
-## Available Mustache Variables
+## Available Mustache variables
 
 Use these variables to map AI SRE incident data to Confluence fields:
 
@@ -111,18 +110,18 @@ Use these variables to map AI SRE incident data to Confluence fields:
 
 ---
 
-## Example Runbook Actions
+## Example runbook actions
 
-### Create Incident Postmortem Page
+### Create an incident postmortem page
 
-**Use case**: Automatically create a Confluence page template for incident postmortem documentation.
+**Use case:** Automatically create a Confluence page template for incident postmortem documentation.
 
-**Runbook configuration**:
+**Runbook configuration:**
 
-1. In the runbook editor, add a **Post Content to Confluence** action
+1. In the runbook editor, add a **Post Content to Confluence** action.
 2. Configure the form fields:
-   - **Space Key**: `INCIDENTS`
-   - **Page Title**: `Postmortem - {{Activity.title}}`
+   - **Space Key:** `INCIDENTS`
+   - **Page Title:** `Postmortem - {{Activity.title}}`
    - **Content** (using Confluence storage format HTML):
      ```html
      <h1>Incident Postmortem: {{Activity.short_id}}</h1>
@@ -152,22 +151,22 @@ Use these variables to map AI SRE incident data to Confluence fields:
        <a href="{{Activity.url}}">Incident in AI SRE</a>
      </p>
      ```
-   - **Page ID**: Leave blank to create a new page
+   - **Page ID:** Leave blank to create a new page
 
-**Result**: New Confluence page created in `INCIDENTS` space 
+**Result:** New Confluence page created in `INCIDENTS` space 
 with title `Postmortem - API Gateway Outage`, containing incident 
 details and postmortem template sections.
 
-### Update Existing Runbook Documentation
+### Update existing runbook documentation
 
-**Use case**: Update an existing runbook documentation page with recent incident information.
+**Use case:** Update an existing runbook documentation page with recent incident information.
 
-**Runbook configuration**:
+**Runbook configuration:**
 
-1. In the runbook editor, add a **Post Content to Confluence** action
+1. In the runbook editor, add a **Post Content to Confluence** action.
 2. Configure the form fields:
-   - **Space Key**: `ENGINEERING`
-   - **Page Title**: `Runbook Documentation`
+   - **Space Key:** `ENGINEERING`
+   - **Page Title:** `Runbook Documentation`
    - **Content** (append incident entry):
      ```html
      <h2>Recent Incidents</h2>
@@ -178,15 +177,15 @@ details and postmortem template sections.
        </li>
      </ul>
      ```
-   - **Page ID**: Enter the Confluence page ID to update
+   - **Page ID:** Enter the Confluence page ID to update
 
-**Result**: Existing Confluence page updated with the latest 
+**Result:** Existing Confluence page updated with the latest 
 incident entry. Because a Page ID was provided, the existing page 
 is updated rather than creating a new one.
 
 ---
 
-## Confluence Wiki Markup Reference
+## Confluence wiki markup reference
 
 ### Headers
 ```
@@ -217,17 +216,17 @@ _italic_
 
 ---
 
-## Security Best Practices
+## Security best practices
 
 - Use API tokens instead of passwords
-- Limit space access to only what's needed
+- Limit space access to only what is needed
 - Rotate API tokens regularly
 - Use read-only access when possible
 - Audit integration usage regularly
 
 ---
 
-## Next Steps
+## Next steps
 
-- Go to [Configure Runbook Actions](/docs/ai-sre/runbooks/create-runbook) to add Confluence actions to runbooks.
-- Go to [Runbook Best Practices](/docs/ai-sre/runbooks/workflows/best-practices) for automation patterns.
+- [Configure Runbook Actions](/docs/ai-sre/runbooks/create-runbook): Add Confluence actions to runbooks.
+- [Runbook Best Practices](/docs/ai-sre/runbooks/workflows/best-practices): Review automation patterns.

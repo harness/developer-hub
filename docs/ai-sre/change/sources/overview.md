@@ -3,6 +3,15 @@ title: Configure Sources of Change
 description: Configure your CI/CD tools to send build and deployment webhooks to the Deploy Change Investigator
 sidebar_label: Overview
 sidebar_position: 1
+keywords:
+  - ai-sre
+  - change management
+  - build webhooks
+  - deployment tracking
+  - sources of change
+tags:
+  - change-management
+  - integrations
 ---
 
 
@@ -12,8 +21,8 @@ Configure your CI/CD tools to send build and deployment data to the [Deploy Chan
 
 The Deploy Change Investigator requires two types of webhooks from your CI/CD pipeline:
 
-1. **Build webhooks** - Send artifact versions and commit information when builds complete
-2. **Deploy webhooks** - Track when services are deployed to which environments
+1. **Build webhooks:** Send artifact versions and commit information when builds complete.
+2. **Deploy webhooks:** Track when services are deployed to which environments.
 
 This section provides configuration guides for popular CI/CD tools and change tracking systems.
 
@@ -134,15 +143,15 @@ Build and deploy webhooks use the following delivery model:
 
 ---
 
-## Testing webhooks
+## Test webhooks
 
 After configuration, verify webhooks are being received:
 
-1. Navigate to **AI SRE** → **Integrations**
-2. Click the three-dot menu (**...**) on your BUILD or DEPLOY integration
-3. Select **Debug**
-4. Trigger a build or deployment
-5. Verify the webhook appears with correct payload data
+1. In the AI SRE left navigation, go to **Integrations**.
+2. Click the **More** icon (**...**) on your BUILD or DEPLOY integration.
+3. Select **Debug**.
+4. Trigger a build or deployment.
+5. Verify the webhook appears with correct payload data.
 
 ---
 

@@ -13,8 +13,6 @@ tags:
   - xmatters
 ---
 
-# xMatters Integration
-
 Synchronize on-call schedules, escalation policies, and user information from xMatters to Harness AI SRE.
 
 ## Overview
@@ -170,7 +168,7 @@ After the initial import:
 
 ---
 
-## Next Steps
+## Next steps
 
 - Go to [Create On-Call Schedules](/docs/ai-sre/oncall/create-oncall-schedules) to manage imported schedules.
 - Go to [Define Escalation Policies](/docs/ai-sre/oncall/define-escalation-policies) to configure escalation chains.

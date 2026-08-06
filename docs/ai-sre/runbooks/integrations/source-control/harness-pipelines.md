@@ -3,15 +3,22 @@ title: Harness Pipelines Integration for Runbooks
 sidebar_label: Harness Pipelines
 sidebar_position: 2
 description: Run remediation and deployment pipelines from runbooks.
+keywords:
+  - harness pipelines
+  - automation
+  - remediation
+  - deployment
+  - runbooks
+tags:
+  - ai-sre
+  - integrations
+  - harness-pipelines
 redirect_from:
 - /docs/ai-sre/runbooks/integrations/harness-pipelines
 - /docs/incident-response/runbooks/integrations/harness-pipelines
 - /docs/ai-sre/runbooks/integrations/automation/harness-pipelines
 - /docs/incident-response/runbooks/integrations/automation/harness-pipelines
 ---
-
-
-# Harness Pipelines Integration for Runbooks
 
 Harness AI SRE provides native integration with Harness Pipelines, enabling automated remediation actions and deployment control directly from your incident response workflows.
 
@@ -28,24 +35,24 @@ Harness Pipelines integration enables your runbooks to:
 
 ## Prerequisites
 
-- **Pipeline exists in Harness**: Target pipeline is created and working in Harness (CD or other module)
-- **Pipeline inputs configured**: Pipeline defines inputs for incident data (service, environment, incidentId, changeId)
-- **Shared account structure**: AI SRE project is in the same Harness account/org/project as the target pipeline
-- **Proper permissions**: Users have permission to execute the target pipeline. At minimum, users need the **Edit** permission on Incidents (AI SRE) and execute permission on the target pipeline. Go to [Role-Based Access Control](/docs/ai-sre/resources/ai-sre-security#role-based-access-control-rbac) for details.
-- **RBAC configured**: AI SRE uses existing Harness identity and RBAC (no additional API keys needed). Roles are applied at the Project level, confirm the AI SRE project has the correct role assignments before enabling automated pipeline execution.
+- **Pipeline exists in Harness:** Target pipeline is created and working in Harness (CD or other module)
+- **Pipeline inputs configured:** Pipeline defines inputs for incident data (service, environment, incidentId, changeId)
+- **Shared account structure:** AI SRE project is in the same Harness account/org/project as the target pipeline
+- **Proper permissions:** Users have permission to execute the target pipeline. At minimum, users need the **Edit** permission on Incidents (AI SRE) and execute permission on the target pipeline. Go to [Role-Based Access Control](/docs/ai-sre/resources/ai-sre-security#role-based-access-control-rbac) to review the required permissions.
+- **RBAC configured:** AI SRE uses existing Harness identity and RBAC (no additional API keys needed). Roles are applied at the Project level, confirm the AI SRE project has the correct role assignments before enabling automated pipeline execution.
 
 ---
 
-## Using Harness Pipeline Actions in Runbooks
+## Use Harness Pipeline actions in runbooks
 
 Harness Pipeline actions are configured through the runbook action form in the UI:
 
-1. **In your runbook**, click **New Step** → **Action**
+1. **In your runbook**, click **New Step**, then **Action**.
 
    ![New Step Menu](../static/runbook-new-step-menu.png)
 
-2. In the **Select Action** dialog, go to **Other** category
-3. Select **Execute Harness Pipeline** from the available options
+2. In the **Select Action** dialog, go to the **Other** category.
+3. Select **Execute Harness Pipeline** from the available options.
 
    ![Select Action Dialog](../static/runbook-select-action-dialog.png)
 
@@ -53,30 +60,30 @@ Harness Pipeline actions are configured through the runbook action form in the U
 
 ---
 
-## Runbook Configuration
+## Runbook configuration
 
-### Create Runbook with Incident Context
+### Create a runbook with incident context
 
-1. Go to **Runbooks** and click **New runbook**
+1. Go to **Runbooks** and click **New runbook**.
 2. Provide a meaningful name and description, for example:
    - `P1 - Emergency Rollback`
    - `Scale Service - Production`
    - `Diagnostic Pipeline Execution`
-3. Configure **Inputs/Outputs** section:
-   - **Incident/Alert Context**: Choose context level
+3. Configure the **Inputs/Outputs** section:
+   - **Incident/Alert Context:** Choose context level
      - `Any Incident Type`: Exposes base incident fields (severity, status, summary)
      - `Custom Incident Type`: Exposes base fields plus custom fields from specific incident types
-   - **Incident Type**: Select specific type for custom fields (Eg, Major Incident, Security Incident, etc.)
+   - **Incident Type:** Select specific type for custom fields (e.g., Major Incident, Security Incident, etc.)
 
-### Context Selection Guidelines
+### Context selection guidelines
 - Use `Any Incident Type` for runbooks requiring only generic incident data
 - Use `Custom Incident Type` when runbook depends on custom fields from specific incident types
 
 ---
 
-## Execution Patterns
+## Execution patterns
 
-### Manual Execution
+### Manual execution
 Recommended for production deployments and rollback operations:
 
 - No automatic triggers configured
@@ -84,10 +91,10 @@ Recommended for production deployments and rollback operations:
 - Human oversight maintained for critical operations
 - Pipeline executes with mapped incident context
 
-### Automatic Execution
+### Automatic execution
 Use with caution for low-risk, well-tested actions:
 
-1. Go to **Triggers** section
+1. Go to the **Triggers** section.
 2. Add trigger type:
    - **Incident created**
    - **Incident updated**
@@ -98,31 +105,31 @@ Use with caution for low-risk, well-tested actions:
 
 ---
 
-## Pipeline Action Configuration
+## Pipeline action configuration
 
-### Get Pipeline Input YAML
+### Get pipeline input YAML
 
-1. Open target pipeline in **Harness Pipelines**
-2. Click **Run**
-3. Switch to **YAML** tab in Run Pipeline modal
-4. Copy the complete YAML block defining pipeline inputs
+1. Open target pipeline in **Harness Pipelines**.
+2. Click **Run**.
+3. Select the **YAML** tab in the Run Pipeline modal.
+4. Copy the complete YAML block defining pipeline inputs.
 
-### Add Execute Harness Pipeline Action
+### Add the Execute Harness Pipeline action
 
-1. Open runbook and navigate to **Workflow** section
-2. Click **New action**
-3. Select **Execute Harness Pipeline**
+1. Open runbook and navigate to the **Workflow** section.
+2. Click **New action**.
+3. Select **Execute Harness Pipeline**.
 4. Configure settings:
-   - **Account/Org/Project**: Match target pipeline location
-   - **Pipeline**: Select the target pipeline
+   - **Account/Org/Project:** Match target pipeline location
+   - **Pipeline:** Select the target pipeline
 
-### Configure Pipeline Inputs
+### Configure pipeline inputs
 
-1. Locate **Inputs** or **Payload** area
-2. Paste copied YAML from Harness Run modal
-3. Verify structure matches pipeline expectations
+1. Locate the **Inputs** or **Payload** area.
+2. Paste copied YAML from Harness Run modal.
+3. Verify structure matches pipeline expectations.
 
-### Map Input Variables
+### Map input variables
 
 Replace `<+input.*>` placeholders in the YAML using one of three approaches:
 
@@ -132,19 +139,19 @@ environment: <+input.environment>
 incidentId: <+input.incidentId>
 ```
 
-#### Incident Context Mapping
+#### Incident context mapping
 Use data picker to bind incident fields:
-- `service` ← `incident.service`
-- `environment` ← `incident.environment`
-- `incidentId` ← `incident.id`
+- `service` binds to `incident.service`
+- `environment` binds to `incident.environment`
+- `incidentId` binds to `incident.id`
 
-#### Runtime User Input
+#### Runtime user input
 Define runbook inputs for user selection:
 - Environment selection from predefined list (`dev`, `qa`, `prod`)
 - Service selection from available options
 - Custom parameters based on incident type
 
-#### Hardcoded Values
+#### Hardcoded values
 Set static values for consistent parameters:
 - `environment: "production"`
 - `rollbackType: "last_successful"`
@@ -154,16 +161,16 @@ Set static values for consistent parameters:
 All `<+input.*>` placeholders must be resolved through incident data binding, user input, or hardcoded values.
 :::
 
-### Execution Mode Configuration
+### Execution mode configuration
 
 Configure how the runbook handles pipeline execution:
 
-#### Fire and Forget
+#### Fire and forget
 - AI SRE initiates pipeline without waiting for completion
 - Suitable for non-critical or long-running operations
 - Use when pipeline output is not required for subsequent actions
 
-#### Wait for Completion
+#### Wait for completion
 - AI SRE waits for pipeline completion and records status
 - Enables conditional follow-up actions based on results
 - Logs success/failure in incident timeline
@@ -171,60 +178,60 @@ Configure how the runbook handles pipeline execution:
 
 ---
 
-## Follow-up Actions
+## Follow-up actions
 
 Chain additional actions after pipeline execution:
 
-### Incident Timeline Updates
+### Incident timeline updates
 - Pipeline actions log start/finish automatically
 - Add custom key events for failures or timeouts
 - Include pipeline URLs and execution details
 
-### External System Integration
-- **Jira/ServiceNow Updates**: Post completion status with pipeline links
-- **Conditional Actions**: Gate follow-up steps on pipeline success/failure
-- **Status Synchronization**: Update external tickets with remediation results
+### External system integration
+- **Jira/ServiceNow updates:** Post completion status with pipeline links
+- **Conditional actions:** Gate follow-up steps on pipeline success/failure
+- **Status synchronization:** Update external tickets with remediation results
 
-### Team Notifications
-- **Slack/Teams Integration**: Send pipeline status to incident channels
-- **Email Notifications**: Alert stakeholders of completion
-- **Custom Webhooks**: Integrate with additional monitoring tools
-
----
-
-## Testing and Validation
-
-### Pre-Production Testing
-1. **Configure staging pipeline**: Point action to staging/QA pipeline or non-destructive path
-2. **Create test incident**: Generate incident matching trigger conditions
-3. **Execute manually**: Run runbook to verify behaviour
-
-### Validation Checklist
-- **Field mapping**: Incident fields correctly populate pipeline variables
-- **Pipeline execution**: Pipeline runs successfully in Harness
-- **Timeline logging**: Incident timeline captures pipeline events
-- **Follow-up actions**: Downstream integrations (Jira, notifications) function properly
-
-### Production Deployment
-1. Update pipeline reference to production target
-2. Adjust trigger conditions and permissions
-3. Monitor initial executions closely
-4. Refine based on operational feedback
+### Team notifications
+- **Slack/Teams integration:** Send pipeline status to incident channels
+- **Email notifications:** Alert stakeholders of completion
+- **Custom webhooks:** Integrate with additional monitoring tools
 
 ---
 
-## Use Cases
+## Testing and validation
+
+### Pre-production testing
+1. **Configure staging pipeline:** Point action to staging/QA pipeline or non-destructive path
+2. **Create test incident:** Generate incident matching trigger conditions
+3. **Execute manually:** Run runbook to verify behavior
+
+### Validation checklist
+- **Field mapping:** Incident fields correctly populate pipeline variables
+- **Pipeline execution:** Pipeline runs successfully in Harness
+- **Timeline logging:** Incident timeline captures pipeline events
+- **Follow-up actions:** Downstream integrations (Jira, notifications) function properly
+
+### Production deployment
+1. Update pipeline reference to production target.
+2. Adjust trigger conditions and permissions.
+3. Monitor initial executions closely.
+4. Refine based on operational feedback.
+
+---
+
+## Use cases
 
 This integration pattern supports various incident response scenarios:
-- **Emergency rollbacks**: Automated deployment reversions
-- **Service scaling**: Dynamic resource adjustment during incidents
-- **Deployment pausing**: Halt deployments during critical incidents
-- **Diagnostic workflows**: Automated troubleshooting pipelines
-- **Infrastructure remediation**: Automated infrastructure repairs
+- **Emergency rollbacks:** Automated deployment reversions
+- **Service scaling:** Dynamic resource adjustment during incidents
+- **Deployment pausing:** Halt deployments during critical incidents
+- **Diagnostic workflows:** Automated troubleshooting pipelines
+- **Infrastructure remediation:** Automated infrastructure repairs
 
 ---
 
-## Best Practices
+## Best practices
 
 - **Start with manual execution** for critical production operations
 - **Use staging environments** for initial testing and validation

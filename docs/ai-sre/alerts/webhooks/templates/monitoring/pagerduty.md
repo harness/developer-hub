@@ -3,20 +3,29 @@ title: PagerDuty Integration Webhook Template
 description: Receive incident management alerts.
 sidebar_label: PagerDuty Webhook Template
 sidebar_position: 11
+keywords:
+  - PagerDuty
+  - webhook
+  - template
+  - integration
+  - AI SRE
+  - alerts
+tags:
+  - ai-sre
+  - webhooks
+  - pagerduty
 ---
-
-# PagerDuty Integration Webhook Template
 
 Configure PagerDuty integration to receive incident management alerts in Harness AI SRE.
 
 ## Overview
 
 PagerDuty provides:
-- **Incident management**: Two-way incident synchronization
-- **PagerDuty alert routing**: Route based on service and priority
-- **PagerDuty on-call schedules**: Sync schedule information
-- **PagerDuty escalation policies**: Mirror escalation rules
-- **Service dependencies**: Track service relationships
+- **Incident management:** Two-way incident synchronization
+- **PagerDuty alert routing:** Route based on service and priority
+- **PagerDuty on-call schedules:** Sync schedule information
+- **PagerDuty escalation policies:** Mirror escalation rules
+- **Service dependencies:** Track service relationships
 
 ---
 
@@ -34,11 +43,11 @@ The template automatically configures field mapping to match PagerDuty incident 
 
 ### In PagerDuty
 
-Configure PagerDuty to send webhooks to your Harness webhook URL. Go to [PagerDuty Webhook Setup](../../integration-guides/monitoring/pagerduty.md) for complete step-by-step instructions.
+Configure PagerDuty to send webhooks to your Harness webhook URL. Go to the [PagerDuty webhook setup guide](/docs/ai-sre/alerts/webhooks/integration-guides/monitoring/pagerduty) to complete the step-by-step instructions.
 
 ---
 
-## Example Alert Payload
+## Example alert payload
 
 ```json
 {
@@ -71,20 +80,20 @@ Configure PagerDuty to send webhooks to your Harness webhook URL. Go to [PagerDu
 
 ---
 
-## Configure PagerDuty to Send Webhooks
+## Configure PagerDuty to send webhooks
 
 After creating a webhook from this template in Harness, configure PagerDuty to send incidents to your webhook URL.
 
-Go to [PagerDuty Webhook Setup](../../integration-guides/monitoring/pagerduty.md) for detailed step-by-step instructions including:
-- Setting up V3 webhooks or webhook extensions
-- Selecting event types to monitor
-- Configuring event filters
-- Testing the integration
+Go to the [PagerDuty webhook setup guide](/docs/ai-sre/alerts/webhooks/integration-guides/monitoring/pagerduty) to complete detailed step-by-step instructions, including:
+- Set up V3 webhooks or webhook extensions
+- Select event types to monitor
+- Configure event filters
+- Test the integration
 
 ---
 
-## Next Steps
+## Next steps
 
-- Go to [Route Alerts](../../../alert-rules/overview.md) to route PagerDuty alerts.
-- Go to [Use CEL in Webhooks](../../use-cel-webhooks.md) to add custom filtering logic.
-- Go to [Webhook Templates Overview](../overview.md) to view other templates.
+- [Route alerts](/docs/ai-sre/alerts/alert-rules/overview): Route PagerDuty alerts to the right destinations.
+- [Use CEL in webhooks](/docs/ai-sre/alerts/webhooks/use-cel-webhooks): Add custom filtering logic.
+- [Webhook templates overview](/docs/ai-sre/alerts/webhooks/templates/overview): View other templates.

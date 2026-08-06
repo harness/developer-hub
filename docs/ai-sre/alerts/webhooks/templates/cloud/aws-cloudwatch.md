@@ -3,37 +3,45 @@ title: AWS CloudWatch Integration Webhook Template
 description: Receive metric alarms and monitoring alerts.
 sidebar_label: AWS CloudWatch Webhook Template
 sidebar_position: 3
+keywords:
+  - aws cloudwatch
+  - webhook
+  - integration
+  - ai sre
+  - alerts
+tags:
+  - ai-sre
+  - webhooks
+  - aws-cloudwatch
 ---
-
-# AWS CloudWatch Integration Webhook Template
 
 Configure AWS CloudWatch integration to receive metric alarms and monitoring alerts in Harness AI SRE.
 
 ## Overview
 
 AWS CloudWatch provides:
-- **Metric alarms**: Threshold-based alerting on AWS metrics
-- **Composite alarms**: Combine multiple alarms with boolean logic
-- **Log insights**: Query and analyze log data
-- **Cross-account monitoring**: Monitor resources across AWS accounts
-- **Resource health**: Track AWS service and resource status
+- **Metric alarms:** Threshold-based alerting on AWS metrics.
+- **Composite alarms:** Combine multiple alarms with boolean logic.
+- **Log insights:** Query and analyze log data.
+- **Cross-account monitoring:** Monitor resources across AWS accounts.
+- **Resource health:** Track AWS service and resource status.
 
 ---
 
 ## Set up AWS CloudWatch integration
 
-1. Navigate to **Integrations** in the main menu
-2. Click **New Integration**
-3. Select **AWS CloudWatch** from the template options
-4. Enter a name and generate an ID
-5. Copy the generated webhook URL
-6. In your AWS console, configure an SNS topic or EventBridge rule to send CloudWatch alarms to the webhook URL
-7. Configure payload mapping to match CloudWatch alarm fields to Harness AI SRE fields
-8. Set up route alerts to route and filter incoming CloudWatch alarms
+1. Navigate to **Integrations** in the main menu.
+2. Click **New Integration**.
+3. Select **AWS CloudWatch** from the template options.
+4. Enter a name and generate an ID.
+5. Copy the generated webhook URL.
+6. In your AWS console, configure an SNS topic or EventBridge rule to send CloudWatch alarms to the webhook URL.
+7. Configure payload mapping to match CloudWatch alarm fields to Harness AI SRE fields.
+8. Set up route alerts to route and filter incoming CloudWatch alarms.
 
 ---
 
-## Example Alert Payload
+## Example alert payload
 
 ```json
 {
@@ -81,7 +89,7 @@ AWS CloudWatch provides:
 
 ---
 
-## Next Steps
+## Next steps
 
-- Go to [Route Alerts](../../../alert-rules/overview.md) to route CloudWatch alerts.
-- Go to [Ingest Alerts Overview](../overview.md) to view other integrations.
+- Go to [Route Alerts](/docs/ai-sre/alerts/alert-rules/overview) to route CloudWatch alerts.
+- Go to [Ingest Alerts Overview](/docs/ai-sre/alerts/webhooks/templates/overview) to view other integrations.

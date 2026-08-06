@@ -3,20 +3,29 @@ title: GitLab Integration Webhook Template
 description: Receive repository and pipeline event notifications.
 sidebar_label: GitLab Webhook Template
 sidebar_position: 15
+keywords:
+  - GitLab
+  - webhook
+  - template
+  - integration
+  - AI SRE
+  - alerts
+tags:
+  - ai-sre
+  - webhooks
+  - gitlab
 ---
-
-# GitLab Integration Webhook Template
 
 Configure GitLab integration to receive repository and pipeline event notifications in Harness AI SRE.
 
 ## Overview
 
 GitLab provides:
-- **Repository events**: Push, merge request, and tag notifications
-- **Pipeline events**: CI/CD pipeline status and failures
-- **Deployment events**: Track deployment outcomes
-- **Issue tracking**: Monitor issue and merge request activity
-- **Security scanning**: Receive security vulnerability alerts
+- **Repository events:** Push, merge request, and tag notifications
+- **Pipeline events:** CI/CD pipeline status and failures
+- **Deployment events:** Track deployment outcomes
+- **Issue tracking:** Monitor issue and merge request activity
+- **Security scanning:** Receive security vulnerability alerts
 
 ---
 
@@ -33,7 +42,7 @@ GitLab provides:
 
 ---
 
-## Next Steps
+## Next steps
 
-- Go to [Route Alerts](../../../alert-rules/overview.md) to route GitLab alerts.
-- Go to [Ingest Alerts Overview](../overview.md) to view other integrations.
+- [Route alerts](/docs/ai-sre/alerts/alert-rules/overview): Route GitLab alerts to the right destinations.
+- [Ingest alerts overview](/docs/ai-sre/alerts/webhooks/templates/overview): View other integrations.

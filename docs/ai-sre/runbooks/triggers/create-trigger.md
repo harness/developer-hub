@@ -3,6 +3,15 @@ title: Create Runbook Triggers
 sidebar_label: Create Triggers
 sidebar_position: 2
 description: Define the conditions that start a runbook automatically.
+keywords:
+  - triggers
+  - runbooks
+  - conditions
+  - severity
+tags:
+  - ai-sre
+  - triggers
+  - runbooks
 ---
 
 import Tabs from '@theme/Tabs';
@@ -10,66 +19,66 @@ import TabItem from '@theme/TabItem';
 import NeedHelpFooter from '../../_snippets/need-help-footer.mdx';
 import DocVideo from '@site/src/components/DocVideo';
 
-## Creating Triggers
+## Create triggers
 
 <Tabs groupId="trigger-creation" queryString>
   <TabItem value="step-by-step" label="Step by Step" default>
 
 
-### Step 1: Access Trigger Configuration
+### Step 1: Access trigger configuration
 
 1. Open your existing runbook in the Harness AI SRE platform
 2. Click the **Triggers** tab in your runbook editor
 3. This opens the trigger configuration interface
 
-### Step 2: Create New Trigger
+### Step 2: Create a new trigger
 
 1. Click **+ New Trigger** to begin the trigger setup process
 2. This opens the trigger creation wizard
 
-### Step 3: Choose Trigger Template
+### Step 3: Choose a trigger template
 
 1. Select the **Incident Type** template from the available options
-2. Choose the specific **Incident Type** from the dropdown menu
+2. Select the specific **Incident Type** from the dropdown menu
 3. The selected incident type determines which fields and values will be available for condition configuration
 4. This selection affects what data you can use when setting up trigger conditions
 
-### Step 4: Define Trigger Conditions
+### Step 4: Define trigger conditions
 
-1. **Choose Condition Type**: Select either **ALL** or **ANY** for your condition logic:
-   - **ALL**: All conditions must be met for the trigger to activate
-   - **ANY**: Any one of the conditions can activate the trigger
-2. **Set Frequency**: Choose when the trigger should evaluate:
-   - **Activity Created**: Trigger when new incidents are created
-   - **Activity Updated**: Trigger when incidents are updated
-   - **Key Event Created**: Trigger when key events are added to incidents
-3. **Add Conditions**: Click to add specific field-based conditions for more precise triggering
+1. **Choose condition type:** Select either **ALL** or **ANY** for your condition logic:
+   - **ALL:** All conditions must be met for the trigger to activate
+   - **ANY:** Any one of the conditions can activate the trigger
+2. **Set frequency:** Select when the trigger should evaluate:
+   - **Activity Created:** Trigger when new incidents are created
+   - **Activity Updated:** Trigger when incidents are updated
+   - **Key Event Created:** Trigger when key events are added to incidents
+3. **Add conditions:** Click to add specific field-based conditions for more precise triggering
 
-### Step 5: Configuring Additional Conditions 
+### Step 5: Configure additional conditions
 
 To add more specific conditions beyond the basic frequency setting:
 
-1. **Select Field**: Choose the incident field you want to monitor from the dropdown
+1. **Select field:** Select the incident field you want to monitor from the dropdown
    - Fields available depend on the incident type selected in Step 3
    - Options include standard incident fields and custom fields for that incident type
-2. **Choose Comparison Type**: Select what aspect of the field to monitor:
-   - **Old Values**: Compare against the previous value of the field
-   - **New Values**: Compare against the current/new value of the field  
-   - **Changed Field**: Trigger when the field value changes (regardless of specific values)
-3. **Select Comparator**: Choose how to compare the field value:
-   - **Equals**: Exact match with the specified value
-   - **Contains**: Field contains the specified text
-   - **Greater Than/Less Than**: Numeric comparisons
-   - **Other operators**: Based on field type and requirements
-4. **Enter Value**: Provide the value to compare against
-5. **Repeat**: Add multiple conditions as needed using the ALL/ANY logic set in Step 4
+2. **Choose comparison type:** Select what aspect of the field to monitor:
+   - **Old Values:** Compare against the previous value of the field
+   - **New Values:** Compare against the current/new value of the field
+   - **Changed Field:** Trigger when the field value changes (regardless of specific values)
+3. **Select comparator:** Select how to compare the field value:
+   - **Equals:** Exact match with the specified value
+   - **Contains:** Field contains the specified text
+   - **Greater Than/Less Than:** Numeric comparisons
+   - **Other operators:** Based on field type and requirements
+4. **Enter value:** Provide the value to compare against
+5. **Repeat:** Add multiple conditions as needed using the ALL/ANY logic set in Step 4
 
-### Step 6: Save and Activate
+### Step 6: Save and activate
 
-1. **Review Configuration**: Verify all trigger settings are correct
-2. **Save Trigger**: Click **Save** to create the trigger
-3. **Test Trigger**: Test the trigger by creating dummy conditions that match your configuration
-4. **Monitor Execution**: Track trigger performance and effectiveness once activated
+1. **Review configuration:** Verify all trigger settings are correct
+2. **Save trigger:** Click **Save** to create the trigger
+3. **Test trigger:** Test the trigger by creating dummy conditions that match your configuration
+4. **Monitor execution:** Track trigger performance and effectiveness once activated
 
   </TabItem>
   <TabItem value="interactive-guide" label="Interactive Guide">
@@ -82,7 +91,7 @@ Follow this interactive guide to configure triggers that automatically execute y
 </Tabs>
 
 
-#### Severity Field Values
+#### Severity field values
 
 Harness AI SRE uses numeric string values for severity levels. When configuring trigger conditions, use these exact string values:
 
@@ -106,7 +115,7 @@ To trigger on major incidents, use:
 severity = "1"
 ```
 
-#### Supported Comparison Operators
+#### Supported comparison operators
 
 Because severity values are strings, only certain comparison operators work correctly.
 
@@ -126,7 +135,7 @@ Because severity values are strings, only certain comparison operators work corr
 
 You cannot use `severity > "2"` to match SEV0 and SEV1. This comparison will not work because severity is stored as a string, not a number.
 
-#### Match Multiple Severity Levels
+#### Match multiple severity levels
 
 To trigger on multiple severity levels (for example, SEV0 OR SEV1), use one of these approaches:
 
@@ -144,7 +153,7 @@ The trigger will activate when the incident severity is either "0" or "1".
 
 Create separate triggers for each severity level within the same runbook assignment. Each trigger handles one severity level independently.
 
-#### Alternative Severity Naming Conventions
+#### Alternative severity naming conventions
 
 The system accepts alternative severity names from integrations like FireHydrant and PagerDuty. These values are automatically mapped to numeric severity strings:
 
@@ -164,8 +173,8 @@ When incidents are created from external integrations, the severity value is nor
 
 Now that you have created a trigger, you can configure advanced logic and test your automation.
 
-- Go to [Use CEL Expressions in Runbook Triggers](/docs/ai-sre/runbooks/triggers/use-cel-triggers) to use CEL for advanced trigger conditions
-- Go to [Advanced Trigger Scenarios](/docs/ai-sre/runbooks/triggers/advanced-scenarios) to learn about complex trigger patterns
-- Go to [Troubleshooting Triggers](/docs/ai-sre/runbooks/triggers/troubleshooting) to resolve common trigger issues
+- Go to [Use CEL expressions in runbook triggers](/docs/ai-sre/runbooks/triggers/use-cel-triggers) to use CEL for advanced trigger conditions.
+- Go to [Advanced trigger scenarios](/docs/ai-sre/runbooks/triggers/advanced-scenarios) to learn about complex trigger patterns.
+- Go to [Troubleshooting triggers](/docs/ai-sre/runbooks/triggers/troubleshooting) to resolve common trigger issues.
 
 <NeedHelpFooter />

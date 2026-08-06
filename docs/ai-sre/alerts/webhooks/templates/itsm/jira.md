@@ -3,20 +3,29 @@ title: Jira Integration Webhook Template
 description: Receive issue tracking notifications.
 sidebar_label: Jira Webhook Template
 sidebar_position: 16
+keywords:
+  - Jira
+  - webhook
+  - template
+  - integration
+  - AI SRE
+  - alerts
+tags:
+  - ai-sre
+  - webhooks
+  - jira
 ---
-
-# Jira Integration Webhook Template
 
 Configure Jira integration to receive issue tracking notifications in Harness AI SRE.
 
 ## Overview
 
 Jira provides:
-- **Issue tracking**: Monitor issue creation and updates
-- **Project management**: Track project milestones and progress
-- **Sprint events**: Receive sprint start and completion notifications
-- **Status changes**: Monitor issue status transitions
-- **Priority changes**: Track critical issue escalations
+- **Issue tracking:** Monitor issue creation and updates
+- **Project management:** Track project milestones and progress
+- **Sprint events:** Receive sprint start and completion notifications
+- **Status changes:** Monitor issue status transitions
+- **Priority changes:** Track critical issue escalations
 
 ---
 
@@ -33,7 +42,7 @@ Jira provides:
 
 ---
 
-## Next Steps
+## Next steps
 
-- Go to [Route Alerts](../../../alert-rules/overview.md) to route Jira alerts.
-- Go to [Ingest Alerts Overview](../overview.md) to view other integrations.
+- [Route alerts](/docs/ai-sre/alerts/alert-rules/overview): Route Jira alerts to the right destinations.
+- [Ingest alerts overview](/docs/ai-sre/alerts/webhooks/templates/overview): View other integrations.

@@ -3,11 +3,16 @@ title: Configure Incident Types
 description: Create and manage reusable incident templates.
 sidebar_label: Configure Incident Types
 sidebar_position: 4
+keywords:
+  - incident types
+  - incident templates
+  - custom fields
+  - runbooks
+tags:
+  - ai-sre
 redirect_from:
 - /docs/incident-response/incidents/incident-templates
 ---
-
-# Configure Incident Types
 
 Learn how to create and manage incident types in Harness AI SRE to standardize incident handling across your organization.
 
@@ -28,7 +33,7 @@ Incident types are configured through the AI SRE UI, not through YAML files. Eac
 
 ---
 
-## Creating an Incident Type
+## Create an incident type
 
 To create a new incident type:
 
@@ -62,62 +67,62 @@ To create a new incident type:
 
 ---
 
-## Common Incident Type Patterns
+## Common incident type patterns
 
-### Service Incident Type
+### Service incident type
 
-**Purpose**: Performance issues, outages, or degradation in a service
+**Purpose:** Performance issues, outages, or degradation in a service
 
-**Suggested Custom Fields**:
+**Suggested custom fields:**
 - **Service** (Service field, required) - Which service is impacted
 - **Environment** (Dropdown: production, staging, development)
 - **Impact** (Text area) - Description of user impact
 - **Error Rate %** (Number) - Quantify the error rate increase
 
-**Pinned Runbooks**: 
+**Pinned runbooks:** 
 - Service Health Check
 - Scale Service Instances
 - Roll Back Deployment
 
-### Security Incident Type
+### Security incident type
 
-**Purpose**: Security alerts, vulnerabilities, or unauthorized access
+**Purpose:** Security alerts, vulnerabilities, or unauthorized access
 
-**Suggested Custom Fields**:
+**Suggested custom fields:**
 - **Affected Service** (Service field)
 - **Attack Vector** (Dropdown: injection, XSS, credential theft, DDoS, other)
 - **Data Exposed** (Yes/No)
 - **Compliance Impact** (Dropdown: PCI, SOC2, HIPAA, GDPR, none)
 
-**Pinned Runbooks**:
+**Pinned runbooks:**
 - Security Incident Response
 - Isolate Affected Resources
 - Notify Security Team
 
-### Infrastructure Incident Type
+### Infrastructure incident type
 
-**Purpose**: Platform, networking, or infrastructure problems
+**Purpose:** Platform, networking, or infrastructure problems
 
-**Suggested Custom Fields**:
+**Suggested custom fields:**
 - **Infrastructure Component** (Dropdown: compute, network, storage, database)
 - **Affected Cluster/Region** (Text)
 - **Resource Utilization** (Number) - CPU/memory percentage
 - **Auto-Scaling Status** (Dropdown: enabled, disabled, failing)
 
-**Pinned Runbooks**:
+**Pinned runbooks:**
 - Check Infrastructure Health
 - Scale Infrastructure
 - Failover to Secondary Region
 
 ---
 
-## Field Types and When to Use Them
+## Field types and when to use them
 
-### Text Field
+### Text field
 - Single-line text input
 - Use for: titles, short descriptions, identifiers
 
-### Text Area
+### Text area
 - Multi-line text input
 - Use for: detailed descriptions, impact summaries, notes
 
@@ -133,7 +138,7 @@ To create a new incident type:
 - Select a user from the organization
 - Use for: incident commander, additional responders
 
-### Team / User Group
+### Team / user group
 - Select a team responsible for resolution
 - Use for: owning team, escalation target
 
@@ -141,15 +146,15 @@ To create a new incident type:
 - Select from your service directory
 - Use for: impacted service, related services
 
-### Date/Time
+### Date/time
 - Calendar and time picker
 - Use for: scheduled maintenance windows, deadline tracking
 
 ---
 
-## Using Incident Types
+## Use incident types
 
-### Create an Incident
+### Create an incident
 
 When creating an incident:
 
@@ -160,7 +165,7 @@ When creating an incident:
 5. Optionally fill in additional custom fields
 6. Click **Create Incident**
 
-### Quick Start (AI-Powered)
+### Quick Start (AI-powered)
 
 AI SRE can auto-populate incident fields:
 
@@ -174,7 +179,7 @@ AI SRE can auto-populate incident fields:
 4. Review and adjust the suggestions
 5. Click **Create Incident**
 
-### Select Incident Type via Slack
+### Select incident type via Slack
 
 Use the `/harness new` command:
 
@@ -187,7 +192,7 @@ Slack presents a form where you can:
 2. Fill in fields interactively
 3. Create the incident without leaving Slack
 
-### Route Alerts Auto-Create Incidents
+### Route alerts auto-create incidents
 
 Configure route alerts to automatically create incidents of a specific type:
 
@@ -201,9 +206,9 @@ When alerts match the rule, incidents are auto-created with the specified type.
 
 ---
 
-## Managing Incident Types
+## Manage incident types
 
-### Edit an Incident Type
+### Edit an incident type
 
 1. Navigate to **Project Settings** → **Incident Types**
 2. Click the incident type to edit
@@ -212,7 +217,7 @@ When alerts match the rule, incidents are auto-created with the specified type.
 
 **Note**: Changes to incident types affect future incidents. Existing incidents retain their original field structure.
 
-### Version Control
+### Version control
 
 AI SRE tracks incident type versions:
 - Each save creates a new version
@@ -220,7 +225,7 @@ AI SRE tracks incident type versions:
 - Existing incidents reference their original type version
 - API integrations use versioned type schemas
 
-### Delete an Incident Type
+### Delete an incident type
 
 1. Navigate to **Project Settings** → **Incident Types**
 2. Click the incident type to delete
@@ -234,24 +239,24 @@ AI SRE tracks incident type versions:
 
 ---
 
-## Best Practices
+## Best practices
 
-### Keep Types Focused
+### Keep types focused
 - Create distinct incident types for different scenarios
 - Avoid creating one "catch-all" type with too many optional fields
 - Aim for 5-10 incident types per organization
 
-### Design for Speed
+### Design for speed
 - Put most critical fields first in the creation form
 - Make only essential fields required
 - Use dropdowns with sensible defaults to reduce typing
 
-### Enable Automation
+### Enable automation
 - Pin runbooks that are almost always needed for this incident type
 - Use consistent field names across types (e.g., always call the service field "Service")
 - Create route alerts that map to incident types automatically
 
-### Review and Iterate
+### Review and iterate
 - Monitor which fields are actually used
 - Remove rarely-used custom fields
 - Gather feedback from incident responders
@@ -259,9 +264,9 @@ AI SRE tracks incident type versions:
 
 ---
 
-## Related Documentation
+## Related documentation
 
-- [Incident Fields Reference](./incident-fields.md) - Standard fields available on all incidents
-- [Create Incidents](../users/create-incidents.md) - User guide for creating incidents
-- [Route Alerts](../alerts/alert-rules/overview.md) - Configure alerts to auto-create incidents
-- [Create a Runbook](../runbooks/create-runbook.md) - Build runbooks to pin to incident types
+- [Incident fields reference](/docs/ai-sre/incidents/incident-fields): Standard fields available on all incidents.
+- [Create incidents](/docs/ai-sre/users/create-incidents): User guide for creating incidents.
+- [Route alerts](/docs/ai-sre/alerts/alert-rules/overview): Configure alerts to auto-create incidents.
+- [Create a runbook](/docs/ai-sre/runbooks/create-runbook): Build runbooks to pin to incident types.

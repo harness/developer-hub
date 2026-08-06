@@ -3,6 +3,14 @@ title: Create Runbooks
 sidebar_label: Create Runbooks
 sidebar_position: 2
 description: Build, configure, and deploy automated runbooks for incident response.
+keywords:
+  - runbooks
+  - create runbook
+  - actions
+  - triggers
+tags:
+  - ai-sre
+  - runbooks
 redirect_from:
 - /docs/incident-response/runbooks/create-runbook
 ---
@@ -12,63 +20,62 @@ import TabItem from '@theme/TabItem';
 import NeedHelpFooter from '../_snippets/need-help-footer.mdx';
 import DocImage from '@site/src/components/DocImage';
 import DocVideo from '@site/src/components/DocVideo';
-
-# Create Runbooks
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
 Runbooks in Harness AI SRE enable you to automate incident response workflows, operational procedures, and remediation actions. 
 
 This comprehensive guide walks you through creating, configuring, and deploying effective runbooks that can significantly reduce mean time to resolution (MTTR) and improve your team's operational efficiency.
 
-## Before You Begin
+## Before you begin
 
 ### Prerequisites
 Ensure you have the following before creating your first runbook:
 
-- **Platform Access**: Active Harness AI SRE account with appropriate permissions.
-- **User Permissions**: Required Account, Organisation and Project level permissions.
-- **Integration Access**: Configured integrations for the tools you plan to use (Slack, Jira, ServiceNow, etc.).
-- **Monitoring Setup**: Alert sources configured (Datadog, New Relic, PagerDuty, etc.).
+- **Platform Access:** Active Harness AI SRE account with appropriate permissions.
+- **User Permissions:** Required Account, Organisation and Project level permissions.
+- **Integration Access:** Configured integrations for the tools you plan to use (Slack, Jira, ServiceNow, etc.).
+- **Monitoring Setup:** Alert sources configured (Datadog, New Relic, PagerDuty, etc.).
 
-### Key Concepts
+### Key concepts
 Before diving into runbook creation, familiarize yourself with these core concepts:
 
-- **Actions**: Individual tasks or operations within a runbook (notifications, API calls, pipeline executions).
-- **Triggers**: Conditions that automatically initiate runbook execution.
-- **Variables**: Dynamic values that can be passed between actions and customized per execution.
-- **Sequences**: The order in which actions are executed within your workflow.
+- **Actions:** Individual tasks or operations within a runbook (notifications, API calls, pipeline executions).
+- **Triggers:** Conditions that automatically initiate runbook execution.
+- **Variables:** Dynamic values that can be passed between actions and customized per execution.
+- **Sequences:** The order in which actions are executed within your workflow.
 
 ---
 
-## Creating Your Runbook
+## Create your runbook
 
 <Tabs groupId="runbook-creation" queryString>
   <TabItem value="step-by-step" label="Step by Step" default>
 
-### Step 1: Access Runbooks
+### Step 1: Access runbooks
 
-1. Click on **Runbooks** from the left panel in your Harness AI SRE platform
+1. Click **Runbooks** from the left panel in your Harness AI SRE platform
 2. This will take you to the runbooks management interface
 
-### Step 2: Create New Runbook
+### Step 2: Create a new runbook
 
 1. Click **New Runbook** to start creating your automated workflow
 2. This opens the runbook creation interface
 
-### Step 3: Configure Basic Details
+### Step 3: Configure basic details
 
 1. Fill in the essential details for your runbook:
-   - **Name**: Use a descriptive name (e.g., "High CPU Alert Response", "Database Connection Recovery")
-   - **Description**: Clearly explain the runbook's purpose and when it should be used
+   - **Name:** Use a descriptive name (e.g., "High CPU Alert Response", "Database Connection Recovery")
+   - **Description:** Clearly explain the runbook's purpose and when it should be used
 2. Provide clear, meaningful information that helps team members understand the runbook's function
 
 <DocImage path={require('./static/create-runbook.png')} width="90%" height="90%" title="Create New Runbook Interface" />
 
-### Step 4: Save Initial Configuration
+### Step 4: Save the initial configuration
 
 1. Click **Save** to create the basic runbook structure
 2. This establishes your runbook and opens the workflow designer
 
-### Step 5: Add Your First Action
+### Step 5: Add your first action
 
 1. Click **New Step** to add steps to your runbook workflow
 2. Select **Action** from the dropdown menu to add an automated action
@@ -77,20 +84,20 @@ Before diving into runbook creation, familiarize yourself with these core concep
 
 3. This opens the action selection interface where you can choose from various automation categories
 
-### Step 6: Explore Action Categories
+### Step 6: Explore action categories
 
 1. The **left panel** displays different action categories:
-   - **Communication**: Slack, MS Teams, Zoom, and Email
-   - **Tickets & Code**: Jira, ServiceNow, GitHub, Confluence
-   - **On-Call**: OpsGenie, PagerDuty
-   - **Incidents and Alerts**: Managing incident timeline, resolving alerts, and closing incidents
-   - **Other**: Additional integrations and custom actions
+   - **Communication:** Slack, MS Teams, Zoom, and Email
+   - **Tickets & Code:** Jira, ServiceNow, GitHub, Confluence
+   - **On-Call:** OpsGenie, PagerDuty
+   - **Incidents and Alerts:** Managing incident timeline, resolving alerts, and closing incidents
+   - **Other:** Additional integrations and custom actions
 
 <DocImage path={require('./integrations/static/runbook-select-action-dialog.png')} width="90%" height="90%" title="Select Action Dialog with Categories" />
 
 2. Browse through categories to find the appropriate action for your workflow
 
-### Step 7: Select and Configure Action
+### Step 7: Select and configure the action
 
 1. **Choose any action** from the available list in your selected category
 2. Click **Select** to add the action to your workflow
@@ -98,55 +105,55 @@ Before diving into runbook creation, familiarize yourself with these core concep
 
 <DocImage path={require('./static/add-action.png')} width="90%" height="90%" title="Adding Actions to Runbook Workflow" />
 
-### Step 8: Configure Input/Output Context 
+### Step 8: Configure input/output context
 
 You can configure the context to determine which fields will be available in the data picker when setting up action parameters:
 
-1. **Select Context Type**: Choose the Incident or Alert Context (Any/No/Custom) based on your runbook's purpose
-2. **Choose Specific Type**: For Custom Incident or Alert Context:
+1. **Select Context Type:** Choose the Incident or Alert Context (Any/No/Custom) based on your runbook's purpose
+2. **Choose Specific Type:** For Custom Incident or Alert Context:
    - Select the appropriate **Incident Type** from the dropdown for incident-based runbooks
    - Select the appropriate **Alert Type** from the dropdown for alert-based runbooks
-3. **Field Availability Impact**:
-   - **Basic Context (Any/No)**: Data picker shows only standard incident/alert fields
-   - **Specific Incident Type**: Data picker displays both basic fields AND custom fields defined for that incident type
-   - **Specific Alert Type**: Data picker displays both basic fields AND custom fields defined for that alert type
+3. **Field Availability Impact:**
+   - **Basic Context (Any/No):** Data picker shows only standard incident/alert fields
+   - **Specific Incident Type:** Data picker displays both basic fields AND custom fields defined for that incident type
+   - **Specific Alert Type:** Data picker displays both basic fields AND custom fields defined for that alert type
 
 <DocImage path={require('./static/custom-incident-type.png')} width="90%" height="90%" title="Defining Custom Incident Type" />
 
 <DocImage path={require('./static/custom-alert-type.png')} width="90%" height="90%" title="Defining Custom Alert Type" />
 
-**Why This Matters**: The context selection directly affects what data will be available when configuring your action parameters. Choosing a specific incident type ensures you have access to all custom fields defined for that type, making your runbook more powerful and context-aware.
+**Why this matters:** The context selection directly affects what data will be available when configuring your action parameters. Choosing a specific incident type ensures you have access to all custom fields defined for that type, making your runbook more powerful and context-aware.
 
-#### Variable Configuration Details
+#### Variable configuration details
 
 When configuring Input/Output context, you can also define custom variables:
 
-- **Input Variables**: Values provided when the runbook is triggered, must be defined based on the incident or alert context
-- **Output Variables**: Results from action executions, must be defined based on the action execution
-- **Required Fields**: Name, Display Name, Description, Type, and Default Value
-- **Data Types**: String, Integer, Number, Boolean, Object, or Array
-- **Requirement Level**: Variables can be defined as required or optional based on the use case
+- **Input Variables:** Values provided when the runbook is triggered, must be defined based on the incident or alert context
+- **Output Variables:** Results from action executions, must be defined based on the action execution
+- **Required Fields:** Name, Display Name, Description, Type, and Default Value
+- **Data Types:** String, Integer, Number, Boolean, Object, or Array
+- **Requirement Level:** Variables can be defined as required or optional based on the use case
 
 <DocImage path={require('./static/workflow-variables.png')} width="90%" height="90%" title="Defining Workflow Variables" />
 
-#### Dynamic Parameter Sources Available
+#### Dynamic parameter sources available
 
 Once context is configured, the data picker will provide access to multiple dynamic data sources:
 
-- **Runbook Inputs**: Variables defined in the Input/Output section
-- **Action Outputs**: Results from previously executed actions  
-- **Pipeline Outputs**: Data from Harness pipeline executions
-- **Global Variables**: System-wide variables available to all runbooks
-- **Key Events**: Event-driven data that can trigger specific behaviors
+- **Runbook Inputs:** Variables defined in the Input/Output section
+- **Action Outputs:** Results from previously executed actions  
+- **Pipeline Outputs:** Data from Harness pipeline executions
+- **Global Variables:** System-wide variables available to all runbooks
+- **Key Events:** Event-driven data that can trigger specific behaviors
 
 <DocImage path={require('./static/dynamic-parameter-selection.png')} width="90%" height="90%" title="Selecting Dynamic Parameter Sources" />
 
-#### Key Event Integration Setup
+#### Key event integration setup
 
 For event-driven runbooks, you can configure Key Events directly:
 
-1. **Select Key Event as Source**: When configuring an action parameter, choose "Key Event" as the data source
-2. **Create Input and Set Value**: Create inputs directly without navigating to Input/Output section:
+1. **Select Key Event as Source:** When configuring an action parameter, choose "Key Event" as the data source
+2. **Create Input and Set Value:** Create inputs directly without navigating to Input/Output section:
    - Click "Create Input and Set Value"
    - Provide a Display Name, Type, and Default Value
    - Save the new input variable
@@ -156,28 +163,28 @@ For event-driven runbooks, you can configure Key Events directly:
 
 <DocImage path={require('./static/key-event-dynamic-input.png')} width="90%" height="90%" title="Key Event Dynamic Input" />
 
-### Step 9: Configure Action Parameters
+### Step 9: Configure action parameters
 
-1. Click on the **Data picker** to fill in values for the action's input fields
+1. Click the **Data picker** to fill in values for the action's input fields
 2. The data picker will now show fields based on your Input/Output context selection:
    - **Basic fields** (always available): Standard incident/alert properties
    - **Custom fields** (if specific type selected): Additional fields defined for your chosen incident/alert type
 3. Configure parameters specific to your chosen action:
-   - **Static Values**: Enter fixed values for consistent behavior
-   - **Dynamic Values**: Use variables for flexible, context-aware execution
+   - **Static Values:** Enter fixed values for consistent behavior
+   - **Dynamic Values:** Use variables for flexible, context-aware execution
 
 <DocImage path={require('./static/configure-parameters.png')} width="90%" height="90%" title="Configuring Action Parameters" />
 
-### Step 10: Use Dynamic Data Sources
+### Step 10: Use dynamic data sources
 
 1. Select from available data source options (now configured in Step 8):
-   - **Runbook Input**: Variables defined for the runbook
-   - **Action Outputs**: Results from previously executed actions
-   - **Pipeline Outputs**: Data from Harness pipeline executions
-   - **Global Values**: System-wide variables available to all runbooks
+   - **Runbook Input:** Variables defined for the runbook
+   - **Action Outputs:** Results from previously executed actions
+   - **Pipeline Outputs:** Data from Harness pipeline executions
+   - **Global Values:** System-wide variables available to all runbooks
 2. Choose the appropriate data source based on your workflow requirements
 
-### Step 11: Build Complete Workflow
+### Step 11: Build the complete workflow
 
 1. Click **New Action** to add more steps based on your workflow needs
 2. Click **Action** to access the action library again
@@ -190,14 +197,14 @@ For event-driven runbooks, you can configure Key Events directly:
 
 <DocImage path={require('./static/action-sequences.png')} width="90%" height="90%" title="Configuring Action Execution Sequences" />
 
-**Best Practices for Action Sequencing:**
-- **Immediate Response**: Start with critical notifications and incident creation
-- **Information Gathering**: Follow with diagnostic and monitoring actions
-- **Remediation**: Execute fix actions based on gathered information
-- **Validation**: Verify that remediation was successful
-- **Closure**: Update stakeholders and close incidents
+**Best practices for action sequencing:**
+- **Immediate Response:** Start with critical notifications and incident creation
+- **Information Gathering:** Follow with diagnostic and monitoring actions
+- **Remediation:** Execute fix actions based on gathered information
+- **Validation:** Verify that remediation was successful
+- **Closure:** Update stakeholders and close incidents
 
-### Step 12: Save Your Runbook
+### Step 12: Save your runbook
 
 1. Click **Save** from the top right corner to finalize your runbook configuration
 2. Your runbook is now ready for testing and deployment
@@ -215,24 +222,22 @@ Follow this interactive guide to create automated runbooks with actions, workflo
 
 ---
 
-## Advanced Configuration
+## Advanced configuration
 
-For advanced trigger configuration including Key Events, conditional logic, and complex automation scenarios, refer to the comprehensive [Create a Runbook Trigger](./triggers/create-trigger.md) guide.
+Go to [Create a Runbook Trigger](/docs/ai-sre/runbooks/triggers/create-trigger) to configure advanced triggers, including Key Events, conditional logic, and complex automation scenarios.
 
 ---
 
-## Configure Triggers
+## Configure triggers
 
-Triggers determine when and how your runbooks execute automatically. For comprehensive trigger configuration including interactive guides and detailed setup instructions, see:
+Triggers determine when and how your runbooks execute automatically. Go to [Create a Runbook Trigger](/docs/ai-sre/runbooks/triggers/create-trigger) to configure automated runbook execution based on incidents, alerts, and key events, including interactive guides and detailed setup instructions.
 
-**[Create a Runbook Trigger](./triggers/create-trigger.md)** - Complete guide for configuring automated runbook execution based on incidents, alerts, and key events.
-
-### Quick Trigger Setup
-1. **Access Trigger Configuration**: Click the **Triggers** tab in your runbook editor
-2. **Add Trigger**: Click **+ New Trigger** to begin the trigger setup process
-3. **Choose Trigger Template**: Select the template from the incident types
-4. **Define Conditions**: Set specific conditions for runbook activation
-5. **Test and Deploy**: Validate trigger logic before production deployment
+### Quick trigger setup
+1. **Access Trigger Configuration:** Click the **Triggers** tab in your runbook editor
+2. **Add Trigger:** Click **New Trigger** to begin the trigger setup process
+3. **Choose Trigger Template:** Select the template from the incident types
+4. **Define Conditions:** Set specific conditions for runbook activation
+5. **Test and Deploy:** Validate trigger logic before production deployment
 
 :::info
 **Note**: Multiple triggers can be added to a single runbook based on your use case requirements.
@@ -240,40 +245,40 @@ Triggers determine when and how your runbooks execute automatically. For compreh
 
 ---
 
-## Configure Runbook Slugs
+## Configure runbook slugs
 
 Runbook slugs enable on-call responders to execute runbooks directly from Slack using short commands like `/harness run restart-pods`. Slugs provide a faster path to runbook execution during high-pressure incidents by removing UI navigation from the response workflow.
 
-### How to Assign a Slug
+### How to assign a slug
 
-1. **Access Trigger Configuration**: Navigate to the **Triggers** tab in your runbook editor.
-2. **Locate Slug Field**: Find the **Slug** field in the trigger configuration section.
-3. **Enter a Slug**: Type a short, memorable identifier for the runbook (3–15 characters).
-4. **Save**: Click **Save** to apply the slug configuration.
+1. **Access Trigger Configuration:** Navigate to the **Triggers** tab in your runbook editor.
+2. **Locate Slug Field:** Find the **Slug** field in the trigger configuration section.
+3. **Enter a Slug:** Enter a short, memorable identifier for the runbook (3 to 15 characters).
+4. **Save:** Click **Save** to apply the slug configuration.
 
-### Slug Naming Rules
+### Slug naming rules
 
 Slugs must follow these requirements:
 
-- **Length**: 3 to 15 characters
-- **Allowed characters**: Lowercase letters (`a-z`), numbers (`0-9`), and hyphens (`-`)
-- **Format**: `^[a-z0-9-]*$` (enforced by the UI)
-- **Uniqueness**: Slug must be unique within the organization
-- **Reserved names**: Cannot use native action names as slugs
+- **Length:** 3 to 15 characters
+- **Allowed characters:** Lowercase letters (`a-z`), numbers (`0-9`), and hyphens (`-`)
+- **Format:** `^[a-z0-9-]*$` (enforced by the UI)
+- **Uniqueness:** Slug must be unique within the organization
+- **Reserved names:** Cannot use native action names as slugs
 
 :::note Backend Validation
 While the UI enforces lowercase letters, numbers, and hyphens, the backend also accepts underscores (`_`) and uppercase letters (`^[-_\w]{3,15}$`). However, the UI-enforced format is recommended for consistency.
 :::
 
-### Slug Naming Best Practices
+### Slug naming best practices
 
-- **Use short, descriptive names**: `restart-pods`, `scale-up`, `rollback`
-- **Team-specific conventions**: If multiple teams use AI SRE, prefix slugs with team identifiers (e.g., `platform-restart`, `data-scale`)
-- **Action-oriented names**: Use verbs that describe what the runbook does (`fix`, `deploy`, `reset`)
-- **Avoid abbreviations**: Use `restart` instead of `rst` for clarity
-- **Test before deployment**: Verify the slug is easy to type and remember
+- **Use short, descriptive names:** `restart-pods`, `scale-up`, `rollback`
+- **Team-specific conventions:** If multiple teams use AI SRE, prefix slugs with team identifiers (e.g., `platform-restart`, `data-scale`)
+- **Action-oriented names:** Use verbs that describe what the runbook does (`fix`, `deploy`, `reset`)
+- **Avoid abbreviations:** Use `restart` instead of `rst` for clarity
+- **Test before deployment:** Verify the slug is easy to enter and remember
 
-### Example Slugs
+### Example slugs
 
 | Slug | Runbook Name | Use Case |
 |------|--------------|----------|
@@ -283,7 +288,7 @@ While the UI enforces lowercase letters, numbers, and hyphens, the backend also 
 | `clear-cache` | Clear Redis Cache | Flush cache to resolve stale data issues |
 | `restart-db` | Restart Database Connection Pool | Reset database connections |
 
-### Using Slugs in Slack
+### Using slugs in Slack
 
 Once configured, on-call responders can execute runbooks from Slack:
 
@@ -297,50 +302,50 @@ Once configured, on-call responders can execute runbooks from Slack:
 /harness run
 ```
 
-**Prerequisite**: Users must authenticate Slack with Harness AI SRE before using slug commands.
+**Prerequisite:** Users must authenticate Slack with Harness AI SRE before using slug commands.
 
-Go to [Use Slack Commands](/docs/ai-sre/get-started/slack-commands#running-runbooks-with-slugs) for complete user documentation on slug commands.
+Go to [Use Slack Commands](/docs/ai-sre/get-started/slack-commands#run-runbooks-with-slugs) to review complete user documentation on slug commands.
 
 ---
 
-## Test Your Runbook
+## Test your runbook
 
 Thorough testing is essential before deploying runbooks to production. A well-tested runbook prevents failures during critical incidents and ensures reliable automation.
 
-### Testing Steps
-1. **Select an Alert or Incident**: Go to **AI SRE** → **Alerts** or **Incidents** in your Harness platform, then select the alert or incident you want to test.
-2. **Select a Runbook**: Click the **Runbooks** tab and select the runbook you want to test.
-3. **Execute Runbook**: In case of no associated runbooks, click **Execute Runbook** to begin the testing process.
-4. **Test Runbook**: Click **Execute** to begin the testing process.
+### Testing steps
+1. **Select an Alert or Incident:** Go to **AI SRE**, then **Alerts** or **Incidents** in your Harness platform, then select the alert or incident you want to test.
+2. **Select a Runbook:** Click the **Runbooks** tab and select the runbook you want to test.
+3. **Execute Runbook:** In case of no associated runbooks, click **Execute Runbook** to begin the testing process.
+4. **Test Runbook:** Click **Execute** to begin the testing process.
 
 <DocImage path={require('./static/test-runbook.png')} width="95%" height="95%" title="Testing Runbook Functionality" />
 
-### Pre-Production Testing
-#### **1. Environment Preparation**
-- **Test Environment**: Set up a dedicated testing environment that mirrors production.
-- **Test Data**: Prepare realistic test scenarios and data sets.
-- **Integration Sandboxes**: Use test instances of integrated tools (Slack, Jira, etc.).
-- **Mock Services**: Create mock endpoints for external dependencies.
+### Pre-production testing
+#### **1. Environment preparation**
+- **Test Environment:** Set up a dedicated testing environment that mirrors production.
+- **Test Data:** Prepare realistic test scenarios and data sets.
+- **Integration Sandboxes:** Use test instances of integrated tools (Slack, Jira, etc.).
+- **Mock Services:** Create mock endpoints for external dependencies.
 
-#### **2. Functional Testing**
-- **Action Validation**: Verify each action executes correctly with expected parameters.
-- **Sequence Testing**: Confirm actions execute in the correct order.
-- **Variable Passing**: Validate that variables are correctly passed between actions.
-- **Error Handling**: Test failure scenarios and error recovery mechanisms.
+#### **2. Functional testing**
+- **Action Validation:** Verify each action executes correctly with expected parameters.
+- **Sequence Testing:** Confirm actions execute in the correct order.
+- **Variable Passing:** Validate that variables are correctly passed between actions.
+- **Error Handling:** Test failure scenarios and error recovery mechanisms.
 
-#### **3. Integration Testing**
-- **Notification Delivery**: Confirm all notifications reach intended recipients.
-- **Pipeline Executions**: Verify that triggered pipelines complete successfully.
-- **API Responses**: Check that external API calls return expected results.
-- **Authentication**: Ensure all integrations authenticate properly.
+#### **3. Integration testing**
+- **Notification Delivery:** Confirm all notifications reach intended recipients.
+- **Pipeline Executions:** Verify that triggered pipelines complete successfully.
+- **API Responses:** Check that external API calls return expected results.
+- **Authentication:** Ensure all integrations authenticate properly.
 
-#### **4. End-to-End Testing**
-- **Complete Workflows**: Execute full runbook scenarios from trigger to completion.
-- **Multiple Scenarios**: Test various input combinations and edge cases.
-- **Performance Testing**: Measure execution times and resource usage.
-- **Concurrent Execution**: Test behavior when multiple instances run simultaneously.
+#### **4. End-to-end testing**
+- **Complete Workflows:** Execute full runbook scenarios from trigger to completion.
+- **Multiple Scenarios:** Test various input combinations and edge cases.
+- **Performance Testing:** Measure execution times and resource usage.
+- **Concurrent Execution:** Test behavior when multiple instances run simultaneously.
 
-### Testing Checklist
+### Testing checklist
 - [ ] All actions execute without errors.
 - [ ] Notifications are delivered to correct channels/recipients.
 - [ ] Variables are properly populated and passed.
@@ -352,69 +357,73 @@ Thorough testing is essential before deploying runbooks to production. A well-te
 
 ---
 
-## Deploy and Monitor
+## Deploy and monitor
 
 Once testing is complete, deploy your runbook to production and establish monitoring to ensure continued effectiveness.
 
-### Deployment Process
-1. **Final Review**: Conduct a final review of runbook configuration and testing results.
-2. **Stakeholder Approval**: Obtain necessary approvals from the team.
-3. **Production Deployment**: Activate the runbook in your production environment.
-4. **Documentation Update**: Update operational documentation with runbook details.
+### Deployment process
+1. **Final Review:** Conduct a final review of runbook configuration and testing results.
+2. **Stakeholder Approval:** Obtain necessary approvals from the team.
+3. **Production Deployment:** Activate the runbook in your production environment.
+4. **Documentation Update:** Update operational documentation with runbook details.
 
 ---
 
-## Best Practices for Runbook Creation
+## Best practices for runbook creation
 
-### Design Principles
-- **Start Simple**: Begin with basic workflows and gradually add complexity as you gain experience.
-- **Modular Design**: Create reusable actions and workflows that can be combined for different scenarios.
-- **Clear Naming**: Use descriptive names for runbooks, actions, and variables that clearly indicate their purpose.
+### Design principles
+- **Start Simple:** Begin with basic workflows and gradually add complexity as you gain experience.
+- **Modular Design:** Create reusable actions and workflows that can be combined for different scenarios.
+- **Clear Naming:** Use descriptive names for runbooks, actions, and variables that clearly indicate their purpose.
 
-### Operational Excellence
-- **Regular Updates**: Review and update runbooks regularly to reflect changes in infrastructure and processes.
-- **Timeout Configuration**: Set appropriate timeouts to prevent runbooks from hanging indefinitely.
-- **Conditional Logic**: Use conditional statements to avoid unnecessary action execution.
-
----
-
-## Troubleshooting Common Issues
-
-### Execution Failures
-#### Problem: Runbook actions fail to execute
-- **Solution**: Check integration credentials and network connectivity.
-- **Prevention**: Implement health checks and credential rotation.
-
-#### Problem: Variables not passing between actions
-- **Solution**: Verify variable names and data types match expectations.
-- **Prevention**: Use consistent naming conventions and validate variable mappings.
-
-### Performance Issues
-#### Problem: Runbooks execute slowly
-- **Solution**: Optimize action sequences and enable parallel execution where possible.
-- **Prevention**: Regular performance testing and monitoring.
+### Operational excellence
+- **Regular Updates:** Review and update runbooks regularly to reflect changes in infrastructure and processes.
+- **Timeout Configuration:** Set appropriate timeouts to prevent runbooks from hanging indefinitely.
+- **Conditional Logic:** Use conditional statements to avoid unnecessary action execution.
 
 ---
 
-## Next Steps
+## Troubleshooting common issues
 
-### Advanced Configuration
-- **[Create a Runbook Trigger](./triggers/create-trigger.md)**: Set up automated runbook execution based on incidents, alerts, and events.
-- **[Configure Authentication](./integrations/overview.md)**: Set up secure access to integrated tools and services.
-- **[Configure Incident Fields](./workflows/overview.md)**: Customize incident data collection and processing.
-- **[Return to Overview](./runbooks.md)**: Explore additional runbook capabilities and features.
+<Troubleshoot
+  issue="Runbook actions fail to execute in Harness AI SRE"
+  mode="docs"
+  fallback="Check integration credentials and network connectivity, and implement health checks and credential rotation."
+/>
 
-### Integration Setup Guides
-#### Communication & Collaboration
-- **[Slack Integration](./integrations/collaboration/slack.md)**: Complete setup guide for Slack automation.
-- **[Microsoft Teams Integration](./integrations/collaboration/teams.md)**: Configure Teams notifications and collaboration.
-- **[Zoom Integration](./integrations/collaboration/zoom.md)**: Set up automated meeting creation and management.
+<Troubleshoot
+  issue="Variables are not passing between actions in a Harness AI SRE runbook"
+  mode="docs"
+  fallback="Verify that variable names and data types match expectations, and use consistent naming conventions with validated variable mappings."
+/>
 
-#### Incident Management
-- **[Jira Integration](./integrations/ticketing/jira.md)**: Automate issue tracking and project management.
-- **[ServiceNow Integration](./integrations/ticketing/servicenow.md)**: Integrate with enterprise service management.
+<Troubleshoot
+  issue="Harness AI SRE runbooks execute slowly"
+  mode="docs"
+  fallback="Optimize action sequences, enable parallel execution where possible, and run regular performance testing and monitoring."
+/>
 
-#### Automation & Pipelines
-- **[Harness Pipelines Integration](./integrations/source-control/harness-pipelines.md)**: Execute deployment and remediation pipelines.
+---
+
+## Next steps
+
+### Advanced configuration
+- [Create a Runbook Trigger](/docs/ai-sre/runbooks/triggers/create-trigger): Set up automated runbook execution based on incidents, alerts, and events.
+- [Configure authentication](/docs/ai-sre/runbooks/integrations/overview): Set up secure access to integrated tools and services.
+- [Configure incident fields](/docs/ai-sre/runbooks/workflows/overview): Customize incident data collection and processing.
+- [Return to overview](/docs/ai-sre/runbooks): Explore additional runbook capabilities and features.
+
+### Integration setup guides
+#### Communication & collaboration
+- [Slack integration](/docs/ai-sre/runbooks/integrations/collaboration/slack): Complete setup guide for Slack automation.
+- [Microsoft Teams integration](/docs/ai-sre/runbooks/integrations/collaboration/teams): Configure Teams notifications and collaboration.
+- [Zoom integration](/docs/ai-sre/runbooks/integrations/collaboration/zoom): Set up automated meeting creation and management.
+
+#### Incident management
+- [Jira integration](/docs/ai-sre/runbooks/integrations/ticketing/jira): Automate issue tracking and project management.
+- [ServiceNow integration](/docs/ai-sre/runbooks/integrations/ticketing/servicenow): Integrate with enterprise service management.
+
+#### Automation & pipelines
+- [Harness Pipelines integration](/docs/ai-sre/runbooks/integrations/source-control/harness-pipelines): Execute deployment and remediation pipelines.
 
 <NeedHelpFooter />

@@ -9,17 +9,16 @@ keywords:
   - alert fields
   - runbooks
 tags:
+  - ai-sre
   - fields
   - runbooks
 ---
 
 import NeedHelpFooter from '../../_snippets/need-help-footer.mdx';
 
-# Use System Fields in Runbook Actions
-
 System fields provide access to incident and alert data in your runbook actions. These fields are automatically available based on your runbook context and can be referenced using Mustache templates or CEL expressions.
 
-## Incident Fields
+## Incident fields
 
 These fields are automatically available when your runbook has incident context:
 - `{{incident.id}}` - Unique incident identifier
@@ -36,7 +35,7 @@ These fields are automatically available when your runbook has incident context:
 
 ---
 
-## Activity Fields (Enhanced Incident Data)
+## Activity fields (enhanced incident data)
 
 The `Activity` namespace provides access to Harness-specific incident data, including full service objects with IDs:
 - `{{Activity.id}}` - Activity identifier
@@ -48,7 +47,7 @@ The `Activity` namespace provides access to Harness-specific incident data, incl
 - `{{Activity.impacted_services}}` - Array of Harness service objects with `.id` and `.name` properties
 - `{{Activity.url}}` - Link to activity in AI SRE UI
 
-**Getting Harness service IDs with CEL**:
+**Get Harness service IDs with CEL**:
 ```cel
 // Extract all service IDs
 Activity.impacted_services.map(s, s.id)
@@ -60,13 +59,13 @@ Activity.impacted_services[0].id
 Activity.impacted_services.filter(s, s.name.contains("api")).map(s, s.id)
 ```
 
-:::tip Why Use Activity Instead of Incident?
+:::tip Why use Activity instead of Incident?
 Use `Activity.impacted_services` when you need Harness service IDs (UUIDs) for API calls or pipeline triggers. The `incident.service` field only provides service names as strings.
 :::
 
 ---
 
-## Alert Fields
+## Alert fields
 
 These fields are available when your runbook has alert context:
 - `{{alert.id}}` - Unique alert identifier
@@ -80,7 +79,7 @@ These fields are available when your runbook has alert context:
 
 ---
 
-## Severity Field Usage
+## Severity field usage
 
 The severity field contains string values representing severity levels. When referencing severity in runbook actions:
 
@@ -102,7 +101,7 @@ The severity field contains string values representing severity levels. When ref
 View incident: {{incident.url}}
 ```
 
-Go to [Configure Runbook Triggers](/docs/ai-sre/runbooks/triggers/create-trigger#severity-field) to learn how to configure severity-based trigger conditions.
+Go to [Create runbook triggers](/docs/ai-sre/runbooks/triggers/create-trigger#severity-field-values) to learn how to configure severity-based trigger conditions.
 
 **CEL expression alternative**:
 ```cel
@@ -114,7 +113,7 @@ ${{incident.severity == "0" ? "🚨 CRITICAL" :
 
 ---
 
-## Custom Fields
+## Custom fields
 
 Custom fields defined on incident types or alert types are also available via Mustache syntax:
 
@@ -130,8 +129,8 @@ Custom fields defined on incident types or alert types are also available via Mu
 
 ## Next steps
 
-- Go to [Use Mustache Templates in Runbook Actions](/docs/ai-sre/runbooks/workflows/use-mustache-runbook-actions) to reference incident data with Mustache templates.
-- Go to [Use CEL in Runbook Actions](/docs/ai-sre/runbooks/workflows/use-cel-runbook-actions) to implement dynamic logic with CEL expressions.
-- Go to [Best Practices](/docs/ai-sre/runbooks/workflows/best-practices) for field usage guidelines.
+- Go to [Use Mustache templates in runbook actions](/docs/ai-sre/runbooks/workflows/use-mustache-runbook-actions) to reference incident data with Mustache templates.
+- Go to [Use CEL in runbook actions](/docs/ai-sre/runbooks/workflows/use-cel-runbook-actions) to implement dynamic logic with CEL expressions.
+- Go to [Best practices](/docs/ai-sre/runbooks/workflows/best-practices) to review field usage guidelines.
 
 <NeedHelpFooter />

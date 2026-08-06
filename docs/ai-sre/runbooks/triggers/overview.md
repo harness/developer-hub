@@ -3,6 +3,14 @@ title: Runbook Triggers Overview
 sidebar_label: Overview
 sidebar_position: 1
 description: Configure triggers for automated runbook execution based on incidents, alerts, and key events.
+keywords:
+  - runbooks
+  - triggers
+  - automation
+  - CEL
+tags:
+  - ai-sre
+  - runbooks
 redirect_from:
 - /docs/incident-response/runbooks/create-trigger
 - /docs/ai-sre/runbooks/create-trigger
@@ -12,8 +20,6 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import NeedHelpFooter from '../../_snippets/need-help-footer.mdx';
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
-
-# Configure Runbook Triggers
 
 Triggers determine when and how your runbooks execute automatically in Harness AI SRE. 
 
@@ -34,21 +40,21 @@ Runbook triggers help you:
 
 ---
 
-## Trigger Configuration Basics
+## Trigger configuration basics
 
 Runbook triggers can be created based on various conditions and events. The trigger system allows you to:
 
-- **Incident-Based Automation**: Execute runbooks when incidents are created, updated, or when specific field changes occur
-- **Key Event Responses**: Trigger runbooks when key events are created in the incident timeline
-- **Conditional Logic**: Use ALL or ANY condition types with field comparisons to create precise trigger criteria
-- **Field-Specific Triggers**: Monitor changes to specific incident fields and trigger based on old values, new values, or field changes
+- **Incident-Based Automation:** Execute runbooks when incidents are created, updated, or when specific field changes occur
+- **Key Event Responses:** Trigger runbooks when key events are created in the incident timeline
+- **Conditional Logic:** Use ALL or ANY condition types with field comparisons to create precise trigger criteria
+- **Field-Specific Triggers:** Monitor changes to specific incident fields and trigger based on old values, new values, or field changes
 
-### Trigger Condition Modes
+### Trigger condition modes
 
 Harness AI SRE supports two modes for defining trigger conditions:
 
-- **Rule Mode**: Visual builder with field-based conditions (ALL/ANY logic with field comparisons)
-- **CEL Mode**: Write CEL (Common Expression Language) boolean expressions for advanced logic
+- **Rule Mode:** Visual builder with field-based conditions (ALL/ANY logic with field comparisons)
+- **CEL Mode:** Write CEL (Common Expression Language) boolean expressions for advanced logic
 
 **When to use each mode:**
 
@@ -59,15 +65,15 @@ Harness AI SRE supports two modes for defining trigger conditions:
 | Single field checks | Multi-field calculations |
 | Getting started | Advanced use cases |
 
-Go to [Use CEL Expressions in Runbook Triggers](/docs/ai-sre/runbooks/triggers/use-cel-triggers) for complete CEL trigger documentation.
+Go to [Use CEL Expressions in Runbook Triggers](/docs/ai-sre/runbooks/triggers/use-cel-triggers) to review complete CEL trigger documentation.
 
-### Best Practices for Trigger Creation
+### Best practices for trigger creation
 
 Consider these scenarios when creating runbook triggers:
-- **Incident Severity Changes**: Trigger escalation runbooks when incident severity increases
-- **Assignment Changes**: Execute notification runbooks when incidents are assigned to specific teams
-- **Status Updates**: Activate communication runbooks when incident status changes to resolved
-- **Key Milestones**: Trigger documentation runbooks when key events are added to incident timelines
+- **Incident Severity Changes:** Trigger escalation runbooks when incident severity increases
+- **Assignment Changes:** Execute notification runbooks when incidents are assigned to specific teams
+- **Status Updates:** Activate communication runbooks when incident status changes to resolved
+- **Key Milestones:** Trigger documentation runbooks when key events are added to incident timelines
 
 ---
 

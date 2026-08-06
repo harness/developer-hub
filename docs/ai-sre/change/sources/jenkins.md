@@ -20,10 +20,10 @@ Configure Jenkins pipelines to send build and deployment data to the [Deploy Cha
 
 ## Before you begin
 
-- **Deploy Change Investigator setup**: Create build and deploy webhook integrations in AI SRE. Go to [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) for setup instructions.
-- **Jenkins pipeline access**: Permission to edit Jenkinsfile or add build steps.
-- **Webhook URLs**: Copy the build and deploy webhook URLs from your AI SRE integrations.
-- **Git plugin**: Ensure Jenkins Git plugin is installed for commit SHA access.
+- **Deploy Change Investigator setup:** Create build and deploy webhook integrations in AI SRE. Go to [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) to set up the integrations.
+- **Jenkins pipeline access:** Permission to edit the Jenkinsfile or add build steps.
+- **Webhook URLs:** Copy the build and deploy webhook URLs from your AI SRE integrations.
+- **Git plugin:** Ensure the Jenkins Git plugin is installed for commit SHA access.
 
 :::info Why Jenkins needs scripts
 Jenkins does not have native webhook notification support like GitHub Actions or GitLab CI. Use shell scripts with `curl` to send webhook POST requests at the end of build and deploy stages.
@@ -123,17 +123,17 @@ node {
 
 Jenkins provides these environment variables automatically:
 
-- **GIT_COMMIT** - Full SHA of the commit being built
-- **GIT_BRANCH** - Branch name (e.g., `origin/main`)
-- **GIT_URL** - Git repository URL
-- **BUILD_ID** - Unique Jenkins build ID
-- **BUILD_NUMBER** - Sequential build number
+- **GIT_COMMIT:** Full SHA of the commit being built.
+- **GIT_BRANCH:** Branch name (for example, `origin/main`).
+- **GIT_URL:** Git repository URL.
+- **BUILD_ID:** Unique Jenkins build ID.
+- **BUILD_NUMBER:** Sequential build number.
 
 **Custom variables to set:**
 
-- **BUILD_WEBHOOK_URL** - Store as Jenkins credential (Secret text)
-- **ARTIFACT_REGISTRY** - Your Docker/artifact registry URL
-- **SERVICE_NAME** - Service identifier
+- **BUILD_WEBHOOK_URL:** Store as a Jenkins credential (Secret text).
+- **ARTIFACT_REGISTRY:** Your Docker or artifact registry URL.
+- **SERVICE_NAME:** Service identifier.
 
 ---
 
@@ -245,10 +245,10 @@ post {
 
 Store webhook URLs securely in Jenkins:
 
-1. Navigate to **Manage Jenkins** → **Credentials**
+1. Navigate to **Manage Jenkins**, then select **Credentials**
 2. Select the appropriate domain (usually `(global)`)
 3. Click **Add Credentials**
-4. Configure:
+4. Configure the following:
    - **Kind:** Secret text
    - **Secret:** Paste your build or deploy webhook URL
    - **ID:** `aisre-build-webhook-url` or `aisre-deploy-webhook-url`
@@ -276,9 +276,9 @@ The Deploy Change Investigator requires exact matches between build and deploy d
 | `artifact.version` or `service.version` | `services[].version` | ✅ Yes |
 
 :::danger Common mistakes
-- **Version mismatch**: Build sends `1.2.3`, deploy sends `v1.2.3` → No match
-- **Service name mismatch**: Build sends `myapp`, deploy sends `my-app` → No match
-- **Using different identifiers**: Ensure BUILD_NUMBER or version tag is consistent across both webhooks
+- **Version mismatch:** Build sends `1.2.3`, deploy sends `v1.2.3`, so there is no match.
+- **Service name mismatch:** Build sends `myapp`, deploy sends `my-app`, so there is no match.
+- **Using different identifiers:** Ensure the BUILD_NUMBER or version tag is consistent across both webhooks.
 :::
 
 ---
@@ -288,24 +288,24 @@ The Deploy Change Investigator requires exact matches between build and deploy d
 ### Test build webhook
 
 1. Trigger a Jenkins build that includes the webhook script
-2. Check Jenkins console output for curl command execution
-3. Navigate to **AI SRE** → **Integrations**
-4. Click the three-dot menu (**...**) on the BUILD integration
+2. Check the Jenkins console output for curl command execution
+3. Navigate to **AI SRE**, then select **Integrations**
+4. Click the **More** icon on the BUILD integration
 5. Select **Debug** to view received webhook events
 
 ### Test deploy webhook
 
 1. Trigger a deployment pipeline
-2. Verify curl command runs in console output
-3. Check **AI SRE** → **Integrations** → DEPLOY → **Debug**
+2. Verify the curl command runs in the console output
+3. Navigate to **AI SRE**, select **Integrations**, then select **Debug** on the DEPLOY integration
 
 ### Verify the connection
 
 After sending both build and deploy webhooks:
 
-1. Navigate to **AI SRE** → **Change Management**
+1. Navigate to **AI SRE**, then select **Change Management**
 2. You should see deployment records linked to builds
-3. Click into a deployment to see:
+3. Click into a deployment to see the following:
    - Artifact versions
    - Commit SHAs
    - Linked PRs
@@ -334,9 +334,9 @@ After sending both build and deploy webhooks:
 
 ---
 
-## Example: Complete Jenkins pipeline
+## Example complete Jenkins pipeline
 
-Here's a complete example with both build and deploy webhooks:
+The following is a complete example with both build and deploy webhooks:
 
 ```groovy
 pipeline {
@@ -408,6 +408,6 @@ pipeline {
 
 ## Next steps
 
-- Go to [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) for the complete setup guide.
-- Go to [AI Agent RCA](/docs/ai-sre/ai-agent/rca-change-agent) to learn how change detection works during incidents.
-- Go to [Configure GitHub Actions](/docs/ai-sre/change/sources/github-actions) for webhook setup in GitHub Actions workflows.
+- Go to [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) to complete the setup.
+- Go to [AI Agent RCA](/docs/ai-sre/ai-agent/rca-change-agent) to understand how change detection works during incidents.
+- Go to [Configure GitHub Actions](/docs/ai-sre/change/sources/github-actions) to set up webhooks in GitHub Actions workflows.

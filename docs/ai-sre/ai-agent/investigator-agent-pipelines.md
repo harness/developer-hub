@@ -3,9 +3,19 @@ title: Use Investigator Agent Pipelines
 description: Extend the RCA Change Agent's investigation with custom data sources and analysis logic to investigate incidents with domain-specific context.
 sidebar_label: Use Investigator Agent Pipelines
 sidebar_position: 4
+keywords:
+  - investigator agent pipelines
+  - custom investigation
+  - RCA Change Agent
+  - incident investigation
+  - AI SRE
+tags:
+  - ai-sre
+  - incident-response
+  - ai-agent
 ---
 
-# Use Investigator Agent Pipelines
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
 :::warning Early Access Feature
 Investigator Agent Pipelines are currently in **Early Access**. The core end-to-end flow is functional, but full productionization features (UI pipeline builder, pipeline marketplace, enhanced error handling) are planned for Q2 2026. Contact your Harness representative to enable this feature for your organization.
@@ -25,30 +35,30 @@ The RCA Change Agent's investigation analyzes incidents using multiple data sour
 
 ---
 
-## What Are Agent Pipelines?
+## What are agent pipelines?
 
 Agent pipelines are custom investigation workflows built using Harness pipeline stages. When an incident is created (or manually triggered), the pipeline executes and returns investigation results that appear alongside built-in RCA theories in the RCA Change Agent theories panel.
 
-### Key Characteristics
+### Key characteristics
 
-- **Build once, run on every incident**: Pipelines run automatically without per-incident manual steps
-- **Appear alongside built-in theories**: Custom pipeline results display in the same RCA Change Agent theories panel as RCA Change Agent theories
-- **Flexible data sources**: Connect any API, database, or internal tool accessible from Harness pipelines
-- **Domain-specific logic**: Implement analysis specific to your infrastructure (e.g., query deployment canary metrics, check feature flag states, validate compliance)
+- **Build once, run on every incident:** Pipelines run automatically without per-incident manual steps
+- **Appear alongside built-in theories:** Custom pipeline results display in the same RCA Change Agent theories panel as RCA Change Agent theories
+- **Flexible data sources:** Connect any API, database, or internal tool accessible from Harness pipelines
+- **Domain-specific logic:** Implement analysis specific to your infrastructure (e.g., query deployment canary metrics, check feature flag states, validate compliance)
 
 ---
 
-## How It Works
+## How it works
 
-### Pipeline Execution Flow
+### Pipeline execution flow
 
-1. **Incident Created**: An incident is created in Harness AI SRE (manually or via alert rule)
-2. **Pipeline Triggered**: Configured agent pipelines trigger automatically on incident creation
-3. **Investigation Runs**: Pipeline stages execute custom investigation logic (API calls, data fetches, analysis)
-4. **Results Returned**: Pipeline outputs are captured and formatted as investigation results
-5. **Display in theories panel**: Results appear in the RCA Change Agent theories panel alongside built-in RCA theories
+1. **Incident created:** An incident is created in Harness AI SRE (manually or via alert rule)
+2. **Pipeline triggered:** Configured agent pipelines trigger automatically on incident creation
+3. **Investigation runs:** Pipeline stages execute custom investigation logic (API calls, data fetches, analysis)
+4. **Results returned:** Pipeline outputs are captured and formatted as investigation results
+5. **Display in theories panel:** Results appear in the RCA Change Agent theories panel alongside built-in RCA theories
 
-### Input Contract
+### Input contract
 
 Agent pipelines receive incident context as input variables:
 
@@ -63,7 +73,7 @@ Agent pipelines receive incident context as input variables:
 
 Pipelines can use these variables to scope investigation queries and analysis.
 
-### Output Contract
+### Output contract
 
 Pipelines return investigation results in a structured format:
 
@@ -96,57 +106,57 @@ Pipelines return investigation results in a structured format:
 }
 ```
 
-**Field Definitions:**
+**Field definitions:**
 
-- **title**: Short summary of the theory (shown in RCA Change Agent theories panel)
-- **description**: Detailed explanation with supporting evidence
-- **confidence**: Confidence score (0-100) indicating likelihood this is the root cause
-- **evidence**: Array of supporting data points (deployments, metrics, logs, configuration changes)
+- **title:** Short summary of the theory (shown in RCA Change Agent theories panel)
+- **description:** Detailed explanation with supporting evidence
+- **confidence:** Confidence score (0-100) indicating likelihood this is the root cause
+- **evidence:** Array of supporting data points (deployments, metrics, logs, configuration changes)
 
 ---
 
-## Supported Step Types
+## Supported step types
 
 Agent pipelines use standard Harness pipeline stages to execute investigation logic:
 
-### Data Fetch Steps
+### Data fetch steps
 
 Query external data sources and APIs:
 
-- **HTTP Step**: Call REST APIs (internal wikis, custom change databases, vendor APIs)
-- **Shell Script Step**: Execute custom scripts (query internal databases, parse logs, check file systems)
-- **Container Step**: Run containerized analysis tools (custom Python/Go scripts, ML models, domain-specific analyzers)
+- **HTTP step:** Call REST APIs (internal wikis, custom change databases, vendor APIs)
+- **Shell Script step:** Execute custom scripts (query internal databases, parse logs, check file systems)
+- **Container step:** Run containerized analysis tools (custom Python/Go scripts, ML models, domain-specific analyzers)
 
-### Analysis Steps
+### Analysis steps
 
 Process data and generate insights:
 
-- **Shell Script Step**: Run custom analysis logic (correlate metrics, parse deployment logs, calculate impact)
-- **Container Step**: Execute complex analysis (ML inference, anomaly detection, pattern matching)
+- **Shell Script step:** Run custom analysis logic (correlate metrics, parse deployment logs, calculate impact)
+- **Container step:** Execute complex analysis (ML inference, anomaly detection, pattern matching)
 
-### Enrichment Steps
+### Enrichment steps
 
 Add context from infrastructure-specific sources:
 
-- **HTTP Step**: Fetch metadata from cloud providers (AWS, GCP, Azure), service meshes (Istio, Linkerd), or custom CMDBs
-- **Shell Script Step**: Query internal documentation wikis, runbook repositories, or compliance databases
+- **HTTP step:** Fetch metadata from cloud providers (AWS, GCP, Azure), service meshes (Istio, Linkerd), or custom CMDBs
+- **Shell Script step:** Query internal documentation wikis, runbook repositories, or compliance databases
 
 ---
 
-## Creating an Agent Pipeline
+## Create an agent pipeline
 
-### Step 1: Define the Pipeline
+### Step 1: Define the pipeline
 
 1. Navigate to **Pipelines** in your Harness project.
 2. Click **Create Pipeline**.
 3. Name the pipeline descriptively (e.g., `Investigate Canary Metrics`, `Query Internal Change DB`).
 4. Select **Pipeline** type.
 
-### Step 2: Add Investigation Stages
+### Step 2: Add investigation stages
 
 Add stages to fetch data, run analysis, and format results:
 
-**Example Stage: Query Internal Deployment API**
+**Example stage: query internal deployment API**
 
 ```yaml
 - stage:
@@ -178,7 +188,7 @@ Add stages to fetch data, run analysis, and format results:
                     value: <+httpResponseBody>
 ```
 
-**Example Stage: Analyze Canary Metrics**
+**Example stage: analyze canary metrics**
 
 ```yaml
 - stage:
@@ -224,7 +234,7 @@ Add stages to fetch data, run analysis, and format results:
                     value: <+execution.steps.check_canary.output.outputVariables.canary_results>
 ```
 
-### Step 3: Format Results
+### Step 3: Format results
 
 Add a final stage to format investigation results according to the output contract:
 
@@ -272,7 +282,7 @@ Add a final stage to format investigation results according to the output contra
                       EOF
 ```
 
-### Step 4: Configure Triggers
+### Step 4: Configure triggers
 
 Set up the pipeline to run automatically on incident creation:
 
@@ -287,45 +297,45 @@ Set up the pipeline to run automatically on incident creation:
 
 ---
 
-## Connecting Custom Data Sources
+## Connect custom data sources
 
 ### Internal APIs
 
-Use the **HTTP Step** to query internal APIs:
+Use the **HTTP step** to query internal APIs:
 
-- **Authentication**: Store API tokens in Harness Secrets and reference via `<+secrets.getValue("token_name")>`
-- **Request body**: Pass incident context as JSON payload
-- **Response parsing**: Use `jq` in Shell Script steps to parse JSON responses
+- **Authentication:** Store API tokens in Harness Secrets and reference via `<+secrets.getValue("token_name")>`
+- **Request body:** Pass incident context as JSON payload
+- **Response parsing:** Use `jq` in Shell Script steps to parse JSON responses
 
-### Observability Tools
+### Observability tools
 
 Query metrics, logs, and traces from observability platforms:
 
-- **Prometheus**: Query metrics using PromQL via HTTP API
-- **Grafana**: Fetch dashboard snapshots or panel data via Grafana API
-- **Elasticsearch**: Query logs using Elasticsearch Query DSL
-- **Custom Observability**: Call vendor-specific APIs (Honeycomb, Lightstep, etc.)
+- **Prometheus:** Query metrics using PromQL via HTTP API
+- **Grafana:** Fetch dashboard snapshots or panel data via Grafana API
+- **Elasticsearch:** Query logs using Elasticsearch Query DSL
+- **Custom observability:** Call vendor-specific APIs (Honeycomb, Lightstep, etc.)
 
-### Internal Databases
+### Internal databases
 
-Use the **Shell Script Step** to query databases:
+Use the **Shell Script step** to query databases:
 
-- **PostgreSQL**: Use `psql` CLI or connection libraries
-- **MySQL**: Use `mysql` CLI or connection libraries
-- **MongoDB**: Use `mongosh` or language-specific drivers
-- **Redis**: Use `redis-cli` or connection libraries
+- **PostgreSQL:** Use `psql` CLI or connection libraries
+- **MySQL:** Use `mysql` CLI or connection libraries
+- **MongoDB:** Use `mongosh` or language-specific drivers
+- **Redis:** Use `redis-cli` or connection libraries
 
-### Cloud Provider APIs
+### Cloud provider APIs
 
 Fetch infrastructure metadata:
 
-- **AWS**: Query EC2, ECS, Lambda metadata using AWS CLI or SDKs
-- **GCP**: Query GCE, GKE, Cloud Run metadata using gcloud CLI or SDKs
-- **Azure**: Query VM, AKS, Functions metadata using az CLI or SDKs
+- **AWS:** Query EC2, ECS, Lambda metadata using AWS CLI or SDKs
+- **GCP:** Query GCE, GKE, Cloud Run metadata using gcloud CLI or SDKs
+- **Azure:** Query VM, AKS, Functions metadata using az CLI or SDKs
 
 ---
 
-## Viewing Investigation Results
+## View investigation results
 
 ### In the RCA Change Agent theories panel
 
@@ -334,15 +344,15 @@ When agent pipelines complete, their results appear in the RCA Change Agent theo
 1. Open the **Incident Details** page.
 2. Open the **RCA Change Agent theories** panel.
 3. View theories from multiple sources:
-   - **RCA Change Agent**: Deployments, pull requests, ServiceNow changes
-   - **Custom Agent Pipelines**: Results from your configured pipelines
+   - **RCA Change Agent:** Deployments, pull requests, ServiceNow changes
+   - **Custom agent pipelines:** Results from your configured pipelines
 4. Each theory displays:
-   - **Title**: Short summary
-   - **Confidence score**: 0-100
-   - **Evidence**: Supporting data points
-   - **Source**: Which agent or pipeline generated the theory
+   - **Title:** Short summary
+   - **Confidence score:** 0-100
+   - **Evidence:** Supporting data points
+   - **Source:** Which agent or pipeline generated the theory
 
-### Pipeline Execution Status
+### Pipeline execution status
 
 Check which pipelines ran and their outputs:
 
@@ -356,27 +366,27 @@ Check which pipelines ran and their outputs:
 
 ---
 
-## Use Cases
+## Use cases
 
-### Query Internal Change Databases
+### Query internal change databases
 
 **Scenario:** Your organization tracks changes in an internal database not covered by built-in integrations.
 
 **Solution:** Create a pipeline that queries the change database for recent changes affecting incident-related services and returns them as theories.
 
-### Check Deployment Canary Metrics
+### Check deployment canary metrics
 
 **Scenario:** Deployments include canary analysis, but Harness AI SRE does not automatically check canary health.
 
 **Solution:** Create a pipeline that fetches recent deployments, queries canary metrics from Prometheus, and flags deployments with degraded canary health.
 
-### Validate Feature Flag States
+### Validate feature flag states
 
 **Scenario:** Feature flags control critical behavior, and incidents may be caused by recent flag changes.
 
 **Solution:** Create a pipeline that queries your feature flag platform (LaunchDarkly, Split, etc.) for flags changed near the incident start time.
 
-### Enrich with Vendor-Specific Data
+### Enrich with vendor-specific data
 
 **Scenario:** You use a vendor-specific tool (e.g., proprietary observability platform, custom CMDB) with no native Harness integration.
 
@@ -384,11 +394,11 @@ Check which pipelines ran and their outputs:
 
 ---
 
-## Early Access Limitations
+## Early Access limitations
 
 The current Early Access release supports the core end-to-end flow but has these limitations:
 
-### What Works Today
+### What works today
 
 ✅ Pipeline execution on incident creation  
 ✅ Input/output contracts for investigation data  
@@ -398,113 +408,83 @@ The current Early Access release supports the core end-to-end flow but has these
 
 ### Coming in Q2 2026
 
-⏳ **UI Pipeline Builder**: Visual editor for building agent pipelines without YAML  
-⏳ **Pipeline Marketplace**: Pre-built pipelines for common integrations (AWS, GCP, Datadog, custom APIs)  
-⏳ **Enhanced Error Handling**: Retry logic, timeout configuration, partial result handling  
-⏳ **Result Deduplication**: Automatic deduplication when multiple pipelines return similar theories  
-⏳ **Confidence Score Calibration**: UI tools for tuning confidence score weights  
+⏳ **UI pipeline builder:** Visual editor for building agent pipelines without YAML  
+⏳ **Pipeline marketplace:** Pre-built pipelines for common integrations (AWS, GCP, Datadog, custom APIs)  
+⏳ **Enhanced error handling:** Retry logic, timeout configuration, partial result handling  
+⏳ **Result deduplication:** Automatic deduplication when multiple pipelines return similar theories  
+⏳ **Confidence score calibration:** UI tools for tuning confidence score weights  
 
 ### Workarounds for Early Access
 
-- **No UI builder**: Write pipelines in YAML or use Harness Pipeline Studio
-- **No marketplace**: Copy example pipelines from this documentation and adapt to your infrastructure
-- **Limited error handling**: Implement retry logic and timeouts in pipeline stages manually
-- **Manual deduplication**: Design pipelines to avoid overlapping investigation scopes
+- **No UI builder:** Write pipelines in YAML or use Harness Pipeline Studio
+- **No marketplace:** Copy example pipelines from this documentation and adapt to your infrastructure
+- **Limited error handling:** Implement retry logic and timeouts in pipeline stages manually
+- **Manual deduplication:** Design pipelines to avoid overlapping investigation scopes
 
 ---
 
-## Best Practices
+## Best practices
 
-### For Pipeline Design
+### For pipeline design
 
-- **Keep pipelines focused**: One pipeline per investigation type (e.g., separate pipelines for deployments vs. feature flags)
-- **Set timeouts**: Configure stage-level timeouts to prevent hanging investigations (recommend 5-10 minutes)
-- **Use secrets management**: Store API tokens and credentials in Harness Secrets, never hardcode
-- **Log extensively**: Output detailed logs in Shell Script steps for troubleshooting
-- **Test before production**: Run pipelines manually on test incidents before enabling automatic triggers
+- **Keep pipelines focused:** One pipeline per investigation type (e.g., separate pipelines for deployments vs. feature flags)
+- **Set timeouts:** Configure stage-level timeouts to prevent hanging investigations (recommend 5-10 minutes)
+- **Use secrets management:** Store API tokens and credentials in Harness Secrets, never hardcode
+- **Log extensively:** Output detailed logs in Shell Script steps for troubleshooting
+- **Test before production:** Run pipelines manually on test incidents before enabling automatic triggers
 
-### For Investigation Quality
+### For investigation quality
 
-- **Include evidence**: Provide specific data points (timestamps, metric values, deployment IDs) in theory evidence
-- **Calculate confidence accurately**: Higher confidence for stronger correlations (e.g., deployment 2 minutes before incident start = high confidence)
-- **Avoid false positives**: Filter out unrelated changes (e.g., changes to unaffected services)
-- **Surface actionable insights**: Theory descriptions should guide responders toward next steps
+- **Include evidence:** Provide specific data points (timestamps, metric values, deployment IDs) in theory evidence
+- **Calculate confidence accurately:** Higher confidence for stronger correlations (e.g., deployment 2 minutes before incident start = high confidence)
+- **Avoid false positives:** Filter out unrelated changes (e.g., changes to unaffected services)
+- **Surface actionable insights:** Theory descriptions should guide responders toward next steps
 
-### For Performance
+### For performance
 
-- **Parallelize data fetching**: Use parallel stages to query multiple data sources simultaneously
-- **Cache frequently accessed data**: Store static data (service topology, configuration) in pipeline variables
-- **Limit lookback windows**: Query only relevant time ranges (e.g., 30 minutes before incident start)
-- **Paginate large result sets**: Fetch only the most recent N records to avoid overwhelming the RCA Change Agent theories panel
+- **Parallelize data fetching:** Use parallel stages to query multiple data sources simultaneously
+- **Cache frequently accessed data:** Store static data (service topology, configuration) in pipeline variables
+- **Limit lookback windows:** Query only relevant time ranges (e.g., 30 minutes before incident start)
+- **Paginate large result sets:** Fetch only the most recent N records to avoid overwhelming the RCA Change Agent theories panel
 
 ---
 
 ## Troubleshooting
 
-<details>
-<summary><strong>Pipeline executes but no results appear in RCA Change Agent theories panel</strong></summary>
+<Troubleshoot
+  issue="Investigator agent pipeline executes but no results appear in the RCA Change Agent theories panel"
+  mode="docs"
+  fallback="Check pipeline execution logs for errors, verify the output JSON matches the output contract structure, ensure at least one theory is returned in the theories array, and check the incident's Activity tab for pipeline execution events."
+/>
 
-**Possible causes:**
-- Output JSON does not match the expected contract
-- Pipeline completed with errors
-- Results were empty (no theories generated)
+<Troubleshoot
+  issue="Investigator agent pipeline fails with authentication errors when calling external APIs"
+  mode="general"
+  fallback="Verify the secret exists in Harness Secrets, check the secret reference syntax <+secrets.getValue('secret_name')>, test API authentication outside the pipeline using cURL, and rotate the API token if it is expired."
+/>
 
-**Resolution:**
-1. Check pipeline execution logs for errors
-2. Verify the output JSON matches the structure in the Output Contract section
-3. Ensure at least one theory is returned in the `theories` array
-4. Check the incident's Activity tab for pipeline execution events
-
-</details>
-
-<details>
-<summary><strong>Pipeline fails with authentication errors</strong></summary>
-
-**Possible causes:**
-- API token or secret is expired or incorrect
-- Secret reference syntax is wrong
-- Insufficient permissions on the external API
-
-**Resolution:**
-1. Verify the secret exists in Harness Secrets
-2. Check the secret reference syntax: `<+secrets.getValue("secret_name")>`
-3. Test API authentication outside the pipeline (e.g., using cURL)
-4. Rotate the API token if expired
-
-</details>
-
-<details>
-<summary><strong>Pipeline times out or takes too long</strong></summary>
-
-**Possible causes:**
-- External API is slow or unresponsive
-- Query result set is too large
-- Missing stage-level timeout configuration
-
-**Resolution:**
-1. Set stage-level timeouts (recommend 5-10 minutes)
-2. Optimize queries to fetch only necessary data
-3. Implement pagination for large result sets
-4. Consider caching frequently accessed data
-
-</details>
+<Troubleshoot
+  issue="Investigator agent pipeline times out or takes too long to complete"
+  mode="general"
+  fallback="Set stage-level timeouts (5-10 minutes), optimize queries to fetch only necessary data, implement pagination for large result sets, and cache frequently accessed data."
+/>
 
 ---
 
-## Next Steps
+## Next steps
 
-- Go to [Use RCA Change Agent](/docs/ai-sre/ai-agent/rca-change-agent) to learn about the built-in investigation capabilities.
-- Go to [Use AI Scribe Agent](/docs/ai-sre/ai-agent) to understand how the AI Scribe captures incident context used by agent pipelines.
-- Go to [Create Runbooks](/docs/ai-sre/runbooks/create-runbook) to automate response actions based on investigation findings.
+- [Use RCA Change Agent](/docs/ai-sre/ai-agent/rca-change-agent): Understand the built-in investigation capabilities.
+- [Use AI Scribe Agent](/docs/ai-sre/ai-agent): Understand how the AI Scribe captures the incident context used by agent pipelines.
+- [Create Runbooks](/docs/ai-sre/runbooks/create-runbook): Automate response actions based on investigation findings.
 
 ---
 
-## Feedback and Support
+## Feedback and support
 
 Investigator Agent Pipelines are in Early Access. Share feedback or request features:
 
-- **Email**: [ai-sre-support@harness.io](mailto:ai-sre-support@harness.io)
-- **Slack**: `#ai-sre-early-access` (Harness Community Slack)
-- **GitHub**: [harness/developer-hub](https://github.com/anthropics/claude-code/issues) (file feature requests)
+- **Email:** [ai-sre-support@harness.io](mailto:ai-sre-support@harness.io)
+- **Slack:** `#ai-sre-early-access` (Harness Community Slack)
+- **GitHub:** [harness/developer-hub](https://github.com/harness/developer-hub/issues) (file feature requests)
 
 Contact your Harness representative to enable this feature for your organization.

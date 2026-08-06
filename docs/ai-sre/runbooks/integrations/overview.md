@@ -3,6 +3,14 @@ title: Runbook Integrations Overview
 description: Configure third-party integrations for runbook actions.
 sidebar_label: Overview
 sidebar_position: 1
+keywords:
+  - runbooks
+  - integrations
+  - connectors
+  - third-party tools
+tags:
+  - ai-sre
+  - runbooks
 redirect_from:
 - /docs/incident-response/runbooks/configure-project-connectors
 - /docs/ai-sre/runbooks/configure-project-connectors
@@ -10,33 +18,31 @@ redirect_from:
 - /docs/ai-sre/runbooks/integrations/configure-authentication
 ---
 
-# Runbook Integrations Overview
-
 Harness AI SRE runbooks can integrate with third-party tools to automate incident response workflows.
 
 Most integrations on this page provide **automation**: they let a runbook act on an external tool during a response. The exception is xMatters, which is on-call schedule sync only and runs no runbook actions. Several of these tools also ingest data elsewhere in AI SRE. Go to [Set Up Integration Management](/docs/ai-sre/integrations) to review the full capability matrix.
 
-## Available Integrations
+## Available integrations
 
-### Collaboration Tools
-- [Slack](/docs/ai-sre/runbooks/integrations/collaboration/slack) - Send messages, create channels, manage incident communication
-- [Microsoft Teams](/docs/ai-sre/runbooks/integrations/collaboration/teams) - Post messages, create teams, coordinate response
-- [Google Chat](/docs/ai-sre/runbooks/integrations/collaboration/google-chat) - Send messages to spaces and threads
-- [Zoom](/docs/ai-sre/runbooks/integrations/collaboration/zoom) - Create meetings, generate conference bridges
+### Collaboration tools
+- [Slack](/docs/ai-sre/runbooks/integrations/collaboration/slack): Send messages, create channels, manage incident communication
+- [Microsoft Teams](/docs/ai-sre/runbooks/integrations/collaboration/teams): Post messages, create teams, coordinate response
+- [Google Chat](/docs/ai-sre/runbooks/integrations/collaboration/google-chat): Send messages to spaces and threads
+- [Zoom](/docs/ai-sre/runbooks/integrations/collaboration/zoom): Create meetings, generate conference bridges
 
-### Incident Management & On-Call
-- [PagerDuty](/docs/ai-sre/runbooks/integrations/incident-management/pagerduty) - Create incidents, trigger escalations, manage on-call
-- [OpsGenie](/docs/ai-sre/runbooks/integrations/incident-management/opsgenie) - Create alerts, page teams, acknowledge incidents
-- [xMatters](/docs/ai-sre/runbooks/integrations/incident-management/xmatters) - On-call synchronization only (no runbook actions)
+### Incident management & on-call
+- [PagerDuty](/docs/ai-sre/runbooks/integrations/incident-management/pagerduty): Create incidents, trigger escalations, manage on-call
+- [OpsGenie](/docs/ai-sre/runbooks/integrations/incident-management/opsgenie): Create alerts, page teams, acknowledge incidents
+- [xMatters](/docs/ai-sre/runbooks/integrations/incident-management/xmatters): On-call synchronization only (no runbook actions)
 
-### Ticketing & Documentation
-- [Jira](/docs/ai-sre/runbooks/integrations/ticketing/jira) - Create issues, add comments, track incident work
-- [ServiceNow](/docs/ai-sre/runbooks/integrations/ticketing/servicenow) - Create incidents, update records, manage ITSM workflows
-- [Confluence](/docs/ai-sre/runbooks/integrations/ticketing/confluence) - Create pages, update documentation, maintain knowledge base
+### Ticketing & documentation
+- [Jira](/docs/ai-sre/runbooks/integrations/ticketing/jira): Create issues, add comments, track incident work
+- [ServiceNow](/docs/ai-sre/runbooks/integrations/ticketing/servicenow): Create incidents, update records, manage ITSM workflows
+- [Confluence](/docs/ai-sre/runbooks/integrations/ticketing/confluence): Create pages, update documentation, maintain knowledge base
 
-### Source Control
-- [GitHub](/docs/ai-sre/runbooks/integrations/source-control/github) - Create branches, pull requests, issues
-- [Harness Pipelines](/docs/ai-sre/runbooks/integrations/source-control/harness-pipelines) - Trigger deployment pipelines, execute automation
+### Source control
+- [GitHub](/docs/ai-sre/runbooks/integrations/source-control/github): Create branches, pull requests, issues
+- [Harness Pipelines](/docs/ai-sre/runbooks/integrations/source-control/harness-pipelines): Trigger deployment pipelines, execute automation
 
 These connectors ensure that actions performed by your runbooks are properly attributed to specific service accounts.
 
@@ -46,7 +52,7 @@ Project-level connectors provide better accountability and access control compar
 
 ---
 
-## Why Project Connectors?
+## Why project connectors?
 
 When executing runbook actions that interact with external tools (Zoom, GitHub, Jira), Harness AI SRE needs to authenticate as a specific user or service account. Project connectors ensure:
 
@@ -57,20 +63,20 @@ When executing runbook actions that interact with external tools (Zoom, GitHub, 
 
 ---
 
-## Accessing Project Connectors
+## Accessing project connectors
 
 To configure project connectors:
 
 1. Sign in to your Harness account
 2. Go to your project
-3. Go to **Project Settings** → **Third-Party Integrations (AI SRE)**
+3. Go to **Project Settings**, then **Third-Party Integrations (AI SRE)**
 4. Select the integration type you want to configure
 
 ---
 
-## Configuring Project Connectors
+## Configuring project connectors
 
-### Best Practices
+### Best practices
 
 When setting up project connectors:
 
@@ -78,18 +84,18 @@ When setting up project connectors:
 2. Use project-specific service accounts rather than shared accounts
 3. Document the purpose and ownership of each connector
 
-### Selecting or Creating Connectors
+### Selecting or creating connectors
 
-In **Project Settings** → **Third-Party Integrations (AI SRE)**, you can either:
+In **Project Settings**, then **Third-Party Integrations (AI SRE)**, you can either:
 
 * Select an existing connector from the list if one is already configured with appropriate permissions
 * Create a new connector if you need a dedicated service account for your project's runbook actions
 
-### Creating New Connectors
+### Creating new connectors
 
 Only follow these steps if you need to create a new connector. If an appropriate connector already exists, you can select it from the list.
 
-#### Zoom Connector
+#### Zoom connector
 
 If you need a new Zoom connector:
 
@@ -101,7 +107,7 @@ If you need a new Zoom connector:
 3. Test the connection
 4. Save the configuration
 
-#### GitHub Connector
+#### GitHub connector
 
 If you need a new GitHub connector:
 
@@ -113,7 +119,7 @@ If you need a new GitHub connector:
 3. Test the connection
 4. Save the configuration
 
-#### Jira Connector
+#### Jira connector
 
 If you need a new Jira connector:
 
@@ -127,7 +133,7 @@ If you need a new Jira connector:
 
 ---
 
-## Using Project Connectors in Runbooks
+## Using project connectors in runbooks
 
 When creating runbook actions:
 
@@ -141,8 +147,8 @@ Always test runbook actions in a non-production environment to verify proper aut
 
 ---
 
-## Next Steps
+## Next steps
 
-* [Create a Runbook](../create-runbook.md) to start using these integrations.
-* [Jira Integration](./ticketing/jira.md) for detailed Jira configuration.
-* [Slack Integration](./collaboration/slack.md) for detailed Slack configuration.
+* [Create a runbook](/docs/ai-sre/runbooks/create-runbook): Start using these integrations.
+* [Jira integration](/docs/ai-sre/runbooks/integrations/ticketing/jira): Configure Jira in detail.
+* [Slack integration](/docs/ai-sre/runbooks/integrations/collaboration/slack): Configure Slack in detail.

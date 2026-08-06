@@ -9,14 +9,13 @@ keywords:
   - route alerts
   - conditions
 tags:
+  - ai-sre
   - expressions
   - alerts
 ---
 
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 import NeedHelpFooter from '../../_snippets/need-help-footer.mdx';
-
-# Use CEL Expressions to Route Alerts
 
 CEL (Common Expression Language) expressions provide advanced conditional logic for alert rule conditions beyond simple field comparisons.
 

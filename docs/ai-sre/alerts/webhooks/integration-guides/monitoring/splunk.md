@@ -3,21 +3,30 @@ title: Splunk Integration Guide
 description: Send alerts through webhooks.
 sidebar_label: Splunk
 sidebar_position: 8
+keywords:
+  - splunk
+  - webhook
+  - integration
+  - ai sre
+  - alerts
+tags:
+  - ai-sre
+  - webhooks
+  - splunk
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
-# Configure Splunk to Send Webhooks
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
 Configure Splunk alerts to send webhook notifications to Harness AI SRE when searches detect issues.
 
 ## Before you begin
 
-- **Harness webhook endpoint**: Create a webhook in Harness AI SRE. Go to [Create a Webhook](../../create-webhook.md) for setup instructions (Splunk uses a custom webhook configuration).
-- **Splunk permissions**: Access to create and modify alerts and webhook alert actions.
-- **Webhook URL**: Copy the webhook URL from your Harness webhook configuration.
-- **Splunk webhook documentation**: Go to [Use a Webhook Alert Action](https://help.splunk.com/en/splunk-enterprise/alert-and-respond/alerting-manual/latest/configure-alert-actions/use-a-webhook-alert-action) to understand webhook alert action configuration.
+- **Harness webhook endpoint:** Create a webhook in Harness AI SRE. Go to [Create a Webhook](/docs/ai-sre/alerts/webhooks/create-webhook) to set up the custom webhook configuration that Splunk uses.
+- **Splunk permissions:** Access to create and modify alerts and webhook alert actions.
+- **Webhook URL:** Copy the webhook URL from your Harness webhook configuration.
+- **Splunk webhook documentation:** Go to [Use a Webhook Alert Action](https://help.splunk.com/en/splunk-enterprise/alert-and-respond/alerting-manual/latest/configure-alert-actions/use-a-webhook-alert-action) to understand webhook alert action configuration.
 
 ---
 
@@ -28,17 +37,17 @@ Configure Splunk alerts to send webhook notifications to Harness AI SRE when sea
 <Tabs>
 <TabItem value="enterprise" label="Splunk Enterprise" default>
 
-1. Navigate to **Settings** → **Alert Actions**
-2. Click **Create New Alert Action**
-3. Select **Webhook**
+1. Navigate to **Settings**, then select **Alert Actions**.
+2. Click **Create New Alert Action**.
+3. Select **Webhook**.
 
 </TabItem>
 <TabItem value="cloud" label="Splunk Cloud">
 
 Splunk Cloud requires using the **Webhook Alert Action** app or configuring via REST API.
 
-1. Install the **Webhook Alert Action** app from Splunkbase
-2. Navigate to **Apps** → **Webhook Alert Action** → **Configuration**
+1. Install the **Webhook Alert Action** app from Splunkbase.
+2. Navigate to **Apps**, select **Webhook Alert Action**, then select **Configuration**.
 
 </TabItem>
 </Tabs>
@@ -47,7 +56,7 @@ Splunk Cloud requires using the **Webhook Alert Action** app or configuring via 
 
 Configure this field:
 
-- **URL**: Your Harness webhook URL
+- **URL:** Your Harness webhook URL.
   ```
   https://<your-harness-instance>/gateway/ai-sre/api/webhooks/<webhook-id>
   ```
@@ -74,12 +83,12 @@ The webhook alert action sends a fixed JSON payload. Splunk does not support tok
 }
 ```
 
-- **`result`**: The first result row of the triggered search, with keys matching the fields in your search results.
-- **`sid`**: The search ID (SID) of the triggered saved search.
-- **`results_link`**: A URL to the search results in Splunk.
-- **`search_name`**: The name of the saved search, or `null` if the search was not saved.
-- **`owner`**: The owner of the saved search.
-- **`app`**: The Splunk app context the search ran in.
+- **`result`:** The first result row of the triggered search, with keys matching the fields in your search results.
+- **`sid`:** The search ID (SID) of the triggered saved search.
+- **`results_link`:** A URL to the search results in Splunk.
+- **`search_name`:** The name of the saved search, or `null` if the search was not saved.
+- **`owner`:** The owner of the saved search.
+- **`app`:** The Splunk app context the search ran in.
 
 ---
 
@@ -87,41 +96,41 @@ The webhook alert action sends a fixed JSON payload. Splunk does not support tok
 
 ### Create or edit saved search
 
-1. Run your search query in Splunk
-2. Click **Save As** → **Alert**
+1. Run your search query in Splunk.
+2. Click **Save As**, then select **Alert**.
 
 ### Configure alert settings
 
 <Tabs>
 <TabItem value="realtime" label="Real-time" default>
 
-**Alert Type**: Real-time
+**Alert Type:** Real-time
 
-**Trigger Condition**: Per-result (trigger for each result)
+**Trigger Condition:** Per-result (trigger for each result)
 
-**Throttle**: 5 minutes
+**Throttle:** 5 minutes
 
-**Use case**: Immediate response to critical events
+**Use case:** Immediate response to critical events
 
 </TabItem>
 <TabItem value="scheduled" label="Scheduled">
 
-**Alert Type**: Scheduled
+**Alert Type:** Scheduled
 
-**Cron Expression**: `0 * * * *` (hourly)
+**Cron Expression:** `0 * * * *` (hourly)
 
-**Trigger Condition**: Number of results > 0
+**Trigger Condition:** Number of results > 0
 
-**Use case**: Periodic summary reports or batch analysis
+**Use case:** Periodic summary reports or batch analysis
 
 </TabItem>
 </Tabs>
 
 ### Add webhook trigger action
 
-1. In **Trigger Actions**, select **Add Actions** → **Webhook**
-2. Select the webhook alert action you created for Harness AI SRE
-3. Configure action-specific parameters
+1. In **Trigger Actions**, select **Add Actions**, then select **Webhook**.
+2. Select the webhook alert action you created for Harness AI SRE.
+3. Configure action-specific parameters.
 
 ### Save the alert
 
@@ -187,25 +196,25 @@ Because the payload does not include a severity or trigger-time field, derive se
 
 ### Test from Splunk
 
-1. Open the saved search configured with the webhook
-2. Click **Run**
-3. Wait for the alert to trigger (or manually trigger if conditions are met)
+1. Open the saved search configured with the webhook.
+2. Click **Run**.
+3. Wait for the alert to trigger, or manually trigger it if conditions are met.
 
 ### Verify in Splunk
 
-1. Navigate to **Activity** → **Triggered Alerts**
-2. Find your alert and verify webhook action executed successfully
-3. Check for HTTP response code (200 = success)
+1. Navigate to **Activity**, then select **Triggered Alerts**.
+2. Find your alert and verify the webhook action executed successfully.
+3. Check for HTTP response code (200 = success).
 
 ### Verify in Harness
 
-1. Navigate to **Alerts** in Harness AI SRE
-2. Check that the alert appears
+1. Navigate to **Alerts** in Harness AI SRE.
+2. Check that the alert appears.
 3. Verify field mapping:
-   - Alert title matches expected format
-   - Message includes search results
-   - Tags are populated correctly
-   - Link navigates to Splunk search results
+   - Alert title matches expected format.
+   - Message includes search results.
+   - Tags are populated correctly.
+   - Link navigates to Splunk search results.
 
 ---
 
@@ -309,64 +318,35 @@ severity: "critical"
 
 ## Troubleshooting
 
-### Webhook action not triggering
+<Troubleshoot
+  issue="Splunk webhook alert action is not triggering for a Harness AI SRE integration"
+  mode="docs"
+  fallback="Verify the alert trigger condition is met in Activity, then Triggered Alerts, ensure the webhook action is selected in the alert's Trigger Actions, check the Splunk _internal index for webhook errors, and test the alert manually by clicking Run on the saved search."
+/>
 
-**Cause**: Splunk alert not firing or webhook action not configured.
+<Troubleshoot
+  issue="Splunk webhook returns HTTP errors when sending to a Harness AI SRE webhook"
+  mode="docs"
+  fallback="Verify the webhook URL is correct with no typos in the webhook ID, confirm the payload is valid JSON, review the Splunk Alert Action History for error messages, ensure the Harness webhook is enabled, and test the webhook manually with curl."
+/>
 
-**Solution**:
-- Verify alert trigger condition is met (check **Activity** → **Triggered Alerts**)
-- Ensure webhook action is selected in alert's **Trigger Actions**
-- Check Splunk `_internal` index for webhook errors:
-  ```spl
-  index=_internal source=*scheduler* "webhook"
-  ```
-- Test alert manually by clicking **Run** on the saved search
+<Troubleshoot
+  issue="Splunk payload field mapping is not matching correctly in Harness AI SRE"
+  mode="docs"
+  fallback="Ensure field names match the payload keys exactly (result, sid, results_link, search_name, owner, app) because they are case-sensitive, remember that fields inside result mirror your search's output columns, and review Harness webhook logs to see the actual received payload."
+/>
 
-### HTTP errors from Harness
+<Troubleshoot
+  issue="Large Splunk first-result values cause timeouts in a Harness AI SRE webhook"
+  mode="docs"
+  fallback="Narrow your Splunk search to return only the fields you need before the alert triggers, and increase the Harness webhook timeout if needed."
+/>
 
-**Cause**: Invalid webhook URL or payload format.
-
-**Solution**:
-- Verify webhook URL is correct (no typos in webhook ID)
-- Check payload is valid JSON (test with JSON validator)
-- Review Splunk **Alert Action History** for error messages
-- Ensure Harness webhook is enabled
-- Test webhook manually:
-
-```bash
-curl -X POST \
-  -H "Content-Type: application/json" \
-  -d '{"search_name": "Test", "app": "search", "owner": "admin", "sid": "test-sid", "results_link": "https://splunk.example.com", "result": {}}' \
-  https://your-harness-instance/gateway/ai-sre/api/webhooks/<webhook-id>
-```
-
-### Field mapping not matching correctly
-
-**Cause**: Field names in your Harness field mapping do not match the actual payload keys (`result`, `sid`, `results_link`, `search_name`, `owner`, `app`).
-
-**Solution**:
-- Ensure field names match exactly (case-sensitive)
-- Remember that fields inside `result` mirror your search's output columns, not a fixed set of names
-- Review Harness webhook logs to see the actual received payload
-
-### Large first-result values causing timeouts
-
-**Cause**: The `result` object includes a large number of fields or large field values from the first row of the search.
-
-**Solution**:
-- Narrow your search to return only the fields you need before the alert triggers:
-  ```spl
-  index=prod error | stats count by host, error_type
-  ```
-- Increase the Harness webhook timeout if needed
-
-### Missing search_name in payload
-
-**Cause**: `search_name` is `null` when the search that triggered the webhook was not a saved search.
-
-**Solution**:
-- Save the search as an alert before attaching the webhook trigger action
-- Handle `null` values for `search_name` in your Harness field mapping
+<Troubleshoot
+  issue="search_name is missing or null in the Splunk webhook payload sent to Harness AI SRE"
+  mode="docs"
+  fallback="search_name is null when the triggering search was not saved. Save the search as an alert before attaching the webhook trigger action, and handle null values for search_name in your Harness field mapping."
+/>
 
 ---
 
@@ -448,14 +428,14 @@ custom_fields:
 
 ## Next steps
 
-- Go to [Route Alerts](../../../alert-rules/overview.md) to route and deduplicate Splunk alerts.
-- Go to [Use CEL in Webhooks](../../use-cel-webhooks.md) to add advanced filtering and transformation logic.
-- Go to [AI Agent](../../../../ai-agent/ai-agent.md) to enable automated log analysis and correlation.
+- Go to [Route Alerts](/docs/ai-sre/alerts/alert-rules/overview) to route and deduplicate Splunk alerts.
+- Go to [Use CEL in Webhooks](/docs/ai-sre/alerts/webhooks/use-cel-webhooks) to add advanced filtering and transformation logic.
+- Go to [AI Agent](/docs/ai-sre/ai-agent) to enable automated log analysis and correlation.
 
 ---
 
 ## Further reading
 
-### Splunk Official Documentation
-- [Use a Webhook Alert Action](https://help.splunk.com/en/splunk-enterprise/alert-and-respond/alerting-manual/latest/configure-alert-actions/use-a-webhook-alert-action) - Complete guide to webhook alert action configuration and the fixed payload format
-- [Webhook Alert Action App](https://splunkbase.splunk.com/app/4334/) - Splunk Cloud webhook configuration and installation
+### Splunk official documentation
+- Go to [Use a Webhook Alert Action](https://help.splunk.com/en/splunk-enterprise/alert-and-respond/alerting-manual/latest/configure-alert-actions/use-a-webhook-alert-action) to configure the webhook alert action and understand the fixed payload format.
+- Go to [Webhook Alert Action App](https://splunkbase.splunk.com/app/4334/) to configure and install the Splunk Cloud webhook.

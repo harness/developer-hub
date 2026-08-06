@@ -9,17 +9,16 @@ keywords:
   - webhooks
   - field mapping
 tags:
+  - ai-sre
   - templates
   - webhooks
 ---
 
 import NeedHelpFooter from '../../_snippets/need-help-footer.mdx';
 
-# Use Mustache Templates in Webhooks
-
 Use Mustache templates to map webhook payload fields to alert fields in Harness AI SRE.
 
-## When to Use Mustache in Webhooks
+## When to use Mustache in webhooks
 
 Mustache templates are used for **field mapping** (populating alert field values) after a webhook is accepted. This is different from CEL expressions, which are used for **filtering** (deciding whether to create an alert).
 
@@ -37,11 +36,11 @@ Mustache templates are used for **field mapping** (populating alert field values
 
 ---
 
-## Field Mapping with Mustache
+## Field mapping with Mustache
 
 After parsing your webhook payload in the visual builder, reference fields using Mustache templates:
 
-### Basic Field Mapping
+### Basic field mapping
 
 ```yaml
 # Map webhook fields to alert fields
@@ -52,7 +51,7 @@ service: "{{webhook.service}}"
 environment: "{{webhook.environment}}"
 ```
 
-### Nested Field Access
+### Nested field access
 
 ```yaml
 # Access nested JSON fields
@@ -61,7 +60,7 @@ service: "{{webhook.metadata.service}}"
 region: "{{webhook.location.region}}"
 ```
 
-### Example: Datadog Webhook Mapping
+### Example: Datadog webhook mapping
 
 ```yaml
 title: "{{webhook.title}}"
@@ -71,7 +70,7 @@ service: "{{webhook.tags[0]}}"
 priority: "{{webhook.alert_priority}}"
 ```
 
-### Example: Custom Application Webhook
+### Example: custom application webhook
 
 ```yaml
 title: "Alert from {{webhook.source}}"
@@ -83,9 +82,9 @@ environment: "{{webhook.env}}"
 
 ---
 
-## Best Practices
+## Best practices
 
-### 1. Use Descriptive Field Names
+### 1. Use descriptive field names
 
 ```yaml
 # ✅ Clear mapping
@@ -97,18 +96,18 @@ title: "{{webhook.t}}"
 service: "{{webhook.s}}"
 ```
 
-### 2. Provide Fallback Values
+### 2. Provide fallback values
 
 If your webhook payload might not always include certain fields, test with sample payloads to ensure the mapping works correctly.
 
-### 3. Map All Required Fields
+### 3. Map all required fields
 
 Ensure you map all required alert fields from your webhook payload:
-- **title** - Alert title
-- **severity** - Alert severity level
-- **service** - Affected service (if applicable)
+- **title:** Alert title.
+- **severity:** Alert severity level.
+- **service:** Affected service (if applicable).
 
-### 4. Test Your Mappings
+### 4. Test your mappings
 
 1. Send a test webhook payload
 2. Verify alert fields are populated correctly
@@ -117,7 +116,7 @@ Ensure you map all required alert fields from your webhook payload:
 
 ---
 
-## Combined with CEL Filtering
+## Combined with CEL filtering
 
 You can use CEL for filtering and Mustache for mapping in the same webhook:
 
@@ -135,9 +134,9 @@ severity: "{{webhook.severity}}"
 
 ---
 
-## Common Patterns
+## Common patterns
 
-### Pattern 1: Monitor Tool Integration
+### Pattern 1: monitoring tool integration
 
 ```yaml
 # Generic monitoring tool mapping
@@ -148,7 +147,7 @@ service: "{{webhook.service_name}}"
 source: "{{webhook.source_system}}"
 ```
 
-### Pattern 2: Application Error Tracking
+### Pattern 2: application error tracking
 
 ```yaml
 # Application error webhook
@@ -159,7 +158,7 @@ service: "{{webhook.app_name}}"
 environment: "{{webhook.deployment_env}}"
 ```
 
-### Pattern 3: Infrastructure Monitoring
+### Pattern 3: infrastructure monitoring
 
 ```yaml
 # Infrastructure alert
@@ -172,11 +171,11 @@ region: "{{webhook.region}}"
 
 ---
 
-## Complete Payload and Mapping Examples
+## Complete payload and mapping examples
 
-### Example 1: Generic Alert Format
+### Example 1: generic alert format
 
-**Incoming webhook payload**:
+**Incoming webhook payload:**
 ```json
 {
   "alert": {
@@ -197,7 +196,7 @@ region: "{{webhook.region}}"
 }
 ```
 
-**Field mapping**:
+**Field mapping:**
 ```yaml
 title: "{{webhook.alert.name}}"
 description: "{{webhook.alert.message}}"
@@ -206,11 +205,11 @@ service: "{{webhook.metadata.service}}"
 environment: "{{webhook.metadata.environment}}"
 ```
 
-**Result**: Creates alert with title "High CPU Usage", description "CPU usage above 90%", severity "critical", service "payment-api", environment "production".
+**Result:** Creates an alert with title "High CPU Usage", description "CPU usage above 90%", severity "critical", service "payment-api", environment "production".
 
-### Example 2: Monitoring System Format
+### Example 2: monitoring system format
 
-**Incoming webhook payload**:
+**Incoming webhook payload:**
 ```json
 {
   "monitor": {
@@ -231,7 +230,7 @@ environment: "{{webhook.metadata.environment}}"
 }
 ```
 
-**Field mapping**:
+**Field mapping:**
 ```yaml
 title: "{{webhook.resource.type}} {{webhook.resource.name}} alert"
 description: "Monitor {{webhook.monitor.id}}: {{webhook.resource.type}} exceeded threshold"
@@ -240,11 +239,11 @@ service: "{{webhook.resource.name}}"
 environment: "{{webhook.resource.namespace}}"
 ```
 
-**Result**: Creates alert with title "kubernetes_pod payments-prod-api alert", service "payments-prod-api", environment "production", severity "P1".
+**Result:** Creates an alert with title "kubernetes_pod payments-prod-api alert", service "payments-prod-api", environment "production", severity "P1".
 
-### Example 3: Custom Application Format
+### Example 3: custom application format
 
-**Incoming webhook payload**:
+**Incoming webhook payload:**
 ```json
 {
   "application": "order-service",
@@ -261,7 +260,7 @@ environment: "{{webhook.resource.namespace}}"
 }
 ```
 
-**Field mapping**:
+**Field mapping:**
 ```yaml
 title: "{{webhook.alert_type}} error in {{webhook.application}}"
 description: "{{webhook.details.error}} - Impact: {{webhook.details.impact}}"
@@ -270,7 +269,7 @@ service: "{{webhook.application}}"
 environment: "{{webhook.context.datacenter}}"
 ```
 
-**Result**: Creates alert with title "business_logic error in order-service", description "Database connection timeout - Impact: Order processing delayed", service "order-service".
+**Result:** Creates an alert with title "business_logic error in order-service", description "Database connection timeout - Impact: Order processing delayed", service "order-service".
 
 ---
 

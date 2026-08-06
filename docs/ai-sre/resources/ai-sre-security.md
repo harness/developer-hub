@@ -3,6 +3,15 @@ title: AI SRE Security
 description: How AI SRE protects your data and controls access.
 sidebar_position: 90
 sidebar_label: Security
+keywords:
+  - security
+  - RBAC
+  - encryption
+  - audit
+  - compliance
+tags:
+  - ai-sre
+  - security
 redirect_from:
 - /docs/incident-response/resources/ai-sre-security
 ---
@@ -10,7 +19,7 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Harness AI SRE includes security measures to protect incident data, ensuring confidentiality, integrity, and availability. It integrates with the Harness Platform's security features, including authentication, role-based access control (RBAC), audit trails, and secret management. 
+Harness AI SRE includes security measures to protect incident data, ensuring confidentiality, integrity, and availability. It integrates with the Harness Platform's security features, including authentication, role-based access control (RBAC), audit trails, and secret management.
 
 Security measures include:
 
@@ -19,18 +28,18 @@ Security measures include:
 - Secure API authentication for third-party integrations
 - Audit logging for compliance tracking
 
-## Security Measures
+## Security measures
 
 Harness AI SRE ensures incident security by restricting access, encrypting data, and logging all activities.
 
-- **Access Management**: Supports authentication via SAML, OAuth, and API tokens.
-- **Data Protection**: Encrypts incident metadata, logs, and communication history.
-- **Automation & Runbook Security**: Ensures that only authorized users execute automated actions.
-- **Audit & Compliance**: Logs every action for tracking and compliance reviews.
+- **Access management:** Supports authentication via SAML, OAuth, and API tokens.
+- **Data protection:** Encrypts incident metadata, logs, and communication history.
+- **Automation and runbook security:** Ensures that only authorized users execute automated actions.
+- **Audit and compliance:** Logs every action for tracking and compliance reviews.
 
 ---
 
-## Role-Based Access Control (RBAC)
+## Role-based access control (RBAC)
 
 AI SRE uses the Harness Platform's RBAC system. Roles are configured under **Organization**, **Account**, or **Project** settings → **Roles**.
 
@@ -38,7 +47,7 @@ AI SRE uses the Harness Platform's RBAC system. Roles are configured under **Org
 AI SRE runs under its own dedicated Harness project. Apply roles at the **Project** level unless your organization requires broader account- or org-level access.
 :::
 
-### AI SRE Permissions
+### AI SRE permissions
 
 This section explains every permission available under the AI SRE resource group in Harness role-based access control (RBAC). Each permission describes what a person with that permission is allowed to do, and what they cannot do without it.
 
@@ -48,7 +57,7 @@ Permissions are grouped by resource type (the kind of thing being protected, e.g
 Granting an action is additive. For example, giving someone Edit on Schedules lets them change existing schedules, but they still cannot see those schedules unless they also have View, nor create new ones without Create. View is the foundation; most other actions are only useful alongside it.
 :::
 
-#### Escalation Policy
+#### Escalation policy
 
 Escalation policies define who gets notified, and in what order, when an incident or alert needs attention and the first responder does not acknowledge it.
 
@@ -60,7 +69,7 @@ All authenticated users automatically have VIEW permission for escalation polici
 |---|---|
 | View | See existing escalation policies and how they are configured. |
 | Create | Add new escalation policies. |
-| Edit | Modify an existing escalation policy — change escalation steps, timing, or who is notified. |
+| Edit | Modify an existing escalation policy: change escalation steps, timing, or who is notified. |
 | Delete | Remove escalation policies. |
 
 #### Incident
@@ -97,10 +106,10 @@ All authenticated users automatically have VIEW permission for schedules.
 |---|---|
 | View | See on-call schedules and who is currently on call. |
 | Create | Build new on-call schedules. |
-| Edit | Change an existing schedule — rotation order, shift timing, or participants. |
+| Edit | Change an existing schedule: rotation order, shift timing, or participants. |
 | Delete | Remove schedules. |
 
-#### Schedule Override
+#### Schedule override
 
 A schedule override is a temporary, one-off change to an on-call schedule, for example, covering a shift for a colleague who is out, without permanently altering the underlying schedule.
 
@@ -137,9 +146,9 @@ Alerts are signals from monitoring and observability sources that something may 
 | Create / Edit | Generate and update alerts, including changing their fields and status. |
 | Manage Templates | Create and configure alert templates that standardize how incoming alerts are structured and processed. An administrative capability for those who set up alert handling. |
 
-#### Alert Rule
+#### Alert rule
 
-Alert rules define the conditions that turn raw signals into alerts — for example, routing, grouping, suppression, or which alerts should page someone.
+Alert rules define the conditions that turn raw signals into alerts, for example, routing, grouping, suppression, or which alerts should page someone.
 
 | Action | What it lets the user do |
 |---|---|
@@ -147,9 +156,9 @@ Alert rules define the conditions that turn raw signals into alerts — for exam
 | Edit | Modify the conditions, routing, or behavior of an existing alert rule. |
 | Delete | Remove route alerts. |
 
-#### Service Directory
+#### Service directory
 
-The service directory is the catalog of services being monitored — their owners, dependencies, and associated configuration.
+The service directory is the catalog of services being monitored: their owners, dependencies, and associated configuration.
 
 | Action | What it lets the user do |
 |---|---|
@@ -158,9 +167,9 @@ The service directory is the catalog of services being monitored — their owner
 | Delete | Remove a service from the directory. |
 | Manage Subscriptions | Subscribe or unsubscribe from service update notifications. |
 
-#### Third Party Integrations
+#### Third party integrations
 
-Third party integrations connect AI SRE to external tools — monitoring systems, chat platforms, ticketing systems, and other services.
+Third party integrations connect AI SRE to external tools: monitoring systems, chat platforms, ticketing systems, and other services.
 
 | Action | What it lets the user do |
 |---|---|
@@ -176,11 +185,11 @@ The workspace represents the overall AI SRE environment and its top-level settin
 |---|---|
 | Workspace Configure | Manage workspace-level configuration and settings. This is a high-level administrative permission affecting the AI SRE environment as a whole. |
 
-### Quick Summary of Common Actions
+### Quick summary of common actions
 
 | Action | General meaning |
 |---|---|
-| View | Read-only access — see the resource but make no changes. |
+| View | Read-only access: see the resource but make no changes. |
 | Create | Add new instances of the resource. |
 | Edit | Change existing instances. |
 | Delete | Remove instances. |
@@ -191,13 +200,13 @@ The workspace represents the overall AI SRE environment and its top-level settin
 | Incident Trigger | Allow a Runbook to be launched in the context of an incident. |
 | Workspace Configure | Manage environment-wide AI SRE settings. |
 
-### Creating Custom Roles
+### Creating custom roles
 
 Custom roles can be created by combining the permissions above to match your organization's access requirements. Common role patterns include:
 
-- **Admin role** — Grants full access (View, Create, Edit, Delete) to all AI SRE resources, plus Manage Templates for Incidents and Alerts, and Workspace Configure.
-- **User role** — Grants operational access (View, Create, Edit) without Delete permissions. Includes Incident Trigger for runbooks but not Manage Templates or Workspace Configure.
-- **Viewer role** — Grants read-only access (View only) to AI SRE resources.
+- **Admin role:** Grants full access (View, Create, Edit, Delete) to all AI SRE resources, plus Manage Templates for Incidents and Alerts, and Workspace Configure.
+- **User role:** Grants operational access (View, Create, Edit) without Delete permissions. Includes Incident Trigger for runbooks but not Manage Templates or Workspace Configure.
+- **Viewer role:** Grants read-only access (View only) to AI SRE resources.
 
 Create roles that match your organization's needs using the available AI SRE permissions.
 
@@ -210,12 +219,12 @@ Create roles that match your organization's needs using the available AI SRE per
 
 ---
 
-## Security Components
+## Security components
 
 <Tabs>
 <TabItem value="Incident Data Storage">
 <div style={{ display: "none" }}>
-### Incident Data Storage
+### Incident data storage
 </div>
 
 Incident data, logs, and automation history are securely stored.
@@ -230,7 +239,7 @@ Harness AI SRE retains incident logs and history based on your organization's se
 </TabItem>
 <TabItem value="Secure Automation & Runbooks">
 <div style={{ display: "none" }}>
-### Secure Automation & Runbooks
+### Secure automation and runbooks
 </div>
 
 Runbooks execute predefined automation securely.
@@ -245,7 +254,7 @@ Runbook executions require API keys or OAuth authentication for third-party inte
 </TabItem>
 <TabItem value="Communication & Webhook Security">
 <div style={{ display: "none" }}>
-### Communication & Webhook Security
+### Communication and webhook security
 </div>
 
 Harness AI SRE integrates with communication tools and on-call platforms through secure webhooks and APIs.
@@ -258,33 +267,33 @@ Harness AI SRE integrates with communication tools and on-call platforms through
 
 ---
 
-## Operational Security
+## Operational security
 
 Harness AI SRE ensures security at every stage:
 
-1. **Incident Creation & Logging**  
-   - Incidents are created through authenticated sources (UI, API, webhooks).  
+1. **Incident creation and logging:**
+   - Incidents are created through authenticated sources (UI, API, webhooks).
    - Data is encrypted before storage.
 
-2. **Access & Role Management**  
-   - RBAC controls who can access incidents, schedules, escalation policies, and SLOs.  
+2. **Access and role management:**
+   - RBAC controls who can access incidents, schedules, escalation policies, and SLOs.
    - Roles are applied at the Project level for AI SRE. Authentication via OAuth/SAML is required.
 
-3. **Automation Execution**  
-   - Actions are logged for compliance.  
+3. **Automation execution:**
+   - Actions are logged for compliance.
    - Only approved integrations execute via [Harness Delegates](/docs/platform/delegates/delegate-concepts/delegate-overview).
 
-4. **Audit & Compliance Logging**  
-   - Every action is recorded for compliance audits.  
+4. **Audit and compliance logging:**
+   - Every action is recorded for compliance audits.
    - Logs can be exported for security reviews.
 
-5. **Third-Party Integration Security**  
-   - OAuth tokens, API keys, and access scopes protect integrations.  
+5. **Third-party integration security:**
+   - OAuth tokens, API keys, and access scopes protect integrations.
    - Secure connections use TLS 1.3 encryption.
 
 ---
 
-## Best Practices
+## Best practices
 
 To enhance security in Harness AI SRE:
 

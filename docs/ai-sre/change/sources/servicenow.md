@@ -20,8 +20,8 @@ ServiceNow change records are ingested automatically as a change source. Once a 
 
 ## Before you begin
 
-- **A ServiceNow connector**: A Harness ServiceNow connector configured in your organization, typically the one used for pipeline approvals. Go to [Connect to ServiceNow](/docs/platform/connectors/ticketing-systems/connect-to-service-now) to create one.
-- **Read access**: The connector must have read access to the `change_request` table in ServiceNow.
+- **A ServiceNow connector:** A Harness ServiceNow connector configured in your organization, typically the one used for pipeline approvals. Go to [Connect to ServiceNow](/docs/platform/connectors/ticketing-systems/connect-to-service-now) to create one.
+- **Read access:** The connector must have read access to the `change_request` table in ServiceNow.
 
 ---
 
@@ -29,11 +29,11 @@ ServiceNow change records are ingested automatically as a change source. Once a 
 
 Ingestion is provisioned automatically when a ServiceNow connector is saved. You do not configure a webhook, and you do not create an ingestion job by hand.
 
-- **Trigger**: Saving a ServiceNow connector provisions the ingestion automatically.
-- **Mechanism**: AI SRE polls the ServiceNow Table API for change records. This is a scheduled poll, not a webhook.
-- **Frequency**: The poll runs every 5 minutes.
-- **Backfill**: On first activation, the job retrieves change records from the previous 90 days, then syncs incrementally using `sys_updated_on` checkpointing.
-- **Authentication**: Basic authentication through the ServiceNow connector.
+- **Trigger:** Saving a ServiceNow connector provisions the ingestion automatically.
+- **Mechanism:** AI SRE polls the ServiceNow Table API for change records. This is a scheduled poll, not a webhook.
+- **Frequency:** The poll runs every 5 minutes.
+- **Backfill:** On first activation, the job retrieves change records from the previous 90 days, then syncs incrementally using `sys_updated_on` checkpointing.
+- **Authentication:** Basic authentication through the ServiceNow connector.
 
 :::info Document the connector, not a button
 Ingestion provisions when the connector is saved. Do not rely on a manual "New ServiceNow Ingestion" action to enable it.
@@ -68,7 +68,7 @@ Each change record is ingested with the following fields:
 2. Open an incident and review the RCA Change Agent theories panel.
 3. Confirm ServiceNow change records appear alongside deployments and pull requests as candidate root causes.
 
-Go to [RCA Change Agent](/docs/ai-sre/ai-agent/rca-change-agent) to review how ServiceNow changes surface during incidents.
+Go to [RCA Change Agent](/docs/ai-sre/ai-agent/rca-change-agent) to understand how ServiceNow changes surface during incidents.
 
 ---
 
@@ -90,5 +90,5 @@ Go to [RCA Change Agent](/docs/ai-sre/ai-agent/rca-change-agent) to review how S
 
 ## Next steps
 
-- Go to [RCA Change Agent](/docs/ai-sre/ai-agent/rca-change-agent) to learn how ServiceNow changes are correlated with incidents.
-- Go to [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) for build, deploy, and pull request correlation.
+- Go to [RCA Change Agent](/docs/ai-sre/ai-agent/rca-change-agent) to understand how ServiceNow changes are correlated with incidents.
+- Go to [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) to set up build, deploy, and pull request correlation.

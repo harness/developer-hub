@@ -3,18 +3,26 @@ title: PagerDuty Integration Guide
 description: Send incident alerts through webhooks.
 sidebar_label: PagerDuty
 sidebar_position: 6
+keywords:
+  - PagerDuty
+  - webhook
+  - AI SRE
+  - integration
+tags:
+  - ai-sre
+  - webhooks
+  - pagerduty
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
-# Configure PagerDuty to Send Webhooks
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
 Configure PagerDuty to send webhook notifications to Harness AI SRE when incidents are created, updated, or resolved.
 
 ## Before you begin
 
-- **Harness webhook endpoint**: Create a PagerDuty webhook in Harness AI SRE using the [PagerDuty webhook template](../../templates/monitoring/pagerduty.md).
+- **Harness webhook endpoint**: Create a PagerDuty webhook in Harness AI SRE using the [PagerDuty webhook template](/docs/ai-sre/alerts/webhooks/templates/monitoring/pagerduty).
 - **PagerDuty permissions**: Admin or Account Owner role (for V3 webhooks) or Service permissions (for extensions).
 - **Webhook URL**: Copy the webhook URL from your Harness webhook configuration.
 - **PagerDuty V3 webhooks documentation**: Go to [PagerDuty V3 Webhooks Overview](https://developer.pagerduty.com/docs/webhooks/v3-overview/) to understand V3 webhook capabilities and event types.
@@ -31,9 +39,9 @@ PagerDuty offers two webhook mechanisms:
 | **V3 Webhooks** (Recommended) | Account, team, or service | Enterprise-wide incident synchronization | High (supports filtering, custom headers) |
 | **Webhook Extensions** (Legacy) | Service-level | Simple service-specific integration | Limited |
 
-Go to [V3 Webhooks](#configure-v3-webhooks) for the recommended approach.
+Go to [Configure V3 webhooks](#configure-v3-webhooks) to use the recommended approach.
 
-Go to [Webhook Extensions](#configure-webhook-extensions-legacy) for the legacy method.
+Go to [Configure webhook extensions](#configure-webhook-extensions-legacy) to use the legacy method.
 
 ---
 
@@ -43,7 +51,7 @@ V3 webhooks are the recommended approach for modern PagerDuty integrations.
 
 ### Create a V3 webhook
 
-1. In PagerDuty, navigate to **Integrations** → **Generic Webhooks (v3)**
+1. In PagerDuty, navigate to **Integrations**, then select **Generic Webhooks (v3)**
 2. Click **New Webhook**
 
 ### Configure webhook settings
@@ -130,8 +138,8 @@ Webhook extensions are simpler but less flexible than V3 webhooks.
 
 ### Add webhook extension to service
 
-1. Navigate to **Services** → Select your service
-2. Go to the **Integrations** tab
+1. Navigate to **Services**, then select your service
+2. Select the **Integrations** tab
 3. Click **Add Integration**
 4. Select **Generic Webhook**
 
@@ -247,7 +255,7 @@ filter: webhook.event.event_type in ["incident.triggered", "incident.escalated"]
 
 ### Test V3 webhook
 
-1. In PagerDuty, go to **Integrations** → **Generic Webhooks (v3)**
+1. In PagerDuty, go to **Integrations**, then select **Generic Webhooks (v3)**
 2. Find your webhook and click **Test Webhook**
 3. Select a test scenario
 4. Click **Send Test**
@@ -376,57 +384,29 @@ custom_fields: {
 
 ## Troubleshooting
 
-### Webhook not receiving events
+<Troubleshoot
+  issue="PagerDuty webhook is not receiving events for Harness AI SRE"
+  mode="docs"
+  fallback="Verify the webhook subscription includes the event types you need, check that the webhook scope covers the services you want to monitor, review the PagerDuty Webhook Logs, and ensure incidents are being created in the scoped services."
+/>
 
-**Cause**: PagerDuty webhook not subscribed to events or scope is incorrect.
+<Troubleshoot
+  issue="PagerDuty webhook payload fields are null or missing in Harness AI SRE"
+  mode="docs"
+  fallback="PagerDuty payload structure varies by event type. Use the CEL has() function to check whether fields exist before accessing them, check the PagerDuty webhook test payload for actual values, and note that webhook extension payloads differ from V3."
+/>
 
-**Solution**:
-- Verify webhook subscription includes the event types you need
-- Check that webhook scope covers the services you want to monitor
-- Review PagerDuty **Webhook Logs** under webhook configuration
-- Ensure incidents are actually being created in the scoped services
+<Troubleshoot
+  issue="PagerDuty webhook has a high failure rate to Harness AI SRE"
+  mode="docs"
+  fallback="Check the Harness webhook logs for error messages, verify the field mapping CEL expressions are syntactically valid, test CEL expressions in the Harness CEL playground, ensure the Harness webhook is enabled, and review the PagerDuty retry logs."
+/>
 
-### Payload fields are null or missing
-
-**Cause**: PagerDuty payload structure varies by event type, and not all fields are always populated.
-
-**Solution**:
-- Use CEL `has()` to check if fields exist before accessing them:
-
-```cel
-assignee: has(webhook.event.data.assignments) && 
-          size(webhook.event.data.assignments) > 0 
-          ? webhook.event.data.assignments[0].assignee.summary 
-          : "unassigned"
-```
-
-- Check PagerDuty webhook test payload to see actual field values
-- For webhook extensions, note that payload structure differs from V3
-
-### High webhook failure rate
-
-**Cause**: Harness webhook timeout or errors processing payload.
-
-**Solution**:
-- Check Harness webhook logs for error messages
-- Verify field mapping CEL expressions are syntactically valid
-- Test CEL expressions in Harness CEL playground
-- Ensure Harness webhook is enabled and accessible
-- Review PagerDuty retry logs (V3 webhooks retry automatically on 5xx errors)
-
-### Duplicate alerts in Harness
-
-**Cause**: Multiple PagerDuty webhooks or event types triggering the same Harness webhook.
-
-**Solution**:
-- Use Harness alert routing rules to deduplicate by `incident_id` tag
-- Filter in CEL to process only specific event types:
-
-```cel
-filter: webhook.event.event_type == "incident.triggered"
-```
-
-- Create separate Harness webhooks for different event types
+<Troubleshoot
+  issue="PagerDuty is creating duplicate alerts in Harness AI SRE"
+  mode="docs"
+  fallback="Use Harness alert routing rules to deduplicate by the incident_id tag, filter in CEL to process only specific event types, and create separate Harness webhooks for different event types."
+/>
 
 ---
 
@@ -506,16 +486,16 @@ assignee: has(webhook.event.data.assignments) &&
 
 ## Next steps
 
-- Go to [Route Alerts](../../../alert-rules/overview.md) to route and deduplicate PagerDuty incidents.
-- Go to [Use CEL in Webhooks](../../use-cel-webhooks.md) to add advanced filtering and transformation logic.
-- Go to [AI Agent](../../../../ai-agent/ai-agent.md) to enable automated incident investigation.
+- [Route alerts](/docs/ai-sre/alerts/alert-rules/overview): Route and deduplicate PagerDuty incidents.
+- [Use CEL in webhooks](/docs/ai-sre/alerts/webhooks/use-cel-webhooks): Add advanced filtering and transformation logic.
+- [AI agent](/docs/ai-sre/ai-agent): Enable automated incident investigation.
 
 ---
 
 ## Further reading
 
-### PagerDuty Official Documentation
-- [V3 Webhooks Overview](https://developer.pagerduty.com/docs/webhooks/v3-overview/) - Complete guide to PagerDuty V3 webhooks, event types, and configuration
-- [Webhook Extensions](https://support.pagerduty.com/docs/webhooks) - Legacy webhook extension setup and service-level configuration
-- [Webhook Behavior](https://developer.pagerduty.com/docs/webhooks/webhook-behavior/) - Webhook payload structure, event types, and field definitions
-- [Incidents API](https://developer.pagerduty.com/api-reference/incidents/) - Incident object structure and field reference
+### PagerDuty official documentation
+- [V3 webhooks overview](https://developer.pagerduty.com/docs/webhooks/v3-overview/): Complete guide to PagerDuty V3 webhooks, event types, and configuration.
+- [Webhook extensions](https://support.pagerduty.com/docs/webhooks): Legacy webhook extension setup and service-level configuration.
+- [Webhook behavior](https://developer.pagerduty.com/docs/webhooks/webhook-behavior/): Webhook payload structure, event types, and field definitions.
+- [Incidents API](https://developer.pagerduty.com/api-reference/incidents/): Incident object structure and field reference.

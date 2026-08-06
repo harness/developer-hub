@@ -30,12 +30,12 @@ The investigator connects your CI/CD pipeline data to provide precise answers ab
 2. **Deploy webhook** sends: services deployed + environment + artifact versions
 3. **PR ingestion** fetches: all PRs merged to your main deploy branch
 
-The investigator maps deployments → builds → code changes, giving you precise answers to "what changed?" during incidents.
+The investigator maps deployments to builds to code changes, giving you precise answers to "what changed?" during incidents.
 
 :::info Why all three pieces matter
-- **Without builds:** cannot map deployments to code changes
-- **Without deploys:** cannot correlate incidents to specific releases
-- **Without PR ingestion:** cannot show which changes were in the deployment
+- **Without builds:** You cannot map deployments to code changes.
+- **Without deploys:** You cannot correlate incidents to specific releases.
+- **Without PR ingestion:** You cannot show which changes were in the deployment.
 :::
 
 ---
@@ -46,7 +46,7 @@ Before starting, ensure you have:
 
 - **AI SRE module** enabled in your Harness account
 - **Pipeline permissions** to add webhook steps to your build and deployment pipelines
-- **Source control connector** (if not using Harness Code) - GitHub or Bitbucket credentials configured in your project
+- **Source control connector** (if not using Harness Code): GitHub or Bitbucket credentials configured in your project
 
 ---
 
@@ -86,14 +86,14 @@ To create the ingestion without waiting for a build webhook:
 
 ## Create build webhook integration
 
-1. Navigate to **AI SRE** → **Integrations** (left sidebar)
-2. Click **+ New Integration**
+1. In the AI SRE left navigation, go to **Integrations**.
+2. Click **+ New Integration**.
 3. Fill in the form:
    - **Name:** Build (or your preferred name)
    - **Type:** Build
    - **Select Template:** Harness Build
-4. Click **Save**
-5. **Copy the Endpoint URL**, you'll need this when configuring your pipeline
+4. Click **Save**.
+5. **Copy the Endpoint URL**. You will need this when you configure your pipeline.
 
 The integration is created with a unique ID (e.g., `BUILB1A`) and a webhook URL like:
 
@@ -105,13 +105,13 @@ https://app.harness.io/gateway/ir/tp/account/{accountId}/api/v1/mc/webhook/{webh
 
 ## Create deploy webhook integration
 
-1. While still in **AI SRE** → **Integrations**, click **+ New Integration** again
+1. While still in **AI SRE** > **Integrations**, click **+ New Integration** again.
 2. Fill in the form:
    - **Name:** Deploy (or your preferred name)
    - **Type:** Deployment
    - **Select Template:** Harness Deployment
-3. Click **Save**
-4. **Copy the Endpoint URL**, you'll need this when configuring your pipeline
+3. Click **Save**.
+4. **Copy the Endpoint URL**. You will need this when you configure your pipeline.
 
 You should now see both integrations listed in your integrations view.
 
@@ -153,12 +153,12 @@ curl 'YOUR_BUILD_WEBHOOK_URL_HERE' \
 
 Map these variables to your pipeline outputs:
 
-- **ARTIFACT_REPO** → `<+execution.steps.build_service.output.outputVariables.ARTIFACT_REPO>`
-- **NEW_VERSION** → `<+execution.steps.build_service.output.outputVariables.NEW_VERSION>`
-- **COMMIT_SHA** → `<+codebase.commitSha>` or your build step's commit SHA output
-- **BRANCH** → `<+codebase.branch>`
-- **MANIFEST_REPO** → Your repository URL (e.g., `https://github.com/yourorg/yourrepo`)
-- **REGISTRY** → Your artifact registry (e.g., `us-west1-docker.pkg.dev`)
+- **ARTIFACT_REPO:** Maps to `<+execution.steps.build_service.output.outputVariables.ARTIFACT_REPO>`.
+- **NEW_VERSION:** Maps to `<+execution.steps.build_service.output.outputVariables.NEW_VERSION>`.
+- **COMMIT_SHA:** Maps to `<+codebase.commitSha>` or your build step's commit SHA output.
+- **BRANCH:** Maps to `<+codebase.branch>`.
+- **MANIFEST_REPO:** Your repository URL (for example, `https://github.com/yourorg/yourrepo`).
+- **REGISTRY:** Your artifact registry (for example, `us-west1-docker.pkg.dev`).
 
 :::warning Important notes
 - Escape all quotes in `json_payload`
@@ -211,9 +211,9 @@ Run your build pipeline and verify two things:
 
 ### Verify build webhook is received
 
-1. Navigate to **AI SRE** → **Integrations**
-2. Click the three-dot menu (**...**) on the BUILD integration
-3. Select **Debug**
+1. In the AI SRE left navigation, go to **Integrations**.
+2. Click the **More** icon (**...**) on the BUILD integration.
+3. Select **Debug**.
 4. You should see a timeline of received webhook events with:
    - Timestamp
    - Payload preview
@@ -223,7 +223,7 @@ Run your build pipeline and verify two things:
 
 If you configured your connector, AI SRE should automatically create a PR ingestion job:
 
-1. Navigate to **AI SRE** → **PR Ingestions** (tab next to Integrations)
+1. In the AI SRE left navigation, go to **PR Ingestions** (tab next to Integrations).
 2. You should see an ingestion job with:
    - Repository name
    - Branch being tracked (usually `main`)
@@ -279,9 +279,9 @@ curl 'YOUR_DEPLOY_WEBHOOK_URL_HERE' \
 
 **Using Harness expressions for dynamic values:**
 
-- **changeId** → `<+pipeline.executionId>` (unique deployment ID)
-- **deployedBy** → `<+pipeline.triggeredBy.name>` (who triggered the deployment)
-- **deployTimestamp** → `<+pipeline.startTs>` (when deployment started)
+- **changeId:** Maps to `<+pipeline.executionId>` (unique deployment ID).
+- **deployedBy:** Maps to `<+pipeline.triggeredBy.name>` (who triggered the deployment).
+- **deployTimestamp:** Maps to `<+pipeline.startTs>` (when deployment started).
 
 ### Deploy webhook payload reference
 
@@ -311,17 +311,17 @@ The Deploy webhook expects this JSON structure:
 
 **Field mapping:**
 
-- **services[]**, Array of services deployed (can be one or many)
-- **services[].service**, Service name (must match `service.name` from Build webhook)
-- **services[].version**, Artifact version deployed (must match `artifact.version` from Build webhook)
-- **environments[]**, Array of environments deployed to
-- **changeId**, Unique deployment ID
-- **status**, "SUCCESS" or "FAILURE"
-- **deployedBy**, User who triggered the deployment
-- **deployTimestamp**, ISO 8601 timestamp of deployment
+- **services[]:** Array of services deployed (can be one or many).
+- **services[].service:** Service name (must match `service.name` from the Build webhook).
+- **services[].version:** Artifact version deployed (must match `artifact.version` from the Build webhook).
+- **environments[]:** Array of environments deployed to.
+- **changeId:** Unique deployment ID.
+- **status:** "SUCCESS" or "FAILURE".
+- **deployedBy:** User who triggered the deployment.
+- **deployTimestamp:** ISO 8601 timestamp of deployment.
 
 :::danger Critical mapping requirement
-The `services[].service` and `services[].version` **must match** the corresponding fields from your Build webhooks. This is how the investigator links deployments → builds → commits.
+The `services[].service` and `services[].version` **must match** the corresponding fields from your Build webhooks. This is how the investigator links deployments to builds to commits.
 :::
 
 ---
@@ -330,10 +330,10 @@ The `services[].service` and `services[].version` **must match** the correspondi
 
 After running a deployment, verify the webhook is being received:
 
-1. Navigate to **AI SRE** → **Integrations**
-2. Click the three-dot menu (**...**) on the DEPLOY integration
-3. Select **Debug**
-4. You should see deployment events with timestamps and payloads
+1. In the AI SRE left navigation, go to **Integrations**.
+2. Click the **More** icon (**...**) on the DEPLOY integration.
+3. Select **Debug**.
+4. You should see deployment events with timestamps and payloads.
 
 ---
 
@@ -354,7 +354,7 @@ At this point, you should have:
 <Troubleshoot
   issue="PR ingestion job not auto-created after sending build webhooks"
   mode="docs"
-  fallback="Verify: (1) You have a GitHub or Bitbucket connector at Project Settings → Connectors, (2) Build webhook payloads include the source.repository_url field, (3) The repository is reachable. You can also create the ingestion manually under Integrations → PR Ingestions → New PR Ingestion. If all are correct, contact Harness support as a feature flag may need to be enabled."
+  fallback="Verify: (1) You have a GitHub or Bitbucket connector at Project Settings > Connectors, (2) Build webhook payloads include the source.repository_url field, (3) The repository is reachable. You can also create the ingestion manually under Integrations > PR Ingestions > New PR Ingestion. If all are correct, contact Harness support as a feature flag may need to be enabled."
 />
 
 <Troubleshoot
@@ -381,6 +381,6 @@ At this point, you should have:
 
 Now that your Deploy Change Investigator is configured:
 
-- Learn how the [AI Agent uses change detection during incidents](/docs/ai-sre/ai-agent/rca-change-agent)
-- Explore [incident management workflows](/docs/ai-sre/incidents)
-- Configure [route alerts and integrations](/docs/ai-sre/alerts/alert-rules/overview)
+- Go to [AI Agent RCA](/docs/ai-sre/ai-agent/rca-change-agent) to understand how the AI agent uses change detection during incidents.
+- Go to [Incident management workflows](/docs/ai-sre/incidents) to manage incidents.
+- Go to [Route alerts and integrations](/docs/ai-sre/alerts/alert-rules/overview) to configure alert routing.

@@ -20,8 +20,8 @@ Harness Code repositories are ingested as a source-control change source automat
 
 ## Before you begin
 
-- **Deploy Change Investigator setup**: Build and deploy webhook integrations created in AI SRE. Go to [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) to set up the webhook endpoints.
-- **A Harness Code repository**: The service you deploy is built from a Harness Code repository.
+- **Deploy Change Investigator setup:** Build and deploy webhook integrations created in AI SRE. Go to [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) to set up the webhook endpoints.
+- **A Harness Code repository:** The service you deploy is built from a Harness Code repository.
 
 ---
 
@@ -29,9 +29,9 @@ Harness Code repositories are ingested as a source-control change source automat
 
 The Deploy Change Investigator ingests Harness Code pull requests by **polling** the internal Harness Code service. Because Harness Code runs inside your Harness account, ingestion uses internal service authentication.
 
-- **Mechanism**: AI SRE polls the internal Harness Code API for merged pull requests on the tracked repository.
-- **Frequency**: The ingestion job runs approximately once per hour.
-- **Authentication**: None. Harness Code is an internal service, so no connector and no credentials are needed.
+- **Mechanism:** AI SRE polls the internal Harness Code API for merged pull requests on the tracked repository.
+- **Frequency:** The ingestion job runs approximately once per hour.
+- **Authentication:** None. Harness Code is an internal service, so no connector and no credentials are needed.
 
 :::tip No setup required
 Unlike GitHub and Bitbucket, Harness Code needs no connector and no webhook. When you create a pull request ingestion, you provide only the repository URL. Ingestion is also created automatically once you send build webhooks that reference a Harness Code repository.
@@ -68,7 +68,7 @@ Harness Code pull requests are ingested with their branch, PR number, title, mer
 
 ## Verify pull request ingestion
 
-1. Navigate to **AI SRE** → **PR Ingestions** (tab next to Integrations).
+1. Navigate to **AI SRE**, then select **PR Ingestions** (the tab next to Integrations).
 2. Confirm an ingestion job exists for your Harness Code repository with a tracked branch and a recent sync timestamp.
 3. After the next hourly sync, confirm merged pull requests appear against your deployments in **Change Management**.
 
@@ -92,6 +92,6 @@ Harness Code pull requests are ingested with their branch, PR number, title, mer
 
 ## Next steps
 
-- Go to [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) for the complete setup guide.
-- Go to [Configure GitHub](/docs/ai-sre/change/sources/github) or [Configure Bitbucket](/docs/ai-sre/change/sources/bitbucket) for external source control.
-- Go to [AI Agent RCA](/docs/ai-sre/ai-agent/rca-change-agent) to learn how change detection works during incidents.
+- Go to [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) to complete the setup.
+- Go to [Configure GitHub](/docs/ai-sre/change/sources/github) or [Configure Bitbucket](/docs/ai-sre/change/sources/bitbucket) to set up external source control.
+- Go to [AI Agent RCA](/docs/ai-sre/ai-agent/rca-change-agent) to understand how change detection works during incidents.

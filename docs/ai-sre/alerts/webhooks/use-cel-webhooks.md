@@ -9,6 +9,7 @@ keywords:
   - webhooks
   - filtering
 tags:
+  - ai-sre
   - expressions
   - webhooks
 ---
@@ -16,8 +17,6 @@ tags:
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 import NeedHelpFooter from '../../_snippets/need-help-footer.mdx';
 import DocImage from '@site/src/components/DocImage';
-
-# Use CEL Expressions in Webhooks
 
 Use CEL expressions in webhook advanced mapping conditions to filter incoming webhooks and route them
 based on payload content.
@@ -305,7 +304,7 @@ regex.replace(
 
 ---
 
-## Advanced CEL Functions
+## Advanced CEL functions
 
 ### regex.extract()
 

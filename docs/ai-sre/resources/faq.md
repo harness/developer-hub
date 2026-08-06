@@ -2,12 +2,21 @@
 title: AI SRE FAQs
 description: Answers to common questions about AI SRE.
 sidebar_position: 100
-sidebar_label: FAQs
+sidebar_label: FAQ
+keywords:
+  - FAQ
+  - incident management
+  - runbooks
+  - integrations
+  - security
+tags:
+  - ai-sre
+  - faq
 redirect_from:
 - /docs/incident-response/resources/faq
 ---
 
-## General Questions
+## General questions
 
 <details>
     <summary>What is Harness AI SRE?</summary>
@@ -23,7 +32,7 @@ redirect_from:
 
 ---
 
-## Incident Handling
+## Incident handling
 
 <details>
     <summary>How are incidents created in Harness AI SRE?</summary>
@@ -45,7 +54,7 @@ redirect_from:
 
 ---
 
-## Automation & Runbooks
+## Automation and runbooks
 
 <details>
     <summary>What are runbooks, and how do they work?</summary>
@@ -56,7 +65,7 @@ redirect_from:
 <details>
     <summary>Can I integrate custom scripts into runbooks?</summary>
 
-    No, custom scripts cannot be directly integrated into Harness AI SRE Runbooks. However, you can achieve the same functionality by executing a Harness pipeline from a Runbook
+    No, custom scripts cannot be directly integrated into Harness AI SRE Runbooks. However, you can achieve the same functionality by executing a Harness pipeline from a Runbook.
 </details>
 
 <details>
@@ -89,7 +98,7 @@ redirect_from:
 
 ---
 
-## Security & Compliance
+## Security and compliance
 
 <details>
     <summary>How does Harness AI SRE secure incident data?</summary>
@@ -123,7 +132,7 @@ redirect_from:
     | SLOs | View, Create, Edit, Delete |
     | Schedule | View, Create, Edit, Delete |
 
-    AI SRE uses the Harness Platform's RBAC system. Create custom roles by combining AI SRE permissions (View, Create, Edit, Delete) for resources like Escalation Policies, Incidents, SLOs, and Schedules. Common patterns include admin roles with full access, user roles for operational access, and viewer roles for read-only access. For full details, Go to [Role-Based Access Control](/docs/ai-sre/resources/ai-sre-security#role-based-access-control-rbac).
+    AI SRE uses the Harness Platform's RBAC system. Create custom roles by combining AI SRE permissions (View, Create, Edit, Delete) for resources like Escalation Policies, Incidents, SLOs, and Schedules. Common patterns include admin roles with full access, user roles for operational access, and viewer roles for read-only access. Go to [Role-based access control](/docs/ai-sre/resources/ai-sre-security#role-based-access-control-rbac) to review the full permission details.
 </details>
 
 This **FAQ structure** covers **anticipated user concerns** while keeping it **aligned with the existing documentation format**.

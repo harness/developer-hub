@@ -3,90 +3,80 @@ title: Integrate with the Service Directory
 description: Connect Harness CD services to the AI SRE on-call system for automatic service-to-team mapping.
 sidebar_label: Integrate with the Service Directory
 sidebar_position: 2
+keywords:
+  - service directory
+  - on-call
+  - service mapping
+  - routing
+tags:
+  - on-call
+  - service-directory
 ---
 
-# Integrate with the Service Directory
+The service directory is the foundation of on-call routing in Harness AI SRE.
 
-The service directory is the foundation of on-call routing in Harness AI SRE. 
+It determines which User Group gets paged when an alert fires for a given service. The directory is automatically populated by services defined in Harness CD, so your on-call routing stays in sync with your deployment topology.
 
-It determines which team gets paged when an alert fires for a given service. 
+## What you will learn
 
-The directory is automatically populated by services defined in Harness CD, so your on-call routing stays in sync with your deployment topology.
+- **How the directory syncs:** How Harness CD services populate the AI SRE service directory.
+- **How to map services:** How to assign an owning User Group and escalation policy to each service.
+- **How to add subscribers:** How to give stakeholders status updates without joining incident war rooms.
+- **How to enable paging:** How to turn on a service paging webhook for external alert sources.
 
-## How Service Directory Integration Works
+## How service directory integration works
+
+In AI SRE, a **User Group** is the organizational unit that acts as the on-call team for a service. Go to [Configure On-Call Teams and Routing](/docs/ai-sre/oncall/manage-teams-and-notifications) to understand how User Groups own services and escalation policies.
 
 - Services defined in your **Harness CD project** are automatically synchronized into the AI SRE service directory.
-- Each service can be mapped to a **team** and an **escalation policy**, which determines who gets paged when an alert for that service arrives.
+- Each service can be mapped to a **User Group** and an **escalation policy**, which determines who gets paged when an alert for that service arrives.
 - When an alert payload includes a service identifier, AI SRE uses the directory to look up the correct on-call responder.
 
 ---
 
-## Set Up Service Mapping
+## Set up service mapping
 
 1. Navigate to **Project Settings** → **Service Directory (AI SRE)**.
 2. Verify that your Harness CD services appear in the list. If they do not, confirm that AI SRE is enabled for the same project where your CD services are defined.
 3. For each service, assign:
-   - **Team**: The team responsible for this service.
-   - **Escalation policy**: The escalation chain to use when this service is impacted.
+   - **Owning User Group:** The User Group responsible for this service.
+   - **Escalation policy:** The escalation chain to use when this service is impacted.
 4. Save your mappings.
 
 ---
 
-## Configure Service Subscribers
+## Configure service subscribers
 
 Service subscribers receive status updates during incidents affecting their subscribed services. Configure subscribers to enable stakeholder communication without requiring stakeholders to join incident war rooms.
 
-### Add Subscribers to a Service
+To add a subscriber, navigate to **Project Settings** → **Service Directory (AI SRE)**, select a service, select the **Subscribers** tab, then add a **User** or a **User Group**. When an incident commander sends a status update for an incident affecting this service, all subscribers receive an email with incident details, current status, and mitigation actions.
 
-1. Navigate to **Project Settings** → **Service Directory (AI SRE)**.
-2. Select a service from the list.
-3. Click the **Subscribers** tab.
-4. Click **Add Subscriber**.
-5. Choose the subscriber type:
-   - **User**: Select an individual user from your organization
-   - **User Group**: Select a Harness User Group (members are expanded automatically)
-6. Click **Save**.
-
-When an incident commander sends a status update for an incident affecting this service, all subscribers receive an email with incident details, current status, and mitigation actions.
-
-Go to [Configure Status Updates and Service Subscribers](/docs/ai-sre/incidents/status-updates) for complete documentation on the subscription model and delivery options.
+Go to [Configure Status Updates and Service Subscribers](/docs/ai-sre/incidents/status-updates) to configure the full subscription model and delivery options.
 
 ---
 
-## Enable Service Paging Webhook
+## Enable a service paging webhook
 
-Services can be configured with a dedicated paging webhook that allows external monitoring tools, legacy systems, and custom applications to trigger on-call notifications by sending alerts directly to the service.
+Each service can expose a dedicated paging webhook so external monitoring tools, legacy systems, and custom applications can trigger on-call notifications by sending alerts directly to the service. When you enable the webhook, AI SRE creates a unique HTTPS endpoint, a unique email address, and an alert rule that pages the service's on-call User Group.
 
-### How It Works
-
-When you enable a paging webhook on a service, the system automatically creates:
-
-- **Webhook URL**: A unique HTTPS endpoint for receiving HTTP POST requests with JSON payloads
-- **Email address**: A unique email address for receiving alert emails
-- **Alert routing**: Alerts sent to the webhook or email address automatically page the service's on-call team
-
-### Enable the Webhook
-
-1. Navigate to **Project Settings** → **Service Directory (AI SRE)**.
-2. Select the service you want to configure.
-3. Click **Enable Paging Webhook**.
-4. Copy the **Webhook URL** and **Email Address** for use in external systems.
-
-### Use Cases
-
-- **External monitoring**: Route alerts from Datadog, Grafana, or other monitoring tools through Harness for unified on-call management
-- **Legacy systems**: Integrate older systems that only support email-based alerting
-- **Custom scripts**: Send alerts from internal health checks, cron jobs, or custom monitoring tools
-- **Third-party tools**: Connect SaaS tools that support webhooks or email notifications
-
-Go to [Service Paging Webhook](/docs/ai-sre/oncall/service-paging-webhook) for complete documentation on HTTP and email integration, field mapping, and troubleshooting.
+Go to [Configure Service Paging Webhooks](/docs/ai-sre/oncall/service-paging-webhook) to enable the webhook, map alert fields, and use the HTTP and email integration methods.
 
 ---
 
-## Best Practices
+## Best practices
 
-- **Map every production service**: Unmapped services cannot be automatically routed, which means alerts may go unnoticed.
-- **Keep mappings current**: When service ownership changes, update the directory promptly. Stale mappings page the wrong team.
-- **Align with your CD project structure**: The service directory pulls from CD, so organizing your CD services cleanly pays off in on-call routing accuracy.
-- **Use user groups for subscribers**: Subscribe user groups (e.g., "Platform Leadership") rather than individual users to reduce maintenance when team membership changes.
-- **Align subscribers with on-call structure**: If a team is on-call for a service, their leadership should be subscribed for status updates.
+- **Map every production service:** Unmapped services cannot be automatically routed, which means alerts may go unnoticed.
+- **Keep mappings current:** When service ownership changes, update the directory promptly. Stale mappings page the wrong User Group.
+- **Align with your CD project structure:** The service directory pulls from CD, so organizing your CD services cleanly pays off in on-call routing accuracy.
+- **Use User Groups for subscribers:** Subscribe User Groups (for example, "Platform Leadership") rather than individual users to reduce maintenance when membership changes.
+- **Align subscribers with on-call structure:** If a User Group is on-call for a service, its leadership should be subscribed for status updates.
+
+---
+
+## Next steps
+
+With services mapped, build the rotations and routing that use them.
+
+- Go to [Configure On-Call Schedules](/docs/ai-sre/oncall/create-oncall-schedules) to build rotation schedules for your User Groups.
+- Go to [Configure Escalation Policies](/docs/ai-sre/oncall/define-escalation-policies) to set up multi-level escalation chains.
+- Go to [Route Alerts](/docs/ai-sre/oncall/configure-alert-rules) to page the correct on-call User Group when monitoring alerts fire.

@@ -3,18 +3,26 @@ title: GitHub Integration Guide
 description: Send repository events through webhooks.
 sidebar_label: GitHub
 sidebar_position: 8
+keywords:
+  - GitHub
+  - webhook
+  - AI SRE
+  - integration
+tags:
+  - ai-sre
+  - webhooks
+  - github
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
-# Configure GitHub to Send Webhooks
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
 Configure GitHub repository webhooks to send event notifications to Harness AI SRE for deployments, releases, and security alerts.
 
 ## Before you begin
 
-- **Harness webhook endpoint**: Create a GitHub webhook in Harness AI SRE using the [GitHub webhook template](../../templates/cicd/github.md).
+- **Harness webhook endpoint**: Create a GitHub webhook in Harness AI SRE using the [GitHub webhook template](/docs/ai-sre/alerts/webhooks/templates/cicd/github).
 - **GitHub permissions**: Admin access to the repository or organization.
 - **Webhook URL**: Copy the webhook URL from your Harness webhook configuration.
 - **GitHub webhooks documentation**: Go to [Webhooks Documentation](https://docs.github.com/webhooks) to understand webhook configuration and event types.
@@ -30,14 +38,14 @@ Configure GitHub repository webhooks to send event notifications to Harness AI S
 <TabItem value="repo" label="Repository webhook" default>
 
 1. Go to your GitHub repository
-2. Click **Settings** → **Webhooks**
+2. Click **Settings**, then click **Webhooks**
 3. Click **Add webhook**
 
 </TabItem>
 <TabItem value="org" label="Organization webhook">
 
 1. Go to your GitHub organization
-2. Click **Settings** → **Webhooks**
+2. Click **Settings**, then click **Webhooks**
 3. Click **Add webhook**
 
 Organization webhooks receive events from all repositories in the organization.
@@ -415,9 +423,9 @@ filter: webhook.alert.rule.severity in ["error", "warning"] &&
 
 ### Test with webhook delivery
 
-1. Go to **Settings** → **Webhooks** in your repository
-2. Click on your webhook
-3. Go to **Recent Deliveries** tab
+1. Go to **Settings**, then click **Webhooks** in your repository
+2. Click your webhook
+3. Select the **Recent Deliveries** tab
 4. Click **Redeliver** on any past delivery to test
 
 ### Trigger real events
@@ -530,48 +538,29 @@ filter: has(webhook.alert) &&
 
 ## Troubleshooting
 
-### Webhook not sending
+<Troubleshoot
+  issue="GitHub webhook is not sending events to Harness AI SRE"
+  mode="docs"
+  fallback="Check the webhook Recent Deliveries for errors, verify the webhook URL is publicly accessible, ensure the SSL certificate is valid, and review response codes (200 is success, 4xx/5xx is an error)."
+/>
 
-**Cause**: Webhook configuration error or GitHub can't reach endpoint.
+<Troubleshoot
+  issue="GitHub events are not triggering the webhook in Harness AI SRE"
+  mode="docs"
+  fallback="Edit the webhook in GitHub, select 'Let me select individual events', enable the required events, then click Update webhook."
+/>
 
-**Solution**:
-- Check webhook **Recent Deliveries** for errors
-- Verify webhook URL is publicly accessible
-- Ensure SSL certificate is valid
-- Review response codes (200 = success, 4xx/5xx = error)
+<Troubleshoot
+  issue="GitHub webhook signature verification is failing in Harness AI SRE"
+  mode="docs"
+  fallback="Ensure the secret in GitHub matches the Harness configuration, verify Harness is checking the X-Hub-Signature-256 header, and note that GitHub uses HMAC-SHA256, not the legacy HMAC-SHA1."
+/>
 
-### Events not triggering
-
-**Cause**: Event not selected in webhook configuration.
-
-**Solution**:
-- Edit webhook in GitHub
-- Go to **Which events would you like to trigger this webhook?**
-- Select **Let me select individual events**
-- Enable required events
-- Click **Update webhook**
-
-### Signature verification failing
-
-**Cause**: Secret mismatch or signature not verified.
-
-**Solution**:
-- Ensure secret in GitHub matches Harness configuration
-- Verify Harness is checking `X-Hub-Signature-256` header
-- GitHub uses HMAC-SHA256, not HMAC-SHA1 (legacy)
-
-### Payload fields missing
-
-**Cause**: Event type doesn't include expected fields.
-
-**Solution**:
-- Check GitHub webhook documentation for event-specific payload structure
-- Use CEL `has()` to check field existence:
-```cel
-message: has(webhook.deployment_status) 
-  ? webhook.deployment_status.description 
-  : "No description"
-```
+<Troubleshoot
+  issue="GitHub webhook payload fields are missing in Harness AI SRE"
+  mode="docs"
+  fallback="Check the GitHub webhook documentation for the event-specific payload structure, and use the CEL has() function to check field existence before accessing it."
+/>
 
 ---
 
@@ -639,17 +628,17 @@ filter: |
 
 ## Next steps
 
-- Go to [Route Alerts](../../../alert-rules/overview.md) to route and deduplicate GitHub events.
-- Go to [Use CEL in Webhooks](../../use-cel-webhooks.md) for advanced event filtering.
-- Go to [AI Agent](../../../../ai-agent/ai-agent.md) to enable automated incident investigation.
-- Go to [GitHub Template](../../templates/cicd/github.md) for the pre-configured template.
+- [Route alerts](/docs/ai-sre/alerts/alert-rules/overview): Route and deduplicate GitHub events.
+- [Use CEL in webhooks](/docs/ai-sre/alerts/webhooks/use-cel-webhooks): Add advanced event filtering.
+- [AI agent](/docs/ai-sre/ai-agent): Enable automated incident investigation.
+- [GitHub template](/docs/ai-sre/alerts/webhooks/templates/cicd/github): Use the pre-configured template.
 
 ---
 
 ## Further reading
 
-### GitHub Official Documentation
-- [Webhooks Documentation](https://docs.github.com/webhooks) - Complete guide to GitHub webhooks configuration and event types
-- [Webhook Events and Payloads](https://docs.github.com/webhooks/webhook-events-and-payloads) - Event-specific payload structures (`deployment_status`, `release`, `code_scanning_alert`)
-- [Validating Webhook Deliveries](https://docs.github.com/webhooks/using-webhooks/validating-webhook-deliveries) - Signature validation (`X-Hub-Signature-256`) and secret configuration
-- [Deployments API](https://docs.github.com/rest/deployments/deployments) - Deployment and deployment status payload structures
+### GitHub official documentation
+- [Webhooks documentation](https://docs.github.com/webhooks): Complete guide to GitHub webhooks configuration and event types.
+- [Webhook events and payloads](https://docs.github.com/webhooks/webhook-events-and-payloads): Event-specific payload structures (`deployment_status`, `release`, `code_scanning_alert`).
+- [Validating webhook deliveries](https://docs.github.com/webhooks/using-webhooks/validating-webhook-deliveries): Signature validation (`X-Hub-Signature-256`) and secret configuration.
+- [Deployments API](https://docs.github.com/rest/deployments/deployments): Deployment and deployment status payload structures.

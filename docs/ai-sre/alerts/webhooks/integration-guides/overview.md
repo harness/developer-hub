@@ -3,12 +3,20 @@ title: Configure External Systems to Send Webhooks
 sidebar_label: Overview
 sidebar_position: 1
 description: Configure external monitoring tools, CI/CD systems, and cloud platforms to send webhooks to AI SRE.
+keywords:
+  - webhooks
+  - integrations
+  - external systems
+  - configuration
+tags:
+  - ai-sre
+  - alerts
 redirect_from:
 - /docs/incident-response/alerts/webhooks/integrations
 - /docs/ai-sre/alerts/webhooks/integrations
 ---
 
-# Configure External Systems to Send Webhooks
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
 After creating a webhook integration in Harness AI SRE, configure your external monitoring tool, CI/CD system, or cloud platform to send webhook notifications to the unique webhook URL.
 
@@ -24,19 +32,19 @@ This section provides step-by-step configuration guides for popular external sys
 
 ---
 
-## How to Use These Guides
+## How to use these guides
 
-### Step 1: Create Webhook in Harness
+### Step 1: Create a webhook in Harness
 
 Before configuring the external system:
 
-1. Navigate to **Integrations** → **New Integration** in Harness AI SRE
-2. Select the appropriate **webhook template** for your tool
-3. Copy the **webhook URL** displayed after saving
+1. Navigate to **Integrations**, then **New Integration** in Harness AI SRE.
+2. Select the appropriate **webhook template** for your tool.
+3. Copy the **webhook URL** displayed after saving.
 
 Go to [Ingest Alerts](/docs/ai-sre/alerts/webhooks/overview) for detailed webhook creation steps.
 
-### Step 2: Configure External System
+### Step 2: Configure the external system
 
 Use the relevant guide below to configure your external tool to send webhooks to Harness. Each guide provides:
 
@@ -46,211 +54,189 @@ Use the relevant guide below to configure your external tool to send webhooks to
 - **Payload examples** showing what data is sent
 - **Test procedures** to verify the integration
 
-### Step 3: Verify Alert Creation
+### Step 3: Verify alert creation
 
 After configuration:
 
-1. Trigger a test alert in the external system
-2. Check that the alert appears in Harness AI SRE
-3. Verify field mapping is correct
-4. Review the alert timeline for any errors
+1. Trigger a test alert in the external system.
+2. Check that the alert appears in Harness AI SRE.
+3. Verify field mapping is correct.
+4. Review the alert timeline for any errors.
 
 ---
 
-## Available Integration Guides
+## Available integration guides
 
-### Monitoring and Observability
+### Monitoring and observability
 
-Detailed external setup guides available for these monitoring platforms:
+Detailed external setup guides are available for these monitoring platforms:
 
-- **[Datadog](./monitoring/datadog.md)** - Configure Datadog monitors to send alerts via webhook
-- **[PagerDuty](./monitoring/pagerduty.md)** - Set up PagerDuty webhook extensions and V3 webhooks
-- **[Prometheus (AlertManager)](./monitoring/prometheus.md)** - Configure AlertManager webhook receivers
-- **[Grafana](./monitoring/grafana.md)** - Set up Grafana Unified Alerting contact points
-- **[New Relic](./monitoring/new-relic.md)** - Configure New Relic Applied Intelligence workflows
-- **[OpsGenie](./monitoring/opsgenie.md)** - Set up OpsGenie outgoing webhook integrations
-- **[Splunk](./monitoring/splunk.md)** - Configure Splunk alert actions to send webhooks
+- [Datadog](/docs/ai-sre/alerts/webhooks/integration-guides/monitoring/datadog): Configure Datadog monitors to send alerts via webhook.
+- [PagerDuty](/docs/ai-sre/alerts/webhooks/integration-guides/monitoring/pagerduty): Set up PagerDuty webhook extensions and V3 webhooks.
+- [Prometheus (AlertManager)](/docs/ai-sre/alerts/webhooks/integration-guides/monitoring/prometheus): Configure AlertManager webhook receivers.
+- [Grafana](/docs/ai-sre/alerts/webhooks/integration-guides/monitoring/grafana): Set up Grafana Unified Alerting contact points.
+- [New Relic](/docs/ai-sre/alerts/webhooks/integration-guides/monitoring/new-relic): Configure New Relic Applied Intelligence workflows.
+- [Opsgenie](/docs/ai-sre/alerts/webhooks/integration-guides/monitoring/opsgenie): Set up Opsgenie outgoing webhook integrations.
+- [Splunk](/docs/ai-sre/alerts/webhooks/integration-guides/monitoring/splunk): Configure Splunk alert actions to send webhooks.
 
-#### Additional Monitoring Tools
+#### Additional monitoring tools
 
-These tools have webhook templates in Harness but use standard webhook configuration (refer to their official documentation):
+These tools have webhook templates in Harness but use standard webhook configuration (go to each tool's official documentation for details):
 
-- **Dynatrace** - Go to [Dynatrace webhook template](/docs/ai-sre/alerts/webhooks/templates/monitoring/dynatrace)
-- **Sentry** - Go to [Sentry webhook template](/docs/ai-sre/alerts/webhooks/templates/monitoring/sentry)
-- **Lacework** - Go to [Lacework webhook template](/docs/ai-sre/alerts/webhooks/templates/monitoring/lacework)
-- **BigPanda** - Go to [BigPanda webhook template](/docs/ai-sre/alerts/webhooks/templates/monitoring/bigpanda)
-- **AlertSite** - Go to [AlertSite webhook template](/docs/ai-sre/alerts/webhooks/templates/monitoring/alertsite)
-- **Grafana Incident** - Go to [Grafana Incident webhook template](/docs/ai-sre/alerts/webhooks/templates/monitoring/grafana-incident)
-- **Harness SLO** - Go to [Harness SLO webhook template](/docs/ai-sre/alerts/webhooks/templates/monitoring/harness-slo)
+- **Dynatrace:** Go to the [Dynatrace webhook template](/docs/ai-sre/alerts/webhooks/templates/monitoring/dynatrace) to configure the integration.
+- **Sentry:** Go to the [Sentry webhook template](/docs/ai-sre/alerts/webhooks/templates/monitoring/sentry) to configure the integration.
+- **Lacework:** Go to the [Lacework webhook template](/docs/ai-sre/alerts/webhooks/templates/monitoring/lacework) to configure the integration.
+- **BigPanda:** Go to the [BigPanda webhook template](/docs/ai-sre/alerts/webhooks/templates/monitoring/bigpanda) to configure the integration.
+- **AlertSite:** Go to the [AlertSite webhook template](/docs/ai-sre/alerts/webhooks/templates/monitoring/alertsite) to configure the integration.
+- **Grafana Incident:** Go to the [Grafana Incident webhook template](/docs/ai-sre/alerts/webhooks/templates/monitoring/grafana-incident) to configure the integration.
+- **Harness SLO:** Go to the [Harness SLO webhook template](/docs/ai-sre/alerts/webhooks/templates/monitoring/harness-slo) to configure the integration.
 
-### Cloud Platforms
+### Cloud platforms
 
-- **[AWS CloudWatch](./cloud/aws-cloudwatch.md)** - Configure CloudWatch alarms with SNS and HTTPS subscriptions
+- [AWS CloudWatch](/docs/ai-sre/alerts/webhooks/integration-guides/cloud/aws-cloudwatch): Configure CloudWatch alarms with SNS and HTTPS subscriptions.
 
-### CI/CD and Development
+### CI/CD and development
 
-Detailed external setup guides available for:
+Detailed external setup guides are available for:
 
-- **[GitHub](./cicd/github.md)** - Set up GitHub repository and organization webhooks
-- **[GitLab](./cicd/gitlab.md)** - Configure GitLab project and group webhooks
+- [GitHub](/docs/ai-sre/alerts/webhooks/integration-guides/cicd/github): Set up GitHub repository and organization webhooks.
+- [GitLab](/docs/ai-sre/alerts/webhooks/integration-guides/cicd/gitlab): Configure GitLab project and group webhooks.
 
-#### Additional CI/CD Tools
-
-These tools have webhook templates in Harness but use standard webhook configuration:
-
-- **Bitbucket** - Go to [Bitbucket webhook template](/docs/ai-sre/alerts/webhooks/templates/cicd/bitbucket)
-- **Travis CI** - Go to [Travis CI webhook template](/docs/ai-sre/alerts/webhooks/templates/cicd/travis-ci)
-- **Octopus Deploy** - Go to [Octopus Deploy webhook template](/docs/ai-sre/alerts/webhooks/templates/cicd/octopus-deploy)
-
-### ITSM and Ticketing
+#### Additional CI/CD tools
 
 These tools have webhook templates in Harness but use standard webhook configuration:
 
-- **Jira** - Go to [Jira webhook template](/docs/ai-sre/alerts/webhooks/templates/itsm/jira)
-- **ServiceNow** - Go to [ServiceNow webhook template](/docs/ai-sre/alerts/webhooks/templates/itsm/servicenow)
+- **Bitbucket:** Go to the [Bitbucket webhook template](/docs/ai-sre/alerts/webhooks/templates/cicd/bitbucket) to configure the integration.
+- **Travis CI:** Go to the [Travis CI webhook template](/docs/ai-sre/alerts/webhooks/templates/cicd/travis-ci) to configure the integration.
+- **Octopus Deploy:** Go to the [Octopus Deploy webhook template](/docs/ai-sre/alerts/webhooks/templates/cicd/octopus-deploy) to configure the integration.
+
+### ITSM and ticketing
+
+These tools have webhook templates in Harness but use standard webhook configuration:
+
+- **Jira:** Go to the [Jira webhook template](/docs/ai-sre/alerts/webhooks/templates/itsm/jira) to configure the integration.
+- **ServiceNow:** Go to the [ServiceNow webhook template](/docs/ai-sre/alerts/webhooks/templates/itsm/servicenow) to configure the integration.
 
 For bidirectional synchronization with Jira and ServiceNow, also configure:
-- [Jira runbook integration](/docs/ai-sre/runbooks/integrations/jira) for creating and updating issues
-- [ServiceNow runbook integration](/docs/ai-sre/runbooks/integrations/servicenow) for posting work notes and updates
+- Go to the [Jira runbook integration](/docs/ai-sre/runbooks/integrations/jira) to create and update issues.
+- Go to the [ServiceNow runbook integration](/docs/ai-sre/runbooks/integrations/servicenow) to post work notes and updates.
 
 ---
 
-## Common Configuration Patterns
+## Common configuration patterns
 
-### Basic Webhook Configuration
+### Basic webhook configuration
 
 Most tools follow this pattern:
 
-1. **Webhook URL**: Paste the Harness webhook URL
-2. **HTTP Method**: POST (default for most tools)
-3. **Content-Type**: `application/json`
-4. **Events**: Select relevant events (alerts, incidents, deployments)
-5. **Authentication**: Usually none required (secret in URL path)
+1. **Webhook URL:** Paste the Harness webhook URL.
+2. **HTTP method:** POST (default for most tools).
+3. **Content-Type:** `application/json`.
+4. **Events:** Select relevant events (alerts, incidents, deployments).
+5. **Authentication:** Usually none required (secret in URL path).
 
-### Advanced Configuration
+### Advanced configuration
 
 Some platforms support:
 
-- **Custom headers**: Add authentication tokens or metadata
-- **Payload templates**: Customize JSON structure before sending
-- **Conditional triggers**: Only send webhooks for specific conditions
-- **Batch delivery**: Group multiple events in a single webhook
-- **Retry logic**: Automatic retry on delivery failure
+- **Custom headers:** Add authentication tokens or metadata.
+- **Payload templates:** Customize the JSON structure before sending.
+- **Conditional triggers:** Only send webhooks for specific conditions.
+- **Batch delivery:** Group multiple events in a single webhook.
+- **Retry logic:** Automatic retry on delivery failure.
 
-### Testing Webhooks
+### Testing webhooks
 
 Always test webhook configuration:
 
-1. **Trigger test event** in external system
-2. **Check delivery logs** in external platform (if available)
-3. **Verify alert creation** in Harness AI SRE
-4. **Review field mapping** to ensure correct data extraction
-5. **Check error logs** if webhook delivery fails
+1. **Trigger a test event** in the external system.
+2. **Check delivery logs** in the external platform (if available).
+3. **Verify alert creation** in Harness AI SRE.
+4. **Review field mapping** to ensure correct data extraction.
+5. **Check error logs** if webhook delivery fails.
 
 ---
 
-## Troubleshooting Common Issues
+## Troubleshooting common issues
 
-### Webhook URL Not Working
+<Troubleshoot
+  issue="External system reports webhook delivery failure or timeout to Harness"
+  mode="docs"
+  fallback="Verify the webhook URL is exactly as provided by Harness with no extra spaces or characters, check network connectivity from the external system to Harness, ensure no firewall rules block outbound HTTPS traffic, and confirm the webhook is enabled and not in Quiet Mode."
+/>
 
-**Symptom**: External system reports delivery failure or timeout
+<Troubleshoot
+  issue="Webhook delivery succeeds but alerts do not appear in Harness AI SRE"
+  mode="docs"
+  fallback="Confirm field mapping extracts required fields such as title and description, verify the payload structure matches the webhook template, review route alerts so alerts are not filtered out, confirm the correct template was selected, and check the webhook event log for parsing errors."
+/>
 
-**Solutions**:
-- Verify the webhook URL is exactly as provided by Harness (no extra spaces or characters)
-- Check network connectivity from the external system to Harness
-- Ensure no firewall rules block outbound HTTPS traffic
-- Verify the webhook is enabled in Harness (not in quiet mode)
+<Troubleshoot
+  issue="Alerts appear in Harness with missing or incorrect field mapping"
+  mode="docs"
+  fallback="Review the webhook payload structure in the external system, update JSONPath expressions in saved fields to match the payload, adjust Mustache templates in mapped fields, and test with sample payloads using the webhook test feature."
+/>
 
-### Alerts Not Appearing in Harness
+<Troubleshoot
+  issue="The same webhook alert appears multiple times in Harness"
+  mode="docs"
+  fallback="Confirm only one webhook integration is configured for the external system, review route alerts for duplicate routing, verify the external system is not sending duplicate webhook POSTs, and consider alert deduplication rules based on unique identifiers."
+/>
 
-**Symptom**: External system shows successful delivery, but no alerts in Harness
-
-**Solutions**:
-- Check that field mapping extracts required fields (title, description)
-- Verify payload structure matches the webhook template expectations
-- Review route alerts to ensure alerts are not being filtered out
-- Check that the correct webhook template was selected
-- Look for parsing errors in the webhook event log
-
-### Incorrect Field Mapping
-
-**Symptom**: Alerts appear but with missing or incorrect information
-
-**Solutions**:
-- Review the webhook payload structure in the external system
-- Update JSONPath expressions in saved fields to match payload structure
-- Adjust Mustache templates in mapped fields
-- Test with sample payloads using the webhook test feature
-- Refer to the external system's webhook documentation for field names
-
-### Duplicate Alerts
-
-**Symptom**: Same alert appears multiple times in Harness
-
-**Solutions**:
-- Check that only one webhook integration is configured for the external system
-- Review route alerts for duplicate routing
-- Verify the external system is not sending duplicate webhook POSTs
-- Consider using alert deduplication rules based on unique identifiers
-
-### Authentication Errors
-
-**Symptom**: External system requires authentication that is not configured
-
-**Solutions**:
-- Most Harness webhooks do not require authentication (secret is in URL)
-- If the external system requires a response to a challenge, contact Harness support
-- For SNS subscription confirmation (AWS CloudWatch), follow the specific guide
-- Check that webhook URL includes the secret key portion
+<Troubleshoot
+  issue="External system requires webhook authentication that is not configured"
+  mode="docs"
+  fallback="Most Harness webhooks do not require authentication because the secret is in the URL path. For a challenge response, contact Harness support. For SNS subscription confirmation with AWS CloudWatch, follow the CloudWatch guide, and confirm the webhook URL includes the secret key portion."
+/>
 
 ---
 
-## Best Practices
+## Best practices
 
-### Configuration Management
+### Configuration management
 
-- **Document webhook URLs**: Store webhook URLs securely (they contain secrets)
-- **Use descriptive names**: Name webhooks clearly in both systems
-- **Version control**: Document webhook configurations in runbooks
-- **Test thoroughly**: Always test before relying on webhooks in production
+- **Document webhook URLs:** Store webhook URLs securely (they contain secrets).
+- **Use descriptive names:** Name webhooks clearly in both systems.
+- **Version control:** Document webhook configurations in runbooks.
+- **Test thoroughly:** Always test before relying on webhooks in production.
 
 ### Security
 
-- **Protect webhook URLs**: Treat webhook URLs as secrets (they contain authentication)
-- **Rotate secrets**: If a webhook URL is compromised, delete and recreate the integration
-- **Limit access**: Only authorized users should access webhook configuration
-- **Use HTTPS**: All Harness webhooks use HTTPS by default
+- **Protect webhook URLs:** Treat webhook URLs as secrets (they contain authentication).
+- **Rotate secrets:** If a webhook URL is compromised, delete and recreate the integration.
+- **Limit access:** Only authorized users should access webhook configuration.
+- **Use HTTPS:** All Harness webhooks use HTTPS by default.
 
 ### Maintenance
 
-- **Monitor webhook health**: Check delivery success rates in external systems
-- **Update on platform changes**: External system updates may change payload structure
-- **Clean up unused webhooks**: Delete integrations that are no longer needed
-- **Document changes**: Record any modifications to webhook configuration
+- **Monitor webhook health:** Check delivery success rates in external systems.
+- **Update on platform changes:** External system updates may change payload structure.
+- **Clean up unused webhooks:** Delete integrations that are no longer needed.
+- **Document changes:** Record any modifications to webhook configuration.
 
 ### Performance
 
-- **Batch when possible**: Some tools support batching multiple events
-- **Set appropriate retry policies**: Configure external system retry behavior
-- **Monitor volume**: High-volume webhooks may require rate limiting
-- **Use filters**: Only send relevant events to reduce noise
+- **Batch when possible:** Some tools support batching multiple events.
+- **Set appropriate retry policies:** Configure external system retry behavior.
+- **Monitor volume:** High-volume webhooks may require rate limiting.
+- **Use filters:** Only send relevant events to reduce noise.
 
 ---
 
-## Next Steps
+## Next steps
 
-### Get Started
-- Go to [Ingest Alerts](/docs/ai-sre/alerts/webhooks/overview) to create a webhook integration in Harness.
-- Go to [Webhook Templates](/docs/ai-sre/alerts/webhooks/templates/overview) to browse available templates.
-- Go to [Use CEL in Webhooks](/docs/ai-sre/alerts/webhooks/use-cel-webhooks) to filter webhook payloads.
+### Get started
+- [Ingest Alerts](/docs/ai-sre/alerts/webhooks/overview): Create a webhook integration in Harness.
+- [Webhook Templates](/docs/ai-sre/alerts/webhooks/templates/overview): Browse available templates.
+- [Use CEL in Webhooks](/docs/ai-sre/alerts/webhooks/use-cel-webhooks): Filter webhook payloads.
 
-### Advanced Configuration
-- Go to [Route Alerts](/docs/ai-sre/alerts/alert-rules/overview) to route and process webhook-generated alerts.
-- Go to [Create a Runbook](/docs/ai-sre/runbooks/create-runbook) to automate responses to webhook alerts.
-- Go to [AI SRE Best Practices](/docs/ai-sre/resources/ai-sre-best-practices) for webhook integration optimization.
+### Advanced configuration
+- [Route Alerts](/docs/ai-sre/alerts/alert-rules/overview): Route and process webhook-generated alerts.
+- [Create a Runbook](/docs/ai-sre/runbooks/create-runbook): Automate responses to webhook alerts.
+- [AI SRE Best Practices](/docs/ai-sre/resources/ai-sre-best-practices): Optimize webhook integrations.
 
-### Get Help
+### Get help
 If you encounter issues not covered in these guides:
-- Check the external system's official webhook documentation
-- Review the webhook event log in Harness for detailed error messages
-- Contact Harness support with webhook delivery logs from both systems
+- Go to the external system's official webhook documentation to confirm required settings.
+- Review the webhook event log in Harness for detailed error messages.
+- Contact Harness support with webhook delivery logs from both systems.

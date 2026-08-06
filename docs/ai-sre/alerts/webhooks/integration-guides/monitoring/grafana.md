@@ -3,21 +3,29 @@ title: Grafana Integration Guide
 description: Send unified alerting through webhooks.
 sidebar_label: Grafana
 sidebar_position: 3
+keywords:
+  - Grafana
+  - webhook
+  - AI SRE
+  - integration
+tags:
+  - ai-sre
+  - webhooks
+  - grafana
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
-# Configure Grafana to Send Webhooks
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
 Configure Grafana Unified Alerting to send webhook notifications to Harness AI SRE when alerts fire.
 
 ## Before you begin
 
-- **Harness webhook endpoint**: Create a Grafana webhook in Harness AI SRE using the [Grafana webhook template](../../templates/monitoring/grafana.md).
+- **Harness webhook endpoint**: Create a Grafana webhook in Harness AI SRE using the [Grafana webhook template](/docs/ai-sre/alerts/webhooks/templates/monitoring/grafana).
 - **Grafana access**: Admin permissions to configure contact points and notification policies.
 - **Webhook URL**: Copy the webhook URL from your Harness webhook configuration.
-- **Grafana version**: This guide covers Grafana 8.0+ with Unified Alerting. For legacy alerting, see Grafana documentation.
+- **Grafana version**: This guide covers Grafana 8.0+ with Unified Alerting. For legacy alerting, go to the Grafana documentation.
 - **Unified Alerting documentation**: Go to [Grafana Unified Alerting](https://grafana.com/docs/grafana/latest/alerting/) to understand contact points and notification policies.
 - **Webhook configuration reference**: Go to [Manage Contact Points](https://grafana.com/docs/grafana/latest/alerting/configure-notifications/manage-contact-points/) for webhook setup details.
 
@@ -27,7 +35,7 @@ Configure Grafana Unified Alerting to send webhook notifications to Harness AI S
 
 ### Navigate to alerting configuration
 
-1. In Grafana, go to **Alerting** → **Contact points**
+1. In Grafana, go to **Alerting**, then select **Contact points**
 2. Click **New contact point**
 
 ### Configure webhook contact point
@@ -85,7 +93,7 @@ Click **Save contact point** to create the webhook integration.
 
 ### Edit default notification policy
 
-1. Go to **Alerting** → **Notification policies**
+1. Go to **Alerting**, then select **Notification policies**
 2. Edit the **Default policy** or create a new nested policy
 3. Select **Harness AI SRE** as the contact point
 
@@ -214,7 +222,7 @@ filter: webhook.status == "firing" && size(webhook.alerts) > 0
 
 ### Create test alert rule
 
-1. Go to **Alerting** → **Alert rules**
+1. Go to **Alerting**, then select **Alert rules**
 2. Click **New alert rule**
 3. Configure a simple test rule:
    - **Alert rule name**: `Test Harness Integration`
@@ -232,9 +240,9 @@ filter: webhook.status == "firing" && size(webhook.alerts) > 0
 
 ### Verify in Grafana
 
-1. Go to **Alerting** → **Alert rules**
+1. Go to **Alerting**, then select **Alert rules**
 2. Wait for the rule to evaluate and fire
-3. Check **Contact points** → **Harness AI SRE** for recent notifications
+3. Check **Contact points**, then **Harness AI SRE**, for recent notifications
 
 ### Verify in Harness
 
@@ -324,49 +332,29 @@ tags: size(webhook.alerts) > 0
 
 ## Troubleshooting
 
-### Webhook not sending
+<Troubleshoot
+  issue="Grafana webhook is not sending notifications to Harness AI SRE"
+  mode="docs"
+  fallback="Test the contact point from the Grafana UI, check the Grafana logs, verify the webhook URL is accessible from the Grafana server, and check for a firewall or proxy blocking outbound requests."
+/>
 
-**Cause**: Contact point configuration error or network issue.
+<Troubleshoot
+  issue="Grafana alerts are not appearing in Harness AI SRE"
+  mode="docs"
+  fallback="Check the Harness webhook logs for errors, inspect the raw payload in the Grafana contact point test, verify the CEL filter logic by temporarily removing the filter, and ensure the required fields exist in the payload."
+/>
 
-**Solution**:
-- Test contact point from Grafana UI
-- Check Grafana logs: `docker logs grafana` or check `/var/log/grafana/`
-- Verify webhook URL is accessible from Grafana server
-- Check for firewall or proxy blocking outbound requests
+<Troubleshoot
+  issue="Resolved Grafana alerts are not clearing in Harness AI SRE"
+  mode="docs"
+  fallback="Ensure 'Disable resolved message' is unchecked in the contact point, and handle the resolved status in the Harness CEL mapping."
+/>
 
-### Alerts not appearing in Harness
-
-**Cause**: Field mapping incorrect or CEL filter blocking.
-
-**Solution**:
-- Check Harness webhook logs for errors
-- Inspect raw payload in Grafana contact point test
-- Verify CEL filter logic (temporarily remove filter to test)
-- Ensure required fields exist in payload
-
-### Resolved alerts not clearing
-
-**Cause**: Resolved notifications disabled in contact point.
-
-**Solution**:
-- Ensure **Disable resolved message** is unchecked in contact point
-- Handle resolved status in Harness CEL:
-
-```cel
-severity: webhook.status == "resolved" ? "info" :
-          (webhook.commonLabels.severity == "critical" ? "critical" : "high")
-```
-
-### Duplicate alerts
-
-**Cause**: Notification policy routing or Grafana grouping configuration.
-
-**Solution**:
-- Review notification policy routes (ensure no overlapping matchers)
-- Adjust group wait/interval in notification policy:
-  - **Group wait**: `10s`
-  - **Group interval**: `5m`
-  - **Repeat interval**: `4h`
+<Troubleshoot
+  issue="Grafana is creating duplicate alerts in Harness AI SRE"
+  mode="docs"
+  fallback="Review the notification policy routes to ensure no overlapping matchers, and adjust the group wait, group interval, and repeat interval in the notification policy."
+/>
 
 ---
 
@@ -447,17 +435,17 @@ custom_fields:
 
 ## Next steps
 
-- Go to [Route Alerts](../../../alert-rules/overview.md) to route and deduplicate Grafana alerts.
-- Go to [Use CEL in Webhooks](../../use-cel-webhooks.md) to add custom filtering logic.
-- Go to [AI Agent](../../../../ai-agent/ai-agent.md) to enable automated alert investigation.
-- Go to [Grafana Template](../../templates/monitoring/grafana.md) for the pre-configured template.
+- [Route alerts](/docs/ai-sre/alerts/alert-rules/overview): Route and deduplicate Grafana alerts.
+- [Use CEL in webhooks](/docs/ai-sre/alerts/webhooks/use-cel-webhooks): Add custom filtering logic.
+- [AI agent](/docs/ai-sre/ai-agent): Enable automated alert investigation.
+- [Grafana template](/docs/ai-sre/alerts/webhooks/templates/monitoring/grafana): Use the pre-configured template.
 
 ---
 
 ## Further reading
 
-### Grafana Official Documentation
-- [Unified Alerting](https://grafana.com/docs/grafana/latest/alerting/) - Complete guide to Grafana Unified Alerting, contact points, and notification policies
-- [Manage Contact Points](https://grafana.com/docs/grafana/latest/alerting/configure-notifications/manage-contact-points/) - Webhook contact point setup and configuration options
-- [Template Notifications](https://grafana.com/docs/grafana/latest/alerting/configure-notifications/template-notifications/) - Webhook payload structure and available fields
-- [Webhook Notifier](https://grafana.com/docs/grafana/latest/alerting/configure-notifications/webhook-notifier/) - Complete payload structure reference (alerts array, labels, annotations, URLs)
+### Grafana official documentation
+- [Unified Alerting](https://grafana.com/docs/grafana/latest/alerting/): Complete guide to Grafana Unified Alerting, contact points, and notification policies.
+- [Manage contact points](https://grafana.com/docs/grafana/latest/alerting/configure-notifications/manage-contact-points/): Webhook contact point setup and configuration options.
+- [Template notifications](https://grafana.com/docs/grafana/latest/alerting/configure-notifications/template-notifications/): Webhook payload structure and available fields.
+- [Webhook notifier](https://grafana.com/docs/grafana/latest/alerting/configure-notifications/webhook-notifier/): Complete payload structure reference (alerts array, labels, annotations, URLs).

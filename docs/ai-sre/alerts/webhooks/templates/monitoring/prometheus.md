@@ -3,20 +3,30 @@ title: Prometheus AlertManager Integration Webhook Template
 description: Receive cloud-native monitoring alerts.
 sidebar_label: Prometheus AlertManager Webhook Template
 sidebar_position: 12
+keywords:
+  - Prometheus
+  - AlertManager
+  - webhook
+  - template
+  - integration
+  - AI SRE
+  - alerts
+tags:
+  - ai-sre
+  - webhooks
+  - prometheus
 ---
-
-# Prometheus AlertManager Integration Webhook Template
 
 Configure Prometheus AlertManager integration to receive cloud-native monitoring alerts in Harness AI SRE.
 
 ## Overview
 
 Prometheus AlertManager provides:
-- **AlertManager rules**: Forward alerts from Prometheus AlertManager
-- **PromQL alerts**: Query-based metric alerting
-- **Service discovery**: Automatic target discovery
-- **Label mapping**: Rich metadata from Prometheus labels
-- **Metric correlation**: Link to underlying time-series data
+- **AlertManager rules:** Forward alerts from Prometheus AlertManager
+- **PromQL alerts:** Query-based metric alerting
+- **Service discovery:** Automatic target discovery
+- **Label mapping:** Rich metadata from Prometheus labels
+- **Metric correlation:** Link to underlying time-series data
 
 ---
 
@@ -33,7 +43,7 @@ Prometheus AlertManager provides:
 
 ---
 
-## Example Alert Payload
+## Example alert payload
 
 ```json
 {
@@ -77,7 +87,7 @@ Prometheus AlertManager provides:
 
 ---
 
-## Next Steps
+## Next steps
 
-- Go to [Route Alerts](../../../alert-rules/overview.md) to route Prometheus alerts.
-- Go to [Ingest Alerts Overview](../overview.md) to view other integrations.
+- [Route alerts](/docs/ai-sre/alerts/alert-rules/overview): Route Prometheus alerts to the right destinations.
+- [Ingest alerts overview](/docs/ai-sre/alerts/webhooks/templates/overview): View other integrations.

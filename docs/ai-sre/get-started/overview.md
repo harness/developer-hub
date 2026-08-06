@@ -5,9 +5,19 @@ redirect_from:
 - /docs/incident-response/getting-started/
 sidebar_label: Overview and Key Features
 description: What AI SRE does and its key capabilities for incident response.
+keywords:
+  - ai sre
+  - incident response
+  - harness ai sre
+  - incident management
+  - runbooks
+  - on-call
+tags:
+  - ai-sre
+  - incident-response
+  - harness-ai-sre
+  - getting-started
 ---
-
-# Harness AI SRE Module
 
 ## Overview
 
@@ -20,7 +30,7 @@ The AI SRE Overview Dashboard shows the current state of your systems and incide
 
 ---
 
-## AI Agents
+## AI agents
 
 Two AI agents run automatically during an incident and work together as it unfolds.
 
@@ -44,7 +54,7 @@ The scores update as new events come in, so the analysis stays current throughou
 
 ---
 
-## Alerts and Incidents
+## Alerts and incidents
 
 Harness AI SRE gives you a unified view of incoming signals and active incidents. Alerts identify problems from your monitoring tools and incidents provide a structured workspace for coordinating the response.
 
@@ -68,7 +78,7 @@ Once an incident is open, it links to the affected services, the runbooks that h
 
 ---
 
-## Runbooks and Actions
+## Runbooks and actions
 
 Runbooks and actions let you codify your response procedures so they execute consistently every time. Runbooks define the overall sequence, while actions are the individual steps that carry it out.
 
@@ -91,7 +101,7 @@ Actions that talk to external systems run through a [Harness Delegate](/docs/pla
 
 ---
 
-## On-Call Management
+## On-call management
 
 On-call management lets you define who is responsible and how they get notified. You set up rotation schedules, escalation policies, and notification channels so the right person is always reachable.
 
@@ -106,7 +116,7 @@ Currently, this feature is behind a feature flag. Contact [Harness Support](mail
 
 ---
 
-## Fire Drills
+## Fire drills
 
 Fire drills let you test your incident response process before a real incident happens. You can run them manually or kick them off through a chaos experiment.
 
@@ -122,7 +132,7 @@ Currently, this feature is behind a feature flag. Contact [Harness Support](mail
 
 ---
 
-## Change Events
+## Change events
 
 Change events track modifications to your system that could cause problems: code commits, deployments, feature flag changes, infrastructure updates, and third-party changes.
 

@@ -3,11 +3,17 @@ title: Automate Incident Response with Runbooks
 description: Drive incidents to resolution with runbooks and triggers.
 sidebar_label: Automate Incident Response
 sidebar_position: 3
+keywords:
+  - incident workflows
+  - runbooks
+  - triggers
+  - automation
+  - integrations
+tags:
+  - ai-sre
 redirect_from:
 - /docs/incident-response/incidents/incident-workflows
 ---
-
-# Automate Incident Response with Runbooks
 
 Learn how to automate incident response workflows in Harness AI SRE using runbooks, triggers, and integrations.
 
@@ -27,13 +33,13 @@ Workflow automation in AI SRE uses **form-based UI configuration with Mustache t
 
 ---
 
-## Automation Patterns
+## Automation patterns
 
-### Pattern 1: Alert Detection → Incident Creation
+### Pattern 1: Alert detection to incident creation
 
-**Use case**: Automatically create incidents from high-severity alerts
+**Use case:** Automatically create incidents from high-severity alerts
 
-**How to configure**:
+**How to configure:**
 
 1. Navigate to **Alerts** → **Route Alerts**
 2. Click **Create Alert Rule**
@@ -48,13 +54,13 @@ Workflow automation in AI SRE uses **form-based UI configuration with Mustache t
        - Severity: `{{alert.priority}}`
 4. Click **Save**
 
-**Result**: When P1 or P2 alerts are received, incidents are automatically created with pre-populated fields.
+**Result:** When P1 or P2 alerts are received, incidents are automatically created with pre-populated fields.
 
-### Pattern 2: Incident Creation → Automated Response
+### Pattern 2: Incident creation to automated response
 
-**Use case**: When a P1 incident is created, automatically notify on-call, create Zoom bridge, and trigger diagnostic runbook
+**Use case:** When a P1 incident is created, automatically notify on-call, create Zoom bridge, and trigger diagnostic runbook
 
-**How to configure**:
+**How to configure:**
 
 1. Create a runbook for P1 response:
    - Navigate to **Runbooks** → **Create Runbook**
@@ -85,13 +91,13 @@ Workflow automation in AI SRE uses **form-based UI configuration with Mustache t
      - `incident.severity` equals `SEV0` OR `SEV1`
    - Click **Save**
 
-**Result**: P1 incidents automatically trigger the runbook, creating a Zoom bridge and notifying responders.
+**Result:** P1 incidents automatically trigger the runbook, creating a Zoom bridge and notifying responders.
 
-### Pattern 3: Status Change → Stakeholder Notification
+### Pattern 3: Status change to stakeholder notification
 
-**Use case**: When incident status changes to "Resolved", notify stakeholders and create post-incident review task
+**Use case:** When incident status changes to "Resolved", notify stakeholders and create post-incident review task
 
-**How to configure**:
+**How to configure:**
 
 1. Create a runbook:
    - **Name**: "Incident Resolution Workflow"
@@ -125,13 +131,13 @@ Workflow automation in AI SRE uses **form-based UI configuration with Mustache t
    - **Field**: Status
    - **New Value**: Resolved
 
-**Result**: When incidents are marked resolved, stakeholders are notified and a review task is created in Jira.
+**Result:** When incidents are marked resolved, stakeholders are notified and a review task is created in Jira.
 
-### Pattern 4: Time-Based Escalation
+### Pattern 4: Time-based escalation
 
-**Use case**: If a P1 incident is not acknowledged within 5 minutes, escalate to VP Engineering
+**Use case:** If a P1 incident is not acknowledged within 5 minutes, escalate to VP Engineering
 
-**How to configure**:
+**How to configure:**
 
 1. Create escalation runbook:
    - **Name**: "P1 Escalation"
@@ -158,13 +164,13 @@ Workflow automation in AI SRE uses **form-based UI configuration with Mustache t
    - **Delay**: 5 minutes
    - **Only run if**: `incident.status` not equals `Acknowledged`
 
-**Result**: If P1 incidents remain unacknowledged for 5 minutes, executives are paged.
+**Result:** If P1 incidents remain unacknowledged for 5 minutes, executives are paged.
 
-### Pattern 5: Deployment Change → Proactive Investigation
+### Pattern 5: Deployment change to proactive investigation
 
-**Use case**: When a deployment occurs, automatically check for related alerts and create incident if errors spike
+**Use case:** When a deployment occurs, automatically check for related alerts and create incident if errors spike
 
-**How to configure**:
+**How to configure:**
 
 1. Send deployment webhooks to AI SRE:
    - Configure your CI/CD pipeline to POST deployment events to:
@@ -191,38 +197,38 @@ Workflow automation in AI SRE uses **form-based UI configuration with Mustache t
 
 ---
 
-## Runbook Components
+## Runbook components
 
 ### Actions
 
 Runbooks execute sequences of actions. Available action types:
 
-#### Communication Actions
+#### Communication actions
 - **Slack: Post Message** - Send formatted messages to Slack channels
 - **Slack: Update Message** - Update existing Slack messages
 - **Microsoft Teams: Post Message** - Send messages to Teams channels
 - **Google Chat: Post Message** - Send messages to Google Chat spaces
 - **Zoom: Create Meeting** - Generate instant Zoom bridges
 
-#### Ticketing Actions
+#### Ticketing actions
 - **Jira: Create Issue** - Create Jira tickets with incident context
 - **Jira: Update Issue** - Update existing Jira issues
 - **ServiceNow: Create Incident** - Create ServiceNow incidents
 - **ServiceNow: Update Incident** - Update ServiceNow incidents
 
-#### Deployment Actions
+#### Deployment actions
 - **Harness: Run Pipeline** - Trigger Harness CD pipelines (rollback, scale, deploy)
 
-#### On-Call Actions
+#### On-call actions
 - **Page Service** - Page the on-call responders for a service
 - **Page User** - Directly page a specific user
 - **Page Team** - Page all members of a team
 
-#### Custom Actions
+#### Custom actions
 - **HTTP Request** - Call any REST API
 - **Script** - Run custom JavaScript/Python logic
 
-### Action Inputs
+### Action inputs
 
 Actions use form-based configuration with Mustache template support:
 
@@ -233,13 +239,13 @@ Service: {{incident.service}}
 Owner: {{incident.owner}}
 ```
 
-**Available variables**:
+**Available variables:**
 - `{{incident.*}}` - Current incident fields (title, severity, service, owner, status, etc.)
 - `{{alert.*}}` - Alert fields if runbook triggered by alert rule
 - `{{runbook.outputs.*}}` - Outputs from previous actions in the runbook
 - `{{user.*}}` - User who triggered the runbook (name, email)
 
-**Example: Reference previous action output**
+**Example: reference previous action output**
 ```
 Action 1: Zoom: Create Meeting
   → Outputs: join_url, meeting_id
@@ -252,12 +258,12 @@ Action 2: Slack: Post Message
 
 Runbooks can be triggered:
 
-#### Manual Execution
+#### Manual execution
 - Run from incident timeline
 - Run from pinned runbooks list
 - Run via `/harness run <slug>` Slack command
 
-#### Automatic Triggers
+#### Automatic triggers
 
 **Incident Created**
 - Condition: `incident.severity in [SEV0, SEV1]`
@@ -279,14 +285,14 @@ Runbooks can be triggered:
 
 Trigger conditions use field comparisons:
 
-**Operators**:
+**Operators:**
 - `equals`, `not_equals`
 - `in`, `not_in` (for arrays)
 - `changed_to`, `changed_from` (for field updates)
 - `contains`, `not_contains` (for strings)
 - `greater_than`, `less_than` (for numbers)
 
-**Examples**:
+**Examples:**
 ```
 incident.severity in [SEV0, SEV1]
 incident.service equals payment-service
@@ -296,11 +302,11 @@ alert.priority equals p1_critical
 
 ---
 
-## Integration Examples
+## Integration examples
 
-### Slack Incident Channel Creation
+### Slack incident channel creation
 
-**Goal**: Create a dedicated Slack channel for each P1 incident
+**Goal:** Create a dedicated Slack channel for each P1 incident
 
 1. Enable Slack integration:
    - Navigate to **Project Settings** → **Integrations**
@@ -327,11 +333,11 @@ alert.priority equals p1_critical
    - **Trigger Type**: Incident Created
    - **Conditions**: `incident.severity in [SEV0, SEV1]`
 
-### Jira Bidirectional Sync
+### Jira bidirectional sync
 
-**Goal**: Create Jira tickets for incidents and sync status updates
+**Goal:** Create Jira tickets for incidents and sync status updates
 
-**Outbound (AI SRE → Jira)**:
+**Outbound (AI SRE to Jira):**
 
 1. Create runbook:
    - Action: **Jira: Create Issue**
@@ -348,7 +354,7 @@ alert.priority equals p1_critical
 
 2. Trigger: Incident Created with severity P1/P2
 
-**Inbound (Jira → AI SRE)**:
+**Inbound (Jira to AI SRE):**
 
 Requires custom configuration using Jira Automation Rules:
 
@@ -360,11 +366,11 @@ Requires custom configuration using Jira Automation Rules:
      - Method: PUT
      - Body: `{"status": "{{issue.status}}"}`
 
-Go to [Jira Integration Guide](../runbooks/integrations/ticketing/jira.md) for complete setup instructions.
+Go to the [Jira integration guide](/docs/ai-sre/runbooks/integrations/ticketing/jira) to complete setup.
 
-### ServiceNow Change Correlation
+### ServiceNow change correlation
 
-**Goal**: Automatically surface ServiceNow change requests in incident investigations
+**Goal:** Automatically surface ServiceNow change requests in incident investigations
 
 1. Configure ServiceNow connector:
    - Navigate to **Project Settings** → **Connectors**
@@ -382,34 +388,34 @@ Go to [Jira Integration Guide](../runbooks/integrations/ticketing/jira.md) for c
    - Go to **Investigation** tab
    - ServiceNow changes appear as root cause theories
 
-Go to [RCA Change Agent](../ai-agent/rca-change-agent.md) for more details.
+Go to the [RCA Change Agent](/docs/ai-sre/ai-agent/rca-change-agent) to review more details.
 
 ---
 
-## Best Practices
+## Best practices
 
-### Start Simple
+### Start simple
 - Begin with 1-2 critical workflows (e.g., P1 notifications)
 - Add automation incrementally as you validate effectiveness
 - Avoid over-automating before processes are stable
 
-### Test Thoroughly
+### Test thoroughly
 - Use runbook test mode to validate actions without creating real incidents
 - Test with non-production services first
 - Verify Mustache variables render correctly with sample data
 
-### Handle Failures Gracefully
+### Handle failures gracefully
 - Add error notifications if critical actions fail
 - Use HTTP action retries for flaky APIs
 - Monitor runbook execution logs for patterns
 
-### Monitor Effectiveness
+### Monitor effectiveness
 - Track runbook execution success rates
 - Measure time-to-response improvements
 - Gather feedback from incident responders
 - Iterate based on what works
 
-### Document Runbook Purpose
+### Document runbook purpose
 - Add clear descriptions to each runbook
 - Document what triggers it and what it does
 - Note any prerequisites (credentials, permissions)
@@ -417,10 +423,10 @@ Go to [RCA Change Agent](../ai-agent/rca-change-agent.md) for more details.
 
 ---
 
-## Related Documentation
+## Related documentation
 
-- [Create a Runbook](../runbooks/create-runbook.md) - Detailed runbook creation guide
-- [Runbook Triggers](../runbooks/triggers/create-trigger.md) - Configure automatic execution
-- [Route Alerts](../alerts/alert-rules/overview.md) - Route alerts and auto-create incidents
-- [Slack Integration](../runbooks/integrations/collaboration/slack.md) - Slack action reference
-- [Jira Integration](../runbooks/integrations/ticketing/jira.md) - Jira action reference
+- [Create a runbook](/docs/ai-sre/runbooks/create-runbook): Detailed runbook creation guide.
+- [Runbook triggers](/docs/ai-sre/runbooks/triggers/create-trigger): Configure automatic execution.
+- [Route alerts](/docs/ai-sre/alerts/alert-rules/overview): Route alerts and auto-create incidents.
+- [Slack integration](/docs/ai-sre/runbooks/integrations/collaboration/slack): Slack action reference.
+- [Jira integration](/docs/ai-sre/runbooks/integrations/ticketing/jira): Jira action reference.

@@ -20,9 +20,9 @@ Send build and deployment data from CircleCI workflows to the [Deploy Change Inv
 
 ## Before you begin
 
-- **Deploy Change Investigator setup**: Build and deploy webhook integrations created in AI SRE. Go to [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) to create webhook endpoints.
-- **CircleCI project access**: Permission to edit `.circleci/config.yml` and manage environment variables.
-- **Webhook URLs**: Build and deploy webhook URLs from AI SRE integrations page.
+- **Deploy Change Investigator setup:** Build and deploy webhook integrations created in AI SRE. Go to [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) to create webhook endpoints.
+- **CircleCI project access:** Permission to edit `.circleci/config.yml` and manage environment variables.
+- **Webhook URLs:** Build and deploy webhook URLs from the AI SRE integrations page.
 
 ---
 
@@ -30,7 +30,7 @@ Send build and deployment data from CircleCI workflows to the [Deploy Change Inv
 
 Store webhook URLs securely in CircleCI project settings:
 
-1. Navigate to project in CircleCI dashboard
+1. Navigate to your project in the CircleCI dashboard
 2. Click **Project Settings**
 3. Select **Environment Variables**
 4. Click **Add Environment Variable**
@@ -434,28 +434,28 @@ Use the same variable (`$CIRCLE_SHA1`) in both build and deploy webhooks to ensu
 
 ### Test build webhook
 
-1. Push a commit to trigger build
-2. Check build logs for webhook step
-3. Verify curl command executed successfully
-4. Navigate to **AI SRE** → **Integrations**
-5. Click **...** menu on BUILD integration
+1. Push a commit to trigger a build
+2. Check build logs for the webhook step
+3. Verify the curl command executed successfully
+4. Navigate to **AI SRE**, then select **Integrations**
+5. Click the **More** icon on the BUILD integration
 6. Select **Debug**
-7. Verify webhook appears with correct payload
+7. Verify the webhook appears with the correct payload
 
 ### Test deploy webhook
 
-1. Trigger deployment workflow
-2. Check deployment job logs
-3. Navigate to **AI SRE** → **Integrations**
-4. Click **...** menu on DEPLOY integration
+1. Trigger the deployment workflow
+2. Check the deployment job logs
+3. Navigate to **AI SRE**, then select **Integrations**
+4. Click the **More** icon on the DEPLOY integration
 5. Select **Debug**
-6. Verify webhook appears
+6. Verify the webhook appears
 
 ### Verify correlation
 
 After sending both webhooks:
 
-1. Navigate to **AI SRE** → **Change Management**
+1. Navigate to **AI SRE**, then select **Change Management**
 2. Deployments should appear linked to builds
 3. Click a deployment to see artifact versions and commit information
 
@@ -485,6 +485,6 @@ After sending both webhooks:
 
 ## Next steps
 
-- Go to [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) for complete setup instructions.
-- Go to [AI Agent RCA](/docs/ai-sre/ai-agent/rca-change-agent) to learn how the AI agent uses change detection during incidents.
-- Go to [Configure Jenkins](/docs/ai-sre/change/sources/jenkins) for webhook setup in Jenkins pipelines.
+- Go to [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) to complete the setup.
+- Go to [AI Agent RCA](/docs/ai-sre/ai-agent/rca-change-agent) to understand how the AI agent uses change detection during incidents.
+- Go to [Configure Jenkins](/docs/ai-sre/change/sources/jenkins) to set up webhooks in Jenkins pipelines.

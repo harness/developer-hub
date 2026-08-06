@@ -3,37 +3,45 @@ title: Grafana Integration Webhook Template
 description: Receive unified alerting from any data source.
 sidebar_label: Grafana Webhook Template
 sidebar_position: 5
+keywords:
+  - Grafana
+  - webhook
+  - monitoring
+  - alerts
+  - AI SRE
+tags:
+  - ai-sre
+  - webhooks
+  - monitoring
 ---
-
-# Grafana Integration Webhook Template
 
 Configure Grafana integration to receive unified alerting from any data source in Harness AI SRE.
 
 ## Overview
 
 Grafana provides:
-- **Alert rules sync**: Forward alerts from Grafana alert manager
-- **Dashboard linking**: Link to relevant dashboards
-- **Metric exploration**: Connect to underlying metrics
-- **Team mapping**: Organize alerts by team
-- **Source correlation**: Track alert sources
+- **Alert rules sync:** Forward alerts from Grafana alert manager
+- **Dashboard linking:** Link to relevant dashboards
+- **Metric exploration:** Connect to underlying metrics
+- **Team mapping:** Organize alerts by team
+- **Source correlation:** Track alert sources
 
 ---
 
 ## Set up Grafana integration
 
-1. Navigate to **Integrations** in the main menu
-2. Click **New Integration**
-3. Select **Grafana** from the template options
-4. Enter a name and generate an ID
-5. Copy the generated webhook URL
-6. In your Grafana instance, configure a contact point with webhook type pointing to the copied URL
-7. Configure payload mapping to match Grafana alert fields to Harness AI SRE fields
-8. Set up route alerts to route and filter incoming Grafana alerts
+1. Navigate to **Integrations** in the main menu.
+2. Click **New Integration**.
+3. Select **Grafana** from the template options.
+4. Enter a name and generate an ID.
+5. Copy the generated webhook URL.
+6. In your Grafana instance, configure a contact point with webhook type pointing to the copied URL.
+7. Configure payload mapping to match Grafana alert fields to Harness AI SRE fields.
+8. Set up route alerts to route and filter incoming Grafana alerts.
 
 ---
 
-## Example Alert Payload
+## Example alert payload
 
 ```json
 {
@@ -79,7 +87,7 @@ Grafana provides:
 
 ---
 
-## Next Steps
+## Next steps
 
-- Go to [Route Alerts](../../../alert-rules/overview.md) to route Grafana alerts.
-- Go to [Ingest Alerts Overview](../overview.md) to view other integrations.
+- Go to [Route Alerts](/docs/ai-sre/alerts/alert-rules/overview) to route Grafana alerts.
+- Go to [Ingest Alerts Overview](/docs/ai-sre/alerts/webhooks/templates/overview) to view other integrations.
