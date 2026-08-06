@@ -951,7 +951,7 @@ The server includes 27 pre-built prompt templates for common workflows.
 
 ## Elicitation
 
-Write tools (`harness_create`, `harness_update`, `harness_delete`, `harness_execute`) use [MCP elicitation](https://modelcontextprotocol.io/specification/2025-03-26/server/utilities/elicitation) to prompt the user for confirmation before making changes.
+Write tools (`harness_create`, `harness_update`, `harness_delete`, `harness_execute`) use [MCP elicitation](https://modelcontextprotocol.io/specification/2026-07-28/client/elicitation#elicitation) to prompt the user for confirmation before making changes.
 
 1. The LLM calls a write tool (for example, `harness_create` with a pipeline body).
 2. The server sends an elicitation request to the client with a summary of the operation.
