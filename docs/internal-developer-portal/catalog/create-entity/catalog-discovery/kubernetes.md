@@ -18,6 +18,8 @@ For each service, the integration collects the following:
 | **Pods** | Pod-level detail including phase, pod and host IP, node, service account, start time, and per-container status. |
 | **Nodes** | Node detail including kubelet version, OS, architecture, zone, capacity, and node conditions. |
 | **Containers** | Container images, ports, environment variables, health probes, and volume mounts. |
+| **HPA** | Autoscaler configuration for workloads managed by a HorizontalPodAutoscaler, including minimum, maximum, and desired replica counts, and per-metric scaling targets and current values. |
+| **Routing** | Ingress rules routing traffic to the service, including host, path, path type, backend service and port, and load balancer address. Where Istio is installed, also shows Istio Virtual Services (routing rules with destination host, subset, port, and traffic weight) and Istio Gateways (port, protocol, hosts, and TLS mode). |
 
 :::info Using an older version of the Kubernetes integration?
 * (BETA) To see Workloads, Pods, Nodes, and Containers data and near real time updates, you may create a new Kubernetes integration having a [discovery agent with persistent agent mode enabled](#2-choose-a-discovery-agent).
@@ -34,6 +36,18 @@ The following are needed to get the integration running:
 * Ensure the feature flag `IDP_INTEGRATIONS` is enabled. Contact [Harness Support](mailto:support@harness.io) to enable it.
 * You have the required RBAC permissions to manage integrations. All integration operations require the `IDP_INTEGRATION_EDIT` permission on the `IDP_INTEGRATION` resource type.
 * A [Self-hosted Discovery Agent (SDA)](/docs/platform/service-discovery/customize-agent) is installed and running in your Kubernetes cluster with permissions to list and watch services and deployments in the target namespaces.
+
+:::caution Action required for existing discovery agents
+To see autoscaling and routing data, you must install a new discovery agent.
+
+If you are using a custom ServiceAccount (via **Advanced Settings** → **Security** → **Use this Service Account**), Harness does not manage or create RBAC for it. You must also update its ClusterRole (for cluster-wide agents) or Role (for namespace-scoped agents) to add read access to the following resources:
+
+* `horizontalpodautoscalers` (API group: `autoscaling/v2` or `autoscaling/v1`)
+* `ingresses` (API group: `networking.k8s.io`)
+* `virtualservices`, `gateways` (API group: `networking.istio.io`). This is only required if you use Istio.
+
+Without this RBAC update, the autoscaling and routing sections will show no data for that cluster. Existing service discovery functionality is unaffected.
+:::
 
 ---
 
@@ -221,11 +235,52 @@ Click any row in the Kubernetes tab to open a detail drawer for that resource. T
 <DocImage path={require('./static/k8s-drawer.gif')} />
 
 * **Overview** - Workload summary for the resource. Includes its kind, status flags (for example, `Healthy`, `No Privileged`, `Pinned Images`, `Has Limits`), ready replica count, labels and annotations, deployment configuration (strategy, max surge, max unavailable, service account), container summary, volumes, conditions, and networking details.
+
+  If the workload is managed by a HorizontalPodAutoscaler (HPA), an **Autoscaling** section appears directly after the replica count, showing the following fields:
+
+  | Field | Description |
+  |---|---|
+  | **HPA name** | The name of the HorizontalPodAutoscaler resource. |
+  | **Min replicas** | The minimum number of replicas the HPA will scale down to. |
+  | **Max replicas** | The maximum number of replicas the HPA will scale up to. |
+  | **Desired replicas** | The replica count the HPA is currently targeting. |
+
+  A **Scaling Metrics** sub-section follows, with a table listing each configured metric (such as CPU utilization) with its **Target** and **Current** values.
+
+  <DocImage path={require('./static/autoscaling-k8s.png')} />
+
 * **Pods** - The pods that belong to the resource. Each pod shows its running status, pod IP, host IP, node placement, service account, start time, and per-container ready state and restart count.
 * **Nodes** - The nodes the resource is scheduled on. Each node shows its kubelet version, OS, architecture, zone, capacity, allocatable resources, and node conditions.
 * **Containers** - The containers in the resource, including image, ports, environment variables, health probes (liveness and readiness), and volume mounts.
+* **Routing** - Traffic routing resources associated with the service. This tab contains:
 
-When the discovery agent runs in persistent mode, this data updates in near real time. For example, changing a deployment's replica count or a change that makes a workload unhealthy is reflected on this tab shortly after it happens in the cluster.
+  * **Ingress**: Each Ingress resource that routes traffic to the service. The Ingress name and load balancer address appear at the top, followed by a table of routing rules with the following columns:
+
+    | Column | Description |
+    |---|---|
+    | **Host** | The hostname in the Ingress rule. |
+    | **Path** | The path in the Ingress rule. |
+    | **Path Type** | The path matching type (for example, `Prefix`). |
+    | **Backend Service** | The Kubernetes service that the rule routes to. |
+    | **Backend Port** | The port on the backend service. |
+
+    The Ingress class is shown as a separate row when a value is present; it is omitted if the field is absent.
+
+  * **Istio - Virtual Services**: Istio VirtualService resources associated with the service. For each VirtualService, the hosts and gateways it is bound to are shown, followed by a routing rules table with the following columns: Match, Destination Host, Subset, Port, and Weight.
+
+  * **Istio - Gateways**: Istio Gateway resources associated with the service. Shown as a table with the following columns: Name, Port, Protocol, Hosts, and TLS Mode.
+
+  The Istio sections appear only for clusters where Istio CRDs are detected. Clusters without Istio installed are unaffected.
+
+  The **Routing** tab only appears in the drawer when Ingress or Istio resources are present for the service. It is not shown for services with no routing resources.
+
+  <DocImage path={require('./static/k8s-routing.png')} />
+
+:::info Data refresh for autoscaling and routing
+Autoscaling (HPA) and Routing data refresh on the agent's scan, every 5 minutes by default. This is separate from the near real-time updates the persistent agent provides for workload, pod, and node data. Expect up to a 5-minute lag between a cluster change (such as an HPA scaling event or a new Ingress rule) and its appearance in the UI.
+:::
+
+When the discovery agent runs in persistent mode, workload, pod, node, and container data updates in near real time. For example, changing a deployment's replica count or a change that makes a workload unhealthy is reflected on this tab shortly after it happens in the cluster.
 
 :::info
 This integration surfaces resource state and status, not pod logs. Pod and container logs are not collected or displayed.
@@ -285,7 +340,11 @@ Deletion cannot be undone. If you need the integration again, you will have to s
 <details>
 <summary>How fresh is the Kubernetes data on my service?</summary>
 <div>
-It depends on how you have set up the discovery agent. A cron-based agent refreshes data on its schedule (for example, every 15 minutes), so the entity is only as current as the last run. A persistent agent watches the cluster and pushes changes as they happen, so data updates in near real time.
+It depends on the type of data and how you have set up the discovery agent.
+
+For workload, pod, node, and container data: a cron-based agent refreshes on its schedule (for example, every 15 minutes), so the entity is only as current as the last run. A persistent agent watches the cluster and pushes changes as they happen, so this data updates in near real time.
+
+For autoscaling (HPA) and routing (Ingress, Istio) data: these refresh on the agent's scan, every 5 minutes by default, regardless of whether the agent runs in persistent or cron mode. Expect up to a 5-minute lag after a cluster change before it appears in the UI.
 </div>
 </details>
 
