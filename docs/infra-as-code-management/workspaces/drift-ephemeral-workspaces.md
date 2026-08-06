@@ -19,17 +19,8 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-<CTABanner
-  buttonText="Contact Harness Support"
-  title="Coming soon!"
-  tagline="Drift Detection and Ephemeral Workspaces is currently pending release. Contact Harness Support to request access."
-  link="mailto:support@harness.io"
-  closable={true}
-  target="_blank"
-/>
-
 :::warning Pending release
-Drift Detection and Ephemeral Workspaces is currently pending release and is enabled per account. To request access for your account, contact [Harness Support](mailto:support@harness.io).
+**Drift Detection** is currently pending release and is enabled per account. Contact [Harness Support](mailto:support@harness.io) to request access.
 :::
 
 Harness IaCM provides two native automation features that keep your infrastructure healthy and your workspace list clean: Drift Detection, which runs a scheduled check for infrastructure that has diverged from your state, and Ephemeral Workspaces, which automatically destroys (and optionally deletes) workspaces after a period of inactivity. Both features share one configuration model, so you set them up the same way at the workspace level or the project level.
@@ -48,7 +39,7 @@ Harness IaCM provides two native automation features that keep your infrastructu
 ## Before you begin
 
 - **IaCM enabled:** Your account must have Infrastructure as Code Management entitled. Go to [Get started with IaCM](/docs/infra-as-code-management/get-started) to confirm access.
-- **Feature access:** This feature is pending release and is enabled per account. Contact [Harness Support](mailto:support@harness.io) to request access.
+- **Feature access:** Drift Detection is pending release and enabled per account; Ephemeral Workspaces is Limited GA and enabled per account. Contact [Harness Support](mailto:support@harness.io) to request access to either feature.
 - **Permissions:** Workspace-level configuration requires workspace edit permission. Project-level configuration requires project settings edit permission. Go to [Workspace permissions](/docs/infra-as-code-management/workspaces/workspace-rbac) to review IaCM roles.
 - **A default Destroy pipeline:** Ephemeral Workspaces runs your workspace or project Destroy default pipeline when a workspace expires. Configure it first. Go to [Default pipelines](/docs/infra-as-code-management/pipelines/default-pipelines) to set one up.
 - **A drift pipeline:** Drift Detection runs a pipeline that performs a detect-drift operation. Go to [Drift detection](/docs/infra-as-code-management/pipelines/content/drift-detection) to build one.
@@ -364,16 +355,6 @@ Ephemeral Workspaces includes several safeguards against accidental teardown:
 
 ## Troubleshooting
 
-<!--
-TODO (reviewer): Mode choice was validated with a live Kapa query while the feature is pending release.
-- The "no destroy pipeline" entry uses mode="docs": Kapa returns a good answer grounded in the existing
-  Destroy-pipeline docs.
-- The other three use mode="general" (Gemini, build-time): Kapa was uncertain and contradicted the
-  unpublished feature (answered "this feature is not documented / cannot confirm it exists" and conflated
-  it with IDP Environment TTL and the HSF PLUGIN_IS_EPHEMERAL flag). Gemini answers from the issue text
-  alone, so it gives generic troubleshooting instead. Every entry keeps a code-accurate static fallback.
-AFTER this page is published and re-indexed by Kapa, re-evaluate switching the general entries to mode="docs".
--->
 
 <Troubleshoot
   issue="Enabling an ephemeral workspace in Harness IaCM fails because no destroy pipeline is configured."
@@ -383,19 +364,19 @@ AFTER this page is published and re-indexed by Kapa, re-evaluate switching the g
 
 <Troubleshoot
   issue="A Harness IaCM workspace is not auto-destroyed after its TTL appears to have passed."
-  mode="general"
+  mode="docs"
   fallback="The destroy schedule is anchored to the last successful apply, and a workspace that has never been provisioned or whose last apply failed is not destroyed. Confirm the workspace has a successful apply and is not in a failed state."
 />
 
 <Troubleshoot
   issue="A project-level drift or ephemeral configuration did not apply to a specific workspace in Harness IaCM."
-  mode="general"
+  mode="docs"
   fallback="Workspace-level configuration takes precedence over project-level configuration. A workspace that you explicitly disabled stays opted out and does not inherit project-level settings."
 />
 
 <Troubleshoot
   issue="An ephemeral workspace record is not deleted after a successful destroy in Harness IaCM."
-  mode="general"
+  mode="docs"
   fallback="Deletion runs only when you enable delete after destroy, the workspace is inactive, the delete schedule has passed, and no other resource references the workspace."
 />
 

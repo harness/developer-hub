@@ -1,5 +1,19 @@
 [
   {
+    "flagKey": "EPHEMERAL_DESTROY",
+    "description": "Enables automated teardown of infrastructure for expired ephemeral workspaces, ensuring cloud resources are cleaned up when a workspace's configured lifetime ends.",
+    "gaStartDate": "2026-08-06",
+    "module": "Infrastructure as Code Management",
+    "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "EPHEMERAL_CLEANUP",
+    "description": "Enables automated deletion of the workspace record for expired ephemeral workspaces after infrastructure teardown is complete.",
+    "gaStartDate": "2026-08-06",
+    "module": "Infrastructure as Code Management",
+    "lifecycleState": "Limited GA"
+  },
+  {
     "flagKey": "ENABLE_BULK_EXEMPTION",
     "description": "Create exemptions for multiple issues at once from the Vulnerabilities tab, using the same scope, duration, and reason for each selected issue.",
     "gaStartDate": "2026-08-03",

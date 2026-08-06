@@ -40,6 +40,14 @@ These release notes describe recent changes to Harness Infrastructure as Code Ma
 </HarnessApiData>
 ::: -->
 
+## August 2026
+
+### New features and enhancements
+
+- **[Ephemeral Workspaces](/docs/infra-as-code-management/workspaces/drift-ephemeral-workspaces) (Limited GA):** Ephemeral Workspaces is now available as a Limited GA feature. Ephemeral Workspaces automatically tears down infrastructure for expired workspaces and optionally deletes the workspace record after a configurable delay. The feature is enabled per account. Contact [Harness Support](mailto:support@harness.io) to enable it for your account.
+
+---
+
 ## July 2026
 
 ### New features and enhancements
