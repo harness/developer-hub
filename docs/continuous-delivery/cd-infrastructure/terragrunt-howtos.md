@@ -369,7 +369,7 @@ Here, you'll add a connection to the Terragrunt script repo.
 1. Click **Specify Config File** or click the edit icon. The **Terragrunt Config File Store** settings appear.
 2. Click the provider where your files are hosted.
     
-    ![picture 4](../cd-advanced/terragrunt/static/2c7889d9dbae6966e8899d90310b0564b4552af33f2fffb553d30d11d96298d7.png
+    ![picture 4](../cd-advanced/terragrunt/static/2c7889d9dbae6966e8899d90310b0564b4552af33f2fffb553d30d11d96298d7.png)
 3. Select or create a [Git connector](/docs/platform/connectors/code-repositories/connect-to-code-repo) for your repo.
 4. Once you have selected a connector, click **Continue**.
 5. In **Config File Details**, provide the Git repo details.

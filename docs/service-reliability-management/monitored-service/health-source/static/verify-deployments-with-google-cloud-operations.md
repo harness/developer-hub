@@ -39,8 +39,8 @@ There are two ways to add the Verify step:
 
 * **When selecting the stage deployment strategy:**  
 The **Verify** step can be enabled in a CD stage the first time you open the **Execution** settings and select the deployment strategy. When you select the deployment strategy you want to use, there is also an **Enable Verification** option. Select the **Enable Verification** option.  
-Harness will automatically add the **Verify** step. For example, here is a stage where Canary strategy and the **Enable Verification** option were selected.[![](./static/verify-deployments-with-google-cloud-operations-119.png)](./static/verify-deployments-with-google-cloud-operations-119.png)
-* **Add the Verify step to an existing Execution setup:** You can also add the Verify step to the Execution section of a CD stage in a Pipeline you previously created. Simply click **Add Step** after the deployment step, and then select **Verify**.[![](./static/verify-deployments-with-google-cloud-operations-121.png)](./static/verify-deployments-with-google-cloud-operations-121.png)
+Harness will automatically add the **Verify** step. For example, here is a stage where Canary strategy and the **Enable Verification** option were selected.[![](./verify-deployments-with-google-cloud-operations-119.png)](./verify-deployments-with-google-cloud-operations-119.png)
+* **Add the Verify step to an existing Execution setup:** You can also add the Verify step to the Execution section of a CD stage in a Pipeline you previously created. Simply click **Add Step** after the deployment step, and then select **Verify**.[![](./verify-deployments-with-google-cloud-operations-121.png)](./verify-deployments-with-google-cloud-operations-121.png)
 
 ## Step 2: Enter a Name and Timeout
 
@@ -63,7 +63,7 @@ The maximum is `53w`.Timeouts can be set at the Pipeline level also.
 
 In **Continuous Verification Type**, select a type that matches your [deployment strategy](verify-deployments-with-the-verify-step.md#step-3-select-a-continuous-verification-type).
 
-![](./static/verify-deployments-with-google-cloud-operations-123.png)
+![](./verify-deployments-with-google-cloud-operations-123.png)
 
 ## Step 4: Create a Monitored Service
 
@@ -87,17 +87,17 @@ In **Health Sources**, click **Add**. The **Add New Health Source** settings
 
 1. In **Select health source type**, select Google Cloud Operations.
    
-   ![](./static/verify-deployments-with-google-cloud-operations-124.png)
+   ![](./verify-deployments-with-google-cloud-operations-124.png)
 
 2. In **Health Source Name**, enter a name for the Health Source.
 3. Under **Connect Health Source**, click **Select Connector**.
 4. In **Connector** settings, you can either choose an existing connector Gcp connector or click **New Connector.**
-   ![](./static/verify-deployments-with-google-cloud-operations-125.png)
+   ![](./verify-deployments-with-google-cloud-operations-125.png)
 
 5. Click **Apply Selected**. The Connector is added to the Health Source.
 6. In **Select Feature**, select the feature to be used.
 
-![](./static/verify-deployments-with-google-cloud-operations-126.png)
+![](./verify-deployments-with-google-cloud-operations-126.png)
 
 The subsequent settings in **Customize Health Source** depend on the Health Source Type you selected. 
 
@@ -105,10 +105,10 @@ The subsequent settings in **Customize Health Source** depend on the Health So
 
 1. Select Cloud Metrics and click **Next.** The **Select Dashboard** settings appear.
 2. Click one or more dashboards from the displayed results. If you don't have any preexisting dashboards or don't want to select the ones in the displayed result, click **Manually input query.**
-   ![](./static/verify-deployments-with-google-cloud-operations-127.png)
+   ![](./verify-deployments-with-google-cloud-operations-127.png)
 3. Click **Next** and the **Customize Health Source** settings appear.
 4. Select a query from the options displayed on the left side of setting panel. The specification of the selected query auto-populates in the fields under **Query Specifications**.
-   ![](./static/verify-deployments-with-google-cloud-operations-128.png)
+   ![](./verify-deployments-with-google-cloud-operations-128.png)
 5. In **Configure Risk Profile**, select one of the following risk types in **Risk Category**:
    
    | Risk Type | Type of Values | Deviation Type | Default Delta | Default Ratio |
@@ -134,7 +134,7 @@ You can customize the metrics to map the Harness Service to the monitored enviro
 4. In **Identify Service Instance**, click the plus icon to select the path of the service instance.
 5. In **Identify Message**, click the plus icon to select the message identifier.
 
-![](./static/verify-deployments-with-google-cloud-operations-129.png)
+![](./verify-deployments-with-google-cloud-operations-129.png)
 
 Click **Submit**. The Health Source is displayed in the Verify step.
 
@@ -182,7 +182,7 @@ You can see that the verification takes a few minutes.
 
 Once verification is complete, the Verify step shows the following:
 
-![](./static/verify-deployments-with-google-cloud-operations-130.png)
+![](./verify-deployments-with-google-cloud-operations-130.png)
 
 The risk level might initially display a number of violations, but the red and orange colored host often change to green over the duration.
 
@@ -194,7 +194,7 @@ The **Summary** section shows the number of logs that are in violation.
 
 Click **Console View** or simply click **View Details** in **Summary** to take a deeper look at verification.
 
-![](./static/verify-deployments-with-google-cloud-operations-131.png)
+![](./verify-deployments-with-google-cloud-operations-131.png)
 
 If you have more than one Health Source, you can use the **View** dropdown to select each one.
 

@@ -164,6 +164,7 @@ You can customize and override service variables during the execution of a step 
   5. Service variable value (default)
 
 - Step group overrides are not recommended for artifacts and other objects fetched in the **Service** section of a pipeline stage. The one exception is scripts in [custom remote manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-custom-remote-script-and-manifests/), because they can also be used during the **Execution** section of a pipeline stage.
+:::
 
 <details>
 <summary>Pipeline example: overriding variables in step groups</summary>

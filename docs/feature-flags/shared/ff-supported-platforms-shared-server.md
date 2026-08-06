@@ -9,5 +9,5 @@ The following table lists the server-side Feature Flag SDKs that  Harness suppor
 | [Python](https://github.com/harness/ff-python-server-sdk)  | [Python SDK Reference](/docs/feature-flags/use-ff/ff-sdks/server-sdks/python-sdk-reference.md)               |
 | [Ruby](https://github.com/harness/ff-ruby-server-sdk)      | [Ruby SDK Reference](/docs/feature-flags/use-ff/ff-sdks/server-sdks/ruby-sdk-reference.md)                   |
 | [Apex](https://github.com/harness/ff-apex-server-sdk/)        | [Apex SDK Reference](/docs/feature-flags/use-ff/ff-sdks/server-sdks/apex-sdk-reference.md)                   |
-| [Erlang](https://github.com/harness/ff-erlang-server-sdk/)        | [Erlang SDK Reference](/docs/feature-flags/use-ff//ff-sdks/server-sdks/erlang-sdk-reference.md)                   |
+| [Erlang](https://github.com/harness/ff-erlang-server-sdk/)        | [Erlang SDK Reference](/docs/feature-flags/use-ff/ff-sdks/server-sdks/erlang-sdk-reference.md)                   |
 | [PHP](https://github.com/harness/ff-php-server-sdk)        | [PHP SDK Reference](/docs/feature-flags/use-ff/ff-sdks/server-sdks/php-sdk-reference.md)                     |

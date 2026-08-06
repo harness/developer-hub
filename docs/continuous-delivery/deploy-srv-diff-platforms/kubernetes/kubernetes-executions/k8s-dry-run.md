@@ -131,8 +131,6 @@ To add command flags in the visual editor:
 4. In the **Flag** field, enter the kubectl flags you want to pass, separated by spaces (for example, `--server-side --force-conflicts`).
 5. Select **Apply Changes**.
 
-![Command Flags configuration](static/k8s-dry-run-command-flags.png)
-
 </TabItem>
   <TabItem value="YAML" label="YAML">
 

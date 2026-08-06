@@ -817,7 +817,7 @@ This streamlines your workflow by eliminating the need for manual service bindin
 
 ## Next steps
 
-See [CD tutorials](/docs/continuous-delivery/get-started/tutorials/cd-gitops-tutorials for other deployment features.
+See [CD tutorials](/docs/continuous-delivery/get-started/tutorials/cd-gitops-tutorials) for other deployment features.
 
 ## FAQs
 

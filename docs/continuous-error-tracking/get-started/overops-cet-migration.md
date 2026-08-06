@@ -321,7 +321,7 @@ After installing Error Tracking Agent, you should verify that it is connected to
 
 ## Configure notifications
 
-Configure notifications for timely event alerts. To learn how to notifications, go to [Notifications](/docs/continuous-error-tracking/cet-notifications.
+Configure notifications for timely event alerts. To learn how to notifications, go to [Notifications](/docs/continuous-error-tracking/cet-notifications).
 
 
 ## Next steps
