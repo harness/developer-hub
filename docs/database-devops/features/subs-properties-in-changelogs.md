@@ -7,13 +7,9 @@ tags: [changelog-properties, liquibase-integration, harness-db-devops, db-config
 slug: /database-devops/concepts-and-features/subs-properties-in-changelogs/
 ---
 
-# Substituting Properties in Changelogs
-It allows you to define placeholders in your changelog files (such as `${property.name}`) and later replace these placeholders 
-with actual values when the changelog is executed. This mechanism is especially useful for managing configurations and ensuring 
-flexibility in database migration scripts.
+It allows you to define placeholders in your changelog files (such as `${property.name}`) and later replace these placeholders with actual values when the changelog is executed. This mechanism is especially useful for managing configurations and ensuring flexibility in database migration scripts.
 
-It decouples your database migration logic from environment-specific values, making the whole process of versioning and 
-deploying database changes far more efficient and scalable.
+It decouples your database migration logic from environment-specific values, making the whole process of versioning and deploying database changes far more efficient and scalable.
 
 :::important
 **Minimum versions required**
@@ -249,8 +245,7 @@ databaseChangeLog:
 ## Property Substitution Behavior
 
 ### Missing Properties
-If the content of `${property-name}` does not match a property, it is left as-is, and it is not removed.
-Once a property has been set, it cannot be changed. Only the first definition is used, others will fail with checksum error.
+If the content of `${property-name}` does not match a property, it is left as-is, and it is not removed. Once a property has been set, it cannot be changed. Only the first definition is used, others will fail with checksum error.
 
 Let's look at the below changeset:
 ```yaml
@@ -270,16 +265,16 @@ Let's look at the below changeset:
          columnName: state
 ```
 
-if `${column.updatedBy}` is missing in substitute properties, the token won't be replaced, and it is left as-is,
+if `${column.updatedBy}` is missing in substitute properties, the token won't be replaced, and it is left as-is:
 ```sql
 ALTER TABLE person ADD [${column.createdBy}] varchar(10);
 ```
 
 ### Escaping Property Substitution
 If you don't want a `${property-name}` placeholder to be replaced, add a colon **:** right after the `${`.
-For example, `${:property-name}` will always stay as `${property-name}`, even if property-name is defined.
 
-It is often useful when you want to show an example without real substitution:
+For example, `${:property-name}` will always stay as `${property-name}`, even if property-name is defined. It is often useful when you want to show an example without real substitution:
+
 <details>
 <summary>Here is YAML example:</summary>
 ```yaml
@@ -295,6 +290,13 @@ databaseChangeLog:
 :::note
 You can use property substitution in sql and sqlFile change types. Liquibase calculates the checksum after substitution for sql, but before substitution for sqlFile.
 This impacts attributes like runOnChange.
-For example, if you set an environment variable ENV_EXAMPLE=value and use it in both sql and sqlFile changesets, then update the database, the value is substituted.
-If you later change ENV_EXAMPLE=new_value and run update again, only the sql changeset reruns, because its checksum reflects the substituted value.
+
+For example, if you set an environment variable `ENV_EXAMPLE=value` and use it in both sql and sqlFile changesets, then update the database, the value is substituted.
+If you later change `ENV_EXAMPLE=new_value` and run update again, only the sql changeset reruns, because its checksum reflects the substituted value.
 :::
+
+## Next steps
+
+- Go to [Runtime secrets](/docs/database-devops/use-database-devops/get-started/runtime-secrets) to pass sensitive values into changelogs at execution time.
+- Go to [Tag database changeset](/docs/database-devops/features/tag-database-changeset) to tag changesets for rollback and tracking.
+- Go to [Get started with changelogs](/docs/database-devops/get-started/get-started-with-changelogs) to learn how changelogs are structured and executed in Harness Database DevOps.

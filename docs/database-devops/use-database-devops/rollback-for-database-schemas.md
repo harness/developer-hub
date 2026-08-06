@@ -27,7 +27,7 @@ import TabItem from '@theme/TabItem';
 
 Harness offers multiple mechanisms for rolling back schema changes—ensuring data integrity and operational resilience. This guide explains how to configure automated rollbacks, including rollback by tag and rollback by count, within your CI/CD pipelines.
 
-## Rollback A Database Schema 
+## Roll back a database schema
 
 Rollback in Harness Database DevOps refers to reverting one or more [changesets](../concepts/glossary/changeset.md) that were previously applied to a database. There are two primary methods you can use, depending on your rollback strategy and operational context:
 
@@ -83,7 +83,7 @@ To rollback a database schema to a specific target version in Harness Database D
 </TabItem>
 </Tabs>
 
-## Rolling Back to a Previous Database State
+## Roll back to a previous database state
 
 The **Apply Schema** step in our deployment pipeline applies database changeSets and provides an expression pointing to the tag marking the database state before deployment.
 
@@ -102,7 +102,7 @@ Example: For the following pipeline configuration, the expressions would be
 
 ![stage-configuration](./static/db-devops-stage-config.png)
 
-## Built in failure strategies including rollback
+## Built-in failure strategies including rollback
 
 When managing database schema changes, it’s crucial to have mechanisms in place to handle failures gracefully. Built-in failure strategies, including rollback, are designed to protect your application and data by providing automated responses when something goes wrong during a database update.
 
@@ -155,7 +155,7 @@ In some cases, you might need to roll back changes that were successfully applie
 For these scenarios, Harness DB DevOps provides a 'Rollback Schema' pipeline step. This step can be configured in your pipeline to roll back to a particular tag or number of changeset, allowing you to revert your database schema to a known good state.
 
 :::info
-You can also use custom rollback scripts or commands in your pipeline to handle more complex rollback scenarios. Refer to [Custom Rollback Statement](../features/automatic-and-custom-rollback.md#custom-rollback-statements) for more details.
+You can also use custom rollback scripts or commands in your pipeline to handle more complex rollback scenarios. Go to [Custom rollback statements](../features/automatic-and-custom-rollback.md#custom-rollback-statements) to learn how to write custom rollback logic in your changelog.
 :::
 
 ## FAQ
@@ -177,3 +177,10 @@ Yes. Harness Database DevOps also supports Flyway, and you can configure rollbac
 
 ### How do I verify a rollback was successful?
 You can monitor the pipeline execution logs and inspect the schema to confirm that changes have been reverted to the desired tag.
+
+## Next steps
+
+- Go to [Automatic and custom rollbacks](/docs/database-devops/concepts-and-features/automatic-and-custom-rollback) to understand how Liquibase generates rollback SQL and how to write custom rollback statements.
+- Go to [Failure strategies in Database DevOps](/docs/database-devops/use-database-devops/failure-strategies) to configure how your pipeline responds to changeset failures.
+- Go to [Create a pipeline in Database DevOps](/docs/database-devops/gitops/create-a-pipeline) to build a pipeline with rollback steps configured.
+

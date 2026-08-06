@@ -21,7 +21,7 @@ import TabItem from '@theme/TabItem';
 
 Modern applications are tightly coupled with the databases they rely on. Deploying a new version of an application often requires a corresponding schema update in the database. If these two changes are not coordinated properly, it can lead to application downtime, data inconsistencies, or failed deployments.
 
-By combining Harness CD for application delivery and Harness Database DevOps for schema management, you can **orchestrate database and application changes** in a single pipeline in a single pipeline. In this guide, we'll walk through the process of creating a pipeline that coordinates both application and database changes.
+By combining Harness CD for application delivery and Harness Database DevOps for schema management, you can **orchestrate database and application changes** in a single pipeline. In this guide, we will walk through the process of creating a pipeline that coordinates both application and database changes.
 
 ## Why Coordinate App and DB Deployments?
 
@@ -156,3 +156,9 @@ When creating a pipeline that coordinates both application and database changes,
 ## Conclusion
 
 By orchestrating application and database changes together in Harness pipelines, you can deliver **faster, safer, and more resilient deployments**. This approach removes the risks of mismatched deployments and provides a single automated flow for managing complex, interdependent changes.
+
+## Next steps
+
+- Go to [Create a pipeline in Database DevOps](/docs/database-devops/gitops/create-a-pipeline) to build your first database pipeline.
+- Go to [Automated rollback for database schemas](/docs/database-devops/concepts-and-features/automatic-and-custom-rollback) to configure rollback strategies for failed deployments.
+- Go to [Failure strategies in Database DevOps](/docs/database-devops/use-database-devops/failure-strategies) to define how the pipeline handles changeset failures.

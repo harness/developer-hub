@@ -27,7 +27,7 @@ import TabItem from '@theme/TabItem';
 
 Harness Database DevOps supports **trunk-based development** for managing database schema changes. This strategy relies on a single Git branch (usually `main` or `trunk`) and leverages pipeline logic and contextual controls to manage environment-specific deployments. Trunk-based development simplifies Git workflows, reduces merge conflicts, and accelerates the flow of changes across your CI/CD pipeline.
 
-Trunk-based development in Harness Database DevOps revolves around a single Git branch serving as the source of truth for all schema changes. Here's a quick overview:
+Trunk-based development in Harness Database DevOps revolves around a single Git branch serving as the source of truth for all schema changes. Here is a quick overview:
 
 1. Developers commit changes to `main`.
 2. A Harness pipeline watches this branch for changes.
@@ -36,7 +36,7 @@ Trunk-based development in Harness Database DevOps revolves around a single Git 
 5. Each environment can include approval gates, rollback logic, and verifications.
 6. Visibility, audit logs, and drift detection are automatically managed via the Harness UI.
 
-## Steps to Implement Trunk-Based Development in Harness
+## Steps to implement trunk-based development in Harness
 
 Harness supports Liquibase-style contexts to manage changes across environments from a single changelog file. In most cases, context-based filtering is applied at the **database instance level**—each instance (e.g., Dev, QA, Prod) is configured with a context label like `dev`, `qa`, or `prod`. When the pipeline executes a `DBSchemaApply` step, Harness applies only the changesets matching the context tied to that specific DB instance.
 
@@ -53,12 +53,12 @@ This allows you to reuse the same changelog file, while ensuring each environmen
 
 ### 3. Connect with Database Instance
 
-Before we can deploy our Database Schema, we need to connect a database instance to which we can deploy it. Here’s how:
+Before deploying your database schema, connect a database instance to deploy it to:
 
 1. Under "DB Instances", click  “Add New DB Instance".
 2. Click New JDBC Connector and Enter Name, JDBC URL & credentials, select the harness delegate, then Save and Finish.
    - **Name** - A name to identify the database instance.
-   - **JDBC URL** - The JDBC connection string for your database instance. Learn More about [JDBC connection strings](https://developer.harness.io/docs/database-devops/use-database-devops/set-up-connectors/).
+   - **JDBC URL** - The JDBC connection string for your database instance. Go to [Setting up JDBC connectors](/docs/database-devops/use-database-devops/set-up-connectors) to configure connection strings.
    - **Username** - The username to connect to the database.
    - **Password** - The password for the database user.
    - **Delegate** - The Harness Delegate that will run the database operations.
@@ -190,18 +190,19 @@ pipeline:
    - Go to your pipeline settings
    - Add a **Git trigger** that listens to the `main` branch
    - Select “On Push” or “On Pull Request” depending on your workflow
-   > 📘 [How to configure Git triggers in Harness →](https://developer.harness.io/docs/platform/triggers/tutorial-cd-trigger/)
+   Go to [How to configure Git triggers in Harness](/docs/platform/triggers/tutorial-cd-trigger) to set up branch-based triggers.
 
 ### 6. Set Up Approvals & Rollbacks
    - Insert **Approval steps** after lower environments (e.g. promote to QA only after Dev is verified)
    - Add **rollback steps** using `DBRollback` or manual SQL if needed
 
 
-✅ Now, every time you commit to `main`, Harness will:
-> - Detect the change
-> - Trigger your pipeline
-> - Apply the change to the correct environment
-> - Log every action for audit, verification, and rollback
+Every time you commit to `main`, Harness will:
+
+- Detect the change
+- Trigger your pipeline
+- Apply the change to the correct environment
+- Log every action for audit, verification, and rollback
 
 
 ## Conclusion
@@ -237,4 +238,10 @@ Harness supports rollbacks through the `DBRollback` step. You can:
 * Trigger rollback pipelines manually or as part of a failure strategy.
 * Use Harness approvals to control rollback execution in higher environments.
 
-Harness supports associating rollback SQL with each changeset by tagging them or linking dedicated rollback files, depending on your changelog strategy. [Learn how to configure rollbacks →](https://developer.harness.io/docs/database-devops/use-database-devops/rollback-for-database-schemas)
+Harness supports associating rollback SQL with each changeset by tagging them or linking dedicated rollback files, depending on your changelog strategy. Go to [Automated rollback for database schemas](/docs/database-devops/use-database-devops/rollback-for-database-schemas) to configure rollbacks.
+
+## Next steps
+
+- Go to [Create a pipeline in Database DevOps](/docs/database-devops/gitops/create-a-pipeline) to build your first trunk-based database pipeline.
+- Go to [Environment-by-branch development](/docs/database-devops/gitops/environment-by-branch) to compare the branching strategies and choose the right approach.
+- Go to [Automated rollback for database schemas](/docs/database-devops/use-database-devops/rollback-for-database-schemas) to configure rollback strategies for failed deployments.

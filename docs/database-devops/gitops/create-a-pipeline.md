@@ -37,5 +37,5 @@ tags:
  9. Once the pipeline is configured to your liking, select **Save pipeline**.
 
 :::info
-To add a Liquibase command step, you can refer to the Harness documentation detailing how to [Add a Liquibase Command Step](/docs/database-devops/use-database-devops/liquibase-command-step/add-liquibase-command-step.md)
+Go to [Add a Liquibase command step](/docs/database-devops/use-database-devops/liquibase-command-step/add-liquibase-command-step) to add a Liquibase command step to your pipeline.
 :::

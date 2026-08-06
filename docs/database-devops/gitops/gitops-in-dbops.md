@@ -28,7 +28,7 @@ tags:
   - db schema management
 ---
 
-GitOps is an operational framework that brings DevOps best practices—such as version control, collaboration, compliance, and CI/CD—into the realm of infrastructure and database automation. In the context of Harness Database DevOps, GitOps enables teams to manage schema changes with the same rigor and scalability as application code. You can apply GitOps principles in several impactful ways:
+GitOps is an operational framework that brings DevOps best practices (version control, collaboration, compliance, and CI/CD) into the realm of infrastructure and database automation. In the context of Harness Database DevOps, GitOps enables teams to manage schema changes with the same rigor and scalability as application code. You can apply GitOps principles in several impactful ways:
 
 - Store configurations, database schemas, and migration scripts in Git repositories  
 - Use pull requests and peer reviews to manage and approve changes  
@@ -36,16 +36,20 @@ GitOps is an operational framework that brings DevOps best practices—such as v
 
 By integrating GitOps into your database lifecycle, you gain traceability, auditability, and reliable deployment workflows across all environments.
 
-## Implementation Approaches
+## Implementation approaches
 
 When adopting GitOps for database management, two primary branching strategies are commonly used:
 
-1. **Environment-by-Branch**  
-   Each environment (e.g., dev, staging, prod) has a dedicated Git branch. Changes are promoted by merging from lower to higher environments. → [Learn more](./environment-based-development.md)
+1. **Environment-by-Branch**: Each environment (for example, dev, staging, prod) has a dedicated Git branch. Changes are promoted by merging from lower to higher environments. Go to [Environment-by-branch development](./environment-based-development.md) to learn how to configure this approach.
 
-2. **Trunk-Based Development**  
-   A single mainline branch (e.g., `main` or `trunk`) is used, with pipelines or metadata controlling environment-specific behavior. → [Learn more](./trunk-based-development.md)
+2. **Trunk-Based Development**: A single mainline branch (for example, `main` or `trunk`) is used, with pipelines or metadata controlling environment-specific behavior. Go to [Trunk-based development](./trunk-based-development.md) to learn how to configure this approach.
 
 :::note tip  
-If you're not currently using a GitOps-based branching approach, Harness recommends adopting **trunk-based development**. It simplifies change management, accelerates delivery, and aligns well with modern CI/CD and database promotion workflows.
+If you are not currently using a GitOps-based branching approach, Harness recommends adopting **trunk-based development**. It simplifies change management, accelerates delivery, and aligns well with modern CI/CD and database promotion workflows.
 :::
+
+## Next steps
+
+- Go to [Environment-by-branch development](./environment-based-development.md) to set up branch-per-environment promotions.
+- Go to [Trunk-based development](./trunk-based-development.md) to configure a single-branch pipeline strategy.
+- Go to [Create a pipeline in Database DevOps](./create-a-pipeline.md) to build your first GitOps-driven database pipeline.

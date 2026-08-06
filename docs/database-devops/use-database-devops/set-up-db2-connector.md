@@ -161,7 +161,7 @@ Contact your IBM representative or IBM support to acquire the license file. The 
 IBM i uses the term **library** instead of database or schema. A library is a container for database objects such as tables, views, and procedures.
 
 When connecting to DB2 for i, specify the library name in the JDBC URL. For example:
-```
+```bash
 jdbc:as400://myhost/MYLIB
 ```
 
@@ -196,3 +196,9 @@ The database user needs the following permissions:
 - Consult your DBA for appropriate authorization grants, as mainframe security models may require additional privileges.
 
 For read-only operations like policy validation, read permissions on the target schema are sufficient.
+
+## Next steps
+
+- Go to [Setting up JDBC connectors](/docs/database-devops/use-database-devops/set-up-connectors) to configure connectors for other supported databases.
+- Go to [Secure database connectivity with SSL](/docs/database-devops/use-database-devops/ssl) to enable encrypted connections for DB2 LUW and DB2 z/OS.
+- Go to [Get started with changelogs](/docs/database-devops/get-started/get-started-with-changelogs) to begin authoring Liquibase changesets for your DB2 schema.

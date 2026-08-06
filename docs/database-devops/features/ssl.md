@@ -10,7 +10,7 @@ slug: /database-devops/use-database-devops/ssl
 
 This document explains how to configure SSL certificates for Harness Database DevOps. There are two distinct SSL scenarios you may need to configure, depending on your infrastructure.
 
-## Which SSL Configuration Do You Need?
+## Which SSL configuration do you need?
 Database DevOps uses two independent SSL layers. Most customers need only one, but you may need both:
 
 | Your Situation | What You Need | Go To |
@@ -20,7 +20,7 @@ Database DevOps uses two independent SSL layers. Most customers need only one, b
 | Git or database uses self-signed certificates | **Scenario 2:** Third-party SSL | [Configure Third-Party SSL](#configure-ssl-for-third-party-services-git-and-databases---scenario-2) |
 | Vanity URL AND self-signed certificates | **Both scenarios** | Configure both sections in order |
 
-## SSL Architecture Overview
+## SSL architecture overview
 **Scenario 1 - mTLS (Harness SaaS Connectivity):**
 - Only required when using a custom vanity URL instead of `app.harness.io`
 - Authenticates your delegate and build pods to Harness SaaS using client certificates
@@ -270,7 +270,7 @@ Add the following to the delegate environment:
 :::info note
 * `INIT_SCRIPT` is required because the JDBC Test Connection runs inside the delegate container.
 * The delegate automatically imports `ca.bundle` into the default trust store (`$JAVA_HOME/lib/security/cacerts`).
-* Learn more: [Override trust store for delegates](https://developer.harness.io/docs/platform/delegates/secure-delegates/trust-store-override-for-delegates/)
+* Go to [Override trust store for delegates](/docs/platform/delegates/secure-delegates/trust-store-override-for-delegates) to configure a custom truststore.
 :::
 
 ### Verification
@@ -285,9 +285,9 @@ kubectl exec -it <delegate-pod> -n <namespace> -- printenv | grep -E 'ADDITIONAL
 kubectl exec -it <delegate-pod> -n <namespace> -- ls -l /opt/harness-delegate/ca-bundle/
 ```
 
-## Troubleshoot Common Issues
+## Troubleshoot common issues
 
-| Issue | Likely Cause | Resolution |
+| **Issue** | **Likely Cause** | **Resolution** |
 | ---- | ---- | ---- |
 | SSL handshake failure | CA not trusted | Verify `ADDITIONAL_CERTS_PATH` points to the correct CA bundle |
 | JDBC test fails | Client cert not imported | Check `INIT_SCRIPT` configuration |
@@ -306,14 +306,14 @@ kubectl exec -it <delegate-pod> -n <namespace> -- ls -l /opt/harness-delegate/ca
 
 PostgreSQL JDBC connections require `ssl=true` and use `sslmode` to control certificate verification:
 
-- `sslmode=require` — encrypts connection without verifying server certificate
-- `sslmode=verify-full` — verifies server certificate using CA bundle
+- `sslmode=require` - encrypts connection without verifying server certificate
+- `sslmode=verify-full` - verifies server certificate using CA bundle
 
 **When using `sslmode=verify-full`:**
 
 PostgreSQL JDBC driver defaults to `/root/.postgresql/root.crt` for certificate lookup, ignoring Java's truststore. Add `sslrootcert` to your JDBC URL to specify the mounted certificate location:
 
-```
+```bash
 jdbc:postgresql://<host>:5432/<db>?ssl=true&sslmode=verify-full&sslrootcert=/etc/ssl/certs/dbops/root_ca.crt
 ```
 
@@ -322,5 +322,12 @@ The certificate file must be mounted at `/etc/ssl/certs/dbops/root_ca.crt` in th
 :::
 
 ## References
-* [Installing Delegates with Custom Certificates](https://developer.harness.io/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/)
-* [Delegate MTLS Support](https://developer.harness.io/docs/platform/delegates/secure-delegates/delegate-mtls-support/)
+
+* Go to [Installing delegates with custom certificates](/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs) to add certificates to the delegate image.
+* Go to [Delegate mTLS support](/docs/platform/delegates/secure-delegates/delegate-mtls-support) to configure mutual TLS for your delegate.
+
+## Next steps
+
+- Go to [Setting up JDBC connectors](/docs/database-devops/use-database-devops/set-up-connectors) to configure SSL-enabled JDBC connection strings for your database.
+- Go to [Set up IBM DB2 connector](/docs/database-devops/use-database-devops/set-up-db2-connector) to enable SSL for DB2 LUW and DB2 z/OS connections.
+- Go to [Deployment architecture](/docs/database-devops/concepts-and-features/deployment-architecture) to understand how the Delegate and build pods communicate with your infrastructure.

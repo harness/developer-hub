@@ -21,9 +21,7 @@ tags:
   - overview
 ---
 
-# Harness DB DevOps Overview
-
-Harness Database DevOps helps customers integrate database changes seamlessly into their application deployment pipelines. It provides a centralized way to manage database schemas and enforce governance policies - all while enabling developers and DBAs to collaborate more effectively on database changes. 
+Harness Database DevOps helps customers integrate database changes seamlessly into their application deployment pipelines. It provides a centralized way to manage database schemas and enforce governance policies, all while enabling developers and DBAs to collaborate more effectively on database changes.
 
 Harness Database DevOps bridges the gap between application delivery and database management, empowering customers to ship software faster and more reliably.
 
@@ -39,7 +37,7 @@ Harness DB DevOps provides a way to:
 ## Harness DB DevOps Architecture
 
 :::info
-Before you can access Harness Database DevOps, you must have Database DevOps module enabled. To access the module, please contact [Harness Support](mailto:support@harness.io).
+Before you can access Harness Database DevOps, you must have Database DevOps module enabled. To access the module, contact [Harness Support](mailto:support@harness.io).
 :::
 
  ![Harness DB DevOps architecture diagram](./concepts/static/database-devops-architecture.png)
@@ -48,7 +46,7 @@ Before you can access Harness Database DevOps, you must have Database DevOps mod
 Harness now streams large, transient, runtime-only payloads (such as logs, test results, and database schema diffs) directly from short-lived plugin pods to the SaaS platform over outbound TLS. This enhancement avoids Delegate resource bottlenecks and improves scalability. All secrets and sensitive data continue to remain strictly within customer infrastructure, with the Delegate enforcing all orchestration and authentication.
 :::
 
-The Harness Database DevOps architecture is built around the Harness Delegate, which plays a crucial role in managing database change operations. This delegate operates within your environment—whether that's a local network, virtual private cloud, or Kubernetes cluster—ensuring seamless integration with your existing infrastructure. 
+The Harness Database DevOps architecture is built around the Harness Delegate, which plays a crucial role in managing database change operations. This delegate operates within your environment whether that's a local network, virtual private cloud, or Kubernetes cluster, ensuring seamless integration with your existing infrastructure. 
 
 The [Harness Delegate](../platform/delegates/delegate-concepts/delegate-overview.md) serves as the bridge between the Harness Manager in your SaaS instance and your database instances, code repositories, and cloud providers. It facilitates the orchestration of database changes by connecting to your version control systems and artifact repositories, allowing for efficient management of database migrations and updates.
 
@@ -71,7 +69,7 @@ Here are some examples of Harness DB Devops images and their purposes:
 * `plugins/drone-flyway:x.y.z-{flywayVersion}`: Flyway plugin for database operations.
 * `plugins/drone-flyway-mongo:x.y.z-{flywayVersion}-mongo`: Flyway plugin for MongoDB.
 * `plugins/drone-flyway-spanner:x.y.z-{flywayVersion}-spanner`: Flyway plugin for Google Spanner.
-For complete and latest list of images and their tags, refer to the [Release Notes](http://developer.harness.io/release-notes/database-devops).
+Go to [Release Notes](http://developer.harness.io/release-notes/database-devops) to view the complete and latest list of images and their tags.
 
 ## Configure Harness DB Devops Image Versions
 
@@ -169,39 +167,36 @@ curl -i -X DELETE \
 --header "X-API-KEY: $API_KEY"
 ```
 
-## Try Harness DB DevOps
+## Harness Database DevOps vs Liquibase and Flyway
 
-If you are interested in trying Harness DB DevOps for yourself, you can [try Harness DB DevOps now](https://app.harness.io/auth/#/signup?utm_source=harness_io&utm_medium=cta&utm_campaign=platform&utm_content=main_nav) or [request a demo](https://www.harness.io/company/contact-sales?utm_source=harness_io&utm_medium=cta&utm_campaign=platform&utm_content=main_nav).
+Harness Database DevOps is a pipeline-native orchestration layer built on top of migration tools like Liquibase and Flyway that is not a replacement for them. It adds governance, approval gates, drift detection, and full CI/CD integration that standalone tools do not provide.
 
+Go to [Harness Database DevOps vs Liquibase vs Flyway](https://www.harness.io/blog/harness-database-devops-vs-liquibase-vs-flyway) to understand how Harness extends these tools with enterprise-grade delivery capabilities.
 
-## Reference:
-You can refer the images directly from [dockerhub](https://hub.docker.com/r/plugins/drone-liquibase/tags)
+## Frequently asked questions
 
 ### What is Harness DBOps Image Pulls?
 By default, when a DBOps pipeline runs, the Harness Delegate uses a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference.md) to make an anonymous outbound connection to pull the Harness DBOps images from the public container registry where they are stored.
 
-### What if I don't want to pull images anonymously?
-You can use credentialed access if you don't want the Harness Delegate to pull images anonymously. For instructions, go to [Connect to the Harness container image registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector).
+### What if I do not want to pull images anonymously?
+You can use credentialed access if you do not want the Harness Delegate to pull images anonymously. Go to [Connect to the Harness container image registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector) to set up credentialed access.
 
-### I don't want to pull images from a public registry
-Harness DBOps images are stored in a public container registry. If you don't want to pull the images directly from the public registry, you can pull Harness images from your own private registry. For instructions on each of these options, go to [Connect to the Harness container image registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector.md).
+### I do not want to pull images from a public registry
+Harness DBOps images are stored in a public container registry. If you do not want to pull the images directly from the public registry, you can pull Harness images from your own private registry. Go to [Connect to the Harness container image registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector.md) to configure each of these options.
 
-### How to Override LiteEngine or CIAddOn Image in DBOps?
-Refer to the [section](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci#harness-ci-image-updates) to override using CI Apis
-For Using private registry for the above images, override the default harnessImage connector at AccountLevel, refer to [section](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/#configure-harness-to-always-use-credentials-to-pull-harness-images)
+### How to override LiteEngine or CIAddOn image in DBOps?
+Go to [Harness CI image updates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci#harness-ci-image-updates) to override using CI APIs.
+To use a private registry for the above images, override the default harnessImage connector at the account level. Go to [Configure Harness to always use credentials to pull Harness images](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/#configure-harness-to-always-use-credentials-to-pull-harness-images) to set this up.
 
-## Harness Database DevOps vs Liquibase and Flyway
+### Can Harness Database DevOps be used to migrate databases from Azure SQL to Google Cloud SQL (or across any cloud providers)?
 
-Harness Database DevOps is a pipeline-native orchestration layer built on top of migration tools like Liquibase and Flyway — not a replacement for them. It adds governance, approval gates, drift detection, and full CI/CD integration that standalone tools do not provide.
+Harness Database DevOps is an orchestration layer, not a data migration or replication tool, and it does not move data between databases or cloud providers. For a cross-cloud move, use a dedicated data migration service (such as Azure Database Migration Service or `pg_dump/pg_restore`) to transfer the existing data to the target. Harness DB DevOps then orchestrates the schema migration portion: it applies your Liquibase or Flyway changelogs to the target database, manages approval gates, sequences the rollout across environments, and records the deployment audit trail. The two tools are complementary: the migration service handles data transfer, and Harness handles the controlled schema deployment on the target.
 
-Go to [Harness Database DevOps vs Liquibase vs Flyway](https://www.harness.io/blog/harness-database-devops-vs-liquibase-vs-flyway) to understand how Harness extends these tools with enterprise-grade delivery capabilities.
+## Reference
 
----
+Go to [Docker Hub](https://hub.docker.com/r/plugins/drone-liquibase/tags) to view all available images and tags directly.
 
-## Frequently asked questions
+## Next steps
 
-<FAQ
-  question="Can Harness Database DevOps be used to migrate databases from Azure SQL to Google Cloud SQL (or across any cloud providers)?"
-  mode="docs"
-  fallback="Partially. Harness Database DevOps is an orchestration layer, not a data migration or replication tool — it does not move data between databases or cloud providers. For a cross-cloud move, use a dedicated data migration service (such as Azure Database Migration Service or pg_dump/pg_restore) to transfer the existing data to the target. Harness DB DevOps then orchestrates the schema migration portion: it applies your Liquibase or Flyway changelogs to the target database, manages approval gates, sequences the rollout across environments, and records the deployment audit trail. The two tools are complementary — the migration service handles data transfer, and Harness handles the controlled schema deployment on the target."
-/>
+- Go to [Harness DB DevOps](https://app.harness.io/) to try it yourself.
+- Go to [Contact Sales](https://www.harness.io/company/contact-sales?utm_source=harness_io&utm_medium=cta&utm_campaign=platform&utm_content=main_nav) to request a demo.

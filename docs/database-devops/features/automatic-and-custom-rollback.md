@@ -39,7 +39,7 @@ Unexpected error running Liquibase:
 To roll back your `dropTable` statement, you have to specify custom logic in your changelog so that Liquibase knows how to correctly restore your database.
 
 :::info
-To Know more how to use automatic rollback see [Automated Rollback for Database Schemas](../use-database-devops/rollback-for-database-schemas.md).
+Go to [Automated rollback for database schemas](../use-database-devops/rollback-for-database-schemas.md) to learn how to configure automatic rollback in your pipeline.
 :::
 
 ## Custom rollback statements
@@ -48,7 +48,7 @@ Liquibase cannot automatically generate rollback SQL for Change Types like `drop
 
 In these cases, you must specify custom rollback syntax in your changelog for every changeset that you might want to roll back. This way, when you run the rollback command, Liquibase knows what to do.
 
-For more information and example:
+The following examples show custom rollback syntax for each supported changelog format:
 
 <Tabs>
 <TabItem value="SQL" label="SQL" default>
@@ -271,3 +271,9 @@ create table testTable ( id int primary key, name varchar(255) );
 </TabItem>
 
 </Tabs>
+
+## Next steps
+
+- Go to [Automated rollback for database schemas](/docs/database-devops/use-database-devops/rollback-for-database-schemas) to configure rollback by tag or count in your Harness pipeline.
+- Go to [Failure strategies in Database DevOps](/docs/database-devops/use-database-devops/failure-strategies) to define how your pipeline handles changeset failures automatically.
+- Go to [Tag database changeset](/docs/database-devops/features/tag-database-changeset) to create rollback anchor points in your changelog.

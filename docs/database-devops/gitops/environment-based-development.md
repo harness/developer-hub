@@ -32,16 +32,16 @@ import TabItem from '@theme/TabItem';
 
 Harness Database DevOps supports managing database changes using **environment-specific branches**. This approach allows you to maintain different configurations for development, staging, and production environments directly in your Git repository.
 
-## Why Use Environment Branches in Harness Database DevOps?
+## Why use environment branches in Harness Database DevOps?
 
 Here are several reasons why teams opt for a branch-per-environment strategy:
 
-- **Consistency with Application Deployment**: If you're already managing app deployments using environment-specific branches, aligning your DB changes keeps both layers synchronized.
+- **Consistency with application deployment**: If you are already managing app deployments using environment-specific branches, aligning your DB changes keeps both layers synchronized.
 - **Environment-Specific Configurations**: Maintain isolated configurations or schema changes for dev, staging, and production environments.
 - **Controlled Progression**: Promote and test changes in lower environments before merging them into production.
 - **Audit Trail**: Each branch maintains a commit history that improves traceability and accountability for schema changes.
 
-## What Are the Tradeoffs of Branch Per Environment?
+## What are the tradeoffs of branch per environment?
 
 While beneficial, this approach introduces some complexity:
 
@@ -49,13 +49,13 @@ While beneficial, this approach introduces some complexity:
 - **Potential for Drift**: Without strict coordination, environments can diverge.
 - **Merge Conflicts**: More branches = more chances for conflict.
 - **Overhead**: Requires additional team effort to maintain branches and reviews.
-- **Unintentional Promotion of Dev-Only Changes**: If you're managing dev/staging-only changes (like test tables or mock data), they may unintentionally get merged into higher environments.  
+- **Unintentional promotion of dev-only changes**: If you are managing dev/staging-only changes (like test tables or mock data), they may unintentionally get merged into higher environments.
 
 ::: note
 **Recommendation**: Use the `context` field on the database instance to restrict execution, even when the change exists in the branch. You can adopt this model if your **application deployment already follows a branch-per-environment** structure—ensuring consistency across the stack.
 :::
 
-## How to Configure
+## How to configure
 
 Follow these steps to configure environment-based deployments in Harness Database DevOps:
 
@@ -95,7 +95,7 @@ Create separate branches in your Git repo for each environment: `development`, `
    ![Example Trigger Inputs](./static/dbops-trigger-3.png)
 
 ::: note
-You can learn more about triggers in Harness Database DevOps [Learn how to configure Git triggers →](https://developer.harness.io/docs/platform/triggers/tutorial-cd-trigger/)
+Go to [How to configure Git triggers in Harness](/docs/platform/triggers/tutorial-cd-trigger) to set up branch-based triggers for each environment.
 :::
 
 ### 5. Design Your Pipeline
@@ -261,11 +261,19 @@ pipeline:
 
 ### 6. Manage Promotion Between Environments
 
-1. Use Git pull requests to promote changes between branches. e.g., `dev` → `staging` or `staging` → `prod`
+1. Use Git pull requests to promote changes between branches, for example `dev` to `staging` or `staging` to `prod`.
 2. Harness will auto-detect the merged changes via the trigger and deploy accordingly.
 
 ## Conclusion
 
 Deploying by environment branches in Harness Database DevOps provides alignment with traditional application deployment strategies and gives teams clear separation of concerns. While it introduces more Git management overhead, it enables safer promotion paths and more isolated testing.
 
-Just ensure to manage drift carefully, use [contexts](../concepts/glossary/context.md) to limit dev-only changes, and maintain strong PR discipline when promoting between branches.
+Ensure you manage drift carefully, use [contexts](../concepts/glossary/context.md) to limit dev-only changes, and maintain strong PR discipline when promoting between branches.
+
+---
+
+## Next steps
+
+- Go to [Trunk-based development](/docs/database-devops/gitops/trunk-based-development) to compare the single-branch strategy and choose the right approach for your team.
+- Go to [Create a pipeline in Database DevOps](/docs/database-devops/gitops/create-a-pipeline) to build your first environment-based database pipeline.
+- Go to [Automated rollback for database schemas](/docs/database-devops/use-database-devops/rollback-for-database-schemas) to configure rollback strategies for failed deployments.

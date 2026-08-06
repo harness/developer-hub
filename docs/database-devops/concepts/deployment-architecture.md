@@ -22,7 +22,9 @@ tags:
   - ci-cd-integration
 ---
 
-Welcome to the Harness Database DevOps Product Documentation. This guide will assist you in  integrating database operations into your application deployment workflows. Our Database DevOps module enables you to manage database schemas, orchestrate changes, and ensure consistency across all your environments. Let's dive into how Harness Database DevOps can streamline your database change management and enhance your overall deployment strategy.
+Welcome to the Harness Database DevOps Product Documentation. This guide will assist you in  integrating database operations into your application deployment workflows. Our Database DevOps module enables you to manage database schemas, orchestrate changes, and ensure consistency across all your environments. 
+
+This page explains the deployment architecture of Harness Database DevOps, including how components communicate and how changes are executed against your database infrastructure.
 
 ## Before you begin, review the following:
 
@@ -31,7 +33,7 @@ Welcome to the Harness Database DevOps Product Documentation. This guide will as
 ## Harness DB DevOps Architecture
 
 :::info
-Before you can access Harness Database DevOps, you must have Harness enable the following feature flag, `DBOPS_ENABLED`. To enable the feature flag, please contact [Harness Support](mailto:support@harness.io).
+Before you can access Harness Database DevOps, you must have Harness enable the following feature flag, `DBOPS_ENABLED`. To enable the feature flag, contact [Harness Support](mailto:support@harness.io).
 :::
 
 ![Harness DB DevOps architecture diagram](./static/database-devops-architecture.png)
@@ -48,7 +50,7 @@ Key Notes
     - It is not possible to selectively disable individual communications, as doing so would break the orchestration pipeline.
 2. Delegate Communication
     - The Harness Delegate is the primary component responsible for initiating communication back to Harness SaaS.
-    - For more details on how the Delegate functions, see the [Delegate Overview](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/).
+    - Go to [Delegate Overview](../../platform/delegates/delegate-concepts/delegate-overview.md) to understand how the Delegate functions.
 3. Log Shipping
     - During task execution, outbound access to "`googleapis.com`" over port 443 is required to ship step logs.
     - This can be avoided by changing the account-level setting:

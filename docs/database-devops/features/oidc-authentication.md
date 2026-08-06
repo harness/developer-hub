@@ -22,9 +22,6 @@ tags:
   - gcp
 ---
 
-import BrowserOnly from '@docusaurus/BrowserOnly';
-import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
-
 OpenID Connect (OIDC) authentication enables your database connectors to authenticate with GCP databases without storing long-lived service account keys. Harness exchanges a short-lived OIDC token for temporary GCP credentials at runtime.
 
 :::note GKE-specific alternative
@@ -137,12 +134,12 @@ OIDC authentication requires specific URL formats for each database type.
 
 ### Cloud Spanner URL format
 
-```
+```bash
 jdbc:cloudspanner:/projects/PROJECT_ID/instances/INSTANCE_NAME/databases/DATABASE_NAME
 ```
 
 **Example:**
-```
+```bash
 jdbc:cloudspanner:/projects/my-project/instances/spanner-test/databases/cymbal
 ```
 
@@ -153,12 +150,12 @@ Use the standard Cloud Spanner GQL.
 
 ### CloudSQL PostgreSQL URL format
 
-```
+```bash
 jdbc:postgresql:///DATABASE_NAME?cloudSqlInstance=PROJECT_ID:REGION:INSTANCE_NAME&socketFactory=com.google.cloud.sql.postgres.SocketFactory&enableIamAuth=true
 ```
 
 **Example:**
-```
+```bash
 jdbc:postgresql:///mydb?cloudSqlInstance=my-project:us-central1:my-instance&socketFactory=com.google.cloud.sql.postgres.SocketFactory&enableIamAuth=true
 ```
 
@@ -169,12 +166,12 @@ jdbc:postgresql:///mydb?cloudSqlInstance=my-project:us-central1:my-instance&sock
 
 ### CloudSQL MySQL URL format
 
-```
+```bash
 jdbc:mysql:///DATABASE_NAME?cloudSqlInstance=PROJECT_ID:REGION:INSTANCE_NAME&socketFactory=com.google.cloud.sql.mysql.SocketFactory&enableIamAuth=true
 ```
 
 **Example:**
-```
+```bash
 jdbc:mysql:///mydb?cloudSqlInstance=my-project:us-central1:my-instance&socketFactory=com.google.cloud.sql.mysql.SocketFactory&enableIamAuth=true
 ```
 
@@ -187,12 +184,12 @@ If any required parameter is missing, the connection test will fail with a valid
 
 ### BigQuery URL format
 
-```
+```bash
 jdbc:bigquery://https://www.googleapis.com/bigquery/v2:443;ProjectId=PROJECT_ID;DefaultDataset=DATASET_NAME;Location=REGION;
 ```
 
 **Example:**
-```
+```bash
 jdbc:bigquery://https://www.googleapis.com/bigquery/v2:443;ProjectId=cd-play;DefaultDataset=Step_execution_data;Location=asia-south1;
 ```
 
@@ -213,7 +210,7 @@ Complete the GCP Workload Identity Federation setup before configuring your JDBC
 
 1. **Create a JDBC connector:** In your Harness project, go to **Connectors** and select **New Connector**. Choose **JDBC**.
 2. **Enter connection details:** In the **Connection URL** field, enter your Cloud Spanner JDBC URL in the format:
-   ```
+   ```bash
    jdbc:cloudspanner:/projects/YOUR_PROJECT_ID/instances/YOUR_INSTANCE/databases/YOUR_DATABASE
    ```
    Replace `YOUR_PROJECT_ID`, `YOUR_INSTANCE`, and `YOUR_DATABASE` with your Cloud Spanner resource identifiers.
@@ -278,7 +275,7 @@ Ensure that a database user with this username exists in your CloudSQL instance 
 
 1. In your Harness project, go to **Connectors** and select **New Connector**. Choose **JDBC**.
 2. In the **Connection URL** field, enter your BigQuery JDBC URL:
-   ```
+   ```bash
    jdbc:bigquery://https://www.googleapis.com/bigquery/v2:443;ProjectId=YOUR_PROJECT_ID;DefaultDataset=YOUR_DATASET;Location=YOUR_REGION;
    ```
    
@@ -403,53 +400,6 @@ The OIDC connector uses a polymorphic structure that supports multiple cloud pro
 }
 ```
 </details>
-
-## Troubleshooting
-
-<BrowserOnly fallback={<div>Loading troubleshooting information...</div>}>
-{() => {
-  const { Troubleshoot } = require('@site/src/components/AdaptiveAIContent');
-  return (
-    <>
-      <Troubleshoot
-        issue="Connection test fails with 'Token exchange failed' for OIDC authentication"
-        mode="docs"
-        fallback="Verify that the Workload Identity Pool and Provider IDs are correct in the connector configuration. Ensure the pool and provider trust Harness as an OIDC issuer. Go to Workload Identity Federation in the GCP Console to review federation settings."
-      />
-      <Troubleshoot
-        issue="CloudSQL connection fails with 'Unable to find CloudSQL instance' when using OIDC"
-        mode="docs"
-        fallback="Ensure the connection URL includes the cloudSqlInstance parameter in the format project-id:region:instance-name. Verify that enableIamAuth=true is set in the URL. Confirm that the service account has cloudsql.instances.connect permission."
-      />
-      <Troubleshoot
-        issue="CloudSQL connection test fails with 'Missing required URL parameters' error"
-        mode="docs"
-        fallback="OIDC authentication for CloudSQL requires three URL parameters: cloudSqlInstance, socketFactory, and enableIamAuth=true. Verify that all three parameters are present in your connection URL. The socketFactory must be com.google.cloud.sql.postgres.SocketFactory for PostgreSQL or com.google.cloud.sql.mysql.SocketFactory for MySQL."
-      />
-      <Troubleshoot
-        issue="Database user not found error when connecting with OIDC to CloudSQL"
-        mode="docs"
-        fallback="The database username is derived from the service account email. For PostgreSQL, create a user named service-account-name@project-id.iam (strips .gserviceaccount.com). For MySQL, create a user named service-account-name (prefix before @). Ensure the IAM user exists in the database and has appropriate permissions."
-      />
-      <Troubleshoot
-        issue="Cloud Spanner connection fails with 'Invalid OAuth token' when using OIDC"
-        mode="docs"
-        fallback="Verify that the service account email has the required Spanner IAM role (roles/spanner.databaseUser or higher). Ensure the project number (not project ID) is used in the connector configuration. Check that the Workload Identity Pool binding includes the service account."
-      />
-      <Troubleshoot
-        issue="Pipeline execution fails with 'OIDC token not found' in Database DevOps step"
-        mode="docs"
-        fallback="This error indicates that the OIDC token generation failed during pipeline execution. Verify that the connector is configured with valid OIDC credentials. Ensure the delegate has network access to Harness token services. Check the delegate logs for token exchange errors."
-      />
-      <Troubleshoot
-        issue="Test connection succeeds but pipeline execution fails with IAM permission errors"
-        mode="docs"
-        fallback="Connection test and pipeline execution generate OIDC tokens with different custom attributes. Ensure your Workload Identity Pool attribute mapping and conditions accept both connector validation and pipeline execution contexts. Check that the pool conditions do not filter based on pipeline-specific attributes."
-      />
-    </>
-  );
-}}
-</BrowserOnly>
 
 ## Next steps
 

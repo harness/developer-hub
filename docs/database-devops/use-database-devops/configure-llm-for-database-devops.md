@@ -13,10 +13,10 @@ import TabItem from '@theme/TabItem';
 This guide explains how to enable an LLM-driven change authoring workflow in Harness Database DevOps that generates migration artifacts (e.g., Liquibase changesets or SQL migration scripts), commits them to a temporary branch, and opens a Pull Request (PR) against a target Git branch for review and CI validation. The workflow preserves GitOps principles (auditability, review gates, CI checks) while accelerating authoring through LLM assistance.
 
 ## Prerequisites
-Before configuring LLM change authoring, ensure you have the following prerequisites in place:
+Before configuring LLM change authoring, ensure you have the following:
+
 - An active Harness account with Database DevOps enabled.
 - Access to a Git repository where database migration artifacts will be stored.
-
 
 <Tabs>
 <TabItem value="Interactive Guide" label="Interactive Guide">
@@ -26,13 +26,13 @@ Before configuring LLM change authoring, ensure you have the following prerequis
 </TabItem>
 <TabItem value="Step-by-Step Guide" label="Step-by-Step Guide" default>
 
-### Step 1: Enable Harness AI in Harness
+### Step 1: Enable Harness AI
 1. Log in to your Harness account.
 2. Navigate to **Account Settings** > **Default Settings** > **Harness AI**.
 3. Toggle the **Harness AI** switch to enable it for your account.
 4. Then click on **Database DevOps** and in **LLM Authoring Test and Commit Pipeline** field point to the LLM pipeline identifier, e.g., `dbops_llm_test_preview` which we will create in the next step.
 
-### Step 2: Create a Pipeline with LLM Change Authoring
+### Step 2: Create a pipeline with Author DB Change steps
 1. Go to the **Pipelines** section in Harness.
 2. Click on **Create Pipeline**, and click on Add Stage and select the Custom Stage
 3. Provide the desired name for your pipeline, and click on **Add**. (Make sure that the pipeline identifier is same as mentioned in LLM pipeline identifier in step 1)
@@ -156,7 +156,7 @@ You can also set USER_NAME and USER_EMAIL to the user who started the pipeline v
 
 ![Database DevOps Pipeline Trigger](./static/dbops-pipeline-trigger-image.png)
 
-### Step 3: Author your first DB Change
+### Step 3: Author your first DB change
 
 1. Select your Database DevOps project from the Harness dashboard.
 2. Navigate to your desired Database Schema.
@@ -325,3 +325,11 @@ pipeline:
 
 </TabItem>
 </Tabs>
+
+---
+
+## Next steps
+
+- Go to [Get started with changelogs](/docs/database-devops/get-started/get-started-with-changelogs) to understand how Liquibase changesets are structured and executed in Harness Database DevOps.
+- Go to [Create a pipeline in Database DevOps](/docs/database-devops/gitops/create-a-pipeline) to build the pipeline that runs your LLM-authored migrations.
+- Go to [Automated rollback for database schemas](/docs/database-devops/use-database-devops/rollback-for-database-schemas) to configure rollback strategies for failed deployments.
