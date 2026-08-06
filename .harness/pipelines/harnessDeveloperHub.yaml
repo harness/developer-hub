@@ -259,6 +259,13 @@ pipeline:
                   when:
                     stageStatus: Success
                     condition: <+trigger.event>.equals("PR") && <+trigger.branch>!~"/^main$/"
+              # PRODUCTION PUBLISH — must only ever run for a push to main itself.
+              # Gate on <+trigger.branch> (the branch that was actually pushed), NOT
+              # <+trigger.targetBranch>. targetBranch is a pull-request concept and
+              # resolves to "main" for any branch with an open PR against main, so the
+              # old condition let a plain push to a feature branch publish that branch's
+              # build straight to developer.harness.io, silently reverting merged docs
+              # and exposing unreviewed content. See HDH-1124.
               - step:
                   type: Plugin
                   name: Publish-Netifly-Prod
@@ -274,7 +281,7 @@ pipeline:
                       token: <+pipeline.variables.netiflyPubToken>
                       debug: "true"
                   when:
-                    condition: <+trigger.event>.equals("PUSH") && <+trigger.targetBranch>.equals("main")
+                    condition: <+trigger.event>.equals("PUSH") && <+trigger.branch>.equals("main")
                     stageStatus: Success
           caching:
             enabled: true
