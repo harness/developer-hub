@@ -2091,6 +2091,13 @@
     "gaStartDate": "2026-07-23",
     "module": "Continuous Delivery",
     "lifecycleState": "Limited GA"
+  },
+  {
+    "flagKey": "METRIC_CHECK",
+    "description": "Enables a FME pipeline step to evaluate feature flag metrics and automatically determine whether a pipeline should continue, pause, or execute a failure strategy based on metric thresholds.",
+    "gaStartDate": "2026-08-06",
+    "module": "Feature Management & Experimentation",
+    "lifecycleState": "Limited GA"
   }
 ]
 
