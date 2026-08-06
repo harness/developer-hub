@@ -5,13 +5,13 @@ description: Learn about Delegate 2.0, a unified lightweight agent that serves a
 sidebar_position: 5
 ---
 
-Delegate 2.0 is a unified, lightweight agent that serves all Harness products from a single installation. It replaces the previous model of separate delegates per product with a single binary that runs across all supported platforms. For the latest documentation, installation guides, and release notes, see the [Delegate (Closed Beta) documentation](https://developer.harness.io/docs/category/delegate-closed-beta).
+Delegate 2.0 is a unified, lightweight agent that serves all Harness products from a single installation. It replaces the previous model of separate delegates per product with a single binary that runs across all supported platforms. For the latest documentation, installation guides, and release notes, see the [Delegate (Closed Beta) documentation](/docs/platform/delegates-v3/delegate-overview).
 
 :::info Key Change
 In previous versions of Harness, each product (CI, CD, Feature Flags, etc.) required its own delegate installation. Delegate 2.0 consolidates all of these into a single agent, dramatically simplifying installation and maintenance.
 :::
 
-## What Has Changed
+<div style={{maxWidth:1000}}> ![](../static/delegate-1.png) </div>
 
 Delegate 2.0 represents a significant architectural change from the previous delegate model. The following table summarizes the key differences.
 
@@ -22,7 +22,7 @@ Delegate 2.0 represents a significant architectural change from the previous del
 | **Platforms** | Limited platform support | Windows, macOS, Linux, and Kubernetes |
 | **Management** | Multiple delegates to install, update, and monitor | Single unified delegate to manage |
 
-## Supported Platforms
+### What's supported
 
 Delegate 2.0 supports a broad range of operating systems and architectures. Native binaries are provided for each platform, eliminating the need for containerization on non-Kubernetes environments.
 
@@ -36,11 +36,16 @@ Delegate 2.0 supports a broad range of operating systems and architectures. Nati
 | Windows | Desktop | Supported |
 | Kubernetes | Any cluster | Supported |
 
-## Unified Experience
+### Unified Delegate experience
 
 The previous delegate model required separate installations for each Harness product. Delegate 2.0 replaces all of these with a single agent.
 
-```yaml title="Before (Separate Delegates)"
+<div className="row">
+<div className="col col--6">
+
+**Before: Harness NG**
+
+```yaml title="Before (Separate Delegates in Harness NG)" showLineNumbers {}
 # NG Delegate Model (Before)
 Harness Account
   |
@@ -59,7 +64,12 @@ Harness Account
   #   - Upgrade scheduling
 ```
 
-```yaml title="After (Single Delegate 2.0)"
+</div>
+<div className="col col--6">
+
+**After: Harness 3.0**
+
+```yaml title="After (Single Delegate 2.0 in Harness 3.0)" showLineNumbers {4}
 # Delegate 2.0 Model (After)
 Harness Account
   |
@@ -76,7 +86,10 @@ Harness Account
         # Single installation covers everything
 ```
 
-### Key Benefits
+</div>
+</div>
+
+### Key benefits
 
 - **No delegate updates for step updates**: Pipeline step logic is decoupled from the delegate. Step updates are delivered independently without requiring a delegate upgrade.
 - **Opt-in when ready**: Teams can migrate to Delegate 2.0 on their own schedule. Existing NG delegates continue to function alongside Delegate 2.0.

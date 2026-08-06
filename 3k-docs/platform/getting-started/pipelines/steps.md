@@ -7,8 +7,6 @@ sidebar_position: 3
 
 A Step is the smallest executable unit within a pipeline stage. Steps are the building blocks that perform actual work — running scripts, invoking actions, requesting approvals, or managing background services. Harness 3.0 provides multiple step types with a flexible, short-form YAML syntax.
 
----
-
 ## Step types
 
 | Step Type | Key | Description |
@@ -24,8 +22,6 @@ A Step is the smallest executable unit within a pipeline stage. Steps are the bu
 | Parallel | `parallel` | Concurrent substeps |
 | Queue | `queue` | Queue management |
 | Template | `template` | Reference a reusable template |
-
----
 
 ## Common step properties
 
@@ -46,8 +42,6 @@ interface StepCommon {
   env: Record<string, string>             // Environment variables (GHA compat)
 }
 ```
-
----
 
 ## Run step
 
@@ -129,7 +123,7 @@ steps:
 
 Run the step inside a specific container image. Supports both a short-form string and a long-form object with pull policy, credentials, and resource limits.
 
-```yaml title="run-container.yaml"
+```yaml title="run-container.yaml" showLineNumbers {5-6,12-16}
 # Short form: image string
 steps:
   - name: build
@@ -153,7 +147,7 @@ steps:
 
 ### With environment variables
 
-```yaml title="run-env.yaml"
+```yaml title="run-env.yaml" showLineNumbers {4-9}
 steps:
   - name: deploy
     run:
@@ -169,7 +163,7 @@ steps:
 
 Supported values: `sh`, `bash`, `powershell`, `pwsh`, `python`.
 
-```yaml title="run-shell.yaml"
+```yaml title="run-shell.yaml" showLineNumbers {4,11,20}
 steps:
   - name: bash-script
     run:
@@ -195,7 +189,7 @@ steps:
 
 ### With test reports
 
-```yaml title="run-report.yaml"
+```yaml title="run-report.yaml" showLineNumbers {4-9}
 steps:
   - name: test
     run:
@@ -206,8 +200,6 @@ steps:
           - "coverage/junit.xml"
           - "coverage/report-*.xml"
 ```
-
----
 
 ## Run-test step
 
@@ -248,7 +240,7 @@ steps:
 
 Harness Test Intelligence selects only the tests relevant to code changes, significantly reducing execution time.
 
-```yaml title="test-intelligence.yaml"
+```yaml title="test-intelligence.yaml" showLineNumbers {5-6}
 steps:
   - name: smart-tests
     run-test:
@@ -265,7 +257,7 @@ steps:
 
 Distribute tests across parallel instances for faster execution.
 
-```yaml title="test-splitting.yaml"
+```yaml title="test-splitting.yaml" showLineNumbers {7-8}
 steps:
   - name: parallel-tests
     run-test:
@@ -279,8 +271,6 @@ steps:
         path:
           - "coverage/junit-*.xml"
 ```
-
----
 
 ## Action step
 
@@ -297,7 +287,7 @@ interface StepAction {
 
 ### GitHub Action
 
-```yaml title="action-gha.yaml"
+```yaml title="action-gha.yaml" showLineNumbers {2-3,5-6}
 steps:
   - action:
       uses: actions/checkout@v4
@@ -312,7 +302,7 @@ steps:
 
 ### Action with inputs
 
-```yaml title="action-with-inputs.yaml"
+```yaml title="action-with-inputs.yaml" showLineNumbers {3-8}
 steps:
   - name: upload-artifact
     action:
@@ -325,7 +315,7 @@ steps:
 
 ### Harness plugin
 
-```yaml title="action-plugin.yaml"
+```yaml title="action-plugin.yaml" showLineNumbers {3-4}
 steps:
   - name: build-and-push
     action:
@@ -346,8 +336,6 @@ steps:
 Harness 3.0 supports most GitHub Actions out of the box. Actions execute inside containers with the appropriate runtime. Some Actions that depend on GitHub-specific APIs may require configuration adjustments.
 :::
 
----
-
 ## Approval step
 
 Approval steps pause pipeline execution and wait for human or automated approval. Harness 3.0 supports native Harness approvals, Jira-based approvals, and ServiceNow-based approvals via the `uses:` field.
@@ -362,7 +350,7 @@ interface StepApproval {
 
 ### Harness Approval
 
-```yaml title="approval-harness.yaml"
+```yaml title="approval-harness.yaml" showLineNumbers {4}
 steps:
   - name: approve-production
     approval:
@@ -383,7 +371,7 @@ steps:
 
 ### Jira Approval
 
-```yaml title="approval-jira.yaml"
+```yaml title="approval-jira.yaml" showLineNumbers {4,6}
 steps:
   - name: jira-approval
     approval:
@@ -401,7 +389,7 @@ steps:
 
 ### ServiceNow Approval
 
-```yaml title="approval-servicenow.yaml"
+```yaml title="approval-servicenow.yaml" showLineNumbers {4,6}
 steps:
   - name: snow-approval
     approval:
@@ -418,15 +406,13 @@ steps:
         timeout: 48h
 ```
 
----
-
 ## Background step
 
 Background steps start long-running services that remain active for the duration of the stage. They share the same structure as Run steps but use the `background:` key. Typical uses include databases, caches, and local dev servers needed for integration testing.
 
 ### Redis service
 
-```yaml title="background-redis.yaml"
+```yaml title="background-redis.yaml" showLineNumbers {3-4}
 steps:
   - name: redis
     background:
@@ -440,7 +426,7 @@ steps:
 
 ### PostgreSQL service
 
-```yaml title="background-postgres.yaml"
+```yaml title="background-postgres.yaml" showLineNumbers {3-8}
 steps:
   - name: postgres
     background:
@@ -487,8 +473,6 @@ steps:
 Background services may take time to initialize. Use readiness probes or add an explicit wait step to ensure services are fully available before subsequent steps begin. Without verification, dependent steps may encounter connection failures.
 :::
 
----
-
 ## Barrier step
 
 Barrier steps synchronize execution across parallel stages. When a barrier is reached, the stage pauses until all other stages referencing the same barrier name also reach it. Barrier names must be declared in the `pipeline.barriers` list.
@@ -501,7 +485,7 @@ interface StepBarrier {
 
 ### Synchronizing parallel stages
 
-```yaml title="barrier-step.yaml"
+```yaml title="barrier-step.yaml" showLineNumbers {2-3,10-11,17-18,24-25}
 pipeline:
   barriers:
     - deployment-sync
@@ -531,8 +515,6 @@ pipeline:
 :::info Barrier Scope
 Barriers are scoped to the current pipeline execution. All parallel stages referencing the same barrier name will wait for each other. If a stage fails before reaching the barrier, the barrier times out after the specified duration.
 :::
-
----
 
 ## Clone step
 
@@ -583,7 +565,7 @@ steps:
 
 ### With submodules
 
-```yaml title="clone-submodules.yaml"
+```yaml title="clone-submodules.yaml" showLineNumbers {4}
 steps:
   - clone:
       depth: 50
@@ -593,7 +575,7 @@ steps:
 
 ### Clone a specific repository
 
-```yaml title="clone-specific-repo.yaml"
+```yaml title="clone-specific-repo.yaml" showLineNumbers {4-6}
 steps:
   - name: clone-shared-lib
     clone:
@@ -605,7 +587,7 @@ steps:
 
 ### PR clone ref
 
-```yaml title="clone-pr-ref.yaml"
+```yaml title="clone-pr-ref.yaml" showLineNumbers {3-7}
 steps:
   - clone:
       ref:
@@ -620,7 +602,7 @@ steps:
 
 Clone only specific directories from a large monorepo.
 
-```yaml title="clone-sparse.yaml"
+```yaml title="clone-sparse.yaml" showLineNumbers {3-6}
 steps:
   - clone:
       sparse-checkout: |
@@ -634,15 +616,13 @@ steps:
 If no Clone step is defined and `clone: disabled` is not set at the stage or pipeline level, Harness automatically clones the pipeline repository with default settings.
 :::
 
----
-
 ## Group & parallel steps
 
 Steps can be organized into sequential groups or run in parallel within a stage. Both `group:` and `parallel:` accept nested step lists and support conditionals, failure strategies, and other common step properties.
 
 ### Sequential group
 
-```yaml title="step-group.yaml"
+```yaml title="step-group.yaml" showLineNumbers {3,10-11}
 steps:
   - name: build-and-test
     group:
@@ -662,7 +642,7 @@ steps:
 
 All parallel steps must complete before the next step begins.
 
-```yaml title="parallel-steps.yaml"
+```yaml title="parallel-steps.yaml" showLineNumbers {4-5}
 steps:
   - run: npm ci
   - parallel:
@@ -678,7 +658,7 @@ steps:
 
 ### Group with failure strategy
 
-```yaml title="group-failure.yaml"
+```yaml title="group-failure.yaml" showLineNumbers {3}
 steps:
   - name: optional-checks
     on-failure: ignore
@@ -694,8 +674,6 @@ steps:
 Parallel steps share the same filesystem within a stage but execute concurrently. Be careful with steps that write to the same files. If isolation is needed, consider using parallel stages instead.
 :::
 
----
-
 ## Template step
 
 Template steps reference reusable step templates stored in the Harness template library. The `uses:` field follows the pattern `account.name@version`.
@@ -710,7 +688,7 @@ interface StepTemplate {
 
 ### Basic template reference
 
-```yaml title="template-basic.yaml"
+```yaml title="template-basic.yaml" showLineNumbers {4}
 steps:
   - name: deploy
     template:
@@ -723,7 +701,7 @@ steps:
 
 ### Template with version pinning
 
-```yaml title="template-versioned.yaml"
+```yaml title="template-versioned.yaml" showLineNumbers {4,12}
 steps:
   - name: scan
     template:
@@ -743,7 +721,7 @@ steps:
 
 ### Template with inputs and env
 
-```yaml title="template-inputs-env.yaml"
+```yaml title="template-inputs-env.yaml" showLineNumbers {4,8-9}
 steps:
   - name: notify
     template:

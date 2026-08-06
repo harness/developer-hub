@@ -5,17 +5,15 @@ description: Stages are the major execution blocks of a Harness 3.0 pipeline, ea
 sidebar_position: 2
 ---
 
-A Stage is a major execution block within a pipeline. Each stage has its own runtime environment, caching configuration, failure strategies, and execution steps. Stages run sequentially by default, but can be configured for parallel execution or matrix-based fan-out.
+A stage is a major execution block within a pipeline. Each stage has its own runtime environment, caching configuration, failure strategies, and execution steps. Stages run sequentially by default, but can be configured for parallel execution or matrix-based fan-out.
 
 :::info Key Concept
 In Harness 3.0, stages no longer require explicit type declarations like CI or Deployment. A stage is a container for steps, with deployment behavior configured through `service` and `environment` references.
 :::
 
----
-
 ## Stage schema
 
-The `Stage` interface defines the complete structure of a stage in a v1 pipeline. Execution types (`steps`, `approval`, `group`, `parallel`, `template`, `chain`) are mutually exclusive — each stage uses exactly one.
+The `Stage` interface defines the complete structure of a stage in a v1 pipeline. Execution types (`steps`, `approval`, `group`, `parallel`, `template`, `chain`) are mutually exclusive; each stage uses exactly one.
 
 ```typescript title="stage-schema.ts"
 interface Stage {
@@ -74,8 +72,6 @@ interface Stage {
 }
 ```
 
----
-
 ## Properties reference
 
 | Property | Type | Description |
@@ -113,13 +109,11 @@ interface Stage {
 | `services` | `Record<string, Container>` | Background service containers for the stage |
 | `permissions` | `Permissions` | Stage-level permissions (GitHub Actions compatibility) |
 
----
-
 ## Stage types
 
-There are six functional patterns for stages. The execution types are mutually exclusive — each stage uses exactly one of `steps`, `approval`, `template`, `chain`, `group`, or `parallel`.
+There are six functional patterns for stages. The execution types are mutually exclusive; each stage uses exactly one of `steps`, `approval`, `template`, `chain`, `group`, or `parallel`.
 
-### 1. Steps Stage (Default)
+### Steps Stage (Default)
 
 The default stage type. Contains a list of steps that execute sequentially.
 
@@ -132,11 +126,11 @@ stages:
       - run: npm test
 ```
 
-### 2. Approval Stage
+### Approval Stage
 
 Pauses the pipeline and waits for manual or automated approval before proceeding.
 
-```yaml title="approval-stage.yaml"
+```yaml title="approval-stage.yaml" showLineNumbers {3-5}
 stages:
   - name: approve-deploy
     approval:
@@ -150,11 +144,11 @@ stages:
         timeout: 24h
 ```
 
-### 3. Template Stage
+### Template Stage
 
 References a reusable stage template with parameterized inputs.
 
-```yaml title="template-stage.yaml"
+```yaml title="template-stage.yaml" showLineNumbers {3-5}
 stages:
   - name: deploy-staging
     template:
@@ -164,11 +158,11 @@ stages:
         replicas: 2
 ```
 
-### 4. Chain Stage
+### Chain Stage
 
 Triggers another pipeline as a child execution, passing context and inputs.
 
-```yaml title="chain-stage.yaml"
+```yaml title="chain-stage.yaml" showLineNumbers {3-5}
 stages:
   - name: run-integration-tests
     chain:
@@ -177,11 +171,11 @@ stages:
         build_number: ${{ stages.build.outputs.BUILD_NUMBER }}
 ```
 
-### 5. Group Stage
+### Group Stage
 
 Organizes multiple substages into a sequential group with shared configuration.
 
-```yaml title="group-stage.yaml"
+```yaml title="group-stage.yaml" showLineNumbers {3-4}
 stages:
   - name: deploy-all
     group:
@@ -194,11 +188,11 @@ stages:
             - run: ./deploy.sh production
 ```
 
-### 6. Parallel Stage
+### Parallel Stage
 
 Runs multiple substages concurrently. The pipeline waits for all to complete before continuing.
 
-```yaml title="parallel-stage.yaml"
+```yaml title="parallel-stage.yaml" showLineNumbers {3-4}
 stages:
   - name: test-all
     parallel:
@@ -211,15 +205,13 @@ stages:
             - run: npm run test:integration
 ```
 
----
-
 ## Stage groups
 
 Stage groups organize related stages together and allow shared configuration like failure strategies or conditionals to apply to all stages in the group.
 
 ### Basic group
 
-```yaml title="stage-group.yaml"
+```yaml title="stage-group.yaml" showLineNumbers {3-4}
 stages:
   - name: integration-tests
     group:
@@ -239,7 +231,7 @@ stages:
 
 Apply a condition to an entire group. When the condition evaluates to `false`, all stages in the group are skipped.
 
-```yaml title="conditional-group.yaml"
+```yaml title="conditional-group.yaml" showLineNumbers {7}
 stages:
   - name: build
     steps:
@@ -260,7 +252,7 @@ stages:
 
 Apply a failure strategy to the entire group so all substages inherit the same behavior.
 
-```yaml title="group-failure-strategy.yaml"
+```yaml title="group-failure-strategy.yaml" showLineNumbers {3-7}
 stages:
   - name: deployment-pipeline
     on-failure:
@@ -281,13 +273,11 @@ stages:
             - run: ./deploy.sh production
 ```
 
----
-
 ## Parallel execution
 
 Use the `parallel:` keyword to run multiple stages concurrently. All stages in a parallel block start simultaneously, and the pipeline waits for all to complete before continuing.
 
-```yaml title="parallel-stages.yaml"
+```yaml title="parallel-stages.yaml" showLineNumbers {7-8}
 stages:
   - name: build
     steps:
@@ -315,7 +305,7 @@ Parallel stages each get their own runtime environment and can run on different 
 
 Individual stages within a parallel block can also have their own conditions.
 
-```yaml title="parallel-conditional.yaml"
+```yaml title="parallel-conditional.yaml" showLineNumbers {10}
 stages:
   - name: quality-checks
     parallel:
@@ -332,8 +322,6 @@ stages:
             - run: npm run license:check
 ```
 
----
-
 ## Matrix strategy
 
 The `strategy` field supports three looping patterns: `matrix`, `for`, and `while`.
@@ -342,7 +330,7 @@ The `strategy` field supports three looping patterns: `matrix`, `for`, and `whil
 
 Creates stage instances for each combination of matrix variables. Use `include` to add extra combinations and `exclude` to remove specific ones.
 
-```yaml title="matrix-strategy.yaml"
+```yaml title="matrix-strategy.yaml" showLineNumbers {3-15}
 stages:
   - name: test
     strategy:
@@ -362,13 +350,17 @@ stages:
       - run: echo "Testing Go ${{ matrix.go }} on ${{ matrix.os }}"
 ```
 
+:::info Matrix Expansion
+The above matrix creates combinations of 3 Go versions and 3 operating systems. With `exclude` removing Go 1.21 on Windows, and `include` adding an extra variable, the total instances are adjusted accordingly. 
+
 Use `max-parallel` to limit concurrency and `fail-fast` to cancel remaining instances on the first failure.
+:::
 
 ### For loop
 
 Iterate a stage a fixed number of times. Access the current iteration index via `${{ for.iteration }}`.
 
-```yaml title="for-loop.yaml"
+```yaml title="for-loop.yaml" showLineNumbers {3-5}
 stages:
   - name: deploy
     strategy:
@@ -382,7 +374,7 @@ stages:
 
 Repeat a stage while a condition evaluates to `true`. Set `iterations` as a safety bound on maximum repetitions.
 
-```yaml title="while-loop.yaml"
+```yaml title="while-loop.yaml" showLineNumbers {3-6}
 stages:
   - name: wait-for-healthy
     strategy:
@@ -394,13 +386,11 @@ stages:
         run: curl -s https://api.example.com/health
 ```
 
----
-
 ## Conditional execution
 
 ### Expression-based conditions
 
-```yaml title="conditional-stages.yaml"
+```yaml title="conditional-stages.yaml" showLineNumbers {7,12,17}
 stages:
   - name: build
     steps:
@@ -425,7 +415,7 @@ Use `always()` to run a stage regardless of previous outcomes, `failure()` to ru
 
 Set `disabled: true` to skip a stage without removing it from the YAML. Useful for debugging or temporary suppression.
 
-```yaml title="disabled-stage.yaml"
+```yaml title="disabled-stage.yaml" showLineNumbers {7}
 stages:
   - name: build
     steps:
@@ -435,8 +425,6 @@ stages:
     steps:
       - run: ./deploy-experimental.sh
 ```
-
----
 
 ## Failure strategies
 
@@ -478,7 +466,7 @@ on-failure:
 
 ### Retry with configuration
 
-```yaml title="retry-config.yaml"
+```yaml title="retry-config.yaml" showLineNumbers {2-12}
 on-failure:
   errors:
     - connectivity
@@ -495,7 +483,7 @@ on-failure:
 
 ### Manual intervention
 
-```yaml title="manual-intervention.yaml"
+```yaml title="manual-intervention.yaml" showLineNumbers {2-5}
 on-failure:
   action:
     manual-intervention:
@@ -505,7 +493,7 @@ on-failure:
 
 ### Match specific exit codes
 
-```yaml title="exitcode-failure.yaml"
+```yaml title="exitcode-failure.yaml" showLineNumbers {2}
 on-failure:
   exitcode: "1"
   action: ignore

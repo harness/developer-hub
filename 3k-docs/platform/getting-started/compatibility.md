@@ -4,9 +4,6 @@ sidebar_label: Backward Compatibility
 sidebar_position: 3
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 Harness 3.0 provides full backwards compatibility with existing Harness NG resources. All investments in pipelines, services, environments, connectors, secrets, templates, and expressions are protected. Nothing breaks when you upgrade to 3.0.
 
 :::tip Zero Breaking Changes
@@ -37,10 +34,12 @@ While existing NG pipelines work without modification, teams that want to take a
 
 The converter handles structural changes, field renames, and format simplifications automatically.
 
-<Tabs queryString="yaml-format">
-<TabItem value="ng" label="Before">
+<div className="row">
+<div className="col col--6">
 
-```yaml title="before-conversion.yaml"
+**Before: Harness NG YAML**
+
+```yaml title="before-conversion.yaml (Harness NG)" showLineNumbers {}
 # Before: NG Pipeline (v0)
 pipeline:
   name: Build and Test
@@ -64,10 +63,12 @@ pipeline:
                     command: npm test
 ```
 
-</TabItem>
-<TabItem value="harness" label="After">
+</div>
+<div className="col col--6">
 
-```yaml title="v1-pipeline.yaml"
+**After: Harness 3.0 YAML**
+
+```yaml title="v1-pipeline.yaml (Harness 3.0)" showLineNumbers {2}
 # After: Pipeline v1
 pipeline:
   name: Build and Test
@@ -78,8 +79,8 @@ pipeline:
           run: npm test
 ```
 
-</TabItem>
-</Tabs>
+</div>
+</div>
 
 :::tip Conversion Strategy
 Start by converting low-risk pipelines such as `development` and `testing` to build confidence with the v1 format. Once your team is comfortable, convert staging and production pipelines. The converter preserves all execution logic, so pipeline behavior does not change after conversion.

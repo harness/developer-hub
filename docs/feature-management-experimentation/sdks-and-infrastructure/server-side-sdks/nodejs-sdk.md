@@ -7,7 +7,6 @@ redirect_from:
   - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/nodejs-sdk-using-gettreatment-in-localhost-mode-does-not-work-with-then-and-catch-blocks/
   - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/nodejs-sdk-localhost-mode-error-cannot-find-name-path/
   - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/nodejs-sdk-error-node-modules-has-no-exported-member-splitio/
-  - /docs/feature-management-experimentation/sdks-and-infrastructure/faqs-server-side-sdks/nodejs-sdk-how-to-deploy-in-aws-lambda/
 ---
 
 import Tabs from '@theme/Tabs';

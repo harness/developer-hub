@@ -8,14 +8,14 @@ sidebar_position: 1
 
 Dashboards 3.0 is a ground-up rebuild of the Harness dashboarding experience. Moving away from Looker and LookML, the new dashboards are powered by an internal dashboarding technology and a unified data platform purpose-built to drive all data-intensive capabilities across the Harness platform.
 
+<div style={{maxWidth:1000}}> ![](../static/dashboards-1.png) </div>
+
 | | |
 |---|---|
 | **AI-Powered** | Dashboard Agent + MCP |
 | **Query Language** | HQL (Harness Query Language) |
 | **Multi-DB** | StarRocks, AlloyDB, BigQuery |
 | **Widget Types** | 10+ |
-
----
 
 ## What has changed
 

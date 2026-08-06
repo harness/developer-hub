@@ -13,8 +13,6 @@ A Pipeline is the top-level execution unit in Harness 3.0. It defines a sequence
 In Harness 3.0, a pipeline is declared using the `pipeline:` root key at the top of the YAML file. All pipeline configuration (stages, inputs, triggers, etc.) is nested under this root key. The v1 parser supports short-form syntax, expression-based conditionals, and typed inputs. See the spec repository for the complete schema definition.
 :::
 
----
-
 ## Schema Definition
 
 The `Pipeline` interface defines the complete structure of a v1 pipeline. All fields are optional except `stages`, which must contain at least one stage.
@@ -85,8 +83,6 @@ interface Pipeline {
 }
 ```
 
----
-
 ## Properties Reference
 
 All pipeline-level properties are optional unless otherwise noted.
@@ -110,8 +106,6 @@ All pipeline-level properties are optional unless otherwise noted.
 | `jobs` | `Record<string, Stage>` | No | GitHub Actions compatible stage definitions (alternative to `stages`). |
 | `permissions` | `Permissions` | No | GitHub token permissions (`read-all`, `write-all`, or granular per-resource). |
 
----
-
 ## Basic Examples
 
 The v1 specification supports multiple syntax forms, from minimal one-liners to fully expanded configurations.
@@ -130,7 +124,7 @@ pipeline:
 
 ### Pipeline with Multiple Stages
 
-```yaml title="multi-stage-pipeline.yaml"
+```yaml title="multi-stage-pipeline.yaml" showLineNumbers {1-4}
 pipeline:
   timeout: 30m
   env:
@@ -149,7 +143,7 @@ pipeline:
 
 Environment variables declared at the pipeline level are injected into all stages and steps.
 
-```yaml title="global-env.yaml"
+```yaml title="global-env.yaml" showLineNumbers {4-7}
 pipeline:
   stages:
     - name: build
@@ -165,7 +159,7 @@ pipeline:
 
 Declare typed inputs that can be supplied when triggering the pipeline manually or via API.
 
-```yaml title="input-variables.yaml"
+```yaml title="input-variables.yaml" showLineNumbers {8-25}
 pipeline:
   stages:
     - name: deploy
@@ -197,7 +191,7 @@ pipeline:
 
 Use the `if` property with an expression to conditionally execute the entire pipeline.
 
-```yaml title="conditional-pipeline.yaml"
+```yaml title="conditional-pipeline.yaml" showLineNumbers {4}
 pipeline:
   stages:
     - name: deploy
@@ -210,7 +204,7 @@ pipeline:
 
 Override the default repository when the pipeline YAML is stored separately from the application source.
 
-```yaml title="repo-override.yaml"
+```yaml title="repo-override.yaml" showLineNumbers {2-8}
 pipeline:
   repo:
     name: my-org/my-app
@@ -225,15 +219,13 @@ pipeline:
         - run: make build
 ```
 
----
-
 ## Event Triggers
 
 The `on` property defines when a pipeline should automatically trigger. Harness 3.0 supports `push`, `pull_request`, `tag`, `schedule`, `workflow_dispatch`, and more.
 
 ### Push Trigger with Filters
 
-```yaml title="push-trigger.yaml"
+```yaml title="push-trigger.yaml" showLineNumbers {2-14}
 pipeline:
   on:
     push:
@@ -256,7 +248,7 @@ pipeline:
 
 ### Pull Request Trigger
 
-```yaml title="pr-trigger.yaml"
+```yaml title="pr-trigger.yaml" showLineNumbers {2-3,7-10}
 pipeline:
   on:
     pull_request:
@@ -295,7 +287,7 @@ pipeline:
 
 ### Tag Trigger
 
-```yaml title="tag-trigger.yaml"
+```yaml title="tag-trigger.yaml" showLineNumbers {4-7}
 pipeline:
   on:
     push:
@@ -313,15 +305,13 @@ pipeline:
 Cron triggers use standard 5-field cron syntax (minute, hour, day-of-month, month, day-of-week). All scheduled pipelines run in the UTC time zone by default.
 :::
 
----
-
 ## Concurrency Control
 
 Concurrency control prevents multiple runs of the same pipeline from executing simultaneously. This is critical for deployment pipelines where overlapping runs could cause conflicts.
 
 ### Basic Concurrency (String Shorthand)
 
-```yaml title="basic-concurrency.yaml"
+```yaml title="basic-concurrency.yaml" showLineNumbers {2}
 pipeline:
   concurrency: deploy-production
   stages:
@@ -334,7 +324,7 @@ pipeline:
 
 Use expressions to create dynamic concurrency groups and automatically cancel in-flight runs.
 
-```yaml title="dynamic-concurrency.yaml"
+```yaml title="dynamic-concurrency.yaml" showLineNumbers {2-4}
 pipeline:
   concurrency:
     group: deploy-${{ branch }}
@@ -349,15 +339,13 @@ pipeline:
 When `cancel-in-progress: true` is set, any in-flight pipeline run in the same concurrency group will be cancelled when a new run starts. Use this carefully with deployment pipelines to avoid leaving infrastructure in a partial state.
 :::
 
----
-
 ## GitHub Actions Compatibility
 
 Harness 3.0 supports GitHub Actions-style `jobs:` syntax as an alternative to `stages:`. This makes it easier to migrate existing GitHub Actions workflows to Harness. Key GHA features supported include `runs-on:` for runner selection, `needs:` for job dependencies, and `uses:` for referencing GitHub Actions directly.
 
 ### GHA-Compatible Pipeline
 
-```yaml title="gha-compat.yaml"
+```yaml title="gha-compat.yaml" showLineNumbers {1-2,6-8,10,14-15}
 name: CI Pipeline
 on:
   push:
@@ -382,7 +370,7 @@ jobs:
 
 Configure GitHub token permissions at the pipeline level. Supports shorthand (`read-all`, `write-all`) or granular per-resource permissions.
 
-```yaml title="permissions.yaml"
+```yaml title="permissions.yaml" showLineNumbers {2-5}
 pipeline:
   permissions:
     contents: read
@@ -394,7 +382,10 @@ pipeline:
         - run: npm ci
 ```
 
-### Native Harness vs GHA Syntax
+<div className="row">
+<div className="col col--6">
+
+**Native Harness Syntax**
 
 ```yaml title="harness-native.yaml"
 # Harness Native Syntax
@@ -408,6 +399,11 @@ pipeline:
       steps:
         - run: ./deploy.sh
 ```
+
+</div>
+<div className="col col--6">
+
+**GitHub Actions Syntax**
 
 ```yaml title="gha-syntax.yaml"
 # GitHub Actions Syntax (also works)
@@ -429,6 +425,11 @@ jobs:
       - run: ./deploy.sh
 ```
 
-### Migration Path
+</div>
+</div>
 
-If you are migrating from GitHub Actions, you can use the `jobs:` syntax directly in Harness 3.0 with minimal changes. GitHub Actions workflows use root-level keys like `name:`, `on:`, and `jobs:` without a `pipeline:` wrapper. Most GitHub Actions are supported natively via the `uses:` keyword.
+:::info Migration Path
+If you are migrating from GitHub Actions, you can use the `jobs:` syntax directly in Harness 3.0 with minimal changes. GitHub Actions workflows use root-level keys like `name:`, `on:`, and `jobs:` without a `pipeline:` wrapper. 
+
+Most GitHub Actions are supported natively via the `uses:` keyword.
+:::

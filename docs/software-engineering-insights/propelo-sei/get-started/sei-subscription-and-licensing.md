@@ -3,8 +3,6 @@ title:  SEI Subscriptions and Licenses
 description: Upgrade, Manage and View the SEI License usage data
 sidebar_position: 10
 sidebar_label: Subscriptions and Licenses
-redirect_from:
-  - /docs/software-engineering-insights/get-started/sei-subscription-and-licensing
 ---
 
 You can quickly and securely manage your SEI subscription directly through your account at any time. See clear details on your subscription, and associated usage details.

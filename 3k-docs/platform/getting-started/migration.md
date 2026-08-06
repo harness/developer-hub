@@ -5,13 +5,10 @@ description: Learn how to migrate from Harness NextGen (NG) to Harness 3.0.
 sidebar_position: 2
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 This guide provides a step-by-step process for migrating from Harness NG to Harness 3.0. Existing NG resources are fully compatible with 3.0, so teams can migrate incrementally at their own pace.
 
 :::info No Downtime Required
-Migration to Harness 3.0 does not require downtime. Existing NG pipelines, connectors, secrets, and other resources continue to work without modification. The migration process is additive -- you adopt new features when ready.
+Migration to Harness 3.0 does not require downtime. Existing NG pipelines, connectors, secrets, and other resources continue to work without modification. The migration process is additive; you adopt new features when ready.
 :::
 
 ## Setup
@@ -34,14 +31,14 @@ Follow these eight steps to migrate from Harness NG to Harness 3.0. Each step ca
 
 1. **Use Harness AI**: Leverage the reimagined AI Assistant to accelerate your migration. It can help create new v1 pipelines, explain configuration differences, and troubleshoot issues during the transition.
 
-## YAML migration
-
 The following example shows a side-by-side comparison of the same pipeline expressed in the NG format and the 3.0 v1 format. The v1 format is significantly shorter and easier to read.
 
-<Tabs queryString="yaml-format">
-<TabItem value="ng" label="Before">
+<div className="row">
+<div className="col col--6">
 
-```yaml title="ng-pipeline.yaml"
+**Before: Harness NG YAML**
+
+```yaml title="ng-pipeline.yaml (Harness NG)" showLineNumbers {}
 # Harness NG (v0 YAML)
 pipeline:
   name: Deploy App
@@ -72,10 +69,12 @@ pipeline:
                     skipDryRun: false
 ```
 
-</TabItem>
-<TabItem value="harness" label="After">
+</div>
+<div className="col col--6">
 
-```yaml title="v1-pipeline.yaml"
+**After: Harness 3.0 YAML**
+
+```yaml title="v1-pipeline.yaml (Harness 3.0)" showLineNumbers {2}
 # Harness 3.0 (v1 YAML)
 pipeline:
   name: Deploy App
@@ -91,8 +90,8 @@ pipeline:
             skip_dry_run: false
 ```
 
-</TabItem>
-</Tabs>
+</div>
+</div>
 
 :::tip Key Differences
 The v1 format removes `projectIdentifier`, `orgIdentifier`, and `identifier` fields (inferred from context), flattens the stage and step hierarchy, and replaces nested `serviceRef` / `environmentRef` with top-level service and environment fields.
@@ -104,13 +103,13 @@ All existing NG resources are fully compatible with Harness 3.0. No modification
 
 | Resource             | Compatibility Status |
 | -------------------- | -------------------- |
-| NG Pipelines         | Fully compatible     |
-| Services             | Fully compatible     |
-| Environments         | Fully compatible     |
-| Infrastructures      | Fully compatible     |
-| Connectors & Secrets | Fully compatible     |
-| Templates            | Fully compatible     |
-| Expressions          | Fully compatible     |
+| [NG Pipelines](/docs/category/pipelines)         | Fully compatible     |
+| [Services](/docs/category/services) | Fully compatible     |
+| [Environments](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview) | Fully compatible     |
+| [Infrastructures](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview/#infrastructure-definitions)      | Fully compatible     |
+| [Connectors & Secrets](/docs/category/connectors) | Fully compatible     |
+| [Templates](/docs/category/templates)            | Fully compatible     |
+| [Expressions](/docs/category/variables--expressions)          | Fully compatible     |
 
 ## When to use Pipeline v1
 
