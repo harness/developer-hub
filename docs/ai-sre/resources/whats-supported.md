@@ -64,7 +64,7 @@ These tools send alerts, monitoring signals, and change data into AI SRE. Most u
 - Octopus Deploy
 - Travis CI
 
-### Incident management and ticketing
+### Incident management and ticketing tools
 - Jira
 - PagerDuty
 - ServiceNow
@@ -84,7 +84,7 @@ These tools are acted on by runbooks through Harness connectors or delegates. Th
 - Google Chat: Link spaces to incidents, send messages via runbook actions
 - Zoom: Create meetings
 
-### ITSM and ticketing
+### ITSM and ticketing tools
 - Jira: Create and manage Jira issues
 - ServiceNow: Create, update, and select records
 
@@ -121,6 +121,8 @@ Voice Transcription Analysis used in conjunction with Recall.ai
 
 ## Stakeholder communication
 
+AI SRE keeps stakeholders informed during incidents through the following channels:
+
 - **Status updates:** Incident commanders can send structured status updates via email to stakeholders subscribed to impacted services. Recipients are resolved dynamically from service subscriber lists configured in the Service Directory.
 - **Service subscriptions:** Individual users and Harness User Groups can subscribe to services to receive automated status update notifications during incidents affecting those services.
 - **Email delivery:** Status updates are delivered via branded HTML emails from `aisre-noreply@harness.io`.
@@ -132,3 +134,11 @@ Voice Transcription Analysis used in conjunction with Recall.ai
 Some Harness AI SRE features are released behind feature flags for early adopters.
 
 To enable feature flags in your Harness account, contact Harness Support.
+
+---
+
+## Next steps
+
+- Go to [Set up integration management](/docs/ai-sre/integrations) to review the per-tool capability matrix and connect your tools.
+- Go to [Runbooks](/docs/ai-sre/runbooks) to automate actions across the supported integrations.
+- Go to [Incidents](/docs/ai-sre/incidents) to see how ingested alerts become tracked incidents.

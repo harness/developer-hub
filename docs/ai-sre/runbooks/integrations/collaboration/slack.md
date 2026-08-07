@@ -18,6 +18,8 @@ redirect_from:
 - /docs/ai-sre/runbooks/integrations/slack
 ---
 
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
+
 Harness AI SRE integrates with Slack at the organization level, enabling automated incident communication and team collaboration across all projects.
 
 ## Overview
@@ -86,7 +88,7 @@ Sends a message to a specified Slack channel.
 - **Message:** Message text to send
   - Supports Mustache variables: `{{Activity.title}}`, `{{Activity.summary}}`
   - Can include Slack markdown formatting (bold, italics, links)
-  - Supports Block Kit JSON format for rich message layouts. Go to [Block Kit formatting](#block-kit-formatting) to review examples.
+  - Supports Block Kit JSON format for rich message layouts. Go to [Format messages with Block Kit](#format-messages-with-block-kit) to review examples.
 
 ### Create Slack channel action
 
@@ -109,7 +111,7 @@ Creates a new Slack channel for incident coordination.
 
 ---
 
-## Block Kit formatting
+## Format messages with Block Kit
 
 Harness AI SRE supports Slack's Block Kit JSON for rich layouts, including varied text sizes, colors, and formatting beyond basic markdown.
 
@@ -308,7 +310,7 @@ Add visual separation between sections using divider blocks.
 ]
 ```
 
-### Markdown formatting
+### Format text with markdown
 
 Within `mrkdwn` text fields, you can use:
 - **Bold:** `*text*`
@@ -477,7 +479,7 @@ Before deploying runbooks with Block Kit messages:
 If you have existing runbooks with plain text messages, you can migrate them to Block Kit:
 
 **Before (plain text):**
-```
+```text
 ⚠️ New SEV{{Activity.severity.id}} incident: {{Activity.title}}
 Status: {{Activity.status}}
 ```
@@ -516,7 +518,10 @@ Status: {{Activity.status}}
 
 ## Best practices
 
-### Channel naming
+### Name channels consistently
+
+Follow these conventions when naming incident channels:
+
 - Use consistent prefixes: `incident-`, `alert-`, `sev1-`
 - Include incident IDs: `incident-{{Activity.id}}-api`
 - Keep names descriptive: `sev{{Activity.severity.id}}-{{Activity.service}}`
@@ -816,147 +821,47 @@ Status: {{Activity.status}}
 
 ## Troubleshooting
 
-<details>
-<summary><strong>Message does not appear in Slack channel</strong></summary>
+<Troubleshoot
+  issue="A runbook message does not appear in the Slack channel"
+  mode="docs"
+  fallback="Verify the Slack integration is connected in Organization Settings, confirm the channel name or ID, ensure the Harness bot is added to the channel (private channels require an explicit invite), and confirm the bot has chat:write permission."
+/>
 
-**Check the following:**
+<Troubleshoot
+  issue="A Block Kit JSON message fails to send from a Slack runbook action"
+  mode="docs"
+  fallback="Validate the JSON syntax, replace Mustache variables with sample values to confirm the structure, and use the \n escape for line breaks instead of real newlines or trailing backslashes."
+/>
 
-1. Verify the Slack integration is connected in **Organization Settings**
-2. Confirm the channel name or ID is correct
-3. Ensure the Harness bot has been added to the channel
-4. Check runbook execution logs for error messages
-5. Verify the bot has `chat:write` permission
+<Troubleshoot
+  issue="Mustache variables do not render in Slack Block Kit messages"
+  mode="docs"
+  fallback="Confirm the variable name matches the incident field exactly (case-sensitive), ensure custom fields are populated before the runbook runs, and use the correct {{variable}} syntax."
+/>
 
-**If using a private channel**, the bot must be explicitly invited to the channel before it can post messages.
+<Troubleshoot
+  issue="A Slack Block Kit message appears but the formatting is wrong"
+  mode="docs"
+  fallback="Set the text object type to mrkdwn (not plain_text), use the <URL|link text> link syntax, and confirm Section blocks use a text object while Context blocks use an elements array."
+/>
 
-</details>
+<Troubleshoot
+  issue="A Slack runbook action fails with an authentication error"
+  mode="docs"
+  fallback="Verify the OAuth tokens in Organization Settings under Third Party Integrations (AI SRE), confirm the permission scopes and workspace access, and re-authorize the Slack integration if necessary."
+/>
 
-<details>
-<summary><strong>Block Kit JSON message fails to send</strong></summary>
+<Troubleshoot
+  issue="Creating a Slack channel from a runbook fails"
+  mode="docs"
+  fallback="Confirm the channel name follows Slack naming conventions (lowercase, no spaces, hyphens allowed), check that the workspace channel limit is not reached, and ensure the bot has channels:manage permission."
+/>
 
-**Possible causes:**
-
-- Invalid JSON syntax (missing brackets, commas, quotes)
-- A real newline or a trailing backslash (`\`) used inside a string instead of the `\n` escape
-- Mustache variable rendering breaks JSON structure
-- Block type not supported or misspelled
-- Text length exceeds 3,000 character limit
-
-**Resolution:**
-
-1. Validate JSON syntax using [jsonlint.com](https://jsonlint.com)
-2. Test Block Kit structure in [Slack Block Kit Builder](https://api.slack.com/block-kit/building)
-3. Replace Mustache variables with sample values to test JSON validity
-4. Check runbook execution logs for specific JSON parsing errors
-5. Ensure all text fields use `\n` for line breaks (not actual newlines, and not a trailing backslash)
-
-**Common JSON errors:**
-```json
-Wrong: "text": "Line 1
-Line 2"
-
-Wrong: "text": "Line 1\
-Line 2"
-
-Correct: "text": "Line 1\nLine 2"
-```
-
-To narrow the source, split content across multiple blocks or a `fields` array rather than wrapping one long string.
-
-</details>
-
-<details>
-<summary><strong>Mustache variables do not render in Block Kit messages</strong></summary>
-
-**Possible causes:**
-
-- Variable name is misspelled or does not exist
-- Custom incident field is not populated
-- Variable syntax is incorrect
-
-**Resolution:**
-
-1. Verify the name matches exactly (case-sensitive): `{{Activity.severity.id}}`, not `{{activity.severity.id}}`
-2. Check that custom incident fields are populated before the runbook executes
-3. Use correct Mustache syntax: `{{variable}}` not `{variable}` or `$variable`
-4. Test with standard variables first (`{{Activity.id}}`, `{{Activity.title}}`)
-5. Review runbook execution logs to see rendered output
-
-</details>
-
-<details>
-<summary><strong>Block Kit message appears but formatting is wrong</strong></summary>
-
-**Possible causes:**
-
-- Using wrong block type for desired layout
-- Markdown not enabled (`plain_text` instead of `mrkdwn`)
-- Emoji codes not recognized by Slack
-- Link formatting incorrect
-
-**Resolution:**
-
-1. Ensure `"type": "mrkdwn"` is set in text objects (not `"plain_text"`)
-2. Test emoji codes in Slack directly (`:rotating_light:`, `:red_circle:`)
-3. Use correct link syntax: `<URL|link text>` not `[link text](URL)`
-4. Preview in Block Kit Builder before deploying
-5. Check that Section blocks use `text` object, Context blocks use `elements` array
-
-</details>
-
-<details>
-<summary><strong>Authentication failures</strong></summary>
-
-**Possible causes:**
-
-- OAuth token expired or revoked
-- Slack workspace admin disabled the app
-- Bot removed from workspace
-
-**Resolution:**
-
-1. Verify OAuth tokens in **Organization Settings**, then **Third Party Integrations (AI SRE)**
-2. Check permission scopes match required permissions
-3. Confirm workspace access for the authorized user
-4. Re-authorize the Slack integration if necessary
-
-</details>
-
-<details>
-<summary><strong>Channel creation errors</strong></summary>
-
-**Possible causes:**
-
-- Channel name violates Slack naming conventions
-- Workspace channel limit reached
-- Bot lacks `channels:manage` permission
-
-**Resolution:**
-
-1. Check naming conventions: lowercase, no spaces, hyphens allowed
-2. Verify channel limits in Slack workspace settings
-3. Confirm bot has `channels:manage` permission
-4. Ensure channel name does not already exist
-
-</details>
-
-<details>
-<summary><strong>Rate limit errors</strong></summary>
-
-**Possible causes:**
-
-- Runbook sending too many messages in short period
-- Multiple runbooks executing simultaneously
-- Slack API rate limits exceeded
-
-**Resolution:**
-
-1. Add delays between message actions in runbook
-2. Consolidate multiple messages into single Block Kit message
-3. Review Slack API rate limits: [api.slack.com/docs/rate-limits](https://api.slack.com/docs/rate-limits)
-4. Implement conditional logic to reduce message frequency
-
-</details>
+<Troubleshoot
+  issue="A Slack runbook action fails with a rate limit error"
+  mode="docs"
+  fallback="Add delays between message actions, consolidate multiple messages into a single Block Kit message, and use conditional logic to reduce message frequency."
+/>
 
 ---
 
@@ -1030,6 +935,8 @@ To narrow the source, split content across multiple blocks or a `fields` array r
 
 ### Essential variables
 
+These Mustache variables are commonly used in Slack messages:
+
 | Variable | Description | Example Output |
 |----------|-------------|----------------|
 | `{{Activity.id}}` | Incident ID | `INC-12345` |
@@ -1051,6 +958,8 @@ To narrow the source, split content across multiple blocks or a `fields` array r
 | Channel | `<!channel>` | `<!channel>` |
 
 ### Resources
+
+Use these Slack references when building Block Kit messages:
 
 - **Slack Block Kit Builder:** [api.slack.com/block-kit/building](https://api.slack.com/block-kit/building)
 - **Block Kit Reference:** [api.slack.com/reference/block-kit](https://api.slack.com/reference/block-kit)

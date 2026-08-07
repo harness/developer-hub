@@ -31,6 +31,8 @@ New Relic provides:
 
 ## Set up New Relic integration
 
+Complete the following steps to connect New Relic to Harness AI SRE:
+
 1. Navigate to **Integrations** in the main menu.
 2. Click **New Integration**.
 3. Select **New Relic** from the template options.

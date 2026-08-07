@@ -20,6 +20,8 @@ Integrate OpsGenie with AI SRE runbooks to automate alert management and on-call
 
 ## Use cases
 
+Use OpsGenie runbook actions to:
+
 - Create alerts in OpsGenie
 - Add notes to existing alerts
 - Acknowledge alerts programmatically
@@ -38,6 +40,8 @@ Integrate OpsGenie with AI SRE runbooks to automate alert management and on-call
 ---
 
 ## Configure the OpsGenie integration
+
+Set up the connector with these steps:
 
 1. Go to **Project Settings**, then **Third-Party Integrations for AI SRE**.
 
@@ -142,7 +146,7 @@ Use these variables to map AI SRE incident data to OpsGenie fields:
 2. Configure the form fields:
    - **Message:** `SEV{{Activity.severity}} Incident: {{Activity.title}}`
    - **Description:**
-     ```
+     ```text
      Incident ID: {{Activity.short_id}}
      Service: {{Activity.service}}
      Environment: {{Activity.environment}}
@@ -181,7 +185,7 @@ Use these variables to map AI SRE incident data to OpsGenie fields:
 2. Configure the form fields:
    - **Alert ID:** Enter OpsGenie alert ID
    - **Note:**
-     ```
+     ```text
      Incident {{Activity.short_id}} has been resolved.
      
      Resolution time: {{Activity.resolved_at}}
@@ -191,7 +195,7 @@ Use these variables to map AI SRE incident data to OpsGenie fields:
 
 ---
 
-## Priority mapping
+## Map priorities
 
 Map AI SRE incident severity to OpsGenie priorities:
 
@@ -206,6 +210,8 @@ Map AI SRE incident severity to OpsGenie priorities:
 ---
 
 ## Security best practices
+
+Follow these practices to secure the OpsGenie integration:
 
 - Use API keys with minimum required permissions
 - Rotate API keys regularly

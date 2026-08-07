@@ -107,7 +107,7 @@ Incident {{incident.title}} detected in {{incident.environment}}
 
 Go to [Use Mustache in Runbook Actions](/docs/ai-sre/runbooks/workflows/use-mustache-runbook-actions) to insert field values into actions.
 
-### 2. Webhook field mapping
+### 2. Map webhook fields
 Map webhook payload fields to alert properties.
 
 **Example:**
@@ -126,6 +126,8 @@ Go to [Use Mustache in Webhooks](/docs/ai-sre/alerts/webhooks/use-mustache-webho
 CEL expressions require the feature flag `IR_CEL_CONDITIONS`. Contact your Harness account team to enable this feature.
 
 ### Expression limits
+
+CEL and Mustache expressions have the following limits:
 
 - **Max CEL expression length:** 4,096 characters
 - **No mixing:** Cannot use both CEL and Mustache in the same field
@@ -303,7 +305,7 @@ Link: {{incident.url}}
 
 ---
 
-## Learn more
+## Related concepts
 
 ### CEL language reference
 - Go to [cel.dev](https://cel.dev/) to read the official CEL documentation.

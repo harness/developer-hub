@@ -165,7 +165,7 @@ When creating an incident:
 5. Optionally fill in additional custom fields
 6. Click **Create Incident**
 
-### Quick Start (AI-powered)
+### Quick start (AI-powered)
 
 AI SRE can auto-populate incident fields:
 
@@ -183,7 +183,7 @@ AI SRE can auto-populate incident fields:
 
 Use the `/harness new` command:
 
-```
+```text
 /harness new
 ```
 
@@ -210,6 +210,8 @@ When alerts match the rule, incidents are auto-created with the specified type.
 
 ### Edit an incident type
 
+To edit an existing incident type:
+
 1. Navigate to **Project Settings** → **Incident Types**
 2. Click the incident type to edit
 3. Modify fields, layout, or pinned runbooks
@@ -226,6 +228,8 @@ AI SRE tracks incident type versions:
 - API integrations use versioned type schemas
 
 ### Delete an incident type
+
+To delete an incident type:
 
 1. Navigate to **Project Settings** → **Incident Types**
 2. Click the incident type to delete
@@ -264,7 +268,7 @@ AI SRE tracks incident type versions:
 
 ---
 
-## Related documentation
+## Next steps
 
 - [Incident fields reference](/docs/ai-sre/incidents/incident-fields): Standard fields available on all incidents.
 - [Create incidents](/docs/ai-sre/users/create-incidents): User guide for creating incidents.

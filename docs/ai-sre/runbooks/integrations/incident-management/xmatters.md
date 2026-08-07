@@ -22,6 +22,8 @@ xMatters integration supports **on-call synchronization only**. Unlike PagerDuty
 
 ## Use cases
 
+Use the xMatters integration to:
+
 - Import on-call schedules from xMatters
 - Synchronize on-call groups as escalation policies
 - Maintain schedule consistency between xMatters and AI SRE
@@ -38,6 +40,8 @@ xMatters integration supports **on-call synchronization only**. Unlike PagerDuty
 ---
 
 ## Configure the xMatters integration
+
+Set up the connector with these steps:
 
 1. Go to **Project Settings**, then **Third-Party Integrations for AI SRE**.
 
@@ -104,6 +108,8 @@ After synchronizing schedules from xMatters:
 
 ## Synchronization workflow
 
+Complete the on-call sync in these steps:
+
 1. **Connect Source:** Configure xMatters API credentials
 2. **Select Entities:** Choose which services/groups to sync
 3. **Invite Users:** Select users to invite to Harness
@@ -125,7 +131,7 @@ After completing the initial sync:
 
 ---
 
-## Time zone handling
+## Handle time zones
 
 xMatters schedules may use different time zone formats:
 - AI SRE automatically converts xMatters time zones to IANA format
@@ -161,6 +167,8 @@ This approach keeps xMatters as the schedule source while enabling automation wi
 ---
 
 ## Security best practices
+
+Follow these practices to secure the xMatters integration:
 
 - Use dedicated API users with read-only permissions
 - Rotate API credentials regularly

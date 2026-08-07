@@ -20,6 +20,8 @@ Integrate GitHub with AI SRE runbooks to automate pull request management during
 
 ## Use cases
 
+Use GitHub runbook actions to:
+
 - Create pull requests for hotfixes
 - List open pull requests for incident correlation
 - Track incident remediation through pull requests
@@ -36,6 +38,8 @@ Integrate GitHub with AI SRE runbooks to automate pull request management during
 ---
 
 ## Configure the GitHub integration
+
+Set up the connector with these steps:
 
 1. Go to **Project Settings**, then **Third-Party Integrations for AI SRE**.
 
@@ -129,7 +133,7 @@ Use these variables to map AI SRE incident data to GitHub fields:
    - **Target Branch:** `main`
    - **Title:** `Fix for incident {{Activity.short_id}}: {{Activity.title}}`
    - **Body:**
-     ```
+     ```markdown
      ## Incident Fix
      
      **Incident**: [{{Activity.short_id}}]({{Activity.url}})
@@ -174,7 +178,7 @@ Use these variables to map AI SRE incident data to GitHub fields:
    - **Target Branch:** `main`
    - **Title:** `[SEV{{Activity.severity}}] {{Activity.title}}`
    - **Body:**
-     ```
+     ```markdown
      ## Hotfix for Incident {{Activity.short_id}}
      
      **Status**: {{Activity.status}}
@@ -230,6 +234,8 @@ incident/{{Activity.short_id}}-{{Activity.severity}}
 ---
 
 ## Security best practices
+
+Follow these practices to secure the GitHub integration:
 
 - Use fine-grained personal access tokens
 - Limit repository access to only what is needed

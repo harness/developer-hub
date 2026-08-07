@@ -31,6 +31,8 @@ Jira provides:
 
 ## Set up Jira integration
 
+To connect Jira to Harness AI SRE, complete these steps:
+
 1. Navigate to **Integrations** in the main menu
 2. Click **New Integration**
 3. Select **Jira** from the template options

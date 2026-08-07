@@ -22,10 +22,12 @@ AI SRE supports Harness Pipelines through two mechanisms. Pipelines send build a
 
 ## Set up Harness Pipelines
 
+Configure Harness Pipelines as a change source and runbook action with the following steps:
+
 - Go to [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) to configure build and deploy data from Harness Pipelines.
 - Go to [Harness Pipelines runbook action](/docs/ai-sre/runbooks/integrations/source-control/harness-pipelines) to trigger pipelines from runbooks.
 
-## Related integrations
+## Next steps
 
 - Go to [Harness Code Integration](/docs/ai-sre/integrations/cicd-change/harness-code) to ingest pull requests with no connector required.
 - Go to [GitHub Integration](/docs/ai-sre/integrations/cicd-change/github) to ingest pull requests and send build and deploy webhooks.

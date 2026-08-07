@@ -19,10 +19,12 @@ New Relic POSTs alert notifications to an AI SRE webhook URL. AI SRE maps the pa
 
 ## Set up New Relic
 
+Use these resources to configure New Relic and connect it to AI SRE:
+
 - Go to the [New Relic integration guide](/docs/ai-sre/alerts/webhooks/integration-guides/monitoring/new-relic) to configure the webhook in New Relic and connect it to AI SRE.
 - Go to the [New Relic webhook template](/docs/ai-sre/alerts/webhooks/templates/monitoring/new-relic) to review the field mappings AI SRE applies to New Relic payloads.
 
-## Related integrations
+## Next steps
 
 - Go to the [Datadog integration](/docs/ai-sre/integrations/monitoring/datadog) to ingest Datadog monitor alerts.
 - Go to the [Dynatrace integration](/docs/ai-sre/integrations/monitoring/dynatrace) to ingest Dynatrace problem notifications.

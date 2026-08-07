@@ -30,6 +30,8 @@ Grafana provides:
 
 ## Set up Grafana integration
 
+To connect Grafana to Harness AI SRE, complete these steps:
+
 1. Navigate to **Integrations** in the main menu.
 2. Click **New Integration**.
 3. Select **Grafana** from the template options.

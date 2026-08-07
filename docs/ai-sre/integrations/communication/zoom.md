@@ -21,9 +21,11 @@ AI SRE supports Zoom through runbook actions. Runbooks manage the lifecycle of a
 
 ## Set up Zoom
 
+Use this resource to configure Zoom runbook actions in AI SRE:
+
 - Go to [Zoom runbook actions](/docs/ai-sre/runbooks/integrations/collaboration/zoom) to configure meeting creation, participant retrieval, and meeting termination from runbooks.
 
-## Related integrations
+## Next steps
 
 - Go to [Slack Integration](/docs/ai-sre/integrations/communication/slack) to collaborate on incidents and run Slack commands.
 - Go to [Microsoft Teams Integration](/docs/ai-sre/integrations/communication/microsoft-teams) to collaborate on incidents and post messages.

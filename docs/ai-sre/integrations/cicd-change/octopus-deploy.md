@@ -22,9 +22,11 @@ AI SRE treats Octopus Deploy as a change source for the [Deploy Change Investiga
 
 ## Set up Octopus Deploy
 
+Configure Octopus Deploy as a change source with the following step:
+
 - Go to [Octopus Deploy webhook template](/docs/ai-sre/alerts/webhooks/templates/cicd/octopus-deploy) to configure the deployment webhooks from Octopus Deploy.
 
-## Related integrations
+## Next steps
 
 - Go to [Jenkins Integration](/docs/ai-sre/integrations/cicd-change/jenkins) to send build and deploy webhooks from Jenkins pipelines.
 - Go to [Terraform Integration](/docs/ai-sre/integrations/cicd-change/terraform) to send Terraform apply events as deployment data.

@@ -30,6 +30,8 @@ Lacework provides:
 
 ## Set up Lacework integration
 
+To connect Lacework to Harness AI SRE, complete these steps:
+
 1. Navigate to **Integrations** in the main menu.
 2. Click **New Integration**.
 3. Select **Lacework** from the template options.

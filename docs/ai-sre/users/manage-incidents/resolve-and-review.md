@@ -19,6 +19,8 @@ A well-closed incident has a complete record, all action items captured, and a f
 
 ## Resolve the incident
 
+Follow these steps to confirm stability and close out the incident record:
+
 1. Confirm the fix is stable, check monitoring dashboards and verify that the symptoms have not returned.
 2. On the **Incident Details** page, update the status to **Resolved**.
 3. Review the incident record before closing:
@@ -51,6 +53,8 @@ The AI pulls context from multiple sources to create a complete picture:
 - **Action items:** Follow-up tasks captured during the incident
 
 ### View the post-mortem
+
+To find and review the generated post-mortem, follow these steps:
 
 1. After closing an incident, the AI begins generating the post-mortem automatically.
 2. Navigate to the **Postmortem** tab on the incident detail page.

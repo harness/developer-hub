@@ -32,6 +32,8 @@ Runbooks automate incident response actions and provide step-by-step guidance fo
 
 ### Create the runbook
 
+Create a new runbook and give it a name:
+
 1. Navigate to **Runbooks** from the left pane
 2. Click on **New Runbook**
 3. Fill the creation form with the details:
@@ -40,6 +42,8 @@ Runbooks automate incident response actions and provide step-by-step guidance fo
 
 ### Add the first action
 
+Add an action from the available categories:
+
 1. Click on **New Action**
 2. Select the action from the categories you want to add in your runbook. The actions have been classified into different categories based on the use case
 3. Select the action:
@@ -47,6 +51,8 @@ Runbooks automate incident response actions and provide step-by-step guidance fo
    - Click on **Select**
 
 ### Configure the action
+
+Set the details for the action you selected:
 
 1. Fill the details for the selected action
 2. Click on **Save**

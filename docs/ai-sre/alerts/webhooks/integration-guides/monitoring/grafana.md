@@ -35,6 +35,8 @@ Configure Grafana Unified Alerting to send webhook notifications to Harness AI S
 
 ### Navigate to alerting configuration
 
+Open the contact points configuration in Grafana:
+
 1. In Grafana, go to **Alerting**, then select **Contact points**
 2. Click **New contact point**
 
@@ -46,7 +48,7 @@ Configure Grafana Unified Alerting to send webhook notifications to Harness AI S
 - **Name**: `Harness AI SRE`
 - **Integration**: Select **Webhook**
 - **URL**: Your Harness webhook URL
-  ```
+  ```text
   https://<your-harness-instance>/gateway/ai-sre/api/webhooks/<webhook-id>
   ```
 - **HTTP Method**: `POST`
@@ -92,6 +94,8 @@ Click **Save contact point** to create the webhook integration.
 ## Configure notification policy
 
 ### Edit default notification policy
+
+Route alerts to the Harness contact point:
 
 1. Go to **Alerting**, then select **Notification policies**
 2. Edit the **Default policy** or create a new nested policy
@@ -169,7 +173,7 @@ In your Harness webhook configuration, map Grafana payload fields to alert prope
 }
 ```
 
-### Basic field mapping
+### Map basic fields
 
 Use Mustache templates:
 
@@ -222,6 +226,8 @@ filter: webhook.status == "firing" && size(webhook.alerts) > 0
 
 ### Create test alert rule
 
+Create a rule that fires immediately to confirm delivery:
+
 1. Go to **Alerting**, then select **Alert rules**
 2. Click **New alert rule**
 3. Configure a simple test rule:
@@ -240,11 +246,15 @@ filter: webhook.status == "firing" && size(webhook.alerts) > 0
 
 ### Verify in Grafana
 
+Confirm the rule fired and the notification was sent:
+
 1. Go to **Alerting**, then select **Alert rules**
 2. Wait for the rule to evaluate and fire
 3. Check **Contact points**, then **Harness AI SRE**, for recent notifications
 
 ### Verify in Harness
+
+Confirm the alert arrived and mapped correctly:
 
 1. Navigate to **Alerts** in Harness AI SRE
 2. Check that the test alert appears
@@ -358,9 +368,11 @@ tags: size(webhook.alerts) > 0
 
 ---
 
-## Example: Complete integration
+## Example: complete integration
 
 ### Grafana contact point configuration
+
+Configure the contact point with these settings:
 
 - **Name**: `Harness AI SRE`
 - **Integration**: Webhook
@@ -370,7 +382,7 @@ tags: size(webhook.alerts) > 0
 
 ### Grafana notification policy
 
-```
+```text
 Root policy
 ├─ Default contact point: Harness AI SRE
 ├─ Group by: [alertname, grafana_folder]
@@ -382,7 +394,7 @@ Root policy
    └─ grafana_folder = Production → Harness AI SRE
 ```
 
-### Harness webhook field mapping
+### Map fields in the Harness webhook
 
 ```yaml
 title: "{{webhook.title}}"
@@ -442,7 +454,7 @@ custom_fields:
 
 ---
 
-## Further reading
+## Related documentation
 
 ### Grafana official documentation
 - [Unified Alerting](https://grafana.com/docs/grafana/latest/alerting/): Complete guide to Grafana Unified Alerting, contact points, and notification policies.

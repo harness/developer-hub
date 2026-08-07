@@ -19,10 +19,12 @@ Dynatrace POSTs problem notifications to an AI SRE webhook URL. AI SRE maps the 
 
 ## Set up Dynatrace
 
+Use these resources to configure Dynatrace and connect it to AI SRE:
+
 - Go to the [Dynatrace integration guide](/docs/ai-sre/alerts/webhooks/integration-guides/monitoring/dynatrace) to configure the problem notification webhook in Dynatrace and connect it to AI SRE.
 - Go to the [Dynatrace webhook template](/docs/ai-sre/alerts/webhooks/templates/monitoring/dynatrace) to review the field mappings AI SRE applies to Dynatrace payloads.
 
-## Related integrations
+## Next steps
 
 - Go to the [New Relic integration](/docs/ai-sre/integrations/monitoring/new-relic) to ingest New Relic alert conditions.
 - Go to the [Datadog integration](/docs/ai-sre/integrations/monitoring/datadog) to ingest Datadog monitor alerts.

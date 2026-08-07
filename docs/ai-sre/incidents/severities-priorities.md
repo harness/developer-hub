@@ -30,6 +30,8 @@ By default, Harness AI SRE uses standard severity and priority labels. You can c
 
 ## Access custom options
 
+To open the severity and priority configuration:
+
 1. Navigate to **Organization Settings**
 2. Under **Settings mainly used in AI SRE**, click **Severities & Statuses for AI SRE**
 3. Use the tabs to configure:
@@ -223,7 +225,7 @@ Custom severity and priority labels apply to:
 ## Example configurations
 
 ### Enterprise standard
-```
+```text
 SEV0 → "P0: Business Critical"
 SEV1 → "P1: Major Incident"  
 SEV2 → "P2: Significant Issue"
@@ -232,7 +234,7 @@ SEV4 → "P4: Informational"
 ```
 
 ### SRE team
-```
+```text
 SEV0 → "Critical: All hands"
 SEV1 → "High: Oncall + Manager"
 SEV2 → "Medium: Oncall"
@@ -241,7 +243,7 @@ SEV4 → "Info: Track only"
 ```
 
 ### Customer impact based
-```
+```text
 SEV0 → "Total Outage"
 SEV1 → "Major Degradation"
 SEV2 → "Partial Impact"

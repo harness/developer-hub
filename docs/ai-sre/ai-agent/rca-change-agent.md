@@ -140,7 +140,7 @@ Root cause theories appear in the incident view as they are generated:
 The following example shows how the RCA Change Agent might analyze an incident:
 
 **Initial analysis** (after first key events):
-```
+```text
 Theory 1: Recent deployment to payment-service (deploy-1234)
 Confidence: 60
 Status: INVESTIGATING
@@ -148,7 +148,7 @@ Related: deployment deploy-1234, PR-456 "Update payment processor timeout"
 ```
 
 **After additional key events**:
-```
+```text
 Theory 1: Recent deployment to payment-service (deploy-1234)
 Confidence: 85
 Status: CONFIRMED
@@ -206,6 +206,8 @@ The RCA Change Agent automatically analyzes:
 
 ### For accurate root cause analysis
 
+Follow these practices to improve theory accuracy:
+
 - **Enable AI Scribe Agent early:** Add it at incident creation to capture the complete timeline
 - **Communicate clearly:** State symptoms and hypotheses explicitly in incident channels
 - **Use consistent naming:** Reference services and environments by their configured names
@@ -213,6 +215,8 @@ The RCA Change Agent automatically analyzes:
 - **Review theories regularly:** Engineers should validate theories and provide feedback
 
 ### For investigation efficiency
+
+Follow these practices to investigate faster:
 
 - **Check theories first:** Before deep investigation, review RCA theories to focus efforts
 - **Follow evidence links:** Click through to related deployments and PRs for context
@@ -232,6 +236,14 @@ The RCA Change Agent automatically analyzes:
 - [Incident management overview](/docs/ai-sre/incidents/): Understand how incidents are structured in AI SRE.
 - [Post-incident review](/docs/ai-sre/ai-agent#ai-native-post-mortem-generation): Generate retrospective reports from RCA theories.
 - [Runbook automation](/docs/ai-sre/runbooks/): Automate response and investigation actions.
+
+---
+
+## Next steps
+
+- Go to the [AI Scribe Agent](/docs/ai-sre/ai-agent/) to capture the incident timeline that the RCA Change Agent analyzes.
+- Go to [Investigator Agent Pipelines](/docs/ai-sre/ai-agent/investigator-agent-pipelines) to extend investigations with custom data sources.
+- Go to [runbook automation](/docs/ai-sre/runbooks/) to automate response and investigation actions.
 
 ---
 

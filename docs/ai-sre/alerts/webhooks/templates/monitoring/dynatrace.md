@@ -30,6 +30,8 @@ Dynatrace provides:
 
 ## Set up Dynatrace integration
 
+To connect Dynatrace to Harness AI SRE, complete these steps:
+
 1. Navigate to **Integrations** in the main menu.
 2. Click **New Integration**.
 3. Select **Dynatrace** from the template options.

@@ -22,9 +22,11 @@ AI SRE treats CircleCI as a change source for the [Deploy Change Investigator](/
 
 ## Set up CircleCI
 
+Configure CircleCI as a change source with the following steps:
+
 - Go to [CircleCI change source](/docs/ai-sre/change/sources/circleci) to configure the build and deploy webhooks from your CircleCI workflows.
 
-## Related integrations
+## Next steps
 
 - Go to [Jenkins Integration](/docs/ai-sre/integrations/cicd-change/jenkins) to send build and deploy webhooks from Jenkins pipelines.
 - Go to [Travis CI Integration](/docs/ai-sre/integrations/cicd-change/travis-ci) to send build and deploy webhooks from Travis CI.

@@ -34,7 +34,9 @@ In AI SRE, a **User Group** is the organizational unit that acts as the on-call 
 
 ---
 
-## Set up service mapping
+## Map services to teams
+
+Map each Harness CD service to an owning team and escalation policy:
 
 1. Navigate to **Project Settings** → **Service Directory (AI SRE)**.
 2. Verify that your Harness CD services appear in the list. If they do not, confirm that AI SRE is enabled for the same project where your CD services are defined.
@@ -64,6 +66,8 @@ Go to [Configure Service Paging Webhooks](/docs/ai-sre/oncall/service-paging-web
 ---
 
 ## Best practices
+
+Follow these practices when you integrate services and configure subscribers:
 
 - **Map every production service:** Unmapped services cannot be automatically routed, which means alerts may go unnoticed.
 - **Keep mappings current:** When service ownership changes, update the directory promptly. Stale mappings page the wrong User Group.

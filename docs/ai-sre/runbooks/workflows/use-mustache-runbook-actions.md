@@ -45,7 +45,7 @@ Alternatively, you can type Mustache syntax directly: `{{incident.field_name}}`
 **Channel**: `#incidents`
 
 **Message** (configured in form field):
-```
+```mustache
 🔥 **New {{incident.severity}} Incident**
 
 **Title**: {{incident.title}}
@@ -58,7 +58,7 @@ Alternatively, you can type Mustache syntax directly: `{{incident.field_name}}`
 ```
 
 **Result**: When the runbook runs, Mustache variables are replaced with actual values:
-```
+```text
 🔥 **New SEV1 Incident**
 
 **Title**: Payment Service High Error Rate
@@ -97,7 +97,7 @@ ${{incident.severity in ["0", "1"] ? "🚨🚨🚨" : "🔥"}}
 
 ---
 
-## Example: Conditional Slack routing
+## Example: Conditional routing for Slack
 
 Use runbook triggers to create conditional behavior based on field values.
 
@@ -124,11 +124,11 @@ Go to [Create runbook triggers](/docs/ai-sre/runbooks/triggers/create-trigger) t
 - **Project**: `INCIDENT` (static value)
 - **Issue Type**: `Incident` (static value)
 - **Summary** (form field with data picker):
-  ```
+  ```mustache
   [{{incident.severity}}] {{incident.title}}
   ```
 - **Description** (form field with data picker):
-  ```
+  ```mustache
   Incident Details:
   - **Service**: {{incident.service}}
   - **Environment**: {{incident.environment}}
@@ -139,7 +139,7 @@ Go to [Create runbook triggers](/docs/ai-sre/runbooks/triggers/create-trigger) t
   View in AI SRE: {{incident.url}}
   ```
 - **Priority** (form field with data picker):
-  ```
+  ```mustache
   {{incident.severity}}
   ```
 
@@ -196,7 +196,7 @@ View in AI SRE: ${{incident.url}}
 
 **Form Configuration**:
 - **URL** (form field):
-  ```
+  ```mustache
   https://api.example.com/alerts/{{alert.id}}/acknowledge
   ```
 - **Method**: `POST` (dropdown)
@@ -221,7 +221,7 @@ Actions can reference outputs from previous actions in the same runbook.
 
 **Action 2**: Slack: Post Message
 - **Message** (referencing Action 1 output):
-  ```
+  ```mustache
   🎥 **Incident Bridge Created**
   
   Join the call:

@@ -20,12 +20,18 @@ Harness AI SRE allows teams to **automate incident resolution** by leveraging **
 ## Key features
 
 ### Automated response actions
+
+Runbooks automate the following response actions:
+
 - Instant incident communication
 - Automated remediation steps
 - Multi-channel notifications
 - Integrated team collaboration
 
 ### Integration ecosystem
+
+Runbooks connect to a broad set of communication and ticketing tools:
+
 - **Communication tools**
   - [Slack](/docs/ai-sre/runbooks/integrations/collaboration/slack): Channel management and notifications
   - [Microsoft Teams](/docs/ai-sre/runbooks/integrations/collaboration/teams): Team collaboration
@@ -38,6 +44,8 @@ Harness AI SRE allows teams to **automate incident resolution** by leveraging **
 ---
 
 ## Getting started
+
+Follow this sequence to build and automate your first runbook:
 
 1. [Create your first runbook](/docs/ai-sre/runbooks/create-runbook)
    - Design workflows

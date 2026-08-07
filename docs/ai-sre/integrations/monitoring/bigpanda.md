@@ -19,9 +19,11 @@ BigPanda POSTs alert notifications to an AI SRE webhook URL. AI SRE maps the pay
 
 ## Set up BigPanda
 
+Use this resource to configure BigPanda and connect it to AI SRE:
+
 - Go to the [BigPanda webhook template](/docs/ai-sre/alerts/webhooks/templates/monitoring/bigpanda) to review the field mappings AI SRE applies to BigPanda payloads and connect the webhook to AI SRE.
 
-## Related integrations
+## Next steps
 
 - Go to the [Datadog integration](/docs/ai-sre/integrations/monitoring/datadog) to ingest Datadog monitor alerts.
 - Go to the [Prometheus integration](/docs/ai-sre/integrations/monitoring/prometheus) to ingest Prometheus Alertmanager alerts.

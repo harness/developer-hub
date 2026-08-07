@@ -16,6 +16,8 @@ redirect_from:
 - /docs/ai-sre/runbooks/integrations/google-chat
 ---
 
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
+
 Harness AI SRE integrates with Google Chat at the organization level, enabling automated incident communication and team collaboration for organizations using Google Workspace.
 
 ## Overview
@@ -40,6 +42,8 @@ Before using Google Chat actions in runbooks, configure the organization-level G
 - **Harness Organization Admin role:** To configure third-party integrations
 
 ### Setup steps
+
+Connect the organization-level integration with these steps:
 
 1. Go to **Organization Settings**, then **Third-Party Integrations (AI SRE)**.
 2. Click **Connect** for **Google Chat**.
@@ -110,6 +114,8 @@ Message: |
 
 ### Message structure
 
+Structure Google Chat messages so responders can scan them quickly:
+
 - **Use clear formatting:** Break messages into sections with blank lines for readability.
 - **Include severity indicators:** Use emoji or text indicators for severity (🚨 Critical, ⚠️ High, ℹ️ Low).
 - **Link to dashboards:** Include links to monitoring dashboards, runbooks, or incident details.
@@ -117,11 +123,15 @@ Message: |
 
 ### Space management
 
+Organize spaces so incident communication stays traceable:
+
 - **Use dedicated incident spaces:** Create a Google Chat space for each incident rather than posting to shared channels.
 - **Document space IDs:** Store frequently used space IDs as custom incident fields or runbook variables.
 - **Link spaces to incidents:** Use the Incident Details page to link Google Chat spaces so all messages appear in the timeline.
 
 ### Runbook design
+
+Design runbooks to post meaningful updates without overwhelming the space:
 
 - **Send updates at key milestones:** Post messages when status changes, mitigation is applied, or resolution is confirmed.
 - **Avoid message spam:** Do not send messages in tight loops; use conditional logic to limit frequency.
@@ -139,7 +149,7 @@ Send an initial notification when an incident is created:
 - **Action:** Google Chat Post Message
 - **Space ID:** `{{incident.chat_space_id}}`
 - **Message:**
-```
+```text
 🚨 New Incident Created
 
 Title: {{Activity.title}}
@@ -157,7 +167,7 @@ Send a status update when the incident status changes:
 - **Action:** Google Chat Post Message
 - **Space ID:** `{{incident.chat_space_id}}`
 - **Message:**
-```
+```text
 ℹ️ Status Update
 
 Incident: {{Activity.title}}
@@ -175,7 +185,7 @@ Notify the team when the incident is resolved:
 - **Action:** Google Chat Post Message
 - **Space ID:** `{{incident.chat_space_id}}`
 - **Message:**
-```
+```text
 ✅ Incident Resolved
 
 Incident: {{Activity.title}}
@@ -190,53 +200,23 @@ Post-mortem: https://app.harness.io/incidents/{{Activity.id}}/postmortem
 
 ## Troubleshooting
 
-<details>
-<summary><strong>Message does not appear in the Google Chat space</strong></summary>
+<Troubleshoot
+  issue="A runbook message does not appear in the Google Chat space"
+  mode="docs"
+  fallback="Verify the Google Chat integration is connected in Organization Settings, confirm the Space ID matches the Google Chat space URL, ensure the authorized Google account has access to the space, and check the runbook execution logs."
+/>
 
-**Check the following**:
+<Troubleshoot
+  issue="Mustache variables do not render in a Google Chat runbook message"
+  mode="docs"
+  fallback="Confirm the variable name matches the incident field exactly (case-sensitive), use the correct {{variable_name}} syntax, and supply default values for optional fields such as {{Activity.custom_field | default: 'N/A'}}."
+/>
 
-1. Verify the Google Chat integration is connected in **Organization Settings**
-2. Confirm the Space ID is correct (check the Google Chat space URL)
-3. Ensure the authorized Google account has access to the target space
-4. Check runbook execution logs for error messages
-
-**If the space ID is incorrect**, update the runbook action or incident field with the correct Space ID.
-
-</details>
-
-<details>
-<summary><strong>Mustache variables do not render in the message</strong></summary>
-
-**Possible causes**:
-
-- Variable name is misspelled or does not exist
-- Custom incident field is not populated
-- Variable syntax is incorrect (use `{{variable_name}}`, not `{variable_name}`)
-
-**Resolution**:
-
-1. Verify the variable name matches the incident field exactly (case-sensitive)
-2. Test the runbook action and inspect the rendered message in the execution log
-3. Use default values for optional fields: `{{Activity.custom_field | default: "N/A"}}`
-
-</details>
-
-<details>
-<summary><strong>Runbook action fails with "Unauthorized" error</strong></summary>
-
-**Possible causes**:
-
-- OAuth token expired or was revoked
-- Google Workspace admin disabled the Harness app
-- Authorized account lost access to the target space
-
-**Resolution**:
-
-1. Re-authorize the Google Chat integration in **Organization Settings**
-2. Confirm the Harness app is approved by your Google Workspace admin
-3. Verify the authorized account can access the target space in Google Chat
-
-</details>
+<Troubleshoot
+  issue="A Google Chat runbook action fails with an Unauthorized error"
+  mode="docs"
+  fallback="Re-authorize the Google Chat integration in Organization Settings, confirm the Harness app is approved by your Google Workspace admin, and verify the authorized account can access the target space."
+/>
 
 ---
 

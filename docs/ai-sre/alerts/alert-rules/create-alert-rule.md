@@ -29,11 +29,15 @@ This guide walks you through creating alert rules that define how incoming alert
 
 ### Step 1: Access alert rules
 
+Open the alert rules list to start a new rule:
+
 1. From the main menu, select **Alerts**.
 2. Click **Alert Rules**.
 3. Click **New Alert Rule**.
 
 ### Step 2: Configure integration and conditions
+
+Select the source integration and define when the rule triggers:
 
 1. Under **Integration & Conditions**, select the source integration from your connected monitoring tools.
 2. Select your condition mode:
@@ -59,6 +63,8 @@ This guide walks you through creating alert rules that define how incoming alert
 
 ### Step 3: Configure incident creation (optional)
 
+Map matching alerts to incidents and their fields:
+
 1. Click **Create Incident** to automatically create incidents from matching alerts.
 2. Select the **Incident Type** that should be created.
 3. Map alert fields to incident fields using the field mapper:
@@ -72,6 +78,8 @@ This guide walks you through creating alert rules that define how incoming alert
 
 ### Step 4: Configure on-call notifications
 
+Page the on-call team when alerts match your conditions:
+
 1. Click **Page Team** to automatically page the on-call team when alerts match your conditions.
 2. Select the checkbox to **activate** on-call paging.
 3. Select the **Impacted Services** from your service directory.
@@ -84,6 +92,8 @@ This guide walks you through creating alert rules that define how incoming alert
 
 ### Step 5: Associate runbooks (optional)
 
+Attach automated response procedures to the rule:
+
 1. Select the **Runbooks** tab to attach automated response procedures.
 2. Click **Attach Runbook** to connect relevant runbooks to your alert rule.
 3. Select the **runbook** that should be triggered when an alert or incident occurs.
@@ -94,6 +104,8 @@ This guide walks you through creating alert rules that define how incoming alert
    - Used as reference documentation for AI SRE
 
 ### Step 6: Save and activate
+
+Save the rule so it begins processing incoming alerts:
 
 1. Review all your configurations.
 2. Click **Save** from the top right corner.
@@ -113,6 +125,8 @@ Follow this interactive guide to configure alert rules that automatically create
 ---
 
 ## Best practices
+
+Keep these guidelines in mind when you create and maintain alert rules:
 
 - Create specific rules for different types of alerts
 - Use clear, descriptive names for your rules

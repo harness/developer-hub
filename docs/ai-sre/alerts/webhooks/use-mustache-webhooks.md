@@ -40,7 +40,7 @@ Mustache templates are used for **field mapping** (populating alert field values
 
 After parsing your webhook payload in the visual builder, reference fields using Mustache templates:
 
-### Basic field mapping
+### Map basic fields
 
 ```yaml
 # Map webhook fields to alert fields
@@ -60,7 +60,7 @@ service: "{{webhook.metadata.service}}"
 region: "{{webhook.location.region}}"
 ```
 
-### Example: Datadog webhook mapping
+### Example: map a Datadog webhook
 
 ```yaml
 title: "{{webhook.title}}"
@@ -109,6 +109,8 @@ Ensure you map all required alert fields from your webhook payload:
 
 ### 4. Test your mappings
 
+Validate each mapping before you rely on it in production:
+
 1. Send a test webhook payload
 2. Verify alert fields are populated correctly
 3. Check for missing or incorrectly mapped values
@@ -116,7 +118,7 @@ Ensure you map all required alert fields from your webhook payload:
 
 ---
 
-## Combined with CEL filtering
+## Combine Mustache with CEL filters
 
 You can use CEL for filtering and Mustache for mapping in the same webhook:
 
@@ -147,7 +149,7 @@ service: "{{webhook.service_name}}"
 source: "{{webhook.source_system}}"
 ```
 
-### Pattern 2: application error tracking
+### Pattern 2: track application errors
 
 ```yaml
 # Application error webhook
@@ -158,7 +160,7 @@ service: "{{webhook.app_name}}"
 environment: "{{webhook.deployment_env}}"
 ```
 
-### Pattern 3: infrastructure monitoring
+### Pattern 3: monitor infrastructure
 
 ```yaml
 # Infrastructure alert

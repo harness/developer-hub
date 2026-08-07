@@ -417,7 +417,7 @@ workflows:
 
 ---
 
-## Service and version mapping
+## Map services and versions
 
 The Deploy Change Investigator requires exact matches between build and deploy webhooks:
 
@@ -434,6 +434,8 @@ Use the same variable (`$CIRCLE_SHA1`) in both build and deploy webhooks to ensu
 
 ### Test build webhook
 
+Trigger a build and confirm the build webhook reaches AI SRE:
+
 1. Push a commit to trigger a build
 2. Check build logs for the webhook step
 3. Verify the curl command executed successfully
@@ -443,6 +445,8 @@ Use the same variable (`$CIRCLE_SHA1`) in both build and deploy webhooks to ensu
 7. Verify the webhook appears with the correct payload
 
 ### Test deploy webhook
+
+Run a deployment and confirm the deploy webhook reaches AI SRE:
 
 1. Trigger the deployment workflow
 2. Check the deployment job logs

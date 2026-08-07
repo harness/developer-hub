@@ -41,6 +41,8 @@ The xMatters integration enables you to:
 
 #### Option A: Create API user
 
+Create a dedicated REST web service user in xMatters:
+
 1. Log in to xMatters as an administrator
 2. Navigate to **Users** → **Add User**
 3. Configure the user:
@@ -51,6 +53,8 @@ The xMatters integration enables you to:
 
 #### Option B: Generate API key
 
+Generate an API key from your xMatters profile:
+
 1. Log in to xMatters as an administrator
 2. Navigate to your **Profile** → **API Keys**
 3. Click **Create API Key**
@@ -58,6 +62,8 @@ The xMatters integration enables you to:
 5. Copy the generated API key
 
 ### Step 2: Connect xMatters to AI SRE
+
+Add xMatters as a sync source and verify the connection:
 
 1. In Harness AI SRE, navigate to **On-Call** → **Sync from 3rd Party** tab
 2. Click **Connect Source**
@@ -71,6 +77,8 @@ The xMatters integration enables you to:
 
 ### Step 3: Select entities to sync
 
+Choose which xMatters entities to import and preview the results:
+
 1. Choose which services to synchronize:
    - **All Services**: Import all xMatters services/groups
    - **Specific Services**: Select individual services to import
@@ -83,6 +91,8 @@ The xMatters integration enables you to:
 
 ### Step 4: Invite users to Harness
 
+Invite the discovered users so they can receive pages in Harness:
+
 1. Review the list of discovered users from xMatters
 2. Select users who need Harness accounts to receive pages
 3. Selected users will receive email invitations to join Harness
@@ -90,6 +100,8 @@ The xMatters integration enables you to:
 5. Click **Next: Configure Sync Rules**
 
 ### Step 5: Configure sync rules
+
+Set the sync behavior and conflict resolution strategy, then start the sync:
 
 1. Configure sync behavior:
    - **Sync Contact Details**: Enable to import email, SMS, and phone numbers
@@ -100,6 +112,8 @@ The xMatters integration enables you to:
 3. Click **Start Sync**
 
 ### Step 6: Monitor sync progress
+
+Track the import status and review the imported entities:
 
 1. View the sync status dashboard showing:
    - Import progress by entity type
@@ -128,14 +142,14 @@ After completing the initial sync:
 
 ## xMatters-specific considerations
 
-### On-call group mapping
+### How on-call groups map
 
 xMatters on-call groups are automatically mapped to Harness AI SRE escalation policies:
 - Group members become escalation policy levels
 - Group rotation patterns are preserved
 - Notification preferences are imported when available
 
-### Time zone handling
+### How time zones are handled
 
 xMatters schedules may use different time zone formats:
 - AI SRE automatically converts xMatters time zones to standard IANA format

@@ -34,6 +34,8 @@ Configure Datadog monitors to send webhook notifications to Harness AI SRE when 
 
 ### Navigate to Datadog integrations
 
+Open the Webhooks integration to add a new webhook:
+
 1. In Datadog, navigate to **Integrations**, then select **Integrations**
 2. Search for and select **Webhooks**
 3. Go to the **Configuration** tab
@@ -45,12 +47,12 @@ Configure these fields:
 
 - **Name**: `harness-ai-sre` (or any descriptive name)
 - **URL**: Your Harness webhook URL
-  ```
+  ```text
   https://<your-harness-instance>/gateway/ai-sre/api/webhooks/<webhook-id>
   ```
 - **Encode as form**: Leave unchecked (use JSON)
 - **Custom Headers**: Add if your Harness webhook requires authentication
-  ```
+  ```text
   X-Webhook-Secret: your-secret-key
   ```
 
@@ -130,7 +132,7 @@ Click **Save** to create the webhook integration.
 
 In your Harness webhook configuration, map the Datadog payload fields to alert properties.
 
-### Basic field mapping
+### Basic field mapping example
 
 Use Mustache templates for simple field mapping:
 
@@ -175,11 +177,13 @@ filter: webhook.alert_status == "ALERT"
 
 ### Option 1: Add to existing monitor
 
+Add the webhook notification to a monitor you already have:
+
 1. Open the Datadog monitor you want to integrate
 2. Scroll to the **Notify your team** section
 3. Add the webhook using the `@webhook-` syntax:
 
-```
+```text
 {{#is_alert}}
 @webhook-harness-ai-sre
 {{/is_alert}}
@@ -195,7 +199,7 @@ filter: webhook.alert_status == "ALERT"
 
 For monitors created from templates:
 
-```
+```text
 {{#is_alert}}
 Alert on {{service.name}} in {{env}}
 @webhook-harness-ai-sre
@@ -217,6 +221,8 @@ Configure Datadog notification policies to automatically add the webhook to matc
 
 ### Test from Datadog
 
+Send a test notification from a configured monitor:
+
 1. Open a monitor configured with the webhook
 2. Click **Test Notifications**
 3. Select a test scenario (Alert, Warning, Recovery)
@@ -225,6 +231,8 @@ Configure Datadog notification policies to automatically add the webhook to matc
 Datadog sends a test webhook to Harness.
 
 ### Verify in Harness
+
+Confirm the test alert arrived and mapped correctly:
 
 1. Navigate to **Alerts** in Harness AI SRE
 2. Check that the test alert appears
@@ -273,7 +281,7 @@ Send different payloads for alerts vs recoveries:
 <Tabs>
 <TabItem value="alert-only" label="Alerts only" default>
 
-```
+```text
 {{#is_alert}}
 @webhook-harness-ai-sre
 {{/is_alert}}
@@ -282,7 +290,7 @@ Send different payloads for alerts vs recoveries:
 </TabItem>
 <TabItem value="recovery-only" label="Recoveries only">
 
-```
+```text
 {{#is_recovery}}
 @webhook-harness-ai-sre-recovery
 {{/is_recovery}}
@@ -291,7 +299,7 @@ Send different payloads for alerts vs recoveries:
 </TabItem>
 <TabItem value="both" label="Both alerts and recoveries">
 
-```
+```text
 {{#is_alert}}
 @webhook-harness-ai-sre
 {{/is_alert}}
@@ -308,7 +316,7 @@ Send different payloads for alerts vs recoveries:
 
 Create separate Harness webhooks for different priorities:
 
-```
+```text
 {{#is_alert}}
   {{#is_priority 'P1'}}
   @webhook-harness-critical
@@ -341,7 +349,7 @@ The webhook payload does not carry the metric value or threshold directly. Datad
 
 Monitor message body:
 
-```
+```text
 {{#is_alert}}
 Current value: {{value}}
 Threshold: {{threshold}}
@@ -387,7 +395,7 @@ link: webhook.context.snapshot_url
 
 ---
 
-## Example: Complete integration
+## Example: complete integration
 
 This example shows a production-ready Datadog-to-Harness integration for a microservices platform.
 
@@ -409,7 +417,7 @@ This example shows a production-ready Datadog-to-Harness integration for a micro
 }
 ```
 
-### Harness webhook field mapping
+### Harness webhook field mapping example
 
 ```yaml
 title: "{{webhook.alert_name}}"
@@ -435,7 +443,7 @@ filter: |
 
 ### Datadog monitor notification
 
-```
+```text
 {{#is_alert}}
 Production alert on {{service.name}}
 
@@ -462,7 +470,7 @@ Threshold: {{threshold}}
 
 ---
 
-## Further reading
+## Related documentation
 
 ### Datadog official documentation
 - [Webhooks integration](https://docs.datadoghq.com/integrations/webhooks/): Complete guide to Datadog webhook integration setup and configuration.

@@ -228,6 +228,8 @@ deploy_webhook_url = "https://app.harness.io/..."
 
 ### Using Terraform Cloud variables
 
+Store the webhook URL as a sensitive workspace variable:
+
 1. Navigate to workspace **Settings**, then select **Variables**
 2. Add a variable:
    - **Key:** `deploy_webhook_url`
@@ -291,7 +293,7 @@ provisioner "local-exec" {
 }
 ```
 
-### Error handling
+### Handle errors
 
 ```hcl
 provisioner "local-exec" {
@@ -313,6 +315,8 @@ provisioner "local-exec" {
 
 ### Test from CI/CD
 
+Run an apply in your pipeline and confirm the webhook reaches AI SRE:
+
 1. Run `terraform apply` in CI/CD
 2. Check pipeline logs for webhook execution
 3. Navigate to **AI SRE**, then select **Integrations**
@@ -321,6 +325,8 @@ provisioner "local-exec" {
 6. Verify the webhook appears
 
 ### Test local provisioner
+
+Run an apply locally and confirm the webhook reaches AI SRE:
 
 1. Run `terraform apply` locally
 2. Check the console output for curl execution
@@ -351,6 +357,8 @@ provisioner "local-exec" {
 ---
 
 ## Best practices
+
+Follow these practices to keep Terraform change tracking reliable:
 
 - **Store webhook URLs securely:** Use environment variables, Terraform Cloud sensitive variables, or CI/CD secrets.
 - **Use the CI/CD wrapper:** It is more reliable than provisioners for webhook notifications.

@@ -24,7 +24,7 @@ import NeedHelpFooter from '../../_snippets/need-help-footer.mdx';
 **Slack action configuration:**
 - **Channel** (form field): `#{{incident.service}}-incidents`
 - **Message:**
-  ```
+  ```text
   🚨 New incident in {{incident.service}}
   Severity: {{incident.severity}}
   ```
@@ -44,7 +44,7 @@ If `incident.service` = `payment-service`, message goes to `#payment-service-inc
 **Scenario:** Your incident type has a custom field `affected_users` (Number type)
 
 **Jira ticket description:**
-```
+```text
 Impact: {{incident.affected_users}} users affected
 Service: {{incident.service}}
 Severity: {{incident.severity}}

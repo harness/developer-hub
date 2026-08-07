@@ -51,6 +51,8 @@ V3 webhooks are the recommended approach for modern PagerDuty integrations.
 
 ### Create a V3 webhook
 
+Start a new V3 webhook in PagerDuty:
+
 1. In PagerDuty, navigate to **Integrations**, then select **Generic Webhooks (v3)**
 2. Click **New Webhook**
 
@@ -59,7 +61,7 @@ V3 webhooks are the recommended approach for modern PagerDuty integrations.
 Configure these fields:
 
 - **Webhook URL**: Your Harness webhook URL
-  ```
+  ```text
   https://<your-harness-instance>/gateway/ai-sre/api/webhooks/<webhook-id>
   ```
 - **Scope Type**: Select the scope
@@ -72,7 +74,7 @@ Configure these fields:
 
 Add custom headers if your Harness webhook requires authentication:
 
-```
+```text
 Content-Type: application/json
 X-Webhook-Secret: your-secret-key
 ```
@@ -138,12 +140,16 @@ Webhook extensions are simpler but less flexible than V3 webhooks.
 
 ### Add webhook extension to service
 
+Add a generic webhook integration to the service:
+
 1. Navigate to **Services**, then select your service
 2. Select the **Integrations** tab
 3. Click **Add Integration**
 4. Select **Generic Webhook**
 
 ### Configure the extension
+
+Set the extension name, URL, and description:
 
 - **Name**: `Harness AI SRE`
 - **URL**: Your Harness webhook URL
@@ -200,7 +206,7 @@ V3 webhooks send a standardized payload:
 }
 ```
 
-### Basic field mapping
+### Map basic fields
 
 Use Mustache templates for simple mapping:
 
@@ -255,6 +261,8 @@ filter: webhook.event.event_type in ["incident.triggered", "incident.escalated"]
 
 ### Test V3 webhook
 
+Send a test event from the V3 webhook:
+
 1. In PagerDuty, go to **Integrations**, then select **Generic Webhooks (v3)**
 2. Find your webhook and click **Test Webhook**
 3. Select a test scenario
@@ -262,10 +270,14 @@ filter: webhook.event.event_type in ["incident.triggered", "incident.escalated"]
 
 ### Test webhook extension
 
+Trigger a test incident on the integrated service:
+
 1. Create a test incident in the integrated service
 2. Verify the webhook fires (check service integration logs)
 
 ### Verify in Harness
+
+Confirm the incident arrived and mapped correctly:
 
 1. Navigate to **Alerts** in Harness AI SRE
 2. Check that the test alert appears
@@ -410,11 +422,13 @@ custom_fields: {
 
 ---
 
-## Example: Complete integration
+## Example: complete integration
 
 This example shows a production-ready PagerDuty-to-Harness integration for incident synchronization.
 
 ### PagerDuty V3 webhook configuration
+
+Configure the V3 webhook with these settings:
 
 - **Scope**: Account (all services)
 - **Event types**: `incident.triggered`, `incident.escalated`, `incident.resolved`
@@ -422,7 +436,7 @@ This example shows a production-ready PagerDuty-to-Harness integration for incid
   - Urgency: High only
   - Services: All
 
-### Harness webhook field mapping
+### Map fields in the Harness webhook
 
 ```yaml
 title: |
@@ -492,7 +506,7 @@ assignee: has(webhook.event.data.assignments) &&
 
 ---
 
-## Further reading
+## Related documentation
 
 ### PagerDuty official documentation
 - [V3 webhooks overview](https://developer.pagerduty.com/docs/webhooks/v3-overview/): Complete guide to PagerDuty V3 webhooks, event types, and configuration.

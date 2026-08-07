@@ -24,3 +24,11 @@ Complete these tasks in order to stand up on-call for your organization:
 | 5 | [Configure On-Call Teams and Routing](/docs/ai-sre/oncall/manage-teams-and-notifications) | Define team structures, assign routing rules, and configure notification channels |
 | 6 | [Configure Service Paging Webhooks](/docs/ai-sre/oncall/service-paging-webhook) | Configure external monitoring tools, legacy systems, and custom applications to trigger on-call notifications by sending alerts directly to a service |
 | 7 | [Configure Notification Fallback](/docs/ai-sre/oncall/notification-fallback) | Configure multi-channel notification fallback with automatic retry logic |
+
+---
+
+## Next steps
+
+- Go to [Integrate with the Service Directory](/docs/ai-sre/oncall/integrate-service-directory) to connect Harness CD services and map them to User Groups.
+- Go to [Configure On-Call Schedules](/docs/ai-sre/oncall/create-oncall-schedules) to build rotation schedules for your teams.
+- Go to [Configure Escalation Policies](/docs/ai-sre/oncall/define-escalation-policies) to set up multi-level escalation chains.

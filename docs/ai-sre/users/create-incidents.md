@@ -28,6 +28,8 @@ The AI-powered Quick Start feature analyzes your problem description and auto-po
 
 ### Step 1: Access incident creation
 
+Open the incident list and start a new incident:
+
 1. Navigate to **Incidents** from the left panel.
 
    ![Incident list](../get-started/static/incident-list.png)
@@ -38,6 +40,8 @@ The AI-powered Quick Start feature analyzes your problem description and auto-po
 
 ### Step 2: Select incident type
 
+Pick the incident type that matches the problem:
+
 1. Choose the appropriate **Incident Type** from the available options.
 
    <img src={require('../get-started/static/create-new-incident.png').default} alt="Create new incident form" width="450" style={{border: '1px solid black'}} />
@@ -47,16 +51,22 @@ The AI-powered Quick Start feature analyzes your problem description and auto-po
 
 ### Step 3: Describe the problem
 
+Describe the problem so the AI can suggest field values:
+
 1. Use the **Quick Start** block to describe the problem in plain language.
 2. Provide a clear, concise description including affected services, symptoms, and impact.
 3. The AI system will analyze your description and suggest field values automatically.
 
 ### Step 4: Generate incident fields
 
+Run the AI analysis to populate the incident fields:
+
 1. Click the **up arrow** to process your description.
 2. AI will automatically populate incident fields (severity, priority, etc.) based on what you wrote.
 
 ### Step 5: Review and customize
+
+Confirm the suggested values and save the incident:
 
 1. Review all auto-generated field values.
 2. Manually adjust anything that needs correction:
@@ -90,6 +100,8 @@ Go to [Managing incidents in Slack](/docs/ai-sre/get-started/slack-commands) to 
 
 ## Best practices for incident creation
 
+Follow these practices to create accurate, actionable incidents:
+
 - **Choose the right incident type:** Select the most specific type available to get the right runbooks and field configuration.
 - **Write a clear description:** Good Quick Start descriptions lead to more accurate AI field suggestions. Include what is affected, what you are observing, and when it started.
 - **Verify auto-generated fields:** Always review and adjust AI-suggested values to ensure accuracy.
@@ -107,3 +119,11 @@ Once you save the incident:
 - The **Incident Details** page opens, where you manage the incident through resolution.
 
 Go to [Active incident management](/docs/ai-sre/users/manage-incidents) to work through an active incident.
+
+---
+
+## Next steps
+
+- Go to [Active incident management](/docs/ai-sre/users/manage-incidents) to work through an active incident.
+- Go to [Create and track action items](/docs/ai-sre/users/manage-incidents/create-and-track-action-items) to assign follow-up work.
+- Go to [Managing incidents in Slack](/docs/ai-sre/get-started/slack-commands) to run incidents from Slack.

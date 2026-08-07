@@ -92,7 +92,7 @@ The severity field contains string values representing severity levels. When ref
 | `{{incident.severity}}` returns `"4"` | SEV4:Cosmetic | Cosmetic issue, no functional impact |
 
 **Example Slack message using severity**:
-```
+```mustache
 🚨 **{{incident.severity}} Incident**
 **Service**: {{incident.service}}
 **Environment**: {{incident.environment}}
@@ -121,7 +121,7 @@ Custom fields defined on incident types or alert types are also available via Mu
 - `{{alert.custom_field_name}}` - Any custom field added to an alert type
 
 **Example**: If your "Service Incident" type has a custom field called `error_rate`, reference it as:
-```
+```mustache
 {{incident.error_rate}}
 ```
 

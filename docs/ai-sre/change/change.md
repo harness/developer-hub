@@ -19,6 +19,8 @@ Change management in Harness AI SRE helps you understand what code, configuratio
 
 ## Key capabilities
 
+Change management provides the following capabilities:
+
 - **Deployment tracking:** Automatically capture which services and versions were deployed to each environment
 - **Build correlation:** Link deployments back to specific builds and commit SHAs
 - **Code change visibility:** See which PRs and code changes were included in each deployment
@@ -59,3 +61,11 @@ Change management tracks:
 - **Timeline correlation:** Map deployments to incident timelines
 
 This data enables the AI SRE agent to provide context-aware insights during incident response and root cause analysis.
+
+---
+
+## Next steps
+
+- Go to [Deploy Change Investigator](/docs/ai-sre/change/deploy-change-investigator) to set up change tracking.
+- Go to [Sources of change](/docs/ai-sre/change/sources/overview) to send webhooks from your CI/CD pipelines.
+- Go to [AI Agent change detection](/docs/ai-sre/ai-agent/rca-change-agent) to understand how change data supports investigation.

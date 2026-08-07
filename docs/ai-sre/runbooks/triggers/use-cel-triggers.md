@@ -28,6 +28,8 @@ CEL expression mode requires the `IR_CEL_CONDITIONS` feature flag. Contact your 
 
 ## Access CEL mode in triggers
 
+To switch a trigger from Rule mode to CEL mode:
+
 1. Open your runbook and go to the **Triggers** tab
 2. Click **+ New Trigger** or edit an existing trigger
 3. In the conditions section, look for the **Rule/CEL toggle** or mode selector

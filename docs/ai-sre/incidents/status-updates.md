@@ -20,6 +20,8 @@ This ensures stakeholders receive updates for incidents affecting services they 
 
 ### Subscription model
 
+The subscription model has the following characteristics:
+
 - **Service-level subscriptions**: Subscribers are configured on individual services in the Service Directory, not on specific incidents.
 - **Dynamic recipient resolution**: When a status update is sent, the system automatically gathers all subscribers from every impacted service on the incident.
 - **Automatic deduplication**: If a stakeholder is subscribed to multiple impacted services, they receive only one copy of the update.
@@ -35,6 +37,8 @@ AI SRE supports two types of subscribers:
 
 ## Add subscribers to a service
 
+To configure subscribers on a service:
+
 1. Navigate to **Project Settings** → **Service Directory (AI SRE)**.
 2. Select the service you want to configure.
 3. Click the **Subscribers** tab.
@@ -49,6 +53,8 @@ Repeat this process for each service where you want to configure stakeholder not
 ---
 
 ## Delivery channel
+
+Status updates are delivered through a single channel with these characteristics:
 
 - **Email only**: Status updates are delivered via email from `aisre-noreply@harness.io` (sender name: "AI SRE").
 - **Branded format**: Emails include header and footer images and are rendered as HTML with incident context.
@@ -74,7 +80,7 @@ When an incident commander sends a status update, the system pre-populates a def
 
 The sender can edit both the subject line and message body before sending. The default subject line follows this format:
 
-```
+```text
 AI SRE Status update for incident [incident-ID]
 ```
 
@@ -95,12 +101,16 @@ This allows the sender to verify the recipient list before delivery.
 
 ### For administrators
 
+Administrators should follow these practices when setting up subscriptions:
+
 - **Map service ownership clearly**: Ensure every production service has a defined owner team so stakeholders know which services to subscribe to.
 - **Use user groups for role-based subscriptions**: Subscribe user groups (e.g., "Platform Leadership", "Customer Success") rather than individual users to reduce maintenance when team membership changes.
 - **Keep subscriptions current**: Review subscriber lists periodically and remove users who no longer need updates.
 - **Align with on-call structure**: Subscribers typically mirror your escalation policies, if a team is on-call for a service, their leadership should be subscribed for status updates.
 
 ### For incident commanders
+
+Incident commanders should follow these practices when sending updates:
 
 - **Send updates at key milestones**: Status changes (Identified → Monitoring), mitigation actions, or significant scope changes are good times to send an update.
 - **Edit the default template**: The pre-populated content is a starting point. Add business context, customer impact, and next steps relevant to your stakeholders.

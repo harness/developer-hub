@@ -18,6 +18,8 @@ redirect_from:
 - /docs/incident-response/runbooks/integrations/zoom
 ---
 
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
+
 Harness AI SRE integrates with Zoom through a connector-based approach, enabling automated meeting management for incident response.
 
 ## Overview
@@ -60,6 +62,8 @@ If your incident response workflow uses static meeting bridges that responders j
 - Appropriate Zoom API permissions
 
 ### Setup steps
+
+Connect the Zoom integration with these steps:
 
 1. Go to **Project Settings**, then **Third Party Integrations (AI SRE)**.
 
@@ -294,27 +298,29 @@ Creates a new Zoom meeting for incident coordination.
 
 ## Troubleshooting
 
-### Common issues
-1. **Authentication failures**
-   - Verify OAuth tokens
-   - Check permissions
-   - Confirm account access
+<Troubleshoot
+  issue="A Zoom runbook action fails with an authentication error"
+  mode="docs"
+  fallback="Verify the OAuth tokens, check the granted API permissions, and confirm the Zoom account access."
+/>
 
-2. **AI Scribe bot not joining meetings / ZAK token errors**
-   - **Symptom:** Bot lands in waiting room, requires manual admission, or you see "ZAK token generation not supported" errors in Slack
-   - **Cause:** Using API Key authentication instead of OAuth
-   - **Solution:** Switch to Server-to-Server OAuth. Go to [Switch from API Key to OAuth](#switch-from-api-key-to-oauth) to review the steps.
-   - **Workaround:** Manually admit the bot from the waiting room, or suppress ZAK token error alerts in Slack
+<Troubleshoot
+  issue="The AI Scribe bot does not join Zoom meetings or shows ZAK token errors in Slack"
+  mode="docs"
+  fallback="This happens when the connector uses API Key authentication instead of OAuth. Switch to Server-to-Server OAuth so the bot can bypass the waiting room, or manually admit the bot from the waiting room as a workaround."
+/>
 
-3. **Meeting creation errors**
-   - Check scheduling conflicts
-   - Verify user limits
-   - Confirm host rights
+<Troubleshoot
+  issue="Creating a Zoom meeting from a runbook fails"
+  mode="docs"
+  fallback="Check for scheduling conflicts, verify the account user limits, and confirm the host has the required rights."
+/>
 
-4. **Recording issues**
-   - Check storage space
-   - Verify permissions
-   - Confirm settings
+<Troubleshoot
+  issue="Zoom meeting recordings are missing or fail from a runbook"
+  mode="docs"
+  fallback="Check available storage space, verify the recording:read and cloud_recording:read scopes, and confirm the recording settings on the meeting."
+/>
 
 ---
 

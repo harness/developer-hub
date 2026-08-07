@@ -22,9 +22,11 @@ AI SRE treats Bitbucket as a change source for the [Deploy Change Investigator](
 
 ## Set up Bitbucket
 
+Connect Bitbucket Cloud through its change source:
+
 - Go to [Bitbucket change source](/docs/ai-sre/change/sources/bitbucket) to connect Bitbucket Cloud and configure pull request polling.
 
-## Related integrations
+## Related concepts
 
 - Go to [GitHub Integration](/docs/ai-sre/integrations/cicd-change/github) to ingest pull requests and send build and deploy webhooks.
 - Go to [Harness Code Integration](/docs/ai-sre/integrations/cicd-change/harness-code) to ingest pull requests with no connector required.

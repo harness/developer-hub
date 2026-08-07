@@ -68,6 +68,8 @@ Harness Code pull requests are ingested with their branch, PR number, title, mer
 
 ## Verify pull request ingestion
 
+Confirm the ingestion job is running and syncing pull requests:
+
 1. Navigate to **AI SRE**, then select **PR Ingestions** (the tab next to Integrations).
 2. Confirm an ingestion job exists for your Harness Code repository with a tracked branch and a recent sync timestamp.
 3. After the next hourly sync, confirm merged pull requests appear against your deployments in **Change Management**.

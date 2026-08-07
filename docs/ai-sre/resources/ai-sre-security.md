@@ -212,6 +212,8 @@ Create roles that match your organization's needs using the available AI SRE per
 
 ### Configure RBAC
 
+Create or edit a role and assign AI SRE permissions:
+
 1. Navigate to **Project Settings** → **Access Control** → **Roles**.
 2. Select an existing role to edit, or click **New Role** to create one.
 3. Under the **AI SRE** resource group, enable the permissions required for the role.
@@ -302,3 +304,11 @@ To enhance security in Harness AI SRE:
 - Review audit logs regularly.
 - Use API tokens with least privilege.
 - Encrypt webhook notifications.
+
+---
+
+## Next steps
+
+- Go to [Configure On-Call Teams and Routing](/docs/ai-sre/oncall/manage-teams-and-notifications) to assign User Groups and service ownership under RBAC.
+- Go to [Define Escalation Policies](/docs/ai-sre/oncall/define-escalation-policies) to control who is notified during an incident.
+- Go to [Incident Response Security](/docs/ai-sre/resources/ir-security) to review incident data protection and compliance controls.

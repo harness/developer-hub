@@ -33,11 +33,13 @@ Before setting up the Google Chat integration, ensure you have:
 
 ---
 
-## Setup Steps
+## Setup steps
 
 The Google Chat integration requires three main steps: GCP infrastructure setup (including Google Chat API configuration), Harness connection, and linking spaces to incidents.
 
-### Step 1: Set Up GCP Infrastructure
+### Step 1: Set up GCP infrastructure
+
+Complete the following steps to prepare your GCP project and Google Chat API:
 
 1. **Create a Pub/Sub topic in your GCP project**:
    - Navigate to **Pub/Sub** → **Topics** in the Google Cloud Console.
@@ -84,6 +86,8 @@ You will need your GCP Project ID in the next step. Find it in the Google Cloud 
 
 ### Step 2: Connect Google Chat in Harness
 
+Complete the following steps to connect Google Chat in the Harness Platform:
+
 1. Navigate to **Organization Settings** → **Third-Party Integrations (AI SRE)**.
 2. Locate **Google Chat** and click **Connect**.
 ![Connect to Google](../static/google-chat-01.png)
@@ -108,7 +112,7 @@ The integration status changes to **Connected** after successful configuration.
 AI SRE supports one Google Chat integration per organization. All projects within the organization share this integration.
 :::
 
-### Step 3: Link Google Chat to Incidents
+### Step 3: Link Google Chat to incidents
 
 Once the integration is configured, you can link Google Chat spaces to specific incidents:
 
@@ -132,11 +136,13 @@ After linking:
 
 ---
 
-## Verify Two-Way Communication
+## Verify two-way communication
 
 After linking a Google Chat space to an incident, verify that messages flow correctly between Google Chat and Harness.
 
-### Test Inbound Messages
+### Test inbound messages
+
+Complete the following steps to confirm inbound messages reach the incident timeline:
 
 1. Open the Google Chat space you linked to the incident.
 2. Send a test message in the space (for example, "Testing Harness integration").
@@ -147,7 +153,7 @@ After linking a Google Chat space to an incident, verify that messages flow corr
 User IDs currently appear as numeric Google IDs in the timeline, not email addresses or display names. Future improvements will resolve user identities to human-readable names.
 :::
 
-### View Case Event Details
+### View case event details
 
 To see the full message payload and metadata:
 
@@ -159,9 +165,9 @@ Case events capture the exact message content and metadata from Google Chat, pro
 
 ---
 
-## How It Works
+## How it works
 
-### Message Flow
+### Message flow
 
 **Inbound (Google Chat → Harness)**:
 
@@ -176,7 +182,9 @@ Case events capture the exact message content and metadata from Google Chat, pro
 2. Harness sends the message via the Google Chat API
 3. The message appears in the linked Google Chat space
 
-### Pub/Sub Subscription Management
+### Pub/Sub subscription management
+
+Harness manages the Pub/Sub subscription lifecycle as you link, switch, and disconnect spaces:
 
 - **Subscription creation**: When you link a Google Chat space to an incident, Harness creates a dedicated Pub/Sub subscription for that space
 - **Subscription update**: If you switch to a different space, the old subscription is updated or removed, and a new one is created
@@ -184,9 +192,11 @@ Case events capture the exact message content and metadata from Google Chat, pro
 
 ---
 
-## Switch or Disconnect a Space
+## Switch or disconnect a space
 
-### Switch to a Different Space
+### Switch to a different space
+
+Complete the following steps to point an incident at a different Google Chat space:
 
 1. Open the **Incident Details** page.
 2. Click **Edit** next to the Google Chat link.
@@ -195,7 +205,9 @@ Case events capture the exact message content and metadata from Google Chat, pro
 
 Harness updates the Pub/Sub subscription to listen to the new space.
 
-### Disconnect a Space
+### Disconnect a space
+
+Complete the following steps to remove a Google Chat space from an incident:
 
 1. Open the **Incident Details** page.
 2. Click **Remove** or the **X icon** next to the Google Chat link.
@@ -205,7 +217,9 @@ The Pub/Sub subscription is deleted, but the organization-level Google Chat inte
 
 ---
 
-## Known Limitations
+## Known limitations
+
+The Google Chat integration has the following known limitations:
 
 - **User identification**: User IDs currently appear as numeric Google IDs in the timeline, not email addresses or display names. Future improvements will resolve user identities to human-readable names.
 - **One integration per organization**: You can configure only one Google Chat integration per Harness organization. All projects share this integration.
@@ -247,16 +261,20 @@ The Pub/Sub subscription is deleted, but the organization-level Google Chat inte
 
 ---
 
-## Best Practices
+## Best practices
 
-### For Administrators
+### For administrators
+
+Follow these practices when you administer the Google Chat integration:
 
 - **Use a dedicated GCP project**: Create a separate GCP project for AI SRE integrations to isolate billing and permissions.
 - **Monitor Pub/Sub usage**: Google Cloud charges for Pub/Sub message delivery. Monitor usage in the GCP Console under **Pub/Sub** → **Topics**.
 - **Test before production**: Use a test Google Chat space to verify the integration before linking production incident spaces.
 - **Document GCP setup**: Record the GCP Project ID and Pub/Sub Topic Name in your organization's runbook for future reference.
 
-### For Incident Responders
+### For incident responders
+
+Follow these practices when you respond to incidents in Google Chat:
 
 - **Link spaces early**: Add the Google Chat link when creating the incident to capture the full conversation history.
 - **Use consistent space naming**: Follow a naming convention for incident spaces (e.g., `incident-12345-payment-outage`).
@@ -264,8 +282,8 @@ The Pub/Sub subscription is deleted, but the organization-level Google Chat inte
 
 ---
 
-## Next Steps
+## Next steps
 
-- Go to [Google Chat Post Message Runbook Action](/docs/ai-sre/runbooks/integrations/collaboration/google-chat) to learn how to send automated messages to Google Chat spaces.
+- Go to [Google Chat Post Message Runbook Action](/docs/ai-sre/runbooks/integrations/collaboration/google-chat) to send automated messages to Google Chat spaces.
 - Go to [AI Scribe Agent](/docs/ai-sre/ai-agent) to enable automatic capture of key events from Google Chat conversations.
 - Go to [Acknowledge and Triage Incidents](/docs/ai-sre/users/manage-incidents/acknowledge-and-triage) to learn how incident responders use collaboration tools during incidents.

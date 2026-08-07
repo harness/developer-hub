@@ -25,6 +25,8 @@ AI SRE automatically detects action items in real-time during active incidents f
 
 ### Detection sources
 
+AI SRE detects action items from these sources:
+
 - **Slack chat messages:** Conversations in the incident channel where someone commits to a task
 - **Meeting transcriptions:** Zoom and Microsoft Teams meeting recordings where action items are discussed
 - **Incident notes:** Notes added to the incident timeline
@@ -42,12 +44,12 @@ Each AI-detected action item includes:
 The AI analyzes communications during the incident and identifies when someone explicitly commits to doing something. For example:
 
 **Slack message:**
-```
+```text
 @sarah I'll deploy the connection pool fix to production by end of day tomorrow
 ```
 
 **AI-detected action item:**
-```
+```text
 Description: Deploy connection pool fix to production
 Assignee: Sarah
 Due date: Tomorrow (end of day)
@@ -78,6 +80,8 @@ You can also create action items manually when needed:
 
 ## Track progress
 
+Monitor and update action items from the **Action Items** tab:
+
 - Action items appear in a list on the **Action Items** tab with their current status.
 - Use the **Edit** icon to update an action item's status, reassign it, or adjust the due date.
 - Completed action items remain visible in the list for historical reference.
@@ -100,7 +104,17 @@ You can also create action items manually when needed:
 
 ## Best practices
 
+Follow these practices to keep action items useful and complete:
+
 - **Be specific:** "Fix the database" is too vague. "Increase connection pool max from 50 to 200 on db-primary-01 and add a CloudWatch alarm at 80% utilization" is actionable.
 - **Always assign an owner:** Unassigned action items do not get done. Every item needs a name next to it.
 - **Set realistic due dates:** Urgent follow-ups (like deploying a permanent fix for a workaround) should have short deadlines. Process improvements can have longer timelines, but should still have a date.
 - **Review before closing the incident:** Before marking an incident resolved, scan the action items tab. Make sure everything that came up during the incident has been captured.
+
+---
+
+## Next steps
+
+- Go to [Resolve and review](/docs/ai-sre/users/manage-incidents/resolve-and-review) to close out an incident and run a post-incident review.
+- Go to [Use the incident timeline](/docs/ai-sre/users/manage-incidents/use-the-incident-timeline) to trace what happened during the incident.
+- Go to [Active incident management](/docs/ai-sre/users/manage-incidents) to manage an incident end to end.

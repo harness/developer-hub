@@ -19,11 +19,13 @@ Grafana POSTs alert notifications to an AI SRE webhook URL. AI SRE maps the payl
 
 ## Set up Grafana
 
+Use these resources to configure Grafana and connect it to AI SRE:
+
 - Go to the [Grafana integration guide](/docs/ai-sre/alerts/webhooks/integration-guides/monitoring/grafana) to configure the contact point webhook in Grafana and connect it to AI SRE.
 - Go to the [Grafana webhook template](/docs/ai-sre/alerts/webhooks/templates/monitoring/grafana) to review the field mappings AI SRE applies to Grafana alerting payloads.
 - Go to the [Grafana Incident webhook template](/docs/ai-sre/alerts/webhooks/templates/monitoring/grafana-incident) to map payloads from Grafana Incident.
 
-## Related integrations
+## Next steps
 
 - Go to the [Prometheus integration](/docs/ai-sre/integrations/monitoring/prometheus) to ingest Prometheus Alertmanager alerts.
 - Go to the [Datadog integration](/docs/ai-sre/integrations/monitoring/datadog) to ingest Datadog monitor alerts.

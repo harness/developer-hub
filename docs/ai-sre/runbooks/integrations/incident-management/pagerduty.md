@@ -20,6 +20,8 @@ Integrate PagerDuty with AI SRE runbooks to automate incident management and on-
 
 ## Use cases
 
+Use PagerDuty runbook actions to:
+
 - Create incidents in PagerDuty
 - Add notes to existing incidents
 - Trigger escalations
@@ -38,6 +40,8 @@ Integrate PagerDuty with AI SRE runbooks to automate incident management and on-
 ---
 
 ## Configure the PagerDuty integration
+
+Set up the connector with these steps:
 
 1. Go to **Project Settings**, then **Third-Party Integrations for AI SRE**.
 
@@ -144,7 +148,7 @@ Use these variables to map AI SRE incident data to PagerDuty fields:
    - **Service:** Select your PagerDuty service ID (e.g., `P1234AB`)
    - **Title:** `SEV{{Activity.severity}}: {{Activity.title}}`
    - **Body:**
-     ```
+     ```text
      AI SRE Incident: {{Activity.short_id}}
      Service: {{Activity.service}}
      Environment: {{Activity.environment}}
@@ -185,7 +189,7 @@ Use these variables to map AI SRE incident data to PagerDuty fields:
 2. Configure the form fields:
    - **Incident ID:** Enter PagerDuty incident ID
    - **Resolution Note:**
-     ```
+     ```text
      Incident {{Activity.short_id}} resolved in AI SRE
      
      Resolved at: {{Activity.resolved_at}}
@@ -212,7 +216,7 @@ Use these variables to map AI SRE incident data to PagerDuty fields:
 
 ---
 
-## Urgency mapping
+## Map urgency
 
 Map AI SRE incident severity to PagerDuty urgency:
 
@@ -241,7 +245,7 @@ This ensures:
 - Updates are properly correlated to the same incident
 - Incident resolution is correctly tracked
 
-### Service mapping
+### Map services
 
 Map AI SRE services to PagerDuty services:
 
@@ -256,6 +260,8 @@ service: ${{
 ---
 
 ## Security best practices
+
+Follow these practices to secure the PagerDuty integration:
 
 - Use API keys with minimum required permissions
 - Rotate API keys regularly

@@ -64,6 +64,8 @@ Each change record is ingested with the following fields:
 
 ## Verify change ingestion
 
+Confirm ServiceNow change records reach AI SRE and surface during incidents:
+
 1. Confirm a ServiceNow connector exists and is saved in your organization.
 2. Open an incident and review the RCA Change Agent theories panel.
 3. Confirm ServiceNow change records appear alongside deployments and pull requests as candidate root causes.

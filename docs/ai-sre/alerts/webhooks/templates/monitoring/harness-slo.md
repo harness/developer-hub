@@ -33,6 +33,8 @@ Harness SLO provides:
 
 ### Step 1: Create webhook integration in AI SRE
 
+Create the webhook endpoint in Harness AI SRE:
+
 1. Navigate to **Integrations** in the main menu.
 2. Click **New Integration**.
 3. Select **Harness SLO** from the template options under Alert type.
@@ -41,6 +43,8 @@ Harness SLO provides:
 6. Copy the generated webhook URL from the integration configuration page.
 
 ### Step 2: Configure SLO notification rule in SRM
+
+Configure the notification rule in Service Reliability Management to send alerts to the webhook:
 
 1. In your Harness account, navigate to **Service Reliability** > **SLOs**.
 2. Select the SLO for which you want to send alerts to AI SRE.
@@ -110,7 +114,7 @@ Harness SLO provides:
 
 ---
 
-## Alert field mapping
+## Mapped alert fields
 
 The following fields are extracted from Harness SLO alerts:
 
@@ -131,7 +135,7 @@ The following fields are extracted from Harness SLO alerts:
 
 Configure alerts when error budgets reach critical thresholds to proactively address service reliability issues before SLO violations occur.
 
-### Burn rate monitoring
+### Burn rate detection
 
 Set up alerts based on error budget burn rate to detect anomalies in service health and respond before budgets are exhausted.
 

@@ -194,4 +194,14 @@ These tools sync on-call schedules into AI SRE and let runbooks page responders.
 
 ## Custom integrations
 
+Connect a tool that is not listed above through a custom webhook:
+
 - **[Custom webhooks](/docs/ai-sre/alerts/webhooks/create-webhook)**: Ingest alerts from any tool that can send an HTTP POST, using a custom webhook template with CEL or Mustache field mapping.
+
+---
+
+## Next steps
+
+- Go to [Ingest Alerts](/docs/ai-sre/alerts/webhooks/overview) to create a webhook and start ingesting alerts.
+- Go to [Integrate Your First Tool](/docs/ai-sre/get-started/onboarding/integrate-tools) to connect a tool with a connector.
+- Go to [Webhook Templates](/docs/ai-sre/alerts/webhooks/templates/overview) to review the prebuilt field mappings.

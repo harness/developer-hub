@@ -30,6 +30,8 @@ Octopus Deploy provides:
 
 ## Set up Octopus Deploy integration
 
+Complete these steps to connect Octopus Deploy to Harness AI SRE:
+
 1. Navigate to **Integrations** in the main menu.
 2. Click **New Integration**.
 3. Select **Octopus Deploy** from the template options.

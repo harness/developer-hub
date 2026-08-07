@@ -27,3 +27,11 @@ This section covers everything from acknowledging a page to closing out the inci
 | Remediate | [Execute runbooks](/docs/ai-sre/users/manage-incidents/execute-runbooks) | Run automated and manual response procedures attached to the incident |
 | Follow up | [Create and track action items](/docs/ai-sre/users/manage-incidents/create-and-track-action-items) | Capture follow-up tasks, assign owners, and track completion |
 | Close | [Resolve and review an incident](/docs/ai-sre/users/manage-incidents/resolve-and-review) | Close the incident, review AI Scribe outputs, and contribute to post-incident learning |
+
+---
+
+## Next steps
+
+- Go to [Acknowledge and triage an incident](/docs/ai-sre/users/manage-incidents/acknowledge-and-triage) to begin responding to an active incident.
+- Go to [Execute runbooks](/docs/ai-sre/users/manage-incidents/execute-runbooks) to run automated response procedures.
+- Go to [Resolve and review an incident](/docs/ai-sre/users/manage-incidents/resolve-and-review) to close out and learn from an incident.

@@ -30,6 +30,8 @@ AlertSite provides:
 
 ## Set up AlertSite integration
 
+To connect AlertSite to Harness AI SRE, complete these steps:
+
 1. Navigate to **Integrations** in the main menu.
 2. Click **New Integration**.
 3. Select **AlertSite** from the template options.

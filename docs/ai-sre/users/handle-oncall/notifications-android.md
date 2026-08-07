@@ -14,6 +14,8 @@ tags:
   - on-call
 ---
 
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
+
 **Download our mobile app**
 
 If you would like the best possible experience as a responder, [download the Harness On-Call app for Android](https://play.google.com/store/apps/details?id=com.harness.oncall).
@@ -32,11 +34,15 @@ For push notifications, phone calls, and SMS messages, there are steps you can t
 
 ### Save the Harness On-Call contact to your phone
 
+Add the Harness On-Call contact and mark it as a favorite so it can bypass silent mode:
+
 1. Download and save [the Harness On-Call contact card](/ai-sre/oncall/harness.vcf) to your contacts.
 2. Open the **Contacts** app and find the contact you just saved.
 3. Favorite the contact by tapping the star icon.
 
 ### Configure Do Not Disturb exceptions
+
+Allow your favorite contacts to interrupt Do Not Disturb:
 
 1. Open the **Settings** app and search for **Do Not Disturb**.
 2. If you have Do Not Disturb enabled, go to **Exceptions > Calls** and/or **Messages** and allow Do Not Disturb exceptions for **Favorite contacts only** (this should have been done in step 3 above).
@@ -147,16 +153,16 @@ Note the following:
 
 ## Troubleshooting
 
-If you are not receiving notifications:
+<Troubleshoot
+  issue="I am not receiving Harness On-Call notifications on my Android device."
+  mode="docs"
+  fallback="Verify notification permissions are enabled for Harness On-Call, star the Harness contact and allow starred contacts to bypass Do Not Disturb, grant the app Do Not Disturb access, check battery optimization settings, confirm the device has internet, restart the app, review Focus mode or Modes and Routines settings on Samsung devices, and confirm you are logged into the correct Harness organization."
+/>
 
-1. Verify notification permissions are enabled for Harness On-Call.
-2. Check that the Harness contact is starred or favorited.
-3. Ensure starred contacts are allowed to bypass Do Not Disturb.
-4. Verify Harness On-Call has Do Not Disturb access permission.
-5. Check battery optimization settings.
-6. Ensure your device has an active internet connection.
-7. Try restarting the Harness On-Call app.
-8. Check your Focus mode or Modes and Routines settings if using Samsung.
-9. Verify you are logged into the correct Harness organization in the app.
+<Troubleshoot
+  issue="Harness On-Call notifications do not play a sound on Android while Do Not Disturb is enabled"
+  mode="docs"
+  fallback="Star the Harness contact, allow starred contacts to bypass Do Not Disturb, and grant the Harness On-Call app Do Not Disturb access."
+/>
 
 If issues persist, contact support through the app or email support@harness.io.

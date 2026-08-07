@@ -19,9 +19,11 @@ When an SRM SLO breaches its error budget, the SLO alert is delivered to AI SRE.
 
 ## Set up Harness SLO
 
+Use this resource to configure the Harness SLO source and connect it to AI SRE:
+
 - Go to the [Harness SLO webhook template](/docs/ai-sre/alerts/webhooks/templates/monitoring/harness-slo) to review the field mappings AI SRE applies to SRM SLO alerts and connect the source to AI SRE.
 
-## Related integrations
+## Next steps
 
 - Go to the [Datadog integration](/docs/ai-sre/integrations/monitoring/datadog) to ingest Datadog monitor alerts.
 - Go to the [Prometheus integration](/docs/ai-sre/integrations/monitoring/prometheus) to ingest Prometheus Alertmanager alerts.

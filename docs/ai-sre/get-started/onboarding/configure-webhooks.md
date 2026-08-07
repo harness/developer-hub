@@ -31,6 +31,8 @@ Webhooks enable external tools to automatically create alerts and incidents in A
 
 ### Create the integration
 
+Create the webhook integration in AI SRE:
+
 1. Click on **Integrations**
 2. Click on **New Integration**
 3. Fill in the details for the webhook:

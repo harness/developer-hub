@@ -41,6 +41,8 @@ Agent pipelines are custom investigation workflows built using Harness pipeline 
 
 ### Key characteristics
 
+Agent pipelines share the following characteristics:
+
 - **Build once, run on every incident:** Pipelines run automatically without per-incident manual steps
 - **Appear alongside built-in theories:** Custom pipeline results display in the same RCA Change Agent theories panel as RCA Change Agent theories
 - **Flexible data sources:** Connect any API, database, or internal tool accessible from Harness pipelines
@@ -51,6 +53,8 @@ Agent pipelines are custom investigation workflows built using Harness pipeline 
 ## How it works
 
 ### Pipeline execution flow
+
+Each agent pipeline runs through the following stages:
 
 1. **Incident created:** An incident is created in Harness AI SRE (manually or via alert rule)
 2. **Pipeline triggered:** Configured agent pipelines trigger automatically on incident creation
@@ -146,6 +150,8 @@ Add context from infrastructure-specific sources:
 ## Create an agent pipeline
 
 ### Step 1: Define the pipeline
+
+Create the pipeline that will host your investigation stages:
 
 1. Navigate to **Pipelines** in your Harness project.
 2. Click **Create Pipeline**.
@@ -416,6 +422,8 @@ The current Early Access release supports the core end-to-end flow but has these
 
 ### Workarounds for Early Access
 
+Use these workarounds until the planned features ship:
+
 - **No UI builder:** Write pipelines in YAML or use Harness Pipeline Studio
 - **No marketplace:** Copy example pipelines from this documentation and adapt to your infrastructure
 - **Limited error handling:** Implement retry logic and timeouts in pipeline stages manually
@@ -427,6 +435,8 @@ The current Early Access release supports the core end-to-end flow but has these
 
 ### For pipeline design
 
+Follow these practices when designing agent pipelines:
+
 - **Keep pipelines focused:** One pipeline per investigation type (e.g., separate pipelines for deployments vs. feature flags)
 - **Set timeouts:** Configure stage-level timeouts to prevent hanging investigations (recommend 5-10 minutes)
 - **Use secrets management:** Store API tokens and credentials in Harness Secrets, never hardcode
@@ -435,12 +445,16 @@ The current Early Access release supports the core end-to-end flow but has these
 
 ### For investigation quality
 
+Follow these practices to produce useful investigation results:
+
 - **Include evidence:** Provide specific data points (timestamps, metric values, deployment IDs) in theory evidence
 - **Calculate confidence accurately:** Higher confidence for stronger correlations (e.g., deployment 2 minutes before incident start = high confidence)
 - **Avoid false positives:** Filter out unrelated changes (e.g., changes to unaffected services)
 - **Surface actionable insights:** Theory descriptions should guide responders toward next steps
 
 ### For performance
+
+Follow these practices to keep pipeline runs fast:
 
 - **Parallelize data fetching:** Use parallel stages to query multiple data sources simultaneously
 - **Cache frequently accessed data:** Store static data (service topology, configuration) in pipeline variables

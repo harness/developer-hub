@@ -19,9 +19,11 @@ Lacework POSTs security alert notifications to an AI SRE webhook URL. AI SRE map
 
 ## Set up Lacework
 
+Use this resource to configure Lacework and connect it to AI SRE:
+
 - Go to the [Lacework webhook template](/docs/ai-sre/alerts/webhooks/templates/monitoring/lacework) to review the field mappings AI SRE applies to Lacework payloads and connect the webhook to AI SRE.
 
-## Related integrations
+## Next steps
 
 - Go to the [Datadog integration](/docs/ai-sre/integrations/monitoring/datadog) to ingest Datadog monitor alerts.
 - Go to the [AWS CloudWatch integration](/docs/ai-sre/integrations/monitoring/aws-cloudwatch) to ingest CloudWatch alarms.

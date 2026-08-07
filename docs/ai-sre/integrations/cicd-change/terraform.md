@@ -22,9 +22,11 @@ AI SRE treats Terraform as a change source for the [Deploy Change Investigator](
 
 ## Set up Terraform
 
+Configure Terraform as a change source with the following step:
+
 - Go to [Terraform change source](/docs/ai-sre/change/sources/terraform) to configure Terraform apply events as deployment data.
 
-## Related integrations
+## Next steps
 
 - Go to [Octopus Deploy Integration](/docs/ai-sre/integrations/cicd-change/octopus-deploy) to send deployment webhooks from Octopus Deploy.
 - Go to [Harness Pipelines Integration](/docs/ai-sre/integrations/cicd-change/harness-pipelines) to send build and deploy data and trigger pipelines from runbooks.

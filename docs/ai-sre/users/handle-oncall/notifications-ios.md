@@ -14,6 +14,8 @@ tags:
   - on-call
 ---
 
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
+
 **Download our mobile app**
 
 If you would like the best possible experience as a responder, [download the Harness On-Call app for iOS](https://apps.apple.com/us/app/harness-on-call/id6753579217).
@@ -31,6 +33,8 @@ When you are paged, we try to contact you according to your notification rules. 
 For push notifications, phone calls, and SMS messages, there are steps you can take to ensure you get notified, regardless of how your phone's silent mode and Do Not Disturb settings are set up.
 
 ### Save the Harness On-Call contact to your phone
+
+Save the contact card and enable Emergency Bypass so calls and messages ring even in silent or Focus modes:
 
 1. Download and save [the Harness On-Call contact card](/ai-sre/oncall/harness.vcf) to your contacts.
 2. Open the **Contacts** app and open the contact you just saved.
@@ -95,6 +99,8 @@ The following settings in iOS could interfere with push notifications:
 
 ## Additional recommendations
 
+Follow these recommendations to keep notifications reliable over time:
+
 - **Keep the app updated:** Regularly update the Harness On-Call app from the App Store to ensure you have the latest notification improvements.
 - **Repeat the setup for all Focus modes:** If you use multiple Focus modes (Sleep, Work, Personal, Driving), make sure to add Harness On-Call as an allowed app in each one.
 - **Test regularly:** Periodically test your notification setup, especially after iOS updates or if you have changed Focus mode configurations.
@@ -103,13 +109,16 @@ The following settings in iOS could interfere with push notifications:
 
 ## Troubleshooting
 
-If you are not receiving notifications:
+<Troubleshoot
+  issue="I am not receiving Harness On-Call notifications on my iPhone."
+  mode="docs"
+  fallback="Verify notification permissions in Settings > Harness On-Call > Notifications, confirm Harness On-Call is in the allowed apps list for your active Focus mode, ensure the device has internet, restart the app, enable Emergency Bypass on the Harness contact for SMS and calls, and confirm you are logged into the correct Harness organization."
+/>
 
-1. Verify notification permissions are enabled in **Settings > Harness On-Call > Notifications**.
-2. Check that Harness On-Call is in your allowed apps list for your active Focus mode.
-3. Ensure your device has an active internet connection.
-4. Try restarting the Harness On-Call app.
-5. If using SMS or calls, verify the Harness contact has Emergency Bypass enabled.
-6. Check that you are logged into the correct Harness organization in the app.
+<Troubleshoot
+  issue="Harness On-Call notifications do not make a sound during Do Not Disturb on iOS."
+  mode="docs"
+  fallback="Add Harness On-Call to the allowed apps list for your active Focus mode, enable Time Sensitive Notifications for the app, and enable Emergency Bypass on the Harness contact card for calls and text tones."
+/>
 
 If issues persist, contact support through the app or email support@harness.io.

@@ -72,6 +72,8 @@ This page is scoped to the project shown in the **PROJECT** selector at the top 
 
 ## Create a pull request ingestion
 
+Create the ingestion job manually if you do not want to wait for automatic creation from a build webhook:
+
 1. In the AI SRE left navigation, go to **Integrations**.
 2. Open the **PR Ingestions** tab.
 3. Click **+ New PR Ingestion**.
@@ -88,6 +90,8 @@ You do not have to create the ingestion by hand. When you send your first build 
 ---
 
 ## Verify pull request ingestion
+
+Confirm the ingestion job is running and syncing pull requests:
 
 1. In the AI SRE left navigation, go to **PR Ingestions** (tab next to Integrations).
 2. Confirm an ingestion job exists for your repository with:

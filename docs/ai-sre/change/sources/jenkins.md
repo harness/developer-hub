@@ -287,6 +287,8 @@ The Deploy Change Investigator requires exact matches between build and deploy d
 
 ### Test build webhook
 
+Trigger a build and confirm the webhook reaches AI SRE:
+
 1. Trigger a Jenkins build that includes the webhook script
 2. Check the Jenkins console output for curl command execution
 3. Navigate to **AI SRE**, then select **Integrations**
@@ -294,6 +296,8 @@ The Deploy Change Investigator requires exact matches between build and deploy d
 5. Select **Debug** to view received webhook events
 
 ### Test deploy webhook
+
+Trigger a deployment and confirm the webhook reaches AI SRE:
 
 1. Trigger a deployment pipeline
 2. Verify the curl command runs in the console output

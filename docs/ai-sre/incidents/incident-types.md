@@ -68,11 +68,15 @@ Follow this interactive guide to create and configure incident types with custom
 
 ### Step 1: Access incident types
 
+Open the incident types configuration:
+
 1. Navigate to **Incidents** from the left panel
 2. Click **Incident Types** from the top right corner
 3. Click **Create Incident Type** to start configuration
 
 ### Step 2: Configure basic details
+
+Provide the identifying details for the incident type:
 
 1. Fill in the required details for your incident type:
    - **Name**: Descriptive name for the incident type (e.g., "Security Incident", "Major Incident")
@@ -81,6 +85,8 @@ Follow this interactive guide to create and configure incident types with custom
 2. Click **Save** to create the basic incident type
 
 ### Step 3: Configure default fields
+
+Set default values and behavior for the standard incident fields:
 
 1. Click **Show Default Fields** to view available incident fields
 2. Click the **Edit icon** to edit field configurations
@@ -92,12 +98,16 @@ Follow this interactive guide to create and configure incident types with custom
 
 ### Step 4: Set required fields
 
+Mark the fields that responders must complete:
+
 1. Review optional fields that should be mandatory for this incident type
 2. Select fields to mark as **Required** for incident creation
 3. This ensures critical information is always collected
 4. Click **Save** to apply the requirements
 
 ### Step 5: Add custom fields
+
+Create fields specific to this incident type:
 
 1. Click **Add Custom Field** to create incident-type-specific fields
 2. Configure the custom field properties:
@@ -109,11 +119,15 @@ Follow this interactive guide to create and configure incident types with custom
 
 ### Step 6: Configure creation form
 
+Choose which fields appear on the incident creation form:
+
 1. Navigate to the **Creation Form** tab
 2. Select checkboxes to include fields in the incident creation form
 3. Arrange fields in the desired order for optimal user experience
 
 ### Step 7: Associate runbooks (optional)
+
+Pin runbooks that responders should use for this incident type:
 
 1. Navigate to the **Runbooks** tab
 2. Click **Pin Runbook** to associate automated response procedures
@@ -124,6 +138,8 @@ Follow this interactive guide to create and configure incident types with custom
 5. Repeat for multiple runbooks as needed
 
 ### Step 8: Save and activate
+
+Finalize the incident type and make it available for use:
 
 1. Review all configurations across all tabs
 2. Click **Save** from the top right to finalize the incident type
@@ -190,6 +206,8 @@ Follow this interactive guide to create and configure incident types with custom
 ---
 
 ## Benefits
+
+Incident types deliver the following benefits:
 
 - **Consistency:** Standardized incident handling across all teams and services
 - **Efficiency:** Pre-configured fields and workflows reduce response time

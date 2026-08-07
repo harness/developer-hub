@@ -5,6 +5,8 @@ sidebar_label: Configure Service Paging Webhooks
 sidebar_position: 7
 ---
 
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
+
 Service paging webhooks enable external monitoring tools, legacy systems, and custom applications to trigger on-call notifications by sending alerts directly to a service. Each service can have a dedicated paging webhook that automatically creates alerts and pages the on-call User Group.
 
 ## Overview
@@ -32,7 +34,7 @@ When you enable a paging webhook on a service, the system atomically creates thr
 
 This setup ensures that every alert sent to the webhook immediately triggers the configured escalation policy.
 
-### Alert field mapping
+### Alert fields
 
 The paging webhook accepts these fields:
 
@@ -56,6 +58,8 @@ The paging webhook accepts these fields:
 - **On-call schedule:** The User Group must have an active on-call schedule.
 
 ### Enable the webhook
+
+Enable paging on a service to generate its webhook and email endpoint:
 
 1. Navigate to **Project Settings** → **Service Directory (AI SRE)**.
 2. Select the service you want to configure.
@@ -169,7 +173,9 @@ The email address follows this format:
 
 Example: `abc123_xyz789@alerts.harness.io`
 
-### Email field mapping
+### Email fields
+
+Email components map to alert fields as follows:
 
 - **Email subject:** Maps to the alert `message` (title).
 - **Email body:** Maps to the alert `email_text` (description).
@@ -199,6 +205,8 @@ This email creates an alert with:
 
 ### Email size limits
 
+The email integration enforces the following size limits:
+
 - **Maximum email size:** 10 MB (raw email)
 - **Passthrough without truncation:** 96 KB
 - **Text body truncation:** 32,000 characters
@@ -206,7 +214,7 @@ This email creates an alert with:
 
 Emails exceeding these limits are rejected or truncated.
 
-### Reply handling
+### How replies are handled
 
 Emails containing an `In-Reply-To` header are ignored. Only new emails (not replies) create alerts. This prevents duplicate alerts when someone replies to an alert notification.
 
@@ -243,6 +251,8 @@ Emails containing an `In-Reply-To` header are ignored. Only new emails (not repl
 ## Disable or refresh a paging webhook
 
 ### Disable the webhook
+
+Disable paging to place the webhook in quiet mode without deleting it:
 
 1. Navigate to **Project Settings** → **Service Directory (AI SRE)**.
 2. Select the service.
@@ -285,6 +295,8 @@ The Service Directory UI includes a **Debug Drawer** that shows:
 
 ### View webhook activity
 
+Open the debug drawer to review recent alerts received through the webhook:
+
 1. Navigate to **Project Settings** → **Service Directory (AI SRE)**.
 2. Select the service.
 3. Click **Debug** in the lower left corner of the dialog.
@@ -297,6 +309,8 @@ The Service Directory UI includes a **Debug Drawer** that shows:
 
 ### For administrators
 
+Follow these practices when you enable and manage paging webhooks:
+
 - **Test before production:** Send test alerts to verify the webhook works before configuring external systems.
 - **Document webhook URLs:** Store webhook URLs and email addresses in a secure location (password manager, secrets vault).
 - **Monitor webhook health:** Use the debug drawer to check for recent activity and ensure alerts are flowing correctly.
@@ -305,6 +319,8 @@ The Service Directory UI includes a **Debug Drawer** that shows:
 
 ### For external system integrations
 
+Follow these practices when you connect external tools to a webhook:
+
 - **Include context:** Provide detailed alert descriptions with service name, environment, and affected resources.
 - **Use consistent formatting:** Structure email subjects and webhook payloads consistently for easier troubleshooting.
 - **Avoid reply emails:** Configure external systems to send new emails only (not replies) to prevent ignored alerts.
@@ -312,6 +328,8 @@ The Service Directory UI includes a **Debug Drawer** that shows:
 - **Monitor delivery:** Log webhook POST requests in external systems to track delivery success.
 
 ### Security considerations
+
+Follow these practices to keep webhook credentials secure:
 
 - **Keep keys confidential:** The webhook key acts as an authentication token. Do not commit keys to version control.
 - **Use HTTPS only:** Webhook URLs use HTTPS. Do not downgrade to HTTP.
@@ -322,68 +340,29 @@ The Service Directory UI includes a **Debug Drawer** that shows:
 
 ## Troubleshooting
 
-<details>
-<summary><strong>Webhook returns 401 Unauthorized</strong></summary>
+<Troubleshoot
+  issue="Service paging webhook returns 401 Unauthorized"
+  mode="docs"
+  fallback="Verify the webhook URL and key match what is displayed in the Service Directory, confirm the webhook is enabled and not in quiet mode, and disable then re-enable the webhook to refresh the key if it is incorrect."
+/>
 
-**Possible causes:**
-- Incorrect webhook key in the URL
-- Webhook was disabled or deleted
+<Troubleshoot
+  issue="Emails sent to the service paging address are not creating alerts"
+  mode="docs"
+  fallback="Verify the email address matches the format shown in the Service Directory, confirm the email is a new message and not a reply, check the email is under the size limits, and ensure the webhook is enabled."
+/>
 
-**Resolution:**
-1. Verify the webhook URL and key match what is displayed in the Service Directory
-2. Check if the webhook is enabled (not in quiet mode)
-3. If the key is incorrect, disable and re-enable the webhook to refresh it
+<Troubleshoot
+  issue="Service paging webhook creates alerts but no one gets paged"
+  mode="docs"
+  fallback="Confirm the service has an owning User Group with an escalation policy, verify the escalation policy has an active on-call schedule, and confirm someone is on-call during the current time period."
+/>
 
-</details>
-
-<details>
-<summary><strong>Emails sent to the service address are not creating alerts</strong></summary>
-
-**Possible causes:**
-- Email exceeds size limits (10 MB max)
-- Email is a reply (contains `In-Reply-To` header)
-- Webhook is disabled or in quiet mode
-- Email address is incorrect
-
-**Resolution:**
-1. Verify the email address matches the format shown in the Service Directory
-2. Confirm the email is a new message (not a reply)
-3. Check email size (should be under 10 MB raw, 2 MB after processing)
-4. Ensure the webhook is enabled
-
-</details>
-
-<details>
-<summary><strong>Webhook creates alerts but no one gets paged</strong></summary>
-
-**Possible causes:**
-- Service does not have an owning User Group assigned
-- User Group does not have an escalation policy
-- No one is on-call in the escalation policy
-
-**Resolution:**
-1. Navigate to **Project Settings** → **Service Directory (AI SRE)**.
-2. Verify the service has an owning User Group assigned
-3. Verify the User Group has an escalation policy
-4. Check the escalation policy has an active on-call schedule
-5. Confirm someone is on-call during the current time period
-
-</details>
-
-<details>
-<summary><strong>Cannot enable webhook (error or no button visible)</strong></summary>
-
-**Possible causes:**
-- Service already has a webhook enabled
-- Insufficient permissions
-- Service is not properly configured
-
-**Resolution:**
-1. Check if the webhook is already enabled (look for webhook URL displayed)
-2. Verify you have admin permissions for the organization
-3. Ensure the service has an owning User Group and escalation policy configured
-
-</details>
+<Troubleshoot
+  issue="Cannot enable a service paging webhook (error or no button visible)"
+  mode="docs"
+  fallback="Check whether the webhook is already enabled, verify you have admin permissions for the organization, and ensure the service has an owning User Group and escalation policy configured."
+/>
 
 ---
 

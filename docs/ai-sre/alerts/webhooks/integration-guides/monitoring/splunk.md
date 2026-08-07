@@ -57,7 +57,7 @@ Splunk Cloud requires using the **Webhook Alert Action** app or configuring via 
 Configure this field:
 
 - **URL:** Your Harness webhook URL.
-  ```
+  ```text
   https://<your-harness-instance>/gateway/ai-sre/api/webhooks/<webhook-id>
   ```
 
@@ -96,6 +96,8 @@ The webhook alert action sends a fixed JSON payload. Splunk does not support tok
 
 ### Create or edit saved search
 
+Save a search as an alert in Splunk:
+
 1. Run your search query in Splunk.
 2. Click **Save As**, then select **Alert**.
 
@@ -128,6 +130,8 @@ The webhook alert action sends a fixed JSON payload. Splunk does not support tok
 
 ### Add webhook trigger action
 
+Attach the webhook action to the alert:
+
 1. In **Trigger Actions**, select **Add Actions**, then select **Webhook**.
 2. Select the webhook alert action you created for Harness AI SRE.
 3. Configure action-specific parameters.
@@ -142,7 +146,7 @@ Click **Save** to create the alert.
 
 In your Harness webhook configuration, map the fixed Splunk payload fields (`result`, `sid`, `results_link`, `search_name`, `owner`, `app`) to alert properties.
 
-### Basic field mapping
+### Map basic fields
 
 Use Mustache templates for simple field mapping:
 
@@ -196,17 +200,23 @@ Because the payload does not include a severity or trigger-time field, derive se
 
 ### Test from Splunk
 
+Trigger the saved search to confirm delivery:
+
 1. Open the saved search configured with the webhook.
 2. Click **Run**.
 3. Wait for the alert to trigger, or manually trigger it if conditions are met.
 
 ### Verify in Splunk
 
+Confirm the webhook action executed:
+
 1. Navigate to **Activity**, then select **Triggered Alerts**.
 2. Find your alert and verify the webhook action executed successfully.
 3. Check for HTTP response code (200 = success).
 
 ### Verify in Harness
+
+Confirm the alert arrived and mapped correctly:
 
 1. Navigate to **Alerts** in Harness AI SRE.
 2. Check that the alert appears.
@@ -235,12 +245,12 @@ The webhook alert action always sends these fields. There are no additional toke
 
 ## Advanced configuration
 
-### Real-time monitoring with throttling
+### Throttle real-time alerts
 
 For continuous monitoring without overwhelming Harness:
 
 **Splunk alert configuration**:
-```
+```text
 Alert Type: Real-time
 Trigger: Per-result
 Throttle: 5 minutes
@@ -257,7 +267,7 @@ filter: webhook.search_name != null
 For periodic summary reports:
 
 **Splunk alert configuration**:
-```
+```text
 Alert Type: Scheduled
 Cron: 0 * * * * (hourly)
 Trigger: Number of results > 0
@@ -350,7 +360,7 @@ severity: "critical"
 
 ---
 
-## Example: Complete integration
+## Example: complete integration
 
 This example shows a production-ready Splunk-to-Harness integration for application error monitoring.
 
@@ -385,7 +395,7 @@ Splunk sends the fixed payload shape for every trigger, with `result` reflecting
 }
 ```
 
-### Harness webhook field mapping
+### Map fields in the Harness webhook
 
 ```yaml
 title: |
@@ -434,7 +444,7 @@ custom_fields:
 
 ---
 
-## Further reading
+## Related documentation
 
 ### Splunk official documentation
 - Go to [Use a Webhook Alert Action](https://help.splunk.com/en/splunk-enterprise/alert-and-respond/alerting-manual/latest/configure-alert-actions/use-a-webhook-alert-action) to configure the webhook alert action and understand the fixed payload format.

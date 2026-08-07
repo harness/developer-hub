@@ -23,11 +23,13 @@ AI SRE supports GitHub through two mechanisms. It ingests pull requests as a cha
 
 ## Set up GitHub
 
+Configure GitHub as a change source and alert webhook with the following steps:
+
 - Go to [GitHub change source](/docs/ai-sre/change/sources/github) to configure pull request ingestion.
 - Go to [GitHub Actions change source](/docs/ai-sre/change/sources/github-actions) to send build and deploy webhooks from GitHub Actions workflows.
 - Go to [GitHub alert webhook](/docs/ai-sre/alerts/webhooks/integration-guides/cicd/github) to forward GitHub alerts as incidents.
 
-## Related integrations
+## Next steps
 
 - Go to [GitLab Integration](/docs/ai-sre/integrations/cicd-change/gitlab) to send build and deploy webhooks and forward alerts.
 - Go to [Bitbucket Integration](/docs/ai-sre/integrations/cicd-change/bitbucket) to ingest pull requests from Bitbucket Cloud.

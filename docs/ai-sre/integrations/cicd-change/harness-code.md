@@ -22,9 +22,11 @@ AI SRE treats Harness Code as a change source for the [Deploy Change Investigato
 
 ## Set up Harness Code
 
+Configure Harness Code as a change source with the following step:
+
 - Go to [Harness Code change source](/docs/ai-sre/change/sources/harness-code) to enable pull request ingestion from Harness Code repositories.
 
-## Related integrations
+## Next steps
 
 - Go to [GitHub Integration](/docs/ai-sre/integrations/cicd-change/github) to ingest pull requests from GitHub.
 - Go to [Harness Pipelines Integration](/docs/ai-sre/integrations/cicd-change/harness-pipelines) to send build and deploy data and trigger pipelines from runbooks.

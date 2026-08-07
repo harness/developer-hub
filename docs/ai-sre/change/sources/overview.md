@@ -44,6 +44,8 @@ Complete the Deploy Change Investigator setup:
 
 ### CI/CD tools
 
+Configure any of these CI/CD tools to send build and deploy webhooks:
+
 - **[Harness Pipelines](/docs/ai-sre/change/deploy-change-investigator)**: Native integration with Harness build and deployment pipelines.
 - **[Jenkins](/docs/ai-sre/change/sources/jenkins)**: Configure Jenkins pipelines to send build and deploy webhooks.
 - **[GitHub Actions](/docs/ai-sre/change/sources/github-actions)**: Add webhook steps to GitHub Actions workflows.
@@ -59,6 +61,8 @@ Source-control change sources ingest merged pull requests by **polling**, not we
 - **[Harness Code](/docs/ai-sre/change/sources/harness-code)**: Ingest merged pull requests automatically, with no connector required.
 
 ### Change tracking systems
+
+Send change and deployment data from these tracking systems:
 
 - **[Jira](/docs/ai-sre/change/sources/jira)**: Track Jira issue deployments and releases.
 - **[Terraform](/docs/ai-sre/change/sources/terraform)**: Send Terraform apply events as deployment data.

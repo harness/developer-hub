@@ -27,16 +27,22 @@ import DocVideo from '@site/src/components/DocVideo';
 
 ### Step 1: Access trigger configuration
 
+Open the trigger configuration interface for your runbook:
+
 1. Open your existing runbook in the Harness AI SRE platform
 2. Click the **Triggers** tab in your runbook editor
 3. This opens the trigger configuration interface
 
 ### Step 2: Create a new trigger
 
+Start the trigger creation wizard:
+
 1. Click **+ New Trigger** to begin the trigger setup process
 2. This opens the trigger creation wizard
 
 ### Step 3: Choose a trigger template
+
+Select a template and incident type for the trigger:
 
 1. Select the **Incident Type** template from the available options
 2. Select the specific **Incident Type** from the dropdown menu
@@ -44,6 +50,8 @@ import DocVideo from '@site/src/components/DocVideo';
 4. This selection affects what data you can use when setting up trigger conditions
 
 ### Step 4: Define trigger conditions
+
+Set the condition logic and evaluation frequency:
 
 1. **Choose condition type:** Select either **ALL** or **ANY** for your condition logic:
    - **ALL:** All conditions must be met for the trigger to activate
@@ -74,6 +82,8 @@ To add more specific conditions beyond the basic frequency setting:
 5. **Repeat:** Add multiple conditions as needed using the ALL/ANY logic set in Step 4
 
 ### Step 6: Save and activate
+
+Save the trigger and confirm it works as expected:
 
 1. **Review configuration:** Verify all trigger settings are correct
 2. **Save trigger:** Click **Save** to create the trigger
@@ -106,12 +116,12 @@ Harness AI SRE uses numeric string values for severity levels. When configuring 
 **Example trigger condition:**
 
 To trigger on critical incidents, use:
-```
+```text
 severity = "0"
 ```
 
 To trigger on major incidents, use:
-```
+```text
 severity = "1"
 ```
 

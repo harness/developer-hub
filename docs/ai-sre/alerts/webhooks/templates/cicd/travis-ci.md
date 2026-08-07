@@ -30,6 +30,8 @@ Travis CI provides:
 
 ## Set up Travis CI integration
 
+To connect Travis CI to Harness AI SRE, complete these steps:
+
 1. Navigate to **Integrations** in the main menu.
 2. Click **New Integration**.
 3. Select **Travis CI** from the template options.

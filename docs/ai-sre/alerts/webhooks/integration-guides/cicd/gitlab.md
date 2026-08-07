@@ -58,7 +58,7 @@ Group webhooks receive events from all projects in the group.
 <TabItem value="basic" label="Basic configuration" default>
 
 - **URL**: Your Harness webhook URL
-  ```
+  ```text
   https://<your-harness-instance>/gateway/ai-sre/api/webhooks/<webhook-id>
   ```
 - **Secret token**: (Optional) Sent as plain text for token comparison, not cryptographic signature verification
@@ -335,7 +335,7 @@ filter: webhook.action == "create"
 
 ---
 
-## Further reading
+## Related documentation
 
 ### GitLab official documentation
 - [Webhooks](https://docs.gitlab.com/ee/user/project/integrations/webhooks.html): Complete guide to GitLab webhook configuration and setup.

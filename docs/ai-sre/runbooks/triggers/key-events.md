@@ -35,6 +35,8 @@ This approach allows for seamless integration between event detection and automa
 
 ## Benefits
 
+Key event triggers provide the following operational advantages:
+
 - **Automated response:** Immediate response to incidents and alerts without manual intervention
 - **Consistent execution:** Standardized response procedures triggered by specific conditions
 - **Scalable operations:** Handle increasing incident volumes without additional manual effort

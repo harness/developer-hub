@@ -30,6 +30,8 @@ AWS CloudWatch provides:
 
 ## Set up AWS CloudWatch integration
 
+To connect AWS CloudWatch to Harness AI SRE, complete these steps:
+
 1. Navigate to **Integrations** in the main menu.
 2. Click **New Integration**.
 3. Select **AWS CloudWatch** from the template options.

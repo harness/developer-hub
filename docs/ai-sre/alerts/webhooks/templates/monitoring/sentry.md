@@ -30,6 +30,8 @@ Sentry provides:
 
 ## Set up Sentry integration
 
+Complete the following steps to connect Sentry to Harness AI SRE:
+
 1. Navigate to **Integrations** in the main menu.
 2. Click **New Integration**.
 3. Select **Sentry** from the template options.

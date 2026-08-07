@@ -84,6 +84,8 @@ Creates a new Jira issue with dynamic field mapping. The action automatically di
 
 #### Configure the action
 
+Configure the Create Jira Issue action with the following steps:
+
 1. In the runbook editor, add a **Create Jira Issue** action.
 2. Configure the required fields:
    - **Project Key**: Select your Jira project (typeahead enabled)
@@ -127,7 +129,7 @@ In the runbook editor, configure the Create Jira Issue action:
 - **Issue Type:** `Bug`
 - **Summary:** `[{{Activity.severity}}] {{Activity.title}}`
 - **Description:** 
-  ```
+  ```text
   Incident Details:
   - Service: {{Activity.service}}
   - Environment: {{Activity.environment}}
@@ -146,6 +148,8 @@ In the runbook editor, configure the Create Jira Issue action:
 Updates an existing Jira issue with new field values. Like the Create action, this supports dynamic field mapping for any updateable field.
 
 #### Configure the action
+
+Configure the Update Jira Issue action with the following steps:
 
 1. In the runbook editor, add an **Update Jira Issue** action.
 2. Configure the required fields:
@@ -170,6 +174,8 @@ Moves a Jira issue through workflow states.
 
 #### Configure the action
 
+Configure the Transition Jira Issue action with the following steps:
+
 1. Add a **Transition Jira Issue** action.
 2. Configure:
    - **Issue Key:** The issue to transition
@@ -188,6 +194,8 @@ Posts a comment to an existing Jira issue.
 
 #### Configure the action
 
+Configure the Add Comment to Jira Issue action with the following steps:
+
 1. Add an **Add Comment to Jira Issue** action.
 2. Configure:
    - **Issue Key:** The issue to comment on
@@ -202,11 +210,13 @@ In the runbook editor, configure the Add Comment to Jira Issue action:
 
 ---
 
-## Dynamic field mapping
+## Map fields dynamically
 
 Dynamic field mapping automatically discovers available Jira fields based on your selected project and issue type. This eliminates manual configuration and supports custom fields unique to your Jira instance.
 
 ### How it works
+
+Dynamic field mapping follows these steps:
 
 1. **Select project and issue type**: When you add a Jira action, select your project key and issue type.
 2. **Fields are discovered automatically**: The action queries the Jira API to retrieve all available fields for that project/issue type combination.
@@ -235,7 +245,7 @@ The Jira integration supports all Jira field types with automatic formatting:
 
 ## Common field mapping patterns
 
-### Pattern 1: Basic incident tracking
+### Pattern 1: Track incidents with a basic issue
 
 **Use case:** Create a Jira Bug for every P1/P2 incident with essential details.
 
@@ -247,7 +257,7 @@ The Jira integration supports all Jira field types with automatic formatting:
    - **Issue Type:** `Bug`
    - **Summary:** `[{{Activity.severity}}] {{Activity.title}}`
    - **Description:** 
-     ```
+     ```text
      Incident Details:
      - Service: {{Activity.service}}
      - Environment: {{Activity.environment}}
@@ -297,7 +307,7 @@ The Jira integration supports all Jira field types with automatic formatting:
    - **Issue Type:** `Story`
    - **Summary:** `Fix: {{Activity.title}}`
    - **Description:** 
-     ```
+     ```text
      Root Cause:
      {{Activity.root_cause}}
      
@@ -353,6 +363,9 @@ The Jira integration supports all Jira field types with automatic formatting:
 :::
 
 #### Capabilities
+
+A pipeline-based inbound sync can provide the following capabilities:
+
 1. **Status Sync**
    - Jira to Harness AI SRE status mapping
    - Automatic state transitions
@@ -378,6 +391,8 @@ The Jira integration supports all Jira field types with automatic formatting:
 
 ### Field mapping design
 
+Follow these guidelines when designing field mappings:
+
 - **Start with required fields**: Ensure all required Jira fields are populated before adding optional fields.
 - **Use meaningful labels**: Include service name, severity, and incident identifier in labels for easy filtering and search.
 - **Keep descriptions structured**: Use consistent formatting for incident descriptions (service, environment, status, summary) to make Jira issues scannable.
@@ -386,12 +401,16 @@ The Jira integration supports all Jira field types with automatic formatting:
 
 ### Dynamic field discovery
 
+Follow these guidelines when working with dynamic field discovery:
+
 - **Let Jira define the fields**: Do not hardcode custom field IDs. Use dynamic field discovery to automatically adapt to your Jira configuration.
 - **Handle missing fields gracefully**: If a custom field is not available for a specific issue type, the action will skip it. Avoid making optional fields required in runbooks.
 - **Use typeahead for accuracy**: For user, component, and version fields, use typeahead search to ensure you select valid values.
 - **Validate field values**: Check that Mustache variables return values matching Jira's allowed values for select fields.
 
 ### Incident-to-Jira workflow
+
+Follow these guidelines when building incident-to-Jira workflows:
 
 - **Create issue early**: Add Jira actions to trigger when incidents are detected to capture the full incident lifecycle.
 - **Store the issue key**: Configure the Create Jira Issue action to store the issue key in an incident field (e.g., `jira_ticket`) so subsequent actions can reference it.
@@ -400,6 +419,8 @@ The Jira integration supports all Jira field types with automatic formatting:
 - **Transition issues on resolution**: Configure a runbook to transition the Jira issue to Done when the incident resolves.
 
 ### Performance and reliability
+
+Follow these guidelines to keep Jira actions performant and reliable:
 
 - **Avoid circular updates**: If using bidirectional sync, ensure Jira updates do not trigger AI SRE updates that trigger Jira updates in a loop.
 - **Handle API failures**: Use runbook error handling to retry failed Jira actions or alert when issue creation fails.
@@ -410,7 +431,7 @@ The Jira integration supports all Jira field types with automatic formatting:
 
 ## Common use cases
 
-### Incident tracking
+### Track incidents
 
 **Scenario:** Automatically create a Jira issue for every high-severity incident.
 
@@ -425,7 +446,7 @@ The Jira integration supports all Jira field types with automatic formatting:
 
 **Benefit:** Every critical incident has a corresponding Jira issue for tracking, reporting, and compliance.
 
-### Compliance and SLA tracking
+### Track compliance and SLAs
 
 **Scenario:** Populate custom Jira fields required for compliance reporting and SLA tracking.
 

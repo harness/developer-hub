@@ -32,6 +32,8 @@ Prometheus AlertManager provides:
 
 ## Set up Prometheus AlertManager integration
 
+Complete the following steps to connect Prometheus AlertManager to Harness AI SRE:
+
 1. Navigate to **Integrations** in the main menu
 2. Click **New Integration**
 3. Select **Prometheus AlertManager** from the template options

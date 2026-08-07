@@ -19,11 +19,19 @@ Prometheus routes firing alerts to Alertmanager, which POSTs them to an AI SRE w
 
 ## Set up Prometheus
 
+Use these resources to connect Prometheus to AI SRE:
+
 - Go to the [Prometheus integration guide](/docs/ai-sre/alerts/webhooks/integration-guides/monitoring/prometheus) to configure the Alertmanager webhook receiver and connect it to AI SRE.
 - Go to the [Prometheus webhook template](/docs/ai-sre/alerts/webhooks/templates/monitoring/prometheus) to review the field mappings AI SRE applies to Alertmanager payloads. The in-product template is named **AlertManager**.
 
 ## Related integrations
 
+Explore other monitoring integrations that ingest alerts into AI SRE:
+
 - Go to the [Grafana integration](/docs/ai-sre/integrations/monitoring/grafana) to ingest Grafana alerts.
 - Go to the [Datadog integration](/docs/ai-sre/integrations/monitoring/datadog) to ingest Datadog monitor alerts.
 - Go to the [Integration Management overview](/docs/ai-sre/integrations) to see all supported tools.
+
+## Next steps
+
+- Go to the [incidents documentation](/docs/ai-sre/incidents) to work with incidents created from Prometheus alerts.

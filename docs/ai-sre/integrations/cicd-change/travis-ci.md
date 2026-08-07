@@ -22,9 +22,11 @@ AI SRE treats Travis CI as a change source for the [Deploy Change Investigator](
 
 ## Set up Travis CI
 
+Configure Travis CI as a change source with the following step:
+
 - Go to [Travis CI webhook template](/docs/ai-sre/alerts/webhooks/templates/cicd/travis-ci) to configure the build and deploy webhooks from Travis CI.
 
-## Related integrations
+## Next steps
 
 - Go to [CircleCI Integration](/docs/ai-sre/integrations/cicd-change/circleci) to send build and deploy webhooks from CircleCI workflows.
 - Go to [Jenkins Integration](/docs/ai-sre/integrations/cicd-change/jenkins) to send build and deploy webhooks from Jenkins pipelines.

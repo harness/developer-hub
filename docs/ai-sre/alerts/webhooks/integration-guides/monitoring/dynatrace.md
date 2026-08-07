@@ -34,6 +34,8 @@ Configure Dynatrace to send webhook notifications to Harness AI SRE when problem
 
 ### Navigate to notifications
 
+Open the problem notifications page to add a custom integration:
+
 1. In Dynatrace, go to **Settings**, then **Integration**, then **Problem notifications**
 2. Click **Add notification**
 3. Select **Custom integration**
@@ -84,6 +86,8 @@ Dynatrace filters which problems trigger the webhook through an **alerting profi
 
 ### Test the notification
 
+Send a test notification and activate it:
+
 1. Click **Send test notification**
 2. Verify the test appears in Harness AI SRE
 3. Click **Save** to activate the notification
@@ -94,7 +98,7 @@ Dynatrace filters which problems trigger the webhook through an **alerting profi
 
 Map Dynatrace problem fields to Harness alert properties.
 
-### Basic field mapping
+### Basic field mapping example
 
 ```yaml
 title: "{{webhook.ProblemTitle}}"
@@ -114,7 +118,7 @@ tags:
   - "state:{{webhook.State}}"
 ```
 
-### Advanced filtering
+### Advanced filtering with CEL
 
 ```cel
 // Only process open problems
@@ -174,7 +178,7 @@ filter: webhook.ImpactedEntity.contains("SERVICE")
 
 ---
 
-## Further reading
+## Related documentation
 
 ### Dynatrace official documentation
 - [Problem notifications](https://www.dynatrace.com/support/help/observe-and-explore/notifications-and-alerting/problem-notifications): Complete guide to problem notification configuration.

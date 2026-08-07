@@ -31,6 +31,8 @@ ServiceNow provides:
 
 ## Set up ServiceNow integration
 
+To connect ServiceNow to Harness AI SRE, complete these steps:
+
 1. Navigate to **Integrations** in the main menu
 2. Click **New Integration**
 3. Select **ServiceNow** from the template options

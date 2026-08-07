@@ -28,7 +28,7 @@ CEL expression support in webhooks requires the `IR_CEL_CONDITIONS` feature flag
 account team to enable this feature.
 :::
 
-## When to use CEL webhook filtering
+## When to use CEL webhook filters
 
 Use CEL expressions in webhook mappings when you need:
 - **Payload-based routing**: Route webhooks to different incident types based on payload content
@@ -139,7 +139,7 @@ Webhook.custom_field != null && Webhook.custom_field.contains("critical")
 
 ## Webhook payload examples with CEL
 
-### Datadog webhook filtering
+### Datadog webhook filters
 
 ```cel
 // Only create incidents for Datadog critical alerts in production
@@ -148,7 +148,7 @@ Webhook.priority == "1" &&
 Webhook.tags.exists(t, t.startsWith("env:prod"))
 ```
 
-### PagerDuty webhook filtering
+### PagerDuty webhook filters
 
 ```cel
 // Only process PagerDuty triggered events for high-urgency incidents
@@ -156,7 +156,7 @@ Webhook.event == "incident.triggered" &&
 Webhook.incident.urgency == "high"
 ```
 
-### Prometheus AlertManager filtering
+### Prometheus AlertManager filters
 
 ```cel
 // Only create incidents for firing alerts above threshold
@@ -165,7 +165,7 @@ Webhook.labels.severity in ["critical", "error"] &&
 Webhook.labels.environment == "production"
 ```
 
-### New Relic webhook filtering
+### New Relic webhook filters
 
 ```cel
 // Filter by violation severity and duration
@@ -174,7 +174,7 @@ Webhook.duration_ms > 300000 &&
 Webhook.policy_name.contains("Production")
 ```
 
-### CloudWatch webhook filtering
+### CloudWatch webhook filters
 
 ```cel
 // Filter CloudWatch alarms by state and metric
@@ -185,7 +185,7 @@ Webhook.Trigger.Threshold > 80
 
 ---
 
-## Best practices for webhook CEL filtering
+## Best practices for webhook CEL filters
 
 **1. Start with simple filters and iterate**:
 ```cel

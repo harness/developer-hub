@@ -19,9 +19,11 @@ AlertSite POSTs monitoring alerts to an AI SRE webhook URL. AI SRE maps the payl
 
 ## Set up AlertSite
 
+Use this resource to configure AlertSite and connect it to AI SRE:
+
 - Go to the [AlertSite webhook template](/docs/ai-sre/alerts/webhooks/templates/monitoring/alertsite) to review the field mappings AI SRE applies to AlertSite payloads and connect the webhook to AI SRE.
 
-## Related integrations
+## Next steps
 
 - Go to the [Datadog integration](/docs/ai-sre/integrations/monitoring/datadog) to ingest Datadog monitor alerts.
 - Go to the [Sentry integration](/docs/ai-sre/integrations/monitoring/sentry) to ingest Sentry issue alerts.

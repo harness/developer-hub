@@ -42,7 +42,7 @@ Accept any JSON structure:
 - Array handling
 - Custom field mapping
 
-### Custom field mapping
+### Custom field mappings
 
 Map webhook payload fields to alert properties:
 - **Dynamic values:** Populate alert fields from incoming payloads.

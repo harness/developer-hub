@@ -30,6 +30,8 @@ Grafana Incident provides:
 
 ## Set up Grafana Incident integration
 
+To connect Grafana Incident to Harness AI SRE, complete these steps:
+
 1. Navigate to **Integrations** in the main menu.
 2. Click **New Integration**.
 3. Select **Grafana Incident** from the template options.

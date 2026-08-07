@@ -5,6 +5,8 @@ sidebar_label: Configure On-Call Teams and Routing
 sidebar_position: 6
 ---
 
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
+
 Harness AI SRE uses **User Groups** from the Harness Platform as the organizational unit for on-call management. User Groups serve as teams in the on-call context: they own services, own escalation policies, and determine routing for alerts.
 
 This page covers both **administrator configuration** (User Groups, service ownership, routing) and **individual user configuration** (personal notification settings).
@@ -40,6 +42,8 @@ Services in the AI SRE Service Directory are assigned to User Groups. This deter
 
 ### Assign a User Group to a service
 
+Assign an owning User Group so alerts for the service route to the right team:
+
 1. Navigate to **Project Settings** → **Service Directory (AI SRE)**.
 2. Find the service you want to configure.
 3. Click the service name to open its details.
@@ -48,6 +52,8 @@ Services in the AI SRE Service Directory are assigned to User Groups. This deter
 6. Click **Save**.
 
 ### How service ownership works
+
+Service ownership drives alert routing through the following chain:
 
 - Each service has an **owning User Group** field.
 - When an alert fires for a service, AI SRE looks up the service's owning User Group.
@@ -69,6 +75,8 @@ When creating or editing an escalation policy:
 - A User Group can have one default escalation policy, but you can create additional policies for specific scenarios.
 
 ### Default escalation policy
+
+The default escalation policy determines routing behavior for a User Group:
 
 - Each User Group can have one **default escalation policy**.
 - When a service's owning User Group matches an escalation policy's owner, that policy is used for routing (unless the service specifies an override).
@@ -102,6 +110,8 @@ Navigate to **On-Call** → **Contact Settings** to manage your notification cha
 
 #### Available contact methods
 
+You can configure the following notification channels:
+
 - **Email:** The email address tied to your Harness account. You can add additional email addresses (work, home, other) and send test notifications to verify delivery.
 - **Phone:** Add phone numbers with country code selection for voice calls, and send test calls to verify delivery.
 - **SMS:** Add mobile numbers for text messaging, and send test messages to verify delivery.
@@ -111,6 +121,8 @@ Navigate to **On-Call** → **Contact Settings** to manage your notification cha
 Voice and SMS are supported in the following countries: United States (+1), Argentina (+54), Brazil (+55), Canada (+1), Costa Rica (+506), Cyprus (+357), Denmark (+45), India (+91), Israel (+972), Mexico (+52), Moldova (+373), Netherlands (+31), Romania (+40), Serbia (+381), Slovenia (+386), and United Kingdom (+44).
 
 #### Add a contact method
+
+Add and verify a notification channel from Contact Settings:
 
 1. Navigate to **Contact Settings** in the On-Call menu.
 2. Click **Add Email**, **Add Phone Number**, **Add SMS Number**, or **Add Slack**.
@@ -130,33 +142,31 @@ Go to [Configure Notification Fallback](/docs/ai-sre/oncall/notification-fallbac
 
 ## Troubleshooting
 
-### Service alerts not routing
+<Troubleshoot
+  issue="Service alerts are not routing to the on-call responder in Harness AI SRE"
+  mode="docs"
+  fallback="Confirm the service has an owning User Group with a default escalation policy, the policy has active schedules, and the alert payload includes the correct service identifier."
+/>
 
-1. **Verify the service has an owning User Group** in the Service Directory.
-2. **Confirm the User Group has a default escalation policy** (or the service has an override policy configured).
-3. **Check the escalation policy has active schedules** with on-call responders.
-4. **Verify the alert payload includes the correct service identifier** that matches the Service Directory.
+<Troubleshoot
+  issue="An on-call user is not receiving notifications in Harness AI SRE"
+  mode="docs"
+  fallback="Verify contact methods and notification rules are configured, test each contact method, confirm the user is on-call at the time of the alert, and check the mobile app is logged in with notification permissions."
+/>
 
-### User not receiving notifications
-
-1. **Verify contact methods are configured** in Contact Settings.
-2. **Test each contact method** using the Test button.
-3. **Check notification rules** have at least one step configured.
-4. **Verify the user is actually on-call** in the schedule at the time the alert fired.
-5. **Check the mobile app** is logged in and has notification permissions.
-
-### Slack not working
-
-- Ensure your organization's Slack workspace is connected to AI SRE.
-- Verify you have linked your Slack account in Contact Settings.
-- Test the Slack connection using the Test button.
-- Only one Slack account can be linked per user.
+<Troubleshoot
+  issue="Slack notifications are not working in Harness AI SRE on-call"
+  mode="docs"
+  fallback="Confirm your organization's Slack workspace is connected to AI SRE, link your Slack account in Contact Settings, and test the connection. Only one Slack account can be linked per user."
+/>
 
 ---
 
 ## Best practices
 
 ### For administrators
+
+Follow these practices when you configure User Groups and service ownership:
 
 - **Align User Groups with actual team structure:** User Groups should reflect real organizational teams.
 - **Assign every production service to a User Group:** Unmapped services cannot route alerts automatically.
@@ -165,6 +175,8 @@ Go to [Configure Notification Fallback](/docs/ai-sre/oncall/notification-fallbac
 - **Document naming conventions:** Use consistent User Group names that clearly identify the team.
 
 ### For on-call responders
+
+Follow these practices to make sure you are reached during your on-call shift:
 
 - **Configure at least two contact methods:** Redundancy ensures you are reached even if one channel fails.
 - **Test your notification setup regularly:** Use test buttons to verify delivery before your on-call shift.

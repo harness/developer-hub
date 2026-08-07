@@ -22,11 +22,19 @@ AI SRE supports ServiceNow through two mechanisms. It ingests change records as 
 
 ## Set up ServiceNow
 
+Use these resources to connect ServiceNow to AI SRE:
+
 - Go to [ServiceNow change source](/docs/ai-sre/change/sources/servicenow) to ingest change records automatically.
 - Go to [ServiceNow runbook actions](/docs/ai-sre/runbooks/integrations/ticketing/servicenow) to automate incident creation, updates, resolution, and comments.
 
 ## Related integrations
 
+Explore other ticketing and ITSM integrations that work with AI SRE:
+
 - Go to [Jira Integration](/docs/ai-sre/integrations/ticketing-itsm/jira) to track Jira deployments and automate ticket actions.
 - Go to [Confluence Integration](/docs/ai-sre/integrations/ticketing-itsm/confluence) to create and update Confluence pages from runbooks.
 - Go to [Integration Management](/docs/ai-sre/integrations) to review all AI SRE integrations.
+
+## Next steps
+
+- Go to the [runbooks documentation](/docs/ai-sre/runbooks) to automate ServiceNow incident actions during response.

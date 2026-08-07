@@ -54,7 +54,7 @@ Automatically create incidents from matching alerts:
 - Associate services and environments
 - Populate custom fields
 
-### On-call paging
+### On-call notifications
 
 Page the on-call team when critical alerts arrive:
 - Select impacted services
@@ -78,6 +78,8 @@ Go to [Create an Alert Rule](/docs/ai-sre/alerts/alert-rules/create-alert-rule) 
 ---
 
 ## Best practices
+
+Keep these guidelines in mind when you create and maintain alert rules:
 
 - Create specific rules for different types of alerts
 - Use clear, descriptive names for your rules

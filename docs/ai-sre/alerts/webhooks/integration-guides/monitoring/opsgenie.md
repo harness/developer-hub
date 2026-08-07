@@ -34,6 +34,8 @@ Configure Opsgenie to send webhook notifications to Harness AI SRE when alerts a
 
 ### Navigate to integrations
 
+Open the integrations configuration in Opsgenie:
+
 1. In Opsgenie, go to **Settings**, then select **Integrations**
 2. Click **Add integration**
 3. Search for **Webhook** or select **Outgoing Webhook**
@@ -46,7 +48,7 @@ Configure Opsgenie to send webhook notifications to Harness AI SRE when alerts a
 - **Name**: `Harness AI SRE`
 - **Integration type**: Outgoing Webhook
 - **Webhook URL**: Your Harness webhook URL
-  ```
+  ```text
   https://<your-harness-instance>/gateway/ai-sre/api/webhooks/<webhook-id>
   ```
 - **Enabled**: Check to activate
@@ -174,7 +176,7 @@ In your Harness webhook configuration, map Opsgenie payload fields to alert prop
 }
 ```
 
-### Basic field mapping
+### Map basic fields
 
 Use Mustache templates:
 
@@ -256,6 +258,8 @@ custom_fields: {
 
 ### Create test alert in Opsgenie
 
+Create an alert to confirm delivery:
+
 1. Go to **Alerts** in Opsgenie
 2. Click **Create Alert**
 3. Fill in alert details:
@@ -266,11 +270,15 @@ custom_fields: {
 
 ### Verify webhook triggered
 
+Confirm Opsgenie delivered the webhook:
+
 1. Go to **Settings**, then select **Integrations**
 2. Click the **Harness AI SRE** integration
 3. Check the **Activity** or **Logs** tab for webhook delivery
 
 ### Verify in Harness
+
+Confirm the alert arrived and mapped correctly:
 
 1. Navigate to **Alerts** in Harness AI SRE
 2. Check that the test alert appears
@@ -395,9 +403,11 @@ message: webhook.alert.message + "\n\n" +
 
 ---
 
-## Example: Complete integration
+## Example: complete integration
 
 ### Opsgenie webhook integration
+
+Configure the integration with these settings:
 
 - **Name**: Harness AI SRE
 - **Type**: Outgoing Webhook
@@ -411,7 +421,7 @@ message: webhook.alert.message + "\n\n" +
   - Close
 - **Enabled**: ✓
 
-### Harness webhook field mapping
+### Map fields in the Harness webhook
 
 ```yaml
 title: |
@@ -495,7 +505,7 @@ custom_fields:
 
 ---
 
-## Further reading
+## Related documentation
 
 ### Opsgenie official documentation
 - [Outgoing webhook integration](https://support.atlassian.com/opsgenie/docs/integrate-opsgenie-with-outgoing-webhooks/): Complete guide to webhook integration setup and configuration options.

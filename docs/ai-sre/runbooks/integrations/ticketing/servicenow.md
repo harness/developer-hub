@@ -21,6 +21,7 @@ redirect_from:
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 import CreateIntegration from '../static/create-integration.png';
 
 
@@ -45,6 +46,9 @@ ServiceNow integration enables your runbooks to:
 - Harness Project Admin role
 
 ### Configure the ServiceNow connector
+
+Set up the ServiceNow connector with the following steps:
+
 1. Go to **Project Settings**, then **Third Party Integrations (AI SRE)**.
 
    ![Third-Party Integrations for AI SRE](../static/third-party-integrations-connectors.png)
@@ -57,6 +61,9 @@ ServiceNow integration enables your runbooks to:
 4. Test the connection.
 
 ### Required permissions
+
+The ServiceNow service account requires these roles:
+
 - incident_manager role
 - itil role
 - rest_service role
@@ -124,6 +131,9 @@ When a field changes in AI SRE, the runbook can execute ServiceNow actions to ke
 :::
 
 #### Capabilities
+
+A pipeline-based inbound sync can provide the following capabilities:
+
 1. **Incident sync**
    - ServiceNow to Harness AI SRE status mapping
    - Automatic state transitions
@@ -139,17 +149,26 @@ When a field changes in AI SRE, the runbook can execute ServiceNow actions to ke
 ## Best practices
 
 ### Incident management
+
+Follow these practices for incident management:
+
 - Use standard categorization
 - Include business impact
 - Maintain SLA tracking
 
 ### Workflow integration
+
+Follow these practices for workflow integration:
+
 - Define clear state mappings
 - Document transition rules
 - Set up appropriate triggers
 - Monitor sync status
 
 ### Field configuration
+
+Follow these practices for field configuration:
+
 - Map essential fields
 - Use custom fields appropriately
 - Document field purposes
@@ -160,12 +179,18 @@ When a field changes in AI SRE, the runbook can execute ServiceNow actions to ke
 ## Common use cases
 
 ### Major incident management
+
+Use a runbook to drive major incident management through these steps:
+
 1. Create ServiceNow incident
 2. Assign response teams
 3. Track resolution progress
 4. Update stakeholders
 
 ### SLA compliance
+
+Use a runbook to track SLA compliance through these steps:
+
 1. Monitor response times
 2. Track resolution progress
 3. Generate reports
@@ -175,21 +200,23 @@ When a field changes in AI SRE, the runbook can execute ServiceNow actions to ke
 
 ## Troubleshooting
 
-### Common issues
-1. **Authentication failures**
-   - Verify credentials
-   - Check roles/permissions
-   - Confirm instance access
+<Troubleshoot
+  issue="ServiceNow runbook action fails with an authentication error"
+  mode="docs"
+  fallback="Verify the ServiceNow connector credentials, confirm the service account has the incident_manager, itil, rest_service, and web_service_admin roles, and confirm the instance URL is reachable."
+/>
 
-2. **Field update errors**
-   - Validate field names
-   - Check required fields
-   - Verify field formats
+<Troubleshoot
+  issue="ServiceNow field update fails during a runbook action"
+  mode="docs"
+  fallback="Validate the ServiceNow field names, confirm all required fields are populated, and verify each value matches the field's expected format."
+/>
 
-3. **State transition issues**
-   - Check workflow rules
-   - Verify state mappings
-   - Confirm permissions
+<Troubleshoot
+  issue="ServiceNow incident state transition is rejected"
+  mode="docs"
+  fallback="Check the ServiceNow workflow rules, verify the state mappings between AI SRE and ServiceNow, and confirm the service account has permission to perform the transition."
+/>
 
 ---
 
@@ -200,6 +227,8 @@ This section walks you through setting up an integration in Harness AI SRE to re
 ### Integration setup process
 
 #### 1. Create the integration in AI SRE
+
+Create the integration in AI SRE with the following steps:
 
 1. Go to **Integrations** in AI SRE.
 2. Click **New Integration**.
@@ -242,6 +271,8 @@ curl -X 'POST' 'YOUR_URL' \
 ```
 
 #### 3. Configure the payload in AI SRE
+
+Configure the payload in AI SRE with the following steps:
 
 1. In AI SRE, go to the newly created **ServiceNow Incidents** integration.
 2. Click **Payload Configuration**.
@@ -293,6 +324,8 @@ Use these mappings when parsing state and priority from the webhook payload to t
 Send data from ServiceNow to Harness AI SRE using a Business Rule and RESTMessageV2. This integration enables automatic incident creation and updates in Harness AI SRE when ServiceNow incidents are created or modified.
 
 ### Setup instructions
+
+Configure the incident Business Rule with the following steps:
 
 1. **Go to Business Rules**
    - Go to **System Definition** > **Business Rules**.
@@ -375,6 +408,8 @@ Send data from ServiceNow to Harness AI SRE using a Business Rule and RESTMessag
 
 ### Test the integration
 
+Verify the incident webhook with the following steps:
+
 1. **Create a test incident**
    - Create a new incident in ServiceNow to trigger the business rule.
 
@@ -402,6 +437,8 @@ To enable bidirectional synchronization where ServiceNow comments and work notes
 This Business Rule automatically pushes comments and work notes from ServiceNow to AI SRE, ensuring both systems stay synchronized even when updates are made directly in ServiceNow.
 
 #### Setup instructions
+
+Configure the journal entry Business Rule with the following steps:
 
 1. **Go to Business Rules**
    - Go to **System Definition** > **Business Rules**.
@@ -500,6 +537,8 @@ This Business Rule automatically pushes comments and work notes from ServiceNow 
 
 #### Configuration notes
 
+Keep these configuration notes in mind:
+
 1. **Optional filtering**
    - The script includes commented lines that filter for only `work_notes` and `comments`.
    - Uncomment these lines (remove `//`) to limit synchronization to these specific journal types:
@@ -549,6 +588,8 @@ https://app.harness.io/ir/tp/api/v1/mc
 ```
 
 #### Test the integration
+
+Verify the journal entry webhook with the following steps:
 
 1. **Create a test comment**
    - Open an existing incident in ServiceNow.

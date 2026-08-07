@@ -157,7 +157,7 @@ Replace `Service Name` with your custom field name. Best for: Projects with cust
 
 ---
 
-## Environment mapping
+## Map statuses to environments
 
 Map Jira statuses to deployment environments:
 
@@ -184,6 +184,8 @@ Or map to standardized names using conditions in your automation rule.
 
 ### Test status transition
 
+Transition a test issue and confirm the webhook reaches AI SRE:
+
 1. Create or select a test issue
 2. Add a Fix Version to the issue
 3. Transition the issue to a deployment status (for example, "In Production")
@@ -193,6 +195,8 @@ Or map to standardized names using conditions in your automation rule.
 7. Verify the webhook appears with the correct payload
 
 ### Verify automation execution
+
+Confirm the automation rule ran and sent the webhook:
 
 1. Navigate to **Project settings**, then select **Automation**
 2. Click your automation rule
@@ -252,6 +256,8 @@ For releases that deploy multiple services, create separate webhook calls or con
 ---
 
 ## Best practices
+
+Follow these practices to keep Jira deployment tracking reliable:
 
 - **Set Fix Version before deployment:** Ensure issues have a Fix Version set before transitioning to deployment statuses.
 - **Use consistent service names:** Keep service identifiers consistent across issues and deployments.

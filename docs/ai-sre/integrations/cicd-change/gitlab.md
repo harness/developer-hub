@@ -22,10 +22,12 @@ AI SRE supports GitLab through two mechanisms. GitLab CI sends build and deploy 
 
 ## Set up GitLab
 
+Configure GitLab as a change source and alert webhook with the following steps:
+
 - Go to [GitLab CI change source](/docs/ai-sre/change/sources/gitlab-ci) to send build and deploy webhooks from GitLab CI pipelines.
 - Go to [GitLab alert webhook](/docs/ai-sre/alerts/webhooks/integration-guides/cicd/gitlab) to forward GitLab alerts as incidents.
 
-## Related integrations
+## Next steps
 
 - Go to [GitHub Integration](/docs/ai-sre/integrations/cicd-change/github) to ingest pull requests and send build and deploy webhooks.
 - Go to [Jenkins Integration](/docs/ai-sre/integrations/cicd-change/jenkins) to send build and deploy webhooks from Jenkins pipelines.

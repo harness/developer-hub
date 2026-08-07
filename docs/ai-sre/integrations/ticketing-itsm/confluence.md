@@ -21,10 +21,18 @@ AI SRE supports Confluence through runbook actions. A runbook action posts conte
 
 ## Set up Confluence
 
+Use this resource to connect Confluence to AI SRE:
+
 - Go to [Confluence runbook actions](/docs/ai-sre/runbooks/integrations/ticketing/confluence) to configure page creation and updates from runbooks.
 
 ## Related integrations
 
+Explore other ticketing and ITSM integrations that work with AI SRE:
+
 - Go to [Jira Integration](/docs/ai-sre/integrations/ticketing-itsm/jira) to track Jira deployments and automate ticket actions.
 - Go to [ServiceNow Integration](/docs/ai-sre/integrations/ticketing-itsm/servicenow) to ingest change records and automate incident actions.
 - Go to [Integration Management](/docs/ai-sre/integrations) to review all AI SRE integrations.
+
+## Next steps
+
+- Go to the [runbooks documentation](/docs/ai-sre/runbooks) to automate Confluence actions during incident response.

@@ -30,6 +30,8 @@ BigPanda provides:
 
 ## Set up BigPanda integration
 
+To connect BigPanda to Harness AI SRE, complete these steps:
+
 1. Navigate to **Integrations** in the main menu.
 2. Click **New Integration**.
 3. Select **BigPanda** from the template options.

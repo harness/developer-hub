@@ -19,10 +19,12 @@ Grafana Incident POSTs incident events to an AI SRE webhook URL. AI SRE maps the
 
 ## Set up Grafana Incident
 
+Use these resources to configure Grafana Incident and connect it to AI SRE:
+
 - Go to the [Grafana Incident webhook template](/docs/ai-sre/alerts/webhooks/templates/monitoring/grafana-incident) to review the field mappings AI SRE applies to Grafana Incident payloads.
 - Go to [Create a Webhook](/docs/ai-sre/alerts/webhooks/create-webhook) to create the webhook URL and connect it to AI SRE.
 
-## Related integrations
+## Next steps
 
 - Go to the [Grafana integration](/docs/ai-sre/integrations/monitoring/grafana) to ingest Grafana alerts.
 - Go to the [Datadog integration](/docs/ai-sre/integrations/monitoring/datadog) to ingest Datadog monitor alerts.

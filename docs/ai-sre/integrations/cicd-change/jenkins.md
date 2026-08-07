@@ -22,9 +22,11 @@ AI SRE treats Jenkins as a change source for the [Deploy Change Investigator](/d
 
 ## Set up Jenkins
 
+Configure Jenkins as a change source with the following step:
+
 - Go to [Jenkins change source](/docs/ai-sre/change/sources/jenkins) to configure the build and deploy webhooks from your Jenkins pipelines.
 
-## Related integrations
+## Next steps
 
 - Go to [CircleCI Integration](/docs/ai-sre/integrations/cicd-change/circleci) to send build and deploy webhooks from CircleCI workflows.
 - Go to [GitLab Integration](/docs/ai-sre/integrations/cicd-change/gitlab) to send build and deploy webhooks from GitLab CI.

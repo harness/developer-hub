@@ -59,7 +59,7 @@ Organization webhooks receive events from all repositories in the organization.
 <TabItem value="basic" label="Basic configuration" default>
 
 - **Payload URL**: Your Harness webhook URL
-  ```
+  ```text
   https://<your-harness-instance>/gateway/ai-sre/api/webhooks/<webhook-id>
   ```
 - **Content type**: `application/json`
@@ -102,6 +102,8 @@ Common events for monitoring:
 </Tabs>
 
 ### Activate webhook
+
+Enable the webhook so GitHub begins sending events:
 
 - Check **Active** to enable the webhook
 - Click **Add webhook**
@@ -423,6 +425,8 @@ filter: webhook.alert.rule.severity in ["error", "warning"] &&
 
 ### Test with webhook delivery
 
+Redeliver a past webhook payload to test the integration:
+
 1. Go to **Settings**, then click **Webhooks** in your repository
 2. Click your webhook
 3. Select the **Recent Deliveries** tab
@@ -463,6 +467,8 @@ Create a test release:
 </Tabs>
 
 ### Verify in Harness
+
+Confirm the event arrived and mapped correctly:
 
 1. Navigate to **Alerts** in Harness AI SRE
 2. Check that the event appears
@@ -564,9 +570,11 @@ filter: has(webhook.alert) &&
 
 ---
 
-## Example: Complete integration
+## Example: complete integration
 
 ### GitHub webhook configuration
+
+The following example shows an end-to-end GitHub webhook setup and its field mapping.
 
 - **Payload URL**: `https://app.harness.io/gateway/ai-sre/api/webhooks/wh_abc123`
 - **Content type**: `application/json`
@@ -577,7 +585,7 @@ filter: has(webhook.alert) &&
   - Code scanning alerts
 - **Active**: ✓
 
-### Harness webhook field mapping
+### Harness webhook field mapping example
 
 ```yaml
 # Deployment status events
@@ -635,7 +643,7 @@ filter: |
 
 ---
 
-## Further reading
+## Related documentation
 
 ### GitHub official documentation
 - [Webhooks documentation](https://docs.github.com/webhooks): Complete guide to GitHub webhooks configuration and event types.

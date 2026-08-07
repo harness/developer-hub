@@ -38,6 +38,8 @@ Go to [AI SRE Integrations documentation](/docs/category/integrations) for detai
 
 ### Connect Slack
 
+To connect Slack to AI SRE:
+
 1. Navigate to **Organization Settings** in the Left Panel
 2. Head over to **Third Party Integrations (AI SRE)**
 3. By default you will see some connectors. Click on **Connect**

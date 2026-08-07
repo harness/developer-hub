@@ -20,6 +20,8 @@ Integrate Confluence with AI SRE runbooks to automate documentation and knowledg
 
 ## Use cases
 
+Use the Confluence integration to keep incident documentation current:
+
 - Create incident postmortem pages
 - Update runbook documentation
 - Add incident notes to knowledge base
@@ -37,6 +39,8 @@ Integrate Confluence with AI SRE runbooks to automate documentation and knowledg
 ---
 
 ## Configure the Confluence integration
+
+Connect AI SRE to your Confluence site with an API token:
 
 1. Go to **Project Settings**, then **Third-Party Integrations for AI SRE**.
 
@@ -188,26 +192,26 @@ is updated rather than creating a new one.
 ## Confluence wiki markup reference
 
 ### Headers
-```
+```text
 h1. Heading 1
 h2. Heading 2
 h3. Heading 3
 ```
 
 ### Lists
-```
+```text
 * Bullet point
 # Numbered list
 ```
 
 ### Links
-```
+```text
 [Link text|https://example.com]
 [Link to page|Page Title]
 ```
 
-### Formatting
-```
+### Text styles
+```text
 *bold*
 _italic_
 {{monospace}}
@@ -217,6 +221,8 @@ _italic_
 ---
 
 ## Security best practices
+
+Protect your Confluence integration with these safeguards:
 
 - Use API tokens instead of passwords
 - Limit space access to only what is needed

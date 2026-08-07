@@ -11,6 +11,8 @@ When an alert fires, AI SRE evaluates your rules to determine whether to page a 
 
 ## Create an alert rule
 
+Follow these steps to create an alert rule that routes alerts to an on-call team:
+
 1. Navigate to **On-Call** → **Route Alerts**.
 2. Click **Create Alert Rule**.
 3. Configure the rule:
@@ -23,6 +25,8 @@ When an alert fires, AI SRE evaluates your rules to determine whether to page a 
 ---
 
 ## How alert routing works
+
+AI SRE routes an incoming alert to a responder through the following steps:
 
 1. An alert arrives from a monitoring integration (Datadog, New Relic, Grafana, and similar).
 2. AI SRE extracts the **impacted service** from the alert payload.
@@ -45,6 +49,8 @@ This lets you handle both well-structured alert payloads and those that lack ser
 ---
 
 ## Best practices
+
+Follow these practices to keep alert routing reliable:
 
 - **Create specific rules per service:** Broad, catch-all rules risk paging the wrong team. Map each production service to its own alert rule.
 - **Be deliberate with the paging toggle:** Not every alert should wake someone up. Enable paging only for alerts that require immediate human attention. Use the toggle to suppress paging for informational or low-severity alerts.

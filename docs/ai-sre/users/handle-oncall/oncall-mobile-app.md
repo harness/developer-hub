@@ -69,6 +69,9 @@ Before using the Harness AI SRE mobile app, ensure you have:
 - Proper role-based permissions for incident response
 
 ### Device requirements
+
+The mobile app requires the following device capabilities:
+
 | Requirement | Details |
 |-------------|---------|
 | **Platforms** | iOS 14.0+ or Android 8.0+ |
@@ -92,6 +95,8 @@ For the best mobile experience, configure your *notification preferences* to ens
 ## Get started
 
 ### Step 1: Environment configuration
+
+Select the environment the app connects to:
 
 1. Launch the app.
 2. On the Environment screen, select the correct environment (e.g., Prod, QA).
@@ -179,7 +184,7 @@ The AI SRE mobile app leverages advanced notification technology to ensure criti
 - **iOS:** Apple Push Notification Service (APNS) with time-sensitive delivery
 - **Cross-platform:** Real-time synchronization with web dashboard
 
-### Smart alert routing
+### Route alerts intelligently
 Notifications are intelligently filtered and prioritized based on:
 
 | Priority Level | Behavior | Examples |
@@ -231,7 +236,7 @@ The alert list displays comprehensive information:
 | **Status** | New, Acknowledged, Resolved | Progress indicators |
 | **Assignee** | Current owner or on-call person | Profile avatars |
 
-### Advanced filtering
+### Filter alerts
 Filter alerts using multiple criteria:
 - **Time Range:** Last hour, 24 hours, week, or custom range
 - **Severity Levels:** Focus on critical or high-priority alerts
@@ -384,7 +389,7 @@ Customize your alert experience:
 - **Set Up Integrations:** Connect monitoring tools and communication platforms
 - **Train Your Team:** Ensure all team members understand mobile response procedures
 
-### Learn more
+### Related resources
 - [AI SRE onboarding guide for administrators](/docs/ai-sre/get-started/onboarding/overview): Onboard your organization to AI SRE.
 - [Runbook automation](/docs/ai-sre/runbooks): Build automated response procedures.
 - [Alert management best practices](/docs/ai-sre/resources/ai-sre-best-practices): Reduce noise and route alerts effectively.

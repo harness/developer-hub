@@ -19,10 +19,18 @@ Splunk POSTs alert actions to an AI SRE webhook URL. AI SRE maps the payload wit
 
 ## Set up Splunk
 
+Use this resource to connect Splunk to AI SRE:
+
 - Go to the [Splunk integration guide](/docs/ai-sre/alerts/webhooks/integration-guides/monitoring/splunk) to configure the webhook alert action in Splunk and connect it to AI SRE.
 
 ## Related integrations
 
+Explore other monitoring integrations that ingest alerts into AI SRE:
+
 - Go to the [Datadog integration](/docs/ai-sre/integrations/monitoring/datadog) to ingest Datadog monitor alerts.
 - Go to the [Dynatrace integration](/docs/ai-sre/integrations/monitoring/dynatrace) to ingest Dynatrace problem notifications.
 - Go to the [Integration Management overview](/docs/ai-sre/integrations) to see all supported tools.
+
+## Next steps
+
+- Go to the [incidents documentation](/docs/ai-sre/incidents) to work with incidents created from Splunk alerts.

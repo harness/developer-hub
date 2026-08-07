@@ -59,7 +59,7 @@ Before using Slack commands, ensure your organization has completed the [Slack i
 | `/harness run <slug>` | Execute a runbook by its slug (requires Slack authentication) |
 | `/harness run` | List all available runbook slugs for the current project |
 
-### On-call paging
+### Page responders
 
 :::info On-Call Feature Required
 The following commands are available when your organization uses [Harness On-Call](/docs/ai-sre/oncall). These commands enable you to page responders and track page status directly from Slack.
@@ -91,7 +91,7 @@ Runbook slugs enable you to execute automated response procedures directly from 
 
 From an incident Slack channel, enter:
 
-```
+```text
 /harness run <slug>
 ```
 
@@ -107,26 +107,28 @@ Replace `<slug>` with the runbook's short identifier (for example, `/harness run
 
 If you do not know which slugs are available, enter:
 
-```
+```text
 /harness run
 ```
 
 **Output:**
 - If slugs are configured, you will see a list formatted as:
-  ```
+  ```text
   Use /harness run <slug> to run script:
   • restart-pods: Restart Kubernetes Pods
   • scale-up: Scale Up Infrastructure
   • rollback: Rollback Recent Deployment
   ```
 - If no slugs are configured, you will see:
-  ```
+  ```text
   No script slugs are available to run
   ```
 
 The list shows all slugs available for the current project and incident context.
 
 #### Best practices
+
+Follow these practices to run runbook slugs reliably during an incident:
 
 - **Memorize common slugs:** Frequently used runbooks (for example, `restart-pods`, `rollback`) build muscle memory and reduce MTTR.
 - **Use descriptive slug names:** Short but meaningful slugs make it easier to remember which runbook does what.
@@ -145,7 +147,7 @@ Use `/harness summarize` in an incident channel to get a quick overview of the c
 
 ---
 
-## Related documentation
+## Next steps
 
 - Go to [Slack Integration for Runbooks](/docs/ai-sre/runbooks/integrations/collaboration/slack) to set up the Slack integration.
 - Go to [On-Call Management](/docs/ai-sre/oncall) to configure on-call schedules and escalation policies.

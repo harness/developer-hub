@@ -23,10 +23,12 @@ AI SRE supports Slack through three mechanisms. Teams collaborate on incidents i
 
 ## Set up Slack
 
+Configure Slack runbook actions and commands with the following steps:
+
 - Go to [Slack runbook actions](/docs/ai-sre/runbooks/integrations/collaboration/slack) to automate messages and channel management from runbooks.
 - Go to [Slack commands](/docs/ai-sre/get-started/slack-commands) to run `/harness` commands from Slack.
 
-## Related integrations
+## Next steps
 
 - Go to [Microsoft Teams Integration](/docs/ai-sre/integrations/communication/microsoft-teams) to collaborate on incidents and post messages.
 - Go to [Google Chat Integration](/docs/ai-sre/integrations/communication/google-chat) to collaborate on incidents in Google Chat spaces.

@@ -64,6 +64,8 @@ Harness Pipeline actions are configured through the runbook action form in the U
 
 ### Create a runbook with incident context
 
+Create the runbook and select the incident context it exposes to pipeline actions:
+
 1. Go to **Runbooks** and click **New runbook**.
 2. Provide a meaningful name and description, for example:
    - `P1 - Emergency Rollback`
@@ -76,6 +78,9 @@ Harness Pipeline actions are configured through the runbook action form in the U
    - **Incident Type:** Select specific type for custom fields (e.g., Major Incident, Security Incident, etc.)
 
 ### Context selection guidelines
+
+Choose the context level based on the incident data your runbook needs:
+
 - Use `Any Incident Type` for runbooks requiring only generic incident data
 - Use `Custom Incident Type` when runbook depends on custom fields from specific incident types
 
@@ -109,12 +114,16 @@ Use with caution for low-risk, well-tested actions:
 
 ### Get pipeline input YAML
 
+Copy the input YAML from the target pipeline so you can paste it into the runbook action:
+
 1. Open target pipeline in **Harness Pipelines**.
 2. Click **Run**.
 3. Select the **YAML** tab in the Run Pipeline modal.
 4. Copy the complete YAML block defining pipeline inputs.
 
 ### Add the Execute Harness Pipeline action
+
+Add the action to your runbook workflow and point it at the target pipeline:
 
 1. Open runbook and navigate to the **Workflow** section.
 2. Click **New action**.
@@ -124,6 +133,8 @@ Use with caution for low-risk, well-tested actions:
    - **Pipeline:** Select the target pipeline
 
 ### Configure pipeline inputs
+
+Paste the copied YAML into the action and confirm it matches the pipeline:
 
 1. Locate the **Inputs** or **Payload** area.
 2. Paste copied YAML from Harness Run modal.
@@ -139,8 +150,8 @@ environment: <+input.environment>
 incidentId: <+input.incidentId>
 ```
 
-#### Incident context mapping
-Use data picker to bind incident fields:
+#### Map incident context
+Use the data picker to bind incident fields:
 - `service` binds to `incident.service`
 - `environment` binds to `incident.environment`
 - `incidentId` binds to `incident.id`
@@ -201,7 +212,7 @@ Chain additional actions after pipeline execution:
 
 ## Testing and validation
 
-### Pre-production testing
+### Test in pre-production
 1. **Configure staging pipeline:** Point action to staging/QA pipeline or non-destructive path
 2. **Create test incident:** Generate incident matching trigger conditions
 3. **Execute manually:** Run runbook to verify behavior
@@ -233,8 +244,18 @@ This integration pattern supports various incident response scenarios:
 
 ## Best practices
 
+Follow these practices when you run Harness Pipelines from runbooks:
+
 - **Start with manual execution** for critical production operations
 - **Use staging environments** for initial testing and validation
 - **Implement proper RBAC** to control pipeline execution permissions, apply roles at the Project level and ensure users have the Incident Edit permission before granting runbook execution access
 - **Monitor pipeline performance** and adjust timeouts accordingly
 - **Document incident-to-pipeline mappings** for team reference
+
+---
+
+## Next steps
+
+- Go to [Runbooks](/docs/ai-sre/runbooks) to build and manage runbook workflows.
+- Go to [Runbook integrations](/docs/ai-sre/runbooks/integrations/overview) to connect other tools to your runbook actions.
+- Go to [Mustache runbook actions](/docs/ai-sre/runbooks/workflows/use-mustache-runbook-actions) to template dynamic values in your pipeline inputs.

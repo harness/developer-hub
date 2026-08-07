@@ -563,20 +563,23 @@ User impact: ${{
 
 ## Troubleshooting CEL inline expressions
 
-**Expression not evaluating**:
-- Check that feature flag `IR_CEL_CONDITIONS` is enabled
-- Verify field is in COMPLEX mode (supports inline CEL)
-- Ensure you used `${{}}` not `{{}}`
+<Troubleshoot
+  issue="A CEL inline expression in an AI SRE runbook action is not evaluating"
+  mode="general"
+  fallback="Confirm the IR_CEL_CONDITIONS feature flag is enabled, the field is in COMPLEX mode, and you wrapped the expression in ${{}} rather than {{}}."
+/>
 
-**Syntax error on save**:
-- Check for unclosed strings or parentheses
-- Verify field names are spelled correctly (case-sensitive)
-- Use `==` for comparison, not `=`
+<Troubleshoot
+  issue="A CEL inline expression in an AI SRE runbook action returns a syntax error on save"
+  mode="general"
+  fallback="Check for unclosed strings or parentheses, verify field names are spelled correctly (case-sensitive), and use == for comparison rather than =."
+/>
 
-**Runtime error in logs**:
-- Add null checks: `field != null && field.method()`
-- Verify field exists in your incident or alert type
-- Check data types match (strings vs. numbers)
+<Troubleshoot
+  issue="A CEL inline expression in an AI SRE runbook action produces a runtime error in the logs"
+  mode="general"
+  fallback="Add null checks such as field != null && field.method(), verify the field exists in your incident or alert type, and confirm data types match."
+/>
 
 Go to [CEL expressions in AI SRE](/docs/ai-sre/get-started/onboarding/expression-languages) to review the comprehensive CEL syntax reference, troubleshooting guide, and advanced patterns.
 

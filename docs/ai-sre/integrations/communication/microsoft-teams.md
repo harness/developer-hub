@@ -22,9 +22,11 @@ AI SRE supports Microsoft Teams through two mechanisms. Teams collaborate on inc
 
 ## Set up Microsoft Teams
 
+Configure Microsoft Teams runbook actions with the following step:
+
 - Go to [Microsoft Teams runbook actions](/docs/ai-sre/runbooks/integrations/collaboration/teams) to automate messages and meetings from runbooks.
 
-## Related integrations
+## Next steps
 
 - Go to [Slack Integration](/docs/ai-sre/integrations/communication/slack) to collaborate on incidents and run Slack commands.
 - Go to [Zoom Integration](/docs/ai-sre/integrations/communication/zoom) to create meetings and conference bridges from runbooks.

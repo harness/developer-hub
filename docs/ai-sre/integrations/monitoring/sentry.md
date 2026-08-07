@@ -19,10 +19,18 @@ Sentry POSTs issue alert notifications to an AI SRE webhook URL. AI SRE maps the
 
 ## Set up Sentry
 
+Use this resource to connect Sentry to AI SRE:
+
 - Go to the [Sentry webhook template](/docs/ai-sre/alerts/webhooks/templates/monitoring/sentry) to review the field mappings AI SRE applies to Sentry payloads and connect the webhook to AI SRE.
 
 ## Related integrations
 
+Explore other monitoring integrations that ingest alerts into AI SRE:
+
 - Go to the [Datadog integration](/docs/ai-sre/integrations/monitoring/datadog) to ingest Datadog monitor alerts.
 - Go to the [New Relic integration](/docs/ai-sre/integrations/monitoring/new-relic) to ingest New Relic alert conditions.
 - Go to the [Integration Management overview](/docs/ai-sre/integrations) to see all supported tools.
+
+## Next steps
+
+- Go to the [incidents documentation](/docs/ai-sre/incidents) to work with incidents created from Sentry alerts.

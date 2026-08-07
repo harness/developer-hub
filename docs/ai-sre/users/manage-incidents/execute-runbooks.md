@@ -38,6 +38,8 @@ Some runbooks are automatically attached to an incident based on the incident ty
 
 ### From the Harness UI
 
+Run an attached or additional runbook directly from the incident details page:
+
 1. On the **Runbooks** tab, click **Execute** on an attached runbook, or click **Execute Additional Runbook** to add and run a different one.
 2. If adding a new runbook, search for or browse available runbooks, select the appropriate one, and confirm.
 3. Work through the steps in order:
@@ -58,7 +60,7 @@ If your runbooks have been configured with slugs, you can execute them directly 
 
 From an incident Slack channel, type:
 
-```
+```text
 /harness run <slug>
 ```
 
@@ -68,7 +70,7 @@ Replace `<slug>` with the runbook's short identifier (e.g., `/harness run restar
 
 If you do not know which slugs are available, type:
 
-```
+```text
 /harness run
 ```
 
@@ -95,7 +97,17 @@ If you are unsure which runbook to use:
 
 ## Best practices
 
+Follow these practices when running runbooks during an incident:
+
 - **Start with auto-attached runbooks:** They are pre-selected for the incident type and are usually the most relevant first response.
 - **Review automated step results before moving on:** An automated step might fail or return unexpected output. Verify before proceeding to the next step.
 - **Do not skip manual steps:** Even if you think you know the procedure, follow the runbook. It exists to prevent steps from being missed during high-pressure situations.
 - **Note deviations:** If you need to deviate from the runbook (a step does not apply, you take a different action), document what you did in the [incident timeline](/docs/ai-sre/users/manage-incidents/use-the-incident-timeline) so it is captured for post-incident review.
+
+---
+
+## Next steps
+
+- Go to [Create runbooks](/docs/ai-sre/runbooks/create-runbook) to build and configure your own response procedures.
+- Go to [Use Slack commands](/docs/ai-sre/get-started/slack-commands) to run runbooks and manage incidents from Slack.
+- Go to [Update incident details](/docs/ai-sre/users/manage-incidents/update-incident-details) to keep the incident record current as you remediate.

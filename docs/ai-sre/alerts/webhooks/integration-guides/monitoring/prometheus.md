@@ -165,7 +165,7 @@ In your Harness webhook configuration, map AlertManager payload fields to alert 
 }
 ```
 
-### Basic field mapping
+### Map basic fields
 
 Use Mustache templates:
 
@@ -279,6 +279,8 @@ Check AlertManager UI at `http://localhost:9093` to see the alert.
 
 ### Verify in Harness
 
+Confirm the alert arrived and mapped correctly:
+
 1. Navigate to **Alerts** in Harness AI SRE
 2. Check that the test alert appears
 3. Verify field mapping is correct
@@ -389,7 +391,7 @@ inhibit_rules:
 
 ---
 
-## Example: Complete integration
+## Example: complete integration
 
 ### AlertManager configuration
 
@@ -430,7 +432,7 @@ inhibit_rules:
     equal: ['alertname', 'cluster', 'service']
 ```
 
-### Harness webhook field mapping
+### Map fields in the Harness webhook
 
 ```yaml
 title: |
@@ -491,7 +493,7 @@ custom_fields:
 
 ---
 
-## Further reading
+## Related documentation
 
 ### Prometheus official documentation
 - [AlertManager configuration](https://prometheus.io/docs/alerting/latest/configuration/): Complete guide to AlertManager configuration, webhook receivers, and routing rules.

@@ -19,10 +19,12 @@ CloudWatch alarms publish to an Amazon SNS topic, and SNS POSTs the notification
 
 ## Set up AWS CloudWatch
 
+Use these resources to configure AWS CloudWatch and connect it to AI SRE:
+
 - Go to the [AWS CloudWatch integration guide](/docs/ai-sre/alerts/webhooks/integration-guides/cloud/aws-cloudwatch) to configure the SNS topic and HTTPS subscription and connect it to AI SRE.
 - Go to the [AWS CloudWatch webhook template](/docs/ai-sre/alerts/webhooks/templates/cloud/aws-cloudwatch) to review the field mappings AI SRE applies to SNS payloads.
 
-## Related integrations
+## Next steps
 
 - Go to the [Datadog integration](/docs/ai-sre/integrations/monitoring/datadog) to ingest Datadog monitor alerts.
 - Go to the [Prometheus integration](/docs/ai-sre/integrations/monitoring/prometheus) to ingest Prometheus Alertmanager alerts.

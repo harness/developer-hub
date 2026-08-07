@@ -27,6 +27,8 @@ As an administrator, you create rotation schedules for your teams, manage overri
 
 ### Schedule options
 
+Schedules support the following rotation patterns and coverage options:
+
 - **Weekly rotations** with customizable handoff times and days.
 - **24/7 coverage** for always-on services.
 - **Follow-the-sun** patterns for globally distributed teams.
@@ -65,6 +67,8 @@ When you sync with an external on-call tool, AI SRE imports users and their cont
 ---
 
 ## Best practices
+
+Follow these practices to keep on-call schedules reliable and fair:
 
 - **Ensure full coverage:** Review the schedule preview for gaps. Every hour should have a designated responder.
 - **Set reasonable rotation lengths:** Weekly rotations are a common default. Shorter rotations reduce fatigue; longer ones reduce handoff overhead. Adjust based on team feedback.

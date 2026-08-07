@@ -19,10 +19,12 @@ Datadog POSTs monitor alerts to an AI SRE webhook URL. AI SRE maps the payload w
 
 ## Set up Datadog
 
+Use these resources to configure Datadog and connect it to AI SRE:
+
 - Go to the [Datadog integration guide](/docs/ai-sre/alerts/webhooks/integration-guides/monitoring/datadog) to configure the webhook in Datadog and connect it to AI SRE.
 - Go to the [Datadog webhook template](/docs/ai-sre/alerts/webhooks/templates/monitoring/datadog) to review the field mappings AI SRE applies to Datadog payloads.
 
-## Related integrations
+## Next steps
 
 - Go to the [New Relic integration](/docs/ai-sre/integrations/monitoring/new-relic) to ingest New Relic alert conditions.
 - Go to the [Grafana integration](/docs/ai-sre/integrations/monitoring/grafana) to ingest Grafana alerts.

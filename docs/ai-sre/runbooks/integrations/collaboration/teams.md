@@ -17,11 +17,13 @@ redirect_from:
 - /docs/incident-response/runbooks/integrations/teams
 ---
 
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
+
 Harness AI SRE integrates with Microsoft Teams at the project level, enabling automated incident communication and team collaboration.
 
 ## Overview
 
-Teams integration enables your runbooks to:
+Teams integration enables your runbooks to do the following:
 - Send automated notifications
 - Create incident-specific channels
 - Schedule and manage meetings
@@ -39,6 +41,8 @@ Microsoft Teams integration uses OAuth 2.0 for secure authentication.
 - **Harness Project Admin role:** To configure integrations
 
 ### Setup steps
+
+Connect the Microsoft Teams integration with these steps:
 
 1. Go to **Project Settings**, then **Third Party Integrations (AI SRE)**.
 
@@ -143,21 +147,23 @@ Creates a new Teams channel for incident coordination.
 
 ## Troubleshooting
 
-### Common issues
-1. **Authentication failures**
-   - Re-authorize the Teams connection in Project Settings
-   - Ensure you have Teams admin permissions
-   - Check that the OAuth consent was completed
+<Troubleshoot
+  issue="A Microsoft Teams runbook action fails with an authentication error"
+  mode="docs"
+  fallback="Re-authorize the Teams connection in Project Settings, confirm you have Teams admin permissions, and verify the OAuth consent was completed."
+/>
 
-2. **Channel creation errors**
-   - Check naming conventions
-   - Verify you have access to the target team
-   - Ensure the Harness app has been added to the team
+<Troubleshoot
+  issue="Creating a Microsoft Teams channel from a runbook fails"
+  mode="docs"
+  fallback="Check the channel naming conventions, confirm you have access to the target team, and ensure the Harness app has been added to the team."
+/>
 
-3. **Message failures**
-   - Validate channel existence
-   - Check message formatting
-   - Verify rate limits
+<Troubleshoot
+  issue="A Microsoft Teams runbook message fails to send"
+  mode="docs"
+  fallback="Confirm the target channel exists, validate the message formatting, and check that you have not exceeded Teams rate limits."
+/>
 
 ---
 

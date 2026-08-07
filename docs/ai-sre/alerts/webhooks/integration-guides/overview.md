@@ -93,6 +93,8 @@ These tools have webhook templates in Harness but use standard webhook configura
 
 ### Cloud platforms
 
+Detailed external setup guides are available for these cloud platforms:
+
 - [AWS CloudWatch](/docs/ai-sre/alerts/webhooks/integration-guides/cloud/aws-cloudwatch): Configure CloudWatch alarms with SNS and HTTPS subscriptions.
 
 ### CI/CD and development
@@ -110,7 +112,7 @@ These tools have webhook templates in Harness but use standard webhook configura
 - **Travis CI:** Go to the [Travis CI webhook template](/docs/ai-sre/alerts/webhooks/templates/cicd/travis-ci) to configure the integration.
 - **Octopus Deploy:** Go to the [Octopus Deploy webhook template](/docs/ai-sre/alerts/webhooks/templates/cicd/octopus-deploy) to configure the integration.
 
-### ITSM and ticketing
+### ITSM and ticketing tools
 
 These tools have webhook templates in Harness but use standard webhook configuration:
 
@@ -195,12 +197,16 @@ Always test webhook configuration:
 
 ### Configuration management
 
+Follow these practices to keep webhook configuration maintainable:
+
 - **Document webhook URLs:** Store webhook URLs securely (they contain secrets).
 - **Use descriptive names:** Name webhooks clearly in both systems.
 - **Version control:** Document webhook configurations in runbooks.
 - **Test thoroughly:** Always test before relying on webhooks in production.
 
 ### Security
+
+Follow these practices to protect webhook secrets:
 
 - **Protect webhook URLs:** Treat webhook URLs as secrets (they contain authentication).
 - **Rotate secrets:** If a webhook URL is compromised, delete and recreate the integration.
@@ -209,12 +215,16 @@ Always test webhook configuration:
 
 ### Maintenance
 
+Follow these practices to keep webhooks healthy over time:
+
 - **Monitor webhook health:** Check delivery success rates in external systems.
 - **Update on platform changes:** External system updates may change payload structure.
 - **Clean up unused webhooks:** Delete integrations that are no longer needed.
 - **Document changes:** Record any modifications to webhook configuration.
 
 ### Performance
+
+Follow these practices to control webhook volume and load:
 
 - **Batch when possible:** Some tools support batching multiple events.
 - **Set appropriate retry policies:** Configure external system retry behavior.

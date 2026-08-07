@@ -116,20 +116,20 @@ The AI SRE Scribe Agent transforms raw communications into structured incident t
 #### Examples of automated documentation
 
 **Recovery action detection** (Slack)
-```
+```text
 [14:23 UTC] DevOps Engineer: Database failover completed successfully
 ```
 ↓ *AI SRE Scribe adds to timeline as key event:*
-```
+```text
 Database failover completed successfully
 ```
 
 **Root cause discovery** (Zoom transcript)
-```
+```text
 "After reviewing metrics, we've identified a memory leak in the payment service."
 ```
 ↓ *AI SRE Scribe adds to timeline as key event:*
-```
+```text
 Memory leak identified in payment service after metric review
 ```
 
@@ -238,6 +238,14 @@ These tips help the AI Scribe capture your intent more accurately. The Scribe us
 - [Runbook automation](/docs/ai-sre/runbooks/): Automate response actions during incidents.
 - [Alert integration](/docs/ai-sre/alerts/webhooks/templates/overview): Connect observability signals to incidents.
 - [RCA Change Agent](/docs/ai-sre/ai-agent/rca-change-agent): Identify likely root cause candidates from the captured timeline.
+
+---
+
+## Next steps
+
+- Go to the [RCA Change Agent](/docs/ai-sre/ai-agent/rca-change-agent) to turn the captured timeline into root cause candidates.
+- Go to [incident management](/docs/ai-sre/incidents/) to understand how incidents are structured in AI SRE.
+- Go to [runbook automation](/docs/ai-sre/runbooks/) to automate response actions during incidents.
 
 ---
 

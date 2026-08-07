@@ -35,6 +35,8 @@ Configure New Relic Alerts to send webhook notifications to Harness AI SRE when 
 
 ### Navigate to destinations
 
+Open the destinations configuration in New Relic:
+
 1. In New Relic, go to **Alerts & AI**, then select **Destinations**
 2. Click **Create destination**
 
@@ -46,7 +48,7 @@ Configure New Relic Alerts to send webhook notifications to Harness AI SRE when 
 - **Destination name**: `Harness AI SRE`
 - **Destination type**: Select **Webhook**
 - **Endpoint URL**: Your Harness webhook URL
-  ```
+  ```text
   https://<your-harness-instance>/gateway/ai-sre/api/webhooks/<webhook-id>
   ```
 - **Authentication**: None (or Bearer token if required)
@@ -111,10 +113,14 @@ Click **Create destination** to save.
 
 ### Navigate to channels
 
+Open the channels configuration in New Relic:
+
 1. Go to **Alerts & AI**, then select **Channels**
 2. Click **Create channel**
 
 ### Configure channel
+
+Set the channel name, destination, and triggers:
 
 - **Channel name**: `Harness AI SRE Channel`
 - **Destination**: Select **Harness AI SRE** (the destination you just created)
@@ -133,6 +139,8 @@ Click **Create channel**.
 ## Create workflow
 
 ### Navigate to workflows
+
+Open the workflows configuration in New Relic:
 
 1. Go to **Alerts & AI**, then select **Workflows**
 2. Click **Add a workflow**
@@ -224,7 +232,7 @@ In your Harness webhook configuration, map New Relic payload fields to alert pro
 }
 ```
 
-### Basic field mapping
+### Map basic fields
 
 Use Mustache templates:
 
@@ -295,6 +303,8 @@ custom_fields: {
 
 ### Create test alert condition
 
+Create a condition that fires immediately to confirm delivery:
+
 1. Go to **Alerts & AI**, then select **Alert policies**
 2. Create a test policy and condition that will fire immediately
 3. Assign the workflow to the policy
@@ -305,11 +315,15 @@ Wait for the condition to evaluate and create an issue.
 
 ### Verify in New Relic
 
+Confirm the issue was created and the notification was sent:
+
 1. Go to **Alerts & AI**, then select **Issues & Activity**
 2. Verify the issue was created
 3. Check **Workflows** to see notification sent
 
 ### Verify in Harness
+
+Confirm the issue arrived and mapped correctly:
 
 1. Navigate to **Alerts** in Harness AI SRE
 2. Check that the issue appears
@@ -427,9 +441,11 @@ Add visual context:
 
 ---
 
-## Example: Complete integration
+## Example: complete integration
 
 ### New Relic destination
+
+Configure the destination with these settings:
 
 - **Name**: Harness AI SRE
 - **Type**: Webhook
@@ -437,6 +453,8 @@ Add visual context:
 - **Custom payload**: Enabled (see custom payload tab above)
 
 ### New Relic workflow
+
+Configure the workflow with these settings:
 
 - **Name**: Critical & High Alerts to Harness
 - **Filter**:
@@ -448,7 +466,7 @@ Add visual context:
 - **Notify**: Harness AI SRE Channel
 - **Status**: Active
 
-### Harness webhook field mapping
+### Map fields in the Harness webhook
 
 ```yaml
 title: "{{webhook.issueTitle}}"
@@ -513,7 +531,7 @@ custom_fields:
 
 ---
 
-## Further reading
+## Related documentation
 
 ### New Relic official documentation
 - [Applied Intelligence workflows](https://docs.newrelic.com/docs/alerts-applied-intelligence/applied-intelligence/incident-workflows/incident-workflows/): Complete guide to workflow configuration, destinations, and channels.

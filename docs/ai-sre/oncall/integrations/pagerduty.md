@@ -39,6 +39,8 @@ The PagerDuty integration enables you to:
 
 ### Step 1: Generate API token
 
+Create an API token in PagerDuty for the integration:
+
 1. Log in to PagerDuty
 2. Navigate to **Integrations** → **API Access Keys**
 3. Click **Create New API Key**
@@ -46,6 +48,8 @@ The PagerDuty integration enables you to:
 5. Copy the generated API token
 
 ### Step 2: Connect PagerDuty to AI SRE
+
+Add PagerDuty as a sync source and verify the connection:
 
 1. In Harness AI SRE, navigate to **On-Call** → **Sync from 3rd Party** tab
 2. Click **Connect Source**
@@ -57,6 +61,8 @@ The PagerDuty integration enables you to:
 6. Click **Next: Select Entities**
 
 ### Step 3: Select entities to sync
+
+Choose which PagerDuty entities to import and preview the results:
 
 1. Choose which services to synchronize:
    - **All Services**: Import all PagerDuty services
@@ -70,6 +76,8 @@ The PagerDuty integration enables you to:
 
 ### Step 4: Invite users to Harness
 
+Invite the discovered users so they can receive pages in Harness:
+
 1. Review the list of discovered users from PagerDuty
 2. Select users who need Harness accounts to receive pages
 3. Selected users will receive email invitations to join Harness
@@ -77,6 +85,8 @@ The PagerDuty integration enables you to:
 5. Click **Next: Configure Sync Rules**
 
 ### Step 5: Configure sync rules
+
+Set the sync behavior and conflict resolution strategy, then start the sync:
 
 1. Configure sync behavior:
    - **Sync Contact Details**: Enable to import email, SMS, and phone numbers
@@ -87,6 +97,8 @@ The PagerDuty integration enables you to:
 3. Click **Start Sync**
 
 ### Step 6: Monitor sync progress
+
+Track the import status and review the imported entities:
 
 1. View the sync status dashboard showing:
    - Import progress by entity type

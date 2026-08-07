@@ -44,7 +44,7 @@ Alerts enter Harness AI SRE through **webhook integrations**:
 
 Go to [Ingest Alerts](/docs/ai-sre/alerts/webhooks/overview) to set up webhook integrations.
 
-### Alert routing
+### Alert routing rules
 
 Once alerts are received, **alert routing rules** determine how they are processed:
 
@@ -126,7 +126,7 @@ Go to [Service Paging Webhook](/docs/ai-sre/oncall/service-paging-webhook) for d
 
 ## Alert configuration
 
-### Alert routing
+### Alert routing configuration
 
 Configure alert routing based on:
 
@@ -295,12 +295,16 @@ All alert events are tracked in the alert timeline:
 
 ### Alerts versus incidents
 
+Alerts and incidents represent different stages of a problem:
+
 - **Alerts:** Notifications from monitoring systems about potential issues.
 - **Incidents:** Confirmed service disruptions requiring investigation and resolution.
 
 Alerts can automatically create incidents based on severity and routing rules. Multiple related alerts can be grouped into a single incident.
 
 ### Alerts versus events
+
+Alerts and events differ in whether they require action:
 
 - **Alerts:** Actionable notifications requiring attention or response.
 - **Events:** Informational updates about system state (deploys, config changes).
@@ -316,7 +320,7 @@ Events provide context for alerts and incidents but do not require immediate act
 - [Create a Webhook](/docs/ai-sre/alerts/webhooks/create-webhook): Configure custom webhook integrations.
 - [External System Setup](/docs/ai-sre/alerts/webhooks/integration-guides/overview): Follow provider-specific configuration guides.
 
-### Configure alert routing
+### Alert routing setup
 - [Route Alerts](/docs/ai-sre/alerts/alert-rules/overview): Route and filter alerts.
 - [Integrate Service Directory](/docs/ai-sre/oncall/integrate-service-directory): Define services and map alerts to services.
 - [Set Up On-Call Schedules](/docs/ai-sre/oncall/create-oncall-schedules): Route alerts to on-call engineers.

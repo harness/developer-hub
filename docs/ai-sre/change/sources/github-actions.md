@@ -329,6 +329,8 @@ The Deploy Change Investigator requires exact matches between build and deploy d
 
 ### Test build webhook
 
+Trigger a build and confirm the webhook reaches AI SRE:
+
 1. Push a commit or create a PR to trigger your build workflow.
 2. Check the workflow run logs for the webhook curl command.
 3. In the AI SRE left navigation, go to **Integrations**.
@@ -336,6 +338,8 @@ The Deploy Change Investigator requires exact matches between build and deploy d
 5. Select **Debug** to view received webhook events.
 
 ### Test deploy webhook
+
+Trigger a deployment and confirm the webhook reaches AI SRE:
 
 1. Trigger a deployment workflow.
 2. Check the workflow logs for webhook execution.

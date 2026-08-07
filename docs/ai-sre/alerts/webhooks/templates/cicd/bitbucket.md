@@ -30,6 +30,8 @@ Bitbucket provides:
 
 ## Set up Bitbucket integration
 
+Complete these steps to connect Bitbucket to Harness AI SRE:
+
 1. Navigate to **Integrations** in the main menu.
 2. Click **New Integration**.
 3. Select **Bitbucket** from the template options.

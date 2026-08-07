@@ -31,10 +31,14 @@ Before creating a webhook, decide which approach fits your use case:
 
 ### Step 1: Navigate to integrations
 
+Open the webhook creation dialog:
+
 1. Navigate to **Integrations** in the left sidebar.
 2. Click **New Integration** to open the webhook creation dialog.
 
 ### Step 2: Configure basic details
+
+Provide the webhook name, description, and type:
 
 1. **Enter a name** for the webhook integration (for example, "Production Datadog Alerts" or "Custom Monitoring").
 2. **Add a description** (optional) to document the purpose of this webhook.
@@ -72,7 +76,7 @@ After saving, you will see two methods to trigger alerts.
 
 Copy the webhook URL displayed on the configuration page:
 
-```
+```text
 https://app.harness.io/gateway/ir/tp/account/{account-id}/api/v1/mc/webhook/{webhook-id}
 ```
 
@@ -82,7 +86,7 @@ Use this URL when configuring your external monitoring tool to send HTTP POST re
 
 Copy the email address displayed on the configuration page:
 
-```
+```text
 webhook-id@prod2.alerts.harness.io
 ```
 
@@ -92,9 +96,9 @@ Go to [Set Up External Systems](/docs/ai-sre/alerts/webhooks/integration-guides/
 
 ---
 
-## Configure payload mapping
+## Configure payload extraction
 
-Payload mapping extracts data from incoming webhook payloads and maps it to alert properties in Harness AI SRE.
+Payload extraction pulls data from incoming webhook payloads and maps it to alert properties in Harness AI SRE.
 
 ### Step 1: Review pre-configured fields
 
@@ -141,7 +145,7 @@ Click the **JSON toggle** to see the complete payload structure:
 
 After extracting fields from the webhook payload, map them to alert properties in Harness AI SRE.
 
-### Step 1: Navigate to field mapping
+### Step 1: Open the Mapped Fields section
 
 Navigate to the **Mapped Fields** section to configure how extracted data populates alert properties.
 
@@ -167,7 +171,7 @@ Common field mappings:
 
 Reference webhook fields using Mustache template syntax:
 
-```
+```mustache
 {{webhook.field_name}}
 ```
 
@@ -238,6 +242,8 @@ Use advanced mapping conditions when you need:
 
 ### Add filtering conditions
 
+Filter which payloads create alerts with CEL expressions:
+
 1. Navigate to the **Advanced Conditions** section.
 2. Click **Add Condition**.
 3. Enter a CEL expression that evaluates to true or false.
@@ -290,12 +296,16 @@ curl -X POST 'https://app.harness.io/gateway/ir/tp/account/{account-id}/api/v1/m
 
 ### Step 3: Send the test request
 
+Run the command to send a test webhook:
+
 1. **Paste the cURL command** into your terminal.
 2. **Modify the payload** to match your expected webhook structure.
 3. **Run the command** to send a test webhook.
 4. **Verify the response** indicates successful processing.
 
 ### Step 4: Verify alert creation
+
+Confirm the test webhook produced a correctly mapped alert:
 
 1. Navigate to **Alerts** in Harness AI SRE.
 2. Verify a new alert was created from the test webhook.
@@ -366,7 +376,7 @@ When designing webhook payloads from custom applications:
 - Use arrays for repeating data
 - Limit payload size to improve processing speed
 
-### Field mapping
+### Field mapping guidance
 
 **Map essential fields:**
 - Always map title, severity, and description
@@ -386,7 +396,7 @@ When designing webhook payloads from custom applications:
 - Verify nested field extraction works correctly
 - Test array handling if applicable
 
-### Error handling
+### Error handling guidance
 
 **Handle missing fields:**
 - Use CEL `.orValue()` for optional fields
@@ -420,6 +430,8 @@ Before finalizing:
 4. Review advanced conditions if configured.
 
 ### Step 2: Save the configuration
+
+Activate the webhook so it can receive data:
 
 1. Click **Save** to finalize the webhook configuration.
 2. The webhook is now active and ready to receive data.

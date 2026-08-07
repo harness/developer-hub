@@ -48,6 +48,8 @@ CloudWatch does not send webhooks directly. Use Amazon SNS as an intermediary:
 
 ### Navigate to SNS
 
+Open the SNS topic creation page:
+
 1. Open AWS Console and go to **Simple Notification Service (SNS)**
 2. Click **Topics**, then click **Create topic**
 
@@ -82,6 +84,8 @@ Click **Create topic** and note the **Topic ARN**.
 
 ### Add subscription to topic
 
+Start a new subscription from the topic details:
+
 1. In the SNS topic details, click **Create subscription**
 
 ### Configure subscription
@@ -91,7 +95,7 @@ Click **Create topic** and note the **Topic ARN**.
 
 - **Protocol**: HTTPS
 - **Endpoint**: Your Harness webhook URL
-  ```
+  ```text
   https://<your-harness-instance>/gateway/ai-sre/api/webhooks/<webhook-id>
   ```
 - **Enable raw message delivery**: Uncheck (keep message wrapper)
@@ -122,6 +126,8 @@ This filters to only production alarms in ALARM state.
 
 ### Confirm subscription
 
+Complete the subscription confirmation handshake:
+
 1. Click **Create subscription**
 2. SNS sends a confirmation request to your Harness webhook
 3. Harness must respond with subscription confirmation
@@ -133,6 +139,8 @@ This filters to only production alarms in ALARM state.
 ## Create CloudWatch alarm
 
 ### Navigate to CloudWatch
+
+Open the alarm creation page:
 
 1. Open AWS Console and go to **CloudWatch**
 2. Click **Alarms**, then click **Create alarm**
@@ -192,6 +200,8 @@ In the **Configure actions** step:
 
 ### Set alarm details
 
+Name and describe the alarm:
+
 - **Alarm name**: `Production-EC2-HighCPU`
 - **Alarm description**: `EC2 instance CPU usage above 80%`
 - **Treat missing data as**: Choose appropriate option (default: `missing`)
@@ -225,7 +235,7 @@ In your Harness webhook configuration, map CloudWatch/SNS payload fields to aler
 
 **Note**: The `Message` field contains a JSON string that must be parsed.
 
-### Basic field mapping
+### Basic field mapping example
 
 CloudWatch alarm data is nested in the `Message` field as a JSON string. Use CEL to parse:
 
@@ -296,6 +306,8 @@ custom_fields: {
 
 ### Test with CloudWatch console
 
+Manually set the alarm state to trigger a test notification:
+
 1. Go to **CloudWatch**, then select **Alarms**
 2. Select your alarm
 3. Click **Actions**, then click **Set alarm state**
@@ -314,6 +326,8 @@ aws sns publish \
 ```
 
 ### Verify in Harness
+
+Confirm the alarm arrived and parsed correctly:
 
 1. Navigate to **Alerts** in Harness AI SRE
 2. Check that the alarm appears
@@ -433,9 +447,11 @@ message: "**CloudWatch Alarm**: " + parsed_message.AlarmName + "\n\n" +
 
 ---
 
-## Example: Complete integration
+## Example: complete integration
 
 ### AWS SNS topic
+
+This example uses the following SNS topic and subscription:
 
 - **Name**: `harness-ai-sre-alerts`
 - **Type**: Standard
@@ -446,12 +462,14 @@ message: "**CloudWatch Alarm**: " + parsed_message.AlarmName + "\n\n" +
 
 ### CloudWatch alarm
 
+This example uses the following alarm configuration:
+
 - **Name**: `Production-RDS-HighConnections`
 - **Metric**: `DatabaseConnections` in the `AWS/RDS` namespace
 - **Condition**: Greater than 100 for 3 out of 5 datapoints
 - **Actions**: Notify `harness-ai-sre-alerts` when in ALARM state
 
-### Harness webhook field mapping
+### Harness webhook field mapping example
 
 ```yaml
 # Parse nested Message JSON
@@ -519,7 +537,7 @@ custom_fields:
 
 ---
 
-## Further reading
+## Related documentation
 
 ### AWS official documentation
 - [CloudWatch alarms](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html): Complete guide to CloudWatch alarm configuration and SNS integration.

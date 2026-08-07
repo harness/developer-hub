@@ -19,6 +19,8 @@ Accurate details help stakeholders stay informed, trigger the right automated wo
 
 ## Edit incident fields
 
+Update any incident field directly from the incident details page:
+
 - Use the **Edit** icon next to any field to edit it inline (severity, assignee, affected services, etc.).
 - Click **Edit** on the **Incident Summary** to update the description with new findings or context.
 - Click **Save** after making changes.
@@ -63,6 +65,8 @@ Keep stakeholders informed without interrupting the incident response by sending
 
 ### Send a status update
 
+Compose and send a status update to subscribed stakeholders:
+
 1. Open the **Incident Details** page.
 2. Click **Status Update** (typically in the top action bar).
 3. Review the pre-populated email template:
@@ -90,6 +94,8 @@ Send updates at significant milestones during the incident:
 
 ### Email delivery
 
+Status updates are delivered with the following characteristics:
+
 - **Delivery channel:** Email only (from `aisre-noreply@harness.io`)
 - **Format:** Branded HTML email with header and footer images
 - **Timeline record:** A "Status Update Sent" event is added to the incident timeline when delivery succeeds
@@ -102,6 +108,16 @@ Status updates allow stakeholders to stay informed without joining the incident 
 
 ## Best practices
 
+Follow these practices to keep the incident record accurate and useful:
+
 - **Update status as soon as the phase changes:** Do not wait until resolution to batch-update. Real-time status drives stakeholder confidence and automated workflows.
 - **Be specific in key events:** "Identified root cause: connection pool exhaustion on db-primary-01" is far more useful than "Found the issue."
 - **Reassign when appropriate:** If you have identified that the incident belongs to another team or specialist, update the assignee and notify them.
+
+---
+
+## Next steps
+
+- Go to [Execute runbooks](/docs/ai-sre/users/manage-incidents/execute-runbooks) to run automated remediation during an incident.
+- Go to [Manage incidents](/docs/ai-sre/incidents) to review the full incident response workflow.
+- Go to [AI Scribe Agent](/docs/ai-sre/ai-agent) to understand how key events feed post-incident summaries.

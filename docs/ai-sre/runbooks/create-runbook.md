@@ -53,15 +53,21 @@ Before diving into runbook creation, familiarize yourself with these core concep
 
 ### Step 1: Access runbooks
 
+Open the runbooks management interface:
+
 1. Click **Runbooks** from the left panel in your Harness AI SRE platform
 2. This will take you to the runbooks management interface
 
 ### Step 2: Create a new runbook
 
+Start a new automated workflow:
+
 1. Click **New Runbook** to start creating your automated workflow
 2. This opens the runbook creation interface
 
 ### Step 3: Configure basic details
+
+Provide the core information that identifies your runbook:
 
 1. Fill in the essential details for your runbook:
    - **Name:** Use a descriptive name (e.g., "High CPU Alert Response", "Database Connection Recovery")
@@ -72,10 +78,14 @@ Before diving into runbook creation, familiarize yourself with these core concep
 
 ### Step 4: Save the initial configuration
 
+Create the base runbook and open the workflow designer:
+
 1. Click **Save** to create the basic runbook structure
 2. This establishes your runbook and opens the workflow designer
 
 ### Step 5: Add your first action
+
+Add an automated action to the workflow:
 
 1. Click **New Step** to add steps to your runbook workflow
 2. Select **Action** from the dropdown menu to add an automated action
@@ -85,6 +95,8 @@ Before diving into runbook creation, familiarize yourself with these core concep
 3. This opens the action selection interface where you can choose from various automation categories
 
 ### Step 6: Explore action categories
+
+Review the available action categories in the left panel:
 
 1. The **left panel** displays different action categories:
    - **Communication:** Slack, MS Teams, Zoom, and Email
@@ -98,6 +110,8 @@ Before diving into runbook creation, familiarize yourself with these core concep
 2. Browse through categories to find the appropriate action for your workflow
 
 ### Step 7: Select and configure the action
+
+Add an action from your chosen category to the workflow:
 
 1. **Choose any action** from the available list in your selected category
 2. Click **Select** to add the action to your workflow
@@ -165,6 +179,8 @@ For event-driven runbooks, you can configure Key Events directly:
 
 ### Step 9: Configure action parameters
 
+Fill in the input fields for the action you added:
+
 1. Click the **Data picker** to fill in values for the action's input fields
 2. The data picker will now show fields based on your Input/Output context selection:
    - **Basic fields** (always available): Standard incident/alert properties
@@ -177,6 +193,8 @@ For event-driven runbooks, you can configure Key Events directly:
 
 ### Step 10: Use dynamic data sources
 
+Choose where each parameter value comes from:
+
 1. Select from available data source options (now configured in Step 8):
    - **Runbook Input:** Variables defined for the runbook
    - **Action Outputs:** Results from previously executed actions
@@ -185,6 +203,8 @@ For event-driven runbooks, you can configure Key Events directly:
 2. Choose the appropriate data source based on your workflow requirements
 
 ### Step 11: Build the complete workflow
+
+Add and sequence the remaining actions:
 
 1. Click **New Action** to add more steps based on your workflow needs
 2. Click **Action** to access the action library again
@@ -205,6 +225,8 @@ For event-driven runbooks, you can configure Key Events directly:
 - **Closure:** Update stakeholders and close incidents
 
 ### Step 12: Save your runbook
+
+Finalize and preserve your runbook configuration:
 
 1. Click **Save** from the top right corner to finalize your runbook configuration
 2. Your runbook is now ready for testing and deployment
@@ -233,6 +255,9 @@ Go to [Create a Runbook Trigger](/docs/ai-sre/runbooks/triggers/create-trigger) 
 Triggers determine when and how your runbooks execute automatically. Go to [Create a Runbook Trigger](/docs/ai-sre/runbooks/triggers/create-trigger) to configure automated runbook execution based on incidents, alerts, and key events, including interactive guides and detailed setup instructions.
 
 ### Quick trigger setup
+
+Configure a basic trigger with these steps:
+
 1. **Access Trigger Configuration:** Click the **Triggers** tab in your runbook editor
 2. **Add Trigger:** Click **New Trigger** to begin the trigger setup process
 3. **Choose Trigger Template:** Select the template from the incident types
@@ -250,6 +275,8 @@ Triggers determine when and how your runbooks execute automatically. Go to [Crea
 Runbook slugs enable on-call responders to execute runbooks directly from Slack using short commands like `/harness run restart-pods`. Slugs provide a faster path to runbook execution during high-pressure incidents by removing UI navigation from the response workflow.
 
 ### How to assign a slug
+
+Assign a slug to a runbook by completing these steps:
 
 1. **Access Trigger Configuration:** Navigate to the **Triggers** tab in your runbook editor.
 2. **Locate Slug Field:** Find the **Slug** field in the trigger configuration section.
@@ -272,6 +299,8 @@ While the UI enforces lowercase letters, numbers, and hyphens, the backend also 
 
 ### Slug naming best practices
 
+Follow these conventions when you name a slug:
+
 - **Use short, descriptive names:** `restart-pods`, `scale-up`, `rollback`
 - **Team-specific conventions:** If multiple teams use AI SRE, prefix slugs with team identifiers (e.g., `platform-restart`, `data-scale`)
 - **Action-oriented names:** Use verbs that describe what the runbook does (`fix`, `deploy`, `reset`)
@@ -293,12 +322,12 @@ While the UI enforces lowercase letters, numbers, and hyphens, the backend also 
 Once configured, on-call responders can execute runbooks from Slack:
 
 **Execute by slug:**
-```
+```text
 /harness run <slug>
 ```
 
 **List available slugs:**
-```
+```text
 /harness run
 ```
 
@@ -313,6 +342,9 @@ Go to [Use Slack Commands](/docs/ai-sre/get-started/slack-commands#run-runbooks-
 Thorough testing is essential before deploying runbooks to production. A well-tested runbook prevents failures during critical incidents and ensures reliable automation.
 
 ### Testing steps
+
+Follow these steps to test a runbook against a real alert or incident:
+
 1. **Select an Alert or Incident:** Go to **AI SRE**, then **Alerts** or **Incidents** in your Harness platform, then select the alert or incident you want to test.
 2. **Select a Runbook:** Click the **Runbooks** tab and select the runbook you want to test.
 3. **Execute Runbook:** In case of no associated runbooks, click **Execute Runbook** to begin the testing process.
@@ -320,7 +352,7 @@ Thorough testing is essential before deploying runbooks to production. A well-te
 
 <DocImage path={require('./static/test-runbook.png')} width="95%" height="95%" title="Testing Runbook Functionality" />
 
-### Pre-production testing
+### Test in pre-production
 #### **1. Environment preparation**
 - **Test Environment:** Set up a dedicated testing environment that mirrors production.
 - **Test Data:** Prepare realistic test scenarios and data sets.

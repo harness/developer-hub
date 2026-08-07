@@ -86,6 +86,8 @@ To create the ingestion without waiting for a build webhook:
 
 ## Create build webhook integration
 
+Create an integration that receives build events from your pipeline:
+
 1. In the AI SRE left navigation, go to **Integrations**.
 2. Click **+ New Integration**.
 3. Fill in the form:
@@ -97,13 +99,15 @@ To create the ingestion without waiting for a build webhook:
 
 The integration is created with a unique ID (e.g., `BUILB1A`) and a webhook URL like:
 
-```
+```text
 https://app.harness.io/gateway/ir/tp/account/{accountId}/api/v1/mc/webhook/{webhookId}/{token}
 ```
 
 ---
 
 ## Create deploy webhook integration
+
+Create a second integration that receives deployment events from your pipeline:
 
 1. While still in **AI SRE** > **Integrations**, click **+ New Integration** again.
 2. Fill in the form:
@@ -122,6 +126,8 @@ You should now see both integrations listed in your integrations view.
 Add a Shell Script step to your build pipeline that runs **after** the artifact is published.
 
 ### Add the webhook step
+
+Add the notification step to your build pipeline:
 
 1. Open your build pipeline
 2. Add a new **Shell Script** step (e.g., "IR Build Notification")
@@ -211,6 +217,8 @@ Run your build pipeline and verify two things:
 
 ### Verify build webhook is received
 
+Confirm the build integration is receiving events:
+
 1. In the AI SRE left navigation, go to **Integrations**.
 2. Click the **More** icon (**...**) on the BUILD integration.
 3. Select **Debug**.
@@ -245,6 +253,8 @@ Add a Shell Script step to your deployment pipeline that runs **after** the depl
 
 ### Add the webhook step
 
+Add the notification step to your deployment pipeline:
+
 1. Open your deployment pipeline
 2. Add a new **Shell Script** step (e.g., "IR Deploy Notification")
 3. Place it **after** your deployment step
@@ -272,6 +282,8 @@ curl 'YOUR_DEPLOY_WEBHOOK_URL_HERE' \
 ```
 
 ### Customize the payload
+
+Adjust the payload to match your deployment:
 
 - Replace the **services array** with your actual services and versions (supports multiple services per deployment)
 - Update the **environments array** with your environment names (e.g., `["prod"]`, `["staging", "qa"]`)

@@ -72,7 +72,7 @@ Workflow automation in AI SRE uses **form-based UI configuration with Mustache t
      2. **Slack: Post Message**
         - Channel: `#incidents`
         - Message: 
-          ```
+          ```text
           🔴 **P1 Incident Created**
           **Title**: {{incident.title}}
           **Service**: {{incident.service}}
@@ -105,7 +105,7 @@ Workflow automation in AI SRE uses **form-based UI configuration with Mustache t
      1. **Slack: Post Message**
         - Channel: `#incidents`
         - Message:
-          ```
+          ```text
           ✅ **Incident Resolved**
           **Title**: {{incident.title}}
           **Duration**: {{incident.duration}}
@@ -117,7 +117,7 @@ Workflow automation in AI SRE uses **form-based UI configuration with Mustache t
         - Issue Type: Task
         - Summary: `Post-Incident Review: {{incident.title}}`
         - Description:
-          ```
+          ```text
           Incident: {{incident.url}}
           Duration: {{incident.duration}}
           Severity: {{incident.severity}}
@@ -145,7 +145,7 @@ Workflow automation in AI SRE uses **form-based UI configuration with Mustache t
      1. **Slack: Post Message**
         - Channel: `#exec-alerts`
         - Message: 
-          ```
+          ```text
           🚨 **ESCALATION: P1 Incident Not Acknowledged**
           **Title**: {{incident.title}}
           **Created**: {{incident.created_at}}
@@ -174,7 +174,7 @@ Workflow automation in AI SRE uses **form-based UI configuration with Mustache t
 
 1. Send deployment webhooks to AI SRE:
    - Configure your CI/CD pipeline to POST deployment events to:
-     ```
+     ```text
      POST https://app.harness.io/gateway/ai-sre/api/v1/orgs/{org}/projects/{project}/webhooks/deploy
      ```
    - Webhook payload:
@@ -233,7 +233,7 @@ Runbooks execute sequences of actions. Available action types:
 Actions use form-based configuration with Mustache template support:
 
 **Text fields** accept Mustache variables:
-```
+```mustache
 Title: {{incident.title}}
 Service: {{incident.service}}
 Owner: {{incident.owner}}
@@ -246,7 +246,7 @@ Owner: {{incident.owner}}
 - `{{user.*}}` - User who triggered the runbook (name, email)
 
 **Example: reference previous action output**
-```
+```text
 Action 1: Zoom: Create Meeting
   → Outputs: join_url, meeting_id
 
@@ -293,7 +293,7 @@ Trigger conditions use field comparisons:
 - `greater_than`, `less_than` (for numbers)
 
 **Examples:**
-```
+```text
 incident.severity in [SEV0, SEV1]
 incident.service equals payment-service
 incident.status changed_to Resolved
@@ -320,7 +320,7 @@ alert.priority equals p1_critical
    - Action: **Slack: Post Message**
      - Channel: `{{runbook.outputs.slack_create_channel.channel_id}}`
      - Message: 
-       ```
+       ```text
        🚨 **Incident Summary**
        **Service**: {{incident.service}}
        **Severity**: {{incident.severity}}
@@ -344,7 +344,7 @@ alert.priority equals p1_critical
      - Project: `INCIDENT`
      - Summary: `{{incident.title}}`
      - Description: 
-       ```
+       ```text
        Incident: {{incident.url}}
        Service: {{incident.service}}
        Severity: {{incident.severity}}
@@ -423,7 +423,7 @@ Go to the [RCA Change Agent](/docs/ai-sre/ai-agent/rca-change-agent) to review m
 
 ---
 
-## Related documentation
+## Next steps
 
 - [Create a runbook](/docs/ai-sre/runbooks/create-runbook): Detailed runbook creation guide.
 - [Runbook triggers](/docs/ai-sre/runbooks/triggers/create-trigger): Configure automatic execution.

@@ -157,3 +157,11 @@ Harness AI SRE connects to tools across four areas.
 
 ![Integrations page](./static/integration-list.png)
 <!-- Screenshot: Integrations list or configuration page -->
+
+---
+
+## Next steps
+
+- Go to the [AI SRE onboarding guide](/docs/ai-sre/get-started/onboarding/overview) to set up your first project.
+- Go to [Incidents](/docs/ai-sre/incidents) to learn how to create and manage incidents.
+- Go to [Runbooks](/docs/ai-sre/runbooks) to automate your incident response.

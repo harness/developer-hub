@@ -122,3 +122,11 @@ To enhance security in Harness AI SRE:
 - Review audit logs regularly.
 - Use API tokens with least privilege.
 - Encrypt webhook notifications.
+
+---
+
+## Next steps
+
+- Go to [AI SRE Security](/docs/ai-sre/resources/ai-sre-security) to review the full AI SRE permission reference and RBAC configuration.
+- Go to [Configure On-Call Teams and Routing](/docs/ai-sre/oncall/manage-teams-and-notifications) to assign User Groups and service ownership.
+- Go to [Define Escalation Policies](/docs/ai-sre/oncall/define-escalation-policies) to control who is notified during an incident.

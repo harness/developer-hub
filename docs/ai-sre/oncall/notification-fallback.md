@@ -46,6 +46,8 @@ Notification rule groups define the sequence and timing of how you are notified.
 
 ### Create a notification rule group
 
+Build a notification rule group step by step in Contact Settings:
+
 1. Go to **On-Call** → **Contact Settings**
 2. Click the **Notification Rules** tab
 3. Click **Add Step**
@@ -72,7 +74,7 @@ Each notification step includes:
 
 Start with less intrusive channels and gradually escalate to more disruptive methods:
 
-```
+```text
 Step 1: Slack + Mobile Push (wait 5 minutes)
 Step 2: Email (wait 5 minutes)
 Step 3: SMS (wait 5 minutes)
@@ -85,7 +87,7 @@ This approach gives you time to respond via Slack or mobile app before receiving
 
 Use all channels simultaneously for critical alerts:
 
-```
+```text
 Step 1: Slack + Mobile Push + SMS + Email (wait 2 minutes)
 Step 2: Voice Call (wait 2 minutes)
 Step 3: Voice Call + SMS
@@ -98,14 +100,14 @@ This ensures maximum visibility immediately while escalating to repeated voice c
 Configure different rules based on your availability:
 
 **During business hours:**
-```
+```text
 Step 1: Slack (wait 5 minutes)
 Step 2: Email (wait 10 minutes)
 Step 3: SMS
 ```
 
 **After hours or weekends:**
-```
+```text
 Step 1: Mobile Push + SMS (wait 3 minutes)
 Step 2: Voice Call (wait 3 minutes)
 Step 3: Voice Call + SMS
@@ -120,6 +122,8 @@ You can manually switch between rule groups based on your schedule, or configure
 Each notification channel has independent retry logic that attempts delivery multiple times before marking the notification as failed.
 
 ### SMS retry logic
+
+SMS delivery follows this retry configuration:
 
 - **Maximum retries**: 3 attempts per SMS
 - **Status tracking**: Real-time delivery confirmation via Twilio webhooks
@@ -137,6 +141,8 @@ When SMS delivery fails:
 
 ### Voice call retry logic
 
+Voice call delivery follows this retry configuration:
+
 - **Maximum retries**: 3 attempts per escalation level
 - **Machine detection**: Enabled to filter out voicemail systems
 - **Retry delay**: 60 seconds between attempts
@@ -146,6 +152,8 @@ When SMS delivery fails:
 Voice calls are typically configured as later steps in notification rules since they are the most disruptive notification method.
 
 ### Slack retry logic
+
+Slack delivery follows this retry configuration:
 
 - **Maximum retries**: 3 attempts per message
 - **Status tracking**: Slack API response codes
@@ -157,6 +165,8 @@ Slack notifications fail gracefully when the user is not in the workspace or has
 
 ### Mobile push retry logic
 
+Mobile push delivery follows this retry configuration:
+
 - **Maximum retries**: 1 attempt (no automatic retry)
 - **Status tracking**: Firebase Messaging exception handling
 - **Device token validation**: Automatic removal of invalid tokens
@@ -165,6 +175,8 @@ Slack notifications fail gracefully when the user is not in the workspace or has
 Mobile push notifications do not retry automatically. If delivery fails, the notification advances to the next step in the rule immediately.
 
 ### Email retry logic
+
+Email delivery follows this retry configuration:
 
 - **Maximum retries**: Not implemented (single attempt)
 - **Status tracking**: Message ID tracking only
@@ -179,7 +191,7 @@ Email notifications are sent once per step. Delivery failures are not currently 
 
 If you have not configured a custom notification rule group, AI SRE uses the following default escalation sequence:
 
-```
+```text
 Position 0 (immediate):
   - Email
   - Slack
@@ -306,6 +318,8 @@ Go to [Define Escalation Policies](/docs/ai-sre/oncall/define-escalation-policie
 
 ### For configuring notification rules
 
+Follow these practices when you build notification rule groups:
+
 - **Use multiple channels per step**: Combine less intrusive channels (Slack, mobile push) with more reliable channels (SMS) for redundancy
 - **Escalate notification urgency**: Start with Slack or mobile push, escalate to SMS, then voice calls
 - **Set reasonable timeouts**: Allow 3-5 minutes per step to give yourself time to respond before escalation
@@ -314,6 +328,8 @@ Go to [Define Escalation Policies](/docs/ai-sre/oncall/define-escalation-policie
 
 ### For contact method management
 
+Follow these practices to keep your contact methods reliable:
+
 - **Keep contact information current**: Update phone numbers and email addresses immediately when they change
 - **Verify country code support**: Check that your phone number's country code is supported for SMS and voice
 - **Install the mobile app**: Push notifications are the fastest way to receive and acknowledge incidents
@@ -321,6 +337,8 @@ Go to [Define Escalation Policies](/docs/ai-sre/oncall/define-escalation-policie
 - **Label contacts clearly**: Use Work, Home, or Other labels to distinguish between contact methods
 
 ### For incident response
+
+Follow these practices when a notification reaches you:
 
 - **Acknowledge immediately**: Stop escalation by acknowledging the incident as soon as you receive any notification
 - **Monitor delivery status**: Check the incident timeline if you suspect notifications are not being delivered

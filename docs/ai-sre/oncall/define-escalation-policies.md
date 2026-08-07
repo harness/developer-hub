@@ -41,6 +41,8 @@ When a page is triggered:
 
 ## Best practices
 
+Follow these practices when you design escalation policies:
+
 - **Always configure at least two levels:** A primary responder and a backup prevents incidents from going unacknowledged.
 - **Set appropriate timeouts:** Too short and you escalate before someone has time to respond; too long and incidents sit idle. A common starting point is 5 to 10 minutes per level.
 - **Use groups at higher levels:** Escalating to a team or group at level 2 or higher increases the chance of a quick response.

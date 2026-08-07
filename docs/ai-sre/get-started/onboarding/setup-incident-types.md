@@ -30,6 +30,8 @@ Define incident types for your teams to standardize your response process by def
 
 ### Create an incident type
 
+To create an incident type:
+
 1. Navigate to **Incidents**
 2. Click on **Incident Types**
 3. Click on **Create Incident Type**

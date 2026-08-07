@@ -33,6 +33,8 @@ PagerDuty provides:
 
 ### In Harness AI SRE
 
+Create the webhook integration from the PagerDuty template:
+
 1. Navigate to **Integrations** in the main menu
 2. Click **New Integration**
 3. Select **PagerDuty** from the template options

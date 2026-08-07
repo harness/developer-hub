@@ -78,6 +78,8 @@ Follow this interactive guide to create and manage incidents with AI-powered ass
 
 ### Step 1: Access incident creation
 
+Open the incident creation flow:
+
 1. Navigate to **Incidents** from the left panel
 
    ![Incident list](../get-started/static/incident-list.png)
@@ -88,6 +90,8 @@ Follow this interactive guide to create and manage incidents with AI-powered ass
 
 ### Step 2: Select incident type
 
+Pick the incident type that matches the disruption:
+
 1. Choose the appropriate **Incident Type** from the available options
 
    <img src={require('../get-started/static/create-new-incident.png').default} alt="Create new incident form" width="450" style={{border: '1px solid black'}} />
@@ -97,6 +101,8 @@ Follow this interactive guide to create and manage incidents with AI-powered ass
 
 ### Step 3: Describe the problem
 
+Give the AI enough context to populate the incident:
+
 1. Use the **Quick Start** block to describe the problem
 2. Provide a clear, concise description of the issue
 3. The AI system will analyze your description and suggest field values
@@ -104,11 +110,15 @@ Follow this interactive guide to create and manage incidents with AI-powered ass
 
 ### Step 4: Generate incident fields
 
+Let AI SRE derive field values from your description:
+
 1. Click the **up arrow** sign to process your description
 2. AI will automatically populate incident fields based on your description
 3. The system will suggest appropriate severity, priority, and other relevant fields
 
 ### Step 5: Review and customize
+
+Verify and adjust the generated values before saving:
 
 1. Review all auto-generated field values
 2. **Manually change** any field values that need adjustment:
@@ -120,12 +130,16 @@ Follow this interactive guide to create and manage incidents with AI-powered ass
 
 ### Step 6: Manage incident details
 
+Review and edit the incident from its details page:
+
 1. The **Incident Details** page will display with all incident information
 2. Use the **Edit icon** to edit individual fields as needed
 3. Click **Edit** to modify the **Incident Summary**
 4. Click **Save** after making any changes
 
 ### Step 7: Add key events
+
+Document important milestones on the incident:
 
 1. Click **Add Key Event** to manually document important milestones
 2. Type the key event description in the text box
@@ -135,12 +149,16 @@ Follow this interactive guide to create and manage incidents with AI-powered ass
 
 ### Step 8: Monitor timeline activity
 
+Track and post to the incident timeline:
+
 1. Navigate to the **Timeline** tab
 2. View all incident-related activity in chronological order
 3. Post messages to the timeline by typing in the text field and pressing Enter
 4. All automated actions and manual updates appear here
 
 ### Step 9: Execute runbooks (optional)
+
+Run automated response procedures from the incident:
 
 1. Click the **Runbooks** tab
 2. Click **Execute Additional Runbook** to link automated response procedures
@@ -150,6 +168,8 @@ Follow this interactive guide to create and manage incidents with AI-powered ass
 6. Click **Close** when execution is completed
 
 ### Step 10: Manage action items
+
+Create and assign follow-up tasks:
 
 1. Navigate to the **Action Items** tab
 2. Click **Create Action Item** to add follow-up tasks
@@ -161,6 +181,8 @@ Follow this interactive guide to create and manage incidents with AI-powered ass
 5. Use the **Edit icon** to edit action item status as needed
 
 ### Step 11: Finalize and save
+
+Confirm everything is documented, then save:
 
 1. Review all incident details, timeline events, and action items
 2. Ensure all necessary information is documented
@@ -214,6 +236,8 @@ Follow this interactive guide to create and manage incidents with AI-powered ass
 ---
 
 ## Benefits
+
+Incident management in AI SRE delivers the following benefits:
 
 - **Streamlined response:** AI-powered incident creation reduces time to response and improves accuracy
 - **Standardized processes:** Incident types ensure consistent handling across all teams and services

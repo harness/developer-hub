@@ -355,7 +355,7 @@ notify-deploy:
 
 ---
 
-## Service and version mapping
+## Map service and version fields
 
 The Deploy Change Investigator requires exact matches between build and deploy webhooks:
 
@@ -372,6 +372,8 @@ Use the same variable (`$CI_COMMIT_SHORT_SHA`) in both build and deploy webhooks
 
 ### Test build webhook
 
+Trigger a build and confirm the webhook reaches AI SRE:
+
 1. Push a commit or create a merge request.
 2. Check the pipeline job logs for the `notify-build` job.
 3. Verify the curl command executed successfully.
@@ -381,6 +383,8 @@ Use the same variable (`$CI_COMMIT_SHORT_SHA`) in both build and deploy webhooks
 7. Verify the webhook appears with correct payload.
 
 ### Test deploy webhook
+
+Trigger a deployment and confirm the webhook reaches AI SRE:
 
 1. Trigger the deployment pipeline.
 2. Check the `notify-deploy` job logs.
