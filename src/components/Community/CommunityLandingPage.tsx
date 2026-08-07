@@ -14,11 +14,11 @@ type CommunityItem = {
 
 const items: CommunityItem[] = [
   {
-    label: 'Community Slack',
-    href: 'https://join-community-slack.harness.io/',
-    description: 'Join real-time conversations with engineers and the community.',
+    label: 'Harness Community',
+    href: 'https://community.harness.io/',
+    description: 'The home of the new Harness Community. Threaded discussions, technical support, AI-powered replies, and deep integrations.',
     external: true,
-    icon: '/provider-logos/slack-logo.svg',
+    icon: '/img/discourse.svg',
   },
   {
     label: 'YouTube',

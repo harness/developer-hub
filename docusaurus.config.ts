@@ -379,8 +379,8 @@ const config: Config = {
               to: 'https://app.harness.io/auth/#/signup/&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=get-started',
             },
             {
-              label: 'Slack',
-              to: 'https://join-community-slack.harness.io/',
+              label: 'Harness Community',
+              to: 'https://community.harness.io/',
             },
             {
               label: 'API Reference',
