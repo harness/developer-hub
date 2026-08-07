@@ -286,6 +286,8 @@ The SAM infrastructure definition is the target AWS account and region for the S
 
 When a pipeline stage uses this infrastructure definition, it will deploy your SAM template changes in the target region.
 
+If your deployment requires infrastructure provisioning, go to [Provision Infrastructure](/docs/category/provision-infrastructure) to explore the provisioning options available in Harness.
+
 ## AWS SAM stage
 
 Now that you have your SAM service and environment, you can create your SAM pipeline.

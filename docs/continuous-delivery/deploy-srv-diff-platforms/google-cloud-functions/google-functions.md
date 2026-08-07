@@ -720,6 +720,8 @@ The infrastructure definition is added.
 
 ### Dynamically provisioned Functions infrastructure
 
+Harness supports multiple provisioner types, including Terraform, CloudFormation, Shell Script, and so on. Go to [Provision Infrastructure](/docs/category/provision-infrastructure) to explore the available provisioners and configure provisioning based on your requirements.
+
 Here is a summary of the steps to dynamically provision the target infrastructure for a deployment:
 
 1. **Add dynamic provisioning to the CD stage**:

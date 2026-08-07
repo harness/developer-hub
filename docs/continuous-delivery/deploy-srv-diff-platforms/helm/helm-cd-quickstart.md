@@ -180,6 +180,7 @@ For details on supported Helm versions, tooling, limitations, and repositories, 
 * [CD pipeline basics](/docs/continuous-delivery/overview#pipeline)
 * [Deploy using Helm Chart](/docs/continuous-delivery/get-started/tutorials/kubernetes-container-deployments/helm-chart)
 * [Helm and Native Helm Deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-deployment-faqs)
+* [Provision Infrastructure](/docs/category/provision-infrastructure): Explore the available provisioners and configure provisioning based on your requirements.
   
 
 
