@@ -14,6 +14,13 @@
     "lifecycleState": "Limited GA"
   },
   {
+    "flagKey": "JIRA_ENHANCED_TICKET_METADATA",
+    "description": "Enhances Jira ticket metadata by including additional security issue details such as severity, CVSS scores, vulnerability paths, and remediation guidance.",
+    "gaStartDate": "2026-08-05",
+    "module": "Security Test Orchestration",
+    "lifecycleState": "Limited GA"
+  },
+  {
     "flagKey": "ENABLE_BULK_EXEMPTION",
     "description": "Create exemptions for multiple issues at once from the Vulnerabilities tab, using the same scope, duration, and reason for each selected issue.",
     "gaStartDate": "2026-08-03",
