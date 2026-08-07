@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2026-04-15T14:00
+date: 2026-08-05T14:00
 sidebar_position: 3
 ---
 
@@ -229,6 +229,14 @@ The following deprecated API endpoints are longer supported:
 - [GET | PUT | POST | DELETE] api/resourcegroup/\{identifier}
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
+
+## August 2026
+
+### Version 1.161.x <!--August 05, 2026-->
+
+#### Fixed issues
+- Fixed an issue where changing scope from **Template Studio** or a settings page failed with a `RESOURCE_NOT_FOUND_EXCEPTION` error. Harness now resolves the target scope without carrying over the current entity identifier, so you land on the equivalent page in the new scope. [PL-70296]
+- Fixed an issue where the Harness application intermittently crashed and displayed a **Something went wrong** error page that required a page refresh. This was resolved by changing how routing is inherently handled on the Harness UI. [PL-72349]
 
 ## July 2026
 
