@@ -69,6 +69,14 @@ Estimated costs appear in two places: an estimated cost per month column in the 
  
 ### Enhancements & Bug Fixes
  
+#### Workflows: External Secret Manager Support
+ 
+IDP workflows can now execute pipelines using secrets stored in an external (non-Harness) Secrets Manager. This lets teams whose secrets live outside the Harness built-in manager trigger workflow pipelines without first migrating those secrets.
+ 
+#### Workflows: Editable Enum Dropdowns in ContextViewer
+ 
+Workflow form fields that use ContextViewer to prefill values from an API response or form context now preserve their dropdown behavior when the field defines enum options. Previously such fields rendered as a plain text input, losing the dropdown. Prefilled values that match an option are pre-selected, and values that do not match are added to the list, while the field stays editable within its defined options.
+ 
 #### Fixes
  
 - Workflow templates that reference input sets by name or ref using `inputSetName` and `inputSetRef` were not executing correctly. This is now fixed. [IDP-10328]
@@ -129,6 +137,10 @@ When an integration discovers a large number of services, selecting and importin
 By default, integration sync data travels through the default endpoint (e.g., accounts.harness.io, app.harness.io, app3.harness.io). This section lets you override that behavior if your network restricts outbound traffic to your account's vanity URL only.
 
 <DocImage path={require('../docs/internal-developer-portal/catalog/create-entity/catalog-discovery/static/sync-configurations.png')} />
+
+#### Workflows: Logged-in User in Validate & Fetch Headers
+
+The Validate & Fetch action in workflows can now append the logged-in user's details to request headers, matching the header handling already available in the `SelectFieldFromApi` / Dynamic picker. This brings consistent behavior across both components, so the same authentication and context-propagation patterns work in either one.
 
 #### Fixes
 
