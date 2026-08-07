@@ -8,6 +8,8 @@ sidebar_position: 12
 ---
 
 import ReleaseNotesSearch from '@site/src/components/ReleaseNotesSearch';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/internal-developer-portal/rss.xml" />
 
@@ -73,9 +75,57 @@ Estimated costs appear in two places: an estimated cost per month column in the 
  
 IDP workflows can now execute pipelines using secrets stored in an external (non-Harness) Secrets Manager. This lets teams whose secrets live outside the Harness built-in manager trigger workflow pipelines without first migrating those secrets.
  
-#### Workflows: Editable Enum Dropdowns in ContextViewer
- 
-Workflow form fields that use ContextViewer to prefill values from an API response or form context now preserve their dropdown behavior when the field defines enum options. Previously such fields rendered as a plain text input, losing the dropdown. Prefilled values that match an option are pre-selected, and values that do not match are added to the list, while the field stays editable within its defined options.
+#### Workflows: Editable Enum Dropdowns and Structured Payloads in Forms
+
+Workflow forms now handle two prefill cases that previously required workarounds. [IDP-10077]
+
+**Editable enum dropdowns:** Fields that use ContextViewer to prefill values from an API response or form context now preserve their dropdown behavior when the field defines options. Previously such fields rendered as a plain text input, losing the dropdown. Prefilled values that match an option are pre-selected, and values that do not match are added to the list, while the field stays editable within its defined options.
+
+**Structured array and object payloads:** A form field can now display a whole structured payload (an array or object) in one place, without mapping each nested field to its own context key. On the picker field that fetches the data, store the structured value once with `setContextData`. Then bind it to a JSON field using `CustomField` with `fieldType: json` and a `contextKey` that matches the key you stored. The field supports read-only display or editable JSON.
+
+  <Tabs>
+  <TabItem value="pattern" label="Pattern" default>
+
+  ```yaml title="Store a structured payload and display it with CustomField"
+  ## Under 'ui:options:'
+      setContextData:
+        name: metadata.name
+        respdata: metadata.tags
+
+  entityMetadata:
+    ui:field: CustomField
+    ui:options:
+      fieldType: json
+      contextKey: respdata
+      readOnly: true
+  ```
+
+  </TabItem>
+  <TabItem value="working" label="Working example">
+
+  ```yaml title="Store the selected organization and display it with CustomField"
+  selectedOrg:
+    title: Organization
+    type: string
+    ui:field: HarnessEntitySelector
+    ui:options:
+      path: /ng/api/organizations
+      arraySelector: data.content
+      valueSelector: organization.identifier
+      labelSelector: organization.name
+      setContextData:
+        respdata: organization
+
+  entityMetadata:
+    ui:field: CustomField
+    ui:options:
+      fieldType: json
+      contextKey: respdata
+      readOnly: true
+  ```
+
+  </TabItem>
+  </Tabs>
  
 #### Fixes
  
