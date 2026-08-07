@@ -29,7 +29,7 @@ import BetaIcon from '/img/icon_beta.svg';
 
 <BetaIcon />
 
-This topic covers basic terminology and concepts related to Database DevOps. For general Harness Platform terminology and concepts, go to [Harness key concepts](/docs/platform/get-started/key-concepts.md). For information about using DB DevOps, go to [Harness Database DevOps onboarding guide](/docs/database-devops/use-database-devops/get-started/onboarding-guide/).
+This topic covers basic terminology and concepts related to Database DevOps. For general Harness Platform terminology and concepts, go to [Harness key concepts](/docs/platform/get-started/overview). For information about using DB DevOps, go to [Harness Database DevOps onboarding guide](/docs/database-devops/use-database-devops/get-started/onboarding-guide/).
 
 ## Database
 
@@ -104,11 +104,11 @@ flowchart LR
 
 ```
 
-## Database Schemas
+## Database schemas
 
 A database schema is the structure of a database, e.g. what tables and columns and indexes exist. In the context of Harness DB DevOps, there is an entity called a 'schema’ that is a collection of DDL or DML changes that can be applied to a database. Today this collection is in the form of a liquibase changelog checked into git or artifactory.
 
-## Database Instances 
+## Database instances
 
 A database instance associates a database schema to a database connection. It represents the intersection of the database's structural definition (the schema) with the actual data environment where the schema is implemented.
 
@@ -128,11 +128,11 @@ Schema Organization
 **In this hierarchy**: Each schema can have multiple instances. 
 Schema B, for example, has three instances, while Schemas A and C each have two instances.
 
-## Database Connection
+## Database connection
 
 A database connection refers to the specific parameters and credentials used to establish a secure link between the Harness platform and an individual database server. This connection is done through a JDBC (Java Database Connectivity) URL, which specifies the location of the database server, and is authenticated using a username and password. The connection is made via a Harness Delegate, which allows secure access to the database, even when the database instance is not internet-accessible. This setup enables Harness to execute SQL scripts, orchestrate database changes, and manage schema versions as part of the CI/CD pipeline, all while adhering to security best practices. 
 
-## Data Definition Language (DDL)
+## Data definition language (DDL)
 
 As mentioned earlier under the definition of Database Schema, DDL refers to the SQL commands used to define or modify the structure of the database schema itself. This includes operations that create, alter, or drop database objects such as tables, indexes, views, and constraints. Some examples include the following: 
 
@@ -148,7 +148,7 @@ ALTER TABLE Employees ADD COLUMN Salary DECIMAL(10, 2);
 TRUNCATE TABLE Employees;
 ```
 
-## Data Manipulation Language (DML)
+## Data manipulation language (DML)
 
 DML refers to SQL commands used for managing data within the database objects defined by DDL, such as tables. DML operations allow users to insert, update, delete, and retrieve data stored in the database. Some examples include the following:
 
@@ -164,11 +164,11 @@ UPDATE Employees SET Salary = 60000 WHERE ID = 1;
 DELETE FROM Employees WHERE ID = 1;
 ```
 
-## SQL (Structured Query Lanaguage)
+## SQL (Structured Query Language)
 
 SQL (Structured Query Language) databases are relational databases that use a structured query language to define and manipulate data. They are designed to store data in tables with fixed schemas, where each table consists of rows and columns. The relationships between tables are defined through foreign keys. Liquibase can define changes via SQL scripts, or via yaml changesets that are compiled at runtime into SQL.
 
-## NO-SQL (Not Only SQL)
+## NoSQL (Not Only SQL)
 
 NoSQL (Not Only SQL) databases, on the other hand, are non-relational databases designed to store and retrieve data in ways that are different from traditional relational databases. They can store unstructured, semi-structured, or structured data without requiring a predefined schema. An example of this is MongoDB.
 
@@ -180,15 +180,15 @@ Apply refers to the process of executing database schema changes in a target dat
 3. Executes the necessary changelog in the correct order
 4. Records the successful application of changes to prevent re-application
 
-## Rollback 
+## Rollback
 
-A rollback in the context of deployment refers to the process of reverting an application or system to a previous stable state after a new deployment has failed or introduced critical issues. This action is taken to minimize downtime and restore the application to its last known good configuration.
+A rollback in the context of deployment refers to the process of reverting an application or system to a previous stable state after a new deployment has failed or introduced critical issues. This action minimizes downtime and restores the application to its last known good configuration.
 
 ## Liquibase
 
 An open source database change control CLI tool that is leveraged used by Harness DB DevOps.
 
-## Understanding Changelog and Changesets
+## Understanding changelog and changesets
 
 ### Changelog
 A Changelog is a file that defines all the changes made to your database. This helps audit your database and execute any changes that not applied.
@@ -208,7 +208,7 @@ Here are the key concepts:
 
     :::
 
-2. **Change Tracking**: Once a changeset is executed, it's tracked in a special table `DATABASECHANGELOG` to ensure it's never run twice.
+2. **Change tracking:** Once a changeset is executed, it is tracked in a special table `DATABASECHANGELOG` to ensure it is never run twice.
 
 ![changelog-and-changeset](./static/changelog-and-changeset.png)
 
@@ -219,8 +219,9 @@ The format of your changeset depends on the file type of your changelog, which c
 
 ![File format](./static/file-types-of-changelog.png)
 
-#### SQL Example 
-``` SQL Example
+#### SQL example
+
+```sql
 --liquibase formatted sql
 
 --changeset john-doe:1
@@ -234,8 +235,9 @@ CREATE INDEX idx_products_name ON products(name);
 ```
 
 
-#### YAML Example
-``` YAML Example
+#### YAML example
+
+```yaml
 databaseChangeLog:
   -  changeSet:  
       id:  1
@@ -248,8 +250,9 @@ databaseChangeLog:
                   name: address
 ```
 
-#### XML Example
-``` XML Example
+#### XML example
+
+```xml
 <changeSet  id="1"  author="john-doe">
     <createTable  tableName="company">
         <column  name="address"  type="varchar(255)"/>
@@ -257,8 +260,9 @@ databaseChangeLog:
 </changeSet>
 ```
 
-#### JSON Example
-``` JSON Example
+#### JSON example
+
+```json
 {
   "changeSet": {
     "id": "1",
@@ -279,3 +283,10 @@ databaseChangeLog:
     ]
   }
 }
+```
+
+## Next steps
+
+- Go to [Changelog](/docs/database-devops/concepts/glossary/changelog) to understand the changelog file format and changeset ordering.
+- Go to [Changeset](/docs/database-devops/concepts/glossary/changeset) to review changeset attributes, execution conditions, and transaction control.
+- Go to [Onboarding guide](/docs/database-devops/use-database-devops/get-started/onboarding-guide/) to start using DB DevOps with your first pipeline.

@@ -40,9 +40,9 @@ A well-structured SQL file directory ensures consistent, traceable, and collabor
 Consider this as an example implementation of our changelog directory structure.
 :::
 
-## SQL File Directory Organization
+## SQL file directory organization
 
-A well-organized SQL file directory structure is crucial for maintaining database changes. Here's a recommended structure:
+A well-organized SQL file directory structure is crucial for maintaining database changes. The following is a recommended structure:
 
 ``` bash
 db/
@@ -72,8 +72,9 @@ databaseChangeLog:
       relativeToChangelogFile: true
 ```
 
-### Liquibase Formatted SQL files
-In Harness DBOps, we allow seamless integration of liquibase formatted SQL files, enabling you to track database changes effectively. Similar to other tools, Harness DBOps uses metadata in the SQL files to help identify and manage changes.
+### Liquibase formatted SQL files
+
+Harness DBOps supports seamless integration of Liquibase formatted SQL files, enabling you to track database changes effectively. Harness DBOps uses metadata in the SQL files to help identify and manage changes.
 
 ```SQL
 --liquibase formatted sql
@@ -99,21 +100,22 @@ In the above example SQL Schema, the comments:
 :::
 
 ### Spacing
-It is a best practice not to include a space before `--liquibase formatted sql`. Formatting variations may cause the Liquibase parser to return an error. When specifying changeset attributes in a formatted SQL changelog, any attribute value that contains spaces must be quoted. For example:
+
+Do not include a space before `--liquibase formatted sql`. Formatting variations may cause the Liquibase parser to return an error. When specifying changeset attributes in a formatted SQL changelog, any attribute value that contains spaces must be quoted. For example:
 ```sql
 --changeset john-doe:add_columns context:"production" labels:"schema-update critical"
 ALTER TABLE users ADD COLUMN first_name VARCHAR(50);
 ALTER TABLE users ADD COLUMN last_name VARCHAR(50);
 ```
 Notice:
-- `context`: "production" doesn't need quotes (no spaces), but it's valid to include them. You can learn more about [Contexts](/docs/database-devops/concepts/glossary/context).
+- `context`: "production" does not need quotes (no spaces), but it is valid to include them. Go to [Contexts](/docs/database-devops/concepts/glossary/context) to understand how contexts control deployment scope.
 - `labels`: "schema-update critical" requires quotes due to the space between words.
 
 :::tip
 Using space in author name is not recommended. Prefer to use dot/dash separated names.
 :::
 
-### SQL statement formatting
+### SQL statement format
 
 When `splitStatements` is set to `false` in your changeset, avoid trailing semicolons on individual SQL statements.
 
@@ -192,7 +194,7 @@ Each changeset in a formatted SQL file begins with a comment of the form:
 ```sql
 --changeset author:id attribute1:value1 attribute2:value2 [...]
 ```
-For more information on changesets, you can refer to the [Changeset](/docs/database-devops/concepts/glossary/changeset) page.
+Go to [Changeset](/docs/database-devops/concepts/glossary/changeset) to review the full changeset attribute reference.
 
 ### Rollback actions
 If you need to roll back a change, you can specify rollback actions directly in the changeset. These actions will be executed when the changeset is rolled back.
@@ -243,7 +245,13 @@ insert into test1 (id,  name) values (2, 'josh');
 </Tabs>
 
 :::caution 
-When using SQL format for your changelog files, rollback actions are required. For more information about implementing rollbacks, refer to [Automatic and Custom Rollback](../features/automatic-and-custom-rollback.md).
+When using SQL format for your changelog files, rollback actions are required. Go to [Automatic and custom rollback](/docs/database-devops/concepts-and-features/automatic-and-custom-rollback) to understand rollback strategies and implementation options.
 :::
 
-A clear and consistent SQL file structure allow teams to manage database changes with properly liquibase formatted SQL files. By following the best practices for directory organization, changeset formatting, spacing, and rollback definitions, you can ensure your changelogs are well-structured, maintainable, and CI/CD-ready.
+A clear and consistent SQL file structure allows teams to manage database changes with properly Liquibase formatted SQL files. By following the best practices for directory organization, changeset formatting, spacing, and rollback definitions, you can ensure your changelogs are well-structured, maintainable, and CI/CD-ready.
+
+## Next steps
+
+- Go to [Changelog](/docs/database-devops/concepts/glossary/changelog) to understand the changelog file format and how changesets are ordered.
+- Go to [Contexts](/docs/database-devops/concepts/glossary/context) to learn how to control which changesets apply to which environments.
+- Go to [Automatic and custom rollback](/docs/database-devops/concepts-and-features/automatic-and-custom-rollback) to configure rollback strategies for your SQL files.

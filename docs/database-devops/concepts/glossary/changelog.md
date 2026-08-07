@@ -82,15 +82,17 @@ import Head from '@docusaurus/Head';
   </script>
 </Head>
 
+## What will you learn
+
 A **changelog** in Harness Database DevOps, is a version-controlled text file that defines how a database schema should evolve over time. It consists of a sequence of **changesets**, each describing a specific change (e.g., creating tables, modifying indexes, or adding constraints).
 
 Harness uses changelogs to apply schema changes in a controlled, traceable, and CI/CD-friendly manner. By tracking every schema update in a changelog, teams can roll changes forward or backward confidently and align schema versioning with application releases.
 
-## How Changelogs Work?
+## How changelog works
 
-When running a harness apply step Harness will download your changelog, and run various commands to apply any pending changes to your database, and confirm which have already been applied. E.g. for a liquibase-based changelog we will execute the liquibase 'update' command using liquibase It checks each changeset to determine whether it has been applied by consulting the `DATABASECHANGELOG` table. If the changeset is new, it’s executed. Otherwise, it is skipped—unless attributes like `runAlways` or `runOnChange` are set. This mechanism ensures that schema changes are applied only once, preventing duplicate updates and maintaining a consistent database state across environments.
+When running a harness apply step Harness will download your changelog, and run various commands to apply any pending changes to your database, and confirm which have already been applied. E.g. for a liquibase-based changelog we will execute the liquibase 'update' command using liquibase It checks each changeset to determine whether it has been applied by consulting the `DATABASECHANGELOG` table. If the changeset is new, it is executed. Otherwise, it is skipped unless attributes like `runAlways` or `runOnChange` are set. This mechanism ensures that schema changes are applied only once, preventing duplicate updates and maintaining a consistent database state across environments.
 
-## Structuring a Changelog
+## Structuring a changelog
 
 Changelogs can include:
 
@@ -101,7 +103,7 @@ Changelogs can include:
 
 This flexibility allows teams to scale schema management across teams, microservices, and lifecycle stages.
 
-### Example YAML Changelog
+### Example YAML changelog
 
 ```yaml
 databaseChangeLog:
@@ -114,7 +116,7 @@ databaseChangeLog:
       file: changesets/order-schema.yaml
 ```
 
-## Runtime Behavior and Execution Flow
+## Runtime behavior and execution flow
 
 When a changelog is executed:
 
@@ -130,17 +132,23 @@ When a changelog is executed:
 
 This ensures no duplicate application of schema changes.
 
-## Best Practices
+## Best practices
 
-- Keep each changeset atomic (one logical change per changeset).
-- Use include or includeAll for modularization and team collaboration.
-- Use labels to labels to provide additional context to users about a change, for example the ticket number associated with the change.
-- Adopt a consistent naming convention for changelog files and directories.
-- Review rollback behavior and use rollback blocks where applicable.
+Follow these practices to keep your changelogs reliable and maintainable:
+
+  - Keep each changeset atomic (one logical change per changeset).
+  - Use include or includeAll for modularization and team collaboration.
+  - Use labels to provide additional context to users about a change, for example the ticket number associated with the change.
+  - Adopt a consistent naming convention for changelog files and directories.
+  - Review rollback behavior and use rollback blocks where applicable.
 
 ## Conclusion
 
 A changelog is the backbone of database versioning in Harness Database DevOps. It enables consistent, traceable, and auditable deployment of schema changes across environments. Whether you author changelogs in SQL, YAML, XML, or JSON, the changelog structure is designed to support your team’s collaboration, CI/CD automation, and rollback safety at scale.
+
+## Next steps
+  - Learn about [Changesets](./changeset.md) to understand how individual database changes are defined and managed.
+  - Explore [Contexts](./context.md) to understand how to control changeset execution across environments.
 
 ## FAQ
 
@@ -148,7 +156,7 @@ A changelog is the backbone of database versioning in Harness Database DevOps. I
 A changelog is a text-based file that sequentially lists database changes in the form of changesets. It acts as a source of truth for versioning and deployment of database schema updates.
 
 ### 2. Can I include other changelogs inside a main changelog?
-Yes, using the [`include` or `includeAll`](https://developer.harness.io/docs/database-devops/concepts-and-features/understanding-changelog-directories/organizing-sql-files#include-and-includeall-tags) tags. This modular approach supports better collaboration, parallel development, and reusability of schema definitions.
+Yes, using the [`include` or `includeAll`](/docs/database-devops/concepts-and-features/understanding-changelog-directories/organizing-sql-files#include-and-includeall-tags) tags. This modular approach supports better collaboration, parallel development, and reusability of schema definitions.
 
 ### 3. What Happens when I run the Harness Apply Step?
 Liquibase parses the changelog, evaluates global preconditions, and then applies new changesets to the target database. Previously applied changesets are skipped.
@@ -156,13 +164,13 @@ Liquibase parses the changelog, evaluates global preconditions, and then applies
 ### 4. Where is changelog execution history stored?
 Harness Database DevOps records applied changesets in the `DATABASECHANGELOG` table. From version 4.27.0 onwards, it also logs metadata in the `DATABASECHANGELOGHISTORY` table.
 
-### 5. What happens if I'm currently using liquibase, how can I convert my Liquibase Changelog to a Harness Changelog?
+### 5. What happens if I am currently using liquibase, how can I convert my Liquibase Changelog to a Harness Changelog?
 
 Harness's changelog is compatible to open source liquibase. Just point Harness at your existing changelog
 
-### 6. What happens if I'm currently using Flyway, how can I convert my Flyway Changelog to a Harness Changelog?
+### 6. What happens if I am currently using Flyway, how can I convert my Flyway Changelog to a Harness Changelog?
 
-Flyway changelogs are typically directories of SQL files to run in alphabetical order. You can point your harness changelog at this directory by following [the tutorial](https://developer.harness.io/docs/database-devops/get-started/build-a-changelog). For example, if your Flyway changelog is in a directory called `sql`, you can use the `includeAll` tag, which can do this:
+Flyway changelogs are typically directories of SQL files to run in alphabetical order. Go to [Build a changelog](/docs/database-devops/use-database-devops/get-started/build-a-changelog) to point Harness at this directory. For example, if your Flyway changelog is in a directory called `sql`, you can use the `includeAll` tag, which can do this:
 
 ```yaml
 databaseChangeLog:

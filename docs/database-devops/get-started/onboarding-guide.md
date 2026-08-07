@@ -38,8 +38,8 @@ Before beginning the walkthroughs in this guide, ensure you have:
 | Item | Details / Link |
 | --- | --- |
 | Harness account | Database DevOps License (go to “[Subscription Overview and Management](/docs/platform/subscriptions-licenses/subscriptions/#modules-with-no-direct-developer-tracking-consumption-entitlements)”) |
-| Kubernetes cluster | Kubernetes Cluster ≥ v1.18, Harness Delegate installed ([Delegate setup guide](https://developer.harness.io/docs/platform/delegates/install-delegates/overview/)) |
-| Database credentials | JDBC‑compatible database; user with DDL/DML privileges. (see “[JDBC connection strings](https://developer.harness.io/docs/database-devops/use-database-devops/set-up-connectors/)”) |
+| Kubernetes cluster | Kubernetes Cluster ≥ v1.18, Harness Delegate installed ([Delegate setup guide](/docs/platform/delegates/install-delegates/overview)) |
+| Database credentials | JDBC‑compatible database; user with DDL/DML privileges. (Go to “[JDBC connection strings](/docs/database-devops/use-database-devops/set-up-connectors) to review connection string formats”) |
 
 ## Setting up Database DevOps with Liquibase and Flyway
 Harness supports both Liquibase Compatible and Flyway Compatible configurations, but the setup varies based on your preferred workflow. Before configuring your DB Schema, ensure your repository follows the correct structure and that your migration files adhere to the chosen framework’s conventions.
@@ -51,11 +51,11 @@ If you already use Liquibase or Flyway, you can skip to the section [Configuring
 ### 1. Prepare Your Migration Framework (Flyway or Liquibase)
 <Tabs>
 <TabItem value="Liquibase Compatible" label="Liquibase Compatible">
-If you're new to Liquibase, there are two main ways to create your initial changelog:
+If you are new to Liquibase, there are two main ways to create your initial changelog:
 
 - Use existing SQL files: Recommended if you already manage your schema through SQL scripts.
 - Generate a changelog: Auto-generate a changelog by diffing an existing database.
-For more details on both options, refer to [How to Build a Changelog guide](https://developer.harness.io/docs/database-devops/use-database-devops/get-started/build-a-changelog/).
+Go to [Build a changelog](/docs/database-devops/use-database-devops/get-started/build-a-changelog) to set up your changelog using either option.
 
 1. Create Git Repo to store your DB schema files.
 2. Under repo, create folder sql/ and add ordered `*.sql` files
@@ -75,7 +75,7 @@ Use semantic file names ("`V1__init.sql`", "`V2__add_table.sql`").
 
 </TabItem>
 <TabItem value="Flyway Compatible" label="Flyway Compatible">
-If you're new to Flyway, start by creating migration files that follow Flyway's naming conventions and folder structure. Learn more about [Flyway Migration Files](https://developer.harness.io/docs/database-devops/concepts/flyway-migrations-file-structure).
+If you are new to Flyway, start by creating migration files that follow Flyway's naming conventions and folder structure. Go to [Flyway Migration Files](/docs/database-devops/concepts/flyway-migrations-file-structure) to understand naming conventions.
 
 1. Create a Git repository containing your schema directory.
 2. All migrations are stored under a folder such as "sql/migrations".
@@ -111,13 +111,12 @@ The primary database instance where the Liquibase changelog will be initially ap
 :::
 
 :::info
-To learn more about Git connectors settings, reference this [Harness Git connector settings](../../platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference.md) documentation for more.
+Go to [Harness Git connector settings](../../platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference.md) to review connector options.
 :::
 
 ### 3. Connect with Database Instance 
 
-Before we can deploy our Database Schema, we need to connect a database instance to which we can deploy it. Here’s how:
-
+Before we can deploy our Database Schema, we need to connect a database instance to which we can deploy it. Here is how:
 
 <DocVideo src="https://app.tango.us/app/embed/e1b78319-0170-40e2-935b-22eab05dcf3e?skipCover=false&defaultListView=false&skipBranding=true&makeViewOnly=true&hideAuthorAndDetails=true" title="Add New DB Instance"/>
 
@@ -125,7 +124,7 @@ Before we can deploy our Database Schema, we need to connect a database instance
 2. Select main (or your environment branch).
 3. Click New JDBC Connector and Enter Name, JDBC URL & credentials, select the Harness [delegate](../../platform/delegates/delegate-concepts/delegate-overview.md), then Save and Finish.
    - **Name** - A name to identify the database instance.
-   - **JDBC URL** - The JDBC connection string for your database instance. Learn More about [JDBC connection strings](https://developer.harness.io/docs/database-devops/use-database-devops/set-up-connectors/).
+   - **JDBC URL** - The JDBC connection string for your database instance. Go to [JDBC connection strings](/docs/database-devops/use-database-devops/set-up-connectors) to review connection string formats.
    - **Username** - The username to connect to the database.
    - **Password** - The password for the database user.
    - **Delegate** - The Harness Delegate that will run the database operations.
@@ -136,10 +135,10 @@ Before we can deploy our Database Schema, we need to connect a database instance
 A deployment pipeline deploys your database changes when it runs. In addition to deploying your database, it can also deploy application changes, and have other logic such as requiring a manual approval. Here are some steps on how to create a simple pipeline that deploys a schema change to a database instance anytime it changes in git:
 
 1. Under Pipelines, Click Create a Pipeline.
-2. Click on Add Stage and Choose Custom stage.
-3. Choose Add step group and Turn on Enable Containerized Stage.
+2. Click **Add Stage** and Choose **Custom stage**.
+3. Choose **Add step group** and Turn on **Enable Containerized Stage**.
 4. Choose the Kubernetes cluster you'd like to run on.
-5. Click Add Step and Choose the Apply Schema step under DB DevOps.
+5. Click **Add Step** and Choose the **Apply Schema** step under DB DevOps.
 6. For the step name, enter "Deploy Database Schema".
    ![dbops-step-apply-schema](./static/dbops-step-apply-schema.png)
    - **Name**: Name of the step, by default the name is "DBSchemaApply_1". 
@@ -215,6 +214,10 @@ pipeline:
 
 By completing the steps in this onboarding guide, you now have a fully operational Database DevOps workflow powered by Harness. Your schemas are version-controlled, your database instances are securely connected, and your pipelines are ready to execute repeatable, automated schema deployments using Liquibase or Flyway. This foundation sets the stage for enterprise-grade governance, faster release cycles, and improved developer productivity.
 
-As you operationalize more environments, explore advanced capabilities such as rollback automation, LLM-powered change authoring, and integrated CI/CD workflows. For troubleshooting or deeper architectural guidance, visit the Database DevOps documentation or engage with our support team—we’re committed to helping you scale with confidence. If you need more support with database setup, pipeline troubleshooting, or common runtime errors, be sure to visit the [Database DevOps Troubleshooting Guide](https://developer.harness.io/docs/database-devops/troubleshooting/) or reach out to [Our Support Team](https://www.harness.io/demo/database-devops). 
+## Next steps
 
-We're here to help you get the most out of Harness Database DevOps!
+As you operationalize more environments, explore advanced capabilities to deepen your Database DevOps practice.
+
+- Go to [Rollback automation](/docs/database-devops/use-database-devops/rollback-for-database-schemas) to configure automated rollback for failed deployments.
+- Go to [Author DB Change](/docs/database-devops/use-database-devops/configure-llm-for-database-devops/) to use LLM-powered change authoring.
+- Go to the [Database DevOps Troubleshooting Guide](/docs/database-devops/troubleshooting/) to resolve common setup and runtime errors.

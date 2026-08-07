@@ -1,6 +1,6 @@
 ---
 title: Provision Database DevOps
-Description: Learn how to provision Database DevOps in Harness.
+description: Learn how to provision database devops using Terraform and Harness API. This guide covers schema management, database instance provisioning, and automation of schema changes.
 tags:
     - database devops
     - terraform
@@ -28,19 +28,22 @@ keywords:
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
+
+This guide walks you through provisioning Database DevOps using Terraform and the Harness API. The configuration enables seamless schema management, database instance provisioning, and automation of schema changes as part of your CI/CD workflows.
 
 <Tabs>
 <TabItem value="Provisioning via Terraform">
 This guide walks you through provisioning Database DevOps using Terraform and the Harness Terraform Provider. The configuration enables seamless schema management, database instance provisioning, and automation of schema changes as part of your CI/CD workflows.
 
-## Prerequisites
+## Before you begin
 Before proceeding, ensure you have:
 - Terraform v1.3+ installed.
 - Access to a Harness account with Database DevOps Licence. Contact [Harness Database DevOps Support](https://www.harness.io/demo/database-devops) if you need assistance.
 - Properly configured connectors for your databases (e.g., CockroachDB, PostgreSQL).
-- A valid [Harness Platform API Key](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys/#create-personal-api-keys-and-tokens).
+- A valid [Harness Platform API Key](/docs/platform/automation/api/add-and-manage-api-keys/#create-personal-api-keys-and-tokens).
 
-## Step 1: Define a Database Schema
+## Step 1: Define a database schema
 The `harness_platform_db_schema` resource allows you to define and manage a database schema.
 ```hcl
 resource "harness_platform_db_schema" "my_schema" {
@@ -62,7 +65,7 @@ In the above configuration:
 
 This ensures schema migrations are version-controlled and can be applied consistently across environments.
 
-## Step 2: Provision a Database Instance
+## Step 2: Provision a database instance
 Next, use the `harness_platform_db_instance` resource to provision a database instance.
 ```hcl
 resource "harness_platform_db_instance" "my_instance" {
@@ -86,8 +89,9 @@ In this configuration, you specify:
 
 This setup allows you to manage database instances that automatically track schema changes.
 
-## Example Terraform Configuration
-Here’s a complete example combining both resources:
+## Example Terraform configuration
+
+The following example combines both resources into a complete, runnable configuration:
 ```hcl
 terraform {  
   required_providers {  
@@ -132,7 +136,7 @@ resource "harness_platform_db_instance" "my_instance" {
   depends_on = [harness_platform_db_schema.my_schema]
 }
 ```
-## Step 3: Apply the Configuration
+## Step 3: Apply the configuration
 To apply the configuration:
 ```bash
 terraform init
@@ -153,17 +157,17 @@ If you also want to set up a JDBC connection via Terraform, you can use the [har
 
 This guide shows you how to create a database schema and then provision a database instance that tracks changes to the schema. This approach ensures your database objects are versioned and deployed consistently across environments.
 
-## Prerequisites
+## Before you begin
 
 Before you start, ensure you have:
 
-- A valid **Harness account** and API key. Learn more about managing API keys [here](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys/#create-personal-api-keys-and-tokens).
+- A valid **Harness account** and API key. Go to [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys/#create-personal-api-keys-and-tokens) to create an API key.
 - Organization (`orgIdentifier`) and Project (`projectIdentifier`) IDs.
 - A pre-configured **DB Connector**. You can create one via the [Harness API](https://apidocs.harness.io/connectors/createconnector) as well or Harness UI. This connector allows Harness to connect to your database (e.g., PostgreSQL, MySQL, CockroachDB).
 - An HTTP client such as `curl` or Postman.
 
 :::note
-If you are using Harness API to Create a Database Connector, `connector.type` should be set to `JDBC`. Learn more about creating a JDBC connector [here](https://developer.harness.io/docs/database-devops/use-database-devops/set-up-connectors/).
+If you are using Harness API to create a database connector, `connector.type` should be set to `JDBC`. Go to [Set up connectors](/docs/database-devops/use-database-devops/set-up-connectors) to configure a JDBC connector.
 :::
 
 In the cURL examples below, replace:
@@ -172,7 +176,7 @@ In the cURL examples below, replace:
 - `<account_id>` with your Harness account ID. You can find this in the URL when logged into Harness: `https://app.harness.io/ng/account/<account_id>/...`
 - `<your_api_key>` with your Harness API key. You can find this under Profile Overview.
 
-## Step 1: Create a Database Schema
+## Step 1: Create a database schema
 
 Use the Harness Database DevOps API to define a schema that your instances will use.
 
@@ -216,7 +220,7 @@ In the above request, we define a schema with the following parameters:
 Creating a schema first ensures that all instances are properly linked and can track versioned changes via Git.
 :::
 
-#### Example Curl Request
+#### Example curl request
 ```bash
 curl -i -X POST \
   'https://app.harness.io/v1/orgs/<org>/projects/<project>/dbschema' \
@@ -265,8 +269,8 @@ Above command creates a new database schema, and you can now use it to provision
 The changelog must be provided for Repository type schemas and `instanceCount` starts at 0.
 :::
 
-## Step 2: Create a Database Instance
-After the schema is ready, let's provision an instance for it.
+## Step 2: Create a database instance
+After the schema is ready, let us provision an instance for it.
 
 ### Request
 
@@ -296,7 +300,7 @@ In this request, we specify:
 - `substituteProperties`: Key-value pairs for any schema property substitutions (e.g., database name).
 - `tags`: Optional key-value pairs to categorize instances (e.g., `{"env":"dev"}`).
 
-### Example Curl Request
+### Example curl request
 ```bash
 curl -i -X POST \
   'https://app.harness.io/v1/orgs/<org>/projects/<project>/dbschema/<db_schema_identifier>/instance' \
@@ -314,7 +318,7 @@ curl -i -X POST \
   }'
 ```
 
-When you run the above command, you'll get the following response:
+When you run the above command, you will get the following response:
 ```json
 {
   "branch": "main",
@@ -337,18 +341,19 @@ When you run the above command, you'll get the following response:
 }
 ```
 
-## Things to Note
-- **Schema first**: The changelog is mandatory for Repository-type schemas.
-- **Instance second**: Instances reference an existing schema.
-- **Branch**: Both schema and instance must point to the correct Git branch.
-- **Connector**: Must match the DB type (Postgres, MySQL, etc.).
+## Things to note
+
+- **Schema first:** The changelog is mandatory for Repository-type schemas.
+- **Instance second:** Instances reference an existing schema.
+- **Branch:** Both schema and instance must point to the correct Git branch.
+- **Connector:** Must match the DB type (Postgres, MySQL, etc.).
 </TabItem>
 
 <TabItem value="Bulk Onboarding from CSV">
 
 When you need to onboard hundreds or thousands of database instances, manual resource creation through the UI or individual Terraform configurations becomes impractical. The Database DevOps Bulk Onboarding Terraform module streamlines this process: it provisions JDBC connectors, database instances, and schemas directly from CSV files.
 
-## Prerequisites
+## Before you begin
 
 Before you begin, ensure you have:
 
@@ -523,40 +528,33 @@ After Terraform completes, verify the resources were created:
 
 ## Troubleshooting
 
-### CSV parsing errors
+<Troubleshoot
+  issue="CSV parsing errors during terraform plan with csvdecode errors in Harness Database DevOps bulk onboarding"
+  mode="docs"
+  fallback="Ensure every data row has the same number of fields as the header. Do not add trailing commas. Wrap comma-containing fields in double quotes and escape internal double quotes as double double-quotes."
+/>
 
-If you see `csvdecode` errors during `terraform plan`:
+<Troubleshoot
+  issue="Database instances fail to create with schema identifier mismatch error during Harness Database DevOps bulk onboarding via Terraform"
+  mode="docs"
+  fallback="Verify that every schema_identifier value in the JDBC CSV exactly matches an identifier in the schema CSV. Identifiers are case-sensitive."
+/>
 
-- Ensure every data row has exactly the same number of fields as the header row.
-- Do not add trailing commas at the end of rows.
-- Wrap fields containing commas in double quotes.
-- Escape double quotes inside quoted fields as `""`.
+<Troubleshoot
+  issue="Credentials JSON format error in Harness Database DevOps bulk onboarding CSV"
+  mode="fallback-only"
+  fallback="Wrap the entire JSON in double quotes and escape internal double quotes as double double-quotes. Example: {&quot;&quot;type&quot;&quot;:&quot;&quot;UsernamePassword&quot;&quot;,&quot;&quot;username&quot;&quot;:&quot;&quot;dbuser&quot;&quot;}"
+/>
 
-### Schema identifier mismatch
-
-If instances fail to create with a message about missing schemas:
-
-- Verify that every `schema_identifier` value in the JDBC CSV matches an `identifier` in the schema CSV.
-- Check for typos or case mismatches (identifiers are case-sensitive).
-
-### Credentials JSON format
-
-The `credentials_json` column must contain valid JSON. For CSV compatibility:
-
-- Wrap the entire JSON in double quotes.
-- Escape internal double quotes as `""`.
-
-**Example:**
-
-```csv
-"{""type"":""UsernamePassword"",""username"":""dbuser"",""password_ref"":""account.dbpassword""}"
-```
-
-### Schema type validation
-
-The `type` field in the schema CSV must use title case: `Repository` or `Script`, not `REPOSITORY` or `repository`. The Harness provider validates these values strictly.
+<Troubleshoot
+  issue="Schema type validation error in Harness Database DevOps Terraform provider when using bulk onboarding CSV"
+  mode="fallback-only"
+  fallback="The type field in the schema CSV must use title case: Repository or Script. Values such as REPOSITORY or repository are not accepted."
+/>
 
 ## Additional resources
+
+The following resources provide further context for the bulk onboarding Terraform module.
 
 - Go to [terraform-harness-database-devops-onboarding repository](https://github.com/harness-community/terraform-harness-database-devops-onboarding) to view the module source code and examples.
 - Go to [Set up connectors](/docs/database-devops/use-database-devops/set-up-connectors) to understand JDBC connector configuration.
@@ -564,3 +562,9 @@ The `type` field in the schema CSV must use title case: `Repository` or `Script`
 
 </TabItem>
 </Tabs>
+
+## Next steps
+
+- Go to [Create a pipeline in Database DevOps](/docs/database-devops/gitops/create-a-pipeline) to build the pipeline that runs your migrations.
+- Go to [Secure database connectivity with SSL](/docs/database-devops/use-database-devops/ssl) to enable encrypted connections for your database.
+- Go to [Set up connectors](/docs/database-devops/use-database-devops/set-up-connectors) to configure JDBC connectors for your database instances.

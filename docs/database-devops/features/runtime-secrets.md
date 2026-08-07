@@ -15,27 +15,25 @@ tags:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## Overview
-
 This guide explains how secrets (like registry credentials, clone script secrets, and database passwords) are managed securely at runtime in DBOps pipelines within Harness.
 
-## Why Runtime Secrets Matter
+## Why runtime secrets matter
 
 In Harness DBOps pipelines, secrets like container registry credentials, database passwords, and script tokens are needed to run your workflows. By default, these secrets are stored as Kubernetes Secrets and attached to the pods when they run.
 
-However, For organizations with stricter compliance requirements or a desire to minimize secrets exposure, this feature lets you pass secrets directly to containers only when they’re needed-without saving them in pod specs, Kubernetes manifests.
+For organizations with stricter compliance requirements or a desire to minimize secrets exposure, this feature lets you pass secrets directly to containers only when they are needed, without saving them in pod specs or Kubernetes manifests.
 
 :::info note
-Once the step is completed, the pods are terminated, and the secrets are removed from memory. This means that even if someone gains access to the pod, they won't be able to retrieve the secrets.
+Once the step is completed, the pods are terminated and the secrets are removed from memory. This means that even if someone gains access to the pod, they will not be able to retrieve the secrets.
 :::
 
-## Supported Secret Types
+## Supported secret types
 
 In DBOps workflows, the following types of secrets are typically required:
 
-1. **Container Registry** – used to pull images from private or public registries.
-2. **Schema Repo Clone Secrets** – used by scripts to fetch schema definitions from source control.
-3. **Database Passwords** – used for authenticating with databases via JDBC or similar connectors.
+- **Container registry:** Used to pull images from private or public registries.
+- **Schema repo clone secrets:** Used by scripts to fetch schema definitions from source control.
+- **Database passwords:** Used for authenticating with databases via JDBC or similar connectors.
 
 ### Prerequisites
 
@@ -46,7 +44,7 @@ Ensure you have the following versions:
 - **Ng manager**: 1.87.0
 - **Ci-manager**: 1.77.0
 
-### How it Works
+### How it works
 
 <Tabs>
 <TabItem value="Container Registry">
@@ -115,8 +113,7 @@ Secrets are not retained after process execution. Even if someone runs `kubectl 
 
 :::info important
 This feature only applies to DBSchema clone scripts. It does not apply to GitClone or Artifactory connector secrets.
-To understand how to add and reference file secrets in Harness pipelines, refer to the official documentation:  
-[Add and reference file secrets](https://developer.harness.io/docs/platform/secrets/add-file-secrets#reference-by-id)
+Go to [Add and reference file secrets](/docs/platform/secrets/add-file-secrets#reference-by-id) to understand how to add and reference file secrets in Harness pipelines.
 :::
 
 </TabItem>
@@ -125,9 +122,14 @@ To understand how to add and reference file secrets in Harness pipelines, refer 
 ## Benefits
 
 - Secrets are not stored in Kubernetes or pod specs.
-- Enhanced security as secrets only live in memory for the duration of execution.
+- Enhanced security because secrets only live in memory for the duration of execution.
 - Reduced surface area for secret leakage or misuse.
 
 :::info Note
 These benefits are realized only when runtime secret injection settings are explicitly enabled in the Database DevOps module under Account Settings.
 :::
+
+## Next steps
+
+- Go to [Set up connectors](/docs/database-devops/use-database-devops/set-up-connectors) to configure JDBC connectors that use secrets for database authentication.
+- Go to [Provision Database DevOps](/docs/database-devops/use-database-devops/provision-database-devops) to set up schemas and instances that use these connectors.

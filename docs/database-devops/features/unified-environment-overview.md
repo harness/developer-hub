@@ -30,11 +30,11 @@ tags:
 
 This guide talks you through the UI of Harness Database DevOps. 
 
-## Environment Overview for Database DevOps
+## Environment overview for Database DevOps
 
  ![A screenshot of the Harness Database DevOps page that highlights the menu on the left of the UI.](./static/db-devops-overview.png)
 
-When you open the Harness Database DevOps module, you will encounter a single-pane interface that will display an overview of important activities relevant to using DB DevOps. Here's what you can expect:
+When you open the Harness Database DevOps module, you will encounter a single-pane interface that will display an overview of important activities relevant to using DB DevOps. The following sections describe what you can expect:
 
   - **Left Navigation Menu**: A drop-down menu displaying multiple navigation options. 
   - **DB Schemas**: Located at the top-left under the overview tab, this section shows the number of database schemas you have created. 
@@ -43,7 +43,7 @@ When you open the Harness Database DevOps module, you will encounter a single-pa
   - **Last 30 Days Pipeline Executions**: This shows the number of pipeline executions in the last 30 days from the point of login, including both failed and successful executions. It will include both failed and successful executions. Users can toggle between a bar graph and a line graph for visualization. 
   - **Migration State**: This indicates the status of recent changesets. A key in the top right of this section helps identify the statuses displayed in the table.
 
-## The Unified Environment Overview for Database Schemas
+## The unified environment overview for database schemas
 
  ![Unified View that highlights the Database Schemas Applied](./static/dbops-unified-view.png)
 
@@ -58,12 +58,12 @@ This overview provides insights into the database states in both production and 
   - **Last Schema Update**: The date of when the schema was last updated.
   - **Three Point Menu**: Selecting this at the end of a highlighted database schema provides options to edit the schema details or delete it. 
 
-## The Overview of the Harness Database DevOps Pipelines 
+## The overview of the Harness Database DevOps pipelines
 
   ![A screenshot of the Harness Database DevOps Pipeline UI](./static/db-devops-pipelines-page.png)
 
 On the DB DevOps **Pipelines** UI, you are provided with a detailed, yet straightforward overview that offers userful information 
-for understanding the status of the pipelines in your environments. Here's what you will find on the Harness Database DevOps **Pipelines** interface:
+for understanding the status of the pipelines in your environments. The following fields appear on the Harness Database DevOps **Pipelines** interface:
 
  - **Pipeline Name**: The name of the pipeline
  - **Code Source**: The source of the code, whether it be inline or stored in a repository. 
@@ -72,7 +72,7 @@ for understanding the status of the pipelines in your environments. Here's what 
  hours, days, months or years beneath the user's name. 
  - **Last modified**: The date of when the pipeline was last modified. 
 
-## Viewing ChangeSets in the Harness Database DevOps UI
+## Viewing changesets in the Harness Database DevOps UI
 
 ![A screenshot of the Harness Database DevOps ChangeSets UI](./static/dbops-changeset-view.png)
 Clicking on a ChangeSet opens the detail pane on the right-hand side of the UI. This panel provides two tabs:
@@ -81,14 +81,14 @@ Clicking on a ChangeSet opens the detail pane on the right-hand side of the UI. 
 - **SQL**: For script-based changes, this tab shows the actual SQL that was executed, ensuring transparency and auditability for database administrators and platform engineers.
 
 
-Within the Migration State tab of the Harness Database DevOps platform, users are provided with clear visibility into the applied ChangeSets across database environments. This view is instrumental in tracking schema-level changes and understanding the evolution of your data models over time. Here’s what you’ll find in the Migration State interface:
+Within the Migration State tab of the Harness Database DevOps platform, you have clear visibility into the applied changesets across database environments. This view is instrumental in tracking schema-level changes and understanding the evolution of your data models over time. The Migration State interface contains the following information:
 
 - **Change ID**: A unique identifier for each ChangeSet, often scoped by team or environment for traceability (e.g., `devteam:2`).
 - **Author**: The email address of the individual or service account or author name responsible for creating the ChangeSet.
 - **Comment**: A descriptive message associated with the ChangeSet to indicate the purpose or context of the change.
 - **Changes**: A detailed list of schema-level actions applied in the ChangeSet, such as `createIndex`, `addColumn` or `dropTable`. This allows DB admins and developers to quickly assess what structural updates were made to the database without manually inspecting scripts.
 
-## Database DevOps Executions Overview 
+## Database DevOps executions overview
 
 ![A screenshot of the Harness Database DevOps Executions UI](./static/db-devops-executions-overview.png)
 
@@ -98,4 +98,9 @@ The Harness DB DevOps **Executions** UI provides a comprehensive view of the exe
  - **Status**: The current status of the pipeline execution, showing whether it has passed or failed. This is crucial for quickly assessing the outcome of recent deployments.
  - **Service**: This lists the service associated with the pipeline, providing context on which application or service the changes were applied to.
  - **Environment**: The environment in which the pipeline was executed, such as development, staging, or production, helping users understand the context of the deployment.
- - **Execution Start Time**: The name of the person who last initiated the pipeline execution, along with the date and time it was executed. The time is presented in a user-friendly format, estimating hours, days, months, or years beneath the user's name, which aids in tracking when changes were made.
+ - **Execution start time:** The name of the person who last initiated the pipeline execution, along with the date and time it was executed. The time is presented in a user-friendly format, estimating hours, days, months, or years beneath the user's name, which aids in tracking when changes were made.
+
+## Next steps
+
+- Go to [Create a pipeline in Database DevOps](/docs/database-devops/gitops/create-a-pipeline) to set up your first deployment pipeline.
+- Go to [Access applied changesets](/docs/database-devops/concepts-and-features/access-applied-changesets) to query the migration state programmatically from pipeline steps.

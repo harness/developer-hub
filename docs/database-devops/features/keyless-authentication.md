@@ -32,12 +32,11 @@ In this model, a Kubernetes Service Account (KSA) is mapped to a Google Service 
 
 ## When to use this method
 
-Use GKE Workload Identity authentication when:
-- Your Harness Delegate runs in a GKE cluster
-- You prefer Kubernetes-native authentication
-- You want to leverage existing GKE infrastructure
+Use GKE Workload Identity authentication when your Harness Delegate runs in a GKE cluster, you prefer Kubernetes-native authentication, or you want to leverage existing GKE infrastructure.
 
 ## Comparison with OIDC authentication
+
+The table below shows when to choose GKE Workload Identity over OIDC-based authentication.
 
 | Aspect | GKE Workload Identity (This Guide) | OIDC with Workload Identity Federation |
 |--------|-----------------------------------|----------------------------------------|
@@ -51,7 +50,9 @@ Use GKE Workload Identity authentication when:
 If your delegate runs outside GKE or you prefer OIDC-based authentication, go to [Configure OIDC authentication for Cloud Spanner and CloudSQL](/docs/database-devops/features/oidc-authentication) for an alternative keyless authentication method using Workload Identity Federation. OIDC authentication works with delegates running anywhere (GKE, EKS, on-premises, or VMs).
 :::
 
-## How It Works?
+## How it works
+
+GKE Workload Identity authenticates your delegate to Google Cloud services through a chain of IAM bindings between a Kubernetes Service Account and a Google Service Account.
 
 1. The **Harness Delegate** runs inside your Kubernetes cluster  
 2. It uses a **Kubernetes Service Account (KSA)**  
@@ -59,7 +60,7 @@ If your delegate runs outside GKE or you prefer OIDC-based authentication, go to
 4. The GSA is granted IAM permissions to access Google Cloud databases  
 5. JDBC connections are authenticated automatically via IAM  
 
-## What are Prerequisites for GKE Workload Identity with Cloud Databases?
+## Before you begin
 
 Ensure the following are in place:
 
@@ -68,9 +69,9 @@ Ensure the following are in place:
 - A **Harness Delegate installed in the cluster**
 - Permissions to manage IAM roles and service accounts in GCP
 - The following **GCP APIs must be enabled** on the relevant GCP project(s):
-  - [Cloud Spanner API](https://console.cloud.google.com/apis/library/spanner.googleapis.com) (`spanner.googleapis.com`) — for Cloud Spanner databases
-  - [Cloud SQL Admin API](https://console.cloud.google.com/apis/library/sqladmin.googleapis.com) (`sqladmin.googleapis.com`) — for CloudSQL databases
-  - [IAM Service Account Credentials API](https://console.cloud.google.com/apis/library/iamcredentials.googleapis.com) (`iamcredentials.googleapis.com`) — required for Workload Identity token exchange
+  - [Cloud Spanner API](https://console.cloud.google.com/apis/library/spanner.googleapis.com) (`spanner.googleapis.com`) - for Cloud Spanner databases
+  - [Cloud SQL Admin API](https://console.cloud.google.com/apis/library/sqladmin.googleapis.com) (`sqladmin.googleapis.com`) - for CloudSQL databases
+  - [IAM Service Account Credentials API](https://console.cloud.google.com/apis/library/iamcredentials.googleapis.com) (`iamcredentials.googleapis.com`) - required for Workload Identity token exchange
   - [IAM API](https://console.cloud.google.com/apis/library/iam.googleapis.com) (`iam.googleapis.com`)
 
   You can enable these APIs using the `gcloud` CLI:
@@ -84,6 +85,8 @@ Ensure the following are in place:
   ```
 
 ## Set up GKE Workload Identity authentication
+
+Follow these steps to configure keyless authentication between your GKE delegate and your Cloud Spanner or CloudSQL database.
 
 ### Step 1: Create a Google Service Account (GSA)
 
@@ -146,9 +149,9 @@ gcloud iam service-accounts add-iam-policy-binding \
   --role="roles/iam.workloadIdentityUser"
 ```
 
-### Step 4: Configure RBAC for Runtime Execution
+### Step 4: Configure RBAC for runtime execution
 
-Create Role:
+Create a role:
 
 ```bash
 kubectl create role dbops-runtime-role \
@@ -156,7 +159,7 @@ kubectl create role dbops-runtime-role \
   --verb=get,list,watch,create,update,patch,delete \
   --resource=pods,pods/status,secrets,events
 ```
-Bind Role to Service Account:
+Bind the role to the service account:
 
 ```bash
 kubectl create rolebinding dbops-runtime-role-binding \
@@ -171,7 +174,7 @@ During the setup, a secret is created in GCP Secret Manager (for example: `secop
 You must use exact secret name in the **Reference Secret** field when configuring the secret in Harness. Any mismatch will result in authentication or connection failures.
 :::
 
-### Step 5: Configure Harness Delegate
+### Step 5: Configure the Harness Delegate
 Ensure your delegate uses the Kubernetes Service Account:
 
 ```yaml
@@ -184,6 +187,8 @@ spec:
 ```
 
 ### Step 6: Configure database-specific IAM authentication
+
+Each database type requires additional IAM configuration at the database level.
 
 Depending on your database type, you need to configure IAM authentication at the database level.
 
@@ -240,15 +245,16 @@ GRANT ALL PRIVILEGES ON <database-name>.* TO 'db-access-sa@<project-id>.iam';
 **Phase 3: Application client setup**
 
 The JDBC connection URL must include the following parameters for IAM authentication:
-- `cloudSqlInstance`: Instance connection name (`project-id:region:instance-name`)
-- `socketFactory`: `com.google.cloud.sql.postgres.SocketFactory` or `com.google.cloud.sql.mysql.SocketFactory`
-- `enableIamAuth=true`: Enables IAM authentication
-- `user`: Service account user name
 
-Go to [CloudSQL JDBC Socket Factory documentation](https://github.com/GoogleCloudPlatform/cloud-sql-jdbc-socket-factory/blob/main/docs/jdbc.md) to learn more about authentication types and usage.
+- **`cloudSqlInstance`:** Instance connection name (`project-id:region:instance-name`)
+- **`socketFactory`:** `com.google.cloud.sql.postgres.SocketFactory` or `com.google.cloud.sql.mysql.SocketFactory`
+- **`enableIamAuth=true`:** Enables IAM authentication
+- **`user`:** Service account user name
+
+Go to [CloudSQL JDBC Socket Factory documentation](https://github.com/GoogleCloudPlatform/cloud-sql-jdbc-socket-factory/blob/main/docs/jdbc.md) to review authentication types and usage.
 
 
-### Step 7: Create JDBC Connector in Harness
+### Step 7: Create a JDBC connector in Harness
 
 1. Use the GCP Secret Manager in Harness to reference delegate credentials.
    
@@ -266,10 +272,12 @@ Go to [CloudSQL JDBC Socket Factory documentation](https://github.com/GoogleClou
 
 #### Cloud Spanner connector
 
+Configure the connector using the JDBC URL and authentication settings below.
+
 ![JDBC Connection Configuration For Spanner](./static/dbops-jdbc-spanner-connector.png)
 
 **JDBC URL format:**
-```
+```text
 jdbc:cloudspanner:/projects/<project-id>/instances/<instance-id>/databases/<database-name>?lenient=true
 ```
 
@@ -279,8 +287,10 @@ jdbc:cloudspanner:/projects/<project-id>/instances/<instance-id>/databases/<data
 
 #### CloudSQL PostgreSQL connector
 
+Configure the connector using the JDBC URL and authentication settings below.
+
 **JDBC URL format:**
-```
+```text
 jdbc:postgresql:///<database-name>?cloudSqlInstance=<project-id>:<region>:<instance-name>&socketFactory=com.google.cloud.sql.postgres.SocketFactory&enableIamAuth=true&user=db-access-sa@<project-id>.iam
 ```
 
@@ -290,8 +300,10 @@ jdbc:postgresql:///<database-name>?cloudSqlInstance=<project-id>:<region>:<insta
 
 #### CloudSQL MySQL connector
 
+Configure the connector using the JDBC URL and authentication settings below.
+
 **JDBC URL format:**
-```
+```text
 jdbc:mysql:///<database-name>?cloudSqlInstance=<project-id>:<region>:<instance-name>&socketFactory=com.google.cloud.sql.mysql.SocketFactory&enableIamAuth=true&user=db-access-sa
 ```
 
@@ -302,40 +314,41 @@ jdbc:mysql:///<database-name>?cloudSqlInstance=<project-id>:<region>:<instance-n
 
 ### Step 8: Test the connection
 
-Verify the delegate is connected and healthy.
+Verify the delegate is connected and the JDBC connector can reach your database.
 
-Test the JDBC connector in Harness to ensure it can successfully connect to your database using keyless authentication.
+Test the JDBC connector in Harness to confirm it can connect to your database using keyless authentication.
 
 **Common failure points:**
-- **Username suffix**: Database user names for IAM authentication end in `.iam`, not `.iam.gserviceaccount.com`
-- **Case sensitivity**: In PostgreSQL, wrap the username in double quotes in SQL commands (for example, `"user@proj.iam"`)
-- **Plugin null error**: In Java, this usually means `enableIamAuth=true` is missing or the Socket Factory library is not in the classpath (CloudSQL only)
+
+- **Username suffix:** Database user names for IAM authentication end in `.iam`, not `.iam.gserviceaccount.com`.
+- **Case sensitivity:** In PostgreSQL, wrap the username in double quotes in SQL commands (for example, `"user@proj.iam"`).
+- **Plugin null error:** In Java, this usually means `enableIamAuth=true` is missing or the Socket Factory library is not in the classpath (CloudSQL only).
 
 Go to [Authenticating Cloud SQL with IAM service accounts](https://cloud.google.com/blog/topics/developers-practitioners/authenticating-cloud-sql-postgresql-iam-service-accounts/) for additional troubleshooting guidance.
 
 
 ### Step 9: Use keyless authentication in pipelines
 
-When configuring your pipeline steps that interact with your database, ensure you select the JDBC connector that is set up for keyless authentication.
+Select the keyless JDBC connector in your pipeline steps and specify the service account in the step group.
 
-When creating the step group for the pipeline, provide the associated service account name in the step group for the service account field.
+When configuring your pipeline steps, select the JDBC connector set up for keyless authentication. When creating the step group, enter the associated service account name in the service account field.
 
 ![Add Service Account to pipeline step group](./static/dbops-add-service-account-pipeline.png)
 
 
 ## Best practices
 
-- Use keyless authentication for production workloads
-- Follow least-privilege IAM principles (grant only required roles)
-- Avoid storing service account keys
-- Monitor delegate health and scaling
-- Use GCP Secret Manager for sensitive configuration
-- Enable audit logging for service account impersonation
-- Rotate service accounts periodically for security compliance
-- Test connections in non-production environments first
+- **Use keyless authentication for production workloads:** Eliminates the risk of leaked service account key files.
+- **Follow least-privilege IAM principles:** Grant only the roles required for the specific database and operation.
+- **Avoid storing service account keys:** The entire point of Workload Identity is to remove static credentials.
+- **Monitor delegate health and scaling:** An unhealthy delegate breaks the Workload Identity token exchange silently.
+- **Use GCP Secret Manager for sensitive configuration:** Reference secrets by name instead of embedding values in connectors.
+- **Enable audit logging for service account impersonation:** Workload Identity impersonation events appear in Cloud Audit Logs.
+- **Rotate service accounts periodically:** Even keyless setups benefit from rotating the GSA for security compliance.
+- **Test connections in non-production environments first:** Validate the full IAM chain before promoting to production.
 
 ## Next steps
 
-Now that you have configured keyless authentication with GKE Workload Identity, you can use your connector in Database DevOps pipelines. Go to [Create a Database DevOps pipeline](/docs/database-devops/use-database-devops/get-started/onboarding-guide/) to build automated database change workflows.
+Now that you have configured keyless authentication with GKE Workload Identity, you can use your connector in Database DevOps pipelines. Go to [Create a Database DevOps pipeline](/docs/database-devops/gitops/create-a-pipeline) to build automated database change workflows.
 
-If you encounter any issues during setup, refer to the [Troubleshooting Guide](../troubleshooting/troubleshooting.md) or reach out to Harness support for assistance.
+If you encounter issues during setup, go to the [Troubleshooting guide](/docs/database-devops/troubleshooting/) to diagnose common failures.

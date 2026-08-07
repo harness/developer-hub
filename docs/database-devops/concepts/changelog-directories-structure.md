@@ -28,17 +28,18 @@ tags:
 
 This guide explains how to effectively manage changelog file directories. A well-organized changelog file directory structure is crucial for maintaining database changes across multiple instances and environments.
 
-## Using includeAll for Efficient Change Management
+## Using includeAll for efficient change management
 
 Organizing your changelog files properly is important as your database projects grow. A clear and consistent folder structure makes it easier to track changes, review updates, and handle different environments like development, testing, and production.
 
 The `includeAll` tag helps manage changelog files more easily. When specified in your master changelog file, it automatically includes all changelog files from a specified directory in alphabetical order.
 
 ### Advantages
-1. **Automatic File Discovery**: No need to manually list each changelog file in your master changelog.
-2. **Simplified Maintenance**: Add new changelog files to the directory without modifying the master changelog.
-3. **Predictable Ordering**: Files are processed in alphabetical order, making it easy to control execution sequence.
-4. **Reduced Human Error**: Eliminates the risk of accidentally omitting changelog files from the master list.
+
+- **Automatic file discovery:** No need to manually list each changelog file in your master changelog.
+- **Simplified maintenance:** Add new changelog files to the directory without modifying the master changelog.
+- **Predictable ordering:** Files are processed in alphabetical order, making it easy to control execution sequence.
+- **Reduced human error:** Eliminates the risk of accidentally omitting changelog files from the master list.
 
 :::warning Important Best Practice
 Each changeset should contain only one DML/SQL statement. This is especially crucial for proper rollback handling in databases like Oracle. Multiple statements in a single changeset can make rollbacks complex and potentially unreliable.
@@ -59,11 +60,11 @@ databaseChangeLog:
 The path specified in `includeAll` should be relative to the location of the changelog file that contains this statement.
 :::
 
-## Directory Structure Approaches
+## Directory structure approaches
 
 There are several approaches to organizing your changelog files based on your needs and scale. Here are the recommended patterns:
 
-### 1. Organization by Release and Feature
+### 1. Organization by release and feature
 
 You may want to set up a hierarchical directory structure using a separate directory for each release and a changelog for each feature with changes specific to that release.
 
@@ -155,7 +156,7 @@ databaseChangeLog:
 - Harder to get a complete view of a single feature's evolution
 - More challenging to manage dependencies between features
 
-### 2. Organization by Entity/Service
+### 2. Organization by entity or service
 
 This structure groups changes by entity or microservice:
 
@@ -182,7 +183,7 @@ We can refer the above examples to understand the structure of changelogs, only 
 - Harder to track chronological order of changes
 - Could lead to redundant changes across services
 
-### 3. Single Changelog Approach
+### 3. Single changelog approach
 
 A simplified structure with one main changelog (recommended for small projects):
 
@@ -232,13 +233,13 @@ databaseChangeLog:
 - Harder to maintain in the long term
 - Challenging to roll back specific changes
 
-## Managing Multiple Instances
+## Managing multiple instances
 
 There are two primary approaches to managing multiple database instances:
 
-### 1. Branch-Based Approach
+### 1. Branch-based approach
 
-Use different branches for [different environments](/docs/database-devops/gitops/environment-by-branch)
+Use different branches for [different environments](/docs/database-devops/gitops/environment-by-branch) to isolate changes per deployment target.
 
 ```
 main branch     → Development
@@ -262,7 +263,7 @@ Below attached screen shows the structure of branch-based approach, where we hav
 - Difficulty in managing environment-specific configurations
 - Challenging to roll back specific changes
 
-### 2. Directory-Based Approach
+### 2. Directory-based approach
 
 Maintain instance-specific directories in the main branch:
 
@@ -307,7 +308,7 @@ Below attached screen shows the structure of directory-based approach, where we 
 
 
 :::info
-Please add a note that, we could use any file format for storing the changelogs. The syntax must be valid, including the correct file extension for the changelog (SQL/YAML/XML/JSON). If the syntax is incorrect, the step will fail, leading to potential issues in the process.
+Any supported file format (SQL, YAML, XML, JSON) can be used for storing changelogs. The syntax must be valid and the file extension must match the format. If the syntax is incorrect, the step fails.
 :::
 
 ## Recommendations
@@ -324,6 +325,9 @@ Choose your changelog structure based on the size of your project, team setup, a
 
 This table provides a quick reference for selecting the most suitable changelog structure based on your project's specific needs and complexity. It highlights the recommended approach and explains why it is effective for each use case.
 
-## References
-- [Directory Structure Approaches](https://support.liquibase.com/hc/en-us/articles/29383071573659-How-to-Structure-a-Complex-Changelog)
+## Next steps
+
+- Go to [Working with SQL files](/docs/database-devops/concepts-and-features/understanding-changelog-directories/organizing-sql-files) to understand how to format Liquibase SQL changesets within this directory structure.
+- Go to [Build a changelog](/docs/database-devops/use-database-devops/get-started/build-a-changelog) to generate an initial changelog from an existing database.
+- Go to [Contexts](/docs/database-devops/concepts/glossary/context) to control which changesets apply in each environment.
 

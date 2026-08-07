@@ -31,11 +31,11 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-This guide provides examples of commonly used MongoDB changesets, including collection management, indexing, document operations, and custom run commands.  For end-to-end guidance, see [Generate MongoDB Changelog](../get-started/mongodb-changelog-generation.md) and [MongoDB Changelog Example](../get-started/get-started-with-changelogs.md).  
+This guide provides examples of commonly used MongoDB changesets, including collection management, indexing, document operations, and custom run commands. Go to [Generate MongoDB Changelog](../get-started/mongodb-changelog-generation.md) for end-to-end changelog generation guidance, and go to [MongoDB Changelog Example](../get-started/get-started-with-changelogs.md) to review a full changelog example.
 
 The Harness Database DevOps enables teams to apply MongoDB schema and data changes using MongoDB-aware execution logic, purpose-built for NoSQL workloads using the native `mongosh` runtime. This ensures that MongoDB changes are executed with full fidelity to MongoDB semantics safely operationalize schema changes across development, testing, and production environments.
 
-## What is Native Execution for MongoDB?
+## What is native execution for MongoDB?
 
 MongoDB differs fundamentally from relational databases. Schema evolution often includes:
 - Collection-level changes
@@ -49,9 +49,9 @@ The MongoDB Native Executor ensures these changes are executed exactly as MongoD
 - MongoDB-aware execution model.
 - Support for MongoDB query language.
 
-The Harness Database DevOps MongoDB Native Executor supports common and advanced MongoDB workflows used in production environments. Learn More about [supported MongoDB change types](../concepts/mongodb-command.md).
+The Harness Database DevOps MongoDB Native Executor supports common and advanced MongoDB workflows used in production environments. Go to [supported MongoDB change types](../concepts/mongodb-command.md) to review the full reference.
 
-## How can I run my existing MongoSH files in a Pipeline?
+## How can I run my existing MongoSH files in a pipeline?
 
 Harness Database DevOps supports two flexible approaches for defining MongoDB changesets. Both approaches integrate seamlessly into the standard pipeline execution flow, approvals, and governance model. The remainder of the pipeline lifecycle remains consistent with other database types.
 
@@ -120,13 +120,13 @@ This pattern improves maintainability and keeps large scripts out of inline defi
 
 ![Visual Overview](./static/dbops-mongsh-executor.png)
 
-## MongoDB ChangeTypes Reference
+## MongoDB ChangeTypes reference
 The following sections provide examples of commonly used MongoDB changesets in Liquibase, including collection management, indexing, document operations, and custom run commands.
 
-### Collection Operations
+### Collection operations
 Manage MongoDB collections with changesets.  
 
-#### Create Collection
+#### Create collection
 ```yml
 - changeSet:
     id: create-collection-1
@@ -136,7 +136,7 @@ Manage MongoDB collections with changesets.
           collectionName: users
 ```
 
-#### Drop Collection
+#### Drop collection
 ```yml
 - changeSet:
     id: drop-collection-1
@@ -146,10 +146,10 @@ Manage MongoDB collections with changesets.
           collectionName: users
 ```
 
-### Index Operations
+### Index operations
 Define and manage indexes for optimized query performance.
 
-#### Create Index
+#### Create index
 ```yml
 - changeSet:
     id: create-index-1
@@ -161,7 +161,7 @@ Define and manage indexes for optimized query performance.
           options: '{unique: true, name: "idx_email_unique"}'
 ```
 
-#### Drop Index
+#### Drop index
 ```yml
 - changeSet:
     id: drop-index-1
@@ -173,10 +173,10 @@ Define and manage indexes for optimized query performance.
 ```
 
 
-### Document Operations
+### Document operations
 Insert or manage documents directly in MongoDB collections.
 
-#### Insert One Document
+#### Insert one document
 ```yaml
 - changeSet:
     id: insert-user-1
@@ -192,7 +192,7 @@ Insert or manage documents directly in MongoDB collections.
             }
 ```
 
-#### Insert Many Documents
+#### Insert many documents
 ```yaml
 - changeSet:
     id: insert-users-bulk
@@ -215,10 +215,10 @@ Insert or manage documents directly in MongoDB collections.
             ]
 ```
 
-### Generic Run Command
+### Generic run command
 Execute raw MongoDB commands when no direct Liquibase abstraction exists.
 
-#### Basic Run Command
+#### Basic run command
 ```yaml
 - changeSet:
     id: run-command-1
@@ -237,7 +237,7 @@ Execute raw MongoDB commands when no direct Liquibase abstraction exists.
             }
 ```
 
-#### Run Command with Validation
+#### Run command with validation
 ```yaml
 - changeSet:
     id: add-validation-schema
@@ -260,7 +260,7 @@ Execute raw MongoDB commands when no direct Liquibase abstraction exists.
             }
 ```
 
-### Complete Example Changelog
+### Complete example changelog
 A full example demonstrating collections, indexes, inserts, and schema validation.
 
 ```yaml
@@ -322,7 +322,7 @@ databaseChangeLog:
                 }
               }
 ```
-### Admin Command
+### Admin command
 Use `adminCommand` for database-level administrative operations such as retrieving server status, listing databases, or renaming collections. This change maps directly to the MongoDB [db.adminCommand](https://www.mongodb.com/docs/manual/reference/method/db.adminCommand/) method and is backed by `liquibase.ext.mongodb.change.AdminCommandChange`.
 Unlike `runCommand`, which executes in the current database context, **`db.adminCommand()` always runs against the `admin` database**, regardless of where it is invoked.
 ```yml
@@ -338,19 +338,19 @@ Unlike `runCommand`, which executes in the current database context, **`db.admin
             }
 ```
 
-## Best Practices & Usage Notes
+## Best practices and usage notes
 
-  1. **Rollback Considerations** - MongoDB operations like `insertOne` and `insertMany` are not automatically reversible. Always plan rollbacks explicitly e.g., by including a corresponding delete or drop changeset if needed.
+  1. **Rollback considerations:** MongoDB operations like `insertOne` and `insertMany` are not automatically reversible. Always plan rollbacks explicitly e.g., by including a corresponding delete or drop changeset if needed.
 
-  2. **Index Naming Conventions** - Use clear, descriptive index names (`idx_email_unique`, `idx_name`) to avoid collisions and simplify debugging. MongoDB auto-generates index names if not provided, which can make schema management inconsistent across environments.
+  2. **Index naming conventions:** Use clear, descriptive index names (`idx_email_unique`, `idx_name`) to avoid collisions and simplify debugging. MongoDB auto-generates index names if not provided, which can make schema management inconsistent across environments.
 
-  3. **Idempotency** - Liquibase tracks applied changesets by ID and author. Re-running the same changelog will not re-apply changes, which makes migrations safer across multiple environments. Ensure your changeset IDs remain unique and descriptive.
+  3. **Idempotency:** Liquibase tracks applied changesets by ID and author. Re-running the same changelog will not re-apply changes, which makes migrations safer across multiple environments. Ensure your changeset IDs remain unique and descriptive.
 
-  4. **Environment-Specific Data** - Avoid inserting environment-specific data (like test users or secrets) directly in production changelogs. Instead, use Liquibase contexts to conditionally run certain changesets.
+  4. **Environment-specific data:** Avoid inserting environment-specific data (like test users or secrets) directly in production changelogs. Instead, use Liquibase contexts to conditionally run certain changesets.
 
-  5. **Use runCommand Wisely** - `runCommand` is powerful but bypasses Liquibase’s higher-level abstractions. It does not support automatic rollbacks (hence the RollbackImpossibleException).
+  5. **Use runCommand wisely:** `runCommand` is powerful but bypasses Liquibase’s higher-level abstractions. It does not support automatic rollbacks (hence the RollbackImpossibleException).
 
-## Choosing the Right Approach
+## Choose the right approach
 The choice between inline scripts and file-based scripts depends on your team's workflow, script complexity, and maintainability needs. Consider the following guidelines:
 
 | **Use Case**                | **Recommended Approach**  |
@@ -363,6 +363,14 @@ The choice between inline scripts and file-based scripts depends on your team's 
 
 ## Conclusion
 
-Whether MongoDB changes are defined using inline scripts or external script files, the execution model remains consistent and enterprise ready. All changes run using **`mongosh`** as the execution runtime, are fully version-controlled, and flow through standard pipeline governance—including approvals and policy checks. MongoDB commands execute natively, with comprehensive logs, execution status, and audit trails captured automatically.
+Whether MongoDB changes are defined using inline scripts or external script files, the execution model remains consistent and enterprise ready. All changes run using **`mongosh`** as the execution runtime, are fully version-controlled, and flow through standard pipeline governance, including approvals and policy checks. MongoDB commands execute natively, with comprehensive logs, execution status, and audit trails captured automatically.
 
 As a result, MongoDB changes follow the same **governed Database DevOps lifecycle** as other database workloads in **Harness Database DevOps**, enabling teams to move fast without compromising control, compliance, or operational confidence.
+
+---
+
+## Next steps
+
+- Go to [Generate MongoDB Changelog](../get-started/mongodb-changelog-generation.md) to generate a changelog from an existing MongoDB database.
+- Go to [Get started with changelogs](../get-started/get-started-with-changelogs.md) to review a full end-to-end changelog example.
+- Go to [Automatic and Custom Rollbacks](/docs/database-devops/concepts-and-features/automatic-and-custom-rollback) to configure rollback strategies for your MongoDB changesets.

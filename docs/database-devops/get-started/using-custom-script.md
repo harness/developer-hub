@@ -23,13 +23,11 @@ tags:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## Overview
-
 In certain Database DevOps workflows, users may prefer or require a **custom script** to retrieve and manage their Liquibase changelog rather than using a connector or direct integration.  
 
 This guide provides a comprehensive overview of how to use a custom script for Database DevOps, including the creation of a DB Schema, deployment of the schema, and the use of pipeline variables.
 
-## Use Case
+## Use case
 
 This guide supports the following scenario:
 
@@ -38,13 +36,13 @@ This guide supports the following scenario:
 - The script can reference **pipeline variables**, such as build versions or access tokens.
 
 :::info
-Before proceeding, ensure you have set up a **Docker Registry Connector** to define the custom base image used in your pipeline. Follow the official [Harness documentation](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference/) to configure this connector.
+Before proceeding, ensure you have set up a **Docker Registry Connector** to define the custom base image used in your pipeline. Follow the official [Harness documentation](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) to configure this connector.
 :::
 
-## Step by Step Guide
+## Deploy using a custom script
 By following these steps, you can effectively manage your database changes and streamline your DevOps processes.
 
-### Create a DB Schema
+### Create a DB schema
 1. Under `Database DevOps` in the Harness UI, navigate to `DB Schema`.
 2. Click on the `Add New DB Schema` button.
 ![Create DB Schema with Custom Script](../use-database-devops/static/custom-script/db-devops-custom-script.png)
@@ -59,7 +57,7 @@ By following these steps, you can effectively manage your database changes and s
      -L https://api.github.com/repos/Sonichigo/mux-sql/contents/liquibase.yml?ref=main -o changelog.yml
     ```
     :::info
-     If your custom script requires variables or parameters, you can reference them using JEXL expressions. For example, you can reference file secrets securely by their ID. Learn more about [referencing file secrets](https://developer.harness.io/docs/platform/secrets/add-file-secrets#reference-by-id). To learn how DB DevOps supports runtime secrets specifically, see the [Runtime Secrets](https://developer.harness.io/docs/database-devops/use-database-devops/get-started/runtime-secrets) guide.
+     If your custom script requires variables or parameters, you can reference them using JEXL expressions. For example, you can reference file secrets securely by their ID. Go to [referencing file secrets](/docs/platform/secrets/add-file-secrets#reference-by-id) to use file secrets in your script. To learn how DB DevOps supports runtime secrets specifically, go to [Runtime Secrets](/docs/database-devops/use-database-devops/get-started/runtime-secrets) to configure runtime secrets for DB DevOps.
     :::
 3. Click on the `Save` button.
 4. The DB Schema will be created and you can see the details in the UI.
@@ -70,7 +68,7 @@ By following these steps, you can effectively manage your database changes and s
 - **Connector**: The JDBC Connector to be used for the DB Instance. This is the connector that will be used to connect to the database instance.
 - **Context**: The context is used to control which changelogs are deployed to which environments. This is useful when you have multiple environments (e.g., dev, test, prod) and you want to deploy different changelogs to each environment.
 
-### Deployment Pipeline
+### Deployment pipeline
 1. Under `Database DevOps` in the Harness UI, navigate to `Pipelines`.
 2. Click on the `Create a Pipeline` button.
 3.  Click on the `Add Stage` button and select `custom stage`.
@@ -88,7 +86,7 @@ Toggle on the "Enable container based execution".
 7. The pipeline will be created and you can see the details in the UI.
 8. Click on the `Run` button to run the pipeline.
 
-#### Final Result:
+#### Final result:
 <Tabs>
 <TabItem value="Visual Overview" alt="Visual Overview">
 
@@ -136,4 +134,10 @@ pipeline:
 ```
 </TabItem>
 </Tabs>
+
 That's it! You have successfully created a DB Schema and deployed it using a custom script. You can now use this pipeline to deploy your DB Schema to the database instance.
+
+## Next steps
+- Go to [Rollback automation](/docs/database-devops/use-database-devops/rollback-for-database-schemas) to configure automated rollback for failed deployments.
+- Go to [Author DB Change](/docs/database-devops/use-database-devops/configure-llm-for-database-devops/) to use LLM-powered change authoring.
+- Go to the [Database DevOps Troubleshooting Guide](/docs/database-devops/troubleshooting/) to resolve common setup and runtime errors.
