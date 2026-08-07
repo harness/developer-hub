@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2025-02-25T22:00 
+date: 2025-02-25T22:00
 sidebar_position: 4
 ---
 
@@ -61,7 +61,7 @@ Harness delegate now offers FIPS (Federal Information Processing Standard) compl
 ### STIG-compliant delegate images (SAAS - On Demand)
 
 :::info
-Harness provides STIG-compliant (Security Technical Implementation Guide) hardened delegate images for SAAS customers with compliance requirements. 
+Harness provides STIG-compliant (Security Technical Implementation Guide) hardened delegate images for SAAS customers with compliance requirements.
 
 These images are stored in a private registry and are available on-demand for organizations in regulated environments such as government agencies, financial institutions, and enterprises with stringent security policies.
 
@@ -170,6 +170,13 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 ## Delegate image release notes
 
 ## July 2026
+
+### Version 26.07.89705 <!-- July 31, 2026 -->
+
+#### Fixed issues
+- Resolved GHSA-72hv-8253-57qq, GHSA-r7wm-3cxj-wff9 in `com.fasterxml.jackson.core`. [PL-73445]
+- Resolved GHSA-hrxh-6v49-42gf in `google.golang.org/grpc/internal/transport`. [DEL-10495]
+- Resolved CVE-2026-39822, CVE-2026-2303, CVE-2026-42505 in `os`, `go.mongodb.org/mongo-driver` and `crypto/tls`. [CI-23724]
 
 ### Version 26.07.89703 <!-- July 31, 2026 -->
 
@@ -421,7 +428,7 @@ The following change is behind a feature flag and will be enforced for all accou
 
 #### New features and enhancements
 - Introduce option to configure memory usage threshold (`DELEGATE_CGROUP_MEMORY_THRESHOLD`) which uses CGroup memory information for calculating memory usage. [DEL-3671]
-  
+
 ## March 2026
 
 ### Version 26.03.88803 <!-- April 03, 2026 -->
@@ -479,7 +486,7 @@ You can override the default by setting the environment variable on your delegat
     - name: MAX_DOCKER_ARTIFACT_TAGS_PER_IMAGE
       value: "20000"
   ```
-  
+
     :::note
     Setting a higher value may impact performance depending on your Docker registry response times.
     :::
@@ -494,10 +501,10 @@ You can override the default by setting the environment variable on your delegat
 
 #### Fixed issues
 
-- Use direct SCM API to commit files in the "Update Release Repo" GitOps step 
+- Use direct SCM API to commit files in the "Update Release Repo" GitOps step
     - Earlier implementation cloned full repository before commiting
     - This implementation allows for direct committing of files using the API of the SCM provider
-    - This functionality can be enabled with the feature flag `CDS_GITOPS_DELEGATE_USE_SCM_FOR_COMMIT` 
+    - This functionality can be enabled with the feature flag `CDS_GITOPS_DELEGATE_USE_SCM_FOR_COMMIT`
 
 ## February 2026
 
@@ -510,7 +517,7 @@ You can override the default by setting the environment variable on your delegat
 #### Fixed issues
 
 - Added support for the delegate environment variable `MAX_DOCKER_ARTIFACT_TAGS_PER_IMAGE`, which lets you control the maximum number of Docker tags fetched per image. The default value is **10,000** tags. To override the default, set the environment variable on your delegate:
-  
+
   ```yaml
   env:
     - name: MAX_DOCKER_ARTIFACT_TAGS_PER_IMAGE
@@ -534,7 +541,7 @@ You can override the default by setting the environment variable on your delegat
 - Resolved deserialization errors in connector validation results caused by missing constructors. [CCM-29305]
 - Fixed an issue where 'not found' pods triggered retry loops during the event phase. [CDS-117947]
 - We’ve updated the retry logic to always re-evaluate conditions, even if the step previously attempted to run. [PIPE-31684]
-- Improved error messaging to suggest checking permissions and installation for the `aws-iam-authenticator` binary. [CDS-103293] 
+- Improved error messaging to suggest checking permissions and installation for the `aws-iam-authenticator` binary. [CDS-103293]
 
 ### Version 26.01.88204 <!--February 04, 2026-->
 
@@ -614,7 +621,7 @@ This fix also applies to versions 863xx through 874xx.:::
 
 - Added support for dynamic port configuration using the `{{DELEGATE_HTTP_PORT}}` environment variable, allowing each delegate to use a unique port while maintaining backward compatibility with the default port **3460**. [PL-67304]
 
-## December 2025 
+## December 2025
 
 ### Version 25.08.86602 <!--December 17, 2025-->
 
@@ -624,7 +631,7 @@ This fix also applies to versions 863xx through 874xx.:::
 
 ### Version 25.12.87402 <!--December 10, 2025 -->
 
-#### Fixed issues 
+#### Fixed issues
 
 - Resolved an issue where StageId generation in container step groups now uses stage names instead of UUIDs to improve regex matching reliability during STO API calls. [CDS-116801]
 - Added context to unresolved-expression errors from a custom secret manager. [CDS-112390]
@@ -848,7 +855,7 @@ This fix also applies to versions 863xx through 874xx.:::
 #### Fixed issues
 
 - Improved log-streaming performance while dispatching the logs. [CDS-111776]
-  
+
 ### Version 25.06.86105 <!-- Jul 08, 2025 -->
 
 #### Fixed issues
@@ -931,7 +938,7 @@ This fix also applies to versions 863xx through 874xx.:::
 - Fixed an issue in the Kubernetes Rolling step where the steady state check was skipped if no managed workload was present. A new flow now allows hooks to run without this check, and the change is gated by the feature flag `CDS_ENABLE_STEADY_STATE_CHECK_WITHOUT_MANAGED_WORKLOADS`. [CDS-109379]
 - Fixed an issue where clicking the **Run** button in the UI triggered an unnecessary `onSave` OPA policy call. If this call failed, pipeline inputs wouldn't render. This has now been fixed by removing the `onSave` call from the `getPipelineByIdentifier` API. If needed, the old behaviour can be restored by enabling the feature flag `PIPE_DISABLE_OPA_ON_SAVE_BLOCKING_FOR_PIPELINE_RUN`. [PIPE-26614]
 - Fixed an issue where the MergePR step failed when using GitHub account URLs without a repository name. The step now correctly handles these URLs. [CDS-107526]
-- Fixed an issue where the UI would crash when editing a newly created Manifest override using a Custom Remote Store. [CDS-107112] 
+- Fixed an issue where the UI would crash when editing a newly created Manifest override using a Custom Remote Store. [CDS-107112]
 - Improved error handling for the MergePR step to provide clearer feedback when a pull request merge fails. [CDS-109239]
 
 ### Version 25.05.85805 <!--May 21, 2025-->
@@ -978,10 +985,10 @@ This fix also applies to versions 863xx through 874xx.:::
 
 #### Fixed issues
 
-- SSH command step now supports OIDC. [CDS-109225]  
-- Restored the skipping of Helm Canary delete step when namespace validation fails, and corrected namespace object handling to use the proper `name` field. [CDS-109155]  
-- Fixed the issue where readiness-related attributes were removed from the manifest by adding them to the allowlist to avoid unintended filtering. [CDS-109043]  
-- Fixed folder path issues by stripping leading and trailing slashes; this fix is controlled by the feature flag `CDS_SCM_FIX_FOLDER_PATH`. [CDS-108947]  
+- SSH command step now supports OIDC. [CDS-109225]
+- Restored the skipping of Helm Canary delete step when namespace validation fails, and corrected namespace object handling to use the proper `name` field. [CDS-109155]
+- Fixed the issue where readiness-related attributes were removed from the manifest by adding them to the allowlist to avoid unintended filtering. [CDS-109043]
+- Fixed folder path issues by stripping leading and trailing slashes; this fix is controlled by the feature flag `CDS_SCM_FIX_FOLDER_PATH`. [CDS-108947]
 - Introduced an optional environment variable `HOST_NAME_COMMAND` to control the delegate's host name during registration with the backend. [PL-61219]
 - Enabled task support for `CLOUDWATCH_LOGS_DATA_COLLECTION_TASK` to enhance CloudWatch Logs data collection. [CDS-109384]
 
@@ -995,7 +1002,7 @@ This fix also applies to versions 863xx through 874xx.:::
 
 #### Fixed issues
 
-- Fixed the dynamicHandlingOfRequestEnabled feature for the delegate. [PL-61578]  
+- Fixed the dynamicHandlingOfRequestEnabled feature for the delegate. [PL-61578]
 
 ### Version 25.04.85601 <!-- April 10, 2025-->
 
@@ -1017,7 +1024,7 @@ This fix also applies to versions 863xx through 874xx.:::
 
 - Added a validation check to ensure the correct client is used for OC. [CDS-107476]
 - Added support for an optional values.yml file in Helm charts. [CDS-108183]
-- Added support for anonymous authentication in Helm OCI. [CDS-108311]  
+- Added support for anonymous authentication in Helm OCI. [CDS-108311]
 
 
 ### Version 25.03.85405 <!--  March 21, 2025 -->
@@ -1056,7 +1063,7 @@ This fix also applies to versions 863xx through 874xx.:::
 #### Hotfix
 
 - Fixed the slot deployment timeout issue in azure deployments [CDS-108129]
-  
+
 - Fixed the runtime input regex filtering for ECR artifacts [CDS-106566]
 
 - Fix the aws library upgrade issue for AWS serverless lambda deployment [CDS-107585]
@@ -1068,7 +1075,7 @@ This fix also applies to versions 863xx through 874xx.:::
 #### Hotfix
 
 - Added support for downloading artifact with special characters in the URl for Nexus. [CDS-102807]
-  
+
 
 ### Version 24.12.84710 <!-- February 24, 2025 -->
 
@@ -1118,7 +1125,7 @@ This fix also applies to versions 863xx through 874xx.:::
 
 #### New features and enhancements
 
-:::info 
+:::info
 Upgraded delegate base image from `redhat/ubi8-minimal:8.10` to `redhat/ubi9-minimal:9.4` [PL-58376]
 :::
 
@@ -1209,9 +1216,9 @@ Upgraded delegate base image from `redhat/ubi8-minimal:8.10` to `redhat/ubi9-min
 #### Fixed issues
 
 - The delegate name is now displayed in the UI whenever a connector test fails, provided the validation task was acquired by a delegate. This enhancement offers better visibility into which delegate handled the task during troubleshooting. (PL-56483, ZD-64425)
-  
+
 - Fixed Azure WebApp deployment pipeline failures for specific connectors configured with ignoreTestConnection. (CDS-103533)
-  
+
 - Fixed the instance synchronization issue for Azure web applications. (CDS-103224)
 
 #### New features and enhancements
@@ -1236,7 +1243,7 @@ Upgraded delegate base image from `redhat/ubi8-minimal:8.10` to `redhat/ubi9-min
 
 ### Version 24.10.84105 <!--  October 31, 2024 -->
 
-#### New features and enhancements 
+#### New features and enhancements
 
 - Add support for k8s sidecar containers
 
@@ -1306,7 +1313,7 @@ Upgraded delegate base image from `redhat/ubi8-minimal:8.10` to `redhat/ubi9-min
 #### Hotfix
 
 - Removed unnecessary env expansion and added url_encoding to encode special characters from proxy when curl connectivity pre-check is enabled (PL-56623).
-  
+
 ### Version 24.08.83704 <!--  August 29, 2024 -->
 
 #### Hotfixes
@@ -2992,7 +2999,7 @@ Harness NextGen release 78214 includes no changed features or fixes for the Harn
 
 ## February 2026
 
-### Version 1.0.32 <!--February 20, 2026-->   
+### Version 1.0.32 <!--February 20, 2026-->
 
 #### Fixed issues
 - Added support for Kubernetes tolerations in the `harness-delegate-ng` Helm chart, enabling the upgrader job to be scheduled on tainted nodes when required. [PL-67944]
@@ -3000,7 +3007,7 @@ Harness NextGen release 78214 includes no changed features or fixes for the Harn
 
 ## January 2026
 
-### Version 1.0.31 <!--January 15, 2026-->   
+### Version 1.0.31 <!--January 15, 2026-->
 
 #### Fixed issues
 
@@ -3008,7 +3015,7 @@ Harness NextGen release 78214 includes no changed features or fixes for the Harn
 
 ## July 2025
 
-### Version 1.0.27 <!--July 31, 2025-->   
+### Version 1.0.27 <!--July 31, 2025-->
 
 #### Fixed issues
 
@@ -3075,7 +3082,7 @@ Harness NextGen release 78214 includes no changed features or fixes for the Harn
 
 ## July 2025
 
-### Version 1.7.0 <!--Jul 16, 2025--> 
+### Version 1.7.0 <!--Jul 16, 2025-->
 
 #### New features and enhancements
 
