@@ -255,7 +255,7 @@ You can create as many as 10,000 Perspectives in a single account.
 
 CACM displays `No` followed by the selected `<group by>` for costs that do not have any correlation with the specified `<group by>` criterion.
 For instance, if a perspective encompasses rules for both AWS and GCP, and the grouping is based on GCP > SKU, any expenses unrelated to GCP SKUs will be displayed as "No SKUs."
-For more information, go to [Create Perspectives](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-cost-perspectives#review-no-accountprojectetc).
+For more information, go to [Create Perspectives](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/creating-a-perspective).
 
 </details>
 
@@ -269,14 +269,14 @@ In the context of cost categories, CACM currently provides information in two co
 <details>
 <summary><strong>How are costs calculated, and is there a specific formula for it?</strong></summary>
 
-Indeed, CACM offers a formula to illustrate the calculation process. For a detailed explanation, go to [documentation](https://developer.harness.io/docs/cloud-cost-management/get-started/key-concepts/).
+Indeed, CACM offers a formula to illustrate the calculation process. For a detailed explanation, go to [documentation](/docs/cloud-cost-management/get-started/key-concepts).
 
 </details>
 
 <details>
 <summary><strong>Is it possible to modify the formula for calculations, specifically for CPU, memory, or idle costs?</strong></summary>
 
-No, the formula is predetermined and cannot be altered. However, if you are utilizing Kubernetes on bare metal infrastructure (excluding GCP, AWS, or Azure), you do have the option to adjust the pricing for compute calculations related to nodes and pods. For more details, go to [How's the cost calculated for K8s on CSPs and K8s on bare metal?](https://developer.harness.io/docs/faqs/cloud-cost-management-faqs/#hows-cost-calculated-for-k8s-on-cloud-providers-and-k8s-on-bare-metal).
+No, the formula is predetermined and cannot be altered. However, if you are utilizing Kubernetes on bare metal infrastructure (excluding GCP, AWS, or Azure), you do have the option to adjust the pricing for compute calculations related to nodes and pods. Go to [Node Cost](/docs/cloud-cost-management/get-started/key-concepts#node-cost) to understand how node and pod cost is calculated.
 
 </details>
 
@@ -339,7 +339,7 @@ Currently, it's not supported. However, you can leverage dashboard for the same.
 
 When we ingest cloud data, we make certain modifications to the tags/labels. However, with cluster data, we ingest the labels without any alterations.
 
-More information can be found [here](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/aws-dashboard/#analyze-aws-cost).
+Go to [BI Dashboards](/docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/overview) to understand how cloud and cluster cost data is presented.
 
 </details>
 
@@ -552,14 +552,14 @@ A K8s job is scheduled to run every hour, ensuring that data is updated frequent
 <details>
 <summary><strong>Do we have ability to change the formula of calculating the K8s cost?</strong></summary>
 
-No, the formula is fixed. However, if you are using k8s on bare metal (other than GCP, AWS or Azure), you have the option to update the compute pricing only for the node and pod cost calculation. More information related to this can be found [here](../../docs/faqs/cloud-cost-management-faqs/#hows-cost-calculated-for-k8s-on-cloud-providers-and-k8s-on-bare-metal).
+No, the formula is fixed. However, if you are using k8s on bare metal (other than GCP, AWS or Azure), you have the option to update the compute pricing only for the node and pod cost calculation. Go to [Node Cost](/docs/cloud-cost-management/get-started/key-concepts#node-cost) to understand how node and pod cost is calculated.
 
 </details>
 
 <details>
 <summary><strong>Is idle cluster cost allocated to pods/containers?</strong></summary>
 
-Yes, we consider the cost of idle resources allocated to a pod. More information related to idle cost can be found [here](../../docs/cloud-cost-management/get-started/key-concepts/#idle-cost).
+Yes, we consider the cost of idle resources allocated to a pod. Go to [Idle Cost](/docs/cloud-cost-management/get-started/key-concepts#idle-cost) to understand how idle cost is calculated.
 
 </details>
 
@@ -684,7 +684,7 @@ If your fixed schedule is not operating within the expected time windows or freq
 <details>
 <summary><strong>When I create an Autostopping rule, does Harness create a target group in the AWS account?</strong></summary>
 
-No. While creating the rule Harness doesn't automatically create a target group. To configure this, go to [Create a target group for the AutoStopping Proxy VM with a health check configuration](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-autostopping-proxy-as-downstream-alb/#create-a-target-group-for-the-autostopping-proxy-vm-with-a-health-check-configuration).
+No. While creating the rule Harness doesn't automatically create a target group. To configure this, go to [Create a target group for the AutoStopping Proxy VM with a health check configuration](/docs/cloud-cost-management/use-ccm-cost-optimization/autostopping-guides/create-autostopping-proxy-as-downstream-alb#create-a-target-group-for-the-autostopping-proxy-vm-with-a-health-check-configuration).
 </details>
 
 <details>
@@ -797,7 +797,7 @@ No. Currently, CACM supports only moving the recommendations from the **Open** t
 <details>
 <summary><strong>Are there any recommendations specific to GCP, other than the nodepool and workload recommendations for clusters in GCP?</strong></summary>
 
-Currently, CACM does not offer any GCP-specific recommendations. For supported recommendations, go to the [CMM recommendations documentation](https://developer.harness.io/docs/category/recommendations).
+Currently, CACM does not offer any GCP-specific recommendations. For supported recommendations, go to the [CCM recommendations documentation](/docs/category/recommendations).
 
 </details>
 
@@ -978,7 +978,7 @@ You can only tune nodepod and workload recommendations. You can't tune VM recomm
 <details>
 <summary><strong>How can we get GCP compute recommenations.</strong></summary>
 
-You can get GCP compute recommendations by enabling governance. [Doc Reference](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/gcp/gcp-recommendations/#recommendation-stop-underutilized-instances)
+You can get GCP compute recommendations by enabling governance. Go to [Asset governance recommendations](/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/recommendations) to review the supported GCP recommendations.
 
 </details>
 
@@ -1238,7 +1238,7 @@ To check for deny assignments or policies, navigate to the Azure portal, select 
 <details>
 <summary><strong>Can I send an alert for any anomaly found to a specific email?</strong></summary>
 
-Yes. You can [set alerts for any perspective](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/detect-cloud-cost-anomalies-with-ccm/#create-an-anomaly-alert-for-your-perspective). Alerts can be sent by email.
+Yes. You can [set alerts for any perspective](/docs/cloud-cost-management/use-ccm-cost-reporting/anomaly-detection/getting-started-with-ccm-anomaly-detection#anomaly-alerts). Alerts can be sent by email.
 </details>
 
 <details>
