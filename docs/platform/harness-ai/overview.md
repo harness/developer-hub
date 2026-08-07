@@ -162,7 +162,7 @@ The system achieves high-fidelity translations through specialized models that u
 Yes. Harness AI uses the following large language models to generate and adapt code:
 - OpenAI GPT-4o
 - Google Gemini Flash
-- Claude Opus 4.5
+- Claude Opus 4.6
 
 </details>
 

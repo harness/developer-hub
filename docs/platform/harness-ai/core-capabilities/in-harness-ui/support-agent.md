@@ -23,7 +23,7 @@ redirect_from:
 The Harness AI Support Agent is your first line of support inside the Harness platform. It draws on Harness documentation and knowledge base content to answer product questions, offer troubleshooting guidance, and pull contextual examples straight from the official docs, so you get an answer in seconds instead of filing a ticket and waiting.
 
 :::note AI model
-The Support Agent uses **OpenAI GPT-4o** to process your questions and retrieve relevant documentation.
+The Support Agent uses **Claude Opus 4.6** to process your questions and retrieve relevant documentation.
 :::
 
 ---
