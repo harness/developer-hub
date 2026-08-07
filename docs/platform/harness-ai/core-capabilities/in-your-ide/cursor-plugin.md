@@ -124,7 +124,7 @@ The plugin ships with 30 skills that teach the Cursor agent how to accomplish sp
 | **Intelligence** | `analyze-costs`, `dora-metrics`, `security-report`, `gitops-status`, `chaos-experiment`, `scorecard-review`, `audit-report`, `template-usage` |
 | **AI agents** | `create-agent`, `create-agent-template` |
 
-Go to [Harness Skills](/docs/platform/harness-ai/harness-skills) to review the full skill catalog and learn how skills orchestrate MCP tool calls.
+For more information, see [Harness Skills](/docs/platform/harness-ai/govern-ai-output/harness-skills).
 
 ---
 
@@ -224,6 +224,6 @@ Without these variables, governance hooks fail open and the plugin continues to 
 
 ## Next steps
 
-- Go to [Harness Skills](/docs/platform/harness-ai/harness-skills) to explore the full skill catalog.
-- Go to [Harness MCP Server](/docs/platform/harness-ai/harness-mcp-server) to review advanced MCP configuration and deployment options.
-- Go to [Effective Prompting](/docs/platform/harness-ai/harness-create-with-ai/effective-prompting-ai) to learn prompt patterns that produce better results with Harness AI.
+- [Harness Skills](/docs/platform/harness-ai/govern-ai-output/harness-skills): Explore the full skill catalog.
+- [Harness MCP Server](/docs/platform/harness-ai/harness-mcp-server): Review advanced MCP configuration and deployment options.
+- [Effective Prompting](/docs/platform/harness-ai/harness-create-with-ai/effective-prompting-ai): Learn prompt patterns that produce better results with Harness AI.

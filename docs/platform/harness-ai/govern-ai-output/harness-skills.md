@@ -16,7 +16,7 @@ sidebar_label: Skill catalog
 sidebar_position: 2
 ---
 
-Harness Skills follow a shared operating model regardless of which resource type they target, and group into workflow modes so you can quickly find the right skill for a task. This page catalogs every available skill by category.
+Harness Skills follow a shared operating model irrespective of the resource type they target, and group into workflow modes so you can quickly find the right skill for a task. This topic describes every available skill by category.
 
 ---
 
@@ -30,19 +30,29 @@ By the end of this topic, you will be able to:
 
 ---
 
+## Before you begin
+
+Before you invoke a skill from this catalog, ensure you have the following:
+
+- **AI coding assistant**: Claude Code, Cursor, GitHub Copilot, OpenAI Codex, or Windsurf, configured to load skill instructions. For more information, see <a href="/docs/platform/harness-ai/govern-ai-output/overview#set-up-skills" target="_blank">Set up skills</a>.
+- **Harness MCP Server**: A configured <a href="/docs/platform/harness-ai/harness-mcp-server" target="_blank">MCP server</a> for tool execution.
+- **Harness API key**: An <a href="/docs/platform/automation/api/add-and-manage-api-keys/" target="_blank">API key</a> to authenticate with the Harness platform.
+
+---
+
 ## Operating model
 
-The best Harness skills follow the same control flow even when they target different resource types. This consistency keeps skill behavior predictable regardless of the resource you are working with.
+The best Harness skills follow the same flow of control even when they target different resource types. This consistency keeps skill behavior predictable regardless of the resource you are working with.
 
 1. **Establish scope first**: Confirm account, org, and project context before listing, creating, updating, or deleting resources.
-2. **Verify dependencies before generating dependents**: Do not reference connectors, secrets, environments, infrastructure, or templates that have not been confirmed to exist.
+2. **Verify dependencies before generating dependents**: Confirm that every connector, secret, environment, infrastructure definition, and template exists before a generated resource references it.
 3. **Discover schema before writing payloads**: Use `harness_describe` and API validation feedback instead of guessing field names or payload shape.
 
 ---
 
 ## Workflow modes
 
-Skills group into four workflow modes based on the type of task you are performing. Use this table to identify which skills apply to your current task.
+Skills are grouped into four workflow modes based on the type of task you are performing. Use this table to identify which skills apply to your current task.
 
 | Workflow mode | Representative skills | When to use |
 |---------------|-----------------------|-------------|
@@ -59,6 +69,8 @@ The skills repository organizes skills into five categories based on the platfor
 
 ### Pipeline and template creation
 
+Use the following skills to generate the pipelines, templates, triggers, and agents that define how your software gets built and delivered.
+
 | Skill | Description |
 |-------|-------------|
 | `/create-pipeline` | Generate v0 pipeline YAML (CI, CD, approvals, matrix strategies). |
@@ -69,6 +81,8 @@ The skills repository organizes skills into five categories based on the platfor
 | `/create-agent-template` | Create AI-powered agent templates (alpha, internal testing only). |
 
 ### Resource management
+
+Use the following skills to create and manage the resources your pipelines depend on, from services and connectors to secrets, registries, and workspaces.
 
 | Skill | Description |
 |-------|-------------|
@@ -85,6 +99,8 @@ The skills repository organizes skills into five categories based on the platfor
 
 ### Access control and feature flags
 
+Use the following skills to control who can do what in your account, and to manage the feature flags that gate your releases.
+
 | Skill | Description |
 |-------|-------------|
 | `/manage-users` | Manage users, user groups, and service accounts. |
@@ -92,6 +108,8 @@ The skills repository organizes skills into five categories based on the platfor
 | `/manage-feature-flags` | Create, list, toggle, and delete feature flags. |
 
 ### Operate and debug
+
+Use the following skills on resources that already exist, whether you are running a pipeline, diagnosing a failure, or checking that a deployment is safe to ship.
 
 | Skill | Description |
 |-------|-------------|
@@ -106,6 +124,8 @@ The skills repository organizes skills into five categories based on the platfor
 | `/manage-delegates` | Monitor delegate health and manage tokens. |
 
 ### Platform intelligence
+
+Use the following skills to get reports and analysis across cost, security, reliability, and engineering performance, spanning modules such as CCM, STO, IDP, and AIDI.
 
 | Skill | Description |
 |-------|-------------|

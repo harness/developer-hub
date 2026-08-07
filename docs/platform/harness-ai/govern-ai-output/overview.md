@@ -20,9 +20,11 @@ redirect_from:
   - /docs/platform/harness-ai/harness-skills
 ---
 
-Harness Skills are specialized prompt templates that teach AI coding assistants how to interact with the Harness platform. Each skill encapsulates the domain knowledge needed to accomplish a specific task, such as generating pipeline YAML, creating services, debugging executions, or analyzing costs. You invoke skills using natural language in your editor, and the AI assistant handles the underlying interactions with Harness.
+Harness Skills are specialized prompt templates that teach AI coding assistants how to interact with the Harness platform. Each skill encapsulates the domain knowledge needed to accomplish a specific task, such as generating pipeline YAML, creating services, debugging executions, or analyzing costs. 
 
-- **Source code**: <a href="https://github.com/harness/harness-skills" target="_blank">github.com/harness/harness-skills</a>
+Invoke the skills using natural language in your editor, and the AI assistant handles the underlying interactions with Harness.
+
+For more information on the source code for Harness skills, see <a href="https://github.com/harness/harness-skills" target="_blank">github.com/harness/harness-skills</a>.
 
 ---
 
@@ -47,7 +49,7 @@ Before you set up Harness Skills, ensure you have the following:
 
 ## How skills work
 
-Skills are Markdown files with structured instructions that AI editors load as context. Understanding this flow helps you troubleshoot skill behavior and extend skills with your own workflows.
+Skills are markdown files with structured instructions that AI editors load as context. Understanding this flow helps you troubleshoot skill behavior and extend skills with your own workflows.
 
 The repository is designed as a workflow system, not a folder of prompts. Top level instructions (`CLAUDE.md`, `AGENTS.md`, `.github/copilot-instructions.md`) establish shared behavior, while individual skills specialize in creation, debugging, governance, and reporting tasks.
 
@@ -67,9 +69,11 @@ Skills do not embed API schemas directly. Instead, they use the `harness_describ
 
 ## Set up skills
 
-Configure your AI coding assistant to load skill instructions and connect to the Harness MCP Server. Setup differs by editor.
+You can configure your AI coding assistant to load skill instructions and connect to the Harness MCP Server. The setup instructions for different editors are described below:
 
 ### Claude Code
+
+Claude Code discovers skills from the repository itself, so start it from the cloned folder and invoke skills by name.
 
 Clone the skills repository and start Claude Code from it:
 
@@ -104,6 +108,8 @@ Create a CI pipeline for a Node.js app that builds, tests, and pushes a Docker i
 
 ### Cursor
 
+Cursor picks up shared behavior from the project rules, and you point it at individual skills with an `@file` reference.
+
 Cursor auto-loads the project rules from `.cursor/rules/harness.mdc`.
 
 1. Open the `harness-skills` folder in Cursor.
@@ -131,6 +137,8 @@ Create a CI pipeline for my Go microservice
 ```
 
 ### GitHub Copilot
+
+Copilot reads shared instructions from the repository, and you reference individual skills with a `#file` mention.
 
 GitHub Copilot auto-loads instructions from `.github/copilot-instructions.md`.
 
@@ -161,6 +169,8 @@ Create a CI/CD pipeline for my Python app
 For GitHub Copilot on GitHub.com, attach skill files as context in Copilot Chat, or add them as knowledge base references in your Copilot organization settings.
 
 ### OpenAI Codex
+
+Codex takes its shared behavior from `AGENTS.md`, and you name the skill file you want in the prompt itself.
 
 Codex auto-loads the `AGENTS.md` file as system instructions.
 
@@ -194,6 +204,8 @@ diagnose why my deploy pipeline failed
 ```
 
 ### Windsurf and other AI editors
+
+Skills are not tied to a specific editor, so any tool that can load instructions, connect to an MCP server, and reference files can use them.
 
 The skills are plain Markdown files with YAML frontmatter. They work with any AI coding tool that supports:
 

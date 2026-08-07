@@ -15,7 +15,7 @@ sidebar_label: Workflows and reference
 sidebar_position: 10
 ---
 
-Skills chain together for multi-step workflows, and each skill file follows a consistent internal structure. This page covers common workflow sequences and the reference material for authoring or extending skills.
+[Skills](/docs/platform/harness-ai/govern-ai-output/overview) chain together for multi-step workflows, and each skill file follows a consistent internal structure. This page covers common workflow sequences and the reference material for authoring or extending skills.
 
 ---
 
@@ -30,11 +30,23 @@ By the end of this topic, you will be able to:
 
 ---
 
+## Before you begin
+
+Before you chain skills into a workflow, ensure you have the following:
+
+- **Configured skills**: An AI coding assistant set up to load skill instructions. For more information, see <a href="/docs/platform/harness-ai/govern-ai-output/overview#set-up-skills" target="_blank">Set up skills</a>.
+- **Harness MCP Server**: A configured <a href="/docs/platform/harness-ai/harness-mcp-server" target="_blank">MCP server</a> for tool execution.
+- **Skill catalog familiarity**: Knowledge of which skills cover the resources in your workflow. For more information, see <a href="/docs/platform/harness-ai/govern-ai-output/harness-skills" target="_blank">Skill catalog</a>.
+
+---
+
 ## End-to-end workflows
 
-Resources that depend on other resources must be created in the correct order.
+Most real tasks span several skills rather than one. Resources that depend on other resources must be created in the correct order, so the sequences below invoke skills in an order that satisfies those dependencies.
 
 ### New microservice setup
+
+Start with the resources that nothing else depends on, then work up to the pipeline and trigger that reference them.
 
 Use these skills in order:
 
@@ -48,6 +60,8 @@ Use these skills in order:
 
 ### Debug a failed deployment
 
+Start debugging the failed execution, and then widen the investigation to the shared templates and delegates the pipeline depends on.
+
 Typical sequence:
 
 1. `/run-pipeline`: Identify the latest execution or reproduce the issue.
@@ -56,6 +70,8 @@ Typical sequence:
 4. `/manage-delegates`: Investigate delegate capacity or connectivity if relevant.
 
 ### Codebase-aware pipeline generation
+
+Some skills read your repository directly, so they infer context from your code in addition to the detail you supply in the prompt.
 
 The `/create-pipeline` skill includes codebase analysis capabilities. It scans your project files to auto-detect:
 
