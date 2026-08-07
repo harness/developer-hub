@@ -495,10 +495,6 @@ split_factory = SplitIoClient::SplitFactory.new('YOUR_SDK_KEY', options)
 split_client = split_factory.client
 ```
 
-### Redis Cluster
-
-This functionality is currently not supported for this SDK, but is coming in a future release! Subscribe to our [release notes](https://www.split.io/releases) for updates.
-
 ## Localhost mode
 
 Features start their life on one developer's machine. A developer should be able to put code behind feature flags on their development machine without the SDK requiring network connectivity. To achieve this, the SDK can be started in **localhost** mode (aka off-the-grid mode). In this mode, the SDK neither polls nor updates Harness servers. Instead, it uses an in-memory data structure to determine what treatments to show to the logged in customer for each of the features.
