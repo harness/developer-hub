@@ -25,7 +25,7 @@ The base URL  of these endpoints is configurable if you need to pass it through 
 
 ## Basic startup
 
-This is the basic data fetched on startup. Startup authenticates each SDK key and parses the project andenvironment information from the jwt response. It then fetches the hashed API keys and, optionally, targets. This will page through this data so it may make multiple requests.
+This is the basic data fetched on startup. Startup authenticates each SDK key and parses the project and environment information from the jwt response. It then fetches the hashed API keys and, optionally, targets. This will page through this data so it may make multiple requests.
 
 * `POST https://config.ff.harness.io/api/1.0/client/auth` authenticates the API key.
 

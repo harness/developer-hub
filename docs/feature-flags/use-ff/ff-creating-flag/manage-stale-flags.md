@@ -53,7 +53,7 @@ When viewing all flags marked as potentially stale, you have two options within 
 
 Note that once a flag has been marked as _ready for cleanup_, you can still undo this decision by marking the flag as not stale.
 
-![A view of the Harness Feature Flags dashboard with the potentially stale flags filter selectd](./static/stale-flags-filter.png)
+![A view of the Harness Feature Flags dashboard with the potentially stale flags filter selected](./static/stale-flags-filter.png)
 
 ## Automating Flag cleanup
 
@@ -121,7 +121,7 @@ There are some slight differences when using Javascript for flag cleanup automat
 
 As the pipeline runs, logs from the plugin show it getting the flags and performing the code changes.
 
-![Output of cleanup pipline](./static/output-of-cleanup-pipeline.png)
+![Output of cleanup pipeline](./static/output-of-cleanup-pipeline.png)
 
 You can then navigate to the PR and see the changes it made.
 

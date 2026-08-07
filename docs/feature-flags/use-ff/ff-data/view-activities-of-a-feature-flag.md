@@ -50,6 +50,6 @@ To view a summary of an event:
 5. Click **YAML DIFFERENCE** to view the details of the Flag. The YAML file also highlights the different states of the events.
 
 
-<img src={ff_metrics} alt="A screenshot of a YAML file with the differences highlighed." height="500" width="500" />
+<img src={ff_metrics} alt="A screenshot of a YAML file with the differences highlighted." height="500" width="500" />
 
 

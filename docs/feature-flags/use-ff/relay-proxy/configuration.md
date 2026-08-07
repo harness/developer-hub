@@ -53,7 +53,7 @@ When running in online mode, these configuration options are the minimum require
 
 ### Redis cache
 
-These are the configuration opitons to connect to redis. Only `REDIS_ADDRESS` is required to connect, the others only need to be set if they differ from the defaults.
+These are the configuration options to connect to redis. Only `REDIS_ADDRESS` is required to connect, the others only need to be set if they differ from the defaults.
 
 | Environment Variable | Flag           | Description                                                        | Type   | Default |
 |----------------------|----------------|--------------------------------------------------------------------|--------|---------|

@@ -1,6 +1,6 @@
 ---
 title: Access your subscription invoices
-description: To get a copy of your subscription invoice --  On the Harness Platform, on the lefthand navigation, click Help. Select Submit a ticket. Complete the following fields in the form --  Feedback category  --  Sel…
+description: To get a copy of your subscription invoice --  On the Harness Platform, on the left hand navigation, click Help. Select Submit a ticket. Complete the following fields in the form --  Feedback category  --  Sel…
 sidebar_position: 80
 helpdocs_topic_id: vb1kd33p4p
 helpdocs_category_id: hdxts68dvo
@@ -21,10 +21,10 @@ import invoice from './static/8-access-your-subscription-invoices-03.png'
 
 To get a copy of your subscription invoice:
 
-1. On the Harness Platform, on the lefthand navigation, click **Help**.
+1. On the Harness Platform, on the left hand navigation, click **Help**.
 2. Select **Submit a ticket**.
 3. Complete the following fields in the form:
-	* **Feedback category**: Select Q**uestion**.
+	* **Feedback category**: Select **Question**.
 	* **Email**: Enter your email address.
 	* **Subject**: Enter **FF Subscriptions**.
 	* **Message**: Request a copy of your subscription invoice.

@@ -67,10 +67,10 @@ The synchronization between the Harness Platform and the `flags.yaml` file works
 * When you commit changes to Git, the Harness Platform is periodically updated. The changes will be synced up to 5 min after you commit in Git.
 
 
-If you don’t see the changes you made in Git reflected on the Harness Platform after approxymately 5 min, refresh the page.
+If you don’t see the changes you made in Git reflected on the Harness Platform after approximately 5 min, refresh the page.
 
 :::warning
- Syncing changes between a remote file and the Harness Platform can take up to 5 mins. During this window the changes are commited to the remote file but not yet pulled and synced by the Harness Platform. Any changes made to the Harness Platform within that window trigger remote file updates, which overwrite the content of the remote file.
+ Syncing changes between a remote file and the Harness Platform can take up to 5 mins. During this window the changes are committed to the remote file but not yet pulled and synced by the Harness Platform. Any changes made to the Harness Platform within that window trigger remote file updates, which overwrite the content of the remote file.
 :::
 
 ## Prerequisites

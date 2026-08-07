@@ -637,7 +637,7 @@ When using your Feature Flag SDKs with a [Harness Relay Proxy](/docs/feature-fl
 
 To do this, pass the new URLs in when initializing the SDK, as shown below.
 
-* **Erlang exmaple:**
+* **Erlang example:**
 
   ```erlang
   [{cfclient, [
@@ -649,7 +649,7 @@ To do this, pass the new URLs in when initializing the SDK, as shown below.
       ]}]
   ```
 
-* **Elixir exmaple:** 
+* **Elixir example:** 
 
   ```elixir
   config :cfclient,
@@ -685,7 +685,7 @@ To do this, pass the new URLs in when initializing the SDK, as shown below.
     get_flag_loop().
 
   ```
-You can also find a sample Erlang apllication that uses the Erlang SDK in [GitHub](https://github.com/harness-apps/ff-erlang-server-sample).
+You can also find a sample Erlang application that uses the Erlang SDK in [GitHub](https://github.com/harness-apps/ff-erlang-server-sample).
   
 * **Sample code for Elixir applications**
 

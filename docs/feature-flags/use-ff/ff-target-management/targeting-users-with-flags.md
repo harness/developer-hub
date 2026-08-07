@@ -90,7 +90,7 @@ To add specific Targets: 
 
 In most cases, you will not want to change the bucketing behavior for a percentage rollout. By default, we us the identifier as the unique string that helps determine which state a user is allocated in to according to the assigned rollout probabilities (see below).
 
-Occasionally, you may want to use a value other than the target ID for the percentage rollout assignment, such as in cases where you don't want the percentage distributiont to apply evenly across all possible targets in the system.
+Occasionally, you may want to use a value other than the target ID for the percentage rollout assignment, such as in cases where you don't want the percentage distribution to apply evenly across all possible targets in the system.
 
 In these cases, you can choose a different attribute to use to bucket your targets by in your percentage rollout assignment. Be warned, once you are bucketing by any value other than the identifier we can no longer say with certainly what the final probabilities in your percentage rollout will end up being.
 
@@ -98,7 +98,7 @@ In these cases, you can choose a different attribute to use to bucket your targe
 
 ### Percentage Allocation
 
-Percentage rollouts use the target identifier and a murmur3 hash to produce a determinstic result that will be the same across all SDKs for the same target.
+Percentage rollouts use the target identifier and a murmur3 hash to produce a deterministic result that will be the same across all SDKs for the same target.
 
 This guarantees that a user who is being served a flag value as part of a percentage rollout will get the same flag value in all services regardless of which SDKs are being used.
 

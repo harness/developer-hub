@@ -148,7 +148,7 @@ This beta feature is behind the `FFM_11173_TARGET_GROUP_AND_OPERATOR` feature fl
 Contact [Harness Support](mailto:support@harness.io) to enable this feature.
 :::
 
-### SDK compatiblity
+### SDK compatibility
 
 | SDK            | Compatible Versions | Other Config Required?                               |
 |----------------|---------------------|------------------------------------------------------|

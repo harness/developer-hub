@@ -35,7 +35,7 @@ Using Cloud Cost Management within Feature Flags will help you to:
 
 2. *Have an Improved Proactive Cost Management Experience*: You can now have real-time insights into the impact of your Feature Flag changes and optimize your cloud spending into a less manual and time-consuming process.
 
-3. *Adopt Higher Level Troubleshooting*: The hope we have at Harness is that this will help you to reduce time to finding solutions around any cost disparaties as well as help to improve your operational effiency of your products.
+3. *Adopt Higher Level Troubleshooting*: The hope we have at Harness is that this will help you to reduce time to finding solutions around any cost disparities as well as help to improve your operational efficiency of your products.
 
 We've also added an additional feature to the Cloud Cost Monitoring tool. There are three status modes which helps us to categorise anomalies under *Monitoring*, *Anomaly Found* and *No Changes*. 
 
@@ -52,7 +52,7 @@ We've also added an additional feature to the Cloud Cost Monitoring tool. There 
 
 ## How To Set Up The CCM Feature For Your Environments
 
- 1. On the Home Page of the Harness Application, select *Environmentss*.
+ 1. On the Home Page of the Harness Application, select *Environments*.
  2. On the *Environments* page, you should see the option to open *Add Cloud Cost Monitoring*.
  3. If you are yet to set up your CCM with your Cloud Provider, check the instructions below.
 

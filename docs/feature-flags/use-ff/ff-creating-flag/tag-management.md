@@ -78,7 +78,7 @@ RBAC (Role Based Access Control) is an area lets you control who can access your
  4. Under the *Resource Group* column, you'll find the Role and/or the Resource Group the user is assigned to. Click on the Resource Group. 
  5. On the left hand side should be a panel titled *Resources*. Scroll down until you reach the *Feature Flags* section and select your Resource Group. 
  6. On the right hand side of the page, select *By Tag*, followed by *Add Tag*.
- 7. From there, you can asign any pre-existing tags to the Resource Group.
+ 7. From there, you can assign any pre-existing tags to the Resource Group.
  8. The tags assigned to users will control their permissions to toggle flags within Feature Flags. Users under the assigned tags will be restricted based on the permissions you have granted them, such as the ability to toggle flags or make edits within Feature Flags. 
  9. Additionally, it's crucial to add Environments as a Resource Group. Do read the below subsection on *Environments As A Resource Group* to learn more. 
 
@@ -109,11 +109,11 @@ Users that are assigned a role to create Feature Flags or delete Flags can have 
  5. Once you're done, select *Apply*.
  6. In the *Access Control* menu, click *Roles* and select the *Feature Flag Admin Role*. Review the permissions to ensure that the *Create/Edit* and *Toggle* options are highlighted.
  7. Go back to the *Access Control* page, select *Resource Groups* and select the Resource Group you would like to make changes to.
- 8. The Tags for the Resource group will appear. In order to remove any assigned tags that is impacting permissions of some, or all, of ther users, select *All* next to the *By Tag* option.  
+ 8. The Tags for the Resource group will appear. In order to remove any assigned tags that is impacting permissions of some, or all, of the users, select *All* next to the *By Tag* option.  
  9. This should remove any blocks to permissions for the users in your selected Resource Group. 
  10. If you'd like to create a new tag, you can go back to the Tags page, select *Add* and you'll be able to create a new one. 
 
-The user can now create flags once the resource group is changed to "Remove by Tag". You can also create a new tag if you'd like tio adjust permissions for users within your Resource Group.
+The user can now create flags once the resource group is changed to "Remove by Tag". You can also create a new tag if you'd like to adjust permissions for users within your Resource Group.
 
 # Related Content
 

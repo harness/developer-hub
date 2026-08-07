@@ -35,7 +35,7 @@ To get started, here are some example promql queries that can be useful for moni
 | SSE Streams Closed          | `sum   by (error) (rate(ff ff_proxy_sse_stream_close[5m]))`                  |
 
 
-As well as counter metrics, the proxy also exposes a number of histogram metrics that can be used to monitor request duration, payload sizes, and how long interactions with the cache take. If you are unfamilar with histogram metrics, we recommend reading [this article](https://grafana.com/blog/2020/06/23/how-to-visualize-prometheus-histograms-in-grafana/) for help with visualising histograms.
+As well as counter metrics, the proxy also exposes a number of histogram metrics that can be used to monitor request duration, payload sizes, and how long interactions with the cache take. If you are unfamiliar with histogram metrics, we recommend reading [this article](https://grafana.com/blog/2020/06/23/how-to-visualize-prometheus-histograms-in-grafana/) for help with visualising histograms.
 
 
 ## Example Prometheus Configuration
