@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2026-07-27T10:00
+date: 2026-08-03T10:00
 sidebar_position: 10
 ---
 
@@ -52,6 +52,28 @@ For additional information about Harness Cloud pricing, please visit [Subscripti
 Please reach out to your support team to get these flag enabled.
 Check out [Harness Cloud VM Images Docs](/docs/platform/references/harness-cloud-vm-images/) for details.
 :::
+
+## August 2026
+
+### Version 1.151.0
+
+<!-- August 2026 -->
+
+#### New Features and Enhancements
+
+- Improved egress proxy support by passing proxy environment variables at the step level and moving docker daemon reload to lite-engine. This resolves secret resolution issues for pipelines using egress proxy configuration. (CI-23936)
+
+#### Fixed Issues
+
+- Fixed an issue where secrets were not resolved in DBOps Schema Apply clone codebase child steps on Kubernetes build infrastructure when the `db_schema_clone_script_secrets_provided_runtime` account setting was enabled. (CI-24059)
+
+- Resolved intermittent image pull failures affecting BuildKit-based Build and Push steps by pinning the BuildKit image to a stable version. (CI-23987, ZD-120087, ZD-120475, ZD-120589)
+
+#### Harness Images Updates
+
+- Rolled back the Buildkit image from 1.0.20 to 1.0.19 to resolve intermittent image pull failures. (CI-23987)
+
+---
 
 ## July 2026
 
