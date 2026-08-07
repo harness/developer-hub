@@ -357,6 +357,17 @@ export const spt: IltCardItem[] = [
     cardType: cardType.SPT,
   },
   {
+    title: "Introduction to Cost Categorization",
+    module: MODULES.ccm,
+    type: type.user,
+    description:
+      "Self-paced tidbit introducing Cost Categorization.",
+    version: "Harness CACM Free Plans",
+    link: "https://university-registration.harness.io/self-paced-training-tidbit-introduction-to-cost-categorization",
+    tileType: tileType.normal,
+    cardType: cardType.SPT,
+  },
+  {
     title: "Introduction to Building Nested Cost Categories",
     module: MODULES.ccm,
     type: type.user,
