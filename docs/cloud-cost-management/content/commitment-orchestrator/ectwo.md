@@ -8,7 +8,7 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 
 To setup Commitment Orchestrator in Harness CACM, you need:
 
-- **Active CACM Connectors**: You must have at least one active cloud connector set up for the cloud providers you want to categorize costs for: Set Up [CACM Connectors](/docs/cloud-cost-management/get-started#aws).
+- **Active CACM Connectors**: You must have at least one active cloud connector set up for the cloud providers you want to categorize costs for: Set Up [CACM Connectors](/docs/cloud-cost-management/provider-integrations/cloud-providers/aws).
 
 - A master account with the right permissions to be added via AWS connector on which you want to enable orchestration. Select the services for which you want to enable orchestration (permissions can be limited to specific service).
 

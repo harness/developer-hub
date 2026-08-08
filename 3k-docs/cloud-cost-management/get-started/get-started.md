@@ -5,7 +5,7 @@ sidebar_position: 20
 sidebar_label: Get Started
 ---
 
-import Ccm from '@site/docs/cloud-cost-management/get-started/get-started.md';
+import Ccm from '@site/docs/cloud-cost-management/get-started/quickstart.md';
 
 <Ccm />
 

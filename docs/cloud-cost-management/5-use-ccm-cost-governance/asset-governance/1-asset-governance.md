@@ -13,10 +13,10 @@ If you are new to YAML or Cloud Custodian, we recommend reviewing the [Cloud Cus
 
 -------
 
-- **[Configure CACM Connector](/docs/cloud-cost-management/get-started/#aws)**
+- **[Configure CACM Connector](/docs/cloud-cost-management/provider-integrations/cloud-providers/aws)**
   - Navigate to **Setup** > **Cloud Providers** > **Add a Connector**
   - Select your cloud provider (AWS, Azure, or GCP)
-  - During [connector setup](/docs/cloud-cost-management/get-started/#aws), ensure you select **"Cloud Governance"** under **"Choose Requirements"**. 
+  - During [connector setup](/docs/cloud-cost-management/provider-integrations/cloud-providers/aws), ensure you select **"Cloud Governance"** under **"Choose Requirements"**. 
 
 - **Verify Required Permissions**
   - Ensure your connector has [all required permissions for each cloud provider](/docs/cloud-cost-management/feature-permissions):

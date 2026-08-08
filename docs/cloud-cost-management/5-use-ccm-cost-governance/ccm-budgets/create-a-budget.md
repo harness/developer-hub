@@ -24,7 +24,7 @@ Harness CACM Budgets provide comprehensive cost governance capabilities that hel
 
 ## Prerequisites
 
-* [Create CACM Connector](/docs/cloud-cost-management/get-started/#aws): Create a CACM connector to connect to your cloud provider.
+* [Create CACM Connector](/docs/cloud-cost-management/provider-integrations/cloud-providers/aws): Create a CACM connector to connect to your cloud provider.
 * [Create Cost Perspectives](/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/creating-a-perspective): Budgets are created on Perspectives. If you do not have a Perspective of the resources you would like to budget, first create a new Perspective and then proceed to set a budget. 
 
 ------

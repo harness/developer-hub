@@ -6,11 +6,11 @@ import RedirectIfStandalone from '@site/src/components/DynamicMarkdownSelector/R
 
 ## Prerequisites
 
-* [Create a Kubernetes Connector for AutoStopping Rules](/docs/cloud-cost-management/get-started/#kubernetes)
+* [Create a Kubernetes Connector for AutoStopping Rules](/docs/cloud-cost-management/provider-integrations/cloud-providers/kubernetes)
 * Ingress controller installed. For more information, go to [Supported Ingress Controllers for Kubernetes AutoStopping](/docs/cloud-cost-management/whats-supported).
 * Ensure that you have Cluster Autoscaler enabled for EKS with managed node groups.
 * For EKS:
-    + Ensure that you have access to (Cost Usage Report) CUR. See [Review: Cost and Usage Reports (CUR) and CCM Requirements](/docs/cloud-cost-management/get-started/#aws--step-2-select-or-create-a-cost-and-usage-report)
+    + Ensure that you have access to (Cost Usage Report) CUR. See [Review: Cost and Usage Reports (CUR) and CCM Requirements](/docs/cloud-cost-management/provider-integrations/cloud-providers/aws)
     + Permissions to create a cross-account role. See [AWS Access Permissions](/docs/cloud-cost-management/feature-permissions)
 
 ## Installation via Helm

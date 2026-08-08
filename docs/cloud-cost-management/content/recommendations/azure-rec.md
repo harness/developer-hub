@@ -14,7 +14,7 @@ Azure Cloud & AI Cost Management provides two types of recommendations to help o
 
 ### Before You Begin
 
-- Connect your Azure cloud account in Harness and [set up CACM for cost management](/docs/cloud-cost-management/get-started/#azure).
+- Connect your Azure cloud account in Harness and [set up CACM for cost management](/docs/cloud-cost-management/provider-integrations/cloud-providers/azure).
 - Cost Visibility and the Inventory Management features should be enabled on your Azure CACM connector.
 - Enabling the **Visibility** feature allows retrieving recommendations from the Azure Advisor. The **Inventory Management** feature allows you to fetch the CPU utilization data and display the corresponding recommendations. If the Inventory Management feature is not enabled, the graph and table may show a null state.
 - Connect to Azure Advisor to receive recommendations for cost optimization: 

@@ -146,7 +146,7 @@ Once this Cost Category is in place, you can use it in Perspectives to:
 
 To create and manage Cost Categories in Harness CACM, you need:
 
-**Active CACM Connectors**: You must have at least one active cloud connector set up for the cloud providers you want to categorize costs for: Set Up [CACM Connectors](/docs/cloud-cost-management/get-started#aws).
+**Active CACM Connectors**: You must have at least one active cloud connector set up for the cloud providers you want to categorize costs for: Set Up [CACM Connectors](/docs/cloud-cost-management/provider-integrations/cloud-providers/aws).
 
 **Required Permissions**: Your Harness user account must belong to a user group with the following role permissions:
 

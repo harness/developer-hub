@@ -220,7 +220,7 @@ Harness CACM provides EC2 recommendations by integrating directly with AWS servi
 ### Before You Begin
 - To obtain ECS recommendations, configure an AWS CACM Connector with the Inventory Management feature enabled.
 
-- No Delegate setup is required. All utilization metrics are obtained using a cross account IAM role. See [Set Up Cloud & AI Cost Management for AWS](/docs/cloud-cost-management/get-started/#aws).
+- No Delegate setup is required. All utilization metrics are obtained using a cross account IAM role. See [Set Up Cloud & AI Cost Management for AWS](/docs/cloud-cost-management/provider-integrations/cloud-providers/aws).
 
 -----
 

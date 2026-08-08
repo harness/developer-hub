@@ -138,7 +138,7 @@ As and when these values are adjusted, the recommendationed values are computed 
 
 ### Before You Begin
 
-- Connect your Kubernetes cluster in Harness and [set up CACM for cost management](/docs/cloud-cost-management/get-started/#kubernetes).
+- Connect your Kubernetes cluster in Harness and [set up CACM for cost management](/docs/cloud-cost-management/provider-integrations/cloud-providers/kubernetes).
 - Cost Visibility and the Inventory Management features should be enabled on your Kubernetes CACM connector.
 - Enabling the **Visibility** feature allows retrieving recommendations from the Azure Advisor. The **Inventory Management** feature allows you to fetch the CPU utilization data and display the corresponding recommendations. If the Inventory Management feature is not enabled, the graph and table may show a null state.
 

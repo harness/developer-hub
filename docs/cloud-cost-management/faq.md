@@ -5,6 +5,8 @@ sidebar_position: 100
 sidebar_label: FAQs
 ---
 
+import { FAQ } from '@site/src/components/AdaptiveAIContent';
+
 ## Misconceptions About Cloud Cost Ownership
 
 <details>
@@ -1349,5 +1351,65 @@ Currently, it's only possible to include a custom message in the scheduled deliv
 
 The sharing option for the Harness dashboard requires selecting a specific user group within Harness itself and defining different levels of access. Therefore, someone who is not part of any group in Harness will not have access to the dashboard.
 </details>
+
+---
+
+## AI Cost Management
+
+Common questions about connecting providers, instrumenting traces, and interpreting AI cost in Cloud & AI Cost Management (CACM).
+
+### Getting Started
+
+<FAQ
+  question="Do I need a provider connector to use trace attribution?"
+  mode="docs"
+  fallback="Not to start, but it is strongly recommended. Trace costs are approximate, calculated from token counts and published model pricing. A provider connector gives invoice-accurate totals and is the source of truth for finance. Connect a provider first, then add traces when you need to attribute cost to a specific agent, session, or outcome."
+/>
+
+<FAQ
+  question="Can I test trace instrumentation without touching production?"
+  mode="docs"
+  fallback="Yes. Send a single test trace with curl using the Route Existing Traces path, or instrument a dev or staging service first before rolling out to production."
+/>
+
+<FAQ
+  question="My framework is not listed. What do I do?"
+  mode="docs"
+  fallback="Check the compatibility matrix in Supported Providers and Frameworks. If your framework emits OpenTelemetry traces with GenAI semantic conventions, route those existing traces to Harness. If it does not, use manual instrumentation with a standard OpenTelemetry SDK and set the required GenAI attributes yourself."
+/>
+
+### Accuracy and Overhead
+
+<FAQ
+  question="Why do trace costs not match my provider bill?"
+  mode="docs"
+  fallback="Trace costs are approximate by design, typically 95 to 98% accurate against invoices. They are calculated from token counts and published model pricing, so they do not reflect volume discounts, promotional credits, or billing adjustments. When traces and a connector disagree, trust the connector. Use a provider connector for finance reporting and traces for debugging and relative comparisons."
+/>
+
+<FAQ
+  question="Will instrumentation slow down my application?"
+  mode="docs"
+  fallback="No. Trace export is batched on a background thread and should not block LLM calls."
+/>
+
+### Data and Access
+
+<FAQ
+  question="How long is trace data retained?"
+  mode="fallback-only"
+  fallback="Trace data retention is being finalized. Contact Harness Support or your account team for the current retention policy."
+/>
+
+<FAQ
+  question="Who can see my prompts and completions?"
+  mode="fallback-only"
+  fallback="Access to trace data maps to Harness RBAC. If prompts or completions may contain sensitive data, disable payload capture so raw text is not stored on spans. Set HA_GEN_AI_PAYLOAD_CAPTURE_ENABLED=false for the Harness SDK."
+/>
+
+<FAQ
+  question="Does trace ingestion or storage carry a charge?"
+  mode="fallback-only"
+  fallback="Pricing for trace ingestion and storage is being finalized. Contact Harness Support or your account team for the current details."
+/>
 
 -------

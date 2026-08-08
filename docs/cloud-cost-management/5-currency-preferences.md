@@ -31,7 +31,7 @@ CACM allows you to choose from the following list of currencies and displays the
 
 You must integrate your cloud accounts with Harness CACM. For more information, refer to the following topics:
 
-- [Create CACM Connector](/docs/cloud-cost-management/get-started#aws)
+- [Create CACM Connector](/docs/cloud-cost-management/provider-integrations/cloud-providers/aws)
 
 ## Set up your preferred currency 
 

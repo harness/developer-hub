@@ -34,6 +34,13 @@ import { MODULES } from "@site/src/constants";
           "",
         list: [
           {
+            title: "AI Cost Management",
+            module: MODULES.ccm,
+            description:
+              "Track AI provider spend, attribute cost to agents and sessions, and measure ROI per AI outcome alongside your cloud costs.",
+            link: "/docs/cloud-cost-management/ai-cost-management/overview",
+          },
+          {
             title: "AutoStopping Rules",
             module: MODULES.ccm,
             description:
