@@ -27,6 +27,19 @@ We've migrated to LabelsV2, which preserves your original label keys while drama
 
 --- 
 
+## August 2026 - Version 1.99.0
+#### Deployment Date: August 10, 2026 (Prod-1)
+
+### Fixed Issues
+
+- **AutoStopping RDS rules now retain the selected proxy on edit:** We have fixed an issue where the proxy was not shown in the Setup Access step when editing an RDS AutoStopping rule. The saved proxy now appears correctly in the dropdown. [CCM-34661]
+- **Manually applied recommendations no longer show the inferred banner:** We have fixed an issue where governance recommendations that were manually applied continued to display the inferred-as-applied banner, and some recommendations appeared marked as Applied even when automatic detection of applied recommendations was turned off. [CCM-34628]
+- **Anomalies remain visible in Cost Explorer after changing cost preference:** We have fixed an issue where the anomalies count disappeared in Cost Explorer after you changed the cost preference and clicked Apply. The filters from the originating anomaly link are now carried into the follow-up request. [CCM-34586]
+- **Chart selections now apply filters consistently in Perspectives:** We have fixed an issue where clicking certain chart items did not apply a filter for some Group By columns. Selecting a chart element now applies the corresponding filter regardless of the selected Group By column. [CCM-34288]
+- **AutoStopping rules support tags with special characters:** We have fixed an issue where AutoStopping rules created by tags did not accept tag values containing special characters such as colons. Tag-based selection now follows AWS tag conventions. [CCM-32473]
+
+---
+
 ## July 2026 - Version 1.98.0
 #### Deployment Date: July 29, 2026 (Prod-1)
 
