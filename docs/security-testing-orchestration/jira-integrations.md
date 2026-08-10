@@ -109,10 +109,6 @@ The Jira link will point to a **Ticket Summary** in the STO UI, which displays a
 
 Jira tickets created from STO include comprehensive metadata organized into the following sections:
 
-:::note
-This enhanced metadata feature is behind the feature flag `STO_JIRA_ENHANCED_TICKET_METADATA`. Contact [Harness Support](mailto:support@harness.io) to enable this flag.
-:::
-
 ### Vulnerability summary
 The ticket includes a summary table with the following fields:
 

@@ -22,6 +22,24 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 
+## July 2026
+
+### Version 1.205.3
+
+#### New Features and Enhancements
+
+- Added support for [bulk exemption requests](/docs/security-testing-orchestration/exemptions/exemption-workflows#create-bulk-exemption-requests). You can request exemptions for multiple vulnerabilities at once and apply the same scope (Target, Pipeline, or Project), duration, and reason across the selection. This feature is behind the feature flag `STO_ENABLE_BULK_EXEMPTION`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+
+  <DocImage path={require('/docs/security-testing-orchestration/exemptions/static/bulk-exemptions.png')} width="70%" height="70%" title="Click to view full size image" />
+
+- Added GitLab and Bitbucket support for [Create Pull Request](/docs/security-testing-orchestration/remediations/ai-based-remediations#create-pull-request-from-sto) from Harness AI remediation.
+
+- [Enhanced Jira Ticket Metadata](/docs/security-testing-orchestration/jira-integrations#jira-ticket-metadata) is now **generally available (GA)**. Jira tickets created from STO include a vulnerability summary and relevant occurrence details to improve triage and prioritization. Previously, this was behind the feature flag `STO_JIRA_ENHANCED_TICKET_METADATA`.
+
+#### Fixed Issues
+
+- Fixed an issue where the **Vulnerabilities** tab displayed remediated issues only when an issue was remediated across all targets scanned in the same pipeline execution. (STO-11966)
+- Fixed an issue where code snippets in the STO issue panel rendered with a yellow highlight that made them unreadable. (STO-12009)
 
 ## June 2026
 

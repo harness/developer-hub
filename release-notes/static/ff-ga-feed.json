@@ -14,13 +14,6 @@
     "lifecycleState": "Limited GA"
   },
   {
-    "flagKey": "JIRA_ENHANCED_TICKET_METADATA",
-    "description": "Enhances Jira ticket metadata by including additional security issue details such as severity, CVSS scores, vulnerability paths, and remediation guidance.",
-    "gaStartDate": "2026-08-05",
-    "module": "Security Test Orchestration",
-    "lifecycleState": "Limited GA"
-  },
-  {
     "flagKey": "ENABLE_BULK_EXEMPTION",
     "description": "Create exemptions for multiple issues at once from the Vulnerabilities tab, using the same scope, duration, and reason for each selected issue.",
     "gaStartDate": "2026-08-03",
@@ -115,13 +108,6 @@
     "flagKey": "ISSUES_PAGE_V2",
     "description": "Redesigned STO Issues page to provide a comprehensive security posture view with trend analysis to surface active and remediated issue trends across Targets within a project.",
     "gaStartDate": "2026-06-04",
-    "module": "Security Test Orchestration",
-    "lifecycleState": "Beta"
-  },
-  {
-    "flagKey": "JIRA_ENHANCED_TICKET_METADATA",
-    "description": "Enhances Jira ticket metadata by including additional security issue details such as severity, CVSS scores, vulnerability paths, and remediation guidance to improve ticket triage and prioritization.",
-    "gaStartDate": "2026-06-02",
     "module": "Security Test Orchestration",
     "lifecycleState": "Beta"
   },
@@ -1533,18 +1519,18 @@
     "lifecycleState": "Limited GA"
   },
   {
-  "flagKey": "BASE_IMAGE_DETECTION",
-  "description": "Detects vulnerabilities originating from container base images during STO container scans.",
-  "gaStartDate": "2025-11-01",
-  "module": "Security Testing Orchestration",
-  "lifecycleState": "Limited GA"
+    "flagKey": "BASE_IMAGE_DETECTION",
+    "description": "Detects vulnerabilities originating from container base images during STO container scans.",
+    "gaStartDate": "2025-11-01",
+    "module": "Security Testing Orchestration",
+    "lifecycleState": "Limited GA"
   },
   {
-  "flagKey": "AI_SUPPORT_CHATBOT",
-  "description": "Provides access to the Harness AI-powered support chat experience.",
-  "gaStartDate": "2024-04-25",
-  "module": "Platform",
-  "lifecycleState": "Limited GA"
+    "flagKey": "AI_SUPPORT_CHATBOT",
+    "description": "Provides access to the Harness AI-powered support chat experience.",
+    "gaStartDate": "2024-04-25",
+    "module": "Platform",
+    "lifecycleState": "Limited GA"
   },
   {
     "flagKey": "ENFORCE_DELEGATE_REGISTRATION_ALLOWLIST",
@@ -1679,56 +1665,56 @@
     "module": "Continuous Integration",
     "lifecycleState": "Beta"
   },
-   {
+  {
     "flagKey": "HOSTED_BUILDS_SUNSET_DLITE",
     "description": "Disables the older DLite execution engine for CI builds running on Harness-hosted infrastructure, fully transitioning to the newer Runner engine for improved performance and reliability.",
     "gaStartDate": "2025-07-23",
     "module": "Continuous Delivery",
     "lifecycleState": "Limited GA"
-   },
-   {
+  },
+  {
     "flagKey": "HOSTED_VMS",
     "description": "Enables support for running CI builds on Harness-hosted virtual machine infrastructure for improved performance and simplified setup.",
     "gaStartDate": "2024-04-22",
     "module": "Continuous Integration",
     "lifecycleState": "Limited GA"
-   },
-   {
+  },
+  {
     "flagKey": "HOSTED_VMS_MAC",
     "description": "Enables support for running CI builds on Harness-hosted virtual machine infrastructure with MacOS for improved performance and simplified setup for MacOS builds.",
     "gaStartDate": "2024-05-06",
     "module": "Continuous Integration",
     "lifecycleState": "Limited GA"
-   },
-   {
+  },
+  {
     "flagKey": "EXTRA_ADDON_RESOURCE",
     "description": "Enables support for extra addon resources in CI builds, allowing users to specify additional resources for CI build execution.",
     "gaStartDate": "2024-06-24",
     "module": "Continuous Integration",
     "lifecycleState": "Beta"
-   },
-   {
+  },
+  {
     "flagKey": "DISABLE_CI_STAGE_DEL_SELECTOR",
     "description": "Disables the use of delegate selectors at the CI stage level, enforcing delegate selection at the step level for more granular control over CI build execution.",
     "gaStartDate": "2024-06-24",
     "module": "Continuous Integration",
     "lifecycleState": "Beta"
-   },
-   {
+  },
+  {
     "flagKey": "ENABLE_K8_BUILDS",
     "description": "Enables support for running CI builds on Kubernetes infrastructure for improved scalability and resource utilization.",
     "gaStartDate": "2024-04-22",
     "module": "Continuous Integration",
     "lifecycleState": "Limited GA"
-   },
-   {
+  },
+  {
     "flagKey": "PARSE_SAVINGS",
     "description": "Enables parsing of savings information from CI build execution for improved cost visibility and optimization.",
     "gaStartDate": "2024-06-18",
     "module": "Continuous Integration",
     "lifecycleState": "Limited GA"
-   },
-   {
+  },
+  {
     "flagKey": "ANOMALIES_V2",
     "description": "Enables the new anomalies experience in Cloud & AI Cost Management, providing improved anomaly detection and analysis capabilities.",
     "gaStartDate": "2026-06-19",
@@ -2121,4 +2107,3 @@
     "lifecycleState": "Limited GA"
   }
 ]
-
