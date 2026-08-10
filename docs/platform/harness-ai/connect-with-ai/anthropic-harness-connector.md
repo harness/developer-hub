@@ -10,12 +10,12 @@ redirect_from:
 
 import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-The Anthropic Harness Connector is an integration available in the [Claude connectors directory](https://claude.com/connectors/harness) that brings Harness platform context directly into Claude.ai and Claude Desktop. Once connected, you can query pipelines, deployments, services, and other Harness resources through natural language conversations without leaving Claude.
+The Anthropic Harness Connector is an integration available in the <a href="https://claude.com/connectors/harness" target="_blank">Claude connectors directory</a> that brings Harness platform context directly into Claude.ai and Claude Desktop. Once connected, you can query pipelines, deployments, services, and other Harness resources through natural language conversations without leaving Claude.
 
-The connector is backed by the [Harness Hosted MCP Server](/docs/platform/harness-ai/harness-mcp-server), which provides 11 consolidated tools and 139 resource types across the Harness platform. It uses OAuth to authenticate with your Harness account, so no API keys or PATs are required.
+The connector is backed by the <a href="/docs/platform/harness-ai/connect-with-ai/harness-mcp-server" target="_blank">Harness Hosted MCP Server</a>, which provides 11 consolidated tools and 139 resource types across the Harness platform. It uses OAuth to authenticate with your Harness account, so no API keys or PATs are required.
 
 :::info
-The Anthropic Harness Connector works with **Claude.ai** and **Claude Desktop** only. For Claude Code, go to [Harness MCP Server](/docs/platform/harness-ai/harness-mcp-server) to set up Harness integration.
+The Anthropic Harness Connector works with **Claude.ai** and **Claude Desktop** only. For Claude Code, go to <a href="/docs/platform/harness-ai/connect-with-ai/harness-mcp-server" target="_blank">Harness MCP Server</a> to set up Harness integration.
 :::
 
 ---
@@ -23,8 +23,8 @@ The Anthropic Harness Connector works with **Claude.ai** and **Claude Desktop** 
 ## Before you begin
 
 - **Harness account:** An active Harness account with appropriate RBAC permissions for the resources you want to access.
-- **OAuth enabled:** OAuth must be enabled at the account level. Go to [Harness Support](https://support.harness.io) to request OAuth enablement for your account.
-- **Claude account:** An active Claude Pro, Team, or Enterprise account on [claude.ai](https://claude.ai) or Claude Desktop installed locally.
+- **OAuth enabled:** OAuth must be enabled at the account level. Go to <a href="https://support.harness.io" target="_blank">Harness Support</a> to request OAuth enablement for your account.
+- **Claude account:** An active Claude Pro, Team, or Enterprise account on <a href="https://claude.ai" target="_blank">claude.ai</a> or Claude Desktop installed locally.
 
 ---
 
@@ -32,7 +32,7 @@ The Anthropic Harness Connector works with **Claude.ai** and **Claude Desktop** 
 
 The Anthropic Harness Connector requires OAuth to be enabled on your Harness account before you can authenticate.
 
-1. Open a support ticket with [Harness Support](https://support.harness.io) requesting OAuth enablement for your account.
+1. Open a support ticket with <a href="https://support.harness.io" target="_blank">Harness Support</a> requesting OAuth enablement for your account.
 2. Provide your Harness **Account ID** (found in **Account Settings** > **Overview**).
 3. Once Support confirms OAuth is enabled, proceed with the connection steps below.
 
@@ -42,7 +42,7 @@ The Anthropic Harness Connector requires OAuth to be enabled on your Harness acc
 
 ### From Claude.ai
 
-1. Log in to [claude.ai](https://claude.ai).
+1. Log in to <a href="https://claude.ai" target="_blank">claude.ai</a>.
 2. Select your profile icon in the bottom-left corner, then select **Settings**.
 3. Select **Integrations** in the left sidebar.
 4. Locate **Harness** in the list of available integrations.
@@ -78,7 +78,7 @@ The connector respects your Harness RBAC permissions. You can only access resour
 
 ### From Claude.ai
 
-1. Go to [claude.ai](https://claude.ai) and navigate to **Settings** > **Integrations**.
+1. Go to <a href="https://claude.ai" target="_blank">claude.ai</a> and navigate to **Settings** > **Integrations**.
 2. Locate the **Harness** integration.
 3. Select **Disconnect**.
 
@@ -110,6 +110,6 @@ This revokes the OAuth token. To reconnect, repeat the connection steps above.
 
 ## Next steps
 
-- [Harness MCP Server](/docs/platform/harness-ai/harness-mcp-server): Integrate Harness with Claude Code and other MCP-compatible tools.
-- [Harness AI Cursor Plugin](/docs/platform/harness-ai/cursor-plugin): Use Harness inside the Cursor IDE.
-- [Harness Skills](/docs/platform/harness-ai/harness-skills): Extend Claude Code with structured Harness workflows.
+- <a href="/docs/platform/harness-ai/connect-with-ai/harness-mcp-server" target="_blank">Harness MCP Server</a>: Integrate Harness with Claude Code and other MCP-compatible tools.
+- <a href="/docs/platform/harness-ai/core-capabilities/in-your-ide/cursor-plugin" target="_blank">Harness AI Cursor Plugin</a>: Use Harness inside the Cursor IDE.
+- <a href="/docs/platform/harness-ai/govern-ai-output/harness-skills" target="_blank">Harness Skills</a>: Extend Claude Code with structured Harness workflows.
