@@ -33,6 +33,7 @@ You can either:
 | [macOS 15 (Sequoia)](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-15-xcode-26.4-Readme.md)| `macos_sequoia`, `macos_sequoia_xcode_16.4`, or `macos-sequoia-xcode-26.2` | macOS 15 (Sequoia) with Xcode 16.4 (default), 16.3, 26.0, 26.1, 26.2, 26.3, 26.4 | BETA |
 | [macOS 26 (Tahoe)](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-26-tahoe-27.0-Beta.4-Readme.md)| `macos-tahoe` | macOS 26 (Tahoe) with Xcode 26.4.1 (default), 26.3, 26.5, 27.0 (Beta 4) | BETA |
 | [Windows Server 2022](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Windows2022-Readme.md) | `windows-latest` or `windows-2022` | Latest Windows 2022 Server Image |GA |
+| [Windows Server 2025](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Windows2025-Readme.md) | `windows-2025` | Latest Windows 2025 Server Image | BETA |
 
 :::info 
 
@@ -459,14 +460,14 @@ Go to [Harness Cloud BYOI](/docs/platform/references/harness-cloud-byoi) to revi
 
 ### Windows BYOI
 
-For Windows builds, you can create custom images using Packer with the BYOI builder plugin on Windows Server 2022 (amd64 only). The same authoring and delivery model as Linux BYOI applies:
+For Windows builds, you can create custom images using Packer with the BYOI builder plugin on Windows Server 2022 or 2025 (amd64 only). The same authoring and delivery model as Linux BYOI applies:
 
 - Windows BYOI images are built with the Harness BYOI builder plugin and stored in Harness-managed storage.
 - Windows BYOI does not use an external registry pull model. Supplying a custom image connector (for example, the [Override Image Connector](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector) stage infrastructure setting) is not supported for the Windows BYOI VM image, so you cannot host the Windows BYOI image in your own registry.
 - Reference the image by `imageName:imageVersion`.
 
 :::note
-The BYOI builder plugin accepts `windows-server/2019` and `windows-server/2025` as base images, but those versions are not yet qualified to run as CI VMs on Harness Cloud. Use `windows-server/2022` for Windows BYOI images intended to run on Harness Cloud.
+The BYOI builder plugin accepts `windows-server/2019` as base images, but that version is not yet qualified to run as CI VMs on Harness Cloud. Use `windows-server/2022` or `windows-server/2025` for Windows BYOI images intended to run on Harness Cloud.
 :::
 
 Go to [Harness Cloud BYOI](/docs/platform/references/harness-cloud-byoi) to review detailed instructions for creating and using custom Windows images.

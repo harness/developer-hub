@@ -145,9 +145,10 @@ To rebuild with the same version, delete the existing image first:
 | Base Image | Architectures |
 |------------|---------------|
 | `windows-server/2022` | amd64 |
+| `windows-server/2025` | amd64 |
 
 :::note
-The BYOI builder plugin also accepts `windows-server/2019` and `windows-server/2025`, but these versions are not yet qualified to run as CI VMs on Harness Cloud. Use `windows-server/2022` for Windows BYOI images intended to run on Harness Cloud.
+The BYOI builder plugin also accepts `windows-server/2019`, but that version is not yet qualified to run as CI VMs on Harness Cloud. Use `windows-server/2022` or `windows-server/2025` for Windows BYOI images intended to run on Harness Cloud.
 :::
 
 **Advanced options:**
@@ -238,7 +239,7 @@ If your Packer file contains `source` or `build` blocks, they will be ignored. H
 
 ### Platform
 - **Linux:** Ubuntu (amd64 and arm64)
-- **Windows:** Windows Server 2022 (amd64 only). The builder plugin also accepts `windows-server/2019` and `windows-server/2025`, but those versions are not yet qualified to run as CI VMs on Harness Cloud.
+- **Windows:** Windows Server 2022 or 2025 (amd64 only). The builder plugin also accepts `windows-server/2019`, but that version is not yet qualified to run as CI VMs on Harness Cloud.
 - **macOS:** Coming soon
 - Harness Cloud only. Self-hosted runners are not supported.
 
