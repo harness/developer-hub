@@ -7,6 +7,22 @@ sidebar_label: GitHub
 
 The GitHub integration automatically discovers repositories, teams, and AI assets from your GitHub organization and brings them into the IDP Catalog. Once discovered, entities can be registered as new catalog entries or merged into existing ones, enriching them with GitHub-sourced metadata for service discovery, team ownership, and dependency mapping.
 
+---
+
+## Supported GitHub types
+
+The integration supports the following GitHub deployments:
+
+| GitHub type | Supported | Notes |
+|---|---|---|
+| GitHub (public) | Yes | Original support. |
+| GitHub Enterprise Cloud (SaaS) | Yes | Same as public, hosted by GitHub. |
+| GitHub Enterprise Server (GHES, self-hosted) | Yes | Requires the connector URL to point at the GHES instance and include the org path segment. |
+
+:::caution Enterprise SaaS is not the same as Enterprise Server
+GitHub Enterprise Cloud (SaaS) is hosted by GitHub and behaves like public GitHub. GitHub Enterprise Server (GHES) is self-hosted on your own infrastructure and requires the connector URL, delegate network access, and token to point at your GHES instance. Do not conflate the two.
+:::
+
 For each entity type, the integration collects the following:
 
 | Entity | What it provides |
@@ -26,6 +42,12 @@ The following are needed to get the integration running:
 * A [GitHub PAT Connector](https://www.youtube.com/watch?v=67r7gXk-UcU) or [GitHub App Connector](/docs/platform/connectors/code-repositories/git-hub-app-support) is configured in Harness with the credentials needed to access your GitHub organization. Ensure that the connector has the [necessary permissions on your GitHub](#github-permissions). You can create a new connector directly during the integration setup. 
 * The connector's **URL Type** is set to **Account**, and the **GitHub Account URL** specifies your GitHub organization (for example, `https://github.com/YOUR_ORG_NAME/`). The integration requires an organization to run its org-level discovery queries against. Go to the [GitHub connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference) to configure the **URL Type** and **Account URL** fields.
 * For each GitHub org, user has to maintain one integration.
+
+### GitHub Enterprise Server (GHES) prerequisites
+
+If you connect to a self-hosted GHES instance, ensure delegate connectivity before you begin:
+
+* **Delegate network access:** The delegate selected by the connector must reach the GHES host. Test reachability with `curl -I https://<ghes-host>`. If GHES is IP-allowlisted, allowlist the delegate egress IP. Delegates are not allowlisted for customer GHES instances by default.
 
 :::info Proxy Configuration
 If your environment blocks outbound third-party traffic and routes it through a proxy, you will need to configure proxy settings on your Harness Delegate. Once configured there, the proxy settings are automatically picked up by IDP integrations. No additional setup is needed on the integration side. 
@@ -74,6 +96,18 @@ This section connects Harness IDP to your GitHub organization.
    <DocVideo src="https://www.youtube.com/embed/67r7gXk-UcU" />
    :::
 
+   The GitHub connector URL determines everything downstream. Set it based on your GitHub type:
+
+   | Scenario | Correct URL format | Do not use |
+   |---|---|---|
+   | Public GitHub, org scope | `https://github.com/<org>` | - |
+   | GHES, org scope | `https://<ghes-host>/<org>` (for example, `https://github.acme.com/acme-org`) | `https://<ghes-host>` alone (fails silently) |
+   | GHES, account scope | Not currently supported, org is required | - |
+
+   :::caution The org path segment is mandatory
+   Setting the connector URL to only the GHES host (for example, `https://github.acme.com`) causes the sync to fail with no records ingested. This is the same behavior as public GitHub without an org. Always include the org path segment: `https://<ghes-host>/<org>`.
+   :::
+
 ### 3. Configure mapping & correlation
 
 This section defines how GitHub entities are mapped to IDP catalog entities and how they are correlated with existing records.
@@ -86,6 +120,10 @@ The integration supports three entity types: **Repository Entity**, **Team Entit
 #### Repository entity
 
 The Repository Entity mapping imports GitHub repositories as catalog entities, with configurable `Kind` or `Type`.
+
+:::info Monorepo not supported
+The GitHub integration registers each repository as a single service across all GitHub types. Monorepos, where one repository contains multiple services, are not currently supported, so the individual services within a monorepo cannot be registered as separate catalog entities.
+:::
 
 ![](./static/repo-entity.png)
 <center>Figure 4: Enable Repository Entity</center>
@@ -430,6 +468,10 @@ The GitHub Integration connector supports three credential types. The table belo
 | Fine-Grained Personal Access Token | Repository: Metadata (Read-only), Organization: Members (Read-only) |
 | GitHub App | Repository: Metadata (Read-only), Organization: Members (Read-only) |
 
+:::info GitHub Enterprise Server (GHES) tokens
+Auth type, PAT scopes, and secret storage are identical to public GitHub. The only GHES-specific requirement is that the PAT must be created on the GHES instance, not on github.com. If the org uses SAML SSO, click **Configure SSO** next to the token and authorize it for each org you plan to sync, otherwise `read:org` calls return 404.
+:::
+
 ### Classic personal access token
 
 The following scopes are required for IDP to perform org-level discovery of repositories and teams:
@@ -487,3 +529,37 @@ The **Resource owner** must be set to the **organization**, not a personal accou
 * The app must be installed on the organization for the permissions to take effect. Once installed, the app's permission summary on the org's installed apps page will confirm: `Read access to members and metadata`
 
    ![](./static/repo-perm7.png)
+
+---
+
+## Troubleshooting
+
+Select any issue below to expand it and view the cause and fix. The following covers the most common GitHub Enterprise Server (GHES) failure modes.
+
+<details>
+<summary>GitHub integration sync completed but 0 records were ingested</summary>
+<div>
+The connector URL is missing the org path segment, or the org contains no discoverable files. Update the URL to <code>https://&lt;host&gt;/&lt;org&gt;</code>. If the URL already includes the org, confirm the repos under that org contain at least one file in the default branch root.
+</div>
+</details>
+
+<details>
+<summary>GitHub Enterprise Server integration INIT pod fails with ImagePullBackOff or 429 TOOMANYREQUESTS</summary>
+<div>
+The delegate hit the Docker Hub anonymous rate limit. Configure the <code>docker-connector</code> account setting to point at an authenticated Docker Hub connector.
+</div>
+</details>
+
+<details>
+<summary>Harness delegate cannot connect to the GitHub Enterprise Server host</summary>
+<div>
+The delegate egress cannot reach the GHES host. Verify reachability with <code>curl -I https://&lt;ghes-host&gt;</code>. If GHES is IP-allowlisted, request allowlisting for the delegate egress IP.
+</div>
+</details>
+
+<details>
+<summary>GitHub Enterprise Server read:org calls return 404</summary>
+<div>
+The PAT is not authorized for the org under SAML SSO. Click <b>Configure SSO</b> next to the token on the GHES instance and authorize it for each org you plan to sync.
+</div>
+</details>
