@@ -1,9 +1,19 @@
 ---
 title: Create a workspace
 description: Learn how to create a workspace.
+keywords:
+  - create workspace
+  - clone workspace
+  - workspace statuses
+  - provisioner
+  - connectors
+  - variables
+tags:
+  - iacm
+  - workspaces
 sidebar_position: 10
 sidebar_label: Create or Clone Workspace
-redirect-from:
+redirect_from:
    - /docs/infra-as-code-management/use-iacm/create-workspace
 ---
 
@@ -29,7 +39,7 @@ A workspace can have one of the following statuses:
 - **Apply_Needed:** Apply is required to bring the infrastructure in sync with the workspace configuration.
 - **Unknown:** Changes were made outside the product.
 
-Go to [workspace statuses](/docs/infra-as-code-management/workspaces/workspace-statuses) to find out more about filtering workspace by status.
+Go to [workspace statuses](/docs/infra-as-code-management/workspaces/workspace-statuses) to filter workspaces by status.
 
 ## Create a new workspace
 
@@ -45,7 +55,7 @@ To create a new workspace, follow these steps:
 2. In the module pane, select **Infrastructures as Code Management**.
 3. Select **Workspaces**, and then select **+New Workspace**, and **Start from scratch**.
 
-### Step 1: About Workspace
+### Step 1: about workspace
 
 - Enter a Name for your workspace. This name will appear in your workspace list.
 - (Optional) Add a Description to clarify the purpose of the workspace.
@@ -53,25 +63,25 @@ To create a new workspace, follow these steps:
 - (Optional) Toggle Enable Cost Estimation if you want Harness to calculate cloud costs based on the Plan output.
 - Click Next.
 
-### Step 2: Configure Repository Details
+### Step 2: configure repository details
 
 - Select Git Provider: Choose either:
   - Harness Code Repository, or
-  - Third-party Git provider (e.g., GitHub, GitLab, Bitbucket).
+  - Third-party Git provider (for example, GitHub, GitLab, or Bitbucket).
 - Select a Git Connector: Choose an existing connector or create a new one.
 - Choose Git Fetch Type:
 
   - Latest from Branch is selected by default.
   - Enter Git Branch: Type the name of the branch you want to fetch from.
 
-  :::tip branch with jexl
-  you can configure the workspace branch to be a [JEXL expressions](/docs/platform/variables-and-expressions/harness-variables/) that references a pipeline variable, and then set the pipeline variable as a run time input.
+  :::tip Branch with JEXL
+  You can configure the workspace branch as a [JEXL expression](/docs/platform/variables-and-expressions/harness-variables/) that references a pipeline variable, and then set the pipeline variable as a runtime input.
 
   ![](./static/branch-with-jexl.png)
 
-  Set you branch variable as a runtime input in the pipeline:
+  Set your branch variable as a runtime input in the pipeline:
 
-  ```
+  ```yaml
   variables:
    - name: iacm_branch
      type: String
@@ -84,12 +94,13 @@ To create a new workspace, follow these steps:
   - (Optional) Enter Folder Path: If your IaC code resides in a subdirectory, specify the folder path.
   - Click Next.
 
-### Step 3: Provisioner
-- Select a Connector: Choose the connector for the cloud provider or backend system (e.g., aws-oidc).
-- Set Scope: Confirm the scope for the connector (e.g., Account, Project, etc.).
+### Step 3: provisioner
+
+- Select a Connector: Choose the connector for the cloud provider or backend system (for example, aws-oidc).
+- Set Scope: Confirm the scope for the connector (for example, Account or Project).
 - Choose Workspace Type:
   - Select OpenTofu or Terraform based on your IaC framework.
-- Select the Version of OpenTofu or Terraform to use (e.g., 1.9.0).
+- Select the Version of OpenTofu or Terraform to use (for example, 1.9.0).
 - Click Create to finalize and create the workspace.
 </TabItem>
 </Tabs>
@@ -98,13 +109,13 @@ To create a new workspace, follow these steps:
 
 If you need to use either environment or Terraform variables during execution, select the **Variables** tab to define the variables.
 
-- **Environment Variables** can be either String, [Secret](/docs/category/secrets), or a reference to another variable using [JEXL expression](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/) (it can be in the same or a different workspace or from the pipeline).
+- **Environment Variables** can be either String, [Secret](/docs/category/secrets), or a reference to another variable using [JEXL expression](/docs/platform/variables-and-expressions/harness-variables/) (it can be in the same or a different workspace or from the pipeline).
 - **Terraform Variables** Can be provided in the following ways:
 - **Inline** Users can define Terraform variables within the workspace. Variables can be either String, [hcl](https://developer.hashicorp.com/terraform/language/syntax/configuration), [Secret](/docs/category/secrets), or a reference to another variable, using [JEXL expression](/docs/platform/variables-and-expressions/harness-variables/) (can be in the same or a different workspace, or from the pipeline).
 - **From Git Repo (Implicit)** Users can store `.tfvar` in the same folder as the Terraform code for the workspace.
 - **From Git Repo (Explicit)** Users can define a specific folder for `.tfvar` files (which can be different from the Terraform code's location). These files can be in the same or different repository as the Terraform code.
 
-:::info tfvar jexl support
+:::info Tfvar JEXL support
 [JEXL expressions](/docs/platform/variables-and-expressions/harness-variables/) cannot be used to reference `tfvar` files.
 :::
 
@@ -134,7 +145,7 @@ Review your new workspace and make any amendments in the Configuration tab if ne
 
 ## Workspace templates
 
-Create reuseable workspace templates to standardize your workspace configurations across projects. Go to [workspace templates](/docs/infra-as-code-management/workspaces/workspace-templates) to learn how to create and manage workspace templates.
+Create reusable workspace templates to standardize your workspace configurations across projects. Go to [workspace templates](/docs/infra-as-code-management/workspaces/workspace-templates) to create and manage workspace templates.
 
 ## Next step
 

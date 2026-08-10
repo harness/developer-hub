@@ -24,6 +24,8 @@ This guide walks you through registering an inventory, attaching a Git-backed pl
 
 ## What will you learn?
 
+This guide covers the following:
+
 - **Inventories:** Create and configure static, dynamic, or plugin-based inventories and use the Hosts, Variables, and Activity History tabs.
 - **Playbooks:** Register a playbook from Git so Harness can fetch it at pipeline run time.
 - **Pipelines:** Add the `IACMAnsiblePlugin` step to an **IACM** stage with your playbooks and inventories.
@@ -36,17 +38,17 @@ For step-by-step patterns such as web fleet configuration or rolling patches, co
 
 Before you begin, make sure the following are in place:
 
-- **Harness account with IaCM enabled:** **Infrastructure as Code Management** must be available under **Infrastructure**. For how to access or create a Harness account, see [Getting started with Harness Platform](/docs/platform/get-started/onboarding-guide).
+- **Harness account with IaCM enabled:** **Infrastructure as Code Management** must be available under **Infrastructure**. Go to [Getting started with Harness Platform](/docs/platform/get-started/onboarding-guide) to access or create a Harness account.
 
-    :::info Contact Harness support:
+    :::info Contact Harness support
 
-    If IaCM does not appear, see [Get started with IaCM](/docs/infra-as-code-management/get-started) or contact your account administrator or [Harness Support](mailto:support@harness.io).
+    If IaCM does not appear, go to [Get started with IaCM](/docs/infra-as-code-management/get-started), or contact your account administrator or [Harness Support](mailto:support@harness.io).
 
     :::
 
-- **IaCM Pipeline permissions:** You need **View**, **Create/Edit**, and **Execute** permissions for [Pipelines](/docs/platform/role-based-access-control/permissions-reference#pipelines). To get these, an administrator must assign you a role that includes them. See [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) and [Manage roles](/docs/platform/role-based-access-control/add-manage-roles).
+- **IaCM Pipeline permissions:** View, Create/Edit, and Execute permissions on [Pipelines](/docs/platform/role-based-access-control/permissions-reference#pipelines). Go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) to review the permissions model, and go to [Manage roles](/docs/platform/role-based-access-control/add-manage-roles) to assign a role that includes them.
 - **Git connector configured (for playbooks):** Your playbooks must be stored in a Git repository (Harness Code Repository or a third-party provider such as GitHub or GitLab). Ensure you have a [Harness connector](/docs/platform/connectors/code-repositories/connect-to-code-repo) with read access to that repository.
-- **Kubernetes delegate (for pipeline execution):** The `IACMAnsiblePlugin` step runs inside a Kubernetes-based pipeline infrastructure. Ensure a Harness Kubernetes Delegate is installed and accessible. See [Install a Kubernetes Delegate](/docs/platform/delegates/install-delegates/overview/).
+- **Kubernetes delegate (for pipeline execution):** The `IACMAnsiblePlugin` step runs inside a Kubernetes-based pipeline infrastructure. Go to [Install a Kubernetes Delegate](/docs/platform/delegates/install-delegates/overview/) to ensure a Harness Kubernetes Delegate is installed and accessible.
 - **Ansible container (optional override):** The step uses a default image with Ansible. Supply your own image only if you need extra tools, collections, or baked-in credentials for your playbooks.
 - **SSH access to target hosts:** Your delegate and Ansible container must be able to reach target hosts over SSH (or WinRM for Windows). Ensure security groups, firewall rules, and SSH keys are configured appropriately.
 
@@ -56,7 +58,7 @@ Before you begin, make sure the following are in place:
 
 The following steps walk you through creating inventories and playbooks, then running them from a pipeline.
 
-### Step 1: Create an inventory
+### Step 1: create an inventory
 
 An inventory defines the machines and groups that your playbooks will target. Harness IaCM supports three inventory types: **Static** (manually specified hosts), **Dynamic** (hosts derived from various sources including Terraform/OpenTofu workspaces), and **Plugin** (hosts populated via native Ansible inventory plugins).
 
@@ -75,10 +77,10 @@ To create a new inventory, do the following:
 After saving, you land directly on the inventory's **Hosts** tab.
 
 :::tip
-Choose **Dynamic** when your infrastructure is provisioned by Terraform or OpenTofu — Harness will automatically resolve hosts from workspace outputs, so you never need to manually update host lists as your infrastructure scales. Choose **Plugin** when you want to use an existing Ansible inventory plugin (for example, `aws_ec2` or `azure_rm`) that your team already maintains.
+Choose **Dynamic** when your infrastructure is provisioned by Terraform or OpenTofu. Harness automatically resolves hosts from workspace outputs, so you never need to manually update host lists as your infrastructure scales. Choose **Plugin** when you want to use an existing Ansible inventory plugin (for example, `aws_ec2` or `azure_rm`) that your team already maintains.
 :::
 
-#### Step 1.1: Define SSH credentials as variables
+#### Step 1.1: define SSH credentials as variables
 
 Harness authenticates to your hosts with the connection credentials you define as inventory variables. Without them, the playbook run reaches the host but cannot log in to execute tasks.
 
@@ -89,15 +91,15 @@ To define SSH credentials, do the following:
 3. Add a **Secret** variable with the key `ansible_ssh_private_key_file` and select the [Harness secret](/docs/platform/secrets/add-use-text-secrets) that holds your SSH private key. Harness resolves the secret at run time and wires the key to Ansible; the private key never appears in logs.
 4. Click **Save Changes**.
 
-Variables defined at the inventory level apply to every host in the inventory. To use different credentials for one machine or tier, define the same keys as host or group variables instead; they take precedence. Go to [Manage hosts and groups](/docs/infra-as-code-management/configuration-management/ansible/inventories/hosts) for variable precedence.
+Variables defined at the inventory level apply to every host in the inventory. To use different credentials for one machine or tier, define the same keys as host or group variables instead; they take precedence. Go to [Manage hosts and groups](/docs/infra-as-code-management/configuration-management/ansible/inventories/hosts) to review variable precedence.
 
 :::info
-Windows hosts authenticate over WinRM instead of SSH. Go to [Connect Windows hosts over WinRM](/docs/infra-as-code-management/configuration-management/ansible/examples/example-use-cases#use-case-7-connect-windows-hosts-over-winrm) for the connection variables.
+Windows hosts authenticate over WinRM instead of SSH. Go to [Connect Windows hosts over WinRM](/docs/infra-as-code-management/configuration-management/ansible/examples/example-use-cases#use-case-7-connect-windows-hosts-over-winrm) to review the connection variables.
 :::
 
 ---
 
-### Step 2: Configure an inventory
+### Step 2: configure an inventory
 
 Once created, you configure your inventory using four tabs: **Hosts**, **Variables**, **Activity History**, and **Configuration**. Go to [Manage hosts and groups](/docs/infra-as-code-management/configuration-management/ansible/inventories/hosts) to explore the full host and group workflow.
 
@@ -123,9 +125,9 @@ Groups let you target multiple hosts with a single playbook directive. To add a 
 For **Static** inventories, you enter host addresses manually. For **Dynamic** inventories, hosts are populated automatically from linked sources. You can still add groups and variables manually for dynamic inventories. For **Plugin** inventories, host population is driven by the plugin configuration.
 :::
 
-**Static inventory example — hosts:**
+**Static inventory example (hosts):**
 
-```
+```text
 web1.example.com
 web2.example.com
 db1.example.com
@@ -170,7 +172,7 @@ Variables let you pass configuration values into your playbooks at runtime. In t
 5. Repeat for additional variables, then click **Save Changes** at the top of the page to persist them.
 
 :::tip
-Use **secret** type for anything sensitive — API keys, database passwords, private tokens. Harness stores these in its secrets engine and masks them in logs.
+Use **secret** type for anything sensitive, such as API keys, database passwords, and private tokens. Harness stores these in its secrets engine and masks them in logs.
 :::
 
 Variables defined here are available directly in your playbook tasks. For example, if you define `db_port: 5432`, you can reference it in a playbook as `{{ db_port }}`.
@@ -181,7 +183,7 @@ The **Activity History** tab shows a log of all past executions against this inv
 
 ---
 
-### Step 3: Create a playbook
+### Step 3: create a playbook
 
 A playbook describes the automation tasks to apply to your inventory. Playbooks are stored in a Git repository and referenced by Harness at runtime.
 
@@ -193,7 +195,7 @@ To create a new playbook, do the following:
 4. Under **Repository**, configure the Git source:
    - **Select Git Provider:** Choose **Harness Code Repository** or **Third-party Git provider**.
    - **Git Connector:** Select the connector with access to your repository.
-   - **Git Fetch Type:** Select how to fetch the code — for example, **Latest from Branch**.
+   - **Git Fetch Type:** Select how to fetch the code, for example, **Latest from Branch**.
    - **Git Branch:** Select or type the branch name.
    - **File Path:** Enter the path to the playbook file within the repository, for example `site.yml`.
 5. Click **Save**.
@@ -201,7 +203,7 @@ To create a new playbook, do the following:
 Your playbook is now registered in Harness and ready to be used in a pipeline. Go to [Create Ansible playbooks](/docs/infra-as-code-management/configuration-management/ansible/playbooks) to add playbook variables and install Ansible Galaxy dependencies from a requirements file.
 
 :::info
-Harness does not store or modify playbook content — it reads directly from your Git repository at pipeline execution time. This means your playbooks follow your standard Git workflows: pull requests, code review, and versioned releases.
+Harness does not store or modify playbook content. It reads directly from your Git repository at pipeline execution time, so your playbooks follow your standard Git workflows: pull requests, code review, and versioned releases.
 :::
 
 <Tabs>
@@ -241,7 +243,7 @@ Harness does not store or modify playbook content — it reads directly from you
 
 Sample Ansible log when run against the `webservers` group:
 
-```
+```text
 PLAY [Configure web server infrastructure] **************************************
 
 TASK [Gathering Facts] **********************************************************
@@ -268,7 +270,7 @@ web1.example.com : ok=5    changed=3    unreachable=0    failed=0
 
 ---
 
-### Step 4: Integrate Ansible with a pipeline
+### Step 4: integrate Ansible with a pipeline
 
 Harness pipelines connect inventories and playbooks so you can run Ansible automation as part of your CI/CD workflows. The `IACMAnsiblePlugin` step handles execution: it runs your Ansible container, resolves the inventory, fetches the playbook from Git, and streams output to the pipeline logs.
 
@@ -344,7 +346,7 @@ To run with a custom container image, set `image` and `connectorRef` on the step
 
 **How it works:**
 
-The pipeline resolves the named inventory at runtime — building the host list from your static entries, workspace outputs, or plugin — and fetches the playbook from your Git repository at the specified branch and path. It runs the playbook inside the Ansible container via the delegate, streaming all output (task results and play recap) to the pipeline logs for full traceability.
+The pipeline resolves the named inventory at runtime, building the host list from your static entries, workspace outputs, or plugin, and fetches the playbook from your Git repository at the specified branch and path. It runs the playbook inside the Ansible container using the delegate, streaming all output (task results and play recap) to the pipeline logs for full traceability.
 
 :::tip
 To run Ansible configuration immediately after a Terraform/OpenTofu apply, chain the `IACMAnsiblePlugin` step after your `IACMTerraformPlugin` step in the same pipeline stage. A dynamic inventory will automatically reflect the newly provisioned hosts.
@@ -361,13 +363,13 @@ To run Ansible configuration immediately after a Terraform/OpenTofu apply, chain
 />
 
 <Troubleshoot
-  issue="Ansible playbook variables not resolving — undefined variable error in Harness IaCM pipeline"
+  issue="Ansible playbook variables not resolving: undefined variable error in Harness IaCM pipeline"
   mode="docs"
   fallback="Check the Variables tab on your inventory and confirm the variable key names exactly match what is referenced in your playbook (case-sensitive)."
 />
 
 <Troubleshoot
-  issue="Playbook not found error in Harness IaCM pipeline — repository or path incorrect"
+  issue="Playbook not found error in Harness IaCM pipeline: repository or path incorrect"
   mode="docs"
   fallback="Verify that the Git connector, branch name, and folder path are correct in the playbook configuration. Confirm the connector has read access to that branch."
 />
@@ -396,9 +398,9 @@ To run Ansible configuration immediately after a Terraform/OpenTofu apply, chain
 
 ## Next steps
 
-You've connected Ansible inventories and playbooks to your Harness IaCM pipelines and can now automate configuration management as a first-class step in your CI/CD workflows.
+You have connected Ansible inventories and playbooks to your Harness IaCM pipelines and can now automate configuration management as a first-class step in your CI/CD workflows.
 
-- **[Example Ansible use cases](/docs/infra-as-code-management/configuration-management/ansible/examples/example-use-cases)** — Apply these patterns to web fleets, rolling patches, multi-environment configs, Kubernetes worker bootstrap, and compliance hardening.
-- [IaCM Best Practices](/docs/infra-as-code-management/iacm-best-practices/) — Learn recommended patterns for structuring workspaces, pipelines, and configuration at scale.
-- [IaCM Module Registry](/docs/infra-as-code-management/registry/module-registry/module-registry-overview) — Package and reuse your Terraform and OpenTofu modules across projects.
-- [Harness IaCM Upcoming Features](/docs/infra-as-code-management/whats-supported/) — See what's coming next for IaCM, including expanded Ansible support.
+- [Example Ansible use cases](/docs/infra-as-code-management/configuration-management/ansible/examples/example-use-cases): Apply these patterns to web fleets, rolling patches, multi-environment configs, Kubernetes worker bootstrap, and compliance hardening.
+- [IaCM Best Practices](/docs/infra-as-code-management/iacm-best-practices/): Review recommended patterns for structuring workspaces, pipelines, and configuration at scale.
+- [IaCM Module Registry](/docs/infra-as-code-management/registry/module-registry/module-registry-overview): Package and reuse your Terraform and OpenTofu modules across projects.
+- [Harness IaCM Upcoming Features](/docs/infra-as-code-management/whats-supported/): Review what is coming next for IaCM, including expanded Ansible support.

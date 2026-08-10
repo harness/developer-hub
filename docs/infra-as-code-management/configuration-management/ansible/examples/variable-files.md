@@ -44,9 +44,9 @@ Before you begin, make sure the following are in place:
 
 - **Harness IaCM access:** Infrastructure as Code Management must be available under **Infrastructure**. Go to [Get started with IaCM](/docs/infra-as-code-management/get-started) to configure access.
 
-    :::info Contact Harness support:
+    :::info Contact Harness support
 
-    If IaCM does not appear, see [Get started with IaCM](/docs/infra-as-code-management/get-started) or contact your account administrator or [Harness Support](mailto:support@harness.io).
+    If IaCM does not appear, go to [Get started with IaCM](/docs/infra-as-code-management/get-started), or contact your account administrator or [Harness Support](mailto:support@harness.io).
 
     :::
 
@@ -76,7 +76,7 @@ Ansible automatically detects and loads variables from standard directory conven
 
 **Example repository structure:**
 
-```
+```text
 my-playbook-repo/
 ├── playbook.yaml
 ├── group_vars/
@@ -100,7 +100,7 @@ Harness clones the repository containing your plugin inventory configuration whe
 
 **Example repository structure:**
 
-```
+```text
 my-inventory-repo/
 ├── aws_ec2.yml              # Plugin inventory configuration
 ├── group_vars/
@@ -152,7 +152,7 @@ To use a dedicated variables repository, add a Git Clone step in your Harness pi
 
 This example shows a minimal structure. You can organize your dedicated variables repository using any layout that works for your configuration management approach.
 
-```
+```text
 sideloadingvariables/
 └── vars.yml
 ```
@@ -203,7 +203,7 @@ If you need to troubleshoot where files are being cloned or verify the file syst
 
 This example demonstrates the file system structure when using all three variable file approaches in a single pipeline.
 
-```
+```text
 /harness/
 ├── playbook.yaml
 ├── group_vars/
@@ -244,7 +244,7 @@ Ansible automatically detects and includes variable files stored in `group_vars/
 
 **Repository structure:**
 
-```
+```text
 my-playbook-repo/
 ├── playbook.yaml
 ├── group_vars/
@@ -255,8 +255,8 @@ my-playbook-repo/
 ```
 
 When running the playbook against host `54.234.107.31`, Ansible automatically includes the following variables:
-- Variables from `group_vars/all.yml` — applied to all hosts in the inventory
-- Variables from `host_vars/54.234.107.31/all.yml` — applied only to this specific host
+- Variables from `group_vars/all.yml`: applied to all hosts in the inventory
+- Variables from `host_vars/54.234.107.31/all.yml`: applied only to this specific host
 
 **`group_vars/all.yml`:**
 
@@ -348,4 +348,4 @@ You now understand the three approaches for providing variable files to Ansible 
 
 - Go to [Example Ansible use cases](/docs/infra-as-code-management/configuration-management/ansible/examples/example-use-cases) to apply these patterns to web fleets, rolling patches, and multi-environment configurations.
 - Go to [Ansible variable precedence documentation](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable) to understand how Ansible resolves conflicts when the same variable is defined in multiple sources.
-- Go to [Ansible inventory guide](https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html) to learn more about organizing host and group variables.
+- Go to [Ansible inventory guide](https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html) to review organizing host and group variables.

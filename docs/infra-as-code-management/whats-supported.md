@@ -2,6 +2,18 @@
 title: What's supported in Harness IaCM
 description: Supported Platforms and Features in Harness IaCM
 sidebar_label: What's Supported
+keywords:
+  - supported frameworks
+  - opentofu
+  - terraform
+  - workspace connectors
+  - cloud providers
+  - secrets management
+  - git providers
+  - feature flags
+  - security scanners
+tags:
+  - iacm
 sidebar_position: 10
 ---
 
@@ -9,12 +21,12 @@ import HarnessApiData from '../../src/components/HarnessApiData/index.tsx';
 
 This page describes supported platforms and technologies for Harness IaCM specifically.
 
-For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](https://developer.harness.io/docs/platform/platform-whats-supported/).
+For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/platform/platform-whats-supported/).
 
 ## Deployment models
 Harness IaCM is supported on the following deployment models:
 - **Harness SaaS:** Fully managed; all IaCM features are available. No infrastructure to run or maintain.
-- **Self-Managed Enterprise Edition (SMP):** On-premises or private cloud with full control. See [IaCM SMP](/docs/infra-as-code-management/manage-projects/iacm-smp) for setup and any SMP-specific feature flags or image overrides.
+- **Self-Managed Enterprise Edition (SMP):** On-premises or private cloud with full control. Go to [IaCM SMP](/docs/infra-as-code-management/manage-projects/iacm-smp) for setup and any SMP-specific feature flags or image overrides.
 
 
 ## Prerequisites
@@ -22,7 +34,7 @@ To configure an IaCM workspace and create pipelines, you must have the following
 - An active cloud provider account
 - A Git repository
 
-## Supported IaC Frameworks
+## Supported IaC frameworks
 Harness IaCM supports the following IaC frameworks:
 - [**OpenTofu**](https://opentofu.org/) <HarnessApiData
     query="https://app.harness.io/gateway/iacm/api/provisioners/supported/opentofu"
@@ -49,18 +61,18 @@ Go to [OpenTofu migration](https://opentofu.org/docs/intro/migration/) to migrat
 
 ### Limitations
 - **Terraform:** Only MPL-licensed versions up to 1.5.x are supported. Terraform 1.6+ (BSL) is not supported; use [OpenTofu](https://opentofu.org/docs/intro/migration/) for a drop-in replacement.
-- **Terragrunt:** Supported at the workspace level. Go to [Get started with Terragrunt](/docs/infra-as-code-management/get-started/#terragrunt) to learn more.
+- **Terragrunt:** Supported at the workspace level. Go to [Get started with Terragrunt](/docs/infra-as-code-management/get-started/#terragrunt) for setup steps.
 
-## Supported Workspace Connectors
+## Supported workspace connectors
 ### Configuration management
 - **Ansible**: Harness IaCM integrates with Ansible so you can define your target machines (**inventories**) and apply automation tasks (**playbooks**) as part of your CI/CD pipelines. Go to [Ansible in IaCM](/docs/infra-as-code-management/configuration-management/ansible/overview).
 
-### Cloud Providers
+### Cloud providers
 - **AWS**: Connect via your AWS account to leverage extensive IaCM features.
 - **Azure**: Integration supports multiple Azure services.
 - **Google Cloud Platform (GCP)**: Offers tailored IaCM functionalities for GCP resources.
 
-### Secrets Management
+### Secrets management
 - **Vault**: HashiCorp Vault connector for secrets management
 
 **Key features:**
@@ -70,7 +82,7 @@ Go to [OpenTofu migration](https://opentofu.org/docs/intro/migration/) to migrat
 - **Runtime injection**: Secrets are automatically injected into runtime environments as environment variables
 - **Provider initialization**: Harness automatically adds environment variables based on the selected authentication type, which you must consume to initialize the Vault provider in your OpenTofu/Terraform code.
 
-### Git Providers
+### Git providers
 Harness IaCM supports the following source providers for seamless code management:
 - **[Harness Code Repository](/docs/code-repository)**: Provides direct integration for streamlined operations.
 - **GitHub**: Ideal for managing projects hosted on GitHub with options for branch-specific operations.
@@ -80,7 +92,7 @@ Harness IaCM supports the following source providers for seamless code managemen
 
 Git options include `Latest from Branch` (specifying a branch) and `Git Tag` fetch types. Users can set a configuration file path, such as a terraform (.tf) file.
 
-## IaCM Feature Flags
+## IaCM feature flags
 Beta and feature-flagged capabilities are marked as such in the docs; contact [Harness Support](mailto:support@harness.io) to request access.
 
 ## Supported integrations
@@ -94,17 +106,17 @@ Beta and feature-flagged capabilities are marked as such in the docs; contact [H
 ## Supported plugins
 - **[IDP (Internal Developer Portal)](/docs/internal-developer-portal/plugins/available-plugins/harness-native-plugins/harness-iacm):** Use the IaCM plugin in IDP for resource visibility, drill-downs, and workspace context.
 
-### Security Scanners
+### Security scanners
 IaCM integrates with multiple security scanning tools to check your infrastructure code for security vulnerabilities, compliance issues, and misconfigurations:
 
-- **[Checkov](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/checkov/iac-scans-with-checkov)**: Open-source static code analysis tool for Infrastructure as Code that detects security and compliance misconfigurations.
-- **[Wiz](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/wiz/iac-scans-with-wiz)**: Cloud security platform that scans your infrastructure changes for security vulnerabilities and compliance violations.
-- **[Snyk](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference)**: Developer security platform that identifies vulnerabilities and security issues in your IaC configurations.
-- **[Checkmarx One](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference)**: Application security testing platform that provides comprehensive security scanning for infrastructure code.
-- **Custom Scans**: IaCM also supports integration with custom security scanning tools through the [Harness STO module](https://developer.harness.io/docs/security-testing-orchestration).
+- **[Checkov](/docs/security-testing-orchestration/sto-techref-category/checkov-iac-scan)**: Open-source static code analysis tool for Infrastructure as Code that detects security and compliance misconfigurations.
+- **[Wiz](/docs/security-testing-orchestration/sto-techref-category/wiz/iac-scans-with-wiz)**: Cloud security platform that scans your infrastructure changes for security vulnerabilities and compliance violations.
+- **[Snyk](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference)**: Developer security platform that identifies vulnerabilities and security issues in your IaC configurations.
+- **[Checkmarx One](/docs/security-testing-orchestration/sto-techref-category/checkmarx/checkmarxone-scanner-reference)**: Application security testing platform that provides comprehensive security scanning for infrastructure code.
+- **Custom Scans**: IaCM also supports integration with custom security scanning tools through the [Harness STO module](/docs/security-testing-orchestration).
 
 :::note
-Security scanning features are part of the [Harness STO module](https://developer.harness.io/docs/security-testing-orchestration) and require an STO license.
+Security scanning features are part of the [Harness STO module](/docs/security-testing-orchestration) and require an STO license.
 :::
 
 ## Next steps

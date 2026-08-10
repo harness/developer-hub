@@ -2,10 +2,24 @@
 title: Harness Infrastructure as Code Management (IaCM) Overview
 sidebar_label: Overview & Key Concepts
 description: Learn about Harness Infrastructure as Code Management.
+keywords:
+  - iacm overview
+  - infrastructure as code
+  - key concepts
+  - opentofu
+  - terraform
+  - terragrunt
+  - ansible
+tags:
+  - iacm
+  - get-started
+  - overview
 sidebar_position: 10
 ---
 
-Welcome to the Harness Infrastructure as Code Management (IaCM) guide! This document will provide you with an overview of IaCM and introduce key concepts to help you manage your infrastructure efficiently and effectively.
+import { FAQ } from '@site/src/components/AdaptiveAIContent';
+
+This guide provides an overview of Harness Infrastructure as Code Management (IaCM) and introduces key concepts to help you manage your infrastructure efficiently and effectively.
 
 ## Overview
 
@@ -17,21 +31,23 @@ Harness IaCM connects your infrastructure code in your repository with the resou
 
 Harness IaCM supports the following **provisioners** and related automation:
 
-- **OpenTofu:** Open-source infrastructure as code, compatible with the Terraform ecosystem. See [OpenTofu](https://opentofu.org/) and [What's supported in IaCM](/docs/infra-as-code-management/whats-supported).
-- **Terraform:** MPL-licensed Terraform up to **v1.5.x**. BSL-licensed releases (**v1.6.0** and later) are not supported; use [OpenTofu](https://opentofu.org/docs/intro/migration/) as a drop-in alternative where applicable. See [What's supported in IaCM](/docs/infra-as-code-management/whats-supported).
-- **Terragrunt:** Thin wrapper that orchestrates OpenTofu/Terraform modules and shared configuration across environments. See [Terragrunt](https://terragrunt.gruntwork.io/) and the Terragrunt path in [Get started with IaCM](/docs/infra-as-code-management/get-started#terragrunt).
-- **Ansible (configuration management):** Define inventories and playbooks for configuration and automation on target hosts (for example over SSH or WinRM), alongside your core IaC workflows. See [Ansible in IaCM](/docs/infra-as-code-management/configuration-management/ansible/overview).
+- **OpenTofu:** Open-source infrastructure as code, compatible with the Terraform ecosystem. Go to [OpenTofu](https://opentofu.org/) to review the project, and go to [What's supported in IaCM](/docs/infra-as-code-management/whats-supported) for version support.
+- **Terraform:** MPL-licensed Terraform up to **v1.5.x**. BSL-licensed releases (**v1.6.0** and later) are not supported; use [OpenTofu](https://opentofu.org/docs/intro/migration/) as a drop-in alternative where applicable. Go to [What's supported in IaCM](/docs/infra-as-code-management/whats-supported) for version support.
+- **Terragrunt:** Thin wrapper that orchestrates OpenTofu/Terraform modules and shared configuration across environments. Go to [Terragrunt](https://terragrunt.gruntwork.io/) to review the project, and go to the Terragrunt path in [Get started with IaCM](/docs/infra-as-code-management/get-started#terragrunt) to set one up.
+- **Ansible (configuration management):** Define inventories and playbooks for configuration and automation on target hosts (for example over SSH or WinRM), alongside your core IaC workflows. Go to [Ansible in IaCM](/docs/infra-as-code-management/configuration-management/ansible/overview) to review the concepts.
 
-### Key Features
+### Key features
 
-- **Policy enforcement:** Define and enforce policies at configuration time to prevent unauthorized changes and restrict modifications to critical resources. [Learn more about policy enforcement](/docs/infra-as-code-management/policies-governance/opa-workspace).
-- **Drift detection:** Harness IaCM continuously monitors your infrastructure, alerting you to discrepancies between declared state and what is actually provisioned. [Explore drift detection](/docs/infra-as-code-management/pipelines/operations/drift-detection).
-- **Pull request (PR) automation:** Manage PRs within Harness with visual comparisons and cost estimates for proposed changes. [Discover PR automation](/docs/infra-as-code-management/pipelines/operations/pr-automation).
-- **Advanced pipeline capabilities:** Customize pipelines with security checks, parallel stages, and other patterns. [Find out more about pipeline capabilities](/docs/infra-as-code-management/pipelines/operations/iacm-cd-pipeline).
-- **State management and auditing:** Manage state with controlled access and history tied to provisioned workspaces. [Understand state management and workspace provisioning](/docs/infra-as-code-management/workspaces/provision-workspace).
-- **Cost management:** Estimate the cost of proposed changes before you apply them. [Learn about cost management](/docs/infra-as-code-management/workspaces/cost-estimation).
+Harness IaCM includes the following key features:
 
-For a more detailed demo, check out the [IaCM overview video](https://youtu.be/IzLP270Daqo?si=U-JC0YbLskXevajC).
+- **Policy enforcement:** Define and enforce policies at configuration time to prevent unauthorized changes and restrict modifications to critical resources. Go to [Policy enforcement](/docs/infra-as-code-management/policies-governance/opa-workspace) to review the details.
+- **Drift detection:** Harness IaCM continuously monitors your infrastructure, alerting you to discrepancies between declared state and what is actually provisioned. Go to [Drift detection](/docs/infra-as-code-management/pipelines/operations/drift-detection) to review the details.
+- **Pull request (PR) automation:** Manage PRs within Harness with visual comparisons and cost estimates for proposed changes. Go to [PR automation](/docs/infra-as-code-management/pipelines/operations/pr-automation) to review the details.
+- **Advanced pipeline capabilities:** Customize pipelines with security checks, parallel stages, and other patterns. Go to [Pipeline capabilities](/docs/infra-as-code-management/pipelines/operations/iacm-cd-pipeline) to review the details.
+- **State management and auditing:** Manage state with controlled access and history tied to provisioned workspaces. Go to [Provision a workspace](/docs/infra-as-code-management/workspaces/provision-workspace) to review state management and workspace provisioning.
+- **Cost management:** Estimate the cost of proposed changes before you apply them. Go to [Cost estimation](/docs/infra-as-code-management/workspaces/cost-estimation) to review the details.
+
+Go to the [IaCM overview video](https://youtu.be/IzLP270Daqo?si=U-JC0YbLskXevajC) for a more detailed demo.
 
 ## How it fits together
 
@@ -56,7 +72,7 @@ Harness IaCM organizes resources in a nested hierarchy. Understanding this struc
 
 ![IaCM workflow hierarchy](../static/iacm-hierarchy-diagram.png)
 
-## Key Concepts
+## Key concepts
 
 Infrastructure as Code (IaC) is the ability to define cloud resources as code, allowing for repeatable infrastructure configuration. Examples of IaC tools include HashiCorp Terraform and Amazon CloudFormation.
 
@@ -68,9 +84,9 @@ Your workspace is a container for your infrastructure resources: IaC code, **var
 
 Operations are actions taken to manage and maintain your infrastructure using IaC tools.
 
-- **Provision:** Applying infrastructure configuration to create or update cloud resources. Provision flows usually follow **init → plan → apply** in a pipeline. [Learn about provisioning](/docs/infra-as-code-management/workspaces/provision-workspace).
-- **Destroy:** Removing resources managed by the workspace’s IaC. [Explore destroy workflows](/docs/infra-as-code-management/workspaces/destroy-workspaces).
-- **Drift detection:** Occurs when actual infrastructure diverges from the state defined by your IaC. [Understand drift detection](/docs/infra-as-code-management/pipelines/operations/drift-detection).
+- **Provision:** Applying infrastructure configuration to create or update cloud resources. Provision flows usually follow **init → plan → apply** in a pipeline. Go to [Provision a workspace](/docs/infra-as-code-management/workspaces/provision-workspace) to review the flow.
+- **Destroy:** Removing resources managed by the workspace’s IaC. Go to [Destroy workspaces](/docs/infra-as-code-management/workspaces/destroy-workspaces) to review destroy workflows.
+- **Drift detection:** Occurs when actual infrastructure diverges from the state defined by your IaC. Go to [Drift detection](/docs/infra-as-code-management/pipelines/operations/drift-detection) to review the details.
 
 ### Resources
 
@@ -80,6 +96,20 @@ Resources are components and services managed by your IaC tool and cloud provide
 - **Cloud provider:** A platform offering cloud computing services that you connect with a **connector**.
 - **Harness state tracking:** Tracks the current state of a stack and changes over time within a workspace.
 - **Terraform/OpenTofu state backend:** Where state is stored and locked for shared use. [Remote backends](/docs/infra-as-code-management/remote-backends/use-backends) covers backend options and Harness-managed state.
-- **Variables:** Values that parameterize IaC and pipeline behavior. [Learn about connectors and variables](/docs/infra-as-code-management/configuration/connectors-and-variables/connectors-variables) in IaCM.
+- **Variables:** Values that parameterize IaC and pipeline behavior. Go to [Connectors and variables](/docs/infra-as-code-management/configuration/connectors-and-variables/connectors-variables) to review variables in IaCM.
+
+## FAQs
+
+<FAQ
+  question="What is the difference between OpenTofu and Terraform support in Harness IaCM?"
+  mode="docs"
+  fallback="Harness IaCM supports MPL-licensed Terraform up to v1.5.x. BSL-licensed Terraform releases (v1.6.0 and later) are not supported; use OpenTofu as a drop-in alternative where applicable."
+/>
+
+<FAQ
+  question="How are Harness IaCM resources organized?"
+  mode="docs"
+  fallback="Resources are organized in a nested hierarchy: Account contains multiple Organizations, Organizations contain multiple Projects, Projects contain multiple Workspaces, and Pipelines are independent entities you can execute against any workspace in a project."
+/>
 
 Go to [Get started with IaCM](/docs/infra-as-code-management/get-started) to begin hands-on setup or continue your IaCM journey.

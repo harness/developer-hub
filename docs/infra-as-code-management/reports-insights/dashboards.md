@@ -1,6 +1,16 @@
 ---
 title: "Dashboards"
 description: "Learn how to use the IaCM Dashboard to gain insights into workspace usage, visualize data, and customize your dashboard for better decision-making."
+keywords:
+  - iacm dashboard
+  - custom dashboards
+  - workspace metrics
+  - module usage
+  - provider compliance
+tags:
+  - iacm
+  - reports-insights
+  - dashboards
 ---
 
 import Tabs from '@theme/Tabs';
@@ -8,21 +18,23 @@ import TabItem from '@theme/TabItem';
 
 Harness Custom Dashboards provide a fully integrated BI experience powered by IaCM data, offering deep visibility into workspace metrics and insights not typically surfaced elsewhere in the platform.
 
-## Use Cases
+## Use cases
+
 The IaCM Dashboard is designed to help you:
 
 - Visualize the **count of workspaces** by organization and project.
-- List **modules in use** and identify how many workspaces are using them. [Learn more about Harness module registry](/docs/infra-as-code-management/registry/module-registry/module-registry-overview)
-- Create visualizations based on **workspace tags** (e.g., "team:europe") to better understand resource allocation.
+- List **modules in use** and identify how many workspaces are using them. Go to [Harness module registry](/docs/infra-as-code-management/registry/module-registry/module-registry-overview) to review how modules are tracked.
+- Create visualizations based on **workspace tags** (for example, "team:europe") to better understand resource allocation.
 - **Monitor provider compliance** across your infrastructure:
   - Track what percentage of workspaces are using [**OpenTofu**](https://opentofu.org/) or Terraform.
-  - Identify projects using outdated or non-compliant provider versions
-  - Ensure standardization across cloud providers and tools
+  - Identify projects using outdated or non-compliant provider versions.
+  - Ensure standardization across cloud providers and tools.
 
 :::tip OpenTofu migration
-Harness supports all OpenTofu versions, and Terraform MPL versions up to 1.5.x, any BSL versions (from 1.6.0) are not supported. 
+Harness supports all OpenTofu versions, and Terraform MPL versions up to 1.5.x. Any BSL versions (from 1.6.0) are not supported.
 Follow this [**OpenTofu migration guide**](https://opentofu.org/docs/intro/migration/) to transition from Terraform to OpenTofu and leverage the benefits of this open-source alternative.
 :::
+
 ---
 
 <Tabs>
@@ -41,43 +53,54 @@ Follow these steps to download and share your reports:
 <DocVideo src="https://app.tango.us/app/embed/bc2589cb-951a-43ae-b570-6ed205bdd3f3?skipCover=false&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Download Workspace Dashboard Reports" />
 </TabItem>
 </Tabs>
+
 ---
 
-## Dashboard Customization
-Harness Dashboards provide flexible customization options to tailor your analytics experience. Here's an overview of available features:
+## Dashboard customization
 
-:::tip Advanced Dashboard Features
-For comprehensive information on advanced dashboards capabilities, filters, and best practices, see the [Harness Dashboards documentation](/docs/category/harness-dashboards).
+Harness Dashboards provide flexible customization options to tailor your analytics experience. Here is an overview of available features:
+
+:::tip Advanced dashboard features
+Go to the [Harness Dashboards documentation](/docs/category/harness-dashboards) to review advanced dashboard capabilities, filters, and best practices.
 :::
 
 ### Add
-- Options to add:
-  - **Visualization**: Create visualizations to display key metrics.
-  - **Text**: Add textual explanations or notes.
-  - **Markdown**: Include formatted content for better readability.
-  - **Button**: Add interactive buttons for quick actions.
+
+Add the following elements to your dashboard:
+
+- **Visualization**: Create visualizations to display key metrics.
+- **Text**: Add textual explanations or notes.
+- **Markdown**: Include formatted content for better readability.
+- **Button**: Add interactive buttons for quick actions.
 
 ### Filters
-- Add new filters to refine your dashboard view:
-  - By **modules**.
-  - By **workspace tags**.
-  - By **workspaces**.
 
-:::tip module usage metrics
-Displays modules in use by your workspaces, regardless of their origin (e.g., OpenTofu, Harness, RDS).
+Add new filters to refine your dashboard view:
+
+- By **modules**.
+- By **workspace tags**.
+- By **workspaces**.
+
+:::tip Module usage metrics
+Displays modules in use by your workspaces, regardless of their origin, for example OpenTofu, Harness, or RDS.
 :::
 
 ### Settings
-- Customize dashboard behavior:
-  - **Timezone options**: Adjust to your preferred timezone.
-  - **Run on load**: Automatically load data when the dashboard opens.
-  - **Allow full screen mode**: Enable full-screen viewing for visualizations.
-  - **Automatic refresh**: Set a refresh frequency for real-time updates.
 
-### Quick Layout
-- Quickly adjust your dashboard layout with predefined tile sizes:
-  - **XL**: 1 Tile across.
-  - **S**: 4 Tiles across.
+Customize dashboard behavior with the following settings:
+
+- **Timezone options**: Adjust to your preferred timezone.
+- **Run on load**: Automatically load data when the dashboard opens.
+- **Allow full screen mode**: Enable full-screen viewing for visualizations.
+- **Automatic refresh**: Set a refresh frequency for real-time updates.
+
+### Quick layout
+
+Quickly adjust your dashboard layout with predefined tile sizes:
+
+- **XL**: 1 tile across.
+- **S**: 4 tiles across.
 
 ---
-Review your [workspace settings](/docs/infra-as-code-management/workspaces/workspace-tabs) and [IaCM best practices](/docs/infra-as-code-management/iacm-best-practices) for more information on how to get the most out of Harness IaCM.
+
+Go to [Workspace settings](/docs/infra-as-code-management/workspaces/workspace-tabs) and [IaCM best practices](/docs/infra-as-code-management/iacm-best-practices) to get the most out of Harness IaCM.

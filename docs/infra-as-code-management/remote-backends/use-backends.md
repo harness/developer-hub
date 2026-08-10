@@ -1,6 +1,17 @@
 ---
 title: Use Existing Remote State
 description: Learn how to reuse existing remote state backends in IaCM.
+keywords:
+  - remote state
+  - remote backend
+  - aws s3
+  - google cloud storage
+  - azure blob storage
+  - state locking
+tags:
+  - iacm
+  - remote-backends
+  - state
 sidebar_position: 10
 sidebar_label: Use Existing Remote State
 ---
@@ -11,14 +22,14 @@ import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
 Harness IaCM lets you reuse existing remote state backends, such as **AWS S3**, **Google Cloud Storage (GCS)**, or **Azure Blob Storage**, without migrating to Harness-managed storage. Just point your `backends.tf` file to your existing backend, and Harness will use it directly with OpenTofu.
 
-This approach is ideal if you're onboarding to IaCM, already use remote backends, or need compatibility with other systems or CI pipelines.
+This approach is ideal if you are onboarding to IaCM, already use remote backends, or need compatibility with other systems or CI pipelines.
 
 ## Prerequisites
 - Your repository contains a valid `backends.tf` file.
-- Your existing remote state file (e.g., `.tfstate`) is accessible and versioned.
-- Harness has read/write access to the remote backend. Go to [Set environment variables](/docs/infra-as-code-management/remote-backends/init-configuration#set-environment-variables) for more information.  
-- You use the [Plan and Apply steps](https://developer.harness.io/docs/infra-as-code-management/workspaces/provision-workspace/) in your pipeline, not custom script steps.
-- Backend authentication credentials (e.g. for GCS, S3, Azure) are configured via environment variables in the Harness Workspace.
+- Your existing remote state file (for example, `.tfstate`) is accessible and versioned.
+- Harness has read/write access to the remote backend. Go to [Set environment variables](/docs/infra-as-code-management/remote-backends/init-configuration#set-environment-variables) to configure access.
+- You use the [Plan and Apply steps](/docs/infra-as-code-management/workspaces/provision-workspace/) in your pipeline, not custom script steps.
+- Backend authentication credentials (for example, for GCS, S3, Azure) are configured via environment variables in the Harness Workspace.
 
 ## Example backends 
 <Tabs>
@@ -48,7 +59,7 @@ terraform {
 }
 ```
 
-> Your GCP connector or Workspace-level environment variables must include the necessary IAM roles (e.g. `roles/storage.objectAdmin`).
+> Your GCP connector or Workspace-level environment variables must include the necessary IAM roles (for example, `roles/storage.objectAdmin`).
 [OpenTofu GCS Backend Docs](https://opentofu.org/docs/language/settings/backends/gcs/)
 </TabItem>
 <TabItem value="Azure Blob Storage">
@@ -68,7 +79,7 @@ terraform {
 </TabItem>
 </Tabs>
 
-## Pipeline Configuration & Testing
+## Configure and test your pipeline
 To provision your workspace with an existing remote backend, configure your pipeline using OpenTofu steps as shown below:
 
 ```yaml
@@ -89,24 +100,23 @@ steps:
 
 If your workspace requires OpenTofu/Terraform variables or environment variables, [add them in your workspace settings](/docs/infra-as-code-management/configuration/connectors-and-variables/connectors-variables).
 
-If no variables are specified, Harness uses any defaults defined in the source code (e.g. `variables.tf` files in your repo). Go to [Declaring variables](https://opentofu.org/docs/language/values/variables) to see how to define variables in your source code.
+If no variables are specified, Harness uses any defaults defined in the source code (for example, `variables.tf` files in your repo). Go to [Declaring variables](https://opentofu.org/docs/language/values/variables) to review how to define variables in your source code.
 
-
-**To test your setup:**  
-Run your pipeline to execute the `init`, `plan`, and `apply` steps (and any approval plugins you've configured). See [IaCM Setup pipeline](/docs/infra-as-code-management/get-started/#add-a-pipeline) for more details.
+**To test your setup:**
+Run your pipeline to execute the `init`, `plan`, and `apply` steps (and any approval plugins you have configured). Go to [IaCM Setup pipeline](/docs/infra-as-code-management/get-started/#add-a-pipeline) for the full setup pipeline.
 - Check the logs during the approval or apply step to verify successful initialization of the remote backend.
 - Ensure your `backends.tf` file is present in the repository connected to your workspace.
 
-## State Locking Considerations
+## State locking considerations
 Each remote backend implements its own locking mechanism:
 
 - **S3** uses DynamoDB for locking.
 - **GCS** relies on object metadata.
 - **Azure Blob** uses blob leases.
 
-OpenTofu handles lock acquisition and release during pipeline execution. There is **no additional locking layer in IaCM**—locks are managed entirely by OpenTofu based on the backend settings.
+OpenTofu handles lock acquisition and release during pipeline execution. There is **no additional locking layer in IaCM**. Locks are managed entirely by OpenTofu based on the backend settings.
 
-## Troubleshooting & Best Practices
+## Troubleshooting and best practices
 
 <Troubleshoot
   mode="docs"
@@ -154,10 +164,11 @@ OpenTofu handles lock acquisition and release during pipeline execution. There i
 - Run speculative plans only from pipelines to ensure consistent remote state access.  
 - Use workspace variables or pipeline inputs for backend paths when multiple environments share the same backend configuration.
 
-:::tip 
-Harness Workspaces provide the same remote execution context as Terraform Cloud workspaces — just with full control over backend configuration and pipeline orchestration.
+:::tip
+Harness Workspaces provide the same remote execution context as Terraform Cloud workspaces, with full control over backend configuration and pipeline orchestration.
 :::
-## Related Links
+
+## Related links
 - [Provision a Workspace](/docs/infra-as-code-management/workspaces/provision-workspace)
 - [IaCM Best Practices](/docs/infra-as-code-management/iacm-best-practices)
 - [OpenTofu](https://opentofu.org/)

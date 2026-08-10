@@ -13,7 +13,7 @@ This guide walks you from connectors and workspace creation through a standard C
 - **Plugin variables:** Always set `PLUGIN_AWS_REGION` for the target AWS Region. Set `PLUGIN_AWSCDK_STACKS` only when you want specific stacks processed; otherwise all stacks in the app are included.
 - **Approvals:** Optionally gate deploy behind an approval step after diff.
 
-## Prerequisites
+## Before you begin
 
 Before you use this guide, ensure you have the following:
 

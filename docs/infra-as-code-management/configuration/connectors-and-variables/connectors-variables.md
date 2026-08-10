@@ -1,6 +1,19 @@
 ---
 title: Connectors & Variable Sources
 description: Learn how to configure connectors, environment variables, OpenTofu/Terraform variables, and variable files in your IaCM workspace.
+keywords:
+  - connectors
+  - variable sets
+  - environment variables
+  - opentofu variables
+  - terraform variables
+  - variable files
+  - secrets management
+  - vault
+tags:
+  - iacm
+  - connectors
+  - variables
 sidebar_position: 10
 redirect_from: 
   - "/docs/infra-as-code-management/project-setup/input-variables"
@@ -15,27 +28,30 @@ import TabItem from "@theme/TabItem";
 ## Connectors
 A **connector** is required to authenticate with cloud providers or external systems. Most workspace operations, like fetching modules or variable files, depend on a connector.
 
-:::info supported connectors
+:::info Supported connectors
 IaCM supports the following cloud providers and external systems through connectors:
 - **AWS**: Amazon Web Services integration
 - **GCP**: Google Cloud Platform integration
 - **Azure**: Microsoft Azure integration
 - **Vault**: HashiCorp Vault integration for secrets management
 
-Go to the [IaCM What's Supported](/docs/infra-as-code-management/whats-supported) page for detailed configuration information.
+Go to [Supported integrations for IaCM](/docs/infra-as-code-management/whats-supported) to review detailed configuration information.
 
-:::tip add connectors
+:::tip Add connectors
 Connectors can be added via Account Settings or directly from your workspaces **Connectors and Variables** tab.
 :::
 
 ### Add a connector
+
+To add a connector, follow these steps:
+
 1. From your workspace **Connectors and Variables** tab, click **+ Connector**.
-2. Select an existing connector from your account or project scope (e.g., `aws-oidc`).
+2. Select an existing connector from your account or project scope, for example, `aws-oidc`.
 
 Or, you can add a new connector by clicking **+ New Connector**.
 
-:::info interactive guide
-Also, see [Add Connectors](/docs/infra-as-code-management/get-started/#add-connectors) for an interactive guide.
+:::info Interactive guide
+Go to [Add connectors](/docs/infra-as-code-management/get-started/#add-connectors) for an interactive guide.
 :::
 
 ### Connectors from templates
@@ -44,7 +60,7 @@ If your workspace is created from a workspace template, it may include connector
 - These appear in the **Connectors and Variables** tab.
 - Currently, these connectors **cannot be modified** in the workspace.
 
-### Multiple Connectors
+### Multiple connectors
 You can attach more than one connector to a workspace. This allows your IaCM runs to access multiple cloud providers or external systems from a single workspace (for example, both AWS and Azure). However, a workspace can only have one connector per provider type (for example, one AWS, one GCP, one Azure).
 
 - Connectors appear in the **Connectors and Variables** tab.
@@ -53,20 +69,20 @@ You can attach more than one connector to a workspace. This allows your IaCM run
 
 ---
 
-## Secrets Management
+## Secrets management
 The **Vault** connector provides HashiCorp Vault integration for secrets management in IaCM workspaces.
 
 **Key features:**
-- **Workspace-level attachment**: Vault connectors are attached at the workspace level
-- **Authentication methods**: Currently supports **Token** and **JWT** authentication
-- **Flexible configuration**: Can be added to workspaces after creation or through variable sets
-- **Runtime injection**: Secrets are automatically injected into runtime environments as environment variables
+- **Workspace-level attachment**: Vault connectors are attached at the workspace level.
+- **Authentication methods**: Currently supports **Token** and **JWT** authentication.
+- **Flexible configuration**: Can be added to workspaces after creation or through variable sets.
+- **Runtime injection**: Secrets are automatically injected into runtime environments as environment variables.
 - **Provider initialization**: Harness automatically adds environment variables based on the selected authentication type, which you must consume to initialize the Vault provider in your OpenTofu/Terraform code.
 
 ---
 
 ## Variable sources
-:::info set variables
+:::info Set variables
 You can provide variables in the following ways:
 
 - **Variable Sets:** Reusable collections of variables and secrets defined at the account level and applied to multiple workspaces.
@@ -98,10 +114,13 @@ Variables can be defined in multiple places. The order of precedence determines 
 ## Environment variables
 Environment variables provide runtime configuration for your infrastructure. These behave like standard shell variables and can be used by your provisioning logic, module behavior, or CLI tooling.
 
-- **Key**: The name of the variable (e.g., `TF_LOG`, `ENVIRONMENT`).
+- **Key**: The name of the variable (for example, `TF_LOG` or `ENVIRONMENT`).
 - **Value**: You can set a static value, insert a pipeline variable (FQN), or use **`<+input>`** for runtime input.
 
 ### Add an environment variable
+
+To add an environment variable, follow these steps:
+
 1. Click **+ New Environment Variable**.
 2. Define the `Type` (usually `string`).
 3. Provide a `Key` and a `Value`.
@@ -130,11 +149,9 @@ OpenTofu/Terraform variables (`variable {}` blocks in your code) must be declare
 
 ---
 
-Each variable declared in your OpenTofu/Terraform code must be supplied with a value from one of the following input sources. If a variable is defined in multiple places, the order of precedence determines which value is used:
+Each variable declared in your OpenTofu/Terraform code must be supplied with a value from one of the following input sources, listed from lowest to highest precedence. Go to [Order of precedence](#order-of-precedence) for the full list of variable options.
 
-The following options are available in order of precedence, go to [Order of Precedence](#order-of-precedence) for the full list of variable options in order of precedence:
-
-#### Option 1: Define default values in HCL
+### Option 1: define default values in HCL
 You can assign a default value directly in your OpenTofu/Terraform code. This acts as a fallback if no value is provided from the workspace or pipeline.
 
 ```hcl
@@ -145,7 +162,7 @@ variable "instance_type" {
 }
 ```
 
-#### Option 2: Provide values in the Workspace
+### Option 2: provide values in the workspace
 Configure variables in the OpenTofu/Terraform Variables section of your workspace. These values override any defaults in your code.
 
 ```yaml
@@ -167,9 +184,12 @@ Use `<+input>` to prompt users for values at runtime.
 Variable files allow you to inject multiple variables via `.tfvars`, `.json`, or `.yaml` files stored in Git.
 
 ### Add a variable file
+
+To add a variable file, follow these steps:
+
 1. Click **+ New Variable File**.
 2. Select the **Connector** to access your Git repo.
-3. Choose a repository, branch, and file path (e.g., `main`, `envs/dev.tfvars`).
+3. Choose a repository, branch, and file path (for example, `main` or `envs/dev.tfvars`).
 
 :::note
 Harness will retrieve and use this file during your pipeline execution. You can include multiple files if needed.
@@ -187,13 +207,13 @@ variableFiles:
         - envs/dev.tfvars
 ```
 
-:::info variable file source
+:::info Variable file source
 Your variable files and HCL can come from the same Git repository or different repositories.
 :::
 
 ---
 
-## Variable Sets
+## Variable sets
 A Variable Set is a reusable collection of environment variables, OpenTofu/Terraform variables, and secrets. They allow you to standardize configuration across multiple workspaces.
 
 Variable Sets are supported at the account, org, and project level:
@@ -205,10 +225,10 @@ Variable Sets are supported at the account, org, and project level:
 
 When applied to a workspace, Variable Sets can be prioritized. Variables from a higher-priority set will override those from lower-priority sets.
 
-### Referenced By Tab
+### Referenced by tab
 When viewing a Variable Set, you can use the **Referenced By** tab to see all workspaces where the variable set is being used. This helps you identify the downstream impact when making changes to a variable set, ensuring you understand which workspaces might be affected by any modifications.
 
-:::info Variable Set Priority
+:::info Variable set priority
 When multiple Variable Sets are applied to a workspace, you can control their priority to determine which values take precedence when conflicts occur:
 
 1. In the Connectors and Variables tab of a workspace, you can view all attached Variable Sets.
@@ -221,7 +241,7 @@ When variables with the same name exist in multiple Variable Sets, the value fro
 
 ---
 
-## Input Sources and Runtime Behavior
+## Input sources and runtime behavior
 Each variable shows its **source**, such as:
 
 - `TEMPLATE`: inherited from the selected Template.
@@ -231,6 +251,9 @@ You can use **`<+input>`** to prompt users to supply values at runtime.
 
 ---
 
-## Next Steps
+## Next steps
+
+Go to the following pages to continue configuring your workspace:
+
 - [Provision your workspace](/docs/infra-as-code-management/workspaces/provision-workspace) using the configured inputs.
 - [Add OPA policies](/docs/infra-as-code-management/policies-governance/opa-workspace) to enforce policy compliance.

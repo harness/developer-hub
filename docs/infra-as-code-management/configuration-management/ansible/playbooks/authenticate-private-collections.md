@@ -32,6 +32,8 @@ All three apply at galaxy install time, and none of them require embedding crede
 
 ## What you will learn
 
+This page covers the following:
+
 - **Galaxy and Automation Hub servers:** Authenticate to a private Galaxy server or Red Hat Automation Hub using `ANSIBLE_GALAXY_SERVER_*` settings.
 - **Private Git collection sources:** Authenticate `git+https://` collection sources using indexed `ANSIBLE_GIT_AUTH_<N>_*` credential triples (a set of three related values: HOST, USERNAME, and TOKEN).
 - **`.netrc` credentials:** Provide a provider-agnostic `.netrc` file that git and Python use for HTTPS fetches.
@@ -101,7 +103,7 @@ For each server name `<NAME>` in the list (uppercased), the following per-server
 
 Two servers, a private Automation Hub (token and SSO) followed by public community Galaxy:
 
-```
+```text
 ANSIBLE_GALAXY_SERVER_LIST=automation_hub,community
 
 ANSIBLE_GALAXY_SERVER_AUTOMATION_HUB_URL=https://hub.example.com/api/galaxy/content/published/
@@ -139,7 +141,7 @@ At runtime the plugin reads the string values from the playbook, resolves the se
 
 During the galaxy pre-flight, the plugin prints a Galaxy server detection section so you can confirm which servers were detected from either source. Secret values are never shown, only the server name, URL, and auth presence:
 
-```
+```text
 ▶ Galaxy server detection
 ✓ ok: detected 2 galaxy server(s)
     - automation_hub (url: https://hub.example.com/api/galaxy/content/published/) auth: token (set)
@@ -176,13 +178,13 @@ collections:
 
 The plugin configures transparent Git URL rewrites before running `ansible-galaxy`. For each configured host, a rewrite injects credentials so that a clone of:
 
-```
+```text
 https://github.com/my-org/private-collection.git
 ```
 
 is transparently performed as:
 
-```
+```text
 https://<username>:<token>@github.com/my-org/private-collection.git
 ```
 
@@ -215,7 +217,7 @@ For each host, where `<N>` is the entry index (`0`, `1`, `2`, and so on):
 | `ANSIBLE_GIT_AUTH_<N>_TOKEN` | **Yes** | Token or password for the host. |
 
 **Index rules:**
-- All three fields (`HOST`, `USERNAME`, `TOKEN`) are required for an entry to be used. An incomplete entry is skipped with a warning — see [Detection output](#detection-output) below for examples.
+- All three fields (`HOST`, `USERNAME`, `TOKEN`) are required for an entry to be used. An incomplete entry is skipped with a warning. Go to [Detection output](#detection-output) to review examples.
 - Indices do not have to start at `0` or be contiguous (non-contiguous indices are supported, for example you can use indices 1 and 3 without defining index 2). A set containing only `ANSIBLE_GIT_AUTH_1_*` works, and gaps (for example, `0` and `2` with no `1`) are fine. All present entries are used.
 
 ### Configuration examples
@@ -225,7 +227,7 @@ For each host, where `<N>` is the entry index (`0`, `1`, `2`, and so on):
 
 **Single host (GitHub):**
 
-```
+```text
 ANSIBLE_GIT_AUTH_0_HOST=github.com
 ANSIBLE_GIT_AUTH_0_USERNAME=x-access-token
 ANSIBLE_GIT_AUTH_0_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxx
@@ -233,7 +235,7 @@ ANSIBLE_GIT_AUTH_0_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxx
 
 **Multiple hosts:**
 
-```
+```text
 ANSIBLE_GIT_AUTH_0_HOST=github.com
 ANSIBLE_GIT_AUTH_0_USERNAME=x-access-token
 ANSIBLE_GIT_AUTH_0_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxx
@@ -259,7 +261,7 @@ Define the same `ANSIBLE_GIT_AUTH_<N>_*` keys as variables on the playbook. This
 
 For a secret named `ANSIBLE_GIT_AUTH_1_TOKEN`, the resolved value is injected at runtime as:
 
-```
+```text
 ANSIBLE_PLAYBOOK_VAR__ANSIBLE_GIT_AUTH_1_TOKEN=<resolved-secret-value>
 ```
 
@@ -339,7 +341,7 @@ The plugin does not read raw `.netrc` contents from an environment variable or a
 
 Standard `.netrc`, one machine entry per host:
 
-```
+```text
 machine git.harness.io
   login oauth2
   password <token>
@@ -353,7 +355,7 @@ machine github.com
 
 During the galaxy pre-flight, the plugin prints a Netrc detection section. It reports the detected file path and source, and lists any additional unused `.netrc` files. Credentials inside the file are never printed.
 
-```
+```text
 ▶ Netrc detection
 ✓ ok: detected /harness/.netrc (source: current working directory)
     ↳ copied /harness/.netrc to $HOME/.netrc
@@ -361,7 +363,7 @@ During the galaxy pre-flight, the plugin prints a Netrc detection section. It re
 
 When none is found:
 
-```
+```text
 ▶ Netrc detection
     (no .netrc detected)
 ```
@@ -432,7 +434,7 @@ The Galaxy server and Git mechanisms support the same two sources, with pipeline
 
 **Pipeline environment variables:**
 
-```
+```text
 ANSIBLE_GALAXY_SERVER_LIST=<name1>,<name2>
 ANSIBLE_GALAXY_SERVER_<NAME>_URL=<url>
 ANSIBLE_GALAXY_SERVER_<NAME>_TOKEN=<token>
@@ -441,7 +443,7 @@ ANSIBLE_GALAXY_SERVER_<NAME>_AUTH_URL=<sso-url>     # if applicable
 
 **Playbook variables:**
 
-```
+```text
 # Playbook vars (string): ANSIBLE_GALAXY_SERVER_LIST, ANSIBLE_GALAXY_SERVER_<NAME>_URL
 # Playbook var  (secret): ANSIBLE_GALAXY_SERVER_<NAME>_TOKEN
 #   -> resolved at runtime as ANSIBLE_PLAYBOOK_VAR__ANSIBLE_GALAXY_SERVER_<NAME>_TOKEN
@@ -454,7 +456,7 @@ ANSIBLE_GALAXY_SERVER_<NAME>_AUTH_URL=<sso-url>     # if applicable
 
 **Pipeline environment variables:**
 
-```
+```text
 ANSIBLE_GIT_AUTH_<N>_HOST=<host>
 ANSIBLE_GIT_AUTH_<N>_USERNAME=<username>
 ANSIBLE_GIT_AUTH_<N>_TOKEN=<token>
@@ -462,7 +464,7 @@ ANSIBLE_GIT_AUTH_<N>_TOKEN=<token>
 
 **Playbook variables:**
 
-```
+```text
 # Playbook vars (string): ANSIBLE_GIT_AUTH_<N>_HOST, ANSIBLE_GIT_AUTH_<N>_USERNAME
 # Playbook var  (secret): ANSIBLE_GIT_AUTH_<N>_TOKEN
 #   -> resolved at runtime as ANSIBLE_PLAYBOOK_VAR__ANSIBLE_GIT_AUTH_<N>_TOKEN
@@ -475,7 +477,7 @@ ANSIBLE_GIT_AUTH_<N>_TOKEN=<token>
 
 **File-based authentication:**
 
-```
+```text
 # Provide a .netrc file via one of (first found wins):
 ANSIBLE_NETRC=<path-to-existing-.netrc>     # treated as a path, not contents
 # or  /harness/.netrc   <-- recommended: /harness is the default cwd, shared across stage steps

@@ -7,23 +7,25 @@ This guide walks you from connectors and workspace creation through a standard p
 
 ### What will you learn?
 
+This guide covers the following:
+
 - **Connectors and workspace:** Create cloud and Git connectors, then create an OpenTofu workspace wired to your repository and OpenTofu version.
 - **Provision pipeline:** Generate or author a pipeline that runs init, plan, and apply for your workspace.
 - **Approvals:** Optionally gate apply behind an approval step.
 
-## Prerequisites
+## Before you begin
 
 Before you use this guide, ensure you have the following:
 
-- **Harness account with IaCM enabled:** You need **Infrastructure as Code Management** under **Infrastructure** in Harness when it is entitled on your account. For how to access or create a Harness account, see [Getting started with Harness Platform](/docs/platform/get-started/onboarding-guide).
+- **Harness account with IaCM enabled:** You need **Infrastructure as Code Management** under **Infrastructure** in Harness when it is entitled on your account. Go to [Getting started with Harness Platform](/docs/platform/get-started/onboarding-guide) to access or create a Harness account.
 
-    :::info Contact Harness support:
+    :::info Contact Harness support
 
-    If IaCM does not appear, see [Get started with IaCM](/docs/infra-as-code-management/get-started) or contact your account administrator or [Harness Support](mailto:support@harness.io).
+    If IaCM does not appear, go to [Get started with IaCM](/docs/infra-as-code-management/get-started), or contact your account administrator or [Harness Support](mailto:support@harness.io).
 
     :::
 
-- **Pipeline permissions:** You need **View**, **Create/Edit**, and **Execute** for [Pipelines](/docs/platform/role-based-access-control/permissions-reference#pipelines). An administrator must assign you a role that includes them. See [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) and [Manage roles](/docs/platform/role-based-access-control/add-manage-roles).
+- **Pipeline permissions:** View, Create/Edit, and Execute on [Pipelines](/docs/platform/role-based-access-control/permissions-reference#pipelines). Go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) to review the permissions model, and go to [Manage roles](/docs/platform/role-based-access-control/add-manage-roles) to assign a role that includes them.
 - **Git repository:** Access to a Git provider with your [OpenTofu](https://opentofu.org/) project.
 - **Cloud provider:** Access to a cloud provider such as AWS or Google Cloud Platform for the infrastructure you manage.
 - **Harness organization and project:** An [organization and project set up](/docs/platform/organizations-and-projects/create-an-organization) on the Harness Platform.
@@ -46,7 +48,7 @@ provider "aws" {
 
 resource "aws_instance" "my_first_ec2_instance" {
   ami = "ami-123abc321cba18"
-  instance_type = "t2.micro" # Got to https://aws.amazon.com/ec2/instance-types/t2/ for a full T2 instance type list.
+  instance_type = "t2.micro" # Go to https://aws.amazon.com/ec2/instance-types/t2/ for a full T2 instance type list.
 
   tags = {
     Name = "my_first_ec2_instance"
@@ -54,7 +56,7 @@ resource "aws_instance" "my_first_ec2_instance" {
 }
 ```
 
-Go to [OpenTofu Documentation](https://opentofu.org/docs/) for more information on currently supported workspace types.
+Go to [OpenTofu Documentation](https://opentofu.org/docs/) to review currently supported workspace types.
 </details>
 
 ---
@@ -67,49 +69,49 @@ A workspace is a named environment for storing your OpenTofu configurations and 
 Harness recommends configuring your connector before creating your workspace, however, you can also add new connectors during the [Create Workspace flow](/docs/infra-as-code-management/get-started/#add-a-new-workspace).
 :::
 
-### Step 1: Create a connector
-Use **Harness AI** to create and configure your cloud provider and code repository connectors before you create a Workspace:
+### Step 1: create a connector
+Use **Harness AI** to create and configure your cloud provider and code repository connectors before you create a workspace:
 
 <Tabs>
-<TabItem value="Create a connector">
+<TabItem value="Create a Connector">
 <DocVideo src="https://app.tango.us/app/embed/73d9628e-7093-4c6b-a9f7-dac8125c8441?skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Create Cloud Provider Connector with Harness AI" />
 </TabItem>
 <TabItem value="Step-by-step">
 
 When adding any connector, start by:
 
-1. Signing in to [app.harness.io](https://app.harness.io).
+1. Sign in to [app.harness.io](https://app.harness.io).
 2. In the module pane, select **Infrastructure**.
 3. Select **Project Setup**, and then select **Connectors**.
 4. Select **New Connector (AI)**.
-5. Select an option, e.g. "Create a GitHub connector", or type your request to create a connector for you chosen cloud provider or code repository.
+5. Select an option, for example "Create a GitHub connector", or type your request to create a connector for your chosen cloud provider or code repository.
 
-Harness will create a YAML file for you connector, once you select **Create**, Harness will create your connector and add it to your project.
+Harness creates a YAML file for your connector. Once you select **Create**, Harness creates your connector and adds it to your project.
 
-:::tip edit connector
+:::tip Edit connector
 Edit your connector by updating the AI generated YAML file, or by selecting **Edit Details** in the connectors panel.
 :::
 
-Go to [Connect your Cloud Provider](/docs/category/cloud-providers) and [Connect your Code Repository](/docs/platform/connectors/code-repositories/connect-to-code-repo) for more information regarding connecting your cloud provider and code repository.
+Go to [Connect your Cloud Provider](/docs/category/cloud-providers) and [Connect your Code Repository](/docs/platform/connectors/code-repositories/connect-to-code-repo) to connect your cloud provider and code repository.
 </TabItem>
 </Tabs>
 
-:::info OIDC Connectors
-For easier access and token management, use the **OIDC** (OpenID Connect) option in the Credentials panel. This allows your connector to assume roles with permissions set in your Cloud Provider, updated only by authorized users. For more details, visit [the Use OIDC tab](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#credentials).
+:::info OIDC connectors
+For easier access and token management, use the **OIDC** (OpenID Connect) option in the Credentials panel. This allows your connector to assume roles with permissions set in your Cloud Provider, updated only by authorized users. Go to [the Use OIDC tab](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#credentials) for setup details.
 :::
 
 ---
 
-### Step 2: Create your workspace
+### Step 2: create your workspace
 
-Once you have configured your connectors, you can create a Workspace and select them in the New Workspace panel:
+Once you have configured your connectors, you can create a workspace and select them in the **New Workspace** panel:
 
-:::tip migrate existing projects
+:::tip Migrate existing projects
 For first-time use, use our [migration tool](/docs/infra-as-code-management/remote-backends/state-migration) to create new workspaces and import your existing Terraform projects into the Harness Platform.
 :::
 
 <Tabs queryString="create-workspace">
-<TabItem value="Interactive guide">
+<TabItem value="Interactive Guide">
 <DocVideo src="https://app.tango.us/app/embed/e6ec4051-90e5-4430-a003-a9bcce4d8981?skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Create an OpenTofu Workspace in Harness IaCM" />
 </TabItem>
 <TabItem value="Step-by-step">
@@ -119,27 +121,27 @@ For first-time use, use our [migration tool](/docs/infra-as-code-management/remo
 3. Select **Workspaces**, and then select **New Workspace**.
 4. Select **Create new Workspace**, then select **Start from scratch** and complete the following fields in the new workspace wizard:
 
-#### About Workspace
+#### About workspace
 
-- **Name** - Type a unique name to identify the Workspace.
-- **Description (optional)**: Type an optional description to help identify the Workspace.
-- **Tags (optional)**: Add a unique tag to identify the Workspace.
+- **Name** - Enter a unique name to identify the workspace.
+- **Description (optional)**: Enter an optional description to help identify the workspace.
+- **Tags (optional)**: Add a unique tag to identify the workspace.
 
-#### Configure Repository Details
+#### Configure repository details
 
 - Select your Git provider, either **Harness Code Repository** or **Third-party Git provider** for other providers like GitHub or GitLab.
 - **Git Connector**: Select the Git connector you created in the previous step.
 - **Git Fetch Type**: Select the Git fetch type, either **Latest from branch**, **Git tag** or **Commit SHA**.
 - **Git Branch**: Specify the branch you want to use for the workspace.
 
-:::tip branch with jexl
-  you can configure the workspace branch to be a [JEXL expressions](/docs/platform/variables-and-expressions/harness-variables/) that references a pipeline variable, and then set the pipeline variable as a run time input.
+:::tip Branch with JEXL
+  You can configure the workspace branch as a [JEXL expression](/docs/platform/variables-and-expressions/harness-variables/) that references a pipeline variable, and then set the pipeline variable as a runtime input.
 
   ![](./static/branch-with-jexl.png)
 
-  Set you branch variable as a runtime input in the pipeline:
+  Set your branch variable as a runtime input in the pipeline:
 
-  ```
+  ```yaml
   variables:
    - name: iacm_branch
      type: String
@@ -151,12 +153,12 @@ For first-time use, use our [migration tool](/docs/infra-as-code-management/remo
 
 - **Folder Path**: Specify the folder path to the OpenTofu configuration files in the repository.
 
-**Advanced** options allow you to **include submodules** if your code repository includes modules and submodules. Go to [Module Registry](/docs/category/module-registry) for more information.
+**Advanced** options allow you to **include submodules** if your code repository includes modules and submodules. Go to [Module Registry](/docs/category/module-registry) to review module registry concepts.
 
 #### Provisioner
 
 - **Connector**: Select the cloud provider connector you created in the previous step.
-- **Cloud Cost Estimation**: Toggle the **Enable Cost Estimation** switch to enable cloud cost estimation. This will allow you to estimate the cost of your infrastructure changes before you apply them.
+- **Cloud Cost Estimation**: Toggle the **Enable Cost Estimation** switch to enable cloud cost estimation. This lets you estimate the cost of your infrastructure changes before you apply them.
 - **Workspace Type**: Select **OpenTofu** as the workspace type you want to use for the workspace.
 - **OpenTofu Version**: Select the OpenTofu version you want to use for the workspace<HarnessApiData
     query="https://app.harness.io/gateway/iacm/api/provisioners/supported/opentofu"
@@ -164,7 +166,7 @@ For first-time use, use our [migration tool](/docs/infra-as-code-management/remo
     fallback=""
     parse='.[-1] | " (latest: v\(.))"'></HarnessApiData>
 
-#### Add Variable Set (Optional)
+#### Add variable set (optional)
 
 If you have configured variable sets for reuse, select the variable set you want to use for the workspace.
 
@@ -174,14 +176,14 @@ If you have configured variable sets for reuse, select the variable set you want
 
 ---
 
-### Step 3: Add a provision pipeline
+### Step 3: add a provision pipeline
 
-A pipeline structures workflows to manage tasks like planning infrastructure changes, enforcing policies, and approvals. Learn more about [Harness Pipelines](/docs/category/pipelines). You can also add pipelines through the Harness Platform or [use a code-first approach with YAML](/docs/platform/pipelines/harness-yaml-quickstart).
+A pipeline structures workflows to manage tasks like planning infrastructure changes, enforcing policies, and approvals. Go to [Harness Pipelines](/docs/category/pipelines) to review pipeline concepts. You can also add pipelines through the Harness Platform or [use a code-first approach with YAML](/docs/platform/pipelines/harness-yaml-quickstart).
 
 #### Harness AI pipeline generation
 
 <Tabs>
-  <TabItem value="Interactive guide">
+  <TabItem value="Interactive Guide">
   <DocVideo src="https://app.tango.us/app/embed/5e8d0ffa-f4a6-4b02-9953-dcd42e608ac8?skipCover=true&defaultListView=false&skipBranding=false&makeViewOnly=true&hideAuthorAndDetails=true" title="Create a Provision Pipeline in Harness IaCM" />
   </TabItem>
   <TabItem value="Step-by-step">
@@ -196,11 +198,11 @@ A pipeline structures workflows to manage tasks like planning infrastructure cha
 </TabItem>
 </Tabs>
 
-The Provision operation adds three Terraform plugin steps: `init`, `plan`, and `apply`. Go to [Tofu/Terraform Plugins](/docs/infra-as-code-management/cli-commands/terraform-plugins) for more information about supported OpenTofu/Terraform commands.
+The Provision operation adds three Terraform plugin steps: `init`, `plan`, and `apply`. Go to [Tofu/Terraform Plugins](/docs/infra-as-code-management/cli-commands/terraform-plugins) to review supported OpenTofu/Terraform commands.
 
 ---
 
-### Step 4: Run your pipeline
+### Step 4: run your pipeline
 
 Now run your pipeline to provision your infrastructure.
 

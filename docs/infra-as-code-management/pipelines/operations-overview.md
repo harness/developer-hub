@@ -32,16 +32,16 @@ This guide covers the available pipeline operations and when to use each one.
 
 ## Before you begin
 
-- **Harness account with IaCM enabled:** You need **Infrastructure as Code Management** under **Infrastructure** in Harness when it is entitled on your account. For how to access or create a Harness account, see [Getting started with Harness Platform](/docs/platform/get-started/onboarding-guide).
+- **Harness account with IaCM enabled:** You need **Infrastructure as Code Management** under **Infrastructure** in Harness when it is entitled on your account. Go to [Getting started with Harness Platform](/docs/platform/get-started/onboarding-guide) to access or create a Harness account.
 
-    :::info Contact Harness support:
+    :::info Contact Harness support
 
-    If IaCM does not appear, see [Get started with IaCM](/docs/infra-as-code-management/get-started) or contact your account administrator or [Harness Support](mailto:support@harness.io).
+    If IaCM does not appear, go to [Get started with IaCM](/docs/infra-as-code-management/get-started), or contact your account administrator or [Harness Support](mailto:support@harness.io).
 
     :::
 
-- **Pipeline permissions:** You need **View**, **Create/Edit**, and **Execute** for [Pipelines](/docs/platform/role-based-access-control/permissions-reference#pipelines). To get these, an administrator must assign you a role that includes them. See [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) and [Manage roles](/docs/platform/role-based-access-control/add-manage-roles).
-- **Approval permissions (for Approval step):** Users who will approve or reject plans need **Approve** permission for the relevant pipeline or stage. See [Approvals in Harness](/docs/platform/approvals/approvals-tutorial).
+- **Pipeline permissions:** You need **View**, **Create/Edit**, and **Execute** for [Pipelines](/docs/platform/role-based-access-control/permissions-reference#pipelines). Go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) to review the permissions model, and go to [Manage roles](/docs/platform/role-based-access-control/add-manage-roles) to assign a role that includes them.
+- **Approval permissions (for Approval step):** Users who approve or reject plans need **Approve** permission for the relevant pipeline or stage. Go to [Pipeline permissions](/docs/platform/role-based-access-control/permissions-reference#pipelines) to review the required permissions, and go to [Approvals in Harness](/docs/platform/approvals/approvals-tutorial) to configure the Approval step.
 - **Existing provision pipeline:** You need a pipeline with an IaCM stage that includes **Plan** and **Apply** steps. Go to [Provision workspace](/docs/infra-as-code-management/workspaces/provision-workspace) to create one.
 
 ---
@@ -100,7 +100,7 @@ Select an operation to view the full guide:
 <Troubleshoot
   issue="Permission denied when trying to approve or reject IaCM approval step"
   mode="docs"
-  fallback="Ensure you have Approve permissions for the pipeline or stage. Contact your administrator to assign the required role. See RBAC in Harness documentation."
+  fallback="Ensure you have Approve permissions for the pipeline or stage. Contact your administrator to assign the required role, or go to the RBAC in Harness documentation to review required permissions."
 />
 
 <Troubleshoot

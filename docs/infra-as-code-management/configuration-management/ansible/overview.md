@@ -49,7 +49,7 @@ Ansible runs tasks **against hosts**. Hosts are often grouped (for example `webs
 
 ### 3. Variables and secrets
 
-**Variables** separate environment-specific values from playbook logic. You might use the same playbook in dev and prod while changing `db_host`, `log_level`, or feature flags. Harness lets you define inventory-scoped variables (including **secret** types) so sensitive values stay in the secrets layer and out of Git. See [Add Variables](/docs/infra-as-code-management/configuration-management/ansible/get-started#add-variables) and [Harness Secret Manager](/docs/platform/secrets/secrets-management/harness-secret-manager-overview). Playbooks reference them with Ansible’s usual templating (for example `{{ db_port }}`).
+**Variables** separate environment-specific values from playbook logic. You might use the same playbook in dev and prod while changing `db_host`, `log_level`, or feature flags. Harness lets you define inventory-scoped variables (including **secret** types) so sensitive values stay in the secrets layer and out of Git. Go to [Add Variables](/docs/infra-as-code-management/configuration-management/ansible/get-started#add-variables) and [Harness Secret Manager](/docs/platform/secrets/secrets-management/harness-secret-manager-overview) to configure them. Playbooks reference them with Ansible’s usual templating (for example `{{ db_port }}`).
 
 Variables tie inventories to playbooks: the playbook stays reusable; the inventory supplies the context.
 
@@ -89,17 +89,19 @@ Dynamic inventories shine when step 2 automatically picks up new hosts after ste
 
 ## Best practices
 
+Keep the following practices in mind when running Ansible in IaCM:
+
 - **Match inventory type to how hosts appear in real life:** If [OpenTofu or Terraform](/docs/infra-as-code-management/get-started/) creates them, a [dynamic inventory](/docs/infra-as-code-management/configuration-management/ansible/inventories) reduces drift between state and Ansible targets. If you have a fixed bastion or small static fleet, static inventories stay clear and simple.
 
 - **Keep secrets out of Git:** Prefer **secret**-type [inventory variables](/docs/infra-as-code-management/configuration-management/ansible/get-started#add-variables) backed by [Harness Secret Manager](/docs/platform/secrets/secrets-management/harness-secret-manager-overview) (or another [supported secret manager](/docs/category/secrets-management)); use Ansible-native patterns that pull from secure stores your image supports only when that fits your standard. Avoid baking long-lived passwords into playbooks.
 
 - **Prefer idempotent playbooks:** Tasks that declare desired state (packages present, file content, service running) are easier to rerun in pipelines than one-off scripts.
 
-- **Align networking with the delegate:** The [Kubernetes delegate](/docs/platform/delegates/install-delegates/overview) that runs the Ansible image must reach targets; plan connectivity using [Delegate network requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements#network-requirements) (for example SSH from the delegate’s network to your hosts). For step configuration, see [Integrate Ansible with a pipeline](/docs/infra-as-code-management/configuration-management/ansible/get-started#step-4-integrate-ansible-with-a-pipeline).
+- **Align networking with the delegate:** The [Kubernetes delegate](/docs/platform/delegates/install-delegates/overview) that runs the Ansible image must reach targets; plan connectivity using [Delegate network requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements#network-requirements) (for example SSH from the delegate’s network to your hosts). Go to [Integrate Ansible with a pipeline](/docs/infra-as-code-management/configuration-management/ansible/get-started#step-4-integrate-ansible-with-a-pipeline) for step configuration.
 
 - **Use the same Git discipline as application code:** Register playbooks with a [code repository connector](/docs/platform/connectors/code-repositories/connect-to-code-repo) and keep branch protections and reviews on playbook repos to reduce surprise changes during pipeline execution.
 
-- **Size timeouts and batching for reality:** Long-running plays or huge host sets may need a higher **Timeout** on the `IACMAnsiblePlugin` step, see [Integrate Ansible with a pipeline](/docs/infra-as-code-management/configuration-management/ansible/get-started#step-4-integrate-ansible-with-a-pipeline), or Ansible strategies such as rolling batches (`serial`) for subsets of hosts.
+- **Size timeouts and batching for reality:** Long-running plays or huge host sets may need a higher **Timeout** on the `IACMAnsiblePlugin` step (go to [Integrate Ansible with a pipeline](/docs/infra-as-code-management/configuration-management/ansible/get-started#step-4-integrate-ansible-with-a-pipeline) for step configuration), or Ansible strategies such as rolling batches (`serial`) for subsets of hosts.
 
 ---
 
@@ -107,4 +109,4 @@ Dynamic inventories shine when step 2 automatically picks up new hosts after ste
 
 When you are ready to work through the product steps in order, go to [Get started with Ansible in IaCM](/docs/infra-as-code-management/configuration-management/ansible/get-started).
 
-For pattern-style inspiration after you have the basics, see [Example Ansible use cases](/docs/infra-as-code-management/configuration-management/ansible/examples/example-use-cases).
+Go to [Example Ansible use cases](/docs/infra-as-code-management/configuration-management/ansible/examples/example-use-cases) for pattern-style inspiration after you have the basics.
