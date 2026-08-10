@@ -169,6 +169,14 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## Delegate image release notes
 
+## August 2026
+
+### Version 26.07.89706 <!-- August 10, 2026 -->
+
+#### Fixed issues
+
+- Resolved a high-severity security vulnerability CVE-2026-42504 in the `mime` library (version 1.25.10) bundled within the SCM binary at `/opt/harness-delegate/client-tools/scm/2e8610936/scm`. This vulnerability was fixed by upgrading `mime` to version 1.25.12 [PIPE-36408]
+
 ## July 2026
 
 ### Version 26.07.89705 <!-- July 31, 2026 -->
