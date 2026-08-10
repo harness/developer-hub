@@ -4,7 +4,9 @@
 
 #### New features and enhancements
 
-- The **Policy Sets** listing page now supports **Type** and **Action** filters, so you can narrow the policy sets list to a specific entity type or trigger action. This brings the **Policy Sets** page in line with the filters already available on the **Policy Evaluations** page. Go to [Harness policy sets](/docs/platform/governance/policy-as-code/harness-governance-overview#harness-policy-sets) to filter the policy sets.
+- The **Policy Sets** listing page now supports **Type** and **Action** filters, so you can narrow the policy sets list to a specific entity type or trigger action. This brings the **Policy Sets** page in line with the filters already available on the **Policy Evaluations** page. Go to [Harness policy sets](/docs/platform/governance/policy-as-code/harness-governance-overview#harness-policy-sets) to filter the policy sets. (**PIPE-34516**)
+
+- Pipeline graphs can now open zoomed to fit by default and preserve the selected zoom level when navigating between pipeline views. Zoom levels are preserved per pipeline in the browser for Pipeline Studio and pipeline execution views. This feature is behind the feature flag `PIPE_GRAPH_VIEWPORT_PERSISTENCE`. Contact [Harness Support](https://support.harness.io/) to enable. Go to [Pipeline graph zoom](/docs/platform/pipelines/pipeline-settings/#pipeline-graph-zoom) to configure the default zoom behavior. (**PIPE-34857**)
 
 #### Fixed issues
 

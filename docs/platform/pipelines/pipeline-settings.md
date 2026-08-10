@@ -245,6 +245,44 @@ The maximum limits for each plan tier are as follows:
 | Pipeline timeout | 2 hr | 4 hr  | 30 days | 35 days  |
 | Stage timeout | 1 hr | 1 hr | 30 days | 35 days |
 
+### Pipeline graph zoom
+
+:::note
+
+This feature is behind the feature flag `PIPE_GRAPH_VIEWPORT_PERSISTENCE`. Contact [Harness Support](https://support.harness.io/) to enable the feature.
+
+:::
+
+You can configure pipeline graphs to open zoomed to fit by default. You can also adjust the zoom level for an individual pipeline in the Pipeline Studio **Visual** editor, and Harness preserves your selection in your browser.
+
+#### Set Zoom to Fit as the default
+
+Perform the following steps to configure pipeline graphs to open zoomed to fit by default at the account, organization, or project scope.
+
+1. Navigate to **Account/Organization/Project Settings > General > Default Settings > Pipeline**.
+2. Locate **Open Pipeline Graph Zoomed to Fit** and select **True**.
+3. Select **Save**.
+
+<div align="center"><DocImage path={require('./static/pipeline-graph-zoom-tofit.png')} alt="Pipeline zoom to fit setting" width="100%" /></div>
+
+When **Open Pipeline Graph Zoomed to Fit** is set to **True**, the pipeline graph in the Pipeline Studio **Visual** editor and the graphs in the pipeline execution view open zoomed to fit by default.
+
+To use the standard pipeline graph zoom instead, set **Open Pipeline Graph Zoomed to Fit** to **False**.
+
+#### Preserve the pipeline graph zoom level
+
+In the Pipeline Studio **Visual** editor, you can adjust the pipeline graph zoom level using the graph controls, including **Zoom to Fit**.
+
+When you change the zoom level for a pipeline, Harness preserves your selection when you:
+
+- Switch between the Visual and YAML editors.
+- Navigate between the pipeline and its execution view.
+- Navigate to another page and return to the pipeline.
+
+In the pipeline execution view, Harness also preserves the selected zoom levels for both the pipeline graph and the selected stage's step graph.
+
+The zoom level is stored separately for each pipeline in your browser. It is not shared across browsers or browser sessions. When you use a different browser or start a new browser session, the pipeline graph uses the configured default zoom setting.
+
 ## Fixed pipeline settings
 
 You cannot modify these pipeline settings.
