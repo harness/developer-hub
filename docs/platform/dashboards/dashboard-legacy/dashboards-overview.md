@@ -7,7 +7,7 @@ redirect_from:
 ---
 
 :::note Important
-This topic applies to Dashboards v2.0. Dashboards v1.0 is deprecated. A new version, [Dashboards v3.0](../dashboard-standard/overview.md), is currently available in Closed Beta for evaluation.
+This topic applies to Dashboards v2.0. Dashboards v1.0 is deprecated. A new version, [Dashboards v3.0](../dashboard-standard/overview.md), is currently available in Open Beta for evaluation.
 :::
 
 Harness Dashboards display key metrics and data related to your builds, deployments, security, and cloud costs. Dashboards let you track the health and performance of your deployments, monitor key metrics and KPIs, and quickly identify potential issues. You can customize the dashboards to show specific metrics and data relevant to your needs, and access them from a central location. The Harness Dashboards provide actionable insights into continuous delivery processes, so you can achieve faster and more efficient deployments.

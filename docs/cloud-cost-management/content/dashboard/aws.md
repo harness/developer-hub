@@ -61,7 +61,7 @@ Dimensions are key metrics and data visualizations that provide specific insight
 #### Additional Actions
 
 - **Download Dashboard**: Export the entire dashboard for offline analysis or sharing
-  - See [Download Dashboard Data](../../../platform/dashboards/download-dashboard-data.md) for more options
+  - See [Download Dashboard Data](../../../platform/dashboards/dashboard-legacy/download-dashboard-data.md) for more options
 
 </TabItem>
 

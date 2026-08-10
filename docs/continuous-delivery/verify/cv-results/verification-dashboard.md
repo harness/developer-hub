@@ -4,7 +4,7 @@ sidebar_position: 5
 description: Gain insights into your verifications with Harness' out-of-the-box Verification Dashboard. 
 ---
 
-Harness provides many out-of-the-box dashboards, including the Verification Dashboard. To learn more about Harness Dashboards, go to [Harness Dashboards](/docs/platform/dashboards/dashboards-overview.md)
+Harness provides many out-of-the-box dashboards, including the Verification Dashboard. To learn more about Harness Dashboards, go to [Harness Dashboards](/docs/platform/dashboards/dashboard-legacy/dashboards-overview.md)
 
 This topic describes the out-of-the-box Verification Dashboard and its features. 
 
@@ -13,7 +13,7 @@ This topic describes the out-of-the-box Verification Dashboard and its features.
 Before you learn more about the Verification Dashboard, ensure that:
 
 - You have an understanding of [Continuous Verification](/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step) at Harness.
-- You know where to find [Harness Dashboards](/docs/platform/dashboards/dashboards-overview.md) and how they work. 
+- You know where to find [Harness Dashboards](/docs/platform/dashboards/dashboard-legacy/dashboards-overview.md) and how they work. 
 
 ### Verification Dashboard
 

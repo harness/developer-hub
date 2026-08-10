@@ -14,6 +14,10 @@ tags:
   - Dashboards
 ---
 
+:::note
+Dashboards is currently rolling out to the Prod0 environment (`accounts.harness.io`) only. If your account is hosted in another cluster, this feature is not yet available. Go to [Harness cluster hostnames](/docs/platform/references/allowlist-harness-domains-and-ips) to identify the cluster your account runs in.
+:::
+
 Harness Dashboards give you a single place to track what matters most across your projects — deployments, builds, costs, services, and more. Each dashboard is made up of widgets that pull in your data and display it as charts, tables, numbers, or gauges. 
 
 You can build dashboards yourself, or let the AI assistant create them for you.

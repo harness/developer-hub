@@ -245,7 +245,7 @@ Here's a quick video showing how to create a CD custom dashboard:
 https://www.youtube.com/watch?v=9fqbYP6iK3g-->
 <DocVideo src="https://www.youtube.com/watch?v=9fqbYP6iK3g" />
 
-See [Create Dashboards](../../platform/dashboards/create-dashboards.md).
+See [Create Dashboards](../../platform/dashboards/dashboard-legacy/create-dashboards.md).
 
 ### Monitor Harness and Jira approvals using custom CD dashboards
 

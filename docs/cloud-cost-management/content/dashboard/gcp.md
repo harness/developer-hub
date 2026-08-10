@@ -61,7 +61,7 @@ Perform the following steps to view the GCP Cost Dashboard:
     For example, drill into **by SKU** and view the details in the Dashboard. You can also view the details of the filters applied.
     
 12. Click **Back** to go back to the previous page in the Dashboard.
-13. Click **Download** to download the Dashboard. See [Download Dashboard Data](../../../platform/dashboards/download-dashboard-data.md).
+13. Click **Download** to download the Dashboard. See [Download Dashboard Data](../../../platform/dashboards/dashboard-legacy/download-dashboard-data.md).
 14. You can also drill into Most Expensive Products by Month and view details in the Dashboard.
 
 15. Click the **Filter** icon to hide or show the filters.

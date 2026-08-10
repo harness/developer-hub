@@ -12,7 +12,7 @@ An Explore is a starting point for a query that is designed to explore a particu
 
 <DocImage path={require('./static/using-cd-custom-dashboards-1.png')} width="60%" height="60%" title="Click to view full size image" />
 
-It is recommended to refer [this](../../platform/dashboards/create-dashboards.md) documentation first to get a basic overview on how to create dashboards.
+It is recommended to refer [this](../../platform/dashboards/dashboard-legacy/create-dashboards.md) documentation first to get a basic overview on how to create dashboards.
 
 ## Deployments and Services
 
