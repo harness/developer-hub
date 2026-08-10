@@ -9,8 +9,13 @@ By default, Harness evaluates OPA policies on Harness-managed infrastructure (Sa
 - **Secrets and external service access:** If your policies make HTTP requests to external systems such as ServiceNow, Jira, or internal databases, those policies need secrets or tokens to connect. Running evaluations on your infrastructure ensures that secrets never leave your trust boundary.
 - **Large evaluation payloads:** Some workloads — such as large IACM plans or database procedures — produce payloads that are too large to evaluate efficiently on Harness SaaS. Offloading evaluation to your infrastructure avoids latency and size constraints.
 - **Network-restricted environments:** If your policies need to reach endpoints that are only accessible within your private network, customer-side evaluation is required.
+- **HTTP and network builtins:** Rego builtins that make outbound network calls — specifically `http.send` and `net.lookup_ip_addr` — are supported **only** on customer infrastructure. These builtins are not available when policies are evaluated on Harness SaaS. If your policies need to call external APIs or resolve hostnames, run those policy sets in your own environment.
 
 With this feature, you can configure specific policy sets to run on a Kubernetes cluster or VM in your environment, while other policy sets continue to run on Harness SaaS.
+
+:::warning important
+`http.send` and `net.lookup_ip_addr` are available **only** for policy sets that run on your own infrastructure. Policies evaluated on Harness SaaS cannot use these builtins. To keep HTTP-based policy logic working, enable **Run this policy set on your own environment** for the affected policy sets.
+:::
 
 :::info note
 This feature is behind the feature flag `OPA_RUN_ON_CUSTOMER_INFRA`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
@@ -29,8 +34,8 @@ Customer-infrastructure evaluation is limited to the **On Run** action for pipel
 
 You can use a combination of SaaS-evaluated and customer-infrastructure-evaluated policy sets on the same pipeline. For example:
 
-- **SaaS policy sets** for lightweight governance checks such as naming conventions, required approvals, or tag enforcement.
-- **Customer-infrastructure policy sets** for policies that require secrets, call external services, or process large payloads.
+- **SaaS policy sets** for lightweight governance checks such as naming conventions, required approvals, or tag enforcement. These policies must not use `http.send` or `net.lookup_ip_addr`.
+- **Customer-infrastructure policy sets** for policies that use `http.send` or `net.lookup_ip_addr`, require secrets, call external services, or process large payloads.
 
 Both types of policy sets are evaluated during the pipeline run, and the pipeline proceeds only if all policy sets pass.
 
@@ -102,5 +107,5 @@ Lite-engine uses the same value for requests and limits, achieving Kubernetes **
 
 - **Isolate evaluation infrastructure:** Dedicate a Kubernetes cluster or VM specifically for running OPA policy evaluations. This prevents policy evaluation workloads from interfering with your application workloads.
 - **Ensure access for all pipeline executors:** Whoever or whatever runs the pipeline — whether an individual user or a trigger — must have access to the specified Kubernetes cluster or VM. Their credentials are used to access the infrastructure and execute the policies.
-- **Start with SaaS, move selectively:** Keep lightweight policies on Harness SaaS and only move policies to customer infrastructure when they require secrets, external service access, or handle large payloads.
+- **Start with SaaS, move selectively:** Keep lightweight policies on Harness SaaS and only move policies to customer infrastructure when they use `http.send` or `net.lookup_ip_addr`, require secrets, need external service access, or handle large payloads.
 - **Monitor evaluation performance:** Since evaluation runs on your infrastructure, ensure the cluster or VM has sufficient resources to handle policy evaluation without introducing excessive latency into your pipeline runs.

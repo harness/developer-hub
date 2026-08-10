@@ -83,6 +83,12 @@ Harness platform uses the Open Policy Agent (OPA) library version **0.62.0**.
 
 For more details, you can refer to [OPA v0.62.0](https://github.com/open-policy-agent/opa/tree/v0.62.0).
 
+### Can I use `http.send` in policies evaluated on Harness SaaS?
+
+No. The Rego network builtins `http.send` and `net.lookup_ip_addr` are supported **only** when the policy set runs on your own infrastructure. Policies evaluated on Harness SaaS cannot use these builtins.
+
+To use HTTP calls or hostname lookups from Rego, configure the policy set to [run in your own environment](/docs/platform/governance/policy-as-code/run-policies-in-your-environment). This requires the `OPA_RUN_ON_CUSTOMER_INFRA` feature flag and is supported only for **Pipeline** policy sets with the **On Run** action.
+
 ### How can I tell what policy sets are using my policy?
 
 Find a full list of your policies for your scope by going to the relevant settings page: **Project Settings**, **Organization Settings**, or **Account Settings**
