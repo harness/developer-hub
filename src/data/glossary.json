@@ -4217,29 +4217,6 @@
       ]
     },
     {
-      "id": "code.concepts.semantic-search",
-      "term": "semantic search",
-      "definition": "An AI-powered search feature in Harness Code Repository that finds code based on natural language queries rather than exact text matches.",
-      "slug": "semantic-search",
-      "module": "code",
-      "category": "concepts",
-      "letter": "S",
-      "related": [
-        {
-          "term": "ai sre",
-          "slug": "ai-sre"
-        },
-        {
-          "term": "anomaly",
-          "slug": "anomaly"
-        },
-        {
-          "term": "api key",
-          "slug": "api-key"
-        }
-      ]
-    },
-    {
       "id": "cd.verification.sensitivity",
       "term": "sensitivity",
       "definition": "The threshold setting for continuous verification that determines how much deviation from baseline metrics triggers a deployment failure (low, medium, high).",
@@ -9741,29 +9718,6 @@
           {
             "term": "flag dependency",
             "slug": "flag-dependency"
-          }
-        ]
-      },
-      {
-        "id": "code.concepts.semantic-search",
-        "term": "semantic search",
-        "definition": "An AI-powered search feature in Harness Code Repository that finds code based on natural language queries rather than exact text matches.",
-        "slug": "semantic-search",
-        "module": "code",
-        "category": "concepts",
-        "letter": "S",
-        "related": [
-          {
-            "term": "ai sre",
-            "slug": "ai-sre"
-          },
-          {
-            "term": "anomaly",
-            "slug": "anomaly"
-          },
-          {
-            "term": "api key",
-            "slug": "api-key"
           }
         ]
       },

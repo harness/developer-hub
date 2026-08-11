@@ -14,6 +14,11 @@ keywords:
 tags:
   - harness-ai
   - automation
+redirect_from:
+  - /docs/platform/harness-aida/aida-code
+  - /docs/code-repository/work-in-repos/semantic-search
+  - /docs/platform/harness-ai/code-search
+  - /docs/platform/harness-ai/core-capabilities/in-code/code-search
 ---
 
 The Harness AI platform provides three integrated capability areas that work together to accelerate delivery, reduce manual work, and improve software quality. These areas include the <a href="#in-harness-ui">Harness UI</a>, <a href="#in-your-ide">your IDE</a>, and <a href="#in-your-pipelines">your pipelines</a>.

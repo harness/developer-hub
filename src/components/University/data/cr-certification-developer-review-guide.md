@@ -23,7 +23,7 @@
 | **6. Enhance Workflow with Labels and Search** | |
 | Use labels and tags to organize code and PRs | [Labels & Tags](https://developer.harness.io/docs/code-repository/work-in-repos/labels) |
 | Perform keyword-based and semantic searches | [Keyword Search](https://developer.harness.io/docs/code-repository/work-in-repos/keyword-search) |
-| Use advanced filters to streamline navigation | [Semantic Search](https://developer.harness.io/docs/code-repository/work-in-repos/semantic-search) |
+| Use advanced filters to streamline navigation | [Keyword Search](https://developer.harness.io/docs/code-repository/work-in-repos/keyword-search) |
 | **7. Manage and Review Pull Requests** | |
 | Create PRs for code contributions | [Create PRs](https://developer.harness.io/docs/code-repository/pull-requests/create-pr) |
 | Review and approve PRs with comments | [Review PRs](https://developer.harness.io/docs/code-repository/pull-requests/review-pr) |

@@ -405,7 +405,6 @@ We’ve revamped the Code Repository UI with major usability and workflow improv
 
 #### New features and enhancements
 
-* [Harness AI Semantic Code Search](/docs/code-repository/work-in-repos/semantic-search): Use natural language queries to search your codebase.
 * [Harness AI Pull Request Summary Generation](/docs/code-repository/pull-requests/code-pr): Automatically create comprehensive and informative PR summaries.
 * Change request resolution [branch rule](/docs/code-repository/): You can require change requests to be resolved before allowing PRs to be merged.
 * Cancel [repository import](/docs/code-repository/config-repos/import-repo): You can cancel in-progress repository imports.

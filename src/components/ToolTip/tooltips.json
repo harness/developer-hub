@@ -277,8 +277,7 @@
         "pull-request": "A code review request in Harness Code Repository where changes from one branch are proposed for merge into another, with inline comments and approval workflows.",
         "branch-rule": "A protection rule in Harness Code Repository that enforces requirements (such as required reviewers, passing CI, or no force push) before changes can be merged.",
         "code-owner": "A user or group automatically assigned as a required reviewer in Harness Code Repository when changes affect files they own, defined in a CODEOWNERS file.",
-        "webhook": "An HTTP callback configured in Harness Code Repository that sends event notifications (push, PR created, merged) to external systems.",
-        "semantic-search": "An AI-powered search feature in Harness Code Repository that finds code based on natural language queries rather than exact text matches."
+        "webhook": "An HTTP callback configured in Harness Code Repository that sends event notifications (push, PR created, merged) to external systems."
       }
     },
     "dbdevops": {
