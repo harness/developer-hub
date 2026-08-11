@@ -171,13 +171,6 @@ JDBC connectors enable direct database connectivity for data validation steps, d
 
 Confluence connectors allow pipelines to read from or publish to Confluence pages, enabling automated documentation updates as part of the release process.
 
-### Cloud cost
-
-Cloud cost connectors for AWS, GCP, and Azure enable the Cloud Cost Management (CCM) module to ingest billing data, resource utilization metrics, and cost allocation tags.
-
-:::note Work in Progress
-Cloud cost connectors are currently a work in progress.
-:::
 
 ### MCP (GitHub MCP)
 
