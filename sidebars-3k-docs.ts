@@ -457,7 +457,7 @@ const sidebars: SidebarsConfig = {
       },
       customProps: {
         description:
-          'Manage code in Harness, and accelerate development with security at scale. (Beta)',
+          'Manage code in Harness, and accelerate development with security at scale.',
       },
       collapsed: true,
       items: [

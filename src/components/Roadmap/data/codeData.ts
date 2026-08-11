@@ -6,7 +6,7 @@ export const codeModuleTheme = { ...DEFAULT_MODULE_THEME, moduleKey: "code", mod
 export const codeData: Horizon = {
   
   Now: {
-    description: "Q2 2026, May 2026 - July 2026",
+    description: "Q3 2026, August 2026 - October 2026",
     feature: [
       {
         tag: [{ value: "Code Quality" }],
@@ -24,11 +24,6 @@ export const codeData: Horizon = {
         description: "Ensure that all repository commits are signed by a known developer.",
       },
       {
-        tag: [{ value: "Developer Experience" }],
-        title: "Support Harness Code Repo for Config Files",
-        description: "Enable Harness Code repositories to natively store and manage configuration files used across the Harness platform, improving integration and workflow efficiency.",
-      },
-      {
         tag: [{ value: "Reliability" }, { value: "Platform" }],
         title: "Disaster Recovery for Harness Code",
         description: "Implement disaster recovery capabilities for Harness Code repositories, ensuring business continuity and data resilience.",
@@ -36,7 +31,7 @@ export const codeData: Horizon = {
     ],
   },
   Next: {
-    description: "Q3 2026, August 2026 - October 2026",
+    description: "Q4 2026, November 2026 - January 2027",
     feature: [
       {
         tag: [{ value: "Code Quality" }, { value: "Insights" }],
@@ -56,7 +51,7 @@ export const codeData: Horizon = {
     ],
   },
   Later: {
-    description: "November 2026 & beyond",
+    description: "February 2027 & beyond",
     feature: [
       {
         tag: [{ value: "Developer Experience" }],
@@ -72,11 +67,6 @@ export const codeData: Horizon = {
         tag: [{value: "AI"}, { value: "Developer Experience" }],
         title: "AI Code Assist - Google Gemini Support",
         description: "Support Google Gemini in Harness AI Code Assist."
-      },
-      {
-        tag: [{ value: "Developer Experience" }, { value: "Reliability" }],
-        title: "Merge Queue for Pull Requests",
-        description: "Harness Code will support a merge queue to boost development velocity by automatically managing pull request merges into busy branches, ensuring each change is validated and preventing broken or incompatible commits from reaching the target branch."
       },
       {
         tag: [{ value: "Developer Experience" }],
@@ -118,6 +108,56 @@ export const codeData: Horizon = {
   Released: {
     description: "What has been released",
     feature: [
+      {
+        tag: [{ value: "Governance" }, { value: "Secure" }],
+        title: "RBAC Controls for Pull Request Approvals",
+        description: "Control who can approve pull requests using Harness Code RBAC permissions, preventing users without the required permissions from approving changes.",
+      },
+      {
+        tag: [{ value: "Governance" }, { value: "Developer Experience" }],
+        title: "Require Rebase Before Merge",
+        description: "Enforce branch rules that prevent merges when the target branch commit is not an ancestor of the pull request branch, requiring a rebase to maintain a clean and up-to-date commit history.",
+      },
+      {
+        tag: [{ value: "Collaboration" }],
+        title: "Emoji Reactions on Pull Request Comments",
+        description: "Add emoji reactions to pull request comments for lightweight acknowledgment and feedback during code reviews.",
+      },
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "Edit Files from Pull Requests",
+        description: "Edit files directly from the pull request view, making it easier to address review feedback and commit quick fixes without leaving the code review workflow.",
+      },
+      {
+        tag: [{ value: "Collaboration" }],
+        title: "Image Support in Pull Request Comments",
+        description: "Paste images directly into pull request comment threads, making it easier to share screenshots, diagrams, and other visual context during code reviews.",
+      },
+      {
+        tag: [{ value: "Developer Experience" }, { value: "Collaboration" }],
+        title: "Team Members and Required Reviewers in Pull Requests",
+        description: "Display team members and required reviewers directly on pull requests, providing clear visibility into review status and outstanding approvals.",
+      },
+      {
+        tag: [{ value: "Developer Experience" }, { value: "Collaboration" }],
+        title: "Changes Since Last Review",
+        description: "Show reviewers what changed in a pull request since their last review, including new commits and commit metadata, making it easier to focus on the latest updates.",
+      },
+      {
+        tag: [{ value: "Developer Experience" }],
+        title: "Support Harness Code Repo for Config Files",
+        description: "Enable Harness Code repositories to natively store and manage configuration files used across the Harness platform, improving integration and workflow efficiency.",
+      },
+      {
+        tag: [{ value: "Developer Experience" }, { value: "Secure" }],
+        title: "SSH and WinRM Configuration Files",
+        description: "Use Harness Code repositories to securely store and manage SSH and WinRM configuration files for deployments, providing version control, access control, and integration with deployment workflows.",
+      },
+      {
+        tag: [{ value: "Developer Experience" }, { value: "Reliability" }],
+        title: "Merge Queue for Pull Requests",
+        description: "Harness Code will support a merge queue to boost development velocity by automatically managing pull request merges into busy branches, ensuring each change is validated and preventing broken or incompatible commits from reaching the target branch."
+      },
       {
         tag: [{ value: "Developer Experience" }],
         title: "Language Breakdown",

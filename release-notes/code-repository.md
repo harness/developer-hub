@@ -1,7 +1,7 @@
 ---
 title: Code Repository release notes
 sidebar_label: Code Repository
-date: 2026-03-05T10:00
+date: 2026-08-10T10:00
 sidebar_position: 7
 ---
 
@@ -20,6 +20,57 @@ These release notes describe recent changes to Harness Code Repository.
 
 :::
 
+## July 2026
+
+### Version 1.92.x
+
+#### New features and enhancements
+
+- Added support for ordering reviewers by status, making it easier to identify reviewers based on their current review state. (CODE-5752)
+- Added a branch rule to block merges when the target branch commit is not an ancestor, with automatic rebase and base-branch updates during merge. (CODE-5464, CODE-5740)
+
+#### Bug fixes and improvements
+
+- Fixed an issue where opening a pull request from the review requested list could incorrectly redirect users to the repository homepage. (CODE-5769)
+- Fixed an issue where tags from a previous repository remained visible after switching repositories. (CODE-5731)
+- Fixed an issue where tag comparison incorrectly reported that there was nothing to compare or returned a 404 error when comparing tags. (CODE-5730, CODE-5568)
+- Improved error handling and feedback for missing contributor permissions during Helm changes. (CODE-5784)
+
+## June 2026
+
+### Version 1.90.x
+
+#### New features and enhancements
+
+- Added direct **Edit File** functionality to the pull request view, making file editing more accessible while respecting permissions for linked repositories. (CODE-5669, CODE-5582, CODE-5674)
+- Added support for image pasting in pull request comment threads. (CODE-5456, CODE-3090; release date not clearly tracked)
+
+#### Bug fixes and improvements
+
+- Fixed an issue where the auto-merge dropdown displayed all merge strategies instead of only the strategies enabled for the repository. (CODE-5698)
+- Fixed pull request label `key:value` filtering so that matching pull requests are returned correctly. (CODE-5599)
+- Fixed an issue where branch links on pull request pages returned a 404 error. (CODE-5668)
+- Fixed an issue where branch search highlighting was displayed incorrectly. (CODE-5559)
+- Added a **Go to top of file diff** CTA to make navigating long file diffs easier.
+
+## May 2026
+
+### Version 1.85.x
+
+#### New features and enhancements
+
+- Added support for linked repositories, allowing Harness Code repositories to be used as configuration-file sources and supporting account-level GitHub connectors and GitHub OAuth connectors when creating linked repositories. Linked repositories can also be managed and unlinked from the UI. (CODE-5428, CODE-5247, CODE-5248, CODE-5160, CODE-5641, CODE-5645)
+- Added support for using Harness Code as a store for SSH and WinRM configuration files, including the corresponding backend and UI support. (CODE-5428, CODE-5442, CODE-5443)
+- Added "Changes since your last review" functionality to pull requests, including commit metadata and support for the feature in Devspace environments. (CODE-5453, CODE-5461, CODE-5602, CODE-5709)
+- Added support for displaying team members and required reviewers inline on pull request pages. (CODE-5460)
+- Added Merge Queue support in Harness Code, including merge queue configuration in branch rules, queue management, webhook support, pull request locking, jump-the-queue functionality, auto-merge and fork support, APIs for queue details, and integration with Harness CI. (CODE-3636, CODE-3946, CODE-3947, CODE-5270, CODE-5301, CODE-5302, CODE-5303, CODE-5304, CODE-5305, CODE-5418, CODE-5441, CODE-5454, CODE-5630, CODE-5819, CODE-5895, CODE-5896, CODE-5922, CODE-6098)
+- Added support for emoji reactions on pull request comments. (CODE-5459, CODE-5626)
+
+#### Bug fixes and improvements
+
+- Fixed an issue where the pull request commits tab displayed only the most recent 25 commits. (CODE-5462)
+- Fixed an issue where relative hyperlinks in repositories did not navigate correctly.
+
 ## March 2026
 
 <!-- March 25, 2026 -->
@@ -27,6 +78,8 @@ These release notes describe recent changes to Harness Code Repository.
 ### Version 1.80.x
 
 #### New features and enhancements
+
+- Added RBAC controls for pull request approvals. Users without the required permissions can no longer approve pull requests, and the Approve button is disabled when approval permissions are missing. (CODE-5221)
 
 - The repository **summary page** now displays a **language breakdown** showing the programming languages used in the repository. Languages are also computed automatically when importing a repository, so imported repos show language information immediately. (CODE-5093, CODE-5177)
 
@@ -40,17 +93,25 @@ These release notes describe recent changes to Harness Code Repository.
 
 #### Bug fixes and improvements
 
-- Fixed an issue where the **compare branches** and **pull request commits** tabs only displayed approximately 15 commits, even when many more existed between the compared branches. Pagination is now available to navigate the full commit list. (CODE-5182)
+- Fixed an issue where the author filter on the pull request list was lost when navigating back from a pull request detail page. (CODE-5223)
 
-- Fixed an issue where **file attachments** added to a pull request description were lost after creating the PR, particularly when using AI-generated summaries or PR templates. (CODE-4677)
+- Fixed an issue where branch search and filtering did not consistently reset pagination, causing searches to return results from the wrong page. (CODE-5797, CODE-5214)
+
+- Standardized commit SHA truncation across the UI to consistently display six characters. (CODE-5213)
+
+- Fixed an issue where the **Codebase Search repository** selection menu did not display all available repositories. (CODE-5206)
+
+- Fixed an issue where the repository settings UI did not allow selecting a **validation pipeline** in branch rules until the pipeline had been triggered at least once. (CODE-5198)
+
+- Fixed an issue where the **compare branches** and **pull request commits** tabs only displayed approximately 15 commits, even when many more existed between the compared branches. Pagination is now available to navigate the full commit list. (CODE-5182)
 
 - Fixed an issue where the **gitignore template** listing API incorrectly included non-template files (such as `README.md`) in the response. The API now also returns HTTP 400 instead of 500 for unsupported template requests. (CODE-5162)
 
-- Fixed an issue where **branch protection rules** were not properly enforced when the commit API used full branch references (`refs/heads/` prefix) instead of plain branch names. (CODE-4920)
-
 - Fixed an issue where the **repository listing API** returned HTTP 500 when paginating through repositories that contained forks whose source repository had been deleted. (CODE-5137)
 
-- Fixed an issue where the repository settings UI did not allow selecting a **validation pipeline** in branch rules until the pipeline had been triggered at least once. (CODE-5198)
+- Fixed an issue where **branch protection rules** were not properly enforced when the commit API used full branch references (`refs/heads/` prefix) instead of plain branch names. (CODE-4920)
+
+- Fixed an issue where **file attachments** added to a pull request description were lost after creating the PR, particularly when using AI-generated summaries or PR templates. (CODE-4677)
 
 <!-- March 4, 2026 -->
 ### Version 1.78.x
@@ -104,7 +165,6 @@ We’ve revamped the Code Repository UI with major usability and workflow improv
 #### Bug Fixes and Improvements
 - Fixed an issue where filename with a special character "%" caused the file view or the landing page of the repository to break.
 - Fixed syntax highlighting issue. Users will now see raw text without syntax highlighting if the underlying text has syntax errors.
-
 
 ## September 2025
 
@@ -215,9 +275,14 @@ We’ve revamped the Code Repository UI with major usability and workflow improv
 
 * We need org view and edit permissions in order to create rules/labels on the account level
 
-## December 2024
+## Previous releases
 
-### Version 1.26.2
+<details>
+<summary>Expand for 2024 releases</summary>
+
+#### December 2024
+
+#### Version 1.26.2
 
 #### New features and enhancements
 
@@ -246,9 +311,9 @@ We’ve revamped the Code Repository UI with major usability and workflow improv
 * Included the PR author in the browser parameter in the PR listing page.
 * Replaced `TypesRepository` with `RepoRepositoryOutput` in Swagger.
 
-## November 2024
+#### November 2024
 
-### Version 1.25.3
+#### Version 1.25.3
 
 #### New features and enhancements
 
@@ -278,9 +343,9 @@ We’ve revamped the Code Repository UI with major usability and workflow improv
 * Expanded detection of repository not found cases in Git error parsing.
 * Handled import-progress API responses when importing repositories via the migrator.
 
-## October 2024
+#### October 2024
 
-### Version 1.23.3
+#### Version 1.23.3
 
 #### New features and enhancements
 
@@ -299,9 +364,9 @@ We’ve revamped the Code Repository UI with major usability and workflow improv
 * Fixed PR links in the PR listing.
 * Fixed rebase API rule checks.
 
-## September 2024
+#### September 2024
 
-### Version 1.21.4
+#### Version 1.21.4
 
 #### New features and enhancements
 
@@ -321,9 +386,9 @@ We’ve revamped the Code Repository UI with major usability and workflow improv
 * Fixed OpenAPI issues in repository listing.
 * Ensured an empty list is returned when no repositories are present in a space.
 
-## August 2024
+#### August 2024
 
-### Version 1.17.2
+#### Version 1.17.2
 
 <!-- 26 Aug 24 -->
 
@@ -349,9 +414,9 @@ We’ve revamped the Code Repository UI with major usability and workflow improv
 * Add restricted by query label count when using query and sanitize empty label (value) text
 * styles issues in repo description and summary
 
-## July 2024
+#### July 2024
 
-### Version 1.14.0
+#### Version 1.14.0
 
 <!-- 23 Jul 24 -->
 
@@ -361,7 +426,7 @@ We’ve revamped the Code Repository UI with major usability and workflow improv
 * Show Line level stats in PRs 
 * Fix file history mapping and audit trail improvements
 
-### Version 1.13.1
+#### Version 1.13.1
 
 <!-- 15 Jul 24 -->
 
@@ -374,9 +439,9 @@ We’ve revamped the Code Repository UI with major usability and workflow improv
 * Public Repository Support
 * CODE IDP Integration
 
-## April 2024
+#### April 2024
 
-### Version 0.79.4
+#### Version 0.79.4
 
 <!-- 02 Apr 24 -->
 
@@ -387,9 +452,9 @@ We’ve revamped the Code Repository UI with major usability and workflow improv
 * Added support for a `cmd/ctrl + enter` keyboard shortcut to submit a PR comment or description.
 * Resolved comments in PRs are now collapsed by default.
 
-## March 2024
+#### March 2024
 
-### Version 0.75.0
+#### Version 0.75.0
 
 <!-- 22 Mar 24 -->
 
@@ -399,7 +464,7 @@ We’ve revamped the Code Repository UI with major usability and workflow improv
 * You can view entire files in PR diff view.
 * On the list of PRs, you can right-click and open a PR in a new tab or window.
 
-### Version 0.72.4
+#### Version 0.72.4
 
 <!-- 01 March 2024 -->
 
@@ -409,19 +474,19 @@ We’ve revamped the Code Repository UI with major usability and workflow improv
 * Change request resolution [branch rule](/docs/code-repository/): You can require change requests to be resolved before allowing PRs to be merged.
 * Cancel [repository import](/docs/code-repository/config-repos/import-repo): You can cancel in-progress repository imports.
 
-## January 2024
+#### January 2024
 
 <!-- 22 Jan 2024 -->
 
-### New features and enhancements
+#### New features and enhancements
 
 You can include videos in PR comments.
 
-## Initial GA release
+#### Initial GA release
 
 <!-- 04 Jan 2024 -->
 
-### New features and enhancements
+#### New features and enhancements
 
 We are excited to announce that the [Harness Code Repository module](/docs/code-repository) is now generally available.
 
@@ -434,3 +499,5 @@ This initial GA release includes the following enhancements:
 * Advanced keyword search for querying your codebase.
 
 For information about all Harness Code functionality and features, go to the [Harness Code Repository documentation](/docs/code-repository).
+
+</details>
