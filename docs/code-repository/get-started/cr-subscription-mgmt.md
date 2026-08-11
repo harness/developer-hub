@@ -1,50 +1,98 @@
 ---
-title: Subscriptions & Licenses
-description: CR subscription usage limits.
+title: Subscriptions and licenses
+sidebar_label: Subscriptions & Licenses
+description: Storage, repository, file size, and bandwidth limits for Harness Code Repository, and how they relate to your Harness CI subscription.
+keywords:
+  - subscription
+  - license
+  - storage limit
+  - bandwidth limit
+  - usage limits
+tags:
+  - code-repository
+  - get-started
+  - subscriptions
 sidebar_position: 30
 ---
 
-Harness Code Repository (CR) is available for all customers of the Harness Continuous Integration (CI) module. Your subscription for Harness CI determines the usage limits for Code Repository. Please refer to the documentation for [Harness Continuous Integration](/docs/continuous-integration/get-started/ci-subscription-mgmt) to see your current subscription.
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-The number of users who can access Code Repository is independent of your CI subscription. Storage and bandwidth limits for Code Repository are based on your subscription tier.
+Harness Code Repository is available to all customers of the Harness Continuous Integration (CI) module, and your Harness CI subscription determines its usage limits. The number of users who can access Code Repository is independent of your CI subscription, but storage and bandwidth limits follow your subscription tier.
 
-### Usage limits
+Go to [Harness CI subscriptions and licenses](/docs/continuous-integration/get-started/ci-subscription-mgmt) to review your current subscription.
 
-The following sections describe limits for storage and network transfer used by Harness Code Repository on Harness Cloud. Customers on paid plans can request to increase bandwidth or storage limits. For more information, contact [Harness Sales](https://www.harness.io/company/contact-sales) or your account manager.
+---
 
-#### Storage
+## Usage limits
 
-Harness stores data for git repositories and large file storage (LFS) in Harness-managed storage. The aggregate size of all repositories on disk must not exceed the defined storage limit. If an account exceeds the storage limit, the system will block git push operations until resolved.
+The following limits apply to storage and network transfer used by Harness Code Repository on Harness Cloud. Customers on paid plans can request an increase to either limit. To request an increase, contact [Harness Sales](https://www.harness.io/company/contact-sales) or your account manager.
 
-The maximum amount of data that you can store depends on the plan you are subscribed to:
+### Storage
 
-- Free: 10 GB
-- Paid: 250 GB
+Harness stores Git repository data and Git Large File Storage (LFS) data in Harness-managed storage. The aggregate size of all repositories on disk must not exceed the account storage limit. When an account exceeds the limit, Harness blocks Git push operations until you reduce usage.
 
-Additionally, each repository is subject to default storage limits based on your plan:
+The account storage limit depends on your plan:
 
-- Free: 4 GB
-- Paid: 10 GB
+| Plan | Account storage limit | Per-repository limit |
+| --- | --- | --- |
+| Free | 10 GB | 4 GB |
+| Paid | 250 GB | 10 GB |
 
 :::info
 
-All files stored in git are limited to 100 MB in size by default, regardless of plan. This file-size limitation can be modified per repository via the [API](https://apidocs.harness.io/repository/updategeneralsettings).
+Every file stored in Git is limited to 100 MB by default, regardless of plan. You can change this limit per repository through the [repository general settings API](https://apidocs.harness.io/repository/updategeneralsettings).
 
 :::
 
-#### Bandwidth
+<!-- TODO(SME): State what happens when a single repository exceeds its per-repository limit while the account remains under the account limit. The page currently describes the account-level block only. -->
 
-The network transfer limit applies to the data transferred from Harness Cloud to customer managed storage. The aggregate inbound and outbound network traffic must not exceed the defined bandwidth limit for the given calendar month. If an account exceeds the bandwidth limit, their network requests will be blocked and return a “429 Too Many Requests" HTTP error code.
+### Bandwidth
 
-The bandwidth limit depends on the plan you are subscribed to:
+The network transfer limit applies to data transferred from Harness Cloud to customer-managed storage. Aggregate inbound and outbound network traffic must not exceed the bandwidth limit for a given calendar month. When an account exceeds the limit, Harness blocks network requests and returns a `429 Too Many Requests` HTTP error.
 
-- Free: 50 GB
-- Paid: 250 GB
+The monthly bandwidth limit depends on your plan:
+
+| Plan | Monthly bandwidth limit |
+| --- | --- |
+| Free | 50 GB |
+| Paid | 250 GB |
+
+<!-- TODO(SME): Confirm whether the bandwidth counter resets on the calendar month or on the subscription billing period, and state where a customer can view current storage and bandwidth consumption in the UI. -->
 
 :::warning
 
-If we determine your bandwidth usage to be significantly excessive in relation to other users of similar features, we reserve the right to suspend your Account, throttle your file hosting, or otherwise limit your activity until you can reduce your bandwidth consumption. If you are using our free tier, we further reserve the right—after providing advance notice—to delete repositories that we determine will place undue strain on our infrastructure.
+If Harness determines that your bandwidth usage is significantly excessive relative to other users of similar features, Harness reserves the right to suspend your account, throttle your file hosting, or otherwise limit your activity until you reduce your bandwidth consumption. On the free tier, Harness further reserves the right, after providing advance notice, to delete repositories that place undue strain on the infrastructure.
 
 :::
 
-For more information, contact Harness Sales or your account manager.
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="Git push to a Harness Code repository is blocked because the account storage limit is exceeded"
+  mode="docs"
+  fallback="Reduce repository size by removing large objects or moving them to Git LFS, or contact Harness Sales to request a storage increase on a paid plan."
+/>
+
+<Troubleshoot
+  issue="Harness Code repository operations return HTTP 429 Too Many Requests"
+  mode="docs"
+  fallback="The account has exceeded its monthly bandwidth limit. Requests are blocked until the next calendar month, or until you request a bandwidth increase on a paid plan."
+/>
+
+<Troubleshoot
+  issue="A file larger than 100 MB is rejected when pushing to a Harness Code repository"
+  mode="docs"
+  fallback="The default per-file limit is 100 MB. Raise it for a specific repository through the repository general settings API, or store the file with Git LFS."
+/>
+
+---
+
+## Next steps
+
+You know the storage, file size, and bandwidth limits that apply to your plan and what happens when you reach them. Plan repository layout and large file handling accordingly.
+
+- [Git LFS](/docs/code-repository/work-in-repos/git-lfs): Store large files outside the main Git object store.
+- [Harness CI subscriptions and licenses](/docs/continuous-integration/get-started/ci-subscription-mgmt): Review the CI subscription that governs these limits.
+- [Clone](/docs/code-repository/work-in-repos/clone-repos): Use partial and shallow clone to reduce bandwidth consumption.

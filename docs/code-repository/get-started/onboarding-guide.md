@@ -1,61 +1,123 @@
 ---
-title: Get Started
-description: A self-service onboarding guide for Harness Code Repository.
-sidebar_position: 20
+title: Get started with Harness Code Repository
 sidebar_label: Get Started
+description: A self-service onboarding guide that takes you from an empty project to repositories connected to pipelines and governed by access controls.
+keywords:
+  - onboarding
+  - get started
+  - code repository
+  - quickstart
+tags:
+  - code-repository
+  - get-started
+sidebar_position: 20
 ---
 
-This guide walks you through the essential steps to start using the Harness Code Repository module. You'll learn how to set up repositories, configure access, work with your code, and integrate with pipelines.
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-If you're new to Harness, review the [Get started with Harness Platform](/docs/platform/get-started/onboarding-guide) before onboarding to Code. To understand core SCM concepts and how Harness Code integrates with the Harness Platform, see [Overview & Key Concepts](/docs/code-repository/get-started/overview).
+This guide walks you through the essential steps to start using the Harness Code Repository module. You set up repositories, work with your code, connect repositories to pipelines, and configure access and security.
 
-## Prerequisites
+If you are new to Harness, go to [Get started with Harness Platform](/docs/platform/get-started/onboarding-guide) to create an account before you onboard to Code. Go to [Overview and key concepts](/docs/code-repository/get-started/overview) to review core SCM concepts and how Harness Code integrates with the Harness Platform.
 
-- A Harness account with Code Repository enabled
-- Appropriate permissions to create and manage repositories in your Harness project
-- Basic familiarity with Git concepts (cloning, branching, committing)
+---
+
+## What you will learn
+
+- **Set up repositories:** Create, import, or mirror repositories into Harness Code.
+- **Work in repositories:** Clone, branch, commit, tag, and raise pull requests.
+- **Configure pipelines:** Connect repositories to Harness CI and CD pipelines.
+- **Manage access and security:** Apply branch rules, CODEOWNERS, and role-based access control.
+
+---
+
+## Before you begin
+
+- **Code Repository enabled:** You need a Harness account with Code Repository entitled. Go to [Get started with Harness Platform](/docs/platform/get-started/onboarding-guide) to create or access an account.
+
+    :::info Contact Harness support:
+
+    If Code Repository does not appear, contact your account administrator or [Harness Support](mailto:support@harness.io).
+
+    :::
+
+- **Repository permissions:** You need **Create** and **Edit** on **Repository** in your Harness project. Go to the [permissions reference](/docs/platform/role-based-access-control/permissions-reference#code-repository) to review the permission list, and to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) to configure roles.
+- **Git familiarity:** You should be comfortable with cloning, branching, and committing. Go to the [Git SCM documentation](https://git-scm.com/doc) to review the basics.
+
+---
 
 ## Step 1: Set up repositories
 
-Choose how you want to bring code into Harness Code based on your needs:
+Choose how you want to bring code into Harness Code:
 
-- [**Create fresh repos**](/docs/code-repository/config-repos/create-repo): Start a new repository from scratch in Harness Code for new projects or microservices.
-- [**Import repos**](/docs/code-repository/config-repos/import-repo): Migrate existing repositories from other Git SCM providers like GitHub, GitLab, or Bitbucket to Harness Code.
-- [**Mirror repos**](/docs/code-repository/config-repos/mirror): Create read-only mirrors of repositories from any SCM provider to enable CI/CD integration while keeping your source code in its original location.
+- [Create fresh repos](/docs/code-repository/config-repos/create-repo): Start a new repository from scratch for new projects or microservices.
+- [Import repos](/docs/code-repository/config-repos/import-repo): Migrate existing repositories from another Git provider, such as GitHub, GitLab, or Bitbucket.
+- [Mirror repos](/docs/code-repository/config-repos/mirror): Create mirrors of repositories from any provider so you can use Harness CI and CD while the source of truth stays where it is.
+
+---
 
 ## Step 2: Work in repositories
 
-Once your repositories are set up, you can work with them just like any other Git-based SCM tool:
+Once your repositories exist, you work with them as you would with any other Git-based SCM tool:
 
-- [**Clone your repo to work locally**](/docs/code-repository/work-in-repos/clone-repos): Download your repository to your local machine using Git clone commands to develop and test changes offline.
-- [**Branch, commit, and tag**](/docs/code-repository/work-in-repos/branch): Create branches for feature development, commit changes via command line or the Harness UI, and tag releases for version management. See also: [commit](/docs/code-repository/work-in-repos/commit), [tag](/docs/code-repository/work-in-repos/tag).
-- [**Create, review, and merge pull requests**](/docs/category/pull-requests) — Collaborate with your team through pull requests that enable code reviews, automated checks, and controlled merging to maintain code quality.
+- [Clone your repo to work locally](/docs/code-repository/work-in-repos/clone-repos): Download the repository to your machine to develop and test changes offline.
+- [Branch, commit, and tag](/docs/code-repository/work-in-repos/branch): Create branches for feature development, then [commit](/docs/code-repository/work-in-repos/commit) changes from the command line or the Harness UI and [tag](/docs/code-repository/work-in-repos/tag) releases.
+- [Create, review, and merge pull requests](/docs/category/pull-requests): Collaborate through pull requests that carry code reviews, automated checks, and controlled merging.
 
 :::tip
-You can perform many Git operations directly in the Harness Platform UI without using the command line, making it easier for team members who prefer a visual interface.
+You can perform many Git operations directly in the Harness UI without the command line, which helps team members who prefer a visual interface.
 :::
+
+---
 
 ## Step 3: Configure pipelines
 
-Connect your Harness Code repositories to CI/CD pipelines to automate your software delivery:
+Connect your Harness Code repositories to CI and CD pipelines to automate delivery:
 
-- [**Configure pipelines to use Harness Code repos**](/docs/code-repository/pipelines/codebase-from-harness-code): Set up your Harness CI or CD pipelines to automatically build, test, and deploy code from your Harness Code repositories whenever changes are pushed or pull requests are merged.
+- [Configure pipelines to use Harness Code repos](/docs/code-repository/pipelines/codebase-from-harness-code): Set your Harness CI or CD pipeline to build, test, and deploy code from a Harness Code repository when changes are pushed or pull requests merge.
+- [Configure triggers](/docs/code-repository/pipelines/code-triggers): Run a pipeline automatically in response to repository events.
+
+---
 
 ## Step 4: Manage access and security
 
-Control who can access your repositories and what actions they can perform:
+Control who can reach your repositories and what they can do:
 
-- [**Configure branch rules and CODEOWNERS**](/docs/code-repository/config-repos/rules): Set up branch protection rules to require reviews, status checks, or approvals before merging. Use CODEOWNERS files to automatically assign reviewers based on which files are changed.
-- [**Set up role-based access control**](/docs/platform/role-based-access-control/rbac-in-harness): Manage broader access control through Harness Platform RBAC. Use the built-in **Code Admin** role or create custom roles with specific permissions (view, create/edit, delete, push) for your repositories.
+- [Configure rules and CODEOWNERS](/docs/code-repository/config-repos/rules): Require reviews, status checks, or approvals before a merge, and use a `CODEOWNERS` file to assign reviewers based on which files changed.
+- [Enable security](/docs/code-repository/config-repos/security): Turn on secret scanning, vulnerability scanning, and committer email verification.
+- [Set up role-based access control](/docs/platform/role-based-access-control/rbac-in-harness): Manage broader access through Harness Platform RBAC, using the built-in **Code Admin** role or a custom role.
 
-Check out this video to learn more about access control with Harness Code:
+The following video walks through access control in Harness Code:
 
 <DocVideo src="https://www.youtube.com/watch?v=SaH27_UgAxA" />
 
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="Code Repository does not appear in the Harness module list"
+  mode="docs"
+  fallback="Code Repository must be entitled on your account. Contact your account administrator or Harness Support to confirm entitlement."
+/>
+
+<Troubleshoot
+  issue="Cannot create a repository in a Harness project because the option is unavailable"
+  mode="docs"
+  fallback="Creating a repository requires the Create permission on the Repository resource. Ask an administrator to assign a role that includes it."
+/>
+
+<Troubleshoot
+  issue="A Harness pipeline cannot find the Harness Code repository when configuring the codebase"
+  mode="docs"
+  fallback="The pipeline and the repository must be in the same Harness project. Confirm the project scope, then reselect the repository in the codebase configuration."
+/>
+
+---
+
 ## Next steps
 
-You've successfully set up Harness Code Repository and are ready to manage your code with enterprise-grade security and compliance. You can now collaborate with your team through code reviews, automate builds and deployments, and integrate seamlessly with other Harness modules.
+You have set up Harness Code Repository and can manage your code with the access controls and security scanning your organization requires. You can now collaborate through code reviews, automate builds and deployments, and integrate with other Harness modules.
 
-- [Learn about pull request workflows and code review best practices](/docs/category/pull-requests)
-- [Explore Code Repository integrations](/docs/category/code-repository-integrations)
-- [Understand subscription usage limits and storage](/docs/code-repository/get-started/cr-subscription-mgmt)
+- [Pull request workflows](/docs/category/pull-requests): Review, approve, and merge changes.
+- [Code Repository integrations](/docs/category/code-repository-integrations): Connect Harness Code to tools such as Jira.
+- [Subscriptions and licenses](/docs/code-repository/get-started/cr-subscription-mgmt): Understand storage and bandwidth limits.

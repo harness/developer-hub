@@ -16,7 +16,7 @@ Use heading levels so the **in-page table of contents** (Docusaurus right rail) 
 
 Reserve `##` for the structural blocks that frame the page. Use these headings (omit any section that does not apply):
 
-- **`## What will you learn?`** (optional)
+- **`## What you will learn`** (optional)
 - **`## Before you begin`**
 - **`## Troubleshooting`**
 - **`## Next steps`**

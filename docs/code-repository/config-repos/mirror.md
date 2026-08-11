@@ -1,59 +1,95 @@
 ---
 title: Mirror repositories
-description: Create pipelines to sync branch and tag changes across repos.
+sidebar_label: Mirror Repositories
+description: Create a CI pipeline that mirrors branch and tag changes between two repositories, in one direction or both.
+keywords:
+  - mirror
+  - sync
+  - two-way mirroring
+  - webhook trigger
+  - input sets
+tags:
+  - code-repository
+  - config-repos
+  - pipelines
 sidebar_position: 30
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-Mirroring syncs changes from one repo to another. In Harness, you can create CI pipelines that mirror branch and tag changes from one repo to another.
+Mirroring syncs changes from one repository to another. In Harness, you build a CI pipeline that mirrors branch and tag changes between a source repository and a target repository. You can set up one-way or two-way mirroring, and the same pipeline works for both.
 
-You can set up one-way or two-way mirroring.
+---
+
+## What you will learn
+
+- **Pipeline setup:** How to build a provider-agnostic mirror pipeline with a Run step and a shell script.
+- **Runtime inputs:** How pipeline variables let one pipeline serve many repository pairs.
+- **Automation:** How to drive the pipeline with custom webhook triggers.
+- **Manual runs:** How input sets reduce toil when you run the pipeline by hand.
+
+---
+
+## Before you begin
+
+- **Harness CI:** Mirroring runs as a CI pipeline, so you need the Continuous Integration module and a build infrastructure. Go to [Which build infrastructure is right for me](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me) to choose one.
+- **Pipeline permissions:** You need **Create/Edit** and **Execute** on [Pipelines](/docs/platform/role-based-access-control/permissions-reference#pipelines). Go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) to configure roles.
+- **Repository access tokens:** You need a token for each repository involved. Source tokens need read access; target tokens need read and write access.
+- **Webhook access on the source repository:** Automating the mirror requires permission to register a webhook on the source repository.
+
+:::info
+
+Mirroring described on this page is bidirectional-capable and pushes commits to the target repository. This differs from the read-only mirror described in [Get started](/docs/code-repository/get-started/onboarding-guide#step-1-set-up-repositories).
+
+<!-- TODO(SME): The onboarding guide describes mirroring as creating "read-only mirrors" that keep source code in its original location, while this page describes a pipeline that pushes to the target and supports two-way sync. Confirm whether these are two different features or one feature described inconsistently, then align both pages. -->
+
+:::
+
+---
 
 ## Configure mirroring in Harness
 
-In Harness, mirroring uses a mirror script in a CI pipeline. This script replicates commits from the source repo on the target repo.
+Mirroring uses a mirror script in a CI pipeline. The script replicates commits from the source repository on the target repository.
 
-To automate mirroring, a webhook trigger runs the pipeline whenever a change is pushed to the source repo. You can also run the mirror pipeline manually, rather than using a webhook trigger.
+To automate mirroring, a webhook trigger runs the pipeline whenever a change is pushed to the source repository. You can also run the mirror pipeline manually instead of using a trigger.
 
 ### Create the pipeline
 
-The pipeline created in this guide is provider agnostic and direction agnostic. This means you can use one pipeline for one-way or two-way mirroring across many pairs of repos and providers.
+The pipeline in this guide is provider agnostic and direction agnostic, so you can use one pipeline for one-way or two-way mirroring across many pairs of repositories and providers.
 
 1. Create a [CI pipeline](/docs/continuous-integration/use-ci/prep-ci-pipeline-components).
-2. Add a [Build stage](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings) and **[disable Clone Codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#disable-clone-codebase-for-specific-stages)**.
-3. Set up your desired [build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md), such as [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md).
+2. Add a [Build stage](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings) and [disable Clone Codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#disable-clone-codebase-for-specific-stages).
+3. Set up your build infrastructure, such as [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).
 
 ### Add variables
 
-Add pipeline variables required by the mirror script.
+Add the pipeline variables that the mirror script requires.
 
-These variables use [runtime input](/docs/platform/variables-and-expressions/runtime-inputs.md) (`<+input>`), which allows you to use this same pipeline for many pairs of mirrored repos without editing the pipeline itself. Later, you'll create triggers to populate these values at runtime.
+These variables use [runtime input](/docs/platform/variables-and-expressions/runtime-inputs) (`<+input>`), so you can use the same pipeline for many pairs of mirrored repositories without editing the pipeline. Later, you create triggers that populate these values at runtime.
 
 <Tabs>
-<TabItem value="Visual" label="Visual editor">
+<TabItem value="visual" label="Visual Editor" default>
 
-To add pipeline variables in the Pipeline Studio's Visual editor:
+To add pipeline variables in the Pipeline Studio visual editor, do the following:
 
-1. Edit your pipeline and select **Variables** on the right side of the pipeline studio.
+1. Edit your pipeline, then select **Variables** on the right side of the Pipeline Studio.
 2. Under the **Pipeline** section, select **Add Variable**.
-3. Configure the variable settings as defined below, and then select **Save**.
-
-   Make sure the **Value** is exactly as given in the table.
+3. Configure the variable settings as defined in the following table, then select **Save**. The **Value** must be exactly as given.
 
 | Type | Name | Value | Required during runtime | Description |
 | ---- | ---- | ----- | ----------------------- | ----------- |
-| Secret | `sourceToken` | `<+input>` | True | Access token for the source repo. |
-| String | `sourceURL` | `<+input>` | True | The `https`-format clone URL for the source repo. |
-| Secret | `targetToken` | `<+input>`  | True | Access token for the target repo. |
-| String | `targetURL` | `<+input>` | True | The `https`-format clone URL for the target repo. |
+| Secret | `sourceToken` | `<+input>` | True | Access token for the source repository. |
+| String | `sourceURL` | `<+input>` | True | The `https` format clone URL for the source repository. |
+| Secret | `targetToken` | `<+input>` | True | Access token for the target repository. |
+| String | `targetURL` | `<+input>` | True | The `https` format clone URL for the target repository. |
 | String | `reference` | `<+input>` | True | The full reference path to sync from source to target, such as `refs/heads/main` for branches and `refs/tags/v.1.2.3` for tags. |
-| String | `referenceShaOld` | `<+input>` | False | The previous value of the `reference` on the source repo. For example, on a branch update, the `referenceShaOld` is the old SHA of the branch before the update. If provided, this value's usage depends on the change on the reference:<br/>If the reference was deleted and the old SHA is provided, the reference is deleted on the target repo only if has the same value on the target repo. If the old SHA isn't provided, the reference is deleted on the target repo without any further checks.<br/>If the reference was updated, the old SHA is used to update the reference by either fast forward or force update if the reference has the same value on the target repo. For example, after force pushing changes to the source repo, fast forward to source isn't possible. Providing the old SHA ensures mirroring overwrites the target only if the reference in the target repo has the same value as the source repo's reference before the force push. If the old SHA isn't provided, only fast forward updates of a reference are possible and force updates fail to sync. |
-| String | `syncDelete` | `<+input>.default(false).allowedValues(true,false)`  | False | Indicates if deletion of a branch or tag reference on the source repo should be synced to the target repo. Set to `true` to delete branches/tags on the target repo when they are deleted on the source repo. Set to `false` to block such deletions from being mirrored on the target. Default is `false`. This applies to branch and tag deletions only. Deleting files is considered a reference update, which is not impacted by this flag. |
+| String | `referenceShaOld` | `<+input>` | False | The previous value of `reference` on the source repository. Go to [How referenceShaOld affects syncing](#how-referenceshaold-affects-syncing) to understand its behavior. |
+| String | `syncDelete` | `<+input>.default(false).allowedValues(true,false)` | False | Whether deletion of a branch or tag on the source repository syncs to the target. Go to [How syncDelete affects deletions](#how-syncdelete-affects-deletions) for the full behavior. |
 
 </TabItem>
-<TabItem value="YAML" label="YAML editor" default>
+<TabItem value="yaml" label="YAML Editor">
 
 In the YAML editor, add the following variables to the end of the pipeline YAML:
 
@@ -86,17 +122,12 @@ In the YAML editor, add the following variables to the end of the pipeline YAML:
       value: <+input>
     - name: referenceShaOld
       type: String
-      description: |-
-        The previous value of the 'reference' on the source repo. For example, on a branch update, the 'referenceShaOld' is the old SHA of the branch before the update. If provided, this value's usage depends on the change on the reference:
-
-        If the reference was deleted and the old SHA is provided, the reference is deleted on the target repo only if has the same value on the target repo. If the old SHA isn't provided, the reference is deleted on the target repo without any further checks.
-
-        If the reference was updated, the old SHA is used to update the reference by either fast forward or force update if the reference has the same value on the target repo. For example, after force pushing changes to the source repo, fast forward to source isn't possible. Providing the old SHA ensures mirroring overwrites the target only if the reference in the target repo has the same value as the source repo's reference before the force push. If the old SHA isn't provided, only fast forward updates of a reference are possible and force updates fail to sync.
+      description: "The previous value of the 'reference' on the source repo. See the Harness documentation for how this value affects fast-forward and force updates."
       required: false
       value: <+input>
     - name: syncDelete
       type: String
-      description: "Indicates if deletion of a branch or tag reference on the source repo should be synced to the target repo. Set to true to delete branches/tags in the target repo when they are deleted in the source repo. Set to false to block such deletions from being mirrored in the target. Default is false. This applies to branch and tag deletions only. Deleting files is considered a reference update, which is not impacted by this flag. "
+      description: "Indicates whether deletion of a branch or tag reference on the source repo should be synced to the target repo. Default is false. This applies to branch and tag deletions only."
       required: false
       value: <+input>.default(false).allowedValues(true,false)
 ```
@@ -104,13 +135,31 @@ In the YAML editor, add the following variables to the end of the pipeline YAML:
 </TabItem>
 </Tabs>
 
+#### How referenceShaOld affects syncing
+
+`referenceShaOld` is the value of the reference on the source repository before the change. Its effect depends on what happened to the reference:
+
+- **On deletion:** When you provide the old SHA, Harness deletes the reference on the target repository only if it currently holds that same value. When you do not provide the old SHA, Harness deletes the reference on the target without any further check.
+- **On update:** Harness uses the old SHA to update the reference by fast forward, or by force update when the reference holds the same value on the target. For example, after a force push to the source repository, a fast forward is no longer possible. Providing the old SHA ensures mirroring overwrites the target only if the target reference still matches the source reference from before the force push. When you do not provide the old SHA, only fast forward updates succeed and force updates fail to sync.
+
+#### How syncDelete affects deletions
+
+`syncDelete` controls whether deleting a branch or tag on the source repository also deletes it on the target repository:
+
+- **`true`:** Harness deletes the branch or tag on the target when it is deleted on the source.
+- **`false`:** Harness blocks the deletion from mirroring to the target. This is the default.
+
+This flag applies to branch and tag deletions only. Deleting a file counts as a reference update, which this flag does not affect.
+
 ### Add the mirror script
 
-This script mirrors changes from one source repo to one target repo. The script uses variables with [runtime inputs](/docs/platform/variables-and-expressions/runtime-inputs.md) so that you can use the same pipeline for mirroring for multiple pairs of repos. Later, you'll create triggers that populate the variables in the script with the values for specific source and target repos.
+This script mirrors changes from one source repository to one target repository. It reads the pipeline variables above, so the same pipeline serves multiple repository pairs.
 
-1. In the Build stage, add a [Run step](/docs/continuous-integration/use-ci/run-step-settings)
-2. Depending on your build infrastructure, you might need to select an [image](/docs/continuous-integration/use-ci/run-step-settings/#container-registry-and-image) that has Git installed and supports basic shell. If your build infrastructure already has these tools available, you don't need to specify an image.
-3. In **Command**, enter the following shell script, and then save the step and the pipeline.
+1. In the Build stage, add a [Run step](/docs/continuous-integration/use-ci/run-step-settings).
+2. Depending on your build infrastructure, you might need to select an [image](/docs/continuous-integration/use-ci/run-step-settings/#container-registry-and-image) that has Git installed and supports a basic shell. If your build infrastructure already provides these tools, you do not need to specify an image.
+3. In **Command**, enter the following shell script, then save the step and the pipeline.
+
+<!-- TODO(SME): This script uses `return` for its exit paths rather than `exit`. Outside a function or a sourced script, `return` is invalid in POSIX sh and bash, so the step may not report the intended status. Confirm how Harness executes the Run step command block and whether `return` should be `exit`. Do not change this without confirming, because the numeric codes appear to signal distinct failure modes. -->
 
 ```shell
 SOURCE_TOKEN=<+pipeline.variables.sourceToken>
@@ -175,13 +224,13 @@ if [ $? -eq 0 ]; then
   return 0
 fi
 
-# we don't have any old sha left? return failure
+# no old sha left? return failure
 if [ -z "$REFERENCE_SHA_OLD" ]  || [ "$REFERENCE_SHA_OLD" = "null" ]; then
-  echo "sync failed - changes can't be fast forwarded"
+  echo "sync failed - changes cannot be fast forwarded"
   return 2
 fi
 
-# otherwise, retry save force-push to mimik changes on source (handles force push on source)
+# otherwise, retry safe force-push to mimic changes on source (handles force push on source)
 echo "fast forward sync failed - retry using the old sha '$REFERENCE_SHA_OLD' as assumed sha of reference on target repo"
 git push target "refs/sync/source:$REFERENCE" --force-with-lease="$REFERENCE:$REFERENCE_SHA_OLD"
 
@@ -195,130 +244,166 @@ fi
 echo "sync successful"
 ```
 
+The script signals the following outcomes:
+
+| Code | Meaning |
+| --- | --- |
+| `0` | Sync succeeded, or a deletion was skipped because `syncDelete` is `false`. |
+| `1` | Harness could not determine whether the reference exists on the source. |
+| `2` | The change cannot be fast forwarded and no old SHA was supplied. |
+| `3` | The safe force push failed. Source and target are out of sync and need manual intervention. |
+
 ### Get tokens and clone URLs
 
-Mirroring requires some information from the repos you want to sync.
+Mirroring requires credentials and URLs from the repositories you want to sync.
 
-1. Create access tokens for the source and target repos, and then store them as [Harness text secrets](/docs/platform/secrets/add-use-text-secrets). Create one token for each repo involved in mirroring (either as a source, target, or both).
+1. Create access tokens for the source and target repositories, then store them as [Harness text secrets](/docs/platform/secrets/add-use-text-secrets). Create one token for each repository involved in mirroring, whether it acts as a source, a target, or both.
 
-   * Source repo tokens need at least read permission.
-   * Target repo tokens need read and write permissions.
-   * For two-way (source and target) repos, you can use the same token if it has read and write permissions.
+    - Source repository tokens need at least read permission.
+    - Target repository tokens need read and write permissions.
+    - For two-way mirroring, you can use one token per repository if it has read and write permissions.
 
-   For Harness Code repos, Harness recommends creating a [Harness service account](/docs/platform/role-based-access-control/add-and-manage-service-account) with `repo_read` and `repo_push` permissions for the repos you are mirroring. Then you can [create a Harness API key and token](/docs/platform/automation/api/add-and-manage-api-keys) for the service account. This ensures that the token isn't tied to a specific user and the token's permission can be as minimal as possible.
+    For Harness Code repositories, create a [Harness service account](/docs/platform/role-based-access-control/add-and-manage-service-account) with `repo_read` and `repo_push` permissions for the repositories you are mirroring, then [create a Harness API key and token](/docs/platform/automation/api/add-and-manage-api-keys) for that service account. A service account token is not tied to a specific user and can carry the minimum permissions required.
 
-   For other SCM providers, refer to the provider's documentation on generating access tokens.
+    For other providers, go to the provider's documentation to generate access tokens.
 
-2. Get the `https` clone URLs for the source and target repos.
+2. Get the `https` clone URLs for the source and target repositories.
 
 ### Create triggers
 
-Create [triggers](/docs/platform/triggers/triggers-overview) to populate the [pipeline variables](#add-variables) and automatically run the mirror pipeline when changes are pushed to the source repo.
+Create [triggers](/docs/platform/triggers/triggers-overview) to populate the [pipeline variables](#add-variables) and run the mirror pipeline automatically when changes are pushed to the source repository.
 
-One-way syncing requires one trigger on the source repo.
+One-way syncing requires one trigger on the source repository. Two-way syncing requires two triggers, because each repository acts as the source for the other. Create as many triggers as you need for all source and target combinations.
 
-Two-way syncing requires two triggers, since both repos can be the source for the other repo.
-
-Create as many triggers as you need for all source-target combinations.
+To create a trigger, do the following:
 
 1. In your mirror pipeline, select **Triggers** in the Pipeline Studio header.
-2. Select **New Trigger** and select the **Custom** webhook trigger.
+2. Select **New Trigger**, then select the **Custom** webhook trigger.
 
-   While Harness offers provider-specific webhook triggers, to ensure the pipeline works for any combination of SCM providers, you must use [custom webhook triggers](/docs/platform/triggers/trigger-deployments-using-custom-triggers).
+    Harness offers provider-specific webhook triggers, but you must use [custom webhook triggers](/docs/platform/triggers/trigger-deployments-using-custom-triggers) so the pipeline works for any combination of providers.
 
-3. Enter a trigger **Name** and select **Continue**. The **Description** and **Tags** are optional.
+3. Enter a trigger **Name**, then select **Continue**. **Description** and **Tags** are optional.
 4. Skip the **Conditions** tab and go to the **Pipeline Input** tab.
-5. Enter the [access tokens and clone URLs](#get-tokens-and-clone-urls) for your source and target repos in `sourceToken`, `targetToken`, `sourceURL`, and `targetURL`.
-6. Set the `reference` and `referenceShaOld` as follows depending on the *source* repo's SCM provider:
+5. Enter the [access tokens and clone URLs](#get-tokens-and-clone-urls) for your source and target repositories in `sourceToken`, `targetToken`, `sourceURL`, and `targetURL`.
+6. Set `reference` and `referenceShaOld` according to the *source* repository's provider:
 
-   * Harness Code:
-      * `reference`: `<+trigger.payload.ref.name>`
-      * `referenceShaOld`: `<+trigger.payload.old_sha>`
-   * GitHub:
-      * `reference`: `<+trigger.payload.ref>`
-      * `referenceShaOld`: `<+trigger.payload.before>`
-   * GitLab:
-      * `reference`: `<+trigger.payload.ref>`
-      * `referenceShaOld`: `<+trigger.payload.before>`
-   * Other providers: Refer to the provider's API documentation or sample payloads to determine the payload values to extract in the trigger. You can also manually run the mirror pipeline and specify one-time fixed value for these inputs at runtime.
+    | Provider | `reference` | `referenceShaOld` |
+    | --- | --- | --- |
+    | Harness Code | `<+trigger.payload.ref.name>` | `<+trigger.payload.old_sha>` |
+    | GitHub | `<+trigger.payload.ref>` | `<+trigger.payload.before>` |
+    | GitLab | `<+trigger.payload.ref>` | `<+trigger.payload.before>` |
 
-7. Set `syncDelete` to either `true` or `false` depending on the desired behavior.
+    For other providers, go to the provider's API documentation or sample payloads to determine which payload values to extract. You can also run the mirror pipeline manually and supply fixed values at runtime.
 
-   `syncDelete` indicates if deletion of a branch or tag reference on the source repo should be synced to the target repo.
-
-   This applies to branch and tag deletions only. Deleting files is considered a reference *update*, which is not impacted by this flag.
-
-   Set `syncDelete` to `true` if you want to delete branches/tags on the target repo when they are deleted on the source repo. Otherwise, set `syncDelete` to `false` to block such deletions from being mirrored on the target.
-
+7. Set `syncDelete` to `true` or `false`. Go to [How syncDelete affects deletions](#how-syncdelete-affects-deletions) to choose.
 8. Save the trigger.
-9. Register the trigger's webhook on the source repo.
+9. Register the trigger's webhook on the source repository:
 
-   1. In Harness, obtain the trigger's webhook URL by selecting the **Webhook/Link** icon in the list of triggers.
-   2. In your SCM provider, go to the source repo's webhook setting and add a webhook.
-   3. Paste the webhook URL from Harness in the webhook's payload URL.
-   4. Set the content type to JSON.
-   5. Select the required event types to ensure all branch/tag events and changes are synced.
+    1. In Harness, obtain the trigger's webhook URL by selecting the **Webhook/Link** icon in the list of triggers.
+    2. In your provider, go to the source repository's webhook settings and add a webhook.
+    3. Paste the webhook URL from Harness into the webhook payload URL.
+    4. Set the content type to JSON.
+    5. Select the event types required to sync all branch and tag changes:
 
-      * Harness Code: Branch created, branch updated, branch deleted, tag created, tag updated, tag deleted
-      * GitHub: Push
-      * GitLab: Push events, tag events
-      * Other providers: Refer to the provider's documentation for webhook events.
+        | Provider | Events |
+        | --- | --- |
+        | Harness Code | Branch created, branch updated, branch deleted, tag created, tag updated, tag deleted |
+        | GitHub | Push |
+        | GitLab | Push events, tag events |
 
-   For more information about manual webhook registration, go to [Webhook triggers reference](/docs/platform/triggers/triggers-reference).
+        For other providers, go to the provider's documentation to identify the equivalent events.
+
+    Go to [Webhook triggers reference](/docs/platform/triggers/triggers-reference) to review manual webhook registration.
 
 ### Test the mirror
 
-To test the trigger and verify that mirroring works, create a branch on the source repo.
+To confirm that mirroring works, create a branch on the source repository. Branch creation activates the trigger and runs the mirror pipeline.
 
-Branch creation should activate the trigger and run the mirror pipeline.
+In Harness, [view the build](/docs/continuous-integration/use-ci/viewing-builds) to monitor progress and inspect pipeline inputs and outputs. If the run succeeds, confirm that the new branch exists on the target repository.
 
-In Harness, you can [view the build](/docs/continuous-integration/use-ci/viewing-builds) to monitor the pipeline's progress and inspect pipeline inputs and outputs.
+---
 
-If the run is successful, you can check that the new branch is present on the target repo.
+## Race conditions in two-way mirrors
 
-## Race conditions can occur in two-way mirrors
+With bidirectional sync, both repositories can update the same reference before either change syncs. In that case the mirror script does not overwrite changes on the target repository. The sync fails instead, and stays failed until you resolve the conflict.
 
-With bidirectional sync there is a chance of race conditions where both repos update the same reference before one could get synced.
+When sync fails because of a race condition, inspect the two repositories and mitigate manually. For example, resolve the reference conflict and bring both repositories to the same SHA. Automatic syncing through triggers resumes once they match.
 
-In this scenario, the mirror script in this pipeline doesn't overwrite any changes on the target repo. Instead, the sync fails until the conflict is resolved.
-
-If sync fails due to race conditions in two-way mirroring, you must manually inspect and mitigate the issue. For example, you might need to fix the reference conflict between the two repos and manually get both repos on the same SHA. After that, the mirror script (and automatic syncing through triggers) should work again.
+---
 
 ## Use input sets for manual mirroring
 
-Harness recommends that you [use triggers to automatically run the mirror pipeline](#create-triggers). However, there are situations where you might manually run the mirror pipeline, for example:
+Harness recommends [triggers](#create-triggers) to run the mirror pipeline automatically. You might still run it manually when:
 
-* You prefer to manually handle mirroring for some or all repos.
-* You don't want mirroring to happen on every commit to the source repo.
-* There is an error or conflict blocking automatic mirroring.
+- You prefer to handle mirroring manually for some or all repositories.
+- You do not want mirroring to run on every commit to the source repository.
+- An error or conflict is blocking automatic mirroring.
 
-**Harness recommends using input sets to facilitate manual mirroring.** This is because the [mirror script](#add-the-mirror-script) uses [variables with runtime inputs](#add-variables) so that you can use the same pipeline for mirroring for multiple pairs of repos. [Input sets](/docs/platform/pipelines/input-sets.md) allow you to predefine some or all of these runtime inputs, which reduces toil and the chance of errors when manually running the pipeline.
+Use [input sets](/docs/platform/pipelines/input-sets) for manual runs. Because the [mirror script](#add-the-mirror-script) reads [runtime input variables](#add-variables), an input set predefines some or all of those inputs, which reduces toil and the chance of error.
 
-Create an input set for each pair of mirrored repos.
+Create one input set for each pair of mirrored repositories:
 
 1. In the Pipeline Studio header, select **Input Sets**.
 2. Select **New Input Set**.
-3. Enter a **Name** for the input set, such as `Mirror SOURCE_REPO_NAME to TARGET_REPO_NAME`. **Description** and **Tags** are optional.
-4. Enter the [access tokens and clone URLs](#get-tokens-and-clone-urls) for the source and target repos in `sourceToken`, `targetToken`, `sourceURL`, and `targetURL`.
-5. Don't include values for `reference`, `referenceShaOld`, or `syncDelete` in your input sets, because these values usually depend on the particular runtime conditions.
+3. Enter a **Name**, such as `Mirror SOURCE_REPO_NAME to TARGET_REPO_NAME`. **Description** and **Tags** are optional.
+4. Enter the [access tokens and clone URLs](#get-tokens-and-clone-urls) for the source and target repositories in `sourceToken`, `targetToken`, `sourceURL`, and `targetURL`.
+5. Leave `reference`, `referenceShaOld`, and `syncDelete` empty, because these values usually depend on runtime conditions.
 
-   When running the pipeline manually, you'll select an input set to populate the tokens and clone URLS, and then input the remaining values directly at runtime.
+    When you run the pipeline manually, select an input set to populate the tokens and clone URLs, then supply the remaining values at runtime.
 
-   Rarely, there might be occasions where you want to provide a fixed value for `reference`, such as for major branches like `main/develop/...`. In this case you can include a value for `reference` in the input set.
+    Occasionally you might want a fixed `reference`, such as for a long-lived branch like `main`. In that case, include a value for `reference` in the input set.
 
 6. Save the input set.
 
-Continue creating input sets until you have created an input set for each source-target combination.
+Continue until you have an input set for each source and target combination.
 
-:::info two-way syncing
+:::info Two-way syncing
 
-For two-way syncing, you need to create two input sets. Both input sets should contain the same tokens and clone URLs, but you'll swap them so that each repo can be the source for the other. For example, if you have `repoA` and `repoB`, you need two input sets configured like this:
+For two-way syncing, create two input sets. Both contain the same tokens and clone URLs, swapped so that each repository can act as the source for the other. For example, with `repoA` and `repoB`:
 
-   * Input set for `repoA` as the source (mirror `repoA` to `repoB`):
-      * Use `repoA` values for `sourceToken` and `sourceURL`.
-      * Use `repoB` values for `targetToken` and `targetURL`.
-   * Input set for `repoB` as the source (mirror `repoB` to `repoA`):
-      * Use `repoB` values for `sourceToken` and `sourceURL`.
-      * Use `repoA` values for `targetToken` and `targetURL`.
+- Input set for `repoA` as the source, mirroring `repoA` to `repoB`:
+    - Use `repoA` values for `sourceToken` and `sourceURL`.
+    - Use `repoB` values for `targetToken` and `targetURL`.
+- Input set for `repoB` as the source, mirroring `repoB` to `repoA`:
+    - Use `repoB` values for `sourceToken` and `sourceURL`.
+    - Use `repoA` values for `targetToken` and `targetURL`.
 
 :::
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="The Harness mirror pipeline fails with sync failed - source and target are out of sync"
+  mode="docs"
+  fallback="The safe force push was rejected because the target reference no longer matches the supplied old SHA. Inspect both repositories, resolve the reference conflict manually, and bring both to the same SHA before rerunning."
+/>
+
+<Troubleshoot
+  issue="The Harness mirror pipeline reports changes cannot be fast forwarded"
+  mode="docs"
+  fallback="No referenceShaOld was supplied, so only fast forward updates are possible. Map the provider payload field for the previous SHA into the referenceShaOld trigger input."
+/>
+
+<Troubleshoot
+  issue="A branch deleted on the source repository is not deleted on the mirror target repository"
+  mode="docs"
+  fallback="syncDelete defaults to false, which blocks deletions from mirroring. Set syncDelete to true on the trigger to propagate branch and tag deletions."
+/>
+
+<Troubleshoot
+  issue="The Harness mirror webhook trigger does not run the pipeline when the source repository is pushed"
+  mode="general"
+  fallback="Confirm the webhook is registered on the source repository with content type JSON, that the selected events cover branch and tag changes, and that the trigger is a Custom webhook trigger rather than a provider-specific one."
+/>
+
+---
+
+## Next steps
+
+You have a mirror pipeline that syncs branch and tag changes, triggers that run it automatically, and input sets for manual runs.
+
+- [Import repos](/docs/code-repository/config-repos/import-repo): Migrate a repository once rather than syncing it continuously.
+- [Rules](/docs/code-repository/config-repos/rules): Protect the target repository from direct changes that would conflict with the mirror.
+- [Triggers](/docs/platform/triggers/triggers-overview): Review trigger types and payload expressions.

@@ -1,280 +1,330 @@
 ---
 title: Enable rules
-description: Set up branch and tag rules in Harness Code
+sidebar_label: Rules
+description: Set up branch rules, tag rules, push rules, and CODEOWNERS to govern repositories in Harness Code Repository.
+keywords:
+  - branch rules
+  - tag rules
+  - push rules
+  - CODEOWNERS
+  - branch protection
+tags:
+  - code-repository
+  - rules
+  - governance
 sidebar_position: 30
 ---
 
-In Harness Code, you can use branch rules, tag rules, and CODEOWNERS to manage individual repositories.
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-For broader permissions, such as the ability to view repos within a specific Harness project, go to [Access control](/docs/code-repository/get-started/onboarding-guide.md#manage-access).
+In Harness Code Repository, you can use branch rules, tag rules, push rules, and CODEOWNERS to govern how contributors change a repository. Rules control who can create, update, and delete references, and what must happen before a pull request merges.
 
-## Add branch rules
+For broader permissions, such as the ability to view repositories within a specific Harness project, go to [Manage access and security](/docs/code-repository/get-started/onboarding-guide#step-4-manage-access-and-security) to configure project access.
 
-In Harness Code, you can create branch rules for a single branch or multiple branches in a repository, project, org, or account. Branch rules establish criteria for approving and merging PRs, define who can create and delete branches, and more.
+---
 
-Branch rules set on a repository only apply to that specific repository but you can also set branch rules at the project, organization or account level to enforce consistent policies across multiple repositories. E.g. A branch rule set on a project will apply to every repository in that project - even newly created repositories. 
+## Before you begin
 
-If you configure branch rules at multiple levels they are combined with an `AND` clause. This generally means the more restrictive rule applies. E.g If you configure a repository branch rule that requires 1 approval before merging but the org branch rule requires 2 approvals, then 2 approvals are needed. Before the branch can be merged the repository requires 1 approval AND the org requires 2 approvals so 2 approvals are needed.
+- **Repository permissions:** You need **Edit** on **Repository** to create or change rules. Go to the [permissions reference](/docs/platform/role-based-access-control/permissions-reference#code-repository) to review the full permission list, and to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) to configure roles.
+- **Scope access:** To set rules at the project, organization, or account level, you need access at that scope. Go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) to understand the permissions hierarchy.
 
-1. Navigate to the level where you want to enable branch rules. For projects, orgs, or accounts, select **Manage Repositories**. For a repository, click **Settings**.
+    <!-- TODO(SME): Confirm whether account-level and org-level rules require a role assigned at that scope, or whether repository Edit is sufficient. -->
+
+- **Push rules availability:** Push rules are available only in the new UI and are behind the feature flag `PL_UNIFIED_OPT_IN_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable the flag on your account.
+
+    <!-- TODO(SME): Confirm whether PL_UNIFIED_OPT_IN_ENABLED still gates push rules, or whether the feature reached GA after 2026-05-21. -->
+
+---
+
+## Rule scope and inheritance
+
+Rules apply at four levels: repository, project, organization, and account. A rule set on a repository applies only to that repository. A rule set at the project, organization, or account level applies to every matching repository at that scope, including repositories created later.
+
+When rules exist at more than one level, Harness combines them with an `AND` clause, so the more restrictive rule effectively applies. For example, if a repository rule requires one approval and the organization rule requires two, the branch needs two approvals: the repository requires one approval and the organization requires two, so two approvals satisfy both.
+
+### Scope rules to specific repositories
+
+When you create a branch rule or a tag rule at the account, organization, or project level, you can include or exclude repositories so the rule does not apply to every repository at that scope. You can scope a rule in two ways:
+
+- **By selecting specific repositories:** For example, `billing-api` and `web-frontend`.
+- **By using name patterns:** For example, `service-*` and `exp-*`.
+
+You can mix includes and excludes. Excludes take precedence where the two overlap. The following combination includes every repository matching `service-*` plus two named repositories, then removes the experimental repositories and one named repository:
+
+- Include by pattern: `service-*`
+- Include specific repositories: `billing-api`, `web-frontend`
+- Exclude by pattern: `exp-*`
+- Exclude a specific repository: `playground`
+
+---
+
+## Branch rules
+
+Branch rules establish criteria for approving and merging pull requests, define who can create and delete branches, and control force pushes.
+
+### Add a branch rule
+
+To create a branch rule, do the following:
+
+1. Navigate to the level where you want to enable branch rules. For projects, organizations, or accounts, select **Manage Repositories**. For a repository, select **Settings**.
+
+    <!-- TODO(SME): This page documents three different paths to the Rules tab: **Manage Repositories** here, **Manage Repository** in the left sidebar under Tag rules, and **Settings** in the topbar under Push rules. Confirm the correct path for each scope and normalize all three procedures. -->
+
 2. Select the **Rules** tab.
 3. Click **+ Create Branch Rule**.
-4. Enter the rule **Name** and optional **Description**.
-:::info
 
-**Name** must start with a letter or `_` and only contain `[a-zA-Z0-9-_.]`
+    <!-- TODO(SME): The push rule procedure names this dropdown **+ Create Rule**. Confirm the shipping label and use it consistently. -->
 
-:::
-5. In **Target Patterns**, specify branches covered by this rule according to branch name globstar patterns, such as `string`, `feature-*`, or `releases/**`. You can also select whether the rule should apply to the default branch (such as `main`). 
+4. Enter the rule **Name** and an optional **Description**.
 
-You have the option to include or exclude repositories when setting rules at the account, org, or project level. This allows you to fine-tune which repositories the rule applies to without forcing the rule across every repo. You can do this in two ways:
+    :::info
 
-- **By selecting specific repositories** (for example, `billing-api`, `web-frontend`).
-- **By using name patterns** (for example, `service-*`, `exp-*`).
+    **Name** must start with a letter or `_` and can contain only `[a-zA-Z0-9-_.]`.
 
-Includes and excludes can be mixed, and excludes take precedence when there’s overlap.  
-Examples:
-- Include by pattern: `service-*`
-- Include specific repos: `billing-api`, `web-frontend`
-- Exclude by pattern: `exp-*`
-- Exclude a specific repo: `playground`
+    :::
 
-6. In **Bypass List**, you can specify users, user groups, or service accounts who can bypass this rule.
-7. For each of the [**Rules**](#available-rules), select the rule you want to enable and provide additional specifications, if necessary. For example, if you select **Require a minimum number of reviewers**, you must specify the minimum number of reviewers.
+5. In **Target Patterns**, specify the branches this rule covers using branch name globstar patterns, such as `string`, `feature-*`, or `releases/**`. You can also select whether the rule applies to the default branch, such as `main`.
+
+    At the account, organization, or project level, you can also limit which repositories the rule applies to. Go to [Scope rules to specific repositories](#scope-rules-to-specific-repositories) to configure includes and excludes.
+
+6. In **Bypass List**, specify the users, user groups, or service accounts that can bypass this rule.
+7. For each of the [available branch rules](#available-branch-rules), select the rule you want to enable and provide any additional configuration. For example, if you select **Require a minimum number of reviewers**, you must specify the minimum number of reviewers.
 8. Select **Create Rule**.
 
-### Available rules
+### Available branch rules
 
-The following rules are available when adding branch rules. Some rules require additional configuration.
+The following rules are available when you add a branch rule. Some rules require additional configuration.
 
 | Rule | Additional configuration |
 | ---- | ------------------------ |
-| **Block branch creation** | This rule doesn't block users, groups, or service accounts in the **Bypass List**. |
-| **Block branch update** | This rule doesn't block users, groups, or service accounts in the **Bypass List**. |
-| **Block branch deletion** | This rule doesn't block users, groups, or service accounts in the **Bypass List**. |
-| **Block force push** | This rule doesn't block users, groups, or service accounts in the **Bypass List**. |
-| **Require pull request** | This rule doesn't block users, groups, or service accounts in the **Bypass List**. |
-| **Enable default reviewers** | Automatically assigns default reviewers to new pull requests. Optionally, enforce a minimum number of approvals from default reviewers before merging. [Details](/docs/code-repository/config-repos/rules#default-reviewer). |
+| **Block branch creation** | This rule does not block users, groups, or service accounts in the **Bypass List**. |
+| **Block branch update** | This rule does not block users, groups, or service accounts in the **Bypass List**. |
+| **Block branch deletion** | This rule does not block users, groups, or service accounts in the **Bypass List**. |
+| **Block force push** | This rule does not block users, groups, or service accounts in the **Bypass List**. |
+| **Require pull request** | This rule does not block users, groups, or service accounts in the **Bypass List**. |
+| **Enable default reviewers** | Automatically assigns default reviewers to new pull requests. Optionally, enforce a minimum number of approvals from default reviewers before merging. Go to [Default reviewers](#default-reviewers) to review the behavior. |
 | **Require a minimum number of reviewers** | You must specify the minimum number of reviewers. |
-| **Add Code Owners as reviewers** | This rule automatically adds relevant Code Owners as reviewers. |
-| **Require review from code owners** | This rule requires a [CODEOWNERS file](#codeowners) in your branches. If there is no CODEOWNERS file, Harness can't enforce the rule. |
-| **Require approval of new changes** | This rule requires that you *also* enable **Require a minimum number of reviewers** or **Require review from code owners** (or both). Without at least one of those additional rules, this rule has no effect. |
-| **Require resolution of change requests** | None. 
+| **Add Code Owners as reviewers** | This rule automatically adds relevant code owners as reviewers. |
+| **Require review from code owners** | This rule requires a `CODEOWNERS` file in your branches. If there is no `CODEOWNERS` file, Harness cannot enforce the rule. Go to [CODEOWNERS](#codeowners) to create one. |
+| **Require approval of new changes** | This rule requires that you *also* enable **Require a minimum number of reviewers** or **Require review from code owners**, or both. Without at least one of those rules, this rule has no effect. |
+| **Require resolution of change requests** | None. |
 | **Require comment resolution** | None. |
-| **Require status checks to pass** | You must specify the checks that must pass. Go to [Status checks from Harness pipelines](#status-checks-from-harness-pipelines) to learn how to make a pipeline appear in the dropdown. |
+| **Require status checks to pass** | You must specify the checks that must pass. Go to [Status checks from Harness pipelines](#status-checks-from-harness-pipelines) to make a pipeline appear in the dropdown. |
 | **Limit merge strategies** | You must select the allowed merge strategies. |
 | **Auto delete branch on merge** | None. |
 
 ### Status checks from Harness pipelines
 
-When you enable **Require status checks to pass**, the status check dropdown only lists checks that have already been emitted for the repository at least once.
+When you enable **Require status checks to pass**, the status check dropdown lists only the checks that the repository has already emitted at least once.
 
-For Harness pipelines, this means the pipeline must run from a **pull request event** before it appears as an available status check in the branch rule configuration.
+For Harness pipelines, the pipeline must run from a pull request event before it appears as an available status check in the branch rule configuration.
 
 If a pipeline does not appear in the status check dropdown, check the following:
 
-- **Default codebase:** The pipeline has a CI/Build stage configured with the Harness Code repository as the default codebase.
-- **PR webhook trigger:** The pipeline has a webhook trigger configured for pull request events, such as open, reopen, or update.
-- **At least one run:** The pipeline has been triggered at least once by opening or updating a pull request.
+- **Default codebase:** The pipeline has a CI or Build stage configured with the Harness Code repository as the default codebase.
+- **Pull request webhook trigger:** The pipeline has a webhook trigger configured for pull request events, such as open, reopen, or update.
+- **At least one run:** A pull request has triggered the pipeline at least once.
 - **Status check published:** The pipeline execution publishes a status check back to the repository.
 
-Manual executions, custom triggers, branch triggers, and tag triggers do not create the pull request status check entry required for branch rules.
+Manual executions, custom triggers, branch triggers, and tag triggers do not create the pull request status check entry that branch rules require.
 
-To make a Harness pipeline appear in the dropdown:
+To make a Harness pipeline appear in the dropdown, do the following:
+
 1. Configure the pipeline with the Harness Code repository as the default codebase.
 2. Add or update the pipeline trigger to listen for pull request events.
 3. Open or update a test pull request to trigger the pipeline.
 4. Wait for the pipeline execution to complete and publish its status check to the repository.
-5. Return to **Manage Repository** > **Rules** > **Require status checks to pass** and select the emitted status check.
+5. Return to **Manage Repository** > **Rules** > **Require status checks to pass**, then select the emitted status check.
 
-### Default Reviewer
+### Default reviewers
 
-Default reviewers can be configured as part of branch protection rules. When enabled, specified default reviewers are automatically assigned to new pull requests.
+You configure default reviewers as part of branch protection rules. When you enable **Enable default reviewers**, Harness automatically assigns the specified reviewers to new pull requests.
 
-<DocImage path={require('/docs/code-repository/config-repos/assets/default-reviewer1.png')} />
+<DocImage path={require('/docs/code-repository/config-repos/assets/default-reviewer1.png')} alt="Default reviewer configuration in the branch rule editor" title="Click to view full size" />
+<p align="center"><em>Select the users or user groups to assign automatically to new pull requests.</em></p>
 
-If a minimum number of approvals from default reviewers is required, the PR cannot be merged until at least that many approvals are received. This requirement is displayed in the Approvals section of the PR summary.
+If the rule requires a minimum number of approvals from default reviewers, the pull request cannot merge until it receives at least that many approvals. The Approvals section of the pull request summary displays this requirement.
 
-<DocImage path={require('/docs/code-repository/config-repos/assets/default-reviewer2.png')} />
+<DocImage path={require('/docs/code-repository/config-repos/assets/default-reviewer2.png')} alt="Approvals section of the pull request summary showing the default reviewer requirement" title="Click to view full size" />
+<p align="center"><em>The Approvals section shows how many default reviewer approvals remain outstanding.</em></p>
 
-Pull requests authored by a default reviewer will skip the required approval check if there aren’t enough remaining default reviewers to meet the condition. To enforce the approval requirement in such cases, consider adding more default reviewers.
+Pull requests authored by a default reviewer skip the required approval check if there are not enough remaining default reviewers to meet the condition. To enforce the approval requirement in these cases, add more default reviewers.
 
 :::warning
-Updating the rule does not retroactively assign reviewers to existing PRs—it only applies at the time of PR creation.
+Updating the rule does not retroactively assign reviewers to existing pull requests. The rule applies only at the time of pull request creation.
 :::
 
-## Add Tag Rules
+---
 
-Harness Code Repository supports **Tag Rules**, allowing you to enforce fine-grained control over Git tag operations — similar to branch protection rules, but specific to tags.
+## Tag rules
 
-You can restrict who can create, delete, or update tags, and apply rules to specific tag patterns.
+Tag rules enforce fine-grained control over Git tag operations, similar to branch protection rules but specific to tags. You can restrict who can create, delete, or update tags, and apply rules to specific tag patterns.
 
-To create a tag rule:
+### Add a tag rule
 
-1. Navigate to **Code Repository** → your repo.
+To create a tag rule, do the following:
+
+1. Navigate to **Code Repository**, then select your repository.
 2. In the left sidebar, select **Manage Repository**.
-3. Go to the **Rules** tab.
-4. Click the **+ Create Branch Rule** dropdown and select **+ Create Tag Rule**.
+3. Select the **Rules** tab.
+4. Click the **+ Create Branch Rule** dropdown, then select **+ Create Tag Rule**.
 
-### Create a Tag Rule
+### Tag rule fields
 
-After selecting **+ Create Tag Rule**, the rule editor appears:
+After you select **+ Create Tag Rule**, the rule editor appears. Configure the following fields.
 
 #### Enable
 
-Check this box to activate the rule.
+Select this checkbox to activate the rule.
 
-#### Name and Description
+#### Name and description
 
-* **Name**: A human-readable name for the rule.
-* **Description** (optional): Add context for this rule’s purpose.
+Identify the rule for the people who maintain it:
 
-#### Target Patterns
+- **Name:** A human readable name for the rule.
+- **Description:** Optional context for the purpose of this rule.
 
-* Define which tag patterns this rule applies to.
-* Use globstar-style matching (e.g.:
+#### Target patterns
 
-  * `v*` for all version tags,
-  * `release/**` for nested release tags).
-* You can include or exclude repositories when creating tag rules at the account, org, or project level. This makes it possible to scope rules precisely without forcing the rule across every repo. You can do this in two ways:
-  - **By selecting specific repositories** (for example, `billing-api`, `ui`).
-  - **By using name patterns** (for example, `prod-*`, `exp-*`).
-* Includes and excludes can be mixed, and excludes take precedence when they overlap.  
-  Examples:
-  - Include by pattern: `prod-*`
-  - Include specific repos: `billing-api`, `ui`
-  - Exclude by pattern: `exp-*`
-  - Exclude a specific repo: `playground`
+Define which tag patterns this rule applies to using globstar style matching:
 
-#### Rules: Select all that apply
+- `v*` matches all version tags.
+- `release/**` matches nested release tags.
+
+At the account, organization, or project level, you can also limit which repositories the rule applies to. Go to [Scope rules to specific repositories](#scope-rules-to-specific-repositories) to configure includes and excludes.
+
+#### Rules: select all that apply
 
 Choose which operations to restrict for tags matching the pattern:
 
-* **Block tag creation** – Restrict who can create matching tags.
-* **Block tag deletion** – Restrict who can delete matching tags.
-* **Block tag update** – Restrict who can update matching tags.
+- **Block tag creation:** Restrict who can create matching tags.
+- **Block tag deletion:** Restrict who can delete matching tags.
+- **Block tag update:** Restrict who can update matching tags.
 
-#### Bypass List
+#### Bypass list
 
-Allow specific users, user groups, or service accounts to bypass the rule. Only those listed will be able to perform restricted operations.
+Allow specific users, user groups, or service accounts to bypass the rule. Only the listed principals can perform the restricted operations.
 
-### Example: Prevent Accidental Release Tagging
+### Example: prevent accidental release tags
 
-If you want to prevent unapproved users from creating or deleting tags like `v1.0.0`, you could:
+To prevent unapproved users from creating or deleting tags such as `v1.0.0`, configure the following:
 
-* Target pattern: `v*`
-* Enable:
-  * Block tag creation
-  * Block tag deletion
-  * Block tag update
-* Add your CI service account to the bypass list
+- Target pattern: `v*`
+- Enable **Block tag creation**, **Block tag deletion**, and **Block tag update**
+- Add your CI service account to the bypass list
 
-## Add Push Rules
-:::info
+### Tips for tag rules
 
-This feature is only available in new UI and is behind feature flag `PL_UNIFIED_OPT_IN_ENABLED`.
+Keep the following in mind when you work with tag rules:
 
-:::
+- Use tag rules in combination with branch rules for comprehensive Git policy enforcement.
+- You can view all active tag rules in the **Rules** tab of the repository, under the **Tag** filter.
+- Harness enforces rules at the Git operation level. Users pushing from the Git CLI or through CI tools see a rejection message when a rule blocks the operation.
 
-Harness Code Repository supports **Push Rules**, allowing you to enforce fine-grained control over Git push operations.
+---
 
-To create a push rule:
+## Push rules
 
-1. Navigate to **Code Repository** → your repo.
+Push rules enforce fine-grained control over Git push operations.
+
+<!-- TODO(SME): Branch rules and tag rules both support Target Patterns. Confirm whether push rules support target patterns. If they do not, state that limitation here. -->
+
+### Add a push rule
+
+To create a push rule, do the following:
+
+1. Navigate to **Code Repository**, then select your repository.
 2. In the topbar, select **Settings**.
-3. Go to the **Rules** tab.
-4. Click the **+ Create Rule** dropdown and select **+ Create Push Rule**.
+3. Select the **Rules** tab.
+4. Click the **+ Create Rule** dropdown, then select **+ Create Push Rule**.
 
-### Create a Push Rule
+### Push rule fields
 
-After selecting **+ Create Push Rule**, the rule editor appears:
+After you select **+ Create Push Rule**, the rule editor appears. Configure the following fields.
 
 #### Enable
 
 Enable the toggle to activate the rule.
 
-#### Name and Description
+#### Name and description
 
-* **Name**: A human-readable name for the rule.
-* **Description** (optional): Add context for this rule’s purpose.
+Identify the rule for the people who maintain it:
 
-#### Rules: Select all that apply
+- **Name:** A human readable name for the rule.
+- **Description:** Optional context for the purpose of this rule.
 
-Choose which operations to restrict for references matching the pattern:
+#### Rules: select all that apply
 
-* **Secret scanning enabled** – Restrict users from pushing secrets.
-* **Verify committer identity** – Restrict users from pushing commits that don't match their harness identity.
-* **File size limit** – Restrict users from pushing files larger than the specified size (in Bytes).
+Choose which operations to restrict:
 
-#### Bypass List
+- **Secret scanning enabled:** Restrict users from pushing secrets.
+- **Verify committer identity:** Restrict users from pushing commits whose author does not match their Harness identity.
+- **File size limit:** Restrict users from pushing files larger than the specified size, in bytes.
 
-Allow specific users, user groups, or service accounts to bypass the rule. Only those listed will be able to perform restricted operations.
+<!-- TODO(SME): Each push rule needs detail a reader can act on: which secret types Secret scanning detects and where blocked pushes are surfaced; how a user resolves a committer identity mismatch; the maximum and default value for File size limit. -->
 
-### Tips
+#### Bypass list
 
-* Use tag rules in combination with **branch rules** for comprehensive Git policy enforcement.
-* You can view all active tag rules in the **Rules** tab of the repository, under the **Tag** filter.
-* Rules are enforced at the Git operation level — users pushing from Git CLI or through CI tools will see a rejection message if blocked.
+Allow specific users, user groups, or service accounts to bypass the rule. Only the listed principals can perform the restricted operations.
 
-### Repository Settings and Push Rules
+### Repository settings and push rules
 
-**Rules should be preferred over repository settings**, as **rules support overrides** and **will remain the supported mechanism** going forward.
+Prefer rules over repository settings. Rules support overrides and remain the supported mechanism going forward.
 
-However, if both settings and push rules are configured, the following behavior applies:
+When both settings and push rules are configured, the following behavior applies:
 
-**1. No settings and no push rules**
-
-If neither settings nor push rules are configured, default settings behavior applies.
-
-**2. Settings configured, push rules not configured**
-
-If settings are configured and push rules are not configured, settings are enforced.
-
-**3. Push rules configured, settings not configured**
-
-If push rules are configured and settings are not configured, push rules are enforced.
-
-**4. Both settings and push rules configured**
-
-If both settings and push rules define conditions, both must pass. All conditions defined in settings and all conditions defined in push rules must be satisfied.
+- **No settings and no push rules:** Default settings behavior applies.
+- **Settings configured, push rules not configured:** Harness enforces the settings.
+- **Push rules configured, settings not configured:** Harness enforces the push rules.
+- **Both settings and push rules configured:** Both must pass. Harness enforces all conditions defined in settings and all conditions defined in push rules.
 
 #### Override behavior
 
-If the same condition exists in both settings and push rules, and the push rule is overridden, the setting condition is still enforced. Therefore, the override may appear ineffective if the restriction also exists in settings.
+If the same condition exists in both settings and push rules, and you override the push rule, Harness still enforces the setting condition. The override can therefore appear ineffective when the restriction also exists in settings.
 
-## Toggle rules
+---
 
-You can toggle rules on and off.
+## Manage rules
 
-1. Go to your repository and select **Settings**.
+### Toggle a rule
+
+To turn a rule on or off, do the following:
+
+1. Go to your repository, then select **Settings**.
 2. Select the **Rules** tab.
-3. Select your rule. 
-4. Click the **Enable the rule** toggle at the top of the page to turn the rule on and off.
+3. Select your rule.
+4. Click the **Enable the rule** toggle at the top of the page.
 
-## Edit or delete rules
+### Edit or delete a rule
 
-1. Go to your repository and select **Settings**.
+To change or remove an existing rule, do the following:
+
+1. Go to your repository, then select **Settings**.
 2. Select the **Rules** tab.
-3. Locate the rule you want to edit or delete, select **More options**, and then select **Edit Rule** or **Delete Rule**.
+3. Locate the rule you want to change, select **More options**, then select **Edit Rule** or **Delete Rule**.
+
+---
 
 ## CODEOWNERS
 
-A CODEOWNERS file declares the users <!--and groups-->responsible for a repository or part of a repository. To use a `CODEOWNERS` file, create a new file named `CODEOWNERS` in one of the following locations in your repository:  
+A `CODEOWNERS` file declares the users and user groups responsible for a repository or part of a repository. To use a `CODEOWNERS` file, create a file named `CODEOWNERS` in one of the following locations in your repository:
 
-- `CODEOWNERS` (at the root level)  
-- `.harness/CODEOWNERS`  
+- `CODEOWNERS` at the root level
+- `.harness/CODEOWNERS`
 
-Harness Code recognizes CODEOWNERS in a repository if a CODEOWNERS file is present but does not automatically add them as reviewers. This prevents unnecessary notifications when changes affect files that don’t require review from all CODEOWNERS. To auto-add CODEOWNERS as reviewers, enable the **Add Code Owners as reviewers** rule.
+Harness Code recognizes code owners when a `CODEOWNERS` file is present, but does not automatically add them as reviewers. This behavior prevents unnecessary notifications when changes affect files that do not require review from all code owners. To add code owners as reviewers automatically, enable the **Add Code Owners as reviewers** branch rule.
 
 :::note
-Code Owners might not be automatically added as reviewers if the `CODEOWNERS` file contains syntax errors or invalid patterns. Make sure your file follows the correct format and resolves any errors to ensure proper reviewer assignment.
+Harness might not add code owners automatically as reviewers if the `CODEOWNERS` file contains syntax errors or invalid patterns. Make sure your file follows the correct format and resolve any errors to ensure proper reviewer assignment.
 :::
 
-You can still manually request reviews from specific CODEOWNERS. If a CODEOWNER voluntarily reviews a PR, Harness adds them as a reviewer for record-keeping, just like any other independent review. If the **Require review from code owners** branch rule is enabled, CODEOWNERS function as an approval policy—meaning a PR cannot be merged unless the changes have been approved by the required CODEOWNERS. This requirement is displayed in the Approvals section of the PR summary.
+You can still request reviews from specific code owners manually. If a code owner voluntarily reviews a pull request, Harness adds them as a reviewer for record keeping, in the same way as any other independent review. When the **Require review from code owners** branch rule is enabled, code owners function as an approval policy, so a pull request cannot merge until the required code owners approve the changes. The Approvals section of the pull request summary displays this requirement.
 
 ### CODEOWNERS syntax
 
-In your Harness Code CODEOWNERS file, you can assign code ownership to users and user groups within your Harness account, organizations, or projects.
+In your Harness Code `CODEOWNERS` file, you can assign code ownership to users and user groups within your Harness account, organizations, or projects.
+
+<!-- TODO(SME): The scope qualified syntax below (@accountId/orgId/projectId/name), the account ID lookup procedure, and the YAML example were commented out before 2026-05-21. Confirm whether the product removed this syntax or whether the documentation was suppressed, then restore or delete this block. -->
 
 <!--
 * Account: `@accountIdentifier/userOrGroupName`
@@ -298,39 +348,36 @@ pipeline:
 
 You could then declare a CODEOWNER at the project level with `@accountID/my_cool_org/my_cool_project/userOrGroupName`.
 
-You can get user and group names where you [manage user groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups) and [manage users](https://developer.harness.io/docs/platform/role-based-access-control/add-users).
+You can get user and group names where you [manage user groups](/docs/platform/role-based-access-control/add-user-groups) and [manage users](/docs/platform/role-based-access-control/add-users).
 -->
 
-You can declare CODEOWNERS using:
+You can declare code owners using either of the following:
 
 - The email address associated with a Harness user profile.
-- User groups at the **project**, **organization**, or **account** level.
+- User groups at the project, organization, or account level.
 
 For user groups, use the following formats:
 
-* Project-level user group: `@my_project_group`
-* Org-level user group:
-  * If the repo is at org level: `@org.my_org_group` or simply `@my_org_group`
-  * If the repo is at project level: you must use `@org.my_org_group`
-* Account-level user group: `@account.my_account_group`
+- **Project level user group:** `@my_project_group`
+- **Organization level user group:** Use `@org.my_org_group` or `@my_org_group` if the repository is at the organization level. If the repository is at the project level, you must use `@org.my_org_group`.
+- **Account level user group:** `@account.my_account_group`
 
-Both the long (`@org.my_org_group`) and short (`@my_org_group`) forms are supported, but the short form only works if the repo itself is at org level.
+Harness supports both the long form (`@org.my_org_group`) and the short form (`@my_org_group`), but the short form works only when the repository itself is at the organization level. Go to [Manage user groups](/docs/platform/role-based-access-control/add-user-groups) to create the groups you reference.
 
 :::note
-When a CODEOWNERS rule includes a user group, any member of that group can provide the required approval.
+When a `CODEOWNERS` rule includes a user group, any member of that group can provide the required approval.
 :::
 
-:::note Rule Precedence
-If there are multiple rules with the same pattern, the last matching rule takes precedence — only the final one is applied.
+:::note Rule precedence
+If multiple rules use the same pattern, the last matching rule takes precedence. Harness applies only the final rule.
 :::
 
-You can assign ownership to specific files, directories, or otherwise. Wildcards are allowed. For example, this CODEOWNERS file demonstrates different ways you can declare ownership.
+You can assign ownership to specific files, directories, or patterns. Wildcards are allowed. The following `CODEOWNERS` file demonstrates the different ways you can declare ownership:
 
-```
-Harness ---
-
+```text
 # Global owner
 * email
+
 # User groups at different scopes
 ** @dev-team @org.security-group @account.admins
 
@@ -347,5 +394,42 @@ WORKSPACE email
 # Wildcards
 **/src/** email
 *.lock email
-
 ```
+
+---
+
+## Troubleshooting
+
+<Troubleshoot
+  issue="Code owners are not added automatically as reviewers on a Harness Code Repository pull request"
+  mode="docs"
+  fallback="Enable the Add Code Owners as reviewers branch rule, and verify the CODEOWNERS file has no syntax errors or invalid patterns."
+/>
+
+<Troubleshoot
+  issue="A Harness pipeline does not appear in the Require status checks to pass dropdown in a Harness Code Repository branch rule"
+  mode="docs"
+  fallback="The pipeline must run from a pull request event at least once. Configure the Harness Code repository as the default codebase, add a pull request webhook trigger, then open or update a test pull request."
+/>
+
+<Troubleshoot
+  issue="A push to a Harness Code repository is still rejected even though the user is in the push rule bypass list"
+  mode="docs"
+  fallback="Repository settings are enforced independently of push rules. If the same restriction exists in repository settings, overriding the push rule does not remove it."
+/>
+
+<Troubleshoot
+  issue="The default reviewer approval requirement is skipped on a Harness Code Repository pull request"
+  mode="docs"
+  fallback="Pull requests authored by a default reviewer skip the check when too few remaining default reviewers exist to meet the minimum. Add more default reviewers."
+/>
+
+---
+
+## Next steps
+
+You have configured rules that govern how contributors change branches, tags, and pushes in your repository. You can now layer repository level security controls and pull request workflows on top of them.
+
+- [Enable security](/docs/code-repository/config-repos/security): Configure repository security settings and secret scanning.
+- [Sign commits](/docs/code-repository/work-in-repos/signing-commits): Verify commit authorship with GPG or SSH signing.
+- [Manage user groups](/docs/platform/role-based-access-control/add-user-groups): Create the groups you reference in bypass lists and `CODEOWNERS`.

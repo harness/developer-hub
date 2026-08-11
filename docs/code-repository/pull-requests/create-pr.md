@@ -19,7 +19,7 @@ Pull requests (PRs) foster collaboration within your team, ensuring code changes
 
 :::tip
 
-You can also create PRs by [comparing branches](../work-in-repos/branch.md#compare-branches-create-a-pr) and when [committing changes](../work-in-repos/commit.md#create-a-commit).
+You can also create PRs by [comparing branches](/docs/code-repository/work-in-repos/branch#compare-branches-to-create-a-pull-request) and when [committing changes](../work-in-repos/commit.md#create-a-commit).
 
 To create a PR from a [forked repository](../config-repos/fork-repo.md#create-a-pull-request-from-a-fork), use the repository selector in the compare view to choose between the fork and upstream repository.
 

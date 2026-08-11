@@ -1,62 +1,97 @@
 ---
-title: Overview & Key Concepts
-description: Learn about Harness Code Repository and essential concepts for source code management.
-sidebar_position: 11
+title: Overview and key concepts
 sidebar_label: Overview & Key Concepts
+description: Learn about Harness Code Repository and the source code management concepts it builds on.
+keywords:
+  - source code management
+  - SCM
+  - Git
+  - pull requests
+  - key concepts
+tags:
+  - code-repository
+  - get-started
+  - concepts
+sidebar_position: 11
 canonical_url: https://www.harness.io/harness-devops-academy/what-is-a-code-repository
 redirect_from:
   - /docs/code-repository/get-started/key-concepts
 ---
 
-The [Harness Code Repository module](/docs/code-repository/code-supported) (Code) is a source code management (SCM) tool that fosters developer collaboration and accelerates innovation while keeping security and compliance in mind. Harness Code seamlessly integrates Git-based repositories across your software delivery processes in Harness.
+The [Harness Code Repository module](/docs/code-repository/code-supported) (Code) is a source code management (SCM) tool that supports developer collaboration while keeping security and compliance in scope. Harness Code provides Git-based repositories with collaborative code reviews, checks, and rule enforcement, and integrates those repositories across your software delivery processes in Harness.
 
-Harness Code provides Git-based repositories with collaborative code reviews, checks, and rules enforcement to maintain code quality while reducing risk. It integrates seamlessly with other Harness modules to provide an end-to-end software delivery platform.
+This page explains the SCM concepts Harness Code builds on and how the module fits into the wider Harness Platform. It suits readers who are new to Git-based version control as well as readers moving from another SCM tool.
 
-Whether you're new to Git-based version control or experienced with other SCM tools, this guide will help you understand the core concepts and capabilities of Harness Code.
+---
+
+## What you will learn
+
+- **Source code management:** What version control is and what an SCM tool provides beyond Git itself.
+- **Git fundamentals:** The clone, branch, commit, merge, and tag model that Harness Code repositories use.
+- **Pull requests:** How pull requests package commits for review, approval, and merge.
+- **Platform integration:** How repositories relate to Harness projects, pipelines, and role-based access control.
+
+---
 
 ## Source code management
 
-Harness Code is a source code management (SCM) tool. SCM tools are used for [**version control**](https://en.wikipedia.org/wiki/Version_control) or **source control**, which is a software engineering practice that facilitates collaboration and maintenance of code bases. Version control practices help maintain change history, resolve conflicts when multiple people work on the same file, and stage changes for future releases or separate projects. SCM tools often provide mechanism to facilitate peer reviews, approvals, and rollbacks.
+Harness Code is a source code management tool. SCM tools provide [version control](https://en.wikipedia.org/wiki/Version_control), also called source control, which is the engineering practice of tracking and coordinating changes to a codebase. Version control maintains change history, resolves conflicts when several people edit the same file, and stages changes for future releases or separate projects. SCM tools add mechanisms for peer review, approval, and rollback on top of that history.
 
-### Git: Clone, branch, merge, commit, tag, and more
+### Git concepts
 
-Harness Code provides Git-based repositories. [Git](https://en.wikipedia.org/wiki/Git) is a version control tool characterized by concepts such as cloning, branching, committing, and merging. If you aren't familiar with these concepts, there are many tutorials, courses, and videos online that can introduce you to the basics of Git-based version control, in addition to the complete [Git SCM documentation](https://git-scm.com/doc).
+Harness Code provides Git-based repositories. [Git](https://en.wikipedia.org/wiki/Git) is a version control tool built around cloning, branching, committing, and merging. Go to the [Git SCM documentation](https://git-scm.com/doc) to learn these fundamentals if they are new to you.
 
 ### Pull requests
 
-While pull requests (PRs) aren't a feature of Git itself, they are often, if not always, a feature of SCM tools. Pull requests facilitate reviews by gathering a series of commits into a package that can be reviewed, approved, and then merged into the base branch.
+Pull requests are not a feature of Git itself, but they are a feature of nearly every SCM tool. A pull request gathers a series of commits into a package that reviewers can inspect, approve, and merge into the base branch.
 
-You can assign reviewers to pull requests and configure mandatory requirements or checks that must pass before the PR can be merged.
+You can assign reviewers to a pull request and configure mandatory requirements or checks that must pass before the pull request can merge. Go to [Rules](/docs/code-repository/config-repos/rules) to configure those requirements.
+
+---
 
 ## Harness Platform integration
 
-Harness Code integrates with other Harness modules and uses components that are common to the Harness Platform. For more information about Harness Platform terminology and concepts, go to [Harness key concepts](/docs/platform/get-started/key-concepts).
+Harness Code uses components that are common to the Harness Platform and integrates with other Harness modules. Go to [Harness key concepts](/docs/platform/get-started/key-concepts) to review Platform terminology.
 
 ### Pipelines
 
+A pipeline is an end-to-end workflow that, for example, pulls code from a codebase, builds an artifact, runs tests or other actions against the artifact or code, and then uploads or deploys the artifact to storage or a container registry.
+
 You can use [triggers](/docs/code-repository/pipelines/code-triggers) to run Harness pipelines in response to push events in your Harness Code repositories.
 
-A pipeline is an end-to-end workflow that, for example, pulls code from a codebase, builds an artifact, runs tests or other actions on the artifact or code, and then uploads or deploys the artifact to storage or a container registry.
+Go to the following pages to review pipeline concepts in each module:
 
-To learn more about CI and CD pipelines go to:
-
-* [CI key concepts](/docs/continuous-integration/get-started/key-concepts)
-* [CD key concepts](/docs/continuous-delivery/overview#key-concepts)
+- [CI key concepts](/docs/continuous-integration/get-started/key-concepts): Build and test pipeline concepts.
+- [CD key concepts](/docs/continuous-delivery/overview#key-concepts): Deployment pipeline concepts.
 
 ### Projects
 
-Repositories you create in Harness Code each belong to a [Harness project](/docs/platform/get-started/key-concepts#organizations-and-projects). This provides a measure of access control for your repositories.
+Every repository you create in Harness Code belongs to a [Harness project](/docs/platform/get-started/key-concepts#organizations-and-projects). The project boundary provides the first layer of access control for your repositories.
 
 ### Access control
 
-Access control for Harness Code is part of the [Harness Platform RBAC](/docs/platform/role-based-access-control/rbac-in-harness). Permissions for Harness Code include the ability to view, create/edit, delete, and push to repositories.
+Access control for Harness Code is part of [Harness Platform RBAC](/docs/platform/role-based-access-control/rbac-in-harness). The **Repository** resource supports the following permissions:
 
-Harness Code includes one [built-in role](/docs/platform/role-based-access-control/add-manage-roles), which is the **Code Admin** role.
+- **View:** Read repository contents.
+- **Review:** Review pull requests.
+- **Edit:** Change repository configuration and settings.
+- **Create:** Create repositories in the scope.
+- **Delete:** Delete repositories.
+- **Push:** Push commits to repositories.
+- **Report Commit Check:** Publish a commit status check back to a repository.
 
-## Next steps
+Go to the [permissions reference](/docs/platform/role-based-access-control/permissions-reference#code-repository) to review the permission identifiers, and to [Manage roles](/docs/platform/role-based-access-control/add-manage-roles) to assign them.
 
-Now that you understand the key concepts, you're ready to start using Harness Code.
+Harness Code includes a built-in **Code Admin** role.
 
-- [Get Started with Harness Code](/docs/code-repository/get-started/onboarding-guide)
-- [Supported features and functionality](/docs/code-repository/code-supported)
-- [Harness Code API reference](https://apidocs.harness.io/tag/repository)
+<!-- TODO(SME): Confirm that Code Admin is still the only built-in role shipped with Harness Code Repository, and state which of the seven Repository permissions it grants. -->
+
+---
+
+## Related concepts
+
+Now that you understand the key concepts, you are ready to start using Harness Code.
+
+- [Get started with Harness Code](/docs/code-repository/get-started/onboarding-guide): Set up repositories, access, and pipelines.
+- [Supported features and functionality](/docs/code-repository/code-supported): Review what Harness Code supports today.
+- [Harness Code API reference](https://apidocs.harness.io/tag/repository): Automate repository management.

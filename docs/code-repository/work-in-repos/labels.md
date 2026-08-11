@@ -1,68 +1,138 @@
 ---
 title: Labels
-description: Create and manage Labels in Harness Code.
+sidebar_label: Labels
+description: Create, scope, and apply labels to categorize and filter pull requests in Harness Code Repository.
+keywords:
+  - labels
+  - pull requests
+  - filtering
+  - label values
+tags:
+  - code-repository
+  - work-in-repos
+  - pull-requests
 sidebar_position: 41
 ---
 
-Labels are a way to categorize and filter Pull Requests in Harness Code. Labels are essential for organizing work and improving collaboration within teams.
+import { Troubleshoot } from '@site/src/components/AdaptiveAIContent';
 
-* Categorize items using simple terms such as `bug` , `feature request`, or `docs`.
-* Communicate priority or severity of items with name value pairs like `priority: urgent` or `priority: low`.
-* Quickly identify the team who owns the pull request with labels like `team: frontend` or `team: backend`.
-* Dynamically filter and manage pull requests in a large list.
+Labels categorize and filter pull requests in Harness Code Repository. Use them to organize work and make ownership and priority visible in a long pull request list.
 
-If you are looking for release tags, go to [Tags](/docs/code-repository/work-in-repos/tag)
+Labels support several patterns:
 
-## Types of Labels
+- **Simple categories:** Terms such as `bug`, `feature request`, or `docs`.
+- **Priority or severity:** Name and value pairs such as `priority: urgent` or `priority: low`.
+- **Ownership:** Labels such as `team: frontend` or `team: backend` that identify who owns the pull request.
+- **Filtering:** Any label can narrow a large pull request list.
 
-All labels in Harness Code are customizable and can be created or modified to fit the specific needs of your project or team. Labels may be simple text values such as `Do not Merge` or include enumerated values like `status: in progress`, `status: completed`, or `status: blocked`. The list of values for a label may be limited to a pre-defined set, or users may be allowed to add new values as needed.
+If you are looking for release tags rather than labels, go to [Tag](/docs/code-repository/work-in-repos/tag).
 
-# Create a label
+---
 
-Labels, and their values, may be defined at various scopes within Harness Code. Labels can be created at the repository level, project level or even at the organization or account level, depending on your needs and permissions. Labels defined at the repository level will only apply to that specific repository, while project-level labels can be shared across multiple repositories within the same project. Organization-level labels are accessible across all projects and repositories within the organization. Labels created at the Account level are global to the account and available for every user, providing a consistent labeling system.
+## Before you begin
 
-##### Create a repository scoped label
-1. Go to **Settings** inside your specified repository
-2. Click **Labels**
-3. Click **+ Create Label**
+- **Label permissions:** You need create and edit permission for Harness Code at the scope where you want the label to exist. Go to the [permissions reference](/docs/platform/role-based-access-control/permissions-reference#code-repository) to review the permission list, and to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) to configure roles. If you lack the required permissions, ask your administrator to grant access or to create the label for you.
 
-##### Create a label at project, organization, or account scope
+    <!-- TODO(SME): Name the specific permission required to create a label at each scope. "Create/edit permission for Harness Code" does not map to a single entry in the permissions reference, which lists View, Review, Edit, Create, Delete, Push, and Report Commit Check on the Repository resource. -->
+
+---
+
+## Types of labels
+
+All labels in Harness Code are customizable, and you can create or modify them to fit your project or team.
+
+A label can be a simple text value such as `Do not Merge`, or it can carry enumerated values such as `status: in progress`, `status: completed`, or `status: blocked`. You can limit a label to a predefined set of values, or allow users to add new values when they apply it.
+
+---
+
+## Create a label
+
+You can define labels and their values at several scopes. The scope determines where the label is available:
+
+| Scope | Availability |
+| --- | --- |
+| Repository | That repository only. |
+| Project | Every repository in the project. |
+| Organization | Every project and repository in the organization. |
+| Account | Every repository in the account, for every user. |
+
+:::tip
+
+Create labels at the highest scope that makes sense, so they stay reusable across projects and repositories.
+
+:::
+
+### Create a repository scoped label
+
+To create a label for a single repository, do the following:
+
+1. Go to **Settings** in the repository.
+2. Click **Labels**.
+3. Click **+ Create Label**.
+
+### Create a label at project, organization, or account scope
+
+To create a label that spans repositories, do the following:
+
 1. In the Code Repository module, go to **Manage Repositories**.
-2. Click **Labels**
-3. Click **+ Create Label**
+2. Click **Labels**.
+3. Click **+ Create Label**.
 
-:::tip 
+<!-- TODO(SME): Both procedures stop at "+ Create Label" without documenting the create dialog itself: the name field, the description field, the color picker, and the checkbox that allows users to add values. Document the dialog fields so a reader can finish the task. -->
 
-Create labels at the highest scope possible to make them reusable across multiple projects and repositories.
+### Add a value to a label
 
-:::
+When you create a label, you can define a list of allowed values that users select from when they apply it. Each value can carry its own color, so `priority: urgent` can render red and `priority: low` can render green.
 
-:::info Permissions
+### Allow users to add values
 
-To create a label, you must have the appropriate permissions set at the desired scope. 
-Ensure that you have create/edit permission for Harness Code at the repository, project, organization, or account level. If you lack the required permissions, you may need to contact your administrator to gain access or request the creation of labels. 
+You can permit users to add new values to an existing label, so a labeling system can evolve with the project. Select the option to allow new values when you create or edit the label.
 
-:::
+Every value a user adds joins the label definition and becomes available whenever that label is applied.
 
-## Add a value to a label
+---
 
-When creating a label, you can optionally define a list of allowed values that users can select from when applying the label. Each value can be a different color to help visually distinguish it, e.g., red for `priority: urgent` and green for `priority: low`.
+## Apply a label to a pull request
 
-## Allow users to add values
+You apply labels when you create or edit a pull request. Any user with permission to create or review a pull request can add, remove, or update labels and values on it, and every change is recorded in the pull request activity.
 
-Users can be granted permission to add new values to existing labels. This flexibility allows teams to adapt their labeling system as project requirements evolve. Simply check the box to allow users to add new values to labels when applying them. 
+- **Simple labels:** Start typing, then select the label.
+- **Labels with values:** Find the label, then choose a value. A pull request can carry only one value per label.
 
-All values added by users are added to the label definition and become available options whenever this label is applied.
+Labels appear in the pull request list, so anyone who can view a pull request can see its labels.
 
-# Apply a label to a pull request.
+### Add a new value when applying a label
 
-Labels are applied to pull requests when creating or editing them. Any user who has permission to create or review a pull request may add, remove, or update labels and values on a pull request. Any change to a label or value will be recorded in the pull request's activity.
+If a label allows custom values, select the option to add a new value and enter it in the input field. The new value joins the label definition.
 
-For simple labels, start typing and select the desired label.  For labels with several values, find the desired label and choose the appropriate value. Only one value for a specific label can be applied to a pull request.
+---
 
-Labels are visible in the list of pull requests so anyone who can view the pull request can see the applied labels.
+## Troubleshooting
 
-## Add a new value for a label
+<Troubleshoot
+  issue="The + Create Label option is unavailable in Harness Code Repository settings"
+  mode="docs"
+  fallback="Creating a label requires create and edit permission at the scope you are working in. Ask an administrator to assign a role that includes it at the repository, project, organization, or account level."
+/>
 
-If a label allows custom values to be added when applying the label, users can select the option to add a new value and submit a new value in the input field for inclusion in the label's definition.
+<Troubleshoot
+  issue="A label created at organization or account scope does not appear on a Harness Code pull request"
+  mode="docs"
+  fallback="Confirm the pull request repository sits inside the scope where the label was defined. A repository-scoped label is not visible to other repositories."
+/>
 
+<Troubleshoot
+  issue="A user cannot add a new value to an existing label in Harness Code"
+  mode="docs"
+  fallback="The label must be configured to allow users to add values. Edit the label and select the option that permits new values."
+/>
+
+---
+
+## Next steps
+
+You can now categorize pull requests consistently and filter a long list down to the work that matters.
+
+- [PR Dashboard](/docs/code-repository/pull-requests/prs-of-interest): Filter pull requests by label across account, organization, and project scope.
+- [Create a pull request](/docs/code-repository/pull-requests/create-pr): Apply labels as you open a pull request.
+- [Tag](/docs/code-repository/work-in-repos/tag): Use Git tags for releases rather than labels.
