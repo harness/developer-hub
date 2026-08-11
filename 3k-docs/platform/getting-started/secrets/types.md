@@ -40,17 +40,6 @@ Text secrets store inline string values such as passwords, tokens, and API keys.
 # Value: S3cur3P@ssw0rd!2026
 ```
 
-```yaml title="ssh-key-text-example.yaml"
-# SSH Private Key as Text
-# Type: SecretText
-# Name: Deploy SSH Key
-# ID: deploy_ssh_key
-# Value: (PEM-encoded private key content)
-# -----BEGIN OPENSSH PRIVATE KEY-----
-# b3BlbnNzaC1rZXktdjEAAAAA...
-# -----END OPENSSH PRIVATE KEY-----
-```
-
 ```yaml title="multiline-config-example.yaml"
 # Multi-line Configuration Value
 # Type: SecretText
