@@ -33,7 +33,7 @@ To enable Harness Artifact Registry in your account, contact your sales represen
 Harness Artifact Registry supports a variety of registry types, and new ones are often added. We currently support the registry types listed below.
 
 ### Supported registry types
-These are the currently supported registry types.
+Artifact Registry supports the following registry types:
 - **Docker:** Your go-to for container images.
 - **Helm:** Perfect for managing Kubernetes applications.
 - **Generic:** Flexible for all your needs.
@@ -54,6 +54,7 @@ These are the currently supported registry types.
 - **Hugging Face:** Machine learning models and datasets.
 - **Conda:** Python and R packages with Anaconda-compatible workflows.
 - **Puppet:** Puppet Forge-compatible modules with `r10k` support.
+- **Terraform:** Infrastructure as Code modules and providers for cloud provisioning.
 
 ### Coming soon
 

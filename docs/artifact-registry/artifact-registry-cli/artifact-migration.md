@@ -62,6 +62,7 @@ The migration tool supports the following artifact types:
 | `CONDA` | Conda packages |
 | `COMPOSER` | Composer (PHP) packages |
 | `SWIFT` | Swift packages |
+| `TERRAFORM` | Terraform modules and providers |
 
 ### Configuration structure
 

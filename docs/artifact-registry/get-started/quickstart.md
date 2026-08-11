@@ -127,6 +127,11 @@ Select your artifact format below to get started:
       path: "/artifact-registry/content/supported-formats/puppet-quickstart.md",
       logo: "puppet-logo.svg",
       logoSize: 24
+    },
+    Terraform: {
+      path: "/artifact-registry/content/supported-formats/terraform-quickstart.md",
+      logo: "terraform-logo.svg",
+      logoSize: 24
     }
   }}
   disableSort={true}
