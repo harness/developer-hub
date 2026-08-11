@@ -46,7 +46,18 @@ An upstream proxy allows your registry to fetch PHP Composer packages from exter
 
 1. In the Artifact Registry module, click the dropdown next to **New Artifact Registry** and select **Upstream Proxy**.
 2. Choose **PHP Composer Registry** as the proxy type.
-3. Click **Create Proxy** to establish the connection.
+3. Enter an **Upstream Proxy Key**.
+4. Select your **Source**:
+    - Packagist
+    - Custom
+5. If you select **Custom**, enter your **Remote Registry URL**.
+
+:::info v1 repository support
+If you are using a Composer v1 repository, select the **Source** as **Custom**, and then in the **Remote Registry URL** field, enter your v1 repository URL.
+:::
+
+6. Choose your **Authentication** method (Anonymous by default for public registries).
+7. Click **Create Upstream Proxy** to establish the connection.
 
 <h3> Configure the upstream proxy in your registry </h3>
 
