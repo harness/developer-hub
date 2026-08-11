@@ -1,13 +1,11 @@
 ---
 title: Developer Productivity Agents
 sidebar_label: Developer Productivity
-description: AI-powered agents for feature flag cleanup, framework upgrades, and repository onboarding — automating common engineering workflows that are tedious and time-consuming.
+description: AI-powered agents for feature flag cleanup, framework upgrades, and repository onboarding, automating common engineering workflows that are tedious and time-consuming.
 sidebar_position: 4
 ---
 
 Harness Developer Productivity agents automate common engineering workflows that are tedious and time-consuming. The Feature Flag Cleanup agent removes stale flags from codebases, the React Upgrade agent handles framework upgrades with custom prompts, and the Onboarding agent imports repositories and auto-generates CI pipelines.
-
----
 
 ## Feature Flag Cleanup Agent
 
@@ -15,11 +13,11 @@ The Feature Flag Cleanup agent removes stale feature flags from codebases. Given
 
 ### How it works
 
-1. **Task Generation** — Generates a detailed cleanup prompt based on the flag name and desired treatment
-2. **Code Analysis** — Claude AI (up to 50 iterations) scans the codebase for all flag references
-3. **Flag Removal** — Removes flag evaluations, keeping only the code path for the selected treatment
-4. **Cleanup** — Removes unused imports, variables, and dead code left by flag removal
-5. **Draft PR** — Pushes changes and creates a draft PR via the Harness Code API
+1. **Task Generation**: Generates a detailed cleanup prompt based on the flag name and desired treatment.
+2. **Code Analysis**: Claude AI (up to 50 iterations) scans the codebase for all flag references.
+3. **Flag Removal**: Removes flag evaluations, keeping only the code path for the selected treatment.
+4. **Cleanup**: Removes unused imports, variables, and dead code left by flag removal.
+5. **Draft PR**: Pushes changes and creates a draft PR via the Harness Code API.
 
 ### Key inputs
 
@@ -34,10 +32,10 @@ The Feature Flag Cleanup agent removes stale feature flags from codebases. Given
 
 ### Output artifacts
 
-- `branch.txt` — Name of the created branch
-- `commit.txt` — Commit SHA of the changes
-- `pr_title.txt` — AI-generated PR title
-- `pr_description.txt` — AI-generated PR description
+- `branch.txt`: Name of the created branch
+- `commit.txt`: Commit SHA of the changes
+- `pr_title.txt`: AI-generated PR title
+- `pr_description.txt`: AI-generated PR description
 
 ### Pipeline configuration
 
@@ -115,11 +113,9 @@ pipeline:
 The Feature Flag Cleanup agent creates draft PRs so your team can review the changes before merging. It generates both a PR title and description using AI, making the review process easy to understand.
 :::
 
----
-
 ## React Upgrade Agent
 
-The React Upgrade agent automates React version upgrades and code modifications using custom prompts. Despite its name, it's the most flexible agent — it accepts any free-form prompt, making it suitable for framework upgrades, refactoring, dependency updates, and performance optimization.
+The React Upgrade agent automates React version upgrades and code modifications using custom prompts. Despite its name, it's the most flexible agent; it accepts any free-form prompt, making it suitable for framework upgrades, refactoring, dependency updates, and performance optimization.
 
 ### Use cases
 
@@ -227,23 +223,21 @@ pipeline:
 The React Upgrade agent uses up to 300 AI iterations and creates branches with timestamps (e.g., `react-upgrade-code-agent-1706123456`) to avoid conflicts when running multiple upgrades.
 :::
 
----
-
 ## Onboarding Agent
 
 The Onboarding agent streamlines repository setup in Harness. It imports repositories from GitHub into Harness Code, analyzes the repo structure to detect technologies and build commands, and auto-generates a CI pipeline tailored to the project.
 
 ### How it works
 
-1. **Repository Import** — Clones the source repository from GitHub and imports it into Harness Code
-2. **Technology Detection** — Claude Sonnet analyzes the repo structure (languages, frameworks, build tools, dependencies)
-3. **Pipeline Generation** — Claude Opus generates a complete CI pipeline based on the detected technology stack
-4. **Pipeline Creation** — The generated pipeline is created in Harness via the API
+1. **Repository Import**: Clones the source repository from GitHub and imports it into Harness Code.
+2. **Technology Detection**: Claude Sonnet analyzes the repo structure (languages, frameworks, build tools, dependencies).
+3. **Pipeline Generation**: Claude Opus generates a complete CI pipeline based on the detected technology stack.
+4. **Pipeline Creation**: The generated pipeline is created in Harness via the API.
 
 ### Unique architecture
 
 - Uses two different Claude models: Sonnet for fast analysis, Opus for high-quality pipeline generation
-- No clone step in the pipeline — the agent container itself handles repository cloning
+- No clone step in the pipeline; the agent container itself handles repository cloning
 - Runs on `linux/amd64` platform (unlike most agents that use `arm64`)
 
 ### Key inputs

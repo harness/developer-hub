@@ -65,7 +65,7 @@ The AI Assistant currently focuses on pipeline workflows with integrations into 
 | Capability | Status | Description |
 |---|---|---|
 | **Pipeline Operations** | Supported | Create new pipelines and update existing pipeline configurations via the DevOps Agent. This is the primary write operation currently available. |
-| **Read Operation Queries** | Supported | Query any Harness resource — list pipelines, inspect execution details, view connector configurations, check service definitions, and more. |
+| **Read Operation Queries** | Supported | Query any Harness resource; list pipelines, inspect execution details, view connector configurations, check service definitions, and more. |
 | **Knowledge Graph** | Integrated | Connects to the Harness Knowledge Graph to answer questions about platform concepts, configuration syntax, best practices, and troubleshooting guidance. |
 | **Dashboard Agent** | Integrated | Retrieves analytics and metrics from Harness dashboards. Can also create new dashboards, create widgets within dashboards, and answer questions about build trends, deployment frequency, failure rates, and other operational data. |
 | **Other Resource Mutations** | Coming Soon | Create/update operations for secrets, services, environments, connectors, and other Harness resources. |
@@ -85,7 +85,7 @@ The AI Assistant can perform actions through two channels: Unified Chat (Sonnet 
 | Action | Channel | Details |
 |---|---|---|
 | **Create Pipelines** | DevOps Agent | Generate new v1 pipeline YAML from natural language descriptions. The agent produces valid pipeline configurations using the v1 schema. |
-| **Update Pipelines** | DevOps Agent | Modify existing pipeline configurations — add stages, update steps, change triggers, adjust inputs and environment variables. |
+| **Update Pipelines** | DevOps Agent | Modify existing pipeline configurations; add stages, update steps, change triggers, adjust inputs and environment variables. |
 | **Read Queries** | Unified Chat | Query any Harness resource: list pipelines, view execution history, inspect connectors, check service definitions, review environment configurations, and more. |
 | **Knowledge Graph Lookup** | Unified Chat | Search Harness platform knowledge for concepts, configuration syntax, expression references, best practices, and troubleshooting guidance. |
 | **Dashboard Analytics** | Unified Chat | Query the Dashboard Agent for build metrics, deployment frequency, failure rates, DORA metrics, and other operational analytics. Can also create new dashboards and add widgets to existing dashboards. |

@@ -1,13 +1,11 @@
 ---
 title: Managing Secrets
 sidebar_label: Managing Secrets
-description: Create, use, rotate, and manage secrets throughout their lifecycle — including UI workflows, pipeline usage, API access, and Terraform automation.
+description: Create, use, rotate, and manage secrets throughout their lifecycle, including UI workflows, pipeline usage, API access, and Terraform automation.
 sidebar_position: 3
 ---
 
 Create, use, rotate, and manage secrets throughout their lifecycle. This guide covers the complete set of operations for working with secrets in Harness 3.0, including UI workflows, pipeline usage, API access, and Terraform automation.
-
----
 
 ## Create secrets
 
@@ -33,7 +31,7 @@ Secrets can be referenced in multiple contexts within your pipeline configuratio
 
 ### In connector configuration
 
-```yaml title="connector-secret.yaml"
+```yaml title="connector-secret.yaml" showLineNumbers {12}
 version: 1
 kind: connector
 spec:
@@ -50,7 +48,7 @@ spec:
 
 ### In pipeline variables
 
-```yaml title="pipeline-variables.yaml"
+```yaml title="pipeline-variables.yaml" showLineNumbers {6,9}
 pipeline:
   name: Deploy Application
   variables:
@@ -72,7 +70,7 @@ pipeline:
 
 ### In shell scripts
 
-```bash title="shell-script-step.sh"
+```bash title="shell-script-step.sh" showLineNumbers {3,5}
 #!/bin/bash
 # Secret values are resolved before script execution
 export API_KEY=<+secrets.getValue("api_key")>
@@ -90,7 +88,7 @@ psql "host=$DB_HOST user=deploy password=$DB_PASS dbname=app" \
 
 ### In service definitions
 
-```yaml title="service-definition.yaml"
+```yaml title="service-definition.yaml" showLineNumbers {22}
 version: 1
 kind: service
 spec:
@@ -121,7 +119,7 @@ spec:
 
 File secrets require base64 decoding when used in shell scripts:
 
-```bash title="file-secret-usage.sh"
+```bash title="file-secret-usage.sh" showLineNumbers {3,9}
 #!/bin/bash
 # Retrieve and decode a file secret (e.g., GCP service account key)
 echo '<+secrets.getValue("gcp_sa_key")>' | base64 -d > /tmp/sa-key.json
@@ -192,9 +190,9 @@ Sort the secrets list by Name, Last Modified, Type, or References count. Click a
 
 Click on a secret to open its details view. The details page has three tabs:
 
-- **Configuration** — View and edit the secret name, identifier, description, tags, and secret manager. The value is never displayed.
-- **References** — See all pipelines, connectors, and services that reference this secret, with direct links to each entity.
-- **Activity** — View the complete audit trail including creation, modification, access events, and the user who performed each action.
+- **Configuration**: View and edit the secret name, identifier, description, tags, and secret manager. The value is never displayed.
+- **References**: See all pipelines, connectors, and services that reference this secret, with direct links to each entity.
+- **Activity**: View the complete audit trail including creation, modification, access events, and the user who performed each action.
 
 ---
 
@@ -208,10 +206,8 @@ Before deleting a secret, verify that it is not referenced by any active pipelin
 4. Confirm the deletion in the dialog. This action cannot be undone.
 
 :::warning Safe Deletion Practice
-Always check the **References** tab before deleting a secret. Harness will warn you if the secret has active references, but it will not prevent deletion — the referencing resources will fail at execution time.
+Always check the **References** tab before deleting a secret. Harness will warn you if the secret has active references, but it will not prevent deletion; the referencing resources will fail at execution time.
 :::
-
----
 
 ## API and automation
 
@@ -219,9 +215,11 @@ Harness provides a REST API and Terraform provider for automating secret managem
 
 ### REST API
 
-All requests require an API key with appropriate permissions. Base URL: `https://app.harness.io/gateway/ng/api/v2/secrets`
+All requests require an API key with appropriate permissions. 
 
-```bash title="list-secrets.sh"
+- **Base URL**: `https://app.harness.io/gateway/ng/api/v2/secrets`
+
+```bash title="list-secrets.http"
 # List secrets
 curl -X GET \
   "https://app.harness.io/gateway/ng/api/v2/secrets?accountIdentifier=abc123&projectIdentifier=myproject" \
@@ -229,7 +227,7 @@ curl -X GET \
   -H "Content-Type: application/json"
 ```
 
-```bash title="create-secret.sh"
+```bash title="create-secret.http"
 # Create a text secret
 curl -X POST \
   "https://app.harness.io/gateway/ng/api/v2/secrets?accountIdentifier=abc123" \
@@ -251,7 +249,7 @@ curl -X POST \
   }'
 ```
 
-```bash title="update-secret.sh"
+```bash title="update-secret.http"
 # Update a text secret value
 curl -X PUT \
   "https://app.harness.io/gateway/ng/api/v2/secrets/my_api_key?accountIdentifier=abc123" \
@@ -273,7 +271,7 @@ curl -X PUT \
   }'
 ```
 
-```bash title="delete-secret.sh"
+```bash title="delete-secret.http"
 # Delete a secret
 curl -X DELETE \
   "https://app.harness.io/gateway/ng/api/v2/secrets/my_api_key?accountIdentifier=abc123&projectIdentifier=myproject" \

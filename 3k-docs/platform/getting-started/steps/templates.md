@@ -1,7 +1,7 @@
 ---
 title: Step Template Guide
 sidebar_label: Step Templates
-description: A comprehensive guide for adding new step templates to the Harness Template Library — from non-technical overview to full technical schema reference.
+description: A comprehensive guide for adding new step templates to the Harness Template Library; from non-technical overview to full technical schema reference.
 sidebar_position: 7
 ---
 
@@ -279,7 +279,7 @@ layout:
       - skip_verification
 ```
 
-Layout rules: required fields **without** defaults appear at the top level; fields **with** defaults go in "Optional Configuration" — even if marked `required: true`; use a single "Optional Configuration" accordion section; non-boolean fields come before boolean fields within the section; maximum one level of nesting; only create subsections when there are 4 or more related fields.
+Layout rules: required fields **without** defaults appear at the top level; fields **with** defaults go in "Optional Configuration"; even if marked `required: true`; use a single "Optional Configuration" accordion section; non-boolean fields come before boolean fields within the section; maximum one level of nesting; only create subsections when there are 4 or more related fields.
 
 For complex templates with many optional fields:
 
@@ -663,7 +663,7 @@ Write Kubernetes not k8s, Elastic Container Service not just ECS, Elastic Comput
 ### Boolean input rules
 
 :::warning Boolean Rules
-Never use `component: boolean-card-select` or `component: boolean-card-switch`. Boolean inputs use the default component — do not specify any `component` value. Labels must **NOT** start with "Is".
+Never use `component: boolean-card-select` or `component: boolean-card-switch`. Boolean inputs use the default component; do not specify any `component` value. Labels must **NOT** start with "Is".
 :::
 
 ```yaml title="correct-boolean.yaml"
@@ -1088,8 +1088,6 @@ Use this checklist before submitting a pull request with a new or updated step t
 - ✓ No trailing whitespace
 - ✓ File ends with a newline
 
----
-
 ## Appendix: Available icons
 
 These icon names have been used in existing templates. Use lowercase values for the `icon-name` field.
@@ -1126,8 +1124,6 @@ These icon names have been used in existing templates. Use lowercase values for 
 | `ssca-orchestrate` | Software supply chain assurance |
 | `terraform` | Terraform |
 | `winrm` | Windows Remote Management |
-
----
 
 ## Appendix: Available modules
 

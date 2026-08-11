@@ -7,8 +7,6 @@ sidebar_position: 5
 
 Common connector issues, root causes, and step-by-step solutions for diagnosing and resolving connectivity problems in Harness 3.0.
 
----
-
 ## Failed connection
 
 A "Failed" status on a connector indicates that the most recent connection test did not succeed. The following are the most common root causes and their solutions.
@@ -128,9 +126,9 @@ A "Connector not found" error during pipeline execution indicates that the refer
 
 **Common causes:**
 
-- **Deleted or Renamed** — The connector was deleted or its identifier was changed (identifiers are immutable, but the connector may have been recreated with a different ID).
-- **Scope Mismatch** — The pipeline references a project-level connector, but the connector exists at the account or organization level (or vice versa).
-- **Incorrect Identifier** — A typo in the connector reference in the pipeline YAML.
+- **Deleted or Renamed**: The connector was deleted or its identifier was changed (identifiers are immutable, but the connector may have been recreated with a different ID).
+- **Scope Mismatch**: The pipeline references a project-level connector, but the connector exists at the account or organization level (or vice versa).
+- **Incorrect Identifier**: A typo in the connector reference in the pipeline YAML.
 
 **Scope prefix reference:**
 
@@ -158,10 +156,10 @@ External services like GitHub and GitLab impose API rate limits that can affect 
 
 **Solutions:**
 
-- **Use GitHub App authentication** — GitHub Apps have higher rate limits (5,000 requests/hour per installation vs. 5,000/hour per user for PATs).
-- **Separate connectors for CI and API** — Use different tokens for codebase cloning and API operations to distribute rate limit consumption.
-- **Reduce polling frequency** — If using polling-based triggers, increase the polling interval to reduce API calls.
-- **Use webhooks instead of polling** — Configure webhook-based triggers to eliminate periodic API polling entirely.
+- **Use GitHub App authentication**: GitHub Apps have higher rate limits (5,000 requests/hour per installation vs. 5,000/hour per user for PATs).
+- **Separate connectors for CI and API**: Use different tokens for codebase cloning and API operations to distribute rate limit consumption.
+- **Reduce polling frequency**: If using polling-based triggers, increase the polling interval to reduce API calls.
+- **Use webhooks instead of polling**: Configure webhook-based triggers to eliminate periodic API polling entirely.
 
 </details>
 
@@ -245,7 +243,7 @@ roleRef:
 ## Cloud authentication failures
 
 <details>
-<summary>AWS — IAM Trust Policy</summary>
+<summary>AWS-IAM Trust Policy</summary>
 
 When using "Inherit from Delegate" with cross-account access, the target role's trust policy must allow the delegate's instance profile or IRSA role to assume it.
 
@@ -254,7 +252,7 @@ Verify the trust policy includes the delegate's IAM role ARN in the `Principal` 
 </details>
 
 <details>
-<summary>AWS — STS Regional Endpoint</summary>
+<summary>AWS-STS Regional Endpoint</summary>
 
 STS assume-role calls may fail if the delegate is in a different region than the STS endpoint being used.
 
@@ -263,7 +261,7 @@ Ensure the STS regional endpoint is enabled for the delegate's region, or config
 </details>
 
 <details>
-<summary>GCP — Service Account Key</summary>
+<summary>GCP-Service Account Key</summary>
 
 The JSON key file may be invalid, expired, or the service account may have been disabled in the GCP IAM console.
 
@@ -272,7 +270,7 @@ Verify the service account is active in GCP IAM. Generate a new key if needed an
 </details>
 
 <details>
-<summary>GCP — Project ID Mismatch</summary>
+<summary>GCP-Project ID Mismatch</summary>
 
 The service account belongs to a different GCP project than the one being accessed.
 
@@ -281,7 +279,7 @@ Grant the service account cross-project access via IAM role bindings on the targ
 </details>
 
 <details>
-<summary>GCP — Missing IAM Roles</summary>
+<summary>GCP-Missing IAM Roles</summary>
 
 Missing IAM roles on the service account for the required operations (e.g., `roles/container.admin` for GKE).
 
@@ -290,7 +288,7 @@ Add the required IAM roles to the service account in the GCP IAM console. Common
 </details>
 
 <details>
-<summary>Azure — Subscription and Tenant ID</summary>
+<summary>Azure-Subscription and Tenant ID</summary>
 
 Incorrect subscription ID or tenant ID results in authentication failures or "resource not found" errors.
 
@@ -299,7 +297,7 @@ Double-check the subscription ID and tenant ID in the connector configuration ag
 </details>
 
 <details>
-<summary>Azure — Service Principal</summary>
+<summary>Azure-Service Principal</summary>
 
 The service principal secret may have expired, or the app registration may lack the required API permissions.
 
@@ -314,14 +312,14 @@ Check the service principal in **Azure AD > App Registrations**. Verify the clie
 When troubleshooting connector issues, follow these steps in order to systematically identify and resolve the problem.
 
 <details>
-<summary>Step 1 — Test Connection from the UI</summary>
+<summary>Step 1: Test Connection from the UI</summary>
 
 Start by running the built-in test connection. The UI provides a step-by-step breakdown of the connection attempt (connectivity, authentication, authorization) with detailed error messages for each step.
 
 </details>
 
 <details>
-<summary>Step 2 — Check Delegate Logs</summary>
+<summary>Step 2: Check Delegate Logs</summary>
 
 Examine the delegate logs for detailed error traces. If running on Kubernetes:
 
@@ -342,7 +340,7 @@ kubectl logs -n harness-delegate-ng <delegate-pod-name> | grep -i "connector\|co
 </details>
 
 <details>
-<summary>Step 3 — Verify Network Connectivity</summary>
+<summary>Step 3: Verify Network Connectivity</summary>
 
 From the delegate host, verify that the target endpoint is reachable:
 
@@ -363,7 +361,7 @@ curl --connect-timeout 5 -s -o /dev/null -w "%{http_code}" https://api.github.co
 </details>
 
 <details>
-<summary>Step 4 — Validate Credentials Manually</summary>
+<summary>Step 4: Validate Credentials Manually</summary>
 
 Test the credentials outside of Harness to determine whether the issue is with the credential itself or with the Harness configuration:
 
@@ -384,7 +382,7 @@ curl -H "X-Vault-Token: YOUR_TOKEN" https://vault.example.com:8200/v1/sys/health
 </details>
 
 <details>
-<summary>Step 5 — Review Secret Manager</summary>
+<summary>Step 5: Review Secret Manager</summary>
 
 Verify that the secrets referenced by the connector are accessible:
 

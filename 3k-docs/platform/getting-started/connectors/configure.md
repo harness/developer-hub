@@ -7,8 +7,6 @@ sidebar_position: 4
 
 Complete configuration examples for common connector types, including YAML definitions, Terraform HCL, and REST API endpoints.
 
----
-
 ## Credential reference
 
 Connectors reference secrets stored in the Harness Secret Manager (or an external vault). Secret references follow a scoped naming convention that determines where the secret is resolved from.
@@ -22,6 +20,8 @@ Connectors reference secrets stored in the Harness Secret Manager (or an externa
 | `SecretName` | Project-level secret (default) | `docker_password` |
 
 ### Authentication methods
+
+The authentication method determines how credentials are presented to the external service:
 
 | Method | Description |
 |---|---|
@@ -58,7 +58,7 @@ The following examples demonstrate GitHub connector configuration using both HTT
 
 ### GitHub HTTP connector
 
-```yaml title="github-http-connector.yaml"
+```yaml title="github-http-connector.yaml" showLineNumbers {7-12}
 connector:
   name: GitHub HTTP
   identifier: github_http
@@ -83,7 +83,7 @@ connector:
 
 ### GitLab SSH connector
 
-```yaml title="gitlab-ssh-connector.yaml"
+```yaml title="gitlab-ssh-connector.yaml" showLineNumbers {7-10}
 connector:
   name: GitLab SSH
   identifier: gitlab_ssh
@@ -113,7 +113,7 @@ The `type: Account` field at the end of the spec indicates that the URL points t
 
 AWS connectors support multiple credential types including access keys, IAM roles, and delegate-inherited credentials. The following example uses IAM role-based authentication with cross-account access.
 
-```yaml title="aws-connector.yaml"
+```yaml title="aws-connector.yaml" showLineNumbers {6-10,12-14}
 connector:
   name: AWS Production
   identifier: aws_prod
@@ -134,7 +134,7 @@ connector:
 
 ### AWS IAM role (Inherit from Delegate)
 
-```yaml title="aws-delegate-connector.yaml"
+```yaml title="aws-delegate-connector.yaml" showLineNumbers {6-7}
 connector:
   name: AWS via Delegate
   identifier: aws_delegate
@@ -160,7 +160,7 @@ When running delegates on AWS (EC2 or EKS), prefer the "Inherit from Delegate" c
 
 Kubernetes connectors provide access to K8s clusters for deployment operations. The following example uses a service account token for authentication.
 
-```yaml title="k8s-connector.yaml"
+```yaml title="k8s-connector.yaml" showLineNumbers {9-14}
 connector:
   name: Production K8s
   identifier: k8s_prod
@@ -204,7 +204,7 @@ When the Harness Delegate runs inside the target Kubernetes cluster, use the "In
 
 The Vault connector integrates with HashiCorp Vault for centralized secrets management. The following example configures Vault with token authentication and the KV v2 secrets engine.
 
-```yaml title="vault-connector.yaml"
+```yaml title="vault-connector.yaml" showLineNumbers {6-8,10-11}
 connector:
   name: HashiCorp Vault
   identifier: vault_prod
@@ -227,7 +227,7 @@ connector:
 
 ### Vault with AppRole Authentication
 
-```yaml title="vault-approle-connector.yaml"
+```yaml title="vault-approle-connector.yaml" showLineNumbers {6-7,14}
 connector:
   name: Vault AppRole
   identifier: vault_approle
@@ -255,7 +255,7 @@ When using token authentication, ensure the token has a sufficient TTL and that 
 
 The Harness Terraform provider enables infrastructure-as-code management of connectors. The following examples create connectors using HCL.
 
-```hcl title="github-connector.tf"
+```hcl title="github-connector.tf" showLineNumbers {1,12-16}
 resource "harness_platform_connector_github" "example" {
   identifier  = "github_ci"
   name        = "GitHub CI"
@@ -297,8 +297,6 @@ resource "harness_platform_connector_aws" "example" {
   }
 }
 ```
-
----
 
 ## API reference
 

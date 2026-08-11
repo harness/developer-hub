@@ -1,11 +1,11 @@
 ---
 title: Steps Reference
 sidebar_label: Steps
-description: Steps are the smallest executable units in a Harness 3.0 pipeline — run scripts, invoke actions, request approvals, manage background services, and more.
+description: Steps are the smallest executable units in a Harness 3.0 pipeline; run scripts, invoke actions, request approvals, manage background services, and more.
 sidebar_position: 3
 ---
 
-A Step is the smallest executable unit within a pipeline stage. Steps are the building blocks that perform actual work — running scripts, invoking actions, requesting approvals, or managing background services. Harness 3.0 provides multiple step types with a flexible, short-form YAML syntax.
+A Step is the smallest executable unit within a pipeline stage. Steps are the building blocks that perform actual work; running scripts, invoking actions, requesting approvals, or managing background services. Harness 3.0 provides multiple step types with a flexible, short-form YAML syntax.
 
 ## Step types
 
@@ -171,6 +171,7 @@ steps:
       script: |
         set -euo pipefail
         echo "Running with bash"
+
   - name: python-script
     run:
       shell: python
@@ -179,6 +180,7 @@ steps:
         print(f"Python version: {os.sys.version}")
         result = 2 + 2
         print(f"Result: {result}")
+
   - name: powershell-script
     run:
       shell: powershell
@@ -291,11 +293,13 @@ interface StepAction {
 steps:
   - action:
       uses: actions/checkout@v4
+
   - action:
       uses: actions/setup-node@v4
       with:
         node-version: "20"
         cache: npm
+
   - run: npm ci
   - run: npm test
 ```
@@ -417,6 +421,7 @@ steps:
   - name: redis
     background:
       container: redis:7-alpine
+
   - name: run-tests
     run:
       script: npm test
@@ -439,11 +444,13 @@ steps:
         POSTGRES_DB: testdb
         POSTGRES_USER: testuser
         POSTGRES_PASSWORD: testpass
+
   - name: run-migrations
     run:
       script: npm run db:migrate
       env:
         DATABASE_URL: postgres://testuser:testpass@postgres:5432/testdb
+
   - name: run-tests
     run:
       script: npm test
@@ -462,6 +469,7 @@ steps:
         image: node:20-alpine
         ports:
           - "3000:3000"
+
   - name: e2e-tests
     run:
       script: npx cypress run
@@ -630,6 +638,7 @@ steps:
         - run: npm ci
         - run: npm run build
         - run: npm test
+
   - name: deploy
     if: ${{ trigger.branch }} == "main"
     group:
@@ -645,6 +654,7 @@ All parallel steps must complete before the next step begins.
 ```yaml title="parallel-steps.yaml" showLineNumbers {4-5}
 steps:
   - run: npm ci
+
   - parallel:
       steps:
         - name: lint
@@ -653,6 +663,7 @@ steps:
           run: npm run typecheck
         - name: unit-tests
           run: npm test
+
   - run: npm run build
 ```
 
@@ -710,6 +721,7 @@ steps:
         scan_type: full
         severity_threshold: high
         fail_on_critical: true
+
   - name: publish
     template:
       uses: account.publish-artifact@3.0.0

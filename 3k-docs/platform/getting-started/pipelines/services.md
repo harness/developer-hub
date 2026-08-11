@@ -5,9 +5,7 @@ description: Services define what you are deploying; environments define where. 
 sidebar_position: 4
 ---
 
-Services and Environments are core deployment concepts in Harness 3.0. A Service defines what you are deploying (application, container, function), and an Environment defines where you are deploying (dev, staging, production). Together they configure the deployment target for a pipeline stage.
-
----
+Services and Environments are core deployment concepts in Harness 3.0. A Service defines what you are deploying (application, container, function), and an Environment defines where you are deploying (dev, staging, production). Together, they configure the deployment target for a pipeline stage.
 
 ## Services
 
@@ -19,18 +17,25 @@ A Service represents the application or workload being deployed. It includes art
 interface Service {
   // Reference to a defined service entity
   ref: string
+
   // Inline service definition
   name: string
+
   // Service description
   description: string
+
   // Deployment type (kubernetes, native-helm, serverless, etc.)
   deployment_type: string
+
   // Artifact configuration
   artifacts: ArtifactConfig
+
   // Manifest configuration
   manifests: ManifestConfig[]
+
   // Config files
   config_files: ConfigFile[]
+
   // Service-level variables
   variables: Record<string, string>
 }
@@ -40,7 +45,7 @@ interface Service {
 
 Define a service inline within the pipeline or reference a pre-configured service entity.
 
-```yaml title="service-inline.yaml"
+```yaml title="service-inline.yaml" showLineNumbers {4-6}
 # Inline service definition
 stages:
   - name: deploy
@@ -72,10 +77,11 @@ stages:
 
 Reference a service defined at the project, organization, or account level. Service and environment can be specified at either the pipeline level or the stage level.
 
-```yaml title="service-ref.yaml"
+```yaml title="service-ref.yaml" showLineNumbers {6-7}
 # pipeline-level service and environment
 # NOTE: service and environment are also supported
 # at the stage level.
+
 pipeline:
   service: my-web-app
   environment: production
@@ -88,7 +94,7 @@ pipeline:
 
 Deploy multiple services in a single pipeline. By default, services are deployed in parallel.
 
-```yaml title="service-multiple.yaml"
+```yaml title="service-multiple.yaml" showLineNumbers {2-6}
 pipeline:
   service:
     items:
@@ -105,7 +111,7 @@ pipeline:
 
 Deploy services one at a time in a defined order using the `sequential` flag.
 
-```yaml title="service-sequential.yaml"
+```yaml title="service-sequential.yaml" showLineNumbers {3}
 pipeline:
   service:
     sequential: true
@@ -135,19 +141,25 @@ An Environment represents a deployment target such as development, staging, or p
 interface Environment {
   // Reference to a defined environment entity
   ref: string
+
   // Inline environment name
   name: string
+
   // Environment description
   description: string
+
   // Environment type
   type: "production" | "non-production"
+
   // Infrastructure definitions
   infrastructures: InfrastructureRef[]
+
   // Environment-level overrides
   overrides:
     | { manifests: ManifestOverride[] }
     | { config_files: ConfigFileOverride[] }
     | { variables: Record<string, string> }
+    
   // Service-specific overrides
   service_overrides: Record<string, OverrideConfig>
 }
@@ -164,7 +176,7 @@ interface Environment {
 
 Reference an environment by name and specify the infrastructure to deploy to using the `deploy-to` field.
 
-```yaml title="environment-definition.yaml"
+```yaml title="environment-definition.yaml" showLineNumbers {5-7}
 pipeline:
   stages:
   - name: deploy
@@ -210,7 +222,7 @@ When multiple services are specified, the stage steps execute once for each serv
 
 Deploy services one after another, useful when services have startup order dependencies.
 
-```yaml title="multi-service-sequential.yaml"
+```yaml title="multi-service-sequential.yaml" showLineNumbers {3}
 pipeline:
   service:
     sequential: true
@@ -237,7 +249,7 @@ Deploy the same service across multiple environments, such as promoting a releas
 
 Promote a release through multiple environments sequentially. Use `sequential: true` on the environment and the `deploy-to` field to specify infrastructure targets per environment.
 
-```yaml title="multi-env-sequential.yaml"
+```yaml title="multi-env-sequential.yaml" showLineNumbers {3-13}
 pipeline:
   service: my-app
   environment:
@@ -260,7 +272,7 @@ pipeline:
 
 A comprehensive example combining multiple services and environments in a single pipeline.
 
-```yaml title="complete-deployment.yaml"
+```yaml title="complete-deployment.yaml" showLineNumbers {6-16}
 pipeline:
   service:
     items:

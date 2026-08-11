@@ -7,8 +7,6 @@ sidebar_position: 6
 
 Harness 3.0 introduces a fully typed input system that replaces the runtime inputs of previous versions. Inputs are declared at the pipeline level with explicit types, default values, validation rules, and descriptions. Combined with a powerful expression syntax, inputs and variables enable dynamic, reusable pipelines.
 
----
-
 ## Input types
 
 | Type | Description | Example Value |
@@ -24,8 +22,6 @@ Harness 3.0 introduces a fully typed input system that replaces the runtime inpu
 | `step` | Reference to a step template. | `"deploy-k8s@1.0.0"` |
 | `object` | Structured key-value object. | `{ region: "us-east-1", count: 3 }` |
 
----
-
 ## Input schema
 
 ```typescript title="input-schema.ts"
@@ -34,22 +30,30 @@ interface Input {
   type: "string" | "number" | "boolean" | "array"
        | "duration" | "choice" | "environment"
        | "secret" | "step" | "object"
+       
   // Default value (used when no value is provided at runtime)
   default: any
+
   // Human-readable description (shown in the UI)
   description: string
+
   // Whether this input is required
   required: boolean
+
   // Validation rules
   validation:
     | { regex: string; message: string }
     | { min: number; max: number }
+
   // Options for choice type
   options: string[]
+
   // Whether multiple selections are allowed (choice type)
   multiple: boolean
+
   // Item type for array inputs
   items: { type: string }
+
   // Properties for object type
   properties: Record<string, Input>
 }
@@ -59,7 +63,7 @@ interface Input {
 
 ## Complete input examples
 
-```yaml title="input-examples.yaml"
+```yaml title="input-examples.yaml" showLineNumbers {4,14,23,29,38,43,49,55,60}
 pipeline:
   inputs:
     # String input with validation
@@ -71,6 +75,7 @@ pipeline:
       validation:
         regex: "^\d+\.\d+\.\d+$"
         message: "Must be a valid semver (e.g., 1.2.3)"
+
     # Number input with range
     replicas:
       type: number
@@ -79,11 +84,13 @@ pipeline:
       validation:
         min: 1
         max: 20
+
     # Boolean input
     dry_run:
       type: boolean
       description: "Run in dry-run mode without applying changes"
       default: false
+
     # Choice input
     environment:
       type: choice
@@ -93,11 +100,13 @@ pipeline:
         - staging
         - production
       default: dev
+
     # Secret input
     api_token:
       type: secret
       description: "API token for external service"
       required: true
+
     # Array input
     regions:
       type: array
@@ -106,11 +115,13 @@ pipeline:
         - us-east-1
       items:
         type: string
+
     # Duration input
     timeout:
       type: duration
       description: "Maximum deployment duration"
       default: "30m"
+
     # Object input
     notification_config:
       type: object
@@ -164,7 +175,7 @@ Expressions use the `${{ }}` syntax to dynamically resolve values at runtime. Ha
 
 ### Built-in functions
 
-```yaml title="expression-functions.yaml"
+```yaml title="expression-functions.yaml" showLineNumbers {3,11,14,17,23,28}
 # Hash files for cache keys
 cache:
   key: ${{ hashFiles('**/package-lock.json') }}
@@ -188,6 +199,7 @@ steps:
     run:
       script: echo "Deploying"
     if: ${{ contains(trigger.branch, 'release') }}
+
   - name: main-build
     run:
       script: echo "Main branch build"
@@ -213,7 +225,7 @@ Steps and stages can produce output variables that are consumed by subsequent st
 
 Write key-value pairs to the `$HARNESS_OUTPUT` file to create output variables.
 
-```yaml title="step-outputs.yaml"
+```yaml title="step-outputs.yaml" showLineNumbers {12-14,20-22}
 stages:
   - name: build
     steps:
@@ -227,6 +239,7 @@ stages:
             echo "VERSION=$VERSION" >> $HARNESS_OUTPUT
             echo "BUILD_DATE=$BUILD_DATE" >> $HARNESS_OUTPUT
             echo "IMAGE_TAG=$IMAGE_TAG" >> $HARNESS_OUTPUT
+
       - name: build-image
         run:
           script: |
@@ -241,7 +254,7 @@ stages:
 
 Step outputs are promoted to stage outputs and can be referenced from subsequent stages.
 
-```yaml title="stage-outputs.yaml"
+```yaml title="stage-outputs.yaml" showLineNumbers {6,14}
 stages:
   - name: build
     steps:
@@ -249,6 +262,7 @@ stages:
         run:
           script: |
             echo "IMAGE_TAG=my-app:1.2.3-abc123" >> $HARNESS_OUTPUT
+
   - name: deploy
     steps:
       - name: deploy-image
@@ -263,7 +277,7 @@ stages:
 
 Use the `outputs` property to explicitly declare which variables a step will produce. This improves documentation and enables validation.
 
-```yaml title="explicit-outputs.yaml"
+```yaml title="explicit-outputs.yaml" showLineNumbers {9-11,14}
 steps:
   - name: analyze
     run:
@@ -275,6 +289,7 @@ steps:
     outputs:
       - COVERAGE
       - PASS_RATE
+
   - name: quality-gate
     if: ${{ steps.analyze.output.COVERAGE }} < 80
     run:

@@ -14,8 +14,6 @@ Harness agent plugins follow the [Drone plugin architecture](https://github.com/
 | **Runtime** | Docker container |
 | **Integration** | Harness API |
 
----
-
 ## Plugin architecture
 
 Each plugin is a Go binary that runs inside a Docker container. Configuration is passed via environment variables with a `PLUGIN_` prefix, and the plugin implements a `Plugin` struct with an `Exec()` method.
@@ -89,7 +87,7 @@ func (p *Plugin) Exec() error {
 The Drone plugin architecture is the standard pattern for all Harness CI plugins. If you've built Drone plugins before, the same patterns apply to agent plugins.
 :::
 
----
+--- 
 
 ## Project structure
 
@@ -170,7 +168,7 @@ func run(c *cli.Context) error {
 }
 ```
 
----
+--- 
 
 ## Build the plugin
 
@@ -230,7 +228,7 @@ clean:
 Harness auto-populates `HARNESS_ACCOUNT_ID`, `HARNESS_ORG_ID`, `HARNESS_PROJECT_ID`, and `HARNESS_EXECUTION_ID` when running plugins in CI pipelines. You don't need to configure these manually.
 :::
 
----
+--- 
 
 ## Docker package
 
@@ -271,7 +269,7 @@ Runtime dependencies: `ca-certificates` for HTTPS API calls, `git` for repositor
 Always use multi-stage Docker builds. Never include Go toolchain, source code, or build artifacts in the runtime image.
 :::
 
----
+--- 
 
 ## Harness API integration
 
@@ -320,7 +318,7 @@ func (p *Plugin) fetchFailedStepLogs() (string, error) {
 
 The Harness API key is passed as the `x-api-key` header. Ensure your API key has permissions to read pipeline executions and logs for the target project.
 
----
+--- 
 
 ## Template registration
 
@@ -433,7 +431,7 @@ intelligent modifications using Claude AI.
 Submit your template as a pull request to the agents repository. Automated Claude Code review via GitHub Actions validates your template against naming conventions, security rules, and cross-file consistency requirements.
 :::
 
----
+--- 
 
 ## Testing & deployment
 
@@ -501,8 +499,6 @@ pipeline:
 :::warning Secret Masking
 Always mask sensitive values in your plugin logging. Use logrus field masking or redact API keys before printing. Never log the full value of secrets, tokens, or API keys.
 :::
-
----
 
 ## Plugin composition patterns
 

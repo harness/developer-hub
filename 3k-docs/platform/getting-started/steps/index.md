@@ -3,18 +3,16 @@ title: Step Library
 sidebar_label: Step Library
 id: index
 slug: /platform/getting-started/steps
-description: Harness 3.0 ships with 109+ pre-built step templates across CI, CD, IaCM, CV, and Integration modules — versioned, containerized actions that are the building blocks of pipelines.
+description: Harness 3.0 ships with 109+ pre-built step templates across CI, CD, IaCM, CV, and Integration modules; versioned, containerized actions that are the building blocks of pipelines.
 sidebar_position: 1
 ---
 
-Harness 3.0 ships with 109+ pre-built step templates across CI, CD, IaCM, and CV modules. Steps are the building blocks of pipelines — each step is a versioned, containerized action that runs inside a pipeline stage. The step library uses a template-based architecture where each step is defined in YAML with typed inputs, layout configuration, and containerized execution.
+Harness 3.0 ships with 109+ pre-built step templates across CI, CD, IaCM, and CV modules. Steps are the building blocks of pipelines: each step is a versioned, containerized action that runs inside a pipeline stage. The step library uses a template-based architecture where each step is defined in YAML with typed inputs, layout configuration, and containerized execution.
 
 | | |
 |---|---|
 | **109+** total steps | **5** categories (CI, CD, IaCM, CV, Integration) |
 | **All versioned** (semver) | **Containerized** execution |
-
----
 
 ## CI steps
 
@@ -144,17 +142,12 @@ See [Integration Steps](/3k-docs/platform/getting-started/steps/integrations) fo
 
 Every step in the Harness 3.0 step library follows a consistent template-based architecture. Understanding the anatomy of a step helps you use steps effectively and troubleshoot issues when they arise.
 
-**Versioned Templates** — Each step is a versioned template (semver) stored in the template library. You reference steps by name and version (e.g., `buildAndPushToDocker@1.0.0`).
-
-**Typed Inputs** — Steps declare typed inputs (`string`, `boolean`, `select`, `connector`, `array`, `key-value-pairs`, `list`) that are validated before execution.
-
-**Layout Configuration** — Steps have a layout configuration that controls how the UI renders input fields in the visual pipeline editor.
-
-**Containerized Execution** — Steps execute in containers (Docker images like `plugins/kaniko`, `harnessdev/helm-deploy:0.0.1`, etc.).
-
-**Strategies** — Steps can be composed into strategies (groups of steps for deploy workflows such as rolling, canary, or blue-green).
-
-**Conditional Execution** — Steps support conditional execution via `if` expressions, enabling dynamic pipeline behavior based on runtime context.
+- **Versioned Templates**: Each step is a versioned template (semver) stored in the template library. You reference steps by name and version (e.g., `buildAndPushToDocker@1.0.0`).
+- **Typed Inputs**: Steps declare typed inputs (`string`, `boolean`, `select`, `connector`, `array`, `key-value-pairs`, `list`) that are validated before execution.
+- **Layout Configuration**: Steps have a layout configuration that controls how the UI renders input fields in the visual pipeline editor.
+- **Containerized Execution**: Steps execute in containers (Docker images like `plugins/kaniko`, `harnessdev/helm-deploy:0.0.1`, etc.).
+- **Strategies**: Steps can be composed into strategies (groups of steps for deploy workflows such as rolling, canary, or blue-green).
+- **Conditional Execution**: Steps support conditional execution via `if` expressions, enabling dynamic pipeline behavior based on runtime context.
 
 ### Using a step in a pipeline
 

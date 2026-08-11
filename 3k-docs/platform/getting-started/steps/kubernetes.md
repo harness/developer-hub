@@ -1,7 +1,7 @@
 ---
 title: Kubernetes & Helm Steps
 sidebar_label: Kubernetes & Helm
-description: Reference for all Kubernetes and Helm step templates in Harness 3.0 — rolling, blue-green, canary deployments, plus utility operations for scaling, patching, and traffic routing.
+description: Reference for all Kubernetes and Helm step templates in Harness 3.0; rolling, blue-green, canary deployments, plus utility operations for scaling, patching, and traffic routing.
 sidebar_position: 3
 ---
 
@@ -10,8 +10,6 @@ Harness 3.0 provides 36+ Kubernetes steps and 9+ Helm steps for comprehensive co
 :::info Infrastructure Inheritance
 Kubernetes and Helm steps automatically inherit infrastructure settings (kubeconfig, namespace, release name) from the stage infrastructure configuration. Override these values in the step inputs when needed.
 :::
-
----
 
 ## Kubernetes rolling deploy
 

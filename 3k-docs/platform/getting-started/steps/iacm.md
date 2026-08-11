@@ -5,7 +5,7 @@ description: Reference for IaCM step templates in Harness 3.0; Terraform, OpenTo
 sidebar_position: 5
 ---
 
-Harness 3.0 provides native IaCM steps for Terraform and OpenTofu, enabling infrastructure provisioning directly within pipelines. These steps support the full lifecycle of infrastructure management — from planning and validation to deployment and teardown.
+Harness 3.0 provides native IaCM steps for Terraform and OpenTofu, enabling infrastructure provisioning directly within pipelines. These steps support the full lifecycle of infrastructure management, from planning and validation to deployment and teardown.
 
 ## Available IaCM steps
 
@@ -15,8 +15,6 @@ Harness 3.0 provides native IaCM steps for Terraform and OpenTofu, enabling infr
 | OpenTofu | `openTofuStep@1.0.0` | Execute OpenTofu commands with full Terraform compatibility |
 | TFLint | `tfLintStep@1.0.0` | Lint Terraform configurations for errors and best practice violations |
 | Tofu Module Test | `tofuModuleTestStep@1.0.0` | Test OpenTofu modules for expected outputs and behavior |
-
----
 
 ## Terraform step
 
@@ -62,7 +60,7 @@ The Terraform step automatically handles authentication for major cloud provider
 | Git Repository | HTTP/SSH for remote state and modules |
 
 :::tip Automatic Credential Injection
-The Terraform step automatically inherits cloud provider credentials from connectors configured in your IaCM workspace. You don't need to manually pass AWS keys or GCP service accounts — they are injected as environment variables at runtime.
+The Terraform step automatically inherits cloud provider credentials from connectors configured in your IaCM workspace. You don't need to manually pass AWS keys or GCP service accounts; they are injected as environment variables at runtime.
 :::
 
 ### Examples
@@ -112,7 +110,7 @@ steps:
 
 Execute OpenTofu commands within your pipeline. OpenTofu is the open-source fork of Terraform and is fully compatible with Terraform configurations.
 
-The OpenTofu step mirrors the Terraform step interface — same supported commands, same inputs, same cloud provider authentication. It uses a different plugin image optimized for OpenTofu.
+The OpenTofu step mirrors the Terraform step interface: same supported commands, same inputs, same cloud provider authentication. It uses a different plugin image optimized for OpenTofu.
 
 ```yaml title="opentofu-plan-apply.yaml"
 steps:
@@ -127,7 +125,7 @@ steps:
 ```
 
 :::tip Migrating Between Terraform and OpenTofu
-OpenTofu and Terraform steps share the same interface. Migrating between them requires only changing the step template reference — no changes to inputs or configuration.
+OpenTofu and Terraform steps share the same interface. Migrating between them requires only changing the step template reference, no changes to inputs or configuration.
 :::
 
 ---

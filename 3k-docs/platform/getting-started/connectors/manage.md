@@ -78,7 +78,7 @@ To edit a connector, open it from the connector list or use the three-dot menu a
 To delete a connector, use the three-dot menu on the connector row and select **Delete**. A confirmation dialog will appear before the connector is permanently removed.
 
 :::warning Deletion Warning
-Deleting a connector will break any pipelines, triggers, or other resources that reference it. Before deleting, verify that the connector is not in use by searching for its identifier across your pipelines and configurations. Harness does not currently block deletion of connectors that have active references — the referencing resources will fail at execution time.
+Deleting a connector will break any pipelines, triggers, or other resources that reference it. Before deleting, verify that the connector is not in use by searching for its identifier across your pipelines and configurations. Harness does not currently block deletion of connectors that have active references; the referencing resources will fail at execution time.
 :::
 
 ## Best practices
@@ -87,7 +87,7 @@ Follow these best practices to keep your connectors organized, secure, and maint
 
 ### Naming conventions
 
-Use a consistent naming pattern that includes the provider and purpose, such as `aws_prod_deploy` or `github_ci_readonly`. Include the environment in the name when creating environment-specific connectors (e.g., `k8s_staging`, `k8s_production`). Avoid special characters in identifiers — use underscores or camelCase for readability.
+Use a consistent naming pattern that includes the provider and purpose, such as `aws_prod_deploy` or `github_ci_readonly`. Include the environment in the name when creating environment-specific connectors (e.g., `k8s_staging`, `k8s_production`). Avoid special characters in identifiers; use underscores or camelCase for readability.
 
 ```yaml title="naming-conventions.yaml"
 # Pattern: {provider}_{environment}_{purpose}

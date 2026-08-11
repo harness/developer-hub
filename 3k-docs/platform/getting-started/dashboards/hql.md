@@ -7,8 +7,6 @@ sidebar_position: 2
 
 HQL is a domain-specific query language for querying heterogeneous data sources in the Harness Data Platform. It provides a unified interface for querying events, entities, metrics, and views across multiple database backends (StarRocks, AlloyDB, BigQuery, PostgreSQL, MySQL) with pipe-based operations and automatic SQL generation.
 
----
-
 ## Data sources
 
 HQL supports four types of data sources. Type identifiers can be unquoted for simple names or quoted for names with special characters (like colons).
@@ -47,7 +45,7 @@ find event "ccm:unified_table" t
 | group_by t.region
 ```
 
----
+--- 
 
 ## Operations
 
@@ -156,7 +154,7 @@ find event span
 | order_by service_name asc
 ```
 
----
+--- 
 
 ## Functions
 
@@ -258,7 +256,7 @@ find entity "pipeline:pipeline_execution"
 | filter start_time >= now() - interval '7' day
 ```
 
----
+--- 
 
 ## Common table expressions (CTEs)
 
@@ -292,7 +290,7 @@ find recent_failures
 | group_by pipeline_id
 ```
 
----
+--- 
 
 ## Joins
 
@@ -333,7 +331,7 @@ find pipeline_exec
 | order_by pipeline_exec.start_time desc
 ```
 
----
+--- 
 
 ## Examples
 
@@ -452,7 +450,7 @@ find error_events
 | order_by hour desc
 ```
 
----
+--- 
 
 ## Best practices
 
@@ -470,13 +468,13 @@ find entity "pipeline:pipeline_execution" p
 Apply filters as early as possible to reduce data processing.
 
 ```sql
--- More efficient — filter before aggregation
+-- More efficient: filter before aggregation
 find event "ccm:unified_table"
 | filter startTime >= ago(30d)
 | select { region, sum(cost) }
 | group_by region
 
--- Less efficient — filter after aggregation
+-- Less efficient: filter after aggregation
 find event "ccm:unified_table"
 | select { region, sum(cost) }
 | group_by region
@@ -511,7 +509,7 @@ find event "ccm:unified_table"
 | select { region, cloudProvider, sum(cost) as total }
 | group_by region, cloudProvider
 
--- Incorrect — cloudProvider missing from group_by
+-- Incorrect: cloudProvider missing from group_by
 find event "ccm:unified_table"
 | select { region, cloudProvider, sum(cost) as total }
 | group_by region
@@ -539,7 +537,7 @@ find entity "pipeline:pipeline_execution"
 | limit 500
 ```
 
----
+--- 
 
 ## Reference
 

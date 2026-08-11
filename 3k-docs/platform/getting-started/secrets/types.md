@@ -1,13 +1,11 @@
 ---
 title: Secret Types
 sidebar_label: Secret Types
-description: Harness supports two types of secrets — Text Secrets for inline string values and File Secrets for uploaded file content. Both are encrypted and can be stored in the built-in or any external secret manager.
+description: Harness supports two types of secrets; Text Secrets for inline string values and File Secrets for uploaded file content. Both are encrypted and can be stored in the built-in or any external secret manager.
 sidebar_position: 2
 ---
 
 Harness supports two types of secrets: Text Secrets for inline string values and File Secrets for uploaded file content. Both types are encrypted and can be stored in the built-in or any external secret manager.
-
----
 
 ## Text secrets
 
@@ -19,7 +17,7 @@ Text secrets store inline string values such as passwords, tokens, and API keys.
 |---|---|
 | Maximum size | 50 MB |
 | Encoding | UTF-8 |
-| Multi-line support | Yes — newlines and whitespace are preserved |
+| Multi-line support | Yes, newlines and whitespace are preserved |
 | Type identifier | `SecretText` |
 
 ### Examples
@@ -133,7 +131,7 @@ MIIEowIBAAKCAQEA2a2rwplBQLzHPZe...
 
 ## External secret managers
 
-Harness integrates with external secret management platforms, allowing you to leverage your existing secrets infrastructure. When an external secret manager is configured, Harness stores only a reference to the secret path — the actual value remains in your infrastructure.
+Harness integrates with external secret management platforms, allowing you to leverage your existing secrets infrastructure. When an external secret manager is configured, Harness stores only a reference to the secret path; the actual value remains in your infrastructure.
 
 ### Supported platforms
 
@@ -155,11 +153,9 @@ Harness integrates with external secret management platforms, allowing you to le
 
 ### Benefits
 
-**Secrets remain in your infrastructure** — Harness never stores the actual secret value. Only a reference to the path in your secret manager is persisted.
-
-**Existing rotation policies apply** — Continue using your organization's existing rotation schedules and automation. Harness resolves the latest value at execution time.
-
-**Data residency compliance** — Secret values remain in the region and infrastructure where your secret manager is deployed, satisfying data residency requirements.
+- **Secrets remain in your infrastructure**: Harness never stores the actual secret value. Only a reference to the path in your secret manager is persisted.
+- **Existing rotation policies apply**: Continue using your organization's existing rotation schedules and automation. Harness resolves the latest value at execution time.
+- **Data residency compliance**: Secret values remain in the region and infrastructure where your secret manager is deployed, satisfying data residency requirements.
 
 :::warning Delegate Required
 External secret managers require a Harness Delegate with network access to the secret manager endpoint. Ensure the Delegate can resolve the secret manager hostname and that the required ports are open in your network configuration.

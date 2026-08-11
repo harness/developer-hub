@@ -1,13 +1,11 @@
 ---
 title: Cloud Deployment Steps
 sidebar_label: Cloud Steps
-description: Reference for cloud deployment step templates in Harness 3.0 — AWS ECS, Google Cloud Run, Azure Functions, AWS CDK, AWS SAM, and Serverless Framework.
+description: Reference for cloud deployment step templates in Harness 3.0; AWS ECS, Google Cloud Run, Azure Functions, AWS CDK, AWS SAM, and Serverless Framework.
 sidebar_position: 4
 ---
 
 Harness 3.0 provides native deployment steps for major cloud services including AWS ECS, Google Cloud Run, Azure Functions, AWS CDK, AWS SAM, and Serverless Framework. Each step is containerized and versioned.
-
----
 
 ## ECS blue-green deployment
 

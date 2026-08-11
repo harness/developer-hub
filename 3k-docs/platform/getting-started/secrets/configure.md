@@ -1,27 +1,21 @@
 ---
 title: Secrets Best Practices
 sidebar_label: Best Practices
-description: Best practices for creating, storing, rotating, auditing, and maintaining compliance for secrets in Harness 3.0 — covering access control, rotation schedules, monitoring, and compliance standards.
+description: Best practices for creating, storing, rotating, auditing, and maintaining compliance for secrets in Harness 3.0; covering access control, rotation schedules, monitoring, and compliance standards.
 sidebar_position: 4
 ---
 
 Follow these best practices to ensure your secrets are secure, well-organized, compliant, and easy to manage at scale. These guidelines cover creation, access control, rotation, monitoring, and compliance.
 
----
-
 ## Creation and storage
 
 How you create and store secrets directly impacts the security posture of your CI/CD pipelines.
 
-**Use strong, unique secret values** — Generate passwords with a minimum of 16 characters including uppercase, lowercase, numbers, and special characters. For API tokens and machine credentials, use at least 32 characters. Never reuse secret values across different services or environments.
-
-**Scope secrets appropriately** — Create secrets at the narrowest scope that satisfies your access requirements. Use project-level secrets for project-specific credentials. Promote to organization or account scope only when the credential is genuinely shared across multiple projects.
-
-**Choose the correct secret type** — Use Text Secrets for passwords, tokens, and string-based credentials. Use File Secrets for JSON key files, kubeconfig files, certificates, and binary content. Using the correct type ensures proper encoding and retrieval.
-
-**Leverage external secret managers** — For production environments, use an external secret manager (Vault, AWS Secrets Manager, GCP Secret Manager, or Azure Key Vault) to maintain full control over encryption keys, access policies, and rotation schedules. The built-in manager is appropriate for development and testing.
-
-**Never commit secrets to source code** — Do not include secret values in Git repositories, pipeline YAML files, Dockerfiles, or any version-controlled configuration. Always reference secrets using Harness expressions and store the actual values in a secret manager.
+- **Use strong, unique secret values**: Generate passwords with a minimum of 16 characters including uppercase, lowercase, numbers, and special characters. For API tokens and machine credentials, use at least 32 characters. Never reuse secret values across different services or environments.
+- **Scope secrets appropriately**: Create secrets at the narrowest scope that satisfies your access requirements. Use project-level secrets for project-specific credentials. Promote to organization or account scope only when the credential is genuinely shared across multiple projects.
+- **Choose the correct secret type**: Use Text Secrets for passwords, tokens, and string-based credentials. Use File Secrets for JSON key files, kubeconfig files, certificates, and binary content. Using the correct type ensures proper encoding and retrieval.
+- **Leverage external secret managers**: For production environments, use an external secret manager (Vault, AWS Secrets Manager, GCP Secret Manager, or Azure Key Vault) to maintain full control over encryption keys, access policies, and rotation schedules. The built-in manager is appropriate for development and testing.
+- **Never commit secrets to source code**: Do not include secret values in Git repositories, pipeline YAML files, Dockerfiles, or any version-controlled configuration. Always reference secrets using Harness expressions and store the actual values in a secret manager.
 
 :::tip Naming Convention
 Adopt a consistent naming convention for secrets. For example: `{service}_{environment}_{purpose}` such as `payment_prod_stripe_key`. This makes secrets easier to find, audit, and manage.
@@ -52,7 +46,7 @@ Implement the principle of least privilege for secret access. Grant only the min
 | Secret User | View, Access | Developers, pipeline authors |
 | Secret Viewer | View | Auditors, read-only stakeholders |
 
-**Separate environments** — Use separate secrets for each environment (development, staging, production). Do not share production credentials with lower environments. This limits the blast radius if a development credential is compromised.
+**Separate environments**: Use separate secrets for each environment (development, staging, production). Do not share production credentials with lower environments. This limits the blast radius if a development credential is compromised.
 
 :::warning Avoid Over-Permissioning
 Do not grant Delete permissions to users who only need to reference secrets in pipelines. Accidental or unauthorized deletion of a production secret can cause widespread pipeline failures. Reserve Delete permissions for Secret Admin roles only.
@@ -98,13 +92,10 @@ In the event of a credential compromise:
 
 Continuous monitoring and auditing of secret usage is essential for maintaining a strong security posture.
 
-**Enable audit logging** — Ensure audit logging is enabled at the account level. Harness logs all secret operations including creation, modification, deletion, and runtime access. These logs capture the user, timestamp, IP address, and the operation performed.
-
-**Review activity regularly** — Periodically review the **Activity** tab on critical secrets to detect unexpected access patterns or unauthorized modifications. Set up alerts for high-sensitivity secrets to receive notifications when they are accessed or modified.
-
-**Track references** — Use the **References** tab to understand where each secret is used across pipelines, connectors, and services. This helps identify the impact of rotation or deletion and ensures no orphaned references exist.
-
-**Clean up unused secrets** — Regularly audit secrets with zero references. Unused secrets represent unnecessary risk. Remove them after verifying they are not referenced by any active entity. Filter the secrets list by usage to identify candidates for cleanup.
+- **Enable audit logging**: Ensure audit logging is enabled at the account level. Harness logs all secret operations including creation, modification, deletion, and runtime access. These logs capture the user, timestamp, IP address, and the operation performed.
+- **Review activity regularly**: Periodically review the **Activity** tab on critical secrets to detect unexpected access patterns or unauthorized modifications. Set up alerts for high-sensitivity secrets to receive notifications when they are accessed or modified.
+- **Track references**: Use the **References** tab to understand where each secret is used across pipelines, connectors, and services. This helps identify the impact of rotation or deletion and ensures no orphaned references exist.
+- **Clean up unused secrets**: Regularly audit secrets with zero references. Unused secrets represent unnecessary risk. Remove them after verifying they are not referenced by any active entity. Filter the secrets list by usage to identify candidates for cleanup.
 
 :::info Audit Log Retention
 Harness retains audit logs based on your account plan. For compliance purposes, configure audit log export to your organization's SIEM or log management platform for long-term retention and analysis.
@@ -132,11 +123,11 @@ When using external secret managers, secret values remain in the region and infr
 
 Harness implements multiple layers of protection to prevent secret exposure:
 
-- **Log masking** — Secret values are automatically masked in pipeline execution logs. Any output matching a secret value is replaced with asterisks.
-- **UI protection** — Secret values are never displayed in the Harness UI. The value field shows only masked characters.
-- **API protection** — Secret values are never included in API responses. Only metadata (name, ID, type, tags) is returned.
-- **Configuration protection** — Secret expressions in pipeline YAML reference the secret by ID, not by value. The value is resolved only at runtime.
-- **Output protection** — Pipeline output variables that contain secret values are automatically masked in subsequent stages and the execution UI.
+- **Log masking**: Secret values are automatically masked in pipeline execution logs. Any output matching a secret value is replaced with asterisks.
+- **UI protection**: Secret values are never displayed in the Harness UI. The value field shows only masked characters.
+- **API protection**: Secret values are never included in API responses. Only metadata (name, ID, type, tags) is returned.
+- **Configuration protection**: Secret expressions in pipeline YAML reference the secret by ID, not by value. The value is resolved only at runtime.
+- **Output protection**: Pipeline output variables that contain secret values are automatically masked in subsequent stages and the execution UI.
 
 ### Compliance reporting
 

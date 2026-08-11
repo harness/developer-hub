@@ -15,8 +15,6 @@ Harness Agents let you bring powerful AI automation directly into your pipelines
 | **Governed** | Enterprise Controls | RBAC, OPA, Audit Logs |
 | **Multi-SCM** | Source Control | GitHub, GitLab, Bitbucket, Harness Code |
 
----
-
 ## How Agents work
 
 Agents follow a consistent execution flow from trigger to pull request. Every agent adheres to this lifecycle regardless of its specific task.
@@ -32,7 +30,7 @@ Agents follow a consistent execution flow from trigger to pull request. Every ag
 Agents follow a strict PR-based workflow. No changes are ever auto-merged; every modification goes through your team's standard review process.
 :::
 
----
+--- 
 
 ## AI Model connectors (Bring Your Own Model)
 
@@ -77,7 +75,7 @@ connector:
 
 `AIModel` connectors follow the same scoping rules as all Harness connectors. Define them at Account, Org, or Project level depending on your team's access needs. Once created, a connector can be passed as an `llm` input to any agent.
 
----
+--- 
 
 ## System Agents vs Custom Agents
 
@@ -96,7 +94,7 @@ Agents come in two flavors: System Agents shipped by Harness and Custom Agents b
 
 You can fork any System Agent to create a Custom Agent that you fully control. This lets you adjust prompts, target languages, containers, and approval flows while starting from a proven template. Forked agents can be stored in Git using GitX and versioned like any other pipeline template.
 
----
+--- 
 
 ## Template architecture
 
@@ -141,7 +139,7 @@ pipeline:
       description: API key for AI service
 ```
 
----
+--- 
 
 ## Agent catalog
 
@@ -163,7 +161,7 @@ Harness provides a growing catalog of pre-built agents spanning code quality, se
 | Unified Agent | Orchestration | Central orchestration agent for services, environments, connectors, secrets, and pipelines | Can create and update pipelines in-line |
 | Vulnerability Remediation | Security | Takes SAST/SCA scan results and generates targeted fixes | Wires fixes back to the failing pipeline |
 
----
+--- 
 
 ## Input types
 
@@ -198,7 +196,7 @@ pipeline:
 
 Inputs are referenced in pipeline YAML via expression syntax. Use `<+inputs.inputName>` to reference an input value, `<+steps.stepName.output.outputVariables.VAR>` for step outputs, and built-in variables like `<+account.identifier>` for platform context.
 
----
+--- 
 
 ## Using Agents in pipelines
 
@@ -247,7 +245,7 @@ pipeline:
 
 Agents are built from reusable AI steps implemented as containers (similar to Drone plugins). Step types include `ai-code-review`, `ai-autofix`, `ai-dep-upgrade`, `ai-error-analyzer`, and `ai-ff-cleanup`. Each step receives LLM credentials, repo context, and task-specific inputs. These steps can be used directly or composed into higher-level agents.
 
----
+--- 
 
 ## SCM Integration
 
@@ -266,7 +264,7 @@ Agents analyze the git remote URL to determine the SCM provider and configure au
 Two input patterns exist across agents: newer agents use connector-based inputs (`llmConnector`, `gitConnector`) while older agents use direct secret inputs (`anthropicKey`). Both patterns are fully supported.
 :::
 
----
+--- 
 
 ## Governance, RBAC, and security
 
@@ -303,7 +301,7 @@ Agents respect all the controls you already expect from Harness. Every AI action
 Never commit API keys or secrets directly in agent templates. Always use Harness secrets (`type: secret`) or connectors (`type: connector`) for sensitive values.
 :::
 
----
+--- 
 
 ## Call Agents using the API
 
@@ -313,9 +311,7 @@ In addition to using agents from the UI or YAML, you can invoke agents programma
 - **Pass inputs**: Provide connector, repo, prompt, and other parameters
 - **Track execution**: Monitor status and outputs like any other pipeline
 
----
-
-## Get started
+### Get started
 
 1. Create an `AIModel` connector for your LLM provider
 2. Explore System Agents in the Step Palette

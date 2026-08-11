@@ -1,7 +1,7 @@
 ---
 title: Advanced Configuration
 sidebar_label: Advanced Configuration
-description: Advanced Harness 3.0 pipeline capabilities — caching, volumes, failure strategies, execution strategies, concurrency control, container configuration, clone settings, permissions, and test reporting.
+description: Advanced Harness 3.0 pipeline capabilities; caching, volumes, failure strategies, execution strategies, concurrency control, container configuration, clone settings, permissions, and test reporting.
 sidebar_position: 8
 ---
 
@@ -17,10 +17,13 @@ Caching preserves files between pipeline runs to speed up builds. Harness 3.0 su
 interface CacheConfig {
   // Cache key (supports expressions and hashFiles)
   key: string
+
   // Fallback keys to try if the primary key misses
   restore_keys: string[]
+
   // Paths to cache
   paths: string[]
+
   // Cache backend (auto, s3, gcs)
   backend: string
 }
@@ -28,7 +31,7 @@ interface CacheConfig {
 
 ### Node.js cache
 
-```yaml title="cache-node.yaml"
+```yaml title="cache-node.yaml" showLineNumbers {3-9}
 stages:
   - name: build
     cache:
@@ -79,14 +82,19 @@ Volumes provide shared storage between steps within a stage. They are useful for
 interface VolumeConfig {
   // Volume name
   name: string
+
   // Volume type
   type: "temp" | "host" | "claim"
+
   // Mount path inside the container
   path: string
+
   // Persistent volume claim name (for claim type)
   claim_name: string
+
   // Host path (for host type)
   host_path: string
+
   // Size limit (for temp type)
   size: string
 }
@@ -94,7 +102,7 @@ interface VolumeConfig {
 
 ### Temporary volume
 
-```yaml title="volume-temp.yaml"
+```yaml title="volume-temp.yaml" showLineNumbers {3-7}
 stages:
   - name: build-and-test
     volumes:
@@ -106,6 +114,7 @@ stages:
       - name: build
         run: npm run build --output /workspace/dist
         container: node:20
+
       - name: test
         run: npm test -- --coverage-dir /workspace/dist/coverage
         container: node:20
@@ -113,7 +122,7 @@ stages:
 
 ### Host volume
 
-```yaml title="volume-host.yaml"
+```yaml title="volume-host.yaml" showLineNumbers {5-9}
 stages:
   - name: build
     runtime:
@@ -155,27 +164,31 @@ stages:
 
 Failure strategies define how the pipeline responds to errors at the step, stage, or pipeline level. Strategies can be simple actions or complex chains with escalation paths.
 
-```typescript title="failure-strategy-schema.ts"
+```typescript title="failure-strategy-schema.ts" showLineNumbers {}
 interface FailureStrategy {
   // Action to take on failure
   action: "ignore" | "retry" | "abort"
          | "manual-intervention" | "mark-as-success"
          | "rollback"
+
   // Error types to match
   errors: ("timeout" | "authentication" | "connectivity"
            | "verification" | "unknown" | "all")[]
+
   // Retry configuration
   retry: {
     count: number
     interval: Duration
     backoff: "fixed" | "exponential"
   }
+
   // Manual intervention configuration
   manual_intervention: {
     timeout: Duration
     on_timeout: "abort" | "ignore" | "mark-as-success"
     approvers: { users: string[]; groups: string[] }
   }
+
   // Rollback configuration
   rollback: {
     steps: Step[]
@@ -185,7 +198,7 @@ interface FailureStrategy {
 
 ### Error-specific strategies
 
-```yaml title="failure-error-specific.yaml"
+```yaml title="failure-error-specific.yaml" showLineNumbers {4-5,10-11,13-14}
 stages:
   - name: deploy
     on_failure:
@@ -210,7 +223,7 @@ stages:
 
 ### Rollback strategy
 
-```yaml title="failure-rollback.yaml"
+```yaml title="failure-rollback.yaml" showLineNumbers {3-6}
 stages:
   - name: deploy-production
     on_failure:
@@ -242,19 +255,23 @@ interface StrategyConfig {
     include: Record<string, any>[]
     exclude: Record<string, any>[]
   }
+
   // For loop: iterates over items
   for: {
     items: any[]
     max_concurrency: number
   }
+
   // While loop: repeats while condition is true
   while: {
     condition: string
     max_iterations: number
     delay: Duration
   }
+
   // Maximum concurrent instances
   max_concurrency: number
+
   // Fail-fast: stop all instances if one fails
   fail_fast: boolean
 }
@@ -262,7 +279,7 @@ interface StrategyConfig {
 
 ### Matrix with fail-fast
 
-```yaml title="strategy-matrix-failfast.yaml"
+```yaml title="strategy-matrix-failfast.yaml" showLineNumbers {7-8}
 stages:
   - name: test
     strategy:
@@ -279,7 +296,7 @@ stages:
 
 ### For loop with concurrency
 
-```yaml title="strategy-for-concurrent.yaml"
+```yaml title="strategy-for-concurrent.yaml" showLineNumbers {10}
 stages:
   - name: deploy-regions
     strategy:
@@ -310,8 +327,10 @@ Concurrency control limits how many instances of a pipeline or stage can run sim
 interface ConcurrencyConfig {
   // Group name for concurrency grouping
   group: string
+
   // Whether to cancel in-progress runs
   cancel_in_progress: boolean
+
   // Maximum number of concurrent runs (default: 1)
   limit: number
 }
@@ -319,7 +338,7 @@ interface ConcurrencyConfig {
 
 ### Pipeline-level concurrency
 
-```yaml title="concurrency-pipeline.yaml"
+```yaml title="concurrency-pipeline.yaml" showLineNumbers {2-5}
 pipeline:
   concurrency:
     group: deploy-${{ trigger.branch }}
@@ -333,7 +352,7 @@ pipeline:
 
 ### Stage-level concurrency
 
-```yaml title="concurrency-stage.yaml"
+```yaml title="concurrency-stage.yaml" showLineNumbers {3-5,10-12}
 stages:
   - name: deploy-staging
     concurrency:
@@ -341,6 +360,7 @@ stages:
       cancel_in_progress: true
     steps:
       - run: ./deploy.sh staging
+
   - name: deploy-production
     concurrency:
       group: production-deploy
@@ -359,26 +379,34 @@ Steps can run inside specific container images with custom configuration for pul
 interface ContainerConfig {
   // Container image
   image: string
+
   // Image pull policy
   pull: "always" | "never" | "if-not-present"
+
   // Registry credentials
   credentials: {
     username: string
     password: string
   }
+
   // Entry point override
   entrypoint: string | string[]
+
   // Resource limits
   resources: {
     requests: { cpu: string; memory: string }
     limits: { cpu: string; memory: string }
   }
+
   // Privileged mode
   privileged: boolean
+
   // User to run as
   user: string
+
   // Additional volumes
   volumes: VolumeMount[]
+
   // Network mode
   network: string
 }
@@ -386,7 +414,7 @@ interface ContainerConfig {
 
 ### Full container configuration
 
-```yaml title="container-full.yaml"
+```yaml title="container-full.yaml" showLineNumbers {4-17}
 steps:
   - name: build
     run: go build -o /output/app ./cmd/...
@@ -411,7 +439,7 @@ steps:
 
 ### Privileged container (Docker-in-Docker)
 
-```yaml title="container-dind.yaml"
+```yaml title="container-dind.yaml" showLineNumbers {7-8}
 steps:
   - name: build-image
     run: |
@@ -451,7 +479,7 @@ interface CloneConfig {
 
 ### Disable clone
 
-```yaml title="clone-disable.yaml"
+```yaml title="clone-disable.yaml" showLineNumbers {3}
 # Pipeline-level: disable clone for all stages
 pipeline:
   clone: false
@@ -463,7 +491,7 @@ pipeline:
 
 ### Custom clone configuration
 
-```yaml title="clone-custom.yaml"
+```yaml title="clone-custom.yaml" showLineNumbers {2-6}
 pipeline:
   clone:
     depth: 1
@@ -478,7 +506,7 @@ pipeline:
 
 ### Stage-level clone override
 
-```yaml title="clone-stage-override.yaml"
+```yaml title="clone-stage-override.yaml" showLineNumbers {7}
 stages:
   - name: build
     steps:
@@ -501,20 +529,25 @@ Pipeline permissions control access to resources and operations. Permissions can
 interface Permissions {
   // Repository permissions
   contents: "read" | "write"
+
   // Pull request permissions
   pull_requests: "read" | "write"
+
   // Issue permissions
   issues: "read" | "write"
+
   // Package permissions
   packages: "read" | "write"
+
   // Deployment permissions
   deployments: "read" | "write"
+
   // ID token permissions (for OIDC)
   id_token: "write"
 }
 ```
 
-```yaml title="permissions-example.yaml"
+```yaml title="permissions-example.yaml" showLineNumbers {2-5}
 pipeline:
   permissions:
     contents: read
@@ -542,8 +575,10 @@ Test reports collect and display test results in the Harness UI. Harness 3.0 sup
 interface ReportConfig {
   // Report format
   type: "junit" | "nunit"
+
   // Glob patterns for report files
   paths: string[]
+
   // Whether to fail the step if reports are not found
   fail_on_missing: boolean
 }
@@ -551,7 +586,7 @@ interface ReportConfig {
 
 ### JUnit reports
 
-```yaml title="reports-junit.yaml"
+```yaml title="reports-junit.yaml" showLineNumbers {4-7,11-14}
 steps:
   - name: unit-tests
     run: npm test -- --ci --reporters=default --reporters=jest-junit
@@ -559,6 +594,7 @@ steps:
       type: junit
       paths:
         - "junit.xml"
+
   - name: integration-tests
     run: pytest tests/ --junitxml=report.xml
     reports:
@@ -569,7 +605,7 @@ steps:
 
 ### NUnit reports
 
-```yaml title="reports-nunit.yaml"
+```yaml title="reports-nunit.yaml" showLineNumbers {8}
 steps:
   - name: dotnet-tests
     run: dotnet test --logger "trx" --logger "nunit"

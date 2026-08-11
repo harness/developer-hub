@@ -7,17 +7,15 @@ sidebar_position: 2
 
 Harness provides three AI-powered agents focused on code quality: Code Review for intelligent PR feedback, Code Coverage for automated test generation, and Autofix for automatic CI failure remediation. These agents use Claude AI to analyze code, generate improvements, and submit changes via pull requests.
 
----
-
 ## Code Review Agent
 
 The Code Review agent automatically reviews code changes in pull requests and posts intelligent feedback directly to the PR. It uses a three-stage process for comprehensive analysis.
 
 ### How it works
 
-1. **Review Prompt Generation** — An analysis agent examines the PR diff and generates a targeted review prompt
-2. **AI Code Review** — Claude AI (up to 50 iterations) performs comprehensive code review following the generated prompt
-3. **Comment Posting** — Review comments are posted directly to the PR via Harness SCM
+1. **Review Prompt Generation**: An analysis agent examines the PR diff and generates a targeted review prompt
+2. **AI Code Review**: Claude AI (up to 50 iterations) performs comprehensive code review following the generated prompt
+3. **Comment Posting**: Review comments are posted directly to the PR via Harness SCM
 
 ### Key inputs
 
@@ -102,11 +100,11 @@ The Code Coverage agent analyzes codebases and generates comprehensive unit test
 
 ### How it works
 
-1. **Codebase Analysis** — Scans source files and identifies coverage gaps
-2. **Test Generation** — Claude AI (up to 300 iterations) generates comprehensive unit tests
-3. **Coverage Verification** — Runs tests and verifies coverage targets are met
-4. **Report Generation** — Creates a COVERAGE.md with per-file coverage breakdown
-5. **PR Creation** — Pushes to a unique branch and creates a PR with coverage report as a comment
+1. **Codebase Analysis**: Scans source files and identifies coverage gaps.
+2. **Test Generation**: Claude AI (up to 300 iterations) generates comprehensive unit tests.
+3. **Coverage Verification**: Runs tests and verifies coverage targets are met.
+4. **Report Generation**: Creates a COVERAGE.md with per-file coverage breakdown.
+5. **PR Creation**: Pushes to a unique branch and creates a PR with coverage report as a comment.
 
 ### Coverage targets
 
@@ -234,15 +232,15 @@ The Autofix agent automatically diagnoses and fixes CI pipeline failures. When a
 
 ### How it works
 
-1. **Log Analysis** — Fetches execution logs from the failed CI pipeline
-2. **Diagnosis** — A remediation agent analyzes the failure and identifies the root cause
-3. **Fix Generation** — A coding agent (Claude AI, up to 50 iterations) applies code changes to fix the issue
-4. **Branch & PR** — Pushes fixes to an `ai-autofix` branch and creates a pull request
+1. **Log Analysis**: Fetches execution logs from the failed CI pipeline.
+2. **Diagnosis**: A remediation agent analyzes the failure and identifies the root cause.
+3. **Fix Generation**: A coding agent (Claude AI, up to 50 iterations) applies code changes to fix the issue.
+4. **Branch & PR**: Pushes fixes to an `ai-autofix` branch and creates a pull request.
 
 ### Two-stage AI process
 
-- **Remediation Agent** — Specializes in diagnosing CI failures from logs and error messages
-- **Coding Agent** — Takes the diagnosis and applies targeted code fixes
+- **Remediation Agent**: Specializes in diagnosing CI failures from logs and error messages.
+- **Coding Agent**: Takes the diagnosis and applies targeted code fixes.
 
 ### Key inputs
 

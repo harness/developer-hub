@@ -1,16 +1,17 @@
 ---
 title: Infrastructure & Runtimes
 sidebar_label: Infrastructure & Runtimes
-description: Configure the compute resources where Harness 3.0 pipeline stages execute — Cloud, Kubernetes, Shell, and VM runtimes with platform and machine size options.
+description: Configure the compute resources where Harness 3.0 pipeline stages execute; Cloud, Kubernetes, Shell, and VM runtimes with platform and machine size options.
 sidebar_position: 5
 ---
 
-Infrastructure defines the compute resources where pipeline stages execute. Harness 3.0 supports multiple runtime types — Cloud (Harness-hosted), Kubernetes, Shell (bare-metal or VM), and VM runtimes. The runtime determines how steps are isolated, what resources are available, and how networking is configured.
+Infrastructure defines the compute resources where pipeline stages execute. Harness 3.0 supports multiple runtime types; Cloud (Harness-hosted), Kubernetes, Shell (bare-metal or VM), and VM runtimes. The runtime determines how steps are isolated, what resources are available, and how networking is configured.
 
 ```typescript title="infrastructure-schema.ts"
 interface Runtime {
   // Runtime type
   type: "cloud" | "kubernetes" | "shell" | "vm"
+
   // Runtime-specific configuration
   spec: RuntimeCloud | RuntimeKubernetes | RuntimeShell | RuntimeVM
 }
@@ -18,26 +19,28 @@ interface Runtime {
 interface Platform {
   // Operating system
   os: "linux" | "macos" | "windows"
+
   // CPU architecture
   arch: "amd64" | "arm64"
+
   // OS variant (e.g., alpine, debian)
   variant: string
+
   // OS version
   version: string
+
   // Feature flags
   features: string[]
 }
 ```
 
----
-
 ## Cloud runtime
 
-The Cloud runtime uses Harness-hosted infrastructure. No delegate or cluster configuration is required — Harness manages compute, scaling, and cleanup automatically.
+The Cloud runtime uses Harness-hosted infrastructure. No delegate or cluster configuration is required; Harness manages compute, scaling, and cleanup automatically.
 
 ### Short configuration
 
-```yaml title="cloud-short.yaml"
+```yaml title="cloud-short.yaml" showLineNumbers {3}
 stages:
   - name: build
     runtime: cloud
@@ -48,7 +51,7 @@ stages:
 
 ### Full configuration
 
-```yaml title="cloud-full.yaml"
+```yaml title="cloud-full.yaml" showLineNumbers {3-9}
 stages:
   - name: build
     runtime:
@@ -74,7 +77,7 @@ When no runtime is specified, Harness defaults to Cloud runtime with `size: flex
 
 The Kubernetes runtime executes pipeline stages as pods in your own Kubernetes cluster. This provides full control over the execution environment, network access, and resource allocation.
 
-```yaml title="k8s-runtime.yaml"
+```yaml title="k8s-runtime.yaml" showLineNumbers {3-7}
 stages:
   - name: build
     runtime:
@@ -112,7 +115,7 @@ Set resource requests and limits to ensure consistent performance and prevent no
 
 The Shell runtime executes steps directly on the host machine where the Harness delegate is running. No containerization is involved. This is useful for on-premise environments, legacy systems, or workloads that require direct access to host resources.
 
-```yaml title="shell-runtime.yaml"
+```yaml title="shell-runtime.yaml" showLineNumbers {3-8}
 stages:
   - name: deploy-on-prem
     runtime:
@@ -139,7 +142,7 @@ Shell runtime steps execute with the same permissions as the Harness delegate pr
 
 The VM runtime provisions a dedicated virtual machine for each stage execution. This provides full machine isolation, root access, and the ability to install arbitrary software. VMs are provisioned on demand and destroyed after the stage completes.
 
-```yaml title="vm-runtime.yaml"
+```yaml title="vm-runtime.yaml" showLineNumbers {3-8}
 stages:
   - name: build
     runtime:
@@ -172,7 +175,7 @@ The platform configuration specifies the operating system, CPU architecture, var
 | `version` | `string` | Specific OS version string |
 | `features` | `string[]` | Feature flags such as `docker`, `gpu`, `nested-virtualization` |
 
-```yaml title="platform-config.yaml"
+```yaml title="platform-config.yaml" showLineNumbers {7-11,21-23}
 stages:
   - name: build-linux
     runtime:
@@ -186,6 +189,7 @@ stages:
             - docker
     steps:
       - run: docker build -t my-app .
+
   - name: build-macos
     runtime:
       type: cloud
@@ -213,17 +217,11 @@ Machine sizes control the CPU and memory allocated to Cloud and VM runtimes.
 | `xlarge` | 8 | 16 GB | Heavy compilation (C++, Rust), large monorepos, ML workloads. |
 | `xxlarge` | 16 | 32 GB | Enterprise-scale builds, large test suites, resource-intensive operations. |
 
-:::tip Cost Optimization
-Use `flex` size for most workloads. Harness Cloud automatically scales resources to match demand, so you only pay for what you use. Reserve fixed sizes for workloads with specific resource requirements.
-:::
-
----
-
 ## Multi-platform build example
 
 Build the same application on multiple platforms simultaneously using matrix strategy with platform configuration.
 
-```yaml title="multi-platform-build.yaml"
+```yaml title="multi-platform-build.yaml" showLineNumbers {4-6,19-21}
 pipeline:
   stages:
     - name: build
@@ -250,3 +248,7 @@ pipeline:
             echo "Building on ${{ matrix.platform.os }}/${{ matrix.platform.arch }}"
             make build GOOS=${{ matrix.platform.os }} GOARCH=${{ matrix.platform.arch }}
 ```
+
+:::tip Cost Optimization
+Use `flex` size for most workloads. Harness Cloud automatically scales resources to match demand, so you only pay for what you use. Reserve fixed sizes for workloads with specific resource requirements.
+:::

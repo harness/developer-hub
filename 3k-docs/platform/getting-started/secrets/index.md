@@ -3,13 +3,11 @@ title: Secrets Management Overview
 sidebar_label: Secrets Overview
 id: index
 slug: /platform/getting-started/secrets
-description: Harness Secrets provides a secure credential management system for CI/CD pipelines — store, manage, and reference sensitive data with full encryption, access control, and audit trails.
+description: Harness Secrets provides a secure credential management system for CI/CD pipelines; store, manage, and reference sensitive data with full encryption, access control, and audit trails.
 sidebar_position: 1
 ---
 
 Harness Secrets provides a secure credential management system for CI/CD pipelines. Store, manage, and reference sensitive data such as API keys, passwords, certificates, and tokens with full encryption, access control, and audit trails.
-
----
 
 ## What are secrets?
 
@@ -17,17 +15,12 @@ Secrets in Harness are encrypted values that store sensitive information require
 
 ### Purpose
 
-**Encrypted Storage** — All secret values are encrypted at rest using AES-256 encryption. Values are decrypted only at the point of use during pipeline execution.
-
-**Centralized Management** — Manage all credentials from a single location with consistent naming, scoping, and organization across your account hierarchy.
-
-**Access Control** — Role-based access control (RBAC) governs who can view, create, edit, delete, and use secrets. Permissions are enforced at every scope level.
-
-**External System Integration** — Connect to external secret managers such as HashiCorp Vault, AWS Secrets Manager, GCP Secret Manager, and Azure Key Vault to leverage your existing secrets infrastructure.
-
-**Audit Trails** — Every secret access, creation, modification, and deletion is logged. Activity logs provide a complete history for compliance and security review.
-
-**Rotation Support** — Rotate secrets manually or automatically through external secret managers. Harness resolves the latest value at execution time, minimizing downtime during rotation.
+- **Encrypted Storage**: All secret values are encrypted at rest using AES-256 encryption. Values are decrypted only at the point of use during pipeline execution.
+- **Centralized Management**: Manage all credentials from a single location with consistent naming, scoping, and organization across your account hierarchy.
+- **Access Control**: Role-based access control (RBAC) governs who can view, create, edit, delete, and use secrets. Permissions are enforced at every scope level.
+- **External System Integration**: Connect to external secret managers such as HashiCorp Vault, AWS Secrets Manager, GCP Secret Manager, and Azure Key Vault to leverage your existing secrets infrastructure.
+- **Audit Trails**: Every secret access, creation, modification, and deletion is logged. Activity logs provide a complete history for compliance and security review.
+- **Rotation Support**: Rotate secrets manually or automatically through external secret managers. Harness resolves the latest value at execution time, minimizing downtime during rotation.
 
 ### Benefits
 
@@ -39,8 +32,6 @@ Secrets in Harness are encrypted values that store sensitive information require
 | Reusability | Define a secret once and reference it across multiple pipelines, connectors, and services using expressions. |
 | Traceability | Track where each secret is used, who accessed it, and when it was last modified through the activity log. |
 | Rotation | Support for manual and automated rotation with external managers, resolving latest values at runtime. |
-
----
 
 ## Key concepts
 
@@ -86,11 +77,11 @@ The default secret manager provided by Harness uses AES-256 encryption to store 
 
 For organizations with existing secret management infrastructure, Harness integrates with the following external providers:
 
-- **HashiCorp Vault** — Enterprise-grade secret management with dynamic secrets, leasing, and renewal.
-- **AWS Secrets Manager** — AWS-native secret storage with automatic rotation and fine-grained IAM policies.
-- **GCP Secret Manager** — Google Cloud-native secret storage with IAM-based access control and versioning.
-- **Azure Key Vault** — Microsoft Azure secret and key management with HSM-backed encryption.
-- **Custom Secret Manager** — Connect to any secret manager using a custom shell script executed on a Harness Delegate.
+- **HashiCorp Vault**: Enterprise-grade secret management with dynamic secrets, leasing, and renewal.
+- **AWS Secrets Manager**: AWS-native secret storage with automatic rotation and fine-grained IAM policies.
+- **GCP Secret Manager**: Google Cloud-native secret storage with IAM-based access control and versioning.
+- **Azure Key Vault**: Microsoft Azure secret and key management with HSM-backed encryption.
+- **Custom Secret Manager**: Connect to any secret manager using a custom shell script executed on a Harness Delegate.
 
 :::info External Secrets Stay in Your Infrastructure
 When you use an external secret manager, the actual secret values never leave your infrastructure. Harness stores only a reference to the secret path. At execution time, the Harness Delegate retrieves the value directly from your secret manager and injects it into the pipeline execution context.
@@ -119,7 +110,7 @@ Secrets are referenced in pipelines, connectors, and configurations using Harnes
 
 Secrets can be referenced anywhere a string value is expected in your pipeline YAML:
 
-```yaml title="connector-with-secret.yaml"
+```yaml title="connector-with-secret.yaml" showLineNumbers {10}
 version: 1
 kind: connector
 spec:
@@ -137,7 +128,7 @@ spec:
 
 In shell script steps, secret expressions are resolved before the script executes. The resolved value is masked in logs:
 
-```bash title="shell-script-secret.sh"
+```bash title="shell-script-secret.sh" showLineNumbers {2}
 # The expression is resolved before execution
 export API_KEY=<+secrets.getValue("api_key")>
 

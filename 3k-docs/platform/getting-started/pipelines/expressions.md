@@ -1,13 +1,11 @@
 ---
 title: Expression Mapping
 sidebar_label: Expression Mapping
-description: Complete reference mapping built-in expressions from Harness NG to Harness 3.0 — new ${{ }} syntax, snake_case naming, and all expression contexts.
+description: Complete reference mapping built-in expressions from Harness NG to Harness 3.0, new ${{ }} syntax, snake_case naming, and all expression contexts.
 sidebar_position: 7
 ---
 
 This guide provides a comprehensive mapping of built-in expressions between Harness NG and Harness 3.0 (Unified Pipeline). Use this reference when migrating your pipelines to the new expression syntax.
-
----
 
 ## Key syntax changes
 
@@ -19,8 +17,6 @@ This guide provides a comprehensive mapping of built-in expressions between Harn
 :::tip Migration Tip
 When migrating pipelines from NG to 3.0, use find-and-replace to update the expression wrapper from `<+...>` to `${{ ... }}`, then update individual property names from camelCase to snake_case. The Harness pipeline converter can handle most of these transformations automatically.
 :::
-
----
 
 ## Pipeline expressions
 
@@ -44,7 +40,7 @@ When migrating pipelines from NG to 3.0, use find-and-replace to update the expr
 | Triggered By Email | `<+pipeline.triggeredBy.email>` | `${{ pipeline.triggered_by.email }}` |
 | Step Status (cross-stage) | `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.status>` | `${{ pipeline.stages.stage_id.execution.step.status }}` |
 
----
+--- 
 
 ## Stage expressions
 
@@ -60,7 +56,7 @@ When migrating pipelines from NG to 3.0, use find-and-replace to update the expr
 | Execution URL | `<+stage.executionUrl>` | `${{ stage.execution_url }}` |
 | Delegate Selectors | `<+stage.delegateSelectors>` | `${{ stage.delegate_selectors }}` |
 
----
+--- 
 
 ## Step expressions
 
@@ -97,7 +93,7 @@ When migrating pipelines from NG to 3.0, use find-and-replace to update the expr
 | Service Variables | `<+serviceVariables.VARIABLE_NAME>` | `${{ service.variables.<var_name> }}` |
 | Service Variable Overrides | `<+serviceVariableOverrides.VARIABLE_NAME>` | `${{ service.variables_override.<var_name> }}` |
 
----
+--- 
 
 ## Environment expressions
 
@@ -108,7 +104,7 @@ When migrating pipelines from NG to 3.0, use find-and-replace to update the expr
 | Environment Description | `<+env.description>` | `${{ environment.description }}` |
 | Environment Type | `<+env.type>` | `${{ environment.type }}` |
 
----
+--- 
 
 ## Infrastructure expressions
 
@@ -120,7 +116,7 @@ When migrating pipelines from NG to 3.0, use find-and-replace to update the expr
 | Namespace | `<+infra.namespace>` | `${{ infrastructure.namespace }}` |
 | Release Name | `<+infra.releaseName>` | `${{ infrastructure.release_name }}` |
 
----
+--- 
 
 ## Artifact expressions
 
@@ -140,7 +136,7 @@ When migrating pipelines from NG to 3.0, use find-and-replace to update the expr
 | Docker Config JSON Secret | `<+artifacts.primary.dockerConfigJsonSecret>` | `${{ artifacts.docker_config_json_secret }}` |
 | Rollback Artifact Image | `<+rollbackArtifact.metadata.image>` | `${{ rollback.artifact.image }}` |
 
----
+--- 
 
 ## Sidecar expressions
 
@@ -152,7 +148,7 @@ When migrating pipelines from NG to 3.0, use find-and-replace to update the expr
 | Sidecar Connector Ref | `<+artifacts.sidecars.SIDECAR_ID.connectorRef>` | `${{ sidecar.<sidecar_name>.connector_id }}` |
 | Sidecar Type | `<+artifacts.sidecars.SIDECAR_ID.type>` | `${{ sidecar.<sidecar_name>.type }}` |
 
----
+--- 
 
 ## Manifest expressions
 
@@ -173,7 +169,7 @@ When migrating pipelines from NG to 3.0, use find-and-replace to update the expr
 | Helm Base Path | `<+manifests.MANIFEST_ID.helm.metadata.basePath>` | `${{ manifest.base_path }}` |
 | Helm Bucket Name | `<+manifests.MANIFEST_ID.helm.metadata.bucketName>` | `${{ manifest.bucket_name }}` |
 
----
+--- 
 
 ## Config file expressions
 
@@ -182,7 +178,7 @@ When migrating pipelines from NG to 3.0, use find-and-replace to update the expr
 | Config File Content (as string) | `<+configFiles.getAsString("CONFIG_ID")>` | `${{ files.CONFIG_ID.content }}` |
 | Config File Content (base64) | `<+configFiles.getAsBase64("CONFIG_ID")>` | `${{ files.CONFIG_ID.base64 }}` |
 
----
+--- 
 
 ## Secret expressions
 
@@ -190,7 +186,7 @@ When migrating pipelines from NG to 3.0, use find-and-replace to update the expr
 |---|---|---|
 | Secret by Identifier | `<+secrets.getValue("secretId")>` | `${{ secrets.secretId }}` |
 
----
+--- 
 
 ## Trigger expressions
 
@@ -210,7 +206,7 @@ When migrating pipelines from NG to 3.0, use find-and-replace to update the expr
 | Artifact Source Connector | `<+trigger.artifact.source.connectorRef>` | `${{ trigger.artifact.source.connector.id }}` |
 | Artifact Source Image Path | `<+trigger.artifact.source.imagePath>` | `${{ trigger.artifact.source.image_path }}` |
 
----
+--- 
 
 ## Codebase expressions
 
@@ -238,7 +234,7 @@ When migrating pipelines from NG to 3.0, use find-and-replace to update the expr
 | Base Commit SHA | `<+codebase.baseCommitSha>` | `${{ codebase.base_sha }}` |
 | Merge Commit SHA | `<+codebase.mergeSha>` | `${{ codebase.merge_sha }}` |
 
----
+--- 
 
 ## Variable expressions
 

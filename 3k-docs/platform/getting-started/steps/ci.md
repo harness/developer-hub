@@ -1,13 +1,11 @@
 ---
 title: CI Steps Reference
 sidebar_label: CI Steps
-description: Reference for all Harness CI step templates — building, testing, scanning, caching, and publishing artifacts within CI pipelines.
+description: Reference for all Harness CI step templates; building, testing, scanning, caching, and publishing artifacts within CI pipelines.
 sidebar_position: 2
 ---
 
 Harness CI steps provide purpose-built actions for building, testing, scanning, and publishing artifacts within your pipelines. Each step is a versioned template referenced using the `uses:` keyword with a set of typed inputs.
-
----
 
 ## Build & push to Docker
 
@@ -51,7 +49,7 @@ steps:
 When caching is enabled, the step uses buildx with layer caching for faster builds. When disabled, it falls back to kaniko.
 :::
 
----
+--- 
 
 ## Build & push to ECR
 
@@ -86,7 +84,7 @@ steps:
         - <+pipeline.sequenceId>
 ```
 
----
+--- 
 
 ## Build & push to GAR
 
@@ -113,7 +111,7 @@ steps:
         - latest
 ```
 
----
+--- 
 
 ## Build & push to Harness Artifact Registry
 
@@ -188,7 +186,7 @@ steps:
       depth: 1
 ```
 
----
+--- 
 
 ## Run step (v2)
 
@@ -206,7 +204,7 @@ steps:
         npm test
 ```
 
----
+--- 
 
 ## Cache management steps
 

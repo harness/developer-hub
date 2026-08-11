@@ -219,9 +219,11 @@ stages:
         - name: api-tests
           steps:
             - run: npm run test:api
+
         - name: e2e-tests
           steps:
             - run: npm run test:e2e
+
         - name: performance-tests
           steps:
             - run: npm run test:perf
@@ -236,6 +238,7 @@ stages:
   - name: build
     steps:
       - run: npm run build
+
   - name: deploy-stages
     if: ${{ trigger.branch == "main" }}
     group:
@@ -243,6 +246,7 @@ stages:
         - name: deploy-staging
           steps:
             - run: ./deploy.sh staging
+
         - name: deploy-production
           steps:
             - run: ./deploy.sh production
@@ -282,18 +286,22 @@ stages:
   - name: build
     steps:
       - run: npm run build
+
   - name: test-all
     parallel:
       stages:
         - name: unit-tests
           steps:
             - run: npm run test:unit
+
         - name: integration-tests
           steps:
             - run: npm run test:integration
+
         - name: lint
           steps:
             - run: npm run lint
+
   - name: deploy
     steps:
       - run: ./deploy.sh
@@ -313,10 +321,12 @@ stages:
         - name: unit-tests
           steps:
             - run: npm run test:unit
+
         - name: security-scan
           if: ${{ trigger.branch == "main" }}
           steps:
             - run: npm run security:scan
+
         - name: license-check
           steps:
             - run: npm run license:check
@@ -395,14 +405,17 @@ stages:
   - name: build
     steps:
       - run: npm run build
+
   - name: deploy-staging
     if: ${{ trigger.branch == "develop" }}
     steps:
       - run: ./deploy.sh staging
+
   - name: deploy-production
     if: ${{ trigger.branch == "main" && trigger.event == "push" }}
     steps:
       - run: ./deploy.sh production
+
   - name: notify
     if: always()
     steps:
@@ -420,6 +433,7 @@ stages:
   - name: build
     steps:
       - run: npm run build
+      
   - name: experimental-deploy
     disabled: true
     steps:

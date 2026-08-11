@@ -3,7 +3,7 @@ title: Pipeline YAML v1 Overview
 sidebar_label: Pipeline YAML v1
 id: index
 slug: /platform/getting-started/pipeline
-description: The v1 YAML specification for Harness 3.0 pipelines — reduced boilerplate, expression-based conditionals, typed inputs, and compatibility with GitHub Actions and Drone workflows.
+description: The v1 YAML specification for Harness 3.0 pipelines; reduced boilerplate, expression-based conditionals, typed inputs, and compatibility with GitHub Actions and Drone workflows.
 sidebar_position: 1
 ---
 
@@ -13,7 +13,7 @@ A Pipeline is the top-level execution unit in Harness 3.0. It defines a sequence
 In Harness 3.0, a pipeline is declared using the `pipeline:` root key at the top of the YAML file. All pipeline configuration (stages, inputs, triggers, etc.) is nested under this root key. The v1 parser supports short-form syntax, expression-based conditionals, and typed inputs. See the spec repository for the complete schema definition.
 :::
 
-## Schema Definition
+## Schema definition
 
 The `Pipeline` interface defines the complete structure of a v1 pipeline. All fields are optional except `stages`, which must contain at least one stage.
 
@@ -83,7 +83,7 @@ interface Pipeline {
 }
 ```
 
-## Properties Reference
+## Properties reference
 
 All pipeline-level properties are optional unless otherwise noted.
 
@@ -106,11 +106,11 @@ All pipeline-level properties are optional unless otherwise noted.
 | `jobs` | `Record<string, Stage>` | No | GitHub Actions compatible stage definitions (alternative to `stages`). |
 | `permissions` | `Permissions` | No | GitHub token permissions (`read-all`, `write-all`, or granular per-resource). |
 
-## Basic Examples
+## Basic examples
 
 The v1 specification supports multiple syntax forms, from minimal one-liners to fully expanded configurations.
 
-### Minimal Pipeline
+### Minimal pipeline
 
 The simplest valid pipeline contains a single stage with one step.
 
@@ -122,7 +122,7 @@ pipeline:
         - run: echo "Hello, Harness 3.0!"
 ```
 
-### Pipeline with Multiple Stages
+### Pipeline with multiple stages
 
 ```yaml title="multi-stage-pipeline.yaml" showLineNumbers {1-4}
 pipeline:
@@ -139,7 +139,7 @@ pipeline:
         - run: ./deploy.sh
 ```
 
-### Global Environment Variables
+### Global environment variables
 
 Environment variables declared at the pipeline level are injected into all stages and steps.
 
@@ -155,7 +155,7 @@ pipeline:
         - run: echo "Deploying to $REGION"
 ```
 
-### Input Variables
+### Input variables
 
 Declare typed inputs that can be supplied when triggering the pipeline manually or via API.
 
@@ -187,7 +187,7 @@ pipeline:
       default: 3
 ```
 
-### Conditional Execution
+### Conditional execution
 
 Use the `if` property with an expression to conditionally execute the entire pipeline.
 
@@ -200,7 +200,7 @@ pipeline:
         - run: ./deploy.sh production
 ```
 
-### Repository Override
+### Repository override
 
 Override the default repository when the pipeline YAML is stored separately from the application source.
 
@@ -219,11 +219,11 @@ pipeline:
         - run: make build
 ```
 
-## Event Triggers
+## Event triggers
 
 The `on` property defines when a pipeline should automatically trigger. Harness 3.0 supports `push`, `pull_request`, `tag`, `schedule`, `workflow_dispatch`, and more.
 
-### Push Trigger with Filters
+### Push trigger with filters
 
 ```yaml title="push-trigger.yaml" showLineNumbers {2-14}
 pipeline:
@@ -246,7 +246,7 @@ pipeline:
         - run: npm run build
 ```
 
-### Pull Request Trigger
+### Pull request trigger
 
 ```yaml title="pr-trigger.yaml" showLineNumbers {2-3,7-10}
 pipeline:
@@ -266,7 +266,7 @@ pipeline:
         - run: npm test
 ```
 
-### Multiple Triggers
+### Multiple triggers
 
 ```yaml title="multiple-triggers.yaml"
 pipeline:
@@ -285,7 +285,7 @@ pipeline:
         - run: npm ci && npm test
 ```
 
-### Tag Trigger
+### Tag trigger
 
 ```yaml title="tag-trigger.yaml" showLineNumbers {4-7}
 pipeline:
@@ -305,7 +305,7 @@ pipeline:
 Cron triggers use standard 5-field cron syntax (minute, hour, day-of-month, month, day-of-week). All scheduled pipelines run in the UTC time zone by default.
 :::
 
-## Concurrency Control
+## Concurrency control
 
 Concurrency control prevents multiple runs of the same pipeline from executing simultaneously. This is critical for deployment pipelines where overlapping runs could cause conflicts.
 
@@ -320,7 +320,7 @@ pipeline:
         - run: ./deploy.sh
 ```
 
-### Concurrency with Cancel-in-Progress
+### Concurrency with cancel-in-progress
 
 Use expressions to create dynamic concurrency groups and automatically cancel in-flight runs.
 
@@ -339,11 +339,11 @@ pipeline:
 When `cancel-in-progress: true` is set, any in-flight pipeline run in the same concurrency group will be cancelled when a new run starts. Use this carefully with deployment pipelines to avoid leaving infrastructure in a partial state.
 :::
 
-## GitHub Actions Compatibility
+## GitHub Actions compatibility
 
 Harness 3.0 supports GitHub Actions-style `jobs:` syntax as an alternative to `stages:`. This makes it easier to migrate existing GitHub Actions workflows to Harness. Key GHA features supported include `runs-on:` for runner selection, `needs:` for job dependencies, and `uses:` for referencing GitHub Actions directly.
 
-### GHA-Compatible Pipeline
+### GHA-compatible pipeline
 
 ```yaml title="gha-compat.yaml" showLineNumbers {1-2,6-8,10,14-15}
 name: CI Pipeline
@@ -366,7 +366,7 @@ jobs:
       - run: ./deploy.sh
 ```
 
-### Permissions (GHA Feature)
+### Permissions (GHA feature)
 
 Configure GitHub token permissions at the pipeline level. Supports shorthand (`read-all`, `write-all`) or granular per-resource permissions.
 

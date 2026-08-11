@@ -1,13 +1,11 @@
 ---
 title: Connector Types
 sidebar_label: Connector Types
-description: Reference for all connector types in Harness 3.0 — code repositories, artifact registries, cloud providers, secret managers, infrastructure, monitoring, ticketing, and more.
+description: Reference for all connector types in Harness 3.0; code repositories, artifact registries, cloud providers, secret managers, infrastructure, monitoring, ticketing, and more.
 sidebar_position: 2
 ---
 
 Harness 3.0 supports a wide range of connector types organized into categories. Each category serves a specific integration purpose within the platform.
-
----
 
 ## Code repositories
 
@@ -170,7 +168,6 @@ JDBC connectors enable direct database connectivity for data validation steps, d
 ### Documentation (Confluence)
 
 Confluence connectors allow pipelines to read from or publish to Confluence pages, enabling automated documentation updates as part of the release process.
-
 
 ### MCP (GitHub MCP)
 

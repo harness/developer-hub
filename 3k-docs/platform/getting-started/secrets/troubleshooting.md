@@ -1,13 +1,11 @@
 ---
 title: Secrets Troubleshooting
 sidebar_label: Troubleshooting
-description: Diagnose and resolve common issues with secrets in Harness 3.0 — secret not found, external manager connection failures, stale cached values, and file decode errors.
+description: Diagnose and resolve common issues with secrets in Harness 3.0; secret not found, external manager connection failures, stale cached values, and file decode errors.
 sidebar_position: 5
 ---
 
 Diagnose and resolve common issues with secrets in Harness 3.0. This guide covers the most frequently encountered problems, their root causes, and step-by-step resolution procedures.
-
----
 
 ## Secret not found
 
@@ -121,7 +119,7 @@ Harness caches resolved secret values for up to 60 seconds to reduce load on sec
 **Solution:** Wait at least 60 seconds after updating a secret before running a pipeline that references it. The cache will expire and the new value will be retrieved on the next execution.
 
 :::info Cache Duration
-There is no manual cache invalidation mechanism — the cache expires automatically after 60 seconds.
+There is no manual cache invalidation mechanism; the cache expires automatically after 60 seconds.
 :::
 
 </details>
@@ -202,7 +200,7 @@ Always validate decoded file secrets before use. For JSON files, use `python3 -m
 Follow this five-step process to systematically identify and resolve secret-related issues.
 
 <details>
-<summary>Step 1 — Verify the secret exists</summary>
+<summary>Step 1: Verify the secret exists</summary>
 
 Navigate to the Secrets page at the expected scope (Project, Organization, or Account). Search for the secret by name or identifier. Confirm the secret exists and note its exact identifier and scope.
 
@@ -215,7 +213,7 @@ curl -s -X GET \
 </details>
 
 <details>
-<summary>Step 2 — Test secret access with a minimal pipeline</summary>
+<summary>Step 2: Test secret access with a minimal pipeline</summary>
 
 Create a minimal pipeline that references the secret in a shell script step. This isolates the secret access from other pipeline logic.
 
@@ -240,21 +238,21 @@ pipeline:
 </details>
 
 <details>
-<summary>Step 3 — Check secret references</summary>
+<summary>Step 3: Check secret references</summary>
 
 Open the secret details and navigate to the **References** tab. Verify that the pipeline in question is listed as a reference. If it is not listed, the expression syntax in the pipeline may be incorrect.
 
 </details>
 
 <details>
-<summary>Step 4 — Review the activity log</summary>
+<summary>Step 4: Review the activity log</summary>
 
 Open the secret details and navigate to the **Activity** tab. Review recent events to check for unexpected modifications, deletions, or access failures. Look for error entries that indicate connection issues to the secret manager.
 
 </details>
 
 <details>
-<summary>Step 5 — Validate permissions</summary>
+<summary>Step 5: Validate permissions</summary>
 
 Navigate to **Access Control** in your project or organization settings. Verify that the pipeline execution user or service account has the `Access` permission for the secret resource at the correct scope level.
 

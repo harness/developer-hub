@@ -50,11 +50,9 @@ Every connector consists of the following components:
 
 Connectors transition through the following states:
 
-**Active / Success**: The connector has been tested and the connection to the external service is healthy. Pipelines can use this connector without issues.
-
-**Failed**: The most recent connection test failed. This could indicate expired credentials, network issues, or permission changes on the external service.
-
-**Unconfigured**: The connector has been created but not yet tested, or required fields are missing. It must be configured and tested before use in pipelines.
+- **Active / Success**: The connector has been tested and the connection to the external service is healthy. Pipelines can use this connector without issues.
+- **Failed**: The most recent connection test failed. This could indicate expired credentials, network issues, or permission changes on the external service.
+- **Unconfigured**: The connector has been created but not yet tested, or required fields are missing. It must be configured and tested before use in pipelines.
 
 ## Connector scope
 
@@ -66,9 +64,9 @@ Connectors in Harness 3.0 can be created at three hierarchical levels. The scope
 | Organization | Available to all projects within the organization. | Team-level artifact registries, department-specific monitoring integrations. |
 | Project | Available only within the specific project. | Application-specific service accounts, project-scoped tokens, environment-specific connectors. |
 
-### Referencing across scopes
-
+:::tip Referencing across scopes
 When referencing a connector from a higher scope, use the scope prefix in the identifier. Use `account.my_connector` for account-level connectors or `org.my_connector` for organization-level connectors. Project-level connectors are referenced by their identifier alone.
+:::
 
 ## Connection types
 
@@ -98,11 +96,13 @@ Understanding how connectors interact with the Harness platform during pipeline 
 
 6. **Monitoring**: The connection status, latency, and operation result are recorded for observability. Failed connections update the connector status and can trigger alerts.
 
-### Loose coupling by design
+:::tip Loose coupling by design
+Connectors decouple pipeline logic from infrastructure details. A pipeline does not need to know the specific credentials, endpoints, or authentication mechanism; it only needs the connector identifier. This means you can rotate credentials, change endpoints, or swap providers without modifying any pipeline YAML. 
 
-Connectors decouple pipeline logic from infrastructure details. A pipeline does not need to know the specific credentials, endpoints, or authentication mechanism; it only needs the connector identifier. This means you can rotate credentials, change endpoints, or swap providers without modifying any pipeline YAML. The same pipeline can target different environments simply by referencing different connectors at runtime.
+The same pipeline can target different environments by referencing different connectors at runtime.
+:::
 
-```yaml title="pipeline-connectors.yaml"
+```yaml title="pipeline-connectors.yaml" showLineNumbers {9,25}
 # Example: Connector reference in pipeline YAML
 pipeline:
   name: Build and Deploy
