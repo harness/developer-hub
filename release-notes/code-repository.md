@@ -43,7 +43,7 @@ These release notes describe recent changes to Harness Code Repository.
 #### New features and enhancements
 
 - Added direct **Edit File** functionality to the pull request view, making file editing more accessible while respecting permissions for linked repositories. (CODE-5669, CODE-5582, CODE-5674)
-- Added support for image pasting in pull request comment threads. (CODE-5456, CODE-3090; release date not clearly tracked)
+- Added support for image pasting in pull request comment threads. (CODE-5456, CODE-3090)
 
 #### Bug fixes and improvements
 
