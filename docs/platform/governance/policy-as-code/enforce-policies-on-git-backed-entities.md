@@ -15,11 +15,11 @@ tags:
   - governance
 ---
 
-Harness uses Open Policy Agent (OPA) policies to enforce governance rules across your entities. An **onSave** policy runs whenever you save an entity, such as a pipeline or template. If the entity violates a policy, Harness prevents it from being saved.
+Harness uses Open Policy Agent (OPA) policies to enforce governance rules across your entities. An **onSave** policy runs whenever you save an entity, such as a pipeline or service. If the entity violates a policy, Harness prevents it from being saved.
 
 Git-backed entities store their configuration in a Git repository rather than exclusively in Harness. Previously, if you committed changes directly to Git instead of through Harness, the **onSave** policy was not evaluated. As a result, changes that would have been blocked in Harness could still be committed to the repository without policy validation.
 
-Harness now runs **onSave** policies when you commit a change directly to a Git-backed entity, and blocks pipeline execution when the most recent commit fails the policy check. This keeps Git-backed entities governed the same way as entities saved directly in Harness.
+Harness now runs **onSave** policies when you commit a change directly to a Git-backed entity. For pipelines and templates, Harness also blocks pipeline execution when the most recent commit fails the policy check. For CD entities (services, environments, infrastructure definitions, and overrides), Harness surfaces the policy violation status on the entity detail page and gates pipeline execution at the step level when the referenced entity is invalid. This keeps Git-backed entities governed the same way as entities saved directly in Harness.
 
 ## What will you learn in this topic?
 
@@ -35,12 +35,19 @@ This topic explains how Harness enforces **onSave** OPA policies on Git-backed e
 
 ## Before you begin
 
-- **Git-backed entity**: The pipeline or template is stored in Git. Go to [Harness Git Experience](/docs/platform/git-experience/git-experience-overview) to configure Git-backed entities.
+- **Git-backed entity**: The entity is stored in Git. Go to [Harness Git Experience](/docs/platform/git-experience/git-experience-overview) to configure Git-backed entities.
 - **GitX webhook**: A webhook is configured for the repository, because evaluation is triggered when a change is committed to Git. Go to [Set up bi-directional sync](/docs/platform/git-experience/gitexp-bidir-sync-setup) to configure the webhook, and to [Git Experience health status](/docs/platform/git-experience/git-sync-health-page) to confirm webhook coverage.
 - **onSave policy set**: A policy set that evaluates **onSave** targets the entity type. Go to [Harness Policy as Code overview](/docs/platform/governance/policy-as-code/harness-governance-overview) to create policies and policy sets.
 
 :::note
-This feature is behind the feature flags `PIPE_OPA_GITX_ENFORCEMENT` and `PIPE_ENABLE_OPA_GOVERNANCE_FOR_AUTO_CREATION`. Contact [Harness Support](mailto:support@harness.io) to enable them.
+**Pipelines and templates**: This feature is behind the feature flags `PIPE_OPA_GITX_ENFORCEMENT` and `PIPE_ENABLE_OPA_GOVERNANCE_FOR_AUTO_CREATION`. Contact [Harness Support](mailto:support@harness.io) to enable them.
+
+**CD entities (services, environments, infrastructure definitions, overrides)**:
+- Webhook path (evaluate and store OPA status when a commit arrives): `CDS_OPA_GOVERNANCE_FOR_WEBHOOK`
+- GET API status display (validation badge on entity detail pages): `CDS_DISABLE_OPA_GITX_STATUS_IN_GET` (enabling this flag suppresses the badge)
+- Execution gate (block pipeline step when the referenced entity is invalid): `PIPE_OPA_GITX_ENFORCEMENT`
+
+Contact [Harness Support](mailto:support@harness.io) to enable or manage these flags.
 :::
 
 ---
@@ -51,6 +58,10 @@ This feature is behind the feature flags `PIPE_OPA_GITX_ENFORCEMENT` and `PIPE_E
 
 - [Pipelines](/docs/platform/pipelines/add-a-stage)
 - [Templates](/docs/platform/templates/template)
+- [Services](/docs/continuous-delivery/x-platform-cd-features/services/create-services)
+- [Environments](/docs/continuous-delivery/x-platform-cd-features/environments/create-environments)
+- [Infrastructure definitions](/docs/continuous-delivery/overview#infrastructure-definition)
+- [Overrides](/docs/continuous-delivery/x-platform-cd-features/overrides-v2)
 
 ---
 
@@ -63,7 +74,15 @@ Harness tracks two commits for each entity:
 - **Last Commit**: The most recent commit Harness checked.
 - **Last Valid Commit**: The most recent commit that passed the policy check.
 
-Harness only checks the most recent commit. If your latest commit fails the policy check, Harness blocks the pipeline from running and shows you which policies failed. To unblock it, commit a new change that passes the check. This way, changes made directly in Git are always checked and cannot skip **onSave** policy enforcement.
+Harness only checks the most recent commit. If your latest commit fails the policy check, Harness shows the violation on the entity detail page and, for pipelines, blocks the pipeline from running. To clear the violation, commit a new change that passes the policy check.
+
+### Enforcement behavior by entity type
+
+The way Harness enforces a policy violation depends on which entity type is affected.
+
+**Pipelines and templates**: Harness blocks the pipeline run and displays the policy results in the validation modal instead of a generic error. You must commit a fix before you can run the pipeline again.
+
+**CD entities (services, environments, infrastructure definitions, overrides)**: Harness stores the policy evaluation result and surfaces it on the entity detail page. When `PIPE_OPA_GITX_ENFORCEMENT` is also enabled, Harness gates pipeline execution at the step level: if the service or infrastructure definition referenced in a stage has a failing **onSave** policy result for its latest commit, Harness fails the execution at that step. This applies to both fixed and runtime-resolved entity references. Entities are not automatically propagated as invalid to all pipelines that reference them; the failure is caught at execution time when the step resolves the entity.
 
 ---
 
@@ -99,6 +118,14 @@ If you run a pipeline whose latest Git commit fails policy evaluation, Harness b
 
 <div align="center"><DocImage path={require('./static/opa-gitx-validation-modal-run.png')} alt="Run Pipeline blocked by an OPA onSave policy, showing the policy results modal" width="80%" /></div>
 
+### On CD entity detail pages
+
+For services, environments, infrastructure definitions, and overrides that are stored in Git, Harness displays the **onSave** policy evaluation status directly on the entity detail page. When the latest commit for a Git-backed entity fails an **onSave** policy, a validation badge labeled **Service Validation Failed**, **Environment Validation Failed**, **Infrastructure Validation Failed**, or **Override Validation Failed** appears in the entity header.
+
+Select the badge to view the same validation result modal as pipelines, including which policy sets failed, the commit that was evaluated, and the last valid commit.
+
+The badge appears only when the entity's latest Git commit violates an **onSave** policy. A compliant entity does not show the badge.
+
 ---
 
 ## Re-evaluate a blocked entity
@@ -107,6 +134,7 @@ Harness does not automatically re-evaluate an entity after you change a policy. 
 
 - **Templates**: Save or update the template to trigger policy evaluation again.
 - **Pipelines**: Select **Revalidate** to run policy evaluation again.
+- **CD entities**: Commit a new change to the entity in Git or save the entity through Harness to trigger a fresh policy evaluation.
 
 ---
 

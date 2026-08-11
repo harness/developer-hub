@@ -124,6 +124,12 @@ After creating and enforcing your Policy Set, it is automatically evaluated when
    - If the override violates the policy and the severity is **Warn & continue**, it is saved with a warning.
    - If the override violates the policy and the severity is **Error and exit**, the save is blocked and an error is displayed.
 
+## OnSave enforcement for Git-backed overrides
+
+When an override is stored in Git, commits made directly to the Git repository bypass the Harness UI save flow. Harness now evaluates **onSave** policies when a Git-backed override changes via a webhook, and surfaces the result in the overrides table. An **Override Validation Failed** badge appears in the override row when the latest commit violates an **onSave** policy.
+
+Go to [Enforce onSave policies on Git entities](/docs/platform/governance/policy-as-code/enforce-policies-on-git-backed-entities) to understand how this enforcement works across all Git-backed entity types.
+
 ## See also
 
 - [Harness Governance Overview](/docs/platform/governance/policy-as-code/harness-governance-overview)

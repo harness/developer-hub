@@ -107,6 +107,12 @@ After creating and enforcing your Policy Set, it is automatically evaluated when
    - If the infrastructure definition violates the policy and the severity is **Warn & continue**, it is saved with a warning.
    - If the infrastructure definition violates the policy and the severity is **Error and exit**, the save is blocked and an error is displayed.
 
+## OnSave enforcement for Git-backed infrastructure definitions
+
+When an infrastructure definition is stored in Git, commits made directly to the Git repository bypass the Harness UI save flow. Harness now evaluates **onSave** policies when a Git-backed infrastructure definition changes via a webhook, and surfaces the result in the infrastructure details drawer. An **Infrastructure Validation Failed** badge appears when the latest commit violates an **onSave** policy. If a pipeline execution references this infrastructure definition, Harness fails the execution at the infrastructure resolution step.
+
+Go to [Enforce onSave policies on Git entities](/docs/platform/governance/policy-as-code/enforce-policies-on-git-backed-entities) to understand how this enforcement works across all Git-backed entity types.
+
 ## See also
 
 - [Harness Governance Overview](/docs/platform/governance/policy-as-code/harness-governance-overview)

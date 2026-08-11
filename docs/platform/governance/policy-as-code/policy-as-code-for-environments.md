@@ -101,6 +101,12 @@ After creating and enforcing your Policy Set, it is automatically evaluated when
    - If the environment violates the policy and the severity is **Warn & continue**, it is saved with a warning.
    - If the environment violates the policy and the severity is **Error and exit**, the save is blocked and an error is displayed.
 
+## OnSave enforcement for Git-backed environments
+
+When an environment is stored in Git, commits made directly to the Git repository bypass the Harness UI save flow. Harness now evaluates **onSave** policies when a Git-backed environment changes via a webhook, and surfaces the result on the environment detail page. An **Environment Validation Failed** badge appears in the environment header when the latest commit violates an **onSave** policy. If a pipeline execution references this environment, Harness fails the execution when the environment is resolved.
+
+Go to [Enforce onSave policies on Git entities](/docs/platform/governance/policy-as-code/enforce-policies-on-git-backed-entities) to understand how this enforcement works across all Git-backed entity types.
+
 ## See also
 
 - [Harness Governance Overview](/docs/platform/governance/policy-as-code/harness-governance-overview)
