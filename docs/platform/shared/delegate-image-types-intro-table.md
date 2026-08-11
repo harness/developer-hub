@@ -1,7 +1,3 @@
-import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
-
-<Deleos />
-
 The Delegate is a lightweight worker process packaged and distributed by Harness using different image types. Each Delegate image is identified by a delegate name, and the image type is specified using a tag.
 
 | Image Type            | Image Tag                  | Image Description                                                                                                                                                                                                                                                                                                                            |

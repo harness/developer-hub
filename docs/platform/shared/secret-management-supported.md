@@ -9,4 +9,4 @@ Harness offers a built-in Secret Management feature for securely storing and usi
 | [Google KMS](/docs/platform/secrets/secrets-management/add-google-kms-secrets-manager)    | Yes                    | Yes                                | No                                       |
 
 
-For more information, go to [Secrets Management overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview).
+For more information, see [Secrets Management overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview).

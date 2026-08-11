@@ -19,7 +19,7 @@ import Authsup from '/docs/platform/shared/auth-supported.md'
 import Delimagetypes from '/docs/platform/shared/delegate-image-types-intro-table.md'
 import Secretmgmtsup from '/docs/platform/shared/secret-management-supported.md'
 
-This page provides an overview of the technologies, features, and integrations supported by Harness to deploy and verify applications.
+This topic provides an overview of the technologies, features, and integrations supported by Harness to deploy and verify applications.
 
 For more information about **What's Supported** for other Harness modules, see their respective documentation below:
 
@@ -44,11 +44,13 @@ To see supported technologies and features for the **Self-Managed Enterprise Edi
    - [What's Supported](/docs/self-managed-enterprise-edition/smp-supported-platforms)
 
 ---
+
 ## Authentication
 
 <Authsup />
 
 ---
+
 ## Delegates
 
 <Delimagetypes />
@@ -84,7 +86,7 @@ The Harness Delegate includes binaries for the SDKs that are required for deploy
 
       To support customization, Harness provides a Delegate image that excludes all third-party SDK binaries. This image is referred to as the **No Tools Image**. Using the No Tools Image along with the Delegate `YAML`, you can install the required SDK versions using an initialization script defined in the `INIT_SCRIPT` environment variable in the Delegate YAML.
 
-      To learn how to use the No Tools Delegate image and install specific SDK versions, go to [Install a Delegate with third party custom tool binaries](/docs/platform/delegates/install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries.md).
+      To use the No Tools Delegate image and install specific SDK versions, see [Install a Delegate with third party custom tool binaries](/docs/platform/delegates/install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries.md).
 
 For additional information about the Delegate, refer to the following documentation:
 
@@ -145,11 +147,11 @@ For detailed information about the SBOM/OSS component list used by Harness, visi
 Role-based access control (RBAC) lets you control who can access your resources and what actions they can perform on the resources. To do this, a Harness account administrator assigns resource-related permissions to members of user groups.
 
 Harness supports managing Role-Based Access Control (RBAC) through SCIM (System for Cross-Domain Identity Management). This allows you to automate the provisioning and de-provisioning of users and groups from your identity provider, ensuring that access permissions stay up-to-date and consistent across your organization.
-   - [**Okta**](/docs/platform/role-based-access-control/provision-users-with-okta-scim/)
-   - [**Microsoft Entra ID**](/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim/)
-   - [**OneLogin**](/docs/platform/role-based-access-control/provision-users-and-groups-with-one-login-scim/)
+   - [Okta](/docs/platform/role-based-access-control/provision-users-with-okta-scim/)
+   - [Microsoft Entra ID](/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim/)
+   - [OneLogin](/docs/platform/role-based-access-control/provision-users-and-groups-with-one-login-scim/)
 
-For more information, go to [Role-Based Access Control (RBAC) in harness](/docs/platform/role-based-access-control/rbac-in-harness) 
+For more information, see [Role-Based Access Control (RBAC) in Harness](/docs/platform/role-based-access-control/rbac-in-harness) .
 
 ---
 
@@ -167,7 +169,7 @@ The scope at which you create a resource determines its availability and visibil
 - **Account scope**: Resources are available to all organizations and projects within the account.
 - **Organization scope**: Resources are available only to that organization and its projects, not to other organizations or the account as a whole.
 
-Choosing the appropriate scope helps you control access and prevent unauthorized use. For more information, go to [Create organizations and projects](/docs/platform/organizations-and-projects/create-an-organization).
+Choosing the appropriate scope helps you control access and prevent unauthorized use. For more information, see [Create organizations and projects](/docs/platform/organizations-and-projects/create-an-organization).
 
 ### Resources across scopes
 
@@ -233,6 +235,10 @@ Harness provides native **TUF (The Update Framework)** support through the follo
 
 Few Harness Platform features are released behind feature flags to gather feedback from specific customers before a general release. Feature development status is categorized as [Beta, GA, or Limited GA](/docs/platform/get-started/key-concepts#beta-limited-ga-and-ga-definitions).
 
+:::note
+To enable a feature flag in your Harness account, contact [Harness Support](mailto:support@harness.io).
+:::
+
 The following table describes active feature flags relevant to Harness Platform.
 
 | Flag                                                                                                                  | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
@@ -247,7 +253,3 @@ The following table describes active feature flags relevant to Harness Platform.
 | `PL_HIDE_ACCOUNT_LEVEL_MANAGED_ROLE`, `PL_HIDE_ORGANIZATION_LEVEL_MANAGED_ROLE`, `PL_HIDE_PROJECT_LEVEL_MANAGED_ROLE` | This feature flag is used to hide managed roles at various levels: account level, organization level, and project level. Existing role bindings for managed roles will still exist for users, but new role bindings with managed roles won't be allowed when the feature flag is enabled. The managed roles won't show up in the list of roles available at the respective scopes. For more information, go to [Manage Roles](https://developer.harness.io/docs/platform/role-based-access-control/add-manage-roles/) |
 
 <!-- | `PL_CENTRAL_NOTIFICATION`                     | Enable/disable Centralized Notifications Management. For more information, go to [Manage delegate notifications](/docs/platform/notifications/manage-notifications). | -->
-
-:::note
-To enable a feature flag in your Harness account, contact [Harness Support](mailto:support@harness.io).
-:::
