@@ -207,4 +207,8 @@ docs/self-managed-enterprise-edition/monitor-harness-on-prem#view-metrics-on-the
 # Redirect for llms.txt file
 /docs/llms.txt /llms.txt
 
+# Added by smriti.satyanarayana on 2026-08-11 for HDH-1183 - Dashboards v3.0 category renamed Closed Beta to Open Beta, which changed the generated-index slug.
+/docs/category/dashboard-v30-closed-beta /docs/category/dashboard-v30-open-beta
+/3k-docs/category/dashboard-v30-closed-beta /3k-docs/category/dashboard-v30-open-beta
+
 # Redirects generated from Front Matter [sytem generated goes below here]:
