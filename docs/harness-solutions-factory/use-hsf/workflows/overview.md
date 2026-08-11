@@ -1,11 +1,17 @@
 ---
 title: Overview
 description: Start using HSF by understanding and executing workflows in IDP.
-sidebar_position: 1
+keywords:
+  - hsf workflows
+  - iacm workspace lifecycle
+  - workflow approvals
+tags:
+  - hsf
+  - workflows
+sidebar_position: 10
 redirect_from: 
     - /kb/reference-architectures/hsf/hsf-workflows
 ---
-# How workflows work
 
 Workflows are the primary way teams interact with HSF. Each workflow is a self-service form in IDP that, when submitted, provisions and manages Harness resources on your behalf using IaCM workspaces under the hood.
 
@@ -27,13 +33,13 @@ Workspaces for platform-level resources (creating orgs, projects, connectors) li
 
 ### Create and Manage IaCM Workspaces Pipeline
 
-Every workflow triggers the Create and Manage IaCM Workspaces pipeline which creates and manages an IaCM workspace. Think of a workspace as the ongoing record of a resource — it holds the Terraform state, the input variables, and the history of every change made to that resource.
+Every workflow triggers the Create and Manage IaCM Workspaces pipeline which creates and manages an IaCM workspace. Think of a workspace as the ongoing record of a resource: it holds the Terraform state, the input variables, and the history of every change made to that resource.
 
-Because workspaces maintain ongoing state, you can go back into a workspace at any time, change an input variable, and re-execute to apply the update. You don't need to re-run the workflow from IDP to make changes to an existing resource.
+Because workspaces maintain ongoing state, you can go back into a workspace at any time, change an input variable, and re-execute to apply the update. You do not need to re-run the workflow from IDP to make changes to an existing resource.
 
 **Ephemeral workspaces**
 
-If you don't want to maintain ongoing state for a resource — for example, for short-lived environments — you can choose to create an ephemeral workspace when submitting the workflow. Ephemeral workspaces are torn down automatically after execution completes. This can be done by going into the YAML of the workflow and setting the variable `is_ephemeral` to true.
+If you do not want to maintain ongoing state for a resource, for example for short-lived environments, you can choose to create an ephemeral workspace when submitting the workflow. Ephemeral workspaces are torn down automatically after execution completes. This can be done by going into the YAML of the workflow and setting the variable `is_ephemeral` to true.
 
 **Approvals**
 
@@ -42,14 +48,14 @@ Via the Create and Manage IaCM pipeline, every workflow goes through two approva
 | Gate | When it occurs | What the approver sees |
 |---|---|---|
 | Entity creation approval | Before any resources are created | Approval or rejection screen to notify that you have eyes on the changes that are coming |
-| Terraform plan approval | Before the IaCM plan is applied | The full resource diff — exactly what will change |
+| Terraform plan approval | Before the IaCM plan is applied | The full resource diff: exactly what will change |
 
 By default, approval notifications are sent by email to members of the **HSF Admins** group. If your team uses Microsoft Teams or Slack, this can be reconfigured in the notification settings on the HSF Admins user group.
 
 If you want to add an approval to a workflow you can do so by going into the YAML of the workflow and setting the variable `requires_approval` to true.
 
 :::tip
-The Terraform plan approval shows the full resource diff. Approvers should review this carefully before confirming — this is the last checkpoint before changes are applied to your account.
+The Terraform plan approval shows the full resource diff. Approvers should review this carefully before confirming: this is the last checkpoint before changes are applied to your account.
 :::
 
 ## Default workflows
@@ -84,5 +90,5 @@ To load additional workflows into IDP:
 2. Run **Register Custom IDP Templates**. To load only specific workflows,
    add the workflow ID to the `filter_template` input.
 
-For details on what each additional workflow does, refer to the README files
+For details on what each additional workflow does, check the README files
 in the `harness-template-library` repository.

@@ -1,12 +1,20 @@
 ---
 title: IDP Resource Manager Plugin
 description: Understand how to customize and configure the IDP Resource Manager Plugin
-sidebar_position: 3
+keywords:
+  - idp resource manager
+  - idp plugin
+  - register workflows
+  - register resources
+  - idp entities
+tags:
+  - hsf
+  - idp
+  - plugins
+sidebar_position: 30
 ---
 
-# Harness IDP Resource Manager Plugin Reference
-
-The Harness IDP Resource Manager plugin provides full lifecycle management for [Harness Internal Developer Portal (IDP)](https://developer.harness.io/docs/internal-developer-portal) entities. Use it in your Harness pipelines to register, update, query, and remove IDP entities such as workflows, resources, systems, and components. The plugin also supports backwards compatibility with IDP 1.0-style configurations via Git sync.
+The Harness IDP Resource Manager plugin provides full lifecycle management for [Harness Internal Developer Portal (IDP)](/docs/internal-developer-portal) entities. Use it in your Harness pipelines to register, update, query, and remove IDP entities such as workflows, resources, systems, and components. The plugin also supports backwards compatibility with IDP 1.0-style configurations via Git sync.
 
 ## Important notes
 
@@ -20,7 +28,7 @@ The Harness IDP Resource Manager plugin provides full lifecycle management for [
 
 ## Plugin image
 
-```
+```text
 harnesssolutionfactory/harness-idp-resource-manager:latest
 ```
 
@@ -55,7 +63,7 @@ Set `PLUGIN_ENTITY_TYPE` to target a specific kind of IDP catalog entity. Applie
 Add the plugin as a **Plugin** step in your stage. The examples below cover each operation mode.
 
 :::info
-Harness Plugin Steps [require that the scripts support environment variables](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/custom_plugins/#variables-in-plugin-scripts) with a prefix of `PLUGIN_`. However, when referring to these variables in the Harness pipeline plugin step, you must remove the prefix — e.g `PLUGIN_HARNESS_URI` becomes `HARNESS_URI`.  This accounts for the appearance of a discrepency between the actual environment variables and the settings on the plugin step.
+Go to [Custom plugins](/docs/continuous-integration/use-ci/use-drone-plugins/custom_plugins/#variables-in-plugin-scripts) to review how Harness Plugin Steps require the scripts to support environment variables with a prefix of `PLUGIN_`. However, when referring to these variables in the Harness pipeline plugin step, you must remove the prefix. For example, `PLUGIN_HARNESS_URI` becomes `HARNESS_URI`. This accounts for the appearance of a discrepancy between the actual environment variables and the settings on the plugin step.
 :::
 
 ### Register workflows
@@ -70,7 +78,7 @@ Register workflows from the Harness Template Library using a registration file:
     description: Register IDP workflows from the template library
     spec:
       connectorRef: <+input>
-      image: harnesssolutionsfactory/harness-idp-resource-manager:latest
+      image: harnesssolutionfactory/harness-idp-resource-manager:latest
       settings:
         HARNESS_URI: <+pipeline.variables.hsf_account_url>
         HARNESS_ACCT: <+account.identifier>
@@ -98,7 +106,7 @@ Register IDP resources by rendering a Jinja2 template with a JSON payload:
     description: Register IDP resources using a Jinja2 template and JSON payload
     spec:
       connectorRef: <+input>
-      image: harnesssolutionsfactory/harness-idp-resource-manager:latest
+      image: harnesssolutionfactory/harness-idp-resource-manager:latest
       settings:
         HARNESS_URI: <+pipeline.variables.hsf_account_url>
         HARNESS_ACCT: <+account.identifier>
@@ -125,7 +133,7 @@ Register IDP systems directly from a YAML entity file without template rendering
     description: Register IDP systems from a static entity file
     spec:
       connectorRef: <+input>
-      image: harnesssolutionsfactory/harness-idp-resource-manager:latest
+      image: harnesssolutionfactory/harness-idp-resource-manager:latest
       settings:
         HARNESS_URI: <+pipeline.variables.hsf_account_url>
         HARNESS_ACCT: <+account.identifier>
@@ -151,7 +159,7 @@ Register IDP components from a static entity file:
     description: Register IDP components from a static entity file
     spec:
       connectorRef: <+input>
-      image: harnesssolutionsfactory/harness-idp-resource-manager:latest
+      image: harnesssolutionfactory/harness-idp-resource-manager:latest
       settings:
         HARNESS_URI: <+pipeline.variables.hsf_account_url>
         HARNESS_ACCT: <+account.identifier>
@@ -177,7 +185,7 @@ List all existing entities of a given type:
     description: Retrieve all existing workflows from IDP
     spec:
       connectorRef: <+input>
-      image: harnesssolutionsfactory/harness-idp-resource-manager:latest
+      image: harnesssolutionfactory/harness-idp-resource-manager:latest
       settings:
         HARNESS_URI: <+pipeline.variables.hsf_account_url>
         HARNESS_ACCT: <+account.identifier>
@@ -198,7 +206,7 @@ Verify IDP 2.0 compatibility and whether resources exist at a given scope:
     description: Check if resources exist at a specific org and project scope
     spec:
       connectorRef: <+input>
-      image: harnesssolutionsfactory/harness-idp-resource-manager:latest
+      image: harnesssolutionfactory/harness-idp-resource-manager:latest
       settings:
         HARNESS_URI: <+pipeline.variables.hsf_account_url>
         HARNESS_ACCT: <+account.identifier>
@@ -220,7 +228,7 @@ Update a dot-notation metadata property on an existing entity:
     description: Set a custom metadata property on an existing IDP resource
     spec:
       connectorRef: <+input>
-      image: harnesssolutionsfactory/harness-idp-resource-manager:latest
+      image: harnesssolutionfactory/harness-idp-resource-manager:latest
       settings:
         HARNESS_URI: <+pipeline.variables.hsf_account_url>
         HARNESS_ACCT: <+account.identifier>
@@ -248,7 +256,7 @@ This is a destructive, irreversible operation. All entities at the specified sco
     description: Remove all workflows at a specified scope
     spec:
       connectorRef: <+input>
-      image: harnesssolutionsfactory/harness-idp-resource-manager:latest
+      image: harnesssolutionfactory/harness-idp-resource-manager:latest
       settings:
         HARNESS_URI: <+pipeline.variables.hsf_account_url>
         HARNESS_ACCT: <+account.identifier>
@@ -266,16 +274,16 @@ This is a destructive, irreversible operation. All entities at the specified sco
 
 | Setting | Type | Required | Default | Description |
 |---------|------|----------|---------|-------------|
-| `PLUGIN_HARNESS_URI` | String | Yes | — | Base URL of the Harness platform. Example: `https://app.harness.io` |
-| `PLUGIN_HARNESS_ACCT` | String | Yes | — | Your Harness account identifier. Example: `HT1234569XFhhslllddd12` |
-| `PLUGIN_HARNESS_API_KEY` | String | Yes | — | API token with permissions to manage IDP entities. Example: `pat.xxxxx` |
-| `PLUGIN_HARNESS_URL` | String | No | — | **Deprecated.** Alternative variable for the Harness API URL. Use `PLUGIN_HARNESS_URI` instead. |
+| `PLUGIN_HARNESS_URI` | String | Yes | N/A | Base URL of the Harness platform. Example: `https://app.harness.io` |
+| `PLUGIN_HARNESS_ACCT` | String | Yes | N/A | Your Harness account identifier. Example: `HT1234569XFhhslllddd12` |
+| `PLUGIN_HARNESS_API_KEY` | String | Yes | N/A | API token with permissions to manage IDP entities. Example: `pat.xxxxx` |
+| `PLUGIN_HARNESS_URL` | String | No | N/A | **Deprecated.** Alternative variable for the Harness API URL. Use `PLUGIN_HARNESS_URI` instead. |
 
 ### Operation control
 
 | Setting | Type | Required | Default | Description |
 |---------|------|----------|---------|-------------|
-| `PLUGIN_SWITCH` | String | No | `main` | Operation mode. See [Operation modes](#operation-modes) for accepted values. |
+| `PLUGIN_SWITCH` | String | No | `main` | Operation mode. Go to [Operation modes](#operation-modes) for accepted values. |
 | `PLUGIN_ENTITY_TYPE` | String | No | `workflow` | Type of IDP entity to manage. Accepted values: `workflow`, `resource`, `system`, `component`. Not used in `check` mode. |
 | `PLUGIN_DEBUG_MODE` | String | No | `false` | Set to `true` to enable verbose debug logging. |
 
@@ -285,40 +293,40 @@ This is a destructive, irreversible operation. All entities at the specified sco
 |---------|------|----------|---------|-------------|
 | `PLUGIN_ORG_ID` | String | No | Account scope | Organization identifier. If omitted, operations default to account scope. |
 | `PLUGIN_PROJECT_ID` | String | No | Account scope | Project identifier. Requires `PLUGIN_ORG_ID` to be set. |
-| `PLUGIN_SCOPES` | String | No | — | Scope(s) for `remove` operations. Accepts comma-separated values. Format: `all`, `account`, `account.ORG_ID`, or `account.ORG_ID.PROJ_ID`. Example: `account.Harness_Platform_Management` |
+| `PLUGIN_SCOPES` | String | No | N/A | Scope(s) for `remove` operations. Accepts comma-separated values. Format: `all`, `account`, `account.ORG_ID`, or `account.ORG_ID.PROJ_ID`. Example: `account.Harness_Platform_Management` |
 
 ### File and directory configuration
 
 | Setting | Type | Required | Default | Description |
 |---------|------|----------|---------|-------------|
 | `PLUGIN_WORKING_DIR` | String | No | `/harness/harness-template-library` | Full path to the directory containing configuration or template files. |
-| `PLUGIN_REGISTRATION_FILE` | String | Conditional | — | YAML file (relative to `PLUGIN_WORKING_DIR`) that lists entities to register. Required if `PLUGIN_FILTER_TEMPLATE` is not set. Applies to `main`, `register`, `children` modes. Example: `idp_registration_mgr.yaml` |
+| `PLUGIN_REGISTRATION_FILE` | String | Conditional | N/A | YAML file (relative to `PLUGIN_WORKING_DIR`) that lists entities to register. Required if `PLUGIN_FILTER_TEMPLATE` is not set. Applies to `main`, `register`, `children` modes. Example: `idp_registration_mgr.yaml` |
 
 ### Template and entity registration
 
 | Setting | Type | Required | Default | Description |
 |---------|------|----------|---------|-------------|
-| `PLUGIN_FILTER_TEMPLATE` | String | Conditional | — | Workflow, template name, or directory name within `PLUGIN_WORKING_DIR` to register. Required if `PLUGIN_REGISTRATION_FILE` is not set. Applies to `main`, `register`, `children`, `legacy` modes. Example: `sto-sast-primer` |
-| `PLUGIN_FILTER_TAG` | String | No | — | Tag filter for narrowing entity results in `view` mode. Example: `managed_entity` |
+| `PLUGIN_FILTER_TEMPLATE` | String | Conditional | N/A | Workflow, template name, or directory name within `PLUGIN_WORKING_DIR` to register. Required if `PLUGIN_REGISTRATION_FILE` is not set. Applies to `main`, `register`, `children`, `legacy` modes. Example: `sto-sast-primer` |
+| `PLUGIN_FILTER_TAG` | String | No | N/A | Tag filter for narrowing entity results in `view` mode. Example: `managed_entity` |
 | `PLUGIN_INCLUDE_CHILDREN` | String | No | `no` | Set to `yes` to load child entities from the `PLUGIN_FILTER_TEMPLATE` directory. Applies to `main`, `register`, `children`, `legacy` modes. |
-| `PLUGIN_ENTITY_FILE` | String | Conditional | — | Path to a YAML entity definition file, relative to `PLUGIN_WORKING_DIR`. Required for non-template registration in `register` mode. Example: `lob/core.yaml` |
-| `PLUGIN_ENTITY_TEMPLATE` | String | Conditional | — | Path to a Jinja2 template file, relative to `PLUGIN_WORKING_DIR`. Required when using template rendering. Example: `idp_resource_templates/default_hsf_workspace_resource.yaml.j2` |
-| `PLUGIN_ENTITY_PAYLOAD` | String (JSON) | Conditional | — | JSON object with variables for Jinja2 template injection. Required when `PLUGIN_ENTITY_TEMPLATE` is set. Applies to `register` and `register_multi` modes. Example: `'{"resource_name":"workspace","workspace_uri":"https://..."}'` |
+| `PLUGIN_ENTITY_FILE` | String | Conditional | N/A | Path to a YAML entity definition file, relative to `PLUGIN_WORKING_DIR`. Required for non-template registration in `register` mode. Example: `lob/core.yaml` |
+| `PLUGIN_ENTITY_TEMPLATE` | String | Conditional | N/A | Path to a Jinja2 template file, relative to `PLUGIN_WORKING_DIR`. Required when using template rendering. Example: `idp_resource_templates/default_hsf_workspace_resource.yaml.j2` |
+| `PLUGIN_ENTITY_PAYLOAD` | String (JSON) | Conditional | N/A | JSON object with variables for Jinja2 template injection. Required when `PLUGIN_ENTITY_TEMPLATE` is set. Applies to `register` and `register_multi` modes. Example: `'{"resource_name":"workspace","workspace_uri":"https://..."}'` |
 | `PLUGIN_USE_TEMPLATE_MGR` | String | No | `true` | Set to `true` to use Jinja2 template rendering. Set to `false` to use static entity files. |
 
 ### Entity management
 
 | Setting | Type | Required | Default | Description |
 |---------|------|----------|---------|-------------|
-| `PLUGIN_ENTITY_ID` | String | Conditional | — | Identifier of the entity to update or delete. Required for entity-specific operations in `remove` and `property` modes. Example: `my_resource` |
-| `PLUGIN_RESOURCES` | String | Conditional | — | Comma-separated list of resource names for `register_multi` mode. Example: `lab,lab_workshop` |
+| `PLUGIN_ENTITY_ID` | String | Conditional | N/A | Identifier of the entity to update or delete. Required for entity-specific operations in `remove` and `property` modes. Example: `my_resource` |
+| `PLUGIN_RESOURCES` | String | Conditional | N/A | Comma-separated list of resource names for `register_multi` mode. Example: `lab,lab_workshop` |
 
 ### Custom properties
 
 | Setting | Type | Required | Default | Description |
 |---------|------|----------|---------|-------------|
-| `PLUGIN_HSF_PROPERTY` | String | Yes (in `property` mode) | — | Dot-notation path of the metadata property to update. Example: `metadata.hsf.is_drifted` |
-| `PLUGIN_HSF_VALUE` | String | Yes (in `property` mode) | — | Value to assign to `PLUGIN_HSF_PROPERTY`. Example: `false` |
+| `PLUGIN_HSF_PROPERTY` | String | Yes (in `property` mode) | N/A | Dot-notation path of the metadata property to update. Example: `metadata.hsf.is_drifted` |
+| `PLUGIN_HSF_VALUE` | String | Yes (in `property` mode) | N/A | Value to assign to `PLUGIN_HSF_PROPERTY`. Example: `false` |
 
 ### Legacy settings
 
@@ -348,7 +356,7 @@ docker run --rm -it \
   -e PLUGIN_DEBUG_MODE=true \
   -v /path/to/template-library:/harness/harness-template-library \
   -v $(pwd):/harness \
-  harnesssolutionsfactory/harness-idp-resource-manager:latest
+  harnesssolutionfactory/harness-idp-resource-manager:latest
 ```
 
 **Register resources with a Jinja2 template:**
@@ -368,7 +376,7 @@ docker run --rm -it \
   -e PLUGIN_DEBUG_MODE=true \
   -v /path/to/template-library:/harness/harness-template-library \
   -v $(pwd):/harness \
-  harnesssolutionsfactory/harness-idp-resource-manager:latest
+  harnesssolutionfactory/harness-idp-resource-manager:latest
 ```
 
 **View all workflows:**
@@ -380,7 +388,7 @@ docker run --rm -it \
   -e PLUGIN_HARNESS_API_KEY=your_api_key \
   -e PLUGIN_SWITCH=view \
   -e PLUGIN_ENTITY_TYPE=workflow \
-  harnesssolutionsfactory/harness-idp-resource-manager:latest
+  harnesssolutionfactory/harness-idp-resource-manager:latest
 ```
 
 **Update a custom property:**
@@ -397,5 +405,5 @@ docker run --rm -it \
   -e PLUGIN_HSF_VALUE=false \
   -e PLUGIN_ORG_ID=my_org \
   -e PLUGIN_PROJECT_ID=my_project \
-  harnesssolutionsfactory/harness-idp-resource-manager:latest
+  harnesssolutionfactory/harness-idp-resource-manager:latest
 ```

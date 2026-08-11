@@ -2,22 +2,29 @@
 title: Adding Default Resources to a Project
 sidebar_label: Adding Resources Lab
 description: Adding a default connector and infrastructure definition to a project.
+keywords:
+  - add default connector
+  - add infrastructure definition
+  - hands-on lab resources
+tags:
+  - hsf
+  - hands-on-labs
 sidebar_position: 30
 ---
 
 :::note
-*Before proceeding, ensure that the Harness Solutions Factory has been deployed into your account and that you've completed Your First Harness Project customizations lab*
+*Before proceeding, ensure that the Harness Solutions Factory has been deployed into your account and that you have completed Your First Harness Project customizations lab*
 
 Throughout the lab, ensure you are only making changes in your custom-harness-template-library repository
 ::: 
 
-## Add a new Kubernetes Connector using Delegate
+## Add a new Kubernetes connector using a delegate
 
 1. Open the `custom-template-library` in VSCode and `Reopen in Container`
 2. Create a new branch called `feature/infrastructure-connectors`
 3. Create a new file called `harness_connectors.tf` in the root of the `harness-project` directory
 
-```
+```hcl
 resource "harness_platform_connector_kubernetes" "k8s_dev_infra" {
   identifier  = "k8s_dev_infra"
   name        = "K8s Dev Infra"
@@ -33,7 +40,7 @@ resource "harness_platform_connector_kubernetes" "k8s_dev_infra" {
 
 4. Open the file `harness-project/variables.tf` to add the following variable.
 
-```
+```hcl
 variable "k8s_dev_infra_delegate" {
     type = string
     description = "Provide the delegate selector to use for the Kubernetes connector"
@@ -43,14 +50,14 @@ variable "k8s_dev_infra_delegate" {
 
 5. Open the file `harness-project/terraform.tfvars.example` to add the following helper example
 
-```
+```hcl
 # Provide the delegate selector to use for the Kubernetes connector
 k8s_dev_infra_delegate = "dev"
 ```
 
 6. In terminal, change directory to the new folder `cd harness-project`, open the file `terraform.tfvars.example` and save as a new file (CTL+SHIFT+S on windows or CMD+SHIFT+S on Mac). The file should be named `terraform.tfvars`
     - For local testing, you will need a terraform provider configuration. Run the command `mise provider`
-7. The **`providers.tf` includes the two variables `harness_platform_url` and `harness_platform_account`. The `harness-project` mandates those in the `variables.tf`. Remove or Comment out the entries from the `providers.tf`
+7. The `providers.tf` file includes the two variables `harness_platform_url` and `harness_platform_account`. The `harness-project` mandates those in the `variables.tf`. Remove or Comment out the entries from the `providers.tf`
 8. Modify the `terraform.tfvars` to set the variables:
 
 | Variable | Description |
@@ -61,7 +68,8 @@ k8s_dev_infra_delegate = "dev"
 | `project_name` | Provide a new name for a test project - `Lab Exercise` |
 
 9. In terminal, run the command `mise deploy:dryrun`. You should see a *Plan* for 24 resources to be added. *This will run the commands* `tofu init; tofu fmt; tofu plan` using Mise
-```
+
+```text
 # Example Output
 Plan: 24 to add, 0 to change, 0 to destroy.
 Changes to Outputs:
@@ -69,8 +77,10 @@ Changes to Outputs:
   + project_identifier      = (known after apply)
   + project_url             = (known after apply)
 ```
+
 10. Run a `mise deploy` to execute the full deployment of the codebase against your account. *This will run the commands* `tofu init; tofu fmt; tofu plan; tofu apply` using Mise
-```
+
+```text
 # Example Output
 Apply complete! Resources: 24 added, 0 changed, 0 destroyed.
 Outputs:
@@ -78,13 +88,15 @@ organization_identifier = "Lab"
 project_identifier = "Lab_Exercise"
 project_url = "<https://app.harness.io/ng/account/uZuUmmrnT4qQRx5XF0ZtkQ/all/orgs/Lab/projects/Lab_Exercise/overview>"
 ```
+
 11. Navigate to your new project in your Harness Account to verify the results.
 12. Commit your code locally and push the branch
 
-## Add a new default Infrastructure Definition
+## Add a new default infrastructure definition
 
 1. Create a new file called `harness_infradefs.tf` in the root of the `harness-project` directory
-```
+
+```hcl
 resource "harness_platform_infrastructure" "infrastructure" {
   depends_on = [
     harness_platform_environment.environments
@@ -117,42 +129,54 @@ resource "harness_platform_infrastructure" "infrastructure" {
   tags            = local.common_tags_tuple
 }
 ```
+
 2. Open the file `harness-project/variables.tf` to add the following variable.
-```
+
+```hcl
 variable "k8s_dev_infra_namespace" {
     type = string
     description = "Provide the name of the infrastructure definition to add"
     default = "infrastructure"
 }
 ```
+
 3. Open the file `harness-project/terraform.tfvars.example` to add the following helper example
-```
+
+```hcl
 # Provide the name of the infrastructure definition to add
 k8s_dev_infra_namespace = "infrastructure"
 ```
+
 4. Open the file `harness-project/terraform.tfvars` to add the following value for testing
-```
+
+```hcl
 # Provide the name of the infrastructure definition to add
 k8s_dev_infra_namespace = "infrastructure"
 ```
+
 5. In terminal, run the command `mise deploy:dryrun`. You should see a *Plan* for 1 resource to be added. *This will run the commands* `tofu init; tofu fmt; tofu plan` using Mise
-```
+
+```text
 # Example Output
 Plan: 1 to add, 0 to change, 0 to destroy.
 ```
+
 6. Run a `mise deploy` to execute the full deployment of the codebase against your account. *This will run the commands* `tofu init; tofu fmt; tofu plan; tofu apply` using Mise
-```
+
+```text
 # Example Output
 Plan: 1 to add, 0 to change, 0 to destroy.
 harness_platform_infrastructure.infrastructure: Creating...
 harness_platform_infrastructure.infrastructure: Creation complete after 1s [id=infrastructure]
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 ```
-7. Navigate to your new project to verify the results. We have just added a new Infrastructure Definition in the Environment `Dev`
-8. Clean-up your new project by deleting the resources `mise teardown`. This will destroy the resources, remove the state files and providers, and then remove the **`providers.tf`
+
+7. Navigate to your new project to verify the results. This adds a new infrastructure definition in the `Dev` environment.
+8. Clean up your new project by deleting the resources `mise teardown`. This will destroy the resources, remove the state files and providers, and then remove the `providers.tf` file.
 9. Commit your code locally and push the branch
 
-## Rollout changes to your projects
+## Roll out changes to your projects
+
 1. Navigate to the `Solutions Factory` project
 2. Open the IACM Workspaces and select the `Lab_Custom-Project` workspace
 3. Switch the *Configuration* tab for the workspace and change the branch to use your new branch `feature/infrastructure-connectors`

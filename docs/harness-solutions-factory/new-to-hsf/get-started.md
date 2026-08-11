@@ -2,13 +2,21 @@
 title: Get started with HSF Post Deployment
 sidebar_label: Post Deployment Guide
 description: Onboarding guide for HSF
+keywords:
+  - hsf post deployment
+  - hsf onboarding
+  - hsf admins setup
+tags:
+  - hsf
+  - new-to-hsf
 sidebar_position: 20
 ---
+
 Your Harness account team will handle the initial HSF deployment. Once
 deployment is complete, you can complete the configuration
 steps below.
 
-If you haven't been through deployment yet or have questions about getting
+If you have not been through deployment yet or have questions about getting
 started, reach out to your Harness account team.
 
 ## Before you begin
@@ -22,7 +30,7 @@ this guide:
   permissions needed to complete the steps below.
 
 :::note
-If anything above isn't in place, contact your Harness account team before
+If anything above is not in place, contact your Harness account team before
 continuing. Do not attempt to run any HSF pipelines until deployment is
 confirmed complete.
 :::
@@ -33,8 +41,8 @@ Set up the organizational structure your teams will use within Harness. This
 includes creating the orgs and projects that HSF workflows will provision
 resources into.
 
-For a walkthrough of how organizations and projects work in Harness, see
-[Organizations and projects](https://developer.harness.io/docs/platform/get-started/overview#organizations-and-projects).
+For a walkthrough of how organizations and projects work in Harness, go to
+[Organizations and projects](/docs/platform/get-started/overview#organizations-and-projects).
 
 **Why this matters:** HSF workflows provision resources into specific orgs and
 projects. Getting this structure right before running your first workflow saves
@@ -54,7 +62,6 @@ Add your team members to the appropriate groups based on their role:
 All three groups can be bound to your SSO provider groups. Set this up now
 to avoid managing group membership manually as your team grows.
 :::
-
 
 ## Configure notifications for HSF Admins
 
@@ -101,8 +108,8 @@ update the following account-level variables:
 | `custom_template_library_connector` | Connector reference for your SCM |
 | `custom_template_library_repo` | URL of the repo in your SCM |
 
-For instructions on setting up a code repository connector, see
-[Connect to a Git repository](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo/).
+For instructions on setting up a code repository connector, go to
+[Connect to a Git repository](/docs/platform/connectors/code-repositories/connect-to-code-repo/).
 
 ## Configure your container registry
 
@@ -130,32 +137,32 @@ update the following:
 ## Configure Kubernetes execution (optional)
 
 By default, HSF pipelines run on Harness Cloud infrastructure. To run
-pipelines on your own Kubernetes cluster see [Converting to Kubernetes](../configurations/converting-to-kubernetes.md).
+pipelines on your own Kubernetes cluster, go to [Converting to Kubernetes](../configurations/converting-to-kubernetes.md).
 
 ## Verify your installation
 
-Once you've completed the steps above, confirm everything is working:
+Once you have completed the steps above, confirm everything is working:
 
-- [ ] Navigate to **IDP** → **Workflows** — you should see the default HSF
+- [ ] Navigate to **IDP** → **Workflows** to see the default HSF
       workflows listed.
 - [ ] Confirm the `harness-platform-manager` service account exists at the
       account level.
 - [ ] Confirm the **HSF Admins**, **HSF Users**, and **HSF Mirror Reviewers**
       groups are visible in the correct scopes.
-- [ ] Check the `hsf_dockerhub_connector` connector — verify it has
+- [ ] Check the `hsf_dockerhub_connector` connector: verify it has
       credentials and the connection test passes.
 
 :::note
 For a complete list of everything HSF created in your account during
-deployment — including all pipelines, workspaces, repositories, and variables
-— see [Created Resources](#).
+deployment, including all pipelines, workspaces, repositories, and variables,
+go to [Created Resources](../use-hsf/created-resources.md).
 :::
 
 ## Next steps
 
-- Run your first workflow — execute an IDP workflow end to end and verify
+- Run your first workflow: execute an IDP workflow end to end and verify
   the output.
-- [Customize a workflow](../custom-harness-template-library/customizing-using-custom-htl.md) — modify a default workflow using Custom Template
+- [Customize a workflow](../custom-harness-template-library/customizing-using-custom-htl.md): modify a default workflow using Custom Template
   Library.
-- [Upgrade HSF](../new-to-hsf/hsf-upgrade.md) — how to pull and apply new HSF releases when they're
+- [Upgrade HSF](../new-to-hsf/hsf-upgrade.md): how to pull and apply new HSF releases when they are
   available.

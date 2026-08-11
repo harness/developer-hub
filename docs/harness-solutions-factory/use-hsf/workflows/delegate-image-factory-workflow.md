@@ -1,38 +1,45 @@
 ---
 title: Delegate Image Factory Workflow
 description: Understand the Delegate Image Factory Workflow
-sidebar_position: 5
+keywords:
+  - delegate image factory
+  - custom delegate image
+  - delegate build pipeline
+tags:
+  - hsf
+  - delegate
+  - workflows
+sidebar_position: 50
 ---
-# Harness Delegate Image Factory
 
 Harness Delegate Image Factory helps teams create and manage custom delegate
-images when the default Harness delegate doesn't meet enterprise requirements.
+images when the default Harness delegate does not meet enterprise requirements.
 It provides a controlled, repeatable process for building, versioning, and
-releasing custom delegates — with a pre-optimized Dockerfile and
+releasing custom delegates, with a pre-optimized Dockerfile and
 configuration included out of the box.
 
 ## When to use this workflow
 
 Use Delegate Image Factory when your enterprise environment requires delegates
-that the default Harness delegate image doesn't support. Common scenarios
+that the default Harness delegate image does not support. Common scenarios
 include:
 
-- **Adding tools not bundled with the default delegate** — for example,
+- **Adding tools not bundled with the default delegate:** for example,
   AWS CLI, Azure CLI, or custom internal utilities required by your CD
   or pipeline workloads.
-- **Embedding enterprise CA certificates and Java trust stores** — avoids
+- **Embedding enterprise CA certificates and Java trust stores:** avoids
   x509 certificate errors in environments with internal PKI.
-- **Installing custom utilities** — any tooling your pipelines depend on
-  that isn't available in the default delegate image.
+- **Installing custom utilities:** any tooling your pipelines depend on
+  that is not available in the default delegate image.
 
-If the default Harness delegate meets your needs, you don't need this workflow.
+If the default Harness delegate meets your needs, you do not need this workflow.
 
-## Prerequisites
+## Before you begin
 
 - HSF is deployed and post-deployment configuration is complete.
 - You have the certificates, tools, or utilities you want to bake into the
   delegate image ready to reference.
-- A container registry is configured and accessible. If you haven't set one
+- A container registry is configured and accessible. If you have not set one
   up yet, run [Harness Central Build Farm Setup](../workflows/central-build-farm-workflow.md) first.
 - You have been added to the **HSF Users** or **HSF Admins** group.
 
@@ -50,7 +57,7 @@ If the default Harness delegate meets your needs, you don't need this workflow.
 | Resource | Details |
 |---|---|
 | Pipeline | A build pipeline that builds, versions, and pushes your custom delegate image |
-| Repository | `harness-delegate-factory` — contains a pre-optimized Dockerfile and configuration files for embedding certificates and trust stores |
+| Repository | `harness-delegate-factory`: contains a pre-optimized Dockerfile and configuration files for embedding certificates and trust stores |
 | IaCM workspace | In the Solutions Factory project |
 
 ### Expected output
@@ -69,22 +76,22 @@ Once the workflow completes, run the delegate build pipeline to produce your
 first custom delegate image. After the image is built and pushed to your
 container registry:
 
-1. Create a new delegate in Harness using the custom image. See
-   [Install a delegate](https://developer.harness.io/docs/platform/delegates/install-delegates/overview)
+1. Create a new delegate in Harness using the custom image. Go to
+   [Install a delegate](/docs/platform/delegates/install-delegates/overview)
    for instructions.
 2. Verify the delegate is connected and healthy in
    **Account Settings** → **Delegates**.
 
 ## Making changes
 
-To update the delegate configuration — for example, to add a new tool or
-rotate certificates — navigate to the workspace in
+To update the delegate configuration, for example to add a new tool or
+rotate certificates, navigate to the workspace in
 **IaCM** → **Workspaces**, update the relevant variable, re-execute the
 workspace, and then re-run the build pipeline to produce an updated image.
 
 :::tip
 Pin your custom delegate images to specific version tags in your pipelines
 rather than using `latest`. This ensures a certificate rotation or tooling
-update doesn't automatically roll out to running pipelines until you're
+update does not automatically roll out to running pipelines until you are
 ready.
 :::

@@ -2,6 +2,13 @@
 title: Deploying your First Resources
 sidebar_label: First Resources Lab
 description: Deploy your first Harness resources
+keywords:
+  - deploy first hsf resources
+  - hands-on lab organization project
+  - hsf getting started lab
+tags:
+  - hsf
+  - hands-on-labs
 sidebar_position: 10
 ---
 
@@ -43,15 +50,15 @@ There are two approval points in this execution:
 1. Log into your Harness Account, navigate to the Internal Developer Portal, and from the sidebar, choose `Workflows`
 2. In the `Solutions Factory` scoped workflows, find `Harness Project Setup`, and click `Execute`
 3. Enter the following details:
-- Name: `workshop`
-- Description: `This will be our initial workshop project to learn about Harness pipelines`
-1. Click *Next*
-2. Click *Review* to review the final configuration details
-3. Click *Create*
-4. While the pipeline is running, follow the same steps to create a second project called `infrastructure`
-5. Complete the approvals for both executions
-6. Review the deployed project
+    - Name: `workshop`
+    - Description: `This will be our initial workshop project to learn about Harness pipelines`
+4. Click *Next*
+5. Click *Review* to review the final configuration details
+6. Click *Create*
+7. While the pipeline is running, follow the same steps to create a second project called `infrastructure`
+8. Complete the approvals for both executions
+9. Review the deployed project
 
 <DocImage path={require('../static/getting-started3.png')} title="Click to view full size image" />
 
-Above are the resoures that are now currently in the account - one organization named Lab and two projects named infrastructure and workshop both in the Lab organization. 
+Above are the resources that are now currently in the account - one organization named Lab and two projects named infrastructure and workshop both in the Lab organization.

@@ -1,12 +1,20 @@
 ---
-title: Manage IacM Workspace Plugin
+title: Manage IaCM Workspace Plugin
 description: Understand how to customize and configure the Manage IaCM Workspace Plugin
-sidebar_position: 2
+keywords:
+  - manage iacm workspace
+  - iacm plugin
+  - create workspace
+  - query workspace
+  - refactor workspace tags
+tags:
+  - hsf
+  - iacm
+  - plugins
+sidebar_position: 20
 ---
 
-# Manage IACM Workspace Plugin Reference
-
-The Manage IACM Workspace plugin provides full lifecycle management for [Harness IACM](https://developer.harness.io/docs/infrastructure-as-code-management) workspaces. Use it in your Harness pipelines to create, update, query, or delete IACM workspaces, manage variables and secrets, and perform bulk tag refactoring — all through a single, configurable plugin step.
+The Manage IACM Workspace plugin provides full lifecycle management for [Harness IACM](/docs/infrastructure-as-code-management) workspaces. Use it in your Harness pipelines to create, update, query, or delete IACM workspaces, manage variables and secrets, and perform bulk tag refactoring, all through a single, configurable plugin step.
 
 ## Important notes
 
@@ -18,7 +26,7 @@ The Manage IACM Workspace plugin provides full lifecycle management for [Harness
 
 ## Plugin image
 
-```
+```text
 harnesssolutionfactory/harness-manage-iacm-workspace:latest
 ```
 
@@ -29,16 +37,16 @@ Set the `PLUGIN_SWITCH` variable to control what the plugin does.
 | Mode | Alias | Description |
 |------|-------|-------------|
 | `main` | `register` | Create or update an IACM workspace with variables and configuration |
-| `view` | — | Query and retrieve workspace details; supports filtering by tags and attributes |
-| `remove` | — | ⚠️ Delete a workspace by identifier (destructive) |
-| `refactor` | — | Bulk-update workspace tags and source classification |
+| `view` | N/A | Query and retrieve workspace details; supports filtering by tags and attributes |
+| `remove` | N/A | ⚠️ Delete a workspace by identifier (destructive) |
+| `refactor` | N/A | Bulk-update workspace tags and source classification |
 
 ## Use in Harness pipelines
 
 Add the plugin as a **Plugin** step in your stage. The examples below cover each operation mode.
 
 :::info
-Harness Plugin Steps [require that the scripts support environment variables](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/custom_plugins/#variables-in-plugin-scripts) with a prefix of `PLUGIN_`. However, when referring to these variables in the Harness pipeline plugin step, you must remove the prefix — e.g `PLUGIN_HARNESS_URI` becomes `HARNESS_URI`.  This accounts for the appearance of a discrepency between the actual environment variables and the settings on the plugin step.
+Go to [Custom plugins](/docs/continuous-integration/use-ci/use-drone-plugins/custom_plugins/#variables-in-plugin-scripts) to review how Harness Plugin Steps require the scripts to support environment variables with a prefix of `PLUGIN_`. However, when referring to these variables in the Harness pipeline plugin step, you must remove the prefix. For example, `PLUGIN_HARNESS_URI` becomes `HARNESS_URI`. This accounts for the appearance of a discrepancy between the actual environment variables and the settings on the plugin step.
 :::
 
 ### Create or update a workspace
@@ -186,17 +194,18 @@ This is a destructive, irreversible operation. Double-check `PLUGIN_RESOURCE_NAM
         SWITCH: remove
         RESOURCE_NAME: workspace-to-delete
 ```
+
 ## Settings reference
 
 ### Connection and authentication
 
 | Setting | Type | Required | Default | Description |
 |---------|------|----------|---------|-------------|
-| `PLUGIN_HARNESS_ENDPOINT` | String | Yes | — | Base URL of the Harness platform. Example: `https://app.harness.io` |
-| `PLUGIN_HARNESS_ACCOUNT_ID` | String | Yes | — | Your Harness account identifier. Example: `uZuUmmrnT4qQRx5XF0ZtkQ` |
-| `PLUGIN_HARNESS_PORTAL_RESOURCES` | String | Yes | — | API path to the workspace resources endpoint. Example: `iacm/api/orgs/my-org/projects/my-project/workspaces` |
+| `PLUGIN_HARNESS_ENDPOINT` | String | Yes | N/A | Base URL of the Harness platform. Example: `https://app.harness.io` |
+| `PLUGIN_HARNESS_ACCOUNT_ID` | String | Yes | N/A | Your Harness account identifier. Example: `uZuUmmrnT4qQRx5XF0ZtkQ` |
+| `PLUGIN_HARNESS_PORTAL_RESOURCES` | String | Yes | N/A | API path to the workspace resources endpoint. Example: `iacm/api/orgs/my-org/projects/my-project/workspaces` |
 | `PLUGIN_HARNESS_PLATFORM_KEY` | String | Yes | `org.hsf_platform_api_key` | Platform API key identifier used for authentication. |
-| `PLUGIN_API_KEY` | String | Yes | — | API key for authenticating requests. Example: `pat.xxxxx.xxxxx` |
+| `PLUGIN_API_KEY` | String | Yes | N/A | API key for authenticating requests. Example: `pat.xxxxx.xxxxx` |
 
 ### Operation control
 
@@ -209,8 +218,8 @@ This is a destructive, irreversible operation. Double-check `PLUGIN_RESOURCE_NAM
 
 | Setting | Type | Required | Default | Description |
 |---------|------|----------|---------|-------------|
-| `PLUGIN_RESOURCE_NAME` | String | Yes | — | Workspace identifier. Example: `my-workspace` |
-| `PLUGIN_RESOURCE_OWNER` | String | Yes | — | Team or individual that owns the workspace. Example: `platform-team` |
+| `PLUGIN_RESOURCE_NAME` | String | Yes | N/A | Workspace identifier. Example: `my-workspace` |
+| `PLUGIN_RESOURCE_OWNER` | String | Yes | N/A | Team or individual that owns the workspace. Example: `platform-team` |
 | `PLUGIN_WORKSPACE_ORG` | String | No | `Harness_Platform_Management` | Organization identifier within Harness. |
 | `PLUGIN_WORKSPACE_PROJECT` | String | No | `Solutions_Factory` | Project identifier within the organization. |
 | `PLUGIN_WORKSPACE_TAGS` | String (JSON) | No | `{}` | Key-value tags applied to the workspace. Used for filtering in `view` and `refactor` modes. Example: `{"source":"official","type":"infrastructure"}` |
@@ -223,8 +232,8 @@ This is a destructive, irreversible operation. Double-check `PLUGIN_RESOURCE_NAM
 |---------|------|----------|---------|-------------|
 | `PLUGIN_GIT_REPOSITORY_BRANCH` | String | Yes | `main` | Git branch to use for the workspace. |
 | `PLUGIN_GIT_REPOSITORY_CONNECTOR` | String | Yes | `org.Harness_Template_Library_Repo` | Harness connector identifier for the Git repository. |
-| `PLUGIN_GIT_REPOSITORY_NAME` | String | Yes | — | Full URL of the Git repository. Example: `https://git.harness.io/account/org/repo.git` |
-| `PLUGIN_GIT_REPOSITORY_PATH` | String | No | — | Subdirectory path within the repository. Example: `workspaces/my-workspace` |
+| `PLUGIN_GIT_REPOSITORY_NAME` | String | Yes | N/A | Full URL of the Git repository. Example: `https://git.harness.io/account/org/repo.git` |
+| `PLUGIN_GIT_REPOSITORY_PATH` | String | No | N/A | Subdirectory path within the repository. Example: `workspaces/my-workspace` |
 
 ### IaC configuration
 
@@ -257,9 +266,9 @@ This is a destructive, irreversible operation. Double-check `PLUGIN_RESOURCE_NAM
 
 | Setting | Type | Required | Default | Description |
 |---------|------|----------|---------|-------------|
-| `PLUGIN_FILTER_KEY` | String | No | — | Workspace attribute to filter by. Example: `identifier`, `repository_connector` |
-| `PLUGIN_FILTER_VALUE` | String | No | — | Value to match against the filter key. Example: `my-workspace` |
-| `PLUGIN_RETURN_KEY` | String | No | — | Workspace attribute to return in query results. Example: `identifier` |
+| `PLUGIN_FILTER_KEY` | String | No | N/A | Workspace attribute to filter by. Example: `identifier`, `repository_connector` |
+| `PLUGIN_FILTER_VALUE` | String | No | N/A | Value to match against the filter key. Example: `my-workspace` |
+| `PLUGIN_RETURN_KEY` | String | No | N/A | Workspace attribute to return in query results. Example: `identifier` |
 | `PLUGIN_IGNORE_HSF_SYSTEM` | Boolean | No | `false` | When `true`, excludes internal HSF system workspaces from results. |
 
 ---

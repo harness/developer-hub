@@ -1,16 +1,25 @@
 ---
 title: Configuring Stage Infrastructure
-description: We have documented reusable code snippets that can be used for allowing user customization when writing pipeline template and Template workflows.
+description: Reusable code snippets that can be used for allowing user customization when writing pipeline template and Template workflows.
+keywords:
+  - configuring stage infrastructure
+  - idp template workflow infrastructure
+  - kubernetes build farm cloud infrastructure
+tags:
+  - hsf
+  - configurations
 sidebar_position: 30
 redirect_from: 
     - /kb/reference-architectures/hsf/htl/configuring-stage-infra
 ---
-Within the Harness Platform, there are certain modules - CI, STO, IACM, or IDP - that require the user to configure infrastructure. When developing a pipeline with these modules a user must choose a build infrastructure type: Kubernetes or Cloud. We have documented reusable code snippets that can be used for allowing user customization when writing pipeline template and Template workflows.
 
-## IDP Template Workflow
+Within the Harness Platform, there are certain modules - CI, STO, IACM, or IDP - that require the user to configure infrastructure. When developing a pipeline with these modules a user must choose a build infrastructure type: Kubernetes or Cloud. This page documents reusable code snippets that can be used for allowing user customization when writing pipeline template and Template workflows.
+
+## IDP template workflow
+
 The following can be used for both pipeline infrastructure or step/group infrastructure.
 
-```
+```yaml
     - title: How should the pipeline run?
       properties:
         build_infrastructure_type:
@@ -75,7 +84,8 @@ The following can be used for both pipeline infrastructure or step/group infrast
 ```
 
 Then pass these parameters to your Terraform:
-```
+
+```yaml
 steps:
     - id: configure_workspace
       name: Configuring Harness Workspace
@@ -91,7 +101,8 @@ steps:
 ```
 
 And create variables in your Terraform to retrieve them:
-```
+
+```hcl
 ## Pipeline Infrastructure Variables
 variable "kubernetes_connector" {
   type        = string
@@ -119,7 +130,8 @@ variable "kubernetes_override_image_connector" {
 ```
 
 Add a template file to your Terraform templates directory `templates/pipelines/snippets/`:
-```
+
+```hcl
 %{~ if KUBERNETES_CONNECTOR != "skipped" ~}
           sharedPaths:
             - /var/run
@@ -149,7 +161,8 @@ Add a template file to your Terraform templates directory `templates/pipelines/s
 ```
 
 Then add a spot for the snippet to be rendered in your pipeline:
-```
+
+```yaml
 pipeline:
   identifier: ${PIPELINE_IDENTIFIER}
   name: ${PIPELINE_NAME}
@@ -169,7 +182,8 @@ ${STAGE_INFRASTRUCTURE}
 ```
 
 Finally, when rendering your pipeline with `templatefile` just pass the inputs from the workflow:
-```
+
+```hcl
   yaml = templatefile(
     "${path.module}/templates/pipelines/some_template.yaml",
     {

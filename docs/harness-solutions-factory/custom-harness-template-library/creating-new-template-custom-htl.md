@@ -1,52 +1,55 @@
 ---
 title: How to build your own template in Custom Harness Template Library
-description: This tutorial will go through how to make changes to a template in Custom Harness Template Library
-sidebar_position: 4
+sidebar_label: Build Your Own Template
+description: Build a new Harness Solutions Factory template from scratch in Custom Harness Template Library, from Terraform scaffold to registered IDP workflow.
+keywords:
+  - create custom template
+  - custom harness template library
+  - terraform template scaffold
+  - idp catalog workflow
+tags:
+  - hsf
+  - templates
+sidebar_position: 30
 ---
 
-In this tutorial you will create a new template for the Harness Solutions Factory (HSF) Template Library from scratch.
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-## Before You Start
+In this tutorial you will build a new template for the Harness Solutions Factory (HSF) Template Library from scratch. You start from the Terraform scaffold, author the Harness YAML templates, test the module locally, and finish with a registered workflow that any user can run from the Harness Internal Developer Portal (IDP).
 
-### Where does the repo come from?
+---
 
-When HSF is deployed into your account, it automatically creates a repository called `custom-harness-template-library` inside the `Harness Platform Management` organization. This is your personal copy of the template library — it is where all custom templates live.
+## What will you learn?
 
-To find it: navigate to **Harness Platform Management** org → **Repositories** and look for `custom-harness-template-library`. Clone that repo locally before continuing.
+- **Scaffold a template:** Generate the standard Terraform directory structure in your Custom Harness Template Library repo.
+- **Write the Terraform module:** Define providers, variables, locals, data sources, resources, and outputs using the HSF conventions.
+- **Author Harness YAML templates:** Build the pipeline, stage, step, and step group definitions that Terraform renders.
+- **Test locally:** Validate, deploy, and tear down your module before it reaches IDP.
+- **Register the workflow:** Publish your `catalog_template.yaml` so users can run it from the IDP catalog.
 
-:::note
-If you want to setup your own Custom Harness Template Library review this [documentation](../custom-harness-template-library/setup-custom-htl.md):::
+---
 
-### What permissions do I need?
+## Before you begin
 
-Your Harness API token needs the following at minimum:
+- **Custom Harness Template Library repo:** When HSF is deployed into your account, it automatically creates a repository called `custom-harness-template-library` in the **Harness Platform Management** organization. Navigate to **Harness Platform Management** > **Repositories**, then clone `custom-harness-template-library` locally. Go to [Using your own SCM for Custom Harness Template Library](/docs/harness-solutions-factory/custom-harness-template-library/setup-custom-htl) to use your own SCM provider instead.
+- **Harness account access:** You need access to the Harness account where HSF is deployed. Go to [Getting started with Harness Platform](/docs/platform/get-started/onboarding-guide) to create or access an account.
+- **Template permissions:** You need **View**, **Create**, and **Edit** for [Templates](/docs/platform/role-based-access-control/permissions-reference#shared-resources) at the scope where you deploy (account, org, or project).
+- **Pipeline permissions:** You need **View** and **Execute** for [Pipelines](/docs/platform/role-based-access-control/permissions-reference#pipelines) on the **Solutions Factory** project, so you can trigger the IACM workspace pipeline.
+- **IDP workflow permissions:** You need **View**, **Create / Edit**, and **Execute** for [Workflow](/docs/platform/role-based-access-control/permissions-reference#internal-developer-portal) in IDP. Go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) and [Manage roles](/docs/platform/role-based-access-control/add-manage-roles) to have an administrator assign a role that includes these permissions.
+- **Harness API token:** The IDP workflow submits your token when it triggers the provisioning pipeline. Go to [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys) to create a token with the permissions listed above.
+- **Account-level HSF variables:** The last page of your catalog workflow reads these account variables, which HSF creates during deployment. Navigate to **Account Settings** > **Account Resources** > **Variables** and confirm all five exist with non-empty values: `solutions_factory_endpoint`, `solutions_factory_org`, `solutions_factory_project`, `custom_template_library_connector`, and `custom_template_library_repo`.
 
-- **Template: Create/Edit** at the scope where you are deploying (account, org, or project)
-- **Pipeline: Execute** on the `Solutions Factory` project (to trigger the IACM workspace)
-- **IDP: Register/Unregister** to manage catalog entries
+    :::warning
+    If any of these variables are missing or empty, the hidden fields in your workflow pass empty strings, and the provisioning pipeline fails with no clear error. Verify them before you author `catalog_template.yaml` in Step 10.
+    :::
 
-If you are testing as a non-admin, ask your Harness admin to assign you the `Developer` role in the `Harness Platform Management` org.
+- **Local tools:** Terraform or OpenTofu, `git`, and optionally Docker and `mise`. Go to [Developer Environment Setup](/docs/harness-solutions-factory/configurations/developer-env-setup) to install them, or open the repo in the bundled `.devcontainer/` and select **Reopen in Container** to get every tool preinstalled.
+- **Optional, `mise`:** `mise` (mise-en-place) is a task runner and tool version manager. It reads `.mise.toml` at the repo root and gives you consistent commands across operating systems. Every step below also gives the `make` equivalent, so `mise` is not required. Go to [Local Development Using mise](/docs/harness-solutions-factory/configurations/using-mise) to set it up, then run `mise tasks` to list the available tasks.
 
-### What is `mise`?
+---
 
-`mise` (mise-en-place) is a task runner and tool version manager. The HSF repo uses it to standardize commands across machines — it reads `mise.toml` at the repo root and gives you consistent commands like `mise run deploy` regardless of your OS. Using this is **optional**.
-
-Install it from [mise.jdx.dev](https://mise.jdx.dev/getting-started.html), then run `mise help` in any template directory to see available commands.
-
-### Prerequisites
-
-- OpenTofu or Terraform installed 
-- OpenTofu or Terraform Images if using Docker 
-- `git`
-- A cloned copy of your `custom-harness-template-library` repo
-- **optional** Docker (or compatible engine)
-- **optional** `mise` installed and available on your PATH
-
-> **Fastest setup:** The repo ships with a `.devcontainer/` directory. Open it in VS Code and choose **Reopen in Container** — all tools are pre-installed automatically.
-
-## Creating your own template in Custom Harness Template Library 
-
-### Step 1 — Create a Branch and Scaffold
+### Step 1: Create a branch and scaffold
 
 Always start on a new branch.
 
@@ -54,53 +57,66 @@ Always start on a new branch.
 git checkout -b feature/my-new-template
 ```
 
-Then generate the template scaffold. 
+Generate the template scaffold, replacing `my-new-template` with your chosen name.
 
-If using mise, replace `my-new-template` with your chosen name.
+<Tabs>
+<TabItem value="make" label="Make" default>
+
 ```bash
-mise run template <my-new-template>
+make generate type=terraform name=my-new-template
 ```
 
-Otherwise run
+</TabItem>
+<TabItem value="mise" label="mise">
+
 ```bash
-cp scaffolds/terraform <new-template-name>
+mise run template my-new-template
 ```
 
-> **Naming rules:** Use lowercase letters and hyphens only — for example `maven-cicd-k8s` or `delegate-fleet-management`. Be descriptive and concise.
+</TabItem>
+</Tabs>
 
-This creates the following structure:
+:::tip Naming rules
+Use lowercase letters and hyphens only, for example `maven-cicd-k8s` or `delegate-fleet-management`. Be descriptive and concise. Go to [Naming Convention Standards](/docs/harness-solutions-factory/best-practices/naming-convention-standards) to review the full conventions.
+:::
 
-```
+The scaffold creates the following structure:
+
+```text
 my-new-template/
 ├── .harness/
-│   └── catalog_template.yaml    ← The IDP form users see
-│   └── pipe_hsf_hub.yaml
-│   └── rb_hsf_hub.yaml
+│   ├── catalog_template.yaml    # The IDP form users see
+│   ├── pipe_hsf_hub.yaml
+│   ├── rb_hsf_hub.yaml
 │   └── rg_hsf_hub.yaml
 ├── templates/
 │   ├── pipelines/
 │   ├── stages/
-│   │   └── snippets/            ← Create this manually if missing (see note below)
+│   │   └── snippets/
 │   ├── steps/
 │   └── step_groups/
 ├── main.tf
 ├── locals.tf
 ├── variables.tf
 ├── outputs.tf
+├── providers.tf
 ├── terraform.tf
 ├── terraform.tfvars.example
 ├── Makefile
 └── README.md
 ```
 
-> **Note:** The `snippets/` subdirectory is not always created by the scaffold. If you need it, create it manually:
-> ```bash
-> mkdir -p my-new-template/templates/stages/snippets
-> ```
+:::note
+The `snippets/` subdirectory is not always created by the scaffold. If your stage templates need it, create it manually:
 
-### Step 2 — Set Provider Versions
+```bash
+mkdir -p my-new-template/templates/stages/snippets
+```
+:::
 
-Open `terraform.tf`. This declares which providers your template needs. The standard configuration should be copied into the file:
+### Step 2: Set provider versions
+
+Open `terraform.tf`. This file declares which providers your template needs. Copy the standard configuration into it:
 
 ```hcl
 terraform {
@@ -117,11 +133,13 @@ terraform {
 }
 ```
 
-> **Why `time`?** The Harness API sometimes needs a brief pause between resource creates. The `time_sleep` resource (used in Step 7) handles this — include the provider by default even if you are not sure you need it yet.
+:::info Why the time provider?
+The Harness API is eventually consistent, so it sometimes needs a brief pause between resource creates. The `time_sleep` resource used in Step 7 handles this. Include the provider by default even if you are not sure you need it yet.
+:::
 
-### Step 3 — Define Your Variables
+### Step 3: Define your variables
 
-Open `variables.tf`. Every input to your template goes here. The library uses three standard groups — copy these in order.
+Open `variables.tf`. Every input to your template goes here. The library uses three standard groups. Copy them in order.
 
 **Group 1: Platform configuration (always required)**
 
@@ -156,7 +174,7 @@ variable "tags" {
 }
 ```
 
-**Group 2: Build infrastructure (include if your template creates CI/STO pipelines)**
+**Group 2: Build infrastructure (include if your template creates CI or STO pipelines)**
 
 ```hcl
 variable "kubernetes_connector" {
@@ -184,7 +202,9 @@ variable "kubernetes_override_image_connector" {
 }
 ```
 
-> **The `"skipped"` convention:** HSF uses the string `"skipped"` as a "not provided" signal throughout the library. When `kubernetes_connector = "skipped"`, the template automatically switches to Harness Cloud infrastructure. You will see this pattern in YAML conditionals in Step 6.
+:::info The "skipped" convention
+HSF uses the string `"skipped"` as a "not provided" signal throughout the library. When `kubernetes_connector = "skipped"`, the template automatically switches to Harness Cloud infrastructure. The same pattern appears in the YAML conditionals in Step 6.
+:::
 
 **Group 3: Your custom variables**
 
@@ -203,11 +223,10 @@ variable "my_feature_enabled" {
 }
 ```
 
-### Step 4 — Add Computed Values in `locals.tf`
+### Step 4: Add computed values in `locals.tf`
 
-`locals.tf` handles the logic that turns raw variables into values ready for use in resources. A standard block will be copied into the file. Add any custom locals below it.
+`locals.tf` holds the logic that turns raw variables into values ready for use in resources. Copy the standard block into the file, then add any custom locals below it.
 
-Example file:
 ```hcl
 locals {
   required_tags = {
@@ -236,15 +255,19 @@ locals {
   infrastructure_config = {
     KUBERNETES_CONNECTOR       = var.kubernetes_connector
     KUBERNETES_NAMESPACE       = var.kubernetes_namespace
-    KUBERNETES_NODESELECTORS   = var.kubernetes_node_selectors != {} ? yamlencode(var.kubernetes_node_selectors) : "skipped"
+    KUBERNETES_NODESELECTORS   = length(var.kubernetes_node_selectors) > 0 ? yamlencode(var.kubernetes_node_selectors) : "skipped"
     KUBERNETES_IMAGE_CONNECTOR = var.kubernetes_override_image_connector
   }
 }
 ```
 
-### Step 5 — Add Data Sources
+:::tip
+Use `length(var.kubernetes_node_selectors) > 0` rather than comparing the map to `{}`. Direct map comparison is unreliable for `map(any)` types and can silently evaluate the wrong branch.
+:::
 
-Create a `data.tf` file if necessary. These lookups validate that the organization and project you are targeting actually exist before Terraform tries to create anything inside them — turning a confusing `apply` failure into a clear `plan` failure with a helpful error message.
+### Step 5: Add data sources
+
+Create a `data.tf` file if your template targets an existing organization or project. These lookups confirm that the organization and project actually exist before Terraform tries to create anything inside them, which turns a confusing `apply` failure into a clear `plan` failure with a helpful error message.
 
 ```hcl
 data "harness_platform_organization" "this" {
@@ -266,21 +289,23 @@ data "harness_platform_project" "this" {
 }
 ```
 
-> **Important:** If you provide a `project_id`, you must also provide an `organization_id`. The project data source uses the org to locate the project. Providing a `project_id` without an `organization_id` will cause a Terraform index error at plan time.
-
-### Step 6 — Author the Harness YAML Template Files
-
-The files inside `templates/` define the actual Harness resources — pipelines, stages, steps, and step groups. These are rendered by Terraform's `templatefile()` function, so they use a special interpolation syntax rather than plain YAML.
-
-Examples for how to setup inputs and templates with stage infrastructure details blended in can be found [here](../configurations/configuring-stage-infra.md). 
-
-:::note
-To reduce the potential for errors we recommend to copy these files from a different template that has been provided by Harness Template Library to start. 
+:::warning
+If you provide a `project_id`, you must also provide an `organization_id`. The project data source uses the org to locate the project, so a `project_id` without an `organization_id` causes a Terraform index error at plan time.
 :::
 
-### Naming convention
+### Step 6: Author the Harness YAML template files
 
-Every file must be prefixed based on its type, with an underscore separating the prefix from the name:
+The files inside `templates/` define the actual Harness resources: pipelines, stages, steps, and step groups. Terraform renders them through the [`templatefile()`](https://developer.hashicorp.com/terraform/language/functions/templatefile) function, so they use interpolation placeholders rather than plain YAML.
+
+Go to [Configuring Stage Infrastructure](/docs/harness-solutions-factory/configurations/configuring-stage-infra) to review examples of inputs and templates with stage infrastructure details blended in.
+
+:::note
+To reduce the potential for errors, copy these files from a template that Harness Template Library already provides, then adapt them.
+:::
+
+#### Naming convention
+
+Prefix every file based on its type, with an underscore separating the prefix from the name.
 
 | Prefix | Type | Example filename |
 |--------|------|-----------------|
@@ -289,11 +314,11 @@ Every file must be prefixed based on its type, with an underscore separating the
 | `stp_` | Step | `stp_my_step.yaml` |
 | `stg_` | Step Group | `stg_my_step_group.yaml` |
 
-Always use the `.yaml` extension (not `.yml`).
+Always use the `.yaml` extension, not `.yml`. Go to [Naming Convention Standards](/docs/harness-solutions-factory/best-practices/naming-convention-standards) to review the full prefix list and the directory layout used across the factory.
 
-### Step 7 — Create Terraform Resources in `main.tf`
+### Step 7: Create Terraform resources in `main.tf`
 
-Now connect the YAML templates to Terraform resources using `harness_platform_template`.
+Connect the YAML templates to Terraform resources using `harness_platform_template`.
 
 ```hcl
 # Create a Step template
@@ -324,13 +349,14 @@ resource "harness_platform_template" "stp_my_step" {
   tags = local.common_tags_tuple
 }
 
-# A brief pause lets the step fully register before the stage references it. The API returns immediately and is eventually consistent.
+# A brief pause lets the step fully register before the stage references it,
+# because the Harness API returns immediately and is eventually consistent.
 # 5 seconds matches the value used across the library and is sufficient for
-# Harness SaaS. On self-hosted or slower environments, increase to 10–15s.
+# Harness SaaS. On self-hosted or slower environments, increase it to 10 or 15 seconds.
 resource "time_sleep" "wait_for_step" {
-  create_duration = "5s"
+  create_duration  = "5s"
   destroy_duration = "5s"
-  depends_on      = [harness_platform_template.stp_my_step]
+  depends_on       = [harness_platform_template.stp_my_step]
 }
 
 # Create a Stage template that uses the step above
@@ -356,7 +382,7 @@ resource "harness_platform_template" "sta_my_stage" {
       TAGS                  = yamlencode(local.common_tags)
       STEP_TEMPLATE_REF     = "${local.tier_handler}${harness_platform_template.stp_my_step.identifier}"
       STEP_TEMPLATE_VERSION = harness_platform_template.stp_my_step.version
-      STAGE_INFRASTRUCTURE  = templatefile(
+      STAGE_INFRASTRUCTURE = templatefile(
         "${path.module}/templates/stages/snippets/infrastructure.yaml",
         local.infrastructure_config
       )
@@ -368,11 +394,13 @@ resource "harness_platform_template" "sta_my_stage" {
 }
 ```
 
-> **On scope and `tier_handler`:** All templates in a single module must live at the same scope — account, org, or project. You cannot mix scopes (for example, a step at account level referenced by a stage at project level). If you use the `local.tier_handler` then it will automatically inject the scope based on the provided variables.
+:::info Scope and tier_handler
+All templates in a single module must live at the same scope: account, org, or project. You cannot mix scopes, for example a step at account level referenced by a stage at project level. `local.tier_handler` injects the correct scope prefix automatically based on the `organization_id` and `project_id` variables you provide.
+:::
 
-### Step 8 — Define Outputs
+### Step 8: Define outputs
 
-Open `outputs.tf`. Always expose the IDs and versions of every template you create — these are returned to the IDP workflow and shown to the user after deployment.
+Open `outputs.tf`. Always expose the IDs and versions of every template you create. These values are returned to the IDP workflow and shown to the user after deployment.
 
 ```hcl
 output "step_template" {
@@ -397,19 +425,19 @@ output "template_organization_info" {
 }
 ```
 
-**How outputs surface in IDP:**
+**How outputs surface in IDP**
 
-The IDP workflow reads Terraform outputs via this path pattern:
-```
+The IDP workflow reads Terraform outputs through this path pattern:
+
+```text
 pipeline.stages.Provision.spec.execution.steps.Provision.steps.apply.output.outputVariables.<output_name>
 ```
 
-Each top-level key in your `outputs.tf` becomes the `<output_name>` at the end of the path. In the example above, `step_template` and `stage_template` are the output names. If you add more outputs (e.g. `pipeline_template`), reference them in `catalog_template.yaml` using the same path with your new output name substituted at the end.
+Each top-level key in your `outputs.tf` becomes the `<output_name>` at the end of the path. In the example above, `step_template` and `stage_template` are the output names. If you add more outputs, for example `pipeline_template`, reference them in `catalog_template.yaml` using the same path with your new output name substituted at the end. Step 10 shows where these paths are consumed in the workflow `output` block.
 
+### Step 9: Complete `terraform.tfvars.example`
 
-### Step 9 — Complete `terraform.tfvars.example`
-
-This file is what users copy when configuring the template themselves. Every variable should appear here with its description as a comment.
+Users copy this file when they configure the template themselves, so every variable must appear here with its description as a comment.
 
 ```hcl
 # Harness Platform URL
@@ -418,17 +446,17 @@ harness_platform_url = "https://app.harness.io/gateway"
 # Harness Platform Account ID (Required)
 harness_platform_account = # Required
 
-# Organization ID — leave null for account-level deployment
+# Organization ID. Leave null for account-level deployment.
 organization_id = null
 
-# Project ID — leave null for org or account-level deployment
-# Note: if you set project_id, you must also set organization_id
+# Project ID. Leave null for org or account-level deployment.
+# Note: if you set project_id, you must also set organization_id.
 project_id = null
 
 # Tags
 tags = {}
 
-# Kubernetes connector — set to "skipped" to use Harness Cloud
+# Kubernetes connector. Set to "skipped" to use Harness Cloud.
 kubernetes_connector = "skipped"
 
 # Kubernetes namespace
@@ -447,26 +475,24 @@ my_connector_ref = # Required
 my_feature_enabled = true
 ```
 
-### Step 10 — Create the IDP Catalog Workflow
+### Step 10: Create the IDP catalog workflow
 
-This is the most important file. It defines the form users see in the Harness Internal Developer Portal.
+This is the most important file, because it defines the form users see in IDP. Open `.harness/catalog_template.yaml` and apply these rules before you write anything.
 
-Open `.harness/catalog_template.yaml`. Before writing anything, note these rules:
-
-**Rule 1 — `token` must be on the first page.**
+**Rule 1: `token` must be on the first page.**
 The `ui:field: HarnessAuthToken` field type is a built-in plugin that ships with HSF and auto-populates the user's token. If it renders as a plain text box, confirm the Harness IDP backend plugin is enabled in your account.
 
-**Rule 2 — `Solutions Factory Connection` must be the last page, all fields hidden.**
-Users never see this page. Every field is populated automatically from the account-level variables set during HSF deployment (the ones you verified in "Before You Start"). If those variables are missing, the fields will silently pass empty strings and the pipeline will fail.
+**Rule 2: `Solutions Factory Connection` must be the last page, with all fields hidden.**
+Users never see this page. Every field is populated from the account-level variables you verified in [Before you begin](#before-you-begin). If those variables are missing, the fields silently pass empty strings and the pipeline fails.
 
-**Rule 3 — Set `template_library_directory` and `workspace_type` to your directory name.**
+**Rule 3: Set `template_library_directory` and `workspace_type` to your directory name.**
 These two fields tell HSF which folder in your repo to run Terraform from. They must match the directory name you chose in Step 1.
 
-**About `infra_defaults`:** The hidden default `account.buildfarm_infrastructure` is a Kubernetes connector created by the Central Build Farm Setup factory. If you have not run that factory, the `Central Build Farm` option in the form will not work — but `Harness Cloud` and `Self-Hosted Kubernetes` will still function correctly.
+**About `infra_defaults`:** The hidden default `account.buildfarm_infrastructure` is a Kubernetes connector created by the Central Build Farm Setup factory. If you have not run that factory, the **Central Build Farm** option in the form does not work, but **Harness Cloud** and **Self-Hosted Kubernetes** still function correctly. Go to [Central Build Farm Workflow](/docs/harness-solutions-factory/use-hsf/workflows/central-build-farm-workflow) to deploy it.
 
-**About `RESOURCE_NAME`:** This is the unique identifier for the IACM workspace that runs your Terraform. Two deployments with the same `RESOURCE_NAME` will share (and potentially overwrite) the same workspace state. Use a descriptive constant that is unique to this template. If your template needs to be deployed multiple times independently, make this a user-provided input.
+**About `RESOURCE_NAME`:** This is the unique identifier for the IACM workspace that runs your Terraform. Two deployments with the same `RESOURCE_NAME` share, and potentially overwrite, the same workspace state. Use a descriptive constant that is unique to this template. If your template needs to be deployed multiple times independently, make this a user-provided input.
 
-**About `RESOURCE_OWNER`:** `HSF_Admins` is a user group created automatically during HSF deployment. You do not need to create it manually.
+**About `RESOURCE_OWNER`:** `HSF_Admins` is a user group created automatically during HSF deployment, so you do not need to create it manually. Reference it consistently as `group:account/HSF_Admins`.
 
 ```yaml
 apiVersion: harness.io/v1
@@ -561,7 +587,7 @@ spec:
           default: true
 
     # Last page: Solutions Factory connection
-    # All fields are hidden — populated from account-level variables set during HSF deployment
+    # All fields are hidden and populated from account-level variables set during HSF deployment
     - title: Solutions Factory Connection
       properties:
         solutions_factory_details:
@@ -607,7 +633,7 @@ spec:
               ui:widget: hidden
             template_library_directory:
               type: string
-              default: my-new-template    # ← your directory name
+              default: my-new-template    # Your directory name from Step 1
               ui:widget: hidden
         solutions_factory_opts:
           type: object
@@ -619,7 +645,7 @@ spec:
               ui:widget: hidden
             workspace_type:
               type: string
-              default: my-new-template    # ← your directory name
+              default: my-new-template    # Your directory name from Step 1
               ui:widget: hidden
             is_ephemeral:
               type: string
@@ -636,7 +662,7 @@ spec:
 
   steps:
     - id: configure_workspace
-      name: Configuring Harness Workspace
+      name: Configure Harness workspace
       action: trigger:harness-custom-pipeline
       input:
         url: ${{ parameters.solutions_factory_details.harness_account_url }}/ng/account/${{ parameters.solutions_factory_details.harness_account_id }}/all/orgs/${{ parameters.solutions_factory_details.harness_org_id }}/projects/${{ parameters.solutions_factory_details.harness_project_id }}/pipelines/Create_and_Manage_IACM_Workspaces/pipeline-studio?storeType=INLINE
@@ -646,7 +672,7 @@ spec:
           GIT_REPOSITORY_BRANCH: ${{ parameters.solutions_factory_details.template_library_branch }}
           GIT_REPOSITORY_PATH: ${{ parameters.solutions_factory_details.template_library_directory }}
           RESOURCE_NAME: MY_CUSTOM_TEMPLATE
-          RESOURCE_OWNER: group:default/HSF_Admins
+          RESOURCE_OWNER: group:account/HSF_Admins
           RESOURCE_VARS:
             kubernetes_connector: ${{ "skipped" if (parameters.build_infrastructure_type == "cloud") else ( parameters.infra_defaults.kubernetes_connector if (parameters.build_infrastructure_type == "build_farm") else parameters.kubernetes_connector ) }}
             kubernetes_namespace: ${{ "default" if (parameters.build_infrastructure_type == "cloud") else ( parameters.infra_defaults.kubernetes_namespace if (parameters.build_infrastructure_type == "build_farm") else parameters.kubernetes_namespace ) }}
@@ -678,47 +704,114 @@ spec:
           stage_template: ${{ steps.configure_workspace.output['pipeline.stages.Provision.spec.execution.steps.Provision.steps.apply.output.outputVariables.stage_template'] }}
 ```
 
-### Step 11 — Test Locally
+### Step 11: Test locally
 
-Test your Terraform module directly before touching IDP. This confirms all the Terraform code is correct without needing to merge or register anything.
+Test your Terraform module directly before you touch IDP. This confirms the Terraform code is correct without merging or registering anything.
 
-**1. Create your local config file:**
+:::warning
+`make apply` and `mise run deploy` create real resources in the Harness account named in your `terraform.tfvars`. Run the plan first, and use a non-production account if one is available.
+:::
+
+Create your local configuration file:
+
 ```bash
 cd my-new-template
 cp terraform.tfvars.example terraform.tfvars
-# Edit terraform.tfvars with real values from your account
 ```
 
-**2. Run a dry-run (no resources created):**
+Edit `terraform.tfvars` with real values from your account, then run the following sequence.
+
+<Tabs>
+<TabItem value="make" label="Make" default>
+
+1. Run a plan to confirm no resources are created yet:
+
+    ```bash
+    make plan
+    ```
+
+2. Apply, then confirm your templates appear under **Account Settings** > **Templates**:
+
+    ```bash
+    make apply
+    ```
+
+3. Check idempotency. The `cycle` target runs `init`, `destroy`, `apply`, and `plan`, and the final plan must propose no changes:
+
+    ```bash
+    make cycle
+    ```
+
+4. Tear down when you are finished. The `teardown` target runs `destroy` and `testing_cleanup`:
+
+    ```bash
+    make teardown
+    ```
+
+Go to [Local Testing Using Make](/docs/harness-solutions-factory/configurations/local-testing-using-make) to review every available target.
+
+</TabItem>
+<TabItem value="mise" label="mise">
+
+1. Run a dry run to confirm no resources are created yet:
+
+    ```bash
+    mise run deploy:dryrun
+    ```
+
+2. Deploy, then confirm your templates appear under **Account Settings** > **Templates**:
+
+    ```bash
+    mise run deploy
+    ```
+
+3. Check idempotency. Run the cycle task and confirm the final plan proposes no changes:
+
+    ```bash
+    mise run cycle
+    ```
+
+4. Tear down when you are finished:
+
+    ```bash
+    mise run teardown
+    ```
+
+Run `mise tasks` to confirm these task names exist in your copy of the repo.
+
+</TabItem>
+</Tabs>
+
+### Step 12: Generate the README and commit
+
+Generate the resources, inputs, and outputs tables for your README.
+
+<Tabs>
+<TabItem value="terraform-docs" label="terraform-docs" default>
+
+Install [terraform-docs](https://terraform-docs.io/user-guide/installation/), then run the following from your template directory:
+
 ```bash
-mise run deploy:dryrun
+terraform-docs markdown table --anchor=false .
 ```
 
-**3. Deploy and verify:**
+To bootstrap `terraform.tfvars.example` from your variables, run:
+
 ```bash
-mise run deploy
-# Check that your templates appeared under Account Settings → Templates
+terraform-docs tfvars hcl .
 ```
 
-**4. Check idempotency — run plan again and confirm no changes are proposed:**
-```bash
-mise run cycle
-```
-
-**5. Tear down when done:**
-```bash
-mise run teardown
-```
-
-### Step 12 — Generate the README and Commit
-
-Generate the inputs/outputs tables for your README automatically:
+</TabItem>
+<TabItem value="mise" label="mise">
 
 ```bash
 mise run docs
 ```
 
-Then commit everything and push:
+</TabItem>
+</Tabs>
+
+Commit everything and push:
 
 ```bash
 git add my-new-template/
@@ -726,14 +819,28 @@ git commit -m "feat: add my-new-template"
 git push origin feature/my-new-template
 ```
 
-Open a pull request against `main`. Once it is merged, move on to Step 13.
+Open a pull request against `main`. Once it is merged, continue to Step 13.
 
-### Step 13 — Register the IDP Workflow
+### Step 13: Register the IDP workflow
 
-After your changes are merged to `main`, register the workflow by running the **Register Custom IDP Templates** pipeline in the `Solutions Factory` project.
+After your changes are merged to `main`, register the workflow by running the **Register Custom IDP Templates** pipeline in the **Solutions Factory** project.
 
-1. In Harness, navigate to **Harness Platform Management** org → **Solutions Factory** project → **Pipelines**
-2. Find and run **Register Custom IDP Templates**
-3. Once the pipeline completes, navigate to **Internal Developer Portal** and execute your newly created workflow!
+1. In Harness, navigate to **Harness Platform Management** > **Solutions Factory** > **Pipelines**.
+2. Find **Register Custom IDP Templates**, then click **Run**.
+3. When the pipeline succeeds, navigate to **Internal Developer Portal** > **Workflows** and confirm your workflow appears with the `name` you set in `catalog_template.yaml`.
+4. Run your workflow. A successful execution creates an IACM workspace named after your `RESOURCE_NAME`, applies your Terraform, and returns the output values in the **Deployment Summary** block. Confirm your new templates are listed under **Account Settings** > **Templates**.
 
-> **Re-registering after changes?** Any time you update your `catalog_template.yaml` and merge to `main`, just run the **Register Custom IDP Templates** pipeline again — it handles re-registration automatically.
+:::tip Re-registering after changes
+Any time you update `catalog_template.yaml` and merge to `main`, run the **Register Custom IDP Templates** pipeline again. It handles re-registration automatically.
+:::
+
+---
+
+## Next steps
+
+You have built, tested, and registered a custom template that any user in your account can deploy from the IDP catalog. Extend it by adding stage infrastructure options, or use the same pattern to build additional templates in your library.
+
+- [Configuring Stage Infrastructure](/docs/harness-solutions-factory/configurations/configuring-stage-infra): Blend build infrastructure details into your stage templates.
+- [How to customize an existing template using Custom Harness Template Library](/docs/harness-solutions-factory/custom-harness-template-library/customizing-using-custom-htl): Modify a template Harness already ships instead of starting from scratch.
+- [Create new Terraform templates](/docs/harness-solutions-factory/custom-harness-template-library/new-terraform-templates): Review the scaffold file reference in more detail.
+- [Execute a workflow](/docs/harness-solutions-factory/use-hsf/workflows/execute-a-workflow): Run your registered workflow and interpret its output.

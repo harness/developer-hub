@@ -1,13 +1,24 @@
 ---
 title: Developer Environment Setup
 description: Developing for HTL involves having docker, terraform/opentofu, and git installed locally.
+keywords:
+  - developer environment setup
+  - devcontainer setup
+  - local container development
+tags:
+  - hsf
+  - configurations
 sidebar_position: 10
 redirect_from: 
     - /kb/reference-architectures/hsf/htl/developer-env-setup
 ---
-## Using the DevContainer in this repository
+
+Developing for the Harness Template Library requires a local environment with Docker, Terraform or OpenTofu, and Git installed. Use either the DevContainer or the local container-based Makefile workflow described below to get set up.
+
+## Use the DevContainer in this repository
 
 This repository includes support for DevContainers.  In order to install this into your environment, you will need to have:
+
 - A supported version of docker or [docker-compatible](https://code.visualstudio.com/remote/advancedcontainers/docker-options) engine
 - [DevContainers Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) or compatible extension for your IDE
 
@@ -21,16 +32,18 @@ To modify the DevContainer, simply edit the `devcontainer.json` at the root of t
 Harness supports the use of Cloud Development Environments (Harness Gitspaces) which can launch an interactive environment using the Harness CDE module. For more information, see the details on [Harness Cloud Development Environments](https://developer.harness.io/docs/cloud-development-environments)
 -->
 
-## Local Container Based development
+## Local container-based development
 
 A robust `Makefile` configuration is included within this repository. The command file contains frequently used shortcuts and commands. To use this solution, you will need to have:
+
 - A supported version of docker or [docker-compatible](https://code.visualstudio.com/remote/advancedcontainers/docker-options) engine
 - `Make` installed for your OS [Windows](https://gnuwin32.sourceforge.net/packages/make.htm) or Mac with Xcode Command line tools Installed [or with Homebrew Gnu Make](https://formulae.brew.sh/formula/make)
 
 Find more information on [Local Testing using make](./local-testing-using-make.md) in this repository
 
 To get the current list of available commands, type `make help` in a Terminal session in this directory.
-```
+
+```text
 debug            Loads the current directory into the container to allow running commands locally
 init             Executes Terraform/Tofu `init`. Pass `migrate` to delete any local `backed.tf` and a `-migrate-state` will be performed.
 plan             Executes a Terraform/Tofu `plan`

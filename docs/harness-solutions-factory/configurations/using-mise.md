@@ -1,10 +1,15 @@
 ---
 title: Local Development Using mise
 description: This document details how to use Mise
+keywords:
+  - mise local development
+  - mise tool version manager
+  - mise.toml configuration
+tags:
+  - hsf
+  - configurations
 sidebar_position: 20
 ---
-
-# Local Development Using mise
 
 This document explains what mise is, how it is used in the HSF repository,
 and how to get it configured in your local development environment.
@@ -14,7 +19,7 @@ and how to get it configured in your local development environment.
 [mise](https://mise.jdx.dev/) (pronounced "meez", short for _mise en place_)
 is a polyglot runtime and tool version manager. It manages the versions of
 tools like Terraform, OpenTofu, and other CLI utilities your project depends
-on — and ensures everyone on your team is running the exact same versions,
+on, and ensures everyone on your team is running the exact same versions,
 regardless of what is installed on their local machine.
 
 Think of it as a single tool that replaces `tfenv`, `tfswitch`, `asdf`, and
@@ -29,10 +34,10 @@ automatically when you enter the directory.
   contributor environments without manual version pinning.
 - Reduces "works on my machine" issues caused by mismatched Terraform or
   OpenTofu versions.
-- One install, one config file — no need to manage separate version managers
+- One install, one config file: no need to manage separate version managers
   per tool.
 
-## Prerequisites
+## Before you begin
 
 Before setting up mise, confirm you have the following:
 
@@ -42,14 +47,14 @@ Before setting up mise, confirm you have the following:
 - `git` installed and the repository cloned locally.
 - A terminal with shell support for `bash`, `zsh`, or `fish`.
 
-## Get started:
+## Get started
 
 1. [Install mise](https://mise.jdx.dev/getting-started.html) and activate
    it in your shell.
 2. From the root of the repository, run:
 
 ```bash
-   mise install
+mise install
 ```
 
    mise reads the `.mise.toml` file at the root of the repository and
@@ -58,7 +63,7 @@ Before setting up mise, confirm you have the following:
 3. Verify the correct versions are active:
 
 ```bash
-   mise current
+mise current
 ```
 
 :::note

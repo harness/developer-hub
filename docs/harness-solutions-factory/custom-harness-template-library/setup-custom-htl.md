@@ -1,10 +1,17 @@
 ---
 title: Using your own SCM for Custom Harness Template Library
 description: This document will walk you through the steps required to use your own SCM for Custom Harness Template Library
-sidebar_position: 1
+keywords:
+  - custom scm for template library
+  - custom harness template library setup
+  - template library connector
+tags:
+  - hsf
+  - templates
+sidebar_position: 10
 ---
 
-Custom Harness Template Library is a point-in-time mirror of HTL that your organization controls. You can copy templates from HTL into Custom HTL and modify them there. If Harness releases an update to a template in HTL, it won't overwrite your customizations in Custom HTL — you choose when to adopt Harness updates. The Custom Harness Template Library is included with the deployment of your Harness Solutions Factory.
+Custom Harness Template Library is a point-in-time mirror of HTL that your organization controls. You can copy templates from HTL into Custom HTL and modify them there. If Harness releases an update to a template in HTL, it will not overwrite your customizations in Custom HTL: you choose when to adopt Harness updates. The Custom Harness Template Library is included with the deployment of your Harness Solutions Factory.
 
 :::info custom template library
 If you do not have a Custom Harness Template Library repo in the root of your Harness Platform Management organization, then proceed to the documentation on [How to upgrade your Solutions Factory implementation](/docs/harness-solutions-factory/new-to-hsf/hsf-upgrade)
@@ -13,11 +20,13 @@ When configuring the Solutions Factory implementation for the first time, the cu
 :::
 
 ## Leverage your own Source Code Manager
+
 In order to leverage your own Source Code Manager, you will be required to configure several pre-requisites prior to utilizing any templates stored in that repository.
 
 _**Note**: The steps detailed here will assume that you have permissions to create and manage repositories within your Source Code Manager and are able to create and configure the necessary connectors_
 
-### Prerequisites
+### Before you begin
+
 - A new or existing Source Code Manager (SCM) connector with appropriate permissions
 
     _**Note**: The reuse of an existing connector or the Central Build Farm connector is possible as this does not require a dedicated connector.  The Connector must live within the scope of either the Account or the Organization. While possible to support a connector at the project level, we advise against it in the event that the connections are required across any of the projects within the Harness Platform Management organization_
@@ -29,16 +38,19 @@ _**Note**: The steps detailed here will assume that you have permissions to crea
 
     _**Note**: This is only required for customers hosting their SCM internal to their networks_
 
-### Modify Standard Variables
+### Modify standard variables
+
 - Update the Account-level variable `Custom Template Library Connector` to point to the Connector from which your custom repository will come.  The connector should be prefixed with `account.` or `org.` depending on the scope
 - Update the Account-level variable `Custom Template Library Repo` to contain the scoped path to your repository based on your connector setup. _**Note**: If you connector points to the root of your SCM, such as https://github.com, then be sure to provide the full repository path excluding the Connector root details._
 
-## Creating a new Template
+## Create a new template
+
 A Terraform scaffold is included within the baseline repository (`scaffolds/terraform`).  This scaffold includes everything required to begin building out new templates for use with the Solutions Factory.
 
 [Learn more about creating new templates](/docs/harness-solutions-factory/configurations/developer-env-setup)
 
-## Updating Harness provided samples and baseline templates
+## Update Harness-provided samples and baseline templates
+
 Often, the provided samples and baseline templates do not cover 100% of your use cases and require adjustment. In order to customize the Templates, follow the below steps.
 
 1. In your CTL repository, open the `.harness/catalog_template.yaml` file
@@ -54,7 +66,8 @@ Often, the provided samples and baseline templates do not cover 100% of your use
 2. Optionally, the `metadata.name` can be modified to support registering a new copy without first having to replace the original version.
 3. Commit and push your changes back to your SCM repository.
 
-## Testing and updating IDP with your new workflow
+## Test and update IDP with your new workflow
+
 _**STOP**: It is important to note that two templates of the same `metadata.name` cannot be registered at the same time to the same IDP environment. To resolve this, you will need to first unregister the current version of workflow within IDP._
 
 This step is only required when under the following conditions
@@ -62,7 +75,7 @@ This step is only required when under the following conditions
 - Replacing the Harness provided version
 - Modifying the source repository branch
 
-When replacing or modifying a worklfow branch, you will need to `Unregister` the template from your IDP environment. If you modified the `metadata.name` to a new value, then skip to `Step 8`
+When replacing or modifying a workflow branch, you will need to `Unregister` the template from your IDP environment. If you modified the `metadata.name` to a new value, then skip to `Step 8`
 
 1. Navigate to Internal Developer Portal (IDP) module within your Harness account
 2. In the left hand navigation, select `Catalog` and change the Kind dropdown to `Template`
@@ -72,14 +85,14 @@ When replacing or modifying a worklfow branch, you will need to `Unregister` the
 6. In the pop-up window, choose `Unregister Location`
 7. Wait for the unregistration to complete
 8. In the left hand navigation, select `Register`
-9. Copy the full repository URL to your new `catalog_template.yaml` file.  _**Note:**: This should be the entire HTTPS path._
+9. Copy the full repository URL to your new `catalog_template.yaml` file.  _**Note**: This should be the entire HTTPS path._
 10. Paste the URL in the field and click Analyze
-11. Click `Import` .  _**Note**: If a matching template `metadata.name` is registered or the original template had not been removed, the button will say `Refresh`.  If this is the case, then **STOP** and retry the steps from `Step 2` in this list_
+11. Click `Import`.  _**Note**: If a matching template `metadata.name` is registered or the original template had not been removed, the button will say `Refresh`.  If this is the case, then **STOP** and retry the steps from `Step 2` in this list_
 12. After the import completes, you can open the link to the `template:<template-name>` provided.
 13. Verify that the `View Source` is pointed to the correct repository and branch.
 14. Click `Launch Template` to test the build
 
-## Production Readiness for Custom Templates
+## Production readiness for custom templates
 
 :::warning template changes
 _**STOP**: Review the below prior generating a Pull-Request and finalizing your template changes_

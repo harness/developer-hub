@@ -1,25 +1,31 @@
 ---
 title: SAST & SCA Workflow
 description: Understand the SAST & SCA Workflow
-sidebar_position: 4
+keywords:
+  - sast sca workflow
+  - security scanning templates
+  - sto config manager
+tags:
+  - hsf
+  - workflows
+sidebar_position: 40
 ---
-# Deploy Harness SAST & SCA Templates
 
 Deploy Harness SAST & SCA Templates provisions a suite of step group, stage,
 and pipeline templates that give your teams out-of-the-box security scanning
-capabilities. The goal is day-one operations — teams can start scanning
+capabilities. The goal is day-one operations: teams can start scanning
 repositories for vulnerabilities immediately, even before a CI pipeline
 is in place.
 
 Once this workflow completes, it also creates a second workflow in IDP that
 end users can run to register their own repositories for scanning.
 
-## Prerequisites
+## Before you begin
 
 - HSF is deployed and post-deployment configuration is complete.
 - A build farm is configured. Run
   [Harness Central Build Farm Setup](../workflows/central-build-farm-workflow.md) first if you
-  haven't already — every repository scan needs a build infrastructure to
+  have not already; every repository scan needs a build infrastructure to
   run on.
 - You have been added to the **HSF Users** or **HSF Admins** group.
 
@@ -30,7 +36,6 @@ end users can run to register their own repositories for scanning.
 | Build infrastructure type | The infrastructure scans will run on | Must match your configured build farm |
 | Scanner selection | Which security scanners to enable for repository scans | Order does not matter — scanners run in parallel |
 | STO config manager repo | Where to host the config manager configuration | Bring your own repo or let HSF create one |
-
 
 ## Steps
 
@@ -49,20 +54,20 @@ infrastructure configurations for their scans.
 ### 2. Set up the STO config manager
 
 One of the biggest challenges in security scanning is handling the variation
-between applications — different scanners, exclusion rules, and overrides
+between applications: different scanners, exclusion rules, and overrides
 needed per repo or team. HSF solves this with a hierarchical config manager
 approach.
 
 The `harness-sto-config-manager` plugin (available as a public image on
 DockerHub) lets a central DevSecOps team define scanner configurations and
-overrides at multiple levels — account, org, project, or repo — and resolves
+overrides at multiple levels (account, org, project, or repo) and resolves
 the hierarchy automatically at scan time.
 
 When setting up the config manager, you can:
 
-- **Bring your own repo** — point HSF at an existing repository where your
+- **Bring your own repo:** point HSF at an existing repository where your
   config manager configuration lives.
-- **Let HSF create a repo** — HSF will create and manage the config
+- **Let HSF create a repo:** HSF will create and manage the config
   repository in Harness Code Repository.
 
 :::note

@@ -1,6 +1,12 @@
 ---
 title: HSF FAQs
 description: Frequently asked questions about HSF.
+keywords:
+  - hsf faq
+  - hsf deployment requirements
+  - hsf terraform opentofu support
+tags:
+  - hsf
 sidebar_position: 100
 sidebar_label: FAQs
 ---
@@ -33,7 +39,7 @@ HSF leverages Harness Internal Developer Portal, Infrastructure as Code Manageme
 ---
 
 ## Deployment & setup
-### What's needed and what gets created
+### What is needed and what gets created
 <details>
 <summary>What is required to get HSF deployed?</summary>
 
@@ -73,7 +79,7 @@ Once cloned, all code is fully replicated and **must be stored and executed from
 <details>
 <summary>Is there a way to run HSF not through the GUI?</summary>
 
-You can actually pass in the form data via the API to trigger the IDP workflow, or you can also go one step further and you can still use the terraform code itself to actually provision externally but the reason why there is a GUI experience is because HSF was created to be a self service marketplace for application developers to be able to get access to the resources they need. We want to be able to shift this left towards devs and remove the reliance on platform teams.
+Yes. You can pass the form data through the API to trigger the IDP workflow directly, or use the Terraform code itself to provision resources outside the GUI. HSF provides a GUI experience because it is designed as a self-service marketplace where application developers can get access to the resources they need, shifting provisioning left and reducing the reliance on platform teams.
 </details>
 
 <details>
@@ -83,13 +89,13 @@ Harness Solutions Factory supports integration with all **OpenTofu** versions<Ha
     query="https://app.harness.io/gateway/iacm/api/provisioners/supported/opentofu"
     token="process.env.HARNESS_GENERIC_READ_ONLY_KEY"
     fallback=""
-    parse='.[-1] | " (latest: v\(.))"'></HarnessApiData>.  
- 
- Due to licensing and legal limitations all legacy Terraform versions under the MPL license are supported (up to **1.5.x**), any BSL versions (from 1.6.0) are not supported.
+    parse='.[-1] | " (latest: v\(.))"'></HarnessApiData>.
+
+Due to licensing and legal limitations all legacy Terraform versions under the MPL license are supported (up to **1.5.x**), any BSL versions (from 1.6.0) are not supported.
 </details>
 
 <details>
 <summary>Can HSF manage cloud resources, not just Harness entities? </summary>
 
-Yes. Because HSF is built on OpenTofu and IaCM, it can provision any resource that has a Terraform provider — AWS, Azure, GCP, etc. However, you will need a paid enterprise license for IDP and IaCM if provisioning non Harness entites.
+Yes. Because HSF is built on OpenTofu and IaCM, it can provision any resource that has a Terraform provider, such as AWS, Azure, or GCP. However, you will need a paid enterprise license for IDP and IaCM if provisioning non-Harness entities.
 </details>

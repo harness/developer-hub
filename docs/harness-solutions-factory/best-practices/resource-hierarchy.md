@@ -1,6 +1,13 @@
 ---
 title: Resource Hierarchy
 description: When creating flexible templates there may be resources you want to create that could exist at multiple scopes - Account, Organization, or Project. 
+keywords:
+  - resource hierarchy
+  - template scope selection
+  - account organization project scope
+tags:
+  - hsf
+  - best-practices
 sidebar_position: 60
 redirect_from: 
     - /kb/reference-architectures/hsf/htl/resource-hierarchy
@@ -13,14 +20,16 @@ To do this, you must do three things:
 * Place the resource [using the terraform code] at the target location
 * Dynamically give the users links to the created resources
 
-We can achieve this using the following pattern in your catalog and terraform code.
+This can be achieved using the following pattern in your catalog and terraform code.
 
-## Specify Location 
+## Specify location
+
 You can use the following template section in your catalog to ask the user where the resource should be placed.
-```
+
+```yaml
   parameters:
     - title: Template Location
-      description: Where should we put it?
+      description: Where should this be placed?
       required:
         - template_location
       properties:
@@ -71,15 +80,17 @@ You can use the following template section in your catalog to ask the user where
 
 You can then pass the org and project IDs to your terraform based on the values selected:
 
-```
+```yaml
 RESOURCE_VARS:  
   organization_id: ${{ parameters.org_id if parameters.project_id else ( parameters.org_id if parameters.org_id else "") }}
   project_id: ${{ parameters.project_id if parameters.project_id else "" }}
 ```
 
-## Use Location
+## Use location
+
 Now in your terraform, you need to define variables for the org and project IDs, and use them in your resource definition.
-```
+
+```hcl
 variable "organization_id" {
   type        = string
   description = "[Optional] The organization where the step template will live, leave blank for account level. Provide an existing organization reference ID.  Must exist before execution"
@@ -92,9 +103,10 @@ variable "project_id" {
   default     = null
 }
 ```
-We use data sources to validate that the locations exist before we try and create them (plan failures vs apply failures).
 
-```
+Data sources validate that the locations exist before Terraform tries to create them, turning a confusing apply failure into a clear plan failure.
+
+```hcl
 data "harness_platform_organization" "this" {
   count      = var.organization_id == null ? 0 : 1
   identifier = var.organization_id
@@ -106,19 +118,21 @@ data "harness_platform_project" "this" {
   org_id     = data.harness_platform_organization.template[0].id
 }
 ```
-Lastly we can use the data to place the resources we are creating at whatever level specified by the user.
 
-```
+The data sources can then be used to place the resources being created at whatever level the user specified.
+
+```hcl
 resource "harness_platform_template" "this" {
   org_id     = var.template_organization_id == null ? null : data.harness_platform_organization.template[0].id
   project_id = var.template_project_id == null ? null : data.harness_platform_project.template[0].id
 }
 ```
 
-## Returning resource links
-Finally we want to give the user handy links in their template so they can easily navigate to the created resource. We just ned to craft the resource URL based on the org or project specified. This may change based on the resource you are linking to, the following is an example for some of the common resources.
+## Return resource links
 
-```
+Finally, give the user handy links in their template so they can easily navigate to the created resource. The resource URL is crafted based on the org or project specified. This may change based on the resource you are linking to; the following is an example for some of the common resources.
+
+```yaml
 output:
   links:
     - title: Created Resource

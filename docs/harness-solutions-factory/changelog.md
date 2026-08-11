@@ -1,6 +1,12 @@
 ---
 title: Changelog
 description: Changelogs and improvements to Harness Solutions Factory.
+keywords:
+  - hsf changelog
+  - hsf release notes
+  - hsf version history
+tags:
+  - hsf
 sidebar_position: 900
 ---
 

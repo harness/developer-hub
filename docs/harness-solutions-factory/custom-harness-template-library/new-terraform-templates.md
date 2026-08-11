@@ -1,14 +1,21 @@
 ---
-title: Developer Environment Setup
+title: Create new Terraform templates
 description: This document will guide the user through the creation of new Terraform templates to be included in the Harness Template Library.
-sidebar_position: 10
+keywords:
+  - new terraform templates
+  - harness template library
+  - template scaffold
+tags:
+  - hsf
+  - templates
+sidebar_position: 40
 redirect_from: 
     - /kb/reference-architectures/hsf/htl/new-terraform-templates
 ---
 
 This document will guide the user through the creation of new Terraform templates to be included in the Harness Template Library. The goal will be to guide the user through adding a new local development branch and base scaffold necessary to build a new Terraform Template.
 
-## Prerequisites
+## Before you begin
 
 This document assumes that your local development environment has followed the steps outline in the [Developer Environment Setup](../configurations/developer-env-setup.md) guide.  Please review those requirements to ensure that you have all the tools necessary to proceed.
 

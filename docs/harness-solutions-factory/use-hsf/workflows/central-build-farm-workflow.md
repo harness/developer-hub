@@ -1,17 +1,23 @@
 ---
 title: Central Build Farm Workflow
 description: Understand the Central Build Farm Workflow
-sidebar_position: 3
+keywords:
+  - central build farm setup
+  - build infrastructure
+  - container registry connector
+tags:
+  - hsf
+  - workflows
+sidebar_position: 30
 ---
-# Harness Central Build Farm Setup
 
 Harness Central Build Farm Setup configures the core components required for
-Harness CI — build infrastructure, container registry, and source code manager.
+Harness CI: build infrastructure, container registry, and source code manager.
 A centralized build farm reduces Kubernetes cluster ownership costs and
 simplifies operations by consolidating CI workloads into a single,
 autoscaling cluster.
 
-## Prerequisites
+## Before you begin
 
 - HSF is deployed and post-deployment configuration is complete.
 - You know which build infrastructure type you want to use
@@ -25,7 +31,7 @@ autoscaling cluster.
 
 | Input | Description | Notes |
 |---|---|---|
-| Build infrastructure type | Self-hosted Kubernetes, Harness Cloud, or both | See Step 1 below |
+| Build infrastructure type | Self-hosted Kubernetes, Harness Cloud, or both | Detailed in Step 1 below |
 | Container registry URL | The URL of your container registry | e.g. `registry.example.com` |
 | Source code manager | Your SCM type and URL | e.g. GitHub, GitLab, Bitbucket |
 | Validation repository | A repo Harness can use to test the SCM connection | Must be accessible by the connector |
@@ -45,7 +51,7 @@ team will use:
 
 :::note
 If you select Harness Cloud, the workflow will not create a Kubernetes
-connector for the build farm — cloud infrastructure is managed by Harness
+connector for the build farm. Cloud infrastructure is managed by Harness
 directly and requires no connector.
 :::
 
@@ -86,7 +92,7 @@ affecting the workspace configuration.
 After the workflow completes:
 
 - [ ] Connectors are visible under **Solutions Factory** → **Project
-      Settings** → **Connectors**.S
+      Settings** → **Connectors**.
 - [ ] Secrets are visible under **Solutions Factory** → **Project
       Settings** → **Secrets**.
 - [ ] The `harness-central-build-farm-setup` workspace appears in
@@ -119,8 +125,8 @@ build infrastructure.
 
 #### Making changes
 
-To update the build farm configuration after provisioning — for example, to
-change the container registry URL or swap your SCM — navigate to
+To update the build farm configuration after provisioning, for example to
+change the container registry URL or swap your SCM, navigate to
 **IaCM** → **Workspaces** → `harness-central-build-farm-setup`, update the
 relevant variable, and re-execute the workspace. The change will go through
 the approval flow before being applied.
