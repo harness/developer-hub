@@ -1,5 +1,5 @@
 {
-    "label":"Install",
+    "label":"Helm Installation",
     "position": 15,
     "collapsible":"true",
     "collapsed":"true",

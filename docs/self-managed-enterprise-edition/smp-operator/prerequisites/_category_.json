@@ -1,0 +1,8 @@
+{
+   "label": "Prerequisites",
+   "description": "Review the cluster, storage, registry, DNS, and TLS requirements before you install the SMP Operator.",
+   "position": 2,
+   "collapsible": "true",
+   "collapsed": "true",
+   "className": "default"
+}

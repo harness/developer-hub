@@ -1,0 +1,8 @@
+{
+   "label": "Install",
+   "description": "Install the SMP Operator with Helm or the clustermgr CLI, including air-gapped and FIPS-compliant installations.",
+   "position": 3,
+   "collapsible": "true",
+   "collapsed": "true",
+   "className": "default"
+}

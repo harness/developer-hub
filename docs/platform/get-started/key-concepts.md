@@ -119,7 +119,7 @@ Harness is offered as **Software as a Service (SaaS)** and **Self-Managed** (on-
 | **What it is** | Fully managed, cloud-hosted version of Harness. No infrastructure setup required. | Kubernetes-native deployment that runs on your own public or private cloud infrastructure. See [SMP overview](/docs/self-managed-enterprise-edition/smp-overview). |
 | **Plans/licensing** | Free, Team, and Enterprise. See [Subscriptions and licenses](/docs/platform/subscriptions-licenses/subscriptions). | Requires a valid SMP license key and access to download the Harness SMP software. |
 | **Get access** | [Sign up with the Free plan](https://app.harness.io/auth/#/signup/?module=cd&utm_medium=harness-developer-hub), then [sign in](https://app.harness.io/auth/#/signin). Team/Enterprise accounts are created by invitation from an Account Administrator. | Contact [Harness Support](mailto:support@harness.io) to obtain your license key and software download access. |
-| **Setup** | None. Harness manages the infrastructure. | Follow the [installation instructions](/docs/category/install), then sign in at `http://YOUR_DOMAIN_NAME/auth/#/signin`. |
+| **Setup** | None. Harness manages the infrastructure. | Follow the [installation instructions](/docs/category/helm-installation), then sign in at `http://YOUR_DOMAIN_NAME/auth/#/signin`. |
 
 
 ---

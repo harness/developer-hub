@@ -642,6 +642,10 @@ const config: Config = {
             from: '/release-notes/delegate-v2',
             to: '/release-notes/delegate-v3',
           },
+          {
+            from: '/docs/category/install',
+            to: '/docs/category/helm-installation',
+          },
         ],
         // Register redirect_from frontmatter URLs and canonical→repo redirects. Only return redirect_from when existingPath has no trailing slash so the plugin doesn't create duplicate "from" entries (same from → to vs to/).
         createRedirects(existingPath) {

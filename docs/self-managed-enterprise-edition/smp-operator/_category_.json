@@ -1,0 +1,11 @@
+{
+   "label": "Operator Installation",
+   "position": 20,
+   "collapsible": "true",
+   "collapsed": "true",
+   "className": "default",
+   "link": {
+      "type": "generated-index",
+      "title": "Install Harness Self-Managed Enterprise Edition with the SMP Operator"
+   }
+}
