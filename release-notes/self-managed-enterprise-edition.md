@@ -510,6 +510,9 @@ For a comprehensive guide on installing Harness Self-Managed Enterprise Edition 
 #### Cloud Cost Management
 
 - GCP project labels and tags now available for cost filtering: You can now filter and group costs by GCP project labels and GCP resource tags in Looker dashboards. Previously, only resource-level labels were available. Both project labels and tags are now ingested and exposed as dimensions in the GCP and Unified explores. [CCM-34388]
+- Few services have been excluded from custom discounting.  [CCM-34826]
+- GCP Project Name and GCP Project Number dimensions added to Unified Clickhouse Explore along with a common dimension for "AWS Account Name/GCP Project Name/Azure Subscription Name. [CCM-32999] [CCM-34388]
+- The end date for the custom discounting has been updated to 2026-12-31 across all explores. [CCM-34983]
 
 #### Chaos Engineering
 
