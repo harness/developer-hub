@@ -126,56 +126,23 @@ This setting can only be edited in Team and Enterprise plans. You can set it at 
 ### Project-level pipeline execution concurrency
 
 :::note
-Currently, this feature is behind feature flags `PIPE_PROJECT_LEVEL_EXECUTION_CONCURRENCY` and `PIPE_ENABLE_QUEUE_BASED_PLAN_CREATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+This feature is behind feature flags `PIPE_PROJECT_LEVEL_EXECUTION_CONCURRENCY` and `PIPE_ENABLE_QUEUE_BASED_PLAN_CREATION`. The per-project concurrency mode additionally requires the `PIPE_PER_PROJECT_CONCURRENCY_OVERRIDES` feature flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-You can take fine-grained control of how many pipelines run concurrently in each of your projects. By splitting your account-wide concurrency limit into a **High-Priority** and **Low-Priority** partition, you guarantee reserved execution slots for critical projects while preventing any one project from consuming all available capacity.
+Harness supports two mutually exclusive modes for managing pipeline execution concurrency across projects. Only one mode can be active for an account at a time.
 
-You can configure this at the account scope only. Navigate to **Account Settings** -> **General** -> **Default Settings** -> **Pipeline** -> **CONCURRENCY MANAGEMENT**.
+| Mode | How it works | When to use it |
+| --- | --- | --- |
+| **High/Low priority partitions** | Divides the account's concurrency capacity between High and Low priority partitions. Projects are assigned to one of the partitions. | Use this mode when you want to reserve capacity for critical projects or limit the capacity available to selected projects. Go to [Configure High/Low priority partitions](/docs/platform/pipelines/configure-high-low-priority-partitions) for setup steps. |
+| **Per-project concurrency** | Assigns a concurrency limit independently to each project. You can define a default limit for all projects and override it for individual projects. | Use this mode when different projects require different concurrency limits and you need more granular project-level control. Go to [Configure per-project concurrency](/docs/platform/pipelines/configure-per-project-concurrency) for setup steps. |
 
-#### How to configure
+:::warning
+Changing the **Concurrency Mode** affects pipeline executions across the account. Harness prompts you to confirm the change before applying it.
+:::
 
-1. **Concurrent Active Pipeline Executions**  
-   - Enter your account’s **total** concurrency limit (by default, it is `1000`).  
-   - Click **Restore to Default** to reset to the system default.
+Both modes are subject to the account's total concurrency limit.
 
-2. **Pipeline Execution Priority**  
-   - Select the partition you’re defining: **High** or **Low**.  
-   - Click **Restore to Default** to revert.
-
-3. **Concurrency Limit**  
-   - Specify how many slots to reserve for the selected partition (must be less than your total).  
-   - Example: setting `200` reserves 200 slots for High (leaving 800 for Low).
-
-4. **Prioritised Projects**  
-   - Select one or more projects to belong to this partition. 
-   - All unselected projects automatically fall into the opposite partition.
-
-<div align="center">
-<div align="center"><DocImage path={require('./static/project-concurrency.png')} alt="Project-level pipeline execution concurrency configuration" width="100%" /></div>
-</div>
-
-#### How it works
-
-**Partition Approaches**  
-You have two options for carving up your total concurrency:
-
-1. **High-Priority Partition (Whitelist)**  
-   - You define a **High** slot count and explicitly specify which projects belong there.  
-   - All remaining (and any newly created) projects automatically fall into Low-Priority.  
-   - **When to use**: reserve slots for a handful of critical projects (e.g. security fixes, patch releases), so they always start quickly.
-
-2. **Low-Priority Partition (Blacklist)**  
-   - You define a **Low** slot count and explicitly specify which projects belong there.  
-   - All remaining (and any newly created) projects automatically fall into High-Priority.  
-   - **When to use**: throttle noisy or build-heavy projects (e.g. CI pipelines) to free up capacity for everything else.
-
-- **Runtime behavior**  
-  1. When both **High** (200) and **Low** (800) are full, new **High** executions queue, but start immediately as soon as **either** partition frees a slot (allowing High to spill over up to the full 1000 over time).  
-  2. New **Low** executions consume only the Low partition; if those 800 are full, they queue until a Low slot opens.  
-  3. On dequeuing mixed queues:
-     - **High** pipelines start on the first available slot in **High** or **Low**.  
-     - **Low** pipelines wait for the next available **Low** slot.  
+---
 
 ### Stage/step-level concurrency limits
 
