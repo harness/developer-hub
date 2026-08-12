@@ -1,6 +1,6 @@
 ---
 title: Agent permissions
-description: Configure and manage Worker Agent permissions at pipeline level and through RBAC.
+description: Configure Worker Agent permissions for manual and trigger-started pipelines through scoped tokens and RBAC.
 sidebar_label: Agent permissions
 sidebar_position: 4
 keywords:
@@ -9,16 +9,20 @@ keywords:
   - rbac
   - pipeline permissions
   - scoped token
+  - pipeline triggers
+  - trigger executor identity
 tags:
   - ai
   - agents
   - rbac
+  - triggers
 redirect_from:
   - /docs/platform/harness-ai/core-capabilities/in-your-pipelines/harness-agents#agent-permissions-pipeline-level
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import DocImage from '@site/src/components/DocImage';
 
 Agent permissions control what Worker Agents can access and modify within Harness at runtime. You can configure permissions at two levels: pipeline-level permissions for runtime execution scope, and Role-Based Access Control (RBAC) permissions for managing agent lifecycle operations.
 
@@ -29,6 +33,7 @@ Agent permissions control what Worker Agents can access and modify within Harnes
 By the end of this topic, you will be able to:
 
 - [Configure pipeline-level agent permissions for runtime execution](#agent-permissions-pipeline-level).
+- [Run Worker Agents from triggers with an executor identity](#trigger-started-worker-agent-runs).
 - [Understand supported entities and permission values](#supported-permissions).
 - [Configure RBAC permissions for agent management](#rbac-for-worker-agents).
 
@@ -49,7 +54,7 @@ Before you configure agent permissions, ensure you have the following:
 Configure resource-level permissions for Worker Agents directly in pipeline stage YAML to control runtime access.
 
 :::note Feature flag
-Currently, this feature is behind the feature flag `HARNESS_TOKEN_INJECT`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+Currently, this feature is behind the feature flag `HARNESS_INJECT_TOKEN`. Contact [Harness Support](mailto:support@harness.io) to enable it.
 :::
 
 Agent permissions allow you to define explicit resource-level permissions for a Worker Agent directly in the pipeline stage YAML. Each Agent step declares the permissions it needs as a set of `resource: verb` pairs, and Harness evaluates that grant against two things before the agent can act:
@@ -63,7 +68,7 @@ An agent's effective permission is the intersection of the two. A declared grant
 
 Permissions are declared **per stage (CI, STO, SCS, IaCM) or per Containerized Step Group (CD, Custom)**, not pipeline-wide, so agents in different stages or step groups can carry different, narrowly scoped access. The scoped token applies to every step in the stage or step group where the block is declared.
 
-### Declare permissions on an Agent step
+### Declare permissions for Agent steps
 
 The placement of the `permissions` block differs by stage type. Select your stage below. Each resource key accepts a pipe-separated (`|`) list of verbs. Harness builds one permission per pair in the form `module_resource_verb` and intersects it with the invoking principal's RBAC when the pipeline runs.
 
@@ -75,7 +80,7 @@ Two rules govern what is accepted:
 <Tabs>
 <TabItem value="ci" label="CI, STO, SCS, IaCM (Stage Level)" default>
 
-In CI, STO, SCS, and IaCM stages, the Agent step runs directly in the stage. Add a `permissions` block under `spec` in the stage definition:
+In CI, STO, SCS, and IaCM stages, the Agent step runs directly in the stage. Add the `permissions` block to the stage definition at the same level as `spec`:
 
 ```yaml
 stages:
@@ -84,12 +89,14 @@ stages:
       identifier: Agent
       description: ""
       type: CI
+      permissions:
+        - pipeline: view|edit|create|delete|execute|abort
+        - code_repository: view|edit|create|delete|push|review
+        - artifact_registry: view|edit|delete|uploadartifact|downloadartifact|deleteartifact|quarantineartifact|firewallexceptionapprove
+        - user: view|manage|invite|impersonate
+        - ai_llm_gateway: access
       spec:
-        permissions:
-          pipeline: view|edit|create|delete|execute|abort
-          code_repository: view|edit|create|delete|push|review
-          artifact_registry: view|edit|delete|uploadartifact|downloadartifact|deleteartifact|quarantineartifact|firewallexceptionapprove
-          user: view|manage|invite|impersonate
+        cloneCodebase: true
 ```
 
 </TabItem>
@@ -180,6 +187,112 @@ Because this agent rolls back deployments and syncs GitOps apps, it runs in a CD
 ```
 
 This agent can run and roll back deployments and sync GitOps apps. It cannot create, edit, or delete any resource, because those verbs were never granted.
+
+---
+
+## Trigger-started Worker Agent runs
+
+A trigger-started pipeline must have an executor identity before Harness can derive the scoped token for its Worker Agent steps. Without that identity, the agent cannot authenticate to the LLM Gateway. The Agent step can show a login error even when the same pipeline succeeds after a manual execution.
+
+When you assign an executor identity, Harness runs the pipeline as that user or service account. Harness intersects the identity's RBAC permissions with the pipeline's declared `permissions` block, then injects the resulting scoped token into the Worker Agent stage. Include `ai_llm_gateway: access` in the block when the Agent step uses a Harness-managed LLM connector.
+
+:::note Limited availability
+Support for trigger-started Worker Agents is under QA validation and is not generally available. It requires both the `HARNESS_INJECT_TOKEN` and `PIPE_ENFORCE_TRIGGER_EXECUTOR_IDENTITY` feature flags. Contact [Harness Support](mailto:support@harness.io) to request access.
+:::
+
+### Required configuration
+
+Complete these steps before you start a pipeline that contains Worker Agent steps from a trigger:
+
+1. **Enable feature flags:** Enable `HARNESS_INJECT_TOKEN` and `PIPE_ENFORCE_TRIGGER_EXECUTOR_IDENTITY` for the account.
+2. **Open pipeline settings:** In your Harness account, go to **Account Settings** > **Account Resources** > **Default Settings** > **Pipeline**.
+3. **Require an executor identity:** Set **Enforce Executor Identity for Triggers** to **True**, then save the setting.
+
+<DocImage path={require('../../../../triggers/static/trigger-enforce-executor-setting.png')} alt="Account pipeline settings with Enforce Executor Identity for Triggers set to True" title="Click to view full size" />
+<p align="center"><em>Enable Enforce Executor Identity for Triggers in the account pipeline settings.</em></p>
+
+4. **Open the trigger:** In the pipeline, select **Triggers**, then create a trigger or edit an existing trigger.
+5. **Assign the executor:** In **Run pipeline as**, select your user identity or a service account that you can manage. The selected identity must have the permissions that the pipeline and its Worker Agent steps require. Go to [Trigger executor identity](/docs/platform/triggers/trigger-executor-identity) to review identity selection and RBAC rules.
+
+<DocImage path={require('../../../../triggers/static/trigger-run-pipeline-as.png')} alt="Trigger Configuration page with the Run pipeline as user or service account field" title="Click to view full size" />
+<p align="center"><em>Select the identity that Harness uses for trigger-started pipeline executions.</em></p>
+
+6. **Save and start the trigger:** Save the trigger, start it, and confirm that the Worker Agent steps pass authentication. The steps can now use the scoped token to access the LLM Gateway and Harness-managed models.
+
+### Trigger-compatible pipeline example
+
+This CI pipeline defines the permission grant at the stage level. The `ai_llm_gateway: access` entry lets all three Agent steps use the Harness-managed Anthropic connector when a manual run or a trigger starts the pipeline.
+
+:::warning Broad QA permission grant
+This example reflects a broad QA test grant. Before you use it in production, remove every resource and verb that the Worker Agents do not require. If you retain permissions such as `delete`, `manage`, or `impersonate`, a compromised agent can perform those actions within the executor identity's RBAC scope.
+:::
+
+```yaml
+pipeline:
+  name: Worker Agent trigger example
+  identifier: Worker_Agent_trigger_example
+  tags: {}
+  projectIdentifier: your_project
+  orgIdentifier: your_organization
+  properties:
+    ci:
+      codebase:
+        repoName: your_repository
+        build: <+input>
+  stages:
+    - stage:
+        name: Agent
+        identifier: Agent
+        description: ""
+        type: CI
+        permissions:
+          - pipeline: view|edit|create|delete|execute|abort
+          - code_repository: view|edit|create|delete|push|review
+          - artifact_registry: view|edit|delete|uploadartifact|downloadartifact|deleteartifact|quarantineartifact|firewallexceptionapprove
+          - user: view|manage|invite|impersonate
+          - ai_llm_gateway: access
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: true
+            override: true
+          buildIntelligence:
+            enabled: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Agent
+                  name: Feature Gen
+                  identifier: Feature_Gen
+                  spec:
+                    agentName: ca_feature_generator
+                    agentSettings:
+                      llmConnector: account.harnessAnthropic
+              - step:
+                  type: Agent
+                  name: Plan Gen
+                  identifier: Plan_Gen
+                  spec:
+                    agentName: ca_plan_generator_agent
+                    agentSettings:
+                      llmConnector: account.harnessAnthropic
+                      modelName: claude-sonnet-4-6
+              - step:
+                  type: Agent
+                  name: Builder
+                  identifier: Builder
+                  spec:
+                    agentName: ca_implementation_agent
+                    agentSettings:
+                      llmConnector: account.harnessAnthropic
+                      modelName: claude-sonnet-4-6
+```
 
 ---
 
@@ -376,7 +489,7 @@ The first two cases surface as a permission-denied error when the agent calls th
 
 ## Current limitations
 
-- **Trigger-initiated runs:** Agents run by a pipeline trigger do not currently have a scoped token injected, so declared permissions cannot be resolved against an invoking principal for those runs. This permission model applies to manually and API-triggered runs where a principal is available. Trigger support is on the roadmap.
+- **Trigger support requires two feature flags:** Trigger-started Worker Agent runs require both `HARNESS_INJECT_TOKEN` and `PIPE_ENFORCE_TRIGGER_EXECUTOR_IDENTITY`. This capability is under QA validation and is not generally available.
 - **Verbs are unvalidated:** There is no verb enum, so a mistyped or unsupported verb fails silently rather than raising an error. Confirm every verb against the resource's RBAC actions.
 - **Resource keys not listed are dropped:** Any key outside <a href="#supported-resources-by-module">Supported resources by module</a> grants nothing. New keys are added as modules onboard to the scoped-token model.
 - **`scs_evidence_vault` (Beta):** Requires the corresponding feature flag.
