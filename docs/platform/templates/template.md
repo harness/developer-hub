@@ -161,6 +161,8 @@ A comprehensive view is offered under **Templates** with details such as Templat
 
 The **status appears next to the stable version** of each template. You can also click a template and go to **Referenced By** to view all the Harness Entities that are leveraging that template.
 
+Go to [View template usage across your account](/docs/platform/templates/view-template-usage-dashboard) to see pipeline counts per template version across all organizations and projects in your account.
+
 :::info note
 Currently this feature is behind feature flag `PIPE_REFERENCED_TEMPLATES`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature flag.
 :::

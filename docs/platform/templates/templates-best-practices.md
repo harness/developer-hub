@@ -416,7 +416,7 @@ You can create versions of your templates in Harness and Git.
 
 - You can set a stable version for your template and enforce it on all the pipelines that reference it.
 
-  Use a stable version when introducing a breaking change without affecting existing projects.
+  Use a stable version when introducing a breaking change without affecting existing projects. Before you remove an older version, go to [View template usage across your account](/docs/platform/templates/view-template-usage-dashboard) to confirm which pipelines still reference it.
 
 - Harness recommends managing versions of the templates in the UI. In this way, you can see what changes have been made between versions of the template.
 
