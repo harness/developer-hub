@@ -255,13 +255,43 @@ Clicking on the **Exemption Status** button shows:
 
 - **Current Status:** Indicates the state of the request — `Pending`, `Approved`, `Rejected`.
 - **Requested By:** Displays the user who created the exemption request and the relative time since it was submitted (e.g., `David · 7 days ago`).
+- **Comments:** Displays the latest comment added by a reviewer during the approval or rejection process.
 - **Requested Duration:** Shows the time period for which the exemption is requested (e.g., `7 days`, `30 days`).
 - **Scope:** Indicates the exemption's intended application scope, such as Target-level, Pipeline-level, or Project-level.
 - **Reason:** Selected justification category provided during request creation (e.g., `Acceptable Risk`, `False Positive`, `Not Exploitable` etc.).
-- **Comments:** Displays the latest comment added by a reviewer during the approval or rejection process.
-- **Description:** Optional detailed context added by the requester.
 - **Response Actions:** If you have the [required permissions](/docs/security-testing-orchestration/exemptions/issue-exemption-workflow#required-permissions-for-issue-exemptions), available actions include **Approve**, **Reject**, **Cancel**, or **Re-open**, depending on the current request state.
 
+Additionally, alongside the **Exemption Status**, Harness also displays the **Exemption Log**, which upon clicking, displays the history of actions taken on the exemption, in chronological order. For more information, see the section below.
+
+### View the exemption log
+
+Every exemption request keeps a running record of the actions taken against it. You can use these exemption logs to audit who took action on an exemption and when.
+
+To view the logs, complete the following steps:
+
+1. Navigate to the **Issue Details** pane in either of the following ways:
+    - Navigate to **Issues** page and click on an **Issue**.
+    - Navigate to the **Executions** page, click on a **Pipeline**, **Vulnerabilities** tab, and click on an **Issue** from the list.
+2. In the **Issue Details** pane's top right corner, click **Exemption Log**.
+
+The log opens in its own panel, where entries are listed in a timeline, most recent first, each marked with the acting user's initials. Each entry displays the following details:
+
+<DocImage path={require('./static/sto-exemption-log.png')} width="100%" height="100%" title="Exemption Log Panel" />
+
+- **Title**: The action taken and the user who took it, for example, *Exemption cancelled by John Doe*.
+- **Status**: The status of the exemption, for example, *CANCELED*.
+- **Timestamp**: The time at which the exemption was logged.
+- **Scope**: The exemption's scope at the time of the action, for example, *PROJECT default/STO* or *TARGET default/STO/test*.
+- **Duration**: The exemption duration, for example, *Exempted for all time*.
+- **Reason**: The justification category selected for the exemption, for example, *Fix Unavailable* or *Compensating Controls*.
+- **Type**: Whether the exemption applied to the issue or to specific occurrences, for example, *Issue*.
+- **Comments**: Any comments added while requesting exemption.
+
+:::note 
+The most recent log entries also appear inline in the **Recent Activities** section of the **Issue Details** pane. Click **Exemption Log** for the complete history.
+:::
+
+Further, you can use the **Download** icon in the panel's top right corner to download all logs in CSV format.
 
 ### View exemptions at the Project level
 

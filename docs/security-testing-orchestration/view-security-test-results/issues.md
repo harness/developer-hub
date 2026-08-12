@@ -73,6 +73,7 @@ Select an issue from the list in the **Issues** section to open the **Issue Deta
 From the **Issue Details** pane, you can:
 - [Create a Jira ticket](/docs/security-testing-orchestration/jira-integrations): Create project-scoped and target-scoped Jira tickets directly from the **Issues** section.
 - [Request an exemption](/docs/security-testing-orchestration/exemptions/exemption-workflows): Submit and respond to exemption requests from the **Issues** section.
+- [View the exemption log](/docs/security-testing-orchestration/exemptions/exemption-workflows#view-the-exemption-log): View the list of exemption requests carried out against the issue.
 - [View impacted targets](#target-details): View targets that are impacted by the selected issue.
   - [View occurrences of the issue](#occurrence-details): View occurrences of the issue for the selected target.
 
