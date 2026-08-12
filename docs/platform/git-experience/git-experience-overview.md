@@ -146,15 +146,27 @@ For Example: If the repo full directory path is: `test-group9482940/subgroup/fol
 You can now search for branches in a given repository with support for infinite scroll while creating remote entities. Simply enter any keyword to see related branches listed. If you can't find the branch you're looking for, you can also add it manually.
 
 :::important
-1. Search in branch listing is not supported for Github and Github Apps.
-2. Please note that search in branch listing is only available while creating remote entities.
+1. Search in branch listing is not supported for GitHub Apps.
+2. Search in branch listing is only available while you create remote entities.
 :::
+
+#### Branch listing limits
+
+Harness returns a maximum of **100 branches per branch listing API call**. A repository can contain thousands of branches, and fetching the full list on every dropdown interaction adds latency and increases the load on your Git provider rate limits. This limit is added to reduce the latency and load on your Git provider.
+
+As a result, a branch that falls outside the returned set does not appear in the branch dropdown, even though the branch exists in the repository. This is most visible with newly created branches in repositories that have a large number of branches.
+
+To select a branch that the dropdown does not list, enter the full branch name manually. Pipeline execution uses the branch name directly and does not depend on the branch listing API, so the pipeline runs successfully once you provide the exact name.
+
+For **GitHub App** connectors, typing in the branch dropdown does not refresh the list, because the GitHub branch listing API accepts no search term. Enter the full branch name manually instead.
+
+For **GitHub** connectors, branch search and pagination are supported through the V2 branch listing API, which requires Harness UI version 1.145.x or later, ng-manager 1.157.x or later, scm-service 1.55.x or later, and Harness Delegate version `26.06.8950` or later. Go to [Delegate upgrades and expiration](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration) to upgrade your delegate.
 
 ### Supported Git Providers for Repo and Branch Listing
 
 | Git Provider | Repo Listing | Branch Listing
 | --- | --- | --- |
-| Github | Yes | No  |
+| Github | Yes | Yes  |
 | Bitbucket SAAS | Yes | Yes |
 | Bitbucket Server | Yes  | Yes |
 | Azure | No | Yes |
@@ -163,7 +175,9 @@ You can now search for branches in a given repository with support for infinite 
 | Harness Code | Yes | Yes |
 
 1. [Repo Listing](#repo-listing) is not supported in Azure and Github Apps, but users can manually type in the desired repository name and add it.
-2. [Branch Listing](#branch-listing) is not supported in Github and Github Apps, but users can manually type in the desired branch name and add it.
+2. [Branch Listing](#branch-listing) is not supported in Github Apps, but users can manually type in the desired branch name and add it.
+3. Branch search for GitHub requires the minimum UI, ng-manager, scm-service, and delegate versions listed under [Branch listing limits](#branch-listing-limits).
+4. Every provider returns a maximum of 100 branches per call. Go to [Branch listing limits](#branch-listing-limits) to understand the impact.
 
 ### Multiple branch support
 

@@ -64,7 +64,9 @@ For more information, go to [Set up bidirectional sync for Git Experience](/docs
 
 ### When I try to open a Git-stored pipeline, why doesn't the branch dropdown display all the branches?
 
-This behavior is expected when there are more than 20-30 branches in the repo due to pagination. To select branches that are not listed, try manually entering the full branch name. This should allow you to open the pipeline from that branch.
+This behavior is expected. Harness returns a maximum of 100 branches per branch listing API call to limit latency and Git provider rate limit consumption, so a repository with a large number of branches does not show every branch in the dropdown. To select a branch that is not listed, enter the full branch name manually. Pipeline execution uses the branch name directly and does not depend on the branch listing API.
+
+Go to [Branch listing limits](/docs/platform/git-experience/git-experience-overview#branch-listing-limits) to understand the limit and the per-provider search support.
 
 ### Where to find the callback_id parameter needed for approving the Harness pipeline via API?
 
