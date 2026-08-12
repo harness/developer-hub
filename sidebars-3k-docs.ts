@@ -1791,14 +1791,17 @@ const sidebars: SidebarsConfig = {
           collapsed: true,
           items: [
             'infra-as-code-management/registry/module-registry/module-registry-overview',
+            'infra-as-code-management/registry/module-registry/module-structure',
             'infra-as-code-management/registry/module-registry/module-registry',
             {
               type: 'doc',
               id: 'infra-as-code-management/registry/module-registry/module-registry-artifacts',
               className: 'sidebar-item-beta',
             },
+            'infra-as-code-management/registry/module-registry/registered-module-settings',
             'infra-as-code-management/registry/module-registry/module-registry-testing',
             'infra-as-code-management/registry/module-registry/module-version-lifecycle-management',
+            'infra-as-code-management/registry/module-registry/module-governance',
           ],
         },
         "infra-as-code-management/registry/provider-registry",
