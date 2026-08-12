@@ -398,3 +398,92 @@ While hygiene reports don't auto-archive misses, you can configure date-based fi
 The OU UNIT OVERRIDES field in the report settings allows you to override filters defined at the Collections scope. This means that the report will display data based solely on the report filters, ignoring the Collection filter.
 
 For example, suppose the Collection filter specifies that the Assignee must equal a certain value (e.g., a specific user). If you select "Assignee" in the "OU UNIT OVERRIDES" field, it will override the Collection filter. As a result, the report will display data for all users, not just the user specified in the Collection filter.
+
+### Why might a Jira issue appear under a developer in SEI Panorama Work Completed even if the issue is currently unassigned?
+
+In some cases, a Jira issue may appear under a developer in SEI Panorama **Work Completed** even if the issue is currently unassigned in Jira.
+
+This can happen when SEI attributes completed work based on the issue's assignment and status history during the configured workflow period, rather than only the current Jira assignee.
+
+If the issue was assigned to the developer during the configured workflow period and later became unassigned, the historical assignment may explain why the issue still appears under that developer in Work Completed.
+
+### What does SEI Panorama Work Completed use for attribution?
+
+SEI Panorama **Work Completed** attribution can use the developer associated with the issue during the configured development workflow, not only the current Jira assignee.
+
+This is important because Jira assignment can change after work is completed. If the issue was assigned to a developer during a configured development status and then moved to a termination status, SEI may still count that work under the developer who owned the issue during that workflow period.
+
+### Why does Work Completed Per Developer show more items than Business Alignment?
+
+**Work Completed Per Developer** and **Business Alignment** can show different totals because they are designed with different scopes.
+
+**Work Completed Per Developer** is a developer-based productivity metric. It is intended to show the overall work completed by the developers in the selected team or collection.
+
+**Business Alignment** is scoped to the configured Business Alignment profile and the Issue Management work items that qualify for that profile or team setup.
+
+Because of this, the two widgets are not expected to always reconcile one-to-one.
+
+### Why can Work Completed Per Developer include Jira issues from other projects?
+
+**Work Completed Per Developer** focuses on completed work by the developer, not only on the Issue Management project filters used by Business Alignment.
+
+For example, if a team is configured for Business Alignment using Jira project `PJC1`, but the same developers also completed work in Jira project `PJC2`, the Work Completed widget may include the `PJC2` items while Business Alignment may not.
+
+This can make the Work Completed total higher than the Business Alignment total.
+
+### Why does Business Alignment show fewer work items than Work Completed Per Developer?
+
+**Business Alignment** only evaluates work items that fall within the configured Business Alignment profile, categories, and team scope.
+
+If a developer completed work outside that Business Alignment scope, that work may still appear in developer productivity widgets, but it may not appear in Business Alignment.
+
+This means Business Alignment can show fewer items than Work Completed Per Developer for the same team and time range.
+
+### What does Uncategorized mean in Business Alignment?
+
+In **Business Alignment**, `Uncategorized` means the work item qualified for Business Alignment analysis but did not match one of the configured Business Alignment categories.
+
+It does not mean that every completed work item from every project should appear as `Uncategorized`.
+
+For example, if a developer completed work in a Jira project outside the Business Alignment scope, that issue may appear in Work Completed Per Developer but may not appear in Business Alignment at all.
+
+### Should Work Completed Per Developer and Business Alignment totals match?
+
+Not necessarily.
+
+The widgets measure different things:
+
+* **Work Completed Per Developer** shows completed work attributed to developers.
+* **Business Alignment** shows completed work that qualifies for the configured Business Alignment scope and categories.
+
+Because the scopes are different, the totals can differ.
+
+### How can I validate why Work Completed Per Developer and Business Alignment do not match?
+
+To validate the difference, compare the widget drilldowns side by side.
+
+Check the following:
+
+* The Jira projects included in **Work Completed Per Developer**.
+* The Jira projects included in **Business Alignment**.
+* Whether the additional Work Completed items come from projects outside the Business Alignment configuration.
+* Whether the same collection, team, and time range are being used.
+* Whether the Business Alignment profile is scoped to specific projects, categories, or filters.
+* Whether the items in Business Alignment are categorized or `Uncategorized`.
+
+If the extra Work Completed items belong to Jira projects outside the Business Alignment scope, the difference is expected.
+
+### Why might Work Completed Per Developer and Business Alignment show different totals?
+
+This can happen when the developers completed work across multiple Jira projects, but **Business Alignment** is configured to evaluate only a narrower Issue Management scope.
+
+For example:
+
+* **Work Completed Per Developer** may show all completed work by the developers, including work from Jira projects outside the Business Alignment configuration.
+* **Business Alignment** may only show work from the Jira projects or work items that qualify for the configured Business Alignment profile.
+
+In that case, **Work Completed Per Developer** can show a higher number than **Business Alignment**.
+
+This is not necessarily a data issue. A difference between these widgets usually means they are using different scopes. If Work Completed includes issues from Jira projects outside the Business Alignment scope, then the difference is expected.
+
+A data issue would be more likely if both widgets are confirmed to use the same collection, filters, profile, workflow configuration, and time range, but the drilldowns still show unexpected or missing work items.
